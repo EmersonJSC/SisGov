@@ -1,0 +1,1 @@
+export { validateScenario } from './validateScenario'
