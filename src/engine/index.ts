@@ -1,1 +1,1 @@
-export { validateScenario } from './validateScenario'
+export { validateScenario } from "./validateScenario";
