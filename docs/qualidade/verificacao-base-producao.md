@@ -22,6 +22,6 @@ Este registro é uma alteração documental pequena usada para exercitar o fluxo
 - `npm ci` concluiu usando o lockfile.
 - `npm run check` concluiu com sucesso: formatação, lint, build e 2 testes passaram.
 - O diff desta alteração documental foi revisado antes do commit.
-- A branch será enviada ao GitHub para o workflow de integração repetir as verificações.
+- A branch foi enviada ao GitHub e o workflow [Verificações](https://github.com/EmersonJSC/SisGov/actions/runs/36282871026) concluiu com sucesso.
 
 O npm informou duas vulnerabilidades moderadas em dependências e que a versão escolhida do ESLint não recebe mais suporte. Nenhuma correção automática foi aplicada, pois `npm audit fix --force` pode alterar dependências além do escopo deste chamado. Essas pendências não impediram a instalação, o build ou os testes e devem ser avaliadas em um chamado próprio.
