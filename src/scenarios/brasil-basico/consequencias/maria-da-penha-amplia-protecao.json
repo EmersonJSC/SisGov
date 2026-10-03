@@ -1,0 +1,17 @@
+{
+  "id": "maria-da-penha-amplia-protecao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_protecao_mulheres",
+  "alvo": "protecao_mulheres",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.041666666666666664,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

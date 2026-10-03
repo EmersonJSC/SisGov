@@ -1,0 +1,14 @@
+[dilemma]
+name=LGBTLessonsInSchool
+
+[influences]
+0 = _random_,0.1,0.35
+1 = Liberal_perc,0+(0.47*x)
+2 = Religious_perc,0+(0.14*x)
+3 = Banhomosexuality,0-(2.0*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.11,0.82);CreateGrudge(Young,0.06,0.9);CreateGrudge(Conservatives,-0.15,0.91);CreateGrudge(Religious,-0.15,0.92);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.06,0.78);CreateGrudge(Young,-0.06,0.8);CreateGrudge(Conservatives,0.1,0.8);CreateGrudge(Religious,0.12,0.82);

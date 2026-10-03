@@ -1,0 +1,24 @@
+{
+  "id": "alimentacao-escolar",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Alimentação escolar",
+  "descricao": "Ajusta o financiamento anual para compra e oferta de alimentação nas escolas públicas do recorte.",
+  "area": "Educação e Cuidados",
+  "icone": "school-meal",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_alimentacao_escolar",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": [
+    "alimentacao-eleva-frequencia",
+    "frequencia-amplia-oportunidades",
+    "oportunidades-reduzem-violencia",
+    "despesa-alimentacao",
+    "saldo-alimentacao"
+  ],
+  "respostaTemporal": { "implantacao": 0.32, "degradacao": 0.2 }
+}

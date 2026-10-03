@@ -1,0 +1,7 @@
+{
+  "id": "choque-externo",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Choque externo",
+  "consequencias": ["evento-eleva-risco"]
+}

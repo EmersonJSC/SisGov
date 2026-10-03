@@ -1,0 +1,13 @@
+[dilemma]
+name=Streamer
+
+[influences]
+0 = _random_,0,0.15
+1 = Technology,0.7*(x^2)
+2 = InternetSpeed,0.35*(x^2)
+
+[option0]
+OnImplement = CreateGrudge(Young,0.11,0.9);CreateGrudge(Parents,-0.05,0.9);CreateGrudge(Conservatives,-0.11,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Young,-0.1,0.5);CreateGrudge(Parents,0.05,0.9);CreateGrudge(Conservatives,0.1,0.85);

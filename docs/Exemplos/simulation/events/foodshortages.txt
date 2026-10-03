@@ -1,0 +1,13 @@
+[config]
+Name = foodshortages
+Texture = event59.png
+GUISound = DM4_Food Shortages.wav
+OnImplement = CreateGrudge(foodshortages,-0.900,0.830);CreateGrudge(Patriot,-0.120,0.830);CreateGrudge(PovertyRate,0.10,0.830);CreateGrudge(CrimeRate,0.10,0.830);CreateGrudge(_All_,-0.10,0.830);
+
+[influences]
+0 = _random_,0,0.22
+1 = PovertyRate,0.75*(x^2)
+2 = FoodPrice,0.35*(x^2)
+3 = ForeignRelations,0+(0.22*x)
+4 = Foodcrisis,0.15+(0.12*x),2
+

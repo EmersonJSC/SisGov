@@ -1,0 +1,13 @@
+[dilemma]
+name=StricterDrivingTests
+
+[influences]
+0 = _random_,0.1,0.72
+1 = Parents_perc,0.27*(x^2)
+2 = Motorist_perc,0.22*(x^2)
+
+[option0]
+OnImplement = CreateGrudge(Parents,0.08,0.85);CreateGrudge(Motorist,-0.05,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Parents,-0.04,0.81);CreateGrudge(Motorist,0.05,0.81);

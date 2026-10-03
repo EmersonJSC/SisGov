@@ -1,0 +1,14 @@
+[dilemma]
+name=CondemnRefuseStrike
+
+[influences]
+0 = _random_,0.3,0.55
+1 = TradeUnionist_perc,0.45*(x^2)
+2 = Wages,0-(0.2*x)
+3 = WorkingWeek,0+(0.35*x)
+
+[option0]
+OnImplement = CreateGrudge(Socialist,0.11,0.86);CreateGrudge(TradeUnionist,0.14,0.86);CreateGrudge(Capitalist,-0.10,0.86);
+
+[option1]
+OnImplement = CreateGrudge(Socialist,-0.11,0.86);CreateGrudge(TradeUnionist,-0.14,0.86);CreateGrudge(Capitalist,0.10,0.86);

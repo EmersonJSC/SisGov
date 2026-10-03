@@ -1,0 +1,6 @@
+{
+  "id": "estado-inicial-alternativo",
+  "tipo": "estado-inicial",
+  "versaoEsquema": 1,
+  "valores": { "bolsa_estudo": 0, "acesso_educacao": 52 }
+}

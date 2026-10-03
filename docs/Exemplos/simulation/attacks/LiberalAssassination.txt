@@ -1,0 +1,15 @@
+[config]
+Name = LiberalAssassination
+UsedBy = freedomrebellion
+Type = ASSASSINATION
+MinStrength = 55
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(LiberalAssassination);
+GUISound = DM4_Gameover_Explosion.wav
+protaginist_texture = voter_liberal.dds
+OnFailure = CreateGrudge(LiberalAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedLiberalAssassination);
+
+[prereqs]
+LiberalPlot

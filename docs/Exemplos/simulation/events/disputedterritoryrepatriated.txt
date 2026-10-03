@@ -1,0 +1,11 @@
+[config]
+Name = disputedterritoryrepatriated
+Texture = event27.png
+GUISound = DM4_Disputed Territory Repatriated.wav
+OnImplement = CreateGrudge(disputedterritoryrepatriated,-0.900,0.830);CreateGrudge(Patriot,0.20,0.84);
+
+[influences]
+0 = _random_,0,0.16
+1 = _winning_,0.35-(x*0.4),4
+2 = ForeignRelations,0+(0.57*x)
+

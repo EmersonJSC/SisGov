@@ -1,0 +1,14 @@
+[config]
+Name = diseaseeradicated
+Texture = event45.png
+GUISound = DM4_Disease Eradicated.wav
+OnImplement = CreateGrudge(diseaseeradicated,-0.900,0.830);CreateGrudge(_All_,0.100,0.830);
+
+[influences]
+0 = _random_,0,0.2
+1 = Health,0+(0.38*x),8
+2 = ScienceFunding,0+(0.22*x),12
+3 = Technology,0+(0.2*x),8
+4 = ContagiousDisease,-0.4-(0.3*x)
+5= _winning_,-0.2*(x^2)
+

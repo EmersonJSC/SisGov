@@ -1,0 +1,11 @@
+[dilemma]
+name=SafeguardOilSupplies
+
+[influences]
+0 = _random_,0.14,0.8
+
+[option0]
+OnImplement = CreateGrudge(Patriot,0.13,0.96);CreateGrudge(Liberal,-0.19,0.96);CreateGrudge(ForeignRelations,-0.14,0.88);CreateGrudge(_Terrorism,0.06,0.96);CreateGrudge(Capitalist,0.13,0.96);CreateGrudge(EthnicMinorities,-0.16,0.92);
+
+[option1]
+OnImplement = CreateGrudge(Patriot,-0.12,0.85);CreateGrudge(Liberal,0.10,0.96);CreateGrudge(OilSupply,-0.17,0.92);CreateGrudge(EthnicMinorities,0.1,0.92);

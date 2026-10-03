@@ -1,0 +1,17 @@
+{
+  "id": "sus-amplia-acesso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_atencao_basica",
+  "alvo": "acesso_saude",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.003125,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

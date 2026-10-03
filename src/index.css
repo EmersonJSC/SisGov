@@ -64,6 +64,8 @@ button {
 
 .map-node {
   position: absolute;
+  top: var(--node-y);
+  left: var(--node-x);
   display: grid;
   width: var(--node-size);
   height: var(--node-size);
@@ -83,6 +85,8 @@ button {
     0 0 1.5rem rgb(18 157 223 / 22%);
   color: #e8f6ff;
   cursor: pointer;
+  translate: -50% -50%;
+  animation: float-node 10s ease-in-out var(--node-delay) infinite alternate;
   transition:
     box-shadow 180ms ease,
     background 180ms ease;
@@ -126,72 +130,9 @@ button {
   transform: translateY(0);
 }
 
-.node--one {
-  top: 19%;
-  left: 18%;
-}
-.node--two {
-  top: 27%;
-  right: 17%;
-}
-.node--three {
-  bottom: 15%;
-  left: 32%;
-}
-.node--four {
-  right: 31%;
-  bottom: 21%;
-}
-.node--drift-one {
-  animation: float-one 9s ease-in-out infinite alternate;
-}
-.node--drift-two {
-  animation: float-two 11s ease-in-out infinite alternate;
-}
-.node--drift-three {
-  animation: float-three 10s ease-in-out infinite alternate;
-}
-.node--drift-four {
-  animation: float-four 12s ease-in-out infinite alternate;
-}
-
-@keyframes float-one {
+@keyframes float-node {
   to {
-    translate: 1.6rem -1.1rem;
-  }
-}
-@keyframes float-two {
-  to {
-    translate: -1.4rem 1.8rem;
-  }
-}
-@keyframes float-three {
-  to {
-    translate: 1.1rem 1.3rem;
-  }
-}
-@keyframes float-four {
-  to {
-    translate: -1.7rem -1.5rem;
-  }
-}
-
-@media (max-width: 720px) {
-  .node--one {
-    top: 16%;
-    left: 8%;
-  }
-  .node--two {
-    top: 30%;
-    right: 7%;
-  }
-  .node--three {
-    bottom: 15%;
-    left: 11%;
-  }
-  .node--four {
-    right: 11%;
-    bottom: 19%;
+    transform: translate(1.1rem, -0.9rem);
   }
 }
 

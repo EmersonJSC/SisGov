@@ -1,0 +1,13 @@
+[dilemma]
+name=IncreasedSchoolInspections
+
+[influences]
+0 = _random_,0.1,0.43
+1 = Parents_perc,0+(0.48*x)
+2 = Capitalist_perc,0+(0.24*x)
+
+[option0]
+OnImplement = CreateGrudge(Parents,0.06,0.85);CreateGrudge(StateEmployees,-0.11,0.91);
+
+[option1]
+OnImplement = CreateGrudge(Parents,-0.03,0.8);CreateGrudge(StateEmployees,0.05,0.82);

@@ -1,0 +1,16 @@
+[dilemma]
+name=InternetTracking
+
+[influences]
+0 = _random_,0,0.5
+1 = Technology,0+(0.25*x)
+2 = InternetSpeed,0+(0.25*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.04,0.9);CreateGrudge(Capitalist,-0.05,0.9);CreateGrudge(GDP,-0.02,0.9);CreateGrudge(Technology,-0.02,0.99);CreateGrudge(InternetSpeed,0.02,0.99);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.05,0.9);CreateGrudge(Capitalist,0.04,0.9);CreateGrudge(GDP,0.02,0.9);
+
+[option2]
+OnImplement = CreateGrudge(Capitalist,0.02,0.9);CreateGrudge(GDP,0.01,0.9);

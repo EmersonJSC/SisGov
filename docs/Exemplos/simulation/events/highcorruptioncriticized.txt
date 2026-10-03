@@ -1,0 +1,10 @@
+[config]
+Name = highcorruptioncriticized
+Texture = event51.png
+GUISound = DM4_High Corruption Criticized.wav
+OnImplement = CreateGrudge(_percept_trust,-0.10,0.850);CreateGrudge(highcorruptioncriticized,-0.900,0.830);
+
+[influences]
+0 = _random_,0,0.34
+1 = Corruption,1.0*(x^1.2)
+2 = _winning_,-0.05+(0.1*x)

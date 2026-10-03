@@ -1,0 +1,11 @@
+[dilemma]
+name=HUNGER STRIKE
+
+[influences]
+0 = _random_,0,0.82
+
+[option0]
+OnImplement = CreateGrudge(Religious,0.15,0.9);CreateGrudge(Liberal,0.22,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Religious,-0.15,0.9);CreateGrudge(Liberal,-0.15,0.9);

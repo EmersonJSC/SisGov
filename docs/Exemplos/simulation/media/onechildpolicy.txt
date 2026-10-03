@@ -1,0 +1,7 @@
+[config]
+Name = onechildpolicy
+Policy = OneChildPolicy
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+

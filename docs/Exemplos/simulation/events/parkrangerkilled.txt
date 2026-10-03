@@ -1,0 +1,13 @@
+[config]
+Name = parkrangerkilled
+Texture = event35.png
+GUISound = DM4_Park Ranger Killed.wav
+OnImplement = CreateGrudge(parkrangerkilled,-0.9,0.83);CreateGrudge(Environmentalist,-0.12,0.83);
+
+[influences]
+0 = _random_,0.33,0.63
+1 = InternationalTrade,0+(0.13*x)
+2 = _prereq_,_prereq_poachers
+3 = _winning_,0+(0.26*x)
+4 = ViolentCrimeRate,0+(0.12*x)
+

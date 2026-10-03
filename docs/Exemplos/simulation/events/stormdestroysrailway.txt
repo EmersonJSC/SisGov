@@ -1,0 +1,15 @@
+[config]
+Name = stormdestroysrailway
+Texture = event75.png
+GUISound = DM4_Storm Destroys Railway.wav
+OnImplement = CreateGrudge(stormdestroysrailway,-0.9,0.83);CreateGrudge(Commuter,-0.22,0.75);
+
+[influences]
+0 = _random_,0.2,0.4
+1 = CO2Emissions,0.84*(x^2)
+2 = StateRail,-0.3*(x^2)
+3 = PrivateRail,-0.3*(x^2)
+4 = ClimateChangeAdaptionFund,0-(x*0.35)
+5 = _winning_,0+(0.27*x),2
+6 = _difficulty_,-0.05+(0.1*x)
+

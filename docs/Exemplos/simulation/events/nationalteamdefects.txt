@@ -1,0 +1,13 @@
+[config]
+Name = nationalteamdefects
+Texture = event33.png
+GUISound = DM4_National Team Defects.wav
+OnImplement = CreateGrudge(nationalteamdefects,-0.9,0.83);CreateGrudge(Liberal,-0.10,0.83);
+
+[influences]
+0 = _default_,0.2+(0*x)
+1 = _random_,0,0.22
+2 = RacialTension,0.59*(x^4)
+3 = Ghettos,0+(0.38*x)
+4 = RaceRiots,0+(0.39*x)
+

@@ -1,0 +1,9 @@
+[config]
+Name = GainNewDonor
+Texture = event64.png
+GUISound = DM4_GainDonor.wav
+OnImplement
+Type = DONOR
+
+[influences]
+

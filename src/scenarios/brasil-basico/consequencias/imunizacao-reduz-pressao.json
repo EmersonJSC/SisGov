@@ -1,0 +1,17 @@
+{
+  "id": "imunizacao-reduz-pressao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_imunizacao",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.004,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

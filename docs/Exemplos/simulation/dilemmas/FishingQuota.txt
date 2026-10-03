@@ -1,0 +1,12 @@
+[dilemma]
+name=FishingQuota
+
+[influences]
+0 = _random_,0,0.8
+1 = _prereq_,_prereq_has_coast
+
+[option0]
+OnImplement = CreateGrudge(Environmentalist,0.08,0.9);CreateGrudge(Unemployment,0.03,0.9);CreateGrudge(Farmers,-0.22,0.9);CreateGrudge(GDP,-0.04,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Environmentalist,-0.03,0.9);CreateGrudge(Farmers,0.12,0.9);

@@ -1,0 +1,22 @@
+{
+  "id": "encarceramento-elevado",
+  "tipo": "situacao",
+  "versaoEsquema": 1,
+  "nome": "Encarceramento elevado",
+  "descricao": "Situação negativa que surge quando a expansão do policiamento eleva excessivamente o encarceramento.",
+  "area": "Segurança",
+  "avaliacao": "negativa",
+  "entraQuando": {
+    "tipo": "comparacao",
+    "variavel": "encarceramento",
+    "operador": "maior_ou_igual",
+    "valor": 55
+  },
+  "saiQuando": {
+    "tipo": "comparacao",
+    "variavel": "encarceramento",
+    "operador": "menor_que",
+    "valor": 50
+  },
+  "consequencias": []
+}

@@ -1,0 +1,13 @@
+[config]
+Name = schoolgirlskidnapped
+Texture = event34.png
+GUISound = DM4_Schoolgirls Kidnapped.wav
+OnImplement = CreateGrudge(schoolgirlskidnapped,-0.9,0.83);CreateGrudge(Parents,-0.6,0.82);CreateGrudge(_All_,-0.22,0.8);
+
+[influences]
+0 = _random_,0,0.85
+1 = IntelligenceServices,-0.63*(x^2)
+2 = MilitarySpending,-0.31*(x^4)
+3 = _winning_,0.2-(0.2*x)
+
+

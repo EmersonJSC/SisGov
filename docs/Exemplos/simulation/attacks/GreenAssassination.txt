@@ -1,0 +1,15 @@
+[config]
+Name = GreenAssassination
+UsedBy = avengersofmotherearth
+Type = ASSASSINATION
+MinStrength = 55
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(GreenAssassination);
+protaginist_texture = voter_environmentalist.dds
+GUISound = DM4_Gameover_Firefight.wav
+OnFailure = CreateGrudge(GreenAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedGreenAssassination);
+
+[prereqs]
+GreenPlot

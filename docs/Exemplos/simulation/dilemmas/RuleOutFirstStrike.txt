@@ -1,0 +1,14 @@
+[dilemma]
+name=RuleOutFirstStrike
+
+[influences]
+0 = _random_,0.1,0.5
+1 = MilitarySpending,0.32*(x^2)
+2 = Liberal_perc,0.33*(x^2)
+3 = _prereq_,_prereq_wmd
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.08,0.8);CreateGrudge(Patriot,-0.09,0.8);CreateGrudge(_percept_strength,-0.11,0.83);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.06,0.8);CreateGrudge(Patriot,0.05,0.8);

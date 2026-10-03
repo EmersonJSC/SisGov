@@ -1,0 +1,14 @@
+[dilemma]
+name=BanForeignFirmFromITInfrastructure
+
+[influences]
+0 = _random_,0.05,0.35
+1 = InternetSpeed,0+(0.5*x)
+2 = ForeignRelations,0.2-(0.2*x)
+3 = InternationalTrade,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,-0.08,0.88);CreateGrudge(Patriot,0.11,0.82);CreateGrudge(GDP,-0.04,0.91);
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,0.05,0.8);CreateGrudge(Patriot,-0.09,0.82);CreateGrudge(GDP,0.02,0.91);

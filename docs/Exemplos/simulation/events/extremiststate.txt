@@ -1,0 +1,16 @@
+[config]
+Name = extremiststate
+Texture = event62.png
+GUISound = DM4_Extremist State.wav
+OnImplement = CreateSilentGrudge(extremiststate,-0.9,0.83);CreateGrudge(BusinessConfidence,-0.28,0.75);
+
+[influences]
+0 = _random_,0.28,0.38
+1 = HandgunLaws,0-(0.15*x)
+2 = ViolentCrimeRate,0+(0.31*x)
+3 = Patriot_perc,0+(1.0*x)
+4 = MilitarySpending,-0.35*(x^2)
+5 = RacialTension,0+(0.29*x)
+6 = Democracy,0-(0.12*x)
+
+

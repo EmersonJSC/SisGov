@@ -1,0 +1,13 @@
+[dilemma]
+name=DecryPaydayLoanCompany
+
+[influences]
+0 = _random_,0.1,0.4
+1 = PovertyRate,0+(0.75*x)
+2 = Poor_perc,0+(0.3*x)
+
+[option0]
+OnImplement = CreateGrudge(Poor,0.11,0.89);CreateGrudge(Capitalist,-0.04,0.86);
+
+[option1]
+OnImplement = CreateGrudge(Poor,-0.05,0.8);CreateGrudge(Capitalist,0.02,0.8);CreateGrudge(_percept_compassion,-0.08,0.82);

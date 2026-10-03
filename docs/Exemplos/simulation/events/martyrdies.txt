@@ -1,0 +1,13 @@
+[config]
+Name = martyrdies
+Texture = event63.png
+GUISound = DM4_Martyr Dies.wav
+OnImplement = CreateGrudge(martyrdies,-0.9,0.83);CreateGrudge(_All_,-0.22,0.83);CreateGrudge(CrimeRate,0.1,0.83);CreateGrudge(GDP,-0.05,0.83);CreateGrudge(Tourism,-0.15,0.8);
+
+[influences]
+0 = _random_,0,0.2
+1 = PovertyRate,0.5*(x^3)
+2 = Unemployment,0.5*(x^3)
+3 = CrimeRate,0.47*(x^3)
+4 = RacialTension,0.17*(x^3)
+5 = _winning_,-0.05+(0.1*x)

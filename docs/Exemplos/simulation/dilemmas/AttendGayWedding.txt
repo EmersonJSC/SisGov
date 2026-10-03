@@ -1,0 +1,12 @@
+[dilemma]
+name=AttendGayWedding
+
+[influences]
+0 = _random_,0.1,0.46
+1 = Liberal_perc,0.47*(x^2)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.08,0.81);CreateGrudge(Religious,-0.12,0.87);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.05,0.81);CreateGrudge(Religious,0.06,0.82);

@@ -1,0 +1,12 @@
+[dilemma]
+name=CondemnFarLeftDictator
+
+[influences]
+0 = _random_,0.1,0.66
+1 = Socialist_perc,0.36*(x^2)
+
+[option0]
+OnImplement = CreateGrudge(Socialist,-0.11,0.82);CreateGrudge(Liberal,0.11,0.82);CreateGrudge(Capitalist,0.06,0.82);
+
+[option1]
+OnImplement = CreateGrudge(Socialist,0.05,0.8);CreateGrudge(Liberal,-0.09,0.8);CreateGrudge(Capitalist,-0.05,0.8);

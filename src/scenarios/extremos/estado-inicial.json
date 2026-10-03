@@ -1,0 +1,12 @@
+{
+  "id": "estado-inicial-extremos",
+  "tipo": "estado-inicial",
+  "versaoEsquema": 1,
+  "valores": {
+    "impulso": 0,
+    "indice_a": 10,
+    "indice_b": 20,
+    "risco_evento": 5,
+    "no_isolado": 50
+  }
+}

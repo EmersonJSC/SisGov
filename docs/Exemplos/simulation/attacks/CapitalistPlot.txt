@@ -1,0 +1,11 @@
+[config]
+Name = CapitalistPlot
+UsedBy = theinvisiblehand
+MinStrength = 18
+Type = PLOT
+Cost = 0
+MinSize = 4
+SuccessChance = 1.0
+OnSuccess = 
+FailureText = ""
+OnFailure = 

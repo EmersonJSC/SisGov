@@ -1,0 +1,23 @@
+{
+  "id": "variaveis-alternativas",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "bolsa_estudo",
+      "tipo": "controle",
+      "nome": "Verba de bolsas",
+      "unidade": "moeda_por_passo",
+      "dominio": { "minimo": 0 },
+      "valorInicial": 0
+    },
+    {
+      "id": "acesso_educacao",
+      "tipo": "calculado",
+      "nome": "Acesso à educação",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 52
+    }
+  ]
+}

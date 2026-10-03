@@ -1,0 +1,15 @@
+[dilemma]
+name=DNADatabase
+
+[influences]
+0 = _default_,0.41+(0*x)
+1 = Technology,0+(0.4*x)
+
+[option0]
+OnImplement = CreateGrudge(Conservatives,0.09,0.9);CreateGrudge(Liberal,-0.10,0.9);CreateGrudge(CrimeRate,-0.03,0.9);CreateGrudge(ViolentCrimeRate,-0.05,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Conservatives,-0.09,0.9);CreateGrudge(Liberal,0.10,0.9);
+
+[option2]
+OnImplement = CreateGrudge(Liberal,-0.05,0.9);CreateGrudge(CrimeRate,-0.01,0.9);CreateGrudge(ViolentCrimeRate,-0.02,0.9);

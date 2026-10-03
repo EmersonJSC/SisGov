@@ -1,0 +1,12 @@
+[config]
+Name = worldheritagesite
+Texture = event84.png
+GUISound = DM4_World Heritage Site.wav
+OnImplement = CreateGrudge(worldheritagesite,-0.9,0.83);CreateGrudge(Tourism,0.12,0.83);CreateGrudge(Patriot,0.10,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = _winning_,0.4-(0.4*x)
+2 = ForeignRelations,0+(0.43*x)
+3 = Tourism,0+(0.07*x)
+

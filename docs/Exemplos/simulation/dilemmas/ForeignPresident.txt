@@ -1,0 +1,12 @@
+[dilemma]
+name=ForeignPresident
+
+[influences]
+0 = _random_,0,0.65
+1 = ForeignRelations,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.04,0.9);CreateGrudge(ForeignRelations,-0.12,0.9);CreateGrudge(EthnicMinorities,0.09,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.1,0.9);CreateGrudge(GDP,0.02,0.9);CreateGrudge(EthnicMinorities,-0.06,0.9);

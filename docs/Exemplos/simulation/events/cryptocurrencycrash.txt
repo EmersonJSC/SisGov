@@ -1,0 +1,13 @@
+[config]
+Name = CryptocurrencyCrash
+Texture = event_flashcrash.png
+GUISound = DM4_Share IPO Cancelled.wav
+OnImplement = CreateGrudge(GDP,-0.10,0.72);CreateGrudge(CurrencyStrength,-0.02,0.77);CreateGrudge(SelfEmployed_income,-0.04,0.63);CreateGrudge(CryptocurrencyCrash,-0.720,0.67);CreateGrudge(InternetCurrencyAdoption,-0.06,0.65);
+MinimunTurn = 15
+
+[influences]
+0 = _random_,0.1,0.28
+1 = Technology,0+(0.3*x)
+2 = InternetCurrencyAdoption,0.85*(x^2.2)
+3 = _winning_,-0.05+(0.1*x)
+4 = _difficulty_,-0.05+(0.1*x)

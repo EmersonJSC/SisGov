@@ -1,0 +1,12 @@
+[dilemma]
+name=HOSTAGE SITUATION
+
+[influences]
+0 = _default_,0.3+(0*x)
+1 = CrimeRate,0+(0.65*x)
+
+[option0]
+OnImplement = CreateGrudge(Religious,0.15,0.9);CreateGrudge(_Terrorism,0.3,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Religious,-0.15,0.9);CreateGrudge(Liberal,-0.15,0.9);

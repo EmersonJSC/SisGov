@@ -1,0 +1,12 @@
+[dilemma]
+name=SpeedLimits
+
+[influences]
+0 = _random_,0.1,0.73
+1 = Motorist_perc,0+(0.15*x)
+
+[option0]
+OnImplement = CreateGrudge(Motorist,0.08,0.9);CreateGrudge(Parents,-0.08,0.9);CreateGrudge(CO2Emissions,0.02,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Motorist,-0.08,0.9);CreateGrudge(Parents,0.03,0.9);

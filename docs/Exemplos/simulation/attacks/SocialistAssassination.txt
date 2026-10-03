@@ -1,0 +1,16 @@
+[config]
+Name = SocialistAssassination
+UsedBy = peoplesbrigade
+Type = ASSASSINATION
+MinStrength = 55
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(SocialistAssassination);
+GUISound = DM4_Gameover_Rifles.wav
+protaginist_texture = voter_socialist.dds
+OnFailure = CreateGrudge(SocialistAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedSocialistAssassination);
+
+[prereqs]
+SocialistPlot
+

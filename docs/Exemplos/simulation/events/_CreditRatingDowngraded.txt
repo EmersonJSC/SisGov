@@ -1,0 +1,9 @@
+[config]
+Name = CreditRatingDowngraded
+Texture = event56.png
+GUISound = DM4_Credit Rating Downgraded.wav
+OnImplement = CreateGrudge(Capitalist,-0.050,0.70);CreateGrudge(GDP,-0.030,0.75);CreateGrudge(BusinessConfidence,-0.15,0.75);
+Type = CREDITRATING
+
+[influences]
+

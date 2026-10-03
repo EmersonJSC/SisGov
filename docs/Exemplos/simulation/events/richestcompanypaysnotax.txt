@@ -1,0 +1,15 @@
+[config]
+Name = richestcompanypaysnotax
+Texture = event92.png
+GUISound = DM4_Richest Company Pays No Tax.wav
+OnImplement = CreateGrudge(richestcompanypaysnotax,-0.9,0.83);CreateGrudge(Socialist,-0.11,0.83);CreateGrudge(_global_socialism,0.10,0.83);CreateGrudge(Patriot,-0.09,0.83);
+
+[influences]
+0 = _random_,0,0.72
+1 = CorporationTax,0.72*(x^4),2
+2 = InternationalTrade,0+(0.1*x),3
+3 = ForeignInvestorTaxBreaks,-0.1-(0.1*x),2
+4 = DivertedProfitsTax,-0.1-(0.4*x)
+5 = Technology,0.1*(x^2),2
+6 = _prereq_,CorporationTax
+7 = _winning_,-0.05+(0.1*x)

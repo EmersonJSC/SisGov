@@ -1,0 +1,17 @@
+{
+  "id": "susp-aumenta-risco-direitos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_prevencao_seguranca",
+  "alvo": "violacoes_direitos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.015,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

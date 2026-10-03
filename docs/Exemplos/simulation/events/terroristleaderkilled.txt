@@ -1,0 +1,13 @@
+[config]
+Name = terroristleaderkilled
+Texture = event83.png
+GUISound = DM4_Terrorist Leader Killed.wav
+OnImplement = CreateGrudge(terroristleaderkilled,-0.9,0.83);CreateGrudge(_All_,0.12,0.83);CreateGrudge(EthnicMinorities,-0.08,0.83);CreateGrudge(ForeignRelations,-0.08,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = ForeignRelations,0+0.3*x)
+2 = MilitarySpending,0+(0.42*x)
+3 = DroneStrikeAct,-0.7+(0.92*x)
+4 = _winning_,0.15-(0.15*x)
+

@@ -1,0 +1,12 @@
+[dilemma]
+name=AllowForeignFightersToReturn
+
+[influences]
+0 = _random_,0.15,0.45
+1 = ForeignRelations,0.55-(0.5*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.08,0.81);CreateGrudge(Conservatives,0.11,0.81);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.04,0.81);CreateGrudge(Conservatives,-0.15,0.82);

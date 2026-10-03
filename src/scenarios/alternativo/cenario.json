@@ -1,0 +1,10 @@
+{
+  "id": "pais-alternativo",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "País alternativo",
+  "estadoInicial": "alternativo/estado-inicial.json",
+  "variaveis": "alternativo/variaveis.json",
+  "politicas": ["alternativo/politicas/bolsa-estudo.json"],
+  "consequencias": ["alternativo/consequencias/amplia-acesso.json"]
+}

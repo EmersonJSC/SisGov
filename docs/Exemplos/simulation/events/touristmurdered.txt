@@ -1,0 +1,13 @@
+[config]
+Name = touristmurdered
+Texture = event30.png
+GUISound = DM4_Tourist Murdered.wav
+OnImplement = CreateGrudge(touristmurdered,-0.9,0.83);CreateGrudge(Tourism,-0.3,0.83);
+
+[influences]
+0 = _random_,0,0.25
+1 = Tourism,-0.3+(0.82*x),4
+2 = ViolentCrimeRate,0+(0.57*x)
+3 = StreetGangs,0+(0.38*x)
+4 = GeneralMediaCensorship,-0.3-(0.3*x)
+5 = _winning_,-0.05+(0.1*x)

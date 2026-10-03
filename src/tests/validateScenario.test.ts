@@ -3,13 +3,19 @@ import { validateScenario } from "../engine";
 import { brazilPresidency } from "../scenarios/brazilPresidency";
 
 describe("validateScenario", () => {
-  it("aceita o mapa inicial com quatro indicadores nacionais", () => {
+  it("aceita a quantidade de indicadores definida pelo cenário", () => {
     expect(validateScenario(brazilPresidency)).toEqual([]);
   });
 
-  it("recusa um cenário que não tenha quatro indicadores", () => {
+  it("não impõe uma quantidade fixa de indicadores", () => {
     expect(
-      validateScenario({ ...brazilPresidency, indicators: [] }),
-    ).not.toEqual([]);
+      validateScenario({
+        ...brazilPresidency,
+        indicators: [
+          ...brazilPresidency.indicators,
+          { ...brazilPresidency.indicators[0], id: "indicador_extra" },
+        ],
+      }),
+    ).toEqual([]);
   });
 });

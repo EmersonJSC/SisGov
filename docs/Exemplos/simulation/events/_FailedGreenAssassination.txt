@@ -1,0 +1,9 @@
+[config]
+Name = FailedGreenAssassination
+Texture = event_failed_green.png
+GUISound = DM4_Gameover_Rifles.wav
+OnImplement = CreateGrudge(BusinessConfidence,-0.08,0.75);
+Type = FAILEDATTACK
+
+[influences]
+

@@ -1,0 +1,9 @@
+[config]
+Name = armedpolice_lack
+Policy = ArmedPolice
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+CrimeRate,1,0.25,1.0
+Narcotics,1,0,0.75
+

@@ -1,0 +1,22 @@
+{
+  "id": "lei-6259-imunizacoes",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Imunização pública",
+  "descricao": "Recursos para ampliar campanhas, logística e capacidade de imunização do programa existente.",
+  "area": "Saúde",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/leis/l6259.htm",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_imunizacao",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": ["imunizacao-melhora-saude", "imunizacao-reduz-pressao"],
+  "ministerio": "Ministério da Saúde",
+  "respostaTemporal": {
+    "implantacao": 0.2,
+    "degradacao": 0.12
+  },
+  "icone": "syringe"
+}

@@ -1,0 +1,14 @@
+[config]
+Name = tradedispute
+Texture = event90.png
+GUISound = DM4_Trade Dispute.wav
+OnImplement = CreateGrudge(tradedispute,-0.9,0.86);CreateGrudge(InternationalTrade,-0.22,0.83);CreateGrudge(FoodPrice,0.09,0.836);CreateGrudge(BusinessConfidence,-0.14,0.75);
+
+[influences]
+0 = _random_,0,0.3
+1 = InternationalTrade,0.4*(x^3),4
+2 = GDP,0+(0.26*x),4
+3 = _winning_,0+(0.25*x),6
+4 = ForeignRelations,0.15-(0.15*x)
+5 = _difficulty_,-0.05+(0.1*x)
+

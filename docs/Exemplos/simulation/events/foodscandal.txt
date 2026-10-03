@@ -1,0 +1,17 @@
+[config]
+Name = foodscandal
+Texture = event81.png
+GUISound = DM4_Food Scandal.wav
+OnImplement = CreateGrudge(foodscandal,-0.9,0.83);CreateGrudge(Farmers,-0.05,0.83);CreateGrudge(_All_,-0.05,0.83);CreateGrudge(Veganism,0.13,0.88);
+
+[influences]
+0 = _default_,0.65+(0*x)
+1 = _random_,0,0.35
+2 = OrganicSubsidy,0-(0.2*x),4
+3 = Veganism,0-(0.2*x)
+4 = JunkFoodTax,0-(0.1*x),4
+5 = FoodStandards,-0.1-(0.2*x),4
+6 = HealthyEatingCampaign,-0.05-(0.05*x),4
+7 = GeneralMediaCensorship,-0.4-(0.4*x)
+8 = _winning_,0.1*(x^2)
+9 = _difficulty_,-0.05+(0.1*x)

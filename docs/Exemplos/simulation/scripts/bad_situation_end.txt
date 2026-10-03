@@ -1,0 +1,1 @@
+CreateGrudge(temp_sit,bad_situation_end,_All_,0.07,0.85);

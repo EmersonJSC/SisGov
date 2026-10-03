@@ -1,0 +1,10 @@
+[config]
+Name = LiberalPlot
+UsedBy = freedomrebellion
+MinStrength = 18
+Type = PLOT
+Cost = 0
+MinSize = 4
+SuccessChance = 1.0
+OnSuccess = 
+OnFailure = 

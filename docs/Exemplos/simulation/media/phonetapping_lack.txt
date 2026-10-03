@@ -1,0 +1,9 @@
+[config]
+Name = phonetapping_lack
+Policy = PhoneTapping
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+CrimeRate,1,0.5,1.0
+ViolentCrimeRate,1,0.5,1.0
+

@@ -1,0 +1,12 @@
+{
+  "id": "alimentacao-eleva-frequencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_alimentacao_escolar",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.015, "termoConstante": -4.5 },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

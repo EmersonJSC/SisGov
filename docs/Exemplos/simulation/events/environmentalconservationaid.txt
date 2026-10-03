@@ -1,0 +1,12 @@
+[config]
+Name = environmentalconservationaid
+Texture = event46.png
+GUISound = DM4_Environmental Conservation Aid.wav
+OnImplement = CreateGrudge(environmentalconservationaid,-0.900,0.830);CreateGrudge(Patriot,-0.120,0.830);CreateGrudge(Environment,0.140,0.830);
+
+[influences]
+0 = _random_,0,0.2
+1 = Environment,0.8-(0.8*x),2
+2 = ForeignRelations,0+(0.25*x)
+3 = GDP,-0.2*(x^2)
+

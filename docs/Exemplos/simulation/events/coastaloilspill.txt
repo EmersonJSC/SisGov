@@ -1,0 +1,15 @@
+[config]
+Name = coastaloilspill
+Texture = event25.png
+GUISound = DM4_CoastalOilSpill.wav
+OnImplement = CreateGrudge(coastaloilspill,-0.900,0.830);CreateGrudge(Farmers,-0.200,0.850);CreateGrudge(Farmers_freq,-0.200,0.850);CreateGrudge(Farmers_income,-0.200,0.820);CreateGrudge(Environmentalist,-0.120,0.80);
+
+[influences]
+0 = _random_,0,0.38
+1 = InternationalTrade,0+(0.55*x)
+2 = OilDemand,0+(0.6*x)
+3 = _winning_,0.39*(x^2),4
+4 = PollutionControls,-0.1-(0.16*x)
+5 = _prereq_,_prereq_has_coast
+6 = _difficulty_,-0.05+(0.1*x)
+

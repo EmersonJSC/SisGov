@@ -1,0 +1,13 @@
+[dilemma]
+name=ClimateChangeProtocol
+
+[influences]
+0 = _random_,0,0.5
+1 = CO2Emissions,0+(0.45*x)
+2 = Environmentalist_perc,0+(0.18*x)
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,-0.18,0.8);CreateGrudge(CO2Emissions,-0.10,0.9);CreateGrudge(Environmentalist,0.17,0.87);
+
+[option1]
+OnImplement = CreateGrudge(ForeignRelations,-0.09,0.85);CreateGrudge(Environmentalist,-0.19,0.67);CreateGrudge(Capitalist,0.10,0.8);

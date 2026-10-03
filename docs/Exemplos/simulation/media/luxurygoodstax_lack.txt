@@ -1,0 +1,9 @@
+[config]
+Name = luxurygoodstax_lack
+Policy = LuxuryGoodsTax
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+Equality,1,0,0.25
+Socialist_perc,1,0.25,1.0
+

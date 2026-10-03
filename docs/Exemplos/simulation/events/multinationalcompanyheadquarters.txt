@@ -1,0 +1,14 @@
+[config]
+Name = multinationalcompanyheadquarters
+Texture = event36.png
+GUISound = DM4_Multinational Company Headquarters.wav
+OnImplement = CreateGrudge(multinationalcompanyheadquarters,-0.9,0.83);CreateGrudge(GDP,0.03,0.9);CreateGrudge(Capitalist,0.07,0.9);CreateGrudge(Unemployment,-0.02,0.9);
+
+[influences]
+0 = _random_,0,0.1
+1 = Education,0+(0.19*x)
+2 = Wages,0.19-(0.19*x)
+3 = LabourLaws,0.3-(0.3*x)
+4 = ForeignInvestorTaxBreaks,0.1+(0.2*x)
+5 = _winning_,0-(0.1*x)
+6 = Stability,0+(0.1*x)

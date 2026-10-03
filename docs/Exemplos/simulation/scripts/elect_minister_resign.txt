@@ -1,0 +1,1 @@
+CreateGrudge(Ministerial resignation,elect_minister_resign,_percept_strength,-0.07,0.79);

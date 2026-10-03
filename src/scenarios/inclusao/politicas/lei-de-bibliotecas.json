@@ -1,0 +1,14 @@
+{
+  "id": "lei-de-bibliotecas",
+  "tipo": "lei",
+  "versaoEsquema": 1,
+  "nome": "Lei de bibliotecas públicas",
+  "descricao": "Amplia a cobertura de bibliotecas sem adicionar código ao motor.",
+  "processoAutorizacao": "simulado-na-bancada",
+  "controle": {
+    "variavel": "cobertura_bibliotecas",
+    "modo": "cobertura",
+    "unidade": "percentual_0_100"
+  },
+  "consequencias": ["bibliotecas-melhoram-educacao"]
+}

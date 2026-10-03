@@ -1,0 +1,9 @@
+[config]
+Name = labourlaws
+Policy = LabourLaws
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+LabourLaws,1,0.65,1.0
+GDP,1,0,0.6
+

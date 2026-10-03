@@ -1,0 +1,15 @@
+[config]
+Name = planecrash
+Texture = event40.png
+GUISound = DM4_Plane Crash.wav
+OnImplement = CreateGrudge(planecrash,-0.9,0.83);CreateGrudge(_All_,-0.11,0.83);CreateGrudge(Tourism,-0.10,0.83);
+
+[influences]
+0 = _default_,0.32+(0*x)
+1 = _random_,0,0.2
+2 = Tourism,0+(0.2*x)
+3 = WorkSafetyLaw,0-(0.5*x)
+4 = _winning_,0+(0.18*x),5
+5 = AirTravel,0+(0.13*x)
+6 = _difficulty_,-0.05+(0.1*x)
+

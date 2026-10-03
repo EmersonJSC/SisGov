@@ -1,0 +1,11 @@
+[dilemma]
+name=TortureDeportation
+
+[influences]
+0 = _random_,0.1,0.8
+
+[option0]
+OnImplement = CreateGrudge(Patriot,0.04,0.9);CreateGrudge(Liberal,-0.08,0.9);CreateGrudge(_percept_compassion,-0.22,0.92);CreateGrudge(_global_liberalism,-0.04,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Patriot,-0.08,0.9);CreateGrudge(Liberal,0.02,0.9);CreateGrudge(_percept_compassion,0.1,0.92);CreateGrudge(_global_liberalism,0.03,0.85);

@@ -1,0 +1,12 @@
+[dilemma]
+name=SchoolSponsorship
+
+[influences]
+0 = _random_,0,0.94
+1 = Education,0-(0.19*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.08,0.9);CreateGrudge(Education,0.04),;
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.05,0.9);CreateGrudge(Socialist,0.02,0.9);

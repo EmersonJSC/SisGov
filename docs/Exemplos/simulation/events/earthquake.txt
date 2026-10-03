@@ -1,0 +1,13 @@
+[config]
+Name = earthquake
+Texture = event96.png
+GUISound = DM4_Earthquake.wav
+OnImplement = CreateGrudge(earthquake,-0.900,0.830);CreateGrudge(_All_,-0.120,0.830);CreateGrudge(GDP,-0.05,0.80);CreateGrudge(Tourism,-0.05,0.80);
+
+[influences]
+0 = _random_,0.1,0.4
+1 = _winning_,0+(0.54*x),4
+2 = AverageTemperature,0+(0.45*x),8
+3 = _prereq_,_prereq_earthquake
+4 = _difficulty_,-0.05+(0.1*x)
+

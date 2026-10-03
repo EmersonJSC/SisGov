@@ -1,0 +1,22 @@
+{
+  "id": "sobrecarga-hospitalar",
+  "tipo": "situacao",
+  "versaoEsquema": 1,
+  "nome": "Sobrecarga hospitalar",
+  "descricao": "Situação negativa ativada quando a pressão hospitalar chega a 58 e encerrada somente abaixo de 55.",
+  "area": "Saúde",
+  "avaliacao": "negativa",
+  "entraQuando": {
+    "tipo": "comparacao",
+    "variavel": "pressao_hospitalar",
+    "operador": "maior_ou_igual",
+    "valor": 58
+  },
+  "saiQuando": {
+    "tipo": "comparacao",
+    "variavel": "pressao_hospitalar",
+    "operador": "menor_que",
+    "valor": 55
+  },
+  "consequencias": ["sobrecarga-prejudica-saude"]
+}

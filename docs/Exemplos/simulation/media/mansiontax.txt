@@ -1,0 +1,9 @@
+[config]
+Name = mansiontax
+Policy = MansionTax
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+MansionTax,1,0.5,1
+Equality,1,0,0.75
+

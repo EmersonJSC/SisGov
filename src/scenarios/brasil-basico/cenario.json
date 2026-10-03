@@ -1,0 +1,36 @@
+{
+  "id": "brasil-basico-saude-seguranca",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "Brasil básico — saúde e segurança",
+  "estadoInicial": "brasil-basico/estado-inicial.json",
+  "variaveis": "brasil-basico/variaveis.json",
+  "politicas": [
+    "brasil-basico/politicas/sus.json",
+    "brasil-basico/politicas/imunizacoes.json",
+    "brasil-basico/politicas/susp.json",
+    "brasil-basico/politicas/maria-da-penha.json",
+    "brasil-basico/politicas/cameras-corporais.json"
+  ],
+  "consequencias": [
+    "brasil-basico/consequencias/sus-amplia-acesso.json",
+    "brasil-basico/consequencias/sus-melhora-saude.json",
+    "brasil-basico/consequencias/imunizacao-melhora-saude.json",
+    "brasil-basico/consequencias/imunizacao-reduz-pressao.json",
+    "brasil-basico/consequencias/susp-melhora-seguranca.json",
+    "brasil-basico/consequencias/maria-da-penha-amplia-protecao.json",
+    "brasil-basico/consequencias/susp-reduz-crime.json",
+    "brasil-basico/consequencias/susp-aumenta-encarceramento.json",
+    "brasil-basico/consequencias/susp-aumenta-risco-direitos.json",
+    "brasil-basico/consequencias/cameras-reduzem-risco-direitos.json",
+    "brasil-basico/consequencias/cameras-melhoram-seguranca.json",
+    "brasil-basico/consequencias/sobrecarga-prejudica-saude.json",
+    "brasil-basico/consequencias/rede-protecao-reforca-seguranca.json"
+  ],
+  "situacoes": [
+    "brasil-basico/situacoes/sobrecarga-hospitalar.json",
+    "brasil-basico/situacoes/rede-protecao-efetiva.json",
+    "brasil-basico/situacoes/encarceramento-elevado.json",
+    "brasil-basico/situacoes/direitos-humanos-em-risco.json"
+  ]
+}

@@ -1,0 +1,8 @@
+[config]
+Name = stemcells_lack
+Policy = StemCells
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+Religious_perc,0,0.75
+

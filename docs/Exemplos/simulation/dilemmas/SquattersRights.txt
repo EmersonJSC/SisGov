@@ -1,0 +1,13 @@
+[dilemma]
+name=SQUATTERS RIGHTS
+
+[influences]
+0 = _random_,0.33,0.95
+1 = PovertyRate,0+(0.4*x)
+2 = Equality,0-(0.6*x)
+
+[option0]
+OnImplement = CreateGrudge(Socialist,0.16,0.9);CreateGrudge(Capitalist,-0.13,0.9);CreateGrudge(Wealthy,-0.27,0.9);CreateGrudge(Poor,0.09,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Socialist,-0.12,0.9);CreateGrudge(Capitalist,0.03,0.9);CreateGrudge(Wealthy,0.17,0.9);CreateGrudge(Poor,-0.08,0.9);

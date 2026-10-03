@@ -1,0 +1,13 @@
+[config]
+Name = nationalsportsstarsgaggedbyforeignpower
+Texture = event7.png
+GUISound = DM4_National Sports Stars Gagged by Foreign Power.wav
+OnImplement = CreateGrudge(nationalsportsstarsgaggedbyforeignpower,-0.9,0.87);CreateGrudge(Liberal,-0.12,0.8);CreateGrudge(Patriot,-0.14,0.8);CreateGrudge(ForeignRelations,-0.05,0.88);
+
+[influences]
+0 = _random_,0.15,0.35
+1 = _winning_,0+(0.45*x),4
+2 = ForeignRelations,0.32-(0.32*x)
+3 = _difficulty_,-0.1+(0.2*x)
+
+

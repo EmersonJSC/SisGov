@@ -1,0 +1,14 @@
+{
+  "id": "demonstracao-inclusao",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "Demonstração de conteúdo novo",
+  "estadoInicial": "inclusao/estado-inicial.json",
+  "variaveis": "inclusao/variaveis.json",
+  "politicas": ["inclusao/politicas/lei-de-bibliotecas.json"],
+  "consequencias": [
+    "inclusao/consequencias/bibliotecas-melhoram-educacao.json",
+    "inclusao/consequencias/seca-prejudica-educacao.json"
+  ],
+  "eventos": ["inclusao/eventos/seca-regional.json"]
+}

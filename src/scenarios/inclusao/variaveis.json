@@ -1,0 +1,31 @@
+{
+  "id": "variaveis-inclusao",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "cobertura_bibliotecas",
+      "tipo": "controle",
+      "nome": "Cobertura de bibliotecas",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 0
+    },
+    {
+      "id": "educacao_publica",
+      "tipo": "calculado",
+      "nome": "Educação pública",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 40
+    },
+    {
+      "id": "severidade_seca",
+      "tipo": "calculado",
+      "nome": "Severidade da seca",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 10
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[config]
+Name = GreenAction
+UsedBy = avengersofmotherearth
+MinStrength = 6
+Type = ACTION
+Cost = 0
+MinSize = 4
+SuccessChance = 1.0
+OnSuccess = CreateNamedGrudge(Green protest,Environmentalist_freq,0.08,0.9);PlaySound(DM4_UI_Angry.wav);
+OnFailure = 

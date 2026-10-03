@@ -1,0 +1,15 @@
+[config]
+Name = journalistreleased
+Texture = event54.png
+GUISound = DM4_Journalist Released.wav
+OnImplement = CreateGrudge(journalistreleased,-0.9,0.83);CreateGrudge(Liberal,0.15,0.83);
+
+[influences]
+0 = _random_,0,0.15
+1 = ForeignRelations,0+(0.40*x)
+2 = JudiciaryIndependence,0+(0.20*x)
+3 = JuryTrial,0+(0.12*x)
+4 = LegalAid,0+(0.12*x)
+5 = _winning_,0.05-(0.1*x)
+
+

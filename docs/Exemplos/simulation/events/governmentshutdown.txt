@@ -1,0 +1,10 @@
+[config]
+Name = governmentshutdown
+Texture = event20.png
+GUISound = DM4_GovernmentShutdown.wav
+OnImplement = CreateGrudge(governmentshutdown,-0.9,0.83); CreateGrudge(_All_,-0.2,0.75);CreateGrudge(Stability,-0.12,0.75);CreateGrudge(BusinessConfidence,-0.12,0.75);
+
+[influences]
+0 = _effectivedebt_,0.85*(x^3.2),2
+1 = _random_,0,0.22
+2 = _winning_,-0.05+(0.1*x)

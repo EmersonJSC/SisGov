@@ -1,0 +1,13 @@
+[config]
+Name = newlyindustrializedcountrystatus
+Texture = event26.png
+GUISound = DM4_NewlyIndustrializedStatus.wav
+OnImplement = CreateGrudge(newlyindustrializedcountrystatus,-0.9,0.83);CreateGrudge(Patriot,0.14,0.83);CreateGrudge(BusinessConfidence,0.11,0.75);
+
+[influences]
+0 = _default_,0.1+(0*x)
+1 = _random_,0,0.2
+2 = Technology,0+(0.3*x),4
+3 = InternationalTrade,0+(0.2*x),4
+4 = _prereq_,_prereq_preindustrialized
+

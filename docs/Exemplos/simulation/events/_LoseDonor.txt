@@ -1,0 +1,10 @@
+[config]
+Name = LoseDonor
+Texture = event16.png
+GUISound = DM4_LoseDonor.wav
+OnImplement = CreateGrudge(_percept_strength,-0.200,0.850);
+Type = DONOR
+
+[influences]
+
+

@@ -1,0 +1,12 @@
+[dilemma]
+name=FlagBurning
+
+[influences]
+0 = _random_,0,0.8
+1 = Patriot_perc,0+(0.1*x)
+
+[option0]
+OnImplement = CreateGrudge(Patriot,0.13,0.9);CreateGrudge(Liberal,-0.08,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Patriot,-0.22,0.9);CreateGrudge(Liberal,0.08,0.9);

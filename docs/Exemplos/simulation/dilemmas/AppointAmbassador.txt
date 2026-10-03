@@ -1,0 +1,11 @@
+[dilemma]
+name=AppointAmbassador
+
+[influences]
+0 = _random_,0,0.8
+
+[option0]
+OnImplement = CreateGrudge(Socialist,-0.04,0.9);CreateGrudge(Liberal,-0.05,0.9);CreateGrudge(Patriot,0.09,0.9);CreateGrudge(ForeignRelations,-0.1,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Socialist,0.04,0.9);CreateGrudge(Liberal,0.05,0.9);CreateGrudge(Patriot,-0.09,0.9);CreateGrudge(ForeignRelations,0.1,0.9);

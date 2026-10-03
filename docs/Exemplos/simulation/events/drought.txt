@@ -1,0 +1,13 @@
+[config]
+Name = drought
+Texture = event66.png
+GUISound = DM4_Drought.wav
+OnImplement = CreateGrudge(drought,-0.900,0.830);CreateGrudge(FoodPrice,0.260,0.830);CreateGrudge(Tourism,-0.210,0.80);CreateGrudge(Farmers,-0.260,0.870);
+
+[influences]
+0 = _random_,0,0.25
+1 = AverageTemperature,0+(1.0*x),4
+2 = RuralDevelopmentGrants,-0.1-(0.1*x)
+3 = _winning_,0+(0.58*x)
+4 = _difficulty_,-0.02+(0.1*x)
+5 = ClimateChangeAdaptionFund,0-(x*0.26)

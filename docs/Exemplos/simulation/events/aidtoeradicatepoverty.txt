@@ -1,0 +1,11 @@
+[config]
+Name = aidtoeradicatepoverty
+Texture = event44.png
+GUISound = DM4_Aid To Eradicate Poverty.wav
+OnImplement = CreateGrudge(aidtoeradicatepoverty,-0.900,0.830);CreateGrudge(Patriot,-0.100,0.83);CreateGrudge(PovertyRate,-0.120,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = PovertyRate,1.0*(x^3)
+2 = ForeignRelations,0+(0.25*x)
+

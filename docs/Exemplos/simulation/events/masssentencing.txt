@@ -1,0 +1,12 @@
+[config]
+Name = masssentencing
+Texture = event50.png
+GUISound = DM4_Mass Sentencing.wav
+OnImplement = CreateGrudge(masssentencing,-0.9,0.83);
+
+[influences]
+0 = _default_,0.76+(0*x)
+1 = _random_,0,0.2
+2 = JuryTrial,0-(0.3*x)
+3 = LegalAid,0-(0.3*x)
+

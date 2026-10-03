@@ -1,0 +1,12 @@
+{
+  "id": "protecao-amplia-rede",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_protecao_mulheres",
+  "alvo": "protecao_efetiva_mulheres",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.02, "termoConstante": -4.8 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": { "modo": "continuo" }
+}

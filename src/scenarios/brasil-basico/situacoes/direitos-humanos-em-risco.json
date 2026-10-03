@@ -1,0 +1,22 @@
+{
+  "id": "direitos-humanos-em-risco",
+  "tipo": "situacao",
+  "versaoEsquema": 1,
+  "nome": "Direitos humanos em risco",
+  "descricao": "Situação negativa associada a práticas de segurança sem salvaguardas e mecanismos de auditoria.",
+  "area": "Segurança",
+  "avaliacao": "negativa",
+  "entraQuando": {
+    "tipo": "comparacao",
+    "variavel": "violacoes_direitos",
+    "operador": "maior_ou_igual",
+    "valor": 40
+  },
+  "saiQuando": {
+    "tipo": "comparacao",
+    "variavel": "violacoes_direitos",
+    "operador": "menor_que",
+    "valor": 32
+  },
+  "consequencias": []
+}

@@ -1,0 +1,13 @@
+[dilemma]
+name=GayAdoption
+
+[influences]
+0 = _random_,0.02,0.42
+1 = Liberal_perc,0.54*(x^2)
+2 = Banhomosexuality,0-(2.0*x)
+
+[option0]
+OnImplement = CreateGrudge(Religious,-0.1,0.88);CreateGrudge(Liberal,0.1,0.88);CreateGrudge(Parents,0.1,0.8);
+
+[option1]
+OnImplement = CreateGrudge(Religious,0.1,0.88);CreateGrudge(Liberal,-0.1,0.88);CreateGrudge(Parents,-0.1,0.8);

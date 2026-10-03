@@ -1,0 +1,11 @@
+[config]
+Name = olympichosts
+Texture = event15.png
+GUISound = DM4_Olympic Hosts.wav
+OnImplement = CreateGrudge(olympichosts,-0.9,0.95);CreateGrudge(ForeignRelations,0.1,0.83);CreateGrudge(Tourism,0.21,0.83);
+
+[influences]
+0 = _random_,0.32,0.52
+1 = _winning_,0-(0.25*x)
+2 = ForeignRelations,0+(0.57*x),4
+3 = _difficulty_,0.05-(0.1*x)

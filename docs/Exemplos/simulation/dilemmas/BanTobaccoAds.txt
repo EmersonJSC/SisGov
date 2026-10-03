@@ -1,0 +1,13 @@
+[dilemma]
+name=Ban Tobacco Adverts
+
+[influences]
+0 = _default_,0.72+(0*x)
+1 = Health,0-(0.5*x)
+2 = TobaccoUse,0+(0.59*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.13,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.19,0.9);CreateGrudge(TobaccoUse,-0.19,1.0);

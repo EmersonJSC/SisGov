@@ -1,0 +1,13 @@
+[dilemma]
+name=LayWreathForGeneral
+
+[influences]
+0 = _random_,0.05,0.6
+1 = MilitarySpending,0.17*(x^2)
+2 = Liberal_perc,0.17*(x^2)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.11,0.8);CreateGrudge(Patriot,0.06,0.8);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.12,0.8);CreateGrudge(Patriot,-0.13,0.85);

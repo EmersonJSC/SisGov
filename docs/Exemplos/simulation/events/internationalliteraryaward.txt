@@ -1,0 +1,12 @@
+[config]
+Name = internationalliteraryaward
+Texture = event70.png
+GUISound = DM4_International Literary Award.wav
+OnImplement = CreateGrudge(internationalliteraryaward,-0.900,0.830);CreateGrudge(Tourism,0.120,0.830);
+
+[influences]
+0 = _random_,0,0.2
+1 = ForeignRelations,0+(0.15*x)
+2 = Education,0+(0.56*x),12
+3 = _winning_,0.1-(0.2*x),4
+

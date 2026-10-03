@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa de consequências — SisGov</title>
+    <style>
+      :root {
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        color: #182230;
+        background: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #e7ebef;
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+      header p {
+        margin: 0.2rem 0 0;
+        color: #6a7480;
+        font-size: 0.78rem;
+      }
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .turn {
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        background: #f0f3f6;
+        font-size: 0.8rem;
+        font-weight: 750;
+      }
+      button,
+      .link-button {
+        min-height: 2.5rem;
+        padding: 0.58rem 0.85rem;
+        border: 0;
+        border-radius: 0.55rem;
+        background: #16283b;
+        color: white;
+        cursor: pointer;
+        font-weight: 750;
+        text-decoration: none;
+      }
+      button:hover,
+      .link-button:hover {
+        background: #29435e;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+      }
+      .secondary {
+        border: 1px solid #c7d0d9;
+        background: white;
+        color: #344455;
+      }
+      main {
+        min-height: calc(100vh - 76px);
+      }
+      .map-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.8rem 1.5rem;
+        border-bottom: 1px solid #edf0f3;
+      }
+      .map-toolbar p {
+        margin: 0;
+        color: #687583;
+        font-size: 0.78rem;
+      }
+      .map-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+      #pending {
+        color: #9a5c0b;
+        font-size: 0.78rem;
+        font-weight: 750;
+      }
+      .law-stage {
+        position: relative;
+        min-height: max(700px, calc(100vh - 146px));
+        min-width: 1050px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .category-zone {
+        position: absolute;
+        z-index: 1;
+        width: 39%;
+        height: 29%;
+        translate: -50% -50%;
+        border: 1px solid var(--category-border);
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--category-bg) 78%, transparent);
+        transition:
+          left 620ms ease,
+          top 620ms ease,
+          width 620ms ease,
+          height 620ms ease;
+      }
+      .macro-area-region {
+        position: absolute;
+        z-index: 0;
+        translate: -50% -50%;
+        border: 2px solid
+          color-mix(in srgb, var(--macro-color) 35%, transparent);
+        border-radius: 46% 54% 51% 49% / 55% 45% 55% 45%;
+        background: color-mix(in srgb, var(--macro-color) 10%, transparent);
+        box-shadow: inset 0 0 4rem
+          color-mix(in srgb, var(--macro-color) 7%, transparent);
+        pointer-events: none;
+        transition:
+          left 620ms ease,
+          top 620ms ease,
+          width 620ms ease,
+          height 620ms ease;
+      }
+      .macro-area-region > span {
+        position: absolute;
+        left: 50%;
+        top: 1.1rem;
+        translate: -50% 0;
+        width: 80%;
+        color: color-mix(in srgb, var(--macro-color) 80%, #263441);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .ministry-zone {
+        border-width: 2px;
+        background: color-mix(in srgb, var(--category-bg) 63%, transparent);
+        box-shadow: 0 0 3rem
+          color-mix(in srgb, var(--category-color) 8%, transparent);
+      }
+      main {
+        overflow-x: auto;
+      }
+      .category-zone span {
+        position: absolute;
+        top: 10%;
+        width: 85%;
+        text-align: center;
+        left: 50%;
+        translate: -50% 0;
+        color: var(--category-color);
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .law-lines {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .law-lines line {
+        stroke: #8da3b7;
+        stroke-width: var(--flow-width, 0.28);
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+      .law-lines line.visible {
+        opacity: 1;
+      }
+      .law-lines line.rise {
+        stroke: #25865a;
+        stroke-dasharray: 1.2 0.85;
+        animation: relation-flow var(--flow-duration, 1.5s) linear infinite;
+      }
+      .law-lines line.fall {
+        stroke: #be4f4f;
+        stroke-dasharray: 1.2 0.85;
+        animation: relation-flow var(--flow-duration, 1.5s) linear infinite;
+      }
+      .law-lines line.condition {
+        stroke-dasharray: 1.2 0.8;
+      }
+      @keyframes relation-flow {
+        to {
+          stroke-dashoffset: -4;
+        }
+      }
+      .relation-feedback {
+        position: absolute;
+        z-index: 4;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: grid;
+        gap: 0.3rem;
+        max-width: 20rem;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid #dce4ea;
+        border-radius: 0.7rem;
+        background: rgb(255 255 255 / 92%);
+        box-shadow: 0 0.6rem 1.8rem rgb(24 40 58 / 12%);
+        color: #465463;
+        font-size: 0.7rem;
+        font-weight: 700;
+        line-height: 1.35;
+        pointer-events: none;
+      }
+      .map-node {
+        position: absolute;
+        z-index: 4;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        width: var(--size);
+        height: var(--size);
+        padding: 0.75rem;
+        border: 1px solid #9aa9b7;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0.45rem 1.4rem rgb(24 40 58 / 12%);
+        color: #1f3143;
+        text-align: center;
+        translate: -50% -50%;
+        transition:
+          left 620ms ease,
+          top 620ms ease,
+          width 420ms ease,
+          height 420ms ease,
+          box-shadow 180ms ease,
+          transform 420ms ease;
+      }
+      .government-node,
+      .ministry-node {
+        position: absolute;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        translate: -50% -50%;
+        border-radius: 50%;
+        text-align: center;
+        pointer-events: none;
+      }
+      .government-node {
+        width: 112px;
+        height: 112px;
+        border: 5px solid #ffffffb8;
+        background: #173d68;
+        box-shadow: 0 1rem 3rem #173d6840;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+      .ministry-node {
+        width: 76px;
+        height: 76px;
+        padding: 0.55rem;
+        border: 4px solid #ffffffc9;
+        background: var(--category-color, #52677c);
+        box-shadow: 0 0.6rem 1.8rem #18223026;
+        color: white;
+        font-size: 0.62rem;
+        font-weight: 850;
+        line-height: 1.1;
+      }
+      .map-node.policy {
+        border-color: #777f87;
+        background: #f2f3f4;
+        box-shadow:
+          0 0 0 5px rgb(91 99 107 / 11%),
+          0 0.45rem 1.4rem rgb(24 40 58 / 12%);
+      }
+      .map-node.indicator {
+        border-color: #397ab5;
+        background: #eaf4fc;
+      }
+      .map-node.situation-negative {
+        border: 2px solid #b64b4b;
+        background: #fdeeee;
+      }
+      .map-node.situation-positive {
+        border: 2px solid #2d8a5c;
+        background: #eaf8f0;
+      }
+      .map-node.inactive {
+        border-style: dashed;
+        filter: grayscale(0.55);
+        opacity: 0.62;
+      }
+      .map-node:hover,
+      .map-node:focus-visible,
+      .map-node.selected {
+        z-index: 3;
+        box-shadow:
+          0 0 0 7px rgb(32 105 170 / 14%),
+          0 0.8rem 2rem rgb(24 40 58 / 20%);
+        outline: none;
+      }
+      .map-node.relation-focus {
+        z-index: 3;
+      }
+      .node-name {
+        max-width: 9rem;
+        font-size: 0.72rem;
+        font-weight: 780;
+        line-height: 1.18;
+      }
+      .node-type {
+        margin-bottom: 0.22rem;
+        color: #5f6a75;
+        font-size: 0.55rem;
+        font-weight: 900;
+        letter-spacing: 0.07em;
+      }
+      .node-value {
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 850;
+      }
+      .node-delta {
+        position: absolute;
+        top: -0.3rem;
+        right: -0.3rem;
+        padding: 0.2rem 0.38rem;
+        border-radius: 999px;
+        background: #22704b;
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 850;
+      }
+      .node-delta.negative {
+        background: #af4141;
+      }
+      .prepared {
+        position: absolute;
+        bottom: -1.45rem;
+        padding: 0.18rem 0.42rem;
+        border-radius: 999px;
+        background: #8b570f;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .law-editor {
+        width: min(92vw, 660px);
+        max-height: 86vh;
+        padding: 1.4rem;
+        border: 0;
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 1.5rem 5rem rgb(15 32 48 / 28%);
+        overflow: auto;
+      }
+      .law-editor::backdrop {
+        background: rgb(13 27 42 / 38%);
+        backdrop-filter: blur(2px);
+      }
+      .dialog-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 2.2rem;
+        min-height: 2.2rem;
+        padding: 0;
+        border-radius: 50%;
+        background: #edf1f4;
+        color: #344455;
+        font-size: 1.4rem;
+      }
+      .dialog-copy {
+        padding-right: 2.2rem;
+      }
+      .dialog-eyebrow {
+        color: #657483;
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+      .law-editor h2 {
+        margin: 0 0 0.25rem;
+        font-size: 1rem;
+      }
+      .law-editor p {
+        margin: 0.35rem 0 0;
+        color: #65717e;
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
+      .law-editor label,
+      .control-decision {
+        display: grid;
+        gap: 0.35rem;
+        color: #596675;
+        font-size: 0.72rem;
+        font-weight: 750;
+      }
+      .law-editor input[type="range"] {
+        width: 100%;
+      }
+      .source {
+        color: #466987;
+        font-size: 0.7rem;
+      }
+      .effects {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1.1rem;
+      }
+      .effects h3 {
+        margin: 0 0 0.1rem;
+        font-size: 0.82rem;
+      }
+      .effect {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.65rem 0.75rem;
+        border-left: 3px solid #8c99a5;
+        border-radius: 0.45rem;
+        background: #f6f8fa;
+        font-size: 0.72rem;
+      }
+      .effect.positive {
+        border-color: #25865a;
+      }
+      .effect.negative {
+        border-color: #be4f4f;
+      }
+      .effect span {
+        color: #687583;
+        text-align: right;
+      }
+      .policy-controls {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+        align-items: end;
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e7ebef;
+      }
+      .scope-choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .scope-choices button {
+        min-height: 2rem;
+        padding: 0.35rem 0.5rem;
+        border: 1px solid #c7d0d9;
+        background: #fff;
+        color: #344455;
+        font-size: 0.68rem;
+      }
+      .scope-choices button.selected {
+        border-color: #376e9f;
+        background: #e9f3fb;
+        color: #1e5f91;
+      }
+      .status {
+        display: inline-block;
+        padding: 0.28rem 0.5rem;
+        border-radius: 999px;
+        background: #edf1f4;
+        font-weight: 850;
+      }
+      .status.active {
+        background: #e4f5eb;
+        color: #217049;
+      }
+      .notice {
+        position: absolute;
+        z-index: 5;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: 22rem;
+        padding: 0.7rem 0.85rem;
+        border-radius: 0.55rem;
+        background: #16283b;
+        color: white;
+        font-size: 0.76rem;
+      }
+      @media (max-width: 760px) {
+        header,
+        .map-toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .law-stage {
+          min-height: 820px;
+        }
+        .policy-controls {
+          grid-template-columns: 1fr;
+        }
+        .link-button {
+          display: none;
+        }
+      }
+      #map-viewport {
+        position: relative;
+        height: max(520px, calc(100vh - 210px));
+        overflow: hidden;
+        touch-action: none;
+        cursor: grab;
+      }
+      #map-viewport.dragging {
+        cursor: grabbing;
+      }
+      #map-viewport .law-stage {
+        width: 1600px;
+        height: 1600px;
+        min-height: 0;
+        min-width: 0;
+        overflow: visible;
+        transform-origin: 0 0;
+      }
+      .navigation-tools {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 1.5rem;
+        flex-wrap: wrap;
+      }
+      .navigation-tools span {
+        font-size: 0.75rem;
+        color: #687583;
+      }
+      .navigation-tools output {
+        min-width: 3rem;
+        text-align: center;
+      }
+      .category-zone {
+        width: 39%;
+      }
+      body {
+        overflow: hidden;
+      }
+      #map-viewport {
+        height: 100dvh;
+        min-height: 0;
+      }
+      .game-menu {
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        z-index: 10;
+      }
+      .game-menu summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.65rem 0.85rem;
+        background: white;
+        border: 1px solid #e7ebef;
+        border-radius: 50%;
+        box-shadow: 0 4px 18px #18223010;
+      }
+      .game-menu nav {
+        display: grid;
+        gap: 1rem;
+        width: 240px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 8px 30px #18223020;
+      }
+      .game-menu p {
+        color: #687583;
+        font-size: 0.75rem;
+        margin: 0;
+      }
+      .game-turn {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 10;
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        padding: 0.55rem;
+        background: #fffffff0;
+        border-radius: 999px;
+        box-shadow: 0 6px 28px #18223018;
+      }
+      .game-turn button {
+        border-radius: 999px;
+      }
+      .map-zoom-controls {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 10;
+        display: grid;
+        gap: 0.35rem;
+      }
+      .map-zoom-controls button {
+        width: 2.5rem;
+        min-height: 2.5rem;
+        padding: 0;
+        border-radius: 50%;
+        background: #fffffff0;
+        color: #344455;
+        box-shadow: 0 4px 18px #18223010;
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+      #pending:empty {
+        display: none;
+      }
+      .policy-icon {
+        width: 30px;
+        height: 30px;
+        pointer-events: none;
+      }
+      .policy-tooltip {
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: 220px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: #182230;
+        color: white;
+        font-size: 12px;
+        line-height: 1.4;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .map-node.policy:hover .policy-tooltip,
+      .map-node.policy:focus-visible .policy-tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+      .map-node.policy:focus-visible {
+        outline: 2px solid #376e9f;
+        outline-offset: 5px;
+      }
+      .map-node.policy .node-value {
+        font-size: 0.66rem;
+        white-space: nowrap;
+      }
+      .policy-abbreviation {
+        max-width: 4.8rem;
+        overflow: hidden;
+        color: #33485b;
+        font-size: 0.53rem;
+        font-weight: 850;
+        line-height: 1.05;
+        text-align: center;
+        text-overflow: clip;
+      }
+      .map-node.policy {
+        animation: quiet-orbit 8s ease-in-out infinite alternate;
+        animation-delay: calc(var(--orbit-index, 0) * -0.17s);
+      }
+      @keyframes quiet-orbit {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(2px, -1.5px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .law-lines line.rise,
+        .law-lines line.fall {
+          animation: none;
+          stroke-dasharray: none;
+        }
+        .map-node.policy {
+          animation: none;
+        }
+      }
+      .map-filters {
+        position: fixed;
+        z-index: 10;
+        top: 18px;
+        left: 80px;
+        padding: 8px;
+        border-radius: 16px;
+        background: #fffffff2;
+        box-shadow: 0 4px 18px #18223018;
+        max-width: calc(100vw - 150px);
+      }
+      .map-filters button {
+        background: transparent;
+        color: #344455;
+        border-radius: 12px;
+      }
+      .map-filters button[aria-pressed="true"] {
+        background: #173d68;
+        color: white;
+      }
+      .map-filters small {
+        display: block;
+        max-width: 280px;
+        padding: 5px;
+        color: #596675;
+        font-size: 11px;
+      }
+      .map-node {
+        padding: 3px;
+        min-height: 0;
+      }
+      .map-node.metric-unavailable {
+        opacity: 0.55;
+        border-style: dashed;
+      }
+      .map-node.policy .node-value {
+        font-size: clamp(7px, calc(var(--size) * 0.105), 11px);
+      }
+      .policy-icon {
+        width: calc(var(--size) * 0.34);
+        height: calc(var(--size) * 0.34);
+      }
+      .policy-abbreviation {
+        font-size: clamp(7px, calc(var(--size) * 0.12), 12px);
+        max-width: calc(var(--size) * 0.85);
+      }
+      .node-name {
+        font-size: clamp(6px, calc(var(--size) * 0.12), 11px);
+      }
+      .node-type {
+        font-size: 6px;
+      }
+      .node-value {
+        font-size: clamp(8px, calc(var(--size) * 0.16), 15px);
+      }
+      .government-node {
+        width: 52px;
+        height: 52px;
+        font-size: 9px;
+      }
+      .ministry-node {
+        width: 46px;
+        height: 46px;
+        font-size: 7px;
+      }
+      .macro-area-region {
+        background: transparent;
+        box-shadow: none;
+        border-width: 1px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .map-node,
+        .category-zone,
+        .macro-area-region {
+          transition: none;
+        }
+      }
+      .ministry-node {
+        width: auto;
+        max-width: 220px;
+        height: auto;
+        padding: 3px 8px;
+        border: 0;
+        border-radius: 8px;
+        font-size: 11px;
+        background: #ffffffe6;
+        color: var(--category-color);
+        box-shadow: none;
+      }
+      /* The physics clock owns positions and sizes; CSS must not lag behind it. */
+      #law-stage .map-node, #law-stage .category-zone { transition: none; }
+      #law-stage .category-zone {
+        pointer-events: none;
+        background: color-mix(in srgb, var(--category-color) 4%, transparent);
+        border-color: color-mix(in srgb, var(--category-color) 18%, transparent);
+      }
+      .federal-sphere {
+        position: absolute; translate: -50% -50%; border-radius: 50%;
+        background: rgb(31 64 100 / 3%); border: 1px solid rgb(31 64 100 / 20%);
+        pointer-events: none; z-index: 0;
+      }
+      .federal-sphere > span {
+        position: absolute; left: 50%; top: -22px; translate: -50% 0;
+        white-space: nowrap; color: #34516b; font-size: 13px; font-weight: 700;
+      }
+      .representative-node {
+        position: absolute; z-index: 3; translate: -50% -50%;
+        width: var(--size); height: var(--size); border-radius: 50%;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: #203b57; border: 3px solid #dbe5ef; color: white;
+        box-shadow: 0 0 0 6px rgb(32 59 87 / 7%); font-size: 12px;
+      }
+      .representative-node.president { background: #194b43; border-color: #c3dcd4; }
+      .representative-symbol { font-size: 23px; font-weight: 700; }
+      .turn-log {
+        position: fixed; right: 16px; bottom: 84px; z-index: 35;
+        width: min(430px, calc(100vw - 32px)); border: 1px solid #c8d4df;
+        border-radius: 12px; background: #fffffff5; color: #21394e;
+        box-shadow: 0 6px 24px #1c334521; font-size: 12px;
+      }
+      .turn-log-toggle { width: 100%; padding: 10px 14px; text-align: left;
+        border: 0; background: transparent; color: inherit; cursor: pointer; font-weight: 700; }
+      .turn-log-latest { margin: 0; padding: 0 14px 8px; }
+      #turn-log-content { max-height: 32vh; overflow: auto; padding: 0 14px 12px; }
+      .turn-log-help { color: #587083; font-size: 11px; }
+      .turn-log ol { list-style: none; padding: 0; margin: 0; }
+      .turn-log ol > li { border-top: 1px solid #e0e6eb; padding: 9px 0; }
+      .turn-log summary { cursor: pointer; line-height: 1.5; }
+      .turn-log ul { padding-left: 18px; overflow-wrap: anywhere; line-height: 1.6; }
+      .turn-log-error { color: #a62e2e; }
+      .turn-log-success > details > summary { color: #216b4b; }
+    </style>
+  </head>
+  <body>
+    <div class="game-menu">
+      <details>
+        <summary aria-label="Menu do jogo">☰</summary>
+        <nav>
+          <a href="/motor-demo.html">Bancada técnica</a>
+          <button id="reset" class="secondary" type="button">
+            Reiniciar partida
+          </button>
+          <p>Exemplo experimental: efeitos e prazos são parâmetros de jogo.</p>
+        </nav>
+      </details>
+    </div>
+    <div id="map-filters"></div>
+    <div id="turn-journal"></div>
+    <div class="game-turn">
+      <span class="turn">Turno <strong id="turn">0</strong></span>
+      <span id="pending" aria-live="polite"></span>
+      <button id="advance" type="button">Próximo turno ▸</button>
+    </div>
+    <div class="map-zoom-controls" aria-label="Controle de zoom">
+      <button id="zoom-out" type="button" aria-label="Diminuir zoom">−</button>
+      <button id="zoom-in" type="button" aria-label="Aumentar zoom">+</button>
+    </div>
+    <main>
+      <div
+        id="map-viewport"
+        tabindex="0"
+        aria-label="Mapa navegável. Use as setas para mover e mais ou menos para zoom."
+      >
+        <section
+          id="law-stage"
+          class="law-stage"
+          aria-label="Mapa de políticas públicas, indicadores e situações"
+        ></section>
+      </div>
+      <dialog id="law-editor" class="law-editor"></dialog>
+    </main>
+    <script type="module" src="/src/lawMapDemo.ts"></script>
+  </body>
+</html>

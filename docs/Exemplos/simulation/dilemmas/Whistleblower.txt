@@ -1,0 +1,12 @@
+[dilemma]
+name=Whistleblower
+
+[influences]
+0 = _random_,0,0.35
+1 = IntelligenceServices,0+(0.5*x)
+
+[option0]
+OnImplement = CreateGrudge(Patriot,0.18,0.8);CreateGrudge(Liberal,-0.04,0.75);CreateGrudge(_security_,0.04,0.75);
+
+[option1]
+OnImplement = CreateGrudge(Patriot,-0.14,0.75);CreateGrudge(Liberal,0.06,0.85);CreateGrudge(ForeignRelations,0.12,0.85);CreateGrudge(_security_,-0.04,0.75);

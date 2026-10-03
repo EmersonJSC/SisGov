@@ -1,0 +1,12 @@
+{
+  "id": "melhora-educacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "verba_educacao",
+  "alvo": "educacao_publica",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.02, "termoConstante": 0 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

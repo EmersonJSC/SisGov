@@ -1,0 +1,13 @@
+[config]
+Name = fuelshortage
+Texture = event58.png
+GUISound = DM4_Fuel Shortage.wav
+OnImplement = CreateGrudge(fuelshortage,-0.900,0.830);CreateGrudge(GDP,-0.050,0.80);CreateGrudge(Motorist,-0.22,0.850);
+
+[influences]
+0 = _random_,0,0.35
+1 = OilDemand,1.0*(x^4)
+2 = ElectricCarTransition,0.33-(0.33*x)
+3 = InternationalTrade,0.3-(0.3*x)
+4 = _winning_0+(0.1*x)
+

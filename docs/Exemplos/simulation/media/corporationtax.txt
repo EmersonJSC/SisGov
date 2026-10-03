@@ -1,0 +1,9 @@
+[config]
+Name = corporationtax
+Policy = CorporationTax
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+CorporationTax,1,0.8,1.0
+GDP,1,0,0.8
+

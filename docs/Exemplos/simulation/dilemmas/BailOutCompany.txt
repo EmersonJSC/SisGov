@@ -1,0 +1,16 @@
+[dilemma]
+name=BAILOUTCOMPANY
+
+[influences]
+0 = _default_,1.0+(0*x)
+1 = GDP,0-(0.6*x)
+2 = WorkerProductivity,0-(0.15*x)
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,-0.08,0.9);CreateGrudge(TradeUnionist,0.12,0.9);SpendAdjusted(600)
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,0.06,0.9);CreateGrudge(TradeUnionist,-0.18,0.9);CreateGrudge(Unemployment,0.13,0.9);
+
+[option2]
+OnImplement = CreateGrudge(Capitalist,-0.11,0.9);CreateGrudge(TradeUnionist,0.13,0.9);CreateGrudge(Socialist,0.1,0.9);CreateGrudge(BusinessConfidence,-0.065,0.9);

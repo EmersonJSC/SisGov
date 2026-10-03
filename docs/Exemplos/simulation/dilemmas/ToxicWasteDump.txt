@@ -1,0 +1,11 @@
+[dilemma]
+name=ToxicWasteDump
+
+[influences]
+0 = _random_,0.2,0.8
+
+[option0]
+OnImplement = CreateGrudge(Environmentalist,-0.23,0.9);CreateGrudge(GDP,0.02,0.9);CreateGrudge(Unemployment,-0.01,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Environmentalist,0.07,0.9);

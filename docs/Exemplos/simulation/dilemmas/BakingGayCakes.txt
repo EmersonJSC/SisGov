@@ -1,0 +1,15 @@
+[dilemma]
+name=BakingGayCakes
+
+[influences]
+0 = _random_,0.1,0.35
+1 = Liberal_perc,0.35*(x^2)
+2 = Religious_perc,0.35*(x^2)
+3 = LegalAid,0+(0.24*x)
+4 = Banhomosexuality,0-(2.0*x)
+
+[option0]
+OnImplement = CreateGrudge(Religious,0.1,0.85);CreateGrudge(Liberal,-0.08,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Religious,-0.1,0.85);CreateGrudge(Liberal,0.08,0.85);

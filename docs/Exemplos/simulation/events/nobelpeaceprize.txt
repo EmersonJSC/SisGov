@@ -1,0 +1,16 @@
+[config]
+Name = nobelpeaceprize
+Texture = event42.png
+GUISound = DM4_Nobel Peace Prize.wav
+OnImplement = CreateGrudge(nobelpeaceprize,-0.9,0.83);CreateGrudge(_All_,0.1,0.83);CreateGrudge(Liberal,0.12,0.83);CreateGrudge(_percept_compassion,0.12,0.83);
+
+[influences]
+0 = _default_,0.2+(0*x)
+1 = _random_,0,0.23
+2 = _winning_,0-(0.4*x),5
+3 = ForeignRelations,0.72*(x^2),6
+4 = TortureUsageBySecretServices,-0.5-(0.55*x)
+5 = DroneStrikeAct,-0.55-(0.55*x)
+6 = Curfews,-0.11-(0.11*x)
+7 = _difficulty_,0.05-(0.1*x)
+
