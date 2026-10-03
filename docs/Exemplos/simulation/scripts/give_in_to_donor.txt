@@ -1,0 +1,3 @@
+CreateGrudge(Gave In To Donor,give_in_to_donor,_percept_trust,-0.06,0.77);
+CreateGrudge(Gave In To Donor,give_in_to_donor,Corruption,0.06,0.85);
+CreateGrudge(Gave In To Donor,give_in_to_donor,Democracy,-0.03,0.82);

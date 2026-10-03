@@ -1,0 +1,12 @@
+[config]
+Name = gigeconomypressure
+Texture = event50.png
+GUISound = DM4_Gig Economy Pressure.wav
+OnImplement = CreateGrudge(gigeconomypressure,-0.900,0.830);CreateGrudge(Socialist,-0.12,0.830);CreateGrudge(SelfEmployed,-0.12,0.830);CreateGrudge(TradeUnionist,-0.1,0.830);
+
+[influences]
+0 = _random_,0,0.22
+1 = GigEconomy,0+(0.89*x)
+2 = PovertyRate,0.17*(x^2)
+3 = Wages,0.15-(x*0.15)
+4 = _winning_,-0.05+(0.1*x)

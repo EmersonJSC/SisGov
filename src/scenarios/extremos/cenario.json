@@ -1,0 +1,16 @@
+{
+  "id": "laboratorio-extremos",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "Laboratório de extremos",
+  "estadoInicial": "extremos/estado-inicial.json",
+  "variaveis": "extremos/variaveis.json",
+  "politicas": ["extremos/politicas/impulso-ciclico.json"],
+  "consequencias": [
+    "extremos/consequencias/impulso-atrasado.json",
+    "extremos/consequencias/a-alimenta-b.json",
+    "extremos/consequencias/b-realimenta-a.json",
+    "extremos/consequencias/evento-eleva-risco.json"
+  ],
+  "eventos": ["extremos/eventos/choque-externo.json"]
+}

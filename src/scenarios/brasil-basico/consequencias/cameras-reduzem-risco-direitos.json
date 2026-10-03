@@ -1,0 +1,12 @@
+{
+  "id": "cameras-reduzem-risco-direitos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "escopo_cameras",
+  "alvo": "violacoes_direitos",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": -0.4, "termoConstante": 0 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

@@ -1,0 +1,12 @@
+[config]
+Name = deadlywatercontamination
+Texture = event11.png
+GUISound = DM4_Deadly Water Contamination.wav
+OnImplement = CreateGrudge(deadlywatercontamination,-0.900,0.830);CreateGrudge(_All_,-0.100,0.80);CreateGrudge(Environmentalist,-0.150,0.89);CreateGrudge(Environmentalist_freq,0.08,0.89);
+
+[influences]
+0 = _random_,0.22,1.0
+1 = PollutionControls,-0.15-(0.3*x)
+2 = _winning_,0.25*(x^2),4
+3 = _difficulty_,-0.05+(0.1*x)
+

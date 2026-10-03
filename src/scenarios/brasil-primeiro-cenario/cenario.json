@@ -1,0 +1,46 @@
+{
+  "id": "brasil-primeiro-cenario",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "Brasil — Saúde, Segurança e Educação",
+  "perfis": [
+    { "id": "dependencia-rede-publica", "nome": "Maior dependência da rede pública", "peso": 0.55, "interesses": ["acesso à saúde", "saúde", "proteção", "segurança cotidiana", "saldo disponível"] },
+    { "id": "trabalho-circulacao-violencia", "nome": "Trabalho e circulação sob pressão da violência", "peso": 0.45, "interesses": ["violência", "saldo disponível", "saúde", "proteção"] }
+  ],
+  "estadoInicial": "brasil-primeiro-cenario/estado-inicial.json",
+  "variaveis": "brasil-primeiro-cenario/variaveis.json",
+  "politicas": [
+    "brasil-primeiro-cenario/politicas/atencao-basica.json",
+    "brasil-primeiro-cenario/politicas/protecao-mulheres.json",
+    "brasil-primeiro-cenario/politicas/prevencao-seguranca.json",
+    "brasil-primeiro-cenario/politicas/alimentacao-escolar.json",
+    "brasil-primeiro-cenario/politicas/creches-publicas.json"
+  ],
+  "consequencias": [
+    "brasil-primeiro-cenario/consequencias/atencao-amplia-cobertura.json",
+    "brasil-primeiro-cenario/consequencias/cobertura-reduz-pressao.json",
+    "brasil-primeiro-cenario/consequencias/cobertura-melhora-saude.json",
+    "brasil-primeiro-cenario/consequencias/pressao-prejudica-saude.json",
+    "brasil-primeiro-cenario/consequencias/protecao-amplia-rede.json",
+    "brasil-primeiro-cenario/consequencias/prevencao-reduz-violencia.json",
+    "brasil-primeiro-cenario/consequencias/violencia-eleva-pressao.json",
+    "brasil-primeiro-cenario/consequencias/evento-eleva-pressao.json",
+    "brasil-primeiro-cenario/consequencias/despesa-atencao.json",
+    "brasil-primeiro-cenario/consequencias/despesa-protecao.json",
+    "brasil-primeiro-cenario/consequencias/despesa-prevencao.json",
+    "brasil-primeiro-cenario/consequencias/saldo-atencao.json",
+    "brasil-primeiro-cenario/consequencias/saldo-protecao.json",
+    "brasil-primeiro-cenario/consequencias/saldo-prevencao.json",
+    "brasil-primeiro-cenario/consequencias/alimentacao-eleva-frequencia.json",
+    "brasil-primeiro-cenario/consequencias/creches-ampliam-participacao.json",
+    "brasil-primeiro-cenario/consequencias/frequencia-amplia-oportunidades.json",
+    "brasil-primeiro-cenario/consequencias/creches-ampliam-oportunidades.json",
+    "brasil-primeiro-cenario/consequencias/oportunidades-reduzem-violencia.json",
+    "brasil-primeiro-cenario/consequencias/despesa-alimentacao.json",
+    "brasil-primeiro-cenario/consequencias/despesa-creches.json",
+    "brasil-primeiro-cenario/consequencias/saldo-alimentacao.json",
+    "brasil-primeiro-cenario/consequencias/saldo-creches.json"
+  ],
+  "eventos": ["brasil-primeiro-cenario/eventos/aumento-demanda.json"],
+  "situacoes": ["brasil-primeiro-cenario/situacoes/sobrecarga-atendimento.json"]
+}

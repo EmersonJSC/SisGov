@@ -1,0 +1,13 @@
+[config]
+Name = sexualassault
+Texture = event28.png
+GUISound = DM4_Sexual Assault.wav
+OnImplement = CreateGrudge(sexualassault,-0.9,0.83);CreateGrudge(Liberal,-0.2,0.83);
+
+[influences]
+0 = _random_,0,0.33
+1 = CrimeRate,0+(0.7*x)
+2 = CCTVCameras,-0.08-(0.25*x)
+3 = _winning_,0+(0.30*x),1
+4 = GenderEquality,0.42-(0.42*x),2
+5 = _difficulty_,-0.05+(0.1*x)

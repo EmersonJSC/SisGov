@@ -1,0 +1,12 @@
+[dilemma]
+name=CorporateMedicalMarketing
+
+[influences]
+0 = _random_,0.15,0.9
+1 = StateHealthService,0-(0.3*x)
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,0.05,0.9);CreateGrudge(Health,-0.03,1.0);CreateGrudge(Retired,-0.05,0.9);CreateGrudge(PrivateHealthcare,0.08,1.0);
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,-0.05,0.9);CreateGrudge(Health,0.03,1.0);CreateGrudge(Retired,0.05,0.9);CreateGrudge(PrivateHealthcare,-0.08,1.0);

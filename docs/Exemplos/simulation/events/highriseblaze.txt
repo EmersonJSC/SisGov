@@ -1,0 +1,14 @@
+[config]
+Name = highriseblaze
+Texture = event19.png
+GUISound = DM4_HighRiseBlaze.wav
+OnImplement = CreateGrudge(highriseblaze,-0.900,0.830);CreateGrudge(Poor,-0.11,0.850);CreateGrudge(Socialist,-0.120,0.820);
+
+[influences]
+0 = _random_,0,0.25
+1 = Equality,0.37-(0.37*x)
+2 = PovertyRate,0+(0.35*x)
+3 = GatedCommunities,0.05+(0.15*x)
+4 = StateHousing,0.2-(0.2*x)
+5 = _winning_,0.17*(x^2),4
+6 = _difficulty_,-0.05+(0.1*x)

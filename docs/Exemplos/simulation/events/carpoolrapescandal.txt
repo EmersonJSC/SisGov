@@ -1,0 +1,12 @@
+[config]
+Name = carpoolrapescandal
+Texture = event79.png
+GUISound = DM4_Carpool Rape Scandal.wav
+OnImplement = CreateGrudge(carpoolrapescandal,-0.900,0.830);CreateGrudge(Liberal,-0.120,0.860);CreateGrudge(_All_,-0.120,0.850);
+
+[influences]
+0 = _random_,0,0.35
+1 = GigEconomy,1.0*(x^2),4
+2 = ConsumerRights,0-(0.22*x)
+3 = DriverlessCars,-0.1-(0.12*x)
+4 = _winning_,0+(0.22*x)

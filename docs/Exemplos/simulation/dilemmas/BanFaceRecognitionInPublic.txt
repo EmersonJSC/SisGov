@@ -1,0 +1,13 @@
+[dilemma]
+name=BanFaceRecognitionInPublic
+
+[influences]
+0 = _random_,0.1,0.3
+1 = Technology,0+(0.45*x)
+2 = InternetSpeed,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.12,0.88);CreateGrudge(Capitalist,-0.06,0.83);CreateGrudge(Technology,-0.03,0.88);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.09,0.88);CreateGrudge(Capitalist,0.06,0.80);CreateGrudge(CrimeRate,-0.03,0.95);

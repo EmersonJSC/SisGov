@@ -1,0 +1,10 @@
+[config]
+Name = diversityquotasforcompanies
+Policy = Diversityquotasforcompanies
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+Diversityquotasforcompanies,1,0.5,1
+GDP,1,0,0.8
+Liberal_perc,1,0,0.75
+

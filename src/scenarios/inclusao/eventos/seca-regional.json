@@ -1,0 +1,7 @@
+{
+  "id": "seca-regional",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Seca regional",
+  "consequencias": ["seca-prejudica-educacao"]
+}

@@ -1,0 +1,8 @@
+[config]
+Name = importtarrifs
+Policy = ImportTarrifs
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+ImportTarrifs,1,0.3,1.0
+

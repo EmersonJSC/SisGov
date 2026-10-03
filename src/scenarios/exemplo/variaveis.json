@@ -1,0 +1,23 @@
+{
+  "id": "variaveis-exemplo",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "verba_educacao",
+      "tipo": "controle",
+      "nome": "Verba de educação",
+      "unidade": "moeda_por_passo",
+      "dominio": { "minimo": 0 },
+      "valorInicial": 0
+    },
+    {
+      "id": "educacao_publica",
+      "tipo": "calculado",
+      "nome": "Educação pública",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 40
+    }
+  ]
+}

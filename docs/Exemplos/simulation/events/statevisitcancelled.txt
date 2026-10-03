@@ -1,0 +1,14 @@
+[config]
+Name = statevisitcancelled
+Texture = event38.png
+GUISound = DM4_State Visit Cancelled.wav
+OnImplement = CreateGrudge(statevisitcancelled,-0.9,0.83);CreateGrudge(_percept_strength,-0.22,0.83);CreateGrudge(Patriot,-0.2,0.80);CreateGrudge(_percept_strength,-0.12,0.83);
+
+[influences]
+0 = _random_,0.4,0.84
+1 = _winning_,0+(0.27*x),2
+2 = ForeignRelations,0-(0.53*x)
+3 = GeneralStrike,0.25+(0.1*x)
+4 = ClassWarfare,0.25+(0.1*x)
+5 = _difficulty_,-0.05+(0.1*x)
+

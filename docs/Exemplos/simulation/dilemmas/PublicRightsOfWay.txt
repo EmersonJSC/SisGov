@@ -1,0 +1,13 @@
+[dilemma]
+name=PublicRightsOfWay
+
+[influences]
+0 = _random_,0.1,0.4
+1 = PrivateHousing,0+(0.5*x)
+2 = Environmentalist_perc,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(Farmers,0.08,0.86);CreateGrudge(Socialist,-0.06,0.82);
+
+[option1]
+OnImplement = CreateGrudge(Farmers,-0.13,0.92);CreateGrudge(Socialist,0.07,0.86);

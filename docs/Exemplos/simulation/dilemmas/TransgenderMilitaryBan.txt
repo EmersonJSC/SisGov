@@ -1,0 +1,14 @@
+[dilemma]
+name=TransgenderMilitaryBan
+
+[influences]
+0 = _random_,0.1,0.35
+1 = Conservatives_perc,0+(0.43*x)
+2 = MilitarySpending,0+(0.33*x)
+3 = Banhomosexuality,0-(2.0*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.10,0.83);CreateGrudge(Patriot,0.09,0.87);CreateGrudge(Conservatives,0.06,0.86);CreateGrudge(Young,-0.06,0.83);CreateGrudge(_global_liberalism,-0.04,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.10,0.8);CreateGrudge(Patriot,-0.09,0.87);CreateGrudge(Conservatives,-0.06,0.86);CreateGrudge(Young,0.06,0.81);CreateGrudge(_global_liberalism,0.03,0.85);

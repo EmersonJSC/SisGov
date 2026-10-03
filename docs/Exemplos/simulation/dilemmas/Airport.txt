@@ -1,0 +1,12 @@
+[dilemma]
+name=Airport
+
+[influences]
+0 = _random_,0.1,0.65
+1 = AirTravel,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(CarUsage,0.03,1.0);CreateGrudge(Environmentalist,-0.1,0.8);CreateGrudge(Motorist,0.05,0.95);
+
+[option1]
+OnImplement = CreateGrudge(BusUsage,0.03,1.0);CreateGrudge(Environment,0.04,1.0);CreateGrudge(Environmentalist,0.08,0.8);CreateGrudge(Motorist,-0.05,0.95);

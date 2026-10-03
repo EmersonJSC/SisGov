@@ -1,0 +1,12 @@
+[dilemma]
+name=ReligiousSymbols
+
+[influences]
+0 = _random_,0,0.55
+1 = _global_liberalism,0+(0.3*x)
+
+[option0]
+OnImplement = CreateGrudge(Religious,-0.08,0.9);CreateGrudge(Liberal,0.02,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.02,0.9);CreateGrudge(Religious,0.03,0.9);

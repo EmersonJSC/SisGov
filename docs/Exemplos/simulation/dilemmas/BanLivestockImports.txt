@@ -1,0 +1,12 @@
+[dilemma]
+name=BanLivestockImports
+
+[influences]
+0 = _random_,0,0.7
+1 = Environmentalist_perc,0+(0.2*x)
+
+[option0]
+OnImplement = CreateGrudge(Farmers,-0.11,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Farmers,0.16,0.9);CreateGrudge(ForeignRelations,-0.13,0.74);CreateGrudge(InternationalTrade,-0.05,0.75);CreateGrudge(FoodPrice,0.04,0.95);

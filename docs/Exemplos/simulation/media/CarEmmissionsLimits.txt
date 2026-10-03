@@ -1,0 +1,7 @@
+[config]
+Name = caremissions_lack
+Policy = CarEmmissionsLimits
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+

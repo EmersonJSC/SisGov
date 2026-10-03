@@ -1,6 +1,6 @@
 # SisGov
 
-SisGov é um jogo web de estratégia política e gestão econômica. A primeira versão permite que a pessoa jogadora assuma o governo, tome decisões, observe consequências e enfrente uma eleição. O protótipo visual atual é uma base de interface; o motor de simulação será construído nas próximas fases.
+SisGov é um jogo web de estratégia política e gestão econômica em que a pessoa jogadora representa um partido e conduz o governo enquanto ocupa a Presidência. Propõe políticas definidas em JSON, considera a opinião pública, busca apoio no Senado e observa consequências em um país que já começa com políticas vigentes. A população tem interesses sociais combinados e elege a Presidência e o Senado, com resultados separados e sem duplicar seu peso eleitoral. Na primeira versão, vencer a eleição presidencial inicia outro mandato preservando o estado do país; perder encerra a partida. O motor numérico e a bancada já existem; a próxima fase integra turnos, orçamento, financiamento e regras políticas. O mapa de escala visual continua sendo um laboratório demonstrativo.
 
 ## Antes de começar
 
@@ -11,6 +11,10 @@ Leia estes documentos na ordem abaixo:
 3. [Quadro de chamados](docs/producao/quadro-de-chamados.md): estados e fluxo de acompanhamento.
 4. [Motor do jogo](docs/motor-do-jogo.md): proposta técnica do motor de simulação.
 5. [Estudo Democracy 4](docs/Estudo%20Democracy%204%20Politicas%20Grupos%20e%20Efeitos.docx): referência de pesquisa; não é um contrato de conteúdo para o jogo.
+
+A direção visual aprovada está em [Mapa de influência](docs/producao/mapa-de-influencia.md): esferas ministeriais, resultados externos e interface de jogo.
+
+A próxima etapa está detalhada em [Turnos, orçamento e capacidade](docs/producao/sg057-proxima-fase-e-economia.md).
 
 Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto mestre do plano de produção.
 

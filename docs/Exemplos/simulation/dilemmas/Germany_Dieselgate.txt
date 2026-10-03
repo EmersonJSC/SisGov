@@ -1,0 +1,12 @@
+[dilemma]
+name= GermanyDieselgate
+country_specific = germany
+
+[influences]
+0 = _random_,0.2,0.95
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,0.03,0.85);CreateGrudge(Environmentalist,-0.06,0.85);CreateGrudge(ForeignRelations,-0.06,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,-0.05,0.85);CreateGrudge(Environmentalist,0.05,0.85);CreateGrudge(ForeignRelations,0.05,0.85);CreateGrudge(BusinessConfidence,-0.04,0.85);

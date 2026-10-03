@@ -1,0 +1,15 @@
+[config]
+Name = poachersconvicted
+Texture = event39.png
+GUISound = DM4_Poachers Convicted.wav
+OnImplement = CreateGrudge(poachersconvicted,-0.9,0.83);CreateGrudge(Environmentalist,0.1,0.83);
+
+[influences]
+0 = _random_,0.1,0.3
+1 = PovertyRate,0+(0.4*x)
+2 = Unemployment,0+(0.3*x)
+3 = PoliceForce,0+(0.25*x)
+4 = _prereq_,_prereq_poachers
+5 = _winning_,0+(0.05*x)
+
+

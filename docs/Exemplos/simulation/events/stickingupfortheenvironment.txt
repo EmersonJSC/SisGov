@@ -1,0 +1,13 @@
+[config]
+Name = stickingupfortheenvironment
+Texture = event3.png
+GUISound = DM4_Sticking Up For The Environment.wav
+OnImplement = CreateGrudge(stickingupfortheenvironment,-0.9,0.83);CreateGrudge(MiddleIncome,-0.05,0.83);CreateGrudge(Environmentalist_freq,0.05,0.80);
+
+[influences]
+0 = _random_,0,0.2
+1 = Environmentalist,0.3-(0.3*x)
+2 = AirTravel,0+(0.28*x),2
+3 = CO2Emissions,0+(0.34*x)
+4 = IntelligenceServices,-0.2*(x^2)
+

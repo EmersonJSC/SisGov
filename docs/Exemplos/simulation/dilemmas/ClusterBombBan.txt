@@ -1,0 +1,12 @@
+[dilemma]
+name=ClusterBombBan
+
+[influences]
+0 = _random_,0,0.68
+1 = Liberal_perc,0+(0.15*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.11,0.9);CreateGrudge(GDP,-0.01,0.9);CreateGrudge(Patriot,-0.09,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.11,0.9f);CreateGrudge(Capitalist,0.08,0.9);

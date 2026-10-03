@@ -1,0 +1,23 @@
+{
+  "id": "variaveis-brasil-primeiro-cenario",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    { "id": "recursos_atencao_basica", "tipo": "controle", "nome": "Recursos para atenção básica", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 2400, "maximo": 6000 }, "valorInicial": 4000, "area": "Saúde" },
+    { "id": "recursos_protecao_mulheres", "tipo": "controle", "nome": "Recursos para proteção às mulheres", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 0, "maximo": 600 }, "valorInicial": 240, "area": "Mulheres" },
+    { "id": "recursos_prevencao_seguranca", "tipo": "controle", "nome": "Recursos para prevenção e cooperação", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 0, "maximo": 1400 }, "valorInicial": 600, "area": "Segurança" },
+    { "id": "recursos_alimentacao_escolar", "tipo": "controle", "nome": "Recursos para alimentação escolar", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 0, "maximo": 1000 }, "valorInicial": 300, "area": "Educação e Cuidados" },
+    { "id": "recursos_creches_publicas", "tipo": "controle", "nome": "Recursos para creches públicas", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 0, "maximo": 1600 }, "valorInicial": 500, "area": "Educação e Cuidados" },
+    { "id": "cobertura_aps", "tipo": "calculado", "nome": "Cobertura estimada da atenção primária", "unidade": "percentual_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 72, "area": "Saúde", "avaliacao": "maior_melhor" },
+    { "id": "saude_populacao", "tipo": "calculado", "nome": "Saúde da população", "unidade": "indice_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 60, "area": "Saúde", "avaliacao": "maior_melhor" },
+    { "id": "pressao_hospitalar", "tipo": "calculado", "nome": "Pressão hospitalar", "unidade": "indice_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 54, "area": "Saúde", "avaliacao": "maior_pior" },
+    { "id": "violencia_letal", "tipo": "calculado", "nome": "Violência letal", "unidade": "taxa_por_100_mil", "dominio": { "minimo": 0, "maximo": 60 }, "valorInicial": 21.2, "area": "Segurança", "avaliacao": "maior_pior" },
+    { "id": "protecao_efetiva_mulheres", "tipo": "calculado", "nome": "Proteção efetiva às mulheres", "unidade": "indice_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 42, "area": "Mulheres", "avaliacao": "maior_melhor" },
+    { "id": "frequencia_escolar", "tipo": "calculado", "nome": "Frequência escolar", "unidade": "percentual_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 75, "area": "Educação e Cuidados", "avaliacao": "maior_melhor" },
+    { "id": "participacao_trabalho_cuidadoras", "tipo": "calculado", "nome": "Participação no trabalho de pessoas cuidadoras", "unidade": "percentual_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 62, "area": "Educação e Cuidados", "avaliacao": "maior_melhor" },
+    { "id": "oportunidades_juvenis", "tipo": "calculado", "nome": "Oportunidades juvenis", "unidade": "indice_0_100", "dominio": { "minimo": 0, "maximo": 100 }, "valorInicial": 45, "area": "Educação e Cuidados", "avaliacao": "maior_melhor" },
+    { "id": "despesa_recorte", "tipo": "calculado", "nome": "Despesa recorrente do recorte", "unidade": "moeda_milhoes_2024_ano", "dominio": { "minimo": 0 }, "valorInicial": 0, "area": "Economia", "avaliacao": "maior_pior" },
+    { "id": "saldo_recorte", "tipo": "calculado", "nome": "Saldo do recorte", "unidade": "moeda_milhoes_2024_ano", "dominio": {}, "valorInicial": 6000, "area": "Economia", "avaliacao": "maior_melhor" },
+    { "id": "carga_evento_demanda", "tipo": "calculado", "nome": "Carga temporária de demanda", "unidade": "quantidade", "dominio": { "minimo": 1, "maximo": 1 }, "valorInicial": 1, "area": "Técnica", "avaliacao": "neutra" }
+  ]
+}

@@ -1,0 +1,11 @@
+[config]
+Name = lowcorruptionpraised
+Texture = event67.png
+GUISound = DM4_Low Corruption Praised.wav
+OnImplement = CreateGrudge(lowcorruptionpraised,-0.9,0.9);CreateGrudge(Liberal,0.1,0.83);CreateGrudge(Capitalist,0.1,0.83);CreateGrudge(SelfEmployed,0.12,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = Corruption,0.7-(0.7*x),4
+2 = _winning_,0-(0.1*x),2
+

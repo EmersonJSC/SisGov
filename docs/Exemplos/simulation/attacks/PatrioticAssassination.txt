@@ -1,0 +1,16 @@
+[config]
+Name = PatrioticAssassination
+UsedBy = truepatriots
+Type = ASSASSINATION
+MinStrength = 55
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(PatrioticAssassination);
+protaginist_texture = voter_patriot.dds
+GUISound = DM4_Gameover_Rifles.wav
+OnFailure = CreateGrudge(PatrioticAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedPatrioticAssassination);
+
+[prereqs]
+PatrioticPlot
+

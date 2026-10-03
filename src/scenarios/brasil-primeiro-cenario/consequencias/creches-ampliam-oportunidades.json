@@ -1,0 +1,1 @@
+{"id":"creches-ampliam-oportunidades","tipo":"consequencia","versaoEsquema":1,"origem":"participacao_trabalho_cuidadoras","alvo":"oportunidades_juvenis","mecanismo":"afim","parametros":{"coeficiente":0.2,"termoConstante":-12.4},"unidade":"indice_0_100","atrasoPassos":2,"duracao":{"modo":"continuo"}}

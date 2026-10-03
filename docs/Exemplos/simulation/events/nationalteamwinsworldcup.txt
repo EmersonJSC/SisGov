@@ -1,0 +1,13 @@
+[config]
+Name = nationalteamwinsworldcup
+Texture = event31.png
+GUISound = DM4_National Team Wins World Cup.wav
+OnImplement = CreateGrudge(nationalteamwinsworldcup,-0.9,0.83); CreateGrudge(_All_,0.2,0.83);CreateGrudge(Patriot,0.12,0.83);
+
+[influences]
+0 = _default_,0.5+(0*x)
+1 = _random_,0,0.25
+2 = _winning_,0-(0.7*x)
+3 = Health,0+(0.17*x)
+
+

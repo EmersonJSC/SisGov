@@ -1,0 +1,14 @@
+[dilemma]
+name=DisguisedEmploymentLaw
+
+[influences]
+0 = _random_,0.1,0.3
+1 = Technology,0.32*(x^2)
+2 = Equality,0.3-(0.3*x)
+3 = InternetSpeed,0+(0.24*x)
+
+[option0]
+OnImplement = CreateGrudge(Poor,0.13,0.9);CreateGrudge(Capitalist,-0.10,0.86);CreateGrudge(GigEconomy,-0.22,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Poor,-0.07,0.88);CreateGrudge(Capitalist,0.07,0.83);CreateGrudge(GigEconomy,0.05,0.9);

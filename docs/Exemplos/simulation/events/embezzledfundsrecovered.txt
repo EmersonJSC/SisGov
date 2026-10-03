@@ -1,0 +1,11 @@
+[config]
+Name = embezzledfundsrecovered
+Texture = event64.png
+GUISound = DM4_Embezzled Funds Recovered.wav
+OnImplement = CreateGrudge(embezzledfundsrecovered,-0.900,0.850);CreateGrudge(_All_,0.100,0.850);
+
+[influences]
+0 = _random_,0.38,0.68
+1 = _winning_,0.2-(0.2*x)
+2 = Corruption 0-(1.0*x)
+

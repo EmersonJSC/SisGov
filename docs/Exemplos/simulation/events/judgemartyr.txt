@@ -1,0 +1,14 @@
+[config]
+Name = judgemartyr
+Texture = event5.png
+GUISound = DM4_Judge Martyr.wav
+OnImplement = CreateGrudge(judgemartyr,-0.9,0.83);CreateGrudge(Liberal,-0.15,0.83);CreateGrudge(_percept_compassion,-0.15,0.83);CreateGrudge(BusinessConfidence,-0.08,0.75);
+
+[influences]
+0 = _random_,0,0.15
+1 = Corruption,0.63 *(x^1.5),2
+2 = JudiciaryIndependence,0.32-(0.32*x),2
+3 = JuryTrial,-0.1-(0.2*x),2
+4 = SecretCourts,0.12+(0.18*x),2
+5 = DetentionWithoutTrial,0.11+(0.17*x),2
+6 = _winning_,0+(0.2*x)

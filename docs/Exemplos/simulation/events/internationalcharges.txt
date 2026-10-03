@@ -1,0 +1,10 @@
+[config]
+Name = internationalcharges
+Texture = event50.png
+GUISound = DM4_International Charges.wav
+OnImplement = CreateGrudge(internationalcharges,-0.900,0.830);CreateGrudge(Liberal,-0.10,0.830);CreateGrudge(ForeignRelations,-0.10,0.830);
+
+[influences]
+0 = _random_,0,0.25
+1 = ForeignRelations,0.75-(0.75*x)
+2 = _winning_,0.15*(x^2)

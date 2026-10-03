@@ -1,0 +1,13 @@
+[config]
+Name = civilservantsstrike
+Texture = event68.png
+GUISound = DM4_Civil Servants Strike.wav
+OnImplement = CreateGrudge(civilservantsstrike,-0.900,0.830);CreateGrudge(_All_,-0.100,0.80);
+
+[influences]
+0 = _random_,0.2,0.35
+1 = Wages,0.5-(0.5*x),4
+2 = WorkingWeek,0+(0.3*x),2
+3 = TradeUnionist_perc,0.48*(x^2),4
+4 = Unemployment,0-(0.2*x),4
+

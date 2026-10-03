@@ -1,0 +1,14 @@
+[config]
+Name = shareipocancelled
+Texture = event56.png
+GUISound = DM4_Share IPO Cancelled.wav
+OnImplement = CreateGrudge(shareipocancelled,-0.9,0.83);CreateGrudge(GDP,-0.08,0.83);CreateGrudge(Capitalist,-0.11,0.83);CreateGrudge(BusinessConfidence,-0.08,0.75);
+
+[influences]
+0 = _random_,0.07,0.18
+1 = GDP,0.5*(x^4),2
+2 = _winning_,0+(0.15*x),2
+3 = BusinessConfidence,-0.2*(x^4),2
+4 = Technology,0.1*(x^4),2
+5 = CapCEOPayMultiplier,0.15+(0.25*x)
+6 = _difficulty_,-0.05+(0.1*x)

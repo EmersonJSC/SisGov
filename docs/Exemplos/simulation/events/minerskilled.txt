@@ -1,0 +1,14 @@
+[config]
+Name = minerskilled
+Texture = event48.png
+GUISound = DM4_Miners Killed.wav
+OnImplement = CreateGrudge(minerskilled,-0.9,0.83);CreateGrudge(_All_,-0.1,0.83);CreateGrudge(Socialist,-0.16,0.85);
+
+[influences]
+0 = _default_,0.8+(0*x)
+1 = _random_,0,0.2
+2 = WorkSafetyLaw,-0.2-(0.6*x)
+3 = LabourLaws,-0.1-(0.1*x)
+4 = _prereq_,_prereq_mining_industry
+5 = _difficulty_,-0.05+(0.1*x)
+6 = _winning_,-0.05+(0.1*x)

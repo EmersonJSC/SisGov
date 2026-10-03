@@ -1,0 +1,10 @@
+[config]
+Name = citizenshiptests_lack
+Policy = CitizenshipTests
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+Immigration,1,0.35,1.0
+Patriot_perc,1,0.12,1.0
+RacialTension,1,0.45,1.0
+

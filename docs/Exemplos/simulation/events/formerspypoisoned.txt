@@ -1,0 +1,11 @@
+[config]
+Name = formerspypoisoned
+Texture = event69.png
+GUISound = DM4_Former Spy Poisoned.wav
+OnImplement = CreateGrudge(formerspypoisoned,-0.900,0.830);CreateGrudge(Patriot,-0.14,0.840);CreateGrudge(_All_,-0.1,0.810);
+
+[influences]
+0 = _random_,0,0.32
+1 = ForeignRelations,0.38-(0.38*x)
+2 = IntelligenceServices,0.47-(0.47*x)
+3 = _winning_,0.29*(x^2),4

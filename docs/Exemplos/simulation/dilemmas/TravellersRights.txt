@@ -1,0 +1,12 @@
+[dilemma]
+name=TRAVELLERS RIGHTS
+
+[influences]
+0 = PovertyRate,0+(0.92*x)
+1 = Liberal_perc,0+(0.45*x)
+
+[option0]
+OnImplement = CreateGrudge(Conservatives,-0.10,0.9);CreateGrudge(Poor,0.09,0.9);CreateGrudge(Liberal,0.11,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.09,0.9);CreateGrudge(Conservatives,0.10,0.9);CreateGrudge(Poor,-0.09,0.9);

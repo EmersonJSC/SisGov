@@ -1,0 +1,9 @@
+[config]
+Name = welfarefraud_lack
+Policy = WelfareFraudDept
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+UnemployedBenefit,1,0.25,1.0
+FoodStamps,1,0,1
+

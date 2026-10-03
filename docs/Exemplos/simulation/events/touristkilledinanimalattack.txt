@@ -1,0 +1,12 @@
+[config]
+Name = touristkilledinanimalattack
+Texture = event69.png
+GUISound = DM4_Tourist Killed In Animal Attack.wav
+OnImplement = CreateGrudge(touristkilledinanimalattack,-0.9,0.83);CreateGrudge(Tourism,-0.1,0.83);
+
+[influences]
+0 = _random_,0,0.15
+1 = _winning_,0+(0.35*x)
+2 = Tourism,0.6*(x^3)
+3 = _prereq_,_prereq_deadly_animals
+

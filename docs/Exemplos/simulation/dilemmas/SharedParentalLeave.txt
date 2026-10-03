@@ -1,0 +1,14 @@
+[dilemma]
+name=SharedParentalLeave
+
+[influences]
+0 = _random_,0.1,0.25
+1 = Parents_perc,0+(0.27*x)
+2 = Liberal_perc,0+(0.37*x)
+3 = TradeUnionist_perc,0+(0.17*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.08,0.8);CreateGrudge(Conservatives,0.09,0.8);CreateGrudge(Parents,-0.06,0.8);CreateGrudge(_global_liberalism,-0.04,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.09,0.9);CreateGrudge(Conservatives,-0.09,0.8);CreateGrudge(Parents,0.06,0.88);CreateGrudge(_global_liberalism,0.03,0.85);

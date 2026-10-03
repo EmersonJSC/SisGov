@@ -1,0 +1,9 @@
+[config]
+Name = racialprofiling
+Policy = RacialProfiling
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+PoliceForce,1,0.4,1.0
+RacialTension,1,0.2,1.0
+

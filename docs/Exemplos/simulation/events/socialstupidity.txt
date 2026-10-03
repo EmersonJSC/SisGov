@@ -1,0 +1,13 @@
+[config]
+Name = socialstupidity
+Texture = event91.png
+GUISound = DM4_Social Stupidity.wav
+OnImplement = CreateGrudge(socialstupidity,-0.9,0.83);CreateGrudge(Parents,-0.1,0.83);
+
+[influences]
+0 = _random_,0.24,0.44
+1 = Technology,0.49*(x^2),2
+2 = InternetSpeed,0.61*(x^2),2
+3 = Education,-0.32*(x^2),4
+4 = _winning_,0+(0.27*x)
+5 = _difficulty_,-0.05+(0.1*x)

@@ -1,0 +1,11 @@
+[dilemma]
+name=POSITIVE DISCRIMINATION
+
+[influences]
+0 = _random_,0.2,0.8
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.10,0.9);CreateGrudge(Conservatives,-0.20,0.9);CreateGrudge(EthnicMinorities,0.15,0.9);CreateGrudge(GenderEquality,0.15,0.9);CreateGrudge(_global_liberalism,0.04,0.99)
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.10,0.9);CreateGrudge(Conservatives,0.12,0.9);CreateGrudge(EthnicMinorities,-0.17,0.9);CreateGrudge(_global_liberalism,-0.05,0.99)

@@ -1,0 +1,11 @@
+[dilemma]
+name=Fracking
+
+[influences]
+0 = _random_,0.2,0.8
+
+[option0]
+OnImplement = CreateGrudge(Environmentalist,-0.10,1.0);CreateGrudge(Capitalist,0.05,1.0);CreateGrudge(OilSupply,0.10,1.0);CreateGrudge(GDP,0.04,1.0);
+
+[option1]
+OnImplement = CreateGrudge(Environmentalist,0.06,1.0);CreateGrudge(Capitalist,-0.05,1.0);

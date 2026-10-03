@@ -1,0 +1,12 @@
+[dilemma]
+name=Whaling
+
+[influences]
+0 = _random_,0.17,0.95
+1 = _prereq_,_prereq_whaling
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,0.06,0.9);CreateGrudge(Environmentalist,-0.09,0.9);CreateGrudge(GDP,0.02,0.9);CreateGrudge(Liberal,-0.04,0.9f);CreateGrudge(Conservatives,0.05,0.9);CreateGrudge(Farmers,0.05,0.9);CreateGrudge(ForeignRelations,-0.05,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,-0.01,0.9);CreateGrudge(Environmentalist,0.04,0.9);CreateGrudge(Liberal,0.03,0.9);CreateGrudge(Conservatives,-0.06,0.9);CreateGrudge(Farmers,-0.05,0.9);

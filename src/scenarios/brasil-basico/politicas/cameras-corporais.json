@@ -1,0 +1,31 @@
+{
+  "id": "regulamentacao-cameras-corporais",
+  "tipo": "regulamentacao",
+  "versaoEsquema": 1,
+  "nome": "Uso de câmeras corporais",
+  "descricao": "Regulamenta o uso, a guarda e a auditoria das gravações feitas por agentes de segurança.",
+  "area": "Segurança",
+  "processoAutorizacao": "regulamentacao-executiva",
+  "controle": {
+    "variavel": "escopo_cameras",
+    "modo": "escolha",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      { "valor": 0, "rotulo": "Sem diretriz nacional" },
+      { "valor": 25, "rotulo": "Projetos-piloto" },
+      { "valor": 50, "rotulo": "Unidades prioritárias" },
+      { "valor": 75, "rotulo": "Ocorrências definidas" },
+      { "valor": 100, "rotulo": "Uso obrigatório" }
+    ]
+  },
+  "consequencias": [
+    "cameras-reduzem-risco-direitos",
+    "cameras-melhoram-seguranca"
+  ],
+  "ministerio": "Ministério da Justiça e Segurança",
+  "respostaTemporal": {
+    "implantacao": 0.2,
+    "degradacao": 0.12
+  },
+  "icone": "camera"
+}

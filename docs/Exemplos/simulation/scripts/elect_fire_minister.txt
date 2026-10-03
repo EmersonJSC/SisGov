@@ -1,0 +1,1 @@
+CreateGrudge(Fired a minister,elect_fired_minister,_percept_strength,0.04,0.75);CreateGrudge(Fired a minister,elect_fired_minister,BusinessConfidence,-0.06,0.75);

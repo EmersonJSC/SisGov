@@ -1,0 +1,17 @@
+{
+  "id": "susp-reduz-crime",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_prevencao_seguranca",
+  "alvo": "crime",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0166666667,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

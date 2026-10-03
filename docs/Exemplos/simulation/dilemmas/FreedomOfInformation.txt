@@ -1,0 +1,12 @@
+[dilemma]
+name=Freedomofinformation
+
+[influences]
+0 = _random_,0,0.4
+1 = Liberal_perc,0+(0.5*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.13,1.0);CreateGrudge(StateEmployees,0.05,1.0);CreateGrudge(_security_,0.10,1.0);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.10,1.0);CreateGrudge(StateEmployees,-0.07,1.0);CreateGrudge(_security_,-0.04,1.0);CreateGrudge(Corruption,-0.04,1.0);

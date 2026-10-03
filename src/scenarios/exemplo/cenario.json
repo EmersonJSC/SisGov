@@ -1,0 +1,10 @@
+{
+  "id": "pais-exemplo",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "País de exemplo",
+  "estadoInicial": "exemplo/estado-inicial.json",
+  "variaveis": "exemplo/variaveis.json",
+  "politicas": ["exemplo/politicas/material-escolar.json"],
+  "consequencias": ["exemplo/consequencias/melhora-educacao.json"]
+}

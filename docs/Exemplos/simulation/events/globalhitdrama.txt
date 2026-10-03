@@ -1,0 +1,10 @@
+[config]
+Name = globalhitdrama
+Texture = event94.png
+GUISound = DM4_Global Hit Drama.wav
+OnImplement = CreateGrudge(globalhitdrama,-0.900,0.860);CreateGrudge(Patriot,0.050,0.830);CreateGrudge(Tourism,0.15,0.860);CreateGrudge(ForeignRelations,0.1,0.860);
+
+[influences]
+0 = _random_,0,0.5
+1 = _winning_,0.4-(0.4*x),4
+

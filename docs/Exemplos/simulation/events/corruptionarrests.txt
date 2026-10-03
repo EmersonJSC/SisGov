@@ -1,0 +1,10 @@
+[config]
+Name = corruptionarrests
+Texture = event51.png
+GUISound = DM4_Corruption Arrests.wav
+OnImplement = CreateGrudge(corruptionarrests,-0.900,0.830);CreateGrudge(_All_,-0.100,0.830);
+
+[influences]
+0 = _random_,0,0.41
+1 = _winning_,0.2-(x*0.4)
+2 = Corruption,0+(0.9*x)

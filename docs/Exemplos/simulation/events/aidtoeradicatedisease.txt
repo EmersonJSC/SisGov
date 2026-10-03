@@ -1,0 +1,13 @@
+[config]
+Name = aidtoeradicatedisease
+Texture = event45.png
+GUISound = DM4_Aid To Eradicate Disease.wav
+OnImplement = CreateGrudge(aidtoeradicatedisease,-0.900,0.830);CreateGrudge(Patriot,-0.100,0.83);CreateGrudge(ContagiousDisease,-0.120,0.83);
+
+[influences]
+0 = _random_,0,0.24
+1 = PovertyRate,0.97*(x^2)
+2 = ForeignRelations,0+(0.17*x)
+3 = ContagiousDisease,0.28+(0.33*x),4
+4 = Health,-0.3*(x^3)
+

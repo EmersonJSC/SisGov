@@ -1,0 +1,11 @@
+[config]
+Name = resourcesobsolete
+Texture = event56.png
+GUISound = DM4_Resources Obsolete.wav
+OnImplement = CreateGrudge(resourcesobsolete,-0.9,0.83);CreateGrudge(GDP,-0.08,0.83);
+
+[influences]
+0 = _random_,0,0.74
+1 = _winning_,0+(0.15*x),5
+2 = _prereq_,_prereq_mining_industry
+

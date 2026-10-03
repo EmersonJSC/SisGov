@@ -1,0 +1,12 @@
+[config]
+Name = deadlyvirusoutbreak
+Texture = event29.png
+GUISound = DM4_DeadlyVirusOutbreak.wav
+OnImplement = CreateGrudge(deadlyvirusoutbreak,-0.900,0.830);CreateGrudge(HealthcareDemand,0.30,0.850);CreateGrudge(GDP,-0.08,0.830);CreateGrudge(InternationalTrade,-0.22,0.830);CreateGrudge(Tourism,-0.62,0.870);CreateGrudge(Lifespan,-0.100,0.830);CreateGrudge(BusinessConfidence,-0.12,0.75);
+
+[influences]
+0 = _random_,0,0.21
+1 = Health,0.88-(1.0*x),8
+2 = ScienceFunding,0.1-(0.1*x),8
+3 = _winning_,-0.05+(0.31*x),4
+4 = _difficulty_,-0.07+(0.14*x)

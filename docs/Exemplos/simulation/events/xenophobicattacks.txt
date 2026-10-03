@@ -1,0 +1,14 @@
+[config]
+Name = xenophobicattacks
+Texture = event71.png
+GUISound = DM4_Xenophobic Attacks.wav
+OnImplement = CreateGrudge(xenophobicattacks,-0.9,0.83);CreateGrudge(Liberal,-0.13,0.83);CreateGrudge(EthnicMinorities,-0.22,0.85);
+
+[influences]
+0 = _random_,0,0.25
+1 = Unemployment,0+(0.37*x)
+2 = RacialTension,0+(0.47*x)
+3 = PovertyRate,0+(0.45*x)
+4 = PoliceForce,0-(0.11*x)
+5 = CCTVCameras,0-(0.09*x)
+6 = _winning_,0+(0.18*x)

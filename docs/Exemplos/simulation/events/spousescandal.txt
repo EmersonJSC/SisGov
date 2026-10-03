@@ -1,0 +1,11 @@
+[config]
+Name = spousescandal
+Texture = event52.png
+GUISound = DM4_Spouse Scandal.wav
+OnImplement = CreateGrudge(spousescandal,-0.9,0.83);CreateGrudge(_All_,-0.1,0.83);CreateGrudge(Socialist,-0.12,0.83);CreateGrudge(_percept_trust,-0.13,0.83);
+
+[influences]
+0 = _random_,0.2,0.6
+1 = _winning_,0+(0.5*x),2
+2 = Equality,0-(0.2*x),2
+

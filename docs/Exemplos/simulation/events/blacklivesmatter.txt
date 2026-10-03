@@ -1,0 +1,14 @@
+[config]
+Name = blacklivesmatter
+Texture = event95.png
+GUISound = DM4_blacklivesmatter.wav
+OnImplement = CreateGrudge(blacklivesmatter,-0.900,0.830);CreateGrudge(RacialTension,0.14,0.83);CreateGrudge(_global_liberalism,0.10,0.83);
+
+[influences]
+0 = _random_,0,0.25
+1 = RacialTension,0+(0.45*x)
+2 = EthnicMinorities_perc,0+(0.55*x)
+3 = _global_liberalism,0+(0.3*x)
+4 = Polarization,0+(0.1*x)
+5 = FakeNews,0+(0.1*x)
+

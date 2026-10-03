@@ -1,0 +1,15 @@
+[config]
+Name = scientificbreakthrough
+Texture = event76.png
+GUISound = DM4_Scientific Breakthrough.wav
+OnImplement = CreateGrudge(scientificbreakthrough,-0.9,0.99);CreateGrudge(ElectricCarTransition,0.25,0.99);
+
+[influences]
+0 = _random_,0,0.17
+1 = Technology,0.39*(x^2),4
+2 = ScienceFunding,0.39*(x^4),8
+3 = BrainDrain,-0.1-(0.12*x)
+4 = Education,0+(0.09*x)
+5 = _winning_,0-(0.1*x),2
+6 = _difficulty_,0.05-(0.1*x)
+

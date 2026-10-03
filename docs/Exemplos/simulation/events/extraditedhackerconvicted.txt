@@ -1,0 +1,13 @@
+[config]
+Name = extraditedhackerconvicted
+Texture = event50.png
+GUISound = DM4_Extradited Hacker Convicted.wav
+OnImplement = CreateGrudge(extraditedhackerconvicted,-0.900,0.830);CreateGrudge(CrimeRate,-0.050,0.830);CreateGrudge(_percept_strength,0.05,0.830);CreateGrudge(CyberWarfare,-0.15,0.830);
+CreateGrudge(InternetCrime,-0.100,0.830);
+
+[influences]
+0 = _random_,0,0.17
+1 = ForeignRelations,0+(0.52*x)
+2 = IntelligenceServices,0+(0.22*x)
+3 = _winning_,0.05-(0.1*x)
+

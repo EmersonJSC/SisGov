@@ -1,0 +1,12 @@
+[config]
+Name = garbagescam
+Texture = event82.png
+GUISound = DM4_Garbage Scam.wav
+OnImplement = CreateGrudge(garbagescam,-0.900,0.830);CreateGrudge(Environmentalist,-0.12,0.830);CreateGrudge(ForeignRelations,-0.08,0.830);
+
+[influences]
+0 = _random_,0,0.2
+1 = GDP,0.51*(x^4)
+2 = InternationalTrade,0.18*(x^2)
+3 = Recycling,0.3-(0.38*x)
+

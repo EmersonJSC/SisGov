@@ -1,0 +1,9 @@
+[config]
+Name = foodstamps_lack
+Policy = FoodStamps
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+PovertyRate,1,0.2,1.0
+FoodPrice,1.0.25,1.0
+

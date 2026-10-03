@@ -1,1157 +1,655 @@
 # Plano de produção do SisGov
 
-96 chamados em 12 fases para uma equipe de uma pessoa
+3 de outubro de 2026 • Revisão de turnos, finanças, capacidade e próximos passos
 
-26 de setembro de 2026 • Versão inicial de planejamento
+Construir um jogo em que o jogador representa um partido e conduz o governo enquanto ocupa a Presidência. Políticas, eventos e consequências são definidos em JSON. O software carrega e valida esses arquivos, monta o grafo e executa os mecanismos declarados. Adicionar conteúdo que usa mecanismos existentes deve exigir apenas novos dados.
 
-## Como usar este plano
+A Fase 00 está concluída, com registro em `docs/qualidade/verificacao-base-producao.md`. Os 96 IDs são mantidos para preservar o acompanhamento. As fichas futuras foram simplificadas e devem ser detalhadas quando forem iniciadas. As capacidades descritas ainda precisam ser implementadas.
 
-Este documento transforma a proposta do motor e o estudo de Democracy 4 em um roteiro de trabalho até uma primeira versão pequena e publicável do jogo. As áreas representam responsabilidades que uma pessoa pode alternar. Quando outra pessoa entrar, ela poderá reservar um chamado com dependências concluídas e entrega clara.
+## Progresso e próxima fase — revisão de 3 de outubro de 2026
 
-Os 96 chamados começam em Planejado, sem responsável e sem evidência de conclusão. “Chamado” aqui é uma ficha de trabalho no projeto, não uma issue já criada em serviço externo. SG001 é o ponto de partida. A existência de uma ficha não significa que sua implementação ou uma publicação externa já foi autorizada.
+As Fases 01–06 possuem contratos, implementações e verificações registrados abaixo:
+carregamento, execução numérica, atrasos, ocorrências, restauração, bancada e
+primeiro recorte em JSON. A partida integrada da Fase 07 ainda não está concluída.
+O laboratório de mais de cem políticas é demonstrativo e não substitui o cenário
+calibrado. O resumo antigo que apontava SG025 como próxima tarefa estava desatualizado.
 
-Fluxo: Planejado → Pronto → Em andamento → Em revisão → Concluído. Bloqueado deve informar motivo, o que falta e quem pode resolver. Um chamado vira Pronto quando suas dependências estão concluídas, suas decisões anteriores estão registradas e sua entrega continua cabendo no tamanho previsto.
+**Próxima etapa:** SG057-A, contrato do turno; em seguida SG060-A/B, núcleo fiscal e
+financiamento, e SG058-C/D, capacidade e limites de políticas. Novas variáveis entram
+nessa fase em ondas pequenas. Bancos e crédito ficam explícitos em SG060-C.
 
-Manter uma implementação em andamento por pessoa. Uma sessão diária pode ter de uma a três horas: reservar a ficha, conferir dependências, realizar uma parte verificável, registrar evidência e deixar o próximo passo. Não é necessário concluir uma ficha a cada dia.
+O [plano detalhado da próxima fase](producao/sg057-proxima-fase-e-economia.md) define
+ordem, variáveis, identidades contábeis, limites legais/financeiros/operacionais,
+retornos decrescentes, fiscalização e critérios de teste. É especificação de trabalho,
+não declaração de que essas mecânicas já estejam prontas.
 
-Estimativa de esforço: 167–334 horas de trabalho concentrado, antes de 25% de reserva para integração, retrabalho e defeitos. Com nove horas produtivas por semana, isso representa aproximadamente 23–46 semanas. São estimativas de planejamento, não prazo garantido; espera por fontes, participantes e decisões não está incluída.
+**SG043-R — Correção do laboratório e diário:** o avanço inicial foi reproduzido
+com erro de domínio em Saúde; os parâmetros demonstrativos foram corrigidos sem
+retirar a validação. O diário mostra decisões, avanços, causas e falhas; retenção
+limitada à sessão. Isso não encerra SG061 nem substitui o diário integrado de SG069.
 
-Se uma ficha ultrapassar quatro horas previstas, dividir antes de continuar em SGxxx-A e SGxxx-B, preservando a referência e especificando novos aceites. Pesquisa inconclusiva deve terminar com achados, lacunas e próximo experimento, sem ocupar dias indefinidamente.
+## Direção visual aprovada em 3 de outubro de 2026
 
-## Como entregar e passar trabalho
+A tela principal segue o [motor espacial](producao/motor-espacial.md): presidente e ministros são os centros de maior massa; leis orbitam seus representantes, e indicadores e situações se organizam em torno das leis relacionadas. A esfera federal envolve os resultados nacionais. Relações podem atravessar ministérios. A experiência é centrada no mapa, com interface mínima. Rosto do ministro e cor da esfera pela aprovação popular do ministro são evoluções futuras aprovadas, ainda sem implementação dessa aprovação.
 
-Ao reservar: registrar responsável, data, branch, estado e arquivos que pretende alterar. Ao pausar: registrar o que foi feito, comando de verificação, resultado, pendência e próximo passo exato. Ao concluir: anexar commit ou alteração, evidência do aceite e nota sobre decisões tomadas.
+## Regra central do projeto
 
-Ficha de acompanhamento a preencher no quadro: ID; responsável; estado; início; horas reais; branch ou commit; decisão vinculada; evidência; bloqueio; próximo passo. O Word é uma referência de leitura; manter o Markdown como texto mestre e atualizar o quadro operacional escolhido em SG002. Alterar o escopo aqui requer atualizar também sua cópia Word.
+Cada política terá seu próprio arquivo JSON, com tipo, requisitos, custos e referências às consequências. Lei, imposto e programa são tipos de política: aprovar uma lei e ajustar o investimento de um programa não precisam ser apresentados como a mesma ação. Cada evento, dilema, situação e definição de consequência também terá seu arquivo JSON. O cenário reúne os arquivos e define o estado inicial da partida.
 
-Uma entrega concluída deve atender ao aceite, preservar contratos usados por outras áreas, passar as verificações pertinentes e atualizar documentação afetada. Revisão individual é válida: reler o diff e executar o roteiro como usuário. Quando houver colega, pedir revisão sem exigir que a mesma pessoa aprove seu próprio código.
+O JSON descreve regras e parâmetros. O código implementa um conjunto pequeno de mecanismos, como contribuição numérica, condição, atraso e duração. Uma nova lei que usa esses mecanismos exige apenas dados; uma operação matemática nova exige código, validação e testes próprios. Fórmulas não executam JavaScript nem usam `eval`.
 
-Cada decisão registra problema, alternativas, escolha, motivo, consequências, data e chamados afetados. SGxxx identifica sua origem. As recomendações nas fichas são pontos de partida; mudar uma delas exige ajustar os dependentes antes de torná-los Prontos.
+O tipo da política orienta seus controles e o processo de autorização declarado nos dados. Uma consequência define um efeito direto; os efeitos indiretos surgem da propagação pelo grafo. Não registrar novamente cada efeito indireto como consequência direta, pois isso contaria o mesmo impacto duas vezes.
 
-Para colaboração, uma pessoa assume cada ficha; outra pode trabalhar em ficha independente. Exemplos: SG027 e SG026 após SG025; SG050 e SG051 após SG049; SG092 e SG093 após seus pré-requisitos. As pessoas combinam antes de alterar o mesmo arquivo. Integrações preservam o trabalho já existente e passam por verificações.
+## Partido população e Senado
 
-Chamados SG074–SG076 são condicionais à decisão sobre grupos sociais em SG073. Se forem adiados, registrar Não aplicável e a justificativa em cada um; isso satisfaz somente essa dependência opcional. Nenhum outro chamado pode ser pulado silenciosamente. Novos defeitos recebem BUG001 em diante e, se impedirem um aceite, bloqueiam o marco correspondente.
+Partido do jogador, governo em exercício e composição do Senado são estados separados. A população elege a Presidência e o Senado, com resultados separados. Representá-la por poucos perfis agregados com interesses combinados: uma parcela pode reunir trabalhadores, idosos e motoristas. Cada parcela entra uma única vez na apuração; somar grupos sobrepostos não pode multiplicar votos.
 
-## Áreas de produção
+O apoio para aprovar leis vem do Senado, não de pontos de força política gastos pelo jogador. Cada proposta declara afinidade com correntes políticas em seu JSON. São valores independentes, não precisam somar 100% e não representam probabilidade ou garantia de voto. A opinião pública sobre a medida influencia apoio parlamentar e reação eleitoral; é distinta da aprovação geral do governo e não é veto automático. Uma proposta popular pode perder por falta de votos; uma impopular pode passar e gerar desgaste.
 
-PRO — Produção e produto. Prioridade, escopo, decisões, quadro e marcos. Local de referência: docs/producao e quadro de chamados.
+Antes da confirmação, mostrar estimativas separadas de reação popular, apoio parlamentar e impacto financeiro. Nas propostas sujeitas ao Senado, a decisão final vem das regras de votação. Quantidade de partidos e cadeiras, distribuição de vagas, maioria, calendário e regras eleitorais detalhadas permanecem pendentes em SG057; não inventar esses números ao implementar o restante.
 
-MOT — Engenharia do motor. Contratos, grafo, executor, tempo e estado. Local de referência: src/engine.
+Vencer a eleição presidencial inicia outro mandato com o mesmo país. Perder encerra a partida na primeira versão. Gabinete individual, campanhas detalhadas, negociação de coalizões, disputas internas, candidatos individuais e atuação na oposição ficam adiados.
 
-JOG — Design e regras do jogo. Ações, recursos, turnos, perfis e balanceamento. Local de referência: src/game e definições de cenário.
+## Aprovação implantação e país herdado
 
-PES — Pesquisa e conteúdo. Fontes, competências, variáveis e hipóteses. Local de referência: docs/pesquisa e src/scenarios.
+Separar proposta, resultado da autorização, nível desejado e nível implantado da política. A rejeição não inicia implantação. Depois da aprovação, a implantação pode avançar gradualmente; suas consequências ainda podem ter atraso, duração e dissipação próprios. Tempo de implantar um programa não é o mesmo que tempo de esperar seus resultados. Revogação segue a regra declarada e não apaga automaticamente consequências acumuladas.
 
-UX — Interface e experiência. Fluxos, componentes, acessibilidade e linguagem visual. Local de referência: src/ui e src/index.css.
+O Brasil começa com políticas vigentes, níveis já implantados ou em implantação, finanças, população, composição política e efeitos herdados. Nova partida carrega esse estado; novo mandato preserva o estado alcançado, incluindo dívida, crises e implantação em andamento.
 
-QA — Qualidade e validação. Referências, testes, marcos e relatos de defeitos. Local de referência: src/tests e docs/qualidade.
+Dinheiro público, apoio parlamentar e opinião pública não são um único recurso. Receitas, despesas, saldo, dívida e juros têm papéis próprios. Déficit é resultado válido e segue o financiamento definido no cenário, como dívida; não é erro do motor. Dados ausentes, referências inválidas e resultados não finitos continuam sendo falhas técnicas.
 
-DEV — Ferramentas e operação. Ambiente, integração, persistência e distribuição. Local de referência: package.json e configuração de ferramentas.
+## Organização mínima
 
-DOC — Documentação e comunicação. Entrada no projeto, ajuda e instruções de uso. Local de referência: README.md e docs.
+Usar um único projeto TypeScript, executado no navegador, com quatro responsabilidades:
 
-Os caminhos são destinos propostos, não pastas a criar antecipadamente. A ficha define uma área responsável, mas uma entrega pode precisar de revisão de outra. Testes pertencem à própria entrega; QA também verifica comportamentos entre componentes e riscos do modelo.
+- `src/scenarios`: arquivos JSON dos cenários e seu carregamento.
+- `src/engine`: validação do modelo, grafo, cálculo, tempo e explicações.
+- `src/game`: políticas, propostas, autorizações, implantação, finanças, população, Senado, turnos e eleições.
+- `src/ui`: telas que exibem o conteúdo e enviam decisões à camada de jogo.
 
-## Fases e marcos
+O carregador transforma o conteúdo validado em uma definição de simulação e um catálogo de regras de jogo. Pode começar como uma função; não precisa virar um serviço ou uma linguagem própria. O motor numérico e a camada de jogo funcionam sem React. Textos, nomes de leis e particularidades brasileiras ficam nos dados.
 
-Fase 00 — Preparação da produção. SG001 a SG008. Organizar o trabalho e estabelecer uma base verificável.
+Fluxo: arquivos JSON → validação e resolução de referências → grafo e catálogo → proposta e autorização → implantação e simulação → novo estado e explicações → interface.
 
-Fase 01 — Contratos do motor. SG009 a SG016. Fixar significados e decisões antes da execução matemática.
+Estrutura inicial de um cenário:
 
-Fase 02 — Modelo e estrutura do grafo. SG017 a SG024. Carregar modelos válidos e consultar suas dependências.
+```text
+src/scenarios/exemplo/
+  cenario.json
+  variaveis.json
+  politicas/
+    lei-exemplo.json
+  eventos/
+    evento-exemplo.json
+  dilemas/
+    dilema-exemplo.json
+  situacoes/
+    situacao-exemplo.json
+  consequencias/
+    efeito-exemplo.json
+```
 
-Fase 03 — Cálculo e execução. SG025 a SG032. Produzir estados determinísticos com confirmação atômica.
+`cenario.json` é o manifesto: lista arquivos, versões, valores iniciais, duração do passo, regras da partida, perfis sociais e estado político herdado. Os perfis podem ficar nesse arquivo enquanto forem poucos. Pastas sem conteúdo não são obrigatórias. O carregamento inicial usa arquivos distribuídos com o jogo. Acrescentar conteúdo pode exigir novo build, mas não editar código de regras, registros manuais de importação ou telas específicas.
 
-Fase 04 — Tempo memória e restauração. SG033 a SG040. Adicionar efeitos temporais sem perder reprodutibilidade.
+## Contratos necessários
 
-Fase 05 — Bancada de desenvolvimento. SG041 a SG048. Inspecionar o motor antes de construir a experiência de jogo.
+- **Identidade:** cada definição tem ID estável, tipo e versão de esquema. Referências usam IDs; nomes e caminhos podem mudar sem mudar a identidade. IDs duplicados são erro.
+- **Política:** tipo, nome, descrição, requisitos, conflitos, afinidades políticas, processo de autorização, custos, controle, domínio, implantação, vigência, revogação e consequências. Começar com liga/desliga ou intensidade numérica; uma lei não contém um catálogo paralelo de políticas.
+- **Consequência:** ID, dependências, alvo, mecanismo, parâmetros, unidade, atraso, duração, dissipação e modo de aplicação. Distinguir efeito contínuo de ocorrência única. Cada uso recebe identidade própria, ligada à política, evento, dilema ou situação que o ativou.
+- **Situação evento e dilema:** situação persiste enquanto suas condições sustentam o estado, como uma crise; evento é uma ocorrência automática; dilema exige uma escolha entre opções. Podem compartilhar condições e consequências, mas não o mesmo ciclo de vida. Gatilhos são determinísticos, com ocorrência única ou intervalo mínimo para repetição; sorteio fica adiado.
+- **Cenário:** manifesto, variáveis, país herdado e regras de turno, autorização, finanças e eleições. O primeiro recorte terá 6–10 variáveis de domínio, três decisões, ao menos um evento e dois perfis com interesses combinados e efeitos distintos. Dilemas e situações têm exemplos artificiais de teste, sem obrigar a ampliar o cenário mínimo. Estados de controle da partida não são indicadores adicionais.
+- **Procedência:** efeitos de domínio registram fonte ou hipótese de design e limitações. Coeficientes artificiais dos testes são identificados como artificiais.
+- **Estado:** snapshot do motor guarda valores, passo, histórico e memórias dos efeitos; o salvamento da partida agrega partido, governo, Senado, população, propostas, políticas vigentes, níveis desejados e implantados, finanças, mandato, turno, situações, eventos e dilemas pendentes. Esses dados pertencem à partida, separados das definições JSON.
 
-Fase 06 — Pesquisa e primeiro modelo de domínio. SG049 a SG056. Escolher um recorte brasileiro pequeno e rastreável.
+O grafo contém dependências numéricas; textos, escolhas e elegibilidade ficam no catálogo. Todos os nós e relações possíveis do cenário são montados antes de iniciar. Aprovação, implantação e ocorrências alteram comandos e ativação das contribuições, sem editar a estrutura do grafo durante a partida. Uma contribuição inativa vale zero, inclusive quando sua fórmula contém constante. Revogar encerra contribuições futuras conforme a regra declarada; não desfaz automaticamente valores já acumulados.
 
-Fase 07 — Regras da primeira experiência jogável. SG057 a SG064. Conectar decisões do jogador ao modelo validado.
+Começar com uma instância ativa por uso de consequência. Uma reativação enquanto ela estiver ativa é recusada com motivo; acúmulo e renovação automática ficam adiados. Usos distintos podem contribuir para o mesmo alvo e são somados com origem separada. Processar eventos em ordem estável de ID e avaliar seus gatilhos sobre o mesmo retrato.
 
-Fase 08 — Interface e comunicação com o jogador. SG065 a SG072. Transformar o ciclo validado em uma experiência compreensível.
+Definir uma única ordem de turno: validar propostas e escolhas sobre o estado confirmado, resolver autorizações, preparar implantação e finanças, executar passos técnicos, avaliar ocorrências e eleições e confirmar tudo junto. Ocorrências descobertas ao final são aplicadas ou apresentadas na etapa seguinte prevista, sem cadeia infinita no mesmo turno. Falhas técnicas preservam toda a partida; rejeição parlamentar é resultado válido. O motor calcula e explica; somente a camada de jogo decide continuidade, vitória, derrota ou encerramento. Calendário, resolução de dilemas e precedência das eleições sobre pendências serão fixados em SG057.
 
-Fase 09 — Conteúdo social e balanceamento. SG073 a SG080. Expandir apenas o que a pergunta do jogo exige.
+## Como manter o projeto simples
 
-Fase 10 — Qualidade persistência e testes com pessoas. SG081 a SG088. Preparar a primeira versão para uso fora do desenvolvimento.
+1. Provar o fluxo completo cedo. Até SG032, uma lei artificial em JSON deve alterar uma entrada e produzir uma consequência explicável por teste, com autorização simulada apenas na bancada. Senado e orçamento entram na Fase 07; o jogo não oferece esse atalho. Até SG040, incluir eventos e retomada da execução.
+2. Usar o mesmo carregamento na aplicação e nos testes. Rejeitar arquivo inválido com arquivo, ID, campo e motivo. Nenhuma parte de um pacote inválido entra na execução.
+3. Começar com Map, soma e transformação afim, sem restringir o jogo a somas. Produto de entradas, respostas limitadas, condições e resposta gradual entram quando um exemplo do cenário exigir, com contrato e teste. Receita como alíquota × base tributável precisa de produto, não de uma soma disfarçada. Não criar linguagem de fórmulas arbitrárias.
+4. Carregar o cenário uma vez. Manter definição imutável e estado separado. Mudanças nos arquivos exigem nova execução; recarga durante a partida fica adiada.
+5. Ter uma fonte para cada regra. A camada de jogo calcula disponibilidade, opinião, apoio, autorização e finanças; a interface apresenta resultados e envia escolhas, sem recalcular regras. O motor não conhece nomes de partidos ou leis.
+6. Salvar a identidade exata do conteúdo. Usar versões de esquema e executor e identificação do pacote por conteúdo, além da versão declarada. Save incompatível é recusado com explicação; migração automática fica adiada.
+7. Testar comportamento e explicar resultados. Registrar qual política, ocorrência e consequência originou cada contribuição. Cobrir arquivo inválido, rejeição, implantação, revogação, duplicidade, déficit, eleições, falha no turno e retomada.
+8. Começar com tabela e controles comuns. Diagrama, editor, plugins, servidor, banco de dados, contas e nuvem ficam para uma necessidade concreta.
 
-Fase 11 — Publicação e continuidade. SG089 a SG096. Publicar uma primeira versão pequena e manter o trabalho sustentável.
+O critério central de arquitetura é verificável: cadastrar outra lei, evento ou consequência com mecanismos disponíveis, alterar apenas JSON e executar pelo mesmo fluxo. Se isso exigir uma condição pelo nome da lei no código ou uma tela exclusiva, revisar a separação de responsabilidades.
 
-A última ficha de cada fase é seu marco de saída e reúne os pré-requisitos. A fase seguinte depende desse marco, como indicado nos chamados. Ao fechar uma fase, detalhar e reestimar as próximas oito fichas com o conhecimento adquirido. Os marcos futuros definem um recorte inicial revisável, não uma especificação congelada por meses.
+## Como acompanhar
 
-As fases 00–05 produzem um motor inspecionável. As fases 06–08 produzem um pequeno ciclo jogável. As fases 09–11 tratam aprofundamento, qualidade e distribuição. Editor completo, multiplayer, contas, nuvem, inteligência artificial e reprodução integral de Democracy 4 ficam fora desta primeira versão.
+O Markdown é o texto mestre; o Word é uma cópia de leitura atualizada a partir dele. O estado operacional fica no GitHub Project escolhido em SG002. Criar issues ao assumir o trabalho, conforme `docs/producao/quadro-de-chamados.md`.
 
-Começo sugerido: primeira sessão em SG001; segunda em SG002; terceira e quarta em SG003; depois SG004 e SG005 conforme a disponibilidade. Use o esforço real dessa primeira semana para ajustar capacidade, sem transformar a sugestão em cobrança diária.
+Manter um chamado de implementação em andamento por pessoa. Estados: Planejado, Pronto, Em andamento, Em revisão, Bloqueado e Concluído. Registrar na issue branch, decisões, evidência do aceite e próximo passo. Seguir `docs/producao/fluxo-de-branches-e-revisao.md`.
 
-## Base e escolhas já propostas
+Cada ficha define entrega e aceite. O marco de uma fase depende das sete fichas anteriores daquela fase; a próxima fase começa depois dele. Dependências adicionais aparecem nas fichas. Estimar ao iniciar e dividir tarefas maiores que quatro horas em SGxxx-A e SGxxx-B. Não presumir que toda ficha cabe em quatro horas.
 
-A proposta do motor recomenda TypeScript, grafo dirigido em memória, validação de modelos, execução síncrona, explicações e snapshots. As fichas de decisão confirmam essas escolhas antes da implementação. O protótipo atual de quatro indicadores é uma interface inicial, não um motor pronto.
+A estimativa anterior de 167–334 horas não cobre os contratos e o ciclo político agora explicitados. Reestimar a Fase 01 e depois cada fase com base nas entregas reais. SG009 já tem decisão em `src/engine/semantica-do-passo.md`; conferir a evidência existente antes de repetir trabalho. Fichas dependentes de regras ainda abertas só ficam Prontas após a decisão correspondente.
 
-O estudo de Democracy 4 inspira dependências e consequências; não fornece um catálogo brasileiro validado. A lista de grupos nele é preliminar e apresenta diferença entre a contagem anunciada e os itens listados. SG073 deve escolher perfis adequados à pergunta do SisGov, sem copiar essa lista como contrato.
+Uma entrega termina quando seu aceite é demonstrado, as verificações pertinentes passam e a documentação acompanha a mudança. Defeitos recebem BUG001 em diante. Falta de fonte ou participante indica bloqueio e próximo passo. Publicação externa depende de decisão sobre a versão concreta.
 
-Referências internas: docs/motor-do-jogo.md; docs/Motor de simulacao do SisGov.docx; docs/Estudo Democracy 4 Politicas Grupos e Efeitos.docx. Fontes de tecnologias e mecânicas estão nesses documentos. SG050–SG053 exigem pesquisa específica quando o recorte real for escolhido; não há dados brasileiros inventados neste plano.
+## Fase 00 Preparação concluída
 
-## Catálogo de chamados
+SG001–SG008 preservam o histórico. Evidência em `docs/qualidade/verificacao-base-producao.md`; detalhes nas issues e documentos de produção. A revisão de escopo em 1 de outubro não reabre a Fase 00; atualiza a referência para as entregas futuras.
 
+### SG001 Definir a primeira versão
 
-# Fase 00 Preparação da produção
+Entrega e aceite: público, plataforma, três critérios de sucesso e exclusões em `docs/producao/primeira-versao.md`. Inclui efeitos sociais distintos e eleição com vitória ou derrota.
 
-Organizar o trabalho e estabelecer uma base verificável. Marco de saída: SG008.
+### SG002 Criar o quadro
 
-## SG001 Definir a primeira versão
+Depende de SG001. Entrega e aceite: estados, reserva, bloqueio e conclusão com evidência. A escolha registrada foi GitHub Project.
 
-Área: PRO • Tipo: Decisão • Esforço: 1–2 h
+### SG003 Conferir o ambiente
 
-Depende de: Nenhuma. Onde: docs/producao e quadro de chamados.
+Depende de SG001. Entrega e aceite: dependências, versões e comandos de execução, teste e build reproduzíveis.
 
-Entrega: Escrever uma página com público, plataforma inicial, experiência pretendida e exclusões.
+### SG004 Padronizar verificações
 
-Aceite: Há um objetivo observável, três critérios de sucesso e uma lista explícita do que fica de fora.
+Depende de SG003. Entrega e aceite: formatação, lint, tipos, build e testes em um fluxo local, preservando TypeScript estrito.
 
-Escolha: Escolher navegador desktop ou outra plataforma; recomendar navegador pelo protótipo existente.
+### SG005 Definir branches e revisão
 
-## SG002 Criar o quadro de chamados
+Depende de SG002 e SG003. Entrega e aceite: branch por chamado, commits, revisão, integração e tratamento de sobreposição de arquivos.
 
-Área: PRO • Tipo: Organização • Esforço: 1–2 h
+### SG006 Verificar na integração
 
-Depende de: SG001. Onde: docs/producao e quadro de chamados.
+Depende de SG004 e SG005. Entrega e aceite: integração detecta teste quebrado e aprova versão válida, sem publicar o jogo.
 
-Entrega: Adotar estados Planejado, Pronto, Em andamento, Em revisão, Bloqueado e Concluído; registrar IDs deste documento.
+### SG007 Criar o guia de entrada
 
-Aceite: Um chamado pode ser reservado, bloqueado com motivo e concluído com evidência.
+Depende de SG002, SG003 e SG005. Entrega e aceite: README orienta execução, estrutura, documentação e escolha de chamado.
 
-Escolha: Escolher Markdown local ou ferramenta de issues; começar local é suficiente.
+### SG008 Verificar a base
 
-## SG003 Conferir o ambiente de desenvolvimento
+Marco da fase. Aceite: alteração documental percorreu o fluxo local e a integração com evidência. Pendências de dependências registradas no marco seguem para avaliação própria.
 
-Área: DEV • Tipo: Preparação • Esforço: 2–4 h
+## Fase 01 Contratos do motor e do conteúdo
 
-Depende de: SG001. Onde: package.json e configuração de ferramentas.
+Objetivo: definir o mínimo para carregar e executar uma lei artificial. Entrada: SG008. Definir agora os estados e interfaces de conteúdo e partida; regras eleitorais detalhadas ficam em SG057 e sua execução na Fase 07.
 
-Entrega: Instalar as dependências existentes e registrar versões de runtime e comandos de execução, teste e build.
+### SG009 Escolher a semântica do passo — concluído
 
-Aceite: Outra pessoa consegue iniciar o projeto seguindo as instruções; falhas encontradas viram chamados vinculados.
+Entrega: conferir a decisão síncrona existente com uma cadeia de três nós. Aceite: leitura, propagação por passo e ciclos têm resultado inequívoco; preservar a decisão ou registrar sua alteração.
 
-## SG004 Padronizar verificações locais
+### SG010 Definir nós e estado inicial — concluído
 
-Área: DEV • Tipo: Preparação • Esforço: 2–4 h
+Depende de SG009. Entrega: controle aplicado pela camada de jogo, valor calculado e estoque com unidade e domínio. Aceite: exemplos JSON válidos e inválidos; o jogador altera políticas e controles, não indicadores do país, e controles aplicados não recebem contribuições numéricas do grafo.
 
-Depende de: SG003. Onde: package.json e configuração de ferramentas.
+### SG011 Definir consequências e relações — concluído
 
-Entrega: Escolher configuração mínima de formatação e lint, preservando TypeScript estrito.
+Depende de SG010. Entrega: contrato de consequência, referências, transformação afim e soma por destino. Aceite: relações paralelas e usos da mesma consequência têm identidades distintas; mecanismo declara todas as dependências e produz uma contribuição por uso. Registrar como produto e respostas limitadas serão incluídos quando exigidos pelo cenário.
 
-Aceite: Existe um comando de verificação e os arquivos existentes passam ou têm exceções justificadas.
+### SG012 Definir unidades e duração — concluído
 
-Escolha: Escolher ferramentas compatíveis com as versões existentes; evitar atualização ampla neste chamado.
+Depende de SG010 e SG011. Entrega: catálogo mínimo, duração fixa positiva e tolerância numérica. Aceite: índice 0–1, percentual 0–100 e taxa por tempo são distintos; duração inválida falha.
 
-## SG005 Definir trabalho em branches e revisão
+### SG013 Definir validação e falhas — concluído
 
-Área: PRO • Tipo: Organização • Esforço: 1–2 h
+Depende de SG010 e SG012. Entrega: erros estruturados, domínios e rejeição atômica. Aceite: ausência, valor não finito, mecanismo desconhecido e versão incompatível são recusados; não existe saturação automática, resultado fora do domínio falha e estoque não perde saldo silenciosamente. Uma grandeza limitada usa mecanismo explícito que produza resposta válida. Saldo fiscal negativo em domínio permitido é resultado válido, não falha técnica.
 
-Depende de: SG002, SG003. Onde: docs/producao e quadro de chamados.
+### SG014 Escrever referências manuais — concluído
 
-Entrega: Documentar branch por chamado, identificação nos commits, integração e registro de revisão individual.
+Depende de SG009 a SG013. Entrega: cadeia, convergência, estoque e feedback com resultados de dois passos. Aceite: valores independem do executor; incluir lei e consequência artificiais, sem alegação sobre o mundo real.
 
-Aceite: O fluxo cobre duas pessoas trabalhando e determina como resolver sobreposição de arquivos.
+### SG015 Definir o pacote e as interfaces — concluído
 
-## SG006 Executar verificações na integração
+Depende de SG009 a SG013. Entrega: contratos mínimos de manifesto, política tipada, consequências, situações, eventos, dilemas e estado; operações de carregar, validar, criar execução, propor e avançar. Aceite: pacote artificial separa afinidade, opinião e apoio, bem como autorização, implantação e efeito; distingue snapshot numérico de estado político. Regras senatoriais ainda abertas têm referência a SG057. Usar funções locais, Map e um único validador compatível com as dependências existentes.
 
-Área: DEV • Tipo: Automação • Esforço: 2–4 h
+### SG016 Revisar os contratos — concluído
 
-Depende de: SG004, SG005. Onde: package.json e configuração de ferramentas.
+Marco da fase. Aceite: exemplos, unidades, tempo, identidade e erros são consistentes. Está claro como adicionar conteúdo sem alterar código e quais mecanismos ainda não estão disponíveis.
 
-Entrega: Configurar testes, tipos e build no serviço de integração escolhido, sem publicar o jogo.
+## Fase 02 Carregamento e grafo
 
-Aceite: Uma alteração com teste quebrado é detectada e uma versão válida passa.
+Objetivo: carregar pacotes completos e recusar conteúdo inválido antes da execução. Entrada: SG016.
 
-Escolha: Escolher serviço conforme a hospedagem real do repositório; manter execução local reproduzível.
+### SG017 Separar motor e cenário — concluído
 
-## SG007 Criar o guia de entrada no projeto
+Entrega: entrada pública sem React ou conteúdo brasileiro. Aceite: testes importam o núcleo; o motor aceita N indicadores e N políticas definidos pelo pacote, sem quantidade específica para um país.
 
-Área: DOC • Tipo: Documentação • Esforço: 1–2 h
+### SG018 Validar arquivos JSON — concluído
 
-Depende de: SG002, SG003, SG005. Onde: README.md e docs.
+Depende de SG017. Entrega: leitura e validação dos formatos, incluindo sintaxe e campos inesperados. Aceite: erro informa arquivo e campo; operador ou mecanismo não suportado falha sem execução parcial.
 
-Entrega: Documentar estrutura, execução e como escolher, reservar e entregar um chamado.
+### SG019 Resolver IDs e referências — concluído
 
-Aceite: Um leitor novo encontra o documento do motor, o estudo e o quadro sem depender do histórico da conversa.
+Depende de SG018. Entrega: resolver manifesto, nós, políticas, situações, eventos, dilemas e consequências. Aceite: ID duplicado, arquivo ausente e referência quebrada são recusados; ordem dos arquivos não altera a definição nem sobrescreve elementos.
 
-## SG008 Verificar a base de produção
+### SG020 Validar coerência — concluído
 
-Área: QA • Tipo: Marco • Esforço: 2–4 h
+Depende de SG018 e SG019. Entrega: verificar unidades, parâmetros, domínios, duração, alvos e estado herdado. Aceite: grafo vazio e efeito incompatível falham; um único nó de entrada é válido. Afinidades independentes não são obrigadas a somar 100%. Aplicar limites documentados de tamanho e profundidade das condições.
 
-Depende de: SG001, SG002, SG003, SG004, SG005, SG006, SG007. Onde: src/tests e docs/qualidade.
+### SG021 Montar grafo e catálogo — concluído
 
-Entrega: Executar o fluxo completo com uma alteração documental pequena e registrar o resultado.
+Depende de SG019 e SG020. Entrega: transformar o pacote em índices imutáveis de nós, relações e regras. Aceite: relações paralelas e autorrelações são preservadas; cada contribuição mantém referência ao arquivo e à definição de origem.
 
-Aceite: Ambiente, verificações, revisão e passagem de trabalho estão documentados e reproduzíveis.
+### SG022 Carregar sem registro manual em código — concluído
 
+Depende de SG021. Entrega: conectar manifesto aos arquivos distribuídos e usar o mesmo carregador nos testes. Aceite: acrescentar lei e consequência exige só JSON e novo build; falha preserva a execução aberta. Editor e edição estrutural durante a partida ficam adiados.
 
-# Fase 01 Contratos do motor
+### SG023 Diagnosticar o pacote — concluído
 
-Fixar significados e decisões antes da execução matemática. Marco de saída: SG016.
+Depende de SG021. Entrega: listar ciclos, componentes desconectados e conteúdo não utilizado. Aceite: avisos diferem de erros; feedback temporal válido é permitido e arquivos órfãos não entram silenciosamente na partida.
 
-## SG009 Escolher a semântica do passo
+### SG024 Validar dois pacotes — concluído
 
-Área: MOT • Tipo: Decisão • Esforço: 1–2 h
+Marco da fase. Aceite: dois pacotes artificiais usam o mesmo carregador e núcleo; reordenar arquivos preserva a definição. Cobrir erro estrutural, referência quebrada e conteúdo válido adicional sem editar TypeScript.
 
-Depende de: SG008. Onde: src/engine.
+## Fase 03 Execução mínima de ponta a ponta
 
-Entrega: Comparar atualização síncrona com propagação imediata usando uma cadeia de três nós.
+Objetivo: executar por teste uma lei JSON e explicar sua consequência. Entrada: SG024. Custos e partida completa entram na Fase 07.
 
-Aceite: Uma decisão registrada explica quando cada valor muda e como ciclos funcionam.
+### SG025 Inicializar execuções independentes — concluído
 
-Escolha: Recomendar atualização síncrona da proposta; registrar o atraso de uma conexão por passo.
+Entrega: criar estado a partir do pacote. Aceite: duas execuções não compartilham objetos mutáveis nem alteram arquivos ou definição.
 
-## SG010 Definir tipos de nós
+### SG026 Traduzir política em comando — concluído
 
-Área: MOT • Tipo: Contrato • Esforço: 1–2 h
+Depende de SG025. Entrega: traduzir política autorizada em comandos de entradas controláveis e ativação das contribuições. Aceite: intensidade inválida ou duas mudanças para a mesma entrada rejeitam o lote; política inativa não aplica constantes; nenhuma condição usa nome de lei no código. A autorização artificial dos testes não substitui a futura votação do jogo.
 
-Depende de: SG009. Onde: src/engine.
+### SG027 Calcular contribuições afins — concluído
 
-Entrega: Descrever entrada controlável, valor calculado e estoque com campos obrigatórios e estados iniciais.
+Depende de SG025. Entrega: multiplicar origem por coeficiente e somar constante. Aceite: positivo, negativo e zero conferem com referência manual; resultado não finito falha.
 
-Aceite: Cada tipo tem um exemplo válido e um inválido; entradas não aceitam contribuições de atualização.
+### SG028 Combinar valores calculados — concluído
 
-## SG011 Definir relações e agregação
+Depende de SG027. Entrega: somar contribuições em ordem estável ao valor de base. Aceite: base 10 com contribuições 3 e −2 produz 11 repetidamente, sem acumular resultado anterior.
 
-Área: MOT • Tipo: Contrato • Esforço: 1–2 h
+### SG029 Atualizar estoques — concluído
 
-Depende de: SG010. Onde: src/engine.
+Depende de SG027. Entrega: saldo de taxas vezes duração sobre estoque anterior. Aceite: 100 itens, taxas 8 e −3 por dia e dois dias produzem 110; unidade e domínio são respeitados.
 
-Entrega: Especificar ID, origem, destino, transformação afim, parâmetros e soma por destino.
+### SG030 Confirmar um passo completo — concluído
 
-Aceite: Duas relações entre o mesmo par são distinguíveis; a unidade da contribuição é declarada.
+Depende de SG026, SG028 e SG029. Entrega: calcular com um único retrato e confirmar tudo junto. Aceite: cadeia e feedback seguem SG014; falha preserva valores, memórias e número do passo.
 
-## SG012 Definir unidades e duração técnica
+### SG031 Explicar cada contribuição — concluído
 
-Área: MOT • Tipo: Decisão • Esforço: 1–2 h
+Depende de SG030. Entrega: registrar origem, lei ou evento quando aplicável, consequência, valores lidos e resultado. Aceite: reconstruir resultado pelo registro; erro e resposta limitada têm causa identificável.
 
-Depende de: SG010, SG011. Onde: src/engine.
+### SG032 Demonstrar lei executada por dados — concluído
 
-Entrega: Selecionar catálogo mínimo para exemplos artificiais e regras de conversão e duração.
+Marco da fase. Aceite: lei artificial carrega, recebe comando e altera indicador com explicação. Adicionar outra lei compatível exige só JSON. Ordens de cadastro diferentes produzem a mesma trajetória na tolerância definida; falha tardia não deixa atualização parcial.
 
-Aceite: Índice 0–1, percentual 0–100 e taxa por tempo não se confundem; duração inválida é recusada.
+## Fase 04 Tempo eventos e restauração
 
-Escolha: Escolher unidade de tempo técnica e tolerância numérica; não escolher o turno do jogo ainda.
+Objetivo: executar implantação, efeitos temporais e ocorrências determinísticas, preservando continuidade. Entrada: SG032.
 
-## SG013 Definir falhas e limites
+### SG033 Guardar histórico limitado — concluído
 
-Área: MOT • Tipo: Decisão • Esforço: 1–2 h
+Entrega: manter retratos até o maior atraso necessário. Aceite: incluem comandos do início do passo; pré-histórico usa valores iniciais e memória de cálculo tem limite.
 
-Depende de: SG010, SG012. Onde: src/engine.
+### SG034 Aplicar atrasos e duração — concluído
 
-Entrega: Especificar erro estruturado, ausência de dados, valores não finitos e estouro de domínio.
+Depende de SG033. Entrega: selecionar retrato por atraso inteiro e controlar início e fim de efeitos. Aceite: atraso um lê o passo anterior; ocorrência única não se repete e efeito contínuo termina no instante declarado. Atraso do efeito é distinto de implantação, duração, dissipação e turno.
 
-Aceite: Há exemplos de rejeição e saturação explícita; estoque conservado não perde saldo silenciosamente.
+### SG035 Aplicar resposta gradual — concluído
 
-Escolha: Recomendar rejeição do passo por padrão e saturação somente declarada.
+Depende de SG032. Entrega: alvo, fração por passo e memória explícita, reutilizáveis para implantação ou dissipação com estados separados. Aceite: valor 0, alvo 10 e fração 0,5 geram 5 e 7,5; nível desejado não substitui imediatamente o implantado. Parâmetros inválidos falham e memória pertence à instância correspondente.
 
-## SG014 Escrever resultados calculáveis à mão
+### SG036 Avaliar condições — concluído
 
-Área: QA • Tipo: Referência • Esforço: 1–2 h
+Depende de SG032. Entrega: comparações e combinações lógicas restritas compartilhadas por situações e jogo. Aceite: avaliação recebe retrato explícito; referências inválidas falham antes da execução e arquivos nunca executam código.
 
-Depende de: SG009, SG010, SG011, SG012, SG013. Onde: src/tests e docs/qualidade.
+### SG037 Executar situações eventos e dilemas JSON
 
-Entrega: Formalizar cadeia, convergência, estoque e feedback do documento do motor com estados esperados.
+Depende de SG034 e SG036. Entrega: situação persistente, evento automático e dilema com escolha obrigatória, usando condições comuns. Aceite: situação ativa acima de 0,7, desativa abaixo de 0,4 e preserva estado na faixa intermediária; evento único não se repete; dilema não aplica opções antes da escolha. Sem encadeamento na mesma avaliação; integração ao turno em SG057. Dividir em SG037-A para situações, SG037-B para eventos e SG037-C para dilemas antes de implementar.
 
-Aceite: Os resultados de pelo menos dois passos estão calculados sem usar o executor a implementar.
+**Execução serial:** SG037-A Situações persistentes → SG037-B Eventos automáticos → SG037-C Dilemas com escolha obrigatória.
 
-## SG015 Fixar dependências e interfaces públicas
+#### SG037-A Situações persistentes — concluído
 
-Área: MOT • Tipo: Decisão • Esforço: 1–2 h
+Entrada e saída usam condições separadas; a situação mantém seu estado enquanto estiver entre os limiares.
 
-Depende de: SG009, SG010, SG011, SG012, SG013. Onde: src/engine.
+#### SG037-B Eventos automáticos — concluído
 
-Entrega: Registrar escolha do armazenamento do grafo, validação de entrada e operações públicas do motor.
+Evento dispara uma única vez quando sua condição for satisfeita.
 
-Aceite: As operações têm entradas, saídas e erros definidos, sem importar React.
+#### SG037-C Dilemas com escolha obrigatória — concluído
 
-Escolha: Comparar Map e Graphology; conferir versão de Zod compatível antes de adotá-la.
+Dilema cria uma pendência e não aplica opção antes da resposta.
 
-## SG016 Revisar os contratos do motor
+### SG038 Exportar estado completo — concluído
 
-Área: QA • Tipo: Marco • Esforço: 2–4 h
+Depende de SG034, SG035 e SG037. Entrega: snapshot numérico com identidade do pacote, versões, valores, passo, histórico e memórias das instâncias; estado separado de ocorrências na bancada. Aceite: implantação, atraso e dissipação retomam do ponto salvo. Estado político e salvamento completo serão integrados em SG081.
 
-Depende de: SG009, SG010, SG011, SG012, SG013, SG014, SG015. Onde: src/tests e docs/qualidade.
+### SG039 Restaurar com compatibilidade verificada — concluído
 
-Entrega: Ler os contratos como se fossem implementados por outra pessoa e resolver ambiguidades.
+Depende de SG038. Entrega: verificar integridade e identidade do conteúdo. Aceite: pacote modificado, estado incompleto ou versão incompatível são recusados sem afetar a execução atual.
 
-Aceite: Semântica de tempo, unidades, erros e exemplos são consistentes; decisões têm registro.
+### SG040 Comparar execução contínua e retomada — concluído
 
+Marco da fase. Aceite: cenário artificial com política em implantação, evento, dilema, situação e efeito atrasado continua igual após restauração, incluindo explicações e pendências; ocorrência não dispara duas vezes e memória de cálculo é limitada.
 
-# Fase 02 Modelo e estrutura do grafo
+## Fase 05 Bancada simples
 
-Carregar modelos válidos e consultar suas dependências. Marco de saída: SG024.
+Objetivo: inspecionar o fluxo demonstrado por testes. Entrada: SG040.
 
-## SG017 Separar o núcleo do cenário atual
+### SG041 Definir a bancada — concluído
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Entrega: tabela de valores, controles de políticas, ocorrências e causas. Aceite: carregar, comandar, avançar e explicar resultado; identificar a bancada como teste técnico, sem aprovação parlamentar real. Começar sem biblioteca de diagrama.
 
-Depende de: SG016. Onde: src/engine.
+### SG042 Carregar pacotes na bancada — concluído
 
-Entrega: Criar a entrada pública do motor e manter a validação dos quatro indicadores na camada de cenário.
+Depende de SG041. Entrega: selecionar cenários pelo carregador comum. Aceite: arquivo inválido mostra diagnóstico; trocar cenário não mistura estados.
 
-Aceite: O núcleo é importável em teste sem React nem conteúdo brasileiro.
+### SG043 Avançar e reiniciar — concluído
 
-## SG018 Validar a estrutura do modelo
+Depende de SG042. Entrega: avançar um passo e reiniciar. Aceite: duplo clique não avança acidentalmente; reinício confirma descarte de progresso.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG044 Inspecionar causas — concluído
 
-Depende de: SG017. Onde: src/engine.
+Depende de SG043. Entrega: contribuição, origem JSON, atraso e efeito ativo. Aceite: conferir convergência na tela sem ler código.
 
-Entrega: Implementar o esquema escolhido para nós, relações, versões e valores iniciais.
+### SG045 Comparar trajetórias — concluído
 
-Aceite: Arquivo válido carrega; campo ausente, tipo incorreto e versão desconhecida geram caminho e código de erro.
+Depende de SG043. Entrega: comparar variável em duas execuções com decisões diferentes. Aceite: unidade e tempo visíveis; execuções independentes.
 
-## SG019 Validar referências e identidades
+### SG046 Consultar dependências — concluído
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG044. Entrega: lista navegável de origens e destinos. Aceite: direção e relações paralelas claras, acessíveis por teclado; diagrama é opcional e posterior à lista funcional.
 
-Depende de: SG018. Onde: src/engine.
+### SG047 Testar extremos — concluído
 
-Entrega: Detectar IDs duplicados, origens ou destinos inexistentes e grafo vazio.
+Depende de SG042 a SG046. Entrega: percorrer nó isolado, ciclo, atraso, evento e erro de domínio. Aceite: erros legíveis permitem recuperação e não aparecem como zero.
 
-Aceite: Casos inválidos são recusados; um único nó de entrada é válido.
+### SG048 Demonstrar inclusão de conteúdo — concluído
 
-## SG020 Validar coerência matemática
+Marco da fase. Aceite: roteiro curto acrescenta lei e evento por JSON e demonstra resultado e causa sem modificar núcleo ou tela. Documentar como copiar um exemplo válido e validar conteúdo novo.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+## Fase 06 Primeiro cenário de domínio
 
-Depende de: SG018, SG019. Onde: src/engine.
+Objetivo: Brasil com estado herdado, efeitos sociais e base para eleições. Entrada: SG048.
 
-Entrega: Verificar parâmetros, unidades, duração e compatibilidade entre relações e tipos de destino.
+### SG049 Escolher o recorte — concluído
 
-Aceite: Relação incompatível não entra no modelo; erros identificam o elemento responsável.
+Registro em 3 de outubro de 2026: [recorte de Saúde e Segurança](producao/sg049-recorte-do-cenario.md), com três políticas de recursos, dez variáveis de domínio, um evento e dois perfis populacionais. Conclusão documental; fontes, parâmetros e implementação continuam em SG050–SG056. O protótipo visual existente permanece disponível.
 
-## SG021 Construir índices de dependências
+Entrega: recorte brasileiro com partido na Presidência, 6–10 variáveis de domínio, três políticas, um evento e dois perfis com interesses combinados. Aceite: permitir um mandato curto e continuidade após vitória; não simular individualmente cidadãos ou políticos.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG050 Mapear decisões e autorizações — concluído
 
-Depende de: SG019, SG020. Onde: src/engine.
+Registro em 3 de outubro de 2026: [decisões e autorizações do recorte](producao/sg050-decisoes-e-autorizacoes.md). Fontes primárias, três políticas mapeadas, execução autorizada distinta de proposta orçamentária e Senado identificado como simplificação. P2 terá esfera de Mulheres no cenário futuro. Entrega documental; sem implementação de votação ou finanças.
 
-Entrega: Indexar nós e relações por ID, incluindo conexões de entrada e saída em ordem estável.
+Depende de SG049. Entrega: fontes primárias para ações do governo e dependências institucionais. Aceite: cada tipo de política declara o processo de autorização; distinguir regra brasileira observada e simplificação do jogo. O Senado simplificado não pretende reproduzir todo o Legislativo real.
 
-Aceite: Consultas retornam relações paralelas e autorrelações sem perda ou duplicação.
+### SG051 Definir variáveis e perfis — concluído
 
-## SG022 Proteger a edição da definição
+Registro em 3 de outubro de 2026: [variáveis e perfis do primeiro cenário](producao/sg051-variaveis-e-perfis.md). As dez variáveis receberam unidade, valor inicial e classe de origem; dados observados foram separados de hipóteses, e os dois perfis somam 100% sem duplicar população. Entrega documental; relações, atrasos e parâmetros continuam em SG052–SG053.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG049. Entrega: unidade, fonte, data, valores iniciais, peso populacional e interesses dos perfis. Aceite: interesses combinados não duplicam população; opinião sobre medida, aprovação do governo e indicador econômico são distintos. Valores provisórios são identificados.
 
-Depende de: SG021. Onde: src/engine.
+### SG052 Justificar consequências — concluído
 
-Entrega: Implementar remoção recusada quando há vínculos, cascata explícita e bloqueio de edição da execução.
+Registro em 3 de outubro de 2026: [consequências do primeiro cenário](producao/sg052-consequencias-do-primeiro-cenario.md). Oito relações diretas foram justificadas com direção, atraso qualitativo, fonte ou hipótese e incerteza; efeitos sociais distintos dos dois perfis e exclusões para evitar dupla contagem foram registrados. Coeficientes e atrasos numéricos continuam em SG053.
 
-Aceite: Uma edição inválida não altera a definição; cascata remove apenas relações incidentes esperadas.
+Depende de SG050 e SG051. Entrega: cinco a oito relações com direção, atraso, fonte ou hipótese e incerteza. Aceite: uma decisão afeta os perfis de formas distintas; não duplica efeito indireto como direto.
 
-## SG023 Identificar componentes e ciclos
+### SG053 Definir parâmetros — concluído
 
-Área: QA • Tipo: Diagnóstico • Esforço: 2–4 h
+Registro em 3 de outubro de 2026: [parâmetros do primeiro cenário](producao/sg053-parametros-do-primeiro-cenario.md). Foram definidas faixas de recursos, implantação e degradação, coeficientes e intervalos de incerteza, atrasos, duração do evento, limiares de sobrecarga e trajetórias esperadas. Todos usam mecanismos já existentes; valores são hipóteses de jogo separadas dos dados observados.
 
-Depende de: SG021. Onde: src/engine/graph e src/tests.
+Depende de SG052. Entrega: faixas, afinidades políticas, justificativa e expectativa de trajetória. Aceite: distinguir hipótese de dado observado; identificar mecanismos necessários além de soma e só usá-los após contrato e testes. Reduzir recorte se faltar evidência.
 
-Entrega: Disponibilizar diagnóstico de ciclos e componentes desconectados, sem proibir feedback temporal.
+### SG054 Escrever cenário em JSON — concluído
 
-Aceite: Cadeia, ciclo, autorrelação e ilha são identificados; avisos não rejeitam modelo válido.
+Registro em 3 de outubro de 2026: [primeiro cenário em JSON](producao/sg054-cenario-json.md). O pacote `brasil-primeiro-cenario` carrega sem regra brasileira no núcleo, inclui estado herdado, políticas vigentes, consequências, evento, situação e finanças derivadas. Um teste confirma que a base não se altera sem nova decisão.
 
-## SG024 Validar dois modelos independentes
+Depende de SG051 a SG053. Entrega: manifesto, variáveis, três políticas tipadas, consequências, evento e estado herdado, incluindo políticas vigentes e implantação. Aceite: carregador e executor funcionam sem regra brasileira no núcleo; iniciar país não aplica novamente custos únicos nem reinicia efeitos já existentes. Estado político inicial é completado conforme SG057 antes da partida integrada.
 
-Área: QA • Tipo: Marco • Esforço: 2–4 h
+### SG055 Comparar cenários de referência — concluído
 
-Depende de: SG017, SG018, SG019, SG020, SG021, SG022, SG023. Onde: src/tests e docs/qualidade.
+Registro em 3 de outubro de 2026: [comparação de cenários](producao/sg055-comparacao-de-cenarios.md). Base, expansão e redução de atenção básica foram executadas por oito turnos; a cadeia de atrasos e a contrapartida financeira foram verificadas. Uma divergência de ativação das relações intermediárias foi encontrada, corrigida no pacote e documentada.
 
-Entrega: Montar dois pequenos modelos artificiais e carregá-los pelo mesmo contrato.
+Depende de SG054. Entrega: executar base, aumento e redução de política. Aceite: comparar expectativas e explicar divergências sem ajustes ocultos.
 
-Aceite: Ambos funcionam sem alterar o núcleo; suíte cobre relações paralelas e referências quebradas.
+### SG056 Revisar conteúdo — concluído
 
+Registro em 3 de outubro de 2026: [revisão do primeiro cenário](producao/sg056-revisao-do-primeiro-cenario.md). O recorte foi aprovado como modelo jogável inicial, com fontes, unidades, hipóteses, perfis, estado herdado, limites e pendências visíveis. A Fase 6 está concluída; não há alegação de validade científica.
 
-# Fase 03 Cálculo e execução
+Marco da fase. Aceite: modelo pequeno, explicável e validado por arquivos; fontes, unidades, limitações e efeitos sociais visíveis. Testes de software não demonstram validade científica.
 
-Produzir estados determinísticos com confirmação atômica. Marco de saída: SG032.
+## Fase 07 Partida completa
 
-## SG025 Inicializar estados independentes
+Objetivo: integrar partido, Senado, opinião, implantação, finanças e eleições, sem código específico por política. Entrada: SG056.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG057 Definir turno votação e eleições
 
-Depende de: SG024. Onde: src/engine.
+Entrega: registrar regras ainda abertas de partidos, cadeiras, distribuição, maioria, influência popular, votação, calendário e apuração separada para Presidência e Senado. Definir duração, passos por turno, empates e precedência de pendências. Aceite: exemplos manuais não duplicam votos, distinguem afinidade de apoio e mostram vitória com novo mandato ou derrota com encerramento. Regras simplificadas e parâmetros ficam no cenário; mecanismos novos recebem testes. Dividir em SG057-A para ciclo temporal e SG057-B para regras políticas antes de implementar; SG058 aguarda essas decisões.
 
-Entrega: Criar execução a partir de modelo validado e valores iniciais.
+#### SG057-A Contrato temporal — próxima tarefa
 
-Aceite: Duas execuções não compartilham objetos mutáveis nem alteram a definição.
+Fixar calendário, duração, conversão de taxas, ordem de etapas e confirmação atômica.
+Não confundir passo técnico do laboratório com turno político. Incluir o diário e
+os casos de falha/retentativa. Proposta de trimestre ainda depende dessa decisão.
 
-## SG026 Receber comandos de entrada
+#### SG057-B Regras políticas — planejado
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Detalhar Senado, autorização e eleições conforme o escopo existente. Integração das
+ações exige esta entrega; contabilidade pode ser testada isoladamente após SG057-A.
 
-Depende de: SG025. Onde: src/engine.
+### SG058 Completar contrato das ações
 
-Entrega: Validar lote de mudanças apenas em entradas controláveis antes de iniciar o passo.
+Depende de SG057. Entrega: aplicar SG015 às políticas reais com disponibilidade, estimativas de opinião e apoio, autorização, nível desejado, implantação, custo e revogação. Aceite: JSON usa comandos genéricos; proposta popular pode ser rejeitada e impopular aprovada com reação pública; rejeição não inicia implantação. Dividir estimativa, votação e implantação em subtarefas conforme estimativa de esforço.
 
-Aceite: Comando fora do domínio ou duplicado para a mesma entrada rejeita o lote inteiro.
+#### SG058-C Limites e capacidade — planejado
 
-## SG027 Calcular contribuições afins
+Separar limites legais, financeiros, operacionais e de resultado. Implementar uma
+política de Saúde com demanda, capacidade, retorno decrescente e expansão com atraso.
+Mecanismos novos exigem contrato e testes antes de entrar no JSON. Dinheiro não
+recebe teto universal de 100; controle e domínio dependem do significado da política.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+#### SG058-D Governança e eficiência — planejado
 
-Depende de: SG025. Onde: src/engine.
+Distinguir desvio, superfaturamento e desperdício; considerar fiscalização e
+capacidade administrativa. Gasto elevado não implica corrupção automática. Cobrir
+contabilidade sem dupla perda e comparar gestão forte/fraca com mesmo orçamento.
 
-Entrega: Implementar mecanismo de multiplicação por coeficiente e soma de constante.
+### SG059 Validar escolhas e conflitos
 
-Aceite: Casos positivo, negativo e zero conferem com cálculos manuais; resultado não finito é erro.
+Depende de SG058. Entrega: requisitos de políticas e opções de dilemas no mesmo fluxo. Aceite: impedimentos têm motivo; escolhas incompatíveis e escritas conflitantes não chegam ao executor. Baixa popularidade não vira bloqueio automático; rejeição parlamentar difere de comando inválido.
 
-## SG028 Combinar valores calculados
+### SG060 Contabilizar finanças públicas
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG058. Entrega: receitas, despesas, saldo, dívida e juros conforme regra de financiamento do cenário, com custos únicos e recorrentes. Aceite: déficit permite continuar; erro técnico não cobra e repetição não duplica cobrança. Custos seguem implantação e vigência declaradas, com uma fonte contábil, sem novo débito do mesmo custo pelo grafo. Apoio parlamentar não é moeda do orçamento.
 
-Depende de: SG027. Onde: src/engine.
+#### SG060-A Identidades e unidades — planejado
 
-Entrega: Somar contribuições ordenadas por ID ao valor de base do nó.
+Após SG057-A, definir estoques, fluxos, resultado primário/nominal, caixa, dívida,
+juros, emissão e amortização. Verificar exemplos manuais do plano econômico. Esta
+especificação pode anteceder a integração de autorização de SG058.
 
-Aceite: Convergência retorna 11 repetidamente no exemplo; não acumula o resultado anterior.
+#### SG060-B Financiamento e restrições — planejado
 
-## SG029 Atualizar estoques por taxas
+Implementar déficit financiado, superávit em caixa/amortização, vencimentos e rolagem.
+Distinguir escassez econômica de falha técnica. Decisões mostram compromisso,
+financiamento e capacidade de execução. Reconciliar toda transação uma única vez.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+#### SG060-C Bancos e crédito agregados — planejado
 
-Depende de: SG027. Onde: src/engine.
+Após SG060-A/B, separar Tesouro, bancos e autoridade monetária. Modelar condições de
+crédito, inadimplência, risco e custo de novas emissões sem reprificar toda dívida
+fixa instantaneamente. Conectar à atividade e arrecadação. Sem bancos individuais
+ou rede interbancária nesta etapa. Critérios e extensões adiadas no plano detalhado.
 
-Entrega: Aplicar saldo de taxas multiplicado pela duração sobre o estoque anterior.
+### SG061 Confirmar turno inteiro
 
-Aceite: 100 itens com taxas 8 e menos 3 por dia em dois dias resulta em 110; domínio é respeitado.
+Depende de SG059 e SG060. Entrega: preparar autorizações, implantação, finanças, passos, ocorrências e eleições em estado provisório. Aceite: falha técnica preserva toda a partida; repetição não duplica votação, custo ou evento. Vitória abre novo mandato sem reiniciar o país; somente derrota encerra o percurso eleitoral e impede outro turno.
 
-## SG030 Confirmar um passo completo
+### SG062 Integrar lei e evento
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG061. Entrega: política, votação, implantação, gasto, consequência e evento; dilema quando presente. Aceite: roteiro distingue aprovação, implantação gradual e resultado atrasado; cobre recusa, déficit e revogação sem apagar efeitos acumulados. Resultados políticos e econômicos têm causas rastreáveis.
 
-Depende de: SG026, SG028, SG029. Onde: src/engine.
+### SG063 Integrar demais decisões
 
-Entrega: Ler um único retrato, calcular novos valores e confirmar tudo apenas se válido.
+Depende de SG062. Entrega: habilitar as outras duas decisões pelos arquivos. Aceite: mesmo fluxo atende todas; decisão compatível aparece sem alterar código e mantém origem dos efeitos.
 
-Aceite: Cadeia e feedback seguem os exemplos; falha em um nó preserva todos os valores e o passo anterior.
+### SG064 Validar partida sem interface final
 
-## SG031 Registrar explicações do cálculo
+Marco da fase. Aceite: iniciar com políticas herdadas; testar medida popular rejeitada e impopular aprovada, déficit válido, eleição sem dupla contagem e resultados separados. Vitória preserva país e implantação no mandato seguinte; derrota encerra. Executar por testes ou bancada, com efeitos sociais e evento rastreáveis.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+## Fase 08 Interface da partida
 
-Depende de: SG030. Onde: src/engine.
+Objetivo: apresentar o ciclo funcional usando dados e explicações existentes. Entrada: SG064.
 
-Entrega: Emitir valor lido, base, relação, contribuição, valor bruto e final por nó e passo.
+### SG065 Desenhar fluxos essenciais
 
-Aceite: É possível reconstruir um resultado com o registro; saturação e erro têm causa identificável.
+Entrega: início, painel do partido no governo, políticas, Senado, ocorrências, confirmação, resumo e eleições. Aceite: contemplar estimativa, resultado, erro, escolha pendente, novo mandato e encerramento, sem criar telas específicas por lei.
 
-## SG032 Verificar determinismo e atomicidade
+### SG066 Definir apresentação mínima
 
-Área: QA • Tipo: Marco • Esforço: 2–4 h
+Depende de SG065. Entrega: tipografia, espaçamento e controles. Aceite: contraste, foco e direção dos efeitos compreensíveis; painel simples e mapa somente se ajudar.
 
-Depende de: SG025, SG026, SG027, SG028, SG029, SG030, SG031. Onde: src/tests e docs/qualidade.
+### SG067 Construir início e painel
 
-Entrega: Comparar modelos cadastrados em ordens diferentes e provocar uma falha tardia no passo.
+Depende de SG066. Entrega: partido, mandato, indicadores, finanças, perfis, Senado e turno a partir do estado do jogo. Aceite: nova partida carrega o país herdado sem misturar execução anterior; valores iguais aos da execução ativa.
 
-Aceite: Trajetórias coincidem na tolerância definida e nenhuma falha deixa atualização parcial.
+### SG068 Mostrar escolhas do JSON
 
+Depende de SG067. Entrega: controles comuns de políticas e dilemas com custos, requisitos, reação popular e apoio previsto. Aceite: conteúdo compatível dispensa tela específica; regras vêm da camada de jogo. Afinidade, opinião, estimativa de votos e resultado confirmado são identificados separadamente.
 
-# Fase 04 Tempo memória e restauração
+### SG069 Explicar o turno
 
-Adicionar efeitos temporais sem perder reprodutibilidade. Marco de saída: SG040.
+Depende de SG068. Entrega: resultado das propostas, nível desejado e implantado, mudanças e efeitos sociais. Aceite: seguir decisão até efeito e abrir contribuição matemática; distinguir previsão, aprovação, implantação e atraso dos resultados, com unidades e limites visíveis nos gráficos.
 
-## SG033 Manter histórico para atrasos
+Complemento de 3 de outubro: manter um diário limitado, separado do histórico de
+atrasos, com decisões, implantação, causas, finanças realizadas e erros com contexto.
+O painel do laboratório é uma entrega preliminar; SG069 só termina com a partida
+integrada e com previstos/realizados identificados. Salvamento em SG081–SG082.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG070 Escrever ajuda
 
-Depende de: SG032. Onde: src/engine.
+Depende de SG069. Entrega: objetivo do partido, unidades, turnos, autorização, ocorrências e eleições. Aceite: primeira decisão possível com a ajuda; hipóteses e dados distinguíveis; explicar por que popularidade não garante aprovação e déficit não é erro técnico.
 
-Entrega: Guardar retratos de leitura em memória limitada ao atraso máximo configurado.
+### SG071 Mostrar eleições e continuidade
 
-Aceite: A leitura anterior inclui comandos daquele início; pré-histórico usa valor inicial e memória é limitada.
+Depende de SG069. Entrega: resultados separados para Presidência e Senado, explicação, continuar mandato ou iniciar nova partida. Aceite: vitória preserva país, propostas e efeitos; derrota não permite turno extra. Reinício confirmado descarta progresso e recarrega o cenário inicial, não zera suas políticas herdadas.
 
-## SG034 Aplicar atrasos às relações
+### SG072 Verificar percurso
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Marco da fase. Aceite: iniciar, propor, consultar Senado e perfis, responder a dilema quando presente e atravessar eleições com teclado e no menor tamanho de tela suportado. Conferir continuidade após vitória e encerramento após derrota, sem bloqueio de foco ou conteúdo cortado.
 
-Depende de: SG033. Onde: src/engine.
+## Fase 09 Revisão social e balanceamento
 
-Entrega: Selecionar o retrato correto por atraso adicional inteiro não negativo.
+Objetivo: melhorar o recorte jogável, mantendo os efeitos sociais de SG001. Entrada: SG072.
 
-Aceite: Mudança de 0 para 10 com atraso um aparece no passo seguinte; atrasos inválidos são recusados.
+### SG073 Revisar perfis existentes
 
-## SG035 Adicionar resposta gradual
+Entrega: revisar os dois perfis de SG049–SG051 e decidir se um terceiro é necessário. Aceite: manter efeitos distintos, interesses combinados e peso eleitoral único por parcela, sem simular indivíduos. A fase aprofunda a representação, não decide se ela existe.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG074 Revisar sensibilidades sociais
 
-Depende de: SG032. Onde: src/engine.
+Depende de SG073. Entrega: conferir relações e fontes ou hipóteses. Aceite: diferenças justificadas; perfis não são tratados como pessoas idênticas.
 
-Entrega: Criar mecanismo com alvo, fração por passo, unidade e estado interno explícitos.
+### SG075 Verificar agregação e eleição
 
-Aceite: Com valor 0, alvo 10 e fração 0,5, saídas são 5 e 7,5; não é confundido com atraso puro.
+Depende de SG074. Entrega: conferir opinião sobre medidas, aprovação do governo, influência parlamentar e eleições separadas. Aceite: interesse sobreposto não duplica votos; popularidade não garante cadeiras ou aprovação de proposta. Mecanismos genéricos e parâmetros JSON, sem fórmulas duplicadas na tela.
 
-Escolha: Documentar a fração para a duração fixa e recusar parâmetros fora do domínio.
+### SG076 Melhorar explicação social
 
-## SG036 Avaliar condições declarativas
+Depende de SG075. Entrega: revisar textos e apresentação dos efeitos. Aceite: identificar benefício, custo e conflito de interesses sem rótulos de grupo bom ou ruim.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG077 Medir sensibilidade
 
-Depende de: SG032. Onde: src/engine.
+Depende de SG076. Entrega: variar dois parâmetros nos intervalos documentados. Aceite: registrar mudança de sinal, extremos e dependência de hipóteses frágeis.
 
-Entrega: Implementar comparações e combinações lógicas de um conjunto restrito.
+### SG078 Revisar escolhas dominantes
 
-Aceite: Condições usam o retrato do início; referências inválidas falham na validação e não executam código arbitrário.
+Depende de SG077. Entrega: comparar estratégias e ajustar conteúdo se uma opção superar outras sem contrapartida. Aceite: justificar com comparação reproduzível; se não houver dominância, registrar estratégias verificadas.
 
-## SG037 Criar situações com dois limiares
+### SG079 Revisar textos e recursos
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG076 e SG078. Entrega: linguagem, fontes e licenças. Aceite: autoria e procedência identificadas, sem texto copiado das referências de inspiração.
 
-Depende de: SG036. Onde: src/engine.
+### SG080 Revisar equilíbrio
 
-Entrega: Persistir estado ativo e avaliar limiares diferentes de entrada e saída.
+Marco da fase. Aceite: duas estratégias têm consequências compreensíveis; ajuste de parâmetro não esconde erro matemático nem quebra contrato de conteúdo.
 
-Aceite: Acima de 0,7 ativa; abaixo de 0,4 desativa; igualdade e faixa intermediária preservam estado.
+## Fase 10 Salvamento e qualidade
 
-## SG038 Exportar snapshot completo
+Objetivo: preparar a partida para uso fora do desenvolvimento. Entrada: SG080.
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+### SG081 Definir arquivo de partida
 
-Depende de: SG034, SG035, SG037. Onde: src/engine.
+Entrega: integrar snapshot de SG038 a partido, governo, composição do Senado, população, propostas, níveis desejados e implantados, finanças, mandato, turno e ocorrências. Aceite: arquivo local identifica conteúdo exato e preserva tudo necessário para continuar; incompatibilidade tem tratamento explícito.
 
-Entrega: Serializar versões, valores, passo, histórico mínimo e estados internos dos mecanismos.
+### SG082 Salvar e recuperar
 
-Aceite: Nenhum estado necessário para continuar a execução fica apenas na memória do processo.
+Depende de SG081. Entrega: exportar e importar pela interface. Aceite: recuperar implantação, efeitos atrasados, composição política e próximo mandato sem duplicar votação, custos ou ocorrências; arquivo inválido mantém partida atual e alterações no conteúdo são detectadas.
 
-## SG039 Restaurar snapshot validado
+### SG083 Automatizar percurso essencial
 
-Área: MOT • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG082. Entrega: teste de interface com início herdado, proposta, ocorrência, save, recuperação e eleições. Aceite: comparar execução contínua e retomada antes e depois da eleição; detectar cobrança, votação ou evento duplicados e turno perdido. Validar todos os pacotes distribuídos na integração.
 
-Depende de: SG038. Onde: src/engine.
+### SG084 Verificar acessibilidade
 
-Entrega: Verificar integridade e compatibilidade antes de criar execução a partir do snapshot.
+Depende de SG083. Entrega: teclado, foco, nomes acessíveis, contraste e movimento reduzido. Aceite: corrigir falhas e verificar manualmente além das verificações automáticas.
 
-Aceite: Arquivo incompleto ou incompatível é recusado sem afetar a execução aberta.
+### SG085 Medir desempenho e memória
 
-## SG040 Comparar execução contínua e retomada
+Depende de SG083. Entrega: medir carga e avanço com cenário e máquina registrados. Aceite: orçamento de resposta baseado em medição, memória de cálculo limitada e retenção definida para histórico de apresentação. Worker só se necessário.
 
-Área: QA • Tipo: Marco • Esforço: 2–4 h
+### SG086 Observar sessão de uso
 
-Depende de: SG033, SG034, SG035, SG036, SG037, SG038, SG039. Onde: src/tests e docs/qualidade.
+Depende de SG084 e SG085. Entrega: roteiro de 20 minutos com ao menos uma pessoa. Aceite: registrar dificuldades; gravação com consentimento e falta de participante como bloqueio.
 
-Entrega: Rodar um cenário temporal, interrompê-lo e retomar o snapshot; comparar com trajetória contínua.
+### SG087 Corrigir principal bloqueio
 
-Aceite: Valores, memórias, situações e explicações seguintes coincidem; teste longo não cresce memória sem limite.
+Depende de SG086. Entrega: corrigir problema crítico e repetir tarefa. Aceite: tarefa funciona; se não houver bloqueio, registrar resultado. Demais defeitos recebem chamados próprios.
 
+### SG088 Aprovar candidata
 
-# Fase 05 Bancada de desenvolvimento
+Marco da fase. Aceite: percurso completo, pacotes válidos e saves compatíveis; nenhum bloqueio crítico ou perda de partida conhecido. Pendências menores têm prioridade e responsável.
 
-Inspecionar o motor antes de construir a experiência de jogo. Marco de saída: SG048.
+## Fase 11 Publicação e continuidade
 
-## SG041 Escolher o formato da bancada
+Objetivo: distribuir versão verificada e escolher melhorias pelo uso. Entrada: SG088.
 
-Área: UX • Tipo: Decisão • Esforço: 1–2 h
+### SG089 Escolher distribuição
 
-Depende de: SG040. Onde: src/ui e src/index.css.
+Entrega: destino da versão web estática e condições atuais. Aceite: custos, privacidade e responsável registrados; não assumir contratação paga.
 
-Entrega: Desenhar uma tela com modelo, passo, comandos, valores e causas.
+### SG090 Preparar pacote
 
-Aceite: O fluxo permite carregar, avançar e explicar um resultado com dados artificiais.
+Depende de SG089. Entrega: versão do jogo e conteúdo com notas de mudança. Aceite: inicia fora do desenvolvimento e inclui todos os JSON referenciados.
 
-Escolha: Escolher tabela inicial ou diagrama; recomendar tabela e adicionar React Flow apenas se ajudar.
+### SG091 Ensaiar publicação
 
-## SG042 Carregar modelos na bancada
+Depende de SG090. Entrega: testar em ambiente de teste. Aceite: recursos, JSON, save e recuperação funcionam no destino; publicação pública permanece separada.
 
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
+### SG092 Ensaiar retorno de versão
 
-Depende de: SG041. Onde: src/ui e src/index.css.
+Depende de SG091. Entrega: recuperar pacote anterior e tratar saves incompatíveis. Aceite: procedimento reproduzível sem prometer conversão automática de saves novos.
 
-Entrega: Conectar seleção dos modelos de referência à criação de execução.
+### SG093 Preparar orientações
 
-Aceite: Modelo inválido mostra diagnóstico; carregar outro não reaproveita estado indevido.
+Depende de SG090. Entrega: jogar, salvar, consultar limites e relatar problemas. Aceite: instruções correspondem à candidata e incluem canal existente.
 
-## SG043 Avançar e reiniciar simulações
+### SG094 Autorizar e publicar
 
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
+Depende de SG088, SG091, SG092 e SG093. Entrega: registrar aprovação da versão concreta e publicar. Aceite: conferir endereço ou pacote com nova partida e versão correta.
 
-Depende de: SG042. Onde: src/ui e src/index.css.
+### SG095 Organizar feedback
 
-Entrega: Adicionar comandos de avançar um passo e reiniciar com o estado inicial.
+Depende de SG094. Entrega: triagem de relatos. Aceite: versão do jogo e conteúdo, passos, esperado e ocorrido; incluir save quando disponível e pertinente.
 
-Aceite: Duplo clique não gera passos acidentais e reinício pede confirmação quando descarta progresso.
+### SG096 Planejar próximo ciclo
 
-## SG044 Inspecionar causas de um nó
+Marco da fase. Aceite: revisar feedback, horas reais e pendências; escolher até cinco melhorias com objetivo e orçamento. Expandir mecanismos ou conteúdo conforme necessidade concreta.
 
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
+## Histórico das revisões
 
-Depende de: SG043. Onde: src/ui e src/index.css.
+Em 27 de setembro de 2026, o plano passou a exigir que leis e eventos chegassem à execução por arquivos, com contratos, carregamento comum e aceites verificáveis em SG024, SG032, SG040, SG048 e SG063.
 
-Entrega: Mostrar valores anteriores, contribuições, atrasos e erros do nó selecionado.
+As decisões mínimas sobre efeitos sociais e eleição foram antecipadas para atender à primeira versão já definida. A Fase 09 passa a revisar e balancear esses elementos. SG022 agora cobre carregamento de arquivos; edição estrutural e cascata ficam adiadas. Os IDs continuam estáveis, mas fichas futuras devem ser conferidas contra eventuais issues abertas antes de execução.
 
-Aceite: Usuário consegue conferir o exemplo de convergência pela tela sem ler código.
+Em 1 de outubro de 2026, a revisão incorporou o jogador como partido, Senado eleito, influência da opinião pública, país herdado e continuidade entre mandatos. Cada medida passa a ser uma política tipada em JSON; lei é um tipo, não um contêiner de políticas. Aprovação, implantação e efeitos têm estados separados. Déficit é consequência válida; save preserva também o estado político. Os aceites de SG057–SG075 e SG081–SG083 verificam essas decisões.
 
-## SG045 Comparar duas trajetórias
+O plano mantém os 96 IDs, a Fase 00 concluída e as decisões senatoriais detalhadas pendentes. As fichas resumidas são divididas ao iniciar, sem prometer quatro horas para um sistema inteiro. Não há compromisso de implementar todos os mecanismos possíveis nem criar editor de conteúdo.
 
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG043. Onde: src/ui e src/index.css.
-
-Entrega: Exibir uma variável em duas execuções do mesmo modelo com comandos diferentes.
-
-Aceite: As séries têm unidade e eixo temporal; nenhuma execução altera a outra.
-
-## SG046 Exibir dependências do nó
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG044. Onde: src/ui e src/index.css.
-
-Entrega: Apresentar origens e destinos selecionáveis; implementar diagrama somente se decidido em SG041.
-
-Aceite: Relações paralelas e direção ficam claras; existe acesso textual por teclado.
-
-## SG047 Testar bancada com modelos extremos
-
-Área: QA • Tipo: Verificação • Esforço: 2–4 h
-
-Depende de: SG042, SG043, SG044, SG045, SG046. Onde: src/tests e docs/qualidade.
-
-Entrega: Cobrir nó isolado, ciclo, atraso e erro de domínio nos fluxos visíveis.
-
-Aceite: Erros são legíveis, a tela permite reiniciar e nenhum resultado é ocultado como zero.
-
-## SG048 Demonstrar o motor inspecionável
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG041, SG042, SG043, SG044, SG045, SG046, SG047. Onde: src/tests e docs/qualidade.
-
-Entrega: Gravar roteiro reproduzível de três minutos com comando, efeito atrasado e causa.
-
-Aceite: Outra pessoa repete o roteiro e explica o resultado; núcleo segue independente da interface.
-
-
-# Fase 06 Pesquisa e primeiro modelo de domínio
-
-Escolher um recorte brasileiro pequeno e rastreável. Marco de saída: SG056.
-
-## SG049 Escolher a pergunta do primeiro jogo
-
-Área: PRO • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG048. Onde: docs/producao e quadro de chamados.
-
-Entrega: Comparar dois recortes educativos e escolher uma pergunta que a partida ajude a compreender.
-
-Aceite: O recorte cabe inicialmente em 6–10 variáveis e 3 ações, com objetivo e limites explícitos.
-
-Escolha: Escolher tema, cargo e público; não tentar simular todo o governo.
-
-## SG050 Mapear competências do cargo
-
-Área: PES • Tipo: Pesquisa • Esforço: 2–4 h
-
-Depende de: SG049. Onde: docs/pesquisa e src/scenarios.
-
-Entrega: Pesquisar fontes primárias para as três ações candidatas e seus atores institucionais.
-
-Aceite: Cada ação distingue decisão própria, dependência de outro poder e simplificação adotada.
-
-## SG051 Criar dicionário de variáveis
-
-Área: PES • Tipo: Pesquisa • Esforço: 2–4 h
-
-Depende de: SG049. Onde: docs/pesquisa e src/scenarios.
-
-Entrega: Listar até dez variáveis com definição, unidade, fonte, data e valor provisório quando necessário.
-
-Aceite: Indicadores não confundem índice com quantidade real; nenhum valor sem fonte parece dado observado.
-
-## SG052 Registrar hipóteses de relações
-
-Área: PES • Tipo: Pesquisa • Esforço: 2–4 h
-
-Depende de: SG050, SG051. Onde: docs/pesquisa e src/scenarios.
-
-Entrega: Selecionar de cinco a oito relações, indicando direção, atraso, evidência e incerteza.
-
-Aceite: Cada ligação distingue hipótese de design de resultado empírico e tem referência verificável.
-
-## SG053 Definir parâmetros iniciais
-
-Área: PES • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG052. Onde: docs/pesquisa e src/scenarios.
-
-Entrega: Estimar faixas dos parâmetros e registrar mecanismo matemático e cenário de referência.
-
-Aceite: Cada parâmetro tem origem, intervalo plausível e justificativa de uso.
-
-Escolha: Escolher calibração por dados ou hipótese explícita por relação; reduzir recorte se faltar evidência.
-
-## SG054 Carregar o primeiro modelo de domínio
-
-Área: MOT • Tipo: Conteúdo • Esforço: 1–2 h
-
-Depende de: SG051, SG052, SG053. Onde: src/scenarios e src/tests.
-
-Entrega: Codificar o pequeno modelo e estado inicial usando apenas mecanismos disponíveis.
-
-Aceite: O mesmo executor carrega o modelo sem condições específicas de Brasil dentro do núcleo.
-
-## SG055 Comparar três cenários de referência
-
-Área: QA • Tipo: Análise • Esforço: 2–4 h
-
-Depende de: SG054. Onde: src/tests e docs/qualidade.
-
-Entrega: Executar base, aumento e redução de uma entrada; registrar trajetórias e resultados inesperados.
-
-Aceite: Há comparação com expectativas documentadas; divergências viram questões de modelo, não ajustes ocultos.
-
-## SG056 Revisar a coerência do recorte
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG049, SG050, SG051, SG052, SG053, SG054, SG055. Onde: src/tests e docs/qualidade.
-
-Entrega: Revisar fontes, unidades, ordem de grandeza e limitações com a pergunta escolhida.
-
-Aceite: Existe um modelo pequeno explicável e as limitações são visíveis; não se afirma validade científica só por testes.
-
-
-# Fase 07 Regras da primeira experiência jogável
-
-Conectar decisões do jogador ao modelo validado. Marco de saída: SG064.
-
-## SG057 Definir ciclo e duração da partida
-
-Área: JOG • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG056. Onde: src/game e definições de cenário.
-
-Entrega: Descrever observar, escolher ação, confirmar, avançar e avaliar; ligar turno a passos técnicos.
-
-Aceite: Um roteiro finito tem começo, decisões e encerramento, sem ambiguidade temporal.
-
-Escolha: Escolher duração, quantidade de turnos e objetivo; eleições ficam fora salvo decisão justificada.
-
-## SG058 Definir ficha de ação de jogo
-
-Área: JOG • Tipo: Contrato • Esforço: 1–2 h
-
-Depende de: SG057. Onde: src/game e definições de cenário.
-
-Entrega: Descrever ID, intensidade, custo, pré-requisitos, comando gerado e prazo das três ações.
-
-Aceite: Cada ação se traduz em entradas do motor e explica impedimentos sem alterar o núcleo.
-
-## SG059 Validar disponibilidade de ações
-
-Área: JOG • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG058. Onde: src/game e definições de cenário.
-
-Entrega: Avaliar pré-requisitos e conflitos na camada de jogo.
-
-Aceite: Ação bloqueada informa motivo; combinações incompatíveis não chegam ao executor.
-
-## SG060 Registrar custos e recursos
-
-Área: JOG • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG058. Onde: src/game e definições de cenário.
-
-Entrega: Implementar o recurso escolhido e contabilizar custo uma vez por confirmação.
-
-Aceite: Saldo antes e depois é rastreável; falha no comando não cobra e repetição não cobra em dobro.
-
-Escolha: Escolher apenas orçamento ou outro recurso no primeiro recorte; evitar dois sistemas sem necessidade.
-
-## SG061 Controlar a transição de turno
-
-Área: JOG • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG059, SG060. Onde: src/game e definições de cenário.
-
-Entrega: Orquestrar confirmação, custos, comandos e avanço dos passos; aplicar a condição de encerramento definida em SG057.
-
-Aceite: Falha preserva recursos e estado; fase de turno impede dupla confirmação e avanço após o fim da partida.
-
-## SG062 Implementar a primeira ação completa
-
-Área: JOG • Tipo: Conteúdo • Esforço: 1–2 h
-
-Depende de: SG061. Onde: src/game e definições de cenário.
-
-Entrega: Conectar uma das ações a disponibilidade, custo, intensidade e efeito temporal.
-
-Aceite: Roteiro mostra decisão, gasto, efeito e explicação, incluindo caminho de recusa.
-
-## SG063 Adicionar as duas ações restantes
-
-Área: JOG • Tipo: Conteúdo • Esforço: 1–2 h
-
-Depende de: SG062. Onde: src/game e definições de cenário.
-
-Entrega: Aplicar a mesma ficha às outras duas ações, sem criar mecanismos exclusivos desnecessários.
-
-Aceite: As três têm efeito observável e custos coerentes; ações semelhantes reutilizam o mesmo fluxo.
-
-## SG064 Validar o ciclo jogável sem interface final
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG057, SG058, SG059, SG060, SG061, SG062, SG063. Onde: src/tests e docs/qualidade.
-
-Entrega: Executar partida curta por testes ou bancada, incluindo encerramento pelo objetivo escolhido.
-
-Aceite: Uma sequência completa chega ao fim e recusa ações inválidas; regra de término é verificável.
-
-
-# Fase 08 Interface e comunicação com o jogador
-
-Transformar o ciclo validado em uma experiência compreensível. Marco de saída: SG072.
-
-## SG065 Desenhar os fluxos principais
-
-Área: UX • Tipo: Design • Esforço: 2–4 h
-
-Depende de: SG064. Onde: src/ui e src/index.css.
-
-Entrega: Criar wireframes de início, painel, escolha, confirmação e resumo do turno.
-
-Aceite: Há caminho claro de uma tela à seguinte e representação de carregamento, erro e fim de partida.
-
-## SG066 Definir linguagem visual mínima
-
-Área: UX • Tipo: Design • Esforço: 2–4 h
-
-Depende de: SG065. Onde: src/ui e src/index.css.
-
-Entrega: Escolher tipografia, cores, espaçamento e estados de controles para as telas existentes.
-
-Aceite: A direção dos efeitos não depende só de cor; foco e contraste são verificáveis.
-
-Escolha: Escolher reaproveitamento do mapa atual ou painel; privilegiar legibilidade do recorte.
-
-## SG067 Construir início e painel da partida
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG066. Onde: src/ui e src/index.css.
-
-Entrega: Conectar início, indicadores, unidades e passo ao estado da camada de jogo.
-
-Aceite: Nova partida começa limpa e o painel reflete exatamente a execução ativa.
-
-## SG068 Construir escolha e confirmação de ações
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG067. Onde: src/ui e src/index.css.
-
-Entrega: Exibir ações, intensidade, custo e motivos de bloqueio usando as regras já implementadas.
-
-Aceite: Jogador confirma uma ação válida e entende por que outra está bloqueada.
-
-## SG069 Construir resumo e explicação do turno
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG068. Onde: src/ui e src/index.css.
-
-Entrega: Apresentar o que mudou, contribuições relevantes e efeitos ainda em implantação.
-
-Aceite: Roteiro permite seguir uma decisão até um resultado e abrir os detalhes do cálculo.
-
-## SG070 Escrever introdução e ajuda contextual
-
-Área: DOC • Tipo: Conteúdo • Esforço: 1–2 h
-
-Depende de: SG069. Onde: README.md e docs.
-
-Entrega: Explicar objetivo, unidade dos indicadores, turnos e diferença entre hipótese e dado.
-
-Aceite: Uma pessoa nova consegue realizar a primeira decisão com a ajuda; termos vagos são definidos.
-
-## SG071 Mostrar encerramento e reinício
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG069. Onde: src/ui e src/index.css.
-
-Entrega: Exibir motivo do fim, resultado e ação para começar novamente.
-
-Aceite: Não há turno extra depois do encerramento; reinício não herda comandos nem recursos.
-
-## SG072 Verificar partida completa pela interface
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG065, SG066, SG067, SG068, SG069, SG070, SG071. Onde: src/tests e docs/qualidade.
-
-Entrega: Percorrer o roteiro com teclado e no menor tamanho de tela suportado.
-
-Aceite: É possível iniciar, decidir, entender e terminar sem bloqueio de foco ou conteúdo cortado.
-
-
-# Fase 09 Conteúdo social e balanceamento
-
-Expandir apenas o que a pergunta do jogo exige. Marco de saída: SG080.
-
-## SG073 Escolher como representar grupos sociais
-
-Área: JOG • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG072. Onde: src/game e definições de cenário.
-
-Entrega: Avaliar se o recorte precisa de grupos; se sim, definir até três perfis sobrepostos.
-
-Aceite: A decisão explica impacto na pergunta do jogo; é válido adiar grupos com justificativa.
-
-Escolha: Comparar perfis agregados e eleitores individuais; recomendar agregados para esta versão.
-
-## SG074 Definir sensibilidades dos perfis
-
-Área: PES • Tipo: Pesquisa • Esforço: 2–4 h • Condicional a SG073
-
-Depende de: SG073. Onde: docs/pesquisa e src/scenarios.
-
-Entrega: Se grupos aprovados, registrar atributos e três a cinco relações com evidência ou hipótese identificada.
-
-Aceite: Perfis não são descritos como pessoas idênticas; incerteza e sobreposição ficam documentadas.
-
-Escolha: Se adiados, encerrar como Não aplicável com referência a SG073.
-
-## SG075 Calcular efeitos nos perfis
-
-Área: JOG • Tipo: Implementação • Esforço: 2–4 h • Condicional a SG073
-
-Depende de: SG074. Onde: src/game e definições de cenário.
-
-Entrega: Se aplicável, calcular satisfação ou exposição conforme o contrato decidido, fora do motor genérico.
-
-Aceite: Pessoa em dois perfis não vira dois votos; nenhum sistema eleitoral é inferido automaticamente.
-
-## SG076 Explicar efeitos sociais na tela
-
-Área: UX • Tipo: Implementação • Esforço: 2–4 h • Condicional a SG073
-
-Depende de: SG075. Onde: src/ui e src/index.css.
-
-Entrega: Se aplicável, mostrar benefício, custo e origem dos efeitos para cada perfil.
-
-Aceite: Jogador consegue identificar um conflito entre interesses sem rótulo simplista de grupo bom ou ruim.
-
-## SG077 Medir sensibilidade dos parâmetros
-
-Área: QA • Tipo: Análise • Esforço: 2–4 h
-
-Depende de: SG072, SG076. Onde: src/tests e docs/qualidade.
-
-Entrega: Variar dois parâmetros centrais nos intervalos documentados e comparar trajetórias.
-
-Aceite: Relatório identifica mudanças de sinal, resultados extremos e dependência de hipóteses frágeis.
-
-## SG078 Ajustar uma escolha dominante
-
-Área: JOG • Tipo: Balanceamento • Esforço: 2–4 h
-
-Depende de: SG077. Onde: src/game e definições de cenário.
-
-Entrega: Identificar ação que supera as outras sem contrapartida e propor um ajuste justificado.
-
-Aceite: Comparação mostra a contrapartida introduzida; se nenhuma escolha dominante for encontrada, registrar as estratégias verificadas sem forçar ajuste.
-
-## SG079 Revisar textos e procedência de recursos
-
-Área: DOC • Tipo: Conteúdo • Esforço: 1–2 h
-
-Depende de: SG076, SG078. Onde: README.md e docs.
-
-Entrega: Revisar nomes, explicações e origem de imagens, ícones e sons efetivamente utilizados.
-
-Aceite: Não há texto copiado de Democracy 4; recursos têm licença ou autoria identificada e pendências registradas.
-
-## SG080 Revisar o equilíbrio da primeira versão
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG073, SG074, SG075, SG076, SG077, SG078, SG079. Onde: src/tests e docs/qualidade.
-
-Entrega: Executar duas estratégias e conferir consequências, compreensão e coerência do modelo.
-
-Aceite: Nenhum ajuste esconde erro matemático; mecanismos sociais adiados estão explicitamente marcados.
-
-
-# Fase 10 Qualidade persistência e testes com pessoas
-
-Preparar a primeira versão para uso fora do desenvolvimento. Marco de saída: SG088.
-
-## SG081 Definir armazenamento da partida
-
-Área: DEV • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG080. Onde: docs/producao e contrato de persistência em src/game.
-
-Entrega: Escolher exportação em arquivo ou armazenamento no navegador e política de versão.
-
-Aceite: O desenho inclui estado do jogo, recursos, turno, snapshot do motor e tratamento de incompatibilidade.
-
-Escolha: Recomendar arquivo local primeiro; conta e nuvem exigem outro escopo.
-
-## SG082 Salvar e recuperar uma partida
-
-Área: DEV • Tipo: Implementação • Esforço: 2–4 h
-
-Depende de: SG081. Onde: src/game/persistence, src/ui e src/tests.
-
-Entrega: Implementar o caminho de persistência escolhido e restauração validada.
-
-Aceite: Partida retomada preserva custo, fase e histórico; arquivo inválido mantém partida atual intacta.
-
-## SG083 Automatizar o percurso essencial
-
-Área: QA • Tipo: Teste • Esforço: 2–4 h
-
-Depende de: SG082. Onde: src/tests e docs/qualidade.
-
-Entrega: Cobrir iniciar, decidir, avançar, salvar, recuperar e encerrar em teste de interface.
-
-Aceite: O teste detecta cobrança duplicada e turno perdido; roda no ambiente de integração.
-
-## SG084 Auditar acessibilidade do percurso
-
-Área: UX • Tipo: Correção • Esforço: 2–4 h
-
-Depende de: SG083. Onde: src/ui e src/index.css.
-
-Entrega: Verificar teclado, foco, nomes acessíveis, contraste e movimento reduzido.
-
-Aceite: As falhas do percurso essencial são corrigidas e verificadas manualmente, além das verificações automáticas.
-
-## SG085 Medir desempenho e memória
-
-Área: DEV • Tipo: Análise • Esforço: 2–4 h
-
-Depende de: SG083. Onde: package.json e configuração de ferramentas.
-
-Entrega: Medir carga inicial e avanço na máquina de referência, com modelo e duração registrados.
-
-Aceite: Há medições reproduzíveis e gargalo identificado; nenhuma otimização é adicionada sem necessidade.
-
-Escolha: Fixar orçamento de resposta conforme dispositivo; Worker só se a medição justificar.
-
-## SG086 Preparar e realizar sessão de uso
-
-Área: PRO • Tipo: Teste com pessoas • Esforço: 2–4 h
-
-Depende de: SG084, SG085. Onde: docs/producao e quadro de chamados.
-
-Entrega: Criar roteiro de 20 minutos e observar ao menos uma pessoa tentando jogar sem orientação contínua.
-
-Aceite: Registrar consentimento para qualquer gravação, dificuldades e conclusões; falta de participante vira bloqueio visível.
-
-## SG087 Corrigir o principal bloqueio de uso
-
-Área: QA • Tipo: Correção • Esforço: 2–4 h
-
-Depende de: SG086. Onde: src/tests e docs/qualidade.
-
-Entrega: Selecionar um problema crítico da sessão, corrigir e repetir a tarefa afetada.
-
-Aceite: A tarefa antes impedida funciona; se não houver bloqueio, registrar o resultado da sessão. Outros defeitos recebem chamados separados.
-
-## SG088 Aprovar a candidata a lançamento
-
-Área: QA • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG081, SG082, SG083, SG084, SG085, SG086, SG087. Onde: src/tests e docs/qualidade.
-
-Entrega: Executar checklist do percurso, dados, compatibilidade e problemas conhecidos.
-
-Aceite: Não há perda de partida ou bloqueio crítico conhecido; pendências menores têm responsável e prioridade.
-
-
-# Fase 11 Publicação e continuidade
-
-Publicar uma primeira versão pequena e manter o trabalho sustentável. Marco de saída: SG096.
-
-## SG089 Escolher canal de distribuição
-
-Área: PRO • Tipo: Decisão • Esforço: 1–2 h
-
-Depende de: SG088. Onde: docs/producao e quadro de chamados.
-
-Entrega: Comparar distribuição web estática com pacote local dentro da plataforma escolhida.
-
-Aceite: Custos, privacidade, requisitos e responsável pela publicação estão registrados.
-
-Escolha: Selecionar provedor apenas após verificar condições atuais; não assumir gasto ou serviço pago.
-
-## SG090 Preparar versão e pacote de lançamento
-
-Área: DEV • Tipo: Preparação • Esforço: 2–4 h
-
-Depende de: SG089. Onde: package.json e configuração de ferramentas.
-
-Entrega: Gerar pacote identificável com versão do jogo, modelo e notas de mudança.
-
-Aceite: O pacote inicia fora do ambiente de desenvolvimento e registra limitações conhecidas.
-
-## SG091 Ensaiar publicação em ambiente de teste
-
-Área: DEV • Tipo: Verificação • Esforço: 2–4 h
-
-Depende de: SG090. Onde: package.json e configuração de ferramentas.
-
-Entrega: Configurar o destino escolhido e testar o pacote com configuração de produção.
-
-Aceite: Rotas e recursos carregam; salvar e recuperar funcionam no destino; publicação pública ainda é decisão separada.
-
-## SG092 Definir retorno à versão anterior
-
-Área: DEV • Tipo: Operação • Esforço: 2–4 h
-
-Depende de: SG091. Onde: package.json e configuração de ferramentas.
-
-Entrega: Documentar e ensaiar recuperação do pacote anterior e tratamento de partidas incompatíveis.
-
-Aceite: É possível restaurar versão anterior sem prometer converter saves novos automaticamente.
-
-## SG093 Preparar orientações ao jogador
-
-Área: DOC • Tipo: Documentação • Esforço: 1–2 h
-
-Depende de: SG090. Onde: README.md e docs.
-
-Entrega: Escrever como jogar, salvar, relatar problemas e consultar limites do modelo.
-
-Aceite: Instruções correspondem à versão candidata e incluem canal de contato efetivamente disponível.
-
-## SG094 Autorizar e publicar a primeira versão
-
-Área: PRO • Tipo: Lançamento • Esforço: 2–4 h
-
-Depende de: SG088, SG091, SG092, SG093. Onde: docs/producao e quadro de chamados.
-
-Entrega: Revisar a candidata concreta, registrar decisão do responsável e publicar no destino aprovado.
-
-Aceite: Endereço ou pacote final é verificado com uma nova partida e versão correta.
-
-Escolha: Publicação externa e eventuais custos dependem de autorização explícita do responsável.
-
-## SG095 Organizar o primeiro ciclo de feedback
-
-Área: PRO • Tipo: Triagem • Esforço: 2–4 h
-
-Depende de: SG094. Onde: docs/producao e quadro de chamados.
-
-Entrega: Definir rotina de leitura de relatos, registrar defeitos reproduzíveis e classificar impacto.
-
-Aceite: Cada relato acionável tem versão, passos, resultado esperado e prioridade; não prometer monitoramento automático.
-
-## SG096 Planejar o próximo ciclo de produção
-
-Área: PRO • Tipo: Marco • Esforço: 2–4 h
-
-Depende de: SG095. Onde: docs/producao e quadro de chamados.
-
-Entrega: Revisar métricas disponíveis, trabalho pendente e até cinco candidatos para a próxima versão.
-
-Aceite: Novo ciclo tem objetivo, orçamento de esforço e chamados pequenos; não reabrir todo o escopo de uma vez.
+Referências: `docs/producao/primeira-versao.md`, `docs/motor-do-jogo.md`, `src/engine/semantica-do-passo.md` e o estudo de Democracy 4 em `docs`. A proposta do motor continua como referência matemática; este plano revisado prevalece para organização do conteúdo, ciclo de jogo e ordem das entregas.

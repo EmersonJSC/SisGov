@@ -1,0 +1,9 @@
+[config]
+Name = _MinisterialResignation
+Texture = event_minister_resign.png
+GUISound = DM4_LoseDonor.wav
+OnImplement = CreateGrudge(_All_,-0.10,0.7);CreateGrudge(BusinessConfidence,-0.08,0.75);
+Type = SPECIAL
+
+[influences]
+

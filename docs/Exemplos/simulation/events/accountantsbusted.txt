@@ -1,0 +1,18 @@
+[config]
+Name = accountantsbusted
+Texture = event80.png
+GUISound = DM4_Accountants Busted.wav
+OnImplement = CreateGrudge(accountantsbusted,-0.9,0.83);CreateGrudge(_global_socialism,0.11,0.83);CreateGrudge(Socialist,-0.14,0.83);CreateGrudge(_All_,-0.08,0.83);
+
+[influences]
+0 = _random_,0,0.23
+1 = _winning_,-0.07+(0.13*x)
+2 = Equality,0.41-(0.41*x),4
+3 = Punitivewealthtax,0.31+(0.1*x),4
+4 = Publictaxreturns,-0.3-(0.2*x)
+5 = TaxShelters,0.21+(0.2*x),4
+6 = MansionTax,0.06+(0.05*x),4
+7 = LuxuryGoodsTax,0.06+(0.05*x),4
+8 = FlatTax,-0.1-(0.1*x),
+9 = GeneralMediaCensorship,-0.4-(0.4*x)
+

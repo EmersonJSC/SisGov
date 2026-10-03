@@ -1,0 +1,11 @@
+[config]
+Name = accidentalshooting
+Texture = event69.png
+GUISound = DM4_Accidental Shooting.wav
+OnImplement = CreateGrudge(accidentalshooting,-0.900,0.800);CreateGrudge(_All_,-0.200,0.730);CreateGrudge(Patriot,-0.100,0.80)
+
+[influences]
+0 = _random_,0.05,0.35
+1 = ViolentCrimeRate,1.0*(x^2)
+2 = HandgunLaws,-0.5*(x^2)
+3 = _winning_,0.41*(x^2),2

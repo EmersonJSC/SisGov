@@ -1,0 +1,12 @@
+{
+  "id": "cameras-melhoram-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "escopo_cameras",
+  "alvo": "seguranca_publica",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.12, "termoConstante": 0 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

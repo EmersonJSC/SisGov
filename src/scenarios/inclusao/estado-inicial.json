@@ -1,0 +1,10 @@
+{
+  "id": "estado-inicial-inclusao",
+  "tipo": "estado-inicial",
+  "versaoEsquema": 1,
+  "valores": {
+    "cobertura_bibliotecas": 0,
+    "educacao_publica": 40,
+    "severidade_seca": 10
+  }
+}

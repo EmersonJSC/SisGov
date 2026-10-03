@@ -1,0 +1,12 @@
+[config]
+Name = airstrike
+Texture = event49.png
+GUISound = DM4_Air Strike.wav
+OnImplement = CreateGrudge(airstrike,-0.900,0.830);CreateGrudge(Patriot,-0.200,0.830);CreateGrudge(_All_,-0.200,0.800);CreateGrudge(GDP,-0.120,0.830);CreateGrudge(Tourism,-0.39,0.90);CreateGrudge(InternationalTrade,-0.29,0.850);CreateGrudge(ForeignRelations,-0.34,0.830);CreateGrudge(BusinessConfidence,-0.22,0.8);
+
+[influences]
+0 = _random_,0,0.16
+1 = MilitarySpending,-0.2*(x^4)
+2 = ForeignRelations,1.2-(1.0*x)^0.2
+3 = _winning_,-0.05+(0.1*x)
+

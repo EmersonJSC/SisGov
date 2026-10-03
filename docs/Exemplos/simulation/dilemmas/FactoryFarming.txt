@@ -1,0 +1,13 @@
+[dilemma]
+name=FactoryFarming
+
+[influences]
+0 = _random_,0,0.7
+1 = Environmentalist_perc,0+(0.1*x)
+2 = Liberal_perc,0+(0.1*x)
+
+[option0]
+OnImplement = CreateGrudge(Farmers,-0.23,0.9);CreateGrudge(Capitalist,-0.03,0.9);CreateGrudge(Environmentalist,0.06,0.9);CreateGrudge(Liberal,0.05,0.9f);CreateGrudge(GDP,-0.03,0.9);CreateGrudge(Veganism,0.04,0.95);
+
+[option1]
+OnImplement = CreateGrudge(Farmers,0.08,0.9);CreateGrudge(Capitalist,0.01,0.9);CreateGrudge(Environmentalist,-0.04,0.9);CreateGrudge(Liberal,-0.02,0.9);

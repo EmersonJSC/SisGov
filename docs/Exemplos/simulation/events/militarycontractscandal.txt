@@ -1,0 +1,12 @@
+[config]
+Name = militarycontractscandal
+Texture = event51.png
+GUISound = DM4_Military Contract Scandal.wav
+OnImplement = CreateGrudge(militarycontractscandal,-0.9,0.83);CreateGrudge(_All_,-0.12,0.83);
+
+[influences]
+0 = _random_,0,0.16
+1 = _winning_,0+(0.3*x),4
+2 = MilitarySpending,0+(0.5*x)
+3 = Corruption,0+(0.25*x)
+4 = _difficulty_,-0.05+(0.1*x)

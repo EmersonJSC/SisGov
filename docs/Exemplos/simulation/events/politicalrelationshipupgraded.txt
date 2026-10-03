@@ -1,0 +1,10 @@
+[config]
+Name = politicalrelationshipupgraded
+Texture = event27.png
+GUISound = DM4_Political Relationship Upgraded.wav
+OnImplement = CreateGrudge(politicalrelationshipupgraded,-0.9,0.83);CreateGrudge(InternationalTrade,0.22,0.83);CreateGrudge(Capitalist,0.04,0.83);CreateGrudge(BusinessConfidence,0.16,0.75);
+
+[influences]
+0 = _random_,0,0.15
+1 = ForeignRelations,0+(0.75*x)
+2 = _winning_,0.1-(0.1*x)

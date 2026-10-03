@@ -1,0 +1,12 @@
+[config]
+Name = illegalimmigrationoutcry
+Texture = event55.png
+GUISound = DM4_Illegal Immigration Outcry.wav
+OnImplement = CreateGrudge(illegalimmigrationoutcry,-0.900,0.830);CreateGrudge(Conservatives,-0.120,0.840);CreateGrudge(_global_liberalism,-0.1,0.840);
+
+[influences]
+0 = _random_,0,0.2
+1 = IllegalImmigration,0+(0.35*x)
+2 = RacialTension,0+(0.25*x)
+3 = BorderControls,0.3-(0.3*x)
+4 = _winning_,0+(0.1*x)

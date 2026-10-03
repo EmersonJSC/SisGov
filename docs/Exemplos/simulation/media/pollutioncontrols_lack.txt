@@ -1,0 +1,8 @@
+[config]
+Name = pollutioncontrols_lack
+Policy = PollutionControls
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+Pollution,1,0.5,1.0
+

@@ -1,0 +1,12 @@
+{
+  "id": "amplia-acesso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "bolsa_estudo",
+  "alvo": "acesso_educacao",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.01, "termoConstante": 0 },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

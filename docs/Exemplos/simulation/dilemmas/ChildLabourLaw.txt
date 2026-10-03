@@ -1,0 +1,16 @@
+[dilemma]
+name=ChildLabourLaw
+
+[influences]
+0 = _random_,0,0.88
+1 = _LowIncome,0-(0.47*x)
+2 = LabourLaws,0-(0.27*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,0.1,0.9);CreateGrudge(Socialist,0.09,0.9);CreateGrudge(Parents,0.13,0.9);CreateGrudge(GDP,-0.02,0.9);CreateGrudge(TradeUnionist,0.08,0.9);CreateGrudge(Education,0.04,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,-0.02,0.9);CreateGrudge(Socialist,-0.06,0.9);CreateGrudge(Parents,-0.11,0.9);CreateGrudge(TradeUnionist,-0.05,0.9);
+
+[option2]
+OnImplement = CreateGrudge(GDP,-0.01,0.9);

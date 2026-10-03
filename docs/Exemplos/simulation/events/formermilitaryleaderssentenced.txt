@@ -1,0 +1,11 @@
+[config]
+Name = formermilitaryleaderssentenced
+Texture = event50.png
+GUISound = DM4_Former Military Leaders Sentenced.wav
+OnImplement = CreateGrudge(formermilitaryleaderssentenced,-0.900,0.830);CreateGrudge(Liberal,0.140,0.830);
+
+[influences]
+0 = _random_,0,0.2
+1 = _winning_,0.05-(0.15*x)
+2 = JudiciaryIndependence,0.7*(x^2)
+3 = Corruption,0-(0.15*x)

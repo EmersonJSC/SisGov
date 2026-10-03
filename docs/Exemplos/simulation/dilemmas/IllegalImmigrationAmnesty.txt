@@ -1,0 +1,15 @@
+[dilemma]
+name=IllegalImmigrationAmnesty
+
+[influences]
+0 = _random_,0.1,0.4
+1 = Liberal_perc,0+(0.28*x)
+2 = EthnicMinorities_perc,0+(0.22*x)
+3 = IllegalImmigration,0+(0.22*x)
+4 = _Terrorism,0-(0.18*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.05,0.85);CreateGrudge(Patriot,0.06,0.85);CreateGrudge(EthnicMinorities,-0.05,0.85);CreateGrudge(IllegalImmigration,-0.07,0.85);CreateGrudge(_global_liberalism,-0.03,0.85);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.06,0.91);CreateGrudge(Patriot,-0.12,0.91);CreateGrudge(EthnicMinorities,0.14,0.95);CreateGrudge(IllegalImmigration,0.08,0.85);CreateGrudge(_global_liberalism,0.02,0.85);

@@ -1,0 +1,12 @@
+[config]
+Name = fgmreportshame
+Texture = event61.png
+GUISound = DM4_FGM Report Shame.wav
+OnImplement = CreateGrudge(fgmreportshame,-0.900,0.830);CreateGrudge(Liberal,-0.120,0.830);CreateGrudge(ForeignRelations,-0.10,0.830);
+
+[influences]
+0 = _random_,0,0.25
+1 = Religious_perc,0+(1.0*x),8
+2 = Education,0.37-(0.37*x),8
+3 = FemaleGenitalMutilationBan,-1.0-(1.0*x)
+4 = _winning_,-0.05+(0.1*x)

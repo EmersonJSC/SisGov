@@ -1,0 +1,11 @@
+[dilemma]
+name=Hackers
+
+[influences]
+0 = _random_,0,0.8
+
+[option0]
+OnImplement = CreateGrudge(Conservatives,0.1,0.9);CreateGrudge(Technology,-0.05,0.9);CreateGrudge(Liberal,-0.08,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Conservatives,-0.1,0.9);CreateGrudge(Technology,0.1,0.9);CreateGrudge(StateEmployees,-0.05,0.9);

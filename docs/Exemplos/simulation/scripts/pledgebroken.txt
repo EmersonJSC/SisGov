@@ -1,0 +1,1 @@
+CreateGrudge(Manifesto Pledge Broken,pledgebroken,_percept_trust,-0.06,0.77);

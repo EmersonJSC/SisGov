@@ -1,0 +1,15 @@
+[config]
+Name = CapitalistAssassination
+UsedBy = theinvisiblehand
+MinStrength = 55
+Type = ASSASSINATION
+Cost = 30
+MinSize = 4
+SuccessChance = 0.33
+protaginist_texture = voter_capitalist.dds
+GUISound = DM4_Gameover_Sniper.wav
+OnSuccess = GameOver("CapitalistAssassination");
+OnFailure = CreateGrudge(CapitalistAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedCapitalistAssassination);
+
+[prereqs]
+CapitalistPlot

@@ -1,0 +1,18 @@
+[config]
+Name = policeshooting
+Texture = event23.png
+GUISound = DM4_PoliceShooting.wav
+OnImplement = CreateGrudge(policeshooting,-0.9,0.83);CreateGrudge(RacialTension,0.11,0.83);CreateGrudge(Liberal,-0.2,0.83);CreateGrudge(EthnicMinorities,-0.2,0.83);
+
+[influences]
+0 = _random_,0,0.24
+1 = RacialTension,0+(0.33*x)
+2 = ViolentCrimeRate,0+(0.27*x)
+3 = PoliceForce,0+(0.15*x)
+4 = ArmedPolice,0+(0.38*x)
+5 = RacialProfiling,0+(0.11*x)
+6 = StreetGangs,0.1+(0.066*x)
+7 = VigilanteMobs,0.11+(0.066*x)
+8 = RaceRiots,0.1+(0.077*x)
+9 = InnerCityRiots,0.11+(0.07*x)
+10 = _winning_,-0.05+(0.1*x)

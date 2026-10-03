@@ -1,0 +1,7 @@
+[config]
+Name = organdonation
+Policy = OrganDonation
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+

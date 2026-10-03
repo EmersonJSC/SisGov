@@ -1,0 +1,1 @@
+{"id":"atencao-amplia-cobertura","tipo":"consequencia","versaoEsquema":1,"origem":"recursos_atencao_basica","alvo":"cobertura_aps","mecanismo":"afim","parametros":{"coeficiente":0.004,"termoConstante":-16},"unidade":"percentual_0_100","atrasoPassos":1,"duracao":{"modo":"continuo"}}

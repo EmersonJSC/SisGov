@@ -1,0 +1,12 @@
+{
+  "id": "impulso-atrasado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "impulso",
+  "alvo": "indice_a",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.1, "termoConstante": 0 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

@@ -1,0 +1,11 @@
+[config]
+Name = gravemoveprotests
+Texture = event88.png
+GUISound = DM4_Grave Move Protests.wav
+OnImplement = CreateGrudge(gravemoveprotests,-0.900,0.830);CreateGrudge(Socialist,0.120,0.830);CreateGrudge(Conservatives,-0.120,0.830);CreateGrudge(Patriot,-0.120,0.830);
+
+[influences]
+0 = _random_,0,0.66
+1 = Socialist_perc,0+(0.36*x)
+2 = Conservatives_perc,0-(0.12*x)
+

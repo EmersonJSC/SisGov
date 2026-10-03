@@ -1,0 +1,16 @@
+[config]
+Name = FlashCrash
+Texture = event_flashcrash.png
+MinimunTurn = 30
+GUISound = DM4_Share IPO Cancelled.wav
+OnImplement = CreateGrudge(FlashCrash,-0.8,0.78);CreateGrudge(CurrencyStrength,-0.08,0.77);CreateGrudge(GDP,-0.3,0.4);CreateGrudge(Wealthy_income,-0.13,0.65);
+
+[influences]
+0 = _random_,0.11,0.31
+1 = _winning_,0.23*(x^1.5)
+2 = Technology,0.45*(x^2)
+3 = LimitAutomatedTrading,0-(0.6*x)
+4 = _effectivedebt_,0-(0.12*x)
+5 = FinancialTransactionsTax,0.1-(0.3*x)
+
+

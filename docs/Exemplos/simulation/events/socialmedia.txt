@@ -1,0 +1,14 @@
+[config]
+Name = socialmedia
+Texture = event9.png
+GUISound = DM4_Social Media_.wav
+OnImplement = CreateGrudge(socialmedia,-0.9,0.83);CreateGrudge(Liberal,-0.120,0.830);CreateGrudge(_All_,-0.10,0.800);CreateGrudge(GDP,-0.02,0.830);
+
+[influences]
+0 = _random_,0,0.3
+1 = Technology,0.78*(x^3)
+2 = InternetSpeed,0.63*(x^3)
+3 = IntelligenceServices,0-(0.25*x)
+4 = Corruption,0+(0.22*x)
+5 = RightToPrivacy,-0.25-(0.25*x)
+6 = _winning_,0+(0.28*x),2

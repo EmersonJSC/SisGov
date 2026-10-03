@@ -1,0 +1,12 @@
+[config]
+Name = openlygayleader
+Texture = event57.png
+GUISound = DM4_Openly Gay Leader.wav
+OnImplement = CreateGrudge(openlygayleader,-0.9,0.83);CreateGrudge(_global_liberalism,0.06,0.83);
+
+[influences]
+0 = _random_,0,0.24
+1 = Liberal_perc,0.8*(x^2)
+2 = Banhomosexuality,-1.0-(1.0*x),8
+3 = Religious_perc,0-(0.23*x)
+

@@ -1,0 +1,12 @@
+[config]
+Name = royalbaby
+Texture = event13.png
+GUISound = DM4_Royal Baby.wav
+OnImplement = CreateGrudge(royalbaby,-0.9,0.83);CreateGrudge(Conservatives,0.1,0.8);CreateGrudge(_All_,0.06,0.8);CreateGrudge(Tourism,0.09,0.84);
+
+[influences]
+0 = _random_,0,0.97
+1 = _winning_,0-(0.2*x),5
+2 = _prereq_,_prereq_royal_family
+3 = _difficulty_,0.05-(0.1*x)
+

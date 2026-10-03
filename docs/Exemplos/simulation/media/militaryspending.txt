@@ -1,0 +1,8 @@
+[config]
+Name = militaryspending
+Policy = MilitarySpending
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+MilitarySpending,1,0,0.32
+

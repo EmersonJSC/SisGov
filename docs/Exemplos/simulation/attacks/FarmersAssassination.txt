@@ -1,0 +1,15 @@
+[config]
+Name = FarmersAssasination
+UsedBy = provincialdefensebrigade
+MinStrength = 55
+Type = ASSASSINATION
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(FarmersAssasination);
+protaginist_texture = voter_farmers.dds
+GUISound = DM4_Gameover_Shotgun.wav
+OnFailure = CreateGrudge(FarmersAssasination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedFarmersAssassination);
+
+[prereqs]
+FarmersPlot

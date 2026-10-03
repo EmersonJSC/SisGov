@@ -1,0 +1,11 @@
+[dilemma]
+name=OilDrilling
+
+[influences]
+0 = _random_,0.1,0.8
+
+[option0]
+OnImplement = CreateGrudge(Capitalist,0.03,0.9);CreateGrudge(Environmentalist,-0.08,0.9);CreateGrudge(OilSupply,0.08,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Capitalist,-0.04,0.9);CreateGrudge(Environmentalist,0.06,0.9);

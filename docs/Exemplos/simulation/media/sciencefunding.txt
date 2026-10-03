@@ -1,0 +1,8 @@
+[config]
+Name = sciencefunding
+Policy = ScienceFunding
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+ScienceFunding,1,0,0.25
+

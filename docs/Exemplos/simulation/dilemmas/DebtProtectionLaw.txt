@@ -1,0 +1,14 @@
+[dilemma]
+name=DebtProtectionLaw
+
+[influences]
+0 = _default_,0.32+(0*x)
+1 = _LowIncome,0-(0.4*x)
+2 = _random_,0,0.2
+3 = PovertyRate,0+(0.65*x)
+
+[option0]
+OnImplement = CreateGrudge(Socialist,0.09,0.9);CreateGrudge(Poor,0.08,0.9);CreateGrudge(SelfEmployed,-0.08,0.9);CreateGrudge(Capitalist,-0.06,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Socialist,-0.09,0.9);CreateGrudge(Poor,-0.06,0.9);CreateGrudge(SelfEmployed,0.04,0.9);CreateGrudge(Capitalist,0.04,0.9);

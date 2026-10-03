@@ -1,0 +1,1 @@
+{"id":"violencia-eleva-pressao","tipo":"consequencia","versaoEsquema":1,"origem":"violencia_letal","alvo":"pressao_hospitalar","mecanismo":"afim","parametros":{"coeficiente":0.5,"termoConstante":-10.6},"unidade":"indice_0_100","atrasoPassos":1,"duracao":{"modo":"continuo"}}

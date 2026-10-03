@@ -1,0 +1,1 @@
+{"id":"prevencao-reduz-violencia","tipo":"consequencia","versaoEsquema":1,"origem":"recursos_prevencao_seguranca","alvo":"violencia_letal","mecanismo":"afim","parametros":{"coeficiente":-0.0012,"termoConstante":0.72},"unidade":"taxa_por_100_mil","atrasoPassos":3,"duracao":{"modo":"continuo"}}

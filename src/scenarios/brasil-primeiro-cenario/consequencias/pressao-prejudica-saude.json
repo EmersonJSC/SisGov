@@ -1,0 +1,1 @@
+{"id":"pressao-prejudica-saude","tipo":"consequencia","versaoEsquema":1,"origem":"pressao_hospitalar","alvo":"saude_populacao","mecanismo":"afim","parametros":{"coeficiente":-0.12,"termoConstante":6.48},"unidade":"indice_0_100","atrasoPassos":1,"duracao":{"modo":"continuo"}}

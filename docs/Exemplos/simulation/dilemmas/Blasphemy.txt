@@ -1,0 +1,12 @@
+[dilemma]
+name=BLASPHEMY
+
+[influences]
+0 = _random_,0,0.76
+1 = Religious_perc,0+(0.1*x)
+
+[option0]
+OnImplement = CreateGrudge(Liberal,-0.13,0.9);CreateGrudge(Religious,0.13,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.10,0.9);CreateGrudge(Religious,-0.21,0.9);

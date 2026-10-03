@@ -1,0 +1,13 @@
+[config]
+Name = women_smarch
+Texture = event28.png
+GUISound = DM4_WomenMarch.wav
+OnImplement = CreateGrudge(women_smarch,-0.9,0.83);CreateGrudge(_global_liberalism,0.10,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = Equality,0.3-(0.3*x)
+2 = Liberal,0.3-(0.3*x)
+3 = Bandivorce,0.2+(0.1*x)
+4 = AbortionLaw,0.2-(0.2*x)"
+

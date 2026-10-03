@@ -1,0 +1,17 @@
+{
+  "id": "susp-melhora-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_prevencao_seguranca",
+  "alvo": "seguranca_publica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0125,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

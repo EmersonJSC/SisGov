@@ -1,0 +1,1 @@
+CreateGrudge(Survived assassination attempt,survived_attack,_percept_strength,0.08,0.75);

@@ -1,0 +1,7 @@
+[config]
+Name = junkfoodtax
+Policy = JunkFoodTax
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+

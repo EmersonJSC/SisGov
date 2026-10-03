@@ -1,0 +1,15 @@
+[config]
+Name = EthnicAssassination
+UsedBy = multiculturalwwarriors
+MinStrength = 55
+Type = ASSASSINATION
+Cost = 30
+MinSize = 8
+SuccessChance = 0.33
+OnSuccess = GameOver(EthnicAssassination);
+protaginist_texture = voter_ethnicminorities.dds
+GUISound = DM4_Gameover_Rifles.wav
+OnFailure = CreateGrudge(EthnicAssassination,Assassination attempt,_All_,0.06,0.8);TriggerEvent(FailedEthnicAssassination);
+
+[prereqs]
+EthnicPlot

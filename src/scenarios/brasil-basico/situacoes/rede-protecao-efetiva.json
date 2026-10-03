@@ -1,0 +1,22 @@
+{
+  "id": "rede-protecao-efetiva",
+  "tipo": "situacao",
+  "versaoEsquema": 1,
+  "nome": "Rede de proteção efetiva",
+  "descricao": "Situação positiva ativada quando a proteção às mulheres chega a 50 e encerrada abaixo de 45.",
+  "area": "Segurança",
+  "avaliacao": "positiva",
+  "entraQuando": {
+    "tipo": "comparacao",
+    "variavel": "protecao_mulheres",
+    "operador": "maior_ou_igual",
+    "valor": 50
+  },
+  "saiQuando": {
+    "tipo": "comparacao",
+    "variavel": "protecao_mulheres",
+    "operador": "menor_que",
+    "valor": 45
+  },
+  "consequencias": ["rede-protecao-reforca-seguranca"]
+}

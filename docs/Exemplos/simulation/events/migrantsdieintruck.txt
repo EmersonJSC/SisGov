@@ -1,0 +1,12 @@
+[config]
+Name = migrantsdieintruck
+Texture = event24.png
+GUISound = DM4_MigrantsDieInTruck.wav
+OnImplement = CreateGrudge(migrantsdieintruck,-0.9,0.83);CreateGrudge(RacialTension,0.12,0.83);CreateGrudge(Liberal,-0.12,0.83);CreateGrudge(EthnicMinorities,-0.1,0.83);
+
+[influences]
+0 = _random_,0,0.2
+1 = BorderControls,0-(0.3*x)
+2 = IllegalImmigration,0.4*(x^2)
+3 = _winning_,0.1*(x^2)
+4 = _difficulty_,-0.05+(0.1*x)

@@ -1,0 +1,11 @@
+[dilemma]
+name=Banknotes
+
+[influences]
+0 = _random_,0,0.8
+
+[option0]
+OnImplement = CreateGrudge(Conservatives,0.05,0.8);CreateGrudge(Religious,0.1,0.9);CreateGrudge(Liberal,-0.07,0.8);CreateGrudge(Religious_freq,0.03,1.0);
+
+[option1]
+OnImplement = CreateGrudge(Liberal,0.05,0.8f);CreateGrudge(ForeignRelations,0.05,0.98);CreateGrudge(Religious,-0.1,0.9);CreateGrudge(_global_liberalism,0.03,1.0);

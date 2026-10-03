@@ -1,0 +1,9 @@
+[config]
+Name = minimumwage_lack
+Policy = MinimumWage
+Type = MRT_POLICY_LACKOF
+
+[conditions]
+PovertyRate,1,0.25,1
+Wages,1,0,0.75
+

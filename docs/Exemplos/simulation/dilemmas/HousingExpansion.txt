@@ -1,0 +1,13 @@
+[dilemma]
+name=HousingExpansion
+
+[influences]
+0 = _random_,0,0.2
+1 = GDP,0+(0.45*x)
+2 = Population,0+(0.25*x)
+
+[option0]
+OnImplement = CreateGrudge(Environmentalist,-0.09,0.9);CreateGrudge(Farmers,-0.13,0.9);CreateGrudge(Capitalist,0.06,0.9);CreateGrudge(GDP,0.02,0.9);CreateGrudge(Homelessness,-0.08,0.9);CreateGrudge(MiddleIncome,0.04,0.85);CreateGrudge(Realestatebubble,-0.18,0.95);
+
+[option1]
+OnImplement = CreateGrudge(Environmentalist,0.07,0.9);CreateGrudge(Farmers,0.09,0.9);CreateGrudge(Capitalist,-0.04,0.9);CreateGrudge(Homelessness,0.08,0.9);

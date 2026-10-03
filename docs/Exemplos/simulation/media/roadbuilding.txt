@@ -1,0 +1,8 @@
+[config]
+Name = roadbuilding
+Policy = RoadBuilding
+Type = MRT_POLICY_CONSEQUENCE
+
+[conditions]
+RoadBuilding,1,0.8,1.0
+

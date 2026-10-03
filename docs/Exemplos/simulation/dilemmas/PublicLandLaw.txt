@@ -1,0 +1,12 @@
+[dilemma]
+name=PublicLandLaw
+
+[influences]
+0 = _default_,0.78+(0*x)
+1 = Equality,-0.4+(0.44*x)
+
+[option0]
+OnImplement = CreateGrudge(Farmers,0.1,0.9);CreateGrudge(Socialist,-0.12,0.9);
+
+[option1]
+OnImplement = CreateGrudge(Equality,0.05,0.9);CreateGrudge(Socialist,0.11,0.9);CreateGrudge(Farmers,-0.15,0.9);

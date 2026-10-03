@@ -1,0 +1,132 @@
+{
+  "id": "variaveis-brasil-basico",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "recursos_atencao_basica",
+      "tipo": "controle",
+      "nome": "Recursos para atenção básica",
+      "unidade": "moeda_milhoes_2024_ano",
+      "dominio": { "minimo": 2400, "maximo": 6000 },
+      "valorInicial": 4000,
+      "area": "Saúde"
+    },
+    {
+      "id": "recursos_imunizacao",
+      "tipo": "controle",
+      "nome": "Recursos para imunização",
+      "unidade": "moeda_milhoes_2024_ano",
+      "dominio": { "minimo": 600, "maximo": 3000 },
+      "valorInicial": 1500,
+      "area": "Saúde"
+    },
+    {
+      "id": "recursos_prevencao_seguranca",
+      "tipo": "controle",
+      "nome": "Recursos para prevenção e cooperação",
+      "unidade": "moeda_milhoes_2024_ano",
+      "dominio": { "minimo": 0, "maximo": 1400 },
+      "valorInicial": 600,
+      "area": "Segurança"
+    },
+    {
+      "id": "recursos_protecao_mulheres",
+      "tipo": "controle",
+      "nome": "Recursos para proteção às mulheres",
+      "unidade": "moeda_milhoes_2024_ano",
+      "dominio": { "minimo": 0, "maximo": 600 },
+      "valorInicial": 240,
+      "area": "Segurança"
+    },
+    {
+      "id": "escopo_cameras",
+      "tipo": "controle",
+      "nome": "Escopo das câmeras corporais",
+      "unidade": "nivel_escopo",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 25,
+      "area": "Segurança"
+    },
+    {
+      "id": "acesso_saude",
+      "tipo": "calculado",
+      "nome": "Acesso à saúde",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 35,
+      "area": "Saúde",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "saude_publica",
+      "tipo": "calculado",
+      "nome": "Saúde pública",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 40,
+      "area": "Saúde",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "pressao_hospitalar",
+      "tipo": "calculado",
+      "nome": "Pressão hospitalar",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 60,
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "seguranca_publica",
+      "tipo": "calculado",
+      "nome": "Segurança pública",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 35,
+      "area": "Segurança",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "protecao_mulheres",
+      "tipo": "calculado",
+      "nome": "Proteção às mulheres",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 30,
+      "area": "Segurança",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "crime",
+      "tipo": "calculado",
+      "nome": "Crime",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 60,
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "encarceramento",
+      "tipo": "calculado",
+      "nome": "Encarceramento",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 35,
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "violacoes_direitos",
+      "tipo": "calculado",
+      "nome": "Risco aos direitos humanos",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "valorInicial": 30,
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    }
+  ]
+}

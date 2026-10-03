@@ -1,0 +1,10 @@
+[config]
+Name = ReligiousPlot
+UsedBy = angelsofheavelyjustice
+MinStrength = 18
+Type = PLOT
+Cost = 0
+MinSize = 4
+SuccessChance = 1.0
+OnSuccess = 
+OnFailure = 

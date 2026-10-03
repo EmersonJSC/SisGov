@@ -1,0 +1,27 @@
+{
+  "id": "lei-13675-susp",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Prevenção e cooperação em segurança",
+  "descricao": "Recursos para prevenção, capacitação e cooperação entre os integrantes do SUSP.",
+  "area": "Segurança",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13675.htm",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_prevencao_seguranca",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": [
+    "susp-melhora-seguranca",
+    "susp-reduz-crime",
+    "susp-aumenta-encarceramento",
+    "susp-aumenta-risco-direitos"
+  ],
+  "ministerio": "Ministério da Justiça e Segurança",
+  "respostaTemporal": {
+    "implantacao": 0.2,
+    "degradacao": 0.12
+  },
+  "icone": "network"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "estado-inicial-brasil-basico",
+  "tipo": "estado-inicial",
+  "versaoEsquema": 1,
+  "valores": {
+    "recursos_atencao_basica": 4000,
+    "recursos_imunizacao": 1500,
+    "recursos_prevencao_seguranca": 600,
+    "recursos_protecao_mulheres": 240,
+    "escopo_cameras": 25,
+    "acesso_saude": 47.5,
+    "saude_publica": 51.5,
+    "pressao_hospitalar": 54,
+    "seguranca_publica": 45.5,
+    "protecao_mulheres": 40,
+    "crime": 50,
+    "encarceramento": 47.5,
+    "violacoes_direitos": 29
+  }
+}

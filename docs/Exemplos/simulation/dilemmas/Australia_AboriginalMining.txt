@@ -1,0 +1,18 @@
+[dilemma]
+name= AustraliaAboriginalMining
+country_specific = australia
+
+[influences]
+0 = _random_,0.2,0.95
+
+[option0]
+//side with developers
+OnImplement = CreateGrudge(Capitalist,0.04,0.85);CreateGrudge(Environmentalist,-0.06,0.85);CreateGrudge(BusinessConfidence,0.02,0.87);CreateGrudge(EthnicMinorities,-0.12,0.87);
+
+[option1]
+//side with aboriginal groups
+OnImplement = CreateGrudge(Capitalist,-0.04,0.85);CreateGrudge(Environmentalist,0.05,0.85);CreateGrudge(BusinessConfidence,-0.04,0.87);CreateGrudge(EthnicMinorities,0.06,0.87);
+
+[option2]
+//compromise
+OnImplement = CreateGrudge(Capitalist,-0.01,0.85);CreateGrudge(Environmentalist,-0.02,0.85);CreateGrudge(BusinessConfidence,0.02,0.87);CreateGrudge(EthnicMinorities_income,0.05,0.97);
