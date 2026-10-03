@@ -58,7 +58,15 @@ export function translateAuthorizedPolicies(
       continue;
     }
     const control = variablesById.get(policy.controle.variavel);
-    if (!control) continue;
+    if (!control) {
+      diagnostics.push(
+        issue(
+          `${field}.controle.variavel`,
+          "A variável de controle da política não existe neste cenário.",
+        ),
+      );
+      continue;
+    }
     if (changedControls.has(control.id)) {
       diagnostics.push(
         issue(

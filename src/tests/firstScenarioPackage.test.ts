@@ -17,7 +17,10 @@ describe("primeiro cenário brasileiro", () => {
     const { definition: content, graph } = loaded.value;
     expect(content.manifest.perfis).toEqual([
       expect.objectContaining({ id: "dependencia-rede-publica", peso: 0.55 }),
-      expect.objectContaining({ id: "trabalho-circulacao-violencia", peso: 0.45 }),
+      expect.objectContaining({
+        id: "trabalho-circulacao-violencia",
+        peso: 0.45,
+      }),
     ]);
     const execution = createExecution(content, graph);
     const batch = translateAuthorizedPolicies(

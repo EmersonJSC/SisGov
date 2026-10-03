@@ -1,1 +1,22 @@
-{"id":"sobrecarga-atendimento","tipo":"situacao","versaoEsquema":1,"nome":"Sobrecarga do atendimento","descricao":"A rede permanece sobrecarregada enquanto a pressão hospitalar se mantiver elevada.","area":"Saúde","avaliacao":"negativa","entraQuando":{"tipo":"comparacao","variavel":"pressao_hospitalar","operador":"maior_ou_igual","valor":62},"saiQuando":{"tipo":"comparacao","variavel":"pressao_hospitalar","operador":"menor_que","valor":56},"consequencias":[]}
+{
+  "id": "sobrecarga-atendimento",
+  "tipo": "situacao",
+  "versaoEsquema": 1,
+  "nome": "Sobrecarga do atendimento",
+  "descricao": "A rede permanece sobrecarregada enquanto a pressão hospitalar se mantiver elevada.",
+  "area": "Saúde",
+  "avaliacao": "negativa",
+  "entraQuando": {
+    "tipo": "comparacao",
+    "variavel": "pressao_hospitalar",
+    "operador": "maior_ou_igual",
+    "valor": 62
+  },
+  "saiQuando": {
+    "tipo": "comparacao",
+    "variavel": "pressao_hospitalar",
+    "operador": "menor_que",
+    "valor": 56
+  },
+  "consequencias": []
+}

@@ -1,1 +1,26 @@
-{"id":"atencao-basica","tipo":"programa","versaoEsquema":1,"nome":"Atenção básica do SUS","descricao":"Ajusta o apoio federal à capacidade de atendimento da atenção básica já existente.","area":"Saúde","fonte":"https://bvsms.saude.gov.br/bvs/saudelegis/gm/2024/prt4371_21_06_2024.html","icone":"stethoscope","ministerio":"Ministério da Saúde","processoAutorizacao":"execucao-programa-autorizado","controle":{"variavel":"recursos_atencao_basica","modo":"orcamento","unidade":"moeda_milhoes_2024_ano"},"consequencias":["atencao-amplia-cobertura","cobertura-reduz-pressao","cobertura-melhora-saude","pressao-prejudica-saude","despesa-atencao","saldo-atencao"],"respostaTemporal":{"implantacao":0.3,"degradacao":0.18}}
+{
+  "id": "atencao-basica",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Atenção básica do SUS",
+  "descricao": "Ajusta o apoio federal à capacidade de atendimento da atenção básica já existente.",
+  "area": "Saúde",
+  "fonte": "https://bvsms.saude.gov.br/bvs/saudelegis/gm/2024/prt4371_21_06_2024.html",
+  "icone": "stethoscope",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_atencao_basica",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": [
+    "atencao-amplia-cobertura",
+    "cobertura-reduz-pressao",
+    "cobertura-melhora-saude",
+    "pressao-prejudica-saude",
+    "despesa-atencao",
+    "saldo-atencao"
+  ],
+  "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 }
+}

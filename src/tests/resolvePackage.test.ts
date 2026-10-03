@@ -201,6 +201,29 @@ describe("validatePackageCoherence", () => {
       }
     }
   });
+
+  it("recusa política que referencia uma variável de controle inexistente", () => {
+    const files = validPackage();
+    files["politicas/material-escolar.json"] = files[
+      "politicas/material-escolar.json"
+    ].replace("verba_educacao", "controle_inexistente");
+    const resolved = resolvePackage("cenario.json", files);
+
+    expect(resolved.ok).toBe(true);
+    if (resolved.ok) {
+      const result = validatePackageCoherence(resolved.value);
+      expect(result).toMatchObject({
+        ok: false,
+        diagnostics: [
+          {
+            code: "COERENCIA_INVALIDA",
+            file: "material-escolar",
+            field: "controle.variavel",
+          },
+        ],
+      });
+    }
+  });
 });
 
 describe("buildGraph", () => {

@@ -41,10 +41,17 @@ export function validatePackageCoherence(
 ): ValidationResult<ResolvedPackage> {
   const diagnostics: ContentDiagnostic[] = [];
   if (content.manifest.perfis) {
-    const total = content.manifest.perfis.reduce((sum, profile) => sum + profile.peso, 0);
+    const total = content.manifest.perfis.reduce(
+      (sum, profile) => sum + profile.peso,
+      0,
+    );
     if (!Number.isFinite(total) || Math.abs(total - 1) > 0.000001)
       diagnostics.push(
-        issue(content.manifest.id, "perfis", "Os pesos dos perfis devem somar 1."),
+        issue(
+          content.manifest.id,
+          "perfis",
+          "Os pesos dos perfis devem somar 1.",
+        ),
       );
   }
   const variablesById = new Map(
@@ -100,7 +107,16 @@ export function validatePackageCoherence(
 
   for (const policy of content.policies) {
     const control = variablesById.get(policy.controle.variavel);
-    if (!control) continue;
+    if (!control) {
+      diagnostics.push(
+        issue(
+          policy.id,
+          "controle.variavel",
+          "A política precisa apontar para uma variável de controle existente.",
+        ),
+      );
+      continue;
+    }
     if (control.tipo !== "controle") {
       diagnostics.push(
         issue(

@@ -181,14 +181,28 @@ function validateManifest(
   }
   if (value.perfis !== undefined) {
     if (!Array.isArray(value.perfis))
-      diagnostics.push(diagnostic(file, "perfis", "TIPO_INVALIDO", "Deve ser uma lista."));
+      diagnostics.push(
+        diagnostic(file, "perfis", "TIPO_INVALIDO", "Deve ser uma lista."),
+      );
     else
       value.perfis.forEach((profile, index) => {
         if (!isObject(profile)) {
-          diagnostics.push(diagnostic(file, `perfis[${index}]`, "TIPO_INVALIDO", "Deve ser um objeto."));
+          diagnostics.push(
+            diagnostic(
+              file,
+              `perfis[${index}]`,
+              "TIPO_INVALIDO",
+              "Deve ser um objeto.",
+            ),
+          );
           return;
         }
-        validateKnownFields(profile, file, ["id", "nome", "peso", "interesses"], diagnostics);
+        validateKnownFields(
+          profile,
+          file,
+          ["id", "nome", "peso", "interesses"],
+          diagnostics,
+        );
         requiredString(profile, file, `perfis[${index}].id`, diagnostics);
         requiredString(profile, file, `perfis[${index}].nome`, diagnostics);
         requiredNumber(profile, file, `perfis[${index}].peso`, diagnostics);
@@ -482,19 +496,39 @@ function validatePolicy(
     if (value.controle.opcoes !== undefined) {
       if (!Array.isArray(value.controle.opcoes))
         diagnostics.push(
-          diagnostic(file, "controle.opcoes", "TIPO_INVALIDO", "Deve ser uma lista."),
+          diagnostic(
+            file,
+            "controle.opcoes",
+            "TIPO_INVALIDO",
+            "Deve ser uma lista.",
+          ),
         );
       else
         value.controle.opcoes.forEach((option, index) => {
           if (!isObject(option)) {
             diagnostics.push(
-              diagnostic(file, `controle.opcoes[${index}]`, "TIPO_INVALIDO", "Deve ser um objeto."),
+              diagnostic(
+                file,
+                `controle.opcoes[${index}]`,
+                "TIPO_INVALIDO",
+                "Deve ser um objeto.",
+              ),
             );
             return;
           }
           validateKnownFields(option, file, ["valor", "rotulo"], diagnostics);
-          requiredNumber(option, file, `controle.opcoes[${index}].valor`, diagnostics);
-          requiredString(option, file, `controle.opcoes[${index}].rotulo`, diagnostics);
+          requiredNumber(
+            option,
+            file,
+            `controle.opcoes[${index}].valor`,
+            diagnostics,
+          );
+          requiredString(
+            option,
+            file,
+            `controle.opcoes[${index}].rotulo`,
+            diagnostics,
+          );
         });
     }
   }

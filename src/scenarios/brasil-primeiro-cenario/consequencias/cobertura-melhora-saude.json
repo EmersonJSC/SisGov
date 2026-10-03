@@ -1,1 +1,12 @@
-{"id":"cobertura-melhora-saude","tipo":"consequencia","versaoEsquema":1,"origem":"cobertura_aps","alvo":"saude_populacao","mecanismo":"afim","parametros":{"coeficiente":0.12,"termoConstante":-8.64},"unidade":"indice_0_100","atrasoPassos":2,"duracao":{"modo":"continuo"}}
+{
+  "id": "cobertura-melhora-saude",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "cobertura_aps",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.12, "termoConstante": -8.64 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": { "modo": "continuo" }
+}

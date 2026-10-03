@@ -1,1 +1,12 @@
-{"id":"frequencia-amplia-oportunidades","tipo":"consequencia","versaoEsquema":1,"origem":"frequencia_escolar","alvo":"oportunidades_juvenis","mecanismo":"afim","parametros":{"coeficiente":0.4,"termoConstante":-30},"unidade":"indice_0_100","atrasoPassos":2,"duracao":{"modo":"continuo"}}
+{
+  "id": "frequencia-amplia-oportunidades",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "frequencia_escolar",
+  "alvo": "oportunidades_juvenis",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.4, "termoConstante": -30 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": { "modo": "continuo" }
+}

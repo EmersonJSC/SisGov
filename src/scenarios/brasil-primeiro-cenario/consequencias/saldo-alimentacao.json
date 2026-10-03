@@ -1,1 +1,12 @@
-{"id":"saldo-alimentacao","tipo":"consequencia","versaoEsquema":1,"origem":"recursos_alimentacao_escolar","alvo":"saldo_recorte","mecanismo":"afim","parametros":{"coeficiente":-1,"termoConstante":0},"unidade":"moeda_milhoes_2024_ano","atrasoPassos":0,"duracao":{"modo":"continuo"}}
+{
+  "id": "saldo-alimentacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_alimentacao_escolar",
+  "alvo": "saldo_recorte",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": -1, "termoConstante": 0 },
+  "unidade": "moeda_milhoes_2024_ano",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

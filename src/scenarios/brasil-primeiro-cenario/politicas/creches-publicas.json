@@ -1,1 +1,24 @@
-{"id":"creches-publicas","tipo":"programa","versaoEsquema":1,"nome":"Expansão de creches públicas","descricao":"Ajusta o financiamento anual para ampliar vagas e capacidade de atendimento em creches públicas do recorte.","area":"Educação e Cuidados","icone":"creche","ministerio":"Ministério da Educação","processoAutorizacao":"execucao-programa-autorizado","controle":{"variavel":"recursos_creches_publicas","modo":"orcamento","unidade":"moeda_milhoes_2024_ano"},"consequencias":["creches-ampliam-participacao","creches-ampliam-oportunidades","oportunidades-reduzem-violencia","despesa-creches","saldo-creches"],"respostaTemporal":{"implantacao":0.14,"degradacao":0.08}}
+{
+  "id": "creches-publicas",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Expansão de creches públicas",
+  "descricao": "Ajusta o financiamento anual para ampliar vagas e capacidade de atendimento em creches públicas do recorte.",
+  "area": "Educação e Cuidados",
+  "icone": "creche",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_creches_publicas",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": [
+    "creches-ampliam-participacao",
+    "creches-ampliam-oportunidades",
+    "oportunidades-reduzem-violencia",
+    "despesa-creches",
+    "saldo-creches"
+  ],
+  "respostaTemporal": { "implantacao": 0.14, "degradacao": 0.08 }
+}

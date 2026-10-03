@@ -63,4 +63,23 @@ describe("translateAuthorizedPolicies", () => {
       );
     }
   });
+
+  it("recusa política sem variável de controle em vez de ignorá-la", () => {
+    const scenario = exampleScenario();
+    scenario.definition.policies[0].controle.variavel = "controle-inexistente";
+
+    expect(
+      translateAuthorizedPolicies(scenario.definition, scenario.graph, [
+        { policyId: "material-escolar", intensity: 20 },
+      ]),
+    ).toMatchObject({
+      ok: false,
+      diagnostics: [
+        {
+          code: "COMANDO_INVALIDO",
+          field: "politicas[0].controle.variavel",
+        },
+      ],
+    });
+  });
 });

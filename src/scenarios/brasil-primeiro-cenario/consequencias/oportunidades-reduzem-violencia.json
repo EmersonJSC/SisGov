@@ -1,1 +1,12 @@
-{"id":"oportunidades-reduzem-violencia","tipo":"consequencia","versaoEsquema":1,"origem":"oportunidades_juvenis","alvo":"violencia_letal","mecanismo":"afim","parametros":{"coeficiente":-0.07,"termoConstante":3.15},"unidade":"taxa_por_100_mil","atrasoPassos":3,"duracao":{"modo":"continuo"}}
+{
+  "id": "oportunidades-reduzem-violencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oportunidades_juvenis",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": -0.07, "termoConstante": 3.15 },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 3,
+  "duracao": { "modo": "continuo" }
+}

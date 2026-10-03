@@ -88,6 +88,7 @@ export function advanceExecution(
     changedControls.add(command.controlId);
     nextValues[command.controlId] = command.value;
   }
+  const readValues = { ...nextValues };
 
   const requestedIds = new Set(batch.activeRelationIds);
   if ([...requestedIds].some((id) => !graph.relationsById[id]))
@@ -113,7 +114,7 @@ export function advanceExecution(
   for (const relation of activeRelations) {
     const sourceValue =
       relation.delaySteps === 0
-        ? nextValues[relation.originId]
+        ? readValues[relation.originId]
         : readExecutionSnapshot(execution, relation.delaySteps)[
             relation.originId
           ];

@@ -1,1 +1,24 @@
-{"id":"prevencao-seguranca","tipo":"programa","versaoEsquema":1,"nome":"Prevenção e cooperação em segurança","descricao":"Ajusta recursos para prevenção, capacitação e cooperação dentro das competências do SUSP.","area":"Segurança","fonte":"https://www.presidencia.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13675.htm","icone":"network","ministerio":"Ministério da Justiça e Segurança Pública","processoAutorizacao":"execucao-programa-autorizado","controle":{"variavel":"recursos_prevencao_seguranca","modo":"orcamento","unidade":"moeda_milhoes_2024_ano"},"consequencias":["prevencao-reduz-violencia","violencia-eleva-pressao","despesa-prevencao","saldo-prevencao"],"respostaTemporal":{"implantacao":0.18,"degradacao":0.1}}
+{
+  "id": "prevencao-seguranca",
+  "tipo": "programa",
+  "versaoEsquema": 1,
+  "nome": "Prevenção e cooperação em segurança",
+  "descricao": "Ajusta recursos para prevenção, capacitação e cooperação dentro das competências do SUSP.",
+  "area": "Segurança",
+  "fonte": "https://www.presidencia.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13675.htm",
+  "icone": "network",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_prevencao_seguranca",
+    "modo": "orcamento",
+    "unidade": "moeda_milhoes_2024_ano"
+  },
+  "consequencias": [
+    "prevencao-reduz-violencia",
+    "violencia-eleva-pressao",
+    "despesa-prevencao",
+    "saldo-prevencao"
+  ],
+  "respostaTemporal": { "implantacao": 0.18, "degradacao": 0.1 }
+}

@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   advanceExecution,
+  buildGraph,
   createExecution,
+  resolvePackage,
   translateAuthorizedPolicies,
 } from "../engine";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
@@ -13,6 +15,111 @@ function example() {
 }
 
 describe("advanceExecution", () => {
+  it("lê a mesma fotografia para uma cadeia independentemente da ordem das variáveis", () => {
+    function run(variables: readonly object[]) {
+      const files = {
+        "cenario.json": JSON.stringify({
+          id: "cadeia-teste",
+          tipo: "cenario",
+          versaoEsquema: 1,
+          nome: "Cadeia de teste",
+          estadoInicial: "estado.json",
+          variaveis: "variaveis.json",
+          politicas: ["politica.json"],
+          consequencias: ["ab.json", "bc.json"],
+        }),
+        "estado.json": JSON.stringify({
+          id: "estado",
+          tipo: "estado-inicial",
+          versaoEsquema: 1,
+          valores: { a: 0, b: 40, c: 30 },
+        }),
+        "variaveis.json": JSON.stringify({
+          id: "variaveis",
+          tipo: "variaveis",
+          versaoEsquema: 1,
+          variaveis: variables,
+        }),
+        "politica.json": JSON.stringify({
+          id: "politica",
+          tipo: "programa",
+          versaoEsquema: 1,
+          nome: "Política",
+          descricao: "Teste",
+          processoAutorizacao: "decisao-executiva",
+          controle: { variavel: "a", modo: "verba", unidade: "moeda" },
+          consequencias: ["ab", "bc"],
+        }),
+        "ab.json": JSON.stringify({
+          id: "ab",
+          tipo: "consequencia",
+          versaoEsquema: 1,
+          origem: "a",
+          alvo: "b",
+          mecanismo: "afim",
+          parametros: { coeficiente: 1, termoConstante: 0 },
+          unidade: "indice_0_100",
+          atrasoPassos: 0,
+          duracao: { modo: "continuo" },
+        }),
+        "bc.json": JSON.stringify({
+          id: "bc",
+          tipo: "consequencia",
+          versaoEsquema: 1,
+          origem: "b",
+          alvo: "c",
+          mecanismo: "afim",
+          parametros: { coeficiente: 1, termoConstante: -10 },
+          unidade: "indice_0_100",
+          atrasoPassos: 0,
+          duracao: { modo: "continuo" },
+        }),
+      };
+      const resolved = resolvePackage("cenario.json", files);
+      if (!resolved.ok) throw new Error("O pacote de teste deveria resolver.");
+      const graph = buildGraph(resolved.value);
+      const result = advanceExecution(
+        resolved.value,
+        graph,
+        createExecution(resolved.value, graph),
+        {
+          controlCommands: [{ controlId: "a", policyId: "politica", value: 1 }],
+          activeRelationIds: graph.relations.map((relation) => relation.id),
+        },
+      );
+      if (!result.ok) throw new Error("O passo deveria ser válido.");
+      return result.value.execution.values;
+    }
+
+    const a = {
+      id: "a",
+      tipo: "controle",
+      nome: "A",
+      unidade: "moeda",
+      dominio: { minimo: 0 },
+      valorInicial: 0,
+    };
+    const b = {
+      id: "b",
+      tipo: "calculado",
+      nome: "B",
+      unidade: "indice_0_100",
+      dominio: { minimo: 0, maximo: 100 },
+      valorInicial: 40,
+    };
+    const c = {
+      id: "c",
+      tipo: "calculado",
+      nome: "C",
+      unidade: "indice_0_100",
+      dominio: { minimo: 0, maximo: 100 },
+      valorInicial: 0,
+    };
+
+    expect(run([a, b, c])).toEqual({ a: 1, b: 41, c: 30 });
+    expect(run([a, c, b])).toEqual({ a: 1, c: 30, b: 41 });
+  });
+
   it("confirma controle e consequência no mesmo passo", () => {
     const scenario = example();
     const execution = createExecution(scenario.definition, scenario.graph);

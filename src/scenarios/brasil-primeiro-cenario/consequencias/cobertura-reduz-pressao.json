@@ -1,1 +1,12 @@
-{"id":"cobertura-reduz-pressao","tipo":"consequencia","versaoEsquema":1,"origem":"cobertura_aps","alvo":"pressao_hospitalar","mecanismo":"afim","parametros":{"coeficiente":-0.3,"termoConstante":21.6},"unidade":"indice_0_100","atrasoPassos":1,"duracao":{"modo":"continuo"}}
+{
+  "id": "cobertura-reduz-pressao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "cobertura_aps",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": -0.3, "termoConstante": 21.6 },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}
