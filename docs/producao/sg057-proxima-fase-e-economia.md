@@ -33,10 +33,14 @@ mantida enquanto validamos escolhas com consequências contábeis e sociais.
 1. **SG043-R — Reparar o laboratório e registrar o turno.** Corrigir os parâmetros
    demonstrativos que impedem o primeiro avanço, preservar decisões em erro,
    liberar o botão após falha e mostrar um diário. Não declarar a Fase 07 concluída.
-2. **SG057-A — Fechar o contrato temporal.** Fixar duração do turno, quantos passos
-   ele executa, calendário de cobrança, aplicação de decisões, fatos descobertos
-   ao final e ordem de confirmação. Proposta para avaliação: trimestre por turno;
-   ainda não adotada. Taxas anuais precisam ser convertidas explicitamente.
+2. **SG057-A — Fechar o contrato temporal.** Decisão parcial confirmada: cada turno
+   político representa um trimestre e executa três passos mensais do motor. A decisão
+   preparada pelo jogador vale desde o primeiro mês e permanece nos três passos; o
+   resultado consolidado do trimestre aparece ao fim do terceiro mês. Ainda precisam
+   ser definidos a conversão de taxas anuais, o calendário e a ordem de cobrança,
+   quando eventos e situações são avaliados/aplicados, os fatos apresentados ao fim
+   do turno e a confirmação atômica das etapas, incluindo falhas e retentativas. Não
+   declarar SG057-A concluído antes de fechar esses pontos.
 3. **SG060-A/B — Núcleo fiscal e financiamento mínimo.** Primeiro demonstrar contas
    à mão; depois implementar a conta fiscal independente da interface, cenários
    com déficit e superávit e regras de financiamento. Expor restrições à decisão.

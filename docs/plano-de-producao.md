@@ -422,11 +422,17 @@ Objetivo: integrar partido, Senado, opinião, implantação, finanças e eleiç�
 
 Entrega: registrar regras ainda abertas de partidos, cadeiras, distribuição, maioria, influência popular, votação, calendário e apuração separada para Presidência e Senado. Definir duração, passos por turno, empates e precedência de pendências. Aceite: exemplos manuais não duplicam votos, distinguem afinidade de apoio e mostram vitória com novo mandato ou derrota com encerramento. Regras simplificadas e parâmetros ficam no cenário; mecanismos novos recebem testes. Dividir em SG057-A para ciclo temporal e SG057-B para regras políticas antes de implementar; SG058 aguarda essas decisões.
 
-#### SG057-A Contrato temporal — próxima tarefa
+#### SG057-A Contrato temporal — em análise
 
-Fixar calendário, duração, conversão de taxas, ordem de etapas e confirmação atômica.
-Não confundir passo técnico do laboratório com turno político. Incluir o diário e
-os casos de falha/retentativa. Proposta de trimestre ainda depende dessa decisão.
+Decisões parciais confirmadas: cada turno político representa um trimestre e executa
+três passos mensais do motor. A decisão preparada pelo jogador vale desde o primeiro
+mês e permanece nos três passos; o resultado consolidado do trimestre aparece ao fim
+do terceiro mês. O passo técnico mensal não é um turno político.
+
+Ainda falta definir a conversão de taxas anuais, o calendário e a ordem de cobrança,
+quando eventos e situações são avaliados/aplicados e como o turno confirma todas as
+etapas atomicamente após falhas. O diário e os casos de falha/retentativa também
+precisam integrar o contrato antes de SG057-A ser concluído.
 
 #### SG057-B Regras políticas — planejado
 
