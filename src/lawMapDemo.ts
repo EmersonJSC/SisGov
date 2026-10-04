@@ -25,6 +25,28 @@ import {
   type VisualMapDefinition,
 } from "./influenceLayout";
 import {
+  advanceCameraMomentum,
+  fitWorldCamera,
+  focusCameraAt,
+  panCamera,
+  zoomCameraAt,
+  type CameraVelocity,
+  type WorldCamera,
+} from "./world/worldCamera";
+import type {
+  WorldNode,
+  WorldNodeKind,
+  WorldPoint,
+  WorldViewModel,
+} from "./world/worldViewModel";
+import {
+  buildWorldAreas,
+  buildWorldRepresentatives,
+  buildWorldViewModel,
+  nearestWorldNode,
+} from "./world/worldViewModel";
+import { PixiWorldRenderer } from "./ui/PixiWorldRenderer";
+import {
   createExecution,
   evaluateSituation,
   type EngineExecution,
@@ -35,6 +57,8 @@ import {
 import { createD4ReferenceSandbox } from "./scenarios/d4ReferenceSandbox";
 
 const stage = document.querySelector<HTMLElement>("#law-stage")!;
+const viewport = document.querySelector<HTMLElement>("#map-viewport")!;
+const worldHost = document.querySelector<HTMLElement>("#world-canvas")!;
 const editor = document.querySelector<HTMLDialogElement>("#law-editor")!;
 const turn = document.querySelector<HTMLElement>("#turn")!;
 const pendingLabel = document.querySelector<HTMLElement>("#pending")!;
@@ -42,6 +66,9 @@ const advanceButton = document.querySelector<HTMLButtonElement>("#advance")!;
 const resetButton = document.querySelector<HTMLButtonElement>("#reset")!;
 const zoomInButton = document.querySelector<HTMLButtonElement>("#zoom-in")!;
 const zoomOutButton = document.querySelector<HTMLButtonElement>("#zoom-out")!;
+const accessibilityLayer = document.createElement("div");
+accessibilityLayer.className = "world-accessibility-layer";
+stage.append(accessibilityLayer);
 const format = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
 const coefficientFormat = new Intl.NumberFormat("pt-BR", {
   maximumFractionDigits: 2,
@@ -111,15 +138,56 @@ const categoryStyle: Record<
     border: "#f1d5c4",
   },
 };
+const worldCategoryColors: Record<string, number> = {};
+for (const [category, style] of Object.entries(categoryStyle))
+  worldCategoryColors[category] = Number.parseInt(style.color.slice(1), 16);
+function lightenColor(color: number, amount: number): number {
+  const mix = (channel: number) =>
+    Math.round(channel + (255 - channel) * amount);
+  const red = mix((color >> 16) & 0xff);
+  const green = mix((color >> 8) & 0xff);
+  const blue = mix(color & 0xff);
+  return (red << 16) | (green << 8) | blue;
+}
+
+function nearestMapNodeAt(
+  clientX: number,
+  clientY: number,
+): HTMLElement | null {
+  if (!physics) return null;
+  const bounds = viewport.getBoundingClientRect();
+  const scale = camera.scale * MAP_PIXELS_PER_UNIT;
+  const point = {
+    x: (clientX - bounds.left - camera.x) / scale,
+    y: (clientY - bounds.top - camera.y) / scale,
+  };
+  const id = nearestWorldNode(
+    [...physics.bodies.values()].map((body) => ({
+      id: body.id,
+      position: { x: body.x, y: body.y },
+    })),
+    point,
+  );
+  return id
+    ? accessibilityLayer.querySelector<HTMLElement>(
+        `[data-node-id="${CSS.escape(id)}"]`,
+      )
+    : null;
+}
 
 let mapState: MapState | undefined;
 let processing = false;
 let activeFilter: MapFilter = "influence";
 let cachedLayout: ReturnType<typeof buildInfluenceLayout> | undefined;
 let physics: MapPhysics | undefined;
+let pointerHighlightedNodeId: string | undefined;
 let animationFrame = 0;
 let pinnedRelationId: string | undefined;
+let camera: WorldCamera = { x: 0, y: 0, scale: 1 };
+let worldRenderer: PixiWorldRenderer | undefined;
 let latestMapBounds = { minX: 0, minY: 0, maxX: 100, maxY: 100 };
+let cameraVelocity: CameraVelocity = { x: 0, y: 0 };
+let cameraAnimationFrame = 0;
 
 const journalRoot = createRoot(document.getElementById("turn-journal")!);
 let journal: readonly TurnLogEntry[] = [];
@@ -173,13 +241,7 @@ function targetReading(targetId: string): string {
 
 function setRelationHighlight(nodeId?: string): void {
   const feedback = stage.querySelector<HTMLElement>(".relation-feedback");
-  const lines = stage.querySelectorAll<SVGLineElement>(".law-lines line");
-  for (const line of lines) {
-    const related =
-      Boolean(nodeId) &&
-      (line.dataset.origin === nodeId || line.dataset.target === nodeId);
-    line.classList.toggle("visible", related);
-  }
+  worldRenderer?.setHighlightedNode(nodeId);
   stage
     .querySelectorAll<HTMLElement>(".map-node")
     .forEach((node) =>
@@ -427,14 +489,14 @@ function openSituation(situationId: string): void {
   if (!editor.open) editor.showModal();
 }
 
-function render(
-  previousValues?: Readonly<Record<string, number>>,
-  previousInfluence?: ReadonlyMap<string, number>,
-): void {
+function render(previousValues?: Readonly<Record<string, number>>): void {
   if (!mapState) return;
   const { content, graph, execution, pending } = mapState;
   cancelAnimationFrame(animationFrame);
+  animationFrame = 0;
   stage.innerHTML = "";
+  stage.append(accessibilityLayer);
+  accessibilityLayer.replaceChildren();
   turn.textContent = String(execution.step);
   pendingLabel.textContent =
     pending.size === 0
@@ -455,7 +517,6 @@ function render(
   const metrics =
     activeFilter === "financial" ? financeMetrics : influenceMetrics;
   const sizes = activeFilter === "financial" ? financeSizes : influenceSizes;
-  const priorLayout = cachedLayout;
   const fresh = !physics;
   physics ??= new MapPhysics(content, mapState.visualMap);
   const radii = new Map(
@@ -469,14 +530,35 @@ function render(
     physics.settle();
   cachedLayout = physics.snapshot();
   const layout = cachedLayout;
-  const {
-    positions,
-    zones,
-    macroAreas,
-    ministryPositions,
-    government,
-    representatives,
-  } = layout;
+  const { positions, zones, macroAreas, ministryPositions, government } =
+    layout;
+  const worldNodes: WorldNode[] = [];
+  for (const zone of zones) {
+    const position = ministryPositions.get(zone.ministry);
+    if (!position) continue;
+    const focusButton = document.createElement("button");
+    focusButton.type = "button";
+    focusButton.className = "world-ministry-focus";
+    focusButton.setAttribute(
+      "aria-label",
+      `Focar no ministério ${zone.ministry}`,
+    );
+    focusButton.title = `Focar no ministério ${zone.ministry}`;
+    focusButton.style.left = `${position.x * MAP_PIXELS_PER_UNIT}px`;
+    focusButton.style.top = `${
+      (zone.center.y - zone.radius + 1.3) * MAP_PIXELS_PER_UNIT
+    }px`;
+    focusButton.addEventListener("click", () =>
+      focusOnWorldPoint(
+        {
+          x: position.x * MAP_PIXELS_PER_UNIT,
+          y: position.y * MAP_PIXELS_PER_UNIT,
+        },
+        Math.max(camera.scale, 0.9),
+      ),
+    );
+    accessibilityLayer.append(focusButton);
+  }
   const horizontal = [
     government.center.x - government.radius,
     government.center.x + government.radius,
@@ -504,187 +586,11 @@ function render(
     ...[...positions.values()].map((point) => point.y),
   ];
   latestMapBounds = {
-    minX: Math.min(...horizontal) - 3,
-    maxX: Math.max(...horizontal) + 3,
-    minY: Math.min(...vertical) - 3,
-    maxY: Math.max(...vertical) + 3,
+    minX: (Math.min(...horizontal) - 3) * MAP_PIXELS_PER_UNIT,
+    maxX: (Math.max(...horizontal) + 3) * MAP_PIXELS_PER_UNIT,
+    minY: (Math.min(...vertical) - 3) * MAP_PIXELS_PER_UNIT,
+    maxY: (Math.max(...vertical) + 3) * MAP_PIXELS_PER_UNIT,
   };
-  const previousLayout = previousInfluence ? priorLayout : undefined;
-  for (const macroArea of macroAreas) {
-    const region = document.createElement("div");
-    region.className = "macro-area-region";
-    region.style.left = `${macroArea.center.x}%`;
-    region.style.top = `${macroArea.center.y}%`;
-    region.style.width = `${macroArea.radiusX * 2}%`;
-    region.style.height = `${macroArea.radiusY * 2}%`;
-    region.style.setProperty("--macro-color", macroArea.color);
-    const label = document.createElement("span");
-    label.textContent = macroArea.name;
-    region.append(label);
-    stage.append(region);
-  }
-  const federal = document.createElement("div");
-  federal.className = "federal-sphere";
-  federal.style.left = `${government.center.x}%`;
-  federal.style.top = `${government.center.y}%`;
-  federal.style.width = `${government.radius * 2}%`;
-  federal.style.height = `${government.radius * 2}%`;
-  const federalLabel = document.createElement("span");
-  federalLabel.textContent = government.name;
-  federal.append(federalLabel);
-  stage.append(federal);
-  for (const representative of representatives) {
-    const element = document.createElement("div");
-    element.className = `representative-node ${representative.role}`;
-    element.dataset.representative = representative.id;
-    element.setAttribute("role", "img");
-    element.setAttribute(
-      "aria-label",
-      `${representative.name} · ${representative.institution}`,
-    );
-    element.title = `${representative.name} · ${representative.institution}`;
-    element.style.left = `${representative.center.x}%`;
-    element.style.top = `${representative.center.y}%`;
-    element.style.setProperty(
-      "--size",
-      `${representative.radius * 2 * MAP_PIXELS_PER_UNIT}px`,
-    );
-    const symbol = document.createElement("span");
-    symbol.className = "representative-symbol";
-    symbol.textContent = representative.role === "president" ? "P" : "M";
-    const label = document.createElement("strong");
-    label.textContent = representative.name;
-    element.append(symbol, label);
-    stage.append(element);
-  }
-  for (const zone of zones) {
-    const style = categoryStyle[zone.category] ?? {
-      color: "#6c6677",
-      halo: "rgb(108 102 119 / 12%)",
-      background: "#faf9fb",
-      border: "#dfdbe3",
-    };
-    const element = document.createElement("div");
-    element.className = "category-zone ministry-zone";
-    element.dataset.ministry = zone.ministry;
-    const previousZone = previousLayout?.zones.find(
-      (item) => item.ministry === zone.ministry,
-    );
-    const initialZone = previousZone ?? zone;
-    element.style.left = `${initialZone.center.x}%`;
-    element.style.top = `${initialZone.center.y}%`;
-    element.style.width = `${initialZone.radius * 2}%`;
-    element.style.height = `${initialZone.radius * 2}%`;
-    if (previousZone) {
-      requestAnimationFrame(() => {
-        element.style.left = `${zone.center.x}%`;
-        element.style.top = `${zone.center.y}%`;
-        element.style.width = `${zone.radius * 2}%`;
-        element.style.height = `${zone.radius * 2}%`;
-      });
-    }
-    element.style.setProperty("--category-bg", style.background);
-    element.style.setProperty("--category-border", style.border);
-    element.style.setProperty("--category-color", style.color);
-    stage.append(element);
-  }
-  for (const zone of zones) {
-    const position = ministryPositions.get(zone.ministry);
-    if (!position) continue;
-    const ministry = document.createElement("div");
-    ministry.className = "ministry-node";
-    ministry.dataset.ministry = zone.ministry;
-    ministry.style.left = `${position.x}%`;
-    ministry.style.top = `${zone.center.y - zone.radius + 1.3}%`;
-    ministry.textContent = zone.ministry
-      .replace("Ministério da ", "")
-      .replace("Ministério do ", "")
-      .replace("Ministério de ", "");
-    ministry.style.setProperty(
-      "--category-color",
-      (categoryStyle[zone.category] ?? { color: "#52677c" }).color,
-    );
-    stage.append(ministry);
-  }
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.classList.add("law-lines");
-  svg.setAttribute("viewBox", "0 0 100 100");
-  svg.setAttribute("preserveAspectRatio", "none");
-  // O texto equivalente é apresentado no painel de relação ao focar uma bolinha.
-  svg.setAttribute("aria-hidden", "true");
-  const definitions = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "defs",
-  );
-  definitions.innerHTML =
-    '<marker id="law-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#8da3b7"/></marker><marker id="law-arrow-rise" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#25865a"/></marker><marker id="law-arrow-fall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#be4f4f"/></marker>';
-  svg.append(definitions);
-  const rawStrengths = graph.relations.map(
-    (relation) =>
-      Math.abs(relation.parameters.coeficiente) *
-      Math.abs(execution.values[relation.originId] ?? 0),
-  );
-  const maximumStrength = Math.max(...rawStrengths, 0.01);
-  for (const relation of graph.relations) {
-    const origin = positions.get(
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId,
-    );
-    const target = positions.get(relation.targetId);
-    if (!origin || !target) continue;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    const rises = relation.parameters.coeficiente >= 0;
-    const normalizedStrength = Math.min(
-      1,
-      (Math.abs(relation.parameters.coeficiente) *
-        Math.abs(execution.values[relation.originId] ?? 0)) /
-        maximumStrength,
-    );
-    line.setAttribute("x1", String(origin.x));
-    line.setAttribute("y1", String(origin.y));
-    line.setAttribute("x2", String(target.x));
-    line.setAttribute("y2", String(target.y));
-    line.setAttribute(
-      "marker-end",
-      rises ? "url(#law-arrow-rise)" : "url(#law-arrow-fall)",
-    );
-    line.dataset.positionOrigin =
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId;
-    line.dataset.origin = relation.originId;
-    line.dataset.target = relation.targetId;
-    line.classList.add("relation", rises ? "rise" : "fall");
-    line.style.setProperty(
-      "--flow-duration",
-      `${2.5 - normalizedStrength * 1.7}s`,
-    );
-    line.style.setProperty(
-      "--flow-width",
-      `${0.22 + normalizedStrength * 0.25}`,
-    );
-    svg.append(line);
-  }
-  for (const situation of content.situations) {
-    const origin = situation.entraQuando
-      ? positions.get(situation.entraQuando.variavel)
-      : undefined;
-    const target = positions.get(situation.id);
-    if (!origin || !target) continue;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", String(origin.x));
-    line.setAttribute("y1", String(origin.y));
-    line.setAttribute("x2", String(target.x));
-    line.setAttribute("y2", String(target.y));
-    line.setAttribute("marker-end", "url(#law-arrow)");
-    line.dataset.positionOrigin = situation.entraQuando!.variavel;
-    line.dataset.origin = situation.entraQuando!.variavel;
-    line.dataset.target = situation.id;
-    line.classList.add("condition");
-    svg.append(line);
-  }
-  stage.append(svg);
   const feedback = document.createElement("aside");
   feedback.className = "relation-feedback";
   feedback.hidden = true;
@@ -704,7 +610,6 @@ function render(
   ): void => {
     const position = positions.get(id);
     if (!position) return;
-    const previousPosition = previousLayout?.positions.get(id) ?? position;
     const node = document.createElement("button");
     node.type = "button";
     node.className = `map-node ${kind}`;
@@ -713,14 +618,8 @@ function render(
       "--orbit-index",
       String(stage.querySelectorAll(".map-node.policy").length),
     );
-    node.style.left = `${previousPosition.x}%`;
-    node.style.top = `${previousPosition.y}%`;
-    if (previousLayout) {
-      requestAnimationFrame(() => {
-        node.style.left = `${position.x}%`;
-        node.style.top = `${position.y}%`;
-      });
-    }
+    node.style.left = `${position.x * MAP_PIXELS_PER_UNIT}px`;
+    node.style.top = `${position.y * MAP_PIXELS_PER_UNIT}px`;
     const finalSize = sizes.get(id) ?? MIN_NODE_DIAMETER;
     node.style.setProperty("--size", `${finalSize}px`);
     node.dataset.metric = String(metrics.get(id)?.value ?? "unavailable");
@@ -789,10 +688,60 @@ function render(
       badge.textContent = `${delta > 0 ? "+" : ""}${format.format(delta)}`;
       node.append(badge);
     }
-    node.addEventListener("pointerenter", () => setRelationHighlight(id));
-    node.addEventListener("pointerleave", () =>
-      setRelationHighlight(pinnedRelationId),
-    );
+    const nodeKind: WorldNodeKind =
+      kind === "situation-positive" || kind === "situation-negative"
+        ? "situation"
+        : kind;
+    const nodeColor = worldCategoryColors[category ?? ""] ?? 0x52677c;
+    const situationActive =
+      nodeKind !== "situation" ||
+      (mapState?.activeSituationIds.has(id) ?? false);
+    const accessibleValue =
+      nodeKind === "situation"
+        ? situationActive
+          ? "ATIVA"
+          : "INATIVA"
+        : (number.textContent ?? displayedValue);
+    worldNodes.push({
+      id,
+      kind: nodeKind,
+      label: name,
+      position: {
+        x: position.x * MAP_PIXELS_PER_UNIT,
+        y: position.y * MAP_PIXELS_PER_UNIT,
+      },
+      diameter: finalSize,
+      color: nodeColor,
+      fillColor:
+        kind === "policy"
+          ? lightenColor(nodeColor, 0.58)
+          : kind === "indicator"
+            ? 0xeaf4fc
+            : kind === "situation-positive"
+              ? 0xeaf8f0
+              : 0xfdeeee,
+      borderColor:
+        kind === "policy"
+          ? nodeColor
+          : kind === "indicator"
+            ? 0x397ab5
+            : kind === "situation-positive"
+              ? 0x2d8a5c
+              : 0xb64b4b,
+      iconUrl:
+        kind === "policy"
+          ? (policyIcons[`./assets/svg/${iconKey}.svg`] ?? fallbackIcon)
+          : undefined,
+      value: accessibleValue,
+      details: metricLabel,
+      inactive:
+        (nodeKind === "situation" && !situationActive) ||
+        (activeFilter === "financial" && metrics.get(id)?.value == null),
+      delta:
+        delta === 0
+          ? undefined
+          : `${delta > 0 ? "+" : ""}${format.format(delta)}`,
+    });
     node.addEventListener("focus", () => setRelationHighlight(id));
     node.addEventListener("blur", () => setRelationHighlight(pinnedRelationId));
     node.addEventListener("click", () => {
@@ -800,7 +749,14 @@ function render(
       setRelationHighlight(id);
       onClick();
     });
-    stage.append(node);
+    node.addEventListener("dblclick", () => focusOnWorldNode(id));
+    node.addEventListener("keydown", (event) => {
+      if (event.key.toLowerCase() === "f") {
+        event.preventDefault();
+        focusOnWorldNode(id);
+      }
+    });
+    accessibilityLayer.append(node);
   };
 
   for (const policy of content.policies) {
@@ -826,7 +782,20 @@ function render(
       policy.icone,
       compactControlLabel(policy, value),
     );
-    const node = [...stage.querySelectorAll<HTMLElement>(".map-node")].at(-1);
+    const node = accessibilityLayer
+      .querySelectorAll<HTMLElement>(".map-node")
+      .item(worldNodes.length - 1);
+    const worldNode = worldNodes.at(-1);
+    if (
+      worldNode &&
+      (pending.has(policy.id) ||
+        Math.abs((mapState.targets.get(policy.id) ?? value) - value) > 0.05)
+    ) {
+      worldNodes[worldNodes.length - 1] = {
+        ...worldNode,
+        prepared: `${pending.has(policy.id) ? "Preparado" : "Meta"}: ${controlLabel(policy, pending.get(policy.id) ?? mapState.targets.get(policy.id)!)}`,
+      };
+    }
     if (
       node &&
       (pending.has(policy.id) ||
@@ -864,80 +833,73 @@ function render(
       situation.area,
       situation.avaliacao === "positiva" ? "SITUAÇÃO +" : "SITUAÇÃO −",
     );
-    const node = [...stage.querySelectorAll<HTMLElement>(".map-node")].at(-1);
+    const node = accessibilityLayer
+      .querySelectorAll<HTMLElement>(".map-node")
+      .item(worldNodes.length - 1);
     if (node) {
       node.classList.toggle("inactive", !active);
-      node.querySelector<HTMLElement>(".node-value")!.textContent = active
-        ? "ATIVA"
-        : "INATIVA";
     }
+    const worldNode = worldNodes.at(-1);
+    if (worldNode)
+      worldNodes[worldNodes.length - 1] = {
+        ...worldNode,
+        value: active ? "ATIVA" : "INATIVA",
+        inactive: !active,
+      };
   }
-  const nodes = [...stage.querySelectorAll<HTMLElement>(".map-node")];
-  const zoneElements = [
-    ...stage.querySelectorAll<HTMLElement>(".category-zone"),
+  const worldModel: WorldViewModel = buildWorldViewModel(
+    layout,
+    content,
+    graph,
+    execution,
+    worldNodes,
+    worldCategoryColors,
+  );
+  worldRenderer?.setModel(worldModel);
+  const nodes = [
+    ...accessibilityLayer.querySelectorAll<HTMLElement>(".map-node"),
   ];
-  const labels = [...stage.querySelectorAll<HTMLElement>(".ministry-node")];
-  const representativeElements = [
-    ...stage.querySelectorAll<HTMLElement>(".representative-node"),
-  ];
-  const lines = [...stage.querySelectorAll<SVGLineElement>(".law-lines line")];
-  let lastTime = performance.now();
-  const animate = (now: number) => {
-    if (!physics) return;
-    physics.advance((now - lastTime) / 1000);
-    lastTime = now;
-    const snapshot = physics.snapshot();
-    cachedLayout = snapshot;
-    federal.style.width = `${snapshot.government.radius * 2}%`;
-    federal.style.height = `${snapshot.government.radius * 2}%`;
-    for (const representative of snapshot.representatives) {
-      const element = representativeElements.find(
-        (el) => el.dataset.representative === representative.id,
+  if (!physics.sleeping) {
+    let lastTime = performance.now();
+    const animate = (now: number) => {
+      if (!physics) return;
+      physics.advance((now - lastTime) / 1000);
+      lastTime = now;
+      const snapshot = physics.snapshot();
+      cachedLayout = snapshot;
+      for (const node of nodes) {
+        const body = physics.bodies.get(node.dataset.nodeId!);
+        if (!body) continue;
+        node.style.left = `${body.x * MAP_PIXELS_PER_UNIT}px`;
+        node.style.top = `${body.y * MAP_PIXELS_PER_UNIT}px`;
+        node.style.setProperty(
+          "--size",
+          `${body.radius * 2 * MAP_PIXELS_PER_UNIT}px`,
+        );
+      }
+      worldRenderer?.setPositions(
+        new Map(
+          [...snapshot.positions].map(([id, position]) => [
+            id,
+            {
+              x: position.x * MAP_PIXELS_PER_UNIT,
+              y: position.y * MAP_PIXELS_PER_UNIT,
+            },
+          ]),
+        ),
+        buildWorldRepresentatives(snapshot),
+        buildWorldAreas(snapshot, worldCategoryColors),
+        new Map(
+          [...physics.bodies].map(([id, body]) => [
+            id,
+            body.radius * 2 * MAP_PIXELS_PER_UNIT,
+          ]),
+        ),
       );
-      if (element) {
-        element.style.left = `${representative.center.x}%`;
-        element.style.top = `${representative.center.y}%`;
-      }
-    }
-    for (const node of nodes) {
-      const body = physics.bodies.get(node.dataset.nodeId!);
-      if (!body) continue;
-      node.style.left = `${body.x}%`;
-      node.style.top = `${body.y}%`;
-      node.style.setProperty(
-        "--size",
-        `${body.radius * 2 * MAP_PIXELS_PER_UNIT}px`,
-      );
-    }
-    for (const zone of snapshot.zones) {
-      const el = zoneElements.find(
-        (el) => el.dataset.ministry === zone.ministry,
-      );
-      if (el) {
-        el.style.left = `${zone.center.x}%`;
-        el.style.top = `${zone.center.y}%`;
-        el.style.width = `${zone.radius * 2}%`;
-        el.style.height = `${zone.radius * 2}%`;
-      }
-      const label = labels.find((el) => el.dataset.ministry === zone.ministry);
-      if (label) {
-        label.style.left = `${zone.center.x}%`;
-        label.style.top = `${zone.center.y - zone.radius - 1.2}%`;
-      }
-    }
-    for (const line of lines) {
-      const a = snapshot.positions.get(line.dataset.positionOrigin!);
-      const b = snapshot.positions.get(line.dataset.target!);
-      if (a && b) {
-        line.setAttribute("x1", String(a.x));
-        line.setAttribute("y1", String(a.y));
-        line.setAttribute("x2", String(b.x));
-        line.setAttribute("y2", String(b.y));
-      }
-    }
-    if (!physics.sleeping) animationFrame = requestAnimationFrame(animate);
-  };
-  animationFrame = requestAnimationFrame(animate);
+      if (!physics.sleeping) animationFrame = requestAnimationFrame(animate);
+    };
+    animationFrame = requestAnimationFrame(animate);
+  }
 }
 
 advanceButton.addEventListener("click", (event) => {
@@ -1007,7 +969,7 @@ advanceButton.addEventListener("click", (event) => {
       `Turno ${mapState.execution.step} confirmado`,
       details,
     );
-    render(previous, currentInfluence(current.graph, previous));
+    render(previous);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     recordLog(
@@ -1076,48 +1038,48 @@ try {
   ]);
 }
 
-// A câmera transforma apenas o desenho. Turnos e janelas mantêm seu comportamento.
-const viewport = document.querySelector<HTMLElement>("#map-viewport")!;
-
-let camera = { x: 0, y: 0, scale: 1 };
 function paintCamera(): void {
-  stage.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})`;
+  worldRenderer?.setCamera(camera);
 }
+
 function zoomAt(scale: number, x: number, y: number): void {
-  const next = Math.max(0.25, Math.min(3, scale));
-  const ratio = next / camera.scale;
-  camera = {
-    x: x - (x - camera.x) * ratio,
-    y: y - (y - camera.y) * ratio,
-    scale: next,
-  };
+  camera = zoomCameraAt(camera, scale, { x, y });
+  cameraVelocity = { x: 0, y: 0 };
   paintCamera();
 }
-function fitMap(): void {
-  const pixelsPerUnit = MAP_PIXELS_PER_UNIT;
-  const contentWidth =
-    (latestMapBounds.maxX - latestMapBounds.minX) * pixelsPerUnit;
-  const contentHeight =
-    (latestMapBounds.maxY - latestMapBounds.minY) * pixelsPerUnit;
-  const scale = Math.max(
-    0.65,
-    Math.min(
-      viewport.clientWidth / contentWidth,
-      viewport.clientHeight / contentHeight,
-      1,
-    ),
-  );
-  camera = {
-    x:
-      (viewport.clientWidth - contentWidth * scale) / 2 -
-      latestMapBounds.minX * pixelsPerUnit * scale,
-    y:
-      (viewport.clientHeight - contentHeight * scale) / 2 -
-      latestMapBounds.minY * pixelsPerUnit * scale,
+
+function focusOnWorldPoint(point: WorldPoint, scale = camera.scale): void {
+  camera = focusCameraAt(
+    camera,
+    point,
+    { x: viewport.clientWidth, y: viewport.clientHeight },
     scale,
-  };
+  );
+  cameraVelocity = { x: 0, y: 0 };
   paintCamera();
 }
+
+function focusOnWorldNode(id: string): void {
+  const body = physics?.bodies.get(id);
+  if (!body) return;
+  focusOnWorldPoint(
+    {
+      x: body.x * MAP_PIXELS_PER_UNIT,
+      y: body.y * MAP_PIXELS_PER_UNIT,
+    },
+    Math.max(camera.scale, 1.1),
+  );
+}
+
+function fitMap(): void {
+  camera = fitWorldCamera(latestMapBounds, {
+    x: viewport.clientWidth,
+    y: viewport.clientHeight,
+  });
+  cameraVelocity = { x: 0, y: 0 };
+  paintCamera();
+}
+
 zoomInButton.addEventListener("click", () => {
   zoomAt(
     camera.scale * 1.25,
@@ -1146,24 +1108,91 @@ viewport.addEventListener(
   { passive: false },
 );
 let drag: { id: number; x: number; y: number } | undefined;
+let lastDragTime = 0;
+let inertiaTime = 0;
+function animateCameraInertia(now: number): void {
+  if (drag || Math.hypot(cameraVelocity.x, cameraVelocity.y) < 8) {
+    cameraVelocity = { x: 0, y: 0 };
+    cameraAnimationFrame = 0;
+    return;
+  }
+  const elapsed = inertiaTime === 0 ? 0 : (now - inertiaTime) / 1000;
+  inertiaTime = now;
+  const next = advanceCameraMomentum(camera, cameraVelocity, elapsed);
+  camera = next.camera;
+  cameraVelocity = next.velocity;
+  paintCamera();
+  if (next.active)
+    cameraAnimationFrame = requestAnimationFrame(animateCameraInertia);
+  else cameraAnimationFrame = 0;
+}
+
 viewport.addEventListener("pointerdown", (event) => {
   if (event.button !== 0 || (event.target as HTMLElement).closest("button, a"))
     return;
+  cancelAnimationFrame(cameraAnimationFrame);
+  cameraAnimationFrame = 0;
+  cameraVelocity = { x: 0, y: 0 };
   drag = { id: event.pointerId, x: event.clientX, y: event.clientY };
+  lastDragTime = performance.now();
   viewport.setPointerCapture(event.pointerId);
   viewport.classList.add("dragging");
   event.preventDefault();
 });
 viewport.addEventListener("pointermove", (event) => {
+  if (!drag) {
+    const target =
+      event.target instanceof Element
+        ? event.target.closest(".map-node")
+        : null;
+    const nearest = target
+      ? nearestMapNodeAt(event.clientX, event.clientY)
+      : null;
+    const hoveredId = nearest?.dataset.nodeId;
+    if (hoveredId !== pointerHighlightedNodeId) {
+      pointerHighlightedNodeId = hoveredId;
+      setRelationHighlight(hoveredId ?? pinnedRelationId);
+    }
+  }
   if (!drag || drag.id !== event.pointerId) return;
-  camera.x += event.clientX - drag.x;
-  camera.y += event.clientY - drag.y;
+  const delta = { x: event.clientX - drag.x, y: event.clientY - drag.y };
+  const now = performance.now();
+  const seconds = Math.max((now - lastDragTime) / 1000, 0.001);
+  camera = panCamera(camera, delta);
+  cameraVelocity = {
+    x: Math.max(-1800, Math.min(1800, delta.x / seconds)),
+    y: Math.max(-1800, Math.min(1800, delta.y / seconds)),
+  };
   drag.x = event.clientX;
   drag.y = event.clientY;
+  lastDragTime = now;
   paintCamera();
+});
+viewport.addEventListener(
+  "click",
+  (event) => {
+    if (event.detail === 0 || !(event.target instanceof Element)) return;
+    const clicked = event.target.closest<HTMLElement>(".map-node");
+    if (!clicked) return;
+    const nearest = nearestMapNodeAt(event.clientX, event.clientY);
+    if (!nearest || nearest === clicked) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    nearest.click();
+  },
+  true,
+);
+viewport.addEventListener("pointerleave", () => {
+  if (drag || !pointerHighlightedNodeId) return;
+  pointerHighlightedNodeId = undefined;
+  setRelationHighlight(pinnedRelationId);
 });
 for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
   viewport.addEventListener(type, () => {
+    if (type === "pointerup" && drag) {
+      inertiaTime = 0;
+      cameraAnimationFrame = requestAnimationFrame(animateCameraInertia);
+    }
     drag = undefined;
     viewport.classList.remove("dragging");
   });
@@ -1177,8 +1206,10 @@ viewport.addEventListener("keydown", (event) => {
   };
   if (moves[event.key]) {
     event.preventDefault();
-    camera.x += moves[event.key][0];
-    camera.y += moves[event.key][1];
+    camera = panCamera(camera, {
+      x: moves[event.key][0],
+      y: moves[event.key][1],
+    });
     paintCamera();
   } else if (["+", "=", "-"].includes(event.key)) {
     event.preventDefault();
@@ -1189,7 +1220,44 @@ viewport.addEventListener("keydown", (event) => {
     );
   }
 });
+const resizeObserver = new ResizeObserver(() => {
+  cameraVelocity = { x: 0, y: 0 };
+  paintCamera();
+});
+resizeObserver.observe(viewport);
+
+const worldRendererInstance = new PixiWorldRenderer(
+  worldHost,
+  accessibilityLayer,
+);
+worldRenderer = worldRendererInstance;
+void worldRendererInstance
+  .initialize()
+  .then(() => {
+    render();
+    fitMap();
+  })
+  .catch((error: unknown) => {
+    recordLog("error", "Falha ao iniciar o mapa gráfico", [
+      error instanceof Error ? error.message : String(error),
+      "Os controles HTML continuam disponíveis, mas a renderização espacial não foi iniciada.",
+    ]);
+    showNotice("Não foi possível iniciar o renderizador do mapa.");
+  });
+
 fitMap();
+
+window.addEventListener(
+  "pagehide",
+  () => {
+    cancelAnimationFrame(animationFrame);
+    cancelAnimationFrame(cameraAnimationFrame);
+    resizeObserver.disconnect();
+    worldRendererInstance.destroy();
+    worldRenderer = undefined;
+  },
+  { once: true },
+);
 
 createRoot(document.getElementById("map-filters")!).render(
   createElement(MapFilters, {

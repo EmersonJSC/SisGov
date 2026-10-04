@@ -1,6 +1,7 @@
 # SisGov
 
-SisGov é um jogo web de estratégia política e gestão econômica em que a pessoa jogadora representa um partido e conduz o governo enquanto ocupa a Presidência. Propõe políticas definidas em JSON, considera a opinião pública, busca apoio no Senado e observa consequências em um país que já começa com políticas vigentes. A população tem interesses sociais combinados e elege a Presidência e o Senado, com resultados separados e sem duplicar seu peso eleitoral. Na primeira versão, vencer a eleição presidencial inicia outro mandato preservando o estado do país; perder encerra a partida. O motor numérico e a bancada já existem; a próxima fase integra turnos, orçamento, financiamento e regras políticas. O mapa de escala visual continua sendo um laboratório demonstrativo.
+SisGov é um jogo web de estratégia política e gestão econômica em que a pessoa jogadora representa um partido e conduz o governo enquanto ocupa a Presidência. Propõe políticas definidas em JSON, considera a opinião pública, busca apoio no Senado e observa consequências em um país que já começa com políticas vigentes. A população tem interesses sociais combinados e elege a Presidência e o Senado, com resultados separados e sem duplicar seu peso eleitoral. Na primeira versão, vencer a eleição presidencial inicia outro mandato preservando o estado do país; perder encerra a partida. O motor numérico e a bancada já existem; a próxima fase integra turnos, orçamento, financiamento e regras políticas. O mapa de influência em `mapa-leis.html` é a tela principal do jogo e apresenta
+a simulação atual em um laboratório demonstrativo.
 
 ## Antes de começar
 
@@ -14,6 +15,9 @@ Leia estes documentos na ordem abaixo:
 
 A direção visual aprovada está em [Mapa de influência](docs/producao/mapa-de-influencia.md): esferas ministeriais, resultados externos e interface de jogo.
 
+A rota `/` e `mapa-leis.html` abrem a tela principal do mapa. Os controles e
+painéis permanecem em HTML/React; PixiJS renderiza somente a área espacial.
+
 A próxima etapa está detalhada em [Turnos, orçamento e capacidade](docs/producao/sg057-proxima-fase-e-economia.md).
 
 Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto mestre do plano de produção.
@@ -23,6 +27,7 @@ Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto 
 - `src/engine`: contratos e cálculo do motor de simulação.
 - `src/scenarios`: definições de cenários e conteúdo do jogo.
 - `src/ui`: componentes de interface.
+- `src/world`: representação visual e navegação do grafo, independentes da simulação.
 - `src/types`: tipos compartilhados.
 - `src/tests`: testes automatizados.
 - `src/assets`: recursos estáticos da interface.

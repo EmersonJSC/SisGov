@@ -7,6 +7,7 @@ type Body = Point & {
   id: string;
   vx: number;
   vy: number;
+  metric: number;
   radius: number;
   targetRadius: number;
   mass: number;
@@ -126,6 +127,7 @@ export class MapPhysics {
         y: origin.y + Math.sin(angle) * distance,
         vx: 0,
         vy: 0,
+        metric: 0,
         radius,
         targetRadius: radius,
         mass: 1,
@@ -211,20 +213,36 @@ export class MapPhysics {
   setMetrics(
     metrics: ReadonlyMap<string, number>,
     radii?: ReadonlyMap<string, number>,
-  ): void {
+  ): boolean {
     const max = Math.max(
       0.0001,
       ...[...metrics.values()].filter(Number.isFinite),
     );
+    let changed = false;
     for (const b of this.bodies.values()) {
-      const metric = metrics.get(b.id) ?? 0;
-      const u = Number.isFinite(metric) ? clamp(metric / max, 0, 1) : 0;
+      const rawMetric = metrics.get(b.id) ?? 0;
+      const metric = Number.isFinite(rawMetric) ? rawMetric : 0;
+      const u = clamp(metric / max, 0, 1);
       const radius = radii?.get(b.id) ?? 1.35 + 0.75 * u;
-      b.targetRadius = Number.isFinite(radius) ? Math.max(0.5, radius) : 1.35;
-      b.mass = 1 + 3 * u;
+      const targetRadius = Number.isFinite(radius)
+        ? Math.max(0.5, radius)
+        : 1.35;
+      const mass = 1 + 3 * u;
+      if (
+        Math.abs(b.metric - metric) < 1e-6 &&
+        Math.abs(b.targetRadius - targetRadius) < 1e-6 &&
+        Math.abs(b.mass - mass) < 1e-6
+      )
+        continue;
+      b.metric = metric;
+      b.targetRadius = targetRadius;
+      b.mass = mass;
+      changed = true;
     }
+    if (!changed) return false;
     this.quietSteps = 0;
     this.temperature = 1;
+    return true;
   }
   get sleeping(): boolean {
     return this.quietSteps >= 60;

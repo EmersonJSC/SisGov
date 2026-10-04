@@ -146,6 +146,30 @@ it("sleeps after settling and wakes on new metrics", () => {
   const s = setup();
   s.engine.settle();
   expect(s.engine.sleeping).toBe(true);
-  s.engine.setMetrics(new Map([["verba_001", 4]]));
+  expect(s.engine.setMetrics(new Map([["verba_001", 4]]))).toBe(true);
+  expect(s.engine.sleeping).toBe(false);
+});
+it("keeps settled orbits still when metrics and sizes do not change", () => {
+  const s = setup();
+  s.engine.settle();
+  const metrics = new Map<string, number>(
+    [...s.engine.bodies.keys()].map((id) => [id, 1] as const),
+  );
+  const radii = new Map<string, number>(
+    [...s.engine.bodies].map(([id, body]) => [id, body.targetRadius] as const),
+  );
+
+  expect(s.engine.setMetrics(metrics, radii)).toBe(true);
+  s.engine.settle();
+  const settled = s.engine.snapshot().positions;
+
+  expect(s.engine.setMetrics(metrics, radii)).toBe(false);
+  expect(s.engine.sleeping).toBe(true);
+  expect(s.engine.snapshot().positions).toEqual(settled);
+
+  const changedMetrics = new Map(
+    [...metrics].map(([id, value]) => [id, value * 2] as const),
+  );
+  expect(s.engine.setMetrics(changedMetrics, radii)).toBe(true);
   expect(s.engine.sleeping).toBe(false);
 });

@@ -791,47 +791,223 @@
         box-shadow: none;
       }
       /* The physics clock owns positions and sizes; CSS must not lag behind it. */
-      #law-stage .map-node, #law-stage .category-zone { transition: none; }
+      #law-stage .map-node,
+      #law-stage .category-zone {
+        transition: none;
+      }
       #law-stage .category-zone {
         pointer-events: none;
         background: color-mix(in srgb, var(--category-color) 4%, transparent);
-        border-color: color-mix(in srgb, var(--category-color) 18%, transparent);
+        border-color: color-mix(
+          in srgb,
+          var(--category-color) 18%,
+          transparent
+        );
       }
       .federal-sphere {
-        position: absolute; translate: -50% -50%; border-radius: 50%;
-        background: rgb(31 64 100 / 3%); border: 1px solid rgb(31 64 100 / 20%);
-        pointer-events: none; z-index: 0;
+        position: absolute;
+        translate: -50% -50%;
+        border-radius: 50%;
+        background: rgb(31 64 100 / 3%);
+        border: 1px solid rgb(31 64 100 / 20%);
+        pointer-events: none;
+        z-index: 0;
       }
       .federal-sphere > span {
-        position: absolute; left: 50%; top: -22px; translate: -50% 0;
-        white-space: nowrap; color: #34516b; font-size: 13px; font-weight: 700;
+        position: absolute;
+        left: 50%;
+        top: -22px;
+        translate: -50% 0;
+        white-space: nowrap;
+        color: #34516b;
+        font-size: 13px;
+        font-weight: 700;
       }
       .representative-node {
-        position: absolute; z-index: 3; translate: -50% -50%;
-        width: var(--size); height: var(--size); border-radius: 50%;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        background: #203b57; border: 3px solid #dbe5ef; color: white;
-        box-shadow: 0 0 0 6px rgb(32 59 87 / 7%); font-size: 12px;
+        position: absolute;
+        z-index: 3;
+        translate: -50% -50%;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #203b57;
+        border: 3px solid #dbe5ef;
+        color: white;
+        box-shadow: 0 0 0 6px rgb(32 59 87 / 7%);
+        font-size: 12px;
       }
-      .representative-node.president { background: #194b43; border-color: #c3dcd4; }
-      .representative-symbol { font-size: 23px; font-weight: 700; }
+      .representative-node.president {
+        background: #194b43;
+        border-color: #c3dcd4;
+      }
+      .representative-symbol {
+        font-size: 23px;
+        font-weight: 700;
+      }
       .turn-log {
-        position: fixed; right: 16px; bottom: 84px; z-index: 35;
-        width: min(430px, calc(100vw - 32px)); border: 1px solid #c8d4df;
-        border-radius: 12px; background: #fffffff5; color: #21394e;
-        box-shadow: 0 6px 24px #1c334521; font-size: 12px;
+        position: fixed;
+        right: 16px;
+        bottom: 84px;
+        z-index: 35;
+        width: min(430px, calc(100vw - 32px));
+        border: 1px solid #c8d4df;
+        border-radius: 12px;
+        background: #fffffff5;
+        color: #21394e;
+        box-shadow: 0 6px 24px #1c334521;
+        font-size: 12px;
       }
-      .turn-log-toggle { width: 100%; padding: 10px 14px; text-align: left;
-        border: 0; background: transparent; color: inherit; cursor: pointer; font-weight: 700; }
-      .turn-log-latest { margin: 0; padding: 0 14px 8px; }
-      #turn-log-content { max-height: 32vh; overflow: auto; padding: 0 14px 12px; }
-      .turn-log-help { color: #587083; font-size: 11px; }
-      .turn-log ol { list-style: none; padding: 0; margin: 0; }
-      .turn-log ol > li { border-top: 1px solid #e0e6eb; padding: 9px 0; }
-      .turn-log summary { cursor: pointer; line-height: 1.5; }
-      .turn-log ul { padding-left: 18px; overflow-wrap: anywhere; line-height: 1.6; }
-      .turn-log-error { color: #a62e2e; }
-      .turn-log-success > details > summary { color: #216b4b; }
+      .turn-log-toggle {
+        width: 100%;
+        padding: 10px 14px;
+        text-align: left;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .turn-log-latest {
+        margin: 0;
+        padding: 0 14px 8px;
+      }
+      #turn-log-content {
+        max-height: 32vh;
+        overflow: auto;
+        padding: 0 14px 12px;
+      }
+      .turn-log-help {
+        color: #587083;
+        font-size: 11px;
+      }
+      .turn-log ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .turn-log ol > li {
+        border-top: 1px solid #e0e6eb;
+        padding: 9px 0;
+      }
+      .turn-log summary {
+        cursor: pointer;
+        line-height: 1.5;
+      }
+      .turn-log ul {
+        padding-left: 18px;
+        overflow-wrap: anywhere;
+        line-height: 1.6;
+      }
+      .turn-log-error {
+        color: #a62e2e;
+      }
+      .turn-log-success > details > summary {
+        color: #216b4b;
+      }
+      main {
+        overflow: hidden;
+      }
+      #map-viewport {
+        position: relative;
+        height: 100dvh;
+        min-height: 0;
+        overflow: hidden;
+        touch-action: none;
+        background: #f7f9fb;
+      }
+      #world-canvas,
+      #law-stage {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #world-canvas {
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      #world-canvas canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      #law-stage {
+        z-index: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        background: transparent;
+        pointer-events: none;
+        transform: none;
+      }
+      #law-stage > .macro-area-region,
+      #law-stage > .federal-sphere,
+      #law-stage > .category-zone,
+      #law-stage > .ministry-node,
+      #law-stage > .representative-node,
+      #law-stage > .law-lines {
+        display: none !important;
+      }
+      .world-accessibility-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        transform-origin: 0 0;
+        pointer-events: none;
+      }
+      .world-accessibility-layer .map-node,
+      .world-ministry-focus {
+        position: absolute;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        background: transparent;
+        box-shadow: none;
+        color: transparent;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+        transition: none;
+        translate: 0 0;
+        cursor: pointer;
+      }
+      .world-accessibility-layer .map-node {
+        animation: none !important;
+        transform: translate(-50%, -50%) !important;
+      }
+      .world-accessibility-layer .map-node > * {
+        visibility: hidden;
+      }
+      .world-accessibility-layer .map-node:hover,
+      .world-accessibility-layer .map-node:focus-visible {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+      }
+      .world-accessibility-layer .map-node:focus-visible,
+      .world-ministry-focus:focus-visible {
+        border-color: #1e73aa;
+        outline: 3px solid rgb(30 115 170 / 45%);
+        outline-offset: 3px;
+      }
+      .world-ministry-focus {
+        width: 180px;
+        height: 32px;
+        border-radius: 8px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .world-accessibility-layer .map-node,
+        .world-ministry-focus {
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -862,8 +1038,9 @@
       <div
         id="map-viewport"
         tabindex="0"
-        aria-label="Mapa navegável. Use as setas para mover e mais ou menos para zoom."
+        aria-label="Mundo político navegável. Arraste para mover, use a roda do mouse para ampliar ou reduzir, as setas para navegar e mais ou menos para zoom."
       >
+        <div id="world-canvas" aria-hidden="true"></div>
         <section
           id="law-stage"
           class="law-stage"

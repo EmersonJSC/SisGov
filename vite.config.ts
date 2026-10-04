@@ -12,8 +12,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        motorDemo: "motor-demo.html",
         lawMap: "mapa-leis.html",
+        motorDemo: "motor-demo.html",
       },
     },
   },
