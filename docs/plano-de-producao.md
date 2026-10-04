@@ -2,6 +2,8 @@
 
 3 de outubro de 2026 • Revisão de turnos, finanças, capacidade e próximos passos
 
+**IA que auxiliou nesta revisão do planejamento: Gitinho.**
+
 Construir um jogo em que o jogador representa um partido e conduz o governo enquanto ocupa a Presidência. Políticas, eventos e consequências são definidos em JSON. O software carrega e valida esses arquivos, monta o grafo e executa os mecanismos declarados. Adicionar conteúdo que usa mecanismos existentes deve exigir apenas novos dados.
 
 A Fase 00 está concluída, com registro em `docs/qualidade/verificacao-base-producao.md`. Os 96 IDs são mantidos para preservar o acompanhamento. As fichas futuras foram simplificadas e devem ser detalhadas quando forem iniciadas. As capacidades descritas ainda precisam ser implementadas.
@@ -14,9 +16,11 @@ primeiro recorte em JSON. A partida integrada da Fase 07 ainda não está conclu
 O laboratório de mais de cem políticas é demonstrativo e não substitui o cenário
 calibrado. O resumo antigo que apontava SG025 como próxima tarefa estava desatualizado.
 
-**Próxima etapa:** SG057-A, contrato do turno; em seguida SG060-A/B, núcleo fiscal e
-financiamento, e SG058-C/D, capacidade e limites de políticas. Novas variáveis entram
-nessa fase em ondas pequenas. Bancos e crédito ficam explícitos em SG060-C.
+**Próxima etapa:** SG057-A está especificado no plano; falta implementá-lo depois
+do contrato fiscal. SG060-A está em especificação: fechar unidades, período-base
+histórico e identidades contábeis antes de SG060-B (financiamento) e SG058-C/D
+(capacidade e limites de políticas). Novas variáveis entram em ondas pequenas;
+bancos e crédito ficam explícitos em SG060-C.
 
 O [plano detalhado da próxima fase](producao/sg057-proxima-fase-e-economia.md) define
 ordem, variáveis, identidades contábeis, limites legais/financeiros/operacionais,
@@ -424,9 +428,20 @@ Entrega: registrar regras ainda abertas de partidos, cadeiras, distribuição, m
 
 #### SG057-A Contrato temporal — próxima tarefa
 
-Fixar calendário, duração, conversão de taxas, ordem de etapas e confirmação atômica.
-Não confundir passo técnico do laboratório com turno político. Incluir o diário e
-os casos de falha/retentativa. Proposta de trimestre ainda depende dessa decisão.
+Decisões confirmadas em 3 de outubro de 2026: cada turno político dura três meses
+e executa três passos técnicos mensais. Converter as taxas atuais de implantação e
+degradação, definidas por turno, em frações mensais equivalentes, sem acelerar o
+avanço total no trimestre. A interface mostra somente o número do turno; meses
+decorridos desde o estado inicial permanecem como contador interno. Decisões
+tomadas no encerramento valem a partir do trimestre seguinte. Eventos e situações
+são avaliados mensalmente; o diário mantém a sequência mensal e resume o turno.
+Receitas e despesas recorrentes são apuradas mensalmente e somadas no resumo
+trimestral; fórmulas e conversões ficam no SG060-A. Ainda definir ordem das etapas
+de encerramento: fechar contas, consolidar e apresentar o diário, verificar
+eleição e então abrir decisões do próximo turno, conforme a continuidade definida
+em SG057-B. Os três meses são confirmados como um único turno, sem estado parcial
+em caso de falha. Ver
+`docs/producao/sg057-proxima-fase-e-economia.md`.
 
 #### SG057-B Regras políticas — planejado
 
@@ -458,11 +473,46 @@ Depende de SG058. Entrega: requisitos de políticas e opções de dilemas no mes
 
 Depende de SG058. Entrega: receitas, despesas, saldo, dívida e juros conforme regra de financiamento do cenário, com custos únicos e recorrentes. Aceite: déficit permite continuar; erro técnico não cobra e repetição não duplica cobrança. Custos seguem implantação e vigência declaradas, com uma fonte contábil, sem novo débito do mesmo custo pelo grafo. Apoio parlamentar não é moeda do orçamento.
 
-#### SG060-A Identidades e unidades — planejado
+#### SG060-A Identidades e unidades — em especificação
 
-Após SG057-A, definir estoques, fluxos, resultado primário/nominal, caixa, dívida,
-juros, emissão e amortização. Verificar exemplos manuais do plano econômico. Esta
-especificação pode anteceder a integração de autorização de SG058.
+Decisão de planejamento: cada cenário declara período inicial e referência própria
+de preços; a v1 mantém preços reais constantes durante a partida, sem inflação
+endógena. Normalizar fluxos recorrentes anuais por mês, distinguir estoques,
+transações únicas e taxas, e adaptar a unidade hoje fixa em preços de 2024 para
+uma base declarada pelo cenário. Carregar a despesa efetiva com juros observada
+para cada recorte histórico; não aplicar uma taxa única ao estoque total da dívida.
+O piloto parte da transição após Lula III: Lula IV se Lula vencer 2026, ou cenário
+alternativo “Bolsoflavio I” se perder, sem presumir o resultado. Usar o último
+período fiscal oficial consolidado disponível, registrando fontes e data de corte;
+atualizar para o fechamento de 2026 quando os dados realizados forem publicados.
+Especificar e verificar manualmente resultado primário/nominal, caixa, dívida,
+juros, emissão e amortização antes da implementação fiscal. Ver
+`docs/producao/sg057-proxima-fase-e-economia.md` e o inventário de fontes
+`docs/producao/sg060-fontes-fiscais.md`. Já foram extraídos fluxos RTN de 2025
+fechado e janeiro–agosto/2026; o acumulado parcial foi cruzado com o resultado
+acima da linha do RREO até arredondamento de R$ 1 mil. O RMD de agosto/2026
+fornece ficha separada para DPF, composição, perfil de vencimentos e custos
+médios; esses números não se equiparam à dívida consolidada líquida ou à
+disponibilidade do Anexo 6 do RREO. Ainda falta uma série de caixa livre do
+Tesouro. Faltam reconciliar 2025 com as tabelas do RREO, escolher conceitos
+compatíveis para juros/resultado nominal e fixar índice/mês-base de preços antes
+de inserir dados no cenário. As consultas SICONFI testadas retornaram listas
+vazias, então a rota federal permanece pendente de validação.
+
+**Passo manual concluído:** exemplo anual de 2025 e turno junho–agosto/2026
+agregado da mesma vintagem RTN, com resultados “acima” e “abaixo da linha”
+separados; a fonte não oferece saldos de caixa compatíveis para inferir
+financiamento. **Decisão registrada:** resultado primário acima da linha lidera
+o resumo; resultado abaixo da linha e resultado nominal aparecem como
+reconciliação no diário, sem misturar conceitos. Os critérios de clareza agora
+estão registrados no plano detalhado: período/unidade/fonte explícitos; déficit
+não confundido com caixa; histórico não apresentado como previsão; caixa e
+financiamento marcados como não modelados. **Verificação documental mínima
+concluída:** soma de receita, despesa e resultado primário do turno fecha; as
+reconciliações permanecem separadas; caixa e emissão não são inferidos. Próximo
+marco possível: tarefa separada para implementar apenas o relatório informativo
+do resultado primário, sem dívida, caixa ou taxas endógenas. Isso ainda não
+iniciou; as demais regras e variáveis ficam em backlog.
 
 #### SG060-B Financiamento e restrições — planejado
 
