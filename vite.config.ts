@@ -13,7 +13,6 @@ export default defineConfig({
       input: {
         main: "index.html",
         motorDemo: "motor-demo.html",
-        lawMap: "mapa-leis.html",
       },
     },
   },

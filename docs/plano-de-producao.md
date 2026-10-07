@@ -48,11 +48,22 @@ O tipo da política orienta seus controles e o processo de autorização declara
 
 Partido do jogador, governo em exercício e composição do Senado são estados separados. A população elege a Presidência e o Senado, com resultados separados. Representá-la por poucos perfis agregados com interesses combinados: uma parcela pode reunir trabalhadores, idosos e motoristas. Cada parcela entra uma única vez na apuração; somar grupos sobrepostos não pode multiplicar votos.
 
+Uma política pode provocar reação eleitoral à própria medida e, em outro momento,
+reação aos resultados que ela produziu nos indicadores nacionais. O estudo de
+SG057-B1 deverá distinguir essas duas causas, acompanhar sua passagem pelo grafo
+e impedir que a mesma pessoa ou o mesmo efeito seja contado duas vezes. Diferenças
+entre estados podem decorrer da composição e exposição dos grupos locais às
+mesmas ações federais; isso não exige simular indicadores econômicos estaduais.
+Bem-estar do grupo, aprovação de uma política e intenção de voto são resultados
+distintos. A avaliação pode considerar quem recebe benefícios, quem paga os custos
+e como cada grupo percebe o desenho da medida; melhorar um indicador não determina
+sozinho a aprovação política.
+
 O apoio para aprovar leis vem do Senado, não de pontos de força política gastos pelo jogador. Cada proposta declara afinidade com correntes políticas em seu JSON. São valores independentes, não precisam somar 100% e não representam probabilidade ou garantia de voto. A opinião pública sobre a medida influencia apoio parlamentar e reação eleitoral; é distinta da aprovação geral do governo e não é veto automático. Uma proposta popular pode perder por falta de votos; uma impopular pode passar e gerar desgaste.
 
 Antes da confirmação, mostrar estimativas separadas de reação popular, apoio parlamentar e impacto financeiro. Nas propostas sujeitas ao Senado, a decisão final vem das regras de votação. Quantidade de partidos e cadeiras, distribuição de vagas, maioria, calendário e regras eleitorais detalhadas permanecem pendentes em SG057; não inventar esses números ao implementar o restante.
 
-Vencer a eleição presidencial inicia outro mandato com o mesmo país. Perder encerra a partida na primeira versão. Gabinete individual, campanhas detalhadas, negociação de coalizões, disputas internas, candidatos individuais e atuação na oposição ficam adiados.
+Vencer a eleição presidencial inicia outro mandato com o mesmo país. Perder encerra a partida na primeira versão. Os cinco turnos anteriores à eleição oferecem ações de campanha ao partido, como comunicar políticas, participar de rádio, espalhar desinformação ou mobilizar militância; custos, efeitos, riscos e limites dessas ações ainda serão definidos em SG057-B. Gabinete individual, negociação de coalizões, disputas internas, candidatos individuais e atuação na oposição ficam adiados.
 
 ## Aprovação implantação e país herdado
 
@@ -424,7 +435,7 @@ Objetivo: integrar partido, Senado, opinião, implantação, finanças e eleiç�
 
 ### SG057 Definir turno votação e eleições
 
-Entrega: registrar regras ainda abertas de partidos, cadeiras, distribuição, maioria, influência popular, votação, calendário e apuração separada para Presidência e Senado. Definir duração, passos por turno, empates e precedência de pendências. Aceite: exemplos manuais não duplicam votos, distinguem afinidade de apoio e mostram vitória com novo mandato ou derrota com encerramento. Regras simplificadas e parâmetros ficam no cenário; mecanismos novos recebem testes. Dividir em SG057-A para ciclo temporal e SG057-B para regras políticas antes de implementar; SG058 aguarda essas decisões.
+Entrega: registrar regras ainda abertas de partidos, cadeiras, distribuição, maioria, influência popular, votação, calendário e apuração separada para Presidência e Senado. Definir duração, passos por turno, empates e precedência de pendências. Aceite: exemplos manuais não duplicam votos, distinguem afinidade de apoio e mostram vitória com novo mandato ou derrota com encerramento. Regras simplificadas e parâmetros ficam no cenário; mecanismos novos recebem testes. Dividir em SG057-A para ciclo temporal e SG057-B para regras políticas; SG057-B1 estuda modelos eleitorais antes de SG057-B2 definir o contrato do SisGov. SG058 aguarda essas decisões.
 
 #### SG057-A Contrato temporal — próxima tarefa
 
@@ -436,21 +447,91 @@ decorridos desde o estado inicial permanecem como contador interno. Decisões
 tomadas no encerramento valem a partir do trimestre seguinte. Eventos e situações
 são avaliados mensalmente; o diário mantém a sequência mensal e resume o turno.
 Receitas e despesas recorrentes são apuradas mensalmente e somadas no resumo
-trimestral; fórmulas e conversões ficam no SG060-A. Ainda definir ordem das etapas
-de encerramento: fechar contas, consolidar e apresentar o diário, verificar
-eleição e então abrir decisões do próximo turno, conforme a continuidade definida
-em SG057-B. Os três meses são confirmados como um único turno, sem estado parcial
-em caso de falha. Ver
+trimestral; fórmulas e conversões ficam no SG060-A. Os três meses são confirmados
+como um único turno, sem estado parcial em caso de falha. No calendário padrão
+de quatro anos, cada mandato tem 16 turnos trimestrais. Os cinco turnos antes da
+eleição oferecem ações de campanha; no turno 16, o tempo, as políticas e as
+contas avançam normalmente, e então o jogo apresenta o resultado. A data deriva
+da lei ou política vigente que define a duração do mandato, inclusive decretos
+parlamentares que a alterem. Após vitória, começa o dia 1 do mandato seguinte,
+preservando o país. O ciclo é contado a partir desse novo mandato. Ainda definir
+como uma alteração legal do calendário afeta uma eleição já agendada. Ver
 `docs/producao/sg057-proxima-fase-e-economia.md`.
 
 #### SG057-B Regras políticas — planejado
 
-Detalhar Senado, autorização e eleições conforme o escopo existente. Integração das
-ações exige esta entrega; contabilidade pode ser testada isoladamente após SG057-A.
+Detalhar Senado, autorização e eleições conforme o escopo existente. O estudo
+eleitoral informa o contrato, sem importar fórmulas de outro simulador como regras
+do Brasil. Integração das ações exige esta entrega; contabilidade pode ser testada
+isoladamente após SG057-A. Definir ações, custos, efeitos e limites da campanha
+nos cinco turnos anteriores; ações de campanha podem ser combinadas no mesmo
+turno quando forem compatíveis. Cada ação declarará seus próprios requisitos,
+custos, efeitos e incompatibilidades. O orçamento de campanha recebe recursos do
+Fundo Eleitoral (FEFC) e doações de pessoas físicas, registrando eventual
+afiliação destas a grupos de interesse. Para a primeira versão, o cenário declara
+uma verba eleitoral total por partido como simplificação da cota do FEFC; doações
+individuais somam a esse caixa. O Fundo Partidário regular fica fora desse cálculo
+inicial. Limites e regras de uso serão definidos. Empresas foram mencionadas como
+fonte de influência ou recursos, mas doações empresariais são proibidas pela
+regra brasileira vigente; SG057-B deve decidir se serão representadas como
+financiamento irregular ou por regra alternativa. O turno eleitoral é exclusivo
+e não recebe decisões ordinárias de governo.
+
+##### SG057-B1 Estudar modelos de simulação eleitoral — pesquisa inicial
+
+Comparar os efeitos sobre grupos documentados para *Democracy 4*, o modelo de
+dois turnos aplicado à eleição brasileira de 2010, a simulação probabilística
+de populações distribuídas por território e o TriplePC, que combina impactos
+materiais e preferências declaradas sobre políticas. Estudar o
+[BRASMOD](https://labpub.fea.usp.br/brasmod/) como referência brasileira para
+simular a distribuição dos efeitos de impostos e benefícios, e o estudo
+[*Isentar os pobres, moderar com os ricos*](https://www.scielo.br/j/rsocp/a/47YbrsfLMZTBY9jJXtKYfmr/?format=html&lang=pt)
+como evidência brasileira de preferências sobre propostas de Imposto de Renda.
+Essas fontes cobrem partes diferentes do problema; coeficientes britânicos do
+TriplePC só podem entrar como hipóteses provisórias, nunca como medidas da
+reação brasileira. Registrar entradas, reação dos grupos, decisão de voto,
+apuração, calibração, validação, limites e possível
+adaptação ao SisGov. Entrega:
+[ficha de pesquisa SG057-B1](producao/sg057-b1-estudo-simulacao-eleitoral.md),
+com exemplo manual de uma política que afeta diretamente grupos, depois um
+indicador nacional e, por composição local, produz reações diferentes em dois
+estados sem duplicar eleitores. Distinguir números observados de hipóteses do
+jogo. O estudo não escolhe fórmula, pesos nem treinamento.
+
+##### SG057-B2 Definir o contrato eleitoral do SisGov — planejado
+
+Depende de SG057-B1. Definir quais dados do grafo e do cenário alimentam o
+eleitorado, como ações federais alcançam grupos em cada estado, e como estimar
+separadamente o efeito sobre o bem-estar do grupo e a aprovação da medida, sem
+exigir uma microssimulação de domicílios na primeira versão. Definir o que o motor
+devolve e como explica suas causas. Definir separadamente regras brasileiras de
+eleição, apuração e ligação com o Senado; o modelo territorial estudado não as
+fornece. Aceite: exemplos manuais distinguem reação direta da reação aos
+resultados, contam cada pessoa uma vez e preservam resultados separados para
+Presidência e Senado. Decisão inicial: carregar do cenário a composição
+partidária do Senado e mantê-la fixa após a eleição. Para a Presidência, somar
+por partido a intenção de voto dos grupos ponderados e declarar vencedor quem
+obtiver o maior total nacional; segundo turno fica para uma etapa posterior.
 
 ### SG058 Completar contrato das ações
 
-Depende de SG057. Entrega: aplicar SG015 às políticas reais com disponibilidade, estimativas de opinião e apoio, autorização, nível desejado, implantação, custo e revogação. Aceite: JSON usa comandos genéricos; proposta popular pode ser rejeitada e impopular aprovada com reação pública; rejeição não inicia implantação. Dividir estimativa, votação e implantação em subtarefas conforme estimativa de esforço.
+Depende de SG057. Entrega: aplicar SG015 às políticas reais com disponibilidade, estimativas de opinião e apoio, autorização, nível desejado, implantação, custo e revogação. Aceite: JSON usa comandos genéricos; proposta popular pode ser rejeitada e impopular aprovada com reação pública; rejeição não inicia implantação. SG058-A/B implementam a parte política definida em SG057-B2; dividir as demais ações conforme estimativa de esforço.
+
+#### SG058-A Implementar a reação dos grupos — planejado
+
+Depende de SG057-B2. Calcular o impacto material e a reação à medida e aos seus
+resultados com os dados e mecanismos aprovados no contrato, mantendo procedência
+e peso eleitoral único por pessoa modelada. Aceite: uma política afeta grupos em
+momentos distintos, com causas explicáveis; benefício material e aprovação podem
+divergir sem contribuição duplicada.
+
+#### SG058-B Integrar apuração e resposta institucional — planejado
+
+Depende de SG058-A e SG057-B2. Integrar os resultados do eleitorado às eleições
+e a reação popular às decisões do Senado, conforme as regras brasileiras e o
+contrato de autorização definidos em SG057-B2. Aceite: apurações para Presidência
+e Senado são separadas; afinidade, estimativa, voto parlamentar e resultado
+eleitoral não se confundem.
 
 #### SG058-C Limites e capacidade — planejado
 
@@ -598,7 +679,7 @@ Depende de SG073. Entrega: conferir relações e fontes ou hipóteses. Aceite: d
 
 ### SG075 Verificar agregação e eleição
 
-Depende de SG074. Entrega: conferir opinião sobre medidas, aprovação do governo, influência parlamentar e eleições separadas. Aceite: interesse sobreposto não duplica votos; popularidade não garante cadeiras ou aprovação de proposta. Mecanismos genéricos e parâmetros JSON, sem fórmulas duplicadas na tela.
+Depende de SG074. Entrega: conferir impacto material, opinião sobre medidas, aprovação do governo, influência parlamentar e eleições separadas; comparar cenários simulados com mudanças de política e resultados em momentos diferentes. Aceite: interesse sobreposto não duplica votos; uma ação federal pode produzir reações estaduais diferentes por exposição dos grupos, com causas rastreáveis; benefício material não garante aprovação da medida, assim como popularidade não garante cadeiras ou aprovação de proposta. Mecanismos genéricos e parâmetros JSON, sem fórmulas duplicadas na tela. Identificar nesta revisão a tarefa futura de calibração com dados históricos e pesquisas de preferência, sem apresentar a simulação como previsão de eleições reais.
 
 ### SG076 Melhorar explicação social
 

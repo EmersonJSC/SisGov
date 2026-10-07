@@ -2,7 +2,7 @@
 
 **Decisão aprovada pelo usuário em 3 de outubro de 2026.**
 
-Este documento define a direção obrigatória da tela principal do SisGov. O protótipo em `mapa-leis.html` é a referência visual aprovada; o nome do arquivo não restringe o mapa a leis. Alterações futuras devem preservar esta experiência.
+Este documento define a direção obrigatória da tela principal do SisGov. O mapa na raiz (`/`) é a referência visual aprovada; ele não se restringe a leis. Alterações futuras devem preservar esta experiência.
 
 ## Esferas dos ministérios
 
@@ -202,7 +202,7 @@ A pasta `src/assets/svg/` é o acervo do projeto e aceita desenhos feitos pelo u
 
 ## Proporção e filtros implementados — 3 de outubro de 2026
 
-O protótipo `mapa-leis.html` usa dois filtros, selecionados por um componente
+O mapa na raiz usa dois filtros, selecionados por um componente
 React: **Influência** e **Financeiro**. A métrica e a geometria ficam em módulos
 independentes da execução da simulação. A tela principal antiga (`GameMap`) não
 foi migrada; esta implementação modifica o mapa navegável de referência.

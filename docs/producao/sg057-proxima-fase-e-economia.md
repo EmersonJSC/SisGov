@@ -80,9 +80,10 @@ com consequências contábeis e sociais.
 - A interface apresenta somente o número do turno, sem data civil. A simulação
   mantém internamente os meses decorridos desde o estado inicial, avançando três
   a cada turno, para posicionar eventos e reconciliar períodos maiores.
-- Decisões tomadas no encerramento do turno passam a valer no trimestre seguinte.
-  Os três passos do trimestre que se encerra usam as políticas e metas que já
-  estavam vigentes; uma decisão nova não altera meses já simulados.
+- Cada turno começa com o resumo consolidado do turno anterior. Depois de ler o
+  resumo, a pessoa jogadora escolhe as ações e metas do turno que se inicia; elas
+  valem desde o primeiro dos seus três meses. As escolhas ficam congeladas durante
+  a execução do trimestre e não alteram meses já simulados.
 - Eventos e situações são avaliados ao fim de cada passo mensal. Seus efeitos
   podem, portanto, influenciar os meses restantes do mesmo trimestre. O diário
   registra a sequência mensal e apresenta um resumo consolidado ao fim do turno.
@@ -97,12 +98,14 @@ com consequências contábeis e sociais.
 - Os três meses são preparados provisoriamente e confirmados como um único turno.
   Uma falha técnica em qualquer mês descarta o trimestre inteiro; a retentativa
   não pode duplicar cobranças, eventos ou efeitos.
-- Ao fim do terceiro mês, a ordem é: fechar as contas do trimestre; consolidar e
-  apresentar o diário; verificar se há eleição prevista; então, se a partida
-  continuar, abrir a etapa de decisões do próximo turno. As novas decisões só
-  entram em vigor nos três meses seguintes. As regras que determinam vitória,
-  derrota, resultado eleitoral e continuidade do mandato são SG057-B, não parte
-  deste contrato temporal.
+- Cada turno, inclusive o eleitoral, avança três meses e fecha contas e diário
+  normalmente. No calendário padrão de quatro anos há 16 turnos trimestrais; os
+  cinco anteriores à eleição oferecem ações de campanha e, no turno 16, o jogo
+  apresenta o resultado depois da simulação normal do período. A data é derivada
+  da lei ou política vigente que define a duração do mandato, podendo ser
+  alterada por decreto parlamentar. Após vitória, começa o dia 1 do novo
+  mandato, preservando o país. SG057-B definirá a continuidade após derrota e
+  como alterações legais afetam uma eleição já agendada.
 - As taxas de implantação e degradação existentes representam a mudança total
   esperada em um trimestre. Para executá-las nos três passos mensais, usar a
   fração mensal equivalente:
@@ -120,11 +123,121 @@ com consequências contábeis e sociais.
   datas de cobrança e arredondamento permanece pendente do contrato fiscal
   SG060-A; não presumir conversão financeira nesta decisão temporal.
 
+## Decisões confirmadas para a primeira versão fiscal — 4 de outubro de 2026
+
+- O primeiro ciclo fiscal acompanha receita, despesa primária, juros pagos,
+  caixa, dívida pública agregada e emissões a cada mês, consolidando os três
+  meses ao fim do turno. Vencimentos, títulos, rolagem e amortizações não são
+  modelados nem exibidos nesta primeira versão.
+- O mapa espacial não é um livro-caixa. Ele mostra somente poucos estados fiscais
+  que participam da cadeia causal — inicialmente caixa disponível e dívida
+  pública, agrupados no Tesouro/Economia. Receita, despesa, juros, emissões,
+  amortizações e resultados ficam em painel fiscal separado, detalhado por mês e
+  consolidado por trimestre.
+- O painel calcula `resultado_primario = receita - despesa_primaria` e
+  `resultado_nominal = resultado_primario - juros`; emissão não é receita e
+  amortização não é despesa primária.
+- A política inicial de financiamento é automática: se receitas, caixa e gastos
+  do mês resultarem em caixa negativo, o Tesouro emite somente o valor faltante
+  para zerá-lo. A emissão aumenta a dívida pública agregada. Superávit permanece
+  em caixa; ele não amortiza dívida automaticamente.
+- Juros são um parâmetro explícito do cenário. Não calculá-los como taxa média
+  multiplicada pela dívida total sem contrato de vencimentos e indexadores.
+- Cada política declara, no cenário, seus valores mensais explícitos de receita
+  e despesa quando totalmente implantada. O impacto contabilizado no mês é
+  proporcional ao nível de implantação vigente da política: uma política em 50%
+  produz metade do seu impacto mensal configurado. Não estimar ainda elasticidade
+  tributária, reação de mercado ou efeito indireto sem uma regra própria.
+
+Essas decisões substituem o recorte anterior que mostrava apenas o resultado
+primário e deixava caixa e financiamento como "não calculados". Bancos, política
+monetária, risco de mercado, vencimentos e custo endógeno de novas emissões
+continuam fora deste ciclo inicial.
+
+### Inflação na primeira camada econômica
+
+- Inflação é um indicador econômico próprio e uma bolinha do mapa. Quando sobe,
+  reduz poder de compra e tende a piorar a opinião pública.
+- Ela não ativa Crise Fiscal automaticamente. Gasto público, crescimento de
+  receita, juros, choques externos e inflação só se afetam quando o cenário
+  declarar relações causais explícitas; não haverá multiplicadores ocultos.
+- Alertas e projeções fiscais medem a capacidade de pagamento em valores reais,
+  com índice e período-base declarados pelo cenário. Crescimento nominal de
+  receita causado apenas pela inflação não é tratado como melhora fiscal real.
+- Rating de crédito é um indicador e uma bolinha no agrupamento Tesouro/Economia.
+  Ele usa faixas narrativas — estável, atenção, deteriorado e crítico — e mostra
+  também sua tendência. Não representa uma agência real; afeta o custo de novas
+  dívidas conforme a cadeia fiscal declarada. A piora do rating eleva apenas o
+  custo de emissões novas; a dívida já existente não é reprecificada de imediato.
+
+### Situação fiscal recuperável
+
+- Déficit recorrente aumenta a dívida pública agregada. Dívida persistentemente
+  alta reduz o rating de crédito; rating menor eleva os juros das novas emissões;
+  juros maiores ampliam a despesa com juros e podem piorar o déficit. A cadeia é
+  explícita: `déficit → dívida → rating → juros → déficit`.
+- Rating e avisos fiscais não são disparados por um valor absoluto de dívida.
+  Eles dependem de dívida alta **relativa à capacidade de pagamento** e de
+  déficits persistentes. O indicador deve acompanhar a inclinação da trajetória
+  (variação da dívida relativa entre turnos) e, em etapa posterior, sua aceleração
+  para avisar que o país se aproxima de dinâmica insustentável antes da crise.
+  O aviso descreve risco e continua reversível; ele não declara que a recuperação
+  é impossível.
+- O painel projeta a trajetória fiscal por até cinco turnos, assumindo a
+  continuidade das políticas e tendências vigentes. A projeção considera a
+  variação da receita, inclusive crescimento esperado e impactos já contratados
+  das políticas, além da evolução de gasto, juros e dívida. Comparações de
+  crescimento devem usar valores na mesma base de preços: inflação nominal não
+  pode aparecer como melhora real da capacidade de pagamento.
+- Quando a projeção indicar crise fiscal ou uma correção extraordinária dentro
+  desse horizonte, a interface mostra um alerta antecipado. Esse é um diagnóstico
+  condicional da trajetória atual, não uma sentença de derrota: a pessoa jogadora
+  pode mudar políticas e recuperar o país em turnos posteriores.
+- O jogo não corta nem reduz automaticamente uma política escolhida pela pessoa
+  jogadora. Se ela mantiver as políticas, a dívida pode continuar subindo; a
+  recuperação exige uma decisão dela, como rever gastos, elevar receitas ou
+  sustentar superávits ao longo do tempo.
+- **Crise fiscal** é uma situação do jogo, não condição de derrota automática.
+  Ela deve gerar aviso fiscal antes de surgir, permanecer enquanto suas condições
+  forem atendidas e poder ser resolvida em jogo. A partida continua para que a
+  pessoa jogadora tente recuperar o país.
+- O aviso de trajetória em até cinco turnos materializa-se no mapa como a bolinha
+  da situação **Crise Fiscal**. Ao ficar ativa, ela declara emergência no Senado:
+  propostas entram em tramitação acelerada e recebem maior probabilidade de
+  aprovação, pois o risco fiscal está em jogo. A aprovação não é automática e a
+  emergência não remove a necessidade de registrar cada decisão.
+- A situação termina somente quando a projeção de cinco turnos deixa de indicar
+  crise e a dívida relativa fica estável ou em queda por dois turnos consecutivos.
+  Uma melhora isolada não encerra a emergência.
+- A situação e seus indicadores afetam opinião pública e resultados eleitorais.
+  O efeito na opinião acompanha a trajetória: piora enquanto dívida, déficits e
+  risco projetado se deterioram; começa a se recompor quando a recuperação se
+  torna convincente, mesmo antes do encerramento formal da crise.
+  Em crises, países vizinhos com interesses hostis podem oferecer empréstimos
+  condicionados ou tentar comprar ativos estratégicos. Ambas as opções aliviam
+  a pressão fiscal imediata, mas criam custo financeiro ou perda de controle
+  futuro. Esses agentes e suas condições precisam de regras causais próprias
+  antes de receberem coeficientes.
+
 ## Decisões ainda necessárias em SG057-A
 
 O contrato temporal SG057-A está especificado. Sua implementação ainda depende
 das fórmulas e conversões fiscais de SG060-A; as regras de resultado eleitoral
 e continuidade dependem do SG057-B.
+
+## Direção confirmada para SG057-B — Senado e eleições
+
+- O jogo usa partidos reais, com composição, período de referência e fonte
+  declarados pelo cenário; não inferir a composição parlamentar a partir de uma
+  lista estática sem data.
+- O primeiro corte político segue a progressão de Democracy 4: cadeiras formais,
+  afinidades declaradas das propostas e reação da opinião pública. Cada cadeira
+  mantém um voto formal; maioria e resultado não recebem peso econômico direto.
+- Bancos, empresas, propaganda organizada, grupos de interesse e influência
+  econômica desproporcional ficam para uma camada posterior, depois que o ciclo
+  básico de políticas, opinião, Senado e eleições estiver validado.
+- A forma de obter ou atualizar as cadeiras em eleições futuras continua em
+  aberto; ela não será presumida ao implementar a votação inicial.
 
 ## SG060-A — identidades, unidades e períodos
 
@@ -395,36 +508,33 @@ fonte ou hipótese, causas, destinos e testes de extremos. Fluxos e razões
 derivados não precisam virar novos estados persistidos. Nem toda variável
 contábil precisa ganhar uma bolinha no mapa.
 
-## Backlog futuro — hipótese de contrato fiscal SG060-B (não aprovado)
+## Contrato fiscal SG060-B — base da primeira implementação
 
-O conteúdo abaixo preserva ideias para uma etapa posterior. Não implementá-lo
-como contrato vigente: o escopo imediato é somente apresentar e verificar o
-resultado primário do trimestre. As equações e exemplos abaixo não são aceites
-de balanceamento nem decisões do usuário.
+O conteúdo abaixo descreve o ciclo fiscal mínimo aprovado. As fontes históricas
+ainda precisam ser convertidas em parâmetros de cenário consistentes antes da
+implementação; os exemplos continuam sendo material de validação, não valores de
+balanceamento.
 
 Todos os valores abaixo são do mesmo período e da mesma base de preços:
 
 - R: receitas; G: despesas primárias; J: juros pagos;
-- C: caixa; D: principal da dívida; E: emissões; A: amortização do principal.
+- C: caixa; D: dívida pública agregada; E: emissões automáticas.
 
 Identidades da primeira versão, sem reavaliação cambial nem indexação:
 
 ```
 resultado_primario = R − G
 resultado_nominal = R − G − J
-caixa_final = caixa_inicial + resultado_nominal + E − A
-divida_final = divida_inicial + E − A
+caixa_provisorio = caixa_inicial + resultado_nominal
+emissao = max(0, −caixa_provisorio)
+caixa_final = caixa_provisorio + emissao
+divida_final = divida_inicial + emissao
 ```
 
-Déficit nominal é resultado_nominal negativo; superávit é positivo. Principal
-amortizado não é despesa primária nem juros. Emissão não é receita tributária.
-Superávit não reduz dívida automaticamente: definir quanto vai para caixa e
-quanto financia amortização. Juros pagos com nova emissão entram uma única vez
-no estoque, por E; não somar J novamente à dívida.
-
-Necessidade de financiamento inclui vencimentos: mesmo com resultado nominal zero,
-um vencimento de 20 exige caixa ou emissão de 20. Uma tabela simples por faixas de
-vencimento distingue refinanciamento de dívida nova para cobrir gasto corrente.
+Déficit nominal é resultado_nominal negativo; superávit é positivo. Emissão não é
+receita tributária. O superávit não reduz dívida automaticamente: permanece em
+caixa. Juros pagos com nova emissão entram uma única vez no estoque, por E; não
+somar J novamente à dívida.
 
 Exemplos puramente sintéticos para discussão futura (não são dados históricos,
 valores recomendados ou critérios de balanceamento), com caixa inicial zero e
