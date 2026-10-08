@@ -1,6 +1,7 @@
 {
   "id": "brasil-primeiro-cenario",
   "tipo": "cenario",
+  "unidadeTemporal": "trimestre",
   "versaoEsquema": 1,
   "nome": "Brasil — Saúde, Segurança e Educação",
   "perfis": [
@@ -23,15 +24,10 @@
       "interesses": ["violência", "saldo disponível", "saúde", "proteção"]
     }
   ],
+  "organizacaoPolitica": "brasil-primeiro-cenario/organizacao-politica.json",
   "estadoInicial": "brasil-primeiro-cenario/estado-inicial.json",
   "variaveis": "brasil-primeiro-cenario/variaveis.json",
-  "politicas": [
-    "brasil-primeiro-cenario/politicas/atencao-basica.json",
-    "brasil-primeiro-cenario/politicas/protecao-mulheres.json",
-    "brasil-primeiro-cenario/politicas/prevencao-seguranca.json",
-    "brasil-primeiro-cenario/politicas/alimentacao-escolar.json",
-    "brasil-primeiro-cenario/politicas/creches-publicas.json"
-  ],
+  "catalogoPoliticas": "catalogos/catalogo-politicas-v1.json",
   "consequencias": [
     "brasil-primeiro-cenario/consequencias/atencao-amplia-cobertura.json",
     "brasil-primeiro-cenario/consequencias/cobertura-reduz-pressao.json",

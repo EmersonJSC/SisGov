@@ -41,6 +41,7 @@ function laboratory() {
     targets: new Map(),
     pending: new Map(),
     activeSituationIds: new Set(),
+    occurredEventIds: new Set(),
   };
   return { ...sandbox, state };
 }

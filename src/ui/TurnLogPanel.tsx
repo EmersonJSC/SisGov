@@ -31,7 +31,13 @@ export function TurnLogPanel({
             <li key={entry.id} className={`turn-log-${entry.level}`}>
               <details>
                 <summary>
-                  #{entry.id} · Turno {entry.turn} ·{" "}
+                  #{entry.id} · Turno {entry.turn}
+                  {entry.period === "month" && entry.month !== undefined
+                    ? ` · Mês ${entry.month}`
+                    : entry.period === "quarter"
+                      ? " · Resumo trimestral"
+                      : ""}
+                  {" · "}
                   {entry.level === "error" ? "Erro · " : ""}
                   {entry.title}
                 </summary>

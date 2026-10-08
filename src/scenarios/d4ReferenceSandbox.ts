@@ -367,6 +367,7 @@ export function createD4ReferenceSandbox(): {
   const content = {
     manifest: {
       id: "laboratorio-referencia-d4",
+      unidadeTemporal: "trimestre",
       tipo: "cenario" as const,
       versaoEsquema: 1 as const,
       nome: "Laboratório — políticas e órbitas institucionais",

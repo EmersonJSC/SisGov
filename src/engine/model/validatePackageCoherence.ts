@@ -57,6 +57,9 @@ export function validatePackageCoherence(
   const variablesById = new Map(
     content.variables.variaveis.map((variable) => [variable.id, variable]),
   );
+  const policiesById = new Map(
+    content.policies.map((policy) => [policy.id, policy]),
+  );
 
   for (const variable of content.variables.variaveis) {
     if (!supportedUnits.has(variable.unidade)) {
@@ -77,6 +80,58 @@ export function validatePackageCoherence(
         ),
       );
     }
+  }
+
+  const inheritedPolicies = new Set<string>();
+  const initialStateFile = content.pathsById[content.initialState.id];
+  for (const [index, initial] of (
+    content.initialState.politicasVigentes ?? []
+  ).entries()) {
+    const field = `politicasVigentes.${index}.politica`;
+    if (inheritedPolicies.has(initial.politica)) {
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Política vigente duplicada: ${initial.politica}.`,
+        ),
+      );
+      continue;
+    }
+    inheritedPolicies.add(initial.politica);
+    const policy = policiesById.get(initial.politica);
+    if (!policy) {
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Política vigente inexistente: ${initial.politica}.`,
+        ),
+      );
+      continue;
+    }
+    const control = variablesById.get(policy.controle.variavel);
+    if (!control) continue;
+    if (
+      !isInDomain(initial.nivelDesejado, control) ||
+      !isInDomain(initial.nivelImplantado, control)
+    )
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          `politicasVigentes.${index}`,
+          `Nível inicial inválido para a política ${initial.politica}.`,
+        ),
+      );
+    const options = policy.controle.opcoes?.map((option) => option.valor);
+    if (options && !options.includes(initial.nivelDesejado))
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          `politicasVigentes.${index}.nivelDesejado`,
+          `Meta inicial não autorizável para a política ${initial.politica}.`,
+        ),
+      );
   }
 
   for (const [variableId, value] of Object.entries(

@@ -1,4 +1,4 @@
-# Motor espacial: representante → leis → resultados
+# Motor espacial: esferas, leis e resultados
 
 A mesa é um espaço contínuo. Cada nó possui posição, velocidade, raio e massa
 visual. A hierarquia espacial não altera os coeficientes nem o estado da simulação.
@@ -7,15 +7,17 @@ visual. A hierarquia espacial não altera os coeficientes nem o estado da simula
 
 Cada esfera possui um representante central de massa maior:
 
-- Esfera federal: presidente → políticas nacionais/federais → indicadores e situações nacionais.
-- Esfera ministerial: ministro → políticas relacionadas → indicadores e situações setoriais.
+- Esfera federal: presidente → Constituição e políticas nacionais/federais.
+- Esfera ministerial: ministro → políticas relacionadas.
 
 A esfera é uma região envolvente, não uma bolinha concorrendo com os indicadores.
-O presidente é um nó visível no centro da esfera federal. Cada ministro é um nó
-visível no centro ministerial. As políticas federais orbitam o presidente;
-as demais usam a afinidade com os ministros. Os resultados ocupam uma faixa
-externa à das leis. Órbita significa distância de equilíbrio, não rotação
-perpétua: o mapa se move após mudanças e depois repousa para permitir leitura.
+O presidente é um nó visível no centro da esfera federal. A Constituição e as
+políticas federais ficam dentro dela, orbitando o presidente. Cada ministro é
+um nó visível no centro ministerial, e as políticas correspondentes ficam em
+sua esfera. Indicadores e situações ficam fora de todas as esferas, no espaço
+livre em volta delas, orbitando a composição e se aproximando das leis que os
+influenciam. Órbita significa distância de equilíbrio, não rotação perpétua: o
+mapa se move após mudanças e depois repousa para permitir leitura.
 
 As esferas ministeriais mantêm ordem angular ao redor da federal e ajustam sua
 distância pelo espaço necessário. Seus centros não fazem gravitação livre entre si.
@@ -25,14 +27,15 @@ distância pelo espaço necessário. Seus centros não fazem gravitação livre 
 `VisualMapDefinition.nodes` usa IDs dos controles, indicadores ou situações:
 
 - `scope: federal`: política de responsabilidade presidencial.
-- `scope: national`: resultado pertencente à esfera federal.
+- `scope: national`: resultado de âmbito nacional; isso não o coloca dentro da esfera federal.
 - `scope: ministerial`: elemento pertencente a uma esfera ministerial.
 - `affinities`: pesos positivos normalizados por ministério.
 - `parents`: opcional; IDs de controles de políticas e seus pesos orbitais.
 
 Uma política sem ministério usa a Presidência, sem criar um ministério fictício.
 Metadados explícitos prevalecem sobre a área do elemento. Sem esses metadados,
-políticas usam seu ministério e resultados usam sua área como alternativa.
+políticas usam seu ministério e resultados usam sua área como alternativa para
+identificar influências, nunca como pertencimento a uma esfera.
 `presidentName` e `representativeName` permitem definir os nomes dos representantes.
 O laboratório usa apenas títulos, sem inventar ocupantes reais dos cargos.
 

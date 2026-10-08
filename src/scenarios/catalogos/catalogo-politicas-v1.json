@@ -1,0 +1,12 @@
+{
+  "id": "catalogo-politicas-v1",
+  "tipo": "catalogo-politicas",
+  "versaoEsquema": 1,
+  "politicas": [
+    "brasil-primeiro-cenario/politicas/atencao-basica.json",
+    "brasil-primeiro-cenario/politicas/protecao-mulheres.json",
+    "brasil-primeiro-cenario/politicas/prevencao-seguranca.json",
+    "brasil-primeiro-cenario/politicas/alimentacao-escolar.json",
+    "brasil-primeiro-cenario/politicas/creches-publicas.json"
+  ]
+}

@@ -50,6 +50,8 @@ export function createPackageContentIdentity(content: ResolvedPackage): string {
       events: content.events,
       situations: content.situations,
       dilemmas: content.dilemmas,
+      organizacaoPolitica: content.organizacaoPolitica,
+      policyCatalog: content.policyCatalog,
     }),
   );
 }

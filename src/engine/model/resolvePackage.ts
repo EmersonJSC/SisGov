@@ -7,8 +7,10 @@ import type {
   ConsequenceFile,
   ContentFile,
   InitialStateFile,
+  PolicyCatalogFile,
   OccurrenceFile,
   PolicyFile,
+  PoliticalOrganizationFile,
   ScenarioManifest,
   VariablesFile,
 } from "./contentTypes";
@@ -17,7 +19,9 @@ export type PackageFiles = Readonly<Record<string, string>>;
 
 export type ResolvedPackage = {
   manifest: ScenarioManifest;
+  organizacaoPolitica?: PoliticalOrganizationFile;
   initialState: InitialStateFile;
+  policyCatalog?: PolicyCatalogFile;
   variables: VariablesFile;
   policies: readonly PolicyFile[];
   consequences: readonly ConsequenceFile[];
@@ -222,8 +226,16 @@ export function resolvePackage(
     manifest.variaveis,
     diagnostics,
   ) as VariablesFile | undefined;
+  const policyCatalog = manifest.catalogoPoliticas
+    ? (expectType(
+        readFile(manifest.catalogoPoliticas, files, diagnostics),
+        ["catalogo-politicas"],
+        manifest.catalogoPoliticas,
+        diagnostics,
+      ) as PolicyCatalogFile | undefined)
+    : undefined;
   const policies = readList(
-    manifest.politicas,
+    policyCatalog?.politicas ?? manifest.politicas ?? [],
     ["lei", "imposto", "programa", "regulamentacao"],
     files,
     diagnostics,
@@ -252,6 +264,14 @@ export function resolvePackage(
     files,
     diagnostics,
   ) as OccurrenceFile[];
+  const politicalOrganization = manifest.organizacaoPolitica
+    ? (expectType(
+        readFile(manifest.organizacaoPolitica, files, diagnostics),
+        ["organizacao-politica"],
+        manifest.organizacaoPolitica,
+        diagnostics,
+      ) as PoliticalOrganizationFile | undefined)
+    : undefined;
   const allFiles: ContentFile[] = [
     manifest,
     ...policies,
@@ -260,6 +280,8 @@ export function resolvePackage(
     ...situations,
     ...dilemmas,
   ];
+  if (politicalOrganization) allFiles.push(politicalOrganization);
+  if (policyCatalog) allFiles.push(policyCatalog);
   if (initialState) allFiles.push(initialState);
   if (variables) allFiles.push(variables);
   const filesById = checkIds(allFiles, diagnostics);
@@ -268,11 +290,13 @@ export function resolvePackage(
     manifestPath,
     manifest.estadoInicial,
     manifest.variaveis,
-    ...manifest.politicas,
+    ...(manifest.catalogoPoliticas ? [manifest.catalogoPoliticas] : []),
+    ...(policyCatalog?.politicas ?? manifest.politicas ?? []),
     ...manifest.consequencias,
     ...(manifest.eventos ?? []),
     ...(manifest.situacoes ?? []),
     ...(manifest.dilemas ?? []),
+    ...(manifest.organizacaoPolitica ? [manifest.organizacaoPolitica] : []),
   ];
   for (const path of declaredPaths) {
     const text = files[path];
@@ -295,6 +319,8 @@ export function resolvePackage(
     ok: true,
     value: {
       manifest,
+      organizacaoPolitica: politicalOrganization,
+      policyCatalog,
       initialState,
       variables,
       policies: sorted(policies),

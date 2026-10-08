@@ -2,6 +2,33 @@
   "id": "estado-inicial-brasil-primeiro-cenario",
   "tipo": "estado-inicial",
   "versaoEsquema": 1,
+  "politicasVigentes": [
+    {
+      "politica": "atencao-basica",
+      "nivelDesejado": 4000,
+      "nivelImplantado": 4000
+    },
+    {
+      "politica": "protecao-mulheres",
+      "nivelDesejado": 240,
+      "nivelImplantado": 240
+    },
+    {
+      "politica": "prevencao-seguranca",
+      "nivelDesejado": 600,
+      "nivelImplantado": 600
+    },
+    {
+      "politica": "alimentacao-escolar",
+      "nivelDesejado": 300,
+      "nivelImplantado": 300
+    },
+    {
+      "politica": "creches-publicas",
+      "nivelDesejado": 500,
+      "nivelImplantado": 500
+    }
+  ],
   "valores": {
     "recursos_atencao_basica": 4000,
     "recursos_protecao_mulheres": 240,

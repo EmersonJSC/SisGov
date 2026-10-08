@@ -1,6 +1,8 @@
 export type TurnLogEntry = Readonly<{
   id: number;
   turn: number;
+  month?: number;
+  period?: "month" | "quarter";
   level: "info" | "success" | "error";
   title: string;
   details: readonly string[];

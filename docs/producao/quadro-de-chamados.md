@@ -6,7 +6,11 @@
 
 ## Ferramenta escolhida
 
-O acompanhamento operacional será feito em um GitHub Project público associado ao repositório SisGov. O plano de produção em Markdown continua sendo o catálogo mestre dos 96 chamados; o quadro não precisa conter antecipadamente todos eles.
+O acompanhamento operacional será feito em um GitHub Project público associado
+ao repositório SisGov. O plano de produção em Markdown é o catálogo mestre:
+preserva SG001–SG096 e acrescenta SG097–SG099 para a fundação de domínio.
+O quadro não precisa conter antecipadamente todos os chamados. As mudanças
+locais de planejamento não atualizam automaticamente issues ou estados no Project.
 
 ## Estados
 
@@ -25,4 +29,4 @@ Há somente uma pessoa trabalhando no projeto e apenas um chamado de implementa�
 
 Quando um chamado for assumido, criar a issue correspondente no GitHub, adicioná-la ao Project e registrar o estado apropriado. Ao iniciar, registrar data e branch. Ao pausar, registrar o que foi feito, verificação executada, resultado, pendência e próximo passo. Ao concluir, registrar commit ou alteração, evidência do aceite e decisões tomadas antes de mover o cartão para **Concluído**.
 
-Chamados ainda não assumidos permanecem apenas no plano de produção. Um chamado bloqueado deve informar o motivo, o que falta e quem pode resolver.
+Chamados ainda não assumidos permanecem apenas no plano de produção. Um chamado bloqueado deve informar o motivo, o que falta e quem pode resolver. Mesmo que sua entrega própria esteja documentada, um chamado dependente não passa para **Concluído** antes de todos os pré-requisitos obrigatórios; registrar estado parcial ou em revisão e indicar quais faltam.

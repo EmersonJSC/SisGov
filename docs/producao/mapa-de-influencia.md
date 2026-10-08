@@ -10,11 +10,36 @@ Cada ministério tem uma esfera de influência identificada pelo nome. Suas pol�
 
 No futuro, a esfera também mostrará o rosto do ministro responsável. Nome do ministério e identidade do ministro devem continuar distinguíveis. A presença futura de retratos não implica que a simulação de ministros já esteja implementada.
 
+## Constituição dentro da esfera federal — direção aprovada em 7 de outubro de 2026
+
+Não será criada uma esfera constitucional adicional. A esfera federal já
+existente conterá a Constituição e as leis constitucionais vigentes, como uma
+camada protetiva associada à Presidência. Essas garantias limitam ou sustentam
+as demais instituições: por exemplo, retirar o direito de voto ou extinguir o
+Congresso exige alterar a Constituição; não basta aprovar uma política
+ordinária.
+
+As leis que definem a apuração eleitoral também ocupam a bolha da Constituição,
+dentro da esfera federal. Para a mesma eleição, apenas uma regra constitucional
+de apuração pode estar vigente por vez; mudar a fórmula substitui a lei anterior
+por outra, não acumula as duas bolhas como regras simultâneas.
+
+Alterar uma proteção constitucional deve ser mais difícil do que mudar uma lei
+comum. O procedimento e a dificuldade exatos pertencem às regras políticas do
+cenário e ainda precisam ser definidos. A apresentação deve comunicar proteção
+e dificuldade sem sugerir que as garantias sejam imutáveis.
+
+Indicadores e situações continuam sendo resultados ou condições do país, não
+leis constitucionais. Eles ficam fora das esferas e ocupam o espaço livre em
+volta delas, orbitando a composição como um todo conforme suas influências. A
+proximidade ajuda a leitura, mas não cria efeito de jogo; somente as relações
+declaradas no cenário determinam consequências.
+
 ## Indicadores e situações em torno das influências
 
-Indicadores e situações ficam fora das esferas ministeriais. Representam resultados e condições do país; não pertencem a um ministério.
+Indicadores e situações ficam fora das esferas, inclusive da esfera federal. Representam resultados e condições do país; não pertencem a um ministério nem à Constituição.
 
-Eles orbitam visualmente as áreas e políticas que mais os influenciam. “Orbitar” significa disposição espacial por influência, sem exigir animação circular contínua. A distribuição deve ser orgânica, sem grade, tabela ou colunas fixas por tipo. Um elemento influenciado por vários ministérios pode ficar entre suas esferas.
+Eles ocupam o espaço livre ao redor das esferas e orbitam visualmente essa composição, aproximando-se das áreas e políticas que mais os influenciam. “Orbitar” significa disposição espacial por influência, sem exigir animação circular contínua. A distribuição deve ser orgânica, sem grade, tabela ou colunas fixas por tipo. Um elemento influenciado por vários ministérios pode ficar entre suas esferas.
 
 A posição considera as relações e sua relevância, preserva a legibilidade e evita sobreposição. A distância é uma ajuda de leitura, não uma medida numérica exata do efeito. Ligações e detalhes ao selecionar uma bolinha permitem auditar suas causas. A composição deve permanecer estável durante a navegação e passagem de turnos, evitando deslocamentos desnecessários.
 
@@ -100,7 +125,7 @@ Uma decisão apenas preparada continua sendo uma meta. Ela não infla a bolha an
 ## Critérios para revisar mudanças na tela
 
 1. Cada esfera identifica o ministério e reúne suas políticas.
-2. Indicadores e situações permanecem fora das esferas e próximos das influências relevantes.
+2. Indicadores e situações permanecem fora de todas as esferas e orbitam pelo espaço livre em volta delas, próximos das influências relevantes.
 3. As relações podem atravessar áreas e continuam auditáveis.
 4. A distribuição evita a aparência de tabela e mantém legibilidade.
 5. A interface privilegia o mapa; informações adicionais aparecem sob demanda.
@@ -108,6 +133,11 @@ Uma decisão apenas preparada continua sendo uma meta. Ela não infla a bolha an
 7. Linhas de relação aparecem sob hover, foco ou seleção, com origem e alvo claros.
 8. Aumento/redução do alvo e benefício/prejuízo permanecem informações diferentes; cor sozinha não dá o veredito.
 9. A animação de fluxo representa força atual e respeita redução de movimento.
+10. A Constituição aparece dentro da esfera federal, distinguindo garantias
+    constitucionais de políticas ordinárias e deixando claro que alterá-las
+    exige o processo próprio.
+11. Indicadores e situações não são absorvidos pela esfera federal: ficam fora
+    de todas as esferas e orbitam no espaço livre em volta delas.
 
 ## Fase 6.5 — mini motor visual implementado
 

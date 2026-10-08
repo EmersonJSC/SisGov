@@ -1,4 +1,5 @@
-import { advanceLaboratoryTurn } from "./game/advanceLaboratoryTurn";
+import { advanceQuarterlyLaboratoryTurn } from "./game/advanceQuarterlyLaboratoryTurn";
+import { prepareMonthlyContent } from "./game/prepareMonthlyContent";
 import { appendTurnLog, type TurnLogEntry } from "./game/turnJournal";
 import { TurnLogPanel } from "./ui/TurnLogPanel";
 import { MapPhysics } from "./mapPhysics";
@@ -55,6 +56,7 @@ type MapState = {
   targets: Map<string, number>;
   selectedPolicyId: string;
   activeSituationIds: Set<string>;
+  occurredEventIds: Set<string>;
   visualMap: VisualMapDefinition;
 };
 
@@ -127,9 +129,12 @@ function recordLog(
   level: TurnLogEntry["level"],
   title: string,
   details: readonly string[] = [],
+  time: { turn?: number; month?: number; period?: TurnLogEntry["period"] } = {},
 ): void {
   journal = appendTurnLog(journal, {
-    turn: mapState?.execution.step ?? 0,
+    turn: time.turn ?? Math.floor((mapState?.execution.step ?? 0) / 3),
+    ...(time.month === undefined ? {} : { month: time.month }),
+    ...(time.period === undefined ? {} : { period: time.period }),
     level,
     title,
     details,
@@ -435,7 +440,7 @@ function render(
   const { content, graph, execution, pending } = mapState;
   cancelAnimationFrame(animationFrame);
   stage.innerHTML = "";
-  turn.textContent = String(execution.step);
+  turn.textContent = String(Math.floor(execution.step / 3));
   pendingLabel.textContent =
     pending.size === 0
       ? ""
@@ -947,23 +952,29 @@ advanceButton.addEventListener("click", (event) => {
   const current = mapState;
   let committed = false;
   try {
-    const next = advanceLaboratoryTurn(current.content, current.graph, current);
+    const next = advanceQuarterlyLaboratoryTurn(
+      current.content,
+      current.graph,
+      current,
+    );
     if (!next.ok) {
+      const nextTurn = current.execution.step / 3 + 1;
       const details = next.diagnostics.map(
         (d) => `${d.message} [${d.file} · ${d.field} · ${d.code}]`,
       );
-      recordLog("error", `Turno ${current.execution.step + 1} não confirmado`, [
-        "O estado e as decisões preparadas foram preservados.",
-        ...details,
-      ]);
+      recordLog(
+        "error",
+        `Turno ${nextTurn} não confirmado`,
+        ["O estado e as decisões preparadas foram preservados.", ...details],
+        { turn: nextTurn, period: "quarter" },
+      );
       showNotice(details.join(" "));
       return;
     }
     const previous = current.execution.values;
-    const beforeSituations = current.activeSituationIds;
-    const details: string[] = [
-      `${current.pending.size} decisões preparadas; ${next.value.explanations.length} resultados calculados.`,
-      "Laboratório: um clique executa um passo técnico. Calendário, votação e financiamento da dívida ainda não estão integrados.",
+    const details = [
+      `${current.pending.size} decisões preparadas; três meses técnicos foram processados.`,
+      "Laboratório: calendário eleitoral, votação e financiamento da dívida ainda não estão integrados.",
     ];
     for (const policy of current.content.policies) {
       const id = policy.controle.variavel;
@@ -972,40 +983,42 @@ advanceButton.addEventListener("click", (event) => {
           `${policy.nome}: ${controlLabel(policy, previous[id])} → ${controlLabel(policy, next.value.execution.values[id])}; meta ${controlLabel(policy, next.value.targets.get(policy.id) ?? next.value.execution.values[id])}.`,
         );
     }
-    for (const explanation of next.value.explanations) {
-      const node = current.graph.nodesById[explanation.targetId];
-      const causes = explanation.contributions.map((c) => {
-        const source =
-          current.content.policies.find((p) => p.id === c.policyOrEventId)
-            ?.nome ?? c.policyOrEventId;
-        const relation = current.graph.relationsById[c.relationId];
-        return `${source}: ${format.format(c.contribution)} (origem ${format.format(c.sourceValue)}, atraso ${relation.delaySteps})`;
-      });
-      details.push(
-        `${node.nome}: ${format.format(explanation.previousValue)} → ${format.format(explanation.result)} ${node.unidade}. Base ${format.format(explanation.baseValue)}; ${causes.join("; ") || "sem contribuições ativas"}.`,
-      );
-    }
-    for (const situation of current.content.situations) {
-      const was = beforeSituations.has(situation.id),
-        now = next.value.activeSituationIds.has(situation.id);
-      if (was !== now)
-        details.push(
-          `${now ? "Situação iniciada" : "Situação encerrada"}: ${situation.nome}.`,
-        );
-    }
     mapState = {
       ...current,
       execution: next.value.execution,
-      targets: next.value.targets,
-      activeSituationIds: next.value.activeSituationIds,
+      targets: new Map(next.value.targets),
+      activeSituationIds: new Set(next.value.activeSituationIds),
+      occurredEventIds: new Set(next.value.occurredEventIds),
       pending: new Map(),
     };
     committed = true;
-    turn.textContent = String(mapState.execution.step);
+    turn.textContent = String(next.value.absoluteQuarter);
+    const monthlyEntries = [...next.value.journalEntries]
+      .filter((entry) => entry.period === "month")
+      .reverse();
+    for (const entry of monthlyEntries) {
+      const month = next.value.months.find(
+        (item) => item.absoluteMonth === entry.month,
+      );
+      const resultDetails = (month?.explanations ?? []).map((explanation) => {
+        const node = current.graph.nodesById[explanation.targetId];
+        return `${node.nome}: ${format.format(explanation.previousValue)} → ${format.format(explanation.result)} ${node.unidade}.`;
+      });
+      recordLog(
+        entry.level,
+        entry.title,
+        [...entry.details, ...resultDetails],
+        { turn: entry.turn, month: entry.month, period: entry.period },
+      );
+    }
+    const quarterSummary = next.value.journalEntries.find(
+      (entry) => entry.period === "quarter",
+    );
     recordLog(
-      "success",
-      `Turno ${mapState.execution.step} confirmado`,
-      details,
+      quarterSummary?.level ?? "success",
+      quarterSummary?.title ?? "Trimestre concluído",
+      [...(quarterSummary?.details ?? []), ...details],
+      { turn: next.value.absoluteQuarter, period: "quarter" },
     );
     render(previous, currentInfluence(current.graph, previous));
   } catch (error) {
@@ -1013,14 +1026,15 @@ advanceButton.addEventListener("click", (event) => {
     recordLog(
       "error",
       committed
-        ? "Turno confirmado; falha ao atualizar a tela"
-        : "Falha ao preparar o turno",
+        ? "Trimestre confirmado; falha ao atualizar a tela"
+        : "Falha ao preparar o trimestre",
       [
         detail,
         committed
-          ? "O turno já foi confirmado. Não repita a decisão para corrigir a exibição."
+          ? "O trimestre já foi confirmado. Não repita a decisão para corrigir a exibição."
           : "O estado e as decisões preparadas foram preservados.",
       ],
+      { turn: Math.floor(current.execution.step / 3) + 1, period: "quarter" },
     );
     showNotice(detail);
   } finally {
@@ -1043,6 +1057,7 @@ resetButton.addEventListener("click", () => {
   mapState.execution = createExecution(mapState.content, mapState.graph);
   mapState.targets.clear();
   mapState.activeSituationIds.clear();
+  mapState.occurredEventIds.clear();
   updateSituations();
   mapState.pending.clear();
   recordLog("info", "Partida reiniciada", [
@@ -1053,14 +1068,21 @@ resetButton.addEventListener("click", () => {
 
 try {
   const sandbox = createD4ReferenceSandbox();
+  const prepared = prepareMonthlyContent(sandbox.content);
+  if (!prepared.ok)
+    throw new Error(
+      prepared.diagnostics.map((issue) => issue.message).join(" "),
+    );
+  const { content, graph } = prepared.value;
   mapState = {
-    content: sandbox.content,
-    graph: sandbox.graph,
-    execution: createExecution(sandbox.content, sandbox.graph),
+    content,
+    graph,
+    execution: createExecution(content, graph),
     pending: new Map(),
     targets: new Map(),
     selectedPolicyId: sandbox.content.policies[0].id,
     activeSituationIds: new Set(),
+    occurredEventIds: new Set(),
     visualMap: sandbox.visualMap,
   };
   updateSituations();

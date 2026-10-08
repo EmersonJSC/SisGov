@@ -22,6 +22,26 @@ describe("primeiro cenário brasileiro", () => {
         peso: 0.45,
       }),
     ]);
+    const politicalOrganization = content.organizacaoPolitica;
+    expect(politicalOrganization?.formaInicial).toBe(
+      "republica-presidencialista",
+    );
+    expect(
+      politicalOrganization?.instituicoes.find(({ id }) => id === "senado"),
+    ).toMatchObject({
+      composicao: expect.objectContaining({ quantidadePorUnidade: 3 }),
+      mandatoMeses: 96,
+      renovacao: { intervaloMeses: 48, cadeirasPorUnidade: [2, 1] },
+    });
+    expect(politicalOrganization?.mudancasConstitucionais).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "reduzir-senado-para-uma-vaga-por-unidade",
+        }),
+        expect.objectContaining({ id: "abolir-senado" }),
+        expect.objectContaining({ id: "instaurar-ditadura-executiva" }),
+      ]),
+    );
     const execution = createExecution(content, graph);
     const batch = translateAuthorizedPolicies(
       content,

@@ -1,6 +1,7 @@
 import {
   advanceExecution,
   applyGradualResponse,
+  evaluateEvent,
   evaluateSituation,
   translateAuthorizedPolicies,
   type EngineExecution,
@@ -15,11 +16,14 @@ export type LaboratoryState = {
   targets: ReadonlyMap<string, number>;
   pending: ReadonlyMap<string, number>;
   activeSituationIds: ReadonlySet<string>;
+  occurredEventIds: ReadonlySet<string>;
 };
 export type LaboratoryTurn = {
   execution: EngineExecution;
   targets: Map<string, number>;
   activeSituationIds: Set<string>;
+  occurredEventIds: Set<string>;
+  newEventIds: readonly string[];
   explanations: readonly TargetExplanation[];
 };
 
@@ -80,17 +84,23 @@ export function advanceLaboratoryTurn(
   }
   const batch = translateAuthorizedPolicies(content, graph, changes);
   if (!batch.ok) return batch;
+  const activeOccurrenceIds = new Set([
+    ...state.activeSituationIds,
+    ...state.occurredEventIds,
+  ]);
   const result = advanceExecution(content, graph, state.execution, {
     ...batch.value,
     activeRelationIds: [
       ...batch.value.activeRelationIds,
       ...graph.relations
-        .filter((r) => state.activeSituationIds.has(r.sourceId))
+        .filter((relation) => activeOccurrenceIds.has(relation.sourceId))
         .map((r) => r.id),
     ].sort(),
   });
   if (!result.ok) return result;
   const activeSituationIds = new Set(state.activeSituationIds);
+  const occurredEventIds = new Set(state.occurredEventIds);
+  const newEventIds: string[] = [];
   for (const situation of content.situations) {
     if (!situation.entraQuando || !situation.saiQuando) continue;
     const evaluated = evaluateSituation(
@@ -106,5 +116,27 @@ export function advanceLaboratoryTurn(
     if (evaluated.value) activeSituationIds.add(situation.id);
     else activeSituationIds.delete(situation.id);
   }
-  return { ok: true, value: { ...result.value, targets, activeSituationIds } };
+  for (const event of content.events) {
+    if (!event.entraQuando) continue;
+    const evaluated = evaluateEvent(
+      { id: event.id, triggerWhen: event.entraQuando },
+      occurredEventIds.has(event.id),
+      result.value.execution.values,
+    );
+    if (!evaluated.ok) return evaluated;
+    if (evaluated.value) {
+      occurredEventIds.add(event.id);
+      newEventIds.push(event.id);
+    }
+  }
+  return {
+    ok: true,
+    value: {
+      ...result.value,
+      targets,
+      activeSituationIds,
+      occurredEventIds,
+      newEventIds,
+    },
+  };
 }

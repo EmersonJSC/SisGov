@@ -9,6 +9,8 @@ import {
   type InitialStateFile,
   type OccurrenceFile,
   type PolicyFile,
+  type PolicyCatalogFile,
+  type PoliticalOrganizationFile,
   type ScenarioManifest,
   type VariablesFile,
 } from "./contentTypes";
@@ -98,7 +100,7 @@ function requiredStringArray(
   field: string,
   diagnostics: ContentDiagnostic[],
 ): string[] | undefined {
-  const candidate = value[field];
+  const candidate = value[field.slice(field.lastIndexOf(".") + 1)];
   if (
     !Array.isArray(candidate) ||
     candidate.some((item) => typeof item !== "string" || item.trim() === "")
@@ -151,15 +153,32 @@ function validateManifest(
       "estadoInicial",
       "variaveis",
       "politicas",
+      "catalogoPoliticas",
       "consequencias",
       "eventos",
       "situacoes",
       "dilemas",
       "perfis",
+      "organizacaoPolitica",
+      "unidadeTemporal",
     ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
+  if (
+    value.unidadeTemporal !== undefined &&
+    value.unidadeTemporal !== "mes" &&
+    value.unidadeTemporal !== "trimestre"
+  ) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        "unidadeTemporal",
+        "VALOR_INVALIDO",
+        "Use mes ou trimestre para a unidade temporal do conteúdo.",
+      ),
+    );
+  }
   const nome = requiredString(value, file, "nome", diagnostics);
   const estadoInicial = requiredString(
     value,
@@ -168,7 +187,23 @@ function validateManifest(
     diagnostics,
   );
   const variaveis = requiredString(value, file, "variaveis", diagnostics);
-  const politicas = requiredStringArray(value, file, "politicas", diagnostics);
+  const politicas =
+    value.politicas === undefined
+      ? undefined
+      : requiredStringArray(value, file, "politicas", diagnostics);
+  const catalogoPoliticas =
+    value.catalogoPoliticas === undefined
+      ? undefined
+      : requiredString(value, file, "catalogoPoliticas", diagnostics);
+  if ((politicas === undefined) === (catalogoPoliticas === undefined))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politicas",
+        "VALOR_INVALIDO",
+        "Informe exatamente politicas ou catalogoPoliticas.",
+      ),
+    );
   const consequencias = requiredStringArray(
     value,
     file,
@@ -179,6 +214,8 @@ function validateManifest(
     if (value[field] !== undefined)
       requiredStringArray(value, file, field, diagnostics);
   }
+  if (value.organizacaoPolitica !== undefined)
+    requiredString(value, file, "organizacaoPolitica", diagnostics);
   if (value.perfis !== undefined) {
     if (!Array.isArray(value.perfis))
       diagnostics.push(
@@ -214,11 +251,688 @@ function validateManifest(
     !nome ||
     !estadoInicial ||
     !variaveis ||
-    !politicas ||
+    (!politicas && !catalogoPoliticas) ||
     !consequencias
   )
     return undefined;
   return value as ScenarioManifest;
+}
+
+function validatePolicyCatalog(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): PolicyCatalogFile | undefined {
+  validateKnownFields(
+    value,
+    file,
+    ["id", "tipo", "versaoEsquema", "politicas"],
+    diagnostics,
+  );
+  validateEnvelope(value, file, diagnostics);
+  requiredStringArray(value, file, "politicas", diagnostics);
+  return diagnostics.length === 0 ? (value as PolicyCatalogFile) : undefined;
+}
+
+function validatePoliticalOrganization(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): PoliticalOrganizationFile | undefined {
+  validateKnownFields(
+    value,
+    file,
+    [
+      "id",
+      "tipo",
+      "versaoEsquema",
+      "formaInicial",
+      "formasDeGoverno",
+      "instituicoes",
+      "processosConstitucionais",
+      "mudancasConstitucionais",
+    ],
+    diagnostics,
+  );
+  validateEnvelope(value, file, diagnostics);
+  const initialForm = requiredString(value, file, "formaInicial", diagnostics);
+  const forms: JsonObject[] = [];
+  const institutions: JsonObject[] = [];
+  const processes: JsonObject[] = [];
+  const changes: JsonObject[] = [];
+
+  for (const [field, output] of [
+    ["formasDeGoverno", forms],
+    ["instituicoes", institutions],
+    ["processosConstitucionais", processes],
+    ["mudancasConstitucionais", changes],
+  ] as const) {
+    const items = value[field];
+    if (!Array.isArray(items) || items.some((item) => !isObject(item))) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          field,
+          items === undefined ? "CAMPO_AUSENTE" : "TIPO_INVALIDO",
+          "Deve ser uma lista de objetos.",
+        ),
+      );
+      continue;
+    }
+    output.push(...(items as JsonObject[]));
+  }
+
+  const formIds = new Set<string>();
+  for (const [index, form] of forms.entries()) {
+    const path = `formasDeGoverno[${index}]`;
+    validateKnownFields(
+      form,
+      file,
+      ["id", "nome", "instituicoesAtivas", "eleicoesAtivas", "poderes"],
+      diagnostics,
+    );
+    const id = requiredString(form, file, `${path}.id`, diagnostics);
+    requiredString(form, file, `${path}.nome`, diagnostics);
+    if (id) {
+      if (formIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.id`,
+            "ID_DUPLICADO",
+            `Forma de governo repetida: ${id}.`,
+          ),
+        );
+      formIds.add(id);
+    }
+    requiredStringArray(form, file, `${path}.instituicoesAtivas`, diagnostics);
+    requiredStringArray(form, file, `${path}.eleicoesAtivas`, diagnostics);
+    if (
+      !Array.isArray(form.poderes) ||
+      form.poderes.some((power) => !isObject(power))
+    ) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.poderes`,
+          "TIPO_INVALIDO",
+          "Deve ser uma lista de objetos.",
+        ),
+      );
+    } else {
+      form.poderes.forEach((power, powerIndex) => {
+        if (!isObject(power)) return;
+        const powerPath = `${path}.poderes[${powerIndex}]`;
+        validateKnownFields(power, file, ["id", "relacao"], diagnostics);
+        requiredString(power, file, `${powerPath}.id`, diagnostics);
+        const relation = requiredString(
+          power,
+          file,
+          `${powerPath}.relacao`,
+          diagnostics,
+        );
+        if (
+          relation !== undefined &&
+          ![
+            "independente",
+            "compartilhado",
+            "concentrado",
+            "subordinado",
+            "ausente",
+          ].includes(relation)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${powerPath}.relacao`,
+              "VALOR_INVALIDO",
+              "Relação de poder não suportada.",
+            ),
+          );
+      });
+    }
+  }
+
+  const institutionIds = new Set<string>();
+  for (const [index, institution] of institutions.entries()) {
+    const path = `instituicoes[${index}]`;
+    validateKnownFields(
+      institution,
+      file,
+      [
+        "id",
+        "nome",
+        "poder",
+        "composicao",
+        "mandatoMeses",
+        "renovacao",
+        "votacaoOrdinaria",
+      ],
+      diagnostics,
+    );
+    const id = requiredString(institution, file, `${path}.id`, diagnostics);
+    requiredString(institution, file, `${path}.nome`, diagnostics);
+    requiredString(institution, file, `${path}.poder`, diagnostics);
+    if (id) {
+      if (institutionIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.id`,
+            "ID_DUPLICADO",
+            `Instituição repetida: ${id}.`,
+          ),
+        );
+      institutionIds.add(id);
+    }
+    let seatsPerUnit: number | undefined;
+    if (!isObject(institution.composicao)) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.composicao`,
+          institution.composicao === undefined
+            ? "CAMPO_AUSENTE"
+            : "TIPO_INVALIDO",
+          "Deve declarar o modelo de composição.",
+        ),
+      );
+    } else {
+      const composition = institution.composicao;
+      const mode = requiredString(
+        composition,
+        file,
+        `${path}.composicao.modo`,
+        diagnostics,
+      );
+      if (mode === "nacional") {
+        validateKnownFields(
+          composition,
+          file,
+          ["modo", "quantidade"],
+          diagnostics,
+        );
+        const quantity = requiredNumber(
+          composition,
+          file,
+          `${path}.composicao.quantidade`,
+          diagnostics,
+        );
+        if (
+          quantity !== undefined &&
+          (!Number.isInteger(quantity) || quantity <= 0)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.composicao.quantidade`,
+              "VALOR_INVALIDO",
+              "Deve ser um inteiro positivo.",
+            ),
+          );
+      } else if (mode === "territorial") {
+        validateKnownFields(
+          composition,
+          file,
+          ["modo", "unidade", "quantidadeUnidades", "quantidadePorUnidade"],
+          diagnostics,
+        );
+        requiredString(
+          composition,
+          file,
+          `${path}.composicao.unidade`,
+          diagnostics,
+        );
+        for (const field of ["quantidadeUnidades", "quantidadePorUnidade"]) {
+          const number = requiredNumber(
+            composition,
+            file,
+            `${path}.composicao.${field}`,
+            diagnostics,
+          );
+          if (
+            number !== undefined &&
+            (!Number.isInteger(number) || number <= 0)
+          )
+            diagnostics.push(
+              diagnostic(
+                file,
+                `${path}.composicao.${field}`,
+                "VALOR_INVALIDO",
+                "Deve ser um inteiro positivo.",
+              ),
+            );
+          if (field === "quantidadePorUnidade") seatsPerUnit = number;
+        }
+      } else {
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.composicao.modo`,
+            "VALOR_INVALIDO",
+            "Use nacional ou territorial.",
+          ),
+        );
+      }
+    }
+    if (institution.mandatoMeses !== undefined) {
+      const term = requiredNumber(
+        institution,
+        file,
+        `${path}.mandatoMeses`,
+        diagnostics,
+      );
+      if (term !== undefined && (!Number.isInteger(term) || term <= 0))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.mandatoMeses`,
+            "VALOR_INVALIDO",
+            "Deve ser um inteiro positivo.",
+          ),
+        );
+    }
+    if (institution.renovacao !== undefined) {
+      if (!isObject(institution.renovacao)) {
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.renovacao`,
+            "TIPO_INVALIDO",
+            "Deve ser um objeto.",
+          ),
+        );
+      } else {
+        validateKnownFields(
+          institution.renovacao,
+          file,
+          ["intervaloMeses", "cadeirasPorUnidade"],
+          diagnostics,
+        );
+        const interval = requiredNumber(
+          institution.renovacao,
+          file,
+          `${path}.renovacao.intervaloMeses`,
+          diagnostics,
+        );
+        if (
+          interval !== undefined &&
+          (!Number.isInteger(interval) || interval <= 0)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.renovacao.intervaloMeses`,
+              "VALOR_INVALIDO",
+              "Deve ser um inteiro positivo.",
+            ),
+          );
+        const seats = institution.renovacao.cadeirasPorUnidade;
+        if (
+          !Array.isArray(seats) ||
+          seats.some(
+            (seat) =>
+              typeof seat !== "number" || !Number.isInteger(seat) || seat <= 0,
+          )
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.renovacao.cadeirasPorUnidade`,
+              "VALOR_INVALIDO",
+              "Deve conter inteiros positivos.",
+            ),
+          );
+        else if (
+          seatsPerUnit !== undefined &&
+          seats.reduce((sum, seat) => sum + seat, 0) !== seatsPerUnit
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.renovacao.cadeirasPorUnidade`,
+              "VALOR_INVALIDO",
+              "A soma da renovação deve corresponder às cadeiras por unidade.",
+            ),
+          );
+      }
+    }
+    if (institution.votacaoOrdinaria !== undefined) {
+      if (!isObject(institution.votacaoOrdinaria)) {
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.votacaoOrdinaria`,
+            "TIPO_INVALIDO",
+            "Deve ser um objeto.",
+          ),
+        );
+      } else {
+        validateKnownFields(
+          institution.votacaoOrdinaria,
+          file,
+          ["regra", "base", "fracao"],
+          diagnostics,
+        );
+        const rule = requiredString(
+          institution.votacaoOrdinaria,
+          file,
+          `${path}.votacaoOrdinaria.regra`,
+          diagnostics,
+        );
+        const base = requiredString(
+          institution.votacaoOrdinaria,
+          file,
+          `${path}.votacaoOrdinaria.base`,
+          diagnostics,
+        );
+        if (
+          rule !== undefined &&
+          ![
+            "maioria_absoluta",
+            "maioria_simples",
+            "maioria_qualificada",
+          ].includes(rule)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.votacaoOrdinaria.regra`,
+              "VALOR_INVALIDO",
+              "Regra de votação não suportada.",
+            ),
+          );
+        if (
+          base !== undefined &&
+          !["cadeiras_ativas", "votos_validos"].includes(base)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.votacaoOrdinaria.base`,
+              "VALOR_INVALIDO",
+              "Base de votação não suportada.",
+            ),
+          );
+        if (institution.votacaoOrdinaria.fracao !== undefined) {
+          const fraction = requiredNumber(
+            institution.votacaoOrdinaria,
+            file,
+            `${path}.votacaoOrdinaria.fracao`,
+            diagnostics,
+          );
+          if (fraction !== undefined && (fraction <= 0 || fraction > 1))
+            diagnostics.push(
+              diagnostic(
+                file,
+                `${path}.votacaoOrdinaria.fracao`,
+                "VALOR_INVALIDO",
+                "Deve estar entre 0 (exclusivo) e 1.",
+              ),
+            );
+        }
+      }
+    }
+  }
+
+  const processIds = new Set<string>();
+  for (const [index, process] of processes.entries()) {
+    const path = `processosConstitucionais[${index}]`;
+    validateKnownFields(
+      process,
+      file,
+      ["id", "orgaosAprovadores", "fracaoFavoravel", "rodadas"],
+      diagnostics,
+    );
+    const id = requiredString(process, file, `${path}.id`, diagnostics);
+    if (id) {
+      if (processIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.id`,
+            "ID_DUPLICADO",
+            `Processo constitucional repetido: ${id}.`,
+          ),
+        );
+      processIds.add(id);
+    }
+    requiredStringArray(
+      process,
+      file,
+      `${path}.orgaosAprovadores`,
+      diagnostics,
+    );
+    const fraction = requiredNumber(
+      process,
+      file,
+      `${path}.fracaoFavoravel`,
+      diagnostics,
+    );
+    if (fraction !== undefined && (fraction <= 0 || fraction > 1))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.fracaoFavoravel`,
+          "VALOR_INVALIDO",
+          "Deve estar entre 0 (exclusivo) e 1.",
+        ),
+      );
+    const rounds = requiredNumber(
+      process,
+      file,
+      `${path}.rodadas`,
+      diagnostics,
+    );
+    if (rounds !== undefined && (!Number.isInteger(rounds) || rounds <= 0))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.rodadas`,
+          "VALOR_INVALIDO",
+          "Deve ser um inteiro positivo.",
+        ),
+      );
+  }
+
+  const changeIds = new Set<string>();
+  for (const [index, change] of changes.entries()) {
+    const path = `mudancasConstitucionais[${index}]`;
+    validateKnownFields(
+      change,
+      file,
+      [
+        "id",
+        "processo",
+        "tipo",
+        "formaGoverno",
+        "instituicao",
+        "valor",
+        "mandatoMeses",
+        "intervaloRenovacaoMeses",
+        "cadeirasPorCiclo",
+      ],
+      diagnostics,
+    );
+    const id = requiredString(change, file, `${path}.id`, diagnostics);
+    if (id) {
+      if (changeIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.id`,
+            "ID_DUPLICADO",
+            `Mudança constitucional repetida: ${id}.`,
+          ),
+        );
+      changeIds.add(id);
+    }
+    requiredString(change, file, `${path}.processo`, diagnostics);
+    const type = requiredString(change, file, `${path}.tipo`, diagnostics);
+    if (type === "mudar_forma")
+      requiredString(change, file, `${path}.formaGoverno`, diagnostics);
+    else if (type === "alterar_vagas_por_unidade") {
+      requiredString(change, file, `${path}.instituicao`, diagnostics);
+      const amount = requiredNumber(change, file, `${path}.valor`, diagnostics);
+      if (amount !== undefined && (!Number.isInteger(amount) || amount <= 0))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.valor`,
+            "VALOR_INVALIDO",
+            "Deve ser um inteiro positivo.",
+          ),
+        );
+      for (const field of [
+        "mandatoMeses",
+        "intervaloRenovacaoMeses",
+      ] as const) {
+        if (change[field] === undefined) continue;
+        const duration = requiredNumber(
+          change,
+          file,
+          `${path}.${field}`,
+          diagnostics,
+        );
+        if (
+          duration !== undefined &&
+          (!Number.isInteger(duration) || duration <= 0)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.${field}`,
+              "VALOR_INVALIDO",
+              "Deve ser um inteiro positivo.",
+            ),
+          );
+      }
+      if (change.cadeirasPorCiclo !== undefined) {
+        const cycle = change.cadeirasPorCiclo;
+        if (
+          !Array.isArray(cycle) ||
+          cycle.some(
+            (seat) =>
+              typeof seat !== "number" || !Number.isInteger(seat) || seat <= 0,
+          )
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.cadeirasPorCiclo`,
+              "VALOR_INVALIDO",
+              "Deve conter inteiros positivos.",
+            ),
+          );
+        else if (
+          amount !== undefined &&
+          cycle.reduce((sum, seat) => sum + seat, 0) !== amount
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.cadeirasPorCiclo`,
+              "VALOR_INVALIDO",
+              "A soma do ciclo deve corresponder às vagas por unidade.",
+            ),
+          );
+      }
+    } else if (type === "desativar_instituicao")
+      requiredString(change, file, `${path}.instituicao`, diagnostics);
+    else
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.tipo`,
+          "VALOR_INVALIDO",
+          "Mudança constitucional não suportada.",
+        ),
+      );
+  }
+
+  for (const [index, form] of forms.entries()) {
+    for (const institutionId of (form.instituicoesAtivas as
+      unknown[] | undefined) ?? [])
+      if (
+        typeof institutionId === "string" &&
+        !institutionIds.has(institutionId)
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            `formasDeGoverno[${index}].instituicoesAtivas`,
+            "REFERENCIA_QUEBRADA",
+            `Instituição inexistente: ${institutionId}.`,
+          ),
+        );
+  }
+  for (const [index, process] of processes.entries()) {
+    for (const institutionId of (process.orgaosAprovadores as
+      unknown[] | undefined) ?? [])
+      if (
+        typeof institutionId === "string" &&
+        !institutionIds.has(institutionId)
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            `processosConstitucionais[${index}].orgaosAprovadores`,
+            "REFERENCIA_QUEBRADA",
+            `Instituição inexistente: ${institutionId}.`,
+          ),
+        );
+  }
+  for (const [index, change] of changes.entries()) {
+    if (typeof change.processo === "string" && !processIds.has(change.processo))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `mudancasConstitucionais[${index}].processo`,
+          "REFERENCIA_QUEBRADA",
+          `Processo constitucional inexistente: ${change.processo}.`,
+        ),
+      );
+    if (
+      change.tipo === "mudar_forma" &&
+      typeof change.formaGoverno === "string" &&
+      !formIds.has(change.formaGoverno)
+    )
+      diagnostics.push(
+        diagnostic(
+          file,
+          `mudancasConstitucionais[${index}].formaGoverno`,
+          "REFERENCIA_QUEBRADA",
+          `Forma de governo inexistente: ${change.formaGoverno}.`,
+        ),
+      );
+    if (
+      (change.tipo === "alterar_vagas_por_unidade" ||
+        change.tipo === "desativar_instituicao") &&
+      typeof change.instituicao === "string" &&
+      !institutionIds.has(change.instituicao)
+    )
+      diagnostics.push(
+        diagnostic(
+          file,
+          `mudancasConstitucionais[${index}].instituicao`,
+          "REFERENCIA_QUEBRADA",
+          `Instituição inexistente: ${change.instituicao}.`,
+        ),
+      );
+  }
+  if (initialForm && !formIds.has(initialForm))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "formaInicial",
+        "REFERENCIA_QUEBRADA",
+        `Forma de governo inexistente: ${initialForm}.`,
+      ),
+    );
+
+  return diagnostics.length === 0
+    ? (value as PoliticalOrganizationFile)
+    : undefined;
 }
 
 function validateVariables(
@@ -367,7 +1081,7 @@ function validateInitialState(
   validateKnownFields(
     value,
     file,
-    ["id", "tipo", "versaoEsquema", "valores"],
+    ["id", "tipo", "versaoEsquema", "valores", "politicasVigentes"],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
@@ -394,6 +1108,27 @@ function validateInitialState(
       }
     }
   }
+  if (
+    value.politicasVigentes !== undefined &&
+    (!Array.isArray(value.politicasVigentes) ||
+      value.politicasVigentes.some(
+        (item) =>
+          !isObject(item) ||
+          typeof item.politica !== "string" ||
+          typeof item.nivelDesejado !== "number" ||
+          !Number.isFinite(item.nivelDesejado) ||
+          typeof item.nivelImplantado !== "number" ||
+          !Number.isFinite(item.nivelImplantado),
+      ))
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politicasVigentes",
+        "VALOR_INVALIDO",
+        "Cada política vigente exige política, nível desejado e nível implantado finitos.",
+      ),
+    );
   return diagnostics.length === 0 ? (value as InitialStateFile) : undefined;
 }
 
@@ -826,10 +1561,14 @@ export function validateContentFile(
   const diagnostics: ContentDiagnostic[] = [];
   let value: ContentFile | undefined;
   if (tipo === "cenario") value = validateManifest(parsed, file, diagnostics);
+  else if (tipo === "organizacao-politica")
+    value = validatePoliticalOrganization(parsed, file, diagnostics);
   else if (tipo === "variaveis")
     value = validateVariables(parsed, file, diagnostics);
   else if (tipo === "estado-inicial")
     value = validateInitialState(parsed, file, diagnostics);
+  else if (tipo === "catalogo-politicas")
+    value = validatePolicyCatalog(parsed, file, diagnostics);
   else if (policyTypes.has(tipo))
     value = validatePolicy(parsed, file, diagnostics);
   else if (tipo === "consequencia")

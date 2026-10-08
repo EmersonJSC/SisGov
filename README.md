@@ -7,16 +7,26 @@ SisGov é um jogo web de estratégia política e gestão econômica em que a pes
 Leia estes documentos na ordem abaixo:
 
 1. [Plano de produção](docs/plano-de-producao.md): catálogo de chamados, dependências e critérios de aceite.
-2. [Primeira versão](docs/producao/primeira-versao.md): público, escopo e critérios de sucesso do jogo.
-3. [Quadro de chamados](docs/producao/quadro-de-chamados.md): estados e fluxo de acompanhamento.
-4. [Motor do jogo](docs/motor-do-jogo.md): proposta técnica do motor de simulação.
-5. [Estudo Democracy 4](docs/Estudo%20Democracy%204%20Politicas%20Grupos%20e%20Efeitos.docx): referência de pesquisa; não é um contrato de conteúdo para o jogo.
+2. [Contrato do motor e dos JSONs](docs/arquitetura/contrato-motor-json.md): decisões confirmadas sobre leis, países e limite entre motor e conteúdo.
+3. [Primeira versão](docs/producao/primeira-versao.md): público, escopo e critérios de sucesso do jogo.
+4. [Quadro de chamados](docs/producao/quadro-de-chamados.md): estados e fluxo de acompanhamento.
+5. [Motor do jogo](docs/motor-do-jogo.md): proposta técnica do motor de simulação.
+6. [Estudo Democracy 4](docs/Estudo%20Democracy%204%20Politicas%20Grupos%20e%20Efeitos.docx): referência de pesquisa; não é um contrato de conteúdo para o jogo.
 
 A direção visual aprovada está em [Mapa de influência](docs/producao/mapa-de-influencia.md): esferas ministeriais, resultados externos e interface de jogo.
 
-A próxima etapa está detalhada em [Turnos, orçamento e capacidade](docs/producao/sg057-proxima-fase-e-economia.md).
+A próxima etapa está detalhada em [Turnos, política e economia jogável](docs/producao/sg057-proxima-fase-e-economia.md).
 
-Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto mestre do plano de produção.
+A revisão de 7 de outubro fixa a primeira versão jogável: Presidência em turno
+único; Senado renovado alternadamente em duas e uma cadeira por estado/DF;
+votação parlamentar com acaso controlado; e tramitação normalmente de um turno,
+com no máximo um adiamento. A economia inicial usa financiamento automático,
+juros herdados separados dos juros simples da dívida nova e consequências
+políticas graduais. Inflação, rating, crise fiscal e bancos ficam para depois.
+Essas regras são planejamento, ainda não a descrição de um jogo já integrado.
+
+Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto
+mestre; a cópia Word do plano não foi sincronizada nesta revisão de 7 de outubro.
 
 ## Estrutura
 

@@ -1,645 +1,483 @@
-# Próxima fase: turnos, orçamento e capacidade de execução
+# Próxima fase: turnos, política e economia jogável
 
-Revisão de 3 de outubro de 2026, solicitada pelo usuário. Complementa SG057–SG064,
-SG069 e SG077–SG080 sem renumerar os 96 chamados. Estado: plano de implementação;
-as mecânicas econômicas abaixo ainda não foram implementadas.
+Revisão consolidada em 8 de outubro de 2026, após decisões do usuário.
+Complementa SG057–SG064, SG069, SG077–SG082 e SG097–SG099.
+Estado: SG057-A concluído no recorte temporal e conectado à interface da bancada; SG057-B1
+concluído no recorte de pesquisa; SG057-B2 concluído no contrato documental. A partida integrada
+e as demais mecânicas ainda precisam de implementação.
 
-**IA que auxiliou nesta revisão do planejamento: Gitinho.**
+A revisão anterior de 3 de outubro teve auxílio de Gitinho. O presente texto
+substitui suas instruções de execução divergentes; o inventário de fontes e as
+evidências históricas permanecem em [fontes fiscais](sg060-fontes-fiscais.md).
+O [plano de produção](../plano-de-producao.md) é o catálogo mestre de tarefas.
 
-## Escopo imediato — manter pequeno
+## Objetivo da primeira versão
 
-O trabalho atual não é modelar a economia inteira. Por enquanto, concluir apenas
-um fechamento fiscal trimestral explicável: resultado primário acima da linha em
-destaque, outras apurações identificadas separadamente no diário e aviso de que
-caixa/financiamento não são calculados quando a fonte não permite. Valores
-históricos servem para conferir conceitos e escala; não representam decisões ou
-previsões do jogador.
+O SisGov é um jogo inspirado em _Democracy 4_. O jogador escolhe políticas,
+busca apoio, acompanha a implantação, sente consequências e disputa eleições.
+A economia serve a escolhas como investir agora, aceitar dívida, economizar ou
+tributar, com ganhos e perdas compreensíveis para grupos diferentes.
 
-Não entram neste passo: taxas endógenas, crédito privado, inflação, bancos,
-reações de mercado, equilíbrio fiscal, curvas de retorno ou novos setores. As
-seções adiante que tratam desses temas são um registro de ideias para etapas
-futuras, não decisões aprovadas nem requisitos de implementação. Não pesquisar
-novas séries ou definir coeficientes até existir uma pergunta concreta que
-dependa deles.
+A v1 precisa de uma partida pequena e completa. Não exige uma reprodução
+integral das contas públicas, pesquisas adicionais sem pergunta de jogo,
+gestão de títulos ou um modelo macroeconômico completo.
 
-## Recorte piloto do SG060-A
+Decisões vigentes:
 
-Decisão do usuário: preparar o piloto econômico para a transição ao governo
-seguinte ao Lula III, sem fixar previamente o resultado eleitoral. Se Lula vencer
-a eleição de 2026, o cenário será identificado como **Lula IV**; se perder, haverá
-uma alternativa identificada provisoriamente como **Bolsoflavio I**, conforme o
-nome indicado pelo usuário. Esses rótulos representam cenários condicionais do
-jogo, não uma previsão nem um resultado eleitoral já confirmado.
+- Presidência em turno único; maior total nacional vence. Segundo turno fica
+  para depois. Vitória continua a partida, derrota a encerra.
+- Senado com três cadeiras por estado e Distrito Federal, mandato de oito anos
+  e renovação alternada de duas e uma cadeira por UF a cada quatro anos.
+- Votação parlamentar com acaso controlado, influenciado por afinidade partidária
+  e opinião pública. Mostrar estimativas, sem garantir aprovação.
+- Propostas normalmente votadas no próximo fechamento trimestral; permitir um
+  adiamento excepcional e explicado, com limite de dois turnos até a votação.
+- Receitas, despesas, caixa, dívida, emissão automática e juros simples da dívida
+  nova, mantendo o fluxo de juros herdado separado.
+- Benefícios presentes podem render apoio; o peso crescente dos juros pode gerar
+  desgaste político gradual. Toda relação tem causa, atraso e parâmetro visíveis.
 
-O estado fiscal de partida usará os dados oficiais realizados mais recentes que
-estiverem disponíveis quando o pacote histórico for preparado. Registrar para
-cada série a fonte, período de referência, unidade, condição observado/estimado
-e data de corte dos dados. Quando o fechamento oficial de 2026 estiver disponível,
-atualizar o retrato de transição sem substituir observações por projeções
-silenciosamente. Se o protótipo for montado antes desse fechamento, usar o último
-período consolidado disponível e identificá-lo como tal; não o chamar de resultado
-final de 2026.
+Inflação, rating, crise fiscal, bancos, mercado financeiro, vencimentos, rolagem
+e amortização ficam para depois da primeira versão. Capacidade avançada e
+governança também não bloqueiam a primeira integração. Limites e implantação
+já disponíveis continuam sendo utilizados e validados.
 
-O período inicial da partida e a referência de preços serão metadados do cenário.
-A tela ainda mostrará apenas `Turno N`; períodos e datas permanecem nos dados e
-nas explicações para auditoria.
+## Estado atual e próxima entrega
 
-O inventário inicial das fontes oficiais e suas limitações está em
-[`sg060-fontes-fiscais.md`](sg060-fontes-fiscais.md). Foram identificadas fontes
-do Tesouro Nacional (RREO, RMD e RARDP), a API SICONFI, Estatísticas Fiscais do
-Banco Central e IPCA/IBGE. As fichas iniciais já registram os fluxos do RTN para
-2025 fechado e janeiro–agosto/2026; a soma RTN de janeiro–agosto cruza com o
-resultado acima da linha do RREO até arredondamento de R$ 1 mil. Estoques do
-Anexo 6 foram capturados como posições contábeis. O RMD de agosto/2026 já fornece
-ficha separada para DPF, composição, vencimentos e custo médio da carteira; isso
-não reconcilia DPF com dívida consolidada líquida nem informa caixa livre.
-Faltam validar a ficha anual contra as tabelas do RREO, escolher conceito
-consistente para juros/resultado nominal e definir o índice e mês-base de preços.
-Nenhum valor foi inserido no cenário executável.
+O motor, o carregamento, a bancada e o primeiro recorte em JSON existem. O mapa
+com mais de cem políticas é um laboratório de escala visual, não a partida
+integrada. Seu saldo demonstrativo não constitui financiamento ou dívida.
 
-## Onde estamos
+Frente ativa: revisar o aceite de SG057-B2. SG057-A está concluído no recorte
+temporal e SG057-B1 no recorte de pesquisa. SG057-A tem três passos mensais na bancada,
+testes comportamentais e fluxo verificado em tela; o registro vigente de progresso
+fica no [chamado do plano principal](../plano-de-producao.md#sg057-a-contrato-temporal--concluído).
+Aceite temporal e migração FIX-V1-02/04 concluídos; ver o
+[inventário e testes](sg057-inventario-temporal.md). Em paralelo,
+após SG057-B2, revisar SG098 e criar a partida SG099 antes da integração de SG061. A implementação
+fiscal e a integração completa não são pré-requisitos para fechar SG057-A;
+SG060-A/B usa esse contrato e SG061 reúne os componentes.
 
-O motor numérico, o carregamento, a bancada e o primeiro recorte em JSON existem.
-As fases 03–06 possuem entregas e testes registrados. O mapa com mais de cem
-políticas é um laboratório gerado para escala visual, não um país economicamente
-calibrado nem a partida integrada da Fase 07. Sua conta de saldo é demonstrativa;
-ainda não financia déficit, não mantém dívida e não representa bancos.
+## Tempo e ordem do turno — SG057-A
 
-A próxima fase é a **Fase 07 — Partida completa**. O contrato temporal SG057-A
-está especificado, mas ainda não implementado; SG060-A está em especificação para
-fechar unidades, período-base histórico e identidades contábeis antes do
-financiamento. A apresentação espacial fica mantida enquanto validamos escolhas
-com consequências contábeis e sociais.
+- Cada turno político dura três meses e executa três passos técnicos mensais.
+  A interface mostra Turno N; um contador absoluto interno mantém meses,
+  vencimentos e prazos mesmo quando começa outro mandato.
+- O turno começa com o resumo anterior. Ajustes que já cabem na autorização
+  vigente podem valer desde o primeiro mês após validação. Propostas que precisam
+  do Senado aguardam a votação; não mudam a meta implantada enquanto pendentes.
+- Em cada mês: atualizar implantação segundo a meta autorizada; executar o motor;
+  atualizar as contas; avaliar situações e eventos. Fatos descobertos ao final
+  só afetam passos seguintes, inclusive meses restantes do mesmo trimestre.
+- No fechamento: resolver a tramitação e votar propostas elegíveis; realizar
+  eleições quando devidas; produzir o diário e confirmar a partida inteira.
+  Uma aprovação nesse fechamento orienta a implantação do trimestre seguinte.
+- Se uma votação coincidir com a renovação do Senado, vota a composição que
+  encerra o mandato; a renovação ocorre em seguida, e a composição nova vale no
+  turno seguinte. A coincidência não pode estender a tramitação além de dois
+  turnos. Dilemas também precisam de regra explícita de resolução, sem
+  encadeamento infinito no mesmo passo.
+- Os três meses, votações, eleições, diário e estado dos sorteios são preparados
+  provisoriamente. Falha em qualquer etapa preserva a partida anterior inteira;
+  a retentativa não duplica cobrança nem refaz sorteios com outro resultado.
 
-## Decisões já confirmadas para SG057-A
+O calendário padrão presidencial tem 16 turnos por mandato. Os cinco anteriores
+à eleição oferecem as ações de campanha já previstas em SG057-B. O turno
+eleitoral não recebe novas decisões ordinárias de governo, mas avança os três
+meses, políticas vigentes, contas e prazos normalmente. Após vitória, iniciar
+novo mandato sem reiniciar país, juros, propostas ou mandatos senatoriais.
 
-- Um turno político dura **três meses**.
-- Cada turno executa **três passos técnicos mensais**. Isso preserva o passo
-  mensal do cenário e permite que atrasos e cadeias se propaguem mês a mês,
-  sem confundir a execução técnica com a decisão política trimestral.
-- A interface apresenta somente o número do turno, sem data civil. A simulação
-  mantém internamente os meses decorridos desde o estado inicial, avançando três
-  a cada turno, para posicionar eventos e reconciliar períodos maiores.
-- Cada turno começa com o resumo consolidado do turno anterior. Depois de ler o
-  resumo, a pessoa jogadora escolhe as ações e metas do turno que se inicia; elas
-  valem desde o primeiro dos seus três meses. As escolhas ficam congeladas durante
-  a execução do trimestre e não alteram meses já simulados.
-- Eventos e situações são avaliados ao fim de cada passo mensal. Seus efeitos
-  podem, portanto, influenciar os meses restantes do mesmo trimestre. O diário
-  registra a sequência mensal e apresenta um resumo consolidado ao fim do turno.
-- Receitas e despesas recorrentes serão apuradas mensalmente e somadas no resumo
-  trimestral. As fórmulas, a conversão de valores anuais e as regras de juros e
-  cobrança continuam sendo decisões do contrato fiscal SG060-A.
-- Em cada mês, a ordem é: avançar a implantação em direção à meta vigente;
-  executar um passo do motor com os controles resultantes; atualizar as contas
-  daquele mês; e então avaliar situações e eventos. Eventos que se ativarem
-  podem produzir efeitos nos meses seguintes, não retroativamente no passo que
-  os detectou.
-- Os três meses são preparados provisoriamente e confirmados como um único turno.
-  Uma falha técnica em qualquer mês descarta o trimestre inteiro; a retentativa
-  não pode duplicar cobranças, eventos ou efeitos.
-- Cada turno, inclusive o eleitoral, avança três meses e fecha contas e diário
-  normalmente. No calendário padrão de quatro anos há 16 turnos trimestrais; os
-  cinco anteriores à eleição oferecem ações de campanha e, no turno 16, o jogo
-  apresenta o resultado depois da simulação normal do período. A data é derivada
-  da lei ou política vigente que define a duração do mandato, podendo ser
-  alterada por decreto parlamentar. Após vitória, começa o dia 1 do novo
-  mandato, preservando o país. SG057-B definirá a continuidade após derrota e
-  como alterações legais afetam uma eleição já agendada.
-- As taxas de implantação e degradação existentes representam a mudança total
-  esperada em um trimestre. Para executá-las nos três passos mensais, usar a
-  fração mensal equivalente:
+O cenário informa qual eleição senatorial vem a seguir; iniciar outra partida
+não significa sempre começar pela renovação de duas vagas. Cenários que permitam
+alterar legalmente a duração de mandato precisarão de regra explícita para
+eleições já agendadas e mandatos em curso antes de habilitar essa ação.
 
-  ```text
-  fracao_mensal = 1 - (1 - fracao_trimestral)^(1/3)
-  ```
-
-  Por exemplo, uma fração trimestral de `0,30` equivale a aproximadamente
-  `0,1121` ao mês. Com o mesmo alvo, três aplicações mensais produzem o mesmo
-  avanço total que a aplicação trimestral atual, antes de efeitos de outras
-  variáveis. Os dados existentes não devem ser reinterpretados como taxas
-  mensais nem acelerados por aplicação repetida.
-- A conversão de fluxos fiscais anuais para períodos mensais/trimestrais, juros,
-  datas de cobrança e arredondamento permanece pendente do contrato fiscal
-  SG060-A; não presumir conversão financeira nesta decisão temporal.
-
-## Decisões confirmadas para a primeira versão fiscal — 4 de outubro de 2026
-
-- O primeiro ciclo fiscal acompanha receita, despesa primária, juros pagos,
-  caixa, dívida pública agregada e emissões a cada mês, consolidando os três
-  meses ao fim do turno. Vencimentos, títulos, rolagem e amortizações não são
-  modelados nem exibidos nesta primeira versão.
-- O mapa espacial não é um livro-caixa. Ele mostra somente poucos estados fiscais
-  que participam da cadeia causal — inicialmente caixa disponível e dívida
-  pública, agrupados no Tesouro/Economia. Receita, despesa, juros, emissões,
-  amortizações e resultados ficam em painel fiscal separado, detalhado por mês e
-  consolidado por trimestre.
-- O painel calcula `resultado_primario = receita - despesa_primaria` e
-  `resultado_nominal = resultado_primario - juros`; emissão não é receita e
-  amortização não é despesa primária.
-- A política inicial de financiamento é automática: se receitas, caixa e gastos
-  do mês resultarem em caixa negativo, o Tesouro emite somente o valor faltante
-  para zerá-lo. A emissão aumenta a dívida pública agregada. Superávit permanece
-  em caixa; ele não amortiza dívida automaticamente.
-- Juros são um parâmetro explícito do cenário. Não calculá-los como taxa média
-  multiplicada pela dívida total sem contrato de vencimentos e indexadores.
-- Cada política declara, no cenário, seus valores mensais explícitos de receita
-  e despesa quando totalmente implantada. O impacto contabilizado no mês é
-  proporcional ao nível de implantação vigente da política: uma política em 50%
-  produz metade do seu impacto mensal configurado. Não estimar ainda elasticidade
-  tributária, reação de mercado ou efeito indireto sem uma regra própria.
-
-Essas decisões substituem o recorte anterior que mostrava apenas o resultado
-primário e deixava caixa e financiamento como "não calculados". Bancos, política
-monetária, risco de mercado, vencimentos e custo endógeno de novas emissões
-continuam fora deste ciclo inicial.
-
-### Inflação na primeira camada econômica
-
-- Inflação é um indicador econômico próprio e uma bolinha do mapa. Quando sobe,
-  reduz poder de compra e tende a piorar a opinião pública.
-- Ela não ativa Crise Fiscal automaticamente. Gasto público, crescimento de
-  receita, juros, choques externos e inflação só se afetam quando o cenário
-  declarar relações causais explícitas; não haverá multiplicadores ocultos.
-- Alertas e projeções fiscais medem a capacidade de pagamento em valores reais,
-  com índice e período-base declarados pelo cenário. Crescimento nominal de
-  receita causado apenas pela inflação não é tratado como melhora fiscal real.
-- Rating de crédito é um indicador e uma bolinha no agrupamento Tesouro/Economia.
-  Ele usa faixas narrativas — estável, atenção, deteriorado e crítico — e mostra
-  também sua tendência. Não representa uma agência real; afeta o custo de novas
-  dívidas conforme a cadeia fiscal declarada. A piora do rating eleva apenas o
-  custo de emissões novas; a dívida já existente não é reprecificada de imediato.
-
-### Situação fiscal recuperável
-
-- Déficit recorrente aumenta a dívida pública agregada. Dívida persistentemente
-  alta reduz o rating de crédito; rating menor eleva os juros das novas emissões;
-  juros maiores ampliam a despesa com juros e podem piorar o déficit. A cadeia é
-  explícita: `déficit → dívida → rating → juros → déficit`.
-- Rating e avisos fiscais não são disparados por um valor absoluto de dívida.
-  Eles dependem de dívida alta **relativa à capacidade de pagamento** e de
-  déficits persistentes. O indicador deve acompanhar a inclinação da trajetória
-  (variação da dívida relativa entre turnos) e, em etapa posterior, sua aceleração
-  para avisar que o país se aproxima de dinâmica insustentável antes da crise.
-  O aviso descreve risco e continua reversível; ele não declara que a recuperação
-  é impossível.
-- O painel projeta a trajetória fiscal por até cinco turnos, assumindo a
-  continuidade das políticas e tendências vigentes. A projeção considera a
-  variação da receita, inclusive crescimento esperado e impactos já contratados
-  das políticas, além da evolução de gasto, juros e dívida. Comparações de
-  crescimento devem usar valores na mesma base de preços: inflação nominal não
-  pode aparecer como melhora real da capacidade de pagamento.
-- Quando a projeção indicar crise fiscal ou uma correção extraordinária dentro
-  desse horizonte, a interface mostra um alerta antecipado. Esse é um diagnóstico
-  condicional da trajetória atual, não uma sentença de derrota: a pessoa jogadora
-  pode mudar políticas e recuperar o país em turnos posteriores.
-- O jogo não corta nem reduz automaticamente uma política escolhida pela pessoa
-  jogadora. Se ela mantiver as políticas, a dívida pode continuar subindo; a
-  recuperação exige uma decisão dela, como rever gastos, elevar receitas ou
-  sustentar superávits ao longo do tempo.
-- **Crise fiscal** é uma situação do jogo, não condição de derrota automática.
-  Ela deve gerar aviso fiscal antes de surgir, permanecer enquanto suas condições
-  forem atendidas e poder ser resolvida em jogo. A partida continua para que a
-  pessoa jogadora tente recuperar o país.
-- O aviso de trajetória em até cinco turnos materializa-se no mapa como a bolinha
-  da situação **Crise Fiscal**. Ao ficar ativa, ela declara emergência no Senado:
-  propostas entram em tramitação acelerada e recebem maior probabilidade de
-  aprovação, pois o risco fiscal está em jogo. A aprovação não é automática e a
-  emergência não remove a necessidade de registrar cada decisão.
-- A situação termina somente quando a projeção de cinco turnos deixa de indicar
-  crise e a dívida relativa fica estável ou em queda por dois turnos consecutivos.
-  Uma melhora isolada não encerra a emergência.
-- A situação e seus indicadores afetam opinião pública e resultados eleitorais.
-  O efeito na opinião acompanha a trajetória: piora enquanto dívida, déficits e
-  risco projetado se deterioram; começa a se recompor quando a recuperação se
-  torna convincente, mesmo antes do encerramento formal da crise.
-  Em crises, países vizinhos com interesses hostis podem oferecer empréstimos
-  condicionados ou tentar comprar ativos estratégicos. Ambas as opções aliviam
-  a pressão fiscal imediata, mas criam custo financeiro ou perda de controle
-  futuro. Esses agentes e suas condições precisam de regras causais próprias
-  antes de receberem coeficientes.
-
-## Decisões ainda necessárias em SG057-A
-
-O contrato temporal SG057-A está especificado. Sua implementação ainda depende
-das fórmulas e conversões fiscais de SG060-A; as regras de resultado eleitoral
-e continuidade dependem do SG057-B.
-
-## Direção confirmada para SG057-B — Senado e eleições
-
-- O jogo usa partidos reais, com composição, período de referência e fonte
-  declarados pelo cenário; não inferir a composição parlamentar a partir de uma
-  lista estática sem data.
-- O primeiro corte político segue a progressão de Democracy 4: cadeiras formais,
-  afinidades declaradas das propostas e reação da opinião pública. Cada cadeira
-  mantém um voto formal; maioria e resultado não recebem peso econômico direto.
-- Bancos, empresas, propaganda organizada, grupos de interesse e influência
-  econômica desproporcional ficam para uma camada posterior, depois que o ciclo
-  básico de políticas, opinião, Senado e eleições estiver validado.
-- A forma de obter ou atualizar as cadeiras em eleições futuras continua em
-  aberto; ela não será presumida ao implementar a votação inicial.
-
-## SG060-A — identidades, unidades e períodos
-
-### Decisão de período-base
-
-Cada cenário histórico declara um período inicial e uma referência de preços
-próprios (por exemplo, um governo ou mês/ano de partida). A interface continua a
-mostrar `Turno N`, sem data civil. Valores monetários observados em outros períodos
-só entram depois de convertidos para a referência de preços do cenário, usando
-fonte e índice adequados documentados por série; não comparar valores nominais de
-anos diferentes como se tivessem o mesmo poder de compra.
-
-A primeira versão não simula inflação endógena: durante uma partida, os valores
-monetários são reais e constantes na referência daquele cenário. Isso permite
-inícios históricos distintos sem fixar todos em preços de 2024. Uma futura
-simulação de inflação exigirá mecanismo, dados e contratos próprios; não é
-autorizada implicitamente por esta decisão.
-
-O contrato atual usa a unidade tipada `moeda_milhoes_2024_ano`. SG060-A deve
-substituir o ano embutido por metadado explícito de referência de preços do
-cenário, preservando validação de unidade e compatibilidade. Não basta trocar o
-rótulo visual nem aceitar moedas sem base comparável.
-
-### Conversão para cada passo mensal
-
-- Fluxos recorrentes informados por ano são divididos por 12 para cada passo
-  mensal; três passos compõem o fluxo do turno trimestral.
-- Valores já declarados por mês não são divididos novamente.
-- Estoques (caixa e dívida), taxas e índices não são divididos por 12.
-- Transações únicas são lançadas uma vez no passo definido pela regra; não são
-  repetidas nem rateadas automaticamente.
-- Juros do cenário inicial vêm da despesa observada para aquele período e são
-  representados como fluxo mensal compatível com o passo. Se a fonte disponível
-  for anual, o total pode ser dividido por 12 somente como média mensal
-  identificada; não aplicar essa média como taxa sobre todo o estoque da dívida.
-- O custo de juros depende da composição e dos indexadores dos títulos. Não
-  multiplicar a dívida inteira por Selic nem por uma taxa média sem contrato e
-  evidência. Emissões novas e mudanças de custo da carteira existente exigem
-  regra por instrumento ou agregado validado, a definir em SG060-B/C. A conversão
-  de uma taxa anual efetiva para mensal só será usada quando uma regra desse tipo
-  estiver definida; ela não substitui a série observada de juros do cenário-base.
-- O diário e os exemplos manuais identificam período, unidade, base de preços e
-  conversões. Arredondamento ocorre para apresentação; o estado conserva precisão
-  suficiente para não acumular erro contábil por arredondamento visual.
-
-### Conceitos econômicos para etapas futuras — não são regras aprovadas
-
-Este quadro é apenas um mapa para evitar confusões quando o jogo chegar a essas
-etapas. Não define fórmulas, indicadores de interface, ações do jogador ou
-coeficientes. O trabalho imediato permanece na contabilidade básica do turno.
-
-| Conceito | O que representa | O que pode influenciar | Efeito de jogo |
-|---|---|---|---|
-| Taxa básica de política monetária | Referência definida pela autoridade monetária para influenciar o custo do dinheiro de curto prazo | Pressões de inflação e expectativas, demanda em relação à capacidade produtiva, câmbio e credibilidade da política monetária; decisões têm atraso | Altera gradualmente condições de crédito e o custo de instrumentos públicos indexados ou refinanciados. Não reprecifica instantaneamente todos os títulos |
-| Prêmio de risco soberano | Compensação pedida pelo mercado para emprestar ao governo, além da referência de mercado | Trajetória esperada da dívida e do déficit, capacidade de pagamento, previsibilidade das regras, estabilidade política e condições externas | Muda o custo das novas emissões e da dívida rolada; não muda de imediato o cupom dos títulos prefixados já emitidos |
-| Custo médio da dívida existente | Custo efetivo do conjunto de contratos ainda em circulação | Indexador e taxa contratada de cada parcela, vencimentos, emissões/resgates e evolução das referências às quais a dívida está indexada | Determina a despesa de juros com defasagem. O jogador sente o custo ao longo de vários turnos, conforme a carteira vence ou é atualizada |
-| Taxa de crédito a famílias e empresas | Custo de empréstimos fora do Tesouro | Taxa básica, custo de captação, risco de inadimplência, garantias, concorrência e saúde dos bancos | Afeta consumo, investimento, atividade, emprego, inadimplência e, com atraso, arrecadação. Pertence à extensão bancária SG060-C |
-| Inflação | Variação geral do nível de preços, não uma taxa de juros | Demanda, capacidade de oferta, custos/choques, câmbio e expectativas; política monetária reage com atraso | Pode alterar poder de compra, custos e salários nominais. Fica fora da primeira versão, que mantém preços reais constantes, até haver contrato próprio |
-| Alíquota tributária | Percentual legal aplicado a uma base tributável | Decisão legislativa do governo; a arrecadação também depende da base, regras, isenções, cumprimento e atividade | Mudar a alíquota não produz arrecadação igual a “alíquota × toda a economia”: a base e o comportamento podem responder. Modelar apenas quando houver base tributável e regras de incidência definidos |
-
-**Possível cadeia causal futura, ainda não especificada:** decisões fiscais alteram
-saldo primário e necessidade de financiamento; financiamento e previsibilidade
-podem alterar a percepção de risco; novas emissões e rolagens passam a custo
-compatível com essa percepção; juros pagos reduzem espaço para outras políticas.
-Em paralelo, condições monetárias e de crédito afetam atividade e arrecadação.
-Choques de oferta, câmbio ou confiança podem alterar os resultados, mas devem
-ser eventos com causa e explicação, não penalidades aleatórias invisíveis.
-
-**Instituições financeiras são duas decisões diferentes:**
-
-**Decisão do usuário:** as duas dimensões poderão existir na campanha como
-decisões separadas: (1) autonomia/mandato da autoridade monetária e (2)
-propriedade estatal ou privada dos bancos comerciais. Seus efeitos e momento de
-entrada continuam a ser especificados por etapas.
-
-- **Autoridade monetária (Banco Central):** define a taxa básica e conduz a
-  política monetária. Seu mandato, regras de decisão, nomeações e grau de
-  autonomia determinam como o governo pode influenciá-la. Com autonomia, o
-  Executivo não escolhe a taxa a cada turno; suas políticas ainda afetam a
-  economia que a autoridade observa. Uma reforma que aumente a interferência
-  direta pode permitir ao governo pressionar a taxa no curto prazo, mas deve
-  trazer consequências no jogo — por exemplo, expectativas menos ancoradas,
-  prêmio de risco ou inflação mais instáveis — sem presumir que a interferência
-  sempre falhe ou sempre gere crise.
-- **Bancos comerciais públicos ou privados:** propriedade estatal pode permitir
-  crédito direcionado, financiamento de setores prioritários e instrumentos de
-  desenvolvimento. Privatização pode reduzir o controle governamental sobre
-  essas alocações e alterar competição, eficiência, cobertura ou acesso. Nenhum
-  desses efeitos é automático: dependem de capitalização, governança, metas,
-  risco de inadimplência e desenho regulatório. Um banco comercial estatal não
-  define a taxa básica nacional; pode ofertar linhas específicas, mas continua
-  sujeito a custo de captação, risco e limites de capital. Aportes, garantias e
-  perdas precisam aparecer nas contas públicas uma única vez.
-
-Assim, “estatizar/privatizar o banco” deve ser uma escolha de política
-institucional sobre bancos comerciais, enquanto “mudar a autonomia ou o mandato
-do Banco Central” é outra escolha, com cadeia causal própria. O jogo pode incluir
-as duas ao longo da campanha. No primeiro circuito econômico, elas ficam fora:
-usar a taxa básica e os juros herdados como condições externas já observadas;
-depois incluir decisões institucionais com explicações, custos e efeitos
-atrasados. A agência exata do jogador será definida antes de implementar cada
-uma, não presumida nesta especificação.
-
-#### Passo concluído e decisão imediata de apresentação
-
-O exemplo manual anual de 2025 e a agregação de **um turno de três meses**
-(junho–agosto/2026) estão registrados em
-`docs/producao/sg060-fontes-fiscais.md`, usando a mesma vintagem RTN e sem
-estimar parâmetros. O exemplo mostra os resultados “acima” e “abaixo da linha”
-separados e identifica a falta de saldos de caixa compatíveis.
-
-**Decisão do usuário:** no resumo do turno, o resultado primário acima da linha
-fica em destaque; o resultado abaixo da linha e o nominal entram como
-reconciliação no diário. Os rótulos devem preservar os métodos distintos. O
-resultado nominal RTN é calculado a partir do resultado primário abaixo da linha
-e dos juros nominais RTN — nunca somar os juros ao resultado acima da linha.
-
-**Rascunho de apresentação do exemplo (não é tela nem partida executável):**
+As taxas de implantação e degradação existentes representam o avanço trimestral.
+Converter para frações mensais equivalentes, sem triplicar o efeito:
 
 ```text
-FECHAMENTO FISCAL — JUNHO A AGOSTO/2026
-Dados observados do RTN; não são previsão nem resultado de decisões do jogador.
-
-Saldo primário                                  -R$ 50,693 bi
-Receita líquida                                 R$ 609,572 bi
-Despesa total                                   R$ 660,265 bi
-
-Reconciliação no diário:
-  Resultado primário — método abaixo da linha   -R$ 50,948 bi
-  Juros nominais considerados pelo RTN          -R$ 296,150 bi
-  Resultado nominal RTN                         -R$ 347,098 bi
-
-Caixa final: não calculado
-Financiamento do déficit: não modelado nesta etapa
+fracao_mensal = 1 - (1 - fracao_trimestral)^(1/3)
 ```
 
-O saldo primário acima da linha mostra, neste recorte, a diferença entre receita
-líquida e despesa total segundo a apuração RTN. O valor negativo indica que a
-despesa excedeu a receita naquele período; não diz, sozinho, quanto havia em
-caixa nem como o déficit foi pago. O resultado abaixo da linha é uma apuração
-distinta usada na reconciliação do RTN. O resultado nominal combina essa medida
-abaixo da linha com os juros nominais considerados pelo RTN.
+Com alvo constante, três aplicações mensais devem equivaler à trimestral.
+Uma fração trimestral de 0,30 corresponde a aproximadamente 0,1121 por mês.
+Conversão de dinheiro, taxa financeira e porcentagem de implantação são
+operações diferentes.
 
-**Critérios de clareza para este resumo:**
+## Senado, eleições e propostas — SG057-B e SG058-A/B
 
-- O número em destaque tem nome, período, unidade, sinal e fonte.
-- “Déficit primário” não é chamado de “dinheiro que sobrou” nem de saldo de caixa.
-- Os métodos acima e abaixo da linha nunca são somados nem apresentados como se
-  fossem a mesma série; o diário explica a diferença sem esconder a divergência.
-- O resultado nominal usa o resultado primário abaixo da linha e os juros RTN.
-- O resumo identifica que os valores são observações históricas agregadas, não
-  efeitos previstos das escolhas do jogador.
-- Caixa e financiamento aparecem como “não calculados/não modelados”, não como
-  zero e não como sucesso ou falha simulada.
+### Eleições e estado herdado
 
-Com esses critérios, o exemplo é legível como explicação contábil. A próxima
-verificação mínima já pode ser feita sem decisões fictícias nem código econômico:
+O cenário declara partidos reais, composição inicial, período e fonte.
+O Senado tem 81 cadeiras: três por estado e DF, mandatos de oito anos, com
+renovação alternada de duas e uma vaga por UF a cada quatro anos. Preservar
+as vagas não disputadas. A referência institucional é a
+[composição do Senado](https://www12.senado.leg.br/institucional/documentos/sobre-o-senado/atividade/composicao).
 
-| Verificação do resumo junho–agosto/2026 | Resultado esperado | Observado |
-|---|---|---|
-| Somar receita líquida dos três meses da mesma vintagem RTN | R$ 609,5722 bi | Passa |
-| Somar despesa total dos mesmos meses | R$ 660,2651 bi | Passa |
-| Subtrair despesa de receita para o resultado acima da linha | -R$ 50,6930 bi | Passa |
-| Mostrar abaixo da linha e nominal como reconciliação, sem trocar seus métodos | Conceitos identificados e identidades RTN preservadas | Passa |
-| Deduzir saldo de caixa ou emissão necessária da série RTN | Não deduzir; informar que não está modelado | Passa |
+A apuração presidencial soma a intenção política dos grupos, ponderada pela
+população, e vence o maior total nacional; segundo turno fica para depois.
+Partidos são atores da simulação eleitoral; sua força reflete as ideias e os
+programas que representam e o apoio dos grupos, sem exigir gestão de sua estrutura
+interna. A preferência eleitoral representa o alinhamento dos grupos com ideias
+e programas e pode mudar por efeitos políticos. A apuração
+senatorial é separada por UF. Com duas vagas, atribuí-las pelas maiores médias
+dos votos agregados aos partidos, permitindo que um partido conquiste ambas.
+Esse cálculo converte votos partidários em cadeiras, sem exigir candidatos
+individuais. Interesses sobrepostos não criam eleitores extras.
 
-Essa verificação encerra a etapa documental de legibilidade/aritmética do
-exemplo, não valida ainda dados executáveis nem uma mecânica de financiamento.
-O próximo marco pode ser a implementação mínima do fechamento primário como
-relatório informativo, sem caixa, juros endógenos, dívida, taxas, novas fontes ou
-alterações no cenário. Deve ser tratado como uma tarefa de código separada e só
-começar quando o usuário decidir sair do planejamento.
-Continuam fora deste recorte: previsão, balanceamento, regra de emissão,
-reação do custo da dívida, controle da taxa básica, propriedade dos bancos,
-crédito privado e inflação. As duas decisões institucionais confirmadas para a
-campanha não entram nesse primeiro exemplo.
+Em qualquer empate eleitoral entre partidos, cada partido empatado recebe um
+resultado de d20; vence o maior. Se houver empate no dado, rolar novamente apenas
+para os partidos ainda empatados. Essa regra substitui, no jogo, critérios ligados
+à idade de candidatos não modelados. O resultado e os dados ficam explicados no
+diário. O d20 não se aplica à votação parlamentar: sem a maioria ou o quórum
+exigido, a proposta não é aprovada.
 
-**Gamificação nesta etapa:** apresentar um resumo simples e rastreável do
-fechamento do período, ligando decisão aprovada, custo contabilizado e resultado
-fiscal. Não mostrar ainda painéis de previsão, faixa de incerteza, risco de
-mercado ou efeitos macroeconômicos que o modelo não calcula.
+O cenário define a preferência política inicial de cada grupo, expressa pelo
+alinhamento a ideias/programas e às forças eleitorais que os representam; efeitos
+políticos podem alterá-la, sem tratá-la como sinônimo de aprovação do governo.
+Efeitos políticos aumentam ou reduzem a parcela da coalizão governante no grupo;
+a variação oposta é redistribuída proporcionalmente entre os demais partidos,
+mantendo o total normalizado. Somar efeitos simultâneos antes da redistribuição,
+limitar o apoio da coalizão entre 0% e 100% e preservar as proporções internas
+dos partidos da coalizão e da oposição evita dependência da ordem de cálculo.
+Cada política declara no JSON os grupos afetados e a variação em pontos
+percentuais; o efeito político chega quando os efeitos da política alcançam
+o grupo. Essa fonte já está aprovada. O ciclo de aplicação, revogação e
+reativação, além da redistribuição nos extremos de 0%/100%, será especificado
+nos FIX-V1-01/06 antes da implementação em SG058-A.
 
-### Identidades a demonstrar
+**Regra de jogo adicionada em 7 de outubro de 2026:** leis constitucionais são
+distintas de políticas/leis ordinárias e ficam na Constituição dentro da esfera
+federal. Uma proposta ordinária não pode retirar garantias constitucionais,
+extinguir instituições protegidas ou contornar essas garantias. Isso exige uma
+proposta de reforma constitucional, com processo e dificuldade próprios,
+configuráveis pelo cenário e mais exigentes que a tramitação ordinária. A
+interface representa a Constituição como proteção institucional, não como algo
+imutável. Os detalhes visuais estão em `mapa-de-influencia.md`; indicadores e
+situações permanecem fora de todas as esferas.
 
-  Para cada mês e na mesma base de preços: `R` é receita recorrente, `G` despesa
-primária recorrente, `J` juros pagos, `C` caixa, `D` principal da dívida, `E`
-emissões e `A` amortização de principal:
+No conteúdo, o país declara Constituição e leis vigentes; o catálogo geral
+reutilizável declara organizações/mecanismos possíveis; e políticas podem
+alterar instituições e regras por seus processos próprios. O estado de governo
+é inferido das instituições, leis e escolhas aprovadas, em vez de ser apenas um
+rótulo selecionado. A atual configuração brasileira em `organizacao-politica.json`
+é rascunho a reorganizar conforme essa separação.
+
+**Decisões do usuário para a V1:** a emenda terá votação geral simplificada do
+Congresso, representando Câmara e Senado em conjunto, sem apuração ou interface
+separada para cada Casa. O Brasil real exige três quintos em dois turnos em cada
+Casa do Congresso ([art. 60, § 2º](https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm));
+a votação agregada é uma abstração de jogo, não uma reprodução do rito. Exigir
+pelo menos 60% de apoio em cada uma de duas votações gerais simplificadas; esta
+regra fica confirmada para a V1. As duas votações ocorrem no mesmo fechamento
+trimestral; se qualquer uma falhar, a emenda é rejeitada.
+
+O usuário também confirmou dois caminhos para mudar o regime: reforma
+constitucional, seguindo o processo mais difícil; ou golpe fora da ordem
+constitucional, suspendendo ou descumprindo regras vigentes sem aprovar a emenda
+exigida. O golpe não depende de apoio parlamentar: requer apoio dos comandantes
+das três Forças Armadas ou do Judiciário; não é necessário obter ambos.
+**Decisões do usuário:** por enquanto, o apoio do Judiciário é tratado como
+posição institucional da corte, sem simular juízes individualmente. Na referência
+brasileira, o ministro da Defesa indica os comandantes e o presidente os nomeia;
+para o jogo, a indicação depende de o ministro da Defesa apoiar o presidente,
+e o presidente formaliza a nomeação. A dependência do alinhamento ministerial é
+uma regra de gameplay, não uma exigência legal. **Direção aprovada pelo usuário:**
+quando surgir vaga de comandante, a escolha aparece como evento. Antes de indicar
+um candidato, o ministro consulta a preferência do presidente. O apoio do ministro
+ao presidente determina quanto peso será dado a essa opinião; ela influencia a
+indicação, mas não garante automaticamente o resultado. O calendário das vagas,
+o conjunto de candidatos e a fórmula desse peso ainda serão definidos. Exemplos
+de golpe são cancelar eleições ou dissolver o Congresso enquanto a Constituição
+ainda os protege. Formas concretas de conquistar esses apoios, riscos e efeitos
+políticos específicos ficam para conteúdo e balanceamento nos chamados de
+implementação. O jogo infere o regime
+das instituições e regras efetivamente vigentes, sem exigir que o jogador escolha
+o rótulo “ditadura”.
+
+Permanecem pendentes os parâmetros de implementação das maiores médias para duas
+vagas. Não exigir biografias, personalidades ou gestão de
+candidatos nem converter apoio nacional do governo diretamente em cadeiras.
+
+Partido, governo, aprovação de uma medida, bem-estar dos grupos e intenção de
+voto permanecem diferentes. SG058-A calcula reações diretas e aos resultados,
+com origem rastreável e sem registrar duas vezes o mesmo benefício percebido.
+
+### Acaso na votação parlamentar
+
+Afinidade partidária e opinião pública formam tendências de apoio. O contrato
+transforma essas tendências em votos com incerteza limitada: surpresa é possível,
+mas as escolhas do jogador precisam continuar influenciando os resultados.
+Afinidade bruta do JSON não é diretamente probabilidade de voto.
+
+Definir quórum, maioria, probabilidades e o modo de representar dissidências
+antes da implementação. Esses parâmetros serão ajustados por testes, não
+escolhidos para forçar uma eleição ou decisão específica. Cada cadeira conserva
+um voto formal; dinheiro público não compra pontos de aprovação.
+
+O gerador aleatório pertence à partida. Salvar sua versão, semente e estado;
+ordenar propostas e consumo de sorteios de forma estável. Consultar uma estimativa
+não consome o sorteio da votação. A mesma partida restaurada, com as mesmas
+escolhas, preserva a continuidade dos sorteios. Testes com sementes controladas
+cobrem aprovação, rejeição e falha atômica.
+
+A aleatoriedade aprovada inclui votação parlamentar e desempate eleitoral
+por d20. Não transforma automaticamente economia, eventos ou a apuração
+eleitoral inteira em sorteios. Os gatilhos de ocorrências existentes continuam
+determinísticos.
+
+### Tramitação curta
+
+A regra inicial de balanceamento é:
+
+1. Apresentar uma proposta cria pendência, preservando a política anterior.
+2. Normalmente votar no próximo fechamento de turno.
+3. Permitir um adiamento excepcional, com motivo e prazo restante visíveis.
+4. No segundo fechamento, votar obrigatoriamente: aprovar ou rejeitar, sem
+   aprovação automática pelo decurso de prazo.
+
+Os prazos de um/dois turnos são a regra inicial aprovada, parametrizável para
+testes; correspondem a até seis meses no jogo. SG057-B2 define quais condições
+justificam o único adiamento. Não introduzir atraso aleatório sem regra própria.
+Mudança de mandato e turno eleitoral não reiniciam a espera.
+
+Ajustes dentro de uma autorização existente usam a rota executiva de SG050;
+não precisam passar pelo Senado a cada alteração de verba. Após aprovação,
+implantação e efeitos ainda seguem seus próprios tempos. Revogar a autorização,
+reduzir execução e dissipar efeitos são processos diferentes.
+
+## Economia para decisões de jogo — SG060-A/B
+
+### Regras visíveis para o jogador
+
+- Receitas e despesas são apuradas por mês e somadas no trimestre.
+- O déficit não coberto pelo caixa é financiado automaticamente. Não há menu
+  de compra de títulos, vencimentos ou negociação de empréstimos na v1.
+- Superávit permanece em caixa. Não reduz automaticamente a dívida; amortização
+  fica para uma evolução, não aparece nos exemplos nem é cobrada no aceite atual.
+- A despesa de juros herdada vem do cenário como fluxo explícito. Não recalculá-la
+  aplicando uma taxa nova sobre todo o estoque inicial.
+- A dívida emitida durante a partida gera juros simples a uma taxa mensal fixa
+  declarada no cenário. Cada emissão passa a gerar esse custo no mês seguinte.
+  Taxa fixa não significa despesa de juros constante.
+- Cada política declara seu impacto financeiro e como ele acompanha a execução.
+  Para o recorte inicial, usar valores mensais de referência proporcionais à
+  implantação. Declarar a escala: intensidade em dinheiro não é automaticamente
+  porcentagem. Custos únicos têm momento explícito e são cobrados uma só vez.
+- O jogador vê benefício esperado, custo por turno, necessidade de endividamento
+  e compromisso adicional de juros antes de decidir. Estimativas usam o mesmo
+  contrato da execução e não mudam o estado da partida.
+
+O mapa mostra poucos estados causais, inicialmente caixa e dívida em
+Tesouro/Economia. O painel fiscal detalha receita, despesa, juros e emissão,
+com resumo trimestral e meses disponíveis no diário. Não expor controles
+contábeis que não correspondam a uma decisão de jogo.
+
+### Contrapartida política
+
+Endividamento permite melhorar serviços agora e pode render apoio. O peso
+crescente dos juros no orçamento também pode gerar desgaste gradual e diferente
+entre grupos. Essa ligação é uma hipótese de design declarada no cenário:
+SG058-A especifica a medida de comprometimento, atraso, limites e reação dos
+perfis, incluindo os casos de receita nula ou muito baixa.
+
+Não descontar aprovação apenas por repetir o número absoluto da dívida em
+vários caminhos do grafo. Benefícios, custos e reação aos resultados precisam de
+origem distinta; evitar punir duas vezes o mesmo efeito. A dívida não é derrota
+automática, e o jogo não corta políticas silenciosamente.
+
+Financiamento automático sem qualquer contrapartida tornaria a dívida ignorável.
+O aceite de jogabilidade precisa demonstrar que compromissos e reação política
+afetam decisões, sem transformar todo investimento financiado em erro.
+Taxas, probabilidades e intensidade do desgaste serão balanceadas por comparação
+de estratégias e testes com jogadores, não por exigência de realismo contábil.
+
+### Períodos, unidades e fontes
+
+Cada cenário declara período inicial, referência de preços e unidade. A v1 usa
+valores reais na mesma base, sem inflação simulada. Substituir a unidade hoje
+fixa em preços de 2024 por metadados validados; não trocar apenas o rótulo.
+
+- Fluxos anuais recorrentes são divididos por 12; mensais não são divididos novamente.
+- Caixa, dívida, índices e taxas não são divididos por 12.
+- Taxa da dívida nova é declarada por mês. Se houver entrada anual, SG060-A deve
+  definir se é taxa efetiva e sua conversão; não confundi-la com um fluxo de juros.
+- Despesa anual observada com juros pode ser rateada em média mensal identificada
+  para o fluxo herdado, nunca usada silenciosamente como taxa sobre toda a dívida.
+- Custos únicos entram no mês declarado. Arredondamento é de apresentação;
+  preservar precisão de estado e tolerância explícita nos testes.
+
+### Identidades mensais e juros futuros
+
+Todos os valores usam a mesma referência de preços. Antes do mês m:
+
+- R e G: receitas e despesas primárias do mês, incluindo lançamentos únicos devidos.
+- C e D: caixa e dívida total iniciais.
+- N: estoque de dívida emitida durante a partida, inicialmente zero; faz parte
+  de D e não é somado outra vez à dívida total.
+- H: fluxo mensal de juros herdados declarado no cenário.
+- i: taxa mensal fixa sobre N; J: juros pagos; E: emissão do mês.
 
 ```text
+J = H + i × N
 resultado_primario = R - G
 resultado_nominal = R - G - J
-caixa_final = caixa_inicial + resultado_nominal + E - A
-divida_final = divida_inicial + E - A
+caixa_provisorio = C + resultado_nominal
+E = max(0, -caixa_provisorio)
+caixa_final = caixa_provisorio + E
+divida_final = D + E
+divida_nova_final = N + E
 ```
 
-Essas identidades preservam déficit como resultado válido, não contam emissão
-como receita nem amortização como despesa primária, e só reconhecem principal
-emitido/amortizado uma vez no estoque. Pagamentos únicos, vencimentos, saldo
-mínimo de caixa e política de uso de superávit precisam aparecer explicitamente
-no teste; detalhes de financiamento executável e falta de caixa seguem em
-SG060-B. No cenário histórico, `J` é a despesa efetiva observada ou uma hipótese
-claramente identificada quando não houver série adequada; não é automaticamente
-uma taxa multiplicada pelo estoque total. O exemplo manual continua sendo
-requisito antes do código fiscal.
+O cálculo de J usa N do início do mês; portanto E só gera juros a partir do mês
+seguinte. Juros financiados entram no estoque uma vez, através de E; não adicionar
+J de novo à dívida. Não há capitalização contratual adicional além do custo
+de financiar um déficit. Emissão não é receita, juros não são despesa primária,
+e um déficit pode consumir caixa antes de exigir nova dívida.
 
-## O que o planejamento já cobria e o que faltava
+Exemplos sintéticos, exclusivamente para testar as regras. Os valores e a taxa
+não são dados brasileiros nem decisões de balanceamento:
 
-| Tema | Cobertura anterior | Complemento desta revisão |
-|---|---|---|
-| Turnos e falhas atômicas | SG057 e SG061 | Diagnóstico visível, registro da partida e recuperação de erro |
-| Receitas, despesas, déficit, dívida e juros | SG060 | Separar estoque/fluxo, resultado primário/nominal, caixa e refinanciamento |
-| Taxas e transmissão econômica | Só custo histórico observado; sem causas no jogo | Distinguir taxa básica, prêmio soberano, custo médio da carteira, crédito e inflação; explicitar atrasos e agência institucional antes de calibrar |
-| Disponibilidade de ações | SG058–SG059 | Separar autorização, liquidez, financiamento e capacidade operacional |
-| Bancos, crédito e mercado de títulos | Sem recorte explícito | SG060-C: agentes agregados, solvência/liquidez e canais para a economia |
-| Limites de políticas | Domínio numérico genérico | SG058-C: limite legal, execução física, saturação e retornos decrescentes |
-| Corrupção e superfaturamento | Sem mecanismo explícito | SG058-D: governança, perda de eficiência e risco; sem associação automática entre gasto e corrupção |
-| Ampliação das variáveis | Recorte inicial pequeno | Ondas com dependências, unidade, procedência e testes antes da expansão |
+| Caso                         |   R |   G |   H | i mensal | Caixa inicial | Dívida inicial | N inicial |    J |    E | Caixa final | Dívida final | N final |
+| ---------------------------- | --: | --: | --: | -------: | ------------: | -------------: | --------: | ---: | ---: | ----------: | -----------: | ------: |
+| Primeiro mês com déficit     | 100 | 100 |   5 |     0,01 |             0 |            100 |         0 |    5 |    5 |           0 |          105 |       5 |
+| Mês seguinte do mesmo caso   | 100 | 100 |   5 |     0,01 |             0 |            105 |         5 | 5,05 | 5,05 |           0 |       110,05 |   10,05 |
+| Superávit, caso independente | 120 | 100 |   5 |     0,01 |             0 |            100 |         0 |    5 |    0 |          15 |          100 |       0 |
+| Déficit coberto por caixa    | 100 | 100 |   5 |     0,01 |            10 |            100 |         0 |    5 |    0 |           5 |          100 |       0 |
 
-## Sequência de execução
+Sem amortização, superávit estabiliza a dívida e acumula caixa, mas não reduz seu
+estoque ou os juros já contratados. Uma melhora de capacidade fiscal pode decorrer
+de receita maior e ausência de novas emissões. Não prometer no painel uma
+redução de principal que o modelo ainda não faz.
 
-1. **SG043-R — Reparar o laboratório e registrar o turno.** Corrigir os parâmetros
-   demonstrativos que impedem o primeiro avanço, preservar decisões em erro,
-   liberar o botão após falha e mostrar um diário. Não declarar a Fase 07 concluída.
-2. **SG057-A — Fechar o contrato temporal.** As decisões iniciais confirmadas são
-   trimestre por turno, três passos técnicos mensais e conversão equivalente das
-   taxas de implantação/degradação existentes. Ainda falta fixar calendário,
-   aplicação de decisões, cobranças, fatos descobertos ao final e ordem de
-   confirmação. Taxas financeiras anuais precisam de regra explícita em SG060-A.
-3. **SG060-A/B — Núcleo fiscal e financiamento mínimo.** Aplicar a referência de
-   preços por cenário, normalização de fluxos e identidades mensais; primeiro
-   demonstrar contas à mão, depois implementar a conta independente da interface,
-   cenários com déficit e superávit e regras de financiamento. Expor restrições.
-4. **SG058-C/D — Uma política completa de Saúde.** Validar demanda, capacidade,
-   orçamento executado, entrega e saturação, incluindo desvios e fiscalização
-   apenas após o modelo básico. Expandir outras políticas usando os mesmos mecanismos.
-5. **SG060-C — Bancos e crédito agregados.** Acrescentar o canal financeiro quando
-   a contabilidade fiscal estiver reconciliada. Essa extensão não bloqueia o
-   teste inicial Tesouro–mercado de títulos, mas deve preceder a declaração de
-   que o sistema econômico completo da versão está pronto.
-6. **SG057-B e SG058-A/B — Autorização política.** Definir Senado e eleições;
-   integrar aprovação, implantação e orçamento sem usar dinheiro como apoio político.
-7. **SG061–SG064 — Confirmar a partida completa.** Um turno confirma todas as
-   etapas ou nenhuma; testar continuidade, eleições e consequências adversas válidas.
+## Cenário histórico e evidências preservadas
 
-O contrato fiscal pode ser desenvolvido e testado isoladamente após SG057-A.
-A autorização final das ações aguarda SG057-B e SG058. Não usar o atalho de
-aprovação da bancada como regra da partida.
+### Recorte piloto
 
-## Quando entram novas variáveis
+Permanece a decisão do usuário de preparar a transição após Lula III: cenário
+condicional Lula IV, se Lula vencer 2026, ou alternativa provisória Bolsoflavio I,
+se perder. Os nomes são rótulos escolhidos para cenários condicionais; não são
+previsões nem resultados eleitorais afirmados nesta revisão.
 
-O quadro abaixo é um mapa de possibilidades futuras da Fase 07, não uma ordem
-para adicionar tudo agora. A entrada de cada circuito depende de uma necessidade
-demonstrada pelo jogo e da validação do circuito anterior. O escopo atual continua
-restrito ao resumo contábil descrito no início deste documento.
+Usar dados oficiais realizados, com fonte, período, unidade, observado/estimado
+e data de corte. Atualizar o retrato quando o fechamento de 2026 estiver disponível;
+até lá, identificar o período consolidado usado, sem apresentá-lo como 2026 fechado.
 
-| Onda | Variáveis/estados necessários | Condição para avançar |
-|---|---|---|
-| Fiscal mínima, SG060-A/B | Receita do período, despesa primária, juros, caixa, estoque de dívida, principal a vencer, emissão e amortização | Identidades reconciliadas por vários turnos; déficit não trava o motor |
-| Indicadores fiscais derivados | Resultado primário e nominal, necessidade de financiamento; PIB do período e dívida/PIB quando o denominador estiver definido | Sem misturar PIB trimestral com anual; nenhuma duplicação de fluxos |
-| Capacidade de Saúde, SG058-C | Demanda, capacidade instalada, pessoal/insumos agregados, capacidade administrativa, entrega e fila/cobertura | Mais gasto pode ajudar, mas o ganho marginal diminui e a capacidade demora a crescer |
-| Governança, SG058-D | Fiscalização, exposição a contratações, perdas por desvio e preço contratado versus referência | Gasto alto sozinho não dispara corrupção; perdas explicáveis sem dupla contagem |
-| Financeira ampliada, SG060-C | Taxa básica, prêmio de risco, custo de novas emissões, crédito, inadimplência e condição agregada dos bancos | Distinguir juros da dívida existente, juros de nova dívida e juros ao tomador |
-| Macroeconômica seguinte | Base tributável, atividade/PIB, emprego, inflação e reação monetária simplificada | Cada elo tem unidade, atraso e hipótese; trajetórias estáveis antes de ampliar setores |
+O inventário existente registra RTN de 2025 e janeiro–agosto/2026, cruzamento do
+acumulado com o RREO e ficha separada de DPF/RMD de agosto/2026. Não equiparar
+DPF a dívida consolidada líquida nem inferir caixa livre a partir desses totais.
+Continuam pendentes a compatibilização de séries, conceitos e base de preços.
+A revisão de planejamento não faz nova auditoria das fontes nem insere valores
+históricos nos JSONs. Para testar mecanismos, usar exemplos sintéticos declarados;
+hipóteses em um cenário jogável também precisam ser identificadas como tais.
 
-Quando um circuito futuro for aprovado, cada estado necessário receberá ID,
-unidade, classe (estoque, fluxo, razão ou controle), domínio, valor inicial,
-fonte ou hipótese, causas, destinos e testes de extremos. Fluxos e razões
-derivados não precisam virar novos estados persistidos. Nem toda variável
-contábil precisa ganhar uma bolinha no mapa.
+### Relatório histórico não é a partida
 
-## Contrato fiscal SG060-B — base da primeira implementação
+O exemplo de junho–agosto/2026 permanece no inventário fiscal. Seus valores
+arredondados registrados são:
 
-O conteúdo abaixo descreve o ciclo fiscal mínimo aprovado. As fontes históricas
-ainda precisam ser convertidas em parâmetros de cenário consistentes antes da
-implementação; os exemplos continuam sendo material de validação, não valores de
-balanceamento.
+| Apuração histórica RTN               | Valor registrado |
+| ------------------------------------ | ---------------: |
+| Receita líquida                      |    R$ 609,572 bi |
+| Despesa total                        |    R$ 660,265 bi |
+| Primário acima da linha              |    -R$ 50,693 bi |
+| Primário abaixo da linha             |    -R$ 50,948 bi |
+| Juros nominais considerados pelo RTN |   -R$ 296,150 bi |
+| Resultado nominal RTN                |   -R$ 347,098 bi |
 
-Todos os valores abaixo são do mesmo período e da mesma base de preços:
+Nesse relatório, caixa e financiamento continuam não calculados pela falta de
+saldos compatíveis. O nominal histórico combina o primário abaixo da linha com
+os juros RTN, preservando a convenção de sinal da fonte; não misturar métodos.
+Os números não são efeitos de decisões do jogador nem parâmetros já calibrados.
 
-- R: receitas; G: despesas primárias; J: juros pagos;
-- C: caixa; D: dívida pública agregada; E: emissões automáticas.
+A verificação documental daquele exemplo foi concluída. Ela não substitui as
+identidades da partida, que terá caixa, emissão e juros calculados pelo contrato
+simplificado acima. Implementar somente um relatório estático deixou de ser o
+próximo marco do jogo.
 
-Identidades da primeira versão, sem reavaliação cambial nem indexação:
+## Sequência de execução sem dependências circulares
 
-```
-resultado_primario = R − G
-resultado_nominal = R − G − J
-caixa_provisorio = caixa_inicial + resultado_nominal
-emissao = max(0, −caixa_provisorio)
-caixa_final = caixa_provisorio + emissao
-divida_final = divida_inicial + emissao
-```
+1. SG097 permanece como inventário; revisar SG098 e criar a partida em SG099.
+2. Completar e validar SG057-A: três passos mensais, prazos, conversão de conteúdo
+   e confirmação atômica da composição dos passos na bancada (FIX-V1-02/04).
+   O fluxo técnico já existe; não exigir primeiro economia ou partida integrada.
+   A transação completa do estado político e econômico pertence a SG061.
+3. A partir desse contrato, desenvolver SG060-A/B isoladamente com exemplos
+   sintéticos. SG057-B2 tem contrato genérico aceito após SG057-B1; detalhar
+   conteúdo e fórmulas ao implementar SG098/099 e SG058/059.
+4. Implementar SG058-A/B e SG059: reações dos grupos, votação, renovação eleitoral,
+   tramitação e validação de ações, integradas à fundação de domínio.
+5. SG061 integra os módulos; SG062–SG064 provam uma partida completa com as poucas
+   políticas do recorte. SG063 confere opções de receita e despesa, adaptando a
+   seleção mínima em JSON para que tributar seja uma ação testável, não apenas
+   uma estratégia citada no aceite. Não aguardar bancos, crise fiscal ou capacidade avançada.
+6. SG065–SG072 conectam a partida à interface aprovada; SG073–SG080 refinam
+   explicações e balanceamento; SG081–SG082 entregam salvamento completo.
 
-Déficit nominal é resultado_nominal negativo; superávit é positivo. Emissão não é
-receita tributária. O superávit não reduz dívida automaticamente: permanece em
-caixa. Juros pagos com nova emissão entram uma única vez no estoque, por E; não
-somar J novamente à dívida.
+Um contrato pode ser especificado antes de seu módulo estar pronto. Um chamado
+só é concluído quando seu aceite for demonstrado; os 86 testes registrados em
+6 de outubro são evidência daquela base, não da conclusão das mecânicas acima.
 
-Exemplos puramente sintéticos para discussão futura (não são dados históricos,
-valores recomendados ou critérios de balanceamento), com caixa inicial zero e
-dívida inicial 100:
+Os dez achados da [revisão de consistência](revisao-consistencia-v1-2026-10-08.md)
+têm subtarefas FIX-V1-01–10 no [plano principal](../plano-de-producao.md), junto
+dos chamados responsáveis. Esse é o catálogo de execução e aceite dos fixes;
+não constituem uma nova fase nem correções já implementadas. SG057-B2 fechou
+o contrato genérico antes da implementação correspondente, sem depender
+da conclusão futura de SG061.
 
-| R | G | J | A | E | Caixa final | Dívida final | Leitura |
-|---:|---:|---:|---:|---:|---:|---:|---|
-| 100 | 100 | 5 | 0 | 5 | 0 | 105 | Déficit nominal de 5 financiado |
-| 120 | 100 | 5 | 0 | 0 | 15 | 100 | Superávit mantido em caixa |
-| 120 | 100 | 5 | 15 | 0 | 0 | 85 | Superávit usado para amortizar |
-| 105 | 100 | 5 | 20 | 20 | 0 | 100 | Rolagem, sem aumento líquido da dívida |
+## Diário, salvamento e aceites
 
-Se emissão disponível e caixa não cobrirem os pagamentos, aplicar uma regra de
-jogo explícita: limitar novas execuções, adiar despesas permitidas, registrar
-atrasados ou produzir crise/inadimplência. Não criar dinheiro, permitir dívida
-infinita silenciosamente nem tratar falta de financiamento como erro técnico.
+O diário separa decisão, estimativa, espera, adiamento, voto, implantação e efeito.
+Mostra causas, sequência mensal, resumo trimestral e erros com ID/campo/motivo.
+O diário visual não substitui a memória técnica dos atrasos.
 
-O menu de uma política distingue: autorização, compromisso futuro, caixa disponível,
-financiamento possível e custo recorrente. A interface exibe o motivo e estimativas;
-a camada de jogo valida novamente ao confirmar o turno.
+Salvar também prazos absolutos de propostas, mandatos/vagas do Senado, dívida
+emitida durante a partida, compromissos de juros e estado do gerador aleatório.
+O diário atual de sessão ainda tem retenção limitada; persistência e exportação
+entram em SG081–SG082.
 
-## Backlog futuro — bancos, Tesouro e autoridade monetária
+Antes de ampliar o catálogo:
 
-Ideias conceituais ainda não detalhadas para o escopo inicial. A decisão do
-usuário de incluir, em etapas futuras e separadas, autonomia/mandato do Banco
-Central e propriedade pública/privada de bancos comerciais permanece registrada;
-este backlog não define seus efeitos, calendário ou fórmulas.
+- Reconciliar caixa e dívida por 60 turnos técnicos de teste, com déficit,
+  superávit e uso de caixa. Isso testa o motor; não autoriza continuar uma
+  partida que perdeu a eleição presidencial.
+- Demonstrar juros somente no mês seguinte à emissão, sem dupla cobrança.
+- Demonstrar uma política pendente sem nova implantação, uma votação normal e
+  um único adiamento; cobrir o limite de dois turnos e a passagem de mandato.
+- Demonstrar decisão discreta com implantação parcial e encerramento gradual
+  com critério explícito, em vez de exigir zero exato por aproximação.
+- Renovar duas/uma vaga por UF e preservar mandatos não vencidos, incluindo a
+  possibilidade de um partido conquistar as duas vagas em disputa.
+- Repetir falha e restaurar save sem alterar sorteios, prazos ou custos.
+- Comparar estratégias de gasto, investimento, economia e tributação, usando
+  condições iniciais e sementes controladas e várias sementes nas comparações.
+- Demonstrar benefícios do endividamento e custos posteriores compreensíveis,
+  sem tornar dívida gratuita nem toda expansão ruim. Explicar diferenças entre
+  grupos sem duplicar efeitos.
+- Testar com pessoas se o benefício, o custo, o prazo e a incerteza podem ser
+  entendidos antes de decidir; ajustar parâmetros a partir dessa experiência.
 
-Começar com três papéis agregados:
+## Backlog preservado — não bloqueia a primeira versão
 
-- Tesouro arrecada, paga e emite dívida.
-- Bancos intermedeiam crédito, carregam ativos e têm restrições de liquidez/capital.
-- Autoridade monetária define a regra de taxa básica e eventuais instrumentos
-  explicitamente modelados; não é uma conta ilimitada do Tesouro.
+- Inflação, poder de compra, rating e custo variável de novas emissões: exigem
+  contratos próprios e não reprecificam automaticamente toda a dívida herdada.
+- Crise fiscal recuperável, aviso por projeção de até cinco turnos e emergência
+  parlamentar: ficam como direção futura. Limiar, entrada/saída, medida de
+  capacidade de pagamento e quais propostas podem receber tramitação especial
+  precisam de regras antes da implementação; não aplicar bônus a qualquer medida.
+- Empréstimos condicionados e venda de ativos a agentes externos ficam nesse
+  recorte futuro, sem simular diplomacia complexa na v1.
+- Vencimentos, rolagem, amortização e limites de financiamento exigem novas
+  identidades e exemplos. Não recuperar os exemplos antigos como aceite atual.
+- SG060-C distingue Tesouro, bancos e autoridade monetária. Permanecem previstas
+  como decisões futuras separadas a autonomia/mandato do Banco Central e a
+  propriedade pública/privada dos bancos comerciais, com efeitos e agência
+  definidos antes da implementação.
+- SG058-C amplia demanda, capacidade, retornos decrescentes e limites de entrega;
+  SG058-D acrescenta governança, fiscalização, desperdício, desvio e superfaturamento.
+  Gasto elevado não implica corrupção. Perdas não podem ser debitadas duas vezes.
+- Segundo turno presidencial, influência econômica organizada, gabinete,
+  negociação de coalizões e candidatos como personagens seguem adiados.
 
-Mercado de títulos e empréstimos privados não são o mesmo canal. Taxa básica,
-prêmio de risco soberano, custo médio da dívida e taxa ao tomador são variáveis
-separadas. Uma alta de taxa afeta novas emissões/rolagem conforme vencimentos,
-não reprifica automaticamente toda a dívida de taxa fixa.
-
-Primeiro validar relações simples: condição dos bancos → oferta/custo do crédito
-→ atividade → base tributável; risco/rolagem → juros futuros → espaço orçamentário.
-Definir atrasos e fontes/hipóteses. Não presumir que toda dívida seja detida por
-bancos, que todo déficit provoque inflação, nem adotar crowding-out automático.
-Balanços individuais, rede interbancária, câmbio e resgates detalhados ficam para
-expansão posterior, salvo necessidade demonstrada pelo recorte.
-
-## Backlog futuro — limites de políticas e capacidade
-
-Ideias de planejamento; não são regras aprovadas nem entram no fechamento fiscal
-atual.
-
-### Uma lei tem limite? Separar quatro limites
-
-1. **Jurídico:** opções admissíveis, vigência, competência e autorização. Uma lei
-   que permite/proíbe algo não deve usar um controle de dinheiro sem significado.
-2. **Orçamentário:** compromisso autorizado, execução financiável e recorrência.
-   Não é um teto arbitrário de 100 para qualquer política monetária.
-3. **Operacional:** pessoal, infraestrutura, insumos e capacidade de contratar e
-   executar dentro do período. Ampliar capacidade pode ser outra decisão com atraso.
-4. **De resultado:** cobertura tem população-alvo finita; uma entrega adicional
-   pode ter retorno menor e atacar outra necessidade. Saúde não melhora sem limite
-   por repetir a mesma relação linear.
-
-Proposta de curva para testar, não coeficiente já validado:
-
-```
-q = capacidade_de_entrega(orçamento_executado, pessoal, infraestrutura, preços, gestão)
-beneficio(q) = beneficio_maximo × (1 − exp(−q / escala_de_demanda))
-```
-
-O orçamento nominal pode aumentar; a entrega depende de q. Recursos excedentes
-podem formar caixa autorizado, financiar capacidade futura ou ser mal utilizados
-conforme regras explícitas. Não gerar melhora infinita e não confundir um limite
-de demanda com uma proibição universal de investir mais.
-
-Corrupção não decorre inevitavelmente de investir muito. Modelar oportunidades
-de contratação, instituições, fiscalização e incentivos. Superfaturamento aumenta
-preço por unidade; desvio reduz o que chega à entrega; ineficiência pode ocorrer
-sem crime. O gasto pago continua contabilizado uma vez, mesmo quando entrega pouco.
-Não subtrair o mesmo desvio duas vezes como gasto adicional e perda de caixa.
-
-Cobrir: pouco gasto, expansão útil, saturação, capacidade ampliada com atraso,
-fiscalização forte/fraca, preço elevado sem desvio, e teto legal. Antes de curvas
-novas, criar mecanismos declarados com validação e testes; nunca esconder uma
-limitação silenciosa no renderizador ou remover a validação de domínio do motor.
-
-## Registro e explicações
-
-O diário deve informar: início, decisão preparada, meta e nível efetivo, avanço,
-resultados com causas/atrasos, mudança de situações e falhas com campo/ID/motivo.
-Na integração fiscal, incluir receitas, despesas, juros, emissão, amortização,
-caixa e dívida antes/depois; distinguir previsto de realizado.
-
-Diário da interface não é o histórico técnico necessário para atrasos. A versão
-atual guarda os últimos 100 registros em memória de sessão; recarregar os remove.
-Persistência/exportação entram em SG081–SG082 junto do save. Falha técnica não
-consome decisões ou avança turno; fatos negativos válidos devem avançar e ser explicados.
-
-## Marco de aceite antes de ampliar o catálogo
-
-- Avançar base, cortes e expansão por 60 turnos de teste sem falha numérica.
-- Reconciliar caixa e dívida em cada turno, inclusive déficit, superávit e rolagem.
-- Mostrar ao menos uma decisão autorizada mas com execução limitada por capacidade
-  ou financiamento, com motivo; evitar dupla cobrança ao tentar novamente.
-- Demonstrar retornos decrescentes, capacidade futura e perda de eficiência distintos.
-- Demonstrar influências sociais/econômicas, sem transformar finanças no único objetivo.
-- Só então adicionar novas políticas/variáveis que usem os contratos já verificados.
+Esses itens preservam possibilidades de evolução. Não devem voltar às dependências
+da partida inicial por estarem mencionados em pesquisa ou em um exemplo histórico.

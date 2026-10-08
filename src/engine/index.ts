@@ -29,6 +29,8 @@ export type {
   InitialStateFile,
   OccurrenceFile,
   PolicyFile,
+  PolicyCatalogFile,
+  PoliticalOrganizationFile,
   ScenarioManifest,
   VariableDefinition,
   VariablesFile,
