@@ -4,6 +4,11 @@
 
 Este documento define a direção obrigatória da tela principal do SisGov. O mapa na raiz (`/`) é a referência visual aprovada; ele não se restringe a leis. Alterações futuras devem preservar esta experiência.
 
+A composição panorâmica indicada como alvo visual final está registrada em
+[Referência visual: mapa estratégico da governança brasileira](referencia-visual-mapa-estrategico.md).
+Este documento continua detalhando os contratos espaciais e de interação; a
+imagem de referência não torna funcionalidades ilustradas já implementadas.
+
 ## Esferas dos ministérios
 
 Cada ministério tem uma esfera de influência identificada pelo nome. Suas políticas públicas ficam dentro dela: leis e regras, tributos, serviços, programas e benefícios, conforme o conteúdo do cenário.

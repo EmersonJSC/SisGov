@@ -85,8 +85,8 @@ implementadas. As evidências históricas permanecem identificadas como históri
 
 ### Frentes de produção
 
-1. Revisar os contratos de proposta e implantação (SG098) e criar a partida com
-   adaptador de cenário (SG099), aproveitando SG097 e o código já existente.
+1. Completar a extensão eleitoral de SG099 para as leis constitucionais herdadas;
+   o escopo de domínio de SG098 e a fábrica básica de SG099 já têm evidências.
 2. Fechar o contrato temporal (SG057-A); sobre ele, especificar e testar o núcleo
    fiscal mínimo (SG060-A/B) e o contrato político (SG057-B).
 3. Implementar reação dos grupos, votação, eleição e validação de ações
@@ -115,6 +115,19 @@ Construir um jogo em que o jogador representa um partido e conduz o governo enqu
 A Fase 00 está concluída, com registro em `docs/qualidade/verificacao-base-producao.md`. Os 96 IDs são mantidos para preservar o acompanhamento. As fichas futuras foram simplificadas e devem ser detalhadas quando forem iniciadas. As capacidades descritas ainda precisam ser implementadas.
 
 ## Progresso e próxima fase — revisão de 7 de outubro de 2026
+
+### Conferência de SG098–SG099 — 8 de outubro de 2026
+
+Os testes focados em `domainProposal`, `preparePolicyExecution`,
+`createGame` e `resolveLawSetup` passaram: 26 testes em quatro arquivos.
+SG098 tem o contrato de domínio e a ponte isolada para o executor cobertos; a
+decisão política de adiamento/voto permanece em SG058-B e a confirmação inteira
+em SG061. SG099 cria partidas independentes a partir do pacote carregado, mas a
+extensão que resolve e guarda as leis eleitorais constitucionais iniciais ainda
+não está integrada; portanto, SG099 permanece parcial. SG061 não pode iniciar
+seu aceite de integração antes dessa extensão e dos contratos pendentes de
+SG057-B, SG058-A/B, SG059 e SG060-A/B. A bancada trimestral não substitui esses
+pré-requisitos.
 
 As Fases 01–06 possuem contratos, implementações e verificações registrados abaixo:
 carregamento, execução numérica, atrasos, ocorrências, restauração, bancada e
@@ -145,7 +158,7 @@ limitada à sessão. Isso não encerra SG061 nem substitui o diário integrado d
 
 ## Direção visual aprovada em 3 de outubro de 2026
 
-A tela principal segue o [motor espacial](producao/motor-espacial.md): presidente e ministros são os centros de maior massa; Constituição e políticas orbitam seus representantes dentro das respectivas esferas. Indicadores e situações ficam fora de todas as esferas, ocupando o espaço livre em volta delas e se organizando pelas leis relacionadas. Relações podem atravessar ministérios. A experiência é centrada no mapa, com interface mínima. Rosto do ministro e cor da esfera pela aprovação popular do ministro são evoluções futuras aprovadas, ainda sem implementação dessa aprovação.
+A tela principal segue o [motor espacial](producao/motor-espacial.md): presidente e ministros são os centros de maior massa; Constituição e políticas orbitam seus representantes dentro das respectivas esferas. Indicadores e situações ficam fora de todas as esferas, ocupando o espaço livre em volta delas e se organizando pelas leis relacionadas. Relações podem atravessar ministérios. A experiência é centrada no mapa, com interface mínima. Rosto do ministro e cor da esfera pela aprovação popular do ministro são evoluções futuras aprovadas, ainda sem implementação dessa aprovação. A composição da tela-alvo está descrita em [Referência visual: mapa estratégico da governança brasileira](producao/referencia-visual-mapa-estrategico.md); os dados exibidos na imagem são exemplos visuais e não alteram contratos de conteúdo nem estado inicial do país.
 
 ## Regra central do projeto
 
@@ -648,11 +661,13 @@ conclusão de SG097–SG099. As primeiras funções de `Proposal` e `PolicyState
 já existem em `src/domain/game`; os chamados abaixo fecham e integram esses
 contratos, não recomeçam do zero.
 
-Ordem de execução desta frente: SG097 e o contrato documental SG057-B2 já estão
-concluídos; SG098 é a próxima etapa especial prioritária; SG099 vem após o aceite de
-SG098. SG058-A pode evoluir isoladamente em paralelo depois de SG057-B2, mas
-SG061 só integra a partida quando SG097–SG099 estiverem concluídos. A numeração
-98/99 é posterior à numeração original da Fase 07 e não indica execução tardia.
+Ordem de execução desta frente: SG097 e o contrato documental SG057-B2 estão
+concluídos; o escopo de domínio de SG098 tem testes focados aprovados. A fábrica
+básica de SG099 existe, mas a integração das leis eleitorais constitucionais
+iniciais continua pendente. SG058-A pode evoluir em paralelo depois de SG057-B2,
+mas SG061 só integra a partida após SG097–SG099 e os demais contratos de turno.
+A numeração 98/99 é posterior à numeração original da Fase 07 e não indica
+execução tardia.
 
 Prioridade arquitetural da V1: terminar primeiro o motor de conteúdo e suas
 relações, usando o Brasil como primeiro pacote de prova, sem codificar números
@@ -675,21 +690,23 @@ responsabilidades e dependências proibidas estão documentadas. Não mover past
 nesta tarefa. Concluído em 6 de outubro de 2026, com o glossário e o inventário
 de dependências em `docs/arquitetura/modelagem-do-dominio.md`.
 
-## Etapa especial prioritária — SG098
+## Contrato de proposta e política vigente — SG098
 
-Este é o próximo chamado de implementação da base do motor. Fica fora da Fase 07 numerada para não parecer uma etapa posterior
-a SG058 ou SG061. Seu foco é contrato de proposta/lei vigente e validação
-genérica das relações de leis; não é a partida completa.
+Este escopo, fora da numeração original da Fase 07, fecha o contrato de domínio
+de proposta/política vigente e a validação genérica das relações entre leis.
+Não representa a partida completa. Os registros de incrementos abaixo incluem
+estados intermediários; a situação atual é o aceite de escopo registrado ao fim
+desta seção.
 
-### SG098 Fechar Proposta e Política Vigente — concluído
+### SG098 Fechar Proposta e Política Vigente — concluído no escopo de domínio
 
-Há funções iniciais e testes, mas o chamado não está concluído. SG057-B1 e o
-contrato documental SG057-B2 estão concluídos; o aceite final de SG098 ainda
-exige resolver as lacunas abaixo. SG099 permanece planejado e dependente de SG098.
-Há também um primeiro resolvedor isolado de definições de leis e estado inicial
-do país em `src/engine/laws/resolveLawSetup.ts`, com entrada JSON e testes de
-dependências e exclusões. Ele ainda não está integrado ao carregador do pacote
-nem executa mudanças, votação ou efeitos; não constitui aceite de SG098.
+O contrato de proposta, estado da política, implantação parcial, revogação,
+prazo e a ponte `preparePolicyExecution` têm testes focados aprovados. O
+resolvedor de leis e estado inicial em `src/engine/laws/resolveLawSetup.ts`
+também valida dependências e exclusões a partir de JSON. A conversão desse
+conteúdo para uma partida ainda não está integrada em SG099; decisão política
+de adiamento/voto pertence a SG058-B e o processamento atômico pertence a SG061.
+Essas integrações pendentes não reabrem o escopo isolado de domínio de SG098.
 
 Entrega inicial registrada em 6 de outubro de 2026. `src/domain/game` registra
 ciclo e histórico de proposta, origem da política vigente (aprovada ou herdada), alteração de meta,
@@ -759,12 +776,12 @@ política de adiamento e votação pertence a SG058-B. Em 8 de outubro de 2026,
 `npm run check` passou com 30 arquivos e 125 testes; o timeout anterior de
 `influenceLayout.test.ts` não se repetiu nem foi atribuído a SG098.
 
-## Etapa especial seguinte — SG099
+## Base da partida — SG099
 
-Começa após SG098; cria a partida a partir do país escolhido e do catálogo
+Após SG098, cria a partida a partir do país escolhido e do catálogo
 compartilhado. SG061 depende desta base integrada.
 
-### SG099 Criar a Partida e adaptar o cenário — concluído
+### SG099 Criar a Partida e adaptar o cenário — parcial
 
 Depende de SG097 e SG098. Entrega: `GameState` com identidade da partida,
 referência imutável ao cenário, turno, propostas, políticas vigentes e execução
@@ -776,6 +793,14 @@ partidas do mesmo cenário não compartilham estado; IDs duplicados e referênci
 inexistentes são recusados; a partida referencia a identidade exata do conteúdo;
 erros indicam arquivo, ID e campo; criação funciona sem React e não avança a
 simulação.
+
+Estado verificado: `src/game/createGame.ts` e seus testes criam partidas
+independentes, validam políticas herdadas e registram a identidade do conteúdo
+sem avançar a execução. Falta integrar ao carregamento da partida a resolução
+das leis eleitorais constitucionais herdadas do país, validando mecanismo,
+parâmetros, exclusividade e compatibilidade institucional, e guardar esse estado
+em `GameState`. Logo, a fábrica básica está implementada, mas SG099 não atende
+ainda toda a extensão eleitoral exigida para a integração de SG061.
 
 Na extensão eleitoral definida em SG057-B2, resolver referências do país para
 leis constitucionais eleitorais iniciais e validar mecanismo, parâmetros,
@@ -1409,6 +1434,11 @@ inclusive prazos e estado dos sorteios; repetição não duplica votação, cust
 evento. Vitória abre novo mandato sem reiniciar país, juros ou mandatos
 senatoriais; derrota presidencial encerra o percurso. Extensões SG058-C/D e
 SG060-C não são dependências deste marco.
+
+Situação em 8 de outubro de 2026: a confirmação integrada está bloqueada até
+fechar SG057-B, SG058-A/B, SG059, SG060-A/B e a extensão pendente de SG099.
+`advanceQuarterlyLaboratoryTurn` confirma apenas a bancada numérica e não pode
+ser reaproveitado como se já fosse a transação política e fiscal de SG061.
 
 #### FIX-V1-03 Completar o turno após mudanças institucionais — planejado
 

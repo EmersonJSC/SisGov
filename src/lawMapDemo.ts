@@ -39,7 +39,9 @@ import { createD4ReferenceSandbox } from "./scenarios/d4ReferenceSandbox";
 const stage = document.querySelector<HTMLElement>("#law-stage")!;
 const editor = document.querySelector<HTMLDialogElement>("#law-editor")!;
 const turn = document.querySelector<HTMLElement>("#turn")!;
+const quarter = document.querySelector<HTMLElement>("#quarter")!;
 const pendingLabel = document.querySelector<HTMLElement>("#pending")!;
+const indicatorCard = document.querySelector<HTMLElement>("#indicator-card")!;
 const advanceButton = document.querySelector<HTMLButtonElement>("#advance")!;
 const resetButton = document.querySelector<HTMLButtonElement>("#reset")!;
 const zoomInButton = document.querySelector<HTMLButtonElement>("#zoom-in")!;
@@ -56,6 +58,7 @@ type MapState = {
   pending: Map<string, number>;
   targets: Map<string, number>;
   selectedPolicyId: string;
+  selectedIndicatorId: string;
   activeSituationIds: Set<string>;
   occurredEventIds: Set<string>;
   visualMap: VisualMapDefinition;
@@ -412,29 +415,72 @@ function renderEditor(policy: PolicyFile): void {
   if (!editor.open) editor.showModal();
 }
 
-function openIndicator(variableId: string): void {
+function updateIndicatorCard(): void {
   if (!mapState) return;
-  const variable = mapState.graph.nodesById[variableId];
-  const incoming = mapState.graph.relations.filter(
-    (relation) => relation.targetId === variableId,
+  const { content, graph, execution, selectedIndicatorId } = mapState;
+  const indicator = graph.nodesById[selectedIndicatorId];
+  if (!indicator) return;
+  const incoming = graph.relations.filter(
+    (relation) => relation.targetId === selectedIndicatorId,
   );
-  editor.innerHTML = `<button class="dialog-close" type="button" aria-label="Fechar">×</button><div class="dialog-copy"><span class="dialog-eyebrow">INDICADOR · ${variable.area ?? "OUTRAS"}</span><h2>${variable.nome}</h2><p>Valor atual: <strong>${format.format(mapState.execution.values[variableId])}</strong>. Este valor não pode ser alterado diretamente; ele responde às políticas e situações ligadas a ele.</p></div><div class="effects"><h3>O que está influenciando</h3>${incoming
-    .map((relation) => {
-      const policy = mapState!.content.policies.find(
-        (item) => item.id === relation.sourceId,
-      );
-      const situation = mapState!.content.situations.find(
-        (item) => item.id === relation.sourceId,
-      );
-      const name = policy?.nome ?? situation?.nome ?? relation.sourceId;
-      const rises = relation.parameters.coeficiente >= 0;
-      return `<div class="effect ${consequenceTone(relation.targetId, relation.parameters.coeficiente)}"><strong>${rises ? "↑" : "↓"} ${name}</strong><span>${rises ? "pressiona para cima" : "pressiona para baixo"} · peso ${coefficientFormat.format(Math.abs(relation.parameters.coeficiente))}</span></div>`;
-    })
-    .join("")}</div>`;
-  editor
-    .querySelector(".dialog-close")!
-    .addEventListener("click", () => editor.close());
-  if (!editor.open) editor.showModal();
+  const outgoing = graph.relations.filter(
+    (relation) => relation.originId === selectedIndicatorId,
+  );
+  const sourceNames = [
+    ...new Set(incoming.map((relation) => relation.sourceId)),
+  ].map(
+    (id) =>
+      content.policies.find((item) => item.id === id)?.nome ??
+      content.events.find((item) => item.id === id)?.nome ??
+      content.situations.find((item) => item.id === id)?.nome ??
+      content.dilemmas.find((item) => item.id === id)?.nome ??
+      id,
+  );
+  const targetNames = [
+    ...new Set(outgoing.map((relation) => relation.targetId)),
+  ].map((id) => graph.nodesById[id]?.nome ?? id);
+  const summarizeNames = (names: string[]) =>
+    `${names.slice(0, 3).join(", ")}${names.length > 3 ? ` e mais ${names.length - 3}` : ""}`;
+  const eyebrow = document.createElement("span");
+  eyebrow.className = "indicator-card__eyebrow";
+  eyebrow.textContent = `INDICADOR · ${indicator.area ?? "OUTRAS"}`;
+  const title = document.createElement("h2");
+  title.className = "indicator-card__title";
+  title.textContent = indicator.nome;
+  const value = document.createElement("div");
+  value.className = "indicator-card__value";
+  value.textContent = format.format(execution.values[selectedIndicatorId]);
+  const unit = document.createElement("small");
+  unit.textContent = indicator.unidade.replaceAll("_", " ");
+  value.append(unit);
+  const description = document.createElement("p");
+  description.className = "indicator-card__description";
+  description.textContent = `${indicator.nome} é um resultado demonstrativo de ${indicator.area ?? "abrangência nacional"}; seu valor responde às políticas e situações conectadas, não a um controle direto do jogador.`;
+  const relevance = document.createElement("div");
+  relevance.className = "indicator-card__relevance";
+  const relevanceTitle = document.createElement("strong");
+  relevanceTitle.textContent = "Relevância estrutural";
+  const relevanceSummary = document.createElement("span");
+  relevanceSummary.textContent = [
+    sourceNames.length
+      ? `Recebe influência de ${summarizeNames(sourceNames)}`
+      : "Sem influências diretas",
+    targetNames.length
+      ? `Conecta-se a ${summarizeNames(targetNames)}`
+      : "Sem destinos diretos",
+  ].join(" · ");
+  relevance.append(relevanceTitle, relevanceSummary);
+  const hint = document.createElement("p");
+  hint.className = "indicator-card__hint";
+  hint.textContent = "Selecione outro indicador para comparar sua estrutura.";
+  indicatorCard.replaceChildren(
+    eyebrow,
+    title,
+    value,
+    description,
+    relevance,
+    hint,
+  );
 }
 
 function openSituation(situationId: string): void {
@@ -459,9 +505,12 @@ function render(
 ): void {
   if (!mapState) return;
   const { content, graph, execution, pending } = mapState;
+  const selectedIndicatorId = mapState.selectedIndicatorId;
   cancelAnimationFrame(animationFrame);
   stage.innerHTML = "";
-  turn.textContent = String(Math.floor(execution.step / 3));
+  const completedQuarters = Math.floor(execution.step / 3);
+  turn.textContent = String(completedQuarters + 1);
+  quarter.textContent = String(completedQuarters + 1);
   pendingLabel.textContent =
     pending.size === 0
       ? ""
@@ -729,6 +778,10 @@ function render(
     const node = document.createElement("button");
     node.type = "button";
     node.className = `map-node ${kind}`;
+    if (kind === "indicator") {
+      node.classList.toggle("selected", id === selectedIndicatorId);
+      node.setAttribute("aria-pressed", String(id === selectedIndicatorId));
+    }
     node.dataset.nodeId = id;
     node.style.setProperty(
       "--orbit-index",
@@ -867,7 +920,17 @@ function render(
       variable.nome,
       execution.values[variable.id],
       "indicator",
-      () => openIndicator(variable.id),
+      () => {
+        mapState!.selectedIndicatorId = variable.id;
+        for (const indicatorNode of stage.querySelectorAll<HTMLElement>(
+          ".map-node.indicator",
+        )) {
+          const selected = indicatorNode.dataset.nodeId === variable.id;
+          indicatorNode.classList.toggle("selected", selected);
+          indicatorNode.setAttribute("aria-pressed", String(selected));
+        }
+        updateIndicatorCard();
+      },
       variable.area,
       "INDICADOR",
     );
@@ -893,6 +956,7 @@ function render(
         : "INATIVA";
     }
   }
+  updateIndicatorCard();
   const nodes = [...stage.querySelectorAll<HTMLElement>(".map-node")];
   const zoneElements = [
     ...stage.querySelectorAll<HTMLElement>(".category-zone"),
@@ -1096,6 +1160,11 @@ try {
     pending: new Map(),
     targets: new Map(),
     selectedPolicyId: sandbox.content.policies[0].id,
+    selectedIndicatorId:
+      sandbox.content.variables.variaveis.find(
+        (variable) =>
+          variable.tipo !== "controle" && variable.area !== "Técnica",
+      )?.id ?? "",
     activeSituationIds: new Set(),
     occurredEventIds: new Set(),
     visualMap: sandbox.visualMap,
@@ -1226,8 +1295,6 @@ viewport.addEventListener("keydown", (event) => {
     );
   }
 });
-fitMap();
-
 createRoot(document.getElementById("map-filters")!).render(
   createElement(MapFilters, {
     onChange: (filter: MapFilter) => {
@@ -1236,3 +1303,208 @@ createRoot(document.getElementById("map-filters")!).render(
     },
   }),
 );
+
+const startScreen = document.querySelector<HTMLElement>("#start-screen")!;
+const gameShell = document.querySelector<HTMLElement>("#game-shell")!;
+const menuDialog = document.querySelector<HTMLDialogElement>("#menu-dialog")!;
+const menuDialogContent = document.querySelector<HTMLElement>(
+  "#menu-dialog-content",
+)!;
+const continueButton =
+  document.querySelector<HTMLButtonElement>("#start-continue")!;
+let hasCurrentSession = false;
+
+function showMenuMessage(title: string, message: string): void {
+  const heading = document.createElement("h2");
+  heading.textContent = title;
+  const paragraph = document.createElement("p");
+  paragraph.textContent = message;
+  menuDialogContent.replaceChildren(heading, paragraph);
+  if (!menuDialog.open) menuDialog.showModal();
+}
+
+function enterLaboratory(): void {
+  if (!mapState || processing) return;
+  const needsConfirmation =
+    mapState.execution.step > 0 || mapState.pending.size > 0;
+  if (needsConfirmation) {
+    resetButton.click();
+    if (mapState.execution.step !== 0 || mapState.pending.size > 0) return;
+  } else {
+    cachedLayout = undefined;
+    physics = undefined;
+    mapState.execution = createExecution(mapState.content, mapState.graph);
+    mapState.targets.clear();
+    mapState.activeSituationIds.clear();
+    mapState.occurredEventIds.clear();
+    mapState.pending.clear();
+    updateSituations();
+    recordLog("info", "Laboratório iniciado", [
+      "Estado demonstrativo inicial carregado. As regras políticas completas ainda não estão integradas.",
+    ]);
+    render();
+  }
+  hasCurrentSession = true;
+  continueButton.disabled = false;
+  startScreen.hidden = true;
+  gameShell.hidden = false;
+  window.requestAnimationFrame(() => {
+    fitMap();
+    advanceButton.focus({ preventScroll: true });
+  });
+}
+
+function showNewGovernmentConfirmation(): void {
+  const heading = document.createElement("h2");
+  heading.textContent = "Novo Governo";
+  const paragraph = document.createElement("p");
+  paragraph.textContent =
+    "A partida política integrada ainda está em desenvolvimento. Nesta versão, você pode abrir o Laboratório demonstrativo para explorar políticas, indicadores e a passagem trimestral.";
+  const actions = document.createElement("div");
+  actions.className = "menu-dialog__actions";
+  const cancel = document.createElement("button");
+  cancel.className = "secondary";
+  cancel.type = "button";
+  cancel.textContent = "Voltar";
+  cancel.addEventListener("click", () => menuDialog.close());
+  const start = document.createElement("button");
+  start.type = "button";
+  start.textContent = "Abrir Laboratório";
+  start.addEventListener("click", () => {
+    menuDialog.close();
+    enterLaboratory();
+  });
+  actions.append(cancel, start);
+  menuDialogContent.replaceChildren(heading, paragraph, actions);
+  if (!menuDialog.open) menuDialog.showModal();
+}
+
+function showScenarioChoices(): void {
+  const heading = document.createElement("h2");
+  heading.textContent = "Cenários";
+  const description = document.createElement("p");
+  description.textContent =
+    "A seleção de cenários ainda não está conectada ao início de uma partida. O conteúdo abaixo mostra o estado desta versão.";
+  const options = document.createElement("div");
+  options.className = "scenario-options";
+  const realistic = document.createElement("button");
+  realistic.className = "scenario-option";
+  realistic.type = "button";
+  const realisticName = document.createElement("strong");
+  realisticName.textContent = "Brasil — Laboratório demonstrativo";
+  const realisticDescription = document.createElement("span");
+  realisticDescription.textContent =
+    "Explorar políticas e indicadores fictícios; não representa o cenário realista descrito na arte.";
+  realistic.append(realisticName, realisticDescription);
+  realistic.addEventListener("click", () => {
+    menuDialog.close();
+    showNewGovernmentConfirmation();
+  });
+  const alternative = document.createElement("button");
+  alternative.className = "scenario-option";
+  alternative.type = "button";
+  alternative.disabled = true;
+  const alternativeName = document.createElement("strong");
+  alternativeName.textContent = "Cenário Alternativo — indisponível";
+  const alternativeDescription = document.createElement("span");
+  alternativeDescription.textContent =
+    "Ainda não há uma partida alternativa conectada ao menu.";
+  alternative.append(alternativeName, alternativeDescription);
+  const countries = document.createElement("button");
+  countries.className = "scenario-option";
+  countries.type = "button";
+  countries.disabled = true;
+  const countriesName = document.createElement("strong");
+  countriesName.textContent = "Outros Países — em breve";
+  const countriesDescription = document.createElement("span");
+  countriesDescription.textContent =
+    "O Brasil é o único país previsto para o recorte inicial.";
+  countries.append(countriesName, countriesDescription);
+  options.append(realistic, alternative, countries);
+  menuDialogContent.replaceChildren(heading, description, options);
+  if (!menuDialog.open) menuDialog.showModal();
+}
+
+document
+  .querySelector<HTMLButtonElement>("#menu-dialog-close")!
+  .addEventListener("click", () => menuDialog.close());
+menuDialog.addEventListener("click", (event) => {
+  if (event.target === menuDialog) menuDialog.close();
+});
+document
+  .querySelector<HTMLButtonElement>("#start-new-game")!
+  .addEventListener("click", showNewGovernmentConfirmation);
+continueButton.addEventListener("click", () => {
+  if (!hasCurrentSession) return;
+  startScreen.hidden = true;
+  gameShell.hidden = false;
+  window.requestAnimationFrame(() => {
+    fitMap();
+    advanceButton.focus({ preventScroll: true });
+  });
+});
+document
+  .querySelector<HTMLButtonElement>("#start-scenarios")!
+  .addEventListener("click", showScenarioChoices);
+document
+  .querySelector<HTMLButtonElement>("#start-realistic")!
+  .addEventListener("click", showScenarioChoices);
+document
+  .querySelector<HTMLButtonElement>("#start-alternative")!
+  .addEventListener("click", showScenarioChoices);
+document
+  .querySelector<HTMLButtonElement>("#start-countries")!
+  .addEventListener("click", showScenarioChoices);
+document
+  .querySelector<HTMLButtonElement>("#start-settings")!
+  .addEventListener("click", () =>
+    showMenuMessage(
+      "Configurações",
+      "As preferências completas ainda não estão disponíveis. O mapa respeita a configuração de movimento reduzido do sistema.",
+    ),
+  );
+document
+  .querySelector<HTMLButtonElement>("#start-top-settings")!
+  .addEventListener("click", () =>
+    showMenuMessage(
+      "Configurações",
+      "As preferências completas ainda não estão disponíveis. O mapa respeita a configuração de movimento reduzido do sistema.",
+    ),
+  );
+document
+  .querySelector<HTMLButtonElement>("#start-tutorial")!
+  .addEventListener("click", () =>
+    showMenuMessage(
+      "Tutorial do Laboratório",
+      "Selecione uma política no mapa para preparar uma mudança. Os indicadores mostram resultados da simulação e não podem ser editados diretamente. Use Encerrar turno para processar o próximo trimestre demonstrativo. Votação, eleições e aprovação parlamentar ainda não estão integradas.",
+    ),
+  );
+document
+  .querySelector<HTMLButtonElement>("#start-encyclopedia")!
+  .addEventListener("click", () =>
+    showMenuMessage(
+      "Enciclopédia",
+      "Políticas são controles de ação; indicadores são resultados calculados; situações representam condições que podem se ativar. As conexões do mapa mostram relações do cenário, mas não substituem as regras políticas completas da partida.",
+    ),
+  );
+document
+  .querySelector<HTMLButtonElement>("#start-exit")!
+  .addEventListener("click", () =>
+    showMenuMessage(
+      "Sair do SisGov",
+      "O SisGov está sendo executado no navegador. Feche esta aba para encerrar o jogo.",
+    ),
+  );
+document
+  .querySelector<HTMLButtonElement>("#return-to-title")!
+  .addEventListener("click", () => {
+    gameShell.hidden = true;
+    startScreen.hidden = false;
+    continueButton.disabled = !hasCurrentSession;
+    document.querySelector<HTMLDetailsElement>(".game-menu details")!.open =
+      false;
+    document.querySelector<HTMLButtonElement>("#start-continue")!.focus();
+  });
+window.addEventListener("resize", () => {
+  if (!gameShell.hidden) fitMap();
+});

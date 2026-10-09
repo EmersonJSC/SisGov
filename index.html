@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mapa de consequências — SisGov</title>
+    <title>SisGov — Simulação política, social e econômica</title>
     <style>
       :root {
+        --institution-bar-height: 72px;
         font-family: Inter, ui-sans-serif, system-ui, sans-serif;
         color: #182230;
         background: #fff;
@@ -513,11 +514,170 @@
         color: white;
         font-size: 0.76rem;
       }
+      .institution-bar {
+        position: relative;
+        z-index: 12;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        height: var(--institution-bar-height);
+        padding: 0.7rem 1.5rem 0.7rem 5rem;
+        border-bottom: 1px solid #dce5ec;
+        background:
+          radial-gradient(ellipse at 12% 0%, #3b886f22, transparent 48%),
+          linear-gradient(105deg, #102c3b, #173d4b 54%, #1e4951);
+        box-shadow: 0 5px 20px #142c3b24;
+        color: #f4f8f7;
+      }
+      .country-mark,
+      .mandate-mark,
+      .quarter-mark {
+        display: grid;
+        gap: 0.18rem;
+      }
+      .country-mark {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-size: 1.05rem;
+        font-weight: 850;
+        letter-spacing: 0.02em;
+      }
+      .country-seal {
+        display: grid;
+        width: 2.35rem;
+        height: 2.35rem;
+        place-items: center;
+        border: 1px solid #a7d4c4a8;
+        border-radius: 50%;
+        background: #ffffff13;
+        color: #c1ebd9;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+      }
+      .mandate-mark {
+        margin-left: auto;
+        padding-left: 1.2rem;
+        border-left: 1px solid #ffffff2b;
+      }
+      .institution-eyebrow {
+        color: #b5d4cc;
+        font-size: 0.58rem;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .mandate-mark strong {
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .quarter-mark {
+        min-width: 6.8rem;
+        padding: 0.48rem 0.75rem;
+        border: 1px solid #ffffff30;
+        border-radius: 0.7rem;
+        background: #ffffff12;
+      }
+      .quarter-mark strong {
+        font-size: 0.86rem;
+        font-variant-numeric: tabular-nums;
+      }
+      #indicator-card {
+        position: fixed;
+        z-index: 8;
+        top: calc(var(--institution-bar-height) + 5.25rem);
+        right: 1.25rem;
+        display: grid;
+        gap: 0.7rem;
+        width: min(19rem, calc(100vw - 2rem));
+        padding: 1rem;
+        border: 1px solid #d3e0e5;
+        border-radius: 1rem;
+        background: linear-gradient(155deg, #fffffffa, #f1f7f5f5);
+        box-shadow: 0 1rem 2.8rem #183a4924;
+        color: #243948;
+        pointer-events: none;
+      }
+      .indicator-card__eyebrow {
+        color: #39745f;
+        font-size: 0.6rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+      .indicator-card__title {
+        margin: 0.12rem 0 0;
+        font-size: 1rem;
+        line-height: 1.25;
+      }
+      .indicator-card__value {
+        display: flex;
+        align-items: baseline;
+        gap: 0.4rem;
+        color: #173d4b;
+        font-size: 1.45rem;
+        font-weight: 850;
+        font-variant-numeric: tabular-nums;
+      }
+      .indicator-card__value small {
+        color: #71828c;
+        font-size: 0.65rem;
+        font-weight: 700;
+      }
+      .indicator-card__description {
+        margin: 0;
+        color: #5d6e78;
+        font-size: 0.72rem;
+        line-height: 1.5;
+      }
+      .indicator-card__relevance {
+        display: grid;
+        gap: 0.25rem;
+        padding-top: 0.65rem;
+        border-top: 1px solid #dce6e7;
+      }
+      .indicator-card__relevance strong {
+        color: #385c58;
+        font-size: 0.66rem;
+      }
+      .indicator-card__relevance span {
+        color: #64777a;
+        font-size: 0.65rem;
+        line-height: 1.4;
+      }
+      .indicator-card__hint {
+        margin: 0;
+        color: #839197;
+        font-size: 0.58rem;
+      }
       @media (max-width: 760px) {
-        header,
         .map-toolbar {
           align-items: flex-start;
           flex-direction: column;
+        }
+        .institution-bar {
+          gap: 0.7rem;
+          padding-right: 0.8rem;
+          padding-left: 4.2rem;
+        }
+        .mandate-mark {
+          padding-left: 0.7rem;
+        }
+        .mandate-mark strong {
+          max-width: 8rem;
+          font-size: 0.68rem;
+        }
+        .country-mark {
+          gap: 0.4rem;
+          font-size: 0.88rem;
+        }
+        .country-seal {
+          width: 2rem;
+          height: 2rem;
+        }
+        .quarter-mark {
+          min-width: 5.6rem;
+          padding: 0.4rem 0.55rem;
         }
         .law-stage {
           min-height: 820px;
@@ -528,10 +688,17 @@
         .link-button {
           display: none;
         }
+        #indicator-card {
+          top: auto;
+          right: 0.75rem;
+          bottom: 5.2rem;
+          width: min(16rem, calc(100vw - 1.5rem));
+          padding: 0.75rem;
+        }
       }
       #map-viewport {
         position: relative;
-        height: max(520px, calc(100vh - 210px));
+        height: calc(100dvh - var(--institution-bar-height));
         overflow: hidden;
         touch-action: none;
         cursor: grab;
@@ -568,13 +735,9 @@
       body {
         overflow: hidden;
       }
-      #map-viewport {
-        height: 100dvh;
-        min-height: 0;
-      }
       .game-menu {
         position: fixed;
-        top: 18px;
+        top: calc(var(--institution-bar-height) + 12px);
         left: 18px;
         z-index: 10;
       }
@@ -620,7 +783,7 @@
       }
       .map-zoom-controls {
         position: fixed;
-        top: 18px;
+        top: calc(var(--institution-bar-height) + 12px);
         right: 18px;
         z-index: 10;
         display: grid;
@@ -699,8 +862,8 @@
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        .law-lines line.rise,
-        .law-lines line.fall {
+        .law-lines path.rise,
+        .law-lines path.fall {
           animation: none;
           stroke-dasharray: none;
         }
@@ -798,87 +961,742 @@
         box-shadow: none;
       }
       /* The physics clock owns positions and sizes; CSS must not lag behind it. */
-      #law-stage .map-node, #law-stage .category-zone { transition: none; }
+      #law-stage .map-node,
+      #law-stage .category-zone {
+        transition: none;
+      }
       #law-stage .category-zone {
         pointer-events: none;
         background: color-mix(in srgb, var(--category-color) 4%, transparent);
-        border-color: color-mix(in srgb, var(--category-color) 18%, transparent);
+        border-color: color-mix(
+          in srgb,
+          var(--category-color) 18%,
+          transparent
+        );
       }
       .federal-sphere {
-        position: absolute; translate: -50% -50%; border-radius: 50%;
-        background: rgb(31 64 100 / 3%); border: 1px solid rgb(31 64 100 / 20%);
-        pointer-events: none; z-index: 0;
+        position: absolute;
+        translate: -50% -50%;
+        border-radius: 50%;
+        background: rgb(31 64 100 / 3%);
+        border: 1px solid rgb(31 64 100 / 20%);
+        pointer-events: none;
+        z-index: 0;
       }
       .federal-sphere > span {
-        position: absolute; left: 50%; top: -22px; translate: -50% 0;
-        white-space: nowrap; color: #34516b; font-size: 13px; font-weight: 700;
+        position: absolute;
+        left: 50%;
+        top: -22px;
+        translate: -50% 0;
+        white-space: nowrap;
+        color: #34516b;
+        font-size: 13px;
+        font-weight: 700;
       }
-      .representative-node {
-        position: absolute; z-index: 3; translate: -50% -50%;
-        width: var(--size); height: var(--size); border-radius: 50%;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        background: #203b57; border: 3px solid #dbe5ef; color: white;
-        box-shadow: 0 0 0 6px rgb(32 59 87 / 7%); font-size: 12px;
-      }
-      .representative-node.president { background: #194b43; border-color: #c3dcd4; }
-      .representative-symbol { font-size: 23px; font-weight: 700; }
       .turn-log {
-        position: fixed; right: 16px; bottom: 84px; z-index: 35;
-        width: min(430px, calc(100vw - 32px)); border: 1px solid #c8d4df;
-        border-radius: 12px; background: #fffffff5; color: #21394e;
-        box-shadow: 0 6px 24px #1c334521; font-size: 12px;
+        position: fixed;
+        right: 16px;
+        bottom: 84px;
+        z-index: 35;
+        width: min(430px, calc(100vw - 32px));
+        border: 1px solid #c8d4df;
+        border-radius: 12px;
+        background: #fffffff5;
+        color: #21394e;
+        box-shadow: 0 6px 24px #1c334521;
+        font-size: 12px;
       }
-      .turn-log-toggle { width: 100%; padding: 10px 14px; text-align: left;
-        border: 0; background: transparent; color: inherit; cursor: pointer; font-weight: 700; }
-      .turn-log-latest { margin: 0; padding: 0 14px 8px; }
-      #turn-log-content { max-height: 32vh; overflow: auto; padding: 0 14px 12px; }
-      .turn-log-help { color: #587083; font-size: 11px; }
-      .turn-log ol { list-style: none; padding: 0; margin: 0; }
-      .turn-log ol > li { border-top: 1px solid #e0e6eb; padding: 9px 0; }
-      .turn-log summary { cursor: pointer; line-height: 1.5; }
-      .turn-log ul { padding-left: 18px; overflow-wrap: anywhere; line-height: 1.6; }
-      .turn-log-error { color: #a62e2e; }
-      .turn-log-success > details > summary { color: #216b4b; }
+      .turn-log-toggle {
+        width: 100%;
+        padding: 10px 14px;
+        text-align: left;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .turn-log-latest {
+        margin: 0;
+        padding: 0 14px 8px;
+      }
+      #turn-log-content {
+        max-height: 32vh;
+        overflow: auto;
+        padding: 0 14px 12px;
+      }
+      .turn-log-help {
+        color: #587083;
+        font-size: 11px;
+      }
+      .turn-log ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .turn-log ol > li {
+        border-top: 1px solid #e0e6eb;
+        padding: 9px 0;
+      }
+      .turn-log summary {
+        cursor: pointer;
+        line-height: 1.5;
+      }
+      .turn-log ul {
+        padding-left: 18px;
+        overflow-wrap: anywhere;
+        line-height: 1.6;
+      }
+      .turn-log-error {
+        color: #a62e2e;
+      }
+      .turn-log-success > details > summary {
+        color: #216b4b;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .start-screen {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        overflow: auto;
+        isolation: isolate;
+        background: #edf3f3;
+      }
+      .start-screen::before {
+        position: fixed;
+        z-index: -1;
+        inset: -1.5rem;
+        background: url("/references/menu-inicial-sisgov.png") center / cover
+          no-repeat;
+        content: "";
+        filter: blur(1.25rem);
+        opacity: 0.5;
+        pointer-events: none;
+        transform: scale(1.04);
+      }
+      .start-screen__stage {
+        position: relative;
+        z-index: 1;
+        width: min(100vw, 166.46dvh);
+        aspect-ratio: 1618 / 972;
+        overflow: hidden;
+        background: #f3f5f2;
+        box-shadow: 0 1rem 4rem #162e3a35;
+      }
+      .start-screen__art {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        user-select: none;
+        pointer-events: none;
+      }
+      .start-screen__brand {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      .start-screen__actions {
+        position: absolute;
+        inset: 0;
+      }
+      .start-screen__hit {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 1.1%;
+        background: transparent;
+        color: transparent;
+        cursor: pointer;
+        box-shadow: none;
+      }
+      .start-screen__hit:hover {
+        background: #ffffff18;
+        box-shadow: inset 0 0 0 2px #ffffffad;
+      }
+      .start-screen__hit:focus-visible {
+        outline: 3px solid #f8bb38;
+        outline-offset: 2px;
+        background: #ffffff16;
+      }
+      .start-screen__hit:disabled {
+        cursor: not-allowed;
+        opacity: 1;
+        background: transparent;
+        box-shadow: none;
+      }
+      .start-screen__hit--new {
+        left: 2.4%;
+        top: 26.7%;
+        width: 22.5%;
+        height: 7.8%;
+      }
+      .start-screen__hit--continue {
+        left: 2.4%;
+        top: 35.4%;
+        width: 22.5%;
+        height: 7.6%;
+      }
+      .start-screen__hit--scenarios {
+        left: 2.4%;
+        top: 44%;
+        width: 22.5%;
+        height: 7.6%;
+      }
+      .start-screen__hit--settings {
+        left: 2.4%;
+        top: 52.6%;
+        width: 22.5%;
+        height: 7.6%;
+      }
+      .start-screen__hit--exit {
+        left: 2.4%;
+        top: 61.1%;
+        width: 22.5%;
+        height: 7.7%;
+      }
+      .start-screen__hit--tutorial {
+        left: 77.8%;
+        top: 1.4%;
+        width: 6.7%;
+        height: 4.2%;
+      }
+      .start-screen__hit--encyclopedia {
+        left: 84.8%;
+        top: 1.4%;
+        width: 8.2%;
+        height: 4.2%;
+      }
+      .start-screen__hit--top-settings {
+        left: 93.4%;
+        top: 1.4%;
+        width: 5.2%;
+        height: 4.2%;
+      }
+      .start-screen__hit--realistic {
+        left: 31.2%;
+        top: 88.1%;
+        width: 23.2%;
+        height: 9.7%;
+      }
+      .start-screen__hit--alternative {
+        left: 54.8%;
+        top: 88.1%;
+        width: 22.5%;
+        height: 9.7%;
+      }
+      .start-screen__hit--countries {
+        left: 77.7%;
+        top: 88.1%;
+        width: 21.2%;
+        height: 9.7%;
+      }
+      .menu-dialog {
+        width: min(92vw, 34rem);
+        max-height: min(84dvh, 42rem);
+        padding: 1.6rem;
+        border: 1px solid #dbe5e9;
+        border-radius: 1.1rem;
+        background: #fbfdfd;
+        color: #1d3447;
+        box-shadow: 0 1.5rem 5rem #0d263b44;
+      }
+      .menu-dialog::backdrop {
+        background: #101e2bb3;
+        backdrop-filter: blur(5px);
+      }
+      .menu-dialog__close {
+        float: right;
+        width: 2.3rem;
+        min-height: 2.3rem;
+        padding: 0;
+        border-radius: 50%;
+        background: #eaf0f3;
+        color: #253d50;
+        font-size: 1.2rem;
+      }
+      .menu-dialog h2 {
+        margin: 0 2.8rem 0.7rem 0;
+        color: #132d43;
+        font-size: 1.3rem;
+      }
+      .menu-dialog p {
+        color: #526779;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .menu-dialog__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.65rem;
+        margin-top: 1.35rem;
+      }
+      .menu-dialog__actions button {
+        min-height: 2.7rem;
+        padding: 0.6rem 0.95rem;
+        border-radius: 0.7rem;
+      }
+      .menu-dialog__actions .secondary {
+        border: 1px solid #cbd8df;
+        background: #fff;
+        color: #344b5d;
+      }
+      .scenario-options {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1rem;
+      }
+      .scenario-option {
+        display: grid;
+        gap: 0.2rem;
+        width: 100%;
+        min-height: 3.7rem;
+        padding: 0.75rem 0.9rem;
+        border: 1px solid #d5e0e5;
+        border-radius: 0.75rem;
+        background: white;
+        color: #223b50;
+        text-align: left;
+      }
+      .scenario-option span {
+        color: #687c89;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+      .scenario-option:disabled {
+        cursor: not-allowed;
+        opacity: 0.66;
+      }
+      @media (max-width: 760px), (max-aspect-ratio: 4 / 5) {
+        .start-screen {
+          display: block;
+          isolation: auto;
+          padding: max(0.75rem, env(safe-area-inset-top))
+            max(0.75rem, env(safe-area-inset-right))
+            max(0.75rem, env(safe-area-inset-bottom))
+            max(0.75rem, env(safe-area-inset-left));
+          background: linear-gradient(145deg, #f7f5ed, #e5eff0);
+        }
+        .start-screen::before {
+          display: none;
+        }
+        .start-screen__stage {
+          display: flex;
+          width: 100%;
+          max-width: 38rem;
+          min-height: calc(
+            100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) -
+              1.5rem
+          );
+          height: auto;
+          aspect-ratio: auto;
+          flex-direction: column;
+          gap: 0.85rem;
+          margin-inline: auto;
+          padding: clamp(0.9rem, 4vw, 1.5rem);
+          overflow: auto;
+          background: transparent;
+          box-shadow: none;
+        }
+        .start-screen__art {
+          position: fixed;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 60% center;
+          opacity: 0.1;
+        }
+        .start-screen__brand {
+          position: relative;
+          z-index: 1;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
+        }
+        .start-screen__brand strong {
+          display: block;
+          color: #132e48;
+          font-size: clamp(2.5rem, 11vw, 3.6rem);
+          letter-spacing: -0.06em;
+          line-height: 0.95;
+        }
+        .start-screen__brand strong span {
+          color: #f2b521;
+        }
+        .start-screen__brand p {
+          margin: 0.4rem 0 0;
+          color: #25445d;
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 0.09em;
+        }
+        .start-screen__brand p + p {
+          margin-top: 0.15rem;
+        }
+        .start-screen__actions {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.55rem;
+        }
+        .start-screen__hit {
+          position: relative;
+          inset: auto;
+          display: grid;
+          width: 100%;
+          height: auto;
+          min-height: 3.3rem;
+          padding: 0.65rem 0.8rem;
+          border: 1px solid #d8e1e5;
+          border-radius: 0.8rem;
+          background: #ffffffed;
+          box-shadow: 0 0.35rem 1rem #17354a13;
+          color: #18344b;
+          text-align: left;
+        }
+        .start-screen__hit::before {
+          content: attr(data-title);
+          font-size: 0.95rem;
+          font-weight: 850;
+        }
+        .start-screen__hit::after {
+          content: attr(data-description);
+          margin-top: 0.12rem;
+          color: #647988;
+          font-size: 0.72rem;
+          font-weight: 500;
+        }
+        .start-screen__hit--new {
+          grid-column: 1 / -1;
+          border-color: #244e74;
+          background: linear-gradient(115deg, #183853, #28577f);
+          color: white;
+        }
+        .start-screen__hit--continue,
+        .start-screen__hit--scenarios {
+          grid-column: 1 / -1;
+        }
+        .start-screen__hit--settings,
+        .start-screen__hit--exit,
+        .start-screen__hit--tutorial,
+        .start-screen__hit--encyclopedia {
+          min-height: 2.8rem;
+        }
+        .start-screen__hit--top-settings {
+          display: none;
+        }
+        .start-screen__hit--new::after {
+          color: #dce9f2;
+        }
+        .start-screen__scenarios {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.55rem;
+        }
+        .start-screen__hit--realistic,
+        .start-screen__hit--alternative {
+          min-height: 4.1rem;
+        }
+        .start-screen__hit--countries {
+          grid-column: 1 / -1;
+          min-height: 3.2rem;
+        }
+        .start-screen__hit--realistic::before {
+          content: "Cenário Realista";
+        }
+        .start-screen__hit--realistic::after {
+          content: "Experimente um cenário baseado na realidade recente do Brasil.";
+        }
+        .start-screen__hit--alternative::before {
+          content: "Cenário Alternativo";
+        }
+        .start-screen__hit--alternative::after {
+          content: "E se o país tivesse seguido um caminho diferente?";
+        }
+        .start-screen__hit--countries::before {
+          content: "Outros Países";
+        }
+        .start-screen__hit--countries::after {
+          content: "Em breve: outros países da América Latina.";
+        }
+        .start-screen__hit:disabled {
+          opacity: 0.56;
+          background: #f5f7f7ed;
+        }
+      }
+      @media (max-width: 760px) and (orientation: landscape) {
+        .start-screen__stage {
+          max-width: none;
+          min-height: calc(
+            100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) -
+              1.5rem
+          );
+          display: grid;
+          grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+          grid-template-rows: auto 1fr auto;
+          align-content: center;
+          align-items: center;
+          gap: 0.65rem 1rem;
+        }
+        .start-screen__brand {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        .start-screen__actions {
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .start-screen__scenarios {
+          grid-column: 1 / -1;
+          grid-row: 3;
+        }
+        .start-screen__hit--new,
+        .start-screen__hit--continue,
+        .start-screen__hit--scenarios {
+          grid-column: 1 / -1;
+        }
+      }
+      @media (max-width: 420px) {
+        .start-screen__stage {
+          max-width: 26rem;
+        }
+        .start-screen__actions,
+        .start-screen__scenarios {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .start-screen__hit--new,
+        .start-screen__hit--continue,
+        .start-screen__hit--scenarios,
+        .start-screen__hit--settings,
+        .start-screen__hit--exit,
+        .start-screen__hit--tutorial,
+        .start-screen__hit--encyclopedia,
+        .start-screen__hit--realistic,
+        .start-screen__hit--alternative,
+        .start-screen__hit--countries {
+          grid-column: 1;
+        }
+        .start-screen__hit--settings,
+        .start-screen__hit--exit,
+        .start-screen__hit--tutorial,
+        .start-screen__hit--encyclopedia,
+        .start-screen__hit--realistic,
+        .start-screen__hit--alternative {
+          min-height: 3.3rem;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="game-menu">
-      <details>
-        <summary aria-label="Menu do jogo">☰</summary>
-        <nav>
-          <a href="/motor-demo.html">Bancada técnica</a>
-          <button id="reset" class="secondary" type="button">
-            Reiniciar partida
-          </button>
-          <p>Exemplo experimental: efeitos e prazos são parâmetros de jogo.</p>
+    <section
+      id="start-screen"
+      class="start-screen"
+      aria-label="Menu inicial SisGov"
+    >
+      <div class="start-screen__stage">
+        <img
+          class="start-screen__art"
+          src="/references/menu-inicial-sisgov.png"
+          alt=""
+          aria-hidden="true"
+          draggable="false"
+        />
+        <div class="start-screen__brand">
+          <strong>Sis<span>Gov</span></strong>
+          <p>SIMULAÇÃO POLÍTICA, SOCIAL E ECONÔMICA</p>
+          <p>BRASIL · 2023 – 2026</p>
+        </div>
+        <nav class="start-screen__actions" aria-label="Menu principal">
+          <button
+            id="start-new-game"
+            class="start-screen__hit start-screen__hit--new"
+            type="button"
+            aria-label="Novo Governo: inicie uma nova partida"
+            data-title="Novo Governo"
+            data-description="Inicie uma nova partida"
+          ></button>
+          <button
+            id="start-continue"
+            class="start-screen__hit start-screen__hit--continue"
+            type="button"
+            aria-label="Continuar Partida: carregar o último governo"
+            aria-describedby="continue-unavailable"
+            data-title="Continuar Partida"
+            data-description="Carregar seu último governo"
+            disabled
+          ></button>
+          <span id="continue-unavailable" class="start-screen__brand">
+            Não há salvamento integrado disponível nesta versão.
+          </span>
+          <button
+            id="start-scenarios"
+            class="start-screen__hit start-screen__hit--scenarios"
+            type="button"
+            aria-label="Cenários: experimente situações reais e fictícias"
+            data-title="Cenários"
+            data-description="Experimente situações reais e fictícias"
+          ></button>
+          <button
+            id="start-settings"
+            class="start-screen__hit start-screen__hit--settings"
+            type="button"
+            aria-label="Configurações: ajuste a experiência de jogo"
+            data-title="Configurações"
+            data-description="Ajuste a experiência de jogo"
+          ></button>
+          <button
+            id="start-exit"
+            class="start-screen__hit start-screen__hit--exit"
+            type="button"
+            aria-label="Sair: encerrar o jogo"
+            data-title="Sair"
+            data-description="Encerrar o jogo"
+          ></button>
+          <button
+            id="start-tutorial"
+            class="start-screen__hit start-screen__hit--tutorial"
+            type="button"
+            aria-label="Tutorial"
+            data-title="Tutorial"
+            data-description="Aprenda os comandos"
+          ></button>
+          <button
+            id="start-encyclopedia"
+            class="start-screen__hit start-screen__hit--encyclopedia"
+            type="button"
+            aria-label="Enciclopédia"
+            data-title="Enciclopédia"
+            data-description="Consulte conceitos"
+          ></button>
+          <button
+            id="start-top-settings"
+            class="start-screen__hit start-screen__hit--top-settings"
+            type="button"
+            aria-label="Configurações"
+            data-title="Configurações"
+            data-description="Preferências"
+          ></button>
         </nav>
-      </details>
-    </div>
-    <div id="map-filters"></div>
-    <div id="turn-journal"></div>
-    <div class="game-turn">
-      <span class="turn">Turno <strong id="turn">0</strong></span>
-      <span id="pending" aria-live="polite"></span>
-      <button id="advance" type="button">Próximo turno ▸</button>
-    </div>
-    <div class="map-zoom-controls" aria-label="Controle de zoom">
-      <button id="zoom-out" type="button" aria-label="Diminuir zoom">−</button>
-      <button id="zoom-in" type="button" aria-label="Aumentar zoom">+</button>
-    </div>
-    <main>
-      <div
-        id="map-viewport"
-        tabindex="0"
-        aria-label="Mapa navegável. Use as setas para mover e mais ou menos para zoom."
-      >
-        <section
-          id="law-stage"
-          class="law-stage"
-          aria-label="Mapa de políticas públicas, indicadores e situações"
-        ></section>
+        <div class="start-screen__scenarios" aria-label="Cenários em destaque">
+          <button
+            id="start-realistic"
+            class="start-screen__hit start-screen__hit--realistic"
+            type="button"
+            aria-label="Cenário Realista: experimente um cenário baseado na realidade recente do Brasil"
+            data-title="Cenário Realista"
+            data-description="Experimente um cenário baseado na realidade recente do Brasil"
+          ></button>
+          <button
+            id="start-alternative"
+            class="start-screen__hit start-screen__hit--alternative"
+            type="button"
+            aria-label="Cenário Alternativo: ainda não disponível"
+            data-title="Cenário Alternativo"
+            data-description="E se o país tivesse seguido um caminho diferente?"
+            disabled
+          ></button>
+          <button
+            id="start-countries"
+            class="start-screen__hit start-screen__hit--countries"
+            type="button"
+            aria-label="Outros Países: em breve"
+            data-title="Outros Países"
+            data-description="Em breve: outros países da América Latina."
+            disabled
+          ></button>
+        </div>
       </div>
-      <dialog id="law-editor" class="law-editor"></dialog>
-    </main>
+    </section>
+    <div id="game-shell" hidden>
+      <header class="institution-bar" aria-label="Situação institucional">
+        <div class="country-mark">
+          <span class="country-seal" aria-hidden="true">BR</span>
+          <span>Brasil</span>
+        </div>
+        <div class="mandate-mark">
+          <span class="institution-eyebrow">Governo federal</span>
+          <strong>Mandato demonstrativo</strong>
+        </div>
+        <div class="quarter-mark">
+          <span class="institution-eyebrow">Ciclo atual</span>
+          <strong>Trimestre <span id="quarter">1</span></strong>
+        </div>
+      </header>
+      <div class="game-menu">
+        <details>
+          <summary aria-label="Menu do jogo">☰</summary>
+          <nav>
+            <a href="/motor-demo.html">Bancada técnica</a>
+            <button id="return-to-title" class="secondary" type="button">
+              Menu inicial
+            </button>
+            <button id="reset" class="secondary" type="button">
+              Reiniciar partida
+            </button>
+            <p>
+              Exemplo experimental: efeitos e prazos são parâmetros de jogo.
+            </p>
+          </nav>
+        </details>
+      </div>
+      <div id="map-filters"></div>
+      <div id="turn-journal"></div>
+      <aside id="indicator-card" aria-live="polite" aria-atomic="true"></aside>
+      <div class="game-turn">
+        <span class="turn">Turno <strong id="turn">1</strong></span>
+        <span id="pending" aria-live="polite"></span>
+        <button id="advance" type="button">Encerrar turno ▸</button>
+      </div>
+      <div class="map-zoom-controls" aria-label="Controle de zoom">
+        <button id="zoom-out" type="button" aria-label="Diminuir zoom">
+          −
+        </button>
+        <button id="zoom-in" type="button" aria-label="Aumentar zoom">+</button>
+      </div>
+      <main>
+        <div
+          id="map-viewport"
+          tabindex="0"
+          aria-label="Mapa navegável. Use as setas para mover e mais ou menos para zoom."
+        >
+          <section
+            id="law-stage"
+            class="law-stage"
+            aria-label="Mapa de políticas públicas, indicadores e situações"
+          ></section>
+        </div>
+        <dialog id="law-editor" class="law-editor"></dialog>
+      </main>
+    </div>
+    <dialog id="menu-dialog" class="menu-dialog">
+      <button
+        id="menu-dialog-close"
+        class="menu-dialog__close"
+        type="button"
+        aria-label="Fechar"
+      >
+        ×
+      </button>
+      <div id="menu-dialog-content"></div>
+    </dialog>
     <script type="module" src="/src/lawMapDemo.ts"></script>
   </body>
 </html>
