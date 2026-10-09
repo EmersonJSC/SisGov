@@ -762,8 +762,8 @@ data, commit e teste.
 **M0 — Base**
 - [x] SG100 Verificar e versionar o trabalho local — 09/out · `7ca2afd` · check verde, 194 testes / 51 arquivos
 - [x] SG101 Consolidar a documentação — 09/out · `81fc845` · check verde
-- [x] SG102 Regras de nível lidas do conteúdo — 09/out · ver commit SG102 · check verde, 202 testes / 52 arquivos; `policyRulesFromContent.test.ts`, `resolvePackage.test.ts`
-- [ ] SG103 Ficha fiscal do Brasil (hipótese)
+- [x] SG102 Regras de nível lidas do conteúdo — 09/out · `fd196d0` · check verde, 202 testes / 52 arquivos; `policyRulesFromContent.test.ts`, `resolvePackage.test.ts`
+- [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · ver commit SG103 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
 
 **M1 — Turno real**
 - [ ] SG104 Implantação mensal pela partida

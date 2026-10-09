@@ -287,6 +287,20 @@ export function validatePackageCoherence(
         );
       }
     }
+    const fiscalUnit = content.initialState.fiscal?.unidadeMonetaria;
+    if (
+      fiscalUnit !== undefined &&
+      policy.impactoFiscal !== undefined &&
+      policy.impactoFiscal.unidadeMonetaria !== fiscalUnit
+    ) {
+      diagnostics.push(
+        issue(
+          policy.id,
+          "impactoFiscal.unidadeMonetaria",
+          "A moeda do impacto fiscal precisa ser a mesma da ficha fiscal do país.",
+        ),
+      );
+    }
     if (policy.controle.unidade !== control.unidade) {
       diagnostics.push(
         issue(

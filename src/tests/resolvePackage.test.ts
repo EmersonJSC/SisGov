@@ -271,6 +271,34 @@ describe("validatePackageCoherence — regras de nível (SG102)", () => {
   });
 });
 
+describe("validatePackageCoherence — moeda fiscal (SG103)", () => {
+  it("recusa impacto fiscal em moeda diferente da ficha do país", () => {
+    const files = validPackage();
+    files["estado-inicial.json"] = files["estado-inicial.json"].replace(
+      '"valores":',
+      '"fiscal":{"periodoInicial":"2026-01","referenciaPrecos":"2024","unidadeMonetaria":"creditos","origem":{"tipo":"hipotese","descricao":"Teste."},"caixa":0,"dividaTotal":0,"jurosHerdadosMensais":0,"taxaJurosDividaNovaMensal":0},"valores":',
+    );
+    files["politicas/material-escolar.json"] = files[
+      "politicas/material-escolar.json"
+    ].replace(
+      '"consequencias":',
+      '"impactoFiscal":{"natureza":"despesa","valorMensalNaImplantacaoIntegral":1,"nivelImplantacaoIntegral":1,"unidadeMonetaria":"outra"},"consequencias":',
+    );
+    const resolved = resolvePackage("cenario.json", files);
+    expect(resolved.ok).toBe(true);
+    if (resolved.ok)
+      expect(validatePackageCoherence(resolved.value)).toMatchObject({
+        ok: false,
+        diagnostics: [
+          {
+            file: "material-escolar",
+            field: "impactoFiscal.unidadeMonetaria",
+          },
+        ],
+      });
+  });
+});
+
 describe("buildGraph", () => {
   it("preserva duas utilizações da mesma consequência como relações distintas", () => {
     const files = validPackage();

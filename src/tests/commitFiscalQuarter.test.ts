@@ -42,11 +42,9 @@ it("não confirma trimestre fiscal em partida sem configuração fiscal", () => 
     "brasil-primeiro-cenario/cenario.json",
   );
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const game = createGame(
-    "partida-sem-fiscal",
-    loaded.value.definition,
-    loaded.value.graph,
-  );
+  const content = structuredClone(loaded.value.definition);
+  delete content.initialState.fiscal;
+  const game = createGame("partida-sem-fiscal", content, loaded.value.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);
   const result = commitFiscalQuarter(game.value, {
     accounting: {

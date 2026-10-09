@@ -29,6 +29,19 @@
       "nivelImplantado": 500
     }
   ],
+  "fiscal": {
+    "periodoInicial": "2026-01",
+    "referenciaPrecos": "2024",
+    "unidadeMonetaria": "moeda_milhoes_2024",
+    "origem": {
+      "tipo": "hipotese",
+      "descricao": "Valores redondos na ordem de grandeza da dívida pública federal, do colchão de liquidez e do custo mensal da dívida. O orçamento fora das cinco políticas é tratado como primário equilibrado. Reconciliar com RTN/RMD no backlog B-07."
+    },
+    "caixa": 900000,
+    "dividaTotal": 7000000,
+    "jurosHerdadosMensais": 60000,
+    "taxaJurosDividaNovaMensal": 0.01
+  },
   "leisEleitoraisVigentes": [
     "eleicao-presidencial-pluralidade-nacional",
     "eleicao-senatorial-maiores-quotientes"
@@ -39,8 +52,16 @@
       "descricao": "Perfis, grupos e preferências sintéticos para testar a jogabilidade; não representam pesquisa eleitoral ou partidos reais."
     },
     "partidos": [
-      { "id": "partido-civico", "nome": "Partido Cívico", "pesoReferencia": 4 },
-      { "id": "partido-social", "nome": "Partido Social", "pesoReferencia": 3 },
+      {
+        "id": "partido-civico",
+        "nome": "Partido Cívico",
+        "pesoReferencia": 4
+      },
+      {
+        "id": "partido-social",
+        "nome": "Partido Social",
+        "pesoReferencia": 3
+      },
       {
         "id": "partido-liberal",
         "nome": "Partido Liberal",
@@ -48,10 +69,22 @@
       }
     ],
     "grupos": [
-      { "id": "trabalhadores", "nome": "Trabalhadores" },
-      { "id": "cuidadoras", "nome": "Cuidadoras" },
-      { "id": "jovens", "nome": "Jovens" },
-      { "id": "empreendedores", "nome": "Empreendedores" }
+      {
+        "id": "trabalhadores",
+        "nome": "Trabalhadores"
+      },
+      {
+        "id": "cuidadoras",
+        "nome": "Cuidadoras"
+      },
+      {
+        "id": "jovens",
+        "nome": "Jovens"
+      },
+      {
+        "id": "empreendedores",
+        "nome": "Empreendedores"
+      }
     ],
     "perfis": [
       {
@@ -59,8 +92,14 @@
         "nome": "Trabalho e cuidado",
         "pesoEleitoral": 0.35,
         "associacoes": [
-          { "grupo": "trabalhadores", "peso": 3 },
-          { "grupo": "cuidadoras", "peso": 2 }
+          {
+            "grupo": "trabalhadores",
+            "peso": 3
+          },
+          {
+            "grupo": "cuidadoras",
+            "peso": 2
+          }
         ],
         "preferenciaBase": {
           "partido-civico": 42,
@@ -73,8 +112,14 @@
         "nome": "Juventude urbana",
         "pesoEleitoral": 0.25,
         "associacoes": [
-          { "grupo": "jovens", "peso": 3 },
-          { "grupo": "trabalhadores", "peso": 1 }
+          {
+            "grupo": "jovens",
+            "peso": 3
+          },
+          {
+            "grupo": "trabalhadores",
+            "peso": 1
+          }
         ],
         "preferenciaBase": {
           "partido-civico": 35,
@@ -86,7 +131,12 @@
         "id": "perfil-empreendedor",
         "nome": "Empreendedor local",
         "pesoEleitoral": 0.2,
-        "associacoes": [{ "grupo": "empreendedores", "peso": 4 }],
+        "associacoes": [
+          {
+            "grupo": "empreendedores",
+            "peso": 4
+          }
+        ],
         "preferenciaBase": {
           "partido-civico": 30,
           "partido-social": 20,
@@ -98,9 +148,18 @@
         "nome": "Perfil misto",
         "pesoEleitoral": 0.2,
         "associacoes": [
-          { "grupo": "trabalhadores", "peso": 1 },
-          { "grupo": "jovens", "peso": 1 },
-          { "grupo": "empreendedores", "peso": 1 }
+          {
+            "grupo": "trabalhadores",
+            "peso": 1
+          },
+          {
+            "grupo": "jovens",
+            "peso": 1
+          },
+          {
+            "grupo": "empreendedores",
+            "peso": 1
+          }
         ],
         "preferenciaBase": {
           "partido-civico": 34,
