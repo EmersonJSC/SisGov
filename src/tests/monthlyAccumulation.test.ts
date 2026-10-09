@@ -154,7 +154,7 @@ it("integrates changing controls using each month's rate instead of the final le
   expect(execution.values.cash).toBe(160);
 });
 
-it("propagates calculated nodes from the previous monthly snapshot, independently of variable order", () => {
+it("D-42: propagates bubbles within the same month, independently of variable order", () => {
   const content = monthly(fixture({ modo: "continuo" }, 0, 0));
   content.variables.variaveis.push({
     id: "middle",
@@ -162,18 +162,17 @@ it("propagates calculated nodes from the previous monthly snapshot, independentl
     nome: "Intermediário",
     unidade: "moeda_por_passo",
     dominio: {},
-    valorInicial: 0,
   });
-  content.initialState.valores.middle = 0;
   content.consequences = content.consequences.map((effect, index) => ({
     ...effect,
     origem: index === 0 ? "control" : "middle",
     alvo: index === 0 ? "middle" : "cash",
     parametros: { coeficiente: index === 0 ? 30 : 1, termoConstante: 0 },
   }));
-  expect(run(content, 3).balances).toEqual([100, 130, 160]);
+  // control → middle → cash no mesmo mês: o caixa recebe 30 já no 1º mês.
+  expect(run(content, 3).balances).toEqual([130, 160, 190]);
   content.variables.variaveis.reverse();
-  expect(run(content, 3).balances).toEqual([100, 130, 160]);
+  expect(run(content, 3).balances).toEqual([130, 160, 190]);
 });
 
 it.each([

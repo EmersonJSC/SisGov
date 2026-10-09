@@ -38,6 +38,6 @@ describe("exportExecution", () => {
     });
 
     execution.values.educacao_publica = 90;
-    expect(snapshot.execution.values.educacao_publica).toBe(40);
+    expect(snapshot.execution.values.educacao_publica).toBe(0);
   });
 });

@@ -20,11 +20,7 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": [
-    "alimentacao-eleva-frequencia",
-    "frequencia-amplia-oportunidades",
-    "oportunidades-reduzem-violencia"
-  ],
+  "consequencias": ["alimentacao-eleva-frequencia"],
   "respostaTemporal": {
     "implantacao": 0.32,
     "degradacao": 0.2

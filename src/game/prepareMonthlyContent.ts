@@ -124,7 +124,12 @@ export function prepareMonthlyContent(
       if (!variable.unidade.endsWith("_por_passo")) return variable;
       return {
         ...variable,
-        valorInicial: variable.valorInicial / 3,
+        ...(variable.valorInicial !== undefined
+          ? { valorInicial: variable.valorInicial / 3 }
+          : {}),
+        ...(variable.surgimento !== undefined
+          ? { surgimento: variable.surgimento / 3 }
+          : {}),
         dominio: {
           ...(variable.dominio.minimo !== undefined
             ? { minimo: variable.dominio.minimo / 3 }

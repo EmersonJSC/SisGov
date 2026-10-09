@@ -17,15 +17,6 @@
     "recursos_protecao_mulheres": 240,
     "recursos_prevencao_seguranca": 600,
     "recursos_alimentacao_escolar": 300,
-    "recursos_creches_publicas": 0,
-    "cobertura_aps": 72,
-    "saude_populacao": 60,
-    "pressao_hospitalar": 54,
-    "violencia_letal": 21.2,
-    "protecao_efetiva_mulheres": 42,
-    "frequencia_escolar": 75,
-    "participacao_trabalho_cuidadoras": 62,
-    "oportunidades_juvenis": 45,
-    "carga_evento_demanda": 1
+    "recursos_creches_publicas": 0
   }
 }

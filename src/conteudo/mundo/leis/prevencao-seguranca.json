@@ -20,7 +20,7 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": ["prevencao-reduz-violencia", "violencia-eleva-pressao"],
+  "consequencias": ["prevencao-reduz-violencia"],
   "respostaTemporal": {
     "implantacao": 0.18,
     "degradacao": 0.1

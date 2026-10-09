@@ -69,8 +69,12 @@ describe("execução contínua e retomada", () => {
     expect(restoredThird).toEqual(continuousThird);
     expect(restored.value.auxiliary).toEqual(auxiliary);
     expect(restoredThird.execution.history).toHaveLength(1);
-    expect(restoredThird.explanations[0]).toMatchObject({
-      result: 40.4,
+    expect(
+      restoredThird.explanations.find(
+        (item) => item.targetId === "educacao_publica",
+      ),
+    ).toMatchObject({
+      result: 0.4,
       contributions: [{ sourceValue: 20, contribution: 0.4 }],
     });
     expect(

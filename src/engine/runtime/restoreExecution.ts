@@ -1,3 +1,4 @@
+import { lawInfluenceNodes } from "../model/lawNodes";
 import type {
   ContentDiagnostic,
   ValidationResult,
@@ -67,10 +68,15 @@ function validateValues(
     diagnostics.push(diagnostic(field, "Valores ausentes ou inválidos."));
     return false;
   }
+  // Todos os nós da rede, inclusive eficácia e apoio de cada lei.
+  const nodes = [
+    ...content.variables.variaveis,
+    ...lawInfluenceNodes(content.policies),
+  ];
   const variablesById = new Map(
-    content.variables.variaveis.map((variable) => [variable.id, variable]),
+    nodes.map((variable) => [variable.id, variable]),
   );
-  for (const variable of content.variables.variaveis) {
+  for (const variable of nodes) {
     if (!Object.prototype.hasOwnProperty.call(value, variable.id)) {
       diagnostics.push(
         diagnostic(`${field}.${variable.id}`, "Valor obrigatório ausente."),
@@ -293,7 +299,9 @@ function validateExecution(
     }
   }
   if (initialValuesValid && isFiniteNumberRecord(rawInitialValues)) {
+    // Só os valores que o país declara (leis e estoques); bolhas são calculadas.
     for (const variable of content.variables.variaveis) {
+      if (!(variable.id in content.initialState.valores)) continue;
       if (
         rawInitialValues[variable.id] !==
         content.initialState.valores[variable.id]

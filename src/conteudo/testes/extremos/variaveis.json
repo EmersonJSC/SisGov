@@ -8,7 +8,10 @@
       "tipo": "controle",
       "nome": "Impulso controlado",
       "unidade": "quantidade_por_passo",
-      "dominio": { "minimo": 0, "maximo": 100 },
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "valorInicial": 0
     },
     {
@@ -16,32 +19,40 @@
       "tipo": "calculado",
       "nome": "Índice A",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 10
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     },
     {
       "id": "indice_b",
       "tipo": "calculado",
       "nome": "Índice B",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 20
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     },
     {
       "id": "risco_evento",
       "tipo": "calculado",
       "nome": "Risco do evento",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 5
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     },
     {
       "id": "no_isolado",
       "tipo": "calculado",
       "nome": "Nó isolado",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 50
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     }
   ]
 }

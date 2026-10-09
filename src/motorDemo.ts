@@ -55,6 +55,7 @@ const typeLabels = {
   controle: "Controle",
   calculado: "Calculado",
   estoque: "Estoque",
+  situacao: "Situação",
 } as const;
 
 function showError(messages: readonly string[]): void {

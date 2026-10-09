@@ -20,12 +20,7 @@
       "maximoPercentualPib": 1
     }
   },
-  "consequencias": [
-    "atencao-amplia-cobertura",
-    "cobertura-reduz-pressao",
-    "cobertura-melhora-saude",
-    "pressao-prejudica-saude"
-  ],
+  "consequencias": ["atencao-amplia-cobertura"],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.18

@@ -13,17 +13,28 @@ describe("createExecution", () => {
     first.values.educacao_publica = 75;
     first.step = 3;
 
+    // Turno 0: o país declara só a lei; o índice nasce calculado (D-41).
     expect(second).toEqual({
       step: 0,
-      values: { verba_educacao: 0, educacao_publica: 40 },
-      initialValues: { verba_educacao: 0, educacao_publica: 40 },
+      values: {
+        verba_educacao: 0,
+        educacao_publica: 0,
+        "eficacia:material-escolar": 1,
+        "apoio:material-escolar": 0,
+      },
+      initialValues: {
+        verba_educacao: 0,
+        educacao_publica: 0,
+        "eficacia:material-escolar": 1,
+        "apoio:material-escolar": 0,
+      },
       history: [],
       historyLimit: 0,
       relationMemory: { firedRelationIds: [], fixedRemaining: {} },
     });
-    expect(loaded.value.definition.initialState.valores.educacao_publica).toBe(
-      40,
-    );
+    expect(loaded.value.definition.initialState.valores).toEqual({
+      verba_educacao: 0,
+    });
   });
 
   it("usa os valores iniciais quando ainda não existe histórico suficiente", () => {
@@ -35,9 +46,8 @@ describe("createExecution", () => {
       loaded.value.definition,
       loaded.value.graph,
     );
-    expect(readExecutionSnapshot(execution, 1)).toEqual({
-      verba_educacao: 0,
-      educacao_publica: 40,
-    });
+    expect(readExecutionSnapshot(execution, 1)).toEqual(
+      execution.initialValues,
+    );
   });
 });

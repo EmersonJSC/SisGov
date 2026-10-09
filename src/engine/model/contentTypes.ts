@@ -53,13 +53,24 @@ export type ScenarioManifest = {
   }[];
 };
 
+/**
+ * Nó da rede (D-41):
+ * - controle: valor de uma lei (nível); o país ou o jogador define;
+ * - estoque: acumula com o tempo (ex.: dívida); o país declara o valor inicial;
+ * - calculado (índice) e situacao: bolhas sem valor próprio nem base — são
+ *   exatamente o resultado do que recebem. A situação só existe acima de
+ *   `surgimento` e sua intensidade é o quanto passou desse ponto.
+ */
 export type VariableDefinition = {
   id: string;
-  tipo: "controle" | "calculado" | "estoque";
+  tipo: "controle" | "calculado" | "estoque" | "situacao";
   nome: string;
   unidade: string;
   dominio: { minimo?: number; maximo?: number };
-  valorInicial: number;
+  /** Só controle e estoque; bolhas não têm valor inicial (D-41). */
+  valorInicial?: number;
+  /** Só situação: ponto a partir do qual ela passa a existir. */
+  surgimento?: number;
   area?: string;
   avaliacao?: "maior_melhor" | "maior_pior" | "neutra";
 };

@@ -1166,6 +1166,7 @@ function validateVariables(
           "unidade",
           "dominio",
           "valorInicial",
+          "surgimento",
           "area",
           "avaliacao",
         ],
@@ -1180,7 +1181,7 @@ function validateVariables(
       );
       if (
         type !== undefined &&
-        !["controle", "calculado", "estoque"].includes(type)
+        !["controle", "calculado", "estoque", "situacao"].includes(type)
       ) {
         diagnostics.push(
           diagnostic(
@@ -1248,12 +1249,39 @@ function validateVariables(
           );
         }
       }
-      requiredNumber(
-        item,
-        file,
-        `variaveis[${index}].valorInicial`,
-        diagnostics,
-      );
+      const bubble = type === "calculado" || type === "situacao";
+      if (bubble && item.valorInicial !== undefined)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `variaveis[${index}].valorInicial`,
+            "VALOR_INVALIDO",
+            "Índices e situações não têm valor inicial: são o resultado do que recebem (D-41).",
+          ),
+        );
+      if (!bubble && item.valorInicial !== undefined)
+        requiredNumber(
+          item,
+          file,
+          `variaveis[${index}].valorInicial`,
+          diagnostics,
+        );
+      if (type === "situacao")
+        requiredNumber(
+          item,
+          file,
+          `variaveis[${index}].surgimento`,
+          diagnostics,
+        );
+      else if (item.surgimento !== undefined)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `variaveis[${index}].surgimento`,
+            "VALOR_INVALIDO",
+            "Só situações têm ponto de surgimento.",
+          ),
+        );
     });
   }
   return diagnostics.length === 0 ? (value as VariablesFile) : undefined;

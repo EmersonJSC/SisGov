@@ -59,7 +59,8 @@ it("runs many turns at both control extremes and permits a financial deficit", (
       state = { ...next.value, pending: new Map() };
     }
     expect(state.execution.step).toBe(60);
-    expect(state.execution.values.saude_populacao).toBeGreaterThanOrEqual(50);
+    // Sem base (D-41): o índice é só o que as leis entregam, dentro do domínio.
+    expect(state.execution.values.saude_populacao).toBeGreaterThanOrEqual(0);
     expect(state.execution.values.saude_populacao).toBeLessThanOrEqual(
       95.000001,
     );
@@ -88,7 +89,7 @@ it("rejects invalid desired targets before gradual interpolation", () => {
   expect(advanceLaboratoryTurn(s.content, s.graph, state).ok).toBe(false);
   expect(state).toEqual(before);
 });
-it("reports the offending variable and preserves all state on late calculation failure", () => {
+it("limits an overflowing bubble to its domain and says so in the explanation", () => {
   const s = laboratory();
   const content = {
     ...s.content,
@@ -98,12 +99,33 @@ it("reports the offending variable and preserves all state on late calculation f
         : c,
     ),
   };
+  const next = advanceLaboratoryTurn(content, buildGraph(content), s.state);
+  if (!next.ok) throw new Error(JSON.stringify(next.diagnostics));
+  const health = next.value.explanations.find(
+    (e) => e.targetId === "saude_populacao",
+  );
+  expect(health).toMatchObject({ limited: true });
+  expect(health!.result).toBeLessThan(health!.rawValue);
+});
+it("reports a non-finite calculation and preserves all state", () => {
+  const s = laboratory();
+  const content = {
+    ...s.content,
+    consequences: s.content.consequences.map((c) =>
+      c.id === "efeito-001"
+        ? {
+            ...c,
+            parametros: {
+              ...c.parametros,
+              coeficiente: Number.POSITIVE_INFINITY,
+            },
+          }
+        : c,
+    ),
+  };
   const before = structuredClone(s.state);
   const next = advanceLaboratoryTurn(content, buildGraph(content), s.state);
   expect(next.ok).toBe(false);
-  if (next.ok) return;
-  expect(next.diagnostics[0].field).toBe("valores.saude_populacao");
-  expect(next.diagnostics[0].message).toContain("Saúde da população");
   expect(s.state).toEqual(before);
 });
 it("keeps a bounded journal independently of step history", () => {

@@ -1,6 +1,8 @@
 import type { ResolvedPackage } from "../model/resolvePackage";
 import type { ScenarioGraph } from "../graph/buildGraph";
 import type { PolicyCommandBatch } from "./translatePolicyCommands";
+import { lawNodeBase } from "../model/lawNodes";
+import { computeNetwork } from "./computeNetwork";
 
 export type ExecutionSnapshot = Readonly<{
   step: number;
@@ -20,12 +22,48 @@ export type EngineExecution = {
   }>;
 };
 
-/** Copia o estado inicial para uma nova partida numérica independente. */
+/**
+ * Cria a execução do turno 0. O país declara só leis (controles) e estoques;
+ * índices e situações nascem calculados pela rede (D-41), com as leis
+ * vigentes do país ativas e a eficácia/apoio das leis no neutro.
+ */
 export function createExecution(
   content: ResolvedPackage,
   graph: ScenarioGraph,
 ): EngineExecution {
-  const initialValues = { ...content.initialState.valores };
+  const declared = content.initialState.valores;
+  const start: Record<string, number> = {};
+  for (const node of Object.values(graph.nodesById)) {
+    const neutral = lawNodeBase(node.id);
+    if (neutral !== undefined) start[node.id] = neutral;
+    else if (node.tipo === "controle" || node.tipo === "estoque")
+      start[node.id] =
+        declared[node.id] ?? node.valorInicial ?? node.dominio.minimo ?? 0;
+    else start[node.id] = 0;
+  }
+  const inherited = new Set(
+    (content.initialState.leisVigentes ?? []).map((entry) => entry.lei),
+  );
+  const everyLawActive = content.initialState.leisVigentes === undefined;
+  const network = computeNetwork({
+    content,
+    graph,
+    previous: start,
+    controls: {},
+    activeRelations: graph.relations.filter(
+      (relation) =>
+        relation.sourceType === "rede" ||
+        (relation.sourceType === "lei" &&
+          relation.duration.modo === "continuo" &&
+          (everyLawActive || inherited.has(relation.sourceId))),
+    ),
+    readDelayed: () => start,
+    duration: 1,
+    accumulateStocks: false,
+  });
+  // Pacotes inválidos já foram recusados pela coerência; se a rede inicial
+  // não fechar, a partida começa do estado declarado e o erro aparece no passo.
+  const initialValues = network.ok ? network.value.values : start;
   return {
     step: 0,
     values: { ...initialValues },

@@ -20,11 +20,7 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": [
-    "creches-ampliam-participacao",
-    "creches-ampliam-oportunidades",
-    "oportunidades-reduzem-violencia"
-  ],
+  "consequencias": ["creches-ampliam-participacao"],
   "respostaTemporal": {
     "implantacao": 0.14,
     "degradacao": 0.08

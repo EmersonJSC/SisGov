@@ -8,7 +8,10 @@
       "tipo": "controle",
       "nome": "Cobertura de bibliotecas",
       "unidade": "percentual_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "valorInicial": 0
     },
     {
@@ -16,16 +19,20 @@
       "tipo": "calculado",
       "nome": "Educação pública",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 40
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     },
     {
       "id": "severidade_seca",
       "tipo": "calculado",
       "nome": "Severidade da seca",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 10
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     }
   ]
 }

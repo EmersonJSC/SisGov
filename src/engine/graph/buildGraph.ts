@@ -4,6 +4,7 @@ import type {
   PolicyFile,
   VariableDefinition,
 } from "../model/contentTypes";
+import { lawInfluenceNodes } from "../model/lawNodes";
 import type { ResolvedPackage } from "../model/resolvePackage";
 
 export type GraphNode = Readonly<VariableDefinition>;
@@ -11,7 +12,8 @@ export type GraphNode = Readonly<VariableDefinition>;
 export type GraphRelation = Readonly<{
   id: string;
   sourceId: string;
-  sourceType: PolicyFile["tipo"] | OccurrenceFile["tipo"];
+  /** "rede": ligação entre bolhas, sempre ativa (D-41). */
+  sourceType: PolicyFile["tipo"] | OccurrenceFile["tipo"] | "rede";
   sourcePath: string;
   consequenceId: string;
   consequencePath: string;
@@ -60,7 +62,10 @@ function addRelations(
 /** Converte conteúdo válido em nós e relações com origem auditável. */
 export function buildGraph(content: ResolvedPackage): ScenarioGraph {
   const nodesById: Record<string, GraphNode> = {};
-  for (const variable of content.variables.variaveis)
+  for (const variable of [
+    ...content.variables.variaveis,
+    ...lawInfluenceNodes(content.policies),
+  ])
     nodesById[variable.id] = variable;
 
   const consequencesById: Record<string, ConsequenceFile> = {};
@@ -72,11 +77,38 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
     ...content.situations,
     ...content.dilemmas,
   ].sort((left, right) => left.id.localeCompare(right.id));
-  const relations = sources
-    .flatMap((source) =>
-      addRelations(source, consequencesById, content.pathsById),
+  const listed = new Set(sources.flatMap((source) => source.consequencias));
+  // Consequência que sai de uma bolha (índice, situação ou estoque) e não
+  // pertence a lei nem a ocorrência é uma ligação da rede: vale sempre.
+  const network: GraphRelation[] = content.consequences
+    .filter(
+      (consequence) =>
+        !listed.has(consequence.id) &&
+        nodesById[consequence.origem] !== undefined &&
+        nodesById[consequence.origem].tipo !== "controle",
     )
-    .sort((left, right) => left.id.localeCompare(right.id));
+    .map((consequence) => ({
+      id: `rede:${consequence.id}`,
+      sourceId: consequence.origem,
+      sourceType: "rede" as const,
+      sourcePath: content.pathsById[consequence.id],
+      consequenceId: consequence.id,
+      consequencePath: content.pathsById[consequence.id],
+      originId: consequence.origem,
+      targetId: consequence.alvo,
+      mechanism: consequence.mecanismo,
+      parameters: consequence.parametros,
+      normalization: consequence.normalizacao,
+      unit: consequence.unidade,
+      delaySteps: consequence.atrasoPassos,
+      duration: { modo: "continuo" as const },
+    }));
+  const relations = [
+    ...sources.flatMap((source) =>
+      addRelations(source, consequencesById, content.pathsById),
+    ),
+    ...network,
+  ].sort((left, right) => left.id.localeCompare(right.id));
   const relationsById: Record<string, GraphRelation> = {};
   for (const relation of relations) relationsById[relation.id] = relation;
 

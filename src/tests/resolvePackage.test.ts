@@ -26,7 +26,7 @@ function validPackage(): Record<string, string> {
       id: "estado-inicial",
       tipo: "estado-inicial",
       versaoEsquema: 1,
-      valores: { verba_educacao: 0, educacao_publica: 40 },
+      valores: { verba_educacao: 0 },
     }),
     "variaveis.json": content({
       id: "variaveis-principais",
@@ -47,7 +47,6 @@ function validPackage(): Record<string, string> {
           nome: "Educação",
           unidade: "indice_0_100",
           dominio: { minimo: 0, maximo: 100 },
-          valorInicial: 40,
         },
       ],
     }),
@@ -183,8 +182,8 @@ describe("validatePackageCoherence", () => {
   it("recusa valor inicial fora do domínio", () => {
     const files = validPackage();
     files["estado-inicial.json"] = files["estado-inicial.json"].replace(
-      '"educacao_publica":40',
-      '"educacao_publica":140',
+      '"verba_educacao":0',
+      '"verba_educacao":-5',
     );
     const resolved = resolvePackage("cenario.json", files);
 
@@ -195,7 +194,7 @@ describe("validatePackageCoherence", () => {
       if (!result.ok) {
         expect(result.diagnostics).toContainEqual(
           expect.objectContaining({
-            field: "valores.educacao_publica",
+            field: "valores.verba_educacao",
             code: "COERENCIA_INVALIDA",
           }),
         );
@@ -215,13 +214,13 @@ describe("validatePackageCoherence", () => {
       const result = validatePackageCoherence(resolved.value);
       expect(result).toMatchObject({
         ok: false,
-        diagnostics: [
-          {
+        diagnostics: expect.arrayContaining([
+          expect.objectContaining({
             code: "COERENCIA_INVALIDA",
             file: "material-escolar",
             field: "controle.variavel",
-          },
-        ],
+          }),
+        ]),
       });
     }
   });

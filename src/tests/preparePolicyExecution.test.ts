@@ -70,5 +70,9 @@ it("keeps a fixed-duration effect after legal revocation and zero implementation
   expect(second.value.execution.relationMemory.fixedRemaining).toEqual(
     expect.objectContaining({ [graph.relations[0].id]: 1 }),
   );
-  expect(second.value.explanations[0].contributions[0].contribution).toBe(5);
+  expect(
+    second.value.explanations.find(
+      (item) => item.targetId === graph.relations[0].targetId,
+    )!.contributions[0].contribution,
+  ).toBe(5);
 });

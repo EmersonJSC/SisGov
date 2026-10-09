@@ -1,4 +1,5 @@
 import { resolveInheritedLawLevels } from "./inheritedLaws";
+import { lawInfluenceNodes } from "./lawNodes";
 import type {
   ContentDiagnostic,
   ValidationResult,
@@ -17,6 +18,8 @@ const supportedUnits = new Set([
   "quantidade_por_passo",
   "moeda_milhoes_2024_ano",
   "moeda_ano",
+  "fator",
+  "pontos",
   "nivel_escopo",
   "taxa_por_100_mil",
 ]);
@@ -56,8 +59,12 @@ export function validatePackageCoherence(
         ),
       );
   }
+  // Os nós de eficácia e apoio de cada lei também podem ser alvo (D-41).
   const variablesById = new Map(
-    content.variables.variaveis.map((variable) => [variable.id, variable]),
+    [
+      ...content.variables.variaveis,
+      ...lawInfluenceNodes(content.policies),
+    ].map((variable) => [variable.id, variable]),
   );
   const initialStateFile = content.pathsById[content.initialState.id];
   const policiesById = new Map(
@@ -160,7 +167,10 @@ export function validatePackageCoherence(
         ),
       );
     }
-    if (!isInDomain(variable.valorInicial, variable)) {
+    if (
+      variable.valorInicial !== undefined &&
+      !isInDomain(variable.valorInicial, variable)
+    ) {
       diagnostics.push(
         issue(
           content.variables.id,
@@ -254,6 +264,19 @@ export function validatePackageCoherence(
     content.initialState.valores,
   )) {
     const variable = variablesById.get(variableId);
+    if (
+      variable &&
+      (variable.tipo === "calculado" || variable.tipo === "situacao")
+    ) {
+      diagnostics.push(
+        issue(
+          content.initialState.id,
+          `valores.${variableId}`,
+          "O país não declara valor de índice ou situação: eles são calculados pela rede (D-41).",
+        ),
+      );
+      continue;
+    }
     if (variable && !isInDomain(value, variable)) {
       diagnostics.push(
         issue(
@@ -265,16 +288,36 @@ export function validatePackageCoherence(
     }
   }
   for (const variable of content.variables.variaveis) {
-    if (!(variable.id in content.initialState.valores)) {
+    if (
+      variable.tipo === "estoque" &&
+      !(variable.id in content.initialState.valores)
+    ) {
       diagnostics.push(
         issue(
           content.initialState.id,
           `valores.${variable.id}`,
-          "O estado inicial precisa informar todas as variáveis do cenário.",
+          "O estado inicial precisa informar o valor de todo estoque.",
         ),
       );
     }
   }
+
+  // Uma lei só lista consequências que saem do seu próprio controle; as
+  // ligações entre bolhas são da rede e valem sempre (D-41).
+  for (const policy of content.policies)
+    for (const consequenceId of policy.consequencias) {
+      const consequence = content.consequences.find(
+        (item) => item.id === consequenceId,
+      );
+      if (consequence && consequence.origem !== policy.controle.variavel)
+        diagnostics.push(
+          issue(
+            policy.id,
+            "consequencias",
+            `A consequência ${consequenceId} não sai do controle desta lei; ligações entre bolhas são da rede e não pertencem a uma lei.`,
+          ),
+        );
+    }
 
   for (const policy of content.policies) {
     const control = variablesById.get(policy.controle.variavel);

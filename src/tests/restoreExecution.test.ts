@@ -45,7 +45,7 @@ describe("restoreExecution", () => {
     });
     if (restored.ok) {
       restored.value.execution.values.educacao_publica = 70;
-      expect(execution.values.educacao_publica).toBe(40);
+      expect(execution.values.educacao_publica).toBe(0);
     }
   });
 
@@ -66,7 +66,7 @@ describe("restoreExecution", () => {
     expect(
       restoreExecution(loaded.definition, { format: "sisgov-engine-snapshot" }),
     ).toMatchObject({ ok: false });
-    expect(execution.values.educacao_publica).toBe(40);
+    expect(execution.values.educacao_publica).toBe(0);
   });
 
   it("recusa retratos históricos malformados sem lançar exceções", () => {

@@ -7,7 +7,7 @@ import {
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("primeiro cenário brasileiro", () => {
-  it("carrega o estado herdado e conserva a base sem nova decisão", () => {
+  it("carrega o estado herdado e calcula os índices pela rede", () => {
     const loaded = loadDistributedScenario("paises/brasil/pais.json");
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
@@ -55,15 +55,17 @@ describe("primeiro cenário brasileiro", () => {
     const advanced = advanceExecution(content, graph, execution, batch.value);
     expect(advanced.ok).toBe(true);
     if (!advanced.ok) return;
-    expect(advanced.value.execution.values).toMatchObject({
-      cobertura_aps: 72,
-      saude_populacao: 60,
-      pressao_hospitalar: 54,
-      violencia_letal: 21.2,
-      protecao_efetiva_mulheres: 42,
-      frequencia_escolar: 75,
-      participacao_trabalho_cuidadoras: 62,
-      oportunidades_juvenis: 45,
-    });
+    // Até o SG142 reconstruir a rede: índices são calculados (D-41), nunca
+    // declarados pelo país, e ficam dentro do domínio.
+    expect(content.initialState.valores).not.toHaveProperty("cobertura_aps");
+    for (const variable of content.variables.variaveis) {
+      if (variable.tipo !== "calculado") continue;
+      const value = advanced.value.execution.values[variable.id];
+      expect(Number.isFinite(value)).toBe(true);
+      if (variable.dominio.minimo !== undefined)
+        expect(value).toBeGreaterThanOrEqual(variable.dominio.minimo);
+      if (variable.dominio.maximo !== undefined)
+        expect(value).toBeLessThanOrEqual(variable.dominio.maximo);
+    }
   });
 });

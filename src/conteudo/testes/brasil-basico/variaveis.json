@@ -8,7 +8,10 @@
       "tipo": "controle",
       "nome": "Recursos para atenção básica",
       "unidade": "moeda_milhoes_2024_ano",
-      "dominio": { "minimo": 2400, "maximo": 6000 },
+      "dominio": {
+        "minimo": 2400,
+        "maximo": 6000
+      },
       "valorInicial": 4000,
       "area": "Saúde"
     },
@@ -17,7 +20,10 @@
       "tipo": "controle",
       "nome": "Recursos para imunização",
       "unidade": "moeda_milhoes_2024_ano",
-      "dominio": { "minimo": 600, "maximo": 3000 },
+      "dominio": {
+        "minimo": 600,
+        "maximo": 3000
+      },
       "valorInicial": 1500,
       "area": "Saúde"
     },
@@ -26,7 +32,10 @@
       "tipo": "controle",
       "nome": "Recursos para prevenção e cooperação",
       "unidade": "moeda_milhoes_2024_ano",
-      "dominio": { "minimo": 0, "maximo": 1400 },
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1400
+      },
       "valorInicial": 600,
       "area": "Segurança"
     },
@@ -35,7 +44,10 @@
       "tipo": "controle",
       "nome": "Recursos para proteção às mulheres",
       "unidade": "moeda_milhoes_2024_ano",
-      "dominio": { "minimo": 0, "maximo": 600 },
+      "dominio": {
+        "minimo": 0,
+        "maximo": 600
+      },
       "valorInicial": 240,
       "area": "Segurança"
     },
@@ -44,7 +56,10 @@
       "tipo": "controle",
       "nome": "Escopo das câmeras corporais",
       "unidade": "nivel_escopo",
-      "dominio": { "minimo": 0, "maximo": 100 },
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "valorInicial": 25,
       "area": "Segurança"
     },
@@ -53,8 +68,10 @@
       "tipo": "calculado",
       "nome": "Acesso à saúde",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 35,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Saúde",
       "avaliacao": "maior_melhor"
     },
@@ -63,8 +80,10 @@
       "tipo": "calculado",
       "nome": "Saúde pública",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 40,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Saúde",
       "avaliacao": "maior_melhor"
     },
@@ -73,8 +92,10 @@
       "tipo": "calculado",
       "nome": "Pressão hospitalar",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 60,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Saúde",
       "avaliacao": "maior_pior"
     },
@@ -83,8 +104,10 @@
       "tipo": "calculado",
       "nome": "Segurança pública",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 35,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Segurança",
       "avaliacao": "maior_melhor"
     },
@@ -93,8 +116,10 @@
       "tipo": "calculado",
       "nome": "Proteção às mulheres",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 30,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Segurança",
       "avaliacao": "maior_melhor"
     },
@@ -103,8 +128,10 @@
       "tipo": "calculado",
       "nome": "Crime",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 60,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Segurança",
       "avaliacao": "maior_pior"
     },
@@ -113,8 +140,10 @@
       "tipo": "calculado",
       "nome": "Encarceramento",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 35,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Segurança",
       "avaliacao": "maior_pior"
     },
@@ -123,8 +152,10 @@
       "tipo": "calculado",
       "nome": "Risco aos direitos humanos",
       "unidade": "indice_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 30,
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
       "area": "Segurança",
       "avaliacao": "maior_pior"
     }

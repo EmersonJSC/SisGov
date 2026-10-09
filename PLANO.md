@@ -264,7 +264,11 @@ máximo **uma** dependência aberta.
 #### SG142 — Rede de indicadores do Brasil · M
 - **Objetivo:** o coração do jogo: ~35 indicadores em camadas (social,
   econômica, fiscal, institucional) ligados por cadeias causais.
-- **Tarefas:** indicadores e consequências em JSON (hipóteses marcadas), por
+- **Tarefas:** migrar as situações antigas (arquivos `situacao` com
+  entraQuando/saiQuando, ex.: sobrecarga do atendimento) para nós
+  `situacao` com surgimento; recalibrar a rede sem bases (hoje quase toda
+  em zero, porque foi calibrada como "desvio em torno da base"); indicadores
+  e consequências em JSON (hipóteses marcadas), por
   exemplo educação → qualificação → produtividade → emprego → renda →
   arrecadação; saúde → produtividade; violência → investimento; com atrasos e
   os mecanismos do SG141; documento curto com o mapa das cadeias.
@@ -511,7 +515,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 45 chamados — 8 feitos + 37 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 45 chamados — 9 feitos + 36 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -657,7 +661,7 @@ data, commit e teste.
 - [x] SG153 Mundo e país separados — 09/out · `ab160f7` · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
-- [ ] SG154 Leis e bolhas no motor
+- [x] SG154 Leis e bolhas no motor — 09/out · ver commit SG154 · check verde, 237 testes / 55 arquivos; `livingNetwork.test.ts`
 - [ ] SG142 Rede de indicadores do Brasil
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções

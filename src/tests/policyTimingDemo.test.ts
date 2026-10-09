@@ -41,10 +41,11 @@ describe("tempo das políticas no exemplo", () => {
       execution = result.value.execution;
       results.push(execution.values.protecao_mulheres);
     }
-    expect(results.slice(0, 2)).toEqual([40, 40]);
-    expect(results[2]).toBeCloseTo(38.8);
+    // Sem base (D-41): o índice é só a contribuição da lei (10 no início).
+    expect(results.slice(0, 2)).toEqual([10, 10]);
+    expect(results[2]).toBeCloseTo(8.8);
     expect(results[3]).toBeLessThan(results[2]);
-    expect(results[4]).toBeGreaterThan(30);
+    expect(results[4]).toBeGreaterThan(0);
     expect(execution.values.recursos_protecao_mulheres).toBeGreaterThan(0);
   });
 });

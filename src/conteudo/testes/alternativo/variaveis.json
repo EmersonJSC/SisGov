@@ -8,7 +8,9 @@
       "tipo": "controle",
       "nome": "Verba de bolsas",
       "unidade": "moeda_por_passo",
-      "dominio": { "minimo": 0 },
+      "dominio": {
+        "minimo": 0
+      },
       "valorInicial": 0
     },
     {
@@ -16,8 +18,10 @@
       "tipo": "calculado",
       "nome": "Acesso à educação",
       "unidade": "percentual_0_100",
-      "dominio": { "minimo": 0, "maximo": 100 },
-      "valorInicial": 52
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      }
     }
   ]
 }

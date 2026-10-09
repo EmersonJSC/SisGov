@@ -1,7 +1,8 @@
 # A rede viva — leis, índices e situações
 
 **Estado:** modelo aprovado pelo autor em 9/out/2026 (decisões D-40 a D-43
-do [PLANO](../../PLANO.md)). Implementação: SG154 (motor) e SG142 (conteúdo).
+do [PLANO](../../PLANO.md)). **Motor implementado no SG154**
+(`src/engine/runtime/computeNetwork.ts`); conteúdo do Brasil no SG142.
 
 ## Princípio
 
@@ -77,6 +78,25 @@ Mudar a lei de drogas para "cannabis recreativa" sobe o uso de drogas, a
 pressão passa de 70 e a crise nasce; ela pede mais verba (apoio) mas faz a
 verba render menos (eficácia). Aumentar a verba baixa a pressão e a crise
 desaparece sozinha.
+
+## Como escrever no conteúdo (SG154)
+
+- **Nós** (`indicadores/variaveis.json`): `controle` (valor de lei),
+  `estoque` (acumula; o país declara o valor), `calculado` (índice) e
+  `situacao` (com `surgimento`). Índice e situação **não** aceitam
+  `valorInicial`.
+- **Eficácia e apoio da lei** são nós automáticos: `eficacia:<id-da-lei>`
+  (unidade `fator`, neutro 1, de 0 a 2) e `apoio:<id-da-lei>` (unidade
+  `pontos`, neutro 0, de −100 a 100). Qualquer consequência pode mirar neles.
+- **Quem é dono de cada ligação:**
+  - a lei lista só consequências que **saem do seu controle**;
+  - uma consequência que sai de uma bolha (índice, situação ou estoque) e
+    não é listada por ninguém é uma **ligação da rede**: vale sempre;
+  - eventos continuam listando as suas.
+- **Limites:** se a soma passa do domínio do nó, o valor para no limite e a
+  explicação marca `limited`.
+- **Turno 0:** o país declara leis vigentes e estoques; o motor calcula as
+  bolhas com as leis vigentes ativas e eficácia/apoio no neutro.
 
 ## Futuro
 

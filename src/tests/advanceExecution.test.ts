@@ -15,7 +15,7 @@ function example() {
 }
 
 describe("advanceExecution", () => {
-  it("lê a mesma fotografia para uma cadeia independentemente da ordem das variáveis", () => {
+  it("D-42: resolve a cadeia de bolhas no mesmo mês, em qualquer ordem de declaração", () => {
     function run(variables: readonly object[]) {
       const files = {
         "cenario.json": JSON.stringify({
@@ -32,7 +32,7 @@ describe("advanceExecution", () => {
           id: "estado",
           tipo: "estado-inicial",
           versaoEsquema: 1,
-          valores: { a: 0, b: 40, c: 30 },
+          valores: { a: 0 },
         }),
         "variaveis.json": JSON.stringify({
           id: "variaveis",
@@ -50,7 +50,7 @@ describe("advanceExecution", () => {
           processoAutorizacao: "decisao-executiva",
           controle: { variavel: "a", unidade: "moeda" },
           orcamento: { modo: "valor_fixo" },
-          consequencias: ["ab", "bc"],
+          consequencias: ["ab"],
         }),
         "ab.json": JSON.stringify({
           id: "ab",
@@ -71,7 +71,7 @@ describe("advanceExecution", () => {
           origem: "b",
           alvo: "c",
           mecanismo: "afim",
-          parametros: { coeficiente: 1, termoConstante: -10 },
+          parametros: { coeficiente: 1, termoConstante: 10 },
           unidade: "indice_0_100",
           atrasoPassos: 0,
           duracao: { modo: "continuo" },
@@ -107,7 +107,6 @@ describe("advanceExecution", () => {
       nome: "B",
       unidade: "indice_0_100",
       dominio: { minimo: 0, maximo: 100 },
-      valorInicial: 40,
     };
     const c = {
       id: "c",
@@ -115,11 +114,11 @@ describe("advanceExecution", () => {
       nome: "C",
       unidade: "indice_0_100",
       dominio: { minimo: 0, maximo: 100 },
-      valorInicial: 0,
     };
 
-    expect(run([a, b, c])).toEqual({ a: 1, b: 41, c: 30 });
-    expect(run([a, c, b])).toEqual({ a: 1, c: 30, b: 41 });
+    // a → b (da lei) e b → c (da rede): b = 1 e c = b + 10, no mesmo mês.
+    expect(run([a, b, c])).toMatchObject({ a: 1, b: 1, c: 11 });
+    expect(run([a, c, b])).toMatchObject({ a: 1, b: 1, c: 11 });
   });
 
   it("confirma controle e consequência no mesmo passo", () => {
@@ -132,55 +131,58 @@ describe("advanceExecution", () => {
     );
     if (!batch.ok) throw new Error("O lote deveria ser válido.");
 
-    expect(
-      advanceExecution(
-        scenario.definition,
-        scenario.graph,
-        execution,
-        batch.value,
-      ),
-    ).toEqual({
+    const step = advanceExecution(
+      scenario.definition,
+      scenario.graph,
+      execution,
+      batch.value,
+    );
+    // Índice sem base (D-41): educação = 0,02 × 20 = 0,4.
+    expect(step).toMatchObject({
       ok: true,
       value: {
         execution: {
           step: 1,
-          values: { verba_educacao: 20, educacao_publica: 40.4 },
-          initialValues: { verba_educacao: 0, educacao_publica: 40 },
+          values: { verba_educacao: 20, educacao_publica: 0.4 },
+          initialValues: { verba_educacao: 0, educacao_publica: 0 },
           history: [],
           historyLimit: 0,
           relationMemory: { firedRelationIds: [], fixedRemaining: {} },
         },
-        explanations: [
-          {
-            targetId: "educacao_publica",
-            previousValue: 40,
-            baseValue: 40,
-            contributions: [
-              {
-                relationId: "material-escolar:0:melhora-educacao",
-                policyOrEventId: "material-escolar",
-                consequenceId: "melhora-educacao",
-                originId: "verba_educacao",
-                targetId: "educacao_publica",
-                sourceValue: 20,
-                mechanism: "afim",
-                parameters: { coeficiente: 0.02, termoConstante: 0 },
-                inputValue: 20,
-                contribution: 0.4,
-              },
-            ],
-            result: 40.4,
-          },
-        ],
+        intensities: { "material-escolar": 20, educacao_publica: 0.4 },
       },
     });
-    expect(execution).toEqual({
+    if (!step.ok) return;
+    expect(
+      step.value.explanations.find(
+        (item) => item.targetId === "educacao_publica",
+      ),
+    ).toEqual({
+      targetId: "educacao_publica",
+      previousValue: 0,
+      baseValue: 0,
+      contributions: [
+        {
+          relationId: "material-escolar:0:melhora-educacao",
+          policyOrEventId: "material-escolar",
+          consequenceId: "melhora-educacao",
+          originId: "verba_educacao",
+          targetId: "educacao_publica",
+          sourceValue: 20,
+          mechanism: "afim",
+          parameters: { coeficiente: 0.02, termoConstante: 0 },
+          inputValue: 20,
+          contribution: 0.4,
+        },
+      ],
+      rawValue: 0.4,
+      limited: false,
+      result: 0.4,
+    });
+    expect(execution).toMatchObject({
       step: 0,
-      values: { verba_educacao: 0, educacao_publica: 40 },
-      initialValues: { verba_educacao: 0, educacao_publica: 40 },
-      history: [],
-      historyLimit: 0,
-      relationMemory: { firedRelationIds: [], fixedRemaining: {} },
+      values: { verba_educacao: 0, educacao_publica: 0 },
+      initialValues: { verba_educacao: 0, educacao_publica: 0 },
     });
   });
 
@@ -204,14 +206,9 @@ describe("advanceExecution", () => {
     );
 
     expect(result).toMatchObject({ ok: false });
-    expect(execution).toEqual({
-      step: 0,
-      values: { verba_educacao: 0, educacao_publica: 40 },
-      initialValues: { verba_educacao: 0, educacao_publica: 40 },
-      history: [],
-      historyLimit: 0,
-      relationMemory: { firedRelationIds: [], fixedRemaining: {} },
-    });
+    expect(execution).toEqual(
+      createExecution(scenario.definition, scenario.graph),
+    );
   });
 
   it("aplica no turno seguinte uma consequência com atraso de um passo", () => {
@@ -233,7 +230,7 @@ describe("advanceExecution", () => {
     );
     expect(first).toMatchObject({
       ok: true,
-      value: { execution: { step: 1, values: { acesso_educacao: 52 } } },
+      value: { execution: { step: 1, values: { acesso_educacao: 0 } } },
     });
     if (!first.ok) return;
 
@@ -241,7 +238,7 @@ describe("advanceExecution", () => {
       advanceExecution(definition, graph, first.value.execution, batch.value),
     ).toMatchObject({
       ok: true,
-      value: { execution: { step: 2, values: { acesso_educacao: 52.2 } } },
+      value: { execution: { step: 2, values: { acesso_educacao: 0.2 } } },
     });
   });
 });

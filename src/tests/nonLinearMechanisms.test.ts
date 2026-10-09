@@ -264,7 +264,7 @@ describe("SG141 — integração no passo do motor", () => {
         id: "estado",
         tipo: "estado-inicial",
         versaoEsquema: 1,
-        valores: { gasto: 0, pib: 1000, saude: 50 },
+        valores: { gasto: 0, pib: 1000 },
       }),
       "variaveis.json": json({
         id: "variaveis",
@@ -293,7 +293,6 @@ describe("SG141 — integração no passo do motor", () => {
             nome: "Saúde",
             unidade: "indice_0_100",
             dominio: { minimo: 0, maximo: 100 },
-            valorInicial: 50,
           },
         ],
       }),
@@ -348,9 +347,13 @@ describe("SG141 — integração no passo do motor", () => {
     );
     if (!step.ok) throw new Error(step.diagnostics[0].message);
     // 40 ÷ 1000 × 100 = 4% do PIB → 20·(1 − e^(−2)).
-    const expected = 50 + 20 * (1 - Math.exp(-2));
+    // Índice sem base (D-41): é só o que recebe.
+    const expected = 20 * (1 - Math.exp(-2));
     expect(step.value.execution.values.saude).toBeCloseTo(expected);
-    expect(step.value.explanations[0].contributions[0]).toMatchObject({
+    expect(
+      step.value.explanations.find((item) => item.targetId === "saude")!
+        .contributions[0],
+    ).toMatchObject({
       mechanism: "saturacao",
       inputValue: 4,
       divisorId: "pib",

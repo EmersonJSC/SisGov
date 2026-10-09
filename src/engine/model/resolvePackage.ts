@@ -2,6 +2,7 @@ import type {
   ContentDiagnostic,
   ValidationResult,
 } from "../diagnostics/contentDiagnostic";
+import { lawInfluenceNodes } from "./lawNodes";
 import { validateContentFile } from "./validateContentFile";
 import type {
   ConsequenceFile,
@@ -148,9 +149,10 @@ function checkReferences(
   occurrences: readonly OccurrenceFile[],
   diagnostics: ContentDiagnostic[],
 ): void {
-  const variableIds = new Set(
-    variables?.variaveis.map((variable) => variable.id),
-  );
+  const variableIds = new Set([
+    ...(variables?.variaveis.map((variable) => variable.id) ?? []),
+    ...lawInfluenceNodes(policies).map((node) => node.id),
+  ]);
   const consequenceIds = new Set(
     consequences.map((consequence) => consequence.id),
   );

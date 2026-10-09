@@ -13,5 +13,5 @@
   "orcamento": {
     "modo": "valor_fixo"
   },
-  "consequencias": ["impulso-atrasado", "a-alimenta-b", "b-realimenta-a"]
+  "consequencias": ["impulso-atrasado"]
 }

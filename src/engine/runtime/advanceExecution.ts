@@ -1,44 +1,22 @@
 import type { ValidationResult } from "../diagnostics/contentDiagnostic";
 import type { GraphRelation, ScenarioGraph } from "../graph/buildGraph";
-import { calculateContribution } from "../mechanisms/calculateContribution";
-import {
-  combineCalculatedValue,
-  type NumericContribution,
-} from "../mechanisms/combineCalculatedValue";
-import { updateStock, type StockRate } from "../mechanisms/updateStock";
 import type { ResolvedPackage } from "../model/resolvePackage";
+import {
+  computeNetwork,
+  type ContributionExplanation,
+  type TargetExplanation,
+} from "./computeNetwork";
 import type { EngineExecution } from "./createExecution";
 import { readExecutionSnapshot } from "./createExecution";
 import type { PolicyCommandBatch } from "./translatePolicyCommands";
 
-export type ContributionExplanation = Readonly<{
-  relationId: string;
-  policyOrEventId: string;
-  consequenceId: string;
-  originId: string;
-  targetId: string;
-  sourceValue: number;
-  /** Mecanismo e parâmetros usados: a explicação diz como o valor foi obtido. */
-  mechanism: GraphRelation["mechanism"];
-  parameters: GraphRelation["parameters"];
-  /** Entrada do mecanismo (a razão, quando há normalização). */
-  inputValue: number;
-  divisorId?: string;
-  divisorValue?: number;
-  contribution: number;
-}>;
-
-export type TargetExplanation = Readonly<{
-  targetId: string;
-  previousValue: number;
-  baseValue: number;
-  contributions: readonly ContributionExplanation[];
-  result: number;
-}>;
+export type { ContributionExplanation, TargetExplanation };
 
 export type StepExecutionResult = Readonly<{
   execution: EngineExecution;
   explanations: readonly TargetExplanation[];
+  /** Intensidade de cada nó neste mês (D-43). */
+  intensities: Readonly<Record<string, number>>;
 }>;
 
 function failure(
@@ -60,7 +38,7 @@ function inDomain(value: number, minimum?: number, maximum?: number): boolean {
   );
 }
 
-/** Prepara um passo inteiro e só devolve valores novos quando todos os cálculos forem válidos. */
+/** Avança um mês da rede viva sem alterar a execução recebida. */
 export function advanceExecution(
   content: ResolvedPackage,
   graph: ScenarioGraph,
@@ -70,8 +48,7 @@ export function advanceExecution(
 ): ValidationResult<StepExecutionResult> {
   if (!Number.isFinite(duration) || duration <= 0)
     return failure("duracao", "A duração deve ser positiva e finita.");
-  const nextValues = { ...execution.values };
-  const changedControls = new Set<string>();
+  const controls: Record<string, number> = {};
   for (const command of batch.controlCommands) {
     const node = graph.nodesById[command.controlId];
     if (!node || node.tipo !== "controle")
@@ -79,7 +56,7 @@ export function advanceExecution(
         "comandos",
         "O comando precisa apontar para um controle existente.",
       );
-    if (changedControls.has(command.controlId))
+    if (command.controlId in controls)
       return failure(
         "comandos",
         "O lote contém dois comandos para o mesmo controle.",
@@ -90,124 +67,50 @@ export function advanceExecution(
     ) {
       return failure("comandos", "O valor aplicado ao controle é inválido.");
     }
-    changedControls.add(command.controlId);
-    nextValues[command.controlId] = command.value;
+    controls[command.controlId] = command.value;
   }
-  const readValues = { ...nextValues };
 
   const requestedIds = new Set(batch.activeRelationIds);
   if ([...requestedIds].some((id) => !graph.relationsById[id]))
     return failure("relacoesAtivas", "O lote ativou uma relação inexistente.");
   const fired = new Set(execution.relationMemory.firedRelationIds);
   const fixedRemaining = { ...execution.relationMemory.fixedRemaining };
-  const activeRelations = graph.relations.filter((relation) => {
-    const requested = requestedIds.has(relation.id);
-    if (relation.duration.modo === "continuo") return requested;
-    if (relation.duration.modo === "unico") {
-      if (!requested || fired.has(relation.id)) return false;
-      fired.add(relation.id);
-      return true;
-    }
-    if (requested && fixedRemaining[relation.id] === undefined)
-      fixedRemaining[relation.id] = relation.duration.passos;
-    if ((fixedRemaining[relation.id] ?? 0) <= 0) return false;
-    fixedRemaining[relation.id] -= 1;
-    return true;
-  });
-  const contributionsByTarget = new Map<string, NumericContribution[]>();
-  const explanationsByTarget = new Map<string, ContributionExplanation[]>();
-  for (const relation of activeRelations) {
-    // Origem e divisor são lidos do mesmo retrato (mesmo atraso).
-    const snapshot =
-      relation.delaySteps === 0
-        ? readValues
-        : readExecutionSnapshot(execution, relation.delaySteps);
-    const calculated = calculateContribution(
-      relation,
-      snapshot[relation.originId],
-      (nodeId) => snapshot[nodeId],
-    );
-    if (!calculated.ok)
-      return { ok: false, diagnostics: calculated.diagnostics };
-    const target = contributionsByTarget.get(relation.targetId) ?? [];
-    target.push({ relationId: relation.id, value: calculated.value.value });
-    contributionsByTarget.set(relation.targetId, target);
-    const explanations = explanationsByTarget.get(relation.targetId) ?? [];
-    explanations.push({
-      relationId: relation.id,
-      policyOrEventId: relation.sourceId,
-      consequenceId: relation.consequenceId,
-      originId: relation.originId,
-      targetId: relation.targetId,
-      sourceValue: calculated.value.sourceValue,
-      mechanism: relation.mechanism,
-      parameters: relation.parameters,
-      inputValue: calculated.value.inputValue,
-      ...(relation.normalization
-        ? {
-            divisorId: relation.normalization.divisor,
-            divisorValue: calculated.value.divisorValue,
-          }
-        : {}),
-      contribution: calculated.value.value,
-    });
-    explanationsByTarget.set(relation.targetId, explanations);
-  }
-  const targetExplanations: TargetExplanation[] = [];
-
-  for (const variable of content.variables.variaveis) {
-    const contributions = contributionsByTarget.get(variable.id) ?? [];
-    if (variable.tipo === "calculado") {
-      const combined = combineCalculatedValue(
-        variable.id,
-        variable.valorInicial,
-        contributions,
-      );
-      if (!combined.ok) return { ok: false, diagnostics: combined.diagnostics };
-      if (
-        !inDomain(
-          combined.value.value,
-          variable.dominio.minimo,
-          variable.dominio.maximo,
-        )
-      ) {
-        return failure(
-          `valores.${variable.id}`,
-          `O valor calculado de ${variable.nome} (${variable.id}) foi ${combined.value.value}; domínio permitido: ${variable.dominio.minimo ?? "sem mínimo"} a ${variable.dominio.maximo ?? "sem máximo"}.`,
-        );
+  const activeRelations: GraphRelation[] = graph.relations.filter(
+    (relation) => {
+      // Ligações da rede valem sempre (D-41).
+      if (relation.sourceType === "rede") return true;
+      const requested = requestedIds.has(relation.id);
+      if (relation.duration.modo === "continuo") return requested;
+      if (relation.duration.modo === "unico") {
+        if (!requested || fired.has(relation.id)) return false;
+        fired.add(relation.id);
+        return true;
       }
-      nextValues[variable.id] = combined.value.value;
-      targetExplanations.push({
-        targetId: variable.id,
-        previousValue: execution.values[variable.id],
-        baseValue: variable.valorInicial,
-        contributions: [...(explanationsByTarget.get(variable.id) ?? [])].sort(
-          (left, right) => left.relationId.localeCompare(right.relationId),
-        ),
-        result: combined.value.value,
-      });
-    }
-    if (variable.tipo === "estoque") {
-      const rates: StockRate[] = contributions.map((contribution) => ({
-        ...contribution,
-        unit: graph.relationsById[contribution.relationId].unit,
-      }));
-      const updated = updateStock(
-        variable,
-        execution.values[variable.id],
-        rates,
-        duration,
-      );
-      if (!updated.ok) return { ok: false, diagnostics: updated.diagnostics };
-      nextValues[variable.id] = updated.value.value;
-    }
-  }
+      if (requested && fixedRemaining[relation.id] === undefined)
+        fixedRemaining[relation.id] = relation.duration.passos;
+      if ((fixedRemaining[relation.id] ?? 0) <= 0) return false;
+      fixedRemaining[relation.id] -= 1;
+      return true;
+    },
+  );
+
+  const network = computeNetwork({
+    content,
+    graph,
+    previous: execution.values,
+    controls,
+    activeRelations,
+    readDelayed: (stepsAgo) => readExecutionSnapshot(execution, stepsAgo),
+    duration,
+  });
+  if (!network.ok) return network;
+
   return {
     ok: true,
     value: {
       execution: {
         step: execution.step + 1,
-        values: nextValues,
+        values: network.value.values,
         initialValues: execution.initialValues,
         history: [
           {
@@ -228,9 +131,8 @@ export function advanceExecution(
           fixedRemaining,
         },
       },
-      explanations: targetExplanations.sort((left, right) =>
-        left.targetId.localeCompare(right.targetId),
-      ),
+      explanations: network.value.explanations,
+      intensities: network.value.intensities,
     },
   };
 }
