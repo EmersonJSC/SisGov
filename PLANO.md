@@ -612,7 +612,7 @@ data, commit e teste.
 - [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · `18f4fdb` · valores substituídos pelo SG136 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
 
 **M1 — A rede do país**
-- [x] SG135 Formato de lei v2 e catálogo comum — 09/out · ver commit SG135 · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
+- [x] SG135 Formato de lei v2 e catálogo comum — 09/out · `d0d655b` · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
 - [ ] SG136 Ficha do país v2: economia e orçamento completo
 - [ ] SG141 Mecanismos não lineares no motor
 - [ ] SG142 Rede de indicadores do Brasil
