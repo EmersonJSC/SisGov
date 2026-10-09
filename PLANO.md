@@ -796,7 +796,7 @@ referência para reestimar ao fim de cada marco.
 | D-02 | 3 passos mensais por turno (técnica, revisável). Manter SG057-A e FIX-V1-02 | 09/out | Fase 2 |
 | D-03 | Motor não conhece nomes de leis, partidos ou países; só variáveis e relações | 08/out | contrato-motor-json; reafirmado na Fase 2 |
 | D-04 | Catálogo de leis comum; país declara só o estado inicial; lei ausente não é proibida | 08/out | contrato-motor-json |
-| D-05 | Personagens no MVP: só visuais (nome, retrato, partido, cargo, vínculo); estrutura pronta para mecânica futura | 09/out | Fase 2 |
+| D-05 | ~~Substituída por D-32.~~ Personagens no MVP: só visuais (nome, retrato, partido, cargo, vínculo); estrutura pronta para mecânica futura | 09/out | Fase 2 |
 | D-06 | Ordem do jogo: (1) ciclo básico → (2) instituições, reforma e ruptura → (3) personagens com mecânica | 09/out | Fase 2 |
 | D-07 | Golpe e reforma constitucional são sistemas distintos | 09/out | Fase 2 |
 | D-08 | Senado simulado por UF, com cadeiras, vencimentos e renovação 2/1 | 09/out | Fase 2 |
@@ -821,6 +821,10 @@ referência para reestimar ao fim de cada marco.
 | D-27 | Limites e custos em dinheiro na lei são relativos (% do PIB ou do orçamento); o país pode declarar limites próprios absolutos | 09/out | este plano |
 | D-28 | O gasto ou a receita de cada lei está sempre visível (ano e mês) | 09/out | decisão do autor |
 | D-29 | Valores do Brasil: inventados, mas nas proporções aproximadas do país (R$ bi/ano, PIB 12.000); receitas e despesas fora das leis entram como agregados | 09/out | decisão do autor |
+| D-30 | **Prioridade = a rede do país.** Decisões se propagam por leis e indicadores; o ciclo político (apoio, votação, eleição) é derivado da rede, não um sistema paralelo. Marcos a reordenar | 09/out | alinhamento com o autor |
+| D-31 | O jogador é um partido que acabou de vencer a eleição; no início da partida ele dá nome ao partido | 09/out | alinhamento com o autor |
+| D-32 | Personagens na V1: retratos gerados por IA ficam numa pasta própria (só imagens); nome, cargo e história são gerados na partida a partir de JSONs de nomes e de histórias que se relacionam | 09/out | alinhamento com o autor; substitui D-05 |
+| D-33 | As ~100 leis do laboratório (`d4ReferenceSandbox`) eram exemplos visuais e podem ser apagadas; o mapa passa a mostrar só conteúdo real | 09/out | alinhamento com o autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
