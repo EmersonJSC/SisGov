@@ -1,6 +1,7 @@
 import {
   createExecution,
   createPackageContentIdentity,
+  resolveInheritedLawLevels,
   type ContentDiagnostic,
   type ElectoralLawDefinition,
   type EngineExecution,
@@ -103,26 +104,25 @@ export function createGame(
   const seen = new Set<string>();
   const policies: PolicyState[] = [];
   for (const [index, initial] of (
-    content.initialState.politicasVigentes ?? []
+    content.initialState.leisVigentes ?? []
   ).entries()) {
-    const field = `politicasVigentes.${index}`;
-    if (seen.has(initial.politica))
-      return failure(
-        content,
-        field,
-        `Política vigente duplicada: ${initial.politica}.`,
-      );
-    seen.add(initial.politica);
-    const definition = policyLevelRulesFromContent(content, initial.politica);
+    const field = `leisVigentes[${index}]`;
+    if (seen.has(initial.lei))
+      return failure(content, field, `Lei vigente duplicada: ${initial.lei}.`);
+    seen.add(initial.lei);
+    const definition = policyLevelRulesFromContent(content, initial.lei);
     if (!definition.ok)
       return failure(content, field, definition.diagnostics[0].message);
     const { policy, rules } = definition.value;
+    const levels = resolveInheritedLawLevels(policy, initial);
+    if (!levels.ok)
+      return failure(content, `${field}.${levels.field}`, levels.message);
     const state = createInheritedPolicyState(
       {
         id: `${id}:policy:${policy.id}`,
         policyDefinitionId: policy.id,
-        desiredLevel: initial.nivelDesejado,
-        implementedLevel: initial.nivelImplantado,
+        desiredLevel: levels.desiredLevel,
+        implementedLevel: levels.implementedLevel,
         scenarioId: content.manifest.id,
         inheritedAtTurn: 0,
       },

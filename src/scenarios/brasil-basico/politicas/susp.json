@@ -1,7 +1,8 @@
 {
   "id": "lei-13675-susp",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Prevenção e cooperação em segurança",
   "descricao": "Recursos para prevenção, capacitação e cooperação entre os integrantes do SUSP.",
   "area": "Segurança",
@@ -9,8 +10,10 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_prevencao_seguranca",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": [
     "susp-melhora-seguranca",

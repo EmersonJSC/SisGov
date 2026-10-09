@@ -81,11 +81,10 @@ export function measureFinances(
     if (
       !known &&
       policy.controle.unidade === "moeda_milhoes_2024_ano" &&
-      policy.controle.modo === "orcamento"
+      policy.grupo === "orcamentaria"
     ) {
       known = true;
-      if (policy.tipo === "imposto") income = Math.abs(values[id] ?? 0);
-      else expense = Math.abs(values[id] ?? 0);
+      expense = Math.abs(values[id] ?? 0);
     }
     result.set(id, { value: known ? income + expense : null, income, expense });
   }

@@ -73,12 +73,41 @@ export function policyLevelRulesFromContent(
       rules: {
         policyDefinitionId: policy.id,
         unit: control.unidade,
-        domain: {
-          minimum: control.dominio.minimo,
-          maximum: control.dominio.maximo,
-        },
+        domain: intersectDomain(
+          control.dominio.minimo,
+          control.dominio.maximo,
+          percentLimits(policy),
+        ),
         options: policy.controle.opcoes?.map((option) => option.valor),
       },
     },
+  };
+}
+
+/** Limites em % escritos na lei (percentual do orçamento e alíquota). */
+function percentLimits(
+  policy: PolicyFile,
+): Readonly<{ minimo?: number; maximo?: number }> | undefined {
+  if (policy.orcamento?.modo === "percentual_orcamento")
+    return policy.orcamento.limites;
+  return policy.tributo?.limites;
+}
+
+/** O nível respeita ao mesmo tempo o domínio do país e o limite da lei. */
+function intersectDomain(
+  minimum: number,
+  maximum: number | undefined,
+  limits: Readonly<{ minimo?: number; maximo?: number }> | undefined,
+): PolicyLevelRules["domain"] {
+  const lawMinimum = limits?.minimo;
+  const lawMaximum = limits?.maximo;
+  return {
+    minimum: lawMinimum === undefined ? minimum : Math.max(minimum, lawMinimum),
+    maximum:
+      lawMaximum === undefined
+        ? maximum
+        : maximum === undefined
+          ? lawMaximum
+          : Math.min(maximum, lawMaximum),
   };
 }

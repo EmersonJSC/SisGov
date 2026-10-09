@@ -192,22 +192,10 @@ it("changes identity when country content changes", () => {
 it("reports invalid inherited policies before a game is created", () => {
   const loaded = brasil();
   const content = structuredClone(loaded.definition);
-  content.initialState.politicasVigentes = [
-    {
-      politica: "politica-ausente",
-      nivelDesejado: 1,
-      nivelImplantado: 1,
-    },
-    {
-      politica: "atencao-basica",
-      nivelDesejado: 999999,
-      nivelImplantado: 999999,
-    },
-    {
-      politica: "atencao-basica",
-      nivelDesejado: 4000,
-      nivelImplantado: 4000,
-    },
+  content.initialState.leisVigentes = [
+    { lei: "politica-ausente", nivel: 1 },
+    { lei: "atencao-basica", nivel: 999999 },
+    { lei: "atencao-basica", nivel: 4000 },
   ];
   const result = validatePackageCoherence(content);
   expect(result.ok).toBe(false);
@@ -215,15 +203,15 @@ it("reports invalid inherited policies before a game is created", () => {
     expect(result.diagnostics).toMatchObject([
       {
         file: "brasil-primeiro-cenario/estado-inicial.json",
-        field: "politicasVigentes.0.politica",
+        field: "leisVigentes[0].lei",
       },
       {
         file: "brasil-primeiro-cenario/estado-inicial.json",
-        field: "politicasVigentes.1",
+        field: "leisVigentes[1]",
       },
       {
         file: "brasil-primeiro-cenario/estado-inicial.json",
-        field: "politicasVigentes.2.politica",
+        field: "leisVigentes[2].lei",
       },
     ]);
 });

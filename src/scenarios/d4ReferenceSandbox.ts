@@ -208,8 +208,10 @@ export function createD4ReferenceSandbox(): {
     const number = String(index + 1).padStart(3, "0");
     return {
       id: `politica-${number}`,
-      tipo: area === "Fazenda" ? ("imposto" as const) : ("programa" as const),
-      versaoEsquema: 1 as const,
+      tipo: "lei" as const,
+      versaoEsquema: 2 as const,
+      grupo: "orcamentaria" as const,
+      orcamento: { modo: "valor_fixo" as const },
       nome: name,
       descricao: `Política de referência adaptada para testar a esfera de ${area} e suas consequências no SisGov.`,
       area,
@@ -218,7 +220,6 @@ export function createD4ReferenceSandbox(): {
       processoAutorizacao: "execucao-programa-autorizado",
       controle: {
         variavel: `verba_${number}`,
-        modo: "orcamento",
         unidade: "moeda_milhoes_2024_ano",
       },
       consequencias: [

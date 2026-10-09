@@ -53,16 +53,17 @@ function validPackage(): Record<string, string> {
     }),
     "politicas/material-escolar.json": content({
       id: "material-escolar",
-      tipo: "programa",
-      versaoEsquema: 1,
+      tipo: "lei",
+      versaoEsquema: 2,
+      grupo: "orcamentaria",
       nome: "Material escolar",
       descricao: "Exemplo artificial.",
       processoAutorizacao: "decisao-executiva",
       controle: {
         variavel: "verba_educacao",
-        modo: "verba",
         unidade: "moeda_por_passo",
       },
+      orcamento: { modo: "valor_fixo" },
       consequencias: ["melhora-educacao"],
     }),
     "consequencias/melhora-educacao.json": content({
@@ -252,10 +253,13 @@ describe("validatePackageCoherence — regras de nível (SG102)", () => {
     const files = validPackage();
     files["politicas/material-escolar.json"] = files[
       "politicas/material-escolar.json"
-    ].replace(
-      '"unidade":"moeda_por_passo"}',
-      '"unidade":"moeda_por_passo","opcoes":[{"valor":-1,"rotulo":"Negativo"}]}',
-    );
+    ]
+      .replace('"grupo":"orcamentaria"', '"grupo":"regulatoria"')
+      .replace(',"orcamento":{"modo":"valor_fixo"}', "")
+      .replace(
+        '"unidade":"moeda_por_passo"}',
+        '"unidade":"moeda_por_passo","opcoes":[{"id":"a","rotulo":"A","valor":-1},{"id":"b","rotulo":"B","valor":0},{"id":"c","rotulo":"C","valor":1}]}',
+      );
     const resolved = resolvePackage("cenario.json", files);
     expect(resolved.ok).toBe(true);
     if (resolved.ok)
@@ -271,31 +275,114 @@ describe("validatePackageCoherence — regras de nível (SG102)", () => {
   });
 });
 
-describe("validatePackageCoherence — moeda fiscal (SG103)", () => {
-  it("recusa impacto fiscal em moeda diferente da ficha do país", () => {
+describe("validatePackageCoherence — moeda fiscal (SG103/SG135)", () => {
+  it("recusa lei de valor fixo fora da moeda anual da ficha do país", () => {
     const files = validPackage();
     files["estado-inicial.json"] = files["estado-inicial.json"].replace(
       '"valores":',
       '"fiscal":{"periodoInicial":"2026-01","referenciaPrecos":"2024","unidadeMonetaria":"creditos","origem":{"tipo":"hipotese","descricao":"Teste."},"caixa":0,"dividaTotal":0,"jurosHerdadosMensais":0,"taxaJurosDividaNovaMensal":0},"valores":',
-    );
-    files["politicas/material-escolar.json"] = files[
-      "politicas/material-escolar.json"
-    ].replace(
-      '"consequencias":',
-      '"impactoFiscal":{"natureza":"despesa","valorMensalNaImplantacaoIntegral":1,"nivelImplantacaoIntegral":1,"unidadeMonetaria":"outra"},"consequencias":',
     );
     const resolved = resolvePackage("cenario.json", files);
     expect(resolved.ok).toBe(true);
     if (resolved.ok)
       expect(validatePackageCoherence(resolved.value)).toMatchObject({
         ok: false,
-        diagnostics: [
-          {
-            file: "material-escolar",
-            field: "impactoFiscal.unidadeMonetaria",
-          },
-        ],
+        diagnostics: [{ file: "material-escolar", field: "controle.unidade" }],
       });
+  });
+});
+
+describe("leis v2 (SG135)", () => {
+  function policyWith(change: (law: Record<string, unknown>) => void) {
+    const files = validPackage();
+    const law = JSON.parse(files["politicas/material-escolar.json"]);
+    change(law);
+    files["politicas/material-escolar.json"] = JSON.stringify(law);
+    return resolvePackage("cenario.json", files);
+  }
+
+  it("recusa quantidade escrita na lei", () => {
+    const result = policyWith((law) => {
+      law.impactoFiscal = { natureza: "despesa" };
+    });
+    expect(result).toMatchObject({ ok: false });
+    if (!result.ok)
+      expect(result.diagnostics).toContainEqual(
+        expect.objectContaining({
+          file: "politicas/material-escolar.json",
+          field: "impactoFiscal",
+        }),
+      );
+  });
+
+  it("recusa regulatória com só duas opções (não existe sim ou não)", () => {
+    const result = policyWith((law) => {
+      law.grupo = "regulatoria";
+      delete law.orcamento;
+      (law.controle as Record<string, unknown>).opcoes = [
+        { id: "nao", rotulo: "Não", valor: 0 },
+        { id: "sim", rotulo: "Sim", valor: 1 },
+      ];
+    });
+    expect(result).toMatchObject({ ok: false });
+    if (!result.ok)
+      expect(result.diagnostics).toContainEqual(
+        expect.objectContaining({ field: "controle.opcoes" }),
+      );
+  });
+
+  it("recusa lei sem grupo e lei no esquema antigo", () => {
+    const withoutGroup = policyWith((law) => {
+      delete law.grupo;
+    });
+    const oldSchema = policyWith((law) => {
+      law.tipo = "programa";
+      law.versaoEsquema = 1;
+    });
+    expect(withoutGroup).toMatchObject({
+      ok: false,
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ field: "grupo" }),
+      ]),
+    });
+    expect(oldSchema).toMatchObject({
+      ok: false,
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ field: "tipo" }),
+        expect.objectContaining({ field: "versaoEsquema" }),
+      ]),
+    });
+  });
+
+  it("exige o bloco certo para cada grupo", () => {
+    const tax = policyWith((law) => {
+      law.grupo = "tributaria";
+    });
+    expect(tax).toMatchObject({ ok: false });
+    if (!tax.ok)
+      expect(tax.diagnostics.map((item) => item.field)).toEqual(
+        expect.arrayContaining(["orcamento", "tributo"]),
+      );
+    const validTax = policyWith((law) => {
+      law.grupo = "tributaria";
+      delete law.orcamento;
+      law.tributo = {
+        base: "verba_educacao",
+        limites: { minimo: 0, maximo: 40 },
+      };
+    });
+    expect(validTax).toMatchObject({ ok: true });
+  });
+
+  it("aceita lei percentual do orçamento com limites em %", () => {
+    const result = policyWith((law) => {
+      law.orcamento = {
+        modo: "percentual_orcamento",
+        base: "receita_total",
+        limites: { minimo: 15, maximo: 30 },
+      };
+    });
+    expect(result).toMatchObject({ ok: true });
   });
 });
 

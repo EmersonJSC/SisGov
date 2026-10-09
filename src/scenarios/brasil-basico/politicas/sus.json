@@ -1,7 +1,8 @@
 {
   "id": "lei-8080-sus",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Atenção básica do SUS",
   "descricao": "Recursos federais para ampliar a capacidade de atendimento da atenção básica, dentro do SUS já existente.",
   "area": "Saúde",
@@ -9,8 +10,10 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_atencao_basica",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": ["sus-amplia-acesso", "sus-melhora-saude"],
   "ministerio": "Ministério da Saúde",

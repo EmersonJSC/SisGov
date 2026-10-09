@@ -1,7 +1,8 @@
 {
   "id": "lei-11340-maria-da-penha",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Rede de proteção às mulheres",
   "descricao": "Recursos para equipes, acolhimento e atendimento integrado previstos na Lei Maria da Penha.",
   "area": "Segurança",
@@ -9,8 +10,10 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_protecao_mulheres",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": ["maria-da-penha-amplia-protecao"],
   "ministerio": "Ministério da Justiça e Segurança",

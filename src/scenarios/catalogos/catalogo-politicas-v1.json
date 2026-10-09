@@ -3,11 +3,11 @@
   "tipo": "catalogo-politicas",
   "versaoEsquema": 1,
   "politicas": [
-    "brasil-primeiro-cenario/politicas/atencao-basica.json",
-    "brasil-primeiro-cenario/politicas/protecao-mulheres.json",
-    "brasil-primeiro-cenario/politicas/prevencao-seguranca.json",
-    "brasil-primeiro-cenario/politicas/alimentacao-escolar.json",
-    "brasil-primeiro-cenario/politicas/creches-publicas.json"
+    "catalogos/leis/atencao-basica.json",
+    "catalogos/leis/protecao-mulheres.json",
+    "catalogos/leis/prevencao-seguranca.json",
+    "catalogos/leis/alimentacao-escolar.json",
+    "catalogos/leis/creches-publicas.json"
   ],
   "leisEleitorais": [
     {
@@ -18,7 +18,9 @@
       "instituicao": "presidencia",
       "alcance": "nacional",
       "mecanismo": "pluralidade_nacional",
-      "parametros": { "turnos": 1 }
+      "parametros": {
+        "turnos": 1
+      }
     },
     {
       "id": "eleicao-senatorial-maiores-quotientes",
@@ -28,7 +30,9 @@
       "instituicao": "senado",
       "alcance": "territorial",
       "mecanismo": "maiores_quotientes_por_unidade",
-      "parametros": { "desempate": "d20" }
+      "parametros": {
+        "desempate": "d20"
+      }
     }
   ]
 }

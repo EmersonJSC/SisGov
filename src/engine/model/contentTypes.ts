@@ -48,10 +48,12 @@ export type InitialStateFile = {
   tipo: "estado-inicial";
   versaoEsquema: 1;
   valores: Record<string, number>;
-  politicasVigentes?: readonly {
-    politica: string;
-    nivelDesejado: number;
-    nivelImplantado: number;
+  /** Leis já vigentes no país: nível (ou opção) e, se diferente, o já implantado. */
+  leisVigentes?: readonly {
+    lei: string;
+    nivel?: number;
+    opcao?: string;
+    nivelImplantado?: number;
   }[];
   leisEleitoraisVigentes?: readonly string[];
   fiscal?: FiscalInitialState;
@@ -199,10 +201,38 @@ export type PoliticalOrganizationFile = {
   )[];
 };
 
+/** Os quatro grupos de lei (D-23). */
+export type PolicyGroup =
+  "orcamentaria" | "regulatoria" | "tributaria" | "institucional";
+
+/**
+ * Limites gerais escritos na lei. Valores em dinheiro são relativos ao PIB
+ * (D-27); `minimo`/`maximo` valem para níveis em % (percentual, alíquota).
+ */
+export type PolicyLimits = {
+  minimo?: number;
+  maximo?: number;
+  minimoPercentualPib?: number;
+  maximoPercentualPib?: number;
+};
+
+export type PolicyOption = {
+  id: string;
+  rotulo: string;
+  /** Intensidade que a opção coloca no grafo (definição da opção, não quantidade do país). */
+  valor: number;
+  custoAnualPercentualPib?: number;
+};
+
+/**
+ * Lei do catálogo comum, esquema v2: diz o que a lei é e seus limites, nunca
+ * quanto (D-24). O nível vem do país (`leisVigentes`) ou do jogador.
+ */
 export type PolicyFile = {
   id: string;
-  tipo: "lei" | "imposto" | "programa" | "regulamentacao";
-  versaoEsquema: 1;
+  tipo: "lei";
+  versaoEsquema: 2;
+  grupo: PolicyGroup;
   nome: string;
   descricao: string;
   area?: string;
@@ -211,19 +241,18 @@ export type PolicyFile = {
   icone?: string;
   ministerio?: string;
   respostaTemporal?: { implantacao: number; degradacao: number };
-  impactoFiscal?: {
-    natureza: "receita" | "despesa";
-    valorMensalNaImplantacaoIntegral: number;
-    nivelImplantacaoIntegral: number;
-    unidadeMonetaria: string;
-  };
   processoAutorizacao: string;
   controle: {
     variavel: string;
-    modo: string;
     unidade: string;
-    opcoes?: readonly { valor: number; rotulo: string }[];
+    opcoes?: readonly PolicyOption[];
   };
+  orcamento?: {
+    modo: "valor_fixo" | "percentual_orcamento";
+    base?: "receita_total";
+    limites?: PolicyLimits;
+  };
+  tributo?: { base: string; limites?: PolicyLimits };
   consequencias: string[];
 };
 

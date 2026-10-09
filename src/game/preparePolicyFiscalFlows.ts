@@ -69,19 +69,24 @@ export function preparePolicyFiscalFlows(
   };
 }
 
+/**
+ * Lei orçamentária de valor fixo: o nível implantado é o gasto anual, então o
+ * gasto mensal é nível ÷ 12. Percentual do orçamento, custo de opções
+ * regulatórias e receita tributária entram nos chamados SG136–SG139.
+ */
 function preparePolicyFlow(
   policy: PolicyFile,
   state: PolicyState,
 ): PolicyFiscalFlow | undefined {
-  const impact = policy.impactoFiscal;
-  if (!impact || state.implementedLevel <= 0 || state.status === "encerrada")
+  if (
+    policy.orcamento?.modo !== "valor_fixo" ||
+    state.implementedLevel <= 0 ||
+    state.status === "encerrada"
+  )
     return undefined;
-  const amount =
-    impact.valorMensalNaImplantacaoIntegral *
-    (state.implementedLevel / impact.nivelImplantacaoIntegral);
   return {
     policyDefinitionId: policy.id,
-    nature: impact.natureza === "receita" ? "revenue" : "primaryExpense",
-    amount,
+    nature: "primaryExpense",
+    amount: state.implementedLevel / 12,
   };
 }

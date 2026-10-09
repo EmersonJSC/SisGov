@@ -1,7 +1,8 @@
 {
   "id": "creches-publicas",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Expansão de creches públicas",
   "descricao": "Ajusta o financiamento anual para ampliar vagas e capacidade de atendimento em creches públicas do recorte.",
   "area": "Educação e Cuidados",
@@ -10,8 +11,10 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_creches_publicas",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": [
     "creches-ampliam-participacao",
@@ -20,11 +23,8 @@
     "despesa-creches",
     "saldo-creches"
   ],
-  "respostaTemporal": { "implantacao": 0.14, "degradacao": 0.08 },
-  "impactoFiscal": {
-    "natureza": "despesa",
-    "valorMensalNaImplantacaoIntegral": 41.6666666666667,
-    "nivelImplantacaoIntegral": 500,
-    "unidadeMonetaria": "moeda_milhoes_2024"
+  "respostaTemporal": {
+    "implantacao": 0.14,
+    "degradacao": 0.08
   }
 }

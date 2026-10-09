@@ -1,14 +1,17 @@
 {
   "id": "impulso-ciclico",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Impulso cíclico",
   "descricao": "Política artificial para testar atraso, ciclo e erro de domínio.",
   "processoAutorizacao": "teste-tecnico",
   "controle": {
     "variavel": "impulso",
-    "modo": "intensidade",
     "unidade": "quantidade_por_passo"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": ["impulso-atrasado", "a-alimenta-b", "b-realimenta-a"]
 }

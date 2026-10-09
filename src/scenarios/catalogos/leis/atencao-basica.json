@@ -1,7 +1,8 @@
 {
   "id": "atencao-basica",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Atenção básica do SUS",
   "descricao": "Ajusta o apoio federal à capacidade de atendimento da atenção básica já existente.",
   "area": "Saúde",
@@ -11,8 +12,10 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_atencao_basica",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": [
     "atencao-amplia-cobertura",
@@ -22,11 +25,8 @@
     "despesa-atencao",
     "saldo-atencao"
   ],
-  "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 },
-  "impactoFiscal": {
-    "natureza": "despesa",
-    "valorMensalNaImplantacaoIntegral": 333.3333333333333,
-    "nivelImplantacaoIntegral": 4000,
-    "unidadeMonetaria": "moeda_milhoes_2024"
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.18
   }
 }

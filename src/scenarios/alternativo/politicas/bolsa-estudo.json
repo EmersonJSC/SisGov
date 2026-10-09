@@ -1,14 +1,17 @@
 {
   "id": "bolsa-estudo",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Bolsa de estudo",
   "descricao": "Política artificial para testar pacote independente.",
   "processoAutorizacao": "decisao-executiva",
   "controle": {
     "variavel": "bolsa_estudo",
-    "modo": "verba",
     "unidade": "moeda_por_passo"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": ["amplia-acesso"]
 }

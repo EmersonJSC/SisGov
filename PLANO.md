@@ -215,7 +215,8 @@ máximo **uma** dependência aberta.
 
 #### SG136 — Ficha do país v2: economia e orçamento completo · M
 - **Tarefas:** `economia.pibAnual`; `fiscal.agregados` de receita e despesa;
-  limites próprios do país; fluxo fiscal soma leis + agregados; custo da lei
+  limites próprios do país; aplicar os limites `…PercentualPib` da lei
+  (validados no SG135, ainda sem PIB para aplicar); fluxo fiscal soma leis + agregados; custo da lei
   orçamentária de valor fixo = nível ÷ 12. Substitui os valores do SG103.
 - **Aceite:** um turno do Brasil mostra receita, gasto por lei e por agregado;
   primário ≈ −50/ano e nominal ≈ −950/ano; nada contado duas vezes.
@@ -611,7 +612,7 @@ data, commit e teste.
 - [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · `18f4fdb` · valores substituídos pelo SG136 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
 
 **M1 — A rede do país**
-- [ ] SG135 Formato de lei v2 e catálogo comum
+- [x] SG135 Formato de lei v2 e catálogo comum — 09/out · ver commit SG135 · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
 - [ ] SG136 Ficha do país v2: economia e orçamento completo
 - [ ] SG141 Mecanismos não lineares no motor
 - [ ] SG142 Rede de indicadores do Brasil

@@ -59,7 +59,6 @@ function fixture(
         id: "policy",
         controle: {
           variavel: "control",
-          modo: "intensidade",
           unidade: "quantidade",
         },
         consequencias: consequences.map((effect) => effect.id),

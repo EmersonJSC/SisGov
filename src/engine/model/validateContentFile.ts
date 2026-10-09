@@ -1209,7 +1209,7 @@ function validateInitialState(
       "tipo",
       "versaoEsquema",
       "valores",
-      "politicasVigentes",
+      "leisVigentes",
       "leisEleitoraisVigentes",
       "fiscal",
       "politica",
@@ -1240,27 +1240,49 @@ function validateInitialState(
       }
     }
   }
-  if (
-    value.politicasVigentes !== undefined &&
-    (!Array.isArray(value.politicasVigentes) ||
-      value.politicasVigentes.some(
-        (item) =>
-          !isObject(item) ||
-          typeof item.politica !== "string" ||
-          typeof item.nivelDesejado !== "number" ||
-          !Number.isFinite(item.nivelDesejado) ||
-          typeof item.nivelImplantado !== "number" ||
-          !Number.isFinite(item.nivelImplantado),
-      ))
-  )
-    diagnostics.push(
-      diagnostic(
-        file,
-        "politicasVigentes",
-        "VALOR_INVALIDO",
-        "Cada política vigente exige política, nível desejado e nível implantado finitos.",
-      ),
-    );
+  if (value.leisVigentes !== undefined) {
+    if (!Array.isArray(value.leisVigentes))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "leisVigentes",
+          "TIPO_INVALIDO",
+          "Deve ser uma lista.",
+        ),
+      );
+    else
+      value.leisVigentes.forEach((item, index) => {
+        const field = `leisVigentes[${index}]`;
+        if (!isObject(item)) {
+          diagnostics.push(
+            diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+          );
+          return;
+        }
+        validateKnownFields(
+          item,
+          file,
+          ["lei", "nivel", "opcao", "nivelImplantado"],
+          diagnostics,
+        );
+        requiredString(item, file, `${field}.lei`, diagnostics);
+        if ((item.nivel === undefined) === (item.opcao === undefined))
+          diagnostics.push(
+            diagnostic(
+              file,
+              field,
+              "VALOR_INVALIDO",
+              "Informe nivel (valor ou %) ou opcao (lei com opções), um dos dois.",
+            ),
+          );
+        if (item.nivel !== undefined)
+          requiredNumber(item, file, `${field}.nivel`, diagnostics);
+        if (item.opcao !== undefined)
+          requiredString(item, file, `${field}.opcao`, diagnostics);
+        if (item.nivelImplantado !== undefined)
+          requiredNumber(item, file, `${field}.nivelImplantado`, diagnostics);
+      });
+  }
   if (value.leisEleitoraisVigentes !== undefined)
     requiredStringArray(value, file, "leisEleitoraisVigentes", diagnostics);
   if (value.fiscal !== undefined)
@@ -1888,11 +1910,159 @@ function validateAggregateCreditInitialState(
     );
 }
 
+const policyGroups = new Set([
+  "orcamentaria",
+  "regulatoria",
+  "tributaria",
+  "institucional",
+]);
+
+/** Campos de quantidade do formato antigo: no v2 a quantidade vem do país (D-24). */
+const quantityFields = [
+  "impactoFiscal",
+  "nivel",
+  "nivelInicial",
+  "valor",
+  "valorAnual",
+];
+
+function validatePolicyLimits(
+  value: unknown,
+  file: string,
+  field: string,
+  allowed: readonly string[],
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(value, file, allowed, diagnostics);
+  for (const key of allowed) {
+    if (value[key] === undefined) continue;
+    const amount = requiredNumber(value, file, `${field}.${key}`, diagnostics);
+    if (amount !== undefined && amount < 0)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${field}.${key}`,
+          "VALOR_INVALIDO",
+          "Não pode ser negativo.",
+        ),
+      );
+  }
+  for (const [min, max] of [
+    ["minimo", "maximo"],
+    ["minimoPercentualPib", "maximoPercentualPib"],
+  ]) {
+    const low = value[min];
+    const high = value[max];
+    if (typeof low === "number" && typeof high === "number" && low > high)
+      diagnostics.push(
+        diagnostic(
+          file,
+          field,
+          "VALOR_INVALIDO",
+          `${min} não pode ser maior que ${max}.`,
+        ),
+      );
+  }
+}
+
+function validatePolicyOptions(
+  value: JsonObject,
+  file: string,
+  minimum: number,
+  diagnostics: ContentDiagnostic[],
+): void {
+  const options = value.opcoes;
+  if (!Array.isArray(options)) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        "controle.opcoes",
+        options === undefined ? "CAMPO_AUSENTE" : "TIPO_INVALIDO",
+        `Este grupo de lei exige uma lista de opções (mínimo ${minimum}).`,
+      ),
+    );
+    return;
+  }
+  if (options.length < minimum)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "controle.opcoes",
+        "VALOR_INVALIDO",
+        `Este grupo de lei exige no mínimo ${minimum} opções; não existe lei de sim ou não.`,
+      ),
+    );
+  const ids = new Set<string>();
+  options.forEach((option, index) => {
+    const field = `controle.opcoes[${index}]`;
+    if (!isObject(option)) {
+      diagnostics.push(
+        diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+      return;
+    }
+    validateKnownFields(
+      option,
+      file,
+      ["id", "rotulo", "valor", "custoAnualPercentualPib"],
+      diagnostics,
+    );
+    const id = requiredString(option, file, `${field}.id`, diagnostics);
+    if (id !== undefined) {
+      if (ids.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${field}.id`,
+            "ID_DUPLICADO",
+            `Opção repetida: ${id}.`,
+          ),
+        );
+      ids.add(id);
+    }
+    requiredString(option, file, `${field}.rotulo`, diagnostics);
+    requiredNumber(option, file, `${field}.valor`, diagnostics);
+    if (option.custoAnualPercentualPib !== undefined) {
+      const cost = requiredNumber(
+        option,
+        file,
+        `${field}.custoAnualPercentualPib`,
+        diagnostics,
+      );
+      if (cost !== undefined && cost < 0)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${field}.custoAnualPercentualPib`,
+            "VALOR_INVALIDO",
+            "Não pode ser negativo.",
+          ),
+        );
+    }
+  });
+}
+
 function validatePolicy(
   value: JsonObject,
   file: string,
   diagnostics: ContentDiagnostic[],
 ): PolicyFile | undefined {
+  for (const field of quantityFields)
+    if (value[field] !== undefined)
+      diagnostics.push(
+        diagnostic(
+          file,
+          field,
+          "VALOR_INVALIDO",
+          "A lei não declara quantidade; o nível vem do país ou do jogador (D-24).",
+        ),
+      );
   validateKnownFields(
     value,
     file,
@@ -1900,6 +2070,7 @@ function validatePolicy(
       "id",
       "tipo",
       "versaoEsquema",
+      "grupo",
       "nome",
       "descricao",
       "area",
@@ -1908,26 +2079,52 @@ function validatePolicy(
       "icone",
       "ministerio",
       "respostaTemporal",
-      "impactoFiscal",
       "processoAutorizacao",
       "controle",
+      "orcamento",
+      "tributo",
       "consequencias",
+      ...quantityFields,
     ],
     diagnostics,
   );
-  validateEnvelope(value, file, diagnostics);
+  requiredString(value, file, "id", diagnostics);
+  if (value.tipo !== "lei")
+    diagnostics.push(
+      diagnostic(
+        file,
+        "tipo",
+        "VALOR_INVALIDO",
+        'No esquema v2 toda lei usa tipo "lei"; o grupo diferencia orçamentária, regulatória, tributária e institucional.',
+      ),
+    );
+  if (value.versaoEsquema !== 2)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "versaoEsquema",
+        "VALOR_INVALIDO",
+        "Leis usam o esquema v2.",
+      ),
+    );
+  const group =
+    typeof value.grupo === "string" && policyGroups.has(value.grupo)
+      ? value.grupo
+      : undefined;
+  if (!group)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "grupo",
+        value.grupo === undefined ? "CAMPO_AUSENTE" : "VALOR_INVALIDO",
+        "Use orcamentaria, regulatoria, tributaria ou institucional.",
+      ),
+    );
   requiredString(value, file, "nome", diagnostics);
   requiredString(value, file, "descricao", diagnostics);
-  if (value.area !== undefined)
-    requiredString(value, file, "area", diagnostics);
-  if (value.categoria !== undefined)
-    requiredString(value, file, "categoria", diagnostics);
-  if (value.icone !== undefined)
-    requiredString(value, file, "icone", diagnostics);
-  if (value.fonte !== undefined)
-    requiredString(value, file, "fonte", diagnostics);
-  if (value.ministerio !== undefined)
-    requiredString(value, file, "ministerio", diagnostics);
+  for (const field of ["area", "categoria", "icone", "fonte", "ministerio"])
+    if (value[field] !== undefined)
+      requiredString(value, file, field, diagnostics);
   if (value.respostaTemporal !== undefined) {
     if (!isObject(value.respostaTemporal))
       diagnostics.push(
@@ -1964,10 +2161,9 @@ function validatePolicy(
       }
     }
   }
-  if (value.impactoFiscal !== undefined)
-    validatePolicyFiscalImpact(value.impactoFiscal, file, diagnostics);
   requiredString(value, file, "processoAutorizacao", diagnostics);
   requiredStringArray(value, file, "consequencias", diagnostics);
+
   if (!isObject(value.controle)) {
     diagnostics.push(
       diagnostic(
@@ -1981,116 +2177,132 @@ function validatePolicy(
     validateKnownFields(
       value.controle,
       file,
-      ["variavel", "modo", "unidade", "opcoes"],
+      ["variavel", "unidade", "opcoes"],
       diagnostics,
     );
     requiredString(value.controle, file, "controle.variavel", diagnostics);
-    requiredString(value.controle, file, "controle.modo", diagnostics);
     requiredString(value.controle, file, "controle.unidade", diagnostics);
-    if (value.controle.opcoes !== undefined) {
-      if (!Array.isArray(value.controle.opcoes))
+    if (group === "regulatoria")
+      validatePolicyOptions(value.controle, file, 3, diagnostics);
+    else if (group === "institucional")
+      validatePolicyOptions(value.controle, file, 2, diagnostics);
+    else if (group && value.controle.opcoes !== undefined)
+      diagnostics.push(
+        diagnostic(
+          file,
+          "controle.opcoes",
+          "VALOR_INVALIDO",
+          "Só leis regulatórias e institucionais têm opções.",
+        ),
+      );
+  }
+
+  if (group === "orcamentaria") {
+    if (!isObject(value.orcamento))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "orcamento",
+          value.orcamento === undefined ? "CAMPO_AUSENTE" : "TIPO_INVALIDO",
+          "Lei orçamentária exige o bloco orcamento.",
+        ),
+      );
+    else {
+      validateKnownFields(
+        value.orcamento,
+        file,
+        ["modo", "base", "limites"],
+        diagnostics,
+      );
+      const mode = value.orcamento.modo;
+      if (mode !== "valor_fixo" && mode !== "percentual_orcamento")
         diagnostics.push(
           diagnostic(
             file,
-            "controle.opcoes",
-            "TIPO_INVALIDO",
-            "Deve ser uma lista.",
+            "orcamento.modo",
+            mode === undefined ? "CAMPO_AUSENTE" : "VALOR_INVALIDO",
+            "Use valor_fixo ou percentual_orcamento.",
           ),
         );
-      else
-        value.controle.opcoes.forEach((option, index) => {
-          if (!isObject(option)) {
-            diagnostics.push(
-              diagnostic(
-                file,
-                `controle.opcoes[${index}]`,
-                "TIPO_INVALIDO",
-                "Deve ser um objeto.",
-              ),
-            );
-            return;
-          }
-          validateKnownFields(option, file, ["valor", "rotulo"], diagnostics);
-          requiredNumber(
-            option,
+      if (
+        mode === "percentual_orcamento" &&
+        value.orcamento.base !== "receita_total"
+      )
+        diagnostics.push(
+          diagnostic(
             file,
-            `controle.opcoes[${index}].valor`,
-            diagnostics,
-          );
-          requiredString(
-            option,
+            "orcamento.base",
+            "VALOR_INVALIDO",
+            "O percentual do orçamento usa a base receita_total.",
+          ),
+        );
+      if (mode === "valor_fixo" && value.orcamento.base !== undefined)
+        diagnostics.push(
+          diagnostic(
             file,
-            `controle.opcoes[${index}].rotulo`,
-            diagnostics,
-          );
-        });
+            "orcamento.base",
+            "VALOR_INVALIDO",
+            "Valor fixo não tem base.",
+          ),
+        );
+      if (value.orcamento.limites !== undefined)
+        validatePolicyLimits(
+          value.orcamento.limites,
+          file,
+          "orcamento.limites",
+          mode === "percentual_orcamento"
+            ? ["minimo", "maximo"]
+            : ["minimoPercentualPib", "maximoPercentualPib"],
+          diagnostics,
+        );
     }
-  }
-  return diagnostics.length === 0 ? (value as PolicyFile) : undefined;
-}
+  } else if (value.orcamento !== undefined)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "orcamento",
+        "VALOR_INVALIDO",
+        "Só leis orçamentárias têm o bloco orcamento.",
+      ),
+    );
 
-function validatePolicyFiscalImpact(
-  value: unknown,
-  file: string,
-  diagnostics: ContentDiagnostic[],
-): void {
-  if (!isObject(value)) {
-    diagnostics.push(
-      diagnostic(file, "impactoFiscal", "TIPO_INVALIDO", "Deve ser um objeto."),
-    );
-    return;
-  }
-  validateKnownFields(
-    value,
-    file,
-    [
-      "natureza",
-      "valorMensalNaImplantacaoIntegral",
-      "nivelImplantacaoIntegral",
-      "unidadeMonetaria",
-    ],
-    diagnostics,
-  );
-  if (value.natureza !== "receita" && value.natureza !== "despesa")
+  if (group === "tributaria") {
+    if (!isObject(value.tributo))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "tributo",
+          value.tributo === undefined ? "CAMPO_AUSENTE" : "TIPO_INVALIDO",
+          "Lei tributária exige o bloco tributo.",
+        ),
+      );
+    else {
+      validateKnownFields(
+        value.tributo,
+        file,
+        ["base", "limites"],
+        diagnostics,
+      );
+      requiredString(value.tributo, file, "tributo.base", diagnostics);
+      if (value.tributo.limites !== undefined)
+        validatePolicyLimits(
+          value.tributo.limites,
+          file,
+          "tributo.limites",
+          ["minimo", "maximo"],
+          diagnostics,
+        );
+    }
+  } else if (value.tributo !== undefined)
     diagnostics.push(
       diagnostic(
         file,
-        "impactoFiscal.natureza",
+        "tributo",
         "VALOR_INVALIDO",
-        "Use receita ou despesa.",
+        "Só leis tributárias têm o bloco tributo.",
       ),
     );
-  const monthly = requiredNumber(
-    value,
-    file,
-    "impactoFiscal.valorMensalNaImplantacaoIntegral",
-    diagnostics,
-  );
-  if (monthly !== undefined && monthly < 0)
-    diagnostics.push(
-      diagnostic(
-        file,
-        "impactoFiscal.valorMensalNaImplantacaoIntegral",
-        "VALOR_INVALIDO",
-        "Não pode ser negativo.",
-      ),
-    );
-  const level = requiredNumber(
-    value,
-    file,
-    "impactoFiscal.nivelImplantacaoIntegral",
-    diagnostics,
-  );
-  if (level !== undefined && level <= 0)
-    diagnostics.push(
-      diagnostic(
-        file,
-        "impactoFiscal.nivelImplantacaoIntegral",
-        "VALOR_INVALIDO",
-        "Deve ser maior que zero.",
-      ),
-    );
-  requiredString(value, file, "impactoFiscal.unidadeMonetaria", diagnostics);
+  return diagnostics.length === 0 ? (value as PolicyFile) : undefined;
 }
 
 function validateConsequence(

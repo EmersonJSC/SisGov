@@ -1,3 +1,4 @@
+import { resolveInheritedLawLevels } from "./inheritedLaws";
 import type {
   ContentDiagnostic,
   ValidationResult,
@@ -171,51 +172,49 @@ export function validatePackageCoherence(
 
   const inheritedPolicies = new Set<string>();
   for (const [index, initial] of (
-    content.initialState.politicasVigentes ?? []
+    content.initialState.leisVigentes ?? []
   ).entries()) {
-    const field = `politicasVigentes.${index}.politica`;
-    if (inheritedPolicies.has(initial.politica)) {
+    const field = `leisVigentes[${index}]`;
+    if (inheritedPolicies.has(initial.lei)) {
       diagnostics.push(
         issue(
           initialStateFile,
-          field,
-          `Política vigente duplicada: ${initial.politica}.`,
+          `${field}.lei`,
+          `Lei vigente duplicada: ${initial.lei}.`,
         ),
       );
       continue;
     }
-    inheritedPolicies.add(initial.politica);
-    const policy = policiesById.get(initial.politica);
+    inheritedPolicies.add(initial.lei);
+    const policy = policiesById.get(initial.lei);
     if (!policy) {
       diagnostics.push(
         issue(
           initialStateFile,
-          field,
-          `Política vigente inexistente: ${initial.politica}.`,
+          `${field}.lei`,
+          `Lei vigente inexistente: ${initial.lei}.`,
         ),
+      );
+      continue;
+    }
+    const levels = resolveInheritedLawLevels(policy, initial);
+    if (!levels.ok) {
+      diagnostics.push(
+        issue(initialStateFile, `${field}.${levels.field}`, levels.message),
       );
       continue;
     }
     const control = variablesById.get(policy.controle.variavel);
     if (!control) continue;
     if (
-      !isInDomain(initial.nivelDesejado, control) ||
-      !isInDomain(initial.nivelImplantado, control)
+      !isInDomain(levels.desiredLevel, control) ||
+      !isInDomain(levels.implementedLevel, control)
     )
       diagnostics.push(
         issue(
           initialStateFile,
-          `politicasVigentes.${index}`,
-          `Nível inicial inválido para a política ${initial.politica}.`,
-        ),
-      );
-    const options = policy.controle.opcoes?.map((option) => option.valor);
-    if (options && !options.includes(initial.nivelDesejado))
-      diagnostics.push(
-        issue(
-          initialStateFile,
-          `politicasVigentes.${index}.nivelDesejado`,
-          `Meta inicial não autorizável para a política ${initial.politica}.`,
+          field,
+          `Nível inicial fora do domínio para a lei ${initial.lei}.`,
         ),
       );
   }
@@ -290,14 +289,14 @@ export function validatePackageCoherence(
     const fiscalUnit = content.initialState.fiscal?.unidadeMonetaria;
     if (
       fiscalUnit !== undefined &&
-      policy.impactoFiscal !== undefined &&
-      policy.impactoFiscal.unidadeMonetaria !== fiscalUnit
+      policy.orcamento?.modo === "valor_fixo" &&
+      policy.controle.unidade !== `${fiscalUnit}_ano`
     ) {
       diagnostics.push(
         issue(
           policy.id,
-          "impactoFiscal.unidadeMonetaria",
-          "A moeda do impacto fiscal precisa ser a mesma da ficha fiscal do país.",
+          "controle.unidade",
+          `Lei orçamentária de valor fixo usa a moeda da ficha fiscal por ano (${fiscalUnit}_ano).`,
         ),
       );
     }

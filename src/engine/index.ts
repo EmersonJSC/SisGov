@@ -33,6 +33,9 @@ export type {
   PoliticalInitialState,
   OccurrenceFile,
   PolicyFile,
+  PolicyGroup,
+  PolicyLimits,
+  PolicyOption,
   PolicyCatalogFile,
   PoliticalOrganizationFile,
   ScenarioManifest,
@@ -40,6 +43,11 @@ export type {
   VariablesFile,
 } from "./model/contentTypes";
 export type { PackageFiles, ResolvedPackage } from "./model/resolvePackage";
+export {
+  resolveInheritedLawLevels,
+  type InheritedLawEntry,
+  type InheritedLawLevels,
+} from "./model/inheritedLaws";
 export type {
   GraphNode,
   GraphRelation,

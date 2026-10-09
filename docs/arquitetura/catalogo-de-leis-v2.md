@@ -1,7 +1,8 @@
 # Catálogo de leis v2 — formato e organização
 
 **Estado:** especificação aprovada em 9/out/2026 (decisões D-23 a D-29 do
-[PLANO](../../PLANO.md)). Executada pelos chamados SG135–SG140.
+[PLANO](../../PLANO.md)). **Formato implementado no SG135**; percentual,
+custo de opções, tributos e PIB entram nos chamados SG136–SG140.
 Complementa o [contrato do motor e dos JSONs](contrato-motor-json.md).
 
 ## Regra central
@@ -29,6 +30,9 @@ na ficha da lei, no painel do turno e no diário.
 
 ### Campos comuns
 
+As leis ficam em `src/scenarios/catalogos/leis/` e são listadas pelo
+catálogo (`catalogo-politicas-v1.json`).
+
 ```json
 {
   "id": "atencao-basica",
@@ -39,12 +43,20 @@ na ficha da lei, no painel do turno e no diário.
   "descricao": "…",
   "area": "Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": { "variavel": "recursos_atencao_basica", "unidade": "moeda_milhoes_2024_ano" },
+  "orcamento": { "modo": "valor_fixo" },
   "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 },
-  "consequencias": ["…"],
-  "requisitos": [],
-  "exclusoes": []
+  "consequencias": ["…"]
 }
 ```
+
+- `controle.variavel` liga a lei ao nó do grafo que ela comanda; o domínio
+  dessa variável é o limite do **país**. O limite da **lei** (em %) se soma a
+  ele: vale o mais apertado.
+- Campos de quantidade (`impactoFiscal`, `nivel`, `valor`, `valorAnual`…) na
+  lei são recusados com arquivo e campo.
+- Lei orçamentária de valor fixo usa a moeda da ficha fiscal por ano
+  (`<unidadeMonetaria>_ano`).
 
 ### Orçamentária
 
@@ -70,17 +82,22 @@ na ficha da lei, no painel do turno e no diário.
 ### Regulatória
 
 ```json
-"opcoes": [
-  { "id": "nao-liberar", "rotulo": "Não liberar", "custoAnualPercentualPib": 0 },
-  { "id": "cannabis-medicinal", "rotulo": "Só cannabis medicinal", "custoAnualPercentualPib": 0 },
-  { "id": "cannabis-recreativa", "rotulo": "Cannabis recreativa", "custoAnualPercentualPib": 0 },
-  { "id": "todas", "rotulo": "Todas", "custoAnualPercentualPib": 0 }
-]
+"controle": {
+  "variavel": "liberacao_drogas",
+  "unidade": "nivel_escopo",
+  "opcoes": [
+    { "id": "nao-liberar", "rotulo": "Não liberar", "valor": 0 },
+    { "id": "cannabis-medicinal", "rotulo": "Só cannabis medicinal", "valor": 25 },
+    { "id": "cannabis-recreativa", "rotulo": "Cannabis recreativa", "valor": 60 },
+    { "id": "todas", "rotulo": "Todas", "valor": 100, "custoAnualPercentualPib": 0 }
+  ]
+}
 ```
 
-- Mínimo de **3 opções**, em ordem (da mais restritiva/menor para a maior).
-- No grafo do motor, a opção vira um número (posição na lista); o motor
-  continua sem conhecer nomes de leis.
+- Mínimo de **3 opções** (institucional: 2), com `id` único.
+- `valor` é a intensidade que a opção coloca no grafo — faz parte da
+  definição da opção, não é quantidade do país. O motor continua sem
+  conhecer nomes de leis.
 
 ### Tributária
 
@@ -106,6 +123,7 @@ aqui (M8).
 "economia": { "pibAnual": 12000, "unidadeMonetaria": "moeda_bilhoes_2024" },
 "leisVigentes": [
   { "lei": "atencao-basica", "nivel": 35 },
+  { "lei": "creches-publicas", "nivel": 2, "nivelImplantado": 1.5 },
   { "lei": "piso-saude", "nivel": 15 },
   { "lei": "drogas", "opcao": "cannabis-medicinal" },
   { "lei": "imposto-renda", "nivel": 10 }
@@ -121,6 +139,10 @@ aqui (M8).
   }
 }
 ```
+
+Cada entrada de `leisVigentes` informa `nivel` **ou** `opcao` (lei com
+opções); `nivelImplantado` é opcional e serve para uma lei herdada ainda em
+implantação.
 
 Agregados são o orçamento que **ainda não** é lei. Quando uma lei passa a
 cobrir parte dele, o agregado diminui no mesmo valor: nada é contado duas vezes.

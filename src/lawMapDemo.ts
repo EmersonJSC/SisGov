@@ -979,12 +979,12 @@ function render(
       policy.area ?? policy.categoria,
       (
         {
-          lei: "LEI",
-          imposto: "TRIBUTO",
-          programa: "PROGRAMA",
-          regulamentacao: "REGRA",
+          orcamentaria: "ORÇAMENTO",
+          regulatoria: "REGRA",
+          tributaria: "TRIBUTO",
+          institucional: "INSTITUIÇÃO",
         } as const
-      )[policy.tipo],
+      )[policy.grupo],
       policy.icone,
       compactControlLabel(policy, value),
     );

@@ -30,8 +30,8 @@ it("lê as opções autorizáveis do controle da política", () => {
   const value = content();
   const policy = value.policies.find((item) => item.id === "atencao-basica")!;
   policy.controle.opcoes = [
-    { valor: 3000, rotulo: "Baixo" },
-    { valor: 5000, rotulo: "Alto" },
+    { id: "baixo", valor: 3000, rotulo: "Baixo" },
+    { id: "alto", valor: 5000, rotulo: "Alto" },
   ];
   const result = policyLevelRulesFromContent(value, "atencao-basica");
   expect(result).toMatchObject({

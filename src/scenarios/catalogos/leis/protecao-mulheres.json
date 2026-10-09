@@ -1,7 +1,8 @@
 {
   "id": "protecao-mulheres",
-  "tipo": "programa",
-  "versaoEsquema": 1,
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
   "nome": "Rede de proteção às mulheres",
   "descricao": "Ajusta recursos para equipes, acolhimento e atendimento integrado da rede de proteção.",
   "area": "Mulheres",
@@ -11,19 +12,18 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_protecao_mulheres",
-    "modo": "orcamento",
     "unidade": "moeda_milhoes_2024_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
   },
   "consequencias": [
     "protecao-amplia-rede",
     "despesa-protecao",
     "saldo-protecao"
   ],
-  "respostaTemporal": { "implantacao": 0.22, "degradacao": 0.12 },
-  "impactoFiscal": {
-    "natureza": "despesa",
-    "valorMensalNaImplantacaoIntegral": 20,
-    "nivelImplantacaoIntegral": 240,
-    "unidadeMonetaria": "moeda_milhoes_2024"
+  "respostaTemporal": {
+    "implantacao": 0.22,
+    "degradacao": 0.12
   }
 }

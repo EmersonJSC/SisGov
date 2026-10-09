@@ -42,12 +42,14 @@ describe("advanceExecution", () => {
         }),
         "politica.json": JSON.stringify({
           id: "politica",
-          tipo: "programa",
-          versaoEsquema: 1,
+          tipo: "lei",
+          versaoEsquema: 2,
+          grupo: "orcamentaria",
           nome: "Política",
           descricao: "Teste",
           processoAutorizacao: "decisao-executiva",
-          controle: { variavel: "a", modo: "verba", unidade: "moeda" },
+          controle: { variavel: "a", unidade: "moeda" },
+          orcamento: { modo: "valor_fixo" },
           consequencias: ["ab", "bc"],
         }),
         "ab.json": JSON.stringify({
