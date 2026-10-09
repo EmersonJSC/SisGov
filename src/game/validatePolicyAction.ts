@@ -1,14 +1,11 @@
 import type {
   ContentDiagnostic,
-  PolicyFile,
+  ResolvedPackage,
   ValidationResult,
 } from "../engine";
-import {
-  validatePolicyLevel,
-  type PolicyLevelRules,
-  type Proposal,
-} from "../domain/game";
+import { validatePolicyLevel, type Proposal } from "../domain/game";
 import type { GameState } from "./createGame";
+import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 export type PolicyActionAuthorization = Readonly<{
   requiredActivePolicyIds?: readonly string[];
@@ -52,18 +49,16 @@ function openProposalFor(
  */
 export function validatePolicyAction(
   game: GameState,
-  policy: PolicyFile,
+  content: ResolvedPackage,
+  policyId: string,
   desiredLevel: number,
-  rules: PolicyLevelRules,
   authorization: PolicyActionAuthorization = {},
 ): ValidationResult<PolicyActionValidation> {
+  const definition = policyLevelRulesFromContent(content, policyId);
+  if (!definition.ok) return definition;
+  const { policy, rules } = definition.value;
   const level = validatePolicyLevel(desiredLevel, rules);
   if (!level.ok) return invalid("desiredLevel", level.error.message);
-  if (policy.id !== rules.policyDefinitionId)
-    return invalid(
-      "policy",
-      "A definição e as regras apontam para políticas diferentes.",
-    );
   const active = new Set(
     game.policies
       .filter((state) => state.legalStatus === "vigente")

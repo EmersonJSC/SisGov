@@ -1,14 +1,11 @@
 import type {
   ContentDiagnostic,
-  PolicyFile,
+  ResolvedPackage,
   ValidationResult,
 } from "../engine";
-import {
-  changePolicyTarget,
-  createProposal,
-  type PolicyLevelRules,
-} from "../domain/game";
+import { changePolicyTarget, createProposal } from "../domain/game";
 import type { GameState } from "./createGame";
+import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import {
   validatePolicyAction,
   type PolicyActionAuthorization,
@@ -16,9 +13,8 @@ import {
 
 export type PolicyActionCommand = Readonly<{
   id: string;
-  policy: PolicyFile;
+  policyId: string;
   desiredLevel: number;
-  rules: PolicyLevelRules;
   authorization?: PolicyActionAuthorization;
 }>;
 
@@ -39,26 +35,30 @@ function invalid(field: string, message: string): ValidationResult<never> {
 /** Applies the route returned by the read-only validator as one new snapshot. */
 export function commitPolicyAction(
   game: GameState,
+  content: ResolvedPackage,
   command: PolicyActionCommand,
 ): ValidationResult<GameState> {
   const validated = validatePolicyAction(
     game,
-    command.policy,
+    content,
+    command.policyId,
     command.desiredLevel,
-    command.rules,
     command.authorization,
   );
   if (!validated.ok) return validated;
+  const definition = policyLevelRulesFromContent(content, command.policyId);
+  if (!definition.ok) return definition;
+  const { rules } = definition.value;
   if (!command.id.trim()) return invalid("id", "A ação precisa ter ID.");
   if (validated.value.route === "proposta") {
     const proposal = createProposal(
       {
         id: command.id,
-        policyDefinitionId: command.policy.id,
+        policyDefinitionId: command.policyId,
         desiredLevel: command.desiredLevel,
         createdAtTurn: game.currentTurn,
       },
-      command.rules,
+      rules,
       game.proposals,
     );
     if (!proposal.ok) return invalid("proposal", proposal.error.message);
@@ -68,7 +68,7 @@ export function commitPolicyAction(
     };
   }
   const index = game.policies.findIndex(
-    (state) => state.policyDefinitionId === command.policy.id,
+    (state) => state.policyDefinitionId === command.policyId,
   );
   if (index < 0)
     return invalid("policy", "A rota executiva exige política vigente.");
@@ -76,7 +76,7 @@ export function commitPolicyAction(
     game.policies[index],
     command.desiredLevel,
     game.currentTurn,
-    command.rules,
+    rules,
   );
   if (!changed.ok) return invalid("policy", changed.error.message);
   const policies = [...game.policies];

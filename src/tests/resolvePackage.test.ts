@@ -226,6 +226,51 @@ describe("validatePackageCoherence", () => {
   });
 });
 
+describe("validatePackageCoherence — regras de nível (SG102)", () => {
+  it("recusa variável de controle sem mínimo de domínio", () => {
+    const files = validPackage();
+    files["variaveis.json"] = files["variaveis.json"].replace(
+      '"dominio":{"minimo":0},"valorInicial":0',
+      '"dominio":{},"valorInicial":0',
+    );
+    const resolved = resolvePackage("cenario.json", files);
+    expect(resolved.ok).toBe(true);
+    if (resolved.ok)
+      expect(validatePackageCoherence(resolved.value)).toMatchObject({
+        ok: false,
+        diagnostics: [
+          {
+            code: "COERENCIA_INVALIDA",
+            file: "variaveis-principais",
+            field: "variaveis.verba_educacao.dominio.minimo",
+          },
+        ],
+      });
+  });
+
+  it("recusa opção de política fora do domínio do controle", () => {
+    const files = validPackage();
+    files["politicas/material-escolar.json"] = files[
+      "politicas/material-escolar.json"
+    ].replace(
+      '"unidade":"moeda_por_passo"}',
+      '"unidade":"moeda_por_passo","opcoes":[{"valor":-1,"rotulo":"Negativo"}]}',
+    );
+    const resolved = resolvePackage("cenario.json", files);
+    expect(resolved.ok).toBe(true);
+    if (resolved.ok)
+      expect(validatePackageCoherence(resolved.value)).toMatchObject({
+        ok: false,
+        diagnostics: [
+          {
+            file: "material-escolar",
+            field: "controle.opcoes[0].valor",
+          },
+        ],
+      });
+  });
+});
+
 describe("buildGraph", () => {
   it("preserva duas utilizações da mesma consequência como relações distintas", () => {
     const files = validPackage();

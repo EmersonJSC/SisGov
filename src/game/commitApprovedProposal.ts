@@ -1,10 +1,14 @@
-import type { ContentDiagnostic, ValidationResult } from "../engine";
+import type {
+  ContentDiagnostic,
+  ResolvedPackage,
+  ValidationResult,
+} from "../engine";
 import {
   changePolicyTarget,
   createPolicyStateFromApproval,
-  type PolicyLevelRules,
 } from "../domain/game";
 import type { GameState } from "./createGame";
+import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 function invalid(field: string, message: string): ValidationResult<never> {
   return {
@@ -23,15 +27,19 @@ function invalid(field: string, message: string): ValidationResult<never> {
 /** Makes an approved parliamentary proposal authoritative in the political state. */
 export function commitApprovedProposal(
   game: GameState,
+  content: ResolvedPackage,
   proposalId: string,
-  rules: PolicyLevelRules,
 ): ValidationResult<GameState> {
   const proposal = game.proposals.find((item) => item.id === proposalId);
   if (!proposal) return invalid("proposal.id", "Proposta inexistente.");
   if (proposal.status !== "aprovada")
     return invalid("proposal.status", "A proposta precisa estar aprovada.");
-  if (proposal.policyDefinitionId !== rules.policyDefinitionId)
-    return invalid("proposal.policy", "A regra aponta para outra política.");
+  const definition = policyLevelRulesFromContent(
+    content,
+    proposal.policyDefinitionId,
+  );
+  if (!definition.ok) return definition;
+  const { rules } = definition.value;
   const index = game.policies.findIndex(
     (state) => state.policyDefinitionId === proposal.policyDefinitionId,
   );

@@ -3,7 +3,7 @@ import { createGame } from "../game/createGame";
 import { validatePolicyAction } from "../game/validatePolicyAction";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
-it("encaminha ajuste autorizado sem mutar a partida nem consumir acaso", () => {
+function setup(randomSeed?: number) {
   const loaded = loadDistributedScenario(
     "brasil-primeiro-cenario/cenario.json",
   );
@@ -12,21 +12,16 @@ it("encaminha ajuste autorizado sem mutar a partida nem consumir acaso", () => {
     "validacao",
     loaded.value.definition,
     loaded.value.graph,
-    { randomSeed: 44 },
+    randomSeed === undefined ? {} : { randomSeed },
   );
   if (!created.ok) throw new Error(created.diagnostics[0]?.message);
-  const policy = loaded.value.definition.policies.find(
-    (item) => item.id === "atencao-basica",
-  );
-  if (!policy) throw new Error("política ausente");
-  const before = structuredClone(created.value);
-  expect(
-    validatePolicyAction(created.value, policy, 3800, {
-      policyDefinitionId: policy.id,
-      unit: policy.controle.unidade,
-      domain: { minimum: 0, maximum: 5000 },
-    }),
-  ).toEqual({
+  return { content: loaded.value.definition, game: created.value };
+}
+
+it("encaminha ajuste autorizado sem mutar a partida nem consumir acaso", () => {
+  const { content, game } = setup(44);
+  const before = structuredClone(game);
+  expect(validatePolicyAction(game, content, "atencao-basica", 3800)).toEqual({
     ok: true,
     value: {
       route: "executiva",
@@ -34,43 +29,42 @@ it("encaminha ajuste autorizado sem mutar a partida nem consumir acaso", () => {
       desiredLevel: 3800,
     },
   });
-  expect(created.value).toEqual(before);
+  expect(game).toEqual(before);
+});
+
+it("usa o domínio do JSON: atenção básica abaixo de 2400 é recusada", () => {
+  const { content, game } = setup();
+  expect(
+    validatePolicyAction(game, content, "atencao-basica", 2000),
+  ).toMatchObject({ ok: false, diagnostics: [{ field: "desiredLevel" }] });
+  expect(
+    validatePolicyAction(game, content, "atencao-basica", 6000),
+  ).toMatchObject({ ok: true });
 });
 
 it("bloqueia requisito ausente e encaminha política não vigente para proposta", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
-  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const created = createGame(
-    "validacao",
-    loaded.value.definition,
-    loaded.value.graph,
-  );
-  if (!created.ok) throw new Error(created.diagnostics[0]?.message);
-  const policy = structuredClone(loaded.value.definition.policies[0]);
+  const { content: original, game } = setup();
+  const content = structuredClone(original);
+  const policy = structuredClone(original.policies[0]);
   policy.id = "nova-politica";
+  content.policies = [...content.policies, policy];
   expect(
-    validatePolicyAction(
-      created.value,
-      policy,
-      1,
-      {
-        policyDefinitionId: policy.id,
-        unit: policy.controle.unidade,
-        domain: { minimum: 0, maximum: 2 },
-      },
-      { requiredActivePolicyIds: ["ausente"] },
-    ),
+    validatePolicyAction(game, content, "nova-politica", 1, {
+      requiredActivePolicyIds: ["ausente"],
+    }),
   ).toMatchObject({
     ok: false,
     diagnostics: [{ field: "authorization.requiredActivePolicyIds" }],
   });
-  expect(
-    validatePolicyAction(created.value, policy, 1, {
-      policyDefinitionId: policy.id,
-      unit: policy.controle.unidade,
-      domain: { minimum: 0, maximum: 2 },
-    }),
-  ).toMatchObject({ ok: true, value: { route: "proposta" } });
+  expect(validatePolicyAction(game, content, "nova-politica", 1)).toMatchObject(
+    { ok: true, value: { route: "proposta" } },
+  );
+});
+
+it("recusa política fora do conteúdo", () => {
+  const { content, game } = setup();
+  expect(validatePolicyAction(game, content, "inexistente", 1)).toMatchObject({
+    ok: false,
+    diagnostics: [{ field: "politica" }],
+  });
 });

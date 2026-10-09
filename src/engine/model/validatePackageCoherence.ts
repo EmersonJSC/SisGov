@@ -267,6 +267,26 @@ export function validatePackageCoherence(
         ),
       );
     }
+    if (control.dominio.minimo === undefined) {
+      diagnostics.push(
+        issue(
+          content.variables.id,
+          `variaveis.${control.id}.dominio.minimo`,
+          "Uma variável comandada por política precisa declarar o mínimo do domínio.",
+        ),
+      );
+    }
+    for (const [index, option] of (policy.controle.opcoes ?? []).entries()) {
+      if (!isInDomain(option.valor, control)) {
+        diagnostics.push(
+          issue(
+            policy.id,
+            `controle.opcoes[${index}].valor`,
+            "A opção da política precisa estar dentro do domínio do controle.",
+          ),
+        );
+      }
+    }
     if (policy.controle.unidade !== control.unidade) {
       diagnostics.push(
         issue(

@@ -9,11 +9,11 @@ import {
 import type { ResolvedPackage } from "../engine";
 import {
   createInheritedPolicyState,
-  type PolicyLevelRules,
   type PolicyState,
   type Proposal,
 } from "../domain/game";
 import type { AggregateCreditState, FiscalState } from "../domain/fiscal";
+import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import { createRandomState, type RandomState } from "./randomState";
 
 export type GameState = Readonly<{
@@ -100,12 +100,6 @@ export function createGame(
       : createRandomState(options.randomSeed);
   if (random && !random.ok)
     return failure(content, "random.seed", random.diagnostics[0].message);
-  const policyById = new Map(
-    content.policies.map((policy) => [policy.id, policy]),
-  );
-  const variableById = new Map(
-    content.variables.variaveis.map((variable) => [variable.id, variable]),
-  );
   const seen = new Set<string>();
   const policies: PolicyState[] = [];
   for (const [index, initial] of (
@@ -119,29 +113,10 @@ export function createGame(
         `Política vigente duplicada: ${initial.politica}.`,
       );
     seen.add(initial.politica);
-    const policy = policyById.get(initial.politica);
-    if (!policy)
-      return failure(
-        content,
-        field,
-        `Política inexistente: ${initial.politica}.`,
-      );
-    const control = variableById.get(policy.controle.variavel);
-    if (!control)
-      return failure(
-        content,
-        field,
-        `Controle inexistente para ${initial.politica}.`,
-      );
-    const rules: PolicyLevelRules = {
-      policyDefinitionId: policy.id,
-      unit: control.unidade,
-      domain: {
-        minimum: control.dominio.minimo,
-        maximum: control.dominio.maximo,
-      },
-      options: policy.controle.opcoes?.map((option) => option.valor),
-    };
+    const definition = policyLevelRulesFromContent(content, initial.politica);
+    if (!definition.ok)
+      return failure(content, field, definition.diagnostics[0].message);
+    const { policy, rules } = definition.value;
     const state = createInheritedPolicyState(
       {
         id: `${id}:policy:${policy.id}`,

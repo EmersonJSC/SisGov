@@ -11,6 +11,7 @@ import {
 import { resolveNationalPlurality } from "../game/elections";
 import { commitPresidentialElection } from "../game/commitElection";
 import { createGame } from "../game/createGame";
+import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { prepareProposalTramitation } from "../game/prepareProposalTramitation";
 import { refreshPoliticalSupportForGame } from "../game/refreshPoliticalSupport";
 import { sampleParliamentaryVotesFromState } from "../game/sampleParliamentaryVotes";
@@ -33,11 +34,12 @@ function setup() {
     (item) => item.id === "atencao-basica",
   );
   if (!policy) throw new Error("política ausente");
-  const rules = {
-    policyDefinitionId: policy.id,
-    unit: policy.controle.unidade,
-    domain: { minimum: 0, maximum: 5000 },
-  };
+  const definition = policyLevelRulesFromContent(
+    loaded.value.definition,
+    policy.id,
+  );
+  if (!definition.ok) throw new Error(definition.diagnostics[0]?.message);
+  const { rules } = definition.value;
   const proposal = createProposal(
     {
       id: "aps-aumentar",
@@ -85,7 +87,7 @@ it("percurso: uma medida popular pode ser rejeitada pela bancada", () => {
 });
 
 it("percurso: uma medida impopular pode passar, reagir e decidir a eleição", () => {
-  const { loaded, game, rules } = setup();
+  const { loaded, game } = setup();
   const sample = sampleParliamentaryVotesFromState(
     Array.from({ length: 81 }, () => 1),
     game.random!,
@@ -102,7 +104,11 @@ it("percurso: uma medida impopular pode passar, reagir e decidir a eleição", (
   if (!result.ok) throw new Error(result.diagnostics[0]?.message);
   const voted = commitParliamentaryVote(game, result.value, sample.value);
   if (!voted.ok) throw new Error(voted.diagnostics[0]?.message);
-  const authorized = commitApprovedProposal(voted.value, "aps-aumentar", rules);
+  const authorized = commitApprovedProposal(
+    voted.value,
+    loaded.definition,
+    "aps-aumentar",
+  );
   if (!authorized.ok) throw new Error(authorized.diagnostics[0]?.message);
   const implemented = {
     ...authorized.value,
