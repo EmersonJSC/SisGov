@@ -1,5 +1,8 @@
 # Quadro de chamados do SisGov
 
+> **HISTÓRICO — não é mais atualizado.** O acompanhamento por GitHub Project foi abandonado (D-22). O documento mestre de
+> execução, status e regras de trabalho é o [PLANO.md](../../PLANO.md) (desde 9/out/2026).
+
 **Chamado:** SG002  
 **Área:** Produção e produto  
 **Estado:** Concluído

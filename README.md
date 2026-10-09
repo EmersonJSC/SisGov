@@ -1,100 +1,47 @@
 # SisGov
 
-SisGov é um jogo web de estratégia política e gestão econômica em que a pessoa jogadora representa um partido e conduz o governo enquanto ocupa a Presidência. Propõe políticas definidas em JSON, considera a opinião pública, busca apoio no Senado e observa consequências em um país que já começa com políticas vigentes. A população tem interesses sociais combinados e elege a Presidência e o Senado, com resultados separados e sem duplicar seu peso eleitoral. Na primeira versão, vencer a eleição presidencial inicia outro mandato preservando o estado do país; perder encerra a partida. O motor numérico e a bancada já existem; a próxima fase integra turnos, orçamento, financiamento e regras políticas. O mapa de escala visual continua sendo um laboratório demonstrativo.
+SisGov é um jogo web de estratégia política e gestão econômica em que a pessoa jogadora representa um partido e conduz o governo enquanto ocupa a Presidência. Propõe políticas definidas em JSON, considera a opinião pública, busca apoio no Senado e observa consequências em um país que já começa com políticas vigentes. A população tem interesses sociais combinados e elege a Presidência e o Senado. Vencer a eleição presidencial inicia outro mandato preservando o estado do país; perder encerra a partida.
+
+O motor numérico, o laboratório, o domínio de propostas e o fiscal já existem. A fase atual integra tudo isso num turno real da partida (marco M1 do plano).
 
 ## Antes de começar
 
-Leia estes documentos na ordem abaixo:
+1. **[PLANO.md](PLANO.md)** — documento mestre: o que existe, o que falta, chamados SG100–SG134, regras anti-ciclo e a **única fonte de status** (seção 10).
+2. [Contrato do motor e dos JSONs](docs/arquitetura/contrato-motor-json.md) — limite entre motor e conteúdo; leis, países e estado inicial.
+3. [Modelagem do domínio](docs/arquitetura/modelagem-do-dominio.md) — entidades da partida e seus estados.
+4. [Primeira versão](docs/producao/primeira-versao.md) — público, escopo e critérios de sucesso.
+5. [Mapa de influência](docs/producao/mapa-de-influencia.md) — direção visual aprovada.
+6. [Motor do jogo](docs/motor-do-jogo.md) — proposta técnica do motor.
 
-1. [Plano de produção](docs/plano-de-producao.md): catálogo de chamados, dependências e critérios de aceite.
-2. [Contrato do motor e dos JSONs](docs/arquitetura/contrato-motor-json.md): decisões confirmadas sobre leis, países e limite entre motor e conteúdo.
-3. [Primeira versão](docs/producao/primeira-versao.md): público, escopo e critérios de sucesso do jogo.
-4. [Quadro de chamados](docs/producao/quadro-de-chamados.md): estados e fluxo de acompanhamento.
-5. [Motor do jogo](docs/motor-do-jogo.md): proposta técnica do motor de simulação.
-6. [Estudo Democracy 4](docs/Estudo%20Democracy%204%20Politicas%20Grupos%20e%20Efeitos.docx): referência de pesquisa; não é um contrato de conteúdo para o jogo.
-
-A direção visual aprovada está em [Mapa de influência](docs/producao/mapa-de-influencia.md): esferas ministeriais, resultados externos e interface de jogo.
-
-A próxima etapa está detalhada em [Turnos, política e economia jogável](docs/producao/sg057-proxima-fase-e-economia.md).
-
-A revisão de 7 de outubro fixa a primeira versão jogável: Presidência em turno
-único; Senado renovado alternadamente em duas e uma cadeira por estado/DF;
-votação parlamentar com acaso controlado; e tramitação normalmente de um turno,
-com no máximo um adiamento. A economia inicial usa financiamento automático,
-juros herdados separados dos juros simples da dívida nova e consequências
-políticas graduais. Inflação, rating, crise fiscal e bancos ficam para depois.
-Essas regras são planejamento, ainda não a descrição de um jogo já integrado.
-
-Também há versões Word do plano e do motor em `docs/`. O Markdown é o texto
-mestre; a cópia Word do plano não foi sincronizada nesta revisão de 7 de outubro.
+Documentos em `docs/producao/sg0xx-*`, o [plano de produção antigo](docs/plano-de-producao.md) e `docs/historico/` são registro histórico: explicam decisões passadas, mas não definem status. `docs/Exemplos/` e o estudo do Democracy 4 são referência de pesquisa, não contrato de conteúdo.
 
 ## Estrutura
 
-- `src/engine`: contratos e cálculo do motor de simulação.
-- `src/scenarios`: definições de cenários e conteúdo do jogo.
-- `src/ui`: componentes de interface.
-- `src/types`: tipos compartilhados.
-- `src/tests`: testes automatizados.
-- `src/assets`: recursos estáticos da interface.
-- `docs/producao`: decisões e processos de produção.
-- `docs`: plano, proposta do motor e referências de pesquisa.
-- `.github/workflows`: verificações executadas no GitHub Actions.
+- `src/engine`: motor de simulação (só variáveis, relações e mecanismos).
+- `src/domain`: regras de domínio puras (propostas, políticas vigentes, fiscal).
+- `src/game`: partida — criação, preparo e commit do turno, votações, eleições.
+- `src/scenarios`: conteúdo JSON (cenário Brasil).
+- `src/ui`: componentes React.
+- `src/tests`: testes automatizados (Vitest).
+- `docs/`: plano, arquitetura, produção e referências.
 
-## Ambiente de desenvolvimento
+## Ambiente
 
-Versões verificadas em 26 de setembro de 2026:
-
-- Node.js 22.23.2
-- npm 12.0.2
-
-Instale as dependências a partir do lockfile:
+Verificado em 9 de outubro de 2026: Node.js 22.23.2, npm 10.9.8.
 
 ```bash
-npm ci
+npm ci          # instalar dependências
+npm run dev     # ambiente de desenvolvimento
+npm run check   # formatação, lint, tipos, build e testes
 ```
 
-## Comandos
+Em 9 de outubro de 2026, `npm run check` passou com 194 testes em 51 arquivos.
 
-Iniciar o ambiente de desenvolvimento:
+## Como trabalhar
 
-```bash
-npm run dev
-```
+Projeto pessoal, trabalho direto na `main` (decisão D-22 do plano).
 
-Executar os testes:
-
-```bash
-npm test
-```
-
-Gerar uma versão de produção e validar os tipos:
-
-```bash
-npm run build
-```
-
-Em 26 de setembro de 2026, `npm run build` e `npm test` concluíram com sucesso. Os testes executados foram 2, sem falhas.
-
-## Verificação local
-
-Execute todas as verificações antes de concluir um chamado:
-
-```bash
-npm run check
-```
-
-O comando confere formatação, lint, tipos, build e testes.
-
-## Como trabalhar em um chamado
-
-1. No plano de produção, escolha um chamado com dependências concluídas e mova sua issue para **Em andamento** no GitHub Project.
-2. Crie uma branch a partir da `main` atualizada com o padrão `codex/sgNNN-resumo-curto`.
-3. Faça uma alteração pequena e verificável. Antes de editar um arquivo, confira se não há outro chamado ativo que o altere.
-4. Execute `npm run check` e revise o diff como pessoa usuária do percurso afetado.
-5. Registre na issue a branch, a verificação executada, o resultado, a evidência do aceite e as decisões tomadas. Em seguida, mova o cartão para **Concluído**.
-
-Para regras sobre commits, integração, revisão e sobreposição de arquivos, consulte o [fluxo de branches e revisão](docs/producao/fluxo-de-branches-e-revisao.md).
-
-## Situações de bloqueio
-
-Se uma dependência estiver pendente, um comando falhar ou outra alteração estiver no mesmo arquivo, mova o chamado para **Bloqueado**. Registre o motivo, o que falta e quem pode resolver. Não contorne o bloqueio criando escopo novo sem atualizar o plano.
+1. Pegue o próximo chamado aberto na seção 10 do [PLANO.md](PLANO.md).
+2. Faça só o que o chamado pede; ideia nova vai para o backlog (seção 8).
+3. Rode `npm run check`. Verde = aceite técnico.
+4. Commit com o ID do chamado (`SG1NN: …`) e marque `[x]` na seção 10 com data, commit e teste.

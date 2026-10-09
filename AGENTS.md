@@ -1,15 +1,23 @@
 # Referências obrigatórias do SisGov
 
-Antes de planejar ou alterar motor político, leis, países, eleições ou estados de
-chamados, leia [docs/arquitetura/contrato-motor-json.md](docs/arquitetura/contrato-motor-json.md)
-e o trecho pertinente de [docs/plano-de-producao.md](docs/plano-de-producao.md).
+O documento mestre é o [PLANO.md](PLANO.md). Antes de qualquer trabalho, leia a
+seção 10 (status), o chamado em questão e as **regras anti-ciclo da seção 7**,
+que são obrigatórias. Antes de alterar motor político, leis, países ou eleições,
+leia também [docs/arquitetura/contrato-motor-json.md](docs/arquitetura/contrato-motor-json.md).
+`docs/plano-de-producao.md` é apenas histórico.
 
-Não trate parâmetros do JSON inicial do Brasil como constantes universais do
-motor. Definições de leis pertencem ao catálogo compartilhado; o JSON de cada
-país declara apenas seu estado inicial. Lei ausente inicialmente não é proibida.
-Não marque um chamado como concluído enquanto algum pré-requisito obrigatório
-estiver aberto. Diferencie contrato documentado, código isolado, integração na
-partida e funcionamento em tela.
+- Um chamado por sessão; ao fim, atualize a seção 10 do PLANO (data, commit,
+  teste). Status só existe lá.
+- Aceite = critério do chamado + `npm run check` verde. Trabalho direto na
+  `main` (D-22).
+- Não escreva aceites do tipo "conclui quando X integrar" (R-03). Na 3ª
+  iteração sem fechar, reavalie o chamado (R-05). Se repetir a mesma correção
+  duas vezes, pare e registre o bloqueio (R-10).
+- Não trate parâmetros do JSON inicial do Brasil como constantes universais do
+  motor. Definições de leis pertencem ao catálogo compartilhado; o JSON de cada
+  país declara apenas seu estado inicial. Lei ausente inicialmente não é proibida.
+- Valor numérico ausente vira hipótese marcada (`origem: "hipotese"`); só
+  mecanismo novo exige decisão (R-09).
 
 ## Coordenação com subagentes
 

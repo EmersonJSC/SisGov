@@ -144,17 +144,18 @@ máximo **uma** dependência aberta.
 - **Tarefas:** rodar `npm run check`; corrigir falhas de tipo/lint/teste sem
   acrescentar funcionalidade; renomear `politicalPath.test.ts` para
   `politicalPath.demo.test.ts` com comentário "valores forçados, não é aceite";
-  commitar em `sg100-base-local` e integrar na `main`.
+  commitar na `main` (D-22).
 - **Arquivos:** `src/game/*`, `src/domain/fiscal/*`, `src/tests/*`.
-- **Aceite:** `main` contém todo o trabalho local; CI verde; nenhum arquivo de
-  código fica fora do git.
-- **Testar:** CI no GitHub + `npm run check` local.
+- **Aceite:** `main` contém todo o trabalho local; `npm run check` verde;
+  nenhum arquivo de código fica fora do git.
+- **Testar:** `npm run check` local.
 - **Depende de:** — · **Libera:** SG102, SG103.
 
 #### SG101 — Consolidar a documentação · P
 - **Objetivo:** uma única fonte de verdade.
 - **Tarefas:** publicar este `PLANO.md` como mestre; cabeçalho "histórico" no
-  `docs/plano-de-producao.md`; mover a cópia Word para `docs/historico/`;
+  `docs/plano-de-producao.md`, `quadro-de-chamados.md` e
+  `fluxo-de-branches-e-revisao.md`; mover a cópia Word para `docs/historico/`;
   README apontando para o PLANO e com contagem de testes atual; `AGENTS.md`
   apontando para o PLANO e para as regras anti-ciclo.
 - **Arquivos:** `PLANO.md`, `README.md`, `AGENTS.md`, `docs/plano-de-producao.md`.
@@ -747,6 +748,7 @@ referência para reestimar ao fim de cada marco.
 | D-19 | Código sem commit do GPT é base a revisar (SG100), não entrega aceita | 09/out | este plano (assumida; confirmar) |
 | D-20 | SG060-C fica no backlog, com o código preservado | 09/out | este plano (assumida; confirmar) |
 | D-21 | O MVP inclui interface jogável (critério de sucesso 1 exige observar na tela) | 09/out | primeira-versao; este plano |
+| D-22 | Projeto pessoal e local: trabalho direto na `main`, sem branch por chamado, PR, GitHub Project ou CI como aceite. Aceite = `npm run check` verde na máquina local. Push ao GitHub é opcional | 09/out | decisão do autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -758,8 +760,8 @@ Marque `[x]` só com o aceite demonstrado e `npm run check` verde. Anote ao lado
 data, commit e teste.
 
 **M0 — Base**
-- [ ] SG100 Verificar e versionar o trabalho local
-- [ ] SG101 Consolidar a documentação
+- [x] SG100 Verificar e versionar o trabalho local — 09/out · `7ca2afd` · check verde, 194 testes / 51 arquivos
+- [x] SG101 Consolidar a documentação — 09/out · ver commit SG101 · check verde
 - [ ] SG102 Regras de nível lidas do conteúdo
 - [ ] SG103 Ficha fiscal do Brasil (hipótese)
 

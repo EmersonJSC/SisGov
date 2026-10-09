@@ -1,5 +1,8 @@
 # Fluxo de branches e revisão
 
+> **HISTÓRICO — não é mais atualizado.** O trabalho agora é direto na `main` (D-22). O documento mestre de
+> execução, status e regras de trabalho é o [PLANO.md](../../PLANO.md) (desde 9/out/2026).
+
 **Chamado:** SG005  
 **Área:** Produção e produto  
 **Estado:** Concluído

@@ -1,5 +1,8 @@
 # Plano de produção do SisGov
 
+> **HISTÓRICO — não é mais atualizado.** Registro dos chamados SG001–SG099. O documento mestre de
+> execução, status e regras de trabalho é o [PLANO.md](../PLANO.md) (desde 9/out/2026).
+
 7 de outubro de 2026 • Decisões de jogabilidade consolidadas após revisão
 
 ## Direção vigente do projeto
