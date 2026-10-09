@@ -633,7 +633,7 @@ data, commit e teste.
 **M1 — A rede do país**
 - [x] SG135 Formato de lei v2 e catálogo comum — 09/out · `d0d655b` · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
 - [x] SG153 Mundo e país separados — 09/out · `ab160f7` · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
-- [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · ver commit SG136 · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
+- [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [ ] SG141 Mecanismos não lineares no motor
 - [ ] SG142 Rede de indicadores do Brasil
 - [ ] SG137 Leis orçamentárias completas
