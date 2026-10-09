@@ -4,9 +4,7 @@ import { createGame } from "../game/createGame";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function brasil() {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   return loaded.value;
 }
@@ -21,7 +19,7 @@ it("creates independent games from the same country without advancing simulation
   expect(first.value).toMatchObject({
     currentTurn: 0,
     proposals: [],
-    scenario: { id: "brasil-primeiro-cenario" },
+    scenario: { id: "brasil" },
     execution: { step: 0 },
   });
   expect(first.value.policies).toHaveLength(5);
@@ -45,7 +43,7 @@ it("creates independent games from the same country without advancing simulation
     ),
   ).toMatchObject({
     policyDefinitionId: "atencao-basica",
-    origin: { kind: "herdada", scenarioId: "brasil-primeiro-cenario" },
+    origin: { kind: "herdada", scenarioId: "brasil" },
   });
 
   first.value.execution.values.recursos_atencao_basica = 999;
@@ -162,7 +160,7 @@ it("rejects an empty game identity with an initial-state diagnostic", () => {
     ok: false,
     diagnostics: [
       {
-        file: "brasil-primeiro-cenario/estado-inicial.json",
+        file: "paises/brasil/estado-inicial.json",
         field: "id",
       },
     ],
@@ -202,15 +200,15 @@ it("reports invalid inherited policies before a game is created", () => {
   if (!result.ok)
     expect(result.diagnostics).toMatchObject([
       {
-        file: "brasil-primeiro-cenario/estado-inicial.json",
+        file: "paises/brasil/estado-inicial.json",
         field: "leisVigentes[0].lei",
       },
       {
-        file: "brasil-primeiro-cenario/estado-inicial.json",
+        file: "paises/brasil/estado-inicial.json",
         field: "leisVigentes[1]",
       },
       {
-        file: "brasil-primeiro-cenario/estado-inicial.json",
+        file: "paises/brasil/estado-inicial.json",
         field: "leisVigentes[2].lei",
       },
     ]);

@@ -13,7 +13,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("execução contínua e retomada", () => {
   it("mantém trajetória, explicações, histórico e pendências iguais", () => {
-    const loaded = loadDistributedScenario("exemplo/cenario.json");
+    const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
     if (!loaded.ok) throw new Error("O cenário deveria carregar.");
     const originalRelation = loaded.value.graph.relations[0];
     const delayedRelation = { ...originalRelation, delaySteps: 1 };

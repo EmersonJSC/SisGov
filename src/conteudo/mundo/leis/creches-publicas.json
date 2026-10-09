@@ -1,0 +1,30 @@
+{
+  "id": "creches-publicas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Expansão de creches públicas",
+  "descricao": "Financia a ampliação de vagas e a capacidade de atendimento em creches públicas.",
+  "area": "Educação e Cuidados",
+  "icone": "creche",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_creches_publicas",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
+  },
+  "consequencias": [
+    "creches-ampliam-participacao",
+    "creches-ampliam-oportunidades",
+    "oportunidades-reduzem-violencia",
+    "despesa-creches",
+    "saldo-creches"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.14,
+    "degradacao": 0.08
+  }
+}

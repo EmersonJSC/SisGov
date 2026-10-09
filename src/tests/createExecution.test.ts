@@ -4,7 +4,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("createExecution", () => {
   it("cria partidas independentes sem alterar o pacote", () => {
-    const loaded = loadDistributedScenario("exemplo/cenario.json");
+    const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
 
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
@@ -27,7 +27,7 @@ describe("createExecution", () => {
   });
 
   it("usa os valores iniciais quando ainda não existe histórico suficiente", () => {
-    const loaded = loadDistributedScenario("exemplo/cenario.json");
+    const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
 

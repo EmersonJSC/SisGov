@@ -93,9 +93,7 @@ it("recusa contagem impossível ou proposta fora de votação", () => {
 });
 
 it("aplica a decisão em um novo snapshot da partida", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -130,9 +128,7 @@ it("aplica a decisão em um novo snapshot da partida", () => {
 });
 
 it("confirma a decisão e o avanço do sorteio no mesmo snapshot", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "partida-voto-aleatorio",

@@ -1,0 +1,38 @@
+{
+  "id": "catalogo-politicas-v1",
+  "tipo": "catalogo-politicas",
+  "versaoEsquema": 1,
+  "politicas": [
+    "mundo/leis/atencao-basica.json",
+    "mundo/leis/protecao-mulheres.json",
+    "mundo/leis/prevencao-seguranca.json",
+    "mundo/leis/alimentacao-escolar.json",
+    "mundo/leis/creches-publicas.json"
+  ],
+  "leisEleitorais": [
+    {
+      "id": "eleicao-presidencial-pluralidade-nacional",
+      "nome": "Eleição presidencial por pluralidade nacional",
+      "ambito": "constitucional",
+      "eleicao": "presidencial",
+      "instituicao": "presidencia",
+      "alcance": "nacional",
+      "mecanismo": "pluralidade_nacional",
+      "parametros": {
+        "turnos": 1
+      }
+    },
+    {
+      "id": "eleicao-senatorial-maiores-quotientes",
+      "nome": "Eleição senatorial por maiores quocientes territoriais",
+      "ambito": "constitucional",
+      "eleicao": "senatorial",
+      "instituicao": "senado",
+      "alcance": "territorial",
+      "mecanismo": "maiores_quotientes_por_unidade",
+      "parametros": {
+        "desempate": "d20"
+      }
+    }
+  ]
+}

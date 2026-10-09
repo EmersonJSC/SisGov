@@ -8,9 +8,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("primeiro cenário brasileiro", () => {
   it("carrega o estado herdado e conserva a base sem nova decisão", () => {
-    const loaded = loadDistributedScenario(
-      "brasil-primeiro-cenario/cenario.json",
-    );
+    const loaded = loadDistributedScenario("paises/brasil/pais.json");
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
 

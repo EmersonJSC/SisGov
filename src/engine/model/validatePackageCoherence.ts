@@ -16,6 +16,7 @@ const supportedUnits = new Set([
   "quantidade",
   "quantidade_por_passo",
   "moeda_milhoes_2024_ano",
+  "moeda_ano",
   "nivel_escopo",
   "taxa_por_100_mil",
 ]);
@@ -170,6 +171,22 @@ export function validatePackageCoherence(
     }
   }
 
+  const ownLimits = new Map<string, { minimo?: number; maximo?: number }>();
+  for (const [index, limit] of (
+    content.initialState.limitesProprios ?? []
+  ).entries()) {
+    const field = `limitesProprios[${index}].lei`;
+    if (!policiesById.has(limit.lei))
+      diagnostics.push(
+        issue(initialStateFile, field, `Lei inexistente: ${limit.lei}.`),
+      );
+    else if (ownLimits.has(limit.lei))
+      diagnostics.push(
+        issue(initialStateFile, field, `Limite repetido para ${limit.lei}.`),
+      );
+    else ownLimits.set(limit.lei, limit);
+  }
+
   const inheritedPolicies = new Set<string>();
   for (const [index, initial] of (
     content.initialState.leisVigentes ?? []
@@ -206,9 +223,14 @@ export function validatePackageCoherence(
     }
     const control = variablesById.get(policy.controle.variavel);
     if (!control) continue;
+    const limit = ownLimits.get(initial.lei);
+    const withinOwnLimit = (level: number) =>
+      (limit?.minimo === undefined || level >= limit.minimo) &&
+      (limit?.maximo === undefined || level <= limit.maximo);
     if (
       !isInDomain(levels.desiredLevel, control) ||
-      !isInDomain(levels.implementedLevel, control)
+      !isInDomain(levels.implementedLevel, control) ||
+      !withinOwnLimit(levels.desiredLevel)
     )
       diagnostics.push(
         issue(
@@ -286,17 +308,16 @@ export function validatePackageCoherence(
         );
       }
     }
-    const fiscalUnit = content.initialState.fiscal?.unidadeMonetaria;
     if (
-      fiscalUnit !== undefined &&
+      content.initialState.fiscal !== undefined &&
       policy.orcamento?.modo === "valor_fixo" &&
-      policy.controle.unidade !== `${fiscalUnit}_ano`
+      policy.controle.unidade !== "moeda_ano"
     ) {
       diagnostics.push(
         issue(
           policy.id,
           "controle.unidade",
-          `Lei orçamentária de valor fixo usa a moeda da ficha fiscal por ano (${fiscalUnit}_ano).`,
+          "Lei orçamentária de valor fixo usa moeda_ano; a moeda concreta vem do país.",
         ),
       );
     }

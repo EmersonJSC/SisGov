@@ -1,0 +1,30 @@
+{
+  "id": "brasil",
+  "tipo": "cenario",
+  "unidadeTemporal": "trimestre",
+  "versaoEsquema": 1,
+  "nome": "Brasil",
+  "mundo": "mundo/mundo.json",
+  "perfis": [
+    {
+      "id": "dependencia-rede-publica",
+      "nome": "Maior dependência da rede pública",
+      "peso": 0.55,
+      "interesses": [
+        "acesso à saúde",
+        "saúde",
+        "proteção",
+        "segurança cotidiana",
+        "saldo disponível"
+      ]
+    },
+    {
+      "id": "trabalho-circulacao-violencia",
+      "nome": "Trabalho e circulação sob pressão da violência",
+      "peso": 0.45,
+      "interesses": ["violência", "saldo disponível", "saúde", "proteção"]
+    }
+  ],
+  "organizacaoPolitica": "paises/brasil/organizacao-politica.json",
+  "estadoInicial": "paises/brasil/estado-inicial.json"
+}

@@ -20,7 +20,8 @@ Documentos em `docs/producao/sg0xx-*`, o [plano de produção antigo](docs/plano
 - `src/engine`: motor de simulação (só variáveis, relações e mecanismos).
 - `src/domain`: regras de domínio puras (propostas, políticas vigentes, fiscal).
 - `src/game`: partida — criação, preparo e commit do turno, votações, eleições.
-- `src/scenarios`: conteúdo JSON (cenário Brasil).
+- `src/conteudo`: conteúdo JSON — `mundo/` (leis, rede) e `paises/` (pacotes iniciais). Ver o [README do conteúdo](src/conteudo/README.md).
+- `src/scenarios`: carregador do conteúdo e o laboratório demonstrativo.
 - `src/ui`: componentes React.
 - `src/tests`: testes automatizados (Vitest).
 - `docs/`: plano, arquitetura, produção e referências.

@@ -9,7 +9,7 @@ import { preparePolicyExecution } from "../game/preparePolicyExecution";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("keeps a fixed-duration effect after legal revocation and zero implementation", () => {
-  const loaded = loadDistributedScenario("exemplo/cenario.json");
+  const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
   if (!loaded.ok) throw new Error("O cenário de teste deveria carregar.");
   const content = {
     ...loaded.value.definition,

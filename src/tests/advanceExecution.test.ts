@@ -9,7 +9,7 @@ import {
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function example() {
-  const loaded = loadDistributedScenario("exemplo/cenario.json");
+  const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
   if (!loaded.ok) throw new Error("O pacote de exemplo deveria carregar.");
   return loaded.value;
 }
@@ -214,7 +214,7 @@ describe("advanceExecution", () => {
   });
 
   it("aplica no turno seguinte uma consequência com atraso de um passo", () => {
-    const loaded = loadDistributedScenario("alternativo/cenario.json");
+    const loaded = loadDistributedScenario("testes/alternativo/cenario.json");
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
     const { definition, graph } = loaded.value;

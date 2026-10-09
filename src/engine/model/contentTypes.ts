@@ -2,11 +2,34 @@ export const supportedMechanisms = ["afim"] as const;
 
 export type SupportedMechanism = (typeof supportedMechanisms)[number];
 
+/**
+ * O mundo: tudo que vale para qualquer país (D-38). Um país só declara seu
+ * pacote inicial e aponta para o mundo.
+ */
+export type WorldFile = {
+  id: string;
+  tipo: "mundo";
+  versaoEsquema: 1;
+  nome: string;
+  variaveis: string;
+  catalogoPoliticas: string;
+  consequencias: string[];
+  eventos?: string[];
+  situacoes?: string[];
+  dilemas?: string[];
+};
+
+/**
+ * Manifesto do pacote. Um país usa `mundo`; os pacotes de teste podem listar
+ * variáveis, leis e consequências diretamente. Depois de resolvido, o
+ * manifesto sempre traz as listas efetivas.
+ */
 export type ScenarioManifest = {
   id: string;
   tipo: "cenario";
   versaoEsquema: 1;
   nome: string;
+  mundo?: string;
   unidadeTemporal?: "mes" | "trimestre";
   estadoInicial: string;
   variaveis: string;
@@ -48,6 +71,12 @@ export type InitialStateFile = {
   tipo: "estado-inicial";
   versaoEsquema: 1;
   valores: Record<string, number>;
+  /** Limites que o país impõe a uma lei, além dos limites da própria lei. */
+  limitesProprios?: readonly {
+    lei: string;
+    minimo?: number;
+    maximo?: number;
+  }[];
   /** Leis já vigentes no país: nível (ou opção) e, se diferente, o já implantado. */
   leisVigentes?: readonly {
     lei: string;
@@ -297,6 +326,7 @@ export type OccurrenceFile = {
 
 export type ContentFile =
   | ScenarioManifest
+  | WorldFile
   | VariablesFile
   | InitialStateFile
   | PolicyCatalogFile

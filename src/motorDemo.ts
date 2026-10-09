@@ -888,7 +888,7 @@ for (const scenario of listDistributedScenarios()) {
   const option = document.createElement("option");
   option.value = scenario.path;
   option.textContent = scenario.name;
-  option.selected = scenario.path === "exemplo/cenario.json";
+  option.selected = scenario.path === "testes/exemplo/cenario.json";
   scenarioSelect.append(option);
 }
 const invalidScenarioOption = document.createElement("option");

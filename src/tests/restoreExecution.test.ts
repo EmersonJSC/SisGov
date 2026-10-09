@@ -3,7 +3,7 @@ import { createExecution, exportExecution, restoreExecution } from "../engine";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function setup() {
-  const loaded = loadDistributedScenario("exemplo/cenario.json");
+  const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
   if (!loaded.ok) throw new Error("O cenário deveria carregar.");
   const execution = createExecution(
     loaded.value.definition,

@@ -19,9 +19,7 @@ type TrajectoryPoint = Readonly<{
 }>;
 
 function runAttentionTrajectory(target: number): readonly TrajectoryPoint[] {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error("Cenário inválido");
   const { definition: content, graph } = loaded.value;
   const attention = content.policies.find(
@@ -95,9 +93,7 @@ describe("SG055 — cenários de referência", () => {
   });
 
   it("permite alterar alimentação escolar e propaga o efeito para educação", () => {
-    const loaded = loadDistributedScenario(
-      "brasil-primeiro-cenario/cenario.json",
-    );
+    const loaded = loadDistributedScenario("paises/brasil/pais.json");
     if (!loaded.ok) throw new Error("Cenário inválido");
     const { definition: content, graph } = loaded.value;
     const schoolMeals = content.policies.find(

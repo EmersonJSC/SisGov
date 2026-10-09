@@ -13,6 +13,7 @@ import type {
   PoliticalOrganizationFile,
   ScenarioManifest,
   VariablesFile,
+  WorldFile,
 } from "./contentTypes";
 
 export type PackageFiles = Readonly<Record<string, string>>;
@@ -212,7 +213,28 @@ export function resolvePackage(
     diagnostics,
   );
   if (!rawManifest) return { ok: false, diagnostics };
-  const manifest = rawManifest as ScenarioManifest;
+  const declaredManifest = rawManifest as ScenarioManifest;
+  const world = declaredManifest.mundo
+    ? (expectType(
+        readFile(declaredManifest.mundo, files, diagnostics),
+        ["mundo"],
+        declaredManifest.mundo,
+        diagnostics,
+      ) as WorldFile | undefined)
+    : undefined;
+  if (declaredManifest.mundo && !world) return { ok: false, diagnostics };
+  // O país aponta para o mundo; o restante do motor vê as listas efetivas.
+  const manifest: ScenarioManifest = world
+    ? {
+        ...declaredManifest,
+        variaveis: world.variaveis,
+        catalogoPoliticas: world.catalogoPoliticas,
+        consequencias: world.consequencias,
+        eventos: world.eventos,
+        situacoes: world.situacoes,
+        dilemas: world.dilemas,
+      }
+    : declaredManifest;
 
   const initialState = expectType(
     readFile(manifest.estadoInicial, files, diagnostics),
@@ -281,6 +303,7 @@ export function resolvePackage(
     ...dilemmas,
   ];
   if (politicalOrganization) allFiles.push(politicalOrganization);
+  if (world) allFiles.push(world);
   if (policyCatalog) allFiles.push(policyCatalog);
   if (initialState) allFiles.push(initialState);
   if (variables) allFiles.push(variables);
@@ -288,6 +311,7 @@ export function resolvePackage(
   const pathsById: Record<string, string> = {};
   const declaredPaths = [
     manifestPath,
+    ...(manifest.mundo ? [manifest.mundo] : []),
     manifest.estadoInicial,
     manifest.variaveis,
     ...(manifest.catalogoPoliticas ? [manifest.catalogoPoliticas] : []),

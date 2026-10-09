@@ -4,9 +4,7 @@ import { createGame } from "../game/createGame";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function setup() {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame("acoes", loaded.value.definition, loaded.value.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);

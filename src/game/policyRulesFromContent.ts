@@ -73,10 +73,18 @@ export function policyLevelRulesFromContent(
       rules: {
         policyDefinitionId: policy.id,
         unit: control.unidade,
-        domain: intersectDomain(
-          control.dominio.minimo,
-          control.dominio.maximo,
-          percentLimits(policy),
+        // Domínio do nó no mundo, apertado pelo limite da lei e pelo do país.
+        domain: narrow(
+          narrow(
+            {
+              minimum: control.dominio.minimo,
+              maximum: control.dominio.maximo,
+            },
+            percentLimits(policy),
+          ),
+          content.initialState.limitesProprios?.find(
+            (limit) => limit.lei === policy.id,
+          ),
         ),
         options: policy.controle.opcoes?.map((option) => option.valor),
       },
@@ -93,21 +101,20 @@ function percentLimits(
   return policy.tributo?.limites;
 }
 
-/** O nível respeita ao mesmo tempo o domínio do país e o limite da lei. */
-function intersectDomain(
-  minimum: number,
-  maximum: number | undefined,
-  limits: Readonly<{ minimo?: number; maximo?: number }> | undefined,
+type Limits = Readonly<{ minimo?: number; maximo?: number }> | undefined;
+
+/** Aperta um domínio com um limite: vale sempre o mais restritivo. */
+function narrow(
+  domain: PolicyLevelRules["domain"],
+  limits: Limits,
 ): PolicyLevelRules["domain"] {
-  const lawMinimum = limits?.minimo;
-  const lawMaximum = limits?.maximo;
-  return {
-    minimum: lawMinimum === undefined ? minimum : Math.max(minimum, lawMinimum),
-    maximum:
-      lawMaximum === undefined
-        ? maximum
-        : maximum === undefined
-          ? lawMaximum
-          : Math.min(maximum, lawMaximum),
-  };
+  const minimum =
+    limits?.minimo === undefined
+      ? domain.minimum
+      : Math.max(domain.minimum ?? limits.minimo, limits.minimo);
+  const maximum =
+    limits?.maximo === undefined
+      ? domain.maximum
+      : Math.min(domain.maximum ?? limits.maximo, limits.maximo);
+  return { minimum, maximum };
 }

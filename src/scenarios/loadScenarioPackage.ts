@@ -38,12 +38,12 @@ export function loadScenarioPackage(
 
 const distributedFiles = Object.fromEntries(
   Object.entries(
-    import.meta.glob<string>("./**/*.json", {
+    import.meta.glob<string>("../conteudo/**/*.json", {
       eager: true,
       query: "?raw",
       import: "default",
     }),
-  ).map(([path, text]) => [path.slice(2), text]),
+  ).map(([path, text]) => [path.slice("../conteudo/".length), text]),
 );
 
 export function loadDistributedScenario(
@@ -65,7 +65,9 @@ export type DistributedScenarioSummary = Readonly<{
 /** Descobre manifestos distribuídos para que conteúdo novo não exija cadastro na interface. */
 export function listDistributedScenarios(): readonly DistributedScenarioSummary[] {
   return Object.keys(distributedFiles)
-    .filter((path) => path.endsWith("/cenario.json"))
+    .filter(
+      (path) => path.endsWith("/cenario.json") || path.endsWith("/pais.json"),
+    )
     .flatMap((path) => {
       const loaded = loadDistributedScenario(path);
       return loaded.ok

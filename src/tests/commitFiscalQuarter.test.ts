@@ -5,9 +5,7 @@ import { prepareFiscalQuarter } from "../game/prepareFiscalQuarter";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("confirma o fiscal em um novo snapshot sem alterar a partida anterior", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -38,9 +36,7 @@ it("confirma o fiscal em um novo snapshot sem alterar a partida anterior", () =>
 });
 
 it("não confirma trimestre fiscal em partida sem configuração fiscal", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.fiscal;

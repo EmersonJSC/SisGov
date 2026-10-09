@@ -6,9 +6,7 @@ import { buildFiscalQuarterReport } from "../game/fiscalReport";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("prepara e confirma motor e fiscal juntos em três meses", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -43,9 +41,7 @@ it("prepara e confirma motor e fiscal juntos em três meses", () => {
 });
 
 it("não prepara turno integrado sem ficha fiscal", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.fiscal;
@@ -63,9 +59,7 @@ it("não prepara turno integrado sem ficha fiscal", () => {
 });
 
 it("leva os custos das cinco políticas ao financiamento mensal do trimestre", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -122,9 +116,7 @@ it("leva os custos das cinco políticas ao financiamento mensal do trimestre", (
 });
 
 it("SG103: o Brasil real tem ficha fiscal e um turno gera resultado finito", () => {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "brasil-fiscal",

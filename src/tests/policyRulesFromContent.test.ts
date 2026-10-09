@@ -3,9 +3,7 @@ import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function content() {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   return structuredClone(loaded.value.definition);
 }
@@ -18,7 +16,7 @@ it("lê domínio e unidade da variável de controle do JSON", () => {
     value: {
       rules: {
         policyDefinitionId: "atencao-basica",
-        unit: "moeda_milhoes_2024_ano",
+        unit: "moeda_ano",
         domain: { minimum: 2400, maximum: 6000 },
         options: undefined,
       },

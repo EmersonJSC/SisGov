@@ -9,7 +9,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("tempo das políticas no exemplo", () => {
   it("preserva os resultados durante o atraso e degrada gradualmente depois", () => {
-    const loaded = loadDistributedScenario("brasil-basico/cenario.json");
+    const loaded = loadDistributedScenario("testes/brasil-basico/cenario.json");
     if (!loaded.ok) throw new Error("Pacote inválido");
     const { definition: content, graph } = loaded.value;
     let execution = createExecution(content, graph);

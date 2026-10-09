@@ -4,7 +4,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("exportExecution", () => {
   it("exporta identidade, execução, histórico e ocorrências sem compartilhar objetos", () => {
-    const loaded = loadDistributedScenario("exemplo/cenario.json");
+    const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
     if (!loaded.ok) throw new Error("O cenário deveria carregar.");
     const execution = createExecution(
       loaded.value.definition,

@@ -13,6 +13,7 @@ import {
   type PoliticalOrganizationFile,
   type ScenarioManifest,
   type VariablesFile,
+  type WorldFile,
 } from "./contentTypes";
 
 type JsonObject = Record<string, unknown>;
@@ -150,6 +151,7 @@ function validateManifest(
       "tipo",
       "versaoEsquema",
       "nome",
+      "mundo",
       "estadoInicial",
       "variaveis",
       "politicas",
@@ -186,16 +188,46 @@ function validateManifest(
     "estadoInicial",
     diagnostics,
   );
-  const variaveis = requiredString(value, file, "variaveis", diagnostics);
+  const world =
+    value.mundo === undefined
+      ? undefined
+      : requiredString(value, file, "mundo", diagnostics);
+  if (world !== undefined) {
+    for (const field of [
+      "variaveis",
+      "politicas",
+      "catalogoPoliticas",
+      "consequencias",
+      "eventos",
+      "situacoes",
+      "dilemas",
+    ])
+      if (value[field] !== undefined)
+        diagnostics.push(
+          diagnostic(
+            file,
+            field,
+            "VALOR_INVALIDO",
+            "Um país que usa mundo não declara conteúdo do mundo; ele vem de mundo.",
+          ),
+        );
+  }
+  const variaveis =
+    world !== undefined
+      ? world
+      : requiredString(value, file, "variaveis", diagnostics);
   const politicas =
-    value.politicas === undefined
+    world !== undefined || value.politicas === undefined
       ? undefined
       : requiredStringArray(value, file, "politicas", diagnostics);
   const catalogoPoliticas =
-    value.catalogoPoliticas === undefined
+    world !== undefined || value.catalogoPoliticas === undefined
       ? undefined
       : requiredString(value, file, "catalogoPoliticas", diagnostics);
-  if ((politicas === undefined) === (catalogoPoliticas === undefined))
+  if (
+    world === undefined &&
+    (politicas === undefined) === (catalogoPoliticas === undefined)
+  )
     diagnostics.push(
       diagnostic(
         file,
@@ -204,12 +236,10 @@ function validateManifest(
         "Informe exatamente politicas ou catalogoPoliticas.",
       ),
     );
-  const consequencias = requiredStringArray(
-    value,
-    file,
-    "consequencias",
-    diagnostics,
-  );
+  const consequencias =
+    world !== undefined
+      ? []
+      : requiredStringArray(value, file, "consequencias", diagnostics);
   for (const field of ["eventos", "situacoes", "dilemas"] as const) {
     if (value[field] !== undefined)
       requiredStringArray(value, file, field, diagnostics);
@@ -251,11 +281,44 @@ function validateManifest(
     !nome ||
     !estadoInicial ||
     !variaveis ||
-    (!politicas && !catalogoPoliticas) ||
+    (world === undefined && !politicas && !catalogoPoliticas) ||
     !consequencias
   )
     return undefined;
   return value as ScenarioManifest;
+}
+
+function validateWorld(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): WorldFile | undefined {
+  validateKnownFields(
+    value,
+    file,
+    [
+      "id",
+      "tipo",
+      "versaoEsquema",
+      "nome",
+      "variaveis",
+      "catalogoPoliticas",
+      "consequencias",
+      "eventos",
+      "situacoes",
+      "dilemas",
+    ],
+    diagnostics,
+  );
+  validateEnvelope(value, file, diagnostics);
+  requiredString(value, file, "nome", diagnostics);
+  requiredString(value, file, "variaveis", diagnostics);
+  requiredString(value, file, "catalogoPoliticas", diagnostics);
+  requiredStringArray(value, file, "consequencias", diagnostics);
+  for (const field of ["eventos", "situacoes", "dilemas"] as const)
+    if (value[field] !== undefined)
+      requiredStringArray(value, file, field, diagnostics);
+  return diagnostics.length === 0 ? (value as WorldFile) : undefined;
 }
 
 function validatePolicyCatalog(
@@ -1210,6 +1273,7 @@ function validateInitialState(
       "versaoEsquema",
       "valores",
       "leisVigentes",
+      "limitesProprios",
       "leisEleitoraisVigentes",
       "fiscal",
       "politica",
@@ -1281,6 +1345,60 @@ function validateInitialState(
           requiredString(item, file, `${field}.opcao`, diagnostics);
         if (item.nivelImplantado !== undefined)
           requiredNumber(item, file, `${field}.nivelImplantado`, diagnostics);
+      });
+  }
+  if (value.limitesProprios !== undefined) {
+    if (!Array.isArray(value.limitesProprios))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "limitesProprios",
+          "TIPO_INVALIDO",
+          "Deve ser uma lista.",
+        ),
+      );
+    else
+      value.limitesProprios.forEach((item, index) => {
+        const field = `limitesProprios[${index}]`;
+        if (!isObject(item)) {
+          diagnostics.push(
+            diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+          );
+          return;
+        }
+        validateKnownFields(
+          item,
+          file,
+          ["lei", "minimo", "maximo"],
+          diagnostics,
+        );
+        requiredString(item, file, `${field}.lei`, diagnostics);
+        const low =
+          item.minimo === undefined
+            ? undefined
+            : requiredNumber(item, file, `${field}.minimo`, diagnostics);
+        const high =
+          item.maximo === undefined
+            ? undefined
+            : requiredNumber(item, file, `${field}.maximo`, diagnostics);
+        if (low === undefined && high === undefined)
+          diagnostics.push(
+            diagnostic(
+              file,
+              field,
+              "CAMPO_AUSENTE",
+              "Informe minimo, maximo ou ambos.",
+            ),
+          );
+        if (low !== undefined && high !== undefined && low > high)
+          diagnostics.push(
+            diagnostic(
+              file,
+              field,
+              "VALOR_INVALIDO",
+              "minimo não pode ser maior que maximo.",
+            ),
+          );
       });
   }
   if (value.leisEleitoraisVigentes !== undefined)
@@ -2596,6 +2714,7 @@ export function validateContentFile(
   const diagnostics: ContentDiagnostic[] = [];
   let value: ContentFile | undefined;
   if (tipo === "cenario") value = validateManifest(parsed, file, diagnostics);
+  else if (tipo === "mundo") value = validateWorld(parsed, file, diagnostics);
   else if (tipo === "organizacao-politica")
     value = validatePoliticalOrganization(parsed, file, diagnostics);
   else if (tipo === "variaveis")

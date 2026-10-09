@@ -9,8 +9,8 @@ describe("loadDistributedScenario", () => {
   it("descobre todos os manifestos válidos sem cadastro na interface", () => {
     expect(listDistributedScenarios()).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ path: "exemplo/cenario.json" }),
-        expect.objectContaining({ path: "inclusao/cenario.json" }),
+        expect.objectContaining({ path: "testes/exemplo/cenario.json" }),
+        expect.objectContaining({ path: "testes/inclusao/cenario.json" }),
       ]),
     );
   });
@@ -30,7 +30,9 @@ describe("loadDistributedScenario", () => {
   });
 
   it("carrega o pacote JSON distribuído sem cadastro manual de arquivos", () => {
-    expect(loadDistributedScenario("exemplo/cenario.json")).toMatchObject({
+    expect(
+      loadDistributedScenario("testes/exemplo/cenario.json"),
+    ).toMatchObject({
       ok: true,
       value: {
         definition: { manifest: { id: "pais-exemplo" } },
@@ -48,7 +50,9 @@ describe("loadDistributedScenario", () => {
   });
 
   it("carrega outro país artificial pelo mesmo fluxo", () => {
-    expect(loadDistributedScenario("alternativo/cenario.json")).toMatchObject({
+    expect(
+      loadDistributedScenario("testes/alternativo/cenario.json"),
+    ).toMatchObject({
       ok: true,
       value: {
         definition: { manifest: { id: "pais-alternativo" } },
@@ -66,7 +70,9 @@ describe("loadDistributedScenario", () => {
   });
 
   it("identifica ciclo e componente isolado no laboratório de extremos", () => {
-    expect(loadDistributedScenario("extremos/cenario.json")).toMatchObject({
+    expect(
+      loadDistributedScenario("testes/extremos/cenario.json"),
+    ).toMatchObject({
       ok: true,
       value: {
         definition: {
@@ -82,7 +88,9 @@ describe("loadDistributedScenario", () => {
   });
 
   it("carrega a lei e o evento adicionados somente por JSON", () => {
-    expect(loadDistributedScenario("inclusao/cenario.json")).toMatchObject({
+    expect(
+      loadDistributedScenario("testes/inclusao/cenario.json"),
+    ).toMatchObject({
       ok: true,
       value: {
         definition: {
@@ -116,13 +124,13 @@ describe("loadDistributedScenario", () => {
     );
     const reordered = Object.fromEntries(Object.entries(files).reverse());
 
-    expect(loadScenarioPackage("exemplo/cenario.json", files)).toEqual(
-      loadScenarioPackage("exemplo/cenario.json", reordered),
+    expect(loadScenarioPackage("testes/exemplo/cenario.json", files)).toEqual(
+      loadScenarioPackage("testes/exemplo/cenario.json", reordered),
     );
   });
 
   it("devolve falha sem alterar uma definição já carregada", () => {
-    const current = loadDistributedScenario("exemplo/cenario.json");
+    const current = loadDistributedScenario("testes/exemplo/cenario.json");
     const invalid = loadScenarioPackage("ausente/cenario.json", {});
 
     expect(current.ok).toBe(true);

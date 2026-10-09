@@ -213,14 +213,29 @@ máximo **uma** dependência aberta.
   quantidade ou regulatória com 2 opções é recusada com arquivo/campo.
 - **Depende de:** — · **Libera:** SG136.
 
+#### SG153 — Mundo e país separados · M
+- **Objetivo:** aplicar D-38 no conteúdo e no carregador.
+- **Tarefas:** `src/conteudo/mundo/` (leis, indicadores, consequências,
+  eventos, situações, catálogo, `mundo.json`) e `src/conteudo/paises/brasil/`
+  (`pais.json`, estado inicial, organização política); o país referencia o
+  mundo; leis sem texto ou moeda de um país (`moeda_ano`); limites do Brasil
+  saem das variáveis do mundo e vão para `limitesProprios` do país; pacotes de
+  teste em `src/conteudo/testes/`.
+- **Aceite:** nenhum arquivo do mundo cita país, moeda ou fonte nacional; o
+  Brasil carrega igual ao SG135 (mesmos níveis, limites e gastos); um país de
+  teste usa o mesmo mundo com outro pacote de leis.
+- **Depende de:** SG135 · **Libera:** SG136.
+
 #### SG136 — Ficha do país v2: economia e orçamento completo · M
 - **Tarefas:** `economia.pibAnual`; `fiscal.agregados` de receita e despesa;
-  limites próprios do país; aplicar os limites `…PercentualPib` da lei
-  (validados no SG135, ainda sem PIB para aplicar); fluxo fiscal soma leis + agregados; custo da lei
+  aplicar os limites `…PercentualPib` da lei (validados no SG135, ainda sem
+  PIB para aplicar); retirar da rede os nós `despesa_recorte` e
+  `saldo_recorte` (orçamento paralelo herdado do primeiro cenário, com base
+  6000 do Brasil), que o fiscal real substitui; fluxo fiscal soma leis + agregados; custo da lei
   orçamentária de valor fixo = nível ÷ 12. Substitui os valores do SG103.
 - **Aceite:** um turno do Brasil mostra receita, gasto por lei e por agregado;
   primário ≈ −50/ano e nominal ≈ −950/ano; nada contado duas vezes.
-- **Depende de:** SG135 · **Libera:** SG141.
+- **Depende de:** SG153 · **Libera:** SG141.
 
 #### SG141 — Mecanismos não lineares no motor · M
 - **Objetivo:** relações que não são retas (princípio 5 do projeto).
@@ -468,7 +483,7 @@ cumpre R-01 e R-02 por construção.
 
 ```text
 M0  SG100 → SG101 → SG102 → SG103                                    ✅
-M1  SG135 → SG136 → SG141 → SG142 → SG137 → SG138 → SG139 → SG143
+M1  SG135 → SG153 → SG136 → SG141 → SG142 → SG137 → SG138 → SG139 → SG143
     → SG104 → SG105 → SG106 → SG107 → SG108 → SG144
 M2  SG145 → SG128 → SG129 → SG146 → SG147 → SG130
 M3  SG148 → SG111 → SG112 → SG113 → SG114 → SG140 → SG122 → SG124
@@ -477,7 +492,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 43 chamados — 4 feitos + 39 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 44 chamados — 6 feitos + 38 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -595,6 +610,8 @@ referência, não prazo.
 | D-35 | A partida começa com a popularidade de quem venceu a eleição (valor do país, hipótese) | 09/out | alinhamento com o autor |
 | D-36 | Retratos: gênero e faixa etária ficam no nome do arquivo (`<genero>_<faixa>_<n>.png`) | 09/out | alinhamento com o autor |
 | D-37 | Senado por UF (D-08) sai do MVP; no MVP o Senado é total por partido | 09/out | consequência de D-30 |
+| D-38 | **Mundo × país.** Leis, indicadores, consequências, eventos, situações e grupos são do mundo (valem para todos). Um país é só um pacote inicial: leis vigentes e níveis, valores iniciais, limites próprios, moeda, economia, perfis e partidos | 09/out | alinhamento com o autor |
+| D-39 | As consequências são universais e determinísticas: mesma força em todo país, sem ajuste por país. Diferenças entre países vêm do estado inicial dos nós (ex.: fentanil existe no mundo, alto nos EUA e zero no Brasil). Tudo que tem peso está na rede | 09/out | alinhamento com o autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -613,6 +630,7 @@ data, commit e teste.
 
 **M1 — A rede do país**
 - [x] SG135 Formato de lei v2 e catálogo comum — 09/out · `d0d655b` · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
+- [x] SG153 Mundo e país separados — 09/out · ver commit SG153 · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
 - [ ] SG136 Ficha do país v2: economia e orçamento completo
 - [ ] SG141 Mecanismos não lineares no motor
 - [ ] SG142 Rede de indicadores do Brasil

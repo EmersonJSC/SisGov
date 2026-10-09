@@ -3,7 +3,7 @@ import { translateAuthorizedPolicies } from "../engine";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function exampleScenario() {
-  const loaded = loadDistributedScenario("exemplo/cenario.json");
+  const loaded = loadDistributedScenario("testes/exemplo/cenario.json");
   if (!loaded.ok) throw new Error("O pacote de exemplo deveria carregar.");
   return loaded.value;
 }

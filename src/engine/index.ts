@@ -41,6 +41,7 @@ export type {
   ScenarioManifest,
   VariableDefinition,
   VariablesFile,
+  WorldFile,
 } from "./model/contentTypes";
 export type { PackageFiles, ResolvedPackage } from "./model/resolvePackage";
 export {

@@ -1,0 +1,30 @@
+{
+  "id": "alimentacao-escolar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Alimentação escolar",
+  "descricao": "Financia a compra e a oferta de alimentação nas escolas públicas.",
+  "area": "Educação e Cuidados",
+  "icone": "school-meal",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_alimentacao_escolar",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo"
+  },
+  "consequencias": [
+    "alimentacao-eleva-frequencia",
+    "frequencia-amplia-oportunidades",
+    "oportunidades-reduzem-violencia",
+    "despesa-alimentacao",
+    "saldo-alimentacao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.32,
+    "degradacao": 0.2
+  }
+}

@@ -30,8 +30,9 @@ na ficha da lei, no painel do turno e no diário.
 
 ### Campos comuns
 
-As leis ficam em `src/scenarios/catalogos/leis/` e são listadas pelo
-catálogo (`catalogo-politicas-v1.json`).
+As leis ficam em `src/conteudo/mundo/leis/` e são listadas pelo
+catálogo (`mundo/catalogo-leis.json`). Organização mundo × país:
+[`src/conteudo/README.md`](../../src/conteudo/README.md).
 
 ```json
 {
@@ -43,7 +44,7 @@ catálogo (`catalogo-politicas-v1.json`).
   "descricao": "…",
   "area": "Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
-  "controle": { "variavel": "recursos_atencao_basica", "unidade": "moeda_milhoes_2024_ano" },
+  "controle": { "variavel": "recursos_atencao_basica", "unidade": "moeda_ano" },
   "orcamento": { "modo": "valor_fixo" },
   "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 },
   "consequencias": ["…"]
@@ -55,8 +56,8 @@ catálogo (`catalogo-politicas-v1.json`).
   ele: vale o mais apertado.
 - Campos de quantidade (`impactoFiscal`, `nivel`, `valor`, `valorAnual`…) na
   lei são recusados com arquivo e campo.
-- Lei orçamentária de valor fixo usa a moeda da ficha fiscal por ano
-  (`<unidadeMonetaria>_ano`).
+- Lei orçamentária de valor fixo usa `moeda_ano`; a moeda concreta vem da
+  ficha fiscal do país.
 
 ### Orçamentária
 

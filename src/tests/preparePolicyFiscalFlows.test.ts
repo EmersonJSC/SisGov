@@ -4,9 +4,7 @@ import { preparePolicyFiscalFlows } from "../game/preparePolicyFiscalFlows";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function brasil() {
-  const loaded = loadDistributedScenario(
-    "brasil-primeiro-cenario/cenario.json",
-  );
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   return loaded.value;
 }
