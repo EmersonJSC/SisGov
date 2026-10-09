@@ -167,6 +167,18 @@ function checkReferences(
     }
   }
   for (const consequence of consequences) {
+    if (
+      consequence.normalizacao &&
+      !variableIds.has(consequence.normalizacao.divisor)
+    )
+      diagnostics.push(
+        issue(
+          consequence.id,
+          "normalizacao.divisor",
+          "REFERENCIA_QUEBRADA",
+          `A variável ${consequence.normalizacao.divisor} não existe.`,
+        ),
+      );
     for (const field of ["origem", "alvo"] as const) {
       if (!variableIds.has(consequence[field])) {
         diagnostics.push(

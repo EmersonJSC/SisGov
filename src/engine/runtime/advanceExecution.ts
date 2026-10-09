@@ -1,6 +1,6 @@
 import type { ValidationResult } from "../diagnostics/contentDiagnostic";
-import type { ScenarioGraph } from "../graph/buildGraph";
-import { calculateAffineContribution } from "../mechanisms/calculateAffineContribution";
+import type { GraphRelation, ScenarioGraph } from "../graph/buildGraph";
+import { calculateContribution } from "../mechanisms/calculateContribution";
 import {
   combineCalculatedValue,
   type NumericContribution,
@@ -18,8 +18,13 @@ export type ContributionExplanation = Readonly<{
   originId: string;
   targetId: string;
   sourceValue: number;
-  coefficient: number;
-  constant: number;
+  /** Mecanismo e parâmetros usados: a explicação diz como o valor foi obtido. */
+  mechanism: GraphRelation["mechanism"];
+  parameters: GraphRelation["parameters"];
+  /** Entrada do mecanismo (a razão, quando há normalização). */
+  inputValue: number;
+  divisorId?: string;
+  divisorValue?: number;
   contribution: number;
 }>;
 
@@ -112,13 +117,16 @@ export function advanceExecution(
   const contributionsByTarget = new Map<string, NumericContribution[]>();
   const explanationsByTarget = new Map<string, ContributionExplanation[]>();
   for (const relation of activeRelations) {
-    const sourceValue =
+    // Origem e divisor são lidos do mesmo retrato (mesmo atraso).
+    const snapshot =
       relation.delaySteps === 0
-        ? readValues[relation.originId]
-        : readExecutionSnapshot(execution, relation.delaySteps)[
-            relation.originId
-          ];
-    const calculated = calculateAffineContribution(relation, sourceValue);
+        ? readValues
+        : readExecutionSnapshot(execution, relation.delaySteps);
+    const calculated = calculateContribution(
+      relation,
+      snapshot[relation.originId],
+      (nodeId) => snapshot[nodeId],
+    );
     if (!calculated.ok)
       return { ok: false, diagnostics: calculated.diagnostics };
     const target = contributionsByTarget.get(relation.targetId) ?? [];
@@ -132,8 +140,15 @@ export function advanceExecution(
       originId: relation.originId,
       targetId: relation.targetId,
       sourceValue: calculated.value.sourceValue,
-      coefficient: calculated.value.coefficient,
-      constant: calculated.value.constant,
+      mechanism: relation.mechanism,
+      parameters: relation.parameters,
+      inputValue: calculated.value.inputValue,
+      ...(relation.normalization
+        ? {
+            divisorId: relation.normalization.divisor,
+            divisorValue: calculated.value.divisorValue,
+          }
+        : {}),
       contribution: calculated.value.value,
     });
     explanationsByTarget.set(relation.targetId, explanations);

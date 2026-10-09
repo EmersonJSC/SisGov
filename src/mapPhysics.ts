@@ -189,7 +189,7 @@ export class MapPhysics {
           (v) => v.id === effect.origem,
         )?.dominio;
         const span = Math.max(1, (domain?.maximo ?? 1) - (domain?.minimo ?? 0));
-        const weight = Math.abs(effect.parametros.coeficiente) * span;
+        const weight = Math.abs(effect.parametros.coeficiente ?? 0) * span;
         if (Number.isFinite(weight) && weight > 0)
           sources[effect.origem] = (sources[effect.origem] ?? 0) + weight;
       }

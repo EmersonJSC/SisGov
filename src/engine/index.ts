@@ -8,6 +8,10 @@ export { createExecution } from "./runtime/createExecution";
 export { translateAuthorizedPolicies } from "./runtime/translatePolicyCommands";
 export { advanceExecution } from "./runtime/advanceExecution";
 export { calculateAffineContribution } from "./mechanisms/calculateAffineContribution";
+export {
+  calculateContribution,
+  type Contribution,
+} from "./mechanisms/calculateContribution";
 export { combineCalculatedValue } from "./mechanisms/combineCalculatedValue";
 export { updateStock } from "./mechanisms/updateStock";
 export { applyGradualResponse } from "./mechanisms/applyGradualResponse";
@@ -26,6 +30,8 @@ export { supportedMechanisms } from "./model/contentTypes";
 export type {
   AggregateCreditInitialState,
   ConsequenceFile,
+  ConsequenceNormalization,
+  ConsequenceParameters,
   ContentFile,
   ElectoralLawDefinition,
   EconomyInitialState,

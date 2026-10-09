@@ -2546,6 +2546,7 @@ function validateConsequence(
       "alvo",
       "mecanismo",
       "parametros",
+      "normalizacao",
       "unidade",
       "atrasoPassos",
       "duracao",
@@ -2648,24 +2649,92 @@ function validateConsequence(
       ),
     );
   } else {
-    validateKnownFields(
-      value.parametros,
-      file,
-      ["coeficiente", "termoConstante"],
-      diagnostics,
-    );
-    requiredNumber(
-      value.parametros,
-      file,
-      "parametros.coeficiente",
-      diagnostics,
-    );
-    requiredNumber(
-      value.parametros,
-      file,
-      "parametros.termoConstante",
-      diagnostics,
-    );
+    const required: Record<string, readonly string[]> = {
+      afim: ["coeficiente", "termoConstante"],
+      saturacao: ["maximo", "escala"],
+      retornos_decrescentes: ["coeficiente", "escala"],
+      limiar: ["limiar", "coeficiente", "direcao"],
+    };
+    const fields = mechanism !== undefined ? required[mechanism] : undefined;
+    if (fields) {
+      validateKnownFields(value.parametros, file, fields, diagnostics);
+      for (const field of fields) {
+        if (field === "direcao") {
+          if (
+            value.parametros.direcao !== "acima" &&
+            value.parametros.direcao !== "abaixo"
+          )
+            diagnostics.push(
+              diagnostic(
+                file,
+                "parametros.direcao",
+                value.parametros.direcao === undefined
+                  ? "CAMPO_AUSENTE"
+                  : "VALOR_INVALIDO",
+                "Use acima ou abaixo.",
+              ),
+            );
+          continue;
+        }
+        const amount = requiredNumber(
+          value.parametros,
+          file,
+          `parametros.${field}`,
+          diagnostics,
+        );
+        if (field === "escala" && amount !== undefined && amount <= 0)
+          diagnostics.push(
+            diagnostic(
+              file,
+              "parametros.escala",
+              "VALOR_INVALIDO",
+              "A escala deve ser maior que zero.",
+            ),
+          );
+      }
+    }
+  }
+  if (value.normalizacao !== undefined) {
+    if (!isObject(value.normalizacao))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "normalizacao",
+          "TIPO_INVALIDO",
+          "Deve ser um objeto.",
+        ),
+      );
+    else {
+      validateKnownFields(
+        value.normalizacao,
+        file,
+        ["divisor", "multiplicador"],
+        diagnostics,
+      );
+      requiredString(
+        value.normalizacao,
+        file,
+        "normalizacao.divisor",
+        diagnostics,
+      );
+      if (value.normalizacao.multiplicador !== undefined) {
+        const factor = requiredNumber(
+          value.normalizacao,
+          file,
+          "normalizacao.multiplicador",
+          diagnostics,
+        );
+        if (factor !== undefined && factor <= 0)
+          diagnostics.push(
+            diagnostic(
+              file,
+              "normalizacao.multiplicador",
+              "VALOR_INVALIDO",
+              "O multiplicador deve ser maior que zero.",
+            ),
+          );
+      }
+    }
   }
   return diagnostics.length === 0 ? (value as ConsequenceFile) : undefined;
 }

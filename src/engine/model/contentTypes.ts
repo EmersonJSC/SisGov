@@ -1,4 +1,9 @@
-export const supportedMechanisms = ["afim"] as const;
+export const supportedMechanisms = [
+  "afim",
+  "saturacao",
+  "retornos_decrescentes",
+  "limiar",
+] as const;
 
 export type SupportedMechanism = (typeof supportedMechanisms)[number];
 
@@ -304,6 +309,30 @@ export type PolicyFile = {
   consequencias: string[];
 };
 
+/**
+ * Parâmetros por mecanismo (o validador exige os campos de cada um):
+ * - afim: coeficiente, termoConstante → c·x + k
+ * - saturacao: maximo, escala → máximo·(1 − e^(−x/escala)); efeito com teto
+ * - retornos_decrescentes: coeficiente, escala → c·escala·ln(1 + x/escala)
+ * - limiar: limiar, coeficiente, direcao → c·max(0, x − L) ("acima") ou
+ *   c·max(0, L − x) ("abaixo"); só age depois do ponto
+ */
+export type ConsequenceParameters = {
+  coeficiente?: number;
+  termoConstante?: number;
+  maximo?: number;
+  escala?: number;
+  limiar?: number;
+  direcao?: "acima" | "abaixo";
+};
+
+export type ConsequenceNormalization = {
+  /** Nó pelo qual a origem é dividida (domínio com mínimo > 0). */
+  divisor: string;
+  /** Multiplica a razão (100 = percentual). Padrão 1. */
+  multiplicador?: number;
+};
+
 export type ConsequenceFile = {
   id: string;
   tipo: "consequencia";
@@ -311,7 +340,9 @@ export type ConsequenceFile = {
   origem: string;
   alvo: string;
   mecanismo: SupportedMechanism;
-  parametros: { coeficiente: number; termoConstante: number };
+  parametros: ConsequenceParameters;
+  /** Lê a origem como razão (ex.: gasto ÷ PIB × 100), antes do mecanismo (D-40). */
+  normalizacao?: ConsequenceNormalization;
   unidade: string;
   atrasoPassos: number;
   duracao:

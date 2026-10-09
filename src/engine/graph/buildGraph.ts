@@ -19,6 +19,7 @@ export type GraphRelation = Readonly<{
   targetId: string;
   mechanism: ConsequenceFile["mecanismo"];
   parameters: ConsequenceFile["parametros"];
+  normalization?: ConsequenceFile["normalizacao"];
   unit: string;
   delaySteps: number;
   duration: ConsequenceFile["duracao"];
@@ -48,6 +49,7 @@ function addRelations(
       targetId: consequence.alvo,
       mechanism: consequence.mecanismo,
       parameters: consequence.parametros,
+      normalization: consequence.normalizacao,
       unit: consequence.unidade,
       delaySteps: consequence.atrasoPassos,
       duration: consequence.duracao,

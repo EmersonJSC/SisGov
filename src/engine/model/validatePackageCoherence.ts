@@ -342,6 +342,36 @@ export function validatePackageCoherence(
   }
 
   for (const consequence of content.consequences) {
+    // Mecanismos não lineares só existem para entradas não negativas, e o
+    // divisor de uma razão nunca pode chegar a zero: o pacote prova isso antes.
+    const origin = variablesById.get(consequence.origem);
+    if (
+      (consequence.mecanismo === "saturacao" ||
+        consequence.mecanismo === "retornos_decrescentes") &&
+      origin &&
+      (origin.dominio.minimo === undefined || origin.dominio.minimo < 0)
+    )
+      diagnostics.push(
+        issue(
+          consequence.id,
+          "origem",
+          "Saturação e retornos decrescentes exigem origem com domínio mínimo ≥ 0.",
+        ),
+      );
+    if (consequence.normalizacao) {
+      const divisor = variablesById.get(consequence.normalizacao.divisor);
+      if (
+        divisor &&
+        (divisor.dominio.minimo === undefined || divisor.dominio.minimo <= 0)
+      )
+        diagnostics.push(
+          issue(
+            consequence.id,
+            "normalizacao.divisor",
+            "O divisor precisa ter domínio com mínimo maior que zero.",
+          ),
+        );
+    }
     const target = variablesById.get(consequence.alvo);
     if (!target) continue;
     if (target.tipo === "controle") {

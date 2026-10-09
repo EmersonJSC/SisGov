@@ -256,7 +256,9 @@ máximo **uma** dependência aberta.
   arrecadação; saúde → produtividade; violência → investimento; com atrasos e
   os mecanismos do SG141; documento curto com o mapa das cadeias.
 - **Aceite:** nenhum indicador isolado; cada indicador tem ao menos uma origem
-  e um destino; teste de 20 turnos sem valor inválido.
+  e um destino; teste de 20 turnos sem valor inválido; efeitos de dinheiro
+  lidos em % do PIB (nó `pib` + normalização, D-40). Guia:
+  [`docs/arquitetura/mecanismos-da-rede.md`](docs/arquitetura/mecanismos-da-rede.md).
 - **Depende de:** SG141 · **Libera:** SG137.
 
 #### SG137 — Leis orçamentárias completas · M
@@ -332,7 +334,9 @@ máximo **uma** dependência aberta.
 > **Valor:** o jogador joga turnos pela tela e entende o que aconteceu.
 
 #### SG145 — Limpar o laboratório e ligar o mapa à partida · M
-- **Tarefas:** apagar `d4ReferenceSandbox` e as leis geradas (D-33); remover o
+- **Tarefas:** apagar `d4ReferenceSandbox` e as leis geradas (D-33); a
+  bancada técnica (`motor-demo.html`) não é mais necessária (autor, 9/out) e
+  pode ser removida aqui; remover o
   código morto (`main.tsx`/`GameMap` não montados) ou integrá-lo; o mapa lê o
   `GameState` do Brasil; "Encerrar turno" chama `advanceTurn` (fecha C13).
 - **Aceite:** só conteúdo real na tela; avançar 4 turnos muda indicadores,
@@ -493,7 +497,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 44 chamados — 7 feitos + 37 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 44 chamados — 8 feitos + 36 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -613,7 +617,7 @@ referência, não prazo.
 | D-37 | Senado por UF (D-08) sai do MVP; no MVP o Senado é total por partido | 09/out | consequência de D-30 |
 | D-38 | **Mundo × país.** Leis, indicadores, consequências, eventos, situações e grupos são do mundo (valem para todos). Um país é só um pacote inicial: leis vigentes e níveis, valores iniciais, limites próprios, moeda, economia, perfis e partidos | 09/out | alinhamento com o autor |
 | D-39 | As consequências são universais e determinísticas: mesma força em todo país, sem ajuste por país. Diferenças entre países vêm do estado inicial dos nós (ex.: fentanil existe no mundo, alto nos EUA e zero no Brasil). Tudo que tem peso está na rede | 09/out | alinhamento com o autor |
-| D-40 | Consequência de D-39: na rede, efeitos de dinheiro são lidos em **% do PIB** (ou por habitante), não em moeda absoluta — "1% do PIB em educação" tem a mesma força em qualquer país. Aplicar no SG141/SG142 | 09/out | este plano (derivada de D-39; confirmar) |
+| D-40 | Consequência de D-39: na rede, efeitos de dinheiro são lidos em **% do PIB** (ou por habitante), não em moeda absoluta — "1% do PIB em educação" tem a mesma força em qualquer país. Mecanismo de normalização pronto (SG141); aplicar no conteúdo no SG142 | 09/out | este plano (derivada de D-39; confirmar) |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -634,7 +638,7 @@ data, commit e teste.
 - [x] SG135 Formato de lei v2 e catálogo comum — 09/out · `d0d655b` · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
 - [x] SG153 Mundo e país separados — 09/out · `ab160f7` · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
-- [ ] SG141 Mecanismos não lineares no motor
+- [x] SG141 Mecanismos não lineares no motor — 09/out · ver commit SG141 · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
 - [ ] SG142 Rede de indicadores do Brasil
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções

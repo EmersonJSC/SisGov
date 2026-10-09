@@ -42,8 +42,9 @@ export function measureInfluence(
     if (!Number.isFinite(range) || range <= 0) continue;
     const effect =
       Math.abs(
-        relation.parameters.coeficiente * (values[relation.originId] ?? 0) +
-          relation.parameters.termoConstante,
+        (relation.parameters.coeficiente ?? 0) *
+          (values[relation.originId] ?? 0) +
+          (relation.parameters.termoConstante ?? 0),
       ) / range;
     for (const id of [relation.originId, relation.targetId])
       result.set(id, (result.get(id) ?? 0) + effect);
@@ -72,8 +73,9 @@ export function measureFinances(
       if (relation.unit !== "moeda_milhoes_2024_ano") continue;
       known = true;
       const amount = Math.abs(
-        relation.parameters.coeficiente * (values[relation.originId] ?? 0) +
-          relation.parameters.termoConstante,
+        (relation.parameters.coeficiente ?? 0) *
+          (values[relation.originId] ?? 0) +
+          (relation.parameters.termoConstante ?? 0),
       );
       if (role === "income") income += amount;
       else expense += amount;

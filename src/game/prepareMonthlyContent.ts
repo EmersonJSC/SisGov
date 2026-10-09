@@ -1,9 +1,48 @@
 import {
   buildGraph,
+  type ConsequenceFile,
   type ResolvedPackage,
   type ScenarioGraph,
   type ValidationResult,
 } from "../engine";
+
+/**
+ * Reescreve os parâmetros de uma consequência quando a entrada muda de escala
+ * (origem "por passo": x_trimestre = k · x_mês) e a saída é dividida por d
+ * (alvo "por passo"). Cada mecanismo tem sua regra para que g(x_mês) =
+ * f(k · x_mês) / d, exatamente:
+ * - afim: c' = c·k/d, k' = k₀/d
+ * - saturação: máximo' = máximo/d, escala' = escala/k
+ * - retornos decrescentes: c' = c·k/d, escala' = escala/k
+ * - limiar: c' = c·k/d, limiar' = limiar/k
+ */
+export function scaleConsequenceParameters(
+  mechanism: ConsequenceFile["mecanismo"],
+  parameters: ConsequenceFile["parametros"],
+  k: number,
+  d: number,
+): ConsequenceFile["parametros"] {
+  switch (mechanism) {
+    case "afim":
+      return {
+        coeficiente: (parameters.coeficiente! * k) / d,
+        termoConstante: parameters.termoConstante! / d,
+      };
+    case "saturacao":
+      return { maximo: parameters.maximo! / d, escala: parameters.escala! / k };
+    case "retornos_decrescentes":
+      return {
+        coeficiente: (parameters.coeficiente! * k) / d,
+        escala: parameters.escala! / k,
+      };
+    case "limiar":
+      return {
+        coeficiente: (parameters.coeficiente! * k) / d,
+        limiar: parameters.limiar! / k,
+        direcao: parameters.direcao,
+      };
+  }
+}
 
 /** Prepare definitions before creating a monthly execution; never migrate a running save. */
 export function prepareMonthlyContent(
@@ -47,6 +86,21 @@ export function prepareMonthlyContent(
     const originDivisor = origin?.unidade.endsWith("_por_passo") ? 3 : 1;
     // One-shot stock contributions represent one total, not three recurring payments.
     const divisor = rate && effect.duracao.modo !== "unico" ? 3 : 1;
+    // Com normalização, a mudança de escala da origem e do divisor vai para o
+    // multiplicador; o mecanismo recebe a mesma razão de antes.
+    const divisorNode = effect.normalizacao
+      ? content.variables.variaveis.find(
+          (variable) => variable.id === effect.normalizacao!.divisor,
+        )
+      : undefined;
+    const divisorScale = divisorNode?.unidade.endsWith("_por_passo") ? 3 : 1;
+    const normalizacao = effect.normalizacao && {
+      ...effect.normalizacao,
+      multiplicador:
+        ((effect.normalizacao.multiplicador ?? 1) * originDivisor) /
+        divisorScale,
+    };
+    const inputScale = effect.normalizacao ? 1 : originDivisor;
     return {
       ...effect,
       atrasoPassos: effect.atrasoPassos * 3,
@@ -54,10 +108,13 @@ export function prepareMonthlyContent(
         effect.duracao.modo === "fixo"
           ? { modo: "fixo" as const, passos: effect.duracao.passos * 3 }
           : effect.duracao,
-      parametros: {
-        coeficiente: (effect.parametros.coeficiente * originDivisor) / divisor,
-        termoConstante: effect.parametros.termoConstante / divisor,
-      },
+      parametros: scaleConsequenceParameters(
+        effect.mecanismo,
+        effect.parametros,
+        inputScale,
+        divisor,
+      ),
+      ...(normalizacao ? { normalizacao } : {}),
     };
   });
   const manifest = { ...content.manifest, unidadeTemporal: "mes" as const };

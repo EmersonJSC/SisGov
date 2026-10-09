@@ -32,8 +32,8 @@ export function calculateAffineContribution(
   if (!Number.isFinite(sourceValue)) {
     return failure("origem", "O valor de origem deve ser finito.");
   }
-  const coefficient = relation.parameters.coeficiente;
-  const constant = relation.parameters.termoConstante;
+  const coefficient = relation.parameters.coeficiente ?? 0;
+  const constant = relation.parameters.termoConstante ?? 0;
   const value = sourceValue * coefficient + constant;
   if (!Number.isFinite(value)) {
     return failure("resultado", "A contribuição calculada não é finita.");

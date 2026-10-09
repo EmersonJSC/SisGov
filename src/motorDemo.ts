@@ -173,7 +173,7 @@ function renderCauses(
     for (const contribution of explanation.contributions) {
       const relation = graph.relationsById[contribution.relationId];
       const detail = document.createElement("p");
-      detail.textContent = `${sourceNames.get(contribution.policyOrEventId) ?? contribution.policyOrEventId}: ${format.format(contribution.sourceValue)} × ${format.format(contribution.coefficient)} + ${format.format(contribution.constant)} = ${format.format(contribution.contribution)}`;
+      detail.textContent = `${sourceNames.get(contribution.policyOrEventId) ?? contribution.policyOrEventId}: ${contribution.mechanism}(${format.format(contribution.inputValue)}) = ${format.format(contribution.contribution)}`;
       item.append(detail);
       const audit = document.createElement("dl");
       audit.className = "cause-audit";

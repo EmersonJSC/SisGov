@@ -290,7 +290,7 @@ function setRelationHighlight(nodeId?: string): void {
     const outgoing = relation.originId === nodeId;
     const targetId = outgoing ? relation.targetId : relation.originId;
     const target = mapState!.graph.nodesById[targetId];
-    const rises = relation.parameters.coeficiente >= 0;
+    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
     const direction = rises ? "↑ aumenta" : "↓ reduz";
     const reading = outgoing ? targetReading(targetId) : "relação de entrada";
     return `${direction} ${target?.nome ?? targetId} · ${reading}`;
@@ -453,9 +453,9 @@ function renderEditor(policy: PolicyFile): void {
   )) {
     const target = mapState.graph.nodesById[relation.targetId];
     const item = document.createElement("div");
-    const rises = relation.parameters.coeficiente >= 0;
-    item.className = `effect ${consequenceTone(relation.targetId, relation.parameters.coeficiente)}`;
-    item.innerHTML = `<strong>${rises ? "↑" : "↓"} ${target.nome}</strong><span>${rises ? "aumenta" : "diminui"} conforme a implementação · peso ${coefficientFormat.format(Math.abs(relation.parameters.coeficiente))}</span>`;
+    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
+    item.className = `effect ${consequenceTone(relation.targetId, relation.parameters.coeficiente ?? 0)}`;
+    item.innerHTML = `<strong>${rises ? "↑" : "↓"} ${target.nome}</strong><span>${rises ? "aumenta" : "diminui"} conforme a implementação · peso ${coefficientFormat.format(Math.abs(relation.parameters.coeficiente ?? 0))}</span>`;
     effects.append(item);
   }
 
@@ -741,7 +741,7 @@ function render(
   const nextRelationPairIndex = new Map<string, number>();
   const rawStrengths = graph.relations.map(
     (relation) =>
-      Math.abs(relation.parameters.coeficiente) *
+      Math.abs(relation.parameters.coeficiente ?? 0) *
       Math.abs(execution.values[relation.originId] ?? 0),
   );
   const maximumStrength = Math.max(...rawStrengths, 0.01);
@@ -768,10 +768,10 @@ function render(
       positions,
     );
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const rises = relation.parameters.coeficiente >= 0;
+    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
     const normalizedStrength = Math.min(
       1,
-      (Math.abs(relation.parameters.coeficiente) *
+      (Math.abs(relation.parameters.coeficiente ?? 0) *
         Math.abs(execution.values[relation.originId] ?? 0)) /
         maximumStrength,
     );
