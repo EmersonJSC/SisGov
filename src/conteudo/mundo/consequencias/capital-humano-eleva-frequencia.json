@@ -1,0 +1,17 @@
+{
+  "id": "capital-humano-eleva-frequencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capital_humano",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.03233,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

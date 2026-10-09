@@ -27,6 +27,10 @@ export type EngineExecution = {
  * índices e situações nascem calculados pela rede (D-41), com as leis
  * vigentes do país ativas e a eficácia/apoio das leis no neutro.
  */
+/** Passadas máximas e tolerância para o país do turno 0 se acomodar. */
+const settlePasses = 200;
+const settleTolerance = 1e-9;
+
 export function createExecution(
   content: ResolvedPackage,
   graph: ScenarioGraph,
@@ -45,25 +49,41 @@ export function createExecution(
     (content.initialState.leisVigentes ?? []).map((entry) => entry.lei),
   );
   const everyLawActive = content.initialState.leisVigentes === undefined;
-  const network = computeNetwork({
-    content,
-    graph,
-    previous: start,
-    controls: {},
-    activeRelations: graph.relations.filter(
-      (relation) =>
-        relation.sourceType === "rede" ||
-        (relation.sourceType === "lei" &&
-          relation.duration.modo === "continuo" &&
-          (everyLawActive || inherited.has(relation.sourceId))),
-    ),
-    readDelayed: () => start,
-    duration: 1,
-    accumulateStocks: false,
-  });
-  // Pacotes inválidos já foram recusados pela coerência; se a rede inicial
-  // não fechar, a partida começa do estado declarado e o erro aparece no passo.
-  const initialValues = network.ok ? network.value.values : start;
+  // O turno 0 é o país já funcionando: repete o cálculo (sem acumular
+  // estoques) até leis e bolhas se acomodarem — ex.: a eficácia de uma lei
+  // já reflete a corrupção do país, em vez de partir do neutro.
+  const activeRelations = graph.relations.filter(
+    (relation) =>
+      relation.sourceType === "rede" ||
+      (relation.sourceType === "lei" &&
+        relation.duration.modo === "continuo" &&
+        (everyLawActive || inherited.has(relation.sourceId))),
+  );
+  let settled: Record<string, number> = start;
+  for (let pass = 0; pass < settlePasses; pass += 1) {
+    const network = computeNetwork({
+      content,
+      graph,
+      previous: settled,
+      controls: {},
+      activeRelations,
+      readDelayed: () => settled,
+      duration: 1,
+      accumulateStocks: false,
+    });
+    // Pacotes inválidos já foram recusados pela coerência; se a rede não
+    // fechar, a partida começa do estado declarado e o erro aparece no passo.
+    if (!network.ok) break;
+    const previous = settled;
+    settled = network.value.values;
+    if (
+      Object.keys(settled).every(
+        (id) => Math.abs(settled[id] - previous[id]) < settleTolerance,
+      )
+    )
+      break;
+  }
+  const initialValues = settled;
   return {
     step: 0,
     values: { ...initialValues },

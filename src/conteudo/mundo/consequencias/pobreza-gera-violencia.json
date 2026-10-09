@@ -1,0 +1,17 @@
+{
+  "id": "pobreza-gera-violencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "pobreza",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.319944,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

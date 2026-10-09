@@ -64,7 +64,8 @@ function clamp(
   return result;
 }
 
-const isBubble = (graph: ScenarioGraph, id: string) => {
+/** Bolha calculada: índice ou situação (sem valor próprio, D-41). */
+const isCalculatedBubble = (graph: ScenarioGraph, id: string) => {
   const node = graph.nodesById[id];
   return (
     node !== undefined &&
@@ -80,11 +81,11 @@ const orderCache = new WeakMap<ScenarioGraph, readonly string[]>();
  * Num ciclo só entre bolhas, a de menor ID entra primeiro e lê o mês anterior
  * no elo que fecha o ciclo (D-42).
  */
-export function bubbleOrder(graph: ScenarioGraph): readonly string[] {
+export function calculatedBubbleOrder(graph: ScenarioGraph): readonly string[] {
   const cached = orderCache.get(graph);
   if (cached) return cached;
   const bubbles = Object.keys(graph.nodesById)
-    .filter((id) => isBubble(graph, id))
+    .filter((id) => isCalculatedBubble(graph, id))
     .sort((left, right) => left.localeCompare(right));
   const pending = new Map(bubbles.map((id) => [id, new Set<string>()]));
   for (const relation of graph.relations)
@@ -186,7 +187,7 @@ export function computeNetwork(
       } else {
         const origin = graph.nodesById[relation.originId];
         const pendingBubble =
-          isBubble(graph, relation.originId) &&
+          isCalculatedBubble(graph, relation.originId) &&
           !computed.has(relation.originId);
         const stock = origin?.tipo === "estoque";
         source = pendingBubble || stock ? previous : next;
@@ -273,7 +274,7 @@ export function computeNetwork(
   }
 
   // 2. Bolhas em cadeia: sem valor próprio, só o que recebem.
-  for (const id of bubbleOrder(graph)) {
+  for (const id of calculatedBubbleOrder(graph)) {
     const result = explain(id, "rede");
     if (!result.ok) return result;
     settle(id, 0, result.value.sum, result.value.contributions);

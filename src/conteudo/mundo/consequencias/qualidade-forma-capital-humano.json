@@ -1,0 +1,17 @@
+{
+  "id": "qualidade-forma-capital-humano",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "qualidade_educacao",
+  "alvo": "capital_humano",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0099723,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

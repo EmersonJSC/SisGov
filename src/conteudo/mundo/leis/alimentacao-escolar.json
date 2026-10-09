@@ -20,7 +20,7 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": ["alimentacao-eleva-frequencia"],
+  "consequencias": ["merenda-eleva-frequencia"],
   "respostaTemporal": {
     "implantacao": 0.32,
     "degradacao": 0.2

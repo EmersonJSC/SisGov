@@ -20,7 +20,10 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": ["prevencao-reduz-violencia"],
+  "consequencias": [
+    "verba-prevencao-reduz-crime",
+    "verba-prevencao-reduz-violencia"
+  ],
   "respostaTemporal": {
     "implantacao": 0.18,
     "degradacao": 0.1

@@ -515,7 +515,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 45 chamados — 9 feitos + 36 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 45 chamados — 10 feitos + 35 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -637,9 +637,11 @@ referência, não prazo.
 | D-38 | **Mundo × país.** Leis, indicadores, consequências, eventos, situações e grupos são do mundo (valem para todos). Um país é só um pacote inicial: leis vigentes e níveis, valores iniciais, limites próprios, moeda, economia, perfis e partidos | 09/out | alinhamento com o autor |
 | D-39 | As consequências são universais e determinísticas: mesma força em todo país, sem ajuste por país. Diferenças entre países vêm do estado inicial dos nós (ex.: fentanil existe no mundo, alto nos EUA e zero no Brasil). Tudo que tem peso está na rede | 09/out | alinhamento com o autor |
 | D-40 | **Não existe número escondido.** Tudo que afeta um valor é um nó visível (lei, evento, situação, índice), explicado recursivamente pelos nós que o afetam. (Substitui a leitura anterior de "% do PIB": o PIB importa e país rico gasta mais.) Modelo: [`rede-viva.md`](docs/arquitetura/rede-viva.md) | 09/out | alinhamento com o autor |
-| D-41 | Dois tipos de nó: **lei** (valor próprio; recebe influência na eficácia e no apoio) e **bolha** (índice ou situação: sem valor inicial nem base, só o resultado do que recebe). O país não declara valor de índice | 09/out | alinhamento com o autor |
+| D-41 | **Tudo é bolha**; o tipo muda: **lei** (valor próprio; recebe influência na eficácia e no apoio), **índice** e **situação** (sem valor próprio nem base, só o resultado do que recebe), **estoque** (acumula; país declara o inicial), **evento**, **grupo social**. O país não declara valor de índice | 09/out | alinhamento com o autor |
 | D-42 | Ordem do mês: leis leem as bolhas do mês anterior, depois as bolhas são calculadas em cadeia; ciclo só entre bolhas usa o mês anterior em um elo. A influência de bolha sobre lei chega no mês seguinte | 09/out | decisão técnica (este plano) |
 | D-43 | Toda bolha tem intensidade: lei pelo valor financeiro ou influência; índice pelo valor; situação pisca e cresce conforme a gravidade | 09/out | alinhamento com o autor |
+| D-44 | A rede do mundo é calibrada para que o Brasil de hoje (hipótese) seja um ponto de equilíbrio. Raízes visíveis: as leis e dois estoques declarados pelo país (capital humano e capital produtivo). Nenhuma ligação tem termo constante. Rede: [`docs/conteudo/rede.md`](docs/conteudo/rede.md), gerada por `scripts/rede/rede.py` | 09/out | SG142 |
+| D-45 | O turno 0 é o país já funcionando: o motor repete o cálculo inicial (sem acumular estoques) até leis e bolhas se acomodarem | 09/out | SG142 (técnica) |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -662,7 +664,7 @@ data, commit e teste.
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
 - [x] SG154 Leis e bolhas no motor — 09/out · `9926528` · check verde, 237 testes / 55 arquivos; `livingNetwork.test.ts`
-- [ ] SG142 Rede de indicadores do Brasil
+- [x] SG142 Rede de indicadores do Brasil — 09/out · ver commit SG142 · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções
 - [ ] SG139 Leis tributárias

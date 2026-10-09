@@ -1,0 +1,17 @@
+{
+  "id": "violencia-gera-onda",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "violencia_letal",
+  "alvo": "onda_violencia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

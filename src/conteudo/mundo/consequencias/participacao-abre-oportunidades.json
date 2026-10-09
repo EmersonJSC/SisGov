@@ -1,0 +1,17 @@
+{
+  "id": "participacao-abre-oportunidades",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "participacao_trabalho_cuidadoras",
+  "alvo": "oportunidades_juvenis",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0800712,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "merenda-eleva-frequencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_alimentacao_escolar",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "saturacao",
+  "parametros": {
+    "maximo": 15.4849,
+    "escala": 300
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

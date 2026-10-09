@@ -1,0 +1,17 @@
+{
+  "id": "corrupcao-reduz-eficacia-creches-publicas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "corrupcao",
+  "alvo": "eficacia:creches-publicas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.005,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

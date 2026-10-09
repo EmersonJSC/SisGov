@@ -1,0 +1,17 @@
+{
+  "id": "renda-move-consumo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "renda_familias",
+  "alvo": "consumo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.816327,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

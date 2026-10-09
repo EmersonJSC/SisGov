@@ -282,7 +282,8 @@ describe("SG154 — a rede viva (exemplo de rede-viva.md)", () => {
     expect(start.values.corrupcao).toBe(20);
     expect(start.values.uso_drogas).toBe(15);
     expect(start.values.crise).toBe(0);
-    expect(start.values["eficacia:verba-saude"]).toBe(1);
+    // O turno 0 é o país já funcionando: a eficácia já reflete a corrupção.
+    expect(start.values["eficacia:verba-saude"]).toBeCloseTo(0.8);
 
     // Mês 1: a corrupção do mês anterior come 20% da verba.
     let state = month(content, graph, start, {

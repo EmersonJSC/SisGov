@@ -1,0 +1,17 @@
+{
+  "id": "onda-pede-prevencao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "onda_violencia",
+  "alvo": "apoio:prevencao-seguranca",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.5,
+    "termoConstante": 0
+  },
+  "unidade": "pontos",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

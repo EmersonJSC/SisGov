@@ -1,0 +1,17 @@
+{
+  "id": "educacao-melhora-saude",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capital_humano",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.433437,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

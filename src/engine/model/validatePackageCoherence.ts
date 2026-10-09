@@ -1,5 +1,6 @@
 import { resolveInheritedLawLevels } from "./inheritedLaws";
 import { lawInfluenceNodes } from "./lawNodes";
+import { rateUnitFor } from "../mechanisms/updateStock";
 import type {
   ContentDiagnostic,
   ValidationResult,
@@ -18,6 +19,7 @@ const supportedUnits = new Set([
   "quantidade_por_passo",
   "moeda_milhoes_2024_ano",
   "moeda_ano",
+  "indice_0_100_por_passo",
   "fator",
   "pontos",
   "nivel_escopo",
@@ -426,7 +428,11 @@ export function validatePackageCoherence(
         ),
       );
     }
-    if (consequence.unidade !== target.unidade) {
+    const expectedUnit =
+      target.tipo === "estoque"
+        ? (rateUnitFor(target.unidade) ?? target.unidade)
+        : target.unidade;
+    if (consequence.unidade !== expectedUnit) {
       diagnostics.push(
         issue(
           consequence.id,

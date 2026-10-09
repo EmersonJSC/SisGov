@@ -1,0 +1,17 @@
+{
+  "id": "onda-violencia-afasta-investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "onda_violencia",
+  "alvo": "investimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.5,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -15,10 +15,12 @@ export type StockUpdate = Readonly<{
   value: number;
 }>;
 
-function rateUnitFor(stockUnit: string): string | undefined {
+/** Unidade da taxa que alimenta um estoque (ex.: moeda → moeda_por_passo). */
+export function rateUnitFor(stockUnit: string): string | undefined {
   const units: Record<string, string> = {
     moeda: "moeda_por_passo",
     quantidade: "quantidade_por_passo",
+    indice_0_100: "indice_0_100_por_passo",
   };
   return units[stockUnit];
 }

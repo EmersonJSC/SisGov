@@ -59,22 +59,34 @@
       "area": "Educação e Cuidados"
     },
     {
-      "id": "cobertura_aps",
-      "tipo": "calculado",
-      "nome": "Cobertura estimada da atenção primária",
-      "unidade": "percentual_0_100",
+      "id": "capital_humano",
+      "tipo": "estoque",
+      "nome": "Capital humano",
+      "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Saúde",
+      "area": "Educação",
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "saude_populacao",
-      "tipo": "calculado",
-      "nome": "Saúde da população",
+      "id": "capital_produtivo",
+      "tipo": "estoque",
+      "nome": "Capital produtivo",
       "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "cobertura_aps",
+      "tipo": "calculado",
+      "nome": "Cobertura da atenção básica",
+      "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
@@ -95,6 +107,186 @@
       "avaliacao": "maior_pior"
     },
     {
+      "id": "saude_populacao",
+      "tipo": "calculado",
+      "nome": "Saúde da população",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "frequencia_escolar",
+      "tipo": "calculado",
+      "nome": "Frequência escolar",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "qualidade_educacao",
+      "tipo": "calculado",
+      "nome": "Qualidade da educação",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "participacao_trabalho_cuidadoras",
+      "tipo": "calculado",
+      "nome": "Participação no trabalho de quem cuida",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "oportunidades_juvenis",
+      "tipo": "calculado",
+      "nome": "Oportunidades para jovens",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "qualificacao_trabalho",
+      "tipo": "calculado",
+      "nome": "Qualificação do trabalho",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "produtividade",
+      "tipo": "calculado",
+      "nome": "Produtividade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "atividade_economica",
+      "tipo": "calculado",
+      "nome": "Atividade econômica",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "investimento",
+      "tipo": "calculado",
+      "nome": "Investimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "confianca_empresarial",
+      "tipo": "calculado",
+      "nome": "Confiança empresarial",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "desemprego",
+      "tipo": "calculado",
+      "nome": "Desemprego",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "renda_familias",
+      "tipo": "calculado",
+      "nome": "Renda das famílias",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "consumo",
+      "tipo": "calculado",
+      "nome": "Consumo das famílias",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "pobreza",
+      "tipo": "calculado",
+      "nome": "Pobreza",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Desenvolvimento Social",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desigualdade",
+      "tipo": "calculado",
+      "nome": "Desigualdade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Desenvolvimento Social",
+      "avaliacao": "maior_pior"
+    },
+    {
       "id": "violencia_letal",
       "tipo": "calculado",
       "nome": "Violência letal",
@@ -102,6 +294,18 @@
       "dominio": {
         "minimo": 0,
         "maximo": 60
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "crime_organizado",
+      "tipo": "calculado",
+      "nome": "Crime organizado",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
       },
       "area": "Segurança",
       "avaliacao": "maior_pior"
@@ -119,51 +323,102 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "frequencia_escolar",
+      "id": "sensacao_seguranca",
       "tipo": "calculado",
-      "nome": "Frequência escolar",
-      "unidade": "percentual_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Educação e Cuidados",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "participacao_trabalho_cuidadoras",
-      "tipo": "calculado",
-      "nome": "Participação no trabalho de pessoas cuidadoras",
-      "unidade": "percentual_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Educação e Cuidados",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "oportunidades_juvenis",
-      "tipo": "calculado",
-      "nome": "Oportunidades juvenis",
+      "nome": "Sensação de segurança",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Educação e Cuidados",
+      "area": "Segurança",
       "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "corrupcao",
+      "tipo": "calculado",
+      "nome": "Corrupção",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "capacidade_estatal",
+      "tipo": "calculado",
+      "nome": "Capacidade do Estado",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "confianca_instituicoes",
+      "tipo": "calculado",
+      "nome": "Confiança nas instituições",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "crise_atendimento",
+      "tipo": "situacao",
+      "nome": "Crise no atendimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior",
+      "surgimento": 62
+    },
+    {
+      "id": "onda_violencia",
+      "tipo": "situacao",
+      "nome": "Onda de violência",
+      "unidade": "taxa_por_100_mil",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 60
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "recessao",
+      "tipo": "situacao",
+      "nome": "Recessão",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_pior",
+      "surgimento": 12
     },
     {
       "id": "carga_evento_demanda",
       "tipo": "calculado",
-      "nome": "Carga temporária de demanda",
+      "nome": "Carga do evento de demanda",
       "unidade": "quantidade",
       "dominio": {
         "minimo": 1,
         "maximo": 1
       },
-      "area": "Técnica",
+      "area": "Saúde",
       "avaliacao": "neutra"
     }
   ]

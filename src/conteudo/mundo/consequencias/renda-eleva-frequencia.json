@@ -1,0 +1,17 @@
+{
+  "id": "renda-eleva-frequencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "renda_familias",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.580683,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

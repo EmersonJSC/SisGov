@@ -1,0 +1,17 @@
+{
+  "id": "atividade-gera-investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "atividade_economica",
+  "alvo": "investimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.3,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

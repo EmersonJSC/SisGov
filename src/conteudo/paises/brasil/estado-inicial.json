@@ -273,6 +273,8 @@
     "recursos_protecao_mulheres": 240,
     "recursos_prevencao_seguranca": 600,
     "recursos_alimentacao_escolar": 300,
-    "recursos_creches_publicas": 500
+    "recursos_creches_publicas": 500,
+    "capital_humano": 45,
+    "capital_produtivo": 50
   }
 }

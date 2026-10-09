@@ -1,0 +1,17 @@
+{
+  "id": "capital-produtivo-eleva-produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capital_produtivo",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.425532,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

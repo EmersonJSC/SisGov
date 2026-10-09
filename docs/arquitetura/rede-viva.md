@@ -18,18 +18,22 @@ Nó X
 
 e repetir a pergunta em cada um deles.
 
-## Dois tipos de nó
+## Tipos de bolha
 
-| | **Lei** | **Bolha** (índice ou situação) |
-|---|---|---|
-| Valor próprio | Sim: nível ou opção (país no início, jogador depois) | **Não**: sem valor inicial e sem base |
-| Recebe influência | Sim, na **eficácia** e no **apoio** | Sim, e é só disso que ela é feita |
-| Influencia | Sim: efeito = nível × eficácia | Sim: devolve o resultado do cálculo |
-| Papel | Entrada da rede | Processa o que recebe e repassa |
+**Tudo na rede é bolha.** O que muda é o tipo, e a diferença real é se a
+bolha tem **valor próprio**:
 
-- **Índice:** medida que sempre existe (saúde, desemprego, corrupção).
-- **Situação:** condição que pode não existir (crise no atendimento). Também é
-  só cálculo; aparece quando passa de um ponto e então tem intensidade.
+| Tipo de bolha | Valor próprio? | De onde vem o valor | Exemplo |
+|---|---|---|---|
+| **Lei** | Sim | Nível ou opção (país no início, jogador depois); recebe influência na **eficácia** e no **apoio**; entrega nível × eficácia | Verba para saúde, Lei de drogas |
+| **Índice** | Não | Só do que recebe | Saúde, Desemprego, Corrupção |
+| **Situação** | Não | Só do que recebe; existe acima de um ponto; pisca e cresce | Crise no atendimento |
+| **Estoque** | Sim (o país declara o inicial) | Acumula o que recebe ao longo do tempo | Capital humano, Dívida |
+| **Evento** | — | Acontece num momento e dispara efeitos | Epidemia |
+| **Grupo social** (SG143) | Não | Satisfação, só do que recebe | Trabalhadores |
+
+Toda bolha influencia e é influenciada. Ministério não é bolha: é a esfera
+que agrupa as leis no mapa.
 
 ## Intensidade
 
@@ -42,15 +46,17 @@ Toda bolha tem intensidade, que define seu peso visual no mapa:
 
 ## Ordem de cálculo do mês (detalhe técnico)
 
-Como lei e bolha se influenciam em círculo, o motor usa uma ordem fixa para
+Como leis e bolhas calculadas se influenciam em círculo, o motor usa uma ordem fixa para
 continuar determinístico:
 
-1. cada **lei** lê as bolhas do mês anterior e calcula sua eficácia e apoio;
-2. as **bolhas** são calculadas em cadeia a partir dos efeitos das leis e de
-   outras bolhas; num ciclo só entre bolhas, um dos elos usa o mês anterior;
+1. cada **lei** lê as outras bolhas no estado do mês anterior e calcula sua eficácia e apoio;
+2. as **bolhas calculadas** (índices e situações) vêm em cadeia a partir dos
+   efeitos das leis e de outras bolhas; num ciclo só entre elas, um dos
+   elos usa o mês anterior;
 3. o resultado vira o estado do mês; a explicação registra cada elo.
 
-Consequência: a influência de uma bolha sobre uma lei chega no mês seguinte.
+Consequência: a influência de um índice ou situação sobre uma lei chega no
+mês seguinte — ainda dentro do mesmo turno de 3 meses.
 
 ## O que o país declara
 
@@ -96,7 +102,7 @@ desaparece sozinha.
 - **Limites:** se a soma passa do domínio do nó, o valor para no limite e a
   explicação marca `limited`.
 - **Turno 0:** o país declara leis vigentes e estoques; o motor calcula as
-  bolhas com as leis vigentes ativas e eficácia/apoio no neutro.
+  bolhas calculadas com as leis vigentes ativas e eficácia/apoio no neutro.
 
 ## Futuro
 

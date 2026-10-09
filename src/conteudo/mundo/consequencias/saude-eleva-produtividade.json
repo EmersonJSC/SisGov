@@ -1,0 +1,17 @@
+{
+  "id": "saude-eleva-produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "saude_populacao",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.159574,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

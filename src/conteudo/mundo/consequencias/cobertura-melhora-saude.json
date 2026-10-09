@@ -5,8 +5,13 @@
   "origem": "cobertura_aps",
   "alvo": "saude_populacao",
   "mecanismo": "afim",
-  "parametros": { "coeficiente": 0.12, "termoConstante": -8.64 },
+  "parametros": {
+    "coeficiente": 0.495356,
+    "termoConstante": 0
+  },
   "unidade": "indice_0_100",
-  "atrasoPassos": 2,
-  "duracao": { "modo": "continuo" }
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
 }

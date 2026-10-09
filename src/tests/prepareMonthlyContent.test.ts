@@ -31,7 +31,9 @@ it("converts quarterly delays and fixed durations before building the graph", ()
     )!;
     expect(relation.delaySteps).toBe(source.atrasoPassos * 3);
   }
-  expect(createExecution(content, graph).historyLimit).toBe(9);
+  expect(createExecution(content, graph).historyLimit).toBe(
+    Math.max(...graph.relations.map((relation) => relation.delaySteps)),
+  );
   expect(original).toEqual(before);
   const again = prepareMonthlyContent(content);
   expect(again).toEqual(prepared);

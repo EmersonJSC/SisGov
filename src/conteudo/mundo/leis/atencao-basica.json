@@ -20,7 +20,7 @@
       "maximoPercentualPib": 1
     }
   },
-  "consequencias": ["atencao-amplia-cobertura"],
+  "consequencias": ["verba-aps-amplia-cobertura"],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.18

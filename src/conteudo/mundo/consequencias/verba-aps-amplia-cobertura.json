@@ -1,0 +1,17 @@
+{
+  "id": "verba-aps-amplia-cobertura",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_atencao_basica",
+  "alvo": "cobertura_aps",
+  "mecanismo": "retornos_decrescentes",
+  "parametros": {
+    "coeficiente": 0.0304392,
+    "escala": 3000
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

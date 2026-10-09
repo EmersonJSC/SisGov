@@ -1,0 +1,17 @@
+{
+  "id": "frequencia-abre-oportunidades",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "frequencia_escolar",
+  "alvo": "oportunidades_juvenis",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.300267,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

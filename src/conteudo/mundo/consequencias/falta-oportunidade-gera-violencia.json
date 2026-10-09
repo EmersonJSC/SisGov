@@ -1,0 +1,18 @@
+{
+  "id": "falta-oportunidade-gera-violencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oportunidades_juvenis",
+  "alvo": "violencia_letal",
+  "mecanismo": "limiar",
+  "parametros": {
+    "limiar": 100,
+    "coeficiente": 0.0383933,
+    "direcao": "abaixo"
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

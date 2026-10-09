@@ -4,9 +4,14 @@
   "versaoEsquema": 1,
   "origem": "recursos_creches_publicas",
   "alvo": "participacao_trabalho_cuidadoras",
-  "mecanismo": "afim",
-  "parametros": { "coeficiente": 0.015, "termoConstante": -7.5 },
+  "mecanismo": "retornos_decrescentes",
+  "parametros": {
+    "coeficiente": 0.0900234,
+    "escala": 500
+  },
   "unidade": "percentual_0_100",
-  "atrasoPassos": 2,
-  "duracao": { "modo": "continuo" }
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
 }
