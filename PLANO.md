@@ -476,7 +476,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 4 feitos + 41 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 43 chamados — 4 feitos + 39 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
