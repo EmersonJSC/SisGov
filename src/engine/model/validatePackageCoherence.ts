@@ -20,6 +20,8 @@ const supportedUnits = new Set([
   "moeda_milhoes_2024_ano",
   "moeda_ano",
   "indice_0_100_por_passo",
+  "percentual_pib",
+  "percentual_pib_por_passo",
   "fator",
   "pontos",
   "nivel_escopo",

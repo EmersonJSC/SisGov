@@ -8,25 +8,40 @@ autor antes de descer para a próxima.
 
 ## Camada 1 — os pilares do país
 
-**Estado:** em discussão.
+**Estado:** pilares 1 a 4 aprovados e derivados; 5 a 9 a derivar.
+**Fonte:** as bolhas e leis aprovadas estão em `scripts/camadas/gerar.py`
+(gerador único, separado por camadas). Ele só acrescenta o que falta aos
+JSONs e nunca sobrescreve; depois de gerado, o JSON é a verdade única.
+**Ainda não gerado:** faltam as ligações (quem alimenta quem), para nenhuma
+bolha nascer isolada.
 
-Pergunta desta etapa: **quais são os pilares do país e quais deles podem
-virar bolhas?**
+| #   | Pilar                   | Estado    | Bolhas e leis                                                                                                                                                                                                                      |
+| --- | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Economia                | aprovado  | PIB, Desemprego, Renda das famílias (já existem) + **Inflação**                                                                                                                                                                    |
+| 2   | Contas públicas         | aprovado  | **Arrecadação**, **Gasto público**, **Resultado fiscal**, **Dívida pública** (lenta), **Juros da dívida**                                                                                                                          |
+| 3   | Estabilidade financeira | aprovado  | **Taxa de juros**, **Câmbio**, **Risco país**, **Reservas internacionais** (lenta), **Crise financeira** (situação)                                                                                                                |
+| 4   | Instituições            | aprovado  | **Força das instituições** + 7 leis institucionais: Regra fiscal, Autonomia do Banco Central, Regime cambial, Independência do Judiciário, Liberdade de imprensa, Transparência pública, Federalismo (Sistema eleitoral já existe) |
+| 5   | Legitimidade            | a derivar | Popularidade do governo, Confiança nas instituições                                                                                                                                                                                |
+| 6   | População               | a derivar | População e envelhecimento (lenta)                                                                                                                                                                                                 |
+| 7   | Bem-estar               | a derivar | Qualidade de vida, que junta saúde, escolaridade e renda                                                                                                                                                                           |
+| 8   | Ordem e segurança       | a derivar | Segurança pública                                                                                                                                                                                                                  |
+| 9   | Território e natureza   | a derivar | contexto fixo; meio ambiente entra na camada 2                                                                                                                                                                                     |
 
-| # | Pilar | Vira bolha? | Como |
-|---|---|---|---|
-| 1 | Economia | sim | PIB, Desemprego, Inflação |
-| 2 | Contas públicas | sim | Dívida pública (lenta), Arrecadação |
-| 3 | Estabilidade financeira | sim | Crise financeira (situação), Câmbio, Reservas |
-| 4 | Instituições (Constituição) | em parte | a Constituição é um **conjunto de leis**; a bolha seria a **força das instituições** |
-| 5 | Legitimidade | sim | Popularidade do governo, Confiança nas instituições |
-| 6 | População | sim | População e envelhecimento (lenta) |
-| 7 | Bem-estar | sim, como resumo | Qualidade de vida, que junta saúde, escolaridade e renda |
-| 8 | Ordem e segurança | sim | Segurança pública |
-| 9 | Território e natureza | não por enquanto | contexto fixo; meio ambiente entra na camada 2 |
+Consumo, investimento e produtividade descem para a camada 2.
 
-_(Detalhes de cada pilar — o que alimenta e o que é alimentado — entram só
-depois que a lista for aprovada.)_
+Pontos de partida do Brasil (só o que não é calculado): dívida pública
+77% do PIB, reservas 16% do PIB; leis vigentes: arcabouço fiscal, BC com
+autonomia plena, câmbio flutuante, Judiciário independente, imprensa plena,
+acesso à informação, federalismo cooperativo.
+
+Comandos:
+
+```
+python3 scripts/camadas/gerar.py listar
+python3 scripts/camadas/gerar.py gerar --camada 1 --pais brasil            # ensaio
+python3 scripts/camadas/gerar.py gerar --camada 1 --pais brasil --aplicar  # grava
+python3 scripts/camadas/gerar.py documento --camada 1
+```
 
 ---
 
