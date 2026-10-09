@@ -53,6 +53,67 @@ export type InitialStateFile = {
     nivelDesejado: number;
     nivelImplantado: number;
   }[];
+  leisEleitoraisVigentes?: readonly string[];
+  fiscal?: FiscalInitialState;
+  politica?: PoliticalInitialState;
+};
+
+/** Country-specific initial political data; it is intentionally not engine law. */
+export type PoliticalInitialState = {
+  origem: { tipo: "observado" | "hipotese"; descricao: string };
+  partidos: readonly { id: string; nome: string; pesoReferencia?: number }[];
+  grupos: readonly { id: string; nome: string }[];
+  perfis: readonly {
+    id: string;
+    nome: string;
+    pesoEleitoral: number;
+    associacoes: readonly { grupo: string; peso: number }[];
+    preferenciaBase: Readonly<Record<string, number>>;
+  }[];
+  relacoes: readonly {
+    id: string;
+    origem: { tipo: "politica" | "indicador"; id: string; referencia: number };
+    grupo: string;
+    pontosEmReferencia: number;
+  }[];
+  cadeirasSenadoPorPartido: Readonly<Record<string, number>>;
+  coalizaoGoverno: readonly string[];
+};
+
+/** Fiscal values belong to the country state, never to the generic engine. */
+export type FiscalInitialState = {
+  periodoInicial: string;
+  referenciaPrecos: string;
+  unidadeMonetaria: string;
+  origem: {
+    tipo: "observado" | "hipotese";
+    descricao: string;
+  };
+  caixa: number;
+  dividaTotal: number;
+  jurosHerdadosMensais: number;
+  taxaJurosDividaNovaMensal: number;
+  credito?: AggregateCreditInitialState;
+};
+
+/** Optional aggregate private-credit stock for the SG060-C extension. */
+export type AggregateCreditInitialState = {
+  principalPendente: number;
+  principalPerformante: number;
+  principalInadimplente: number;
+  capitalAgregado: number;
+  receitaJurosMensal: number;
+};
+
+export type ElectoralLawDefinition = {
+  id: string;
+  nome: string;
+  ambito: "constitucional";
+  eleicao: string;
+  instituicao: string;
+  alcance: "nacional" | "territorial";
+  mecanismo: "pluralidade_nacional" | "maiores_quotientes_por_unidade";
+  parametros: Readonly<Record<string, string | number>>;
 };
 
 export type PolicyCatalogFile = {
@@ -60,6 +121,7 @@ export type PolicyCatalogFile = {
   tipo: "catalogo-politicas";
   versaoEsquema: 1;
   politicas: string[];
+  leisEleitorais?: readonly ElectoralLawDefinition[];
 };
 
 export type PoliticalOrganizationFile = {
@@ -149,6 +211,12 @@ export type PolicyFile = {
   icone?: string;
   ministerio?: string;
   respostaTemporal?: { implantacao: number; degradacao: number };
+  impactoFiscal?: {
+    natureza: "receita" | "despesa";
+    valorMensalNaImplantacaoIntegral: number;
+    nivelImplantacaoIntegral: number;
+    unidadeMonetaria: string;
+  };
   processoAutorizacao: string;
   controle: {
     variavel: string;

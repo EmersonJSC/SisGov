@@ -20,5 +20,11 @@
     "despesa-alimentacao",
     "saldo-alimentacao"
   ],
-  "respostaTemporal": { "implantacao": 0.32, "degradacao": 0.2 }
+  "respostaTemporal": { "implantacao": 0.32, "degradacao": 0.2 },
+  "impactoFiscal": {
+    "natureza": "despesa",
+    "valorMensalNaImplantacaoIntegral": 25,
+    "nivelImplantacaoIntegral": 300,
+    "unidadeMonetaria": "moeda_milhoes_2024"
+  }
 }

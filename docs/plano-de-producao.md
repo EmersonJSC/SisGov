@@ -20,8 +20,8 @@ cenário → partida → proposta → autorização → política vigente
 
 Os IDs SG001–SG096 permanecem estáveis. As fases 00–06 e seus aceites continuam
 registrando o trabalho anterior. A partida integrada da Fase 07 ainda não está
-concluída. A nova fundação de domínio recebe SG097–SG099; ela precisa ser aceita
-antes de SG061 integrar o turno. As especificações de tempo, finanças e regras
+concluída. A nova fundação de domínio recebe SG097–SG099 e está aceita como
+pré-requisito arquitetural de SG061. As especificações de tempo, finanças e regras
 políticas podem avançar em paralelo quando não dependerem desses contratos.
 
 O estado atual do código e a sequência completa estão descritos em
@@ -85,16 +85,14 @@ implementadas. As evidências históricas permanecem identificadas como históri
 
 ### Frentes de produção
 
-1. Completar a extensão eleitoral de SG099 para as leis constitucionais herdadas;
-   o escopo de domínio de SG098 e a fábrica básica de SG099 já têm evidências.
-2. Fechar o contrato temporal (SG057-A); sobre ele, especificar e testar o núcleo
-   fiscal mínimo (SG060-A/B) e o contrato político (SG057-B).
-3. Implementar reação dos grupos, votação, eleição e validação de ações
+1. Especificar e testar o núcleo fiscal mínimo (SG060-A/B/C) e fechar o contrato
+   político operacional (SG057-B), apoiados no contrato temporal já aceito.
+2. Implementar reação dos grupos, votação, eleição e validação de ações
    (SG058-A/B e SG059), usando implantação e limites já disponíveis. Capacidade
-   avançada, governança e bancos (SG058-C/D e SG060-C) ficam para uma evolução.
-4. Orquestrar o turno atomicamente (SG061–SG064) e conectá-lo à interface
+   avançada e governança (SG058-C/D) ficam para uma evolução.
+3. Orquestrar o turno atomicamente (SG061–SG064) e conectá-lo à interface
    (SG065–SG072).
-5. Revisar sociedade e equilíbrio, salvar e restaurar, validar qualidade e
+4. Revisar sociedade e equilíbrio, salvar e restaurar, validar qualidade e
    preparar distribuição (SG073–SG096).
 
 As dependências, não a ordem numérica do chamado, determinam a sequência. Os
@@ -126,8 +124,15 @@ em SG061. SG099 cria partidas independentes a partir do pacote carregado, mas a
 extensão que resolve e guarda as leis eleitorais constitucionais iniciais ainda
 não está integrada; portanto, SG099 permanece parcial. SG061 não pode iniciar
 seu aceite de integração antes dessa extensão e dos contratos pendentes de
-SG057-B, SG058-A/B, SG059 e SG060-A/B. A bancada trimestral não substitui esses
+SG057-B, SG058-A/B e SG059. A bancada trimestral não substitui esses
 pré-requisitos.
+
+Atualização de 9 de outubro de 2026: a extensão eleitoral foi concluída. O
+catálogo compartilhado declara as leis constitucionais; o estado inicial do país
+declara quais começam vigentes; `createGame` resolve, valida e registra essas
+leis no `GameState`. Os testes agora cobrem referências ausentes e leis paralelas
+incompatíveis. Assim, o aceite de SG099 está concluído. Apuração, candidaturas e
+troca constitucional durante uma partida continuam pertencendo a SG058-B e SG061.
 
 As Fases 01–06 possuem contratos, implementações e verificações registrados abaixo:
 carregamento, execução numérica, atrasos, ocorrências, restauração, bancada e
@@ -141,7 +146,7 @@ da bancada, registrados no chamado abaixo. SG057-A e FIX-V1-02/04 estão conclu�
 no recorte temporal da bancada; a integração da
 partida inteira pertence a SG061, não é pré-requisito desse aceite. Em paralelo,
 concluir a revisão de SG098 e criar a partida de SG099, pré-requisitos
-para SG061. SG060-A/B usa o contrato temporal para construir e testar receitas,
+para SG061. SG060-A/B/C usa o contrato temporal para construir e testar receitas,
 despesas, caixa, dívida e juros simples. SG057-B pode especificar política e
 eleições em paralelo. A integração SG061 não aguarda bancos, inflação, rating,
 crise fiscal ou capacidade avançada.
@@ -661,10 +666,9 @@ conclusão de SG097–SG099. As primeiras funções de `Proposal` e `PolicyState
 já existem em `src/domain/game`; os chamados abaixo fecham e integram esses
 contratos, não recomeçam do zero.
 
-Ordem de execução desta frente: SG097 e o contrato documental SG057-B2 estão
-concluídos; o escopo de domínio de SG098 tem testes focados aprovados. A fábrica
-básica de SG099 existe, mas a integração das leis eleitorais constitucionais
-iniciais continua pendente. SG058-A pode evoluir em paralelo depois de SG057-B2,
+Ordem de execução desta frente: SG097 e SG099 estão concluídos; o escopo de
+domínio de SG098 tem testes focados aprovados. SG058-A pode evoluir em paralelo
+depois de SG057-B2,
 mas SG061 só integra a partida após SG097–SG099 e os demais contratos de turno.
 A numeração 98/99 é posterior à numeração original da Fase 07 e não indica
 execução tardia.
@@ -698,7 +702,7 @@ Não representa a partida completa. Os registros de incrementos abaixo incluem
 estados intermediários; a situação atual é o aceite de escopo registrado ao fim
 desta seção.
 
-### SG098 Fechar Proposta e Política Vigente — concluído no escopo de domínio
+### SG098 Fechar Proposta e Política Vigente — parcial: núcleo de domínio aceito
 
 O contrato de proposta, estado da política, implantação parcial, revogação,
 prazo e a ponte `preparePolicyExecution` têm testes focados aprovados. O
@@ -768,7 +772,7 @@ pode ultrapassar dois turnos, portanto uma regra de conteúdo não pode manter
 uma proposta sem votação além desse prazo. A confirmação e o processamento no
 turno de vencimento continuam responsabilidades da integração em SG061.
 
-**Aceite de escopo concluído:** proposta, política vigente, implantação parcial,
+**Aceite do núcleo de domínio:** proposta, política vigente, implantação parcial,
 vigência jurídica, revogação, prazo/adiamento e a ponte isolada ao executor têm
 evidência nos testes de domínio e de preparação de execução. `GameState`,
 conversão do pacote real e confirmação do turno pertencem a SG099/SG061; decisão
@@ -781,7 +785,7 @@ política de adiamento e votação pertence a SG058-B. Em 8 de outubro de 2026,
 Após SG098, cria a partida a partir do país escolhido e do catálogo
 compartilhado. SG061 depende desta base integrada.
 
-### SG099 Criar a Partida e adaptar o cenário — parcial
+### SG099 Criar a Partida e adaptar o cenário — concluído
 
 Depende de SG097 e SG098. Entrega: `GameState` com identidade da partida,
 referência imutável ao cenário, turno, propostas, políticas vigentes e execução
@@ -796,17 +800,20 @@ simulação.
 
 Estado verificado: `src/game/createGame.ts` e seus testes criam partidas
 independentes, validam políticas herdadas e registram a identidade do conteúdo
-sem avançar a execução. Falta integrar ao carregamento da partida a resolução
-das leis eleitorais constitucionais herdadas do país, validando mecanismo,
-parâmetros, exclusividade e compatibilidade institucional, e guardar esse estado
-em `GameState`. Logo, a fábrica básica está implementada, mas SG099 não atende
-ainda toda a extensão eleitoral exigida para a integração de SG061.
+sem avançar a execução. O catálogo compartilhado também declara as leis
+eleitorais constitucionais suportadas; o estado inicial do país referencia as
+leis vigentes, e a criação da partida valida mecanismo, parâmetros,
+exclusividade por eleição/alcance e compatibilidade institucional antes de
+guardá-las em `GameState`. A apuração eleitoral, a troca constitucional atômica
+durante a partida e seus efeitos no turno permanecem em SG058-B/SG061: são usos
+posteriores desse estado, não pendências do aceite de criação da partida.
 
-Na extensão eleitoral definida em SG057-B2, resolver referências do país para
-leis constitucionais eleitorais iniciais e validar mecanismo, parâmetros,
-exclusividade por eleição/alcance e compatibilidade com instituições da
-organização política. Guardar as leis vigentes no estado da partida; a troca
-constitucional é atômica e não reescreve apurações anteriores.
+Na extensão eleitoral definida em SG057-B2, as referências do país para leis
+constitucionais eleitorais iniciais são resolvidas e validadas quanto a
+mecanismo, parâmetros, exclusividade por eleição/alcance e compatibilidade com
+as instituições da organização política. As leis vigentes são guardadas no
+estado da partida; a futura troca constitucional será atômica e não reescreverá
+apurações anteriores.
 Separar os JSONs de definição das leis do JSON do país que declara vigência e
 estado inicial; uma lei ausente no início continua no catálogo comum e pode ser
 proposta se seus requisitos forem cumpridos. Migrar o rascunho atual que concentra essas decisões
@@ -1350,15 +1357,63 @@ propostas pendentes, prazo máximo e autorizações antes de iniciar implantaç�
 
 ### SG060 Contabilizar finanças públicas
 
-O núcleo SG060-A/B depende do contrato temporal SG057-A e pode ser testado sem
+O núcleo SG060-A/B e a extensão agregada SG060-C dependem do contrato temporal SG057-A e podem ser testados sem
 Senado ou interface. Sua integração com as políticas usa os contratos de SG058,
 SG059 e SG098–SG099 em SG061. Entrega: receitas, despesas, caixa, dívida, juros
 herdados e juros da dívida nova, com custos únicos e recorrentes. Aceite: déficit
 é financiado automaticamente; erro técnico não cobra e repetição não duplica
 cobrança. Custos seguem implantação e vigência, com uma fonte contábil e sem novo
-débito do mesmo custo pelo grafo. SG060-C não integra o aceite da primeira versão.
+débito do mesmo custo pelo grafo. SG060-C agora integra o recorte agregado deste
+chamado, mas não é pré-requisito para o primeiro ciclo político de SG061.
 
-#### SG060-A Identidades e unidades — em especificação
+#### SG060-A Identidades e unidades — concluído no recorte de domínio
+
+Implementação inicial em 9 de outubro de 2026: o módulo puro
+`src/domain/fiscal/monthlyAccounting.ts` aplica as identidades mensais de caixa,
+dívida total, dívida emitida durante a partida, juros herdados, juros da dívida
+nova e emissão automática. O mesmo módulo prepara exatamente três meses fiscais
+sem mutar o estado de origem, para que a futura confirmação atômica possa
+descartar o trimestre inteiro em caso de falha. Sete testes sintéticos cobrem os
+quatro exemplos do contrato, a composição trimestral e estados incoerentes.
+O formato opcional `fiscal` do estado inicial já valida período, unidade,
+referência de preços, origem observada/hipotética e os estoques/fluxos fiscais,
+e `createGame` o copia para a partida. O Brasil ainda não o declara porque seus
+valores precisam ser reconciliados. Cada política agora pode declarar
+`impactoFiscal`, com receita/despesa, custo mensal em implantação integral,
+nível de referência e unidade monetária. A ponte da partida calcula o fluxo
+proporcional ao nível implantado, inclusive durante revogação gradual; o módulo
+contábil continua sendo a única fonte que altera caixa e dívida. `prepareGameQuarter`
+já integra esse fluxo ao turno sintético. Segundo incremento: `prepareFiscalQuarter` prepara
+os três estados mensais de políticas, combina os fluxos e calcula o trimestre
+sem mutar o `GameState`; dois testes da ponte cobrem o resultado e o caso de
+trimestre incompleto. Terceiro incremento: `commitFiscalQuarter` aplica o
+resultado fiscal a um novo snapshot sem avançar o turno nem alterar a execução
+política; a partida sem ficha fiscal é recusada;
+Quarto incremento: `prepareGameQuarter` coordena três passos do executor com os
+fluxos fiscais, e `commitGameQuarter` confirma ambos em um novo snapshot,
+avançando o turno somente no commit. Tramitação, eventos, votação e eleições
+ainda não fazem parte desse orquestrador. Quinto incremento: a tramitação
+mecânica apresenta rascunhos e abre a votação no prazo configurado, preservando
+propostas pendentes; aprovação, rejeição e adiamento continuam decisões de
+SG058-B. Sexto incremento: `resolveParliamentaryVote` valida a contagem e o
+quórum recebido, aplica aprovação/rejeição ao domínio e `commitParliamentaryVote`
+grava a decisão em um novo snapshot. O gerador de acaso e o cálculo de apoio
+político ainda não foram integrados;
+Sétimo incremento: `calculateVoteProbability` combina apoio-base, afinidade e
+opinião com pesos fornecidos pelo cenário, e `sampleParliamentaryVotes` usa um
+sorteio explícito por cadeira, recebendo os sorteios sem conhecer sua origem.
+Oitavo incremento:
+`createRandomState` e `drawRandomValues` persistem `{algorithm, seed, state}`
+na partida e usam `xorshift32-v1`; `sampleParliamentaryVotesFromState` consome
+exatamente um valor para cada cadeira e devolve o novo estado junto com a
+amostra. Mesma semente e mesmo estado produzem a mesma continuação, sem usar
+aleatoriedade global implícita. `commitParliamentaryVote` agora pode confirmar
+proposta, contagem e novo estado aleatório no mesmo snapshot: rejeita amostra
+produzida por estado obsoleto ou contagem divergente, preservando a partida em
+caso de falha. A serialização do snapshot para arquivo continua pertencendo a
+SG081;
+O arquivo de salvamento e a integração de continuidade permanecem em SG081–SG082;
+isso não reabre as identidades fiscais deste chamado.
 
 Decisão de planejamento: cada cenário declara período inicial e referência própria
 de preços; a v1 mantém preços reais constantes durante a partida, sem inflação
@@ -1396,16 +1451,19 @@ histórico, caixa e financiamento marcados como não modelados.
 **Verificação documental mínima concluída:** soma de receita, despesa e resultado primário do turno fecha; as
 reconciliações permanecem separadas; caixa e emissão não são inferidos das fontes.
 
-**Próximo marco vigente:** demonstrar o ciclo jogável com caixa, dívida e juros
-usando exemplos sintéticos identificados, antes da implementação SG060-B. O
-relatório histórico serve à validação das fontes e não substitui esse ciclo.
+**Marco vigente:** SG060-B está em execução após a demonstração do ciclo jogável
+com caixa, dívida e juros usando exemplos sintéticos identificados. Essa
+verificação cobre o trimestre integrado: os custos declarados nas cinco
+políticas brasileiras chegam à contabilidade, o déficit emite dívida e os juros
+da emissão começam no mês seguinte. O relatório histórico serve à validação
+das fontes e não substitui esse ciclo.
 Formalizar taxa mensal fixa para novas emissões, início dos juros no mês seguinte
 e separação entre dívida herdada e dívida emitida durante a partida. A taxa fixa
 é parâmetro do jogo; não é aplicada retroativamente à carteira herdada. Lacunas
 nos dados históricos devem ser resolvidas ou explicitadas como hipóteses de
 cenário, nunca preenchidas silenciosamente como se fossem observações.
 
-#### SG060-B Financiamento e restrições — planejado
+#### SG060-B Financiamento e restrições — concluído no recorte fiscal
 
 Depende de SG060-A. Implementar emissão automática apenas para cobrir insuficiência
 de caixa após receitas, despesas e juros; manter superávit em caixa. Novas emissões
@@ -1417,13 +1475,53 @@ alimenta a reação social de SG058-A, sem derrota fiscal automática. Aceite in
 comparar estratégias de gasto, investimento, economia e tributação; dívida não
 pode ser um recurso gratuito nem uma punição automática a qualquer investimento.
 
-#### SG060-C Bancos e crédito agregados — backlog posterior à primeira versão
+Primeiro incremento implementado: `FiscalMonthResult` agora expõe a prestação
+contábil completa para a interface (`revenue`, `primaryExpense`, resultado
+primário, juros, resultado nominal, emissão, caixa e dívida antes/depois e juros
+adicionais previstos para o mês seguinte). A restrição V1 é explícita e não
+inventada: caixa final nunca fica negativo; somente o déficit efetivo é emitido.
+A ligação dessa prestação a uma partida real continua em SG061, e a reação social
+parametrizada continua em SG058-A; nenhuma das duas deve criar um teto universal
+de dívida ou uma derrota automática.
+O DTO `buildFiscalQuarterReport` agrega os três meses para a camada de apresentação
+sem recalcular ou alterar o estado contábil; o relatório mantém a separação entre
+fonte de verdade e visualização.
+Segundo incremento: `FiscalQuarterPanel` apresenta a prévia do trimestre em
+receita, despesa, resultado nominal, emissão, dívida final e juros futuros, com
+detalhamento mensal. O componente recebe um relatório pronto e é opcional na
+`GameMap`; não foi alimentado com valores fictícios enquanto o cenário brasileiro
+não declarar uma ficha fiscal reconciliada.
+Terceiro incremento: `compareFiscalStrategies` prepara previsões independentes
+de gasto, investimento, economia ou tributação a partir do mesmo estado inicial.
+Cada alternativa é calculada por `accountFiscalQuarter`, não contamina as outras
+e não altera a partida. O teste demonstra que mais despesa eleva a emissão,
+enquanto economia e tributação preservam a dívida e acumulam caixa; os benefícios
+políticos continuam fora deste módulo e precisam vir dos contratos de SG058-A.
+Quarto incremento: `FiscalStrategyComparisonPanel` apresenta essas alternativas
+lado a lado, identificando emissão, caixa e dívida finais. A tabela é uma prévia
+opcional da `GameMap`, não confirma nenhuma estratégia e não classifica o jogador;
+o componente continua aguardando a partida integrada fornecer dados reais. A
+reação social do peso dos juros pertence a SG058-A e a confirmação atômica do
+turno completo pertence a SG061; essas dependências não invalidam o núcleo fiscal
+concluído aqui.
 
-Não bloqueia SG061 nem o lançamento inicial. Após validar a jogabilidade de
-SG060-A/B, separar Tesouro, bancos e autoridade monetária. Modelar condições de
-crédito, inadimplência, risco e custo de novas emissões sem reprificar toda dívida
-fixa instantaneamente. Conectar à atividade e arrecadação. Sem bancos individuais
-ou rede interbancária nesta etapa. Critérios e extensões adiadas no plano detalhado.
+#### SG060-C Bancos e crédito agregados — concluído no recorte agregado V1
+
+Separar Tesouro, bancos e autoridade monetária. Modelar condições de crédito,
+inadimplência esperada, risco e custo de novas emissões sem reprificar toda
+dívida fixa instantaneamente. Conectar crédito novo à atividade e à arrecadação.
+Sem bancos individuais, rede interbancária, sorteio oculto de default ou
+amortização nesta etapa.
+
+Primeiro incremento de SG060-C: `accountAggregateCreditMonth` limita o crédito
+novo pela capacidade `capital / capitalRequirementRatio`, aplica a taxa do
+contrato somente ao crédito novo e preserva a receita de juros da carteira
+existente. A inadimplência esperada reduz a carteira performante e o capital;
+`addCreditTaxRevenue` entrega a atividade tributável à entrada fiscal sem mutar
+o Tesouro. O resultado expõe crédito aprovado/rejeitado, perda esperada,
+atividade e receita, permitindo explicação sem misturar estoques públicos e
+privados. Três testes cobrem capacidade, não reprecificação, integração de
+receita e rejeição de estado inconsistente.
 
 ### SG061 Confirmar turno inteiro
 
@@ -1435,8 +1533,10 @@ evento. Vitória abre novo mandato sem reiniciar país, juros ou mandatos
 senatoriais; derrota presidencial encerra o percurso. Extensões SG058-C/D e
 SG060-C não são dependências deste marco.
 
-Situação em 8 de outubro de 2026: a confirmação integrada está bloqueada até
-fechar SG057-B, SG058-A/B, SG059, SG060-A/B e a extensão pendente de SG099.
+Situação atual: o núcleo fiscal SG060-A/B e a extensão agregada SG060-C estão
+concluídos nos respectivos recortes. A confirmação integrada continua bloqueada
+até fechar SG057-B, SG058-A/B e SG059. SG099 já fornece a base da partida e as
+leis eleitorais iniciais.
 `advanceQuarterlyLaboratoryTurn` confirma apenas a bancada numérica e não pode
 ser reaproveitado como se já fosse a transação política e fiscal de SG061.
 

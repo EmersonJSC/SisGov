@@ -47,9 +47,9 @@ interface            → intenção da pessoa jogadora e apresentação
 As fases abaixo descrevem fronteiras arquiteturais, não um segundo catálogo de
 trabalho. As dependências vigentes são as de SG097–SG099 e SG057–SG061 no
 [plano de produção](../plano-de-producao.md). SG097 tem inventário registrado;
-o escopo de domínio de SG098 tem testes focados; SG099 tem a fábrica básica
-implementada, mas falta integrar as leis eleitorais constitucionais herdadas.
-SG061 aguarda essa integração e os demais contratos políticos e fiscais. Não
+o escopo de domínio de SG098 tem testes focados; SG099 cria partidas e integra
+as leis eleitorais constitucionais herdadas. SG061 aguarda os demais contratos
+políticos e fiscais. Não
 reiniciar a Fase A nem exigir uma mudança de diretórios antes de integrar o jogo.
 
 ## Diagnóstico inicial
@@ -85,6 +85,8 @@ São imutáveis durante uma partida:
 - `PolicyState` para uma política vigente;
 - `ProposalState` para uma proposta em tramitação;
 - `FiscalState`, `PublicOpinionState` e `PopulationState`;
+- `AggregateCreditState`, separado do Tesouro e com carteira performante,
+  inadimplente, capital agregado e juros recorrentes;
 - calendário absoluto, vencimento das cadeiras senatoriais, prazos de propostas
   e versão/semente/estado do gerador de sorteios;
 - ocorrências ativas, já ocorridas e dilemas pendentes;
@@ -93,6 +95,8 @@ São imutáveis durante uma partida:
 No estado fiscal, separar dívida inicial, emissões acumuladas, fluxo de juros
 herdado e taxa fixa da dívida nova. A regra fiscal é a fonte de caixa e dívida;
 o grafo recebe os valores necessários, sem manter uma contabilidade concorrente.
+O crédito agregado gera atividade e receita tributável por uma ponte explícita;
+essa ponte não altera diretamente o `FiscalState`.
 
 ### Serviços e casos de uso
 
@@ -205,7 +209,8 @@ Sobre ele, contabilidade e contrato político podem ser testados separadamente:
 Cada módulo recebe contrato e testes antes de ser coordenado pelo turno.
 Aleatoriedade tem estado da partida, nunca um sorteio global oculto. Testes
 controlam sementes e verificam tanto continuidade quanto variação de resultados.
-SG058-C/D e SG060-C permanecem evoluções e não bloqueiam esta fase.
+SG058-C/D permanecem evoluções; o recorte agregado de SG060-C está concluído e
+também não bloqueia esta fase.
 
 Aceite: déficit válido, contabilidade única, população sem dupla contagem,
 cadeiras não vencidas preservadas, limite de tramitação e falhas reproduzíveis.
@@ -286,8 +291,8 @@ simulação. `ui` pode depender de `application`, mas não deve coordenar regras
 
 ## Próxima execução recomendada
 
-Revisar SG098 conforme as lacunas registradas e então criar a partida de SG099,
-aproveitando o inventário SG097. A fábrica começa com os contratos disponíveis;
-extensões de conteúdo para política e finanças entram com SG057/SG060.
+Usar a partida criada por SG099 como base para os contratos político e fiscal de
+SG057/SG060. A integração do turno, das votações e da apuração permanece em
+SG058/SG061.
 Não mover pastas como pré-requisito, refazer o motor ou implementar regras ainda
 sem contrato. O foco é viabilizar o ciclo jogável com a fundação existente.

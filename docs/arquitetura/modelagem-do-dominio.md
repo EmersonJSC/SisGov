@@ -162,6 +162,7 @@ autorizada, rejeitada e implantada antes de enviar um comando ao motor.
 | Alterar nível de implantação                    | Governo / regra de implantação                          |
 | Calcular efeitos e estoques                     | Motor de simulação                                      |
 | Calcular financiamento e juros                  | Domínio fiscal, com uma única fonte contábil            |
+| Calcular crédito agregado e perda esperada      | Domínio fiscal, separado do Tesouro                    |
 | Alterar composição política                     | Eleição; Senado preserva mandatos fora da renovação     |
 | Coordenar tempo, sorteios e confirmação atômica | Aplicação / estado da partida                           |
 | Exibir dados e receber intenções                | Interface                                               |
@@ -179,8 +180,11 @@ apoio: sementes diferentes podem produzir dissidências diferentes.
 Na v1 fiscal, o domínio mantém caixa, dívida total, dívida emitida durante a
 partida e fluxo herdado de juros. A taxa fixa do cenário incide apenas sobre a
 dívida nova já existente no início do mês. Emissão atual gera juros no mês
-seguinte. O peso desses compromissos pode afetar os grupos por regras sociais
-explícitas. Inflação, rating, bancos e crise fiscal ficam fora dessa integração.
+seguinte. O SG060-C acrescenta uma carteira privada agregada: crédito novo é
+limitado pelo capital, default esperado reduz a carteira performante e o capital,
+e a atividade financiada produz receita tributável por uma ponte explícita.
+Não há bancos individuais, rede interbancária, rating, amortização ou inflação
+endógena nesta integração.
 
 ## Organização-alvo do código
 

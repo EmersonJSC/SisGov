@@ -48,13 +48,13 @@ O motor, o carregamento, a bancada e o primeiro recorte em JSON existem. O mapa
 com mais de cem políticas é um laboratório de escala visual, não a partida
 integrada. Seu saldo demonstrativo não constitui financiamento ou dívida.
 
-Frente ativa: revisar o aceite de SG057-B2. SG057-A está concluído no recorte
+Frente ativa: desenvolver SG060-A/B sobre o contrato já aprovado. SG057-A está concluído no recorte
 temporal e SG057-B1 no recorte de pesquisa. SG057-A tem três passos mensais na bancada,
 testes comportamentais e fluxo verificado em tela; o registro vigente de progresso
 fica no [chamado do plano principal](../plano-de-producao.md#sg057-a-contrato-temporal--concluído).
 Aceite temporal e migração FIX-V1-02/04 concluídos; ver o
 [inventário e testes](sg057-inventario-temporal.md). Em paralelo,
-após SG057-B2, revisar SG098 e criar a partida SG099 antes da integração de SG061. A implementação
+após SG057-B2, SG098 e SG099 criaram a base da partida antes da integração de SG061. A implementação
 fiscal e a integração completa não são pré-requisitos para fechar SG057-A;
 SG060-A/B usa esse contrato e SG061 reúne os componentes.
 

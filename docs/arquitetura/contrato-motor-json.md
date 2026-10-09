@@ -33,6 +33,27 @@ vigentes, seus valores iniciais e o estado herdado. Na abertura do jogo, o
 carregador lê os JSONs, apresenta os países configurados, o jogador escolhe um
 e a partida nasce do estado daquele país. Inicialmente só haverá Brasil.
 
+Quando o cenário usar finanças, seu estado inicial também pode declarar uma
+ficha fiscal: período inicial, unidade monetária, referência de preços, origem
+dos dados (observado ou hipótese), caixa, dívida, fluxo mensal de juros herdados
+e taxa mensal sobre a dívida nova. O motor apenas valida e lê essa ficha; não
+embute valores de um país. Se uma série ainda não estiver reconciliada, a ficha
+fica ausente em vez de receber números apresentados como observados.
+
+A extensão SG060-C mantém o Tesouro separado do crédito privado agregado. A
+carteira de crédito guarda principal pendente, parcela performante, parcela em
+default, capital agregado e receita de juros recorrente. Quando o país fornece
+`fiscal.credito`, declara `principalPendente`, `principalPerformante`,
+`principalInadimplente`, `capitalAgregado` e `receitaJurosMensal`; uma nova
+concessão é limitada por `capital / capitalRequirementRatio`. A taxa informada
+vale apenas para o crédito novo, sem reprificar a carteira já existente. O
+default da V1 é
+uma perda esperada determinística, não um sorteio implícito. O crédito aprovado
+gera atividade e uma receita tributável explícita para o fluxo fiscal; a
+contabilidade pública só incorpora esse valor quando o chamador o combina com
+a receita do mês. Bancos individuais, rede interbancária, amortização e rating
+continuam fora deste recorte.
+
 **Lei ausente no início não é lei proibida.** Ela continua no catálogo e pode
 ser proposta pelo jogador naquele país se os requisitos para aprová-la forem
 cumpridos. O país não precisa manter uma lista artificial de “leis permitidas”.

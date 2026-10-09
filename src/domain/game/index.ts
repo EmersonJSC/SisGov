@@ -35,3 +35,16 @@ export type {
 } from "./proposal";
 export type { PolicyState, PolicyStatus } from "./policyState";
 export type { DomainError, DomainErrorCode, DomainResult } from "./result";
+export {
+  calculateGroupContributions,
+  refreshPoliticalSupport,
+  redistributeCoalitionSupport,
+} from "../../game/socialSupport";
+export type {
+  CoalitionRedistributionInput,
+  GroupAssociation,
+  GroupEffect,
+  SocialContribution,
+  PoliticalProfile,
+  PoliticalSupportSnapshot,
+} from "../../game/socialSupport";

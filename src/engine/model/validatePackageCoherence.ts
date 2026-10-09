@@ -57,9 +57,96 @@ export function validatePackageCoherence(
   const variablesById = new Map(
     content.variables.variaveis.map((variable) => [variable.id, variable]),
   );
+  const initialStateFile = content.pathsById[content.initialState.id];
   const policiesById = new Map(
     content.policies.map((policy) => [policy.id, policy]),
   );
+  for (const [index, relation] of (
+    content.initialState.politica?.relacoes ?? []
+  ).entries()) {
+    const field = `politica.relacoes.${index}.origem.id`;
+    if (
+      relation.origem.tipo === "politica" &&
+      !policiesById.has(relation.origem.id)
+    )
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Política inexistente: ${relation.origem.id}.`,
+        ),
+      );
+    if (
+      relation.origem.tipo === "indicador" &&
+      !variablesById.has(relation.origem.id)
+    )
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Indicador inexistente: ${relation.origem.id}.`,
+        ),
+      );
+  }
+  const electoralLaws = content.policyCatalog?.leisEleitorais ?? [];
+  const electoralLawsById = new Map(electoralLaws.map((law) => [law.id, law]));
+  const organization = content.organizacaoPolitica;
+  const initialForm = organization?.formasDeGoverno.find(
+    (form) => form.id === organization.formaInicial,
+  );
+  const activeElectoralScopes = new Set<string>();
+  for (const [index, lawId] of (
+    content.initialState.leisEleitoraisVigentes ?? []
+  ).entries()) {
+    const field = `leisEleitoraisVigentes.${index}`;
+    const law = electoralLawsById.get(lawId);
+    if (!law) {
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Lei eleitoral vigente inexistente: ${lawId}.`,
+        ),
+      );
+      continue;
+    }
+    if (!organization || !initialForm) {
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          "Lei eleitoral exige organização política inicial válida.",
+        ),
+      );
+      continue;
+    }
+    if (!initialForm.eleicoesAtivas.includes(law.eleicao))
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `A eleição ${law.eleicao} não está ativa na forma inicial.`,
+        ),
+      );
+    if (!initialForm.instituicoesAtivas.includes(law.instituicao))
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `A instituição ${law.instituicao} não está ativa na forma inicial.`,
+        ),
+      );
+    const scope = `${law.eleicao}\u0000${law.alcance}`;
+    if (activeElectoralScopes.has(scope))
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          field,
+          `Há duas leis eleitorais vigentes para ${law.eleicao} no alcance ${law.alcance}.`,
+        ),
+      );
+    activeElectoralScopes.add(scope);
+  }
 
   for (const variable of content.variables.variaveis) {
     if (!supportedUnits.has(variable.unidade)) {
@@ -83,7 +170,6 @@ export function validatePackageCoherence(
   }
 
   const inheritedPolicies = new Set<string>();
-  const initialStateFile = content.pathsById[content.initialState.id];
   for (const [index, initial] of (
     content.initialState.politicasVigentes ?? []
   ).entries()) {

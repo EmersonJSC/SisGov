@@ -12,6 +12,7 @@ export function relationPath(
   parallelCount = 1,
   startRadius = 0,
   endRadius = 0,
+  preferredSide = 1,
 ): string {
   const dx = end.x - start.x;
   const dy = end.y - start.y;
@@ -36,8 +37,18 @@ export function relationPath(
   const pathDx = pathEnd.x - pathStart.x;
   const pathDy = pathEnd.y - pathStart.y;
   const pathDistance = Math.hypot(pathDx, pathDy);
-  const spread = parallelIndex - (parallelCount - 1) / 2;
-  const bend = Math.max(1.5, Math.min(10, pathDistance * 0.14)) + spread * 2;
+  const lane =
+    parallelCount > 1
+      ? (preferredSide < 0 ? -1 : 1) *
+        (parallelIndex % 2 === 0 ? -1 : 1) *
+        (Math.floor(parallelIndex / 2) + 1)
+      : preferredSide < 0
+        ? -1
+        : 1;
+  const bend =
+    (Math.max(1.8, Math.min(11, pathDistance * 0.18)) +
+      (Math.abs(lane) - 1) * 2.4) *
+    lane;
   const midpointX = (pathStart.x + pathEnd.x) / 2;
   const midpointY = (pathStart.y + pathEnd.y) / 2;
   const controlX = midpointX - (pathDy / pathDistance) * bend;

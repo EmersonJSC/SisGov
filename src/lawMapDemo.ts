@@ -137,6 +137,7 @@ function relationPathForNodes(
   target: { x: number; y: number },
   parallelIndex = 0,
   parallelCount = 1,
+  preferredSide = 1,
 ): string {
   return relationPath(
     origin,
@@ -145,7 +146,69 @@ function relationPathForNodes(
     parallelCount,
     (physics?.bodies.get(originId)?.radius ?? 0) + 0.4,
     (physics?.bodies.get(targetId)?.radius ?? 0) + 0.4,
+    preferredSide,
   );
+}
+
+function relationCurveSide(originId: string, targetId: string): 1 | -1 {
+  let value = 0;
+  for (const character of `${originId}\u0000${targetId}`)
+    value = (value * 31 + character.charCodeAt(0)) >>> 0;
+  return value % 2 === 0 ? 1 : -1;
+}
+
+function clearerCurveSide(
+  originId: string,
+  targetId: string,
+  origin: { x: number; y: number },
+  target: { x: number; y: number },
+  positions: ReadonlyMap<string, { x: number; y: number }>,
+): 1 | -1 {
+  const dx = target.x - origin.x;
+  const dy = target.y - origin.y;
+  const distance = Math.hypot(dx, dy);
+  if (distance < 0.001) return relationCurveSide(originId, targetId);
+  const bend = Math.max(1.8, Math.min(11, distance * 0.18));
+  const midpoint = {
+    x: (origin.x + target.x) / 2,
+    y: (origin.y + target.y) / 2,
+  };
+  const fallback = relationCurveSide(originId, targetId);
+  const score = (side: 1 | -1) => {
+    const control = {
+      x: midpoint.x - (dy / distance) * bend * side,
+      y: midpoint.y + (dx / distance) * bend * side,
+    };
+    let penalty = 0;
+    for (const t of [0.2, 0.35, 0.5, 0.65, 0.8]) {
+      const inverse = 1 - t;
+      const point = {
+        x:
+          inverse * inverse * origin.x +
+          2 * inverse * t * control.x +
+          t * t * target.x,
+        y:
+          inverse * inverse * origin.y +
+          2 * inverse * t * control.y +
+          t * t * target.y,
+      };
+      for (const [id, obstacle] of positions) {
+        if (id === originId || id === targetId) continue;
+        const radius = (physics?.bodies.get(id)?.radius ?? 0) + 1;
+        const clearance =
+          Math.hypot(point.x - obstacle.x, point.y - obstacle.y) - radius;
+        penalty +=
+          clearance <= 0
+            ? 10_000 - clearance * 100
+            : 1 / (clearance * clearance);
+      }
+    }
+    return penalty;
+  };
+  const left = score(-1);
+  const right = score(1);
+  if (Math.abs(left - right) < 0.01) return fallback;
+  return left < right ? -1 : 1;
 }
 function recordLog(
   level: TurnLogEntry["level"],
@@ -667,16 +730,15 @@ function render(
   const relationPairKey = (originId: string, targetId: string) =>
     [originId, targetId].sort().join("\u0000");
   const relationPairCounts = new Map<string, number>();
-  const relationPairIndices = new Map<string, number>();
   for (const relation of graph.relations) {
     const originId =
       relation.sourceType === "situacao"
         ? relation.sourceId
         : relation.originId;
     const key = relationPairKey(originId, relation.targetId);
-    relationPairIndices.set(key, relationPairCounts.get(key) ?? 0);
     relationPairCounts.set(key, (relationPairCounts.get(key) ?? 0) + 1);
   }
+  const nextRelationPairIndex = new Map<string, number>();
   const rawStrengths = graph.relations.map(
     (relation) =>
       Math.abs(relation.parameters.coeficiente) *
@@ -696,7 +758,15 @@ function render(
         ? relation.sourceId
         : relation.originId;
     const pairKey = relationPairKey(positionOriginId, relation.targetId);
-    const parallelIndex = relationPairIndices.get(pairKey) ?? 0;
+    const parallelIndex = nextRelationPairIndex.get(pairKey) ?? 0;
+    nextRelationPairIndex.set(pairKey, parallelIndex + 1);
+    const curveSide = clearerCurveSide(
+      positionOriginId,
+      relation.targetId,
+      origin,
+      target,
+      positions,
+    );
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const rises = relation.parameters.coeficiente >= 0;
     const normalizedStrength = Math.min(
@@ -714,6 +784,7 @@ function render(
         target,
         parallelIndex,
         relationPairCounts.get(pairKey) ?? 1,
+        curveSide,
       ),
     );
     path.setAttribute(
@@ -725,6 +796,7 @@ function render(
     path.dataset.target = relation.targetId;
     path.dataset.parallelIndex = String(parallelIndex);
     path.dataset.parallelCount = String(relationPairCounts.get(pairKey) ?? 1);
+    path.dataset.curveSide = String(curveSide);
     path.classList.add("relation", rises ? "rise" : "fall");
     path.style.setProperty(
       "--flow-duration",
@@ -742,15 +814,31 @@ function render(
     const origin = positions.get(originId);
     const target = positions.get(situation.id);
     if (!origin || !target) continue;
+    const curveSide = clearerCurveSide(
+      originId,
+      situation.id,
+      origin,
+      target,
+      positions,
+    );
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute(
       "d",
-      relationPathForNodes(originId, situation.id, origin, target),
+      relationPathForNodes(
+        originId,
+        situation.id,
+        origin,
+        target,
+        0,
+        1,
+        curveSide,
+      ),
     );
     path.setAttribute("marker-end", "url(#law-arrow)");
     path.dataset.positionOrigin = originId;
     path.dataset.origin = originId;
     path.dataset.target = situation.id;
+    path.dataset.curveSide = String(curveSide);
     path.classList.add("condition");
     svg.append(path);
   }
@@ -1015,6 +1103,7 @@ function render(
             b,
             Number(path.dataset.parallelIndex ?? 0),
             Number(path.dataset.parallelCount ?? 1),
+            Number(path.dataset.curveSide ?? 1),
           ),
         );
       }
@@ -1170,10 +1259,6 @@ try {
     visualMap: sandbox.visualMap,
   };
   updateSituations();
-  recordLog("info", "Laboratório iniciado", [
-    `${sandbox.content.policies.length} políticas carregadas.`,
-    "Parâmetros demonstrativos; orçamento, dívida e votação completos ainda estão em planejamento.",
-  ]);
   render();
 } catch (error) {
   advanceButton.disabled = true;

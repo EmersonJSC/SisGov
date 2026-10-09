@@ -8,5 +8,27 @@
     "brasil-primeiro-cenario/politicas/prevencao-seguranca.json",
     "brasil-primeiro-cenario/politicas/alimentacao-escolar.json",
     "brasil-primeiro-cenario/politicas/creches-publicas.json"
+  ],
+  "leisEleitorais": [
+    {
+      "id": "eleicao-presidencial-pluralidade-nacional",
+      "nome": "Eleição presidencial por pluralidade nacional",
+      "ambito": "constitucional",
+      "eleicao": "presidencial",
+      "instituicao": "presidencia",
+      "alcance": "nacional",
+      "mecanismo": "pluralidade_nacional",
+      "parametros": { "turnos": 1 }
+    },
+    {
+      "id": "eleicao-senatorial-maiores-quotientes",
+      "nome": "Eleição senatorial por maiores quocientes territoriais",
+      "ambito": "constitucional",
+      "eleicao": "senatorial",
+      "instituicao": "senado",
+      "alcance": "territorial",
+      "mecanismo": "maiores_quotientes_por_unidade",
+      "parametros": { "desempate": "d20" }
+    }
   ]
 }

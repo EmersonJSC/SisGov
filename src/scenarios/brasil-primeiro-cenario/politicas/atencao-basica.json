@@ -22,5 +22,11 @@
     "despesa-atencao",
     "saldo-atencao"
   ],
-  "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 }
+  "respostaTemporal": { "implantacao": 0.3, "degradacao": 0.18 },
+  "impactoFiscal": {
+    "natureza": "despesa",
+    "valorMensalNaImplantacaoIntegral": 333.3333333333333,
+    "nivelImplantacaoIntegral": 4000,
+    "unidadeMonetaria": "moeda_milhoes_2024"
+  }
 }

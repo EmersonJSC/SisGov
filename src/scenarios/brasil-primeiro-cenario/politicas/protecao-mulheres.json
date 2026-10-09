@@ -19,5 +19,11 @@
     "despesa-protecao",
     "saldo-protecao"
   ],
-  "respostaTemporal": { "implantacao": 0.22, "degradacao": 0.12 }
+  "respostaTemporal": { "implantacao": 0.22, "degradacao": 0.12 },
+  "impactoFiscal": {
+    "natureza": "despesa",
+    "valorMensalNaImplantacaoIntegral": 20,
+    "nivelImplantacaoIntegral": 240,
+    "unidadeMonetaria": "moeda_milhoes_2024"
+  }
 }

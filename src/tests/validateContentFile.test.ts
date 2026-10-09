@@ -76,4 +76,89 @@ describe("validateContentFile", () => {
       ],
     });
   });
+
+  it("valida ficha fiscal declarada pelo país e identifica a origem dos dados", () => {
+    const result = validateContentFile(
+      "estado-inicial.json",
+      JSON.stringify({
+        id: "estado",
+        tipo: "estado-inicial",
+        versaoEsquema: 1,
+        valores: {},
+        fiscal: {
+          periodoInicial: "2026-01",
+          referenciaPrecos: "preços constantes de 2026-01",
+          unidadeMonetaria: "créditos",
+          origem: { tipo: "hipotese", descricao: "Exemplo de teste." },
+          caixa: 0,
+          dividaTotal: 100,
+          jurosHerdadosMensais: 5,
+          taxaJurosDividaNovaMensal: 0.01,
+        },
+      }),
+    );
+    expect(result).toMatchObject({
+      ok: true,
+      value: { fiscal: { origem: { tipo: "hipotese" } } },
+    });
+  });
+
+  it("recusa taxa fiscal negativa com o campo preciso", () => {
+    const result = validateContentFile(
+      "estado-inicial.json",
+      JSON.stringify({
+        id: "estado",
+        tipo: "estado-inicial",
+        versaoEsquema: 1,
+        valores: {},
+        fiscal: {
+          periodoInicial: "2026-01",
+          referenciaPrecos: "preços constantes",
+          unidadeMonetaria: "créditos",
+          origem: { tipo: "hipotese", descricao: "Teste." },
+          caixa: 0,
+          dividaTotal: 100,
+          jurosHerdadosMensais: 5,
+          taxaJurosDividaNovaMensal: -0.01,
+        },
+      }),
+    );
+    expect(result).toMatchObject({
+      ok: false,
+      diagnostics: [{ field: "fiscal.taxaJurosDividaNovaMensal" }],
+    });
+  });
+
+  it("valida o fechamento da carteira de crédito agregado", () => {
+    const result = validateContentFile(
+      "estado-inicial.json",
+      JSON.stringify({
+        id: "estado",
+        tipo: "estado-inicial",
+        versaoEsquema: 1,
+        valores: {},
+        fiscal: {
+          periodoInicial: "2026-01",
+          referenciaPrecos: "teste",
+          unidadeMonetaria: "creditos",
+          origem: { tipo: "hipotese", descricao: "Teste." },
+          caixa: 0,
+          dividaTotal: 100,
+          jurosHerdadosMensais: 5,
+          taxaJurosDividaNovaMensal: 0.01,
+          credito: {
+            principalPendente: 100,
+            principalPerformante: 90,
+            principalInadimplente: 5,
+            capitalAgregado: 50,
+            receitaJurosMensal: 2,
+          },
+        },
+      }),
+    );
+    expect(result).toMatchObject({
+      ok: false,
+      diagnostics: [{ field: "fiscal.credito" }],
+    });
+  });
 });

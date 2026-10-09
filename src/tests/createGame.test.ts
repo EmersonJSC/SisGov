@@ -25,6 +25,20 @@ it("creates independent games from the same country without advancing simulation
     execution: { step: 0 },
   });
   expect(first.value.policies).toHaveLength(5);
+  expect(first.value.electoralLaws).toEqual([
+    expect.objectContaining({
+      lawDefinitionId: "eleicao-presidencial-pluralidade-nacional",
+      electionId: "presidencial",
+      mechanism: "pluralidade_nacional",
+      parameters: { turnos: 1 },
+    }),
+    expect.objectContaining({
+      lawDefinitionId: "eleicao-senatorial-maiores-quotientes",
+      electionId: "senatorial",
+      mechanism: "maiores_quotientes_por_unidade",
+      parameters: { desempate: "d20" },
+    }),
+  ]);
   expect(
     first.value.policies.find(
       (policy) => policy.policyDefinitionId === "atencao-basica",
@@ -46,6 +60,102 @@ it("creates independent games from the same country without advancing simulation
   );
 });
 
+it("rejects missing and overlapping inherited electoral laws", () => {
+  const loaded = brasil();
+  const missing = structuredClone(loaded.definition);
+  missing.initialState.leisEleitoraisVigentes = ["lei-ausente"];
+  expect(createGame("partida-sem-lei", missing, loaded.graph)).toMatchObject({
+    ok: false,
+    diagnostics: [{ field: "leisEleitoraisVigentes.0" }],
+  });
+
+  const overlapping = structuredClone(loaded.definition);
+  if (!overlapping.policyCatalog)
+    throw new Error("Catálogo eleitoral é obrigatório neste cenário.");
+  overlapping.policyCatalog.leisEleitorais = [
+    ...(overlapping.policyCatalog.leisEleitorais ?? []),
+    {
+      id: "presidencial-concorrente",
+      nome: "Regra presidencial concorrente",
+      ambito: "constitucional",
+      eleicao: "presidencial",
+      instituicao: "presidencia",
+      alcance: "nacional",
+      mecanismo: "pluralidade_nacional",
+      parametros: { turnos: 1 },
+    },
+  ];
+  overlapping.initialState.leisEleitoraisVigentes = [
+    "eleicao-presidencial-pluralidade-nacional",
+    "presidencial-concorrente",
+  ];
+  expect(validatePackageCoherence(overlapping)).toMatchObject({ ok: false });
+  expect(
+    createGame("partida-conflito", overlapping, loaded.graph),
+  ).toMatchObject({
+    ok: false,
+    diagnostics: [{ field: "leisEleitoraisVigentes.1" }],
+  });
+});
+
+it("copies fiscal state declared by a country without treating it as an engine constant", () => {
+  const loaded = brasil();
+  const content = structuredClone(loaded.definition);
+  content.initialState.fiscal = {
+    periodoInicial: "2026-01",
+    referenciaPrecos: "preços constantes de teste",
+    unidadeMonetaria: "créditos de teste",
+    origem: { tipo: "hipotese", descricao: "Teste de integração." },
+    caixa: 10,
+    dividaTotal: 100,
+    jurosHerdadosMensais: 5,
+    taxaJurosDividaNovaMensal: 0.01,
+    credito: {
+      principalPendente: 100,
+      principalPerformante: 80,
+      principalInadimplente: 20,
+      capitalAgregado: 50,
+      receitaJurosMensal: 2,
+    },
+  };
+  const game = createGame("partida-fiscal", content, loaded.graph);
+  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
+
+  expect(game.value.fiscal).toEqual({
+    cash: 10,
+    totalDebt: 100,
+    debtIssuedDuringGame: 0,
+    inheritedMonthlyInterest: 5,
+    monthlyNewDebtInterestRate: 0.01,
+  });
+  expect(game.value.fiscal).not.toBe(content.initialState.fiscal);
+  expect(game.value.credit).toEqual({
+    outstandingPrincipal: 100,
+    performingPrincipal: 80,
+    defaultedPrincipal: 20,
+    bankCapital: 50,
+    monthlyInterestRevenue: 2,
+  });
+});
+
+it("persists an explicit random seed in the game snapshot", () => {
+  const loaded = brasil();
+  const game = createGame(
+    "partida-aleatoria",
+    loaded.definition,
+    loaded.graph,
+    {
+      randomSeed: 123,
+    },
+  );
+  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
+  expect(game.value.random).toEqual({
+    algorithm: "xorshift32-v1",
+    seed: 123,
+    state: 123,
+  });
+});
+
 it("rejects an empty game identity with an initial-state diagnostic", () => {
   const loaded = brasil();
   expect(createGame("", loaded.definition, loaded.graph)).toMatchObject({
@@ -64,7 +174,8 @@ it("changes identity when country content changes", () => {
   const changed = structuredClone(loaded.definition);
   if (!changed.organizacaoPolitica)
     throw new Error("A organização política é obrigatória neste cenário.");
-  changed.organizacaoPolitica.formaInicial = "forma-alterada-para-teste";
+  changed.organizacaoPolitica.formasDeGoverno[0].nome =
+    "Forma alterada para teste de identidade";
   const original = createGame(
     "partida-original",
     loaded.definition,

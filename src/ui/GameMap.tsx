@@ -1,11 +1,14 @@
 import { useState, type CSSProperties } from "react";
-import type {
-  IndicatorDefinition,
-  ScenarioDefinition,
-} from "../types/scenario";
+import type { ScenarioDefinition } from "../types/scenario";
+import type { FiscalQuarterReport } from "../game/fiscalReport";
+import type { FiscalStrategyComparisonResult } from "../domain/fiscal";
+import { FiscalQuarterPanel } from "./FiscalQuarterPanel";
+import { FiscalStrategyComparisonPanel } from "./FiscalStrategyComparisonPanel";
 
 type GameMapProps = {
   scenario: ScenarioDefinition;
+  fiscalReport?: FiscalQuarterReport;
+  fiscalComparison?: FiscalStrategyComparisonResult;
 };
 
 const goldenAngle = Math.PI * (3 - Math.sqrt(5));
@@ -20,7 +23,11 @@ function getNodePosition(index: number, total: number) {
   };
 }
 
-export function GameMap({ scenario }: GameMapProps) {
+export function GameMap({
+  scenario,
+  fiscalReport,
+  fiscalComparison,
+}: GameMapProps) {
   const [selectedId, setSelectedId] = useState(scenario.indicators[0]?.id);
   const selected =
     scenario.indicators.find((indicator) => indicator.id === selectedId) ??
@@ -93,6 +100,10 @@ export function GameMap({ scenario }: GameMapProps) {
               Relevância estrutural · {Math.round(selected.visualWeight * 100)}%
             </small>
           </aside>
+        )}
+        {fiscalReport && <FiscalQuarterPanel report={fiscalReport} />}
+        {fiscalComparison && (
+          <FiscalStrategyComparisonPanel comparison={fiscalComparison} />
         )}
       </section>
     </main>

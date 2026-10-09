@@ -253,6 +253,158 @@ button {
   font-size: 0.68rem;
 }
 
+.fiscal-panel {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 1.6rem;
+  width: min(34rem, calc(100% - 23rem));
+  padding: 1.15rem;
+  border: 1px solid rgb(190 229 255 / 20%);
+  border-radius: 1rem;
+  background: rgb(5 18 33 / 88%);
+  box-shadow: 0 1.2rem 4rem rgb(0 0 0 / 32%);
+  backdrop-filter: blur(16px);
+}
+.fiscal-panel__heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.fiscal-panel h2 {
+  margin: 0.25rem 0 0;
+  font:
+    600 1.15rem Georgia,
+    serif;
+}
+.fiscal-panel__badge {
+  border: 1px solid rgb(255 209 115 / 35%);
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+  color: #f7d58d;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fiscal-panel__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+.fiscal-metric {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.6rem;
+  border: 1px solid rgb(183 222 245 / 12%);
+  border-radius: 0.65rem;
+  background: rgb(24 61 82 / 24%);
+}
+.fiscal-metric span,
+.fiscal-month span {
+  color: #9eb9c9;
+  font-size: 0.66rem;
+}
+.fiscal-metric strong {
+  overflow: hidden;
+  color: #effaff;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fiscal-panel__months {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+.fiscal-month {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgb(183 222 245 / 14%);
+}
+.fiscal-month strong {
+  color: #bcecff;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fiscal-comparison {
+  position: absolute;
+  right: 1.6rem;
+  top: 5.5rem;
+  width: min(38rem, calc(100% - 3rem));
+  padding: 1.15rem;
+  border: 1px solid rgb(190 229 255 / 20%);
+  border-radius: 1rem;
+  background: rgb(5 18 33 / 88%);
+  box-shadow: 0 1.2rem 4rem rgb(0 0 0 / 32%);
+  backdrop-filter: blur(16px);
+}
+.fiscal-comparison__help {
+  margin: 0.8rem 0;
+  color: #adc4d3;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+.fiscal-comparison__table {
+  overflow: hidden;
+  border: 1px solid rgb(183 222 245 / 14%);
+  border-radius: 0.7rem;
+}
+.fiscal-comparison__row {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(3, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border-top: 1px solid rgb(183 222 245 / 10%);
+  color: #c5d9e7;
+  font-size: 0.7rem;
+}
+.fiscal-comparison__row:first-child {
+  border-top: 0;
+}
+.fiscal-comparison__row--header {
+  color: #89b4cc;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.fiscal-comparison__row strong {
+  color: #effaff;
+}
+.fiscal-comparison__row span:not(:first-child),
+.fiscal-comparison__row strong:not(:first-child) {
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .fiscal-panel {
+    right: 1.6rem;
+    width: auto;
+  }
+  .fiscal-comparison {
+    right: 1.6rem;
+    left: 1.6rem;
+    top: auto;
+    bottom: 1.6rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .fiscal-panel__metrics,
+  .fiscal-panel__months {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @keyframes float-node {
   to {
     transform: translate(1.1rem, -0.9rem);

@@ -266,11 +266,134 @@ function validatePolicyCatalog(
   validateKnownFields(
     value,
     file,
-    ["id", "tipo", "versaoEsquema", "politicas"],
+    ["id", "tipo", "versaoEsquema", "politicas", "leisEleitorais"],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
   requiredStringArray(value, file, "politicas", diagnostics);
+  if (value.leisEleitorais !== undefined) {
+    if (!Array.isArray(value.leisEleitorais))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "leisEleitorais",
+          "TIPO_INVALIDO",
+          "Deve ser uma lista.",
+        ),
+      );
+    else {
+      const ids = new Set<string>();
+      value.leisEleitorais.forEach((law, index) => {
+        const field = `leisEleitorais.${index}`;
+        if (!isObject(law)) {
+          diagnostics.push(
+            diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+          );
+          return;
+        }
+        validateKnownFields(
+          law,
+          file,
+          [
+            "id",
+            "nome",
+            "ambito",
+            "eleicao",
+            "instituicao",
+            "alcance",
+            "mecanismo",
+            "parametros",
+          ],
+          diagnostics,
+        );
+        const id = requiredString(law, file, `${field}.id`, diagnostics);
+        if (id) {
+          if (ids.has(id))
+            diagnostics.push(
+              diagnostic(
+                file,
+                `${field}.id`,
+                "ID_DUPLICADO",
+                `Lei eleitoral repetida: ${id}.`,
+              ),
+            );
+          ids.add(id);
+        }
+        requiredString(law, file, `${field}.nome`, diagnostics);
+        requiredString(law, file, `${field}.eleicao`, diagnostics);
+        requiredString(law, file, `${field}.instituicao`, diagnostics);
+        if (law.ambito !== "constitucional")
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.ambito`,
+              "VALOR_INVALIDO",
+              "Lei eleitoral deve ser constitucional.",
+            ),
+          );
+        if (law.alcance !== "nacional" && law.alcance !== "territorial")
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.alcance`,
+              "VALOR_INVALIDO",
+              "Alcance não suportado.",
+            ),
+          );
+        const mechanism = requiredString(
+          law,
+          file,
+          `${field}.mecanismo`,
+          diagnostics,
+        );
+        if (
+          mechanism !== "pluralidade_nacional" &&
+          mechanism !== "maiores_quotientes_por_unidade"
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.mecanismo`,
+              "MECANISMO_NAO_SUPORTADO",
+              "Mecanismo eleitoral não suportado.",
+            ),
+          );
+        if (!isObject(law.parametros))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.parametros`,
+              "TIPO_INVALIDO",
+              "Deve ser um objeto de parâmetros.",
+            ),
+          );
+        else if (
+          mechanism === "pluralidade_nacional" &&
+          law.parametros.turnos !== 1
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.parametros.turnos`,
+              "VALOR_INVALIDO",
+              "Pluralidade nacional exige turno único.",
+            ),
+          );
+        else if (
+          mechanism === "maiores_quotientes_por_unidade" &&
+          law.parametros.desempate !== "d20"
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${field}.parametros.desempate`,
+              "VALOR_INVALIDO",
+              "Maiores quocientes exige desempate d20.",
+            ),
+          );
+      });
+    }
+  }
   return diagnostics.length === 0 ? (value as PolicyCatalogFile) : undefined;
 }
 
@@ -1081,7 +1204,16 @@ function validateInitialState(
   validateKnownFields(
     value,
     file,
-    ["id", "tipo", "versaoEsquema", "valores", "politicasVigentes"],
+    [
+      "id",
+      "tipo",
+      "versaoEsquema",
+      "valores",
+      "politicasVigentes",
+      "leisEleitoraisVigentes",
+      "fiscal",
+      "politica",
+    ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
@@ -1129,7 +1261,631 @@ function validateInitialState(
         "Cada política vigente exige política, nível desejado e nível implantado finitos.",
       ),
     );
+  if (value.leisEleitoraisVigentes !== undefined)
+    requiredStringArray(value, file, "leisEleitoraisVigentes", diagnostics);
+  if (value.fiscal !== undefined)
+    validateFiscalInitialState(value.fiscal, file, diagnostics);
+  if (value.politica !== undefined)
+    validatePoliticalInitialState(value.politica, file, diagnostics);
   return diagnostics.length === 0 ? (value as InitialStateFile) : undefined;
+}
+
+function validatePoliticalInitialState(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, "politica", "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(
+    value,
+    file,
+    [
+      "origem",
+      "partidos",
+      "grupos",
+      "perfis",
+      "relacoes",
+      "cadeirasSenadoPorPartido",
+      "coalizaoGoverno",
+    ],
+    diagnostics,
+  );
+  if (!isObject(value.origem))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.origem",
+        "TIPO_INVALIDO",
+        "Deve ser um objeto.",
+      ),
+    );
+  else {
+    validateKnownFields(value.origem, file, ["tipo", "descricao"], diagnostics);
+    if (value.origem.tipo !== "observado" && value.origem.tipo !== "hipotese")
+      diagnostics.push(
+        diagnostic(
+          file,
+          "politica.origem.tipo",
+          "VALOR_INVALIDO",
+          "Use observado ou hipotese.",
+        ),
+      );
+    requiredString(
+      value.origem,
+      file,
+      "politica.origem.descricao",
+      diagnostics,
+    );
+  }
+  const parties = Array.isArray(value.partidos) ? value.partidos : undefined;
+  const groups = Array.isArray(value.grupos) ? value.grupos : undefined;
+  const profiles = Array.isArray(value.perfis) ? value.perfis : undefined;
+  if (!parties || parties.length < 2)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.partidos",
+        "VALOR_INVALIDO",
+        "Exige ao menos dois partidos.",
+      ),
+    );
+  if (!groups || groups.length === 0)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.grupos",
+        "VALOR_INVALIDO",
+        "Exige ao menos um grupo.",
+      ),
+    );
+  if (!profiles || profiles.length === 0)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.perfis",
+        "VALOR_INVALIDO",
+        "Exige ao menos um perfil.",
+      ),
+    );
+  const partyIds = new Set<string>();
+  parties?.forEach((party, index) => {
+    if (!isObject(party)) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          `politica.partidos.${index}`,
+          "TIPO_INVALIDO",
+          "Deve ser um objeto.",
+        ),
+      );
+      return;
+    }
+    validateKnownFields(
+      party,
+      file,
+      ["id", "nome", "pesoReferencia"],
+      diagnostics,
+    );
+    const id = requiredString(
+      party,
+      file,
+      `politica.partidos.${index}.id`,
+      diagnostics,
+    );
+    requiredString(party, file, `politica.partidos.${index}.nome`, diagnostics);
+    if (id) {
+      if (partyIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `politica.partidos.${index}.id`,
+            "ID_DUPLICADO",
+            "Partido repetido.",
+          ),
+        );
+      else partyIds.add(id);
+    }
+    if (
+      party.pesoReferencia !== undefined &&
+      (typeof party.pesoReferencia !== "number" ||
+        !Number.isFinite(party.pesoReferencia) ||
+        party.pesoReferencia < 0)
+    )
+      diagnostics.push(
+        diagnostic(
+          file,
+          `politica.partidos.${index}.pesoReferencia`,
+          "VALOR_INVALIDO",
+          "Deve ser finito e não negativo.",
+        ),
+      );
+  });
+  const groupIds = new Set<string>();
+  groups?.forEach((group, index) => {
+    if (!isObject(group)) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          `politica.grupos.${index}`,
+          "TIPO_INVALIDO",
+          "Deve ser um objeto.",
+        ),
+      );
+      return;
+    }
+    validateKnownFields(group, file, ["id", "nome"], diagnostics);
+    const id = requiredString(
+      group,
+      file,
+      `politica.grupos.${index}.id`,
+      diagnostics,
+    );
+    requiredString(group, file, `politica.grupos.${index}.nome`, diagnostics);
+    if (id) {
+      if (groupIds.has(id))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `politica.grupos.${index}.id`,
+            "ID_DUPLICADO",
+            "Grupo repetido.",
+          ),
+        );
+      else groupIds.add(id);
+    }
+  });
+  let profileWeight = 0;
+  profiles?.forEach((profile, index) => {
+    const path = `politica.perfis.${index}`;
+    if (!isObject(profile)) {
+      diagnostics.push(
+        diagnostic(file, path, "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+      return;
+    }
+    validateKnownFields(
+      profile,
+      file,
+      ["id", "nome", "pesoEleitoral", "associacoes", "preferenciaBase"],
+      diagnostics,
+    );
+    requiredString(profile, file, `${path}.id`, diagnostics);
+    requiredString(profile, file, `${path}.nome`, diagnostics);
+    const weight = requiredNumber(
+      profile,
+      file,
+      `${path}.pesoEleitoral`,
+      diagnostics,
+    );
+    if (weight !== undefined && weight >= 0) profileWeight += weight;
+    else if (weight !== undefined)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.pesoEleitoral`,
+          "VALOR_INVALIDO",
+          "Deve ser não negativo.",
+        ),
+      );
+    if (!Array.isArray(profile.associacoes))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.associacoes`,
+          "TIPO_INVALIDO",
+          "Deve ser lista, inclusive quando vazia.",
+        ),
+      );
+    else {
+      const associations = new Set<string>();
+      profile.associacoes.forEach((association, associationIndex) => {
+        if (!isObject(association)) {
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.associacoes.${associationIndex}`,
+              "TIPO_INVALIDO",
+              "Deve ser um objeto.",
+            ),
+          );
+          return;
+        }
+        const group = requiredString(
+          association,
+          file,
+          `${path}.associacoes.${associationIndex}.grupo`,
+          diagnostics,
+        );
+        const associationWeight = requiredNumber(
+          association,
+          file,
+          `${path}.associacoes.${associationIndex}.peso`,
+          diagnostics,
+        );
+        if (group && (!groupIds.has(group) || associations.has(group)))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.associacoes.${associationIndex}.grupo`,
+              "REFERENCIA_QUEBRADA",
+              "Grupo ausente ou repetido.",
+            ),
+          );
+        if (group) associations.add(group);
+        if (associationWeight !== undefined && associationWeight < 0)
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.associacoes.${associationIndex}.peso`,
+              "VALOR_INVALIDO",
+              "Deve ser não negativo.",
+            ),
+          );
+      });
+    }
+    if (!isObject(profile.preferenciaBase))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.preferenciaBase`,
+          "TIPO_INVALIDO",
+          "Deve ser um vetor por partido.",
+        ),
+      );
+    else {
+      const entries = Object.entries(profile.preferenciaBase);
+      const total = entries.reduce((sum, [partyId, support]) => {
+        if (
+          !partyIds.has(partyId) ||
+          typeof support !== "number" ||
+          !Number.isFinite(support) ||
+          support < 0
+        ) {
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.preferenciaBase.${partyId}`,
+              "VALOR_INVALIDO",
+              "Partido ou apoio inválido.",
+            ),
+          );
+          return sum;
+        }
+        return sum + support;
+      }, 0);
+      if (entries.length !== partyIds.size || Math.abs(total - 100) > 0.000001)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.preferenciaBase`,
+            "VALOR_INVALIDO",
+            "Deve conter todos os partidos e somar 100.",
+          ),
+        );
+    }
+  });
+  if (profiles && Math.abs(profileWeight - 1) > 0.000001)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.perfis",
+        "VALOR_INVALIDO",
+        "Os pesos eleitorais devem somar 1.",
+      ),
+    );
+  if (!Array.isArray(value.relacoes))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.relacoes",
+        "TIPO_INVALIDO",
+        "Deve ser uma lista, inclusive quando vazia.",
+      ),
+    );
+  else {
+    const relationIds = new Set<string>();
+    value.relacoes.forEach((relation, index) => {
+      const path = `politica.relacoes.${index}`;
+      if (!isObject(relation)) {
+        diagnostics.push(
+          diagnostic(file, path, "TIPO_INVALIDO", "Deve ser um objeto."),
+        );
+        return;
+      }
+      validateKnownFields(
+        relation,
+        file,
+        ["id", "origem", "grupo", "pontosEmReferencia"],
+        diagnostics,
+      );
+      const id = requiredString(relation, file, `${path}.id`, diagnostics);
+      if (id) {
+        if (relationIds.has(id))
+          diagnostics.push(
+            diagnostic(file, `${path}.id`, "ID_DUPLICADO", "Relação repetida."),
+          );
+        else relationIds.add(id);
+      }
+      const group = requiredString(
+        relation,
+        file,
+        `${path}.grupo`,
+        diagnostics,
+      );
+      if (group && !groupIds.has(group))
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.grupo`,
+            "REFERENCIA_QUEBRADA",
+            "Grupo inexistente.",
+          ),
+        );
+      requiredNumber(relation, file, `${path}.pontosEmReferencia`, diagnostics);
+      if (!isObject(relation.origem)) {
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.origem`,
+            "TIPO_INVALIDO",
+            "Deve ser um objeto.",
+          ),
+        );
+        return;
+      }
+      validateKnownFields(
+        relation.origem,
+        file,
+        ["tipo", "id", "referencia"],
+        diagnostics,
+      );
+      if (
+        relation.origem.tipo !== "politica" &&
+        relation.origem.tipo !== "indicador"
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.origem.tipo`,
+            "VALOR_INVALIDO",
+            "Use politica ou indicador.",
+          ),
+        );
+      requiredString(relation.origem, file, `${path}.origem.id`, diagnostics);
+      const reference = requiredNumber(
+        relation.origem,
+        file,
+        `${path}.origem.referencia`,
+        diagnostics,
+      );
+      if (reference !== undefined && reference <= 0)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${path}.origem.referencia`,
+            "VALOR_INVALIDO",
+            "Deve ser positiva.",
+          ),
+        );
+    });
+  }
+  if (!isObject(value.cadeirasSenadoPorPartido))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.cadeirasSenadoPorPartido",
+        "TIPO_INVALIDO",
+        "Deve ser um vetor por partido.",
+      ),
+    );
+  else {
+    const totalSeats = Object.entries(value.cadeirasSenadoPorPartido).reduce(
+      (sum, [partyId, seats]) => {
+        if (
+          !partyIds.has(partyId) ||
+          !Number.isSafeInteger(seats) ||
+          (seats as number) < 0
+        ) {
+          diagnostics.push(
+            diagnostic(
+              file,
+              `politica.cadeirasSenadoPorPartido.${partyId}`,
+              "VALOR_INVALIDO",
+              "Partido ou cadeiras inválidos.",
+            ),
+          );
+          return sum;
+        }
+        return sum + (seats as number);
+      },
+      0,
+    );
+    if (totalSeats === 0)
+      diagnostics.push(
+        diagnostic(
+          file,
+          "politica.cadeirasSenadoPorPartido",
+          "VALOR_INVALIDO",
+          "A composição inicial exige ao menos uma cadeira.",
+        ),
+      );
+  }
+  if (
+    !Array.isArray(value.coalizaoGoverno) ||
+    value.coalizaoGoverno.length === 0 ||
+    value.coalizaoGoverno.some(
+      (id) => typeof id !== "string" || !partyIds.has(id),
+    )
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        "politica.coalizaoGoverno",
+        "VALOR_INVALIDO",
+        "A coalizão precisa conter partidos existentes.",
+      ),
+    );
+}
+
+function validateFiscalInitialState(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, "fiscal", "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(
+    value,
+    file,
+    [
+      "periodoInicial",
+      "referenciaPrecos",
+      "unidadeMonetaria",
+      "origem",
+      "caixa",
+      "dividaTotal",
+      "jurosHerdadosMensais",
+      "taxaJurosDividaNovaMensal",
+      "credito",
+    ],
+    diagnostics,
+  );
+  for (const field of [
+    "periodoInicial",
+    "referenciaPrecos",
+    "unidadeMonetaria",
+  ])
+    requiredString(value, file, `fiscal.${field}`, diagnostics);
+  for (const field of [
+    "caixa",
+    "dividaTotal",
+    "jurosHerdadosMensais",
+    "taxaJurosDividaNovaMensal",
+  ]) {
+    const amount = requiredNumber(value, file, `fiscal.${field}`, diagnostics);
+    if (amount !== undefined && amount < 0)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `fiscal.${field}`,
+          "VALOR_INVALIDO",
+          "Não pode ser negativo.",
+        ),
+      );
+  }
+  if (value.credito !== undefined)
+    validateAggregateCreditInitialState(value.credito, file, diagnostics);
+  if (!isObject(value.origem)) {
+    diagnostics.push(
+      diagnostic(file, "fiscal.origem", "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(value.origem, file, ["tipo", "descricao"], diagnostics);
+  if (value.origem.tipo !== "observado" && value.origem.tipo !== "hipotese")
+    diagnostics.push(
+      diagnostic(
+        file,
+        "fiscal.origem.tipo",
+        "VALOR_INVALIDO",
+        "Use observado ou hipotese.",
+      ),
+    );
+  requiredString(value.origem, file, "fiscal.origem.descricao", diagnostics);
+}
+
+function validateAggregateCreditInitialState(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        "fiscal.credito",
+        "TIPO_INVALIDO",
+        "Deve ser um objeto.",
+      ),
+    );
+    return;
+  }
+  validateKnownFields(
+    value,
+    file,
+    [
+      "principalPendente",
+      "principalPerformante",
+      "principalInadimplente",
+      "capitalAgregado",
+      "receitaJurosMensal",
+    ],
+    diagnostics,
+  );
+  for (const field of [
+    "principalPendente",
+    "principalPerformante",
+    "principalInadimplente",
+    "receitaJurosMensal",
+  ]) {
+    const amount = requiredNumber(
+      value,
+      file,
+      `fiscal.credito.${field}`,
+      diagnostics,
+    );
+    if (amount !== undefined && amount < 0)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `fiscal.credito.${field}`,
+          "VALOR_INVALIDO",
+          "Não pode ser negativo.",
+        ),
+      );
+  }
+  const capital = requiredNumber(
+    value,
+    file,
+    "fiscal.credito.capitalAgregado",
+    diagnostics,
+  );
+  if (capital !== undefined && !Number.isFinite(capital))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "fiscal.credito.capitalAgregado",
+        "VALOR_INVALIDO",
+        "Precisa ser finito.",
+      ),
+    );
+  if (
+    typeof value.principalPendente === "number" &&
+    typeof value.principalPerformante === "number" &&
+    typeof value.principalInadimplente === "number" &&
+    Math.abs(
+      value.principalPendente -
+        value.principalPerformante -
+        value.principalInadimplente,
+    ) > 1e-9
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        "fiscal.credito",
+        "VALOR_INVALIDO",
+        "A carteira precisa fechar entre parcela performante e inadimplente.",
+      ),
+    );
 }
 
 function validatePolicy(
@@ -1152,6 +1908,7 @@ function validatePolicy(
       "icone",
       "ministerio",
       "respostaTemporal",
+      "impactoFiscal",
       "processoAutorizacao",
       "controle",
       "consequencias",
@@ -1207,6 +1964,8 @@ function validatePolicy(
       }
     }
   }
+  if (value.impactoFiscal !== undefined)
+    validatePolicyFiscalImpact(value.impactoFiscal, file, diagnostics);
   requiredString(value, file, "processoAutorizacao", diagnostics);
   requiredStringArray(value, file, "consequencias", diagnostics);
   if (!isObject(value.controle)) {
@@ -1268,6 +2027,70 @@ function validatePolicy(
     }
   }
   return diagnostics.length === 0 ? (value as PolicyFile) : undefined;
+}
+
+function validatePolicyFiscalImpact(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, "impactoFiscal", "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(
+    value,
+    file,
+    [
+      "natureza",
+      "valorMensalNaImplantacaoIntegral",
+      "nivelImplantacaoIntegral",
+      "unidadeMonetaria",
+    ],
+    diagnostics,
+  );
+  if (value.natureza !== "receita" && value.natureza !== "despesa")
+    diagnostics.push(
+      diagnostic(
+        file,
+        "impactoFiscal.natureza",
+        "VALOR_INVALIDO",
+        "Use receita ou despesa.",
+      ),
+    );
+  const monthly = requiredNumber(
+    value,
+    file,
+    "impactoFiscal.valorMensalNaImplantacaoIntegral",
+    diagnostics,
+  );
+  if (monthly !== undefined && monthly < 0)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "impactoFiscal.valorMensalNaImplantacaoIntegral",
+        "VALOR_INVALIDO",
+        "Não pode ser negativo.",
+      ),
+    );
+  const level = requiredNumber(
+    value,
+    file,
+    "impactoFiscal.nivelImplantacaoIntegral",
+    diagnostics,
+  );
+  if (level !== undefined && level <= 0)
+    diagnostics.push(
+      diagnostic(
+        file,
+        "impactoFiscal.nivelImplantacaoIntegral",
+        "VALOR_INVALIDO",
+        "Deve ser maior que zero.",
+      ),
+    );
+  requiredString(value, file, "impactoFiscal.unidadeMonetaria", diagnostics);
 }
 
 function validateConsequence(

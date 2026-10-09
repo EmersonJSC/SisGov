@@ -20,5 +20,11 @@
     "despesa-creches",
     "saldo-creches"
   ],
-  "respostaTemporal": { "implantacao": 0.14, "degradacao": 0.08 }
+  "respostaTemporal": { "implantacao": 0.14, "degradacao": 0.08 },
+  "impactoFiscal": {
+    "natureza": "despesa",
+    "valorMensalNaImplantacaoIntegral": 41.6666666666667,
+    "nivelImplantacaoIntegral": 500,
+    "unidadeMonetaria": "moeda_milhoes_2024"
+  }
 }
