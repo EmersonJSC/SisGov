@@ -47,19 +47,21 @@ interface            → intenção da pessoa jogadora e apresentação
 As fases abaixo descrevem fronteiras arquiteturais, não um segundo catálogo de
 trabalho. As dependências vigentes são as de SG097–SG099 e SG057–SG061 no
 [plano de produção](../plano-de-producao.md). SG097 tem inventário registrado;
-SG098 tem funções básicas e voltou à revisão de contrato; SG099 está planejado.
-Não reiniciar a Fase A nem exigir uma mudança de diretórios antes de integrar o jogo.
+o escopo de domínio de SG098 tem testes focados; SG099 tem a fábrica básica
+implementada, mas falta integrar as leis eleitorais constitucionais herdadas.
+SG061 aguarda essa integração e os demais contratos políticos e fiscais. Não
+reiniciar a Fase A nem exigir uma mudança de diretórios antes de integrar o jogo.
 
 ## Diagnóstico inicial
 
-| Área atual | Situação | Direção |
-| --- | --- | --- |
-| `src/engine` | Núcleo genérico: validação, grafo, execução e mecanismos. | Evolui para `src/simulation`. |
-| `src/scenarios` | Pacotes JSON, carregador e dados de demonstração. | Permanece como conteúdo; contratos vão para `domain/scenario`. |
-| `src/game` | Laboratório de turno e diário; hoje coordena motor. | Torna-se o domínio de partida e seus casos de uso. |
-| `src/ui` e `main.tsx` | Interface do mapa e apresentação. | Passa a depender de casos de uso, não do motor diretamente. |
-| `src/types/scenario.ts` | Tipos de apresentação de cenário antigo. | Avaliar uso e mover/remover após inventário. |
-| `src/tests` | Testes por mecanismo e fluxo técnico. | Ganham testes de domínio e de caso de uso. |
+| Área atual              | Situação                                                  | Direção                                                        |
+| ----------------------- | --------------------------------------------------------- | -------------------------------------------------------------- |
+| `src/engine`            | Núcleo genérico: validação, grafo, execução e mecanismos. | Evolui para `src/simulation`.                                  |
+| `src/scenarios`         | Pacotes JSON, carregador e dados de demonstração.         | Permanece como conteúdo; contratos vão para `domain/scenario`. |
+| `src/game`              | Laboratório de turno e diário; hoje coordena motor.       | Torna-se o domínio de partida e seus casos de uso.             |
+| `src/ui` e `main.tsx`   | Interface do mapa e apresentação.                         | Passa a depender de casos de uso, não do motor diretamente.    |
+| `src/types/scenario.ts` | Tipos de apresentação de cenário antigo.                  | Avaliar uso e mover/remover após inventário.                   |
+| `src/tests`             | Testes por mecanismo e fluxo técnico.                     | Ganham testes de domínio e de caso de uso.                     |
 
 ## Mapa de entidades
 
