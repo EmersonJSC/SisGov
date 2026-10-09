@@ -71,6 +71,8 @@ export type InitialStateFile = {
   tipo: "estado-inicial";
   versaoEsquema: 1;
   valores: Record<string, number>;
+  /** Economia do país; o PIB converte limites "% do PIB" das leis em valores. */
+  economia?: EconomyInitialState;
   /** Limites que o país impõe a uma lei, além dos limites da própria lei. */
   limitesProprios?: readonly {
     lei: string;
@@ -111,6 +113,18 @@ export type PoliticalInitialState = {
   coalizaoGoverno: readonly string[];
 };
 
+export type EconomyInitialState = {
+  /** PIB anual na moeda da ficha fiscal. */
+  pibAnual: number;
+};
+
+/** Parte do orçamento que ainda não é lei: entra inteira no fluxo do mês. */
+export type FiscalAggregate = {
+  id: string;
+  nome: string;
+  valorAnual: number;
+};
+
 /** Fiscal values belong to the country state, never to the generic engine. */
 export type FiscalInitialState = {
   periodoInicial: string;
@@ -124,6 +138,11 @@ export type FiscalInitialState = {
   dividaTotal: number;
   jurosHerdadosMensais: number;
   taxaJurosDividaNovaMensal: number;
+  /** Receitas e despesas que ainda não são leis (D-29). */
+  agregados?: {
+    receitas: readonly FiscalAggregate[];
+    despesas: readonly FiscalAggregate[];
+  };
   credito?: AggregateCreditInitialState;
 };
 

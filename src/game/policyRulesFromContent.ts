@@ -76,11 +76,14 @@ export function policyLevelRulesFromContent(
         // Domínio do nó no mundo, apertado pelo limite da lei e pelo do país.
         domain: narrow(
           narrow(
-            {
-              minimum: control.dominio.minimo,
-              maximum: control.dominio.maximo,
-            },
-            percentLimits(policy),
+            narrow(
+              {
+                minimum: control.dominio.minimo,
+                maximum: control.dominio.maximo,
+              },
+              percentLimits(policy),
+            ),
+            gdpLimits(policy, content.initialState.economia?.pibAnual),
           ),
           content.initialState.limitesProprios?.find(
             (limit) => limit.lei === policy.id,
@@ -102,6 +105,26 @@ function percentLimits(
 }
 
 type Limits = Readonly<{ minimo?: number; maximo?: number }> | undefined;
+
+/**
+ * Limites de valor fixo escritos na lei em % do PIB viram valores com o PIB do
+ * país. Sem economia declarada (pacotes de teste), não há como convertê-los.
+ */
+function gdpLimits(policy: PolicyFile, gdp: number | undefined): Limits {
+  const limits = policy.orcamento?.limites;
+  if (policy.orcamento?.modo !== "valor_fixo" || !limits || gdp === undefined)
+    return undefined;
+  return {
+    minimo:
+      limits.minimoPercentualPib === undefined
+        ? undefined
+        : (limits.minimoPercentualPib / 100) * gdp,
+    maximo:
+      limits.maximoPercentualPib === undefined
+        ? undefined
+        : (limits.maximoPercentualPib / 100) * gdp,
+  };
+}
 
 /** Aperta um domínio com um limite: vale sempre o mais restritivo. */
 function narrow(

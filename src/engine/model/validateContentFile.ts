@@ -1272,6 +1272,7 @@ function validateInitialState(
       "tipo",
       "versaoEsquema",
       "valores",
+      "economia",
       "leisVigentes",
       "limitesProprios",
       "leisEleitoraisVigentes",
@@ -1347,6 +1348,30 @@ function validateInitialState(
           requiredNumber(item, file, `${field}.nivelImplantado`, diagnostics);
       });
   }
+  if (value.economia !== undefined) {
+    if (!isObject(value.economia))
+      diagnostics.push(
+        diagnostic(file, "economia", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(value.economia, file, ["pibAnual"], diagnostics);
+      const gdp = requiredNumber(
+        value.economia,
+        file,
+        "economia.pibAnual",
+        diagnostics,
+      );
+      if (gdp !== undefined && gdp <= 0)
+        diagnostics.push(
+          diagnostic(
+            file,
+            "economia.pibAnual",
+            "VALOR_INVALIDO",
+            "O PIB deve ser maior que zero.",
+          ),
+        );
+    }
+  }
   if (value.limitesProprios !== undefined) {
     if (!Array.isArray(value.limitesProprios))
       diagnostics.push(
@@ -1408,6 +1433,85 @@ function validateInitialState(
   if (value.politica !== undefined)
     validatePoliticalInitialState(value.politica, file, diagnostics);
   return diagnostics.length === 0 ? (value as InitialStateFile) : undefined;
+}
+
+function validateFiscalAggregates(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        "fiscal.agregados",
+        "TIPO_INVALIDO",
+        "Deve ser um objeto.",
+      ),
+    );
+    return;
+  }
+  validateKnownFields(value, file, ["receitas", "despesas"], diagnostics);
+  const ids = new Set<string>();
+  for (const kind of ["receitas", "despesas"] as const) {
+    const list = value[kind];
+    const field = `fiscal.agregados.${kind}`;
+    if (!Array.isArray(list)) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          field,
+          list === undefined ? "CAMPO_AUSENTE" : "TIPO_INVALIDO",
+          "Deve ser uma lista.",
+        ),
+      );
+      continue;
+    }
+    list.forEach((item, index) => {
+      const itemField = `${field}[${index}]`;
+      if (!isObject(item)) {
+        diagnostics.push(
+          diagnostic(file, itemField, "TIPO_INVALIDO", "Deve ser um objeto."),
+        );
+        return;
+      }
+      validateKnownFields(
+        item,
+        file,
+        ["id", "nome", "valorAnual"],
+        diagnostics,
+      );
+      const id = requiredString(item, file, `${itemField}.id`, diagnostics);
+      if (id !== undefined) {
+        if (ids.has(id))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${itemField}.id`,
+              "ID_DUPLICADO",
+              `Agregado repetido: ${id}.`,
+            ),
+          );
+        ids.add(id);
+      }
+      requiredString(item, file, `${itemField}.nome`, diagnostics);
+      const amount = requiredNumber(
+        item,
+        file,
+        `${itemField}.valorAnual`,
+        diagnostics,
+      );
+      if (amount !== undefined && amount < 0)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${itemField}.valorAnual`,
+            "VALOR_INVALIDO",
+            "Não pode ser negativo.",
+          ),
+        );
+    });
+  }
 }
 
 function validatePoliticalInitialState(
@@ -1895,6 +1999,7 @@ function validateFiscalInitialState(
       "dividaTotal",
       "jurosHerdadosMensais",
       "taxaJurosDividaNovaMensal",
+      "agregados",
       "credito",
     ],
     diagnostics,
@@ -1922,6 +2027,8 @@ function validateFiscalInitialState(
         ),
       );
   }
+  if (value.agregados !== undefined)
+    validateFiscalAggregates(value.agregados, file, diagnostics);
   if (value.credito !== undefined)
     validateAggregateCreditInitialState(value.credito, file, diagnostics);
   if (!isObject(value.origem)) {

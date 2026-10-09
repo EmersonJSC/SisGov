@@ -7,11 +7,14 @@ import {
 import type { PolicyState } from "../domain/game";
 import {
   preparePolicyFiscalFlows,
+  type AggregateFiscalFlow,
   type PolicyFiscalFlow,
 } from "./preparePolicyFiscalFlows";
 
 export type PreparedFiscalMonth = Readonly<{
   flows: readonly PolicyFiscalFlow[];
+  /** Receitas e despesas que ainda não são leis. */
+  aggregates: readonly AggregateFiscalFlow[];
   accounting: FiscalQuarterResult["months"][number];
 }>;
 
@@ -67,6 +70,7 @@ export function prepareFiscalQuarter(
       accounting: accounting.value,
       months: prepared.map((month, index) => ({
         flows: month.flows,
+        aggregates: month.aggregates,
         accounting: accounting.value.months[index],
       })),
     },

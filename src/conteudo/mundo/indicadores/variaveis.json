@@ -163,28 +163,6 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "despesa_recorte",
-      "tipo": "calculado",
-      "nome": "Despesa recorrente do recorte",
-      "unidade": "moeda_ano",
-      "dominio": {
-        "minimo": 0
-      },
-      "valorInicial": 0,
-      "area": "Economia",
-      "avaliacao": "maior_pior"
-    },
-    {
-      "id": "saldo_recorte",
-      "tipo": "calculado",
-      "nome": "Saldo do recorte",
-      "unidade": "moeda_ano",
-      "dominio": {},
-      "valorInicial": 6000,
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
-    },
-    {
       "id": "carga_evento_demanda",
       "tipo": "calculado",
       "nome": "Carga temporária de demanda",

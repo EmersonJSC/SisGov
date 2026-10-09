@@ -64,8 +64,6 @@ describe("primeiro cenário brasileiro", () => {
       frequencia_escolar: 75,
       participacao_trabalho_cuidadoras: 62,
       oportunidades_juvenis: 45,
-      despesa_recorte: 5640,
-      saldo_recorte: 360,
     });
   });
 });

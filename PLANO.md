@@ -239,7 +239,8 @@ máximo **uma** dependência aberta.
 
 #### SG141 — Mecanismos não lineares no motor · M
 - **Objetivo:** relações que não são retas (princípio 5 do projeto).
-- **Tarefas:** mecanismos genéricos e testados: **saturação** (efeito com teto),
+- **Tarefas:** mecanismo de **razão** (um nó dividido por outro, ex.: gasto ÷
+  PIB, para D-40); mecanismos genéricos e testados: **saturação** (efeito com teto),
   **retornos decrescentes** (cada unidade a mais rende menos) e **limiar**
   (efeito só acima/abaixo de um ponto); selecionados e parametrizados no JSON
   da consequência; explicação do passo informa o mecanismo.
@@ -492,7 +493,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 44 chamados — 6 feitos + 38 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 44 chamados — 7 feitos + 37 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -612,6 +613,7 @@ referência, não prazo.
 | D-37 | Senado por UF (D-08) sai do MVP; no MVP o Senado é total por partido | 09/out | consequência de D-30 |
 | D-38 | **Mundo × país.** Leis, indicadores, consequências, eventos, situações e grupos são do mundo (valem para todos). Um país é só um pacote inicial: leis vigentes e níveis, valores iniciais, limites próprios, moeda, economia, perfis e partidos | 09/out | alinhamento com o autor |
 | D-39 | As consequências são universais e determinísticas: mesma força em todo país, sem ajuste por país. Diferenças entre países vêm do estado inicial dos nós (ex.: fentanil existe no mundo, alto nos EUA e zero no Brasil). Tudo que tem peso está na rede | 09/out | alinhamento com o autor |
+| D-40 | Consequência de D-39: na rede, efeitos de dinheiro são lidos em **% do PIB** (ou por habitante), não em moeda absoluta — "1% do PIB em educação" tem a mesma força em qualquer país. Aplicar no SG141/SG142 | 09/out | este plano (derivada de D-39; confirmar) |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -631,7 +633,7 @@ data, commit e teste.
 **M1 — A rede do país**
 - [x] SG135 Formato de lei v2 e catálogo comum — 09/out · `d0d655b` · check verde, 209 testes / 52 arquivos; `resolvePackage.test.ts` (leis v2), `createGame.test.ts`
 - [x] SG153 Mundo e país separados — 09/out · `ab160f7` · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
-- [ ] SG136 Ficha do país v2: economia e orçamento completo
+- [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · ver commit SG136 · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [ ] SG141 Mecanismos não lineares no motor
 - [ ] SG142 Rede de indicadores do Brasil
 - [ ] SG137 Leis orçamentárias completas

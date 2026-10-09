@@ -14,15 +14,17 @@
     "unidade": "moeda_ano"
   },
   "orcamento": {
-    "modo": "valor_fixo"
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 1
+    }
   },
   "consequencias": [
     "atencao-amplia-cobertura",
     "cobertura-reduz-pressao",
     "cobertura-melhora-saude",
-    "pressao-prejudica-saude",
-    "despesa-atencao",
-    "saldo-atencao"
+    "pressao-prejudica-saude"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

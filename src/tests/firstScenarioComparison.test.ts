@@ -14,8 +14,6 @@ type TrajectoryPoint = Readonly<{
   health: number;
   pressure: number;
   violence: number;
-  expense: number;
-  balance: number;
 }>;
 
 function runAttentionTrajectory(target: number): readonly TrajectoryPoint[] {
@@ -60,8 +58,6 @@ function runAttentionTrajectory(target: number): readonly TrajectoryPoint[] {
       health: execution.values.saude_populacao,
       pressure: execution.values.pressao_hospitalar,
       violence: execution.values.violencia_letal,
-      expense: execution.values.despesa_recorte,
-      balance: execution.values.saldo_recorte,
     });
   }
   return rows;
@@ -79,17 +75,13 @@ describe("SG055 — cenários de referência", () => {
       health: 60,
       pressure: 54,
       violence: 21.2,
-      expense: 5640,
-      balance: 360,
     });
     expect(expansion.at(-1)!.coverage).toBeGreaterThan(base.at(-1)!.coverage);
     expect(expansion.at(-1)!.pressure).toBeLessThan(base.at(-1)!.pressure);
     expect(expansion.at(-1)!.health).toBeGreaterThan(base.at(-1)!.health);
-    expect(expansion.at(-1)!.balance).toBeLessThan(base.at(-1)!.balance);
     expect(reduction.at(-1)!.coverage).toBeLessThan(base.at(-1)!.coverage);
     expect(reduction.at(-1)!.pressure).toBeGreaterThan(base.at(-1)!.pressure);
     expect(reduction.at(-1)!.health).toBeLessThan(base.at(-1)!.health);
-    expect(reduction.at(-1)!.balance).toBeGreaterThan(base.at(-1)!.balance);
   });
 
   it("permite alterar alimentação escolar e propaga o efeito para educação", () => {
@@ -129,6 +121,5 @@ describe("SG055 — cenários de referência", () => {
     expect(execution.values.recursos_alimentacao_escolar).toBeGreaterThan(300);
     expect(execution.values.frequencia_escolar).toBeGreaterThan(75);
     expect(execution.values.oportunidades_juvenis).toBeGreaterThan(45);
-    expect(execution.values.saldo_recorte).toBeLessThan(360);
   });
 });

@@ -14,14 +14,16 @@
     "unidade": "moeda_ano"
   },
   "orcamento": {
-    "modo": "valor_fixo"
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.5
+    }
   },
   "consequencias": [
     "alimentacao-eleva-frequencia",
     "frequencia-amplia-oportunidades",
-    "oportunidades-reduzem-violencia",
-    "despesa-alimentacao",
-    "saldo-alimentacao"
+    "oportunidades-reduzem-violencia"
   ],
   "respostaTemporal": {
     "implantacao": 0.32,

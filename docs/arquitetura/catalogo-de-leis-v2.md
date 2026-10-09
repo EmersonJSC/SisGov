@@ -153,6 +153,13 @@ cobrir parte dele, o agregado diminui no mesmo valor: nada é contado duas vezes
 R$ bilhões por ano, valores redondos que seguem as proporções aproximadas do
 Brasil. Não são dados oficiais (reconciliação: backlog B-07).
 
+**Implementado no SG136** em `paises/brasil/estado-inicial.json`, com a moeda
+em **milhões** (`moeda_milhoes_2024`): os números abaixo × 1000. Enquanto as
+leis novas não existem (SG137–SG139), os impostos de renda e consumo estão
+dentro de "impostos não modelados" (2.050) e o gasto das leis futuras está no
+agregado "programas ainda não modelados" (~549); cada lei nova tira do
+agregado o mesmo valor.
+
 | Item | Valor/ano | Proporção |
 |---|---:|---|
 | PIB | 12.000 | — |

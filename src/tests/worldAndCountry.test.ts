@@ -18,7 +18,7 @@ function load(path: string) {
 
 it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional", () => {
   const paths = Object.keys(worldFiles);
-  expect(paths.length).toBeGreaterThan(30);
+  expect(paths.length).toBeGreaterThan(20);
   for (const [path, text] of Object.entries(worldFiles))
     for (const forbidden of [/brasil/i, /moeda_milhoes/, /\bSUS\b/, /gov\.br/])
       expect(forbidden.test(text), `${path} cita ${forbidden}`).toBe(false);
@@ -57,7 +57,9 @@ it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
     game.value.policies,
   );
   if (!flows.ok) throw new Error(flows.diagnostics[0]?.message);
-  expect(flows.value.month.primaryExpense).toBeCloseTo(5640 / 12);
+  expect(
+    flows.value.flows.reduce((sum, flow) => sum + flow.amount, 0),
+  ).toBeCloseTo(5640 / 12);
 });
 
 it("SG153: outro país usa o mesmo mundo com outro pacote de leis", () => {

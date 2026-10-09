@@ -28,6 +28,8 @@ export type {
   ConsequenceFile,
   ContentFile,
   ElectoralLawDefinition,
+  EconomyInitialState,
+  FiscalAggregate,
   FiscalInitialState,
   InitialStateFile,
   PoliticalInitialState,

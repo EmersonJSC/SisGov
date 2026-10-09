@@ -171,6 +171,15 @@ export function validatePackageCoherence(
     }
   }
 
+  if (content.initialState.fiscal && !content.initialState.economia)
+    diagnostics.push(
+      issue(
+        initialStateFile,
+        "economia",
+        "Um país com ficha fiscal precisa declarar economia.pibAnual.",
+      ),
+    );
+
   const ownLimits = new Map<string, { minimo?: number; maximo?: number }>();
   for (const [index, limit] of (
     content.initialState.limitesProprios ?? []

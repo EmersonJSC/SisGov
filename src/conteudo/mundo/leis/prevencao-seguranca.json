@@ -14,14 +14,13 @@
     "unidade": "moeda_ano"
   },
   "orcamento": {
-    "modo": "valor_fixo"
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.5
+    }
   },
-  "consequencias": [
-    "prevencao-reduz-violencia",
-    "violencia-eleva-pressao",
-    "despesa-prevencao",
-    "saldo-prevencao"
-  ],
+  "consequencias": ["prevencao-reduz-violencia", "violencia-eleva-pressao"],
   "respostaTemporal": {
     "implantacao": 0.18,
     "degradacao": 0.1

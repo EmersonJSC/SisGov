@@ -8,9 +8,18 @@ export type PolicyFiscalFlow = Readonly<{
   amount: number;
 }>;
 
+/** Parte do orçamento que ainda não é lei (agregado da ficha do país). */
+export type AggregateFiscalFlow = Readonly<{
+  aggregateId: string;
+  name: string;
+  nature: "revenue" | "primaryExpense";
+  amount: number;
+}>;
+
 export type PreparedPolicyFiscalFlows = Readonly<{
   month: FiscalMonthInput;
   flows: readonly PolicyFiscalFlow[];
+  aggregates: readonly AggregateFiscalFlow[];
 }>;
 
 function invalid(field: string, message: string): ValidationResult<never> {
@@ -53,20 +62,43 @@ export function preparePolicyFiscalFlows(
     flows.push(flow);
   }
 
+  const aggregates = aggregateFlows(content);
+  const all = [...flows, ...aggregates];
   return {
     ok: true,
     value: {
       flows,
+      aggregates,
       month: {
-        revenue: flows
+        revenue: all
           .filter((flow) => flow.nature === "revenue")
           .reduce((sum, flow) => sum + flow.amount, 0),
-        primaryExpense: flows
+        primaryExpense: all
           .filter((flow) => flow.nature === "primaryExpense")
           .reduce((sum, flow) => sum + flow.amount, 0),
       },
     },
   };
+}
+
+/** Agregados entram por inteiro, 1/12 do valor anual por mês. */
+function aggregateFlows(content: ResolvedPackage): AggregateFiscalFlow[] {
+  const aggregates = content.initialState.fiscal?.agregados;
+  if (!aggregates) return [];
+  return [
+    ...aggregates.receitas.map((item) => ({
+      aggregateId: item.id,
+      name: item.nome,
+      nature: "revenue" as const,
+      amount: item.valorAnual / 12,
+    })),
+    ...aggregates.despesas.map((item) => ({
+      aggregateId: item.id,
+      name: item.nome,
+      nature: "primaryExpense" as const,
+      amount: item.valorAnual / 12,
+    })),
+  ];
 }
 
 /**

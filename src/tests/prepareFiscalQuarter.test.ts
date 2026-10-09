@@ -19,7 +19,10 @@ it("combina políticas e contabilidade nos três meses sem mutar a partida", () 
     inheritedMonthlyInterest: 100,
     monthlyNewDebtInterestRate: 0.01,
   };
-  const result = prepareFiscalQuarter(loaded.value.definition, initialFiscal, [
+  // Só leis: os agregados do país são testados em preparePolicyFiscalFlows.
+  const content = structuredClone(loaded.value.definition);
+  delete content.initialState.fiscal!.agregados;
+  const result = prepareFiscalQuarter(content, initialFiscal, [
     game.value.policies,
     game.value.policies,
     game.value.policies,

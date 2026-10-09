@@ -287,7 +287,12 @@ describe("validatePackageCoherence — moeda fiscal (SG103/SG135)", () => {
     if (resolved.ok)
       expect(validatePackageCoherence(resolved.value)).toMatchObject({
         ok: false,
-        diagnostics: [{ file: "material-escolar", field: "controle.unidade" }],
+        diagnostics: expect.arrayContaining([
+          expect.objectContaining({
+            file: "material-escolar",
+            field: "controle.unidade",
+          }),
+        ]),
       });
   });
 });

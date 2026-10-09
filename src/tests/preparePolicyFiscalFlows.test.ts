@@ -20,8 +20,15 @@ it("converte os custos anuais declarados pelas políticas em despesa mensal", ()
   expect(result).toMatchObject({ ok: true });
   if (!result.ok) return;
   expect(result.value.flows).toHaveLength(5);
-  expect(result.value.month.revenue).toBe(0);
-  expect(result.value.month.primaryExpense).toBeCloseTo(470);
+  const lawExpense = result.value.flows.reduce(
+    (sum, flow) => sum + flow.amount,
+    0,
+  );
+  expect(lawExpense).toBeCloseTo(470);
+  // SG136: o mês soma leis e agregados da ficha do país.
+  expect(result.value.aggregates).toHaveLength(6);
+  expect(result.value.month.revenue).toBeCloseTo(2200000 / 12);
+  expect(result.value.month.primaryExpense).toBeCloseTo(2250000 / 12);
 });
 
 it("acompanha a implantação durante a revogação gradual", () => {
@@ -46,5 +53,7 @@ it("acompanha a implantação durante a revogação gradual", () => {
       (flow) => flow.policyDefinitionId === "atencao-basica",
     ),
   ).toMatchObject({ nature: "primaryExpense", amount: 166.66666666666666 });
-  expect(result.value.month.primaryExpense).toBeCloseTo(303.3333333333333);
+  expect(
+    result.value.flows.reduce((sum, flow) => sum + flow.amount, 0),
+  ).toBeCloseTo(303.3333333333333);
 });

@@ -14,13 +14,13 @@
     "unidade": "moeda_ano"
   },
   "orcamento": {
-    "modo": "valor_fixo"
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.2
+    }
   },
-  "consequencias": [
-    "protecao-amplia-rede",
-    "despesa-protecao",
-    "saldo-protecao"
-  ],
+  "consequencias": ["protecao-amplia-rede"],
   "respostaTemporal": {
     "implantacao": 0.22,
     "degradacao": 0.12

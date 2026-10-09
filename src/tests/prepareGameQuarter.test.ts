@@ -1,5 +1,7 @@
 import { expect, it } from "vitest";
+import { validatePackageCoherence } from "../engine";
 import { createGame } from "../game/createGame";
+import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { commitGameQuarter } from "../game/commitGameQuarter";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
 import { buildFiscalQuarterReport } from "../game/fiscalReport";
@@ -115,7 +117,7 @@ it("leva os custos das cinco políticas ao financiamento mensal do trimestre", (
   expect(report.finalState).toEqual(prepared.value.fiscal.accounting.state);
 });
 
-it("SG103: o Brasil real tem ficha fiscal e um turno gera resultado finito", () => {
+it("SG136: o Brasil tem orçamento completo nas proporções combinadas", () => {
   const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
@@ -126,7 +128,7 @@ it("SG103: o Brasil real tem ficha fiscal e um turno gera resultado finito", () 
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);
   expect(game.value.fiscal).toMatchObject({
     cash: 900000,
-    totalDebt: 7000000,
+    totalDebt: 9200000,
     debtIssuedDuringGame: 0,
   });
   const prepared = prepareGameQuarter(
@@ -136,10 +138,50 @@ it("SG103: o Brasil real tem ficha fiscal e um turno gera resultado finito", () 
     [game.value.policies, game.value.policies, game.value.policies],
   );
   if (!prepared.ok) throw new Error(prepared.diagnostics[0]?.message);
-  for (const month of prepared.value.fiscal.months) {
-    expect(Number.isFinite(month.accounting.nominalResult)).toBe(true);
-    expect(month.accounting.primaryResult).toBeLessThan(0);
+  const first = prepared.value.fiscal.months[0];
+  // Por ano: receitas 2,2 tri; despesas primárias 2,25 tri; juros 900 bi.
+  expect(first.accounting.revenue * 12).toBeCloseTo(2200000);
+  expect(first.accounting.primaryExpense * 12).toBeCloseTo(2250000);
+  expect(first.accounting.primaryResult * 12).toBeCloseTo(-50000);
+  expect(first.accounting.interestExpense * 12).toBeCloseTo(900000);
+  expect(first.accounting.nominalResult * 12).toBeCloseTo(-950000);
+  // O gasto de cada lei e de cada agregado aparece separado, sem dupla contagem.
+  expect(first.flows).toHaveLength(5);
+  expect(first.aggregates).toHaveLength(6);
+  const expenseParts = [...first.flows, ...first.aggregates]
+    .filter((flow) => flow.nature === "primaryExpense")
+    .reduce((sum, flow) => sum + flow.amount, 0);
+  expect(expenseParts).toBeCloseTo(first.accounting.primaryExpense);
+  for (const month of prepared.value.fiscal.months)
     expect(month.accounting.cashAfter).toBeGreaterThanOrEqual(0);
-  }
-  expect(prepared.value.fiscal.months[0].flows).toHaveLength(5);
+});
+
+it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
+  const content = structuredClone(loaded.value.definition);
+  delete content.initialState.limitesProprios;
+  // Atenção básica: até 1% do PIB (12.000.000) = 120.000.
+  expect(policyLevelRulesFromContent(content, "atencao-basica")).toMatchObject({
+    ok: true,
+    value: { rules: { domain: { minimum: 0, maximum: 120000 } } },
+  });
+  // Com o limite próprio do Brasil, vale o mais apertado (2.400 a 6.000).
+  expect(
+    policyLevelRulesFromContent(loaded.value.definition, "atencao-basica"),
+  ).toMatchObject({
+    ok: true,
+    value: { rules: { domain: { minimum: 2400, maximum: 6000 } } },
+  });
+});
+
+it("SG136: país com ficha fiscal precisa declarar o PIB", () => {
+  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
+  const content = structuredClone(loaded.value.definition);
+  delete content.initialState.economia;
+  expect(validatePackageCoherence(content)).toMatchObject({
+    ok: false,
+    diagnostics: [expect.objectContaining({ field: "economia" })],
+  });
 });
