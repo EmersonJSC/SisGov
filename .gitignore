@@ -1,3 +1,6 @@
 node_modules
 dist
 *.local
+
+# Arquivos de referência do Democracy 4: só locais, nunca versionar
+docs/Exemplos/

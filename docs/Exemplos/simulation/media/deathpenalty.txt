@@ -1,7 +1,0 @@
-[config]
-Name = deathpenalty
-Policy = DeathPenalty
-Type = MRT_POLICY_CONSEQUENCE
-
-[conditions]
-

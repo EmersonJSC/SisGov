@@ -1,1 +1,0 @@
-CreateGrudge(Manifesto Pledge Met,pledgemet,_percept_trust,0.06,0.77);

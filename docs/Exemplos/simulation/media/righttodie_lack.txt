@@ -1,7 +1,0 @@
-[config]
-Name = righttodie_lack
-Policy = RightToDie
-Type = MRT_POLICY_LACKOF
-
-[conditions]
-
