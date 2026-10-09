@@ -21,7 +21,6 @@ export type VisualMacroArea = Readonly<{
 }>;
 export type VisualMinistry = Readonly<{
   name: string;
-  representativeName?: string;
   macroAreaId: string;
   abbreviation?: string;
   influence?: number;
@@ -46,7 +45,6 @@ export type VisualMapDefinition = Readonly<{
   >;
   financialTargets?: Readonly<Record<string, FinancialRole>>;
   governmentName?: string;
-  presidentName?: string;
   macroAreas?: readonly VisualMacroArea[];
   ministries?: readonly VisualMinistry[];
   policy?: Readonly<
@@ -77,17 +75,7 @@ export type MacroAreaRegion = Readonly<{
   radiusX: number;
   radiusY: number;
 }>;
-export type Representative = Readonly<{
-  id: string;
-  name: string;
-  role: "president" | "minister";
-  institution: string;
-  center: InfluencePoint;
-  radius: number;
-  mass: number;
-}>;
 export type InfluenceLayout = Readonly<{
-  representatives: readonly Representative[];
   positions: ReadonlyMap<string, InfluencePoint>;
   zones: readonly InfluenceZone[];
   macroAreas: readonly MacroAreaRegion[];

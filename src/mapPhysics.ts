@@ -22,11 +22,10 @@ type Well = Point & {
   radius: number;
   angle: number;
   policyOrbit: number;
-  mass: number;
-  representativeRadius: number;
 };
 const TAU = 2 * Math.PI;
 const CENTER = { x: 50, y: 50 };
+const FEDERAL_ANCHOR_RADIUS = 2.5;
 const GAP = 0.8;
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 function hash(id: string, seed: number): number {
@@ -80,8 +79,6 @@ export class MapPhysics {
         angle,
         radius: 10,
         policyOrbit: 7,
-        mass: 24,
-        representativeRadius: 4,
         x: 50 + 32 * Math.cos(angle),
         y: 50 + 32 * Math.sin(angle),
       };
@@ -244,11 +241,9 @@ export class MapPhysics {
     let movement = 0;
     this.temperature *= 0.99;
     const bodies = [...this.bodies.values()];
-    const orbitFor = (members: Body[], representativeRadius: number) =>
+    const orbitFor = (members: Body[], anchorRadius: number) =>
       Math.max(
-        representativeRadius +
-          Math.max(1.5, ...members.map((b) => b.targetRadius)) +
-          2,
+        anchorRadius + Math.max(1.5, ...members.map((b) => b.targetRadius)) + 2,
         members.reduce((sum, b) => sum + 2 * b.targetRadius + GAP, 0) / TAU +
           1.5,
       );
@@ -258,7 +253,7 @@ export class MapPhysics {
     const national = bodies.filter(
       (b) => b.kind !== "policy" && b.scope !== "ministerial",
     );
-    this.federalPolicyOrbit = orbitFor(federalPolicies, 4.5);
+    this.federalPolicyOrbit = orbitFor(federalPolicies, FEDERAL_ANCHOR_RADIUS);
     const policyEdge =
       this.federalPolicyOrbit +
       Math.max(1.5, ...federalPolicies.map((b) => b.targetRadius));
@@ -282,7 +277,7 @@ export class MapPhysics {
           b.scope === "ministerial" &&
           (b.affinities[w.name] ?? 0) > 0,
       );
-      w.policyOrbit = orbitFor(laws, w.representativeRadius);
+      w.policyOrbit = orbitFor(laws, 0);
       const edge =
         w.policyOrbit + Math.max(1.5, ...laws.map((b) => b.targetRadius));
       w.radius =
@@ -327,12 +322,7 @@ export class MapPhysics {
         if (b.scope === "ministerial" && Object.keys(b.affinities).length) {
           for (const w of this.wells) {
             const affinity = b.affinities[w.name] ?? 0;
-            if (affinity)
-              orbitForce(
-                w,
-                w.policyOrbit,
-                0.07 * affinity * Math.sqrt(w.mass / 24),
-              );
+            if (affinity) orbitForce(w, w.policyOrbit, 0.07 * affinity);
           }
         } else orbitForce(CENTER, this.federalPolicyOrbit, 0.08);
       } else {
@@ -390,12 +380,12 @@ export class MapPhysics {
     // Position-based contacts enforce clearance with inverse-mass correction.
     for (let pass = 0; pass < 5; pass++) {
       for (const body of bodies)
-        for (const representative of [
-          { ...CENTER, representativeRadius: 4.5 },
-          ...this.wells,
+        for (const anchor of [
+          { ...CENTER, radius: FEDERAL_ANCHOR_RADIUS },
+          ...this.wells.map(({ x, y }) => ({ x, y, radius: 0 })),
         ]) {
-          let dx = body.x - representative.x,
-            dy = body.y - representative.y;
+          let dx = body.x - anchor.x,
+            dy = body.y - anchor.y;
           let d = Math.hypot(dx, dy);
           if (d < 1e-8) {
             const angle = hash(body.id, this.seed) * TAU;
@@ -403,8 +393,7 @@ export class MapPhysics {
             dy = Math.sin(angle) * 1e-4;
             d = 1e-4;
           }
-          const required =
-            body.radius + representative.representativeRadius + GAP;
+          const required = body.radius + anchor.radius + GAP;
           if (d < required) {
             body.x += (dx / d) * (required - d);
             body.y += (dy / d) * (required - d);
@@ -464,28 +453,6 @@ export class MapPhysics {
   private lastPositions?: number[][];
   snapshot(): InfluenceLayout {
     return {
-      representatives: [
-        {
-          id: "representative:president",
-          name: this.definition.presidentName ?? "Presidente",
-          role: "president",
-          institution: this.definition.governmentName ?? "Governo Federal",
-          center: { ...CENTER },
-          radius: 4.5,
-          mass: 32,
-        },
-        ...this.wells.map((w) => ({
-          id: `representative:${w.name}`,
-          name:
-            this.definition.ministries?.find((m) => m.name === w.name)
-              ?.representativeName ?? "Ministro",
-          role: "minister" as const,
-          institution: w.name,
-          center: { x: w.x, y: w.y },
-          radius: w.representativeRadius,
-          mass: w.mass,
-        })),
-      ],
       positions: new Map(
         [...this.bodies].map(([id, b]) => [id, { x: b.x, y: b.y }]),
       ),

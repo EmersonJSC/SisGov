@@ -183,26 +183,29 @@
         height: 100%;
         pointer-events: none;
       }
-      .law-lines line {
+      .law-lines path.relation,
+      .law-lines path.condition {
+        fill: none;
         stroke: #8da3b7;
+        stroke-linecap: round;
         stroke-width: var(--flow-width, 0.28);
         opacity: 0;
         transition: opacity 160ms ease;
       }
-      .law-lines line.visible {
+      .law-lines path.visible {
         opacity: 1;
       }
-      .law-lines line.rise {
+      .law-lines path.rise {
         stroke: #25865a;
         stroke-dasharray: 1.2 0.85;
         animation: relation-flow var(--flow-duration, 1.5s) linear infinite;
       }
-      .law-lines line.fall {
+      .law-lines path.fall {
         stroke: #be4f4f;
         stroke-dasharray: 1.2 0.85;
         animation: relation-flow var(--flow-duration, 1.5s) linear infinite;
       }
-      .law-lines line.condition {
+      .law-lines path.condition {
         stroke-dasharray: 1.2 0.8;
       }
       @keyframes relation-flow {
@@ -287,10 +290,14 @@
         line-height: 1.1;
       }
       .map-node.policy {
-        border-color: #777f87;
-        background: #f2f3f4;
+        border-color: color-mix(in srgb, var(--node-color, #777f87) 58%, white);
+        background: radial-gradient(
+          circle at 32% 28%,
+          white,
+          color-mix(in srgb, var(--node-color, #777f87) 12%, white) 68%
+        );
         box-shadow:
-          0 0 0 5px rgb(91 99 107 / 11%),
+          0 0 0 5px var(--node-halo, rgb(91 99 107 / 11%)),
           0 0.45rem 1.4rem rgb(24 40 58 / 12%);
       }
       .map-node.indicator {
@@ -704,7 +711,7 @@
       .map-filters {
         position: fixed;
         z-index: 10;
-        top: 18px;
+        top: calc(var(--institution-bar-height) + 12px);
         left: 80px;
         padding: 8px;
         border-radius: 16px;
