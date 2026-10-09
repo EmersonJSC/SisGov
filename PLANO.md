@@ -664,7 +664,7 @@ data, commit e teste.
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
 - [x] SG154 Leis e bolhas no motor — 09/out · `9926528` · check verde, 237 testes / 55 arquivos; `livingNetwork.test.ts`
-- [x] SG142 Rede de indicadores do Brasil — 09/out · ver commit SG142 · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
+- [x] SG142 Rede de indicadores do Brasil — 09/out · `0095f6e` · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções
 - [ ] SG139 Leis tributárias
