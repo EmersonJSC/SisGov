@@ -246,7 +246,7 @@ máximo **uma** dependência aberta.
   da consequência; explicação do passo informa o mecanismo.
 - **Aceite:** testes unitários de cada mecanismo; consequência com mecanismo
   desconhecido é recusada; mecanismos antigos inalterados.
-- **Depende de:** SG136 · **Libera:** SG142.
+- **Depende de:** SG136 · **Libera:** SG154.
 
 #### SG154 — Leis e bolhas no motor · M
 - **Objetivo:** aplicar D-40 a D-43 no motor.
