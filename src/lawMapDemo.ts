@@ -25,6 +25,7 @@ import {
   buildInfluenceLayout,
   type VisualMapDefinition,
 } from "./influenceLayout";
+import { relationPath } from "./relationPaths";
 import {
   createExecution,
   evaluateSituation,
@@ -125,6 +126,24 @@ let latestMapBounds = { minX: 0, minY: 0, maxX: 100, maxY: 100 };
 
 const journalRoot = createRoot(document.getElementById("turn-journal")!);
 let journal: readonly TurnLogEntry[] = [];
+
+function relationPathForNodes(
+  originId: string,
+  targetId: string,
+  origin: { x: number; y: number },
+  target: { x: number; y: number },
+  parallelIndex = 0,
+  parallelCount = 1,
+): string {
+  return relationPath(
+    origin,
+    target,
+    parallelIndex,
+    parallelCount,
+    (physics?.bodies.get(originId)?.radius ?? 0) + 0.4,
+    (physics?.bodies.get(targetId)?.radius ?? 0) + 0.4,
+  );
+}
 function recordLog(
   level: TurnLogEntry["level"],
   title: string,
@@ -178,12 +197,14 @@ function targetReading(targetId: string): string {
 
 function setRelationHighlight(nodeId?: string): void {
   const feedback = stage.querySelector<HTMLElement>(".relation-feedback");
-  const lines = stage.querySelectorAll<SVGLineElement>(".law-lines line");
-  for (const line of lines) {
+  const paths = stage.querySelectorAll<SVGPathElement>(
+    ".law-lines path.relation, .law-lines path.condition",
+  );
+  for (const path of paths) {
     const related =
       Boolean(nodeId) &&
-      (line.dataset.origin === nodeId || line.dataset.target === nodeId);
-    line.classList.toggle("visible", related);
+      (path.dataset.origin === nodeId || path.dataset.target === nodeId);
+    path.classList.toggle("visible", related);
   }
   stage
     .querySelectorAll<HTMLElement>(".map-node")
@@ -474,14 +495,8 @@ function render(
     physics.settle();
   cachedLayout = physics.snapshot();
   const layout = cachedLayout;
-  const {
-    positions,
-    zones,
-    macroAreas,
-    ministryPositions,
-    government,
-    representatives,
-  } = layout;
+  const { positions, zones, macroAreas, ministryPositions, government } =
+    layout;
   const horizontal = [
     government.center.x - government.radius,
     government.center.x + government.radius,
@@ -538,30 +553,6 @@ function render(
   federalLabel.textContent = government.name;
   federal.append(federalLabel);
   stage.append(federal);
-  for (const representative of representatives) {
-    const element = document.createElement("div");
-    element.className = `representative-node ${representative.role}`;
-    element.dataset.representative = representative.id;
-    element.setAttribute("role", "img");
-    element.setAttribute(
-      "aria-label",
-      `${representative.name} · ${representative.institution}`,
-    );
-    element.title = `${representative.name} · ${representative.institution}`;
-    element.style.left = `${representative.center.x}%`;
-    element.style.top = `${representative.center.y}%`;
-    element.style.setProperty(
-      "--size",
-      `${representative.radius * 2 * MAP_PIXELS_PER_UNIT}px`,
-    );
-    const symbol = document.createElement("span");
-    symbol.className = "representative-symbol";
-    symbol.textContent = representative.role === "president" ? "P" : "M";
-    const label = document.createElement("strong");
-    label.textContent = representative.name;
-    element.append(symbol, label);
-    stage.append(element);
-  }
   for (const zone of zones) {
     const style = categoryStyle[zone.category] ?? {
       color: "#6c6677",
@@ -624,6 +615,19 @@ function render(
   definitions.innerHTML =
     '<marker id="law-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#8da3b7"/></marker><marker id="law-arrow-rise" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#25865a"/></marker><marker id="law-arrow-fall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#be4f4f"/></marker>';
   svg.append(definitions);
+  const relationPairKey = (originId: string, targetId: string) =>
+    [originId, targetId].sort().join("\u0000");
+  const relationPairCounts = new Map<string, number>();
+  const relationPairIndices = new Map<string, number>();
+  for (const relation of graph.relations) {
+    const originId =
+      relation.sourceType === "situacao"
+        ? relation.sourceId
+        : relation.originId;
+    const key = relationPairKey(originId, relation.targetId);
+    relationPairIndices.set(key, relationPairCounts.get(key) ?? 0);
+    relationPairCounts.set(key, (relationPairCounts.get(key) ?? 0) + 1);
+  }
   const rawStrengths = graph.relations.map(
     (relation) =>
       Math.abs(relation.parameters.coeficiente) *
@@ -638,7 +642,13 @@ function render(
     );
     const target = positions.get(relation.targetId);
     if (!origin || !target) continue;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    const positionOriginId =
+      relation.sourceType === "situacao"
+        ? relation.sourceId
+        : relation.originId;
+    const pairKey = relationPairKey(positionOriginId, relation.targetId);
+    const parallelIndex = relationPairIndices.get(pairKey) ?? 0;
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const rises = relation.parameters.coeficiente >= 0;
     const normalizedStrength = Math.min(
       1,
@@ -646,48 +656,54 @@ function render(
         Math.abs(execution.values[relation.originId] ?? 0)) /
         maximumStrength,
     );
-    line.setAttribute("x1", String(origin.x));
-    line.setAttribute("y1", String(origin.y));
-    line.setAttribute("x2", String(target.x));
-    line.setAttribute("y2", String(target.y));
-    line.setAttribute(
+    path.setAttribute(
+      "d",
+      relationPathForNodes(
+        positionOriginId,
+        relation.targetId,
+        origin,
+        target,
+        parallelIndex,
+        relationPairCounts.get(pairKey) ?? 1,
+      ),
+    );
+    path.setAttribute(
       "marker-end",
       rises ? "url(#law-arrow-rise)" : "url(#law-arrow-fall)",
     );
-    line.dataset.positionOrigin =
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId;
-    line.dataset.origin = relation.originId;
-    line.dataset.target = relation.targetId;
-    line.classList.add("relation", rises ? "rise" : "fall");
-    line.style.setProperty(
+    path.dataset.positionOrigin = positionOriginId;
+    path.dataset.origin = relation.originId;
+    path.dataset.target = relation.targetId;
+    path.dataset.parallelIndex = String(parallelIndex);
+    path.dataset.parallelCount = String(relationPairCounts.get(pairKey) ?? 1);
+    path.classList.add("relation", rises ? "rise" : "fall");
+    path.style.setProperty(
       "--flow-duration",
       `${2.5 - normalizedStrength * 1.7}s`,
     );
-    line.style.setProperty(
+    path.style.setProperty(
       "--flow-width",
       `${0.22 + normalizedStrength * 0.25}`,
     );
-    svg.append(line);
+    svg.append(path);
   }
   for (const situation of content.situations) {
-    const origin = situation.entraQuando
-      ? positions.get(situation.entraQuando.variavel)
-      : undefined;
+    const originId = situation.entraQuando?.variavel;
+    if (!originId) continue;
+    const origin = positions.get(originId);
     const target = positions.get(situation.id);
     if (!origin || !target) continue;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", String(origin.x));
-    line.setAttribute("y1", String(origin.y));
-    line.setAttribute("x2", String(target.x));
-    line.setAttribute("y2", String(target.y));
-    line.setAttribute("marker-end", "url(#law-arrow)");
-    line.dataset.positionOrigin = situation.entraQuando!.variavel;
-    line.dataset.origin = situation.entraQuando!.variavel;
-    line.dataset.target = situation.id;
-    line.classList.add("condition");
-    svg.append(line);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute(
+      "d",
+      relationPathForNodes(originId, situation.id, origin, target),
+    );
+    path.setAttribute("marker-end", "url(#law-arrow)");
+    path.dataset.positionOrigin = originId;
+    path.dataset.origin = originId;
+    path.dataset.target = situation.id;
+    path.classList.add("condition");
+    svg.append(path);
   }
   stage.append(svg);
   const feedback = document.createElement("aside");
@@ -882,10 +898,11 @@ function render(
     ...stage.querySelectorAll<HTMLElement>(".category-zone"),
   ];
   const labels = [...stage.querySelectorAll<HTMLElement>(".ministry-node")];
-  const representativeElements = [
-    ...stage.querySelectorAll<HTMLElement>(".representative-node"),
+  const relationPaths = [
+    ...stage.querySelectorAll<SVGPathElement>(
+      ".law-lines path.relation, .law-lines path.condition",
+    ),
   ];
-  const lines = [...stage.querySelectorAll<SVGLineElement>(".law-lines line")];
   let lastTime = performance.now();
   const animate = (now: number) => {
     if (!physics) return;
@@ -895,15 +912,6 @@ function render(
     cachedLayout = snapshot;
     federal.style.width = `${snapshot.government.radius * 2}%`;
     federal.style.height = `${snapshot.government.radius * 2}%`;
-    for (const representative of snapshot.representatives) {
-      const element = representativeElements.find(
-        (el) => el.dataset.representative === representative.id,
-      );
-      if (element) {
-        element.style.left = `${representative.center.x}%`;
-        element.style.top = `${representative.center.y}%`;
-      }
-    }
     for (const node of nodes) {
       const body = physics.bodies.get(node.dataset.nodeId!);
       if (!body) continue;
@@ -930,14 +938,21 @@ function render(
         label.style.top = `${zone.center.y - zone.radius - 1.2}%`;
       }
     }
-    for (const line of lines) {
-      const a = snapshot.positions.get(line.dataset.positionOrigin!);
-      const b = snapshot.positions.get(line.dataset.target!);
+    for (const path of relationPaths) {
+      const a = snapshot.positions.get(path.dataset.positionOrigin!);
+      const b = snapshot.positions.get(path.dataset.target!);
       if (a && b) {
-        line.setAttribute("x1", String(a.x));
-        line.setAttribute("y1", String(a.y));
-        line.setAttribute("x2", String(b.x));
-        line.setAttribute("y2", String(b.y));
+        path.setAttribute(
+          "d",
+          relationPathForNodes(
+            path.dataset.positionOrigin!,
+            path.dataset.target!,
+            a,
+            b,
+            Number(path.dataset.parallelIndex ?? 0),
+            Number(path.dataset.parallelCount ?? 1),
+          ),
+        );
       }
     }
     if (!physics.sleeping) animationFrame = requestAnimationFrame(animate);

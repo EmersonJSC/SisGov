@@ -118,6 +118,8 @@ Uma decisão apenas preparada continua sendo uma meta. Ela não infla a bolha an
 ## Estado do trabalho
 
 - Protótipo disponível: esferas com nomes, políticas internas, resultados externos distribuídos pelas ligações de influência, zoom, arraste e interface mínima.
+- A tela de jogo não mostra presidente ou ministros fictícios enquanto esses personagens não existirem no estado da partida. Os agrupamentos continuam identificando as áreas ministeriais presentes no conteúdo.
+- As bolhas seguem a categoria declarada para as políticas; relações reais aparecem como setas curvas sob hover, foco ou seleção, sem criar consequências por proximidade.
 - Direção futura aprovada: rosto do ministro e cor da esfera por aprovação popular do ministro.
 - Direção futura aprovada: linhas apenas sob foco/seleção, sinal numérico explícito, leitura de melhoria separada e fluxo animado por força efetiva.
 - A detalhar: cálculo e escala visual da aprovação, filtros, evolução da representação dos ministros e os campos de conteúdo para direção de melhoria e força visual.

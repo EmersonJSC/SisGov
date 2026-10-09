@@ -22,26 +22,16 @@ it("is deterministic and never changes game data", () => {
   );
   expect(JSON.stringify(s.content)).toBe(before);
 });
-it("uses president and ministers as massive orbital centers", () => {
+it("keeps laws around institutional anchors without adding officeholders", () => {
   const s = setup();
   s.engine.settle();
   const layout = s.engine.snapshot();
-  expect(layout.representatives).toHaveLength(layout.zones.length + 1);
-  const president = layout.representatives.find((r) => r.role === "president")!;
-  expect(president.center).toEqual({ x: 50, y: 50 });
-  expect(layout.government.radius).toBeGreaterThan(president.radius);
-  for (const r of layout.representatives) {
-    expect(r.mass).toBeGreaterThan(
-      Math.max(...[...s.engine.bodies.values()].map((b) => b.mass)),
-    );
-    for (const body of s.engine.bodies.values()) {
-      expect(
-        Math.hypot(body.x - r.center.x, body.y - r.center.y),
-      ).toBeGreaterThanOrEqual(body.radius + r.radius + 0.65);
-    }
-  }
+  expect("representatives" in layout).toBe(false);
+  expect(layout.government.center).toEqual({ x: 50, y: 50 });
+  for (const zone of layout.zones)
+    expect(Number.isFinite(zone.center.x + zone.center.y)).toBe(true);
 });
-it("federal laws orbit the president with national results in an outer shell", () => {
+it("orbits federal laws around the government sphere with results in an outer shell", () => {
   const s = setup();
   s.engine.settle();
   const distance = (id: string) => {
