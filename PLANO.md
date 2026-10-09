@@ -13,18 +13,23 @@ auditoria**; o chamado SG100 faz essa verificação antes de qualquer outra cois
 
 ## 1. Visão em uma página
 
-O SisGov é um jogo de simulação política no qual o jogador é um partido na
-Presidência. O MVP prova **um ciclo de governo completo e contínuo** com o Brasil
-carregado de JSON:
+O SisGov é um simulador político e socioeconômico em que o país funciona como
+uma **rede de causa e efeito**. O jogador é um partido que acabou de vencer a
+eleição presidencial (ele dá nome, sigla e cor ao partido; não escolhe
+ideologia — descobre-se jogando). **A prioridade é a rede (D-30):** decisões
+se propagam por leis e indicadores; apoio, votação e eleição são lidos da rede.
+O MVP prova, com o Brasil carregado de JSON:
 
 ```text
-país herdado → propor política → votação no Senado → implantação gradual
-→ efeitos no país e nas finanças → reação dos grupos sociais
-→ eleição (Presidência + Senado por UF) → novo mandato ou derrota → salvar/restaurar
+país herdado → decisão (lei orçamentária, regulatória, tributária)
+→ propagação pela rede (indicadores em cadeia, com atraso e não linearidade)
+→ grupos sociais reagem (nós da rede) → apoio no Senado e popularidade
+→ eleição no fim do mandato → novo mandato ou derrota → salvar/restaurar
 ```
 
-…apresentado no **mapa de influência** com presidente, vice e ministros
-visuais, esferas ministeriais, leis e situações.
+…apresentado no **mapa de influência**: presidente e vice no centro, ministros
+com retrato nas esferas, leis nas esferas, indicadores entre elas, e a
+explicação de por que cada indicador mudou.
 
 **Princípios inegociáveis**
 
@@ -65,23 +70,23 @@ revisar, não entrega aceita.
 | # | Problema | Onde | Corrigido em |
 |---|---|---|---|
 | C1 | ~40 arquivos sem commit e sem verificação | `src/game/*`, `src/domain/fiscal/*`, testes | SG100 |
-| C2 | `politicalPath.test.ts` força sorteios = 1, implantação manual e jogador = vencedor | `src/tests/politicalPath.test.ts` | SG100 (marcar), SG119 (substituir) |
-| C3 | Senado guardado como total nacional por partido, sem UF nem vencimento | `createGame.ts`, `commitSenateElection.ts` | SG110 |
+| C2 | `politicalPath.test.ts` força sorteios = 1, implantação manual e jogador = vencedor | `src/tests/politicalPath.test.ts` | SG100 (marcar), SG126 (substituir) |
+| C3 | Senado guardado como total nacional por partido, sem UF nem vencimento | `createGame.ts`, `commitSenateElection.ts` | B-15 (fora do MVP; SG148 simplifica) |
 | C4 | Regras de nível da política (domínio) escritas no teste, não lidas do JSON | `politicalPath.test.ts` | SG102 |
 | C5 | Brasil sem ficha fiscal: o fiscal nunca roda no cenário real | `estado-inicial.json` | SG103 |
 | C6 | `prepareGameQuarter` recebe os estados mensais das políticas prontos de quem chama; a implantação mensal não é calculada pela partida | `prepareGameQuarter.ts` | SG104 |
 | C7 | Prazo de tramitação usa `defaultProposalTiming` fixo no código, não o conteúdo | `prepareGameQuarter.ts` | SG114 |
 | C8 | Ocorrências (situação, evento, dilema) não estão no estado da partida | `engine/runtime/*`, `GameState` | SG106 |
-| C9 | Apoio social é recalculado sob demanda, fora do turno | `refreshPoliticalSupport.ts` | SG117 |
+| C9 | Apoio social é recalculado sob demanda, fora do turno | `refreshPoliticalSupport.ts` | SG143 |
 | C10 | Votação parlamentar não fica registrada (sorteios, probabilidades) | `resolveParliamentaryVote.ts` | SG113 |
 | C11 | Não há Mandato nem calendário eleitoral; vencedor = partido com mais apoio | `commitElection.ts` | SG122, SG124 |
 | C12 | Política aponta para um único ministério, por texto (`"ministerio": "Ministério da Saúde"`) | JSONs de política | SG128 |
-| C13 | Interface não usa a partida: `main.tsx` renderiza o cenário demo `brazilPresidency` | `src/main.tsx` | SG109 |
+| C13 | Interface não usa a partida: `main.tsx` renderiza o cenário demo `brazilPresidency` | `src/main.tsx` | SG145 |
 | C14 | Documentação duplicada em 5 lugares; plano Word obsoleto; README desatualizado | `docs/`, `README.md` | SG101 |
 
 ### 2.3 Faz parte do MVP (a construir)
 
-Marcos M0–M6, seção 4.
+Marcos M1–M5, seção 4 (reordenados em 9/out pelo alinhamento D-30 a D-35).
 
 ### 2.4 Futuro (fora do MVP, com lugar definido)
 
@@ -190,12 +195,12 @@ máximo **uma** dependência aberta.
 
 ---
 
-### M0B — Catálogo de leis v2 (inserido em 9/out por decisão do autor)
+### M1 — A rede do país
 
-> **Valor:** leis organizadas em quatro grupos, sem quantidades no JSON da lei,
-> e o Brasil com um orçamento completo em proporções plausíveis — o gasto de
-> cada lei visível. Especificação:
-> [`docs/arquitetura/catalogo-de-leis-v2.md`](docs/arquitetura/catalogo-de-leis-v2.md).
+> **Valor:** o Brasil vira uma rede real: leis nos quatro grupos, orçamento
+> proporcional, ~35 indicadores em cadeias causais com efeitos não lineares e
+> grupos sociais como nós. Um turno real faz a decisão se propagar.
+> Especificação das leis: [`docs/arquitetura/catalogo-de-leis-v2.md`](docs/arquitetura/catalogo-de-leis-v2.md).
 
 #### SG135 — Formato de lei v2 e catálogo comum · M
 - **Objetivo:** esquema v2 com `grupo` (orçamentária, regulatória, tributária,
@@ -206,514 +211,273 @@ máximo **uma** dependência aberta.
   `leisVigentes` com o nível; adaptador do SG102 lê o formato novo.
 - **Aceite:** as 5 leis carregam sem valor do Brasil no JSON da lei; lei com
   quantidade ou regulatória com 2 opções é recusada com arquivo/campo.
-- **Testar:** `validateContentFile.test.ts`, `policyRulesFromContent.test.ts`.
-- **Depende de:** — (M0 fechado) · **Libera:** SG136, SG140.
+- **Depende de:** — · **Libera:** SG136.
 
 #### SG136 — Ficha do país v2: economia e orçamento completo · M
-- **Objetivo:** substituir a ficha do SG103 pelo orçamento proporcional da
-  especificação (PIB, receitas e despesas agregadas, juros, dívida, caixa).
 - **Tarefas:** `economia.pibAnual`; `fiscal.agregados` de receita e despesa;
   limites próprios do país; fluxo fiscal soma leis + agregados; custo da lei
-  orçamentária de valor fixo = nível ÷ 12.
-- **Aceite:** um turno do Brasil mostra receita, gasto por lei e por agregado,
-  primário ≈ −50/ano e nominal ≈ −950/ano; nenhum valor contado duas vezes.
-- **Testar:** `prepareGameQuarter.test.ts`, `preparePolicyFiscalFlows.test.ts`.
-- **Depende de:** SG135 · **Libera:** SG137, SG138, SG139, M1.
+  orçamentária de valor fixo = nível ÷ 12. Substitui os valores do SG103.
+- **Aceite:** um turno do Brasil mostra receita, gasto por lei e por agregado;
+  primário ≈ −50/ano e nominal ≈ −950/ano; nada contado duas vezes.
+- **Depende de:** SG135 · **Libera:** SG141.
 
-#### SG137 — Orçamentárias: % do orçamento e novas leis · M
-- **Tarefas:** modo `percentual_orcamento` (piso da saúde); novas leis de valor
-  fixo: Bolsa Família, preservativos, fiscalização ambiental, universidades;
-  cada uma com ao menos uma consequência (hipótese marcada); agregados
-  reduzidos no mesmo valor.
-- **Aceite:** piso a 15% gasta 15% da receita do mês; mudar a receita muda o
-  gasto do piso; orçamento total do Brasil inalterado após a migração.
-- **Depende de:** SG136 · **Libera:** —.
+#### SG141 — Mecanismos não lineares no motor · M
+- **Objetivo:** relações que não são retas (princípio 5 do projeto).
+- **Tarefas:** mecanismos genéricos e testados: **saturação** (efeito com teto),
+  **retornos decrescentes** (cada unidade a mais rende menos) e **limiar**
+  (efeito só acima/abaixo de um ponto); selecionados e parametrizados no JSON
+  da consequência; explicação do passo informa o mecanismo.
+- **Aceite:** testes unitários de cada mecanismo; consequência com mecanismo
+  desconhecido é recusada; mecanismos antigos inalterados.
+- **Depende de:** SG136 · **Libera:** SG142.
 
-#### SG138 — Regulatórias com opções · M
+#### SG142 — Rede de indicadores do Brasil · M
+- **Objetivo:** o coração do jogo: ~35 indicadores em camadas (social,
+  econômica, fiscal, institucional) ligados por cadeias causais.
+- **Tarefas:** indicadores e consequências em JSON (hipóteses marcadas), por
+  exemplo educação → qualificação → produtividade → emprego → renda →
+  arrecadação; saúde → produtividade; violência → investimento; com atrasos e
+  os mecanismos do SG141; documento curto com o mapa das cadeias.
+- **Aceite:** nenhum indicador isolado; cada indicador tem ao menos uma origem
+  e um destino; teste de 20 turnos sem valor inválido.
+- **Depende de:** SG141 · **Libera:** SG137.
+
+#### SG137 — Leis orçamentárias completas · M
+- **Tarefas:** modo `percentual_orcamento` (piso da saúde); Bolsa Família,
+  preservativos, fiscalização ambiental, universidades; cada lei ligada à
+  rede do SG142; agregados reduzidos no mesmo valor.
+- **Aceite:** piso a 15% gasta 15% da receita; orçamento total inalterado.
+- **Depende de:** SG142 · **Libera:** SG138.
+
+#### SG138 — Leis regulatórias com opções · M
 - **Tarefas:** drogas, porte de armas, salário mínimo, câmeras corporais,
-  escola em tempo integral; custo por opção relativo ao PIB; opção → número no
-  grafo; consequências e grupos afetados (hipótese).
-- **Aceite:** trocar de opção muda custo e consequências; opção inexistente é
-  recusada; nenhuma lei com menos de 3 opções.
-- **Depende de:** SG136 · **Libera:** —.
+  escola em tempo integral; custo por opção relativo ao PIB; opção → número
+  no grafo; ligação com a rede.
+- **Aceite:** trocar de opção muda custo e consequências; nenhuma lei com
+  menos de 3 opções.
+- **Depende de:** SG137 · **Libera:** SG139.
 
-#### SG139 — Tributárias · P
-- **Tarefas:** imposto de renda e sobre consumo; base = variável do país;
-  receita = alíquota × base; agregado "impostos não modelados" reduzido.
-- **Aceite:** subir a alíquota aumenta a receita na proporção da base; receita
-  total do Brasil inalterada após a migração.
-- **Depende de:** SG136 · **Libera:** —.
+#### SG139 — Leis tributárias · P
+- **Tarefas:** imposto de renda e sobre consumo; a **base é indicador da rede**
+  (renda, consumo), fechando o ciclo decisão → economia → arrecadação.
+- **Aceite:** subir a alíquota aumenta a receita; queda de emprego reduz a
+  base e a receita nos turnos seguintes.
+- **Depende de:** SG138 · **Libera:** SG143.
 
-#### SG140 — Institucionais · P
-- **Tarefas:** leis eleitorais do catálogo passam a `grupo: "institucional"`
-  sem mudar o mecanismo.
-- **Aceite:** eleições continuam passando nos testes existentes.
-- **Depende de:** SG135 · **Libera:** —.
-
----
-
-### M1 — Turno real da partida
-
-> **Valor:** "Próximo turno" no Brasil real move implantação, motor, finanças e
-> ocorrências, de forma atômica, **e aparece na tela**.
+#### SG143 — Grupos sociais como nós da rede · M
+- **Objetivo:** a política nasce da rede (D-30).
+- **Tarefas:** grupos (trabalhadores, classe média, empresários, idosos,
+  servidores, jovens, agro, etc.) como nós de tipo `grupo`; satisfação
+  alimentada por indicadores e leis via consequências; popularidade do governo
+  = agregação dos grupos pelos perfis da população; peso dos juros → grupos
+  (antigo SG121); reaproveitar `socialSupport.ts` onde couber.
+- **Aceite:** satisfação explicável por origens; perfis sem dupla contagem;
+  popularidade inicial vem do país (vencedor de eleição, D-35).
+- **Depende de:** SG139 · **Libera:** SG104.
 
 #### SG104 — Implantação mensal calculada pela partida · M
-- **Objetivo:** a partida calcula, mês a mês, o nível implantado de cada política
-  vigente a partir da meta e da resposta temporal do JSON (fecha C6).
-- **Entidades:** Política vigente.
-- **Tarefas:** função pura `advancePolicyImplementation(states, content, month)`
-  usando as funções existentes de `policyState.ts`; `prepareGameQuarter` passa a
-  gerar os 3 estados mensais em vez de recebê-los.
-- **Arquivos:** `src/game/advancePolicyImplementation.ts` (novo),
-  `prepareGameQuarter.ts`, `domain/game/policyState.ts` (só se faltar função).
-- **Aceite:** meta 5000 a partir de 4000 converge com a mesma fração trimestral
-  já validada no SG057-A; revogação nunca sobe o nível; encerra abaixo de
-  `revocationEpsilon`.
-- **Testar:** `advancePolicyImplementation.test.ts` (convergência, revogação,
-  equivalência trimestral).
-- **Depende de:** — (M0B fechado) · **Libera:** SG105.
+- **Tarefas:** `advancePolicyImplementation`; `prepareGameQuarter` gera os 3
+  estados mensais (fecha C6).
+- **Aceite:** convergência igual à do SG057-A; revogação nunca sobe o nível.
+- **Depende de:** SG143 · **Libera:** SG105.
 
 #### SG105 — Fiscal no turno real · P
-- **Objetivo:** contas mensais do Brasil, com emissão e juros, dentro do turno.
-- **Entidades:** Estado fiscal.
-- **Tarefas:** ligar `prepareGameQuarter` às políticas implantadas de SG104 e à
-  ficha de SG103; publicar no grafo o indicador "peso dos juros" (usado em SG121).
-- **Arquivos:** `prepareGameQuarter.ts`, `preparePolicyFiscalFlows.ts`.
-- **Aceite:** 16 turnos do Brasil sem erro; juros da emissão só no mês seguinte;
-  caixa nunca negativo; uma única fonte de caixa e dívida.
-- **Testar:** `prepareGameQuarter.test.ts` com o pacote real.
+- **Aceite:** 16 turnos do Brasil sem erro; juros da emissão só no mês
+  seguinte; uma única fonte de caixa e dívida.
 - **Depende de:** SG104 · **Libera:** SG106.
 
 #### SG106 — Ocorrências na partida · M
-- **Objetivo:** situações, eventos e dilemas viram estado da partida (fecha C8).
-- **Entidades:** Ocorrência ativa (filha da Partida).
-- **Tarefas:** campo `occurrences` no `GameState`; avaliação mensal em ordem de
-  ID sobre o mesmo retrato; dilema pendente fica registrado e é respondido por
-  uma ação (resposta aplica no mês seguinte); evento não se repete.
-- **Arquivos:** `createGame.ts`, `prepareGameQuarter.ts`,
-  `src/game/occurrences.ts` (novo); reaproveita `engine/runtime/evaluate*`.
-- **Aceite:** evento do Brasil (`aumento-demanda`) dispara uma vez; situação
-  `sobrecarga-atendimento` entra/sai com histerese; dilema de teste não aplica
-  efeito antes da resposta.
-- **Testar:** `occurrences.test.ts` com cenário Brasil + cenário `extremos`.
+- **Tarefas:** situações, eventos e dilemas no estado da partida (fecha C8).
 - **Depende de:** SG105 · **Libera:** SG107.
 
-#### SG107 — Diário do turno da partida · P
-- **Objetivo:** resultado do turno como dado de domínio (mensal + resumo).
-- **Tarefas:** `TurnJournal` produzido pelo preparo do turno: implantação, fiscal,
-  ocorrências, erros com ID/campo; reaproveitar `turnJournal.ts`.
-- **Arquivos:** `src/game/turnJournal.ts`, `prepareGameQuarter.ts`.
-- **Aceite:** cada mudança de indicador relevante tem causa (política, evento ou
-  consequência) no diário.
-- **Testar:** teste de snapshot do diário de 1 turno do Brasil.
+#### SG107 — Diário do turno com causas · P
+- **Aceite:** cada mudança relevante de indicador ou grupo tem causa no diário.
 - **Depende de:** SG106 · **Libera:** SG108.
 
 #### SG108 — Caso de uso `advanceTurn` v1 · M
-- **Objetivo:** primeira transação atômica da partida (parte 1 do antigo SG061).
-- **Entidades:** Partida, Turno.
-- **Tarefas:** `advanceTurn(content, graph, game, intents)` → prepara 3 meses
-  (SG104–107) → commit único (`commitGameQuarter` estendido); falha descarta
-  tudo, inclusive o gerador aleatório.
-- **Arquivos:** `src/application/advanceTurn.ts` (novo; primeira peça da camada
-  de aplicação), `commitGameQuarter.ts`.
-- **Aceite:** falha sintética no mês 2 preserva a partida inteira; repetir após
-  falha produz o mesmo resultado; motor continua utilizável sem `src/game`.
-- **Testar:** `advanceTurn.test.ts` (sucesso, falha, retentativa, 16 turnos).
-- **Depende de:** SG107 · **Libera:** SG109; abre M2.
+- **Tarefas:** prepara 3 meses → commit atômico; falha descarta tudo.
+- **Aceite:** falha no mês 2 preserva a partida; retentativa dá o mesmo resultado.
+- **Depende de:** SG107 · **Libera:** SG144.
 
-#### SG109 — Tela: mapa lê a partida real · M
-- **Objetivo:** primeira tela do jogo de verdade (fecha C13 em parte).
-- **Tarefas:** modo "Partida" ao lado do laboratório (não remover a bancada);
-  `main.tsx` cria a partida do Brasil e o mapa lê o `GameState`; botão "Próximo
-  turno" chama `advanceTurn`; `FiscalQuarterPanel` com dados reais; diário do
-  turno no painel existente.
-- **Arquivos:** `src/main.tsx`, `src/ui/GameMap.tsx`, `src/ui/TurnLogPanel.tsx`,
-  `src/ui/FiscalQuarterPanel.tsx`, `src/application/gameSession.ts` (novo,
-  estado React da sessão).
-- **Aceite:** abrir o jogo, avançar 4 turnos, ver turno, caixa, dívida e diário
-  mudarem; gasto ou receita de cada lei visível por ano e por mês (D-28); nenhum componente chama `advanceExecution` diretamente.
-- **Testar:** manual (roteiro de 5 passos no PR) + `grep` de imports na revisão.
-- **Depende de:** SG108 · **Libera:** M5 (pode correr em paralelo a M2–M4).
+#### SG144 — Prova da propagação · P
+- **Objetivo:** demonstrar o coração do jogo por teste.
+- **Tarefas:** roteiros com sementes fixas: (a) aumentar educação → após N
+  turnos qualificação, produtividade, emprego e arrecadação sobem, com custo
+  fiscal antes; (b) subir imposto → receita sobe e grupos afetados reagem;
+  (c) saturação: dobrar um gasto já alto rende pouco.
+- **Aceite:** os três roteiros passam e o diário explica cada elo.
+- **Depende de:** SG108 · **Libera:** M2.
 
 ---
 
-### M2 — Legislativo: proposta e votação de verdade
+### M2 — O mapa com a rede real
 
-> **Valor:** o jogador propõe uma mudança, o Senado vota no fechamento com acaso
-> controlado e a política só muda se aprovada.
+> **Valor:** o jogador joga turnos pela tela e entende o que aconteceu.
 
-#### SG110 — Cadeiras do Senado por UF · M
-- **Objetivo:** Cadeira (UF, slot, partido, vencimento) como fonte; composição
-  por partido derivada (fecha C3).
-- **Tarefas:** `cadeiras[]` no estado inicial do Brasil (81, hipótese marcada,
-  vencimentos alternados 2/1); validação (UF única por slot, vencimento futuro,
-  partido existente); `senateSeatsByParty` vira função derivada; ajustar
-  `commitSenateElection` ao novo formato (sem lógica de apuração ainda).
-- **Arquivos:** `estado-inicial.json`, `validateContentFile.ts`, `contentTypes.ts`,
-  `createGame.ts`, `commitSenateElection.ts`, `src/domain/politics/seats.ts` (novo).
-- **Aceite:** 27 UFs × 3 cadeiras; total derivado por partido igual ao atual;
-  pacote com UF faltando é recusado.
-- **Testar:** `seats.test.ts`, `validateContentFile.test.ts`.
-- **Depende de:** — (M1 fechado) · **Libera:** SG112.
+#### SG145 — Limpar o laboratório e ligar o mapa à partida · M
+- **Tarefas:** apagar `d4ReferenceSandbox` e as leis geradas (D-33); remover o
+  código morto (`main.tsx`/`GameMap` não montados) ou integrá-lo; o mapa lê o
+  `GameState` do Brasil; "Encerrar turno" chama `advanceTurn` (fecha C13).
+- **Aceite:** só conteúdo real na tela; avançar 4 turnos muda indicadores,
+  caixa e dívida; nenhum componente chama o motor diretamente.
+- **Depende de:** — · **Libera:** SG128.
+
+#### SG128 — Ministérios no conteúdo · P
+- **Tarefas:** `ministerios/*.json`; lei com `ministerios: [ids]`
+  (muitos-para-muitos, fecha C12); texto livre recusado.
+- **Depende de:** SG145 · **Libera:** SG129.
+
+#### SG129 — Mapa de influência com a rede real · M
+- **Tarefas:** leis nas esferas (sobreposição por ministério múltiplo);
+  indicadores e grupos **entre** as esferas; seleção destaca causas e efeitos
+  reais; nomes legíveis (sem abreviações tipo "FERR·CARG").
+- **Aceite:** as leis do Brasil aparecem nas esferas certas; clicar destaca as
+  consequências reais do JSON.
+- **Depende de:** SG128 · **Libera:** SG146.
+
+#### SG146 — "Por que mudou?" · P
+- **Tarefas:** ao clicar num indicador ou grupo: variação no turno e as causas
+  (lei, indicador, evento), com atraso indicado.
+- **Depende de:** SG129 · **Libera:** SG147.
+
+#### SG147 — Painel da lei · M
+- **Tarefas:** controle conforme o grupo (valor, %, opções, alíquota) dentro
+  dos limites; gasto ou receita por ano e por mês (D-28); nível desejado ×
+  implantado; consequências previstas. Mudança executiva vale no turno.
+- **Depende de:** SG146 · **Libera:** SG130.
+
+#### SG130 — Ajuda mínima · P
+- **Aceite:** uma pessoa faz a primeira decisão só com a ajuda.
+- **Depende de:** SG147 · **Libera:** M3.
+
+---
+
+### M3 — Ciclo político sobre a rede
+
+> **Valor:** mandato completo jogável: propor, votar, governar e enfrentar a
+> eleição, com apoio vindo dos grupos da rede.
+
+#### SG148 — Senado simplificado · P
+- **Tarefas:** cadeiras como total por partido (sem UF no MVP; UF vai ao
+  backlog B-15); coalizão; validação.
+- **Depende de:** — · **Libera:** SG111.
 
 #### SG111 — Porta única de validação de ações · P
-- **Objetivo:** completar o antigo SG059 sobre o código existente.
-- **Tarefas:** `validatePolicyAction` usa SG102; verifica requisitos, exclusões,
-  proposta aberta, opção autorizável; devolve `aceita | rejeita | exige-proposta`
-  com motivo tipado; sem mutação nem sorteio.
-- **Arquivos:** `validatePolicyAction.ts`, `commitPolicyAction.ts`.
-- **Aceite:** ajuste executivo vale no mês 1 do turno; mudança legislativa vira
-  proposta; impopularidade nunca bloqueia; testes de cada motivo de recusa.
-- **Testar:** `validatePolicyAction.test.ts`.
-- **Depende de:** — · **Libera:** SG113.
+- **Tarefas:** `aceita | rejeita | exige-proposta` com motivo; sem sorteio.
+- **Depende de:** SG148 · **Libera:** SG112.
 
-#### SG112 — Probabilidade de voto pelo conteúdo · P
-- **Objetivo:** a probabilidade de cada cadeira vem de base, afinidade do partido
-  e opinião, com pesos do JSON (o componente de opinião entra com valor neutro
-  até SG118).
-- **Tarefas:** pesos e quórum (`maioria absoluta das cadeiras ativas`) no JSON da
-  lei de processo legislativo; função `estimateVote` (prévia) que **não consome**
-  o gerador.
-- **Arquivos:** `sampleParliamentaryVotes.ts`, `catalogo-politicas-v1.json`,
-  `validateContentFile.ts`.
-- **Aceite:** estimativa e votação real usam a mesma função de probabilidade;
-  estimar 10 vezes não altera `game.random`.
-- **Testar:** `sampleParliamentaryVotes.test.ts`.
-- **Depende de:** SG110 · **Libera:** SG113.
+#### SG112 — Probabilidade de voto pela rede · P
+- **Tarefas:** probabilidade = base + afinidade do partido + satisfação dos
+  grupos ligados à lei (SG143); pesos no JSON; estimativa não consome sorteio.
+- **Depende de:** SG111 · **Libera:** SG113.
 
 #### SG113 — Votação no fechamento do turno · M
-- **Objetivo:** propostas em votação são votadas dentro de `advanceTurn` (parte 2
-  do antigo SG061; fecha C10).
-- **Entidades:** Votação parlamentar (nova, filha da Partida), Proposta.
-- **Tarefas:** no fechamento, em ordem de ID: amostrar pelo gerador salvo →
-  registrar Votação (probabilidades, sorteios, contagem) → aprovar e
-  `commitApprovedProposal` ou rejeitar; aprovada orienta a implantação a partir do
-  turno seguinte.
-- **Arquivos:** `src/application/advanceTurn.ts`, `resolveParliamentaryVote.ts`,
-  `commitApprovedProposal.ts`, `createGame.ts` (campo `votes`).
 - **Aceite:** empate não aprova; rejeitada preserva a política anterior;
-  retentativa após falha usa os mesmos sorteios.
-- **Testar:** `advanceTurn.vote.test.ts` com sementes fixas.
+  retentativa usa os mesmos sorteios (fecha C10).
 - **Depende de:** SG112 · **Libera:** SG114.
 
 #### SG114 — Prazo e adiamento pelo conteúdo · P
-- **Objetivo:** prazo normal, adiamento único e limite de 2 turnos lidos do JSON
-  (fecha C7).
-- **Tarefas:** `ProposalTimingRules` e condição de adiamento no conteúdo; remover
-  `defaultProposalTiming` do caminho do jogo.
-- **Arquivos:** `prepareProposalTramitation.ts`, `prepareGameQuarter.ts`, JSON.
-- **Aceite:** proposta adiada uma vez é votada no turno seguinte; nenhuma passa
-  de 2 turnos; motivo do adiamento aparece no diário.
-- **Testar:** `prepareProposalTramitation.test.ts`.
-- **Depende de:** SG113 · **Libera:** SG115.
+- **Depende de:** SG113 · **Libera:** SG140.
 
-#### SG115 — Tela: propor e acompanhar · M
-- **Objetivo:** o jogador propõe pelo mapa.
-- **Tarefas:** ao clicar numa política: controle comum (meta), estimativa de
-  apoio parlamentar e custo por turno, status da proposta; resultado da votação
-  no diário. Controles gerados do JSON, sem tela por lei.
-- **Arquivos:** `src/ui/PolicyPanel.tsx` (novo), `GameMap.tsx`, `gameSession.ts`.
-- **Aceite:** propor, avançar, ver aprovada/rejeitada e o nível desejado ×
-  implantado separados.
-- **Testar:** roteiro manual no PR.
-- **Depende de:** SG114 · **Libera:** M3.
-
----
-
-### M3 — Sociedade: grupos reagem e influenciam o Senado
-
-> **Valor:** decisões geram reações rastreáveis por grupo; a opinião pesa na
-> votação; popularidade não garante aprovação.
-
-#### SG116 — Relações sociais validadas no conteúdo · P
-- **Objetivo:** fechar a validação de perfis, grupos e relações
-  (política → grupo, indicador → grupo).
-- **Tarefas:** validar unidades, pesos finitos ≥ 0, perfis somando 100, referência
-  positiva; apoio inicial já inclui as políticas herdadas (sem bônus duplicado).
-- **Arquivos:** `validateContentFile.ts`, `validatePackageCoherence.ts`,
-  `estado-inicial.json`.
-- **Aceite:** pacotes inválidos recusados com campo; Brasil válido.
-- **Testar:** `validateContentFile.test.ts`.
-- **Depende de:** — (M2 fechado) · **Libera:** SG117.
-
-#### SG117 — Apoio social como etapa mensal do turno · M
-- **Objetivo:** recalcular o apoio todo mês dentro de `advanceTurn`, substituindo
-  contribuições (fecha C9 e os FIX-V1-01/06 no caminho integrado).
-- **Tarefas:** chamar `refreshPoliticalSupport` após o motor em cada mês;
-  contribuições por `relação+origem+alvo`; registrar no diário.
-- **Arquivos:** `advanceTurn.ts`, `refreshPoliticalSupport.ts`, `socialSupport.ts`.
-- **Aceite:** 40 → 42 com efeito +2 mesmo após 3 meses; 99 → 100 → 99 ao retirar
-  a fonte; extremos 0/100 sem divisão por zero; ordem dos IDs não muda o resultado.
-- **Testar:** `advanceTurn.social.test.ts`.
-- **Depende de:** SG116 · **Libera:** SG118, SG120, SG121.
-
-#### SG118 — Opinião entra na votação · P
-- **Objetivo:** o componente "opinião" de SG112 passa a vir do apoio social à
-  medida.
-- **Tarefas:** derivar a opinião sobre a proposta a partir das relações da
-  política; ligar em `estimateVote` e na votação.
-- **Arquivos:** `sampleParliamentaryVotes.ts`, `socialSupport.ts`.
-- **Aceite:** mesma bancada, opinião maior → probabilidade maior; nunca vira
-  veto ou aprovação automática.
-- **Testar:** teste de monotonicidade.
-- **Depende de:** SG117 · **Libera:** SG119.
-
-#### SG119 — Roteiros de aceite do ciclo político · P
-- **Objetivo:** substituir o teste com valores forçados (fecha C2).
-- **Tarefas:** dois roteiros no pacote Brasil, sementes fixas, probabilidades
-  reais: medida popular rejeitada por bancada insuficiente; medida impopular
-  aprovada com reação pública. Apagar `politicalPath.demo.test.ts`.
-- **Arquivos:** `src/tests/politicalCycle.test.ts` (novo).
-- **Aceite:** os dois roteiros passam sem nenhum valor manual além da semente e
-  de bancadas de teste declaradas em JSON de teste.
-- **Testar:** o próprio teste.
-- **Depende de:** SG118 · **Libera:** M4.
-
-#### SG120 — Tela: grupos e apoio com causas · P
-- **Tarefas:** painel de perfis/grupos com apoio partidário e as contribuições
-  que o explicam (origem → grupo → pontos).
-- **Arquivos:** `src/ui/SocietyPanel.tsx` (novo).
-- **Aceite:** clicar num grupo mostra quais políticas/indicadores o movem.
-- **Testar:** roteiro manual.
-- **Depende de:** SG117 · **Libera:** —.
-
-#### SG121 — Desgaste pelo peso dos juros · P
-- **Objetivo:** contrapartida política da dívida, só por conteúdo.
-- **Tarefas:** relação JSON indicador "peso dos juros" (SG105) → grupos, com
-  atraso e parâmetros marcados como hipótese.
-- **Arquivos:** `estado-inicial.json` (relações), teste.
-- **Aceite:** endividar eleva o peso dos juros e reduz gradualmente o apoio dos
-  grupos declarados; sem derrota automática; nenhuma linha de código nova
-  (se exigir, vira chamado próprio).
-- **Testar:** teste comparando 8 turnos com e sem expansão de gasto.
-- **Depende de:** SG117 · **Libera:** —.
-
----
-
-### M4 — Eleições e mandato: o ciclo fecha
-
-> **Valor:** a partida chega à eleição, apura Presidência e Senado por UF e
-> continua (vitória) ou termina (derrota). **Ciclo completo jogável por teste.**
+#### SG140 — Leis institucionais · P
+- **Tarefas:** leis eleitorais e de processo legislativo no grupo
+  `institucional`.
+- **Depende de:** SG114 · **Libera:** SG122.
 
 #### SG122 — Mandato e calendário eleitoral · P
-- **Objetivo:** Mandato presidencial e datas de eleição derivadas da lei
-  eleitoral vigente e do mês absoluto (fecha parte de C11).
-- **Tarefas:** entidade Mandato; `nextElections(game, content)`; turno 16 do
-  mandato sem decisões ordinárias.
-- **Arquivos:** `src/domain/politics/mandate.ts` (novo), `createGame.ts`.
-- **Aceite:** Brasil: eleição presidencial no mês 48; Senado no mesmo mês
-  renovando só as cadeiras que vencem.
-- **Testar:** `mandate.test.ts`.
-- **Depende de:** — (M3 fechado) · **Libera:** SG123.
+- **Depende de:** SG140 · **Libera:** SG124.
 
-#### SG123 — Apuração do Senado por UF · M
-- **Objetivo:** maiores médias por UF com pesos dos perfis por UF (FIX-V1-08).
-- **Tarefas:** pesos por UF (hipótese) no estado inicial; votos por UF agregados
-  sem duplicar perfis; divisores do JSON; d20 só em empate real; renovação só das
-  cadeiras vencidas.
-- **Arquivos:** `elections.ts`, `commitSenateElection.ts`, `estado-inicial.json`.
-- **Aceite:** exemplos 70/30 e 60/40 com duas vagas reproduzem o cálculo manual;
-  um partido pode levar as duas; UFs com perfis diferentes divergem.
-- **Testar:** `elections.test.ts`, `commitSenateElection.test.ts`.
-- **Depende de:** SG122 · **Libera:** SG124.
-
-#### SG124 — Candidatura e apuração presidencial · P
-- **Objetivo:** candidatura explícita mínima (FIX-V1-05 versão MVP).
-- **Tarefas:** uma candidatura por partido; aliados declaram em JSON se apoiam
-  outra candidatura (transferência integral só se declarada); pluralidade
-  nacional; d20 em empate real.
-- **Arquivos:** `elections.ts`, `commitElection.ts`, `estado-inicial.json`.
-- **Aceite:** exemplo 30/25/45 dá vencedores diferentes com e sem apoio
-  declarado; o diário explica o destino dos votos do aliado.
-- **Testar:** `elections.test.ts`.
-- **Depende de:** SG123 · **Libera:** SG125.
+#### SG124 — Eleição presidencial pela rede · M
+- **Tarefas:** votos por perfil derivados da satisfação dos grupos; maior
+  total vence; Senado renovado de forma simplificada; d20 só em empate real.
+- **Depende de:** SG122 · **Libera:** SG125.
 
 #### SG125 — Fechamento eleitoral no turno · M
-- **Objetivo:** parte 3 do antigo SG061.
-- **Tarefas:** no fechamento: votações → eleições → troca de cadeiras (vale no
-  turno seguinte) → novo Mandato (vitória) ou `encerrada` (derrota).
-- **Arquivos:** `advanceTurn.ts`, `commitElection.ts`, `commitSenateElection.ts`.
-- **Aceite:** votação no mesmo fechamento usa a composição antiga; vitória
-  preserva dívida, implantação, propostas e vencimentos; derrota bloqueia novo turno.
-- **Testar:** `advanceTurn.election.test.ts`.
-- **Depende de:** SG124 · **Libera:** SG126, SG127.
+- **Aceite:** vitória preserva o país; derrota encerra (fecha C11).
+- **Depende de:** SG124 · **Libera:** SG115.
+
+#### SG115 — Tela: propor, votar e eleição · M
+- **Tarefas:** propor pelo painel da lei, estimativa de apoio, resultado da
+  votação; tela de resultado eleitoral e continuidade.
+- **Depende de:** SG125 · **Libera:** SG126.
 
 #### SG126 — Teste de partida completa · P
-- **Objetivo:** prova do ciclo (equivale ao antigo SG064).
-- **Tarefas:** teste de 32 turnos (dois mandatos) com sementes fixas: herança,
-  proposta, votação, déficit válido, evento, eleição vencida, segunda eleição
-  perdida e encerramento.
-- **Arquivos:** `src/tests/fullGame.test.ts` (novo).
-- **Aceite:** passa; nenhuma votação, custo ou evento duplicado.
-- **Testar:** o próprio teste.
-- **Depende de:** SG125 · **Libera:** M6.
-
-#### SG127 — Tela: resultado eleitoral e continuidade · M
-- **Tarefas:** resultado da Presidência e do Senado por UF, explicação, "continuar
-  mandato" ou "nova partida".
-- **Arquivos:** `src/ui/ElectionPanel.tsx` (novo), `gameSession.ts`.
-- **Aceite:** jogar até a eleição pela tela; derrota não permite turno extra.
-- **Testar:** roteiro manual.
-- **Depende de:** SG125 · **Libera:** —.
+- **Tarefas:** 32 turnos com sementes fixas; substitui `politicalPath.demo`
+  (fecha C2).
+- **Depende de:** SG115 · **Libera:** M4.
 
 ---
 
-### M5 — O rosto do governo (paralelo a M2–M4, depende só de M1)
+### M4 — Partido e personagens
 
-> **Valor:** a identidade do jogo — presidente, vice, ministros, esferas e
-> conexões — alimentada pela partida, sem mecânica individual.
+> **Valor:** a identidade do jogo — o partido do jogador e o rosto do governo.
 
-#### SG128 — Ministérios, cargos e personagens visuais · M
-- **Objetivo:** estrutura para o rosto do governo e para M10, sem mecânica.
-- **Entidades:** Ministério (conteúdo), Cargo e Personagem visual (partida).
-- **Tarefas:** `ministerios/*.json` (id, nome, esfera); política com
-  `ministerios: [ids]` (muitos-para-muitos), migrando o texto atual;
-  `personagens/*.json` (id, nome, retrato, partido); estado inicial declara os
-  ocupantes de presidente, vice e ministros; `GameState.offices`. Campos de
-  mecânica futura **não** são criados agora; o formato aceita extensão por
-  versão de esquema.
-- **Arquivos:** JSONs do Brasil, `contentTypes.ts`, `validateContentFile.ts`,
-  `createGame.ts`.
-- **Aceite:** cada política referencia ≥ 1 ministério por ID; texto livre de
-  ministério recusado; cargo sem ocupante recusado; motor intocado.
-- **Testar:** `validateContentFile.test.ts`, `createGame.test.ts`.
-- **Depende de:** — (M1 fechado) · **Libera:** SG129.
+#### SG149 — Novo jogo: o partido do jogador · P
+- **Tarefas:** tela inicial pede nome, sigla e cor (sem ideologia, D-34);
+  partida começa com a popularidade de quem venceu a eleição (do país).
+- **Depende de:** — · **Libera:** SG150.
 
-#### SG129 — Mapa de influência alimentado pela partida · M
-- **Objetivo:** a tela-alvo aprovada (`docs/producao/mapa-de-influencia.md`) com
-  dados reais.
-- **Tarefas:** presidente e vice no centro com a Constituição; ministros nas
-  esferas com suas políticas (sobreposição por ministério múltiplo); indicadores
-  e situações orbitando fora das esferas; seleção destaca as relações do grafo.
-  Reaproveitar `influenceLayout.ts`, `mapPhysics.ts`, `relationPaths.ts`;
-  posição visual nunca define relação.
-- **Arquivos:** `GameMap.tsx`, `influenceLayout.ts`, `relationPaths.ts`.
-- **Aceite:** as 5 políticas do Brasil aparecem nas esferas certas; clicar
-  destaca as consequências reais do JSON.
-- **Testar:** `influenceLayout.test.ts`, `relationPaths.test.ts` + roteiro manual.
-- **Depende de:** SG128 · **Libera:** SG130.
+#### SG150 — Banco de retratos · P
+- **Tarefas:** pasta `public/personagens/retratos/` só com imagens geradas por
+  IA; metadados no nome do arquivo:
+  `<genero>_<faixa-etaria>_<numero>.png` (ex.: `f_45-59_03.png`); validador
+  recusa nome fora do padrão.
+- **Depende de:** SG149 · **Libera:** SG151.
 
-#### SG130 — Ajuda mínima e explicação do turno · P
-- **Tarefas:** tela de ajuda (objetivo, turno = 3 meses, autorização, eleição,
-  por que popularidade não garante aprovação e déficit não é erro); diário com
-  "estimado × realizado".
-- **Arquivos:** `src/ui/HelpPanel.tsx` (novo), `TurnLogPanel.tsx`.
-- **Aceite:** uma pessoa faz a primeira proposta só com a ajuda.
-- **Testar:** sessão rápida com uma pessoa.
-- **Depende de:** SG129 · **Libera:** —.
+#### SG151 — Gerador de personagens · M
+- **Tarefas:** `nomes.json` (por gênero) e `historias.json` (com tags que se
+  relacionam: origem, carreira, eventos ligados entre personagens); presidente,
+  vice e ministros gerados na partida com nome, cargo, história e retrato
+  compatível (gênero e idade); gerador com semente salva (D-32).
+- **Aceite:** a mesma semente gera o mesmo governo; nunca nome e retrato de
+  gêneros diferentes; histórias relacionadas são coerentes entre si.
+- **Depende de:** SG150 · **Libera:** SG152.
+
+#### SG152 — Rosto do governo no mapa · M
+- **Tarefas:** presidente e vice no centro com retratos; ministros com retrato
+  nas suas esferas; ficha do personagem (nome, cargo, história).
+- **Depende de:** SG151 · **Libera:** M5.
 
 ---
 
-### M6 — Salvar e restaurar → **MVP**
-
-> **Valor:** retomar a partida exatamente onde parou, inclusive sorteios.
+### M5 — Salvar e restaurar → **MVP**
 
 #### SG131 — Formato do arquivo de partida · M
-- **Tarefas:** serializar `GameState` + execução (`exportExecution`) + gerador +
-  identidade do conteúdo + versão de esquema; recusar save incompatível com motivo.
-- **Arquivos:** `src/application/saveGame.ts` (novo), reaproveita
-  `engine/runtime/exportExecution.ts` e `restoreExecution.ts`.
-- **Aceite:** conteúdo alterado é detectado; save corrompido não altera a partida
-  aberta.
-- **Testar:** `saveGame.test.ts`.
-- **Depende de:** — (M4 fechado) · **Libera:** SG132.
+- **Tarefas:** `GameState` + execução + gerador + personagens + identidade do
+  conteúdo + versão de esquema; save incompatível recusado com motivo.
+- **Depende de:** — · **Libera:** SG132.
 
 #### SG132 — Restauração equivalente · P
-- **Tarefas:** comparar execução contínua × restaurada antes e depois de uma
-  eleição, com a mesma semente.
-- **Arquivos:** `src/tests/saveRestore.test.ts` (novo).
-- **Aceite:** trajetórias, votações, sorteios, prazos e cadeiras idênticos;
-  nenhum bônus social reaplicado.
-- **Testar:** o próprio teste.
+- **Aceite:** contínua × restaurada idênticas antes e depois de uma eleição.
 - **Depende de:** SG131 · **Libera:** SG133.
 
 #### SG133 — Tela: exportar e importar · P
-- **Arquivos:** `gameSession.ts`, `src/ui/SavePanel.tsx` (novo).
-- **Aceite:** baixar arquivo, recarregar a página, importar e continuar.
-- **Testar:** roteiro manual.
 - **Depende de:** SG132 · **Libera:** SG134.
 
-#### SG134 — Marco MVP: percurso verificado · P
-- **Tarefas:** roteiro manual dos 3 critérios de sucesso de
-  `primeira-versao.md` pela tela + `fullGame.test.ts` + `npm run check`; registrar
-  pendências como chamados novos no backlog.
-- **Aceite:** os três critérios demonstrados; nenhum bloqueio crítico.
-- **Depende de:** SG133 (e M5 fechado) · **Libera:** M7–M11.
+#### SG134 — Marco MVP verificado · P
+- **Tarefas:** os 3 critérios de sucesso pela tela + teste de partida completa.
+- **Depende de:** SG133 · **Libera:** M7–M11.
 
 ---
 
-## 5. Grafo de dependências, ordem e caminho crítico
+## 5. Ordem e caminho crítico
+
+Cada marco é uma fila única (cada chamado depende só do anterior), o que
+cumpre R-01 e R-02 por construção.
 
 ```text
-M0  SG100 ──┬─▶ SG102 ─────────────────────────────┐
-            └─▶ SG103                               │   SG101 (independente)
-                                                    ▼
-M0B SG135 ─▶ SG136 ─┬─▶ SG137    SG135 ─▶ SG140
-                    ├─▶ SG138
-                    └─▶ SG139
-M1  SG104 ─▶ SG105 ─▶ SG106 ─▶ SG107 ─▶ SG108 ─▶ SG109 ──────────┐
-                                          │                       ▼
-M2  SG110 ─▶ SG112 ─▶ SG113 ─▶ SG114 ─▶ SG115     M5  SG128 ─▶ SG129 ─▶ SG130
-    SG111 ─────────────┘ (SG113 consome SG111; SG111 fecha antes)
-M3  SG116 ─▶ SG117 ─┬─▶ SG118 ─▶ SG119
-                    ├─▶ SG120
-                    └─▶ SG121
-M4  SG122 ─▶ SG123 ─▶ SG124 ─▶ SG125 ─┬─▶ SG126
-                                      └─▶ SG127
-M6  SG131 ─▶ SG132 ─▶ SG133 ─▶ SG134 (MVP)
+M0  SG100 → SG101 → SG102 → SG103                                    ✅
+M1  SG135 → SG136 → SG141 → SG142 → SG137 → SG138 → SG139 → SG143
+    → SG104 → SG105 → SG106 → SG107 → SG108 → SG144
+M2  SG145 → SG128 → SG129 → SG146 → SG147 → SG130
+M3  SG148 → SG111 → SG112 → SG113 → SG114 → SG140 → SG122 → SG124
+    → SG125 → SG115 → SG126
+M4  SG149 → SG150 → SG151 → SG152
+M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-> Em SG113, SG111 conta como dependência: executar SG111 **antes** de SG112 no
-> M2 mantém uma única dependência aberta (SG112) quando SG113 começar.
-
-| Chamado | Depende de | Libera |
-|---|---|---|
-| SG100 | — | SG102, SG103 |
-| SG101 | — | — |
-| SG102 | SG100 | SG104, SG111 |
-| SG103 | SG100 | SG105 |
-| SG104 | (M0) | SG105 |
-| SG105 | SG104 | SG106 |
-| SG106 | SG105 | SG107 |
-| SG107 | SG106 | SG108 |
-| SG108 | SG107 | SG109, M2 |
-| SG109 | SG108 | M5 |
-| SG110 | (M1) | SG112 |
-| SG111 | (M1) | SG113 |
-| SG112 | SG110 | SG113 |
-| SG113 | SG112 (SG111 já fechado) | SG114 |
-| SG114 | SG113 | SG115 |
-| SG115 | SG114 | M3 |
-| SG116 | (M2) | SG117 |
-| SG117 | SG116 | SG118, SG120, SG121 |
-| SG118 | SG117 | SG119 |
-| SG119 | SG118 | M4 |
-| SG120 | SG117 | — |
-| SG121 | SG117 | — |
-| SG122 | (M3) | SG123 |
-| SG123 | SG122 | SG124 |
-| SG124 | SG123 | SG125 |
-| SG125 | SG124 | SG126, SG127 |
-| SG126 | SG125 | M6 |
-| SG127 | SG125 | — |
-| SG128 | (M1) | SG129 |
-| SG129 | SG128 | SG130 |
-| SG130 | SG129 | — |
-| SG131 | (M4) | SG132 |
-| SG132 | SG131 | SG133 |
-| SG133 | SG132 | SG134 |
-| SG134 | SG133 (+ M5 fechado) | M7–M11 |
-
-**Caminho crítico (27 chamados):**
-SG100 → SG102 → SG135 → SG136 → SG104 → SG105 → SG106 → SG107 → SG108 → SG110 → SG112 → SG113 →
-SG114 → SG115 → SG116 → SG117 → SG118 → SG119 → SG122 → SG123 → SG124 → SG125 →
-SG126 → SG131 → SG132 → SG133 → SG134.
-
-**Fora do caminho crítico (encaixar quando bloqueado ou entre marcos):** SG101,
-SG103 (antes de SG105), SG109, SG111, SG120, SG121, SG127, SG128–SG130.
-
-**Estimativa:** 35 chamados, ~50 sessões (P = 1, M = 2). Não é prazo; é
-referência para reestimar ao fim de cada marco.
+**Total:** 4 feitos + 41 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+referência, não prazo.
 
 ---
 
@@ -771,20 +535,21 @@ referência para reestimar ao fim de cada marco.
 
 | ID | Item | Motivo |
 |---|---|---|
-| B-01 | SG058-C capacidade, demanda, retornos decrescentes | Evolução; limites atuais bastam para o MVP |
+| B-01 | SG058-C capacidade e demanda | Retornos decrescentes e saturação promovidos ao SG141 (9/out) |
 | B-02 | SG058-D governança, desvio, fiscalização | Evolução |
 | B-03 | SG060-C crédito e bancos agregados | Escopo da V1 exclui bancos; código mantido, desconectado do turno |
 | B-04 | Inflação, rating, crise fiscal, vencimentos, rolagem | Excluídos da V1 |
 | B-05 | Segundo turno presidencial | Excluído da V1; a lei eleitoral já permite acrescentar o mecanismo |
 | B-06 | Campanha eleitoral (ações nos 5 turnos anteriores) | Decisão de 9/out: sem ações vazias; exige catálogo próprio |
 | B-07 | Reconciliação da ficha fiscal com dados oficiais (RTN/RMD) | MVP usa hipótese marcada (SG103) |
-| B-08 | Histórias e geração de personagens | Parte de M10 |
+| B-08 | Mecânica individual de personagens (influência, lealdade, substituição com consequência) | M10; geração de nome, história e retrato entrou no MVP (SG151) |
 | B-09 | Manual de conteúdo e mods | Depois da publicação |
 | B-10 | Reavaliar tecnologia gráfica (PixiJS foi descartado) | Mapa atual em SVG/DOM atende o MVP |
 | B-11 | Distribuição desktop/Steam | Depois da versão web |
 | B-12 | Migração física de pastas (`engine` → `simulation`) | Só com fronteiras provadas; sem valor jogável agora |
 | B-13 | Editor de conteúdo, contas, nuvem | Fora do escopo |
-| B-14 | Laboratório de 100+ políticas (`lawMapDemo`) como conteúdo real | Demonstração visual; não é cenário calibrado |
+| B-14 | ~~Laboratório de 100+ políticas~~ | Será apagado no SG145 (D-33) |
+| B-15 | Senado por UF: cadeiras, vencimentos, renovação 2/1, apuração por UF (antigos SG110, SG123) | Fora do MVP pelo alinhamento D-30; código existente preservado |
 
 ---
 
@@ -825,6 +590,10 @@ referência para reestimar ao fim de cada marco.
 | D-31 | O jogador é um partido que acabou de vencer a eleição; no início da partida ele dá nome ao partido | 09/out | alinhamento com o autor |
 | D-32 | Personagens na V1: retratos gerados por IA ficam numa pasta própria (só imagens); nome, cargo e história são gerados na partida a partir de JSONs de nomes e de histórias que se relacionam | 09/out | alinhamento com o autor; substitui D-05 |
 | D-33 | As ~100 leis do laboratório (`d4ReferenceSandbox`) eram exemplos visuais e podem ser apagadas; o mapa passa a mostrar só conteúdo real | 09/out | alinhamento com o autor |
+| D-34 | Partido do jogador: nome, sigla e cor; sem ideologia escolhida (o jogador se descobre jogando) | 09/out | alinhamento com o autor |
+| D-35 | A partida começa com a popularidade de quem venceu a eleição (valor do país, hipótese) | 09/out | alinhamento com o autor |
+| D-36 | Retratos: gênero e faixa etária ficam no nome do arquivo (`<genero>_<faixa>_<n>.png`) | 09/out | alinhamento com o autor |
+| D-37 | Senado por UF (D-08) sai do MVP; no MVP o Senado é total por partido | 09/out | consequência de D-30 |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -841,56 +610,58 @@ data, commit e teste.
 - [x] SG102 Regras de nível lidas do conteúdo — 09/out · `fd196d0` · check verde, 202 testes / 52 arquivos; `policyRulesFromContent.test.ts`, `resolvePackage.test.ts`
 - [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · `18f4fdb` · valores substituídos pelo SG136 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
 
-**M0B — Catálogo de leis v2**
+**M1 — A rede do país**
 - [ ] SG135 Formato de lei v2 e catálogo comum
 - [ ] SG136 Ficha do país v2: economia e orçamento completo
-- [ ] SG137 Orçamentárias: % do orçamento e novas leis
-- [ ] SG138 Regulatórias com opções
-- [ ] SG139 Tributárias
-- [ ] SG140 Institucionais
-
-**M1 — Turno real**
+- [ ] SG141 Mecanismos não lineares no motor
+- [ ] SG142 Rede de indicadores do Brasil
+- [ ] SG137 Leis orçamentárias completas
+- [ ] SG138 Leis regulatórias com opções
+- [ ] SG139 Leis tributárias
+- [ ] SG143 Grupos sociais como nós da rede
 - [ ] SG104 Implantação mensal pela partida
 - [ ] SG105 Fiscal no turno real
 - [ ] SG106 Ocorrências na partida
-- [ ] SG107 Diário do turno
+- [ ] SG107 Diário do turno com causas
 - [ ] SG108 `advanceTurn` v1
-- [ ] SG109 Tela: mapa lê a partida
+- [ ] SG144 Prova da propagação
 
-**M2 — Legislativo**
-- [ ] SG110 Cadeiras do Senado por UF
+**M2 — O mapa com a rede real**
+- [ ] SG145 Limpar o laboratório e ligar o mapa à partida
+- [ ] SG128 Ministérios no conteúdo
+- [ ] SG129 Mapa de influência com a rede real
+- [ ] SG146 "Por que mudou?"
+- [ ] SG147 Painel da lei
+- [ ] SG130 Ajuda mínima
+
+**M3 — Ciclo político sobre a rede**
+- [ ] SG148 Senado simplificado
 - [ ] SG111 Porta única de validação
-- [ ] SG112 Probabilidade de voto pelo conteúdo
+- [ ] SG112 Probabilidade de voto pela rede
 - [ ] SG113 Votação no fechamento
 - [ ] SG114 Prazo e adiamento pelo conteúdo
-- [ ] SG115 Tela: propor e acompanhar
-
-**M3 — Sociedade**
-- [ ] SG116 Relações sociais validadas
-- [ ] SG117 Apoio social mensal no turno
-- [ ] SG118 Opinião entra na votação
-- [ ] SG119 Roteiros de aceite do ciclo político
-- [ ] SG120 Tela: grupos e apoio
-- [ ] SG121 Desgaste pelo peso dos juros
-
-**M4 — Eleições**
+- [ ] SG140 Leis institucionais
 - [ ] SG122 Mandato e calendário eleitoral
-- [ ] SG123 Apuração do Senado por UF
-- [ ] SG124 Candidatura e apuração presidencial
+- [ ] SG124 Eleição presidencial pela rede
 - [ ] SG125 Fechamento eleitoral no turno
+- [ ] SG115 Tela: propor, votar e eleição
 - [ ] SG126 Teste de partida completa
-- [ ] SG127 Tela: resultado eleitoral
 
-**M5 — Rosto do governo** (paralelo, após M1)
-- [ ] SG128 Ministérios, cargos e personagens visuais
-- [ ] SG129 Mapa de influência alimentado pela partida
-- [ ] SG130 Ajuda mínima e explicação do turno
+**M4 — Partido e personagens**
+- [ ] SG149 Novo jogo: o partido do jogador
+- [ ] SG150 Banco de retratos
+- [ ] SG151 Gerador de personagens
+- [ ] SG152 Rosto do governo no mapa
 
-**M6 — Salvar e restaurar → MVP**
+**M5 — Salvar e restaurar → MVP**
 - [ ] SG131 Formato do arquivo de partida
 - [ ] SG132 Restauração equivalente
 - [ ] SG133 Tela: exportar e importar
 - [ ] SG134 **Marco MVP verificado**
+
+**Retirados do MVP em 9/out (alinhamento):** SG109 (→ SG145), SG110 e SG123
+Senado por UF (→ B-15), SG116–SG118 e SG121 (→ SG143), SG119 (→ SG144/SG126),
+SG120 (→ SG146), SG127 (→ SG115).
 
 **Depois do MVP (detalhar ao abrir cada marco):** M7 Balanceamento e qualidade →
 M8 Instituições e Constituição → M9 Ruptura institucional → M10 Personagens com
