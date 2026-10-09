@@ -8,39 +8,6 @@ import {
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
-/** Retrato do Brasil de hoje usado na calibragem (docs/conteudo/rede.md). */
-const brazilToday: Record<string, number> = {
-  capital_humano: 45,
-  capital_produtivo: 50,
-  cobertura_aps: 72,
-  pressao_hospitalar: 54,
-  saude_populacao: 60,
-  frequencia_escolar: 75,
-  qualidade_educacao: 40,
-  participacao_trabalho_cuidadoras: 62,
-  oportunidades_juvenis: 45,
-  qualificacao_trabalho: 50,
-  produtividade: 50,
-  atividade_economica: 50,
-  investimento: 40,
-  confianca_empresarial: 50,
-  desemprego: 9,
-  renda_familias: 50,
-  consumo: 50,
-  pobreza: 30,
-  desigualdade: 55,
-  violencia_letal: 21,
-  crime_organizado: 40,
-  protecao_efetiva_mulheres: 42,
-  sensacao_seguranca: 40,
-  corrupcao: 40,
-  capacidade_estatal: 50,
-  confianca_instituicoes: 45,
-  crise_atendimento: 0,
-  onda_violencia: 0,
-  recessao: 0,
-};
-
 function brazil() {
   const loaded = loadDistributedScenario("paises/brasil/pais.json");
   if (!loaded.ok) throw new Error(JSON.stringify(loaded.diagnostics));
@@ -72,15 +39,15 @@ function play(turns: number, levels: Record<string, number> = {}) {
   return { execution, graph };
 }
 
-describe("SG142 — a rede do mundo com o Brasil de hoje", () => {
-  it("o Brasil começa no retrato calibrado, sem declarar nenhum índice", () => {
+describe("SG142 — a rede do mundo", () => {
+  it("o Brasil declara só leis e bolhas lentas; o resto nasce calculado", () => {
     const { definition, graph } = brazil();
-    const declared = Object.keys(definition.initialState.valores);
-    for (const id of declared)
+    for (const id of Object.keys(definition.initialState.valores))
       expect(["controle", "estoque"]).toContain(graph.nodesById[id].tipo);
     const start = createExecution(definition, graph);
-    for (const [id, value] of Object.entries(brazilToday))
-      expect(start.values[id], id).toBeCloseTo(value, 2);
+    expect(start.values.escolaridade).toBe(45);
+    expect(start.values.pib).toBeGreaterThan(0);
+    expect(start.values.saude_populacao).toBeGreaterThan(0);
   });
 
   it("nenhuma bolha isolada: cada índice e situação recebe e envia", () => {
@@ -112,7 +79,7 @@ describe("SG142 — a rede do mundo com o Brasil de hoje", () => {
       );
   });
 
-  it("20 turnos sem mudar nada: valores válidos e o país fica onde está", () => {
+  it("20 turnos sem mudar nada: todos os valores válidos", () => {
     const { execution, graph } = play(20);
     for (const [id, value] of Object.entries(execution.values)) {
       const node = graph.nodesById[id];
@@ -122,8 +89,6 @@ describe("SG142 — a rede do mundo com o Brasil de hoje", () => {
       if (node.dominio.maximo !== undefined)
         expect(value, id).toBeLessThanOrEqual(node.dominio.maximo);
     }
-    for (const [id, value] of Object.entries(brazilToday))
-      expect(Math.abs(execution.values[id] - value), id).toBeLessThan(0.5);
   });
 });
 
@@ -137,20 +102,23 @@ describe("SG142 — decisões se propagam pela rede", () => {
     expect(after.pressao_hospitalar).toBeLessThan(before.pressao_hospitalar);
     expect(after.saude_populacao).toBeGreaterThan(before.saude_populacao);
     expect(after.produtividade).toBeGreaterThan(before.produtividade);
+    expect(after.pib).toBeGreaterThan(before.pib);
     expect(after.desemprego).toBeLessThan(before.desemprego);
   });
 
-  it("cortar a merenda: frequência cai já, capital humano e qualificação depois", () => {
-    const before = base();
+  it("cortar a merenda: a escolaridade (bolha lenta) cai devagar, ano após ano", () => {
+    const yearBase = play(4).execution.values;
+    const decadeBase = play(40).execution.values;
     const year = play(4, { "alimentacao-escolar": 0 }).execution.values;
     const decade = play(40, { "alimentacao-escolar": 0 }).execution.values;
-    expect(year.frequencia_escolar).toBeLessThan(before.frequencia_escolar - 5);
-    expect(before.capital_humano - year.capital_humano).toBeLessThan(
-      before.capital_humano - decade.capital_humano,
-    );
+    const lossYear = yearBase.escolaridade - year.escolaridade;
+    const lossDecade = decadeBase.escolaridade - decade.escolaridade;
+    expect(lossYear).toBeGreaterThan(0);
+    expect(lossDecade).toBeGreaterThan(lossYear * 3);
     expect(decade.qualificacao_trabalho).toBeLessThan(
-      before.qualificacao_trabalho - 1,
+      decadeBase.qualificacao_trabalho,
     );
+    expect(decade.pib).toBeLessThan(decadeBase.pib);
   });
 
   it("cortar a atenção básica ao mínimo faz a crise no atendimento nascer", () => {

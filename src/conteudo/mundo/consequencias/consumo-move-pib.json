@@ -1,12 +1,12 @@
 {
-  "id": "capital-produtivo-eleva-produtividade",
+  "id": "consumo-move-pib",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "capital_produtivo",
-  "alvo": "produtividade",
+  "origem": "consumo",
+  "alvo": "pib",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.425532,
+    "coeficiente": 0.3,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

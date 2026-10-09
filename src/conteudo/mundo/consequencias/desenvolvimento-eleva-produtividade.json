@@ -1,15 +1,15 @@
 {
-  "id": "renda-eleva-frequencia",
+  "id": "desenvolvimento-eleva-produtividade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "renda_familias",
-  "alvo": "frequencia_escolar",
+  "origem": "desenvolvimento",
+  "alvo": "produtividade",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.580683,
+    "coeficiente": 0.425532,
     "termoConstante": 0
   },
-  "unidade": "percentual_0_100",
+  "unidade": "indice_0_100",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"

@@ -1,12 +1,12 @@
 {
-  "id": "capital-humano-eleva-qualidade",
+  "id": "escolaridade-abre-oportunidades",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "capital_humano",
-  "alvo": "qualidade_educacao",
+  "origem": "escolaridade",
+  "alvo": "oportunidades_juvenis",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.5,
+    "coeficiente": 0.300267,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

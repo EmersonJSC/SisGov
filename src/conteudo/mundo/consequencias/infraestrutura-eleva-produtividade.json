@@ -1,12 +1,12 @@
 {
-  "id": "educacao-melhora-saude",
+  "id": "infraestrutura-eleva-produtividade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "capital_humano",
-  "alvo": "saude_populacao",
+  "origem": "infraestrutura",
+  "alvo": "produtividade",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.433437,
+    "coeficiente": 0.2,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

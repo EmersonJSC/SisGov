@@ -1,13 +1,13 @@
 {
-  "id": "capital-humano-se-desgasta",
+  "id": "merenda-eleva-escolaridade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "capital_humano",
-  "alvo": "capital_humano",
-  "mecanismo": "afim",
+  "origem": "recursos_alimentacao_escolar",
+  "alvo": "escolaridade",
+  "mecanismo": "saturacao",
   "parametros": {
-    "coeficiente": -0.02,
-    "termoConstante": 0
+    "maximo": 0.1,
+    "escala": 300
   },
   "unidade": "indice_0_100_por_passo",
   "atrasoPassos": 0,

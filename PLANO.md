@@ -277,14 +277,25 @@ máximo **uma** dependência aberta.
   declarado pelo país (D-41); cada nó com suas listas de positivos e
   negativos. Guias: [`rede-viva.md`](docs/arquitetura/rede-viva.md),
   [`mecanismos-da-rede.md`](docs/arquitetura/mecanismos-da-rede.md).
-- **Depende de:** SG154 · **Libera:** SG137.
+- **Depende de:** SG154 · **Libera:** SG155.
+
+#### SG155 — Mapa da rede por camadas · M
+- **Objetivo:** aplicar R-11 antes de criar as leis do SG137 a SG139.
+- **Tarefas:** pesquisa; documento `docs/conteudo/camadas.md` com camada 1
+  (pilares), camada 2 (o que deriva dela), camada 3…, até uma camada
+  aceitável; para cada bolha: o que já existe na rede, o que falta (leis,
+  sub-bolhas como estradas e ferrovias sob Infraestrutura) e de onde veio a
+  ideia; ordem em que as leis entram.
+- **Aceite:** o autor aprova o mapa; cada lei de SG137–SG139 aparece numa
+  camada com suas bolhas de entrada e de saída.
+- **Depende de:** SG142 · **Libera:** SG137.
 
 #### SG137 — Leis orçamentárias completas · M
 - **Tarefas:** modo `percentual_orcamento` (piso da saúde); Bolsa Família,
   preservativos, fiscalização ambiental, universidades; cada lei ligada à
   rede do SG142; agregados reduzidos no mesmo valor.
 - **Aceite:** piso a 15% gasta 15% da receita; orçamento total inalterado.
-- **Depende de:** SG142 · **Libera:** SG138.
+- **Depende de:** SG155 · **Libera:** SG138.
 
 #### SG138 — Leis regulatórias com opções · M
 - **Tarefas:** drogas, porte de armas, salário mínimo, câmeras corporais,
@@ -506,7 +517,7 @@ cumpre R-01 e R-02 por construção.
 
 ```text
 M0  SG100 → SG101 → SG102 → SG103                                    ✅
-M1  SG135 → SG153 → SG136 → SG141 → SG154 → SG142 → SG137 → SG138 → SG139 → SG143
+M1  SG135 → SG153 → SG136 → SG141 → SG154 → SG142 → SG155 → SG137 → SG138 → SG139 → SG143
     → SG104 → SG105 → SG106 → SG107 → SG108 → SG144
 M2  SG145 → SG128 → SG129 → SG146 → SG147 → SG130
 M3  SG148 → SG111 → SG112 → SG113 → SG114 → SG140 → SG122 → SG124
@@ -515,7 +526,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 45 chamados — 10 feitos + 35 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 46 chamados — 10 feitos + 36 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -567,6 +578,13 @@ referência, não prazo.
 - **R-10 Agente de IA.** Um chamado por sessão; ao fim, atualizar a seção 10 com
   arquivos, teste e resultado. Se o agente repetir a mesma correção duas vezes,
   parar e registrar o bloqueio.
+
+- **R-11 Leis novas por camadas.** Antes de escrever leis, fazer pesquisa e
+  montar o mapa por camadas: **camada 1** = pilares do país (ex.: PIB,
+  Constituição, alerta de crise financeira); **camada 2** = o que deriva da
+  camada 1; e assim por diante, recursivamente, até uma camada aceitável.
+  Cada camada lista as bolhas principais, o que deriva delas e o que deriva
+  das derivadas. Só então escrever os JSONs.
 
 ---
 
@@ -640,8 +658,9 @@ referência, não prazo.
 | D-41 | **Tudo é bolha**; o tipo muda: **lei** (valor próprio; recebe influência na eficácia e no apoio), **índice** e **situação** (sem valor próprio nem base, só o resultado do que recebe), **estoque** (acumula; país declara o inicial), **evento**, **grupo social**. O país não declara valor de índice | 09/out | alinhamento com o autor |
 | D-42 | Ordem do mês: leis leem as bolhas do mês anterior, depois as bolhas são calculadas em cadeia; ciclo só entre bolhas usa o mês anterior em um elo. A influência de bolha sobre lei chega no mês seguinte | 09/out | decisão técnica (este plano) |
 | D-43 | Toda bolha tem intensidade: lei pelo valor financeiro ou influência; índice pelo valor; situação pisca e cresce conforme a gravidade | 09/out | alinhamento com o autor |
-| D-44 | A rede do mundo é calibrada para que o Brasil de hoje (hipótese) seja um ponto de equilíbrio. Raízes visíveis: as leis e dois estoques declarados pelo país (capital humano e capital produtivo). Nenhuma ligação tem termo constante. Rede: [`docs/conteudo/rede.md`](docs/conteudo/rede.md), gerada por `scripts/rede/rede.py` | 09/out | SG142 |
+| D-44 | **Os JSONs do mundo são a única fonte da rede.** Não há calibragem automática: cada força é escolhida uma a uma, e a rede fica desequilibrada enquanto faltam leis. Ferramentas só leem os JSONs: `npm run rede:documento` (gera [`docs/conteudo/rede.md`](docs/conteudo/rede.md)) e `npm run rede:simular` (cenários). Equilibrar para o jogador é trabalho do M7 | 09/out | alinhamento com o autor |
 | D-45 | O turno 0 é o país já funcionando: o motor repete o cálculo inicial (sem acumular estoques) até leis e bolhas se acomodarem | 09/out | SG142 (técnica) |
+| D-46 | Bolhas lentas (acumulam ao longo de anos; o país declara o ponto de partida): **Escolaridade** (geral, sem separar adulto e criança), **Desenvolvimento** e **Infraestrutura** (será subdividida em estradas, ferrovias, mineração… quando vierem as leis). **PIB** é uma bolha da rede | 09/out | alinhamento com o autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -664,7 +683,8 @@ data, commit e teste.
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
 - [x] SG154 Leis e bolhas no motor — 09/out · `9926528` · check verde, 237 testes / 55 arquivos; `livingNetwork.test.ts`
-- [x] SG142 Rede de indicadores do Brasil — 09/out · `0095f6e` · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
+- [x] SG142 Rede de indicadores do Brasil — 09/out · `0095f6e` + revisão (escolaridade, desenvolvimento, infraestrutura, PIB; JSON como fonte única) · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
+- [ ] SG155 Mapa da rede por camadas
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções
 - [ ] SG139 Leis tributárias

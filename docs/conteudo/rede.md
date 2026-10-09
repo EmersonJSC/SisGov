@@ -1,199 +1,190 @@
 # A rede do mundo — bolha por bolha
 
-**Estado:** SG142 (9/out/2026). Gerado por `scripts/rede/rede.py` a partir da
-definição da rede; não edite à mão — edite o gerador e rode-o de novo.
+**Gerado** por `npm run rede:documento` a partir dos JSONs em
+`src/conteudo/mundo/`. Não edite este arquivo: edite os JSONs e gere de novo.
 
-A rede é do **mundo** (vale para todos os países, D-39). Os números das
-ligações foram **calibrados** para que o Brasil de hoje (hipótese, coluna
-"Brasil hoje") seja um ponto de equilíbrio: sem mudar nenhuma lei, o país
-fica onde está; mudando, a mudança se propaga. Todos os valores são
-hipóteses a refinar jogando.
+A rede é do **mundo** (vale para todos os países, D-39). As forças das
+ligações são hipóteses escolhidas uma a uma; **não há calibragem
+automática**: enquanto faltam leis, a rede fica desequilibrada de propósito.
+O equilíbrio para o jogador é trabalho do balanceamento (M7), com
+`npm run rede:simular`.
 
-Leitura: "falta de X" é o quanto X está abaixo do máximo da escala (ex.:
-falta de cobertura = 100 − cobertura). Não existe valor-base escondido: cada
-bolha é só o que está listado como positivo e negativo (D-40).
+Leitura: "falta de X" é o quanto X está abaixo do máximo da escala. Não
+existe valor-base escondido: cada bolha é só o que está listado (D-40).
+**Bolhas lentas** acumulam ao longo do tempo; o país declara só o ponto de
+partida delas.
 
-As **raízes** da rede são as leis (com nível) e dois **estoques** que o país
-declara e que mudam devagar: capital humano (escolaridade acumulada) e
-capital produtivo (máquinas e infraestrutura).
+### Escolaridade (bolha lenta) — Brasil no turno 0: 45
 
-### Capital humano — Brasil hoje: 45
+- **Positivo ←** Lei: Alimentação escolar (saturacao), Capacidade do Estado, Renda das famílias
+- **Negativo ←** desgaste natural (por trimestre), Pobreza
 
-- **Positivo ←** Frequência escolar, Qualidade da educação
-- **Negativo ←** desgaste natural (por trimestre)
-
-### Capital produtivo — Brasil hoje: 50
+### Desenvolvimento (bolha lenta) — Brasil no turno 0: 50
 
 - **Positivo ←** Investimento
 - **Negativo ←** desgaste natural (por trimestre)
 
-### Cobertura da atenção básica — Brasil hoje: 72
+### Infraestrutura (bolha lenta) — Brasil no turno 0: 45
 
-- **Positivo ←** Lei: atencao-basica (retornos decrescentes)
+- **Positivo ←** Investimento
+- **Negativo ←** desgaste natural (por trimestre)
+
+### PIB (índice) — Brasil no turno 0: 61.11
+
+- **Positivo ←** Consumo das famílias, Infraestrutura, Investimento — 1 trimestre(s) de atraso, Produtividade
 - **Negativo ←** —
 
-### Pressão hospitalar — Brasil hoje: 54
+### Cobertura da atenção básica (índice) — Brasil no turno 0: 72.15
 
-- **Positivo ←** falta de cobertura da atenção básica (limiar), Violência letal, Pobreza
+- **Positivo ←** Lei: Atenção básica de saúde (retornos decrescentes)
 - **Negativo ←** —
 
-### Saúde da população — Brasil hoje: 60
+### Pressão hospitalar (índice) — Brasil no turno 0: 52.48
 
-- **Positivo ←** Cobertura da atenção básica, Renda das famílias, Capital humano
-- **Negativo ←** Crise no atendimento, Pressão hospitalar, Pobreza
-
-### Frequência escolar — Brasil hoje: 75
-
-- **Positivo ←** Lei: alimentacao-escolar (saturacao), Capital humano, Renda das famílias
-- **Negativo ←** Pobreza
-
-### Qualidade da educação — Brasil hoje: 40
-
-- **Positivo ←** Capital humano, Frequência escolar, Capacidade do Estado
+- **Positivo ←** falta de cobertura da atenção básica (limiar), Pobreza, Violência letal
 - **Negativo ←** —
 
-### Participação no trabalho de quem cuida — Brasil hoje: 62
+### Saúde da população (índice) — Brasil no turno 0: 61.82
 
-- **Positivo ←** Lei: creches-publicas (retornos decrescentes), falta de desemprego (limiar)
+- **Positivo ←** Cobertura da atenção básica, Escolaridade, Renda das famílias
+- **Negativo ←** Crise no atendimento, Pobreza, Pressão hospitalar
+
+### Participação no trabalho de quem cuida (índice) — Brasil no turno 0: 62.53
+
+- **Positivo ←** Lei: Expansão de creches públicas (retornos decrescentes), falta de desemprego (limiar)
 - **Negativo ←** —
 
-### Oportunidades para jovens — Brasil hoje: 45
+### Oportunidades para jovens (índice) — Brasil no turno 0: 37.54
 
-- **Positivo ←** Frequência escolar, Qualificação do trabalho, Atividade econômica, Participação no trabalho de quem cuida
+- **Positivo ←** Escolaridade, Participação no trabalho de quem cuida, PIB, Qualificação do trabalho
 - **Negativo ←** —
 
-### Qualificação do trabalho — Brasil hoje: 50
+### Qualificação do trabalho (índice) — Brasil no turno 0: 49.18
 
-- **Positivo ←** Capital humano, Oportunidades para jovens
+- **Positivo ←** Escolaridade, Oportunidades para jovens
 - **Negativo ←** —
 
-### Produtividade — Brasil hoje: 50
+### Produtividade (índice) — Brasil no turno 0: 58.97
 
-- **Positivo ←** Qualificação do trabalho, Capital produtivo, Saúde da população
+- **Positivo ←** Desenvolvimento, Infraestrutura, Qualificação do trabalho, Saúde da população
 - **Negativo ←** Corrupção
 
-### Atividade econômica — Brasil hoje: 50
+### Investimento (índice) — Brasil no turno 0: 45.23
 
-- **Positivo ←** Produtividade, Consumo das famílias, Investimento — 1 trimestre de atraso
-- **Negativo ←** —
-
-### Investimento — Brasil hoje: 40
-
-- **Positivo ←** Confiança empresarial, Atividade econômica
+- **Positivo ←** Confiança empresarial, PIB
 - **Negativo ←** Onda de violência
 
-### Confiança empresarial — Brasil hoje: 50
+### Confiança empresarial (índice) — Brasil no turno 0: 53.8
 
-- **Positivo ←** Sensação de segurança, falta de corrupção (limiar), Atividade econômica
+- **Positivo ←** falta de corrupção (limiar), PIB, Sensação de segurança
 - **Negativo ←** Recessão
 
-### Desemprego — Brasil hoje: 9
+### Desemprego (índice) — Brasil no turno 0: 7.72
 
-- **Positivo ←** falta de atividade econômica (limiar), falta de qualificação do trabalho (limiar)
+- **Positivo ←** falta de pib (limiar), falta de qualificação do trabalho (limiar)
 - **Negativo ←** —
 
-### Renda das famílias — Brasil hoje: 50
+### Renda das famílias (índice) — Brasil no turno 0: 53.17
 
-- **Positivo ←** falta de desemprego (limiar), Produtividade, Participação no trabalho de quem cuida
+- **Positivo ←** falta de desemprego (limiar), Participação no trabalho de quem cuida, Produtividade
 - **Negativo ←** —
 
-### Consumo das famílias — Brasil hoje: 50
+### Consumo das famílias (índice) — Brasil no turno 0: 52.71
 
-- **Positivo ←** Renda das famílias, Confiança nas instituições
+- **Positivo ←** Confiança nas instituições, Renda das famílias
 - **Negativo ←** Recessão
 
-### Pobreza — Brasil hoje: 30
+### Pobreza (índice) — Brasil no turno 0: 27.68
 
-- **Positivo ←** falta de renda das famílias (limiar), Desemprego
+- **Positivo ←** Desemprego, falta de renda das famílias (limiar)
 - **Negativo ←** —
 
-### Desigualdade — Brasil hoje: 55
+### Desigualdade (índice) — Brasil no turno 0: 52.8
 
-- **Positivo ←** Pobreza, falta de qualificação do trabalho (limiar)
+- **Positivo ←** falta de qualificação do trabalho (limiar), Pobreza
 - **Negativo ←** —
 
-### Violência letal — Brasil hoje: 21
+### Violência letal (índice) — Brasil no turno 0: 20.45
 
-- **Positivo ←** Pobreza, Desigualdade, Crime organizado, falta de oportunidades para jovens (limiar)
-- **Negativo ←** Lei: prevencao-seguranca (saturacao) — 1 trimestre de atraso
+- **Positivo ←** Crime organizado, Desigualdade, falta de oportunidades para jovens (limiar), Pobreza
+- **Negativo ←** Lei: Prevenção e cooperação em segurança (saturacao) — 1 trimestre(s) de atraso
 
-### Crime organizado — Brasil hoje: 40
+### Crime organizado (índice) — Brasil no turno 0: 41.36
 
-- **Positivo ←** Corrupção, falta de oportunidades para jovens (limiar), Desigualdade
-- **Negativo ←** Lei: prevencao-seguranca (saturacao) — 1 trimestre de atraso
+- **Positivo ←** Corrupção, Desigualdade, falta de oportunidades para jovens (limiar)
+- **Negativo ←** Lei: Prevenção e cooperação em segurança (saturacao) — 1 trimestre(s) de atraso
 
-### Proteção efetiva às mulheres — Brasil hoje: 42
+### Proteção efetiva às mulheres (índice) — Brasil no turno 0: 42.03
 
-- **Positivo ←** Lei: protecao-mulheres (retornos decrescentes), Capacidade do Estado
+- **Positivo ←** Lei: Rede de proteção às mulheres (retornos decrescentes), Capacidade do Estado
 - **Negativo ←** —
 
-### Sensação de segurança — Brasil hoje: 40
+### Sensação de segurança (índice) — Brasil no turno 0: 40.54
 
-- **Positivo ←** falta de violência letal (limiar) — 1 trimestre de atraso, Proteção efetiva às mulheres
+- **Positivo ←** falta de violência letal (limiar) — 1 trimestre(s) de atraso, Proteção efetiva às mulheres
 - **Negativo ←** Onda de violência
 
-### Corrupção — Brasil hoje: 40
+### Corrupção (índice) — Brasil no turno 0: 39.42
 
-- **Positivo ←** falta de capacidade do estado (limiar), Desigualdade
+- **Positivo ←** Desigualdade, falta de capacidade do estado (limiar)
 - **Negativo ←** —
 
-### Capacidade do Estado — Brasil hoje: 50
+### Capacidade do Estado (índice) — Brasil no turno 0: 49.88
 
-- **Positivo ←** Qualificação do trabalho, Confiança nas instituições
+- **Positivo ←** Confiança nas instituições, Qualificação do trabalho
 - **Negativo ←** —
 
-### Confiança nas instituições — Brasil hoje: 45
+### Confiança nas instituições (índice) — Brasil no turno 0: 45.59
 
-- **Positivo ←** falta de corrupção (limiar), Sensação de segurança, Saúde da população
+- **Positivo ←** falta de corrupção (limiar), Saúde da população, Sensação de segurança
 - **Negativo ←** —
 
-### Crise no atendimento — Brasil hoje: 0
+### Crise no atendimento (situação) — Brasil no turno 0: 0
 
 - **Positivo ←** Pressão hospitalar
 - **Negativo ←** —
 
-### Onda de violência — Brasil hoje: 0
+### Onda de violência (situação) — Brasil no turno 0: 0
 
 - **Positivo ←** Violência letal
 - **Negativo ←** —
 
-### Recessão — Brasil hoje: 0
+### Recessão (situação) — Brasil no turno 0: 0
 
 - **Positivo ←** Desemprego
 - **Negativo ←** —
 
-### Eficácia da lei atencao-basica
-
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Crise no atendimento, Corrupção
-
-### Eficácia da lei protecao-mulheres
+### Eficácia — Alimentação escolar (lei) — Brasil no turno 0: 0.9
 
 - **Positivo ←** Capacidade do Estado
 - **Negativo ←** Corrupção
 
-### Eficácia da lei prevencao-seguranca
+### Eficácia — Atenção básica de saúde (lei) — Brasil no turno 0: 0.9
 
 - **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
+- **Negativo ←** Corrupção, Crise no atendimento
 
-### Eficácia da lei alimentacao-escolar
-
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
-
-### Eficácia da lei creches-publicas
-
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
-
-### Apoio à lei atencao-basica
+### Apoio — Atenção básica de saúde (lei) — Brasil no turno 0: 0
 
 - **Positivo ←** Crise no atendimento
 - **Negativo ←** —
 
-### Apoio à lei prevencao-seguranca
+### Eficácia — Expansão de creches públicas (lei) — Brasil no turno 0: 0.9
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Prevenção e cooperação em segurança (lei) — Brasil no turno 0: 0.9
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Apoio — Prevenção e cooperação em segurança (lei) — Brasil no turno 0: 0
 
 - **Positivo ←** Onda de violência
 - **Negativo ←** —
 
+### Eficácia — Rede de proteção às mulheres (lei) — Brasil no turno 0: 0.9
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção

@@ -1,12 +1,12 @@
 {
-  "id": "estado-eleva-qualidade",
+  "id": "pib-anima-empresas",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "capacidade_estatal",
-  "alvo": "qualidade_educacao",
+  "origem": "pib",
+  "alvo": "confianca_empresarial",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.05,
+    "coeficiente": 0.306122,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

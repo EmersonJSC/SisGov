@@ -28,7 +28,7 @@ bolha tem **valor próprio**:
 | **Lei** | Sim | Nível ou opção (país no início, jogador depois); recebe influência na **eficácia** e no **apoio**; entrega nível × eficácia | Verba para saúde, Lei de drogas |
 | **Índice** | Não | Só do que recebe | Saúde, Desemprego, Corrupção |
 | **Situação** | Não | Só do que recebe; existe acima de um ponto; pisca e cresce | Crise no atendimento |
-| **Estoque** | Sim (o país declara o inicial) | Acumula o que recebe ao longo do tempo | Capital humano, Dívida |
+| **Bolha lenta** (estoque) | Sim (o país declara o ponto de partida) | Acumula o que recebe ao longo de anos; se desgasta devagar | Escolaridade, Desenvolvimento, Infraestrutura, Dívida |
 | **Evento** | — | Acontece num momento e dispara efeitos | Epidemia |
 | **Grupo social** (SG143) | Não | Satisfação, só do que recebe | Trabalhadores |
 

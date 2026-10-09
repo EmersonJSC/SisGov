@@ -117,7 +117,7 @@ describe("SG055 — cenários de referência", () => {
     }
 
     expect(execution.values.recursos_alimentacao_escolar).toBeGreaterThan(300);
-    // A cadeia alimentação → frequência → oportunidades já anda no mesmo mês.
-    expect(execution.values.frequencia_escolar).toBeGreaterThan(0);
+    // A merenda alimenta a escolaridade, uma bolha lenta.
+    expect(execution.values.escolaridade).toBeGreaterThan(0);
   });
 });

@@ -1,12 +1,12 @@
 {
-  "id": "investimento-forma-capital",
+  "id": "investimento-constroi-infraestrutura",
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "investimento",
-  "alvo": "capital_produtivo",
+  "alvo": "infraestrutura",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.025,
+    "coeficiente": 0.012,
     "termoConstante": 0
   },
   "unidade": "indice_0_100_por_passo",

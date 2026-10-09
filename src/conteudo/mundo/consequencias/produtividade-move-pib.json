@@ -1,9 +1,9 @@
 {
-  "id": "produtividade-move-atividade",
+  "id": "produtividade-move-pib",
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "produtividade",
-  "alvo": "atividade_economica",
+  "alvo": "pib",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.5,

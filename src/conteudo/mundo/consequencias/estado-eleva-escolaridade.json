@@ -1,12 +1,12 @@
 {
-  "id": "frequencia-forma-capital-humano",
+  "id": "estado-eleva-escolaridade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "frequencia_escolar",
-  "alvo": "capital_humano",
+  "origem": "capacidade_estatal",
+  "alvo": "escolaridade",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.00668144,
+    "coeficiente": 0.003,
     "termoConstante": 0
   },
   "unidade": "indice_0_100_por_passo",

@@ -254,7 +254,7 @@
         "id": "frequencia-jovens",
         "origem": {
           "tipo": "indicador",
-          "id": "frequencia_escolar",
+          "id": "escolaridade",
           "referencia": 100
         },
         "grupo": "jovens",
@@ -274,7 +274,8 @@
     "recursos_prevencao_seguranca": 600,
     "recursos_alimentacao_escolar": 300,
     "recursos_creches_publicas": 500,
-    "capital_humano": 45,
-    "capital_produtivo": 50
+    "escolaridade": 45,
+    "desenvolvimento": 50,
+    "infraestrutura": 45
   }
 }

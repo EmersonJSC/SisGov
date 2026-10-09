@@ -20,7 +20,7 @@
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": ["merenda-eleva-frequencia"],
+  "consequencias": ["merenda-eleva-escolaridade"],
   "respostaTemporal": {
     "implantacao": 0.32,
     "degradacao": 0.2

@@ -1,12 +1,12 @@
 {
-  "id": "frequencia-abre-oportunidades",
+  "id": "escolaridade-melhora-saude",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "frequencia_escolar",
-  "alvo": "oportunidades_juvenis",
+  "origem": "escolaridade",
+  "alvo": "saude_populacao",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.300267,
+    "coeficiente": 0.433437,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

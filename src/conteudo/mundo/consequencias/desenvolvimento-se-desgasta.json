@@ -1,15 +1,15 @@
 {
-  "id": "atividade-abre-oportunidades",
+  "id": "desenvolvimento-se-desgasta",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "atividade_economica",
-  "alvo": "oportunidades_juvenis",
+  "origem": "desenvolvimento",
+  "alvo": "desenvolvimento",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.150133,
+    "coeficiente": -0.02,
     "termoConstante": 0
   },
-  "unidade": "indice_0_100",
+  "unidade": "indice_0_100_por_passo",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"

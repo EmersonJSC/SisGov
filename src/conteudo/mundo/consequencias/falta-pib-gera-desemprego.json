@@ -1,8 +1,8 @@
 {
-  "id": "falta-atividade-gera-desemprego",
+  "id": "falta-pib-gera-desemprego",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "atividade_economica",
+  "origem": "pib",
   "alvo": "desemprego",
   "mecanismo": "limiar",
   "parametros": {

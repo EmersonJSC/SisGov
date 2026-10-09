@@ -59,9 +59,9 @@
       "area": "Educação e Cuidados"
     },
     {
-      "id": "capital_humano",
+      "id": "escolaridade",
       "tipo": "estoque",
-      "nome": "Capital humano",
+      "nome": "Escolaridade",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -71,9 +71,33 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "capital_produtivo",
+      "id": "desenvolvimento",
       "tipo": "estoque",
-      "nome": "Capital produtivo",
+      "nome": "Desenvolvimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "infraestrutura",
+      "tipo": "estoque",
+      "nome": "Infraestrutura",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "pib",
+      "tipo": "calculado",
+      "nome": "PIB",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -119,30 +143,6 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "frequencia_escolar",
-      "tipo": "calculado",
-      "nome": "Frequência escolar",
-      "unidade": "percentual_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Educação",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "qualidade_educacao",
-      "tipo": "calculado",
-      "nome": "Qualidade da educação",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Educação",
-      "avaliacao": "maior_melhor"
-    },
-    {
       "id": "participacao_trabalho_cuidadoras",
       "tipo": "calculado",
       "nome": "Participação no trabalho de quem cuida",
@@ -182,18 +182,6 @@
       "id": "produtividade",
       "tipo": "calculado",
       "nome": "Produtividade",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "atividade_economica",
-      "tipo": "calculado",
-      "nome": "Atividade econômica",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,

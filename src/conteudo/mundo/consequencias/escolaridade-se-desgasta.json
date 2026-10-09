@@ -1,15 +1,15 @@
 {
-  "id": "consumo-move-atividade",
+  "id": "escolaridade-se-desgasta",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "consumo",
-  "alvo": "atividade_economica",
+  "origem": "escolaridade",
+  "alvo": "escolaridade",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.3,
+    "coeficiente": -0.01,
     "termoConstante": 0
   },
-  "unidade": "indice_0_100",
+  "unidade": "indice_0_100_por_passo",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
