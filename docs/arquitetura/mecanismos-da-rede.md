@@ -19,7 +19,7 @@ mecanismo. O mecanismo diz quanto a origem contribui para o alvo a cada passo.
 - `escala` é sempre > 0. Um `maximo` ou `coeficiente` negativo faz o efeito
   reduzir o alvo.
 
-## Normalização (D-40)
+## Normalização (razão entre nós)
 
 Qualquer consequência pode ler a origem como razão antes do mecanismo:
 
@@ -27,9 +27,9 @@ Qualquer consequência pode ler a origem como razão antes do mecanismo:
 "normalizacao": { "divisor": "pib", "multiplicador": 100 }
 ```
 
-A entrada vira `origem ÷ divisor × multiplicador`. Com o PIB como divisor e
-multiplicador 100, o mecanismo recebe o **gasto em % do PIB**: "1% do PIB em
-educação" tem a mesma força em qualquer país. O divisor precisa ter domínio
+A entrada vira `origem ÷ divisor × multiplicador` (ex.: gasto por habitante,
+participação de um gasto no total). É uma ferramenta opcional, não uma regra:
+o PIB importa e país rico gasta mais. O divisor precisa ter domínio
 com mínimo > 0, e origem e divisor são lidos do mesmo retrato (mesmo atraso).
 
 ## Explicação

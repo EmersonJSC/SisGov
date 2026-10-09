@@ -248,6 +248,19 @@ máximo **uma** dependência aberta.
   desconhecido é recusada; mecanismos antigos inalterados.
 - **Depende de:** SG136 · **Libera:** SG142.
 
+#### SG154 — Leis e bolhas no motor · M
+- **Objetivo:** aplicar D-40 a D-43 no motor.
+- **Tarefas:** tipos de nó lei / índice / situação; índices e situações sem
+  valor inicial nem base (valor = resultado das influências); influência
+  sobre lei com alvo `eficacia` ou `apoio`; efeito da lei = nível × eficácia;
+  ordem do mês (D-42) com detecção de ciclo entre bolhas; situação com
+  limiar de surgimento e intensidade; intensidade de cada nó no resultado do
+  passo; explicação de cada elo; país deixa de declarar valores de índice.
+- **Aceite:** o exemplo de `rede-viva.md` roda em teste (crise nasce, pede
+  mais verba, reduz a eficácia e some quando a verba sobe); pacote com valor
+  declarado para índice é recusado; mesma entrada → mesmo resultado.
+- **Depende de:** SG141 · **Libera:** SG142.
+
 #### SG142 — Rede de indicadores do Brasil · M
 - **Objetivo:** o coração do jogo: ~35 indicadores em camadas (social,
   econômica, fiscal, institucional) ligados por cadeias causais.
@@ -256,10 +269,11 @@ máximo **uma** dependência aberta.
   arrecadação; saúde → produtividade; violência → investimento; com atrasos e
   os mecanismos do SG141; documento curto com o mapa das cadeias.
 - **Aceite:** nenhum indicador isolado; cada indicador tem ao menos uma origem
-  e um destino; teste de 20 turnos sem valor inválido; efeitos de dinheiro
-  lidos em % do PIB (nó `pib` + normalização, D-40). Guia:
-  [`docs/arquitetura/mecanismos-da-rede.md`](docs/arquitetura/mecanismos-da-rede.md).
-- **Depende de:** SG141 · **Libera:** SG137.
+  e um destino; teste de 20 turnos sem valor inválido; nenhum valor de índice
+  declarado pelo país (D-41); cada nó com suas listas de positivos e
+  negativos. Guias: [`rede-viva.md`](docs/arquitetura/rede-viva.md),
+  [`mecanismos-da-rede.md`](docs/arquitetura/mecanismos-da-rede.md).
+- **Depende de:** SG154 · **Libera:** SG137.
 
 #### SG137 — Leis orçamentárias completas · M
 - **Tarefas:** modo `percentual_orcamento` (piso da saúde); Bolsa Família,
@@ -488,7 +502,7 @@ cumpre R-01 e R-02 por construção.
 
 ```text
 M0  SG100 → SG101 → SG102 → SG103                                    ✅
-M1  SG135 → SG153 → SG136 → SG141 → SG142 → SG137 → SG138 → SG139 → SG143
+M1  SG135 → SG153 → SG136 → SG141 → SG154 → SG142 → SG137 → SG138 → SG139 → SG143
     → SG104 → SG105 → SG106 → SG107 → SG108 → SG144
 M2  SG145 → SG128 → SG129 → SG146 → SG147 → SG130
 M3  SG148 → SG111 → SG112 → SG113 → SG114 → SG140 → SG122 → SG124
@@ -497,7 +511,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 44 chamados — 8 feitos + 36 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 45 chamados — 8 feitos + 37 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -570,6 +584,7 @@ referência, não prazo.
 | B-12 | Migração física de pastas (`engine` → `simulation`) | Só com fronteiras provadas; sem valor jogável agora |
 | B-13 | Editor de conteúdo, contas, nuvem | Fora do escopo |
 | B-14 | ~~Laboratório de 100+ políticas~~ | Será apagado no SG145 (D-33) |
+| B-16 | IA para animar a rede viva | Ideia do autor (9/out); fora do escopo atual |
 | B-15 | Senado por UF: cadeiras, vencimentos, renovação 2/1, apuração por UF (antigos SG110, SG123) | Fora do MVP pelo alinhamento D-30; código existente preservado |
 
 ---
@@ -617,7 +632,10 @@ referência, não prazo.
 | D-37 | Senado por UF (D-08) sai do MVP; no MVP o Senado é total por partido | 09/out | consequência de D-30 |
 | D-38 | **Mundo × país.** Leis, indicadores, consequências, eventos, situações e grupos são do mundo (valem para todos). Um país é só um pacote inicial: leis vigentes e níveis, valores iniciais, limites próprios, moeda, economia, perfis e partidos | 09/out | alinhamento com o autor |
 | D-39 | As consequências são universais e determinísticas: mesma força em todo país, sem ajuste por país. Diferenças entre países vêm do estado inicial dos nós (ex.: fentanil existe no mundo, alto nos EUA e zero no Brasil). Tudo que tem peso está na rede | 09/out | alinhamento com o autor |
-| D-40 | Consequência de D-39: na rede, efeitos de dinheiro são lidos em **% do PIB** (ou por habitante), não em moeda absoluta — "1% do PIB em educação" tem a mesma força em qualquer país. Mecanismo de normalização pronto (SG141); aplicar no conteúdo no SG142 | 09/out | este plano (derivada de D-39; confirmar) |
+| D-40 | **Não existe número escondido.** Tudo que afeta um valor é um nó visível (lei, evento, situação, índice), explicado recursivamente pelos nós que o afetam. (Substitui a leitura anterior de "% do PIB": o PIB importa e país rico gasta mais.) Modelo: [`rede-viva.md`](docs/arquitetura/rede-viva.md) | 09/out | alinhamento com o autor |
+| D-41 | Dois tipos de nó: **lei** (valor próprio; recebe influência na eficácia e no apoio) e **bolha** (índice ou situação: sem valor inicial nem base, só o resultado do que recebe). O país não declara valor de índice | 09/out | alinhamento com o autor |
+| D-42 | Ordem do mês: leis leem as bolhas do mês anterior, depois as bolhas são calculadas em cadeia; ciclo só entre bolhas usa o mês anterior em um elo. A influência de bolha sobre lei chega no mês seguinte | 09/out | decisão técnica (este plano) |
+| D-43 | Toda bolha tem intensidade: lei pelo valor financeiro ou influência; índice pelo valor; situação pisca e cresce conforme a gravidade | 09/out | alinhamento com o autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -639,6 +657,7 @@ data, commit e teste.
 - [x] SG153 Mundo e país separados — 09/out · `ab160f7` · check verde, 213 testes / 53 arquivos; `worldAndCountry.test.ts`
 - [x] SG136 Ficha do país v2: economia e orçamento completo — 09/out · `2533c33` · check verde, 215 testes / 53 arquivos; `prepareGameQuarter.test.ts` (SG136), `preparePolicyFiscalFlows.test.ts`
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
+- [ ] SG154 Leis e bolhas no motor
 - [ ] SG142 Rede de indicadores do Brasil
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções
