@@ -190,6 +190,68 @@ máximo **uma** dependência aberta.
 
 ---
 
+### M0B — Catálogo de leis v2 (inserido em 9/out por decisão do autor)
+
+> **Valor:** leis organizadas em quatro grupos, sem quantidades no JSON da lei,
+> e o Brasil com um orçamento completo em proporções plausíveis — o gasto de
+> cada lei visível. Especificação:
+> [`docs/arquitetura/catalogo-de-leis-v2.md`](docs/arquitetura/catalogo-de-leis-v2.md).
+
+#### SG135 — Formato de lei v2 e catálogo comum · M
+- **Objetivo:** esquema v2 com `grupo` (orçamentária, regulatória, tributária,
+  institucional) e sem quantidades; leis fora da pasta do Brasil.
+- **Tarefas:** tipos e validação dos quatro grupos (regulatória com ≥ 3 opções;
+  campo de quantidade na lei é recusado); mover as leis para o catálogo comum;
+  migrar as 5 leis atuais para `orcamentaria` / `valor_fixo`; país declara
+  `leisVigentes` com o nível; adaptador do SG102 lê o formato novo.
+- **Aceite:** as 5 leis carregam sem valor do Brasil no JSON da lei; lei com
+  quantidade ou regulatória com 2 opções é recusada com arquivo/campo.
+- **Testar:** `validateContentFile.test.ts`, `policyRulesFromContent.test.ts`.
+- **Depende de:** — (M0 fechado) · **Libera:** SG136, SG140.
+
+#### SG136 — Ficha do país v2: economia e orçamento completo · M
+- **Objetivo:** substituir a ficha do SG103 pelo orçamento proporcional da
+  especificação (PIB, receitas e despesas agregadas, juros, dívida, caixa).
+- **Tarefas:** `economia.pibAnual`; `fiscal.agregados` de receita e despesa;
+  limites próprios do país; fluxo fiscal soma leis + agregados; custo da lei
+  orçamentária de valor fixo = nível ÷ 12.
+- **Aceite:** um turno do Brasil mostra receita, gasto por lei e por agregado,
+  primário ≈ −50/ano e nominal ≈ −950/ano; nenhum valor contado duas vezes.
+- **Testar:** `prepareGameQuarter.test.ts`, `preparePolicyFiscalFlows.test.ts`.
+- **Depende de:** SG135 · **Libera:** SG137, SG138, SG139, M1.
+
+#### SG137 — Orçamentárias: % do orçamento e novas leis · M
+- **Tarefas:** modo `percentual_orcamento` (piso da saúde); novas leis de valor
+  fixo: Bolsa Família, preservativos, fiscalização ambiental, universidades;
+  cada uma com ao menos uma consequência (hipótese marcada); agregados
+  reduzidos no mesmo valor.
+- **Aceite:** piso a 15% gasta 15% da receita do mês; mudar a receita muda o
+  gasto do piso; orçamento total do Brasil inalterado após a migração.
+- **Depende de:** SG136 · **Libera:** —.
+
+#### SG138 — Regulatórias com opções · M
+- **Tarefas:** drogas, porte de armas, salário mínimo, câmeras corporais,
+  escola em tempo integral; custo por opção relativo ao PIB; opção → número no
+  grafo; consequências e grupos afetados (hipótese).
+- **Aceite:** trocar de opção muda custo e consequências; opção inexistente é
+  recusada; nenhuma lei com menos de 3 opções.
+- **Depende de:** SG136 · **Libera:** —.
+
+#### SG139 — Tributárias · P
+- **Tarefas:** imposto de renda e sobre consumo; base = variável do país;
+  receita = alíquota × base; agregado "impostos não modelados" reduzido.
+- **Aceite:** subir a alíquota aumenta a receita na proporção da base; receita
+  total do Brasil inalterada após a migração.
+- **Depende de:** SG136 · **Libera:** —.
+
+#### SG140 — Institucionais · P
+- **Tarefas:** leis eleitorais do catálogo passam a `grupo: "institucional"`
+  sem mudar o mecanismo.
+- **Aceite:** eleições continuam passando nos testes existentes.
+- **Depende de:** SG135 · **Libera:** —.
+
+---
+
 ### M1 — Turno real da partida
 
 > **Valor:** "Próximo turno" no Brasil real move implantação, motor, finanças e
@@ -209,7 +271,7 @@ máximo **uma** dependência aberta.
   `revocationEpsilon`.
 - **Testar:** `advancePolicyImplementation.test.ts` (convergência, revogação,
   equivalência trimestral).
-- **Depende de:** — (M0 fechado) · **Libera:** SG105.
+- **Depende de:** — (M0B fechado) · **Libera:** SG105.
 
 #### SG105 — Fiscal no turno real · P
 - **Objetivo:** contas mensais do Brasil, com emissão e juros, dentro do turno.
@@ -269,7 +331,7 @@ máximo **uma** dependência aberta.
   `src/ui/FiscalQuarterPanel.tsx`, `src/application/gameSession.ts` (novo,
   estado React da sessão).
 - **Aceite:** abrir o jogo, avançar 4 turnos, ver turno, caixa, dívida e diário
-  mudarem; nenhum componente chama `advanceExecution` diretamente.
+  mudarem; gasto ou receita de cada lei visível por ano e por mês (D-28); nenhum componente chama `advanceExecution` diretamente.
 - **Testar:** manual (roteiro de 5 passos no PR) + `grep` de imports na revisão.
 - **Depende de:** SG108 · **Libera:** M5 (pode correr em paralelo a M2–M4).
 
@@ -586,6 +648,9 @@ máximo **uma** dependência aberta.
 M0  SG100 ──┬─▶ SG102 ─────────────────────────────┐
             └─▶ SG103                               │   SG101 (independente)
                                                     ▼
+M0B SG135 ─▶ SG136 ─┬─▶ SG137    SG135 ─▶ SG140
+                    ├─▶ SG138
+                    └─▶ SG139
 M1  SG104 ─▶ SG105 ─▶ SG106 ─▶ SG107 ─▶ SG108 ─▶ SG109 ──────────┐
                                           │                       ▼
 M2  SG110 ─▶ SG112 ─▶ SG113 ─▶ SG114 ─▶ SG115     M5  SG128 ─▶ SG129 ─▶ SG130
@@ -639,8 +704,8 @@ M6  SG131 ─▶ SG132 ─▶ SG133 ─▶ SG134 (MVP)
 | SG133 | SG132 | SG134 |
 | SG134 | SG133 (+ M5 fechado) | M7–M11 |
 
-**Caminho crítico (25 chamados):**
-SG100 → SG102 → SG104 → SG105 → SG106 → SG107 → SG108 → SG110 → SG112 → SG113 →
+**Caminho crítico (27 chamados):**
+SG100 → SG102 → SG135 → SG136 → SG104 → SG105 → SG106 → SG107 → SG108 → SG110 → SG112 → SG113 →
 SG114 → SG115 → SG116 → SG117 → SG118 → SG119 → SG122 → SG123 → SG124 → SG125 →
 SG126 → SG131 → SG132 → SG133 → SG134.
 
@@ -749,6 +814,13 @@ referência para reestimar ao fim de cada marco.
 | D-20 | SG060-C fica no backlog, com o código preservado | 09/out | este plano (assumida; confirmar) |
 | D-21 | O MVP inclui interface jogável (critério de sucesso 1 exige observar na tela) | 09/out | primeira-versao; este plano |
 | D-22 | Projeto pessoal e local: trabalho direto na `main`, sem branch por chamado, PR, GitHub Project ou CI como aceite. Aceite = `npm run check` verde na máquina local. Push ao GitHub é opcional | 09/out | decisão do autor |
+| D-23 | Leis em quatro grupos: orçamentária, regulatória, tributária, institucional | 09/out | decisão do autor |
+| D-24 | O JSON da lei não tem quantidade, só limites e opções; o nível vem do país (vigente no início) ou do jogador | 09/out | decisão do autor |
+| D-25 | Lei orçamentária: modo valor fixo ou % do orçamento | 09/out | decisão do autor |
+| D-26 | Lei regulatória sempre tem opções (mínimo 3); não existe lei de sim/não | 09/out | decisão do autor |
+| D-27 | Limites e custos em dinheiro na lei são relativos (% do PIB ou do orçamento); o país pode declarar limites próprios absolutos | 09/out | este plano |
+| D-28 | O gasto ou a receita de cada lei está sempre visível (ano e mês) | 09/out | decisão do autor |
+| D-29 | Valores do Brasil: inventados, mas nas proporções aproximadas do país (R$ bi/ano, PIB 12.000); receitas e despesas fora das leis entram como agregados | 09/out | decisão do autor |
 
 **Reavaliações de chamados (R-05):** _nenhuma até agora._
 
@@ -763,7 +835,15 @@ data, commit e teste.
 - [x] SG100 Verificar e versionar o trabalho local — 09/out · `7ca2afd` · check verde, 194 testes / 51 arquivos
 - [x] SG101 Consolidar a documentação — 09/out · `81fc845` · check verde
 - [x] SG102 Regras de nível lidas do conteúdo — 09/out · `fd196d0` · check verde, 202 testes / 52 arquivos; `policyRulesFromContent.test.ts`, `resolvePackage.test.ts`
-- [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · ver commit SG103 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
+- [x] SG103 Ficha fiscal do Brasil (hipótese) — 09/out · `18f4fdb` · valores substituídos pelo SG136 · check verde, 204 testes / 52 arquivos; `prepareGameQuarter.test.ts`, `resolvePackage.test.ts`
+
+**M0B — Catálogo de leis v2**
+- [ ] SG135 Formato de lei v2 e catálogo comum
+- [ ] SG136 Ficha do país v2: economia e orçamento completo
+- [ ] SG137 Orçamentárias: % do orçamento e novas leis
+- [ ] SG138 Regulatórias com opções
+- [ ] SG139 Tributárias
+- [ ] SG140 Institucionais
 
 **M1 — Turno real**
 - [ ] SG104 Implantação mensal pela partida
