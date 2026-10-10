@@ -1,0 +1,1926 @@
+{
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "leis": [
+    {
+      "id": "aborto",
+      "nome": "Aborto",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Saúde",
+      "grupo": "regulatoria",
+      "descricao": "Define em que casos interromper a gravidez é crime e em que casos é um serviço de saúde.",
+      "dilema": "Proteger a vida desde a concepção ou a autonomia e a segurança da mulher, sabendo que metade do país vai se sentir traída qualquer que seja a escolha?",
+      "eixo": "da proibição total à ausência de lei penal",
+      "opcoes": [
+        {
+          "id": "proibicao-total",
+          "rotulo": "Proibição total",
+          "manchete": "Nem para salvar a vida: país proíbe o aborto em qualquer caso e médicos temem a cadeia",
+          "exemplos": [
+            "El Salvador",
+            "Nicarágua",
+            "Honduras",
+            "República Dominicana"
+          ]
+        },
+        {
+          "id": "risco-de-vida",
+          "rotulo": "Só para salvar a vida",
+          "manchete": "Aborto só com a mãe em risco de morte; igrejas aprovam, obstetras pedem regras claras",
+          "exemplos": ["Paraguai", "Venezuela", "Nigéria"]
+        },
+        {
+          "id": "casos-restritos",
+          "rotulo": "Casos previstos em lei",
+          "manchete": "Estupro, risco de vida e malformação grave: lei mantém exceções e o resto continua crime",
+          "exemplos": [
+            "Brasil (estupro, risco de vida e anencefalia)",
+            "Polônia (desde 2021)",
+            "Chile (três causais, 2017)"
+          ]
+        },
+        {
+          "id": "motivos-amplos",
+          "rotulo": "Motivos de saúde e sociais",
+          "manchete": "Médicos poderão autorizar por razões de saúde ou sociais; conservadores falam em 'porta aberta'",
+          "exemplos": [
+            "Índia",
+            "Japão",
+            "Reino Unido (Abortion Act 1967)",
+            "Finlândia"
+          ]
+        },
+        {
+          "id": "a-pedido",
+          "rotulo": "A pedido, com prazo",
+          "manchete": "Aborto legal até a 12ª-14ª semana: praças lotadas de lenços verdes, missas de desagravo",
+          "exemplos": [
+            "Argentina (2020)",
+            "Irlanda (2018)",
+            "França (garantido na Constituição em 2024)",
+            "Holanda",
+            "Alemanha (até 12 semanas, com aconselhamento)"
+          ]
+        },
+        {
+          "id": "sem-lei-penal",
+          "rotulo": "Sem lei penal",
+          "manchete": "Aborto sai do Código Penal: fica só entre a mulher e o médico, como qualquer procedimento",
+          "exemplos": [
+            "Canadá (desde 1988)",
+            "Coreia do Sul (proibição derrubada em 2019, sem nova lei)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "casos-restritos",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Quanto mais casos legais, mais o sistema de saúde precisa oferecer o procedimento; nos extremos restritivos o custo aparece no tratamento de complicações."
+      },
+      "efeitos": [
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "A restrição não reduz o número de abortos, mas empurra mais deles para a clandestinidade insegura, que mata e deixa sequelas (OMS)."
+        },
+        {
+          "alvo": "pressao_hospitalar",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Menos complicações de aborto inseguro chegando às emergências."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Mais decisões ficam com a própria pessoa e menos com o Código Penal."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "qualquer mudança de opção",
+          "porque": "Mudar a lei em qualquer direção vira guerra cultural: quem perde se sente atacado em valores profundos."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "sobretudo ao sair de casos-restritos para a-pedido ou sem-lei-penal",
+          "porque": "Quem defende a vida desde a concepção pune nas urnas; nos extremos restritivos, quem defende a autonomia pune."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em proibicao-total",
+          "porque": "Proibição total e prisão de mulheres atraem críticas de organismos de direitos humanos."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_mulheres",
+          "grupo_progressistas",
+          "grupo_profissionais_saude"
+        ],
+        "perdem": ["grupo_religiosos", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["cobertura_aps", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Aborto legal só existe de fato onde a rede de saúde oferece o serviço; proibição só 'funciona' onde o Estado fiscaliza (e mesmo assim desloca para a clandestinidade)."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Center for Reproductive Rights – The World's Abortion Laws",
+          "url": "https://reproductiverights.org/maps/world-abortion-laws/"
+        },
+        {
+          "titulo": "WHO – Abortion fact sheet",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/abortion"
+        }
+      ]
+    },
+    {
+      "id": "casamento-e-uniao-civil",
+      "nome": "Casamento e união civil",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério dos Direitos Humanos",
+      "grupo": "regulatoria",
+      "descricao": "Define que casais o Estado reconhece como família, com herança, pensão, adoção e plano de saúde.",
+      "dilema": "Estender a todos os casais os mesmos direitos ou preservar a definição tradicional de família que boa parte do eleitorado defende?",
+      "eixo": "da criminalização de relações homoafetivas ao casamento igualitário",
+      "opcoes": [
+        {
+          "id": "criminalizacao",
+          "rotulo": "Relações homoafetivas são crime",
+          "manchete": "Polícia moral nas ruas: relações entre pessoas do mesmo sexo passam a dar prisão",
+          "exemplos": ["Irã", "Arábia Saudita", "Uganda"]
+        },
+        {
+          "id": "sem-reconhecimento",
+          "rotulo": "Sem reconhecimento",
+          "manchete": "Nem crime, nem família: casais do mesmo sexo ficam sem herança, pensão ou visita no hospital",
+          "exemplos": [
+            "Japão (só certificados municipais)",
+            "China",
+            "Índia (Suprema Corte negou em 2023)",
+            "Polônia"
+          ]
+        },
+        {
+          "id": "uniao-civil",
+          "rotulo": "União civil",
+          "manchete": "Meio-termo: casais do mesmo sexo ganham união civil, mas 'casamento' continua sendo outra coisa",
+          "exemplos": [
+            "Itália (2016)",
+            "Hungria (parceria registrada; casamento vedado na Constituição)",
+            "Croácia"
+          ]
+        },
+        {
+          "id": "casamento-igualitario",
+          "rotulo": "Casamento igualitário",
+          "manchete": "'Sim' para todos: cartórios celebram os primeiros casamentos entre pessoas do mesmo sexo",
+          "exemplos": [
+            "Holanda (2001, a primeira)",
+            "Argentina (2010)",
+            "Brasil (2013)",
+            "EUA (2015)",
+            "Irlanda (2015, por referendo)",
+            "Taiwan (2019)",
+            "Tailândia (2025)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "casamento-igualitario",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; muda direitos de família, herança e previdência."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Mais pessoas podem viver e registrar a própria família sem medo da lei."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O reconhecimento legal muda, aos poucos, o que é visto como normal."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Grupos religiosos e conservadores veem a mudança como ataque à família tradicional."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de uniao-civil",
+          "porque": "Democracias ocidentais e organismos de direitos humanos aplaudem; o efeito é o inverso em parte do mundo."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em criminalizacao",
+          "porque": "Prisões por orientação sexual geram sanções diplomáticas e boicotes."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "qualquer mudança de opção",
+          "porque": "Quem se sente derrotado no tema cobra o governo nas urnas."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_lgbtqia", "grupo_progressistas"],
+        "perdem": ["grupo_religiosos", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "confianca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Direito reconhecido só vale onde cartórios e tribunais o aplicam; num país muito polarizado, a mudança é contestada e revertida."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Pew Research Center – Same-sex marriage around the world",
+          "url": "https://www.pewresearch.org/religion/fact-sheet/same-sex-marriage-around-the-world/"
+        }
+      ]
+    },
+    {
+      "id": "eutanasia",
+      "nome": "Eutanásia e morte assistida",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Saúde",
+      "grupo": "regulatoria",
+      "descricao": "Define se, e em que condições, alguém pode pedir ajuda médica para morrer.",
+      "dilema": "Dar a quem sofre o direito de decidir o próprio fim ou proteger os vulneráveis de uma pressão silenciosa para morrer?",
+      "eixo": "da proibição total à eutanásia acessível também a quem não está em fase terminal",
+      "opcoes": [
+        {
+          "id": "proibida",
+          "rotulo": "Proibida",
+          "manchete": "Ajudar a morrer continua sendo homicídio, diz governo; famílias de doentes terminais protestam",
+          "exemplos": ["Polônia", "Irã", "Arábia Saudita"]
+        },
+        {
+          "id": "passiva",
+          "rotulo": "Só suspender tratamento",
+          "manchete": "Médicos poderão desligar aparelhos a pedido do paciente, mas não abreviar a vida",
+          "exemplos": [
+            "Brasil (ortotanásia, por resolução do CFM)",
+            "Índia (2018)",
+            "Japão",
+            "Itália",
+            "Coreia do Sul",
+            "Israel"
+          ]
+        },
+        {
+          "id": "suicidio-assistido",
+          "rotulo": "Suicídio assistido",
+          "manchete": "Médico prescreve, paciente toma: país autoriza a morte assistida e clínicas recebem estrangeiros",
+          "exemplos": [
+            "Suíça",
+            "Alemanha (decisão constitucional de 2020)",
+            "EUA (Oregon, Califórnia e outros estados)"
+          ]
+        },
+        {
+          "id": "eutanasia-terminal",
+          "rotulo": "Eutanásia para doentes terminais",
+          "manchete": "Doentes terminais poderão pedir que o médico aplique a dose: lei aprovada após anos de debate",
+          "exemplos": [
+            "Espanha (2021)",
+            "Nova Zelândia",
+            "Austrália (estados)",
+            "Uruguai (2026)",
+            "França (aprovada em 2026)"
+          ]
+        },
+        {
+          "id": "eutanasia-ampla",
+          "rotulo": "Eutanásia ampla",
+          "manchete": "Sofrimento insuportável basta: eutanásia vale até para quem não está morrendo",
+          "exemplos": [
+            "Holanda",
+            "Bélgica",
+            "Canadá (5,1% das mortes em 2024)",
+            "Colômbia"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "passiva",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige comissões de controle, registros e treinamento médico."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Mais pessoas decidem sobre o próprio fim de vida."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Religiosos, associações de pessoas com deficiência e parte dos médicos se mobilizam contra."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em eutanasia-ampla",
+          "porque": "Denúncias de pessoas pobres ou com deficiência pedindo para morrer por falta de apoio corroem a confiança no sistema."
+        },
+        {
+          "alvo": "turismo",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em suicidio-assistido ou acima, sem exigência de residência",
+          "porque": "Estrangeiros viajam para morrer onde é permitido ('turismo da morte' na Suíça)."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "qualquer mudança de opção",
+          "porque": "Um lado acusa o governo de 'cultura da morte'; o outro, de crueldade com quem sofre."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_aposentados"],
+        "perdem": ["grupo_religiosos", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "cobertura_aps"],
+        "reduz": ["pobreza"],
+        "porque": "Salvaguardas só funcionam com fiscalização séria e com alternativas reais (cuidados paliativos); na pobreza, o 'pedido livre' pode não ser tão livre."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Wikipedia – Legality of euthanasia",
+          "url": "https://en.wikipedia.org/wiki/Legality_of_euthanasia"
+        },
+        {
+          "titulo": "Health Canada – Annual Report on Medical Assistance in Dying 2024",
+          "url": "https://www.canada.ca/content/dam/hc-sc/documents/services/publications/health-system-services/annual-report-medical-assistance-dying-2024/annual-report-medical-assistance-dying-2024.pdf"
+        }
+      ]
+    },
+    {
+      "id": "laicidade-do-estado",
+      "nome": "Laicidade do Estado",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Presidência da República",
+      "grupo": "institucional",
+      "descricao": "Define a relação entre o Estado e as religiões: quem manda em quem, quem recebe privilégios e quem é vigiado.",
+      "dilema": "Ancorar o país na fé da maioria, manter distância de todas as crenças ou tirar a religião do espaço público? (Grupos: ao ir em direção à religião, ganham religiosos e conservadores; ao ir ao controle estatal, todos os crentes perdem.)",
+      "eixo": "da religião governando o Estado ao Estado controlando a religião (o meio é a neutralidade)",
+      "opcoes": [
+        {
+          "id": "teocracia",
+          "rotulo": "Teocracia",
+          "manchete": "Clero assume a palavra final sobre as leis; 'a lei de Deus acima da lei dos homens'",
+          "exemplos": ["Irã", "Arábia Saudita"]
+        },
+        {
+          "id": "religiao-oficial",
+          "rotulo": "Religião oficial",
+          "manchete": "Constituição proclama religião oficial; minorias pedem garantias",
+          "exemplos": [
+            "Reino Unido (Igreja Anglicana)",
+            "Dinamarca (Luterana)",
+            "Israel",
+            "Grécia"
+          ]
+        },
+        {
+          "id": "religiao-favorecida",
+          "rotulo": "Religião favorecida",
+          "manchete": "Sem ser oficial, uma igreja ganha verbas, escolas e lugar de honra nas cerimônias",
+          "exemplos": ["Rússia (Ortodoxa)", "Turquia", "Peru", "Geórgia"]
+        },
+        {
+          "id": "neutro",
+          "rotulo": "Estado neutro",
+          "manchete": "Nenhuma religião oficial, todas com os mesmos direitos: governo mantém equidistância",
+          "exemplos": [
+            "Brasil",
+            "EUA",
+            "Índia",
+            "Alemanha (com imposto eclesiástico)"
+          ]
+        },
+        {
+          "id": "laicidade-estrita",
+          "rotulo": "Laicidade estrita",
+          "manchete": "Símbolos religiosos banidos das escolas e repartições: 'a fé é assunto privado'",
+          "exemplos": ["França", "México"]
+        },
+        {
+          "id": "controle-estatal",
+          "rotulo": "Controle estatal da religião",
+          "manchete": "Templos registrados, sermões vigiados: Estado passa a controlar as religiões",
+          "exemplos": ["China", "Vietnã", "Cuba", "Coreia do Norte"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "neutro",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Pouco efeito direto no orçamento; religião favorecida ou oficial implica subsídios, e controle estatal exige aparato de vigilância."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "condicao": "em teocracia ou controle-estatal",
+          "porque": "Religião obrigatória ou fé vigiada restringem a vida privada (Pew: restrições governamentais à religião em pico histórico)."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "fora de neutro",
+          "porque": "Quem não segue a fé oficial (ou qualquer fé, no controle estatal) vira cidadão de segunda classe."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "fora de neutro",
+          "porque": "Afastar-se da neutralidade em qualquer direção acende o conflito entre crentes e não crentes."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em teocracia ou controle-estatal",
+          "porque": "Perseguição religiosa gera sanções e relatórios internacionais."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em religiao-oficial ou religiao-favorecida",
+          "porque": "Para a maioria religiosa, ver sua fé no Estado reforça o vínculo com as instituições."
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em teocracia ou controle-estatal",
+          "porque": "Regimes teocráticos ou que controlam a religião blindam o poder contra rupturas internas, ao custo da liberdade."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_religiosos", "grupo_conservadores"],
+        "perdem": [
+          "grupo_progressistas",
+          "grupo_lgbtqia",
+          "grupo_minorias_etnicas"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Neutralidade só se sustenta com tribunais independentes que barram privilégios; numa sociedade rachada, qualquer arranjo é contestado."
+      },
+      "mae": null,
+      "filhas": ["aborto", "casamento-e-uniao-civil", "eutanasia"],
+      "fontes": [
+        {
+          "titulo": "Pew Research Center – Many countries favor specific religions, officially or unofficially (2017)",
+          "url": "https://www.pewresearch.org/religion/2017/10/03/many-countries-favor-specific-religions-officially-or-unofficially/"
+        },
+        {
+          "titulo": "Pew Research Center – Government restrictions on religion stayed at peak levels globally in 2022",
+          "url": "https://www.pewresearch.org/religion/2024/12/18/government-restrictions-on-religion-stayed-at-peak-levels-globally-in-2022/"
+        }
+      ]
+    },
+    {
+      "id": "politica-de-imigracao",
+      "nome": "Política de imigração",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "regulatoria",
+      "descricao": "Define quem pode entrar no país para viver e trabalhar, por quanto tempo e se pode virar cidadão.",
+      "dilema": "Abrir a porta para trabalhadores que o país envelhecido precisa ou atender ao eleitor que teme perder emprego, salário e identidade?",
+      "eixo": "das fronteiras fechadas à livre circulação",
+      "opcoes": [
+        {
+          "id": "fechada",
+          "rotulo": "Fronteiras fechadas",
+          "manchete": "País fecha as portas: nenhum visto de trabalho ou residência para estrangeiros",
+          "exemplos": ["Coreia do Norte"]
+        },
+        {
+          "id": "temporaria",
+          "rotulo": "Só trabalho temporário",
+          "manchete": "Vem, trabalha e volta: estrangeiros só com contrato temporário e sem caminho para cidadania",
+          "exemplos": [
+            "Arábia Saudita e Golfo (sistema kafala)",
+            "Japão (estágio técnico)",
+            "Coreia do Sul (permissão de emprego)"
+          ]
+        },
+        {
+          "id": "seletiva",
+          "rotulo": "Seletiva por pontos",
+          "manchete": "Diploma, idioma e profissão valem pontos: país abre portas só para quem 'interessa'",
+          "exemplos": ["Canadá", "Austrália", "Nova Zelândia"]
+        },
+        {
+          "id": "ampla",
+          "rotulo": "Acolhedora",
+          "manchete": "Nova lei trata migrar como direito: reunião familiar facilitada e regularização de quem já está aqui",
+          "exemplos": [
+            "Brasil (Lei de Migração, 2017)",
+            "Argentina (2004)",
+            "EUA (reunião familiar)",
+            "Alemanha"
+          ]
+        },
+        {
+          "id": "livre-circulacao",
+          "rotulo": "Livre circulação",
+          "manchete": "Sem visto, sem cota: quem quiser pode vir morar e trabalhar",
+          "exemplos": [
+            "União Europeia (entre países-membros)",
+            "Mercosul (acordo de residência, entre membros)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "ampla",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige serviço de imigração e integração; o efeito fiscal líquido dos imigrantes fica, na média da OCDE, entre -1% e +1% do PIB."
+      },
+      "efeitos": [
+        {
+          "alvo": "imigracao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Mais vistos e menos barreiras, mais gente chegando."
+        },
+        {
+          "alvo": "pib",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais trabalhadores e consumidores ampliam a economia."
+        },
+        {
+          "alvo": "envelhecimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Imigrantes chegam em idade ativa e rejuvenescem a pirâmide."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Estudos regionais acham ganhos de produtividade e inovação, sobretudo com imigração qualificada (evidência ainda preliminar)."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de ampla, em mercados de trabalho rígidos",
+          "porque": "O efeito médio sobre salários e emprego dos nativos é quase nulo, mas em mercados rígidos imigrantes anteriores e menos qualificados sentem a concorrência."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Imigração é das pautas que mais dividem o eleitorado e alimentam partidos anti-imigração."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em livre-circulacao ou com baixa capacidade_estatal",
+          "porque": "Chegadas rápidas e visíveis alimentam xenofobia se a integração falha."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_imigrantes",
+          "grupo_empresarios",
+          "grupo_agronegocio"
+        ],
+        "perdem": ["grupo_conservadores", "grupo_informais"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "qualificacao_trabalho"],
+        "reduz": ["informalidade"],
+        "porque": "Imigração rende mais quando o imigrante consegue emprego formal: a OCDE estima que fechar a lacuna de emprego elevaria a contribuição fiscal deles em até 0,5% do PIB."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "OECD – International Migration Outlook 2021, ch. on the fiscal impact of immigration",
+          "url": "https://www.oecd.org/en/publications/international-migration-outlook-2021_29f23e9d-en/full-report/component-8.html"
+        },
+        {
+          "titulo": "IZA World of Labor – Do immigrant workers depress the wages of native workers?",
+          "url": "https://wol.iza.org/articles/do-immigrant-workers-depress-the-wages-of-native-workers/long"
+        }
+      ]
+    },
+    {
+      "id": "refugiados-e-asilo",
+      "nome": "Refugiados e asilo",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "regulatoria",
+      "descricao": "Define como o país trata quem chega fugindo de guerra ou perseguição: se analisa o pedido, onde e com que generosidade.",
+      "dilema": "Cumprir o dever humanitário quando a crise do vizinho bate à porta ou proteger orçamento e eleitor de uma onda de chegadas?",
+      "eixo": "da ausência de sistema de asilo à acolhida ampla",
+      "opcoes": [
+        {
+          "id": "sem-asilo",
+          "rotulo": "Sem sistema de asilo",
+          "manchete": "País não reconhece o status de refugiado: quem chega é tratado como imigrante irregular",
+          "exemplos": [
+            "Índia (não signatária da Convenção de 1951)",
+            "Arábia Saudita (não signatária)"
+          ]
+        },
+        {
+          "id": "dissuasao-externa",
+          "rotulo": "Asilo terceirizado",
+          "manchete": "Pedidos de asilo serão analisados em outro país: governo fecha acordo milionário de 'centros externos'",
+          "exemplos": [
+            "Austrália (Nauru e Papua-Nova Guiné)",
+            "Reino Unido–Ruanda (2022–2024; ~£700 mi e 4 pessoas enviadas)",
+            "Itália–Albânia",
+            "Dinamarca"
+          ]
+        },
+        {
+          "id": "restritiva",
+          "rotulo": "Restritiva",
+          "manchete": "Taxa de aprovação despenca: só perseguição comprovada abre a porta",
+          "exemplos": ["Hungria", "Japão"]
+        },
+        {
+          "id": "convencao",
+          "rotulo": "Padrão da Convenção",
+          "manchete": "País segue a Convenção de 1951 à risca: pedido analisado caso a caso",
+          "exemplos": ["França", "EUA", "Canadá"]
+        },
+        {
+          "id": "acolhida-ampla",
+          "rotulo": "Acolhida ampla",
+          "manchete": "Portas abertas a quem foge: vistos humanitários em massa e programa de interiorização",
+          "exemplos": [
+            "Alemanha (2015)",
+            "Colômbia (estatuto para venezuelanos)",
+            "Brasil (Operação Acolhida)",
+            "Turquia"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "acolhida-ampla",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Abrigo, documentação, saúde e integração; e a dissuasão externa também é cara."
+      },
+      "efeitos": [
+        {
+          "alvo": "imigracao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Mais pedidos aceitos, mais refugiados se estabelecendo."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "em acolhida-ampla",
+          "porque": "Abrigos, alimentação e processamento de pedidos pesam no orçamento."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "em dissuasao-externa",
+          "porque": "Pagar outro país para receber requerentes custa caro (o plano Reino Unido–Ruanda custou cerca de £700 milhões)."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Acolher refugiados rende prestígio diplomático e apoio da ONU."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Fotos de abrigos lotados viram munição eleitoral."
+        },
+        {
+          "alvo": "crise_migratoria",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em acolhida-ampla, se capacidade_estatal baixa",
+          "porque": "Portas abertas atraem chegadas em massa quando o vizinho entra em colapso."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em sem-asilo ou dissuasao-externa",
+          "porque": "Detenções e expulsões sumárias atingem também quem tinha direito a proteção."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_imigrantes",
+          "grupo_progressistas",
+          "grupo_religiosos"
+        ],
+        "perdem": ["grupo_conservadores", "grupo_pobres"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "reservas_internacionais"],
+        "reduz": ["desemprego"],
+        "porque": "Acolher bem exige Estado capaz de documentar e interiorizar; com desemprego alto, a integração falha e a rejeição cresce."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Al Jazeera – One in 70 people worldwide is forcibly displaced: UNHCR (2026)",
+          "url": "https://www.aljazeera.com/news/2026/6/11/one-in-70-people-worldwide-is-forcibly-displaced-unhcr"
+        },
+        {
+          "titulo": "Wikipedia – Rwanda asylum plan",
+          "url": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan"
+        }
+      ]
+    },
+    {
+      "id": "regulacao-redes-sociais",
+      "nome": "Regulação das redes sociais",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério das Comunicações",
+      "grupo": "regulatoria",
+      "descricao": "Define quanto as plataformas respondem pelo que circula nelas: nada, só após ordem judicial, com dever de cuidado ou sob controle do Estado.",
+      "dilema": "Combater desinformação, golpes e danos a crianças sem dar ao governo de plantão uma tesoura para cortar críticas?",
+      "eixo": "da imunidade das plataformas ao controle estatal",
+      "opcoes": [
+        {
+          "id": "sem-regra",
+          "rotulo": "Plataforma não responde",
+          "manchete": "Redes sem dono: plataformas não respondem pelo que os usuários postam",
+          "exemplos": ["EUA (Seção 230)"]
+        },
+        {
+          "id": "ordem-judicial",
+          "rotulo": "Só com ordem judicial",
+          "manchete": "Conteúdo só sai do ar com ordem de juiz; plataformas ficam com as mãos livres",
+          "exemplos": ["Brasil (Marco Civil, 2014–2025)"]
+        },
+        {
+          "id": "dever-de-cuidado",
+          "rotulo": "Dever de cuidado",
+          "manchete": "Notificou e não tirou? Paga: plataformas passam a responder por conteúdo ilegal e anúncios",
+          "exemplos": [
+            "União Europeia (DSA, multas de até 6% do faturamento global)",
+            "Brasil (decisão do STF, 2025)",
+            "Alemanha (NetzDG)"
+          ]
+        },
+        {
+          "id": "protecao-reforcada",
+          "rotulo": "Proteção reforçada",
+          "manchete": "Menores de 16 fora das redes: plataformas terão de verificar idade de todo mundo",
+          "exemplos": [
+            "Austrália (desde dez/2025, multas de até A$49,5 mi)",
+            "Reino Unido (Online Safety Act)"
+          ]
+        },
+        {
+          "id": "controle-estatal",
+          "rotulo": "Controle estatal",
+          "manchete": "Redes estrangeiras bloqueadas e conteúdo aprovado pelo governo: 'internet soberana' é lançada",
+          "exemplos": ["China", "Irã", "Rússia (bloqueios)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "dever-de-cuidado",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige um regulador ou agência; o custo maior cai sobre as plataformas."
+      },
+      "efeitos": [
+        {
+          "alvo": "desinformacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Plataformas obrigadas a agir derrubam golpes e boatos mais rápido."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "a partir de dever-de-cuidado",
+          "porque": "Com medo de multa, plataformas removem a mais, inclusive conteúdo legítimo."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "em controle-estatal",
+          "porque": "O governo decide o que pode ser dito."
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Custos de conformidade pesam mais sobre plataformas pequenas que sobre gigantes."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em protecao-reforcada",
+          "porque": "Menos exposição de crianças a conteúdo nocivo; a evidência ainda é disputada e muitos adolescentes burlam a regra."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "qualquer mudança de opção",
+          "porque": "A própria lei vira briga: um lado vê 'censura', o outro 'terra sem lei'."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em controle-estatal",
+          "porque": "Bloquear redes estrangeiras é visto como autoritarismo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pais_familia", "grupo_progressistas"],
+        "perdem": [
+          "grupo_jovens",
+          "grupo_conservadores",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Dever de cuidado só não vira censura com regulador e Judiciário independentes; com liberdade de imprensa em censura ou restrita, a lei tende a escorregar para o controle estatal."
+      },
+      "mae": {
+        "lei": "liberdade-imprensa",
+        "opcoes": ["censura", "restrita", "regulada", "plena"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Teletime – Art. 19: STF concilia votos e plataformas terão responsabilização parcial (2025)",
+          "url": "https://teletime.com.br/26/06/2025/art-19-stf-concilia-votos-e-plataformas-terao-responsabilizacao-parcial/"
+        },
+        {
+          "titulo": "Roschier – Digital Services Act",
+          "url": "https://roschier.com/eu-data-economy-digitalization/digital-services-act"
+        },
+        {
+          "titulo": "Gulf News – Australia social media ban for under-16 kicks in (2025)",
+          "url": "https://gulfnews.com/world/oceania/australia-social-media-ban-for-under-16-kicks-in-millions-of-kids-locked-out-1.500374715"
+        }
+      ]
+    },
+    {
+      "id": "protecao-de-dados",
+      "nome": "Proteção de dados pessoais",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "regulatoria",
+      "descricao": "Define o que empresas (e o Estado) podem fazer com os dados pessoais dos cidadãos e quem fiscaliza.",
+      "dilema": "Proteger a privacidade de todos ou deixar startups e empresas usarem dados livremente para inovar e crescer?",
+      "eixo": "da ausência de lei à proteção estrita",
+      "opcoes": [
+        {
+          "id": "sem-lei",
+          "rotulo": "Sem lei",
+          "manchete": "Dados pessoais à venda: país não tem lei e vazamentos ficam sem punição",
+          "exemplos": ["Cerca de 1 em cada 3 países (UNCTAD, 2020)"]
+        },
+        {
+          "id": "setorial",
+          "rotulo": "Leis setoriais",
+          "manchete": "Saúde e bancos protegidos, o resto liberado: regras soltas por setor",
+          "exemplos": ["EUA (sem lei federal geral)"]
+        },
+        {
+          "id": "lei-geral",
+          "rotulo": "Lei geral com agência",
+          "manchete": "Nova lei geral de dados cria agência fiscalizadora e exige consentimento",
+          "exemplos": [
+            "Brasil (LGPD)",
+            "Japão",
+            "Coreia do Sul",
+            "Índia (2023)",
+            "China (PIPL, com amplo acesso do Estado)"
+          ]
+        },
+        {
+          "id": "protecao-estrita",
+          "rotulo": "Proteção estrita",
+          "manchete": "Multas bilionárias e direito ao esquecimento: big techs reclamam, usuários aplaudem",
+          "exemplos": ["União Europeia (GDPR)", "Reino Unido"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "lei-geral",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige uma autoridade fiscalizadora; o custo maior é de conformidade para as empresas."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Cidadãos ganham controle sobre seus dados e meios de reclamar."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em protecao-estrita",
+          "porque": "Após o GDPR, a entrada de novos apps caiu 47% e 1/3 dos apps que pediam dados sensíveis saiu da loja."
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Gigantes absorvem o custo de conformidade; pequenos desistem."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Mais burocracia e risco de multa."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Regras de uso de dados limitam o abuso de cadastros públicos e o vazamento interessado."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_progressistas"],
+        "perdem": ["grupo_pequenos_negocios", "grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": [],
+        "porque": "Lei de dados sem autoridade e sem fiscalização vira papel: a UNCTAD alerta que países em desenvolvimento muitas vezes não conseguem aplicar suas leis."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "UNCTAD – Data and privacy unprotected in one third of countries, despite progress",
+          "url": "https://unctad.org/news/data-and-privacy-unprotected-one-third-countries-despite-progress"
+        },
+        {
+          "titulo": "NBER Digest – Impacts of the European Union's Data Protection Regulations",
+          "url": "https://www.nber.org/digest/202207/impacts-european-unions-data-protection-regulations"
+        }
+      ]
+    },
+    {
+      "id": "igualdade-salarial-de-genero",
+      "nome": "Igualdade salarial de gênero",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério das Mulheres",
+      "grupo": "regulatoria",
+      "descricao": "Define como a lei garante salário igual para trabalho igual entre homens e mulheres: nada, princípio, transparência obrigatória ou certificação.",
+      "dilema": "Fechar a diferença salarial com transparência e multas ou poupar as empresas de mais um relatório e um processo?",
+      "eixo": "da ausência de garantia à certificação obrigatória",
+      "opcoes": [
+        {
+          "id": "sem-garantia",
+          "rotulo": "Sem garantia legal",
+          "manchete": "Patrão decide: lei não exige mais salário igual para homens e mulheres",
+          "exemplos": [
+            "Reino Unido antes do Equal Pay Act (1970)",
+            "EUA antes de 1963"
+          ]
+        },
+        {
+          "id": "principio-legal",
+          "rotulo": "Princípio na lei",
+          "manchete": "Salário igual é lei, mas cabe à trabalhadora provar na Justiça",
+          "exemplos": ["EUA (Equal Pay Act)", "Japão", "Índia"]
+        },
+        {
+          "id": "transparencia",
+          "rotulo": "Relatórios de transparência",
+          "manchete": "Empresas terão de publicar salários por gênero e apresentar plano para fechar a diferença",
+          "exemplos": [
+            "Brasil (Lei 14.611/2023, multa de até 3% da folha)",
+            "Reino Unido (desde 2017)",
+            "Dinamarca (desde 2006)",
+            "União Europeia (diretiva de transparência)"
+          ]
+        },
+        {
+          "id": "certificacao",
+          "rotulo": "Certificação obrigatória",
+          "manchete": "Empresa só fica regular se provar, com auditoria, que paga igual",
+          "exemplos": [
+            "Islândia (2018–2026; substituída por relatórios a partir de set/2026)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "transparencia",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Fiscalização e análise dos relatórios; o custo principal é das empresas."
+      },
+      "efeitos": [
+        {
+          "alvo": "diferenca_salarial_genero",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Expor a diferença força correções; na Dinamarca a lacuna caiu cerca de 2% após a obrigação de relatórios."
+        },
+        {
+          "alvo": "participacao_trabalho_cuidadoras",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Salário mais justo torna o trabalho remunerado mais atraente para mulheres."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Renda das mulheres sobe em relação à dos homens."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Critérios salariais objetivos reduzem decisões arbitrárias."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "a partir de transparencia",
+          "porque": "Relatórios, auditorias e risco de multa irritam empregadores."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em certificacao",
+          "porque": "Auditorias e reajustes para corrigir diferenças encarecem a folha."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_mulheres", "grupo_progressistas", "grupo_sindicatos"],
+        "perdem": ["grupo_empresarios", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade"],
+        "porque": "A regra só alcança o emprego formal e empresas maiores; onde a informalidade é alta, a maioria das mulheres fica de fora."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Planalto – Lei nº 14.611/2023 (igualdade salarial)",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14611.htm"
+        },
+        {
+          "titulo": "Island.is – New requirements for reporting on the gender pay gap",
+          "url": "https://island.is/en/news/new-requirements-for-reporting-on-the-gender-pay-gap"
+        },
+        {
+          "titulo": "Europa (Univ. Edinburgh) – The European Council's Pay Transparency Directive is commendable, but not enough",
+          "url": "https://europa.sps.ed.ac.uk/2024/06/03/the-european-councils-pay-transparency-directive-is-commendable-but-not-enough/"
+        }
+      ]
+    },
+    {
+      "id": "acoes-afirmativas",
+      "nome": "Ações afirmativas",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Igualdade Racial",
+      "grupo": "regulatoria",
+      "descricao": "Define se o Estado reserva vagas em universidades, concursos e candidaturas para grupos historicamente excluídos, e com que critério.",
+      "dilema": "Corrigir desigualdades herdadas com cotas ou manter a disputa só pelo mérito medido em prova?",
+      "eixo": "da proibição de critérios de grupo às reservas amplas",
+      "opcoes": [
+        {
+          "id": "proibidas",
+          "rotulo": "Proibidas",
+          "manchete": "Fim das cotas: raça não pode mais pesar em admissão nem em concurso",
+          "exemplos": [
+            "EUA (Suprema Corte, 2023, nas admissões)",
+            "França (veda cotas étnicas)"
+          ]
+        },
+        {
+          "id": "sem-politica",
+          "rotulo": "Sem política",
+          "manchete": "Só a nota conta: governo não adota nenhuma reserva de vagas",
+          "exemplos": ["Japão", "Alemanha"]
+        },
+        {
+          "id": "cotas-sociais",
+          "rotulo": "Cotas sociais",
+          "manchete": "Vagas reservadas para alunos de escola pública e baixa renda, sem critério racial",
+          "exemplos": [
+            "França (convenções de Sciences Po com escolas de periferia)",
+            "Chile (programas de acesso)"
+          ]
+        },
+        {
+          "id": "cotas-sociais-e-raciais",
+          "rotulo": "Cotas sociais e raciais",
+          "manchete": "Metade das vagas das federais vai para escola pública, com recorte de renda e raça",
+          "exemplos": [
+            "Brasil (Lei 12.711/2012)",
+            "África do Sul (equidade no emprego)"
+          ]
+        },
+        {
+          "id": "reservas-amplas",
+          "rotulo": "Reservas amplas",
+          "manchete": "Reserva em universidades, empregos públicos e Parlamento: cotas viram pilar do Estado",
+          "exemplos": ["Índia", "Malásia (bumiputera)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "cotas-sociais-e-raciais",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Bolsas de permanência e comissões de verificação; sem grande impacto orçamentário."
+      },
+      "efeitos": [
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Jovens pobres e de minorias chegam a cursos e cargos que antes eram fechados para eles."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Diplomas e cargos mais bem pagos se distribuem entre mais grupos."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais diversidade em posições de prestígio muda percepções, de forma lenta."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem fica de fora acusa injustiça; o debate sobre mérito e raça esquenta."
+        },
+        {
+          "alvo": "escolaridade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Estudos no Brasil mostram que cotistas começam atrás, mas reduzem pela metade a diferença de notas até a formatura."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em proibidas",
+          "porque": "Sem ações afirmativas, a presença de negros cai nas universidades de elite (Harvard: de 18% para 11,5%)."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_minorias_etnicas",
+          "grupo_pobres",
+          "grupo_estudantes"
+        ],
+        "perdem": ["grupo_classe_media", "grupo_ricos", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Cotas rendem mais quando o ensino básico prepara os cotistas e há bolsa de permanência; fraude na autodeclaração mina a política."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "VoxDev – Affirmative action in Brazil's higher education system",
+          "url": "https://www.voxdev.org/topic/education/affirmative-action-brazils-higher-education-system"
+        },
+        {
+          "titulo": "Brookings – The complex ramifications of Students for Fair Admissions v. Harvard",
+          "url": "https://www.brookings.edu/articles/the-complex-ramifications-of-students-for-fair-admissions-v-harvard/"
+        }
+      ]
+    },
+    {
+      "id": "apostas-e-jogos-de-azar",
+      "nome": "Apostas e jogos de azar",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "regulatoria",
+      "descricao": "Define se apostas, cassinos e loterias são proibidos, monopólio do Estado, mercado licenciado ou terra sem lei.",
+      "dilema": "Arrecadar com um mercado que vai existir de qualquer jeito ou proteger as famílias pobres do vício e das dívidas?",
+      "eixo": "da proibição total à liberação sem regras",
+      "opcoes": [
+        {
+          "id": "proibicao",
+          "rotulo": "Proibição total",
+          "manchete": "Bets, cassinos e bingos fechados: jogo vira caso de polícia",
+          "exemplos": ["Arábia Saudita", "Irã"]
+        },
+        {
+          "id": "monopolio-estatal",
+          "rotulo": "Monopólio estatal",
+          "manchete": "Só a loteria do governo pode: Estado fica com o lucro e decide os limites",
+          "exemplos": [
+            "Noruega",
+            "Finlândia",
+            "China (loterias estatais)",
+            "Brasil antes de 2018"
+          ]
+        },
+        {
+          "id": "licenciado-restrito",
+          "rotulo": "Licenciado com limites",
+          "manchete": "Bets autorizadas, mas com licença cara, verificação facial e propaganda vigiada",
+          "exemplos": [
+            "Brasil (Lei 14.790/2023)",
+            "Singapura (2 cassinos, taxa de entrada para locais)",
+            "Japão (resorts integrados)"
+          ]
+        },
+        {
+          "id": "licenciado-liberal",
+          "rotulo": "Mercado aberto",
+          "manchete": "Cassinos e bets à vontade: país quer ser polo do jogo",
+          "exemplos": ["Reino Unido", "Itália", "Macau"]
+        },
+        {
+          "id": "sem-regulacao",
+          "rotulo": "Liberado sem regras",
+          "manchete": "Apostas permitidas, mas sem licença nem fiscalização: sites estrangeiros dominam",
+          "exemplos": ["Brasil (2018–2024)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "licenciado-restrito",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "medio",
+        "porque": "Licenças e tributos sobre o setor arrecadam; na proibição e no vácuo regulatório, nada entra."
+      },
+      "efeitos": [
+        {
+          "alvo": "vicio_em_apostas",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Mais acesso e mais propaganda, mais apostadores compulsivos; cada um afeta de seis a oito pessoas próximas."
+        },
+        {
+          "alvo": "endividamento_familias",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "No Brasil, cerca de 24 milhões de pessoas apostaram via Pix num só mês de 2024, incluindo 5 milhões de beneficiários do Bolsa Família."
+        },
+        {
+          "alvo": "pobreza",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Famílias pobres gastam proporcionalmente mais com apostas."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em monopolio-estatal ou licenciado",
+          "porque": "Licenças e impostos sobre o setor entram no caixa."
+        },
+        {
+          "alvo": "turismo",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em licenciado-liberal",
+          "porque": "Cassinos atraem turistas estrangeiros."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em proibicao ou sem-regulacao",
+          "porque": "Mercado clandestino (na proibição) ou sem fiscalização (no vácuo) serve à lavagem de dinheiro e à manipulação de resultados."
+        },
+        {
+          "alvo": "consumo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Dinheiro que vai para apostas deixa de ir para o comércio."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_jovens"],
+        "perdem": [
+          "grupo_pobres",
+          "grupo_pais_familia",
+          "grupo_religiosos",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao", "informalidade"],
+        "porque": "Regras de licença, limites e propaganda só funcionam com fiscalização que derrube sites ilegais; onde a corrupção é alta, o operador clandestino continua."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Planalto – Lei nº 14.790/2023 (apostas de quota fixa)",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14790.htm"
+        },
+        {
+          "titulo": "InfoMoney – Beneficiários do Bolsa Família gastaram R$ 3 bi com bets em agosto, diz BC",
+          "url": "https://www.infomoney.com.br/consumo/beneficiarios-do-bolsa-familia-gastaram-r-3-bi-com-bets-em-agosto-diz-bc/"
+        },
+        {
+          "titulo": "APSIA – Legalized gambling is exploding globally (sobre a Comissão Lancet de Saúde Pública)",
+          "url": "https://apsia.org/news/legalized-gambling-is-exploding-globally-what-policies-can-limit-its-harms"
+        }
+      ]
+    },
+    {
+      "id": "servico-militar",
+      "nome": "Serviço militar",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Defesa",
+      "grupo": "regulatoria",
+      "descricao": "Define como o país forma suas Forças Armadas: sem Forças Armadas, só voluntários, sorteio seletivo ou serviço obrigatório para todos.",
+      "dilema": "Ter reserva treinada e um rito de cidadania comum ou deixar os jovens livres para estudar e trabalhar?",
+      "eixo": "da ausência de Forças Armadas ao serviço universal",
+      "opcoes": [
+        {
+          "id": "sem-forcas-armadas",
+          "rotulo": "Sem Forças Armadas",
+          "manchete": "País dissolve o Exército e aposta na diplomacia e na polícia",
+          "exemplos": ["Costa Rica (desde 1948)", "Panamá", "Islândia"]
+        },
+        {
+          "id": "voluntario",
+          "rotulo": "Só voluntários",
+          "manchete": "Fim do alistamento: Forças Armadas passam a ser 100% profissionais",
+          "exemplos": ["EUA", "Reino Unido", "Japão", "França"]
+        },
+        {
+          "id": "seletivo",
+          "rotulo": "Alistamento com seleção",
+          "manchete": "Todo jovem se alista, poucos servem: quartéis escolhem quem fica",
+          "exemplos": [
+            "Brasil (5% a 10% dos alistados são incorporados)",
+            "Alemanha (nova lei de 2026)"
+          ]
+        },
+        {
+          "id": "obrigatorio-masculino",
+          "rotulo": "Obrigatório para homens",
+          "manchete": "Todo homem de 18 anos vai para o quartel: um ano e meio de farda",
+          "exemplos": [
+            "Coreia do Sul (cerca de 18 meses)",
+            "Suíça",
+            "Finlândia",
+            "Taiwan (1 ano desde 2024)",
+            "Irã"
+          ]
+        },
+        {
+          "id": "universal",
+          "rotulo": "Universal, homens e mulheres",
+          "manchete": "Serviço militar passa a valer para homens e mulheres",
+          "exemplos": ["Israel", "Noruega (desde 2015)", "Suécia (desde 2018)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "seletivo",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Mais recrutas significam mais soldo, alimentação, alojamento e instrutores."
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais gente treinada forma uma reserva grande e mobilizável."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "a partir de obrigatorio-masculino",
+          "porque": "Manter recrutas custa caro, ainda que paguem menos que profissionais."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de obrigatorio-masculino",
+          "porque": "Um a dois anos de quartel atrasam faculdade e primeiro emprego."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O Estado obriga o jovem a servir; objetores pedem serviço civil alternativo."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "a partir de seletivo",
+          "porque": "Jovens no quartel saem temporariamente da fila do emprego."
+        },
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "condicao": "em sem-forcas-armadas",
+          "porque": "Sem Exército, o país depende de alianças e da sorte."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_militares", "grupo_conservadores"],
+        "perdem": ["grupo_jovens", "grupo_estudantes", "grupo_pais_familia"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "escolaridade"],
+        "reduz": ["corrupcao"],
+        "porque": "Recrutas só viram defesa real com treinamento e equipamento (gasto com defesa); dispensa comprada esvazia a regra."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Wikipedia – Conscription by country",
+          "url": "https://en.wikipedia.org/wiki/Conscription_by_country"
+        }
+      ]
+    },
+    {
+      "id": "gasto-com-defesa",
+      "nome": "Gasto com defesa",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério da Defesa",
+      "grupo": "orcamentaria",
+      "descricao": "Define quanto do PIB vai para Forças Armadas, equipamentos e indústria de defesa.",
+      "dilema": "Armar o país para um mundo mais perigoso ou gastar em escolas, hospitais e casas?",
+      "eixo": "de nenhum gasto militar a uma economia de guerra",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 10,
+        "exemplos": [
+          {
+            "pais": "Costa Rica",
+            "valor": 0
+          },
+          {
+            "pais": "Japão",
+            "valor": 1.4
+          },
+          {
+            "pais": "Brasil",
+            "valor": 1.6
+          },
+          {
+            "pais": "China",
+            "valor": 1.7
+          },
+          {
+            "pais": "França",
+            "valor": 2.0
+          },
+          {
+            "pais": "Alemanha",
+            "valor": 2.3
+          },
+          {
+            "pais": "Índia",
+            "valor": 2.3
+          },
+          {
+            "pais": "Coreia do Sul",
+            "valor": 2.6
+          },
+          {
+            "pais": "EUA",
+            "valor": 3.1
+          },
+          {
+            "pais": "Polônia",
+            "valor": 4.5
+          },
+          {
+            "pais": "Arábia Saudita",
+            "valor": 6.5
+          },
+          {
+            "pais": "Rússia",
+            "valor": 7.5
+          },
+          {
+            "pais": "Israel",
+            "valor": 7.8
+          }
+        ]
+      },
+      "brasil": 1.6,
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "Média mundial de 2,5% do PIB em 2025 (SIPRI); acima de 4% já compete com saúde e educação."
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Navios, aviões e tropas treinadas levam anos para ficar prontos."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Cada ponto do PIB em defesa entra direto na conta."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Sem corte em outra área ou imposto novo, o déficit cresce."
+        },
+        {
+          "alvo": "desenvolvimento",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Pesquisa militar gera tecnologia que transborda para o setor civil."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "até cerca de 3% do PIB",
+          "porque": "Aliados valorizam quem cumpre metas de gasto (como as da OTAN); vizinhos podem ver ameaça."
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "acima de 4% do PIB, com forca_instituicoes baixa",
+          "porque": "Forças Armadas grandes e ricas ganham peso político onde as instituições são frágeis."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_militares", "grupo_industria", "grupo_conservadores"],
+        "perdem": ["grupo_servidores", "grupo_pobres", "grupo_progressistas"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "desenvolvimento"],
+        "reduz": ["corrupcao"],
+        "porque": "Dinheiro vira defesa real só com compras transparentes e indústria capaz; com corrupção, vira sobrepreço."
+      },
+      "mae": null,
+      "filhas": ["servico-militar"],
+      "fontes": [
+        {
+          "titulo": "SIPRI – Trends in World Military Expenditure, 2025 (abr/2026)",
+          "url": "https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf"
+        }
+      ]
+    },
+    {
+      "id": "politica-de-natalidade",
+      "nome": "Política de natalidade",
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "ministerio": "Ministério do Desenvolvimento Social e Família",
+      "grupo": "regulatoria",
+      "descricao": "Define se o Estado tenta reduzir, deixar em paz ou aumentar o número de filhos que as famílias têm, e com que instrumentos.",
+      "dilema": "Gastar pesado (ou pressionar) para frear o envelhecimento do país, sabendo que o efeito costuma ser pequeno e passageiro?",
+      "eixo": "do controle antinatalista coercitivo ao pronatalismo coercitivo",
+      "opcoes": [
+        {
+          "id": "antinatalista-coercitiva",
+          "rotulo": "Controle de natalidade coercitivo",
+          "manchete": "Um filho por casal: quem passar do limite paga multa e perde benefícios",
+          "exemplos": [
+            "China (filho único, 1980–2015)",
+            "Índia (esterilizações em massa, 1975–77)"
+          ]
+        },
+        {
+          "id": "antinatalista-incentivo",
+          "rotulo": "Planejamento familiar ativo",
+          "manchete": "Governo distribui contraceptivos e faz campanha: 'famílias menores, vidas melhores'",
+          "exemplos": ["Irã (anos 1990)", "Bangladesh"]
+        },
+        {
+          "id": "neutra",
+          "rotulo": "Sem política",
+          "manchete": "Filhos são assunto da família: governo não interfere na natalidade",
+          "exemplos": ["Brasil", "EUA"]
+        },
+        {
+          "id": "incentivos-moderados",
+          "rotulo": "Incentivos moderados",
+          "manchete": "Licenças longas, creche e abono por filho: país aposta em conciliar trabalho e família",
+          "exemplos": ["França", "Alemanha"]
+        },
+        {
+          "id": "pronatalismo-intenso",
+          "rotulo": "Pronatalismo intenso",
+          "manchete": "Mães de quatro filhos nunca mais pagam imposto de renda: país lança pacote bilionário pela natalidade",
+          "exemplos": [
+            "Hungria (cerca de 5% do PIB)",
+            "Coreia do Sul",
+            "Rússia (capital-maternidade)",
+            "Polônia (800+)"
+          ]
+        },
+        {
+          "id": "pronatalismo-coercitivo",
+          "rotulo": "Pronatalismo coercitivo",
+          "manchete": "Contraceptivos restritos e aborto proibido: governo quer bebês a qualquer custo",
+          "exemplos": ["Romênia (Decreto 770, 1966)", "Irã (lei de 2021)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "neutra",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Incentivos custam caro (a Hungria gasta cerca de 5% do PIB com família); a coerção custa pouco em dinheiro e muito em liberdade."
+      },
+      "efeitos": [
+        {
+          "alvo": "natalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Incentivos têm efeito modesto e, muitas vezes, só antecipam filhos que viriam de todo jeito (Hungria: 1,23 → 1,61 → 1,39)."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "em incentivos-moderados ou pronatalismo-intenso",
+          "porque": "Benefícios, isenções e moradia para famílias pesam no orçamento."
+        },
+        {
+          "alvo": "envelhecimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais nascimentos rejuvenescem a pirâmide, mas só em décadas."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "em antinatalista-coercitiva ou pronatalismo-coercitivo",
+          "porque": "O Estado passa a decidir quantos filhos cada casal pode ou deve ter."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em pronatalismo-coercitivo",
+          "porque": "Proibir contracepção e aborto empurra mulheres para métodos inseguros (Romênia de Ceaușescu)."
+        },
+        {
+          "alvo": "pobreza",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em incentivos-moderados ou pronatalismo-intenso",
+          "porque": "Transferências por filho aliviam famílias numerosas."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_pais_familia",
+          "grupo_conservadores",
+          "grupo_religiosos"
+        ],
+        "perdem": ["grupo_progressistas", "grupo_mulheres"]
+      },
+      "eficacia": {
+        "aumenta": ["renda_familias", "participacao_trabalho_cuidadoras"],
+        "reduz": ["deficit_habitacional", "custo_trabalhista"],
+        "porque": "Bônus por bebê rende pouco se falta casa e se ter filho significa a mulher largar o emprego; creche e moradia pesam mais que o cheque."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "AEI – Hungary's fertility outcomes highlight pro-natal policy limitations",
+          "url": "https://cosm.aei.org/hungarys-fertility-outcomes-highlight-pro-natal-policy-limitations/"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "discriminacao",
+      "nome": "Discriminação",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Leis de casamento, laicidade, ações afirmativas, igualdade salarial e imigração mexem no quanto grupos são tratados como cidadãos de segunda classe; nenhuma bolha mede isso (desigualdade é renda)."
+    },
+    {
+      "id": "desinformacao",
+      "nome": "Desinformação",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Regulação de redes e liberdade de imprensa mexem na circulação de boatos e golpes, que por sua vez alimenta polarização e derruba confiança nas instituições."
+    },
+    {
+      "id": "diferenca_salarial_genero",
+      "nome": "Diferença salarial de gênero",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Igualdade salarial, licença parental e creches mexem nela; desigualdade geral não capta a diferença entre homens e mulheres."
+    },
+    {
+      "id": "vicio_em_apostas",
+      "nome": "Vício em apostas",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "A lei de apostas (e a de saúde mental) mexe nela, e ela alimenta endividamento das famílias e pobreza."
+    },
+    {
+      "id": "capacidade_defesa",
+      "nome": "Capacidade de defesa",
+      "tipo": "bolha_lenta",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_melhor",
+      "porque": "Gasto com defesa e serviço militar a constroem devagar; ela pesa na reputação internacional, no risco de golpe e em eventos de conflito externo."
+    },
+    {
+      "id": "crise_migratoria",
+      "nome": "Crise migratória",
+      "tipo": "situacao",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "surge_quando": "chegadas de imigrantes ou refugiados crescem rápido demais para a capacidade do Estado de acolher (por exemplo, colapso de um país vizinho)",
+      "porque": "Refugiados e política de imigração a provocam ou a evitam; ela pressiona gasto público, polarização e popularidade do governo."
+    }
+  ]
+}

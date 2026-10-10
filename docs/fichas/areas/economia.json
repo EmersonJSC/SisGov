@@ -1,0 +1,1540 @@
+{
+  "area": "Economia, finanças e comércio exterior",
+  "leis": [
+    {
+      "id": "meta-de-inflacao",
+      "nome": "Meta de inflação",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Banco Central",
+      "grupo": "institucional",
+      "descricao": "Define qual é a âncora da política monetária: nenhuma, inflação e emprego juntos, ou uma meta numérica de inflação com tolerância maior ou menor.",
+      "dilema": "Inflação baixa e previsível, ou juros mais baixos e mais folga para o emprego quando a economia tropeça?",
+      "eixo": "do sem âncora ao foco exclusivo e rígido na inflação",
+      "opcoes": [
+        {
+          "id": "sem-meta",
+          "rotulo": "Sem meta",
+          "manchete": "Governo abandona a meta: 'a moeda serve ao crescimento', diz ministro; dólar dispara no mesmo dia",
+          "exemplos": ["Argentina (anos 2000 e 2010)", "Venezuela"]
+        },
+        {
+          "id": "mandato-duplo",
+          "rotulo": "Inflação e emprego",
+          "manchete": "Banco Central ganha duas missões: segurar preços e garantir emprego; mercado pergunta qual vem primeiro",
+          "exemplos": [
+            "EUA (Fed: emprego máximo e preços estáveis, meta de 2%)",
+            "Austrália"
+          ]
+        },
+        {
+          "id": "meta-flexivel",
+          "rotulo": "Meta com banda larga",
+          "manchete": "Meta de inflação com folga generosa: BC pode esperar a economia antes de subir juros",
+          "exemplos": [
+            "Índia (4% ± 2)",
+            "México (3% ± 1)",
+            "Turquia (meta formal, pouco seguida em 2021–2023)"
+          ]
+        },
+        {
+          "id": "meta-estrita",
+          "rotulo": "Meta baixa e rígida",
+          "manchete": "Meta apertada e contínua: BC promete subir juros 'o quanto for preciso'; indústria reclama",
+          "exemplos": [
+            "Brasil (3% contínua, foco principal na estabilidade de preços)",
+            "Chile (3% ± 1)",
+            "Nova Zelândia (pioneira, 1990)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "meta-estrita",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; o custo aparece nos juros e, por eles, na dívida."
+      },
+      "efeitos": [
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Um alvo público e cobrado faz o BC agir antes que a inflação ganhe inércia."
+        },
+        {
+          "alvo": "expectativas_inflacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Quem reajusta preço e salário passa a mirar a meta, não a inflação passada."
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Para cumprir uma meta mais apertada, o BC precisa de juros mais altos nos choques."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Juros mais altos esfriam a economia no curto prazo; o efeito é maior quanto mais rígida a meta.",
+          "condicao": "em meta-estrita"
+        },
+        {
+          "alvo": "credito",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Crédito encarece e os bancos emprestam menos."
+        },
+        {
+          "alvo": "juros_da_divida",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Com juros altos, rolar a dívida pública custa mais."
+        },
+        {
+          "alvo": "risco_pais",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Moeda previsível reduz o prêmio que o investidor cobra para emprestar ao país."
+        },
+        {
+          "alvo": "cambio",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Sem âncora, a moeda vira válvula de escape e se desvaloriza em cada susto.",
+          "condicao": "em sem-meta"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_aposentados",
+          "grupo_pobres",
+          "grupo_setor_financeiro"
+        ],
+        "perdem": [
+          "grupo_industria",
+          "grupo_pequenos_negocios",
+          "grupo_sindicatos"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "confianca_instituicoes"],
+        "reduz": ["divida_publica", "resultado_fiscal"],
+        "porque": "Meta só funciona com BC crível; com dívida alta e déficit, juros altos pioram a conta e o mercado deixa de acreditar (dominância fiscal). Resultado fiscal ruim reduz a eficácia."
+      },
+      "mae": {
+        "lei": "autonomia-banco-central",
+        "opcoes": ["subordinado", "autonomia-parcial", "autonomia-plena"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Scott Roger – Inflation Targeting Turns 20 (IMF, Finance & Development, mar. 2010)",
+          "url": "https://www.imf.org/external/pubs/ft/fandd/2010/03/pdf/roger.pdf"
+        },
+        {
+          "titulo": "Federal Reserve – What economic goals does the Federal Reserve seek to achieve?",
+          "url": "https://www.federalreserve.gov/faqs/what-economic-goals-does-federal-reserve-seek-to-achieve-through-monetary-policy.htm"
+        },
+        {
+          "titulo": "Brasil – Lei Complementar 179/2021 (autonomia do Banco Central)",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp179.htm"
+        }
+      ]
+    },
+    {
+      "id": "controle-de-capitais",
+      "nome": "Controle de capitais",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Banco Central",
+      "grupo": "regulatoria",
+      "descricao": "Define quanto o dinheiro pode entrar e sair do país livremente: compra de dólares, remessa de lucros, aplicações de estrangeiros.",
+      "dilema": "Blindar o país contra o dinheiro que foge num dia de pânico, ou espantar quem traria investimento de longo prazo?",
+      "eixo": "da conta de capitais aberta à conta fechada",
+      "opcoes": [
+        {
+          "id": "conta-aberta",
+          "rotulo": "Conta aberta",
+          "manchete": "Dólar livre: qualquer um compra, qualquer empresa remete lucro; 'o capital vota com os pés', diz economista",
+          "exemplos": [
+            "EUA",
+            "Singapura",
+            "Argentina (fim do 'cepo', abril de 2025)"
+          ]
+        },
+        {
+          "id": "controles-prudenciais",
+          "rotulo": "Pedágio no dinheiro quente",
+          "manchete": "Governo cobra pedágio sobre o capital de curto prazo para conter a enxurrada de dólares",
+          "exemplos": [
+            "Chile (encaje de 20–30%, 1991–1998)",
+            "Brasil (IOF sobre aplicações estrangeiras, 2009–2013)"
+          ]
+        },
+        {
+          "id": "controles-amplos",
+          "rotulo": "Controles amplos",
+          "manchete": "Remessas ao exterior agora precisam de autorização; brasileiros correm às casas de câmbio",
+          "exemplos": [
+            "Índia (limites a saídas de residentes)",
+            "Malásia (1998)"
+          ]
+        },
+        {
+          "id": "conta-fechada",
+          "rotulo": "Conta fechada",
+          "manchete": "Cepo cambial: dólar só com autorização oficial, e o 'dólar paralelo' vira manchete diária",
+          "exemplos": [
+            "China (conversibilidade restrita)",
+            "Venezuela (CADIVI, desde 2003)",
+            "Argentina ('cepo', 2011–2015 e 2019–2025)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "controles-prudenciais",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Pedágios como o IOF sobre câmbio arrecadam um pouco; o custo maior é o investimento que deixa de vir."
+      },
+      "efeitos": [
+        {
+          "alvo": "crise_financeira",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Menos dinheiro de curto prazo significa menos dinheiro para fugir de uma vez.",
+          "condicao": "em controles-prudenciais e controles-amplos"
+        },
+        {
+          "alvo": "ied",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem não sabe se poderá tirar o lucro do país pensa duas vezes antes de investir."
+        },
+        {
+          "alvo": "reservas_internacionais",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Os dólares ficam presos no país e o BC perde menos reservas em um ataque especulativo."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Capital estrangeiro mais caro encarece o financiamento, sobretudo das empresas menores."
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "No Chile, o pedágio elevou um pouco os juros domésticos e pesou mais sobre pequenas firmas."
+        },
+        {
+          "alvo": "mercado_paralelo",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Quando o dólar oficial é racionado, nasce um dólar 'blue' mais caro na esquina.",
+          "condicao": "em conta-fechada"
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem decide quem recebe dólar oficial barato vende esse favor.",
+          "condicao": "em conta-fechada"
+        },
+        {
+          "alvo": "risco_pais",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Investidores leem controles como sinal de que o país pode prender o seu dinheiro amanhã.",
+          "condicao": "a partir de controles-amplos"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_industria"],
+        "perdem": [
+          "grupo_setor_financeiro",
+          "grupo_ricos",
+          "grupo_empresarios",
+          "grupo_classe_media"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["corrupcao", "informalidade"],
+        "porque": "Controle exige fiscalização afinada: com corrupção e economia informal, o dinheiro escapa por notas frias e doleiros."
+      },
+      "mae": {
+        "lei": "regime-cambial",
+        "opcoes": ["fixo", "bandas", "flutuante-administrado", "flutuante"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "De Gregorio, Edwards & Valdés – Controls on Capital Inflows: Do They Work? (NBER w7645)",
+          "url": "https://www.nber.org/papers/w7645"
+        },
+        {
+          "titulo": "Forbes, Fratzscher, Kostka & Straub – Bubble Thy Neighbor: Portfolio Effects and Externalities from Capital Controls (NBER w18052)",
+          "url": "https://www.nber.org/papers/w18052"
+        },
+        {
+          "titulo": "U.S. International Trade Administration – Argentina eliminates capital controls and payment timelines",
+          "url": "https://trade.gov/market-intelligence/argentina-eliminates-capital-controls-and-payment-timelines"
+        }
+      ]
+    },
+    {
+      "id": "tarifas-de-importacao",
+      "nome": "Tarifas de importação",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+      "grupo": "tributaria",
+      "descricao": "Define a tarifa média cobrada sobre os produtos que entram no país.",
+      "dilema": "Proteger a fábrica e o emprego nacional, ou deixar o consumidor e a própria indústria comprarem mais barato lá fora?",
+      "eixo": "da tarifa zero à tarifa alta",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 40,
+        "exemplos": [
+          {
+            "pais": "Singapura (2025)",
+            "valor": 0.0
+          },
+          {
+            "pais": "Chile (2025)",
+            "valor": 6.0
+          },
+          {
+            "pais": "China (2025)",
+            "valor": 7.5
+          },
+          {
+            "pais": "Argentina (2026)",
+            "valor": 11.0
+          },
+          {
+            "pais": "Brasil (2025)",
+            "valor": 12.0
+          },
+          {
+            "pais": "Índia (2025)",
+            "valor": 15.8
+          },
+          {
+            "pais": "Turquia (2024)",
+            "valor": 17.5
+          }
+        ]
+      },
+      "brasil": 12.0,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "A tarifa arrecada, mas pouco perto de impostos internos; e cai se as importações despencarem."
+      },
+      "efeitos": [
+        {
+          "alvo": "importacoes",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Produto de fora fica mais caro na prateleira."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A tarifa é repassada quase toda ao preço final e aos insumos."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Cada contêiner que entra paga mais na alfândega."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Sem concorrência de fora e com insumos caros, a indústria se acomoda."
+        },
+        {
+          "alvo": "pib",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Em 151 países, alta de tarifas foi seguida de queda de produto no médio prazo."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Bens básicos encarecem e pesam mais no orçamento dos pobres."
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Insumos caros e retaliação de parceiros tiram competitividade de quem exporta."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Em 151 países, tarifas mais altas vieram seguidas de mais desemprego no médio prazo, apesar do alívio inicial nos setores protegidos."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_industria", "grupo_sindicatos"],
+        "perdem": ["grupo_classe_media", "grupo_pobres", "grupo_agronegocio"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao", "informalidade"],
+        "porque": "Tarifa alta só protege se a alfândega funciona; senão vira contrabando e subfaturamento."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Furceri, Hannan, Ostry & Rose – Macroeconomic Consequences of Tariffs (NBER w25402)",
+          "url": "https://www.nber.org/papers/w25402"
+        },
+        {
+          "titulo": "Amiti, Redding & Weinstein – The Impact of the 2018 Trade War on U.S. Prices and Welfare (NBER w25672)",
+          "url": "https://www.nber.org/papers/w25672"
+        },
+        {
+          "titulo": "WTO – Tariff & Trade Data, perfil do Brasil",
+          "url": "https://ttd.wto.org/en/profiles/brazil"
+        }
+      ]
+    },
+    {
+      "id": "acordos-comerciais",
+      "nome": "Acordos comerciais",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério das Relações Exteriores",
+      "grupo": "institucional",
+      "descricao": "Define a estratégia de integração comercial do país: ficar só nas regras gerais, entrar num bloco com tarifa comum ou assinar acordos de livre comércio com quem quiser.",
+      "dilema": "Abrir mercados para quem exporta ao preço de expor a indústria nacional à concorrência, ou manter o mercado interno protegido e ficar fora das grandes cadeias?",
+      "eixo": "do isolamento comercial ao livre comércio amplo",
+      "opcoes": [
+        {
+          "id": "sem-acordos",
+          "rotulo": "Sem acordos",
+          "manchete": "País fica só com as regras gerais da OMC: 'não precisamos de ninguém', diz governo",
+          "exemplos": [
+            "Mongólia (sem acordos de livre comércio até 2016)",
+            "Venezuela (deixou a Comunidade Andina em 2006 e foi suspensa do Mercosul em 2016)"
+          ]
+        },
+        {
+          "id": "uniao-aduaneira",
+          "rotulo": "Bloco com tarifa comum",
+          "manchete": "Bloco regional fecha tarifa externa comum: acordo com terceiros só se todos os sócios topam",
+          "exemplos": [
+            "Brasil e Argentina (Mercosul)",
+            "Rússia (União Econômica Eurasiática)"
+          ]
+        },
+        {
+          "id": "rede-seletiva",
+          "rotulo": "Acordos seletivos",
+          "manchete": "Acordo setorial: país abre a porta para máquinas, mas protege carros e leite",
+          "exemplos": ["Índia", "China (RCEP e acordos bilaterais)"]
+        },
+        {
+          "id": "livre-comercio-amplo",
+          "rotulo": "Livre comércio amplo",
+          "manchete": "País assina mais um acordo e agora tem tarifa zero com metade do PIB mundial",
+          "exemplos": [
+            "Chile (36 acordos vigentes)",
+            "México (USMCA e UE)",
+            "Singapura",
+            "Vietnã (CPTPP, acordo com a UE)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "uniao-aduaneira",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Abrir o comércio reduz o que se arrecada com tarifas; o efeito no orçamento é pequeno."
+      },
+      "efeitos": [
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Tarifas menores nos parceiros abrem mercados; acordos multiplicam o comércio entre membros ao longo de anos."
+        },
+        {
+          "alvo": "importacoes",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Produto do parceiro entra sem tarifa."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Concorrência de fora e insumos mais baratos obrigam e ajudam a indústria a melhorar."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Bens importados ficam mais baratos."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Quem assina acordos ganha voz e aliados."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Some parte da receita das tarifas."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Fábricas que não aguentam a concorrência fecham antes que surjam vagas em outros setores.",
+          "condicao": "nas regiões com indústria protegida"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_agronegocio",
+          "grupo_classe_media",
+          "grupo_empresarios"
+        ],
+        "perdem": [
+          "grupo_industria",
+          "grupo_sindicatos",
+          "grupo_agricultores_familiares"
+        ]
+      },
+      "eficacia": {
+        "aumenta": [
+          "infraestrutura",
+          "capacidade_estatal",
+          "reputacao_internacional"
+        ],
+        "reduz": ["cambio"],
+        "porque": "Acordo só vira exportação se porto, estrada e alfândega funcionam; moeda instável afasta parceiros."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Baier & Bergstrand – Do free trade agreements actually increase members' international trade? (Journal of International Economics, 2007)",
+          "url": "https://ideas.repec.org/a/eee/inecon/v71y2007i1p72-95.html"
+        },
+        {
+          "titulo": "SUBREI (Chile) – Acuerdos comerciales vigentes",
+          "url": "https://www.subrei.gob.cl/acuerdos-comerciales/acuerdos-comerciales-vigentes"
+        }
+      ]
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao",
+      "nome": "Empresas estatais e privatização",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério da Gestão e da Inovação",
+      "grupo": "institucional",
+      "descricao": "Define o tamanho do Estado como empresário: quais setores têm empresas públicas e quais são vendidos ao setor privado.",
+      "dilema": "Vender estatais para ganhar eficiência e caixa, ou mantê-las como instrumento de política (e de cabide)?",
+      "eixo": "do Estado fora do mercado ao Estado empresário",
+      "opcoes": [
+        {
+          "id": "sem-estatais",
+          "rotulo": "Privatizar tudo",
+          "manchete": "Leilão do século: governo vende tudo, até os Correios; sindicatos param o país",
+          "exemplos": [
+            "Reino Unido (privatizações dos anos 1980–90)",
+            "Argentina (anos 1990; Lei Bases, 2024)",
+            "Chile (anos 1970–80, exceto o cobre)"
+          ]
+        },
+        {
+          "id": "estatais-minimas",
+          "rotulo": "Só serviços essenciais",
+          "manchete": "Estado fica só com o básico: correio, trens e água; o resto vai a leilão",
+          "exemplos": ["EUA (USPS, Amtrak, TVA)", "Nova Zelândia"]
+        },
+        {
+          "id": "estatais-estrategicas",
+          "rotulo": "Estatais estratégicas",
+          "manchete": "Governo mantém o controle da petroleira e dos bancos públicos: 'são do povo'",
+          "exemplos": [
+            "Brasil (Petrobras, Banco do Brasil, Caixa)",
+            "Noruega (Equinor)",
+            "Singapura (Temasek)",
+            "Índia"
+          ]
+        },
+        {
+          "id": "estado-empresario",
+          "rotulo": "Estado empresário",
+          "manchete": "Estatização: governo assume siderúrgica, telefônica e supermercados",
+          "exemplos": [
+            "China",
+            "Vietnã",
+            "Venezuela (nacionalizações de 2007–2010)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "estatais-estrategicas",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Estatais rendem dividendos quando vão bem, mas pedem aportes do Tesouro quando vão mal; privatizar traz caixa uma vez só."
+      },
+      "efeitos": [
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Empresas privatizadas tendem a ficar mais eficientes e lucrativas; sob o Estado, a pressão por eficiência é menor."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Diretoria e contratos de estatal viram moeda de troca política."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Estatais deficitárias recebem aportes e capitalizações."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Estatais podem investir onde o privado não vai (infraestrutura, regiões pobres).",
+          "condicao": "em estatais-estrategicas"
+        },
+        {
+          "alvo": "preco_energia",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Estatal pode segurar tarifas por decisão política, ao custo do próprio caixa."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Empresário teme concorrer com o Estado ou ser o próximo estatizado.",
+          "condicao": "em estado-empresario"
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Privatizar costuma vir com enxugamento de quadro.",
+          "condicao": "em sem-estatais"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_sindicatos"],
+        "perdem": ["grupo_empresarios", "grupo_setor_financeiro"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Estatal só é estratégica com governança: diretoria técnica, metas e controle. Sem isso, vira cabide e prejuízo."
+      },
+      "mae": null,
+      "filhas": [
+        "banco-de-desenvolvimento",
+        "regime-do-petroleo",
+        "concessoes-e-ppps"
+      ],
+      "fontes": [
+        {
+          "titulo": "Megginson & Netter – From State to Market: A Survey of Empirical Studies on Privatization (Journal of Economic Literature, 2001)",
+          "url": "https://ideas.repec.org/a/aea/jeclit/v39y2001i2p321-389.html"
+        }
+      ]
+    },
+    {
+      "id": "defesa-da-concorrencia",
+      "nome": "Defesa da concorrência",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "institucional",
+      "descricao": "Define quanto o Estado vigia cartéis, fusões e abusos de empresas dominantes.",
+      "dilema": "Gigantes nacionais capazes de competir no mundo, ou mercados disputados com preços menores para o consumidor?",
+      "eixo": "do sem antitruste ao antitruste rigoroso",
+      "opcoes": [
+        {
+          "id": "sem-politica",
+          "rotulo": "Sem antitruste",
+          "manchete": "Fusões liberadas: três empresas passam a dominar o supermercado do país",
+          "exemplos": ["Hong Kong (sem lei geral de concorrência até 2015)"]
+        },
+        {
+          "id": "campeoes-nacionais",
+          "rotulo": "Campeões nacionais",
+          "manchete": "Governo abençoa a megafusão: 'precisamos de gigantes para competir lá fora'",
+          "exemplos": [
+            "Coreia do Sul (chaebols, anos 1970–80)",
+            "China",
+            "Brasil (política de campeões nacionais, 2007–2014)"
+          ]
+        },
+        {
+          "id": "moderada",
+          "rotulo": "Antitruste moderado",
+          "manchete": "Órgão antitruste aprova fusão com condições: vender lojas e não reajustar preços por dois anos",
+          "exemplos": [
+            "Brasil (CADE, análise prévia de fusões desde 2012)",
+            "México"
+          ]
+        },
+        {
+          "id": "rigorosa",
+          "rotulo": "Antitruste rigoroso",
+          "manchete": "Antitruste manda dividir a gigante; ações despencam e consumidores comemoram",
+          "exemplos": [
+            "Alemanha e UE (Bundeskartellamt e Comissão Europeia)",
+            "EUA"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "moderada",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Um órgão técnico custa pouco; multas a cartéis até rendem algum caixa."
+      },
+      "efeitos": [
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Cartéis são punidos e fusões que matam a concorrência são barradas."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mercados disputados cobram menos."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem precisa competir precisa melhorar."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Empresas desafiantes conseguem entrar e testar ideias novas."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Grandes grupos se queixam de insegurança para planejar fusões."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Fusões barradas ou demoradas adiam investimentos.",
+          "condicao": "em rigorosa"
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Gigantes protegidos em casa ganham escala para exportar.",
+          "condicao": "em campeoes-nacionais"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_classe_media",
+          "grupo_pequenos_negocios",
+          "grupo_pobres"
+        ],
+        "perdem": ["grupo_empresarios", "grupo_ricos"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Órgão antitruste capturado pelos grandes grupos aprova tudo; órgão técnico e independente faz a regra valer."
+      },
+      "mae": null,
+      "filhas": ["regulacao-mercados-digitais"],
+      "fontes": [
+        {
+          "titulo": "OECD – Factsheet on competition and macro-economic outcomes",
+          "url": "https://search.oecd.org/competition/factsheet-macroeconomics-competition.htm"
+        }
+      ]
+    },
+    {
+      "id": "banco-de-desenvolvimento",
+      "nome": "Banco de desenvolvimento",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+      "grupo": "institucional",
+      "descricao": "Define o papel do banco público de fomento: não existir, emprestar a preço de mercado por meio de outros bancos, ou conceder crédito barato e direcionado com dinheiro do Tesouro.",
+      "dilema": "Crédito longo e barato para quem investe, ou subsídio caro que acaba nas mãos de quem já tinha acesso a dinheiro?",
+      "eixo": "do sem banco de fomento ao crédito subsidiado em massa",
+      "opcoes": [
+        {
+          "id": "sem-banco",
+          "rotulo": "Sem banco de fomento",
+          "manchete": "Fim do banco de fomento: 'quem quiser crédito que vá ao mercado'",
+          "exemplos": ["EUA (sem banco nacional de desenvolvimento geral)"]
+        },
+        {
+          "id": "segundo-piso-mercado",
+          "rotulo": "Fomento a preço de mercado",
+          "manchete": "Banco de fomento vira repassador: empresta via bancos privados, sem juros camaradas",
+          "exemplos": ["Alemanha (KfW)", "Chile (CORFO)"]
+        },
+        {
+          "id": "credito-direcionado",
+          "rotulo": "Crédito direcionado",
+          "manchete": "Banco de fomento escolhe setores prioritários e cobra juro um pouco abaixo do mercado",
+          "exemplos": [
+            "Brasil (BNDES com TLP, desde 2018)",
+            "México (Nafin)",
+            "Índia (SIDBI)"
+          ]
+        },
+        {
+          "id": "credito-subsidiado-massivo",
+          "rotulo": "Crédito subsidiado em massa",
+          "manchete": "Tesouro injeta bilhões no banco de fomento; juro de pai para filho para quem investir",
+          "exemplos": [
+            "Brasil (BNDES com aportes do Tesouro, 2009–2014)",
+            "China (China Development Bank)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "credito-direcionado",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "A diferença entre o juro cobrado e o custo de captação do Tesouro é subsídio pago por todos."
+      },
+      "efeitos": [
+        {
+          "alvo": "credito",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Empresas ganham acesso a crédito longo, que o mercado privado oferece pouco."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Parte do crédito financia projetos novos; outra parte só substitui financiamento que a empresa conseguiria de outro jeito."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O subsídio na taxa sai do Tesouro.",
+          "condicao": "a partir de credito-direcionado"
+        },
+        {
+          "alvo": "divida_publica",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Aportes do Tesouro ao banco são feitos com dívida.",
+          "condicao": "em credito-subsidiado-massivo"
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Crédito subsidiado não responde ao BC, e os juros do resto da economia precisam subir mais para segurar a inflação."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Empresas ligadas a políticos vencedores recebem mais crédito."
+        },
+        {
+          "alvo": "infraestrutura",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Banco de fomento financia estradas, energia e saneamento de prazo longo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_industria", "grupo_empresarios", "grupo_agronegocio"],
+        "perdem": ["grupo_setor_financeiro", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Com critérios técnicos e transparência, o crédito vai para projetos que o mercado não financiaria; sem isso, vai para os amigos."
+      },
+      "mae": {
+        "lei": "empresas-estatais-e-privatizacao",
+        "opcoes": [
+          "estatais-minimas",
+          "estatais-estrategicas",
+          "estado-empresario"
+        ]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Lazzarini, Musacchio, Bandeira-de-Mello & Marcon – What Do State-Owned Development Banks Do? Evidence from BNDES, 2002–09",
+          "url": "https://dash.harvard.edu/bitstream/1/15786565/1/lazzarini,musacchio,bandeira-de-mello,marcon_what-do-development-banks-do.pdf"
+        }
+      ]
+    },
+    {
+      "id": "controle-de-precos",
+      "nome": "Controle de preços",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "regulatoria",
+      "descricao": "Define se o governo fixa ou limita preços de bens e serviços, e de quantos.",
+      "dilema": "Comida barata na gôndola hoje, ou comida na gôndola amanhã?",
+      "eixo": "dos preços livres ao tabelamento geral",
+      "opcoes": [
+        {
+          "id": "precos-livres",
+          "rotulo": "Preços livres",
+          "manchete": "Fim das tabelas: preços agora são do mercado; supermercados remarcam no mesmo dia",
+          "exemplos": [
+            "Chile",
+            "Singapura",
+            "Argentina (desregulação a partir de 2024)"
+          ]
+        },
+        {
+          "id": "precos-administrados",
+          "rotulo": "Só setores regulados",
+          "manchete": "Agência define reajuste da luz e dos remédios; o resto é livre",
+          "exemplos": [
+            "Brasil (energia, remédios via CMED, planos de saúde)",
+            "Alemanha"
+          ]
+        },
+        {
+          "id": "tetos-cesta-basica",
+          "rotulo": "Teto na cesta básica",
+          "manchete": "Governo congela preço do açúcar, do óleo e do frango; fila no mercado já na primeira semana",
+          "exemplos": [
+            "Hungria (tetos em alimentos, 2022–2023)",
+            "Argentina (Precios Cuidados, 2014–2023)",
+            "México (acordo anti-inflação, 2022)"
+          ]
+        },
+        {
+          "id": "tabelamento-geral",
+          "rotulo": "Tabelamento geral",
+          "manchete": "Lei de Preços Justos: fiscais vão às lojas com a tabela na mão; prateleiras esvaziam",
+          "exemplos": [
+            "Venezuela (Ley de Precios Justos, 2014)",
+            "Brasil (Plano Cruzado, 1986)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "precos-administrados",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Fiscalizar custa pouco; o custo real é a produção que deixa de existir e, às vezes, subsídio para manter o preço."
+      },
+      "efeitos": [
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O índice oficial cai na hora, porque os itens tabelados param de subir."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Os itens fora da tabela sobem mais para compensar, e o represamento explode quando o controle cai.",
+          "condicao": "a partir de tetos-cesta-basica"
+        },
+        {
+          "alvo": "desabastecimento",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Quando o preço tabelado fica abaixo do custo, produtor e mercado param de ofertar.",
+          "condicao": "a partir de tetos-cesta-basica"
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Ninguém amplia fábrica para vender abaixo do custo."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O produto some da prateleira e reaparece no mercado negro, mais caro."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Preço congelado é popular nas primeiras semanas."
+        },
+        {
+          "alvo": "preco_alimentos",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cesta tabelada fica mais barata enquanto houver estoque.",
+          "condicao": "a partir de tetos-cesta-basica"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_classe_media"],
+        "perdem": [
+          "grupo_agronegocio",
+          "grupo_agricultores_familiares",
+          "grupo_pequenos_negocios",
+          "grupo_empresarios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["inflacao", "cambio"],
+        "porque": "Com inflação alta e moeda caindo, o custo de produzir sobe todo mês e o preço tabelado fica para trás cada vez mais rápido."
+      },
+      "mae": null,
+      "filhas": ["politica-de-precos-combustiveis"],
+      "fontes": [
+        {
+          "titulo": "BNN Bloomberg – Orban's food price caps backfire for Hungarian holiday shoppers",
+          "url": "https://www.bnnbloomberg.ca/orban-s-food-price-caps-backfire-for-hungarian-holiday-shoppers-1.1861244"
+        },
+        {
+          "titulo": "Agroberichten Buitenland – Hungary: price cap and export control measures lifted",
+          "url": "https://agroberichtenbuitenland.nl/actueel/nieuws/2023/01/27/hungary-price-cap-and-export-control-measures-lifted"
+        },
+        {
+          "titulo": "Acceso a la Justicia – El control de precios como herramienta contra el pueblo (Venezuela)",
+          "url": "https://accesoalajusticia.org/el-control-de-precios-como-herramienta-contra-el-pueblo/"
+        }
+      ]
+    },
+    {
+      "id": "regulacao-bancaria",
+      "nome": "Regulação bancária",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Banco Central",
+      "grupo": "regulatoria",
+      "descricao": "Define quanto capital próprio e reservas os bancos precisam ter e o quanto o Estado orienta para onde vai o crédito.",
+      "dilema": "Bancos à prova de crise, ou crédito farto e barato para quem quer investir e consumir?",
+      "eixo": "da regulação mínima à repressão financeira",
+      "opcoes": [
+        {
+          "id": "minima",
+          "rotulo": "Regulação mínima",
+          "manchete": "Bancos livres para alavancar: crédito explode e o lucro dos bancos bate recorde",
+          "exemplos": [
+            "Islândia (antes de 2008)",
+            "EUA (setor bancário paralelo nos anos 2000)"
+          ]
+        },
+        {
+          "id": "basileia-padrao",
+          "rotulo": "Padrão internacional",
+          "manchete": "País adota as regras internacionais de capital: bancos terão colchão para tempos ruins",
+          "exemplos": ["EUA", "Reino Unido", "Japão"]
+        },
+        {
+          "id": "basileia-reforcada",
+          "rotulo": "Regras reforçadas",
+          "manchete": "BC exige capital extra e compulsório alto: bancos sólidos, crédito caro",
+          "exemplos": [
+            "Brasil (Basileia III com compulsórios altos)",
+            "Suíça (capital extra para grandes bancos)"
+          ]
+        },
+        {
+          "id": "repressao-financeira",
+          "rotulo": "Crédito dirigido pelo Estado",
+          "manchete": "Governo manda bancos comprarem títulos públicos e emprestarem a setores escolhidos",
+          "exemplos": [
+            "China (orientação de crédito e compulsório alto)",
+            "Índia (exigência de títulos públicos nos bancos)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "basileia-reforcada",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Supervisão custa pouco ao orçamento; o custo é o crédito mais caro e escasso."
+      },
+      "efeitos": [
+        {
+          "alvo": "crise_financeira",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Bancos com mais capital aguentam perdas sem quebrar e sem precisar de resgate."
+        },
+        {
+          "alvo": "credito",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Cada real emprestado exige mais capital, e o banco empresta menos."
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Os bancos repassam o custo do capital extra para o spread."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Crédito mais caro adia projetos."
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Regras complexas favorecem os grandes bancos e dificultam a entrada de novos."
+        },
+        {
+          "alvo": "juros_da_divida",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Bancos obrigados a comprar títulos públicos financiam o governo barato.",
+          "condicao": "em repressao-financeira"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Crédito dirigido por decisão política vai para setores escolhidos, nem sempre os mais produtivos.",
+          "condicao": "em repressao-financeira"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_aposentados", "grupo_classe_media"],
+        "perdem": ["grupo_setor_financeiro", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Regra no papel não salva banco: é preciso supervisor técnico e independente dos banqueiros e dos políticos."
+      },
+      "mae": null,
+      "filhas": ["seguro-de-depositos"],
+      "fontes": [
+        {
+          "titulo": "BIS Quarterly Review (dez. 2015) – The long-term economic impact of stronger capital and liquidity requirements",
+          "url": "https://www.bis.org/publ/qtrpdf/r_qt1512x.htm"
+        }
+      ]
+    },
+    {
+      "id": "investimento-estrangeiro",
+      "nome": "Investimento estrangeiro",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+      "grupo": "regulatoria",
+      "descricao": "Define em que setores estrangeiros podem abrir ou comprar empresas, e se o país os atrai com incentivos.",
+      "dilema": "Fábricas, empregos e tecnologia de fora, ou controle nacional sobre setores estratégicos e menos concorrência para a empresa local?",
+      "eixo": "do fechado ao investidor estrangeiro à atração ativa com incentivos",
+      "opcoes": [
+        {
+          "id": "fechado",
+          "rotulo": "Fechado",
+          "manchete": "Estrangeiro fora: setores-chave só para nacionais, multinacionais anunciam saída",
+          "exemplos": [
+            "Coreia do Norte",
+            "Índia (antes de 1991)",
+            "China (antes de 1979)"
+          ]
+        },
+        {
+          "id": "lista-negativa",
+          "rotulo": "Lista negativa",
+          "manchete": "Governo publica lista de setores vetados ou com sócio local obrigatório",
+          "exemplos": [
+            "China (lista negativa com 29 itens em 2024)",
+            "Índia (aprovação prévia em setores sensíveis)"
+          ]
+        },
+        {
+          "id": "restricoes-setoriais",
+          "rotulo": "Restrições pontuais",
+          "manchete": "Aberto, mas com triagem: compra estrangeira de terras e de empresas estratégicas passa pelo crivo do governo",
+          "exemplos": [
+            "Brasil (terras rurais, mídia)",
+            "EUA (triagem do CFIUS)",
+            "Alemanha",
+            "México (energia)"
+          ]
+        },
+        {
+          "id": "sem-restricoes",
+          "rotulo": "Porta aberta",
+          "manchete": "Porteira aberta: estrangeiro investe onde quiser, como qualquer nacional",
+          "exemplos": ["Hong Kong"]
+        },
+        {
+          "id": "atracao-com-incentivos",
+          "rotulo": "Tapete vermelho",
+          "manchete": "País oferece isenção de imposto e terreno de graça para atrair a gigante de chips",
+          "exemplos": ["Singapura", "Irlanda", "Vietnã (zonas industriais)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "restricoes-setoriais",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Abrir não custa; atrair com incentivos custa receita de impostos."
+      },
+      "efeitos": [
+        {
+          "alvo": "ied",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Mais setores abertos e mais segurança atraem fábricas e aquisições."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O dinheiro de fora se soma ao investimento nacional."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Multinacionais trazem tecnologia e práticas que se espalham para fornecedores."
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Multinacionais usam o país como base de exportação."
+        },
+        {
+          "alvo": "cambio",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "A entrada de dólares valoriza a moeda."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Isenções para atrair empresas reduzem a receita.",
+          "condicao": "em atracao-com-incentivos"
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Grandes grupos estrangeiros compram concorrentes locais."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_jovens",
+          "grupo_setor_financeiro"
+        ],
+        "perdem": [
+          "grupo_pequenos_negocios",
+          "grupo_industria",
+          "grupo_militares"
+        ]
+      },
+      "eficacia": {
+        "aumenta": [
+          "forca_instituicoes",
+          "infraestrutura",
+          "qualificacao_trabalho"
+        ],
+        "reduz": ["risco_pais", "corrupcao"],
+        "porque": "Abrir a porta não basta: o investidor vem onde há regras estáveis, logística e mão de obra qualificada."
+      },
+      "mae": null,
+      "filhas": ["zonas-economicas-especiais"],
+      "fontes": [
+        {
+          "titulo": "CMS – New Negative List 2024: China abolishes all restrictions on foreign investment in the manufacturing sector",
+          "url": "https://cms.law/en/chn/legal-updates/new-negative-list-2024-china-abolishes-all-restrictions-on-foreign-investment-in-the-manufacturing-sector"
+        }
+      ]
+    },
+    {
+      "id": "politica-industrial",
+      "nome": "Política industrial",
+      "area": "Economia, finanças e comércio exterior",
+      "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+      "grupo": "regulatoria",
+      "descricao": "Define se e como o Estado escolhe setores para estimular: nada, apoio geral a todos, apoio a setores com metas de exportação ou proteção do mercado interno.",
+      "dilema": "Apostar em setores do futuro e arriscar alimentar empresas que nunca andam sozinhas, ou deixar o mercado escolher e aceitar ficar na especialização que se tem?",
+      "eixo": "do não intervencionismo à proteção do mercado interno",
+      "opcoes": [
+        {
+          "id": "nenhuma",
+          "rotulo": "Sem política industrial",
+          "manchete": "'A melhor política industrial é não ter nenhuma', diz ministro ao fechar programas setoriais",
+          "exemplos": [
+            "Hong Kong ('não intervencionismo positivo')",
+            "Chile (neutralidade setorial a partir dos anos 1980)"
+          ]
+        },
+        {
+          "id": "horizontal",
+          "rotulo": "Apoio horizontal",
+          "manchete": "Governo corta impostos de P&D para todas as empresas, sem escolher vencedores",
+          "exemplos": [
+            "Reino Unido (crédito fiscal a P&D)",
+            "Alemanha (institutos Fraunhofer)"
+          ]
+        },
+        {
+          "id": "setorial-exportadora",
+          "rotulo": "Apostas com metas de exportação",
+          "manchete": "Plano de chips e baterias: subsídio só para quem bater meta de exportação",
+          "exemplos": [
+            "Coreia do Sul (anos 1960–80)",
+            "China ('Made in China 2025')",
+            "EUA (CHIPS Act, 2022)"
+          ]
+        },
+        {
+          "id": "protecao-mercado-interno",
+          "rotulo": "Proteger o mercado interno",
+          "manchete": "Conteúdo local obrigatório: 'carro e navio feitos aqui, com peças daqui'",
+          "exemplos": [
+            "Brasil (substituição de importações, 1950–1980; conteúdo local e Nova Indústria Brasil)",
+            "Índia (antes de 1991)",
+            "Argentina"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "protecao-mercado-interno",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Subsídios, crédito barato e renúncias fiscais custam caro; a política horizontal custa menos."
+      },
+      "efeitos": [
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Subsídios e renúncias saem do orçamento."
+        },
+        {
+          "alvo": "desenvolvimento",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Setores novos e de tecnologia ganham escala que não teriam sozinhos.",
+          "condicao": "a partir de horizontal"
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Apoio condicionado a exportar força a empresa a competir lá fora.",
+          "condicao": "em setorial-exportadora"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Empresas protegidas da concorrência e sem metas se acomodam.",
+          "condicao": "em protecao-mercado-interno"
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Escolher vencedores atrai lobby e caça a benefícios."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Fábricas apoiadas mantêm e criam empregos industriais."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Conteúdo local e proteção encarecem bens e insumos.",
+          "condicao": "em protecao-mercado-interno"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_industria", "grupo_sindicatos"],
+        "perdem": ["grupo_agronegocio", "grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": [
+          "capacidade_estatal",
+          "qualificacao_trabalho",
+          "forca_instituicoes"
+        ],
+        "reduz": ["corrupcao"],
+        "porque": "A política industrial que funcionou teve Estado capaz de cobrar resultado e cortar apoio de quem não entrega; com corrupção, vira captura."
+      },
+      "mae": null,
+      "filhas": ["zonas-economicas-especiais", "incentivos-fiscais-regionais"],
+      "fontes": [
+        {
+          "titulo": "Juhász, Lane & Rodrik – The New Economics of Industrial Policy (NBER w31538)",
+          "url": "https://www.nber.org/papers/w31538"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "ied",
+      "nome": "Investimento estrangeiro direto",
+      "tipo": "indice",
+      "unidade": "percentual_pib",
+      "avaliacao": "maior_melhor",
+      "porque": "Diferente de 'investimento' (total): mede o dinheiro de fora que entra para abrir ou comprar empresas; controle de capitais, regras de investimento estrangeiro e risco país mexem nela, e ela alimenta investimento, câmbio e reservas."
+    },
+    {
+      "id": "expectativas_inflacao",
+      "nome": "Expectativas de inflação",
+      "tipo": "indice",
+      "unidade": "percentual",
+      "avaliacao": "maior_pior",
+      "porque": "Diferente da inflação de hoje: é a inflação que empresas e trabalhadores esperam e embutem em preços e salários; meta de inflação, autonomia do BC e regra fiscal atuam por ela."
+    },
+    {
+      "id": "desabastecimento",
+      "nome": "Desabastecimento",
+      "tipo": "situacao",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "surge_quando": "preços tabelados ficam abaixo do custo de produzir, ou faltam dólares para importar, e as prateleiras esvaziam",
+      "porque": "Controle de preços, falta de divisas e choques de oferta produzem filas e prateleiras vazias, que derrubam a popularidade e alimentam protestos."
+    },
+    {
+      "id": "mercado_paralelo",
+      "nome": "Dólar paralelo",
+      "tipo": "situacao",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "surge_quando": "o dólar oficial é racionado e a diferença para o câmbio de rua passa a ser grande",
+      "porque": "Conta de capitais fechada com câmbio oficial artificial cria um segundo mercado de câmbio, que alimenta corrupção, informalidade e expectativa de desvalorização."
+    }
+  ]
+}

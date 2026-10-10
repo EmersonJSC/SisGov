@@ -1,0 +1,1517 @@
+{
+  "area": "Trabalho e emprego",
+  "leis": [
+    {
+      "id": "legislacao-trabalhista",
+      "nome": "Legislação trabalhista",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define quanto a lei protege o empregado: contrato livre, regras mínimas, código trabalhista completo ou proteção máxima contra demissão.",
+      "dilema": "Proteger quem já tem emprego ou facilitar a vida de quem quer contratar (e de quem ainda está do lado de fora)?",
+      "eixo": "da ausência de regras à proteção máxima do empregado",
+      "opcoes": [
+        {
+          "id": "sem-regras",
+          "rotulo": "Sem código trabalhista",
+          "manchete": "Contrato é contrato: governo revoga o código do trabalho e manda patrão e empregado se entenderem",
+          "exemplos": [
+            "Reino Unido antes das Factory Acts (séc. XIX)",
+            "Trabalho doméstico migrante sob o sistema kafala no Golfo (antes das reformas recentes)"
+          ]
+        },
+        {
+          "id": "minima",
+          "rotulo": "Regras mínimas",
+          "manchete": "Demissão sem justificativa vira regra; empresas prometem contratar mais",
+          "exemplos": [
+            "EUA (emprego 'at-will')",
+            "Singapura",
+            "Dinamarca (lei enxuta, quase tudo por acordo coletivo)"
+          ]
+        },
+        {
+          "id": "clt",
+          "rotulo": "Código trabalhista",
+          "manchete": "Carteira assinada, férias e 13º: novo código consolida direitos e cria a Justiça do Trabalho",
+          "exemplos": [
+            "Brasil (CLT, reformada em 2017)",
+            "Argentina",
+            "Chile",
+            "Japão",
+            "China"
+          ]
+        },
+        {
+          "id": "protetiva",
+          "rotulo": "Proteção máxima",
+          "manchete": "Demitir fica caro e demorado: sindicatos celebram, investidores torcem o nariz",
+          "exemplos": ["França", "Itália", "Portugal"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "clt",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; pesa sobre empregadores e exige fiscais e Justiça do Trabalho."
+      },
+      "efeitos": [
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Cada direito garantido é um custo a mais para quem contrata."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de clt, quando a fiscalização é fraca",
+          "porque": "Quanto mais caro formalizar, mais vagas escapam para o 'por fora' onde ninguém fiscaliza."
+        },
+        {
+          "alvo": "rotatividade_emprego",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Demitir fica caro e burocrático; empresas seguram mais os empregados."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em protetiva",
+          "porque": "Quem não pode ajustar o quadro pensa duas vezes antes de contratar; efeito pequeno e disputado."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Regras comuns protegem quem tem pouco poder de barganha."
+        },
+        {
+          "alvo": "litigio_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Mais direitos escritos, mais disputas levadas à Justiça."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Normas de segurança e descanso reduzem acidentes e adoecimento."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Empresários veem mais custo e mais risco jurídico."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_sindicatos",
+          "grupo_progressistas"
+        ],
+        "perdem": [
+          "grupo_empresarios",
+          "grupo_pequenos_negocios",
+          "grupo_informais"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade", "corrupcao"],
+        "porque": "Lei sem fiscal é letra morta: só protege quem tem emprego formal num Estado que fiscaliza."
+      },
+      "mae": null,
+      "filhas": [
+        "salario-minimo",
+        "jornada-de-trabalho",
+        "fundo-de-garantia",
+        "terceirizacao",
+        "trabalho-por-aplicativo",
+        "licenca-parental"
+      ],
+      "fontes": [
+        {
+          "titulo": "OECD-IDB – Summary indicators of employment protection legislation in Latin America and the Caribbean",
+          "url": "https://www.oecd.org/en/data/datasets/oecd-idb-database-on-summary-indicators-of-employment-protection-legislation-epl-in-latin-american-and-the-caribbean.html"
+        },
+        {
+          "titulo": "Almeida & Carneiro – Enforcement of labor regulation and informality (UCL Discovery)",
+          "url": "https://discovery.ucl.ac.uk/id/eprint/10063524/"
+        },
+        {
+          "titulo": "Levy & Salomão – Brazilian Labor Reform: Key Points",
+          "url": "https://levysalomao.com.br/publications/lsbraziloutlook/brazilian-labor-reform---key-points"
+        }
+      ]
+    },
+    {
+      "id": "salario-minimo",
+      "nome": "Salário mínimo",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define o piso que qualquer empregador deve pagar, medido em relação ao salário típico do país.",
+      "dilema": "Mais renda no bolso de quem ganha menos, ou mais vagas (e mais formais) para quem não tem nenhuma?",
+      "eixo": "do sem piso ao piso alto (em relação ao salário mediano)",
+      "opcoes": [
+        {
+          "id": "sem-piso",
+          "rotulo": "Sem salário mínimo",
+          "manchete": "Fim do piso nacional: salário agora é com o sindicato, ou com o patrão",
+          "exemplos": [
+            "Dinamarca e Suécia (piso só por acordo coletivo)",
+            "Singapura (sem piso geral)"
+          ]
+        },
+        {
+          "id": "piso-baixo",
+          "rotulo": "Piso baixo",
+          "manchete": "Piso simbólico: mínimo fica para trás da inflação e só vale para o primeiro emprego",
+          "exemplos": ["EUA (federal, US$ 7,25 sem reajuste desde 2009)"]
+        },
+        {
+          "id": "piso-moderado",
+          "rotulo": "Piso moderado",
+          "manchete": "Mínimo sobe acima da inflação; comércio diz que vai segurar contratações",
+          "exemplos": ["Brasil", "Reino Unido", "Alemanha"]
+        },
+        {
+          "id": "piso-alto",
+          "rotulo": "Piso alto",
+          "manchete": "Piso dispara: metade do país passa a ganhar 'o mínimo'",
+          "exemplos": ["França", "Colômbia"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "piso-moderado",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Pesa sobre os empregadores; no orçamento, só onde benefícios são atrelados ao piso."
+      },
+      "efeitos": [
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem ganha o piso passa a ganhar mais no mês seguinte."
+        },
+        {
+          "alvo": "pobreza",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Famílias na base sobem de renda."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A base da pirâmide se aproxima do meio."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Contratar no piso fica mais caro."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Parte do custo é repassada aos preços, sobretudo em serviços."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em piso-alto",
+          "porque": "Quando o piso passa do que o pequeno negócio pode pagar, a vaga vai para o 'por fora'."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em piso-alto",
+          "porque": "Até níveis moderados a evidência não mostra perda de vagas; acima disso, o risco cresce."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "quando aposentadorias e benefícios são indexados ao piso",
+          "porque": "Cada real a mais no piso vira real a mais em benefícios pagos pelo Estado."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_sindicatos",
+          "grupo_pobres"
+        ],
+        "perdem": ["grupo_pequenos_negocios", "grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "produtividade"],
+        "reduz": ["informalidade"],
+        "porque": "Piso só vale onde há fiscalização e emprego formal, e só se sustenta onde a produtividade acompanha."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": ["politica-valorizacao-salario-minimo"],
+      "fontes": [
+        {
+          "titulo": "Cengiz, Dube, Lindner & Zipperer – The Effect of Minimum Wages on Low-Wage Jobs (NBER w25434)",
+          "url": "https://www.nber.org/papers/w25434"
+        },
+        {
+          "titulo": "ILO – Minimum wages through collective bargaining (Nordic countries)",
+          "url": "https://www.ilo.org/resource/minimum-wages-nordic-countries"
+        }
+      ]
+    },
+    {
+      "id": "jornada-de-trabalho",
+      "nome": "Jornada de trabalho",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define a jornada semanal legal e o limite de horas extras.",
+      "dilema": "Mais tempo de vida para o trabalhador, ou mais horas (e mais produção) para a economia?",
+      "eixo": "da jornada livre à jornada curta",
+      "opcoes": [
+        {
+          "id": "sem-limite",
+          "rotulo": "Sem limite",
+          "manchete": "Jornada liberada: 'trabalha quem quer, quanto quiser', diz ministro",
+          "exemplos": [
+            "Japão antes de 2019 (horas extras sem teto por acordo especial)"
+          ]
+        },
+        {
+          "id": "longa-48h",
+          "rotulo": "48 horas",
+          "manchete": "Semana de seis dias continua: governo mantém 48 horas",
+          "exemplos": ["Índia", "México"]
+        },
+        {
+          "id": "padrao-44h",
+          "rotulo": "44 horas",
+          "manchete": "Oito horas por dia e sábado de manhã: jornada padrão segue intocada",
+          "exemplos": [
+            "Brasil",
+            "China (8h/dia, 44h/semana)",
+            "Chile (45h, em redução para 40h)"
+          ]
+        },
+        {
+          "id": "reduzida-40h",
+          "rotulo": "40 horas",
+          "manchete": "Fim de semana inteiro: jornada cai para 40 horas e comércio reclama",
+          "exemplos": [
+            "EUA (40h com adicional de hora extra)",
+            "Japão (40h e teto de extras desde 2019)"
+          ]
+        },
+        {
+          "id": "curta-35h",
+          "rotulo": "35 horas",
+          "manchete": "Semana de 35 horas: 'trabalhar menos para trabalharem todos', promete governo",
+          "exemplos": ["França (desde 2000)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "padrao-44h",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; o custo é das empresas (mais gente ou mais hora extra para a mesma produção)."
+      },
+      "efeitos": [
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais descanso, menos acidentes e menos mortes por excesso de trabalho."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A hora trabalhada fica mais cara se o salário mensal não cai."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Trabalhador descansado rende mais por hora, e a empresa é forçada a se organizar melhor."
+        },
+        {
+          "alvo": "pib",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em curta-35h",
+          "porque": "Menos horas no total da economia, nem sempre compensadas por eficiência."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de reduzida-40h",
+          "porque": "Quem quer trabalhar mais busca bico ou segundo emprego (na França cresceu o duplo emprego)."
+        },
+        {
+          "alvo": "participacao_trabalho_cuidadoras",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Uma jornada menor cabe na rotina de quem cuida de filhos ou parentes."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "quando a redução corta horas extras pagas",
+          "porque": "Quem vivia de hora extra perde parte da renda."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Empresas temem perder flexibilidade e competitividade."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_sindicatos",
+          "grupo_pais_familia"
+        ],
+        "perdem": [
+          "grupo_empresarios",
+          "grupo_industria",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "produtividade"],
+        "reduz": ["informalidade"],
+        "porque": "Limite de horas precisa de fiscal para valer, e só não derruba a produção onde cada hora rende bem."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Estevão & Sá – Are the French Happy with the 35-Hour Workweek? (IZA DP 2459)",
+          "url": "https://iza.org/publications/dp/2459/imprint"
+        },
+        {
+          "titulo": "Proskauer – Japan's Labor Reform Caps Overtime in a Bid to Curb Karoshi",
+          "url": "https://www.proskauer.com/blog/japans-labor-reform-caps-overtime-in-a-bid-to-curb-karoshi"
+        },
+        {
+          "titulo": "Sixth Tone – China's Top Court Says Grueling '996' Work Schedule Illegal",
+          "url": "https://www.sixthtone.com/news/1008375/chinas-top-court-says-grueling-996-work-schedule-illegal"
+        }
+      ]
+    },
+    {
+      "id": "seguro-desemprego",
+      "nome": "Seguro-desemprego",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "institucional",
+      "descricao": "Define se e como o Estado sustenta quem perdeu o emprego: nada, poupança individual, seguro curto ou seguro generoso com contrapartidas.",
+      "dilema": "Rede de proteção que segura a economia na crise, ou incentivo para ficar mais tempo parado às custas do contribuinte?",
+      "eixo": "do nenhum amparo ao seguro generoso com contrapartidas",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Sem seguro",
+          "manchete": "Demitido? Procure a família: governo extingue o seguro-desemprego",
+          "exemplos": [
+            "Índia (só um programa restrito a parte dos formais)",
+            "Maioria dos países de baixa renda"
+          ]
+        },
+        {
+          "id": "conta-individual",
+          "rotulo": "Conta individual",
+          "manchete": "Cada um com a sua poupança: seguro-desemprego vira conta pessoal",
+          "exemplos": ["Chile (contas individuais com fundo solidário)"]
+        },
+        {
+          "id": "basico-curto",
+          "rotulo": "Seguro curto",
+          "manchete": "Seis meses e acabou: seguro passa a ser só uma ponte até o próximo emprego",
+          "exemplos": ["EUA (cerca de 26 semanas na maioria dos estados)"]
+        },
+        {
+          "id": "moderado",
+          "rotulo": "Seguro moderado",
+          "manchete": "Seguro-desemprego mantido: de três a cinco parcelas para quem é demitido",
+          "exemplos": ["Brasil (3 a 5 parcelas)", "Argentina"]
+        },
+        {
+          "id": "generoso-com-ativacao",
+          "rotulo": "Generoso com contrapartida",
+          "manchete": "Demissão sem drama: seguro alto e longo, mas quem recebe tem de estudar e procurar emprego",
+          "exemplos": ["Dinamarca (flexissegurança)", "Suécia"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "moderado",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Pago por fundo público ou contribuição sobre a folha; dispara justamente nas recessões."
+      },
+      "efeitos": [
+        {
+          "alvo": "pobreza",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem perde o emprego não cai direto na pobreza."
+        },
+        {
+          "alvo": "consumo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Estabilizador automático: a renda dos demitidos continua girando no comércio."
+        },
+        {
+          "alvo": "recessao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Renda garantida amortece a queda de demanda que transforma crise em recessão."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Benefício maior e mais longo alivia a pressão para aceitar a primeira vaga; a busca demora mais."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Cada parcela paga sai do caixa do Estado."
+        },
+        {
+          "alvo": "qualificacao_trabalho",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em generoso-com-ativacao",
+          "porque": "A contrapartida obriga a requalificação, e o trabalhador volta mais preparado."
+        },
+        {
+          "alvo": "rotatividade_emprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Com rede de proteção, trabalhadores arriscam trocar de emprego e empresas demitem com menos resistência."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_sindicatos",
+          "grupo_pobres"
+        ],
+        "perdem": ["grupo_empresarios", "grupo_informais"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade", "corrupcao"],
+        "porque": "Só recebe quem tinha carteira; e sem controle o benefício vira fraude e acordo de 'demissão combinada'."
+      },
+      "mae": null,
+      "filhas": ["reducao-de-jornada-subsidiada"],
+      "fontes": [
+        {
+          "titulo": "CORE Econ – The Economy 2.0, Unit 2: the Danish labour market (flexicurity)",
+          "url": "https://books.core-econ.org/the-economy/macroeconomics/02-unemployment-wages-inequality-10-application-labour-market-denmark.html"
+        },
+        {
+          "titulo": "Hartley, van Ours & Vodopivec – Incentive effects of unemployment insurance savings accounts: Evidence from Chile",
+          "url": "https://research.tilburguniversity.edu/en/publications/incentive-effects-of-unemployment-insurance-savings-accounts-evid-2/"
+        },
+        {
+          "titulo": "Schmieder & von Wachter – The Effects of Unemployment Insurance Benefits: New Evidence and Interpretation",
+          "url": "https://papers.ssrn.com/abstract=2870859"
+        }
+      ]
+    },
+    {
+      "id": "fundo-de-garantia",
+      "nome": "Fundo de garantia e indenização por demissão",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define o que o empregador deve ao trabalhador demitido: nada, uma conta portátil, um fundo com multa ou uma indenização por tempo de casa.",
+      "dilema": "Um colchão para quem é demitido, ou um peso que faz a empresa pensar duas vezes antes de efetivar alguém?",
+      "eixo": "da demissão sem custo à indenização pesada por tempo de casa",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Sem indenização",
+          "manchete": "Demissão sem multa: 'o mercado decide', diz governo; centrais falam em retrocesso",
+          "exemplos": ["EUA (sem indenização obrigatória)"]
+        },
+        {
+          "id": "conta-portatil",
+          "rotulo": "Conta portátil",
+          "manchete": "Fim da multa: cada trabalhador ganha conta própria que leva de emprego em emprego",
+          "exemplos": [
+            "Áustria (desde 2003, 1,53% do salário em conta individual)"
+          ]
+        },
+        {
+          "id": "fundo-com-multa",
+          "rotulo": "Fundo com multa",
+          "manchete": "Depósito todo mês e multa de 40% na demissão: fundo do trabalhador financia casas e obras",
+          "exemplos": ["Brasil (FGTS: 8% ao mês + multa de 40%)"]
+        },
+        {
+          "id": "indenizacao-por-tempo",
+          "rotulo": "Indenização por tempo de casa",
+          "manchete": "Demitir veterano vira dívida: indenização cresce a cada ano trabalhado",
+          "exemplos": ["Argentina (um salário por ano trabalhado)", "Espanha"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "fundo-com-multa",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "medio",
+        "porque": "Pago pelo empregador; o Estado só administra o fundo (e às vezes o usa para financiar moradia)."
+      },
+      "efeitos": [
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Depósitos e multas entram na conta de quem contrata."
+        },
+        {
+          "alvo": "rotatividade_emprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Quanto mais caro demitir, mais a empresa segura o quadro."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em indenizacao-por-tempo",
+          "porque": "Empresas evitam efetivar novatos (ou demitem antes de virarem caros) para não acumular passivo."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Mais custo na demissão, mais incentivo para contratar sem registro."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "O demitido sai com um colchão de dinheiro."
+        },
+        {
+          "alvo": "credito",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em fundo-com-multa",
+          "porque": "O fundo é poupança forçada que o Estado empresta para habitação e obras."
+        },
+        {
+          "alvo": "deficit_habitacional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em fundo-com-multa",
+          "porque": "Dinheiro do fundo vira financiamento de casa própria."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Passivo trabalhista assusta quem pensa em expandir."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_trabalhadores_formais", "grupo_sindicatos"],
+        "perdem": [
+          "grupo_pequenos_negocios",
+          "grupo_empresarios",
+          "grupo_jovens"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade", "inflacao"],
+        "porque": "Fundo só existe para quem tem carteira, e a inflação corrói o saldo se o rendimento for baixo."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Jornal Contábil – Multa de 40% do FGTS: quem tem direito e como é o seu cálculo",
+          "url": "https://www.jornalcontabil.com.br/noticia/multa-de-40-do-fgts-quem-tem-direito-e-como-e-o-seu-calculo-2/"
+        },
+        {
+          "titulo": "IESE Insight – Is a worker fund a viable substitute for severance?",
+          "url": "https://www.iese.edu/insight/articles/worker-fund-viable-substitute-severance/"
+        }
+      ]
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos",
+      "nome": "Negociação coletiva e sindicatos",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "institucional",
+      "descricao": "Define quem negocia salários e condições: sindicato controlado pelo Estado, empresa a empresa, por setor ou num grande pacto nacional.",
+      "dilema": "Sindicatos fortes que dividem melhor o bolo, ou empresas livres para negociar com cada um como quiserem?",
+      "eixo": "do sindicato controlado pelo Estado à negociação centralizada nacional",
+      "opcoes": [
+        {
+          "id": "controlados",
+          "rotulo": "Sindicato do Estado",
+          "manchete": "Greve vira caso de polícia: sindicato único passa a responder ao governo",
+          "exemplos": ["China (federação única ligada ao partido)"]
+        },
+        {
+          "id": "por-empresa",
+          "rotulo": "Por empresa",
+          "manchete": "Cada um negocia o seu: acordos de categoria perdem força",
+          "exemplos": ["EUA", "Reino Unido", "Chile"]
+        },
+        {
+          "id": "setorial",
+          "rotulo": "Por setor",
+          "manchete": "Convenção da categoria vale para todos: metalúrgicos fecham reajuste para o setor inteiro",
+          "exemplos": ["Brasil", "Alemanha", "Argentina"]
+        },
+        {
+          "id": "centralizada",
+          "rotulo": "Pacto nacional",
+          "manchete": "Centrais e patrões fecham salários do país inteiro numa só mesa",
+          "exemplos": ["Dinamarca (cobertura ~84%)", "Suécia (cobertura ~89%)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "setorial",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; o que muda é quem tem poder na mesa de negociação."
+      },
+      "efeitos": [
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Negociação coletiva arranca reajustes que o trabalhador sozinho não conseguiria."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Acordos amplos comprimem a distância entre os salários de baixo e de cima."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Pisos de categoria e benefícios negociados encarecem a contratação."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "ao sair de controlados",
+          "porque": "Associar-se e fazer greve é uma liberdade básica."
+        },
+        {
+          "alvo": "greve_geral",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de setorial",
+          "porque": "Categorias inteiras organizadas conseguem parar setores de uma vez."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "a partir de setorial",
+          "porque": "A pequena empresa fica presa a um acordo que não negociou."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_sindicatos", "grupo_trabalhadores_formais"],
+        "perdem": ["grupo_empresarios", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "confianca_instituicoes"],
+        "reduz": ["informalidade"],
+        "porque": "Acordo coletivo só alcança quem está no emprego formal e só funciona onde as partes confiam nas regras."
+      },
+      "mae": null,
+      "filhas": ["financiamento-sindical"],
+      "fontes": [
+        {
+          "titulo": "ILO – Minimum wages through collective bargaining (Nordic countries)",
+          "url": "https://www.ilo.org/resource/minimum-wages-nordic-countries"
+        },
+        {
+          "titulo": "Littler – Brazil: Unions Struggle After Labor Reform",
+          "url": "https://www.littler.com/news-analysis/asap/brazil-unions-struggle-after-labor-reform"
+        },
+        {
+          "titulo": "Levy & Salomão – Brazilian Labor Reform: Key Points",
+          "url": "https://levysalomao.com.br/publications/lsbraziloutlook/brazilian-labor-reform---key-points"
+        }
+      ]
+    },
+    {
+      "id": "terceirizacao",
+      "nome": "Terceirização",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define se e como uma empresa pode usar trabalhadores contratados por outra empresa.",
+      "dilema": "Empresas mais enxutas e especializadas, ou trabalhadores de segunda classe ganhando menos para fazer o mesmo serviço?",
+      "eixo": "da terceirização livre à terceirização restrita",
+      "opcoes": [
+        {
+          "id": "livre",
+          "rotulo": "Livre",
+          "manchete": "Terceiriza-se tudo: grandes marcas passam a ter mais prestadores do que empregados",
+          "exemplos": ["EUA", "Reino Unido"]
+        },
+        {
+          "id": "ampla-com-garantias",
+          "rotulo": "Ampla com garantias",
+          "manchete": "Liberada até na atividade principal; empresa contratante responde se a terceirizada calotear",
+          "exemplos": ["Brasil (desde 2017)"]
+        },
+        {
+          "id": "limitada-com-igualdade",
+          "rotulo": "Limitada com salário igual",
+          "manchete": "Temporário não é para sempre: 18 meses no máximo e salário igual ao do efetivo",
+          "exemplos": [
+            "Alemanha (18 meses no mesmo cliente; salário igual após 9 meses)"
+          ]
+        },
+        {
+          "id": "restrita",
+          "rotulo": "Só serviços especializados",
+          "manchete": "Fim da 'pejotização' em massa: terceirizar pessoal fica proibido",
+          "exemplos": ["México (reforma de 2021)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "ampla-com-garantias",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento, embora o próprio Estado seja um grande contratante de terceirizados."
+      },
+      "efeitos": [
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Sem a saída da terceirização, a empresa paga o salário e os benefícios do efetivo."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Terceirizados ganham de 10% a 15% menos que efetivos na mesma função."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Na Alemanha, terceirizar limpeza, segurança e logística explicou cerca de 10% da alta da desigualdade."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Empresas perdem a especialização de quem faz aquele serviço melhor e mais barato."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em restrita",
+          "porque": "Parte das vagas terceirizadas some na transição em vez de virar emprego direto."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em restrita",
+          "porque": "Serviço proibido de ser terceirizado volta disfarçado de contrato informal."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Empresas perdem uma ferramenta de corte de custos."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_trabalhadores_formais", "grupo_sindicatos"],
+        "perdem": ["grupo_empresarios", "grupo_industria"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao", "informalidade"],
+        "porque": "Restrição só funciona com registro de prestadoras e fiscal que reconheça a fraude."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Goldschmidt & Schmieder – The Rise of Domestic Outsourcing and the Evolution of the German Wage Structure (NBER w21366)",
+          "url": "https://www.nber.org/papers/w21366"
+        },
+        {
+          "titulo": "Orrick – New Restrictions for Temporary Agency Work in Germany in 2017",
+          "url": "https://www.orrick.com/en/Insights/2016/10/New-Restrictions-for-Temporary-Agency-Work-in-Germany-in-2017"
+        },
+        {
+          "titulo": "ECIJA – Mexico: Reforms to the subcontracting regime (outsourcing)",
+          "url": "https://www.ecija.com/en/news-and-insights/mexico-reforms-to-the-subcontracting-regime-outsourcing/"
+        }
+      ]
+    },
+    {
+      "id": "trabalho-por-aplicativo",
+      "nome": "Trabalho por aplicativo",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define o status de motoristas e entregadores de plataformas digitais: autônomos sem regra, categoria própria, presunção de vínculo ou empregados.",
+      "dilema": "Liberdade e corrida barata, ou piso, previdência e seguro para quem passa 12 horas no trânsito?",
+      "eixo": "da plataforma sem regras ao vínculo de emprego obrigatório",
+      "opcoes": [
+        {
+          "id": "sem-regulacao",
+          "rotulo": "Sem regra própria",
+          "manchete": "Nem patrão nem empregado: plataformas seguem definindo sozinhas quanto paga a corrida",
+          "exemplos": [
+            "Brasil (projeto de lei em discussão)",
+            "Maioria dos estados dos EUA"
+          ]
+        },
+        {
+          "id": "categoria-propria",
+          "rotulo": "Autônomo com garantias",
+          "manchete": "Nova categoria: motorista de app ganha piso por hora rodada e seguro, mas segue autônomo",
+          "exemplos": [
+            "EUA – Califórnia (Proposition 22)",
+            "Brasil (PLP 12/2024, proposta)"
+          ]
+        },
+        {
+          "id": "presuncao-de-vinculo",
+          "rotulo": "Presunção de vínculo",
+          "manchete": "Aplicativo terá de provar que motorista não é empregado",
+          "exemplos": ["União Europeia (diretiva de 2024)"]
+        },
+        {
+          "id": "emprego-obrigatorio",
+          "rotulo": "Vínculo obrigatório",
+          "manchete": "Entregador vira empregado; plataforma ameaça deixar o país",
+          "exemplos": ["Espanha (Lei Rider, 2021, entregadores)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "sem-regulacao",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Contribuições de plataformas e motoristas passam a entrar na previdência."
+      },
+      "efeitos": [
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Piso por hora e custo de combustível reconhecido elevam o ganho líquido de quem fica."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Plataformas passam a pagar contribuições, seguro e piso."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Milhões de motoristas passam a contribuir e ter registro."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Contribuições sobre corridas entram no caixa da previdência."
+        },
+        {
+          "alvo": "mobilidade_urbana",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de presuncao-de-vinculo",
+          "porque": "Corridas e entregas ficam mais caras e há menos motoristas na rua."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em emprego-obrigatorio",
+          "porque": "Plataformas contratam só parte da frota (na Espanha, a Glovo anunciou 2 mil de ~12 mil)."
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em emprego-obrigatorio",
+          "porque": "Plataformas menores saem do país (a Deliveroo deixou a Espanha)."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Seguro de acidente e limite de horas conectadas reduzem acidentes e exaustão."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_sindicatos",
+          "grupo_informais",
+          "grupo_progressistas"
+        ],
+        "perdem": ["grupo_empresarios", "grupo_jovens", "grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["desemprego"],
+        "porque": "Com desemprego alto, sobra gente disposta a rodar fora da regra, e só um Estado capaz consegue auditar algoritmos."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Social Europe – Platforms put a spoke in the wheels of Spain's 'riders' law'",
+          "url": "https://www.socialeurope.eu/platforms-put-a-spoke-in-the-wheels-of-spains-riders-law"
+        },
+        {
+          "titulo": "CalMatters – Prop. 22 California gig work law upheld (2024)",
+          "url": "https://calmatters.org/economy/2024/07/prop-22-california-gig-work-law-upheld/"
+        },
+        {
+          "titulo": "Oxford Human Rights Hub – Beyond bogus self-employment: the EU Platform Work Directive's presumption of employment",
+          "url": "https://ohrh.law.ox.ac.uk/beyond-bogus-self-employment-the-eu-platform-work-directives-presumption-of-employment-and-its-implications-for-the-future-of-employment-rights-in-the-gig-economy/"
+        }
+      ]
+    },
+    {
+      "id": "licenca-parental",
+      "nome": "Licença parental",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define quanto tempo de licença paga mães e pais têm com a chegada de um filho, e se o pai tem parte reservada.",
+      "dilema": "Mais tempo com o bebê, ou menos risco para a carreira da mãe e para o caixa da empresa e do Estado?",
+      "eixo": "da ausência de licença paga à licença longa e compartilhada",
+      "opcoes": [
+        {
+          "id": "nenhuma",
+          "rotulo": "Sem licença paga",
+          "manchete": "Bebê nasceu? Volte na segunda: país segue sem licença paga nacional",
+          "exemplos": ["EUA (sem licença paga federal)"]
+        },
+        {
+          "id": "curta-maternidade",
+          "rotulo": "Licença curta para a mãe",
+          "manchete": "Quatro meses para a mãe, cinco dias para o pai: regra segue igual",
+          "exemplos": ["Brasil (120 dias para a mãe, 5 para o pai)", "México"]
+        },
+        {
+          "id": "longa-materna",
+          "rotulo": "Licença longa para a mãe",
+          "manchete": "Mães poderão ficar até três anos em casa com salário",
+          "exemplos": ["Eslováquia (mais de 3 anos)", "Hungria"]
+        },
+        {
+          "id": "compartilhada-com-cota-pai",
+          "rotulo": "Compartilhada com cota do pai",
+          "manchete": "Pai também tira licença: meses reservados só para ele, ou se perdem",
+          "exemplos": [
+            "Suécia",
+            "Coreia do Sul e Japão (1 ano de direito próprio do pai)",
+            "França"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "curta-maternidade",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Pago pela previdência ou pelo empregador; cresce com a duração e o valor."
+      },
+      "efeitos": [
+        {
+          "alvo": "natalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Ter filho pesa menos no bolso e na carreira."
+        },
+        {
+          "alvo": "participacao_trabalho_cuidadoras",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em compartilhada-com-cota-pai",
+          "porque": "Quando o pai também sai, contratar mulher deixa de ser 'risco' e a mãe volta mais cedo."
+        },
+        {
+          "alvo": "participacao_trabalho_cuidadoras",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em longa-materna",
+          "porque": "Anos fora afastam a mãe do mercado e da carreira."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Cada semana de licença paga sai da previdência."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Substituir quem sai de licença custa, sobretudo para pequenas empresas."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais tempo de amamentação e cuidado nos primeiros meses melhora a saúde infantil."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em compartilhada-com-cota-pai",
+          "porque": "Divide a 'penalidade da maternidade' entre homens e mulheres."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_mulheres",
+          "grupo_pais_familia",
+          "grupo_progressistas"
+        ],
+        "perdem": ["grupo_pequenos_negocios", "grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade"],
+        "porque": "Mãe informal não tem licença nenhuma; só vale para quem contribui."
+      },
+      "mae": {
+        "lei": "legislacao-trabalhista",
+        "opcoes": ["minima", "clt", "protetiva"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "OECD Family Database – PF2.5 Trends in leave entitlements around childbirth",
+          "url": "https://t4.oecd.org/els/family/PF2_5_Trends_in_leave_entitlements_around_childbirth.pdf"
+        },
+        {
+          "titulo": "OECD – Paid leave for fathers (policy brief)",
+          "url": "https://www.oecd.org/en/publications/paid-leave-for-fathers_07442bed-en/full-report.html"
+        }
+      ]
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem",
+      "nome": "Trabalho infantil e aprendizagem",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "regulatoria",
+      "descricao": "Define a idade mínima para trabalhar e como o jovem entra no mercado: sem limite, com exceções, com cota de aprendiz ou com sistema dual escola-empresa.",
+      "dilema": "Criança na escola e jovem bem formado, ou a renda que a família pobre perde hoje e o custo que a empresa paga para treinar?",
+      "eixo": "da ausência de idade mínima à aprendizagem estruturada",
+      "opcoes": [
+        {
+          "id": "sem-idade-minima",
+          "rotulo": "Sem idade mínima",
+          "manchete": "Fim da idade mínima: 'cada família sabe o que é melhor', diz governo; ONU protesta",
+          "exemplos": ["Reino Unido antes das Factory Acts (séc. XIX)"]
+        },
+        {
+          "id": "permissiva",
+          "rotulo": "Permissiva",
+          "manchete": "Criança de 10 anos pode trabalhar por conta própria, se não largar a escola",
+          "exemplos": ["Bolívia (lei de 2014)"]
+        },
+        {
+          "id": "idade-14-com-excecoes",
+          "rotulo": "14 anos com exceções",
+          "manchete": "Proibido abaixo dos 14, mas ajudar no negócio da família depois da aula continua valendo",
+          "exemplos": ["Índia (emenda de 2016)"]
+        },
+        {
+          "id": "idade-16-com-cota",
+          "rotulo": "16 anos e cota de aprendiz",
+          "manchete": "Trabalho só aos 16, aprendiz aos 14: empresas médias e grandes terão cota de jovens",
+          "exemplos": ["Brasil (cota de 5% a 15% de aprendizes)"]
+        },
+        {
+          "id": "sistema-dual",
+          "rotulo": "Sistema dual escola-empresa",
+          "manchete": "Metade na escola, metade na fábrica: aprendizagem vira caminho principal para o jovem",
+          "exemplos": ["Alemanha", "Suíça"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "idade-16-com-cota",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "O custo maior é das empresas que treinam; o Estado paga fiscalização e escolas técnicas."
+      },
+      "efeitos": [
+        {
+          "alvo": "trabalho_infantil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Idade mínima com fiscalização tira crianças do trabalho."
+        },
+        {
+          "alvo": "escolaridade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Criança fora do trabalho fica mais tempo na escola."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "até idade-16-com-cota",
+          "porque": "Famílias pobres perdem a renda que a criança trazia."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de idade-16-com-cota",
+          "porque": "Aprendizagem é a porta de entrada para o primeiro emprego formal."
+        },
+        {
+          "alvo": "qualificacao_trabalho",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em sistema-dual",
+          "porque": "Formação na empresa entrega o que o mercado precisa."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em sistema-dual",
+          "porque": "Na Alemanha o sistema dual reduziu o desemprego juvenil em cerca de 5 pontos frente à média da OCDE."
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "a partir de idade-16-com-cota",
+          "porque": "Cota e formação custam: o aprendiz alemão custa cerca de 8.700 euros/ano líquidos à empresa."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Trabalho infantil derruba a imagem do país e fecha mercados de exportação."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_estudantes", "grupo_jovens", "grupo_progressistas"],
+        "perdem": [
+          "grupo_agricultores_familiares",
+          "grupo_pequenos_negocios",
+          "grupo_empresarios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "escolaridade"],
+        "reduz": ["pobreza", "informalidade"],
+        "porque": "Onde a família depende da renda da criança e não há escola, a proibição vira clandestinidade."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "ILO/UNICEF – Child Labour: Global estimates 2024, trends and the road forward",
+          "url": "https://www.ilo.org/publications/child-labour-global-estimates-2024-trends-and-road-forward"
+        },
+        {
+          "titulo": "Eurofound – Vocational training reduces youth unemployment, IW study finds",
+          "url": "https://www.eurofound.europa.eu/en/publications/all/vocational-training-reduces-youth-unemployment-iw-study-finds"
+        },
+        {
+          "titulo": "Poder360 – Só 52,9% das cotas para jovem aprendiz estão preenchidas",
+          "url": "https://www.poder360.com.br/poder-empreendedor/so-529-das-cotas-para-jovem-aprendiz-estao-preenchidas"
+        }
+      ]
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada",
+      "nome": "Redução de jornada subsidiada (lay-off)",
+      "area": "Trabalho e emprego",
+      "ministerio": "Ministério do Trabalho",
+      "grupo": "institucional",
+      "descricao": "Define se, numa crise, o Estado paga parte do salário para empresas reduzirem horas em vez de demitir.",
+      "dilema": "Salvar empregos na crise com dinheiro público, ou deixar o mercado realocar trabalhadores e não sustentar empresas sem futuro?",
+      "eixo": "do sem programa ao programa permanente",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Sem programa",
+          "manchete": "Crise chegou: sem ajuda do governo, empresas recorrem a demissões em massa",
+          "exemplos": [
+            "Brasil (fora de emergências)",
+            "EUA (na maior parte dos estados)"
+          ]
+        },
+        {
+          "id": "emergencial",
+          "rotulo": "Só na emergência",
+          "manchete": "Governo paga parte dos salários para evitar demissões durante a crise",
+          "exemplos": [
+            "Brasil (BEm, 2020)",
+            "Reino Unido (furlough, 2020)",
+            "Dinamarca (2020, 75% do salário)"
+          ]
+        },
+        {
+          "id": "permanente",
+          "rotulo": "Programa permanente",
+          "manchete": "Corta horas, não empregos: sistema de jornada reduzida entra em ação automática",
+          "exemplos": ["Alemanha (Kurzarbeit)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "nenhum",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Quase zero em tempos normais; pode ser enorme numa crise ampla."
+      },
+      "efeitos": [
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "durante recessão",
+          "porque": "Em 2009, a Alemanha foi o único país do G7 onde o emprego não caiu."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "durante recessão",
+          "porque": "O Estado banca cerca de 60% do salário das horas não trabalhadas."
+        },
+        {
+          "alvo": "recessao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Emprego preservado mantém o consumo e acelera a retomada."
+        },
+        {
+          "alvo": "consumo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "durante recessão",
+          "porque": "Trabalhador em jornada reduzida perde só parte da renda."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em permanente",
+          "porque": "Pode manter vivas vagas e empresas que não têm futuro."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Protege quem tem carteira; informais e temporários ficam de fora."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_industria",
+          "grupo_sindicatos"
+        ],
+        "perdem": ["grupo_informais", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade"],
+        "porque": "Só chega a quem é formal, e exige um Estado capaz de pagar rápido e checar fraudes."
+      },
+      "mae": {
+        "lei": "seguro-desemprego",
+        "opcoes": ["basico-curto", "moderado", "generoso-com-ativacao"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "IMF – Kurzarbeit: Germany's Short-Time Work Benefit",
+          "url": "https://www.imf.org/en/news/articles/2020/06/11/na061120-kurzarbeit-germanys-short-time-work-benefit"
+        },
+        {
+          "titulo": "CORE Econ – The Economy 2.0, Unit 2: the Danish labour market (flexicurity)",
+          "url": "https://books.core-econ.org/the-economy/macroeconomics/02-unemployment-wages-inequality-10-application-labour-market-denmark.html"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "trabalho_infantil",
+      "nome": "Trabalho infantil",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Leis de idade mínima, aprendizagem, ensino obrigatório e transferência de renda mexem nela; hoje nenhuma bolha mede crianças trabalhando."
+    },
+    {
+      "id": "rotatividade_emprego",
+      "nome": "Rotatividade no emprego",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Proteção contra demissão, multa do fundo e seguro-desemprego mudam a frequência com que vínculos começam e terminam (alta demais derruba treinamento e produtividade)."
+    },
+    {
+      "id": "litigio_trabalhista",
+      "nome": "Litígio trabalhista",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Regras trabalhistas mais complexas aumentam processos e insegurança jurídica, o que pesa sobre a confiança empresarial."
+    }
+  ]
+}

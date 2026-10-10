@@ -1,0 +1,1632 @@
+{
+  "area": "Segurança, justiça e drogas",
+  "leis": [
+    {
+      "id": "politica-de-drogas",
+      "nome": "Política de drogas",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define como o Estado trata quem usa e quem vende drogas: da guerra total com pena de morte à venda legal regulada, passando por não prender o usuário.",
+      "dilema": "Cadeia e polícia para secar o mercado, ou tratar o uso como problema de saúde e tirar o lucro das facções, aceitando mais gente usando?",
+      "eixo": "da guerra total às drogas ao mercado sem lei",
+      "opcoes": [
+        {
+          "id": "guerra-total",
+          "rotulo": "Guerra total às drogas",
+          "manchete": "Tolerância zero: traficante pode pegar a forca e usuário vai para a cadeia",
+          "exemplos": [
+            "Singapura (pena de morte obrigatória acima de 15 g de heroína ou 500 g de cannabis)",
+            "Filipinas (campanha de 2016 a 2022, com milhares de mortos pela polícia)",
+            "China",
+            "Irã"
+          ]
+        },
+        {
+          "id": "proibicao-punitiva",
+          "rotulo": "Proibição com prisão do usuário",
+          "manchete": "Pego com um cigarro de maconha? Processo criminal e ficha suja",
+          "exemplos": ["Japão", "EUA (lei federal)", "Rússia"]
+        },
+        {
+          "id": "despenalizacao",
+          "rotulo": "Usuário não vai preso",
+          "manchete": "Continua crime, mas usuário sai da delegacia com advertência; a polícia decide quem é traficante",
+          "exemplos": [
+            "Brasil (lei de 2006; STF fixou 40 g de maconha como uso pessoal em 2024)"
+          ]
+        },
+        {
+          "id": "descriminalizacao",
+          "rotulo": "Uso vira questão de saúde",
+          "manchete": "Usuário vai à comissão de saúde, não ao juiz: 'tratamos doentes, prendemos traficantes'",
+          "exemplos": [
+            "Portugal (desde 2001, comissões de dissuasão)",
+            "Holanda (venda de cannabis tolerada nos coffeeshops)",
+            "República Tcheca"
+          ]
+        },
+        {
+          "id": "regulacao-legal",
+          "rotulo": "Cannabis legal e regulada",
+          "manchete": "Maconha na farmácia: Estado registra usuários, cobra imposto e tira o freguês do traficante",
+          "exemplos": [
+            "Uruguai (2013: farmácias, clubes e autocultivo)",
+            "Canadá (2018, lojas licenciadas)",
+            "Alemanha (2024, autocultivo e clubes)",
+            "Malta"
+          ]
+        },
+        {
+          "id": "mercado-livre",
+          "rotulo": "Sem lei de drogas",
+          "manchete": "Fim da proibição: ópio e cocaína voltam às prateleiras sem receita nem imposto",
+          "exemplos": [
+            "EUA antes do Harrison Act (1914)",
+            "Reino Unido antes do Pharmacy Act (1868)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "despenalizacao",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Quanto mais punitiva, mais polícia, tribunal e presídio; a regulação legal inverte a conta e passa a arrecadar."
+      },
+      "efeitos": [
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Usuários e pequenos vendedores deixam de lotar as cadeias (Portugal aliviou o sistema penal após 2001)."
+        },
+        {
+          "alvo": "uso_drogas",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de regulacao-legal",
+          "porque": "Produto legal, acessível e sem estigma atrai alguns novos usuários adultos; em Portugal a descriminalização não trouxe a explosão prevista."
+        },
+        {
+          "alvo": "uso_drogas",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "condicao": "em mercado-livre",
+          "porque": "Sem idade mínima, sem limite de potência e com propaganda, o consumo de drogas pesadas dispara."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de regulacao-legal",
+          "porque": "O mercado legal tira freguês e lucro das facções (no Uruguai, cerca de 24% dos usuários já compravam no circuito legal em 2018)."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "de descriminalizacao a regulacao-legal",
+          "porque": "Usuário que não teme a polícia procura tratamento; menos overdoses e menos HIV por seringa."
+        },
+        {
+          "alvo": "letalidade_policial",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "ao sair de guerra-total",
+          "porque": "Campanhas de 'guerra às drogas' viram licença para matar suspeitos (nas Filipinas, ao menos 7 mil mortos pela contagem oficial)."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em regulacao-legal",
+          "porque": "Venda legal paga imposto e licença."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Para muitos eleitores, afrouxar a lei soa como entregar a rua ao tráfico."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_progressistas",
+          "grupo_jovens",
+          "grupo_minorias_etnicas"
+        ],
+        "perdem": [
+          "grupo_conservadores",
+          "grupo_religiosos",
+          "grupo_pais_familia"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "cobertura_aps"],
+        "reduz": ["corrupcao", "crime_organizado"],
+        "porque": "Descriminalizar só funciona com rede de tratamento; regular só funciona com fiscal que impeça o desvio, e polícia corrupta sabota qualquer modelo."
+      },
+      "mae": null,
+      "filhas": ["tratamento-dependencia-quimica"],
+      "fontes": [
+        {
+          "titulo": "NCJRS – What Can We Learn From The Portuguese Decriminalization of Illicit Drugs? (British Journal of Criminology, 2010)",
+          "url": "https://www.ojp.gov/ncjrs/virtual-library/abstracts/what-can-we-learn-portuguese-decriminalization-illicit-drugs"
+        },
+        {
+          "titulo": "EUDA – Uruguay reports on regulated cannabis growing and sales (2018)",
+          "url": "https://www.euda.europa.eu/news/2018/uruguay-reports-on-regulated-cannabis-growing-and-sales_en"
+        },
+        {
+          "titulo": "Human Rights Watch (via ecoi.net) – Philippines drug war killings",
+          "url": "https://www.ecoi.net/doc/346109"
+        }
+      ]
+    },
+    {
+      "id": "porte-de-armas",
+      "nome": "Posse e porte de armas",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define quem pode ter arma em casa e quem pode andar armado na rua.",
+      "dilema": "O direito do cidadão de se defender sozinho, ou menos armas circulando para virar homicídio, suicídio e arsenal do crime?",
+      "eixo": "da proibição quase total ao porte sem licença",
+      "opcoes": [
+        {
+          "id": "proibicao-quase-total",
+          "rotulo": "Quase proibido",
+          "manchete": "Pistola só para policial: civil precisa de meses de exames para ter uma espingarda de caça",
+          "exemplos": [
+            "Japão (mortes por arma de fogo na casa da dezena por ano)",
+            "Reino Unido (armas curtas proibidas desde 1997)",
+            "China"
+          ]
+        },
+        {
+          "id": "restritiva",
+          "rotulo": "Restritiva",
+          "manchete": "Desarmamento: posse só com justificativa, porte só para quem prova risco",
+          "exemplos": [
+            "Brasil (Estatuto do Desarmamento de 2003, flexibilizado em 2019-2022 e restringido de novo em 2023)",
+            "Austrália (recompra de mais de 650 mil armas em 1996)",
+            "Canadá"
+          ]
+        },
+        {
+          "id": "licenca-com-requisitos",
+          "rotulo": "Posse ampla com registro",
+          "manchete": "Clube de tiro lotado: cidadão de bem pode comprar armas, mas tudo fica registrado",
+          "exemplos": [
+            "Suíça (fuzil do serviço militar em casa; porte exige necessidade e exame)",
+            "Brasil (decretos de 2019-2022 para atiradores e caçadores)"
+          ]
+        },
+        {
+          "id": "porte-livre",
+          "rotulo": "Porte sem licença",
+          "manchete": "Arma na cintura sem pedir licença: 'é um direito, não um privilégio', diz governo",
+          "exemplos": ["EUA (29 estados com porte sem licença em 2025)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "restritiva",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Taxas de registro cobrem parte do custo; o gasto real é a fiscalização (e a recompra, se houver)."
+      },
+      "efeitos": [
+        {
+          "alvo": "armas_em_circulacao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Mais gente autorizada a comprar significa mais armas nas casas e nas ruas."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Briga de bar e de casal com arma por perto vira morte; no Brasil, 1% mais armas numa cidade se associa a cerca de 2% mais homicídios."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Arma em casa torna tentativas de suicídio e acidentes muito mais letais (na Suíça, quase toda morte por arma é suicídio)."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de licenca-com-requisitos",
+          "porque": "Arma legal roubada ou desviada abastece o arsenal das facções."
+        },
+        {
+          "alvo": "protecao_efetiva_mulheres",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Arma dentro de casa multiplica o risco de violência doméstica terminar em feminicídio."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Quem está armado sente que pode se defender, mesmo que o risco geral suba."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Para boa parte da população, defender-se com uma arma é uma liberdade básica."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_conservadores",
+          "grupo_agronegocio",
+          "grupo_militares"
+        ],
+        "perdem": ["grupo_progressistas", "grupo_mulheres", "grupo_policiais"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao", "crime_organizado"],
+        "porque": "Restrição só vale com registro e rastreio que funcionem; com fronteira porosa e fiscal comprado, a arma ilegal chega do mesmo jeito."
+      },
+      "mae": null,
+      "filhas": ["recompra-de-armas"],
+      "fontes": [
+        {
+          "titulo": "RAND – Evidence About Effects of Gun Policies Grows (2023)",
+          "url": "https://www.rand.org/news/press/2023/01/10.html"
+        },
+        {
+          "titulo": "Agência Pública – Truco: senador escorrega ao afirmar que desarmamento não reduz violência",
+          "url": "https://apublica.org/checagem/2017/07/truco-senador-wilder-morais-escorrega-ao-afirmar-que-desarmamento-nao-reduz-violencia/"
+        },
+        {
+          "titulo": "Swissinfo – How gun-loving Switzerland regulates its firearms",
+          "url": "https://www.swissinfo.ch/eng/society/bearing-arms_how-gun-loving-switzerland-regulates-its-firearms/43573832"
+        }
+      ]
+    },
+    {
+      "id": "maioridade-penal",
+      "nome": "Maioridade penal e justiça juvenil",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define a partir de que idade o jovem é julgado e preso como adulto, e o que acontece com quem comete crime antes disso.",
+      "dilema": "Punir o adolescente que matou como adulto, ou apostar que ele ainda pode ser recuperado (e não mandá-lo para a escola do crime)?",
+      "eixo": "da criança julgada como adulto à justiça juvenil estendida até os 21",
+      "opcoes": [
+        {
+          "id": "sem-justica-juvenil",
+          "rotulo": "Sem justiça juvenil",
+          "manchete": "Fim do tribunal de menores: quem tem idade para roubar tem idade para a cadeia",
+          "exemplos": [
+            "Quase todos os países antes de 1899 (primeiro tribunal juvenil: Chicago, EUA)"
+          ]
+        },
+        {
+          "id": "adulto-em-crime-grave",
+          "rotulo": "Adulto em crime grave",
+          "manchete": "Garoto de 14 anos vai a júri como adulto por homicídio",
+          "exemplos": [
+            "EUA (transferência de adolescentes para tribunais adultos)",
+            "El Salvador (2022, responsabilização a partir de 12 anos para membros de gangues)"
+          ]
+        },
+        {
+          "id": "maioridade-16",
+          "rotulo": "Maioridade aos 16",
+          "manchete": "Maioridade cai para 16: adolescente infrator passa a cumprir pena em presídio comum",
+          "exemplos": [
+            "Portugal (penal aos 16; de 12 a 16 só medidas educativas)"
+          ]
+        },
+        {
+          "id": "maioridade-18",
+          "rotulo": "Maioridade aos 18",
+          "manchete": "Menor infrator segue com medidas socioeducativas: internação de até três anos",
+          "exemplos": [
+            "Brasil (ECA: de 12 a 17 anos, internação máxima de 3 anos)",
+            "Colômbia",
+            "Filipinas"
+          ]
+        },
+        {
+          "id": "juvenil-ate-21",
+          "rotulo": "Justiça juvenil até 21",
+          "manchete": "Jovem de 20 anos poderá ser julgado como adolescente se o juiz o considerar imaturo",
+          "exemplos": [
+            "Alemanha (18 a 21 anos podem ser julgados pela justiça juvenil)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "maioridade-18",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Unidades socioeducativas custam mais por jovem que um presídio comum, mas atendem muito menos gente."
+      },
+      "efeitos": [
+        {
+          "alvo": "reincidencia",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Adolescente mandado para tribunal e cadeia de adulto reincide mais: estigma, ficha criminal e convívio com criminosos experientes."
+        },
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Jovens deixam de ocupar vagas no sistema prisional adulto."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Sem condenação de adulto na ficha, o jovem consegue estudar e trabalhar depois."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Crimes graves cometidos por adolescentes recebem resposta mais branda e curta."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de maioridade-18",
+          "porque": "Facções usam adolescentes para tarefas de risco porque eles 'pegam menos'."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Cada crime bárbaro cometido por um adolescente vira manchete e revolta."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "quando o medo do crime é alto",
+          "porque": "Em países violentos, a maioria apoia reduzir a maioridade."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_jovens",
+          "grupo_progressistas",
+          "grupo_minorias_etnicas"
+        ],
+        "perdem": ["grupo_conservadores", "grupo_policiais"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "escolaridade"],
+        "reduz": ["crime_organizado", "lotacao_prisional"],
+        "porque": "Medida socioeducativa só recupera se houver escola e unidade decente; superlotada e dominada por facção, vira presídio com outro nome."
+      },
+      "mae": null,
+      "filhas": ["medidas-socioeducativas"],
+      "fontes": [
+        {
+          "titulo": "OJJDP/NCJRS – Redding, Juvenile Transfer Laws: An Effective Deterrent to Delinquency? (2010)",
+          "url": "https://www.ojp.gov/ncjrs/virtual-library/abstracts/juvenile-transfer-laws-effective-deterrent-delinquency"
+        },
+        {
+          "titulo": "Wikipedia – Age of criminal responsibility (tabela por país)",
+          "url": "https://en.wikipedia.org/wiki/Age_of_criminal_responsibility"
+        },
+        {
+          "titulo": "Congressional Research Service – El Salvador: state of exception (IN12510)",
+          "url": "https://www.congress.gov/crs_external_products/IN/PDF/IN12510/IN12510.2.pdf"
+        }
+      ]
+    },
+    {
+      "id": "penas-maximas",
+      "nome": "Penas máximas",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define a pena mais dura que o Estado pode aplicar: um teto curto de prisão, um teto longo, prisão perpétua ou pena de morte.",
+      "dilema": "Dar à sociedade a resposta que ela exige para os piores crimes, ou aceitar que a ciência não mostra que pena maior assusta o criminoso, e que o erro pode ser irreversível?",
+      "eixo": "do teto curto de prisão à pena de morte",
+      "opcoes": [
+        {
+          "id": "teto-curto",
+          "rotulo": "Teto curto (até 25 anos)",
+          "manchete": "Pena máxima de 21 anos, inclusive para massacre; perigosos podem ter a prisão renovada",
+          "exemplos": [
+            "Noruega (21 anos, com detenção preventiva renovável, aplicada a Breivik)",
+            "Portugal (25 anos)"
+          ]
+        },
+        {
+          "id": "teto-longo",
+          "rotulo": "Teto longo (40 a 60 anos)",
+          "manchete": "Teto da pena sobe para 40 anos: 'na prática, prisão para a vida toda', dizem juristas",
+          "exemplos": [
+            "Brasil (40 anos desde o Pacote Anticrime de 2019)",
+            "México (até 60 anos no código federal)"
+          ]
+        },
+        {
+          "id": "perpetua-revisavel",
+          "rotulo": "Perpétua com revisão",
+          "manchete": "Prisão perpétua aprovada, mas condenado poderá pedir revisão depois de 15 anos",
+          "exemplos": [
+            "Alemanha (revisão após 15 anos)",
+            "Canadá (25 anos sem condicional para homicídio de 1º grau)",
+            "Reino Unido"
+          ]
+        },
+        {
+          "id": "perpetua-sem-revisao",
+          "rotulo": "Perpétua sem saída",
+          "manchete": "Daqui só sai morto: perpétua sem direito a condicional para os piores crimes",
+          "exemplos": [
+            "EUA (prisão perpétua sem condicional)",
+            "Reino Unido (whole life order, casos raros)"
+          ]
+        },
+        {
+          "id": "pena-de-morte",
+          "rotulo": "Pena de morte",
+          "manchete": "Volta a pena capital: primeiro condenado à morte em décadas divide o país",
+          "exemplos": [
+            "China",
+            "Irã",
+            "Arábia Saudita",
+            "EUA (parte dos estados e governo federal)",
+            "Japão (forca, execuções raras)",
+            "Singapura"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "teto-longo",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Penas longas acumulam presos idosos e caros; a pena de morte exige anos de recursos judiciais."
+      },
+      "efeitos": [
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem entra fica décadas; as vagas não se renovam."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Manter presos por décadas, e cuidar deles na velhice, custa caro."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Efeito pequeno e incerto: a pesquisa não consegue dizer se a pena de morte dissuade; a certeza de ser pego pesa mais que o tamanho da pena."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A população sente que o pior criminoso não volta para a rua."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "quando o medo do crime é alto",
+          "porque": "Endurecer penas é das medidas mais populares em país violento."
+        },
+        {
+          "alvo": "rebeliao_presidios",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de perpetua-sem-revisao",
+          "porque": "Preso sem nenhuma esperança de sair não tem nada a perder na cadeia."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em pena-de-morte",
+          "porque": "Mais de dois terços dos países já aboliram a pena de morte na lei ou na prática; execuções viram protesto diplomático."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em pena-de-morte",
+          "porque": "Erro judicial executado não tem volta."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores", "grupo_policiais"],
+        "perdem": [
+          "grupo_progressistas",
+          "grupo_minorias_etnicas",
+          "grupo_pobres"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["impunidade", "corrupcao"],
+        "porque": "Pena dura só assusta quem acredita que vai ser pego e julgado; onde quase ninguém é preso, o tamanho da pena é papel."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "National Research Council / NIJ – Deterrence and the Death Penalty (2012)",
+          "url": "https://nij.ojp.gov/library/publications/deterrence-and-death-penalty"
+        },
+        {
+          "titulo": "Amnesty International – Death penalty",
+          "url": "https://www.amnesty.org/en/what-we-do/death-penalty/"
+        },
+        {
+          "titulo": "Wikipedia – Life imprisonment in Norway",
+          "url": "https://en.wikipedia.org/wiki/Life_imprisonment_in_Norway"
+        }
+      ]
+    },
+    {
+      "id": "politica-de-encarceramento",
+      "nome": "Política de encarceramento",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define quando a prisão é usada: só em último caso, com alternativas para crimes leves, como regra geral ou com mínimos obrigatórios e prisão em massa.",
+      "dilema": "Tirar o criminoso da rua hoje, ou não fabricar o criminoso de amanhã numa cadeia lotada e controlada por facções?",
+      "eixo": "da prisão como último recurso à mão dura",
+      "opcoes": [
+        {
+          "id": "ultimo-recurso",
+          "rotulo": "Prisão em último caso",
+          "manchete": "Pena curta, cela com estudo e trabalho: país fecha presídios por falta de presos",
+          "exemplos": [
+            "Noruega (pena média pouco acima de 6 meses)",
+            "Holanda",
+            "Finlândia"
+          ]
+        },
+        {
+          "id": "alternativas-crimes-leves",
+          "rotulo": "Alternativas para crimes leves",
+          "manchete": "Furtou sem violência? Prestação de serviços e tornozeleira em vez de cela",
+          "exemplos": [
+            "Brasil (penas alternativas e audiência de custódia)",
+            "Alemanha (multa proporcional à renda)",
+            "Portugal"
+          ]
+        },
+        {
+          "id": "prisao-como-regra",
+          "rotulo": "Cadeia como regra",
+          "manchete": "Sem penas alternativas no código: todo condenado vai para trás das grades",
+          "exemplos": ["Brasil antes da reforma penal de 1984"]
+        },
+        {
+          "id": "mao-dura",
+          "rotulo": "Mão dura",
+          "manchete": "Três crimes e prisão perpétua; preso provisório só sai depois do julgamento",
+          "exemplos": [
+            "EUA (anos 1990: 'three strikes' e penas mínimas obrigatórias)",
+            "El Salvador (84 mil presos sob estado de exceção desde 2022)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "alternativas-crimes-leves",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "Cada vaga e cada preso custam todo mês; a mão dura exige construir presídios sem parar."
+      },
+      "efeitos": [
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Mais gente entra e ninguém sai antes do prazo."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Novos presídios, agentes e custeio."
+        },
+        {
+          "alvo": "crimes_patrimoniais",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Ladrão preso não rouba enquanto está preso (efeito de incapacitação)."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em mao-dura",
+          "porque": "Prender em massa membros de gangues derrubou homicídios em El Salvador (de 53 para 1,9 por 100 mil, segundo o governo)."
+        },
+        {
+          "alvo": "reincidencia",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Cadeia longa e degradante corta emprego e laços; na Noruega, prisão curta e com formação reduziu a reincidência, nos EUA não."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "quando os presídios estão superlotados",
+          "porque": "Facções recrutam dentro da cadeia: o PCC nasceu num presídio paulista em 1993."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "em mao-dura",
+          "porque": "Prisões em massa com pouca prova levam inocentes junto."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Ver criminosos presos tranquiliza o eleitor."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_conservadores",
+          "grupo_policiais",
+          "grupo_pequenos_negocios"
+        ],
+        "perdem": [
+          "grupo_progressistas",
+          "grupo_pobres",
+          "grupo_minorias_etnicas",
+          "grupo_jovens"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["lotacao_prisional", "corrupcao"],
+        "porque": "Prender mais só protege se houver vaga e controle; presídio superlotado e corrupto devolve criminosos piores."
+      },
+      "mae": null,
+      "filhas": ["audiencia-de-custodia", "monitoramento-eletronico"],
+      "fontes": [
+        {
+          "titulo": "NBER Reporter – Dahl & Mogstad, The Benefits of Rehabilitative Incarceration (2020)",
+          "url": "https://www.nber.org/reporter/2020number1/benefits-rehabilitative-incarceration"
+        },
+        {
+          "titulo": "Congressional Research Service – El Salvador: state of exception (IN12510)",
+          "url": "https://www.congress.gov/crs_external_products/IN/PDF/IN12510/IN12510.2.pdf"
+        },
+        {
+          "titulo": "Wikipedia – Primeiro Comando da Capital (origem prisional)",
+          "url": "https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital"
+        }
+      ]
+    },
+    {
+      "id": "modelo-de-policia",
+      "nome": "Modelo de polícia",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "institucional",
+      "descricao": "Define como a polícia é organizada: comunitária e civil, de ciclo completo, dividida entre militar e civil, ou substituída pelas Forças Armadas.",
+      "dilema": "Força de choque que impõe ordem rápido, ou polícia de bairro que ganha a confiança da população e resolve crimes?",
+      "eixo": "da ausência de polícia profissional à segurança feita pelas Forças Armadas",
+      "opcoes": [
+        {
+          "id": "sem-policia",
+          "rotulo": "Sem polícia profissional",
+          "manchete": "Cada bairro que se vire: vigias contratados e milícias assumem a segurança",
+          "exemplos": [
+            "Inglaterra antes de 1829 (vigias de paróquia, antes da polícia de Peel)"
+          ]
+        },
+        {
+          "id": "comunitaria-civil",
+          "rotulo": "Polícia de bairro",
+          "manchete": "Um posto policial em cada esquina: o guarda conhece o nome dos moradores",
+          "exemplos": [
+            "Japão (cerca de 6 mil kōbans)",
+            "Singapura (postos de vizinhança)",
+            "Reino Unido (maioria dos policiais sem arma de fogo)"
+          ]
+        },
+        {
+          "id": "ciclo-completo",
+          "rotulo": "Ciclo completo",
+          "manchete": "Uma só polícia patrulha e investiga: 'quem atende a ocorrência resolve o caso'",
+          "exemplos": ["EUA (polícias locais)", "Canadá", "Alemanha"]
+        },
+        {
+          "id": "dual-militarizada",
+          "rotulo": "Militar na rua, civil na investigação",
+          "manchete": "PM prende, Polícia Civil investiga, e as duas não se falam",
+          "exemplos": [
+            "Brasil (Polícia Militar e Polícia Civil estaduais)",
+            "Chile (Carabineros e PDI)"
+          ]
+        },
+        {
+          "id": "forcas-armadas",
+          "rotulo": "Exército nas ruas",
+          "manchete": "Tanques na favela: Forças Armadas assumem a segurança pública",
+          "exemplos": [
+            "México (Guarda Nacional sob comando militar)",
+            "El Salvador (Exército em cercos desde 2022)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "dual-militarizada",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Polícia é das maiores folhas do Estado; postos de bairro e militarização custam de formas diferentes."
+      },
+      "efeitos": [
+        {
+          "alvo": "letalidade_policial",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Treino militar ensina a enfrentar inimigo, não a abordar cidadão."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Polícia temida recebe menos denúncias e menos colaboração dos moradores."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de dual-militarizada",
+          "porque": "Quem patrulha não investiga: a ocorrência se perde entre duas polícias e poucos crimes são esclarecidos."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "condicao": "ao sair de sem-policia",
+          "porque": "Sem polícia profissional, quase nenhum crime é investigado."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em forcas-armadas",
+          "porque": "Ofensivas militares fragmentam cartéis e disparam guerras por território (México após 2006)."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Viatura armada e tropa nas ruas passam impressão de ordem."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Abordagens duras, revistas coletivas e justiça militar para crimes de policiais."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_militares", "grupo_conservadores"],
+        "perdem": [
+          "grupo_progressistas",
+          "grupo_minorias_etnicas",
+          "grupo_pobres",
+          "grupo_jovens"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Polícia só funciona com informação dos moradores e com corregedoria que pune o desvio; a lei orçamentária de prevenção em segurança potencializa o modelo comunitário."
+      },
+      "mae": null,
+      "filhas": ["cameras-corporais", "guardas-municipais"],
+      "fontes": [
+        {
+          "titulo": "Wikipedia – Kōban (police box)",
+          "url": "https://en.wikipedia.org/wiki/Koban_(police_box)"
+        },
+        {
+          "titulo": "Wikipedia – Military Police (Brazil)",
+          "url": "https://en.wikipedia.org/wiki/Military_Police_(Brazil)"
+        },
+        {
+          "titulo": "Dell – Trafficking Networks and the Mexican Drug War (American Economic Review, 2015)",
+          "url": "https://www.aeaweb.org/articles?id=10.1257/aer.20121637"
+        }
+      ]
+    },
+    {
+      "id": "cameras-corporais",
+      "nome": "Câmeras corporais na polícia",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define se policiais usam câmeras no uniforme e quem decide quando gravar.",
+      "dilema": "Vigiar quem nos vigia e salvar vidas nas abordagens, ou gastar com tecnologia que a tropa vê como desconfiança e que grava a vida de todo mundo?",
+      "eixo": "da polícia sem câmeras à gravação ininterrupta",
+      "opcoes": [
+        {
+          "id": "nenhuma",
+          "rotulo": "Sem câmeras",
+          "manchete": "Palavra do policial contra a do suspeito: governo descarta câmeras no uniforme",
+          "exemplos": [
+            "Maioria das polícias da América Latina, da África e da Ásia"
+          ]
+        },
+        {
+          "id": "a-criterio",
+          "rotulo": "Cada corporação decide",
+          "manchete": "Câmeras chegam a alguns batalhões; outros nem querem ouvir falar",
+          "exemplos": [
+            "Brasil (cada estado decide; mais de 30 mil câmeras em uso)",
+            "EUA (cada departamento decide)"
+          ]
+        },
+        {
+          "id": "policial-aciona",
+          "rotulo": "Obrigatória, policial liga",
+          "manchete": "Toda viatura com câmera, mas o botão de gravar fica com o policial",
+          "exemplos": [
+            "Reino Unido (Polícia Metropolitana, 22 mil câmeras desde 2014)",
+            "São Paulo (modelo adotado a partir de 2024)"
+          ]
+        },
+        {
+          "id": "gravacao-continua",
+          "rotulo": "Gravação ininterrupta",
+          "manchete": "Câmera grava o turno inteiro; mortes em abordagens despencam nos batalhões equipados",
+          "exemplos": ["São Paulo (programa de 2020 a 2024)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "a-criterio",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Equipamento, armazenamento de vídeo e análise; barato perto da folha da polícia."
+      },
+      "efeitos": [
+        {
+          "alvo": "letalidade_policial",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "condicao": "mais forte em gravacao-continua",
+          "porque": "Em São Paulo, os batalhões com câmera tiveram 57% menos mortes por policiais que os sem câmera."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Vídeo resolve disputas e reduz denúncias falsas e verdadeiras."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "A gravação vira prova; em SP, registros de violência doméstica nos batalhões com câmera dobraram."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Compra, manutenção e nuvem para milhões de horas de vídeo."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em gravacao-continua",
+          "porque": "Tudo que o policial vê fica gravado, inclusive a vida de quem não fez nada."
+        },
+        {
+          "alvo": "sensacao_seguranca",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Parte da população e da tropa acha que a câmera 'amarra' o policial (efeito não confirmado: prisões não caíram em SP)."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_minorias_etnicas",
+          "grupo_progressistas",
+          "grupo_pobres"
+        ],
+        "perdem": ["grupo_policiais", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Câmera só muda conduta se alguém assiste e pune; nos EUA, onde o controle já era alto, o grande teste de Washington não achou efeito."
+      },
+      "mae": {
+        "lei": "modelo-de-policia",
+        "opcoes": [
+          "comunitaria-civil",
+          "ciclo-completo",
+          "dual-militarizada",
+          "forcas-armadas"
+        ]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "FGV – Body cameras on police uniforms: the case of São Paulo",
+          "url": "https://portal.fgv.br/en/artigos/body-cameras-police-uniforms-case-sao-paulo"
+        },
+        {
+          "titulo": "Wikipedia – Police body camera (Rialto, Washington DC, revisões)",
+          "url": "https://en.wikipedia.org/wiki/Police_body_camera"
+        }
+      ]
+    },
+    {
+      "id": "delacao-e-acordos-penais",
+      "nome": "Delação e acordos penais",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "institucional",
+      "descricao": "Define se o acusado pode negociar pena com a acusação: confessar, entregar comparsas ou evitar o julgamento em troca de benefícios.",
+      "dilema": "Derrubar chefões e corruptos com a ajuda de quem estava dentro, ou premiar criminosos e pressionar inocentes a confessar?",
+      "eixo": "do julgamento obrigatório ao acordo como regra",
+      "opcoes": [
+        {
+          "id": "sem-acordos",
+          "rotulo": "Sem acordos",
+          "manchete": "Nada de barganha: todo réu vai a julgamento, e os tribunais entopem",
+          "exemplos": [
+            "Maioria dos países de tradição continental europeia até os anos 1980"
+          ]
+        },
+        {
+          "id": "colaborador-restrito",
+          "rotulo": "Só contra máfia e terror",
+          "manchete": "Arrependido entrega a cúpula da máfia e ganha nova identidade",
+          "exemplos": ["Itália (pentiti; mais de mil colaboradores desde 1992)"]
+        },
+        {
+          "id": "colaboracao-premiada",
+          "rotulo": "Delação premiada ampla",
+          "manchete": "Empreiteiro delata 70 políticos em troca de prisão domiciliar",
+          "exemplos": [
+            "Brasil (lei de 2013, base da Lava Jato, e acordo de não persecução de 2019)",
+            "Colômbia (Justiça e Paz, 2005)"
+          ]
+        },
+        {
+          "id": "acordo-como-regra",
+          "rotulo": "Acordo como regra",
+          "manchete": "Só 2 em cada 100 réus vão a julgamento: o resto fecha acordo com o promotor",
+          "exemplos": ["EUA (90% dos réus federais se declaram culpados)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "colaboracao-premiada",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Acordos economizam tribunal; proteger delatores e testemunhas custa."
+      },
+      "efeitos": [
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Mais casos resolvidos, e crimes escondidos vêm à tona pela boca de quem participou."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quebra a lei do silêncio: o depoimento de Buscetta levou ao Maxiprocesso contra a máfia."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Esquemas de propina só se provam com quem pagou ou recebeu."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Menos julgamentos longos."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em acordo-como-regra",
+          "porque": "Quem arrisca julgamento e perde pega pena muito maior; inocentes confessam para não arriscar."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "quando delações vazam ou são anuladas",
+          "porque": "Delator mente para ganhar benefício, e processos anulados viram descrédito da Justiça."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "quando as delações atingem políticos",
+          "porque": "Cada lado vê a delação contra o outro como prova e a contra si como perseguição."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_policiais"],
+        "perdem": ["grupo_ricos", "grupo_pobres"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Ninguém delata se não acredita que o Estado vai condenar os outros e protegê-lo; com juiz e promotor capturados, a delação vira arma política."
+      },
+      "mae": {
+        "lei": "independencia-judiciario",
+        "opcoes": ["parcial", "plena"]
+      },
+      "filhas": ["protecao-a-testemunhas"],
+      "fontes": [
+        {
+          "titulo": "Pew Research – Only 2% of federal criminal defendants go to trial (2019)",
+          "url": "https://www.pewresearch.org/short-reads/2019/06/11/only-2-of-federal-criminal-defendants-go-to-trial-and-most-who-do-are-found-guilty/"
+        },
+        {
+          "titulo": "Wikipedia – Pentito",
+          "url": "https://en.wikipedia.org/wiki/Pentito"
+        }
+      ]
+    },
+    {
+      "id": "gestao-de-presidios",
+      "nome": "Gestão de presídios",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "institucional",
+      "descricao": "Define quem manda dentro da cadeia: as facções, o Estado, entidades comunitárias, uma parceria com empresas ou empresas privadas.",
+      "dilema": "Retomar o controle das cadeias custe o que custar, e com quem: servidores públicos, voluntários ou empresas que lucram com cada preso?",
+      "eixo": "do presídio sem Estado ao presídio privado",
+      "opcoes": [
+        {
+          "id": "faccoes-mandam",
+          "rotulo": "Facções mandam",
+          "manchete": "Dentro do muro, quem dita a regra é o 'prane': presídio tem piscina, boate e central do crime",
+          "exemplos": [
+            "Venezuela (presídios dos 'pranes', como Tocorón até 2023)",
+            "Brasil (alas controladas por facções; o PCC é comandado de dentro das prisões)"
+          ]
+        },
+        {
+          "id": "estatal",
+          "rotulo": "Gestão estatal",
+          "manchete": "Estado retoma as cadeias: agentes penitenciários concursados no comando",
+          "exemplos": [
+            "Noruega (presídios pequenos, foco em reabilitação)",
+            "Japão",
+            "Maioria dos países"
+          ]
+        },
+        {
+          "id": "comunitaria",
+          "rotulo": "Gestão comunitária",
+          "manchete": "Presídio sem guarda armado: os próprios presos têm as chaves, e quase ninguém foge",
+          "exemplos": ["Brasil (APACs, sobretudo em Minas Gerais)"]
+        },
+        {
+          "id": "cogestao",
+          "rotulo": "Cogestão",
+          "manchete": "Estado guarda a muralha, empresa cuida da comida, da saúde e das oficinas",
+          "exemplos": [
+            "França (gestão delegada de serviços)",
+            "Brasil (cogestão em alguns estados)"
+          ]
+        },
+        {
+          "id": "privada",
+          "rotulo": "Presídio privado",
+          "manchete": "Empresa ganha por preso por dia: 'eficiência', diz governo; 'indústria da prisão', diz oposição",
+          "exemplos": ["EUA", "Reino Unido", "Austrália"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "estatal",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Retomar presídios custa caro; a economia prometida pela privatização não aparece de forma consistente nos estudos."
+      },
+      "efeitos": [
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "condicao": "ao sair de faccoes-mandam",
+          "porque": "Presídio controlado por facção é quartel-general, escola e cofre do crime."
+        },
+        {
+          "alvo": "rebeliao_presidios",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "ao sair de faccoes-mandam",
+          "porque": "Com o Estado no comando, guerras entre facções dentro das celas diminuem."
+        },
+        {
+          "alvo": "rebeliao_presidios",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "na transição de faccoes-mandam para estatal",
+          "porque": "Facção que perde o controle reage com motins e ataques na rua."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "ao sair de faccoes-mandam",
+          "porque": "Retomar a cadeia exige agentes, bloqueadores de celular e tropa."
+        },
+        {
+          "alvo": "reincidencia",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em comunitaria",
+          "porque": "Trabalho, estudo e família por perto reduzem a volta ao crime (mas só com presos selecionados)."
+        },
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em privada",
+          "porque": "Presos de prisões privadas cumprem mais tempo (no Mississippi, 90 dias a mais em média)."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em privada",
+          "porque": "Empresa que ganha por preso faz lobby por mais presos e contratos maiores."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_religiosos"],
+        "perdem": [
+          "grupo_servidores",
+          "grupo_sindicatos",
+          "grupo_progressistas"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["lotacao_prisional", "corrupcao"],
+        "porque": "Nenhum modelo funciona com o dobro de presos que vagas; contrato privado ou APAC só dão certo com um Estado capaz de fiscalizar."
+      },
+      "mae": null,
+      "filhas": ["trabalho-e-estudo-de-presos"],
+      "fontes": [
+        {
+          "titulo": "Wikipedia – Private prison (custos, reincidência e tempo de pena)",
+          "url": "https://en.wikipedia.org/wiki/Private_prison"
+        },
+        {
+          "titulo": "Wikipedia – Primeiro Comando da Capital",
+          "url": "https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital"
+        }
+      ]
+    },
+    {
+      "id": "combate-crime-organizado",
+      "nome": "Estratégia contra o crime organizado",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "institucional",
+      "descricao": "Define como o Estado enfrenta facções, cartéis e máfias: negociando, asfixiando o dinheiro, atacando com tropas ou suspendendo garantias.",
+      "dilema": "Paz rápida suspendendo direitos, guerra que pode multiplicar mortos, trégua que fortalece o inimigo, ou o caminho lento de seguir o dinheiro?",
+      "eixo": "da negociação com o crime à suspensão das garantias",
+      "opcoes": [
+        {
+          "id": "sem-estrategia",
+          "rotulo": "Sem estratégia nacional",
+          "manchete": "Cada estado com sua polícia, cada polícia com sua operação: facções agradecem",
+          "exemplos": ["Brasil (cada estado age por conta própria)"]
+        },
+        {
+          "id": "tregua-negociada",
+          "rotulo": "Trégua com as facções",
+          "manchete": "Governo senta com chefes de gangues: homicídios caem pela metade da noite para o dia",
+          "exemplos": [
+            "El Salvador (trégua entre gangues de 2012)",
+            "Colômbia ('Paz Total', 2022)"
+          ]
+        },
+        {
+          "id": "asfixia-financeira",
+          "rotulo": "Seguir o dinheiro",
+          "manchete": "Força-tarefa confisca mansões e empresas da máfia e as entrega a cooperativas",
+          "exemplos": [
+            "Itália (confisco de bens e Direção Antimáfia)",
+            "EUA (lei RICO, 1970)"
+          ]
+        },
+        {
+          "id": "ofensiva-militar",
+          "rotulo": "Guerra aos cartéis",
+          "manchete": "Exército declara guerra aos cartéis; chefão cai e sucessores disputam território à bala",
+          "exemplos": ["México (desde 2006)", "Colômbia (Plano Colômbia)"]
+        },
+        {
+          "id": "estado-de-excecao",
+          "rotulo": "Estado de exceção",
+          "manchete": "Garantias suspensas: dezenas de milhares presos sem mandado, e a rua volta a ser segura",
+          "exemplos": [
+            "El Salvador (desde 2022)",
+            "Equador (2024, 'conflito armado interno')"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "sem-estrategia",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Inteligência é barata perto de tropas e presídios; o estado de exceção cobra caro em vagas e operações."
+      },
+      "efeitos": [
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "condicao": "em estado-de-excecao",
+          "porque": "Em El Salvador, homicídios caíram de 53 para 1,9 por 100 mil (números oficiais, contestados)."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em ofensiva-militar",
+          "porque": "Golpear o chefe abre disputa pela sucessão e pelas rotas; a violência migra e cresce."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "em tregua-negociada",
+          "porque": "As facções param de matar enquanto o acordo lhes convém."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em tregua-negociada",
+          "porque": "Trégua reconhece e fortalece as facções, que seguem extorquindo."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de asfixia-financeira",
+          "porque": "Sem dinheiro e sem bens, a organização perde poder de comprar armas, policiais e políticos."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "condicao": "em estado-de-excecao",
+          "porque": "Prisão sem mandado, sem advogado e julgamentos em massa de até 900 réus."
+        },
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "condicao": "em estado-de-excecao",
+          "porque": "84 mil presos em menos de três anos não cabem em presídio nenhum."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em estado-de-excecao",
+          "porque": "Quem vivia sob extorsão aplaude a rua tranquila, mesmo com abusos."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_pequenos_negocios",
+          "grupo_conservadores",
+          "grupo_militares"
+        ],
+        "perdem": [
+          "grupo_progressistas",
+          "grupo_jovens",
+          "grupo_pobres",
+          "grupo_minorias_etnicas"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Facção prospera onde policial, juiz e político são compráveis; sem inteligência e controle interno, qualquer estratégia vaza."
+      },
+      "mae": null,
+      "filhas": ["confisco-de-bens-do-crime"],
+      "fontes": [
+        {
+          "titulo": "Congressional Research Service – El Salvador: state of exception (IN12510)",
+          "url": "https://www.congress.gov/crs_external_products/IN/PDF/IN12510/IN12510.2.pdf"
+        },
+        {
+          "titulo": "Dell – Trafficking Networks and the Mexican Drug War (American Economic Review, 2015)",
+          "url": "https://www.aeaweb.org/articles?id=10.1257/aer.20121637"
+        },
+        {
+          "titulo": "Wikipedia – Pentito (máfia italiana e colaboradores)",
+          "url": "https://en.wikipedia.org/wiki/Pentito"
+        }
+      ]
+    },
+    {
+      "id": "protecao-violencia-domestica",
+      "nome": "Lei contra a violência doméstica",
+      "area": "Segurança, justiça e drogas",
+      "ministerio": "Ministério da Justiça e Segurança Pública",
+      "grupo": "regulatoria",
+      "descricao": "Define como a lei trata a agressão dentro de casa: assunto de família, crime comum, lei especial com medidas protetivas ou sistema integral.",
+      "dilema": "Entrar na casa das pessoas para proteger a vítima antes da tragédia, ou preservar a família e o direito de defesa do acusado?",
+      "eixo": "do assunto de família à proteção integral",
+      "opcoes": [
+        {
+          "id": "assunto-privado",
+          "rotulo": "Assunto de família",
+          "manchete": "Primeiro tapa vira multa: 'em briga de marido e mulher o Estado não mete a colher'",
+          "exemplos": [
+            "Rússia (2017: primeira agressão sem lesão grave virou infração administrativa)"
+          ]
+        },
+        {
+          "id": "crime-comum",
+          "rotulo": "Crime comum",
+          "manchete": "Agressor condenado a pagar cesta básica e volta para casa no mesmo dia",
+          "exemplos": [
+            "Brasil antes de 2006 (casos no juizado de pequenas causas)"
+          ]
+        },
+        {
+          "id": "medidas-protetivas",
+          "rotulo": "Lei especial com medidas protetivas",
+          "manchete": "Juiz afasta agressor de casa em 48 horas; delegacia da mulher ganha poder",
+          "exemplos": [
+            "Brasil (Lei Maria da Penha, 2006)",
+            "EUA (Violence Against Women Act, 1994)"
+          ]
+        },
+        {
+          "id": "protecao-integral",
+          "rotulo": "Proteção integral",
+          "manchete": "Tribunal só para violência de gênero e tornozeleira no agressor: país monitora cada vítima em risco",
+          "exemplos": ["Espanha (lei integral de 2004 e sistema VioGén)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "medidas-protetivas",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Varas especializadas, monitoramento e delegacias; os abrigos são bancados pela lei orçamentária de Proteção às mulheres."
+      },
+      "efeitos": [
+        {
+          "alvo": "protecao_efetiva_mulheres",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Medida protetiva rápida tira o agressor de perto antes que a violência escale."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "No Brasil, a Lei Maria da Penha reduziu em cerca de 10% os homicídios de mulheres dentro de casa."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Agressões que nunca chegavam ao juiz passam a ser processadas."
+        },
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Mais prisões em flagrante e preventivas de agressores."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Juizados, delegacias especializadas e monitoramento eletrônico."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "em protecao-integral",
+          "porque": "Afastamento e restrições antes do julgamento, com base na palavra da vítima, preocupam defensores do devido processo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_mulheres", "grupo_progressistas"],
+        "perdem": ["grupo_conservadores", "grupo_religiosos"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["desigualdade"],
+        "porque": "O efeito da lei depende de haver delegacia, abrigo e juiz por perto (orçamento de Proteção às mulheres); onde a rede não existe, a medida protetiva é papel."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Ipea – Cerqueira, Martins & Pinto Junior, Avaliando a Efetividade da Lei Maria da Penha (TD 2048)",
+          "url": "https://ideas.repec.org/p/ipe/ipetds/2048.html"
+        },
+        {
+          "titulo": "Wikipedia – Domestic violence in Russia (descriminalização de 2017)",
+          "url": "https://en.wikipedia.org/wiki/Domestic_violence_in_Russia"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "letalidade_policial",
+      "nome": "Letalidade policial",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Modelo de polícia, câmeras corporais, guerra às drogas e estado de exceção mexem nas mortes causadas pela polícia, que não se confundem com a violência letal geral."
+    },
+    {
+      "id": "reincidencia",
+      "nome": "Reincidência criminal",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Política de encarceramento, maioridade penal e gestão de presídios mudam a chance de quem sai da cadeia voltar ao crime."
+    },
+    {
+      "id": "impunidade",
+      "nome": "Impunidade (crimes não esclarecidos)",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Mede a fração de crimes que nunca são punidos; é a 'certeza da punição', que pesa mais na dissuasão que o tamanho da pena, e regula a eficácia das penas."
+    },
+    {
+      "id": "armas_em_circulacao",
+      "nome": "Armas em circulação",
+      "tipo": "bolha_lenta",
+      "unidade": "percentual_0_100",
+      "avaliacao": "neutra",
+      "porque": "O estoque de armas sobe e desce devagar (compras, recompras, apreensões) e alimenta homicídios, suicídios e o arsenal das facções."
+    },
+    {
+      "id": "crimes_patrimoniais",
+      "nome": "Crimes contra o patrimônio (roubos e furtos)",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Roubos e furtos reagem a encarceramento, policiamento e economia de modo diferente dos homicídios, e são o que mais pesa no medo do cotidiano."
+    },
+    {
+      "id": "rebeliao_presidios",
+      "nome": "Rebelião nos presídios",
+      "tipo": "situacao",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "surge_quando": "Lotação prisional muito alta com facções no controle, ou quando o Estado retoma presídios dominados de forma abrupta.",
+      "porque": "Motins com mortes e ataques coordenados nas ruas são eventos marcantes de jogo e respondem à gestão de presídios e às penas."
+    }
+  ]
+}

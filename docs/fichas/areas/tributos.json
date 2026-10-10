@@ -1,0 +1,1735 @@
+{
+  "area": "Tributação",
+  "leis": [
+    {
+      "id": "modelo-tributario",
+      "nome": "Modelo tributário",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "institucional",
+      "descricao": "Define de onde o Estado tira seu dinheiro: quase nada de impostos, peso no consumo, alíquota única para todos, sistema dual nórdico ou cobrança progressiva sobre a renda.",
+      "dilema": "Cobrar de forma simples e invisível na prateleira do mercado, ou cobrar mais de quem ganha mais e enfrentar quem tem advogado tributarista?",
+      "eixo": "de um Estado quase sem impostos a um sistema em que quem ganha mais paga proporcionalmente mais",
+      "opcoes": [
+        {
+          "id": "quase-sem-impostos",
+          "rotulo": "Quase sem impostos",
+          "manchete": "Adeus, Leão: governo zera impostos sobre renda e promete viver de petróleo, taxas e tarifas",
+          "exemplos": [
+            "Emirados Árabes Unidos (antes do IVA de 2018 e do IR corporativo de 2023)",
+            "Catar",
+            "Mônaco (pessoas físicas)"
+          ]
+        },
+        {
+          "id": "consumo",
+          "rotulo": "Peso no consumo",
+          "manchete": "Imposto está no preço: arroz e feijão pagam mais que salário de diretor",
+          "exemplos": ["Brasil", "Chile", "Argentina", "Índia"]
+        },
+        {
+          "id": "proporcional",
+          "rotulo": "Alíquota única",
+          "manchete": "Todo mundo paga o mesmo percentual: 'simples e justo', dizem uns; 'presente para os ricos', dizem outros",
+          "exemplos": ["Estônia", "Hungria", "Bulgária", "Rússia (2001–2024)"]
+        },
+        {
+          "id": "dual",
+          "rotulo": "Dual nórdico",
+          "manchete": "Salário paga tabela progressiva, capital paga taxa fixa: o modelo escandinavo chega ao país",
+          "exemplos": ["Suécia", "Noruega", "Finlândia", "Dinamarca"]
+        },
+        {
+          "id": "progressivo",
+          "rotulo": "Progressivo na renda",
+          "manchete": "Quem ganha mais paga mais: nova tabela soma salário, aluguel e dividendos na mesma conta",
+          "exemplos": ["EUA", "Reino Unido", "Japão", "França", "Alemanha"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "consumo",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "alto",
+        "porque": "Define a base de toda a arrecadação; quanto mais progressivo, mais depende de uma Receita forte para cobrar renda e capital."
+      },
+      "efeitos": [
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Ao avançar no eixo, quem tem mais renda passa a carregar uma fatia maior da conta."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de consumo",
+          "porque": "Bases mais amplas (renda, lucros, capital) permitem arrecadar mais sem depender só do consumo."
+        },
+        {
+          "alvo": "complexidade_tributaria",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "em progressivo",
+          "porque": "Tabelas progressivas, deduções e regras para capital multiplicam formulários e brechas."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em progressivo",
+          "porque": "Quem tem capital móvel procura países que cobrem menos."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de dual",
+          "porque": "Tributar mais renda e lucros do que consumo pesa mais sobre a decisão de investir (hierarquia da OCDE)."
+        },
+        {
+          "alvo": "pobreza",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de proporcional",
+          "porque": "Tirar o peso do consumo alivia quem gasta tudo o que ganha."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "em progressivo",
+          "porque": "Empresários e investidores leem a guinada progressiva como conta que vai sobrar para eles."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_pobres",
+          "grupo_trabalhadores_formais",
+          "grupo_progressistas"
+        ],
+        "perdem": ["grupo_ricos", "grupo_setor_financeiro", "grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["informalidade", "sonegacao", "corrupcao"],
+        "porque": "Imposto sobre renda só funciona onde a Receita enxerga a renda; com muita informalidade, o país acaba voltando ao consumo."
+      },
+      "mae": null,
+      "filhas": [
+        "imposto-renda-pessoas",
+        "imposto-sobre-consumo",
+        "imposto-renda-empresas",
+        "imposto-grandes-fortunas",
+        "imposto-heranca",
+        "regime-simplificado-pequenas-empresas"
+      ],
+      "fontes": [
+        {
+          "titulo": "OECD – Revenue Statistics 2025: Tax levels and tax structures, 1965-2024",
+          "url": "https://www.oecd.org/en/publications/revenue-statistics-2025_3a264267-en/full-report/tax-levels-and-tax-structures-1965-2024_2033f3ea.html"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        }
+      ]
+    },
+    {
+      "id": "imposto-renda-pessoas",
+      "nome": "Imposto de renda da pessoa física",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota máxima cobrada sobre a renda das pessoas (salários, aluguéis, ganhos), com faixas progressivas abaixo dela.",
+      "dilema": "Uma alíquota de topo alta financia o Estado e reduz a distância entre ricos e pobres, mas até onde dá para subir antes que os ricos se mudem, virem 'empresa' ou parem de declarar?",
+      "eixo": "da ausência de imposto sobre a renda à alíquota máxima mais alta do mundo",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 60,
+        "exemplos": [
+          {
+            "pais": "Emirados Árabes Unidos",
+            "valor": 0
+          },
+          {
+            "pais": "Bulgária",
+            "valor": 10
+          },
+          {
+            "pais": "Romênia",
+            "valor": 10
+          },
+          {
+            "pais": "Rússia (escala progressiva desde 2025)",
+            "valor": 22
+          },
+          {
+            "pais": "Estônia",
+            "valor": 24
+          },
+          {
+            "pais": "Brasil",
+            "valor": 27.5
+          },
+          {
+            "pais": "EUA (federal)",
+            "valor": 37
+          },
+          {
+            "pais": "China",
+            "valor": 45
+          },
+          {
+            "pais": "Reino Unido",
+            "valor": 45
+          },
+          {
+            "pais": "França",
+            "valor": 55.4
+          },
+          {
+            "pais": "Dinamarca",
+            "valor": 56
+          }
+        ]
+      },
+      "brasil": 27.5,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "alto",
+        "porque": "Nos países ricos é a maior fonte isolada de receita; a Dinamarca tira dele mais da metade de tudo que arrecada."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Cada ponto a mais na tabela vira receita no ano seguinte."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem está no topo entrega uma fatia maior da renda."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Sobra menos no contracheque."
+        },
+        {
+          "alvo": "consumo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Com menos renda disponível, a classe média segura gastos."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "a partir de 40",
+          "porque": "Alíquota alta compensa contratar planejamento tributário ou virar 'pessoa jurídica'."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de 45",
+          "porque": "Profissionais e herdeiros de alta renda trocam de residência fiscal."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de 45",
+          "porque": "Alíquotas de topo muito altas desestimulam empreender e arriscar (OCDE)."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_progressistas", "grupo_servidores"],
+        "perdem": [
+          "grupo_ricos",
+          "grupo_classe_media",
+          "grupo_trabalhadores_formais"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade", "sonegacao"],
+        "porque": "Só paga IR quem a Receita vê: informais e quem recebe 'por fora' escapam, e a conta cai no assalariado."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "proporcional", "dual", "progressivo"]
+      },
+      "filhas": ["renda-basica-universal"],
+      "fontes": [
+        {
+          "titulo": "Euronews / Tax Foundation – Top personal income tax rates in Europe, 2026",
+          "url": "https://euronews.com/business/2026/02/13/top-personal-income-tax-rates-in-europe-who-pays-the-most-in-2026"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        },
+        {
+          "titulo": "Mayer Brown – Enactment of Law No. 15,270/2025 (dividend taxation, exemption threshold, minimum tax on high incomes)",
+          "url": "https://www.mayerbrown.com/de/insights/publications/2025/12/enactment-of-law-no-15270-2025-which-establishes-dividend-taxation-expands-the-exemption-threshold-and-introduces-a-minimum-tax-on-high-incomes"
+        }
+      ]
+    },
+    {
+      "id": "imposto-sobre-consumo",
+      "nome": "Imposto sobre consumo (IVA)",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota padrão do imposto cobrado sobre bens e serviços em cada etapa da venda, com crédito do que foi pago antes.",
+      "dilema": "É o imposto que mais arrecada e menos atrapalha o crescimento, mas pesa mais no prato de quem é pobre: até onde subir a alíquota sem que a fatura chegue ao supermercado?",
+      "eixo": "de nenhum imposto geral sobre consumo à alíquota padrão mais alta do mundo",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 30,
+        "exemplos": [
+          {
+            "pais": "EUA (sem IVA federal; só imposto estadual sobre vendas)",
+            "valor": 0
+          },
+          {
+            "pais": "Emirados Árabes Unidos",
+            "valor": 5
+          },
+          {
+            "pais": "Suíça",
+            "valor": 8.1
+          },
+          {
+            "pais": "Singapura",
+            "valor": 9
+          },
+          {
+            "pais": "Japão",
+            "valor": 10
+          },
+          {
+            "pais": "China",
+            "valor": 13
+          },
+          {
+            "pais": "Índia (GST padrão)",
+            "valor": 18
+          },
+          {
+            "pais": "Alemanha",
+            "valor": 19
+          },
+          {
+            "pais": "Chile",
+            "valor": 19
+          },
+          {
+            "pais": "França",
+            "valor": 20
+          },
+          {
+            "pais": "Argentina",
+            "valor": 21
+          },
+          {
+            "pais": "Dinamarca",
+            "valor": 25
+          },
+          {
+            "pais": "Suécia",
+            "valor": 25
+          },
+          {
+            "pais": "Brasil (CBS+IBS, alíquota de referência estimada)",
+            "valor": 26.5
+          },
+          {
+            "pais": "Hungria",
+            "valor": 27
+          }
+        ]
+      },
+      "brasil": 26.5,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "alto",
+        "porque": "Impostos sobre bens e serviços são cerca de um terço da arrecadação média da OCDE e mais da metade no Chile."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Base enorme: tudo que se vende paga."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O aumento chega quase todo aos preços na hora."
+        },
+        {
+          "alvo": "consumo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Produto mais caro, carrinho mais vazio."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "sem devolução do imposto às famílias pobres",
+          "porque": "Pobres gastam toda a renda; ricos poupam parte e pagam menos em proporção."
+        },
+        {
+          "alvo": "pobreza",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "sem devolução do imposto às famílias pobres",
+          "porque": "Cesta básica mais cara aperta quem vive no limite."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de 22",
+          "porque": "Alíquota alta compensa vender sem nota."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de 22",
+          "porque": "Comércio informal ganha vantagem de preço sobre o formal."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_industria"],
+        "perdem": [
+          "grupo_pobres",
+          "grupo_classe_media",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade", "sonegacao"],
+        "porque": "IVA se autofiscaliza (cada comprador quer a nota para ter crédito), mas só dentro da economia formal."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "proporcional", "dual", "progressivo"]
+      },
+      "filhas": ["imposto-seletivo"],
+      "fontes": [
+        {
+          "titulo": "Tax Foundation – Value-Added Tax (VAT) rates in Europe",
+          "url": "https://taxfoundation.org/data/all/global/value-added-tax-vat/"
+        },
+        {
+          "titulo": "Barbieri Advogados – Brazilian Tax System Reform: A Practical Guide (2026–2033)",
+          "url": "https://barbieriadvogados.com/en/brazilian-tax-system-reform/"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        }
+      ]
+    },
+    {
+      "id": "imposto-renda-empresas",
+      "nome": "Imposto de renda das empresas",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota nominal cobrada sobre o lucro das empresas.",
+      "dilema": "Lucro grande deve pagar sua parte, mas capital viaja: cobrar alto e arriscar que a fábrica vá para o vizinho, ou cobrar baixo e ver o caixa do governo minguar?",
+      "eixo": "de lucro sem imposto à alíquota corporativa mais alta do mundo",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 40,
+        "exemplos": [
+          {
+            "pais": "Ilhas Cayman",
+            "valor": 0
+          },
+          {
+            "pais": "Emirados Árabes Unidos",
+            "valor": 9
+          },
+          {
+            "pais": "Hungria",
+            "valor": 9
+          },
+          {
+            "pais": "Irlanda",
+            "valor": 12.5
+          },
+          {
+            "pais": "Estônia (só sobre lucro distribuído)",
+            "valor": 22
+          },
+          {
+            "pais": "China",
+            "valor": 25
+          },
+          {
+            "pais": "Reino Unido",
+            "valor": 25
+          },
+          {
+            "pais": "Rússia",
+            "valor": 25
+          },
+          {
+            "pais": "EUA (federal + estadual)",
+            "valor": 25.6
+          },
+          {
+            "pais": "Chile",
+            "valor": 27
+          },
+          {
+            "pais": "Japão",
+            "valor": 29.7
+          },
+          {
+            "pais": "Alemanha",
+            "valor": 30
+          },
+          {
+            "pais": "Índia",
+            "valor": 30
+          },
+          {
+            "pais": "Brasil (IRPJ + CSLL)",
+            "valor": 34
+          },
+          {
+            "pais": "Argentina",
+            "valor": 35
+          },
+          {
+            "pais": "França",
+            "valor": 36.1
+          }
+        ]
+      },
+      "brasil": 34,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "medio",
+        "porque": "Cerca de 12% da arrecadação média da OCDE, mas um quarto no Chile e no México."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Mais lucro vai para o Tesouro."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "É o imposto mais nocivo ao crescimento na hierarquia da OCDE: reduz o retorno de cada nova fábrica."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Alíquota alta é a primeira linha que o investidor estrangeiro lê."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de 25",
+          "porque": "Multinacionais transferem lucros para filiais em países de alíquota baixa."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Lucro é renda concentrada no topo; tributá-lo pesa mais sobre donos de capital."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Menos investimento em máquinas e tecnologia freia a produtividade."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_progressistas"],
+        "perdem": [
+          "grupo_empresarios",
+          "grupo_industria",
+          "grupo_setor_financeiro"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "reputacao_internacional"],
+        "reduz": ["corrupcao", "concentracao_mercado"],
+        "porque": "Cobrar lucro de multinacional exige Receita sofisticada e cooperação internacional (o imposto mínimo global de 15% ajuda)."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "proporcional", "dual", "progressivo"]
+      },
+      "filhas": [
+        "tributacao-dividendos",
+        "incentivos-fiscais-regionais",
+        "politica-industrial"
+      ],
+      "fontes": [
+        {
+          "titulo": "Tax Foundation – Corporate Tax Rates around the World, 2025",
+          "url": "https://taxfoundation.org/data/all/global/corporate-tax-rates-by-country-2025/"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        },
+        {
+          "titulo": "Masso, Meriküll & Vahter – Gross profit taxation versus distributed profit taxation and firm performance (Univ. Tartu WP 81)",
+          "url": "https://econpapers.repec.org/RePEc:mtk:febawb:81"
+        }
+      ]
+    },
+    {
+      "id": "tributacao-dividendos",
+      "nome": "Tributação de dividendos",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota máxima cobrada do acionista quando a empresa distribui lucro.",
+      "dilema": "O lucro já pagou imposto na empresa: cobrar de novo no bolso do sócio é justiça com o assalariado ou bitributação que espanta o investidor?",
+      "eixo": "de dividendo isento à tributação igual à do salário mais alto",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 55,
+        "exemplos": [
+          {
+            "pais": "Estônia (cobra na empresa ao distribuir)",
+            "valor": 0
+          },
+          {
+            "pais": "Letônia",
+            "valor": 0
+          },
+          {
+            "pais": "Grécia",
+            "valor": 5
+          },
+          {
+            "pais": "Brasil (retenção de 10% acima de R$ 50 mil/mês, desde 2026)",
+            "valor": 10
+          },
+          {
+            "pais": "Alemanha (taxa fixa sobre capital)",
+            "valor": 26.4
+          },
+          {
+            "pais": "França (taxa única de 30% com contribuições)",
+            "valor": 34
+          },
+          {
+            "pais": "Reino Unido",
+            "valor": 39.35
+          },
+          {
+            "pais": "Dinamarca",
+            "valor": 42
+          },
+          {
+            "pais": "Irlanda",
+            "valor": 51
+          }
+        ]
+      },
+      "brasil": 10,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "medio",
+        "porque": "Arrecada sobretudo no topo da pirâmide; no Brasil, financia a isenção de IR para quem ganha até R$ 5 mil."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Renda de capital antes isenta passa a pagar."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Dividendos se concentram no 1% mais rico; isentá-los faz o rico pagar alíquota menor que o assalariado."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de 25",
+          "porque": "Retorno menor para o acionista encarece o capital próprio."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de 25",
+          "porque": "Empresas trocam dividendo por pró-labore, juros sobre capital ou lucro retido para escapar."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Investidores levam participações para holdings no exterior."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Mercado reage mal a qualquer mudança na regra do dividendo."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_trabalhadores_formais",
+          "grupo_progressistas",
+          "grupo_sindicatos"
+        ],
+        "perdem": [
+          "grupo_ricos",
+          "grupo_setor_financeiro",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "transparencia_fiscal_internacional"],
+        "reduz": ["sonegacao"],
+        "porque": "Sem troca automática de informações entre países, o dividendo some numa holding offshore."
+      },
+      "mae": {
+        "lei": "imposto-renda-empresas",
+        "opcoes": null
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Tax Foundation – Dividend Tax Rates in Europe",
+          "url": "https://taxfoundation.org/data/all/eu/dividend-tax-rates-europe/"
+        },
+        {
+          "titulo": "Mayer Brown – Enactment of Law No. 15,270/2025 (dividend taxation, exemption threshold, minimum tax on high incomes)",
+          "url": "https://www.mayerbrown.com/de/insights/publications/2025/12/enactment-of-law-no-15270-2025-which-establishes-dividend-taxation-expands-the-exemption-threshold-and-introduces-a-minimum-tax-on-high-incomes"
+        },
+        {
+          "titulo": "Masso, Meriküll & Vahter – Gross profit taxation versus distributed profit taxation and firm performance (Univ. Tartu WP 81)",
+          "url": "https://econpapers.repec.org/RePEc:mtk:febawb:81"
+        }
+      ]
+    },
+    {
+      "id": "imposto-grandes-fortunas",
+      "nome": "Imposto sobre grandes fortunas",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota anual máxima cobrada sobre o patrimônio líquido dos mais ricos, acima de um limite de isenção.",
+      "dilema": "Taxar bilionários todo ano é a promessa mais popular de qualquer campanha, mas a fortuna tem passaporte: quanto fica para o país e quanto embarca no primeiro voo?",
+      "eixo": "de nenhuma cobrança sobre patrimônio à alíquota anual mais alta já usada",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 3.5,
+        "exemplos": [
+          {
+            "pais": "Brasil (previsto na Constituição de 1988, nunca regulamentado)",
+            "valor": 0
+          },
+          {
+            "pais": "França (abolido em 2018, trocado por imposto só sobre imóveis)",
+            "valor": 0
+          },
+          {
+            "pais": "Suécia (abolido em 2007)",
+            "valor": 0
+          },
+          {
+            "pais": "Noruega",
+            "valor": 1.1
+          },
+          {
+            "pais": "Espanha (imposto de solidariedade)",
+            "valor": 3.5
+          }
+        ]
+      },
+      "brasil": 0,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Na OCDE, a receita costuma ser pequena e não cresce junto com a riqueza; doze países tinham o imposto em 1990, só quatro em 2017."
+      },
+      "efeitos": [
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Corta o topo da concentração de riqueza ano após ano."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Arrecada pouco: avaliação difícil, isenções e evasão."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Grandes fortunas mudam de domicílio ou movem ativos para fora antes da primeira cobrança."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Imposto sobre patrimônio cobra mesmo em ano sem lucro e desestimula risco."
+        },
+        {
+          "alvo": "complexidade_tributaria",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Avaliar fazendas, quadros e participações em empresas fechadas vira uma indústria de disputas."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "'Taxar os super-ricos' tem apoio amplo nas pesquisas."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_pobres", "grupo_sindicatos"],
+        "perdem": ["grupo_ricos", "grupo_setor_financeiro", "grupo_agronegocio"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "transparencia_fiscal_internacional"],
+        "reduz": ["fuga_capitais", "corrupcao"],
+        "porque": "Só funciona com cadastro de bens confiável e troca de informações com outros países; senão, só paga quem não conseguiu sair."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "dual", "progressivo"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "OECD – The Role and Design of Net Wealth Taxes in the OECD (summary, 2018)",
+          "url": "https://www.oecd.org/ctp/tax-policy/role-and-design-of-net-wealth-taxes-in-the-OECD-summary.pdf"
+        },
+        {
+          "titulo": "Tax Foundation – Wealth Taxes in Europe",
+          "url": "https://taxfoundation.org/data/all/eu/wealth-taxes-europe/"
+        }
+      ]
+    },
+    {
+      "id": "imposto-heranca",
+      "nome": "Imposto sobre herança e doações",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota máxima cobrada sobre heranças e doações, acima de uma faixa isenta.",
+      "dilema": "Mérito para quem nasceu rico ou direito de deixar tudo para os filhos? É o imposto que economistas mais defendem e eleitores mais odeiam.",
+      "eixo": "de herança livre de imposto à alíquota máxima mais alta do mundo",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 85,
+        "exemplos": [
+          {
+            "pais": "Estônia (nunca teve)",
+            "valor": 0
+          },
+          {
+            "pais": "Suécia (abolido em 2004)",
+            "valor": 0
+          },
+          {
+            "pais": "Índia",
+            "valor": 0
+          },
+          {
+            "pais": "Brasil (teto do ITCMD estadual)",
+            "valor": 8
+          },
+          {
+            "pais": "EUA (federal, isenção de ~US$ 11 milhões)",
+            "valor": 40
+          },
+          {
+            "pais": "Reino Unido",
+            "valor": 40
+          },
+          {
+            "pais": "França (linha direta)",
+            "valor": 45
+          },
+          {
+            "pais": "Coreia do Sul",
+            "valor": 50
+          },
+          {
+            "pais": "Japão",
+            "valor": 55
+          },
+          {
+            "pais": "Espanha (máximo estatutário regional)",
+            "valor": 81.6
+          }
+        ]
+      },
+      "brasil": 8,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Na OCDE rende em média menos de 0,4% da arrecadação total; a Coreia, que mais depende dele, tira 1,6%."
+      },
+      "efeitos": [
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quebra a transmissão de grandes fortunas entre gerações; efeito lento, mas acumulado."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Receita pequena e irregular, que depende de quem morre no ano."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de 30",
+          "porque": "Famílias ricas antecipam doações, criam fundos no exterior ou mudam de país."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "a partir de 20",
+          "porque": "Holdings familiares, seguros e doações em vida esvaziam a base."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Menos vantagem de berço deixa o ponto de partida mais parelho."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "a partir de 20",
+          "porque": "'Imposto sobre a morte' revolta até quem nunca vai pagá-lo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_jovens", "grupo_pobres"],
+        "perdem": [
+          "grupo_ricos",
+          "grupo_agricultores_familiares",
+          "grupo_agronegocio",
+          "grupo_classe_media"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["sonegacao", "fuga_capitais"],
+        "porque": "Com isenções para empresa familiar e holdings, a alíquota alta só existe no papel."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "proporcional", "dual", "progressivo"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Tax Foundation – Estate, Inheritance, and Gift Taxes in the OECD",
+          "url": "https://taxfoundation.org/data/all/global/inheritance-estate-and-gift-taxes-oecd/"
+        },
+        {
+          "titulo": "OECD – The Role and Design of Net Wealth Taxes in the OECD (summary, 2018)",
+          "url": "https://www.oecd.org/ctp/tax-policy/role-and-design-of-net-wealth-taxes-in-the-OECD-summary.pdf"
+        }
+      ]
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural",
+      "nome": "Imposto sobre imóveis urbanos e rurais",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define quanto se arrecada todo ano com imóveis urbanos e terras rurais, com valores venais atualizados ou não.",
+      "dilema": "É o imposto que menos atrapalha o crescimento e o que mais irrita o eleitor, que recebe o carnê em casa: atualizar a planta de valores ou deixar a mansão pagar como barraco?",
+      "eixo": "de nenhuma cobrança anual sobre imóveis à arrecadação mais alta dos países ricos",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 4,
+        "exemplos": [
+          {
+            "pais": "Emirados Árabes Unidos (sem imposto anual sobre imóveis)",
+            "valor": 0
+          },
+          {
+            "pais": "México (aprox.)",
+            "valor": 0.2
+          },
+          {
+            "pais": "Alemanha (aprox.)",
+            "valor": 0.4
+          },
+          {
+            "pais": "Brasil (IPTU + ITR)",
+            "valor": 0.5
+          },
+          {
+            "pais": "Chile (aprox.)",
+            "valor": 0.7
+          },
+          {
+            "pais": "Japão (aprox.)",
+            "valor": 1.9
+          },
+          {
+            "pais": "EUA (aprox.)",
+            "valor": 2.7
+          },
+          {
+            "pais": "Reino Unido (aprox.)",
+            "valor": 3.1
+          }
+        ]
+      },
+      "brasil": 0.5,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "medio",
+        "porque": "Receita estável e local: financia prefeituras sem depender de repasse federal."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Imóvel não foge do país: a base é estável e previsível."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "com cadastro atualizado",
+          "porque": "Patrimônio imobiliário se concentra no topo, desde que a avaliação seja atualizada."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "sem cadastro atualizado",
+          "porque": "Plantas desatualizadas subavaliam imóveis caros: a casa pobre paga mais em proporção."
+        },
+        {
+          "alvo": "deficit_habitacional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Guardar terreno e imóvel vazio para especular fica caro; mais oferta chega ao mercado."
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O carnê pesa no orçamento de quem tem casa e pouca renda, como aposentados."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Aumento de imposto sobre a casa é o mais visível de todos."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Encarece manter terra e prédio parados, mas é o tributo menos nocivo ao crescimento segundo a OCDE."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_jovens", "grupo_progressistas"],
+        "perdem": [
+          "grupo_classe_media",
+          "grupo_aposentados",
+          "grupo_agronegocio",
+          "grupo_ricos"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Sem cadastro e avaliação de mercado, o imposto não cobra quase nada e cobra errado; no Brasil só cerca de 60% dos imóveis urbanos estavam bem cadastrados."
+      },
+      "mae": null,
+      "filhas": ["reforma-agraria", "programa-habitacao-popular"],
+      "fontes": [
+        {
+          "titulo": "Carvalho Jr. – IPTU no Brasil: progressividade, arrecadação e aspectos extra-fiscais (Ipea TD 1251, 2006)",
+          "url": "https://repositorio.ipea.gov.br/bitstream/11058/2185/1/TD_1251.pdf"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        },
+        {
+          "titulo": "OECD – Revenue Statistics 2025: Tax levels and tax structures, 1965-2024",
+          "url": "https://www.oecd.org/en/publications/revenue-statistics-2025_3a264267-en/full-report/tax-levels-and-tax-structures-1965-2024_2033f3ea.html"
+        }
+      ]
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas",
+      "nome": "Regime simplificado para pequenas empresas",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "regulatoria",
+      "descricao": "Define se pequenos negócios pagam pelo regime geral ou por uma guia única simplificada, e até que tamanho valem as vantagens.",
+      "dilema": "Facilitar a vida do pequeno tira gente da informalidade, mas cria um 'muro' no teto: a empresa que cresce perde o benefício e prefere continuar pequena.",
+      "eixo": "do regime geral para todos a um regime simplificado amplo com teto alto",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Regime geral para todos",
+          "manchete": "Fim da guia única: padaria e multinacional preenchem o mesmo formulário",
+          "exemplos": ["Estônia (sistema geral já simples)", "Dinamarca"]
+        },
+        {
+          "id": "limiar-iva",
+          "rotulo": "Só isenção de IVA",
+          "manchete": "Pequeno negócio fica fora do IVA até certo faturamento; o resto segue a regra geral",
+          "exemplos": ["Reino Unido", "Alemanha", "Singapura", "Japão"]
+        },
+        {
+          "id": "monotributo",
+          "rotulo": "Monotributo para micro",
+          "manchete": "Taxa fixa mensal para o microempreendedor: camelô vira CNPJ por um punhado de reais",
+          "exemplos": [
+            "Argentina (Monotributo)",
+            "Brasil (MEI)",
+            "Índia (lucro presumido para pequenos)",
+            "Chile (regime Pro Pyme)"
+          ]
+        },
+        {
+          "id": "amplo",
+          "rotulo": "Simples amplo com teto alto",
+          "manchete": "Guia única para empresas faturando milhões: setor comemora, Receita calcula a renúncia",
+          "exemplos": ["Brasil (Simples Nacional)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "amplo",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "É renúncia: empresas no regime pagam menos do que pagariam no geral, e o custo cresce com o teto."
+      },
+      "efeitos": [
+        {
+          "alvo": "informalidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Pagar fica mais fácil e barato que se esconder; o efeito exato ainda é disputado entre estudos."
+        },
+        {
+          "alvo": "complexidade_tributaria",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Uma guia só no lugar de vários impostos e obrigações."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "a partir de monotributo",
+          "porque": "Alíquotas menores para um universo grande de empresas."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em amplo",
+          "porque": "Empresas evitam crescer para não estourar o teto e perder o benefício."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em amplo",
+          "porque": "Empresas maiores se dividem em várias pequenas para caber no regime."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Abrir e manter pequeno negócio fica mais viável."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_pequenos_negocios",
+          "grupo_informais",
+          "grupo_jovens"
+        ],
+        "perdem": [
+          "grupo_industria",
+          "grupo_servidores",
+          "grupo_trabalhadores_formais"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["complexidade_tributaria", "corrupcao"],
+        "porque": "O regime simplificado só faz diferença onde o regime geral é complicado; num sistema já simples, vira só desconto."
+      },
+      "mae": {
+        "lei": "modelo-tributario",
+        "opcoes": ["consumo", "proporcional", "dual", "progressivo"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Piza – Revisiting the impact of the Brazilian SIMPLES program on firms' formalization rates (World Bank WP 7605)",
+          "url": "https://econpapers.repec.org/paper/wbkwbrwps/7605.htm"
+        },
+        {
+          "titulo": "Johansson et al. – Taxation and Economic Growth (OECD Economics Dept. WP 620, 2008)",
+          "url": "https://ideas.repec.org/p/oec/ecoaaa/620-en.html"
+        }
+      ]
+    },
+    {
+      "id": "incentivos-fiscais-regionais",
+      "nome": "Incentivos fiscais regionais",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "regulatoria",
+      "descricao": "Define se o país dá isenções de impostos para atrair empresas a certas regiões e qual o formato: zona de exportação, fundo para regiões pobres ou zona franca ampla.",
+      "dilema": "Isenção leva fábrica e emprego para onde não há nada, ou só paga para empresas fazerem o que já fariam, com a conta indo para o resto do país?",
+      "eixo": "de nenhum incentivo regional à zona franca ampla e de longo prazo",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Sem incentivo regional",
+          "manchete": "Acabou a mamata ou acabou a esperança? Governo corta isenções regionais e região periférica teme êxodo",
+          "exemplos": ["Estônia", "Dinamarca", "Nova Zelândia"]
+        },
+        {
+          "id": "zonas-exportacao",
+          "rotulo": "Zonas de exportação",
+          "manchete": "Enclaves com impostos baixos para quem exporta: país aposta no modelo Shenzhen",
+          "exemplos": [
+            "China (Shenzhen)",
+            "Maurício",
+            "Índia (SEZs)",
+            "Emirados Árabes Unidos (zonas francas)"
+          ]
+        },
+        {
+          "id": "fundos-regionais",
+          "rotulo": "Incentivo a regiões pobres",
+          "manchete": "Desconto de imposto para quem investir no interior, com metas de emprego",
+          "exemplos": [
+            "Brasil (Sudene e Sudam)",
+            "Alemanha (apoio ao Leste)",
+            "Itália (Mezzogiorno)"
+          ]
+        },
+        {
+          "id": "zona-franca-ampla",
+          "rotulo": "Zona franca ampla",
+          "manchete": "Zona franca garantida por meio século: fábricas ficam, o resto do país paga",
+          "exemplos": [
+            "Brasil (Zona Franca de Manaus, até 2073)",
+            "Argentina (Terra do Fogo)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "zona-franca-ampla",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Renúncia fiscal raramente entra na conta de custo-benefício; a Zona Franca de Manaus sozinha soma bilhões de reais por ano."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Imposto que deixa de ser cobrado."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de zonas-exportacao",
+          "porque": "Empresas se instalam na região beneficiada; o efeito costuma enfraquecer depois dos primeiros anos."
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em zonas-exportacao",
+          "porque": "Zonas bem localizadas e com boa infraestrutura viram plataformas de exportação."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de fundos-regionais",
+          "porque": "Empregos e renda chegam a regiões mais pobres."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em zona-franca-ampla",
+          "porque": "Fábricas ficam onde o imposto é baixo, não onde produzir é mais eficiente."
+        },
+        {
+          "alvo": "complexidade_tributaria",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Cada regime especial cria regras, exceções e disputas de 'quem tem direito'."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Benefício concedido caso a caso atrai lobby e busca de renda."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_industria",
+          "grupo_trabalhadores_formais",
+          "grupo_empresarios"
+        ],
+        "perdem": [
+          "grupo_pequenos_negocios",
+          "grupo_classe_media",
+          "grupo_servidores"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["infraestrutura", "qualificacao_trabalho"],
+        "reduz": ["corrupcao"],
+        "porque": "Isenção não compensa estrada ruim e mão de obra sem formação; zonas funcionam perto de mercados e com boa logística."
+      },
+      "mae": {
+        "lei": "imposto-renda-empresas",
+        "opcoes": null
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "IGC – Doing Special Economic Zones Right: A Policy Framework (2019)",
+          "url": "https://www.theigc.org/sites/default/files/2019/11/WEB_SEZ-synthesis-paper-2019.pdf"
+        },
+        {
+          "titulo": "Portal da Reforma Tributária – Zona Franca de Manaus: muito falada, mas pouco aproveitada",
+          "url": "https://www.reformatributaria.com/opiniao/zona-franca-de-manaus-muito-falada-mas-pouco-aproveitada/"
+        }
+      ]
+    },
+    {
+      "id": "imposto-seletivo",
+      "nome": "Imposto seletivo (tabaco, álcool, açúcar e poluentes)",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "regulatoria",
+      "descricao": "Define quais produtos nocivos pagam um imposto extra para desestimular o consumo: nenhum, só os vícios tradicionais, também o açúcar, ou também poluentes e veículos.",
+      "dilema": "Imposto que salva vidas e enche o caixa, mas é cobrado do pobre que fuma e toma refrigerante, e alimenta o contrabando.",
+      "eixo": "de nenhum imposto seletivo a um imposto amplo sobre saúde e ambiente",
+      "opcoes": [
+        {
+          "id": "nenhum",
+          "rotulo": "Sem imposto seletivo",
+          "manchete": "Cigarro e cachaça pelo preço de custo: indústria festeja, médicos protestam",
+          "exemplos": [
+            "Nenhum país grande hoje; impostos sobre tabaco existem em quase todo o mundo"
+          ]
+        },
+        {
+          "id": "vicios-tradicionais",
+          "rotulo": "Tabaco e álcool",
+          "manchete": "Maço mais caro e cerveja também: governo mira os vícios clássicos",
+          "exemplos": [
+            "EUA",
+            "China",
+            "Japão",
+            "Brasil (IPI elevado sobre cigarros e bebidas)"
+          ]
+        },
+        {
+          "id": "saude-ampla",
+          "rotulo": "Também açúcar",
+          "manchete": "Refrigerante ganha imposto do açúcar: fabricantes correm para mudar a receita",
+          "exemplos": ["Reino Unido", "México", "Chile", "África do Sul"]
+        },
+        {
+          "id": "saude-e-ambiente",
+          "rotulo": "Saúde e ambiente",
+          "manchete": "Imposto do pecado chega a carros, mineração e carbono: 'vai pesar no bolso', alertam setores",
+          "exemplos": [
+            "Brasil (Imposto Seletivo da reforma, em implantação)",
+            "Noruega",
+            "Dinamarca"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "vicios-tradicionais",
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Arrecada menos com o tempo justamente se funcionar: o consumo cai."
+      },
+      "efeitos": [
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Preço mais alto faz gente largar o cigarro e jovens nem começarem (são 2 a 3 vezes mais sensíveis a preço)."
+        },
+        {
+          "alvo": "pressao_hospitalar",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Menos doenças do fumo, do álcool e da obesidade chegando ao hospital."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Receita extra, que encolhe se o consumo cair."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Itens de grande peso no consumo popular sobem de preço."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "a partir de vicios-tradicionais",
+          "porque": "Diferença de preço com o vizinho alimenta o contrabando de cigarros."
+        },
+        {
+          "alvo": "emissoes",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em saude-e-ambiente",
+          "porque": "Combustíveis e veículos poluentes ficam mais caros."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Pobres gastam fatia maior da renda com esses produtos."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_profissionais_saude",
+          "grupo_ambientalistas",
+          "grupo_pais_familia"
+        ],
+        "perdem": [
+          "grupo_industria",
+          "grupo_pobres",
+          "grupo_agricultores_familiares",
+          "grupo_motoristas"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["crime_organizado", "corrupcao"],
+        "porque": "Fronteira porosa faz o imposto alto virar presente para o contrabandista."
+      },
+      "mae": {
+        "lei": "imposto-sobre-consumo",
+        "opcoes": null
+      },
+      "filhas": ["restricao-tabaco-e-alcool", "precificacao-carbono"],
+      "fontes": [
+        {
+          "titulo": "Health Policy Watch – Tobacco taxes are most effective yet least implemented tactics: WHO",
+          "url": "https://healthpolicy-watch.news/tobacco-taxes-are-most-effective-yet-least-implemented-tactics-who/"
+        },
+        {
+          "titulo": "MRC Epidemiology Unit (Cambridge) – Sugar in UK soft drinks lowered by levy",
+          "url": "https://www.epi.ims.cam.ac.uk/blog/2020/02/11/sugar-uk-soft-drinks-lowered-levy/"
+        },
+        {
+          "titulo": "Barbieri Advogados – Brazilian Tax System Reform: A Practical Guide (2026–2033)",
+          "url": "https://barbieriadvogados.com/en/brazilian-tax-system-reform/"
+        }
+      ]
+    },
+    {
+      "id": "imposto-transacoes-financeiras",
+      "nome": "Imposto sobre transações financeiras",
+      "area": "Tributação",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "tributaria",
+      "descricao": "Define a alíquota cobrada sobre cada movimentação financeira, de débitos em conta corrente a compras de ações e operações de câmbio.",
+      "dilema": "Imposto impossível de sonegar e que entrega à Receita o mapa do dinheiro, mas que se acumula em cada etapa, encarece tudo e expulsa o mercado financeiro.",
+      "eixo": "de nenhum imposto sobre movimentação a uma cobrança alta sobre cada débito e crédito",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "aliquota_percentual",
+        "minimo": 0,
+        "maximo": 1.2,
+        "exemplos": [
+          {
+            "pais": "EUA",
+            "valor": 0
+          },
+          {
+            "pais": "Alemanha",
+            "valor": 0
+          },
+          {
+            "pais": "Suécia (abolido em 1991 após fuga do mercado para Londres)",
+            "valor": 0
+          },
+          {
+            "pais": "França (compra de ações de grandes empresas)",
+            "valor": 0.4
+          },
+          {
+            "pais": "Brasil (IOF adicional sobre crédito e câmbio; a CPMF cobrava o mesmo sobre todo débito até 2007)",
+            "valor": 0.38
+          },
+          {
+            "pais": "Reino Unido (imposto de selo sobre ações)",
+            "valor": 0.5
+          },
+          {
+            "pais": "Argentina (sobre débitos e créditos bancários)",
+            "valor": 0.6
+          }
+        ]
+      },
+      "brasil": 0.38,
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "medio",
+        "porque": "Base gigantesca: a CPMF chegou a arrecadar R$ 37 bilhões em 2007, mesmo com alíquota abaixo de meio por cento."
+      },
+      "efeitos": [
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Cada débito paga; difícil de escapar dentro do sistema bancário."
+        },
+        {
+          "alvo": "sonegacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Movimentação bancária vira cruzamento de dados contra o imposto de renda."
+        },
+        {
+          "alvo": "credito",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O imposto se acumula em cada operação e encarece empréstimos."
+        },
+        {
+          "alvo": "fuga_capitais",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "condicao": "a partir de 0.3",
+          "porque": "Negociação de ações e títulos muda para outra praça; na Suécia, o volume de títulos caiu 85% na primeira semana."
+        },
+        {
+          "alvo": "informalidade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Pagar em dinheiro vivo escapa do imposto."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Efeito cascata: cada etapa da cadeia repassa o custo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_profissionais_saude"],
+        "perdem": [
+          "grupo_setor_financeiro",
+          "grupo_empresarios",
+          "grupo_classe_media"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade"],
+        "porque": "Só pega quem usa banco: em economia muito informal, empurra ainda mais gente para o dinheiro vivo."
+      },
+      "mae": null,
+      "filhas": ["controle-de-capitais"],
+      "fontes": [
+        {
+          "titulo": "Wikipedia – Swedish financial transaction tax",
+          "url": "https://en.wikipedia.org/wiki/Swedish_financial_transaction_tax"
+        },
+        {
+          "titulo": "Agência Senado – Entenda o assunto: CPMF",
+          "url": "https://www12.senado.leg.br/noticias/entenda-o-assunto/cpmf"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "fuga_capitais",
+      "nome": "Fuga de capitais",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Impostos sobre fortunas, herança, lucros e transações fazem capital, negociações e contribuintes ricos mudarem de país; nenhuma bolha mede essa saída (câmbio e investimento são consequências, não a saída em si)."
+    },
+    {
+      "id": "complexidade_tributaria",
+      "nome": "Complexidade tributária",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Regimes especiais, exceções e muitas obrigações acessórias consomem horas das empresas, alimentam litígio e brechas; modelo tributário, regime simplificado e incentivos mexem nela."
+    },
+    {
+      "id": "transparencia_fiscal_internacional",
+      "nome": "Cooperação fiscal internacional",
+      "tipo": "bolha_lenta",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_melhor",
+      "porque": "Troca automática de informações bancárias com outros países decide se impostos sobre dividendos e fortunas conseguem alcançar ativos no exterior."
+    }
+  ]
+}

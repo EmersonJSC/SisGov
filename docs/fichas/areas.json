@@ -1,0 +1,42 @@
+{
+  "trabalho": [
+    "Trabalho e emprego",
+    "legislacao-trabalhista (lei mãe: sem regras/mínima/CLT/protetiva), salario-minimo, jornada-de-trabalho, seguro-desemprego, fundo-de-garantia, negociacao-coletiva-e-sindicatos, terceirizacao, trabalho-por-aplicativo, licenca-parental, trabalho-infantil-e-aprendizagem"
+  ],
+  "tributos": [
+    "Tributação",
+    "modelo-tributario (lei mãe: progressivo/proporcional/regressivo ou similar), imposto-renda-pessoas, imposto-sobre-consumo (IVA), imposto-renda-empresas, tributacao-dividendos, imposto-grandes-fortunas, imposto-heranca, imposto-propriedade-urbana-rural, regime-simplificado-pequenas-empresas, incentivos-fiscais-regionais, imposto-seletivo (tabaco, álcool, açúcar), imposto-transacoes-financeiras"
+  ],
+  "previdencia": [
+    "Previdência e assistência social",
+    "sistema-previdenciario (lei mãe: repartição/misto/capitalização), idade-minima-aposentadoria, previdencia-rural, beneficio-idosos-e-deficientes, transferencia-de-renda (orçamentária), renda-basica-universal, programa-habitacao-popular (orçamentária), seguranca-alimentar (restaurantes populares, cestas), pensao-por-morte, assistencia-pessoas-com-deficiencia ou cuidados-de-longa-duracao"
+  ],
+  "saude": [
+    "Saúde",
+    "sistema-de-saude (lei mãe: privado/seguro obrigatório/misto/universal público), piso-saude (orçamentária, % da receita), vacinacao-obrigatoria, restricao-tabaco-e-alcool, saude-mental, regulacao-planos-de-saude, genericos-e-patentes-medicamentos, programa-medicos-no-interior, farmacia-popular (orçamentária), vigilancia-epidemiologica (orçamentária). Atenção básica já existe: use como referência, não recrie."
+  ],
+  "educacao": [
+    "Educação, ciência e cultura",
+    "piso-educacao (orçamentária, % receita), ensino-obrigatorio (anos obrigatórios), acesso-ensino-superior (gratuito/cotas/pago/empréstimo), escola-tempo-integral, educacao-domiciliar, investimento-pesquisa (orçamentária % PIB), piso-salarial-professores, ensino-tecnico-profissional, incentivo-cultura, avaliacao-escolas, vouchers-escolares. Alimentação escolar e creches já existem: não recrie."
+  ],
+  "seguranca": [
+    "Segurança, justiça e drogas",
+    "politica-de-drogas, porte-de-armas, maioridade-penal, penas-maximas (inclui prisão perpétua, pena de morte como opções), politica-de-encarceramento, modelo-de-policia, cameras-corporais, delacao-e-acordos-penais, gestao-de-presidios (pública/privada/cogestão), combate-crime-organizado (orçamentária ou institucional), protecao-violencia-domestica (regulatória; a orçamentária proteção às mulheres já existe). Prevenção em segurança já existe: não recrie."
+  ],
+  "instituicoes": [
+    "Instituições, Estado e sistema político",
+    "OBRIGATÓRIO preencher as 7 institucionais já aprovadas com as opções exatas do catálogo (regra-fiscal, autonomia-banco-central, regime-cambial, independencia-judiciario, liberdade-imprensa, transparencia-publica, federalismo; ids exatamente esses). Mais: sistema-de-governo (presidencialismo/semipresidencialismo/parlamentarismo), voto-obrigatorio, financiamento-de-campanhas, reeleicao, estabilidade-servidores-publicos, foro-privilegiado, lei-anticorrupcao. NÃO crie sistema eleitoral (já existe)."
+  ],
+  "economia": [
+    "Economia, finanças e comércio exterior",
+    "meta-de-inflacao (filha de autonomia-banco-central), controle-de-capitais (filha de regime-cambial), tarifas-de-importacao, acordos-comerciais, empresas-estatais-e-privatizacao, defesa-da-concorrencia, banco-de-desenvolvimento (crédito subsidiado), controle-de-precos, regulacao-bancaria, investimento-estrangeiro, politica-industrial"
+  ],
+  "ambiente": [
+    "Meio ambiente, energia, agro e infraestrutura",
+    "codigo-florestal, licenciamento-ambiental, precificacao-carbono (taxa/mercado), matriz-energetica (subsídio fóssil/renovável), energia-nuclear, regime-do-petroleo (estatal/partilha/concessão), reforma-agraria, agrotoxicos, investimento-em-infraestrutura (orçamentária), concessoes-e-ppps, transporte-publico, saneamento-basico, terras-indigenas, mineracao"
+  ],
+  "sociedade": [
+    "Direitos civis, costumes, imigração, mídia e defesa",
+    "aborto, casamento-e-uniao-civil, eutanasia, laicidade-do-estado, politica-de-imigracao, refugiados-e-asilo, regulacao-redes-sociais (filha de liberdade-imprensa), protecao-de-dados, igualdade-salarial-de-genero, acoes-afirmativas, apostas-e-jogos-de-azar, servico-militar, gasto-com-defesa (orçamentária), politica-de-natalidade"
+  ]
+}

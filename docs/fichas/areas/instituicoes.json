@@ -1,0 +1,1761 @@
+{
+  "area": "Instituições, Estado e sistema político",
+  "leis": [
+    {
+      "id": "regra-fiscal",
+      "nome": "Regra fiscal",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "institucional",
+      "descricao": "Define se o governo tem uma regra numérica que limita déficit ou gasto, e de que tipo.",
+      "dilema": "Amarrar as próprias mãos para ganhar a confiança do mercado, ou manter a liberdade de gastar quando o país (e a eleição) pedirem?",
+      "eixo": "da liberdade total de gastar a regras que amarram o orçamento (meta de resultado; teto rígido de gasto; arcabouço que combina teto móvel e meta)",
+      "opcoes": [
+        {
+          "id": "sem-regra",
+          "rotulo": "Sem regra",
+          "manchete": "Governo rasga as metas fiscais: 'o orçamento é do povo, não do mercado'; dólar dispara",
+          "exemplos": [
+            "Brasil antes da Lei de Responsabilidade Fiscal (anos 1990)",
+            "Venezuela (gasto guiado pelo preço do petróleo)"
+          ]
+        },
+        {
+          "id": "meta-resultado",
+          "rotulo": "Meta de resultado",
+          "manchete": "Superávit vira lei: governo promete economizar todo ano e o mercado aplaude com cautela",
+          "exemplos": [
+            "Brasil (metas de primário, 1999-2016)",
+            "Chile (regra de balanço estrutural, 2001)",
+            "Alemanha (freio da dívida, 2009)"
+          ]
+        },
+        {
+          "id": "teto-gastos",
+          "rotulo": "Teto de gastos",
+          "manchete": "Gasto congelado por 20 anos: investidores comemoram, prefeitos e reitores contam moedas",
+          "exemplos": [
+            "Brasil (EC 95, 2016-2023)",
+            "Holanda (teto real de gasto por legislatura)"
+          ]
+        },
+        {
+          "id": "arcabouco",
+          "rotulo": "Arcabouço fiscal",
+          "manchete": "Nem teto nem farra: gasto só cresce se a receita crescer, e a meta de superávit volta ao centro",
+          "exemplos": [
+            "Brasil (LC 200/2023: gasto cresce 70% da receita)",
+            "Suécia (teto de gasto + meta de superávit)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "arcabouco",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "A regra em si não custa nada; ela decide quanto o governo pode gastar dali em diante."
+      },
+      "efeitos": [
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de meta-resultado",
+          "porque": "Com regra crível, o déficit para de crescer a cada crise ou eleição."
+        },
+        {
+          "alvo": "risco_pais",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Investidores cobram menos de quem tem compromisso escrito de pagar a dívida."
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Menos risco fiscal deixa o banco central baixar juros com mais segurança."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Cada novo programa precisa caber na regra: o governo perde liberdade de gastar."
+        },
+        {
+          "alvo": "infraestrutura",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em teto-gastos",
+          "porque": "Quando o gasto obrigatório não cabe, o investimento público é o primeiro a ser cortado."
+        },
+        {
+          "alvo": "recessao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em teto-gastos, quando a economia está fraca",
+          "porque": "Regra rígida obriga a cortar justamente quando a economia já está caindo."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "a partir de teto-gastos",
+          "porque": "O gasto cresce menos que o PIB e encolhe como fatia da economia."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_setor_financeiro", "grupo_empresarios"],
+        "perdem": ["grupo_servidores", "grupo_pobres", "grupo_professores"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Regra só funciona se alguém fiscaliza e o governo não consegue maquiar as contas; com contabilidade criativa ela vira enfeite."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "IMF – Fiscal Rules Dataset (1985-2024)",
+          "url": "https://www.imf.org/en/Topics/fiscal-policies/Fiscal-Rules-Dataset"
+        },
+        {
+          "titulo": "Covington / Global Policy Watch – Brazil's New Fiscal Framework Approved by Congress (2023)",
+          "url": "https://www.globalpolicywatch.com/2023/08/brazils-new-fiscal-framework-approved-by-congress/"
+        }
+      ]
+    },
+    {
+      "id": "autonomia-banco-central",
+      "nome": "Autonomia do banco central",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "institucional",
+      "descricao": "Define se o presidente do banco central pode ser demitido pelo governo e se ele decide os juros sozinho.",
+      "dilema": "Juros decididos por técnicos que você não controla, ou um banco central que obedece ao governo e cobra a conta em inflação?",
+      "eixo": "do banco central subordinado ao governo à autonomia plena com mandato fixo",
+      "opcoes": [
+        {
+          "id": "subordinado",
+          "rotulo": "Subordinado",
+          "manchete": "Presidente demite chefe do BC e manda baixar os juros 'na marra'; moeda derrete",
+          "exemplos": [
+            "Turquia (três presidentes do BC demitidos entre 2019 e 2021)",
+            "Argentina (BC financiando o Tesouro)",
+            "China (banco central sob o Conselho de Estado)",
+            "Venezuela"
+          ]
+        },
+        {
+          "id": "autonomia-parcial",
+          "rotulo": "Autonomia parcial",
+          "manchete": "BC decide os juros, mas o cargo do presidente segue nas mãos do Planalto",
+          "exemplos": [
+            "Brasil antes de 2021 (autonomia de fato, sem mandato)",
+            "Índia (governo pode dar diretrizes ao RBI)",
+            "Japão antes de 1998"
+          ]
+        },
+        {
+          "id": "autonomia-plena",
+          "rotulo": "Autonomia plena",
+          "manchete": "Mandato fixo e blindado: governo não pode mais demitir o chefe do BC, nem quando discorda dos juros",
+          "exemplos": [
+            "Brasil (LC 179/2021)",
+            "EUA (Fed)",
+            "Zona do euro (BCE)",
+            "Chile (1989)",
+            "Nova Zelândia (1989)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "autonomia-plena",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não muda o orçamento; muda quem decide os juros."
+      },
+      "efeitos": [
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Banco central que não depende do governo resiste a imprimir dinheiro para agradar o eleitor; efeito mais forte em países emergentes."
+        },
+        {
+          "alvo": "risco_pais",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Investidores confiam mais numa moeda que o governo não pode usar a seu favor."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "O governo perde a alavanca dos juros e do crédito para turbinar a economia."
+        },
+        {
+          "alvo": "taxa_juros",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "quando a inflação está acima da meta",
+          "porque": "Sem pressão política, o BC aperta os juros mesmo em ano de eleição."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "quando o BC está apertando os juros",
+          "porque": "Para conter a inflação, o BC aceita esfriar a economia e o emprego."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_setor_financeiro",
+          "grupo_aposentados",
+          "grupo_classe_media"
+        ],
+        "perdem": ["grupo_industria", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "resultado_fiscal"],
+        "reduz": ["divida_publica"],
+        "porque": "Banco central autônomo com governo gastador e dívida alta vira cabo de guerra: os juros sobem e a inflação cai pouco."
+      },
+      "mae": null,
+      "filhas": ["meta-de-inflacao"],
+      "fontes": [
+        {
+          "titulo": "SUERF Policy Note – Central bank independence and inflation",
+          "url": "https://suerf.org/policynotes/9097/central-bank-independence-and-inflation"
+        }
+      ]
+    },
+    {
+      "id": "regime-cambial",
+      "nome": "Regime cambial",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Fazenda",
+      "grupo": "institucional",
+      "descricao": "Define se o valor da moeda nacional é fixado pelo governo ou decidido pelo mercado.",
+      "dilema": "Uma moeda estável que segura a inflação mas pode quebrar num ataque especulativo, ou uma moeda livre que absorve choques mas sobe e desce a cada notícia?",
+      "eixo": "da paridade fixa ao câmbio totalmente livre",
+      "opcoes": [
+        {
+          "id": "fixo",
+          "rotulo": "Câmbio fixo",
+          "manchete": "Um real vale um dólar, por lei: inflação despenca e o BC jura defender a paridade até a última reserva",
+          "exemplos": [
+            "Hong Kong (conselho da moeda)",
+            "Arábia Saudita",
+            "Dinamarca (atrelada ao euro)",
+            "Argentina (conversibilidade, 1991-2001)",
+            "Equador (dolarizado)"
+          ]
+        },
+        {
+          "id": "bandas",
+          "rotulo": "Bandas cambiais",
+          "manchete": "Dólar pode subir e descer, mas só até o teto da banda; BC fica de plantão na fronteira",
+          "exemplos": [
+            "Brasil (1995-1999)",
+            "China (banda diária em torno da paridade central)",
+            "Argentina (bandas, 2025)"
+          ]
+        },
+        {
+          "id": "flutuante-administrado",
+          "rotulo": "Flutuante administrado",
+          "manchete": "Câmbio livre, mas nem tanto: BC compra e vende dólar sempre que a moeda 'exagera'",
+          "exemplos": ["Índia", "Peru", "Indonésia"]
+        },
+        {
+          "id": "flutuante",
+          "rotulo": "Flutuante",
+          "manchete": "BC sai do mercado de câmbio: dólar agora sobe e desce com cada manchete",
+          "exemplos": [
+            "Brasil (desde 1999)",
+            "EUA",
+            "Japão",
+            "Reino Unido",
+            "Chile",
+            "México"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "flutuante",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento, mas paridades rígidas exigem guardar (e às vezes queimar) reservas."
+      },
+      "efeitos": [
+        {
+          "alvo": "crise_financeira",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Paridades fixas costumam cair de uma vez em ataques especulativos; a moeda livre se ajusta aos poucos."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em choques externos",
+          "porque": "Sem âncora, cada desvalorização encarece importados e repassa para os preços."
+        },
+        {
+          "alvo": "exportacoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Depois de um choque, a moeda se desvaloriza e devolve competitividade a quem exporta."
+        },
+        {
+          "alvo": "recessao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "O câmbio vira amortecedor: a economia não precisa encolher para defender a paridade."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Importadores e quem deve em dólar perdem previsibilidade."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_agronegocio", "grupo_industria"],
+        "perdem": ["grupo_classe_media", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["reservas_internacionais", "forca_instituicoes"],
+        "reduz": ["divida_publica"],
+        "porque": "Câmbio livre funciona melhor com banco central crível e reservas para evitar pânico; com muita dívida em dólar, cada desvalorização dói mais."
+      },
+      "mae": null,
+      "filhas": ["controle-de-capitais"],
+      "fontes": [
+        {
+          "titulo": "Ilzetzki, Reinhart & Rogoff – Exchange Arrangements Entering the 21st Century: Which Anchor Will Hold? (NBER w23134)",
+          "url": "https://nber.org/papers/w23134.pdf"
+        }
+      ]
+    },
+    {
+      "id": "independencia-judiciario",
+      "nome": "Independência do Judiciário",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "institucional",
+      "descricao": "Define se juízes são nomeados, promovidos e afastados pelo governo ou protegidos de pressão política.",
+      "dilema": "Tribunais que podem derrubar suas próprias leis, ou juízes de confiança que não atrapalham o projeto do governo?",
+      "eixo": "do Judiciário controlado pelo governo à independência plena",
+      "opcoes": [
+        {
+          "id": "controlado",
+          "rotulo": "Controlado",
+          "manchete": "Corte suprema ganha 'novos ministros' leais ao governo; oposição perde a última trincheira",
+          "exemplos": [
+            "China (tribunais sob o Partido)",
+            "Rússia",
+            "Venezuela (TSJ ampliado em 2004)",
+            "Turquia (expurgos de juízes após 2016)"
+          ]
+        },
+        {
+          "id": "parcial",
+          "rotulo": "Parcial",
+          "manchete": "Reforma muda regras de nomeação e aposentadoria de juízes; Bruxelas e OAB protestam",
+          "exemplos": [
+            "Hungria (após 2011)",
+            "Polônia (2015-2023)",
+            "México (eleição popular de juízes, 2025)"
+          ]
+        },
+        {
+          "id": "plena",
+          "rotulo": "Plena",
+          "manchete": "Supremo derruba decreto do presidente por unanimidade; governo promete recorrer 'às urnas'",
+          "exemplos": [
+            "Brasil",
+            "Alemanha",
+            "EUA",
+            "Reino Unido",
+            "Japão",
+            "Estônia"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "plena",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "O custo do Judiciário existe em qualquer opção; o que muda é quem manda nele."
+      },
+      "efeitos": [
+        {
+          "alvo": "forca_instituicoes",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Quando juízes não temem o governo, as regras valem para todos."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Onde o governo empacota as cortes, a corrupção no Executivo sobe (Hungria, Polônia, Turquia)."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Poderosos passam a ser julgados como qualquer um."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Decretos, nomeações e reformas do governo podem ser derrubados na Justiça."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Contratos e propriedade valem mesmo contra o governo da vez."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Cidadãos têm a quem recorrer contra abusos do Estado."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em plena",
+          "porque": "Com tribunais fortes, toda grande disputa política vira processo, e cada sentença vira bandeira."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_empresarios",
+          "grupo_classe_media",
+          "grupo_minorias_etnicas"
+        ],
+        "perdem": ["grupo_policiais", "grupo_militares"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Juiz independente sem estrutura demora anos para julgar; e num Judiciário já corrompido, independência só protege os próprios juízes."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "V-Dem – Poland: Judicial Independence Substantially Compromised",
+          "url": "https://www.v-dem.net/weekly_graph/poland-judicial-independence-substantially-co"
+        },
+        {
+          "titulo": "Court-packing and judicial manipulation (European Journal of Political Economy, 2024) – Hungria, Polônia, Turquia",
+          "url": "https://ideas.repec.org/a/eee/poleco/v83y2024ics0176268024000387.html"
+        }
+      ]
+    },
+    {
+      "id": "liberdade-imprensa",
+      "nome": "Liberdade de imprensa",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério das Comunicações",
+      "grupo": "institucional",
+      "descricao": "Define o quanto jornais, TVs e rádios podem publicar sem censura, licença política ou punição.",
+      "dilema": "Uma imprensa que expõe seus escândalos todo dia, ou uma imprensa obediente que deixa o país sem saber o que acontece?",
+      "eixo": "da censura estatal à liberdade plena",
+      "opcoes": [
+        {
+          "id": "censura",
+          "rotulo": "Censura",
+          "manchete": "Censor oficial passa a aprovar manchetes; jornalistas estrangeiros têm 48 horas para sair do país",
+          "exemplos": [
+            "China",
+            "Coreia do Norte",
+            "Eritreia",
+            "Rússia (lei de 'notícias falsas' sobre o Exército, 2022)"
+          ]
+        },
+        {
+          "id": "restrita",
+          "rotulo": "Restrita",
+          "manchete": "Conselho de Mídia nomeado pelo governo cassa licença da última rádio de oposição",
+          "exemplos": [
+            "Hungria (Conselho de Mídia e conglomerado KESMA)",
+            "Turquia",
+            "Venezuela",
+            "Índia (159º no ranking da RSF, 2025)"
+          ]
+        },
+        {
+          "id": "regulada",
+          "rotulo": "Regulada",
+          "manchete": "Agência independente multa emissora por cobertura parcial nas eleições",
+          "exemplos": [
+            "Reino Unido (Ofcom exige imparcialidade na TV)",
+            "França (Arcom)",
+            "Alemanha"
+          ]
+        },
+        {
+          "id": "plena",
+          "rotulo": "Plena",
+          "manchete": "Nada de licença, nada de censor: imprensa livre, inclusive para errar e mentir",
+          "exemplos": ["Brasil", "EUA (Primeira Emenda)", "Noruega", "Estônia"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "plena",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; censura e agências reguladoras custam pouco perto do custo político."
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Repórter livre é fiscal gratuito: desvios viram manchete."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Falar, publicar e criticar deixam de ser crime."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Escândalos e erros do governo aparecem na primeira página."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O governo não controla mais a narrativa nem esconde decisões impopulares."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Imprensa livre é selo de democracia para investidores e aliados."
+        },
+        {
+          "alvo": "desinformacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "de regulada para plena",
+          "porque": "Sem regras de imparcialidade, veículos partidários e boatos circulam com mais facilidade."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_progressistas",
+          "grupo_classe_media",
+          "grupo_estudantes"
+        ],
+        "perdem": ["grupo_policiais", "grupo_religiosos"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "forca_instituicoes"],
+        "reduz": ["concentracao_mercado"],
+        "porque": "Imprensa livre mas concentrada em poucos donos (ou falida e dependente de verba estatal) fiscaliza pouco."
+      },
+      "mae": null,
+      "filhas": ["regulacao-redes-sociais"],
+      "fontes": [
+        {
+          "titulo": "RSF – World Press Freedom Index 2025",
+          "url": "https://rsf.org/en/world-press-freedom-index-2025-over-half-worlds-population-red-zones"
+        },
+        {
+          "titulo": "Human Rights Watch – 'I Can't Do My Job as a Journalist': The Systematic Undermining of Media Freedom in Hungary (2024)",
+          "url": "https://www.hrw.org/report/2024/02/13/i-cant-do-my-job-journalist/systematic-undermining-media-freedom-hungary"
+        }
+      ]
+    },
+    {
+      "id": "transparencia-publica",
+      "nome": "Transparência pública",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Controladoria-Geral da União",
+      "grupo": "institucional",
+      "descricao": "Define se o cidadão tem direito de ver contratos, gastos, salários e documentos do governo.",
+      "dilema": "Abrir as gavetas e ver cada nota fiscal virar escândalo, ou guardar sigilo e deixar a desconfiança crescer no escuro?",
+      "eixo": "do sigilo como regra à transparência ativa com dados abertos",
+      "opcoes": [
+        {
+          "id": "sigilo-amplo",
+          "rotulo": "Sigilo amplo",
+          "manchete": "Gastos do Palácio viram 'segredo de Estado' por 100 anos; jornalistas recorrem sem sucesso",
+          "exemplos": [
+            "Arábia Saudita (sem lei de acesso)",
+            "Coreia do Norte",
+            "Venezuela (sem lei de acesso)"
+          ]
+        },
+        {
+          "id": "acesso-limitado",
+          "rotulo": "Acesso limitado",
+          "manchete": "Lei de acesso aprovada, mas com tantas exceções que quase nada sai do arquivo",
+          "exemplos": [
+            "China (regulamento de 2008)",
+            "Alemanha (lei de 2005, das mais fracas do ranking RTI)",
+            "Filipinas (decreto de 2016, só o Executivo)"
+          ]
+        },
+        {
+          "id": "acesso-informacao",
+          "rotulo": "Acesso à informação",
+          "manchete": "Qualquer cidadão pode pedir qualquer documento: governo tem 20 dias para responder",
+          "exemplos": [
+            "Brasil (LAI, 2011)",
+            "México (2002)",
+            "Índia (RTI Act, 2005)",
+            "EUA (FOIA, 1966)",
+            "Reino Unido (2000)"
+          ]
+        },
+        {
+          "id": "dados-abertos",
+          "rotulo": "Dados abertos",
+          "manchete": "Cada centavo online em tempo real: aplicativos de cidadãos caçam superfaturamento",
+          "exemplos": [
+            "Estônia",
+            "Suécia (princípio da publicidade desde 1766)",
+            "Coreia do Sul"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "acesso-informacao",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige portais, arquivistas e servidores para responder pedidos."
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Contrato que qualquer um pode ler é mais difícil de superfaturar."
+        },
+        {
+          "alvo": "captura_politica",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Lobby e favores aparecem em agendas e contratos públicos."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Quem pode conferir tende a confiar mais."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Cada viagem, cartão corporativo e salário alto vira notícia."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Decisões passam a deixar rastro que a oposição pode usar."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Organismos internacionais e investidores valorizam contas abertas."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_classe_media",
+          "grupo_progressistas",
+          "grupo_pequenos_negocios"
+        ],
+        "perdem": ["grupo_servidores", "grupo_militares"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["impunidade"],
+        "porque": "Dado aberto só vira controle se há gente que sabe ler e se o escândalo descoberto acaba em punição."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Global Right to Information Rating – By Country",
+          "url": "https://www.rti-rating.org/country-data/"
+        }
+      ]
+    },
+    {
+      "id": "federalismo",
+      "nome": "Federalismo",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Presidência da República (Constituição)",
+      "grupo": "institucional",
+      "descricao": "Define quanto poder, dinheiro e responsabilidade ficam com o governo central e quanto com estados e municípios.",
+      "dilema": "Mandar em tudo de Brasília e responder por tudo, ou dar poder aos governadores e ver cada região seguir (ou abandonar) seu caminho?",
+      "eixo": "do Estado centralizado à descentralização forte",
+      "opcoes": [
+        {
+          "id": "centralizado",
+          "rotulo": "Centralizado",
+          "manchete": "Governo central assume escolas, polícia e hospitais; governadores viram 'gerentes regionais'",
+          "exemplos": [
+            "França (Estado unitário)",
+            "China",
+            "Chile",
+            "Japão",
+            "Nova Zelândia"
+          ]
+        },
+        {
+          "id": "cooperativo",
+          "rotulo": "Cooperativo",
+          "manchete": "União, estados e municípios dividem a conta: fundos de repasse sustentam as regiões mais pobres",
+          "exemplos": [
+            "Brasil",
+            "Alemanha (equalização entre os estados)",
+            "Áustria",
+            "Índia"
+          ]
+        },
+        {
+          "id": "descentralizado",
+          "rotulo": "Descentralizado",
+          "manchete": "Cada estado define seus impostos e suas leis; mapa do país vira colcha de retalhos",
+          "exemplos": ["Suíça (cantões)", "EUA", "Canadá"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "cooperativo",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "medio",
+        "porque": "Não cria gasto novo, mas redistribui receitas e responsabilidades entre níveis de governo."
+      },
+      "efeitos": [
+        {
+          "alvo": "desigualdade_regional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em países de renda baixa e média",
+          "porque": "Regiões ricas guardam a própria arrecadação; as pobres ficam com menos repasse."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O governo central decide menos e precisa negociar com governadores."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "quando estados podem se endividar",
+          "porque": "Estados que gastam demais apostam que a União vai socorrer depois."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Cada estado vira laboratório: o que dá certo é copiado pelos outros."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Governo mais perto do cidadão é mais fácil de cobrar."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "quando os controles locais são fracos",
+          "porque": "Elites locais capturam prefeituras e governos estaduais com pouca fiscalização."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_agronegocio", "grupo_empresarios"],
+        "perdem": ["grupo_pobres", "grupo_minorias_etnicas"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["desigualdade_regional"],
+        "porque": "Descentralizar só funciona se estados e municípios sabem gastar; onde as regiões são muito desiguais, as pobres ficam para trás."
+      },
+      "mae": null,
+      "filhas": ["incentivos-fiscais-regionais"],
+      "fontes": [
+        {
+          "titulo": "Rodríguez-Pose & Ezcurra – Does decentralization matter for regional disparities? A cross-country analysis (LSE)",
+          "url": "https://researchonline.lse.ac.uk/id/eprint/33244"
+        },
+        {
+          "titulo": "OECD – Fiscal Decentralisation Database",
+          "url": "https://search.oecd.org/tax/federalism/fiscal-decentralisation-database/"
+        }
+      ]
+    },
+    {
+      "id": "sistema-de-governo",
+      "nome": "Sistema de governo",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Presidência da República (Constituição)",
+      "grupo": "institucional",
+      "descricao": "Define quem chefia o governo e se ele pode ser derrubado pelo Parlamento.",
+      "dilema": "Um presidente forte com mandato garantido, ou um governo que cai quando perde a maioria, mas não arrasta o país junto?",
+      "eixo": "do Executivo concentrado em uma pessoa eleita ao poder dividido com o Parlamento, até o governo colegiado",
+      "opcoes": [
+        {
+          "id": "presidencialismo",
+          "rotulo": "Presidencialismo",
+          "manchete": "Eleito pelo voto direto, presidente governa quatro anos, com ou sem maioria no Congresso",
+          "exemplos": [
+            "Brasil (confirmado no plebiscito de 1993)",
+            "EUA",
+            "México",
+            "Argentina",
+            "Chile"
+          ]
+        },
+        {
+          "id": "semipresidencialismo",
+          "rotulo": "Semipresidencialismo",
+          "manchete": "Presidente fica com a diplomacia e as Forças Armadas; o premiê, com o dia a dia e o Congresso",
+          "exemplos": [
+            "França",
+            "Portugal",
+            "Rússia (com presidente dominante)"
+          ]
+        },
+        {
+          "id": "parlamentarismo",
+          "rotulo": "Parlamentarismo",
+          "manchete": "Moção de desconfiança derruba o gabinete; novo premiê assume em uma semana, sem crise",
+          "exemplos": [
+            "Alemanha",
+            "Reino Unido",
+            "Japão",
+            "Índia",
+            "Estônia",
+            "Nova Zelândia"
+          ]
+        },
+        {
+          "id": "diretorial",
+          "rotulo": "Governo colegiado",
+          "manchete": "Sete ministros, nenhum chefe: Conselho decide por consenso e a presidência gira todo ano",
+          "exemplos": [
+            "Suíça (Conselho Federal)",
+            "Uruguai (Conselho Nacional de Governo, 1952-1967)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "presidencialismo",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não muda o orçamento; muda quem governa e como cai."
+      },
+      "efeitos": [
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O chefe do governo depende de maioria (ou de colegas) para cada decisão."
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Crise de governo se resolve trocando o gabinete, não rompendo a ordem; evidência disputada, depende de outras regras."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em parlamentarismo com muitos partidos",
+          "porque": "Com Parlamento fragmentado, gabinetes caem e são refeitos com frequência."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Coalizões e governos colegiados obrigam rivais a negociar."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "a partir de parlamentarismo",
+          "porque": "Governo impopular pode ser trocado sem esperar a eleição."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_classe_media"],
+        "perdem": ["grupo_pobres"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Nenhum sistema funciona sozinho: partidos fracos e polarização extrema travam tanto presidentes quanto gabinetes."
+      },
+      "mae": null,
+      "filhas": ["reeleicao"],
+      "fontes": [
+        {
+          "titulo": "Cheibub & Limongi – Democratic institutions and regime survival: parliamentary and presidential democracies reconsidered",
+          "url": "https://experts.illinois.edu/en/publications/democratic-institutions-and-regime-survival-parliamentary-and-pre/"
+        }
+      ]
+    },
+    {
+      "id": "voto-obrigatorio",
+      "nome": "Voto obrigatório",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "regulatoria",
+      "descricao": "Define se votar é um direito opcional ou um dever com punição para quem falta.",
+      "dilema": "Eleições decididas por todo mundo, inclusive por quem não queria votar, ou só por quem se deu ao trabalho de ir?",
+      "eixo": "do voto facultativo ao voto obrigatório com punição",
+      "opcoes": [
+        {
+          "id": "facultativo",
+          "rotulo": "Voto facultativo",
+          "manchete": "Votar vira opção: abstenção bate recorde e partidos correm atrás de quem 'tem motivo para ir'",
+          "exemplos": [
+            "EUA",
+            "Reino Unido",
+            "Alemanha",
+            "Índia",
+            "Chile (2012-2022)",
+            "Venezuela (desde 1993)"
+          ]
+        },
+        {
+          "id": "obrigatorio-nominal",
+          "rotulo": "Obrigatório só no papel",
+          "manchete": "A lei manda votar, mas ninguém é multado: 'obrigação moral', diz o governo",
+          "exemplos": ["Itália", "México", "Grécia", "Costa Rica", "Paraguai"]
+        },
+        {
+          "id": "obrigatorio-com-sancoes",
+          "rotulo": "Obrigatório com punição",
+          "manchete": "Faltou e não justificou? Multa, passaporte bloqueado e adeus ao concurso público",
+          "exemplos": [
+            "Brasil",
+            "Austrália",
+            "Argentina",
+            "Bélgica",
+            "Peru",
+            "Uruguai",
+            "Singapura"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "obrigatorio-com-sancoes",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige cadastro, cobrança de multas e mais estrutura de votação."
+      },
+      "efeitos": [
+        {
+          "alvo": "participacao_eleitoral",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Com multa de verdade, quase todo mundo aparece na urna."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Quando os pobres votam tanto quanto os ricos, os políticos passam a disputar o voto deles."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Eleitores menos engajados e mais moderados diluem os militantes; efeito pequeno e debatido."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Obrigar alguém a votar tira o direito de simplesmente ficar em casa."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_informais"],
+        "perdem": ["grupo_ricos", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": [],
+        "porque": "Sem cadastro bom e cobrança da multa, o voto obrigatório vira obrigação só no papel."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "International IDEA – Compulsory Voting",
+          "url": "https://www.idea.int/data-tools/data/voter-turnout-database/compulsory-voting"
+        }
+      ]
+    },
+    {
+      "id": "financiamento-de-campanhas",
+      "nome": "Financiamento de campanhas",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "regulatoria",
+      "descricao": "Define de onde vem o dinheiro das campanhas: de empresas e ricos, de pequenos doadores ou dos cofres públicos.",
+      "dilema": "Deixar o dinheiro privado decidir eleições, ou fazer o contribuinte pagar campanhas de políticos que ele detesta?",
+      "eixo": "do dinheiro privado sem limites ao financiamento predominantemente público",
+      "opcoes": [
+        {
+          "id": "livre",
+          "rotulo": "Dinheiro livre",
+          "manchete": "Supercomitês liberados: bilionários podem gastar quanto quiserem para eleger quem quiserem",
+          "exemplos": [
+            "EUA (super PACs após Citizens United, 2010)",
+            "Suíça (sem teto federal de doações)"
+          ]
+        },
+        {
+          "id": "privado-limitado",
+          "rotulo": "Privado com limites",
+          "manchete": "Teto de gastos por campanha: doar pode, gastar demais dá cassação",
+          "exemplos": [
+            "Reino Unido (teto de gastos de campanha)",
+            "Nova Zelândia"
+          ]
+        },
+        {
+          "id": "misto",
+          "rotulo": "Misto",
+          "manchete": "Empresas fora, Estado reembolsa por voto recebido: partido bom de urna recebe mais",
+          "exemplos": [
+            "Alemanha (verba pública proporcional aos votos)",
+            "França (empresas proibidas, reembolso público)",
+            "Canadá",
+            "Chile (empresas proibidas desde 2016)"
+          ]
+        },
+        {
+          "id": "publico-predominante",
+          "rotulo": "Predominantemente público",
+          "manchete": "Fundo eleitoral bilionário banca as campanhas; doação de empresa vira crime",
+          "exemplos": [
+            "Brasil (Fundo Eleitoral; doação de empresas proibida pelo STF em 2015)",
+            "México (verba pública deve prevalecer, por lei)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "publico-predominante",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "No extremo público, o Tesouro banca um fundo eleitoral a cada eleição."
+      },
+      "efeitos": [
+        {
+          "alvo": "captura_politica",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Político eleito sem cheque de empresa deve menos favores a ela."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "quando a Justiça eleitoral fiscaliza; sem fiscalização o dinheiro migra para o caixa dois",
+          "porque": "Menos dinheiro privado, menos troca de contrato por doação."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O fundo eleitoral sai do orçamento."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Pagar campanha de político com dinheiro público é impopular."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "quando o autofinanciamento não tem teto",
+          "porque": "Sem doação de empresa, candidatos ricos que bancam a própria campanha ganham vantagem."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_sindicatos"],
+        "perdem": [
+          "grupo_empresarios",
+          "grupo_setor_financeiro",
+          "grupo_classe_media"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "forca_instituicoes"],
+        "reduz": ["informalidade"],
+        "porque": "Limite de doação só vale com Justiça eleitoral que rastreia o dinheiro; em economia de dinheiro vivo, o caixa dois escapa."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "World Economic Forum – Here's what happened when Brazil banned corporate donations in elections (2016)",
+          "url": "https://www.weforum.org/stories/2016/12/here-s-what-happened-when-brazil-banned-corporate-donations-in-elections/"
+        }
+      ]
+    },
+    {
+      "id": "reeleicao",
+      "nome": "Reeleição do chefe do Executivo",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Presidência da República (Constituição)",
+      "grupo": "institucional",
+      "descricao": "Define quantas vezes o presidente pode se reeleger.",
+      "dilema": "Mais tempo para terminar o que começou, ou a garantia de que ninguém vira dono do país?",
+      "eixo": "da proibição de reeleição à reeleição ilimitada",
+      "opcoes": [
+        {
+          "id": "sem-reeleicao",
+          "rotulo": "Mandato único",
+          "manchete": "Um mandato e tchau: presidente já assume como 'pato manco'",
+          "exemplos": [
+            "México (sexênio)",
+            "Coreia do Sul (mandato único de 5 anos)",
+            "Paraguai",
+            "Filipinas",
+            "Colômbia (desde 2015)"
+          ]
+        },
+        {
+          "id": "nao-consecutiva",
+          "rotulo": "Só depois de um intervalo",
+          "manchete": "Presidente sai, espera um mandato e já anuncia: 'eu volto'",
+          "exemplos": ["Chile", "Peru", "Uruguai", "Costa Rica"]
+        },
+        {
+          "id": "uma-reeleicao",
+          "rotulo": "Uma reeleição",
+          "manchete": "Oito anos no máximo: primeiro mandato vira campanha para o segundo",
+          "exemplos": [
+            "Brasil (desde 1997)",
+            "EUA",
+            "Argentina",
+            "França (desde 2008)"
+          ]
+        },
+        {
+          "id": "ilimitada",
+          "rotulo": "Reeleição ilimitada",
+          "manchete": "Limite de mandatos cai: 'quem decide é o povo', diz o presidente, de olho no quarto mandato",
+          "exemplos": [
+            "Venezuela (2009)",
+            "Nicarágua (2014)",
+            "China (2018)",
+            "Premiês em sistemas parlamentares (Alemanha, Reino Unido)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "uma-reeleicao",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; pesa no equilíbrio de poder."
+      },
+      "efeitos": [
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Presidente que pode ficar mais tempo tem mais força para negociar e planejar."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Políticas de longo prazo sobrevivem à troca de mandato."
+        },
+        {
+          "alvo": "captura_politica",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "A máquina pública passa a trabalhar pela reeleição de quem está no poder."
+        },
+        {
+          "alvo": "forca_instituicoes",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "em ilimitada",
+          "porque": "Sem rodízio, o grupo no poder ocupa tribunais, agências e órgãos de controle."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em ilimitada",
+          "porque": "Presidentes que ficam muito tempo tendem a apertar a oposição."
+        },
+        {
+          "alvo": "protestos",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "condicao": "ao avançar para ilimitada durante o mandato",
+          "porque": "Mudar as regras para ficar mais tempo costuma levar multidões às ruas."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios"],
+        "perdem": ["grupo_jovens", "grupo_estudantes"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes"],
+        "reduz": ["captura_politica"],
+        "porque": "Limite de mandato só segura quem não controla os tribunais; a maior parte das manobras para ficar no poder passou por emendas e decisões judiciais."
+      },
+      "mae": {
+        "lei": "sistema-de-governo",
+        "opcoes": ["presidencialismo", "semipresidencialismo"]
+      },
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Versteeg et al. – The Law and Politics of Presidential Term Limit Evasion (Columbia Law Review, 2020)",
+          "url": "https://columbialawreview.org/content/the-law-and-politics-of-presidential-term-limit-evasion/"
+        }
+      ]
+    },
+    {
+      "id": "estabilidade-servidores-publicos",
+      "nome": "Estabilidade dos servidores públicos",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Gestão",
+      "grupo": "regulatoria",
+      "descricao": "Define se servidores entram por concurso e se podem ser demitidos por desempenho ou por vontade do governo.",
+      "dilema": "Uma burocracia que pode dizer não ao político, ou um funcionalismo que o governo pode cobrar, trocar e enxugar?",
+      "eixo": "do cargo como prêmio político à estabilidade vitalícia",
+      "opcoes": [
+        {
+          "id": "livre-nomeacao",
+          "rotulo": "Livre nomeação",
+          "manchete": "Governo novo, servidores novos: milhares de cargos trocam de mão na semana da posse",
+          "exemplos": [
+            "EUA no 'sistema de despojos' (séc. XIX)",
+            "EUA (tentativa do 'Schedule F', 2020 e 2025)"
+          ]
+        },
+        {
+          "id": "contrato-comum",
+          "rotulo": "Contrato comum",
+          "manchete": "Fim do emprego vitalício: servidor passa a ter contrato como qualquer trabalhador",
+          "exemplos": [
+            "Nova Zelândia (State Sector Act, 1988)",
+            "Suécia",
+            "Suíça (fim do funcionalismo vitalício, 2002)"
+          ]
+        },
+        {
+          "id": "estabilidade-com-avaliacao",
+          "rotulo": "Estabilidade com avaliação",
+          "manchete": "Concurso continua, mas três avaliações ruins seguidas podem custar o cargo",
+          "exemplos": ["Reino Unido", "Chile (Alta Direção Pública)", "Estônia"]
+        },
+        {
+          "id": "estabilidade-plena",
+          "rotulo": "Estabilidade plena",
+          "manchete": "Passou no concurso, é para sempre: demissão só com processo e sentença",
+          "exemplos": [
+            "Brasil (avaliação de desempenho prevista desde 1998, nunca regulamentada)",
+            "Alemanha (Beamte)",
+            "França (fonctionnaires)",
+            "Japão"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "estabilidade-plena",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Folha que não pode ser ajustada vira gasto fixo por décadas."
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "de livre-nomeacao para contrato-comum",
+          "porque": "Recrutar por mérito em vez de por padrinho reduz a corrupção; o efeito vem do concurso, não da estabilidade em si."
+        },
+        {
+          "alvo": "captura_politica",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Servidor que não pode ser demitido pelo político tem como recusar ordens ilegais."
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "condicao": "até estabilidade-com-avaliacao",
+          "porque": "Equipes permanentes acumulam experiência que não se perde a cada eleição."
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "condicao": "em estabilidade-plena",
+          "porque": "Sem risco de demissão por desempenho, uma parte do funcionalismo se acomoda."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "A folha não encolhe nem quando a receita cai."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O governo não escolhe nem troca quem executa suas políticas."
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_servidores",
+          "grupo_professores",
+          "grupo_profissionais_saude"
+        ],
+        "perdem": ["grupo_classe_media", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Estabilidade protege técnicos honestos do político, mas só se a entrada for por mérito; sem concurso sério, ela só congela apadrinhados."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Dahlström, Lapuente & Teorell – The Merit of Meritocratization: Politics, Bureaucracy, and the Institutional Deterrents of Corruption",
+          "url": "https://portal.research.lu.se/en/publications/the-merit-of-meritocratization-politics-bureaucracy-and-the-insti/"
+        },
+        {
+          "titulo": "Te Kawa Mataaho (NZ Public Service Commission) – Age of reform 1984-1998",
+          "url": "https://www.publicservice.govt.nz/publications/100-years-of-public-service/age-of-reform-1984-1998"
+        }
+      ]
+    },
+    {
+      "id": "foro-privilegiado",
+      "nome": "Foro privilegiado",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Ministério da Justiça",
+      "grupo": "institucional",
+      "descricao": "Define se autoridades acusadas de crime são julgadas por juízes comuns, por tribunais superiores ou se ficam imunes enquanto ocupam o cargo.",
+      "dilema": "Proteger o governo de juízes de primeira instância e perseguições, ou deixar o poderoso responder como qualquer cidadão?",
+      "eixo": "da justiça comum para todos à imunidade de autoridades",
+      "opcoes": [
+        {
+          "id": "justica-comum",
+          "rotulo": "Justiça comum para todos",
+          "manchete": "Fim do foro: ministro acusado vai ser julgado pelo juiz da comarca, como qualquer um",
+          "exemplos": [
+            "Reino Unido",
+            "Alemanha (imunidade parlamentar costuma ser suspensa a pedido)",
+            "Estônia"
+          ]
+        },
+        {
+          "id": "foro-funcional",
+          "rotulo": "Só crimes no cargo",
+          "manchete": "Foro vale só para crimes ligados à função, e continua depois que a autoridade deixa o cargo",
+          "exemplos": [
+            "Brasil (STF, 2018 e 2025)",
+            "França (Corte de Justiça da República para ministros)"
+          ]
+        },
+        {
+          "id": "foro-amplo",
+          "rotulo": "Foro amplo",
+          "manchete": "Milhares de autoridades só podem ser julgadas em tribunais superiores; processos se arrastam por anos",
+          "exemplos": [
+            "Espanha (milhares de 'aforados')",
+            "Brasil antes de 2018"
+          ]
+        },
+        {
+          "id": "imunidade",
+          "rotulo": "Imunidade no mandato",
+          "manchete": "Presidente e ministros não podem ser processados enquanto estiverem no cargo",
+          "exemplos": [
+            "França (presidente durante o mandato)",
+            "Itália (Lodo Alfano, 2008, derrubado em 2009)",
+            "Rússia (ex-presidentes imunes desde 2020)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "foro-funcional",
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; pesa nos tribunais superiores, que viram tribunais criminais."
+      },
+      "efeitos": [
+        {
+          "alvo": "impunidade",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Tribunais superiores julgam devagar e muitos crimes prescrevem."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem sabe que dificilmente será julgado arrisca mais."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Para o cidadão, foro especial parece privilégio de casta."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Ministros não caem por qualquer denúncia de um juiz de primeira instância."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Menos risco de operações judiciais derrubarem governos inteiros."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "condicao": "a partir de foro-amplo",
+          "porque": "Blindar autoridades é visto como autoproteção."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores"],
+        "perdem": [
+          "grupo_classe_media",
+          "grupo_progressistas",
+          "grupo_conservadores"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes"],
+        "reduz": ["impunidade"],
+        "porque": "Foro especial só não vira impunidade se o tribunal superior tem estrutura e vontade de julgar rápido."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Migalhas – STF encerra julgamento e mantém foro privilegiado após saída de cargo (2025)",
+          "url": "https://www.migalhas.com.br/quentes/426078/stf-encerra-julgamento-e-mantem-foro-privilegiado-apos-saida-de-cargo"
+        }
+      ]
+    },
+    {
+      "id": "lei-anticorrupcao",
+      "nome": "Lei anticorrupção",
+      "area": "Instituições, Estado e sistema político",
+      "ministerio": "Controladoria-Geral da União",
+      "grupo": "regulatoria",
+      "descricao": "Define quem paga pela corrupção (só a pessoa, também a empresa) e se existe uma agência com superpoderes para investigar.",
+      "dilema": "Uma faxina que pode derrubar empresas, ministros e o seu próprio governo, ou deixar as coisas como estão e torcer para ninguém olhar?",
+      "eixo": "da punição só de pessoas físicas a uma agência anticorrupção com poderes amplos",
+      "opcoes": [
+        {
+          "id": "so-pessoas",
+          "rotulo": "Sem lei anticorrupção",
+          "manchete": "Empresa corruptora sai ilesa: só o diretor que assinou o cheque responde, se for pego",
+          "exemplos": [
+            "Brasil antes de 2013",
+            "Alemanha (empresas sem responsabilidade penal, só multa administrativa)"
+          ]
+        },
+        {
+          "id": "empresa-limpa",
+          "rotulo": "Empresa também paga",
+          "manchete": "Multa de até 20% do faturamento: empreiteiras correm para fechar acordo de leniência",
+          "exemplos": [
+            "Brasil (Lei 12.846/2013)",
+            "EUA (FCPA, 1977)",
+            "Reino Unido (Bribery Act, 2010)",
+            "França (Sapin II, 2016)"
+          ]
+        },
+        {
+          "id": "agencia-forte",
+          "rotulo": "Superagência anticorrupção",
+          "manchete": "Nova agência pode grampear, prender e investigar até o presidente; Brasília entra em pânico",
+          "exemplos": [
+            "Hong Kong (ICAC, 1974)",
+            "Singapura (CPIB)",
+            "Indonésia (KPK antes da reforma de 2019)",
+            "China (Comissão Central de Disciplina do Partido)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "empresa-limpa",
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Investigadores e controladores custam pouco perto do que recuperam, mas a agência forte exige estrutura própria."
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quando a empresa também paga, compensa ter programa de integridade e não pagar propina."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Acordos de leniência e investigações dedicadas chegam a quem antes escapava."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "condicao": "durante grandes operações",
+          "porque": "Grandes investigações paralisam empreiteiras e assustam quem tem contrato com o governo."
+        },
+        {
+          "alvo": "investimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "durante grandes operações",
+          "porque": "Obras e projetos param enquanto as empresas investigadas negociam acordos."
+        },
+        {
+          "alvo": "margem_manobra_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Aliados do governo também podem ser investigados."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em agencia-forte",
+          "porque": "Operações derrubam ministros e desmontam partidos."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "condicao": "em agencia-forte",
+          "porque": "Cada operação vira acusação de perseguição política."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Leis no padrão da OCDE melhoram a imagem do país."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_pequenos_negocios"],
+        "perdem": ["grupo_empresarios", "grupo_industria"]
+      },
+      "eficacia": {
+        "aumenta": ["forca_instituicoes", "capacidade_estatal"],
+        "reduz": ["captura_politica"],
+        "porque": "Agência forte num Judiciário controlado vira arma contra a oposição; e o próprio Congresso, quando investigado, costuma cortar seus poderes."
+      },
+      "mae": null,
+      "filhas": [],
+      "fontes": [
+        {
+          "titulo": "Global Anticorruption Blog – Indonesian Anticorruption Institutions at Risk: Legislative Amendments Spell Disaster for the KPK (2019)",
+          "url": "https://globalanticorruptionblog.com/2019/10/03/guest-post-indonesian-anticorruption-institutions-at-risk-part-2-legislative-amendments-spell-disaster-for-the-kpk/"
+        }
+      ]
+    }
+  ],
+  "novas_bolhas": [
+    {
+      "id": "margem_manobra_governo",
+      "nome": "Margem de manobra do governo",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_melhor",
+      "porque": "Mede o quanto o governo do jogador decide sem amarras (regras fiscais, BC, tribunais, imprensa); toda lei que fortalece instituições cobra seu preço aqui."
+    },
+    {
+      "id": "estabilidade_politica",
+      "nome": "Estabilidade política",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_melhor",
+      "porque": "Sistema de governo, reeleição, foro e operações anticorrupção mudam a frequência com que governos e ministros caem; é diferente da ameaça de golpe, que é a ruptura."
+    },
+    {
+      "id": "participacao_eleitoral",
+      "nome": "Participação eleitoral",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_melhor",
+      "porque": "Voto obrigatório e regras de campanha mudam quantos eleitores votam, o que muda quais grupos os políticos disputam."
+    },
+    {
+      "id": "desigualdade_regional",
+      "nome": "Desigualdade regional",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Federalismo e incentivos regionais mexem na distância entre regiões ricas e pobres, que a desigualdade de renda geral não mostra."
+    },
+    {
+      "id": "captura_politica",
+      "nome": "Captura política",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Mede quanto interesses privados ou o próprio grupo no poder dobram decisões públicas por meios legais (doações, nomeações, máquina pública); a corrupção mede o ilegal."
+    },
+    {
+      "id": "impunidade",
+      "nome": "Impunidade",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Foro privilegiado, independência judicial e leis anticorrupção mudam a chance de um poderoso ser de fato punido; alimenta a corrupção e corrói a confiança."
+    },
+    {
+      "id": "desinformacao",
+      "nome": "Desinformação",
+      "tipo": "indice",
+      "unidade": "percentual_0_100",
+      "avaliacao": "maior_pior",
+      "porque": "Liberdade de imprensa e regulação de redes mudam quanto boato circula; alimenta a polarização."
+    }
+  ]
+}
