@@ -1,0 +1,17 @@
+{
+  "id": "politica-de-natalidade--envelhecimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_natalidade",
+  "alvo": "envelhecimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0005,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

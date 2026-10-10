@@ -1,0 +1,17 @@
+{
+  "id": "escolaridade--eficacia-investimento-pesquisa",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "escolaridade",
+  "alvo": "eficacia:investimento-pesquisa",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

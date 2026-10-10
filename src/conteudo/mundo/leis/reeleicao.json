@@ -1,0 +1,49 @@
+{
+  "id": "reeleicao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Reeleição do chefe do Executivo",
+  "descricao": "Define quantas vezes o presidente pode se reeleger.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Presidência da República (Constituição)",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_reeleicao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reeleicao",
+        "rotulo": "Mandato único",
+        "valor": 0
+      },
+      {
+        "id": "nao-consecutiva",
+        "rotulo": "Só depois de um intervalo",
+        "valor": 33
+      },
+      {
+        "id": "uma-reeleicao",
+        "rotulo": "Uma reeleição",
+        "valor": 67
+      },
+      {
+        "id": "ilimitada",
+        "rotulo": "Reeleição ilimitada",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "reeleicao--margem-manobra-governo",
+    "reeleicao--estabilidade-politica",
+    "reeleicao--captura-politica",
+    "reeleicao--forca-instituicoes",
+    "reeleicao--liberdade-civil",
+    "reeleicao--protestos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

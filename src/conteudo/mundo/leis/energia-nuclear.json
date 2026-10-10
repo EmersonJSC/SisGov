@@ -1,0 +1,55 @@
+{
+  "id": "energia-nuclear",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Energia nuclear",
+  "descricao": "Define se o país proíbe, congela, mantém ou expande usinas nucleares.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério de Minas e Energia",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_energia_nuclear",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Nuclear proibida",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "sem-novas",
+        "rotulo": "Só as que existem",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.198
+      },
+      {
+        "id": "manutencao",
+        "rotulo": "Manter e estender",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.402
+      },
+      {
+        "id": "expansao",
+        "rotulo": "Expansão nuclear",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "energia-nuclear--oferta-energia",
+    "energia-nuclear--infraestrutura-energia",
+    "energia-nuclear--emissoes",
+    "energia-nuclear--qualidade-ambiental",
+    "energia-nuclear--preco-energia",
+    "energia-nuclear--gasto-publico",
+    "energia-nuclear--desastre-ambiental",
+    "energia-nuclear--protestos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

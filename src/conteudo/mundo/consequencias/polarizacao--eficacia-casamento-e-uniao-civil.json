@@ -1,0 +1,17 @@
+{
+  "id": "polarizacao--eficacia-casamento-e-uniao-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "polarizacao",
+  "alvo": "eficacia:casamento-e-uniao-civil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

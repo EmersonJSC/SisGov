@@ -1,0 +1,54 @@
+{
+  "id": "saude-mental",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Política de saúde mental",
+  "descricao": "Define como o país cuida de quem tem transtorno mental grave: deixa com a família, interna em manicômios, mistura hospital e ambulatório, ou fecha os manicômios e trata em liberdade.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_saude_mental",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-politica",
+        "rotulo": "Problema da família",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "manicomial",
+        "rotulo": "Hospícios",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "misto-hospital-geral",
+        "rotulo": "Hospital geral e ambulatório",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "rede-comunitaria",
+        "rotulo": "Cuidado em liberdade",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "saude-mental--sofrimento-mental",
+    "saude-mental--liberdade-civil",
+    "saude-mental--liberdade-civil-2",
+    "saude-mental--populacao-de-rua",
+    "saude-mental--participacao-trabalho-cuidadoras",
+    "saude-mental--produtividade",
+    "saude-mental--uso-drogas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

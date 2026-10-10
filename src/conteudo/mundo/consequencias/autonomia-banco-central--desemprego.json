@@ -1,0 +1,17 @@
+{
+  "id": "autonomia-banco-central--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_autonomia_banco_central",
+  "alvo": "desemprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

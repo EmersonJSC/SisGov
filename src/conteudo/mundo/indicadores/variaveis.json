@@ -4,107 +4,1496 @@
   "versaoEsquema": 1,
   "variaveis": [
     {
-      "id": "recursos_atencao_basica",
+      "id": "nivel_codigo_florestal",
       "tipo": "controle",
-      "nome": "Recursos para atenção básica",
+      "nome": "Código florestal",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_licenciamento_ambiental",
+      "tipo": "controle",
+      "nome": "Licenciamento ambiental",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_precificacao_carbono",
+      "tipo": "controle",
+      "nome": "Precificação de carbono",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_matriz_energetica",
+      "tipo": "controle",
+      "nome": "Matriz energética",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_energia_nuclear",
+      "tipo": "controle",
+      "nome": "Energia nuclear",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_regime_do_petroleo_e_mineracao",
+      "tipo": "controle",
+      "nome": "Regime do petróleo e da mineração",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_reforma_agraria",
+      "tipo": "controle",
+      "nome": "Reforma agrária",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_agrotoxicos",
+      "tipo": "controle",
+      "nome": "Agrotóxicos",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "recursos_investimento_em_infraestrutura",
+      "tipo": "controle",
+      "nome": "Recursos: Investimento em infraestrutura",
       "unidade": "moeda_ano",
       "dominio": {
         "minimo": 0
       },
-      "valorInicial": 4000,
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_transporte_publico",
+      "tipo": "controle",
+      "nome": "Transporte público",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_saneamento_basico",
+      "tipo": "controle",
+      "nome": "Saneamento básico",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_terras_indigenas",
+      "tipo": "controle",
+      "nome": "Terras indígenas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
+    },
+    {
+      "id": "nivel_meta_de_inflacao",
+      "tipo": "controle",
+      "nome": "Meta de inflação",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_controle_de_capitais",
+      "tipo": "controle",
+      "nome": "Controle de capitais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "aliquota_tarifas_de_importacao",
+      "tipo": "controle",
+      "nome": "Alíquota: Tarifas de importação",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_acordos_comerciais",
+      "tipo": "controle",
+      "nome": "Acordos comerciais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_empresas_estatais_e_privatizacao",
+      "tipo": "controle",
+      "nome": "Empresas estatais e privatização",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_defesa_da_concorrencia",
+      "tipo": "controle",
+      "nome": "Defesa da concorrência",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_banco_de_desenvolvimento",
+      "tipo": "controle",
+      "nome": "Banco de desenvolvimento",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_controle_de_precos",
+      "tipo": "controle",
+      "nome": "Controle de preços",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_regulacao_bancaria",
+      "tipo": "controle",
+      "nome": "Regulação bancária",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_investimento_estrangeiro",
+      "tipo": "controle",
+      "nome": "Investimento estrangeiro",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_politica_industrial",
+      "tipo": "controle",
+      "nome": "Política industrial",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "recursos_piso_educacao",
+      "tipo": "controle",
+      "nome": "Recursos: Piso de gasto em educação",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_ensino_obrigatorio",
+      "tipo": "controle",
+      "nome": "Ensino obrigatório",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_acesso_ensino_superior",
+      "tipo": "controle",
+      "nome": "Acesso ao ensino superior",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_escola_tempo_integral",
+      "tipo": "controle",
+      "nome": "Escola em tempo integral",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_educacao_domiciliar",
+      "tipo": "controle",
+      "nome": "Educação domiciliar",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "recursos_investimento_pesquisa",
+      "tipo": "controle",
+      "nome": "Recursos: Investimento em pesquisa e desenvolvimento",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_piso_salarial_professores",
+      "tipo": "controle",
+      "nome": "Piso salarial dos professores",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_ensino_tecnico_profissional",
+      "tipo": "controle",
+      "nome": "Ensino técnico e profissional",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_incentivo_cultura",
+      "tipo": "controle",
+      "nome": "Incentivo à cultura",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_avaliacao_escolas",
+      "tipo": "controle",
+      "nome": "Avaliação das escolas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_vouchers_escolares",
+      "tipo": "controle",
+      "nome": "Vouchers escolares",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_regra_fiscal",
+      "tipo": "controle",
+      "nome": "Regra fiscal",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_autonomia_banco_central",
+      "tipo": "controle",
+      "nome": "Autonomia do banco central",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_regime_cambial",
+      "tipo": "controle",
+      "nome": "Regime cambial",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_independencia_judiciario",
+      "tipo": "controle",
+      "nome": "Independência do Judiciário",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_liberdade_imprensa",
+      "tipo": "controle",
+      "nome": "Liberdade de imprensa",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_transparencia_publica",
+      "tipo": "controle",
+      "nome": "Transparência pública",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_federalismo",
+      "tipo": "controle",
+      "nome": "Federalismo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_sistema_de_governo",
+      "tipo": "controle",
+      "nome": "Sistema de governo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_voto_obrigatorio",
+      "tipo": "controle",
+      "nome": "Voto obrigatório",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_financiamento_de_campanhas",
+      "tipo": "controle",
+      "nome": "Financiamento de campanhas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_reeleicao",
+      "tipo": "controle",
+      "nome": "Reeleição do chefe do Executivo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_estabilidade_servidores_publicos",
+      "tipo": "controle",
+      "nome": "Estabilidade dos servidores públicos",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_foro_privilegiado",
+      "tipo": "controle",
+      "nome": "Foro privilegiado",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_lei_anticorrupcao",
+      "tipo": "controle",
+      "nome": "Lei anticorrupção",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_sistema_previdenciario",
+      "tipo": "controle",
+      "nome": "Sistema previdenciário",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_idade_minima_aposentadoria",
+      "tipo": "controle",
+      "nome": "Idade mínima de aposentadoria",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_previdencia_rural",
+      "tipo": "controle",
+      "nome": "Previdência rural",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_beneficio_idosos_e_deficientes",
+      "tipo": "controle",
+      "nome": "Pensão social para idosos e pessoas com deficiência",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "recursos_transferencia_de_renda",
+      "tipo": "controle",
+      "nome": "Recursos: Transferência de renda às famílias pobres",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "recursos_programa_habitacao_popular",
+      "tipo": "controle",
+      "nome": "Recursos: Programa de habitação popular",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_seguranca_alimentar",
+      "tipo": "controle",
+      "nome": "Segurança alimentar",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_pensao_por_morte",
+      "tipo": "controle",
+      "nome": "Pensão por morte",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_cuidados_de_longa_duracao",
+      "tipo": "controle",
+      "nome": "Cuidados de longa duração",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_reajuste_de_beneficios",
+      "tipo": "controle",
+      "nome": "Reajuste de aposentadorias e benefícios",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_sistema_de_saude",
+      "tipo": "controle",
+      "nome": "Sistema de saúde",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
       "area": "Saúde"
     },
     {
-      "id": "recursos_protecao_mulheres",
+      "id": "recursos_piso_saude",
       "tipo": "controle",
-      "nome": "Recursos para proteção às mulheres",
+      "nome": "Recursos: Piso de gasto em saúde",
       "unidade": "moeda_ano",
       "dominio": {
         "minimo": 0
       },
-      "valorInicial": 240,
-      "area": "Mulheres"
+      "valorInicial": 0,
+      "area": "Saúde"
     },
     {
-      "id": "recursos_prevencao_seguranca",
+      "id": "nivel_vacinacao_obrigatoria",
       "tipo": "controle",
-      "nome": "Recursos para prevenção e cooperação",
-      "unidade": "moeda_ano",
-      "dominio": {
-        "minimo": 0
-      },
-      "valorInicial": 600,
-      "area": "Segurança"
-    },
-    {
-      "id": "recursos_alimentacao_escolar",
-      "tipo": "controle",
-      "nome": "Recursos para alimentação escolar",
-      "unidade": "moeda_ano",
-      "dominio": {
-        "minimo": 0
-      },
-      "valorInicial": 300,
-      "area": "Educação e Cuidados"
-    },
-    {
-      "id": "recursos_creches_publicas",
-      "tipo": "controle",
-      "nome": "Recursos para creches públicas",
-      "unidade": "moeda_ano",
-      "dominio": {
-        "minimo": 0
-      },
-      "valorInicial": 500,
-      "area": "Educação e Cuidados"
-    },
-    {
-      "id": "escolaridade",
-      "tipo": "estoque",
-      "nome": "Escolaridade",
-      "unidade": "indice_0_100",
+      "nome": "Vacinação obrigatória",
+      "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Educação",
-      "avaliacao": "maior_melhor"
+      "valorInicial": 0,
+      "area": "Saúde"
     },
     {
-      "id": "desenvolvimento",
-      "tipo": "estoque",
-      "nome": "Desenvolvimento",
-      "unidade": "indice_0_100",
+      "id": "nivel_restricao_tabaco_e_alcool",
+      "tipo": "controle",
+      "nome": "Restrição ao tabaco e ao álcool",
+      "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "valorInicial": 0,
+      "area": "Saúde"
     },
     {
-      "id": "infraestrutura",
-      "tipo": "estoque",
-      "nome": "Infraestrutura",
-      "unidade": "indice_0_100",
+      "id": "nivel_saude_mental",
+      "tipo": "controle",
+      "nome": "Política de saúde mental",
+      "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Infraestrutura",
-      "avaliacao": "maior_melhor"
+      "valorInicial": 0,
+      "area": "Saúde"
     },
     {
-      "id": "pib",
+      "id": "nivel_regulacao_planos_de_saude",
+      "tipo": "controle",
+      "nome": "Regulação dos planos de saúde",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Saúde"
+    },
+    {
+      "id": "nivel_genericos_e_patentes_medicamentos",
+      "tipo": "controle",
+      "nome": "Genéricos e patentes de medicamentos",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Saúde"
+    },
+    {
+      "id": "nivel_programa_medicos_no_interior",
+      "tipo": "controle",
+      "nome": "Médicos no interior",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Saúde"
+    },
+    {
+      "id": "recursos_farmacia_popular",
+      "tipo": "controle",
+      "nome": "Recursos: Farmácia popular",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Saúde"
+    },
+    {
+      "id": "recursos_vigilancia_epidemiologica",
+      "tipo": "controle",
+      "nome": "Recursos: Vigilância epidemiológica",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Saúde"
+    },
+    {
+      "id": "nivel_politica_de_drogas",
+      "tipo": "controle",
+      "nome": "Política de drogas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_porte_de_armas",
+      "tipo": "controle",
+      "nome": "Posse e porte de armas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_maioridade_penal",
+      "tipo": "controle",
+      "nome": "Maioridade penal e justiça juvenil",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_penas_maximas",
+      "tipo": "controle",
+      "nome": "Penas máximas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_politica_de_encarceramento",
+      "tipo": "controle",
+      "nome": "Política de encarceramento",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_modelo_de_policia",
+      "tipo": "controle",
+      "nome": "Modelo de polícia",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_cameras_corporais",
+      "tipo": "controle",
+      "nome": "Câmeras corporais na polícia",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_delacao_e_acordos_penais",
+      "tipo": "controle",
+      "nome": "Delação e acordos penais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_gestao_de_presidios",
+      "tipo": "controle",
+      "nome": "Gestão de presídios",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_combate_crime_organizado",
+      "tipo": "controle",
+      "nome": "Estratégia contra o crime organizado",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_protecao_violencia_domestica",
+      "tipo": "controle",
+      "nome": "Lei contra a violência doméstica",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_aborto",
+      "tipo": "controle",
+      "nome": "Aborto",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_casamento_e_uniao_civil",
+      "tipo": "controle",
+      "nome": "Casamento e união civil",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_eutanasia",
+      "tipo": "controle",
+      "nome": "Eutanásia e morte assistida",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_laicidade_do_estado",
+      "tipo": "controle",
+      "nome": "Laicidade do Estado",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_politica_de_imigracao",
+      "tipo": "controle",
+      "nome": "Política de imigração",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_refugiados_e_asilo",
+      "tipo": "controle",
+      "nome": "Refugiados e asilo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_regulacao_redes_sociais",
+      "tipo": "controle",
+      "nome": "Regulação das redes sociais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_protecao_de_dados",
+      "tipo": "controle",
+      "nome": "Proteção de dados pessoais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_igualdade_salarial_de_genero",
+      "tipo": "controle",
+      "nome": "Igualdade salarial de gênero",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_acoes_afirmativas",
+      "tipo": "controle",
+      "nome": "Ações afirmativas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_apostas_e_jogos_de_azar",
+      "tipo": "controle",
+      "nome": "Apostas e jogos de azar",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_servico_militar",
+      "tipo": "controle",
+      "nome": "Serviço militar",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "recursos_gasto_com_defesa",
+      "tipo": "controle",
+      "nome": "Recursos: Gasto com defesa",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_politica_de_natalidade",
+      "tipo": "controle",
+      "nome": "Política de natalidade",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_legislacao_trabalhista",
+      "tipo": "controle",
+      "nome": "Legislação trabalhista",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_salario_minimo",
+      "tipo": "controle",
+      "nome": "Salário mínimo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_jornada_de_trabalho",
+      "tipo": "controle",
+      "nome": "Jornada de trabalho",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_seguro_desemprego",
+      "tipo": "controle",
+      "nome": "Seguro-desemprego",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_fundo_de_garantia",
+      "tipo": "controle",
+      "nome": "Fundo de garantia e indenização por demissão",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_negociacao_coletiva_e_sindicatos",
+      "tipo": "controle",
+      "nome": "Negociação coletiva e sindicatos",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_terceirizacao",
+      "tipo": "controle",
+      "nome": "Terceirização",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_trabalho_por_aplicativo",
+      "tipo": "controle",
+      "nome": "Trabalho por aplicativo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_licenca_parental",
+      "tipo": "controle",
+      "nome": "Licença parental",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_trabalho_infantil_e_aprendizagem",
+      "tipo": "controle",
+      "nome": "Trabalho infantil e aprendizagem",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_reducao_de_jornada_subsidiada",
+      "tipo": "controle",
+      "nome": "Redução de jornada subsidiada (lay-off)",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_modelo_tributario",
+      "tipo": "controle",
+      "nome": "Modelo tributário",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_renda_pessoas",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto de renda da pessoa física",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_sobre_consumo",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre consumo (IVA)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_renda_empresas",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto de renda das empresas",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_tributacao_dividendos",
+      "tipo": "controle",
+      "nome": "Alíquota: Tributação de dividendos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_grandes_fortunas",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre grandes fortunas",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_heranca",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre herança e doações",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_propriedade_urbana_rural",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre imóveis urbanos e rurais",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "nivel_regime_simplificado_pequenas_empresas",
+      "tipo": "controle",
+      "nome": "Regime simplificado para pequenas empresas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "nivel_incentivos_fiscais_regionais",
+      "tipo": "controle",
+      "nome": "Incentivos fiscais regionais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "nivel_imposto_seletivo",
+      "tipo": "controle",
+      "nome": "Imposto seletivo (tabaco, álcool, açúcar e poluentes)",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_transacoes_financeiras",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre transações financeiras",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "apagao",
+      "tipo": "situacao",
+      "nome": "Apagão",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "aprendizagem",
       "tipo": "calculado",
-      "nome": "PIB",
+      "nome": "Aprendizagem dos alunos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "armas_em_circulacao",
+      "tipo": "estoque",
+      "nome": "Armas em circulação",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Economia",
+      "area": "Segurança, justiça e drogas",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "arrecadacao",
+      "tipo": "calculado",
+      "nome": "Arrecadação",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
       "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "cambio",
+      "tipo": "calculado",
+      "nome": "Câmbio",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "capacidade_defesa",
+      "tipo": "estoque",
+      "nome": "Capacidade de defesa",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "capacidade_estatal",
+      "tipo": "calculado",
+      "nome": "Capacidade do Estado",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "captura_politica",
+      "tipo": "calculado",
+      "nome": "Captura política",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "carga_evento_demanda",
+      "tipo": "calculado",
+      "nome": "Carga do evento de demanda",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 1,
+        "maximo": 1
+      },
+      "area": "Saúde",
+      "avaliacao": "neutra"
     },
     {
       "id": "cobertura_aps",
@@ -119,10 +1508,130 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "pressao_hospitalar",
+      "id": "cobertura_planos_saude",
       "tipo": "calculado",
-      "nome": "Pressão hospitalar",
+      "nome": "Pessoas com plano de saúde",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "cobertura_previdenciaria",
+      "tipo": "calculado",
+      "nome": "Cobertura previdenciária",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Previdência e assistência social",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "cobertura_vacinal",
+      "tipo": "calculado",
+      "nome": "Cobertura vacinal",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "complexidade_tributaria",
+      "tipo": "calculado",
+      "nome": "Complexidade tributária",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Tributação",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "concentracao_fundiaria",
+      "tipo": "estoque",
+      "nome": "Concentração de terras",
       "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "concentracao_mercado",
+      "tipo": "calculado",
+      "nome": "Concentração de mercado",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "confianca_empresarial",
+      "tipo": "calculado",
+      "nome": "Confiança empresarial",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "confianca_instituicoes",
+      "tipo": "calculado",
+      "nome": "Confiança nas instituições",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "conflitos_fundiarios",
+      "tipo": "calculado",
+      "nome": "Conflitos no campo",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "consumo",
+      "tipo": "calculado",
+      "nome": "Consumo das famílias",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "consumo_tabaco_alcool",
+      "tipo": "calculado",
+      "nome": "Consumo de tabaco e álcool",
+      "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
@@ -131,15 +1640,794 @@
       "avaliacao": "maior_pior"
     },
     {
-      "id": "saude_populacao",
+      "id": "corrupcao",
       "tipo": "calculado",
-      "nome": "Saúde da população",
+      "nome": "Corrupção",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Governo",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "credito",
+      "tipo": "calculado",
+      "nome": "Crédito disponível",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "crime_organizado",
+      "tipo": "calculado",
+      "nome": "Crime organizado",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "crimes_patrimoniais",
+      "tipo": "calculado",
+      "nome": "Crimes contra o patrimônio (roubos e furtos)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança, justiça e drogas",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "crise_atendimento",
+      "tipo": "situacao",
+      "nome": "Crise no atendimento",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
       "area": "Saúde",
+      "avaliacao": "maior_pior",
+      "surgimento": 62
+    },
+    {
+      "id": "crise_financeira",
+      "tipo": "situacao",
+      "nome": "Crise financeira",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
+      "avaliacao": "maior_pior",
+      "surgimento": 25
+    },
+    {
+      "id": "crise_migratoria",
+      "tipo": "situacao",
+      "nome": "Crise migratória",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "custo_trabalhista",
+      "tipo": "calculado",
+      "nome": "Custo de contratar",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "deficit_habitacional",
+      "tipo": "calculado",
+      "nome": "Déficit habitacional",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "deficit_previdenciario",
+      "tipo": "calculado",
+      "nome": "Déficit da previdência",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Previdência e assistência social",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desabastecimento",
+      "tipo": "situacao",
+      "nome": "Desabastecimento",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia, finanças e comércio exterior",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "desastre_ambiental",
+      "tipo": "situacao",
+      "nome": "Desastre ambiental",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "desemprego",
+      "tipo": "calculado",
+      "nome": "Desemprego",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desenvolvimento",
+      "tipo": "estoque",
+      "nome": "Desenvolvimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "desigualdade",
+      "tipo": "calculado",
+      "nome": "Desigualdade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Desenvolvimento Social",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desigualdade_regional",
+      "tipo": "calculado",
+      "nome": "Desigualdade regional",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desinformacao",
+      "tipo": "calculado",
+      "nome": "Desinformação",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desmatamento",
+      "tipo": "calculado",
+      "nome": "Desmatamento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "diferenca_salarial_genero",
+      "tipo": "calculado",
+      "nome": "Diferença salarial de gênero",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "discriminacao",
+      "tipo": "calculado",
+      "nome": "Discriminação",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "divida_publica",
+      "tipo": "estoque",
+      "nome": "Dívida pública",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 300
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "emissoes",
+      "tipo": "calculado",
+      "nome": "Emissões de carbono",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "endividamento_familias",
+      "tipo": "calculado",
+      "nome": "Endividamento das famílias",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "envelhecimento",
+      "tipo": "estoque",
+      "nome": "Envelhecimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "epidemia",
+      "tipo": "situacao",
+      "nome": "Epidemia",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "escolaridade",
+      "tipo": "estoque",
+      "nome": "Escolaridade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "estabilidade_politica",
+      "tipo": "calculado",
+      "nome": "Estabilidade política",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "evasao_escolar",
+      "tipo": "calculado",
+      "nome": "Evasão escolar",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "expectativas_inflacao",
+      "tipo": "calculado",
+      "nome": "Expectativas de inflação",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia, finanças e comércio exterior",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "exportacoes",
+      "tipo": "calculado",
+      "nome": "Exportações",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "falta_de_medicos",
+      "tipo": "calculado",
+      "nome": "Falta de médicos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "forca_instituicoes",
+      "tipo": "calculado",
+      "nome": "Força das instituições",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "fuga_capitais",
+      "tipo": "calculado",
+      "nome": "Fuga de capitais",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Tributação",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "fuga_de_cerebros",
+      "tipo": "calculado",
+      "nome": "Fuga de cérebros",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "gasto_bolso_saude",
+      "tipo": "calculado",
+      "nome": "Gasto do bolso com saúde",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "gasto_publico",
+      "tipo": "calculado",
+      "nome": "Gasto público",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "golpe_risco",
+      "tipo": "situacao",
+      "nome": "Ameaça de golpe",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "greve_de_professores",
+      "tipo": "situacao",
+      "nome": "Greve de professores",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "greve_geral",
+      "tipo": "situacao",
+      "nome": "Greve geral",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "ied",
+      "tipo": "calculado",
+      "nome": "Investimento estrangeiro direto",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia, finanças e comércio exterior",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "imigracao",
+      "tipo": "calculado",
+      "nome": "Imigração",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "importacoes",
+      "tipo": "calculado",
+      "nome": "Importações",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "impunidade",
+      "tipo": "calculado",
+      "nome": "Impunidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "inflacao",
+      "tipo": "calculado",
+      "nome": "Inflação",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "informalidade",
+      "tipo": "calculado",
+      "nome": "Informalidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "infraestrutura",
+      "tipo": "estoque",
+      "nome": "Infraestrutura",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "infraestrutura_energia",
+      "tipo": "estoque",
+      "nome": "Infraestrutura de energia",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "infraestrutura_saneamento",
+      "tipo": "estoque",
+      "nome": "Infraestrutura de saneamento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "infraestrutura_transportes",
+      "tipo": "estoque",
+      "nome": "Infraestrutura de transportes",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "inovacao",
+      "tipo": "calculado",
+      "nome": "Inovação",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "inseguranca_alimentar",
+      "tipo": "calculado",
+      "nome": "Insegurança alimentar",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Previdência e assistência social",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "investimento",
+      "tipo": "calculado",
+      "nome": "Investimento",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "juros_da_divida",
+      "tipo": "calculado",
+      "nome": "Juros da dívida",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 30
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "letalidade_policial",
+      "tipo": "calculado",
+      "nome": "Letalidade policial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança, justiça e drogas",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "liberdade_civil",
+      "tipo": "calculado",
+      "nome": "Liberdades civis",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "litigio_trabalhista",
+      "tipo": "calculado",
+      "nome": "Litígio trabalhista",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "lotacao_prisional",
+      "tipo": "calculado",
+      "nome": "Lotação dos presídios",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "margem_manobra_governo",
+      "tipo": "calculado",
+      "nome": "Margem de manobra do governo",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "mercado_paralelo",
+      "tipo": "situacao",
+      "nome": "Dólar paralelo",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia, finanças e comércio exterior",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "mobilidade_urbana",
+      "tipo": "calculado",
+      "nome": "Mobilidade urbana",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "natalidade",
+      "tipo": "calculado",
+      "nome": "Natalidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "neutra"
+    },
+    {
+      "id": "oferta_energia",
+      "tipo": "calculado",
+      "nome": "Oferta de energia",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "onda_violencia",
+      "tipo": "situacao",
+      "nome": "Onda de violência",
+      "unidade": "taxa_por_100_mil",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 60
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_pior",
+      "surgimento": 30
+    },
+    {
+      "id": "oportunidades_juvenis",
+      "tipo": "calculado",
+      "nome": "Oportunidades para jovens",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "participacao_eleitoral",
+      "tipo": "calculado",
+      "nome": "Participação eleitoral",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Instituições, Estado e sistema político",
       "avaliacao": "maior_melhor"
     },
     {
@@ -155,93 +2443,21 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "oportunidades_juvenis",
+      "id": "participacao_trabalho_idosos",
       "tipo": "calculado",
-      "nome": "Oportunidades para jovens",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Trabalho",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "qualificacao_trabalho",
-      "tipo": "calculado",
-      "nome": "Qualificação do trabalho",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Trabalho",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "produtividade",
-      "tipo": "calculado",
-      "nome": "Produtividade",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "investimento",
-      "tipo": "calculado",
-      "nome": "Investimento",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "confianca_empresarial",
-      "tipo": "calculado",
-      "nome": "Confiança empresarial",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Economia",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "desemprego",
-      "tipo": "calculado",
-      "nome": "Desemprego",
+      "nome": "Idosos no mercado de trabalho",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Trabalho",
-      "avaliacao": "maior_pior"
-    },
-    {
-      "id": "renda_familias",
-      "tipo": "calculado",
-      "nome": "Renda das famílias",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Economia",
+      "area": "Previdência e assistência social",
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "consumo",
+      "id": "pib",
       "tipo": "calculado",
-      "nome": "Consumo das famílias",
+      "nome": "PIB",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -263,40 +2479,136 @@
       "avaliacao": "maior_pior"
     },
     {
-      "id": "desigualdade",
+      "id": "polarizacao",
       "tipo": "calculado",
-      "nome": "Desigualdade",
+      "nome": "Polarização",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Desenvolvimento Social",
+      "area": "Geral",
       "avaliacao": "maior_pior"
     },
     {
-      "id": "violencia_letal",
+      "id": "populacao_de_rua",
       "tipo": "calculado",
-      "nome": "Violência letal",
-      "unidade": "taxa_por_100_mil",
+      "nome": "População em situação de rua",
+      "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
-        "maximo": 60
+        "maximo": 100
       },
-      "area": "Segurança",
+      "area": "Saúde",
       "avaliacao": "maior_pior"
     },
     {
-      "id": "crime_organizado",
+      "id": "popularidade_governo",
       "tipo": "calculado",
-      "nome": "Crime organizado",
+      "nome": "Popularidade do governo",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Segurança",
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "poupanca_domestica",
+      "tipo": "estoque",
+      "nome": "Poupança doméstica",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Previdência e assistência social",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "preco_alimentos",
+      "tipo": "calculado",
+      "nome": "Preço dos alimentos",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
       "avaliacao": "maior_pior"
+    },
+    {
+      "id": "preco_energia",
+      "tipo": "calculado",
+      "nome": "Preço da energia",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "preco_medicamentos",
+      "tipo": "calculado",
+      "nome": "Preço dos medicamentos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "pressao_hospitalar",
+      "tipo": "calculado",
+      "nome": "Pressão hospitalar",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "producao_agropecuaria",
+      "tipo": "calculado",
+      "nome": "Produção agropecuária",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "producao_mineral",
+      "tipo": "calculado",
+      "nome": "Produção de petróleo e minérios",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "produtividade",
+      "tipo": "calculado",
+      "nome": "Produtividade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
     },
     {
       "id": "protecao_efetiva_mulheres",
@@ -311,76 +2623,52 @@
       "avaliacao": "maior_melhor"
     },
     {
-      "id": "sensacao_seguranca",
-      "tipo": "calculado",
-      "nome": "Sensação de segurança",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Segurança",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "corrupcao",
-      "tipo": "calculado",
-      "nome": "Corrupção",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Governo",
-      "avaliacao": "maior_pior"
-    },
-    {
-      "id": "capacidade_estatal",
-      "tipo": "calculado",
-      "nome": "Capacidade do Estado",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Governo",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "confianca_instituicoes",
-      "tipo": "calculado",
-      "nome": "Confiança nas instituições",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "area": "Governo",
-      "avaliacao": "maior_melhor"
-    },
-    {
-      "id": "crise_atendimento",
+      "id": "protestos",
       "tipo": "situacao",
-      "nome": "Crise no atendimento",
-      "unidade": "indice_0_100",
+      "nome": "Protestos",
+      "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Saúde",
+      "area": "Geral",
       "avaliacao": "maior_pior",
-      "surgimento": 62
+      "surgimento": 30
     },
     {
-      "id": "onda_violencia",
-      "tipo": "situacao",
-      "nome": "Onda de violência",
-      "unidade": "taxa_por_100_mil",
+      "id": "qualidade_ambiental",
+      "tipo": "calculado",
+      "nome": "Qualidade ambiental",
+      "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
-        "maximo": 60
+        "maximo": 100
       },
-      "area": "Segurança",
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "qualificacao_trabalho",
+      "tipo": "calculado",
+      "nome": "Qualificação do trabalho",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "rebeliao_presidios",
+      "tipo": "situacao",
+      "nome": "Rebelião nos presídios",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança, justiça e drogas",
       "avaliacao": "maior_pior",
       "surgimento": 30
     },
@@ -398,16 +2686,244 @@
       "surgimento": 12
     },
     {
-      "id": "carga_evento_demanda",
+      "id": "reincidencia",
       "tipo": "calculado",
-      "nome": "Carga do evento de demanda",
-      "unidade": "quantidade",
+      "nome": "Reincidência criminal",
+      "unidade": "percentual_0_100",
       "dominio": {
-        "minimo": 1,
-        "maximo": 1
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança, justiça e drogas",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "renda_familias",
+      "tipo": "calculado",
+      "nome": "Renda das famílias",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "reputacao_internacional",
+      "tipo": "calculado",
+      "nome": "Reputação internacional",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "reservas_internacionais",
+      "tipo": "estoque",
+      "nome": "Reservas internacionais",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "resultado_fiscal",
+      "tipo": "calculado",
+      "nome": "Resultado fiscal",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": -30,
+        "maximo": 30
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "risco_pais",
+      "tipo": "calculado",
+      "nome": "Risco país",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "rotatividade_emprego",
+      "tipo": "calculado",
+      "nome": "Rotatividade no emprego",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "saude_populacao",
+      "tipo": "calculado",
+      "nome": "Saúde da população",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
       },
       "area": "Saúde",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "segregacao_escolar",
+      "tipo": "calculado",
+      "nome": "Segregação escolar",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "sensacao_seguranca",
+      "tipo": "calculado",
+      "nome": "Sensação de segurança",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "sofrimento_mental",
+      "tipo": "calculado",
+      "nome": "Sofrimento mental",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Saúde",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "sonegacao",
+      "tipo": "calculado",
+      "nome": "Sonegação",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "taxa_juros",
+      "tipo": "calculado",
+      "nome": "Taxa de juros",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
       "avaliacao": "neutra"
+    },
+    {
+      "id": "trabalho_infantil",
+      "tipo": "calculado",
+      "nome": "Trabalho infantil",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "transparencia_fiscal_internacional",
+      "tipo": "estoque",
+      "nome": "Cooperação fiscal internacional",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Tributação",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "turismo",
+      "tipo": "calculado",
+      "nome": "Turismo",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "uso_drogas",
+      "tipo": "calculado",
+      "nome": "Uso de drogas",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "vicio_em_apostas",
+      "tipo": "calculado",
+      "nome": "Vício em apostas",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos civis, costumes, imigração, mídia e defesa",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "violencia_letal",
+      "tipo": "calculado",
+      "nome": "Violência letal",
+      "unidade": "taxa_por_100_mil",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 60
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "vitalidade_cultural",
+      "tipo": "calculado",
+      "nome": "Vitalidade cultural",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
     }
   ]
 }

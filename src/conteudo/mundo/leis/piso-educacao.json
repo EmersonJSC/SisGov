@@ -1,0 +1,35 @@
+{
+  "id": "piso-educacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Piso de gasto em educação",
+  "descricao": "Fixa quanto do PIB o Estado gasta, no mínimo, com educação pública (da pré-escola à universidade; alimentação escolar e creches saem daqui).",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_piso_educacao",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 10
+    }
+  },
+  "consequencias": [
+    "piso-educacao--gasto-publico",
+    "piso-educacao--resultado-fiscal",
+    "piso-educacao--escolaridade",
+    "piso-educacao--evasao-escolar",
+    "piso-educacao--aprendizagem",
+    "piso-educacao--qualificacao-trabalho",
+    "piso-educacao--desigualdade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

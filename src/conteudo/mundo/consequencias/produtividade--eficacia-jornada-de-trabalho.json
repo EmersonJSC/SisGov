@@ -1,0 +1,17 @@
+{
+  "id": "produtividade--eficacia-jornada-de-trabalho",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "produtividade",
+  "alvo": "eficacia:jornada-de-trabalho",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

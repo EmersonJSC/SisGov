@@ -1,0 +1,18 @@
+{
+  "id": "apostas-e-jogos-de-azar--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_apostas_e_jogos_de_azar",
+  "alvo": "crime_organizado",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.07,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

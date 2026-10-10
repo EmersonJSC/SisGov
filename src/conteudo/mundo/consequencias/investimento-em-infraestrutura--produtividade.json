@@ -1,0 +1,17 @@
+{
+  "id": "investimento-em-infraestrutura--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_investimento_em_infraestrutura",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 7.2917e-6,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "gasto-com-defesa--desenvolvimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_gasto_com_defesa",
+  "alvo": "desenvolvimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.17e-8,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

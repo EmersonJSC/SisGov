@@ -1,0 +1,17 @@
+{
+  "id": "controle-de-precos--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_controle_de_precos",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

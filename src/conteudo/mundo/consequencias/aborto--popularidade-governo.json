@@ -1,0 +1,18 @@
+{
+  "id": "aborto--popularidade-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_aborto",
+  "alvo": "popularidade_governo",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.11666667,
+    "limiar": 40,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

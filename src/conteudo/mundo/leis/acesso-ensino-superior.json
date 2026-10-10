@@ -1,0 +1,60 @@
+{
+  "id": "acesso-ensino-superior",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Acesso ao ensino superior",
+  "descricao": "Define quem paga a universidade: a família, o próprio estudante depois de formado, ou o contribuinte (para todos ou só para os mais pobres).",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_acesso_ensino_superior",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "pago-pela-familia",
+        "rotulo": "Pago pela família",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "emprestimo-contingente",
+        "rotulo": "Mensalidade com empréstimo",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "gratuito-seletivo",
+        "rotulo": "Pública gratuita e disputada",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.3
+      },
+      {
+        "id": "gratuidade-focalizada",
+        "rotulo": "Grátis para os mais pobres",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.45
+      },
+      {
+        "id": "gratuito-universal",
+        "rotulo": "Grátis para todos",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "acesso-ensino-superior--gasto-publico",
+    "acesso-ensino-superior--escolaridade",
+    "acesso-ensino-superior--qualificacao-trabalho",
+    "acesso-ensino-superior--endividamento-familias",
+    "acesso-ensino-superior--desigualdade",
+    "acesso-ensino-superior--desigualdade-5",
+    "acesso-ensino-superior--oportunidades-juvenis"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

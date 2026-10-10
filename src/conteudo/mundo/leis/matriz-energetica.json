@@ -1,0 +1,55 @@
+{
+  "id": "matriz-energetica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Matriz energética",
+  "descricao": "Define se o Estado barateia o combustível fóssil, fica neutro, incentiva renováveis ou força a saída do fóssil.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério de Minas e Energia",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_matriz_energetica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "subsidio-fossil",
+        "rotulo": "Combustível subsidiado",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "neutra",
+        "rotulo": "Mercado decide",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "incentivo-renovavel",
+        "rotulo": "Incentivo às renováveis",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "transicao-forcada",
+        "rotulo": "Transição forçada",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "matriz-energetica--emissoes",
+    "matriz-energetica--qualidade-ambiental",
+    "matriz-energetica--preco-energia",
+    "matriz-energetica--gasto-publico",
+    "matriz-energetica--protestos",
+    "matriz-energetica--infraestrutura-energia",
+    "matriz-energetica--inovacao",
+    "matriz-energetica--apagao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

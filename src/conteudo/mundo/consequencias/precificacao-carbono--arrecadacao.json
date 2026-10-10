@@ -1,0 +1,17 @@
+{
+  "id": "precificacao-carbono--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_precificacao_carbono",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

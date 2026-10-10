@@ -1,0 +1,49 @@
+{
+  "id": "lei-anticorrupcao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Lei anticorrupção",
+  "descricao": "Define quem paga pela corrupção (só a pessoa, também a empresa) e se existe uma agência com superpoderes para investigar.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Controladoria-Geral da União",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_lei_anticorrupcao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-pessoas",
+        "rotulo": "Sem lei anticorrupção",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "empresa-limpa",
+        "rotulo": "Empresa também paga",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "agencia-forte",
+        "rotulo": "Superagência anticorrupção",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "lei-anticorrupcao--corrupcao",
+    "lei-anticorrupcao--impunidade",
+    "lei-anticorrupcao--confianca-empresarial",
+    "lei-anticorrupcao--investimento",
+    "lei-anticorrupcao--margem-manobra-governo",
+    "lei-anticorrupcao--estabilidade-politica",
+    "lei-anticorrupcao--polarizacao",
+    "lei-anticorrupcao--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

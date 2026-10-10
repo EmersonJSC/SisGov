@@ -1,0 +1,60 @@
+{
+  "id": "vacinacao-obrigatoria",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Vacinação obrigatória",
+  "descricao": "Define se as vacinas do calendário infantil são oferecidas, recomendadas, exigidas para escola e benefícios, punidas com multa ou aplicadas à força.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_vacinacao_obrigatoria",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-programa",
+        "rotulo": "Sem programa",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "recomendada",
+        "rotulo": "Gratuita e recomendada",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.0125
+      },
+      {
+        "id": "exigida",
+        "rotulo": "Exigida para escola e benefícios",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "obrigatoria-com-multa",
+        "rotulo": "Obrigatória, com multa",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.0375
+      },
+      {
+        "id": "compulsoria",
+        "rotulo": "Vacinação compulsória",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "vacinacao-obrigatoria--cobertura-vacinal",
+    "vacinacao-obrigatoria--epidemia",
+    "vacinacao-obrigatoria--saude-populacao",
+    "vacinacao-obrigatoria--pressao-hospitalar",
+    "vacinacao-obrigatoria--liberdade-civil",
+    "vacinacao-obrigatoria--polarizacao",
+    "vacinacao-obrigatoria--protestos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

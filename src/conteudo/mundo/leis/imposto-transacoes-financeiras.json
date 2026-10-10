@@ -1,0 +1,34 @@
+{
+  "id": "imposto-transacoes-financeiras",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto sobre transações financeiras",
+  "descricao": "Define a alíquota cobrada sobre cada movimentação financeira, de débitos em conta corrente a compras de ações e operações de câmbio.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_transacoes_financeiras",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 1.2
+    }
+  },
+  "consequencias": [
+    "imposto-transacoes-financeiras--arrecadacao",
+    "imposto-transacoes-financeiras--sonegacao",
+    "imposto-transacoes-financeiras--credito",
+    "imposto-transacoes-financeiras--fuga-capitais",
+    "imposto-transacoes-financeiras--informalidade",
+    "imposto-transacoes-financeiras--inflacao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

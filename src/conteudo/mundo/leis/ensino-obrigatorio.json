@@ -1,0 +1,54 @@
+{
+  "id": "ensino-obrigatorio",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Ensino obrigatório",
+  "descricao": "Define dos quantos aos quantos anos toda criança e jovem é obrigado a estar estudando, e o Estado obrigado a oferecer vaga.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_ensino_obrigatorio",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-obrigatoriedade",
+        "rotulo": "Escola opcional",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "primario",
+        "rotulo": "Só o primário",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "basico-9-anos",
+        "rotulo": "Nove anos de ensino básico",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "ate-18",
+        "rotulo": "Da pré-escola aos 18",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "ensino-obrigatorio--escolaridade",
+    "ensino-obrigatorio--evasao-escolar",
+    "ensino-obrigatorio--qualificacao-trabalho",
+    "ensino-obrigatorio--oportunidades-juvenis",
+    "ensino-obrigatorio--renda-familias",
+    "ensino-obrigatorio--gasto-publico",
+    "ensino-obrigatorio--participacao-trabalho-cuidadoras"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

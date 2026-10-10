@@ -1,0 +1,53 @@
+{
+  "id": "regime-simplificado-pequenas-empresas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regime simplificado para pequenas empresas",
+  "descricao": "Define se pequenos negócios pagam pelo regime geral ou por uma guia única simplificada, e até que tamanho valem as vantagens.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_regime_simplificado_pequenas_empresas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Regime geral para todos",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "limiar-iva",
+        "rotulo": "Só isenção de IVA",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "monotributo",
+        "rotulo": "Monotributo para micro",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "amplo",
+        "rotulo": "Simples amplo com teto alto",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "regime-simplificado-pequenas-empresas--informalidade",
+    "regime-simplificado-pequenas-empresas--complexidade-tributaria",
+    "regime-simplificado-pequenas-empresas--arrecadacao",
+    "regime-simplificado-pequenas-empresas--produtividade",
+    "regime-simplificado-pequenas-empresas--sonegacao",
+    "regime-simplificado-pequenas-empresas--desemprego"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

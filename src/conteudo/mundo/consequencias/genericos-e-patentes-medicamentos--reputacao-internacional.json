@@ -1,0 +1,18 @@
+{
+  "id": "genericos-e-patentes-medicamentos--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_genericos_e_patentes_medicamentos",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.12,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

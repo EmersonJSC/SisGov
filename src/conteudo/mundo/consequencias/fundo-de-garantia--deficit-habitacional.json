@@ -1,0 +1,18 @@
+{
+  "id": "fundo-de-garantia--deficit-habitacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fundo_de_garantia",
+  "alvo": "deficit_habitacional",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

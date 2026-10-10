@@ -1,0 +1,18 @@
+{
+  "id": "terceirizacao--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_terceirizacao",
+  "alvo": "informalidade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "vouchers-escolares",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Vouchers escolares",
+  "descricao": "Define se o dinheiro público da educação básica segue o aluno, podendo pagar escolas privadas ou geridas por terceiros escolhidas pela família.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_vouchers_escolares",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-escola-estatal",
+        "rotulo": "Só escola estatal",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "gestao-terceirizada",
+        "rotulo": "Escolas públicas geridas por terceiros",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "voucher-focalizado",
+        "rotulo": "Voucher para os pobres",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "voucher-universal",
+        "rotulo": "Voucher para todos",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "vouchers-escolares--segregacao-escolar",
+    "vouchers-escolares--desigualdade",
+    "vouchers-escolares--evasao-escolar",
+    "vouchers-escolares--aprendizagem",
+    "vouchers-escolares--liberdade-civil",
+    "vouchers-escolares--gasto-publico",
+    "vouchers-escolares--polarizacao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

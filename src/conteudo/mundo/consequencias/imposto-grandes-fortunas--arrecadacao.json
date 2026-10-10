@@ -1,0 +1,17 @@
+{
+  "id": "imposto-grandes-fortunas--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_grandes_fortunas",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.8571428571,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

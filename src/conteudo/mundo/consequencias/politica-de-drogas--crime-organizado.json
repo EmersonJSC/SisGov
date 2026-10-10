@@ -1,0 +1,18 @@
+{
+  "id": "politica-de-drogas--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_drogas",
+  "alvo": "crime_organizado",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.35,
+    "limiar": 80,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

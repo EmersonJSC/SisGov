@@ -1,0 +1,17 @@
+{
+  "id": "programa-habitacao-popular--pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_programa_habitacao_popular",
+  "alvo": "pobreza",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.66667e-5,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

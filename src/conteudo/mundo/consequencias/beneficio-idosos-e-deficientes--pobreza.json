@@ -1,0 +1,17 @@
+{
+  "id": "beneficio-idosos-e-deficientes--pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_beneficio_idosos_e_deficientes",
+  "alvo": "pobreza",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

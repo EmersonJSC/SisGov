@@ -1,0 +1,48 @@
+{
+  "id": "regime-cambial",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Regime cambial",
+  "descricao": "Define se o valor da moeda nacional é fixado pelo governo ou decidido pelo mercado.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_regime_cambial",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "fixo",
+        "rotulo": "Câmbio fixo",
+        "valor": 0
+      },
+      {
+        "id": "bandas",
+        "rotulo": "Bandas cambiais",
+        "valor": 33
+      },
+      {
+        "id": "flutuante-administrado",
+        "rotulo": "Flutuante administrado",
+        "valor": 67
+      },
+      {
+        "id": "flutuante",
+        "rotulo": "Flutuante",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "regime-cambial--crise-financeira",
+    "regime-cambial--inflacao",
+    "regime-cambial--exportacoes",
+    "regime-cambial--recessao",
+    "regime-cambial--confianca-empresarial"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "seguranca-alimentar--inseguranca-alimentar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_seguranca_alimentar",
+  "alvo": "inseguranca_alimentar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

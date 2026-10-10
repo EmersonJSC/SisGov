@@ -1,0 +1,53 @@
+{
+  "id": "avaliacao-escolas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Avaliação das escolas",
+  "descricao": "Define se o país mede o aprendizado dos alunos, se divulga a nota de cada escola e se essa nota traz prêmios ou punições.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_avaliacao_escolas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-avaliacao",
+        "rotulo": "Sem avaliação nacional",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "amostral-diagnostica",
+        "rotulo": "Amostra, sem ranking",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "censitaria-publica",
+        "rotulo": "Nota de cada escola publicada",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "com-consequencias",
+        "rotulo": "Nota com prêmio e punição",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "avaliacao-escolas--aprendizagem",
+    "avaliacao-escolas--capacidade-estatal",
+    "avaliacao-escolas--confianca-instituicoes",
+    "avaliacao-escolas--segregacao-escolar",
+    "avaliacao-escolas--greve-de-professores",
+    "avaliacao-escolas--evasao-escolar"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

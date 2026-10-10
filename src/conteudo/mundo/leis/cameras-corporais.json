@@ -1,0 +1,53 @@
+{
+  "id": "cameras-corporais",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Câmeras corporais na polícia",
+  "descricao": "Define se policiais usam câmeras no uniforme e quem decide quando gravar.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_cameras_corporais",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem câmeras",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "a-criterio",
+        "rotulo": "Cada corporação decide",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "policial-aciona",
+        "rotulo": "Obrigatória, policial liga",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "gravacao-continua",
+        "rotulo": "Gravação ininterrupta",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "cameras-corporais--letalidade-policial",
+    "cameras-corporais--confianca-instituicoes",
+    "cameras-corporais--impunidade",
+    "cameras-corporais--gasto-publico",
+    "cameras-corporais--liberdade-civil",
+    "cameras-corporais--sensacao-seguranca"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

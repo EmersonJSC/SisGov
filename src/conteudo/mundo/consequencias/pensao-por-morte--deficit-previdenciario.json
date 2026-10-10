@@ -1,0 +1,17 @@
+{
+  "id": "pensao-por-morte--deficit-previdenciario",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_pensao_por_morte",
+  "alvo": "deficit_previdenciario",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

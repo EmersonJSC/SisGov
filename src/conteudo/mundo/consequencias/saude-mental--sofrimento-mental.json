@@ -1,0 +1,18 @@
+{
+  "id": "saude-mental--sofrimento-mental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_saude_mental",
+  "alvo": "sofrimento_mental",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.07,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

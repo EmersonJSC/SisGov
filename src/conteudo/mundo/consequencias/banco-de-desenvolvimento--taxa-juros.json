@@ -1,0 +1,17 @@
+{
+  "id": "banco-de-desenvolvimento--taxa-juros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_banco_de_desenvolvimento",
+  "alvo": "taxa_juros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

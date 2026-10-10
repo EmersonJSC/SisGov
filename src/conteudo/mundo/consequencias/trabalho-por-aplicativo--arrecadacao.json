@@ -1,0 +1,17 @@
+{
+  "id": "trabalho-por-aplicativo--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

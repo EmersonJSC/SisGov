@@ -1,0 +1,60 @@
+{
+  "id": "maioridade-penal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Maioridade penal e justiça juvenil",
+  "descricao": "Define a partir de que idade o jovem é julgado e preso como adulto, e o que acontece com quem comete crime antes disso.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_maioridade_penal",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-justica-juvenil",
+        "rotulo": "Sem justiça juvenil",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "adulto-em-crime-grave",
+        "rotulo": "Adulto em crime grave",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.0125
+      },
+      {
+        "id": "maioridade-16",
+        "rotulo": "Maioridade aos 16",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "maioridade-18",
+        "rotulo": "Maioridade aos 18",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.0375
+      },
+      {
+        "id": "juvenil-ate-21",
+        "rotulo": "Justiça juvenil até 21",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "maioridade-penal--reincidencia",
+    "maioridade-penal--lotacao-prisional",
+    "maioridade-penal--oportunidades-juvenis",
+    "maioridade-penal--impunidade",
+    "maioridade-penal--crime-organizado",
+    "maioridade-penal--sensacao-seguranca",
+    "maioridade-penal--popularidade-governo"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

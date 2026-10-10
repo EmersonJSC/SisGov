@@ -1,0 +1,17 @@
+{
+  "id": "envelhecimento--eficacia-cuidados-de-longa-duracao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "envelhecimento",
+  "alvo": "eficacia:cuidados-de-longa-duracao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

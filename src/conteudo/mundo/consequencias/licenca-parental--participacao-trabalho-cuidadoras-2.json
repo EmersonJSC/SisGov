@@ -1,0 +1,18 @@
+{
+  "id": "licenca-parental--participacao-trabalho-cuidadoras-2",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_licenca_parental",
+  "alvo": "participacao_trabalho_cuidadoras",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

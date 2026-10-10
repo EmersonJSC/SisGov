@@ -1,0 +1,17 @@
+{
+  "id": "imposto-grandes-fortunas--complexidade-tributaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_grandes_fortunas",
+  "alvo": "complexidade_tributaria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

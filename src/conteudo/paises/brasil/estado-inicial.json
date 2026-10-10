@@ -5,53 +5,471 @@
   "economia": {
     "pibAnual": 12000000
   },
-  "limitesProprios": [
-    {
-      "lei": "atencao-basica",
-      "minimo": 2400,
-      "maximo": 6000
-    },
-    {
-      "lei": "protecao-mulheres",
-      "minimo": 0,
-      "maximo": 600
-    },
-    {
-      "lei": "prevencao-seguranca",
-      "minimo": 0,
-      "maximo": 1400
-    },
-    {
-      "lei": "alimentacao-escolar",
-      "minimo": 0,
-      "maximo": 1000
-    },
-    {
-      "lei": "creches-publicas",
-      "minimo": 0,
-      "maximo": 1600
-    }
-  ],
+  "limitesProprios": [],
   "leisVigentes": [
     {
-      "lei": "atencao-basica",
-      "nivel": 4000
+      "lei": "codigo-florestal",
+      "opcao": "reserva-legal"
     },
     {
-      "lei": "protecao-mulheres",
-      "nivel": 240
+      "lei": "licenciamento-ambiental",
+      "opcao": "trifasico"
     },
     {
-      "lei": "prevencao-seguranca",
-      "nivel": 600
+      "lei": "precificacao-carbono",
+      "opcao": "mercado-brando"
     },
     {
-      "lei": "alimentacao-escolar",
-      "nivel": 300
+      "lei": "matriz-energetica",
+      "opcao": "incentivo-renovavel"
     },
     {
-      "lei": "creches-publicas",
-      "nivel": 500
+      "lei": "energia-nuclear",
+      "opcao": "manutencao"
+    },
+    {
+      "lei": "regime-do-petroleo-e-mineracao",
+      "opcao": "partilha"
+    },
+    {
+      "lei": "reforma-agraria",
+      "opcao": "desapropriacao-improdutiva"
+    },
+    {
+      "lei": "agrotoxicos",
+      "opcao": "permissiva"
+    },
+    {
+      "lei": "investimento-em-infraestrutura",
+      "nivel": 120000
+    },
+    {
+      "lei": "transporte-publico",
+      "opcao": "subsidio-parcial"
+    },
+    {
+      "lei": "saneamento-basico",
+      "opcao": "concessao-com-metas"
+    },
+    {
+      "lei": "terras-indigenas",
+      "opcao": "demarcacao"
+    },
+    {
+      "lei": "meta-de-inflacao",
+      "opcao": "meta-estrita"
+    },
+    {
+      "lei": "controle-de-capitais",
+      "opcao": "controles-prudenciais"
+    },
+    {
+      "lei": "tarifas-de-importacao",
+      "nivel": 12.0
+    },
+    {
+      "lei": "acordos-comerciais",
+      "opcao": "uniao-aduaneira"
+    },
+    {
+      "lei": "empresas-estatais-e-privatizacao",
+      "opcao": "estatais-estrategicas"
+    },
+    {
+      "lei": "defesa-da-concorrencia",
+      "opcao": "moderada"
+    },
+    {
+      "lei": "banco-de-desenvolvimento",
+      "opcao": "credito-direcionado"
+    },
+    {
+      "lei": "controle-de-precos",
+      "opcao": "precos-administrados"
+    },
+    {
+      "lei": "regulacao-bancaria",
+      "opcao": "basileia-reforcada"
+    },
+    {
+      "lei": "investimento-estrangeiro",
+      "opcao": "restricoes-setoriais"
+    },
+    {
+      "lei": "politica-industrial",
+      "opcao": "protecao-mercado-interno"
+    },
+    {
+      "lei": "piso-educacao",
+      "nivel": 660000
+    },
+    {
+      "lei": "ensino-obrigatorio",
+      "opcao": "ate-18"
+    },
+    {
+      "lei": "acesso-ensino-superior",
+      "opcao": "gratuito-seletivo"
+    },
+    {
+      "lei": "escola-tempo-integral",
+      "opcao": "integral-parcial"
+    },
+    {
+      "lei": "educacao-domiciliar",
+      "opcao": "proibida"
+    },
+    {
+      "lei": "investimento-pesquisa",
+      "nivel": 138000
+    },
+    {
+      "lei": "piso-salarial-professores",
+      "opcao": "piso-nacional-minimo"
+    },
+    {
+      "lei": "ensino-tecnico-profissional",
+      "opcao": "tecnico-como-opcao"
+    },
+    {
+      "lei": "incentivo-cultura",
+      "opcao": "mecenato-incentivado"
+    },
+    {
+      "lei": "avaliacao-escolas",
+      "opcao": "censitaria-publica"
+    },
+    {
+      "lei": "vouchers-escolares",
+      "opcao": "so-escola-estatal"
+    },
+    {
+      "lei": "regra-fiscal",
+      "opcao": "arcabouco"
+    },
+    {
+      "lei": "autonomia-banco-central",
+      "opcao": "autonomia-plena"
+    },
+    {
+      "lei": "regime-cambial",
+      "opcao": "flutuante"
+    },
+    {
+      "lei": "independencia-judiciario",
+      "opcao": "plena"
+    },
+    {
+      "lei": "liberdade-imprensa",
+      "opcao": "plena"
+    },
+    {
+      "lei": "transparencia-publica",
+      "opcao": "acesso-informacao"
+    },
+    {
+      "lei": "federalismo",
+      "opcao": "cooperativo"
+    },
+    {
+      "lei": "sistema-de-governo",
+      "opcao": "presidencialismo"
+    },
+    {
+      "lei": "voto-obrigatorio",
+      "opcao": "obrigatorio-com-sancoes"
+    },
+    {
+      "lei": "financiamento-de-campanhas",
+      "opcao": "publico-predominante"
+    },
+    {
+      "lei": "reeleicao",
+      "opcao": "uma-reeleicao"
+    },
+    {
+      "lei": "estabilidade-servidores-publicos",
+      "opcao": "estabilidade-plena"
+    },
+    {
+      "lei": "foro-privilegiado",
+      "opcao": "foro-funcional"
+    },
+    {
+      "lei": "lei-anticorrupcao",
+      "opcao": "empresa-limpa"
+    },
+    {
+      "lei": "sistema-previdenciario",
+      "opcao": "reparticao"
+    },
+    {
+      "lei": "idade-minima-aposentadoria",
+      "opcao": "moderada"
+    },
+    {
+      "lei": "previdencia-rural",
+      "opcao": "comprovacao-atividade"
+    },
+    {
+      "lei": "beneficio-idosos-e-deficientes",
+      "opcao": "focalizado-estrito"
+    },
+    {
+      "lei": "transferencia-de-renda",
+      "nivel": 168000
+    },
+    {
+      "lei": "programa-habitacao-popular",
+      "nivel": 24000
+    },
+    {
+      "lei": "seguranca-alimentar",
+      "opcao": "acoes-pontuais"
+    },
+    {
+      "lei": "pensao-por-morte",
+      "opcao": "cotas"
+    },
+    {
+      "lei": "cuidados-de-longa-duracao",
+      "opcao": "assistencia-focalizada"
+    },
+    {
+      "lei": "reajuste-de-beneficios",
+      "opcao": "salario-minimo"
+    },
+    {
+      "lei": "sistema-de-saude",
+      "opcao": "universal-publico"
+    },
+    {
+      "lei": "piso-saude",
+      "nivel": 516000
+    },
+    {
+      "lei": "vacinacao-obrigatoria",
+      "opcao": "exigida"
+    },
+    {
+      "lei": "restricao-tabaco-e-alcool",
+      "opcao": "restricao-forte"
+    },
+    {
+      "lei": "saude-mental",
+      "opcao": "rede-comunitaria"
+    },
+    {
+      "lei": "regulacao-planos-de-saude",
+      "opcao": "rol-minimo"
+    },
+    {
+      "lei": "genericos-e-patentes-medicamentos",
+      "opcao": "genericos-e-licenca"
+    },
+    {
+      "lei": "programa-medicos-no-interior",
+      "opcao": "importacao-de-medicos"
+    },
+    {
+      "lei": "farmacia-popular",
+      "nivel": 6000
+    },
+    {
+      "lei": "vigilancia-epidemiologica",
+      "nivel": 6000
+    },
+    {
+      "lei": "politica-de-drogas",
+      "opcao": "despenalizacao"
+    },
+    {
+      "lei": "porte-de-armas",
+      "opcao": "restritiva"
+    },
+    {
+      "lei": "maioridade-penal",
+      "opcao": "maioridade-18"
+    },
+    {
+      "lei": "penas-maximas",
+      "opcao": "teto-longo"
+    },
+    {
+      "lei": "politica-de-encarceramento",
+      "opcao": "alternativas-crimes-leves"
+    },
+    {
+      "lei": "modelo-de-policia",
+      "opcao": "dual-militarizada"
+    },
+    {
+      "lei": "cameras-corporais",
+      "opcao": "a-criterio"
+    },
+    {
+      "lei": "delacao-e-acordos-penais",
+      "opcao": "colaboracao-premiada"
+    },
+    {
+      "lei": "gestao-de-presidios",
+      "opcao": "estatal"
+    },
+    {
+      "lei": "combate-crime-organizado",
+      "opcao": "sem-estrategia"
+    },
+    {
+      "lei": "protecao-violencia-domestica",
+      "opcao": "medidas-protetivas"
+    },
+    {
+      "lei": "aborto",
+      "opcao": "casos-restritos"
+    },
+    {
+      "lei": "casamento-e-uniao-civil",
+      "opcao": "casamento-igualitario"
+    },
+    {
+      "lei": "eutanasia",
+      "opcao": "passiva"
+    },
+    {
+      "lei": "laicidade-do-estado",
+      "opcao": "neutro"
+    },
+    {
+      "lei": "politica-de-imigracao",
+      "opcao": "ampla"
+    },
+    {
+      "lei": "refugiados-e-asilo",
+      "opcao": "acolhida-ampla"
+    },
+    {
+      "lei": "regulacao-redes-sociais",
+      "opcao": "dever-de-cuidado"
+    },
+    {
+      "lei": "protecao-de-dados",
+      "opcao": "lei-geral"
+    },
+    {
+      "lei": "igualdade-salarial-de-genero",
+      "opcao": "transparencia"
+    },
+    {
+      "lei": "acoes-afirmativas",
+      "opcao": "cotas-sociais-e-raciais"
+    },
+    {
+      "lei": "apostas-e-jogos-de-azar",
+      "opcao": "licenciado-restrito"
+    },
+    {
+      "lei": "servico-militar",
+      "opcao": "seletivo"
+    },
+    {
+      "lei": "gasto-com-defesa",
+      "nivel": 192000
+    },
+    {
+      "lei": "politica-de-natalidade",
+      "opcao": "neutra"
+    },
+    {
+      "lei": "legislacao-trabalhista",
+      "opcao": "clt"
+    },
+    {
+      "lei": "salario-minimo",
+      "opcao": "piso-moderado"
+    },
+    {
+      "lei": "jornada-de-trabalho",
+      "opcao": "padrao-44h"
+    },
+    {
+      "lei": "seguro-desemprego",
+      "opcao": "moderado"
+    },
+    {
+      "lei": "fundo-de-garantia",
+      "opcao": "fundo-com-multa"
+    },
+    {
+      "lei": "negociacao-coletiva-e-sindicatos",
+      "opcao": "setorial"
+    },
+    {
+      "lei": "terceirizacao",
+      "opcao": "ampla-com-garantias"
+    },
+    {
+      "lei": "trabalho-por-aplicativo",
+      "opcao": "sem-regulacao"
+    },
+    {
+      "lei": "licenca-parental",
+      "opcao": "curta-maternidade"
+    },
+    {
+      "lei": "trabalho-infantil-e-aprendizagem",
+      "opcao": "idade-16-com-cota"
+    },
+    {
+      "lei": "reducao-de-jornada-subsidiada",
+      "opcao": "nenhum"
+    },
+    {
+      "lei": "modelo-tributario",
+      "opcao": "consumo"
+    },
+    {
+      "lei": "imposto-renda-pessoas",
+      "nivel": 27.5
+    },
+    {
+      "lei": "imposto-sobre-consumo",
+      "nivel": 26.5
+    },
+    {
+      "lei": "imposto-renda-empresas",
+      "nivel": 34.0
+    },
+    {
+      "lei": "tributacao-dividendos",
+      "nivel": 10.0
+    },
+    {
+      "lei": "imposto-grandes-fortunas",
+      "nivel": 0.0
+    },
+    {
+      "lei": "imposto-heranca",
+      "nivel": 8.0
+    },
+    {
+      "lei": "imposto-propriedade-urbana-rural",
+      "nivel": 0.5
+    },
+    {
+      "lei": "regime-simplificado-pequenas-empresas",
+      "opcao": "amplo"
+    },
+    {
+      "lei": "incentivos-fiscais-regionais",
+      "opcao": "zona-franca-ampla"
+    },
+    {
+      "lei": "imposto-seletivo",
+      "opcao": "vicios-tradicionais"
+    },
+    {
+      "lei": "imposto-transacoes-financeiras",
+      "nivel": 0.38
     }
   ],
   "fiscal": {
@@ -88,17 +506,17 @@
         {
           "id": "maquina-publica",
           "nome": "Máquina pública: pessoal e burocracia",
-          "valorAnual": 400000
+          "valorAnual": 0
         },
         {
           "id": "rede-publica",
           "nome": "Rede pública: custeio de serviços",
-          "valorAnual": 345000
+          "valorAnual": 0
         },
         {
           "id": "programas-nao-modelados",
           "nome": "Programas ainda não modelados como lei",
-          "valorAnual": 549360
+          "valorAnual": 0
         }
       ]
     }
@@ -231,26 +649,6 @@
     ],
     "relacoes": [
       {
-        "id": "aps-trabalhadores",
-        "origem": {
-          "tipo": "politica",
-          "id": "atencao-basica",
-          "referencia": 4000
-        },
-        "grupo": "trabalhadores",
-        "pontosEmReferencia": 2
-      },
-      {
-        "id": "creches-cuidadoras",
-        "origem": {
-          "tipo": "politica",
-          "id": "creches-publicas",
-          "referencia": 500
-        },
-        "grupo": "cuidadoras",
-        "pontosEmReferencia": 3
-      },
-      {
         "id": "frequencia-jovens",
         "origem": {
           "tipo": "indicador",
@@ -269,13 +667,135 @@
     "coalizaoGoverno": ["partido-civico"]
   },
   "valores": {
-    "recursos_atencao_basica": 4000,
-    "recursos_protecao_mulheres": 240,
-    "recursos_prevencao_seguranca": 600,
-    "recursos_alimentacao_escolar": 300,
-    "recursos_creches_publicas": 500,
-    "escolaridade": 45,
+    "nivel_codigo_florestal": 67,
+    "nivel_licenciamento_ambiental": 67,
+    "nivel_precificacao_carbono": 33,
+    "nivel_matriz_energetica": 67,
+    "nivel_energia_nuclear": 67,
+    "nivel_regime_do_petroleo_e_mineracao": 67,
+    "nivel_reforma_agraria": 67,
+    "nivel_agrotoxicos": 25,
+    "recursos_investimento_em_infraestrutura": 120000,
+    "nivel_transporte_publico": 67,
+    "nivel_saneamento_basico": 75,
+    "nivel_terras_indigenas": 67,
+    "nivel_meta_de_inflacao": 100,
+    "nivel_controle_de_capitais": 33,
+    "aliquota_tarifas_de_importacao": 12.0,
+    "nivel_acordos_comerciais": 33,
+    "nivel_empresas_estatais_e_privatizacao": 67,
+    "nivel_defesa_da_concorrencia": 67,
+    "nivel_banco_de_desenvolvimento": 67,
+    "nivel_controle_de_precos": 33,
+    "nivel_regulacao_bancaria": 67,
+    "nivel_investimento_estrangeiro": 50,
+    "nivel_politica_industrial": 100,
+    "recursos_piso_educacao": 660000,
+    "nivel_ensino_obrigatorio": 100,
+    "nivel_acesso_ensino_superior": 50,
+    "nivel_escola_tempo_integral": 50,
+    "nivel_educacao_domiciliar": 0,
+    "recursos_investimento_pesquisa": 138000,
+    "nivel_piso_salarial_professores": 33,
+    "nivel_ensino_tecnico_profissional": 33,
+    "nivel_incentivo_cultura": 25,
+    "nivel_avaliacao_escolas": 67,
+    "nivel_vouchers_escolares": 0,
+    "nivel_regra_fiscal": 100,
+    "nivel_autonomia_banco_central": 100,
+    "nivel_regime_cambial": 100,
+    "nivel_independencia_judiciario": 100,
+    "nivel_liberdade_imprensa": 100,
+    "nivel_transparencia_publica": 67,
+    "nivel_federalismo": 50,
+    "nivel_sistema_de_governo": 0,
+    "nivel_voto_obrigatorio": 100,
+    "nivel_financiamento_de_campanhas": 100,
+    "nivel_reeleicao": 67,
+    "nivel_estabilidade_servidores_publicos": 100,
+    "nivel_foro_privilegiado": 33,
+    "nivel_lei_anticorrupcao": 50,
+    "nivel_sistema_previdenciario": 100,
+    "nivel_idade_minima_aposentadoria": 50,
+    "nivel_previdencia_rural": 100,
+    "nivel_beneficio_idosos_e_deficientes": 33,
+    "recursos_transferencia_de_renda": 168000,
+    "recursos_programa_habitacao_popular": 24000,
+    "nivel_seguranca_alimentar": 33,
+    "nivel_pensao_por_morte": 67,
+    "nivel_cuidados_de_longa_duracao": 33,
+    "nivel_reajuste_de_beneficios": 75,
+    "nivel_sistema_de_saude": 75,
+    "recursos_piso_saude": 516000,
+    "nivel_vacinacao_obrigatoria": 50,
+    "nivel_restricao_tabaco_e_alcool": 50,
+    "nivel_saude_mental": 100,
+    "nivel_regulacao_planos_de_saude": 50,
+    "nivel_genericos_e_patentes_medicamentos": 50,
+    "nivel_programa_medicos_no_interior": 67,
+    "recursos_farmacia_popular": 6000,
+    "recursos_vigilancia_epidemiologica": 6000,
+    "nivel_politica_de_drogas": 40,
+    "nivel_porte_de_armas": 33,
+    "nivel_maioridade_penal": 75,
+    "nivel_penas_maximas": 25,
+    "nivel_politica_de_encarceramento": 33,
+    "nivel_modelo_de_policia": 75,
+    "nivel_cameras_corporais": 33,
+    "nivel_delacao_e_acordos_penais": 67,
+    "nivel_gestao_de_presidios": 25,
+    "nivel_combate_crime_organizado": 0,
+    "nivel_protecao_violencia_domestica": 67,
+    "nivel_aborto": 40,
+    "nivel_casamento_e_uniao_civil": 100,
+    "nivel_eutanasia": 25,
+    "nivel_laicidade_do_estado": 60,
+    "nivel_politica_de_imigracao": 75,
+    "nivel_refugiados_e_asilo": 100,
+    "nivel_regulacao_redes_sociais": 50,
+    "nivel_protecao_de_dados": 67,
+    "nivel_igualdade_salarial_de_genero": 67,
+    "nivel_acoes_afirmativas": 75,
+    "nivel_apostas_e_jogos_de_azar": 50,
+    "nivel_servico_militar": 50,
+    "recursos_gasto_com_defesa": 192000,
+    "nivel_politica_de_natalidade": 40,
+    "nivel_legislacao_trabalhista": 67,
+    "nivel_salario_minimo": 67,
+    "nivel_jornada_de_trabalho": 50,
+    "nivel_seguro_desemprego": 75,
+    "nivel_fundo_de_garantia": 67,
+    "nivel_negociacao_coletiva_e_sindicatos": 67,
+    "nivel_terceirizacao": 33,
+    "nivel_trabalho_por_aplicativo": 0,
+    "nivel_licenca_parental": 33,
+    "nivel_trabalho_infantil_e_aprendizagem": 75,
+    "nivel_reducao_de_jornada_subsidiada": 0,
+    "nivel_modelo_tributario": 25,
+    "aliquota_imposto_renda_pessoas": 27.5,
+    "aliquota_imposto_sobre_consumo": 26.5,
+    "aliquota_imposto_renda_empresas": 34.0,
+    "aliquota_tributacao_dividendos": 10.0,
+    "aliquota_imposto_grandes_fortunas": 0.0,
+    "aliquota_imposto_heranca": 8.0,
+    "aliquota_imposto_propriedade_urbana_rural": 0.5,
+    "nivel_regime_simplificado_pequenas_empresas": 100,
+    "nivel_incentivos_fiscais_regionais": 100,
+    "nivel_imposto_seletivo": 33,
+    "aliquota_imposto_transacoes_financeiras": 0.38,
+    "armas_em_circulacao": 50,
+    "capacidade_defesa": 50,
+    "concentracao_fundiaria": 50,
     "desenvolvimento": 50,
-    "infraestrutura": 45
+    "divida_publica": 77,
+    "envelhecimento": 40,
+    "escolaridade": 45,
+    "infraestrutura": 45,
+    "infraestrutura_energia": 50,
+    "infraestrutura_saneamento": 50,
+    "infraestrutura_transportes": 50,
+    "poupanca_domestica": 50,
+    "reservas_internacionais": 16,
+    "transparencia_fiscal_internacional": 50
   }
 }

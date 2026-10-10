@@ -26,7 +26,9 @@ it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional"
 
 it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
   const brasil = load("testes/legado/brasil/pais.json");
-  expect(brasil.definition.manifest.mundo).toBe("testes/legado/mundo/mundo.json");
+  expect(brasil.definition.manifest.mundo).toBe(
+    "testes/legado/mundo/mundo.json",
+  );
   expect(brasil.definition.policies).toHaveLength(5);
   const game = createGame("brasil", brasil.definition, brasil.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);

@@ -1,0 +1,65 @@
+{
+  "id": "politica-de-natalidade",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de natalidade",
+  "descricao": "Define se o Estado tenta reduzir, deixar em paz ou aumentar o número de filhos que as famílias têm, e com que instrumentos.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério do Desenvolvimento Social e Família",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_politica_de_natalidade",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "antinatalista-coercitiva",
+        "rotulo": "Controle de natalidade coercitivo",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "antinatalista-incentivo",
+        "rotulo": "Planejamento familiar ativo",
+        "valor": 20,
+        "custoAnualPercentualPib": 0.04
+      },
+      {
+        "id": "neutra",
+        "rotulo": "Sem política",
+        "valor": 40,
+        "custoAnualPercentualPib": 0.08
+      },
+      {
+        "id": "incentivos-moderados",
+        "rotulo": "Incentivos moderados",
+        "valor": 60,
+        "custoAnualPercentualPib": 0.12
+      },
+      {
+        "id": "pronatalismo-intenso",
+        "rotulo": "Pronatalismo intenso",
+        "valor": 80,
+        "custoAnualPercentualPib": 0.16
+      },
+      {
+        "id": "pronatalismo-coercitivo",
+        "rotulo": "Pronatalismo coercitivo",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-natalidade--natalidade",
+    "politica-de-natalidade--gasto-publico",
+    "politica-de-natalidade--envelhecimento",
+    "politica-de-natalidade--liberdade-civil",
+    "politica-de-natalidade--saude-populacao",
+    "politica-de-natalidade--pobreza"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

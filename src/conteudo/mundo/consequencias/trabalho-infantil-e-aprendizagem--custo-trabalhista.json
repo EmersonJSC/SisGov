@@ -1,0 +1,18 @@
+{
+  "id": "trabalho-infantil-e-aprendizagem--custo-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_infantil_e_aprendizagem",
+  "alvo": "custo_trabalhista",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.12,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "corrupcao--eficacia-energia-nuclear",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "corrupcao",
+  "alvo": "eficacia:energia-nuclear",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

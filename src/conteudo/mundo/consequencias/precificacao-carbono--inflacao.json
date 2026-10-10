@@ -1,0 +1,17 @@
+{
+  "id": "precificacao-carbono--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_precificacao_carbono",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

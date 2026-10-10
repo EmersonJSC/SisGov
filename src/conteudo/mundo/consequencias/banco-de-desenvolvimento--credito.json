@@ -1,0 +1,17 @@
+{
+  "id": "banco-de-desenvolvimento--credito",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_banco_de_desenvolvimento",
+  "alvo": "credito",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

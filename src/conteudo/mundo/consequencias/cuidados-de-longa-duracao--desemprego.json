@@ -1,0 +1,17 @@
+{
+  "id": "cuidados-de-longa-duracao--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cuidados_de_longa_duracao",
+  "alvo": "desemprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

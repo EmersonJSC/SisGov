@@ -1,0 +1,61 @@
+{
+  "id": "sistema-de-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Sistema de saúde",
+  "descricao": "Define quem paga e quem presta o atendimento de saúde: cada um por si, um sistema misto, seguro obrigatório, saúde pública universal ou monopólio estatal.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_sistema_de_saude",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "mercado-privado",
+        "rotulo": "Cada um paga o seu",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "misto-focalizado",
+        "rotulo": "Público só para alguns",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "seguro-obrigatorio",
+        "rotulo": "Seguro obrigatório",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.3
+      },
+      {
+        "id": "universal-publico",
+        "rotulo": "Saúde pública universal",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.45
+      },
+      {
+        "id": "estatal-unico",
+        "rotulo": "Monopólio estatal",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "sistema-de-saude--gasto-publico",
+    "sistema-de-saude--gasto-bolso-saude",
+    "sistema-de-saude--cobertura-aps",
+    "sistema-de-saude--desigualdade",
+    "sistema-de-saude--saude-populacao",
+    "sistema-de-saude--pressao-hospitalar",
+    "sistema-de-saude--custo-trabalhista",
+    "sistema-de-saude--fuga-de-cerebros"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

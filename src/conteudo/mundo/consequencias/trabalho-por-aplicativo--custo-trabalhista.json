@@ -1,0 +1,17 @@
+{
+  "id": "trabalho-por-aplicativo--custo-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "custo_trabalhista",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

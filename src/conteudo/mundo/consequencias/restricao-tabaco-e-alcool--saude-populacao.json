@@ -1,0 +1,17 @@
+{
+  "id": "restricao-tabaco-e-alcool--saude-populacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_restricao_tabaco_e_alcool",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

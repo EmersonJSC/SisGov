@@ -1,0 +1,60 @@
+{
+  "id": "refugiados-e-asilo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Refugiados e asilo",
+  "descricao": "Define como o país trata quem chega fugindo de guerra ou perseguição: se analisa o pedido, onde e com que generosidade.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_refugiados_e_asilo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-asilo",
+        "rotulo": "Sem sistema de asilo",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "dissuasao-externa",
+        "rotulo": "Asilo terceirizado",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.05
+      },
+      {
+        "id": "restritiva",
+        "rotulo": "Restritiva",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.1
+      },
+      {
+        "id": "convencao",
+        "rotulo": "Padrão da Convenção",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "acolhida-ampla",
+        "rotulo": "Acolhida ampla",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "refugiados-e-asilo--imigracao",
+    "refugiados-e-asilo--gasto-publico",
+    "refugiados-e-asilo--gasto-publico-2",
+    "refugiados-e-asilo--reputacao-internacional",
+    "refugiados-e-asilo--polarizacao",
+    "refugiados-e-asilo--crise-migratoria",
+    "refugiados-e-asilo--liberdade-civil"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "agrotoxicos--preco-alimentos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_agrotoxicos",
+  "alvo": "preco_alimentos",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.28,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "complexidade-tributaria--eficacia-regime-simplificado-pequenas-empresas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "complexidade_tributaria",
+  "alvo": "eficacia:regime-simplificado-pequenas-empresas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

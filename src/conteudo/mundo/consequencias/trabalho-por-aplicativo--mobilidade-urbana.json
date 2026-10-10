@@ -1,0 +1,18 @@
+{
+  "id": "trabalho-por-aplicativo--mobilidade-urbana",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "mobilidade_urbana",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

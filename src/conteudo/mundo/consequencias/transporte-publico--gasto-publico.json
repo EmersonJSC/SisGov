@@ -1,0 +1,18 @@
+{
+  "id": "transporte-publico--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transporte_publico",
+  "alvo": "gasto_publico",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 12.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "matriz-energetica--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_matriz_energetica",
+  "alvo": "gasto_publico",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.12,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

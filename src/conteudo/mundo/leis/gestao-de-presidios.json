@@ -1,0 +1,60 @@
+{
+  "id": "gestao-de-presidios",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Gestão de presídios",
+  "descricao": "Define quem manda dentro da cadeia: as facções, o Estado, entidades comunitárias, uma parceria com empresas ou empresas privadas.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_gestao_de_presidios",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "faccoes-mandam",
+        "rotulo": "Facções mandam",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "estatal",
+        "rotulo": "Gestão estatal",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.05
+      },
+      {
+        "id": "comunitaria",
+        "rotulo": "Gestão comunitária",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.1
+      },
+      {
+        "id": "cogestao",
+        "rotulo": "Cogestão",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "privada",
+        "rotulo": "Presídio privado",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "gestao-de-presidios--crime-organizado",
+    "gestao-de-presidios--rebeliao-presidios",
+    "gestao-de-presidios--rebeliao-presidios-2",
+    "gestao-de-presidios--gasto-publico",
+    "gestao-de-presidios--reincidencia",
+    "gestao-de-presidios--lotacao-prisional",
+    "gestao-de-presidios--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

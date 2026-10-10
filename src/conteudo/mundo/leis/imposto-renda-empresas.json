@@ -1,0 +1,34 @@
+{
+  "id": "imposto-renda-empresas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto de renda das empresas",
+  "descricao": "Define a alíquota nominal cobrada sobre o lucro das empresas.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_renda_empresas",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 40
+    }
+  },
+  "consequencias": [
+    "imposto-renda-empresas--arrecadacao",
+    "imposto-renda-empresas--investimento",
+    "imposto-renda-empresas--confianca-empresarial",
+    "imposto-renda-empresas--fuga-capitais",
+    "imposto-renda-empresas--desigualdade",
+    "imposto-renda-empresas--produtividade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

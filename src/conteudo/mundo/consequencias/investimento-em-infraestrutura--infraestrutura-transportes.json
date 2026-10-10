@@ -1,0 +1,17 @@
+{
+  "id": "investimento-em-infraestrutura--infraestrutura-transportes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_investimento_em_infraestrutura",
+  "alvo": "infraestrutura_transportes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.604e-7,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

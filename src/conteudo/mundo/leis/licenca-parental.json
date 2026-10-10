@@ -1,0 +1,54 @@
+{
+  "id": "licenca-parental",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Licença parental",
+  "descricao": "Define quanto tempo de licença paga mães e pais têm com a chegada de um filho, e se o pai tem parte reservada.",
+  "area": "Trabalho e emprego",
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_licenca_parental",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem licença paga",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "curta-maternidade",
+        "rotulo": "Licença curta para a mãe",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "longa-materna",
+        "rotulo": "Licença longa para a mãe",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "compartilhada-com-cota-pai",
+        "rotulo": "Compartilhada com cota do pai",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "licenca-parental--natalidade",
+    "licenca-parental--participacao-trabalho-cuidadoras",
+    "licenca-parental--participacao-trabalho-cuidadoras-2",
+    "licenca-parental--gasto-publico",
+    "licenca-parental--custo-trabalhista",
+    "licenca-parental--saude-populacao",
+    "licenca-parental--desigualdade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

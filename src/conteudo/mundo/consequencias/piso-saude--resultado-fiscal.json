@@ -1,0 +1,17 @@
+{
+  "id": "piso-saude--resultado-fiscal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_piso_saude",
+  "alvo": "resultado_fiscal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.9167e-6,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

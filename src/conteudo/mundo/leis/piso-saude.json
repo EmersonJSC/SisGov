@@ -1,0 +1,35 @@
+{
+  "id": "piso-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Piso de gasto em saúde",
+  "descricao": "Fixa quanto do PIB o Estado gasta, no mínimo, com saúde pública (hospitais, postos, remédios e vigilância saem daqui).",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_piso_saude",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 12
+    }
+  },
+  "consequencias": [
+    "piso-saude--gasto-publico",
+    "piso-saude--resultado-fiscal",
+    "piso-saude--pressao-hospitalar",
+    "piso-saude--crise-atendimento",
+    "piso-saude--gasto-bolso-saude",
+    "piso-saude--saude-populacao",
+    "piso-saude--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

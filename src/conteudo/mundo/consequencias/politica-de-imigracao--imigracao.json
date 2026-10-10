@@ -1,0 +1,17 @@
+{
+  "id": "politica-de-imigracao--imigracao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_imigracao",
+  "alvo": "imigracao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.12,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

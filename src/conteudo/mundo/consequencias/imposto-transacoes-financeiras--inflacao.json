@@ -1,0 +1,17 @@
+{
+  "id": "imposto-transacoes-financeiras--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_transacoes_financeiras",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.5,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "foro-privilegiado--popularidade-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_foro_privilegiado",
+  "alvo": "popularidade_governo",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

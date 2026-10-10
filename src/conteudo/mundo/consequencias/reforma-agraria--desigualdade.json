@@ -1,0 +1,17 @@
+{
+  "id": "reforma-agraria--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_reforma_agraria",
+  "alvo": "desigualdade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

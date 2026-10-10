@@ -1,0 +1,55 @@
+{
+  "id": "codigo-florestal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Código florestal",
+  "descricao": "Define quanto de vegetação nativa cada propriedade rural é obrigada a manter de pé.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério do Meio Ambiente",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_codigo_florestal",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-protecao",
+        "rotulo": "Desmate livre",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "so-areas-sensiveis",
+        "rotulo": "Só margens e encostas",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "reserva-legal",
+        "rotulo": "Reserva legal obrigatória",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "desmatamento-zero",
+        "rotulo": "Desmatamento zero",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "codigo-florestal--desmatamento",
+    "codigo-florestal--emissoes",
+    "codigo-florestal--qualidade-ambiental",
+    "codigo-florestal--producao-agropecuaria",
+    "codigo-florestal--preco-alimentos",
+    "codigo-florestal--reputacao-internacional",
+    "codigo-florestal--exportacoes",
+    "codigo-florestal--conflitos-fundiarios"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

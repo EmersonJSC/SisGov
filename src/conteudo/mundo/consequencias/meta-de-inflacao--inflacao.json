@@ -1,0 +1,17 @@
+{
+  "id": "meta-de-inflacao--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_meta_de_inflacao",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

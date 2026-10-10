@@ -1,0 +1,53 @@
+{
+  "id": "transparencia-publica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Transparência pública",
+  "descricao": "Define se o cidadão tem direito de ver contratos, gastos, salários e documentos do governo.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Controladoria-Geral da União",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_transparencia_publica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sigilo-amplo",
+        "rotulo": "Sigilo amplo",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "acesso-limitado",
+        "rotulo": "Acesso limitado",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "acesso-informacao",
+        "rotulo": "Acesso à informação",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "dados-abertos",
+        "rotulo": "Dados abertos",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "transparencia-publica--corrupcao",
+    "transparencia-publica--captura-politica",
+    "transparencia-publica--confianca-instituicoes",
+    "transparencia-publica--popularidade-governo",
+    "transparencia-publica--margem-manobra-governo",
+    "transparencia-publica--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

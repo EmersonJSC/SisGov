@@ -1,0 +1,18 @@
+{
+  "id": "meta-de-inflacao--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_meta_de_inflacao",
+  "alvo": "desemprego",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "liberdade-imprensa",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Liberdade de imprensa",
+  "descricao": "Define o quanto jornais, TVs e rádios podem publicar sem censura, licença política ou punição.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Ministério das Comunicações",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_liberdade_imprensa",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "censura",
+        "rotulo": "Censura",
+        "valor": 0
+      },
+      {
+        "id": "restrita",
+        "rotulo": "Restrita",
+        "valor": 33
+      },
+      {
+        "id": "regulada",
+        "rotulo": "Regulada",
+        "valor": 67
+      },
+      {
+        "id": "plena",
+        "rotulo": "Plena",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "liberdade-imprensa--corrupcao",
+    "liberdade-imprensa--liberdade-civil",
+    "liberdade-imprensa--popularidade-governo",
+    "liberdade-imprensa--margem-manobra-governo",
+    "liberdade-imprensa--reputacao-internacional",
+    "liberdade-imprensa--desinformacao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

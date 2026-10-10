@@ -1,0 +1,17 @@
+{
+  "id": "regulacao-planos-de-saude--gasto-bolso-saude",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regulacao_planos_de_saude",
+  "alvo": "gasto_bolso_saude",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

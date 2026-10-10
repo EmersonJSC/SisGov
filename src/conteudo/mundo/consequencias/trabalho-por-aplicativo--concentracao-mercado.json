@@ -1,0 +1,18 @@
+{
+  "id": "trabalho-por-aplicativo--concentracao-mercado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "concentracao_mercado",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

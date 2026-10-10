@@ -1,0 +1,17 @@
+{
+  "id": "reajuste-de-beneficios--renda-familias",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_reajuste_de_beneficios",
+  "alvo": "renda_familias",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

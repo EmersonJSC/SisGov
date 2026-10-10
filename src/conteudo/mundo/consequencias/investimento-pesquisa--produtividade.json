@@ -1,0 +1,17 @@
+{
+  "id": "investimento-pesquisa--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_investimento_pesquisa",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 9.7222e-6,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

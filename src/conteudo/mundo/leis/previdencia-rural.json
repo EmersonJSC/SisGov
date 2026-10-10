@@ -1,0 +1,53 @@
+{
+  "id": "previdencia-rural",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Previdência rural",
+  "descricao": "Define como o pequeno agricultor, que quase nunca tem salário fixo nem carteira, entra na previdência: fora dela, por adesão voluntária, por regime agrícola contributivo ou só comprovando que trabalhou na roça.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério da Previdência Social",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_previdencia_rural",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem regime rural",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "voluntaria-subsidiada",
+        "rotulo": "Adesão voluntária subsidiada",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "contributiva-agricola",
+        "rotulo": "Regime agrícola contributivo",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "comprovacao-atividade",
+        "rotulo": "Basta comprovar atividade rural",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "previdencia-rural--cobertura-previdenciaria",
+    "previdencia-rural--pobreza",
+    "previdencia-rural--desigualdade",
+    "previdencia-rural--consumo",
+    "previdencia-rural--deficit-previdenciario",
+    "previdencia-rural--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

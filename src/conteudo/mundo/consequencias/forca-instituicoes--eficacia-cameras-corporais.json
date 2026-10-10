@@ -1,0 +1,17 @@
+{
+  "id": "forca-instituicoes--eficacia-cameras-corporais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "forca_instituicoes",
+  "alvo": "eficacia:cameras-corporais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

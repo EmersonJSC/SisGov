@@ -1,0 +1,53 @@
+{
+  "id": "protecao-violencia-domestica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Lei contra a violência doméstica",
+  "descricao": "Define como a lei trata a agressão dentro de casa: assunto de família, crime comum, lei especial com medidas protetivas ou sistema integral.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_protecao_violencia_domestica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "assunto-privado",
+        "rotulo": "Assunto de família",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "crime-comum",
+        "rotulo": "Crime comum",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "medidas-protetivas",
+        "rotulo": "Lei especial com medidas protetivas",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "protecao-integral",
+        "rotulo": "Proteção integral",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "protecao-violencia-domestica--protecao-efetiva-mulheres",
+    "protecao-violencia-domestica--violencia-letal",
+    "protecao-violencia-domestica--impunidade",
+    "protecao-violencia-domestica--lotacao-prisional",
+    "protecao-violencia-domestica--gasto-publico",
+    "protecao-violencia-domestica--liberdade-civil"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

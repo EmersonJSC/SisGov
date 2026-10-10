@@ -1,0 +1,61 @@
+{
+  "id": "penas-maximas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Penas máximas",
+  "descricao": "Define a pena mais dura que o Estado pode aplicar: um teto curto de prisão, um teto longo, prisão perpétua ou pena de morte.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_penas_maximas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "teto-curto",
+        "rotulo": "Teto curto (até 25 anos)",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "teto-longo",
+        "rotulo": "Teto longo (40 a 60 anos)",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.05
+      },
+      {
+        "id": "perpetua-revisavel",
+        "rotulo": "Perpétua com revisão",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.1
+      },
+      {
+        "id": "perpetua-sem-revisao",
+        "rotulo": "Perpétua sem saída",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "pena-de-morte",
+        "rotulo": "Pena de morte",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "penas-maximas--lotacao-prisional",
+    "penas-maximas--gasto-publico",
+    "penas-maximas--violencia-letal",
+    "penas-maximas--sensacao-seguranca",
+    "penas-maximas--popularidade-governo",
+    "penas-maximas--rebeliao-presidios",
+    "penas-maximas--reputacao-internacional",
+    "penas-maximas--liberdade-civil"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

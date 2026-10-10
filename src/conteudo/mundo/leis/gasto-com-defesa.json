@@ -1,0 +1,34 @@
+{
+  "id": "gasto-com-defesa",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Gasto com defesa",
+  "descricao": "Define quanto do PIB vai para Forças Armadas, equipamentos e indústria de defesa.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério da Defesa",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_gasto_com_defesa",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 10
+    }
+  },
+  "consequencias": [
+    "gasto-com-defesa--capacidade-defesa",
+    "gasto-com-defesa--gasto-publico",
+    "gasto-com-defesa--resultado-fiscal",
+    "gasto-com-defesa--desenvolvimento",
+    "gasto-com-defesa--reputacao-internacional",
+    "gasto-com-defesa--golpe-risco"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

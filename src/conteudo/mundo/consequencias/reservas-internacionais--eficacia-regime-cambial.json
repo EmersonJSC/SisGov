@@ -1,0 +1,17 @@
+{
+  "id": "reservas-internacionais--eficacia-regime-cambial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "reservas_internacionais",
+  "alvo": "eficacia:regime-cambial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "regulacao-bancaria--juros-da-divida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regulacao_bancaria",
+  "alvo": "juros_da_divida",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -2.1,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "servico-militar--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_servico_militar",
+  "alvo": "gasto_publico",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.28,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

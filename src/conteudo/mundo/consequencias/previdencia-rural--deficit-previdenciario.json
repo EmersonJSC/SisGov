@@ -1,0 +1,17 @@
+{
+  "id": "previdencia-rural--deficit-previdenciario",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_previdencia_rural",
+  "alvo": "deficit_previdenciario",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

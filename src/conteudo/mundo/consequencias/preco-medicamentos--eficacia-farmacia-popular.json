@@ -1,0 +1,17 @@
+{
+  "id": "preco-medicamentos--eficacia-farmacia-popular",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "preco_medicamentos",
+  "alvo": "eficacia:farmacia-popular",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

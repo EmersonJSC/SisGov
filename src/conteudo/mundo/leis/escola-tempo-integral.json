@@ -1,0 +1,47 @@
+{
+  "id": "escola-tempo-integral",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Escola em tempo integral",
+  "descricao": "Define quantas horas por dia o aluno da rede pública passa na escola: meio turno, integral em parte das escolas ou integral para todos.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_escola_tempo_integral",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "meio-turno",
+        "rotulo": "Meio turno",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "integral-parcial",
+        "rotulo": "Integral em parte das escolas",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.3
+      },
+      {
+        "id": "integral-universal",
+        "rotulo": "Integral para todos",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "escola-tempo-integral--gasto-publico",
+    "escola-tempo-integral--participacao-trabalho-cuidadoras",
+    "escola-tempo-integral--violencia-letal",
+    "escola-tempo-integral--natalidade",
+    "escola-tempo-integral--aprendizagem",
+    "escola-tempo-integral--evasao-escolar"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

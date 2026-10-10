@@ -1,0 +1,18 @@
+{
+  "id": "combate-crime-organizado--violencia-letal-1",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_combate_crime_organizado",
+  "alvo": "violencia_letal",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.168,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

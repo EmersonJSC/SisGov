@@ -1,0 +1,51 @@
+{
+  "id": "salario-minimo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Salário mínimo",
+  "descricao": "Define o piso que qualquer empregador deve pagar, medido em relação ao salário típico do país.",
+  "area": "Trabalho e emprego",
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_salario_minimo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-piso",
+        "rotulo": "Sem salário mínimo",
+        "valor": 0
+      },
+      {
+        "id": "piso-baixo",
+        "rotulo": "Piso baixo",
+        "valor": 33
+      },
+      {
+        "id": "piso-moderado",
+        "rotulo": "Piso moderado",
+        "valor": 67
+      },
+      {
+        "id": "piso-alto",
+        "rotulo": "Piso alto",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "salario-minimo--renda-familias",
+    "salario-minimo--pobreza",
+    "salario-minimo--desigualdade",
+    "salario-minimo--custo-trabalhista",
+    "salario-minimo--inflacao",
+    "salario-minimo--informalidade",
+    "salario-minimo--desemprego",
+    "salario-minimo--gasto-publico"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

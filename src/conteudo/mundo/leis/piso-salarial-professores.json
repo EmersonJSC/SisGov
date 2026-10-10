@@ -1,0 +1,53 @@
+{
+  "id": "piso-salarial-professores",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso salarial dos professores",
+  "descricao": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é em relação a outras profissões de nível superior.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_piso_salarial_professores",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-piso-nacional",
+        "rotulo": "Cada rede decide",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "piso-nacional-minimo",
+        "rotulo": "Piso nacional",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.198
+      },
+      {
+        "id": "carreira-nacional",
+        "rotulo": "Carreira nacional",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.402
+      },
+      {
+        "id": "salario-de-elite",
+        "rotulo": "Salário de elite",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "piso-salarial-professores--gasto-publico",
+    "piso-salarial-professores--resultado-fiscal",
+    "piso-salarial-professores--aprendizagem",
+    "piso-salarial-professores--greve-de-professores",
+    "piso-salarial-professores--desigualdade",
+    "piso-salarial-professores--custo-trabalhista"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

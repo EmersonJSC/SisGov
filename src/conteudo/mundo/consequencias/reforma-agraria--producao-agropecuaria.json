@@ -1,0 +1,17 @@
+{
+  "id": "reforma-agraria--producao-agropecuaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_reforma_agraria",
+  "alvo": "producao_agropecuaria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

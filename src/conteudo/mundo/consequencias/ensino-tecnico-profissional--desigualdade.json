@@ -1,0 +1,18 @@
+{
+  "id": "ensino-tecnico-profissional--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_tecnico_profissional",
+  "alvo": "desigualdade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

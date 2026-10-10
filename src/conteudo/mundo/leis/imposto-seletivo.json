@@ -1,0 +1,50 @@
+{
+  "id": "imposto-seletivo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Imposto seletivo (tabaco, álcool, açúcar e poluentes)",
+  "descricao": "Define quais produtos nocivos pagam um imposto extra para desestimular o consumo: nenhum, só os vícios tradicionais, também o açúcar, ou também poluentes e veículos.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_imposto_seletivo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Sem imposto seletivo",
+        "valor": 0
+      },
+      {
+        "id": "vicios-tradicionais",
+        "rotulo": "Tabaco e álcool",
+        "valor": 33
+      },
+      {
+        "id": "saude-ampla",
+        "rotulo": "Também açúcar",
+        "valor": 67
+      },
+      {
+        "id": "saude-e-ambiente",
+        "rotulo": "Saúde e ambiente",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "imposto-seletivo--saude-populacao",
+    "imposto-seletivo--pressao-hospitalar",
+    "imposto-seletivo--arrecadacao",
+    "imposto-seletivo--inflacao",
+    "imposto-seletivo--crime-organizado",
+    "imposto-seletivo--emissoes",
+    "imposto-seletivo--desigualdade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "reforma-agraria",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Reforma agrária",
+  "descricao": "Define se e como o Estado redistribui terra rural concentrada para quem trabalha nela.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério do Desenvolvimento Agrário",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_reforma_agraria",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem reforma agrária",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "titulacao-e-mercado",
+        "rotulo": "Título e crédito fundiário",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "desapropriacao-improdutiva",
+        "rotulo": "Desapropriação de terra improdutiva",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "redistribuicao-ampla",
+        "rotulo": "Redistribuição ampla",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "reforma-agraria--concentracao-fundiaria",
+    "reforma-agraria--desigualdade",
+    "reforma-agraria--pobreza",
+    "reforma-agraria--producao-agropecuaria",
+    "reforma-agraria--producao-agropecuaria-4",
+    "reforma-agraria--conflitos-fundiarios",
+    "reforma-agraria--confianca-empresarial",
+    "reforma-agraria--gasto-publico"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

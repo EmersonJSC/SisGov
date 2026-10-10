@@ -1,0 +1,58 @@
+{
+  "id": "eutanasia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Eutanásia e morte assistida",
+  "descricao": "Define se, e em que condições, alguém pode pedir ajuda médica para morrer.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_eutanasia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Proibida",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "passiva",
+        "rotulo": "Só suspender tratamento",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.0125
+      },
+      {
+        "id": "suicidio-assistido",
+        "rotulo": "Suicídio assistido",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "eutanasia-terminal",
+        "rotulo": "Eutanásia para doentes terminais",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.0375
+      },
+      {
+        "id": "eutanasia-ampla",
+        "rotulo": "Eutanásia ampla",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "eutanasia--liberdade-civil",
+    "eutanasia--polarizacao",
+    "eutanasia--confianca-instituicoes",
+    "eutanasia--turismo",
+    "eutanasia--popularidade-governo"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

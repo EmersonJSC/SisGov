@@ -1,0 +1,18 @@
+{
+  "id": "acoes-afirmativas--oportunidades-juvenis-5",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_acoes_afirmativas",
+  "alvo": "oportunidades_juvenis",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.07,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

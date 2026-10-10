@@ -1,0 +1,36 @@
+{
+  "id": "transferencia-de-renda",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Transferência de renda às famílias pobres",
+  "descricao": "Define quanto do PIB vai para pagamentos mensais em dinheiro às famílias pobres, com ou sem exigências como frequência escolar e vacinação.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério do Desenvolvimento e Assistência Social",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_transferencia_de_renda",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 3
+    }
+  },
+  "consequencias": [
+    "transferencia-de-renda--pobreza",
+    "transferencia-de-renda--desigualdade",
+    "transferencia-de-renda--inseguranca-alimentar",
+    "transferencia-de-renda--gasto-publico",
+    "transferencia-de-renda--escolaridade",
+    "transferencia-de-renda--informalidade",
+    "transferencia-de-renda--consumo",
+    "transferencia-de-renda--participacao-trabalho-cuidadoras"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

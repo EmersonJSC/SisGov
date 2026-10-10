@@ -1,0 +1,18 @@
+{
+  "id": "porte-de-armas--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_porte_de_armas",
+  "alvo": "crime_organizado",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

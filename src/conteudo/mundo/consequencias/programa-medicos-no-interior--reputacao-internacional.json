@@ -1,0 +1,18 @@
+{
+  "id": "programa-medicos-no-interior--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_medicos_no_interior",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

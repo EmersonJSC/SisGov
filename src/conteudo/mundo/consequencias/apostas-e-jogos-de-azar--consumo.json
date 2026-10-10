@@ -1,0 +1,17 @@
+{
+  "id": "apostas-e-jogos-de-azar--consumo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_apostas_e_jogos_de_azar",
+  "alvo": "consumo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

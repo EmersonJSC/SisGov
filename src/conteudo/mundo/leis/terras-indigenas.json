@@ -1,0 +1,54 @@
+{
+  "id": "terras-indigenas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Terras indígenas",
+  "descricao": "Define se o Estado reconhece os territórios dos povos originários e quanto poder eles têm sobre o que acontece neles.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério dos Povos Indígenas",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_terras_indigenas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reconhecimento",
+        "rotulo": "Sem reconhecimento",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "reconhecimento-limitado",
+        "rotulo": "Reconhecimento limitado",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "demarcacao",
+        "rotulo": "Demarcação com usufruto exclusivo",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "autonomia",
+        "rotulo": "Autonomia territorial",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "terras-indigenas--desmatamento",
+    "terras-indigenas--emissoes",
+    "terras-indigenas--qualidade-ambiental",
+    "terras-indigenas--conflitos-fundiarios",
+    "terras-indigenas--producao-mineral",
+    "terras-indigenas--producao-agropecuaria",
+    "terras-indigenas--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

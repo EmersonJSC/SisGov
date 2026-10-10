@@ -1,0 +1,35 @@
+{
+  "id": "imposto-sobre-consumo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto sobre consumo (IVA)",
+  "descricao": "Define a alíquota padrão do imposto cobrado sobre bens e serviços em cada etapa da venda, com crédito do que foi pago antes.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_sobre_consumo",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "consumo",
+    "limites": {
+      "minimo": 0,
+      "maximo": 30
+    }
+  },
+  "consequencias": [
+    "imposto-sobre-consumo--arrecadacao",
+    "imposto-sobre-consumo--inflacao",
+    "imposto-sobre-consumo--consumo",
+    "imposto-sobre-consumo--desigualdade",
+    "imposto-sobre-consumo--pobreza",
+    "imposto-sobre-consumo--sonegacao",
+    "imposto-sobre-consumo--informalidade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

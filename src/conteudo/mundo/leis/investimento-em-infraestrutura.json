@@ -1,0 +1,36 @@
+{
+  "id": "investimento-em-infraestrutura",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Investimento em infraestrutura",
+  "descricao": "Define quanto do PIB o Estado investe por ano em estradas, ferrovias, portos, energia e redes.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério da Infraestrutura e Transportes",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_investimento_em_infraestrutura",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 8
+    }
+  },
+  "consequencias": [
+    "investimento-em-infraestrutura--infraestrutura-transportes",
+    "investimento-em-infraestrutura--infraestrutura-energia",
+    "investimento-em-infraestrutura--pib",
+    "investimento-em-infraestrutura--produtividade",
+    "investimento-em-infraestrutura--gasto-publico",
+    "investimento-em-infraestrutura--divida-publica",
+    "investimento-em-infraestrutura--corrupcao",
+    "investimento-em-infraestrutura--desmatamento"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

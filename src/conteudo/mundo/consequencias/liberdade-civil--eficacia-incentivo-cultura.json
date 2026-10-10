@@ -1,0 +1,17 @@
+{
+  "id": "liberdade-civil--eficacia-incentivo-cultura",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "liberdade_civil",
+  "alvo": "eficacia:incentivo-cultura",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

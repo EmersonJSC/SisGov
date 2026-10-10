@@ -1,0 +1,17 @@
+{
+  "id": "ensino-obrigatorio--qualificacao-trabalho",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_obrigatorio",
+  "alvo": "qualificacao_trabalho",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

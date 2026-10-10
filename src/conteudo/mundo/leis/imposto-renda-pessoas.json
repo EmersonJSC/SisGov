@@ -1,0 +1,35 @@
+{
+  "id": "imposto-renda-pessoas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto de renda da pessoa física",
+  "descricao": "Define a alíquota máxima cobrada sobre a renda das pessoas (salários, aluguéis, ganhos), com faixas progressivas abaixo dela.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_renda_pessoas",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "renda_familias",
+    "limites": {
+      "minimo": 0,
+      "maximo": 60
+    }
+  },
+  "consequencias": [
+    "imposto-renda-pessoas--arrecadacao",
+    "imposto-renda-pessoas--desigualdade",
+    "imposto-renda-pessoas--renda-familias",
+    "imposto-renda-pessoas--consumo",
+    "imposto-renda-pessoas--sonegacao",
+    "imposto-renda-pessoas--fuga-capitais",
+    "imposto-renda-pessoas--inovacao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

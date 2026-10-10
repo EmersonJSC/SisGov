@@ -1,0 +1,17 @@
+{
+  "id": "apostas-e-jogos-de-azar--endividamento-familias",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_apostas_e_jogos_de_azar",
+  "alvo": "endividamento_familias",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

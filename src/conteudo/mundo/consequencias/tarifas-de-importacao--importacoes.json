@@ -1,0 +1,17 @@
+{
+  "id": "tarifas-de-importacao--importacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_tarifas_de_importacao",
+  "alvo": "importacoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

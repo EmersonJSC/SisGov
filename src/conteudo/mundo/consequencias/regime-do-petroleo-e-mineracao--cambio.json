@@ -1,0 +1,17 @@
+{
+  "id": "regime-do-petroleo-e-mineracao--cambio",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_do_petroleo_e_mineracao",
+  "alvo": "cambio",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

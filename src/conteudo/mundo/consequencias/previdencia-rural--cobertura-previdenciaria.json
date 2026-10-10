@@ -1,0 +1,17 @@
+{
+  "id": "previdencia-rural--cobertura-previdenciaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_previdencia_rural",
+  "alvo": "cobertura_previdenciaria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.12,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

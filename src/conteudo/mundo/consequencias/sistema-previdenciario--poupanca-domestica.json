@@ -1,0 +1,17 @@
+{
+  "id": "sistema-previdenciario--poupanca-domestica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_sistema_previdenciario",
+  "alvo": "poupanca_domestica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0012,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

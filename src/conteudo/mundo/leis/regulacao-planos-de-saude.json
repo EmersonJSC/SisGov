@@ -1,0 +1,56 @@
+{
+  "id": "regulacao-planos-de-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regulação dos planos de saúde",
+  "descricao": "Define o que as seguradoras de saúde podem fazer: escolher clientes e preços livremente, cumprir um rol mínimo, competir sob preço único com compensação de risco, ou só cobrir o que o público não cobre.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_regulacao_planos_de_saude",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre",
+        "rotulo": "Mercado livre",
+        "valor": 0
+      },
+      {
+        "id": "solvencia",
+        "rotulo": "Só solvência e contrato",
+        "valor": 25
+      },
+      {
+        "id": "rol-minimo",
+        "rotulo": "Rol mínimo e reajuste controlado",
+        "valor": 50
+      },
+      {
+        "id": "competicao-regulada",
+        "rotulo": "Competição regulada",
+        "valor": 75
+      },
+      {
+        "id": "so-complementar",
+        "rotulo": "Só complementar",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "regulacao-planos-de-saude--gasto-bolso-saude",
+    "regulacao-planos-de-saude--desigualdade",
+    "regulacao-planos-de-saude--cobertura-planos-saude",
+    "regulacao-planos-de-saude--pressao-hospitalar",
+    "regulacao-planos-de-saude--cobertura-planos-saude-4",
+    "regulacao-planos-de-saude--custo-trabalhista",
+    "regulacao-planos-de-saude--confianca-empresarial",
+    "regulacao-planos-de-saude--pressao-hospitalar-7"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "saude-mental--populacao-de-rua",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_saude_mental",
+  "alvo": "populacao_de_rua",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 7.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

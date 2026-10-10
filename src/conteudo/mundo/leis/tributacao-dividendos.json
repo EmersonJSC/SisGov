@@ -1,0 +1,34 @@
+{
+  "id": "tributacao-dividendos",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Tributação de dividendos",
+  "descricao": "Define a alíquota máxima cobrada do acionista quando a empresa distribui lucro.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_tributacao_dividendos",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 55
+    }
+  },
+  "consequencias": [
+    "tributacao-dividendos--arrecadacao",
+    "tributacao-dividendos--desigualdade",
+    "tributacao-dividendos--investimento",
+    "tributacao-dividendos--sonegacao",
+    "tributacao-dividendos--fuga-capitais",
+    "tributacao-dividendos--confianca-empresarial"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

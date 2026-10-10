@@ -1,0 +1,17 @@
+{
+  "id": "vigilancia-epidemiologica--epidemia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_vigilancia_epidemiologica",
+  "alvo": "epidemia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0002,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

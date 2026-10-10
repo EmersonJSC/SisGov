@@ -1,0 +1,55 @@
+{
+  "id": "modelo-tributario",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Modelo tributário",
+  "descricao": "Define de onde o Estado tira seu dinheiro: quase nada de impostos, peso no consumo, alíquota única para todos, sistema dual nórdico ou cobrança progressiva sobre a renda.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_modelo_tributario",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "quase-sem-impostos",
+        "rotulo": "Quase sem impostos",
+        "valor": 0
+      },
+      {
+        "id": "consumo",
+        "rotulo": "Peso no consumo",
+        "valor": 25
+      },
+      {
+        "id": "proporcional",
+        "rotulo": "Alíquota única",
+        "valor": 50
+      },
+      {
+        "id": "dual",
+        "rotulo": "Dual nórdico",
+        "valor": 75
+      },
+      {
+        "id": "progressivo",
+        "rotulo": "Progressivo na renda",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "modelo-tributario--desigualdade",
+    "modelo-tributario--arrecadacao",
+    "modelo-tributario--complexidade-tributaria",
+    "modelo-tributario--fuga-capitais",
+    "modelo-tributario--investimento",
+    "modelo-tributario--pobreza",
+    "modelo-tributario--confianca-empresarial"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

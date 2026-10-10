@@ -1,0 +1,61 @@
+{
+  "id": "combate-crime-organizado",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Estratégia contra o crime organizado",
+  "descricao": "Define como o Estado enfrenta facções, cartéis e máfias: negociando, asfixiando o dinheiro, atacando com tropas ou suspendendo garantias.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_combate_crime_organizado",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-estrategia",
+        "rotulo": "Sem estratégia nacional",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "tregua-negociada",
+        "rotulo": "Trégua com as facções",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.05
+      },
+      {
+        "id": "asfixia-financeira",
+        "rotulo": "Seguir o dinheiro",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.1
+      },
+      {
+        "id": "ofensiva-militar",
+        "rotulo": "Guerra aos cartéis",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "estado-de-excecao",
+        "rotulo": "Estado de exceção",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "combate-crime-organizado--violencia-letal",
+    "combate-crime-organizado--violencia-letal-1",
+    "combate-crime-organizado--violencia-letal-2",
+    "combate-crime-organizado--crime-organizado",
+    "combate-crime-organizado--crime-organizado-4",
+    "combate-crime-organizado--liberdade-civil",
+    "combate-crime-organizado--lotacao-prisional",
+    "combate-crime-organizado--popularidade-governo"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

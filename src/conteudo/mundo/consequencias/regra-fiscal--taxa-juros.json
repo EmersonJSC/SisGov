@@ -1,0 +1,17 @@
+{
+  "id": "regra-fiscal--taxa-juros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regra_fiscal",
+  "alvo": "taxa_juros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

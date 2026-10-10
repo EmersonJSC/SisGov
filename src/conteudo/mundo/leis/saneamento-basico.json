@@ -1,0 +1,61 @@
+{
+  "id": "saneamento-basico",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Saneamento básico",
+  "descricao": "Define quem leva água tratada e coleta esgoto: ninguém, a prefeitura, uma estatal regional ou empresas privadas com metas.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério das Cidades",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_saneamento_basico",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-politica",
+        "rotulo": "Cada um por si",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "municipal-publico",
+        "rotulo": "Serviço municipal público",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.05
+      },
+      {
+        "id": "estatal-regional",
+        "rotulo": "Estatal regional",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.1
+      },
+      {
+        "id": "concessao-com-metas",
+        "rotulo": "Concessão com metas",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.15
+      },
+      {
+        "id": "privatizacao-plena",
+        "rotulo": "Privatização plena",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "saneamento-basico--infraestrutura-saneamento",
+    "saneamento-basico--saude-populacao",
+    "saneamento-basico--pressao-hospitalar",
+    "saneamento-basico--qualidade-ambiental",
+    "saneamento-basico--investimento",
+    "saneamento-basico--gasto-publico",
+    "saneamento-basico--renda-familias",
+    "saneamento-basico--protestos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "regra-fiscal--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regra_fiscal",
+  "alvo": "gasto_publico",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.21212121,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

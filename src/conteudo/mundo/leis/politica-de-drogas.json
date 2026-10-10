@@ -1,0 +1,67 @@
+{
+  "id": "politica-de-drogas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de drogas",
+  "descricao": "Define como o Estado trata quem usa e quem vende drogas: da guerra total com pena de morte à venda legal regulada, passando por não prender o usuário.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_politica_de_drogas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "guerra-total",
+        "rotulo": "Guerra total às drogas",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "proibicao-punitiva",
+        "rotulo": "Proibição com prisão do usuário",
+        "valor": 20,
+        "custoAnualPercentualPib": 0.04
+      },
+      {
+        "id": "despenalizacao",
+        "rotulo": "Usuário não vai preso",
+        "valor": 40,
+        "custoAnualPercentualPib": 0.08
+      },
+      {
+        "id": "descriminalizacao",
+        "rotulo": "Uso vira questão de saúde",
+        "valor": 60,
+        "custoAnualPercentualPib": 0.12
+      },
+      {
+        "id": "regulacao-legal",
+        "rotulo": "Cannabis legal e regulada",
+        "valor": 80,
+        "custoAnualPercentualPib": 0.16
+      },
+      {
+        "id": "mercado-livre",
+        "rotulo": "Sem lei de drogas",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-drogas--lotacao-prisional",
+    "politica-de-drogas--uso-drogas",
+    "politica-de-drogas--uso-drogas-2",
+    "politica-de-drogas--crime-organizado",
+    "politica-de-drogas--saude-populacao",
+    "politica-de-drogas--letalidade-policial",
+    "politica-de-drogas--arrecadacao",
+    "politica-de-drogas--sensacao-seguranca"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

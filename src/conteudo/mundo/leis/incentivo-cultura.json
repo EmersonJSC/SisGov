@@ -1,0 +1,61 @@
+{
+  "id": "incentivo-cultura",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Incentivo à cultura",
+  "descricao": "Define como o Estado apoia a cultura: deixando com o mercado, abrindo mão de impostos para patrocinadores, financiando diretamente, protegendo a produção nacional ou dirigindo o conteúdo.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Cultura",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_incentivo_cultura",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "mercado-e-filantropia",
+        "rotulo": "Mercado e doações",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "mecenato-incentivado",
+        "rotulo": "Patrocínio com desconto no imposto",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.0125
+      },
+      {
+        "id": "fomento-direto",
+        "rotulo": "Editais públicos",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "excecao-cultural",
+        "rotulo": "Exceção cultural",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.0375
+      },
+      {
+        "id": "cultura-dirigida",
+        "rotulo": "Cultura dirigida",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "incentivo-cultura--vitalidade-cultural",
+    "incentivo-cultura--vitalidade-cultural-1",
+    "incentivo-cultura--liberdade-civil",
+    "incentivo-cultura--reputacao-internacional",
+    "incentivo-cultura--arrecadacao",
+    "incentivo-cultura--gasto-publico",
+    "incentivo-cultura--polarizacao",
+    "incentivo-cultura--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

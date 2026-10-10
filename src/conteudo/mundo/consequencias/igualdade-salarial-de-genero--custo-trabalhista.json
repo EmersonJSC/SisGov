@@ -1,0 +1,18 @@
+{
+  "id": "igualdade-salarial-de-genero--custo-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_igualdade_salarial_de_genero",
+  "alvo": "custo_trabalhista",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "meta-de-inflacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Meta de inflação",
+  "descricao": "Define qual é a âncora da política monetária: nenhuma, inflação e emprego juntos, ou uma meta numérica de inflação com tolerância maior ou menor.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Banco Central",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_meta_de_inflacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-meta",
+        "rotulo": "Sem meta",
+        "valor": 0
+      },
+      {
+        "id": "mandato-duplo",
+        "rotulo": "Inflação e emprego",
+        "valor": 33
+      },
+      {
+        "id": "meta-flexivel",
+        "rotulo": "Meta com banda larga",
+        "valor": 67
+      },
+      {
+        "id": "meta-estrita",
+        "rotulo": "Meta baixa e rígida",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "meta-de-inflacao--inflacao",
+    "meta-de-inflacao--expectativas-inflacao",
+    "meta-de-inflacao--taxa-juros",
+    "meta-de-inflacao--desemprego",
+    "meta-de-inflacao--credito",
+    "meta-de-inflacao--juros-da-divida",
+    "meta-de-inflacao--risco-pais",
+    "meta-de-inflacao--cambio"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

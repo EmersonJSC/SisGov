@@ -1,0 +1,17 @@
+{
+  "id": "qualificacao-trabalho--eficacia-politica-industrial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "qualificacao_trabalho",
+  "alvo": "eficacia:politica-industrial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

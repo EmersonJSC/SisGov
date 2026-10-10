@@ -1,0 +1,18 @@
+{
+  "id": "modelo-tributario--pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_modelo_tributario",
+  "alvo": "pobreza",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.14,
+    "limiar": 50,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

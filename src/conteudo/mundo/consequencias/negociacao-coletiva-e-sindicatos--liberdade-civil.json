@@ -1,0 +1,18 @@
+{
+  "id": "negociacao-coletiva-e-sindicatos--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_negociacao_coletiva_e_sindicatos",
+  "alvo": "liberdade_civil",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.07,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

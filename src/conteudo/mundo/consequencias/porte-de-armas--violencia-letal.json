@@ -1,0 +1,17 @@
+{
+  "id": "porte-de-armas--violencia-letal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_porte_de_armas",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.042,
+    "termoConstante": -0.0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

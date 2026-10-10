@@ -1,0 +1,17 @@
+{
+  "id": "beneficio-idosos-e-deficientes--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_beneficio_idosos_e_deficientes",
+  "alvo": "desigualdade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

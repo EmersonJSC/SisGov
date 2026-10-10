@@ -1,0 +1,18 @@
+{
+  "id": "politica-de-drogas--uso-drogas-2",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_drogas",
+  "alvo": "uso_drogas",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 12.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

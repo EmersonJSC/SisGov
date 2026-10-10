@@ -1,0 +1,34 @@
+{
+  "id": "programa-habitacao-popular",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Programa de habitação popular",
+  "descricao": "Define quanto do PIB o Estado gasta para dar moradia a quem não pode pagar: construção subsidiada, financiamento barato ou auxílio-aluguel.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério das Cidades",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_programa_habitacao_popular",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 1.5
+    }
+  },
+  "consequencias": [
+    "programa-habitacao-popular--deficit-habitacional",
+    "programa-habitacao-popular--gasto-publico",
+    "programa-habitacao-popular--desemprego",
+    "programa-habitacao-popular--pobreza",
+    "programa-habitacao-popular--mobilidade-urbana",
+    "programa-habitacao-popular--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

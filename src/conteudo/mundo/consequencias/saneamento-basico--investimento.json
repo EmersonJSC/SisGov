@@ -1,0 +1,18 @@
+{
+  "id": "saneamento-basico--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_saneamento_basico",
+  "alvo": "investimento",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.28,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

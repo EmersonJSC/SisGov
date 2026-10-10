@@ -1,0 +1,18 @@
+{
+  "id": "modelo-tributario--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_modelo_tributario",
+  "alvo": "investimento",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.12,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

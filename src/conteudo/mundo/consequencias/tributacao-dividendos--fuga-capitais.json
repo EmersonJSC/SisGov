@@ -1,0 +1,17 @@
+{
+  "id": "tributacao-dividendos--fuga-capitais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_tributacao_dividendos",
+  "alvo": "fuga_capitais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0545454545,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

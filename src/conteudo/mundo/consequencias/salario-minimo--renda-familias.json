@@ -1,0 +1,17 @@
+{
+  "id": "salario-minimo--renda-familias",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_salario_minimo",
+  "alvo": "renda_familias",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

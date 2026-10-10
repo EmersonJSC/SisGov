@@ -1,0 +1,54 @@
+{
+  "id": "transporte-publico",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Transporte público",
+  "descricao": "Define quem organiza e quem paga o ônibus, metrô e trem: mercado livre, usuário, subsídio ou tarifa zero.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério das Cidades",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_transporte_publico",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-sistema-publico",
+        "rotulo": "Só vans e ônibus livres",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "tarifa-integral",
+        "rotulo": "Usuário paga tudo",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "subsidio-parcial",
+        "rotulo": "Tarifa subsidiada",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "tarifa-zero",
+        "rotulo": "Tarifa zero",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "transporte-publico--mobilidade-urbana",
+    "transporte-publico--renda-familias",
+    "transporte-publico--desigualdade",
+    "transporte-publico--desemprego",
+    "transporte-publico--gasto-publico",
+    "transporte-publico--emissoes",
+    "transporte-publico--protestos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

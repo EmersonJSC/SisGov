@@ -1,0 +1,18 @@
+{
+  "id": "politica-de-encarceramento--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_encarceramento",
+  "alvo": "liberdade_civil",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -7.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "taxa-juros--eficacia-matriz-energetica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_juros",
+  "alvo": "eficacia:matriz-energetica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

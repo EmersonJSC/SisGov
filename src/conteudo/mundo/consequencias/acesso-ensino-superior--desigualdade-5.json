@@ -1,0 +1,18 @@
+{
+  "id": "acesso-ensino-superior--desigualdade-5",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_acesso_ensino_superior",
+  "alvo": "desigualdade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.09333333,
+    "limiar": 25,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

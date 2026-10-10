@@ -1,0 +1,18 @@
+{
+  "id": "incentivo-cultura--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_incentivo_cultura",
+  "alvo": "corrupcao",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.04,
+    "limiar": 25,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

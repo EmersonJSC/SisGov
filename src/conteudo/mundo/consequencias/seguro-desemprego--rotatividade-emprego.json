@@ -1,0 +1,17 @@
+{
+  "id": "seguro-desemprego--rotatividade-emprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_seguro_desemprego",
+  "alvo": "rotatividade_emprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

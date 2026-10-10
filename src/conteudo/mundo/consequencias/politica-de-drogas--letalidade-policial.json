@@ -1,0 +1,18 @@
+{
+  "id": "politica-de-drogas--letalidade-policial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_drogas",
+  "alvo": "letalidade_policial",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.12,
+    "limiar": 0,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

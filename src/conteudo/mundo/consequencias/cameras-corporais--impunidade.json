@@ -1,0 +1,17 @@
+{
+  "id": "cameras-corporais--impunidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cameras_corporais",
+  "alvo": "impunidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

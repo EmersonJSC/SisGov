@@ -1,0 +1,55 @@
+{
+  "id": "politica-de-encarceramento",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de encarceramento",
+  "descricao": "Define quando a prisão é usada: só em último caso, com alternativas para crimes leves, como regra geral ou com mínimos obrigatórios e prisão em massa.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_politica_de_encarceramento",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ultimo-recurso",
+        "rotulo": "Prisão em último caso",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "alternativas-crimes-leves",
+        "rotulo": "Alternativas para crimes leves",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.198
+      },
+      {
+        "id": "prisao-como-regra",
+        "rotulo": "Cadeia como regra",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.402
+      },
+      {
+        "id": "mao-dura",
+        "rotulo": "Mão dura",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.6
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-encarceramento--lotacao-prisional",
+    "politica-de-encarceramento--gasto-publico",
+    "politica-de-encarceramento--crimes-patrimoniais",
+    "politica-de-encarceramento--violencia-letal",
+    "politica-de-encarceramento--reincidencia",
+    "politica-de-encarceramento--crime-organizado",
+    "politica-de-encarceramento--liberdade-civil",
+    "politica-de-encarceramento--sensacao-seguranca"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

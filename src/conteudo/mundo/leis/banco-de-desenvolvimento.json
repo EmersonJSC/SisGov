@@ -1,0 +1,54 @@
+{
+  "id": "banco-de-desenvolvimento",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Banco de desenvolvimento",
+  "descricao": "Define o papel do banco público de fomento: não existir, emprestar a preço de mercado por meio de outros bancos, ou conceder crédito barato e direcionado com dinheiro do Tesouro.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_banco_de_desenvolvimento",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-banco",
+        "rotulo": "Sem banco de fomento",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "segundo-piso-mercado",
+        "rotulo": "Fomento a preço de mercado",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "credito-direcionado",
+        "rotulo": "Crédito direcionado",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "credito-subsidiado-massivo",
+        "rotulo": "Crédito subsidiado em massa",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "banco-de-desenvolvimento--credito",
+    "banco-de-desenvolvimento--investimento",
+    "banco-de-desenvolvimento--gasto-publico",
+    "banco-de-desenvolvimento--divida-publica",
+    "banco-de-desenvolvimento--taxa-juros",
+    "banco-de-desenvolvimento--corrupcao",
+    "banco-de-desenvolvimento--infraestrutura"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

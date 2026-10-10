@@ -1,0 +1,17 @@
+{
+  "id": "piso-educacao--aprendizagem",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_piso_educacao",
+  "alvo": "aprendizagem",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.5e-6,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

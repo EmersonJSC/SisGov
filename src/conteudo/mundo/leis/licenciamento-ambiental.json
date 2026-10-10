@@ -1,0 +1,54 @@
+{
+  "id": "licenciamento-ambiental",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Licenciamento ambiental",
+  "descricao": "Define se e como uma obra ou empreendimento precisa provar que não vai destruir o ambiente antes de sair do papel.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério do Meio Ambiente",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_licenciamento_ambiental",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-licenciamento",
+        "rotulo": "Sem licença",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "autodeclaracao",
+        "rotulo": "Licença por autodeclaração",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "trifasico",
+        "rotulo": "Licença em etapas",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "rigoroso-com-consulta",
+        "rotulo": "Licença rigorosa com consulta",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "licenciamento-ambiental--desastre-ambiental",
+    "licenciamento-ambiental--qualidade-ambiental",
+    "licenciamento-ambiental--investimento",
+    "licenciamento-ambiental--infraestrutura-transportes",
+    "licenciamento-ambiental--confianca-empresarial",
+    "licenciamento-ambiental--corrupcao",
+    "licenciamento-ambiental--conflitos-fundiarios"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

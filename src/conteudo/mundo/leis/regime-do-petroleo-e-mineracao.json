@@ -1,0 +1,51 @@
+{
+  "id": "regime-do-petroleo-e-mineracao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Regime do petróleo e da mineração",
+  "descricao": "Define quem pode explorar o subsolo (petróleo, gás e minérios) e quanto da riqueza fica com o Estado.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério de Minas e Energia",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_regime_do_petroleo_e_mineracao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibicao",
+        "rotulo": "Subsolo fechado",
+        "valor": 0
+      },
+      {
+        "id": "monopolio-estatal",
+        "rotulo": "Monopólio estatal",
+        "valor": 33
+      },
+      {
+        "id": "partilha",
+        "rotulo": "Partilha com estatal",
+        "valor": 67
+      },
+      {
+        "id": "concessao",
+        "rotulo": "Concessão com royalties",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "regime-do-petroleo-e-mineracao--investimento",
+    "regime-do-petroleo-e-mineracao--producao-mineral",
+    "regime-do-petroleo-e-mineracao--exportacoes",
+    "regime-do-petroleo-e-mineracao--cambio",
+    "regime-do-petroleo-e-mineracao--arrecadacao",
+    "regime-do-petroleo-e-mineracao--emissoes",
+    "regime-do-petroleo-e-mineracao--desastre-ambiental",
+    "regime-do-petroleo-e-mineracao--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

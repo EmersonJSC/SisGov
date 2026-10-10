@@ -1,0 +1,34 @@
+{
+  "id": "imposto-heranca",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto sobre herança e doações",
+  "descricao": "Define a alíquota máxima cobrada sobre heranças e doações, acima de uma faixa isenta.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_heranca",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 85
+    }
+  },
+  "consequencias": [
+    "imposto-heranca--desigualdade",
+    "imposto-heranca--arrecadacao",
+    "imposto-heranca--fuga-capitais",
+    "imposto-heranca--sonegacao",
+    "imposto-heranca--oportunidades-juvenis",
+    "imposto-heranca--popularidade-governo"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

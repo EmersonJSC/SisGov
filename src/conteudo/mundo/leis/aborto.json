@@ -1,0 +1,65 @@
+{
+  "id": "aborto",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Aborto",
+  "descricao": "Define em que casos interromper a gravidez é crime e em que casos é um serviço de saúde.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_aborto",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibicao-total",
+        "rotulo": "Proibição total",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "risco-de-vida",
+        "rotulo": "Só para salvar a vida",
+        "valor": 20,
+        "custoAnualPercentualPib": 0.01
+      },
+      {
+        "id": "casos-restritos",
+        "rotulo": "Casos previstos em lei",
+        "valor": 40,
+        "custoAnualPercentualPib": 0.02
+      },
+      {
+        "id": "motivos-amplos",
+        "rotulo": "Motivos de saúde e sociais",
+        "valor": 60,
+        "custoAnualPercentualPib": 0.03
+      },
+      {
+        "id": "a-pedido",
+        "rotulo": "A pedido, com prazo",
+        "valor": 80,
+        "custoAnualPercentualPib": 0.04
+      },
+      {
+        "id": "sem-lei-penal",
+        "rotulo": "Sem lei penal",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "aborto--saude-populacao",
+    "aborto--pressao-hospitalar",
+    "aborto--liberdade-civil",
+    "aborto--polarizacao",
+    "aborto--popularidade-governo",
+    "aborto--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

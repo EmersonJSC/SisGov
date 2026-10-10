@@ -1,0 +1,51 @@
+{
+  "id": "precificacao-carbono",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Precificação de carbono",
+  "descricao": "Define se quem emite gases de efeito estufa paga por isso, e se o preço vem de um mercado de cotas ou de uma taxa fixa.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_precificacao_carbono",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-preco",
+        "rotulo": "Carbono de graça",
+        "valor": 0
+      },
+      {
+        "id": "mercado-brando",
+        "rotulo": "Mercado brando",
+        "valor": 33
+      },
+      {
+        "id": "mercado-com-teto",
+        "rotulo": "Mercado com teto rígido",
+        "valor": 67
+      },
+      {
+        "id": "taxa-alta",
+        "rotulo": "Taxa alta de carbono",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "precificacao-carbono--emissoes",
+    "precificacao-carbono--preco-energia",
+    "precificacao-carbono--inflacao",
+    "precificacao-carbono--arrecadacao",
+    "precificacao-carbono--inovacao",
+    "precificacao-carbono--exportacoes",
+    "precificacao-carbono--protestos",
+    "precificacao-carbono--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

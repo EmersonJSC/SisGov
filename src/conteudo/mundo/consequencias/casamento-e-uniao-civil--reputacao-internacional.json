@@ -1,0 +1,18 @@
+{
+  "id": "casamento-e-uniao-civil--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_casamento_e_uniao_civil",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.09090909,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

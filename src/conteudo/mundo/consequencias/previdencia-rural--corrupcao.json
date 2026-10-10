@@ -1,0 +1,18 @@
+{
+  "id": "previdencia-rural--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_previdencia_rural",
+  "alvo": "corrupcao",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

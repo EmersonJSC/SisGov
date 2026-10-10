@@ -1,0 +1,53 @@
+{
+  "id": "pensao-por-morte",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Pensão por morte",
+  "descricao": "Define o que a família recebe quando morre quem contribuía: nada, uma ajuda temporária, uma parte do benefício por dependente ou o benefício inteiro para sempre.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério da Previdência Social",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_pensao_por_morte",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem pensão por morte",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "temporaria",
+        "rotulo": "Pensão de transição",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "cotas",
+        "rotulo": "Cotas por dependente",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "integral-vitalicia",
+        "rotulo": "Integral e vitalícia",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "pensao-por-morte--pobreza",
+    "pensao-por-morte--deficit-previdenciario",
+    "pensao-por-morte--gasto-publico",
+    "pensao-por-morte--participacao-trabalho-cuidadoras",
+    "pensao-por-morte--corrupcao",
+    "pensao-por-morte--desigualdade"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

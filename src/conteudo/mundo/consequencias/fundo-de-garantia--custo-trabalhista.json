@@ -1,0 +1,17 @@
+{
+  "id": "fundo-de-garantia--custo-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fundo_de_garantia",
+  "alvo": "custo_trabalhista",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "programa-medicos-no-interior",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Médicos no interior",
+  "descricao": "Define como o país leva médicos aonde eles não querem ir: deixa o mercado decidir, paga incentivos, importa médicos estrangeiros ou obriga recém-formados a servir no interior.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_programa_medicos_no_interior",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-programa",
+        "rotulo": "Mercado decide",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "incentivos",
+        "rotulo": "Bônus e dívida perdoada",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "importacao-de-medicos",
+        "rotulo": "Médicos estrangeiros",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "servico-obrigatorio",
+        "rotulo": "Serviço obrigatório",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "programa-medicos-no-interior--cobertura-aps",
+    "programa-medicos-no-interior--falta-de-medicos",
+    "programa-medicos-no-interior--desigualdade-regional",
+    "programa-medicos-no-interior--pressao-hospitalar",
+    "programa-medicos-no-interior--saude-populacao",
+    "programa-medicos-no-interior--fuga-de-cerebros",
+    "programa-medicos-no-interior--reputacao-internacional"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

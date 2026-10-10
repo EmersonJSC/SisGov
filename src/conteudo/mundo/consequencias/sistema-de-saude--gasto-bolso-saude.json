@@ -1,0 +1,17 @@
+{
+  "id": "sistema-de-saude--gasto-bolso-saude",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_sistema_de_saude",
+  "alvo": "gasto_bolso_saude",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

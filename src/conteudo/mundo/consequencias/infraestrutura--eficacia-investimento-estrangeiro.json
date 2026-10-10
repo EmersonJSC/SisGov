@@ -1,0 +1,17 @@
+{
+  "id": "infraestrutura--eficacia-investimento-estrangeiro",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "infraestrutura",
+  "alvo": "eficacia:investimento-estrangeiro",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

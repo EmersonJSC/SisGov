@@ -1,0 +1,17 @@
+{
+  "id": "farmacia-popular--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_farmacia_popular",
+  "alvo": "corrupcao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.66667e-5,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

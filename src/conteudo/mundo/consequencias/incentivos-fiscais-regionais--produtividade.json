@@ -1,0 +1,18 @@
+{
+  "id": "incentivos-fiscais-regionais--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_incentivos_fiscais_regionais",
+  "alvo": "produtividade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

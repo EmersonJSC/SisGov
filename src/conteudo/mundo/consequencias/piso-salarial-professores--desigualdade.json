@@ -1,0 +1,18 @@
+{
+  "id": "piso-salarial-professores--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_piso_salarial_professores",
+  "alvo": "desigualdade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.04477612,
+    "limiar": 33,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

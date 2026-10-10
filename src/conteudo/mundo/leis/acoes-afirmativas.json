@@ -1,0 +1,59 @@
+{
+  "id": "acoes-afirmativas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Ações afirmativas",
+  "descricao": "Define se o Estado reserva vagas em universidades, concursos e candidaturas para grupos historicamente excluídos, e com que critério.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério da Igualdade Racial",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_acoes_afirmativas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibidas",
+        "rotulo": "Proibidas",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 25,
+        "custoAnualPercentualPib": 0.0125
+      },
+      {
+        "id": "cotas-sociais",
+        "rotulo": "Cotas sociais",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.025
+      },
+      {
+        "id": "cotas-sociais-e-raciais",
+        "rotulo": "Cotas sociais e raciais",
+        "valor": 75,
+        "custoAnualPercentualPib": 0.0375
+      },
+      {
+        "id": "reservas-amplas",
+        "rotulo": "Reservas amplas",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "acoes-afirmativas--oportunidades-juvenis",
+    "acoes-afirmativas--desigualdade",
+    "acoes-afirmativas--discriminacao",
+    "acoes-afirmativas--polarizacao",
+    "acoes-afirmativas--escolaridade",
+    "acoes-afirmativas--oportunidades-juvenis-5"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

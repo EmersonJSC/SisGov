@@ -14,134 +14,414 @@ existe valor-base escondido: cada bolha é só o que está listado (D-40).
 **Bolhas lentas** acumulam ao longo do tempo; o país declara só o ponto de
 partida delas.
 
-### Escolaridade (bolha lenta) — Brasil no turno 0: 45
+### Apagão (situação) — Brasil no turno 0: 0
 
-- **Positivo ←** Lei: Alimentação escolar (saturacao), Capacidade do Estado, Renda das famílias
-- **Negativo ←** desgaste natural (por trimestre), Pobreza
+- **Positivo ←** Lei: Matriz energética (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Aprendizagem dos alunos (índice) — Brasil no turno 0: 9.35
+
+- **Positivo ←** Lei: Avaliação das escolas (limiar) — 4 trimestre(s) de atraso, Lei: Escola em tempo integral — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação — 4 trimestre(s) de atraso, Lei: Piso salarial dos professores — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Educação domiciliar (limiar) — 4 trimestre(s) de atraso, Lei: Vouchers escolares — 4 trimestre(s) de atraso
+
+### Armas em circulação (bolha lenta) — Brasil no turno 0: 50
+
+- **Positivo ←** Lei: Posse e porte de armas — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Arrecadação (índice) — Brasil no turno 0: 18.83
+
+- **Positivo ←** Lei: Apostas e jogos de azar (limiar) — 1 trimestre(s) de atraso, Lei: Imposto sobre grandes fortunas — 1 trimestre(s) de atraso, Lei: Imposto sobre herança e doações — 1 trimestre(s) de atraso, Lei: Imposto sobre imóveis urbanos e rurais — 1 trimestre(s) de atraso, Lei: Imposto de renda das empresas — 1 trimestre(s) de atraso, Lei: Imposto de renda da pessoa física — 1 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes), Lei: Imposto sobre consumo (IVA), Lei: Imposto sobre transações financeiras, Lei: Modelo tributário (limiar) — 4 trimestre(s) de atraso, Lei: Política de drogas (limiar) — 1 trimestre(s) de atraso, Lei: Precificação de carbono — 1 trimestre(s) de atraso, Lei: Tarifas de importação, Lei: Trabalho por aplicativo — 1 trimestre(s) de atraso, Lei: Tributação de dividendos — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Acordos comerciais — 1 trimestre(s) de atraso, Lei: Incentivo à cultura (limiar), Lei: Incentivos fiscais regionais, Lei: Investimento estrangeiro (limiar) — 4 trimestre(s) de atraso, Lei: Regime do petróleo e da mineração (limiar) — 4 trimestre(s) de atraso, Lei: Regime simplificado para pequenas empresas (limiar) — 1 trimestre(s) de atraso
+
+### Câmbio (índice) — Brasil no turno 0: 7.32
+
+- **Positivo ←** Lei: Meta de inflação (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Investimento estrangeiro — 1 trimestre(s) de atraso, Lei: Regime do petróleo e da mineração — 4 trimestre(s) de atraso
+
+### Capacidade de defesa (bolha lenta) — Brasil no turno 0: 50
+
+- **Positivo ←** Lei: Gasto com defesa — 4 trimestre(s) de atraso, Lei: Serviço militar — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Serviço militar (limiar) — 4 trimestre(s) de atraso
+
+### Capacidade do Estado (índice) — Brasil no turno 0: 41.43
+
+- **Positivo ←** Lei: Avaliação das escolas — 4 trimestre(s) de atraso, Lei: Estabilidade dos servidores públicos (limiar) — 4 trimestre(s) de atraso, Confiança nas instituições, Qualificação do trabalho
+- **Negativo ←** Lei: Estabilidade dos servidores públicos (limiar) — 4 trimestre(s) de atraso
+
+### Captura política (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Reeleição do chefe do Executivo — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Estabilidade dos servidores públicos — 4 trimestre(s) de atraso, Lei: Financiamento de campanhas — 4 trimestre(s) de atraso, Lei: Transparência pública — 4 trimestre(s) de atraso
+
+### Cobertura da atenção básica (índice) — Brasil no turno 0: 16.41
+
+- **Positivo ←** Lei: Médicos no interior — 1 trimestre(s) de atraso, Lei: Sistema de saúde — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Pessoas com plano de saúde (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Regulação dos planos de saúde (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regulação dos planos de saúde (limiar) — 1 trimestre(s) de atraso
+
+### Cobertura previdenciária (índice) — Brasil no turno 0: 31.26
+
+- **Positivo ←** Lei: Pensão social para idosos e pessoas com deficiência, Lei: Previdência rural — 4 trimestre(s) de atraso, Lei: Sistema previdenciário — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Cobertura vacinal (índice) — Brasil no turno 0: 6.69
+
+- **Positivo ←** Lei: Vacinação obrigatória — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Complexidade tributária (índice) — Brasil no turno 0: 0.61
+
+- **Positivo ←** Lei: Imposto sobre grandes fortunas — 1 trimestre(s) de atraso, Lei: Incentivos fiscais regionais — 1 trimestre(s) de atraso, Lei: Modelo tributário (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regime simplificado para pequenas empresas — 1 trimestre(s) de atraso
+
+### Concentração de terras (bolha lenta) — Brasil no turno 0: 50
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Reforma agrária — 4 trimestre(s) de atraso
+
+### Concentração de mercado (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Investimento estrangeiro — 4 trimestre(s) de atraso, Lei: Proteção de dados pessoais — 4 trimestre(s) de atraso, Lei: Regulação bancária — 4 trimestre(s) de atraso, Lei: Regulação das redes sociais — 4 trimestre(s) de atraso, Lei: Trabalho por aplicativo (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Defesa da concorrência — 4 trimestre(s) de atraso
+
+### Confiança empresarial (índice) — Brasil no turno 0: 15.34
+
+- **Positivo ←** falta de corrupção (limiar), PIB, Sensação de segurança
+- **Negativo ←** Lei: Defesa da concorrência — 1 trimestre(s) de atraso, Lei: Empresas estatais e privatização (limiar) — 1 trimestre(s) de atraso, Lei: Fundo de garantia e indenização por demissão, Lei: Igualdade salarial de gênero (limiar), Lei: Imposto de renda das empresas, Lei: Jornada de trabalho, Lei: Legislação trabalhista, Lei: Lei anticorrupção, Lei: Licenciamento ambiental, Lei: Modelo tributário (limiar), Lei: Negociação coletiva e sindicatos (limiar), Lei: Proteção de dados pessoais, Recessão, Lei: Reforma agrária, Lei: Regime cambial, Lei: Regulação dos planos de saúde, Lei: Terceirização, Lei: Tributação de dividendos
+
+### Confiança nas instituições (índice) — Brasil no turno 0: 68.21
+
+- **Positivo ←** Lei: Avaliação das escolas — 1 trimestre(s) de atraso, Lei: Câmeras corporais na polícia — 4 trimestre(s) de atraso, Lei: Federalismo — 4 trimestre(s) de atraso, Lei: Laicidade do Estado (limiar) — 4 trimestre(s) de atraso, falta de corrupção (limiar), Saúde da população, Sensação de segurança, Lei: Transparência pública — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Delação e acordos penais — 4 trimestre(s) de atraso, Lei: Eutanásia e morte assistida (limiar) — 4 trimestre(s) de atraso, Lei: Foro privilegiado — 4 trimestre(s) de atraso, Lei: Modelo de polícia — 4 trimestre(s) de atraso
+
+### Conflitos no campo (índice) — Brasil no turno 0: 4.97
+
+- **Positivo ←** Lei: Código florestal (limiar) — 1 trimestre(s) de atraso, Lei: Reforma agrária (limiar), Lei: Terras indígenas (limiar)
+- **Negativo ←** Lei: Licenciamento ambiental (limiar) — 4 trimestre(s) de atraso
+
+### Consumo das famílias (índice) — Brasil no turno 0: 48.13
+
+- **Positivo ←** Lei: Previdência rural — 1 trimestre(s) de atraso, Confiança nas instituições, Renda das famílias, Lei: Redução de jornada subsidiada (lay-off), Lei: Seguro-desemprego, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Apostas e jogos de azar — 1 trimestre(s) de atraso, Lei: Imposto de renda da pessoa física — 1 trimestre(s) de atraso, Lei: Imposto sobre consumo (IVA) — 1 trimestre(s) de atraso, Recessão, Lei: Restrição ao tabaco e ao álcool — 1 trimestre(s) de atraso
+
+### Consumo de tabaco e álcool (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Restrição ao tabaco e ao álcool — 4 trimestre(s) de atraso
+
+### Corrupção (índice) — Brasil no turno 0: 52.74
+
+- **Positivo ←** Lei: Banco de desenvolvimento — 4 trimestre(s) de atraso, Lei: Controle de capitais (limiar) — 4 trimestre(s) de atraso, Lei: Empresas estatais e privatização — 4 trimestre(s) de atraso, Lei: Farmácia popular — 1 trimestre(s) de atraso, Lei: Federalismo — 4 trimestre(s) de atraso, Lei: Foro privilegiado — 4 trimestre(s) de atraso, Lei: Gestão de presídios (limiar) — 4 trimestre(s) de atraso, Lei: Incentivo à cultura (limiar) — 4 trimestre(s) de atraso, Lei: Incentivos fiscais regionais — 4 trimestre(s) de atraso, Lei: Investimento em infraestrutura — 1 trimestre(s) de atraso, Lei: Licenciamento ambiental (limiar) — 1 trimestre(s) de atraso, Lei: Pensão por morte (limiar) — 1 trimestre(s) de atraso, Lei: Piso de gasto em saúde — 4 trimestre(s) de atraso, Lei: Política industrial — 4 trimestre(s) de atraso, Lei: Previdência rural (limiar) — 1 trimestre(s) de atraso, Lei: Programa de habitação popular — 1 trimestre(s) de atraso, Desigualdade, falta de capacidade do estado (limiar), Lei: Segurança alimentar (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Delação e acordos penais — 4 trimestre(s) de atraso, Lei: Estabilidade dos servidores públicos (limiar) — 4 trimestre(s) de atraso, Lei: Financiamento de campanhas — 4 trimestre(s) de atraso, Lei: Independência do Judiciário — 4 trimestre(s) de atraso, Lei: Lei anticorrupção — 4 trimestre(s) de atraso, Lei: Liberdade de imprensa — 4 trimestre(s) de atraso, Lei: Proteção de dados pessoais — 4 trimestre(s) de atraso, Lei: Regime do petróleo e da mineração (limiar) — 4 trimestre(s) de atraso, Lei: Transparência pública — 4 trimestre(s) de atraso
+
+### Crédito disponível (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Banco de desenvolvimento — 1 trimestre(s) de atraso, Lei: Fundo de garantia e indenização por demissão (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Imposto sobre transações financeiras — 1 trimestre(s) de atraso, Lei: Meta de inflação — 1 trimestre(s) de atraso, Lei: Regulação bancária — 1 trimestre(s) de atraso
+
+### Crime organizado (índice) — Brasil no turno 0: 36.55
+
+- **Positivo ←** Lei: Apostas e jogos de azar (limiar) — 1 trimestre(s) de atraso, Lei: Estratégia contra o crime organizado (limiar) — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes) (limiar) — 4 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil (limiar) — 4 trimestre(s) de atraso, Lei: Política de encarceramento — 4 trimestre(s) de atraso, Lei: Posse e porte de armas (limiar) — 4 trimestre(s) de atraso, Corrupção, Desigualdade, falta de oportunidades para jovens (limiar), Lei: Restrição ao tabaco e ao álcool (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Estratégia contra o crime organizado (limiar) — 4 trimestre(s) de atraso, Lei: Delação e acordos penais — 4 trimestre(s) de atraso, Lei: Gestão de presídios (limiar) — 4 trimestre(s) de atraso, Lei: Política de drogas (limiar) — 4 trimestre(s) de atraso
+
+### Crimes contra o patrimônio (roubos e furtos) (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Política de encarceramento — 1 trimestre(s) de atraso
+
+### Crise no atendimento (situação) — Brasil no turno 0: 0.26
+
+- **Positivo ←** Pressão hospitalar
+- **Negativo ←** Lei: Piso de gasto em saúde — 1 trimestre(s) de atraso
+
+### Crise financeira (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Controle de capitais (limiar) — 4 trimestre(s) de atraso, Lei: Regime cambial — 4 trimestre(s) de atraso, Lei: Regulação bancária — 4 trimestre(s) de atraso
+
+### Crise migratória (situação) — Brasil no turno 0: 69.9
+
+- **Positivo ←** Lei: Refugiados e asilo (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Custo de contratar (índice) — Brasil no turno 0: 46.67
+
+- **Positivo ←** Lei: Cuidados de longa duração (limiar), Lei: Fundo de garantia e indenização por demissão, Lei: Igualdade salarial de gênero (limiar) — 1 trimestre(s) de atraso, Lei: Jornada de trabalho, Lei: Legislação trabalhista — 1 trimestre(s) de atraso, Lei: Licença parental, Lei: Negociação coletiva e sindicatos — 1 trimestre(s) de atraso, Lei: Piso salarial dos professores (limiar) — 1 trimestre(s) de atraso, Lei: Regulação dos planos de saúde — 1 trimestre(s) de atraso, Lei: Salário mínimo, Lei: Sistema de saúde (limiar), Lei: Sistema previdenciário, Lei: Terceirização, Lei: Trabalho infantil e aprendizagem (limiar), Lei: Trabalho por aplicativo
+- **Negativo ←** —
+
+### Déficit habitacional (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Fundo de garantia e indenização por demissão (limiar) — 4 trimestre(s) de atraso, Lei: Imposto sobre imóveis urbanos e rurais — 4 trimestre(s) de atraso, Lei: Programa de habitação popular — 4 trimestre(s) de atraso
+
+### Déficit da previdência (índice) — Brasil no turno 0: 27.54
+
+- **Positivo ←** Lei: Pensão por morte — 4 trimestre(s) de atraso, Lei: Previdência rural — 4 trimestre(s) de atraso, Lei: Reajuste de aposentadorias e benefícios — 4 trimestre(s) de atraso, Lei: Sistema previdenciário — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Idade mínima de aposentadoria — 4 trimestre(s) de atraso
+
+### Desabastecimento (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Controle de preços (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Desastre ambiental (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Energia nuclear — 4 trimestre(s) de atraso, Lei: Regime do petróleo e da mineração (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Licenciamento ambiental — 4 trimestre(s) de atraso
+
+### Desemprego (índice) — Brasil no turno 0: 14.41
+
+- **Positivo ←** Lei: Acordos comerciais — 1 trimestre(s) de atraso, Lei: Autonomia do banco central — 1 trimestre(s) de atraso, Lei: Empresas estatais e privatização (limiar) — 1 trimestre(s) de atraso, Lei: Ensino técnico e profissional (limiar) — 4 trimestre(s) de atraso, Lei: Idade mínima de aposentadoria — 1 trimestre(s) de atraso, Lei: Legislação trabalhista (limiar) — 4 trimestre(s) de atraso, Lei: Meta de inflação (limiar) — 1 trimestre(s) de atraso, Lei: Política de imigração (limiar) — 1 trimestre(s) de atraso, falta de pib (limiar), falta de qualificação do trabalho (limiar), Lei: Salário mínimo (limiar) — 4 trimestre(s) de atraso, Lei: Seguro-desemprego — 1 trimestre(s) de atraso, Lei: Tarifas de importação — 4 trimestre(s) de atraso, Lei: Terceirização (limiar) — 1 trimestre(s) de atraso, Lei: Trabalho por aplicativo (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Política industrial — 4 trimestre(s) de atraso, Lei: Programa de habitação popular — 1 trimestre(s) de atraso, Lei: Redução de jornada subsidiada (lay-off), Lei: Regime simplificado para pequenas empresas — 4 trimestre(s) de atraso, Lei: Serviço militar (limiar), Lei: Trabalho infantil e aprendizagem (limiar) — 4 trimestre(s) de atraso, Lei: Transporte público — 4 trimestre(s) de atraso
 
 ### Desenvolvimento (bolha lenta) — Brasil no turno 0: 50
 
-- **Positivo ←** Investimento
+- **Positivo ←** Lei: Gasto com defesa — 4 trimestre(s) de atraso, Lei: Investimento em pesquisa e desenvolvimento — 4 trimestre(s) de atraso, Lei: Política industrial (limiar) — 4 trimestre(s) de atraso, Investimento
 - **Negativo ←** desgaste natural (por trimestre)
+
+### Desigualdade (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Acesso ao ensino superior (limiar) — 4 trimestre(s) de atraso, Lei: Ensino técnico e profissional (limiar) — 4 trimestre(s) de atraso, Lei: Financiamento de campanhas — 4 trimestre(s) de atraso, Lei: Idade mínima de aposentadoria — 4 trimestre(s) de atraso, Lei: Imposto sobre imóveis urbanos e rurais — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes) — 1 trimestre(s) de atraso, Lei: Imposto sobre consumo (IVA) — 4 trimestre(s) de atraso, Lei: Pensão por morte (limiar) — 4 trimestre(s) de atraso, falta de qualificação do trabalho (limiar), Pobreza, Lei: Redução de jornada subsidiada (lay-off) — 1 trimestre(s) de atraso, Lei: Tarifas de importação — 4 trimestre(s) de atraso, Lei: Vouchers escolares (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Acesso ao ensino superior (limiar) — 4 trimestre(s) de atraso, Lei: Ações afirmativas — 4 trimestre(s) de atraso, Lei: Pensão social para idosos e pessoas com deficiência — 1 trimestre(s) de atraso, Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Igualdade salarial de gênero — 4 trimestre(s) de atraso, Lei: Imposto sobre grandes fortunas — 4 trimestre(s) de atraso, Lei: Imposto sobre herança e doações — 4 trimestre(s) de atraso, Lei: Imposto sobre imóveis urbanos e rurais — 4 trimestre(s) de atraso, Lei: Imposto de renda das empresas — 4 trimestre(s) de atraso, Lei: Imposto de renda da pessoa física — 4 trimestre(s) de atraso, Lei: Incentivos fiscais regionais (limiar) — 4 trimestre(s) de atraso, Lei: Legislação trabalhista — 4 trimestre(s) de atraso, Lei: Licença parental (limiar) — 4 trimestre(s) de atraso, Lei: Modelo tributário — 4 trimestre(s) de atraso, Lei: Negociação coletiva e sindicatos — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação — 4 trimestre(s) de atraso, Lei: Piso salarial dos professores (limiar) — 4 trimestre(s) de atraso, Lei: Previdência rural — 4 trimestre(s) de atraso, Lei: Reforma agrária — 4 trimestre(s) de atraso, Lei: Regulação dos planos de saúde — 4 trimestre(s) de atraso, Lei: Restrição ao tabaco e ao álcool — 4 trimestre(s) de atraso, Lei: Salário mínimo — 1 trimestre(s) de atraso, Lei: Sistema de saúde — 4 trimestre(s) de atraso, Lei: Sistema previdenciário — 4 trimestre(s) de atraso, Lei: Terceirização — 4 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso, Lei: Transporte público — 4 trimestre(s) de atraso, Lei: Tributação de dividendos — 4 trimestre(s) de atraso, Lei: Voto obrigatório — 4 trimestre(s) de atraso
+
+### Desigualdade regional (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Federalismo — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Médicos no interior — 4 trimestre(s) de atraso
+
+### Desinformação (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Liberdade de imprensa (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regulação das redes sociais — 1 trimestre(s) de atraso
+
+### Desmatamento (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Investimento em infraestrutura — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Código florestal — 1 trimestre(s) de atraso, Lei: Terras indígenas — 4 trimestre(s) de atraso
+
+### Diferença salarial de gênero (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Igualdade salarial de gênero — 4 trimestre(s) de atraso
+
+### Discriminação (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Laicidade do Estado (limiar) — 4 trimestre(s) de atraso, Lei: Política de imigração (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Ações afirmativas — 4 trimestre(s) de atraso, Lei: Casamento e união civil — 4 trimestre(s) de atraso, Lei: Igualdade salarial de gênero — 4 trimestre(s) de atraso
+
+### Dívida pública (bolha lenta) — Brasil no turno 0: 77
+
+- **Positivo ←** Lei: Banco de desenvolvimento (limiar) — 4 trimestre(s) de atraso, Lei: Investimento em infraestrutura — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Emissões de carbono (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Regime do petróleo e da mineração (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Código florestal — 4 trimestre(s) de atraso, Lei: Energia nuclear — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes) (limiar) — 4 trimestre(s) de atraso, Lei: Matriz energética — 4 trimestre(s) de atraso, Lei: Precificação de carbono — 4 trimestre(s) de atraso, Lei: Terras indígenas — 4 trimestre(s) de atraso, Lei: Transporte público — 4 trimestre(s) de atraso
+
+### Endividamento das famílias (índice) — Brasil no turno 0: 7.42
+
+- **Positivo ←** Lei: Acesso ao ensino superior (limiar) — 4 trimestre(s) de atraso, Lei: Apostas e jogos de azar — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Envelhecimento (bolha lenta) — Brasil no turno 0: 40
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Política de imigração — 4 trimestre(s) de atraso, Lei: Política de natalidade — 4 trimestre(s) de atraso
+
+### Epidemia (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Vacinação obrigatória — 4 trimestre(s) de atraso, Lei: Vigilância epidemiológica — 4 trimestre(s) de atraso
+
+### Escolaridade (bolha lenta) — Brasil no turno 0: 45
+
+- **Positivo ←** Lei: Acesso ao ensino superior — 4 trimestre(s) de atraso, Lei: Ações afirmativas — 4 trimestre(s) de atraso, Lei: Ensino obrigatório — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação — 4 trimestre(s) de atraso, Capacidade do Estado, Renda das famílias, Lei: Segurança alimentar — 4 trimestre(s) de atraso, Lei: Trabalho infantil e aprendizagem — 4 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 4 trimestre(s) de atraso
+- **Negativo ←** desgaste natural (por trimestre), Pobreza
+
+### Estabilidade política (índice) — Brasil no turno 0: 3.07
+
+- **Positivo ←** Lei: Foro privilegiado — 1 trimestre(s) de atraso, Lei: Reeleição do chefe do Executivo — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Lei anticorrupção (limiar) — 1 trimestre(s) de atraso, Lei: Sistema de governo (limiar) — 1 trimestre(s) de atraso
+
+### Evasão escolar (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Avaliação das escolas (limiar) — 4 trimestre(s) de atraso, Lei: Educação domiciliar (limiar) — 4 trimestre(s) de atraso, Lei: Escola em tempo integral — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Ensino obrigatório — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação — 4 trimestre(s) de atraso, Lei: Vouchers escolares (limiar) — 4 trimestre(s) de atraso
+
+### Expectativas de inflação (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Meta de inflação — 1 trimestre(s) de atraso
+
+### Exportações (índice) — Brasil no turno 0: 42.47
+
+- **Positivo ←** Lei: Acordos comerciais — 4 trimestre(s) de atraso, Lei: Código florestal (limiar) — 4 trimestre(s) de atraso, Lei: Defesa da concorrência (limiar) — 4 trimestre(s) de atraso, Lei: Incentivos fiscais regionais (limiar) — 4 trimestre(s) de atraso, Lei: Investimento estrangeiro — 4 trimestre(s) de atraso, Lei: Política industrial (limiar) — 4 trimestre(s) de atraso, Lei: Regime cambial — 1 trimestre(s) de atraso, Lei: Regime do petróleo e da mineração — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Precificação de carbono (limiar) — 4 trimestre(s) de atraso, Lei: Tarifas de importação — 4 trimestre(s) de atraso
+
+### Falta de médicos (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Médicos no interior — 1 trimestre(s) de atraso
+
+### Força das instituições (índice) — Brasil no turno 0: 13.74
+
+- **Positivo ←** Lei: Independência do Judiciário — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Reeleição do chefe do Executivo (limiar) — 4 trimestre(s) de atraso
+
+### Fuga de capitais (índice) — Brasil no turno 0: 14.45
+
+- **Positivo ←** Lei: Imposto sobre grandes fortunas — 1 trimestre(s) de atraso, Lei: Imposto sobre herança e doações — 4 trimestre(s) de atraso, Lei: Imposto de renda das empresas — 4 trimestre(s) de atraso, Lei: Imposto de renda da pessoa física — 4 trimestre(s) de atraso, Lei: Imposto sobre transações financeiras — 1 trimestre(s) de atraso, Lei: Modelo tributário (limiar) — 4 trimestre(s) de atraso, Lei: Tributação de dividendos — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Fuga de cérebros (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Médicos no interior (limiar) — 4 trimestre(s) de atraso, Lei: Sistema de saúde (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Investimento em pesquisa e desenvolvimento — 1 trimestre(s) de atraso
+
+### Gasto do bolso com saúde (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Genéricos e patentes de medicamentos — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Farmácia popular, Lei: Piso de gasto em saúde — 1 trimestre(s) de atraso, Lei: Regulação dos planos de saúde — 1 trimestre(s) de atraso, Lei: Sistema de saúde — 1 trimestre(s) de atraso
+
+### Gasto público (índice) — Brasil no turno 0: 100
+
+- **Positivo ←** Lei: Acesso ao ensino superior — 1 trimestre(s) de atraso, Lei: Banco de desenvolvimento (limiar), Lei: Pensão social para idosos e pessoas com deficiência (limiar), Lei: Câmeras corporais na polícia, Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Empresas estatais e privatização — 4 trimestre(s) de atraso, Lei: Energia nuclear (limiar) — 4 trimestre(s) de atraso, Lei: Ensino obrigatório — 1 trimestre(s) de atraso, Lei: Ensino técnico e profissional — 1 trimestre(s) de atraso, Lei: Escola em tempo integral — 1 trimestre(s) de atraso, Lei: Estabilidade dos servidores públicos — 4 trimestre(s) de atraso, Lei: Farmácia popular, Lei: Financiamento de campanhas, Lei: Gasto com defesa, Lei: Genéricos e patentes de medicamentos — 1 trimestre(s) de atraso, Lei: Gestão de presídios (limiar), Lei: Incentivo à cultura (limiar), Lei: Investimento em infraestrutura, Lei: Investimento em pesquisa e desenvolvimento, Lei: Licença parental, Lei: Penas máximas — 4 trimestre(s) de atraso, Lei: Pensão por morte — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação, Lei: Piso salarial dos professores, Lei: Piso de gasto em saúde, Lei: Política de encarceramento — 4 trimestre(s) de atraso, Lei: Política de natalidade (limiar), Lei: Política industrial — 1 trimestre(s) de atraso, Lei: Programa de habitação popular, Lei: Lei contra a violência doméstica — 1 trimestre(s) de atraso, Lei: Reajuste de aposentadorias e benefícios — 4 trimestre(s) de atraso, Lei: Redução de jornada subsidiada (lay-off), Lei: Reforma agrária — 1 trimestre(s) de atraso, Lei: Refugiados e asilo (limiar), Lei: Salário mínimo, Lei: Segurança alimentar, Lei: Seguro-desemprego, Lei: Serviço militar (limiar), Lei: Sistema de saúde — 1 trimestre(s) de atraso, Lei: Sistema previdenciário — 4 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres, Lei: Transporte público (limiar), Lei: Vigilância epidemiológica, Lei: Vouchers escolares
+- **Negativo ←** Lei: Delação e acordos penais — 1 trimestre(s) de atraso, Lei: Educação domiciliar — 1 trimestre(s) de atraso, Lei: Idade mínima de aposentadoria — 4 trimestre(s) de atraso, Lei: Matriz energética (limiar), Lei: Regra fiscal (limiar) — 4 trimestre(s) de atraso, Lei: Saneamento básico (limiar) — 4 trimestre(s) de atraso
+
+### Ameaça de golpe (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Gasto com defesa — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Laicidade do Estado (limiar) — 4 trimestre(s) de atraso, Lei: Sistema de governo — 4 trimestre(s) de atraso
+
+### Greve de professores (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Avaliação das escolas (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Piso salarial dos professores — 1 trimestre(s) de atraso
+
+### Greve geral (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Negociação coletiva e sindicatos (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Investimento estrangeiro direto (índice) — Brasil no turno 0: 6.7
+
+- **Positivo ←** Lei: Genéricos e patentes de medicamentos — 4 trimestre(s) de atraso, Lei: Investimento estrangeiro — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Controle de capitais — 4 trimestre(s) de atraso
+
+### Imigração (índice) — Brasil no turno 0: 19.44
+
+- **Positivo ←** Lei: Política de imigração — 4 trimestre(s) de atraso, Lei: Refugiados e asilo — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Importações (índice) — Brasil no turno 0: 0.96
+
+- **Positivo ←** Lei: Acordos comerciais — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Tarifas de importação
+
+### Impunidade (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Foro privilegiado — 4 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil, Lei: Modelo de polícia (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Câmeras corporais na polícia — 1 trimestre(s) de atraso, Lei: Delação e acordos penais — 1 trimestre(s) de atraso, Lei: Independência do Judiciário — 4 trimestre(s) de atraso, Lei: Lei anticorrupção — 4 trimestre(s) de atraso, Lei: Modelo de polícia (limiar) — 4 trimestre(s) de atraso, Lei: Lei contra a violência doméstica — 1 trimestre(s) de atraso
+
+### Inflação (índice) — Brasil no turno 0: 91.41
+
+- **Positivo ←** Lei: Controle de preços (limiar) — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes), Lei: Imposto sobre consumo (IVA), Lei: Imposto sobre transações financeiras — 1 trimestre(s) de atraso, Lei: Política industrial (limiar) — 4 trimestre(s) de atraso, Lei: Precificação de carbono, Lei: Reajuste de aposentadorias e benefícios (limiar) — 1 trimestre(s) de atraso, Lei: Regime cambial — 1 trimestre(s) de atraso, Lei: Salário mínimo — 1 trimestre(s) de atraso, Lei: Tarifas de importação — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Acordos comerciais — 1 trimestre(s) de atraso, Lei: Autonomia do banco central — 4 trimestre(s) de atraso, Lei: Controle de preços, Lei: Defesa da concorrência — 4 trimestre(s) de atraso, Lei: Meta de inflação — 4 trimestre(s) de atraso
+
+### Informalidade (índice) — Brasil no turno 0: 5.22
+
+- **Positivo ←** Lei: Pensão social para idosos e pessoas com deficiência — 4 trimestre(s) de atraso, Lei: Controle de preços — 1 trimestre(s) de atraso, Lei: Fundo de garantia e indenização por demissão — 1 trimestre(s) de atraso, Lei: Imposto sobre consumo (IVA) — 4 trimestre(s) de atraso, Lei: Imposto sobre transações financeiras — 4 trimestre(s) de atraso, Lei: Jornada de trabalho (limiar) — 1 trimestre(s) de atraso, Lei: Legislação trabalhista (limiar) — 4 trimestre(s) de atraso, Lei: Salário mínimo (limiar) — 1 trimestre(s) de atraso, Lei: Terceirização (limiar) — 1 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regime simplificado para pequenas empresas — 4 trimestre(s) de atraso, Lei: Trabalho por aplicativo — 1 trimestre(s) de atraso
 
 ### Infraestrutura (bolha lenta) — Brasil no turno 0: 45
 
-- **Positivo ←** Investimento
-- **Negativo ←** desgaste natural (por trimestre)
+- **Positivo ←** Lei: Banco de desenvolvimento — 4 trimestre(s) de atraso, Investimento
+- **Negativo ←** desgaste natural (por trimestre), Lei: Regra fiscal (limiar) — 4 trimestre(s) de atraso
 
-### PIB (índice) — Brasil no turno 0: 61.11
+### Infraestrutura de energia (bolha lenta) — Brasil no turno 0: 50
 
-- **Positivo ←** Consumo das famílias, Infraestrutura, Investimento — 1 trimestre(s) de atraso, Produtividade
+- **Positivo ←** Lei: Energia nuclear — 4 trimestre(s) de atraso, Lei: Investimento em infraestrutura — 4 trimestre(s) de atraso, Lei: Matriz energética — 4 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Cobertura da atenção básica (índice) — Brasil no turno 0: 72.15
+### Infraestrutura de saneamento (bolha lenta) — Brasil no turno 0: 50
 
-- **Positivo ←** Lei: Atenção básica de saúde (retornos decrescentes)
+- **Positivo ←** Lei: Saneamento básico (limiar) — 4 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Pressão hospitalar (índice) — Brasil no turno 0: 52.48
+### Infraestrutura de transportes (bolha lenta) — Brasil no turno 0: 50
 
-- **Positivo ←** falta de cobertura da atenção básica (limiar), Pobreza, Violência letal
+- **Positivo ←** Lei: Investimento em infraestrutura — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Licenciamento ambiental (limiar) — 4 trimestre(s) de atraso
+
+### Inovação (índice) — Brasil no turno 0: 16.09
+
+- **Positivo ←** Lei: Agrotóxicos — 4 trimestre(s) de atraso, Lei: Defesa da concorrência — 4 trimestre(s) de atraso, Lei: Federalismo — 4 trimestre(s) de atraso, Lei: Genéricos e patentes de medicamentos — 4 trimestre(s) de atraso, Lei: Investimento em pesquisa e desenvolvimento — 4 trimestre(s) de atraso, Lei: Matriz energética — 4 trimestre(s) de atraso, Lei: Precificação de carbono — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Imposto de renda da pessoa física — 4 trimestre(s) de atraso, Lei: Proteção de dados pessoais (limiar) — 4 trimestre(s) de atraso
+
+### Insegurança alimentar (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Segurança alimentar — 1 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso
+
+### Investimento (índice) — Brasil no turno 0: 25.52
+
+- **Positivo ←** Lei: Banco de desenvolvimento — 4 trimestre(s) de atraso, Lei: Empresas estatais e privatização (limiar) — 4 trimestre(s) de atraso, Lei: Incentivos fiscais regionais (limiar) — 4 trimestre(s) de atraso, Lei: Independência do Judiciário — 4 trimestre(s) de atraso, Lei: Investimento estrangeiro — 4 trimestre(s) de atraso, Confiança empresarial, PIB, Lei: Regime do petróleo e da mineração — 4 trimestre(s) de atraso, Lei: Saneamento básico (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Controle de capitais — 4 trimestre(s) de atraso, Lei: Controle de preços — 4 trimestre(s) de atraso, Lei: Defesa da concorrência (limiar) — 1 trimestre(s) de atraso, Lei: Imposto sobre grandes fortunas — 4 trimestre(s) de atraso, Lei: Imposto sobre imóveis urbanos e rurais — 4 trimestre(s) de atraso, Lei: Imposto de renda das empresas — 4 trimestre(s) de atraso, Lei: Lei anticorrupção — 1 trimestre(s) de atraso, Lei: Licenciamento ambiental (limiar) — 1 trimestre(s) de atraso, Lei: Modelo tributário (limiar) — 4 trimestre(s) de atraso, Onda de violência, Lei: Regulação bancária — 4 trimestre(s) de atraso, Lei: Tributação de dividendos — 4 trimestre(s) de atraso
+
+### Juros da dívida (índice) — Brasil no turno 0: 2.02
+
+- **Positivo ←** Lei: Meta de inflação — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regulação bancária (limiar) — 1 trimestre(s) de atraso
+
+### Letalidade policial (índice) — Brasil no turno 0: 5.57
+
+- **Positivo ←** Lei: Modelo de polícia — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Câmeras corporais na polícia (limiar) — 1 trimestre(s) de atraso, Lei: Política de drogas (limiar)
+
+### Liberdades civis (índice) — Brasil no turno 0: 24.26
+
+- **Positivo ←** Lei: Aborto, Lei: Casamento e união civil, Lei: Educação domiciliar, Lei: Eutanásia e morte assistida, Lei: Independência do Judiciário — 1 trimestre(s) de atraso, Lei: Liberdade de imprensa — 1 trimestre(s) de atraso, Lei: Negociação coletiva e sindicatos (limiar), Lei: Posse e porte de armas, Lei: Proteção de dados pessoais — 4 trimestre(s) de atraso, Lei: Política de saúde mental (limiar), Lei: Vouchers escolares
+- **Negativo ←** Lei: Câmeras corporais na polícia (limiar) — 1 trimestre(s) de atraso, Lei: Estratégia contra o crime organizado (limiar), Lei: Delação e acordos penais (limiar) — 1 trimestre(s) de atraso, Lei: Incentivo à cultura (limiar), Lei: Laicidade do Estado (limiar) — 1 trimestre(s) de atraso, Lei: Modelo de polícia — 1 trimestre(s) de atraso, Lei: Penas máximas (limiar) — 4 trimestre(s) de atraso, Lei: Política de encarceramento (limiar), Lei: Política de natalidade (limiar), Lei: Lei contra a violência doméstica (limiar), Lei: Reeleição do chefe do Executivo (limiar) — 4 trimestre(s) de atraso, Lei: Refugiados e asilo (limiar) — 1 trimestre(s) de atraso, Lei: Regulação das redes sociais (limiar) — 1 trimestre(s) de atraso, Lei: Regulação das redes sociais (limiar), Lei: Restrição ao tabaco e ao álcool (limiar), Lei: Política de saúde mental (limiar), Lei: Serviço militar, Lei: Vacinação obrigatória (limiar), Lei: Vigilância epidemiológica — 1 trimestre(s) de atraso, Lei: Voto obrigatório
+
+### Litígio trabalhista (índice) — Brasil no turno 0: 5.34
+
+- **Positivo ←** Lei: Legislação trabalhista — 1 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Saúde da população (índice) — Brasil no turno 0: 61.82
+### Lotação dos presídios (índice) — Brasil no turno 0: 0.61
 
-- **Positivo ←** Cobertura da atenção básica, Escolaridade, Renda das famílias
-- **Negativo ←** Crise no atendimento, Pobreza, Pressão hospitalar
+- **Positivo ←** Lei: Estratégia contra o crime organizado (limiar) — 1 trimestre(s) de atraso, Lei: Gestão de presídios (limiar) — 4 trimestre(s) de atraso, Lei: Penas máximas — 4 trimestre(s) de atraso, Lei: Política de encarceramento — 1 trimestre(s) de atraso, Lei: Lei contra a violência doméstica — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Maioridade penal e justiça juvenil — 1 trimestre(s) de atraso, Lei: Política de drogas — 1 trimestre(s) de atraso
 
-### Participação no trabalho de quem cuida (índice) — Brasil no turno 0: 62.53
+### Margem de manobra do governo (índice) — Brasil no turno 0: 0
 
-- **Positivo ←** Lei: Expansão de creches públicas (retornos decrescentes), falta de desemprego (limiar)
+- **Positivo ←** Lei: Foro privilegiado, Lei: Reeleição do chefe do Executivo
+- **Negativo ←** Lei: Autonomia do banco central, Lei: Estabilidade dos servidores públicos, Lei: Federalismo — 1 trimestre(s) de atraso, Lei: Independência do Judiciário, Lei: Lei anticorrupção, Lei: Liberdade de imprensa, Lei: Regra fiscal, Lei: Sistema de governo, Lei: Transparência pública
+
+### Dólar paralelo (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Controle de capitais (limiar) — 1 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Oportunidades para jovens (índice) — Brasil no turno 0: 37.54
+### Mobilidade urbana (índice) — Brasil no turno 0: 4.61
 
-- **Positivo ←** Escolaridade, Participação no trabalho de quem cuida, PIB, Qualificação do trabalho
-- **Negativo ←** —
+- **Positivo ←** Lei: Transporte público — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Programa de habitação popular — 4 trimestre(s) de atraso, Lei: Trabalho por aplicativo (limiar) — 1 trimestre(s) de atraso
 
-### Qualificação do trabalho (índice) — Brasil no turno 0: 49.18
+### Natalidade (índice) — Brasil no turno 0: 0.7
 
-- **Positivo ←** Escolaridade, Oportunidades para jovens
-- **Negativo ←** —
+- **Positivo ←** Lei: Licença parental — 4 trimestre(s) de atraso, Lei: Política de natalidade — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Escola em tempo integral — 4 trimestre(s) de atraso
 
-### Produtividade (índice) — Brasil no turno 0: 58.97
+### Oferta de energia (índice) — Brasil no turno 0: 10.01
 
-- **Positivo ←** Desenvolvimento, Infraestrutura, Qualificação do trabalho, Saúde da população
-- **Negativo ←** Corrupção
-
-### Investimento (índice) — Brasil no turno 0: 45.23
-
-- **Positivo ←** Confiança empresarial, PIB
-- **Negativo ←** Onda de violência
-
-### Confiança empresarial (índice) — Brasil no turno 0: 53.8
-
-- **Positivo ←** falta de corrupção (limiar), PIB, Sensação de segurança
-- **Negativo ←** Recessão
-
-### Desemprego (índice) — Brasil no turno 0: 7.72
-
-- **Positivo ←** falta de pib (limiar), falta de qualificação do trabalho (limiar)
-- **Negativo ←** —
-
-### Renda das famílias (índice) — Brasil no turno 0: 53.17
-
-- **Positivo ←** falta de desemprego (limiar), Participação no trabalho de quem cuida, Produtividade
-- **Negativo ←** —
-
-### Consumo das famílias (índice) — Brasil no turno 0: 52.71
-
-- **Positivo ←** Confiança nas instituições, Renda das famílias
-- **Negativo ←** Recessão
-
-### Pobreza (índice) — Brasil no turno 0: 27.68
-
-- **Positivo ←** Desemprego, falta de renda das famílias (limiar)
-- **Negativo ←** —
-
-### Desigualdade (índice) — Brasil no turno 0: 52.8
-
-- **Positivo ←** falta de qualificação do trabalho (limiar), Pobreza
-- **Negativo ←** —
-
-### Violência letal (índice) — Brasil no turno 0: 20.45
-
-- **Positivo ←** Crime organizado, Desigualdade, falta de oportunidades para jovens (limiar), Pobreza
-- **Negativo ←** Lei: Prevenção e cooperação em segurança (saturacao) — 1 trimestre(s) de atraso
-
-### Crime organizado (índice) — Brasil no turno 0: 41.36
-
-- **Positivo ←** Corrupção, Desigualdade, falta de oportunidades para jovens (limiar)
-- **Negativo ←** Lei: Prevenção e cooperação em segurança (saturacao) — 1 trimestre(s) de atraso
-
-### Proteção efetiva às mulheres (índice) — Brasil no turno 0: 42.03
-
-- **Positivo ←** Lei: Rede de proteção às mulheres (retornos decrescentes), Capacidade do Estado
-- **Negativo ←** —
-
-### Sensação de segurança (índice) — Brasil no turno 0: 40.54
-
-- **Positivo ←** falta de violência letal (limiar) — 1 trimestre(s) de atraso, Proteção efetiva às mulheres
-- **Negativo ←** Onda de violência
-
-### Corrupção (índice) — Brasil no turno 0: 39.42
-
-- **Positivo ←** Desigualdade, falta de capacidade do estado (limiar)
-- **Negativo ←** —
-
-### Capacidade do Estado (índice) — Brasil no turno 0: 49.88
-
-- **Positivo ←** Confiança nas instituições, Qualificação do trabalho
-- **Negativo ←** —
-
-### Confiança nas instituições (índice) — Brasil no turno 0: 45.59
-
-- **Positivo ←** falta de corrupção (limiar), Saúde da população, Sensação de segurança
-- **Negativo ←** —
-
-### Crise no atendimento (situação) — Brasil no turno 0: 0
-
-- **Positivo ←** Pressão hospitalar
+- **Positivo ←** Lei: Energia nuclear — 4 trimestre(s) de atraso
 - **Negativo ←** —
 
 ### Onda de violência (situação) — Brasil no turno 0: 0
@@ -149,42 +429,792 @@ partida delas.
 - **Positivo ←** Violência letal
 - **Negativo ←** —
 
-### Recessão (situação) — Brasil no turno 0: 0
+### Oportunidades para jovens (índice) — Brasil no turno 0: 59.17
 
-- **Positivo ←** Desemprego
+- **Positivo ←** Lei: Acesso ao ensino superior — 4 trimestre(s) de atraso, Lei: Ações afirmativas — 4 trimestre(s) de atraso, Lei: Ensino obrigatório (limiar) — 4 trimestre(s) de atraso, Lei: Ensino técnico e profissional — 4 trimestre(s) de atraso, Lei: Imposto sobre herança e doações — 4 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil — 4 trimestre(s) de atraso, Escolaridade, Participação no trabalho de quem cuida, PIB, Qualificação do trabalho, Lei: Trabalho infantil e aprendizagem (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Ações afirmativas (limiar) — 1 trimestre(s) de atraso, Lei: Fundo de garantia e indenização por demissão (limiar) — 4 trimestre(s) de atraso, Lei: Serviço militar (limiar) — 4 trimestre(s) de atraso
+
+### Participação eleitoral (índice) — Brasil no turno 0: 13.71
+
+- **Positivo ←** Lei: Voto obrigatório
 - **Negativo ←** —
 
-### Eficácia — Alimentação escolar (lei) — Brasil no turno 0: 0.9
+### Participação no trabalho de quem cuida (índice) — Brasil no turno 0: 100
 
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
+- **Positivo ←** Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Ensino obrigatório (limiar) — 1 trimestre(s) de atraso, Lei: Escola em tempo integral — 1 trimestre(s) de atraso, Lei: Igualdade salarial de gênero — 4 trimestre(s) de atraso, Lei: Jornada de trabalho — 1 trimestre(s) de atraso, Lei: Licença parental (limiar) — 4 trimestre(s) de atraso, falta de desemprego (limiar)
+- **Negativo ←** Lei: Licença parental (limiar) — 4 trimestre(s) de atraso, Lei: Pensão por morte (limiar) — 4 trimestre(s) de atraso, Lei: Política de saúde mental (limiar) — 1 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso
 
-### Eficácia — Atenção básica de saúde (lei) — Brasil no turno 0: 0.9
+### Idosos no mercado de trabalho (índice) — Brasil no turno 0: 7.43
 
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção, Crise no atendimento
-
-### Apoio — Atenção básica de saúde (lei) — Brasil no turno 0: 0
-
-- **Positivo ←** Crise no atendimento
+- **Positivo ←** Lei: Idade mínima de aposentadoria — 1 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Eficácia — Expansão de creches públicas (lei) — Brasil no turno 0: 0.9
+### PIB (índice) — Brasil no turno 0: 29.94
 
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
+- **Positivo ←** Lei: Investimento em infraestrutura — 1 trimestre(s) de atraso, Lei: Política de imigração — 4 trimestre(s) de atraso, Consumo das famílias, Infraestrutura, Investimento — 1 trimestre(s) de atraso, Produtividade
+- **Negativo ←** Lei: Jornada de trabalho (limiar) — 4 trimestre(s) de atraso, Lei: Tarifas de importação — 4 trimestre(s) de atraso
 
-### Eficácia — Prevenção e cooperação em segurança (lei) — Brasil no turno 0: 0.9
+### Pobreza (índice) — Brasil no turno 0: 0
 
-- **Positivo ←** Capacidade do Estado
-- **Negativo ←** Corrupção
+- **Positivo ←** Lei: Apostas e jogos de azar — 4 trimestre(s) de atraso, Lei: Idade mínima de aposentadoria (limiar) — 4 trimestre(s) de atraso, Lei: Imposto sobre consumo (IVA) — 1 trimestre(s) de atraso, Desemprego, falta de renda das famílias (limiar)
+- **Negativo ←** Lei: Pensão social para idosos e pessoas com deficiência — 1 trimestre(s) de atraso, Lei: Farmácia popular — 1 trimestre(s) de atraso, Lei: Modelo tributário (limiar) — 4 trimestre(s) de atraso, Lei: Pensão por morte — 1 trimestre(s) de atraso, Lei: Política de natalidade (limiar) — 1 trimestre(s) de atraso, Lei: Previdência rural — 1 trimestre(s) de atraso, Lei: Programa de habitação popular — 4 trimestre(s) de atraso, Lei: Reajuste de aposentadorias e benefícios — 4 trimestre(s) de atraso, Lei: Reforma agrária — 4 trimestre(s) de atraso, Lei: Salário mínimo — 1 trimestre(s) de atraso, Lei: Segurança alimentar — 1 trimestre(s) de atraso, Lei: Seguro-desemprego, Lei: Sistema previdenciário — 4 trimestre(s) de atraso, Lei: Transferência de renda às famílias pobres — 1 trimestre(s) de atraso
 
-### Apoio — Prevenção e cooperação em segurança (lei) — Brasil no turno 0: 0
+### Polarização (índice) — Brasil no turno 0: 87
 
-- **Positivo ←** Onda de violência
+- **Positivo ←** Lei: Aborto, Lei: Ações afirmativas, Lei: Casamento e união civil, Lei: Delação e acordos penais — 1 trimestre(s) de atraso, Lei: Educação domiciliar — 1 trimestre(s) de atraso, Lei: Eutanásia e morte assistida, Lei: Incentivo à cultura — 1 trimestre(s) de atraso, Lei: Independência do Judiciário (limiar) — 1 trimestre(s) de atraso, Lei: Laicidade do Estado (limiar), Lei: Lei anticorrupção (limiar) — 1 trimestre(s) de atraso, Lei: Política de imigração — 1 trimestre(s) de atraso, Lei: Refugiados e asilo — 1 trimestre(s) de atraso, Lei: Regulação das redes sociais, Lei: Vacinação obrigatória (limiar) — 1 trimestre(s) de atraso, Lei: Vouchers escolares — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Sistema de governo — 4 trimestre(s) de atraso, Lei: Voto obrigatório — 4 trimestre(s) de atraso
+
+### População em situação de rua (índice) — Brasil no turno 0: 100
+
+- **Positivo ←** Lei: Política de saúde mental (limiar) — 4 trimestre(s) de atraso
 - **Negativo ←** —
 
-### Eficácia — Rede de proteção às mulheres (lei) — Brasil no turno 0: 0.9
+### Popularidade do governo (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Estratégia contra o crime organizado (limiar) — 1 trimestre(s) de atraso, Lei: Controle de preços, Lei: Imposto sobre grandes fortunas, Lei: Penas máximas, Lei: Sistema de governo (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Aborto (limiar), Lei: Casamento e união civil, Lei: Eutanásia e morte assistida, Lei: Financiamento de campanhas, Lei: Foro privilegiado (limiar), Lei: Idade mínima de aposentadoria, Lei: Imposto sobre herança e doações, Lei: Imposto sobre imóveis urbanos e rurais, Lei: Liberdade de imprensa — 1 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil, Lei: Reajuste de aposentadorias e benefícios (limiar), Lei: Transparência pública — 1 trimestre(s) de atraso
+
+### Poupança doméstica (bolha lenta) — Brasil no turno 0: 50
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Sistema previdenciário — 4 trimestre(s) de atraso
+
+### Preço dos alimentos (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Agrotóxicos (limiar) — 1 trimestre(s) de atraso, Lei: Código florestal (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Controle de preços (limiar)
+
+### Preço da energia (índice) — Brasil no turno 0: 5.45
+
+- **Positivo ←** Lei: Matriz energética — 1 trimestre(s) de atraso, Lei: Precificação de carbono
+- **Negativo ←** Lei: Empresas estatais e privatização — 1 trimestre(s) de atraso, Lei: Energia nuclear — 4 trimestre(s) de atraso
+
+### Preço dos medicamentos (índice) — Brasil no turno 0: 7.47
+
+- **Positivo ←** Lei: Genéricos e patentes de medicamentos — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Pressão hospitalar (índice) — Brasil no turno 0: 66.65
+
+- **Positivo ←** falta de cobertura da atenção básica (limiar), Pobreza, Violência letal, Lei: Regulação dos planos de saúde (limiar) — 1 trimestre(s) de atraso, Lei: Sistema de saúde (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Aborto — 1 trimestre(s) de atraso, Lei: Agrotóxicos — 4 trimestre(s) de atraso, Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Farmácia popular — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes) — 4 trimestre(s) de atraso, Lei: Piso de gasto em saúde — 1 trimestre(s) de atraso, Lei: Médicos no interior — 4 trimestre(s) de atraso, Lei: Regulação dos planos de saúde (limiar) — 1 trimestre(s) de atraso, Lei: Restrição ao tabaco e ao álcool — 1 trimestre(s) de atraso, Lei: Saneamento básico — 4 trimestre(s) de atraso, Lei: Vacinação obrigatória — 4 trimestre(s) de atraso, Lei: Vigilância epidemiológica — 4 trimestre(s) de atraso
+
+### Produção agropecuária (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Reforma agrária — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Agrotóxicos — 4 trimestre(s) de atraso, Lei: Agrotóxicos (limiar) — 1 trimestre(s) de atraso, Lei: Código florestal — 4 trimestre(s) de atraso, Lei: Reforma agrária (limiar) — 1 trimestre(s) de atraso, Lei: Terras indígenas — 4 trimestre(s) de atraso
+
+### Produção de petróleo e minérios (índice) — Brasil no turno 0: 4.01
+
+- **Positivo ←** Lei: Regime do petróleo e da mineração — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Terras indígenas — 4 trimestre(s) de atraso
+
+### Produtividade (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Acordos comerciais — 4 trimestre(s) de atraso, Lei: Defesa da concorrência — 4 trimestre(s) de atraso, Lei: Ensino técnico e profissional — 4 trimestre(s) de atraso, Lei: Investimento em infraestrutura — 4 trimestre(s) de atraso, Lei: Investimento estrangeiro — 4 trimestre(s) de atraso, Lei: Investimento em pesquisa e desenvolvimento — 4 trimestre(s) de atraso, Lei: Jornada de trabalho — 4 trimestre(s) de atraso, Lei: Política de imigração — 4 trimestre(s) de atraso, Desenvolvimento, Infraestrutura, Qualificação do trabalho, Saúde da população, Lei: Política de saúde mental (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Empresas estatais e privatização — 4 trimestre(s) de atraso, Lei: Imposto de renda das empresas — 4 trimestre(s) de atraso, Lei: Incentivos fiscais regionais (limiar) — 4 trimestre(s) de atraso, Lei: Política industrial (limiar) — 4 trimestre(s) de atraso, Corrupção, Lei: Redução de jornada subsidiada (lay-off) (limiar) — 4 trimestre(s) de atraso, Lei: Regime simplificado para pequenas empresas (limiar) — 4 trimestre(s) de atraso, Lei: Regulação bancária (limiar) — 4 trimestre(s) de atraso, Lei: Tarifas de importação — 4 trimestre(s) de atraso, Lei: Terceirização — 4 trimestre(s) de atraso
+
+### Proteção efetiva às mulheres (índice) — Brasil no turno 0: 18.6
+
+- **Positivo ←** Lei: Lei contra a violência doméstica — 4 trimestre(s) de atraso, Capacidade do Estado
+- **Negativo ←** Lei: Posse e porte de armas — 4 trimestre(s) de atraso
+
+### Protestos (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Energia nuclear (limiar) — 1 trimestre(s) de atraso, Lei: Idade mínima de aposentadoria, Lei: Matriz energética (limiar), Lei: Precificação de carbono (limiar), Lei: Reeleição do chefe do Executivo (limiar) — 1 trimestre(s) de atraso, Lei: Saneamento básico (limiar) — 1 trimestre(s) de atraso, Lei: Vacinação obrigatória (limiar)
+- **Negativo ←** Lei: Transporte público (limiar)
+
+### Qualidade ambiental (índice) — Brasil no turno 0: 35.91
+
+- **Positivo ←** Lei: Agrotóxicos — 4 trimestre(s) de atraso, Lei: Código florestal — 4 trimestre(s) de atraso, Lei: Energia nuclear — 4 trimestre(s) de atraso, Lei: Licenciamento ambiental — 4 trimestre(s) de atraso, Lei: Matriz energética — 4 trimestre(s) de atraso, Lei: Saneamento básico — 4 trimestre(s) de atraso, Lei: Terras indígenas — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Qualificação do trabalho (índice) — Brasil no turno 0: 71.35
+
+- **Positivo ←** Lei: Acesso ao ensino superior — 4 trimestre(s) de atraso, Lei: Ensino obrigatório — 4 trimestre(s) de atraso, Lei: Ensino técnico e profissional — 4 trimestre(s) de atraso, Lei: Piso de gasto em educação — 4 trimestre(s) de atraso, Escolaridade, Oportunidades para jovens, Lei: Seguro-desemprego (limiar) — 4 trimestre(s) de atraso, Lei: Trabalho infantil e aprendizagem (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Rebelião nos presídios (situação) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Gestão de presídios (limiar), Lei: Penas máximas (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Gestão de presídios (limiar) — 1 trimestre(s) de atraso
+
+### Recessão (situação) — Brasil no turno 0: 1.67
+
+- **Positivo ←** Desemprego, Lei: Regra fiscal (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Redução de jornada subsidiada (lay-off) — 1 trimestre(s) de atraso, Lei: Regime cambial — 4 trimestre(s) de atraso, Lei: Seguro-desemprego — 1 trimestre(s) de atraso
+
+### Reincidência criminal (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Política de encarceramento — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Gestão de presídios (limiar) — 4 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil — 4 trimestre(s) de atraso
+
+### Renda das famílias (índice) — Brasil no turno 0: 43.21
+
+- **Positivo ←** Lei: Fundo de garantia e indenização por demissão — 1 trimestre(s) de atraso, Lei: Negociação coletiva e sindicatos — 4 trimestre(s) de atraso, Lei: Reajuste de aposentadorias e benefícios — 1 trimestre(s) de atraso, falta de desemprego (limiar), Participação no trabalho de quem cuida, Produtividade, Lei: Salário mínimo, Lei: Terceirização — 1 trimestre(s) de atraso, Lei: Trabalho por aplicativo — 1 trimestre(s) de atraso, Lei: Transporte público
+- **Negativo ←** Lei: Ensino obrigatório, Lei: Imposto sobre imóveis urbanos e rurais, Lei: Imposto de renda da pessoa física, Lei: Jornada de trabalho — 1 trimestre(s) de atraso, Lei: Saneamento básico (limiar) — 1 trimestre(s) de atraso, Lei: Trabalho infantil e aprendizagem (limiar)
+
+### Reputação internacional (índice) — Brasil no turno 0: 31.49
+
+- **Positivo ←** Lei: Acordos comerciais — 1 trimestre(s) de atraso, Lei: Casamento e união civil (limiar) — 1 trimestre(s) de atraso, Lei: Código florestal — 1 trimestre(s) de atraso, Lei: Gasto com defesa — 1 trimestre(s) de atraso, Lei: Genéricos e patentes de medicamentos (limiar) — 1 trimestre(s) de atraso, Lei: Incentivo à cultura (limiar) — 4 trimestre(s) de atraso, Lei: Lei anticorrupção — 4 trimestre(s) de atraso, Lei: Liberdade de imprensa — 4 trimestre(s) de atraso, Lei: Precificação de carbono — 1 trimestre(s) de atraso, Lei: Refugiados e asilo — 1 trimestre(s) de atraso, Lei: Terras indígenas — 1 trimestre(s) de atraso, Lei: Trabalho infantil e aprendizagem — 4 trimestre(s) de atraso, Lei: Transparência pública — 4 trimestre(s) de atraso, Lei: Vigilância epidemiológica — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Aborto (limiar) — 1 trimestre(s) de atraso, Lei: Casamento e união civil (limiar) — 1 trimestre(s) de atraso, Lei: Laicidade do Estado (limiar) — 1 trimestre(s) de atraso, Lei: Penas máximas (limiar) — 1 trimestre(s) de atraso, Lei: Médicos no interior (limiar) — 1 trimestre(s) de atraso, Lei: Regulação das redes sociais (limiar) — 1 trimestre(s) de atraso
+
+### Reservas internacionais (bolha lenta) — Brasil no turno 0: 16
+
+- **Positivo ←** Lei: Controle de capitais — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Resultado fiscal (índice) — Brasil no turno 0: -2.84
+
+- **Positivo ←** Lei: Regra fiscal (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Federalismo — 4 trimestre(s) de atraso, Lei: Gasto com defesa, Lei: Investimento em pesquisa e desenvolvimento, Lei: Piso de gasto em educação, Lei: Piso salarial dos professores — 1 trimestre(s) de atraso, Lei: Piso de gasto em saúde
+
+### Risco país (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Controle de capitais (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Autonomia do banco central — 1 trimestre(s) de atraso, Lei: Meta de inflação — 4 trimestre(s) de atraso, Lei: Regra fiscal — 1 trimestre(s) de atraso
+
+### Rotatividade no emprego (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Seguro-desemprego — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Fundo de garantia e indenização por demissão — 1 trimestre(s) de atraso, Lei: Legislação trabalhista — 1 trimestre(s) de atraso
+
+### Saúde da população (índice) — Brasil no turno 0: 81.63
+
+- **Positivo ←** Lei: Aborto — 4 trimestre(s) de atraso, Lei: Agrotóxicos — 4 trimestre(s) de atraso, Lei: Pensão social para idosos e pessoas com deficiência — 4 trimestre(s) de atraso, Lei: Cuidados de longa duração — 4 trimestre(s) de atraso, Lei: Farmácia popular — 4 trimestre(s) de atraso, Lei: Imposto seletivo (tabaco, álcool, açúcar e poluentes) — 4 trimestre(s) de atraso, Lei: Jornada de trabalho — 4 trimestre(s) de atraso, Lei: Legislação trabalhista — 4 trimestre(s) de atraso, Lei: Licença parental — 4 trimestre(s) de atraso, Lei: Piso de gasto em saúde — 4 trimestre(s) de atraso, Lei: Política de drogas (limiar) — 4 trimestre(s) de atraso, Lei: Médicos no interior — 4 trimestre(s) de atraso, Cobertura da atenção básica, Escolaridade, Renda das famílias, Lei: Regulação das redes sociais (limiar) — 4 trimestre(s) de atraso, Lei: Restrição ao tabaco e ao álcool — 4 trimestre(s) de atraso, Lei: Saneamento básico — 4 trimestre(s) de atraso, Lei: Segurança alimentar — 4 trimestre(s) de atraso, Lei: Sistema de saúde — 4 trimestre(s) de atraso, Lei: Trabalho por aplicativo — 4 trimestre(s) de atraso, Lei: Vacinação obrigatória — 4 trimestre(s) de atraso, Lei: Vigilância epidemiológica — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Genéricos e patentes de medicamentos (limiar) — 4 trimestre(s) de atraso, Lei: Política de natalidade (limiar) — 4 trimestre(s) de atraso, Lei: Posse e porte de armas — 4 trimestre(s) de atraso, Crise no atendimento, Pobreza, Pressão hospitalar
+
+### Segregação escolar (índice) — Brasil no turno 0: 1.41
+
+- **Positivo ←** Lei: Avaliação das escolas (limiar) — 4 trimestre(s) de atraso, Lei: Ensino técnico e profissional (limiar) — 4 trimestre(s) de atraso, Lei: Vouchers escolares (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Sensação de segurança (índice) — Brasil no turno 0: 57.68
+
+- **Positivo ←** Lei: Modelo de polícia, Lei: Penas máximas, Lei: Política de encarceramento — 1 trimestre(s) de atraso, Lei: Posse e porte de armas, falta de violência letal (limiar) — 1 trimestre(s) de atraso, Proteção efetiva às mulheres
+- **Negativo ←** Lei: Câmeras corporais na polícia — 1 trimestre(s) de atraso, Lei: Maioridade penal e justiça juvenil, Lei: Política de drogas, Onda de violência
+
+### Sofrimento mental (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Política de saúde mental (limiar) — 4 trimestre(s) de atraso
+
+### Sonegação (índice) — Brasil no turno 0: 52.77
+
+- **Positivo ←** Lei: Imposto sobre herança e doações — 1 trimestre(s) de atraso, Lei: Imposto de renda da pessoa física — 1 trimestre(s) de atraso, Lei: Imposto sobre consumo (IVA) — 1 trimestre(s) de atraso, Lei: Regime simplificado para pequenas empresas (limiar) — 1 trimestre(s) de atraso, Lei: Tributação de dividendos — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Imposto sobre transações financeiras — 1 trimestre(s) de atraso
+
+### Taxa de juros (índice) — Brasil no turno 0: 12.01
+
+- **Positivo ←** Lei: Autonomia do banco central — 1 trimestre(s) de atraso, Lei: Banco de desenvolvimento — 1 trimestre(s) de atraso, Lei: Controle de capitais — 1 trimestre(s) de atraso, Lei: Meta de inflação, Lei: Regulação bancária — 1 trimestre(s) de atraso
+- **Negativo ←** Lei: Regra fiscal — 4 trimestre(s) de atraso
+
+### Trabalho infantil (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** —
+- **Negativo ←** Lei: Trabalho infantil e aprendizagem — 4 trimestre(s) de atraso
+
+### Turismo (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Apostas e jogos de azar (limiar) — 4 trimestre(s) de atraso, Lei: Eutanásia e morte assistida (limiar) — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Uso de drogas (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Política de drogas (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Política de saúde mental (limiar) — 4 trimestre(s) de atraso
+
+### Vício em apostas (índice) — Brasil no turno 0: 6.84
+
+- **Positivo ←** Lei: Apostas e jogos de azar — 1 trimestre(s) de atraso
+- **Negativo ←** —
+
+### Violência letal (índice) — Brasil no turno 0: 7.12
+
+- **Positivo ←** Lei: Estratégia contra o crime organizado (limiar) — 1 trimestre(s) de atraso, Lei: Modelo de polícia (limiar) — 4 trimestre(s) de atraso, Lei: Posse e porte de armas — 4 trimestre(s) de atraso, Crime organizado, Desigualdade, falta de oportunidades para jovens (limiar), Pobreza
+- **Negativo ←** Lei: Estratégia contra o crime organizado (limiar) — 1 trimestre(s) de atraso, Lei: Estratégia contra o crime organizado (limiar), Lei: Escola em tempo integral — 4 trimestre(s) de atraso, Lei: Penas máximas — 4 trimestre(s) de atraso, Lei: Política de encarceramento (limiar) — 1 trimestre(s) de atraso, Lei: Lei contra a violência doméstica — 4 trimestre(s) de atraso
+
+### Vitalidade cultural (índice) — Brasil no turno 0: 0
+
+- **Positivo ←** Lei: Incentivo à cultura (limiar) — 4 trimestre(s) de atraso
+- **Negativo ←** Lei: Incentivo à cultura (limiar) — 4 trimestre(s) de atraso
+
+### Eficácia — Aborto (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Corrupção
+
+### Eficácia — Acesso ao ensino superior (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Evasão escolar
+
+### Eficácia — Ações afirmativas (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Corrupção
+
+### Eficácia — Acordos comerciais (lei) — Brasil no turno 0: 1.28
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura, Reputação internacional
+- **Negativo ←** Câmbio
+
+### Eficácia — Agrotóxicos (lei) — Brasil no turno 0: 1.11
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Crime organizado, Informalidade
+
+### Eficácia — Apostas e jogos de azar (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Autonomia do banco central (lei) — Brasil no turno 0: 0.86
+
+- **Positivo ←** Força das instituições, Resultado fiscal
+- **Negativo ←** Dívida pública
+
+### Eficácia — Avaliação das escolas (lei) — Brasil no turno 0: 1.28
+
+- **Positivo ←** Capacidade do Estado, Confiança nas instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Banco de desenvolvimento (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Pensão social para idosos e pessoas com deficiência (lei) — Brasil no turno 0: 1.14
 
 - **Positivo ←** Capacidade do Estado
 - **Negativo ←** Corrupção
+
+### Eficácia — Câmeras corporais na polícia (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Casamento e união civil (lei) — Brasil no turno 0: 1.08
+
+- **Positivo ←** Confiança nas instituições, Força das instituições
+- **Negativo ←** Polarização
+
+### Eficácia — Código florestal (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Estratégia contra o crime organizado (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Controle de capitais (lei) — Brasil no turno 0: 1.16
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Controle de preços (lei) — Brasil no turno 0: 1.04
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Câmbio, Inflação
+
+### Eficácia — Cuidados de longa duração (lei) — Brasil no turno 0: 1.09
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Envelhecimento, Informalidade
+
+### Eficácia — Defesa da concorrência (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Delação e acordos penais (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Educação domiciliar (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Pobreza
+
+### Eficácia — Empresas estatais e privatização (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Energia nuclear (lei) — Brasil no turno 0: 1.24
+
+- **Positivo ←** Capacidade do Estado, Desenvolvimento
+- **Negativo ←** Corrupção
+
+### Eficácia — Ensino obrigatório (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Pobreza
+
+### Eficácia — Ensino técnico e profissional (lei) — Brasil no turno 0: 1.04
+
+- **Positivo ←** Confiança empresarial, Investimento
+- **Negativo ←** Informalidade
+
+### Eficácia — Escola em tempo integral (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Pobreza
+
+### Eficácia — Estabilidade dos servidores públicos (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Eutanásia e morte assistida (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Pobreza
+
+### Eficácia — Farmácia popular (lei) — Brasil no turno 0: 1.16
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Corrupção, Preço dos medicamentos
+
+### Eficácia — Federalismo (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Desigualdade regional
+
+### Eficácia — Financiamento de campanhas (lei) — Brasil no turno 0: 1.16
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Informalidade
+
+### Eficácia — Foro privilegiado (lei) — Brasil no turno 0: 1.02
+
+- **Positivo ←** Força das instituições
+- **Negativo ←** Impunidade
+
+### Eficácia — Fundo de garantia e indenização por demissão (lei) — Brasil no turno 0: 1.05
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Inflação, Informalidade
+
+### Eficácia — Gasto com defesa (lei) — Brasil no turno 0: 1.24
+
+- **Positivo ←** Capacidade do Estado, Desenvolvimento
+- **Negativo ←** Corrupção
+
+### Eficácia — Genéricos e patentes de medicamentos (lei) — Brasil no turno 0: 1.24
+
+- **Positivo ←** Capacidade do Estado, Desenvolvimento
+- **Negativo ←** Concentração de mercado
+
+### Eficácia — Gestão de presídios (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Lotação dos presídios
+
+### Eficácia — Idade mínima de aposentadoria (lei) — Brasil no turno 0: 1.26
+
+- **Positivo ←** Qualificação do trabalho, Saúde da população
+- **Negativo ←** Desemprego, Informalidade
+
+### Eficácia — Igualdade salarial de gênero (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade
+
+### Eficácia — Imposto sobre grandes fortunas (lei) — Brasil no turno 0: 1.22
+
+- **Positivo ←** Capacidade do Estado, Cooperação fiscal internacional
+- **Negativo ←** Corrupção, Fuga de capitais
+
+### Eficácia — Imposto sobre herança e doações (lei) — Brasil no turno 0: 1.11
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Fuga de capitais, Sonegação
+
+### Eficácia — Imposto sobre imóveis urbanos e rurais (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Imposto de renda das empresas (lei) — Brasil no turno 0: 1.2
+
+- **Positivo ←** Capacidade do Estado, Reputação internacional
+- **Negativo ←** Concentração de mercado, Corrupção
+
+### Eficácia — Imposto de renda da pessoa física (lei) — Brasil no turno 0: 1.13
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade, Sonegação
+
+### Eficácia — Imposto seletivo (tabaco, álcool, açúcar e poluentes) (lei) — Brasil no turno 0: 1.12
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Imposto sobre consumo (IVA) (lei) — Brasil no turno 0: 1.13
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade, Sonegação
+
+### Eficácia — Imposto sobre transações financeiras (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade
+
+### Eficácia — Incentivo à cultura (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Liberdades civis, Renda das famílias
+- **Negativo ←** Corrupção
+
+### Eficácia — Incentivos fiscais regionais (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Infraestrutura, Qualificação do trabalho
+- **Negativo ←** Corrupção
+
+### Eficácia — Independência do Judiciário (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Investimento em infraestrutura (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Investimento estrangeiro (lei) — Brasil no turno 0: 1.25
+
+- **Positivo ←** Força das instituições, Infraestrutura, Qualificação do trabalho
+- **Negativo ←** Corrupção, Risco país
+
+### Eficácia — Investimento em pesquisa e desenvolvimento (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Escolaridade, Qualificação do trabalho
+- **Negativo ←** Corrupção
+
+### Eficácia — Jornada de trabalho (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado, Produtividade
+- **Negativo ←** Informalidade
+
+### Eficácia — Laicidade do Estado (lei) — Brasil no turno 0: 0.94
+
+- **Positivo ←** Força das instituições
+- **Negativo ←** Polarização
+
+### Eficácia — Legislação trabalhista (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Lei anticorrupção (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Captura política
+
+### Eficácia — Liberdade de imprensa (lei) — Brasil no turno 0: 1.11
+
+- **Positivo ←** Escolaridade, Força das instituições
+- **Negativo ←** Concentração de mercado
+
+### Eficácia — Licença parental (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade
+
+### Eficácia — Licenciamento ambiental (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Maioridade penal e justiça juvenil (lei) — Brasil no turno 0: 1.21
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Crime organizado, Lotação dos presídios
+
+### Eficácia — Matriz energética (lei) — Brasil no turno 0: 1.22
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura de energia
+- **Negativo ←** Risco país, Taxa de juros
+
+### Eficácia — Meta de inflação (lei) — Brasil no turno 0: 1.01
+
+- **Positivo ←** Confiança nas instituições, Força das instituições
+- **Negativo ←** Dívida pública, Resultado fiscal
+
+### Eficácia — Modelo de polícia (lei) — Brasil no turno 0: 1.28
+
+- **Positivo ←** Capacidade do Estado, Confiança nas instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Modelo tributário (lei) — Brasil no turno 0: 1.15
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Informalidade, Sonegação
+
+### Eficácia — Negociação coletiva e sindicatos (lei) — Brasil no turno 0: 1.15
+
+- **Positivo ←** Confiança nas instituições, Força das instituições
+- **Negativo ←** Informalidade
+
+### Eficácia — Penas máximas (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Impunidade
+
+### Eficácia — Pensão por morte (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Piso de gasto em educação (lei) — Brasil no turno 0: 1.16
+
+- **Positivo ←** Aprendizagem dos alunos, Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Piso salarial dos professores (lei) — Brasil no turno 0: 0.99
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Dívida pública
+
+### Eficácia — Piso de gasto em saúde (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Corrupção
+
+### Eficácia — Política de drogas (lei) — Brasil no turno 0: 1.15
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Política de encarceramento (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Lotação dos presídios
+
+### Eficácia — Política de imigração (lei) — Brasil no turno 0: 1.28
+
+- **Positivo ←** Capacidade do Estado, Qualificação do trabalho
+- **Negativo ←** Informalidade
+
+### Eficácia — Política de natalidade (lei) — Brasil no turno 0: 1.19
+
+- **Positivo ←** Participação no trabalho de quem cuida, Renda das famílias
+- **Negativo ←** Custo de contratar, Déficit habitacional
+
+### Eficácia — Política industrial (lei) — Brasil no turno 0: 1.31
+
+- **Positivo ←** Capacidade do Estado, Força das instituições, Qualificação do trabalho
+- **Negativo ←** Corrupção
+
+### Eficácia — Posse e porte de armas (lei) — Brasil no turno 0: 1.12
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Precificação de carbono (lei) — Brasil no turno 0: 1.15
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Sonegação
+
+### Eficácia — Previdência rural (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção
+
+### Eficácia — Programa de habitação popular (lei) — Brasil no turno 0: 1.21
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Corrupção, Taxa de juros
+
+### Eficácia — Médicos no interior (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Corrupção
+
+### Eficácia — Proteção de dados pessoais (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** —
+
+### Eficácia — Lei contra a violência doméstica (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Desigualdade
+
+### Eficácia — Reajuste de aposentadorias e benefícios (lei) — Brasil no turno 0: 0.96
+
+- **Positivo ←** Arrecadação, Produtividade
+- **Negativo ←** Envelhecimento
+
+### Eficácia — Redução de jornada subsidiada (lay-off) (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Informalidade
+
+### Eficácia — Reeleição do chefe do Executivo (lei) — Brasil no turno 0: 1.02
+
+- **Positivo ←** Força das instituições
+- **Negativo ←** Captura política
+
+### Eficácia — Reforma agrária (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado, Crédito disponível
+- **Negativo ←** Corrupção
+
+### Eficácia — Refugiados e asilo (lei) — Brasil no turno 0: 1.15
+
+- **Positivo ←** Capacidade do Estado, Reservas internacionais
+- **Negativo ←** Desemprego
+
+### Eficácia — Regime cambial (lei) — Brasil no turno 0: 0.9
+
+- **Positivo ←** Força das instituições, Reservas internacionais
+- **Negativo ←** Dívida pública
+
+### Eficácia — Regime do petróleo e da mineração (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Risco país
+
+### Eficácia — Regime simplificado para pequenas empresas (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Complexidade tributária, Corrupção
+
+### Eficácia — Regra fiscal (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Regulação bancária (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Regulação dos planos de saúde (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Captura política, Corrupção
+
+### Eficácia — Regulação das redes sociais (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Restrição ao tabaco e ao álcool (lei) — Brasil no turno 0: 1.12
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Salário mínimo (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado, Produtividade
+- **Negativo ←** Informalidade
+
+### Eficácia — Saneamento básico (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção
+
+### Eficácia — Política de saúde mental (lei) — Brasil no turno 0: 1.17
+
+- **Positivo ←** Capacidade do Estado, Cobertura da atenção básica
+- **Negativo ←** Uso de drogas
+
+### Eficácia — Segurança alimentar (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Corrupção, Preço dos alimentos
+
+### Eficácia — Seguro-desemprego (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Serviço militar (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Corrupção
+
+### Eficácia — Sistema de governo (lei) — Brasil no turno 0: 0.94
+
+- **Positivo ←** Força das instituições
+- **Negativo ←** Polarização
+
+### Eficácia — Sistema de saúde (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura
+- **Negativo ←** Corrupção, Desigualdade regional
+
+### Eficácia — Sistema previdenciário (lei) — Brasil no turno 0: 1.08
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Envelhecimento, Informalidade
+
+### Eficácia — Tarifas de importação (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Terceirização (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Informalidade
+
+### Eficácia — Terras indígenas (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado, Força das instituições
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Trabalho infantil e aprendizagem (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Informalidade, Pobreza
+
+### Eficácia — Trabalho por aplicativo (lei) — Brasil no turno 0: 1.11
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Desemprego
+
+### Eficácia — Transferência de renda às famílias pobres (lei) — Brasil no turno 0: 1.05
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Corrupção, Inflação
+
+### Eficácia — Transparência pública (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Escolaridade
+- **Negativo ←** Impunidade
+
+### Eficácia — Transporte público (lei) — Brasil no turno 0: 1.22
+
+- **Positivo ←** Capacidade do Estado, Infraestrutura de transportes
+- **Negativo ←** Corrupção, Crime organizado
+
+### Eficácia — Tributação de dividendos (lei) — Brasil no turno 0: 1.23
+
+- **Positivo ←** Capacidade do Estado, Cooperação fiscal internacional
+- **Negativo ←** Sonegação
+
+### Eficácia — Vacinação obrigatória (lei) — Brasil no turno 0: 1.16
+
+- **Positivo ←** Cobertura da atenção básica, Confiança nas instituições
+- **Negativo ←** Desinformação
+
+### Eficácia — Vigilância epidemiológica (lei) — Brasil no turno 0: 1.28
+
+- **Positivo ←** Capacidade do Estado, Confiança nas instituições
+- **Negativo ←** Desinformação
+
+### Eficácia — Voto obrigatório (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** —
+
+### Eficácia — Vouchers escolares (lei) — Brasil no turno 0: 1.14
+
+- **Positivo ←** Capacidade do Estado
+- **Negativo ←** Desigualdade

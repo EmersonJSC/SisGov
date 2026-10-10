@@ -1,0 +1,17 @@
+{
+  "id": "cambio--eficacia-controle-de-precos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "cambio",
+  "alvo": "eficacia:controle-de-precos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

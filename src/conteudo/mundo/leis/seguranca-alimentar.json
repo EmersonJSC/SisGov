@@ -1,0 +1,53 @@
+{
+  "id": "seguranca-alimentar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Segurança alimentar",
+  "descricao": "Define como o Estado garante comida a quem passa fome: deixa com o mercado, faz ações pontuais (cestas, restaurantes populares), dá cartão-alimentação ou distribui grãos em massa.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério do Desenvolvimento e Assistência Social",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_seguranca_alimentar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Sem política alimentar",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "acoes-pontuais",
+        "rotulo": "Cestas e restaurantes populares",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.066
+      },
+      {
+        "id": "cartao-alimentacao",
+        "rotulo": "Cartão-alimentação",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.134
+      },
+      {
+        "id": "distribuicao-massiva",
+        "rotulo": "Distribuição pública de grãos",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.2
+      }
+    ]
+  },
+  "consequencias": [
+    "seguranca-alimentar--inseguranca-alimentar",
+    "seguranca-alimentar--saude-populacao",
+    "seguranca-alimentar--escolaridade",
+    "seguranca-alimentar--pobreza",
+    "seguranca-alimentar--gasto-publico",
+    "seguranca-alimentar--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

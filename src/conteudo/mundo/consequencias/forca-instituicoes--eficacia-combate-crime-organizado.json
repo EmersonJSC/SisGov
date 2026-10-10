@@ -1,0 +1,17 @@
+{
+  "id": "forca-instituicoes--eficacia-combate-crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "forca_instituicoes",
+  "alvo": "eficacia:combate-crime-organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

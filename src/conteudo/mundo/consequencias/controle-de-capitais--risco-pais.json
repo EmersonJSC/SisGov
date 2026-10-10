@@ -1,0 +1,18 @@
+{
+  "id": "controle-de-capitais--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_controle_de_capitais",
+  "alvo": "risco_pais",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.21212121,
+    "limiar": 67,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

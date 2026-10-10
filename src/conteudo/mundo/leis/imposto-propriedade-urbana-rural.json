@@ -1,0 +1,35 @@
+{
+  "id": "imposto-propriedade-urbana-rural",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto sobre imóveis urbanos e rurais",
+  "descricao": "Define quanto se arrecada todo ano com imóveis urbanos e terras rurais, com valores venais atualizados ou não.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_propriedade_urbana_rural",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 4
+    }
+  },
+  "consequencias": [
+    "imposto-propriedade-urbana-rural--arrecadacao",
+    "imposto-propriedade-urbana-rural--desigualdade",
+    "imposto-propriedade-urbana-rural--desigualdade-2",
+    "imposto-propriedade-urbana-rural--deficit-habitacional",
+    "imposto-propriedade-urbana-rural--renda-familias",
+    "imposto-propriedade-urbana-rural--popularidade-governo",
+    "imposto-propriedade-urbana-rural--investimento"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "politica-de-natalidade--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_natalidade",
+  "alvo": "gasto_publico",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.175,
+    "limiar": 60,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

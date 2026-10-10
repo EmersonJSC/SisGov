@@ -1,0 +1,17 @@
+{
+  "id": "desemprego--eficacia-idade-minima-aposentadoria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "desemprego",
+  "alvo": "eficacia:idade-minima-aposentadoria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

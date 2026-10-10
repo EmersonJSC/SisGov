@@ -1,0 +1,53 @@
+{
+  "id": "igualdade-salarial-de-genero",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Igualdade salarial de gênero",
+  "descricao": "Define como a lei garante salário igual para trabalho igual entre homens e mulheres: nada, princípio, transparência obrigatória ou certificação.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério das Mulheres",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_igualdade_salarial_de_genero",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-garantia",
+        "rotulo": "Sem garantia legal",
+        "valor": 0,
+        "custoAnualPercentualPib": 0.0
+      },
+      {
+        "id": "principio-legal",
+        "rotulo": "Princípio na lei",
+        "valor": 33,
+        "custoAnualPercentualPib": 0.0165
+      },
+      {
+        "id": "transparencia",
+        "rotulo": "Relatórios de transparência",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.0335
+      },
+      {
+        "id": "certificacao",
+        "rotulo": "Certificação obrigatória",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.05
+      }
+    ]
+  },
+  "consequencias": [
+    "igualdade-salarial-de-genero--diferenca-salarial-genero",
+    "igualdade-salarial-de-genero--participacao-trabalho-cuidadoras",
+    "igualdade-salarial-de-genero--desigualdade",
+    "igualdade-salarial-de-genero--discriminacao",
+    "igualdade-salarial-de-genero--confianca-empresarial",
+    "igualdade-salarial-de-genero--custo-trabalhista"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

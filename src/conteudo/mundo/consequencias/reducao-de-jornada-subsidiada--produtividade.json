@@ -1,0 +1,18 @@
+{
+  "id": "reducao-de-jornada-subsidiada--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_reducao_de_jornada_subsidiada",
+  "alvo": "produtividade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -3.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

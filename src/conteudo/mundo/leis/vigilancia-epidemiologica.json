@@ -1,0 +1,34 @@
+{
+  "id": "vigilancia-epidemiologica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Vigilância epidemiológica",
+  "descricao": "Fixa quanto o Estado gasta para detectar surtos cedo: laboratórios, notificação de casos, rastreamento, estoques estratégicos e equipes de resposta.",
+  "area": "Saúde",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_vigilancia_epidemiologica",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.5
+    }
+  },
+  "consequencias": [
+    "vigilancia-epidemiologica--epidemia",
+    "vigilancia-epidemiologica--gasto-publico",
+    "vigilancia-epidemiologica--pressao-hospitalar",
+    "vigilancia-epidemiologica--saude-populacao",
+    "vigilancia-epidemiologica--reputacao-internacional",
+    "vigilancia-epidemiologica--liberdade-civil"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

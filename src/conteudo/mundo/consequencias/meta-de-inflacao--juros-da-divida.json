@@ -1,0 +1,17 @@
+{
+  "id": "meta-de-inflacao--juros-da-divida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_meta_de_inflacao",
+  "alvo": "juros_da_divida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

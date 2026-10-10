@@ -1,0 +1,34 @@
+{
+  "id": "imposto-grandes-fortunas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "tributaria",
+  "nome": "Imposto sobre grandes fortunas",
+  "descricao": "Define a alíquota anual máxima cobrada sobre o patrimônio líquido dos mais ricos, acima de um limite de isenção.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "aliquota_imposto_grandes_fortunas",
+    "unidade": "percentual_0_100"
+  },
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 3.5
+    }
+  },
+  "consequencias": [
+    "imposto-grandes-fortunas--desigualdade",
+    "imposto-grandes-fortunas--arrecadacao",
+    "imposto-grandes-fortunas--fuga-capitais",
+    "imposto-grandes-fortunas--investimento",
+    "imposto-grandes-fortunas--complexidade-tributaria",
+    "imposto-grandes-fortunas--popularidade-governo"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

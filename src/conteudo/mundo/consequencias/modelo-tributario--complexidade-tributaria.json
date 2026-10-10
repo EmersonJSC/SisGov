@@ -1,0 +1,18 @@
+{
+  "id": "modelo-tributario--complexidade-tributaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_modelo_tributario",
+  "alvo": "complexidade_tributaria",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 7.0,
+    "limiar": 99,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
