@@ -784,7 +784,7 @@ data, commit e teste.
 - [ ] SG137 Leis orçamentárias completas — a conversão e o elo contábil saíram no SG157; falta o piso como % da receita
 - [ ] SG138 Leis regulatórias com opções — custo por opção saiu no SG157 (D-52); falta a lei filha que exige uma opção da mãe
 - [x] SG139 Leis tributárias — feito no SG157 fase 1 (alíquota × base da rede; `orcamentoNaRede.test.ts`)
-- [x] SG143 Grupos sociais como nós da rede — 10/out · commit desta entrega (D-60) · check verde, 329 testes / 67 arquivos; `gruposSociais.test.ts`. 11 segmentos, 515 ligações; aprovação na barra (51% no início) com o boletim de cada grupo. O módulo político antigo (`politica` do estado inicial, partidos e perfis sintéticos) fica para o ciclo eleitoral (M3)
+- [x] SG143 Grupos sociais como nós da rede — 10/out · `816fc65` (D-60) · check verde, 329 testes / 67 arquivos; `gruposSociais.test.ts`. 11 segmentos, 515 ligações; aprovação na barra (51% no início) com o boletim de cada grupo. O módulo político antigo (`politica` do estado inicial, partidos e perfis sintéticos) fica para o ciclo eleitoral (M3)
 - [ ] SG104 Implantação mensal pela partida — versão mínima feita no SG145 (`advancePolicyImplementation`: a lei anda até a meta pela `respostaTemporal`)
 - [ ] SG105 Fiscal no turno real — a rede já é a única conta que a tela lê (SG157); falta tirar o módulo fiscal antigo do turno
 - [ ] SG106 Ocorrências na partida
