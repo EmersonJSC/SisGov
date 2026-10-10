@@ -1,5 +1,9 @@
-import { advanceQuarterlyLaboratoryTurn } from "./game/advanceQuarterlyLaboratoryTurn";
-import { prepareMonthlyContent } from "./game/prepareMonthlyContent";
+import {
+  criarPartida,
+  encerrarTurno,
+  mudarLei,
+  type Partida,
+} from "./app/partida";
 import { appendTurnLog, type TurnLogEntry } from "./game/turnJournal";
 import { TurnLogPanel } from "./ui/TurnLogPanel";
 import { MapPhysics } from "./mapPhysics";
@@ -27,14 +31,13 @@ import {
 } from "./influenceLayout";
 import { relationPath } from "./relationPaths";
 import {
-  createExecution,
   evaluateSituation,
   type EngineExecution,
   type PolicyFile,
   type ResolvedPackage,
   type ScenarioGraph,
 } from "./engine";
-import { createBrazilMap } from "./scenarios/brazilMap";
+import { brazilVisualMap } from "./scenarios/brazilMap";
 
 const stage = document.querySelector<HTMLElement>("#law-stage")!;
 const editor = document.querySelector<HTMLDialogElement>("#law-editor")!;
@@ -119,6 +122,15 @@ const categoryStyle: Record<
 };
 
 let mapState: MapState | undefined;
+/** A partida vive na camada de aplicação; a tela só guarda a referência. */
+let partida: Partida | undefined;
+
+function restartPartida(): void {
+  const criada = criarPartida();
+  if (!criada.ok) throw new Error(criada.erros.join(" "));
+  partida = criada.value;
+  if (mapState) mapState.execution = partida.game.execution;
+}
 let processing = false;
 let activeFilter: MapFilter = "influence";
 let cachedLayout: ReturnType<typeof buildInfluenceLayout> | undefined;
@@ -1114,96 +1126,57 @@ function render(
 }
 
 advanceButton.addEventListener("click", (event) => {
-  if (!mapState || processing || event.detail > 1) return;
+  if (!mapState || !partida || processing || event.detail > 1) return;
   processing = true;
   advanceButton.disabled = true;
   const current = mapState;
-  let committed = false;
   try {
-    const next = advanceQuarterlyLaboratoryTurn(
-      current.content,
-      current.graph,
-      current,
-    );
-    if (!next.ok) {
-      const nextTurn = current.execution.step / 3 + 1;
-      const details = next.diagnostics.map(
-        (d) => `${d.message} [${d.file} · ${d.field} · ${d.code}]`,
-      );
-      recordLog(
-        "error",
-        `Turno ${nextTurn} não confirmado`,
-        ["O estado e as decisões preparadas foram preservados.", ...details],
-        { turn: nextTurn, period: "quarter" },
-      );
-      showNotice(details.join(" "));
+    let next = partida;
+    for (const [policyId, value] of current.pending) {
+      const changed = mudarLei(next, policyId, value);
+      if (!changed.ok) {
+        recordLog("error", "Mudança recusada", [...changed.erros]);
+        showNotice(changed.erros.join(" "));
+        return;
+      }
+      next = changed.value;
+    }
+    const passed = encerrarTurno(next);
+    if (!passed.ok) {
+      recordLog("error", "Turno não confirmado", [
+        "O estado e as decisões preparadas foram preservados.",
+        ...passed.erros,
+      ]);
+      showNotice(passed.erros.join(" "));
       return;
     }
     const previous = current.execution.values;
-    const details = [
-      `${current.pending.size} decisões preparadas; três meses técnicos foram processados.`,
-      "Laboratório: calendário eleitoral, votação e financiamento da dívida ainda não estão integrados.",
-    ];
-    for (const policy of current.content.policies) {
-      const id = policy.controle.variavel;
-      if (next.value.execution.values[id] !== previous[id])
-        details.push(
-          `${policy.nome}: ${controlLabel(policy, previous[id])} → ${controlLabel(policy, next.value.execution.values[id])}; meta ${controlLabel(policy, next.value.targets.get(policy.id) ?? next.value.execution.values[id])}.`,
-        );
-    }
+    partida = passed.value.partida;
+    const { relatorio } = passed.value;
+    const targets = new Map(
+      partida.game.policies.map((state) => [
+        state.policyDefinitionId,
+        state.desiredLevel,
+      ]),
+    );
     mapState = {
       ...current,
-      execution: next.value.execution,
-      targets: new Map(next.value.targets),
-      activeSituationIds: new Set(next.value.activeSituationIds),
-      occurredEventIds: new Set(next.value.occurredEventIds),
+      execution: partida.game.execution,
+      targets,
       pending: new Map(),
     };
-    committed = true;
-    turn.textContent = String(next.value.absoluteQuarter);
-    const monthlyEntries = [...next.value.journalEntries]
-      .filter((entry) => entry.period === "month")
-      .reverse();
-    for (const entry of monthlyEntries) {
-      const month = next.value.months.find(
-        (item) => item.absoluteMonth === entry.month,
-      );
-      const resultDetails = (month?.explanations ?? []).map((explanation) => {
-        const node = current.graph.nodesById[explanation.targetId];
-        return `${node.nome}: ${format.format(explanation.previousValue)} → ${format.format(explanation.result)} ${node.unidade}.`;
-      });
-      recordLog(
-        entry.level,
-        entry.title,
-        [...entry.details, ...resultDetails],
-        { turn: entry.turn, month: entry.month, period: entry.period },
-      );
-    }
-    const quarterSummary = next.value.journalEntries.find(
-      (entry) => entry.period === "quarter",
-    );
-    recordLog(
-      quarterSummary?.level ?? "success",
-      quarterSummary?.title ?? "Trimestre concluído",
-      [...(quarterSummary?.details ?? []), ...details],
-      { turn: next.value.absoluteQuarter, period: "quarter" },
-    );
+    turn.textContent = String(relatorio.turno + 1);
+    recordLog("success", `Turno ${relatorio.turno} concluído`, [
+      `Receita ${format.format(relatorio.receita)} · gasto ${format.format(relatorio.gastoPrimario)} · juros ${format.format(relatorio.juros)} · resultado ${format.format(relatorio.resultado)}.`,
+      ...relatorio.mudancas.map(
+        (item) =>
+          `${item.nome}: ${format.format(item.antes)} → ${format.format(item.depois)}`,
+      ),
+    ]);
     render(previous, currentInfluence(current.graph, previous));
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
-    recordLog(
-      "error",
-      committed
-        ? "Trimestre confirmado; falha ao atualizar a tela"
-        : "Falha ao preparar o trimestre",
-      [
-        detail,
-        committed
-          ? "O trimestre já foi confirmado. Não repita a decisão para corrigir a exibição."
-          : "O estado e as decisões preparadas foram preservados.",
-      ],
-      { turn: Math.floor(current.execution.step / 3) + 1, period: "quarter" },
-    );
+    recordLog("error", "Falha ao passar o turno", [detail]);
     showNotice(detail);
   } finally {
     window.setTimeout(() => {
@@ -1222,7 +1195,7 @@ resetButton.addEventListener("click", () => {
     return;
   cachedLayout = undefined;
   physics = undefined;
-  mapState.execution = createExecution(mapState.content, mapState.graph);
+  restartPartida();
   mapState.targets.clear();
   mapState.activeSituationIds.clear();
   mapState.occurredEventIds.clear();
@@ -1235,28 +1208,23 @@ resetButton.addEventListener("click", () => {
 });
 
 try {
-  const sandbox = createBrazilMap();
-  const prepared = prepareMonthlyContent(sandbox.content);
-  if (!prepared.ok)
-    throw new Error(
-      prepared.diagnostics.map((issue) => issue.message).join(" "),
-    );
-  const { content, graph } = prepared.value;
+  restartPartida();
+  const { content, graph } = partida!;
   mapState = {
     content,
     graph,
-    execution: createExecution(content, graph),
+    execution: partida!.game.execution,
     pending: new Map(),
     targets: new Map(),
-    selectedPolicyId: sandbox.content.policies[0].id,
+    selectedPolicyId: content.policies[0].id,
     selectedIndicatorId:
-      sandbox.content.variables.variaveis.find(
+      content.variables.variaveis.find(
         (variable) =>
           variable.tipo !== "controle" && variable.area !== "Técnica",
       )?.id ?? "",
     activeSituationIds: new Set(),
     occurredEventIds: new Set(),
-    visualMap: sandbox.visualMap,
+    visualMap: brazilVisualMap(content),
   };
   updateSituations();
   render();
@@ -1418,7 +1386,7 @@ function enterLaboratory(): void {
   } else {
     cachedLayout = undefined;
     physics = undefined;
-    mapState.execution = createExecution(mapState.content, mapState.graph);
+    restartPartida();
     mapState.targets.clear();
     mapState.activeSituationIds.clear();
     mapState.occurredEventIds.clear();

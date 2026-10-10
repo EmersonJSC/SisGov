@@ -6,7 +6,7 @@
   "nome": "Ações afirmativas",
   "descricao": "Define se o Estado reserva vagas em universidades, concursos e candidaturas para grupos historicamente excluídos, e com que critério.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério da Igualdade Racial",
+  "ministerio": "Ministério dos Direitos e da Defesa",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_acoes_afirmativas",

@@ -67,6 +67,18 @@ SUGERIDAS = {  # id: (tipo, avaliacao)
 }
 PARTIDA_BRASIL = {"divida_publica": 77, "reservas_internacionais": 16, "envelhecimento": 40,
                   "escolaridade": 45, "desenvolvimento": 50, "infraestrutura": 45}
+MINISTERIO_POR_AREA = {
+    "Trabalho e emprego": "Ministério do Trabalho",
+    "Tributação": "Ministério da Fazenda",
+    "Economia, finanças e comércio exterior": "Ministério do Desenvolvimento",
+    "Saúde": "Ministério da Saúde",
+    "Educação, ciência e cultura": "Ministério da Educação",
+    "Previdência e assistência social": "Ministério da Previdência",
+    "Segurança, justiça e drogas": "Ministério da Justiça",
+    "Direitos civis, costumes, imigração, mídia e defesa": "Ministério dos Direitos e da Defesa",
+    "Instituições, Estado e sistema político": "Casa Civil",
+    "Meio ambiente, energia, agro e infraestrutura": "Ministério do Meio Ambiente e Infraestrutura",
+}
 BASE_TRIBUTO = {"imposto-renda-pessoas": "renda_familias", "imposto-sobre-consumo": "consumo"}
 
 
@@ -153,7 +165,7 @@ def main(aplicar: bool) -> None:
         lid, grupo = f["id"], f["grupo"]
         processo = {"institucional": "emenda-constitucional", "orcamentaria": "execucao-programa-autorizado"}.get(grupo, "lei-ordinaria")
         lei = {"id": lid, "tipo": "lei", "versaoEsquema": 2, "grupo": grupo, "nome": f["nome"],
-               "descricao": f["descricao"], "area": area, "ministerio": f.get("ministerio") or "Presidência",
+               "descricao": f["descricao"], "area": area, "ministerio": MINISTERIO_POR_AREA.get(area, f.get("ministerio") or "Presidência"),
                "processoAutorizacao": processo}
         opcoes = f.get("opcoes") or []
         faixa = f.get("faixa") or {}

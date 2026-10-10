@@ -6,7 +6,7 @@
   "nome": "Empresas estatais e privatização",
   "descricao": "Define o tamanho do Estado como empresário: quais setores têm empresas públicas e quais são vendidos ao setor privado.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério da Gestão e da Inovação",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_empresas_estatais_e_privatizacao",

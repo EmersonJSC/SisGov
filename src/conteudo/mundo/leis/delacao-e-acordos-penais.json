@@ -6,7 +6,7 @@
   "nome": "Delação e acordos penais",
   "descricao": "Define se o acusado pode negociar pena com a acusação: confessar, entregar comparsas ou evitar o julgamento em troca de benefícios.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_delacao_e_acordos_penais",

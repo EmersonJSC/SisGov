@@ -6,7 +6,7 @@
   "nome": "Gasto com defesa",
   "descricao": "Define quanto do PIB vai para Forças Armadas, equipamentos e indústria de defesa.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério da Defesa",
+  "ministerio": "Ministério dos Direitos e da Defesa",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_gasto_com_defesa",

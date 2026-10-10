@@ -6,7 +6,7 @@
   "nome": "Tarifas de importação",
   "descricao": "Define a tarifa média cobrada sobre os produtos que entram no país.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério do Desenvolvimento, Indústria e Comércio",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "aliquota_tarifas_de_importacao",

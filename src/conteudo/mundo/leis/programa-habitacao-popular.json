@@ -6,7 +6,7 @@
   "nome": "Programa de habitação popular",
   "descricao": "Define quanto do PIB o Estado gasta para dar moradia a quem não pode pagar: construção subsidiada, financiamento barato ou auxílio-aluguel.",
   "area": "Previdência e assistência social",
-  "ministerio": "Ministério das Cidades",
+  "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_programa_habitacao_popular",

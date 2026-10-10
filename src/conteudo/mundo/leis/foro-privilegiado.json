@@ -6,7 +6,7 @@
   "nome": "Foro privilegiado",
   "descricao": "Define se autoridades acusadas de crime são julgadas por juízes comuns, por tribunais superiores ou se ficam imunes enquanto ocupam o cargo.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Ministério da Justiça",
+  "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_foro_privilegiado",

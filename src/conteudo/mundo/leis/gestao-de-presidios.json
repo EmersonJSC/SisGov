@@ -6,7 +6,7 @@
   "nome": "Gestão de presídios",
   "descricao": "Define quem manda dentro da cadeia: as facções, o Estado, entidades comunitárias, uma parceria com empresas ou empresas privadas.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_gestao_de_presidios",

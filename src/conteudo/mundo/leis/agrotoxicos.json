@@ -6,7 +6,7 @@
   "nome": "Agrotóxicos",
   "descricao": "Define como o país aprova, restringe ou proíbe pesticidas e defensivos químicos na lavoura.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério da Agricultura",
+  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_agrotoxicos",

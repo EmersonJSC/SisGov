@@ -6,7 +6,7 @@
   "nome": "Pensão social para idosos e pessoas com deficiência",
   "descricao": "Define se o Estado paga uma renda a idosos e pessoas com deficiência que nunca contribuíram, e para quem: ninguém, só os miseráveis, a maioria ou todos.",
   "area": "Previdência e assistência social",
-  "ministerio": "Ministério do Desenvolvimento e Assistência Social",
+  "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_beneficio_idosos_e_deficientes",

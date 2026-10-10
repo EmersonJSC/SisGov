@@ -6,7 +6,7 @@
   "nome": "Política de drogas",
   "descricao": "Define como o Estado trata quem usa e quem vende drogas: da guerra total com pena de morte à venda legal regulada, passando por não prender o usuário.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_politica_de_drogas",

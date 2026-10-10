@@ -6,7 +6,7 @@
   "nome": "Energia nuclear",
   "descricao": "Define se o país proíbe, congela, mantém ou expande usinas nucleares.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério de Minas e Energia",
+  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_energia_nuclear",

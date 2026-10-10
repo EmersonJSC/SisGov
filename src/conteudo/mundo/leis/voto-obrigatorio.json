@@ -6,7 +6,7 @@
   "nome": "Voto obrigatório",
   "descricao": "Define se votar é um direito opcional ou um dever com punição para quem falta.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Ministério da Justiça",
+  "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_voto_obrigatorio",

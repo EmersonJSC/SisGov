@@ -6,7 +6,7 @@
   "nome": "Independência do Judiciário",
   "descricao": "Define se juízes são nomeados, promovidos e afastados pelo governo ou protegidos de pressão política.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Ministério da Justiça",
+  "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_independencia_judiciario",

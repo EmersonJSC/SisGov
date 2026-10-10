@@ -6,7 +6,7 @@
   "nome": "Modelo de polícia",
   "descricao": "Define como a polícia é organizada: comunitária e civil, de ciclo completo, dividida entre militar e civil, ou substituída pelas Forças Armadas.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_modelo_de_policia",

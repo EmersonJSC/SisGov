@@ -6,7 +6,7 @@
   "nome": "Reajuste de aposentadorias e benefícios",
   "descricao": "Define como aposentadorias e benefícios são corrigidos todo ano: à vontade do governo, pela inflação, pelos salários, pelo salário mínimo ou pelo maior entre vários índices.",
   "area": "Previdência e assistência social",
-  "ministerio": "Ministério da Previdência Social",
+  "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_reajuste_de_beneficios",

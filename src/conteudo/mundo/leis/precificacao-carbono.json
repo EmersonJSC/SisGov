@@ -6,7 +6,7 @@
   "nome": "Precificação de carbono",
   "descricao": "Define se quem emite gases de efeito estufa paga por isso, e se o preço vem de um mercado de cotas ou de uma taxa fixa.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério da Fazenda",
+  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_precificacao_carbono",

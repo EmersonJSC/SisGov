@@ -6,7 +6,7 @@
   "nome": "Saneamento básico",
   "descricao": "Define quem leva água tratada e coleta esgoto: ninguém, a prefeitura, uma estatal regional ou empresas privadas com metas.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério das Cidades",
+  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_saneamento_basico",

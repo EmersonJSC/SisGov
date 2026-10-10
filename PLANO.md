@@ -750,7 +750,7 @@ data, commit e teste.
 - [ ] SG138 Leis regulatórias com opções
 - [ ] SG139 Leis tributárias
 - [ ] SG143 Grupos sociais como nós da rede
-- [ ] SG104 Implantação mensal pela partida
+- [ ] SG104 Implantação mensal pela partida — versão mínima feita no SG145 (`advancePolicyImplementation`: a lei anda até a meta pela `respostaTemporal`)
 - [ ] SG105 Fiscal no turno real
 - [ ] SG106 Ocorrências na partida
 - [ ] SG107 Diário do turno com causas
@@ -759,7 +759,7 @@ data, commit e teste.
 
 **M2 — O mapa com a rede real**
 
-- [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Em andamento: o mapa já lê o pacote real do Brasil (116 leis, `scenarios/brazilMap.ts`); falta caixa e dívida no turno, tirar o motor dos componentes e apagar o laboratório antigo
+- [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Em andamento: o mapa lê o Brasil real e passa o turno pela camada da partida (`src/app/partida.ts`, contrato em `docs/arquitetura/api-da-partida.md`), com caixa e dívida; falta a tela parar de ler tipos do motor (refação visual) e apagar o laboratório antigo
 - [ ] SG128 Ministérios no conteúdo
 - [ ] SG129 Mapa de influência com a rede real
 - [ ] SG146 "Por que mudou?"

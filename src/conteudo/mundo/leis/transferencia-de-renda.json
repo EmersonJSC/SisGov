@@ -6,7 +6,7 @@
   "nome": "Transferência de renda às famílias pobres",
   "descricao": "Define quanto do PIB vai para pagamentos mensais em dinheiro às famílias pobres, com ou sem exigências como frequência escolar e vacinação.",
   "area": "Previdência e assistência social",
-  "ministerio": "Ministério do Desenvolvimento e Assistência Social",
+  "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_transferencia_de_renda",

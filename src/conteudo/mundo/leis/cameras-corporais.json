@@ -6,7 +6,7 @@
   "nome": "Câmeras corporais na polícia",
   "descricao": "Define se policiais usam câmeras no uniforme e quem decide quando gravar.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_cameras_corporais",

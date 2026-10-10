@@ -6,7 +6,7 @@
   "nome": "Penas máximas",
   "descricao": "Define a pena mais dura que o Estado pode aplicar: um teto curto de prisão, um teto longo, prisão perpétua ou pena de morte.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_penas_maximas",

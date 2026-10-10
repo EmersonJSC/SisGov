@@ -6,7 +6,7 @@
   "nome": "Acordos comerciais",
   "descricao": "Define a estratégia de integração comercial do país: ficar só nas regras gerais, entrar num bloco com tarifa comum ou assinar acordos de livre comércio com quem quiser.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério das Relações Exteriores",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_acordos_comerciais",

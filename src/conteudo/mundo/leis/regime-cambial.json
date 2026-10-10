@@ -6,7 +6,7 @@
   "nome": "Regime cambial",
   "descricao": "Define se o valor da moeda nacional é fixado pelo governo ou decidido pelo mercado.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Ministério da Fazenda",
+  "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_regime_cambial",

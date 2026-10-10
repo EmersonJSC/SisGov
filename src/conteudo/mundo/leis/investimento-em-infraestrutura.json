@@ -6,7 +6,7 @@
   "nome": "Investimento em infraestrutura",
   "descricao": "Define quanto do PIB o Estado investe por ano em estradas, ferrovias, portos, energia e redes.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério da Infraestrutura e Transportes",
+  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_investimento_em_infraestrutura",

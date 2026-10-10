@@ -6,7 +6,7 @@
   "nome": "Financiamento de campanhas",
   "descricao": "Define de onde vem o dinheiro das campanhas: de empresas e ricos, de pequenos doadores ou dos cofres públicos.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Ministério da Justiça",
+  "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_financiamento_de_campanhas",

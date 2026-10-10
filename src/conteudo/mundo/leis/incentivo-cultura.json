@@ -6,7 +6,7 @@
   "nome": "Incentivo à cultura",
   "descricao": "Define como o Estado apoia a cultura: deixando com o mercado, abrindo mão de impostos para patrocinadores, financiando diretamente, protegendo a produção nacional ou dirigindo o conteúdo.",
   "area": "Educação, ciência e cultura",
-  "ministerio": "Ministério da Cultura",
+  "ministerio": "Ministério da Educação",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_incentivo_cultura",

@@ -6,7 +6,7 @@
   "nome": "Controle de capitais",
   "descricao": "Define quanto o dinheiro pode entrar e sair do país livremente: compra de dólares, remessa de lucros, aplicações de estrangeiros.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Banco Central",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_controle_de_capitais",

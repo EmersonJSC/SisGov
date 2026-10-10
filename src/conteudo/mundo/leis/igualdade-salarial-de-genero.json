@@ -6,7 +6,7 @@
   "nome": "Igualdade salarial de gênero",
   "descricao": "Define como a lei garante salário igual para trabalho igual entre homens e mulheres: nada, princípio, transparência obrigatória ou certificação.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério das Mulheres",
+  "ministerio": "Ministério dos Direitos e da Defesa",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_igualdade_salarial_de_genero",

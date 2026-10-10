@@ -6,7 +6,7 @@
   "nome": "Investimento em pesquisa e desenvolvimento",
   "descricao": "Fixa a meta nacional de investimento em pesquisa e desenvolvimento (% do PIB) que o Estado banca e puxa com agências, bolsas, laboratórios e cofinanciamento às empresas.",
   "area": "Educação, ciência e cultura",
-  "ministerio": "Ministério da Ciência e Tecnologia",
+  "ministerio": "Ministério da Educação",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "recursos_investimento_pesquisa",

@@ -6,7 +6,7 @@
   "nome": "Controle de preços",
   "descricao": "Define se o governo fixa ou limita preços de bens e serviços, e de quantos.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério da Fazenda",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_controle_de_precos",

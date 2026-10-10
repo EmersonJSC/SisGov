@@ -6,7 +6,7 @@
   "nome": "Regulação bancária",
   "descricao": "Define quanto capital próprio e reservas os bancos precisam ter e o quanto o Estado orienta para onde vai o crédito.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Banco Central",
+  "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_regulacao_bancaria",

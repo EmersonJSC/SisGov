@@ -6,7 +6,7 @@
   "nome": "Política de encarceramento",
   "descricao": "Define quando a prisão é usada: só em último caso, com alternativas para crimes leves, como regra geral ou com mínimos obrigatórios e prisão em massa.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_politica_de_encarceramento",

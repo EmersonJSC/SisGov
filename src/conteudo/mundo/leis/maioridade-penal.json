@@ -6,7 +6,7 @@
   "nome": "Maioridade penal e justiça juvenil",
   "descricao": "Define a partir de que idade o jovem é julgado e preso como adulto, e o que acontece com quem comete crime antes disso.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_maioridade_penal",

@@ -6,7 +6,7 @@
   "nome": "Posse e porte de armas",
   "descricao": "Define quem pode ter arma em casa e quem pode andar armado na rua.",
   "area": "Segurança, justiça e drogas",
-  "ministerio": "Ministério da Justiça e Segurança Pública",
+  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_porte_de_armas",
