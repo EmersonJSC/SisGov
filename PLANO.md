@@ -584,7 +584,7 @@ M4  SG149 → SG150 → SG151 → SG152
 M5  SG131 → SG132 → SG133 → SG134 (MVP)
 ```
 
-**Total:** 47 chamados — 10 feitos + 37 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
+**Total:** 47 chamados — 12 feitos + 35 a fazer. **Estimativa:** ~65 sessões (P = 1, M = 2);
 referência, não prazo.
 
 ---
@@ -744,8 +744,8 @@ data, commit e teste.
 - [x] SG141 Mecanismos não lineares no motor — 09/out · `0a36409` · check verde, 230 testes / 54 arquivos; `nonLinearMechanisms.test.ts`
 - [x] SG154 Leis e bolhas no motor — 09/out · `9926528` · check verde, 237 testes / 55 arquivos; `livingNetwork.test.ts`
 - [x] SG142 Rede de indicadores do Brasil — 09/out · `0095f6e` + revisão (escolaridade, desenvolvimento, infraestrutura, PIB; JSON como fonte única) · check verde, 245 testes / 56 arquivos; `worldNetwork.test.ts`
-- [ ] SG155 Fichas de lei — em andamento: 117 leis em 10 áreas (`2d1ddcb`); falta aprovação do autor e limpeza das bolhas
-- [ ] SG156 Conversor de fichas para o jogo
+- [x] SG155 Fichas de lei — 09/out · `2d1ddcb` · 117 leis em 10 áreas; aprovadas pelo autor todas as que não colidem (renda-basica-universal pendente)
+- [x] SG156 Conversor de fichas para o jogo — 10/out · `cbc0a6e` · 116 leis no mundo, 1216 consequências; testes antigos usam `testes/legado`; check verde, 245 testes
 - [ ] SG137 Leis orçamentárias completas
 - [ ] SG138 Leis regulatórias com opções
 - [ ] SG139 Leis tributárias
