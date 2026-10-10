@@ -1,0 +1,18 @@
+{
+  "id": "falta-qualificacao-gera-desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "qualificacao_trabalho",
+  "alvo": "desigualdade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "limiar": 100,
+    "coeficiente": 0.44,
+    "direcao": "abaixo"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

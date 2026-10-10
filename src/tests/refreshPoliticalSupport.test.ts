@@ -4,7 +4,7 @@ import { refreshPoliticalSupportForGame } from "../game/refreshPoliticalSupport"
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("deriva relações políticas e de indicador do JSON sem acumulá-las", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const created = createGame(
     "apoio",

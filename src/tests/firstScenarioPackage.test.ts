@@ -8,7 +8,7 @@ import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 describe("primeiro cenário brasileiro", () => {
   it("carrega o estado herdado e calcula os índices pela rede", () => {
-    const loaded = loadDistributedScenario("paises/brasil/pais.json");
+    const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
 

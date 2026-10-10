@@ -1,0 +1,17 @@
+{
+  "id": "desigualdade-alimenta-crime",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "desigualdade",
+  "alvo": "crime_organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.229781,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

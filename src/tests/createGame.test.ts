@@ -4,7 +4,7 @@ import { createGame } from "../game/createGame";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function brasil() {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   return loaded.value;
 }
@@ -160,7 +160,7 @@ it("rejects an empty game identity with an initial-state diagnostic", () => {
     ok: false,
     diagnostics: [
       {
-        file: "paises/brasil/estado-inicial.json",
+        file: "testes/legado/brasil/estado-inicial.json",
         field: "id",
       },
     ],
@@ -200,15 +200,15 @@ it("reports invalid inherited policies before a game is created", () => {
   if (!result.ok)
     expect(result.diagnostics).toMatchObject([
       {
-        file: "paises/brasil/estado-inicial.json",
+        file: "testes/legado/brasil/estado-inicial.json",
         field: "leisVigentes[0].lei",
       },
       {
-        file: "paises/brasil/estado-inicial.json",
+        file: "testes/legado/brasil/estado-inicial.json",
         field: "leisVigentes[1]",
       },
       {
-        file: "paises/brasil/estado-inicial.json",
+        file: "testes/legado/brasil/estado-inicial.json",
         field: "leisVigentes[2].lei",
       },
     ]);

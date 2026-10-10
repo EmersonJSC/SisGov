@@ -1,0 +1,18 @@
+{
+  "id": "integridade-gera-confianca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "corrupcao",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "limiar",
+  "parametros": {
+    "limiar": 100,
+    "coeficiente": 0.46875,
+    "direcao": "abaixo"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

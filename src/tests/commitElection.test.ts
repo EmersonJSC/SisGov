@@ -5,7 +5,7 @@ import { resolveNationalPlurality } from "../game/elections";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("confirma vitória sem reiniciar o país e encerra somente ao perder", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const created = createGame(
     "eleicao",
@@ -56,7 +56,7 @@ it("confirma vitória sem reiniciar o país e encerra somente ao perder", () => 
 });
 
 it("recusa confirmar um d20 preparado de uma semente diferente", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const created = createGame(
     "eleicao",

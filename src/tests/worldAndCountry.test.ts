@@ -25,8 +25,8 @@ it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional"
 });
 
 it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
-  const brasil = load("paises/brasil/pais.json");
-  expect(brasil.definition.manifest.mundo).toBe("mundo/mundo.json");
+  const brasil = load("testes/legado/brasil/pais.json");
+  expect(brasil.definition.manifest.mundo).toBe("testes/legado/mundo/mundo.json");
   expect(brasil.definition.policies).toHaveLength(5);
   const game = createGame("brasil", brasil.definition, brasil.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);
@@ -63,7 +63,7 @@ it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
 });
 
 it("SG153: outro país usa o mesmo mundo com outro pacote de leis", () => {
-  const brasil = load("paises/brasil/pais.json");
+  const brasil = load("testes/legado/brasil/pais.json");
   const other = load("testes/pais-teste/pais.json");
   expect(other.definition.policies.map((law) => law.id)).toEqual(
     brasil.definition.policies.map((law) => law.id),
@@ -90,7 +90,7 @@ it("SG153: outro país usa o mesmo mundo com outro pacote de leis", () => {
 });
 
 it("SG153: limite próprio do país é aplicado e validado", () => {
-  const brasil = load("paises/brasil/pais.json");
+  const brasil = load("testes/legado/brasil/pais.json");
   const content = structuredClone(brasil.definition);
   content.initialState.leisVigentes = content.initialState.leisVigentes!.map(
     (entry) =>

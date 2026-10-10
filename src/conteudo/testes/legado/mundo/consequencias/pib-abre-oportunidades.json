@@ -1,0 +1,17 @@
+{
+  "id": "pib-abre-oportunidades",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "pib",
+  "alvo": "oportunidades_juvenis",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.150133,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

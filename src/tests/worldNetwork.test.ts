@@ -9,7 +9,7 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function brazil() {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(JSON.stringify(loaded.diagnostics));
   return loaded.value;
 }

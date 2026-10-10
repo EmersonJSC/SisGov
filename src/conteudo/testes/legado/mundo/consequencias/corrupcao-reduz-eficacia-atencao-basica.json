@@ -1,0 +1,17 @@
+{
+  "id": "corrupcao-reduz-eficacia-atencao-basica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "corrupcao",
+  "alvo": "eficacia:atencao-basica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.005,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

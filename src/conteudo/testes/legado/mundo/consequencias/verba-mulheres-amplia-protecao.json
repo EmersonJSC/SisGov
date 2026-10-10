@@ -1,0 +1,17 @@
+{
+  "id": "verba-mulheres-amplia-protecao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_protecao_mulheres",
+  "alvo": "protecao_efetiva_mulheres",
+  "mecanismo": "retornos_decrescentes",
+  "parametros": {
+    "coeficiente": 0.190294,
+    "escala": 240
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

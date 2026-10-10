@@ -1,0 +1,17 @@
+{
+  "id": "participacao-gera-renda",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "participacao_trabalho_cuidadoras",
+  "alvo": "renda_familias",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0500501,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

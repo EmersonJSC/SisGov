@@ -1,0 +1,28 @@
+{
+  "id": "atencao-basica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Atenção básica de saúde",
+  "descricao": "Financia a capacidade de atendimento da atenção básica de saúde.",
+  "area": "Saúde",
+  "icone": "stethoscope",
+  "ministerio": "Ministério da Saúde",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "controle": {
+    "variavel": "recursos_atencao_basica",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 1
+    }
+  },
+  "consequencias": ["verba-aps-amplia-cobertura"],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.18
+  }
+}

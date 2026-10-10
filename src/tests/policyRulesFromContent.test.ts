@@ -3,7 +3,7 @@ import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function content() {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   return structuredClone(loaded.value.definition);
 }

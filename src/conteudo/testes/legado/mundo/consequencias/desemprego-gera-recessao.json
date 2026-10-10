@@ -1,0 +1,17 @@
+{
+  "id": "desemprego-gera-recessao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "desemprego",
+  "alvo": "recessao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

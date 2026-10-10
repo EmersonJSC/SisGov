@@ -18,7 +18,7 @@ import { sampleParliamentaryVotesFromState } from "../game/sampleParliamentaryVo
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function setup() {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const created = createGame(
     "percurso",

@@ -8,7 +8,7 @@ import { buildFiscalQuarterReport } from "../game/fiscalReport";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("prepara e confirma motor e fiscal juntos em três meses", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -43,7 +43,7 @@ it("prepara e confirma motor e fiscal juntos em três meses", () => {
 });
 
 it("não prepara turno integrado sem ficha fiscal", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.fiscal;
@@ -61,7 +61,7 @@ it("não prepara turno integrado sem ficha fiscal", () => {
 });
 
 it("leva os custos das cinco políticas ao financiamento mensal do trimestre", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   content.initialState.fiscal = {
@@ -118,7 +118,7 @@ it("leva os custos das cinco políticas ao financiamento mensal do trimestre", (
 });
 
 it("SG136: o Brasil tem orçamento completo nas proporções combinadas", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "brasil-fiscal",
@@ -157,7 +157,7 @@ it("SG136: o Brasil tem orçamento completo nas proporções combinadas", () => 
 });
 
 it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.limitesProprios;
@@ -176,7 +176,7 @@ it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
 });
 
 it("SG136: país com ficha fiscal precisa declarar o PIB", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.economia;

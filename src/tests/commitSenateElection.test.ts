@@ -4,7 +4,7 @@ import { createGame } from "../game/createGame";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("substitui apenas as cadeiras vencidas e preserva o total", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "senado",

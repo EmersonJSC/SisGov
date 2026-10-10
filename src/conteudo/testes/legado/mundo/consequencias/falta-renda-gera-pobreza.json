@@ -1,0 +1,18 @@
+{
+  "id": "falta-renda-gera-pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "renda_familias",
+  "alvo": "pobreza",
+  "mecanismo": "limiar",
+  "parametros": {
+    "limiar": 100,
+    "coeficiente": 0.493421,
+    "direcao": "abaixo"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

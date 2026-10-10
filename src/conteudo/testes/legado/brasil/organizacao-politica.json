@@ -1,0 +1,91 @@
+{
+  "id": "organizacao-politica-brasil",
+  "tipo": "organizacao-politica",
+  "versaoEsquema": 1,
+  "formaInicial": "republica-presidencialista",
+  "formasDeGoverno": [
+    {
+      "id": "republica-presidencialista",
+      "nome": "República presidencialista",
+      "instituicoesAtivas": ["presidencia", "senado"],
+      "eleicoesAtivas": ["presidencial", "senatorial"],
+      "poderes": [
+        { "id": "executivo", "relacao": "independente" },
+        { "id": "legislativo", "relacao": "independente" },
+        { "id": "judiciario", "relacao": "independente" }
+      ]
+    },
+    {
+      "id": "ditadura-executiva",
+      "nome": "Ditadura executiva",
+      "instituicoesAtivas": ["presidencia"],
+      "eleicoesAtivas": [],
+      "poderes": [
+        { "id": "executivo", "relacao": "concentrado" },
+        { "id": "legislativo", "relacao": "ausente" },
+        { "id": "judiciario", "relacao": "subordinado" }
+      ]
+    }
+  ],
+  "instituicoes": [
+    {
+      "id": "presidencia",
+      "nome": "Presidência",
+      "poder": "executivo",
+      "composicao": { "modo": "nacional", "quantidade": 1 },
+      "mandatoMeses": 48
+    },
+    {
+      "id": "senado",
+      "nome": "Senado",
+      "poder": "legislativo",
+      "composicao": {
+        "modo": "territorial",
+        "unidade": "estado-e-distrito-federal",
+        "quantidadeUnidades": 27,
+        "quantidadePorUnidade": 3
+      },
+      "mandatoMeses": 96,
+      "renovacao": {
+        "intervaloMeses": 48,
+        "cadeirasPorUnidade": [2, 1]
+      },
+      "votacaoOrdinaria": {
+        "regra": "maioria_absoluta",
+        "base": "cadeiras_ativas"
+      }
+    }
+  ],
+  "processosConstitucionais": [
+    {
+      "id": "emenda-constitucional",
+      "orgaosAprovadores": ["senado"],
+      "fracaoFavoravel": 0.6,
+      "rodadas": 2
+    }
+  ],
+  "mudancasConstitucionais": [
+    {
+      "id": "reduzir-senado-para-uma-vaga-por-unidade",
+      "processo": "emenda-constitucional",
+      "tipo": "alterar_vagas_por_unidade",
+      "instituicao": "senado",
+      "valor": 1,
+      "mandatoMeses": 48,
+      "intervaloRenovacaoMeses": 48,
+      "cadeirasPorCiclo": [1]
+    },
+    {
+      "id": "abolir-senado",
+      "processo": "emenda-constitucional",
+      "tipo": "desativar_instituicao",
+      "instituicao": "senado"
+    },
+    {
+      "id": "instaurar-ditadura-executiva",
+      "processo": "emenda-constitucional",
+      "tipo": "mudar_forma",
+      "formaGoverno": "ditadura-executiva"
+    }
+  ]
+}

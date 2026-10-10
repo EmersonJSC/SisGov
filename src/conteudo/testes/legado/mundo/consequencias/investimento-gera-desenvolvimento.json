@@ -1,0 +1,17 @@
+{
+  "id": "investimento-gera-desenvolvimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "investimento",
+  "alvo": "desenvolvimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.025,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

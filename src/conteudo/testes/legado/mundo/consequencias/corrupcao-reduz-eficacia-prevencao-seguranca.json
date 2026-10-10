@@ -1,0 +1,17 @@
+{
+  "id": "corrupcao-reduz-eficacia-prevencao-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "corrupcao",
+  "alvo": "eficacia:prevencao-seguranca",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.005,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

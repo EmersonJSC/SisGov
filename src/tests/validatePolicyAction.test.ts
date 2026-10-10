@@ -4,7 +4,7 @@ import { validatePolicyAction } from "../game/validatePolicyAction";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function setup(randomSeed?: number) {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const created = createGame(
     "validacao",

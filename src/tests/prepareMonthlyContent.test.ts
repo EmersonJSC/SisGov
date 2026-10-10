@@ -4,7 +4,7 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 function scenario() {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error("Cenário inválido");
   return loaded.value.definition;
 }

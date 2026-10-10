@@ -4,7 +4,7 @@ import { prepareFiscalQuarter } from "../game/prepareFiscalQuarter";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 it("combina políticas e contabilidade nos três meses sem mutar a partida", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "trimestre-fiscal",
@@ -48,7 +48,7 @@ it("combina políticas e contabilidade nos três meses sem mutar a partida", () 
 });
 
 it("recusa trimestre incompleto antes de contabilizar qualquer mês", () => {
-  const loaded = loadDistributedScenario("paises/brasil/pais.json");
+  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const game = createGame(
     "trimestre-incompleto",
