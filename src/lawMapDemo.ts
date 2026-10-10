@@ -34,7 +34,7 @@ import {
   type ResolvedPackage,
   type ScenarioGraph,
 } from "./engine";
-import { createD4ReferenceSandbox } from "./scenarios/d4ReferenceSandbox";
+import { createBrazilMap } from "./scenarios/brazilMap";
 
 const stage = document.querySelector<HTMLElement>("#law-stage")!;
 const editor = document.querySelector<HTMLDialogElement>("#law-editor")!;
@@ -1235,7 +1235,7 @@ resetButton.addEventListener("click", () => {
 });
 
 try {
-  const sandbox = createD4ReferenceSandbox();
+  const sandbox = createBrazilMap();
   const prepared = prepareMonthlyContent(sandbox.content);
   if (!prepared.ok)
     throw new Error(
@@ -1291,7 +1291,7 @@ function fitMap(): void {
   const contentHeight =
     (latestMapBounds.maxY - latestMapBounds.minY) * pixelsPerUnit;
   const scale = Math.max(
-    0.65,
+    0.2,
     Math.min(
       viewport.clientWidth / contentWidth,
       viewport.clientHeight / contentHeight,

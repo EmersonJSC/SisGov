@@ -575,9 +575,9 @@ cumpre R-01 e R-02 por construção.
 
 ```text
 M0  SG100 → SG101 → SG102 → SG103                                    ✅
-M1  SG135 → SG153 → SG136 → SG141 → SG154 → SG142 → SG155 → SG156 → SG137 → SG138 → SG139 → SG143
+M1  SG135 → SG153 → SG136 → SG141 → SG154 → SG142 → SG155 → SG156 → SG145 → SG137 → SG138 → SG139 → SG143
     → SG104 → SG105 → SG106 → SG107 → SG108 → SG144
-M2  SG145 → SG128 → SG129 → SG146 → SG147 → SG130
+M2  SG128 → SG129 → SG146 → SG147 → SG130
 M3  SG148 → SG111 → SG112 → SG113 → SG114 → SG140 → SG122 → SG124
     → SG125 → SG115 → SG126
 M4  SG149 → SG150 → SG151 → SG152
@@ -759,7 +759,7 @@ data, commit e teste.
 
 **M2 — O mapa com a rede real**
 
-- [ ] SG145 Limpar o laboratório e ligar o mapa à partida
+- [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Em andamento: o mapa já lê o pacote real do Brasil (116 leis, `scenarios/brazilMap.ts`); falta caixa e dívida no turno, tirar o motor dos componentes e apagar o laboratório antigo
 - [ ] SG128 Ministérios no conteúdo
 - [ ] SG129 Mapa de influência com a rede real
 - [ ] SG146 "Por que mudou?"
