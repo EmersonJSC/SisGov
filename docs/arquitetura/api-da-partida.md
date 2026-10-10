@@ -67,6 +67,13 @@ país no piloto automático), `leisAlteradas` e `mudancas[]` (todas as bolhas
 que mudaram, da maior mudança para a menor, com `antes`, `depois`, `porVoce`
 — a parte que veio das decisões do jogador — e `sozinho`).
 
+**Prévia (SG159).** `preverLei` aceita de 1 a `MAXIMO_TRIMESTRES_PREVIA` (20)
+trimestres inteiros. Se a simulação parar no meio, devolve os meses
+calculados e diz por quê em `interrompida`. `VisaoLei.minimo`/`maximo` são os
+limites efetivos (os mesmos que `mudarLei` aceita). Pedir a meta que já vale
+devolve a mesma partida, sem nova ação. `VisaoBolha.minimo`/`maximo` são a
+escala de desenho (`faixaVisual`, ou o domínio).
+
 **Marca do jogador (D-58).** A `Partida` leva `piloto`: o mesmo país sem
 nenhuma decisão do jogador, que anda junto a cada turno (só é simulado à
 parte depois da primeira mudança de lei). Na visão, `VisaoLei.alteradaPorVoce`

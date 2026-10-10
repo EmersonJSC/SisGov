@@ -409,7 +409,8 @@ function faixaNumerica(lei: VisaoLei) {
   const min = lei.minimo ?? 0;
   const referencia = Math.max(lei.nivel, lei.meta);
   if (lei.unidade === "moeda_ano") {
-    const max = Math.max(1000, referencia * 3);
+    // o teto é o mesmo que a partida aceita (SG159); sem teto, 3× o atual
+    const max = lei.maximo ?? Math.max(1000, referencia * 3);
     const passo = Math.pow(10, Math.floor(Math.log10(max / 200)));
     return { min, max, passo };
   }
@@ -798,6 +799,13 @@ export function DocumentoLei({
                         : "o resultado piora: mais déficit"}
                     </em>
                   </div>
+                ) : null}
+                {previsao.interrompida ? (
+                  <p className="nota">
+                    A simulação parou antes do fim do horizonte (
+                    {previsao.interrompida}); a prévia mostra só os meses
+                    calculados.
+                  </p>
                 ) : null}
                 <Placar itens={itens} />
                 <div className="resumo-impacto">

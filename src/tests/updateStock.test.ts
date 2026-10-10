@@ -25,7 +25,7 @@ describe("updateStock", () => {
     ).toMatchObject({ ok: true, value: { value: 110 } });
   });
 
-  it("recusa taxa incompatível e saldo fora do domínio", () => {
+  it("recusa taxa incompatível; saldo fora do domínio para no limite (SG159)", () => {
     expect(
       updateStock(
         inventory,
@@ -33,7 +33,10 @@ describe("updateStock", () => {
         [{ relationId: "saida", value: -2, unit: "quantidade_por_passo" }],
         1,
       ),
-    ).toMatchObject({ ok: false });
+    ).toMatchObject({
+      ok: true,
+      value: { value: inventory.dominio.minimo, limited: true },
+    });
     expect(
       updateStock(
         inventory,

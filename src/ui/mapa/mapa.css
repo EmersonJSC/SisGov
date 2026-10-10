@@ -2334,3 +2334,86 @@ button {
   line-height: 1.45;
   color: #5b4d33;
 }
+
+/* ---------------------------- contas do governo: entra − sai = falta */
+
+.contas-governo {
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid #ffffff14;
+}
+
+.contas-governo .conta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  text-align: left;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.contas-governo .conta:hover {
+  background: #ffffff0d;
+}
+
+.contas-governo .conta:first-child {
+  padding-left: 22px;
+}
+
+.contas-governo small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9fb0c6;
+}
+
+.contas-governo strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 19px;
+  font-weight: 800;
+  color: #9fcdff;
+}
+
+.contas-governo em {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+  font-style: normal;
+  color: #9fb0c6;
+}
+
+.contas-governo .resultado.ruim strong {
+  color: #ff9a8f;
+}
+
+.contas-governo .resultado.boa strong {
+  color: #7fe0b0;
+}
+
+.contas-governo .operador {
+  align-self: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff55;
+}
+
+@media (max-width: 900px) {
+  .contas-governo .conta {
+    padding: 0 8px;
+  }
+  .contas-governo .metrica-icone,
+  .contas-governo em {
+    display: none;
+  }
+  .contas-governo strong {
+    font-size: 15px;
+  }
+}

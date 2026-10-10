@@ -1196,10 +1196,69 @@ function validateVariables(
           "surgimento",
           "area",
           "avaliacao",
+          "resposta",
+          "faixaVisual",
         ],
         diagnostics,
       );
       requiredString(item, file, `variaveis[${index}].id`, diagnostics);
+      if (item.resposta !== undefined) {
+        const response = requiredNumber(
+          item,
+          file,
+          `variaveis[${index}].resposta`,
+          diagnostics,
+        );
+        if (response !== undefined && (response <= 0 || response > 1))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `variaveis[${index}].resposta`,
+              "VALOR_INVALIDO",
+              "Use uma fração maior que 0 e até 1.",
+            ),
+          );
+      }
+      if (item.faixaVisual !== undefined) {
+        if (!isObject(item.faixaVisual))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `variaveis[${index}].faixaVisual`,
+              "TIPO_INVALIDO",
+              "Deve ser um objeto com mínimo e máximo.",
+            ),
+          );
+        else {
+          validateKnownFields(
+            item.faixaVisual,
+            file,
+            ["minimo", "maximo"],
+            diagnostics,
+          );
+          const low = requiredNumber(
+            item.faixaVisual,
+            file,
+            `variaveis[${index}].faixaVisual.minimo`,
+            diagnostics,
+          );
+          const high = requiredNumber(
+            item.faixaVisual,
+            file,
+            `variaveis[${index}].faixaVisual.maximo`,
+            diagnostics,
+          );
+          if (low !== undefined && high !== undefined && high <= low)
+            diagnostics.push(
+              diagnostic(
+                file,
+                `variaveis[${index}].faixaVisual`,
+                "VALOR_INVALIDO",
+                "O máximo precisa ser maior que o mínimo.",
+              ),
+            );
+        }
+      }
       const type = requiredString(
         item,
         file,

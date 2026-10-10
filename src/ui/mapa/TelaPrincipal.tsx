@@ -13,6 +13,7 @@ import {
   type PrevisaoLei,
   type RelatorioTurno,
   type VisaoPartida,
+  BOLHAS_DO_ORCAMENTO,
 } from "../../app/partida";
 import { Bandeira } from "./Bandeira";
 import { diferenca, moeda } from "./formatos";
@@ -65,6 +66,95 @@ function Metrica({
 
 const pctPib = (valor: number) =>
   `${valor.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}% do PIB`;
+
+/**
+ * As contas como uma conta de escola: ENTRA − SAI = FALTA (ou SOBRA).
+ * "Sai" já inclui os juros, então os três números sempre fecham à vista
+ * (SG159). Cada parte abre o boletim da bolha correspondente.
+ */
+function ContasDoGoverno({
+  contas,
+  onAbrir,
+}: {
+  contas: VisaoPartida["contas"];
+  onAbrir: (id: string) => void;
+}) {
+  const sai = contas.gasto + contas.juros;
+  const sobra = contas.resultado >= 0;
+  const destino = sobra
+    ? contas.divida > 0
+      ? "abate a dívida"
+      : "vai para o cofre"
+    : contas.cofre > 0
+      ? "sai do cofre"
+      : "vira dívida";
+  const juros =
+    contas.juros >= 0
+      ? `+ juros ${moeda(contas.juros)}`
+      : `− rendimento ${moeda(-contas.juros)}`;
+  return (
+    <div
+      className="contas-governo"
+      role="group"
+      aria-label={`Contas do governo por ano: entra ${moeda(contas.receita)}, sai ${moeda(sai)}, ${sobra ? "sobra" : "falta"} ${moeda(Math.abs(contas.resultado))}`}
+    >
+      <button
+        type="button"
+        className="conta entra"
+        onClick={() => onAbrir(BOLHAS_DO_ORCAMENTO.receita)}
+        title="Tudo o que o governo arrecada por ano: impostos, contribuições, royalties, estatais."
+      >
+        <span className="metrica-icone">
+          <Icone
+            nome={ICONE_BOLHA.arrecadacao ?? "cash-register"}
+            tamanho={20}
+          />
+        </span>
+        <span>
+          <small>Entra</small>
+          <strong>{moeda(contas.receita)}</strong>
+          <em>{pctPib(contas.percentualPib.receita)} · por ano</em>
+        </span>
+      </button>
+      <span className="operador" aria-hidden="true">
+        −
+      </span>
+      <button
+        type="button"
+        className="conta sai"
+        onClick={() => onAbrir(BOLHAS_DO_ORCAMENTO.gasto)}
+        title="Tudo o que sai por ano: o custo das leis mais os juros da dívida."
+      >
+        <span>
+          <small>Sai</small>
+          <strong>{moeda(sai)}</strong>
+          <em>
+            leis {moeda(contas.gasto)} {juros}
+          </em>
+        </span>
+      </button>
+      <span className="operador" aria-hidden="true">
+        =
+      </span>
+      <button
+        type="button"
+        className={`conta resultado ${sobra ? "boa" : "ruim"}`}
+        onClick={() => onAbrir(BOLHAS_DO_ORCAMENTO.resultado)}
+        title={
+          sobra
+            ? "Superávit: sobra dinheiro no ano. Primeiro paga a dívida; sem dívida, enche o cofre."
+            : "Déficit: falta dinheiro no ano. A falta é paga com dívida nova (ou com o cofre, se houver)."
+        }
+      >
+        <span>
+          <small>{sobra ? "Sobra · superávit" : "Falta · déficit"}</small>
+          <strong>{moeda(Math.abs(contas.resultado))}</strong>
+          <em>{destino}</em>
+        </span>
+      </button>
+    </div>
+  );
+}
 
 function trimestre(turno: number) {
   return `${(turno % 4) + 1}º trimestre · ano ${Math.floor(turno / 4) + 1}`;
@@ -377,34 +467,7 @@ export function TelaPrincipal() {
           </div>
         </div>
         <div className="metricas">
-          <Metrica
-            icone={ICONE_BOLHA.arrecadacao ?? ICONE_INTERFACE.caixa}
-            rotulo="Receita"
-            valor={`${moeda(contas.receita)}/ano`}
-            detalhe={pctPib(contas.percentualPib.receita)}
-            classe="neutra"
-            titulo="Soma do que os impostos e as outras fontes arrecadam por ano."
-          />
-          <Metrica
-            icone={ICONE_BOLHA.gasto_publico ?? ICONE_INTERFACE.caixa}
-            rotulo="Gasto"
-            valor={`${moeda(contas.gasto)}/ano`}
-            detalhe={pctPib(contas.percentualPib.gasto)}
-            classe="neutra"
-            titulo="Soma do que as leis custam por ano, sem os juros."
-          />
-          <Metrica
-            icone={ICONE_BOLHA.resultado_fiscal ?? ICONE_INTERFACE.caixa}
-            rotulo={contas.resultado >= 0 ? "Superávit" : "Déficit"}
-            valor={`${moeda(Math.abs(contas.resultado))}/ano`}
-            detalhe={
-              contas.juros >= 0
-                ? `juros: ${moeda(contas.juros)}/ano`
-                : `rendimento do cofre: ${moeda(-contas.juros)}/ano`
-            }
-            classe={contas.resultado >= 0 ? "boa" : "ruim"}
-            titulo={`Receita − gasto − juros = ${moeda(contas.receita)} − ${moeda(contas.gasto)} − ${moeda(contas.juros)}. O déficit soma na dívida; o superávit abate a dívida e, sem dívida, enche o cofre.`}
-          />
+          <ContasDoGoverno contas={contas} onAbrir={selecionar} />
           {contas.cofre > 0 ? (
             <Metrica
               icone={ICONE_INTERFACE.caixa}

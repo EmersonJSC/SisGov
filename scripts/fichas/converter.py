@@ -522,10 +522,23 @@ def main(aplicar: bool) -> None:
     mundo["consequencias"] = [f"mundo/consequencias/{cid}.json" for cid in sorted(saida_c)]
     escrever(MUNDO / "mundo.json", mundo)
     # a receita divide os juros (situação de juros explosivos): nunca zero
-    novas_vars["arrecadacao"]["dominio"]["minimo"] = 0.1
-    # dívida líquida: abaixo de zero é cofre; juros abaixo de zero são rendimento
-    novas_vars["divida_publica"]["dominio"]["minimo"] = -100
-    novas_vars["juros_da_divida"]["dominio"]["minimo"] = -30
+    # SG159: as contas não têm teto nem amortecimento próprio. Domínio aberto
+    # (nada some), resposta 1 (somas andam junto com as partes) e uma faixa
+    # só para desenhar a bolha.
+    CONTAS = {
+        "arrecadacao": ({"minimo": 0.1}, {"minimo": 0, "maximo": 60}),
+        "gasto_publico": ({"minimo": 0}, {"minimo": 0, "maximo": 60}),
+        "juros_da_divida": ({}, {"minimo": -10, "maximo": 20}),
+        "resultado_fiscal": ({}, {"minimo": -20, "maximo": 20}),
+        # dívida líquida: abaixo de zero é cofre
+        "divida_publica": ({}, {"minimo": -50, "maximo": 250}),
+        "cofre": ({"minimo": 0}, {"minimo": 0, "maximo": 50}),
+    }
+    for bid, (dominio, faixa) in CONTAS.items():
+        novas_vars[bid]["dominio"] = dominio
+        novas_vars[bid]["faixaVisual"] = faixa
+        if novas_vars[bid]["tipo"] != "estoque":
+            novas_vars[bid]["resposta"] = 1
     variaveis_doc["variaveis"] = list(variaveis.values()) + list(novas_vars.values())
     escrever(MUNDO / "indicadores" / "variaveis.json", variaveis_doc)
 

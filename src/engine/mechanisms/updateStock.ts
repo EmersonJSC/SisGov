@@ -13,6 +13,8 @@ export type StockUpdate = Readonly<{
   duration: number;
   rates: readonly StockRate[];
   value: number;
+  /** O saldo bateu no limite do domínio e parou nele. */
+  limited?: boolean;
 }>;
 
 /** Unidade da taxa que alimenta um estoque (ex.: moeda → moeda_por_passo). */
@@ -72,13 +74,13 @@ export function updateStock(
     orderedRates.reduce((total, rate) => total + rate.value, 0) * duration;
   if (!Number.isFinite(value))
     return failure("resultado", "O novo saldo não é finito.");
+  // SG159: o estoque para no limite do domínio (escolaridade não passa de
+  // 100) em vez de travar a partida. Estoque de dinheiro (dívida) tem
+  // domínio aberto e nunca perde nada.
   const { minimo, maximo } = stock.dominio;
-  if (
-    (minimo !== undefined && value < minimo) ||
-    (maximo !== undefined && value > maximo)
-  ) {
-    return failure("resultado", "O novo saldo está fora do domínio declarado.");
-  }
+  let limited = value;
+  if (minimo !== undefined && limited < minimo) limited = minimo;
+  if (maximo !== undefined && limited > maximo) limited = maximo;
   return {
     ok: true,
     value: {
@@ -86,7 +88,8 @@ export function updateStock(
       previousValue,
       duration,
       rates: orderedRates,
-      value,
+      value: limited,
+      ...(limited !== value ? { limited: true } : {}),
     },
   };
 }

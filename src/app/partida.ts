@@ -9,6 +9,7 @@ import {
   calculateContribution,
   type GraphRelation,
   type ResolvedPackage,
+  type VariableDefinition,
   type ScenarioGraph,
 } from "../engine";
 import { contextNodeId, efficacyNodeId } from "../engine/model/lawNodes";
@@ -216,7 +217,23 @@ export type PrevisaoLei = Readonly<{
   implantacao: readonly number[];
   /** Bolhas que a mudança altera, da maior diferença (na escala de cada uma) para a menor. */
   efeitos: readonly EfeitoPrevisto[];
+  /**
+   * A simulação parou antes do horizonte pedido: a prévia mostra só os meses
+   * calculados e aqui diz por quê (SG159).
+   */
+  interrompida?: string;
 }>;
+
+/** Maior horizonte da prévia, em trimestres (5 anos). */
+export const MAXIMO_TRIMESTRES_PREVIA = 20;
+
+/** Escala de desenho da bolha: a faixa visual, ou o domínio (SG159). */
+function escalaDe(variable: VariableDefinition) {
+  return {
+    minimo: variable.faixaVisual?.minimo ?? variable.dominio.minimo ?? 0,
+    maximo: variable.faixaVisual?.maximo ?? variable.dominio.maximo ?? 100,
+  };
+}
 
 function falha<T>(diagnostics: readonly { message: string }[]): Resultado<T> {
   return { ok: false, erros: diagnostics.map((item) => item.message) };
@@ -262,6 +279,10 @@ export function mudarLei(
   const { game, content } = partida;
   const definition = policyLevelRulesFromContent(content, leiId);
   if (!definition.ok) return falha(definition.diagnostics);
+  // Pedir a meta que já está valendo não é uma nova ação (SG159).
+  const atual = game.policies.find((s) => s.policyDefinitionId === leiId);
+  if (atual && Math.abs(atual.desiredLevel - nivel) < 1e-9)
+    return { ok: true, value: partida };
   if (partida.modo === "real") {
     const committed = commitPolicyAction(game, content, {
       id: `acao-${partida.acoes + 1}`,
@@ -331,6 +352,8 @@ function simularTrimestre(partida: Partida) {
 }
 
 type Serie = Readonly<{
+  /** A simulação parou antes do horizonte: o motivo (a série é o que deu). */
+  interrompida?: string;
   /** Valores das bolhas ao fim de cada mês. */
   valores: readonly Readonly<Record<string, number>>[];
   /** Estados das leis ao fim de cada mês. */
@@ -347,7 +370,15 @@ function simularTrimestres(
   let atual = partida;
   for (let t = 0; t < trimestres; t++) {
     const simulado = simularTrimestre(atual);
-    if (!simulado.ok) return falha(simulado.diagnostics);
+    if (!simulado.ok) {
+      // devolve o trecho que deu para calcular (SG159)
+      const motivo = simulado.diagnostics.map((d) => d.message).join(" ");
+      if (!valores.length) return falha(simulado.diagnostics);
+      return {
+        ok: true,
+        value: { valores, leis, interrompida: `turno ${t + 1}: ${motivo}` },
+      };
+    }
     const { prepared, months } = simulado.value;
     prepared.months.forEach((mes) => valores.push(mes.execution.values));
     months.forEach((estados) => leis.push(estados));
@@ -380,21 +411,39 @@ export function preverLei(
   nivel: number,
   trimestres = 1,
 ): Resultado<PrevisaoLei> {
+  if (
+    !Number.isInteger(trimestres) ||
+    trimestres < 1 ||
+    trimestres > MAXIMO_TRIMESTRES_PREVIA
+  )
+    return {
+      ok: false,
+      erros: [
+        `O horizonte da prévia deve ser um número inteiro de 1 a ${MAXIMO_TRIMESTRES_PREVIA} trimestres.`,
+      ],
+    };
   const changed = aplicarMeta(partida, leiId, nivel);
   if (!changed.ok) return changed;
   const base = serieSemMudanca(partida, trimestres);
   if (!base.ok) return base;
   const alt = simularTrimestres(changed.value, trimestres);
   if (!alt.ok) return alt;
+  // Só compara os meses que as duas simulações calcularam.
+  const meses = Math.min(base.value.valores.length, alt.value.valores.length);
+  const interrompida = alt.value.interrompida ?? base.value.interrompida;
   const { content, game } = partida;
   const now = game.execution.values;
   const efeitos = content.variables.variaveis
     .filter((variable) => variable.tipo !== "controle")
     .map((variable): EfeitoPrevisto & { peso: number } => {
-      const semMudanca = base.value.valores.map((v) => v[variable.id] ?? 0);
-      const comMudanca = alt.value.valores.map((v) => v[variable.id] ?? 0);
-      const amplitude =
-        (variable.dominio.maximo ?? 100) - (variable.dominio.minimo ?? 0) || 1;
+      const semMudanca = base.value.valores
+        .slice(0, meses)
+        .map((v) => v[variable.id] ?? 0);
+      const comMudanca = alt.value.valores
+        .slice(0, meses)
+        .map((v) => v[variable.id] ?? 0);
+      const escala = escalaDe(variable);
+      const amplitude = escala.maximo - escala.minimo || 1;
       const peso =
         Math.max(
           ...comMudanca.map((value, i) => Math.abs(value - semMudanca[i])),
@@ -421,12 +470,23 @@ export function preverLei(
       semMudanca: item.semMudanca,
       comMudanca: item.comMudanca,
     }));
-  const implantacao = alt.value.leis.map(
-    (states) =>
-      states.find((state) => state.policyDefinitionId === leiId)
-        ?.implementedLevel ?? nivel,
-  );
-  return { ok: true, value: { leiId, nivel, implantacao, efeitos } };
+  const implantacao = alt.value.leis
+    .slice(0, meses)
+    .map(
+      (states) =>
+        states.find((state) => state.policyDefinitionId === leiId)
+          ?.implementedLevel ?? nivel,
+    );
+  return {
+    ok: true,
+    value: {
+      leiId,
+      nivel,
+      implantacao,
+      efeitos,
+      ...(interrompida ? { interrompida } : {}),
+    },
+  };
 }
 
 /** Passa um trimestre: três meses de implantação, rede e contas públicas. */
@@ -658,6 +718,8 @@ export function verPartida(partida: Partida): VisaoPartida {
     const variable = content.variables.variaveis.find(
       (item) => item.id === policy.controle.variavel,
     );
+    const definicao = policyLevelRulesFromContent(content, policy.id);
+    const regras = definicao.ok ? definicao.value.rules : undefined;
     return {
       id: policy.id,
       nome: policy.nome,
@@ -669,8 +731,9 @@ export function verPartida(partida: Partida): VisaoPartida {
       processo: policy.processoAutorizacao,
       nivel,
       meta: state?.desiredLevel ?? nivel,
-      minimo: variable?.dominio.minimo,
-      maximo: variable?.dominio.maximo,
+      // limites efetivos: os mesmos que a partida aceita (SG159)
+      minimo: regras?.domain.minimum ?? variable?.dominio.minimo,
+      maximo: regras?.domain.maximum ?? variable?.dominio.maximo,
       unidade: policy.controle.unidade,
       opcoes: opcoes?.map(({ id, rotulo, valor }) => ({
         id,
@@ -700,8 +763,7 @@ export function verPartida(partida: Partida): VisaoPartida {
         variable.tipo === "situacao"
           ? brutoDe(variable.id, variable.surgimento ?? 0)
           : (values[variable.id] ?? 0),
-      minimo: variable.dominio.minimo ?? 0,
-      maximo: variable.dominio.maximo ?? 100,
+      ...escalaDe(variable),
       surgimento: variable.surgimento,
       ...(values[contextNodeId(variable.id)] !== undefined
         ? { contexto: values[contextNodeId(variable.id)] }

@@ -342,9 +342,11 @@ export function computeNetwork(
     const target = clamp(emerged, node.dominio.minimo, node.dominio.maximo);
     const before = previous[targetId];
     // D-54: bolha calculada anda parte do caminho por passo (amortece ciclos).
+    // Bolha com resposta própria (as contas, SG159) usa a dela.
+    const own = node.resposta ?? response;
     const result =
-      response < 1 && !isLawNode(targetId) && before !== undefined
-        ? before + response * (target - before)
+      own < 1 && !isLawNode(targetId) && before !== undefined
+        ? before + own * (target - before)
         : target;
     next[targetId] = result;
     computed.add(targetId);

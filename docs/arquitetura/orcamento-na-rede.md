@@ -245,6 +245,17 @@ para partidas longas e para cenários com pouca dívida. A lei já vem em
 **Para depois:** empréstimos com calote (parte do cofre emprestado não
 volta numa recessão); quanto investir em cada obra (B-17).
 
+## Contas sem furos (SG159, D-59)
+
+O relatório de testes de 10/out achou dois furos, corrigidos: (1) o resultado
+tinha teto de 30% do PIB e era amortecido separado das partes, então parte do
+déficit sumia e a conta não fechava; (2) dívida e cofre tinham limite de
+escala, e passar dele travava o turno. Agora as quatro contas respondem na
+hora (`resposta: 1`) e têm domínio aberto; dívida e cofre não têm limite; a
+escala das bolhas para desenhar vem de `faixaVisual`. Uma crise de dívida de
+verdade (calote, socorro) é regra de jogo a desenhar (SG106), não um limite
+de escala.
+
 ## Questões abertas
 
 - PIB em R$ como nó (hoje o PIB da rede é um índice 0–100 e o PIB em R$ é

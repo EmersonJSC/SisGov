@@ -82,6 +82,17 @@ export type VariableDefinition = {
   surgimento?: number;
   area?: string;
   avaliacao?: "maior_melhor" | "maior_pior" | "neutra";
+  /**
+   * Resposta própria desta bolha (D-54), por passo. 1 = chega na hora: é o
+   * caso das contas (receita, gasto, juros, resultado), que são somas e não
+   * podem andar separadas das partes (SG159).
+   */
+  resposta?: number;
+  /**
+   * Faixa só para desenhar a bolha (tamanho e régua), quando o domínio é
+   * aberto. O motor não usa: não limita nada.
+   */
+  faixaVisual?: { minimo: number; maximo: number };
 };
 
 export type VariablesFile = {

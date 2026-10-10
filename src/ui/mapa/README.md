@@ -64,8 +64,11 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
 - **Fim do turno:** cada indicador que mudou pelo menos 0,2% da sua escala
   pisca em verde ou vermelho e ganha uma etiqueta com a variação, de tamanho
   fixo na tela; um botão oculta ou mostra as etiquetas.
-- **Contas (SG157):** a barra de cima mostra Receita, Gasto, Déficit (ou
-  Superávit, com os juros embaixo) e Dívida, em R$ e em % do PIB, lidos da
+- **Contas (SG157, SG159):** a barra de cima mostra as contas como uma
+  conta: **Entra − Sai = Falta** (ou Sobra), com os juros dentro do "Sai"
+  ("leis R$ 3,7 tri + juros R$ 970 bi") e o destino do resultado ("vira
+  dívida", "abate a dívida", "vai para o cofre"). Cada parte abre o boletim
+  da bolha. Depois vem a Dívida, em R$ e em % do PIB, lidas da
   `VisaoPartida.contas`. Quando a dívida acaba, "Dívida" vira "Cofre" e os
   juros viram "rendimento do cofre" (D-57). O documento da lei diz quanto ela
   arrecada ou custa por ano e por mês (`saldoAnual`), e o relatório de impacto

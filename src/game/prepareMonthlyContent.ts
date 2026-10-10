@@ -156,7 +156,12 @@ export function prepareMonthlyContent(
   };
   const variables = {
     ...content.variables,
-    variaveis: content.variables.variaveis.map((variable) => {
+    variaveis: content.variables.variaveis.map((input) => {
+      // Mesma resposta por trimestre, repartida em três meses (D-54).
+      const variable =
+        input.resposta !== undefined && input.resposta < 1
+          ? { ...input, resposta: 1 - Math.pow(1 - input.resposta, 1 / 3) }
+          : input;
       if (!variable.unidade.endsWith("_por_passo")) return variable;
       return {
         ...variable,
