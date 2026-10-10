@@ -5,6 +5,7 @@ import type {
 } from "../engine";
 import { changePolicyTarget, createProposal } from "../domain/game";
 import type { GameState } from "./createGame";
+import { applyRequirementFalls } from "./policyRequirements";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import {
   validatePolicyAction,
@@ -81,5 +82,7 @@ export function commitPolicyAction(
   if (!changed.ok) return invalid("policy", changed.error.message);
   const policies = [...game.policies];
   policies[index] = changed.value;
-  return { ok: true, value: { ...game, policies } };
+  // SG138: filhas que dependiam desta lei caem para a base
+  const falls = applyRequirementFalls(content, policies, game.currentTurn);
+  return { ok: true, value: { ...game, policies: falls.policies } };
 }

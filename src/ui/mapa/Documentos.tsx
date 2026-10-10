@@ -20,6 +20,7 @@ import {
   type VisaoBolha,
   type VisaoLei,
   type VisaoPartida,
+  type VisaoQueda,
 } from "../../app/partida";
 import {
   NOME_GRUPO,
@@ -405,6 +406,12 @@ function Abas({
 // Documento da lei
 // ---------------------------------------------------------------------------
 
+/** "A, B ou C" */
+function listaOu(itens: readonly string[]): string {
+  if (itens.length <= 1) return itens.join("");
+  return `${itens.slice(0, -1).join(", ")} ou ${itens.at(-1)}`;
+}
+
 function faixaNumerica(lei: VisaoLei) {
   const min = lei.minimo ?? 0;
   const referencia = Math.max(lei.nivel, lei.meta);
@@ -435,6 +442,7 @@ export function DocumentoLei({
   rascunho,
   onRascunho,
   previsao,
+  quedas = [],
   calculando,
   erro,
   horizonte,
@@ -451,6 +459,8 @@ export function DocumentoLei({
   rascunho: number;
   onRascunho: (valor: number) => void;
   previsao: PrevisaoLei | null;
+  /** Leis filhas que cairiam com esta redação (SG138). */
+  quedas?: readonly VisaoQueda[];
   calculando: boolean;
   erro: string | null;
   horizonte: Horizonte;
@@ -672,22 +682,49 @@ export function DocumentoLei({
         <h2>
           <span>II.</span> Nova redação
         </h2>
+        {lei.exige ? (
+          <button
+            type="button"
+            className={`vinculo-doc${lei.exige.atendida ? "" : " fora"}`}
+            onClick={() => onSelecionar(lei.exige!.lei)}
+          >
+            <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
+            <span>
+              <strong>Depende de {lei.exige.nome}</strong> em{" "}
+              {listaOu(lei.exige.opcoes)}.
+              {lei.exige.motivo ? <small> {lei.exige.motivo}</small> : null}
+              {lei.exige.atendida ? null : (
+                <em>
+                  Hoje {lei.exige.nome} está fora: só vale “{lei.exige.base}”.
+                </em>
+              )}
+            </span>
+          </button>
+        ) : null}
         {lei.opcoes?.length ? (
           <div
             className="opcoes-doc"
             role="radiogroup"
             aria-label="Nova redação da lei"
           >
-            {lei.opcoes.map((opcao) => {
+            {lei.opcoes.map((opcao, i) => {
               const ativa = Math.abs(opcao.valor - rascunho) < 1e-9;
               const vigente = opcao.id === lei.opcaoAtual;
+              // lei filha com a mãe fora: só a base (a primeira opção)
+              const bloqueada = !!lei.exige && !lei.exige.atendida && i > 0;
               return (
                 <button
                   key={opcao.id}
                   type="button"
                   role="radio"
                   aria-checked={ativa}
-                  className={`opcao-doc${ativa ? " ativa" : ""}`}
+                  disabled={bloqueada}
+                  title={
+                    bloqueada
+                      ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
+                      : undefined
+                  }
+                  className={`opcao-doc${ativa ? " ativa" : ""}${bloqueada ? " bloqueada" : ""}`}
                   onClick={() => onRascunho(opcao.valor)}
                 >
                   <span className="caixinha">{ativa ? "✕" : ""}</span>
@@ -718,6 +755,38 @@ export function DocumentoLei({
             receita={visao.contas.receita}
           />
         )}
+        {quedas.length ? (
+          <div className="quedas-doc" role="alert">
+            <Icone nome={ICONE_INTERFACE.vinculoQuebrado} tamanho={18} />
+            <span>
+              <strong>Ao assinar, caem para a base:</strong>
+              {quedas.map((q) => (
+                <button
+                  key={q.id}
+                  type="button"
+                  onClick={() => onSelecionar(q.id)}
+                >
+                  {q.nome} → “{q.base}”
+                </button>
+              ))}
+            </span>
+          </div>
+        ) : lei.filhas.some((f) => f.ativa) ? (
+          <p className="filhas-doc">
+            Dependem desta lei:{" "}
+            {lei.filhas
+              .filter((f) => f.ativa)
+              .map((f, i) => (
+                <span key={f.id}>
+                  {i ? ", " : ""}
+                  <button type="button" onClick={() => onSelecionar(f.id)}>
+                    {f.nome}
+                  </button>
+                </span>
+              ))}
+            .
+          </p>
+        ) : null}
         {erro ? <p className="erro">{erro}</p> : null}
       </section>
 

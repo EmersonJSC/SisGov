@@ -3,8 +3,9 @@
  * própria janela; abrir outra não mexe nas que já estão abertas. A janela de
  * lei guarda o próprio rascunho e a própria prévia.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
+  leisQueCaem,
   preverLei,
   type Partida,
   type PrevisaoLei,
@@ -108,6 +109,15 @@ export function JanelaLei({
     return () => window.clearTimeout(id);
   }, [partida, lei.id, lei.meta, rascunho]);
 
+  // SG138: filhas que cairiam com esta redação, para avisar antes de assinar
+  const quedas = useMemo(
+    () =>
+      Math.abs(rascunho - lei.meta) < 1e-9
+        ? []
+        : leisQueCaem(partida, lei.id, rascunho),
+    [partida, lei.id, lei.meta, rascunho],
+  );
+
   useEffect(() => onPrevisao(lei.id, previsao), [lei.id, previsao, onPrevisao]);
   useEffect(() => () => onPrevisao(lei.id, null), [lei.id, onPrevisao]);
 
@@ -120,6 +130,7 @@ export function JanelaLei({
       rascunho={rascunho}
       onRascunho={setRascunho}
       previsao={previsao}
+      quedas={quedas}
       calculando={calculando}
       erro={erro}
       horizonte={horizonte}

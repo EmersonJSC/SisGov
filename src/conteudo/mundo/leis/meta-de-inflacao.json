@@ -8,6 +8,11 @@
   "area": "Economia, finanças e comércio exterior",
   "ministerio": "Ministério do Desenvolvimento",
   "processoAutorizacao": "emenda-constitucional",
+  "requer": {
+    "lei": "regime-cambial",
+    "opcoes": ["bandas", "flutuante-administrado", "flutuante"],
+    "motivo": "Com câmbio fixo, os juros servem para defender o câmbio e não sobram para mirar a inflação (trilema da política monetária)."
+  },
   "controle": {
     "variavel": "nivel_meta_de_inflacao",
     "unidade": "nivel_escopo",

@@ -8,6 +8,16 @@
   "area": "Segurança, justiça e drogas",
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
+  "requer": {
+    "lei": "modelo-de-policia",
+    "opcoes": [
+      "comunitaria-civil",
+      "ciclo-completo",
+      "dual-militarizada",
+      "forcas-armadas"
+    ],
+    "motivo": "Câmera corporal precisa de polícia profissional para usá-la."
+  },
   "controle": {
     "variavel": "nivel_cameras_corporais",
     "unidade": "nivel_escopo",

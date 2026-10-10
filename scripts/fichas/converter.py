@@ -419,6 +419,8 @@ def main(aplicar: bool) -> None:
                "processoAutorizacao": processo}
         opcoes = f.get("opcoes") or []
         faixa = f.get("faixa") or {}
+        if f.get("requer"):  # lei filha (SG138): o validador confere a mãe
+            lei["requer"] = {k: f["requer"][k] for k in ("lei", "opcoes", "motivo") if k in f["requer"]}
         if grupo in ("regulatoria", "institucional"):
             var = f"nivel_{snake(lid)}"
             n = len(opcoes)

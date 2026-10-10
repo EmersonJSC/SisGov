@@ -304,6 +304,11 @@
       "area": "Previdência e assistência social",
       "ministerio": "Ministério da Previdência Social",
       "grupo": "institucional",
+      "requer": {
+        "lei": "sistema-previdenciario",
+        "opcoes": ["capitalizacao", "misto", "reparticao"],
+        "motivo": "Sem previdência obrigatória não há regime rural: ele é um braço do sistema."
+      },
       "descricao": "Define como o pequeno agricultor, que quase nunca tem salário fixo nem carteira, entra na previdência: fora dela, por adesão voluntária, por regime agrícola contributivo ou só comprovando que trabalhou na roça.",
       "dilema": "Garantir velhice digna a quem passou a vida na roça sem contribuir, ou cobrar de quem contribui na cidade a conta de um benefício que quase não se paga?",
       "eixo": "do agricultor sem cobertura à aposentadoria rural sem contribuição individual",
@@ -1034,6 +1039,11 @@
       "area": "Previdência e assistência social",
       "ministerio": "Ministério da Previdência Social",
       "grupo": "regulatoria",
+      "requer": {
+        "lei": "sistema-previdenciario",
+        "opcoes": ["capitalizacao", "misto", "reparticao"],
+        "motivo": "A pensão por morte é paga pelo sistema previdenciário; sem ele, ela acaba."
+      },
       "descricao": "Define o que a família recebe quando morre quem contribuía: nada, uma ajuda temporária, uma parte do benefício por dependente ou o benefício inteiro para sempre.",
       "dilema": "Proteger viúvas e órfãos da queda de renda, ou pagar por décadas uma pensão integral a quem tem idade e saúde para trabalhar?",
       "eixo": "do sem pensão à pensão integral e vitalícia",

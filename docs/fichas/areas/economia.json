@@ -7,6 +7,11 @@
       "area": "Economia, finanças e comércio exterior",
       "ministerio": "Banco Central",
       "grupo": "institucional",
+      "requer": {
+        "lei": "regime-cambial",
+        "opcoes": ["bandas", "flutuante-administrado", "flutuante"],
+        "motivo": "Com câmbio fixo, os juros servem para defender o câmbio e não sobram para mirar a inflação (trilema da política monetária)."
+      },
       "descricao": "Define qual é a âncora da política monetária: nenhuma, inflação e emprego juntos, ou uma meta numérica de inflação com tolerância maior ou menor.",
       "dilema": "Inflação baixa e previsível, ou juros mais baixos e mais folga para o emprego quando a economia tropeça?",
       "eixo": "do sem âncora ao foco exclusivo e rígido na inflação",

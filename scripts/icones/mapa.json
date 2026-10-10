@@ -286,6 +286,8 @@
     "Ministério da Justiça": "scale-balance",
     "Casa Civil": "bank",
     "assinar": "draw-pen",
-    "variacoes": "swap-vertical-bold"
+    "variacoes": "swap-vertical-bold",
+    "vinculo": "link-variant",
+    "vinculoQuebrado": "link-variant-off"
   }
 }

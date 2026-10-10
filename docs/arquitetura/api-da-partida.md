@@ -14,6 +14,7 @@ por `mudarLei` e `encerrarTurno`.
 | `encerrarTurno(partida)`                        | —                                                                 | `Resultado<{ partida, relatorio }>` | Botão "Encerrar turno" (um trimestre) |
 | `verPartida(partida)`                           | —                                                                 | `VisaoPartida`                      | Sempre que for desenhar               |
 | `preverLei(partida, leiId, nivel, trimestres?)` | id da lei e o nível que o jogador está considerando               | `Resultado<PrevisaoLei>`            | Prévia antes de aplicar a mudança     |
+| `leisQueCaem(partida, leiId, nivel)`            | id da lei e o nível que o jogador está considerando               | `VisaoQueda[]`                      | Avisar que leis filhas cairiam        |
 
 `Resultado<T>` é `{ ok: true, value }` ou `{ ok: false, erros: string[] }`.
 Erros são frases prontas para mostrar ao jogador.
@@ -46,6 +47,14 @@ e descarte a anterior (ou guarde para "desfazer").
   maior_pior, neutra), `valor`, `minimo` e `maximo` (escala do domínio) e,
   nas situações, `surgimento`; `contexto` (D-55): a parte do valor que as
   leis e a rede não explicam, fixa desde o turno 0.
+- `leis[].exige` (SG138, só nas leis filhas): `lei` e `nome` da mãe,
+  `opcoes` (rótulos das opções da mãe que liberam a filha), `base` (opção
+  para onde a filha cai), `atendida` e `motivo`. `leis[].filhas[]`: `id`,
+  `nome`, `valores` (valores desta lei que mantêm a filha) e `ativa` (a filha
+  está fora da base). Regra: fora da base, `mudarLei` e `preverLei` recusam a
+  filha se a mãe não está numa opção exigida; quando a mãe sai delas, a
+  filha cai para a base na mesma ação, em cascata, e a prévia da mãe já
+  inclui a queda. Voltar a mãe não religa a filha.
 - `grupos[]` (SG143): a lista lateral dos grupos sociais, do mais ao menos
   satisfeito: `id`, `nome`, `satisfacao` (0–100), `peso` (parte do
   eleitorado, 0–1; a aprovação é a média pelos pesos), `gosta[]` e `odeia[]`

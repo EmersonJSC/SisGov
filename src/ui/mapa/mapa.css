@@ -2706,3 +2706,107 @@ button {
     max-height: calc(100% - 150px);
   }
 }
+
+/* ------------------------------------------ leis mães e filhas (SG138) -- */
+
+.vinculo-doc {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px dashed #b9a77a;
+  border-radius: 8px;
+  background: #fbf6e8;
+  color: var(--tinta-doc);
+  font-size: 13.5px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  --icone: #8a6d1f;
+}
+
+.vinculo-doc span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vinculo-doc small {
+  color: #6f6450;
+  font-size: 12.5px;
+  font-style: italic;
+}
+
+.vinculo-doc em {
+  margin-top: 3px;
+  color: #9b2c2c;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.vinculo-doc.fora {
+  border-color: #d99aa1;
+  background: #fdf0f0;
+  --icone: #9b2c2c;
+}
+
+.vinculo-doc:hover {
+  filter: brightness(0.98);
+}
+
+.opcao-doc.bloqueada {
+  opacity: 0.42;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  text-decoration-color: #9b2c2c88;
+}
+
+.quedas-doc {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #efc2c7;
+  background: #fdf0f0;
+  color: #7d2330;
+  font-size: 13px;
+  --icone: #9b2c2c;
+}
+
+.quedas-doc span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.quedas-doc strong {
+  width: 100%;
+}
+
+.quedas-doc button,
+.filhas-doc button {
+  padding: 1px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: #fff;
+  color: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filhas-doc {
+  margin: 10px 0 0;
+  color: #6f6450;
+  font-size: 12.5px;
+}
+
+.filhas-doc button {
+  border-color: #c9b98f;
+  color: var(--tinta-doc);
+}

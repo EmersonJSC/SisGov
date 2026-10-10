@@ -2461,6 +2461,7 @@ function validatePolicy(
       "controle",
       "orcamento",
       "tributo",
+      "requer",
       "consequencias",
       ...quantityFields,
     ],
@@ -2541,6 +2542,36 @@ function validatePolicy(
   }
   requiredString(value, file, "processoAutorizacao", diagnostics);
   requiredStringArray(value, file, "consequencias", diagnostics);
+  if (value.requer !== undefined) {
+    if (!isObject(value.requer))
+      diagnostics.push(
+        diagnostic(file, "requer", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(
+        value.requer,
+        file,
+        ["lei", "opcoes", "motivo"],
+        diagnostics,
+      );
+      if (value.requer.motivo !== undefined)
+        requiredString(value.requer, file, "requer.motivo", diagnostics);
+      requiredString(value.requer, file, "requer.lei", diagnostics);
+      requiredStringArray(value.requer, file, "requer.opcoes", diagnostics);
+      if (
+        Array.isArray(value.requer.opcoes) &&
+        value.requer.opcoes.length === 0
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "requer.opcoes",
+            "VALOR_INVALIDO",
+            "A lei filha precisa de pelo menos uma opção da mãe.",
+          ),
+        );
+    }
+  }
 
   if (!isObject(value.controle)) {
     diagnostics.push(

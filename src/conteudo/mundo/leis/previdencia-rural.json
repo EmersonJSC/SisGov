@@ -8,6 +8,11 @@
   "area": "Previdência e assistência social",
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
+  "requer": {
+    "lei": "sistema-previdenciario",
+    "opcoes": ["capitalizacao", "misto", "reparticao"],
+    "motivo": "Sem previdência obrigatória não há regime rural: ele é um braço do sistema."
+  },
   "controle": {
     "variavel": "nivel_previdencia_rural",
     "unidade": "nivel_escopo",

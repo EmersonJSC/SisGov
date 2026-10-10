@@ -14,6 +14,12 @@ import {
 } from "../engine";
 import { contextNodeId, efficacyNodeId } from "../engine/model/lawNodes";
 import { changePolicyTarget } from "../domain/game";
+import {
+  applyRequirementFalls,
+  policyRequirements,
+  requirementBlock,
+  requirementMet,
+} from "../game/policyRequirements";
 import { createGame, type GameState } from "../game/createGame";
 import { commitPolicyAction } from "../game/commitPolicyAction";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
@@ -91,7 +97,36 @@ export type VisaoLei = Readonly<{
    * gasto). 0 se a lei não toca o orçamento.
    */
   saldoAnual: number;
+  /**
+   * Lei filha (SG138): a lei mãe, as opções dela que liberam esta lei, a
+   * opção de base desta (para onde ela cai) e se a exigência está cumprida.
+   */
+  exige?: VisaoExigencia;
+  /** Leis filhas desta: caem para a base se esta sair das opções delas. */
+  filhas: readonly VisaoFilha[];
 }>;
+
+export type VisaoExigencia = Readonly<{
+  lei: string;
+  nome: string;
+  opcoes: readonly string[];
+  base: string;
+  atendida: boolean;
+  /** Por que esta lei depende da mãe. */
+  motivo?: string;
+}>;
+
+export type VisaoFilha = Readonly<{
+  id: string;
+  nome: string;
+  /** Valores desta lei (a mãe) que mantêm a filha. */
+  valores: readonly number[];
+  /** A filha está fora da base (cairia se a mãe saísse das opções). */
+  ativa: boolean;
+}>;
+
+/** Lei que cai para a base por causa de uma mudança (SG138). */
+export type VisaoQueda = Readonly<{ id: string; nome: string; base: string }>;
 
 export type VisaoBolha = Readonly<{
   id: string;
@@ -324,6 +359,32 @@ export function mudarLei(
   return aplicarMeta(partida, leiId, nivel);
 }
 
+/**
+ * Leis filhas que cairiam para a base se a lei mudasse para `nivel` (SG138),
+ * em cascata. Não muda a partida: serve para avisar antes de assinar.
+ */
+export function leisQueCaem(
+  partida: Partida,
+  leiId: string,
+  nivel: number,
+): readonly VisaoQueda[] {
+  const { game, content } = partida;
+  const hipotese = game.policies.map((state) =>
+    state.policyDefinitionId === leiId
+      ? { ...state, desiredLevel: nivel }
+      : state,
+  );
+  const { fallen } = applyRequirementFalls(content, hipotese, game.currentTurn);
+  const exigencias = policyRequirements(content);
+  return fallen.map((queda) => ({
+    id: queda.policyId,
+    nome:
+      content.policies.find((p) => p.id === queda.policyId)?.nome ??
+      queda.policyId,
+    base: exigencias.get(queda.policyId)?.baseLabel ?? "",
+  }));
+}
+
 /** Muda a meta da lei direto na partida, sem passar pelo Congresso. */
 function aplicarMeta(
   partida: Partida,
@@ -338,6 +399,9 @@ function aplicarMeta(
   );
   if (index < 0)
     return { ok: false, erros: [`A lei ${leiId} não está vigente.`] };
+  // lei filha (SG138): fora da base, só com a mãe numa opção exigida
+  const bloqueio = requirementBlock(content, game.policies, leiId, nivel);
+  if (bloqueio) return { ok: false, erros: [bloqueio] };
   const changed = changePolicyTarget(
     game.policies[index],
     nivel,
@@ -345,8 +409,14 @@ function aplicarMeta(
     definition.value.rules,
   );
   if (!changed.ok) return { ok: false, erros: [changed.error.message] };
-  const policies = [...game.policies];
-  policies[index] = changed.value;
+  const mudadas = [...game.policies];
+  mudadas[index] = changed.value;
+  // a mãe mudou: as filhas que dependiam dela caem para a base
+  const { policies } = applyRequirementFalls(
+    content,
+    mudadas,
+    game.currentTurn,
+  );
   return {
     ok: true,
     value: {
@@ -803,6 +873,8 @@ export function verPartida(partida: Partida): VisaoPartida {
   const states = new Map(
     game.policies.map((state) => [state.policyDefinitionId, state]),
   );
+  const exigencias = policyRequirements(content);
+  const nomeDaLei = new Map(content.policies.map((p) => [p.id, p.nome]));
   const leis = content.policies.map((policy): VisaoLei => {
     const state = states.get(policy.id);
     const nivel = state?.implementedLevel ?? 0;
@@ -841,8 +913,35 @@ export function verPartida(partida: Partida): VisaoPartida {
       opcaoAtual: nearest?.id,
       saldoAnual: saldo(policy.id),
       alteradaPorVoce: alteradas.has(policy.id),
+      ...exigenciaDa(policy.id),
+      filhas: [...exigencias.values()]
+        .filter((r) => r.parentId === policy.id)
+        .map((r) => ({
+          id: r.childId,
+          nome: nomeDaLei.get(r.childId) ?? r.childId,
+          valores: r.allowedLevels,
+          ativa:
+            Math.abs(
+              (states.get(r.childId)?.desiredLevel ?? r.baseLevel) -
+                r.baseLevel,
+            ) > 1e-9,
+        })),
     };
   });
+  function exigenciaDa(id: string): { exige?: VisaoExigencia } {
+    const r = exigencias.get(id);
+    if (!r) return {};
+    return {
+      exige: {
+        lei: r.parentId,
+        nome: nomeDaLei.get(r.parentId) ?? r.parentId,
+        opcoes: r.allowedLabels,
+        base: r.baseLabel,
+        atendida: requirementMet(r, game.policies),
+        ...(r.reason ? { motivo: r.reason } : {}),
+      },
+    };
+  }
   const brutoDe = brutoDasSituacoes(partida, values);
   const comPiloto = partida.piloto !== game;
   const pilotoValues = partida.piloto.execution.values;

@@ -911,6 +911,16 @@
       "area": "Segurança, justiça e drogas",
       "ministerio": "Ministério da Justiça e Segurança Pública",
       "grupo": "regulatoria",
+      "requer": {
+        "lei": "modelo-de-policia",
+        "opcoes": [
+          "comunitaria-civil",
+          "ciclo-completo",
+          "dual-militarizada",
+          "forcas-armadas"
+        ],
+        "motivo": "Câmera corporal precisa de polícia profissional para usá-la."
+      },
       "descricao": "Define se policiais usam câmeras no uniforme e quem decide quando gravar.",
       "dilema": "Vigiar quem nos vigia e salvar vidas nas abordagens, ou gastar com tecnologia que a tropa vê como desconfiança e que grava a vida de todo mundo?",
       "eixo": "da polícia sem câmeras à gravação ininterrupta",

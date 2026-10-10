@@ -353,6 +353,90 @@ export function validatePackageCoherence(
         );
     }
 
+  // Lei filha (SG138): a mãe existe e tem as opções pedidas, não há ciclo e o
+  // país começa coerente (filha fora da base só com a mãe numa das opções).
+  const initialDesired = new Map<string, number>();
+  for (const initial of content.initialState.leisVigentes ?? []) {
+    const policy = policiesById.get(initial.lei);
+    if (!policy) continue;
+    const levels = resolveInheritedLawLevels(policy, initial);
+    if (levels.ok) initialDesired.set(initial.lei, levels.desiredLevel);
+  }
+  for (const policy of content.policies) {
+    const requirement = policy.requer;
+    if (!requirement) continue;
+    const parent = policiesById.get(requirement.lei);
+    if (!parent || parent.id === policy.id) {
+      diagnostics.push(
+        issue(
+          policy.id,
+          "requer.lei",
+          parent
+            ? "A lei não pode exigir a si mesma."
+            : `Lei mãe inexistente: ${requirement.lei}.`,
+        ),
+      );
+      continue;
+    }
+    const own = policy.controle.opcoes ?? [];
+    if (own.length === 0)
+      diagnostics.push(
+        issue(
+          policy.id,
+          "controle.opcoes",
+          "A lei filha precisa ter opções: a primeira é a base para onde ela cai.",
+        ),
+      );
+    const parentOptions = parent.controle.opcoes ?? [];
+    if (parentOptions.length === 0) {
+      diagnostics.push(
+        issue(policy.id, "requer.lei", "A lei mãe precisa ter opções."),
+      );
+      continue;
+    }
+    const allowed: number[] = [];
+    for (const [index, optionId] of requirement.opcoes.entries()) {
+      const option = parentOptions.find((item) => item.id === optionId);
+      if (!option)
+        diagnostics.push(
+          issue(
+            policy.id,
+            `requer.opcoes[${index}]`,
+            `A lei ${parent.id} não tem a opção ${optionId}.`,
+          ),
+        );
+      else allowed.push(option.valor);
+    }
+    let ancestor = parent.requer?.lei;
+    const seen = new Set([policy.id, parent.id]);
+    while (ancestor !== undefined) {
+      if (seen.has(ancestor)) {
+        diagnostics.push(
+          issue(policy.id, "requer.lei", "Ciclo de leis mães e filhas."),
+        );
+        break;
+      }
+      seen.add(ancestor);
+      ancestor = policiesById.get(ancestor)?.requer?.lei;
+    }
+    const childLevel = initialDesired.get(policy.id);
+    const parentLevel = initialDesired.get(parent.id);
+    if (
+      own.length > 0 &&
+      childLevel !== undefined &&
+      Math.abs(childLevel - own[0].valor) > 1e-9 &&
+      (parentLevel === undefined ||
+        !allowed.some((value) => Math.abs(value - parentLevel) < 1e-9))
+    )
+      diagnostics.push(
+        issue(
+          initialStateFile,
+          "leisVigentes",
+          `A lei ${policy.id} começa fora da base, mas a lei ${parent.id} não está numa das opções que ela exige.`,
+        ),
+      );
+  }
+
   for (const policy of content.policies) {
     const control = variablesById.get(policy.controle.variavel);
     if (!control) {

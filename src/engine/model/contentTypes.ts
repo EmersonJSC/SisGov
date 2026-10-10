@@ -349,6 +349,11 @@ export type PolicyFile = {
     limites?: PolicyLimits;
   };
   tributo?: { base: string; limites?: PolicyLimits };
+  /**
+   * Lei filha (SG138): fora da opção de base (a primeira), só vale com a lei
+   * mãe numa destas opções; quando a mãe sai delas, a filha cai para a base.
+   */
+  requer?: { lei: string; opcoes: readonly string[]; motivo?: string };
   consequencias: string[];
 };
 
