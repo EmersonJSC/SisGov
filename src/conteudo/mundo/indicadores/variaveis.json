@@ -4,6 +4,17 @@
   "versaoEsquema": 1,
   "variaveis": [
     {
+      "id": "pib_nominal",
+      "tipo": "controle",
+      "nome": "PIB nominal",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 1
+      },
+      "valorInicial": 1000000,
+      "area": "Economia"
+    },
+    {
       "id": "nivel_codigo_florestal",
       "tipo": "controle",
       "nome": "Código florestal",

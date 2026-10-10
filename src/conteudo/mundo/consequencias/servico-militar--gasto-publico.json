@@ -6,10 +6,11 @@
   "alvo": "gasto_publico",
   "mecanismo": "limiar",
   "parametros": {
-    "coeficiente": 0.28,
+    "coeficiente": 0.01,
     "limiar": 75,
     "direcao": "acima"
   },
+  "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 0,
   "duracao": {

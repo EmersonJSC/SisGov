@@ -21,11 +21,11 @@
   },
   "consequencias": [
     "imposto-heranca--desigualdade",
-    "imposto-heranca--arrecadacao",
     "imposto-heranca--fuga-capitais",
     "imposto-heranca--sonegacao",
     "imposto-heranca--oportunidades-juvenis",
-    "imposto-heranca--popularidade-governo"
+    "imposto-heranca--popularidade-governo",
+    "imposto-heranca--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

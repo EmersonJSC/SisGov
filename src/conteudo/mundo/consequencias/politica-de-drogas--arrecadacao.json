@@ -6,10 +6,11 @@
   "alvo": "arrecadacao",
   "mecanismo": "limiar",
   "parametros": {
-    "coeficiente": 0.15,
+    "coeficiente": 0.005,
     "limiar": 80,
     "direcao": "acima"
   },
+  "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 1,
   "duracao": {

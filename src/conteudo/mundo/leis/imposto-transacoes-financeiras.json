@@ -20,12 +20,12 @@
     }
   },
   "consequencias": [
-    "imposto-transacoes-financeiras--arrecadacao",
     "imposto-transacoes-financeiras--sonegacao",
     "imposto-transacoes-financeiras--credito",
     "imposto-transacoes-financeiras--fuga-capitais",
     "imposto-transacoes-financeiras--informalidade",
-    "imposto-transacoes-financeiras--inflacao"
+    "imposto-transacoes-financeiras--inflacao",
+    "imposto-transacoes-financeiras--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

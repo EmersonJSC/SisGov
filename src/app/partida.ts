@@ -5,14 +5,18 @@
  * nada de `engine/`, `game/` ou `domain/`. Contrato em
  * `docs/arquitetura/api-da-partida.md`.
  */
-import type { ResolvedPackage, ScenarioGraph } from "../engine";
+import {
+  calculateContribution,
+  type ResolvedPackage,
+  type ScenarioGraph,
+} from "../engine";
+import { efficacyNodeId } from "../engine/model/lawNodes";
 import { changePolicyTarget } from "../domain/game";
 import { createGame, type GameState } from "../game/createGame";
 import { commitPolicyAction } from "../game/commitPolicyAction";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
 import { commitGameQuarter } from "../game/commitGameQuarter";
-import { buildFiscalQuarterReport } from "../game/fiscalReport";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { advancePolicyImplementation } from "../game/advancePolicyImplementation";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
@@ -65,8 +69,12 @@ export type VisaoLei = Readonly<{
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */
   opcaoAtual?: string;
-  /** Gasto anual estimado, na moeda do país (0 se a lei não gasta). */
-  gastoAnual: number;
+  /**
+   * Quanto a lei mexe nas contas por ano, na moeda do país, lido da rede:
+   * positivo arrecada (seta para a receita), negativo custa (seta para o
+   * gasto). 0 se a lei não toca o orçamento.
+   */
+  saldoAnual: number;
 }>;
 
 export type VisaoBolha = Readonly<{
@@ -91,16 +99,42 @@ export type VisaoLigacao = Readonly<{
   sinal: 1 | -1;
   /** Atraso declarado no conteúdo, convertido para meses. */
   atrasoMeses: number;
-  /** `afim` (proporcional) ou `limiar` (só reage depois de certo ponto). */
+  /**
+   * `afim` (proporcional), `limiar` (só reage depois de certo ponto) ou
+   * `produto` (a origem multiplica outra: base × alíquota, dívida × taxa).
+   */
   mecanismo: string;
 }>;
+
+/** Os nós do orçamento na rede (SG157, D-47): são bolhas como as outras. */
+export const BOLHAS_DO_ORCAMENTO = {
+  receita: "arrecadacao",
+  gasto: "gasto_publico",
+  juros: "juros_da_divida",
+  resultado: "resultado_fiscal",
+  divida: "divida_publica",
+} as const;
+
+type Contas = Readonly<Record<keyof typeof BOLHAS_DO_ORCAMENTO, number>>;
+
+/**
+ * As contas do governo, lidas das bolhas do orçamento. Receita, gasto, juros
+ * e resultado são por ano; resultado = receita − gasto − juros (positivo é
+ * superávit). Não há caixa: o déficit soma na dívida e o superávit abate
+ * (D-49).
+ */
+export type VisaoContas = Contas &
+  Readonly<{
+    /** PIB do país por ano, na moeda do país. */
+    pib: number;
+    /** As mesmas contas em % do PIB, como estão na rede. */
+    percentualPib: Contas;
+  }>;
 
 export type VisaoPartida = Readonly<{
   pais: string;
   turno: number;
-  caixa: number;
-  divida: number;
-  pib: number;
+  contas: VisaoContas;
   leis: readonly VisaoLei[];
   bolhas: readonly VisaoBolha[];
   ligacoes: readonly VisaoLigacao[];
@@ -108,10 +142,9 @@ export type VisaoPartida = Readonly<{
 
 export type RelatorioTurno = Readonly<{
   turno: number;
-  receita: number;
-  gastoPrimario: number;
-  juros: number;
-  resultado: number;
+  /** Contas antes e depois do trimestre (por ano, na moeda do país). */
+  contasAntes: VisaoContas;
+  contas: VisaoContas;
   /** As bolhas que mais mudaram no trimestre, da maior mudança para a menor. */
   mudancas: readonly Readonly<{
     id: string;
@@ -363,7 +396,6 @@ export function encerrarTurno(
   if (!simulated.ok) return falha(simulated.diagnostics);
   const prepared = simulated.value;
   const next = commitGameQuarter(game, prepared.prepared);
-  const totals = buildFiscalQuarterReport(prepared.prepared.fiscal).totals;
   const before = game.execution.values;
   const after = next.execution.values;
   const mudancas = content.variables.variaveis
@@ -383,21 +415,88 @@ export function encerrarTurno(
       partida: { ...partida, game: next },
       relatorio: {
         turno: next.currentTurn,
-        receita: totals.revenue,
-        gastoPrimario: totals.primaryExpense,
-        juros: totals.interestExpense,
-        resultado: totals.nominalResult,
+        contasAntes: lerContas(content, before),
+        contas: lerContas(content, after),
         mudancas,
       },
     },
   };
 }
 
+/** PIB anual na moeda do país: o nó `pib_nominal` ou o declarado pelo país. */
+function pibNominal(
+  content: ResolvedPackage,
+  values: Readonly<Record<string, number>>,
+): number {
+  return values.pib_nominal ?? content.initialState.economia?.pibAnual ?? 0;
+}
+
+function lerContas(
+  content: ResolvedPackage,
+  values: Readonly<Record<string, number>>,
+): VisaoContas {
+  const pib = pibNominal(content, values);
+  const ids = Object.entries(BOLHAS_DO_ORCAMENTO) as [
+    keyof typeof BOLHAS_DO_ORCAMENTO,
+    string,
+  ][];
+  const percentualPib = Object.fromEntries(
+    ids.map(([conta, id]) => [conta, values[id] ?? 0]),
+  ) as Contas;
+  const emMoeda = Object.fromEntries(
+    ids.map(([conta]) => [conta, (percentualPib[conta] * pib) / 100]),
+  ) as Contas;
+  return { ...emMoeda, pib, percentualPib };
+}
+
+/**
+ * Quanto cada lei arrecada (+) ou custa (−) por ano: a soma das setas dela
+ * para a receita e para o gasto, com os valores de agora.
+ */
+function saldoDasLeis(
+  partida: Partida,
+  values: Readonly<Record<string, number>>,
+): Map<string, number> {
+  const { content, graph } = partida;
+  const pib = pibNominal(content, values);
+  const lawByControl = new Map(
+    content.policies.map((policy) => [policy.controle.variavel, policy.id]),
+  );
+  const delivered = (id: string) => {
+    const law = lawByControl.get(id);
+    return law === undefined
+      ? values[id]
+      : (values[id] ?? 0) * (values[efficacyNodeId(law)] ?? 1);
+  };
+  const saldo = new Map<string, number>();
+  for (const relation of graph.relations) {
+    const sinal =
+      relation.targetId === BOLHAS_DO_ORCAMENTO.receita
+        ? 1
+        : relation.targetId === BOLHAS_DO_ORCAMENTO.gasto
+          ? -1
+          : 0;
+    if (sinal === 0 || relation.sourceType !== "lei") continue;
+    const origem = relation.readsLevel
+      ? values[relation.originId]
+      : delivered(relation.originId);
+    if (origem === undefined) continue;
+    const contribution = calculateContribution(relation, origem, delivered);
+    if (!contribution.ok) continue;
+    saldo.set(
+      relation.sourceId,
+      (saldo.get(relation.sourceId) ?? 0) +
+        (sinal * contribution.value.value * pib) / 100,
+    );
+  }
+  return saldo;
+}
+
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
 export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
   const values = game.execution.values;
-  const pib = content.initialState.economia?.pibAnual ?? 0;
+  const saldos = saldoDasLeis(partida, values);
   const states = new Map(
     game.policies.map((state) => [state.policyDefinitionId, state]),
   );
@@ -410,9 +509,6 @@ export function verPartida(partida: Partida): VisaoPartida {
         ? option
         : best,
     );
-    const custoPib =
-      opcoes?.find((option) => option.id === nearest?.id)
-        ?.custoAnualPercentualPib ?? 0;
     const variable = content.variables.variaveis.find(
       (item) => item.id === policy.controle.variavel,
     );
@@ -432,8 +528,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       unidade: policy.controle.unidade,
       opcoes: opcoes?.map(({ id, rotulo, valor }) => ({ id, rotulo, valor })),
       opcaoAtual: nearest?.id,
-      gastoAnual:
-        policy.grupo === "orcamentaria" ? nivel : (custoPib * pib) / 100,
+      saldoAnual: saldos.get(policy.id) ?? 0,
     };
   });
   const bolhas = content.variables.variaveis
@@ -453,26 +548,38 @@ export function verPartida(partida: Partida): VisaoPartida {
   const controlToLaw = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
   );
-  const ligacoes = content.consequences.map((consequence) => {
+  const ligacoes = content.consequences.flatMap((consequence) => {
     const coefficient = Number(
       (consequence.parametros as { coeficiente?: number }).coeficiente ?? 1,
     );
-    return {
+    const ligacao: VisaoLigacao = {
       id: consequence.id,
       origem: controlToLaw.get(consequence.origem) ?? consequence.origem,
       alvo: consequence.alvo,
-      sinal: (coefficient < 0 ? -1 : 1) as 1 | -1,
+      sinal: coefficient < 0 ? -1 : 1,
       // O conteúdo da partida já é mensal (prepareMonthlyContent).
       atrasoMeses: consequence.atrasoPassos,
       mecanismo: consequence.mecanismo,
     };
+    // Produto (D-50): o fator também empurra o alvo (consumo → receita,
+    // dívida → juros), e o jogador precisa ver essa seta.
+    const fator = consequence.normalizacao?.fator;
+    return fator
+      ? [
+          ligacao,
+          {
+            ...ligacao,
+            id: `${consequence.id}~${fator}`,
+            origem: fator,
+            mecanismo: "produto",
+          },
+        ]
+      : [ligacao];
   });
   return {
     pais: content.manifest?.nome ?? "",
     turno: game.currentTurn,
-    caixa: game.fiscal?.cash ?? 0,
-    divida: game.fiscal?.totalDebt ?? 0,
-    pib,
+    contas: lerContas(content, values),
     leis,
     bolhas,
     ligacoes,

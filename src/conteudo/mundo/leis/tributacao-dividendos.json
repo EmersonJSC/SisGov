@@ -20,12 +20,12 @@
     }
   },
   "consequencias": [
-    "tributacao-dividendos--arrecadacao",
     "tributacao-dividendos--desigualdade",
     "tributacao-dividendos--investimento",
     "tributacao-dividendos--sonegacao",
     "tributacao-dividendos--fuga-capitais",
-    "tributacao-dividendos--confianca-empresarial"
+    "tributacao-dividendos--confianca-empresarial",
+    "tributacao-dividendos--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

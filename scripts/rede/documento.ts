@@ -35,6 +35,10 @@ const label = (relation: GraphRelation, targetId: string): string => {
     relation.mechanism === "limiar" && p.direcao === "abaixo"
       ? `falta de ${name(relation.originId).toLowerCase()}`
       : name(relation.originId);
+  if (relation.normalization?.fator)
+    text += ` × ${name(relation.normalization.fator).toLowerCase()}`;
+  if (relation.normalization?.divisor)
+    text += ` ÷ ${name(relation.normalization.divisor).toLowerCase()}`;
   if (relation.mechanism !== "afim")
     text += ` (${relation.mechanism.replace("_", " ")})`;
   if (relation.delaySteps > 0)

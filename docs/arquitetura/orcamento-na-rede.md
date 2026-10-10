@@ -1,7 +1,8 @@
 # Orçamento na rede
 
-**Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-49).
-Implementação no chamado SG157, por fases.
+**Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-50).
+Implementação no chamado SG157, por fases. **Fase 1 feita em 10/out**
+(ver "Como ficou a fase 1").
 
 ## A ideia
 
@@ -47,7 +48,8 @@ explicável pelas setas.
 
 ## Os nós do orçamento
 
-Todos em R$ por ano (`moeda_ano`), visíveis no mapa como bolhas:
+Visíveis no mapa como bolhas. A proposta era guardá-los em R$; na fase 1
+ficaram em % do PIB e a tela mostra em R$ (D-51, ver "Como ficou a fase 1"):
 
 | Nó               | Tipo     | Recebe de                                                                                                                                                           |
 | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -107,6 +109,41 @@ que a rede fecha a mesma conta; depois sai.
    mudam pouco.
 4. **Cofre e empréstimos (estudo).** O que fazer com superávit quando a
    dívida acaba; efeito de emprestar no PIB.
+
+## Como ficou a fase 1
+
+- **Unidade interna: % do PIB.** As bolhas de receita, gasto, juros e
+  resultado ficam em % do PIB, e a dívida em % do PIB (estoque). Assim o
+  conteúdo do mundo vale para qualquer país (D-39): nenhum número em reais do
+  Brasil entra no catálogo. A tela converte para R$ pelo PIB do país
+  (`pib_nominal`, um controle que o país declara; hoje constante).
+- **Lei de gasto → gasto:** elo contábil `recursos ÷ PIB × 100`, coeficiente 1.
+- **Imposto → receita:** `alíquota × base × fator` (`normalizacao.fator`). Bases:
+  consumo (IVA), renda das famílias (IR das pessoas), PIB (os demais). O fator
+  sai de `ARRECADACAO_POR_PONTO ÷ BASE_REFERENCIA` no conversor (hipótese).
+- **Juros:** `0,8 × taxa de juros × dívida ÷ 100` (`taxa_juros` × `divida_publica`).
+- **Resultado:** receita − gasto − juros (três setas de coeficiente ±1).
+- **Dívida:** recebe −resultado ÷ 4 por trimestre (déficit soma, superávit
+  abate; mínimo 0).
+- **Leis regulatórias:** os efeitos das fichas sobre gasto e receita usam a
+  tabela `FORCA_FISCAL` (fraca/média/forte = 0,1/0,25/0,45% do PIB com a lei
+  no máximo) até a fase 2 dar custo por opção.
+- **Saíram:** efeitos de ficha sobre juros (os juros vêm só de taxa × dívida),
+  sobre o resultado (viram efeito no gasto quando a lei não tinha um) e as
+  contas paralelas de leis de gasto e de imposto.
+- **Conta de dinheiro lê o nível** (`"leitura": "nivel"`): a lei custa o que
+  foi aprovado, sem a eficácia.
+- **Módulo fiscal antigo:** continua rodando no turno, mas nada na tela lê
+  dele. Os agregados ficam só lá e saem junto com ele.
+
+Brasil no turno 0 (hipótese): receita 18,5% do PIB (R$ 2,2 tri), gasto 19,2%
+(R$ 2,3 tri), juros 7,4% (R$ 891 bi), déficit 8,2% (R$ 980 bi), dívida 77%
+(R$ 9,2 tri). Sem nenhuma ação, a dívida passa de 98% em 8 turnos.
+
+**Limite conhecido (fase 3):** os índices que servem de base (consumo, PIB)
+ainda oscilam muito de um turno para outro (o consumo cai de 48 para 26 no
+primeiro turno), e a receita oscila junto. É a calibração dos índices (D-41,
+SG144), não a conta.
 
 ## Questões abertas
 

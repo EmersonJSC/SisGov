@@ -294,7 +294,7 @@ function posicionarBolhas(
 const TOPO = -MEDIDAS.raioBolhaMaximo;
 
 /** Elipse que contém as bolhas: larga, para caber em telas largas. */
-export const ELIPSE_EXTERNA = { rx: 1900, ry: 1080 } as const;
+export const ELIPSE_EXTERNA = { rx: 1960, ry: 1100 } as const;
 
 const FOLGA_CAIXAS = 10;
 
@@ -323,16 +323,18 @@ function dentroDaFaixa(c: Caixa) {
  * cada caixa ainda sobreposta procura, em espiral, o lugar livre mais perto.
  */
 function desembaracar(caixas: Caixa[]) {
-  for (let volta = 0; volta < 3; volta++) {
+  for (let volta = 0; volta < 8; volta++) {
     let mexeu = false;
     for (const c of caixas) {
       if (!caixas.some((o) => o !== c && sobrepoe(c, o))) continue;
       const x0 = c.x;
       const y0 = c.y;
       let achou = false;
-      for (let raio = 16; raio <= 600 && !achou; raio += 16) {
-        for (let k = 0; k < 32 && !achou; k++) {
-          const a = (k / 32) * Math.PI * 2;
+      for (let raio = 16; raio <= 900 && !achou; raio += 16) {
+        // passos de ~12 px ao longo do círculo: a faixa perto da elipse é fina
+        const passos = Math.max(32, Math.ceil((raio * Math.PI * 2) / 12));
+        for (let k = 0; k < passos && !achou; k++) {
+          const a = (k / passos) * Math.PI * 2;
           c.x = x0 + Math.cos(a) * raio;
           c.y = y0 + Math.sin(a) * raio;
           achou =

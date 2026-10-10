@@ -337,10 +337,16 @@ export type ConsequenceParameters = {
   direcao?: "acima" | "abaixo";
 };
 
+/**
+ * Lê a origem junto com outros nós antes do mecanismo (D-40, D-50):
+ * entrada = origem × fator ÷ divisor × multiplicador. Exige divisor ou fator.
+ */
 export type ConsequenceNormalization = {
   /** Nó pelo qual a origem é dividida (domínio com mínimo > 0). */
-  divisor: string;
-  /** Multiplica a razão (100 = percentual). Padrão 1. */
+  divisor?: string;
+  /** Nó pelo qual a origem é multiplicada (alíquota × base, taxa × dívida). */
+  fator?: string;
+  /** Multiplica o resultado (100 = percentual). Padrão 1. */
   multiplicador?: number;
 };
 
@@ -354,6 +360,12 @@ export type ConsequenceFile = {
   parametros: ConsequenceParameters;
   /** Lê a origem como razão (ex.: gasto ÷ PIB × 100), antes do mecanismo (D-40). */
   normalizacao?: ConsequenceNormalization;
+  /**
+   * Como a origem de uma lei é lida. `efeito` (padrão): nível × eficácia.
+   * `nivel`: só o nível, sem a eficácia; para a conta de dinheiro, que custa
+   * ou arrecada o que foi aprovado, funcione a lei bem ou mal (SG157).
+   */
+  leitura?: "efeito" | "nivel";
   unidade: string;
   atrasoPassos: number;
   duracao:

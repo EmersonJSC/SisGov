@@ -20,13 +20,12 @@
     }
   },
   "consequencias": [
-    "piso-saude--gasto-publico",
-    "piso-saude--resultado-fiscal",
     "piso-saude--pressao-hospitalar",
     "piso-saude--crise-atendimento",
     "piso-saude--gasto-bolso-saude",
     "piso-saude--saude-populacao",
-    "piso-saude--corrupcao"
+    "piso-saude--corrupcao",
+    "piso-saude--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

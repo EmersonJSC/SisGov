@@ -21,11 +21,10 @@
   },
   "consequencias": [
     "gasto-com-defesa--capacidade-defesa",
-    "gasto-com-defesa--gasto-publico",
-    "gasto-com-defesa--resultado-fiscal",
     "gasto-com-defesa--desenvolvimento",
     "gasto-com-defesa--reputacao-internacional",
-    "gasto-com-defesa--golpe-risco"
+    "gasto-com-defesa--golpe-risco",
+    "gasto-com-defesa--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

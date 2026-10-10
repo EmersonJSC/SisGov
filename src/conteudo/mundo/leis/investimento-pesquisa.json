@@ -20,12 +20,11 @@
     }
   },
   "consequencias": [
-    "investimento-pesquisa--gasto-publico",
     "investimento-pesquisa--inovacao",
     "investimento-pesquisa--desenvolvimento",
     "investimento-pesquisa--produtividade",
     "investimento-pesquisa--fuga-de-cerebros",
-    "investimento-pesquisa--resultado-fiscal"
+    "investimento-pesquisa--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

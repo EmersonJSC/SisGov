@@ -9,8 +9,10 @@ export type Contribution = Readonly<{
   sourceValue: number;
   /** Valor que entrou no mecanismo (igual à origem, ou a razão normalizada). */
   inputValue: number;
-  /** Valor do divisor, quando há normalização. */
+  /** Valor do divisor, quando há normalização com divisor. */
   divisorValue?: number;
+  /** Valor do fator, quando há normalização com fator (produto, D-50). */
+  factorValue?: number;
   value: number;
 }>;
 
@@ -70,20 +72,32 @@ export function calculateContribution(
     return failure("origem", "O valor de origem deve ser finito.");
   let inputValue = sourceValue;
   let divisorValue: number | undefined;
-  if (relation.normalization) {
-    divisorValue = readValue(relation.normalization.divisor);
-    if (
-      divisorValue === undefined ||
-      !Number.isFinite(divisorValue) ||
-      divisorValue === 0
-    )
-      return failure(
-        "normalizacao.divisor",
-        `O divisor ${relation.normalization.divisor} precisa ser finito e diferente de zero.`,
-      );
+  let factorValue: number | undefined;
+  const normalization = relation.normalization;
+  if (normalization) {
+    if (normalization.divisor !== undefined) {
+      divisorValue = readValue(normalization.divisor);
+      if (
+        divisorValue === undefined ||
+        !Number.isFinite(divisorValue) ||
+        divisorValue === 0
+      )
+        return failure(
+          "normalizacao.divisor",
+          `O divisor ${normalization.divisor} precisa ser finito e diferente de zero.`,
+        );
+    }
+    if (normalization.fator !== undefined) {
+      factorValue = readValue(normalization.fator);
+      if (factorValue === undefined || !Number.isFinite(factorValue))
+        return failure(
+          "normalizacao.fator",
+          `O fator ${normalization.fator} precisa ser finito.`,
+        );
+    }
     inputValue =
-      (sourceValue / divisorValue) *
-      (relation.normalization.multiplicador ?? 1);
+      ((sourceValue * (factorValue ?? 1)) / (divisorValue ?? 1)) *
+      (normalization.multiplicador ?? 1);
   }
   const applied = applyMechanism(relation, inputValue);
   if (!applied.ok) return applied;
@@ -97,6 +111,7 @@ export function calculateContribution(
       sourceValue,
       inputValue,
       ...(divisorValue === undefined ? {} : { divisorValue }),
+      ...(factorValue === undefined ? {} : { factorValue }),
       value: applied.value,
     },
   };

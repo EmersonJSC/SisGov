@@ -18,6 +18,16 @@ Tradução das palavras da ficha em números (padrões; o balanceamento é do M7
 - atraso: imediato/meses/anos = 0/1/4 passos (trimestres);
 - condição citando uma opção = limiar a partir do valor dessa opção.
 Fichas marcadas como colidentes em PENDENTES ficam de fora.
+
+Orçamento na rede (SG157, D-47 a D-50): as contas são bolhas em % do PIB.
+- lei orçamentária → gasto: elo contábil, recursos ÷ PIB nominal × 100;
+- imposto → receita: alíquota × base × fator (produto entre nós, D-50);
+- receita − gasto − juros = resultado; o resultado alimenta a dívida
+  (déficit soma, superávit abate); juros = taxa × dívida (D-48);
+- efeito de lei regulatória sobre gasto ou receita usa FORCA_FISCAL;
+- toda conta de lei lê o nível aprovado, sem a eficácia ("leitura": "nivel");
+- efeito de ficha sobre juros, ou sobre a conta de lei orçamentária ou de
+  imposto, sai (a conta já entra pelos elos acima).
 """
 
 from __future__ import annotations
@@ -80,6 +90,73 @@ MINISTERIO_POR_AREA = {
     "Meio ambiente, energia, agro e infraestrutura": "Ministério do Meio Ambiente e Infraestrutura",
 }
 BASE_TRIBUTO = {"imposto-renda-pessoas": "renda_familias", "imposto-sobre-consumo": "consumo"}
+
+# ---------- orçamento na rede (SG157) ----------
+PIB_NOMINAL = "pib_nominal"
+FISCAIS = {"arrecadacao", "gasto_publico", "resultado_fiscal", "juros_da_divida"}
+# Lei regulatória no máximo: quanto do PIB ela custa ou arrecada (hipótese).
+FORCA_FISCAL = {"fraca": 0.1, "media": 0.25, "forte": 0.45}
+# Arrecadação de cada ponto de alíquota, em % do PIB, com a base no valor de
+# referência (hipótese; calibração do Brasil na fase 3).
+ARRECADACAO_POR_PONTO = {
+    "imposto-sobre-consumo": 0.34,          # 26,5% → 9% do PIB
+    "imposto-renda-pessoas": 0.127,         # 27,5% → 3,5%
+    "imposto-renda-empresas": 0.103,        # 34% → 3,5%
+    "tributacao-dividendos": 0.06,          # 10% → 0,6%
+    "imposto-heranca": 0.019,               # 8% → 0,15%
+    "imposto-grandes-fortunas": 0.3,        # 3,5% → 1%
+    "imposto-propriedade-urbana-rural": 1.2,  # 0,5 → 0,6%
+    "imposto-transacoes-financeiras": 1.84,   # 0,38% → 0,7%
+    "tarifas-de-importacao": 0.05,          # 12% → 0,6%
+}
+# Valor da base em que vale a tabela acima: o do Brasil no turno 0 (10/out).
+BASE_REFERENCIA = {"consumo": 48, "renda_familias": 43, "pib": 30}
+# juros = taxa × dívida ÷ 100 × parcela (a dívida não paga toda a taxa básica)
+PARCELA_DA_TAXA_BASICA = 0.8
+
+
+def elo(cid: str, origem: str, alvo: str, coeficiente: float, unidade: str = "percentual_pib",
+        normalizacao: dict | None = None, de_lei: bool = False) -> dict:
+    c = {"id": cid, "tipo": "consequencia", "versaoEsquema": 1, "origem": origem, "alvo": alvo,
+         "mecanismo": "afim", "parametros": {"coeficiente": coeficiente, "termoConstante": 0}}
+    if normalizacao:
+        c["normalizacao"] = normalizacao
+    if de_lei:
+        c["leitura"] = "nivel"  # a conta lê o nível aprovado, sem a eficácia
+    c.update({"unidade": unidade, "atrasoPassos": 0, "duracao": {"modo": "continuo"}})
+    return c
+
+
+REDE_FISCAL = [
+    elo("arrecadacao--resultado-fiscal", "arrecadacao", "resultado_fiscal", 1),
+    elo("gasto-publico--resultado-fiscal", "gasto_publico", "resultado_fiscal", -1),
+    elo("juros-da-divida--resultado-fiscal", "juros_da_divida", "resultado_fiscal", -1),
+    # resultado anual em % do PIB; o passo é um trimestre
+    elo("resultado-fiscal--divida-publica", "resultado_fiscal", "divida_publica", -0.25,
+        "percentual_pib_por_passo"),
+    elo("taxa-juros--juros-da-divida", "taxa_juros", "juros_da_divida", PARCELA_DA_TAXA_BASICA,
+        normalizacao={"fator": "divida_publica", "multiplicador": 0.01}),
+]
+
+
+def efeitos_da_lei(f: dict, grupo: str) -> list[dict]:
+    """Efeitos da ficha sem os que a conta do orçamento já cobre."""
+    alvos = {e["alvo"] for e in f["efeitos"]}
+    saida = []
+    for e in f["efeitos"]:
+        a = e["alvo"]
+        if a == "juros_da_divida":
+            continue  # D-48: juros = taxa × dívida
+        if grupo == "orcamentaria" and a in FISCAIS | {"divida_publica"}:
+            continue  # elo contábil recursos → gasto
+        if grupo == "tributaria" and a in FISCAIS:
+            continue  # alíquota × base → receita
+        if a == "resultado_fiscal":
+            if alvos & {"gasto_publico", "arrecadacao"}:
+                continue
+            e = {**e, "alvo": "gasto_publico", "sinal": "-" if e["sinal"] == "+" else "+"}
+        saida.append(e)
+    return saida
 
 
 def ler(p: Path):
@@ -158,8 +235,12 @@ def main(aplicar: bool) -> None:
     consequencias: dict[str, dict] = {}
     leis_json: dict[str, dict] = {}
     vigentes, valores_controle = [], {}
-    usadas: set[str] = set()
+    usadas: set[str] = set(FISCAIS) | {"divida_publica", "taxa_juros"}
+    contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL}
     gasto_brasil = 0.0
+    variaveis[PIB_NOMINAL] = {"id": PIB_NOMINAL, "tipo": "controle", "nome": "PIB nominal",
+                              "unidade": "moeda", "dominio": {"minimo": 1}, "valorInicial": 1_000_000,
+                              "area": "Economia"}
 
     for area, f in fichas:
         lid, grupo = f["id"], f["grupo"]
@@ -214,10 +295,11 @@ def main(aplicar: bool) -> None:
             valores_op = {}
 
         ids_lei = []
-        for i, e in enumerate(f["efeitos"]):
+        efeitos = efeitos_da_lei(f, grupo)
+        for i, e in enumerate(efeitos):
             alvo = e["alvo"]
             usadas.add(alvo)
-            cid = f"{lid}--{alvo}".replace("_", "-") + (f"-{i}" if any(x["alvo"] == alvo for x in f["efeitos"][:i]) else "")
+            cid = f"{lid}--{alvo}".replace("_", "-") + (f"-{i}" if any(x["alvo"] == alvo for x in efeitos[:i]) else "")
             sinal = 1 if e["sinal"] == "+" else -1
             limiar = None
             cond = (e.get("condicao") or "").lower()
@@ -231,6 +313,21 @@ def main(aplicar: bool) -> None:
                                   "_inicio": inicio, "_limiar": limiar, "origem": var,
                                   "atrasoPassos": ATRASO.get(e["atraso"], 0)}
             ids_lei.append(cid)
+        # elos contábeis do orçamento (SG157)
+        if grupo == "orcamentaria":
+            cid = f"{lid}--gasto-publico"
+            contabeis[cid] = elo(cid, var, "gasto_publico", 1,
+                                 normalizacao={"divisor": PIB_NOMINAL, "multiplicador": 100}, de_lei=True)
+            ids_lei.append(cid)
+            usadas.add("gasto_publico")
+        elif grupo == "tributaria":
+            base = lei["tributo"]["base"]
+            cid = f"{lid}--arrecadacao"
+            fator = ARRECADACAO_POR_PONTO.get(lid, 0.05) / BASE_REFERENCIA.get(base, 50)
+            contabeis[cid] = elo(cid, var, "arrecadacao", 1,
+                                 normalizacao={"fator": base, "multiplicador": round(fator, 8)}, de_lei=True)
+            ids_lei.append(cid)
+            usadas.update({"arrecadacao", base})
         lei["consequencias"] = ids_lei
         lei["respostaTemporal"] = {"implantacao": 0.3, "degradacao": 0.2}
         leis_json[lid] = lei
@@ -295,15 +392,19 @@ def main(aplicar: bool) -> None:
         dom = alvo["dominio"]
         largura = (dom.get("maximo", 100) - dom.get("minimo", 0)) / 100
         d = (FORCA_ESTOQUE if estoque else FORCA_INDICE)[c["_forca"]] * largura * c["_sinal"]
+        if c["_alvo"] in FISCAIS:
+            d = FORCA_FISCAL[c["_forca"]] * c["_sinal"]
         unidade = TAXA[alvo["unidade"]] if estoque else alvo["unidade"]
         if c["_limiar"] is not None:
             mec, par = "limiar", {"coeficiente": round(d / (100 - c["_limiar"]), 8), "limiar": c["_limiar"], "direcao": "acima"}
         else:
             mec, par = "afim", {"coeficiente": round(d / c["_amp"], 10), "termoConstante": round(-d * c["_inicio"] / c["_amp"], 8)}
         saida_c[cid] = {"id": cid, "tipo": "consequencia", "versaoEsquema": 1, "origem": c["origem"],
-                        "alvo": c["_alvo"], "mecanismo": mec, "parametros": par, "unidade": unidade,
-                        "atrasoPassos": c["atrasoPassos"], "duracao": {"modo": "continuo"}}
+                        "alvo": c["_alvo"], "mecanismo": mec, "parametros": par,
+                        **({"leitura": "nivel"} if c["_alvo"] in FISCAIS else {}),
+                        "unidade": unidade, "atrasoPassos": c["atrasoPassos"], "duracao": {"modo": "continuo"}}
     saida_c.update(rede)
+    saida_c.update(contabeis)
     # evento antigo continua se o alvo dele continua
     for cid, c in antigas_c.items():
         if c["origem"].startswith("carga_") and c["alvo"] in novas_vars:
@@ -312,20 +413,14 @@ def main(aplicar: bool) -> None:
                 novas_vars[c["origem"]] = antigas[c["origem"]]
 
     # ---------- Brasil ----------
-    despesas = estado["fiscal"]["agregados"]["despesas"]
-    resto = gasto_brasil
-    for alvo_ag in ("programas-nao-modelados", "rede-publica", "maquina-publica"):
-        for ag in despesas:
-            if ag["id"] == alvo_ag and resto > 0:
-                corte = min(ag["valorAnual"], resto)
-                ag["valorAnual"] -= corte
-                resto -= corte
+    valores_controle[PIB_NOMINAL] = estado["economia"]["pibAnual"]
 
     print(f"leis: {len(leis_json)} (pendentes: {', '.join(PENDENTES)})")
     print(f"controles: {len(variaveis)} · bolhas: {len(novas_vars)} · consequências: {len(saida_c)} "
           f"(rede antiga mantida: {len(rede)})")
     print(f"variáveis antigas removidas: {', '.join(removidas) or 'nenhuma'}")
-    print(f"gasto das leis orçamentárias no Brasil: {gasto_brasil:,.0f}/ano; sem cobertura nos agregados: {resto:,.0f}")
+    print(f"gasto das leis orçamentárias no Brasil: {gasto_brasil:,.0f}/ano "
+          f"({100 * gasto_brasil / estado['economia']['pibAnual']:.1f}% do PIB)")
     if not aplicar:
         print("\nEnsaio: nada gravado. Use --aplicar.")
         return

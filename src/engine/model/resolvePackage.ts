@@ -169,18 +169,18 @@ function checkReferences(
     }
   }
   for (const consequence of consequences) {
-    if (
-      consequence.normalizacao &&
-      !variableIds.has(consequence.normalizacao.divisor)
-    )
-      diagnostics.push(
-        issue(
-          consequence.id,
-          "normalizacao.divisor",
-          "REFERENCIA_QUEBRADA",
-          `A variável ${consequence.normalizacao.divisor} não existe.`,
-        ),
-      );
+    for (const field of ["divisor", "fator"] as const) {
+      const id = consequence.normalizacao?.[field];
+      if (id !== undefined && !variableIds.has(id))
+        diagnostics.push(
+          issue(
+            consequence.id,
+            `normalizacao.${field}`,
+            "REFERENCIA_QUEBRADA",
+            `A variável ${id} não existe.`,
+          ),
+        );
+    }
     for (const field of ["origem", "alvo"] as const) {
       if (!variableIds.has(consequence[field])) {
         diagnostics.push(

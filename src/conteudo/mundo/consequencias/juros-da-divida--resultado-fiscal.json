@@ -1,13 +1,13 @@
 {
-  "id": "piso-saude--resultado-fiscal",
+  "id": "juros-da-divida--resultado-fiscal",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "recursos_piso_saude",
+  "origem": "juros_da_divida",
   "alvo": "resultado_fiscal",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -2.9167e-6,
-    "termoConstante": 0.0
+    "coeficiente": -1,
+    "termoConstante": 0
   },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,

@@ -64,6 +64,12 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
 - **Fim do turno:** cada indicador que mudou pelo menos 0,2% da sua escala
   pisca em verde ou vermelho e ganha uma etiqueta com a variação, de tamanho
   fixo na tela; um botão oculta ou mostra as etiquetas.
+- **Contas (SG157):** a barra de cima mostra Receita, Gasto, Déficit (ou
+  Superávit, com os juros embaixo) e Dívida, em R$ e em % do PIB, lidos da
+  `VisaoPartida.contas`. Não há caixa. O documento da lei diz quanto ela
+  arrecada ou custa por ano e por mês (`saldoAnual`), e o relatório de impacto
+  abre com o efeito da mudança no resultado ("Contas públicas"). A seta
+  `produto` (consumo → receita, dívida → juros) aparece como as outras.
 - **Câmera:** escala entre a visão geral (no mínimo 0,3) e 1,35; o mapa não sai
   da vista. O botão de alvo volta à visão geral. Esc fecha a seleção e depois
   a área.

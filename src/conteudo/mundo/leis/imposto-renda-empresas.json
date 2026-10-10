@@ -20,12 +20,12 @@
     }
   },
   "consequencias": [
-    "imposto-renda-empresas--arrecadacao",
     "imposto-renda-empresas--investimento",
     "imposto-renda-empresas--confianca-empresarial",
     "imposto-renda-empresas--fuga-capitais",
     "imposto-renda-empresas--desigualdade",
-    "imposto-renda-empresas--produtividade"
+    "imposto-renda-empresas--produtividade",
+    "imposto-renda-empresas--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

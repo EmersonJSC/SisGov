@@ -2575,12 +2575,26 @@ function validateConsequence(
       "mecanismo",
       "parametros",
       "normalizacao",
+      "leitura",
       "unidade",
       "atrasoPassos",
       "duracao",
     ],
     diagnostics,
   );
+  if (
+    value.leitura !== undefined &&
+    value.leitura !== "efeito" &&
+    value.leitura !== "nivel"
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        "leitura",
+        "VALOR_INVALIDO",
+        'Use "efeito" (nível × eficácia) ou "nivel".',
+      ),
+    );
   validateEnvelope(value, file, diagnostics);
   requiredString(value, file, "origem", diagnostics);
   requiredString(value, file, "alvo", diagnostics);
@@ -2736,15 +2750,29 @@ function validateConsequence(
       validateKnownFields(
         value.normalizacao,
         file,
-        ["divisor", "multiplicador"],
+        ["divisor", "fator", "multiplicador"],
         diagnostics,
       );
-      requiredString(
-        value.normalizacao,
-        file,
-        "normalizacao.divisor",
-        diagnostics,
-      );
+      if (
+        value.normalizacao.divisor === undefined &&
+        value.normalizacao.fator === undefined
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "normalizacao",
+            "CAMPO_AUSENTE",
+            "Declare divisor, fator ou os dois.",
+          ),
+        );
+      for (const field of ["divisor", "fator"] as const)
+        if (value.normalizacao[field] !== undefined)
+          requiredString(
+            value.normalizacao,
+            file,
+            `normalizacao.${field}`,
+            diagnostics,
+          );
       if (value.normalizacao.multiplicador !== undefined) {
         const factor = requiredNumber(
           value.normalizacao,

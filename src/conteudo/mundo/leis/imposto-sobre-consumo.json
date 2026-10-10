@@ -20,13 +20,13 @@
     }
   },
   "consequencias": [
-    "imposto-sobre-consumo--arrecadacao",
     "imposto-sobre-consumo--inflacao",
     "imposto-sobre-consumo--consumo",
     "imposto-sobre-consumo--desigualdade",
     "imposto-sobre-consumo--pobreza",
     "imposto-sobre-consumo--sonegacao",
-    "imposto-sobre-consumo--informalidade"
+    "imposto-sobre-consumo--informalidade",
+    "imposto-sobre-consumo--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

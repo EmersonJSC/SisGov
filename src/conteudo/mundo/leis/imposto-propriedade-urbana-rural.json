@@ -20,13 +20,13 @@
     }
   },
   "consequencias": [
-    "imposto-propriedade-urbana-rural--arrecadacao",
     "imposto-propriedade-urbana-rural--desigualdade",
-    "imposto-propriedade-urbana-rural--desigualdade-2",
+    "imposto-propriedade-urbana-rural--desigualdade-1",
     "imposto-propriedade-urbana-rural--deficit-habitacional",
     "imposto-propriedade-urbana-rural--renda-familias",
     "imposto-propriedade-urbana-rural--popularidade-governo",
-    "imposto-propriedade-urbana-rural--investimento"
+    "imposto-propriedade-urbana-rural--investimento",
+    "imposto-propriedade-urbana-rural--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

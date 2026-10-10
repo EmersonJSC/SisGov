@@ -1,16 +1,17 @@
 {
-  "id": "meta-de-inflacao--juros-da-divida",
+  "id": "federalismo--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_meta_de_inflacao",
-  "alvo": "juros_da_divida",
+  "origem": "nivel_federalismo",
+  "alvo": "gasto_publico",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.021,
+    "coeficiente": 0.001,
     "termoConstante": -0.0
   },
+  "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 4,
   "duracao": {
     "modo": "continuo"
   }

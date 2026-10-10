@@ -20,13 +20,13 @@
     }
   },
   "consequencias": [
-    "imposto-renda-pessoas--arrecadacao",
     "imposto-renda-pessoas--desigualdade",
     "imposto-renda-pessoas--renda-familias",
     "imposto-renda-pessoas--consumo",
     "imposto-renda-pessoas--sonegacao",
     "imposto-renda-pessoas--fuga-capitais",
-    "imposto-renda-pessoas--inovacao"
+    "imposto-renda-pessoas--inovacao",
+    "imposto-renda-pessoas--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

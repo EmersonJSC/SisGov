@@ -6,9 +6,10 @@
   "alvo": "arrecadacao",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.03,
+    "coeficiente": -0.001,
     "termoConstante": 0.0
   },
+  "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 1,
   "duracao": {

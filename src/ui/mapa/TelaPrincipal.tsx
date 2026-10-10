@@ -16,7 +16,7 @@ import {
 import { Bandeira } from "./Bandeira";
 import { diferenca, moeda } from "./formatos";
 import { Icone } from "./Icone";
-import { ICONE_INTERFACE } from "./icones";
+import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
 import {
@@ -37,12 +37,14 @@ function Metrica({
   icone,
   rotulo,
   valor,
+  detalhe,
   classe,
   titulo,
 }: {
   icone: string;
   rotulo: string;
   valor: string;
+  detalhe?: string;
   classe?: string;
   titulo?: string;
 }) {
@@ -54,10 +56,14 @@ function Metrica({
       <span>
         <small>{rotulo}</small>
         <strong>{valor}</strong>
+        {detalhe ? <em>{detalhe}</em> : null}
       </span>
     </div>
   );
 }
+
+const pctPib = (valor: number) =>
+  `${valor.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}% do PIB`;
 
 function trimestre(turno: number) {
   return `${(turno % 4) + 1}º trimestre · ano ${Math.floor(turno / 4) + 1}`;
@@ -230,6 +236,7 @@ export function TelaPrincipal() {
     );
 
   const { base, indice, fundo } = estrutura.current;
+  const contas = visao.contas;
   // Os documentos são janelas soltas sobre o mapa: a câmera não desvia para
   // o lado; o mapa só desliza quando a janela da frente esconde a seleção.
   const painel = 0;
@@ -251,22 +258,36 @@ export function TelaPrincipal() {
         </div>
         <div className="metricas">
           <Metrica
-            icone={ICONE_INTERFACE.caixa}
-            rotulo="Caixa"
-            valor={moeda(visao.caixa)}
-            classe={visao.caixa < 0 ? "ruim" : "boa"}
+            icone={ICONE_BOLHA.arrecadacao ?? ICONE_INTERFACE.caixa}
+            rotulo="Receita"
+            valor={`${moeda(contas.receita)}/ano`}
+            detalhe={pctPib(contas.percentualPib.receita)}
+            classe="neutra"
+            titulo="Soma do que os impostos e as outras fontes arrecadam por ano."
+          />
+          <Metrica
+            icone={ICONE_BOLHA.gasto_publico ?? ICONE_INTERFACE.caixa}
+            rotulo="Gasto"
+            valor={`${moeda(contas.gasto)}/ano`}
+            detalhe={pctPib(contas.percentualPib.gasto)}
+            classe="neutra"
+            titulo="Soma do que as leis custam por ano, sem os juros."
+          />
+          <Metrica
+            icone={ICONE_BOLHA.resultado_fiscal ?? ICONE_INTERFACE.caixa}
+            rotulo={contas.resultado >= 0 ? "Superávit" : "Déficit"}
+            valor={`${moeda(Math.abs(contas.resultado))}/ano`}
+            detalhe={`juros: ${moeda(contas.juros)}/ano`}
+            classe={contas.resultado >= 0 ? "boa" : "ruim"}
+            titulo={`Receita − gasto − juros = ${moeda(contas.receita)} − ${moeda(contas.gasto)} − ${moeda(contas.juros)}. O déficit soma na dívida; o superávit abate.`}
           />
           <Metrica
             icone={ICONE_INTERFACE.divida}
             rotulo="Dívida"
-            valor={moeda(visao.divida)}
+            valor={moeda(contas.divida)}
+            detalhe={pctPib(contas.percentualPib.divida)}
             classe="ruim"
-          />
-          <Metrica
-            icone={ICONE_INTERFACE.pib}
-            rotulo="PIB anual"
-            valor={moeda(visao.pib)}
-            classe="neutra"
+            titulo={`PIB de ${moeda(contas.pib)}/ano.`}
           />
           <Metrica
             icone={ICONE_INTERFACE.aprovacao}
@@ -366,7 +387,25 @@ export function TelaPrincipal() {
               </button>
             </div>
             <p>
-              Resultado das contas no trimestre: <b>{moeda(aviso.resultado)}</b>
+              {aviso.contas.resultado >= 0 ? "Superávit" : "Déficit"} de{" "}
+              <b>{moeda(Math.abs(aviso.contas.resultado))}/ano</b>
+              {Math.abs(aviso.contas.resultado - aviso.contasAntes.resultado) >=
+              100 ? (
+                <>
+                  {" "}
+                  (
+                  {aviso.contas.resultado > aviso.contasAntes.resultado
+                    ? "melhorou "
+                    : "piorou "}
+                  {moeda(
+                    Math.abs(
+                      aviso.contas.resultado - aviso.contasAntes.resultado,
+                    ),
+                  )}
+                  )
+                </>
+              ) : null}
+              ; a dívida foi a <b>{moeda(aviso.contas.divida)}</b>.
             </p>
             <div className="aviso-placar">
               <span className="melhora">

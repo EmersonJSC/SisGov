@@ -21,11 +21,11 @@
   },
   "consequencias": [
     "vigilancia-epidemiologica--epidemia",
-    "vigilancia-epidemiologica--gasto-publico",
     "vigilancia-epidemiologica--pressao-hospitalar",
     "vigilancia-epidemiologica--saude-populacao",
     "vigilancia-epidemiologica--reputacao-internacional",
-    "vigilancia-epidemiologica--liberdade-civil"
+    "vigilancia-epidemiologica--liberdade-civil",
+    "vigilancia-epidemiologica--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

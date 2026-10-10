@@ -405,7 +405,7 @@ export function validatePackageCoherence(
           "Saturação e retornos decrescentes exigem origem com domínio mínimo ≥ 0.",
         ),
       );
-    if (consequence.normalizacao) {
+    if (consequence.normalizacao?.divisor !== undefined) {
       const divisor = variablesById.get(consequence.normalizacao.divisor);
       if (
         divisor &&

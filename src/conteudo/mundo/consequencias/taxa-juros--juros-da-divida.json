@@ -1,0 +1,21 @@
+{
+  "id": "taxa-juros--juros-da-divida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_juros",
+  "alvo": "juros_da_divida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.8,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "divida_publica",
+    "multiplicador": 0.01
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

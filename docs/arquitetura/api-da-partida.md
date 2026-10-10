@@ -23,12 +23,18 @@ e descarte a anterior (ou guarde para "desfazer").
 
 ## O que a tela recebe (`VisaoPartida`)
 
-- `turno`, `caixa`, `divida`, `pib` (moeda do país, em milhões).
+- `turno`.
+- `contas` (SG157): `receita`, `gasto`, `juros` e `resultado` por ano e
+  `divida`, na moeda do país (milhões), mais `pib` e `percentualPib` (os
+  mesmos números em % do PIB, como estão na rede). Saem das bolhas do
+  orçamento (`BOLHAS_DO_ORCAMENTO`): resultado = receita − gasto − juros;
+  positivo é superávit. Não há caixa (D-49).
 - `leis[]`: `id`, `nome`, `descricao`, `grupo` (orcamentaria, regulatoria,
   tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a
   mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`),
-  `opcaoAtual`, `gastoAnual`, `processo` (`emenda-constitucional`,
+  `opcaoAtual`, `saldoAnual` (quanto a lei arrecada, +, ou custa, −, por ano,
+  somando as setas dela para a receita e o gasto), `processo` (`emenda-constitucional`,
   `lei-ordinaria`, `execucao-programa-autorizado`…). A tela põe as leis de
   emenda constitucional também na área da Presidência.
 - `bolhas[]`: `id`, `nome`, `tipo` (calculado = índice, estoque = bolha lenta,
@@ -39,7 +45,8 @@ e descarte a anterior (ou guarde para "desfazer").
   `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
   convertido para meses; o conteúdo da partida já é mensal, então é o próprio
   `atrasoPassos` — até 10/out saía multiplicado por 3 por engano), `mecanismo`
-  (`afim` ou `limiar`).
+  (`afim`, `limiar` ou `produto`: seta extra do fator de um produto, como
+  consumo → receita e dívida → juros).
 
 `ministerios[]` é a lista de áreas ministeriais relacionadas à lei; no conteúdo
 atual, cada lei informa uma. A interface mantém um único nó mesmo quando a
@@ -50,9 +57,9 @@ principal.
 partido. A interface usa um símbolo neutro para o ocupante e indica aprovação
 como indisponível até esses dados entrarem no contrato.
 
-O `relatorio` de `encerrarTurno` traz `turno`, `receita`, `gastoPrimario`,
-`juros`, `resultado` e `mudancas[]` (as 15 bolhas que mais mudaram, com
-`antes` e `depois`).
+O `relatorio` de `encerrarTurno` traz `turno`, `contasAntes` e `contas` (as
+contas da rede antes e depois do trimestre) e `mudancas[]` (as 15 bolhas que
+mais mudaram, com `antes` e `depois`).
 
 A `PrevisaoLei` de `preverLei` simula `trimestres` turnos (padrão 1; a tela
 usa 4 = um ano) e traz `implantacao` (o nível em funcionamento ao fim de

@@ -20,13 +20,12 @@
     }
   },
   "consequencias": [
-    "piso-educacao--gasto-publico",
-    "piso-educacao--resultado-fiscal",
     "piso-educacao--escolaridade",
     "piso-educacao--evasao-escolar",
     "piso-educacao--aprendizagem",
     "piso-educacao--qualificacao-trabalho",
-    "piso-educacao--desigualdade"
+    "piso-educacao--desigualdade",
+    "piso-educacao--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

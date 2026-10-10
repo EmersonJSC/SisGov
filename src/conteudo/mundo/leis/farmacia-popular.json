@@ -20,12 +20,12 @@
     }
   },
   "consequencias": [
-    "farmacia-popular--gasto-publico",
     "farmacia-popular--gasto-bolso-saude",
     "farmacia-popular--pressao-hospitalar",
     "farmacia-popular--saude-populacao",
     "farmacia-popular--pobreza",
-    "farmacia-popular--corrupcao"
+    "farmacia-popular--corrupcao",
+    "farmacia-popular--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

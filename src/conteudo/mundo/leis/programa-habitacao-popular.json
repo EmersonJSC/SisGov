@@ -21,11 +21,11 @@
   },
   "consequencias": [
     "programa-habitacao-popular--deficit-habitacional",
-    "programa-habitacao-popular--gasto-publico",
     "programa-habitacao-popular--desemprego",
     "programa-habitacao-popular--pobreza",
     "programa-habitacao-popular--mobilidade-urbana",
-    "programa-habitacao-popular--corrupcao"
+    "programa-habitacao-popular--corrupcao",
+    "programa-habitacao-popular--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

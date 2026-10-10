@@ -21,11 +21,11 @@
   },
   "consequencias": [
     "imposto-grandes-fortunas--desigualdade",
-    "imposto-grandes-fortunas--arrecadacao",
     "imposto-grandes-fortunas--fuga-capitais",
     "imposto-grandes-fortunas--investimento",
     "imposto-grandes-fortunas--complexidade-tributaria",
-    "imposto-grandes-fortunas--popularidade-governo"
+    "imposto-grandes-fortunas--popularidade-governo",
+    "imposto-grandes-fortunas--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

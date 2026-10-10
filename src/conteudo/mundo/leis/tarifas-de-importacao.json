@@ -22,12 +22,12 @@
   "consequencias": [
     "tarifas-de-importacao--importacoes",
     "tarifas-de-importacao--inflacao",
-    "tarifas-de-importacao--arrecadacao",
     "tarifas-de-importacao--produtividade",
     "tarifas-de-importacao--pib",
     "tarifas-de-importacao--desigualdade",
     "tarifas-de-importacao--exportacoes",
-    "tarifas-de-importacao--desemprego"
+    "tarifas-de-importacao--desemprego",
+    "tarifas-de-importacao--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

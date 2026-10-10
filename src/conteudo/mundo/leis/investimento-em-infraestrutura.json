@@ -24,10 +24,9 @@
     "investimento-em-infraestrutura--infraestrutura-energia",
     "investimento-em-infraestrutura--pib",
     "investimento-em-infraestrutura--produtividade",
-    "investimento-em-infraestrutura--gasto-publico",
-    "investimento-em-infraestrutura--divida-publica",
     "investimento-em-infraestrutura--corrupcao",
-    "investimento-em-infraestrutura--desmatamento"
+    "investimento-em-infraestrutura--desmatamento",
+    "investimento-em-infraestrutura--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

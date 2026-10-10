@@ -13,12 +13,13 @@ import {
   type PointerEvent as PointerEventReact,
   type ReactNode,
 } from "react";
-import type {
-  PrevisaoLei,
-  RelatorioTurno,
-  VisaoBolha,
-  VisaoLei,
-  VisaoPartida,
+import {
+  BOLHAS_DO_ORCAMENTO,
+  type PrevisaoLei,
+  type RelatorioTurno,
+  type VisaoBolha,
+  type VisaoLei,
+  type VisaoPartida,
 } from "../../app/partida";
 import {
   NOME_GRUPO,
@@ -529,6 +530,15 @@ export function DocumentoLei({
 
   const custoExtra =
     lei.unidade === "moeda_ano" && mudou ? rascunho - lei.meta : 0;
+  // Efeito no resultado (receita − gasto − juros), em moeda por ano.
+  const efeitoContas = useMemo(() => {
+    const e = previsao?.efeitos.find(
+      (x) => x.id === BOLHAS_DO_ORCAMENTO.resultado,
+    );
+    if (!e) return null;
+    const i = Math.min(mes, e.comMudanca.length - 1);
+    return ((e.comMudanca[i] - e.semMudanca[i]) * visao.contas.pib) / 100;
+  }, [previsao, mes, visao.contas.pib]);
   const implantado = previsao
     ? previsao.implantacao[Math.min(mes, previsao.implantacao.length - 1)]
     : null;
@@ -632,10 +642,14 @@ export function DocumentoLei({
               <dd className="meta">{rotuloOpcao(lei.meta)}</dd>
             </div>
           ) : null}
-          {lei.gastoAnual > 0 ? (
+          {Math.abs(lei.saldoAnual) >= 1 ? (
             <div>
-              <dt>Gasto anual</dt>
-              <dd>{moeda(lei.gastoAnual)}</dd>
+              <dt>{lei.saldoAnual > 0 ? "Arrecada" : "Custa"}</dt>
+              <dd className={lei.saldoAnual > 0 ? "arrecada" : "custa"}>
+                {lei.saldoAnual > 0 ? "+" : "−"}
+                {moeda(Math.abs(lei.saldoAnual))}/ano
+                <small> · {moeda(Math.abs(lei.saldoAnual) / 12)}/mês</small>
+              </dd>
             </div>
           ) : null}
         </dl>
@@ -742,6 +756,31 @@ export function DocumentoLei({
               <p className="vazio">O motor está simulando o país…</p>
             ) : previsao ? (
               <>
+                {efeitoContas !== null && Math.abs(efeitoContas) >= 100 ? (
+                  <div
+                    className={`contas-impacto ${efeitoContas > 0 ? "melhora" : "piora"}`}
+                  >
+                    <Icone
+                      nome={
+                        ICONE_BOLHA[BOLHAS_DO_ORCAMENTO.resultado] ??
+                        "calculator-variant-outline"
+                      }
+                      tamanho={22}
+                    />
+                    <span>
+                      <small>Contas públicas {NOME_HORIZONTE[horizonte]}</small>
+                      <b>
+                        {efeitoContas > 0 ? "+" : "−"}
+                        {moeda(Math.abs(efeitoContas))}/ano
+                      </b>
+                    </span>
+                    <em>
+                      {efeitoContas > 0
+                        ? "o resultado melhora: menos déficit"
+                        : "o resultado piora: mais déficit"}
+                    </em>
+                  </div>
+                ) : null}
                 <Placar itens={itens} />
                 <div className="resumo-impacto">
                   {custoExtra ? (
@@ -1028,6 +1067,7 @@ export function DocumentoBolha({
             {lei ? `Lei · ${nomeCurto(lei.ministerios[0])}` : "Indicador"} ·{" "}
             {atraso(r.atrasoMeses)}
             {r.mecanismo === "limiar" ? " · além de um certo nível" : ""}
+            {r.mecanismo === "produto" ? " · multiplica" : ""}
           </small>
         </span>
       </button>

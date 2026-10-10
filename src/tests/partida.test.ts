@@ -19,12 +19,20 @@ it("cria a partida do Brasil real com as leis das fichas", () => {
   expect(visao.turno).toBe(0);
   expect(visao.leis.length).toBeGreaterThan(100);
   expect(visao.bolhas.some((bolha) => bolha.id === "pib")).toBe(true);
-  expect(visao.caixa).toBeGreaterThan(0);
+  // Orçamento na rede (SG157): contas lidas das bolhas, sem caixa.
+  const { contas } = visao;
+  expect(contas.receita).toBeGreaterThan(0);
+  expect(contas.gasto).toBeGreaterThan(0);
+  expect(contas.resultado).toBeCloseTo(
+    contas.receita - contas.gasto - contas.juros,
+    -1,
+  );
+  expect(contas.divida).toBeCloseTo((77 * contas.pib) / 100, -3);
   const salario = visao.leis.find((lei) => lei.id === "salario-minimo");
   expect(salario?.opcaoAtual).toBe("piso-moderado");
 });
 
-it("quatro turnos mudam bolhas, caixa e dívida", () => {
+it("quatro turnos mudam bolhas, contas e dívida", () => {
   let partida = nova();
   const inicio = verPartida(partida);
   for (let turno = 1; turno <= 4; turno++) {
@@ -35,8 +43,9 @@ it("quatro turnos mudam bolhas, caixa e dívida", () => {
   }
   const fim = verPartida(partida);
   expect(fim.turno).toBe(4);
-  expect(fim.caixa).not.toBe(inicio.caixa);
-  expect(fim.divida).not.toBe(inicio.divida);
+  expect(fim.contas.receita).not.toBe(inicio.contas.receita);
+  // Começa em déficit: a dívida cresce.
+  expect(fim.contas.divida).toBeGreaterThan(inicio.contas.divida);
   const mudou = fim.bolhas.filter(
     (bolha) =>
       Math.abs(

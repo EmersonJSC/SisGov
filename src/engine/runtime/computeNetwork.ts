@@ -19,6 +19,9 @@ export type ContributionExplanation = Readonly<{
   inputValue: number;
   divisorId?: string;
   divisorValue?: number;
+  /** Produto entre nós (D-50): a origem foi multiplicada por este nó. */
+  factorId?: string;
+  factorValue?: number;
   /** A origem foi lida do mês anterior (lei lendo bolha, ou elo de ciclo). */
   readsPreviousMonth?: boolean;
   contribution: number;
@@ -76,6 +79,45 @@ const isCalculatedBubble = (graph: ScenarioGraph, id: string) => {
 
 const orderCache = new WeakMap<ScenarioGraph, readonly string[]>();
 
+/** Componente fortemente conexa de cada nó (Tarjan); `inputs` = quem envia. */
+function stronglyConnected(
+  nodes: readonly string[],
+  inputs: ReadonlyMap<string, ReadonlySet<string>>,
+): Map<string, number> {
+  const index = new Map<string, number>();
+  const low = new Map<string, number>();
+  const component = new Map<string, number>();
+  const stack: string[] = [];
+  const onStack = new Set<string>();
+  let counter = 0;
+  let components = 0;
+  const visit = (node: string) => {
+    index.set(node, counter);
+    low.set(node, counter);
+    counter += 1;
+    stack.push(node);
+    onStack.add(node);
+    for (const next of inputs.get(node) ?? []) {
+      if (!index.has(next)) {
+        visit(next);
+        low.set(node, Math.min(low.get(node)!, low.get(next)!));
+      } else if (onStack.has(next))
+        low.set(node, Math.min(low.get(node)!, index.get(next)!));
+    }
+    if (low.get(node) === index.get(node)) {
+      let member: string;
+      do {
+        member = stack.pop()!;
+        onStack.delete(member);
+        component.set(member, components);
+      } while (member !== node);
+      components += 1;
+    }
+  };
+  for (const node of nodes) if (!index.has(node)) visit(node);
+  return component;
+}
+
 /**
  * Ordem determinística das bolhas no mês: quem recebe depois de quem envia.
  * Num ciclo só entre bolhas, a de menor ID entra primeiro e lê o mês anterior
@@ -88,14 +130,19 @@ export function calculatedBubbleOrder(graph: ScenarioGraph): readonly string[] {
     .filter((id) => isCalculatedBubble(graph, id))
     .sort((left, right) => left.localeCompare(right));
   const pending = new Map(bubbles.map((id) => [id, new Set<string>()]));
-  for (const relation of graph.relations)
-    if (
-      relation.delaySteps === 0 &&
-      relation.originId !== relation.targetId &&
-      pending.has(relation.originId) &&
-      pending.has(relation.targetId)
-    )
-      pending.get(relation.targetId)!.add(relation.originId);
+  for (const relation of graph.relations) {
+    if (relation.delaySteps > 0 || !pending.has(relation.targetId)) continue;
+    // A origem e os nós da normalização (divisor, fator) entram antes.
+    const reads = [
+      relation.originId,
+      relation.normalization?.divisor,
+      relation.normalization?.fator,
+    ];
+    for (const id of reads)
+      if (id !== undefined && id !== relation.targetId && pending.has(id))
+        pending.get(relation.targetId)!.add(id);
+  }
+  const component = stronglyConnected(bubbles, pending);
   const order: string[] = [];
   const done = new Set<string>();
   while (order.length < bubbles.length) {
@@ -104,7 +151,19 @@ export function calculatedBubbleOrder(graph: ScenarioGraph): readonly string[] {
         !done.has(id) &&
         [...pending.get(id)!].every((origin) => done.has(origin)),
     );
-    const next = ready ?? bubbles.find((id) => !done.has(id))!;
+    // Sem ninguém pronto, há ciclo: entra a bolha de menor ID de um ciclo
+    // cujas entradas de fora já foram calculadas. Quem só depende do ciclo
+    // (sem fazer parte dele) espera o ciclo, não lê o mês anterior.
+    const next =
+      ready ??
+      bubbles.find(
+        (id) =>
+          !done.has(id) &&
+          [...pending.get(id)!].every(
+            (origin) =>
+              done.has(origin) || component.get(origin) === component.get(id),
+          ),
+      )!;
     order.push(next);
     done.add(next);
   }
@@ -193,7 +252,9 @@ export function computeNetwork(
         source = pendingBubble || stock ? previous : next;
         readsPreviousMonth = pendingBubble;
       }
-      const sourceValue = delivered(source, relation.originId);
+      const sourceValue = relation.readsLevel
+        ? source[relation.originId]
+        : delivered(source, relation.originId);
       if (sourceValue === undefined)
         return failure(
           `relacoes.${relation.id}`,
@@ -219,10 +280,16 @@ export function computeNetwork(
         mechanism: relation.mechanism,
         parameters: relation.parameters,
         inputValue: calculated.value.inputValue,
-        ...(relation.normalization
+        ...(relation.normalization?.divisor !== undefined
           ? {
               divisorId: relation.normalization.divisor,
               divisorValue: calculated.value.divisorValue,
+            }
+          : {}),
+        ...(relation.normalization?.fator !== undefined
+          ? {
+              factorId: relation.normalization.fator,
+              factorValue: calculated.value.factorValue,
             }
           : {}),
         ...(readsPreviousMonth ? { readsPreviousMonth } : {}),

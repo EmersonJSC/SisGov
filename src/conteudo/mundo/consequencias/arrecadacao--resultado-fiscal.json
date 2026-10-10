@@ -1,16 +1,16 @@
 {
-  "id": "piso-salarial-professores--resultado-fiscal",
+  "id": "arrecadacao--resultado-fiscal",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_piso_salarial_professores",
+  "origem": "arrecadacao",
   "alvo": "resultado_fiscal",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.042,
-    "termoConstante": 0.0
+    "coeficiente": 1,
+    "termoConstante": 0
   },
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

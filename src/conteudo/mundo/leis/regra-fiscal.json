@@ -35,7 +35,6 @@
     ]
   },
   "consequencias": [
-    "regra-fiscal--resultado-fiscal",
     "regra-fiscal--risco-pais",
     "regra-fiscal--taxa-juros",
     "regra-fiscal--margem-manobra-governo",

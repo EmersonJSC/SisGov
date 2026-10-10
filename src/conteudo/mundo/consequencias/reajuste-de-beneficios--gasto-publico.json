@@ -6,9 +6,10 @@
   "alvo": "gasto_publico",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.12,
+    "coeficiente": 0.0045,
     "termoConstante": -0.0
   },
+  "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 4,
   "duracao": {

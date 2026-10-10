@@ -88,16 +88,24 @@ export function prepareMonthlyContent(
     const divisor = rate && effect.duracao.modo !== "unico" ? 3 : 1;
     // Com normalização, a mudança de escala da origem e do divisor vai para o
     // multiplicador; o mecanismo recebe a mesma razão de antes.
-    const divisorNode = effect.normalizacao
+    const divisorNode = effect.normalizacao?.divisor
       ? content.variables.variaveis.find(
           (variable) => variable.id === effect.normalizacao!.divisor,
         )
       : undefined;
     const divisorScale = divisorNode?.unidade.endsWith("_por_passo") ? 3 : 1;
+    const factorNode = effect.normalizacao?.fator
+      ? content.variables.variaveis.find(
+          (variable) => variable.id === effect.normalizacao!.fator,
+        )
+      : undefined;
+    const factorScale = factorNode?.unidade.endsWith("_por_passo") ? 3 : 1;
     const normalizacao = effect.normalizacao && {
       ...effect.normalizacao,
       multiplicador:
-        ((effect.normalizacao.multiplicador ?? 1) * originDivisor) /
+        ((effect.normalizacao.multiplicador ?? 1) *
+          originDivisor *
+          factorScale) /
         divisorScale,
     };
     const inputScale = effect.normalizacao ? 1 : originDivisor;

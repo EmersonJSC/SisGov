@@ -783,6 +783,7 @@
     "nivel_incentivos_fiscais_regionais": 100,
     "nivel_imposto_seletivo": 33,
     "aliquota_imposto_transacoes_financeiras": 0.38,
+    "pib_nominal": 12000000,
     "armas_em_circulacao": 50,
     "capacidade_defesa": 50,
     "concentracao_fundiaria": 50,
