@@ -792,7 +792,7 @@ data, commit e teste.
 
 **M2 — O mapa com a rede real**
 
-- [x] SG158 Marca do jogador (D-58) — 10/out · commit desta entrega · check verde, 318 testes / 65 arquivos; `marcaDoJogador.test.ts`. Piloto automático na partida (`Partida.piloto`), `porVoce`/`sozinho` no relatório, `alteradaPorVoce` e `semVoce` na visão; destaque dourado no mapa, no resumo e nos documentos
+- [x] SG158 Marca do jogador (D-58) — 10/out · `3694f7d` · check verde, 318 testes / 65 arquivos; `marcaDoJogador.test.ts`. Piloto automático na partida (`Partida.piloto`), `porVoce`/`sozinho` no relatório, `alteradaPorVoce` e `semVoce` na visão; destaque dourado no mapa, no resumo e nos documentos
 - [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Atualização visual em 10/out: mapa principal refeito com dez esferas resumidas, expansão de leis, painel contextual, zoom e arraste limitados; usa somente `verPartida`. Commit `72af590`; `npm run check` verde (57 arquivos, 249 testes). O chamado segue aberto: o laboratório antigo ainda precisa ser removido e os dados de ocupantes/aprovação/estimativas precisam entrar na API quando estiverem disponíveis. Refeito de novo em 10/out (commit `7abef55`): tela em React em `src/ui/mapa/` (substitui `lawMapDemo.ts`); a Presidência guarda as 38 leis de emenda constitucional na lente onde cada esfera a cobre; foco revela leis ligadas nas esferas fechadas; prévia de 3 meses pelo motor (`preverLei`); `atrasoMeses` corrigido (estava ×3). `npm run check` verde (58 arquivos, 269 testes). Retratos são provisórios até o SG150/SG152.
 - [ ] SG128 Ministérios no conteúdo
 - [ ] SG129 Mapa de influência com a rede real
