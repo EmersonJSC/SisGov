@@ -10,7 +10,7 @@ export type Camera = Readonly<{ x: number; y: number; k: number }>;
 export type Tela = Readonly<{ largura: number; altura: number }>;
 
 /** Abaixo disto os ícones dos nós deixam de ser reconhecíveis. */
-export const ESCALA_MINIMA_ABSOLUTA = 0.3;
+export const ESCALA_MINIMA_ABSOLUTA = 0.2;
 /** Acima disto o mapa vira um punhado de bolhas gigantes. */
 export const ESCALA_MAXIMA = 1.35;
 
@@ -35,25 +35,48 @@ export function escalaMinima(limites: Limites, tela: Tela): number {
   );
 }
 
-/** Visão geral: o mapa inteiro, ou o máximo dele que a escala mínima permite. */
-export function visaoGeral(limites: Limites, tela: Tela): Camera {
-  return limitar(enquadrar(limites, tela), limites, tela);
+/**
+ * Visão geral: o mapa inteiro, ou o máximo dele que a escala mínima permite,
+ * na parte da tela que os painéis laterais deixam livre.
+ */
+export function visaoGeral(
+  limites: Limites,
+  tela: Tela,
+  ocupado: Ocupado = {},
+): Camera {
+  const c = enquadrar(limites, {
+    largura: tela.largura - (ocupado.esquerda ?? 0) - (ocupado.direita ?? 0),
+    altura: tela.altura,
+  });
+  // a escala final (presa ao mínimo) decide quanto deslocar o centro para o
+  // meio da área livre
+  const { k } = limitar(c, limites, tela, ocupado);
+  const desvio = ((ocupado.esquerda ?? 0) - (ocupado.direita ?? 0)) / 2 / k;
+  return limitar({ k, x: c.x - desvio, y: c.y }, limites, tela, ocupado);
 }
+
+/** Pixels da tela cobertos por painéis fixos de cada lado. */
+export type Ocupado = Readonly<{ esquerda?: number; direita?: number }>;
 
 /**
  * Prende a câmera: zoom entre o mínimo e o máximo, e o mapa sempre dentro da
- * vista. `ocupadoDireita` são os pixels cobertos pelo painel lateral; o mapa
- * pode correr para a esquerda o bastante para sair de baixo dele.
+ * vista. `ocupado` são os pixels cobertos pelos painéis laterais; o mapa pode
+ * correr para o lado o bastante para sair de baixo deles.
  */
 export function limitar(
   camera: Camera,
   limites: Limites,
   tela: Tela,
-  ocupadoDireita = 0,
+  ocupado: Ocupado = {},
 ): Camera {
+  // com painéis abertos, dá para afastar até o mapa caber no que sobra
+  const livre = {
+    largura: tela.largura - (ocupado.esquerda ?? 0) - (ocupado.direita ?? 0),
+    altura: tela.altura,
+  };
   const k = Math.min(
     ESCALA_MAXIMA,
-    Math.max(escalaMinima(limites, tela), camera.k),
+    Math.max(escalaMinima(limites, livre), camera.k),
   );
   const meiaLargura = tela.largura / 2 / k;
   const meiaAltura = tela.altura / 2 / k;
@@ -61,16 +84,12 @@ export function limitar(
     max - min <= meia * 2
       ? (min + max) / 2
       : Math.min(max - meia, Math.max(min + meia, valor));
-  const folga = ocupadoDireita / k;
+  // o mapa "ganha" a largura dos painéis: pode passar por baixo deles
+  const minX = limites.minX - (ocupado.esquerda ?? 0) / k;
+  const maxX = limites.maxX + (ocupado.direita ?? 0) / k;
   return {
     k,
-    x:
-      limites.maxX - limites.minX + folga <= meiaLargura * 2
-        ? (limites.minX + limites.maxX + folga) / 2
-        : Math.min(
-            limites.maxX + folga - meiaLargura,
-            Math.max(limites.minX + meiaLargura, camera.x),
-          ),
+    x: prender(camera.x, minX, maxX, meiaLargura),
     y: prender(camera.y, limites.minY, limites.maxY, meiaAltura),
   };
 }
@@ -105,14 +124,16 @@ export function focarCirculo(
   y: number,
   r: number,
   tela: Tela,
-  /** Pixels ocupados à direita (painel) que o círculo deve evitar. */
-  ocupadoDireita = 0,
+  /** Pixels cobertos por painéis que o círculo deve evitar. */
+  ocupado: Ocupado = {},
 ): Camera {
-  const livre = tela.largura - ocupadoDireita;
+  const esquerda = ocupado.esquerda ?? 0;
+  const direita = ocupado.direita ?? 0;
+  const livre = tela.largura - esquerda - direita;
   const k = Math.min(
     ESCALA_MAXIMA,
     Math.min(livre, tela.altura) / (2 * r * 1.12),
   );
   // desloca o centro para que o círculo fique no meio da área livre
-  return { k, x: x + ocupadoDireita / 2 / k, y };
+  return { k, x: x + (direita - esquerda) / 2 / k, y };
 }

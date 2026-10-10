@@ -11,6 +11,7 @@
  * O tamanho é só da tela; nada aqui volta para o motor.
  */
 import type { VisaoBolha, VisaoLei } from "../../app/partida";
+import { MEDIDAS } from "./tema";
 
 export type IntensidadeBolha = Readonly<{
   /** Valor na escala 0–1 do domínio. */
@@ -68,6 +69,21 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
       bondade: ativa ? Math.min(bondade ?? 0.3, 0.35) : bondade,
       ativa,
       grave: ativa && gravidade >= 0.35,
+    };
+  }
+  // Grupo social (SG143): medalhão grande que incha com a satisfação, do
+  // mínimo (satisfação 0) ao máximo (100). A escala é relativa ao raio base
+  // do grupo, não ao das bolhas.
+  if (bolha.tipo === "grupo") {
+    const raio =
+      MEDIDAS.raioGrupo +
+      (MEDIDAS.raioGrupoMaximo - MEDIDAS.raioGrupo) * curva(t);
+    return {
+      t,
+      escala: raio / MEDIDAS.raioGrupo,
+      bondade,
+      ativa: true,
+      grave: false,
     };
   }
   // raio entre 19 e 42 (referência 30)

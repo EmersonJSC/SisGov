@@ -84,11 +84,22 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
   por "Suas decisões" e boletim com "Sua marca" (comparado com o país no
   piloto automático). O movimento natural do país fica com etiqueta pequena e
   apagada, sem piscar. É destaque, não peso: a simulação é a mesma.
-- **Grupos sociais (SG143):** onze bolhas do tipo `grupo` (contorno roxo)
-  com a satisfação de cada segmento do eleitorado. A barra mostra a
-  aprovação do governo (média dos grupos pelo peso) e quantos grupos estão
-  satisfeitos; clicar abre o boletim com cada grupo.
-- **Câmera:** escala entre a visão geral (no mínimo 0,3) e 1,35; o mapa não sai
+- **Grupos sociais (SG143):** onze medalhões hexagonais roxos, bem maiores
+  que as bolhas (raio 58 → 104: incham com a satisfação), num anel próprio por
+  fora dos indicadores (`ELIPSE_GRUPOS`), com o nome sempre à vista (~12 px
+  em qualquer zoom) e a satisfação no centro. São eles que decidem se as
+  leis passam, por isso não se confundem com lei (círculo pequeno) nem com
+  indicador (círculo com anel). A barra mostra a aprovação do governo (média
+  dos grupos pelo peso) e quantos grupos estão satisfeitos; clicar abre o
+  boletim com cada grupo.
+- **Lista dos grupos (`PainelGrupos`):** à esquerda, recolhível (aberta de
+  saída em telas com 1200 px ou mais). Do mais ao menos satisfeito: ícone,
+  nome, % do eleitorado, satisfação com a variação do turno, barra colorida e
+  o que o grupo mais gosta (verde) e mais odeia (vermelho); o grupo escolhido
+  mostra os três maiores de cada lado. Clicar num grupo ou num motivo abre o
+  documento dele. Aberta, a lista cobre `LARGURA_PAINEL_GRUPOS` px e a câmera
+  centra a visão geral no que sobra (`ocupado.esquerda`).
+- **Câmera:** escala entre a visão geral (no mínimo 0,2) e 1,35; o mapa não sai
   da vista. O botão de alvo volta à visão geral. Esc fecha a seleção e depois
   a área.
 

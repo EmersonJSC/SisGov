@@ -67,6 +67,10 @@ export const MEDIDAS = {
   raioBolha: 30,
   /** Bolha no máximo da escala, com o anel (ver intensidade.ts). */
   raioBolhaMaximo: 48,
+  /** Grupo social (SG143): medalhão bem maior que as bolhas, que incha
+   *  com a satisfação, entre o mínimo e o máximo. */
+  raioGrupo: 58,
+  raioGrupoMaximo: 104,
   inicioBolhas: 840,
   raioRetratoMinistro: 72,
   raioRetratoPresidente: 105,

@@ -163,6 +163,30 @@ export type VisaoContas = Contas &
     percentualPib: Contas;
   }>;
 
+/** Uma razão para um grupo estar mais ou menos satisfeito. */
+export type VisaoMotivo = Readonly<{
+  /** Id da lei ou da bolha que empurra o grupo. */
+  id: string;
+  nome: string;
+  tipo: "lei" | "bolha";
+  /** Pontos de satisfação que ela dá (+) ou tira (−) agora. */
+  pontos: number;
+}>;
+
+/** Grupo social para a lista lateral (SG143). */
+export type VisaoGrupo = Readonly<{
+  id: string;
+  nome: string;
+  /** Satisfação de 0 a 100. */
+  satisfacao: number;
+  /** Parte do eleitorado (0–1); a aprovação é a média pelos pesos. */
+  peso: number;
+  /** O que mais aumenta a satisfação, do maior para o menor. */
+  gosta: readonly VisaoMotivo[];
+  /** O que mais derruba a satisfação, do maior para o menor. */
+  odeia: readonly VisaoMotivo[];
+}>;
+
 export type VisaoPartida = Readonly<{
   pais: string;
   /** Cenário em jogo (ex.: "Brasil 2026"). */
@@ -172,6 +196,8 @@ export type VisaoPartida = Readonly<{
   leis: readonly VisaoLei[];
   bolhas: readonly VisaoBolha[];
   ligacoes: readonly VisaoLigacao[];
+  /** Grupos sociais, do mais satisfeito ao menos satisfeito. */
+  grupos: readonly VisaoGrupo[];
 }>;
 
 export type RelatorioTurno = Readonly<{
@@ -664,6 +690,77 @@ function saldoDasLeis(
  * de surgimento; a tela mostra a soma inteira, para o jogador ver quando ela
  * está chegando perto de surgir (ex.: juros em 26% da receita, surge em 32%).
  */
+/** Aprovação do governo: a média dos grupos pelos pesos (SG143). */
+const APROVACAO = "popularidade_governo";
+
+/** Por que cada grupo está como está: as setas que chegam nele, agora. */
+function gruposDaPartida(
+  partida: Partida,
+  values: Readonly<Record<string, number>>,
+  /** Leis mudadas pelo jogador: num empate, o motivo dele vem primeiro (D-58). */
+  doJogador: ReadonlySet<string>,
+): VisaoGrupo[] {
+  const { content, graph } = partida;
+  const lawByControl = new Map(
+    content.policies.map((policy) => [policy.controle.variavel, policy]),
+  );
+  const delivered = (id: string) => {
+    const law = lawByControl.get(id);
+    if (law === undefined) return values[id];
+    const ceiling = graph.nodesById[id]?.dominio.maximo;
+    const effect = (values[id] ?? 0) * (values[efficacyNodeId(law.id)] ?? 1);
+    return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
+  };
+  const peso = new Map(
+    graph.relations
+      .filter((r) => r.targetId === APROVACAO)
+      .map((r) => [r.originId, r.parameters.coeficiente ?? 0]),
+  );
+  // Muitas leis batem no teto da oscilação (±10): em meio ponto de
+  // diferença, a lei que o jogador mudou vem antes das outras.
+  const degrau = (m: VisaoMotivo) => Math.round(Math.abs(m.pontos) * 2);
+  const maiores = (lista: VisaoMotivo[]) =>
+    lista
+      .sort(
+        (a, b) =>
+          degrau(b) - degrau(a) ||
+          Number(doJogador.has(b.id)) - Number(doJogador.has(a.id)) ||
+          Math.abs(b.pontos) - Math.abs(a.pontos),
+      )
+      .slice(0, 5);
+  return content.variables.variaveis
+    .filter((variable) => variable.tipo === "grupo")
+    .map((variable): VisaoGrupo => {
+      const motivos: VisaoMotivo[] = [];
+      for (const relation of graph.relations) {
+        if (relation.targetId !== variable.id) continue;
+        if (relation.originId.startsWith("contexto:")) continue;
+        const origem = relation.readsLevel
+          ? values[relation.originId]
+          : delivered(relation.originId);
+        if (origem === undefined) continue;
+        const c = calculateContribution(relation, origem, delivered);
+        if (!c.ok || Math.abs(c.value.value) < 0.05) continue;
+        const lei = lawByControl.get(relation.originId);
+        motivos.push({
+          id: lei?.id ?? relation.originId,
+          nome: lei?.nome ?? graph.nodesById[relation.originId]?.nome ?? "",
+          tipo: lei ? "lei" : "bolha",
+          pontos: c.value.value,
+        });
+      }
+      return {
+        id: variable.id,
+        nome: variable.nome,
+        satisfacao: values[variable.id] ?? 0,
+        peso: peso.get(variable.id) ?? 0,
+        gosta: maiores(motivos.filter((m) => m.pontos > 0)),
+        odeia: maiores(motivos.filter((m) => m.pontos < 0)),
+      };
+    })
+    .sort((a, b) => b.satisfacao - a.satisfacao);
+}
+
 function brutoDasSituacoes(
   partida: Partida,
   values: Readonly<Record<string, number>>,
@@ -819,6 +916,7 @@ export function verPartida(partida: Partida): VisaoPartida {
     cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
     turno: game.currentTurn,
     contas: lerContas(content, values),
+    grupos: gruposDaPartida(partida, values, alteradas),
     leis,
     bolhas,
     ligacoes,

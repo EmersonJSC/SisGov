@@ -263,7 +263,11 @@ function posicionarBolhas(
   }
 
   const inicio = MEDIDAS.inicioBolhas;
-  const ordenadas = [...visao.bolhas].sort((a, b) => a.id.localeCompare(b.id));
+  // Grupos sociais (SG143) ficam num anel próprio, por fora de tudo.
+  const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
+  const ordenadas = [...visao.bolhas]
+    .filter((b) => b.tipo !== "grupo")
+    .sort((a, b) => a.id.localeCompare(b.id));
   const caixas: Caixa[] = ordenadas.map((bolha: VisaoBolha, i) => {
     const v = vetor.get(bolha.id) ?? {
       x: Math.cos(i * 2.39996),
@@ -282,12 +286,61 @@ function posicionarBolhas(
   relaxar(caixas);
   desembaracar(caixas);
 
-  return new Map(
-    caixas.map((c) => [
+  return new Map([
+    ...caixas.map((c): [string, PosicaoBolha] => [
       c.id,
       { id: c.id, x: c.x, y: c.y, r: MEDIDAS.raioBolha },
     ]),
-  );
+    ...posicionarGrupos(grupos, vetor),
+  ]);
+}
+
+/** Anel dos grupos sociais: a sociedade em volta do governo (SG143). */
+export const ELIPSE_GRUPOS = { rx: 2320, ry: 1400 } as const;
+
+/**
+ * Cada grupo vai para o lado dos ministérios cujas leis mais o afetam, mas
+ * os medalhões se espalham pelo anel para nunca se encostarem.
+ */
+function posicionarGrupos(
+  grupos: readonly VisaoBolha[],
+  vetor: ReadonlyMap<string, { x: number; y: number }>,
+): [string, PosicaoBolha][] {
+  if (!grupos.length) return [];
+  const n = grupos.length;
+  const itens = grupos
+    .map((g, i) => {
+      const v = vetor.get(g.id);
+      const a = v ? Math.atan2(v.y, v.x) : (i / n) * Math.PI * 2;
+      return { id: g.id, a };
+    })
+    .sort((x, y) => x.a - y.a || x.id.localeCompare(y.id));
+  const espaco = ((Math.PI * 2) / n) * 0.92;
+  for (let volta = 0; volta < 200; volta++) {
+    let mexeu = false;
+    for (let i = 0; i < n; i++) {
+      const atual = itens[i];
+      const prox = itens[(i + 1) % n];
+      const gap = i + 1 < n ? prox.a - atual.a : prox.a + Math.PI * 2 - atual.a;
+      if (gap < espaco) {
+        const passo = (espaco - gap) / 2;
+        atual.a -= passo;
+        prox.a += passo;
+        mexeu = true;
+      }
+    }
+    itens.sort((x, y) => x.a - y.a);
+    if (!mexeu) break;
+  }
+  return itens.map(({ id, a }) => [
+    id,
+    {
+      id,
+      x: Math.cos(a) * ELIPSE_GRUPOS.rx,
+      y: Math.sin(a) * ELIPSE_GRUPOS.ry,
+      r: MEDIDAS.raioGrupo,
+    },
+  ]);
 }
 
 /** Topo da caixa em relação ao centro do nó. */
@@ -416,10 +469,13 @@ function calcularLimites(bolhas: ReadonlyMap<string, PosicaoBolha>): Limites {
     minY: number = -MEDIDAS.inicioBolhas,
     maxY: number = MEDIDAS.inicioBolhas;
   for (const b of bolhas.values()) {
-    minX = Math.min(minX, b.x - 100);
-    maxX = Math.max(maxX, b.x + 100);
-    minY = Math.min(minY, b.y - 60);
-    maxY = Math.max(maxY, b.y + 90);
+    // grupos são medalhões grandes, com rótulo embaixo
+    const grande = b.r > MEDIDAS.raioBolha;
+    const lado = grande ? MEDIDAS.raioGrupoMaximo + 40 : 100;
+    minX = Math.min(minX, b.x - lado);
+    maxX = Math.max(maxX, b.x + lado);
+    minY = Math.min(minY, b.y - (grande ? MEDIDAS.raioGrupoMaximo + 10 : 60));
+    maxY = Math.max(maxY, b.y + (grande ? MEDIDAS.raioGrupoMaximo + 80 : 90));
   }
   const margem = 60;
   return {

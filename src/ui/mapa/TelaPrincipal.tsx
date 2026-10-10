@@ -21,6 +21,7 @@ import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
+import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
 import {
   MES_DO_HORIZONTE,
   type Desvio,
@@ -290,6 +291,10 @@ export function TelaPrincipal() {
   );
   const [aberta, setAberta] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string | null>(null);
+  // lista dos grupos aberta de saída em telas largas (SG143)
+  const [gruposAbertos, setGruposAbertos] = useState(
+    () => typeof window === "undefined" || window.innerWidth >= 1200,
+  );
   const [relatorio, setRelatorio] = useState<RelatorioTurno | null>(null);
   const [aviso, setAviso] = useState<RelatorioTurno | null>(null);
   const [erroTurno, setErroTurno] = useState<string | null>(null);
@@ -550,7 +555,20 @@ export function TelaPrincipal() {
           mostrarVariacoes={mostrarVariacoes}
           onAlternarVariacoes={() => setMostrarVariacoes((v) => !v)}
           painel={painel}
+          painelEsquerdo={
+            gruposAbertos && visao.grupos.length ? LARGURA_PAINEL_GRUPOS : 0
+          }
           cobertura={cobertura}
+        />
+
+        <PainelGrupos
+          grupos={visao.grupos}
+          aprovacao={aprovacao?.valor}
+          variacoes={variacoes}
+          selecionado={selecionado}
+          onSelecionar={selecionar}
+          aberto={gruposAbertos}
+          onAlternar={() => setGruposAbertos((a) => !a)}
         />
 
         {janelas.map((j, camada) => {

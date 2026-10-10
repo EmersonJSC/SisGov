@@ -89,6 +89,54 @@ describe("SG143 — grupos sociais", () => {
     }
   });
 
+  it("lista dos grupos: do mais ao menos satisfeito, com o que gostam e odeiam", () => {
+    expect(visao.grupos.map((g) => g.id).sort()).toEqual(
+      grupos.map((g) => g.id).sort(),
+    );
+    for (let i = 1; i < visao.grupos.length; i++)
+      expect(visao.grupos[i - 1].satisfacao).toBeGreaterThanOrEqual(
+        visao.grupos[i].satisfacao,
+      );
+    for (const g of visao.grupos) {
+      expect(g.peso).toBeCloseTo(pesos.get(g.id)!, 9);
+      expect(g.satisfacao).toBeCloseTo(
+        grupos.find((b) => b.id === g.id)!.valor,
+        9,
+      );
+      expect(g.gosta.length, g.id).toBeGreaterThan(0);
+      expect(g.odeia.length, g.id).toBeGreaterThan(0);
+      expect(g.gosta.length).toBeLessThanOrEqual(5);
+      expect(g.odeia.length).toBeLessThanOrEqual(5);
+      // cada lado vem do maior para o menor, com o sinal certo
+      g.gosta.forEach((m, i) => {
+        expect(m.pontos).toBeGreaterThan(0);
+        if (i) expect(g.gosta[i - 1].pontos).toBeGreaterThanOrEqual(m.pontos);
+      });
+      g.odeia.forEach((m, i) => {
+        expect(m.pontos).toBeLessThan(0);
+        if (i) expect(g.odeia[i - 1].pontos).toBeLessThanOrEqual(m.pontos);
+      });
+      // o motivo é um nó que existe e liga mesmo ao grupo
+      for (const m of [...g.gosta, ...g.odeia])
+        expect(
+          visao.ligacoes.some((l) => l.origem === m.id && l.alvo === g.id),
+          `${m.id} > ${g.id}`,
+        ).toBe(true);
+    }
+  });
+
+  it("revogar a lei que o grupo odeia tira ela da lista", () => {
+    const antes = visao.grupos.find((g) => g.id === "grupo_pobres")!;
+    expect(antes.odeia.some((m) => m.id === "regra-fiscal")).toBe(true);
+    const lei = visao.leis.find((l) => l.id === "regra-fiscal")!;
+    const mudada = mudarLei(partida, lei.id, lei.minimo!);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    const depois = verPartida(turnos(mudada.value, 4)).grupos.find(
+      (g) => g.id === "grupo_pobres",
+    )!;
+    expect(depois.odeia.some((m) => m.id === "regra-fiscal")).toBe(false);
+  });
+
   it("mais transferência de renda: pobres mais satisfeitos, classe média menos", () => {
     const lei = visao.leis.find((l) => l.id === "transferencia-de-renda")!;
     const mudada = mudarLei(partida, lei.id, lei.maximo!);

@@ -4,6 +4,7 @@ import {
   ESCALA_MAXIMA,
   ESCALA_MINIMA_ABSOLUTA,
   limitar,
+  visaoGeral,
   zoomNoPonto,
 } from "../ui/mapa/camera";
 import {
@@ -171,6 +172,22 @@ describe("mapa político: câmera e relações", () => {
     const fora = limitar({ x: 1e6, y: -1e6, k: 1 }, base.limites, tela);
     expect(fora.x).toBeLessThanOrEqual(base.limites.maxX);
     expect(fora.y).toBeGreaterThanOrEqual(base.limites.minY);
+  });
+
+  it("com a lista dos grupos aberta, a visão geral cabe ao lado dela", () => {
+    const esquerda = 328;
+    const c = visaoGeral(base.limites, tela, { esquerda });
+    // todos os grupos ficam à vista, fora da lista, em cima e embaixo
+    for (const b of visao.bolhas.filter((x) => x.tipo === "grupo")) {
+      const p = base.bolhas.get(b.id)!;
+      const sx = tela.largura / 2 + (p.x - c.x) * c.k;
+      const sy = tela.altura / 2 + (p.y - c.y) * c.k;
+      const r = MEDIDAS.raioGrupo * c.k;
+      expect(sx - r, b.id).toBeGreaterThan(esquerda);
+      expect(sx + r, b.id).toBeLessThan(tela.largura);
+      expect(sy - r, b.id).toBeGreaterThan(0);
+      expect(sy + r, b.id).toBeLessThan(tela.altura);
+    }
   });
 
   it("aproximar mantém fixo o ponto sob o cursor", () => {

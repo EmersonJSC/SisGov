@@ -90,6 +90,8 @@ type Props = Readonly<{
   onAlternarVariacoes: () => void;
   /** Largura do painel lateral aberto, em pixels (0 se fechado). */
   painel: number;
+  /** Largura coberta à esquerda (lista dos grupos), em pixels. */
+  painelEsquerdo?: number;
   /** Janela aberta sobre o mapa (pixels da área do mapa), se houver. */
   cobertura: Retangulo | null;
 }>;
@@ -430,6 +432,15 @@ const NoLei = memo(function NoLei({
   );
 });
 
+/** Hexágono de pontas em cima e embaixo: a forma dos grupos sociais. */
+function hexagono(r: number): string {
+  const pontos = Array.from({ length: 6 }, (_, i) => {
+    const a = Math.PI / 6 + (i * Math.PI) / 3 + Math.PI / 2;
+    return `${(Math.cos(a) * r).toFixed(2)},${(Math.sin(a) * r).toFixed(2)}`;
+  });
+  return `M${pontos.join("L")}Z`;
+}
+
 const NoBolha = memo(function NoBolha({
   bolha,
   x,
@@ -471,10 +482,13 @@ const NoBolha = memo(function NoBolha({
   onSair: () => void;
   onClicar: (id: string) => void;
 }) {
-  const r = RAIO_BASE_BOLHA;
+  const grupo = bolha.tipo === "grupo";
+  const r = grupo ? MEDIDAS.raioGrupo : RAIO_BASE_BOLHA;
   const { escala, bondade, ativa, grave } = intensidade;
-  const raioVisivel = r * escala + 6;
+  const raioVisivel = r * escala + (grupo ? 12 : 6);
   const linhas = quebrarNome(bolha.nome, 15, 2);
+  // o nome do grupo continua legível (~12 px) mesmo com o mapa todo à vista
+  const fonteRotulo = grupo ? Math.max(30, 12 / escalaTela) : 16;
   const cor = corDaBondade(bondade);
   const situacao = bolha.tipo === "situacao";
   const mudou = variacao !== undefined && Math.abs(variacao) >= 0.05;
@@ -512,28 +526,60 @@ const NoBolha = memo(function NoBolha({
       <g className="corpo">
         {pulsa && sua ? <circle className="onda" r={raioVisivel - 4} /> : null}
         {grave ? <circle className="alarme" r={raioVisivel - 4} /> : null}
-        <g className="inflavel" style={{ transform: `scale(${escala})` }}>
-          <circle className="halo" r={r + 10} />
-          <circle className="disco" r={r} />
-          {bolha.tipo === "estoque" ? (
-            <circle className="anel-estoque" r={r - 5} />
-          ) : null}
-          {pulsa && sua ? <circle className="flash" r={r + 7} /> : null}
-          {!situacao || ativa ? (
+        {grupo ? (
+          <g className="inflavel" style={{ transform: `scale(${escala})` }}>
+            <circle className="halo-grupo" r={r + 16} />
             <Anel
-              r={r + 5}
+              r={r + 9}
               fracao={intensidade.t}
               cor={cor}
-              largura={5}
+              largura={7}
               classe="anel-valor"
             />
-          ) : null}
-          <IconeSvg
-            nome={ICONE_BOLHA[bolha.id] ?? "chart-line"}
-            tamanho={r * 1.05}
-            cor="var(--icone)"
-          />
-        </g>
+            <path className="disco-grupo" d={hexagono(r)} />
+            <path className="disco-grupo-interno" d={hexagono(r - 6)} />
+            {pulsa && sua ? <circle className="flash" r={r + 9} /> : null}
+            <g transform={`translate(0 ${-r * 0.2})`}>
+              <IconeSvg
+                nome={ICONE_BOLHA[bolha.id] ?? "account-group"}
+                tamanho={r * 0.72}
+                cor="#5b3fa8"
+              />
+            </g>
+            <text
+              className="satisfacao-grupo"
+              y={r * 0.55}
+              fontSize={r * 0.36}
+              textAnchor="middle"
+              fill={cor}
+            >
+              {Math.round(bolha.valor)}
+            </text>
+          </g>
+        ) : (
+          <g className="inflavel" style={{ transform: `scale(${escala})` }}>
+            <circle className="halo" r={r + 10} />
+            <circle className="disco" r={r} />
+            {bolha.tipo === "estoque" ? (
+              <circle className="anel-estoque" r={r - 5} />
+            ) : null}
+            {pulsa && sua ? <circle className="flash" r={r + 7} /> : null}
+            {!situacao || ativa ? (
+              <Anel
+                r={r + 5}
+                fracao={intensidade.t}
+                cor={cor}
+                largura={5}
+                classe="anel-valor"
+              />
+            ) : null}
+            <IconeSvg
+              nome={ICONE_BOLHA[bolha.id] ?? "chart-line"}
+              tamanho={r * 1.05}
+              cor="var(--icone)"
+            />
+          </g>
+        )}
         {marca ? (
           <g
             transform={`translate(${raioVisivel * 0.72} ${-raioVisivel * 0.72})`}
@@ -552,9 +598,9 @@ const NoBolha = memo(function NoBolha({
         <>
           <Rotulo
             linhas={linhas}
-            y={raioVisivel + 16}
-            tamanho={16}
-            classe="rotulo-bolha"
+            y={raioVisivel + fonteRotulo}
+            tamanho={fonteRotulo}
+            classe={grupo ? "rotulo-bolha rotulo-grupo" : "rotulo-bolha"}
           />
           {mostrarValor ? (
             <text
@@ -659,6 +705,7 @@ export function MapaPolitico({
   mostrarVariacoes,
   onAlternarVariacoes,
   painel,
+  painelEsquerdo = 0,
   cobertura,
 }: Props) {
   const caixa = useRef<HTMLDivElement>(null);
@@ -728,15 +775,19 @@ export function MapaPolitico({
 
   // --- câmera -------------------------------------------------------------
 
-  const painelAtual = useRef(painel);
-  painelAtual.current = painel;
+  const ocupado = useMemo(
+    () => ({ esquerda: painelEsquerdo, direita: painel }),
+    [painelEsquerdo, painel],
+  );
+  const ocupadoAtual = useRef(ocupado);
+  ocupadoAtual.current = ocupado;
   const aplicar = useCallback(
     (proxima: Camera) => {
       const c = limitar(
         proxima,
         base.limites,
         tela.current,
-        painelAtual.current,
+        ocupadoAtual.current,
       );
       camera.current = c;
       if (mundo.current)
@@ -756,7 +807,7 @@ export function MapaPolitico({
         destino,
         base.limites,
         tela.current,
-        painelAtual.current,
+        ocupadoAtual.current,
       );
       const inicio = performance.now();
       const passo = (agora: number) => {
@@ -773,7 +824,7 @@ export function MapaPolitico({
   );
 
   const irParaVisaoGeral = useCallback(() => {
-    animarPara(visaoGeral(base.limites, tela.current));
+    animarPara(visaoGeral(base.limites, tela.current, ocupadoAtual.current));
   }, [animarPara, base]);
 
   useLayoutEffect(() => {
@@ -784,7 +835,7 @@ export function MapaPolitico({
       const primeira = !pronto;
       tela.current = { largura: r.width, altura: r.height };
       if (primeira) {
-        aplicar(visaoGeral(base.limites, tela.current));
+        aplicar(visaoGeral(base.limites, tela.current, ocupadoAtual.current));
         setPronto(true);
       } else aplicar(camera.current);
     };
@@ -814,16 +865,17 @@ export function MapaPolitico({
       alvoCirculo.y,
       r,
       tela.current,
-      painel,
+      ocupado,
     );
     // perto o bastante para ler as leis, longe o bastante para ver as vizinhas
     animarPara({ ...destino, k: Math.min(destino.k, 0.86) });
-  }, [aberta, alvo, animarPara, irParaVisaoGeral, painel, pronto]);
+  }, [aberta, alvo, animarPara, irParaVisaoGeral, ocupado, pronto]);
 
   // O painel lateral empurra o centro da câmera para a área livre. Uma
   // seleção escondida pela janela (ou fora da tela) desliza para o lado
   // livre da janela.
   const painelAnterior = useRef(painel);
+  const esquerdoAnterior = useRef(painelEsquerdo);
   const coberturaAtual = useRef(cobertura);
   coberturaAtual.current = cobertura;
   useEffect(() => {
@@ -833,6 +885,13 @@ export function MapaPolitico({
     if (painelAnterior.current !== painel) {
       c = { ...c, x: c.x + (painel - painelAnterior.current) / 2 / c.k };
       painelAnterior.current = painel;
+    }
+    if (esquerdoAnterior.current !== painelEsquerdo) {
+      c = {
+        ...c,
+        x: c.x - (painelEsquerdo - esquerdoAnterior.current) / 2 / c.k,
+      };
+      esquerdoAnterior.current = painelEsquerdo;
     }
     const p = selecionado
       ? (alvo.leis.get(selecionado) ?? base.bolhas.get(selecionado))
@@ -850,13 +909,20 @@ export function MapaPolitico({
         sx < j.right + margem &&
         sy > j.top - margem &&
         sy < j.bottom + margem;
-      const fora = sx < 60 || sx > livre - 60 || sy < 60 || sy > t.altura - 60;
+      const fora =
+        sx < painelEsquerdo + 60 ||
+        sx > livre - 60 ||
+        sy < 60 ||
+        sy > t.altura - 60;
       if (escondido || fora) {
-        let alvoX = livre / 2;
+        let alvoX = (painelEsquerdo + livre) / 2;
         if (j) {
-          const esquerda = j.left;
+          const esquerda = j.left - painelEsquerdo;
           const direita = t.largura - j.right;
-          alvoX = esquerda >= direita ? esquerda / 2 : j.right + direita / 2;
+          alvoX =
+            esquerda >= direita
+              ? painelEsquerdo + esquerda / 2
+              : j.right + direita / 2;
         }
         const alvoY = sy > 60 && sy < t.altura - 60 ? sy : t.altura / 2;
         c = {
@@ -868,7 +934,7 @@ export function MapaPolitico({
     }
     if (c !== atual) animarPara(c, 420);
     // só quando a seleção, o painel ou a janela mudam
-  }, [selecionado, painel, pronto, cobertura !== null]);
+  }, [selecionado, painel, painelEsquerdo, pronto, cobertura !== null]);
 
   // Esc fecha a seleção e depois a área aberta.
   useEffect(() => {
@@ -1537,7 +1603,11 @@ export function MapaPolitico({
                 estado={estado}
                 selecionada={bolha.id === selecionado}
                 mostrarRotulo={
-                  k >= 0.6 || emFoco || Boolean(marca) || pulsos.has(bolha.id)
+                  bolha.tipo === "grupo" ||
+                  k >= 0.6 ||
+                  emFoco ||
+                  Boolean(marca) ||
+                  pulsos.has(bolha.id)
                 }
                 mostrarValor={k >= 0.85 || estado === "foco"}
                 marca={marca}

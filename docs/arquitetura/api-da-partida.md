@@ -44,6 +44,13 @@ e descarte a anterior (ou guarde para "desfazer").
   maior_pior, neutra), `valor`, `minimo` e `maximo` (escala do domínio) e,
   nas situações, `surgimento`; `contexto` (D-55): a parte do valor que as
   leis e a rede não explicam, fixa desde o turno 0.
+- `grupos[]` (SG143): a lista lateral dos grupos sociais, do mais ao menos
+  satisfeito: `id`, `nome`, `satisfacao` (0–100), `peso` (parte do
+  eleitorado, 0–1; a aprovação é a média pelos pesos), `gosta[]` e `odeia[]`
+  (até 5 cada, do maior para o menor: `id` da lei ou da bolha, `nome`,
+  `tipo` lei/bolha e `pontos` de satisfação que aquilo dá ou tira agora,
+  sem o contexto do cenário). Muitas leis batem no teto de ±10 pontos; em
+  meio ponto de diferença, a lei mudada pelo jogador vem antes (D-58).
 - `ligacoes[]`: `origem` (id de lei ou de bolha), `alvo` (id de bolha, ou
   `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
   convertido para meses; o conteúdo da partida já é mensal, então é o próprio
