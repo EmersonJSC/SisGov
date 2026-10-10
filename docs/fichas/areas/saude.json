@@ -154,9 +154,9 @@
       "area": "Saúde",
       "ministerio": "Ministério da Saúde",
       "grupo": "orcamentaria",
-      "descricao": "Fixa quanto do PIB o Estado gasta, no mínimo, com saúde pública (hospitais, postos, remédios e vigilância saem daqui).",
+      "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a saúde (hospitais, postos, remédios e vigilância saem daqui). Se a arrecadação cai, a saúde cai junto.",
       "dilema": "A saúde é o gasto que nunca para de crescer: a população envelhece e cada tratamento novo é mais caro. Até onde o orçamento acompanha antes que a fila vire manchete ou a dívida vire crise?",
-      "eixo": "de nenhum gasto público com saúde a 12% do PIB",
+      "eixo": "de nenhuma receita vinculada à saúde a 40% da receita",
       "opcoes": null,
       "faixa": {
         "unidade": "percentual_pib",
@@ -308,7 +308,14 @@
           "titulo": "Wikipedia – Health spending as percent of GDP by country",
           "url": "https://en.wikipedia.org/wiki/Health_spending_as_percent_of_gross_domestic_product_(GDP)_by_country"
         }
-      ]
+      ],
+      "orcamento": {
+        "modo": "percentual_receita",
+        "minimo": 0,
+        "maximo": 40,
+        "brasil": 13.69,
+        "nota": "Vinculação: o gasto é esta parte da receita (o Brasil 2026 equivale ao valor da faixa em % do PIB). A faixa em % do PIB serve de escala para os efeitos."
+      }
     },
     {
       "id": "vacinacao-obrigatoria",

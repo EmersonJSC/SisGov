@@ -107,10 +107,17 @@ describe("SG159 — contas sem furos", () => {
         false,
       );
     }
+    // valor fixo: teto em % do PIB vira R$ pelo PIB do país
+    const farmacia = verPartida(partida).leis.find(
+      (l) => l.id === "farmacia-popular",
+    )!;
+    expect(farmacia.unidade).toBe("moeda_ano");
+    expect(farmacia.maximo).toBeGreaterThan(farmacia.nivel);
+    // vinculação (SG137): teto em % da receita
     const educacao = verPartida(partida).leis.find(
       (l) => l.id === "piso-educacao",
     )!;
-    expect(educacao.maximo).toBe(1_200_000);
+    expect(educacao.maximo).toBe(40);
   });
 
   it("a prévia recusa horizonte inválido (N3)", () => {

@@ -12,6 +12,7 @@ const supportedUnits = new Set([
   "indice_0_1",
   "indice_0_100",
   "percentual_0_100",
+  "percentual_receita",
   "moeda",
   "moeda_por_passo",
   "taxa_por_passo",

@@ -155,6 +155,14 @@ def elo(cid: str, origem: str, alvo: str, coeficiente: float, unidade: str = "pe
     return c
 
 
+def dinheiro_da_lei(var: str, vinculadas: set[str]) -> dict:
+    """Quanto a lei de gasto põe na rede, em % do PIB: R$ ÷ PIB, ou, na
+    vinculação (SG137), parte da receita × arrecadação ÷ 100."""
+    if var in vinculadas:
+        return {"fator": "arrecadacao", "multiplicador": 0.01}
+    return {"divisor": PIB_NOMINAL, "multiplicador": 100}
+
+
 # Situação "Juros explosivos" (D-48): parte da receita que vai para os juros.
 # Surge quando passa de 32% e pisca quando cresce (hipótese, fase 3).
 JUROS_EXPLOSIVOS = {
@@ -268,8 +276,9 @@ def elos_dos_grupos(lei: dict, f: dict, var: str) -> dict[str, dict]:
         cid = f"{lei['id']}--{g}".replace("_", "-")
         if lei["grupo"] == "orcamentaria":  # lê o gasto em % do PIB
             coef = s * SWING_LEI_GRUPO / max(faixa.get("maximo", 1), 1e-9)
+            vinc = {var} if lei.get("orcamento", {}).get("modo") == "percentual_orcamento" else set()
             saida[cid] = elo(cid, var, g, round(coef, 6), "indice_0_100",
-                             normalizacao={"divisor": PIB_NOMINAL, "multiplicador": 100})
+                             normalizacao=dinheiro_da_lei(var, vinc))
         elif lei["grupo"] == "tributaria":
             amplitude = max(faixa.get("maximo", 100) - faixa.get("minimo", 0), 1e-9)
             saida[cid] = elo(cid, var, g, round(s * SWING_LEI_GRUPO / amplitude, 6), "indice_0_100")
@@ -397,6 +406,7 @@ def main(aplicar: bool) -> None:
                         | {b for _, _, _, i in GRUPOS.values() for b, _ in i})
     contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL + rede_dos_grupos()}
     gasto_brasil = 0.0
+    vinculadas: set[str] = set()  # controles em % da receita (SG137)
     variaveis[PIB_NOMINAL] = {"id": PIB_NOMINAL, "tipo": "controle", "nome": "PIB nominal",
                               "unidade": "moeda", "dominio": {"minimo": 1}, "valorInicial": 1_000_000,
                               "area": "Economia"}
@@ -423,6 +433,25 @@ def main(aplicar: bool) -> None:
             escolha = f.get("brasil") if f.get("brasil") in valores_op else opcoes[0]["id"]
             vigentes.append({"lei": lid, "opcao": escolha})
             valores_controle[var] = valores_op[escolha]
+        elif grupo == "orcamentaria" and (f.get("orcamento") or {}).get("modo") == "percentual_receita":
+            # SG137: vinculação. O nível é a parte da receita (%); o dinheiro
+            # que chega à rede é nível × arrecadação ÷ 100, em % do PIB, e os
+            # efeitos usam a faixa em % do PIB como escala, como as outras.
+            orc = f["orcamento"]
+            var = f"percentual_{snake(lid)}"
+            lei["controle"] = {"variavel": var, "unidade": "percentual_receita"}
+            lei["orcamento"] = {"modo": "percentual_orcamento", "base": "receita_total",
+                                "limites": {"minimo": orc.get("minimo", 0), "maximo": orc.get("maximo", 100)}}
+            variaveis[var] = {"id": var, "tipo": "controle", "nome": f"Parte da receita: {f['nome']}",
+                              "unidade": "percentual_receita", "dominio": {"minimo": 0, "maximo": 100},
+                              "valorInicial": 0, "area": area}
+            amplitude, inicio = faixa.get("maximo", 1), 0
+            nivel = float(orc.get("brasil") or 0)
+            vigentes.append({"lei": lid, "nivel": nivel})
+            valores_controle[var] = nivel
+            vinculadas.add(var)
+            usadas.add("arrecadacao")
+            valores_op = {}
         elif grupo == "orcamentaria":
             var = f"recursos_{snake(lid)}"
             lei["controle"] = {"variavel": var, "unidade": "moeda_ano"}
@@ -475,6 +504,7 @@ def main(aplicar: bool) -> None:
             consequencias[cid] = {"_alvo": alvo, "_forca": e["forca"], "_sinal": sinal, "_amp": amplitude,
                                   "_inicio": inicio, "_limiar": limiar, "origem": var,
                                   "_pontos": pontos, "_escala": e.get("escala"),
+                                  "_norm": dinheiro_da_lei(var, vinculadas) if var in vinculadas else None,
                                   "atrasoPassos": ATRASO.get(e["atraso"], 0)}
             if e.get("escala"):
                 usadas.add(e["escala"]["fator"])
@@ -492,7 +522,7 @@ def main(aplicar: bool) -> None:
         if grupo == "orcamentaria":
             cid = f"{lid}--gasto-publico"
             contabeis[cid] = elo(cid, var, "gasto_publico", 1,
-                                 normalizacao={"divisor": PIB_NOMINAL, "multiplicador": 100}, de_lei=True)
+                                 normalizacao=dinheiro_da_lei(var, vinculadas), de_lei=True)
             ids_lei.append(cid)
             usadas.add("gasto_publico")
         elif grupo == "tributaria":
@@ -586,6 +616,7 @@ def main(aplicar: bool) -> None:
                         "alvo": c["_alvo"], "mecanismo": mec, "parametros": par,
                         **({"leitura": "nivel"} if c["_alvo"] in FISCAIS else {}),
                         **({"escala": c["_escala"]} if c.get("_escala") else {}),
+                        **({"normalizacao": c["_norm"]} if c.get("_norm") else {}),
                         "unidade": unidade, "atrasoPassos": c["atrasoPassos"], "duracao": {"modo": "continuo"}}
     saida_c.update(rede)
     saida_c.update(contabeis)

@@ -109,6 +109,8 @@ export function referenciaDasLeis(leis: readonly VisaoLei[]): ReferenciaLeis {
   for (const lei of leis) {
     if (lei.unidade === "moeda_ano")
       maiorGasto = Math.max(maiorGasto, lei.nivel, lei.meta);
+    else if (lei.unidade === "percentual_receita")
+      maiorGasto = Math.max(maiorGasto, -lei.saldoAnual);
     else if (!lei.opcoes?.length)
       maiorAliquota = Math.max(maiorAliquota, lei.nivel, lei.meta);
   }
@@ -130,6 +132,12 @@ export function nivelRelativo(
   }
   if (lei.unidade === "moeda_ano")
     return prender(valor / referencia.maiorGasto);
+  // vinculação (SG137): compara pelo dinheiro, como as leis de valor fixo
+  if (lei.unidade === "percentual_receita")
+    return prender(
+      (-lei.saldoAnual * (lei.nivel > 0 ? valor / lei.nivel : 1)) /
+        referencia.maiorGasto,
+    );
   return prender(valor / referencia.maiorAliquota);
 }
 

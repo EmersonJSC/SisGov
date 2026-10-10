@@ -2,12 +2,16 @@
   "id": "piso-saude--corrupcao",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "recursos_piso_saude",
+  "origem": "percentual_piso_saude",
   "alvo": "corrupcao",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 2.0833e-6,
+    "coeficiente": 0.25,
     "termoConstante": -0.0
+  },
+  "normalizacao": {
+    "fator": "arrecadacao",
+    "multiplicador": 0.01
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 4,

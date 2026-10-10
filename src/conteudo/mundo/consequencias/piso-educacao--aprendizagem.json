@@ -2,12 +2,16 @@
   "id": "piso-educacao--aprendizagem",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "recursos_piso_educacao",
+  "origem": "percentual_piso_educacao",
   "alvo": "aprendizagem",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 2.5e-6,
+    "coeficiente": 0.3,
     "termoConstante": -0.0
+  },
+  "normalizacao": {
+    "fator": "arrecadacao",
+    "multiplicador": 0.01
   },
   "unidade": "percentual_0_100",
   "atrasoPassos": 4,

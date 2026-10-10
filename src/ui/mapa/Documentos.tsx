@@ -415,6 +415,8 @@ function faixaNumerica(lei: VisaoLei) {
     return { min, max, passo };
   }
   const teto = lei.maximo ?? 100;
+  if (lei.unidade === "percentual_receita")
+    return { min, max: teto, passo: 0.1 };
   const max = Math.min(teto, Math.max(2, referencia * 4));
   return { min, max, passo: max <= 5 ? 0.01 : max <= 30 ? 0.1 : 0.5 };
 }
@@ -529,8 +531,13 @@ export function DocumentoLei({
     return efeitosDiretos.filter((r) => !r.eficacia && !com.has(r.para));
   }, [previsao, itens, efeitosDiretos]);
 
-  const custoExtra =
-    lei.unidade === "moeda_ano" && mudou ? rascunho - lei.meta : 0;
+  const custoExtra = !mudou
+    ? 0
+    : lei.unidade === "moeda_ano"
+      ? rascunho - lei.meta
+      : lei.unidade === "percentual_receita"
+        ? ((rascunho - lei.meta) / 100) * visao.contas.receita
+        : 0;
   // Efeito no resultado (receita − gasto − juros), em moeda por ano.
   const efeitoContas = useMemo(() => {
     const e = previsao?.efeitos.find(
@@ -704,7 +711,12 @@ export function DocumentoLei({
             })}
           </div>
         ) : (
-          <ControleNumerico lei={lei} valor={rascunho} onValor={onRascunho} />
+          <ControleNumerico
+            lei={lei}
+            valor={rascunho}
+            onValor={onRascunho}
+            receita={visao.contas.receita}
+          />
         )}
         {erro ? <p className="erro">{erro}</p> : null}
       </section>
@@ -920,17 +932,25 @@ function ControleNumerico({
   lei,
   valor,
   onValor,
+  receita,
 }: {
   lei: VisaoLei;
   valor: number;
   onValor: (v: number) => void;
+  /** Receita anual, para mostrar quanto vale a parte vinculada (SG137). */
+  receita: number;
 }) {
   const { min, max, passo } = faixaNumerica(lei);
   return (
     <div className="controle-doc">
       <div className="controle-topo">
         <span>Novo valor</span>
-        <strong>{nivelDaLei(valor, lei.unidade)}</strong>
+        <strong>
+          {nivelDaLei(valor, lei.unidade)}
+          {lei.unidade === "percentual_receita" ? (
+            <small> ≈ {moeda((valor / 100) * receita)}/ano</small>
+          ) : null}
+        </strong>
       </div>
       <input
         type="range"

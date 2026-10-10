@@ -125,10 +125,12 @@ describe("SG157 — orçamento na rede", () => {
 
   it("lei de gasto custa o que foi aprovado e piora o resultado", () => {
     const partida = nova();
-    const saude = verPartida(partida).leis.find((l) => l.id === "piso-saude")!;
+    const saude = verPartida(partida).leis.find(
+      (l) => l.id === "farmacia-popular",
+    )!;
     // Elo contábil: custa exatamente o nível, sem a eficácia.
     expect(saude.saldoAnual).toBeCloseTo(-saude.nivel, 0);
-    const previa = preverLei(partida, saude.id, saude.nivel + 120_000, 4);
+    const previa = preverLei(partida, saude.id, saude.nivel * 3 + 50_000, 4);
     if (!previa.ok) throw new Error(previa.erros.join(" "));
     const resultado = previa.value.efeitos.find(
       (e) => e.id === "resultado_fiscal",

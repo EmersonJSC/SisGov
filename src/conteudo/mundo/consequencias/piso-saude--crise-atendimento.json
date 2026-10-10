@@ -2,12 +2,16 @@
   "id": "piso-saude--crise-atendimento",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "recursos_piso_saude",
+  "origem": "percentual_piso_saude",
   "alvo": "crise_atendimento",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -4.8611e-6,
+    "coeficiente": -0.5833333333,
     "termoConstante": 0.0
+  },
+  "normalizacao": {
+    "fator": "arrecadacao",
+    "multiplicador": 0.01
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 1,

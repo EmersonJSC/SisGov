@@ -45,6 +45,9 @@ export function diferenca(valor: number, unidade: string): string {
 
 export function nivelDaLei(valor: number, unidade: string): string {
   if (unidade === "moeda_ano") return `${moeda(valor)}/ano`;
+  // vinculação (SG137): parte da receita que vai para a área
+  if (unidade === "percentual_receita")
+    return `${numero(valor, 2)}% da receita`;
   if (unidade === "percentual_0_100") return `${numero(valor, 2)}%`;
   return numero(valor, 0);
 }

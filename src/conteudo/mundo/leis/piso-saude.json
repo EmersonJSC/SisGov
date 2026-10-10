@@ -4,19 +4,20 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Piso de gasto em saúde",
-  "descricao": "Fixa quanto do PIB o Estado gasta, no mínimo, com saúde pública (hospitais, postos, remédios e vigilância saem daqui).",
+  "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a saúde (hospitais, postos, remédios e vigilância saem daqui). Se a arrecadação cai, a saúde cai junto.",
   "area": "Saúde",
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
-    "variavel": "recursos_piso_saude",
-    "unidade": "moeda_ano"
+    "variavel": "percentual_piso_saude",
+    "unidade": "percentual_receita"
   },
   "orcamento": {
-    "modo": "valor_fixo",
+    "modo": "percentual_orcamento",
+    "base": "receita_total",
     "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 12
+      "minimo": 0,
+      "maximo": 40
     }
   },
   "consequencias": [

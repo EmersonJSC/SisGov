@@ -225,7 +225,7 @@
     },
     {
       "lei": "piso-educacao",
-      "nivel": 660000
+      "nivel": 17.51
     },
     {
       "lei": "ensino-obrigatorio",
@@ -369,7 +369,7 @@
     },
     {
       "lei": "piso-saude",
-      "nivel": 516000
+      "nivel": 13.69
     },
     {
       "lei": "vacinacao-obrigatoria",
@@ -818,7 +818,7 @@
     "nivel_regulacao_bancaria": 67,
     "nivel_investimento_estrangeiro": 50,
     "nivel_politica_industrial": 100,
-    "recursos_piso_educacao": 660000,
+    "percentual_piso_educacao": 17.51,
     "nivel_ensino_obrigatorio": 100,
     "nivel_acesso_ensino_superior": 50,
     "nivel_escola_tempo_integral": 50,
@@ -854,7 +854,7 @@
     "nivel_cuidados_de_longa_duracao": 33,
     "nivel_reajuste_de_beneficios": 75,
     "nivel_sistema_de_saude": 75,
-    "recursos_piso_saude": 516000,
+    "percentual_piso_saude": 13.69,
     "nivel_vacinacao_obrigatoria": 50,
     "nivel_restricao_tabaco_e_alcool": 50,
     "nivel_saude_mental": 100,

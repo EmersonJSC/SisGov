@@ -256,9 +256,23 @@ escala das bolhas para desenhar vem de `faixaVisual`. Uma crise de dívida de
 verdade (calote, socorro) é regra de jogo a desenhar (SG106), não um limite
 de escala.
 
+## Pisos vinculados à receita (SG137, D-25)
+
+O piso da saúde e o da educação deixaram de ser valores em R$: o nível da
+lei é a **parte da receita** que vai para a área (modo
+`percentual_orcamento`, base `receita_total`, unidade `percentual_receita`,
+de 0 a 40%). O dinheiro que entra na rede é nível × arrecadação ÷ 100, em %
+do PIB (`normalizacao.fator: "arrecadacao"`, multiplicador 0,01): o elo do
+gasto, os efeitos da ficha e as ligações com os grupos leem esse valor, com a
+faixa em % do PIB da ficha como escala.
+
+Consequência para o jogador: **subir imposto também aumenta saúde e
+educação** e uma recessão corta as duas, como a vinculação constitucional
+faz no Brasil. Brasil 2026: saúde 13,69% e educação 17,51% da receita, o
+mesmo dinheiro de antes (4,3% e 5,5% do PIB), então o orçamento do turno 0 não
+mudou. Na tela, o controle mostra a % e quanto ela vale por ano.
+
 ## Questões abertas
 
 - PIB em R$ como nó (hoje o PIB da rede é um índice 0–100 e o PIB em R$ é
   fixo): necessário para "% do PIB" mudar com a economia. Proposta: fase 3.
-- Pisos da saúde e da educação como % da receita (D-25) dentro da rede:
-  o piso lê a receita (produto), então gasto acompanha a arrecadação.

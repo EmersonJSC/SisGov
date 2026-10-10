@@ -34,7 +34,9 @@ e descarte a anterior (ou guarde para "desfazer").
 - `leis[]`: `id`, `nome`, `descricao`, `grupo` (orcamentaria, regulatoria,
   tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a
-  mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`, `saldoAnual`: quanto a lei arrecadaria ou custaria por ano naquela opção, com o país como está),
+  mês), `minimo`, `maximo`, `unidade` (`moeda_ano` nas leis de valor fixo,
+  `percentual_receita` nos pisos vinculados do SG137, `percentual_0_100` nos
+  impostos, `nivel_escopo` nas leis de opções), `opcoes[]` (`id`, `rotulo`, `valor`, `saldoAnual`: quanto a lei arrecadaria ou custaria por ano naquela opção, com o país como está),
   `opcaoAtual`, `saldoAnual` (quanto a lei arrecada, +, ou custa, −, por ano,
   somando as setas dela para a receita e o gasto), `processo` (`emenda-constitucional`,
   `lei-ordinaria`, `execucao-programa-autorizado`…). A tela põe as leis de

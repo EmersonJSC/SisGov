@@ -290,12 +290,13 @@
       "area": "Economia, finanças e comércio exterior"
     },
     {
-      "id": "recursos_piso_educacao",
+      "id": "percentual_piso_educacao",
       "tipo": "controle",
-      "nome": "Recursos: Piso de gasto em educação",
-      "unidade": "moeda_ano",
+      "nome": "Parte da receita: Piso de gasto em educação",
+      "unidade": "percentual_receita",
       "dominio": {
-        "minimo": 0
+        "minimo": 0,
+        "maximo": 100
       },
       "valorInicial": 0,
       "area": "Educação, ciência e cultura"
@@ -718,12 +719,13 @@
       "area": "Saúde"
     },
     {
-      "id": "recursos_piso_saude",
+      "id": "percentual_piso_saude",
       "tipo": "controle",
-      "nome": "Recursos: Piso de gasto em saúde",
-      "unidade": "moeda_ano",
+      "nome": "Parte da receita: Piso de gasto em saúde",
+      "unidade": "percentual_receita",
       "dominio": {
-        "minimo": 0
+        "minimo": 0,
+        "maximo": 100
       },
       "valorInicial": 0,
       "area": "Saúde"

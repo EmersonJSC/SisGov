@@ -7,10 +7,17 @@
       "area": "Educação, ciência e cultura",
       "ministerio": "Ministério da Educação",
       "grupo": "orcamentaria",
-      "descricao": "Fixa quanto do PIB o Estado gasta, no mínimo, com educação pública (da pré-escola à universidade; alimentação escolar e creches saem daqui).",
+      "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a educação (escolas, professores, merenda e transporte escolar). Se a arrecadação cai, a educação cai junto.",
       "dilema": "Cada ponto do PIB na escola rende um país mais qualificado daqui a 15 anos, mas o déficit, a saúde e a previdência cobram hoje. Vale apostar no longo prazo, sabendo que Singapura e Japão aprendem mais gastando menos?",
-      "eixo": "de nenhum gasto público com educação a 10% do PIB",
+      "eixo": "de nenhuma receita vinculada à educação a 40% da receita",
       "opcoes": null,
+      "orcamento": {
+        "modo": "percentual_receita",
+        "minimo": 0,
+        "maximo": 40,
+        "brasil": 17.51,
+        "nota": "Vinculação: o gasto é esta parte da receita (o Brasil 2026 equivale ao valor da faixa em % do PIB). A faixa em % do PIB serve de escala para os efeitos."
+      },
       "faixa": {
         "unidade": "percentual_pib",
         "minimo": 0,
