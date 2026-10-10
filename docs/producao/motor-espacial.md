@@ -96,7 +96,7 @@ reacomodam pela física. A câmera não participa dessa conta e não recentraliz
 - `src/mapPhysics.ts`: integração e hierarquia, independente de DOM/React.
 - `src/influenceLayout.ts`: contrato visual, representantes e fotografia estática.
 - `src/mapMetrics.ts`: métricas e escalas.
-- `src/lawMapDemo.ts`: desenho e animação da interface existente.
+- `src/lawMapDemo.ts`: desenho e animação da interface existente (substituído em 10/out por `src/ui/mapa/`).
 - `src/scenarios/d4ReferenceSandbox.ts`: exemplos demonstrativos de afinidades e escopos.
 
 A interface existente ainda combina React nos filtros e DOM no mapa; esta alteração

@@ -7,12 +7,13 @@ por `mudarLei` e `encerrarTurno`.
 
 ## Funções
 
-| Função                            | Entrada                                                           | Devolve                             | Quando usar                           |
-| --------------------------------- | ----------------------------------------------------------------- | ----------------------------------- | ------------------------------------- |
-| `criarPartida(opcoes?)`           | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number }` | `Resultado<Partida>`                | Novo governo                          |
-| `mudarLei(partida, leiId, nivel)` | id da lei e o nível (para leis com opções, o `valor` da opção)    | `Resultado<Partida>`                | Jogador escolheu uma opção ou valor   |
-| `encerrarTurno(partida)`          | —                                                                 | `Resultado<{ partida, relatorio }>` | Botão "Encerrar turno" (um trimestre) |
-| `verPartida(partida)`             | —                                                                 | `VisaoPartida`                      | Sempre que for desenhar               |
+| Função                                          | Entrada                                                           | Devolve                             | Quando usar                           |
+| ----------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------- | ------------------------------------- |
+| `criarPartida(opcoes?)`                         | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number }` | `Resultado<Partida>`                | Novo governo                          |
+| `mudarLei(partida, leiId, nivel)`               | id da lei e o nível (para leis com opções, o `valor` da opção)    | `Resultado<Partida>`                | Jogador escolheu uma opção ou valor   |
+| `encerrarTurno(partida)`                        | —                                                                 | `Resultado<{ partida, relatorio }>` | Botão "Encerrar turno" (um trimestre) |
+| `verPartida(partida)`                           | —                                                                 | `VisaoPartida`                      | Sempre que for desenhar               |
+| `preverLei(partida, leiId, nivel, trimestres?)` | id da lei e o nível que o jogador está considerando               | `Resultado<PrevisaoLei>`            | Prévia antes de aplicar a mudança     |
 
 `Resultado<T>` é `{ ok: true, value }` ou `{ ok: false, erros: string[] }`.
 Erros são frases prontas para mostrar ao jogador.
@@ -27,13 +28,18 @@ e descarte a anterior (ou guarde para "desfazer").
   tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a
   mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`),
-  `opcaoAtual`, `gastoAnual`.
+  `opcaoAtual`, `gastoAnual`, `processo` (`emenda-constitucional`,
+  `lei-ordinaria`, `execucao-programa-autorizado`…). A tela põe as leis de
+  emenda constitucional também na área da Presidência.
 - `bolhas[]`: `id`, `nome`, `tipo` (calculado = índice, estoque = bolha lenta,
   situacao, evento), `unidade`, `area`, `avaliacao` (maior_melhor,
-  maior_pior, neutra), `valor`.
+  maior_pior, neutra), `valor`, `minimo` e `maximo` (escala do domínio) e,
+  nas situações, `surgimento`.
 - `ligacoes[]`: `origem` (id de lei ou de bolha), `alvo` (id de bolha, ou
   `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
-  convertido para meses).
+  convertido para meses; o conteúdo da partida já é mensal, então é o próprio
+  `atrasoPassos` — até 10/out saía multiplicado por 3 por engano), `mecanismo`
+  (`afim` ou `limiar`).
 
 `ministerios[]` é a lista de áreas ministeriais relacionadas à lei; no conteúdo
 atual, cada lei informa uma. A interface mantém um único nó mesmo quando a
@@ -47,6 +53,13 @@ como indisponível até esses dados entrarem no contrato.
 O `relatorio` de `encerrarTurno` traz `turno`, `receita`, `gastoPrimario`,
 `juros`, `resultado` e `mudancas[]` (as 15 bolhas que mais mudaram, com
 `antes` e `depois`).
+
+A `PrevisaoLei` de `preverLei` simula `trimestres` turnos (padrão 1; a tela
+usa 4 = um ano) e traz `implantacao` (o nível em funcionamento ao fim de
+cada mês) e `efeitos[]`: para cada bolha que muda,
+`atual`, `semMudanca[]` e `comMudanca[]` (um valor por mês). A diferença entre os dois é o
+efeito da lei; os atrasos aparecem como meses sem diferença. Nada é gravado
+na partida. A prévia supõe que a mudança vale na hora, como no modo `teste`.
 
 ## Exemplo
 
@@ -83,6 +96,5 @@ if (passou.ok) {
 
 ## Estado atual
 
-`src/lawMapDemo.ts` já cria a partida, muda leis e passa o turno por esta
-API, mas ainda lê alguns tipos do motor para desenhar (herança do
-laboratório). Ao refazer a tela, use só `verPartida`.
+A tela principal (`src/ui/mapa/`, ver o README da pasta) usa só esta API.
+`src/lawMapDemo.ts` foi removido em 10/out.

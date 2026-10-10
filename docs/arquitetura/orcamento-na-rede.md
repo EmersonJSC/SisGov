@@ -1,0 +1,116 @@
+# Orçamento na rede
+
+**Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-49).
+Implementação no chamado SG157, por fases.
+
+## A ideia
+
+O jogo inteiro é a movimentação do grafo. O orçamento não é um sistema ao
+lado da rede: **é parte dela**.
+
+- **Quanto o país arrecada** é a soma das bolhas que geram receita: impostos,
+  estatais, royalties, apostas…
+- **Quanto o país gasta** é a soma das bolhas que custam: piso da educação,
+  câmeras corporais, seguro-desemprego, folha do funcionalismo…
+- **Os juros da dívida** são uma bolha como as outras: incham quando a dívida
+  ou a taxa sobem e, quando ficam altos demais, viram uma situação que pisca.
+- **O resultado** de cada mês é receita − gasto − juros. O foco do jogo é o
+  equilíbrio entre **superávit** e **déficit**.
+- **A dívida** é uma bolha lenta (estoque): o déficit soma, o superávit abate.
+- **O caixa não é o centro.** Ele só aparece depois que a dívida acaba: aí o
+  superávit vai para um cofre, que pode ser emprestado (efeito no PIB a
+  estudar, fase 4).
+
+Para o jogador, os estados e municípios ficam implícitos: existe um governo
+só, com números coerentes entre si.
+
+## Como o Democracy 4 faz (referência, não modelo)
+
+Nos dados de exemplo (`docs/Exemplos/simulation/policies.csv`), cada política
+tem custo e/ou receita entre um mínimo e um máximo conforme o nível, e esse
+valor é multiplicado pelo estado do país: o seguro-desemprego custa mais com
+desemprego alto; o imposto de renda arrecada mais com PIB alto e emprego
+alto. Orçamento = receitas − custos − juros; o déficit vira dívida. Não há
+cofre. O SisGov segue a mesma lógica, mas com tudo visível como bolha e
+explicável pelas setas.
+
+## Como está hoje (10/out)
+
+| Peça                                         | Hoje                                                               | Problema                                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| Receita                                      | 93% vem do agregado "impostos ainda não modelados" (2,05 tri)      | as 8 leis de imposto não arrecadam                                                    |
+| Gasto                                        | 9 leis de gasto + agregado "previdência" (950 bi)                  | custo das opções (câmeras etc.) não entra; leis de gasto em escala de União + estados |
+| Juros                                        | fórmula fixa no módulo fiscal                                      | não é bolha                                                                           |
+| Dívida                                       | duas: `divida_publica` (bolha, % do PIB) e `fiscal.totalDebt` (R$) | dois números para a mesma coisa                                                       |
+| Caixa                                        | gasta até zerar e só então emite dívida                            | o jogador vê o caixa "zerar em 3 turnos"                                              |
+| Arrecadação, gasto público, resultado fiscal | bolhas calculadas por pesos                                        | separadas da conta de verdade                                                         |
+
+## Os nós do orçamento
+
+Todos em R$ por ano (`moeda_ano`), visíveis no mapa como bolhas:
+
+| Nó               | Tipo     | Recebe de                                                                                                                                                           |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Receita          | índice   | cada imposto: alíquota × base (consumo, renda, emprego, lucro); estatais, royalties, apostas                                                                        |
+| Gasto            | índice   | leis de gasto (o nível é o gasto); custo de cada opção das outras leis; custos que reagem (seguro × desemprego, previdência × envelhecimento, folha × estabilidade) |
+| Juros da dívida  | índice   | taxa de juros × dívida                                                                                                                                              |
+| Resultado        | índice   | receita (+), gasto (−), juros (−)                                                                                                                                   |
+| Dívida pública   | estoque  | resultado: déficit soma, superávit abate; mínimo 0                                                                                                                  |
+| Juros explosivos | situação | juros ÷ receita acima de um ponto: surge e pisca                                                                                                                    |
+| Cofre (fase 4)   | estoque  | superávit quando a dívida é zero                                                                                                                                    |
+
+As bolhas de hoje que medem o mesmo (`arrecadacao`, `gasto_publico`,
+`resultado_fiscal`, `juros_da_divida`, `divida_publica`) passam a ser estas,
+em vez de existirem em paralelo. As consequências que liam essas bolhas em
+% do PIB passam a ler a razão pelo PIB (`normalizacao`).
+
+## O que o motor precisa
+
+Um único recurso novo: **produto entre dois nós** (alíquota × base,
+taxa × dívida). Proposta: estender a `normalizacao`, que já divide a origem
+por outro nó, para também multiplicar:
+
+```json
+"normalizacao": { "fator": "consumo", "multiplicador": 0.01 }
+```
+
+A entrada vira `origem × fator × multiplicador`. Continua determinístico,
+explicável (a explicação registra o fator) e vale para qualquer país (D-39).
+Estoque em moeda já existe (`updateStock`, taxa `moeda_por_passo`).
+
+O módulo fiscal (`domain/fiscal`, `GameState.fiscal`) deixa de fazer a conta:
+o turno lê dívida e resultado da rede. O código fica até a fase 1 provar
+que a rede fecha a mesma conta; depois sai.
+
+## Tela
+
+- Barra superior: **Receita · Gasto · Superávit/Déficit · Dívida** (o caixa
+  sai; aparece só quando houver cofre).
+- Cada lei mostra no mapa e no documento quanto arrecada (+R$) ou custa
+  (−R$) por ano e por mês (D-28).
+- O relatório de impacto mostra o efeito no resultado antes de assinar.
+- Juros incham e desincham; a situação "Juros explosivos" pisca.
+
+## Fases (SG157)
+
+1. **Motor e esqueleto.** Produto entre nós; nós de receita, gasto, juros,
+   resultado e dívida em R$; leis de gasto e impostos ligados; agregados
+   removidos; o turno lê a dívida da rede; nova barra superior.
+   _Aceite:_ subir a alíquota do IVA aumenta a receita no mesmo turno; queda
+   do consumo reduz a receita nos turnos seguintes; o déficit soma na dívida
+   e o superávit abate.
+2. **Custos de todas as leis.** Custo por opção (SG138), custos que reagem
+   (seguro-desemprego, previdência, folha), estatais e royalties.
+3. **Calibração do Brasil.** Receita ≈ 18% do PIB, gasto ≈ 19%, juros ≈ 7,5%:
+   o jogo começa com déficit de uns 8% do PIB, o primeiro problema a
+   resolver. Situação de juros explosivos. Estabilidade: 8 turnos sem ação
+   mudam pouco.
+4. **Cofre e empréstimos (estudo).** O que fazer com superávit quando a
+   dívida acaba; efeito de emprestar no PIB.
+
+## Questões abertas
+
+- PIB em R$ como nó (hoje o PIB da rede é um índice 0–100 e o PIB em R$ é
+  fixo): necessário para "% do PIB" mudar com a economia. Proposta: fase 3.
+- Pisos da saúde e da educação como % da receita (D-25) dentro da rede:
+  o piso lê a receita (produto), então gasto acompanha a arrecadação.

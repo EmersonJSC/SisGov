@@ -3,6 +3,7 @@ import {
   criarPartida,
   encerrarTurno,
   mudarLei,
+  preverLei,
   verPartida,
   type Partida,
 } from "../app/partida";
@@ -68,4 +69,51 @@ it("mudar uma lei anda até a meta aos poucos e muda as bolhas ligadas", () => {
 it("recusa lei inexistente", () => {
   const resultado = mudarLei(nova(), "lei-que-nao-existe", 10);
   expect(resultado.ok).toBe(false);
+});
+
+it("a prévia mostra os três meses com e sem a mudança, sem gravar nada", () => {
+  const partida = nova();
+  const antes = verPartida(partida);
+  const salario = antes.leis.find((lei) => lei.id === "salario-minimo")!;
+  const alto = salario.opcoes!.at(-1)!.valor;
+  const previa = preverLei(partida, "salario-minimo", alto);
+  if (!previa.ok) throw new Error(previa.erros.join(" "));
+  expect(previa.value.implantacao).toHaveLength(3);
+  expect(previa.value.implantacao[2]).toBeGreaterThan(salario.nivel);
+  const renda = previa.value.efeitos.find((e) => e.id === "renda_familias");
+  expect(renda?.comMudanca).toHaveLength(3);
+  expect(renda!.comMudanca[2]).toBeGreaterThan(renda!.semMudanca[2]);
+  // nada foi gravado na partida
+  expect(verPartida(partida)).toEqual(antes);
+  // mesma meta: nenhuma diferença
+  const igual = preverLei(partida, "salario-minimo", salario.meta);
+  if (!igual.ok) throw new Error(igual.erros.join(" "));
+  expect(igual.value.efeitos).toHaveLength(0);
+});
+
+it("o atraso das ligações sai em meses, como no conteúdo mensal", () => {
+  const visao = verPartida(nova());
+  const ligacao = visao.ligacoes.find(
+    (l) => l.id === "salario-minimo--desemprego",
+  );
+  // 4 trimestres na ficha = 12 meses
+  expect(ligacao?.atrasoMeses).toBe(12);
+  const lei = visao.leis.find((l) => l.id === "reeleicao");
+  expect(lei?.processo).toBe("emenda-constitucional");
+});
+
+it("a prévia de um ano mostra efeitos que só chegam depois do primeiro turno", () => {
+  const partida = nova();
+  const previa = preverLei(partida, "politica-de-imigracao", 0, 4);
+  if (!previa.ok) throw new Error(previa.erros.join(" "));
+  expect(previa.value.implantacao).toHaveLength(12);
+  const crise = previa.value.efeitos.find((e) => e.id === "crise_migratoria");
+  expect(crise?.comMudanca).toHaveLength(12);
+  // ainda nada no primeiro turno; diferença clara em um ano
+  expect(Math.abs(crise!.comMudanca[2] - crise!.semMudanca[2])).toBeLessThan(
+    1e-6,
+  );
+  expect(
+    Math.abs(crise!.comMudanca[11] - crise!.semMudanca[11]),
+  ).toBeGreaterThan(0.5);
 });
