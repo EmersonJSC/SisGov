@@ -46,6 +46,8 @@ export type VisaoLei = Readonly<{
   descricao: string;
   grupo: "orcamentaria" | "regulatoria" | "tributaria" | "institucional";
   area: string;
+  /** Ministérios a que esta política pertence; hoje o conteúdo expõe um. */
+  ministerios: readonly string[];
   ministerio: string;
   /** Nível que já está funcionando (anda até a meta mês a mês). */
   nivel: number;
@@ -76,6 +78,8 @@ export type VisaoLigacao = Readonly<{
   origem: string;
   alvo: string;
   sinal: 1 | -1;
+  /** Atraso declarado no conteúdo, convertido para meses. */
+  atrasoMeses: number;
 }>;
 
 export type VisaoPartida = Readonly<{
@@ -263,6 +267,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       grupo: policy.grupo,
       area: policy.area ?? "",
       ministerio: policy.ministerio ?? policy.area ?? "",
+      ministerios: [policy.ministerio ?? policy.area ?? ""].filter(Boolean),
       nivel,
       meta: state?.desiredLevel ?? nivel,
       minimo: variable?.dominio.minimo,
@@ -297,6 +302,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       origem: controlToLaw.get(consequence.origem) ?? consequence.origem,
       alvo: consequence.alvo,
       sinal: (coefficient < 0 ? -1 : 1) as 1 | -1,
+      atrasoMeses: consequence.atrasoPassos * 3,
     };
   });
   return {

@@ -2,1562 +2,724 @@ import {
   criarPartida,
   encerrarTurno,
   mudarLei,
+  verPartida,
   type Partida,
+  type RelatorioTurno,
 } from "./app/partida";
-import { appendTurnLog, type TurnLogEntry } from "./game/turnJournal";
-import { TurnLogPanel } from "./ui/TurnLogPanel";
-import { MapPhysics } from "./mapPhysics";
-import { createElement } from "react";
-import { createRoot } from "react-dom/client";
-import { MapFilters } from "./ui/MapFilters";
-import {
-  measureInfluence,
-  measureFinances,
-  sizeMap,
-  MAP_PIXELS_PER_UNIT,
-  MIN_NODE_DIAMETER,
-  type MapFilter,
-} from "./mapMetrics";
-// Símbolos locais: o JSON escolhe uma chave, nunca HTML ou URL executável.
-import fallbackIcon from "./assets/svg/landmark.svg";
-const policyIcons = import.meta.glob<string>("./assets/svg/**/*.svg", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
-import {
-  buildInfluenceLayout,
-  type VisualMapDefinition,
-} from "./influenceLayout";
-import { relationPath } from "./relationPaths";
-import {
-  evaluateSituation,
-  type EngineExecution,
-  type PolicyFile,
-  type ResolvedPackage,
-  type ScenarioGraph,
-} from "./engine";
-import { brazilVisualMap } from "./scenarios/brazilMap";
 
-const stage = document.querySelector<HTMLElement>("#law-stage")!;
-const editor = document.querySelector<HTMLDialogElement>("#law-editor")!;
-const turn = document.querySelector<HTMLElement>("#turn")!;
-const quarter = document.querySelector<HTMLElement>("#quarter")!;
-const pendingLabel = document.querySelector<HTMLElement>("#pending")!;
-const indicatorCard = document.querySelector<HTMLElement>("#indicator-card")!;
-const advanceButton = document.querySelector<HTMLButtonElement>("#advance")!;
-const resetButton = document.querySelector<HTMLButtonElement>("#reset")!;
-const zoomInButton = document.querySelector<HTMLButtonElement>("#zoom-in")!;
-const zoomOutButton = document.querySelector<HTMLButtonElement>("#zoom-out")!;
-const format = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
-const coefficientFormat = new Intl.NumberFormat("pt-BR", {
-  maximumFractionDigits: 2,
-});
-
-type MapState = {
-  content: ResolvedPackage;
-  graph: ScenarioGraph;
-  execution: EngineExecution;
-  pending: Map<string, number>;
-  targets: Map<string, number>;
-  selectedPolicyId: string;
-  selectedIndicatorId: string;
-  activeSituationIds: Set<string>;
-  occurredEventIds: Set<string>;
-  visualMap: VisualMapDefinition;
-};
-
-const categoryStyle: Record<
-  string,
-  { color: string; halo: string; background: string; border: string }
-> = {
-  Saúde: {
-    color: "#2f7c63",
-    halo: "rgb(47 124 99 / 12%)",
-    background: "#f5fbf8",
-    border: "#cfe7dc",
-  },
-  Segurança: {
-    color: "#416b9c",
-    halo: "rgb(65 107 156 / 12%)",
-    background: "#f5f8fc",
-    border: "#d2dfed",
-  },
-  Mulheres: {
-    color: "#9b5276",
-    halo: "rgb(155 82 118 / 12%)",
-    background: "#fdf7fa",
-    border: "#efd7e2",
-  },
-  Educação: {
-    color: "#7456c7",
-    halo: "rgb(116 86 199 / 12%)",
-    background: "#f8f5ff",
-    border: "#ded5f5",
-  },
-  Fazenda: {
-    color: "#2879bd",
-    halo: "rgb(40 121 189 / 12%)",
-    background: "#f3f8fd",
-    border: "#cbdff0",
-  },
-  Economia: {
-    color: "#2879bd",
-    halo: "rgb(40 121 189 / 12%)",
-    background: "#f3f8fd",
-    border: "#cbdff0",
-  },
-  Transportes: {
-    color: "#23956f",
-    halo: "rgb(35 149 111 / 12%)",
-    background: "#f1fbf7",
-    border: "#c8e9dc",
-  },
-  "Desenvolvimento Social": {
-    color: "#db783c",
-    halo: "rgb(219 120 60 / 12%)",
-    background: "#fff7f1",
-    border: "#f1d5c4",
-  },
-};
-
-let mapState: MapState | undefined;
-/** A partida vive na camada de aplicação; a tela só guarda a referência. */
-let partida: Partida | undefined;
-
-function restartPartida(): void {
-  const criada = criarPartida();
-  if (!criada.ok) throw new Error(criada.erros.join(" "));
-  partida = criada.value;
-  if (mapState) mapState.execution = partida.game.execution;
-}
-let processing = false;
-let activeFilter: MapFilter = "influence";
-let cachedLayout: ReturnType<typeof buildInfluenceLayout> | undefined;
-let physics: MapPhysics | undefined;
-let animationFrame = 0;
-let pinnedRelationId: string | undefined;
-let latestMapBounds = { minX: 0, minY: 0, maxX: 100, maxY: 100 };
-
-const journalRoot = createRoot(document.getElementById("turn-journal")!);
-let journal: readonly TurnLogEntry[] = [];
-
-function relationPathForNodes(
-  originId: string,
-  targetId: string,
-  origin: { x: number; y: number },
-  target: { x: number; y: number },
-  parallelIndex = 0,
-  parallelCount = 1,
-  preferredSide = 1,
-): string {
-  return relationPath(
-    origin,
-    target,
-    parallelIndex,
-    parallelCount,
-    (physics?.bodies.get(originId)?.radius ?? 0) + 0.4,
-    (physics?.bodies.get(targetId)?.radius ?? 0) + 0.4,
-    preferredSide,
-  );
-}
-
-function relationCurveSide(originId: string, targetId: string): 1 | -1 {
-  let value = 0;
-  for (const character of `${originId}\u0000${targetId}`)
-    value = (value * 31 + character.charCodeAt(0)) >>> 0;
-  return value % 2 === 0 ? 1 : -1;
-}
-
-function clearerCurveSide(
-  originId: string,
-  targetId: string,
-  origin: { x: number; y: number },
-  target: { x: number; y: number },
-  positions: ReadonlyMap<string, { x: number; y: number }>,
-): 1 | -1 {
-  const dx = target.x - origin.x;
-  const dy = target.y - origin.y;
-  const distance = Math.hypot(dx, dy);
-  if (distance < 0.001) return relationCurveSide(originId, targetId);
-  const bend = Math.max(1.8, Math.min(11, distance * 0.18));
-  const midpoint = {
-    x: (origin.x + target.x) / 2,
-    y: (origin.y + target.y) / 2,
-  };
-  const fallback = relationCurveSide(originId, targetId);
-  const score = (side: 1 | -1) => {
-    const control = {
-      x: midpoint.x - (dy / distance) * bend * side,
-      y: midpoint.y + (dx / distance) * bend * side,
-    };
-    let penalty = 0;
-    for (const t of [0.2, 0.35, 0.5, 0.65, 0.8]) {
-      const inverse = 1 - t;
-      const point = {
-        x:
-          inverse * inverse * origin.x +
-          2 * inverse * t * control.x +
-          t * t * target.x,
-        y:
-          inverse * inverse * origin.y +
-          2 * inverse * t * control.y +
-          t * t * target.y,
-      };
-      for (const [id, obstacle] of positions) {
-        if (id === originId || id === targetId) continue;
-        const radius = (physics?.bodies.get(id)?.radius ?? 0) + 1;
-        const clearance =
-          Math.hypot(point.x - obstacle.x, point.y - obstacle.y) - radius;
-        penalty +=
-          clearance <= 0
-            ? 10_000 - clearance * 100
-            : 1 / (clearance * clearance);
-      }
-    }
-    return penalty;
-  };
-  const left = score(-1);
-  const right = score(1);
-  if (Math.abs(left - right) < 0.01) return fallback;
-  return left < right ? -1 : 1;
-}
-function recordLog(
-  level: TurnLogEntry["level"],
-  title: string,
-  details: readonly string[] = [],
-  time: { turn?: number; month?: number; period?: TurnLogEntry["period"] } = {},
-): void {
-  journal = appendTurnLog(journal, {
-    turn: time.turn ?? Math.floor((mapState?.execution.step ?? 0) / 3),
-    ...(time.month === undefined ? {} : { month: time.month }),
-    ...(time.period === undefined ? {} : { period: time.period }),
-    level,
-    title,
-    details,
-  });
-  journalRoot.render(createElement(TurnLogPanel, { entries: journal }));
-}
-
-function updateSituations(): void {
-  if (!mapState) return;
-  for (const situation of mapState.content.situations) {
-    if (!situation.entraQuando || !situation.saiQuando) continue;
-    const result = evaluateSituation(
-      {
-        id: situation.id,
-        enterWhen: situation.entraQuando,
-        exitWhen: situation.saiQuando,
-      },
-      mapState.activeSituationIds.has(situation.id),
-      mapState.execution.values,
-    );
-    if (!result.ok) continue;
-    if (result.value) mapState.activeSituationIds.add(situation.id);
-    else mapState.activeSituationIds.delete(situation.id);
-  }
-}
-
-function showNotice(message: string): void {
-  stage.querySelector(".notice")?.remove();
-  const notice = document.createElement("div");
-  notice.className = "notice";
-  notice.textContent = message;
-  stage.append(notice);
-}
-
-function targetReading(targetId: string): string {
-  const evaluation = mapState?.graph.nodesById[targetId]?.avaliacao;
-  if (evaluation === "maior_melhor") return "quanto maior, melhor";
-  if (evaluation === "maior_pior") return "quanto menor, melhor";
-  return "sem direção de melhoria definida";
-}
-
-function setRelationHighlight(nodeId?: string): void {
-  const feedback = stage.querySelector<HTMLElement>(".relation-feedback");
-  const paths = stage.querySelectorAll<SVGPathElement>(
-    ".law-lines path.relation, .law-lines path.condition",
-  );
-  for (const path of paths) {
-    const related =
-      Boolean(nodeId) &&
-      (path.dataset.origin === nodeId || path.dataset.target === nodeId);
-    path.classList.toggle("visible", related);
-  }
-  stage
-    .querySelectorAll<HTMLElement>(".map-node")
-    .forEach((node) =>
-      node.classList.toggle("relation-focus", node.dataset.nodeId === nodeId),
-    );
-  if (!feedback) return;
-  if (!nodeId || !mapState) {
-    feedback.hidden = true;
-    feedback.replaceChildren();
-    return;
-  }
-  const relations = mapState.graph.relations.filter(
-    (relation) => relation.originId === nodeId || relation.targetId === nodeId,
-  );
-  const entries = relations.map((relation) => {
-    const outgoing = relation.originId === nodeId;
-    const targetId = outgoing ? relation.targetId : relation.originId;
-    const target = mapState!.graph.nodesById[targetId];
-    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
-    const direction = rises ? "↑ aumenta" : "↓ reduz";
-    const reading = outgoing ? targetReading(targetId) : "relação de entrada";
-    return `${direction} ${target?.nome ?? targetId} · ${reading}`;
-  });
-  feedback.hidden = entries.length === 0;
-  feedback.replaceChildren(
-    ...entries.map((entry) => {
-      const line = document.createElement("span");
-      line.textContent = entry;
-      return line;
-    }),
-  );
-}
-
-const currentInfluence = measureInfluence;
-
-function formatMoney(value: number): string {
-  if (Math.abs(value) >= 1_000)
-    return `R$ ${format.format(value / 1_000)} bi/ano`;
-  return `R$ ${format.format(value)} mi/ano`;
-}
-
-function compactControlLabel(policy: PolicyFile, value: number): string {
-  if (policy.controle.unidade === "moeda_milhoes_2024_ano") {
-    if (Math.abs(value) >= 1_000)
-      return `R$ ${format.format(value / 1_000)} bi`;
-    return `R$ ${format.format(value)} mi`;
-  }
-  return controlLabel(policy, value);
-}
-
-function controlLabel(policy: PolicyFile, value: number): string {
-  if (policy.controle.unidade === "moeda_milhoes_2024_ano")
-    return formatMoney(value);
-  const options = policy.controle.opcoes;
-  if (options?.length) {
-    const nearest = [...options].sort(
-      (left, right) =>
-        Math.abs(left.valor - value) - Math.abs(right.valor - value),
-    )[0];
-    return nearest.rotulo;
-  }
-  return format.format(value);
-}
-
-function abbreviation(name: string): string {
-  const relevant = name
-    .split(/\s+/)
-    .filter(
-      (word) =>
-        !["de", "da", "do", "das", "dos", "à", "e"].includes(
-          word.toLowerCase(),
-        ),
-    )
-    .slice(0, 2);
-  return relevant
-    .map((word) => `${word.slice(0, 4)}.`)
-    .join(" ")
-    .toUpperCase();
-}
-
-function consequenceTone(
-  targetId: string,
-  coefficient: number,
-): "positive" | "negative" | "neutral" {
-  const evaluation = mapState?.graph.nodesById[targetId]?.avaliacao ?? "neutra";
-  if (evaluation === "neutra") return "neutral";
-  const favorable =
-    evaluation === "maior_melhor" ? coefficient >= 0 : coefficient < 0;
-  return favorable ? "positive" : "negative";
-}
-
-function renderEditor(policy: PolicyFile): void {
-  if (!mapState) return;
-  editor.innerHTML = "";
-  const close = document.createElement("button");
-  close.className = "dialog-close";
-  close.type = "button";
-  close.setAttribute("aria-label", "Fechar");
-  close.textContent = "×";
-  close.addEventListener("click", () => editor.close());
-  const info = document.createElement("div");
-  info.className = "dialog-copy";
-  const eyebrow = document.createElement("span");
-  eyebrow.className = "dialog-eyebrow";
-  eyebrow.textContent = `POLÍTICA PÚBLICA · ${policy.tipo.toUpperCase()} · ${policy.area ?? policy.categoria ?? "OUTRAS"}`;
-  const title = document.createElement("h2");
-  title.textContent = policy.nome;
-  const description = document.createElement("p");
-  description.textContent = policy.descricao;
-  info.append(eyebrow, title, description);
-  const timing = document.createElement("p");
-  timing.textContent = `Em funcionamento: ${controlLabel(policy, mapState.execution.values[policy.controle.variavel])}. A meta é aplicada gradualmente: implantação e degradação têm ritmos próprios.`;
-  info.append(timing);
-  if (policy.fonte) {
-    const source = document.createElement("a");
-    source.className = "source";
-    source.href = policy.fonte;
-    source.target = "_blank";
-    source.rel = "noreferrer";
-    source.textContent = "Consultar texto oficial";
-    info.append(document.createElement("br"), source);
-  }
-
-  const current = mapState.execution.values[policy.controle.variavel];
-  const prepared =
-    mapState.pending.get(policy.id) ??
-    mapState.targets.get(policy.id) ??
-    current;
-  const control = mapState.graph.nodesById[policy.controle.variavel];
-  const label = document.createElement(
-    policy.controle.opcoes?.length ? "div" : "label",
-  );
-  label.className = "control-decision";
-  const labelText = document.createElement("span");
-  labelText.textContent = `Decisão desejada: ${controlLabel(policy, prepared)}`;
-  let selectedValue = prepared;
-  if (policy.controle.opcoes?.length) {
-    const choices = document.createElement("div");
-    choices.className = "scope-choices";
-    for (const option of policy.controle.opcoes) {
-      const choice = document.createElement("button");
-      choice.type = "button";
-      choice.textContent = option.rotulo;
-      choice.classList.toggle("selected", option.valor === prepared);
-      choice.addEventListener("click", () => {
-        selectedValue = option.valor;
-        labelText.textContent = `Decisão desejada: ${option.rotulo}`;
-        choices
-          .querySelectorAll("button")
-          .forEach((button) =>
-            button.classList.toggle("selected", button === choice),
-          );
-      });
-      choices.append(choice);
-    }
-    label.append(labelText, choices);
-  } else {
-    const slider = document.createElement("input");
-    slider.type = "range";
-    slider.min = String(control.dominio.minimo ?? 0);
-    slider.max = String(control.dominio.maximo ?? 100);
-    slider.step =
-      policy.controle.unidade === "moeda_milhoes_2024_ano" ? "10" : "1";
-    slider.value = String(prepared);
-    slider.addEventListener("input", () => {
-      selectedValue = slider.valueAsNumber;
-      labelText.textContent = `Decisão desejada: ${controlLabel(policy, selectedValue)}`;
-    });
-    label.append(labelText, slider);
-  }
-
-  const effects = document.createElement("div");
-  effects.className = "effects";
-  const effectsTitle = document.createElement("h3");
-  effectsTitle.textContent = "Consequências desta política";
-  effects.append(effectsTitle);
-  for (const relation of mapState.graph.relations.filter(
-    (item) => item.sourceId === policy.id,
-  )) {
-    const target = mapState.graph.nodesById[relation.targetId];
-    const item = document.createElement("div");
-    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
-    item.className = `effect ${consequenceTone(relation.targetId, relation.parameters.coeficiente ?? 0)}`;
-    item.innerHTML = `<strong>${rises ? "↑" : "↓"} ${target.nome}</strong><span>${rises ? "aumenta" : "diminui"} conforme a implementação · peso ${coefficientFormat.format(Math.abs(relation.parameters.coeficiente ?? 0))}</span>`;
-    effects.append(item);
-  }
-
-  const prepare = document.createElement("button");
-  prepare.type = "button";
-  prepare.textContent = "Preparar mudança";
-  prepare.addEventListener("click", () => {
-    mapState?.pending.set(policy.id, selectedValue);
-    recordLog("info", `Mudança preparada: ${policy.nome}`, [
-      `Meta: ${controlLabel(policy, selectedValue)}.`,
-      "Será aplicada gradualmente ao avançar. Preparar não altera o turno atual.",
-    ]);
-    editor.close();
-    render();
-  });
-  const controls = document.createElement("div");
-  controls.className = "policy-controls";
-  controls.append(label, prepare);
-  editor.append(close, info, effects, controls);
-  if (!editor.open) editor.showModal();
-}
-
-function updateIndicatorCard(): void {
-  if (!mapState) return;
-  const { content, graph, execution, selectedIndicatorId } = mapState;
-  const indicator = graph.nodesById[selectedIndicatorId];
-  if (!indicator) return;
-  const incoming = graph.relations.filter(
-    (relation) => relation.targetId === selectedIndicatorId,
-  );
-  const outgoing = graph.relations.filter(
-    (relation) => relation.originId === selectedIndicatorId,
-  );
-  const sourceNames = [
-    ...new Set(incoming.map((relation) => relation.sourceId)),
-  ].map(
-    (id) =>
-      content.policies.find((item) => item.id === id)?.nome ??
-      content.events.find((item) => item.id === id)?.nome ??
-      content.situations.find((item) => item.id === id)?.nome ??
-      content.dilemmas.find((item) => item.id === id)?.nome ??
-      id,
-  );
-  const targetNames = [
-    ...new Set(outgoing.map((relation) => relation.targetId)),
-  ].map((id) => graph.nodesById[id]?.nome ?? id);
-  const summarizeNames = (names: string[]) =>
-    `${names.slice(0, 3).join(", ")}${names.length > 3 ? ` e mais ${names.length - 3}` : ""}`;
-  const eyebrow = document.createElement("span");
-  eyebrow.className = "indicator-card__eyebrow";
-  eyebrow.textContent = `INDICADOR · ${indicator.area ?? "OUTRAS"}`;
-  const title = document.createElement("h2");
-  title.className = "indicator-card__title";
-  title.textContent = indicator.nome;
-  const value = document.createElement("div");
-  value.className = "indicator-card__value";
-  value.textContent = format.format(execution.values[selectedIndicatorId]);
-  const unit = document.createElement("small");
-  unit.textContent = indicator.unidade.replaceAll("_", " ");
-  value.append(unit);
-  const description = document.createElement("p");
-  description.className = "indicator-card__description";
-  description.textContent = `${indicator.nome} é um resultado demonstrativo de ${indicator.area ?? "abrangência nacional"}; seu valor responde às políticas e situações conectadas, não a um controle direto do jogador.`;
-  const relevance = document.createElement("div");
-  relevance.className = "indicator-card__relevance";
-  const relevanceTitle = document.createElement("strong");
-  relevanceTitle.textContent = "Relevância estrutural";
-  const relevanceSummary = document.createElement("span");
-  relevanceSummary.textContent = [
-    sourceNames.length
-      ? `Recebe influência de ${summarizeNames(sourceNames)}`
-      : "Sem influências diretas",
-    targetNames.length
-      ? `Conecta-se a ${summarizeNames(targetNames)}`
-      : "Sem destinos diretos",
-  ].join(" · ");
-  relevance.append(relevanceTitle, relevanceSummary);
-  const hint = document.createElement("p");
-  hint.className = "indicator-card__hint";
-  hint.textContent = "Selecione outro indicador para comparar sua estrutura.";
-  indicatorCard.replaceChildren(
-    eyebrow,
-    title,
-    value,
-    description,
-    relevance,
-    hint,
-  );
-}
-
-function openSituation(situationId: string): void {
-  if (!mapState) return;
-  const situation = mapState.content.situations.find(
-    (item) => item.id === situationId,
-  )!;
-  const active = mapState.activeSituationIds.has(situation.id);
-  const source = situation.entraQuando
-    ? mapState.graph.nodesById[situation.entraQuando.variavel]
-    : undefined;
-  editor.innerHTML = `<button class="dialog-close" type="button" aria-label="Fechar">×</button><div class="dialog-copy"><span class="dialog-eyebrow">SITUAÇÃO ${situation.avaliacao === "positiva" ? "POSITIVA" : "NEGATIVA"} · ${situation.area ?? "OUTRAS"}</span><h2>${situation.nome}</h2><p>${situation.descricao ?? ""}</p><p class="status ${active ? "active" : ""}">${active ? "ATIVA" : "INATIVA"}</p></div><div class="effects"><h3>Regras de ativação</h3><div class="effect"><strong>Começa</strong><span>${source?.nome ?? "Indicador"} cruza o limite ${format.format(situation.entraQuando?.valor ?? 0)}</span></div><div class="effect"><strong>Termina</strong><span>${source?.nome ?? "Indicador"} cruza o limite ${format.format(situation.saiQuando?.valor ?? 0)}</span></div></div>`;
-  editor
-    .querySelector(".dialog-close")!
-    .addEventListener("click", () => editor.close());
-  if (!editor.open) editor.showModal();
-}
-
-function render(
-  previousValues?: Readonly<Record<string, number>>,
-  previousInfluence?: ReadonlyMap<string, number>,
-): void {
-  if (!mapState) return;
-  const { content, graph, execution, pending } = mapState;
-  const selectedIndicatorId = mapState.selectedIndicatorId;
-  cancelAnimationFrame(animationFrame);
-  stage.innerHTML = "";
-  const completedQuarters = Math.floor(execution.step / 3);
-  turn.textContent = String(completedQuarters + 1);
-  quarter.textContent = String(completedQuarters + 1);
-  pendingLabel.textContent =
-    pending.size === 0
-      ? ""
-      : `${pending.size} ${pending.size === 1 ? "decisão preparada" : "decisões preparadas"}`;
-  const influenceByNode = currentInfluence(graph, execution.values);
-  const influenceMetrics = new Map(
-    [...influenceByNode].map(([id, value]) => [id, { value }]),
-  );
-  const financeMetrics = measureFinances(
-    content,
-    graph,
-    execution.values,
-    mapState.visualMap.financialTargets,
-  );
-  const influenceSizes = sizeMap(content, influenceMetrics);
-  const financeSizes = sizeMap(content, financeMetrics);
-  const metrics =
-    activeFilter === "financial" ? financeMetrics : influenceMetrics;
-  const sizes = activeFilter === "financial" ? financeSizes : influenceSizes;
-  const priorLayout = cachedLayout;
-  const fresh = !physics;
-  physics ??= new MapPhysics(content, mapState.visualMap);
-  const radii = new Map(
-    [...sizes].map(([id, size]) => [id, size / (2 * MAP_PIXELS_PER_UNIT)]),
-  );
-  physics.setMetrics(
-    new Map([...metrics].map(([id, metric]) => [id, metric.value ?? 0])),
-    radii,
-  );
-  if (fresh || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-    physics.settle();
-  cachedLayout = physics.snapshot();
-  const layout = cachedLayout;
-  const { positions, zones, macroAreas, ministryPositions, government } =
-    layout;
-  const horizontal = [
-    government.center.x - government.radius,
-    government.center.x + government.radius,
-    ...macroAreas.flatMap((area) => [
-      area.center.x - area.radiusX,
-      area.center.x + area.radiusX,
-    ]),
-    ...zones.flatMap((zone) => [
-      zone.center.x - zone.radius,
-      zone.center.x + zone.radius,
-    ]),
-    ...[...positions.values()].map((point) => point.x),
-  ];
-  const vertical = [
-    government.center.y - government.radius,
-    government.center.y + government.radius,
-    ...macroAreas.flatMap((area) => [
-      area.center.y - area.radiusY,
-      area.center.y + area.radiusY,
-    ]),
-    ...zones.flatMap((zone) => [
-      zone.center.y - zone.radius,
-      zone.center.y + zone.radius,
-    ]),
-    ...[...positions.values()].map((point) => point.y),
-  ];
-  latestMapBounds = {
-    minX: Math.min(...horizontal) - 3,
-    maxX: Math.max(...horizontal) + 3,
-    minY: Math.min(...vertical) - 3,
-    maxY: Math.max(...vertical) + 3,
-  };
-  const previousLayout = previousInfluence ? priorLayout : undefined;
-  for (const macroArea of macroAreas) {
-    const region = document.createElement("div");
-    region.className = "macro-area-region";
-    region.style.left = `${macroArea.center.x}%`;
-    region.style.top = `${macroArea.center.y}%`;
-    region.style.width = `${macroArea.radiusX * 2}%`;
-    region.style.height = `${macroArea.radiusY * 2}%`;
-    region.style.setProperty("--macro-color", macroArea.color);
-    const label = document.createElement("span");
-    label.textContent = macroArea.name;
-    region.append(label);
-    stage.append(region);
-  }
-  const federal = document.createElement("div");
-  federal.className = "federal-sphere";
-  federal.style.left = `${government.center.x}%`;
-  federal.style.top = `${government.center.y}%`;
-  federal.style.width = `${government.radius * 2}%`;
-  federal.style.height = `${government.radius * 2}%`;
-  const federalLabel = document.createElement("span");
-  federalLabel.textContent = government.name;
-  federal.append(federalLabel);
-  stage.append(federal);
-  for (const zone of zones) {
-    const style = categoryStyle[zone.category] ?? {
-      color: "#6c6677",
-      halo: "rgb(108 102 119 / 12%)",
-      background: "#faf9fb",
-      border: "#dfdbe3",
-    };
-    const element = document.createElement("div");
-    element.className = "category-zone ministry-zone";
-    element.dataset.ministry = zone.ministry;
-    const previousZone = previousLayout?.zones.find(
-      (item) => item.ministry === zone.ministry,
-    );
-    const initialZone = previousZone ?? zone;
-    element.style.left = `${initialZone.center.x}%`;
-    element.style.top = `${initialZone.center.y}%`;
-    element.style.width = `${initialZone.radius * 2}%`;
-    element.style.height = `${initialZone.radius * 2}%`;
-    if (previousZone) {
-      requestAnimationFrame(() => {
-        element.style.left = `${zone.center.x}%`;
-        element.style.top = `${zone.center.y}%`;
-        element.style.width = `${zone.radius * 2}%`;
-        element.style.height = `${zone.radius * 2}%`;
-      });
-    }
-    element.style.setProperty("--category-bg", style.background);
-    element.style.setProperty("--category-border", style.border);
-    element.style.setProperty("--category-color", style.color);
-    stage.append(element);
-  }
-  for (const zone of zones) {
-    const position = ministryPositions.get(zone.ministry);
-    if (!position) continue;
-    const ministry = document.createElement("div");
-    ministry.className = "ministry-node";
-    ministry.dataset.ministry = zone.ministry;
-    ministry.style.left = `${position.x}%`;
-    ministry.style.top = `${zone.center.y - zone.radius + 1.3}%`;
-    ministry.textContent = zone.ministry
-      .replace("Ministério da ", "")
-      .replace("Ministério do ", "")
-      .replace("Ministério de ", "");
-    ministry.style.setProperty(
-      "--category-color",
-      (categoryStyle[zone.category] ?? { color: "#52677c" }).color,
-    );
-    stage.append(ministry);
-  }
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.classList.add("law-lines");
-  svg.setAttribute("viewBox", "0 0 100 100");
-  svg.setAttribute("preserveAspectRatio", "none");
-  // O texto equivalente é apresentado no painel de relação ao focar uma bolinha.
-  svg.setAttribute("aria-hidden", "true");
-  const definitions = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "defs",
-  );
-  definitions.innerHTML =
-    '<marker id="law-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#8da3b7"/></marker><marker id="law-arrow-rise" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#25865a"/></marker><marker id="law-arrow-fall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#be4f4f"/></marker>';
-  svg.append(definitions);
-  const relationPairKey = (originId: string, targetId: string) =>
-    [originId, targetId].sort().join("\u0000");
-  const relationPairCounts = new Map<string, number>();
-  for (const relation of graph.relations) {
-    const originId =
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId;
-    const key = relationPairKey(originId, relation.targetId);
-    relationPairCounts.set(key, (relationPairCounts.get(key) ?? 0) + 1);
-  }
-  const nextRelationPairIndex = new Map<string, number>();
-  const rawStrengths = graph.relations.map(
-    (relation) =>
-      Math.abs(relation.parameters.coeficiente ?? 0) *
-      Math.abs(execution.values[relation.originId] ?? 0),
-  );
-  const maximumStrength = Math.max(...rawStrengths, 0.01);
-  for (const relation of graph.relations) {
-    const origin = positions.get(
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId,
-    );
-    const target = positions.get(relation.targetId);
-    if (!origin || !target) continue;
-    const positionOriginId =
-      relation.sourceType === "situacao"
-        ? relation.sourceId
-        : relation.originId;
-    const pairKey = relationPairKey(positionOriginId, relation.targetId);
-    const parallelIndex = nextRelationPairIndex.get(pairKey) ?? 0;
-    nextRelationPairIndex.set(pairKey, parallelIndex + 1);
-    const curveSide = clearerCurveSide(
-      positionOriginId,
-      relation.targetId,
-      origin,
-      target,
-      positions,
-    );
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const rises = (relation.parameters.coeficiente ?? 0) >= 0;
-    const normalizedStrength = Math.min(
-      1,
-      (Math.abs(relation.parameters.coeficiente ?? 0) *
-        Math.abs(execution.values[relation.originId] ?? 0)) /
-        maximumStrength,
-    );
-    path.setAttribute(
-      "d",
-      relationPathForNodes(
-        positionOriginId,
-        relation.targetId,
-        origin,
-        target,
-        parallelIndex,
-        relationPairCounts.get(pairKey) ?? 1,
-        curveSide,
-      ),
-    );
-    path.setAttribute(
-      "marker-end",
-      rises ? "url(#law-arrow-rise)" : "url(#law-arrow-fall)",
-    );
-    path.dataset.positionOrigin = positionOriginId;
-    path.dataset.origin = relation.originId;
-    path.dataset.target = relation.targetId;
-    path.dataset.parallelIndex = String(parallelIndex);
-    path.dataset.parallelCount = String(relationPairCounts.get(pairKey) ?? 1);
-    path.dataset.curveSide = String(curveSide);
-    path.classList.add("relation", rises ? "rise" : "fall");
-    path.style.setProperty(
-      "--flow-duration",
-      `${2.5 - normalizedStrength * 1.7}s`,
-    );
-    path.style.setProperty(
-      "--flow-width",
-      `${0.22 + normalizedStrength * 0.25}`,
-    );
-    svg.append(path);
-  }
-  for (const situation of content.situations) {
-    const originId = situation.entraQuando?.variavel;
-    if (!originId) continue;
-    const origin = positions.get(originId);
-    const target = positions.get(situation.id);
-    if (!origin || !target) continue;
-    const curveSide = clearerCurveSide(
-      originId,
-      situation.id,
-      origin,
-      target,
-      positions,
-    );
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute(
-      "d",
-      relationPathForNodes(
-        originId,
-        situation.id,
-        origin,
-        target,
-        0,
-        1,
-        curveSide,
-      ),
-    );
-    path.setAttribute("marker-end", "url(#law-arrow)");
-    path.dataset.positionOrigin = originId;
-    path.dataset.origin = originId;
-    path.dataset.target = situation.id;
-    path.dataset.curveSide = String(curveSide);
-    path.classList.add("condition");
-    svg.append(path);
-  }
-  stage.append(svg);
-  const feedback = document.createElement("aside");
-  feedback.className = "relation-feedback";
-  feedback.hidden = true;
-  feedback.setAttribute("aria-live", "polite");
-  stage.append(feedback);
-
-  const addNode = (
-    id: string,
-    name: string,
-    value: number,
-    kind: "policy" | "indicator" | "situation-positive" | "situation-negative",
-    onClick: () => void,
-    category?: string,
-    typeLabel?: string,
-    iconKey?: string,
-    displayedValue = format.format(value),
-  ): void => {
-    const position = positions.get(id);
-    if (!position) return;
-    const previousPosition = previousLayout?.positions.get(id) ?? position;
-    const node = document.createElement("button");
-    node.type = "button";
-    node.className = `map-node ${kind}`;
-    if (kind === "indicator") {
-      node.classList.toggle("selected", id === selectedIndicatorId);
-      node.setAttribute("aria-pressed", String(id === selectedIndicatorId));
-    }
-    node.dataset.nodeId = id;
-    node.style.setProperty(
-      "--orbit-index",
-      String(stage.querySelectorAll(".map-node.policy").length),
-    );
-    node.style.left = `${previousPosition.x}%`;
-    node.style.top = `${previousPosition.y}%`;
-    if (previousLayout) {
-      requestAnimationFrame(() => {
-        node.style.left = `${position.x}%`;
-        node.style.top = `${position.y}%`;
-      });
-    }
-    const finalSize = sizes.get(id) ?? MIN_NODE_DIAMETER;
-    node.style.setProperty("--size", `${finalSize}px`);
-    node.dataset.metric = String(metrics.get(id)?.value ?? "unavailable");
-    node.classList.toggle(
-      "metric-unavailable",
-      activeFilter === "financial" && metrics.get(id)?.value == null,
-    );
-    const style = categoryStyle[category ?? ""];
-    if (style) {
-      node.style.setProperty("--node-color", style.color);
-      node.style.setProperty("--node-halo", style.halo);
-    }
-    const title = document.createElement("span");
-    title.className = "node-name";
-    title.textContent = name;
-    const number = document.createElement("span");
-    number.className = "node-value";
-    number.textContent = displayedValue;
-    const type = document.createElement("span");
-    type.className = "node-type";
-    type.textContent =
-      typeLabel ?? (kind === "indicator" ? "INDICADOR" : "POLÍTICA");
-    if (kind === "policy") {
-      node.setAttribute("aria-label", `${name}, ${displayedValue}`);
-      node.title = name;
-      title.className = "policy-tooltip";
-      title.setAttribute("aria-hidden", "true");
-      if (content.policies.length > 30) {
-        const label = document.createElement("span");
-        label.className = "policy-abbreviation";
-        label.textContent = layout.abbreviations.get(id) ?? abbreviation(name);
-        node.append(label, number, title);
-      } else {
-        const icon = document.createElement("img");
-        icon.className = "policy-icon";
-        icon.src = policyIcons[`./assets/svg/${iconKey}.svg`] ?? fallbackIcon;
-        icon.alt = "";
-        icon.draggable = false;
-        node.append(icon, number, title);
-      }
-    } else node.append(type, title, number);
-    const metric = financeMetrics.get(id);
-    const metricLabel =
-      activeFilter === "financial"
-        ? metric?.value == null
-          ? "Sem métrica financeira"
-          : `Volume financeiro: ${formatMoney(metric.value)}`
-        : `Força direta estimada: ${new Intl.NumberFormat("pt-BR", { maximumSignificantDigits: 3 }).format(influenceByNode.get(id) ?? 0)}`;
-    node.title = `${name} · ${metricLabel}`;
-    node.setAttribute(
-      "aria-label",
-      `${name}, ${displayedValue}. ${metricLabel}`,
-    );
-    if (
-      activeFilter === "financial" &&
-      kind === "policy" &&
-      metric?.value != null
-    ) {
-      number.textContent = `${metric.income ? "↑" : ""}${metric.expense ? "↓" : ""} ${format.format(metric.value)} mi`;
-    }
-    const previous = previousValues?.[id];
-    const delta = previous === undefined ? 0 : value - previous;
-    if (delta !== 0) {
-      const badge = document.createElement("span");
-      badge.className = `node-delta${delta < 0 ? " negative" : ""}`;
-      badge.textContent = `${delta > 0 ? "+" : ""}${format.format(delta)}`;
-      node.append(badge);
-    }
-    node.addEventListener("pointerenter", () => setRelationHighlight(id));
-    node.addEventListener("pointerleave", () =>
-      setRelationHighlight(pinnedRelationId),
-    );
-    node.addEventListener("focus", () => setRelationHighlight(id));
-    node.addEventListener("blur", () => setRelationHighlight(pinnedRelationId));
-    node.addEventListener("click", () => {
-      pinnedRelationId = id;
-      setRelationHighlight(id);
-      onClick();
-    });
-    stage.append(node);
-  };
-
-  for (const policy of content.policies) {
-    const value = execution.values[policy.controle.variavel];
-    addNode(
-      policy.controle.variavel,
-      policy.nome,
-      value,
-      "policy",
-      () => {
-        mapState!.selectedPolicyId = policy.id;
-        renderEditor(policy);
-      },
-      policy.area ?? policy.categoria,
-      (
-        {
-          orcamentaria: "ORÇAMENTO",
-          regulatoria: "REGRA",
-          tributaria: "TRIBUTO",
-          institucional: "INSTITUIÇÃO",
-        } as const
-      )[policy.grupo],
-      policy.icone,
-      compactControlLabel(policy, value),
-    );
-    const node = [...stage.querySelectorAll<HTMLElement>(".map-node")].at(-1);
-    if (
-      node &&
-      (pending.has(policy.id) ||
-        Math.abs((mapState.targets.get(policy.id) ?? value) - value) > 0.05)
-    ) {
-      const prepared = document.createElement("span");
-      prepared.className = "prepared";
-      prepared.textContent = `${pending.has(policy.id) ? "Preparado" : "Meta"}: ${controlLabel(policy, pending.get(policy.id) ?? mapState.targets.get(policy.id)!)}`;
-      node.append(prepared);
-    }
-  }
-  for (const variable of content.variables.variaveis.filter(
-    (item) => item.tipo !== "controle" && item.area !== "Técnica",
-  )) {
-    addNode(
-      variable.id,
-      variable.nome,
-      execution.values[variable.id],
-      "indicator",
-      () => {
-        mapState!.selectedIndicatorId = variable.id;
-        for (const indicatorNode of stage.querySelectorAll<HTMLElement>(
-          ".map-node.indicator",
-        )) {
-          const selected = indicatorNode.dataset.nodeId === variable.id;
-          indicatorNode.classList.toggle("selected", selected);
-          indicatorNode.setAttribute("aria-pressed", String(selected));
-        }
-        updateIndicatorCard();
-      },
-      variable.area,
-      "INDICADOR",
-    );
-  }
-  for (const situation of content.situations) {
-    const active = mapState.activeSituationIds.has(situation.id);
-    addNode(
-      situation.id,
-      situation.nome,
-      active ? 100 : 0,
-      situation.avaliacao === "positiva"
-        ? "situation-positive"
-        : "situation-negative",
-      () => openSituation(situation.id),
-      situation.area,
-      situation.avaliacao === "positiva" ? "SITUAÇÃO +" : "SITUAÇÃO −",
-    );
-    const node = [...stage.querySelectorAll<HTMLElement>(".map-node")].at(-1);
-    if (node) {
-      node.classList.toggle("inactive", !active);
-      node.querySelector<HTMLElement>(".node-value")!.textContent = active
-        ? "ATIVA"
-        : "INATIVA";
-    }
-  }
-  updateIndicatorCard();
-  const nodes = [...stage.querySelectorAll<HTMLElement>(".map-node")];
-  const zoneElements = [
-    ...stage.querySelectorAll<HTMLElement>(".category-zone"),
-  ];
-  const labels = [...stage.querySelectorAll<HTMLElement>(".ministry-node")];
-  const relationPaths = [
-    ...stage.querySelectorAll<SVGPathElement>(
-      ".law-lines path.relation, .law-lines path.condition",
-    ),
-  ];
-  let lastTime = performance.now();
-  const animate = (now: number) => {
-    if (!physics) return;
-    physics.advance((now - lastTime) / 1000);
-    lastTime = now;
-    const snapshot = physics.snapshot();
-    cachedLayout = snapshot;
-    federal.style.width = `${snapshot.government.radius * 2}%`;
-    federal.style.height = `${snapshot.government.radius * 2}%`;
-    for (const node of nodes) {
-      const body = physics.bodies.get(node.dataset.nodeId!);
-      if (!body) continue;
-      node.style.left = `${body.x}%`;
-      node.style.top = `${body.y}%`;
-      node.style.setProperty(
-        "--size",
-        `${body.radius * 2 * MAP_PIXELS_PER_UNIT}px`,
-      );
-    }
-    for (const zone of snapshot.zones) {
-      const el = zoneElements.find(
-        (el) => el.dataset.ministry === zone.ministry,
-      );
-      if (el) {
-        el.style.left = `${zone.center.x}%`;
-        el.style.top = `${zone.center.y}%`;
-        el.style.width = `${zone.radius * 2}%`;
-        el.style.height = `${zone.radius * 2}%`;
-      }
-      const label = labels.find((el) => el.dataset.ministry === zone.ministry);
-      if (label) {
-        label.style.left = `${zone.center.x}%`;
-        label.style.top = `${zone.center.y - zone.radius - 1.2}%`;
-      }
-    }
-    for (const path of relationPaths) {
-      const a = snapshot.positions.get(path.dataset.positionOrigin!);
-      const b = snapshot.positions.get(path.dataset.target!);
-      if (a && b) {
-        path.setAttribute(
-          "d",
-          relationPathForNodes(
-            path.dataset.positionOrigin!,
-            path.dataset.target!,
-            a,
-            b,
-            Number(path.dataset.parallelIndex ?? 0),
-            Number(path.dataset.parallelCount ?? 1),
-            Number(path.dataset.curveSide ?? 1),
-          ),
-        );
-      }
-    }
-    if (!physics.sleeping) animationFrame = requestAnimationFrame(animate);
-  };
-  animationFrame = requestAnimationFrame(animate);
-}
-
-advanceButton.addEventListener("click", (event) => {
-  if (!mapState || !partida || processing || event.detail > 1) return;
-  processing = true;
-  advanceButton.disabled = true;
-  const current = mapState;
-  try {
-    let next = partida;
-    for (const [policyId, value] of current.pending) {
-      const changed = mudarLei(next, policyId, value);
-      if (!changed.ok) {
-        recordLog("error", "Mudança recusada", [...changed.erros]);
-        showNotice(changed.erros.join(" "));
-        return;
-      }
-      next = changed.value;
-    }
-    const passed = encerrarTurno(next);
-    if (!passed.ok) {
-      recordLog("error", "Turno não confirmado", [
-        "O estado e as decisões preparadas foram preservados.",
-        ...passed.erros,
-      ]);
-      showNotice(passed.erros.join(" "));
-      return;
-    }
-    const previous = current.execution.values;
-    partida = passed.value.partida;
-    const { relatorio } = passed.value;
-    const targets = new Map(
-      partida.game.policies.map((state) => [
-        state.policyDefinitionId,
-        state.desiredLevel,
-      ]),
-    );
-    mapState = {
-      ...current,
-      execution: partida.game.execution,
-      targets,
-      pending: new Map(),
-    };
-    turn.textContent = String(relatorio.turno + 1);
-    recordLog("success", `Turno ${relatorio.turno} concluído`, [
-      `Receita ${format.format(relatorio.receita)} · gasto ${format.format(relatorio.gastoPrimario)} · juros ${format.format(relatorio.juros)} · resultado ${format.format(relatorio.resultado)}.`,
-      ...relatorio.mudancas.map(
-        (item) =>
-          `${item.nome}: ${format.format(item.antes)} → ${format.format(item.depois)}`,
-      ),
-    ]);
-    render(previous, currentInfluence(current.graph, previous));
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : String(error);
-    recordLog("error", "Falha ao passar o turno", [detail]);
-    showNotice(detail);
-  } finally {
-    window.setTimeout(() => {
-      processing = false;
-      advanceButton.disabled = false;
-    }, 300);
-  }
-});
-
-resetButton.addEventListener("click", () => {
-  if (!mapState || processing) return;
-  if (
-    (mapState.execution.step > 0 || mapState.pending.size > 0) &&
-    !window.confirm("Reiniciar este exemplo e descartar as mudanças?")
-  )
-    return;
-  cachedLayout = undefined;
-  physics = undefined;
-  restartPartida();
-  mapState.targets.clear();
-  mapState.activeSituationIds.clear();
-  mapState.occurredEventIds.clear();
-  updateSituations();
-  mapState.pending.clear();
-  recordLog("info", "Partida reiniciada", [
-    "Estado inicial restaurado. Os registros anteriores permanecem nesta sessão.",
-  ]);
-  render();
-});
-
-try {
-  restartPartida();
-  const { content, graph } = partida!;
-  mapState = {
-    content,
-    graph,
-    execution: partida!.game.execution,
-    pending: new Map(),
-    targets: new Map(),
-    selectedPolicyId: content.policies[0].id,
-    selectedIndicatorId:
-      content.variables.variaveis.find(
-        (variable) =>
-          variable.tipo !== "controle" && variable.area !== "Técnica",
-      )?.id ?? "",
-    activeSituationIds: new Set(),
-    occurredEventIds: new Set(),
-    visualMap: brazilVisualMap(content),
-  };
-  updateSituations();
-  render();
-} catch (error) {
-  advanceButton.disabled = true;
-  recordLog("error", "Falha ao iniciar o laboratório", [
-    error instanceof Error ? error.message : String(error),
-  ]);
-}
-
-// A câmera transforma apenas o desenho. Turnos e janelas mantêm seu comportamento.
+const NS = "http://www.w3.org/2000/svg";
+const root = document.querySelector<SVGGElement>("#map-content")!;
 const viewport = document.querySelector<HTMLElement>("#map-viewport")!;
+const card = document.querySelector<HTMLElement>("#selection-card")!;
+const notice = document.querySelector<HTMLElement>("#notice")!;
+let partida: Partida;
+let selected = "";
+let hover = "";
+let expanded = "";
+let pan = { x: -260, y: 0 };
+let zoom = 0.94;
+let dragging: { x: number; y: number; px: number; py: number } | null = null;
+let report: RelatorioTurno | null = null;
+const history: string[] = [];
+let activeFilter = "all";
 
-let camera = { x: 0, y: 0, scale: 1 };
-function paintCamera(): void {
-  stage.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})`;
-}
-function zoomAt(scale: number, x: number, y: number): void {
-  const next = Math.max(0.25, Math.min(3, scale));
-  const ratio = next / camera.scale;
-  camera = {
-    x: x - (x - camera.x) * ratio,
-    y: y - (y - camera.y) * ratio,
-    scale: next,
+const colors = [
+  "#397c70",
+  "#5277a5",
+  "#9a7251",
+  "#a55b63",
+  "#8070a8",
+  "#5c8b72",
+  "#b07d3c",
+  "#4b8295",
+  "#9a6d8b",
+  "#657b4c",
+];
+const el = <K extends keyof SVGElementTagNameMap>(
+  tag: K,
+  attrs: Record<string, string | number> = {},
+  text = "",
+) => {
+  const node = document.createElementNS(NS, tag);
+  Object.entries(attrs).forEach(([key, value]) =>
+    node.setAttribute(key, String(value)),
+  );
+  if (text) node.textContent = text;
+  return node;
+};
+const html = (selector: string) =>
+  document.querySelector<HTMLElement>(selector)!;
+const money = (n: number) =>
+  `${n < 0 ? "−" : ""}R$ ${Math.abs(n).toLocaleString("pt-BR", { maximumFractionDigits: 0 })} mi`;
+const short = (text: string, max = 24) =>
+  text.length > max ? `${text.slice(0, max - 1)}…` : text;
+const wrap = (text: string, max = 20) => {
+  const lines: string[] = [];
+  for (const word of text.split(/\s+/)) {
+    const last = lines.length - 1;
+    if (last >= 0 && `${lines[last]} ${word}`.length <= max) {
+      lines[last] += ` ${word}`;
+    } else {
+      lines.push(word);
+    }
+  }
+  return lines.slice(0, 3);
+};
+const lawOrbit = (x: number, y: number, index: number, total: number) => {
+  const innerCount = Math.min(7, total);
+  const isOuter = index >= innerCount;
+  const ringCount = isOuter ? Math.max(1, total - innerCount) : innerCount;
+  const ringIndex = isOuter ? index - innerCount : index;
+  const radius = isOuter ? 145 : 110;
+  const angle = -Math.PI / 2 + (ringIndex * 2 * Math.PI) / ringCount;
+  return {
+    x: x + Math.cos(angle) * radius,
+    y: y + Math.sin(angle) * radius * 0.68,
   };
-  paintCamera();
+};
+const safe = (s: string) =>
+  s.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ]!,
+  );
+
+function say(text: string) {
+  notice.textContent = text;
+  notice.hidden = false;
+  window.setTimeout(() => {
+    notice.hidden = true;
+  }, 3200);
 }
-function fitMap(): void {
-  const pixelsPerUnit = MAP_PIXELS_PER_UNIT;
-  const contentWidth =
-    (latestMapBounds.maxX - latestMapBounds.minX) * pixelsPerUnit;
-  const contentHeight =
-    (latestMapBounds.maxY - latestMapBounds.minY) * pixelsPerUnit;
-  const scale = Math.max(
-    0.2,
-    Math.min(
-      viewport.clientWidth / contentWidth,
-      viewport.clientHeight / contentHeight,
-      1,
-    ),
-  );
-  camera = {
-    x:
-      (viewport.clientWidth - contentWidth * scale) / 2 -
-      latestMapBounds.minX * pixelsPerUnit * scale,
-    y:
-      (viewport.clientHeight - contentHeight * scale) / 2 -
-      latestMapBounds.minY * pixelsPerUnit * scale,
-    scale,
-  };
-  paintCamera();
+
+function updateTransform() {
+  root.setAttribute("transform", `translate(${pan.x} ${pan.y}) scale(${zoom})`);
 }
-zoomInButton.addEventListener("click", () => {
-  zoomAt(
-    camera.scale * 1.25,
-    viewport.clientWidth / 2,
-    viewport.clientHeight / 2,
+
+function graphState() {
+  const view = verPartida(partida);
+  const laws = view.leis;
+  const ministries = [
+    ...new Set(laws.flatMap((law) => law.ministerios).filter(Boolean)),
+  ].slice(0, 10);
+  return { view, laws, ministries };
+}
+
+function draw() {
+  const { view, laws, ministries } = graphState();
+  root.replaceChildren();
+  updateTransform();
+  html("#country-name").textContent = view.pais || "Brasil";
+  html("#cash-value").textContent = money(view.caixa);
+  html("#debt-value").textContent = money(view.divida);
+  html("#gdp-value").textContent = money(view.pib);
+  html("#turn-value").textContent = String(view.turno + 1);
+  const focus = hover || selected;
+  const direct = new Set(
+    view.ligacoes
+      .filter((link) => link.origem === focus || link.alvo === focus)
+      .flatMap((link) => [link.origem, link.alvo]),
   );
-});
-zoomOutButton.addEventListener("click", () => {
-  zoomAt(
-    camera.scale / 1.25,
-    viewport.clientWidth / 2,
-    viewport.clientHeight / 2,
-  );
-});
-viewport.addEventListener(
-  "wheel",
-  (event) => {
-    event.preventDefault();
-    const rect = viewport.getBoundingClientRect();
-    zoomAt(
-      camera.scale * Math.exp(-event.deltaY * 0.002),
-      event.clientX - rect.left,
-      event.clientY - rect.top,
+
+  const defs = el("defs");
+  const marker = el("marker", {
+    id: "arrow",
+    markerWidth: 8,
+    markerHeight: 8,
+    refX: 7,
+    refY: 4,
+    orient: "auto",
+    markerUnits: "strokeWidth",
+  });
+  marker.append(el("path", { d: "M0,0 L8,4 L0,8 z", fill: "context-stroke" }));
+  defs.append(marker);
+  root.append(defs);
+
+  const edges = el("g", { "aria-hidden": "true" });
+  const positions = new Map<string, { x: number; y: number }>();
+  const cx = 800,
+    cy = 550;
+  positions.set("presidente", { x: cx, y: cy });
+  ministries.forEach((_, i) => {
+    const a = -Math.PI / 2 + (i * 2 * Math.PI) / ministries.length;
+    positions.set(`min:${ministries[i]}`, {
+      x: cx + Math.cos(a) * 435,
+      y: cy + Math.sin(a) * 330,
+    });
+  });
+  const outer = view.bolhas;
+  outer.forEach((bubble, i) => {
+    const a = -Math.PI / 2 + i * 2.399963;
+    const r = 515 + (i % 3) * 46;
+    positions.set(bubble.id, {
+      x: cx + Math.cos(a) * r * 1.16,
+      y: cy + Math.sin(a) * r * 0.72,
+    });
+  });
+  laws.forEach((law) => {
+    const ministry = law.ministerios[0];
+    const p = positions.get(`min:${ministry}`);
+    if (p) positions.set(law.id, { x: p.x, y: p.y });
+  });
+  if (expanded) {
+    const ministryIndex = ministries.indexOf(expanded);
+    const a = -Math.PI / 2 + (ministryIndex * 2 * Math.PI) / ministries.length;
+    const x = cx + Math.cos(a) * 435;
+    const y = cy + Math.sin(a) * 330;
+    const members = laws.filter(
+      (law) =>
+        law.ministerios.includes(expanded) && law.grupo !== "institucional",
     );
-  },
-  { passive: false },
-);
-let drag: { id: number; x: number; y: number } | undefined;
-viewport.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0 || (event.target as HTMLElement).closest("button, a"))
+    members.forEach((law, j) =>
+      positions.set(law.id, lawOrbit(x, y, j, members.length)),
+    );
+  }
+  const constitutionalLaw = laws.find((law) => law.grupo === "institucional");
+  if (constitutionalLaw)
+    positions.set(constitutionalLaw.id, { x: cx, y: cy - 63 });
+
+  for (const link of view.ligacoes) {
+    const from = positions.get(link.origem),
+      to = positions.get(link.alvo);
+    if (
+      !from ||
+      !to ||
+      (Math.abs(from.x - to.x) < 1 && Math.abs(from.y - to.y) < 1)
+    )
+      continue;
+    const relevant = focus && (link.origem === focus || link.alvo === focus);
+    const edge = el("path", {
+      d: `M${from.x},${from.y} Q${(from.x + to.x) / 2 + 8},${(from.y + to.y) / 2 - 5} ${to.x},${to.y}`,
+      class: `map-edge${relevant ? (link.sinal < 0 ? " focus-negative" : " focus") : focus ? " dim" : ""}`,
+      "data-signal": link.sinal,
+      "data-delay": link.atrasoMeses,
+      "data-from": link.origem,
+      "data-to": link.alvo,
+      "marker-end": "url(#arrow)",
+    });
+    edges.append(edge);
+  }
+  root.append(edges);
+
+  const outerRing = el("circle", {
+    cx,
+    cy,
+    r: 448,
+    class: "constitution-ring",
+    "stroke-dasharray": "2 8",
+    opacity: 0.42,
+  });
+  root.append(outerRing);
+  const institutions = laws.filter((l) => l.grupo === "institucional");
+  if (institutions.length) {
+    const region = el("circle", { cx, cy, r: 112, class: "constitution-ring" });
+    root.append(region);
+    root.append(
+      el(
+        "text",
+        { x: cx, y: cy - 91, class: "area-count" },
+        "ÁREA PRESIDENCIAL",
+      ),
+    );
+    const constitution = institutions[0];
+    const x = cx,
+      y = cy - 63;
+    positions.set(constitution.id, { x, y });
+    const n = el("g", {
+      class: `law-node institution-node${selected === constitution.id ? " selected" : ""}`,
+      transform: `translate(${x} ${y})`,
+      tabindex: 0,
+      role: "button",
+      "aria-label": constitution.nome,
+      "data-id": constitution.id,
+    });
+    n.append(
+      el("circle", { r: 16 }),
+      el("text", { class: "node-icon", y: 1 }, "§"),
+      el("text", { class: "node-label", y: 29 }, short(constitution.nome, 23)),
+    );
+    n.addEventListener("click", () => selectLaw(constitution.id));
+    n.addEventListener("pointerenter", () => setHover(constitution.id));
+    n.addEventListener("pointerleave", () => setHover(""));
+    root.append(n);
+  }
+
+  ministries.forEach((ministry, i) => {
+    if (activeFilter === "indicators" || activeFilter === "events") return;
+    const a = -Math.PI / 2 + (i * 2 * Math.PI) / ministries.length;
+    const x = cx + Math.cos(a) * 435,
+      y = cy + Math.sin(a) * 330;
+    const members = laws.filter(
+      (law) =>
+        law.ministerios.includes(ministry) && law.grupo !== "institucional",
+    );
+    const color = colors[i % colors.length];
+    const group = el("g", {
+      class: `ministry-area${expanded === ministry ? " expanded" : ""}${focus && !members.some((l) => direct.has(l.id)) && !direct.has(`min:${ministry}`) ? " dim" : ""}`,
+      style: `--tone:${color}`,
+      tabindex: 0,
+      role: "button",
+      "aria-label": `${ministry}, ${members.length} leis`,
+      "data-ministry": ministry,
+    });
+    const radius = expanded === ministry ? 156 : 128;
+    group.append(
+      el("circle", {
+        cx: x,
+        cy: y,
+        r: radius,
+        class: "area-influence",
+        fill: color,
+        stroke: color,
+      }),
+    );
+    group.append(
+      el("circle", { cx: x, cy: y - 25, r: 24, class: "minister-avatar" }),
+    );
+    group.append(
+      el("circle", { cx: x, cy: y - 32, r: 6, class: "avatar-head" }),
+    );
+    group.append(
+      el("path", {
+        d: `M${x - 12},${y - 15} Q${x - 10},${y - 27} ${x},${y - 26} Q${x + 10},${y - 27} ${x + 12},${y - 15}Z`,
+        class: "avatar-body",
+      }),
+    );
+    const label = el("text", { x, y: y + 7, class: "area-name" });
+    wrap(ministry).forEach((line, lineIndex) => {
+      label.append(el("tspan", { x, dy: lineIndex === 0 ? 0 : 15 }, line));
+    });
+    group.append(label);
+    group.append(
+      el(
+        "text",
+        { x, y: y + 54, class: "area-count" },
+        `${members.length} ${members.length === 1 ? "lei" : "leis"}`,
+      ),
+    );
+    group.append(
+      el(
+        "text",
+        { x, y: y + 73, class: "area-count", "font-size": 9 },
+        expanded === ministry ? "fechar área" : "abrir área",
+      ),
+    );
+    group.addEventListener("click", () => {
+      expanded = expanded === ministry ? "" : ministry;
+      draw();
+    });
+    group.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter" || ev.key === " ") {
+        ev.preventDefault();
+        expanded = expanded === ministry ? "" : ministry;
+        draw();
+      }
+    });
+    root.append(group);
+
+    if (expanded === ministry)
+      members.forEach((law, j) => {
+        const { x: lx, y: ly } = lawOrbit(x, y, j, members.length);
+        positions.set(law.id, { x: lx, y: ly });
+        const related = law.ministerios.length > 1;
+        const lawNode = el("g", {
+          class: `law-node${selected === law.id ? " selected" : ""}${focus && !direct.has(law.id) ? " dim" : ""}`,
+          style: `--tone:${color}`,
+          transform: `translate(${lx} ${ly})`,
+          tabindex: 0,
+          role: "button",
+          "aria-label": law.nome,
+          "data-id": law.id,
+        });
+        lawNode.append(
+          el("circle", { r: 17 }),
+          el(
+            "text",
+            { class: "node-icon", y: 1 },
+            law.grupo === "orcamentaria"
+              ? "¤"
+              : law.grupo === "tributaria"
+                ? "%"
+                : law.grupo === "institucional"
+                  ? "§"
+                  : "⚖",
+          ),
+          el("text", { class: "node-label", y: 30 }, short(law.nome, 16)),
+        );
+        if (related)
+          lawNode.append(
+            el("circle", { cx: 13, cy: -13, r: 5, class: "multi-mark" }),
+            el(
+              "text",
+              {
+                x: 13,
+                y: -11,
+                "font-size": 7,
+                "text-anchor": "middle",
+                fill: color,
+              },
+              "+",
+            ),
+          );
+        lawNode.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          selectLaw(law.id);
+        });
+        lawNode.addEventListener("pointerenter", () => setHover(law.id));
+        lawNode.addEventListener("pointerleave", () => setHover(""));
+        lawNode.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            selectLaw(law.id);
+          }
+        });
+        root.append(lawNode);
+      });
+  });
+
+  outer.forEach((bubble) => {
+    if (
+      activeFilter === "ministries" ||
+      activeFilter === "laws" ||
+      activeFilter === "budget"
+    )
+      return;
+    const p = positions.get(bubble.id)!;
+    const kind =
+      bubble.tipo === "situacao"
+        ? "situacao"
+        : bubble.tipo === "evento"
+          ? "evento"
+          : bubble.tipo === "estoque"
+            ? "estoque"
+            : "calculado";
+    const g = el("g", {
+      class: `indicator-node${selected === bubble.id ? " selected" : ""}${focus && !direct.has(bubble.id) ? " dim" : ""}`,
+      "data-kind": kind,
+      transform: `translate(${p.x} ${p.y})`,
+      tabindex: 0,
+      role: "button",
+      "aria-label": bubble.nome,
+      "data-id": bubble.id,
+    });
+    const r = kind === "estoque" ? 13 : 10;
+    g.append(
+      el("circle", { r }),
+      el(
+        "text",
+        { class: "node-icon", y: 1 },
+        kind === "situacao"
+          ? "!"
+          : kind === "evento"
+            ? "✦"
+            : kind === "estoque"
+              ? "◷"
+              : "⌁",
+      ),
+      el("text", { class: "node-label", y: 25 }, short(bubble.nome, 25)),
+    );
+    g.addEventListener("click", () => selectBubble(bubble.id));
+    g.addEventListener("pointerenter", () => setHover(bubble.id));
+    g.addEventListener("pointerleave", () => setHover(""));
+    root.append(g);
+  });
+
+  const president = el("g", {
+    class: "president-core",
+    transform: `translate(${cx} ${cy})`,
+  });
+  president.append(
+    el("circle", { r: 59 }),
+    el("circle", { cx: 0, cy: -13, r: 10, class: "person-head" }),
+    el("path", {
+      d: "M-19,12 Q-16,-4 0,-3 Q16,-4 19,12 L19,21 L-19,21Z",
+      class: "person-body",
+    }),
+    el("text", { x: 0, y: 39, class: "president-label" }, "Presidente"),
+    el("text", { x: 0, y: 53, class: "president-sub" }, "GOVERNO"),
+  );
+  root.append(president);
+  renderCard();
+}
+
+function setHover(id: string) {
+  hover = id;
+  const focus = hover || selected;
+  const related = new Set<string>();
+  for (const link of verPartida(partida).ligacoes) {
+    if (link.origem === focus || link.alvo === focus) {
+      related.add(link.origem);
+      related.add(link.alvo);
+    }
+  }
+  root.querySelectorAll<SVGPathElement>(".map-edge").forEach((edge) => {
+    const active =
+      Boolean(focus) &&
+      (edge.dataset.from === focus || edge.dataset.to === focus);
+    edge.classList.toggle("focus", active && edge.dataset.signal !== "-1");
+    edge.classList.toggle(
+      "focus-negative",
+      active && edge.dataset.signal === "-1",
+    );
+    edge.classList.toggle("dim", Boolean(focus) && !active);
+  });
+  root
+    .querySelectorAll<SVGGElement>(".law-node,.indicator-node")
+    .forEach((node) => {
+      const active =
+        node.dataset.id === focus || related.has(node.dataset.id || "");
+      node.classList.toggle("dim", Boolean(focus) && !active);
+      node.classList.toggle(
+        "related",
+        Boolean(focus) && active && node.dataset.id !== focus,
+      );
+    });
+  root.querySelectorAll<SVGGElement>(".ministry-area").forEach((node) => {
+    const name = node.dataset.ministry || "";
+    const ownsRelated = verPartida(partida).leis.some(
+      (law) => law.ministerios.includes(name) && related.has(law.id),
+    );
+    node.classList.toggle("dim", Boolean(focus) && !ownsRelated);
+  });
+}
+
+function selectLaw(id: string) {
+  selected = id;
+  const law = verPartida(partida).leis.find((item) => item.id === id);
+  if (law?.ministerios[0]) expanded = law.ministerios[0];
+  history.unshift(`Lei selecionada: ${law?.nome ?? id}`);
+  draw();
+}
+
+function selectBubble(id: string) {
+  selected = id;
+  history.unshift(
+    `Indicador selecionado: ${verPartida(partida).bolhas.find((item) => item.id === id)?.nome ?? id}`,
+  );
+  draw();
+}
+
+function renderCard() {
+  const { view } = graphState();
+  const id = selected;
+  const law = view.leis.find((item) => item.id === id);
+  const bubble = view.bolhas.find((item) => item.id === id);
+  if (!law && !bubble) {
+    card.hidden = true;
+    card.innerHTML = "";
     return;
-  drag = { id: event.pointerId, x: event.clientX, y: event.clientY };
-  viewport.setPointerCapture(event.pointerId);
-  viewport.classList.add("dragging");
-  event.preventDefault();
-});
-viewport.addEventListener("pointermove", (event) => {
-  if (!drag || drag.id !== event.pointerId) return;
-  camera.x += event.clientX - drag.x;
-  camera.y += event.clientY - drag.y;
-  drag.x = event.clientX;
-  drag.y = event.clientY;
-  paintCamera();
-});
-for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
-  viewport.addEventListener(type, () => {
-    drag = undefined;
-    viewport.classList.remove("dragging");
-  });
-viewport.addEventListener("keydown", (event) => {
-  if (event.target !== viewport) return;
-  const moves: Record<string, [number, number]> = {
-    ArrowLeft: [40, 0],
-    ArrowRight: [-40, 0],
-    ArrowUp: [0, 40],
-    ArrowDown: [0, -40],
-  };
-  if (moves[event.key]) {
-    event.preventDefault();
-    camera.x += moves[event.key][0];
-    camera.y += moves[event.key][1];
-    paintCamera();
-  } else if (["+", "=", "-"].includes(event.key)) {
-    event.preventDefault();
-    zoomAt(
-      camera.scale * (event.key === "-" ? 1 / 1.2 : 1.2),
-      viewport.clientWidth / 2,
-      viewport.clientHeight / 2,
+  }
+  card.hidden = false;
+  if (law) {
+    const effects = view.ligacoes
+      .filter((link) => link.origem === law.id)
+      .map((link) => ({
+        link,
+        bubble: view.bolhas.find((item) => item.id === link.alvo),
+      }))
+      .filter((item) => item.bubble);
+    const tags = law.ministerios
+      .map((name) => `<span class="tag">${safe(name)}</span>`)
+      .join("");
+    const control = law.opcoes?.length
+      ? `<div class="control-label"><span>Meta da lei</span><span class="control-output" id="law-choice-label"></span></div><div class="option-grid">${law.opcoes.map((option) => `<button class="option-choice${option.id === law.opcaoAtual ? " active" : ""}" data-value="${option.valor}" type="button">${safe(option.rotulo)}</button>`).join("")}</div>`
+      : `<div class="control-label"><span>Meta da lei</span><span class="control-output" id="law-choice-label">${law.meta.toLocaleString("pt-BR")} ${safe(law.unidade)}</span></div><input id="law-range" class="range-input" type="range" min="${law.minimo ?? 0}" max="${law.maximo ?? Math.max(law.meta * 2, 100)}" step="any" value="${law.meta}" />`;
+    card.innerHTML = `<span class="card-eyebrow">Lei · ${safe(law.grupo)}</span><h2>${safe(law.nome)}</h2><p>${safe(law.descricao || "Sem descrição disponível.")}</p><div class="tag-row">${tags}</div><div class="detail-value">${law.nivel.toLocaleString("pt-BR")} <small>${safe(law.unidade)} em vigor</small></div>${control}<button class="apply-change" id="apply-law" type="button">Aplicar meta</button><div class="card-eyebrow" style="margin-top:15px">Efeitos diretos esperados</div><ul class="effect-list">${effects.length ? effects.map(({ link, bubble: item }) => `<li><span>${safe(item!.nome)}</span><span class="effect-timing"><b class="effect-direction ${link.sinal < 0 ? "down" : ""}">${link.sinal > 0 ? "↑" : "↓"}</b> ${link.atrasoMeses ? `em ${link.atrasoMeses} meses` : "imediato"}</span></li>`).join("") : "<li>Sem efeitos diretos expostos no mapa.</li>"}</ul>`;
+    let target = law.meta;
+    const range = card.querySelector<HTMLInputElement>("#law-range");
+    range?.addEventListener("input", () => {
+      target = Number(range.value);
+      const out = card.querySelector("#law-choice-label");
+      if (out)
+        out.textContent = `${target.toLocaleString("pt-BR")} ${law.unidade}`;
+    });
+    card.querySelectorAll<HTMLButtonElement>("[data-value]").forEach((button) =>
+      button.addEventListener("click", () => {
+        target = Number(button.dataset.value);
+        card
+          .querySelectorAll(".option-choice")
+          .forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        const output = card.querySelector("#law-choice-label");
+        if (output) output.textContent = button.textContent || "";
+      }),
+    );
+    card
+      .querySelector<HTMLButtonElement>("#apply-law")
+      ?.addEventListener("click", () => {
+        const result = mudarLei(partida, law.id, target);
+        if (!result.ok) {
+          say(result.erros.join(" "));
+          return;
+        }
+        partida = result.value;
+        history.unshift(`Meta ajustada: ${law.nome}`);
+        say("Meta da lei atualizada.");
+        draw();
+      });
+  } else if (bubble) {
+    card.innerHTML = `<span class="card-eyebrow">Indicador · ${safe(bubble.area || bubble.tipo)}</span><h2>${safe(bubble.nome)}</h2><p>Valor atual observado. As conexões destacadas mostram leis diretamente relacionadas a este indicador.</p><div class="detail-value">${bubble.valor.toLocaleString("pt-BR", { maximumFractionDigits: 2 })} <small>${safe(bubble.unidade)}</small></div><div class="card-eyebrow" style="margin-top:14px">Leis que afetam este nó</div><ul class="effect-list">${
+      view.ligacoes
+        .filter((link) => link.alvo === bubble.id)
+        .map(
+          (link) =>
+            `<li><span>${safe(view.leis.find((item) => item.id === link.origem)?.nome ?? link.origem)}</span><span class="effect-timing">${link.atrasoMeses ? `${link.atrasoMeses} meses` : "imediato"}</span></li>`,
+        )
+        .join("") || "<li>Sem relações diretas expostas.</li>"
+    }</ul>`;
+  }
+}
+
+function applyFilter(filter: string) {
+  activeFilter = filter;
+  document
+    .querySelectorAll<HTMLButtonElement>(".nav-item")
+    .forEach((button) => {
+      const active = button.dataset.filter === filter;
+      button.classList.toggle("active", active);
+      if (active) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    });
+  draw();
+}
+
+function advanceTurn() {
+  const button = html("#advance-turn") as HTMLButtonElement;
+  button.disabled = true;
+  const result = encerrarTurno(partida);
+  button.disabled = false;
+  if (!result.ok) {
+    say(result.erros.join(" "));
+    return;
+  }
+  partida = result.value.partida;
+  report = result.value.relatorio;
+  history.unshift(
+    `Turno ${report.turno} encerrado · resultado fiscal ${money(report.resultado)}`,
+  );
+  const reportCard = html("#report-card");
+  reportCard.hidden = false;
+  reportCard.innerHTML = `<span class="card-eyebrow">Relatório · turno ${report.turno}</span><h2>Trimestre concluído</h2><p>Receita ${money(report.receita)} · gastos primários ${money(report.gastoPrimario)} · juros ${money(report.juros)}.</p><div class="card-eyebrow" style="margin-top:12px">Maiores mudanças</div><ul class="report-list">${report.mudancas
+    .slice(0, 6)
+    .map(
+      (item) =>
+        `<li><span>${safe(item.nome)}</span><strong>${item.depois > item.antes ? "↑" : "↓"} ${Math.abs(item.depois - item.antes).toLocaleString("pt-BR", { maximumFractionDigits: 2 })}</strong></li>`,
+    )
+    .join("")}</ul>`;
+  draw();
+  say("O turno avançou três meses.");
+}
+
+function resetView() {
+  expanded = "";
+  selected = "";
+  hover = "";
+  zoom = 0.94;
+  pan = { x: -260, y: 0 };
+  updateTransform();
+  draw();
+}
+
+function setZoom(next: number, anchor?: { x: number; y: number }) {
+  const bounded = Math.max(0.68, Math.min(1.42, next));
+  if (anchor) {
+    const ratio = bounded / zoom;
+    pan.x = Math.max(
+      -520,
+      Math.min(520, anchor.x - (anchor.x - pan.x) * ratio),
+    );
+    pan.y = Math.max(
+      -420,
+      Math.min(420, anchor.y - (anchor.y - pan.y) * ratio),
     );
   }
-});
-createRoot(document.getElementById("map-filters")!).render(
-  createElement(MapFilters, {
-    onChange: (filter: MapFilter) => {
-      activeFilter = filter;
-      render();
-    },
-  }),
-);
-
-const startScreen = document.querySelector<HTMLElement>("#start-screen")!;
-const gameShell = document.querySelector<HTMLElement>("#game-shell")!;
-const menuDialog = document.querySelector<HTMLDialogElement>("#menu-dialog")!;
-const menuDialogContent = document.querySelector<HTMLElement>(
-  "#menu-dialog-content",
-)!;
-const continueButton =
-  document.querySelector<HTMLButtonElement>("#start-continue")!;
-let hasCurrentSession = false;
-
-function showMenuMessage(title: string, message: string): void {
-  const heading = document.createElement("h2");
-  heading.textContent = title;
-  const paragraph = document.createElement("p");
-  paragraph.textContent = message;
-  menuDialogContent.replaceChildren(heading, paragraph);
-  if (!menuDialog.open) menuDialog.showModal();
+  zoom = bounded;
+  updateTransform();
 }
 
-function enterLaboratory(): void {
-  if (!mapState || processing) return;
-  const needsConfirmation =
-    mapState.execution.step > 0 || mapState.pending.size > 0;
-  if (needsConfirmation) {
-    resetButton.click();
-    if (mapState.execution.step !== 0 || mapState.pending.size > 0) return;
-  } else {
-    cachedLayout = undefined;
-    physics = undefined;
-    restartPartida();
-    mapState.targets.clear();
-    mapState.activeSituationIds.clear();
-    mapState.occurredEventIds.clear();
-    mapState.pending.clear();
-    updateSituations();
-    recordLog("info", "Laboratório iniciado", [
-      "Estado demonstrativo inicial carregado. As regras políticas completas ainda não estão integradas.",
-    ]);
-    render();
+function renderHistory() {
+  const content = html("#turn-log-content");
+  content.innerHTML =
+    history
+      .slice(0, 10)
+      .map((item) => `<div class="log-item">${safe(item)}</div>`)
+      .join("") ||
+    `<div class="log-item">Suas decisões e relatórios aparecerão aqui.</div>`;
+}
+
+function start() {
+  const created = criarPartida({ pais: "brasil", modo: "teste" });
+  if (!created.ok) {
+    say(created.erros.join(" "));
+    return;
   }
-  hasCurrentSession = true;
-  continueButton.disabled = false;
-  startScreen.hidden = true;
-  gameShell.hidden = false;
-  window.requestAnimationFrame(() => {
-    fitMap();
-    advanceButton.focus({ preventScroll: true });
+  partida = created.value;
+  draw();
+  document
+    .querySelectorAll<HTMLButtonElement>(".nav-item")
+    .forEach((button) =>
+      button.addEventListener("click", () =>
+        applyFilter(button.dataset.filter || "all"),
+      ),
+    );
+  html("#advance-turn").addEventListener("click", advanceTurn);
+  html("#zoom-in").addEventListener("click", () => setZoom(zoom + 0.12));
+  html("#zoom-out").addEventListener("click", () => setZoom(zoom - 0.12));
+  html("#reset-view").addEventListener("click", resetView);
+  html("#toggle-log").addEventListener("click", (ev) => {
+    const btn = ev.currentTarget as HTMLButtonElement;
+    const log = html("#turn-log-card");
+    log.hidden = !log.hidden;
+    btn.setAttribute("aria-expanded", String(!log.hidden));
+    renderHistory();
   });
+  viewport.addEventListener("pointerdown", (ev) => {
+    if (
+      (ev.target as HTMLElement).closest(
+        "button,.ministry-area,.law-node,.indicator-node,.side-panel",
+      )
+    )
+      return;
+    dragging = { x: ev.clientX, y: ev.clientY, px: pan.x, py: pan.y };
+    viewport.setPointerCapture(ev.pointerId);
+  });
+  viewport.addEventListener("pointermove", (ev) => {
+    if (!dragging) return;
+    const rect = viewport.getBoundingClientRect();
+    const sx = 1600 / rect.width,
+      sy = 1100 / rect.height;
+    pan = {
+      x: Math.max(
+        -520,
+        Math.min(520, dragging.px + (ev.clientX - dragging.x) * sx),
+      ),
+      y: Math.max(
+        -420,
+        Math.min(420, dragging.py + (ev.clientY - dragging.y) * sy),
+      ),
+    };
+    updateTransform();
+  });
+  viewport.addEventListener("pointerup", () => {
+    dragging = null;
+  });
+  viewport.addEventListener("pointercancel", () => {
+    dragging = null;
+  });
+  viewport.addEventListener(
+    "wheel",
+    (ev) => {
+      ev.preventDefault();
+      const rect = viewport.getBoundingClientRect();
+      setZoom(zoom * (ev.deltaY < 0 ? 1.08 : 0.92), {
+        x: ((ev.clientX - rect.left) * 1600) / rect.width,
+        y: ((ev.clientY - rect.top) * 1100) / rect.height,
+      });
+    },
+    { passive: false },
+  );
 }
 
-function showNewGovernmentConfirmation(): void {
-  const heading = document.createElement("h2");
-  heading.textContent = "Novo Governo";
-  const paragraph = document.createElement("p");
-  paragraph.textContent =
-    "A partida política integrada ainda está em desenvolvimento. Nesta versão, você pode abrir o Laboratório demonstrativo para explorar políticas, indicadores e a passagem trimestral.";
-  const actions = document.createElement("div");
-  actions.className = "menu-dialog__actions";
-  const cancel = document.createElement("button");
-  cancel.className = "secondary";
-  cancel.type = "button";
-  cancel.textContent = "Voltar";
-  cancel.addEventListener("click", () => menuDialog.close());
-  const start = document.createElement("button");
-  start.type = "button";
-  start.textContent = "Abrir Laboratório";
-  start.addEventListener("click", () => {
-    menuDialog.close();
-    enterLaboratory();
-  });
-  actions.append(cancel, start);
-  menuDialogContent.replaceChildren(heading, paragraph, actions);
-  if (!menuDialog.open) menuDialog.showModal();
-}
-
-function showScenarioChoices(): void {
-  const heading = document.createElement("h2");
-  heading.textContent = "Cenários";
-  const description = document.createElement("p");
-  description.textContent =
-    "A seleção de cenários ainda não está conectada ao início de uma partida. O conteúdo abaixo mostra o estado desta versão.";
-  const options = document.createElement("div");
-  options.className = "scenario-options";
-  const realistic = document.createElement("button");
-  realistic.className = "scenario-option";
-  realistic.type = "button";
-  const realisticName = document.createElement("strong");
-  realisticName.textContent = "Brasil — Laboratório demonstrativo";
-  const realisticDescription = document.createElement("span");
-  realisticDescription.textContent =
-    "Explorar políticas e indicadores fictícios; não representa o cenário realista descrito na arte.";
-  realistic.append(realisticName, realisticDescription);
-  realistic.addEventListener("click", () => {
-    menuDialog.close();
-    showNewGovernmentConfirmation();
-  });
-  const alternative = document.createElement("button");
-  alternative.className = "scenario-option";
-  alternative.type = "button";
-  alternative.disabled = true;
-  const alternativeName = document.createElement("strong");
-  alternativeName.textContent = "Cenário Alternativo — indisponível";
-  const alternativeDescription = document.createElement("span");
-  alternativeDescription.textContent =
-    "Ainda não há uma partida alternativa conectada ao menu.";
-  alternative.append(alternativeName, alternativeDescription);
-  const countries = document.createElement("button");
-  countries.className = "scenario-option";
-  countries.type = "button";
-  countries.disabled = true;
-  const countriesName = document.createElement("strong");
-  countriesName.textContent = "Outros Países — em breve";
-  const countriesDescription = document.createElement("span");
-  countriesDescription.textContent =
-    "O Brasil é o único país previsto para o recorte inicial.";
-  countries.append(countriesName, countriesDescription);
-  options.append(realistic, alternative, countries);
-  menuDialogContent.replaceChildren(heading, description, options);
-  if (!menuDialog.open) menuDialog.showModal();
-}
-
-document
-  .querySelector<HTMLButtonElement>("#menu-dialog-close")!
-  .addEventListener("click", () => menuDialog.close());
-menuDialog.addEventListener("click", (event) => {
-  if (event.target === menuDialog) menuDialog.close();
-});
-document
-  .querySelector<HTMLButtonElement>("#start-new-game")!
-  .addEventListener("click", showNewGovernmentConfirmation);
-continueButton.addEventListener("click", () => {
-  if (!hasCurrentSession) return;
-  startScreen.hidden = true;
-  gameShell.hidden = false;
-  window.requestAnimationFrame(() => {
-    fitMap();
-    advanceButton.focus({ preventScroll: true });
-  });
-});
-document
-  .querySelector<HTMLButtonElement>("#start-scenarios")!
-  .addEventListener("click", showScenarioChoices);
-document
-  .querySelector<HTMLButtonElement>("#start-realistic")!
-  .addEventListener("click", showScenarioChoices);
-document
-  .querySelector<HTMLButtonElement>("#start-alternative")!
-  .addEventListener("click", showScenarioChoices);
-document
-  .querySelector<HTMLButtonElement>("#start-countries")!
-  .addEventListener("click", showScenarioChoices);
-document
-  .querySelector<HTMLButtonElement>("#start-settings")!
-  .addEventListener("click", () =>
-    showMenuMessage(
-      "Configurações",
-      "As preferências completas ainda não estão disponíveis. O mapa respeita a configuração de movimento reduzido do sistema.",
-    ),
-  );
-document
-  .querySelector<HTMLButtonElement>("#start-top-settings")!
-  .addEventListener("click", () =>
-    showMenuMessage(
-      "Configurações",
-      "As preferências completas ainda não estão disponíveis. O mapa respeita a configuração de movimento reduzido do sistema.",
-    ),
-  );
-document
-  .querySelector<HTMLButtonElement>("#start-tutorial")!
-  .addEventListener("click", () =>
-    showMenuMessage(
-      "Tutorial do Laboratório",
-      "Selecione uma política no mapa para preparar uma mudança. Os indicadores mostram resultados da simulação e não podem ser editados diretamente. Use Encerrar turno para processar o próximo trimestre demonstrativo. Votação, eleições e aprovação parlamentar ainda não estão integradas.",
-    ),
-  );
-document
-  .querySelector<HTMLButtonElement>("#start-encyclopedia")!
-  .addEventListener("click", () =>
-    showMenuMessage(
-      "Enciclopédia",
-      "Políticas são controles de ação; indicadores são resultados calculados; situações representam condições que podem se ativar. As conexões do mapa mostram relações do cenário, mas não substituem as regras políticas completas da partida.",
-    ),
-  );
-document
-  .querySelector<HTMLButtonElement>("#start-exit")!
-  .addEventListener("click", () =>
-    showMenuMessage(
-      "Sair do SisGov",
-      "O SisGov está sendo executado no navegador. Feche esta aba para encerrar o jogo.",
-    ),
-  );
-document
-  .querySelector<HTMLButtonElement>("#return-to-title")!
-  .addEventListener("click", () => {
-    gameShell.hidden = true;
-    startScreen.hidden = false;
-    continueButton.disabled = !hasCurrentSession;
-    document.querySelector<HTMLDetailsElement>(".game-menu details")!.open =
-      false;
-    document.querySelector<HTMLButtonElement>("#start-continue")!.focus();
-  });
-window.addEventListener("resize", () => {
-  if (!gameShell.hidden) fitMap();
-});
+start();

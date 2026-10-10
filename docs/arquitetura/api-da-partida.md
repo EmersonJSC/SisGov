@@ -24,7 +24,7 @@ e descarte a anterior (ou guarde para "desfazer").
 
 - `turno`, `caixa`, `divida`, `pib` (moeda do país, em milhões).
 - `leis[]`: `id`, `nome`, `descricao`, `grupo` (orcamentaria, regulatoria,
-  tributaria, institucional), `area`, `ministerio`, `nivel` (o que já
+  tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a
   mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`),
   `opcaoAtual`, `gastoAnual`.
@@ -32,7 +32,17 @@ e descarte a anterior (ou guarde para "desfazer").
   situacao, evento), `unidade`, `area`, `avaliacao` (maior_melhor,
   maior_pior, neutra), `valor`.
 - `ligacoes[]`: `origem` (id de lei ou de bolha), `alvo` (id de bolha, ou
-  `eficacia:<lei>`), `sinal` (1 sobe, −1 cai).
+  `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
+  convertido para meses).
+
+`ministerios[]` é a lista de áreas ministeriais relacionadas à lei; no conteúdo
+atual, cada lei informa uma. A interface mantém um único nó mesmo quando a
+lista tiver mais de um ministério. O campo `ministerio` continua como rótulo
+principal.
+
+`VisaoPartida` ainda não informa os ocupantes dos cargos nem aprovação do
+partido. A interface usa um símbolo neutro para o ocupante e indica aprovação
+como indisponível até esses dados entrarem no contrato.
 
 O `relatorio` de `encerrarTurno` traz `turno`, `receita`, `gastoPrimario`,
 `juros`, `resultado` e `mudancas[]` (as 15 bolhas que mais mudaram, com

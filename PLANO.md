@@ -759,7 +759,7 @@ data, commit e teste.
 
 **M2 — O mapa com a rede real**
 
-- [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Em andamento: o mapa lê o Brasil real e passa o turno pela camada da partida (`src/app/partida.ts`, contrato em `docs/arquitetura/api-da-partida.md`), com caixa e dívida; falta a tela parar de ler tipos do motor (refação visual) e apagar o laboratório antigo
+- [ ] SG145 Limpar o laboratório e ligar o mapa à partida — adiantado para depois do SG156 (autor, 10/out). Atualização visual em 10/out: mapa principal refeito com dez esferas resumidas, expansão de leis, painel contextual, zoom e arraste limitados; usa somente `verPartida`. `npm run check` verde (57 arquivos, 249 testes). O chamado segue aberto: o laboratório antigo ainda precisa ser removido e os dados de ocupantes/aprovação/estimativas precisam entrar na API quando estiverem disponíveis.
 - [ ] SG128 Ministérios no conteúdo
 - [ ] SG129 Mapa de influência com a rede real
 - [ ] SG146 "Por que mudou?"
