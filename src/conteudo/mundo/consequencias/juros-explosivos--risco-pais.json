@@ -1,0 +1,17 @@
+{
+  "id": "juros-explosivos--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "juros_explosivos",
+  "alvo": "risco_pais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.8,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

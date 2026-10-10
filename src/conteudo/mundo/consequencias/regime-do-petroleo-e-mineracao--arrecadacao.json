@@ -16,7 +16,7 @@
   "leitura": "nivel",
   "escala": {
     "fator": "producao_mineral",
-    "referencia": 4
+    "referencia": 50
   },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,

@@ -23,6 +23,12 @@ export type WorldFile = {
   eventos?: string[];
   situacoes?: string[];
   dilemas?: string[];
+  /**
+   * Fração do caminho que uma bolha calculada anda, por passo, até o valor
+   * que recebe (D-54). 1 (padrão) = chega na hora; 0,875 por trimestre =
+   * metade do caminho por mês. Amortece os ciclos da rede.
+   */
+  respostaDasBolhas?: number;
 };
 
 /**
@@ -45,6 +51,8 @@ export type ScenarioManifest = {
   eventos?: string[];
   situacoes?: string[];
   dilemas?: string[];
+  /** Ver `WorldFile.respostaDasBolhas` (D-54); o mundo do país prevalece. */
+  respostaDasBolhas?: number;
   organizacaoPolitica?: string;
   perfis?: readonly {
     id: string;
@@ -88,6 +96,14 @@ export type InitialStateFile = {
   tipo: "estado-inicial";
   versaoEsquema: 1;
   valores: Record<string, number>;
+  /** Cenário que este estado representa (ex.: Brasil 2026). */
+  cenario?: { nome: string; ano?: number };
+  /**
+   * Valor de cada índice ou situação no turno 0 do cenário (D-55). A parte
+   * que as leis e a rede não explicam vira o nó visível `contexto:<bolha>`
+   * ("Contexto do Brasil 2026"): fixo, soma como qualquer outra seta.
+   */
+  indicesIniciais?: Record<string, number>;
   /** Economia do país; o PIB converte limites "% do PIB" das leis em valores. */
   economia?: EconomyInitialState;
   /** Limites que o país impõe a uma lei, além dos limites da própria lei. */

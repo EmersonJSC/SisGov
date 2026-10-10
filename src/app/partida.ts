@@ -11,7 +11,7 @@ import {
   type ResolvedPackage,
   type ScenarioGraph,
 } from "../engine";
-import { efficacyNodeId } from "../engine/model/lawNodes";
+import { contextNodeId, efficacyNodeId } from "../engine/model/lawNodes";
 import { changePolicyTarget } from "../domain/game";
 import { createGame, type GameState } from "../game/createGame";
 import { commitPolicyAction } from "../game/commitPolicyAction";
@@ -96,6 +96,11 @@ export type VisaoBolha = Readonly<{
   maximo: number;
   /** Situação: valor a partir do qual ela surge. */
   surgimento?: number;
+  /**
+   * Contexto do cenário (D-55): a parte do valor que as leis e a rede não
+   * explicam (história, geografia, cultura). Fixo desde o turno 0.
+   */
+  contexto?: number;
 }>;
 
 export type VisaoLigacao = Readonly<{
@@ -141,6 +146,8 @@ export type VisaoContas = Contas &
 
 export type VisaoPartida = Readonly<{
   pais: string;
+  /** Cenário em jogo (ex.: "Brasil 2026"). */
+  cenario: string;
   turno: number;
   contas: VisaoContas;
   leis: readonly VisaoLei[];
@@ -571,6 +578,9 @@ export function verPartida(partida: Partida): VisaoPartida {
       minimo: variable.dominio.minimo ?? 0,
       maximo: variable.dominio.maximo ?? 100,
       surgimento: variable.surgimento,
+      ...(values[contextNodeId(variable.id)] !== undefined
+        ? { contexto: values[contextNodeId(variable.id)] }
+        : {}),
     }));
   const controlToLaw = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
@@ -611,6 +621,7 @@ export function verPartida(partida: Partida): VisaoPartida {
   });
   return {
     pais: content.manifest?.nome ?? "",
+    cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
     turno: game.currentTurn,
     contas: lerContas(content, values),
     leis,

@@ -26,8 +26,9 @@ bolha tem **valor próprio**:
 | Tipo de bolha | Valor próprio? | De onde vem o valor | Exemplo |
 |---|---|---|---|
 | **Lei** | Sim | Nível ou opção (país no início, jogador depois); recebe influência na **eficácia** e no **apoio**; entrega nível × eficácia | Verba para saúde, Lei de drogas |
-| **Índice** | Não | Só do que recebe | Saúde, Desemprego, Corrupção |
-| **Situação** | Não | Só do que recebe; existe acima de um ponto; pisca e cresce | Crise no atendimento |
+| **Índice** | Não | Do que recebe, inclusive do **contexto do cenário** (D-55) | Saúde, Desemprego, Corrupção |
+| **Situação** | Não | Do que recebe; existe acima de um ponto; pisca e cresce | Crise no atendimento |
+| **Contexto do cenário** (D-55) | Sim, fixo | O cenário declara o valor de cada índice no turno 0 (ex.: Brasil 2026); a parte que as leis e a rede não explicam vira este nó, visível na explicação | Contexto do Brasil 2026 |
 | **Bolha lenta** (estoque) | Sim (o país declara o ponto de partida) | Acumula o que recebe ao longo de anos; se desgasta devagar | Escolaridade, Desenvolvimento, Infraestrutura, Dívida |
 | **Evento** | — | Acontece num momento e dispara efeitos | Epidemia |
 | **Grupo social** (SG143) | Não | Satisfação, só do que recebe | Trabalhadores |
@@ -57,6 +58,20 @@ continuar determinístico:
 
 Consequência: a influência de um índice ou situação sobre uma lei chega no
 mês seguinte — ainda dentro do mesmo turno de 3 meses.
+
+**Resposta das bolhas (D-54).** Uma bolha calculada não salta de uma vez para
+o valor que recebe: anda uma fração do caminho por passo (`respostaDasBolhas`
+do mundo: 0,875 por trimestre, metade do caminho por mês). Isso amortece os
+ciclos da rede, que sem isso oscilavam de um turno para o outro. A explicação
+mostra para onde a bolha vai (`targetValue`) e onde ela está (`result`).
+
+**Turno 0.** O motor repete o mês sem acumular estoques até a rede se
+acomodar; nessas passadas, o contexto de cada índice declarado se ajusta até
+o índice bater com o valor do cenário. O turno 0 é, assim, um ponto de
+equilíbrio: sem ação, o país muda devagar (estoques e dívida).
+
+**Teto do efeito (D-56).** A eficácia acima de 1 reforça a lei, mas o que a
+lei entrega não passa da opção mais forte (o teto do controle).
 
 ## O que o país declara
 

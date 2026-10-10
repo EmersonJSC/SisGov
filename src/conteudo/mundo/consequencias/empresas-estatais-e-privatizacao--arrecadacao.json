@@ -16,7 +16,7 @@
   "leitura": "nivel",
   "escala": {
     "fator": "pib",
-    "referencia": 30
+    "referencia": 45
   },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,

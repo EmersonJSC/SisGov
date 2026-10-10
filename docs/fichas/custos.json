@@ -18,7 +18,7 @@
     },
     "regime-do-petroleo-e-mineracao": {
       "receita": { "proibicao": 0, "monopolio-estatal": 1.5, "partilha": 1.2, "concessao": 0.8 },
-      "escalaReceita": { "fator": "producao_mineral", "referencia": 4 }
+      "escalaReceita": { "fator": "producao_mineral", "referencia": 50 }
     },
     "reforma-agraria": {
       "gasto": { "nenhuma": 0, "titulacao-e-mercado": 0.03, "desapropriacao-improdutiva": 0.08, "redistribuicao-ampla": 0.4 }
@@ -40,7 +40,7 @@
     },
     "empresas-estatais-e-privatizacao": {
       "receita": { "sem-estatais": 0, "estatais-minimas": 0.1, "estatais-estrategicas": 0.5, "estado-empresario": 0.8 },
-      "escalaReceita": { "fator": "pib", "referencia": 30 },
+      "escalaReceita": { "fator": "pib", "referencia": 45 },
       "gasto": { "sem-estatais": 0, "estatais-minimas": 0.02, "estatais-estrategicas": 0.1, "estado-empresario": 0.5 }
     },
     "defesa-da-concorrencia": {
@@ -99,7 +99,7 @@
       "gasto": { "sem-sistema": 0, "capitalizacao": 1.0, "misto": 4.0, "reparticao": 6.5 },
       "escalaGasto": { "fator": "envelhecimento", "referencia": 40 },
       "receita": { "sem-sistema": 0, "capitalizacao": 0, "misto": 3.5, "reparticao": 6.5 },
-      "escalaReceita": { "fator": "renda_familias", "referencia": 43 }
+      "escalaReceita": { "fator": "renda_familias", "referencia": 45 }
     },
     "previdencia-rural": {
       "gasto": { "nenhuma": 0, "voluntaria-subsidiada": 0.15, "contributiva-agricola": 0.4, "comprovacao-atividade": 0.8 },
@@ -201,7 +201,7 @@
     },
     "seguro-desemprego": {
       "gasto": { "nenhum": 0, "conta-individual": 0.03, "basico-curto": 0.2, "moderado": 0.4, "generoso-com-ativacao": 0.7 },
-      "escalaGasto": { "fator": "desemprego", "referencia": 14 }
+      "escalaGasto": { "fator": "desemprego", "referencia": 6 }
     },
     "trabalho-por-aplicativo": {
       "receita": { "sem-regulacao": 0, "categoria-propria": 0.05, "presuncao-de-vinculo": 0.15, "emprego-obrigatorio": 0.25 }

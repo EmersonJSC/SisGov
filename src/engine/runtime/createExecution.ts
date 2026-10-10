@@ -1,7 +1,7 @@
 import type { ResolvedPackage } from "../model/resolvePackage";
 import type { ScenarioGraph } from "../graph/buildGraph";
 import type { PolicyCommandBatch } from "./translatePolicyCommands";
-import { lawNodeBase } from "../model/lawNodes";
+import { contextNodeId, lawNodeBase } from "../model/lawNodes";
 import { computeNetwork } from "./computeNetwork";
 
 export type ExecutionSnapshot = Readonly<{
@@ -28,7 +28,7 @@ export type EngineExecution = {
  * vigentes do país ativas e a eficácia/apoio das leis no neutro.
  */
 /** Passadas máximas e tolerância para o país do turno 0 se acomodar. */
-const settlePasses = 200;
+const settlePasses = 1500;
 const settleTolerance = 1e-9;
 
 export function createExecution(
@@ -59,7 +59,29 @@ export function createExecution(
         relation.duration.modo === "continuo" &&
         (everyLawActive || inherited.has(relation.sourceId))),
   );
+  // Contexto do cenário (D-55): a cada passada, o nó `contexto:<bolha>`
+  // corrige metade da distância entre o que a rede dá e o valor declarado.
+  // Situação com valor 0 mira metade do ponto de surgimento (longe de surgir).
+  const targets = Object.entries(content.initialState.indicesIniciais ?? {})
+    .filter(([id]) => graph.nodesById[id] !== undefined)
+    .map(([id, value]) => {
+      const node = graph.nodesById[id];
+      const emergence = node.surgimento ?? 0;
+      const raw =
+        node.tipo === "situacao"
+          ? value > 0
+            ? value + emergence
+            : emergence / 2
+          : value;
+      return {
+        id,
+        context: contextNodeId(id),
+        raw,
+        situation: node.tipo === "situacao",
+      };
+    });
   let settled: Record<string, number> = start;
+  let gap = Infinity;
   for (let pass = 0; pass < settlePasses; pass += 1) {
     const network = computeNetwork({
       content,
@@ -75,8 +97,25 @@ export function createExecution(
     // fechar, a partida começa do estado declarado e o erro aparece no passo.
     if (!network.ok) break;
     const previous = settled;
-    settled = network.value.values;
+    settled = { ...network.value.values };
+    gap = 0;
+    if (targets.length) {
+      const reached = new Map(
+        network.value.explanations.map((item) => [item.targetId, item]),
+      );
+      for (const target of targets) {
+        const item = reached.get(target.id);
+        if (!item) continue;
+        // Índice: compara o valor para onde a bolha vai (já limitado ao
+        // domínio); situação: a soma antes do surgimento.
+        const now = target.situation ? item.rawValue : item.targetValue;
+        const miss = target.raw - now;
+        gap = Math.max(gap, Math.abs(miss));
+        settled[target.context] = (settled[target.context] ?? 0) + miss / 2;
+      }
+    }
     if (
+      gap < 1e-7 &&
       Object.keys(settled).every(
         (id) => Math.abs(settled[id] - previous[id]) < settleTolerance,
       )

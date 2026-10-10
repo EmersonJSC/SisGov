@@ -98,7 +98,8 @@ O equilíbrio para o jogador é trabalho do balanceamento (M7), com
 \`npm run rede:simular\`.
 
 Leitura: "falta de X" é o quanto X está abaixo do máximo da escala. Não
-existe valor-base escondido: cada bolha é só o que está listado (D-40).
+existe valor-base escondido: cada bolha é só o que está listado (D-40), mais
+o contexto do cenário (D-55), que é um nó visível e fixo.
 **Bolhas lentas** acumulam ao longo do tempo; o país declara só o ponto de
 partida delas.
 

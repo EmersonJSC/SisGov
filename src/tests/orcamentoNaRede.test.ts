@@ -104,7 +104,7 @@ describe("SG157 — orçamento na rede", () => {
     const partida = nova();
     const v = partida.game.execution.values;
     expect(v.juros_da_divida).toBeCloseTo(
-      (0.8 * v.taxa_juros * v.divida_publica) / 100,
+      (0.7 * v.taxa_juros * v.divida_publica) / 100,
       6,
     );
     const contas = verPartida(partida).contas;

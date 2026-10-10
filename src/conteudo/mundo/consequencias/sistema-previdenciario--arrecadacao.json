@@ -16,7 +16,7 @@
   "leitura": "nivel",
   "escala": {
     "fator": "renda_familias",
-    "referencia": 43
+    "referencia": 45
   },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,

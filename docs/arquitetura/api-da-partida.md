@@ -23,7 +23,7 @@ e descarte a anterior (ou guarde para "desfazer").
 
 ## O que a tela recebe (`VisaoPartida`)
 
-- `turno`.
+- `turno` e `cenario` (ex.: "Brasil 2026").
 - `contas` (SG157): `receita`, `gasto`, `juros` e `resultado` por ano e
   `divida`, na moeda do país (milhões), mais `pib` e `percentualPib` (os
   mesmos números em % do PIB, como estão na rede). Saem das bolhas do
@@ -40,7 +40,8 @@ e descarte a anterior (ou guarde para "desfazer").
 - `bolhas[]`: `id`, `nome`, `tipo` (calculado = índice, estoque = bolha lenta,
   situacao, evento), `unidade`, `area`, `avaliacao` (maior_melhor,
   maior_pior, neutra), `valor`, `minimo` e `maximo` (escala do domínio) e,
-  nas situações, `surgimento`.
+  nas situações, `surgimento`; `contexto` (D-55): a parte do valor que as
+  leis e a rede não explicam, fixa desde o turno 0.
 - `ligacoes[]`: `origem` (id de lei ou de bolha), `alvo` (id de bolha, ou
   `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
   convertido para meses; o conteúdo da partida já é mensal, então é o próprio

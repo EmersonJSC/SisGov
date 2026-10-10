@@ -291,6 +291,31 @@ export function validatePackageCoherence(
       );
     }
   }
+  for (const [variableId, value] of Object.entries(
+    content.initialState.indicesIniciais ?? {},
+  )) {
+    const variable = variablesById.get(variableId);
+    const field = `indicesIniciais.${variableId}`;
+    if (
+      !variable ||
+      (variable.tipo !== "calculado" && variable.tipo !== "situacao")
+    )
+      diagnostics.push(
+        issue(
+          content.initialState.id,
+          field,
+          "Só índice ou situação têm valor inicial de cenário (D-55).",
+        ),
+      );
+    else if (!isInDomain(value, variable))
+      diagnostics.push(
+        issue(
+          content.initialState.id,
+          field,
+          "O valor inicial está fora do domínio da variável.",
+        ),
+      );
+  }
   for (const variable of content.variables.variaveis) {
     if (
       variable.tipo === "estoque" &&

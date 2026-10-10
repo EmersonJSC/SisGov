@@ -4,7 +4,7 @@ import type {
   PolicyFile,
   VariableDefinition,
 } from "../model/contentTypes";
-import { lawInfluenceNodes } from "../model/lawNodes";
+import { contextNodeId, lawInfluenceNodes } from "../model/lawNodes";
 import type { ResolvedPackage } from "../model/resolvePackage";
 
 export type GraphNode = Readonly<VariableDefinition>;
@@ -111,11 +111,43 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
       delaySteps: consequence.atrasoPassos,
       duration: { modo: "continuo" as const },
     }));
+  // Contexto do cenário (D-55): um nó fixo por bolha com valor inicial.
+  const scenario = content.initialState.cenario?.nome ?? "país";
+  const context: GraphRelation[] = Object.keys(
+    content.initialState.indicesIniciais ?? {},
+  )
+    .filter((id) => nodesById[id] !== undefined)
+    .map((id) => {
+      const nodeId = contextNodeId(id);
+      nodesById[nodeId] = {
+        id: nodeId,
+        tipo: "controle",
+        nome: `Contexto do ${scenario}`,
+        unidade: nodesById[id].unidade,
+        dominio: {},
+      };
+      return {
+        id: `rede:${nodeId}`,
+        sourceId: nodeId,
+        sourceType: "rede" as const,
+        sourcePath: content.pathsById[content.initialState.id] ?? "",
+        consequenceId: nodeId,
+        consequencePath: content.pathsById[content.initialState.id] ?? "",
+        originId: nodeId,
+        targetId: id,
+        mechanism: "afim" as const,
+        parameters: { coeficiente: 1, termoConstante: 0 },
+        unit: nodesById[id].unidade,
+        delaySteps: 0,
+        duration: { modo: "continuo" as const },
+      };
+    });
   const relations = [
     ...sources.flatMap((source) =>
       addRelations(source, consequencesById, content.pathsById),
     ),
     ...network,
+    ...context,
   ].sort((left, right) => left.id.localeCompare(right.id));
   const relationsById: Record<string, GraphRelation> = {};
   for (const relation of relations) relationsById[relation.id] = relation;

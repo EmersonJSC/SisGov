@@ -6,7 +6,7 @@
   "alvo": "juros_da_divida",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.8,
+    "coeficiente": 0.7,
     "termoConstante": 0
   },
   "normalizacao": {

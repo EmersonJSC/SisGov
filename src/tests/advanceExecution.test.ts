@@ -176,6 +176,7 @@ describe("advanceExecution", () => {
         },
       ],
       rawValue: 0.4,
+      targetValue: 0.4,
       limited: false,
       result: 0.4,
     });

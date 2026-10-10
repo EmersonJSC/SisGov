@@ -256,6 +256,9 @@ export function resolvePackage(
         eventos: world.eventos,
         situacoes: world.situacoes,
         dilemas: world.dilemas,
+        ...(world.respostaDasBolhas !== undefined
+          ? { respostaDasBolhas: world.respostaDasBolhas }
+          : {}),
       }
     : declaredManifest;
 

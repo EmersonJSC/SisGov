@@ -1440,7 +1440,7 @@
       "nome": "Arrecadação",
       "unidade": "percentual_pib",
       "dominio": {
-        "minimo": 0,
+        "minimo": 0.1,
         "maximo": 100
       },
       "area": "Contas públicas",
@@ -2294,6 +2294,19 @@
       },
       "area": "Contas públicas",
       "avaliacao": "maior_pior"
+    },
+    {
+      "id": "juros_explosivos",
+      "tipo": "situacao",
+      "nome": "Juros explosivos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_pior",
+      "surgimento": 32
     },
     {
       "id": "letalidade_policial",

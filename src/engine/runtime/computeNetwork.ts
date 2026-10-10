@@ -38,6 +38,11 @@ export type TargetExplanation = Readonly<{
   contributions: readonly ContributionExplanation[];
   /** Soma antes do surgimento (situação) e dos limites do domínio. */
   rawValue: number;
+  /**
+   * Para onde a bolha vai (soma depois do surgimento e dos limites). Com
+   * resposta menor que 1 (D-54), o resultado anda só parte do caminho.
+   */
+  targetValue: number;
   /** O resultado bateu no limite do domínio. */
   limited: boolean;
   result: number;
@@ -200,6 +205,7 @@ export function computeNetwork(
   input: NetworkInput,
 ): ValidationResult<NetworkResult> {
   const { content, graph, previous } = input;
+  const response = content.manifest.respostaDasBolhas ?? 1;
   const next: Record<string, number> = { ...previous, ...input.controls };
   const lawByControl = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
@@ -222,7 +228,14 @@ export function computeNetwork(
       return values[nodeId];
     const level = values[nodeId];
     const efficacy = values[efficacyNodeId(law)] ?? 1;
-    return level === undefined ? undefined : level * efficacy;
+    if (level === undefined) return undefined;
+    // Eficácia acima de 1 reforça a lei, mas não passa da opção mais forte
+    // (o teto do controle): sem isso, um limiar na última opção dispara.
+    const ceiling = graph.nodesById[nodeId]?.dominio.maximo;
+    const effect = level * efficacy;
+    return ceiling !== undefined && level <= ceiling
+      ? Math.min(effect, ceiling)
+      : effect;
   };
 
   const explain = (
@@ -326,7 +339,13 @@ export function computeNetwork(
       node.tipo === "situacao"
         ? Math.max(0, raw - (node.surgimento ?? 0))
         : raw;
-    const result = clamp(emerged, node.dominio.minimo, node.dominio.maximo);
+    const target = clamp(emerged, node.dominio.minimo, node.dominio.maximo);
+    const before = previous[targetId];
+    // D-54: bolha calculada anda parte do caminho por passo (amortece ciclos).
+    const result =
+      response < 1 && !isLawNode(targetId) && before !== undefined
+        ? before + response * (target - before)
+        : target;
     next[targetId] = result;
     computed.add(targetId);
     explanations.push({
@@ -335,7 +354,8 @@ export function computeNetwork(
       baseValue: base,
       contributions,
       rawValue: raw,
-      limited: result !== emerged,
+      targetValue: target,
+      limited: target !== emerged,
       result,
     });
   };

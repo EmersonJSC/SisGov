@@ -163,10 +163,12 @@ function validateManifest(
       "perfis",
       "organizacaoPolitica",
       "unidadeTemporal",
+      "respostaDasBolhas",
     ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
+  validateBubbleResponse(value, file, diagnostics);
   if (
     value.unidadeTemporal !== undefined &&
     value.unidadeTemporal !== "mes" &&
@@ -288,6 +290,29 @@ function validateManifest(
   return value as ScenarioManifest;
 }
 
+function validateBubbleResponse(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+) {
+  if (value.respostaDasBolhas === undefined) return;
+  const response = requiredNumber(
+    value,
+    file,
+    "respostaDasBolhas",
+    diagnostics,
+  );
+  if (response !== undefined && (response <= 0 || response > 1))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "respostaDasBolhas",
+        "VALOR_INVALIDO",
+        "Use uma fração maior que 0 e até 1.",
+      ),
+    );
+}
+
 function validateWorld(
   value: JsonObject,
   file: string,
@@ -307,10 +332,12 @@ function validateWorld(
       "eventos",
       "situacoes",
       "dilemas",
+      "respostaDasBolhas",
     ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
+  validateBubbleResponse(value, file, diagnostics);
   requiredString(value, file, "nome", diagnostics);
   requiredString(value, file, "variaveis", diagnostics);
   requiredString(value, file, "catalogoPoliticas", diagnostics);
@@ -1306,10 +1333,46 @@ function validateInitialState(
       "leisEleitoraisVigentes",
       "fiscal",
       "politica",
+      "cenario",
+      "indicesIniciais",
     ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
+  if (value.cenario !== undefined) {
+    if (!isObject(value.cenario))
+      diagnostics.push(
+        diagnostic(file, "cenario", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(value.cenario, file, ["nome", "ano"], diagnostics);
+      requiredString(value.cenario, file, "cenario.nome", diagnostics);
+      if (value.cenario.ano !== undefined)
+        requiredNumber(value.cenario, file, "cenario.ano", diagnostics);
+    }
+  }
+  if (value.indicesIniciais !== undefined) {
+    if (!isObject(value.indicesIniciais))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "indicesIniciais",
+          "TIPO_INVALIDO",
+          "Deve ser um objeto de valores numéricos.",
+        ),
+      );
+    else
+      for (const [id, current] of Object.entries(value.indicesIniciais))
+        if (typeof current !== "number" || !Number.isFinite(current))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `indicesIniciais.${id}`,
+              "VALOR_INVALIDO",
+              "Deve ser um número finito.",
+            ),
+          );
+  }
   if (!isObject(value.valores)) {
     diagnostics.push(
       diagnostic(

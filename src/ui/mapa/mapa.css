@@ -2197,3 +2197,13 @@ button {
   color: #1b8a5f;
   background: #e8f5ed;
 }
+
+.contexto-boletim {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-left: 3px solid #c9a24a;
+  background: #fbf3df;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #5b4d33;
+}

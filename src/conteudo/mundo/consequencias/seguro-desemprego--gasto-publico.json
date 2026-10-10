@@ -17,7 +17,7 @@
   "leitura": "nivel",
   "escala": {
     "fator": "desemprego",
-    "referencia": 14
+    "referencia": 6
   },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,

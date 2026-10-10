@@ -44,6 +44,18 @@ export function lawNodeBase(nodeId: string): number | undefined {
   return undefined;
 }
 
+/**
+ * Contexto do cenário (D-55): a parte do valor inicial de uma bolha que as
+ * leis e a rede não explicam (história, geografia, cultura). Nó fixo.
+ */
+export function contextNodeId(bubbleId: string): string {
+  return `contexto:${bubbleId}`;
+}
+
+export function isContextNode(nodeId: string): boolean {
+  return nodeId.startsWith("contexto:");
+}
+
 export function isLawNode(nodeId: string): boolean {
   return lawNodeBase(nodeId) !== undefined;
 }

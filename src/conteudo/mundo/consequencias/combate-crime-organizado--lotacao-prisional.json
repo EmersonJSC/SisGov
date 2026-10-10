@@ -6,8 +6,8 @@
   "alvo": "lotacao_prisional",
   "mecanismo": "limiar",
   "parametros": {
-    "coeficiente": 12.0,
-    "limiar": 99,
+    "coeficiente": 1.0,
+    "limiar": 88,
     "direcao": "acima"
   },
   "unidade": "indice_0_100",

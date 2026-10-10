@@ -11,7 +11,7 @@
   },
   "normalizacao": {
     "fator": "pib",
-    "multiplicador": 0.00063333
+    "multiplicador": 0.00042222
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

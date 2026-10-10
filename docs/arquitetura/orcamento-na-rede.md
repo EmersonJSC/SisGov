@@ -1,8 +1,8 @@
 # Orçamento na rede
 
 **Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-50).
-Implementação no chamado SG157, por fases. **Fases 1 e 2 feitas em 10/out**
-(ver "Como ficou a fase 1" e "Como ficou a fase 2").
+Implementação no chamado SG157, por fases. **Fases 1, 2 e 3 feitas em
+10/out** (ver "Como ficou a fase 1", "… fase 2" e "… fase 3").
 
 ## A ideia
 
@@ -183,6 +183,29 @@ receita de 8,7 para 2,8 pontos em 8 turnos sem ação. Sobram dois problemas
 que a inércia não resolve: o turno 0 não é um ponto de equilíbrio (a
 confiança nas instituições cai de 68 para 46 no primeiro turno) e a inflação
 começa em 91.
+
+## Como ficou a fase 3
+
+- **Turno 0 = Brasil 2026** (D-55). O estado inicial declara o cenário e o
+  valor de 108 índices e situações (inflação 5%, desemprego 6%, Selic 15%,
+  pobreza 25%…, todos hipóteses próximas do real). A parte que a rede não
+  explica vira o nó "Contexto do Brasil 2026", visível no boletim de cada
+  indicador. Receita, gasto, juros e resultado não têm contexto: saem só das
+  leis (D-47).
+- **Estabilidade** (D-54, D-56). As bolhas andam metade do caminho por mês; o
+  que uma lei entrega não passa da opção mais forte; efeito "só na última
+  opção" vira rampa. Em 8 turnos sem ação nenhum índice pula mais de 3% da
+  escala.
+- **Contas** (escolha do autor: déficit real). Receita 31,4% do PIB, gasto
+  31%, juros 8,1% (0,7 × Selic × dívida), déficit 7,7%. A dívida passa de 77%
+  para cerca de 93% em dois anos e 112% em quatro, se nada for feito.
+- **Juros explosivos.** Situação = parte da receita que vai para os juros
+  (juros ÷ receita × 100). Surge acima de 32% (começa em 26%); quando surge,
+  aumenta o risco-país e os juros e derruba a confiança das empresas e a
+  popularidade. Sem ação, aparece no terceiro ano: dá tempo de reagir dentro
+  do mandato.
+- **Referências** das bases e dos custos que reagem passaram a ser os valores
+  do Brasil 2026 (consumo 50, renda 45, PIB 45, desemprego 6).
 
 ## Questões abertas
 

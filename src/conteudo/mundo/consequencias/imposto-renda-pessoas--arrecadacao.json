@@ -11,7 +11,7 @@
   },
   "normalizacao": {
     "fator": "renda_familias",
-    "multiplicador": 0.00253488
+    "multiplicador": 0.00242222
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

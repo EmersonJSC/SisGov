@@ -195,8 +195,8 @@ describe("mapa político: intensidade (D-43)", () => {
 
   it("bolha com valor maior fica maior", () => {
     const previdencia = intensidadeDaBolha(bolha("cobertura_previdenciaria"));
-    const poupanca = intensidadeDaBolha(bolha("poupanca_domestica"));
-    expect(bolha("poupanca_domestica").valor).toBeGreaterThan(
+    const poupanca = intensidadeDaBolha(bolha("cobertura_vacinal"));
+    expect(bolha("cobertura_vacinal").valor).toBeGreaterThan(
       bolha("cobertura_previdenciaria").valor,
     );
     expect(poupanca.escala).toBeGreaterThan(previdencia.escala);

@@ -1122,6 +1122,14 @@ export function DocumentoBolha({
       </div>
       <Regua bolha={bolha} />
       <p className="nota">{avaliacao}.</p>
+      {bolha.contexto !== undefined && Math.abs(bolha.contexto) >= 0.05 ? (
+        <p className="contexto-boletim">
+          <b>Contexto do {visao.cenario}:</b> {bolha.contexto > 0 ? "+" : "−"}
+          {valorDaBolha(Math.abs(bolha.contexto), bolha.unidade)}. É a parte do
+          valor que as leis e os outros indicadores não explicam: história,
+          geografia, cultura. Não muda durante a partida.
+        </p>
+      ) : null}
 
       <section className="secao-doc">
         <h2>

@@ -72,6 +72,8 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
   da lei mostra quanto custa ou arrecada por ano (`VisaoOpcao.saldoAnual`).
   A seta `produto` (consumo → receita, dívida → juros, desemprego → gasto)
   aparece como as outras.
+- **Contexto (D-55):** o boletim do indicador mostra a parte do valor que vem
+  do contexto do cenário ("Contexto do Brasil 2026").
 - **Câmera:** escala entre a visão geral (no mínimo 0,3) e 1,35; o mapa não sai
   da vista. O botão de alvo volta à visão geral. Esc fecha a seleção e depois
   a área.

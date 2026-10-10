@@ -116,7 +116,8 @@ it("a prévia de um ano mostra efeitos que só chegam depois do primeiro turno",
   const previa = preverLei(partida, "politica-de-imigracao", 0, 4);
   if (!previa.ok) throw new Error(previa.erros.join(" "));
   expect(previa.value.implantacao).toHaveLength(12);
-  const crise = previa.value.efeitos.find((e) => e.id === "crise_migratoria");
+  // a polarização reage à lei com atraso de um trimestre
+  const crise = previa.value.efeitos.find((e) => e.id === "polarizacao");
   expect(crise?.comMudanca).toHaveLength(12);
   // ainda nada no primeiro turno; diferença clara em um ano
   expect(Math.abs(crise!.comMudanca[2] - crise!.semMudanca[2])).toBeLessThan(

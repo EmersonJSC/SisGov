@@ -109,10 +109,10 @@ ARRECADACAO_POR_PONTO = {
     "imposto-transacoes-financeiras": 1.58,   # 0,38% → 0,6%
     "tarifas-de-importacao": 0.05,          # 12% → 0,6%
 }
-# Valor da base em que vale a tabela acima: o do Brasil no turno 0 (10/out).
-BASE_REFERENCIA = {"consumo": 48, "renda_familias": 43, "pib": 30}
+# Valor da base em que vale a tabela acima: o do Brasil 2026 no turno 0.
+BASE_REFERENCIA = {"consumo": 50, "renda_familias": 45, "pib": 45}
 # juros = taxa × dívida ÷ 100 × parcela (a dívida não paga toda a taxa básica)
-PARCELA_DA_TAXA_BASICA = 0.8
+PARCELA_DA_TAXA_BASICA = 0.7
 
 
 # Custo de cada opção (SG157 fase 2, D-52): docs/fichas/custos.json.
@@ -155,6 +155,15 @@ def elo(cid: str, origem: str, alvo: str, coeficiente: float, unidade: str = "pe
     return c
 
 
+# Situação "Juros explosivos" (D-48): parte da receita que vai para os juros.
+# Surge quando passa de 32% e pisca quando cresce (hipótese, fase 3).
+JUROS_EXPLOSIVOS = {
+    "id": "juros_explosivos", "tipo": "situacao", "nome": "Juros explosivos",
+    "unidade": "percentual_0_100", "dominio": {"minimo": 0, "maximo": 100},
+    "area": "Contas públicas", "avaliacao": "maior_pior", "surgimento": 32,
+}
+VARIAVEIS_FISCAIS = {JUROS_EXPLOSIVOS["id"]: JUROS_EXPLOSIVOS}
+
 REDE_FISCAL = [
     elo("arrecadacao--resultado-fiscal", "arrecadacao", "resultado_fiscal", 1),
     elo("gasto-publico--resultado-fiscal", "gasto_publico", "resultado_fiscal", -1),
@@ -164,6 +173,16 @@ REDE_FISCAL = [
         "percentual_pib_por_passo"),
     elo("taxa-juros--juros-da-divida", "taxa_juros", "juros_da_divida", PARCELA_DA_TAXA_BASICA,
         normalizacao={"fator": "divida_publica", "multiplicador": 0.01}),
+    # juros ÷ receita × 100 = % da receita que vai para os juros
+    elo("juros-da-divida--juros-explosivos", "juros_da_divida", "juros_explosivos", 1, "percentual_0_100",
+        normalizacao={"divisor": "arrecadacao", "multiplicador": 100}),
+    # a crise alimenta a si mesma: risco sobe, juros sobem, empresas recuam
+    elo("juros-explosivos--risco-pais", "juros_explosivos", "risco_pais", 0.8, "indice_0_100"),
+    elo("juros-explosivos--taxa-juros", "juros_explosivos", "taxa_juros", 0.1, "percentual_0_100"),
+    elo("juros-explosivos--confianca-empresarial", "juros_explosivos", "confianca_empresarial", -0.6,
+        "indice_0_100"),
+    elo("juros-explosivos--popularidade-governo", "juros_explosivos", "popularidade_governo", -0.4,
+        "indice_0_100"),
 ]
 
 
@@ -268,7 +287,7 @@ def main(aplicar: bool) -> None:
     consequencias: dict[str, dict] = {}
     leis_json: dict[str, dict] = {}
     vigentes, valores_controle = [], {}
-    usadas: set[str] = set(FISCAIS) | {"divida_publica", "taxa_juros"}
+    usadas: set[str] = set(FISCAIS) | {"divida_publica", "taxa_juros"} | set(VARIAVEIS_FISCAIS)
     contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL}
     gasto_brasil = 0.0
     variaveis[PIB_NOMINAL] = {"id": PIB_NOMINAL, "tipo": "controle", "nome": "PIB nominal",
@@ -337,7 +356,10 @@ def main(aplicar: bool) -> None:
                 if achados:
                     limiar = min(valores_op[o] for _, o in achados)
                     if limiar >= 100:
-                        limiar = 99
+                        # só na última opção: o efeito começa no meio do
+                        # caminho desde a penúltima (rampa, não degrau)
+                        anterior = max(v for v in valores_op.values() if v < 100)
+                        limiar = round((anterior + 100) / 2)
             consequencias[cid] = {"_alvo": alvo, "_forca": e["forca"], "_sinal": sinal, "_amp": amplitude,
                                   "_inicio": inicio, "_limiar": limiar, "origem": var,
                                   "atrasoPassos": ATRASO.get(e["atraso"], 0)}
@@ -401,7 +423,9 @@ def main(aplicar: bool) -> None:
                 mantidas.add(c["origem"]); mudou = True
     rede = {k: c for k, c in rede.items() if c["origem"] in mantidas and c["alvo"] in mantidas}
     for bid in sorted(mantidas):
-        if bid in antigas and antigas[bid]["tipo"] != "controle":
+        if bid in VARIAVEIS_FISCAIS:
+            novas_vars[bid] = VARIAVEIS_FISCAIS[bid]
+        elif bid in antigas and antigas[bid]["tipo"] != "controle":
             novas_vars[bid] = antigas[bid]
         elif bid in pilares:
             novas_vars[bid] = pilares[bid]
@@ -473,6 +497,8 @@ def main(aplicar: bool) -> None:
     mundo = ler(MUNDO / "mundo.json")
     mundo["consequencias"] = [f"mundo/consequencias/{cid}.json" for cid in sorted(saida_c)]
     escrever(MUNDO / "mundo.json", mundo)
+    # a receita divide os juros (situação de juros explosivos): nunca zero
+    novas_vars["arrecadacao"]["dominio"]["minimo"] = 0.1
     variaveis_doc["variaveis"] = list(variaveis.values()) + list(novas_vars.values())
     escrever(MUNDO / "indicadores" / "variaveis.json", variaveis_doc)
 

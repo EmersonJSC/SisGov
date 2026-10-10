@@ -145,7 +145,15 @@ export function prepareMonthlyContent(
         : {}),
     };
   });
-  const manifest = { ...content.manifest, unidadeTemporal: "mes" as const };
+  const response = content.manifest.respostaDasBolhas;
+  const manifest = {
+    ...content.manifest,
+    unidadeTemporal: "mes" as const,
+    // Mesma resposta por trimestre, repartida em três meses.
+    ...(response !== undefined
+      ? { respostaDasBolhas: 1 - Math.pow(1 - response, 1 / 3) }
+      : {}),
+  };
   const variables = {
     ...content.variables,
     variaveis: content.variables.variaveis.map((variable) => {
