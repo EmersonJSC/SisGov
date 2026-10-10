@@ -7,6 +7,7 @@
  */
 import {
   calculateContribution,
+  type GraphRelation,
   type ResolvedPackage,
   type ScenarioGraph,
 } from "../engine";
@@ -42,6 +43,11 @@ export type VisaoOpcao = Readonly<{
   id: string;
   rotulo: string;
   valor: number;
+  /**
+   * Quanto a lei arrecadaria (+) ou custaria (−) por ano nesta opção, com o
+   * país como está agora (moeda do país). 0 se não toca o orçamento.
+   */
+  saldoAnual: number;
 }>;
 
 export type VisaoLei = Readonly<{
@@ -100,8 +106,10 @@ export type VisaoLigacao = Readonly<{
   /** Atraso declarado no conteúdo, convertido para meses. */
   atrasoMeses: number;
   /**
-   * `afim` (proporcional), `limiar` (só reage depois de certo ponto) ou
-   * `produto` (a origem multiplica outra: base × alíquota, dívida × taxa).
+   * `afim` (proporcional), `limiar` (só reage depois de certo ponto),
+   * `pontos` (um valor para cada opção da lei, ligado em retas) ou `produto`
+   * (a origem multiplica outra: base × alíquota, dívida × taxa, desemprego ×
+   * seguro).
    */
   mecanismo: string;
 }>;
@@ -451,12 +459,13 @@ function lerContas(
 
 /**
  * Quanto cada lei arrecada (+) ou custa (−) por ano: a soma das setas dela
- * para a receita e para o gasto, com os valores de agora.
+ * para a receita e para o gasto, com os valores de agora. `saldo(lei, nivel)`
+ * responde para qualquer nível (o de cada opção, por exemplo).
  */
 function saldoDasLeis(
   partida: Partida,
   values: Readonly<Record<string, number>>,
-): Map<string, number> {
+): (leiId: string, nivel?: number) => number {
   const { content, graph } = partida;
   const pib = pibNominal(content, values);
   const lawByControl = new Map(
@@ -468,7 +477,10 @@ function saldoDasLeis(
       ? values[id]
       : (values[id] ?? 0) * (values[efficacyNodeId(law)] ?? 1);
   };
-  const saldo = new Map<string, number>();
+  const porLei = new Map<
+    string,
+    { relation: GraphRelation; sinal: 1 | -1 }[]
+  >();
   for (const relation of graph.relations) {
     const sinal =
       relation.targetId === BOLHAS_DO_ORCAMENTO.receita
@@ -477,26 +489,36 @@ function saldoDasLeis(
           ? -1
           : 0;
     if (sinal === 0 || relation.sourceType !== "lei") continue;
-    const origem = relation.readsLevel
-      ? values[relation.originId]
-      : delivered(relation.originId);
-    if (origem === undefined) continue;
-    const contribution = calculateContribution(relation, origem, delivered);
-    if (!contribution.ok) continue;
-    saldo.set(
-      relation.sourceId,
-      (saldo.get(relation.sourceId) ?? 0) +
-        (sinal * contribution.value.value * pib) / 100,
-    );
+    porLei.set(relation.sourceId, [
+      ...(porLei.get(relation.sourceId) ?? []),
+      { relation, sinal },
+    ]);
   }
-  return saldo;
+  return (leiId, nivel) => {
+    let saldo = 0;
+    for (const { relation, sinal } of porLei.get(leiId) ?? []) {
+      const law = lawByControl.get(relation.originId);
+      const level = nivel ?? values[relation.originId];
+      const origem =
+        nivel === undefined && !relation.readsLevel
+          ? delivered(relation.originId)
+          : relation.readsLevel || law === undefined
+            ? level
+            : level * (values[efficacyNodeId(law)] ?? 1);
+      if (origem === undefined) continue;
+      const contribution = calculateContribution(relation, origem, delivered);
+      if (contribution.ok)
+        saldo += (sinal * contribution.value.value * pib) / 100;
+    }
+    return saldo;
+  };
 }
 
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
 export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
   const values = game.execution.values;
-  const saldos = saldoDasLeis(partida, values);
+  const saldo = saldoDasLeis(partida, values);
   const states = new Map(
     game.policies.map((state) => [state.policyDefinitionId, state]),
   );
@@ -526,9 +548,14 @@ export function verPartida(partida: Partida): VisaoPartida {
       minimo: variable?.dominio.minimo,
       maximo: variable?.dominio.maximo,
       unidade: policy.controle.unidade,
-      opcoes: opcoes?.map(({ id, rotulo, valor }) => ({ id, rotulo, valor })),
+      opcoes: opcoes?.map(({ id, rotulo, valor }) => ({
+        id,
+        rotulo,
+        valor,
+        saldoAnual: saldo(policy.id, valor),
+      })),
       opcaoAtual: nearest?.id,
-      saldoAnual: saldos.get(policy.id) ?? 0,
+      saldoAnual: saldo(policy.id),
     };
   });
   const bolhas = content.variables.variaveis
@@ -549,32 +576,38 @@ export function verPartida(partida: Partida): VisaoPartida {
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
   );
   const ligacoes = content.consequences.flatMap((consequence) => {
-    const coefficient = Number(
-      (consequence.parametros as { coeficiente?: number }).coeficiente ?? 1,
-    );
+    const parametros = consequence.parametros;
+    // Tabela de pontos (custo por opção): o sinal é o da maior saída.
+    const forte = parametros.pontos
+      ? parametros.pontos.reduce(
+          (best, [, y]) => (Math.abs(y) > Math.abs(best) ? y : best),
+          0,
+        )
+      : Number(parametros.coeficiente ?? 1);
     const ligacao: VisaoLigacao = {
       id: consequence.id,
       origem: controlToLaw.get(consequence.origem) ?? consequence.origem,
       alvo: consequence.alvo,
-      sinal: coefficient < 0 ? -1 : 1,
+      sinal: forte < 0 ? -1 : 1,
       // O conteúdo da partida já é mensal (prepareMonthlyContent).
       atrasoMeses: consequence.atrasoPassos,
       mecanismo: consequence.mecanismo,
     };
-    // Produto (D-50): o fator também empurra o alvo (consumo → receita,
-    // dívida → juros), e o jogador precisa ver essa seta.
-    const fator = consequence.normalizacao?.fator;
-    return fator
-      ? [
-          ligacao,
-          {
-            ...ligacao,
-            id: `${consequence.id}~${fator}`,
-            origem: fator,
-            mecanismo: "produto",
-          },
-        ]
-      : [ligacao];
+    // Produto (D-50) e custo que reage (D-52): o outro nó também empurra o
+    // alvo (consumo → receita, dívida → juros, desemprego → gasto), e o
+    // jogador precisa ver essa seta.
+    const outros = [consequence.normalizacao?.fator, consequence.escala?.fator];
+    return [
+      ligacao,
+      ...outros
+        .filter((id): id is string => id !== undefined)
+        .map((id) => ({
+          ...ligacao,
+          id: `${consequence.id}~${id}`,
+          origem: id,
+          mecanismo: "produto",
+        })),
+    ];
   });
   return {
     pais: content.manifest?.nome ?? "",

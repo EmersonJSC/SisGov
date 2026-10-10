@@ -15,38 +15,32 @@
       {
         "id": "guerra-total",
         "rotulo": "Guerra total às drogas",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "proibicao-punitiva",
         "rotulo": "Proibição com prisão do usuário",
-        "valor": 20,
-        "custoAnualPercentualPib": 0.04
+        "valor": 20
       },
       {
         "id": "despenalizacao",
         "rotulo": "Usuário não vai preso",
-        "valor": 40,
-        "custoAnualPercentualPib": 0.08
+        "valor": 40
       },
       {
         "id": "descriminalizacao",
         "rotulo": "Uso vira questão de saúde",
-        "valor": 60,
-        "custoAnualPercentualPib": 0.12
+        "valor": 60
       },
       {
         "id": "regulacao-legal",
         "rotulo": "Cannabis legal e regulada",
-        "valor": 80,
-        "custoAnualPercentualPib": 0.16
+        "valor": 80
       },
       {
         "id": "mercado-livre",
         "rotulo": "Sem lei de drogas",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -57,8 +51,9 @@
     "politica-de-drogas--crime-organizado",
     "politica-de-drogas--saude-populacao",
     "politica-de-drogas--letalidade-policial",
-    "politica-de-drogas--arrecadacao",
-    "politica-de-drogas--sensacao-seguranca"
+    "politica-de-drogas--sensacao-seguranca",
+    "politica-de-drogas--gasto-publico",
+    "politica-de-drogas--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

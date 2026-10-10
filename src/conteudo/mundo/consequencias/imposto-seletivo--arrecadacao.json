@@ -4,10 +4,14 @@
   "versaoEsquema": 1,
   "origem": "nivel_imposto_seletivo",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.001,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.3],
+      [67, 0.5],
+      [100, 0.7]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

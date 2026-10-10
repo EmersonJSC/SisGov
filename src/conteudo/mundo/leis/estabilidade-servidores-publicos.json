@@ -15,26 +15,22 @@
       {
         "id": "livre-nomeacao",
         "rotulo": "Livre nomeação",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "contrato-comum",
         "rotulo": "Contrato comum",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "estabilidade-com-avaliacao",
         "rotulo": "Estabilidade com avaliação",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "estabilidade-plena",
         "rotulo": "Estabilidade plena",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -43,8 +39,8 @@
     "estabilidade-servidores-publicos--captura-politica",
     "estabilidade-servidores-publicos--capacidade-estatal",
     "estabilidade-servidores-publicos--capacidade-estatal-3",
-    "estabilidade-servidores-publicos--gasto-publico",
-    "estabilidade-servidores-publicos--margem-manobra-governo"
+    "estabilidade-servidores-publicos--margem-manobra-governo",
+    "estabilidade-servidores-publicos--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

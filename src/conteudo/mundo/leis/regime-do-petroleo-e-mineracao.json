@@ -39,10 +39,10 @@
     "regime-do-petroleo-e-mineracao--producao-mineral",
     "regime-do-petroleo-e-mineracao--exportacoes",
     "regime-do-petroleo-e-mineracao--cambio",
-    "regime-do-petroleo-e-mineracao--arrecadacao",
     "regime-do-petroleo-e-mineracao--emissoes",
     "regime-do-petroleo-e-mineracao--desastre-ambiental",
-    "regime-do-petroleo-e-mineracao--corrupcao"
+    "regime-do-petroleo-e-mineracao--corrupcao",
+    "regime-do-petroleo-e-mineracao--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

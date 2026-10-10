@@ -15,26 +15,22 @@
       {
         "id": "sem-protecao",
         "rotulo": "Desmate livre",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "so-areas-sensiveis",
         "rotulo": "Só margens e encostas",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "reserva-legal",
         "rotulo": "Reserva legal obrigatória",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "desmatamento-zero",
         "rotulo": "Desmatamento zero",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -46,7 +42,8 @@
     "codigo-florestal--preco-alimentos",
     "codigo-florestal--reputacao-internacional",
     "codigo-florestal--exportacoes",
-    "codigo-florestal--conflitos-fundiarios"
+    "codigo-florestal--conflitos-fundiarios",
+    "codigo-florestal--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

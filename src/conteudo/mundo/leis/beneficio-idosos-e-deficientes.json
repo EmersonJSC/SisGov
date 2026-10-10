@@ -15,26 +15,22 @@
       {
         "id": "nenhum",
         "rotulo": "Sem pensão social",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "focalizado-estrito",
         "rotulo": "Só para os miseráveis",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "focalizado-amplo",
         "rotulo": "Para a maioria (exceto os ricos)",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "universal",
         "rotulo": "Pensão universal",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -42,9 +38,9 @@
     "beneficio-idosos-e-deficientes--pobreza",
     "beneficio-idosos-e-deficientes--cobertura-previdenciaria",
     "beneficio-idosos-e-deficientes--desigualdade",
-    "beneficio-idosos-e-deficientes--gasto-publico",
     "beneficio-idosos-e-deficientes--informalidade",
-    "beneficio-idosos-e-deficientes--saude-populacao"
+    "beneficio-idosos-e-deficientes--saude-populacao",
+    "beneficio-idosos-e-deficientes--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -15,26 +15,22 @@
       {
         "id": "nenhuma",
         "rotulo": "Sem reforma agrária",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "titulacao-e-mercado",
         "rotulo": "Título e crédito fundiário",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "desapropriacao-improdutiva",
         "rotulo": "Desapropriação de terra improdutiva",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "redistribuicao-ampla",
         "rotulo": "Redistribuição ampla",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },

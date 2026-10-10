@@ -15,26 +15,22 @@
       {
         "id": "sem-politica",
         "rotulo": "Problema da família",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "manicomial",
         "rotulo": "Hospícios",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "misto-hospital-geral",
         "rotulo": "Hospital geral e ambulatório",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "rede-comunitaria",
         "rotulo": "Cuidado em liberdade",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -45,7 +41,8 @@
     "saude-mental--populacao-de-rua",
     "saude-mental--participacao-trabalho-cuidadoras",
     "saude-mental--produtividade",
-    "saude-mental--uso-drogas"
+    "saude-mental--uso-drogas",
+    "saude-mental--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

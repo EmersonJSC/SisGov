@@ -1,0 +1,24 @@
+{
+  "id": "politica-de-drogas--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_drogas",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0.4],
+      [20, 0.3],
+      [40, 0.2],
+      [60, 0.15],
+      [80, 0.1],
+      [100, 0.05]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -4,15 +4,19 @@
   "versaoEsquema": 1,
   "origem": "nivel_saneamento_basico",
   "alvo": "gasto_publico",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.004,
-    "limiar": 75,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [25, 0.3],
+      [50, 0.25],
+      [75, 0.1],
+      [100, 0.03]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

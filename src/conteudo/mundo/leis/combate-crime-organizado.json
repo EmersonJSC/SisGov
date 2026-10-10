@@ -15,32 +15,27 @@
       {
         "id": "sem-estrategia",
         "rotulo": "Sem estratégia nacional",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "tregua-negociada",
         "rotulo": "Trégua com as facções",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "asfixia-financeira",
         "rotulo": "Seguir o dinheiro",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "ofensiva-militar",
         "rotulo": "Guerra aos cartéis",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "estado-de-excecao",
         "rotulo": "Estado de exceção",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -52,7 +47,8 @@
     "combate-crime-organizado--crime-organizado-4",
     "combate-crime-organizado--liberdade-civil",
     "combate-crime-organizado--lotacao-prisional",
-    "combate-crime-organizado--popularidade-governo"
+    "combate-crime-organizado--popularidade-governo",
+    "combate-crime-organizado--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

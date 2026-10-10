@@ -4,14 +4,17 @@
   "versaoEsquema": 1,
   "origem": "nivel_escola_tempo_integral",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0045,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [50, 0.3],
+      [100, 1.2]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

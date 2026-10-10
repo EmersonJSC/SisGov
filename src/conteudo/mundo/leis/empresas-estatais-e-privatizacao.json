@@ -15,37 +15,34 @@
       {
         "id": "sem-estatais",
         "rotulo": "Privatizar tudo",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "estatais-minimas",
         "rotulo": "Só serviços essenciais",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "estatais-estrategicas",
         "rotulo": "Estatais estratégicas",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "estado-empresario",
         "rotulo": "Estado empresário",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "empresas-estatais-e-privatizacao--produtividade",
     "empresas-estatais-e-privatizacao--corrupcao",
-    "empresas-estatais-e-privatizacao--gasto-publico",
     "empresas-estatais-e-privatizacao--investimento",
     "empresas-estatais-e-privatizacao--preco-energia",
     "empresas-estatais-e-privatizacao--confianca-empresarial",
-    "empresas-estatais-e-privatizacao--desemprego"
+    "empresas-estatais-e-privatizacao--desemprego",
+    "empresas-estatais-e-privatizacao--gasto-publico",
+    "empresas-estatais-e-privatizacao--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

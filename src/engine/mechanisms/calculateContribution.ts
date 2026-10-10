@@ -13,6 +13,8 @@ export type Contribution = Readonly<{
   divisorValue?: number;
   /** Valor do fator, quando há normalização com fator (produto, D-50). */
   factorValue?: number;
+  /** Valor do fator da escala (custo que reage, D-52). */
+  scaleValue?: number;
   value: number;
 }>;
 
@@ -23,6 +25,22 @@ function failure(field: string, message: string): ValidationResult<never> {
       { code: "CALCULO_INVALIDO", file: "$execucao", field, message },
     ],
   };
+}
+
+/** Reta entre os dois pontos vizinhos; fora da tabela, o ponto da ponta. */
+export function interpolate(
+  points: readonly (readonly [number, number])[],
+  x: number,
+): number {
+  if (x <= points[0][0]) return points[0][1];
+  for (let i = 1; i < points.length; i++) {
+    const [x1, y1] = points[i];
+    if (x <= x1) {
+      const [x0, y0] = points[i - 1];
+      return y0 + ((y1 - y0) * (x - x0)) / (x1 - x0);
+    }
+  }
+  return points[points.length - 1][1];
 }
 
 /** Aplica o mecanismo da relação a uma entrada já normalizada. */
@@ -56,6 +74,8 @@ function applyMechanism(
       // Antes do ponto o efeito é exatamente zero (nunca −0).
       return { ok: true, value: excess > 0 ? p.coeficiente! * excess : 0 };
     }
+    case "pontos":
+      return { ok: true, value: interpolate(p.pontos!, x) };
   }
 }
 
@@ -101,7 +121,18 @@ export function calculateContribution(
   }
   const applied = applyMechanism(relation, inputValue);
   if (!applied.ok) return applied;
-  if (!Number.isFinite(applied.value))
+  let value = applied.value;
+  let scaleValue: number | undefined;
+  if (relation.scale) {
+    scaleValue = readValue(relation.scale.fator);
+    if (scaleValue === undefined || !Number.isFinite(scaleValue))
+      return failure(
+        "escala.fator",
+        `O fator ${relation.scale.fator} precisa ser finito.`,
+      );
+    value = (value * scaleValue) / relation.scale.referencia;
+  }
+  if (!Number.isFinite(value))
     return failure("resultado", "A contribuição calculada não é finita.");
   return {
     ok: true,
@@ -112,7 +143,8 @@ export function calculateContribution(
       inputValue,
       ...(divisorValue === undefined ? {} : { divisorValue }),
       ...(factorValue === undefined ? {} : { factorValue }),
-      value: applied.value,
+      ...(scaleValue === undefined ? {} : { scaleValue }),
+      value,
     },
   };
 }

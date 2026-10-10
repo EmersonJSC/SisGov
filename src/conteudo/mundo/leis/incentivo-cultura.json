@@ -15,32 +15,27 @@
       {
         "id": "mercado-e-filantropia",
         "rotulo": "Mercado e doações",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "mecenato-incentivado",
         "rotulo": "Patrocínio com desconto no imposto",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "fomento-direto",
         "rotulo": "Editais públicos",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "excecao-cultural",
         "rotulo": "Exceção cultural",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "cultura-dirigida",
         "rotulo": "Cultura dirigida",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -49,10 +44,10 @@
     "incentivo-cultura--vitalidade-cultural-1",
     "incentivo-cultura--liberdade-civil",
     "incentivo-cultura--reputacao-internacional",
-    "incentivo-cultura--arrecadacao",
-    "incentivo-cultura--gasto-publico",
     "incentivo-cultura--polarizacao",
-    "incentivo-cultura--corrupcao"
+    "incentivo-cultura--corrupcao",
+    "incentivo-cultura--gasto-publico",
+    "incentivo-cultura--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

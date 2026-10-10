@@ -40,8 +40,8 @@
     "acordos-comerciais--produtividade",
     "acordos-comerciais--inflacao",
     "acordos-comerciais--reputacao-internacional",
-    "acordos-comerciais--arrecadacao",
-    "acordos-comerciais--desemprego"
+    "acordos-comerciais--desemprego",
+    "acordos-comerciais--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

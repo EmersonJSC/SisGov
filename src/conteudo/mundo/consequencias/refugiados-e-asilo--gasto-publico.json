@@ -4,11 +4,15 @@
   "versaoEsquema": 1,
   "origem": "nivel_refugiados_e_asilo",
   "alvo": "gasto_publico",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.25,
-    "limiar": 99,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [25, 0.15],
+      [50, 0.02],
+      [75, 0.05],
+      [100, 0.15]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

@@ -4,14 +4,18 @@
   "versaoEsquema": 1,
   "origem": "nivel_estabilidade_servidores_publicos",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.1],
+      [67, 0.25],
+      [100, 0.4]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

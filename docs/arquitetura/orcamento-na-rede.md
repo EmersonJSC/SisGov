@@ -1,8 +1,8 @@
 # Orçamento na rede
 
 **Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-50).
-Implementação no chamado SG157, por fases. **Fase 1 feita em 10/out**
-(ver "Como ficou a fase 1").
+Implementação no chamado SG157, por fases. **Fases 1 e 2 feitas em 10/out**
+(ver "Como ficou a fase 1" e "Como ficou a fase 2").
 
 ## A ideia
 
@@ -103,9 +103,9 @@ que a rede fecha a mesma conta; depois sai.
    e o superávit abate.
 2. **Custos de todas as leis.** Custo por opção (SG138), custos que reagem
    (seguro-desemprego, previdência, folha), estatais e royalties.
-3. **Calibração do Brasil.** Receita ≈ 18% do PIB, gasto ≈ 19%, juros ≈ 7,5%:
-   o jogo começa com déficit de uns 8% do PIB, o primeiro problema a
-   resolver. Situação de juros explosivos. Estabilidade: 8 turnos sem ação
+3. **Calibração do Brasil.** Setor público inteiro (D-53): receita ≈ 31% do
+   PIB, gasto ≈ 31%, juros ≈ 7,5%: o jogo começa com déficit de uns 7–8% do
+   PIB, o primeiro problema a resolver. Situação de juros explosivos. Estabilidade: 8 turnos sem ação
    mudam pouco.
 4. **Cofre e empréstimos (estudo).** O que fazer com superávit quando a
    dívida acaba; efeito de emprestar no PIB.
@@ -144,6 +144,45 @@ Brasil no turno 0 (hipótese): receita 18,5% do PIB (R$ 2,2 tri), gasto 19,2%
 ainda oscilam muito de um turno para outro (o consumo cai de 48 para 26 no
 primeiro turno), e a receita oscila junto. É a calibração dos índices (D-41,
 SG144), não a conta.
+
+## Como ficou a fase 2
+
+- **Custo de cada opção** em `docs/fichas/custos.json`: para cada lei de
+  opções que mexe no orçamento, quanto cada opção custa (`gasto`) ou arrecada
+  (`receita`, negativo = renúncia), em % do PIB. O conversor gera uma seta por
+  lado com o mecanismo `pontos` (D-52): entre duas opções, a reta que as liga
+  (a lei anda mês a mês até a meta, e o custo anda junto). O custo pode estar
+  nas pontas do eixo (matriz energética, refugiados) ou no meio.
+- **Custos que reagem** (`escala`, D-52): seguro-desemprego × desemprego;
+  previdência, previdência rural, pensão por morte, pensão social e cuidados
+  de longa duração × envelhecimento; contribuições da previdência × renda das
+  famílias; royalties × produção mineral; dividendos das estatais × PIB.
+- **Estatais e royalties** arrecadam pelas leis `empresas-estatais-e-privatizacao`
+  e `regime-do-petroleo-e-mineracao`; **renúncias** (Simples, zona franca,
+  mecenato) tiram receita.
+- **Previdência** tem os dois lados: contribuições na receita e benefícios no
+  gasto, na mesma lei.
+- Os efeitos das fichas sobre gasto e receita dessas leis saíram (a tabela os
+  substitui). Leis sem tabela (idade mínima, regra fiscal…) continuam com
+  `FORCA_FISCAL`.
+- **Folha do funcionalismo:** entrou como custo das opções de estabilidade dos
+  servidores e do modelo de polícia; não reage a nada ainda.
+- **Tela:** cada opção mostra quanto custa ou arrecada por ano, com o país
+  como está; a seta desemprego → gasto aparece no mapa.
+- **Setor público inteiro (D-53):** como os pisos de saúde e educação já são
+  do país todo, as contas passaram a valer para União, estados e municípios
+  juntos. Brasil no turno 0 (hipótese): receita 31,7% do PIB (R$ 3,8 tri),
+  gasto 31% (R$ 3,7 tri), juros 7,4% (R$ 890 bi), déficit 6,8% (R$ 810 bi),
+  dívida 77%.
+
+**Achado para a fase 3:** com a receita presa às bases, a oscilação dos
+índices aparece no orçamento: o déficit vai de 6,8% para 15,8% do PIB no
+primeiro turno e volta. Um teste com inércia nas bolhas (cada bolha anda
+metade do caminho até o valor que recebe, por mês) reduziu o maior salto da
+receita de 8,7 para 2,8 pontos em 8 turnos sem ação. Sobram dois problemas
+que a inércia não resolve: o turno 0 não é um ponto de equilíbrio (a
+confiança nas instituições cai de 68 para 46 no primeiro turno) e a inflação
+começa em 91.
 
 ## Questões abertas
 

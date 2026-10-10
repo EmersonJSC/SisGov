@@ -4,15 +4,18 @@
   "versaoEsquema": 1,
   "origem": "nivel_regime_simplificado_pequenas_empresas",
   "alvo": "arrecadacao",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.00757576,
-    "limiar": 67,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [33, -0.2],
+      [67, -0.6],
+      [100, -1.0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

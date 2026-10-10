@@ -15,32 +15,27 @@
       {
         "id": "sem-justica-juvenil",
         "rotulo": "Sem justiça juvenil",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "adulto-em-crime-grave",
         "rotulo": "Adulto em crime grave",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "maioridade-16",
         "rotulo": "Maioridade aos 16",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "maioridade-18",
         "rotulo": "Maioridade aos 18",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "juvenil-ate-21",
         "rotulo": "Justiça juvenil até 21",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -51,7 +46,8 @@
     "maioridade-penal--impunidade",
     "maioridade-penal--crime-organizado",
     "maioridade-penal--sensacao-seguranca",
-    "maioridade-penal--popularidade-governo"
+    "maioridade-penal--popularidade-governo",
+    "maioridade-penal--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

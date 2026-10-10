@@ -4,12 +4,21 @@
   "versaoEsquema": 1,
   "origem": "nivel_seguro_desemprego",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [25, 0.03],
+      [50, 0.2],
+      [75, 0.4],
+      [100, 0.7]
+    ]
   },
   "leitura": "nivel",
+  "escala": {
+    "fator": "desemprego",
+    "referencia": 14
+  },
   "unidade": "percentual_pib",
   "atrasoPassos": 0,
   "duracao": {

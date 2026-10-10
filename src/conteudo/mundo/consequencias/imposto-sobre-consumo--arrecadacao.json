@@ -11,7 +11,7 @@
   },
   "normalizacao": {
     "fator": "consumo",
-    "multiplicador": 0.00708333
+    "multiplicador": 0.01104167
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

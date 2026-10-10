@@ -37,11 +37,11 @@
   "consequencias": [
     "imposto-seletivo--saude-populacao",
     "imposto-seletivo--pressao-hospitalar",
-    "imposto-seletivo--arrecadacao",
     "imposto-seletivo--inflacao",
     "imposto-seletivo--crime-organizado",
     "imposto-seletivo--emissoes",
-    "imposto-seletivo--desigualdade"
+    "imposto-seletivo--desigualdade",
+    "imposto-seletivo--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

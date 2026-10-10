@@ -15,26 +15,22 @@
       {
         "id": "so-academico",
         "rotulo": "Só acadêmico",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "tecnico-como-opcao",
         "rotulo": "Técnico como opção",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "tecnico-em-massa",
         "rotulo": "Técnico para metade",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "separacao-precoce",
         "rotulo": "Separação aos 10 anos",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },

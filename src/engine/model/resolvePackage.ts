@@ -169,6 +169,15 @@ function checkReferences(
     }
   }
   for (const consequence of consequences) {
+    if (consequence.escala && !variableIds.has(consequence.escala.fator))
+      diagnostics.push(
+        issue(
+          consequence.id,
+          "escala.fator",
+          "REFERENCIA_QUEBRADA",
+          `A variável ${consequence.escala.fator} não existe.`,
+        ),
+      );
     for (const field of ["divisor", "fator"] as const) {
       const id = consequence.normalizacao?.[field];
       if (id !== undefined && !variableIds.has(id))

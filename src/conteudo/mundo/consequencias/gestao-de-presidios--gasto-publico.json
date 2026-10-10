@@ -4,11 +4,15 @@
   "versaoEsquema": 1,
   "origem": "nivel_gestao_de_presidios",
   "alvo": "gasto_publico",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "limiar": 0,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0.05],
+      [25, 0.2],
+      [50, 0.15],
+      [75, 0.2],
+      [100, 0.25]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

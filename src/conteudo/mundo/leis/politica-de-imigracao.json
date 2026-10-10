@@ -15,32 +15,27 @@
       {
         "id": "fechada",
         "rotulo": "Fronteiras fechadas",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "temporaria",
         "rotulo": "Só trabalho temporário",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "seletiva",
         "rotulo": "Seletiva por pontos",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "ampla",
         "rotulo": "Acolhedora",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "livre-circulacao",
         "rotulo": "Livre circulação",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -51,7 +46,8 @@
     "politica-de-imigracao--produtividade",
     "politica-de-imigracao--desemprego",
     "politica-de-imigracao--polarizacao",
-    "politica-de-imigracao--discriminacao"
+    "politica-de-imigracao--discriminacao",
+    "politica-de-imigracao--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

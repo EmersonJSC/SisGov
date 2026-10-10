@@ -15,35 +15,31 @@
       {
         "id": "sem-piso-nacional",
         "rotulo": "Cada rede decide",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "piso-nacional-minimo",
         "rotulo": "Piso nacional",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.198
+        "valor": 33
       },
       {
         "id": "carreira-nacional",
         "rotulo": "Carreira nacional",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.402
+        "valor": 67
       },
       {
         "id": "salario-de-elite",
         "rotulo": "Salário de elite",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.6
+        "valor": 100
       }
     ]
   },
   "consequencias": [
-    "piso-salarial-professores--gasto-publico",
     "piso-salarial-professores--aprendizagem",
     "piso-salarial-professores--greve-de-professores",
     "piso-salarial-professores--desigualdade",
-    "piso-salarial-professores--custo-trabalhista"
+    "piso-salarial-professores--custo-trabalhista",
+    "piso-salarial-professores--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

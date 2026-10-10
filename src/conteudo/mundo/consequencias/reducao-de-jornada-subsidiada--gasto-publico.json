@@ -4,10 +4,13 @@
   "versaoEsquema": 1,
   "origem": "nivel_reducao_de_jornada_subsidiada",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [50, 0.05],
+      [100, 0.6]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

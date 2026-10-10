@@ -4,14 +4,22 @@
   "versaoEsquema": 1,
   "origem": "nivel_pensao_por_morte",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.25],
+      [67, 0.5],
+      [100, 0.9]
+    ]
   },
   "leitura": "nivel",
+  "escala": {
+    "fator": "envelhecimento",
+    "referencia": 40
+  },
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

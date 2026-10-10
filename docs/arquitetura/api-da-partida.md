@@ -32,7 +32,7 @@ e descarte a anterior (ou guarde para "desfazer").
 - `leis[]`: `id`, `nome`, `descricao`, `grupo` (orcamentaria, regulatoria,
   tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a
-  mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`),
+  mês), `minimo`, `maximo`, `unidade`, `opcoes[]` (`id`, `rotulo`, `valor`, `saldoAnual`: quanto a lei arrecadaria ou custaria por ano naquela opção, com o país como está),
   `opcaoAtual`, `saldoAnual` (quanto a lei arrecada, +, ou custa, −, por ano,
   somando as setas dela para a receita e o gasto), `processo` (`emenda-constitucional`,
   `lei-ordinaria`, `execucao-programa-autorizado`…). A tela põe as leis de
@@ -45,8 +45,9 @@ e descarte a anterior (ou guarde para "desfazer").
   `eficacia:<lei>`), `sinal` (1 sobe, −1 cai), `atrasoMeses` (atraso declarado
   convertido para meses; o conteúdo da partida já é mensal, então é o próprio
   `atrasoPassos` — até 10/out saía multiplicado por 3 por engano), `mecanismo`
-  (`afim`, `limiar` ou `produto`: seta extra do fator de um produto, como
-  consumo → receita e dívida → juros).
+  (`afim`, `limiar`, `pontos` — um valor por opção — ou `produto`: seta extra
+  do fator de um produto ou de um custo que reage, como consumo → receita,
+  dívida → juros e desemprego → gasto).
 
 `ministerios[]` é a lista de áreas ministeriais relacionadas à lei; no conteúdo
 atual, cada lei informa uma. A interface mantém um único nó mesmo quando a

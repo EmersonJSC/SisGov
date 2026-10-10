@@ -15,37 +15,33 @@
       {
         "id": "nenhum",
         "rotulo": "Sem incentivo regional",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "zonas-exportacao",
         "rotulo": "Zonas de exportação",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "fundos-regionais",
         "rotulo": "Incentivo a regiões pobres",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "zona-franca-ampla",
         "rotulo": "Zona franca ampla",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
-    "incentivos-fiscais-regionais--arrecadacao",
     "incentivos-fiscais-regionais--investimento",
     "incentivos-fiscais-regionais--exportacoes",
     "incentivos-fiscais-regionais--desigualdade",
     "incentivos-fiscais-regionais--produtividade",
     "incentivos-fiscais-regionais--complexidade-tributaria",
-    "incentivos-fiscais-regionais--corrupcao"
+    "incentivos-fiscais-regionais--corrupcao",
+    "incentivos-fiscais-regionais--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

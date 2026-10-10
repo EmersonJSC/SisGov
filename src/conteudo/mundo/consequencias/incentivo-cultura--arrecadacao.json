@@ -4,11 +4,15 @@
   "versaoEsquema": 1,
   "origem": "nivel_incentivo_cultura",
   "alvo": "arrecadacao",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.00133333,
-    "limiar": 25,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [25, -0.03],
+      [50, -0.01],
+      [75, -0.01],
+      [100, 0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

@@ -2576,6 +2576,7 @@ function validateConsequence(
       "parametros",
       "normalizacao",
       "leitura",
+      "escala",
       "unidade",
       "atrasoPassos",
       "duracao",
@@ -2696,9 +2697,35 @@ function validateConsequence(
       saturacao: ["maximo", "escala"],
       retornos_decrescentes: ["coeficiente", "escala"],
       limiar: ["limiar", "coeficiente", "direcao"],
+      pontos: ["pontos"],
     };
     const fields = mechanism !== undefined ? required[mechanism] : undefined;
-    if (fields) {
+    if (mechanism === "pontos") {
+      validateKnownFields(value.parametros, file, ["pontos"], diagnostics);
+      const points = value.parametros.pontos;
+      const valid =
+        Array.isArray(points) &&
+        points.length >= 2 &&
+        points.every(
+          (point) =>
+            Array.isArray(point) &&
+            point.length === 2 &&
+            point.every((n) => typeof n === "number" && Number.isFinite(n)),
+        ) &&
+        points.every(
+          (point, i) =>
+            i === 0 || (point as number[])[0] > (points[i - 1] as number[])[0],
+        );
+      if (!valid)
+        diagnostics.push(
+          diagnostic(
+            file,
+            "parametros.pontos",
+            points === undefined ? "CAMPO_AUSENTE" : "VALOR_INVALIDO",
+            "Use dois ou mais pares [entrada, saída], com a entrada crescente.",
+          ),
+        );
+    } else if (fields) {
       validateKnownFields(value.parametros, file, fields, diagnostics);
       for (const field of fields) {
         if (field === "direcao") {
@@ -2734,6 +2761,36 @@ function validateConsequence(
             ),
           );
       }
+    }
+  }
+  if (value.escala !== undefined) {
+    if (!isObject(value.escala))
+      diagnostics.push(
+        diagnostic(file, "escala", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(
+        value.escala,
+        file,
+        ["fator", "referencia"],
+        diagnostics,
+      );
+      requiredString(value.escala, file, "escala.fator", diagnostics);
+      const reference = requiredNumber(
+        value.escala,
+        file,
+        "escala.referencia",
+        diagnostics,
+      );
+      if (reference !== undefined && reference <= 0)
+        diagnostics.push(
+          diagnostic(
+            file,
+            "escala.referencia",
+            "VALOR_INVALIDO",
+            "A referência deve ser maior que zero.",
+          ),
+        );
     }
   }
   if (value.normalizacao !== undefined) {

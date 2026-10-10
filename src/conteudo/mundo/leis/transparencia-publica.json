@@ -15,26 +15,22 @@
       {
         "id": "sigilo-amplo",
         "rotulo": "Sigilo amplo",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "acesso-limitado",
         "rotulo": "Acesso limitado",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "acesso-informacao",
         "rotulo": "Acesso à informação",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "dados-abertos",
         "rotulo": "Dados abertos",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -44,7 +40,8 @@
     "transparencia-publica--confianca-instituicoes",
     "transparencia-publica--popularidade-governo",
     "transparencia-publica--margem-manobra-governo",
-    "transparencia-publica--reputacao-internacional"
+    "transparencia-publica--reputacao-internacional",
+    "transparencia-publica--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

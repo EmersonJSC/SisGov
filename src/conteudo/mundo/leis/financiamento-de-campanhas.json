@@ -15,35 +15,31 @@
       {
         "id": "livre",
         "rotulo": "Dinheiro livre",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "privado-limitado",
         "rotulo": "Privado com limites",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "misto",
         "rotulo": "Misto",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "publico-predominante",
         "rotulo": "Predominantemente público",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "financiamento-de-campanhas--captura-politica",
     "financiamento-de-campanhas--corrupcao",
-    "financiamento-de-campanhas--gasto-publico",
     "financiamento-de-campanhas--popularidade-governo",
-    "financiamento-de-campanhas--desigualdade"
+    "financiamento-de-campanhas--desigualdade",
+    "financiamento-de-campanhas--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

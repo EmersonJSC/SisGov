@@ -4,14 +4,18 @@
   "versaoEsquema": 1,
   "origem": "nivel_trabalho_por_aplicativo",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.001,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.05],
+      [67, 0.15],
+      [100, 0.25]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

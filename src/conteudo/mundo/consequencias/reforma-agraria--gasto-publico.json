@@ -4,14 +4,18 @@
   "versaoEsquema": 1,
   "origem": "nivel_reforma_agraria",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.03],
+      [67, 0.08],
+      [100, 0.4]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

@@ -15,20 +15,17 @@
       {
         "id": "so-pessoas",
         "rotulo": "Sem lei anticorrupção",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "empresa-limpa",
         "rotulo": "Empresa também paga",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "agencia-forte",
         "rotulo": "Superagência anticorrupção",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -40,7 +37,8 @@
     "lei-anticorrupcao--margem-manobra-governo",
     "lei-anticorrupcao--estabilidade-politica",
     "lei-anticorrupcao--polarizacao",
-    "lei-anticorrupcao--reputacao-internacional"
+    "lei-anticorrupcao--reputacao-internacional",
+    "lei-anticorrupcao--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

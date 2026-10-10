@@ -51,7 +51,6 @@ PENDENTES = {
 FORCA_INDICE = {"fraca": 3, "media": 7, "forte": 12}
 FORCA_ESTOQUE = {"fraca": 0.05, "media": 0.12, "forte": 0.25}
 ATRASO = {"imediato": 0, "meses": 1, "anos": 4}
-CUSTO_OPCAO = {"baixo": 0.05, "medio": 0.2, "alto": 0.6}  # % do PIB na última opção
 PIB = 12_000_000
 
 UNIDADES_BOLHA = {"indice_0_100", "percentual_0_100", "percentual_pib", "taxa_por_100_mil"}
@@ -98,21 +97,50 @@ FISCAIS = {"arrecadacao", "gasto_publico", "resultado_fiscal", "juros_da_divida"
 FORCA_FISCAL = {"fraca": 0.1, "media": 0.25, "forte": 0.45}
 # Arrecadação de cada ponto de alíquota, em % do PIB, com a base no valor de
 # referência (hipótese; calibração do Brasil na fase 3).
+# Setor público inteiro (D-53): União, estados e municípios juntos.
 ARRECADACAO_POR_PONTO = {
-    "imposto-sobre-consumo": 0.34,          # 26,5% → 9% do PIB
-    "imposto-renda-pessoas": 0.127,         # 27,5% → 3,5%
-    "imposto-renda-empresas": 0.103,        # 34% → 3,5%
-    "tributacao-dividendos": 0.06,          # 10% → 0,6%
+    "imposto-sobre-consumo": 0.53,          # 26,5% → 14% do PIB
+    "imposto-renda-pessoas": 0.109,         # 27,5% → 3%
+    "imposto-renda-empresas": 0.132,        # 34% → 4,5%
+    "tributacao-dividendos": 0.04,          # 10% → 0,4%
     "imposto-heranca": 0.019,               # 8% → 0,15%
     "imposto-grandes-fortunas": 0.3,        # 3,5% → 1%
-    "imposto-propriedade-urbana-rural": 1.2,  # 0,5 → 0,6%
-    "imposto-transacoes-financeiras": 1.84,   # 0,38% → 0,7%
+    "imposto-propriedade-urbana-rural": 2.0,  # 0,5 → 1%
+    "imposto-transacoes-financeiras": 1.58,   # 0,38% → 0,6%
     "tarifas-de-importacao": 0.05,          # 12% → 0,6%
 }
 # Valor da base em que vale a tabela acima: o do Brasil no turno 0 (10/out).
 BASE_REFERENCIA = {"consumo": 48, "renda_familias": 43, "pib": 30}
 # juros = taxa × dívida ÷ 100 × parcela (a dívida não paga toda a taxa básica)
 PARCELA_DA_TAXA_BASICA = 0.8
+
+
+# Custo de cada opção (SG157 fase 2, D-52): docs/fichas/custos.json.
+CUSTOS = json.loads((FICHAS / "custos.json").read_text(encoding="utf-8"))["leis"]
+LADOS_DO_CUSTO = (("gasto", "gasto_publico", "gasto-publico", "escalaGasto"),
+                  ("receita", "arrecadacao", "arrecadacao", "escalaReceita"))
+
+
+def elos_do_custo(lid: str, var: str, valores_op: dict[str, float]) -> dict[str, dict]:
+    """Uma seta por lado (gasto, receita): custo de cada opção, ligado em retas."""
+    custo = CUSTOS[lid]
+    saida = {}
+    for lado, alvo, sufixo, chave_escala in LADOS_DO_CUSTO:
+        tabela = custo.get(lado)
+        if not tabela:
+            continue
+        faltam = set(valores_op) ^ set(tabela)
+        if faltam:
+            raise SystemExit(f"custos.json: {lid}.{lado} não bate com as opções: {sorted(faltam)}")
+        pontos = sorted([valores_op[o], v] for o, v in tabela.items())
+        cid = f"{lid}--{sufixo}"
+        c = {"id": cid, "tipo": "consequencia", "versaoEsquema": 1, "origem": var, "alvo": alvo,
+             "mecanismo": "pontos", "parametros": {"pontos": pontos}, "leitura": "nivel"}
+        if custo.get(chave_escala):
+            c["escala"] = custo[chave_escala]
+        c.update({"unidade": "percentual_pib", "atrasoPassos": 0, "duracao": {"modo": "continuo"}})
+        saida[cid] = c
+    return saida
 
 
 def elo(cid: str, origem: str, alvo: str, coeficiente: float, unidade: str = "percentual_pib",
@@ -147,6 +175,8 @@ def efeitos_da_lei(f: dict, grupo: str) -> list[dict]:
         a = e["alvo"]
         if a == "juros_da_divida":
             continue  # D-48: juros = taxa × dívida
+        if f["id"] in CUSTOS and a in FISCAIS:
+            continue  # custo de cada opção (custos.json)
         if grupo == "orcamentaria" and a in FISCAIS | {"divida_publica"}:
             continue  # elo contábil recursos → gasto
         if grupo == "tributaria" and a in FISCAIS:
@@ -219,6 +249,9 @@ def main(aplicar: bool) -> None:
     catalogo = ler(FICHAS / "catalogo.json")
     areas = [ler(p) for p in sorted((FICHAS / "areas").glob("*.json"))]
     fichas = [(a["area"], l) for a in areas for l in a["leis"] if l["id"] not in PENDENTES]
+    sem_ficha = set(CUSTOS) - {l["id"] for _, l in fichas}
+    if sem_ficha:
+        raise SystemExit(f"custos.json cita leis sem ficha: {sorted(sem_ficha)}")
     novas = {}
     for a in areas:
         for b in a.get("novas_bolhas", []):
@@ -254,13 +287,9 @@ def main(aplicar: bool) -> None:
             var = f"nivel_{snake(lid)}"
             n = len(opcoes)
             valores_op = {o["id"]: round(100 * i / (n - 1)) for i, o in enumerate(opcoes)}
-            custo = f.get("custo") or {}
             ops = []
             for o in opcoes:
-                op = {"id": o["id"], "rotulo": o["rotulo"], "valor": valores_op[o["id"]]}
-                if custo.get("tipo") == "gasto":
-                    op["custoAnualPercentualPib"] = round(CUSTO_OPCAO[custo.get("tamanho", "baixo")] * op["valor"] / 100, 4)
-                ops.append(op)
+                ops.append({"id": o["id"], "rotulo": o["rotulo"], "valor": valores_op[o["id"]]})
             lei["controle"] = {"variavel": var, "unidade": "nivel_escopo", "opcoes": ops}
             variaveis[var] = {"id": var, "tipo": "controle", "nome": f["nome"], "unidade": "nivel_escopo",
                               "dominio": {"minimo": 0, "maximo": 100}, "valorInicial": ops[0]["valor"], "area": area}
@@ -314,6 +343,12 @@ def main(aplicar: bool) -> None:
                                   "atrasoPassos": ATRASO.get(e["atraso"], 0)}
             ids_lei.append(cid)
         # elos contábeis do orçamento (SG157)
+        if lid in CUSTOS:
+            elos = elos_do_custo(lid, var, valores_op)
+            contabeis.update(elos)
+            ids_lei.extend(elos)
+            usadas.update(c["alvo"] for c in elos.values())
+            usadas.update(c["escala"]["fator"] for c in elos.values() if "escala" in c)
         if grupo == "orcamentaria":
             cid = f"{lid}--gasto-publico"
             contabeis[cid] = elo(cid, var, "gasto_publico", 1,

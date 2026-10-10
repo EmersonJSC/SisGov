@@ -15,26 +15,22 @@
       {
         "id": "sem-sistema",
         "rotulo": "Sem previdência obrigatória",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "capitalizacao",
         "rotulo": "Capitalização individual",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.198
+        "valor": 33
       },
       {
         "id": "misto",
         "rotulo": "Sistema misto",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.402
+        "valor": 67
       },
       {
         "id": "reparticao",
         "rotulo": "Repartição pública",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.6
+        "valor": 100
       }
     ]
   },
@@ -42,10 +38,11 @@
     "sistema-previdenciario--cobertura-previdenciaria",
     "sistema-previdenciario--pobreza",
     "sistema-previdenciario--deficit-previdenciario",
-    "sistema-previdenciario--gasto-publico",
     "sistema-previdenciario--custo-trabalhista",
     "sistema-previdenciario--poupanca-domestica",
-    "sistema-previdenciario--desigualdade"
+    "sistema-previdenciario--desigualdade",
+    "sistema-previdenciario--gasto-publico",
+    "sistema-previdenciario--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

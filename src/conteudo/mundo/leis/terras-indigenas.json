@@ -15,26 +15,22 @@
       {
         "id": "sem-reconhecimento",
         "rotulo": "Sem reconhecimento",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "reconhecimento-limitado",
         "rotulo": "Reconhecimento limitado",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "demarcacao",
         "rotulo": "Demarcação com usufruto exclusivo",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "autonomia",
         "rotulo": "Autonomia territorial",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -45,7 +41,8 @@
     "terras-indigenas--conflitos-fundiarios",
     "terras-indigenas--producao-mineral",
     "terras-indigenas--producao-agropecuaria",
-    "terras-indigenas--reputacao-internacional"
+    "terras-indigenas--reputacao-internacional",
+    "terras-indigenas--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

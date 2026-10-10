@@ -38,11 +38,11 @@
     "trabalho-por-aplicativo--renda-familias",
     "trabalho-por-aplicativo--custo-trabalhista",
     "trabalho-por-aplicativo--informalidade",
-    "trabalho-por-aplicativo--arrecadacao",
     "trabalho-por-aplicativo--mobilidade-urbana",
     "trabalho-por-aplicativo--desemprego",
     "trabalho-por-aplicativo--concentracao-mercado",
-    "trabalho-por-aplicativo--saude-populacao"
+    "trabalho-por-aplicativo--saude-populacao",
+    "trabalho-por-aplicativo--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

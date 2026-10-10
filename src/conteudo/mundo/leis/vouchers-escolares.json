@@ -15,26 +15,22 @@
       {
         "id": "so-escola-estatal",
         "rotulo": "Só escola estatal",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "gestao-terceirizada",
         "rotulo": "Escolas públicas geridas por terceiros",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "voucher-focalizado",
         "rotulo": "Voucher para os pobres",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "voucher-universal",
         "rotulo": "Voucher para todos",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -44,8 +40,8 @@
     "vouchers-escolares--evasao-escolar",
     "vouchers-escolares--aprendizagem",
     "vouchers-escolares--liberdade-civil",
-    "vouchers-escolares--gasto-publico",
-    "vouchers-escolares--polarizacao"
+    "vouchers-escolares--polarizacao",
+    "vouchers-escolares--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

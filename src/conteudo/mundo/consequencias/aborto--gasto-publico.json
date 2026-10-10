@@ -1,0 +1,24 @@
+{
+  "id": "aborto--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_aborto",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0.02],
+      [20, 0.02],
+      [40, 0.01],
+      [60, 0.02],
+      [80, 0.03],
+      [100, 0.03]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

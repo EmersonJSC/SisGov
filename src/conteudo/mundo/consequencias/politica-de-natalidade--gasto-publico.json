@@ -4,11 +4,16 @@
   "versaoEsquema": 1,
   "origem": "nivel_politica_de_natalidade",
   "alvo": "gasto_publico",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.00625,
-    "limiar": 60,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0.05],
+      [20, 0.05],
+      [40, 0],
+      [60, 0.4],
+      [80, 1.5],
+      [100, 0.3]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

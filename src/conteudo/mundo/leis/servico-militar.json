@@ -15,42 +15,37 @@
       {
         "id": "sem-forcas-armadas",
         "rotulo": "Sem Forças Armadas",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "voluntario",
         "rotulo": "Só voluntários",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "seletivo",
         "rotulo": "Alistamento com seleção",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "obrigatorio-masculino",
         "rotulo": "Obrigatório para homens",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "universal",
         "rotulo": "Universal, homens e mulheres",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "servico-militar--capacidade-defesa",
-    "servico-militar--gasto-publico",
     "servico-militar--oportunidades-juvenis",
     "servico-militar--liberdade-civil",
     "servico-militar--desemprego",
-    "servico-militar--capacidade-defesa-5"
+    "servico-militar--capacidade-defesa-4",
+    "servico-militar--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

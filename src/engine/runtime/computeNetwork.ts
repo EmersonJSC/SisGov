@@ -22,6 +22,9 @@ export type ContributionExplanation = Readonly<{
   /** Produto entre nós (D-50): a origem foi multiplicada por este nó. */
   factorId?: string;
   factorValue?: number;
+  /** Custo que reage (D-52): o resultado foi multiplicado por este nó. */
+  scaleId?: string;
+  scaleValue?: number;
   /** A origem foi lida do mês anterior (lei lendo bolha, ou elo de ciclo). */
   readsPreviousMonth?: boolean;
   contribution: number;
@@ -137,6 +140,7 @@ export function calculatedBubbleOrder(graph: ScenarioGraph): readonly string[] {
       relation.originId,
       relation.normalization?.divisor,
       relation.normalization?.fator,
+      relation.scale?.fator,
     ];
     for (const id of reads)
       if (id !== undefined && id !== relation.targetId && pending.has(id))
@@ -290,6 +294,12 @@ export function computeNetwork(
           ? {
               factorId: relation.normalization.fator,
               factorValue: calculated.value.factorValue,
+            }
+          : {}),
+        ...(relation.scale
+          ? {
+              scaleId: relation.scale.fator,
+              scaleValue: calculated.value.scaleValue,
             }
           : {}),
         ...(readsPreviousMonth ? { readsPreviousMonth } : {}),

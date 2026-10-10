@@ -15,44 +15,39 @@
       {
         "id": "mercado-privado",
         "rotulo": "Cada um paga o seu",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "misto-focalizado",
         "rotulo": "Público só para alguns",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.15
+        "valor": 25
       },
       {
         "id": "seguro-obrigatorio",
         "rotulo": "Seguro obrigatório",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.3
+        "valor": 50
       },
       {
         "id": "universal-publico",
         "rotulo": "Saúde pública universal",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.45
+        "valor": 75
       },
       {
         "id": "estatal-unico",
         "rotulo": "Monopólio estatal",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.6
+        "valor": 100
       }
     ]
   },
   "consequencias": [
-    "sistema-de-saude--gasto-publico",
     "sistema-de-saude--gasto-bolso-saude",
     "sistema-de-saude--cobertura-aps",
     "sistema-de-saude--desigualdade",
     "sistema-de-saude--saude-populacao",
     "sistema-de-saude--pressao-hospitalar",
     "sistema-de-saude--custo-trabalhista",
-    "sistema-de-saude--fuga-de-cerebros"
+    "sistema-de-saude--fuga-de-cerebros",
+    "sistema-de-saude--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

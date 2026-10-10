@@ -14,6 +14,7 @@ mecanismo. O mecanismo diz quanto a origem contribui para o alvo a cada passo.
 | `saturacao` | `maximo`, `escala` | máximo·(1 − e^(−x/escala)) | efeito com teto: depois de um ponto, gastar mais quase não muda nada |
 | `retornos_decrescentes` | `coeficiente`, `escala` | c·escala·ln(1 + x/escala) | cada unidade a mais rende menos, mas nunca para de render |
 | `limiar` | `limiar`, `coeficiente`, `direcao` (`acima`/`abaixo`) | c·max(0, x − L) ou c·max(0, L − x) | só age depois de um ponto (ex.: pressão hospitalar acima de 70) |
+| `pontos` | `pontos`: pares [entrada, saída], entrada crescente | reta entre os dois pontos vizinhos; fora da tabela, o ponto da ponta | um valor para cada opção de uma lei (custo por opção, D-52) |
 
 - `saturacao` e `retornos_decrescentes` exigem origem com domínio mínimo ≥ 0.
 - `escala` é sempre > 0. Um `maximo` ou `coeficiente` negativo faz o efeito
@@ -46,6 +47,18 @@ rede (SG157): imposto = alíquota × base; juros = taxa × dívida. O fator é l
 do mesmo retrato da origem; quando é uma bolha calculada, ela é calculada
 antes do alvo. A tela recebe também uma seta do fator para o alvo
 (`mecanismo: "produto"`).
+
+### Custo que reage (`escala`, D-52)
+
+```json
+"escala": { "fator": "desemprego", "referencia": 14 }
+```
+
+O resultado do mecanismo é multiplicado por `fator ÷ referencia`: com o fator
+na referência, vale o que a tabela diz; com o dobro, vale o dobro. É assim que
+o seguro-desemprego custa mais quando o desemprego sobe e a previdência custa
+mais com o envelhecimento. O fator entra antes do alvo na ordem do mês, e a
+tela recebe também a seta fator → alvo.
 
 ### Leitura do nível (`leitura`)
 

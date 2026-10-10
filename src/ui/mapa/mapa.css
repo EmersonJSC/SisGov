@@ -2177,3 +2177,23 @@ button {
     display: none;
   }
 }
+
+.opcao-custo {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-family: var(--sem-serifa);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.opcao-custo.custa {
+  color: #b23345;
+  background: #fbeaea;
+}
+
+.opcao-custo.arrecada {
+  color: #1b8a5f;
+  background: #e8f5ed;
+}

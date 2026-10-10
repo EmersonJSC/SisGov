@@ -4,10 +4,14 @@
   "versaoEsquema": 1,
   "origem": "nivel_incentivos_fiscais_regionais",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.0025,
-    "termoConstante": 0.0
+    "pontos": [
+      [0, 0],
+      [33, -0.1],
+      [67, -0.2],
+      [100, -0.5]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

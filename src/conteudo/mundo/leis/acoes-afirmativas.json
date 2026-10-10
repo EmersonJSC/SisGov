@@ -15,32 +15,27 @@
       {
         "id": "proibidas",
         "rotulo": "Proibidas",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "sem-politica",
         "rotulo": "Sem política",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "cotas-sociais",
         "rotulo": "Cotas sociais",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "cotas-sociais-e-raciais",
         "rotulo": "Cotas sociais e raciais",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "reservas-amplas",
         "rotulo": "Reservas amplas",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -50,7 +45,8 @@
     "acoes-afirmativas--discriminacao",
     "acoes-afirmativas--polarizacao",
     "acoes-afirmativas--escolaridade",
-    "acoes-afirmativas--oportunidades-juvenis-5"
+    "acoes-afirmativas--oportunidades-juvenis-5",
+    "acoes-afirmativas--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

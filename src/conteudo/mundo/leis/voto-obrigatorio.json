@@ -15,20 +15,17 @@
       {
         "id": "facultativo",
         "rotulo": "Voto facultativo",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "obrigatorio-nominal",
         "rotulo": "Obrigatório só no papel",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "obrigatorio-com-sancoes",
         "rotulo": "Obrigatório com punição",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -36,7 +33,8 @@
     "voto-obrigatorio--participacao-eleitoral",
     "voto-obrigatorio--desigualdade",
     "voto-obrigatorio--polarizacao",
-    "voto-obrigatorio--liberdade-civil"
+    "voto-obrigatorio--liberdade-civil",
+    "voto-obrigatorio--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

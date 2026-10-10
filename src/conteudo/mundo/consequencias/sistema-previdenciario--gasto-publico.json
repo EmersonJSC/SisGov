@@ -4,14 +4,22 @@
   "versaoEsquema": 1,
   "origem": "nivel_sistema_previdenciario",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0045,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 1.0],
+      [67, 4.0],
+      [100, 6.5]
+    ]
   },
   "leitura": "nivel",
+  "escala": {
+    "fator": "envelhecimento",
+    "referencia": 40
+  },
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

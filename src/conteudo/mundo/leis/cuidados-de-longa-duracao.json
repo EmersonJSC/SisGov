@@ -15,26 +15,22 @@
       {
         "id": "familia",
         "rotulo": "A família cuida",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "assistencia-focalizada",
         "rotulo": "Rede para os mais pobres",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.198
+        "valor": 33
       },
       {
         "id": "seguro-obrigatorio",
         "rotulo": "Seguro-cuidado obrigatório",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.402
+        "valor": 67
       },
       {
         "id": "universal-publico",
         "rotulo": "Serviço público universal",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.6
+        "valor": 100
       }
     ]
   },
@@ -42,10 +38,10 @@
     "cuidados-de-longa-duracao--participacao-trabalho-cuidadoras",
     "cuidados-de-longa-duracao--saude-populacao",
     "cuidados-de-longa-duracao--pressao-hospitalar",
-    "cuidados-de-longa-duracao--gasto-publico",
     "cuidados-de-longa-duracao--custo-trabalhista",
     "cuidados-de-longa-duracao--desemprego",
-    "cuidados-de-longa-duracao--desigualdade"
+    "cuidados-de-longa-duracao--desigualdade",
+    "cuidados-de-longa-duracao--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -15,32 +15,27 @@
       {
         "id": "proibida",
         "rotulo": "Proibida",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "passiva",
         "rotulo": "Só suspender tratamento",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "suicidio-assistido",
         "rotulo": "Suicídio assistido",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "eutanasia-terminal",
         "rotulo": "Eutanásia para doentes terminais",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "eutanasia-ampla",
         "rotulo": "Eutanásia ampla",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -49,7 +44,8 @@
     "eutanasia--polarizacao",
     "eutanasia--confianca-instituicoes",
     "eutanasia--turismo",
-    "eutanasia--popularidade-governo"
+    "eutanasia--popularidade-governo",
+    "eutanasia--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

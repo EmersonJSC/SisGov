@@ -15,26 +15,22 @@
       {
         "id": "sem-lei",
         "rotulo": "Sem lei",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "setorial",
         "rotulo": "Leis setoriais",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "lei-geral",
         "rotulo": "Lei geral com agência",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "protecao-estrita",
         "rotulo": "Proteção estrita",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -43,7 +39,8 @@
     "protecao-de-dados--inovacao",
     "protecao-de-dados--concentracao-mercado",
     "protecao-de-dados--confianca-empresarial",
-    "protecao-de-dados--corrupcao"
+    "protecao-de-dados--corrupcao",
+    "protecao-de-dados--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

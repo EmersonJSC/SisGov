@@ -680,6 +680,19 @@ export function DocumentoLei({
                   <span className="caixinha">{ativa ? "✕" : ""}</span>
                   <span className="opcao-rotulo">{opcao.rotulo}</span>
                   {vigente ? <span className="opcao-tag">em vigor</span> : null}
+                  {Math.abs(opcao.saldoAnual) >= 100 ? (
+                    <span
+                      className={`opcao-custo ${opcao.saldoAnual > 0 ? "arrecada" : "custa"}`}
+                      title={
+                        opcao.saldoAnual > 0
+                          ? "Quanto arrecada por ano nesta opção"
+                          : "Quanto custa por ano nesta opção"
+                      }
+                    >
+                      {opcao.saldoAnual > 0 ? "+" : "−"}
+                      {moeda(Math.abs(opcao.saldoAnual))}/ano
+                    </span>
+                  ) : null}
                 </button>
               );
             })}

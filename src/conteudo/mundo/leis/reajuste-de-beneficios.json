@@ -15,32 +15,27 @@
       {
         "id": "discricionario",
         "rotulo": "Sem regra (governo decide)",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "inflacao",
         "rotulo": "Repõe a inflação",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.15
+        "valor": 25
       },
       {
         "id": "salarios",
         "rotulo": "Acompanha os salários",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.3
+        "valor": 50
       },
       {
         "id": "salario-minimo",
         "rotulo": "Atrelado ao salário mínimo",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.45
+        "valor": 75
       },
       {
         "id": "trava-tripla",
         "rotulo": "O maior entre inflação, salários e piso fixo",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.6
+        "valor": 100
       }
     ]
   },
@@ -48,9 +43,9 @@
     "reajuste-de-beneficios--renda-familias",
     "reajuste-de-beneficios--pobreza",
     "reajuste-de-beneficios--deficit-previdenciario",
-    "reajuste-de-beneficios--gasto-publico",
     "reajuste-de-beneficios--inflacao",
-    "reajuste-de-beneficios--popularidade-governo"
+    "reajuste-de-beneficios--popularidade-governo",
+    "reajuste-de-beneficios--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

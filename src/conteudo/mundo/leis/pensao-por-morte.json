@@ -15,36 +15,32 @@
       {
         "id": "nenhuma",
         "rotulo": "Sem pensão por morte",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "temporaria",
         "rotulo": "Pensão de transição",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "cotas",
         "rotulo": "Cotas por dependente",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "integral-vitalicia",
         "rotulo": "Integral e vitalícia",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "pensao-por-morte--pobreza",
     "pensao-por-morte--deficit-previdenciario",
-    "pensao-por-morte--gasto-publico",
     "pensao-por-morte--participacao-trabalho-cuidadoras",
     "pensao-por-morte--corrupcao",
-    "pensao-por-morte--desigualdade"
+    "pensao-por-morte--desigualdade",
+    "pensao-por-morte--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

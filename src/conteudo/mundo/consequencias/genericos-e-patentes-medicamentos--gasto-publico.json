@@ -4,14 +4,19 @@
   "versaoEsquema": 1,
   "origem": "nivel_genericos_e_patentes_medicamentos",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [25, 0.05],
+      [50, 0.1],
+      [75, 0.2],
+      [100, 0.35]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

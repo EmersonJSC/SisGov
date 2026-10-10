@@ -24,6 +24,8 @@ export type GraphRelation = Readonly<{
   normalization?: ConsequenceFile["normalizacao"];
   /** Lê o nível da lei sem a eficácia (conta de dinheiro, SG157). */
   readsLevel?: boolean;
+  /** Resultado × fator ÷ referência (custo que reage, D-52). */
+  scale?: ConsequenceFile["escala"];
   unit: string;
   delaySteps: number;
   duration: ConsequenceFile["duracao"];
@@ -55,6 +57,7 @@ function addRelations(
       parameters: consequence.parametros,
       normalization: consequence.normalizacao,
       ...(consequence.leitura === "nivel" ? { readsLevel: true } : {}),
+      ...(consequence.escala ? { scale: consequence.escala } : {}),
       unit: consequence.unidade,
       delaySteps: consequence.atrasoPassos,
       duration: consequence.duracao,
@@ -103,6 +106,7 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
       parameters: consequence.parametros,
       normalization: consequence.normalizacao,
       ...(consequence.leitura === "nivel" ? { readsLevel: true } : {}),
+      ...(consequence.escala ? { scale: consequence.escala } : {}),
       unit: consequence.unidade,
       delaySteps: consequence.atrasoPassos,
       duration: { modo: "continuo" as const },

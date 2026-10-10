@@ -3,6 +3,7 @@ export const supportedMechanisms = [
   "saturacao",
   "retornos_decrescentes",
   "limiar",
+  "pontos",
 ] as const;
 
 export type SupportedMechanism = (typeof supportedMechanisms)[number];
@@ -335,6 +336,22 @@ export type ConsequenceParameters = {
   escala?: number;
   limiar?: number;
   direcao?: "acima" | "abaixo";
+  /**
+   * `pontos`: pares [entrada, saída] em ordem crescente de entrada; entre dois
+   * pontos a saída é a reta que os liga; fora deles, o ponto da ponta. Serve
+   * para o custo de cada opção de uma lei (SG157 fase 2, D-52).
+   */
+  pontos?: readonly (readonly [number, number])[];
+};
+
+/**
+ * O resultado do mecanismo é multiplicado por `fator ÷ referencia`: um custo
+ * que reage ao país (seguro-desemprego × desemprego, D-52).
+ */
+export type ConsequenceScale = {
+  fator: string;
+  /** Valor do fator em que o resultado vale o declarado. Maior que zero. */
+  referencia: number;
 };
 
 /**
@@ -366,6 +383,7 @@ export type ConsequenceFile = {
    * ou arrecada o que foi aprovado, funcione a lei bem ou mal (SG157).
    */
   leitura?: "efeito" | "nivel";
+  escala?: ConsequenceScale;
   unidade: string;
   atrasoPassos: number;
   duracao:

@@ -15,26 +15,22 @@
       {
         "id": "sem-avaliacao",
         "rotulo": "Sem avaliação nacional",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "amostral-diagnostica",
         "rotulo": "Amostra, sem ranking",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "censitaria-publica",
         "rotulo": "Nota de cada escola publicada",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "com-consequencias",
         "rotulo": "Nota com prêmio e punição",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -44,7 +40,8 @@
     "avaliacao-escolas--confianca-instituicoes",
     "avaliacao-escolas--segregacao-escolar",
     "avaliacao-escolas--greve-de-professores",
-    "avaliacao-escolas--evasao-escolar"
+    "avaliacao-escolas--evasao-escolar",
+    "avaliacao-escolas--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

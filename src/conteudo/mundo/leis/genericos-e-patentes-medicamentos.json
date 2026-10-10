@@ -15,43 +15,38 @@
       {
         "id": "sem-patentes",
         "rotulo": "Sem patente de remédio",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "patente-restrita",
         "rotulo": "Patente restrita",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "genericos-e-licenca",
         "rotulo": "Genéricos e licença compulsória",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "padrao-omc",
         "rotulo": "Padrão OMC",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "patente-estendida",
         "rotulo": "Patente estendida",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "genericos-e-patentes-medicamentos--preco-medicamentos",
-    "genericos-e-patentes-medicamentos--gasto-publico",
     "genericos-e-patentes-medicamentos--gasto-bolso-saude",
     "genericos-e-patentes-medicamentos--inovacao",
     "genericos-e-patentes-medicamentos--ied",
     "genericos-e-patentes-medicamentos--reputacao-internacional",
-    "genericos-e-patentes-medicamentos--saude-populacao"
+    "genericos-e-patentes-medicamentos--saude-populacao",
+    "genericos-e-patentes-medicamentos--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

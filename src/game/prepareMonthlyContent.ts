@@ -41,6 +41,10 @@ export function scaleConsequenceParameters(
         limiar: parameters.limiar! / k,
         direcao: parameters.direcao,
       };
+    case "pontos":
+      return {
+        pontos: parameters.pontos!.map(([x, y]) => [x / k, y / d] as const),
+      };
   }
 }
 
@@ -78,6 +82,13 @@ export function prepareMonthlyContent(
         }
       : {}),
   }));
+  // Nó com taxa por passo vale um terço por mês.
+  const scaleOf = (id: string) =>
+    content.variables.variaveis
+      .find((variable) => variable.id === id)
+      ?.unidade.endsWith("_por_passo")
+      ? 3
+      : 1;
   const consequences = content.consequences.map((effect) => {
     const rate = effect.unidade.endsWith("_por_passo");
     const origin = content.variables.variaveis.find(
@@ -123,6 +134,15 @@ export function prepareMonthlyContent(
         divisor,
       ),
       ...(normalizacao ? { normalizacao } : {}),
+      ...(effect.escala
+        ? {
+            escala: {
+              ...effect.escala,
+              referencia:
+                effect.escala.referencia / scaleOf(effect.escala.fator),
+            },
+          }
+        : {}),
     };
   });
   const manifest = { ...content.manifest, unidadeTemporal: "mes" as const };

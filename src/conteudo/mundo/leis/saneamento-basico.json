@@ -15,32 +15,27 @@
       {
         "id": "sem-politica",
         "rotulo": "Cada um por si",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "municipal-publico",
         "rotulo": "Serviço municipal público",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "estatal-regional",
         "rotulo": "Estatal regional",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "concessao-com-metas",
         "rotulo": "Concessão com metas",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "privatizacao-plena",
         "rotulo": "Privatização plena",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -50,9 +45,9 @@
     "saneamento-basico--pressao-hospitalar",
     "saneamento-basico--qualidade-ambiental",
     "saneamento-basico--investimento",
-    "saneamento-basico--gasto-publico",
     "saneamento-basico--renda-familias",
-    "saneamento-basico--protestos"
+    "saneamento-basico--protestos",
+    "saneamento-basico--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

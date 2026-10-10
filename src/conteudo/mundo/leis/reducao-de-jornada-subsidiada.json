@@ -15,30 +15,27 @@
       {
         "id": "nenhum",
         "rotulo": "Sem programa",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "emergencial",
         "rotulo": "Só na emergência",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "permanente",
         "rotulo": "Programa permanente",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
     "reducao-de-jornada-subsidiada--desemprego",
-    "reducao-de-jornada-subsidiada--gasto-publico",
     "reducao-de-jornada-subsidiada--recessao",
     "reducao-de-jornada-subsidiada--consumo",
     "reducao-de-jornada-subsidiada--produtividade",
-    "reducao-de-jornada-subsidiada--desigualdade"
+    "reducao-de-jornada-subsidiada--desigualdade",
+    "reducao-de-jornada-subsidiada--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -4,10 +4,14 @@
   "versaoEsquema": 1,
   "origem": "nivel_vouchers_escolares",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.001,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0],
+      [33, 0.05],
+      [67, 0.15],
+      [100, 0.6]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

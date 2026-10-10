@@ -38,11 +38,11 @@
     "precificacao-carbono--emissoes",
     "precificacao-carbono--preco-energia",
     "precificacao-carbono--inflacao",
-    "precificacao-carbono--arrecadacao",
     "precificacao-carbono--inovacao",
     "precificacao-carbono--exportacoes",
     "precificacao-carbono--protestos",
-    "precificacao-carbono--reputacao-internacional"
+    "precificacao-carbono--reputacao-internacional",
+    "precificacao-carbono--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

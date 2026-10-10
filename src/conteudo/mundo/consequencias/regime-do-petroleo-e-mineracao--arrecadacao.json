@@ -4,15 +4,22 @@
   "versaoEsquema": 1,
   "origem": "nivel_regime_do_petroleo_e_mineracao",
   "alvo": "arrecadacao",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.1,
-    "limiar": 99,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [33, 1.5],
+      [67, 1.2],
+      [100, 0.8]
+    ]
   },
   "leitura": "nivel",
+  "escala": {
+    "fator": "producao_mineral",
+    "referencia": 4
+  },
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

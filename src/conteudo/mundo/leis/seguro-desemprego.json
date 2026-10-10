@@ -15,32 +15,27 @@
       {
         "id": "nenhum",
         "rotulo": "Sem seguro",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "conta-individual",
         "rotulo": "Conta individual",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "basico-curto",
         "rotulo": "Seguro curto",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "moderado",
         "rotulo": "Seguro moderado",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "generoso-com-ativacao",
         "rotulo": "Generoso com contrapartida",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -49,9 +44,9 @@
     "seguro-desemprego--consumo",
     "seguro-desemprego--recessao",
     "seguro-desemprego--desemprego",
-    "seguro-desemprego--gasto-publico",
     "seguro-desemprego--qualificacao-trabalho",
-    "seguro-desemprego--rotatividade-emprego"
+    "seguro-desemprego--rotatividade-emprego",
+    "seguro-desemprego--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

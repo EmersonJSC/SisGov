@@ -25,6 +25,10 @@ const name = (id: string): string => {
 
 const positive = (relation: GraphRelation): boolean => {
   const p = relation.parameters;
+  if (p.pontos)
+    return (
+      p.pontos.reduce((a, [, y]) => (Math.abs(y) > Math.abs(a) ? y : a), 0) >= 0
+    );
   return (relation.mechanism === "saturacao" ? p.maximo! : p.coeficiente!) >= 0;
 };
 
@@ -37,6 +41,7 @@ const label = (relation: GraphRelation, targetId: string): string => {
       : name(relation.originId);
   if (relation.normalization?.fator)
     text += ` × ${name(relation.normalization.fator).toLowerCase()}`;
+  if (relation.scale) text += ` × ${name(relation.scale.fator).toLowerCase()}`;
   if (relation.normalization?.divisor)
     text += ` ÷ ${name(relation.normalization.divisor).toLowerCase()}`;
   if (relation.mechanism !== "afim")

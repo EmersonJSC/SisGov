@@ -15,32 +15,27 @@
       {
         "id": "sem-regra",
         "rotulo": "Plataforma não responde",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "ordem-judicial",
         "rotulo": "Só com ordem judicial",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.0125
+        "valor": 25
       },
       {
         "id": "dever-de-cuidado",
         "rotulo": "Dever de cuidado",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.025
+        "valor": 50
       },
       {
         "id": "protecao-reforcada",
         "rotulo": "Proteção reforçada",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.0375
+        "valor": 75
       },
       {
         "id": "controle-estatal",
         "rotulo": "Controle estatal",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -51,7 +46,8 @@
     "regulacao-redes-sociais--concentracao-mercado",
     "regulacao-redes-sociais--saude-populacao",
     "regulacao-redes-sociais--polarizacao",
-    "regulacao-redes-sociais--reputacao-internacional"
+    "regulacao-redes-sociais--reputacao-internacional",
+    "regulacao-redes-sociais--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

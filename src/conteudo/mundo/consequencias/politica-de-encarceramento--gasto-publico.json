@@ -4,14 +4,18 @@
   "versaoEsquema": 1,
   "origem": "nivel_politica_de_encarceramento",
   "alvo": "gasto_publico",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.0025,
-    "termoConstante": -0.0
+    "pontos": [
+      [0, 0.15],
+      [33, 0.3],
+      [67, 0.6],
+      [100, 1.0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

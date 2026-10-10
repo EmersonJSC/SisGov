@@ -15,26 +15,22 @@
       {
         "id": "sem-obrigatoriedade",
         "rotulo": "Escola opcional",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "primario",
         "rotulo": "Só o primário",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "basico-9-anos",
         "rotulo": "Nove anos de ensino básico",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "ate-18",
         "rotulo": "Da pré-escola aos 18",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -44,8 +40,8 @@
     "ensino-obrigatorio--qualificacao-trabalho",
     "ensino-obrigatorio--oportunidades-juvenis",
     "ensino-obrigatorio--renda-familias",
-    "ensino-obrigatorio--gasto-publico",
-    "ensino-obrigatorio--participacao-trabalho-cuidadoras"
+    "ensino-obrigatorio--participacao-trabalho-cuidadoras",
+    "ensino-obrigatorio--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

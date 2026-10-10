@@ -4,11 +4,14 @@
   "versaoEsquema": 1,
   "origem": "nivel_banco_de_desenvolvimento",
   "alvo": "gasto_publico",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.00757576,
-    "limiar": 67,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [33, 0.02],
+      [67, 0.2],
+      [100, 0.8]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",

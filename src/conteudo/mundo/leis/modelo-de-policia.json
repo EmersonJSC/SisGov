@@ -15,32 +15,27 @@
       {
         "id": "sem-policia",
         "rotulo": "Sem polícia profissional",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "comunitaria-civil",
         "rotulo": "Polícia de bairro",
-        "valor": 25,
-        "custoAnualPercentualPib": 0.05
+        "valor": 25
       },
       {
         "id": "ciclo-completo",
         "rotulo": "Ciclo completo",
-        "valor": 50,
-        "custoAnualPercentualPib": 0.1
+        "valor": 50
       },
       {
         "id": "dual-militarizada",
         "rotulo": "Militar na rua, civil na investigação",
-        "valor": 75,
-        "custoAnualPercentualPib": 0.15
+        "valor": 75
       },
       {
         "id": "forcas-armadas",
         "rotulo": "Exército nas ruas",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
@@ -51,7 +46,8 @@
     "modelo-de-policia--impunidade-3",
     "modelo-de-policia--violencia-letal",
     "modelo-de-policia--sensacao-seguranca",
-    "modelo-de-policia--liberdade-civil"
+    "modelo-de-policia--liberdade-civil",
+    "modelo-de-policia--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

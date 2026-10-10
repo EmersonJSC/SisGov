@@ -4,15 +4,19 @@
   "versaoEsquema": 1,
   "origem": "nivel_apostas_e_jogos_de_azar",
   "alvo": "arrecadacao",
-  "mecanismo": "limiar",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.00333333,
-    "limiar": 25,
-    "direcao": "acima"
+    "pontos": [
+      [0, 0],
+      [25, 0.2],
+      [50, 0.1],
+      [75, 0.15],
+      [100, 0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
-  "atrasoPassos": 1,
+  "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
   }

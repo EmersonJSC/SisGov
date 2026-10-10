@@ -15,26 +15,22 @@
       {
         "id": "sem-licenciamento",
         "rotulo": "Sem licença",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "autodeclaracao",
         "rotulo": "Licença por autodeclaração",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.0165
+        "valor": 33
       },
       {
         "id": "trifasico",
         "rotulo": "Licença em etapas",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.0335
+        "valor": 67
       },
       {
         "id": "rigoroso-com-consulta",
         "rotulo": "Licença rigorosa com consulta",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.05
+        "valor": 100
       }
     ]
   },
@@ -45,7 +41,8 @@
     "licenciamento-ambiental--infraestrutura-transportes",
     "licenciamento-ambiental--confianca-empresarial",
     "licenciamento-ambiental--corrupcao",
-    "licenciamento-ambiental--conflitos-fundiarios"
+    "licenciamento-ambiental--conflitos-fundiarios",
+    "licenciamento-ambiental--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

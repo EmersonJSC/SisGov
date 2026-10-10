@@ -15,37 +15,33 @@
       {
         "id": "nenhuma",
         "rotulo": "Sem política industrial",
-        "valor": 0,
-        "custoAnualPercentualPib": 0.0
+        "valor": 0
       },
       {
         "id": "horizontal",
         "rotulo": "Apoio horizontal",
-        "valor": 33,
-        "custoAnualPercentualPib": 0.066
+        "valor": 33
       },
       {
         "id": "setorial-exportadora",
         "rotulo": "Apostas com metas de exportação",
-        "valor": 67,
-        "custoAnualPercentualPib": 0.134
+        "valor": 67
       },
       {
         "id": "protecao-mercado-interno",
         "rotulo": "Proteger o mercado interno",
-        "valor": 100,
-        "custoAnualPercentualPib": 0.2
+        "valor": 100
       }
     ]
   },
   "consequencias": [
-    "politica-industrial--gasto-publico",
     "politica-industrial--desenvolvimento",
     "politica-industrial--exportacoes",
     "politica-industrial--produtividade",
     "politica-industrial--corrupcao",
     "politica-industrial--desemprego",
-    "politica-industrial--inflacao"
+    "politica-industrial--inflacao",
+    "politica-industrial--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

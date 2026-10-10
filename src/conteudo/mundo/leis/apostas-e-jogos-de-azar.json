@@ -43,10 +43,10 @@
     "apostas-e-jogos-de-azar--vicio-em-apostas",
     "apostas-e-jogos-de-azar--endividamento-familias",
     "apostas-e-jogos-de-azar--pobreza",
-    "apostas-e-jogos-de-azar--arrecadacao",
     "apostas-e-jogos-de-azar--turismo",
     "apostas-e-jogos-de-azar--crime-organizado",
-    "apostas-e-jogos-de-azar--consumo"
+    "apostas-e-jogos-de-azar--consumo",
+    "apostas-e-jogos-de-azar--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

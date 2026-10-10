@@ -42,7 +42,8 @@
     "controle-de-capitais--taxa-juros",
     "controle-de-capitais--mercado-paralelo",
     "controle-de-capitais--corrupcao",
-    "controle-de-capitais--risco-pais"
+    "controle-de-capitais--risco-pais",
+    "controle-de-capitais--arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
