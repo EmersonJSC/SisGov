@@ -6,7 +6,7 @@
   "alvo": "divida_publica",
   "mecanismo": "limiar",
   "parametros": {
-    "coeficiente": 0.0225,
+    "coeficiente": 0.03,
     "limiar": 84,
     "direcao": "acima"
   },

@@ -964,7 +964,7 @@ function Regua({ bolha }: { bolha: VisaoBolha }) {
   const i = intensidadeDaBolha(bolha);
   const amplitude = bolha.maximo - bolha.minimo || 1;
   const surge =
-    bolha.surgimento !== undefined
+    bolha.surgimento !== undefined && bolha.surgimento > bolha.minimo
       ? (bolha.surgimento - bolha.minimo) / amplitude
       : null;
   return (

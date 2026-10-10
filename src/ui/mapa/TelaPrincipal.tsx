@@ -277,18 +277,33 @@ export function TelaPrincipal() {
             icone={ICONE_BOLHA.resultado_fiscal ?? ICONE_INTERFACE.caixa}
             rotulo={contas.resultado >= 0 ? "Superávit" : "Déficit"}
             valor={`${moeda(Math.abs(contas.resultado))}/ano`}
-            detalhe={`juros: ${moeda(contas.juros)}/ano`}
+            detalhe={
+              contas.juros >= 0
+                ? `juros: ${moeda(contas.juros)}/ano`
+                : `rendimento do cofre: ${moeda(-contas.juros)}/ano`
+            }
             classe={contas.resultado >= 0 ? "boa" : "ruim"}
-            titulo={`Receita − gasto − juros = ${moeda(contas.receita)} − ${moeda(contas.gasto)} − ${moeda(contas.juros)}. O déficit soma na dívida; o superávit abate.`}
+            titulo={`Receita − gasto − juros = ${moeda(contas.receita)} − ${moeda(contas.gasto)} − ${moeda(contas.juros)}. O déficit soma na dívida; o superávit abate a dívida e, sem dívida, enche o cofre.`}
           />
-          <Metrica
-            icone={ICONE_INTERFACE.divida}
-            rotulo="Dívida"
-            valor={moeda(contas.divida)}
-            detalhe={pctPib(contas.percentualPib.divida)}
-            classe="ruim"
-            titulo={`PIB de ${moeda(contas.pib)}/ano.`}
-          />
+          {contas.cofre > 0 ? (
+            <Metrica
+              icone={ICONE_INTERFACE.caixa}
+              rotulo="Cofre"
+              valor={moeda(contas.cofre)}
+              detalhe={pctPib(contas.percentualPib.cofre)}
+              classe="boa"
+              titulo="A dívida acabou: o superávit fica guardado aqui e rende juros. A lei 'Uso do cofre' decide o que fazer com ele."
+            />
+          ) : (
+            <Metrica
+              icone={ICONE_INTERFACE.divida}
+              rotulo="Dívida"
+              valor={moeda(contas.divida)}
+              detalhe={pctPib(contas.percentualPib.divida)}
+              classe="ruim"
+              titulo={`PIB de ${moeda(contas.pib)}/ano. Quando a dívida acaba, o superávit vai para o cofre.`}
+            />
+          )}
           <Metrica
             icone={ICONE_INTERFACE.aprovacao}
             rotulo="Aprovação do partido"

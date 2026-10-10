@@ -1398,6 +1398,18 @@
       "area": "Tributação"
     },
     {
+      "id": "nivel_fundo_soberano",
+      "tipo": "controle",
+      "nome": "Uso do cofre (fundo soberano)",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
       "id": "apagao",
       "tipo": "situacao",
       "nome": "Apagão",
@@ -1553,6 +1565,19 @@
       },
       "area": "Saúde",
       "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "cofre",
+      "tipo": "situacao",
+      "nome": "Cofre do Tesouro",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_melhor",
+      "surgimento": 0
     },
     {
       "id": "complexidade_tributaria",
@@ -1901,7 +1926,7 @@
       "nome": "Dívida pública",
       "unidade": "percentual_pib",
       "dominio": {
-        "minimo": 0,
+        "minimo": -100,
         "maximo": 300
       },
       "area": "Contas públicas",
@@ -2289,7 +2314,7 @@
       "nome": "Juros da dívida",
       "unidade": "percentual_pib",
       "dominio": {
-        "minimo": 0,
+        "minimo": -30,
         "maximo": 30
       },
       "area": "Contas públicas",

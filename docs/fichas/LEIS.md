@@ -2,7 +2,7 @@
 
 _Gerado por `scripts/fichas/fichas.py documento` a partir de `docs/fichas/areas/*.json`. Não edite à mão: edite a ficha e gere de novo._
 
-**117 leis** em 10 áreas · **56 bolhas novas** propostas.
+**118 leis** em 10 áreas · **56 bolhas novas** propostas.
 
 Legenda: ↑ sobe · ↓ cai · força fraca/média/forte · atraso imediato/meses/anos.
 
@@ -17,7 +17,7 @@ Legenda: ↑ sobe · ↓ cai · força fraca/média/forte · atraso imediato/mes
 - **Segurança, justiça e drogas:** [Política de drogas](#politica-de-drogas), [Posse e porte de armas](#porte-de-armas), [Maioridade penal e justiça juvenil](#maioridade-penal), [Penas máximas](#penas-maximas), [Política de encarceramento](#politica-de-encarceramento), [Modelo de polícia](#modelo-de-policia), [Câmeras corporais na polícia](#cameras-corporais), [Delação e acordos penais](#delacao-e-acordos-penais), [Gestão de presídios](#gestao-de-presidios), [Estratégia contra o crime organizado](#combate-crime-organizado), [Lei contra a violência doméstica](#protecao-violencia-domestica)
 - **Direitos civis, costumes, imigração, mídia e defesa:** [Aborto](#aborto), [Casamento e união civil](#casamento-e-uniao-civil), [Eutanásia e morte assistida](#eutanasia), [Laicidade do Estado](#laicidade-do-estado), [Política de imigração](#politica-de-imigracao), [Refugiados e asilo](#refugiados-e-asilo), [Regulação das redes sociais](#regulacao-redes-sociais), [Proteção de dados pessoais](#protecao-de-dados), [Igualdade salarial de gênero](#igualdade-salarial-de-genero), [Ações afirmativas](#acoes-afirmativas), [Apostas e jogos de azar](#apostas-e-jogos-de-azar), [Serviço militar](#servico-militar), [Gasto com defesa](#gasto-com-defesa), [Política de natalidade](#politica-de-natalidade)
 - **Trabalho e emprego:** [Legislação trabalhista](#legislacao-trabalhista), [Salário mínimo](#salario-minimo), [Jornada de trabalho](#jornada-de-trabalho), [Seguro-desemprego](#seguro-desemprego), [Fundo de garantia e indenização por demissão](#fundo-de-garantia), [Negociação coletiva e sindicatos](#negociacao-coletiva-e-sindicatos), [Terceirização](#terceirizacao), [Trabalho por aplicativo](#trabalho-por-aplicativo), [Licença parental](#licenca-parental), [Trabalho infantil e aprendizagem](#trabalho-infantil-e-aprendizagem), [Redução de jornada subsidiada (lay-off)](#reducao-de-jornada-subsidiada)
-- **Tributação:** [Modelo tributário](#modelo-tributario), [Imposto de renda da pessoa física](#imposto-renda-pessoas), [Imposto sobre consumo (IVA)](#imposto-sobre-consumo), [Imposto de renda das empresas](#imposto-renda-empresas), [Tributação de dividendos](#tributacao-dividendos), [Imposto sobre grandes fortunas](#imposto-grandes-fortunas), [Imposto sobre herança e doações](#imposto-heranca), [Imposto sobre imóveis urbanos e rurais](#imposto-propriedade-urbana-rural), [Regime simplificado para pequenas empresas](#regime-simplificado-pequenas-empresas), [Incentivos fiscais regionais](#incentivos-fiscais-regionais), [Imposto seletivo (tabaco, álcool, açúcar e poluentes)](#imposto-seletivo), [Imposto sobre transações financeiras](#imposto-transacoes-financeiras)
+- **Tributação:** [Modelo tributário](#modelo-tributario), [Imposto de renda da pessoa física](#imposto-renda-pessoas), [Imposto sobre consumo (IVA)](#imposto-sobre-consumo), [Imposto de renda das empresas](#imposto-renda-empresas), [Tributação de dividendos](#tributacao-dividendos), [Imposto sobre grandes fortunas](#imposto-grandes-fortunas), [Imposto sobre herança e doações](#imposto-heranca), [Imposto sobre imóveis urbanos e rurais](#imposto-propriedade-urbana-rural), [Regime simplificado para pequenas empresas](#regime-simplificado-pequenas-empresas), [Incentivos fiscais regionais](#incentivos-fiscais-regionais), [Imposto seletivo (tabaco, álcool, açúcar e poluentes)](#imposto-seletivo), [Imposto sobre transações financeiras](#imposto-transacoes-financeiras), [Uso do cofre (fundo soberano)](#fundo-soberano)
 
 ## Meio ambiente, energia, agro e infraestrutura
 
@@ -3823,6 +3823,38 @@ Define a alíquota cobrada sobre cada movimentação financeira, de débitos em 
 
 Fontes: [Wikipedia – Swedish financial transaction tax](https://en.wikipedia.org/wiki/Swedish_financial_transaction_tax) · [Agência Senado – Entenda o assunto: CPMF](https://www12.senado.leg.br/noticias/entenda-o-assunto/cpmf)
 
+<a id="fundo-soberano"></a>
+### Uso do cofre (fundo soberano)
+
+*Regulatória* · Ministério da Fazenda
+
+Decide o que fazer com o dinheiro que sobra quando a dívida acaba: guardar no Tesouro, aplicar fora do país, emprestar às empresas ou investir em obras. Só faz diferença quando há cofre.
+
+> **Dilema:** Guardar para a próxima crise e viver dos rendimentos, ou pôr o dinheiro para girar agora e arriscar perdê-lo?
+
+**Opções** (do dinheiro guardado no Tesouro ao dinheiro gasto no próprio país):
+
+| Opção | Manchete | No mundo |
+|---|---|---|
+| Guardar no Tesouro **(Brasil)** | Cofre cheio, juros a favor: Tesouro passa a receber em vez de pagar | Chile (Fundo de Estabilização Econômica e Social); Alemanha (reservas do Tesouro) |
+| Fundo no exterior | País vira investidor global: fundo soberano compra ações e títulos lá fora | Noruega; Arábia Saudita; Kuwait |
+| Emprestar às empresas | Tesouro empresta a juro baixo e fábricas voltam a investir; críticos falam em 'campeões escolhidos' | Singapura (Temasek); Brasil (BNDES com dinheiro do Tesouro, 2008–2014) |
+| Investir em obras | Superávit vira estrada, porto e ferrovia: canteiros se espalham pelo país | China; Emirados Árabes Unidos |
+
+**Efeitos** (ao avançar no eixo):
+
+- ↑ **Crédito disponível** · forte · meses: O dinheiro do cofre vira crédito barato para as empresas.
+- ↑ **Investimento (índice)** · media · meses: Crédito barato e obras puxam o investimento; é por aqui que o cofre chega ao PIB.
+- ↑ **Infraestrutura (bolha lenta)** · media · anos: Obras pagas com o cofre viram estradas, portos e ferrovias com o tempo.
+- ↑ **Gasto público (% PIB)** · media · imediato: Obra é gasto: o cofre diminui enquanto as obras andam (empréstimo não é gasto, o dinheiro volta).
+- ↑ **Reputação internacional** · media · anos: Um fundo soberano grande e bem gerido é sinal de país sério.
+- ↑ **Inflação** · fraca · meses: Gastar o cofre dentro do país aquece a economia; aplicar lá fora segura os preços e o câmbio.
+- ↑ **Corrupção (índice)** · fraca · anos: Crédito direcionado e obras grandes atraem desvio e favorecimento.
+
+**Ganham:** Indústria, Empresários, Setor financeiro · **Perdem:** Pobres, Servidores públicos
+
+Fontes: [Norges Bank Investment Management – The fund](https://www.nbim.no/en/the-fund/)
+
 ## Bolhas novas propostas
 
 | Bolha | Tipo | Por quê |
@@ -3886,4 +3918,4 @@ Fontes: [Wikipedia – Swedish financial transaction tax](https://en.wikipedia.o
 
 ## Fichas abertas (citadas, ainda sem ficha)
 
-ajuste-carbono-na-fronteira, aposentadoria-especial, audiencia-de-custodia, bonificacao-por-desempenho-docente, compra-publica-agricultura-familiar, concessoes-e-ppps, confisco-de-bens-do-crime, contribuicao-previdenciaria, credito-agricola-familiar, financiamento-sindical, fundo-redistributivo-educacao, fundo-soberano, guardas-municipais, incentivo-fiscal-inovacao, licenca-para-cuidadores, medidas-socioeducativas, monitoramento-eletronico, pagamento-por-servicos-ambientais, politica-de-precos-combustiveis, politica-valorizacao-salario-minimo, protecao-a-testemunhas, recompra-de-armas, regime-do-petroleo, regime-previdencia-servidores, regra-de-permanencia-no-beneficio, regulacao-mercados-digitais, seguro-de-depositos, trabalho-e-estudo-de-presos, tratamento-dependencia-quimica, zonas-economicas-especiais.
+ajuste-carbono-na-fronteira, aposentadoria-especial, audiencia-de-custodia, bonificacao-por-desempenho-docente, compra-publica-agricultura-familiar, concessoes-e-ppps, confisco-de-bens-do-crime, contribuicao-previdenciaria, credito-agricola-familiar, financiamento-sindical, fundo-redistributivo-educacao, guardas-municipais, incentivo-fiscal-inovacao, licenca-para-cuidadores, medidas-socioeducativas, monitoramento-eletronico, pagamento-por-servicos-ambientais, politica-de-precos-combustiveis, politica-valorizacao-salario-minimo, protecao-a-testemunhas, recompra-de-armas, regime-do-petroleo, regime-previdencia-servidores, regra-de-permanencia-no-beneficio, regulacao-mercados-digitais, seguro-de-depositos, trabalho-e-estudo-de-presos, tratamento-dependencia-quimica, zonas-economicas-especiais.

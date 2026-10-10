@@ -1,0 +1,50 @@
+{
+  "id": "fundo-soberano",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Uso do cofre (fundo soberano)",
+  "descricao": "Decide o que fazer com o dinheiro que sobra quando a dívida acaba: guardar no Tesouro, aplicar fora do país, emprestar às empresas ou investir em obras. Só faz diferença quando há cofre.",
+  "area": "Tributação",
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_fundo_soberano",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "guardar",
+        "rotulo": "Guardar no Tesouro",
+        "valor": 0
+      },
+      {
+        "id": "fundo-exterior",
+        "rotulo": "Fundo no exterior",
+        "valor": 33
+      },
+      {
+        "id": "emprestar-empresas",
+        "rotulo": "Emprestar às empresas",
+        "valor": 67
+      },
+      {
+        "id": "investir-obras",
+        "rotulo": "Investir em obras",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "fundo-soberano--credito",
+    "fundo-soberano--investimento",
+    "fundo-soberano--infraestrutura",
+    "fundo-soberano--gasto-publico",
+    "fundo-soberano--reputacao-internacional",
+    "fundo-soberano--inflacao",
+    "fundo-soberano--corrupcao"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

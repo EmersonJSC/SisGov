@@ -118,7 +118,8 @@
     "mundo/leis/regime-simplificado-pequenas-empresas.json",
     "mundo/leis/incentivos-fiscais-regionais.json",
     "mundo/leis/imposto-seletivo.json",
-    "mundo/leis/imposto-transacoes-financeiras.json"
+    "mundo/leis/imposto-transacoes-financeiras.json",
+    "mundo/leis/fundo-soberano.json"
   ],
   "leisEleitorais": [
     {

@@ -1,8 +1,8 @@
 # Orçamento na rede
 
 **Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-50).
-Implementação no chamado SG157, por fases. **Fases 1, 2 e 3 feitas em
-10/out** (ver "Como ficou a fase 1", "… fase 2" e "… fase 3").
+Implementação no chamado SG157, por fases. **As quatro fases foram feitas
+em 10/out** (ver "Como ficou a fase 1" a "… fase 4").
 
 ## A ideia
 
@@ -206,6 +206,44 @@ começa em 91.
   do mandato.
 - **Referências** das bases e dos custos que reagem passaram a ser os valores
   do Brasil 2026 (consumo 50, renda 45, PIB 45, desemprego 6).
+
+## Como ficou a fase 4 (cofre e empréstimos)
+
+**O que é o cofre.** A bolha "Dívida pública" guarda a posição líquida do
+governo e pode ficar abaixo de zero (até −100% do PIB). Abaixo de zero, a
+diferença é o **cofre** (D-57):
+
+- o superávit primeiro abate a dívida; quando ela acaba, enche o cofre;
+- o déficit primeiro gasta o cofre; só depois volta a criar dívida;
+- os juros continuam sendo taxa × dívida: com dívida negativa ficam
+  negativos, ou seja, o cofre **rende** (aparece como "rendimento do cofre");
+- a situação "Cofre do Tesouro" (boa, verde, não pisca) aparece no mapa
+  quando há cofre; a barra troca "Dívida" por "Cofre".
+
+**O que fazer com o cofre: a lei "Uso do cofre" (fundo soberano).** Cada
+efeito é proporcional ao tamanho do cofre (escala: cofre ÷ 10% do PIB), então
+a lei não faz nada enquanto há dívida:
+
+| Opção                 | Efeito (com cofre de 10% do PIB)                                                                                  | Exemplo real           |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Guardar no Tesouro    | só o rendimento; reputação +1                                                                                     | Chile                  |
+| Fundo no exterior     | reputação +4; inflação −0,5; corrupção +0,5                                                                       | Noruega                |
+| Emprestar às empresas | crédito +8, investimento +5 → PIB; inflação +0,8; corrupção +2                                                    | Temasek, BNDES 2008–14 |
+| Investir em obras     | gasto +2% do PIB (o cofre diminui); investimento +3; infraestrutura +0,5 por trimestre; inflação +1; corrupção +3 | China                  |
+
+**Efeito no PIB (o estudo).** Emprestar não é gasto: o dinheiro volta, então o
+cofre não encolhe, mas vira crédito e investimento, que já empurram o PIB
+pela rede. Obras são gasto: o cofre encolhe, a infraestrutura cresce devagar e
+o investimento sobe na hora. Guardar e aplicar fora não mexem no PIB, mas
+seguram a inflação e protegem o país na próxima crise (o cofre cobre os
+déficits). O preço de pôr o dinheiro para girar é a inflação e a corrupção.
+
+**No Brasil 2026** a dívida é de 77% do PIB, então o cofre está longe: serve
+para partidas longas e para cenários com pouca dívida. A lei já vem em
+"guardar".
+
+**Para depois:** empréstimos com calote (parte do cofre emprestado não
+volta numa recessão); quanto investir em cada obra (B-17).
 
 ## Questões abertas
 

@@ -162,7 +162,15 @@ JUROS_EXPLOSIVOS = {
     "unidade": "percentual_0_100", "dominio": {"minimo": 0, "maximo": 100},
     "area": "Contas públicas", "avaliacao": "maior_pior", "surgimento": 32,
 }
-VARIAVEIS_FISCAIS = {JUROS_EXPLOSIVOS["id"]: JUROS_EXPLOSIVOS}
+# Cofre (D-49, fase 4): o lado positivo da dívida líquida. A dívida pode ficar
+# negativa; o cofre é o quanto ela está abaixo de zero. É uma situação boa:
+# só aparece quando há dinheiro guardado.
+COFRE = {
+    "id": "cofre", "tipo": "situacao", "nome": "Cofre do Tesouro",
+    "unidade": "percentual_pib", "dominio": {"minimo": 0, "maximo": 100},
+    "area": "Contas públicas", "avaliacao": "maior_melhor", "surgimento": 0,
+}
+VARIAVEIS_FISCAIS = {JUROS_EXPLOSIVOS["id"]: JUROS_EXPLOSIVOS, COFRE["id"]: COFRE}
 
 REDE_FISCAL = [
     elo("arrecadacao--resultado-fiscal", "arrecadacao", "resultado_fiscal", 1),
@@ -176,6 +184,11 @@ REDE_FISCAL = [
     # juros ÷ receita × 100 = % da receita que vai para os juros
     elo("juros-da-divida--juros-explosivos", "juros_da_divida", "juros_explosivos", 1, "percentual_0_100",
         normalizacao={"divisor": "arrecadacao", "multiplicador": 100}),
+    # cofre = quanto a dívida líquida está abaixo de zero
+    {"id": "divida-publica--cofre", "tipo": "consequencia", "versaoEsquema": 1,
+     "origem": "divida_publica", "alvo": "cofre", "mecanismo": "limiar",
+     "parametros": {"coeficiente": 1, "limiar": 0, "direcao": "abaixo"},
+     "unidade": "percentual_pib", "atrasoPassos": 0, "duracao": {"modo": "continuo"}},
     # a crise alimenta a si mesma: risco sobe, juros sobem, empresas recuam
     elo("juros-explosivos--risco-pais", "juros_explosivos", "risco_pais", 0.8, "indice_0_100"),
     elo("juros-explosivos--taxa-juros", "juros_explosivos", "taxa_juros", 0.1, "percentual_0_100"),
@@ -360,9 +373,17 @@ def main(aplicar: bool) -> None:
                         # caminho desde a penúltima (rampa, não degrau)
                         anterior = max(v for v in valores_op.values() if v < 100)
                         limiar = round((anterior + 100) / 2)
+            pontos = None
+            if e.get("pontos"):  # valor do efeito em cada opção (unidade do alvo)
+                if set(e["pontos"]) != set(valores_op):
+                    raise SystemExit(f"{lid}: pontos de {alvo} não batem com as opções")
+                pontos = sorted([valores_op[o], v] for o, v in e["pontos"].items())
             consequencias[cid] = {"_alvo": alvo, "_forca": e["forca"], "_sinal": sinal, "_amp": amplitude,
                                   "_inicio": inicio, "_limiar": limiar, "origem": var,
+                                  "_pontos": pontos, "_escala": e.get("escala"),
                                   "atrasoPassos": ATRASO.get(e["atraso"], 0)}
+            if e.get("escala"):
+                usadas.add(e["escala"]["fator"])
             ids_lei.append(cid)
         # elos contábeis do orçamento (SG157)
         if lid in CUSTOS:
@@ -454,13 +475,16 @@ def main(aplicar: bool) -> None:
         if c["_alvo"] in FISCAIS:
             d = FORCA_FISCAL[c["_forca"]] * c["_sinal"]
         unidade = TAXA[alvo["unidade"]] if estoque else alvo["unidade"]
-        if c["_limiar"] is not None:
+        if c.get("_pontos"):
+            mec, par = "pontos", {"pontos": c["_pontos"]}
+        elif c["_limiar"] is not None:
             mec, par = "limiar", {"coeficiente": round(d / (100 - c["_limiar"]), 8), "limiar": c["_limiar"], "direcao": "acima"}
         else:
             mec, par = "afim", {"coeficiente": round(d / c["_amp"], 10), "termoConstante": round(-d * c["_inicio"] / c["_amp"], 8)}
         saida_c[cid] = {"id": cid, "tipo": "consequencia", "versaoEsquema": 1, "origem": c["origem"],
                         "alvo": c["_alvo"], "mecanismo": mec, "parametros": par,
                         **({"leitura": "nivel"} if c["_alvo"] in FISCAIS else {}),
+                        **({"escala": c["_escala"]} if c.get("_escala") else {}),
                         "unidade": unidade, "atrasoPassos": c["atrasoPassos"], "duracao": {"modo": "continuo"}}
     saida_c.update(rede)
     saida_c.update(contabeis)
@@ -499,6 +523,9 @@ def main(aplicar: bool) -> None:
     escrever(MUNDO / "mundo.json", mundo)
     # a receita divide os juros (situação de juros explosivos): nunca zero
     novas_vars["arrecadacao"]["dominio"]["minimo"] = 0.1
+    # dívida líquida: abaixo de zero é cofre; juros abaixo de zero são rendimento
+    novas_vars["divida_publica"]["dominio"]["minimo"] = -100
+    novas_vars["juros_da_divida"]["dominio"]["minimo"] = -30
     variaveis_doc["variaveis"] = list(variaveis.values()) + list(novas_vars.values())
     escrever(MUNDO / "indicadores" / "variaveis.json", variaveis_doc)
 

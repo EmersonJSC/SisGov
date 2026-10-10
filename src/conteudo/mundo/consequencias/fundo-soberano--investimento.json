@@ -1,0 +1,25 @@
+{
+  "id": "fundo-soberano--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fundo_soberano",
+  "alvo": "investimento",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [33, 0],
+      [67, 5],
+      [100, 3]
+    ]
+  },
+  "escala": {
+    "fator": "cofre",
+    "referencia": 10
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

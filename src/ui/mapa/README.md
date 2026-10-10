@@ -66,7 +66,8 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
   fixo na tela; um botão oculta ou mostra as etiquetas.
 - **Contas (SG157):** a barra de cima mostra Receita, Gasto, Déficit (ou
   Superávit, com os juros embaixo) e Dívida, em R$ e em % do PIB, lidos da
-  `VisaoPartida.contas`. Não há caixa. O documento da lei diz quanto ela
+  `VisaoPartida.contas`. Quando a dívida acaba, "Dívida" vira "Cofre" e os
+  juros viram "rendimento do cofre" (D-57). O documento da lei diz quanto ela
   arrecada ou custa por ano e por mês (`saldoAnual`), e o relatório de impacto
   abre com o efeito da mudança no resultado ("Contas públicas"). Cada opção
   da lei mostra quanto custa ou arrecada por ano (`VisaoOpcao.saldoAnual`).

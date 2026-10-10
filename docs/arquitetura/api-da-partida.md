@@ -28,7 +28,9 @@ e descarte a anterior (ou guarde para "desfazer").
   `divida`, na moeda do país (milhões), mais `pib` e `percentualPib` (os
   mesmos números em % do PIB, como estão na rede). Saem das bolhas do
   orçamento (`BOLHAS_DO_ORCAMENTO`): resultado = receita − gasto − juros;
-  positivo é superávit. Não há caixa (D-49).
+  positivo é superávit. `cofre` (D-57): quando a dívida líquida fica abaixo
+  de zero, `divida` é 0, `cofre` é o dinheiro guardado e `juros` fica
+  negativo (rendimento do cofre).
 - `leis[]`: `id`, `nome`, `descricao`, `grupo` (orcamentaria, regulatoria,
   tributaria, institucional), `area`, `ministerios[]`, `ministerio`, `nivel` (o que já
   funciona), `meta` (o que o jogador escolheu; o nível anda até ela mês a

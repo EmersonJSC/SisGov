@@ -49,10 +49,19 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
         : null;
   if (bolha.tipo === "situacao") {
     const surgimento = bolha.surgimento ?? bolha.minimo;
-    const ativa = bolha.valor >= surgimento;
+    const ativa = bolha.valor > surgimento;
     const gravidade = prender(
       (bolha.valor - surgimento) / (bolha.maximo - surgimento || 1),
     );
+    // Situação boa (o cofre): aparece verde, cresce e não pisca.
+    if (bolha.avaliacao === "maior_melhor")
+      return {
+        t,
+        escala: ativa ? 1 + 0.55 * curva(gravidade) : 0.62,
+        bondade: ativa ? Math.max(0.75, bondade ?? 0.75) : bondade,
+        ativa,
+        grave: false,
+      };
     return {
       t,
       escala: ativa ? 1 + 0.55 * curva(gravidade) : 0.62,

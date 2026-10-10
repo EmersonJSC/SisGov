@@ -128,13 +128,17 @@ export const BOLHAS_DO_ORCAMENTO = {
   divida: "divida_publica",
 } as const;
 
-type Contas = Readonly<Record<keyof typeof BOLHAS_DO_ORCAMENTO, number>>;
+type Contas = Readonly<
+  Record<keyof typeof BOLHAS_DO_ORCAMENTO | "cofre", number>
+>;
 
 /**
  * As contas do governo, lidas das bolhas do orçamento. Receita, gasto, juros
  * e resultado são por ano; resultado = receita − gasto − juros (positivo é
- * superávit). Não há caixa: o déficit soma na dívida e o superávit abate
- * (D-49).
+ * superávit). O déficit soma na dívida e o superávit abate (D-49). A rede
+ * guarda a dívida líquida: abaixo de zero, ela é o `cofre` (fase 4) e os
+ * `juros` ficam negativos (é o rendimento do cofre). `divida` e `cofre` nunca
+ * são negativos.
  */
 export type VisaoContas = Contas &
   Readonly<{
@@ -455,11 +459,16 @@ function lerContas(
     keyof typeof BOLHAS_DO_ORCAMENTO,
     string,
   ][];
-  const percentualPib = Object.fromEntries(
+  const lidas = Object.fromEntries(
     ids.map(([conta, id]) => [conta, values[id] ?? 0]),
-  ) as Contas;
+  ) as Record<keyof typeof BOLHAS_DO_ORCAMENTO, number>;
+  const percentualPib: Contas = {
+    ...lidas,
+    divida: Math.max(0, lidas.divida),
+    cofre: Math.max(0, -lidas.divida),
+  };
   const emMoeda = Object.fromEntries(
-    ids.map(([conta]) => [conta, (percentualPib[conta] * pib) / 100]),
+    Object.entries(percentualPib).map(([conta, v]) => [conta, (v * pib) / 100]),
   ) as Contas;
   return { ...emMoeda, pib, percentualPib };
 }
@@ -521,6 +530,44 @@ function saldoDasLeis(
   };
 }
 
+/**
+ * Situação na régua da tela: o motor guarda só o quanto ela passou do ponto
+ * de surgimento; a tela mostra a soma inteira, para o jogador ver quando ela
+ * está chegando perto de surgir (ex.: juros em 26% da receita, surge em 32%).
+ */
+function brutoDasSituacoes(
+  partida: Partida,
+  values: Readonly<Record<string, number>>,
+): (id: string, surgimento: number) => number {
+  const { content, graph } = partida;
+  const lawByControl = new Map(
+    content.policies.map((policy) => [policy.controle.variavel, policy.id]),
+  );
+  const delivered = (id: string) => {
+    const law = lawByControl.get(id);
+    if (law === undefined) return values[id];
+    const ceiling = graph.nodesById[id]?.dominio.maximo;
+    const effect = (values[id] ?? 0) * (values[efficacyNodeId(law)] ?? 1);
+    return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
+  };
+  return (id, surgimento) => {
+    const now = values[id] ?? 0;
+    if (now > 0) return now + surgimento;
+    let soma = 0;
+    for (const relation of graph.relations) {
+      // aproximação: as setas com atraso entram com os valores de agora
+      if (relation.targetId !== id) continue;
+      const origem = relation.readsLevel
+        ? values[relation.originId]
+        : delivered(relation.originId);
+      if (origem === undefined) continue;
+      const c = calculateContribution(relation, origem, delivered);
+      if (c.ok) soma += c.value.value;
+    }
+    return Math.min(surgimento, Math.max(0, soma));
+  };
+}
+
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
 export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
@@ -565,6 +612,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       saldoAnual: saldo(policy.id),
     };
   });
+  const brutoDe = brutoDasSituacoes(partida, values);
   const bolhas = content.variables.variaveis
     .filter((variable) => variable.tipo !== "controle")
     .map((variable) => ({
@@ -574,7 +622,10 @@ export function verPartida(partida: Partida): VisaoPartida {
       unidade: variable.unidade,
       area: variable.area ?? "",
       avaliacao: variable.avaliacao,
-      valor: values[variable.id] ?? 0,
+      valor:
+        variable.tipo === "situacao"
+          ? brutoDe(variable.id, variable.surgimento ?? 0)
+          : (values[variable.id] ?? 0),
       minimo: variable.dominio.minimo ?? 0,
       maximo: variable.dominio.maximo ?? 100,
       surgimento: variable.surgimento,
