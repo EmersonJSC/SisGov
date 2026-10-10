@@ -42,7 +42,9 @@
     "licenciamento-ambiental--confianca-empresarial",
     "licenciamento-ambiental--corrupcao",
     "licenciamento-ambiental--conflitos-fundiarios",
-    "licenciamento-ambiental--gasto-publico"
+    "licenciamento-ambiental--gasto-publico",
+    "licenciamento-ambiental--grupo-empresarios",
+    "licenciamento-ambiental--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

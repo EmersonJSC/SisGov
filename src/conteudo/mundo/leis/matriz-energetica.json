@@ -42,7 +42,11 @@
     "matriz-energetica--infraestrutura-energia",
     "matriz-energetica--inovacao",
     "matriz-energetica--apagao",
-    "matriz-energetica--gasto-publico"
+    "matriz-energetica--gasto-publico",
+    "matriz-energetica--grupo-empresarios",
+    "matriz-energetica--grupo-jovens",
+    "matriz-energetica--grupo-progressistas",
+    "matriz-energetica--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

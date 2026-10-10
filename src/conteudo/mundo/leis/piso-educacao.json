@@ -25,6 +25,10 @@
     "piso-educacao--aprendizagem",
     "piso-educacao--qualificacao-trabalho",
     "piso-educacao--desigualdade",
+    "piso-educacao--grupo-classe-media",
+    "piso-educacao--grupo-empresarios",
+    "piso-educacao--grupo-jovens",
+    "piso-educacao--grupo-servidores",
     "piso-educacao--gasto-publico"
   ],
   "respostaTemporal": {

@@ -41,7 +41,11 @@
     "politica-industrial--corrupcao",
     "politica-industrial--desemprego",
     "politica-industrial--inflacao",
-    "politica-industrial--gasto-publico"
+    "politica-industrial--gasto-publico",
+    "politica-industrial--grupo-agro",
+    "politica-industrial--grupo-classe-media",
+    "politica-industrial--grupo-empresarios",
+    "politica-industrial--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

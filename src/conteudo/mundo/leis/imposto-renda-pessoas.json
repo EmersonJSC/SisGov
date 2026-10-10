@@ -26,6 +26,12 @@
     "imposto-renda-pessoas--sonegacao",
     "imposto-renda-pessoas--fuga-capitais",
     "imposto-renda-pessoas--inovacao",
+    "imposto-renda-pessoas--grupo-classe-media",
+    "imposto-renda-pessoas--grupo-empresarios",
+    "imposto-renda-pessoas--grupo-pobres",
+    "imposto-renda-pessoas--grupo-progressistas",
+    "imposto-renda-pessoas--grupo-servidores",
+    "imposto-renda-pessoas--grupo-trabalhadores",
     "imposto-renda-pessoas--arrecadacao"
   ],
   "respostaTemporal": {

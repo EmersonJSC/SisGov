@@ -39,7 +39,10 @@
     "piso-salarial-professores--greve-de-professores",
     "piso-salarial-professores--desigualdade",
     "piso-salarial-professores--custo-trabalhista",
-    "piso-salarial-professores--gasto-publico"
+    "piso-salarial-professores--gasto-publico",
+    "piso-salarial-professores--grupo-empresarios",
+    "piso-salarial-professores--grupo-jovens",
+    "piso-salarial-professores--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

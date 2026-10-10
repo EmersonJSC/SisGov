@@ -46,7 +46,11 @@
     "agrotoxicos--producao-agropecuaria",
     "agrotoxicos--producao-agropecuaria-4",
     "agrotoxicos--preco-alimentos",
-    "agrotoxicos--inovacao"
+    "agrotoxicos--inovacao",
+    "agrotoxicos--grupo-agro",
+    "agrotoxicos--grupo-pobres",
+    "agrotoxicos--grupo-progressistas",
+    "agrotoxicos--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

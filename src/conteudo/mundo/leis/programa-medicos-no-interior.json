@@ -42,7 +42,12 @@
     "programa-medicos-no-interior--saude-populacao",
     "programa-medicos-no-interior--fuga-de-cerebros",
     "programa-medicos-no-interior--reputacao-internacional",
-    "programa-medicos-no-interior--gasto-publico"
+    "programa-medicos-no-interior--gasto-publico",
+    "programa-medicos-no-interior--grupo-agro",
+    "programa-medicos-no-interior--grupo-jovens",
+    "programa-medicos-no-interior--grupo-pobres",
+    "programa-medicos-no-interior--grupo-progressistas",
+    "programa-medicos-no-interior--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

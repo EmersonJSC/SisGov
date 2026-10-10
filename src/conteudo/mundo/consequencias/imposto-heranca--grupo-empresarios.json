@@ -1,0 +1,17 @@
+{
+  "id": "imposto-heranca--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_heranca",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.117647,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

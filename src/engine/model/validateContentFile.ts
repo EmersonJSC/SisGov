@@ -1267,7 +1267,9 @@ function validateVariables(
       );
       if (
         type !== undefined &&
-        !["controle", "calculado", "estoque", "situacao"].includes(type)
+        !["controle", "calculado", "estoque", "situacao", "grupo"].includes(
+          type,
+        )
       ) {
         diagnostics.push(
           diagnostic(
@@ -1335,7 +1337,8 @@ function validateVariables(
           );
         }
       }
-      const bubble = type === "calculado" || type === "situacao";
+      const bubble =
+        type === "calculado" || type === "situacao" || type === "grupo";
       if (bubble && item.valorInicial !== undefined)
         diagnostics.push(
           diagnostic(

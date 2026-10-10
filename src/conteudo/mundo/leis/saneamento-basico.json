@@ -47,7 +47,12 @@
     "saneamento-basico--investimento",
     "saneamento-basico--renda-familias",
     "saneamento-basico--protestos",
-    "saneamento-basico--gasto-publico"
+    "saneamento-basico--gasto-publico",
+    "saneamento-basico--grupo-classe-media",
+    "saneamento-basico--grupo-empresarios",
+    "saneamento-basico--grupo-pobres",
+    "saneamento-basico--grupo-servidores",
+    "saneamento-basico--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

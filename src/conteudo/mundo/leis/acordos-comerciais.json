@@ -41,7 +41,9 @@
     "acordos-comerciais--inflacao",
     "acordos-comerciais--reputacao-internacional",
     "acordos-comerciais--desemprego",
-    "acordos-comerciais--arrecadacao"
+    "acordos-comerciais--arrecadacao",
+    "acordos-comerciais--grupo-classe-media",
+    "acordos-comerciais--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

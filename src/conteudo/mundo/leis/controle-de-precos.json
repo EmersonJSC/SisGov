@@ -40,9 +40,13 @@
     "controle-de-precos--desabastecimento",
     "controle-de-precos--investimento",
     "controle-de-precos--informalidade",
-    "controle-de-precos--popularidade-governo",
     "controle-de-precos--preco-alimentos",
-    "controle-de-precos--gasto-publico"
+    "controle-de-precos--gasto-publico",
+    "controle-de-precos--grupo-agro",
+    "controle-de-precos--grupo-classe-media",
+    "controle-de-precos--grupo-empresarios",
+    "controle-de-precos--grupo-pequenos-negocios",
+    "controle-de-precos--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

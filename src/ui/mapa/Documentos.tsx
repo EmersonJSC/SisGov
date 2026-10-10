@@ -971,6 +971,7 @@ const NOME_TIPO: Readonly<Record<string, string>> = {
   estoque: "Indicador lento (acumula com o tempo)",
   situacao: "Situação",
   evento: "Evento",
+  grupo: "Grupo social (satisfação)",
 };
 
 function Regua({ bolha }: { bolha: VisaoBolha }) {
@@ -1090,8 +1091,12 @@ export function DocumentoBolha({
         <span className="cartao-texto">
           <strong>{lei?.nome ?? bolhas.get(r.de)?.nome ?? r.de}</strong>
           <small>
-            {lei ? `Lei · ${nomeCurto(lei.ministerios[0])}` : "Indicador"} ·{" "}
-            {atraso(r.atrasoMeses)}
+            {lei
+              ? `Lei · ${nomeCurto(lei.ministerios[0])}`
+              : bolhas.get(r.de)?.tipo === "grupo"
+                ? `Grupo social · satisfação ${Math.round(bolhas.get(r.de)!.valor)}`
+                : "Indicador"}{" "}
+            · {atraso(r.atrasoMeses)}
             {r.mecanismo === "limiar" ? " · além de um certo nível" : ""}
             {r.mecanismo === "produto" ? " · multiplica" : ""}
           </small>

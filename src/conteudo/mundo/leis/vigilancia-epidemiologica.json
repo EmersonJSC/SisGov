@@ -25,6 +25,9 @@
     "vigilancia-epidemiologica--saude-populacao",
     "vigilancia-epidemiologica--reputacao-internacional",
     "vigilancia-epidemiologica--liberdade-civil",
+    "vigilancia-epidemiologica--grupo-aposentados",
+    "vigilancia-epidemiologica--grupo-empresarios",
+    "vigilancia-epidemiologica--grupo-servidores",
     "vigilancia-epidemiologica--gasto-publico"
   ],
   "respostaTemporal": {

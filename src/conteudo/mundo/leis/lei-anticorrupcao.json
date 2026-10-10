@@ -38,7 +38,10 @@
     "lei-anticorrupcao--estabilidade-politica",
     "lei-anticorrupcao--polarizacao",
     "lei-anticorrupcao--reputacao-internacional",
-    "lei-anticorrupcao--gasto-publico"
+    "lei-anticorrupcao--gasto-publico",
+    "lei-anticorrupcao--grupo-classe-media",
+    "lei-anticorrupcao--grupo-empresarios",
+    "lei-anticorrupcao--grupo-pequenos-negocios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

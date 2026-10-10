@@ -270,7 +270,9 @@ export function validatePackageCoherence(
     const variable = variablesById.get(variableId);
     if (
       variable &&
-      (variable.tipo === "calculado" || variable.tipo === "situacao")
+      (variable.tipo === "calculado" ||
+        variable.tipo === "situacao" ||
+        variable.tipo === "grupo")
     ) {
       diagnostics.push(
         issue(
@@ -298,7 +300,9 @@ export function validatePackageCoherence(
     const field = `indicesIniciais.${variableId}`;
     if (
       !variable ||
-      (variable.tipo !== "calculado" && variable.tipo !== "situacao")
+      (variable.tipo !== "calculado" &&
+        variable.tipo !== "situacao" &&
+        variable.tipo !== "grupo")
     )
       diagnostics.push(
         issue(

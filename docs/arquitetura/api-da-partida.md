@@ -40,7 +40,7 @@ e descarte a anterior (ou guarde para "desfazer").
   `lei-ordinaria`, `execucao-programa-autorizado`…). A tela põe as leis de
   emenda constitucional também na área da Presidência.
 - `bolhas[]`: `id`, `nome`, `tipo` (calculado = índice, estoque = bolha lenta,
-  situacao, evento), `unidade`, `area`, `avaliacao` (maior_melhor,
+  situacao, evento, grupo = satisfação de um grupo social, SG143), `unidade`, `area`, `avaliacao` (maior_melhor,
   maior_pior, neutra), `valor`, `minimo` e `maximo` (escala do domínio) e,
   nas situações, `surgimento`; `contexto` (D-55): a parte do valor que as
   leis e a rede não explicam, fixa desde o turno 0.

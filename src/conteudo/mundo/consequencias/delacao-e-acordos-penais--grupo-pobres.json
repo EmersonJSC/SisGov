@@ -1,0 +1,17 @@
+{
+  "id": "delacao-e-acordos-penais--grupo-pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_delacao_e_acordos_penais",
+  "alvo": "grupo_pobres",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

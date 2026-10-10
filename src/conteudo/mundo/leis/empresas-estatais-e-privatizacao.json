@@ -42,7 +42,10 @@
     "empresas-estatais-e-privatizacao--confianca-empresarial",
     "empresas-estatais-e-privatizacao--desemprego",
     "empresas-estatais-e-privatizacao--gasto-publico",
-    "empresas-estatais-e-privatizacao--arrecadacao"
+    "empresas-estatais-e-privatizacao--arrecadacao",
+    "empresas-estatais-e-privatizacao--grupo-empresarios",
+    "empresas-estatais-e-privatizacao--grupo-servidores",
+    "empresas-estatais-e-privatizacao--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

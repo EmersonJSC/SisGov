@@ -41,7 +41,10 @@
     "avaliacao-escolas--segregacao-escolar",
     "avaliacao-escolas--greve-de-professores",
     "avaliacao-escolas--evasao-escolar",
-    "avaliacao-escolas--gasto-publico"
+    "avaliacao-escolas--gasto-publico",
+    "avaliacao-escolas--grupo-classe-media",
+    "avaliacao-escolas--grupo-servidores",
+    "avaliacao-escolas--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

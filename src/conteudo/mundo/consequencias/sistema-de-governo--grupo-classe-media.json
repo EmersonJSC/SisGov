@@ -1,0 +1,17 @@
+{
+  "id": "sistema-de-governo--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_sistema_de_governo",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

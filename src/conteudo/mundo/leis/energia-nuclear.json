@@ -42,7 +42,10 @@
     "energia-nuclear--preco-energia",
     "energia-nuclear--desastre-ambiental",
     "energia-nuclear--protestos",
-    "energia-nuclear--gasto-publico"
+    "energia-nuclear--gasto-publico",
+    "energia-nuclear--grupo-empresarios",
+    "energia-nuclear--grupo-progressistas",
+    "energia-nuclear--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

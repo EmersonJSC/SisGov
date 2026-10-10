@@ -47,7 +47,10 @@
     "sistema-de-saude--pressao-hospitalar",
     "sistema-de-saude--custo-trabalhista",
     "sistema-de-saude--fuga-de-cerebros",
-    "sistema-de-saude--gasto-publico"
+    "sistema-de-saude--gasto-publico",
+    "sistema-de-saude--grupo-aposentados",
+    "sistema-de-saude--grupo-empresarios",
+    "sistema-de-saude--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -2166,6 +2166,138 @@
       "surgimento": 30
     },
     {
+      "id": "grupo_agro",
+      "tipo": "grupo",
+      "nome": "Agro",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_aposentados",
+      "tipo": "grupo",
+      "nome": "Aposentados",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_classe_media",
+      "tipo": "grupo",
+      "nome": "Classe média",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_conservadores",
+      "tipo": "grupo",
+      "nome": "Conservadores",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_empresarios",
+      "tipo": "grupo",
+      "nome": "Empresários",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_jovens",
+      "tipo": "grupo",
+      "nome": "Jovens",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_pequenos_negocios",
+      "tipo": "grupo",
+      "nome": "Pequenos negócios",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_pobres",
+      "tipo": "grupo",
+      "nome": "Pobres",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_progressistas",
+      "tipo": "grupo",
+      "nome": "Progressistas",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_servidores",
+      "tipo": "grupo",
+      "nome": "Servidores públicos",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_trabalhadores",
+      "tipo": "grupo",
+      "nome": "Trabalhadores",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "ied",
       "tipo": "calculado",
       "nome": "Investimento estrangeiro direto",
@@ -2569,13 +2701,13 @@
     {
       "id": "popularidade_governo",
       "tipo": "calculado",
-      "nome": "Popularidade do governo",
+      "nome": "Aprovação do governo",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Geral",
+      "area": "Grupos sociais",
       "avaliacao": "maior_melhor"
     },
     {

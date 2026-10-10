@@ -42,6 +42,7 @@ function Metrica({
   detalhe,
   classe,
   titulo,
+  onClick,
 }: {
   icone: string;
   rotulo: string;
@@ -49,9 +50,23 @@ function Metrica({
   detalhe?: string;
   classe?: string;
   titulo?: string;
+  onClick?: () => void;
 }) {
   return (
-    <div className={`metrica ${classe ?? ""}`} title={titulo}>
+    <div
+      className={`metrica ${classe ?? ""}${onClick ? " clicavel" : ""}`}
+      title={titulo}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") onClick();
+            }
+          : undefined
+      }
+    >
       <span className="metrica-icone">
         <Icone nome={icone} tamanho={22} />
       </span>
@@ -447,6 +462,10 @@ export function TelaPrincipal() {
 
   const { base, indice, fundo } = estrutura.current;
   const contas = visao.contas;
+  // SG143: aprovação = média dos grupos sociais pelo peso no eleitorado
+  const aprovacao = visao.bolhas.find((b) => b.id === "popularidade_governo");
+  const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
+  const gruposContentes = grupos.filter((g) => g.valor >= 50).length;
   // Os documentos são janelas soltas sobre o mapa: a câmera não desvia para
   // o lado; o mapa só desliza quando a janela da frente esconde a seleção.
   const painel = 0;
@@ -487,13 +506,23 @@ export function TelaPrincipal() {
               titulo={`PIB de ${moeda(contas.pib)}/ano. Quando a dívida acaba, o superávit vai para o cofre.`}
             />
           )}
-          <Metrica
-            icone={ICONE_INTERFACE.aprovacao}
-            rotulo="Aprovação do partido"
-            valor="—"
-            classe="indisponivel"
-            titulo="A partida ainda não calcula a aprovação do partido."
-          />
+          {aprovacao ? (
+            <Metrica
+              icone={ICONE_INTERFACE.aprovacao}
+              rotulo="Aprovação do governo"
+              valor={`${aprovacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`}
+              detalhe={`${gruposContentes} de ${grupos.length} grupos satisfeitos`}
+              classe={
+                aprovacao.valor >= 50
+                  ? "boa"
+                  : aprovacao.valor >= 35
+                    ? "neutra"
+                    : "ruim"
+              }
+              titulo="Média da satisfação dos grupos sociais, pelo peso de cada um no eleitorado. Clique para ver cada grupo."
+              onClick={() => selecionar(aprovacao.id)}
+            />
+          ) : null}
         </div>
         <div className="turno">
           <Icone nome={ICONE_INTERFACE.turno} tamanho={20} />

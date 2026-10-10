@@ -38,10 +38,13 @@
     "transparencia-publica--corrupcao",
     "transparencia-publica--captura-politica",
     "transparencia-publica--confianca-instituicoes",
-    "transparencia-publica--popularidade-governo",
     "transparencia-publica--margem-manobra-governo",
     "transparencia-publica--reputacao-internacional",
-    "transparencia-publica--gasto-publico"
+    "transparencia-publica--gasto-publico",
+    "transparencia-publica--grupo-classe-media",
+    "transparencia-publica--grupo-pequenos-negocios",
+    "transparencia-publica--grupo-progressistas",
+    "transparencia-publica--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

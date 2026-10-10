@@ -1,0 +1,17 @@
+{
+  "id": "restricao-tabaco-e-alcool--grupo-servidores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_restricao_tabaco_e_alcool",
+  "alvo": "grupo_servidores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

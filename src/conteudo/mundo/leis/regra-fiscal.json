@@ -40,7 +40,10 @@
     "regra-fiscal--margem-manobra-governo",
     "regra-fiscal--infraestrutura",
     "regra-fiscal--recessao",
-    "regra-fiscal--gasto-publico"
+    "regra-fiscal--gasto-publico",
+    "regra-fiscal--grupo-empresarios",
+    "regra-fiscal--grupo-pobres",
+    "regra-fiscal--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -41,7 +41,11 @@
     "meta-de-inflacao--desemprego",
     "meta-de-inflacao--credito",
     "meta-de-inflacao--risco-pais",
-    "meta-de-inflacao--cambio"
+    "meta-de-inflacao--cambio",
+    "meta-de-inflacao--grupo-aposentados",
+    "meta-de-inflacao--grupo-pequenos-negocios",
+    "meta-de-inflacao--grupo-pobres",
+    "meta-de-inflacao--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

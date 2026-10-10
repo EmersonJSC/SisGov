@@ -46,7 +46,9 @@
     "seguro-desemprego--desemprego",
     "seguro-desemprego--qualificacao-trabalho",
     "seguro-desemprego--rotatividade-emprego",
-    "seguro-desemprego--gasto-publico"
+    "seguro-desemprego--gasto-publico",
+    "seguro-desemprego--grupo-empresarios",
+    "seguro-desemprego--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -1,0 +1,17 @@
+{
+  "id": "negociacao-coletiva-e-sindicatos--grupo-pequenos-negocios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_negociacao_coletiva_e_sindicatos",
+  "alvo": "grupo_pequenos_negocios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

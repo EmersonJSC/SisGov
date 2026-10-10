@@ -24,8 +24,14 @@
     "imposto-propriedade-urbana-rural--desigualdade-1",
     "imposto-propriedade-urbana-rural--deficit-habitacional",
     "imposto-propriedade-urbana-rural--renda-familias",
-    "imposto-propriedade-urbana-rural--popularidade-governo",
     "imposto-propriedade-urbana-rural--investimento",
+    "imposto-propriedade-urbana-rural--grupo-agro",
+    "imposto-propriedade-urbana-rural--grupo-aposentados",
+    "imposto-propriedade-urbana-rural--grupo-classe-media",
+    "imposto-propriedade-urbana-rural--grupo-empresarios",
+    "imposto-propriedade-urbana-rural--grupo-jovens",
+    "imposto-propriedade-urbana-rural--grupo-pobres",
+    "imposto-propriedade-urbana-rural--grupo-progressistas",
     "imposto-propriedade-urbana-rural--arrecadacao"
   ],
   "respostaTemporal": {

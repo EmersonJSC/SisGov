@@ -294,7 +294,7 @@ function posicionarBolhas(
 const TOPO = -MEDIDAS.raioBolhaMaximo;
 
 /** Elipse que contém as bolhas: larga, para caber em telas largas. */
-export const ELIPSE_EXTERNA = { rx: 1960, ry: 1100 } as const;
+export const ELIPSE_EXTERNA = { rx: 2020, ry: 1140 } as const;
 
 const FOLGA_CAIXAS = 10;
 

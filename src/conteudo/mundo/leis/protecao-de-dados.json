@@ -40,7 +40,11 @@
     "protecao-de-dados--concentracao-mercado",
     "protecao-de-dados--confianca-empresarial",
     "protecao-de-dados--corrupcao",
-    "protecao-de-dados--gasto-publico"
+    "protecao-de-dados--gasto-publico",
+    "protecao-de-dados--grupo-classe-media",
+    "protecao-de-dados--grupo-empresarios",
+    "protecao-de-dados--grupo-pequenos-negocios",
+    "protecao-de-dados--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

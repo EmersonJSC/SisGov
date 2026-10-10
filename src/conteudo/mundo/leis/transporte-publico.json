@@ -41,7 +41,10 @@
     "transporte-publico--desemprego",
     "transporte-publico--emissoes",
     "transporte-publico--protestos",
-    "transporte-publico--gasto-publico"
+    "transporte-publico--gasto-publico",
+    "transporte-publico--grupo-classe-media",
+    "transporte-publico--grupo-jovens",
+    "transporte-publico--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

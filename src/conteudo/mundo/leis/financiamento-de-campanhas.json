@@ -37,9 +37,12 @@
   "consequencias": [
     "financiamento-de-campanhas--captura-politica",
     "financiamento-de-campanhas--corrupcao",
-    "financiamento-de-campanhas--popularidade-governo",
     "financiamento-de-campanhas--desigualdade",
-    "financiamento-de-campanhas--gasto-publico"
+    "financiamento-de-campanhas--gasto-publico",
+    "financiamento-de-campanhas--grupo-classe-media",
+    "financiamento-de-campanhas--grupo-empresarios",
+    "financiamento-de-campanhas--grupo-progressistas",
+    "financiamento-de-campanhas--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

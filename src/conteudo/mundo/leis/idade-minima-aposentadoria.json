@@ -47,7 +47,10 @@
     "idade-minima-aposentadoria--pobreza",
     "idade-minima-aposentadoria--desigualdade",
     "idade-minima-aposentadoria--protestos",
-    "idade-minima-aposentadoria--popularidade-governo"
+    "idade-minima-aposentadoria--grupo-empresarios",
+    "idade-minima-aposentadoria--grupo-jovens",
+    "idade-minima-aposentadoria--grupo-progressistas",
+    "idade-minima-aposentadoria--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

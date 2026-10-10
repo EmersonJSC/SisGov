@@ -46,7 +46,13 @@
     "acoes-afirmativas--polarizacao",
     "acoes-afirmativas--escolaridade",
     "acoes-afirmativas--oportunidades-juvenis-5",
-    "acoes-afirmativas--gasto-publico"
+    "acoes-afirmativas--gasto-publico",
+    "acoes-afirmativas--grupo-classe-media",
+    "acoes-afirmativas--grupo-conservadores",
+    "acoes-afirmativas--grupo-empresarios",
+    "acoes-afirmativas--grupo-jovens",
+    "acoes-afirmativas--grupo-pobres",
+    "acoes-afirmativas--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

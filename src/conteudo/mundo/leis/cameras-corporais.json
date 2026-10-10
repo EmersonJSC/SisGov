@@ -40,7 +40,11 @@
     "cameras-corporais--impunidade",
     "cameras-corporais--liberdade-civil",
     "cameras-corporais--sensacao-seguranca",
-    "cameras-corporais--gasto-publico"
+    "cameras-corporais--gasto-publico",
+    "cameras-corporais--grupo-conservadores",
+    "cameras-corporais--grupo-pobres",
+    "cameras-corporais--grupo-progressistas",
+    "cameras-corporais--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

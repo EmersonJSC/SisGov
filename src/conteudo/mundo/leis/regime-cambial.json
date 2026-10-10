@@ -39,7 +39,11 @@
     "regime-cambial--inflacao",
     "regime-cambial--exportacoes",
     "regime-cambial--recessao",
-    "regime-cambial--confianca-empresarial"
+    "regime-cambial--confianca-empresarial",
+    "regime-cambial--grupo-agro",
+    "regime-cambial--grupo-classe-media",
+    "regime-cambial--grupo-empresarios",
+    "regime-cambial--grupo-pequenos-negocios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

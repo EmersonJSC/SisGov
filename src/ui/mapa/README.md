@@ -84,6 +84,10 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
   por "Suas decisões" e boletim com "Sua marca" (comparado com o país no
   piloto automático). O movimento natural do país fica com etiqueta pequena e
   apagada, sem piscar. É destaque, não peso: a simulação é a mesma.
+- **Grupos sociais (SG143):** onze bolhas do tipo `grupo` (contorno roxo)
+  com a satisfação de cada segmento do eleitorado. A barra mostra a
+  aprovação do governo (média dos grupos pelo peso) e quantos grupos estão
+  satisfeitos; clicar abre o boletim com cada grupo.
 - **Câmera:** escala entre a visão geral (no mínimo 0,3) e 1,35; o mapa não sai
   da vista. O botão de alvo volta à visão geral. Esc fecha a seleção e depois
   a área.

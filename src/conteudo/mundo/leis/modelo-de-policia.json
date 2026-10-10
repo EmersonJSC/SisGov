@@ -47,7 +47,12 @@
     "modelo-de-policia--violencia-letal",
     "modelo-de-policia--sensacao-seguranca",
     "modelo-de-policia--liberdade-civil",
-    "modelo-de-policia--gasto-publico"
+    "modelo-de-policia--gasto-publico",
+    "modelo-de-policia--grupo-conservadores",
+    "modelo-de-policia--grupo-jovens",
+    "modelo-de-policia--grupo-pobres",
+    "modelo-de-policia--grupo-progressistas",
+    "modelo-de-policia--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

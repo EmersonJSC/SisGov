@@ -24,7 +24,11 @@
     "imposto-grandes-fortunas--fuga-capitais",
     "imposto-grandes-fortunas--investimento",
     "imposto-grandes-fortunas--complexidade-tributaria",
-    "imposto-grandes-fortunas--popularidade-governo",
+    "imposto-grandes-fortunas--grupo-agro",
+    "imposto-grandes-fortunas--grupo-empresarios",
+    "imposto-grandes-fortunas--grupo-pobres",
+    "imposto-grandes-fortunas--grupo-progressistas",
+    "imposto-grandes-fortunas--grupo-trabalhadores",
     "imposto-grandes-fortunas--arrecadacao"
   ],
   "respostaTemporal": {

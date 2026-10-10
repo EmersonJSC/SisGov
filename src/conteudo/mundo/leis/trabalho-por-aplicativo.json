@@ -42,7 +42,13 @@
     "trabalho-por-aplicativo--desemprego",
     "trabalho-por-aplicativo--concentracao-mercado",
     "trabalho-por-aplicativo--saude-populacao",
-    "trabalho-por-aplicativo--arrecadacao"
+    "trabalho-por-aplicativo--arrecadacao",
+    "trabalho-por-aplicativo--grupo-classe-media",
+    "trabalho-por-aplicativo--grupo-empresarios",
+    "trabalho-por-aplicativo--grupo-jovens",
+    "trabalho-por-aplicativo--grupo-pobres",
+    "trabalho-por-aplicativo--grupo-progressistas",
+    "trabalho-por-aplicativo--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

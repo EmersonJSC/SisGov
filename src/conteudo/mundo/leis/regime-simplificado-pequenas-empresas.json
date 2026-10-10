@@ -40,7 +40,13 @@
     "regime-simplificado-pequenas-empresas--produtividade",
     "regime-simplificado-pequenas-empresas--sonegacao",
     "regime-simplificado-pequenas-empresas--desemprego",
-    "regime-simplificado-pequenas-empresas--arrecadacao"
+    "regime-simplificado-pequenas-empresas--arrecadacao",
+    "regime-simplificado-pequenas-empresas--grupo-empresarios",
+    "regime-simplificado-pequenas-empresas--grupo-jovens",
+    "regime-simplificado-pequenas-empresas--grupo-pequenos-negocios",
+    "regime-simplificado-pequenas-empresas--grupo-pobres",
+    "regime-simplificado-pequenas-empresas--grupo-servidores",
+    "regime-simplificado-pequenas-empresas--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

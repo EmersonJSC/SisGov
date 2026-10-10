@@ -1,0 +1,17 @@
+{
+  "id": "oportunidades-juvenis--grupo-jovens",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oportunidades_juvenis",
+  "alvo": "grupo_jovens",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.3,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

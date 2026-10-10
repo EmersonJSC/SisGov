@@ -46,7 +46,13 @@
     "restricao-tabaco-e-alcool--desigualdade",
     "restricao-tabaco-e-alcool--consumo",
     "restricao-tabaco-e-alcool--crime-organizado",
-    "restricao-tabaco-e-alcool--liberdade-civil"
+    "restricao-tabaco-e-alcool--liberdade-civil",
+    "restricao-tabaco-e-alcool--grupo-agro",
+    "restricao-tabaco-e-alcool--grupo-classe-media",
+    "restricao-tabaco-e-alcool--grupo-conservadores",
+    "restricao-tabaco-e-alcool--grupo-empresarios",
+    "restricao-tabaco-e-alcool--grupo-pequenos-negocios",
+    "restricao-tabaco-e-alcool--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

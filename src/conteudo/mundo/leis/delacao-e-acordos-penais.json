@@ -41,7 +41,11 @@
     "delacao-e-acordos-penais--gasto-publico",
     "delacao-e-acordos-penais--liberdade-civil",
     "delacao-e-acordos-penais--confianca-instituicoes",
-    "delacao-e-acordos-penais--polarizacao"
+    "delacao-e-acordos-penais--polarizacao",
+    "delacao-e-acordos-penais--grupo-classe-media",
+    "delacao-e-acordos-penais--grupo-empresarios",
+    "delacao-e-acordos-penais--grupo-pobres",
+    "delacao-e-acordos-penais--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -44,8 +44,11 @@
     "reajuste-de-beneficios--pobreza",
     "reajuste-de-beneficios--deficit-previdenciario",
     "reajuste-de-beneficios--inflacao",
-    "reajuste-de-beneficios--popularidade-governo",
-    "reajuste-de-beneficios--gasto-publico"
+    "reajuste-de-beneficios--gasto-publico",
+    "reajuste-de-beneficios--grupo-aposentados",
+    "reajuste-de-beneficios--grupo-empresarios",
+    "reajuste-de-beneficios--grupo-jovens",
+    "reajuste-de-beneficios--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

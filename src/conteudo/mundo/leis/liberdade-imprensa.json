@@ -37,10 +37,14 @@
   "consequencias": [
     "liberdade-imprensa--corrupcao",
     "liberdade-imprensa--liberdade-civil",
-    "liberdade-imprensa--popularidade-governo",
     "liberdade-imprensa--margem-manobra-governo",
     "liberdade-imprensa--reputacao-internacional",
-    "liberdade-imprensa--desinformacao"
+    "liberdade-imprensa--desinformacao",
+    "liberdade-imprensa--grupo-classe-media",
+    "liberdade-imprensa--grupo-conservadores",
+    "liberdade-imprensa--grupo-jovens",
+    "liberdade-imprensa--grupo-progressistas",
+    "liberdade-imprensa--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

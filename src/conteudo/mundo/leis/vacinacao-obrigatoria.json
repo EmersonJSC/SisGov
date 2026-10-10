@@ -47,7 +47,11 @@
     "vacinacao-obrigatoria--liberdade-civil",
     "vacinacao-obrigatoria--polarizacao",
     "vacinacao-obrigatoria--protestos",
-    "vacinacao-obrigatoria--gasto-publico"
+    "vacinacao-obrigatoria--gasto-publico",
+    "vacinacao-obrigatoria--grupo-aposentados",
+    "vacinacao-obrigatoria--grupo-conservadores",
+    "vacinacao-obrigatoria--grupo-pobres",
+    "vacinacao-obrigatoria--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

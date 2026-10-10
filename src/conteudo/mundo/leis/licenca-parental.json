@@ -41,7 +41,11 @@
     "licenca-parental--custo-trabalhista",
     "licenca-parental--saude-populacao",
     "licenca-parental--desigualdade",
-    "licenca-parental--gasto-publico"
+    "licenca-parental--gasto-publico",
+    "licenca-parental--grupo-classe-media",
+    "licenca-parental--grupo-empresarios",
+    "licenca-parental--grupo-pequenos-negocios",
+    "licenca-parental--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

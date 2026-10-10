@@ -42,7 +42,12 @@
     "saude-mental--participacao-trabalho-cuidadoras",
     "saude-mental--produtividade",
     "saude-mental--uso-drogas",
-    "saude-mental--gasto-publico"
+    "saude-mental--gasto-publico",
+    "saude-mental--grupo-classe-media",
+    "saude-mental--grupo-conservadores",
+    "saude-mental--grupo-pobres",
+    "saude-mental--grupo-progressistas",
+    "saude-mental--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

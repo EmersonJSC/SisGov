@@ -27,6 +27,11 @@
     "tarifas-de-importacao--desigualdade",
     "tarifas-de-importacao--exportacoes",
     "tarifas-de-importacao--desemprego",
+    "tarifas-de-importacao--grupo-agro",
+    "tarifas-de-importacao--grupo-classe-media",
+    "tarifas-de-importacao--grupo-empresarios",
+    "tarifas-de-importacao--grupo-pobres",
+    "tarifas-de-importacao--grupo-trabalhadores",
     "tarifas-de-importacao--arrecadacao"
   ],
   "respostaTemporal": {

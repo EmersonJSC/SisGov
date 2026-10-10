@@ -41,7 +41,9 @@
     "ensino-tecnico-profissional--desemprego",
     "ensino-tecnico-profissional--segregacao-escolar",
     "ensino-tecnico-profissional--desigualdade",
-    "ensino-tecnico-profissional--gasto-publico"
+    "ensino-tecnico-profissional--gasto-publico",
+    "ensino-tecnico-profissional--grupo-empresarios",
+    "ensino-tecnico-profissional--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

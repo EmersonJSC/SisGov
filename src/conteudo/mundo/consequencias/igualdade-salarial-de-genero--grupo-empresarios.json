@@ -1,0 +1,17 @@
+{
+  "id": "igualdade-salarial-de-genero--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_igualdade_salarial_de_genero",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -45,7 +45,11 @@
     "servico-militar--liberdade-civil",
     "servico-militar--desemprego",
     "servico-militar--capacidade-defesa-4",
-    "servico-militar--gasto-publico"
+    "servico-militar--gasto-publico",
+    "servico-militar--grupo-classe-media",
+    "servico-militar--grupo-conservadores",
+    "servico-militar--grupo-jovens",
+    "servico-militar--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

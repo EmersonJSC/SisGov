@@ -43,11 +43,14 @@
     "penas-maximas--lotacao-prisional",
     "penas-maximas--violencia-letal",
     "penas-maximas--sensacao-seguranca",
-    "penas-maximas--popularidade-governo",
     "penas-maximas--rebeliao-presidios",
     "penas-maximas--reputacao-internacional",
     "penas-maximas--liberdade-civil",
-    "penas-maximas--gasto-publico"
+    "penas-maximas--gasto-publico",
+    "penas-maximas--grupo-conservadores",
+    "penas-maximas--grupo-pobres",
+    "penas-maximas--grupo-progressistas",
+    "penas-maximas--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

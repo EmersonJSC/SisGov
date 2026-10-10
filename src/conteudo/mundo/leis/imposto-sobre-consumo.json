@@ -26,6 +26,11 @@
     "imposto-sobre-consumo--pobreza",
     "imposto-sobre-consumo--sonegacao",
     "imposto-sobre-consumo--informalidade",
+    "imposto-sobre-consumo--grupo-classe-media",
+    "imposto-sobre-consumo--grupo-empresarios",
+    "imposto-sobre-consumo--grupo-pequenos-negocios",
+    "imposto-sobre-consumo--grupo-pobres",
+    "imposto-sobre-consumo--grupo-servidores",
     "imposto-sobre-consumo--arrecadacao"
   ],
   "respostaTemporal": {

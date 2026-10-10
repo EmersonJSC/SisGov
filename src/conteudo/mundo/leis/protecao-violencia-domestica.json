@@ -40,7 +40,9 @@
     "protecao-violencia-domestica--impunidade",
     "protecao-violencia-domestica--lotacao-prisional",
     "protecao-violencia-domestica--liberdade-civil",
-    "protecao-violencia-domestica--gasto-publico"
+    "protecao-violencia-domestica--gasto-publico",
+    "protecao-violencia-domestica--grupo-conservadores",
+    "protecao-violencia-domestica--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

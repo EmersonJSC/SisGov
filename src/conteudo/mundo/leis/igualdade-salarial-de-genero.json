@@ -41,7 +41,11 @@
     "igualdade-salarial-de-genero--discriminacao",
     "igualdade-salarial-de-genero--confianca-empresarial",
     "igualdade-salarial-de-genero--custo-trabalhista",
-    "igualdade-salarial-de-genero--gasto-publico"
+    "igualdade-salarial-de-genero--gasto-publico",
+    "igualdade-salarial-de-genero--grupo-empresarios",
+    "igualdade-salarial-de-genero--grupo-pequenos-negocios",
+    "igualdade-salarial-de-genero--grupo-progressistas",
+    "igualdade-salarial-de-genero--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

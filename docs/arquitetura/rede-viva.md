@@ -31,7 +31,7 @@ bolha tem **valor próprio**:
 | **Contexto do cenário** (D-55) | Sim, fixo | O cenário declara o valor de cada índice no turno 0 (ex.: Brasil 2026); a parte que as leis e a rede não explicam vira este nó, visível na explicação | Contexto do Brasil 2026 |
 | **Bolha lenta** (estoque) | Sim (o país declara o ponto de partida) | Acumula o que recebe ao longo de anos; se desgasta devagar | Escolaridade, Desenvolvimento, Infraestrutura, Dívida |
 | **Evento** | — | Acontece num momento e dispara efeitos | Epidemia |
-| **Grupo social** (SG143) | Não | Satisfação, só do que recebe | Trabalhadores |
+| **Grupo social** (SG143, D-60) | Não | Satisfação: leis que o favorecem ou prejudicam, indicadores que ele sente, contexto do cenário. A aprovação do governo é a média dos grupos pelo peso de cada um no eleitorado | Trabalhadores, Pobres, Empresários |
 
 Toda bolha influencia e é influenciada. Ministério não é bolha: é a esfera
 que agrupa as leis no mapa.

@@ -40,7 +40,10 @@
     "negociacao-coletiva-e-sindicatos--custo-trabalhista",
     "negociacao-coletiva-e-sindicatos--liberdade-civil",
     "negociacao-coletiva-e-sindicatos--greve-geral",
-    "negociacao-coletiva-e-sindicatos--confianca-empresarial"
+    "negociacao-coletiva-e-sindicatos--confianca-empresarial",
+    "negociacao-coletiva-e-sindicatos--grupo-empresarios",
+    "negociacao-coletiva-e-sindicatos--grupo-pequenos-negocios",
+    "negociacao-coletiva-e-sindicatos--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

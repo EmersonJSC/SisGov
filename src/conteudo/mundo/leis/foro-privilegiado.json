@@ -40,7 +40,10 @@
     "foro-privilegiado--confianca-instituicoes",
     "foro-privilegiado--margem-manobra-governo",
     "foro-privilegiado--estabilidade-politica",
-    "foro-privilegiado--popularidade-governo"
+    "foro-privilegiado--grupo-classe-media",
+    "foro-privilegiado--grupo-conservadores",
+    "foro-privilegiado--grupo-progressistas",
+    "foro-privilegiado--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

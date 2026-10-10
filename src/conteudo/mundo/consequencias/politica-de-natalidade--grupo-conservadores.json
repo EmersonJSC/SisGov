@@ -1,0 +1,17 @@
+{
+  "id": "politica-de-natalidade--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_de_natalidade",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

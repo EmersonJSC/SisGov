@@ -42,7 +42,12 @@
     "sistema-previdenciario--poupanca-domestica",
     "sistema-previdenciario--desigualdade",
     "sistema-previdenciario--gasto-publico",
-    "sistema-previdenciario--arrecadacao"
+    "sistema-previdenciario--arrecadacao",
+    "sistema-previdenciario--grupo-aposentados",
+    "sistema-previdenciario--grupo-empresarios",
+    "sistema-previdenciario--grupo-jovens",
+    "sistema-previdenciario--grupo-pobres",
+    "sistema-previdenciario--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

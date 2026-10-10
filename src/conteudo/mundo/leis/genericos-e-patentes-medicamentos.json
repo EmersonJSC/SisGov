@@ -46,7 +46,11 @@
     "genericos-e-patentes-medicamentos--ied",
     "genericos-e-patentes-medicamentos--reputacao-internacional",
     "genericos-e-patentes-medicamentos--saude-populacao",
-    "genericos-e-patentes-medicamentos--gasto-publico"
+    "genericos-e-patentes-medicamentos--gasto-publico",
+    "genericos-e-patentes-medicamentos--grupo-aposentados",
+    "genericos-e-patentes-medicamentos--grupo-empresarios",
+    "genericos-e-patentes-medicamentos--grupo-pequenos-negocios",
+    "genericos-e-patentes-medicamentos--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

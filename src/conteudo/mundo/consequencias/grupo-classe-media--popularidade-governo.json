@@ -1,0 +1,17 @@
+{
+  "id": "grupo-classe-media--popularidade-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "grupo_classe_media",
+  "alvo": "popularidade_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.14,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

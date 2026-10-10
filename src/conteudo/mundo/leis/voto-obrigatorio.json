@@ -34,7 +34,10 @@
     "voto-obrigatorio--desigualdade",
     "voto-obrigatorio--polarizacao",
     "voto-obrigatorio--liberdade-civil",
-    "voto-obrigatorio--gasto-publico"
+    "voto-obrigatorio--gasto-publico",
+    "voto-obrigatorio--grupo-empresarios",
+    "voto-obrigatorio--grupo-jovens",
+    "voto-obrigatorio--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

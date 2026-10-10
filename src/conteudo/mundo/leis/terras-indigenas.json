@@ -42,7 +42,10 @@
     "terras-indigenas--producao-mineral",
     "terras-indigenas--producao-agropecuaria",
     "terras-indigenas--reputacao-internacional",
-    "terras-indigenas--gasto-publico"
+    "terras-indigenas--gasto-publico",
+    "terras-indigenas--grupo-agro",
+    "terras-indigenas--grupo-empresarios",
+    "terras-indigenas--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

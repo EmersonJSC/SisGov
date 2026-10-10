@@ -46,7 +46,12 @@
     "gestao-de-presidios--reincidencia",
     "gestao-de-presidios--lotacao-prisional",
     "gestao-de-presidios--corrupcao",
-    "gestao-de-presidios--gasto-publico"
+    "gestao-de-presidios--gasto-publico",
+    "gestao-de-presidios--grupo-conservadores",
+    "gestao-de-presidios--grupo-empresarios",
+    "gestao-de-presidios--grupo-progressistas",
+    "gestao-de-presidios--grupo-servidores",
+    "gestao-de-presidios--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -41,7 +41,12 @@
     "ensino-obrigatorio--oportunidades-juvenis",
     "ensino-obrigatorio--renda-familias",
     "ensino-obrigatorio--participacao-trabalho-cuidadoras",
-    "ensino-obrigatorio--gasto-publico"
+    "ensino-obrigatorio--gasto-publico",
+    "ensino-obrigatorio--grupo-agro",
+    "ensino-obrigatorio--grupo-jovens",
+    "ensino-obrigatorio--grupo-pobres",
+    "ensino-obrigatorio--grupo-progressistas",
+    "ensino-obrigatorio--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

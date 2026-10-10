@@ -42,7 +42,11 @@
     "defesa-da-concorrencia--confianca-empresarial",
     "defesa-da-concorrencia--investimento",
     "defesa-da-concorrencia--exportacoes",
-    "defesa-da-concorrencia--gasto-publico"
+    "defesa-da-concorrencia--gasto-publico",
+    "defesa-da-concorrencia--grupo-classe-media",
+    "defesa-da-concorrencia--grupo-empresarios",
+    "defesa-da-concorrencia--grupo-pequenos-negocios",
+    "defesa-da-concorrencia--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

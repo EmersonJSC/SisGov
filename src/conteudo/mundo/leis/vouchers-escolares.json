@@ -41,7 +41,12 @@
     "vouchers-escolares--aprendizagem",
     "vouchers-escolares--liberdade-civil",
     "vouchers-escolares--polarizacao",
-    "vouchers-escolares--gasto-publico"
+    "vouchers-escolares--gasto-publico",
+    "vouchers-escolares--grupo-classe-media",
+    "vouchers-escolares--grupo-conservadores",
+    "vouchers-escolares--grupo-empresarios",
+    "vouchers-escolares--grupo-servidores",
+    "vouchers-escolares--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

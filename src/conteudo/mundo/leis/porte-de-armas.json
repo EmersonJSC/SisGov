@@ -41,7 +41,10 @@
     "porte-de-armas--crime-organizado",
     "porte-de-armas--protecao-efetiva-mulheres",
     "porte-de-armas--sensacao-seguranca",
-    "porte-de-armas--liberdade-civil"
+    "porte-de-armas--liberdade-civil",
+    "porte-de-armas--grupo-agro",
+    "porte-de-armas--grupo-conservadores",
+    "porte-de-armas--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

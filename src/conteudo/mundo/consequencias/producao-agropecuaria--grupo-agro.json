@@ -1,0 +1,17 @@
+{
+  "id": "producao-agropecuaria--grupo-agro",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "producao_agropecuaria",
+  "alvo": "grupo_agro",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -42,7 +42,11 @@
     "reforma-agraria--producao-agropecuaria-4",
     "reforma-agraria--conflitos-fundiarios",
     "reforma-agraria--confianca-empresarial",
-    "reforma-agraria--gasto-publico"
+    "reforma-agraria--gasto-publico",
+    "reforma-agraria--grupo-conservadores",
+    "reforma-agraria--grupo-empresarios",
+    "reforma-agraria--grupo-pobres",
+    "reforma-agraria--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

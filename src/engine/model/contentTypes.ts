@@ -72,7 +72,11 @@ export type ScenarioManifest = {
  */
 export type VariableDefinition = {
   id: string;
-  tipo: "controle" | "calculado" | "estoque" | "situacao";
+  /**
+   * `grupo` (SG143): grupo social; a bolha é a satisfação dele (0–100),
+   * calculada como um índice, a partir de leis e indicadores.
+   */
+  tipo: "controle" | "calculado" | "estoque" | "situacao" | "grupo";
   nome: string;
   unidade: string;
   dominio: { minimo?: number; maximo?: number };

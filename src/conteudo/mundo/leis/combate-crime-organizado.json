@@ -47,8 +47,13 @@
     "combate-crime-organizado--crime-organizado-4",
     "combate-crime-organizado--liberdade-civil",
     "combate-crime-organizado--lotacao-prisional",
-    "combate-crime-organizado--popularidade-governo",
-    "combate-crime-organizado--gasto-publico"
+    "combate-crime-organizado--gasto-publico",
+    "combate-crime-organizado--grupo-conservadores",
+    "combate-crime-organizado--grupo-jovens",
+    "combate-crime-organizado--grupo-pequenos-negocios",
+    "combate-crime-organizado--grupo-pobres",
+    "combate-crime-organizado--grupo-progressistas",
+    "combate-crime-organizado--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

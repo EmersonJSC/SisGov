@@ -1,0 +1,17 @@
+{
+  "id": "grupo-aposentados--popularidade-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "grupo_aposentados",
+  "alvo": "popularidade_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

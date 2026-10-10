@@ -24,7 +24,12 @@
     "imposto-heranca--fuga-capitais",
     "imposto-heranca--sonegacao",
     "imposto-heranca--oportunidades-juvenis",
-    "imposto-heranca--popularidade-governo",
+    "imposto-heranca--grupo-agro",
+    "imposto-heranca--grupo-classe-media",
+    "imposto-heranca--grupo-empresarios",
+    "imposto-heranca--grupo-jovens",
+    "imposto-heranca--grupo-pobres",
+    "imposto-heranca--grupo-progressistas",
     "imposto-heranca--arrecadacao"
   ],
   "respostaTemporal": {

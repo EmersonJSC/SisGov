@@ -25,6 +25,9 @@
     "imposto-transacoes-financeiras--fuga-capitais",
     "imposto-transacoes-financeiras--informalidade",
     "imposto-transacoes-financeiras--inflacao",
+    "imposto-transacoes-financeiras--grupo-classe-media",
+    "imposto-transacoes-financeiras--grupo-empresarios",
+    "imposto-transacoes-financeiras--grupo-servidores",
     "imposto-transacoes-financeiras--arrecadacao"
   ],
   "respostaTemporal": {

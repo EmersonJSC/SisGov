@@ -36,7 +36,11 @@
     "independencia-judiciario--margem-manobra-governo",
     "independencia-judiciario--investimento",
     "independencia-judiciario--liberdade-civil",
-    "independencia-judiciario--polarizacao"
+    "independencia-judiciario--polarizacao",
+    "independencia-judiciario--grupo-classe-media",
+    "independencia-judiciario--grupo-empresarios",
+    "independencia-judiciario--grupo-progressistas",
+    "independencia-judiciario--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

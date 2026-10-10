@@ -39,7 +39,10 @@
     "educacao-domiciliar--polarizacao",
     "educacao-domiciliar--evasao-escolar",
     "educacao-domiciliar--aprendizagem",
-    "educacao-domiciliar--gasto-publico"
+    "educacao-domiciliar--gasto-publico",
+    "educacao-domiciliar--grupo-conservadores",
+    "educacao-domiciliar--grupo-progressistas",
+    "educacao-domiciliar--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

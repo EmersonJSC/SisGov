@@ -34,7 +34,10 @@
     "autonomia-banco-central--risco-pais",
     "autonomia-banco-central--margem-manobra-governo",
     "autonomia-banco-central--taxa-juros",
-    "autonomia-banco-central--desemprego"
+    "autonomia-banco-central--desemprego",
+    "autonomia-banco-central--grupo-aposentados",
+    "autonomia-banco-central--grupo-classe-media",
+    "autonomia-banco-central--grupo-pequenos-negocios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

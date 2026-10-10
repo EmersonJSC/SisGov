@@ -46,7 +46,10 @@
     "acesso-ensino-superior--desigualdade",
     "acesso-ensino-superior--desigualdade-4",
     "acesso-ensino-superior--oportunidades-juvenis",
-    "acesso-ensino-superior--gasto-publico"
+    "acesso-ensino-superior--gasto-publico",
+    "acesso-ensino-superior--grupo-classe-media",
+    "acesso-ensino-superior--grupo-empresarios",
+    "acesso-ensino-superior--grupo-jovens"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

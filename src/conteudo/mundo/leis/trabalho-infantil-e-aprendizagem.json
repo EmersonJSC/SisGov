@@ -47,7 +47,12 @@
     "trabalho-infantil-e-aprendizagem--qualificacao-trabalho",
     "trabalho-infantil-e-aprendizagem--desemprego",
     "trabalho-infantil-e-aprendizagem--custo-trabalhista",
-    "trabalho-infantil-e-aprendizagem--reputacao-internacional"
+    "trabalho-infantil-e-aprendizagem--reputacao-internacional",
+    "trabalho-infantil-e-aprendizagem--grupo-agro",
+    "trabalho-infantil-e-aprendizagem--grupo-empresarios",
+    "trabalho-infantil-e-aprendizagem--grupo-jovens",
+    "trabalho-infantil-e-aprendizagem--grupo-pequenos-negocios",
+    "trabalho-infantil-e-aprendizagem--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -53,7 +53,11 @@
     "politica-de-drogas--letalidade-policial",
     "politica-de-drogas--sensacao-seguranca",
     "politica-de-drogas--gasto-publico",
-    "politica-de-drogas--arrecadacao"
+    "politica-de-drogas--arrecadacao",
+    "politica-de-drogas--grupo-classe-media",
+    "politica-de-drogas--grupo-conservadores",
+    "politica-de-drogas--grupo-jovens",
+    "politica-de-drogas--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

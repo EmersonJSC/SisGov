@@ -1,0 +1,17 @@
+{
+  "id": "tarifas-de-importacao--grupo-agro",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_tarifas_de_importacao",
+  "alvo": "grupo_agro",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.25,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

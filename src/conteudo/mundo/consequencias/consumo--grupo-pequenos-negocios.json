@@ -1,0 +1,17 @@
+{
+  "id": "consumo--grupo-pequenos-negocios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "consumo",
+  "alvo": "grupo_pequenos_negocios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

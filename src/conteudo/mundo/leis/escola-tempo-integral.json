@@ -35,7 +35,12 @@
     "escola-tempo-integral--natalidade",
     "escola-tempo-integral--aprendizagem",
     "escola-tempo-integral--evasao-escolar",
-    "escola-tempo-integral--gasto-publico"
+    "escola-tempo-integral--gasto-publico",
+    "escola-tempo-integral--grupo-classe-media",
+    "escola-tempo-integral--grupo-empresarios",
+    "escola-tempo-integral--grupo-jovens",
+    "escola-tempo-integral--grupo-pobres",
+    "escola-tempo-integral--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -47,7 +47,12 @@
     "regulacao-planos-de-saude--cobertura-planos-saude-4",
     "regulacao-planos-de-saude--custo-trabalhista",
     "regulacao-planos-de-saude--confianca-empresarial",
-    "regulacao-planos-de-saude--pressao-hospitalar-7"
+    "regulacao-planos-de-saude--pressao-hospitalar-7",
+    "regulacao-planos-de-saude--grupo-aposentados",
+    "regulacao-planos-de-saude--grupo-classe-media",
+    "regulacao-planos-de-saude--grupo-empresarios",
+    "regulacao-planos-de-saude--grupo-jovens",
+    "regulacao-planos-de-saude--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

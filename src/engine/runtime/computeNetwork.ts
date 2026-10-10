@@ -81,7 +81,9 @@ const isCalculatedBubble = (graph: ScenarioGraph, id: string) => {
   return (
     node !== undefined &&
     !isLawNode(id) &&
-    (node.tipo === "calculado" || node.tipo === "situacao")
+    (node.tipo === "calculado" ||
+      node.tipo === "situacao" ||
+      node.tipo === "grupo")
   );
 };
 

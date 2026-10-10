@@ -25,6 +25,9 @@
     "imposto-renda-empresas--fuga-capitais",
     "imposto-renda-empresas--desigualdade",
     "imposto-renda-empresas--produtividade",
+    "imposto-renda-empresas--grupo-empresarios",
+    "imposto-renda-empresas--grupo-progressistas",
+    "imposto-renda-empresas--grupo-servidores",
     "imposto-renda-empresas--arrecadacao"
   ],
   "respostaTemporal": {

@@ -40,7 +40,11 @@
     "beneficio-idosos-e-deficientes--desigualdade",
     "beneficio-idosos-e-deficientes--informalidade",
     "beneficio-idosos-e-deficientes--saude-populacao",
-    "beneficio-idosos-e-deficientes--gasto-publico"
+    "beneficio-idosos-e-deficientes--gasto-publico",
+    "beneficio-idosos-e-deficientes--grupo-aposentados",
+    "beneficio-idosos-e-deficientes--grupo-classe-media",
+    "beneficio-idosos-e-deficientes--grupo-pobres",
+    "beneficio-idosos-e-deficientes--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

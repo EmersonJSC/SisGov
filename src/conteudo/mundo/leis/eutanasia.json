@@ -44,8 +44,10 @@
     "eutanasia--polarizacao",
     "eutanasia--confianca-instituicoes",
     "eutanasia--turismo",
-    "eutanasia--popularidade-governo",
-    "eutanasia--gasto-publico"
+    "eutanasia--gasto-publico",
+    "eutanasia--grupo-aposentados",
+    "eutanasia--grupo-conservadores",
+    "eutanasia--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

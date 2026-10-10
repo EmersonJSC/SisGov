@@ -1,0 +1,17 @@
+{
+  "id": "imposto-sobre-consumo--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_sobre_consumo",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.333333,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

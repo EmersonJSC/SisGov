@@ -1,0 +1,17 @@
+{
+  "id": "regime-simplificado-pequenas-empresas--grupo-trabalhadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_simplificado_pequenas_empresas",
+  "alvo": "grupo_trabalhadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

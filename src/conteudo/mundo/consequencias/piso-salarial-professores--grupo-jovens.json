@@ -1,0 +1,17 @@
+{
+  "id": "piso-salarial-professores--grupo-jovens",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_piso_salarial_professores",
+  "alvo": "grupo_jovens",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

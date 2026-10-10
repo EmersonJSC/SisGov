@@ -25,6 +25,10 @@
     "piso-saude--gasto-bolso-saude",
     "piso-saude--saude-populacao",
     "piso-saude--corrupcao",
+    "piso-saude--grupo-aposentados",
+    "piso-saude--grupo-empresarios",
+    "piso-saude--grupo-pobres",
+    "piso-saude--grupo-servidores",
     "piso-saude--gasto-publico"
   ],
   "respostaTemporal": {

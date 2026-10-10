@@ -43,7 +43,9 @@
     "controle-de-capitais--mercado-paralelo",
     "controle-de-capitais--corrupcao",
     "controle-de-capitais--risco-pais",
-    "controle-de-capitais--arrecadacao"
+    "controle-de-capitais--arrecadacao",
+    "controle-de-capitais--grupo-classe-media",
+    "controle-de-capitais--grupo-empresarios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

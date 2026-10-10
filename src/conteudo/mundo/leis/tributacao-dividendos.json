@@ -25,6 +25,10 @@
     "tributacao-dividendos--sonegacao",
     "tributacao-dividendos--fuga-capitais",
     "tributacao-dividendos--confianca-empresarial",
+    "tributacao-dividendos--grupo-empresarios",
+    "tributacao-dividendos--grupo-pequenos-negocios",
+    "tributacao-dividendos--grupo-progressistas",
+    "tributacao-dividendos--grupo-trabalhadores",
     "tributacao-dividendos--arrecadacao"
   ],
   "respostaTemporal": {

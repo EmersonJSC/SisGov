@@ -41,7 +41,12 @@
     "previdencia-rural--consumo",
     "previdencia-rural--deficit-previdenciario",
     "previdencia-rural--corrupcao",
-    "previdencia-rural--gasto-publico"
+    "previdencia-rural--gasto-publico",
+    "previdencia-rural--grupo-agro",
+    "previdencia-rural--grupo-aposentados",
+    "previdencia-rural--grupo-classe-media",
+    "previdencia-rural--grupo-pobres",
+    "previdencia-rural--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

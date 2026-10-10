@@ -41,7 +41,12 @@
     "incentivos-fiscais-regionais--produtividade",
     "incentivos-fiscais-regionais--complexidade-tributaria",
     "incentivos-fiscais-regionais--corrupcao",
-    "incentivos-fiscais-regionais--arrecadacao"
+    "incentivos-fiscais-regionais--arrecadacao",
+    "incentivos-fiscais-regionais--grupo-classe-media",
+    "incentivos-fiscais-regionais--grupo-empresarios",
+    "incentivos-fiscais-regionais--grupo-pequenos-negocios",
+    "incentivos-fiscais-regionais--grupo-servidores",
+    "incentivos-fiscais-regionais--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

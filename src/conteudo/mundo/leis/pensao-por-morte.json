@@ -40,7 +40,12 @@
     "pensao-por-morte--participacao-trabalho-cuidadoras",
     "pensao-por-morte--corrupcao",
     "pensao-por-morte--desigualdade",
-    "pensao-por-morte--gasto-publico"
+    "pensao-por-morte--gasto-publico",
+    "pensao-por-morte--grupo-aposentados",
+    "pensao-por-morte--grupo-classe-media",
+    "pensao-por-morte--grupo-jovens",
+    "pensao-por-morte--grupo-progressistas",
+    "pensao-por-morte--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

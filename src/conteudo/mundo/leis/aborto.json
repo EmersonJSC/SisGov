@@ -49,9 +49,11 @@
     "aborto--pressao-hospitalar",
     "aborto--liberdade-civil",
     "aborto--polarizacao",
-    "aborto--popularidade-governo",
     "aborto--reputacao-internacional",
-    "aborto--gasto-publico"
+    "aborto--gasto-publico",
+    "aborto--grupo-conservadores",
+    "aborto--grupo-progressistas",
+    "aborto--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

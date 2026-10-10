@@ -24,6 +24,10 @@
     "gasto-com-defesa--desenvolvimento",
     "gasto-com-defesa--reputacao-internacional",
     "gasto-com-defesa--golpe-risco",
+    "gasto-com-defesa--grupo-conservadores",
+    "gasto-com-defesa--grupo-empresarios",
+    "gasto-com-defesa--grupo-pobres",
+    "gasto-com-defesa--grupo-progressistas",
     "gasto-com-defesa--gasto-publico"
   ],
   "respostaTemporal": {

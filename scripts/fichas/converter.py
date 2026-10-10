@@ -194,9 +194,99 @@ REDE_FISCAL = [
     elo("juros-explosivos--taxa-juros", "juros_explosivos", "taxa_juros", 0.1, "percentual_0_100"),
     elo("juros-explosivos--confianca-empresarial", "juros_explosivos", "confianca_empresarial", -0.6,
         "indice_0_100"),
-    elo("juros-explosivos--popularidade-governo", "juros_explosivos", "popularidade_governo", -0.4,
-        "indice_0_100"),
 ]
+
+
+# ---------- grupos sociais (SG143) ----------
+# Cada grupo é uma bolha de satisfação (0–100). Os ~30 grupos citados nas
+# fichas são agrupados em 11 segmentos do eleitorado; cada pessoa conta em um
+# só segmento (sem dupla contagem), e a aprovação do governo é a média dos
+# segmentos pelo peso de cada um (hipótese do Brasil, soma 1).
+GRUPOS = {
+    "grupo_pobres": ("Pobres", 0.18, ["grupo_pobres", "grupo_informais"], [
+        ("pobreza", -0.5), ("inflacao", -0.6), ("preco_alimentos", -0.2),
+        ("inseguranca_alimentar", -0.3)]),
+    "grupo_trabalhadores": ("Trabalhadores", 0.18, [
+        "grupo_trabalhadores_formais", "grupo_sindicatos", "grupo_motoristas"], [
+        ("desemprego", -0.8), ("renda_familias", 0.3), ("inflacao", -0.5)]),
+    "grupo_classe_media": ("Classe média", 0.14, ["grupo_classe_media", "grupo_pais_familia"], [
+        ("inflacao", -0.4), ("sensacao_seguranca", 0.2), ("saude_populacao", 0.15),
+        ("arrecadacao", -0.3), ("taxa_juros", -0.2), ("juros_explosivos", -0.3)]),
+    "grupo_jovens": ("Jovens", 0.10, ["grupo_jovens", "grupo_estudantes"], [
+        ("oportunidades_juvenis", 0.3), ("desemprego", -0.5), ("liberdade_civil", 0.1)]),
+    "grupo_aposentados": ("Aposentados", 0.10, ["grupo_aposentados"], [
+        ("inflacao", -0.6), ("saude_populacao", 0.2), ("pressao_hospitalar", -0.15)]),
+    "grupo_servidores": ("Servidores públicos", 0.06, [
+        "grupo_servidores", "grupo_professores", "grupo_profissionais_saude",
+        "grupo_policiais", "grupo_militares"], [
+        ("gasto_publico", 0.3), ("capacidade_estatal", 0.1)]),
+    "grupo_pequenos_negocios": ("Pequenos negócios", 0.06, ["grupo_pequenos_negocios"], [
+        ("taxa_juros", -0.4), ("complexidade_tributaria", -0.15), ("consumo", 0.2),
+        ("credito", 0.1), ("juros_explosivos", -0.4)]),
+    "grupo_agro": ("Agro", 0.04, ["grupo_agronegocio", "grupo_agricultores_familiares"], [
+        ("producao_agropecuaria", 0.2), ("cambio", 0.1), ("conflitos_fundiarios", -0.2)]),
+    "grupo_empresarios": ("Empresários", 0.03, [
+        "grupo_empresarios", "grupo_industria", "grupo_setor_financeiro", "grupo_ricos"], [
+        ("confianca_empresarial", 0.3), ("taxa_juros", -0.4), ("arrecadacao", -0.4),
+        ("custo_trabalhista", -0.2), ("juros_explosivos", -0.5)]),
+    "grupo_progressistas": ("Progressistas", 0.06, [
+        "grupo_progressistas", "grupo_ambientalistas", "grupo_lgbtqia",
+        "grupo_minorias_etnicas", "grupo_mulheres", "grupo_imigrantes"], [
+        ("desigualdade", -0.3), ("qualidade_ambiental", 0.2), ("discriminacao", -0.2),
+        ("liberdade_civil", 0.2), ("letalidade_policial", -0.2)]),
+    "grupo_conservadores": ("Conservadores", 0.05, ["grupo_conservadores", "grupo_religiosos"], [
+        ("sensacao_seguranca", 0.3), ("uso_drogas", -0.2), ("crime_organizado", -0.15)]),
+}
+SEGMENTO_DA_FICHA = {ficha: g for g, (_, _, fichas, _) in GRUPOS.items() for ficha in fichas}
+POPULARIDADE = "popularidade_governo"
+# Uma lei que vai de um extremo ao outro mexe a satisfação de um grupo em
+# até 10 pontos (hipótese; calibração com a jogabilidade).
+SWING_LEI_GRUPO = 10
+
+
+def variavel_grupo(gid: str) -> dict:
+    nome = GRUPOS[gid][0]
+    return {"id": gid, "tipo": "grupo", "nome": nome, "unidade": "indice_0_100",
+            "dominio": {"minimo": 0, "maximo": 100}, "area": "Grupos sociais",
+            "avaliacao": "maior_melhor"}
+
+
+def elos_dos_grupos(lei: dict, f: dict, var: str) -> dict[str, dict]:
+    """Lei → satisfação de cada segmento que ganha (+) ou perde (−) com ela."""
+    saldo: dict[str, int] = {}
+    for lado, s in (("ganham", 1), ("perdem", -1)):
+        for ficha in (f.get("grupos") or {}).get(lado, []):
+            g = SEGMENTO_DA_FICHA.get(ficha)
+            if g:
+                saldo[g] = saldo.get(g, 0) + s
+    faixa = f.get("faixa") or {}
+    saida = {}
+    for g, n in sorted(saldo.items()):
+        if n == 0:
+            continue  # o segmento tem quem ganha e quem perde: se anula
+        s = 1 if n > 0 else -1
+        cid = f"{lei['id']}--{g}".replace("_", "-")
+        if lei["grupo"] == "orcamentaria":  # lê o gasto em % do PIB
+            coef = s * SWING_LEI_GRUPO / max(faixa.get("maximo", 1), 1e-9)
+            saida[cid] = elo(cid, var, g, round(coef, 6), "indice_0_100",
+                             normalizacao={"divisor": PIB_NOMINAL, "multiplicador": 100})
+        elif lei["grupo"] == "tributaria":
+            amplitude = max(faixa.get("maximo", 100) - faixa.get("minimo", 0), 1e-9)
+            saida[cid] = elo(cid, var, g, round(s * SWING_LEI_GRUPO / amplitude, 6), "indice_0_100")
+        else:
+            saida[cid] = elo(cid, var, g, s * SWING_LEI_GRUPO / 100, "indice_0_100")
+    return saida
+
+
+def rede_dos_grupos() -> list[dict]:
+    """Indicadores → grupos (o que cada um sente) e grupos → aprovação."""
+    saida = []
+    for g, (_, peso, _, interesses) in GRUPOS.items():
+        for bolha, coef in interesses:
+            saida.append(elo(f"{bolha}--{g}".replace("_", "-"), bolha, g, coef, "indice_0_100"))
+        saida.append(elo(f"{g}--{POPULARIDADE}".replace("_", "-"), g, POPULARIDADE, peso,
+                         "indice_0_100"))
+    return saida
 
 
 def efeitos_da_lei(f: dict, grupo: str) -> list[dict]:
@@ -207,6 +297,8 @@ def efeitos_da_lei(f: dict, grupo: str) -> list[dict]:
         a = e["alvo"]
         if a == "juros_da_divida":
             continue  # D-48: juros = taxa × dívida
+        if a == POPULARIDADE:
+            continue  # SG143: a aprovação é a média dos grupos
         if f["id"] in CUSTOS and a in FISCAIS:
             continue  # custo de cada opção (custos.json)
         if grupo == "orcamentaria" and a in FISCAIS | {"divida_publica"}:
@@ -300,8 +392,10 @@ def main(aplicar: bool) -> None:
     consequencias: dict[str, dict] = {}
     leis_json: dict[str, dict] = {}
     vigentes, valores_controle = [], {}
-    usadas: set[str] = set(FISCAIS) | {"divida_publica", "taxa_juros"} | set(VARIAVEIS_FISCAIS)
-    contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL}
+    usadas: set[str] = (set(FISCAIS) | {"divida_publica", "taxa_juros", POPULARIDADE}
+                        | set(VARIAVEIS_FISCAIS) | set(GRUPOS)
+                        | {b for _, _, _, i in GRUPOS.values() for b, _ in i})
+    contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL + rede_dos_grupos()}
     gasto_brasil = 0.0
     variaveis[PIB_NOMINAL] = {"id": PIB_NOMINAL, "tipo": "controle", "nome": "PIB nominal",
                               "unidade": "moeda", "dominio": {"minimo": 1}, "valorInicial": 1_000_000,
@@ -392,6 +486,9 @@ def main(aplicar: bool) -> None:
             ids_lei.extend(elos)
             usadas.update(c["alvo"] for c in elos.values())
             usadas.update(c["escala"]["fator"] for c in elos.values() if "escala" in c)
+        elos_g = elos_dos_grupos(lei, f, var)
+        contabeis.update(elos_g)
+        ids_lei.extend(elos_g)
         if grupo == "orcamentaria":
             cid = f"{lid}--gasto-publico"
             contabeis[cid] = elo(cid, var, "gasto_publico", 1,
@@ -433,6 +530,8 @@ def main(aplicar: bool) -> None:
         o, a = c["origem"], c["alvo"]
         if o in controles_antigos or ":" in a or ":" in o:
             continue
+        if a == POPULARIDADE and o not in GRUPOS:
+            continue  # SG143: só os grupos formam a aprovação
         rede[cid] = c
     # bolhas mantidas = usadas pelas leis + ligadas na rede a alguma usada (fecho)
     mantidas = set(usadas)
@@ -444,7 +543,9 @@ def main(aplicar: bool) -> None:
                 mantidas.add(c["origem"]); mudou = True
     rede = {k: c for k, c in rede.items() if c["origem"] in mantidas and c["alvo"] in mantidas}
     for bid in sorted(mantidas):
-        if bid in VARIAVEIS_FISCAIS:
+        if bid in GRUPOS:
+            novas_vars[bid] = variavel_grupo(bid)
+        elif bid in VARIAVEIS_FISCAIS:
             novas_vars[bid] = VARIAVEIS_FISCAIS[bid]
         elif bid in antigas and antigas[bid]["tipo"] != "controle":
             novas_vars[bid] = antigas[bid]
@@ -534,6 +635,9 @@ def main(aplicar: bool) -> None:
         "divida_publica": ({}, {"minimo": -50, "maximo": 250}),
         "cofre": ({"minimo": 0}, {"minimo": 0, "maximo": 50}),
     }
+    # SG143: a popularidade é a aprovação do governo (média dos grupos)
+    novas_vars[POPULARIDADE]["nome"] = "Aprovação do governo"
+    novas_vars[POPULARIDADE]["area"] = "Grupos sociais"
     for bid, (dominio, faixa) in CONTAS.items():
         novas_vars[bid]["dominio"] = dominio
         novas_vars[bid]["faixaVisual"] = faixa

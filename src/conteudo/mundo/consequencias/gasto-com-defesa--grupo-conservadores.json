@@ -1,0 +1,21 @@
+{
+  "id": "gasto-com-defesa--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_gasto_com_defesa",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "divisor": "pib_nominal",
+    "multiplicador": 100
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

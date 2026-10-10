@@ -47,7 +47,12 @@
     "regulacao-redes-sociais--saude-populacao",
     "regulacao-redes-sociais--polarizacao",
     "regulacao-redes-sociais--reputacao-internacional",
-    "regulacao-redes-sociais--gasto-publico"
+    "regulacao-redes-sociais--gasto-publico",
+    "regulacao-redes-sociais--grupo-classe-media",
+    "regulacao-redes-sociais--grupo-conservadores",
+    "regulacao-redes-sociais--grupo-jovens",
+    "regulacao-redes-sociais--grupo-pequenos-negocios",
+    "regulacao-redes-sociais--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

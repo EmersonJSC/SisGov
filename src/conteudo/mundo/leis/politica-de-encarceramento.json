@@ -42,7 +42,13 @@
     "politica-de-encarceramento--crime-organizado",
     "politica-de-encarceramento--liberdade-civil",
     "politica-de-encarceramento--sensacao-seguranca",
-    "politica-de-encarceramento--gasto-publico"
+    "politica-de-encarceramento--gasto-publico",
+    "politica-de-encarceramento--grupo-conservadores",
+    "politica-de-encarceramento--grupo-jovens",
+    "politica-de-encarceramento--grupo-pequenos-negocios",
+    "politica-de-encarceramento--grupo-pobres",
+    "politica-de-encarceramento--grupo-progressistas",
+    "politica-de-encarceramento--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

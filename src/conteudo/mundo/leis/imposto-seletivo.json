@@ -41,7 +41,14 @@
     "imposto-seletivo--crime-organizado",
     "imposto-seletivo--emissoes",
     "imposto-seletivo--desigualdade",
-    "imposto-seletivo--arrecadacao"
+    "imposto-seletivo--arrecadacao",
+    "imposto-seletivo--grupo-agro",
+    "imposto-seletivo--grupo-classe-media",
+    "imposto-seletivo--grupo-empresarios",
+    "imposto-seletivo--grupo-pobres",
+    "imposto-seletivo--grupo-progressistas",
+    "imposto-seletivo--grupo-servidores",
+    "imposto-seletivo--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

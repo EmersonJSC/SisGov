@@ -35,7 +35,11 @@
     "federalismo--gasto-publico",
     "federalismo--inovacao",
     "federalismo--confianca-instituicoes",
-    "federalismo--corrupcao"
+    "federalismo--corrupcao",
+    "federalismo--grupo-agro",
+    "federalismo--grupo-empresarios",
+    "federalismo--grupo-pobres",
+    "federalismo--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

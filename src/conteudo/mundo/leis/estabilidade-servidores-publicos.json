@@ -40,7 +40,10 @@
     "estabilidade-servidores-publicos--capacidade-estatal",
     "estabilidade-servidores-publicos--capacidade-estatal-3",
     "estabilidade-servidores-publicos--margem-manobra-governo",
-    "estabilidade-servidores-publicos--gasto-publico"
+    "estabilidade-servidores-publicos--gasto-publico",
+    "estabilidade-servidores-publicos--grupo-classe-media",
+    "estabilidade-servidores-publicos--grupo-jovens",
+    "estabilidade-servidores-publicos--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -42,7 +42,11 @@
     "salario-minimo--inflacao",
     "salario-minimo--informalidade",
     "salario-minimo--desemprego",
-    "salario-minimo--gasto-publico"
+    "salario-minimo--gasto-publico",
+    "salario-minimo--grupo-empresarios",
+    "salario-minimo--grupo-pequenos-negocios",
+    "salario-minimo--grupo-pobres",
+    "salario-minimo--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

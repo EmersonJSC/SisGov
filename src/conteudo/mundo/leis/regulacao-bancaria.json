@@ -40,7 +40,11 @@
     "regulacao-bancaria--taxa-juros",
     "regulacao-bancaria--investimento",
     "regulacao-bancaria--concentracao-mercado",
-    "regulacao-bancaria--produtividade"
+    "regulacao-bancaria--produtividade",
+    "regulacao-bancaria--grupo-aposentados",
+    "regulacao-bancaria--grupo-classe-media",
+    "regulacao-bancaria--grupo-empresarios",
+    "regulacao-bancaria--grupo-pequenos-negocios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

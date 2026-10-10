@@ -46,7 +46,11 @@
     "investimento-estrangeiro--exportacoes",
     "investimento-estrangeiro--cambio",
     "investimento-estrangeiro--arrecadacao",
-    "investimento-estrangeiro--concentracao-mercado"
+    "investimento-estrangeiro--concentracao-mercado",
+    "investimento-estrangeiro--grupo-jovens",
+    "investimento-estrangeiro--grupo-pequenos-negocios",
+    "investimento-estrangeiro--grupo-servidores",
+    "investimento-estrangeiro--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

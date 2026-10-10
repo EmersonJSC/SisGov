@@ -41,7 +41,12 @@
     "cuidados-de-longa-duracao--custo-trabalhista",
     "cuidados-de-longa-duracao--desemprego",
     "cuidados-de-longa-duracao--desigualdade",
-    "cuidados-de-longa-duracao--gasto-publico"
+    "cuidados-de-longa-duracao--gasto-publico",
+    "cuidados-de-longa-duracao--grupo-aposentados",
+    "cuidados-de-longa-duracao--grupo-classe-media",
+    "cuidados-de-longa-duracao--grupo-empresarios",
+    "cuidados-de-longa-duracao--grupo-progressistas",
+    "cuidados-de-longa-duracao--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

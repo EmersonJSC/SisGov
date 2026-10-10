@@ -47,7 +47,11 @@
     "incentivo-cultura--polarizacao",
     "incentivo-cultura--corrupcao",
     "incentivo-cultura--gasto-publico",
-    "incentivo-cultura--arrecadacao"
+    "incentivo-cultura--arrecadacao",
+    "incentivo-cultura--grupo-classe-media",
+    "incentivo-cultura--grupo-conservadores",
+    "incentivo-cultura--grupo-empresarios",
+    "incentivo-cultura--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

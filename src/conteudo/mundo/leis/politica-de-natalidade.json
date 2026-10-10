@@ -50,7 +50,10 @@
     "politica-de-natalidade--liberdade-civil",
     "politica-de-natalidade--saude-populacao",
     "politica-de-natalidade--pobreza",
-    "politica-de-natalidade--gasto-publico"
+    "politica-de-natalidade--gasto-publico",
+    "politica-de-natalidade--grupo-classe-media",
+    "politica-de-natalidade--grupo-conservadores",
+    "politica-de-natalidade--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

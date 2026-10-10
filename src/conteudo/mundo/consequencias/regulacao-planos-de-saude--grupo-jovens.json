@@ -1,0 +1,17 @@
+{
+  "id": "regulacao-planos-de-saude--grupo-jovens",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regulacao_planos_de_saude",
+  "alvo": "grupo_jovens",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

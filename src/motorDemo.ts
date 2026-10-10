@@ -56,6 +56,7 @@ const typeLabels = {
   calculado: "Calculado",
   estoque: "Estoque",
   situacao: "Situação",
+  grupo: "Grupo social",
 } as const;
 
 function showError(messages: readonly string[]): void {

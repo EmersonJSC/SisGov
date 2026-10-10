@@ -47,7 +47,11 @@
     "jornada-de-trabalho--informalidade",
     "jornada-de-trabalho--participacao-trabalho-cuidadoras",
     "jornada-de-trabalho--renda-familias",
-    "jornada-de-trabalho--confianca-empresarial"
+    "jornada-de-trabalho--confianca-empresarial",
+    "jornada-de-trabalho--grupo-classe-media",
+    "jornada-de-trabalho--grupo-empresarios",
+    "jornada-de-trabalho--grupo-pequenos-negocios",
+    "jornada-de-trabalho--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

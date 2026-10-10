@@ -47,7 +47,12 @@
     "politica-de-imigracao--desemprego",
     "politica-de-imigracao--polarizacao",
     "politica-de-imigracao--discriminacao",
-    "politica-de-imigracao--gasto-publico"
+    "politica-de-imigracao--gasto-publico",
+    "politica-de-imigracao--grupo-agro",
+    "politica-de-imigracao--grupo-conservadores",
+    "politica-de-imigracao--grupo-empresarios",
+    "politica-de-imigracao--grupo-pobres",
+    "politica-de-imigracao--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

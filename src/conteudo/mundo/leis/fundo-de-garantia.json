@@ -42,7 +42,11 @@
     "fundo-de-garantia--renda-familias",
     "fundo-de-garantia--credito",
     "fundo-de-garantia--deficit-habitacional",
-    "fundo-de-garantia--confianca-empresarial"
+    "fundo-de-garantia--confianca-empresarial",
+    "fundo-de-garantia--grupo-empresarios",
+    "fundo-de-garantia--grupo-jovens",
+    "fundo-de-garantia--grupo-pequenos-negocios",
+    "fundo-de-garantia--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

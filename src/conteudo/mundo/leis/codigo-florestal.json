@@ -43,7 +43,9 @@
     "codigo-florestal--reputacao-internacional",
     "codigo-florestal--exportacoes",
     "codigo-florestal--conflitos-fundiarios",
-    "codigo-florestal--gasto-publico"
+    "codigo-florestal--gasto-publico",
+    "codigo-florestal--grupo-agro",
+    "codigo-florestal--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

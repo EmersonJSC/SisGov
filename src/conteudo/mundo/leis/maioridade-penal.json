@@ -46,8 +46,11 @@
     "maioridade-penal--impunidade",
     "maioridade-penal--crime-organizado",
     "maioridade-penal--sensacao-seguranca",
-    "maioridade-penal--popularidade-governo",
-    "maioridade-penal--gasto-publico"
+    "maioridade-penal--gasto-publico",
+    "maioridade-penal--grupo-conservadores",
+    "maioridade-penal--grupo-jovens",
+    "maioridade-penal--grupo-progressistas",
+    "maioridade-penal--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -41,7 +41,10 @@
     "banco-de-desenvolvimento--taxa-juros",
     "banco-de-desenvolvimento--corrupcao",
     "banco-de-desenvolvimento--infraestrutura",
-    "banco-de-desenvolvimento--gasto-publico"
+    "banco-de-desenvolvimento--gasto-publico",
+    "banco-de-desenvolvimento--grupo-agro",
+    "banco-de-desenvolvimento--grupo-empresarios",
+    "banco-de-desenvolvimento--grupo-pequenos-negocios"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

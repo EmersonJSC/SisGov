@@ -2417,3 +2417,17 @@ button {
     font-size: 15px;
   }
 }
+
+/* ---------------------------------------- grupos sociais (SG143) ------- */
+.metrica.clicavel {
+  cursor: pointer;
+}
+
+.metrica.clicavel:hover {
+  background: #ffffff0d;
+}
+
+.no-bolha.tipo-grupo .disco {
+  stroke: #8a6ad1;
+  stroke-width: 2.5;
+}

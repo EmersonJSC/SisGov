@@ -40,7 +40,8 @@
     "casamento-e-uniao-civil--polarizacao",
     "casamento-e-uniao-civil--reputacao-internacional",
     "casamento-e-uniao-civil--reputacao-internacional-4",
-    "casamento-e-uniao-civil--popularidade-governo"
+    "casamento-e-uniao-civil--grupo-conservadores",
+    "casamento-e-uniao-civil--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

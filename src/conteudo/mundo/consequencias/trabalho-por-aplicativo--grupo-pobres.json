@@ -1,0 +1,17 @@
+{
+  "id": "trabalho-por-aplicativo--grupo-pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "grupo_pobres",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.1,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -39,7 +39,9 @@
     "sistema-de-governo--golpe-risco",
     "sistema-de-governo--estabilidade-politica",
     "sistema-de-governo--polarizacao",
-    "sistema-de-governo--popularidade-governo"
+    "sistema-de-governo--grupo-classe-media",
+    "sistema-de-governo--grupo-empresarios",
+    "sistema-de-governo--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

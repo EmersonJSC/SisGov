@@ -45,7 +45,9 @@
     "refugiados-e-asilo--polarizacao",
     "refugiados-e-asilo--crise-migratoria",
     "refugiados-e-asilo--liberdade-civil",
-    "refugiados-e-asilo--gasto-publico"
+    "refugiados-e-asilo--gasto-publico",
+    "refugiados-e-asilo--grupo-pobres",
+    "refugiados-e-asilo--grupo-progressistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

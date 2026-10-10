@@ -41,7 +41,10 @@
     "fundo-soberano--gasto-publico",
     "fundo-soberano--reputacao-internacional",
     "fundo-soberano--inflacao",
-    "fundo-soberano--corrupcao"
+    "fundo-soberano--corrupcao",
+    "fundo-soberano--grupo-empresarios",
+    "fundo-soberano--grupo-pobres",
+    "fundo-soberano--grupo-servidores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

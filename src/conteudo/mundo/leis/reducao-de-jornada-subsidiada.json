@@ -35,7 +35,11 @@
     "reducao-de-jornada-subsidiada--consumo",
     "reducao-de-jornada-subsidiada--produtividade",
     "reducao-de-jornada-subsidiada--desigualdade",
-    "reducao-de-jornada-subsidiada--gasto-publico"
+    "reducao-de-jornada-subsidiada--gasto-publico",
+    "reducao-de-jornada-subsidiada--grupo-empresarios",
+    "reducao-de-jornada-subsidiada--grupo-jovens",
+    "reducao-de-jornada-subsidiada--grupo-pobres",
+    "reducao-de-jornada-subsidiada--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

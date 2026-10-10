@@ -25,6 +25,10 @@
     "farmacia-popular--saude-populacao",
     "farmacia-popular--pobreza",
     "farmacia-popular--corrupcao",
+    "farmacia-popular--grupo-aposentados",
+    "farmacia-popular--grupo-empresarios",
+    "farmacia-popular--grupo-pequenos-negocios",
+    "farmacia-popular--grupo-pobres",
     "farmacia-popular--gasto-publico"
   ],
   "respostaTemporal": {

@@ -40,7 +40,9 @@
     "reeleicao--captura-politica",
     "reeleicao--forca-instituicoes",
     "reeleicao--liberdade-civil",
-    "reeleicao--protestos"
+    "reeleicao--protestos",
+    "reeleicao--grupo-empresarios",
+    "reeleicao--grupo-jovens"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -42,7 +42,12 @@
     "precificacao-carbono--exportacoes",
     "precificacao-carbono--protestos",
     "precificacao-carbono--reputacao-internacional",
-    "precificacao-carbono--arrecadacao"
+    "precificacao-carbono--arrecadacao",
+    "precificacao-carbono--grupo-agro",
+    "precificacao-carbono--grupo-empresarios",
+    "precificacao-carbono--grupo-jovens",
+    "precificacao-carbono--grupo-progressistas",
+    "precificacao-carbono--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

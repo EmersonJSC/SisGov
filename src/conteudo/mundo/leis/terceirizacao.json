@@ -41,7 +41,9 @@
     "terceirizacao--produtividade",
     "terceirizacao--desemprego",
     "terceirizacao--informalidade",
-    "terceirizacao--confianca-empresarial"
+    "terceirizacao--confianca-empresarial",
+    "terceirizacao--grupo-empresarios",
+    "terceirizacao--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

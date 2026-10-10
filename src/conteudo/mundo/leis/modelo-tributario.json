@@ -46,7 +46,11 @@
     "modelo-tributario--fuga-capitais",
     "modelo-tributario--investimento",
     "modelo-tributario--pobreza",
-    "modelo-tributario--confianca-empresarial"
+    "modelo-tributario--confianca-empresarial",
+    "modelo-tributario--grupo-empresarios",
+    "modelo-tributario--grupo-pobres",
+    "modelo-tributario--grupo-progressistas",
+    "modelo-tributario--grupo-trabalhadores"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

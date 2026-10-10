@@ -40,7 +40,10 @@
     "seguranca-alimentar--escolaridade",
     "seguranca-alimentar--pobreza",
     "seguranca-alimentar--corrupcao",
-    "seguranca-alimentar--gasto-publico"
+    "seguranca-alimentar--gasto-publico",
+    "seguranca-alimentar--grupo-agro",
+    "seguranca-alimentar--grupo-pequenos-negocios",
+    "seguranca-alimentar--grupo-pobres"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
