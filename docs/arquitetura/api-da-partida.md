@@ -62,8 +62,16 @@ partido. A interface usa um símbolo neutro para o ocupante e indica aprovação
 como indisponível até esses dados entrarem no contrato.
 
 O `relatorio` de `encerrarTurno` traz `turno`, `contasAntes` e `contas` (as
-contas da rede antes e depois do trimestre) e `mudancas[]` (as 15 bolhas que
-mais mudaram, com `antes` e `depois`).
+contas da rede antes e depois do trimestre), `contasSemVoce` (as contas do
+país no piloto automático), `leisAlteradas` e `mudancas[]` (todas as bolhas
+que mudaram, da maior mudança para a menor, com `antes`, `depois`, `porVoce`
+— a parte que veio das decisões do jogador — e `sozinho`).
+
+**Marca do jogador (D-58).** A `Partida` leva `piloto`: o mesmo país sem
+nenhuma decisão do jogador, que anda junto a cada turno (só é simulado à
+parte depois da primeira mudança de lei). Na visão, `VisaoLei.alteradaPorVoce`
+diz se o jogador mudou a meta da lei e `VisaoBolha.semVoce` traz o valor que a
+bolha teria sem ele.
 
 A `PrevisaoLei` de `preverLei` simula `trimestres` turnos (padrão 1; a tela
 usa 4 = um ano) e traz `implantacao` (o nível em funcionamento ao fim de

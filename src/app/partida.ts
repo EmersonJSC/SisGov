@@ -36,6 +36,13 @@ export type Partida = Readonly<{
   content: ResolvedPackage;
   graph: ScenarioGraph;
   game: GameState;
+  /**
+   * O mesmo país no piloto automático: sem nenhuma decisão do jogador.
+   * Anda junto com a partida e serve só para mostrar a marca do jogador
+   * (o que mudou por causa dele, não pelo movimento natural da rede).
+   * É o próprio `game` enquanto o jogador não mudou nada.
+   */
+  piloto: GameState;
   acoes: number;
 }>;
 
@@ -75,6 +82,8 @@ export type VisaoLei = Readonly<{
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */
   opcaoAtual?: string;
+  /** O jogador mudou a meta desta lei (em relação ao país sozinho). */
+  alteradaPorVoce: boolean;
   /**
    * Quanto a lei mexe nas contas por ano, na moeda do país, lido da rede:
    * positivo arrecada (seta para a receita), negativo custa (seta para o
@@ -101,6 +110,11 @@ export type VisaoBolha = Readonly<{
    * explicam (história, geografia, cultura). Fixo desde o turno 0.
    */
   contexto?: number;
+  /**
+   * Valor que a bolha teria sem nenhuma decisão do jogador (o país no
+   * piloto automático). Só existe depois que o jogador muda alguma lei.
+   */
+  semVoce?: number;
 }>;
 
 export type VisaoLigacao = Readonly<{
@@ -164,13 +178,21 @@ export type RelatorioTurno = Readonly<{
   /** Contas antes e depois do trimestre (por ano, na moeda do país). */
   contasAntes: VisaoContas;
   contas: VisaoContas;
+  /** Contas como estariam sem as decisões do jogador. */
+  contasSemVoce: VisaoContas;
   /** As bolhas que mais mudaram no trimestre, da maior mudança para a menor. */
   mudancas: readonly Readonly<{
     id: string;
     nome: string;
     antes: number;
     depois: number;
+    /** Parte da mudança deste turno que veio das decisões do jogador. */
+    porVoce: number;
+    /** Parte que viria de qualquer jeito (o país andando sozinho). */
+    sozinho: number;
   }>[];
+  /** Quantas leis estão diferentes do país no piloto automático. */
+  leisAlteradas: number;
 }>;
 
 /** Trajetória de uma bolha nos três meses do próximo turno. */
@@ -225,6 +247,7 @@ export function criarPartida(
       content,
       graph,
       game: game.value,
+      piloto: game.value,
       acoes: 0,
     },
   };
@@ -410,36 +433,82 @@ export function preverLei(
 export function encerrarTurno(
   partida: Partida,
 ): Resultado<Readonly<{ partida: Partida; relatorio: RelatorioTurno }>> {
-  const { content, game } = partida;
+  const { content, game, piloto } = partida;
   const simulated = simularTrimestre(partida);
   if (!simulated.ok) return falha(simulated.diagnostics);
   const prepared = simulated.value;
   const next = commitGameQuarter(game, prepared.prepared);
+  // O piloto automático só precisa andar à parte se o jogador mudou algo.
+  let pilotoNext = next;
+  if (piloto !== game) {
+    const sozinho = simularTrimestre({ ...partida, game: piloto });
+    if (!sozinho.ok) return falha(sozinho.diagnostics);
+    pilotoNext = commitGameQuarter(piloto, sozinho.value.prepared);
+  }
   const before = game.execution.values;
   const after = next.execution.values;
+  const pilotoBefore = piloto.execution.values;
+  const pilotoAfter = pilotoNext.execution.values;
   const mudancas = content.variables.variaveis
     .filter((variable) => variable.tipo !== "controle")
-    .map((variable) => ({
-      id: variable.id,
-      nome: variable.nome,
-      antes: before[variable.id] ?? 0,
-      depois: after[variable.id] ?? 0,
-    }))
-    .filter((item) => Math.abs(item.depois - item.antes) > 1e-6)
-    .sort((a, b) => Math.abs(b.depois - b.antes) - Math.abs(a.depois - a.antes))
-    .slice(0, 15);
+    .map((variable) => {
+      const id = variable.id;
+      const antes = before[id] ?? 0;
+      const depois = after[id] ?? 0;
+      const sozinho = (pilotoAfter[id] ?? 0) - (pilotoBefore[id] ?? 0);
+      return {
+        id,
+        nome: variable.nome,
+        antes,
+        depois,
+        porVoce: depois - antes - sozinho,
+        sozinho,
+      };
+    })
+    .filter(
+      (item) =>
+        Math.abs(item.depois - item.antes) > 1e-6 ||
+        Math.abs(item.porVoce) > 1e-6,
+    )
+    .sort(
+      (a, b) => Math.abs(b.depois - b.antes) - Math.abs(a.depois - a.antes),
+    );
   return {
     ok: true,
     value: {
-      partida: { ...partida, game: next },
+      partida: { ...partida, game: next, piloto: pilotoNext },
       relatorio: {
         turno: next.currentTurn,
         contasAntes: lerContas(content, before),
         contas: lerContas(content, after),
+        contasSemVoce: lerContas(content, pilotoAfter),
         mudancas,
+        leisAlteradas: leisAlteradas(next, pilotoNext).size,
       },
     },
   };
+}
+
+/** Leis cuja meta o jogador mudou em relação ao piloto automático. */
+function leisAlteradas(game: GameState, piloto: GameState): Set<string> {
+  if (game === piloto) return new Set();
+  const metas = new Map(
+    piloto.policies.map((state) => [
+      state.policyDefinitionId,
+      state.desiredLevel,
+    ]),
+  );
+  return new Set(
+    game.policies
+      .filter(
+        (state) =>
+          Math.abs(
+            state.desiredLevel -
+              (metas.get(state.policyDefinitionId) ?? state.desiredLevel),
+          ) > 1e-9,
+      )
+      .map((state) => state.policyDefinitionId),
+  );
 }
 
 /** PIB anual na moeda do país: o nó `pib_nominal` ou o declarado pelo país. */
@@ -573,6 +642,7 @@ export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
   const values = game.execution.values;
   const saldo = saldoDasLeis(partida, values);
+  const alteradas = leisAlteradas(game, partida.piloto);
   const states = new Map(
     game.policies.map((state) => [state.policyDefinitionId, state]),
   );
@@ -610,9 +680,13 @@ export function verPartida(partida: Partida): VisaoPartida {
       })),
       opcaoAtual: nearest?.id,
       saldoAnual: saldo(policy.id),
+      alteradaPorVoce: alteradas.has(policy.id),
     };
   });
   const brutoDe = brutoDasSituacoes(partida, values);
+  const comPiloto = partida.piloto !== game;
+  const pilotoValues = partida.piloto.execution.values;
+  const brutoPiloto = brutoDasSituacoes(partida, pilotoValues);
   const bolhas = content.variables.variaveis
     .filter((variable) => variable.tipo !== "controle")
     .map((variable) => ({
@@ -631,6 +705,14 @@ export function verPartida(partida: Partida): VisaoPartida {
       surgimento: variable.surgimento,
       ...(values[contextNodeId(variable.id)] !== undefined
         ? { contexto: values[contextNodeId(variable.id)] }
+        : {}),
+      ...(comPiloto
+        ? {
+            semVoce:
+              variable.tipo === "situacao"
+                ? brutoPiloto(variable.id, variable.surgimento ?? 0)
+                : (pilotoValues[variable.id] ?? 0),
+          }
         : {}),
     }));
   const controlToLaw = new Map(

@@ -83,6 +83,8 @@ type Props = Readonly<{
   pulsos: ReadonlySet<string>;
   /** Quanto cada bolha mudou no último turno (só as que mudaram). */
   variacoes: ReadonlyMap<string, number>;
+  /** Parte das variações que veio das decisões do jogador (em destaque). */
+  variacoesVoce: ReadonlyMap<string, number>;
   /** Mostrar as etiquetas de variação do turno sobre as bolhas. */
   mostrarVariacoes: boolean;
   onAlternarVariacoes: () => void;
@@ -324,17 +326,18 @@ const NoLei = memo(function NoLei({
 }) {
   const constitucional = ehConstitucional(lei);
   const pendente = Math.abs(lei.meta - lei.nivel) > 1e-6;
+  const sua = lei.alteradaPorVoce;
   const r = RAIO_BASE_LEI * (pos.r / MEDIDAS.raioLei);
   const escala = escalaDaLei(nivel);
   const raioVisivel = r * escala;
   return (
     <g
-      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}`}
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""}`}
       transform={`translate(${pos.x} ${pos.y})`}
       style={{ "--cor": cor } as React.CSSProperties}
       role="button"
       tabIndex={0}
-      aria-label={`${lei.nome}${constitucional ? ", lei constitucional" : ""}`}
+      aria-label={`${lei.nome}${constitucional ? ", lei constitucional" : ""}${sua ? ", mudada por você" : ""}`}
       aria-pressed={selecionada}
       onPointerEnter={() => onEntrar(lei.id)}
       onPointerLeave={onSair}
@@ -351,6 +354,7 @@ const NoLei = memo(function NoLei({
       <g className="corpo">
         <g className="inflavel" style={{ transform: `scale(${escala})` }}>
           <circle className="halo" r={r + 9} />
+          {sua ? <circle className="aro-sua" r={r + 9.5} /> : null}
           <circle className="disco" r={r} />
           <Anel
             r={r + 4.5}
@@ -387,6 +391,19 @@ const NoLei = memo(function NoLei({
             strokeWidth={2}
           />
         ))}
+        {sua ? (
+          <g
+            transform={`translate(${-raioVisivel * 0.74 - 2} ${raioVisivel * 0.74 + 2})`}
+            className="selo-sua"
+          >
+            <circle r={9} />
+            <IconeSvg
+              nome={ICONE_INTERFACE.caneta}
+              tamanho={12}
+              cor="#2b2108"
+            />
+          </g>
+        ) : null}
         {pendente ? (
           <g
             transform={`translate(${raioVisivel * 0.74 + 2} ${raioVisivel * 0.74 + 2})`}
@@ -419,6 +436,7 @@ const NoBolha = memo(function NoBolha({
   y,
   intensidade,
   variacao,
+  variacaoVoce,
   estado,
   selecionada,
   mostrarRotulo,
@@ -437,6 +455,8 @@ const NoBolha = memo(function NoBolha({
   intensidade: IntensidadeBolha;
   /** Quanto mudou no último turno (na unidade da bolha). */
   variacao?: number;
+  /** Parte da mudança do último turno que veio das decisões do jogador. */
+  variacaoVoce?: number;
   estado: EstadoNo;
   selecionada: boolean;
   mostrarRotulo: boolean;
@@ -462,9 +482,15 @@ const NoBolha = memo(function NoBolha({
     mudou && bolha.avaliacao !== "neutra"
       ? COR_EFEITO[efeitoDe(Math.sign(variacao!), bolha.avaliacao)]
       : COR_EFEITO.neutro;
+  // Destaque do jogador: a parte da mudança que veio das decisões dele.
+  const sua = variacaoVoce !== undefined;
+  const corSua =
+    sua && bolha.avaliacao !== "neutra"
+      ? COR_EFEITO[efeitoDe(Math.sign(variacaoVoce!), bolha.avaliacao)]
+      : COR_EFEITO.neutro;
   return (
     <g
-      className={`no-bolha ${estado} tipo-${bolha.tipo}${selecionada ? " selecionada" : ""}${pulsa ? ` pulsa ${corVariacao === COR_EFEITO.melhora ? "pulsa-melhora" : corVariacao === COR_EFEITO.piora ? "pulsa-piora" : ""}` : ""}${situacao ? (ativa ? " ativa" : " inativa") : ""}${grave ? " grave" : ""}`}
+      className={`no-bolha ${estado} tipo-${bolha.tipo}${selecionada ? " selecionada" : ""}${pulsa ? (sua ? ` pulsa pulsa-sua ${corSua === COR_EFEITO.melhora ? "pulsa-melhora" : corSua === COR_EFEITO.piora ? "pulsa-piora" : ""}` : " pulsa-natural") : ""}${situacao ? (ativa ? " ativa" : " inativa") : ""}${grave ? " grave" : ""}`}
       transform={`translate(${x} ${y})`}
       style={{ "--bondade": cor } as React.CSSProperties}
       role="button"
@@ -484,7 +510,7 @@ const NoBolha = memo(function NoBolha({
     >
       <circle className="alvo-toque" r={raioVisivel + 8} />
       <g className="corpo">
-        {pulsa ? <circle className="onda" r={raioVisivel - 4} /> : null}
+        {pulsa && sua ? <circle className="onda" r={raioVisivel - 4} /> : null}
         {grave ? <circle className="alarme" r={raioVisivel - 4} /> : null}
         <g className="inflavel" style={{ transform: `scale(${escala})` }}>
           <circle className="halo" r={r + 10} />
@@ -492,7 +518,7 @@ const NoBolha = memo(function NoBolha({
           {bolha.tipo === "estoque" ? (
             <circle className="anel-estoque" r={r - 5} />
           ) : null}
-          {pulsa ? <circle className="flash" r={r + 7} /> : null}
+          {pulsa && sua ? <circle className="flash" r={r + 7} /> : null}
           {!situacao || ativa ? (
             <Anel
               r={r + 5}
@@ -548,12 +574,20 @@ const NoBolha = memo(function NoBolha({
           ) : null}
         </>
       ) : null}
-      {etiqueta && variacao !== undefined ? (
+      {etiqueta && sua ? (
+        <EtiquetaVariacao
+          texto={`${variacaoVoce! > 0 ? "▲" : "▼"} ${diferenca(variacaoVoce!, bolha.unidade)} · você`}
+          cor={corSua}
+          y={-raioVisivel - 2}
+          escala={Math.min(3.2, Math.max(0.9, 1.15 / escalaTela))}
+          sua
+        />
+      ) : etiqueta && variacao !== undefined ? (
         <EtiquetaVariacao
           texto={`${variacao > 0 ? "▲" : "▼"} ${diferenca(variacao, bolha.unidade)}`}
           cor={corVariacao}
           y={-raioVisivel - 2}
-          escala={Math.min(2.8, Math.max(0.75, 0.95 / escalaTela))}
+          escala={Math.min(2.2, Math.max(0.6, 0.75 / escalaTela))}
         />
       ) : null}
     </g>
@@ -566,16 +600,19 @@ function EtiquetaVariacao({
   cor,
   y,
   escala,
+  sua = false,
 }: {
   texto: string;
   cor: string;
   y: number;
   escala: number;
+  /** Mudança que veio das decisões do jogador: em destaque. */
+  sua?: boolean;
 }) {
-  const largura = texto.length * 7.4 + 16;
+  const largura = texto.length * 7.4 + 16 + (sua ? 18 : 0);
   return (
     <g
-      className="etiqueta-turno"
+      className={`etiqueta-turno ${sua ? "sua" : "natural"}`}
       transform={`translate(0 ${y}) scale(${escala})`}
       pointerEvents="none"
     >
@@ -589,7 +626,12 @@ function EtiquetaVariacao({
           fill={cor}
         />
         <path d="M-5,-3.5 L0,2 L5,-3.5 Z" fill={cor} />
-        <text y={-9.5} fontSize={12.5} textAnchor="middle">
+        {sua ? (
+          <g transform={`translate(${-largura / 2 + 12} -14)`}>
+            <IconeSvg nome={ICONE_INTERFACE.caneta} tamanho={12} cor="#fff" />
+          </g>
+        ) : null}
+        <text x={sua ? 8 : 0} y={-9.5} fontSize={12.5} textAnchor="middle">
           {texto}
         </text>
       </g>
@@ -613,6 +655,7 @@ export function MapaPolitico({
   marcas,
   pulsos,
   variacoes,
+  variacoesVoce,
   mostrarVariacoes,
   onAlternarVariacoes,
   painel,
@@ -638,6 +681,13 @@ export function MapaPolitico({
   const [explorou, setExplorou] = useState(false);
 
   const ehLei = useCallback((id: string) => base.leis.has(id), [base]);
+  // Leis que o jogador mudou: a caneta aparece também na esfera fechada.
+  const suas = useMemo(
+    () => new Set(visao.leis.filter((l) => l.alteradaPorVoce).map((l) => l.id)),
+    [visao.leis],
+  );
+  const suasNaEsfera = (ids: readonly string[]) =>
+    ids.filter((id) => suas.has(id)).length;
   const foco = sobre ?? selecionado;
   const viz = useMemo(
     () => vizinhanca(indice, foco, ehLei),
@@ -1251,6 +1301,27 @@ export function MapaPolitico({
                     </tspan>
                   ))}
                 </text>
+                {suasNaEsfera(ministerio.leis) ? (
+                  <g
+                    transform={`translate(${bloco.retrato.x - rr * 0.7} ${bloco.retrato.y + rr * 0.7})`}
+                    className="selo-sua selo-sua-esfera"
+                  >
+                    <circle r={rr * 0.24} />
+                    <IconeSvg
+                      nome={ICONE_INTERFACE.caneta}
+                      tamanho={rr * 0.24}
+                      cor="#2b2108"
+                    />
+                    <text
+                      x={rr * 0.3}
+                      y={rr * 0.1}
+                      fontSize={rr * 0.3}
+                      className="contador-sua"
+                    >
+                      {suasNaEsfera(ministerio.leis)}
+                    </text>
+                  </g>
+                ) : null}
                 {!e.aberta || !revelando ? (
                   <text
                     className="contagem-esfera"
@@ -1457,7 +1528,11 @@ export function MapaPolitico({
                 y={pos.y}
                 intensidade={intensidades.get(bolha.id)!}
                 variacao={variacoes.get(bolha.id)}
-                etiqueta={mostrarVariacoes && variacoes.has(bolha.id)}
+                variacaoVoce={variacoesVoce.get(bolha.id)}
+                etiqueta={
+                  mostrarVariacoes &&
+                  (variacoes.has(bolha.id) || variacoesVoce.has(bolha.id))
+                }
                 escalaTela={k}
                 estado={estado}
                 selecionada={bolha.id === selecionado}

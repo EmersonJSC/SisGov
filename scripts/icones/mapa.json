@@ -247,6 +247,7 @@
   },
   "interface": {
     "caixa": "safe-square-outline",
+    "caneta": "draw-pen",
     "divida": "bank-minus",
     "pib": "chart-line",
     "aprovacao": "account-group",

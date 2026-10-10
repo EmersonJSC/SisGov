@@ -620,6 +620,11 @@ export function DocumentoLei({
             § Também da Presidência
           </span>
         ) : null}
+        {lei.alteradaPorVoce ? (
+          <span className="marca-sua">
+            <Icone nome={ICONE_INTERFACE.caneta} tamanho={13} /> Mudada por você
+          </span>
+        ) : null}
       </div>
       {lei.descricao ? (
         <p className="ementa">
@@ -1122,6 +1127,20 @@ export function DocumentoBolha({
       </div>
       <Regua bolha={bolha} />
       <p className="nota">{avaliacao}.</p>
+      {bolha.semVoce !== undefined &&
+      Math.abs(bolha.valor - bolha.semVoce) /
+        (bolha.maximo - bolha.minimo || 1) >=
+        0.002 ? (
+        <p className="sem-voce-boletim">
+          <b>Sua marca:</b> {bolha.valor > bolha.semVoce ? "+" : "−"}
+          {diferenca(
+            Math.abs(bolha.valor - bolha.semVoce),
+            bolha.unidade,
+          ).slice(1)}
+          . Sem as suas decisões, estaria em{" "}
+          {valorDaBolha(bolha.semVoce, bolha.unidade)}.
+        </p>
+      ) : null}
       {bolha.contexto !== undefined && Math.abs(bolha.contexto) >= 0.05 ? (
         <p className="contexto-boletim">
           <b>Contexto do {visao.cenario}:</b> {bolha.contexto > 0 ? "+" : "−"}

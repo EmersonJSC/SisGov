@@ -690,6 +690,7 @@ export const ICONE_BOLHA: Readonly<Record<string, string>> = {
 /** Desenhos da interface e dos ministérios. */
 export const ICONE_INTERFACE: Readonly<Record<string, string>> = {
   caixa: "safe-square-outline",
+  caneta: "draw-pen",
   divida: "bank-minus",
   pib: "chart-line",
   aprovacao: "account-group",

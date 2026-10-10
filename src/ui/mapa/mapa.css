@@ -2207,3 +2207,130 @@ button {
   line-height: 1.45;
   color: #5b4d33;
 }
+
+/* ------------------------------------- marca do jogador (D-58) --------- */
+/* O que o jogador mudou aparece em ouro e com a caneta; o que o país faz
+   sozinho fica discreto. Destaque, não peso: a simulação é a mesma. */
+
+.no-lei.sua .aro-sua {
+  fill: none;
+  stroke: var(--ouro);
+  stroke-width: 3.5;
+  stroke-dasharray: 5 3;
+  animation: aro-gira 18s linear infinite;
+}
+
+@keyframes aro-gira {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+.selo-sua circle {
+  fill: #f2c94c;
+  stroke: #fff;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 2px #0004);
+}
+
+.selo-sua-esfera .contador-sua {
+  fill: #6b4f0e;
+  font-family: var(--sem-serifa);
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: #fffaf0;
+  stroke-width: 3px;
+}
+
+/* bolha mexida pelo jogador: onda dourada e etiqueta grande */
+.pulsa-sua .onda {
+  stroke-width: 5;
+}
+
+.etiqueta-turno.sua .etiqueta-turno-corpo {
+  filter: drop-shadow(0 0 4px #f2c94caa) drop-shadow(0 2px 3px #0005);
+}
+
+.etiqueta-turno.sua rect {
+  stroke: #f2c94c;
+  stroke-width: 2.5;
+}
+
+/* o país sozinho: etiqueta pequena e apagada, sem piscar */
+.etiqueta-turno.natural {
+  opacity: 0.62;
+}
+
+.etiqueta-turno.natural text {
+  font-weight: 700;
+}
+
+/* resumo do turno */
+.resumo-suas {
+  margin: 4px 0 8px;
+  padding: 10px 12px;
+  border: 1px solid #ecd48a;
+  border-radius: 10px;
+  background: #fff8e1;
+}
+
+.resumo-suas h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b4f0e;
+}
+
+.resumo-suas .leis-suas {
+  margin-left: auto;
+  color: #6b4f0e;
+}
+
+.vazio-suas,
+.contas-suas {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #5b4d33;
+}
+
+.contas-suas {
+  font-weight: 700;
+}
+
+.resumo-sozinho {
+  margin: 0;
+  font-size: 12px;
+  color: #7b8798;
+}
+
+.resumo-sozinho b {
+  color: #5f6b7d;
+}
+
+/* documentos: a marca do jogador */
+.marca-sua {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #fff1c2;
+  color: #6b4f0e;
+  font-family: var(--sem-serifa);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sem-voce-boletim {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-left: 3px solid #f2c94c;
+  background: #fff8e1;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #5b4d33;
+}

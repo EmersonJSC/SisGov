@@ -12,6 +12,7 @@ import {
   type Partida,
   type PrevisaoLei,
   type RelatorioTurno,
+  type VisaoPartida,
 } from "../../app/partida";
 import { Bandeira } from "./Bandeira";
 import { diferenca, moeda } from "./formatos";
@@ -69,6 +70,114 @@ function trimestre(turno: number) {
   return `${(turno % 4) + 1}º trimestre · ano ${Math.floor(turno / 4) + 1}`;
 }
 
+type Bolha = VisaoPartida["bolhas"][number];
+
+/**
+ * Resumo do turno: primeiro o que o jogador fez acontecer (em destaque),
+ * depois, menor, o que o país fez sozinho.
+ */
+function ResumoDoTurno({
+  aviso,
+  variacoes,
+  variacoesVoce,
+  bolhaPorId,
+  onSelecionar,
+}: {
+  aviso: RelatorioTurno;
+  variacoes: ReadonlyMap<string, number>;
+  variacoesVoce: ReadonlyMap<string, number>;
+  bolhaPorId: ReadonlyMap<string, Bolha>;
+  onSelecionar: (id: string) => void;
+}) {
+  const efeito = (id: string, d: number) =>
+    efeitoDe(Math.sign(d), bolhaPorId.get(id)?.avaliacao);
+  const contar = (mapa: ReadonlyMap<string, number>, qual: string) =>
+    [...mapa].filter(([id, d]) => efeito(id, d) === qual).length;
+  const suas = [...variacoesVoce]
+    .map(([id, d]) => {
+      const b = bolhaPorId.get(id);
+      return {
+        id,
+        d,
+        b,
+        peso: Math.abs(d) / ((b?.maximo ?? 100) - (b?.minimo ?? 0) || 1),
+      };
+    })
+    .sort((a, b) => b.peso - a.peso)
+    .slice(0, 4);
+  const marcaContas = aviso.contas.resultado - aviso.contasSemVoce.resultado;
+  const naturais = new Map(
+    [...variacoes].filter(([id]) => !variacoesVoce.has(id)),
+  );
+  return (
+    <>
+      <section className="resumo-suas">
+        <h3>
+          <Icone nome={ICONE_INTERFACE.caneta} tamanho={16} /> Suas decisões
+        </h3>
+        {aviso.leisAlteradas === 0 ? (
+          <p className="vazio-suas">
+            Você ainda não mudou nenhuma lei: o país andou sozinho. Abra uma
+            esfera, escolha uma lei e assine uma nova redação.
+          </p>
+        ) : (
+          <>
+            <div className="aviso-placar">
+              <span className="melhora">
+                ▲ {contar(variacoesVoce, "melhora")} melhoraram
+              </span>
+              <span className="piora">
+                ▼ {contar(variacoesVoce, "piora")} pioraram
+              </span>
+              <span className="leis-suas">
+                {aviso.leisAlteradas}{" "}
+                {aviso.leisAlteradas === 1 ? "lei mudada" : "leis mudadas"}
+              </span>
+            </div>
+            {suas.length ? (
+              <ul>
+                {suas.map(({ id, d, b }) => (
+                  <li key={id}>
+                    <button type="button" onClick={() => onSelecionar(id)}>
+                      {b?.nome ?? id}
+                      <span style={{ color: COR_EFEITO[efeito(id, d)] }}>
+                        {diferenca(d, b?.unidade ?? "")}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="vazio-suas">
+                Suas leis ainda estão chegando: o efeito aparece nos próximos
+                meses.
+              </p>
+            )}
+            {Math.abs(marcaContas) >= 100 ? (
+              <p className="contas-suas">
+                Nas contas: {marcaContas > 0 ? "+" : "−"}
+                {moeda(Math.abs(marcaContas))}/ano{" "}
+                {marcaContas > 0 ? "a mais" : "a menos"} no resultado do que sem
+                você.
+              </p>
+            ) : null}
+          </>
+        )}
+      </section>
+      <p className="resumo-sozinho">
+        <b>O país sozinho:</b> ▲ {contar(naturais, "melhora")} · ▼{" "}
+        {contar(naturais, "piora")} ·{" "}
+        {aviso.contas.resultado >= 0 ? "superávit" : "déficit"} de{" "}
+        {moeda(Math.abs(aviso.contas.resultado))}/ano;{" "}
+        {aviso.contas.cofre > 0
+          ? `cofre de ${moeda(aviso.contas.cofre)}`
+          : `dívida de ${moeda(aviso.contas.divida)}`}
+        .
+      </p>
+    </>
+  );
+}
+
 export function TelaPrincipal() {
   const inicial = useMemo(() => criarPartida(), []);
   const [partida, setPartida] = useState<Partida | null>(
@@ -81,6 +190,9 @@ export function TelaPrincipal() {
   const [erroTurno, setErroTurno] = useState<string | null>(null);
   const [pulsos, setPulsos] = useState<ReadonlySet<string>>(new Set());
   const [passando, setPassando] = useState(false);
+  const [variacoesVoce, setVariacoesVoce] = useState<
+    ReadonlyMap<string, number>
+  >(new Map());
   const [variacoes, setVariacoes] = useState<ReadonlyMap<string, number>>(
     new Map(),
   );
@@ -196,19 +308,27 @@ export function TelaPrincipal() {
         return;
       }
       setErroTurno(null);
-      const antes = new Map(visao!.bolhas.map((b) => [b.id, b.valor]));
+      const antes = new Map(visao!.bolhas.map((b) => [b.id, b]));
       const mudaram = new Map<string, number>();
+      const porVoce = new Map<string, number>();
       for (const b of verPartida(r.value.partida).bolhas) {
-        const d = b.valor - (antes.get(b.id) ?? b.valor);
-        if (Math.abs(d) / (b.maximo - b.minimo || 1) >= LIMIAR_ETIQUETA)
-          mudaram.set(b.id, d);
+        const a = antes.get(b.id);
+        const escala = b.maximo - b.minimo || 1;
+        const d = b.valor - (a?.valor ?? b.valor);
+        if (Math.abs(d) / escala >= LIMIAR_ETIQUETA) mudaram.set(b.id, d);
+        // a marca do jogador: o quanto o país se afastou do piloto automático
+        const marca = (x?: typeof b) =>
+          x ? x.valor - (x.semVoce ?? x.valor) : 0;
+        const v = marca(b) - marca(a);
+        if (Math.abs(v) / escala >= LIMIAR_ETIQUETA) porVoce.set(b.id, v);
       }
       setVariacoes(mudaram);
+      setVariacoesVoce(porVoce);
       setMostrarVariacoes(true);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
       setAviso(r.value.relatorio);
-      setPulsos(new Set(mudaram.keys()));
+      setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
     }, 30);
   };
 
@@ -334,6 +454,7 @@ export function TelaPrincipal() {
           marcas={marcas}
           pulsos={pulsos}
           variacoes={variacoes}
+          variacoesVoce={variacoesVoce}
           mostrarVariacoes={mostrarVariacoes}
           onAlternarVariacoes={() => setMostrarVariacoes((v) => !v)}
           painel={painel}
@@ -401,72 +522,13 @@ export function TelaPrincipal() {
                 <Icone nome={ICONE_INTERFACE.fechar} tamanho={16} />
               </button>
             </div>
-            <p>
-              {aviso.contas.resultado >= 0 ? "Superávit" : "Déficit"} de{" "}
-              <b>{moeda(Math.abs(aviso.contas.resultado))}/ano</b>
-              {Math.abs(aviso.contas.resultado - aviso.contasAntes.resultado) >=
-              100 ? (
-                <>
-                  {" "}
-                  (
-                  {aviso.contas.resultado > aviso.contasAntes.resultado
-                    ? "melhorou "
-                    : "piorou "}
-                  {moeda(
-                    Math.abs(
-                      aviso.contas.resultado - aviso.contasAntes.resultado,
-                    ),
-                  )}
-                  )
-                </>
-              ) : null}
-              ; a dívida foi a <b>{moeda(aviso.contas.divida)}</b>.
-            </p>
-            <div className="aviso-placar">
-              <span className="melhora">
-                ▲{" "}
-                {
-                  [...variacoes].filter(
-                    ([id, d]) =>
-                      efeitoDe(Math.sign(d), bolhaPorId.get(id)?.avaliacao) ===
-                      "melhora",
-                  ).length
-                }{" "}
-                melhoraram
-              </span>
-              <span className="piora">
-                ▼{" "}
-                {
-                  [...variacoes].filter(
-                    ([id, d]) =>
-                      efeitoDe(Math.sign(d), bolhaPorId.get(id)?.avaliacao) ===
-                      "piora",
-                  ).length
-                }{" "}
-                pioraram
-              </span>
-            </div>
-            <ul>
-              {aviso.mudancas.slice(0, 4).map((m) => {
-                const b = bolhaPorId.get(m.id);
-                const d = m.depois - m.antes;
-                return (
-                  <li key={m.id}>
-                    <button type="button" onClick={() => selecionar(m.id)}>
-                      {m.nome}
-                      <span
-                        style={{
-                          color:
-                            COR_EFEITO[efeitoDe(Math.sign(d), b?.avaliacao)],
-                        }}
-                      >
-                        {diferenca(d, b?.unidade ?? "")}
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <ResumoDoTurno
+              aviso={aviso}
+              variacoes={variacoes}
+              variacoesVoce={variacoesVoce}
+              bolhaPorId={bolhaPorId}
+              onSelecionar={selecionar}
+            />
           </div>
         ) : null}
 
