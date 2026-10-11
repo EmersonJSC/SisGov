@@ -58,14 +58,14 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
     if (bolha.avaliacao === "maior_melhor")
       return {
         t,
-        escala: ativa ? 1 + 0.55 * curva(gravidade) : 0.62,
+        escala: ativa ? 1 + 0.9 * curva(gravidade) : 0.5,
         bondade: ativa ? Math.max(0.75, bondade ?? 0.75) : bondade,
         ativa,
         grave: false,
       };
     return {
       t,
-      escala: ativa ? 1 + 0.55 * curva(gravidade) : 0.62,
+      escala: ativa ? 1 + 0.9 * curva(gravidade) : 0.5,
       bondade: ativa ? Math.min(bondade ?? 0.3, 0.35) : bondade,
       ativa,
       grave: ativa && gravidade >= 0.35,
@@ -86,8 +86,9 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
       grave: false,
     };
   }
-  // raio entre 19 e 42 (referência 30)
-  const raio = 19 + 23 * curva(t);
+  // raio entre 13 e 58 (referência 30): a mais cheia tem quase 4,5 vezes
+  // o raio da mais vazia (pedido do autor, 11/out: diferença mais visível)
+  const raio = 13 + 45 * Math.pow(t, 0.85);
   return {
     t,
     escala: raio / RAIO_BASE_BOLHA,
@@ -141,9 +142,9 @@ export function nivelRelativo(
   return prender(valor / referencia.maiorAliquota);
 }
 
-/** Fator de escala da lei: raio entre 15 e 31 (referência 23). */
+/** Fator de escala da lei: raio entre 12 e 36 (referência 23). */
 export function escalaDaLei(t: number): number {
-  return (15 + 16 * curva(t)) / RAIO_BASE_LEI;
+  return (12 + 24 * Math.pow(t, 0.85)) / RAIO_BASE_LEI;
 }
 
 /** Cor do anel: vermelho (ruim) → âmbar → verde (bom); ardósia se neutro. */

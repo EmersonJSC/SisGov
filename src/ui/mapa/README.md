@@ -63,7 +63,7 @@ e os indicadores no anel externo. Lê só a
 - **Fundo da visão geral:** cada indicador liga-se ao ministério (ou aos dois)
   cujas leis mais o afetam. É a soma de consequências reais, não enfeite.
 - **Tamanho (D-43):** cada bolha incha conforme o valor na própria escala
-  (raio entre 19 e 42, entre proporcional ao raio e à área). O anel mostra a
+  (raio entre 13 e 58: a mais cheia tem quase 4,5 vezes o raio da mais vazia). O anel mostra a
   posição exata na escala e tem cor de verde (bom) a vermelho (ruim) pela
   `avaliacao`. Situação abaixo do surgimento vira um ponto apagado; acima,
   cresce com a gravidade, fica vermelha e pisca quando é séria. Lei incha
