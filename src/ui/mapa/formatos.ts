@@ -71,4 +71,6 @@ export const NOME_PROCESSO: Readonly<Record<string, string>> = {
   "emenda-constitucional": "Emenda constitucional",
   "lei-ordinaria": "Lei ordinária",
   "execucao-programa-autorizado": "Execução do Executivo",
+  "clausula-petrea": "Constituição",
+  decreto: "Decreto",
 };

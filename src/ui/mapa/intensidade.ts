@@ -129,7 +129,11 @@ export function nivelRelativo(
     const valores = lei.opcoes.map((o) => o.valor);
     const min = Math.min(...valores);
     const max = Math.max(...valores);
-    return prender((valor - min) / (max - min || 1));
+    const t = prender((valor - min) / (max - min || 1));
+    // três níveis (D-65): a lei no mapa está em vigor; a primeira opção é uma
+    // escolha, não "desligada". A pétrea fica sempre grande.
+    if (lei.nivelLegal === "petrea") return 0.85;
+    return lei.nivelLegal ? 0.4 + 0.6 * t : t;
   }
   if (lei.unidade === "moeda_ano")
     return prender(valor / referencia.maiorGasto);

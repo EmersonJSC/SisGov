@@ -81,12 +81,17 @@ export function JanelaLei({
 }) {
   // Lei fora do mapa (catálogo): começa na primeira opção, e qualquer
   // escolha é uma proposta nova (não há meta em vigor para comparar).
-  const inicial = () =>
-    lei.emVigor ||
-    !lei.opcoes?.length ||
-    lei.opcoes.some((o) => Math.abs(o.valor - lei.meta) < 1e-9)
-      ? lei.meta
-      : lei.opcoes[0].valor;
+  const inicial = () => {
+    if (lei.emVigor) return lei.meta;
+    if (lei.opcoes?.length)
+      return lei.opcoes.some((o) => Math.abs(o.valor - lei.meta) < 1e-9)
+        ? lei.meta
+        : lei.opcoes[0].valor;
+    // valor: a revogação zera a meta; propõe um começo modesto
+    if (lei.meta > 0) return lei.meta;
+    const min = lei.minimo ?? 0;
+    return min + ((lei.maximo ?? min) - min) * 0.1;
+  };
   const referencia = lei.emVigor ? lei.meta : Number.NaN;
   const igual = (valor: number) => Math.abs(valor - referencia) < 1e-9;
   const [rascunho, setRascunho] = useState(inicial);
@@ -102,7 +107,8 @@ export function JanelaLei({
 
   // Prévia de 1 ano (4 turnos), um instante depois do jogador parar.
   useEffect(() => {
-    if (igual(rascunho)) {
+    // lei trancada (pétrea ou sem a lei de base): não há o que prever
+    if (igual(rascunho) || (lei.nivelLegal && lei.bloqueio)) {
       setPrevisao(null);
       setCalculando(false);
       return;
@@ -120,7 +126,7 @@ export function JanelaLei({
       }
     }, 140);
     return () => window.clearTimeout(id);
-  }, [partida, lei.id, referencia, rascunho]);
+  }, [partida, lei.id, lei.nivelLegal, lei.bloqueio, referencia, rascunho]);
 
   // SG138: filhas que cairiam com esta redação, para avisar antes de assinar
   const quedas = useMemo(

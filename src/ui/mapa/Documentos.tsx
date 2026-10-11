@@ -631,7 +631,12 @@ export function DocumentoLei({
             <button
               type="button"
               className="botao-assinar"
-              disabled={!mudou || carimbo || travada}
+              disabled={
+                !mudou ||
+                carimbo ||
+                travada ||
+                (!lei.emVigor && !lei.opcoes?.length && rascunho <= 0)
+              }
               onClick={assinar}
             >
               <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
@@ -706,7 +711,7 @@ export function DocumentoLei({
               <dd className="meta">{rotuloOpcao(lei.meta)}</dd>
             </div>
           ) : null}
-          {Math.abs(lei.saldoAnual) >= 1 ? (
+          {lei.emVigor && Math.abs(lei.saldoAnual) >= 1 ? (
             <div>
               <dt>{lei.saldoAnual > 0 ? "Arrecada" : "Custa"}</dt>
               <dd className={lei.saldoAnual > 0 ? "arrecada" : "custa"}>
@@ -723,7 +728,7 @@ export function DocumentoLei({
         <h2>
           <span>II.</span> Nova redação
         </h2>
-        {travada ? (
+        {travada && lei.exigencias.every((e) => e.atendida) ? (
           <p className="bloqueio-doc" role="note">
             <Icone nome={ICONE_INTERFACE.trancada} tamanho={18} />
             <span>{lei.bloqueio}</span>
