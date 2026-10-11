@@ -7,10 +7,6 @@ import {
   type ValidationResult,
 } from "../engine";
 import type { GameState } from "./createGame";
-import {
-  prepareFiscalQuarter,
-  type PreparedFiscalQuarter,
-} from "./prepareFiscalQuarter";
 import { preparePolicyExecution } from "./preparePolicyExecution";
 import type { PolicyState } from "../domain/game";
 import {
@@ -25,7 +21,6 @@ export type PreparedGameMonth = Readonly<{
 
 export type PreparedGameQuarter = Readonly<{
   execution: EngineExecution;
-  fiscal: PreparedFiscalQuarter;
   months: readonly PreparedGameMonth[];
   policies: readonly PolicyState[];
   proposals: GameState["proposals"];
@@ -40,24 +35,20 @@ function invalid(field: string, message: string): ValidationResult<never> {
   };
 }
 
-/** Prepares policy execution and fiscal accounting without mutating the game. */
+/**
+ * Prepares the quarter's policy execution without mutating the game. The
+ * public accounts (revenue, spending, interest, debt) live in the network
+ * (SG157); there is no separate fiscal ledger (SG105).
+ */
 export function prepareGameQuarter(
   content: ResolvedPackage,
   graph: ScenarioGraph,
   game: GameState,
   monthlyPolicyStates: readonly (readonly PolicyState[])[],
 ): ValidationResult<PreparedGameQuarter> {
-  if (!game.fiscal)
-    return invalid("fiscal", "A partida não possui ficha fiscal inicial.");
   if (monthlyPolicyStates.length !== 3)
     return invalid("turno", "Um turno trimestral exige três estados mensais.");
 
-  const fiscal = prepareFiscalQuarter(
-    content,
-    game.fiscal,
-    monthlyPolicyStates,
-  );
-  if (!fiscal.ok) return fiscal;
   const proposals = prepareProposalTramitation(
     game.proposals,
     game.currentTurn + 1,
@@ -88,7 +79,6 @@ export function prepareGameQuarter(
     ok: true,
     value: {
       execution,
-      fiscal: fiscal.value,
       months,
       policies: monthlyPolicyStates[2],
       proposals: proposals.value,

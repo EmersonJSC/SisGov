@@ -56,8 +56,8 @@ catálogo (`mundo/catalogo-leis.json`). Organização mundo × país:
   ele: vale o mais apertado.
 - Campos de quantidade (`impactoFiscal`, `nivel`, `valor`, `valorAnual`…) na
   lei são recusados com arquivo e campo.
-- Lei orçamentária de valor fixo usa `moeda_ano`; a moeda concreta vem da
-  ficha fiscal do país.
+- Lei orçamentária de valor fixo usa `moeda_ano`; a moeda concreta vem do
+  país (`economia`). A ficha fiscal saiu no SG105.
 
 ### Orçamentária
 
@@ -132,20 +132,16 @@ aqui (M8).
 "limitesProprios": [
   { "lei": "atencao-basica", "minimo": 20 }
 ],
-"fiscal": {
-  "…": "caixa, dívida, juros herdados, taxa da dívida nova",
-  "agregados": {
-    "receitas": [ { "id": "impostos-nao-modelados", "valorAnual": 950 } ],
-    "despesas": [ { "id": "previdencia", "valorAnual": 950 } ]
-  }
-}
+"economia": { "pibAnual": 12000000 }
 ```
 
 Cada entrada de `leisVigentes` informa `nivel` **ou** `opcao` (lei com
 opções); `nivelImplantado` é opcional e serve para uma lei herdada ainda em
 implantação.
 
-Agregados são o orçamento que **ainda não** é lei. Quando uma lei passa a
+_(Histórico: os agregados e a ficha fiscal saíram no SG157 e no SG105; o
+orçamento inteiro está nas leis e na rede.)_ Agregados eram o orçamento que
+**ainda não** era lei. Quando uma lei passa a
 cobrir parte dele, o agregado diminui no mesmo valor: nada é contado duas vezes.
 
 ## Orçamento do Brasil na partida (hipótese)

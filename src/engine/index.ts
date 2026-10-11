@@ -28,15 +28,12 @@ export {
 export { restoreExecution } from "./runtime/restoreExecution";
 export { supportedMechanisms } from "./model/contentTypes";
 export type {
-  AggregateCreditInitialState,
   ConsequenceFile,
   ConsequenceNormalization,
   ConsequenceParameters,
   ContentFile,
   ElectoralLawDefinition,
   EconomyInitialState,
-  FiscalAggregate,
-  FiscalInitialState,
   InitialStateFile,
   PoliticalInitialState,
   OccurrenceFile,

@@ -1,26 +1,14 @@
 import { expect, it } from "vitest";
-import { validatePackageCoherence } from "../engine";
 import { createGame } from "../game/createGame";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { commitGameQuarter } from "../game/commitGameQuarter";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
-import { buildFiscalQuarterReport } from "../game/fiscalReport";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
-it("prepara e confirma motor e fiscal juntos em três meses", () => {
+it("prepara e confirma os três meses do turno sem livro fiscal à parte (SG105)", () => {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const content = structuredClone(loaded.value.definition);
-  content.initialState.fiscal = {
-    periodoInicial: "2026-01",
-    referenciaPrecos: "teste",
-    unidadeMonetaria: "creditos",
-    origem: { tipo: "hipotese", descricao: "Teste." },
-    caixa: 10000,
-    dividaTotal: 10000,
-    jurosHerdadosMensais: 100,
-    taxaJurosDividaNovaMensal: 0.01,
-  };
+  const content = loaded.value.definition;
   const game = createGame("partida-integrada", content, loaded.value.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);
   const prepared = prepareGameQuarter(content, loaded.value.graph, game.value, [
@@ -31,129 +19,15 @@ it("prepara e confirma motor e fiscal juntos em três meses", () => {
   expect(prepared).toMatchObject({ ok: true });
   if (!prepared.ok) return;
   expect(prepared.value.execution.step).toBe(3);
-  expect(prepared.value.fiscal.months).toHaveLength(3);
+  expect(prepared.value.months).toHaveLength(3);
   expect(game.value.execution.step).toBe(0);
   expect(game.value.currentTurn).toBe(0);
 
   const committed = commitGameQuarter(game.value, prepared.value);
   expect(committed.currentTurn).toBe(1);
   expect(committed.execution.step).toBe(3);
-  expect(committed.fiscal).toEqual(prepared.value.fiscal.accounting.state);
+  expect("fiscal" in committed).toBe(false);
   expect(game.value.execution.step).toBe(0);
-});
-
-it("não prepara turno integrado sem ficha fiscal", () => {
-  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
-  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const content = structuredClone(loaded.value.definition);
-  delete content.initialState.fiscal;
-  const game = createGame("partida-sem-fiscal", content, loaded.value.graph);
-  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
-  const result = prepareGameQuarter(content, loaded.value.graph, game.value, [
-    game.value.policies,
-    game.value.policies,
-    game.value.policies,
-  ]);
-  expect(result).toMatchObject({
-    ok: false,
-    diagnostics: [{ field: "fiscal" }],
-  });
-});
-
-it("leva os custos das cinco políticas ao financiamento mensal do trimestre", () => {
-  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
-  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const content = structuredClone(loaded.value.definition);
-  content.initialState.fiscal = {
-    periodoInicial: "2026-01",
-    referenciaPrecos: "teste",
-    unidadeMonetaria: "creditos",
-    origem: {
-      tipo: "hipotese",
-      descricao: "Ciclo sintético de financiamento.",
-    },
-    caixa: 0,
-    dividaTotal: 100,
-    jurosHerdadosMensais: 5,
-    taxaJurosDividaNovaMensal: 0.01,
-  };
-  const game = createGame(
-    "partida-fiscal-integrada",
-    content,
-    loaded.value.graph,
-  );
-  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
-  const prepared = prepareGameQuarter(content, loaded.value.graph, game.value, [
-    game.value.policies,
-    game.value.policies,
-    game.value.policies,
-  ]);
-  if (!prepared.ok) throw new Error(prepared.diagnostics[0]?.message);
-
-  expect(
-    prepared.value.fiscal.months.map((month) => month.accounting.issuance),
-  ).toEqual([475, 479.75, 484.5475]);
-  expect(prepared.value.fiscal.accounting.state.cash).toBe(0);
-  expect(prepared.value.fiscal.accounting.state.totalDebt).toBeCloseTo(
-    1539.2975,
-  );
-  expect(
-    prepared.value.fiscal.accounting.state.debtIssuedDuringGame,
-  ).toBeCloseTo(1439.2975);
-  expect(prepared.value.fiscal.months[1].accounting.interestExpense).toBe(9.75);
-  expect(prepared.value.fiscal.months[2].accounting.interestExpense).toBe(
-    14.5475,
-  );
-  expect(
-    prepared.value.fiscal.months[0].accounting.newDebtInterestNextMonth,
-  ).toBe(4.75);
-  expect(
-    prepared.value.fiscal.months[2].accounting.newDebtInterestNextMonth,
-  ).toBeCloseTo(14.392975);
-  const report = buildFiscalQuarterReport(prepared.value.fiscal);
-  expect(report.totals.revenue).toBe(0);
-  expect(report.totals.primaryExpense).toBeCloseTo(1410);
-  expect(report.totals.issuance).toBeCloseTo(1439.2975);
-  expect(report.finalState).toEqual(prepared.value.fiscal.accounting.state);
-});
-
-it("SG136: o Brasil tem orçamento completo nas proporções combinadas", () => {
-  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
-  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const game = createGame(
-    "brasil-fiscal",
-    loaded.value.definition,
-    loaded.value.graph,
-  );
-  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
-  expect(game.value.fiscal).toMatchObject({
-    cash: 900000,
-    totalDebt: 9200000,
-    debtIssuedDuringGame: 0,
-  });
-  const prepared = prepareGameQuarter(
-    loaded.value.definition,
-    loaded.value.graph,
-    game.value,
-    [game.value.policies, game.value.policies, game.value.policies],
-  );
-  if (!prepared.ok) throw new Error(prepared.diagnostics[0]?.message);
-  const first = prepared.value.fiscal.months[0];
-  // Por ano: receitas 2,2 tri; despesas primárias 2,25 tri; juros 900 bi.
-  expect(first.accounting.revenue * 12).toBeCloseTo(2200000);
-  expect(first.accounting.primaryExpense * 12).toBeCloseTo(2250000);
-  expect(first.accounting.primaryResult * 12).toBeCloseTo(-50000);
-  expect(first.accounting.interestExpense * 12).toBeCloseTo(900000);
-  expect(first.accounting.nominalResult * 12).toBeCloseTo(-950000);
-  // O gasto de cada lei e de cada agregado aparece separado, sem dupla contagem.
-  expect(first.flows).toHaveLength(5);
-  expect(first.aggregates).toHaveLength(6);
-  const expenseParts = [...first.flows, ...first.aggregates]
-    .filter((flow) => flow.nature === "primaryExpense")
-    .reduce((sum, flow) => sum + flow.amount, 0);
-  expect(expenseParts).toBeCloseTo(first.accounting.primaryExpense);
-  for (const month of prepared.value.fiscal.months)
-    expect(month.accounting.cashAfter).toBeGreaterThanOrEqual(0);
 });
 
 it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
@@ -172,16 +46,5 @@ it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
   ).toMatchObject({
     ok: true,
     value: { rules: { domain: { minimum: 2400, maximum: 6000 } } },
-  });
-});
-
-it("SG136: país com ficha fiscal precisa declarar o PIB", () => {
-  const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
-  if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
-  const content = structuredClone(loaded.value.definition);
-  delete content.initialState.economia;
-  expect(validatePackageCoherence(content)).toMatchObject({
-    ok: false,
-    diagnostics: [expect.objectContaining({ field: "economia" })],
   });
 });

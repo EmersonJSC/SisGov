@@ -96,16 +96,6 @@ it("aplica a decisão em um novo snapshot da partida", () => {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
-  content.initialState.fiscal = {
-    periodoInicial: "2026-01",
-    referenciaPrecos: "teste",
-    unidadeMonetaria: "creditos",
-    origem: { tipo: "hipotese", descricao: "Teste." },
-    caixa: 0,
-    dividaTotal: 0,
-    jurosHerdadosMensais: 0,
-    taxaJurosDividaNovaMensal: 0,
-  };
   const game = createGame("partida-voto", content, loaded.value.graph);
   if (!game.ok) throw new Error(game.diagnostics[0]?.message);
   const proposal = votingProposal();

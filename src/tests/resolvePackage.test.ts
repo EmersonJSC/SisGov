@@ -274,28 +274,6 @@ describe("validatePackageCoherence — regras de nível (SG102)", () => {
   });
 });
 
-describe("validatePackageCoherence — moeda fiscal (SG103/SG135)", () => {
-  it("recusa lei de valor fixo fora da moeda anual da ficha do país", () => {
-    const files = validPackage();
-    files["estado-inicial.json"] = files["estado-inicial.json"].replace(
-      '"valores":',
-      '"fiscal":{"periodoInicial":"2026-01","referenciaPrecos":"2024","unidadeMonetaria":"creditos","origem":{"tipo":"hipotese","descricao":"Teste."},"caixa":0,"dividaTotal":0,"jurosHerdadosMensais":0,"taxaJurosDividaNovaMensal":0},"valores":',
-    );
-    const resolved = resolvePackage("cenario.json", files);
-    expect(resolved.ok).toBe(true);
-    if (resolved.ok)
-      expect(validatePackageCoherence(resolved.value)).toMatchObject({
-        ok: false,
-        diagnostics: expect.arrayContaining([
-          expect.objectContaining({
-            file: "material-escolar",
-            field: "controle.unidade",
-          }),
-        ]),
-      });
-  });
-});
-
 describe("leis v2 (SG135)", () => {
   function policyWith(change: (law: Record<string, unknown>) => void) {
     const files = validPackage();

@@ -29,7 +29,6 @@ it("confirma vitória sem reiniciar o país e encerra somente ao perder", () => 
     ok: true,
     value: {
       gameStatus: "ativa",
-      fiscal: created.value.fiscal,
       elections: [{ status: "novo_mandato" }],
     },
   });

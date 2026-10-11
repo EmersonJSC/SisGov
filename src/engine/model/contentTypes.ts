@@ -135,7 +135,6 @@ export type InitialStateFile = {
     nivelImplantado?: number;
   }[];
   leisEleitoraisVigentes?: readonly string[];
-  fiscal?: FiscalInitialState;
   politica?: PoliticalInitialState;
 };
 
@@ -162,45 +161,8 @@ export type PoliticalInitialState = {
 };
 
 export type EconomyInitialState = {
-  /** PIB anual na moeda da ficha fiscal. */
+  /** PIB anual na moeda do país (milhões). */
   pibAnual: number;
-};
-
-/** Parte do orçamento que ainda não é lei: entra inteira no fluxo do mês. */
-export type FiscalAggregate = {
-  id: string;
-  nome: string;
-  valorAnual: number;
-};
-
-/** Fiscal values belong to the country state, never to the generic engine. */
-export type FiscalInitialState = {
-  periodoInicial: string;
-  referenciaPrecos: string;
-  unidadeMonetaria: string;
-  origem: {
-    tipo: "observado" | "hipotese";
-    descricao: string;
-  };
-  caixa: number;
-  dividaTotal: number;
-  jurosHerdadosMensais: number;
-  taxaJurosDividaNovaMensal: number;
-  /** Receitas e despesas que ainda não são leis (D-29). */
-  agregados?: {
-    receitas: readonly FiscalAggregate[];
-    despesas: readonly FiscalAggregate[];
-  };
-  credito?: AggregateCreditInitialState;
-};
-
-/** Optional aggregate private-credit stock for the SG060-C extension. */
-export type AggregateCreditInitialState = {
-  principalPendente: number;
-  principalPerformante: number;
-  principalInadimplente: number;
-  capitalAgregado: number;
-  receitaJurosMensal: number;
 };
 
 export type ElectoralLawDefinition = {

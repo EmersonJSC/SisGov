@@ -13,7 +13,6 @@ import {
   type PolicyState,
   type Proposal,
 } from "../domain/game";
-import type { AggregateCreditState, FiscalState } from "../domain/fiscal";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import { createRandomState, type RandomState } from "./randomState";
 
@@ -37,8 +36,6 @@ export type GameState = Readonly<{
   policies: readonly PolicyState[];
   electoralLaws: readonly ElectoralLawState[];
   political?: PoliticalGameState;
-  fiscal?: FiscalState;
-  credit?: AggregateCreditState;
   random?: RandomState;
   execution: EngineExecution;
 }>;
@@ -177,30 +174,6 @@ export function createGame(
       parameters: { ...law.parametros },
     });
   }
-  const fiscal = content.initialState.fiscal
-    ? {
-        cash: content.initialState.fiscal.caixa,
-        totalDebt: content.initialState.fiscal.dividaTotal,
-        debtIssuedDuringGame: 0,
-        inheritedMonthlyInterest:
-          content.initialState.fiscal.jurosHerdadosMensais,
-        monthlyNewDebtInterestRate:
-          content.initialState.fiscal.taxaJurosDividaNovaMensal,
-      }
-    : undefined;
-  const credit = content.initialState.fiscal?.credito
-    ? {
-        outstandingPrincipal:
-          content.initialState.fiscal.credito.principalPendente,
-        performingPrincipal:
-          content.initialState.fiscal.credito.principalPerformante,
-        defaultedPrincipal:
-          content.initialState.fiscal.credito.principalInadimplente,
-        bankCapital: content.initialState.fiscal.credito.capitalAgregado,
-        monthlyInterestRevenue:
-          content.initialState.fiscal.credito.receitaJurosMensal,
-      }
-    : undefined;
   const political = content.initialState.politica
     ? {
         origin: {
@@ -266,8 +239,6 @@ export function createGame(
       policies,
       electoralLaws,
       political,
-      fiscal,
-      credit,
       random: random?.value,
       execution: createExecution(content, graph),
     },

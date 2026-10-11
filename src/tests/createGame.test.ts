@@ -96,46 +96,6 @@ it("rejects missing and overlapping inherited electoral laws", () => {
   });
 });
 
-it("copies fiscal state declared by a country without treating it as an engine constant", () => {
-  const loaded = brasil();
-  const content = structuredClone(loaded.definition);
-  content.initialState.fiscal = {
-    periodoInicial: "2026-01",
-    referenciaPrecos: "preços constantes de teste",
-    unidadeMonetaria: "créditos de teste",
-    origem: { tipo: "hipotese", descricao: "Teste de integração." },
-    caixa: 10,
-    dividaTotal: 100,
-    jurosHerdadosMensais: 5,
-    taxaJurosDividaNovaMensal: 0.01,
-    credito: {
-      principalPendente: 100,
-      principalPerformante: 80,
-      principalInadimplente: 20,
-      capitalAgregado: 50,
-      receitaJurosMensal: 2,
-    },
-  };
-  const game = createGame("partida-fiscal", content, loaded.graph);
-  if (!game.ok) throw new Error(game.diagnostics[0]?.message);
-
-  expect(game.value.fiscal).toEqual({
-    cash: 10,
-    totalDebt: 100,
-    debtIssuedDuringGame: 0,
-    inheritedMonthlyInterest: 5,
-    monthlyNewDebtInterestRate: 0.01,
-  });
-  expect(game.value.fiscal).not.toBe(content.initialState.fiscal);
-  expect(game.value.credit).toEqual({
-    outstandingPrincipal: 100,
-    performingPrincipal: 80,
-    defaultedPrincipal: 20,
-    bankCapital: 50,
-    monthlyInterestRevenue: 2,
-  });
-});
-
 it("persists an explicit random seed in the game snapshot", () => {
   const loaded = brasil();
   const game = createGame(

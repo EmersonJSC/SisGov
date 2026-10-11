@@ -81,8 +81,8 @@ explicável (a explicação registra o fator) e vale para qualquer país (D-39).
 Estoque em moeda já existe (`updateStock`, taxa `moeda_por_passo`).
 
 O módulo fiscal (`domain/fiscal`, `GameState.fiscal`) deixa de fazer a conta:
-o turno lê dívida e resultado da rede. O código fica até a fase 1 provar
-que a rede fecha a mesma conta; depois sai.
+o turno lê dívida e resultado da rede. **Saiu no SG105** (ver "Uma conta
+só").
 
 ## Tela
 
@@ -133,8 +133,8 @@ que a rede fecha a mesma conta; depois sai.
   contas paralelas de leis de gasto e de imposto.
 - **Conta de dinheiro lê o nível** (`"leitura": "nivel"`): a lei custa o que
   foi aprovado, sem a eficácia.
-- **Módulo fiscal antigo:** continua rodando no turno, mas nada na tela lê
-  dele. Os agregados ficam só lá e saem junto com ele.
+- **Módulo fiscal antigo:** continuava rodando no turno, mas nada na tela lia
+  dele. Saiu no SG105, com os agregados.
 
 Brasil no turno 0 (hipótese): receita 18,5% do PIB (R$ 2,2 tri), gasto 19,2%
 (R$ 2,3 tri), juros 7,4% (R$ 891 bi), déficit 8,2% (R$ 980 bi), dívida 77%
@@ -255,6 +255,16 @@ hora (`resposta: 1`) e têm domínio aberto; dívida e cofre não têm limite; a
 escala das bolhas para desenhar vem de `faixaVisual`. Uma crise de dívida de
 verdade (calote, socorro) é regra de jogo a desenhar (SG106), não um limite
 de escala.
+
+## Uma conta só (SG105)
+
+O livro fiscal paralelo (`domain/fiscal`, `GameState.fiscal`, a ficha
+`fiscal` do estado inicial com caixa, agregados e crédito, e o relatório
+fiscal do trimestre) saiu. O turno prepara os três meses só pelo motor; caixa
+e dívida existem uma vez, na rede. O juro da dívida nova entra no mês
+seguinte: os juros de um mês leem a dívida do fim do mês anterior. Testes:
+`turnoSemFiscalAntigo.test.ts` (16 turnos sem erro, conta fechando a cada
+turno).
 
 ## Pisos vinculados à receita (SG137, D-25)
 

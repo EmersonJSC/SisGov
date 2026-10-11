@@ -600,55 +600,6 @@
       "opcao": "guardar"
     }
   ],
-  "fiscal": {
-    "periodoInicial": "2026-01",
-    "referenciaPrecos": "2024",
-    "unidadeMonetaria": "moeda_milhoes_2024",
-    "origem": {
-      "tipo": "hipotese",
-      "descricao": "Valores inventados nas proporções aproximadas do Brasil (D-29): PIB 12 tri, dívida ~77% do PIB, juros ~7,5% do PIB, receitas ~18% e despesas primárias ~19% do PIB. Reconciliar com dados oficiais no backlog B-07."
-    },
-    "caixa": 900000,
-    "dividaTotal": 9200000,
-    "jurosHerdadosMensais": 75000,
-    "taxaJurosDividaNovaMensal": 0.01,
-    "agregados": {
-      "receitas": [
-        {
-          "id": "impostos-nao-modelados",
-          "nome": "Impostos ainda não modelados como lei",
-          "valorAnual": 2050000
-        },
-        {
-          "id": "exportacoes-royalties",
-          "nome": "Exportações e royalties",
-          "valorAnual": 150000
-        }
-      ],
-      "despesas": [
-        {
-          "id": "previdencia",
-          "nome": "Previdência",
-          "valorAnual": 950000
-        },
-        {
-          "id": "maquina-publica",
-          "nome": "Máquina pública: pessoal e burocracia",
-          "valorAnual": 0
-        },
-        {
-          "id": "rede-publica",
-          "nome": "Rede pública: custeio de serviços",
-          "valorAnual": 0
-        },
-        {
-          "id": "programas-nao-modelados",
-          "nome": "Programas ainda não modelados como lei",
-          "valorAnual": 0
-        }
-      ]
-    }
-  },
   "leisEleitoraisVigentes": [
     "eleicao-presidencial-pluralidade-nacional",
     "eleicao-senatorial-maiores-quotientes"

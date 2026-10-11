@@ -1,7 +1,6 @@
 import { expect, it } from "vitest";
 import { createGame } from "../game/createGame";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
-import { preparePolicyFiscalFlows } from "../game/preparePolicyFiscalFlows";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
 
 const worldFiles = import.meta.glob<string>("../conteudo/mundo/**/*.json", {
@@ -54,14 +53,6 @@ it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
     ok: true,
     value: { rules: { domain: { minimum: 2400, maximum: 6000 } } },
   });
-  const flows = preparePolicyFiscalFlows(
-    brasil.definition,
-    game.value.policies,
-  );
-  if (!flows.ok) throw new Error(flows.diagnostics[0]?.message);
-  expect(
-    flows.value.flows.reduce((sum, flow) => sum + flow.amount, 0),
-  ).toBeCloseTo(5640 / 12);
 });
 
 it("SG153: outro país usa o mesmo mundo com outro pacote de leis", () => {

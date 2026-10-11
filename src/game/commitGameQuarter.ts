@@ -11,7 +11,6 @@ export function commitGameQuarter(
     currentTurn: game.currentTurn + 1,
     policies: prepared.policies,
     proposals: prepared.proposals,
-    fiscal: prepared.fiscal.accounting.state,
     execution: prepared.execution,
   };
 }
