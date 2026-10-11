@@ -96,7 +96,27 @@ e superior viram leis separadas.
   jogador desliza, o custo, a arrecadação e as bolhas atingidas mudam na
   hora (o motor já faz a prévia, `preverLei`).
 
-## 6. O que o motor já tem e o que falta
+## 6. Leis não implementadas (catálogo)
+
+Nem toda lei está no mapa. O mapa mostra só as leis **em vigor**; as outras
+ficam num catálogo de leis disponíveis, aberto por um botão no mapa.
+
+- **Aprovar** uma lei do catálogo a coloca no mapa (passa pelo trâmite do
+  nível dela: decreto, lei ordinária ou PEC).
+- **Revogar** uma lei em vigor a tira do mapa e ela volta ao catálogo.
+  Desativar é o mesmo que revogar; pétreas não podem ser revogadas assim
+  (seção 2).
+- **Bloqueadas aparecem no catálogo, trancadas, com o motivo.** Exemplo:
+  com a educação básica só pública, as leis de escola privada (vouchers,
+  regulação de mensalidade) ficam com cadeado e "exige ensino privado
+  permitido".
+- Isso abre espaço para **leis que mudam o país** (por exemplo, criar uma
+  estatal, adotar o voto distrital, legalizar uma droga), e não só ajustar
+  as que já existem.
+- Cada país começa com o seu conjunto em vigor (o Brasil de hoje); o resto
+  do conteúdo fica no catálogo.
+
+## 7. O que o motor já tem e o que falta
 
 | Precisa | Situação |
 | --- | --- |
@@ -105,9 +125,10 @@ e superior viram leis separadas.
 | Prévia ao vivo | **Existe** (`preverLei`); falta a janela chamá-la enquanto desliza |
 | Nível pétreo (não muda por votação) | **Falta**: regra nova na validação de ações (o SG111 é o lugar) e o risco de crise (M9) |
 | Derivada bloqueada visível com motivo | Parte existe (aviso de lei filha); falta o estado "bloqueada" no mapa |
+| Lei em vigor ou fora do mapa (catálogo) | **Falta**: estado "em vigor" por lei, ação de aprovar lei nova e de revogar; o mapa e os efeitos só contam as em vigor |
 | Tirar a regra "mínimo 3 opções" (D-26) | **Decisão**: a proposta pede no máximo 3, preferindo faixa |
 
-## 7. Como migrar
+## 8. Como migrar
 
 1. Aprovar este desenho e o novo método das fichas.
 2. Refazer **uma área por vez**, começando pela Segurança (piloto acima):
