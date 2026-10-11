@@ -26,7 +26,11 @@ export {
   exportExecution,
 } from "./runtime/exportExecution";
 export { restoreExecution } from "./runtime/restoreExecution";
-export { supportedMechanisms } from "./model/contentTypes";
+export {
+  policyTiers,
+  requirementsOf,
+  supportedMechanisms,
+} from "./model/contentTypes";
 export type {
   ConsequenceFile,
   ConsequenceNormalization,
@@ -46,6 +50,8 @@ export type {
   PolicyGroup,
   PolicyLimits,
   PolicyOption,
+  PolicyRequirementFile,
+  PolicyTier,
   PolicyCatalogFile,
   PoliticalOrganizationFile,
   ScenarioManifest,

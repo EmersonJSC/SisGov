@@ -317,12 +317,41 @@ export type PolicyFile = {
   };
   tributo?: { base: string; limites?: PolicyLimits };
   /**
+   * Nível da lei (D-65): pétrea não muda por votação; constitucional muda
+   * por PEC; derivada é lei ordinária, complementar ou decreto. Sem o campo,
+   * a lei é do formato antigo (área ainda não migrada).
+   */
+  nivel?: PolicyTier;
+  /** Pode sair do mapa (voltar ao catálogo)? Padrão: só derivadas (D-65). */
+  revogavel?: boolean;
+  /**
    * Lei filha (SG138): fora da opção de base (a primeira), só vale com a lei
    * mãe numa destas opções; quando a mãe sai delas, a filha cai para a base.
+   * No formato de três níveis (`nivel`), pode exigir mais de uma lei, e a
+   * filha sem a base deixa de valer (volta ao catálogo).
    */
-  requer?: { lei: string; opcoes: readonly string[]; motivo?: string };
+  requer?: PolicyRequirementFile | readonly PolicyRequirementFile[];
   consequencias: string[];
 };
+
+export const policyTiers = ["petrea", "constitucional", "derivada"] as const;
+export type PolicyTier = (typeof policyTiers)[number];
+
+export type PolicyRequirementFile = {
+  lei: string;
+  opcoes: readonly string[];
+  motivo?: string;
+};
+
+/** As exigências de uma lei, sempre como lista. */
+export function requirementsOf(
+  policy: Pick<PolicyFile, "requer">,
+): readonly PolicyRequirementFile[] {
+  if (!policy.requer) return [];
+  return Array.isArray(policy.requer)
+    ? (policy.requer as readonly PolicyRequirementFile[])
+    : [policy.requer as PolicyRequirementFile];
+}
 
 /**
  * Parâmetros por mecanismo (o validador exige os campos de cada um):

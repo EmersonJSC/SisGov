@@ -8,7 +8,7 @@ import {
   createPolicyStateFromApproval,
 } from "../domain/game";
 import type { GameState } from "./createGame";
-import { applyRequirementFalls } from "./policyRequirements";
+import { applyRequirementFalls, policyInForce } from "./policyRequirements";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 function invalid(field: string, message: string): ValidationResult<never> {
@@ -44,7 +44,8 @@ export function commitApprovedProposal(
   const index = game.policies.findIndex(
     (state) => state.policyDefinitionId === proposal.policyDefinitionId,
   );
-  if (index >= 0) {
+  const inForce = policyInForce(game.policies, proposal.policyDefinitionId);
+  if (index >= 0 && inForce) {
     const changed = changePolicyTarget(
       game.policies[index],
       proposal.desiredLevel,
@@ -62,15 +63,18 @@ export function commitApprovedProposal(
     );
     return { ok: true, value: { ...game, policies: falls.policies } };
   }
+  // lei do catálogo (D-65), ou revogada antes: volta a valer, e a
+  // implantação parte do que restou dela
+  const previous = index >= 0 ? game.policies[index] : undefined;
   const created = createPolicyStateFromApproval(
-    `${game.id}:policy:${proposal.policyDefinitionId}`,
+    previous?.id ?? `${game.id}:policy:${proposal.policyDefinitionId}`,
     proposal,
     rules,
-    0,
+    previous?.implementedLevel ?? 0,
   );
   if (!created.ok) return invalid("policy", created.error.message);
-  return {
-    ok: true,
-    value: { ...game, policies: [...game.policies, created.value] },
-  };
+  const policies = [...game.policies];
+  if (index >= 0) policies[index] = created.value;
+  else policies.push(created.value);
+  return { ok: true, value: { ...game, policies } };
 }

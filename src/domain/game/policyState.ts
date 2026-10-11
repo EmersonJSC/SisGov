@@ -23,6 +23,11 @@ export type PolicyOrigin =
       kind: "herdada";
       scenarioId: string;
       turn: number;
+    }>
+  | Readonly<{
+      /** Posta em vigor direto pelo governo (decreto ou modo teste, D-65). */
+      kind: "decretada";
+      turn: number;
     }>;
 
 export type PolicyStateChange = Readonly<{
@@ -141,6 +146,46 @@ export function createPolicyStateFromApproval(
           proposalId: proposal.id,
           turn: authorizedAtTurn,
         },
+      },
+      "autorizada",
+    ),
+  };
+}
+
+/**
+ * Lei do catálogo posta em vigor direto pelo governo (D-65): decreto, ou o
+ * modo teste. Começa implantada em `implementedLevel` (o que sobrou de uma
+ * revogação anterior, ou zero).
+ */
+export function createDecreedPolicyState(
+  input: Readonly<{
+    id: string;
+    desiredLevel: number;
+    implementedLevel: number;
+    turn: number;
+  }>,
+  rules: PolicyLevelRules,
+): DomainResult<PolicyState> {
+  if (!input.id)
+    return domainFailure(
+      "ESTADO_INVALIDO",
+      "A política vigente precisa de ID.",
+    );
+  if (!validTurn(input.turn))
+    return domainFailure("ESTADO_INVALIDO", "O turno da decisão é inválido.");
+  const levels = validLevels(input.desiredLevel, input.implementedLevel, rules);
+  if (!levels.ok) return levels;
+  return {
+    ok: true,
+    value: createState(
+      {
+        id: input.id,
+        policyDefinitionId: rules.policyDefinitionId,
+        status: "vigente",
+        legalStatus: "vigente",
+        desiredLevel: input.desiredLevel,
+        implementedLevel: input.implementedLevel,
+        origin: { kind: "decretada", turn: input.turn },
       },
       "autorizada",
     ),

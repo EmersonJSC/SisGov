@@ -5,7 +5,7 @@ import type {
 } from "../engine";
 import { validatePolicyLevel, type Proposal } from "../domain/game";
 import type { GameState } from "./createGame";
-import { requirementBlock } from "./policyRequirements";
+import { policyInForce, requirementBlock } from "./policyRequirements";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 export type PolicyActionAuthorization = Readonly<{
@@ -77,7 +77,8 @@ export function validatePolicyAction(
         "authorization.excludedActivePolicyIds",
         `A ação é incompatível com a política vigente ${excluded}.`,
       );
-  // SG138: lei filha só sai da base com a mãe numa opção exigida
+  // SG138: lei filha só sai da base com a mãe numa opção exigida; pétrea
+  // não muda (D-65)
   const blocked = requirementBlock(
     content,
     game.policies,
@@ -87,9 +88,7 @@ export function validatePolicyAction(
   if (blocked) return invalid("desiredLevel", blocked);
   if (openProposalFor(game.proposals, policy.id))
     return invalid("proposals", `Já existe proposta aberta para ${policy.id}.`);
-  const current = game.policies.find(
-    (state) => state.policyDefinitionId === policy.id,
-  );
+  const current = policyInForce(game.policies, policy.id);
   const hasExecutiveAuthorization =
     policy.processoAutorizacao.startsWith("execucao-");
   return {

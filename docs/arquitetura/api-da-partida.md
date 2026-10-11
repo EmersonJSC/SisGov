@@ -7,17 +7,18 @@ por `mudarLei`, `responderDilema` e `encerrarTurno`.
 
 ## Funções
 
-| Função                                                  | Entrada                                                                                  | Devolve                                 | Quando usar                           |
-| ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------- |
-| `criarPartida(opcoes?)`                                 | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number, ocorrencias?: boolean }` | `Resultado<Partida>`                    | Novo governo                          |
-| `mudarLei(partida, leiId, nivel)`                       | id da lei e o nível (para leis com opções, o `valor` da opção)                           | `Resultado<Partida>`                    | Jogador escolheu uma opção ou valor   |
-| `encerrarTurno(partida)`                                | —                                                                                        | `Resultado<{ partida, relatorio }>`     | Botão "Encerrar turno" (um trimestre) |
-| `verPartida(partida)`                                   | —                                                                                        | `VisaoPartida`                          | Sempre que for desenhar               |
-| `preverLei(partida, leiId, nivel, trimestres?)`         | id da lei e o nível que o jogador está considerando                                      | `Resultado<PrevisaoLei>`                | Prévia antes de aplicar a mudança     |
-| `leisQueCaem(partida, leiId, nivel)`                    | id da lei e o nível que o jogador está considerando                                      | `VisaoQueda[]`                          | Avisar que leis filhas cairiam        |
-| `responderDilema(partida, dilemaId, opcaoId)`           | dilema da mesa e a opção escolhida                                                       | `Resultado<Partida>`                    | Jogador assinou a decisão (SG106)     |
-| `preverDilema(partida, dilemaId, opcaoId, trimestres?)` | dilema da mesa e a opção considerada (padrão: 4 trimestres)                              | `Resultado<{ efeitos, interrompida? }>` | Prévia da opção, contra não responder |
-| `chanceDaOcorrencia(partida, id)`                       | id do evento ou dilema                                                                   | chance, base e fatores, ou `undefined`  | Explicar por que algo é provável      |
+| Função                                                  | Entrada                                                                                  | Devolve                                 | Quando usar                                   |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------- |
+| `criarPartida(opcoes?)`                                 | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number, ocorrencias?: boolean }` | `Resultado<Partida>`                    | Novo governo                                  |
+| `mudarLei(partida, leiId, nivel)`                       | id da lei e o nível (para leis com opções, o `valor` da opção)                           | `Resultado<Partida>`                    | Jogador escolheu uma opção ou valor           |
+| `revogarLei(partida, leiId)`                            | id de uma lei em vigor e revogável                                                       | `Resultado<Partida>`                    | Tirar a lei do mapa (volta ao catálogo, D-65) |
+| `encerrarTurno(partida)`                                | —                                                                                        | `Resultado<{ partida, relatorio }>`     | Botão "Encerrar turno" (um trimestre)         |
+| `verPartida(partida)`                                   | —                                                                                        | `VisaoPartida`                          | Sempre que for desenhar                       |
+| `preverLei(partida, leiId, nivel, trimestres?)`         | id da lei e o nível que o jogador está considerando                                      | `Resultado<PrevisaoLei>`                | Prévia antes de aplicar a mudança             |
+| `leisQueCaem(partida, leiId, nivel)`                    | id da lei e o nível que o jogador está considerando                                      | `VisaoQueda[]`                          | Avisar que leis filhas cairiam                |
+| `responderDilema(partida, dilemaId, opcaoId)`           | dilema da mesa e a opção escolhida                                                       | `Resultado<Partida>`                    | Jogador assinou a decisão (SG106)             |
+| `preverDilema(partida, dilemaId, opcaoId, trimestres?)` | dilema da mesa e a opção considerada (padrão: 4 trimestres)                              | `Resultado<{ efeitos, interrompida? }>` | Prévia da opção, contra não responder         |
+| `chanceDaOcorrencia(partida, id)`                       | id do evento ou dilema                                                                   | chance, base e fatores, ou `undefined`  | Explicar por que algo é provável              |
 
 `Resultado<T>` é `{ ok: true, value }` ou `{ ok: false, erros: string[] }`.
 Erros são frases prontas para mostrar ao jogador.
@@ -58,6 +59,15 @@ e descarte a anterior (ou guarde para "desfazer").
   filha se a mãe não está numa opção exigida; quando a mãe sai delas, a
   filha cai para a base na mesma ação, em cascata, e a prévia da mãe já
   inclui a queda. Voltar a mãe não religa a filha.
+- Três níveis e catálogo (SG160, D-65): `leis[].nivelLegal` (`petrea`,
+  `constitucional` ou `derivada`; ausente nas áreas ainda não migradas),
+  `emVigor` (a lei está no mapa; fora dele, está no catálogo),
+  `revogavel` (pode sair do mapa agora), `bloqueio` (por que não pode
+  entrar em vigor ou mudar agora) e `exigencias[]` (todas as exigências;
+  `exige` é a primeira). Pétrea: `mudarLei` e `revogarLei` recusam.
+  Derivada: `mudarLei` numa lei fora de vigor a aprova (entra no mapa);
+  quando uma exigência falha, ela sai de vigor em cascata (`VisaoQueda`
+  com `revogada: true`) em vez de cair para a base.
 - `grupos[]` (SG143): a lista lateral dos grupos sociais, do mais ao menos
   satisfeito: `id`, `nome`, `satisfacao` (0–100), `peso` (parte do
   eleitorado, 0–1; a aprovação é a média pelos pesos), `gosta[]` e `odeia[]`

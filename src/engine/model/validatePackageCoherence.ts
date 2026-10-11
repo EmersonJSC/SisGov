@@ -1,3 +1,4 @@
+import { requirementsOf } from "./contentTypes";
 import { resolveInheritedLawLevels } from "./inheritedLaws";
 import { lawInfluenceNodes } from "./lawNodes";
 import { rateUnitFor } from "../mechanisms/updateStock";
@@ -361,24 +362,29 @@ export function validatePackageCoherence(
     const levels = resolveInheritedLawLevels(policy, initial);
     if (levels.ok) initialDesired.set(initial.lei, levels.desiredLevel);
   }
+  const requirementsById = new Map(
+    content.policies.map((policy) => [policy.id, requirementsOf(policy)]),
+  );
   for (const policy of content.policies) {
-    const requirement = policy.requer;
-    if (!requirement) continue;
-    const parent = policiesById.get(requirement.lei);
-    if (!parent || parent.id === policy.id) {
-      diagnostics.push(
-        issue(
-          policy.id,
-          "requer.lei",
-          parent
-            ? "A lei não pode exigir a si mesma."
-            : `Lei mãe inexistente: ${requirement.lei}.`,
-        ),
-      );
-      continue;
+    // Pétrea (D-65): princípio sem valor nem custo, e não depende de nada.
+    if (policy.nivel === "petrea") {
+      if (policy.orcamento || policy.tributo)
+        diagnostics.push(
+          issue(
+            policy.id,
+            "nivel",
+            "Lei pétrea não tem custo nem arrecadação.",
+          ),
+        );
+      if (policy.requer)
+        diagnostics.push(
+          issue(policy.id, "requer", "Lei pétrea não depende de outra lei."),
+        );
     }
+    const requirements = requirementsById.get(policy.id) ?? [];
+    const multiple = Array.isArray(policy.requer);
     const own = policy.controle.opcoes ?? [];
-    if (own.length === 0)
+    if (requirements.length > 0 && !policy.nivel && own.length === 0)
       diagnostics.push(
         issue(
           policy.id,
@@ -386,55 +392,83 @@ export function validatePackageCoherence(
           "A lei filha precisa ter opções: a primeira é a base para onde ela cai.",
         ),
       );
-    const parentOptions = parent.controle.opcoes ?? [];
-    if (parentOptions.length === 0) {
-      diagnostics.push(
-        issue(policy.id, "requer.lei", "A lei mãe precisa ter opções."),
-      );
-      continue;
-    }
-    const allowed: number[] = [];
-    for (const [index, optionId] of requirement.opcoes.entries()) {
-      const option = parentOptions.find((item) => item.id === optionId);
-      if (!option)
+    const childLevel = initialDesired.get(policy.id);
+    for (const [position, requirement] of requirements.entries()) {
+      const field = multiple ? `requer[${position}]` : "requer";
+      const parent = policiesById.get(requirement.lei);
+      if (!parent || parent.id === policy.id) {
         diagnostics.push(
           issue(
             policy.id,
-            `requer.opcoes[${index}]`,
-            `A lei ${parent.id} não tem a opção ${optionId}.`,
+            `${field}.lei`,
+            parent
+              ? "A lei não pode exigir a si mesma."
+              : `Lei mãe inexistente: ${requirement.lei}.`,
           ),
         );
-      else allowed.push(option.valor);
-    }
-    let ancestor = parent.requer?.lei;
-    const seen = new Set([policy.id, parent.id]);
-    while (ancestor !== undefined) {
-      if (seen.has(ancestor)) {
-        diagnostics.push(
-          issue(policy.id, "requer.lei", "Ciclo de leis mães e filhas."),
-        );
-        break;
+        continue;
       }
-      seen.add(ancestor);
-      ancestor = policiesById.get(ancestor)?.requer?.lei;
+      const parentOptions = parent.controle.opcoes ?? [];
+      if (parentOptions.length === 0) {
+        diagnostics.push(
+          issue(policy.id, `${field}.lei`, "A lei mãe precisa ter opções."),
+        );
+        continue;
+      }
+      const allowed: number[] = [];
+      for (const [index, optionId] of requirement.opcoes.entries()) {
+        const option = parentOptions.find((item) => item.id === optionId);
+        if (!option)
+          diagnostics.push(
+            issue(
+              policy.id,
+              `${field}.opcoes[${index}]`,
+              `A lei ${parent.id} não tem a opção ${optionId}.`,
+            ),
+          );
+        else allowed.push(option.valor);
+      }
+      const parentLevel = initialDesired.get(parent.id);
+      const parentOk =
+        parentLevel !== undefined &&
+        allowed.some((value) => Math.abs(value - parentLevel) < 1e-9);
+      // três níveis: a filha em vigor exige a mãe certa; formato antigo: só
+      // a filha fora da base
+      const childNeedsParent = policy.nivel
+        ? childLevel !== undefined
+        : own.length > 0 &&
+          childLevel !== undefined &&
+          Math.abs(childLevel - own[0].valor) > 1e-9;
+      if (childNeedsParent && !parentOk)
+        diagnostics.push(
+          issue(
+            initialStateFile,
+            "leisVigentes",
+            policy.nivel
+              ? `A lei ${policy.id} começa em vigor, mas a lei ${parent.id} não está numa das opções que ela exige.`
+              : `A lei ${policy.id} começa fora da base, mas a lei ${parent.id} não está numa das opções que ela exige.`,
+          ),
+        );
     }
-    const childLevel = initialDesired.get(policy.id);
-    const parentLevel = initialDesired.get(parent.id);
-    if (
-      own.length > 0 &&
-      childLevel !== undefined &&
-      Math.abs(childLevel - own[0].valor) > 1e-9 &&
-      (parentLevel === undefined ||
-        !allowed.some((value) => Math.abs(value - parentLevel) < 1e-9))
-    )
-      diagnostics.push(
-        issue(
-          initialStateFile,
-          "leisVigentes",
-          `A lei ${policy.id} começa fora da base, mas a lei ${parent.id} não está numa das opções que ela exige.`,
-        ),
-      );
   }
+  // sem ciclo de mães e filhas (em qualquer das exigências)
+  const state = new Map<string, "aberto" | "fechado">();
+  const cyclic = new Set<string>();
+  const visit = (id: string, path: readonly string[]): void => {
+    if (state.get(id) === "fechado") return;
+    if (state.get(id) === "aberto") {
+      for (const member of path.slice(path.indexOf(id))) cyclic.add(member);
+      return;
+    }
+    state.set(id, "aberto");
+    for (const requirement of requirementsById.get(id) ?? [])
+      if (policiesById.has(requirement.lei) && requirement.lei !== id)
+        visit(requirement.lei, [...path, id]);
+    state.set(id, "fechado");
+  };
+  for (const policy of content.policies) visit(policy.id, []);
+  for (const id of cyclic)
+    diagnostics.push(issue(id, "requer", "Ciclo de leis mães e filhas."));
 
   for (const policy of content.policies) {
     const control = variablesById.get(policy.controle.variavel);

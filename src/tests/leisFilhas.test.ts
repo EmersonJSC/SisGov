@@ -84,7 +84,12 @@ describe("SG138 — leis filhas", () => {
       (o) => o.id === "fixo",
     )!.valor;
     expect(leisQueCaem(partida, "regime-cambial", fixo)).toEqual([
-      { id: "meta-de-inflacao", nome: "Meta de inflação", base: "Sem meta" },
+      {
+        id: "meta-de-inflacao",
+        nome: "Meta de inflação",
+        base: "Sem meta",
+        revogada: false,
+      },
     ]);
     // trocar entre opções que mantêm a filha não derruba nada
     const bandas = lei(partida, "regime-cambial").opcoes!.find(

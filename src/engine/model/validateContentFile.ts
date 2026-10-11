@@ -4,6 +4,7 @@ import type {
 } from "../diagnostics/contentDiagnostic";
 import {
   supportedMechanisms,
+  policyTiers,
   type ConsequenceFile,
   type ContentFile,
   type InitialStateFile,
@@ -2235,6 +2236,8 @@ function validatePolicy(
       "controle",
       "orcamento",
       "tributo",
+      "nivel",
+      "revogavel",
       "requer",
       "consequencias",
       ...quantityFields,
@@ -2316,30 +2319,76 @@ function validatePolicy(
   }
   requiredString(value, file, "processoAutorizacao", diagnostics);
   requiredStringArray(value, file, "consequencias", diagnostics);
+  if (value.nivel !== undefined && !policyTiers.includes(value.nivel as never))
+    diagnostics.push(
+      diagnostic(
+        file,
+        "nivel",
+        "VALOR_INVALIDO",
+        `Use ${policyTiers.join(", ")}.`,
+      ),
+    );
+  if (value.revogavel !== undefined && typeof value.revogavel !== "boolean")
+    diagnostics.push(
+      diagnostic(
+        file,
+        "revogavel",
+        "TIPO_INVALIDO",
+        "Deve ser verdadeiro ou falso.",
+      ),
+    );
   if (value.requer !== undefined) {
-    if (!isObject(value.requer))
+    const lista = Array.isArray(value.requer) ? value.requer : [value.requer];
+    if (Array.isArray(value.requer) && value.nivel === undefined)
       diagnostics.push(
-        diagnostic(file, "requer", "TIPO_INVALIDO", "Deve ser um objeto."),
+        diagnostic(
+          file,
+          "requer",
+          "VALOR_INVALIDO",
+          "Só leis de três níveis (com nivel) exigem mais de uma lei.",
+        ),
       );
-    else {
+    for (const [index, requer] of lista.entries()) {
+      const campo = Array.isArray(value.requer) ? `requer[${index}]` : "requer";
+      if (!isObject(requer)) {
+        diagnostics.push(
+          diagnostic(file, campo, "TIPO_INVALIDO", "Deve ser um objeto."),
+        );
+        continue;
+      }
       validateKnownFields(
-        value.requer,
+        requer,
         file,
         ["lei", "opcoes", "motivo"],
         diagnostics,
       );
-      if (value.requer.motivo !== undefined)
-        requiredString(value.requer, file, "requer.motivo", diagnostics);
-      requiredString(value.requer, file, "requer.lei", diagnostics);
-      requiredStringArray(value.requer, file, "requer.opcoes", diagnostics);
+      if (requer.motivo !== undefined && typeof requer.motivo !== "string")
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${campo}.motivo`,
+            "TIPO_INVALIDO",
+            "Deve ser texto.",
+          ),
+        );
+      if (typeof requer.lei !== "string" || !requer.lei)
+        diagnostics.push(
+          diagnostic(
+            file,
+            `${campo}.lei`,
+            "CAMPO_AUSENTE",
+            "Diga a lei exigida.",
+          ),
+        );
       if (
-        Array.isArray(value.requer.opcoes) &&
-        value.requer.opcoes.length === 0
+        !Array.isArray(requer.opcoes) ||
+        requer.opcoes.length === 0 ||
+        requer.opcoes.some((item) => typeof item !== "string")
       )
         diagnostics.push(
           diagnostic(
             file,
-            "requer.opcoes",
+            `${campo}.opcoes`,
             "VALOR_INVALIDO",
             "A lei filha precisa de pelo menos uma opção da mãe.",
           ),

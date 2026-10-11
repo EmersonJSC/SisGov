@@ -12,6 +12,7 @@ export { createPolicyStateFromApproval, policyStatuses } from "./policyState";
 export {
   beginPolicyRevocation,
   changePolicyTarget,
+  createDecreedPolicyState,
   createInheritedPolicyState,
   updateImplementedLevel,
 } from "./policyState";
