@@ -10,7 +10,12 @@ import {
   verPartida,
   type Partida,
 } from "../app/partida";
-import { INDICES_DO_JORNAL, montarJornal } from "../ui/mapa/jornal";
+import {
+  INDICES_DO_JORNAL,
+  fotoDoTurno,
+  montarJornal,
+  type FotoDoTurno,
+} from "../ui/mapa/jornal";
 
 function passar(partida: Partida) {
   let atual = partida;
@@ -48,10 +53,24 @@ describe("jornal", () => {
     let atual = criada.value;
     let comVariacao = false;
     let comEfeitos = false;
+    const historico: FotoDoTurno[] = [];
     for (let t = 0; t < 8; t++) {
       const r = passar(atual);
+      historico.push(fotoDoTurno(r.antes));
       atual = r.partida;
-      const edicao = montarJornal(verPartida(atual), r.antes, r.relatorio);
+      const edicao = montarJornal(
+        verPartida(atual),
+        r.antes,
+        r.relatorio,
+        historico,
+      );
+      // gráficos: barra e linha na escala 0–1, uma ponta por turno
+      for (const i of edicao.indices) {
+        expect(i.t).toBeGreaterThanOrEqual(0);
+        expect(i.t).toBeLessThanOrEqual(1);
+        expect(i.serie).toHaveLength(t + 2);
+      }
+      expect(edicao.humor.length).toBe(verPartida(atual).grupos.length);
       if (edicao.indices.some((i) => i.variacao)) comVariacao = true;
       const todas = [
         ...(edicao.principal ? [edicao.principal] : []),

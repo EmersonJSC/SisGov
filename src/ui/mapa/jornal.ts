@@ -36,7 +36,29 @@ export type IndiceDoJornal = Readonly<{
   variacao: string;
   efeito: Efeito;
   sobe: boolean;
+  /** Posição na escala do índice, de 0 a 1 (a barra). */
+  t: number;
+  /** 0 = ruim para o país, 1 = bom; `null` se neutro (cor da barra). */
+  bondade: number | null;
+  /** Valores dos turnos passados até agora, na escala 0–1 (a linha). */
+  serie: readonly number[];
 }>;
+
+/** Um grupo social no gráfico de barras do humor da rua. */
+export type HumorDoGrupo = Readonly<{
+  id: string;
+  nome: string;
+  satisfacao: number;
+  /** Mudança no turno, em pontos. */
+  delta: number;
+}>;
+
+/** Valores das bolhas num turno, para as linhas de evolução do jornal. */
+export type FotoDoTurno = ReadonlyMap<string, number>;
+
+export function fotoDoTurno(visao: VisaoPartida): FotoDoTurno {
+  return new Map(visao.bolhas.map((b) => [b.id, b.valor]));
+}
 
 export type NoticiaDoJornal = Readonly<{
   id: string;
@@ -70,6 +92,8 @@ export type EdicaoDoJornal = Readonly<{
   noticias: readonly NoticiaDoJornal[];
   indices: readonly IndiceDoJornal[];
   opinioes: readonly OpiniaoDoJornal[];
+  /** Todos os grupos, do mais ao menos satisfeito. */
+  humor: readonly HumorDoGrupo[];
 }>;
 
 const fmt = (v: number, casas = 1) =>
@@ -129,6 +153,7 @@ function noticias(
 function indices(
   visao: VisaoPartida,
   anterior: VisaoPartida | null,
+  historico: readonly FotoDoTurno[],
 ): IndiceDoJornal[] {
   const agora = new Map(visao.bolhas.map((b) => [b.id, b]));
   const antes = new Map((anterior?.bolhas ?? []).map((b) => [b.id, b]));
@@ -137,6 +162,17 @@ function indices(
     if (!b) return [];
     const d = b.valor - (antes.get(id)?.valor ?? b.valor);
     const mudou = Math.abs(d) >= 0.01;
+    const amplitude = b.maximo - b.minimo || 1;
+    const escala = (v: number) =>
+      Math.min(1, Math.max(0, (v - b.minimo) / amplitude));
+    const t = escala(b.valor);
+    const serie = [
+      ...historico.flatMap((foto) => {
+        const v = foto.get(id);
+        return v === undefined ? [] : [escala(v)];
+      }),
+      t,
+    ];
     return [
       {
         id,
@@ -145,6 +181,14 @@ function indices(
         variacao: mudou ? diferenca(d, b.unidade) : "",
         efeito: mudou ? efeitoDe(Math.sign(d), b.avaliacao) : "neutro",
         sobe: d > 0,
+        t,
+        bondade:
+          b.avaliacao === "maior_melhor"
+            ? t
+            : b.avaliacao === "maior_pior"
+              ? 1 - t
+              : null,
+        serie,
       },
     ];
   });
@@ -328,9 +372,12 @@ export function montarJornal(
   visao: VisaoPartida,
   anterior: VisaoPartida | null,
   relatorio: RelatorioTurno | null,
+  /** Fotos dos turnos passados (a mais antiga primeiro), sem o atual. */
+  historico: readonly FotoDoTurno[] = [],
 ): EdicaoDoJornal {
   const lista = noticias(visao, relatorio);
-  const quadro = indices(visao, anterior);
+  const quadro = indices(visao, anterior, historico);
+  const antes = new Map((anterior?.grupos ?? []).map((g) => [g.id, g]));
   // manchete: a maior notícia; sem notícia, o índice que mais mexeu
   const maior = [...quadro]
     .filter((i) => i.variacao)
@@ -352,5 +399,11 @@ export function montarJornal(
       ...mercado(visao, anterior),
       ...internacional(visao, anterior),
     ],
+    humor: visao.grupos.map((g) => ({
+      id: g.id,
+      nome: g.nome,
+      satisfacao: g.satisfacao,
+      delta: g.satisfacao - (antes.get(g.id)?.satisfacao ?? g.satisfacao),
+    })),
   };
 }

@@ -3719,3 +3719,76 @@ button {
     grid-template-columns: 1fr;
   }
 }
+
+/* Jornal mais visual: barras e linhas (11/out) */
+.jp-lista-indices {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: system-ui, sans-serif;
+}
+
+.jp-indice-topo,
+.jp-indice-meio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.jp-indice-nome {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.jp-indice-var {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.jp-indice-meio strong {
+  font-size: 1.2rem;
+}
+
+.jp-barra {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: #e2dacb;
+  overflow: hidden;
+}
+
+.jp-barra > span {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.jp-humor {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+}
+
+.jp-humor li {
+  display: grid;
+  grid-template-columns: 7.5em 1fr 3.4em;
+  align-items: center;
+  gap: 6px;
+}
+
+.jp-humor-barra {
+  height: 10px;
+}
+
+.jp-humor-valor {
+  text-align: right;
+  font-weight: 700;
+}

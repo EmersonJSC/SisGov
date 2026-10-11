@@ -26,7 +26,7 @@ import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
-import { montarJornal } from "./jornal";
+import { fotoDoTurno, montarJornal, type FotoDoTurno } from "./jornal";
 import { PaginaDeJornal } from "./PaginaDeJornal";
 import {
   MES_DO_HORIZONTE,
@@ -341,6 +341,8 @@ export function TelaPrincipal() {
   const [aviso, setAviso] = useState<RelatorioTurno | null>(null);
   /** A visão antes do último turno: o jornal compara com ela. */
   const [visaoAnterior, setVisaoAnterior] = useState<VisaoPartida | null>(null);
+  /** Valores de cada turno já passado: as linhas de evolução do jornal. */
+  const [historico, setHistorico] = useState<readonly FotoDoTurno[]>([]);
   const [erroTurno, setErroTurno] = useState<string | null>(null);
   const [pulsos, setPulsos] = useState<ReadonlySet<string>>(new Set());
   const [passando, setPassando] = useState(false);
@@ -494,6 +496,7 @@ export function TelaPrincipal() {
       setVariacoesVoce(porVoce);
       setMostrarVariacoes(true);
       setVisaoAnterior(visao);
+      setHistorico((h) => [...h, fotoDoTurno(visao!)]);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
       // o jornal do trimestre chega com o fim do turno
@@ -620,7 +623,7 @@ export function TelaPrincipal() {
 
       {jornalAberto ? (
         <PaginaDeJornal
-          edicao={montarJornal(visao, visaoAnterior, relatorio)}
+          edicao={montarJornal(visao, visaoAnterior, relatorio, historico)}
           data={trimestre(visao.turno)}
           numero={visao.turno + 1}
           onFechar={fecharJornal}

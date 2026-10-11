@@ -5,9 +5,118 @@
  * mercado e da imprensa estrangeira. O conteúdo vem de `montarJornal`.
  */
 import { useEffect, useState } from "react";
-import type { NoticiaDoJornal, EdicaoDoJornal } from "./jornal";
+import type {
+  EdicaoDoJornal,
+  HumorDoGrupo,
+  IndiceDoJornal,
+  NoticiaDoJornal,
+} from "./jornal";
 import { Icone } from "./Icone";
 import { ICONE_INTERFACE } from "./icones";
+import { corDaBondade } from "./intensidade";
+
+/** Linha de evolução do índice desde o começo da partida. */
+function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
+  const largura = 96;
+  const altura = 28;
+  if (serie.length < 2)
+    return (
+      <svg className="jp-linha-grafico" width={largura} height={altura}>
+        <line
+          x1={0}
+          x2={largura}
+          y1={altura - 3 - serie[0] * (altura - 6)}
+          y2={altura - 3 - serie[0] * (altura - 6)}
+          stroke={cor}
+          strokeWidth={2}
+          strokeDasharray="3 4"
+        />
+      </svg>
+    );
+  // a linha mostra a forma: estica entre o menor e o maior valor da série,
+  // com folga mínima para variações pequenas não parecerem enormes
+  const min = Math.min(...serie);
+  const max = Math.max(...serie);
+  const folga = Math.max(0, 0.05 - (max - min)) / 2;
+  const baixo = min - folga;
+  const alto = max + folga || 1;
+  const pontos = serie.map((v, i) => [
+    (i / (serie.length - 1)) * (largura - 6) + 3,
+    altura - 3 - ((v - baixo) / (alto - baixo || 1)) * (altura - 6),
+  ]);
+  const [ux, uy] = pontos[pontos.length - 1];
+  return (
+    <svg
+      className="jp-linha-grafico"
+      width={largura}
+      height={altura}
+      aria-hidden
+    >
+      <polyline
+        points={pontos.map((p) => p.join(",")).join(" ")}
+        fill="none"
+        stroke={cor}
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+      <circle cx={ux} cy={uy} r={3} fill={cor} />
+    </svg>
+  );
+}
+
+function CartaoIndice({ indice }: { indice: IndiceDoJornal }) {
+  const cor = corDaBondade(indice.bondade);
+  return (
+    <li className="jp-indice">
+      <div className="jp-indice-topo">
+        <span className="jp-indice-nome">{indice.nome}</span>
+        <span className={`jp-indice-var efeito-${indice.efeito}`}>
+          {indice.variacao
+            ? `${indice.sobe ? "▲" : "▼"} ${indice.variacao}`
+            : "="}
+        </span>
+      </div>
+      <div className="jp-indice-meio">
+        <strong>{indice.valor}</strong>
+        <Linha serie={indice.serie} cor={cor} />
+      </div>
+      <div className="jp-barra" aria-hidden>
+        <span style={{ width: `${indice.t * 100}%`, background: cor }} />
+      </div>
+    </li>
+  );
+}
+
+function Humor({ grupos }: { grupos: readonly HumorDoGrupo[] }) {
+  return (
+    <ul className="jp-humor" aria-label="Satisfação dos grupos sociais">
+      {grupos.map((g) => (
+        <li key={g.id}>
+          <span className="jp-humor-nome">{g.nome}</span>
+          <span className="jp-barra jp-humor-barra">
+            <span
+              style={{
+                width: `${g.satisfacao}%`,
+                background: corDaBondade(g.satisfacao / 100),
+              }}
+            />
+          </span>
+          <span className="jp-humor-valor">
+            {Math.round(g.satisfacao)}
+            {Math.abs(g.delta) >= 0.5 ? (
+              <small
+                className={g.delta > 0 ? "efeito-melhora" : "efeito-piora"}
+              >
+                {g.delta > 0 ? " ▲" : " ▼"}
+                {Math.abs(g.delta).toFixed(0)}
+              </small>
+            ) : null}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 const SECOES = [
   { id: "povo", titulo: "Na rua" },
@@ -154,19 +263,11 @@ export function PaginaDeJornal({
 
           <aside className="jp-indices" aria-label="Indicadores do país">
             <h3>O país em números</h3>
-            <table>
-              <tbody>
-                {edicao.indices.map((i) => (
-                  <tr key={i.id}>
-                    <th scope="row">{i.nome}</th>
-                    <td>{i.valor}</td>
-                    <td className={`efeito-${i.efeito}`}>
-                      {i.variacao ? `${i.sobe ? "▲" : "▼"} ${i.variacao}` : "="}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <ul className="jp-lista-indices">
+              {edicao.indices.map((i) => (
+                <CartaoIndice key={i.id} indice={i} />
+              ))}
+            </ul>
           </aside>
         </div>
 
@@ -176,6 +277,7 @@ export function PaginaDeJornal({
             {SECOES.map((s) => (
               <div key={s.id}>
                 <h4>{s.titulo}</h4>
+                {s.id === "povo" ? <Humor grupos={edicao.humor} /> : null}
                 {edicao.opinioes
                   .filter((o) => o.secao === s.id)
                   .map((o) => (
