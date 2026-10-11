@@ -1,0 +1,1616 @@
+{
+  "area": "poder",
+  "leis": [
+    {
+      "id": "regime-eleitoral",
+      "nome": "Regime eleitoral",
+      "nivel": "macro",
+      "brasil_petrea": true,
+      "area": "poder",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define se o povo escolhe quem governa pelo voto direto, se a disputa é real e quantas vezes o chefe do governo pode se reeleger.",
+      "dilema": "Ficar mais tempo no poder para terminar o que começou, ou garantir que ninguém vire dono do país?",
+      "eixo": "de nenhuma eleição a eleições livres com mandato único",
+      "opcoes": [
+        {
+          "id": "sem-eleicoes",
+          "rotulo": "Sem eleições",
+          "no_jogo": "O governo não disputa votos e ganha muito capital político, mas a liberdade, a confiança nas instituições e a participação despencam e o risco de protesto sobe.",
+          "manchete": "Eleições suspensas 'até segunda ordem': conselho de governo assume e oposição vai para o exílio",
+          "exemplos": [
+            "Arábia Saudita",
+            "China (sem eleição direta para o governo nacional)",
+            "Emirados Árabes Unidos"
+          ]
+        },
+        {
+          "id": "eleicoes-controladas",
+          "rotulo": "Eleições sem disputa real",
+          "no_jogo": "Há urna, mas a oposição é vetada ou perseguida: o governo quase sempre vence, a participação cai e a reputação internacional sofre.",
+          "manchete": "Candidato da oposição é barrado pela Justiça Eleitoral; presidente concorre praticamente sozinho",
+          "exemplos": [
+            "Rússia",
+            "Venezuela (2024)",
+            "Nicarágua",
+            "Irã (candidatos vetados pelo Conselho dos Guardiões)"
+          ]
+        },
+        {
+          "id": "reeleicao-ilimitada",
+          "rotulo": "Voto direto, reeleição sem limite",
+          "no_jogo": "Eleições livres, mas o chefe do governo pode ficar indefinidamente: mais capital político e planos longos, com risco de captura da máquina e de protestos.",
+          "manchete": "Limite de mandatos cai: 'quem decide é o povo', diz o presidente, de olho no quarto mandato",
+          "exemplos": [
+            "Premiês em sistemas parlamentares (Alemanha, Reino Unido)",
+            "El Salvador (reeleição indefinida aprovada em 2025)",
+            "Venezuela (emenda de 2009)"
+          ]
+        },
+        {
+          "id": "uma-reeleicao",
+          "rotulo": "Voto direto, uma reeleição",
+          "no_jogo": "Eleição livre e periódica com até oito anos seguidos: o primeiro mandato vira campanha para o segundo.",
+          "manchete": "Oito anos no máximo: presidente já começa o primeiro mandato pensando no segundo",
+          "exemplos": [
+            "Brasil (desde 1997)",
+            "EUA",
+            "Argentina",
+            "França (desde 2008)"
+          ]
+        },
+        {
+          "id": "mandato-unico",
+          "rotulo": "Voto direto, mandato único",
+          "no_jogo": "Ninguém se reelege em seguida: a máquina não trabalha pela reeleição, mas o governo perde força no fim do mandato e os planos longos sofrem.",
+          "manchete": "Um mandato e tchau: presidente já assume como 'pato manco'",
+          "exemplos": [
+            "México (sexênio)",
+            "Coreia do Sul (mandato único de 5 anos)",
+            "Paraguai",
+            "Colômbia (desde 2015)",
+            "Chile (só depois de um intervalo)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "uma-reeleicao",
+      "historia": {
+        "brasil": "Constituição de 1988, Art. 14 (voto direto, secreto, universal e periódico, obrigatório dos 18 aos 70 anos) e Art. 60, §4º, II (cláusula pétrea). A reeleição única para presidente, governador e prefeito veio com a EC 16/1997."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; o custo das eleições fica nas leis de baixo (fundo eleitoral)."
+      },
+      "efeitos": [
+        {
+          "alvo": "participacao_eleitoral",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Com eleição de verdade, votar volta a fazer diferença e as pessoas comparecem.",
+          "condicao": "de sem-eleicoes até uma eleição competitiva"
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quanto mais curto e disputado o mandato, menos o governo pode mandar sem negociar."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Rodízio no poder impede que um grupo ocupe tribunais, agências e órgãos de controle."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Governos que podem perder a eleição têm menos incentivo para apertar a oposição."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Com reeleição, a máquina pública passa a trabalhar pela permanência de quem está no poder.",
+          "condicao": "em reeleicao-ilimitada ou uma-reeleicao"
+        },
+        {
+          "alvo": "protestos",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Mudar as regras para ficar mais tempo costuma levar multidões às ruas.",
+          "condicao": "ao ir para reeleicao-ilimitada, eleicoes-controladas ou sem-eleicoes durante o mandato"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_classe_media", "grupo_progressistas"],
+        "perdem": ["grupo_servidores"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Limite de mandato só segura quem não controla os tribunais; a maior parte das manobras para ficar no poder passou por emendas e decisões judiciais."
+      },
+      "substitui": ["reeleicao"],
+      "fontes": [
+        {
+          "titulo": "Versteeg et al. - The Law and Politics of Presidential Term Limit Evasion (Columbia Law Review, 2020)",
+          "url": "https://columbialawreview.org/content/the-law-and-politics-of-presidential-term-limit-evasion/"
+        }
+      ]
+    },
+    {
+      "id": "separacao-de-poderes",
+      "nome": "Separação de poderes",
+      "nivel": "macro",
+      "brasil_petrea": true,
+      "area": "poder",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define se Executivo, Legislativo e Judiciário são independentes entre si e se os governos regionais têm poder próprio ou obedecem ao governo central.",
+      "dilema": "Tribunais e governadores que podem barrar seus planos, ou um poder concentrado que executa rápido e não presta contas?",
+      "eixo": "do poder concentrado no Executivo a três poderes independentes numa federação",
+      "opcoes": [
+        {
+          "id": "concentrado",
+          "rotulo": "Poder concentrado",
+          "no_jogo": "O Executivo nomeia e afasta juízes e governadores: muito capital político, mas corrupção e impunidade disparam e a liberdade cai.",
+          "manchete": "Corte suprema ganha 'novos ministros' leais ao governo; governadores passam a ser nomeados pela capital",
+          "exemplos": [
+            "China (tribunais e províncias sob o Partido)",
+            "Rússia",
+            "Venezuela (TSJ ampliado em 2004)"
+          ]
+        },
+        {
+          "id": "tutelado",
+          "rotulo": "Poderes tutelados",
+          "no_jogo": "Os poderes existem no papel, mas o governo muda regras de nomeação e aposentadoria para controlá-los: ganha margem e perde confiança e reputação.",
+          "manchete": "Reforma muda regras de nomeação e aposentadoria de juízes; Bruxelas e entidades de advogados protestam",
+          "exemplos": [
+            "Hungria (após 2011)",
+            "Polônia (2015-2023)",
+            "Turquia (após 2016)"
+          ]
+        },
+        {
+          "id": "independente-unitario",
+          "rotulo": "Três poderes, Estado unitário",
+          "no_jogo": "Juízes independentes julgam o governo, mas as regiões obedecem ao centro: regras valem para todos e a política regional fica nas mãos da capital.",
+          "manchete": "Supremo derruba decreto do premiê; prefeitos reclamam que tudo continua sendo decidido na capital",
+          "exemplos": ["França", "Japão", "Chile", "Reino Unido", "Estônia"]
+        },
+        {
+          "id": "independente-federativo",
+          "rotulo": "Três poderes e federação",
+          "no_jogo": "Tribunais independentes e governadores com poder próprio: o governo central negocia tudo, mas abusos são barrados e cada região vira laboratório.",
+          "manchete": "Supremo derruba decreto do presidente e governadores se recusam a aplicar a nova regra: 'aqui quem decide é o estado'",
+          "exemplos": ["Brasil", "Alemanha", "EUA", "Índia", "Suíça", "Canadá"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "independente-federativo",
+      "historia": {
+        "brasil": "Constituição de 1988, Art. 2º (poderes independentes e harmônicos), Art. 18 (União, estados, Distrito Federal e municípios autônomos) e Art. 60, §4º, I e III (forma federativa e separação de poderes são cláusulas pétreas)."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "O custo do Judiciário e dos governos regionais existe em qualquer opção; o que muda é quem manda neles."
+      },
+      "efeitos": [
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Quando juízes não temem o governo, as regras valem para todos."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Onde o governo empacota as cortes, a corrupção no Executivo sobe (Hungria, Polônia, Turquia)."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Poderosos passam a ser julgados como qualquer um."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Decretos, nomeações e reformas podem ser derrubados na Justiça ou ignorados pelos governadores."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Cidadãos têm a quem recorrer contra abusos do Estado."
+        },
+        {
+          "alvo": "desigualdade_regional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Regiões ricas guardam mais da própria arrecadação e as pobres dependem de repasse.",
+          "condicao": "em independente-federativo"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_empresarios",
+          "grupo_classe_media",
+          "grupo_progressistas"
+        ],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Juiz independente sem estrutura demora anos para julgar; e descentralizar só funciona onde estados e municípios sabem gastar."
+      },
+      "substitui": ["independencia-judiciario", "federalismo"],
+      "fontes": [
+        {
+          "titulo": "V-Dem - Poland: Judicial Independence Substantially Compromised",
+          "url": "https://www.v-dem.net/weekly_graph/poland-judicial-independence-substantially-co"
+        },
+        {
+          "titulo": "Court-packing and judicial manipulation (European Journal of Political Economy, 2024) - Hungria, Polônia, Turquia",
+          "url": "https://ideas.repec.org/a/eee/poleco/v83y2024ics0176268024000387.html"
+        },
+        {
+          "titulo": "Rodríguez-Pose & Ezcurra - Does decentralization matter for regional disparities? A cross-country analysis (LSE)",
+          "url": "https://researchonline.lse.ac.uk/id/eprint/33244"
+        }
+      ]
+    },
+    {
+      "id": "sistema-de-governo",
+      "nome": "Sistema de governo",
+      "nivel": "macro",
+      "brasil_petrea": false,
+      "area": "poder",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define quem chefia o governo e se ele pode ser derrubado pelo Parlamento.",
+      "dilema": "Um chefe forte com mandato garantido, ou um governo que cai quando perde a maioria, mas não arrasta o país junto?",
+      "eixo": "do poder numa pessoa que não responde a ninguém ao governo colegiado",
+      "opcoes": [
+        {
+          "id": "monarquia-absoluta",
+          "rotulo": "Monarquia absoluta",
+          "no_jogo": "O monarca governa sem Parlamento que o derrube: decide tudo sozinho, mas não tem como trocar o governo sem crise.",
+          "manchete": "Decreto real dissolve o conselho consultivo; 'o rei responde apenas a Deus e à história'",
+          "exemplos": ["Arábia Saudita", "Brunei", "Omã", "Essuatíni"]
+        },
+        {
+          "id": "presidencialismo",
+          "rotulo": "Presidencialismo",
+          "no_jogo": "Presidente eleito governa o mandato inteiro, com ou sem maioria: tem margem própria, mas precisa comprar apoio no Congresso.",
+          "manchete": "Eleito pelo voto direto, presidente governa quatro anos, com ou sem maioria no Congresso",
+          "exemplos": [
+            "Brasil (confirmado no plebiscito de 1993)",
+            "EUA",
+            "México",
+            "Argentina",
+            "Chile"
+          ]
+        },
+        {
+          "id": "semipresidencialismo",
+          "rotulo": "Semipresidencialismo",
+          "no_jogo": "Presidente cuida da diplomacia e da defesa e o premiê do dia a dia: o governo divide o poder e cai com menos trauma.",
+          "manchete": "Presidente fica com a diplomacia e as Forças Armadas; o premiê, com o dia a dia e o Congresso",
+          "exemplos": [
+            "França",
+            "Portugal",
+            "Rússia (com presidente dominante)"
+          ]
+        },
+        {
+          "id": "parlamentarismo",
+          "rotulo": "Parlamentarismo",
+          "no_jogo": "O governo sempre tem maioria, mas pode cair por moção de desconfiança: crise vira troca de gabinete, não ruptura.",
+          "manchete": "Moção de desconfiança derruba o gabinete; novo premiê assume em uma semana, sem crise",
+          "exemplos": [
+            "Alemanha",
+            "Reino Unido",
+            "Japão",
+            "Índia",
+            "Estônia",
+            "Nova Zelândia"
+          ]
+        },
+        {
+          "id": "diretorial",
+          "rotulo": "Governo colegiado",
+          "no_jogo": "Um conselho decide por consenso e ninguém manda sozinho: pouca polarização e pouca margem para qualquer projeto pessoal.",
+          "manchete": "Sete ministros, nenhum chefe: Conselho decide por consenso e a presidência gira todo ano",
+          "exemplos": [
+            "Suíça (Conselho Federal)",
+            "Uruguai (Conselho Nacional de Governo, 1952-1967)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "presidencialismo",
+      "historia": {
+        "brasil": "Constituição de 1988, Art. 76 a 91; o presidencialismo foi confirmado no plebiscito de 1993 (ADCT, Art. 2º), contra parlamentarismo e monarquia."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não muda o orçamento; muda quem governa e como cai."
+      },
+      "efeitos": [
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O chefe do governo passa a depender de maioria (ou de colegas) para cada decisão."
+        },
+        {
+          "alvo": "base_congresso",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "No parlamentarismo o governo nasce da maioria; sem ela, cai.",
+          "condicao": "a partir de parlamentarismo"
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Crise de governo se resolve trocando o gabinete, não rompendo a ordem; evidência disputada."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Com Parlamento fragmentado, gabinetes caem e são refeitos com frequência.",
+          "condicao": "em parlamentarismo com muitos partidos"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Coalizões e governos colegiados obrigam rivais a negociar."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Sem Parlamento que controle o chefe, não há a quem reclamar dos abusos.",
+          "condicao": "em monarquia-absoluta"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_classe_media"],
+        "perdem": ["grupo_pobres"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Nenhum sistema funciona sozinho: partidos fracos e polarização extrema travam tanto presidentes quanto gabinetes."
+      },
+      "substitui": ["sistema-de-governo"],
+      "fontes": [
+        {
+          "titulo": "Cheibub & Limongi - Democratic institutions and regime survival: parliamentary and presidential democracies reconsidered",
+          "url": "https://experts.illinois.edu/en/publications/democratic-institutions-and-regime-survival-parliamentary-and-pre/"
+        }
+      ]
+    },
+    {
+      "id": "sistema-eleitoral",
+      "nome": "Sistema eleitoral",
+      "nivel": "meso",
+      "area": "poder",
+      "ministro": "casa-civil",
+      "pai": {
+        "lei": "regime-eleitoral",
+        "opcoes": [
+          "eleicoes-controladas",
+          "reeleicao-ilimitada",
+          "uma-reeleicao",
+          "mandato-unico"
+        ],
+        "motivo": "Só existe regra para transformar votos em cadeiras onde há eleição."
+      },
+      "grupo": "institucional",
+      "descricao": "Define como os votos viram cadeiras no Parlamento: por distrito, por lista de partido ou misturando os dois.",
+      "dilema": "Um Parlamento com poucos partidos e maiorias fáceis, ou um que espelha cada pedaço do eleitorado, mas é difícil de governar?",
+      "eixo": "do voto distrital, que concentra, à lista aberta, que fragmenta",
+      "opcoes": [
+        {
+          "id": "majoritario-distrital",
+          "rotulo": "Distrital majoritário",
+          "no_jogo": "Quem tem mais votos no distrito leva a cadeira: poucos partidos e maiorias fáceis, mas metade do eleitorado pode ficar sem representante.",
+          "manchete": "País dividido em distritos: cada bairro elege um deputado e os partidos pequenos somem do mapa",
+          "exemplos": ["Reino Unido", "EUA", "Canadá", "Índia"]
+        },
+        {
+          "id": "misto",
+          "rotulo": "Misto",
+          "no_jogo": "Metade das cadeiras por distrito e metade por lista: o eleitor tem um deputado do bairro e o Parlamento continua proporcional.",
+          "manchete": "Dois votos na urna: um para o deputado do distrito, outro para o partido",
+          "exemplos": [
+            "Alemanha",
+            "Nova Zelândia (desde 1996)",
+            "Japão",
+            "México",
+            "Coreia do Sul"
+          ]
+        },
+        {
+          "id": "proporcional-lista-fechada",
+          "rotulo": "Proporcional, lista fechada",
+          "no_jogo": "O eleitor vota no partido e o partido decide quem entra: partidos fortes e campanhas baratas, mas caciques mandam nas listas.",
+          "manchete": "Fim do voto no candidato: eleitor escolhe o partido e a direção partidária ordena a lista",
+          "exemplos": [
+            "Espanha",
+            "Portugal",
+            "Israel",
+            "Argentina",
+            "África do Sul"
+          ]
+        },
+        {
+          "id": "proporcional-lista-aberta",
+          "rotulo": "Proporcional, lista aberta",
+          "no_jogo": "O eleitor escolhe o candidato e as cadeiras se dividem pela votação do partido: muitos partidos, campanhas caras e coalizões difíceis.",
+          "manchete": "Mais de vinte partidos no Parlamento: presidente precisa de dez legendas para aprovar qualquer coisa",
+          "exemplos": [
+            "Brasil",
+            "Finlândia",
+            "Chile (desde 2017)",
+            "Peru",
+            "Indonésia"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "proporcional-lista-aberta",
+      "historia": {
+        "brasil": "Código Eleitoral (Lei 4.737/1965) e Constituição, Art. 45: deputados e vereadores por representação proporcional com lista aberta; senadores e chefes do Executivo por voto majoritário. As coligações proporcionais foram proibidas pela EC 97/2017."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Mudar a regra custa só a adaptação da Justiça Eleitoral; o efeito é político."
+      },
+      "efeitos": [
+        {
+          "alvo": "base_congresso",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Quanto mais proporcional e personalizada a regra, mais partidos entram e mais caro fica montar maioria."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Coalizões de muitos partidos racham com facilidade."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Na lista aberta cada candidato faz campanha própria e cara, e o voto vira troca de favores locais.",
+          "condicao": "em proporcional-lista-aberta"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Com só dois partidos viáveis, a disputa vira nós contra eles.",
+          "condicao": "em majoritario-distrital"
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Quando o Parlamento espelha o voto, menos eleitores sentem que perderam a voz.",
+          "condicao": "a partir de misto"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_pequenos_negocios"],
+        "perdem": ["grupo_empresarios", "grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Nenhuma regra eleitoral salva partidos sem programa; mudar o sistema leva duas ou três eleições para fazer efeito."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "International IDEA - Electoral System Design: The International IDEA Handbook",
+          "url": "https://www.idea.int/publications/catalogue/electoral-system-design-international-idea-handbook?lang=en"
+        }
+      ]
+    },
+    {
+      "id": "financiamento-de-campanha",
+      "nome": "Financiamento de campanha",
+      "nivel": "meso",
+      "area": "poder",
+      "ministro": "casa-civil",
+      "pai": {
+        "lei": "regime-eleitoral",
+        "opcoes": [
+          "eleicoes-controladas",
+          "reeleicao-ilimitada",
+          "uma-reeleicao",
+          "mandato-unico"
+        ],
+        "motivo": "Só há campanha para financiar onde há eleição."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define de onde vem o dinheiro das campanhas: de empresas e ricos, de pequenos doadores ou dos cofres públicos.",
+      "dilema": "Deixar o dinheiro privado decidir eleições, ou fazer o contribuinte pagar campanhas de políticos que ele detesta?",
+      "eixo": "do dinheiro privado sem limites ao financiamento predominantemente público",
+      "opcoes": [
+        {
+          "id": "livre",
+          "rotulo": "Dinheiro livre",
+          "no_jogo": "Empresas e ricos doam sem teto: não custa nada ao Tesouro, mas os eleitos ficam devendo favores a quem pagou.",
+          "manchete": "Supercomitês liberados: bilionários podem gastar quanto quiserem para eleger quem quiserem",
+          "exemplos": [
+            "EUA (super PACs após Citizens United, 2010)",
+            "Suíça (sem teto federal de doações)"
+          ]
+        },
+        {
+          "id": "privado-limitado",
+          "rotulo": "Privado com limites",
+          "no_jogo": "Doar pode, gastar demais dá cassação: o dinheiro privado continua, mas com teto e prestação de contas.",
+          "manchete": "Teto de gastos por campanha: doar pode, gastar demais dá cassação",
+          "exemplos": [
+            "Reino Unido (teto de gastos de campanha)",
+            "Nova Zelândia"
+          ]
+        },
+        {
+          "id": "misto",
+          "rotulo": "Misto",
+          "no_jogo": "Empresas ficam de fora e o Estado reembolsa por voto recebido: custo moderado e menos dívida com doadores.",
+          "manchete": "Empresas fora, Estado reembolsa por voto recebido: partido bom de urna recebe mais",
+          "exemplos": [
+            "Alemanha (verba pública proporcional aos votos)",
+            "França (empresas proibidas, reembolso público)",
+            "Canadá",
+            "Chile (empresas proibidas desde 2016)"
+          ]
+        },
+        {
+          "id": "publico-predominante",
+          "rotulo": "Predominantemente público",
+          "no_jogo": "Um fundo do Tesouro banca as campanhas e doação de empresa é proibida: menos captura, mais gasto e um tema impopular.",
+          "manchete": "Fundo eleitoral bilionário banca as campanhas; doação de empresa vira crime",
+          "exemplos": [
+            "Brasil (doação de empresas proibida pelo STF em 2015)",
+            "México (verba pública deve prevalecer, por lei)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "publico-predominante",
+      "historia": {
+        "brasil": "ADI 4.650 (STF, 2015) proibiu doações de empresas; Lei 13.487/2017 criou o Fundo Especial de Financiamento de Campanha (FEFC), somado ao Fundo Partidário."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "No extremo público, o Tesouro banca um fundo eleitoral a cada eleição; o tamanho fica na micro fundo-eleitoral."
+      },
+      "custo_pib": {
+        "gasto": {
+          "livre": 0,
+          "privado-limitado": 0,
+          "misto": 0.02,
+          "publico-predominante": 0.05
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Político eleito sem cheque de empresa deve menos favores a ela; sem fiscalização, o dinheiro migra para o caixa dois.",
+          "condicao": "quando a Justiça Eleitoral fiscaliza"
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O fundo eleitoral sai do orçamento."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Pagar campanha de político com dinheiro público é impopular.",
+          "condicao": "a partir de misto"
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Sem doação de empresa, candidatos ricos que bancam a própria campanha ganham vantagem.",
+          "condicao": "quando o autofinanciamento não tem teto"
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Eleições compradas por grandes doadores corroem a fé no sistema.",
+          "condicao": "em livre"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_trabalhadores"],
+        "perdem": ["grupo_empresarios", "grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "confianca_instituicoes"],
+        "reduz": ["informalidade"],
+        "porque": "Limite de doação só vale com Justiça Eleitoral que rastreia o dinheiro; em economia de dinheiro vivo, o caixa dois escapa."
+      },
+      "substitui": ["financiamento-de-campanhas"],
+      "fontes": [
+        {
+          "titulo": "World Economic Forum - Here's what happened when Brazil banned corporate donations in elections (2016)",
+          "url": "https://www.weforum.org/stories/2016/12/here-s-what-happened-when-brazil-banned-corporate-donations-in-elections/"
+        }
+      ]
+    },
+    {
+      "id": "foro-privilegiado",
+      "nome": "Foro privilegiado",
+      "nivel": "meso",
+      "area": "poder",
+      "ministro": "agu",
+      "pai": {
+        "lei": "separacao-de-poderes",
+        "opcoes": [
+          "concentrado",
+          "tutelado",
+          "independente-unitario",
+          "independente-federativo"
+        ],
+        "motivo": "Quem julga as autoridades depende de como o Judiciário se organiza diante dos outros poderes."
+      },
+      "grupo": "institucional",
+      "descricao": "Define se autoridades acusadas de crime são julgadas por juízes comuns, por tribunais superiores ou se ficam imunes enquanto ocupam o cargo.",
+      "dilema": "Proteger o governo de juízes de primeira instância e perseguições, ou deixar o poderoso responder como qualquer cidadão?",
+      "eixo": "da justiça comum para todos à imunidade de autoridades",
+      "opcoes": [
+        {
+          "id": "justica-comum",
+          "rotulo": "Justiça comum para todos",
+          "no_jogo": "Ministro acusado vai ao juiz comum como qualquer um: menos impunidade, mas qualquer denúncia pode derrubar um aliado.",
+          "manchete": "Fim do foro: ministro acusado vai ser julgado pelo juiz da comarca, como qualquer um",
+          "exemplos": [
+            "Reino Unido",
+            "Alemanha (imunidade parlamentar costuma ser suspensa a pedido)",
+            "Estônia"
+          ]
+        },
+        {
+          "id": "foro-funcional",
+          "rotulo": "Só crimes no cargo",
+          "no_jogo": "Tribunal superior julga só crimes ligados à função: meio-termo entre proteção do governo e risco de prescrição.",
+          "manchete": "Foro vale só para crimes ligados à função, e continua depois que a autoridade deixa o cargo",
+          "exemplos": [
+            "Brasil (STF, 2018 e 2025)",
+            "França (Corte de Justiça da República para ministros)"
+          ]
+        },
+        {
+          "id": "foro-amplo",
+          "rotulo": "Foro amplo",
+          "no_jogo": "Milhares de autoridades só respondem em tribunal superior: processos se arrastam, prescrevem e a confiança cai.",
+          "manchete": "Milhares de autoridades só podem ser julgadas em tribunais superiores; processos se arrastam por anos",
+          "exemplos": [
+            "Espanha (milhares de 'aforados')",
+            "Brasil antes de 2018"
+          ]
+        },
+        {
+          "id": "imunidade",
+          "rotulo": "Imunidade no mandato",
+          "no_jogo": "Presidente e ministros não podem ser processados no cargo: o governo fica blindado e a impunidade vira escândalo.",
+          "manchete": "Presidente e ministros não podem ser processados enquanto estiverem no cargo",
+          "exemplos": [
+            "França (presidente durante o mandato)",
+            "Itália (Lodo Alfano, 2008, derrubado em 2009)",
+            "Rússia (ex-presidentes imunes desde 2020)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "foro-funcional",
+      "historia": {
+        "brasil": "Constituição, Art. 102, I, b e c (STF julga presidente, ministros e parlamentares). AP 937 (STF, 2018) restringiu o foro a crimes no cargo e ligados à função; em 2025 o STF decidiu que o foro continua após a saída do cargo."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; pesa nos tribunais superiores, que viram tribunais criminais."
+      },
+      "efeitos": [
+        {
+          "alvo": "impunidade",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Tribunais superiores julgam devagar e muitos crimes prescrevem."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem sabe que dificilmente será julgado arrisca mais."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Para o cidadão, foro especial parece privilégio de casta."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Ministros não caem por qualquer denúncia de um juiz de primeira instância."
+        },
+        {
+          "alvo": "estabilidade_politica",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Menos risco de operações judiciais derrubarem governos inteiros."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Blindar autoridades é visto como autoproteção.",
+          "condicao": "a partir de foro-amplo"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores"],
+        "perdem": [
+          "grupo_classe_media",
+          "grupo_progressistas",
+          "grupo_conservadores"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["impunidade"],
+        "porque": "Foro especial só não vira impunidade se o tribunal superior tem estrutura e vontade de julgar rápido."
+      },
+      "substitui": ["foro-privilegiado"],
+      "fontes": [
+        {
+          "titulo": "Migalhas - STF encerra julgamento e mantém foro privilegiado após saída de cargo (2025)",
+          "url": "https://www.migalhas.com.br/quentes/426078/stf-encerra-julgamento-e-mantem-foro-privilegiado-apos-saida-de-cargo"
+        }
+      ]
+    },
+    {
+      "id": "estabilidade-do-servidor",
+      "nome": "Estabilidade do servidor",
+      "nivel": "meso",
+      "area": "poder",
+      "ministro": "gestao",
+      "pai": {
+        "lei": "sistema-de-governo",
+        "opcoes": [
+          "monarquia-absoluta",
+          "presidencialismo",
+          "semipresidencialismo",
+          "parlamentarismo",
+          "diretorial"
+        ],
+        "motivo": "A burocracia executa as ordens de quem governa; a regra de entrada e saída vale em qualquer sistema."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define se servidores entram por mérito e se podem ser demitidos por desempenho ou por vontade do governo.",
+      "dilema": "Uma burocracia que pode dizer não ao político, ou um funcionalismo que o governo pode cobrar, trocar e enxugar?",
+      "eixo": "do cargo como prêmio político à estabilidade vitalícia",
+      "opcoes": [
+        {
+          "id": "livre-nomeacao",
+          "rotulo": "Livre nomeação",
+          "no_jogo": "Cada governo troca a máquina inteira: folha barata e obediente, mas apadrinhados, corrupção e perda de experiência.",
+          "manchete": "Governo novo, servidores novos: milhares de cargos trocam de mão na semana da posse",
+          "exemplos": [
+            "EUA no 'sistema de despojos' (séc. XIX)",
+            "EUA (tentativa do 'Schedule F', 2020 e 2025)"
+          ]
+        },
+        {
+          "id": "contrato-comum",
+          "rotulo": "Contrato comum",
+          "no_jogo": "Entra por seleção, mas pode ser demitido como qualquer trabalhador: folha flexível e servidores insatisfeitos.",
+          "manchete": "Fim do emprego vitalício: servidor passa a ter contrato como qualquer trabalhador",
+          "exemplos": [
+            "Nova Zelândia (State Sector Act, 1988)",
+            "Suécia",
+            "Suíça (fim do funcionalismo vitalício, 2002)"
+          ]
+        },
+        {
+          "id": "estabilidade-com-avaliacao",
+          "rotulo": "Estabilidade com avaliação",
+          "no_jogo": "Concurso continua, mas avaliações ruins seguidas custam o cargo: equipes estáveis e cobradas, com sindicatos contra.",
+          "manchete": "Concurso continua, mas três avaliações ruins seguidas podem custar o cargo",
+          "exemplos": ["Reino Unido", "Chile (Alta Direção Pública)", "Estônia"]
+        },
+        {
+          "id": "estabilidade-plena",
+          "rotulo": "Estabilidade plena",
+          "no_jogo": "Passou no concurso, é para sempre: o servidor pode recusar ordem ilegal, mas a folha não encolhe nem na crise.",
+          "manchete": "Passou no concurso, é para sempre: demissão só com processo e sentença",
+          "exemplos": [
+            "Brasil (avaliação de desempenho prevista desde 1998, nunca regulamentada)",
+            "Alemanha (Beamte)",
+            "França (fonctionnaires)",
+            "Japão"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "estabilidade-plena",
+      "historia": {
+        "brasil": "Constituição, Art. 37, II (concurso público) e Art. 41 (estabilidade após três anos). A EC 19/1998 previu demissão por avaliação de desempenho, que nunca foi regulamentada."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Folha que não pode ser ajustada vira gasto fixo por décadas."
+      },
+      "custo_pib": {
+        "gasto": {
+          "livre-nomeacao": 0,
+          "contrato-comum": 0.1,
+          "estabilidade-com-avaliacao": 0.25,
+          "estabilidade-plena": 0.4
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Recrutar por mérito em vez de por padrinho reduz a corrupção, e servidor protegido pode recusar ordem ilegal."
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Equipes permanentes acumulam experiência que não se perde a cada eleição.",
+          "condicao": "até estabilidade-com-avaliacao"
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Sem risco de demissão por desempenho, uma parte do funcionalismo se acomoda.",
+          "condicao": "em estabilidade-plena"
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "A folha não encolhe nem quando a receita cai."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O governo não escolhe nem troca quem executa suas políticas."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores"],
+        "perdem": ["grupo_classe_media", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Estabilidade protege técnicos honestos do político, mas só se a entrada for por mérito; sem concurso sério, ela só congela apadrinhados."
+      },
+      "substitui": ["estabilidade-servidores-publicos"],
+      "fontes": [
+        {
+          "titulo": "Dahlström, Lapuente & Teorell - The Merit of Meritocratization: Politics, Bureaucracy, and the Institutional Deterrents of Corruption",
+          "url": "https://portal.research.lu.se/en/publications/the-merit-of-meritocratization-politics-bureaucracy-and-the-insti/"
+        },
+        {
+          "titulo": "Te Kawa Mataaho (NZ Public Service Commission) - Age of reform 1984-1998",
+          "url": "https://www.publicservice.govt.nz/publications/100-years-of-public-service/age-of-reform-1984-1998"
+        }
+      ]
+    },
+    {
+      "id": "punicao-a-corrupcao",
+      "nome": "Punição à corrupção",
+      "nivel": "meso",
+      "area": "poder",
+      "ministro": "cgu",
+      "pai": {
+        "lei": "separacao-de-poderes",
+        "opcoes": [
+          "concentrado",
+          "tutelado",
+          "independente-unitario",
+          "independente-federativo"
+        ],
+        "motivo": "Quem investiga e pune a corrupção depende de quão independentes são os órgãos de controle e a Justiça."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define quem paga pela corrupção (só a pessoa ou também a empresa) e quem investiga: a polícia comum, uma agência independente ou o próprio regime.",
+      "dilema": "Uma faxina que pode derrubar empresas, ministros e o seu próprio governo, ou deixar as coisas como estão e torcer para ninguém olhar?",
+      "eixo": "da punição só de pessoas físicas a órgãos com superpoderes (independentes ou a serviço do regime)",
+      "opcoes": [
+        {
+          "id": "so-pessoas",
+          "rotulo": "Só a pessoa responde",
+          "no_jogo": "Só o diretor que assinou o cheque responde, se for pego: empresas ficam tranquilas e a corrupção corre solta.",
+          "manchete": "Empresa corruptora sai ilesa: só o diretor que assinou o cheque responde, se for pego",
+          "exemplos": [
+            "Brasil antes de 2013",
+            "Alemanha (empresas sem responsabilidade penal, só multa administrativa)"
+          ]
+        },
+        {
+          "id": "empresa-tambem-paga",
+          "rotulo": "Empresa também paga",
+          "no_jogo": "Multa pesada sobre o faturamento e acordos de leniência: compensa ter integridade, mas grandes casos paralisam obras e assustam investidores.",
+          "manchete": "Multa de até 20% do faturamento: empreiteiras correm para fechar acordo de leniência",
+          "exemplos": [
+            "Brasil (desde 2013)",
+            "EUA (FCPA, 1977)",
+            "Reino Unido (Bribery Act, 2010)",
+            "França (Sapin II, 2016)"
+          ]
+        },
+        {
+          "id": "agencia-independente",
+          "rotulo": "Agência independente",
+          "no_jogo": "Uma agência pode grampear, prender e investigar até o chefe do governo: a corrupção cai, mas aliados caem junto e a política ferve.",
+          "manchete": "Nova agência pode grampear, prender e investigar até o presidente; a capital entra em pânico",
+          "exemplos": [
+            "Hong Kong (ICAC, 1974)",
+            "Singapura (CPIB)",
+            "Indonésia (KPK antes da reforma de 2019)"
+          ]
+        },
+        {
+          "id": "campanha-do-regime",
+          "rotulo": "Campanha do regime",
+          "no_jogo": "Um órgão do governo pune corruptos e, de quebra, rivais: o chefe ganha força e a corrupção miúda cai, mas ninguém investiga o topo.",
+          "manchete": "Comissão de disciplina anuncia a queda de mais um ministro; opositores dizem que a faxina só atinge desafetos",
+          "exemplos": [
+            "China (Comissão Central de Inspeção Disciplinar, desde 2012)",
+            "Arábia Saudita (prisões no Ritz-Carlton, 2017)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "empresa-tambem-paga",
+      "historia": {
+        "brasil": "Lei 12.846/2013 (Lei Anticorrupção ou Lei da Empresa Limpa): multa de até 20% do faturamento bruto e acordos de leniência, aplicados pela CGU."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Investigadores e controladores custam pouco perto do que recuperam, mas a agência forte exige estrutura própria."
+      },
+      "custo_pib": {
+        "gasto": {
+          "so-pessoas": 0,
+          "empresa-tambem-paga": 0.005,
+          "agencia-independente": 0.02,
+          "campanha-do-regime": 0.02
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quando a empresa também paga, compensa ter programa de integridade e não pagar propina."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Acordos de leniência e investigações dedicadas chegam a quem antes escapava."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Grandes investigações paralisam empreiteiras e assustam quem tem contrato com o governo.",
+          "condicao": "durante grandes operações"
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Aliados do governo também podem ser investigados.",
+          "condicao": "até agencia-independente"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Cada operação vira acusação de perseguição política.",
+          "condicao": "em agencia-independente ou campanha-do-regime"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A faxina vira arma: opositores e empresários desafetos são presos sem defesa real.",
+          "condicao": "em campanha-do-regime"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_pequenos_negocios"],
+        "perdem": ["grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Agência forte num Judiciário controlado vira arma contra a oposição; e o próprio Congresso, quando investigado, costuma cortar seus poderes."
+      },
+      "substitui": ["lei-anticorrupcao"],
+      "fontes": [
+        {
+          "titulo": "Global Anticorruption Blog - Indonesian Anticorruption Institutions at Risk: Legislative Amendments Spell Disaster for the KPK (2019)",
+          "url": "https://globalanticorruptionblog.com/2019/10/03/guest-post-indonesian-anticorruption-institutions-at-risk-part-2-legislative-amendments-spell-disaster-for-the-kpk/"
+        }
+      ]
+    },
+    {
+      "id": "fundo-eleitoral",
+      "nome": "Fundo eleitoral",
+      "nivel": "micro",
+      "area": "poder",
+      "ministro": "casa-civil",
+      "pai": {
+        "lei": "financiamento-de-campanha",
+        "opcoes": ["misto", "publico-predominante"],
+        "motivo": "Só existe fundo público de campanha onde o Estado banca parte das eleições."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o Tesouro reserva para os partidos gastarem nas campanhas de cada eleição.",
+      "dilema": "Campanhas bem financiadas e longe das empresas, ou o dinheiro do contribuinte longe dos políticos?",
+      "eixo": "de nenhum fundo a um fundo bilionário",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 10000,
+        "exemplos": [
+          {
+            "pais": "Brasil (eleição municipal de 2024)",
+            "valor": 4900
+          }
+        ]
+      },
+      "brasil": 4900,
+      "historia": {
+        "brasil": "Fundo Especial de Financiamento de Campanha (FEFC), criado pela Lei 13.487/2017 e pago só em ano de eleição (de dois em dois anos); em 2024 somou cerca de R$ 4,9 bilhões, além do Fundo Partidário anual."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Sai direto do orçamento no ano da eleição."
+      },
+      "custo_pib": {
+        "gasto": 0.042
+      },
+      "efeitos": [
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Cada real do fundo sai do orçamento."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Aumentar o 'fundão' é das medidas mais impopulares que existem."
+        },
+        {
+          "alvo": "base_congresso",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Partidos que recebem mais dinheiro retribuem com votos no Congresso."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Com campanha paga pelo Estado, sobra menos espaço para o caixa dois das empresas.",
+          "condicao": "com Justiça Eleitoral que fiscaliza"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas"],
+        "perdem": ["grupo_classe_media", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Fundo grande não afasta o caixa dois se a prestação de contas é frouxa; e a direção dos partidos decide quem recebe."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Gazeta do Povo - TSE divulga distribuição do fundo eleitoral: PL e PT lideram (2024)",
+          "url": "https://www.gazetadopovo.com.br/republica/tse-divulga-distribuicao-do-fundo-eleitoral-pl-e-pt-lideram/"
+        }
+      ]
+    },
+    {
+      "id": "emendas-parlamentares",
+      "nome": "Emendas parlamentares",
+      "nivel": "micro",
+      "area": "poder",
+      "ministro": "relacoes-institucionais",
+      "pai": {
+        "lei": "sistema-eleitoral",
+        "opcoes": [
+          "majoritario-distrital",
+          "misto",
+          "proporcional-lista-fechada",
+          "proporcional-lista-aberta"
+        ],
+        "motivo": "Verba indicada por parlamentar só existe onde há Parlamento eleito com base para atender."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto do orçamento federal os deputados e senadores podem mandar para obras e projetos que eles mesmos escolhem.",
+      "dilema": "Comprar uma base fiel no Congresso com obras nas cidades dos aliados, ou guardar o dinheiro para os planos do próprio governo?",
+      "eixo": "de nenhuma verba indicada a uma fatia enorme do orçamento livre",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 80000,
+        "exemplos": [
+          {
+            "pais": "Brasil (orçamento de 2025)",
+            "valor": 50400
+          },
+          {
+            "pais": "Brasil (orçamento de 2024)",
+            "valor": 53000
+          }
+        ]
+      },
+      "brasil": 50400,
+      "historia": {
+        "brasil": "Emendas individuais (impositivas desde a EC 86/2015), de bancada (EC 100/2019) e de comissão. O orçamento de 2025 reservou R$ 50,4 bilhões; o STF exigiu mais transparência depois do caso do 'orçamento secreto' (emendas de relator, derrubadas em 2022)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "É uma das maiores fatias do gasto federal que o governo não escolhe."
+      },
+      "custo_pib": {
+        "gasto": 0.43
+      },
+      "efeitos": [
+        {
+          "alvo": "base_congresso",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Deputado que leva obra para sua cidade vota com o governo."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "As emendas somam dezenas de bilhões por ano."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Dinheiro pulverizado em milhares de convênios é difícil de fiscalizar e vira moeda de troca."
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Obras escolhidas pelo voto e não por planejamento ficam pela metade."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Liberar emendas na hora certa ajuda a aprovar as pautas do governo."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pequenos_negocios", "grupo_agro"],
+        "perdem": ["grupo_classe_media", "grupo_servidores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Emenda bem fiscalizada vira posto de saúde; sem controle e sem planejamento, vira obra parada e superfaturada."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Diario de Pernambuco - Orçamento destina mais de R$ 50 bilhões para emendas parlamentares (2025)",
+          "url": "https://www.diariodepernambuco.com.br/noticia/politica/2025/03/orcamento-destina-mais-de-r-50-bilhoes-para-emendas-parlamentares.html"
+        }
+      ]
+    },
+    {
+      "id": "verba-de-controle",
+      "nome": "Verba de controle e transparência",
+      "nivel": "micro",
+      "area": "poder",
+      "ministro": "cgu",
+      "pai": {
+        "lei": "punicao-a-corrupcao",
+        "opcoes": [
+          "empresa-tambem-paga",
+          "agencia-independente",
+          "campanha-do-regime"
+        ],
+        "motivo": "Um órgão de controle com orçamento próprio só existe onde há regra de punição para aplicar."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o governo gasta com auditores, corregedores, portais de transparência e atendimento a pedidos de informação.",
+      "dilema": "Abrir as gavetas e ver cada nota fiscal virar escândalo, ou economizar e deixar a desconfiança crescer no escuro?",
+      "eixo": "de um controle mínimo a uma controladoria grande com dados abertos",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 100,
+        "maximo": 5000,
+        "exemplos": [
+          {
+            "pais": "Brasil (orçamento atualizado da controladoria federal, ano recente)",
+            "valor": 1390
+          }
+        ]
+      },
+      "brasil": 1390,
+      "historia": {
+        "brasil": "Controladoria-Geral da União (CGU), que cuida de auditoria, corregedoria, ouvidoria, do Portal da Transparência e da Lei de Acesso à Informação (Lei 12.527/2011); orçamento de cerca de R$ 1,4 bilhão."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Auditores, sistemas e portais custam pouco perto do que recuperam."
+      },
+      "custo_pib": {
+        "gasto": 0.012
+      },
+      "efeitos": [
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Contrato que qualquer um pode ler e auditor que confere são mais difíceis de fraudar."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Quem pode conferir tende a confiar mais."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Cada viagem, cartão corporativo e salário alto vira notícia."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Decisões passam a deixar rastro que a oposição pode usar."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Mais auditores e sistemas entram na folha."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_pequenos_negocios"],
+        "perdem": ["grupo_servidores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["impunidade"],
+        "porque": "Dado aberto só vira controle se há gente que sabe ler e se o escândalo descoberto acaba em punição."
+      },
+      "substitui": ["transparencia-publica"],
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência - Controladoria-Geral da União (órgão 37000)",
+          "url": "https://portaldatransparencia.gov.br/orgaos-superiores/37000?ano=2024"
+        },
+        {
+          "titulo": "Global Right to Information Rating - By Country",
+          "url": "https://www.rti-rating.org/country-data/"
+        }
+      ]
+    },
+    {
+      "id": "concursos-publicos",
+      "nome": "Concursos públicos",
+      "nivel": "micro",
+      "area": "poder",
+      "ministro": "gestao",
+      "pai": {
+        "lei": "estabilidade-do-servidor",
+        "opcoes": [
+          "contrato-comum",
+          "estabilidade-com-avaliacao",
+          "estabilidade-plena"
+        ],
+        "motivo": "Só há seleção por mérito para autorizar onde os cargos não são de livre nomeação."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o governo reserva por ano para contratar novos servidores por seleção pública.",
+      "dilema": "Repor médicos, professores e fiscais que se aposentam, ou segurar a folha para fechar as contas?",
+      "eixo": "de nenhuma contratação a uma onda de concursos",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 10000,
+        "exemplos": [
+          {
+            "pais": "Brasil (proposta de orçamento de 2025, cerca de 53 mil provimentos no Executivo)",
+            "valor": 2100
+          }
+        ]
+      },
+      "brasil": 2100,
+      "historia": {
+        "brasil": "O anexo de pessoal da lei orçamentária autoriza provimentos a cada ano; a proposta de 2025 previu cerca de R$ 2,1 bilhões. O Concurso Nacional Unificado foi criado em 2024."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Cada servidor contratado entra na folha por décadas, e depois na aposentadoria."
+      },
+      "custo_pib": {
+        "gasto": 0.018
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Órgãos sem gente param; repor fiscais, professores e analistas devolve fôlego ao Estado."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A folha cresce e não volta a cair."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Gasto permanente aperta o caixa nos anos de receita fraca."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Concurso é o sonho de emprego estável de milhões de jovens formados."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_jovens"],
+        "perdem": ["grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade"],
+        "reduz": ["corrupcao"],
+        "porque": "Concurso só melhora o Estado se a prova mede o que o cargo exige e se a seleção é limpa."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Congresso em Foco - Orçamento de 2025 prevê R$ 2 bi para concursos",
+          "url": "https://www.congressoemfoco.com.br/noticia/18872/orcamento-de-2025-preve-r-2-bi-para-concursos"
+        }
+      ]
+    },
+    {
+      "id": "cotas-no-servico-publico",
+      "nome": "Cotas no serviço público",
+      "nivel": "micro",
+      "area": "poder",
+      "ministro": "gestao",
+      "pai": {
+        "lei": "estabilidade-do-servidor",
+        "opcoes": [
+          "contrato-comum",
+          "estabilidade-com-avaliacao",
+          "estabilidade-plena"
+        ],
+        "motivo": "Reserva de vagas só faz sentido onde há seleção pública para os cargos."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define se parte das vagas das seleções públicas é reservada para grupos historicamente excluídos.",
+      "dilema": "Um funcionalismo com a cara do país, ou a disputa decidida só pela nota da prova?",
+      "eixo": "de seleção só por nota a vagas reservadas",
+      "opcoes": [
+        {
+          "id": "sem-cotas",
+          "rotulo": "Sem reserva de vagas",
+          "no_jogo": "Só a nota conta: quem defende o mérito comemora, mas o topo do funcionalismo continua com a cara de poucos.",
+          "manchete": "Fim das cotas nos concursos: 'agora só a prova decide', diz governo",
+          "exemplos": ["Japão", "Alemanha", "França (veda cotas étnicas)"]
+        },
+        {
+          "id": "com-cotas",
+          "rotulo": "Vagas reservadas",
+          "no_jogo": "Parte das vagas vai para grupos excluídos: o funcionalismo fica mais diverso e a polêmica sobre mérito esquenta.",
+          "manchete": "Três em cada dez vagas nos concursos federais serão reservadas para grupos sub-representados",
+          "exemplos": [
+            "Brasil (30% desde 2025)",
+            "Índia (reservas em empregos públicos)",
+            "Malásia (bumiputera)",
+            "África do Sul (equidade no emprego)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "com-cotas",
+      "historia": {
+        "brasil": "Lei 12.990/2014 reservou 20% das vagas de concursos federais a pessoas negras; a Lei 15.142/2025 ampliou para 30% e incluiu indígenas e quilombolas."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Exige só bancas de verificação; não muda o número de vagas."
+      },
+      "custo_pib": {
+        "gasto": {
+          "sem-cotas": 0,
+          "com-cotas": 0.002
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais diversidade em cargos de prestígio muda percepções, de forma lenta."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Salários altos e estáveis do serviço público se distribuem entre mais grupos."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem fica de fora acusa injustiça; o debate sobre mérito e raça esquenta."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Um Estado que se parece com a população é visto como mais legítimo por quem antes não se via nele."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_progressistas"],
+        "perdem": ["grupo_classe_media", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade"],
+        "reduz": ["corrupcao"],
+        "porque": "Cotas rendem mais quando o ensino básico prepara os candidatos; fraude na autodeclaração mina a política."
+      },
+      "substitui": ["acoes-afirmativas"],
+      "fontes": [
+        {
+          "titulo": "Rádio Senado - Sancionada lei que retoma e amplia cotas raciais em concursos públicos federais (2025)",
+          "url": "https://www12.senado.leg.br/radio/1/noticia/2025/06/06/sancionada-lei-que-retoma-e-amplia-cotas-raciais-em-concursos-publicos-federais"
+        }
+      ]
+    }
+  ]
+}

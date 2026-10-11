@@ -1,0 +1,1498 @@
+{
+  "area": "direitos",
+  "leis": [
+    {
+      "id": "garantias-individuais",
+      "nome": "Garantias individuais",
+      "nivel": "macro",
+      "brasil_petrea": true,
+      "area": "direitos",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define o quanto o cidadão pode falar, publicar, se reunir, ter privacidade e se defender do Estado sem pedir licença ao governo.",
+      "dilema": "Uma sociedade que expõe seus escândalos e grita nas ruas todo dia, ou um país calmo e obediente que não sabe o que acontece?",
+      "eixo": "das liberdades suprimidas às liberdades quase sem limite",
+      "opcoes": [
+        {
+          "id": "suprimidas",
+          "rotulo": "Liberdades suprimidas",
+          "no_jogo": "Censura, vigilância e prisão sem julgamento: o governo controla a narrativa e ganha margem, mas liberdade e reputação desabam.",
+          "manchete": "Censor oficial passa a aprovar manchetes; jornalistas estrangeiros têm 48 horas para sair do país",
+          "exemplos": ["Coreia do Norte", "China", "Eritreia", "Arábia Saudita"]
+        },
+        {
+          "id": "restritas",
+          "rotulo": "Liberdades restritas",
+          "no_jogo": "As liberdades estão no papel, mas leis vagas de 'segurança' e 'notícia falsa' calam a oposição: o governo respira e a confiança apodrece.",
+          "manchete": "Conselho de mídia nomeado pelo governo cassa licença da última rádio de oposição",
+          "exemplos": [
+            "Rússia (lei de 'notícias falsas' sobre o Exército, 2022)",
+            "Turquia",
+            "Hungria (conselho de mídia e conglomerado KESMA)",
+            "Venezuela"
+          ]
+        },
+        {
+          "id": "plenas",
+          "rotulo": "Liberdades plenas",
+          "no_jogo": "Fala, imprensa, reunião e defesa garantidas, com limites para o ódio e a calúnia: a corrupção aparece nos jornais e o governo apanha todo dia.",
+          "manchete": "Nada de licença, nada de censor: Supremo garante a reportagem que o governo queria proibir",
+          "exemplos": [
+            "Brasil",
+            "Alemanha (crime de incitação ao ódio)",
+            "Noruega",
+            "Estônia",
+            "Canadá"
+          ]
+        },
+        {
+          "id": "absolutas",
+          "rotulo": "Liberdades quase absolutas",
+          "no_jogo": "Quase nenhuma fala é crime, nem o discurso de ódio: liberdade máxima, com boatos e extremistas circulando à vontade.",
+          "manchete": "Corte garante até o direito de queimar a bandeira e pregar o ódio: 'a resposta à fala ruim é mais fala'",
+          "exemplos": ["EUA (Primeira Emenda)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "plenas",
+      "historia": {
+        "brasil": "Constituição de 1988, Art. 5º (direitos e garantias individuais) e Art. 220 (vedada toda censura), protegidos como cláusula pétrea pelo Art. 60, §4º, IV. Racismo é crime inafiançável (Art. 5º, XLII) e o STF equiparou a homofobia ao racismo em 2019."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não pesa no orçamento; censura e vigilância custam pouco perto do custo político."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Falar, publicar, protestar e criticar deixam de ser crime."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Repórter livre é fiscal gratuito: desvios viram manchete."
+        },
+        {
+          "alvo": "capital_politico",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O governo não controla mais a narrativa nem esconde decisões impopulares."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Imprensa livre é selo de democracia para investidores e aliados."
+        },
+        {
+          "alvo": "desinformacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Sem limites ao discurso, veículos partidários e boatos circulam com mais facilidade.",
+          "condicao": "em absolutas"
+        },
+        {
+          "alvo": "protestos",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Com reunião proibida e polícia política, as ruas se calam até explodirem.",
+          "condicao": "em suprimidas"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_classe_media", "grupo_jovens"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "confianca_instituicoes"],
+        "reduz": ["concentracao_mercado"],
+        "porque": "Liberdade no papel vale pouco sem tribunais que a garantam; e imprensa livre mas concentrada em poucos donos fiscaliza pouco."
+      },
+      "substitui": ["liberdade-imprensa"],
+      "fontes": [
+        {
+          "titulo": "RSF - World Press Freedom Index 2025",
+          "url": "https://rsf.org/en/world-press-freedom-index-2025-over-half-worlds-population-red-zones"
+        },
+        {
+          "titulo": "Human Rights Watch - 'I Can't Do My Job as a Journalist': The Systematic Undermining of Media Freedom in Hungary (2024)",
+          "url": "https://www.hrw.org/report/2024/02/13/i-cant-do-my-job-journalist/systematic-undermining-media-freedom-hungary"
+        }
+      ]
+    },
+    {
+      "id": "estado-e-religiao",
+      "nome": "Estado e religião",
+      "nivel": "macro",
+      "brasil_petrea": false,
+      "area": "direitos",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define a relação entre o Estado e as religiões: quem manda em quem, quem recebe privilégios e quem é vigiado.",
+      "dilema": "Ancorar o país na fé da maioria, manter distância de todas as crenças ou tirar a religião do espaço público?",
+      "eixo": "da religião governando o Estado ao Estado controlando a religião (o meio é a neutralidade)",
+      "opcoes": [
+        {
+          "id": "teocracia",
+          "rotulo": "Teocracia",
+          "no_jogo": "O clero tem a palavra final sobre as leis: religiosos aplaudem, mas liberdade, minorias e reputação pagam caro.",
+          "manchete": "Clero assume a palavra final sobre as leis; 'a lei de Deus acima da lei dos homens'",
+          "exemplos": ["Irã", "Arábia Saudita", "Afeganistão (Talibã)"]
+        },
+        {
+          "id": "religiao-oficial",
+          "rotulo": "Religião oficial ou favorecida",
+          "no_jogo": "Uma igreja ganha status, verbas e lugar nas cerimônias: a maioria religiosa se sente em casa e as minorias, de segunda classe.",
+          "manchete": "Constituição proclama religião oficial; igreja ganha verbas e escolas e minorias pedem garantias",
+          "exemplos": [
+            "Reino Unido (Igreja Anglicana)",
+            "Dinamarca (Luterana)",
+            "Grécia",
+            "Rússia (Ortodoxa favorecida)",
+            "Peru"
+          ]
+        },
+        {
+          "id": "laico",
+          "rotulo": "Estado laico e neutro",
+          "no_jogo": "Nenhuma religião oficial e todas com os mesmos direitos: menos conflito, mas cada pauta moral vira disputa sobre o que é 'neutro'.",
+          "manchete": "Nenhuma religião oficial, todas com os mesmos direitos: governo mantém equidistância",
+          "exemplos": [
+            "Brasil",
+            "EUA",
+            "Índia",
+            "Alemanha (com imposto eclesiástico)"
+          ]
+        },
+        {
+          "id": "laicidade-estrita",
+          "rotulo": "Laicidade estrita",
+          "no_jogo": "Símbolos religiosos banidos das escolas e repartições: o espaço público fica secular e os fiéis se sentem acuados.",
+          "manchete": "Símbolos religiosos banidos das escolas e repartições: 'a fé é assunto privado'",
+          "exemplos": ["França", "México"]
+        },
+        {
+          "id": "controle-estatal",
+          "rotulo": "Controle estatal da religião",
+          "no_jogo": "Templos registrados e sermões vigiados: o regime blinda o poder contra igrejas rivais, ao custo da liberdade de todos os crentes.",
+          "manchete": "Templos registrados, sermões vigiados: Estado passa a controlar as religiões",
+          "exemplos": ["China", "Vietnã", "Cuba", "Coreia do Norte"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "laico",
+      "historia": {
+        "brasil": "Constituição de 1988, Art. 5º, VI (liberdade de crença) e Art. 19, I (é vedado ao Estado estabelecer cultos ou igrejas, subvencioná-los ou ter com eles relação de dependência). O Brasil é laico desde o Decreto 119-A de 1890."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Pouco efeito direto no orçamento; religião oficial implica subsídios e controle estatal exige vigilância."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Religião obrigatória ou fé vigiada restringem a vida privada.",
+          "condicao": "em teocracia ou controle-estatal"
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem não segue a fé oficial (ou qualquer fé, no controle estatal) vira cidadão de segunda classe.",
+          "condicao": "fora de laico"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Afastar-se da neutralidade em qualquer direção acende o conflito entre crentes e não crentes.",
+          "condicao": "fora de laico"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Perseguição religiosa gera sanções e relatórios internacionais.",
+          "condicao": "em teocracia ou controle-estatal"
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Para a maioria religiosa, ver sua fé no Estado reforça o vínculo com as instituições.",
+          "condicao": "em religiao-oficial"
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Regimes teocráticos ou que controlam a religião blindam o poder contra rupturas internas.",
+          "condicao": "em teocracia ou controle-estatal"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores"],
+        "perdem": ["grupo_progressistas", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Neutralidade só se sustenta com tribunais independentes que barram privilégios; numa sociedade rachada, qualquer arranjo é contestado."
+      },
+      "substitui": ["laicidade-do-estado"],
+      "fontes": [
+        {
+          "titulo": "Pew Research Center - Many countries favor specific religions, officially or unofficially (2017)",
+          "url": "https://www.pewresearch.org/religion/2017/10/03/many-countries-favor-specific-religions-officially-or-unofficially/"
+        },
+        {
+          "titulo": "Pew Research Center - Government restrictions on religion stayed at peak levels globally in 2022",
+          "url": "https://www.pewresearch.org/religion/2024/12/18/government-restrictions-on-religion-stayed-at-peak-levels-globally-in-2022/"
+        }
+      ]
+    },
+    {
+      "id": "regulacao-de-midia-e-redes",
+      "nome": "Regulação de mídia e redes",
+      "nivel": "meso",
+      "area": "direitos",
+      "ministro": "comunicacoes",
+      "pai": {
+        "lei": "garantias-individuais",
+        "opcoes": ["suprimidas", "restritas", "plenas", "absolutas"],
+        "motivo": "Quanto se pode exigir de emissoras e plataformas depende do tamanho da liberdade de expressão."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define quanto emissoras e plataformas respondem pelo que publicam ou deixam circular: nada, só após ordem judicial, com dever de cuidado ou sob controle do Estado.",
+      "dilema": "Combater desinformação, golpes e danos a crianças sem dar ao governo de plantão uma tesoura para cortar críticas?",
+      "eixo": "da imunidade de emissoras e plataformas ao controle estatal",
+      "opcoes": [
+        {
+          "id": "livre",
+          "rotulo": "Plataforma não responde",
+          "no_jogo": "Redes e emissoras não respondem pelo conteúdo de terceiros: inovação e fala livres, com golpes e boatos sem freio.",
+          "manchete": "Redes sem dono: plataformas não respondem pelo que os usuários postam",
+          "exemplos": ["EUA (Seção 230)"]
+        },
+        {
+          "id": "ordem-judicial",
+          "rotulo": "Só com ordem judicial",
+          "no_jogo": "Conteúdo só sai do ar com ordem de juiz: protege a fala legítima, mas o boato viraliza antes da sentença.",
+          "manchete": "Conteúdo só sai do ar com ordem de juiz; plataformas ficam com as mãos livres",
+          "exemplos": ["Brasil (2014-2025)"]
+        },
+        {
+          "id": "dever-de-cuidado",
+          "rotulo": "Dever de cuidado",
+          "no_jogo": "Notificou e não tirou, paga: menos golpes e desinformação, mas as plataformas removem a mais com medo de multa.",
+          "manchete": "Notificou e não tirou? Paga: plataformas passam a responder por conteúdo ilegal e anúncios",
+          "exemplos": [
+            "União Europeia (DSA, multas de até 6% do faturamento global)",
+            "Brasil (decisão do STF, 2025)",
+            "Reino Unido (Ofcom e Online Safety Act)"
+          ]
+        },
+        {
+          "id": "controle-estatal",
+          "rotulo": "Controle estatal",
+          "no_jogo": "Redes estrangeiras bloqueadas e conteúdo aprovado pelo governo: o boato oficial reina e a liberdade some.",
+          "manchete": "Redes estrangeiras bloqueadas e conteúdo aprovado pelo governo: 'internet soberana' é lançada",
+          "exemplos": ["China", "Irã", "Rússia (bloqueios)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "dever-de-cuidado",
+      "historia": {
+        "brasil": "Marco Civil da Internet (Lei 12.965/2014), Art. 19, exigia ordem judicial; em 2025 o STF declarou o artigo parcialmente inconstitucional e as plataformas passaram a responder após notificação em vários casos. A radiodifusão segue concessão pública (Constituição, Art. 223)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige um regulador; o custo maior cai sobre as plataformas."
+      },
+      "custo_pib": {
+        "gasto": {
+          "livre": 0,
+          "ordem-judicial": 0.005,
+          "dever-de-cuidado": 0.01,
+          "controle-estatal": 0.05
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "desinformacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Plataformas obrigadas a agir derrubam golpes e boatos mais rápido.",
+          "condicao": "até dever-de-cuidado"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Com medo de multa, plataformas removem a mais, inclusive conteúdo legítimo.",
+          "condicao": "a partir de dever-de-cuidado"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "O governo decide o que pode ser dito.",
+          "condicao": "em controle-estatal"
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Custos de conformidade pesam mais sobre plataformas pequenas que sobre gigantes."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A própria lei vira briga: um lado vê 'censura', o outro 'terra sem lei'.",
+          "condicao": "qualquer mudança de opção"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Bloquear redes estrangeiras é visto como autoritarismo.",
+          "condicao": "em controle-estatal"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_classe_media"],
+        "perdem": [
+          "grupo_jovens",
+          "grupo_conservadores",
+          "grupo_pequenos_negocios"
+        ]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Dever de cuidado só não vira censura com regulador e Judiciário independentes; com garantias restritas, a lei tende a escorregar para o controle estatal."
+      },
+      "substitui": ["regulacao-redes-sociais"],
+      "fontes": [
+        {
+          "titulo": "Teletime - Art. 19: STF concilia votos e plataformas terão responsabilização parcial (2025)",
+          "url": "https://teletime.com.br/26/06/2025/art-19-stf-concilia-votos-e-plataformas-terao-responsabilizacao-parcial/"
+        },
+        {
+          "titulo": "Roschier - Digital Services Act",
+          "url": "https://roschier.com/eu-data-economy-digitalization/digital-services-act"
+        }
+      ]
+    },
+    {
+      "id": "protecao-de-dados",
+      "nome": "Proteção de dados pessoais",
+      "nivel": "meso",
+      "area": "direitos",
+      "ministro": "comunicacoes",
+      "pai": {
+        "lei": "garantias-individuais",
+        "opcoes": ["suprimidas", "restritas", "plenas", "absolutas"],
+        "motivo": "Privacidade é uma garantia individual; a lei de dados diz como ela vale no mundo digital."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define o que empresas (e o Estado) podem fazer com os dados pessoais dos cidadãos e quem fiscaliza.",
+      "dilema": "Proteger a privacidade de todos ou deixar empresas usarem dados livremente para inovar e crescer?",
+      "eixo": "da ausência de lei à proteção estrita",
+      "opcoes": [
+        {
+          "id": "sem-lei",
+          "rotulo": "Sem lei",
+          "no_jogo": "Dados pessoais à venda e vazamentos sem punição: as empresas inovam sem amarras e o cidadão fica exposto.",
+          "manchete": "Dados pessoais à venda: país não tem lei e vazamentos ficam sem punição",
+          "exemplos": ["Cerca de 1 em cada 3 países (UNCTAD, 2020)"]
+        },
+        {
+          "id": "setorial",
+          "rotulo": "Leis setoriais",
+          "no_jogo": "Saúde e bancos protegidos, o resto liberado: custo baixo para as empresas e brechas para o resto dos dados.",
+          "manchete": "Saúde e bancos protegidos, o resto liberado: regras soltas por setor",
+          "exemplos": ["EUA (sem lei federal geral)"]
+        },
+        {
+          "id": "lei-geral",
+          "rotulo": "Lei geral com agência",
+          "no_jogo": "Uma lei geral exige consentimento e uma agência fiscaliza: o cidadão ganha controle e as empresas ganham burocracia.",
+          "manchete": "Nova lei geral de dados cria agência fiscalizadora e exige consentimento",
+          "exemplos": [
+            "Brasil",
+            "Japão",
+            "Coreia do Sul",
+            "Índia (2023)",
+            "China (PIPL, com amplo acesso do Estado)"
+          ]
+        },
+        {
+          "id": "protecao-estrita",
+          "rotulo": "Proteção estrita",
+          "no_jogo": "Multas bilionárias e direito ao esquecimento: privacidade máxima, com menos aplicativos novos e gigantes mais fortes.",
+          "manchete": "Multas bilionárias e direito ao esquecimento: big techs reclamam, usuários aplaudem",
+          "exemplos": ["União Europeia (GDPR)", "Reino Unido"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "lei-geral",
+      "historia": {
+        "brasil": "Lei Geral de Proteção de Dados (Lei 13.709/2018), fiscalizada pela ANPD; a EC 115/2022 incluiu a proteção de dados entre os direitos fundamentais (Art. 5º, LXXIX)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Exige uma autoridade fiscalizadora; o custo maior é de conformidade para as empresas."
+      },
+      "custo_pib": {
+        "gasto": {
+          "sem-lei": 0,
+          "setorial": 0.005,
+          "lei-geral": 0.01,
+          "protecao-estrita": 0.02
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Cidadãos ganham controle sobre seus dados e meios de reclamar."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Após o GDPR, a entrada de novos apps caiu 47% e um terço dos apps que pediam dados sensíveis saiu da loja.",
+          "condicao": "em protecao-estrita"
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Gigantes absorvem o custo de conformidade; pequenos desistem."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Mais burocracia e risco de multa."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Regras de uso de dados limitam o abuso de cadastros públicos e o vazamento interessado."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_progressistas"],
+        "perdem": ["grupo_pequenos_negocios", "grupo_empresarios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "confianca_instituicoes"],
+        "reduz": [],
+        "porque": "Lei de dados sem autoridade e sem fiscalização vira papel: a UNCTAD alerta que países em desenvolvimento muitas vezes não conseguem aplicar suas leis."
+      },
+      "substitui": ["protecao-de-dados"],
+      "fontes": [
+        {
+          "titulo": "UNCTAD - Data and privacy unprotected in one third of countries, despite progress",
+          "url": "https://unctad.org/news/data-and-privacy-unprotected-one-third-countries-despite-progress"
+        },
+        {
+          "titulo": "NBER Digest - Impacts of the European Union's Data Protection Regulations",
+          "url": "https://www.nber.org/digest/202207/impacts-european-unions-data-protection-regulations"
+        }
+      ]
+    },
+    {
+      "id": "protecao-a-grupos-vulneraveis",
+      "nome": "Proteção a grupos vulneráveis",
+      "nivel": "meso",
+      "area": "direitos",
+      "ministro": "direitos-humanos",
+      "pai": {
+        "lei": "garantias-individuais",
+        "opcoes": ["suprimidas", "restritas", "plenas", "absolutas"],
+        "motivo": "Igualdade perante a lei é uma garantia individual; esta lei diz como ela é cobrada."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define como a lei trata a discriminação por raça, sexo, religião ou orientação sexual: permitida, só proibida no papel, crime com reparação ou com metas e auditorias.",
+      "dilema": "Usar multas, relatórios e metas para fechar diferenças históricas, ou poupar empresas e cidadãos de mais uma regra e um processo?",
+      "eixo": "da discriminação prevista em lei à igualdade cobrada com metas",
+      "opcoes": [
+        {
+          "id": "discriminacao-legal",
+          "rotulo": "Discriminação na lei",
+          "no_jogo": "A própria lei separa cidadãos por raça, sexo ou fé: a maioria favorecida ganha, a discriminação explode e o país vira pária.",
+          "manchete": "Nova lei proíbe mulheres de trabalhar sem autorização do marido e reserva cargos para a etnia majoritária",
+          "exemplos": [
+            "África do Sul (apartheid, 1948-1994)",
+            "Afeganistão (Talibã, regras para mulheres)",
+            "Arábia Saudita (tutela masculina até 2019)"
+          ]
+        },
+        {
+          "id": "sem-lei-especifica",
+          "rotulo": "Só o princípio da igualdade",
+          "no_jogo": "Igualdade está na Constituição, mas a vítima precisa provar tudo na Justiça: quase sem custo, quase sem efeito.",
+          "manchete": "Salário igual é lei, mas cabe à trabalhadora provar na Justiça",
+          "exemplos": [
+            "Japão",
+            "Índia (igualdade salarial só como princípio)",
+            "EUA antes de 1964"
+          ]
+        },
+        {
+          "id": "lei-antidiscriminacao",
+          "rotulo": "Lei antidiscriminação com transparência",
+          "no_jogo": "Discriminar é crime ou dá indenização e empresas publicam salários por sexo: a diferença cai devagar e os empregadores reclamam.",
+          "manchete": "Empresas terão de publicar salários por gênero e apresentar plano para fechar a diferença",
+          "exemplos": [
+            "Brasil",
+            "Reino Unido (Equality Act 2010 e relatórios desde 2017)",
+            "Dinamarca (relatórios desde 2006)",
+            "União Europeia (diretiva de transparência salarial)"
+          ]
+        },
+        {
+          "id": "certificacao-e-metas",
+          "rotulo": "Certificação e metas obrigatórias",
+          "no_jogo": "Empresa só fica regular se provar com auditoria que paga e contrata de forma igual: efeito mais rápido, custo e irritação maiores.",
+          "manchete": "Empresa só fica regular se provar, com auditoria, que paga igual; conselhos terão 40% de mulheres",
+          "exemplos": [
+            "Islândia (certificação, 2018-2026)",
+            "Noruega (40% de mulheres em conselhos desde 2003)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "lei-antidiscriminacao",
+      "historia": {
+        "brasil": "Lei 7.716/1989 (crimes de racismo), Estatuto da Igualdade Racial (Lei 12.288/2010), ADO 26 do STF (2019, homofobia equiparada ao racismo) e Lei 14.611/2023 (relatórios de igualdade salarial, multa de até 3% da folha)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Fiscalização e análise dos relatórios; o custo principal é das empresas."
+      },
+      "custo_pib": {
+        "gasto": {
+          "discriminacao-legal": 0,
+          "sem-lei-especifica": 0,
+          "lei-antidiscriminacao": 0.005,
+          "certificacao-e-metas": 0.01
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Expor e punir diferenças força correções; na Dinamarca a lacuna salarial caiu cerca de 2% após a obrigação de relatórios."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "A renda de mulheres e minorias sobe em relação à dos demais."
+        },
+        {
+          "alvo": "confianca_empresarial",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Relatórios, auditorias e risco de multa irritam empregadores.",
+          "condicao": "a partir de lei-antidiscriminacao"
+        },
+        {
+          "alvo": "custo_trabalhista",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Auditorias e reajustes para corrigir diferenças encarecem a folha.",
+          "condicao": "em certificacao-e-metas"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Discriminação legal gera sanções, boicotes e isolamento.",
+          "condicao": "em discriminacao-legal"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Parte do eleitorado vê 'identitarismo' em cada nova obrigação.",
+          "condicao": "em certificacao-e-metas"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_progressistas",
+          "grupo_pobres",
+          "grupo_trabalhadores"
+        ],
+        "perdem": ["grupo_empresarios", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["informalidade"],
+        "porque": "A regra só alcança o emprego formal e empresas maiores; onde a informalidade é alta, a maioria das vítimas fica de fora."
+      },
+      "substitui": ["igualdade-salarial-de-genero"],
+      "fontes": [
+        {
+          "titulo": "Planalto - Lei nº 14.611/2023 (igualdade salarial)",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14611.htm"
+        },
+        {
+          "titulo": "Island.is - New requirements for reporting on the gender pay gap",
+          "url": "https://island.is/en/news/new-requirements-for-reporting-on-the-gender-pay-gap"
+        },
+        {
+          "titulo": "Europa (Univ. Edinburgh) - The European Council's Pay Transparency Directive is commendable, but not enough",
+          "url": "https://europa.sps.ed.ac.uk/2024/06/03/the-european-councils-pay-transparency-directive-is-commendable-but-not-enough/"
+        }
+      ]
+    },
+    {
+      "id": "aborto",
+      "nome": "Aborto",
+      "nivel": "meso",
+      "area": "direitos",
+      "ministro": "mulheres",
+      "pai": {
+        "lei": "garantias-individuais",
+        "opcoes": ["suprimidas", "restritas", "plenas", "absolutas"],
+        "motivo": "O choque entre direito à vida e autonomia sobre o corpo se resolve dentro das garantias individuais."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define em que casos interromper a gravidez é crime e em que casos é um serviço de saúde.",
+      "dilema": "Proteger a vida desde a concepção ou a autonomia e a segurança da mulher, sabendo que metade do país vai se sentir traída qualquer que seja a escolha?",
+      "eixo": "da proibição total ao aborto a pedido",
+      "opcoes": [
+        {
+          "id": "proibicao-total",
+          "rotulo": "Proibição total",
+          "no_jogo": "Nem para salvar a vida: religiosos aplaudem, mas abortos inseguros lotam as emergências e organismos internacionais protestam.",
+          "manchete": "Nem para salvar a vida: país proíbe o aborto em qualquer caso e médicos temem a cadeia",
+          "exemplos": [
+            "El Salvador",
+            "Nicarágua",
+            "Honduras",
+            "República Dominicana"
+          ]
+        },
+        {
+          "id": "casos-restritos",
+          "rotulo": "Só casos previstos em lei",
+          "no_jogo": "Permitido só em estupro, risco de vida ou malformação grave: meio-termo que desagrada aos dois lados e mantém a clandestinidade.",
+          "manchete": "Estupro, risco de vida e malformação grave: lei mantém exceções e o resto continua crime",
+          "exemplos": [
+            "Brasil",
+            "Polônia (desde 2021)",
+            "Chile (três causais, 2017)",
+            "Paraguai (só risco de vida)"
+          ]
+        },
+        {
+          "id": "motivos-amplos",
+          "rotulo": "Motivos de saúde e sociais",
+          "no_jogo": "Médicos autorizam por razões de saúde ou sociais: menos complicações nos hospitais e conservadores falando em 'porta aberta'.",
+          "manchete": "Médicos poderão autorizar por razões de saúde ou sociais; conservadores falam em 'porta aberta'",
+          "exemplos": [
+            "Índia",
+            "Japão",
+            "Reino Unido (Abortion Act 1967)",
+            "Finlândia"
+          ]
+        },
+        {
+          "id": "a-pedido",
+          "rotulo": "A pedido, com prazo",
+          "no_jogo": "Aborto legal nas primeiras semanas, como serviço de saúde: a clandestinidade some e o governo enfrenta guerra cultural.",
+          "manchete": "Aborto legal até a 12ª-14ª semana: praças lotadas de lenços verdes, missas de desagravo",
+          "exemplos": [
+            "Argentina (2020)",
+            "Irlanda (2018)",
+            "França (garantido na Constituição em 2024)",
+            "Canadá (sem lei penal desde 1988)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "casos-restritos",
+      "historia": {
+        "brasil": "Código Penal de 1940, Art. 124 a 128: crime, salvo risco de vida da gestante ou gravidez por estupro; a ADPF 54 (STF, 2012) incluiu a anencefalia. A ADPF 442, que pede a descriminalização até a 12ª semana, segue no STF."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Quanto mais casos legais, mais o sistema de saúde oferece o procedimento; nos extremos restritivos o custo aparece no tratamento de complicações."
+      },
+      "custo_pib": {
+        "gasto": {
+          "proibicao-total": 0.02,
+          "casos-restritos": 0.01,
+          "motivos-amplos": 0.02,
+          "a-pedido": 0.03
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "A restrição não reduz o número de abortos, mas empurra mais deles para a clandestinidade insegura, que mata e deixa sequelas (OMS)."
+        },
+        {
+          "alvo": "pressao_hospitalar",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Menos complicações de aborto inseguro chegando às emergências."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Mais decisões ficam com a própria pessoa e menos com o Código Penal."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Mudar a lei em qualquer direção vira guerra cultural.",
+          "condicao": "qualquer mudança de opção"
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem defende a vida desde a concepção pune nas urnas; nos extremos restritivos, quem defende a autonomia pune.",
+          "condicao": "qualquer mudança de opção, sobretudo para a-pedido"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Proibição total e prisão de mulheres atraem críticas de organismos de direitos humanos.",
+          "condicao": "em proibicao-total"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_jovens"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["acesso_saude", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Aborto legal só existe de fato onde a rede de saúde oferece o serviço; proibição só 'funciona' onde o Estado fiscaliza, e mesmo assim desloca para a clandestinidade."
+      },
+      "substitui": ["aborto"],
+      "fontes": [
+        {
+          "titulo": "Center for Reproductive Rights - The World's Abortion Laws",
+          "url": "https://reproductiverights.org/maps/world-abortion-laws/"
+        },
+        {
+          "titulo": "WHO - Abortion fact sheet",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/abortion"
+        }
+      ]
+    },
+    {
+      "id": "casamento-e-familia",
+      "nome": "Casamento e família",
+      "nivel": "meso",
+      "area": "direitos",
+      "ministro": "direitos-humanos",
+      "pai": {
+        "lei": "estado-e-religiao",
+        "opcoes": [
+          "teocracia",
+          "religiao-oficial",
+          "laico",
+          "laicidade-estrita",
+          "controle-estatal"
+        ],
+        "motivo": "Quem o Estado reconhece como família depende de quanto a religião pesa na lei civil."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define que casais o Estado reconhece como família, com herança, pensão, adoção e plano de saúde.",
+      "dilema": "Estender a todos os casais os mesmos direitos ou preservar a definição tradicional de família que boa parte do eleitorado defende?",
+      "eixo": "da criminalização de relações homoafetivas ao casamento igualitário",
+      "opcoes": [
+        {
+          "id": "criminalizacao",
+          "rotulo": "Relações homoafetivas são crime",
+          "no_jogo": "Polícia moral nas ruas: conservadores religiosos aplaudem, liberdade e reputação despencam e vêm sanções.",
+          "manchete": "Polícia moral nas ruas: relações entre pessoas do mesmo sexo passam a dar prisão",
+          "exemplos": ["Irã", "Arábia Saudita", "Uganda"]
+        },
+        {
+          "id": "sem-reconhecimento",
+          "rotulo": "Sem reconhecimento",
+          "no_jogo": "Nem crime nem família: casais do mesmo sexo ficam sem herança e pensão, e a discriminação segue normalizada.",
+          "manchete": "Nem crime, nem família: casais do mesmo sexo ficam sem herança, pensão ou visita no hospital",
+          "exemplos": [
+            "Japão (só certificados municipais)",
+            "China",
+            "Índia (Suprema Corte negou em 2023)",
+            "Polônia"
+          ]
+        },
+        {
+          "id": "uniao-civil",
+          "rotulo": "União civil",
+          "no_jogo": "Casais do mesmo sexo ganham direitos de família sem o nome 'casamento': meio-termo que reduz o atrito, sem encerrar a briga.",
+          "manchete": "Meio-termo: casais do mesmo sexo ganham união civil, mas 'casamento' continua sendo outra coisa",
+          "exemplos": [
+            "Itália (2016)",
+            "Hungria (parceria registrada; casamento vedado na Constituição)",
+            "Croácia"
+          ]
+        },
+        {
+          "id": "casamento-igualitario",
+          "rotulo": "Casamento igualitário",
+          "no_jogo": "Casamento para todos os casais: liberdade e menos discriminação, com religiosos e conservadores se sentindo atacados.",
+          "manchete": "'Sim' para todos: cartórios celebram os primeiros casamentos entre pessoas do mesmo sexo",
+          "exemplos": [
+            "Holanda (2001, a primeira)",
+            "Argentina (2010)",
+            "Brasil (2013)",
+            "EUA (2015)",
+            "Taiwan (2019)",
+            "Tailândia (2025)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "casamento-igualitario",
+      "historia": {
+        "brasil": "ADI 4.277 e ADPF 132 (STF, 2011) reconheceram a união estável homoafetiva; a Resolução 175/2013 do CNJ obrigou cartórios a celebrar o casamento. Não há lei aprovada pelo Congresso."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Não sai do orçamento; muda direitos de família, herança e previdência."
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Mais pessoas podem viver e registrar a própria família sem medo da lei."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O reconhecimento legal muda, aos poucos, o que é visto como normal."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Grupos religiosos e conservadores veem a mudança como ataque à família tradicional.",
+          "condicao": "qualquer mudança de opção"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Prisões por orientação sexual geram sanções diplomáticas e boicotes.",
+          "condicao": "em criminalizacao"
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Quem se sente derrotado no tema cobra o governo nas urnas.",
+          "condicao": "qualquer mudança de opção"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_jovens"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["polarizacao"],
+        "porque": "Direito reconhecido só vale onde cartórios e tribunais o aplicam; num país muito polarizado, a mudança é contestada e revertida."
+      },
+      "substitui": ["casamento-e-uniao-civil"],
+      "fontes": [
+        {
+          "titulo": "Pew Research Center - Same-sex marriage around the world",
+          "url": "https://www.pewresearch.org/religion/fact-sheet/same-sex-marriage-around-the-world/"
+        }
+      ]
+    },
+    {
+      "id": "combate-a-violencia-domestica",
+      "nome": "Combate à violência doméstica",
+      "nivel": "micro",
+      "area": "direitos",
+      "ministro": "mulheres",
+      "pai": {
+        "lei": "protecao-a-grupos-vulneraveis",
+        "opcoes": [
+          "sem-lei-especifica",
+          "lei-antidiscriminacao",
+          "certificacao-e-metas"
+        ],
+        "motivo": "Rede de proteção às vítimas não existe onde a própria lei trata a mulher como inferior."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o governo gasta por ano com delegacias e varas especializadas, abrigos, centros de atendimento e monitoramento de agressores.",
+      "dilema": "Uma rede que tira a vítima de perto do agressor antes da tragédia, ou o dinheiro em outra área enquanto a lei fica no papel?",
+      "eixo": "de nenhuma rede de proteção a uma rede integral com monitoramento",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 3000,
+        "exemplos": [
+          {
+            "pais": "Brasil (gasto federal exclusivo para mulheres no eixo 'viver sem violência', 2024)",
+            "valor": 361
+          }
+        ]
+      },
+      "brasil": 361,
+      "historia": {
+        "brasil": "Lei Maria da Penha (Lei 11.340/2006): medidas protetivas em 48 horas, juizados especializados; a Lei 13.104/2015 tipificou o feminicídio. Em 2024 a União empenhou cerca de R$ 361 milhões em ações exclusivas contra a violência às mulheres (Casa da Mulher Brasileira, Ligue 180 e outras)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Varas especializadas, abrigos, delegacias e tornozeleiras."
+      },
+      "custo_pib": {
+        "gasto": 0.003
+      },
+      "efeitos": [
+        {
+          "alvo": "violencia_contra_mulheres",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Medida protetiva rápida e abrigo tiram o agressor de perto antes que a violência escale."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "A lei especial com rede de proteção reduziu em cerca de 10% os homicídios de mulheres dentro de casa (Ipea)."
+        },
+        {
+          "alvo": "impunidade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Agressões que nunca chegavam ao juiz passam a ser processadas."
+        },
+        {
+          "alvo": "lotacao_prisional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Mais prisões em flagrante e preventivas de agressores."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Juizados, abrigos e monitoramento entram no orçamento."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_pobres"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["desigualdade_regional"],
+        "porque": "O efeito depende de haver delegacia, abrigo e juiz por perto; onde a rede não chega, a medida protetiva é papel."
+      },
+      "substitui": ["protecao-violencia-domestica"],
+      "fontes": [
+        {
+          "titulo": "Ipea - Cerqueira, Martins & Pinto Junior, Avaliando a Efetividade da Lei Maria da Penha (TD 2048)",
+          "url": "https://ideas.repec.org/p/ipe/ipetds/2048.html"
+        },
+        {
+          "titulo": "Ministério do Planejamento - Agenda Transversal Mulheres (relatório da LOA 2024)",
+          "url": "https://www.gov.br/planejamento/pt-br/assuntos/orcamento/repositorio-de-arquivos-legislacao-eleitoral/agenda-transversal-mulheres-25.pdf/@@display-file/file"
+        },
+        {
+          "titulo": "Wikipedia - Domestic violence in Russia (descriminalização de 2017)",
+          "url": "https://en.wikipedia.org/wiki/Domestic_violence_in_Russia"
+        }
+      ]
+    },
+    {
+      "id": "comunicacao-estatal",
+      "nome": "Comunicação do governo",
+      "nivel": "micro",
+      "area": "direitos",
+      "ministro": "comunicacao-social",
+      "pai": {
+        "lei": "regulacao-de-midia-e-redes",
+        "opcoes": [
+          "livre",
+          "ordem-judicial",
+          "dever-de-cuidado",
+          "controle-estatal"
+        ],
+        "motivo": "A verba do governo para falar com o público entra no mesmo ecossistema de mídia que a lei regula."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o governo gasta por ano com publicidade oficial e campanhas de utilidade pública.",
+      "dilema": "Explicar o que o governo faz e combater boatos, ou gastar dinheiro público em propaganda que só ajuda quem está no poder?",
+      "eixo": "de nenhuma publicidade oficial a uma máquina de propaganda",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 3000,
+        "exemplos": [
+          {
+            "pais": "Brasil (publicidade oficial federal prevista para 2024)",
+            "valor": 647
+          }
+        ]
+      },
+      "brasil": 647,
+      "historia": {
+        "brasil": "Secretaria de Comunicação Social da Presidência (Secom), que contrata agências para publicidade institucional e de utilidade pública; o projeto de orçamento de 2024 reservou R$ 647 milhões, recorde. A Constituição, Art. 37, §1º, proíbe promoção pessoal de autoridades na publicidade oficial. A emissora pública (EBC) tem orçamento à parte."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Compra de espaço na mídia e contratos com agências."
+      },
+      "custo_pib": {
+        "gasto": 0.0055
+      },
+      "efeitos": [
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Campanhas bem feitas fazem o eleitor saber o que o governo entregou."
+        },
+        {
+          "alvo": "desinformacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Campanhas de utilidade pública respondem boatos sobre vacinas, benefícios e golpes.",
+          "condicao": "fora de controle-estatal"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "A oposição denuncia propaganda com dinheiro público e acusa o governo de comprar a imprensa."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Cada campanha sai do orçamento."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Veículos que dependem da verba oficial pegam leve com o governo.",
+          "condicao": "em valores altos"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios"],
+        "perdem": ["grupo_classe_media", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["desinformacao"],
+        "porque": "Quem não confia no governo desconfia também da propaganda dele; e num ambiente de boatos, a campanha oficial chega depois."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Gazeta do Povo - Comissão convida governo Lula a explicar R$ 647 mi em publicidade oficial para 2024",
+          "url": "https://www.gazetadopovo.com.br/republica/comissao-convida-governo-lula-a-explicar-r-647-mi-em-publicidade-oficial-para-2024/"
+        }
+      ]
+    },
+    {
+      "id": "cotas-raciais",
+      "nome": "Recorte racial nas cotas",
+      "nivel": "micro",
+      "area": "direitos",
+      "ministro": "igualdade-racial",
+      "pai": {
+        "lei": "protecao-a-grupos-vulneraveis",
+        "opcoes": ["lei-antidiscriminacao", "certificacao-e-metas"],
+        "motivo": "Critério racial em políticas públicas só cabe onde a lei já cobra igualdade de forma ativa."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define se as reservas de vaga do Estado (universidades, seleções públicas, programas) usam só critério de renda e escola pública ou também de raça e etnia.",
+      "dilema": "Corrigir desigualdades herdadas da escravidão e da exclusão com critério racial, ou manter só o critério social para evitar a divisão por cor?",
+      "eixo": "de cotas só sociais a cotas sociais e raciais",
+      "opcoes": [
+        {
+          "id": "so-criterio-social",
+          "rotulo": "Só critério social",
+          "no_jogo": "Reservas só por renda e escola pública: menos polêmica, mas negros e indígenas pobres avançam mais devagar.",
+          "manchete": "Cotas continuam, mas sem critério racial: vale só a renda e a escola pública",
+          "exemplos": [
+            "França (convenções de Sciences Po com escolas de periferia)",
+            "Chile (programas de acesso)",
+            "EUA (após a decisão da Suprema Corte de 2023)"
+          ]
+        },
+        {
+          "id": "com-recorte-racial",
+          "rotulo": "Recorte social e racial",
+          "no_jogo": "Dentro das reservas, parte das vagas vai para negros e indígenas: mais diversidade no ensino superior e debate mais quente sobre mérito.",
+          "manchete": "Metade das vagas das federais vai para escola pública, com recorte de renda e raça",
+          "exemplos": [
+            "Brasil",
+            "África do Sul (equidade no emprego)",
+            "Índia (castas e tribos)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "com-recorte-racial",
+      "historia": {
+        "brasil": "Lei 12.711/2012 (cotas nas universidades federais, com subcota para pretos, pardos e indígenas, renovada pela Lei 14.723/2023) e ADPF 186 (STF, 2012), que declarou as cotas raciais constitucionais."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Bancas de heteroidentificação e bolsas de permanência; sem grande impacto orçamentário."
+      },
+      "custo_pib": {
+        "gasto": {
+          "so-criterio-social": 0.01,
+          "com-recorte-racial": 0.02
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Jovens negros e indígenas chegam a cursos que antes eram fechados para eles."
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Diploma de qualidade abre portas no mercado de trabalho."
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais diversidade em posições de prestígio muda percepções, de forma lenta."
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Diplomas e cargos mais bem pagos se distribuem entre mais grupos."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem fica de fora acusa injustiça; o debate sobre mérito e raça esquenta."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_jovens", "grupo_progressistas"],
+        "perdem": ["grupo_classe_media", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Cotas rendem mais quando o ensino básico prepara os cotistas e há bolsa de permanência; fraude na autodeclaração mina a política."
+      },
+      "substitui": ["acoes-afirmativas"],
+      "fontes": [
+        {
+          "titulo": "VoxDev - Affirmative action in Brazil's higher education system",
+          "url": "https://www.voxdev.org/topic/education/affirmative-action-brazils-higher-education-system"
+        },
+        {
+          "titulo": "Brookings - The complex ramifications of Students for Fair Admissions v. Harvard",
+          "url": "https://www.brookings.edu/articles/the-complex-ramifications-of-students-for-fair-admissions-v-harvard/"
+        }
+      ]
+    },
+    {
+      "id": "moderacao-obrigatoria",
+      "nome": "Moderação obrigatória",
+      "nivel": "micro",
+      "area": "direitos",
+      "ministro": "comunicacoes",
+      "pai": {
+        "lei": "regulacao-de-midia-e-redes",
+        "opcoes": ["dever-de-cuidado", "controle-estatal"],
+        "motivo": "Obrigar plataformas a moderar só é possível onde elas já respondem pelo conteúdo."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define se as plataformas são obrigadas a remover conteúdo nocivo sem esperar ordem judicial e a verificar a idade de quem acessa conteúdo impróprio.",
+      "dilema": "Proteger crianças e vítimas de golpes já, ou evitar que robôs de moderação apaguem também o que é legítimo?",
+      "eixo": "da moderação voluntária à moderação imposta por lei",
+      "opcoes": [
+        {
+          "id": "moderacao-voluntaria",
+          "rotulo": "Moderação pelas regras da plataforma",
+          "no_jogo": "Cada plataforma modera do seu jeito: barato e livre, com crianças expostas e golpes demorando a sair.",
+          "manchete": "Cada rede com sua regra: governo deixa a moderação a cargo das próprias empresas",
+          "exemplos": ["EUA (exceto leis estaduais)", "Maior parte dos países"]
+        },
+        {
+          "id": "moderacao-reforcada",
+          "rotulo": "Moderação e verificação de idade obrigatórias",
+          "no_jogo": "Plataformas removem conteúdo nocivo ao serem notificadas e verificam a idade: menos dano a crianças, mais remoção indevida e custo maior para as pequenas.",
+          "manchete": "Redes terão de verificar idade de todos e tirar do ar conteúdo nocivo a menores sem esperar juiz",
+          "exemplos": [
+            "Brasil (desde março de 2026)",
+            "Austrália (menores de 16 fora das redes desde dez/2025)",
+            "Reino Unido (Online Safety Act)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "moderacao-reforcada",
+      "historia": {
+        "brasil": "ECA Digital (Lei 15.211/2025), em vigor desde 17 de março de 2026: verificação de idade confiável para conteúdo impróprio e remoção de conteúdo que viole direitos de crianças após notificação, com requisitos técnicos da ANPD."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "O custo cai sobre as plataformas; o Estado só fiscaliza."
+      },
+      "efeitos": [
+        {
+          "alvo": "desinformacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Conteúdo nocivo notificado sai do ar mais rápido."
+        },
+        {
+          "alvo": "saude_populacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Menos exposição de crianças a conteúdo nocivo; a evidência ainda é disputada e muitos adolescentes burlam a regra."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Verificação de idade reduz o anonimato e o medo de multa leva a remoções em excesso."
+        },
+        {
+          "alvo": "concentracao_mercado",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Só as gigantes têm dinheiro para sistemas de verificação e moderação em escala."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_conservadores"],
+        "perdem": ["grupo_jovens", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Sem regulador que audite as plataformas, a obrigação vira formulário; com regulador capturado, vira censura."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Jornal de Brasília - ECA Digital entra em vigor nesta terça (17): veja o que muda para plataformas e usuários",
+          "url": "https://jornaldebrasilia.com.br/noticias/brasil/eca-digital-entra-em-vigor-nesta-terca-17-veja-o-que-muda-para-plataformas-e-usuarios/"
+        },
+        {
+          "titulo": "Gulf News - Australia social media ban for under-16 kicks in (2025)",
+          "url": "https://gulfnews.com/world/oceania/australia-social-media-ban-for-under-16-kicks-in-millions-of-kids-locked-out-1.500374715"
+        }
+      ]
+    },
+    {
+      "id": "verba-de-direitos-humanos",
+      "nome": "Verba de direitos humanos",
+      "nivel": "micro",
+      "area": "direitos",
+      "ministro": "direitos-humanos",
+      "pai": {
+        "lei": "protecao-a-grupos-vulneraveis",
+        "opcoes": [
+          "discriminacao-legal",
+          "sem-lei-especifica",
+          "lei-antidiscriminacao",
+          "certificacao-e-metas"
+        ],
+        "motivo": "É o orçamento que põe em prática (ou não) a proteção prometida na lei."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o governo gasta por ano com programas para crianças, idosos, pessoas com deficiência, população de rua, LGBT e proteção a testemunhas e defensores de direitos.",
+      "dilema": "Bancar a rede que protege quem não tem voz, ou cortar uma pasta que dá pouco voto e muita briga?",
+      "eixo": "de uma pasta simbólica a uma rede de proteção robusta",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 3000,
+        "exemplos": [
+          {
+            "pais": "Brasil (orçamento atualizado do ministério de direitos humanos, ano recente)",
+            "valor": 500
+          }
+        ]
+      },
+      "brasil": 500,
+      "historia": {
+        "brasil": "Ministério dos Direitos Humanos e da Cidadania (MDHC): Disque 100, conselhos tutelares, programas de proteção a testemunhas (Provita) e a defensores; orçamento atualizado de cerca de R$ 500 milhões."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Repasses a estados e municípios, centrais de denúncia e programas de proteção."
+      },
+      "custo_pib": {
+        "gasto": 0.0043
+      },
+      "efeitos": [
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Canais de denúncia e campanhas fazem as violações aparecerem e serem punidas."
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Testemunhas e defensores protegidos podem denunciar sem medo."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Cumprir decisões e recomendações internacionais melhora a imagem do país."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Programas e repasses entram no orçamento."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Parte do eleitorado vê a pasta como 'defesa de bandido' e pauta ideológica."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_progressistas"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["impunidade"],
+        "porque": "Denúncia só protege se a polícia e a Justiça agem; sem isso, o canal vira estatística."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Portal da Transparência - Ministério dos Direitos Humanos e Cidadania (órgão 81000)",
+          "url": "https://portaldatransparencia.gov.br/orgaos-superiores/81000?ano=2024"
+        }
+      ]
+    }
+  ]
+}

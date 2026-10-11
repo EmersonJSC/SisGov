@@ -1,0 +1,1195 @@
+{
+  "area": "defesa",
+  "leis": [
+    {
+      "id": "papel-das-forcas-armadas",
+      "nome": "Papel das forças armadas",
+      "nivel": "macro",
+      "brasil_petrea": false,
+      "area": "defesa",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Se o país tem forças armadas, para que servem e quem manda nelas.",
+      "dilema": "Forças armadas fortes que também seguram a ordem interna, ou um exército só para a guerra, bem longe da política?",
+      "eixo": "da ausência de forças armadas à tutela militar",
+      "opcoes": [
+        {
+          "id": "sem-forcas-armadas",
+          "rotulo": "Sem forças armadas",
+          "no_jogo": "O país dissolve o exército e confia em polícia, diplomacia e alianças: sobra dinheiro, falta defesa.",
+          "manchete": "País dissolve o exército e aposta na diplomacia e na polícia",
+          "exemplos": ["Costa Rica (desde 1948)", "Panamá", "Islândia"]
+        },
+        {
+          "id": "so-defesa-externa",
+          "rotulo": "Só defesa externa",
+          "no_jogo": "Militares sob controle civil e proibidos de agir na segurança interna salvo catástrofe: pouco risco de golpe, polícia sozinha nas crises.",
+          "manchete": "Constituição veta tropa nas ruas: 'exército é para a guerra'",
+          "exemplos": ["Alemanha", "Japão", "Argentina (lei de defesa de 1988)"]
+        },
+        {
+          "id": "defesa-e-ordem-interna",
+          "rotulo": "Defesa e ordem interna",
+          "no_jogo": "Militares sob controle civil, mas o presidente pode mandá-los às ruas em crises de segurança: ajuda em emergência, com mais mortes e mais peso político da farda.",
+          "manchete": "Exército assume a segurança da cidade por decreto de garantia da ordem",
+          "exemplos": ["México (Guarda Nacional)", "Colômbia", "Peru"]
+        },
+        {
+          "id": "tutela-militar",
+          "rotulo": "Tutela militar",
+          "no_jogo": "Os militares têm papel político próprio, vetam governos e controlam empresas: estabilidade aparente e sempre um golpe à espreita.",
+          "manchete": "Comandante avisa: 'as Forças Armadas são o poder moderador'",
+          "exemplos": ["Egito", "Tailândia", "Mianmar", "Paquistão"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "defesa-e-ordem-interna",
+      "historia": {
+        "brasil": "Constituição de 1988, art. 142: Forças Armadas sob autoridade suprema do presidente, para defesa da pátria, garantia dos poderes e, por iniciativa destes, da lei e da ordem (operações de GLO); em 2024 o STF afirmou que o artigo não autoriza 'poder moderador'."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Regra constitucional: não define gasto; o dinheiro está nas leis de baixo."
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Sem exército, o país depende de alianças e da sorte.",
+          "condicao": "em sem-forcas-armadas"
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Militares com papel político derrubam governos de que não gostam.",
+          "condicao": "em tutela-militar"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Tribunais militares e censura acompanham a tutela.",
+          "condicao": "em tutela-militar"
+        },
+        {
+          "alvo": "letalidade_policial",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Soldado treinado para a guerra, patrulhando a rua, mata mais.",
+          "condicao": "em defesa-e-ordem-interna e tutela-militar"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Regime tutelado por militares perde aliados democráticos.",
+          "condicao": "em tutela-militar"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores"],
+        "perdem": ["grupo_progressistas"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Controle civil só existe com ministério da defesa civil e Congresso que fiscaliza."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Constituição Federal de 1988 (texto compilado)",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        },
+        {
+          "titulo": "Wikipedia: Military of Costa Rica",
+          "url": "https://en.wikipedia.org/wiki/Military_of_Costa_Rica"
+        }
+      ]
+    },
+    {
+      "id": "servico-militar",
+      "nome": "Serviço militar",
+      "nivel": "meso",
+      "area": "defesa",
+      "ministro": "defesa",
+      "pai": {
+        "lei": "papel-das-forcas-armadas",
+        "opcoes": [
+          "so-defesa-externa",
+          "defesa-e-ordem-interna",
+          "tutela-militar"
+        ],
+        "motivo": "Só há recrutamento onde existem forças armadas."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Como o país forma suas tropas: só voluntários, alistamento com seleção ou serviço obrigatório.",
+      "dilema": "Ter reserva treinada e um rito de cidadania comum, ou deixar os jovens livres para estudar e trabalhar?",
+      "eixo": "do serviço voluntário ao serviço universal",
+      "opcoes": [
+        {
+          "id": "voluntario",
+          "rotulo": "Só voluntários",
+          "no_jogo": "Forças armadas 100% profissionais: tropa menor e mais cara por soldado, e os jovens ficam livres.",
+          "manchete": "Fim do alistamento: Forças Armadas passam a ser 100% profissionais",
+          "exemplos": ["EUA", "Reino Unido", "Japão", "França"]
+        },
+        {
+          "id": "seletivo",
+          "rotulo": "Alistamento com seleção",
+          "no_jogo": "Todo jovem se alista, mas só uma pequena parte serve: custo moderado e pouca reserva.",
+          "manchete": "Todo jovem se alista, poucos servem: quartéis escolhem quem fica",
+          "exemplos": [
+            "Alemanha (nova lei de 2026)",
+            "Turquia (com dispensa paga)"
+          ]
+        },
+        {
+          "id": "obrigatorio-masculino",
+          "rotulo": "Obrigatório para homens",
+          "no_jogo": "Todo homem passa um ano ou mais no quartel: reserva grande, custo alto e carreira dos jovens atrasada.",
+          "manchete": "Todo homem de 18 anos vai para o quartel: um ano e meio de farda",
+          "exemplos": [
+            "Coreia do Sul (cerca de 18 meses)",
+            "Suíça",
+            "Finlândia",
+            "Taiwan (1 ano desde 2024)"
+          ]
+        },
+        {
+          "id": "universal",
+          "rotulo": "Universal, homens e mulheres",
+          "no_jogo": "Homens e mulheres servem: a maior reserva possível e o maior custo.",
+          "manchete": "Serviço militar passa a valer para homens e mulheres",
+          "exemplos": ["Israel", "Noruega (desde 2015)", "Suécia (desde 2018)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "seletivo",
+      "historia": {
+        "brasil": "Lei do Serviço Militar (Lei 4.375/1964) e Constituição, art. 143: alistamento obrigatório para homens aos 18 anos, mas só 5% a 10% dos alistados são incorporados; mulheres podem servir como voluntárias desde 2025."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Mais recrutas significam mais soldo, alimentação, alojamento e instrutores."
+      },
+      "custo_pib": {
+        "gasto": {
+          "voluntario": 0.1,
+          "seletivo": 0.15,
+          "obrigatorio-masculino": 0.4,
+          "universal": 0.7
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais gente treinada forma uma reserva grande e mobilizável."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Manter recrutas custa caro, ainda que ganhem menos que profissionais.",
+          "condicao": "a partir de obrigatorio-masculino"
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Um a dois anos de quartel atrasam faculdade e primeiro emprego.",
+          "condicao": "a partir de obrigatorio-masculino"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O Estado obriga o jovem a servir; objetores pedem serviço civil alternativo."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Jovens no quartel saem temporariamente da fila do emprego."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores"],
+        "perdem": ["grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "escolaridade"],
+        "reduz": ["corrupcao"],
+        "porque": "Recruta só vira defesa real com treino e equipamento; dispensa comprada esvazia a regra."
+      },
+      "substitui": ["servico-militar"],
+      "fontes": [
+        {
+          "titulo": "Wikipedia: Conscription by country",
+          "url": "https://en.wikipedia.org/wiki/Conscription_by_country"
+        }
+      ]
+    },
+    {
+      "id": "inteligencia-e-vigilancia",
+      "nome": "Inteligência e vigilância",
+      "nivel": "meso",
+      "area": "defesa",
+      "ministro": "gsi",
+      "pai": {
+        "lei": "papel-das-forcas-armadas",
+        "opcoes": [
+          "sem-forcas-armadas",
+          "so-defesa-externa",
+          "defesa-e-ordem-interna",
+          "tutela-militar"
+        ],
+        "motivo": "Os serviços de inteligência nascem da mesma escolha sobre quem guarda o Estado e contra quem."
+      },
+      "grupo": "institucional",
+      "descricao": "Quanto os serviços de inteligência podem grampear e monitorar, e quem os controla.",
+      "dilema": "Ver as ameaças antes que aconteçam, ou não dar ao governo um olho dentro da casa de cada cidadão?",
+      "eixo": "do grampo só com ordem do juiz à polícia política",
+      "opcoes": [
+        {
+          "id": "mandado-individual",
+          "rotulo": "Só com ordem judicial, caso a caso",
+          "no_jogo": "Cada grampo precisa de juiz e prazo curto; a inteligência de Estado não intercepta: mais privacidade, ameaças vistas mais tarde.",
+          "manchete": "Juiz nega grampo pedido pela agência de inteligência: 'falta indício concreto'",
+          "exemplos": ["Alemanha (lei G10 com comissão parlamentar)", "Canadá"]
+        },
+        {
+          "id": "coleta-em-massa-supervisionada",
+          "rotulo": "Coleta em massa supervisionada",
+          "no_jogo": "A agência coleta comunicações em massa, com juízes e comitê do parlamento revisando: mais ameaças detectadas, mais dados de inocentes guardados.",
+          "manchete": "Agência poderá varrer comunicações em massa; comitê de juízes vai revisar",
+          "exemplos": [
+            "Reino Unido (lei de poderes investigatórios de 2016)",
+            "EUA (seção 702 da lei FISA)"
+          ]
+        },
+        {
+          "id": "vigilancia-politica",
+          "rotulo": "Vigilância política",
+          "no_jogo": "Os serviços monitoram oposição, jornalistas e redes sem controle externo: o governo sabe tudo, e ninguém confia em ninguém.",
+          "manchete": "Jornalistas descobrem que estavam grampeados pelo serviço secreto do governo",
+          "exemplos": ["China", "Rússia", "Irã"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "mandado-individual",
+      "historia": {
+        "brasil": "Lei 9.296/1996: interceptação só com ordem judicial, por 15 dias renováveis; a ABIN (Lei 9.883/1999) não pode grampear e é fiscalizada por comissão mista do Congresso. O caso da 'ABIN paralela' (2023 a 2024) investigou espionagem ilegal de adversários."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Agências de inteligência custam pouco perto da defesa; a coleta em massa exige centros de dados."
+      },
+      "custo_pib": {
+        "gasto": {
+          "mandado-individual": 0.01,
+          "coleta-em-massa-supervisionada": 0.03,
+          "vigilancia-politica": 0.05
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Quanto mais o Estado ouve, menos o cidadão fala livre."
+        },
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais dados ajudam a mapear facções e terrorismo."
+        },
+        {
+          "alvo": "confianca_instituicoes",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Escândalos de espionagem derrubam a confiança no governo."
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem controla a polícia política pode perseguir e calar opositores.",
+          "condicao": "em vigilancia-politica"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Cada vazamento de grampo vira guerra entre governo e oposição."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores"],
+        "perdem": ["grupo_progressistas", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Inteligência só serve ao país, e não ao governo, com controle judicial e parlamentar real."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Lei 9.296/1996 (interceptação de comunicações)",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9296.htm"
+        },
+        {
+          "titulo": "Wikipedia: Investigatory Powers Act 2016",
+          "url": "https://en.wikipedia.org/wiki/Investigatory_Powers_Act_2016"
+        }
+      ]
+    },
+    {
+      "id": "tarifas-de-importacao",
+      "nome": "Tarifas de importação",
+      "nivel": "meso",
+      "area": "defesa",
+      "ministro": "relacoes-exteriores",
+      "pai": {
+        "lei": "propriedade-e-economia",
+        "opcoes": [
+          "propriedade-absoluta",
+          "funcao-social",
+          "economia-mista-dirigida",
+          "planificada"
+        ],
+        "motivo": "Tarifa existe em qualquer regime econômico; todas as opções do pai a liberam (lista a preencher quando a área mercado fechar os ids)."
+      },
+      "grupo": "tributaria",
+      "descricao": "Quanto o país cobra, em média, sobre os produtos que entram.",
+      "dilema": "Proteger a fábrica e o emprego nacional, ou deixar o consumidor e a própria indústria comprarem mais barato lá fora?",
+      "eixo": "da tarifa zero ao protecionismo alto",
+      "opcoes": [
+        {
+          "id": "tarifa-zero",
+          "rotulo": "Tarifa zero",
+          "no_jogo": "Quase tudo entra sem imposto: produtos baratos e concorrência dura para a indústria nacional.",
+          "manchete": "Porto livre: país zera tarifas e vira vitrine de importados",
+          "exemplos": ["Singapura", "Hong Kong"]
+        },
+        {
+          "id": "tarifa-baixa",
+          "rotulo": "Tarifa baixa",
+          "no_jogo": "Tarifa média em torno de 5%: abertura com alguma proteção a setores sensíveis.",
+          "manchete": "Governo corta tarifas e diz que a indústria 'vai ter de competir'",
+          "exemplos": [
+            "Chile (cerca de 6%)",
+            "União Europeia",
+            "EUA (antes de 2025)"
+          ]
+        },
+        {
+          "id": "tarifa-moderada",
+          "rotulo": "Tarifa moderada",
+          "no_jogo": "Tarifa média perto de 12%: indústria protegida, importados caros e algum contrabando.",
+          "manchete": "Carro importado custa o dobro: tarifa protege montadoras locais",
+          "exemplos": ["Argentina", "México (em vários setores)"]
+        },
+        {
+          "id": "tarifa-alta",
+          "rotulo": "Protecionismo alto",
+          "no_jogo": "Tarifas altas fecham o mercado: fábrica nacional sobrevive, preços sobem e parceiros retaliam.",
+          "manchete": "Muralha tarifária: governo dobra imposto de importação e parceiros prometem revide",
+          "exemplos": ["Índia (cerca de 16%)", "Turquia (cerca de 17%)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "tarifa-moderada",
+      "historia": {
+        "brasil": "Tarifa Externa Comum do Mercosul, decidida pela Camex: média aplicada perto de 12% em 2025 (OMC)."
+      },
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "A tarifa arrecada, mas pouco perto de impostos internos; e cai se as importações despencarem."
+      },
+      "efeitos": [
+        {
+          "alvo": "balanca_comercial",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Produto de fora fica caro e as importações caem, mas a retaliação come parte das exportações."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A tarifa é repassada quase toda ao preço final e aos insumos."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Cada contêiner que entra paga mais na alfândega."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Sem concorrência de fora e com insumos caros, a indústria se acomoda."
+        },
+        {
+          "alvo": "pib",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Em 151 países, alta de tarifas foi seguida de queda do produto no médio prazo."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Depois do alívio nos setores protegidos, tarifas altas vieram seguidas de mais desemprego."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_trabalhadores", "grupo_empresarios"],
+        "perdem": ["grupo_classe_media", "grupo_pobres", "grupo_agro"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao", "informalidade"],
+        "porque": "Tarifa alta só protege se a alfândega funciona; senão vira contrabando e subfaturamento."
+      },
+      "substitui": ["tarifas-de-importacao"],
+      "fontes": [
+        {
+          "titulo": "Furceri, Hannan, Ostry & Rose: Macroeconomic Consequences of Tariffs (NBER w25402)",
+          "url": "https://www.nber.org/papers/w25402"
+        },
+        {
+          "titulo": "Amiti, Redding & Weinstein: The Impact of the 2018 Trade War on U.S. Prices and Welfare (NBER w25672)",
+          "url": "https://www.nber.org/papers/w25672"
+        },
+        {
+          "titulo": "WTO: Tariff & Trade Data, perfil do Brasil",
+          "url": "https://ttd.wto.org/en/profiles/brazil"
+        }
+      ]
+    },
+    {
+      "id": "imigracao-e-refugio",
+      "nome": "Imigração e refúgio",
+      "nivel": "meso",
+      "area": "defesa",
+      "ministro": "relacoes-exteriores",
+      "pai": {
+        "lei": "garantias-individuais",
+        "opcoes": ["plenas", "restritas"],
+        "motivo": "Quem pode entrar e pedir proteção depende de que direitos o Estado reconhece a quem não é cidadão."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Quem pode entrar para viver e trabalhar, se vira cidadão, e como o país trata quem foge de guerra ou perseguição.",
+      "dilema": "Abrir a porta para trabalhadores e para quem foge, ou atender ao eleitor que teme perder emprego, salário e identidade?",
+      "eixo": "das fronteiras fechadas à acolhida ampla",
+      "opcoes": [
+        {
+          "id": "fechada",
+          "rotulo": "Fronteiras fechadas",
+          "no_jogo": "Quase nenhum visto de residência e nenhum asilo: sem crise migratória, com país envelhecendo e pária humanitário.",
+          "manchete": "País fecha as portas: nenhum visto de residência e nenhum pedido de asilo aceito",
+          "exemplos": [
+            "Coreia do Norte",
+            "Japão (até os anos 2010, quase sem asilo)"
+          ]
+        },
+        {
+          "id": "temporaria-e-dissuasao",
+          "rotulo": "Trabalho temporário, asilo restrito",
+          "no_jogo": "Estrangeiro vem com contrato e volta, sem caminho para cidadania; pedido de asilo é barrado ou mandado a outro país: mão de obra barata e críticas da ONU.",
+          "manchete": "Pedidos de asilo serão analisados em outro país: governo fecha acordo milionário de 'centros externos'",
+          "exemplos": [
+            "Arábia Saudita e Golfo (sistema kafala)",
+            "Hungria",
+            "Austrália (centros em Nauru)"
+          ]
+        },
+        {
+          "id": "seletiva",
+          "rotulo": "Seletiva, asilo caso a caso",
+          "no_jogo": "Visto por pontos para quem tem diploma e profissão; asilo analisado caso a caso pela convenção internacional.",
+          "manchete": "Diploma, idioma e profissão valem pontos: país abre portas só para quem 'interessa'",
+          "exemplos": ["Canadá", "Austrália (imigração por pontos)", "França"]
+        },
+        {
+          "id": "acolhedora",
+          "rotulo": "Acolhedora",
+          "no_jogo": "Migrar é direito, quem está irregular é regularizado e quem foge recebe visto humanitário em massa: mais gente e prestígio, mais gasto e mais polarização.",
+          "manchete": "Portas abertas a quem foge: vistos humanitários em massa e programa de interiorização",
+          "exemplos": [
+            "Argentina (2004)",
+            "Colômbia (estatuto para venezuelanos)",
+            "Alemanha (2015)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "acolhedora",
+      "historia": {
+        "brasil": "Lei de Migração (Lei 13.445/2017), Lei do Refúgio (Lei 9.474/1997) e Operação Acolhida (desde 2018) para venezuelanos em Roraima."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Abrigo, documentação, saúde e integração; e a dissuasão externa também é cara."
+      },
+      "custo_pib": {
+        "gasto": {
+          "fechada": 0.05,
+          "temporaria-e-dissuasao": 0.05,
+          "seletiva": 0.08,
+          "acolhedora": 0.19
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "imigracao",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Mais vistos e menos barreiras, mais gente chegando."
+        },
+        {
+          "alvo": "pib",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais trabalhadores e consumidores ampliam a economia."
+        },
+        {
+          "alvo": "envelhecimento",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Imigrantes chegam em idade ativa e rejuvenescem a pirâmide."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Imigração é das pautas que mais dividem o eleitorado."
+        },
+        {
+          "alvo": "crise_migratoria",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Portas abertas atraem chegadas em massa quando o vizinho entra em colapso.",
+          "condicao": "em acolhedora, com capacidade_estatal baixa"
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Acolher refugiados rende prestígio diplomático e apoio da ONU."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_progressistas"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "produtividade"],
+        "reduz": ["informalidade"],
+        "porque": "Imigração rende mais quando o imigrante consegue emprego formal; Estado fraco não documenta nem integra."
+      },
+      "substitui": ["politica-de-imigracao", "refugiados-e-asilo"],
+      "fontes": [
+        {
+          "titulo": "OECD: International Migration Outlook 2021, cap. sobre o impacto fiscal da imigração",
+          "url": "https://www.oecd.org/en/publications/international-migration-outlook-2021_29f23e9d-en/full-report/component-8.html"
+        },
+        {
+          "titulo": "IZA World of Labor: Do immigrant workers depress the wages of native workers?",
+          "url": "https://wol.iza.org/articles/do-immigrant-workers-depress-the-wages-of-native-workers/long"
+        },
+        {
+          "titulo": "Wikipedia: Rwanda asylum plan",
+          "url": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan"
+        }
+      ]
+    },
+    {
+      "id": "orcamento-de-defesa",
+      "nome": "Orçamento de defesa",
+      "nivel": "micro",
+      "area": "defesa",
+      "ministro": "defesa",
+      "pai": {
+        "lei": "servico-militar",
+        "opcoes": [
+          "voluntario",
+          "seletivo",
+          "obrigatorio-masculino",
+          "universal"
+        ],
+        "motivo": "O orçamento paga a tropa que o modelo de recrutamento forma."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o país gasta por ano com pessoal e manutenção das forças armadas (sem contar compra de equipamentos).",
+      "dilema": "Tropa bem paga e pronta, ou o dinheiro em escolas, hospitais e casas?",
+      "eixo": "de nenhum gasto militar a uma economia de guerra",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 600000,
+        "exemplos": [
+          {
+            "pais": "Brasil (2024, pessoal e custeio da Defesa)",
+            "valor": 114488
+          },
+          {
+            "pais": "Brasil (2025, dotação de pessoal e custeio da Defesa)",
+            "valor": 120690
+          }
+        ]
+      },
+      "brasil": 120690,
+      "historia": {
+        "brasil": "Ministério da Defesa, dotação de 2025: R$ 101,8 bilhões de pessoal e encargos e R$ 18,8 bilhões de custeio; o total militar do Brasil foi de US$ 23,9 bilhões em 2025 (SIPRI)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "É sobretudo folha de ativos, inativos e pensionistas militares."
+      },
+      "custo_pib": {
+        "gasto": 0.95
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Tropa treinada e equipamento mantido em condição de uso."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "Cada real entra direto na conta, e quase tudo é folha difícil de cortar."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Sem corte em outra área ou imposto novo, o déficit cresce."
+        },
+        {
+          "alvo": "tensao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Vizinhos leem forças armadas crescendo como ameaça."
+        },
+        {
+          "alvo": "golpe_risco",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Forças armadas grandes e ricas ganham peso político onde as instituições são frágeis.",
+          "condicao": "acima de 4% do PIB, com confianca_instituicoes baixa"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores", "grupo_servidores"],
+        "perdem": ["grupo_pobres", "grupo_progressistas"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Dinheiro vira defesa real só se não vai todo para inativos e pensões."
+      },
+      "substitui": ["gasto-com-defesa"],
+      "fontes": [
+        {
+          "titulo": "Ministério da Defesa: orçamento consolidado 2016 a 2025 (dotação e empenho, maio de 2025)",
+          "url": "https://www.gov.br/defesa/pt-br/assuntos/orcamento-e-financas-1/arquivos/05-atualiza-consolidado-2016-a-2025-v-ascom-dot-atualizada-e-empenhadas-maio.pdf"
+        },
+        {
+          "titulo": "SIPRI: Trends in World Military Expenditure, 2025 (abr/2026)",
+          "url": "https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf"
+        }
+      ]
+    },
+    {
+      "id": "compra-de-equipamentos",
+      "nome": "Compra de equipamentos",
+      "nivel": "micro",
+      "area": "defesa",
+      "ministro": "defesa",
+      "pai": {
+        "lei": "servico-militar",
+        "opcoes": [
+          "voluntario",
+          "seletivo",
+          "obrigatorio-masculino",
+          "universal"
+        ],
+        "motivo": "Equipamento serve à tropa formada pelo modelo de recrutamento."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o país investe por ano em navios, aviões, blindados, sistemas e indústria de defesa.",
+      "dilema": "Caças e submarinos que levam anos para ficar prontos, ou obras e serviços que o eleitor vê já?",
+      "eixo": "de nenhuma compra a um rearmamento acelerado",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 150000,
+        "exemplos": [
+          {
+            "pais": "Brasil (2024, investimento da Defesa)",
+            "valor": 9198
+          },
+          {
+            "pais": "Brasil (2025, dotação de investimento da Defesa)",
+            "valor": 8236
+          }
+        ]
+      },
+      "brasil": 8236,
+      "historia": {
+        "brasil": "Ministério da Defesa: R$ 8,2 bilhões de investimento na dotação de 2025 (caças Gripen, submarino nuclear, Sisfron); o PLP 204/2025 garante R$ 5 bilhões por ano fora do arcabouço fiscal por seis anos."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Contratos longos de equipamento e desenvolvimento, muitas vezes em dólar."
+      },
+      "custo_pib": {
+        "gasto": 0.065
+      },
+      "efeitos": [
+        {
+          "alvo": "capacidade_defesa",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Navios, aviões e sistemas novos levam anos para ficar prontos, mas mudam o poder militar."
+        },
+        {
+          "alvo": "desenvolvimento",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Pesquisa militar gera tecnologia que transborda para o setor civil."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Contratos com transferência de tecnologia formam engenheiros e fornecedores."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Parcelas de contratos bilionários entram no orçamento."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Compras militares sigilosas abrem espaço para sobrepreço e propina."
+        },
+        {
+          "alvo": "tensao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Rearmamento acende alerta nos vizinhos."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_trabalhadores"],
+        "perdem": ["grupo_pobres", "grupo_progressistas"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "inovacao"],
+        "reduz": ["corrupcao"],
+        "porque": "Compra vira defesa com contrato transparente e indústria capaz de absorver tecnologia."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Ministério da Defesa: orçamento consolidado 2016 a 2025 (dotação e empenho, maio de 2025)",
+          "url": "https://www.gov.br/defesa/pt-br/assuntos/orcamento-e-financas-1/arquivos/05-atualiza-consolidado-2016-a-2025-v-ascom-dot-atualizada-e-empenhadas-maio.pdf"
+        },
+        {
+          "titulo": "Agência Senado: Projeto que assegura recursos para área de Defesa segue para sanção (2025)",
+          "url": "https://www12.senado.leg.br/noticias/materias/2025/11/04/projeto-que-assegura-recursos-para-area-de-defesa-segue-para-sancao"
+        }
+      ]
+    },
+    {
+      "id": "controle-de-fronteira",
+      "nome": "Controle de fronteira",
+      "nivel": "micro",
+      "area": "defesa",
+      "ministro": "defesa",
+      "pai": {
+        "lei": "imigracao-e-refugio",
+        "opcoes": [
+          "fechada",
+          "temporaria-e-dissuasao",
+          "seletiva",
+          "acolhedora"
+        ],
+        "motivo": "Vigiar a fronteira é como se aplica a política de quem entra."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o país gasta por ano com radares, sensores e tropas para vigiar as fronteiras terrestres.",
+      "dilema": "Fechar a porta de armas, drogas e contrabando, ou gastar bilhões numa fronteira longa demais para vigiar?",
+      "eixo": "de fronteira aberta a uma fronteira vigiada de ponta a ponta",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 5000,
+        "exemplos": [
+          {
+            "pais": "Brasil (2021, sistema de monitoramento de fronteiras)",
+            "valor": 170
+          },
+          {
+            "pais": "Brasil (2024, sistema de monitoramento de fronteiras)",
+            "valor": 368
+          }
+        ]
+      },
+      "brasil": 368,
+      "historia": {
+        "brasil": "Sistema Integrado de Monitoramento de Fronteiras (Sisfron), do Exército: R$ 368 milhões em 2024, cobrindo menos de 30% dos cerca de 16 mil km de fronteira; custo total previsto acima de R$ 11 bilhões."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Radares, sensores, comunicações e tropa na fronteira."
+      },
+      "custo_pib": {
+        "gasto": 0.003
+      },
+      "efeitos": [
+        {
+          "alvo": "crime_organizado",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Menos cocaína e menos armas atravessam a fronteira."
+        },
+        {
+          "alvo": "armas_em_circulacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Fuzis contrabandeados são apreendidos antes de chegar às facções."
+        },
+        {
+          "alvo": "imigracao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Entradas irregulares ficam mais difíceis."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Sistemas de vigilância são caros de instalar e manter."
+        },
+        {
+          "alvo": "tensao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Tropa e radar na divisa irritam vizinhos."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_conservadores", "grupo_agro"],
+        "perdem": ["grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Radar não adianta se o agente da fronteira aceita propina."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Correio do Estado: Sistema de monitoramento da fronteira teve aumento de 50% nos recursos",
+          "url": "https://correiodoestado.com.br/cidades/sistema-de-monitoramento-da-fronteira-teve-aumento-de-50-nos/472404/"
+        },
+        {
+          "titulo": "Agência Senado: Projeto que assegura recursos para área de Defesa segue para sanção (2025)",
+          "url": "https://www12.senado.leg.br/noticias/materias/2025/11/04/projeto-que-assegura-recursos-para-area-de-defesa-segue-para-sancao"
+        }
+      ]
+    },
+    {
+      "id": "ajuda-humanitaria",
+      "nome": "Ajuda humanitária",
+      "nivel": "micro",
+      "area": "defesa",
+      "ministro": "relacoes-exteriores",
+      "pai": {
+        "lei": "imigracao-e-refugio",
+        "opcoes": [
+          "fechada",
+          "temporaria-e-dissuasao",
+          "seletiva",
+          "acolhedora"
+        ],
+        "motivo": "Ajudar lá fora é a outra face de quem se acolhe aqui dentro."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Quanto o país gasta por ano com cooperação internacional, ajuda humanitária e contribuições a organismos internacionais.",
+      "dilema": "Ganhar voz no mundo ajudando os outros, ou gastar cada real com o próprio eleitor?",
+      "eixo": "de nenhuma ajuda a um grande doador",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 60000,
+        "exemplos": [
+          {
+            "pais": "Brasil (2021, cooperação para o desenvolvimento internacional, sem aporte ao banco do Brics)",
+            "valor": 3197
+          }
+        ]
+      },
+      "brasil": 3197,
+      "historia": {
+        "brasil": "Levantamento Cobradi do Ipea: o Brasil gastou R$ 3,2 bilhões em cooperação internacional em 2021, dos quais R$ 100 milhões com apoio a refugiados."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Contribuições a organismos, doações e missões de cooperação."
+      },
+      "custo_pib": {
+        "gasto": 0.025
+      },
+      "efeitos": [
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Doador generoso ganha votos na ONU e aliados."
+        },
+        {
+          "alvo": "tensao_internacional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Ajuda aos vizinhos desarma desconfianças."
+        },
+        {
+          "alvo": "crise_migratoria",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Ajudar o vizinho em colapso reduz a fuga em massa para cá."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Cada doação sai do orçamento."
+        },
+        {
+          "alvo": "popularidade_governo",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Parte do eleitor acha que o dinheiro devia ficar em casa."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Ajuda sem monitoramento some antes de chegar a quem precisa."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Ipea: Cobradi 2021, cap. 2: Uma visão geral",
+          "url": "https://repositorio.ipea.gov.br/bitstream/11058/14272/1/Cap02_Uma_visao_geral.pdf"
+        }
+      ]
+    },
+    {
+      "id": "acordos-comerciais",
+      "nome": "Acordos comerciais",
+      "nivel": "micro",
+      "area": "defesa",
+      "ministro": "relacoes-exteriores",
+      "pai": {
+        "lei": "tarifas-de-importacao",
+        "opcoes": ["tarifa-zero", "tarifa-baixa", "tarifa-moderada"],
+        "motivo": "Com protecionismo alto não há livre comércio a negociar."
+      },
+      "grupo": "institucional",
+      "descricao": "Se o país tem acordo de livre comércio com grandes blocos, além do seu bloco regional.",
+      "dilema": "Abrir mercados para quem exporta ao preço de expor a indústria nacional, ou ficar fora das grandes cadeias?",
+      "eixo": "do bloco regional apenas ao livre comércio com grandes parceiros",
+      "opcoes": [
+        {
+          "id": "so-bloco-regional",
+          "rotulo": "Só o bloco regional",
+          "no_jogo": "O país fica com o bloco vizinho e as regras gerais do comércio mundial: indústria protegida e exportador sem novos mercados.",
+          "manchete": "Sem acordo com as grandes economias, exportador perde espaço para concorrentes",
+          "exemplos": ["Venezuela", "Mongólia (até 2016)"]
+        },
+        {
+          "id": "livre-comercio-com-grandes-blocos",
+          "rotulo": "Livre comércio com grandes blocos",
+          "no_jogo": "Tarifa zero com grandes economias: agro e consumidor ganham, parte da indústria fecha e o país ganha voz.",
+          "manchete": "País assina acordo e agora tem tarifa zero com metade do PIB mundial",
+          "exemplos": [
+            "Chile (36 acordos vigentes)",
+            "México (com EUA, Canadá e União Europeia)",
+            "Vietnã"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "livre-comercio-com-grandes-blocos",
+      "historia": {
+        "brasil": "Mercosul (união aduaneira desde 1995); o acordo Mercosul-União Europeia, assinado em 17/1/2026, passou a valer provisoriamente em 1/5/2026, ainda pendente de revisão na corte europeia."
+      },
+      "custo": {
+        "tipo": "arrecadacao",
+        "tamanho": "baixo",
+        "porque": "Abrir o comércio reduz o que se arrecada com tarifas; o efeito é pequeno."
+      },
+      "custo_pib": {
+        "receita": {
+          "so-bloco-regional": -0.05,
+          "livre-comercio-com-grandes-blocos": -0.15
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "balanca_comercial",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Tarifas menores nos parceiros abrem mercados e multiplicam o comércio."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Concorrência de fora e insumos mais baratos obrigam e ajudam a indústria a melhorar."
+        },
+        {
+          "alvo": "inflacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Bens importados ficam mais baratos."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Quem assina acordos ganha voz e aliados."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Some parte da receita das tarifas."
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Fábricas que não aguentam a concorrência fecham antes que surjam vagas em outros setores.",
+          "condicao": "nas regiões com indústria protegida"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_agro", "grupo_classe_media"],
+        "perdem": ["grupo_trabalhadores"]
+      },
+      "eficacia": {
+        "aumenta": ["infraestrutura_transportes", "capacidade_estatal"],
+        "reduz": ["cambio"],
+        "porque": "Acordo só vira exportação se porto, estrada e alfândega funcionam; moeda instável afasta parceiros."
+      },
+      "substitui": ["acordos-comerciais"],
+      "fontes": [
+        {
+          "titulo": "Baier & Bergstrand: Do free trade agreements actually increase members' international trade? (JIE, 2007)",
+          "url": "https://ideas.repec.org/a/eee/inecon/v71y2007i1p72-95.html"
+        },
+        {
+          "titulo": "Poder360: Acordo comercial UE-Mercosul deve começar a valer em maio",
+          "url": "https://www.poder360.com.br/poder-internacional/acordo-comercial-ue-mercosul-deve-comecar-a-valer-em-maio/"
+        },
+        {
+          "titulo": "Jornal do Brasil: Acordo Mercosul-UE valerá provisoriamente em maio, confirma governo",
+          "url": "https://www.jb.com.br/economia/2026/03/1059083-acordo-mercosul-ue-valera-provisoriamente-em-maio-confirma-governo.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1508 @@
+{
+  "area": "educacao",
+  "leis": [
+    {
+      "id": "direito-a-educacao",
+      "nome": "Direito à educação",
+      "nivel": "macro",
+      "brasil_petrea": false,
+      "area": "educacao",
+      "ministro": "presidencia",
+      "pai": null,
+      "grupo": "institucional",
+      "descricao": "Define se a escola pública e gratuita é dever do Estado e obrigação da família, e dos quantos aos quantos anos.",
+      "dilema": "Prender o jovem na escola até os 17 forma um país mais qualificado, mas exige vagas que não existem e tira da família pobre a renda do filho que já podia trabalhar.",
+      "eixo": "de nenhuma obrigação à escola obrigatória da pré-escola ao fim do ensino médio",
+      "opcoes": [
+        {
+          "id": "sem-obrigatoriedade",
+          "rotulo": "Escola opcional",
+          "no_jogo": "Ninguém é obrigado a estudar nem o Estado a abrir vaga: tranca as leis de ensino básico e muitas crianças vão trabalhar.",
+          "manchete": "Escola vira escolha da família: governo diz que 'ninguém aprende à força'",
+          "exemplos": [
+            "Butão (ensino gratuito até o 10º ano, mas não obrigatório)",
+            "Papua-Nova Guiné"
+          ]
+        },
+        {
+          "id": "so-primario",
+          "rotulo": "Só o primário",
+          "no_jogo": "A obrigação acaba aos 11 ou 12 anos: o Estado gasta menos e o adolescente pobre sai cedo para o trabalho.",
+          "manchete": "Aprendeu a ler e a contar? Está liberado: obrigação termina aos 12 anos",
+          "exemplos": [
+            "Brasil até 1971 (4 anos de primário)",
+            "Singapura (só o primário é obrigatório)"
+          ]
+        },
+        {
+          "id": "basico-9-anos",
+          "rotulo": "Nove anos de ensino básico",
+          "no_jogo": "Escola obrigatória dos 6 aos 15: todos aprendem o básico, e o ensino médio fica como escolha.",
+          "manchete": "Nove anos na carteira: ninguém sai da escola antes dos 15",
+          "exemplos": [
+            "China (6-15)",
+            "Japão (6-15)",
+            "Alemanha e Suécia (6-16)",
+            "Índia (6-14 pela lei de 2009)"
+          ]
+        },
+        {
+          "id": "pre-escola-ao-medio",
+          "rotulo": "Da pré-escola ao fim do médio",
+          "no_jogo": "Escola pública, gratuita e obrigatória dos 4 aos 17: mais anos de estudo, mas falta vaga e sobra adolescente fora da sala.",
+          "manchete": "Escola obrigatória dos 4 aos 17: falta vaga, sobra adolescente fora da sala",
+          "exemplos": [
+            "Brasil (4-17 desde 2009)",
+            "Finlândia (até 18 desde 2021)",
+            "França (3-16, com formação obrigatória até 18)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "pre-escola-ao-medio",
+      "historia": {
+        "brasil": "Constituição, arts. 205 a 214: educação é direito de todos e dever do Estado; a Emenda Constitucional 59/2009 tornou a educação básica obrigatória e gratuita dos 4 aos 17 anos (art. 208, I). O STF considerou o ensino domiciliar sem lei própria incompatível com a Constituição (RE 888.815, 2018)."
+      },
+      "custo": {
+        "tipo": "neutro",
+        "tamanho": "baixo",
+        "porque": "Lei constitucional: não tem custo próprio; o custo de abrir vagas está nas leis de ensino fundamental e médio."
+      },
+      "efeitos": [
+        {
+          "alvo": "escolaridade",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Quem antes saía cedo passa a ficar mais anos na escola.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "evasao_escolar",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Abandonar passa a ser ilegal, e o Estado tem de ir atrás de quem some (e do trabalho infantil).",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Na Finlândia a reforma foi feita porque empregos para quem só tem o básico estão sumindo.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Diploma de ensino médio vira o mínimo para entrar no emprego formal.",
+          "condicao": "a partir de basico-9-anos"
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O adolescente que ajudava em casa ou na roça deixa de trazer renda.",
+          "condicao": "em famílias pobres"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_servidores", "grupo_progressistas"],
+        "perdem": ["grupo_agro", "grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "infraestrutura_transportes"],
+        "reduz": ["pobreza"],
+        "porque": "Obrigação sem escola por perto, sem transporte ou com a família passando fome fica no papel."
+      },
+      "substitui": ["ensino-obrigatorio"],
+      "fontes": [
+        {
+          "titulo": "Eurydice - Finland: compulsory education extended until age 18",
+          "url": "https://eurydice.eacea.ec.europa.eu/news/finland-compulsory-education-extended-until-age-18"
+        },
+        {
+          "titulo": "US DOL - 2024 Findings on the Worst Forms of Child Labor: Bhutan",
+          "url": "https://www.dol.gov/sites/dolgov/files/ILAB/child_labor_reports/tda2024/Bhutan.pdf"
+        },
+        {
+          "titulo": "Wikipedia - Compulsory education (idades por país)",
+          "url": "https://en.wikipedia.org/wiki/Compulsory_education"
+        }
+      ]
+    },
+    {
+      "id": "ensino-fundamental",
+      "nome": "Ensino fundamental",
+      "nivel": "meso",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "direito-a-educacao",
+        "opcoes": ["so-primario", "basico-9-anos", "pre-escola-ao-medio"],
+        "motivo": "Só há rede de ensino fundamental para organizar quando a escola é obrigatória."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define quem oferece a escola das crianças de 6 a 14 anos: só o Estado, o Estado com gestores privados e ensino em casa autorizado, cheque-escola para os pobres ou livre escolha para todos.",
+      "dilema": "Deixar a família escolher a escola premia quem ensina bem, ou esvazia a escola pública e separa os alunos por renda?",
+      "eixo": "da escola só estatal à livre escolha da família",
+      "opcoes": [
+        {
+          "id": "escola-estatal",
+          "rotulo": "Só escola estatal",
+          "no_jogo": "Dinheiro público só para a escola pública e ensino em casa proibido: rede única, sem competição, com a força dos professores.",
+          "manchete": "Dinheiro público só para escola pública: quem quiser particular, que pague",
+          "exemplos": [
+            "Brasil",
+            "Finlândia",
+            "Alemanha (ensino em casa proibido)",
+            "Cuba"
+          ]
+        },
+        {
+          "id": "estatal-com-alternativas",
+          "rotulo": "Estatal com alternativas",
+          "no_jogo": "Parte das escolas públicas passa a gestores privados e o ensino em casa é liberado com provas anuais: um pouco de escolha, pouco custo.",
+          "manchete": "Escola continua gratuita, mas quem manda agora é uma organização privada; educação em casa liberada com prova anual",
+          "exemplos": [
+            "EUA (charter schools)",
+            "Inglaterra (academies)",
+            "Finlândia (ensino em casa com provas)"
+          ]
+        },
+        {
+          "id": "voucher-focalizado",
+          "rotulo": "Cheque-escola para os pobres",
+          "no_jogo": "Família pobre ganha um cheque para pagar a particular: mais opções para quem não tinha, mais gasto e briga com os sindicatos.",
+          "manchete": "Família pobre ganha cheque-escola e pode matricular o filho na particular",
+          "exemplos": [
+            "EUA (Milwaukee, desde 1990)",
+            "Colômbia (PACES)",
+            "Chile (voucher maior para os 40% mais pobres desde 2008)"
+          ]
+        },
+        {
+          "id": "escolha-universal",
+          "rotulo": "Livre escolha para todos",
+          "no_jogo": "Cada aluno vale um cheque e os pais podem até educar em casa sem avisar ninguém: liberdade máxima, escolas privadas se multiplicam e os alunos se separam por renda.",
+          "manchete": "Cada aluno vale um cheque: mil escolas privadas abrem as portas",
+          "exemplos": [
+            "Suécia (desde 1992)",
+            "Chile (1981)",
+            "Holanda (desde 1917)",
+            "Reino Unido (ensino em casa livre)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "escola-estatal",
+      "historia": {
+        "brasil": "Lei de Diretrizes e Bases (Lei 9.394/1996): ensino fundamental de 9 anos a cargo de municípios e estados, financiado pelo Fundeb (EC 108/2020). Não há voucher nacional e o ensino domiciliar não tem lei que o autorize."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Abrir vagas para todas as crianças custa; o voucher paga também quem já estava na particular."
+      },
+      "custo_pib": {
+        "gasto": {
+          "escola-estatal": 0.12,
+          "estatal-com-alternativas": 0.17,
+          "voucher-focalizado": 0.27,
+          "escolha-universal": 0.72
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "No Chile, os melhores alunos da pública migraram para as privadas e a escola passou a separar ricos e pobres, sem ganho na média do país.",
+          "condicao": "em escolha-universal"
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Escolas que podem selecionar ficam com os alunos de famílias mais ricas.",
+          "condicao": "em escolha-universal"
+        },
+        {
+          "alvo": "evasao_escolar",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Em Milwaukee, alunos com voucher concluíram mais o ensino médio e entraram mais na faculdade.",
+          "condicao": "em voucher-focalizado"
+        },
+        {
+          "alvo": "aprendizagem",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Sem prova nem supervisão, ninguém percebe quando a criança educada em casa ou na particular ruim fica para trás.",
+          "condicao": "em escolha-universal"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "Famílias escolhem a escola, inclusive confessional, ou educam em casa.",
+          "condicao": "a partir de estatal-com-alternativas"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Escola pública contra escolha das famílias vira bandeira de campanha.",
+          "condicao": "a partir de estatal-com-alternativas"
+        }
+      ],
+      "grupos": {
+        "ganham": [
+          "grupo_conservadores",
+          "grupo_classe_media",
+          "grupo_empresarios"
+        ],
+        "perdem": ["grupo_servidores", "grupo_progressistas"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["desigualdade"],
+        "porque": "Voucher só funciona onde o Estado proíbe a seleção de alunos e fiscaliza a qualidade; em país muito desigual, a escola escolhe a família, e não o contrário."
+      },
+      "substitui": ["vouchers-escolares", "educacao-domiciliar"],
+      "fontes": [
+        {
+          "titulo": "Hsieh & Urquiola - When Schools Compete, How Do They Compete? Chile's Nationwide School Voucher Program (NBER w10008)",
+          "url": "https://www.nber.org/papers/w10008"
+        },
+        {
+          "titulo": "Wikipedia - School voucher (Suécia, Holanda, Milwaukee, Louisiana)",
+          "url": "https://en.wikipedia.org/wiki/School_voucher"
+        },
+        {
+          "titulo": "Wikipedia - Homeschooling international status and statistics",
+          "url": "https://en.wikipedia.org/wiki/Homeschooling_international_status_and_statistics"
+        }
+      ]
+    },
+    {
+      "id": "ensino-medio",
+      "nome": "Ensino médio",
+      "nivel": "meso",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "direito-a-educacao",
+        "opcoes": ["basico-9-anos", "pre-escola-ao-medio"],
+        "motivo": "Sem ao menos o básico de nove anos, não há rede pública de ensino médio para organizar."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define o peso da trilha técnica na escola dos 15 aos 17 anos e quando o aluno é separado entre o caminho acadêmico e o profissional.",
+      "dilema": "Formar o técnico que a fábrica quer hoje dá emprego rápido ao jovem, mas a máquina muda e ele pode ficar para trás aos 50. E separar cedo quem vai para a universidade costuma separar ricos de pobres.",
+      "eixo": "do ensino médio só acadêmico à separação precoce em trilhas",
+      "opcoes": [
+        {
+          "id": "so-academico",
+          "rotulo": "Só acadêmico",
+          "no_jogo": "Todo mundo no mesmo currículo, profissão se aprende depois: barato e igual, mas o jovem demora a achar emprego.",
+          "manchete": "Todo mundo no mesmo currículo: profissão se aprende depois, na faculdade ou no emprego",
+          "exemplos": ["EUA (high school geral, técnico só como eletiva)"]
+        },
+        {
+          "id": "tecnico-como-opcao",
+          "rotulo": "Técnico como opção",
+          "no_jogo": "Escolas técnicas públicas para uma minoria, com fila de espera: bom para quem entra, pouco efeito no conjunto.",
+          "manchete": "Instituto técnico tem fila de espera; maioria segue no médio regular",
+          "exemplos": ["Brasil", "Coreia do Sul"]
+        },
+        {
+          "id": "tecnico-em-massa",
+          "rotulo": "Técnico para metade",
+          "no_jogo": "Metade dos jovens vai para o técnico: empresas aplaudem e o primeiro emprego vem rápido, mas custa oficina e laboratório.",
+          "manchete": "Metade dos jovens no técnico: indústria aplaude, pais temem 'beco sem saída'",
+          "exemplos": [
+            "Finlândia",
+            "China (exame aos 15 divide acadêmico e vocacional)"
+          ]
+        },
+        {
+          "id": "separacao-precoce",
+          "rotulo": "Separação aos 10 anos",
+          "no_jogo": "Aos 10 anos a criança já é encaminhada para a universidade ou para a oficina: técnicos excelentes, origem social cristalizada.",
+          "manchete": "Aos 10 anos, criança já sabe se vai para a universidade ou para a oficina",
+          "exemplos": [
+            "Alemanha (Gymnasium, Realschule, Hauptschule)",
+            "Áustria"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "tecnico-como-opcao",
+      "historia": {
+        "brasil": "Ensino médio a cargo dos estados (LDB, art. 10); Institutos Federais (Lei 11.892/2008) e escolas do Sistema S oferecem o técnico para uma minoria das matrículas. A reforma do ensino médio (Lei 13.415/2017, revista pela Lei 14.945/2024) criou itinerários, entre eles o técnico."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Laboratórios, oficinas e instrutores custam mais que uma sala de aula comum, além do custo de abrir vagas até os 17."
+      },
+      "custo_pib": {
+        "gasto": {
+          "so-academico": 0.08,
+          "tecnico-como-opcao": 0.18,
+          "tecnico-em-massa": 0.38,
+          "separacao-precoce": 0.38
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem sai do técnico entra mais rápido no primeiro emprego.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Formação ligada à profissão entrega o que as empresas pedem.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "desemprego",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Habilidade específica envelhece: o técnico tem mais emprego aos 20 e menos aos 50.",
+          "condicao": "a partir de tecnico-em-massa, sem formação junto com as empresas"
+        },
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Separar aos 10 anos manda filhos de pais com estudo para o acadêmico e os demais para a oficina.",
+          "condicao": "em separacao-precoce"
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "A escolha precoce cristaliza a origem social.",
+          "condicao": "em separacao-precoce"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_empresarios", "grupo_jovens"],
+        "perdem": ["grupo_pobres"]
+      },
+      "eficacia": {
+        "aumenta": ["investimento", "confianca_empresarial"],
+        "reduz": ["informalidade"],
+        "porque": "Técnico só vira emprego onde há empresas formais contratando e dispostas a formar junto."
+      },
+      "substitui": ["ensino-tecnico-profissional"],
+      "fontes": [
+        {
+          "titulo": "Hanushek, Schwerdt, Woessmann & Zhang - General Education, Vocational Education, and Labor-Market Outcomes over the Life-Cycle",
+          "url": "https://hanushek.stanford.edu/publications/general-education-vocational-education-and-labor-market-outcomes-over-life-cycle"
+        },
+        {
+          "titulo": "OECD Education Today - Is more vocational education the answer?",
+          "url": "https://oecdedutoday.com/is-more-vocational-education-the-answer/"
+        }
+      ]
+    },
+    {
+      "id": "ensino-superior",
+      "nome": "Ensino superior",
+      "nivel": "meso",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "direito-a-educacao",
+        "opcoes": [
+          "sem-obrigatoriedade",
+          "so-primario",
+          "basico-9-anos",
+          "pre-escola-ao-medio"
+        ],
+        "motivo": "Universidade existe com ou sem escola obrigatória; o que muda é quem paga."
+      },
+      "grupo": "institucional",
+      "descricao": "Define quem paga a universidade: o estudante (com crédito à parte), o contribuinte só nas públicas seletivas, o contribuinte só para os mais pobres ou o contribuinte para todos.",
+      "dilema": "Faculdade de graça para todos é justo, ou é o pedreiro pagando o diploma do filho do médico? Cobrar abre mais vagas, mas endivida o jovem.",
+      "eixo": "da mensalidade paga pelo estudante à universidade gratuita para todos",
+      "opcoes": [
+        {
+          "id": "mensalidade-com-credito",
+          "rotulo": "Mensalidade, com crédito à parte",
+          "no_jogo": "Toda universidade cobra e o estudante paga com crédito: o Estado gasta pouco, mas uma geração sai devendo.",
+          "manchete": "Estude agora, pague quando ganhar bem: dívida estudantil vira assunto de jantar",
+          "exemplos": [
+            "Inglaterra (mensalidade alta e empréstimo pago conforme a renda)",
+            "Austrália",
+            "EUA"
+          ]
+        },
+        {
+          "id": "gratuito-seletivo",
+          "rotulo": "Pública gratuita e disputada",
+          "no_jogo": "Universidades públicas gratuitas com vestibular duro e maioria das vagas em particulares pagas: as vagas grátis tendem a ficar com quem estudou em escola cara.",
+          "manchete": "Vestibular mais concorrido do ano: 80 candidatos por vaga na pública; o resto vai para a particular",
+          "exemplos": ["Brasil"]
+        },
+        {
+          "id": "gratuidade-focalizada",
+          "rotulo": "Grátis para os mais pobres",
+          "no_jogo": "A faculdade é gratuita só para as famílias mais pobres, em públicas e privadas: mais justa, mas a classe média diz que paga duas vezes.",
+          "manchete": "Gratuidade para os 60% mais pobres: classe média reclama que 'paga duas vezes'",
+          "exemplos": [
+            "Chile (gratuidade para os 60% mais vulneráveis desde 2016)"
+          ]
+        },
+        {
+          "id": "gratuito-universal",
+          "rotulo": "Grátis para todos",
+          "no_jogo": "Fim das mensalidades em todo lugar: mais jovens se formam, e a conta sai inteira do orçamento.",
+          "manchete": "Fim das mensalidades: universidade é direito, como a escola",
+          "exemplos": [
+            "Alemanha (último estado aboliu taxas em 2014)",
+            "Finlândia",
+            "Cuba"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "gratuito-seletivo",
+      "historia": {
+        "brasil": "Constituição, art. 206, IV: ensino gratuito em estabelecimentos oficiais; universidades federais e estaduais gratuitas e seletivas (Enem/Sisu e vestibulares), com a maioria das matrículas em privadas, apoiadas por bolsas (ProUni, Lei 11.096/2005) e crédito (Fies, Lei 10.260/2001)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "Quanto mais à direita do eixo, mais o orçamento banca vagas, permanência e expansão."
+      },
+      "custo_pib": {
+        "gasto": {
+          "mensalidade-com-credito": 0,
+          "gratuito-seletivo": 0.3,
+          "gratuidade-focalizada": 0.4,
+          "gratuito-universal": 0.9
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Sem mensalidade, mais jovens entram e concluem o curso superior.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "O contribuinte assume o que a família ou o estudante pagariam.",
+          "condicao": "ao avançar no eixo"
+        },
+        {
+          "alvo": "credito",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Uma geração inteira sai da faculdade devendo.",
+          "condicao": "em mensalidade-com-credito"
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Vaga gratuita e disputada tende a ficar com quem estudou em escola cara.",
+          "condicao": "em gratuito-seletivo e gratuito-universal"
+        },
+        {
+          "alvo": "desigualdade",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Gratuidade dirigida aos pobres reduz a distância entre ricos e pobres no acesso.",
+          "condicao": "em gratuidade-focalizada"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais diplomados no mercado de trabalho."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_classe_media"],
+        "perdem": ["grupo_empresarios", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["evasao_escolar"],
+        "porque": "Só chega à universidade quem terminou o ensino médio; gratuidade não resolve evasão que acontece antes."
+      },
+      "substitui": ["acesso-ensino-superior"],
+      "fontes": [
+        {
+          "titulo": "CGHE Working Paper 30 - The end of free college in England: implications for quality, enrolments and equity",
+          "url": "https://www.researchcghe.org/publication/the-end-of-free-college-in-england-implications-for-quality-enrolments-and-equity/"
+        },
+        {
+          "titulo": "The Conversation - How Germany managed to abolish university tuition fees",
+          "url": "https://theconversation.com/how-germany-managed-to-abolish-university-tuition-fees-32529"
+        }
+      ]
+    },
+    {
+      "id": "curriculo-nacional",
+      "nome": "Currículo e avaliação nacional",
+      "nivel": "meso",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "direito-a-educacao",
+        "opcoes": ["so-primario", "basico-9-anos", "pre-escola-ao-medio"],
+        "motivo": "Currículo e prova nacionais só fazem sentido onde há escola obrigatória para todos."
+      },
+      "grupo": "institucional",
+      "descricao": "Define se há uma base comum do que todo aluno deve aprender, se o país mede esse aprendizado, se divulga a nota de cada escola e se a nota traz prêmio ou punição.",
+      "dilema": "Sem medir, ninguém sabe qual escola falha; medindo e punindo, a escola passa a ensinar para a prova e o professor vira réu.",
+      "eixo": "de cada rede por si à base única com prêmio e punição",
+      "opcoes": [
+        {
+          "id": "cada-rede-decide",
+          "rotulo": "Cada rede decide",
+          "no_jogo": "Sem base comum nem prova nacional: liberdade para as redes, e o país não sabe quanto seus alunos aprendem.",
+          "manchete": "Cada escola diz que vai bem: país não sabe quanto seus alunos aprendem",
+          "exemplos": [
+            "Brasil antes de 1990",
+            "EUA (antes de 2002, cada estado por si)"
+          ]
+        },
+        {
+          "id": "base-com-prova-amostral",
+          "rotulo": "Base comum, prova em amostra",
+          "no_jogo": "Uma base comum e uma prova só em amostra: o governo vê o quadro e nenhuma escola vira manchete.",
+          "manchete": "Prova nacional só em amostra: governo vê o quadro, escola nenhuma vira manchete",
+          "exemplos": ["Finlândia"]
+        },
+        {
+          "id": "base-com-nota-publica",
+          "rotulo": "Base comum, nota de cada escola publicada",
+          "no_jogo": "Base comum e nota de cada escola na internet: pais cobram e o governo sabe onde agir, mas quem pode foge da escola ruim.",
+          "manchete": "Sai o ranking: escola do bairro tira 3,9 e pais lotam a secretaria",
+          "exemplos": ["Brasil", "Chile"]
+        },
+        {
+          "id": "base-com-consequencias",
+          "rotulo": "Base comum, nota com prêmio e punição",
+          "no_jogo": "Escola com nota baixa perde diretor ou verba e a boa ganha bônus: a matemática melhora, os sindicatos entram em greve.",
+          "manchete": "Escola reprovada três anos seguidos terá diretor trocado",
+          "exemplos": [
+            "EUA (2002-2015)",
+            "Inglaterra (inspeções e tabelas de desempenho)"
+          ]
+        }
+      ],
+      "faixa": null,
+      "brasil": "base-com-nota-publica",
+      "historia": {
+        "brasil": "Base Nacional Comum Curricular (homologada em 2017 e 2018), Sistema de Avaliação da Educação Básica (desde 1990) e Índice de Desenvolvimento da Educação Básica (Ideb), publicado por escola desde 2007."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Escrever a base e aplicar provas nacionais custa pouco perto do orçamento da educação."
+      },
+      "custo_pib": {
+        "gasto": {
+          "cada-rede-decide": 0,
+          "base-com-prova-amostral": 0.005,
+          "base-com-nota-publica": 0.01,
+          "base-com-consequencias": 0.015
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "aprendizagem",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Nos EUA, a cobrança por resultado elevou a matemática do 4º ano, mas não a leitura.",
+          "condicao": "a partir de base-com-nota-publica"
+        },
+        {
+          "alvo": "capacidade_estatal",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Com diagnóstico, o governo sabe onde pôr dinheiro e apoio.",
+          "condicao": "ao sair de cada-rede-decide"
+        },
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Famílias com mais recursos fogem das escolas com nota baixa, e a rede se separa por renda.",
+          "condicao": "a partir de base-com-nota-publica"
+        },
+        {
+          "alvo": "greve_de_professores",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Sindicatos rejeitam punir professor por nota de prova.",
+          "condicao": "em base-com-consequencias"
+        },
+        {
+          "alvo": "evasao_escolar",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Escola pressionada empurra o aluno fraco para fora antes da prova.",
+          "condicao": "em base-com-consequencias"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_classe_media", "grupo_empresarios"],
+        "perdem": ["grupo_servidores"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal", "confianca_instituicoes"],
+        "reduz": ["corrupcao"],
+        "porque": "Avaliação só melhora a escola se o governo usa os dados para agir, e só vale se a prova não for fraudada."
+      },
+      "substitui": ["avaliacao-escolas"],
+      "fontes": [
+        {
+          "titulo": "Dee & Jacob - The Impact of No Child Left Behind on Student Achievement (NBER w15531)",
+          "url": "https://www.nber.org/papers/w15531"
+        }
+      ]
+    },
+    {
+      "id": "fomento-a-ciencia",
+      "nome": "Fomento à ciência",
+      "nivel": "meso",
+      "area": "educacao",
+      "ministro": "ciencia",
+      "pai": {
+        "lei": "direito-a-educacao",
+        "opcoes": [
+          "sem-obrigatoriedade",
+          "so-primario",
+          "basico-9-anos",
+          "pre-escola-ao-medio"
+        ],
+        "motivo": "A pesquisa nasce nas universidades; o modelo de fomento vale qualquer que seja a escola obrigatória."
+      },
+      "grupo": "institucional",
+      "descricao": "Define como o Estado puxa a pesquisa: deixa com as empresas, financia universidades e agências por edital, banca missões tecnológicas em parceria com empresas ou dirige a ciência de cima.",
+      "dilema": "Ciência é a aposta mais cara e mais lenta do orçamento: ninguém ganha eleição com um laboratório, mas sem ele o país exporta grão e importa chip para sempre.",
+      "eixo": "do mercado sozinho à ciência dirigida pelo Estado",
+      "opcoes": [
+        {
+          "id": "mercado-decide",
+          "rotulo": "Empresas decidem",
+          "no_jogo": "O Estado quase não financia pesquisa: sobra dinheiro, e os cientistas vão para fora.",
+          "manchete": "Governo fecha agências de fomento: 'pesquisa boa a empresa paga', diz ministro",
+          "exemplos": ["Chile (P&D de 0,3% do PIB)", "Cuba (0,3% do PIB)"]
+        },
+        {
+          "id": "agencias-e-editais",
+          "rotulo": "Agências e editais",
+          "no_jogo": "Agências públicas dão bolsas e verbas às universidades por mérito: ciência básica forte, pouco ligada às empresas.",
+          "manchete": "Agência de fomento divulga resultado de edital: 9 em cada 10 projetos ficam sem dinheiro",
+          "exemplos": ["Brasil", "França", "Reino Unido"]
+        },
+        {
+          "id": "missoes-com-empresas",
+          "rotulo": "Missões com empresas",
+          "no_jogo": "O Estado escolhe áreas estratégicas e divide o risco com empresas e universidades: patentes e indústria crescem, mas alguém precisa escolher os vencedores.",
+          "manchete": "Governo e empresas lançam missão nacional de semicondutores com dinheiro dos dois lados",
+          "exemplos": [
+            "Coreia do Sul (P&D de quase 5% do PIB)",
+            "Israel",
+            "Finlândia",
+            "EUA (agências de projetos de defesa)"
+          ]
+        },
+        {
+          "id": "ciencia-dirigida",
+          "rotulo": "Ciência dirigida",
+          "no_jogo": "O governo define o que se pesquisa e quem pesquisa: grandes projetos saem rápido, a liberdade acadêmica some.",
+          "manchete": "Plano quinquenal de ciência define as 50 prioridades do país; quem pesquisar fora delas perde verba",
+          "exemplos": ["China", "URSS"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "agencias-e-editais",
+      "historia": {
+        "brasil": "Agências federais (CNPq, desde 1951; Capes, desde 1951; Finep) e fundações estaduais de amparo à pesquisa, financiadas pelo Fundo Nacional de Desenvolvimento Científico e Tecnológico (FNDCT, Lei 11.540/2007). Gasto total em P&D de cerca de 1,15% do PIB."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "O modelo define como o dinheiro é gasto; o volume fica na lei de bolsas e fomento."
+      },
+      "efeitos": [
+        {
+          "alvo": "inovacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais pesquisa vira patentes, novos produtos e empresas de tecnologia, e segura o cientista no país.",
+          "condicao": "ao sair de mercado-decide"
+        },
+        {
+          "alvo": "desenvolvimento",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "anos",
+          "porque": "Coreia, Israel e Finlândia subiram de patamar tecnológico investindo pesado e por décadas.",
+          "condicao": "em missoes-com-empresas"
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Tecnologia nova faz o mesmo trabalhador produzir mais.",
+          "condicao": "a partir de missoes-com-empresas"
+        },
+        {
+          "alvo": "liberdade_civil",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quando o governo decide o que se pesquisa, a universidade perde autonomia.",
+          "condicao": "em ciencia-dirigida"
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Escolher empresas vencedoras abre espaço para favorecimento.",
+          "condicao": "em missoes-com-empresas"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_empresarios", "grupo_servidores"],
+        "perdem": ["grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "produtividade"],
+        "reduz": ["corrupcao"],
+        "porque": "Sem gente formada para pesquisar, dinheiro vira laboratório vazio; com desvio, vira projeto que não sai do papel."
+      },
+      "substitui": ["investimento-pesquisa"],
+      "fontes": [
+        {
+          "titulo": "Wikipedia - List of sovereign states by research and development spending (dados Banco Mundial)",
+          "url": "https://en.wikipedia.org/wiki/List_of_sovereign_states_by_research_and_development_spending"
+        }
+      ]
+    },
+    {
+      "id": "piso-dos-professores",
+      "nome": "Piso dos professores",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "ensino-fundamental",
+        "opcoes": [
+          "escola-estatal",
+          "estatal-com-alternativas",
+          "voucher-focalizado",
+          "escolha-universal"
+        ],
+        "motivo": "O piso vale para os professores da rede pública de ensino básico."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Fixa o salário mínimo nacional do professor da rede pública, medido em % do que ganham os demais profissionais com o mesmo nível de estudo.",
+      "dilema": "Professor bem pago atrai os melhores alunos para a sala de aula, mas a conta cai nas prefeituras mais pobres e não melhora o ensino amanhã, só daqui a uma geração.",
+      "eixo": "do professor mal pago ao salário de elite",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "percentual",
+        "minimo": 50,
+        "maximo": 150,
+        "exemplos": [
+          {
+            "pais": "Brasil (2013)",
+            "valor": 70
+          },
+          {
+            "pais": "Brasil (2022)",
+            "valor": 80
+          },
+          {
+            "pais": "Equiparação plena (meta brasileira de 2014)",
+            "valor": 100
+          }
+        ]
+      },
+      "brasil": 80,
+      "historia": {
+        "brasil": "Lei 11.738/2008 criou o piso nacional do magistério (R$ 4.867 por 40 horas em 2025). A meta 17 do Plano Nacional de Educação (Lei 13.005/2014) pedia equiparar o rendimento dos professores ao dos demais profissionais com escolaridade equivalente; em 2022 a relação estava em cerca de 0,8."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "Professores são a maior folha do setor público; cada ponto se multiplica por milhões de cargos e aposentadorias."
+      },
+      "custo_pib": {
+        "gasto": 0.3
+      },
+      "efeitos": [
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "imediato",
+          "porque": "A folha de pagamento dos professores sobe em todas as redes."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Estados e municípios pobres estouram o limite da folha."
+        },
+        {
+          "alvo": "aprendizagem",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Carreira atraente puxa estudantes melhores para a docência e segura os bons na sala."
+        },
+        {
+          "alvo": "greve_de_professores",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Salário digno tira o principal motivo de paralisação."
+        },
+        {
+          "alvo": "desigualdade_regional",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Escola do interior pobre passa a pagar como a da capital e disputa os mesmos professores."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_servidores", "grupo_jovens"],
+        "perdem": ["grupo_empresarios", "grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": ["capacidade_estatal"],
+        "reduz": ["divida_publica", "corrupcao"],
+        "porque": "Redes endividadas não pagam o piso e vão à Justiça; onde o cargo é apadrinhado, salário alto não atrai mérito."
+      },
+      "substitui": ["piso-salarial-professores"],
+      "fontes": [
+        {
+          "titulo": "Jornal Opção - Além da baixa remuneração, professor explica por que Brasil vive déficit na educação",
+          "url": "https://www.jornalopcao.com.br/educacao/alem-da-baixa-remuneracao-professor-explica-porque-brasil-vive-defict-na-educacao-571222/"
+        },
+        {
+          "titulo": "PEBSP - MEC publica portaria e oficializa reajuste do piso salarial nacional dos professores em 2025",
+          "url": "https://www.pebsp.com/mec-publica-portaria-e-oficializa-reajuste-do-piso-salarial-nacional-dos-professores-em-2025/"
+        },
+        {
+          "titulo": "Economic Policy - Dolton & Marcenaro-Gutierrez: If You Pay Peanuts do You Get Monkeys?",
+          "url": "https://www.economic-policy.org/51st-economic-policy-panel/if-you-pay-peanuts-do-you-get-monkeys-a-cross-country-analysis-of-teacher-pay-and-pupil-performance"
+        }
+      ]
+    },
+    {
+      "id": "tempo-integral",
+      "nome": "Escola em tempo integral",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "ensino-medio",
+        "opcoes": [
+          "so-academico",
+          "tecnico-como-opcao",
+          "tecnico-em-massa",
+          "separacao-precoce"
+        ],
+        "motivo": "A jornada integral vale para a rede básica e pesa mais no ensino médio, onde concorre com o trabalho."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Fixa a parte das matrículas da rede pública em que o aluno passa o dia inteiro (7 horas ou mais) na escola.",
+      "dilema": "Sete horas na escola tiram o adolescente da rua e liberam a mãe para trabalhar, mas custam quase o dobro e podem empurrar para fora o jovem que precisa trabalhar à tarde.",
+      "eixo": "do meio turno para todos ao integral para todos",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "exemplos": [
+          {
+            "pais": "Meio turno para todos",
+            "valor": 0
+          },
+          {
+            "pais": "Brasil (2022)",
+            "valor": 18.2
+          },
+          {
+            "pais": "Brasil (2024)",
+            "valor": 22.9
+          },
+          {
+            "pais": "Integral para todos (meta do Chile com a Jornada Escolar Completa)",
+            "valor": 100
+          }
+        ]
+      },
+      "brasil": 22.9,
+      "historia": {
+        "brasil": "Censo Escolar 2024: 22,9% das matrículas da rede pública em tempo integral (18,2% em 2022), puxadas pelo Programa Escola em Tempo Integral (Lei 14.640/2023). A meta 6 do PNE pedia 25% dos alunos."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "alto",
+        "porque": "Mais horas exigem mais professores, refeições e prédios (um turno a menos por prédio)."
+      },
+      "custo_pib": {
+        "gasto": 0.3
+      },
+      "efeitos": [
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "forte",
+          "atraso": "meses",
+          "porque": "Uma escola integral atende metade dos alunos que atenderia em dois turnos."
+        },
+        {
+          "alvo": "natalidade",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Adolescente ocupado o dia todo engravida menos (efeito medido no Chile)."
+        },
+        {
+          "alvo": "violencia_letal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "No Chile, mais cobertura da jornada completa reduziu crimes nos municípios."
+        },
+        {
+          "alvo": "aprendizagem",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais horas de aula ajudam pouco se o tempo extra for mal usado; a evidência sobre notas é mista."
+        },
+        {
+          "alvo": "evasao_escolar",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Quem precisa trabalhar à tarde não cabe na escola integral e abandona.",
+          "condicao": "no ensino médio, para jovens que trabalham"
+        },
+        {
+          "alvo": "renda_familias",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Com o filho na escola o dia todo, a mãe pode aceitar um emprego de jornada cheia."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_trabalhadores", "grupo_pobres"],
+        "perdem": ["grupo_classe_media", "grupo_jovens"]
+      },
+      "eficacia": {
+        "aumenta": ["infraestrutura_transportes", "capacidade_estatal"],
+        "reduz": ["pobreza"],
+        "porque": "Sem prédio, refeição e professor, integral vira 'mais do mesmo'; onde o jovem precisa trabalhar, a escola perde para o emprego."
+      },
+      "substitui": ["escola-tempo-integral"],
+      "fontes": [
+        {
+          "titulo": "Mais Goiás - Matrículas em escolas de tempo integral passam de 18% para 23% no Brasil",
+          "url": "https://www.maisgoias.com.br/brasil/matriculas-em-escolas-de-tempo-integral-passam-de-18-para-23-brasil/"
+        },
+        {
+          "titulo": "BID - Plataforma de Evidências: Full School Day (Chile)",
+          "url": "https://plataformadeevidencias.iadb.org/en/casos-avaliados/full-school-day-chile"
+        },
+        {
+          "titulo": "IZA DP 4553 - Berthelon & Kruger: Risky behavior among youth (Chile)",
+          "url": "https://www.iza.org/publications/dp/4553"
+        }
+      ]
+    },
+    {
+      "id": "bolsas-de-pesquisa",
+      "nome": "Bolsas e fomento à pesquisa",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "ciencia",
+      "pai": {
+        "lei": "fomento-a-ciencia",
+        "opcoes": [
+          "agencias-e-editais",
+          "missoes-com-empresas",
+          "ciencia-dirigida"
+        ],
+        "motivo": "Só há verba de fomento a definir quando o Estado financia a pesquisa."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Fixa quanto o Estado gasta por ano com bolsas de pesquisa, editais e o fundo nacional de ciência e tecnologia.",
+      "dilema": "Doutor com laboratório e bolsa não precisa emigrar, mas o retorno vem em décadas e a conta vem neste ano.",
+      "eixo": "de nenhum fomento público a um esforço de país tecnológico",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 100000,
+        "exemplos": [
+          {
+            "pais": "Sem fomento público",
+            "valor": 0
+          },
+          {
+            "pais": "Brasil (agência de bolsas e agência de pós-graduação, proposta de 2020, valor da época)",
+            "valor": 3260
+          },
+          {
+            "pais": "Brasil (fundo de ciência não reembolsável e agência de bolsas, proposta de 2025)",
+            "valor": 12250
+          }
+        ]
+      },
+      "brasil": 12250,
+      "historia": {
+        "brasil": "Proposta de orçamento de 2025: FNDCT não reembolsável de R$ 10,3 bilhões e CNPq de R$ 1,95 bilhão. As bolsas de pós-graduação da Capes, ligadas ao Ministério da Educação, não estão somadas aqui."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "medio",
+        "porque": "Bolsas, editais e laboratórios saem do orçamento."
+      },
+      "custo_pib": {
+        "gasto": 0.096
+      },
+      "efeitos": [
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Bolsas, editais e laboratórios saem do orçamento."
+        },
+        {
+          "alvo": "inovacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Mais pesquisa vira patentes e empresas de tecnologia; doutor com bolsa não precisa emigrar."
+        },
+        {
+          "alvo": "desenvolvimento",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O estoque de conhecimento do país cresce devagar, mas fica."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Tecnologia nova faz o mesmo trabalhador produzir mais."
+        },
+        {
+          "alvo": "resultado_fiscal",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O retorno vem em décadas; a conta vem neste ano."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_servidores"],
+        "perdem": ["grupo_pequenos_negocios"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "acesso_ensino_superior"],
+        "reduz": ["corrupcao"],
+        "porque": "Sem gente formada para pesquisar, dinheiro vira laboratório vazio."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "SBFTE - Análise do orçamento do MCTI no PLOA 2025",
+          "url": "https://sbfte.org.br/wp-content/uploads/2024/09/Analise_-_MCTI_PLOA_2025_II.pdf"
+        },
+        {
+          "titulo": "Exame - Fusão de CNPq e Capes opõe ministros; financiamento deve mudar",
+          "url": "https://exame.com/brasil/fusao-de-cnpq-e-capes-opoe-ministros-financiamento-deve-mudar/"
+        }
+      ]
+    },
+    {
+      "id": "financiamento-estudantil",
+      "nome": "Financiamento estudantil",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "ensino-superior",
+        "opcoes": [
+          "mensalidade-com-credito",
+          "gratuito-seletivo",
+          "gratuidade-focalizada"
+        ],
+        "motivo": "Crédito para pagar faculdade só existe onde há faculdade paga."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Fixa quanto o Estado põe por ano no crédito estudantil para pagar a faculdade privada (subsídio de juros e fundo que cobre o calote).",
+      "dilema": "Crédito barato abre a faculdade para o pobre, mas parte nunca será paga e o calote vira conta do Tesouro.",
+      "eixo": "de nenhum crédito público a crédito amplo e subsidiado",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 30000,
+        "exemplos": [
+          {
+            "pais": "Sem crédito público",
+            "valor": 0
+          },
+          {
+            "pais": "Brasil (aporte ao fundo garantidor, 2025)",
+            "valor": 774
+          }
+        ]
+      },
+      "brasil": 774,
+      "historia": {
+        "brasil": "Fies (Lei 10.260/2001): 112 mil novas vagas em 2025, com aporte de R$ 774 milhões ao fundo garantidor. O dinheiro emprestado em si é despesa financeira e não entra aqui; a expansão de 2010 a 2014 e o calote posterior fizeram o programa encolher."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "O custo é o subsídio de juros e o calote coberto pelo fundo, não o valor emprestado."
+      },
+      "custo_pib": {
+        "gasto": 0.006
+      },
+      "efeitos": [
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Quem não passou na pública e não podia pagar a particular entra na faculdade."
+        },
+        {
+          "alvo": "credito",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Uma parte da geração sai da faculdade devendo."
+        },
+        {
+          "alvo": "produtividade",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais diplomados no mercado de trabalho, se o curso for bom."
+        },
+        {
+          "alvo": "gasto_publico",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "O calote acumulado volta como despesa para o Tesouro."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_jovens", "grupo_empresarios"],
+        "perdem": ["grupo_classe_media"]
+      },
+      "eficacia": {
+        "aumenta": ["renda_familias"],
+        "reduz": ["desemprego", "taxa_juros"],
+        "porque": "Formado sem emprego não paga a dívida; com juros altos, cada real de subsídio financia menos alunos."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "Economic News Brasil - Fies terá mais de 112 mil novas vagas em 2025 ao custo de R$ 774 milhões",
+          "url": "https://economicnewsbrasil.com.br/2025/01/02/fies-tera-mais-de-112-mil-novas-vagas-em-2025-ao-custo-de-r-774-milhoes/"
+        },
+        {
+          "titulo": "CGHE Working Paper 30 - The end of free college in England: implications for quality, enrolments and equity",
+          "url": "https://www.researchcghe.org/publication/the-end-of-free-college-in-england-implications-for-quality-enrolments-and-equity/"
+        }
+      ]
+    },
+    {
+      "id": "cotas-na-universidade",
+      "nome": "Cotas na universidade",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "educacao",
+      "pai": {
+        "lei": "ensino-superior",
+        "opcoes": [
+          "mensalidade-com-credito",
+          "gratuito-seletivo",
+          "gratuidade-focalizada",
+          "gratuito-universal"
+        ],
+        "motivo": "A reserva de vagas vale nas universidades públicas, qualquer que seja o modelo de pagamento."
+      },
+      "grupo": "regulatoria",
+      "descricao": "Define se as universidades públicas reservam parte das vagas para alunos de escola pública, de baixa renda e de grupos historicamente excluídos.",
+      "dilema": "Corrigir desigualdades herdadas com cotas ou manter a disputa só pela nota da prova?",
+      "eixo": "da disputa só pela nota à reserva de vagas",
+      "opcoes": [
+        {
+          "id": "sem-reserva",
+          "rotulo": "Só a nota conta",
+          "no_jogo": "Toda vaga vai para quem tira a maior nota: quem estudou em escola cara ocupa as melhores cadeiras.",
+          "manchete": "Fim das cotas: vaga na universidade pública volta a ser só pela nota",
+          "exemplos": [
+            "EUA (Suprema Corte proibiu critério racial nas admissões, 2023)",
+            "Japão",
+            "Alemanha"
+          ]
+        },
+        {
+          "id": "reserva-de-vagas",
+          "rotulo": "Reserva de vagas",
+          "no_jogo": "Metade das vagas vai para alunos de escola pública, com recorte de renda e raça: mais pobres e negros no diploma, e briga sobre mérito.",
+          "manchete": "Metade das vagas das universidades públicas vai para escola pública, com recorte de renda e raça",
+          "exemplos": ["Brasil", "Índia (reservas para castas)"]
+        }
+      ],
+      "faixa": null,
+      "brasil": "reserva-de-vagas",
+      "historia": {
+        "brasil": "Lei 12.711/2012 (revista pela Lei 14.723/2023): 50% das vagas das universidades e institutos federais para alunos de escola pública, com subcotas de renda, pretos, pardos, indígenas, quilombolas e pessoas com deficiência. O STF validou as cotas raciais na ADPF 186 (2012)."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "Bolsas de permanência e comissões de verificação; sem grande impacto orçamentário."
+      },
+      "custo_pib": {
+        "gasto": {
+          "sem-reserva": 0,
+          "reserva-de-vagas": 0.02
+        }
+      },
+      "efeitos": [
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Jovens pobres e de minorias chegam a cursos que antes eram fechados para eles.",
+          "condicao": "em reserva-de-vagas"
+        },
+        {
+          "alvo": "oportunidades_juvenis",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Diplomas de prestígio abrem empregos melhores para quem nunca teve acesso a eles.",
+          "condicao": "em reserva-de-vagas"
+        },
+        {
+          "alvo": "discriminacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Mais diversidade em posições de prestígio muda percepções, de forma lenta.",
+          "condicao": "em reserva-de-vagas"
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "Quem fica de fora acusa injustiça; o debate sobre mérito e raça esquenta.",
+          "condicao": "em reserva-de-vagas"
+        },
+        {
+          "alvo": "acesso_ensino_superior",
+          "sinal": "-",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "Sem reserva, a presença de negros cai nas universidades de elite (Harvard: de 18% para 11,5%).",
+          "condicao": "em sem-reserva"
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_pobres", "grupo_jovens", "grupo_progressistas"],
+        "perdem": ["grupo_classe_media", "grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["escolaridade", "capacidade_estatal"],
+        "reduz": ["corrupcao"],
+        "porque": "Cotas rendem mais quando o ensino básico prepara os cotistas e há bolsa de permanência; fraude na autodeclaração mina a política."
+      },
+      "substitui": [],
+      "fontes": [
+        {
+          "titulo": "VoxDev - Affirmative action in Brazil's higher education system",
+          "url": "https://www.voxdev.org/topic/education/affirmative-action-brazils-higher-education-system"
+        },
+        {
+          "titulo": "Brookings - The complex ramifications of Students for Fair Admissions v. Harvard",
+          "url": "https://www.brookings.edu/articles/the-complex-ramifications-of-students-for-fair-admissions-v-harvard/"
+        }
+      ]
+    },
+    {
+      "id": "incentivo-a-cultura",
+      "nome": "Incentivo à cultura",
+      "nivel": "micro",
+      "area": "educacao",
+      "ministro": "cultura",
+      "pai": {
+        "lei": "fomento-a-ciencia",
+        "opcoes": [
+          "mercado-decide",
+          "agencias-e-editais",
+          "missoes-com-empresas",
+          "ciencia-dirigida"
+        ],
+        "motivo": "Editais de cultura usam a mesma máquina de fomento por agência e edital; a árvore não tem meso própria de cultura."
+      },
+      "grupo": "orcamentaria",
+      "descricao": "Fixa quanto o Estado põe por ano na cultura, somando editais e repasses diretos e o imposto de que abre mão para patrocinadores.",
+      "dilema": "Sem dinheiro público, o filme nacional some das telas; com dinheiro público, alguém decide quem merece, e todo edital vira briga política.",
+      "eixo": "da cultura deixada ao mercado ao fomento generoso",
+      "opcoes": null,
+      "faixa": {
+        "unidade": "reais_ano",
+        "minimo": 0,
+        "maximo": 30000,
+        "exemplos": [
+          {
+            "pais": "Só mercado e doações",
+            "valor": 0
+          },
+          {
+            "pais": "Brasil (repasse federal a estados e municípios e patrocínio incentivado, 2024)",
+            "valor": 5400
+          }
+        ]
+      },
+      "brasil": 5400,
+      "historia": {
+        "brasil": "Lei Rouanet (Lei 8.313/1991): empresas e pessoas abatem do imposto de renda o patrocínio a projetos aprovados; R$ 2,4 bilhões captados em 2024. Política Nacional Aldir Blanc (Lei 14.399/2022): até R$ 3 bilhões por ano repassados a estados e municípios."
+      },
+      "custo": {
+        "tipo": "gasto",
+        "tamanho": "baixo",
+        "porque": "É pequeno perto de saúde e educação; vem como gasto direto e como imposto que deixa de entrar."
+      },
+      "custo_pib": {
+        "gasto": 0.024,
+        "receita": -0.019
+      },
+      "efeitos": [
+        {
+          "alvo": "vitalidade_cultural",
+          "sinal": "+",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "Dinheiro sustenta produção nacional que o mercado sozinho não bancaria."
+        },
+        {
+          "alvo": "reputacao_internacional",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Cultura exportada vira poder brando: filmes, séries e música vendem a imagem do país."
+        },
+        {
+          "alvo": "arrecadacao",
+          "sinal": "-",
+          "forca": "fraca",
+          "atraso": "imediato",
+          "porque": "O imposto que vai para o patrocínio deixa de entrar no caixa."
+        },
+        {
+          "alvo": "polarizacao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "meses",
+          "porque": "Quem recebe dinheiro público para fazer arte vira alvo da guerra cultural."
+        },
+        {
+          "alvo": "corrupcao",
+          "sinal": "+",
+          "forca": "fraca",
+          "atraso": "anos",
+          "porque": "Projeto superfaturado e patrocínio de fachada aparecem onde a prestação de contas é fraca."
+        }
+      ],
+      "grupos": {
+        "ganham": ["grupo_progressistas", "grupo_classe_media"],
+        "perdem": ["grupo_conservadores"]
+      },
+      "eficacia": {
+        "aumenta": ["liberdade_civil", "renda_familias"],
+        "reduz": ["corrupcao"],
+        "porque": "Cultura floresce onde se pode criar sem medo e há público com dinheiro para ingresso; desvio derruba a legitimidade do apoio."
+      },
+      "substitui": ["incentivo-cultura"],
+      "fontes": [
+        {
+          "titulo": "Poder360 - Rouanet captou R$ 2,4 bilhões em recursos em 2024, diz governo",
+          "url": "https://www.poder360.com.br/poder-governo/rouanet-captou-r-24-bilhoes-em-recursos-em-2024-diz-governo/"
+        },
+        {
+          "titulo": "Planalto - Lei 14.399/2022 (Política Nacional Aldir Blanc de Fomento à Cultura)",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14399.htm"
+        },
+        {
+          "titulo": "Wikipedia - Cultural exception",
+          "url": "https://en.wikipedia.org/wiki/Cultural_exception"
+        }
+      ]
+    }
+  ]
+}
