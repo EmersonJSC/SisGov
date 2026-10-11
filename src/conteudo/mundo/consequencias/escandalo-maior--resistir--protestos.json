@@ -1,0 +1,17 @@
+{
+  "id": "escandalo-maior--resistir--protestos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_escandalo_maior__resistir",
+  "alvo": "protestos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 15.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

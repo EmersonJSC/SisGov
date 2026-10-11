@@ -1,0 +1,17 @@
+{
+  "id": "base-militar-estrangeira--aceitar--tensao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_base_militar_estrangeira__aceitar",
+  "alvo": "tensao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 6.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "pedido-de-impeachment",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Pedido de impeachment",
+  "descricao": "Com aprovação no chão e base em frangalhos, a oposição pede o afastamento do presidente.",
+  "area": "Casa Civil",
+  "manchete": "Oposição protocola pedido de impeachment e vai às ruas",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.4,
+    "condicao": {
+      "tipo": "e",
+      "condicoes": [
+        {
+          "tipo": "comparacao",
+          "variavel": "popularidade_governo",
+          "operador": "menor_que",
+          "valor": 28.0
+        },
+        {
+          "tipo": "comparacao",
+          "variavel": "base_congresso",
+          "operador": "menor_que",
+          "valor": 35.0
+        }
+      ]
+    },
+    "porTurnos": 2
+  },
+  "consequencias": [
+    "pedido-de-impeachment--estabilidade-politica",
+    "pedido-de-impeachment--protestos",
+    "pedido-de-impeachment--polarizacao",
+    "pedido-de-impeachment--risco-pais"
+  ],
+  "controle": "ocorrencia_pedido_de_impeachment",
+  "duracaoMeses": 3,
+  "desdobramentos": [
+    {
+      "ocorrencia": "sobreviver-ao-impeachment",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

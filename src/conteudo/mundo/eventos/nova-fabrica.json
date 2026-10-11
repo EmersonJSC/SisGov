@@ -1,0 +1,37 @@
+{
+  "id": "nova-fabrica",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "{empresa} anuncia investimento",
+  "descricao": "A {empresa} anuncia uma unidade nova em {cidade}: obras, empregos e arrecadação para a região.",
+  "area": "Ministério da Fazenda",
+  "manchete": "{empresa} vai construir fábrica em {cidade}",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "positiva",
+  "intervaloMinimoTurnos": 3,
+  "gatilho": {
+    "chance": 0.06,
+    "fatores": [
+      {
+        "variavel": "confianca_empresarial",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "ied",
+        "de": 1,
+        "ate": 4,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "nova-fabrica--investimento",
+    "nova-fabrica--desemprego",
+    "nova-fabrica--grupo-trabalhadores"
+  ],
+  "controle": "ocorrencia_nova_fabrica",
+  "duracaoMeses": 6
+}

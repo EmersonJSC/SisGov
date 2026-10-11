@@ -1,0 +1,61 @@
+{
+  "id": "censurar-imprensa",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Reportagem hostil",
+  "descricao": "Uma série de reportagens ataca o governo todos os dias. Aliados pedem medidas contra o jornal.",
+  "area": "Casa Civil",
+  "manchete": "Grande jornal publica série de denúncias contra o governo",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.012
+  },
+  "padrao": "responder",
+  "opcoes": [
+    {
+      "id": "responder",
+      "rotulo": "Responder com dados",
+      "descricao": "Contestar ponto a ponto.",
+      "controle": "ocorrencia_censurar_imprensa__responder",
+      "duracaoMeses": 3,
+      "consequencias": ["censurar-imprensa--responder--confianca-instituicoes"]
+    },
+    {
+      "id": "cortar-publicidade",
+      "rotulo": "Cortar a publicidade oficial no jornal",
+      "descricao": "Punição econômica disfarçada.",
+      "controle": "ocorrencia_censurar_imprensa__cortar_publicidade",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "censurar-imprensa--cortar-publicidade--liberdade-civil",
+        "censurar-imprensa--cortar-publicidade--reputacao-internacional",
+        "censurar-imprensa--cortar-publicidade--polarizacao"
+      ]
+    },
+    {
+      "id": "processar",
+      "rotulo": "Processar os jornalistas",
+      "descricao": "Intimidação aberta.",
+      "controle": "ocorrencia_censurar_imprensa__processar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "censurar-imprensa--processar--liberdade-civil",
+        "censurar-imprensa--processar--reputacao-internacional",
+        "censurar-imprensa--processar--grupo-progressistas",
+        "censurar-imprensa--processar--grupo-classe-media"
+      ]
+    }
+  ],
+  "consequencias": [
+    "censurar-imprensa--responder--confianca-instituicoes",
+    "censurar-imprensa--cortar-publicidade--liberdade-civil",
+    "censurar-imprensa--cortar-publicidade--reputacao-internacional",
+    "censurar-imprensa--cortar-publicidade--polarizacao",
+    "censurar-imprensa--processar--liberdade-civil",
+    "censurar-imprensa--processar--reputacao-internacional",
+    "censurar-imprensa--processar--grupo-progressistas",
+    "censurar-imprensa--processar--grupo-classe-media"
+  ]
+}

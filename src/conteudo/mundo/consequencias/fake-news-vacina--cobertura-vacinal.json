@@ -1,0 +1,17 @@
+{
+  "id": "fake-news-vacina--cobertura-vacinal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_fake_news_vacina",
+  "alvo": "cobertura_vacinal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pacote-contra-a-fome--cestas--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_pacote_contra_a_fome__cestas",
+  "alvo": "gasto_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.04,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

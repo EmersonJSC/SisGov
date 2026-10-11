@@ -1,0 +1,17 @@
+{
+  "id": "resposta-aos-protestos--dialogar--protestos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resposta_aos_protestos__dialogar",
+  "alvo": "protestos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -5.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

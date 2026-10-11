@@ -1,0 +1,17 @@
+{
+  "id": "apagao-nacional--apagao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_apagao_nacional",
+  "alvo": "apagao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 45.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

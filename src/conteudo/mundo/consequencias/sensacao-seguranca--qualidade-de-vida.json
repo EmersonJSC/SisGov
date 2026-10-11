@@ -1,0 +1,17 @@
+{
+  "id": "sensacao-seguranca--qualidade-de-vida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "sensacao_seguranca",
+  "alvo": "qualidade_de_vida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "enchente-devastadora--infraestrutura-transportes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_enchente_devastadora",
+  "alvo": "infraestrutura_transportes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

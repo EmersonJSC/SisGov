@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-petroleiros--negociar--desabastecimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_petroleiros__negociar",
+  "alvo": "desabastecimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 6.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

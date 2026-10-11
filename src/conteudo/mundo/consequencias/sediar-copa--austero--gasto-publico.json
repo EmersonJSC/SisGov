@@ -1,0 +1,17 @@
+{
+  "id": "sediar-copa--austero--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_sediar_copa__austero",
+  "alvo": "gasto_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.04,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

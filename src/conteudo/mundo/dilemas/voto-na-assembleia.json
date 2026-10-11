@@ -1,0 +1,59 @@
+{
+  "id": "voto-na-assembleia",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "O voto na assembleia mundial",
+  "descricao": "{potencia} é acusada de violar direitos humanos. É também um dos maiores compradores do país.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Votação para condenar {potencia} divide o governo",
+  "origem": "cotidiano",
+  "nivel": 1,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02
+  },
+  "padrao": "abster",
+  "opcoes": [
+    {
+      "id": "condenar",
+      "rotulo": "Votar a favor da condenação",
+      "descricao": "Coerência com os direitos humanos. O comprador anota.",
+      "controle": "ocorrencia_voto_na_assembleia__condenar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "voto-na-assembleia--condenar--reputacao-internacional",
+        "voto-na-assembleia--condenar--exportacoes",
+        "voto-na-assembleia--condenar--grupo-agro"
+      ]
+    },
+    {
+      "id": "abster",
+      "rotulo": "Abster-se",
+      "descricao": "Nem lá nem cá.",
+      "controle": "ocorrencia_voto_na_assembleia__abster",
+      "duracaoMeses": 3,
+      "consequencias": ["voto-na-assembleia--abster--reputacao-internacional"]
+    },
+    {
+      "id": "contra",
+      "rotulo": "Votar contra",
+      "descricao": "Lealdade ao parceiro. Críticas em casa e fora.",
+      "controle": "ocorrencia_voto_na_assembleia__contra",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "voto-na-assembleia--contra--reputacao-internacional",
+        "voto-na-assembleia--contra--exportacoes",
+        "voto-na-assembleia--contra--grupo-progressistas"
+      ]
+    }
+  ],
+  "consequencias": [
+    "voto-na-assembleia--condenar--reputacao-internacional",
+    "voto-na-assembleia--condenar--exportacoes",
+    "voto-na-assembleia--condenar--grupo-agro",
+    "voto-na-assembleia--abster--reputacao-internacional",
+    "voto-na-assembleia--contra--reputacao-internacional",
+    "voto-na-assembleia--contra--exportacoes",
+    "voto-na-assembleia--contra--grupo-progressistas"
+  ]
+}

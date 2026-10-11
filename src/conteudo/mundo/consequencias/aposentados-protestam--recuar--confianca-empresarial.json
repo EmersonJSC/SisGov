@@ -1,0 +1,17 @@
+{
+  "id": "aposentados-protestam--recuar--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_aposentados_protestam__recuar",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

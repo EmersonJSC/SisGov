@@ -1,0 +1,17 @@
+{
+  "id": "plano-de-saude-reajuste--limitar--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_plano_de_saude_reajuste__limitar",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

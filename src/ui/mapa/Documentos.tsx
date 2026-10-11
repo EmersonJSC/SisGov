@@ -1142,7 +1142,30 @@ export function DocumentoBolha({
         ? "Quanto maior, pior"
         : "Nem bom nem ruim em si";
 
+  // SG106: um acontecimento em curso empurrando a bolha
+  const cartaoOcorrencia = (r: Relacao, i: number) => (
+    <div
+      key={r.id}
+      className={`cartao-impacto ${r.efeito} simples ocorrencia`}
+      style={
+        {
+          "--cor-efeito": COR_EFEITO[r.efeito],
+          animationDelay: `${i * 30}ms`,
+        } as CSSProperties
+      }
+    >
+      <span className="cartao-icone">
+        <Icone nome={ICONE_INTERFACE.relogio} tamanho={20} />
+      </span>
+      <span className="cartao-texto">
+        <strong>{r.ocorrencia!.nome}</strong>
+        <small>Acontecimento em curso · passa com o tempo</small>
+      </span>
+    </div>
+  );
+
   const cartaoCausa = (r: Relacao, i: number) => {
+    if (r.ocorrencia) return cartaoOcorrencia(r, i);
     const lei = leis.get(r.de);
     const cor = COR_EFEITO[r.efeito];
     return (

@@ -1,0 +1,17 @@
+{
+  "id": "rompimento-de-barragem--qualidade-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_rompimento_de_barragem",
+  "alvo": "qualidade_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -8.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

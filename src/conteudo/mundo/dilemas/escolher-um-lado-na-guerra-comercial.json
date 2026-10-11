@@ -1,0 +1,64 @@
+{
+  "id": "escolher-um-lado-na-guerra-comercial",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "De que lado ficar?",
+  "descricao": "Na guerra comercial, {potencia} oferece um acordo vantajoso em troca de fechar portas para o rival. Ficar neutro é seguro, mas pode sair caro.",
+  "area": "Ministério da Fazenda",
+  "manchete": "{potencia} pressiona o país a escolher um lado",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "neutro",
+  "opcoes": [
+    {
+      "id": "aliar",
+      "rotulo": "Fechar o acordo",
+      "descricao": "Mercado garantido de um lado, retaliação do outro.",
+      "controle": "ocorrencia_escolher_um_lado_na_guerra_comercial__aliar",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "escolher-um-lado-na-guerra-comercial--aliar--exportacoes",
+        "escolher-um-lado-na-guerra-comercial--aliar--ied",
+        "escolher-um-lado-na-guerra-comercial--aliar--tensao-internacional",
+        "escolher-um-lado-na-guerra-comercial--aliar--grupo-agro"
+      ]
+    },
+    {
+      "id": "neutro",
+      "rotulo": "Ficar neutro",
+      "descricao": "Vender para os dois, sem favor de nenhum.",
+      "controle": "ocorrencia_escolher_um_lado_na_guerra_comercial__neutro",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "escolher-um-lado-na-guerra-comercial--neutro--exportacoes",
+        "escolher-um-lado-na-guerra-comercial--neutro--reputacao-internacional"
+      ]
+    },
+    {
+      "id": "aproveitar",
+      "rotulo": "Leiloar a neutralidade",
+      "descricao": "Negociar com os dois ao mesmo tempo. Pode render muito ou irritar ambos.",
+      "controle": "ocorrencia_escolher_um_lado_na_guerra_comercial__aproveitar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "escolher-um-lado-na-guerra-comercial--aproveitar--exportacoes",
+        "escolher-um-lado-na-guerra-comercial--aproveitar--tensao-internacional",
+        "escolher-um-lado-na-guerra-comercial--aproveitar--reputacao-internacional"
+      ]
+    }
+  ],
+  "consequencias": [
+    "escolher-um-lado-na-guerra-comercial--aliar--exportacoes",
+    "escolher-um-lado-na-guerra-comercial--aliar--ied",
+    "escolher-um-lado-na-guerra-comercial--aliar--tensao-internacional",
+    "escolher-um-lado-na-guerra-comercial--aliar--grupo-agro",
+    "escolher-um-lado-na-guerra-comercial--neutro--exportacoes",
+    "escolher-um-lado-na-guerra-comercial--neutro--reputacao-internacional",
+    "escolher-um-lado-na-guerra-comercial--aproveitar--exportacoes",
+    "escolher-um-lado-na-guerra-comercial--aproveitar--tensao-internacional",
+    "escolher-um-lado-na-guerra-comercial--aproveitar--reputacao-internacional"
+  ]
+}

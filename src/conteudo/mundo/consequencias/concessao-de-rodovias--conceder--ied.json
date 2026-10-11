@@ -1,0 +1,17 @@
+{
+  "id": "concessao-de-rodovias--conceder--ied",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_concessao_de_rodovias__conceder",
+  "alvo": "ied",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

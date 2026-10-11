@@ -1,0 +1,17 @@
+{
+  "id": "inflacao-dos-alimentos--protestos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_inflacao_dos_alimentos",
+  "alvo": "protestos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 6.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

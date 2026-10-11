@@ -1,0 +1,44 @@
+{
+  "id": "epidemia-de-febre-amarela",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Epidemia no {regiao}",
+  "descricao": "Casos de febre amarela crescem rápido no {regiao}. Vacinação e saneamento fazem a diferença.",
+  "area": "Ministério da Saúde",
+  "manchete": "Epidemia de febre amarela se espalha pelo {regiao}",
+  "origem": "natureza",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02,
+    "fatores": [
+      {
+        "variavel": "cobertura_vacinal",
+        "de": 90,
+        "ate": 50,
+        "multiplica": 3
+      },
+      {
+        "variavel": "infraestrutura_saneamento",
+        "de": 70,
+        "ate": 30,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "epidemia-de-febre-amarela--epidemia",
+    "epidemia-de-febre-amarela--pressao-hospitalar",
+    "epidemia-de-febre-amarela--saude-populacao"
+  ],
+  "controle": "ocorrencia_epidemia_de_febre_amarela",
+  "duracaoMeses": 4,
+  "desdobramentos": [
+    {
+      "ocorrencia": "campanha-de-vacinacao",
+      "chance": 0.6,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

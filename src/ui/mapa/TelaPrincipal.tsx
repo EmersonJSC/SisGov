@@ -8,6 +8,7 @@ import {
   criarPartida,
   encerrarTurno,
   mudarLei,
+  responderDilema,
   verPartida,
   type Partida,
   type PrevisaoLei,
@@ -22,6 +23,8 @@ import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
 import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
+import { MesaDoPresidente } from "./MesaDoPresidente";
+import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
 import {
   MES_DO_HORIZONTE,
   type Desvio,
@@ -221,7 +224,7 @@ function ResumoDoTurno({
         <h3>
           <Icone nome={ICONE_INTERFACE.caneta} tamanho={16} /> Suas decisões
         </h3>
-        {aviso.leisAlteradas === 0 ? (
+        {aviso.leisAlteradas === 0 && aviso.dilemasDiferentes === 0 ? (
           <p className="vazio-suas">
             Você ainda não mudou nenhuma lei: o país andou sozinho. Abra uma
             esfera, escolha uma lei e assine uma nova redação.
@@ -235,10 +238,20 @@ function ResumoDoTurno({
               <span className="piora">
                 ▼ {contar(variacoesVoce, "piora")} pioraram
               </span>
-              <span className="leis-suas">
-                {aviso.leisAlteradas}{" "}
-                {aviso.leisAlteradas === 1 ? "lei mudada" : "leis mudadas"}
-              </span>
+              {aviso.leisAlteradas > 0 ? (
+                <span className="leis-suas">
+                  {aviso.leisAlteradas}{" "}
+                  {aviso.leisAlteradas === 1 ? "lei mudada" : "leis mudadas"}
+                </span>
+              ) : null}
+              {aviso.dilemasDiferentes > 0 ? (
+                <span className="leis-suas">
+                  {aviso.dilemasDiferentes}{" "}
+                  {aviso.dilemasDiferentes === 1
+                    ? "decisão própria na mesa"
+                    : "decisões próprias na mesa"}
+                </span>
+              ) : null}
             </div>
             {suas.length ? (
               <ul>
@@ -285,7 +298,12 @@ function ResumoDoTurno({
 }
 
 export function TelaPrincipal() {
-  const inicial = useMemo(() => criarPartida(), []);
+  // cada partida nova ganha uma semente própria: eventos diferentes (SG106)
+  const inicial = useMemo(
+    () => criarPartida({ semente: 1 + Math.floor(Math.random() * 0xfffffffe) }),
+    [],
+  );
+  const [mesaAberta, setMesaAberta] = useState(true);
   const [partida, setPartida] = useState<Partida | null>(
     inicial.ok ? inicial.value : null,
   );
@@ -406,8 +424,22 @@ export function TelaPrincipal() {
     return null;
   };
 
+  const escolherDilema = (dilemaId: string, opcaoId: string): string | null => {
+    if (!partida) return null;
+    const r = responderDilema(partida, dilemaId, opcaoId);
+    if (!r.ok) return r.erros.join(" ");
+    setPartida(r.value);
+    setErroTurno(null);
+    return null;
+  };
+
   const passarTurno = () => {
     if (!partida || passando) return;
+    // SG106: com dilema na mesa, o botão traz a mesa de volta
+    if (visao && visao.ocorrencias.mesa.length > 0) {
+      setMesaAberta(true);
+      return;
+    }
     setPassando(true);
     // deixa o botão mostrar o estado antes de calcular
     window.setTimeout(() => {
@@ -439,6 +471,7 @@ export function TelaPrincipal() {
       setRelatorio(r.value.relatorio);
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
+      setMesaAberta(true);
     }, 30);
   };
 
@@ -632,6 +665,7 @@ export function TelaPrincipal() {
                 <Icone nome={ICONE_INTERFACE.fechar} tamanho={16} />
               </button>
             </div>
+            <JornalDoTurno jornal={aviso.ocorrencias} />
             <ResumoDoTurno
               aviso={aviso}
               variacoes={variacoes}
@@ -642,13 +676,35 @@ export function TelaPrincipal() {
           </div>
         ) : null}
 
+        <AcontecendoAgora ocorrencias={visao.ocorrencias.emCurso} />
+
+        <MesaDoPresidente
+          dilemas={visao.ocorrencias.mesa}
+          partida={partida}
+          onEscolher={escolherDilema}
+          aberta={mesaAberta}
+          onAbrir={() => setMesaAberta(true)}
+          onBaixar={() => setMesaAberta(false)}
+        />
+
         <button
           type="button"
-          className={`botao-turno${passando ? " ocupado" : ""}`}
+          className={`botao-turno${passando ? " ocupado" : ""}${visao.ocorrencias.mesa.length ? " travado" : ""}`}
           onClick={passarTurno}
           disabled={passando}
+          title={
+            visao.ocorrencias.mesa.length
+              ? "Decida o dilema da mesa para encerrar o turno"
+              : undefined
+          }
         >
-          <span>{passando ? "Calculando…" : "Encerrar turno"}</span>
+          <span>
+            {passando
+              ? "Calculando…"
+              : visao.ocorrencias.mesa.length
+                ? "Decida o dilema"
+                : "Encerrar turno"}
+          </span>
           <Icone nome={ICONE_INTERFACE.seguir} tamanho={22} />
         </button>
       </main>

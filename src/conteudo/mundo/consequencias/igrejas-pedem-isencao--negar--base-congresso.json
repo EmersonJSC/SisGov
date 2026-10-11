@@ -1,0 +1,17 @@
+{
+  "id": "igrejas-pedem-isencao--negar--base-congresso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_igrejas_pedem_isencao__negar",
+  "alvo": "base_congresso",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

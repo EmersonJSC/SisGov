@@ -1,0 +1,17 @@
+{
+  "id": "seca-historica--oferta-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_seca_historica",
+  "alvo": "oferta_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -10.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "compatriota-no-corredor-da-morte",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Salvar o compatriota condenado?",
+  "descricao": "A execução está marcada. Pedir clemência tem custo diplomático; não pedir, custo em casa.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Família pede que o presidente interceda pelo {gentilico} condenado em {potencia}",
+  "origem": "desdobramento",
+  "nivel": 1,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "carta",
+  "opcoes": [
+    {
+      "id": "pressionar",
+      "rotulo": "Pressionar publicamente",
+      "descricao": "Chamar o embaixador e ir à imprensa.",
+      "controle": "ocorrencia_compatriota_no_corredor_da_morte__pressionar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "compatriota-no-corredor-da-morte--pressionar--tensao-internacional",
+        "compatriota-no-corredor-da-morte--pressionar--grupo-classe-media",
+        "compatriota-no-corredor-da-morte--pressionar--exportacoes"
+      ]
+    },
+    {
+      "id": "carta",
+      "rotulo": "Carta discreta de clemência",
+      "descricao": "Diplomacia de bastidor.",
+      "controle": "ocorrencia_compatriota_no_corredor_da_morte__carta",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "compatriota-no-corredor-da-morte--carta--reputacao-internacional"
+      ]
+    },
+    {
+      "id": "nada",
+      "rotulo": "Respeitar a justiça de lá",
+      "descricao": "Lei é lei, mesmo a dos outros.",
+      "controle": "ocorrencia_compatriota_no_corredor_da_morte__nada",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "compatriota-no-corredor-da-morte--nada--grupo-progressistas",
+        "compatriota-no-corredor-da-morte--nada--grupo-classe-media"
+      ]
+    }
+  ],
+  "consequencias": [
+    "compatriota-no-corredor-da-morte--pressionar--tensao-internacional",
+    "compatriota-no-corredor-da-morte--pressionar--grupo-classe-media",
+    "compatriota-no-corredor-da-morte--pressionar--exportacoes",
+    "compatriota-no-corredor-da-morte--carta--reputacao-internacional",
+    "compatriota-no-corredor-da-morte--nada--grupo-progressistas",
+    "compatriota-no-corredor-da-morte--nada--grupo-classe-media"
+  ]
+}

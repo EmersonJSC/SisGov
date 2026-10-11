@@ -1,0 +1,31 @@
+{
+  "id": "ex-presidente-preso",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Ex-presidente é preso",
+  "descricao": "Uma condenação leva à prisão de um ex-presidente. Apoiadores e adversários vão às ruas.",
+  "area": "Casa Civil",
+  "manchete": "Ex-presidente é preso e país se divide nas ruas",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "unica": true,
+  "gatilho": {
+    "chance": 0.004,
+    "fatores": [
+      {
+        "variavel": "forca_instituicoes",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "ex-presidente-preso--polarizacao",
+    "ex-presidente-preso--protestos",
+    "ex-presidente-preso--confianca-instituicoes"
+  ],
+  "controle": "ocorrencia_ex_presidente_preso",
+  "duracaoMeses": 6
+}

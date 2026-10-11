@@ -1,0 +1,17 @@
+{
+  "id": "subsidiar-o-combustivel--repassar--grupo-pequenos-negocios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_subsidiar_o_combustivel__repassar",
+  "alvo": "grupo_pequenos_negocios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

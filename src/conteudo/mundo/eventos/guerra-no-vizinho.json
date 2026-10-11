@@ -1,0 +1,44 @@
+{
+  "id": "guerra-no-vizinho",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Guerra no país vizinho",
+  "descricao": "O governo de {vizinho} perdeu o controle de parte do território. Famílias inteiras cruzam a fronteira com o que conseguem carregar.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Guerra civil explode em {vizinho} e milhares fogem para a fronteira",
+  "origem": "mundo",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 30,
+  "gatilho": {
+    "chance": 0.006,
+    "fatores": [
+      {
+        "variavel": "tensao_internacional",
+        "de": 20,
+        "ate": 70,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "guerra-no-vizinho--crise-migratoria",
+    "guerra-no-vizinho--tensao-internacional",
+    "guerra-no-vizinho--exportacoes",
+    "guerra-no-vizinho--sensacao-seguranca"
+  ],
+  "controle": "ocorrencia_guerra_no_vizinho",
+  "duracaoMeses": 12,
+  "desdobramentos": [
+    {
+      "ocorrencia": "crise-na-fronteira",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    },
+    {
+      "ocorrencia": "resgatar-compatriotas",
+      "chance": 0.5,
+      "emTurnos": [1, 2]
+    }
+  ]
+}

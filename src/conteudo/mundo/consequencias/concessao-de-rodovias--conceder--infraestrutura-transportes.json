@@ -1,0 +1,17 @@
+{
+  "id": "concessao-de-rodovias--conceder--infraestrutura-transportes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_concessao_de_rodovias__conceder",
+  "alvo": "infraestrutura_transportes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.05,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

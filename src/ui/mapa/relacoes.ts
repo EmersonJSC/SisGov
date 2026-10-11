@@ -19,6 +19,8 @@ export type Relacao = Readonly<{
   eficacia: boolean;
   /** `afim` (proporcional) ou `limiar` (só reage depois de certo ponto). */
   mecanismo: string;
+  /** A origem é uma ocorrência em curso (evento ou opção de dilema). */
+  ocorrencia?: Readonly<{ id: string; nome: string }>;
 }>;
 
 const PREFIXO_EFICACIA = "eficacia:";
@@ -54,6 +56,7 @@ export function indexarRelacoes(visao: VisaoPartida): IndiceRelacoes {
         : efeitoDe(ligacao.sinal, avaliacao.get(para)),
       eficacia,
       mecanismo: ligacao.mecanismo,
+      ...(ligacao.ocorrencia ? { ocorrencia: ligacao.ocorrencia } : {}),
     };
   });
   const porNo = new Map<string, Relacao[]>();

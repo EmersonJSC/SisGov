@@ -1,0 +1,32 @@
+{
+  "id": "guerra-comercial",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Guerra comercial entre potências",
+  "descricao": "As grandes economias erguem barreiras umas contra as outras. Cadeias de produção se reorganizam; quem exporta perde mercado, mas pode ganhar espaço se escolher bem o lado.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Potências trocam tarifas e o comércio mundial trava",
+  "origem": "mundo",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 24,
+  "gatilho": {
+    "chance": 0.015
+  },
+  "consequencias": [
+    "guerra-comercial--exportacoes",
+    "guerra-comercial--importacoes",
+    "guerra-comercial--pib",
+    "guerra-comercial--investimento",
+    "guerra-comercial--tensao-internacional"
+  ],
+  "controle": "ocorrencia_guerra_comercial",
+  "duracaoMeses": 12,
+  "desdobramentos": [
+    {
+      "ocorrencia": "escolher-um-lado-na-guerra-comercial",
+      "chance": 0.7,
+      "emTurnos": [1, 2]
+    }
+  ]
+}

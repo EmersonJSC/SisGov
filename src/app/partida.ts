@@ -8,6 +8,7 @@
 import {
   calculateContribution,
   type GraphRelation,
+  type OccurrenceFile,
   type ResolvedPackage,
   type VariableDefinition,
   type ScenarioGraph,
@@ -15,12 +16,20 @@ import {
 import { contextNodeId, efficacyNodeId } from "../engine/model/lawNodes";
 import { changePolicyTarget } from "../domain/game";
 import {
+  answerDilemma,
+  occurrenceCatalog,
+  occurrenceChance,
+  optionAvailable,
+  rollTurn,
+  type OccurrenceState,
+} from "../game/occurrences";
+import {
   applyRequirementFalls,
   policyRequirements,
   requirementBlock,
   requirementMet,
 } from "../game/policyRequirements";
-import { createGame, type GameState } from "../game/createGame";
+import { createGame, lawTargets, type GameState } from "../game/createGame";
 import { commitPolicyAction } from "../game/commitPolicyAction";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
@@ -167,6 +176,11 @@ export type VisaoLigacao = Readonly<{
    * seguro).
    */
   mecanismo: string;
+  /**
+   * A seta sai de uma ocorrência em curso (SG106): o nome do evento ou da
+   * opção de dilema escolhida. Ocorrências paradas não aparecem.
+   */
+  ocorrencia?: Readonly<{ id: string; nome: string }>;
 }>;
 
 /** Os nós do orçamento na rede (SG157, D-47): são bolhas como as outras. */
@@ -233,6 +247,87 @@ export type VisaoPartida = Readonly<{
   ligacoes: readonly VisaoLigacao[];
   /** Grupos sociais, do mais satisfeito ao menos satisfeito. */
   grupos: readonly VisaoGrupo[];
+  /** Eventos, dilemas e situações (SG106). */
+  ocorrencias: VisaoOcorrencias;
+}>;
+
+/** Seta de uma ocorrência: o que ela mexe enquanto dura. */
+export type VisaoEfeitoOcorrencia = Readonly<{
+  id: string;
+  nome: string;
+  unidade: string;
+  /** Pontos na unidade da bolha (em estoque, por mês). */
+  pontos: number;
+  avaliacao?: string;
+}>;
+
+export type VisaoOpcaoDilema = Readonly<{
+  id: string;
+  rotulo: string;
+  descricao: string;
+  disponivel: boolean;
+  /** Por que está indisponível. */
+  motivo?: string;
+  duracaoMeses: number;
+  efeitos: readonly VisaoEfeitoOcorrencia[];
+  /** Leis que a opção muda: id, nome e o novo valor (rótulo da opção). */
+  leis: readonly Readonly<{ id: string; nome: string; para: string }>[];
+  /** O que o piloto automático escolheria (não fazer nada). */
+  padrao: boolean;
+}>;
+
+type CamposOcorrencia = Readonly<{
+  id: string;
+  nome: string;
+  manchete: string;
+  descricao: string;
+  area: string;
+  origem: string;
+  /** 1 local, 2 regional, 3 nacional, 4 catástrofe. */
+  nivel: number;
+  avaliacao?: string;
+  /** Valores das variáveis do texto (cidade, empresa…). */
+  variaveis?: Readonly<Record<string, string>>;
+}>;
+
+export type VisaoDilema = CamposOcorrencia &
+  Readonly<{
+    /** Ocorrência que trouxe o dilema (desdobramento). */
+    causa?: Readonly<{ id: string; nome: string }>;
+    aberto: number;
+    opcoes: readonly VisaoOpcaoDilema[];
+  }>;
+
+export type VisaoOcorrenciaAtiva = CamposOcorrencia &
+  Readonly<{
+    tipo: "evento" | "dilema";
+    /** Opção escolhida, se for a resposta a um dilema. */
+    opcao?: string;
+    mesesRestantes: number;
+    inicio: number;
+    efeitos: readonly VisaoEfeitoOcorrencia[];
+  }>;
+
+export type VisaoRegistro = Readonly<{
+  tipo: "evento" | "dilema" | "situacao";
+  id: string;
+  nome: string;
+  manchete: string;
+  nivel: number;
+  turno: number;
+  fim?: number;
+  opcao?: string;
+  variaveis?: Readonly<Record<string, string>>;
+  automatica?: boolean;
+  avaliacao?: string;
+}>;
+
+export type VisaoOcorrencias = Readonly<{
+  /** Dilemas esperando resposta: o turno não passa enquanto houver. */
+  mesa: readonly VisaoDilema[];
+  emCurso: readonly VisaoOcorrenciaAtiva[];
+  /** Do mais recente ao mais antigo. */
+  historico: readonly VisaoRegistro[];
 }>;
 
 export type RelatorioTurno = Readonly<{
@@ -255,6 +350,15 @@ export type RelatorioTurno = Readonly<{
   }>[];
   /** Quantas leis estão diferentes do país no piloto automático. */
   leisAlteradas: number;
+  /** Respostas a dilemas em curso diferentes da opção padrão (SG106). */
+  dilemasDiferentes: number;
+  /** O jornal do turno (SG106): o que aconteceu e o que chegou à mesa. */
+  ocorrencias: Readonly<{
+    eventos: readonly VisaoRegistro[];
+    dilemas: readonly VisaoRegistro[];
+    surgiram: readonly VisaoRegistro[];
+    acabaram: readonly VisaoRegistro[];
+  }>;
 }>;
 
 /** Trajetória de uma bolha nos três meses do próximo turno. */
@@ -305,6 +409,8 @@ export function criarPartida(
     pais?: string;
     modo?: ModoPartida;
     semente?: number;
+    /** Eventos e dilemas (SG106); padrão: ligados. */
+    ocorrencias?: boolean;
   }> = {},
 ): Resultado<Partida> {
   const loaded = loadDistributedScenario(
@@ -316,6 +422,7 @@ export function criarPartida(
   const { content, graph } = prepared.value;
   const game = createGame("partida", content, graph, {
     randomSeed: opcoes.semente ?? 1,
+    occurrences: opcoes.ocorrencias ?? true,
   });
   if (!game.ok) return falha(game.diagnostics);
   return {
@@ -495,6 +602,54 @@ function serieSemMudanca(partida: Partida, trimestres: number) {
   return porHorizonte.get(trimestres)!;
 }
 
+/** Bolhas que diferem entre duas simulações, da maior diferença para a menor. */
+function compararSeries(
+  partida: Partida,
+  base: Serie,
+  alt: Serie,
+  meses: number,
+): EfeitoPrevisto[] {
+  const { content, game } = partida;
+  const now = game.execution.values;
+  return content.variables.variaveis
+    .filter((variable) => variable.tipo !== "controle")
+    .map((variable): EfeitoPrevisto & { peso: number } => {
+      const semMudanca = base.valores
+        .slice(0, meses)
+        .map((v) => v[variable.id] ?? 0);
+      const comMudanca = alt.valores
+        .slice(0, meses)
+        .map((v) => v[variable.id] ?? 0);
+      const escala = escalaDe(variable);
+      const amplitude = escala.maximo - escala.minimo || 1;
+      const peso =
+        Math.max(
+          ...comMudanca.map((value, i) => Math.abs(value - semMudanca[i])),
+        ) / amplitude;
+      return {
+        id: variable.id,
+        nome: variable.nome,
+        unidade: variable.unidade,
+        avaliacao: variable.avaliacao,
+        atual: now[variable.id] ?? 0,
+        semMudanca,
+        comMudanca,
+        peso,
+      };
+    })
+    .filter((item) => item.peso > 1e-7)
+    .sort((a, b) => b.peso - a.peso)
+    .map((item): EfeitoPrevisto => ({
+      id: item.id,
+      nome: item.nome,
+      unidade: item.unidade,
+      avaliacao: item.avaliacao,
+      atual: item.atual,
+      semMudanca: item.semMudanca,
+      comMudanca: item.comMudanca,
+    }));
+}
+
 /**
  * Prévia: o que muda nos próximos `trimestres` turnos (3 meses cada) se a
  * lei for para `nivel` agora. Compara a simulação com e sem a mudança; a
@@ -527,45 +682,7 @@ export function preverLei(
   // Só compara os meses que as duas simulações calcularam.
   const meses = Math.min(base.value.valores.length, alt.value.valores.length);
   const interrompida = alt.value.interrompida ?? base.value.interrompida;
-  const { content, game } = partida;
-  const now = game.execution.values;
-  const efeitos = content.variables.variaveis
-    .filter((variable) => variable.tipo !== "controle")
-    .map((variable): EfeitoPrevisto & { peso: number } => {
-      const semMudanca = base.value.valores
-        .slice(0, meses)
-        .map((v) => v[variable.id] ?? 0);
-      const comMudanca = alt.value.valores
-        .slice(0, meses)
-        .map((v) => v[variable.id] ?? 0);
-      const escala = escalaDe(variable);
-      const amplitude = escala.maximo - escala.minimo || 1;
-      const peso =
-        Math.max(
-          ...comMudanca.map((value, i) => Math.abs(value - semMudanca[i])),
-        ) / amplitude;
-      return {
-        id: variable.id,
-        nome: variable.nome,
-        unidade: variable.unidade,
-        avaliacao: variable.avaliacao,
-        atual: now[variable.id] ?? 0,
-        semMudanca,
-        comMudanca,
-        peso,
-      };
-    })
-    .filter((item) => item.peso > 1e-7)
-    .sort((a, b) => b.peso - a.peso)
-    .map((item): EfeitoPrevisto => ({
-      id: item.id,
-      nome: item.nome,
-      unidade: item.unidade,
-      avaliacao: item.avaliacao,
-      atual: item.atual,
-      semMudanca: item.semMudanca,
-      comMudanca: item.comMudanca,
-    }));
+  const efeitos = compararSeries(partida, base.value, alt.value, meses);
   const implantacao = alt.value.leis
     .slice(0, meses)
     .map(
@@ -585,21 +702,271 @@ export function preverLei(
   };
 }
 
+/** O piloto automático (D-58) responde a mesa com a opção padrão. */
+function responderComPadrao(partida: Partida, game: GameState): GameState {
+  let atual: Partida = { ...partida, game };
+  for (const pendente of game.occurrences?.pending ?? []) {
+    const dilema = occurrenceCatalog(partida.content).byId.get(
+      pendente.occurrenceId,
+    );
+    if (!dilema?.padrao) continue;
+    const r = responder(atual, dilema.id, dilema.padrao, true);
+    if (r.ok) atual = r.value;
+  }
+  return atual.game;
+}
+
+/** Sorteio do turno: eventos, mesa de dilemas e situações (SG106). */
+function sortearTurno(
+  content: ResolvedPackage,
+  game: GameState,
+): { game: GameState; jornal: RelatorioTurno["ocorrencias"] } {
+  const vazio = { eventos: [], dilemas: [], surgiram: [], acabaram: [] };
+  if (!game.occurrences) return { game, jornal: vazio };
+  const r = rollTurn({
+    content,
+    state: game.occurrences,
+    values: game.execution.values,
+    turn: game.currentTurn,
+    seed: game.random?.seed ?? 1,
+    laws: lawTargets(content, game.policies),
+  });
+  const turno = game.currentTurn;
+  const registro = (
+    tipo: VisaoRegistro["tipo"],
+    id: string,
+  ): VisaoRegistro | undefined => {
+    const achado = [...r.state.history]
+      .reverse()
+      .find((h) => h.kind === tipo && h.id === id);
+    if (tipo === "situacao")
+      return registroDeSituacao(content, id, turno, achado?.turn);
+    if (tipo === "dilema") {
+      const pendente = r.state.pending.find((p) => p.occurrenceId === id);
+      return registroDeOcorrencia(content, {
+        kind: "dilema",
+        id,
+        turn: turno,
+        ...(pendente?.vars ? { vars: pendente.vars } : {}),
+      });
+    }
+    return achado ? registroDeOcorrencia(content, achado) : undefined;
+  };
+  const lista = (tipo: VisaoRegistro["tipo"], ids: readonly string[]) =>
+    ids
+      .map((id) => registro(tipo, id))
+      .filter((x): x is VisaoRegistro => x !== undefined);
+  return {
+    game: { ...game, occurrences: r.state },
+    jornal: {
+      eventos: lista("evento", r.events),
+      dilemas: lista("dilema", r.dilemmas),
+      surgiram: lista("situacao", r.situationsStarted),
+      acabaram: r.situationsEnded.map((id) =>
+        registroDeSituacao(content, id, turno, undefined),
+      ),
+    },
+  };
+}
+
+/** Troca as variáveis do texto ({cidade}, {ministro}…) pelos valores sorteados. */
+function preencher(
+  texto: string,
+  vars?: Readonly<Record<string, string>>,
+): string {
+  const cheio = texto.replace(
+    /\{([a-z_]+)\}/g,
+    (_, nome: string) => vars?.[nome] ?? GENERICO[nome] ?? nome,
+  );
+  // "{ministro} é acusado…" começa a frase com maiúscula
+  return cheio.charAt(0).toUpperCase() + cheio.slice(1);
+}
+
+/** Quando o país não tem a lista, um termo genérico. */
+const GENERICO: Readonly<Record<string, string>> = {
+  cidade: "uma cidade",
+  bairro: "um bairro",
+  estado: "um estado",
+  regiao: "uma região",
+  empresa: "uma grande empresa",
+  vizinho: "um país vizinho",
+  banco: "um grande banco",
+  faccao: "uma facção criminosa",
+  partido_aliado: "um partido aliado",
+  potencia: "uma potência estrangeira",
+  gentilico: "nacional",
+  gentilicos: "cidadãos do país",
+  palacio: "palácio do governo",
+  festa: "A festa popular",
+  sistema_saude: "sistema público de saúde",
+  ministro: "um ministro do governo",
+  ministerio: "do governo",
+  pasta: "governo",
+};
+
+function registroDeSituacao(
+  content: ResolvedPackage,
+  id: string,
+  turno: number,
+  inicio: number | undefined,
+): VisaoRegistro {
+  const variable = content.variables.variaveis.find((v) => v.id === id);
+  return {
+    tipo: "situacao",
+    id,
+    nome: variable?.nome ?? id,
+    manchete: variable?.nome ?? id,
+    nivel: 2,
+    turno: inicio ?? turno,
+    avaliacao: "negativa",
+  };
+}
+
+function registroDeOcorrencia(
+  content: ResolvedPackage,
+  record: OccurrenceState["history"][number],
+): VisaoRegistro | undefined {
+  if (record.kind === "situacao")
+    return registroDeSituacao(content, record.id, record.turn, record.turn);
+  const o = occurrenceCatalog(content).byId.get(record.id);
+  if (!o) return undefined;
+  const opcao = o.opcoes?.find((x) => x.id === record.optionId);
+  return {
+    tipo: record.kind,
+    id: record.id,
+    nome: preencher(o.nome, record.vars),
+    manchete: preencher(o.manchete ?? o.nome, record.vars),
+    nivel: o.nivel ?? 2,
+    turno: record.turn,
+    ...(record.endedTurn !== undefined ? { fim: record.endedTurn } : {}),
+    ...(opcao ? { opcao: opcao.rotulo } : {}),
+    ...(record.vars ? { variaveis: record.vars } : {}),
+    ...(record.automatic ? { automatica: true } : {}),
+    ...(o.avaliacao ? { avaliacao: o.avaliacao } : {}),
+  };
+}
+
+function responder(
+  partida: Partida,
+  dilemaId: string,
+  opcaoId: string,
+  automatica = false,
+): Resultado<Partida> {
+  const { content, game } = partida;
+  if (!game.occurrences)
+    return { ok: false, erros: ["Esta partida não tem dilemas."] };
+  const r = answerDilemma({
+    content,
+    state: game.occurrences,
+    occurrenceId: dilemaId,
+    optionId: opcaoId,
+    turn: game.currentTurn,
+    seed: game.random?.seed ?? 1,
+    values: game.execution.values,
+    automatic: automatica,
+  });
+  if (!r.ok) return { ok: false, erros: [r.error] };
+  let atual: Partida = {
+    ...partida,
+    game: { ...game, occurrences: r.state },
+  };
+  // a opção pode mudar leis (ex.: socorro externo impõe teto de gastos)
+  for (const lei of r.laws) {
+    const mudada = aplicarMeta(atual, lei.lei, lei.nivel);
+    if (mudada.ok) atual = { ...mudada.value, acoes: atual.acoes };
+  }
+  return { ok: true, value: atual };
+}
+
+/**
+ * O presidente escolhe uma opção do dilema na mesa (SG106). A opção começa a
+ * valer na hora (o nó dela liga no próximo turno) e pode mudar leis.
+ */
+export function responderDilema(
+  partida: Partida,
+  dilemaId: string,
+  opcaoId: string,
+): Resultado<Partida> {
+  const r = responder(partida, dilemaId, opcaoId);
+  return r.ok
+    ? { ok: true, value: { ...r.value, acoes: partida.acoes + 1 } }
+    : r;
+}
+
+/** Prévia de uma opção do dilema: o país com ela, comparado com o país sem resposta. */
+export function preverDilema(
+  partida: Partida,
+  dilemaId: string,
+  opcaoId: string,
+  trimestres = 4,
+): Resultado<
+  Readonly<{ efeitos: readonly EfeitoPrevisto[]; interrompida?: string }>
+> {
+  if (
+    !Number.isInteger(trimestres) ||
+    trimestres < 1 ||
+    trimestres > MAXIMO_TRIMESTRES_PREVIA
+  )
+    return {
+      ok: false,
+      erros: [
+        `O horizonte da prévia deve ser um número inteiro de 1 a ${MAXIMO_TRIMESTRES_PREVIA} trimestres.`,
+      ],
+    };
+  const respondida = responder(partida, dilemaId, opcaoId);
+  if (!respondida.ok) return respondida;
+  const base = serieSemMudanca(partida, trimestres);
+  if (!base.ok) return base;
+  const alt = simularTrimestres(respondida.value, trimestres);
+  if (!alt.ok) return alt;
+  const meses = Math.min(base.value.valores.length, alt.value.valores.length);
+  const interrompida = alt.value.interrompida ?? base.value.interrompida;
+  return {
+    ok: true,
+    value: {
+      efeitos: compararSeries(partida, base.value, alt.value, meses),
+      ...(interrompida ? { interrompida } : {}),
+    },
+  };
+}
+
 /** Passa um trimestre: três meses de implantação, rede e contas públicas. */
 export function encerrarTurno(
   partida: Partida,
 ): Resultado<Readonly<{ partida: Partida; relatorio: RelatorioTurno }>> {
-  const { content, game, piloto } = partida;
+  const { content, game } = partida;
+  // SG106: o turno não passa com dilema na mesa
+  const mesa = game.occurrences?.pending ?? [];
+  if (mesa.length > 0) {
+    const nomes = mesa
+      .map((p) => occurrenceCatalog(content).byId.get(p.occurrenceId)?.nome)
+      .join(", ");
+    return {
+      ok: false,
+      erros: [
+        `${mesa.length === 1 ? "Há um dilema" : `Há ${mesa.length} dilemas`} na mesa (${nomes}). Escolha uma opção antes de encerrar o turno.`,
+      ],
+    };
+  }
+  // O piloto automático responde sozinho, sempre com a opção padrão.
+  const piloto = responderComPadrao(partida, partida.piloto);
   const simulated = simularTrimestre(partida);
   if (!simulated.ok) return falha(simulated.diagnostics);
   const prepared = simulated.value;
-  const next = commitGameQuarter(game, prepared.prepared);
+  const rolado = sortearTurno(
+    content,
+    commitGameQuarter(game, prepared.prepared),
+  );
+  const next = rolado.game;
   // O piloto automático só precisa andar à parte se o jogador mudou algo.
   let pilotoNext = next;
   if (piloto !== game) {
     const sozinho = simularTrimestre({ ...partida, game: piloto });
     if (!sozinho.ok) return falha(sozinho.diagnostics);
-    pilotoNext = commitGameQuarter(piloto, sozinho.value.prepared);
+    pilotoNext = sortearTurno(
+      content,
+      commitGameQuarter(piloto, sozinho.value.prepared),
+    ).game;
   }
   const before = game.execution.values;
   const after = next.execution.values;
@@ -640,9 +1007,24 @@ export function encerrarTurno(
         contasSemVoce: lerContas(content, pilotoAfter),
         mudancas,
         leisAlteradas: leisAlteradas(next, pilotoNext).size,
+        dilemasDiferentes: dilemasDiferentes(next, pilotoNext),
+        ocorrencias: rolado.jornal,
       },
     },
   };
+}
+
+/** Opções de dilema em curso que o piloto (sempre a padrão) não escolheu. */
+function dilemasDiferentes(game: GameState, piloto: GameState): number {
+  if (game === piloto) return 0;
+  const chave = (a: { occurrenceId: string; optionId?: string }) =>
+    `${a.occurrenceId}:${a.optionId}`;
+  const doPiloto = new Set(
+    (piloto.occurrences?.active ?? []).filter((a) => a.optionId).map(chave),
+  );
+  return (game.occurrences?.active ?? []).filter(
+    (a) => a.optionId && !doPiloto.has(chave(a)),
+  ).length;
 }
 
 /** Leis cuja meta o jogador mudou em relação ao piloto automático. */
@@ -976,8 +1358,27 @@ export function verPartida(partida: Partida): VisaoPartida {
   const controlToLaw = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
   );
+  // SG106: as setas de ocorrência só aparecem enquanto ela está em curso
+  const catalogo = occurrenceCatalog(content);
+  const emCurso = new Map(
+    (game.occurrences?.active ?? []).map((a) => [a.control, a]),
+  );
   const ligacoes = content.consequences.flatMap((consequence) => {
     const parametros = consequence.parametros;
+    const dona = catalogo.ownerByControl.get(consequence.origem);
+    let ocorrencia: VisaoLigacao["ocorrencia"];
+    if (dona) {
+      const ativa = emCurso.get(consequence.origem);
+      if (!ativa) return [];
+      const o = catalogo.byId.get(dona);
+      const opcao = o?.opcoes?.find((x) => x.id === ativa.optionId);
+      ocorrencia = {
+        id: dona,
+        nome: opcao
+          ? `${preencher(o?.nome ?? dona, ativa.vars)}: ${opcao.rotulo}`
+          : preencher(o?.nome ?? dona, ativa.vars),
+      };
+    }
     // Tabela de pontos (custo por opção): o sinal é o da maior saída.
     const forte = parametros.pontos
       ? parametros.pontos.reduce(
@@ -993,6 +1394,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       // O conteúdo da partida já é mensal (prepareMonthlyContent).
       atrasoMeses: consequence.atrasoPassos,
       mecanismo: consequence.mecanismo,
+      ...(ocorrencia ? { ocorrencia } : {}),
     };
     // Produto (D-50) e custo que reage (D-52): o outro nó também empurra o
     // alvo (consumo → receita, dívida → juros, desemprego → gasto), e o
@@ -1016,8 +1418,152 @@ export function verPartida(partida: Partida): VisaoPartida {
     turno: game.currentTurn,
     contas: lerContas(content, values),
     grupos: gruposDaPartida(partida, values, alteradas),
+    ocorrencias: ocorrenciasDaPartida(partida),
     leis,
     bolhas,
     ligacoes,
+  };
+}
+
+/** Setas que saem do nó de uma ocorrência (o que ela mexe enquanto dura). */
+function efeitosDoNo(
+  content: ResolvedPackage,
+  controle: string,
+): VisaoEfeitoOcorrencia[] {
+  const variaveis = new Map(content.variables.variaveis.map((v) => [v.id, v]));
+  return content.consequences
+    .filter((c) => c.origem === controle)
+    .map((c) => {
+      const alvo = variaveis.get(c.alvo);
+      return {
+        id: c.alvo,
+        nome: alvo?.nome ?? c.alvo,
+        unidade: alvo?.unidade ?? c.unidade,
+        pontos: c.parametros.coeficiente ?? 0,
+        ...(alvo?.avaliacao ? { avaliacao: alvo.avaliacao } : {}),
+      };
+    });
+}
+
+function camposDe(
+  o: OccurrenceFile,
+  lugar: Readonly<Record<string, string>> | undefined,
+): CamposOcorrencia {
+  return {
+    id: o.id,
+    nome: preencher(o.nome, lugar),
+    manchete: preencher(o.manchete ?? o.nome, lugar),
+    descricao: preencher(o.descricao ?? "", lugar),
+    area: o.area ?? "",
+    origem: o.origem ?? "",
+    nivel: o.nivel ?? 2,
+    ...(o.avaliacao ? { avaliacao: o.avaliacao } : {}),
+    ...(lugar ? { variaveis: lugar } : {}),
+  };
+}
+
+function ocorrenciasDaPartida(partida: Partida): VisaoOcorrencias {
+  const { content, game } = partida;
+  const state = game.occurrences;
+  if (!state) return { mesa: [], emCurso: [], historico: [] };
+  const catalogo = occurrenceCatalog(content);
+  const values = game.execution.values;
+  const nomeDaLei = new Map(content.policies.map((p) => [p.id, p]));
+  const mesa = state.pending.flatMap((p): VisaoDilema[] => {
+    const o = catalogo.byId.get(p.occurrenceId);
+    if (!o) return [];
+    const causa = p.causeId
+      ? catalogo.byId.get(p.causeId.split(".")[0])
+      : undefined;
+    return [
+      {
+        ...camposDe(o, p.vars),
+        aberto: p.openedTurn,
+        ...(causa
+          ? { causa: { id: causa.id, nome: preencher(causa.nome, p.vars) } }
+          : {}),
+        opcoes: (o.opcoes ?? []).map((op) => {
+          const disponivel = optionAvailable(op, values);
+          return {
+            id: op.id,
+            rotulo: preencher(op.rotulo, p.vars),
+            descricao: preencher(op.descricao ?? "", p.vars),
+            disponivel,
+            ...(disponivel ? {} : { motivo: op.motivoRequer }),
+            duracaoMeses: op.duracaoMeses,
+            efeitos: efeitosDoNo(content, op.controle),
+            leis: (op.leis ?? []).map((l) => {
+              const lei = nomeDaLei.get(l.lei);
+              const opcao = lei?.controle.opcoes?.find(
+                (x) => Math.abs(x.valor - l.nivel) < 1e-9,
+              );
+              return {
+                id: l.lei,
+                nome: lei?.nome ?? l.lei,
+                para: opcao?.rotulo ?? String(l.nivel),
+              };
+            }),
+            padrao: op.id === o.padrao,
+          };
+        }),
+      },
+    ];
+  });
+  const emCurso = state.active.flatMap((a): VisaoOcorrenciaAtiva[] => {
+    const o = catalogo.byId.get(a.occurrenceId);
+    if (!o) return [];
+    const opcao = o.opcoes?.find((x) => x.id === a.optionId);
+    return [
+      {
+        ...camposDe(o, a.vars),
+        tipo: o.tipo === "dilema" ? "dilema" : "evento",
+        ...(opcao ? { opcao: opcao.rotulo } : {}),
+        mesesRestantes: a.monthsLeft,
+        inicio: a.startedTurn,
+        efeitos: efeitosDoNo(content, a.control),
+      },
+    ];
+  });
+  const historico = [...state.history]
+    .reverse()
+    .slice(0, 40)
+    .map((r) => registroDeOcorrencia(content, r))
+    .filter((x): x is VisaoRegistro => x !== undefined);
+  return { mesa, emCurso, historico };
+}
+
+/** Chance de uma ocorrência neste momento e o porquê (para a tela). */
+export function chanceDaOcorrencia(
+  partida: Partida,
+  id: string,
+):
+  | Readonly<{
+      chance: number;
+      base: number;
+      fatores: readonly Readonly<{
+        id: string;
+        nome: string;
+        multiplica: number;
+      }>[];
+    }>
+  | undefined {
+  const o = occurrenceCatalog(partida.content).byId.get(id);
+  if (!o) return undefined;
+  const c = occurrenceChance(
+    o,
+    partida.game.execution.values,
+    partida.game.occurrences,
+  );
+  const nomes = new Map(
+    partida.content.variables.variaveis.map((v) => [v.id, v.nome]),
+  );
+  return {
+    chance: c.chance,
+    base: c.base,
+    fatores: c.factors.map((f) => ({
+      id: f.variable,
+      nome: nomes.get(f.variable) ?? f.variable,
+      multiplica: f.multiplier,
+    })),
   };
 }

@@ -1,0 +1,17 @@
+{
+  "id": "regular-as-apostas--taxar--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_regular_as_apostas__taxar",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.06,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

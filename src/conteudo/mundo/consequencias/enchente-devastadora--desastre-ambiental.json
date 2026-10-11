@@ -1,0 +1,17 @@
+{
+  "id": "enchente-devastadora--desastre-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_enchente_devastadora",
+  "alvo": "desastre_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 45.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

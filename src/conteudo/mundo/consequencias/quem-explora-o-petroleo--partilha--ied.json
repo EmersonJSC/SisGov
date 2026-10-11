@@ -1,0 +1,17 @@
+{
+  "id": "quem-explora-o-petroleo--partilha--ied",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_quem_explora_o_petroleo__partilha",
+  "alvo": "ied",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.3,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

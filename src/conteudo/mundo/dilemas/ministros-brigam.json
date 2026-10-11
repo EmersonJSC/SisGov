@@ -1,0 +1,61 @@
+{
+  "id": "ministros-brigam",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Ministros brigam por verba",
+  "descricao": "A Fazenda quer cortar; os ministérios sociais querem mais. A briga saiu dos gabinetes e foi para os jornais.",
+  "area": "Casa Civil",
+  "manchete": "Fazenda e área social trocam farpas sobre o orçamento",
+  "origem": "cotidiano",
+  "nivel": 1,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02
+  },
+  "padrao": "dividir",
+  "opcoes": [
+    {
+      "id": "fazenda",
+      "rotulo": "A Fazenda vence",
+      "descricao": "Corte de gastos. Mercado aplaude, base social reclama.",
+      "controle": "ocorrencia_ministros_brigam__fazenda",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "ministros-brigam--fazenda--gasto-publico",
+        "ministros-brigam--fazenda--risco-pais",
+        "ministros-brigam--fazenda--grupo-pobres",
+        "ministros-brigam--fazenda--grupo-servidores"
+      ]
+    },
+    {
+      "id": "social",
+      "rotulo": "A área social vence",
+      "descricao": "Mais verba para programas sociais.",
+      "controle": "ocorrencia_ministros_brigam__social",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "ministros-brigam--social--gasto-publico",
+        "ministros-brigam--social--grupo-pobres",
+        "ministros-brigam--social--risco-pais"
+      ]
+    },
+    {
+      "id": "dividir",
+      "rotulo": "Dividir a diferença",
+      "descricao": "Ninguém ganha, ninguém perde.",
+      "controle": "ocorrencia_ministros_brigam__dividir",
+      "duracaoMeses": 3,
+      "consequencias": ["ministros-brigam--dividir--margem-manobra-governo"]
+    }
+  ],
+  "consequencias": [
+    "ministros-brigam--fazenda--gasto-publico",
+    "ministros-brigam--fazenda--risco-pais",
+    "ministros-brigam--fazenda--grupo-pobres",
+    "ministros-brigam--fazenda--grupo-servidores",
+    "ministros-brigam--social--gasto-publico",
+    "ministros-brigam--social--grupo-pobres",
+    "ministros-brigam--social--risco-pais",
+    "ministros-brigam--dividir--margem-manobra-governo"
+  ]
+}

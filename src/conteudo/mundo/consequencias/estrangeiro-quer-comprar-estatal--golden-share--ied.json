@@ -1,0 +1,17 @@
+{
+  "id": "estrangeiro-quer-comprar-estatal--golden-share--ied",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_estrangeiro_quer_comprar_estatal__golden_share",
+  "alvo": "ied",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

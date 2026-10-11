@@ -3,18 +3,21 @@
 A interface fala com o jogo **só** por `src/app/partida.ts`. Ela não importa
 nada de `src/engine/`, `src/game/`, `src/domain/` nem `src/conteudo/`.
 Tudo o que a tela desenha sai de `verPartida`; tudo o que o jogador faz entra
-por `mudarLei` e `encerrarTurno`.
+por `mudarLei`, `responderDilema` e `encerrarTurno`.
 
 ## Funções
 
-| Função                                          | Entrada                                                           | Devolve                             | Quando usar                           |
-| ----------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------- | ------------------------------------- |
-| `criarPartida(opcoes?)`                         | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number }` | `Resultado<Partida>`                | Novo governo                          |
-| `mudarLei(partida, leiId, nivel)`               | id da lei e o nível (para leis com opções, o `valor` da opção)    | `Resultado<Partida>`                | Jogador escolheu uma opção ou valor   |
-| `encerrarTurno(partida)`                        | —                                                                 | `Resultado<{ partida, relatorio }>` | Botão "Encerrar turno" (um trimestre) |
-| `verPartida(partida)`                           | —                                                                 | `VisaoPartida`                      | Sempre que for desenhar               |
-| `preverLei(partida, leiId, nivel, trimestres?)` | id da lei e o nível que o jogador está considerando               | `Resultado<PrevisaoLei>`            | Prévia antes de aplicar a mudança     |
-| `leisQueCaem(partida, leiId, nivel)`            | id da lei e o nível que o jogador está considerando               | `VisaoQueda[]`                      | Avisar que leis filhas cairiam        |
+| Função                                                  | Entrada                                                                                  | Devolve                                 | Quando usar                           |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------- |
+| `criarPartida(opcoes?)`                                 | `{ pais?: "brasil", modo?: "teste" \| "real", semente?: number, ocorrencias?: boolean }` | `Resultado<Partida>`                    | Novo governo                          |
+| `mudarLei(partida, leiId, nivel)`                       | id da lei e o nível (para leis com opções, o `valor` da opção)                           | `Resultado<Partida>`                    | Jogador escolheu uma opção ou valor   |
+| `encerrarTurno(partida)`                                | —                                                                                        | `Resultado<{ partida, relatorio }>`     | Botão "Encerrar turno" (um trimestre) |
+| `verPartida(partida)`                                   | —                                                                                        | `VisaoPartida`                          | Sempre que for desenhar               |
+| `preverLei(partida, leiId, nivel, trimestres?)`         | id da lei e o nível que o jogador está considerando                                      | `Resultado<PrevisaoLei>`                | Prévia antes de aplicar a mudança     |
+| `leisQueCaem(partida, leiId, nivel)`                    | id da lei e o nível que o jogador está considerando                                      | `VisaoQueda[]`                          | Avisar que leis filhas cairiam        |
+| `responderDilema(partida, dilemaId, opcaoId)`           | dilema da mesa e a opção escolhida                                                       | `Resultado<Partida>`                    | Jogador assinou a decisão (SG106)     |
+| `preverDilema(partida, dilemaId, opcaoId, trimestres?)` | dilema da mesa e a opção considerada (padrão: 4 trimestres)                              | `Resultado<{ efeitos, interrompida? }>` | Prévia da opção, contra não responder |
+| `chanceDaOcorrencia(partida, id)`                       | id do evento ou dilema                                                                   | chance, base e fatores, ou `undefined`  | Explicar por que algo é provável      |
 
 `Resultado<T>` é `{ ok: true, value }` ou `{ ok: false, erros: string[] }`.
 Erros são frases prontas para mostrar ao jogador.
@@ -75,13 +78,28 @@ atual, cada lei informa uma. A interface mantém um único nó mesmo quando a
 lista tiver mais de um ministério. O campo `ministerio` continua como rótulo
 principal.
 
+- `ocorrencias` (SG106, desenho em `ocorrencias.md`): `mesa[]` (dilemas
+  esperando resposta — o turno não passa enquanto houver; cada um com
+  `manchete`, `descricao`, `nivel` 1–4, `origem`, `area`, `causa?` e
+  `opcoes[]` com `rotulo`, `descricao`, `disponivel`/`motivo`,
+  `duracaoMeses`, `efeitos[]`, `leis[]` que a opção muda e `padrao`, a do
+  piloto), `emCurso[]` (eventos e respostas valendo, com `mesesRestantes`
+  e `efeitos[]`) e `historico[]` (os 40 mais recentes). Os textos já vêm
+  com as variáveis trocadas (`{cidade}`, `{ministro}`…).
+- `ligacoes[].ocorrencia` (SG106): `{ id, nome }` quando a seta sai de uma
+  ocorrência em curso (o nó do evento ou da opção escolhida). Setas de
+  ocorrências paradas não aparecem.
+
 `VisaoPartida` ainda não informa os ocupantes dos cargos nem aprovação do
 partido. A interface usa um símbolo neutro para o ocupante e indica aprovação
 como indisponível até esses dados entrarem no contrato.
 
 O `relatorio` de `encerrarTurno` traz `turno`, `contasAntes` e `contas` (as
 contas da rede antes e depois do trimestre), `contasSemVoce` (as contas do
-país no piloto automático), `leisAlteradas` e `mudancas[]` (todas as bolhas
+país no piloto automático), `leisAlteradas`, `dilemasDiferentes` (respostas
+em curso diferentes da opção padrão), `ocorrencias` (o jornal do turno:
+`eventos`, `dilemas` que chegaram à mesa, situações que `surgiram` e
+`acabaram`) e `mudancas[]` (todas as bolhas
 que mudaram, da maior mudança para a menor, com `antes`, `depois`, `porVoce`
 — a parte que veio das decisões do jogador — e `sozinho`).
 
@@ -91,6 +109,13 @@ calculados e diz por quê em `interrompida`. `VisaoLei.minimo`/`maximo` são os
 limites efetivos (os mesmos que `mudarLei` aceita). Pedir a meta que já vale
 devolve a mesma partida, sem nova ação. `VisaoBolha.minimo`/`maximo` são a
 escala de desenho (`faixaVisual`, ou o domínio).
+
+**Ocorrências e piloto (SG106).** O sorteio é por hash da semente, do turno
+e da ocorrência; sem `semente`, `criarPartida` usa 1; a tela sorteia
+uma semente por partida nova (cada partida é diferente), e a mesma semente
+repete a história. O piloto recebe os mesmos
+números e responde todo dilema com a opção `padrao`. `ocorrencias: false`
+desliga eventos e dilemas (testes antigos).
 
 **Marca do jogador (D-58).** A `Partida` leva `piloto`: o mesmo país sem
 nenhuma decisão do jogador, que anda junto a cada turno (só é simulado à

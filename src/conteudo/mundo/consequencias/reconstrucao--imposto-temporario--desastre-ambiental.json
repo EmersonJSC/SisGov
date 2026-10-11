@@ -1,0 +1,17 @@
+{
+  "id": "reconstrucao--imposto-temporario--desastre-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reconstrucao__imposto_temporario",
+  "alvo": "desastre_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -22.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

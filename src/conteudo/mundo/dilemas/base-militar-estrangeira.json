@@ -1,0 +1,71 @@
+{
+  "id": "base-militar-estrangeira",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Base militar estrangeira",
+  "descricao": "Em troca, oferece tecnologia militar e investimento. Nacionalistas de esquerda e de direita reclamam.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "{potencia} pede para instalar base militar no litoral",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 30,
+  "gatilho": {
+    "chance": 0.006,
+    "fatores": [
+      {
+        "variavel": "tensao_internacional",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 2
+      }
+    ]
+  },
+  "padrao": "recusar",
+  "opcoes": [
+    {
+      "id": "aceitar",
+      "rotulo": "Aceitar",
+      "descricao": "Defesa mais forte e alinhamento claro.",
+      "controle": "ocorrencia_base_militar_estrangeira__aceitar",
+      "duracaoMeses": 36,
+      "consequencias": [
+        "base-militar-estrangeira--aceitar--capacidade-defesa",
+        "base-militar-estrangeira--aceitar--tensao-internacional",
+        "base-militar-estrangeira--aceitar--ied",
+        "base-militar-estrangeira--aceitar--grupo-progressistas",
+        "base-militar-estrangeira--aceitar--grupo-conservadores"
+      ]
+    },
+    {
+      "id": "cooperacao",
+      "rotulo": "Só exercícios conjuntos",
+      "descricao": "Cooperação sem soldados estrangeiros permanentes.",
+      "controle": "ocorrencia_base_militar_estrangeira__cooperacao",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "base-militar-estrangeira--cooperacao--capacidade-defesa",
+        "base-militar-estrangeira--cooperacao--tensao-internacional"
+      ]
+    },
+    {
+      "id": "recusar",
+      "rotulo": "Recusar",
+      "descricao": "Soberania não se negocia.",
+      "controle": "ocorrencia_base_militar_estrangeira__recusar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "base-militar-estrangeira--recusar--grupo-conservadores"
+      ]
+    }
+  ],
+  "consequencias": [
+    "base-militar-estrangeira--aceitar--capacidade-defesa",
+    "base-militar-estrangeira--aceitar--tensao-internacional",
+    "base-militar-estrangeira--aceitar--ied",
+    "base-militar-estrangeira--aceitar--grupo-progressistas",
+    "base-militar-estrangeira--aceitar--grupo-conservadores",
+    "base-militar-estrangeira--cooperacao--capacidade-defesa",
+    "base-militar-estrangeira--cooperacao--tensao-internacional",
+    "base-militar-estrangeira--recusar--grupo-conservadores"
+  ]
+}

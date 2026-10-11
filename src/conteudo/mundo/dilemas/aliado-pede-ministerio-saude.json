@@ -1,0 +1,57 @@
+{
+  "id": "aliado-pede-ministerio-saude",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Aliado pede ministério",
+  "descricao": "O {partido_aliado} quer comandar a pasta de Saúde. Sem isso, ameaça votar com a oposição.",
+  "area": "Casa Civil",
+  "manchete": "{partido_aliado} cobra um ministério para continuar na base",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02
+  },
+  "padrao": "recusar",
+  "opcoes": [
+    {
+      "id": "ceder",
+      "rotulo": "Ceder a pasta",
+      "descricao": "A base cresce; o aliado nomeia gente própria na Saúde.",
+      "controle": "ocorrencia_aliado_pede_ministerio_saude__ceder",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "aliado-pede-ministerio-saude--ceder--base-congresso",
+        "aliado-pede-ministerio-saude--ceder--corrupcao",
+        "aliado-pede-ministerio-saude--ceder--pressao-hospitalar"
+      ]
+    },
+    {
+      "id": "outra",
+      "rotulo": "Oferecer uma pasta menor",
+      "descricao": "Meio-termo. O aliado fica desconfiado.",
+      "controle": "ocorrencia_aliado_pede_ministerio_saude__outra",
+      "duracaoMeses": 12,
+      "consequencias": ["aliado-pede-ministerio-saude--outra--base-congresso"]
+    },
+    {
+      "id": "recusar",
+      "rotulo": "Recusar",
+      "descricao": "Ministério não se negocia. A base encolhe.",
+      "controle": "ocorrencia_aliado_pede_ministerio_saude__recusar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "aliado-pede-ministerio-saude--recusar--base-congresso",
+        "aliado-pede-ministerio-saude--recusar--grupo-classe-media"
+      ]
+    }
+  ],
+  "consequencias": [
+    "aliado-pede-ministerio-saude--ceder--base-congresso",
+    "aliado-pede-ministerio-saude--ceder--corrupcao",
+    "aliado-pede-ministerio-saude--ceder--pressao-hospitalar",
+    "aliado-pede-ministerio-saude--outra--base-congresso",
+    "aliado-pede-ministerio-saude--recusar--base-congresso",
+    "aliado-pede-ministerio-saude--recusar--grupo-classe-media"
+  ]
+}

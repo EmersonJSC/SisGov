@@ -1,0 +1,36 @@
+{
+  "id": "crise-diplomatica",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Crise diplomática",
+  "descricao": "Uma frase mal colocada vira crise. {potencia} ameaça rever acordos e os exportadores ficam apreensivos.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "{potencia} convoca embaixador após declaração do governo",
+  "origem": "mundo",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 6,
+  "gatilho": {
+    "chance": 0.03,
+    "fatores": [
+      {
+        "variavel": "tensao_internacional",
+        "de": 20,
+        "ate": 70,
+        "multiplica": 2
+      },
+      {
+        "variavel": "polarizacao",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "crise-diplomatica--reputacao-internacional",
+    "crise-diplomatica--exportacoes"
+  ],
+  "controle": "ocorrencia_crise_diplomatica",
+  "duracaoMeses": 3
+}

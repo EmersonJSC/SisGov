@@ -1,0 +1,17 @@
+{
+  "id": "assassinato-de-politico--protestos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_assassinato_de_politico",
+  "alvo": "protestos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 15.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

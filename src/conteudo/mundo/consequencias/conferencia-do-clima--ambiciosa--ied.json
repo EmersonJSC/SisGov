@@ -1,0 +1,17 @@
+{
+  "id": "conferencia-do-clima--ambiciosa--ied",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_conferencia_do_clima__ambiciosa",
+  "alvo": "ied",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

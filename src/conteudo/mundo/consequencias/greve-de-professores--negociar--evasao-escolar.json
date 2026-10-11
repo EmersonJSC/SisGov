@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-professores--negociar--evasao-escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_professores__negociar",
+  "alvo": "evasao_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

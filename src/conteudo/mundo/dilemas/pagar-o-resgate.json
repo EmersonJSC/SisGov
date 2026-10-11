@@ -1,0 +1,62 @@
+{
+  "id": "pagar-o-resgate",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Pagar o resgate aos hackers?",
+  "descricao": "Sem pagar, a reconstrução pode levar meses. Pagando, o país vira alvo preferido.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Hackers dão prazo para liberar os sistemas",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "nao-pagar",
+  "opcoes": [
+    {
+      "id": "pagar",
+      "rotulo": "Pagar em segredo",
+      "descricao": "Os sistemas voltam amanhã. Se vazar, é escândalo.",
+      "controle": "ocorrencia_pagar_o_resgate__pagar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "pagar-o-resgate--pagar--capacidade-estatal",
+        "pagar-o-resgate--pagar--corrupcao",
+        "pagar-o-resgate--pagar--confianca-instituicoes"
+      ]
+    },
+    {
+      "id": "nao-pagar",
+      "rotulo": "Não pagar e reconstruir",
+      "descricao": "Meses de filas e papel. O recado aos criminosos fica dado.",
+      "controle": "ocorrencia_pagar_o_resgate__nao_pagar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "pagar-o-resgate--nao-pagar--capacidade-estatal",
+        "pagar-o-resgate--nao-pagar--gasto-publico"
+      ]
+    },
+    {
+      "id": "culpar",
+      "rotulo": "Acusar uma potência estrangeira",
+      "descricao": "Transforma o ataque em causa nacional, sem provas sólidas.",
+      "controle": "ocorrencia_pagar_o_resgate__culpar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "pagar-o-resgate--culpar--tensao-internacional",
+        "pagar-o-resgate--culpar--polarizacao",
+        "pagar-o-resgate--culpar--grupo-conservadores"
+      ]
+    }
+  ],
+  "consequencias": [
+    "pagar-o-resgate--pagar--capacidade-estatal",
+    "pagar-o-resgate--pagar--corrupcao",
+    "pagar-o-resgate--pagar--confianca-instituicoes",
+    "pagar-o-resgate--nao-pagar--capacidade-estatal",
+    "pagar-o-resgate--nao-pagar--gasto-publico",
+    "pagar-o-resgate--culpar--tensao-internacional",
+    "pagar-o-resgate--culpar--polarizacao",
+    "pagar-o-resgate--culpar--grupo-conservadores"
+  ]
+}

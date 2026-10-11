@@ -1,0 +1,71 @@
+{
+  "id": "concessao-de-rodovias",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Concessão de rodovias",
+  "descricao": "Estradas esburacadas viraram rotina. Conceder à iniciativa privada traz obra e pedágio.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Empresas querem administrar rodovias federais em troca de pedágio",
+  "origem": "cotidiano",
+  "nivel": 1,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.012,
+    "fatores": [
+      {
+        "variavel": "infraestrutura_transportes",
+        "de": 60,
+        "ate": 30,
+        "multiplica": 2
+      }
+    ]
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "conceder",
+      "rotulo": "Conceder com pedágio",
+      "descricao": "Estradas boas, viagem mais cara.",
+      "controle": "ocorrencia_concessao_de_rodovias__conceder",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "concessao-de-rodovias--conceder--infraestrutura-transportes",
+        "concessao-de-rodovias--conceder--ied",
+        "concessao-de-rodovias--conceder--grupo-agro",
+        "concessao-de-rodovias--conceder--grupo-pequenos-negocios"
+      ]
+    },
+    {
+      "id": "obra-publica",
+      "rotulo": "Recuperar com dinheiro público",
+      "descricao": "Sem pedágio, com gasto.",
+      "controle": "ocorrencia_concessao_de_rodovias__obra_publica",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "concessao-de-rodovias--obra-publica--infraestrutura-transportes",
+        "concessao-de-rodovias--obra-publica--gasto-publico",
+        "concessao-de-rodovias--obra-publica--corrupcao"
+      ]
+    },
+    {
+      "id": "manter",
+      "rotulo": "Deixar como está",
+      "descricao": "Buracos continuam.",
+      "controle": "ocorrencia_concessao_de_rodovias__manter",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "concessao-de-rodovias--manter--infraestrutura-transportes"
+      ]
+    }
+  ],
+  "consequencias": [
+    "concessao-de-rodovias--conceder--infraestrutura-transportes",
+    "concessao-de-rodovias--conceder--ied",
+    "concessao-de-rodovias--conceder--grupo-agro",
+    "concessao-de-rodovias--conceder--grupo-pequenos-negocios",
+    "concessao-de-rodovias--obra-publica--infraestrutura-transportes",
+    "concessao-de-rodovias--obra-publica--gasto-publico",
+    "concessao-de-rodovias--obra-publica--corrupcao",
+    "concessao-de-rodovias--manter--infraestrutura-transportes"
+  ]
+}

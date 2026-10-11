@@ -1,0 +1,17 @@
+{
+  "id": "punir-a-mineradora--endurecer-licencas--qualidade-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_punir_a_mineradora__endurecer_licencas",
+  "alvo": "qualidade_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

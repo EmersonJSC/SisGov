@@ -1,0 +1,75 @@
+{
+  "id": "potencia-oferece-investimento",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Uma potência quer investir",
+  "descricao": "O dinheiro vem barato e a obra sai rápido. Em troca, empresas de {potencia} operam o porto por décadas.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "{potencia} oferece bilhões para construir ferrovia e porto",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.015,
+    "fatores": [
+      {
+        "variavel": "investimento",
+        "de": 60,
+        "ate": 20,
+        "multiplica": 2
+      }
+    ]
+  },
+  "padrao": "negociar",
+  "opcoes": [
+    {
+      "id": "aceitar",
+      "rotulo": "Aceitar como está",
+      "descricao": "Obra rápida, influência estrangeira longa.",
+      "controle": "ocorrencia_potencia_oferece_investimento__aceitar",
+      "duracaoMeses": 36,
+      "consequencias": [
+        "potencia-oferece-investimento--aceitar--infraestrutura-transportes",
+        "potencia-oferece-investimento--aceitar--ied",
+        "potencia-oferece-investimento--aceitar--exportacoes",
+        "potencia-oferece-investimento--aceitar--tensao-internacional",
+        "potencia-oferece-investimento--aceitar--grupo-conservadores"
+      ]
+    },
+    {
+      "id": "negociar",
+      "rotulo": "Negociar conteúdo local",
+      "descricao": "Exigir peças e mão de obra nacionais. Menor e mais lento.",
+      "controle": "ocorrencia_potencia_oferece_investimento__negociar",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "potencia-oferece-investimento--negociar--infraestrutura-transportes",
+        "potencia-oferece-investimento--negociar--ied",
+        "potencia-oferece-investimento--negociar--grupo-trabalhadores"
+      ]
+    },
+    {
+      "id": "recusar",
+      "rotulo": "Recusar",
+      "descricao": "Infraestrutura é soberania.",
+      "controle": "ocorrencia_potencia_oferece_investimento__recusar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "potencia-oferece-investimento--recusar--grupo-empresarios",
+        "potencia-oferece-investimento--recusar--grupo-agro"
+      ]
+    }
+  ],
+  "consequencias": [
+    "potencia-oferece-investimento--aceitar--infraestrutura-transportes",
+    "potencia-oferece-investimento--aceitar--ied",
+    "potencia-oferece-investimento--aceitar--exportacoes",
+    "potencia-oferece-investimento--aceitar--tensao-internacional",
+    "potencia-oferece-investimento--aceitar--grupo-conservadores",
+    "potencia-oferece-investimento--negociar--infraestrutura-transportes",
+    "potencia-oferece-investimento--negociar--ied",
+    "potencia-oferece-investimento--negociar--grupo-trabalhadores",
+    "potencia-oferece-investimento--recusar--grupo-empresarios",
+    "potencia-oferece-investimento--recusar--grupo-agro"
+  ]
+}

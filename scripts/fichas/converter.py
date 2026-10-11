@@ -38,6 +38,8 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ocorrencias  # noqa: E402  (SG106)
 FICHAS = RAIZ / "docs" / "fichas"
 CONTEUDO = RAIZ / "src" / "conteudo"
 MUNDO = CONTEUDO / "mundo"
@@ -202,6 +204,43 @@ REDE_FISCAL = [
     elo("juros-explosivos--taxa-juros", "juros_explosivos", "taxa_juros", 0.1, "percentual_0_100"),
     elo("juros-explosivos--confianca-empresarial", "juros_explosivos", "confianca_empresarial", -0.6,
         "indice_0_100"),
+]
+
+
+# ---------- indicadores pedidos pelas ocorrências (SG106) ----------
+# Hipóteses: médias ponderadas de bolhas que já existem; o valor do turno 0
+# vem do cenário (indicesIniciais, D-55).
+VARIAVEIS_EXTRAS = {
+    "qualidade_de_vida": {"id": "qualidade_de_vida", "tipo": "calculado", "nome": "Qualidade de vida",
+                          "unidade": "indice_0_100", "dominio": {"minimo": 0, "maximo": 100},
+                          "area": "Geral", "avaliacao": "maior_melhor"},
+    "base_congresso": {"id": "base_congresso", "tipo": "calculado", "nome": "Base de apoio no Congresso",
+                       "unidade": "indice_0_100", "dominio": {"minimo": 0, "maximo": 100},
+                       "area": "Casa Civil", "avaliacao": "maior_melhor"},
+    "tensao_internacional": {"id": "tensao_internacional", "tipo": "calculado",
+                             "nome": "Tensão internacional", "unidade": "indice_0_100",
+                             "dominio": {"minimo": 0, "maximo": 100},
+                             "area": "Direitos e Defesa", "avaliacao": "maior_pior"},
+}
+INICIO_EXTRAS = {"qualidade_de_vida": 50, "base_congresso": 55, "tensao_internacional": 25}
+REDE_EXTRAS = [
+    elo("saude-populacao--qualidade-de-vida", "saude_populacao", "qualidade_de_vida", 0.25, "indice_0_100"),
+    elo("renda-familias--qualidade-de-vida", "renda_familias", "qualidade_de_vida", 0.25, "indice_0_100"),
+    elo("sensacao-seguranca--qualidade-de-vida", "sensacao_seguranca", "qualidade_de_vida", 0.2,
+        "indice_0_100"),
+    elo("infraestrutura-saneamento--qualidade-de-vida", "infraestrutura_saneamento", "qualidade_de_vida",
+        0.15, "indice_0_100"),
+    elo("escolaridade--qualidade-de-vida", "escolaridade", "qualidade_de_vida", 0.15, "indice_0_100"),
+    elo("popularidade-governo--base-congresso", "popularidade_governo", "base_congresso", 0.4,
+        "indice_0_100"),
+    elo("estabilidade-politica--base-congresso", "estabilidade_politica", "base_congresso", 0.2,
+        "indice_0_100"),
+    elo("reputacao-internacional--tensao-internacional", "reputacao_internacional",
+        "tensao_internacional", -0.3, "indice_0_100"),
+    elo("tensao-internacional--risco-pais", "tensao_internacional", "risco_pais", 0.15, "indice_0_100"),
+    # ied é % do PIB: tensão máxima tira ~1,5 ponto
+    elo("tensao-internacional--investimento-estrangeiro", "tensao_internacional", "ied", -0.015,
+        "percentual_pib"),
 ]
 
 
@@ -403,8 +442,13 @@ def main(aplicar: bool) -> None:
     vigentes, valores_controle = [], {}
     usadas: set[str] = (set(FISCAIS) | {"divida_publica", "taxa_juros", POPULARIDADE}
                         | set(VARIAVEIS_FISCAIS) | set(GRUPOS)
-                        | {b for _, _, _, i in GRUPOS.values() for b, _ in i})
-    contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL + rede_dos_grupos()}
+                        | {b for _, _, _, i in GRUPOS.values() for b, _ in i}
+                        | set(VARIAVEIS_EXTRAS) | {c["origem"] for c in REDE_EXTRAS})
+    # SG106: bolhas citadas pelas ocorrências entram na rede
+    PASTA_OCORRENCIAS = FICHAS / "ocorrencias"
+    refs_ocorrencias = ocorrencias.referencias(PASTA_OCORRENCIAS)
+    usadas |= refs_ocorrencias
+    contabeis: dict[str, dict] = {c["id"]: c for c in REDE_FISCAL + rede_dos_grupos() + REDE_EXTRAS}
     gasto_brasil = 0.0
     vinculadas: set[str] = set()  # controles em % da receita (SG137)
     variaveis[PIB_NOMINAL] = {"id": PIB_NOMINAL, "tipo": "controle", "nome": "PIB nominal",
@@ -579,6 +623,8 @@ def main(aplicar: bool) -> None:
             novas_vars[bid] = variavel_grupo(bid)
         elif bid in VARIAVEIS_FISCAIS:
             novas_vars[bid] = VARIAVEIS_FISCAIS[bid]
+        elif bid in VARIAVEIS_EXTRAS:
+            novas_vars[bid] = VARIAVEIS_EXTRAS[bid]
         elif bid in antigas and antigas[bid]["tipo"] != "controle":
             novas_vars[bid] = antigas[bid]
         elif bid in pilares:
@@ -589,6 +635,10 @@ def main(aplicar: bool) -> None:
             novas_vars[bid] = bolha_sugerida(bid, sugeridas[bid])
         else:
             print(f"AVISO: bolha sem definição: {bid}")
+    # ---------- ocorrências (SG106) ----------
+    geradas = ocorrencias.gerar(PASTA_OCORRENCIAS, leis_json, {**variaveis, **novas_vars})
+    variaveis.update(geradas["nos"])
+    print(f"ocorrências: {len(geradas['eventos'])} eventos, {len(geradas['dilemas'])} dilemas")
     removidas = sorted(set(antigas) - set(novas_vars) - set(variaveis))
 
     # ---------- consequências em JSON ----------
@@ -622,6 +672,7 @@ def main(aplicar: bool) -> None:
                         "unidade": unidade, "atrasoPassos": c["atrasoPassos"], "duracao": {"modo": "continuo"}}
     saida_c.update(rede)
     saida_c.update(contabeis)
+    saida_c.update(geradas["consequencias"])
     # evento antigo continua se o alvo dele continua
     for cid, c in antigas_c.items():
         if c["origem"].startswith("carga_") and c["alvo"] in novas_vars:
@@ -654,6 +705,16 @@ def main(aplicar: bool) -> None:
         escrever(pasta_c / f"{cid}.json", c)
     mundo = ler(MUNDO / "mundo.json")
     mundo["consequencias"] = [f"mundo/consequencias/{cid}.json" for cid in sorted(saida_c)]
+    # SG106: eventos e dilemas (o evento antigo de teste continua)
+    for pasta, chave in ((MUNDO / "eventos", "eventos"), (MUNDO / "dilemas", "dilemas")):
+        pasta.mkdir(exist_ok=True)
+        for p in pasta.glob("*.json"):
+            if p.stem not in ("aumento-demanda",):
+                p.unlink()
+        for oid, j in geradas[chave].items():
+            escrever(pasta / f"{oid}.json", j)
+        antigos = [x for x in mundo.get(chave, []) if x.endswith("aumento-demanda.json")]
+        mundo[chave] = antigos + [f"mundo/{chave}/{oid}.json" for oid in sorted(geradas[chave])]
     escrever(MUNDO / "mundo.json", mundo)
     # a receita divide os juros (situação de juros explosivos): nunca zero
     # SG159: as contas não têm teto nem amortecimento próprio. Domínio aberto
@@ -679,6 +740,8 @@ def main(aplicar: bool) -> None:
     variaveis_doc["variaveis"] = list(variaveis.values()) + list(novas_vars.values())
     escrever(MUNDO / "indicadores" / "variaveis.json", variaveis_doc)
 
+    for bid, v in INICIO_EXTRAS.items():  # SG106: valor do cenário
+        estado.setdefault("indicesIniciais", {}).setdefault(bid, v)
     estado["leisVigentes"] = vigentes
     estado["limitesProprios"] = [x for x in estado.get("limitesProprios") or [] if x.get("lei") in leis_json]
     politica = estado.get("politica") or {}

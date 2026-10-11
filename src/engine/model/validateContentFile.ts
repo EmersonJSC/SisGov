@@ -1396,6 +1396,7 @@ function validateInitialState(
       "politica",
       "cenario",
       "indicesIniciais",
+      "lugares",
     ],
     diagnostics,
   );
@@ -1582,6 +1583,20 @@ function validateInitialState(
     requiredStringArray(value, file, "leisEleitoraisVigentes", diagnostics);
   if (value.politica !== undefined)
     validatePoliticalInitialState(value.politica, file, diagnostics);
+  if (value.lugares !== undefined) {
+    if (!isObject(value.lugares))
+      diagnostics.push(
+        diagnostic(file, "lugares", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else
+      for (const kind of Object.keys(value.lugares))
+        requiredStringArray(
+          value.lugares,
+          file,
+          `lugares.${kind}`,
+          diagnostics,
+        );
+  }
   return diagnostics.length === 0 ? (value as InitialStateFile) : undefined;
 }
 
@@ -2786,10 +2801,22 @@ function validateOccurrence(
       "entraQuando",
       "saiQuando",
       "consequencias",
+      "manchete",
+      "origem",
+      "nivel",
+      "unica",
+      "controle",
+      "duracaoMeses",
+      "intervaloMinimoTurnos",
+      "gatilho",
+      "desdobramentos",
+      "opcoes",
+      "padrao",
     ],
     diagnostics,
   );
   validateEnvelope(value, file, diagnostics);
+  validateOccurrenceDrama(value, file, diagnostics);
   requiredString(value, file, "nome", diagnostics);
   if (value.descricao !== undefined)
     requiredString(value, file, "descricao", diagnostics);
@@ -2866,6 +2893,451 @@ function validateOccurrence(
   }
   requiredStringArray(value, file, "consequencias", diagnostics);
   return diagnostics.length === 0 ? (value as OccurrenceFile) : undefined;
+}
+
+const OCCURRENCE_ORIGINS = new Set([
+  "mundo",
+  "natureza",
+  "pais",
+  "reacao",
+  "desdobramento",
+  "crise",
+  "cotidiano",
+]);
+const COMPARISONS = new Set([
+  "maior_que",
+  "maior_ou_igual",
+  "menor_que",
+  "menor_ou_igual",
+  "igual",
+]);
+
+/** Condição recursiva (comparação, e, ou, não), como no motor. */
+function validateOccurrenceCondition(
+  value: unknown,
+  file: string,
+  path: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, path, "TIPO_INVALIDO", "Deve ser uma condição."),
+    );
+    return;
+  }
+  if (value.tipo === "comparacao") {
+    validateKnownFields(
+      value,
+      file,
+      ["tipo", "variavel", "operador", "valor"],
+      diagnostics,
+    );
+    requiredString(value, file, `${path}.variavel`, diagnostics);
+    if (typeof value.operador !== "string" || !COMPARISONS.has(value.operador))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.operador`,
+          "VALOR_INVALIDO",
+          "Operador não suportado.",
+        ),
+      );
+    requiredNumber(value, file, `${path}.valor`, diagnostics);
+  } else if (value.tipo === "e" || value.tipo === "ou") {
+    validateKnownFields(value, file, ["tipo", "condicoes"], diagnostics);
+    if (!Array.isArray(value.condicoes) || value.condicoes.length === 0)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${path}.condicoes`,
+          "VALOR_INVALIDO",
+          "Deve ser uma lista não vazia.",
+        ),
+      );
+    else
+      value.condicoes.forEach((item, i) =>
+        validateOccurrenceCondition(
+          item,
+          file,
+          `${path}.condicoes[${i}]`,
+          diagnostics,
+        ),
+      );
+  } else if (value.tipo === "nao") {
+    validateKnownFields(value, file, ["tipo", "condicao"], diagnostics);
+    validateOccurrenceCondition(
+      value.condicao,
+      file,
+      `${path}.condicao`,
+      diagnostics,
+    );
+  } else
+    diagnostics.push(
+      diagnostic(
+        file,
+        `${path}.tipo`,
+        "VALOR_INVALIDO",
+        "Use comparacao, e, ou ou nao.",
+      ),
+    );
+}
+
+function validateFollowUps(
+  value: unknown,
+  file: string,
+  path: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!Array.isArray(value)) {
+    diagnostics.push(
+      diagnostic(file, path, "TIPO_INVALIDO", "Deve ser uma lista."),
+    );
+    return;
+  }
+  value.forEach((item, i) => {
+    const itemPath = `${path}[${i}]`;
+    if (!isObject(item)) {
+      diagnostics.push(
+        diagnostic(file, itemPath, "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+      return;
+    }
+    validateKnownFields(
+      item,
+      file,
+      ["ocorrencia", "chance", "emTurnos"],
+      diagnostics,
+    );
+    requiredString(item, file, `${itemPath}.ocorrencia`, diagnostics);
+    const chance = requiredNumber(
+      item,
+      file,
+      `${itemPath}.chance`,
+      diagnostics,
+    );
+    if (chance !== undefined && (chance <= 0 || chance > 1))
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${itemPath}.chance`,
+          "VALOR_INVALIDO",
+          "A chance vai de 0 (exclusivo) a 1.",
+        ),
+      );
+    const window = item.emTurnos;
+    if (
+      !Array.isArray(window) ||
+      window.length !== 2 ||
+      !window.every((n) => Number.isInteger(n) && n >= 1) ||
+      window[0] > window[1]
+    )
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${itemPath}.emTurnos`,
+          "VALOR_INVALIDO",
+          "Use [mínimo, máximo] em turnos, a partir de 1.",
+        ),
+      );
+  });
+}
+
+/** Campos do SG106: origem, nível, gatilho, duração, desdobramentos e opções. */
+function validateOccurrenceDrama(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  for (const field of ["manchete", "controle", "padrao"])
+    if (value[field] !== undefined)
+      requiredString(value, file, field, diagnostics);
+  if (
+    value.origem !== undefined &&
+    (typeof value.origem !== "string" || !OCCURRENCE_ORIGINS.has(value.origem))
+  )
+    diagnostics.push(
+      diagnostic(file, "origem", "VALOR_INVALIDO", "Origem não suportada."),
+    );
+  if (
+    value.nivel !== undefined &&
+    (typeof value.nivel !== "number" || ![1, 2, 3, 4].includes(value.nivel))
+  )
+    diagnostics.push(
+      diagnostic(file, "nivel", "VALOR_INVALIDO", "Use um nível de 1 a 4."),
+    );
+  if (value.unica !== undefined && typeof value.unica !== "boolean")
+    diagnostics.push(
+      diagnostic(
+        file,
+        "unica",
+        "TIPO_INVALIDO",
+        "Deve ser verdadeiro ou falso.",
+      ),
+    );
+  const integer = (owner: JsonObject, path: string, minimum: number) => {
+    const n = requiredNumber(owner, file, path, diagnostics);
+    if (n !== undefined && (!Number.isInteger(n) || n < minimum))
+      diagnostics.push(
+        diagnostic(
+          file,
+          path,
+          "VALOR_INVALIDO",
+          `Deve ser um inteiro a partir de ${minimum}.`,
+        ),
+      );
+  };
+  if (value.duracaoMeses !== undefined) integer(value, "duracaoMeses", 1);
+  if (value.intervaloMinimoTurnos !== undefined)
+    integer(value, "intervaloMinimoTurnos", 0);
+  if (value.desdobramentos !== undefined)
+    validateFollowUps(
+      value.desdobramentos,
+      file,
+      "desdobramentos",
+      diagnostics,
+    );
+  if (value.gatilho !== undefined) {
+    const trigger = value.gatilho;
+    if (!isObject(trigger))
+      diagnostics.push(
+        diagnostic(file, "gatilho", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(
+        trigger,
+        file,
+        ["chance", "fatores", "condicao", "porTurnos", "reacao"],
+        diagnostics,
+      );
+      const p = requiredNumber(trigger, file, "gatilho.chance", diagnostics);
+      if (p !== undefined && (p < 0 || p > 1))
+        diagnostics.push(
+          diagnostic(
+            file,
+            "gatilho.chance",
+            "VALOR_INVALIDO",
+            "A chance por turno vai de 0 a 1.",
+          ),
+        );
+      if (trigger.condicao !== undefined)
+        validateOccurrenceCondition(
+          trigger.condicao,
+          file,
+          "gatilho.condicao",
+          diagnostics,
+        );
+      if (trigger.porTurnos !== undefined)
+        integer(trigger, "gatilho.porTurnos", 1);
+      const factors = trigger.fatores;
+      if (factors !== undefined && !Array.isArray(factors))
+        diagnostics.push(
+          diagnostic(
+            file,
+            "gatilho.fatores",
+            "TIPO_INVALIDO",
+            "Deve ser uma lista.",
+          ),
+        );
+      else
+        (factors ?? []).forEach((factor, index) => {
+          const path = `gatilho.fatores[${index}]`;
+          if (!isObject(factor)) {
+            diagnostics.push(
+              diagnostic(file, path, "TIPO_INVALIDO", "Deve ser um objeto."),
+            );
+            return;
+          }
+          validateKnownFields(
+            factor,
+            file,
+            ["variavel", "de", "ate", "multiplica"],
+            diagnostics,
+          );
+          requiredString(factor, file, `${path}.variavel`, diagnostics);
+          const from = requiredNumber(factor, file, `${path}.de`, diagnostics);
+          const to = requiredNumber(factor, file, `${path}.ate`, diagnostics);
+          const times = requiredNumber(
+            factor,
+            file,
+            `${path}.multiplica`,
+            diagnostics,
+          );
+          if (from !== undefined && to !== undefined && from === to)
+            diagnostics.push(
+              diagnostic(
+                file,
+                `${path}.ate`,
+                "VALOR_INVALIDO",
+                "de e ate precisam ser diferentes.",
+              ),
+            );
+          if (times !== undefined && times <= 0)
+            diagnostics.push(
+              diagnostic(
+                file,
+                `${path}.multiplica`,
+                "VALOR_INVALIDO",
+                "O multiplicador precisa ser positivo.",
+              ),
+            );
+        });
+      if (trigger.reacao !== undefined) {
+        const reaction = trigger.reacao;
+        if (!isObject(reaction))
+          diagnostics.push(
+            diagnostic(
+              file,
+              "gatilho.reacao",
+              "TIPO_INVALIDO",
+              "Deve ser um objeto.",
+            ),
+          );
+        else {
+          validateKnownFields(
+            reaction,
+            file,
+            ["controle", "para", "sobe", "desce", "janelaTurnos"],
+            diagnostics,
+          );
+          requiredString(
+            reaction,
+            file,
+            "gatilho.reacao.controle",
+            diagnostics,
+          );
+          integer(reaction, "gatilho.reacao.janelaTurnos", 1);
+          const ways = ["para", "sobe", "desce"].filter(
+            (k) => reaction[k] !== undefined,
+          );
+          if (ways.length !== 1)
+            diagnostics.push(
+              diagnostic(
+                file,
+                "gatilho.reacao",
+                "VALOR_INVALIDO",
+                "Use para, sobe ou desce (só um).",
+              ),
+            );
+          if (
+            reaction.para !== undefined &&
+            (!Array.isArray(reaction.para) ||
+              !reaction.para.every((n) => typeof n === "number"))
+          )
+            diagnostics.push(
+              diagnostic(
+                file,
+                "gatilho.reacao.para",
+                "VALOR_INVALIDO",
+                "Deve ser uma lista de valores.",
+              ),
+            );
+          for (const k of ["sobe", "desce"])
+            if (reaction[k] !== undefined) {
+              const n = requiredNumber(
+                reaction,
+                file,
+                `gatilho.reacao.${k}`,
+                diagnostics,
+              );
+              if (n !== undefined && n <= 0)
+                diagnostics.push(
+                  diagnostic(
+                    file,
+                    `gatilho.reacao.${k}`,
+                    "VALOR_INVALIDO",
+                    "Deve ser positivo.",
+                  ),
+                );
+            }
+        }
+      }
+    }
+  }
+  if (value.opcoes !== undefined) {
+    if (!Array.isArray(value.opcoes)) {
+      diagnostics.push(
+        diagnostic(file, "opcoes", "TIPO_INVALIDO", "Deve ser uma lista."),
+      );
+      return;
+    }
+    value.opcoes.forEach((option, index) => {
+      const path = `opcoes[${index}]`;
+      if (!isObject(option)) {
+        diagnostics.push(
+          diagnostic(file, path, "TIPO_INVALIDO", "Deve ser um objeto."),
+        );
+        return;
+      }
+      validateKnownFields(
+        option,
+        file,
+        [
+          "id",
+          "rotulo",
+          "descricao",
+          "controle",
+          "duracaoMeses",
+          "consequencias",
+          "leis",
+          "requer",
+          "motivoRequer",
+          "desdobramentos",
+        ],
+        diagnostics,
+      );
+      requiredString(option, file, `${path}.id`, diagnostics);
+      requiredString(option, file, `${path}.rotulo`, diagnostics);
+      requiredString(option, file, `${path}.controle`, diagnostics);
+      for (const field of ["descricao", "motivoRequer"])
+        if (option[field] !== undefined)
+          requiredString(option, file, `${path}.${field}`, diagnostics);
+      integer(option, `${path}.duracaoMeses`, 1);
+      requiredStringArray(option, file, `${path}.consequencias`, diagnostics);
+      if (option.requer !== undefined)
+        validateOccurrenceCondition(
+          option.requer,
+          file,
+          `${path}.requer`,
+          diagnostics,
+        );
+      if (option.desdobramentos !== undefined)
+        validateFollowUps(
+          option.desdobramentos,
+          file,
+          `${path}.desdobramentos`,
+          diagnostics,
+        );
+      if (option.leis !== undefined) {
+        if (!Array.isArray(option.leis))
+          diagnostics.push(
+            diagnostic(
+              file,
+              `${path}.leis`,
+              "TIPO_INVALIDO",
+              "Deve ser uma lista.",
+            ),
+          );
+        else
+          option.leis.forEach((law, i) => {
+            const lawPath = `${path}.leis[${i}]`;
+            if (!isObject(law)) {
+              diagnostics.push(
+                diagnostic(
+                  file,
+                  lawPath,
+                  "TIPO_INVALIDO",
+                  "Deve ser um objeto.",
+                ),
+              );
+              return;
+            }
+            validateKnownFields(law, file, ["lei", "nivel"], diagnostics);
+            requiredString(law, file, `${lawPath}.lei`, diagnostics);
+            requiredNumber(law, file, `${lawPath}.nivel`, diagnostics);
+          });
+      }
+    });
+  }
 }
 
 export function validateContentFile(

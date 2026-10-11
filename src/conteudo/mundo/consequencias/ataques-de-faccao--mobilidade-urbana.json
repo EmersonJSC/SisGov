@@ -1,0 +1,17 @@
+{
+  "id": "ataques-de-faccao--mobilidade-urbana",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_ataques_de_faccao",
+  "alvo": "mobilidade_urbana",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -5.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

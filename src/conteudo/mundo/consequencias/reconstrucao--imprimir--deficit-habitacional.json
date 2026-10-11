@@ -1,0 +1,17 @@
+{
+  "id": "reconstrucao--imprimir--deficit-habitacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reconstrucao__imprimir",
+  "alvo": "deficit_habitacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

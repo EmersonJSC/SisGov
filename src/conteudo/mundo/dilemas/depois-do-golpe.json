@@ -1,0 +1,53 @@
+{
+  "id": "depois-do-golpe",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Depois da tentativa de golpe",
+  "descricao": "A tentativa fracassou, mas os responsáveis ainda estão nos quartéis e nos gabinetes.",
+  "area": "Casa Civil",
+  "manchete": "A democracia resistiu. E agora?",
+  "origem": "desdobramento",
+  "nivel": 4,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "pacificar",
+  "opcoes": [
+    {
+      "id": "punir",
+      "rotulo": "Punir todos, inclusive militares",
+      "descricao": "Recado definitivo; quartéis ressentidos.",
+      "controle": "ocorrencia_depois_do_golpe__punir",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "depois-do-golpe--punir--forca-instituicoes",
+        "depois-do-golpe--punir--golpe-risco",
+        "depois-do-golpe--punir--polarizacao",
+        "depois-do-golpe--punir--grupo-conservadores"
+      ]
+    },
+    {
+      "id": "pacificar",
+      "rotulo": "Anistia em nome da paz",
+      "descricao": "Vira a página rápido; pode voltar a acontecer.",
+      "controle": "ocorrencia_depois_do_golpe__pacificar",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "depois-do-golpe--pacificar--impunidade",
+        "depois-do-golpe--pacificar--golpe-risco",
+        "depois-do-golpe--pacificar--grupo-progressistas",
+        "depois-do-golpe--pacificar--polarizacao"
+      ]
+    }
+  ],
+  "consequencias": [
+    "depois-do-golpe--punir--forca-instituicoes",
+    "depois-do-golpe--punir--golpe-risco",
+    "depois-do-golpe--punir--polarizacao",
+    "depois-do-golpe--punir--grupo-conservadores",
+    "depois-do-golpe--pacificar--impunidade",
+    "depois-do-golpe--pacificar--golpe-risco",
+    "depois-do-golpe--pacificar--grupo-progressistas",
+    "depois-do-golpe--pacificar--polarizacao"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "aliado-pede-ministerio-infraestrutura--outra--base-congresso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_aliado_pede_ministerio_infraestrutura__outra",
+  "alvo": "base_congresso",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

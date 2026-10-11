@@ -1,0 +1,33 @@
+{
+  "id": "fake-news-aposentadorias",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Notícia falsa viraliza",
+  "descricao": "Uma mentira bem contada sobre o fim das aposentadorias circula por milhões de celulares em poucas horas.",
+  "area": "Casa Civil",
+  "manchete": "Boato sobre o fim das aposentadorias se espalha e provoca pânico",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 2,
+  "gatilho": {
+    "chance": 0.08,
+    "fatores": [
+      {
+        "variavel": "desinformacao",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "nivel_regulacao_redes_sociais",
+        "de": 0,
+        "ate": 75,
+        "multiplica": 0.5
+      }
+    ]
+  },
+  "consequencias": ["fake-news-aposentadorias--grupo-aposentados"],
+  "controle": "ocorrencia_fake_news_aposentadorias",
+  "duracaoMeses": 1
+}

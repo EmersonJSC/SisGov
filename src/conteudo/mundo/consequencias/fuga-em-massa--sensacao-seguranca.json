@@ -1,0 +1,17 @@
+{
+  "id": "fuga-em-massa--sensacao-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_fuga_em_massa",
+  "alvo": "sensacao_seguranca",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

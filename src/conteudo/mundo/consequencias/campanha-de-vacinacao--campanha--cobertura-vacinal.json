@@ -1,0 +1,17 @@
+{
+  "id": "campanha-de-vacinacao--campanha--cobertura-vacinal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_campanha_de_vacinacao__campanha",
+  "alvo": "cobertura_vacinal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "reconstrucao--devagar--desastre-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reconstrucao__devagar",
+  "alvo": "desastre_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -8.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

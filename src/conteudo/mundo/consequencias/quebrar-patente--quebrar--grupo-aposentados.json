@@ -1,0 +1,17 @@
+{
+  "id": "quebrar-patente--quebrar--grupo-aposentados",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_quebrar_patente__quebrar",
+  "alvo": "grupo_aposentados",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

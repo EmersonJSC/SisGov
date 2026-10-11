@@ -1,0 +1,76 @@
+{
+  "id": "aposentados-protestam",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Aposentados nas ruas",
+  "descricao": "A idade mínima subiu e quem estava perto de se aposentar viu o prazo fugir. A pressão é por uma regra de transição.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Aposentados e centrais protestam contra a nova idade mínima",
+  "origem": "reacao",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.75,
+    "reacao": {
+      "controle": "nivel_idade_minima_aposentadoria",
+      "janelaTurnos": 2,
+      "sobe": 20.0
+    }
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "manter",
+      "rotulo": "Manter a regra",
+      "descricao": "A conta da Previdência agradece; os idosos não.",
+      "controle": "ocorrencia_aposentados_protestam__manter",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "aposentados-protestam--manter--grupo-aposentados",
+        "aposentados-protestam--manter--grupo-trabalhadores",
+        "aposentados-protestam--manter--protestos"
+      ]
+    },
+    {
+      "id": "transicao",
+      "rotulo": "Criar regra de transição",
+      "descricao": "Quem está perto paga um pedágio menor. Economia menor.",
+      "controle": "ocorrencia_aposentados_protestam__transicao",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "aposentados-protestam--transicao--deficit-previdenciario",
+        "aposentados-protestam--transicao--grupo-aposentados",
+        "aposentados-protestam--transicao--grupo-trabalhadores"
+      ]
+    },
+    {
+      "id": "recuar",
+      "rotulo": "Recuar para a regra anterior",
+      "descricao": "Paz nas ruas, dúvidas no mercado.",
+      "controle": "ocorrencia_aposentados_protestam__recuar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "aposentados-protestam--recuar--risco-pais",
+        "aposentados-protestam--recuar--confianca-empresarial",
+        "aposentados-protestam--recuar--grupo-aposentados"
+      ],
+      "leis": [
+        {
+          "lei": "idade-minima-aposentadoria",
+          "nivel": 50.0
+        }
+      ]
+    }
+  ],
+  "consequencias": [
+    "aposentados-protestam--manter--grupo-aposentados",
+    "aposentados-protestam--manter--grupo-trabalhadores",
+    "aposentados-protestam--manter--protestos",
+    "aposentados-protestam--transicao--deficit-previdenciario",
+    "aposentados-protestam--transicao--grupo-aposentados",
+    "aposentados-protestam--transicao--grupo-trabalhadores",
+    "aposentados-protestam--recuar--risco-pais",
+    "aposentados-protestam--recuar--confianca-empresarial",
+    "aposentados-protestam--recuar--grupo-aposentados"
+  ]
+}

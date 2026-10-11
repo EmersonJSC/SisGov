@@ -1,0 +1,17 @@
+{
+  "id": "lockdown-ou-economia--fechar-tudo--sofrimento-mental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_lockdown_ou_economia__fechar_tudo",
+  "alvo": "sofrimento_mental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "crise-na-fronteira",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Crise na fronteira",
+  "descricao": "Abrigos lotados, cidades pequenas sobrecarregadas e prefeitos pedindo socorro. O mundo observa como o país vai tratar quem foge.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Milhares de refugiados de {vizinho} acampam na fronteira de {estado}",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.15,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "crise_migratoria",
+      "operador": "maior_que",
+      "valor": 40.0
+    }
+  },
+  "padrao": "triagem",
+  "opcoes": [
+    {
+      "id": "acolher",
+      "rotulo": "Acolher e interiorizar",
+      "descricao": "Documentos, abrigo e transporte para cidades com emprego. Caro, mas humano.",
+      "controle": "ocorrencia_crise_na_fronteira__acolher",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-na-fronteira--acolher--crise-migratoria",
+        "crise-na-fronteira--acolher--gasto-publico",
+        "crise-na-fronteira--acolher--reputacao-internacional",
+        "crise-na-fronteira--acolher--imigracao",
+        "crise-na-fronteira--acolher--grupo-conservadores",
+        "crise-na-fronteira--acolher--grupo-progressistas"
+      ],
+      "requer": {
+        "tipo": "comparacao",
+        "variavel": "nivel_refugiados_e_asilo",
+        "operador": "maior_ou_igual",
+        "valor": 50.0
+      },
+      "motivoRequer": "A lei de refugiados está fechada demais para acolhida em massa."
+    },
+    {
+      "id": "triagem",
+      "rotulo": "Triagem na fronteira",
+      "descricao": "Abrigos provisórios e entrada lenta. A fila cresce.",
+      "controle": "ocorrencia_crise_na_fronteira__triagem",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "crise-na-fronteira--triagem--crise-migratoria",
+        "crise-na-fronteira--triagem--gasto-publico"
+      ]
+    },
+    {
+      "id": "fechar",
+      "rotulo": "Fechar a fronteira",
+      "descricao": "Exército na divisa. A crise vira problema do outro lado — e manchete no mundo.",
+      "controle": "ocorrencia_crise_na_fronteira__fechar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-na-fronteira--fechar--crise-migratoria",
+        "crise-na-fronteira--fechar--reputacao-internacional",
+        "crise-na-fronteira--fechar--grupo-conservadores",
+        "crise-na-fronteira--fechar--grupo-progressistas",
+        "crise-na-fronteira--fechar--liberdade-civil"
+      ],
+      "leis": [
+        {
+          "lei": "refugiados-e-asilo",
+          "nivel": 25.0
+        }
+      ]
+    },
+    {
+      "id": "pedir-ajuda",
+      "rotulo": "Pedir ajuda internacional",
+      "descricao": "Agências mundiais montam campos com dinheiro de fora. Demora, mas não sai do caixa.",
+      "controle": "ocorrencia_crise_na_fronteira__pedir_ajuda",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-na-fronteira--pedir-ajuda--crise-migratoria",
+        "crise-na-fronteira--pedir-ajuda--reputacao-internacional",
+        "crise-na-fronteira--pedir-ajuda--margem-manobra-governo"
+      ]
+    }
+  ],
+  "consequencias": [
+    "crise-na-fronteira--acolher--crise-migratoria",
+    "crise-na-fronteira--acolher--gasto-publico",
+    "crise-na-fronteira--acolher--reputacao-internacional",
+    "crise-na-fronteira--acolher--imigracao",
+    "crise-na-fronteira--acolher--grupo-conservadores",
+    "crise-na-fronteira--acolher--grupo-progressistas",
+    "crise-na-fronteira--triagem--crise-migratoria",
+    "crise-na-fronteira--triagem--gasto-publico",
+    "crise-na-fronteira--fechar--crise-migratoria",
+    "crise-na-fronteira--fechar--reputacao-internacional",
+    "crise-na-fronteira--fechar--grupo-conservadores",
+    "crise-na-fronteira--fechar--grupo-progressistas",
+    "crise-na-fronteira--fechar--liberdade-civil",
+    "crise-na-fronteira--pedir-ajuda--crise-migratoria",
+    "crise-na-fronteira--pedir-ajuda--reputacao-internacional",
+    "crise-na-fronteira--pedir-ajuda--margem-manobra-governo"
+  ]
+}

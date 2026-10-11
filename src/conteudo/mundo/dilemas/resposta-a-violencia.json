@@ -1,0 +1,58 @@
+{
+  "id": "resposta-a-violencia",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "O país cobra resposta",
+  "descricao": "A chacina em {cidade} virou pauta nacional. O que o governo faz?",
+  "area": "Ministério da Justiça",
+  "manchete": "Depois da chacina, o país cobra o governo federal",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "nota",
+  "opcoes": [
+    {
+      "id": "pacote",
+      "rotulo": "Pacote de segurança com dinheiro novo",
+      "descricao": "Verba para polícia, perícia e prevenção.",
+      "controle": "ocorrencia_resposta_a_violencia__pacote",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "resposta-a-violencia--pacote--gasto-publico",
+        "resposta-a-violencia--pacote--sensacao-seguranca",
+        "resposta-a-violencia--pacote--violencia-letal"
+      ]
+    },
+    {
+      "id": "endurecer-penas",
+      "rotulo": "Propor penas mais duras",
+      "descricao": "Agrada a quem quer punição; especialistas duvidam do efeito.",
+      "controle": "ocorrencia_resposta_a_violencia__endurecer_penas",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "resposta-a-violencia--endurecer-penas--grupo-conservadores",
+        "resposta-a-violencia--endurecer-penas--grupo-progressistas",
+        "resposta-a-violencia--endurecer-penas--lotacao-prisional"
+      ]
+    },
+    {
+      "id": "nota",
+      "rotulo": "Nota de pesar",
+      "descricao": "Solidariedade às famílias e nada mais.",
+      "controle": "ocorrencia_resposta_a_violencia__nota",
+      "duracaoMeses": 3,
+      "consequencias": ["resposta-a-violencia--nota--confianca-instituicoes"]
+    }
+  ],
+  "consequencias": [
+    "resposta-a-violencia--pacote--gasto-publico",
+    "resposta-a-violencia--pacote--sensacao-seguranca",
+    "resposta-a-violencia--pacote--violencia-letal",
+    "resposta-a-violencia--endurecer-penas--grupo-conservadores",
+    "resposta-a-violencia--endurecer-penas--grupo-progressistas",
+    "resposta-a-violencia--endurecer-penas--lotacao-prisional",
+    "resposta-a-violencia--nota--confianca-instituicoes"
+  ]
+}

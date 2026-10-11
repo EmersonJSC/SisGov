@@ -1,0 +1,17 @@
+{
+  "id": "montadora-pede-socorro--negar--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_montadora_pede_socorro__negar",
+  "alvo": "desemprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.5,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

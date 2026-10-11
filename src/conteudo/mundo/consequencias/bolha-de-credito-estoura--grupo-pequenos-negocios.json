@@ -1,0 +1,17 @@
+{
+  "id": "bolha-de-credito-estoura--grupo-pequenos-negocios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_bolha_de_credito_estoura",
+  "alvo": "grupo_pequenos_negocios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -6.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

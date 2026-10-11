@@ -1,0 +1,17 @@
+{
+  "id": "crise-da-divida--socorro-externo--protestos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_crise_da_divida__socorro_externo",
+  "alvo": "protestos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 10.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

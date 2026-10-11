@@ -1,0 +1,835 @@
+{
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "eventos": [
+    {
+      "id": "seca-historica",
+      "nome": "Seca histórica",
+      "manchete": "Pior seca em décadas seca reservatórios e lavouras no {regiao}",
+      "descricao": "Meses sem chuva derrubam a safra, encarecem a comida e baixam os reservatórios das hidrelétricas. Desmatamento e degradação tornam secas assim mais frequentes.",
+      "origem": "natureza",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.02,
+      "duracao": 6,
+      "intervalo": 8,
+      "fatores": [
+        [
+          "desmatamento",
+          30,
+          80,
+          3
+        ],
+        [
+          "qualidade_ambiental",
+          60,
+          20,
+          2
+        ]
+      ],
+      "efeitos": {
+        "producao_agropecuaria": -10,
+        "preco_alimentos": 8,
+        "oferta_energia": -10,
+        "desastre_ambiental": 20,
+        "inseguranca_alimentar": 4,
+        "grupo_agro": -6
+      },
+      "desdobra": [
+        [
+          "racionamento-de-energia",
+          0.8,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "enchente",
+      "nome": "Enchente em {cidade}",
+      "manchete": "Chuvas torrenciais deixam milhares de desabrigados em {cidade}",
+      "descricao": "Temporais alagam bairros inteiros de {cidade}. Saneamento e drenagem ruins multiplicam o estrago.",
+      "origem": "natureza",
+      "nivel": 2,
+      "avaliacao": "negativa",
+      "chance": 0.04,
+      "duracao": 2,
+      "intervalo": 3,
+      "fatores": [
+        [
+          "infraestrutura_saneamento",
+          70,
+          30,
+          2.5
+        ],
+        [
+          "desmatamento",
+          30,
+          80,
+          1.5
+        ]
+      ],
+      "efeitos": {
+        "desastre_ambiental": 20,
+        "populacao_de_rua": 2,
+        "pressao_hospitalar": 4,
+        "pib": -0.3
+      }
+    },
+    {
+      "id": "enchente-devastadora",
+      "nome": "Enchente devastadora no {regiao}",
+      "manchete": "Enchente histórica destrói cidades inteiras no {regiao}",
+      "descricao": "Rios transbordam como nunca no {regiao}. Estradas, pontes e casas vão embora; centenas de milhares perdem tudo.",
+      "origem": "natureza",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.006,
+      "duracao": 6,
+      "intervalo": 24,
+      "fatores": [
+        [
+          "emissoes",
+          40,
+          80,
+          2
+        ],
+        [
+          "desmatamento",
+          30,
+          80,
+          2
+        ]
+      ],
+      "efeitos": {
+        "desastre_ambiental": 45,
+        "populacao_de_rua": 6,
+        "pib": -1.5,
+        "infraestrutura_transportes": -0.3,
+        "deficit_habitacional": 5,
+        "pressao_hospitalar": 8
+      },
+      "desdobra": [
+        [
+          "reconstrucao",
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "queimadas-recorde",
+      "nome": "Queimadas recorde",
+      "manchete": "Fumaça das queimadas cobre o {regiao} e chega às capitais",
+      "descricao": "O fogo devasta florestas e pastos. O céu escurece, hospitais lotam de crianças com falta de ar e o mundo cobra o país.",
+      "origem": "natureza",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.015,
+      "duracao": 3,
+      "intervalo": 8,
+      "fatores": [
+        [
+          "desmatamento",
+          30,
+          80,
+          4
+        ],
+        [
+          "lei:codigo-florestal",
+          67,
+          0,
+          1.5
+        ]
+      ],
+      "efeitos": {
+        "desastre_ambiental": 25,
+        "qualidade_ambiental": -6,
+        "reputacao_internacional": -6,
+        "pressao_hospitalar": 4,
+        "emissoes": 4
+      },
+      "desdobra": [
+        [
+          "pressao-internacional-floresta",
+          0.7,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "deslizamento",
+      "nome": "Deslizamento em {cidade}",
+      "manchete": "Encosta desaba no {bairro}, em {cidade}, e soterra casas",
+      "descricao": "Depois de dias de chuva, um morro desliza sobre casas no {bairro}. Moradias em área de risco viram tragédia.",
+      "origem": "natureza",
+      "nivel": 1,
+      "avaliacao": "negativa",
+      "chance": 0.06,
+      "duracao": 1,
+      "intervalo": 2,
+      "fatores": [
+        [
+          "deficit_habitacional",
+          30,
+          70,
+          2.5
+        ]
+      ],
+      "efeitos": {
+        "deficit_habitacional": 0.5,
+        "grupo_pobres": -1
+      }
+    },
+    {
+      "id": "rompimento-de-barragem",
+      "nome": "Rompimento de barragem",
+      "manchete": "Barragem da {empresa} se rompe e lama soterra cidade em {estado}",
+      "descricao": "Uma barragem de rejeitos da {empresa} rompe em {estado}. A lama destrói casas, mata pessoas e um rio inteiro. O licenciamento frouxo vira assunto nacional.",
+      "origem": "pais",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.005,
+      "duracao": 9,
+      "intervalo": 24,
+      "fatores": [
+        [
+          "lei:licenciamento-ambiental",
+          67,
+          0,
+          4
+        ],
+        [
+          "producao_mineral",
+          40,
+          80,
+          1.5
+        ]
+      ],
+      "efeitos": {
+        "desastre_ambiental": 40,
+        "qualidade_ambiental": -8,
+        "producao_mineral": -5,
+        "reputacao_internacional": -5,
+        "confianca_instituicoes": -4
+      },
+      "desdobra": [
+        [
+          "punir-a-mineradora",
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "vazamento-de-oleo",
+      "nome": "Vazamento de óleo",
+      "manchete": "Manchas de óleo chegam às praias do litoral do {regiao}",
+      "descricao": "Um vazamento no mar atinge praias, pescadores e o turismo do {regiao}. Ninguém assume a culpa.",
+      "origem": "natureza",
+      "nivel": 2,
+      "avaliacao": "negativa",
+      "chance": 0.015,
+      "duracao": 4,
+      "intervalo": 12,
+      "fatores": [
+        [
+          "producao_mineral",
+          40,
+          80,
+          2
+        ]
+      ],
+      "efeitos": {
+        "qualidade_ambiental": -4,
+        "turismo": -6,
+        "desastre_ambiental": 15
+      }
+    },
+    {
+      "id": "apagao-nacional",
+      "nome": "Pane no sistema elétrico",
+      "manchete": "Falha em linha de transmissão deixa metade do país no escuro",
+      "descricao": "Uma falha se espalha pela rede de energia. Infraestrutura velha e oferta apertada aumentam o risco.",
+      "origem": "pais",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.012,
+      "duracao": 1,
+      "intervalo": 8,
+      "fatores": [
+        [
+          "infraestrutura_energia",
+          60,
+          20,
+          3
+        ],
+        [
+          "oferta_energia",
+          50,
+          20,
+          2
+        ]
+      ],
+      "efeitos": {
+        "apagao": 45,
+        "pib": -1,
+        "confianca_empresarial": -4,
+        "grupo_pequenos_negocios": -3
+      }
+    },
+    {
+      "id": "ponte-desaba",
+      "nome": "Ponte desaba em {estado}",
+      "manchete": "Ponte de rodovia federal desaba em {estado}",
+      "descricao": "Uma ponte sem manutenção cai em {estado}. Carros e caminhões vão junto; a rota de escoamento fica cortada por meses.",
+      "origem": "pais",
+      "nivel": 1,
+      "avaliacao": "negativa",
+      "chance": 0.05,
+      "duracao": 3,
+      "intervalo": 3,
+      "fatores": [
+        [
+          "infraestrutura_transportes",
+          60,
+          20,
+          3
+        ]
+      ],
+      "efeitos": {
+        "infraestrutura_transportes": -0.05,
+        "grupo_agro": -1
+      }
+    },
+    {
+      "id": "terremoto",
+      "nome": "Terremoto",
+      "manchete": "Terremoto raro atinge o {regiao} e derruba prédios",
+      "descricao": "Um tremor de magnitude incomum atinge o {regiao}. Construções antigas não resistem.",
+      "origem": "natureza",
+      "nivel": 3,
+      "avaliacao": "negativa",
+      "chance": 0.002,
+      "duracao": 4,
+      "intervalo": 40,
+      "efeitos": {
+        "desastre_ambiental": 35,
+        "deficit_habitacional": 4,
+        "pib": -0.8,
+        "pressao_hospitalar": 6
+      },
+      "desdobra": [
+        [
+          "reconstrucao",
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "safra-recorde",
+      "nome": "Safra recorde",
+      "manchete": "Chuva na medida e safra recorde enchem os silos",
+      "descricao": "O clima ajudou e a colheita bate recorde. Comida mais barata e exportação em alta.",
+      "origem": "natureza",
+      "nivel": 2,
+      "avaliacao": "positiva",
+      "chance": 0.04,
+      "duracao": 6,
+      "intervalo": 8,
+      "fatores": [
+        [
+          "desmatamento",
+          80,
+          30,
+          1.5
+        ]
+      ],
+      "efeitos": {
+        "producao_agropecuaria": 8,
+        "preco_alimentos": -5,
+        "exportacoes": 4,
+        "grupo_agro": 5
+      }
+    }
+  ],
+  "dilemas": [
+    {
+      "id": "reconstrucao",
+      "nome": "Como financiar a reconstrução?",
+      "manchete": "Reconstruir o {regiao} vai custar bilhões",
+      "descricao": "Cidades inteiras precisam ser reerguidas. O dinheiro tem que sair de algum lugar.",
+      "origem": "desdobramento",
+      "nivel": 3,
+      "chance": 0,
+      "padrao": "devagar",
+      "opcoes": [
+        {
+          "id": "imprimir",
+          "rotulo": "Imprimir dinheiro",
+          "descricao": "Reconstrução rápida, inflação depois.",
+          "duracao": 12,
+          "efeitos": {
+            "desastre_ambiental": -25,
+            "inflacao": 2.5,
+            "expectativas_inflacao": 4,
+            "deficit_habitacional": -3
+          }
+        },
+        {
+          "id": "cortar-saude",
+          "rotulo": "Cortar da saúde",
+          "descricao": "As contas fecham; os hospitais pagam.",
+          "duracao": 12,
+          "efeitos": {
+            "desastre_ambiental": -20,
+            "pressao_hospitalar": 6,
+            "saude_populacao": -2,
+            "grupo_aposentados": -4
+          }
+        },
+        {
+          "id": "imposto-temporario",
+          "rotulo": "Imposto temporário da reconstrução",
+          "descricao": "Paga sem dívida. A classe média se revolta.",
+          "duracao": 12,
+          "efeitos": {
+            "desastre_ambiental": -22,
+            "arrecadacao": 0.3,
+            "grupo_classe_media": -6,
+            "grupo_pequenos_negocios": -4
+          }
+        },
+        {
+          "id": "devagar",
+          "rotulo": "Reconstruir com o orçamento normal",
+          "descricao": "Sem dinheiro novo. As famílias esperam anos.",
+          "duracao": 12,
+          "efeitos": {
+            "desastre_ambiental": -8,
+            "populacao_de_rua": 3,
+            "grupo_pobres": -4
+          }
+        }
+      ]
+    },
+    {
+      "id": "racionamento-de-energia",
+      "nome": "Racionamento de energia",
+      "manchete": "Reservatórios no limite: governo discute racionamento",
+      "descricao": "A seca esvaziou as hidrelétricas. Ou se economiza agora, ou se arrisca um apagão.",
+      "origem": "desdobramento",
+      "nivel": 3,
+      "chance": 0,
+      "padrao": "arriscar",
+      "opcoes": [
+        {
+          "id": "racionar",
+          "rotulo": "Racionar já",
+          "descricao": "Metas de economia e multas. Indústria freia, apagão evitado.",
+          "duracao": 6,
+          "efeitos": {
+            "pib": -1,
+            "apagao": -15,
+            "grupo_empresarios": -4,
+            "grupo_classe_media": -3
+          }
+        },
+        {
+          "id": "termeletricas",
+          "rotulo": "Ligar as termelétricas",
+          "descricao": "Energia garantida, conta de luz e poluição em alta.",
+          "duracao": 6,
+          "efeitos": {
+            "preco_energia": 10,
+            "emissoes": 4,
+            "inflacao": 1
+          }
+        },
+        {
+          "id": "importar",
+          "rotulo": "Importar energia dos vizinhos",
+          "descricao": "Cara e limitada, mas sem racionamento.",
+          "duracao": 6,
+          "efeitos": {
+            "preco_energia": 6,
+            "gasto_publico": 0.1
+          }
+        },
+        {
+          "id": "arriscar",
+          "rotulo": "Torcer pela chuva",
+          "descricao": "Se não chover, o país apaga.",
+          "duracao": 6,
+          "efeitos": {
+            "apagao": 25,
+            "confianca_empresarial": -4
+          }
+        }
+      ]
+    },
+    {
+      "id": "punir-a-mineradora",
+      "nome": "Punir a {empresa}?",
+      "manchete": "País quer saber quem paga pela lama",
+      "descricao": "A {empresa} diz que cumpriu as regras. As famílias querem justiça; o setor teme multas que fechem minas.",
+      "origem": "desdobramento",
+      "nivel": 3,
+      "chance": 0,
+      "padrao": "acordo",
+      "opcoes": [
+        {
+          "id": "multa-maxima",
+          "rotulo": "Multa máxima e prisão de diretores",
+          "descricao": "Recado claro a todo o setor.",
+          "duracao": 12,
+          "efeitos": {
+            "confianca_instituicoes": 5,
+            "impunidade": -3,
+            "producao_mineral": -3,
+            "confianca_empresarial": -4,
+            "grupo_progressistas": 4
+          }
+        },
+        {
+          "id": "endurecer-licencas",
+          "rotulo": "Endurecer o licenciamento de barragens",
+          "descricao": "Regras novas para todas as barragens.",
+          "duracao": 12,
+          "leis": {
+            "licenciamento-ambiental": "trifasico"
+          },
+          "efeitos": {
+            "qualidade_ambiental": 2,
+            "producao_mineral": -2
+          }
+        },
+        {
+          "id": "acordo",
+          "rotulo": "Acordo de indenização",
+          "descricao": "A empresa paga em parcelas e segue operando.",
+          "duracao": 6,
+          "efeitos": {
+            "impunidade": 3,
+            "grupo_pobres": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "pressao-internacional-floresta",
+      "nome": "O mundo cobra a floresta",
+      "manchete": "Países ameaçam boicotar produtos por causa do desmatamento",
+      "descricao": "Compradores estrangeiros ameaçam deixar de comprar carne e soja de áreas desmatadas. O agro se divide.",
+      "origem": "desdobramento",
+      "nivel": 3,
+      "chance": 0.008,
+      "intervalo": 16,
+      "padrao": "soberania",
+      "opcoes": [
+        {
+          "id": "fiscalizar",
+          "rotulo": "Fiscalização pesada e desmatamento zero",
+          "descricao": "Mercados preservados, parte do agro furioso.",
+          "duracao": 24,
+          "leis": {
+            "codigo-florestal": "desmatamento-zero"
+          },
+          "efeitos": {
+            "desmatamento": -8,
+            "reputacao_internacional": 6,
+            "grupo_agro": -5,
+            "exportacoes": 2
+          }
+        },
+        {
+          "id": "fundo-externo",
+          "rotulo": "Aceitar fundo internacional pela floresta",
+          "descricao": "Dinheiro de fora para proteger, com regras de fora.",
+          "duracao": 24,
+          "efeitos": {
+            "desmatamento": -4,
+            "reputacao_internacional": 4,
+            "grupo_conservadores": -3
+          }
+        },
+        {
+          "id": "soberania",
+          "rotulo": "A floresta é nossa",
+          "descricao": "Discurso de soberania. Os compradores cumprem a ameaça.",
+          "duracao": 12,
+          "efeitos": {
+            "exportacoes": -5,
+            "reputacao_internacional": -6,
+            "grupo_agro": 2,
+            "grupo_conservadores": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "hidreletrica-na-floresta",
+      "nome": "Hidrelétrica na floresta",
+      "manchete": "Projeto de usina gigante no {regiao} divide o governo",
+      "descricao": "Uma usina no {regiao} garantiria energia por décadas, mas alagaria terras indígenas e floresta.",
+      "origem": "cotidiano",
+      "nivel": 2,
+      "chance": 0.008,
+      "intervalo": 24,
+      "fatores": [
+        [
+          "oferta_energia",
+          60,
+          30,
+          3
+        ]
+      ],
+      "padrao": "adiar",
+      "opcoes": [
+        {
+          "id": "construir",
+          "rotulo": "Construir",
+          "descricao": "Energia barata no futuro; conflito agora.",
+          "duracao": 24,
+          "efeitos": {
+            "infraestrutura_energia": 0.1,
+            "gasto_publico": 0.2,
+            "conflitos_fundiarios": 6,
+            "desmatamento": 3,
+            "grupo_progressistas": -5
+          }
+        },
+        {
+          "id": "solar-eolica",
+          "rotulo": "Trocar por parques solares e eólicos",
+          "descricao": "Mais caro hoje, menos conflito.",
+          "duracao": 24,
+          "efeitos": {
+            "infraestrutura_energia": 0.05,
+            "gasto_publico": 0.15,
+            "emissoes": -2
+          }
+        },
+        {
+          "id": "adiar",
+          "rotulo": "Adiar a decisão",
+          "descricao": "Nem energia nem conflito.",
+          "duracao": 6,
+          "efeitos": {
+            "preco_energia": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mineracao-em-terra-indigena",
+      "nome": "Mineração em terra indígena",
+      "manchete": "Garimpo avança sobre terra indígena no {regiao}",
+      "descricao": "Garimpeiros invadem uma terra indígena; há mortes e rios contaminados por mercúrio. Parte do Congresso quer legalizar a mineração na área.",
+      "origem": "cotidiano",
+      "nivel": 2,
+      "chance": 0.01,
+      "intervalo": 16,
+      "padrao": "fingir",
+      "opcoes": [
+        {
+          "id": "retirar",
+          "rotulo": "Operação para retirar os garimpeiros",
+          "descricao": "Polícia e Forças Armadas expulsam o garimpo.",
+          "duracao": 6,
+          "efeitos": {
+            "conflitos_fundiarios": -5,
+            "reputacao_internacional": 4,
+            "gasto_publico": 0.02,
+            "base_congresso": -3
+          }
+        },
+        {
+          "id": "legalizar",
+          "rotulo": "Legalizar a mineração com royalties",
+          "descricao": "Os indígenas recebem uma parte; a floresta, não.",
+          "duracao": 24,
+          "leis": {
+            "terras-indigenas": "reconhecimento-limitado"
+          },
+          "efeitos": {
+            "producao_mineral": 3,
+            "conflitos_fundiarios": 4,
+            "reputacao_internacional": -6,
+            "base_congresso": 4
+          }
+        },
+        {
+          "id": "fingir",
+          "rotulo": "Fingir que não vê",
+          "descricao": "O garimpo segue.",
+          "duracao": 6,
+          "efeitos": {
+            "conflitos_fundiarios": 4,
+            "qualidade_ambiental": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "conferencia-do-clima",
+      "nome": "Cúpula do clima",
+      "manchete": "Na cúpula do clima, o mundo espera o anúncio do país",
+      "descricao": "Os líderes mundiais pedem metas ambiciosas de corte de emissões. Prometer muito custa; prometer pouco também.",
+      "origem": "cotidiano",
+      "nivel": 2,
+      "chance": 0.015,
+      "intervalo": 8,
+      "padrao": "modesta",
+      "opcoes": [
+        {
+          "id": "ambiciosa",
+          "rotulo": "Meta ambiciosa",
+          "descricao": "Aplausos lá fora, cobrança aqui dentro.",
+          "duracao": 24,
+          "efeitos": {
+            "reputacao_internacional": 6,
+            "emissoes": -2,
+            "grupo_agro": -3,
+            "ied": 0.2
+          }
+        },
+        {
+          "id": "modesta",
+          "rotulo": "Meta modesta",
+          "descricao": "Nem herói nem vilão.",
+          "duracao": 6,
+          "efeitos": {
+            "reputacao_internacional": 1
+          }
+        },
+        {
+          "id": "boicotar",
+          "rotulo": "Não assinar nada",
+          "descricao": "Recado aos produtores, isolamento lá fora.",
+          "duracao": 12,
+          "efeitos": {
+            "reputacao_internacional": -6,
+            "grupo_agro": 2,
+            "tensao_internacional": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "concessao-de-rodovias",
+      "nome": "Concessão de rodovias",
+      "manchete": "Empresas querem administrar rodovias federais em troca de pedágio",
+      "descricao": "Estradas esburacadas viraram rotina. Conceder à iniciativa privada traz obra e pedágio.",
+      "origem": "cotidiano",
+      "nivel": 1,
+      "chance": 0.012,
+      "intervalo": 12,
+      "fatores": [
+        [
+          "infraestrutura_transportes",
+          60,
+          30,
+          2
+        ]
+      ],
+      "padrao": "manter",
+      "opcoes": [
+        {
+          "id": "conceder",
+          "rotulo": "Conceder com pedágio",
+          "descricao": "Estradas boas, viagem mais cara.",
+          "duracao": 24,
+          "efeitos": {
+            "infraestrutura_transportes": 0.05,
+            "ied": 0.2,
+            "grupo_agro": -2,
+            "grupo_pequenos_negocios": -2
+          }
+        },
+        {
+          "id": "obra-publica",
+          "rotulo": "Recuperar com dinheiro público",
+          "descricao": "Sem pedágio, com gasto.",
+          "duracao": 24,
+          "efeitos": {
+            "infraestrutura_transportes": 0.05,
+            "gasto_publico": 0.1,
+            "corrupcao": 1
+          }
+        },
+        {
+          "id": "manter",
+          "rotulo": "Deixar como está",
+          "descricao": "Buracos continuam.",
+          "duracao": 6,
+          "efeitos": {
+            "infraestrutura_transportes": -0.02
+          }
+        }
+      ]
+    },
+    {
+      "id": "obra-parada-{obra_id}",
+      "nome": "Obra parada em {estado}",
+      "manchete": "Obra bilionária em {estado} está parada há cinco anos",
+      "descricao": "Um projeto de {obra} em {estado} consumiu bilhões e está abandonado. Retomar custa; abandonar também.",
+      "origem": "cotidiano",
+      "nivel": 1,
+      "chance": 0.01,
+      "intervalo": 12,
+      "padrao": "abandonar",
+      "variantes": [
+        {
+          "obra": "ferrovia",
+          "obra_id": "ferrovia"
+        },
+        {
+          "obra": "transposição de rio",
+          "obra_id": "transposicao"
+        },
+        {
+          "obra": "metrô",
+          "obra_id": "metro"
+        }
+      ],
+      "opcoes": [
+        {
+          "id": "retomar",
+          "rotulo": "Retomar a obra",
+          "descricao": "Mais bilhões, chance de terminar.",
+          "duracao": 24,
+          "efeitos": {
+            "gasto_publico": 0.1,
+            "infraestrutura": 0.04,
+            "base_congresso": 2,
+            "corrupcao": 1
+          }
+        },
+        {
+          "id": "auditar",
+          "rotulo": "Auditar antes",
+          "descricao": "Descobrir para onde foi o dinheiro.",
+          "duracao": 6,
+          "efeitos": {
+            "corrupcao": -1,
+            "base_congresso": -2
+          }
+        },
+        {
+          "id": "abandonar",
+          "rotulo": "Abandonar",
+          "descricao": "Dinheiro perdido de vez.",
+          "duracao": 3,
+          "efeitos": {
+            "confianca_instituicoes": -1
+          }
+        }
+      ]
+    }
+  ]
+}

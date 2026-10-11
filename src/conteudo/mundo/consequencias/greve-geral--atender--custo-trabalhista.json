@@ -1,0 +1,17 @@
+{
+  "id": "greve-geral--atender--custo-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_geral__atender",
+  "alvo": "custo_trabalhista",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

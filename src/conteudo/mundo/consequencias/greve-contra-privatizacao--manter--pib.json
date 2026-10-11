@@ -1,0 +1,17 @@
+{
+  "id": "greve-contra-privatizacao--manter--pib",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_contra_privatizacao__manter",
+  "alvo": "pib",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.2,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

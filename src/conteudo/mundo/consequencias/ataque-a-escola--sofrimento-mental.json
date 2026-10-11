@@ -1,0 +1,17 @@
+{
+  "id": "ataque-a-escola--sofrimento-mental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_ataque_a_escola",
+  "alvo": "sofrimento_mental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ex-presidente-preso--confianca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_ex_presidente_preso",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

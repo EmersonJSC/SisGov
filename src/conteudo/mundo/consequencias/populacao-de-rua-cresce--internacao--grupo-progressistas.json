@@ -1,0 +1,17 @@
+{
+  "id": "populacao-de-rua-cresce--internacao--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_populacao_de_rua_cresce__internacao",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

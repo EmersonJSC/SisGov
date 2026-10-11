@@ -1,0 +1,33 @@
+{
+  "id": "sancoes-internacionais",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Sanções internacionais",
+  "descricao": "Bancos estrangeiros cortam linhas de crédito, compradores cancelam contratos e as peças importadas somem das prateleiras.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Potências anunciam sanções contra o país",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "gatilho": {
+    "chance": 0.0
+  },
+  "consequencias": [
+    "sancoes-internacionais--exportacoes",
+    "sancoes-internacionais--importacoes",
+    "sancoes-internacionais--ied",
+    "sancoes-internacionais--risco-pais",
+    "sancoes-internacionais--reputacao-internacional",
+    "sancoes-internacionais--inflacao",
+    "sancoes-internacionais--credito"
+  ],
+  "controle": "ocorrencia_sancoes_internacionais",
+  "duracaoMeses": 24,
+  "desdobramentos": [
+    {
+      "ocorrencia": "responder-as-sancoes",
+      "chance": 1.0,
+      "emTurnos": [1, 2]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "comida-cara--tabelar--grupo-pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_comida_cara__tabelar",
+  "alvo": "grupo_pobres",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

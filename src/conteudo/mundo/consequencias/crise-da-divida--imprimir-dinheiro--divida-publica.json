@@ -1,0 +1,17 @@
+{
+  "id": "crise-da-divida--imprimir-dinheiro--divida-publica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_crise_da_divida__imprimir_dinheiro",
+  "alvo": "divida_publica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

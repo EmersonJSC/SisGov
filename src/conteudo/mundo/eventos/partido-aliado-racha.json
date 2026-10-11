@@ -1,0 +1,30 @@
+{
+  "id": "partido-aliado-racha",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Racha no {partido_aliado}",
+  "descricao": "Uma disputa interna divide o {partido_aliado}. Metade da bancada abandona o governo.",
+  "area": "Casa Civil",
+  "manchete": "{partido_aliado} rompe e parte da bancada vai para a oposição",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.02,
+    "fatores": [
+      {
+        "variavel": "popularidade_governo",
+        "de": 50,
+        "ate": 25,
+        "multiplica": 3
+      }
+    ]
+  },
+  "consequencias": [
+    "partido-aliado-racha--base-congresso",
+    "partido-aliado-racha--margem-manobra-governo"
+  ],
+  "controle": "ocorrencia_partido_aliado_racha",
+  "duracaoMeses": 12
+}

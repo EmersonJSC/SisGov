@@ -1,0 +1,17 @@
+{
+  "id": "resgate-bancario--fusao-forcada--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resgate_bancario__fusao_forcada",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

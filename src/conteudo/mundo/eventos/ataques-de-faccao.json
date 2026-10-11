@@ -1,0 +1,45 @@
+{
+  "id": "ataques-de-faccao",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Ataques do {faccao}",
+  "descricao": "O {faccao} reage à transferência de líderes presos com ataques coordenados em {cidade}. Comércio fechado, transporte parado, medo nas ruas.",
+  "area": "Ministério da Justiça",
+  "manchete": "{faccao} incendeia ônibus e para {cidade}",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 6,
+  "gatilho": {
+    "chance": 0.025,
+    "fatores": [
+      {
+        "variavel": "crime_organizado",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "lotacao_prisional",
+        "de": 50,
+        "ate": 90,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "ataques-de-faccao--onda-violencia",
+    "ataques-de-faccao--sensacao-seguranca",
+    "ataques-de-faccao--mobilidade-urbana",
+    "ataques-de-faccao--pib"
+  ],
+  "controle": "ocorrencia_ataques_de_faccao",
+  "duracaoMeses": 2,
+  "desdobramentos": [
+    {
+      "ocorrencia": "resposta-aos-ataques",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

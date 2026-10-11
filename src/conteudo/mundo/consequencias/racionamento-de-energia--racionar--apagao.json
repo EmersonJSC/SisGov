@@ -1,0 +1,17 @@
+{
+  "id": "racionamento-de-energia--racionar--apagao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_racionamento_de_energia__racionar",
+  "alvo": "apagao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -15.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

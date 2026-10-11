@@ -1,0 +1,53 @@
+{
+  "id": "escandalo-maior",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "O escândalo voltou maior",
+  "descricao": "O esquema que o governo protegeu era maior do que parecia. Agora as provas apontam para o {palacio}.",
+  "area": "Casa Civil",
+  "manchete": "Investigação chega ao gabinete presidencial",
+  "origem": "desdobramento",
+  "nivel": 4,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "resistir",
+  "opcoes": [
+    {
+      "id": "entregar",
+      "rotulo": "Entregar todos os envolvidos",
+      "descricao": "Romper com aliados para salvar o governo.",
+      "controle": "ocorrencia_escandalo_maior__entregar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "escandalo-maior--entregar--base-congresso",
+        "escandalo-maior--entregar--confianca-instituicoes",
+        "escandalo-maior--entregar--corrupcao"
+      ]
+    },
+    {
+      "id": "resistir",
+      "rotulo": "Resistir e atacar a investigação",
+      "descricao": "Chamar tudo de perseguição. A crise vira guerra.",
+      "controle": "ocorrencia_escandalo_maior__resistir",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "escandalo-maior--resistir--confianca-instituicoes",
+        "escandalo-maior--resistir--polarizacao",
+        "escandalo-maior--resistir--protestos",
+        "escandalo-maior--resistir--forca-instituicoes",
+        "escandalo-maior--resistir--grupo-classe-media"
+      ]
+    }
+  ],
+  "consequencias": [
+    "escandalo-maior--entregar--base-congresso",
+    "escandalo-maior--entregar--confianca-instituicoes",
+    "escandalo-maior--entregar--corrupcao",
+    "escandalo-maior--resistir--confianca-instituicoes",
+    "escandalo-maior--resistir--polarizacao",
+    "escandalo-maior--resistir--protestos",
+    "escandalo-maior--resistir--forca-instituicoes",
+    "escandalo-maior--resistir--grupo-classe-media"
+  ]
+}

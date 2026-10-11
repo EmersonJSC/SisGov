@@ -1,0 +1,30 @@
+{
+  "id": "jovens-desistem-de-procurar",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Geração sem emprego",
+  "descricao": "Pesquisa mostra uma geração parada. Sem perspectiva, cresce a emigração e o recrutamento pelo crime.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Um em cada quatro jovens não estuda nem trabalha",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.3,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "oportunidades_juvenis",
+      "operador": "menor_que",
+      "valor": 35.0
+    },
+    "porTurnos": 4
+  },
+  "consequencias": [
+    "jovens-desistem-de-procurar--grupo-jovens",
+    "jovens-desistem-de-procurar--crime-organizado",
+    "jovens-desistem-de-procurar--fuga-de-cerebros"
+  ],
+  "controle": "ocorrencia_jovens_desistem_de_procurar",
+  "duracaoMeses": 6
+}

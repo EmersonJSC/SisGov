@@ -15,6 +15,12 @@ import {
 } from "../domain/game";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import { createRandomState, type RandomState } from "./randomState";
+import {
+  emptyOccurrenceState,
+  occurrenceCatalog,
+  rollTurn,
+  type OccurrenceState,
+} from "./occurrences";
 
 export type GameState = Readonly<{
   id: string;
@@ -37,8 +43,27 @@ export type GameState = Readonly<{
   electoralLaws: readonly ElectoralLawState[];
   political?: PoliticalGameState;
   random?: RandomState;
+  /** Eventos, dilemas e situações (SG106); ausente sem catálogo. */
+  occurrences?: OccurrenceState;
   execution: EngineExecution;
 }>;
+
+/** Metas das leis por controle (para as reações das ocorrências). */
+export function lawTargets(
+  content: ResolvedPackage,
+  policies: readonly PolicyState[],
+): Record<string, number> {
+  const controlOf = new Map(
+    content.policies.map((policy) => [policy.id, policy.controle.variavel]),
+  );
+  const targets: Record<string, number> = {};
+  for (const state of policies) {
+    const control = controlOf.get(state.policyDefinitionId);
+    if (control !== undefined)
+      targets[control] = state.status === "encerrada" ? 0 : state.desiredLevel;
+  }
+  return targets;
+}
 
 export type PoliticalGameState = Readonly<{
   origin: Readonly<{ type: "observado" | "hipotese"; description: string }>;
@@ -89,7 +114,11 @@ export function createGame(
   id: string,
   content: ResolvedPackage,
   graph: ScenarioGraph,
-  options: Readonly<{ randomSeed?: number }> = {},
+  options: Readonly<{
+    randomSeed?: number;
+    /** Liga eventos e dilemas (SG106); padrão: sim, se houver catálogo. */
+    occurrences?: boolean;
+  }> = {},
 ): CreateGameResult {
   if (!id.trim()) return failure(content, "id", "A partida precisa de ID.");
   const random =
@@ -223,6 +252,20 @@ export function createGame(
         ],
       }
     : undefined;
+  const execution = createExecution(content, graph);
+  // SG106: o primeiro turno já começa com um dilema na mesa
+  const occurrences =
+    options.occurrences !== false && occurrenceCatalog(content).all.length > 0
+      ? rollTurn({
+          content,
+          state: emptyOccurrenceState(),
+          values: execution.values,
+          turn: 0,
+          seed: random?.value.seed ?? 1,
+          laws: lawTargets(content, policies),
+          onlyDilemmas: true,
+        }).state
+      : undefined;
   return {
     ok: true,
     value: {
@@ -240,7 +283,8 @@ export function createGame(
       electoralLaws,
       political,
       random: random?.value,
-      execution: createExecution(content, graph),
+      ...(occurrences ? { occurrences } : {}),
+      execution,
     },
   };
 }

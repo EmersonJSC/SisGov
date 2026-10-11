@@ -1,0 +1,17 @@
+{
+  "id": "populacao-de-rua-cresce--internacao--grupo-pequenos-negocios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_populacao_de_rua_cresce__internacao",
+  "alvo": "grupo_pequenos_negocios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

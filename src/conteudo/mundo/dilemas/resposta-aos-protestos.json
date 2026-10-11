@@ -1,0 +1,87 @@
+{
+  "id": "resposta-aos-protestos",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "O que fazer com as ruas?",
+  "descricao": "Os protestos já duram semanas. Ministros divergem: ouvir, ceder ou endurecer.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "As ruas não esvaziam e o governo precisa responder",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "dialogar",
+  "opcoes": [
+    {
+      "id": "dialogar",
+      "rotulo": "Chamar os líderes ao {palacio}",
+      "descricao": "Gestos de escuta. Funciona se houver algo para oferecer.",
+      "controle": "ocorrencia_resposta_aos_protestos__dialogar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "resposta-aos-protestos--dialogar--protestos",
+        "resposta-aos-protestos--dialogar--polarizacao"
+      ]
+    },
+    {
+      "id": "pacote",
+      "rotulo": "Anunciar um pacote de bondades",
+      "descricao": "Passe livre, isenções e reajustes. Acalma rápido, custa caro.",
+      "controle": "ocorrencia_resposta_aos_protestos__pacote",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "resposta-aos-protestos--pacote--protestos",
+        "resposta-aos-protestos--pacote--gasto-publico",
+        "resposta-aos-protestos--pacote--grupo-pobres",
+        "resposta-aos-protestos--pacote--grupo-jovens",
+        "resposta-aos-protestos--pacote--risco-pais"
+      ]
+    },
+    {
+      "id": "reprimir",
+      "rotulo": "Reprimir",
+      "descricao": "Bomba de gás e prisões. Pode esvaziar as ruas ou incendiá-las.",
+      "controle": "ocorrencia_resposta_aos_protestos__reprimir",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "resposta-aos-protestos--reprimir--protestos",
+        "resposta-aos-protestos--reprimir--liberdade-civil",
+        "resposta-aos-protestos--reprimir--letalidade-policial",
+        "resposta-aos-protestos--reprimir--grupo-progressistas",
+        "resposta-aos-protestos--reprimir--grupo-conservadores",
+        "resposta-aos-protestos--reprimir--reputacao-internacional"
+      ]
+    },
+    {
+      "id": "plebiscito",
+      "rotulo": "Propor um plebiscito",
+      "descricao": "Devolve a pergunta ao povo. O Congresso não gosta.",
+      "controle": "ocorrencia_resposta_aos_protestos__plebiscito",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "resposta-aos-protestos--plebiscito--protestos",
+        "resposta-aos-protestos--plebiscito--participacao-eleitoral",
+        "resposta-aos-protestos--plebiscito--base-congresso"
+      ]
+    }
+  ],
+  "consequencias": [
+    "resposta-aos-protestos--dialogar--protestos",
+    "resposta-aos-protestos--dialogar--polarizacao",
+    "resposta-aos-protestos--pacote--protestos",
+    "resposta-aos-protestos--pacote--gasto-publico",
+    "resposta-aos-protestos--pacote--grupo-pobres",
+    "resposta-aos-protestos--pacote--grupo-jovens",
+    "resposta-aos-protestos--pacote--risco-pais",
+    "resposta-aos-protestos--reprimir--protestos",
+    "resposta-aos-protestos--reprimir--liberdade-civil",
+    "resposta-aos-protestos--reprimir--letalidade-policial",
+    "resposta-aos-protestos--reprimir--grupo-progressistas",
+    "resposta-aos-protestos--reprimir--grupo-conservadores",
+    "resposta-aos-protestos--reprimir--reputacao-internacional",
+    "resposta-aos-protestos--plebiscito--protestos",
+    "resposta-aos-protestos--plebiscito--participacao-eleitoral",
+    "resposta-aos-protestos--plebiscito--base-congresso"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "enchente--populacao-de-rua",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_enchente",
+  "alvo": "populacao_de_rua",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

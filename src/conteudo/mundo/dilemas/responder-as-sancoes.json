@@ -1,0 +1,76 @@
+{
+  "id": "responder-as-sancoes",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Como responder às sanções?",
+  "descricao": "Fábricas sem peças, exportadores sem compradores. Ceder salva a economia; resistir salva o orgulho.",
+  "area": "Ministério das Relações Exteriores",
+  "manchete": "Sanções apertam e empresários pedem saída",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "resistir",
+  "opcoes": [
+    {
+      "id": "ceder",
+      "rotulo": "Negociar o fim do programa",
+      "descricao": "Aceitar inspeções e desmontar parte do programa em troca do fim das sanções.",
+      "controle": "ocorrencia_responder_as_sancoes__ceder",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "responder-as-sancoes--ceder--risco-pais",
+        "responder-as-sancoes--ceder--exportacoes",
+        "responder-as-sancoes--ceder--reputacao-internacional",
+        "responder-as-sancoes--ceder--tensao-internacional",
+        "responder-as-sancoes--ceder--grupo-conservadores"
+      ],
+      "leis": [
+        {
+          "lei": "energia-nuclear",
+          "nivel": 33.0
+        }
+      ]
+    },
+    {
+      "id": "resistir",
+      "rotulo": "Resistir",
+      "descricao": "Discurso de soberania e economia de guerra.",
+      "controle": "ocorrencia_responder_as_sancoes__resistir",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "responder-as-sancoes--resistir--inflacao",
+        "responder-as-sancoes--resistir--grupo-conservadores",
+        "responder-as-sancoes--resistir--polarizacao",
+        "responder-as-sancoes--resistir--pib"
+      ]
+    },
+    {
+      "id": "outro-bloco",
+      "rotulo": "Buscar o bloco rival",
+      "descricao": "Vender para quem não sancionou. Mercados novos, dependência nova.",
+      "controle": "ocorrencia_responder_as_sancoes__outro_bloco",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "responder-as-sancoes--outro-bloco--exportacoes",
+        "responder-as-sancoes--outro-bloco--tensao-internacional",
+        "responder-as-sancoes--outro-bloco--reputacao-internacional"
+      ]
+    }
+  ],
+  "consequencias": [
+    "responder-as-sancoes--ceder--risco-pais",
+    "responder-as-sancoes--ceder--exportacoes",
+    "responder-as-sancoes--ceder--reputacao-internacional",
+    "responder-as-sancoes--ceder--tensao-internacional",
+    "responder-as-sancoes--ceder--grupo-conservadores",
+    "responder-as-sancoes--resistir--inflacao",
+    "responder-as-sancoes--resistir--grupo-conservadores",
+    "responder-as-sancoes--resistir--polarizacao",
+    "responder-as-sancoes--resistir--pib",
+    "responder-as-sancoes--outro-bloco--exportacoes",
+    "responder-as-sancoes--outro-bloco--tensao-internacional",
+    "responder-as-sancoes--outro-bloco--reputacao-internacional"
+  ]
+}

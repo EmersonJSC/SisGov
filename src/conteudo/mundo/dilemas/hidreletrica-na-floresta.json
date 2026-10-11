@@ -1,0 +1,71 @@
+{
+  "id": "hidreletrica-na-floresta",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Hidrelétrica na floresta",
+  "descricao": "Uma usina no {regiao} garantiria energia por décadas, mas alagaria terras indígenas e floresta.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Projeto de usina gigante no {regiao} divide o governo",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 24,
+  "gatilho": {
+    "chance": 0.008,
+    "fatores": [
+      {
+        "variavel": "oferta_energia",
+        "de": 60,
+        "ate": 30,
+        "multiplica": 3
+      }
+    ]
+  },
+  "padrao": "adiar",
+  "opcoes": [
+    {
+      "id": "construir",
+      "rotulo": "Construir",
+      "descricao": "Energia barata no futuro; conflito agora.",
+      "controle": "ocorrencia_hidreletrica_na_floresta__construir",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "hidreletrica-na-floresta--construir--infraestrutura-energia",
+        "hidreletrica-na-floresta--construir--gasto-publico",
+        "hidreletrica-na-floresta--construir--conflitos-fundiarios",
+        "hidreletrica-na-floresta--construir--desmatamento",
+        "hidreletrica-na-floresta--construir--grupo-progressistas"
+      ]
+    },
+    {
+      "id": "solar-eolica",
+      "rotulo": "Trocar por parques solares e eólicos",
+      "descricao": "Mais caro hoje, menos conflito.",
+      "controle": "ocorrencia_hidreletrica_na_floresta__solar_eolica",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "hidreletrica-na-floresta--solar-eolica--infraestrutura-energia",
+        "hidreletrica-na-floresta--solar-eolica--gasto-publico",
+        "hidreletrica-na-floresta--solar-eolica--emissoes"
+      ]
+    },
+    {
+      "id": "adiar",
+      "rotulo": "Adiar a decisão",
+      "descricao": "Nem energia nem conflito.",
+      "controle": "ocorrencia_hidreletrica_na_floresta__adiar",
+      "duracaoMeses": 6,
+      "consequencias": ["hidreletrica-na-floresta--adiar--preco-energia"]
+    }
+  ],
+  "consequencias": [
+    "hidreletrica-na-floresta--construir--infraestrutura-energia",
+    "hidreletrica-na-floresta--construir--gasto-publico",
+    "hidreletrica-na-floresta--construir--conflitos-fundiarios",
+    "hidreletrica-na-floresta--construir--desmatamento",
+    "hidreletrica-na-floresta--construir--grupo-progressistas",
+    "hidreletrica-na-floresta--solar-eolica--infraestrutura-energia",
+    "hidreletrica-na-floresta--solar-eolica--gasto-publico",
+    "hidreletrica-na-floresta--solar-eolica--emissoes",
+    "hidreletrica-na-floresta--adiar--preco-energia"
+  ]
+}

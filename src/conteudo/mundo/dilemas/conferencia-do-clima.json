@@ -1,0 +1,63 @@
+{
+  "id": "conferencia-do-clima",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Cúpula do clima",
+  "descricao": "Os líderes mundiais pedem metas ambiciosas de corte de emissões. Prometer muito custa; prometer pouco também.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Na cúpula do clima, o mundo espera o anúncio do país",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.015
+  },
+  "padrao": "modesta",
+  "opcoes": [
+    {
+      "id": "ambiciosa",
+      "rotulo": "Meta ambiciosa",
+      "descricao": "Aplausos lá fora, cobrança aqui dentro.",
+      "controle": "ocorrencia_conferencia_do_clima__ambiciosa",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "conferencia-do-clima--ambiciosa--reputacao-internacional",
+        "conferencia-do-clima--ambiciosa--emissoes",
+        "conferencia-do-clima--ambiciosa--grupo-agro",
+        "conferencia-do-clima--ambiciosa--ied"
+      ]
+    },
+    {
+      "id": "modesta",
+      "rotulo": "Meta modesta",
+      "descricao": "Nem herói nem vilão.",
+      "controle": "ocorrencia_conferencia_do_clima__modesta",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "conferencia-do-clima--modesta--reputacao-internacional"
+      ]
+    },
+    {
+      "id": "boicotar",
+      "rotulo": "Não assinar nada",
+      "descricao": "Recado aos produtores, isolamento lá fora.",
+      "controle": "ocorrencia_conferencia_do_clima__boicotar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "conferencia-do-clima--boicotar--reputacao-internacional",
+        "conferencia-do-clima--boicotar--grupo-agro",
+        "conferencia-do-clima--boicotar--tensao-internacional"
+      ]
+    }
+  ],
+  "consequencias": [
+    "conferencia-do-clima--ambiciosa--reputacao-internacional",
+    "conferencia-do-clima--ambiciosa--emissoes",
+    "conferencia-do-clima--ambiciosa--grupo-agro",
+    "conferencia-do-clima--ambiciosa--ied",
+    "conferencia-do-clima--modesta--reputacao-internacional",
+    "conferencia-do-clima--boicotar--reputacao-internacional",
+    "conferencia-do-clima--boicotar--grupo-agro",
+    "conferencia-do-clima--boicotar--tensao-internacional"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "mineracao-em-terra-indigena",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Mineração em terra indígena",
+  "descricao": "Garimpeiros invadem uma terra indígena; há mortes e rios contaminados por mercúrio. Parte do Congresso quer legalizar a mineração na área.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Garimpo avança sobre terra indígena no {regiao}",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.01
+  },
+  "padrao": "fingir",
+  "opcoes": [
+    {
+      "id": "retirar",
+      "rotulo": "Operação para retirar os garimpeiros",
+      "descricao": "Polícia e Forças Armadas expulsam o garimpo.",
+      "controle": "ocorrencia_mineracao_em_terra_indigena__retirar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "mineracao-em-terra-indigena--retirar--conflitos-fundiarios",
+        "mineracao-em-terra-indigena--retirar--reputacao-internacional",
+        "mineracao-em-terra-indigena--retirar--gasto-publico",
+        "mineracao-em-terra-indigena--retirar--base-congresso"
+      ]
+    },
+    {
+      "id": "legalizar",
+      "rotulo": "Legalizar a mineração com royalties",
+      "descricao": "Os indígenas recebem uma parte; a floresta, não.",
+      "controle": "ocorrencia_mineracao_em_terra_indigena__legalizar",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "mineracao-em-terra-indigena--legalizar--producao-mineral",
+        "mineracao-em-terra-indigena--legalizar--conflitos-fundiarios",
+        "mineracao-em-terra-indigena--legalizar--reputacao-internacional",
+        "mineracao-em-terra-indigena--legalizar--base-congresso"
+      ],
+      "leis": [
+        {
+          "lei": "terras-indigenas",
+          "nivel": 33.0
+        }
+      ]
+    },
+    {
+      "id": "fingir",
+      "rotulo": "Fingir que não vê",
+      "descricao": "O garimpo segue.",
+      "controle": "ocorrencia_mineracao_em_terra_indigena__fingir",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "mineracao-em-terra-indigena--fingir--conflitos-fundiarios",
+        "mineracao-em-terra-indigena--fingir--qualidade-ambiental"
+      ]
+    }
+  ],
+  "consequencias": [
+    "mineracao-em-terra-indigena--retirar--conflitos-fundiarios",
+    "mineracao-em-terra-indigena--retirar--reputacao-internacional",
+    "mineracao-em-terra-indigena--retirar--gasto-publico",
+    "mineracao-em-terra-indigena--retirar--base-congresso",
+    "mineracao-em-terra-indigena--legalizar--producao-mineral",
+    "mineracao-em-terra-indigena--legalizar--conflitos-fundiarios",
+    "mineracao-em-terra-indigena--legalizar--reputacao-internacional",
+    "mineracao-em-terra-indigena--legalizar--base-congresso",
+    "mineracao-em-terra-indigena--fingir--conflitos-fundiarios",
+    "mineracao-em-terra-indigena--fingir--qualidade-ambiental"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fechar-hospitais-psiquiatricos--comunitario--populacao-de-rua",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_fechar_hospitais_psiquiatricos__comunitario",
+  "alvo": "populacao_de_rua",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

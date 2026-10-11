@@ -1,0 +1,17 @@
+{
+  "id": "guerra-no-vizinho--crise-migratoria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_guerra_no_vizinho",
+  "alvo": "crise_migratoria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 20.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

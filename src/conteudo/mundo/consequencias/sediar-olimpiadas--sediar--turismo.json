@@ -1,0 +1,17 @@
+{
+  "id": "sediar-olimpiadas--sediar--turismo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_sediar_olimpiadas__sediar",
+  "alvo": "turismo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 8.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "compatriota-condenado-no-exterior--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_compatriota_condenado_no_exterior",
+  "alvo": "polarizacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

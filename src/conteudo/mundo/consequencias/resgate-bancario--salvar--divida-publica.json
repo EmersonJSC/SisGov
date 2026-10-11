@@ -1,0 +1,17 @@
+{
+  "id": "resgate-bancario--salvar--divida-publica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resgate_bancario__salvar",
+  "alvo": "divida_publica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.5,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "protestos-de-massa--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_protestos_de_massa",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

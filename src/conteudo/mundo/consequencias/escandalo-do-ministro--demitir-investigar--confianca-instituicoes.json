@@ -1,0 +1,17 @@
+{
+  "id": "escandalo-do-ministro--demitir-investigar--confianca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_escandalo_do_ministro__demitir_investigar",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

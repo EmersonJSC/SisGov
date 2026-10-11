@@ -1,0 +1,17 @@
+{
+  "id": "banco-central-pressiona--cortar-gastos--expectativas-inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_banco_central_pressiona__cortar_gastos",
+  "alvo": "expectativas_inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

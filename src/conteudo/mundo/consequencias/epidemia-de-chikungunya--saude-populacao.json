@@ -1,0 +1,17 @@
+{
+  "id": "epidemia-de-chikungunya--saude-populacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_epidemia_de_chikungunya",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

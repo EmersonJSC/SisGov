@@ -1,0 +1,17 @@
+{
+  "id": "juiz-solta-lider--recorrer--forca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_juiz_solta_lider__recorrer",
+  "alvo": "forca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

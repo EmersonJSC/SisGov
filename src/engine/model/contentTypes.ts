@@ -136,6 +136,11 @@ export type InitialStateFile = {
   }[];
   leisEleitoraisVigentes?: readonly string[];
   politica?: PoliticalInitialState;
+  /**
+   * Lugares do país para os textos das ocorrências (SG106): cidades,
+   * regiões, bairros… O evento local escolhe um pelo sorteio.
+   */
+  lugares?: Readonly<Record<string, readonly string[]>>;
 };
 
 /** Country-specific initial political data; it is intentionally not engine law. */
@@ -388,6 +393,84 @@ export type ConsequenceFile = {
     { modo: "unico" } | { modo: "fixo"; passos: number } | { modo: "continuo" };
 };
 
+/** Fator da chance (SG106): de `de` a `ate` na variável, a chance vai de ×1 a ×multiplica. */
+export type OccurrenceChanceFactor = {
+  variavel: string;
+  de: number;
+  ate: number;
+  multiplica: number;
+};
+
+/** Condição de gatilho (mesma forma das condições do motor). */
+export type OccurrenceCondition =
+  | {
+      tipo: "comparacao";
+      variavel: string;
+      operador:
+        | "maior_que"
+        | "maior_ou_igual"
+        | "menor_que"
+        | "menor_ou_igual"
+        | "igual";
+      valor: number;
+    }
+  | { tipo: "e" | "ou"; condicoes: readonly OccurrenceCondition[] }
+  | { tipo: "nao"; condicao: OccurrenceCondition };
+
+/**
+ * Como a ocorrência acontece (SG106): chance por turno com fatores da rede;
+ * só quando a condição vale (por `porTurnos` turnos seguidos); e, nas
+ * reações, só na janela depois de o jogador mudar uma lei no sentido dado.
+ */
+export type OccurrenceTrigger = {
+  chance: number;
+  fatores?: readonly OccurrenceChanceFactor[];
+  condicao?: OccurrenceCondition;
+  porTurnos?: number;
+  reacao?: {
+    /** Controle da lei que o jogador mudou. */
+    controle: string;
+    /** A meta foi para um destes valores… */
+    para?: readonly number[];
+    /** …ou subiu/desceu pelo menos este tanto. */
+    sobe?: number;
+    desce?: number;
+    janelaTurnos: number;
+  };
+};
+
+/** O que vem depois (evento → dilema, escolha → evento). */
+export type OccurrenceFollowUp = {
+  ocorrencia: string;
+  chance: number;
+  emTurnos: readonly [number, number];
+};
+
+/** Opção de um dilema (SG106): nó próprio, duração, setas e leis que muda. */
+export type DilemmaOptionFile = {
+  id: string;
+  rotulo: string;
+  descricao?: string;
+  controle: string;
+  duracaoMeses: number;
+  consequencias: readonly string[];
+  leis?: readonly { lei: string; nivel: number }[];
+  /** Só disponível quando a condição vale; o dilema tem sempre uma opção livre. */
+  requer?: OccurrenceCondition;
+  /** Por que a opção pode estar indisponível (texto para a tela). */
+  motivoRequer?: string;
+  desdobramentos?: readonly OccurrenceFollowUp[];
+};
+
+export type OccurrenceOrigin =
+  | "mundo"
+  | "natureza"
+  | "pais"
+  | "reacao"
+  | "desdobramento"
+  | "crise"
+  | "cotidiano";
+
 export type OccurrenceFile = {
   id: string;
   tipo: "evento" | "situacao" | "dilema";
@@ -396,6 +479,25 @@ export type OccurrenceFile = {
   descricao?: string;
   area?: string;
   avaliacao?: "positiva" | "negativa";
+  /** Título curto para o jornal do turno (SG106). */
+  manchete?: string;
+  /** De onde vem (SG106). */
+  origem?: OccurrenceOrigin;
+  /** Tamanho: 1 local, 2 regional, 3 nacional, 4 catástrofe. */
+  nivel?: 1 | 2 | 3 | 4;
+  /** Só acontece uma vez por partida. */
+  unica?: boolean;
+  /** Evento: nó de intensidade (controle de 0 a 1) de onde saem as setas. */
+  controle?: string;
+  /** Evento: quantos meses dura. */
+  duracaoMeses?: number;
+  /** Turnos mínimos entre dois inícios da mesma ocorrência. */
+  intervaloMinimoTurnos?: number;
+  gatilho?: OccurrenceTrigger;
+  desdobramentos?: readonly OccurrenceFollowUp[];
+  /** Dilema: opções (2 a 4) e a que o piloto automático escolhe. */
+  opcoes?: readonly DilemmaOptionFile[];
+  padrao?: string;
   entraQuando?: {
     tipo: "comparacao";
     variavel: string;

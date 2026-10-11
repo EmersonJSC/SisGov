@@ -1,0 +1,27 @@
+{
+  "id": "panelaco",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Panelaço",
+  "descricao": "Barulho de panela nos bairros de classe média. Pequeno, mas vai para todas as redes.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Panelaço ecoa nas janelas de {cidade} durante discurso do presidente",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 4,
+  "gatilho": {
+    "chance": 0.06,
+    "fatores": [
+      {
+        "variavel": "grupo_classe_media",
+        "de": 45,
+        "ate": 20,
+        "multiplica": 3
+      }
+    ]
+  },
+  "consequencias": ["panelaco--polarizacao", "panelaco--grupo-classe-media"],
+  "controle": "ocorrencia_panelaco",
+  "duracaoMeses": 1
+}

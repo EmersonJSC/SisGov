@@ -1,0 +1,17 @@
+{
+  "id": "quem-explora-o-petroleo--leilao--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_quem_explora_o_petroleo__leilao",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.4,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "id": "montadora-pede-socorro",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "{empresa} pede socorro",
+  "descricao": "A {empresa} diz que vai demitir milhares se não ganhar isenção de impostos e crédito barato. Ajudar salva empregos agora; negar evita um precedente caro.",
+  "area": "Ministério da Fazenda",
+  "manchete": "{empresa} ameaça fechar fábricas sem ajuda do governo",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.015,
+    "fatores": [
+      {
+        "variavel": "recessao",
+        "de": 0,
+        "ate": 40,
+        "multiplica": 3
+      }
+    ]
+  },
+  "padrao": "negar",
+  "opcoes": [
+    {
+      "id": "isencao",
+      "rotulo": "Dar isenção e crédito",
+      "descricao": "Empregos salvos, arrecadação menor e fila de outros pedidos.",
+      "controle": "ocorrencia_montadora_pede_socorro__isencao",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "montadora-pede-socorro--isencao--arrecadacao",
+        "montadora-pede-socorro--isencao--desemprego",
+        "montadora-pede-socorro--isencao--grupo-trabalhadores",
+        "montadora-pede-socorro--isencao--concentracao-mercado",
+        "montadora-pede-socorro--isencao--grupo-progressistas"
+      ]
+    },
+    {
+      "id": "contrapartida",
+      "rotulo": "Ajudar com contrapartidas",
+      "descricao": "Crédito em troca de não demitir e investir. Negociação dura.",
+      "controle": "ocorrencia_montadora_pede_socorro__contrapartida",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "montadora-pede-socorro--contrapartida--gasto-publico",
+        "montadora-pede-socorro--contrapartida--desemprego",
+        "montadora-pede-socorro--contrapartida--confianca-empresarial"
+      ]
+    },
+    {
+      "id": "negar",
+      "rotulo": "Negar",
+      "descricao": "Empresa não é do governo. As demissões vêm.",
+      "controle": "ocorrencia_montadora_pede_socorro__negar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "montadora-pede-socorro--negar--desemprego",
+        "montadora-pede-socorro--negar--grupo-trabalhadores",
+        "montadora-pede-socorro--negar--grupo-empresarios"
+      ]
+    }
+  ],
+  "consequencias": [
+    "montadora-pede-socorro--isencao--arrecadacao",
+    "montadora-pede-socorro--isencao--desemprego",
+    "montadora-pede-socorro--isencao--grupo-trabalhadores",
+    "montadora-pede-socorro--isencao--concentracao-mercado",
+    "montadora-pede-socorro--isencao--grupo-progressistas",
+    "montadora-pede-socorro--contrapartida--gasto-publico",
+    "montadora-pede-socorro--contrapartida--desemprego",
+    "montadora-pede-socorro--contrapartida--confianca-empresarial",
+    "montadora-pede-socorro--negar--desemprego",
+    "montadora-pede-socorro--negar--grupo-trabalhadores",
+    "montadora-pede-socorro--negar--grupo-empresarios"
+  ]
+}

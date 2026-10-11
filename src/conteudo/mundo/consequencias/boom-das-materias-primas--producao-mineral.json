@@ -1,0 +1,17 @@
+{
+  "id": "boom-das-materias-primas--producao-mineral",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_boom_das_materias_primas",
+  "alvo": "producao_mineral",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 6.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

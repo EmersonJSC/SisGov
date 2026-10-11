@@ -1,0 +1,53 @@
+{
+  "id": "atentado-terrorista",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Atentado terrorista",
+  "descricao": "Um grupo radical explode uma bomba em {cidade}. Atentados assim exigem motivação e capacidade: polarização extrema e crime organizado forte abrem a porta.",
+  "area": "Ministério da Justiça",
+  "manchete": "Explosão em evento lotado em {cidade} deixa dezenas de vítimas",
+  "origem": "pais",
+  "nivel": 4,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 40,
+  "gatilho": {
+    "chance": 0.0005,
+    "fatores": [
+      {
+        "variavel": "polarizacao",
+        "de": 50,
+        "ate": 95,
+        "multiplica": 5
+      },
+      {
+        "variavel": "crime_organizado",
+        "de": 50,
+        "ate": 90,
+        "multiplica": 3
+      },
+      {
+        "variavel": "estabilidade_politica",
+        "de": 50,
+        "ate": 15,
+        "multiplica": 3
+      }
+    ]
+  },
+  "consequencias": [
+    "atentado-terrorista--sensacao-seguranca",
+    "atentado-terrorista--turismo",
+    "atentado-terrorista--estabilidade-politica",
+    "atentado-terrorista--liberdade-civil",
+    "atentado-terrorista--polarizacao",
+    "atentado-terrorista--pib"
+  ],
+  "controle": "ocorrencia_atentado_terrorista",
+  "duracaoMeses": 6,
+  "desdobramentos": [
+    {
+      "ocorrencia": "lei-antiterror",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

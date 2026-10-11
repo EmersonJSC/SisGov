@@ -1,0 +1,64 @@
+{
+  "id": "mutirao-ou-privados",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Como zerar a fila?",
+  "descricao": "A fila virou escândalo. Comprar cirurgias de hospitais privados é rápido; investir na rede pública é duradouro.",
+  "area": "Ministério da Saúde",
+  "manchete": "Governo promete zerar a fila de cirurgias",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "nada",
+  "opcoes": [
+    {
+      "id": "privados",
+      "rotulo": "Comprar cirurgias da rede privada",
+      "descricao": "Fila anda já. Dinheiro público vai para hospitais privados.",
+      "controle": "ocorrencia_mutirao_ou_privados__privados",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "mutirao-ou-privados--privados--crise-atendimento",
+        "mutirao-ou-privados--privados--gasto-publico",
+        "mutirao-ou-privados--privados--grupo-aposentados",
+        "mutirao-ou-privados--privados--grupo-progressistas"
+      ]
+    },
+    {
+      "id": "rede-publica",
+      "rotulo": "Abrir mais leitos públicos",
+      "descricao": "Leva tempo e dinheiro, fica para sempre.",
+      "controle": "ocorrencia_mutirao_ou_privados__rede_publica",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "mutirao-ou-privados--rede-publica--crise-atendimento",
+        "mutirao-ou-privados--rede-publica--pressao-hospitalar",
+        "mutirao-ou-privados--rede-publica--gasto-publico"
+      ]
+    },
+    {
+      "id": "nada",
+      "rotulo": "Culpar os estados",
+      "descricao": "Saúde é dever de todos. A fila continua.",
+      "controle": "ocorrencia_mutirao_ou_privados__nada",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "mutirao-ou-privados--nada--grupo-aposentados",
+        "mutirao-ou-privados--nada--confianca-instituicoes"
+      ]
+    }
+  ],
+  "consequencias": [
+    "mutirao-ou-privados--privados--crise-atendimento",
+    "mutirao-ou-privados--privados--gasto-publico",
+    "mutirao-ou-privados--privados--grupo-aposentados",
+    "mutirao-ou-privados--privados--grupo-progressistas",
+    "mutirao-ou-privados--rede-publica--crise-atendimento",
+    "mutirao-ou-privados--rede-publica--pressao-hospitalar",
+    "mutirao-ou-privados--rede-publica--gasto-publico",
+    "mutirao-ou-privados--nada--grupo-aposentados",
+    "mutirao-ou-privados--nada--confianca-instituicoes"
+  ]
+}

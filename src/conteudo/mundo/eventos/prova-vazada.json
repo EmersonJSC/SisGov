@@ -1,0 +1,31 @@
+{
+  "id": "prova-vazada",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Prova nacional vazada",
+  "descricao": "Milhões de estudantes terão de refazer a prova. Pais e alunos estão furiosos.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Prova nacional do ensino médio vaza horas antes do exame",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.01,
+    "fatores": [
+      {
+        "variavel": "capacidade_estatal",
+        "de": 70,
+        "ate": 30,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "prova-vazada--grupo-jovens",
+    "prova-vazada--confianca-instituicoes",
+    "prova-vazada--gasto-publico"
+  ],
+  "controle": "ocorrencia_prova_vazada",
+  "duracaoMeses": 3
+}

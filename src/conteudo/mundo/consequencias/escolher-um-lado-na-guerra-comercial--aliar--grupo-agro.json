@@ -1,0 +1,17 @@
+{
+  "id": "escolher-um-lado-na-guerra-comercial--aliar--grupo-agro",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_escolher_um_lado_na_guerra_comercial__aliar",
+  "alvo": "grupo_agro",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

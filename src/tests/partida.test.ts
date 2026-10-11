@@ -9,7 +9,7 @@ import {
 } from "../app/partida";
 
 function nova(): Partida {
-  const criada = criarPartida();
+  const criada = criarPartida({ ocorrencias: false });
   if (!criada.ok) throw new Error(criada.erros.join(" "));
   return criada.value;
 }

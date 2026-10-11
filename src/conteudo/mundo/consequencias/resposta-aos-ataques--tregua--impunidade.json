@@ -1,0 +1,17 @@
+{
+  "id": "resposta-aos-ataques--tregua--impunidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resposta_aos_ataques__tregua",
+  "alvo": "impunidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 5.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

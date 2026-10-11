@@ -1,0 +1,17 @@
+{
+  "id": "reconstrucao--imprimir--desastre-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reconstrucao__imprimir",
+  "alvo": "desastre_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -25.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

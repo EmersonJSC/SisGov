@@ -1,0 +1,52 @@
+{
+  "id": "fechar-hospitais-psiquiatricos",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Hospitais psiquiátricos",
+  "descricao": "Internos em condições degradantes num hospital psiquiátrico de {estado}. Fechar e criar atendimento comunitário leva anos; reformar é mais rápido.",
+  "area": "Ministério da Saúde",
+  "manchete": "Denúncias de abuso em hospital psiquiátrico de {estado}",
+  "origem": "cotidiano",
+  "nivel": 1,
+  "intervaloMinimoTurnos": 20,
+  "gatilho": {
+    "chance": 0.008
+  },
+  "padrao": "reformar",
+  "opcoes": [
+    {
+      "id": "comunitario",
+      "rotulo": "Fechar e investir em atendimento comunitário",
+      "descricao": "Modelo moderno, transição difícil.",
+      "controle": "ocorrencia_fechar_hospitais_psiquiatricos__comunitario",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "fechar-hospitais-psiquiatricos--comunitario--sofrimento-mental",
+        "fechar-hospitais-psiquiatricos--comunitario--gasto-publico",
+        "fechar-hospitais-psiquiatricos--comunitario--populacao-de-rua"
+      ],
+      "leis": [
+        {
+          "lei": "saude-mental",
+          "nivel": 100.0
+        }
+      ]
+    },
+    {
+      "id": "reformar",
+      "rotulo": "Reformar o hospital",
+      "descricao": "Tira da manchete, muda pouco.",
+      "controle": "ocorrencia_fechar_hospitais_psiquiatricos__reformar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "fechar-hospitais-psiquiatricos--reformar--gasto-publico"
+      ]
+    }
+  ],
+  "consequencias": [
+    "fechar-hospitais-psiquiatricos--comunitario--sofrimento-mental",
+    "fechar-hospitais-psiquiatricos--comunitario--gasto-publico",
+    "fechar-hospitais-psiquiatricos--comunitario--populacao-de-rua",
+    "fechar-hospitais-psiquiatricos--reformar--gasto-publico"
+  ]
+}

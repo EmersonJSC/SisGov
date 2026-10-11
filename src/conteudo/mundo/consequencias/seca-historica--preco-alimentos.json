@@ -1,0 +1,17 @@
+{
+  "id": "seca-historica--preco-alimentos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_seca_historica",
+  "alvo": "preco_alimentos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 8.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

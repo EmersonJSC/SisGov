@@ -1,0 +1,81 @@
+{
+  "id": "comida-cara",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Comida cara",
+  "descricao": "A comida subiu e a cobrança chegou ao {palacio}. As saídas vão do mercado ao tabelamento.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Governo é cobrado pela alta dos alimentos",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "esperar",
+  "opcoes": [
+    {
+      "id": "zerar-tarifas",
+      "rotulo": "Zerar a tarifa de importação de alimentos",
+      "descricao": "Comida de fora mais barata, produtor local reclama.",
+      "controle": "ocorrencia_comida_cara__zerar_tarifas",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "comida-cara--zerar-tarifas--preco-alimentos",
+        "comida-cara--zerar-tarifas--grupo-agro",
+        "comida-cara--zerar-tarifas--grupo-pobres"
+      ]
+    },
+    {
+      "id": "estoques",
+      "rotulo": "Vender estoques públicos",
+      "descricao": "Soltar o que o governo guarda para segurar preços por alguns meses.",
+      "controle": "ocorrencia_comida_cara__estoques",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "comida-cara--estoques--preco-alimentos",
+        "comida-cara--estoques--gasto-publico",
+        "comida-cara--estoques--grupo-pobres"
+      ]
+    },
+    {
+      "id": "tabelar",
+      "rotulo": "Tabelar os preços",
+      "descricao": "Preço máximo na prateleira. Popular no início, desabastecimento depois.",
+      "controle": "ocorrencia_comida_cara__tabelar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "comida-cara--tabelar--preco-alimentos",
+        "comida-cara--tabelar--desabastecimento",
+        "comida-cara--tabelar--mercado-paralelo",
+        "comida-cara--tabelar--grupo-empresarios",
+        "comida-cara--tabelar--grupo-pobres"
+      ]
+    },
+    {
+      "id": "esperar",
+      "rotulo": "Esperar a próxima safra",
+      "descricao": "O preço cai sozinho... um dia.",
+      "controle": "ocorrencia_comida_cara__esperar",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "comida-cara--esperar--grupo-pobres",
+        "comida-cara--esperar--inseguranca-alimentar"
+      ]
+    }
+  ],
+  "consequencias": [
+    "comida-cara--zerar-tarifas--preco-alimentos",
+    "comida-cara--zerar-tarifas--grupo-agro",
+    "comida-cara--zerar-tarifas--grupo-pobres",
+    "comida-cara--estoques--preco-alimentos",
+    "comida-cara--estoques--gasto-publico",
+    "comida-cara--estoques--grupo-pobres",
+    "comida-cara--tabelar--preco-alimentos",
+    "comida-cara--tabelar--desabastecimento",
+    "comida-cara--tabelar--mercado-paralelo",
+    "comida-cara--tabelar--grupo-empresarios",
+    "comida-cara--tabelar--grupo-pobres",
+    "comida-cara--esperar--grupo-pobres",
+    "comida-cara--esperar--inseguranca-alimentar"
+  ]
+}

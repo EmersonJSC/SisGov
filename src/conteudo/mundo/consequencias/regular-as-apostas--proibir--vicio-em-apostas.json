@@ -1,0 +1,17 @@
+{
+  "id": "regular-as-apostas--proibir--vicio-em-apostas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_regular_as_apostas__proibir",
+  "alvo": "vicio_em_apostas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

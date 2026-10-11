@@ -1,0 +1,17 @@
+{
+  "id": "crise-da-divida--empurrar--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_crise_da_divida__empurrar",
+  "alvo": "risco_pais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 10.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

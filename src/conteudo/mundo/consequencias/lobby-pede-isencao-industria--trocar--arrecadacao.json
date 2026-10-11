@@ -1,0 +1,17 @@
+{
+  "id": "lobby-pede-isencao-industria--trocar--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_lobby_pede_isencao_industria__trocar",
+  "alvo": "arrecadacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.05,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "tarifa-do-onibus--passe-livre--grupo-jovens",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_tarifa_do_onibus__passe_livre",
+  "alvo": "grupo_jovens",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

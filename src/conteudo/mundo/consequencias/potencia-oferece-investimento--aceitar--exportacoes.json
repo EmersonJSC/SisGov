@@ -1,0 +1,17 @@
+{
+  "id": "potencia-oferece-investimento--aceitar--exportacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_potencia_oferece_investimento__aceitar",
+  "alvo": "exportacoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

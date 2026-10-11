@@ -1,0 +1,17 @@
+{
+  "id": "infraestrutura-saneamento--qualidade-de-vida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "infraestrutura_saneamento",
+  "alvo": "qualidade_de_vida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.15,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "denuncia-de-tortura",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Denúncia de tortura",
+  "descricao": "Uma comissão independente documenta espancamentos e celas sem ventilação. Organismos internacionais cobram.",
+  "area": "Ministério da Justiça",
+  "manchete": "Relatório denuncia tortura sistemática em presídio de {estado}",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.01,
+    "fatores": [
+      {
+        "variavel": "lotacao_prisional",
+        "de": 50,
+        "ate": 95,
+        "multiplica": 3
+      }
+    ]
+  },
+  "padrao": "negar",
+  "opcoes": [
+    {
+      "id": "intervir",
+      "rotulo": "Intervenção federal no presídio",
+      "descricao": "Afastar a direção e reformar. Custa e incomoda o governador.",
+      "controle": "ocorrencia_denuncia_de_tortura__intervir",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "denuncia-de-tortura--intervir--gasto-publico",
+        "denuncia-de-tortura--intervir--reputacao-internacional",
+        "denuncia-de-tortura--intervir--lotacao-prisional",
+        "denuncia-de-tortura--intervir--base-congresso"
+      ]
+    },
+    {
+      "id": "investigar",
+      "rotulo": "Abrir investigação",
+      "descricao": "Apurar sem intervir.",
+      "controle": "ocorrencia_denuncia_de_tortura__investigar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "denuncia-de-tortura--investigar--reputacao-internacional"
+      ]
+    },
+    {
+      "id": "negar",
+      "rotulo": "Contestar o relatório",
+      "descricao": "Chamar de exagero. Lá fora, pega mal.",
+      "controle": "ocorrencia_denuncia_de_tortura__negar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "denuncia-de-tortura--negar--reputacao-internacional",
+        "denuncia-de-tortura--negar--grupo-progressistas",
+        "denuncia-de-tortura--negar--grupo-conservadores"
+      ]
+    }
+  ],
+  "consequencias": [
+    "denuncia-de-tortura--intervir--gasto-publico",
+    "denuncia-de-tortura--intervir--reputacao-internacional",
+    "denuncia-de-tortura--intervir--lotacao-prisional",
+    "denuncia-de-tortura--intervir--base-congresso",
+    "denuncia-de-tortura--investigar--reputacao-internacional",
+    "denuncia-de-tortura--negar--reputacao-internacional",
+    "denuncia-de-tortura--negar--grupo-progressistas",
+    "denuncia-de-tortura--negar--grupo-conservadores"
+  ]
+}

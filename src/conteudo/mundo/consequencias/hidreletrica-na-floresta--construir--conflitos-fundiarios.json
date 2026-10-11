@@ -1,0 +1,17 @@
+{
+  "id": "hidreletrica-na-floresta--construir--conflitos-fundiarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_hidreletrica_na_floresta__construir",
+  "alvo": "conflitos_fundiarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 6.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

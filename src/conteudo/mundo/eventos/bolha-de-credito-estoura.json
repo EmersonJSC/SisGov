@@ -1,0 +1,33 @@
+{
+  "id": "bolha-de-credito-estoura",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "A bolha do crédito estoura",
+  "descricao": "Depois de anos de crédito fácil, as famílias não conseguem mais pagar. Bancos cortam empréstimos, o consumo despenca e o comércio demite.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Inadimplência recorde: famílias param de pagar as dívidas",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 20,
+  "gatilho": {
+    "chance": 0.25,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "endividamento_familias",
+      "operador": "maior_que",
+      "valor": 65.0
+    },
+    "porTurnos": 3
+  },
+  "consequencias": [
+    "bolha-de-credito-estoura--credito",
+    "bolha-de-credito-estoura--consumo",
+    "bolha-de-credito-estoura--desemprego",
+    "bolha-de-credito-estoura--crise-financeira",
+    "bolha-de-credito-estoura--grupo-classe-media",
+    "bolha-de-credito-estoura--grupo-pequenos-negocios"
+  ],
+  "controle": "ocorrencia_bolha_de_credito_estoura",
+  "duracaoMeses": 9
+}

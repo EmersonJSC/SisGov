@@ -1,0 +1,17 @@
+{
+  "id": "programa-nuclear--civil-com-inspecao--oferta-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_programa_nuclear__civil_com_inspecao",
+  "alvo": "oferta_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

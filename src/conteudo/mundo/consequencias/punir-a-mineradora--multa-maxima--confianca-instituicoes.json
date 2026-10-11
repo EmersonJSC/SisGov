@@ -1,0 +1,17 @@
+{
+  "id": "punir-a-mineradora--multa-maxima--confianca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_punir_a_mineradora__multa_maxima",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 5.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

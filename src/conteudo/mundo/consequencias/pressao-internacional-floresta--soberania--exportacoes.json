@@ -1,0 +1,17 @@
+{
+  "id": "pressao-internacional-floresta--soberania--exportacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_pressao_internacional_floresta__soberania",
+  "alvo": "exportacoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -5.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

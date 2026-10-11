@@ -153,7 +153,7 @@ describe("SG157 fase 2 — mecanismo pontos", () => {
 });
 
 function nova(): Partida {
-  const criada = criarPartida();
+  const criada = criarPartida({ ocorrencias: false });
   if (!criada.ok) throw new Error(criada.erros.join(" "));
   return criada.value;
 }

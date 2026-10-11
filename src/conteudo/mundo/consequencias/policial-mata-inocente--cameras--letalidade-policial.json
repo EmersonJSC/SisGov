@@ -1,0 +1,17 @@
+{
+  "id": "policial-mata-inocente--cameras--letalidade-policial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_policial_mata_inocente__cameras",
+  "alvo": "letalidade_policial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

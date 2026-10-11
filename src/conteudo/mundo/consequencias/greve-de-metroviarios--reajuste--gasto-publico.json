@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-metroviarios--reajuste--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_metroviarios__reajuste",
+  "alvo": "gasto_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.02,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

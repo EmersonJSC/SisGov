@@ -1,0 +1,69 @@
+{
+  "id": "greve-de-residentes",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Greve de Médicos residentes",
+  "descricao": "Médicos residentes cruzam os braços em {cidade} e outras capitais. Hospitais universitários atendem só emergências.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Médicos residentes entram em greve por reajuste",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 10,
+  "gatilho": {
+    "chance": 0.015,
+    "fatores": [
+      {
+        "variavel": "pressao_hospitalar",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 2
+      }
+    ]
+  },
+  "padrao": "negociar",
+  "opcoes": [
+    {
+      "id": "reajuste",
+      "rotulo": "Aumentar a bolsa",
+      "descricao": "Residentes voltam; a conta sobe.",
+      "controle": "ocorrencia_greve_de_residentes__reajuste",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "greve-de-residentes--reajuste--gasto-publico",
+        "greve-de-residentes--reajuste--falta-de-medicos"
+      ]
+    },
+    {
+      "id": "negociar",
+      "rotulo": "Negociar",
+      "descricao": "Filas maiores por semanas.",
+      "controle": "ocorrencia_greve_de_residentes__negociar",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "greve-de-residentes--negociar--crise-atendimento",
+        "greve-de-residentes--negociar--pressao-hospitalar"
+      ]
+    },
+    {
+      "id": "contratar",
+      "rotulo": "Contratar temporários",
+      "descricao": "Substitui grevistas. Qualidade cai, sindicato reage.",
+      "controle": "ocorrencia_greve_de_residentes__contratar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "greve-de-residentes--contratar--gasto-publico",
+        "greve-de-residentes--contratar--grupo-servidores",
+        "greve-de-residentes--contratar--saude-populacao"
+      ]
+    }
+  ],
+  "consequencias": [
+    "greve-de-residentes--reajuste--gasto-publico",
+    "greve-de-residentes--reajuste--falta-de-medicos",
+    "greve-de-residentes--negociar--crise-atendimento",
+    "greve-de-residentes--negociar--pressao-hospitalar",
+    "greve-de-residentes--contratar--gasto-publico",
+    "greve-de-residentes--contratar--grupo-servidores",
+    "greve-de-residentes--contratar--saude-populacao"
+  ]
+}

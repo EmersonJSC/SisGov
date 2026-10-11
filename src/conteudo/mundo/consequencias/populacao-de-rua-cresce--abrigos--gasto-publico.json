@@ -1,0 +1,17 @@
+{
+  "id": "populacao-de-rua-cresce--abrigos--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_populacao_de_rua_cresce__abrigos",
+  "alvo": "gasto_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.02,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

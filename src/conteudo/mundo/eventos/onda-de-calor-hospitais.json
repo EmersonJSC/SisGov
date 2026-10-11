@@ -1,0 +1,37 @@
+{
+  "id": "onda-de-calor-hospitais",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Onda de calor lota hospitais",
+  "descricao": "Temperaturas acima de 40 graus por dias seguidos no {regiao}. Os mais velhos sofrem primeiro.",
+  "area": "Ministério da Saúde",
+  "manchete": "Calor recorde mata idosos e lota emergências no {regiao}",
+  "origem": "natureza",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 4,
+  "gatilho": {
+    "chance": 0.03,
+    "fatores": [
+      {
+        "variavel": "emissoes",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 2
+      },
+      {
+        "variavel": "desmatamento",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "onda-de-calor-hospitais--pressao-hospitalar",
+    "onda-de-calor-hospitais--saude-populacao",
+    "onda-de-calor-hospitais--grupo-aposentados"
+  ],
+  "controle": "ocorrencia_onda_de_calor_hospitais",
+  "duracaoMeses": 1
+}

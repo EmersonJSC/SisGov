@@ -1,0 +1,112 @@
+{
+  "id": "crise-da-divida",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Crise da dívida",
+  "descricao": "Os juros já comem uma parte grande da receita e o mercado não quer mais emprestar. O governo precisa decidir como sair.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Investidores param de comprar títulos do governo",
+  "origem": "crise",
+  "nivel": 4,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.35,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "juros_explosivos",
+      "operador": "maior_ou_igual",
+      "valor": 32.0
+    }
+  },
+  "padrao": "empurrar",
+  "opcoes": [
+    {
+      "id": "socorro-externo",
+      "rotulo": "Pedir socorro ao fundo internacional",
+      "descricao": "Empréstimo de emergência em troca de teto de gastos: os juros caem, mas o arrocho pesa em quem depende do Estado.",
+      "controle": "ocorrencia_crise_da_divida__socorro_externo",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-da-divida--socorro-externo--risco-pais",
+        "crise-da-divida--socorro-externo--confianca-empresarial",
+        "crise-da-divida--socorro-externo--grupo-servidores",
+        "crise-da-divida--socorro-externo--grupo-trabalhadores",
+        "crise-da-divida--socorro-externo--grupo-pobres",
+        "crise-da-divida--socorro-externo--protestos"
+      ],
+      "leis": [
+        {
+          "lei": "regra-fiscal",
+          "nivel": 67.0
+        }
+      ]
+    },
+    {
+      "id": "moratoria",
+      "rotulo": "Declarar moratória",
+      "descricao": "Parar de pagar parte da dívida: ela encolhe, mas o país vira pária no mercado por anos.",
+      "controle": "ocorrencia_crise_da_divida__moratoria",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-da-divida--moratoria--divida-publica",
+        "crise-da-divida--moratoria--risco-pais",
+        "crise-da-divida--moratoria--credito",
+        "crise-da-divida--moratoria--fuga-capitais",
+        "crise-da-divida--moratoria--confianca-empresarial",
+        "crise-da-divida--moratoria--reputacao-internacional",
+        "crise-da-divida--moratoria--crise-financeira"
+      ]
+    },
+    {
+      "id": "imprimir-dinheiro",
+      "rotulo": "Rodar a impressora",
+      "descricao": "O Banco Central cobre o rombo emitindo moeda: a dívida derrete pela inflação, e a inflação derrete o salário.",
+      "controle": "ocorrencia_crise_da_divida__imprimir_dinheiro",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "crise-da-divida--imprimir-dinheiro--inflacao",
+        "crise-da-divida--imprimir-dinheiro--expectativas-inflacao",
+        "crise-da-divida--imprimir-dinheiro--divida-publica",
+        "crise-da-divida--imprimir-dinheiro--grupo-pobres",
+        "crise-da-divida--imprimir-dinheiro--grupo-aposentados",
+        "crise-da-divida--imprimir-dinheiro--grupo-classe-media"
+      ]
+    },
+    {
+      "id": "empurrar",
+      "rotulo": "Empurrar com a barriga",
+      "descricao": "Não decidir nada. O mercado lê como fraqueza.",
+      "controle": "ocorrencia_crise_da_divida__empurrar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "crise-da-divida--empurrar--risco-pais",
+        "crise-da-divida--empurrar--fuga-capitais",
+        "crise-da-divida--empurrar--confianca-empresarial"
+      ]
+    }
+  ],
+  "consequencias": [
+    "crise-da-divida--socorro-externo--risco-pais",
+    "crise-da-divida--socorro-externo--confianca-empresarial",
+    "crise-da-divida--socorro-externo--grupo-servidores",
+    "crise-da-divida--socorro-externo--grupo-trabalhadores",
+    "crise-da-divida--socorro-externo--grupo-pobres",
+    "crise-da-divida--socorro-externo--protestos",
+    "crise-da-divida--moratoria--divida-publica",
+    "crise-da-divida--moratoria--risco-pais",
+    "crise-da-divida--moratoria--credito",
+    "crise-da-divida--moratoria--fuga-capitais",
+    "crise-da-divida--moratoria--confianca-empresarial",
+    "crise-da-divida--moratoria--reputacao-internacional",
+    "crise-da-divida--moratoria--crise-financeira",
+    "crise-da-divida--imprimir-dinheiro--inflacao",
+    "crise-da-divida--imprimir-dinheiro--expectativas-inflacao",
+    "crise-da-divida--imprimir-dinheiro--divida-publica",
+    "crise-da-divida--imprimir-dinheiro--grupo-pobres",
+    "crise-da-divida--imprimir-dinheiro--grupo-aposentados",
+    "crise-da-divida--imprimir-dinheiro--grupo-classe-media",
+    "crise-da-divida--empurrar--risco-pais",
+    "crise-da-divida--empurrar--fuga-capitais",
+    "crise-da-divida--empurrar--confianca-empresarial"
+  ]
+}

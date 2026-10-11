@@ -1,0 +1,17 @@
+{
+  "id": "comida-cara--tabelar--mercado-paralelo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_comida_cara__tabelar",
+  "alvo": "mercado_paralelo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 10.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

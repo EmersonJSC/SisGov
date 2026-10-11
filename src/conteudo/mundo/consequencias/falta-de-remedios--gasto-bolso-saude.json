@@ -1,0 +1,17 @@
+{
+  "id": "falta-de-remedios--gasto-bolso-saude",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_falta_de_remedios",
+  "alvo": "gasto_bolso_saude",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

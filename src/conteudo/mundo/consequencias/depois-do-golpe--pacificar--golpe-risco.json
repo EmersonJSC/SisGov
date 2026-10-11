@@ -1,0 +1,17 @@
+{
+  "id": "depois-do-golpe--pacificar--golpe-risco",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_depois_do_golpe__pacificar",
+  "alvo": "golpe_risco",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 5.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

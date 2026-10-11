@@ -1,0 +1,59 @@
+{
+  "id": "aliado-pede-ministerio-educacao",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Aliado pede ministério",
+  "descricao": "O {partido_aliado} quer comandar a pasta de Educação. Sem isso, ameaça votar com a oposição.",
+  "area": "Casa Civil",
+  "manchete": "{partido_aliado} cobra um ministério para continuar na base",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02
+  },
+  "padrao": "recusar",
+  "opcoes": [
+    {
+      "id": "ceder",
+      "rotulo": "Ceder a pasta",
+      "descricao": "A base cresce; o aliado traz a sua agenda para as escolas.",
+      "controle": "ocorrencia_aliado_pede_ministerio_educacao__ceder",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "aliado-pede-ministerio-educacao--ceder--base-congresso",
+        "aliado-pede-ministerio-educacao--ceder--corrupcao",
+        "aliado-pede-ministerio-educacao--ceder--grupo-progressistas"
+      ]
+    },
+    {
+      "id": "outra",
+      "rotulo": "Oferecer uma pasta menor",
+      "descricao": "Meio-termo. O aliado fica desconfiado.",
+      "controle": "ocorrencia_aliado_pede_ministerio_educacao__outra",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "aliado-pede-ministerio-educacao--outra--base-congresso"
+      ]
+    },
+    {
+      "id": "recusar",
+      "rotulo": "Recusar",
+      "descricao": "Ministério não se negocia. A base encolhe.",
+      "controle": "ocorrencia_aliado_pede_ministerio_educacao__recusar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "aliado-pede-ministerio-educacao--recusar--base-congresso",
+        "aliado-pede-ministerio-educacao--recusar--grupo-classe-media"
+      ]
+    }
+  ],
+  "consequencias": [
+    "aliado-pede-ministerio-educacao--ceder--base-congresso",
+    "aliado-pede-ministerio-educacao--ceder--corrupcao",
+    "aliado-pede-ministerio-educacao--ceder--grupo-progressistas",
+    "aliado-pede-ministerio-educacao--outra--base-congresso",
+    "aliado-pede-ministerio-educacao--recusar--base-congresso",
+    "aliado-pede-ministerio-educacao--recusar--grupo-classe-media"
+  ]
+}

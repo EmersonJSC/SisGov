@@ -1,0 +1,43 @@
+{
+  "id": "fuga-de-cerebros",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Fuga de cérebros",
+  "descricao": "Com imposto alto sobre os salários de cima e qualidade de vida baixa, os profissionais mais qualificados vão embora. O país perde quem inventa e quem cura.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Médicos, engenheiros e cientistas fazem as malas",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.6,
+    "condicao": {
+      "tipo": "e",
+      "condicoes": [
+        {
+          "tipo": "comparacao",
+          "variavel": "aliquota_imposto_renda_pessoas",
+          "operador": "maior_que",
+          "valor": 55.0
+        },
+        {
+          "tipo": "comparacao",
+          "variavel": "qualidade_de_vida",
+          "operador": "menor_que",
+          "valor": 40.0
+        }
+      ]
+    },
+    "porTurnos": 4
+  },
+  "consequencias": [
+    "fuga-de-cerebros--fuga-de-cerebros",
+    "fuga-de-cerebros--inovacao",
+    "fuga-de-cerebros--produtividade",
+    "fuga-de-cerebros--qualificacao-trabalho",
+    "fuga-de-cerebros--falta-de-medicos"
+  ],
+  "controle": "ocorrencia_fuga_de_cerebros",
+  "duracaoMeses": 12
+}

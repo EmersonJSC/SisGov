@@ -1,0 +1,63 @@
+{
+  "id": "greve-de-metroviarios",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Greve de Metroviários",
+  "descricao": "Metroviários cruzam os braços em {cidade} e outras capitais. A cidade trava e o trânsito bate recorde.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Metroviários entram em greve por reajuste",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 10,
+  "gatilho": {
+    "chance": 0.015
+  },
+  "padrao": "negociar",
+  "opcoes": [
+    {
+      "id": "reajuste",
+      "rotulo": "Dar o reajuste",
+      "descricao": "Trens voltam; tarifa pressionada.",
+      "controle": "ocorrencia_greve_de_metroviarios__reajuste",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "greve-de-metroviarios--reajuste--gasto-publico",
+        "greve-de-metroviarios--reajuste--grupo-trabalhadores"
+      ]
+    },
+    {
+      "id": "negociar",
+      "rotulo": "Negociar",
+      "descricao": "Dias de caos no transporte.",
+      "controle": "ocorrencia_greve_de_metroviarios__negociar",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "greve-de-metroviarios--negociar--mobilidade-urbana",
+        "greve-de-metroviarios--negociar--pib",
+        "greve-de-metroviarios--negociar--grupo-classe-media"
+      ]
+    },
+    {
+      "id": "justica",
+      "rotulo": "Pedir à Justiça que declare a greve ilegal",
+      "descricao": "Multa pesada ao sindicato. A greve acaba, a raiva fica.",
+      "controle": "ocorrencia_greve_de_metroviarios__justica",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "greve-de-metroviarios--justica--mobilidade-urbana",
+        "greve-de-metroviarios--justica--grupo-trabalhadores",
+        "greve-de-metroviarios--justica--liberdade-civil"
+      ]
+    }
+  ],
+  "consequencias": [
+    "greve-de-metroviarios--reajuste--gasto-publico",
+    "greve-de-metroviarios--reajuste--grupo-trabalhadores",
+    "greve-de-metroviarios--negociar--mobilidade-urbana",
+    "greve-de-metroviarios--negociar--pib",
+    "greve-de-metroviarios--negociar--grupo-classe-media",
+    "greve-de-metroviarios--justica--mobilidade-urbana",
+    "greve-de-metroviarios--justica--grupo-trabalhadores",
+    "greve-de-metroviarios--justica--liberdade-civil"
+  ]
+}

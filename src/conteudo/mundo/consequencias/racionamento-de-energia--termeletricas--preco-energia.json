@@ -1,0 +1,17 @@
+{
+  "id": "racionamento-de-energia--termeletricas--preco-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_racionamento_de_energia__termeletricas",
+  "alvo": "preco_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 10.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

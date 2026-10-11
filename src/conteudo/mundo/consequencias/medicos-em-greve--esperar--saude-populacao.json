@@ -1,0 +1,17 @@
+{
+  "id": "medicos-em-greve--esperar--saude-populacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_medicos_em_greve__esperar",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.5,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

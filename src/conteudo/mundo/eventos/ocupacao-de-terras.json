@@ -1,0 +1,43 @@
+{
+  "id": "ocupacao-de-terras",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Ocupação de terras",
+  "descricao": "Mil famílias montam acampamento numa fazenda parada. O dono pede reintegração; os movimentos pedem reforma agrária.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Sem-terra ocupam fazenda improdutiva em {estado}",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02,
+    "fatores": [
+      {
+        "variavel": "conflitos_fundiarios",
+        "de": 20,
+        "ate": 60,
+        "multiplica": 3
+      },
+      {
+        "variavel": "nivel_reforma_agraria",
+        "de": 100,
+        "ate": 0,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "ocupacao-de-terras--conflitos-fundiarios",
+    "ocupacao-de-terras--grupo-agro"
+  ],
+  "controle": "ocorrencia_ocupacao_de_terras",
+  "duracaoMeses": 6,
+  "desdobramentos": [
+    {
+      "ocorrencia": "reintegracao-de-posse",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

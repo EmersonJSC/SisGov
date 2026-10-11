@@ -15,7 +15,7 @@ import {
 import { validatePackageCoherence } from "../engine";
 
 function nova(): Partida {
-  const criada = criarPartida();
+  const criada = criarPartida({ ocorrencias: false });
   if (!criada.ok) throw new Error(criada.erros.join(" "));
   return criada.value;
 }

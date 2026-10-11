@@ -12,5 +12,6 @@ export function commitGameQuarter(
     policies: prepared.policies,
     proposals: prepared.proposals,
     execution: prepared.execution,
+    ...(prepared.occurrences ? { occurrences: prepared.occurrences } : {}),
   };
 }

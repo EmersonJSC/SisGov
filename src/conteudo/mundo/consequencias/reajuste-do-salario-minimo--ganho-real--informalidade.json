@@ -1,0 +1,17 @@
+{
+  "id": "reajuste-do-salario-minimo--ganho-real--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reajuste_do_salario_minimo__ganho_real",
+  "alvo": "informalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

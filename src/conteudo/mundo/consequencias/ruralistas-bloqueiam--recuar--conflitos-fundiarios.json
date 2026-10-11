@@ -1,0 +1,17 @@
+{
+  "id": "ruralistas-bloqueiam--recuar--conflitos-fundiarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_ruralistas_bloqueiam__recuar",
+  "alvo": "conflitos_fundiarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

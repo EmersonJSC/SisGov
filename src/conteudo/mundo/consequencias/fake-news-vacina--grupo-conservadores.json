@@ -1,0 +1,17 @@
+{
+  "id": "fake-news-vacina--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_fake_news_vacina",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

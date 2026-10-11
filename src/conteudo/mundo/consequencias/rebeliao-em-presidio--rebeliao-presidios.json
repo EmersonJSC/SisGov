@@ -1,0 +1,17 @@
+{
+  "id": "rebeliao-em-presidio--rebeliao-presidios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_rebeliao_em_presidio",
+  "alvo": "rebeliao_presidios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 35.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

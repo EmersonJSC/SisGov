@@ -1,0 +1,68 @@
+{
+  "id": "protesto-contra-imposto",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Revolta contra o imposto",
+  "descricao": "O aumento do imposto sobre consumo provocou um dia de portas fechadas e panelaço. A pressão é para recuar.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Comerciantes fecham as portas contra o aumento de impostos",
+  "origem": "reacao",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.7,
+    "reacao": {
+      "controle": "aliquota_imposto_sobre_consumo",
+      "janelaTurnos": 2,
+      "sobe": 2.0
+    }
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "recuar",
+      "rotulo": "Recuar parcialmente",
+      "descricao": "Metade do aumento é desfeito. Perde receita, ganha paz.",
+      "controle": "ocorrencia_protesto_contra_imposto__recuar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "protesto-contra-imposto--recuar--arrecadacao",
+        "protesto-contra-imposto--recuar--grupo-pequenos-negocios",
+        "protesto-contra-imposto--recuar--grupo-classe-media"
+      ]
+    },
+    {
+      "id": "compensar",
+      "rotulo": "Compensar os mais pobres",
+      "descricao": "Devolver parte do imposto a quem ganha menos.",
+      "controle": "ocorrencia_protesto_contra_imposto__compensar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "protesto-contra-imposto--compensar--gasto-publico",
+        "protesto-contra-imposto--compensar--grupo-pobres"
+      ]
+    },
+    {
+      "id": "manter",
+      "rotulo": "Manter e explicar",
+      "descricao": "O dinheiro é necessário. A raiva passa... ou não.",
+      "controle": "ocorrencia_protesto_contra_imposto__manter",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "protesto-contra-imposto--manter--grupo-pequenos-negocios",
+        "protesto-contra-imposto--manter--grupo-classe-media",
+        "protesto-contra-imposto--manter--protestos"
+      ]
+    }
+  ],
+  "consequencias": [
+    "protesto-contra-imposto--recuar--arrecadacao",
+    "protesto-contra-imposto--recuar--grupo-pequenos-negocios",
+    "protesto-contra-imposto--recuar--grupo-classe-media",
+    "protesto-contra-imposto--compensar--gasto-publico",
+    "protesto-contra-imposto--compensar--grupo-pobres",
+    "protesto-contra-imposto--manter--grupo-pequenos-negocios",
+    "protesto-contra-imposto--manter--grupo-classe-media",
+    "protesto-contra-imposto--manter--protestos"
+  ]
+}

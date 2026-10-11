@@ -1,0 +1,44 @@
+{
+  "id": "quebra-de-banco",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Banco grande à beira da falência",
+  "descricao": "O {banco}, um dos maiores do país, tem mais dívidas que dinheiro. A regulação frouxa deixou o rombo crescer; se ele cair, pode levar outros junto.",
+  "area": "Ministério da Fazenda",
+  "manchete": "{banco} suspende saques; correntistas fazem fila nas agências",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 24,
+  "gatilho": {
+    "chance": 0.008,
+    "fatores": [
+      {
+        "variavel": "nivel_regulacao_bancaria",
+        "de": 67,
+        "ate": 0,
+        "multiplica": 4
+      },
+      {
+        "variavel": "credito",
+        "de": 60,
+        "ate": 90,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "quebra-de-banco--crise-financeira",
+    "quebra-de-banco--credito",
+    "quebra-de-banco--confianca-empresarial"
+  ],
+  "controle": "ocorrencia_quebra_de_banco",
+  "duracaoMeses": 3,
+  "desdobramentos": [
+    {
+      "ocorrencia": "resgate-bancario",
+      "chance": 1.0,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

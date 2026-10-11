@@ -1,0 +1,17 @@
+{
+  "id": "onda-de-calor-hospitais--saude-populacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_onda_de_calor_hospitais",
+  "alvo": "saude_populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.5,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

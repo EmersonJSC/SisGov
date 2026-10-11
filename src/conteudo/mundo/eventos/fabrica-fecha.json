@@ -1,0 +1,36 @@
+{
+  "id": "fabrica-fecha",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "{empresa} fecha unidade",
+  "descricao": "Com vendas fracas e custos altos, a {empresa} encerra a operação em {cidade}. A cidade perde empregos e arrecadação.",
+  "area": "Ministério da Fazenda",
+  "manchete": "{empresa} fecha a fábrica de {cidade} e demite milhares",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 3,
+  "gatilho": {
+    "chance": 0.08,
+    "fatores": [
+      {
+        "variavel": "recessao",
+        "de": 0,
+        "ate": 40,
+        "multiplica": 4
+      },
+      {
+        "variavel": "custo_trabalhista",
+        "de": 50,
+        "ate": 90,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "fabrica-fecha--desemprego",
+    "fabrica-fecha--grupo-trabalhadores"
+  ],
+  "controle": "ocorrencia_fabrica_fecha",
+  "duracaoMeses": 3
+}

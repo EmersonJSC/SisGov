@@ -1,0 +1,17 @@
+{
+  "id": "obra-na-terra-do-aliado--aprovar--base-congresso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_obra_na_terra_do_aliado__aprovar",
+  "alvo": "base_congresso",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 5.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

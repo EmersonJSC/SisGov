@@ -1,0 +1,31 @@
+{
+  "id": "vazamento-de-oleo",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Vazamento de óleo",
+  "descricao": "Um vazamento no mar atinge praias, pescadores e o turismo do {regiao}. Ninguém assume a culpa.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Manchas de óleo chegam às praias do litoral do {regiao}",
+  "origem": "natureza",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.015,
+    "fatores": [
+      {
+        "variavel": "producao_mineral",
+        "de": 40,
+        "ate": 80,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "vazamento-de-oleo--qualidade-ambiental",
+    "vazamento-de-oleo--turismo",
+    "vazamento-de-oleo--desastre-ambiental"
+  ],
+  "controle": "ocorrencia_vazamento_de_oleo",
+  "duracaoMeses": 4
+}

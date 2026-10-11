@@ -1,0 +1,76 @@
+{
+  "id": "ruralistas-bloqueiam",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Tratoraço contra a reforma agrária",
+  "descricao": "A ampliação da reforma agrária levou produtores às estradas. A bancada ruralista ameaça travar as votações.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Ruralistas bloqueiam rodovias com tratores",
+  "origem": "reacao",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.75,
+    "reacao": {
+      "controle": "nivel_reforma_agraria",
+      "janelaTurnos": 2,
+      "sobe": 30.0
+    }
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "manter",
+      "rotulo": "Manter a reforma",
+      "descricao": "Assentamentos seguem; a bancada fica contra.",
+      "controle": "ocorrencia_ruralistas_bloqueiam__manter",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "ruralistas-bloqueiam--manter--base-congresso",
+        "ruralistas-bloqueiam--manter--grupo-agro",
+        "ruralistas-bloqueiam--manter--grupo-pobres"
+      ]
+    },
+    {
+      "id": "credito-rural",
+      "rotulo": "Compensar com crédito rural",
+      "descricao": "Dinheiro barato para os produtores aceitarem.",
+      "controle": "ocorrencia_ruralistas_bloqueiam__credito_rural",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "ruralistas-bloqueiam--credito-rural--gasto-publico",
+        "ruralistas-bloqueiam--credito-rural--grupo-agro",
+        "ruralistas-bloqueiam--credito-rural--base-congresso"
+      ]
+    },
+    {
+      "id": "recuar",
+      "rotulo": "Limitar a reforma a títulos de terra",
+      "descricao": "Recuo para titular quem já está na terra.",
+      "controle": "ocorrencia_ruralistas_bloqueiam__recuar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "ruralistas-bloqueiam--recuar--grupo-agro",
+        "ruralistas-bloqueiam--recuar--conflitos-fundiarios",
+        "ruralistas-bloqueiam--recuar--grupo-progressistas"
+      ],
+      "leis": [
+        {
+          "lei": "reforma-agraria",
+          "nivel": 33.0
+        }
+      ]
+    }
+  ],
+  "consequencias": [
+    "ruralistas-bloqueiam--manter--base-congresso",
+    "ruralistas-bloqueiam--manter--grupo-agro",
+    "ruralistas-bloqueiam--manter--grupo-pobres",
+    "ruralistas-bloqueiam--credito-rural--gasto-publico",
+    "ruralistas-bloqueiam--credito-rural--grupo-agro",
+    "ruralistas-bloqueiam--credito-rural--base-congresso",
+    "ruralistas-bloqueiam--recuar--grupo-agro",
+    "ruralistas-bloqueiam--recuar--conflitos-fundiarios",
+    "ruralistas-bloqueiam--recuar--grupo-progressistas"
+  ]
+}

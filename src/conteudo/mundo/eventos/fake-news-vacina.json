@@ -1,0 +1,36 @@
+{
+  "id": "fake-news-vacina",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Notícia falsa viraliza",
+  "descricao": "Uma mentira bem contada sobre uma vacina circula por milhões de celulares em poucas horas.",
+  "area": "Casa Civil",
+  "manchete": "Boato sobre uma vacina se espalha e provoca pânico",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 2,
+  "gatilho": {
+    "chance": 0.08,
+    "fatores": [
+      {
+        "variavel": "desinformacao",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "nivel_regulacao_redes_sociais",
+        "de": 0,
+        "ate": 75,
+        "multiplica": 0.5
+      }
+    ]
+  },
+  "consequencias": [
+    "fake-news-vacina--cobertura-vacinal",
+    "fake-news-vacina--grupo-conservadores"
+  ],
+  "controle": "ocorrencia_fake_news_vacina",
+  "duracaoMeses": 1
+}

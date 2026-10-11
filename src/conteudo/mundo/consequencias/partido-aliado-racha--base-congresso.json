@@ -1,0 +1,17 @@
+{
+  "id": "partido-aliado-racha--base-congresso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_partido_aliado_racha",
+  "alvo": "base_congresso",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -6.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "nova-fabrica--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_nova_fabrica",
+  "alvo": "desemprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

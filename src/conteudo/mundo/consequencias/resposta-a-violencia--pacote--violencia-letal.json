@@ -1,0 +1,17 @@
+{
+  "id": "resposta-a-violencia--pacote--violencia-letal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resposta_a_violencia__pacote",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.0,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

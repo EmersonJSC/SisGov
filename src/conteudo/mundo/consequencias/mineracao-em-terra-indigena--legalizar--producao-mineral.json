@@ -1,0 +1,17 @@
+{
+  "id": "mineracao-em-terra-indigena--legalizar--producao-mineral",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_mineracao_em_terra_indigena__legalizar",
+  "alvo": "producao_mineral",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

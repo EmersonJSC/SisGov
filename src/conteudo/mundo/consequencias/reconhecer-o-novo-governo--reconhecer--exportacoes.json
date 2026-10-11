@@ -1,0 +1,17 @@
+{
+  "id": "reconhecer-o-novo-governo--reconhecer--exportacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_reconhecer_o_novo_governo__reconhecer",
+  "alvo": "exportacoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

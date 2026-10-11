@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-petroleiros--negociar--preco-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_petroleiros__negociar",
+  "alvo": "preco_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

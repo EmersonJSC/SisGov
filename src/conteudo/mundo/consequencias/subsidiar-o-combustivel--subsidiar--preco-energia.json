@@ -1,0 +1,17 @@
+{
+  "id": "subsidiar-o-combustivel--subsidiar--preco-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_subsidiar_o_combustivel__subsidiar",
+  "alvo": "preco_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -12.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

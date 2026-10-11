@@ -1,0 +1,36 @@
+{
+  "id": "surto-de-dengue",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Surto de dengue em {cidade}",
+  "descricao": "Água parada e calor fazem a dengue explodir em {cidade}. Postos lotados e falta de leitos.",
+  "area": "Ministério da Saúde",
+  "manchete": "{cidade} decreta emergência por dengue",
+  "origem": "natureza",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 2,
+  "gatilho": {
+    "chance": 0.1,
+    "fatores": [
+      {
+        "variavel": "infraestrutura_saneamento",
+        "de": 70,
+        "ate": 30,
+        "multiplica": 3
+      },
+      {
+        "variavel": "cobertura_aps",
+        "de": 70,
+        "ate": 30,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "surto-de-dengue--pressao-hospitalar",
+    "surto-de-dengue--saude-populacao"
+  ],
+  "controle": "ocorrencia_surto_de_dengue",
+  "duracaoMeses": 2
+}

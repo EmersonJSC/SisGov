@@ -1,0 +1,17 @@
+{
+  "id": "pressao-internacional-floresta--soberania--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_pressao_internacional_floresta__soberania",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -6,7 +6,12 @@ import type {
   ValidationResult,
 } from "../diagnostics/contentDiagnostic";
 import type { ResolvedPackage } from "./resolvePackage";
-import type { VariableDefinition } from "./contentTypes";
+import type {
+  OccurrenceCondition,
+  OccurrenceFile,
+  PolicyFile,
+  VariableDefinition,
+} from "./contentTypes";
 
 const supportedUnits = new Set([
   "indice_0_1",
@@ -344,6 +349,9 @@ export function validatePackageCoherence(
         );
     }
 
+  // Ocorrências (SG106): nós, setas, gatilhos, opções e desdobramentos.
+  validateOccurrences(content, variablesById, policiesById, diagnostics);
+
   // Lei filha (SG138): a mãe existe e tem as opções pedidas, não há ciclo e o
   // país começa coerente (filha fora da base só com a mãe numa das opções).
   const initialDesired = new Map<string, number>();
@@ -540,4 +548,165 @@ export function validatePackageCoherence(
   return diagnostics.length === 0
     ? { ok: true, value: content }
     : { ok: false, diagnostics };
+}
+
+function conditionVariables(
+  condition: OccurrenceCondition | undefined,
+  out: string[] = [],
+): string[] {
+  if (!condition) return out;
+  if (condition.tipo === "comparacao") out.push(condition.variavel);
+  else if (condition.tipo === "nao")
+    conditionVariables(condition.condicao, out);
+  else for (const item of condition.condicoes) conditionVariables(item, out);
+  return out;
+}
+
+function validateOccurrences(
+  content: ResolvedPackage,
+  variablesById: ReadonlyMap<string, VariableDefinition>,
+  policiesById: ReadonlyMap<string, PolicyFile>,
+  diagnostics: ContentDiagnostic[],
+): void {
+  const occurrences = [...content.events, ...content.dilemmas];
+  const ids = new Set(occurrences.map((o) => o.id));
+  const consequencesById = new Map(content.consequences.map((c) => [c.id, c]));
+  const needControl = (owner: string, field: string, id: string) => {
+    const variable = variablesById.get(id);
+    if (!variable || variable.tipo !== "controle")
+      diagnostics.push(
+        issue(owner, field, `O nó ${id} precisa existir e ser um controle.`),
+      );
+  };
+  const needVariable = (owner: string, field: string, id: string) => {
+    if (!variablesById.has(id))
+      diagnostics.push(issue(owner, field, `A variável ${id} não existe.`));
+  };
+  const originsFrom = (
+    owner: string,
+    field: string,
+    list: readonly string[],
+    control: string,
+  ) => {
+    for (const id of list) {
+      const consequence = consequencesById.get(id);
+      if (consequence && consequence.origem !== control)
+        diagnostics.push(
+          issue(owner, field, `A consequência ${id} não sai do nó ${control}.`),
+        );
+    }
+  };
+  const followUps = (
+    owner: string,
+    field: string,
+    list: OccurrenceFile["desdobramentos"],
+  ) => {
+    for (const [i, item] of (list ?? []).entries())
+      if (!ids.has(item.ocorrencia))
+        diagnostics.push(
+          issue(
+            owner,
+            `${field}[${i}].ocorrencia`,
+            `Ocorrência inexistente: ${item.ocorrencia}.`,
+          ),
+        );
+  };
+  for (const occurrence of occurrences) {
+    const trigger = occurrence.gatilho;
+    if (trigger) {
+      for (const [i, factor] of (trigger.fatores ?? []).entries())
+        needVariable(occurrence.id, `gatilho.fatores[${i}]`, factor.variavel);
+      for (const id of conditionVariables(trigger.condicao))
+        needVariable(occurrence.id, "gatilho.condicao", id);
+      if (trigger.reacao)
+        needControl(
+          occurrence.id,
+          "gatilho.reacao.controle",
+          trigger.reacao.controle,
+        );
+      // catástrofe ao acaso é rara; a que nasce de uma condição do país
+      // (a dívida explodindo) pode ser provável quando a condição vale
+      if (
+        occurrence.nivel === 4 &&
+        !trigger.condicao &&
+        !trigger.reacao &&
+        trigger.chance > 0.005
+      )
+        diagnostics.push(
+          issue(
+            occurrence.id,
+            "gatilho.chance",
+            "Catástrofe ao acaso (nível 4, sem condição) não passa de 0,5% por turno.",
+          ),
+        );
+    }
+    followUps(occurrence.id, "desdobramentos", occurrence.desdobramentos);
+    if (occurrence.tipo === "evento" && occurrence.controle) {
+      needControl(occurrence.id, "controle", occurrence.controle);
+      if (occurrence.duracaoMeses === undefined)
+        diagnostics.push(
+          issue(occurrence.id, "duracaoMeses", "O evento precisa de duração."),
+        );
+      originsFrom(
+        occurrence.id,
+        "consequencias",
+        occurrence.consequencias,
+        occurrence.controle,
+      );
+    }
+    if (occurrence.tipo !== "dilema" || !occurrence.opcoes) continue;
+    const options = occurrence.opcoes;
+    if (options.length < 2 || options.length > 4)
+      diagnostics.push(
+        issue(occurrence.id, "opcoes", "Um dilema tem de 2 a 4 opções."),
+      );
+    const optionIds = new Set(options.map((o) => o.id));
+    if (optionIds.size !== options.length)
+      diagnostics.push(issue(occurrence.id, "opcoes", "Opções repetidas."));
+    const fallback = options.find((o) => o.id === occurrence.padrao);
+    if (!fallback || fallback.requer)
+      diagnostics.push(
+        issue(
+          occurrence.id,
+          "padrao",
+          "O dilema precisa de uma opção padrão sempre disponível (sem requer).",
+        ),
+      );
+    const listed = new Set(occurrence.consequencias);
+    for (const [i, option] of options.entries()) {
+      const field = `opcoes[${i}]`;
+      needControl(occurrence.id, `${field}.controle`, option.controle);
+      originsFrom(
+        occurrence.id,
+        `${field}.consequencias`,
+        option.consequencias,
+        option.controle,
+      );
+      for (const id of option.consequencias)
+        if (!listed.has(id))
+          diagnostics.push(
+            issue(
+              occurrence.id,
+              `${field}.consequencias`,
+              `A consequência ${id} precisa estar também na lista do dilema.`,
+            ),
+          );
+      for (const id of conditionVariables(option.requer))
+        needVariable(occurrence.id, `${field}.requer`, id);
+      for (const [j, law] of (option.leis ?? []).entries())
+        if (!policiesById.has(law.lei))
+          diagnostics.push(
+            issue(
+              occurrence.id,
+              `${field}.leis[${j}]`,
+              `Lei inexistente: ${law.lei}.`,
+            ),
+          );
+      followUps(
+        occurrence.id,
+        `${field}.desdobramentos`,
+        option.desdobramentos,
+      );
+    }
+  }
 }

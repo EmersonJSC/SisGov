@@ -1412,6 +1412,4278 @@
       "area": "Tributação"
     },
     {
+      "id": "ocorrencia_seca_historica",
+      "tipo": "controle",
+      "nome": "Evento: Seca histórica",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_enchente",
+      "tipo": "controle",
+      "nome": "Evento: Enchente em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_enchente_devastadora",
+      "tipo": "controle",
+      "nome": "Evento: Enchente devastadora no {regiao}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_queimadas_recorde",
+      "tipo": "controle",
+      "nome": "Evento: Queimadas recorde",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_deslizamento",
+      "tipo": "controle",
+      "nome": "Evento: Deslizamento em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_rompimento_de_barragem",
+      "tipo": "controle",
+      "nome": "Evento: Rompimento de barragem",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_vazamento_de_oleo",
+      "tipo": "controle",
+      "nome": "Evento: Vazamento de óleo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_apagao_nacional",
+      "tipo": "controle",
+      "nome": "Evento: Pane no sistema elétrico",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_ponte_desaba",
+      "tipo": "controle",
+      "nome": "Evento: Ponte desaba em {estado}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_terremoto",
+      "tipo": "controle",
+      "nome": "Evento: Terremoto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_safra_recorde",
+      "tipo": "controle",
+      "nome": "Evento: Safra recorde",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_reconstrucao__imprimir",
+      "tipo": "controle",
+      "nome": "Como financiar a reconstrução?: Imprimir dinheiro",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_reconstrucao__cortar_saude",
+      "tipo": "controle",
+      "nome": "Como financiar a reconstrução?: Cortar da saúde",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_reconstrucao__imposto_temporario",
+      "tipo": "controle",
+      "nome": "Como financiar a reconstrução?: Imposto temporário da reconstrução",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_reconstrucao__devagar",
+      "tipo": "controle",
+      "nome": "Como financiar a reconstrução?: Reconstruir com o orçamento normal",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_racionamento_de_energia__racionar",
+      "tipo": "controle",
+      "nome": "Racionamento de energia: Racionar já",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_racionamento_de_energia__termeletricas",
+      "tipo": "controle",
+      "nome": "Racionamento de energia: Ligar as termelétricas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_racionamento_de_energia__importar",
+      "tipo": "controle",
+      "nome": "Racionamento de energia: Importar energia dos vizinhos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_racionamento_de_energia__arriscar",
+      "tipo": "controle",
+      "nome": "Racionamento de energia: Torcer pela chuva",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_punir_a_mineradora__multa_maxima",
+      "tipo": "controle",
+      "nome": "Punir a {empresa}?: Multa máxima e prisão de diretores",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_punir_a_mineradora__endurecer_licencas",
+      "tipo": "controle",
+      "nome": "Punir a {empresa}?: Endurecer o licenciamento de barragens",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_punir_a_mineradora__acordo",
+      "tipo": "controle",
+      "nome": "Punir a {empresa}?: Acordo de indenização",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_pressao_internacional_floresta__fiscalizar",
+      "tipo": "controle",
+      "nome": "O mundo cobra a floresta: Fiscalização pesada e desmatamento zero",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_pressao_internacional_floresta__fundo_externo",
+      "tipo": "controle",
+      "nome": "O mundo cobra a floresta: Aceitar fundo internacional pela floresta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_pressao_internacional_floresta__soberania",
+      "tipo": "controle",
+      "nome": "O mundo cobra a floresta: A floresta é nossa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_hidreletrica_na_floresta__construir",
+      "tipo": "controle",
+      "nome": "Hidrelétrica na floresta: Construir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_hidreletrica_na_floresta__solar_eolica",
+      "tipo": "controle",
+      "nome": "Hidrelétrica na floresta: Trocar por parques solares e eólicos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_hidreletrica_na_floresta__adiar",
+      "tipo": "controle",
+      "nome": "Hidrelétrica na floresta: Adiar a decisão",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_mineracao_em_terra_indigena__retirar",
+      "tipo": "controle",
+      "nome": "Mineração em terra indígena: Operação para retirar os garimpeiros",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_mineracao_em_terra_indigena__legalizar",
+      "tipo": "controle",
+      "nome": "Mineração em terra indígena: Legalizar a mineração com royalties",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_mineracao_em_terra_indigena__fingir",
+      "tipo": "controle",
+      "nome": "Mineração em terra indígena: Fingir que não vê",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_conferencia_do_clima__ambiciosa",
+      "tipo": "controle",
+      "nome": "Cúpula do clima: Meta ambiciosa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_conferencia_do_clima__modesta",
+      "tipo": "controle",
+      "nome": "Cúpula do clima: Meta modesta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_conferencia_do_clima__boicotar",
+      "tipo": "controle",
+      "nome": "Cúpula do clima: Não assinar nada",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_concessao_de_rodovias__conceder",
+      "tipo": "controle",
+      "nome": "Concessão de rodovias: Conceder com pedágio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_concessao_de_rodovias__obra_publica",
+      "tipo": "controle",
+      "nome": "Concessão de rodovias: Recuperar com dinheiro público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_concessao_de_rodovias__manter",
+      "tipo": "controle",
+      "nome": "Concessão de rodovias: Deixar como está",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_ferrovia__retomar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Retomar a obra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_ferrovia__auditar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Auditar antes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_ferrovia__abandonar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Abandonar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_transposicao__retomar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Retomar a obra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_transposicao__auditar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Auditar antes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_transposicao__abandonar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Abandonar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_metro__retomar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Retomar a obra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_metro__auditar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Auditar antes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_obra_parada_metro__abandonar",
+      "tipo": "controle",
+      "nome": "Obra parada em {estado}: Abandonar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Meio Ambiente e Infraestrutura"
+    },
+    {
+      "id": "ocorrencia_crise_mundial_do_petroleo",
+      "tipo": "controle",
+      "nome": "Evento: Crise mundial do petróleo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_crise_financeira_mundial",
+      "tipo": "controle",
+      "nome": "Evento: Crise financeira mundial",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_boom_das_materias_primas",
+      "tipo": "controle",
+      "nome": "Evento: Boom das matérias-primas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_guerra_comercial",
+      "tipo": "controle",
+      "nome": "Evento: Guerra comercial entre potências",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_bolha_de_credito_estoura",
+      "tipo": "controle",
+      "nome": "Evento: A bolha do crédito estoura",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_quebra_de_banco",
+      "tipo": "controle",
+      "nome": "Evento: Banco grande à beira da falência",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_fuga_de_cerebros",
+      "tipo": "controle",
+      "nome": "Evento: Fuga de cérebros",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_fuga_de_capitais",
+      "tipo": "controle",
+      "nome": "Evento: Corrida contra a moeda",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_fabrica_fecha",
+      "tipo": "controle",
+      "nome": "Evento: {empresa} fecha unidade",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_nova_fabrica",
+      "tipo": "controle",
+      "nome": "Evento: {empresa} anuncia investimento",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_descoberta_de_petroleo",
+      "tipo": "controle",
+      "nome": "Evento: Descoberta de petróleo no mar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_inflacao_dos_alimentos",
+      "tipo": "controle",
+      "nome": "Evento: Disparada no preço da comida",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_crise_da_divida__socorro_externo",
+      "tipo": "controle",
+      "nome": "Crise da dívida: Pedir socorro ao fundo internacional",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_crise_da_divida__moratoria",
+      "tipo": "controle",
+      "nome": "Crise da dívida: Declarar moratória",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_crise_da_divida__imprimir_dinheiro",
+      "tipo": "controle",
+      "nome": "Crise da dívida: Rodar a impressora",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_crise_da_divida__empurrar",
+      "tipo": "controle",
+      "nome": "Crise da dívida: Empurrar com a barriga",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_resgate_bancario__salvar",
+      "tipo": "controle",
+      "nome": "Resgate bancário: Salvar com dinheiro público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_resgate_bancario__fusao_forcada",
+      "tipo": "controle",
+      "nome": "Resgate bancário: Fusão forçada com um banco público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_resgate_bancario__deixar_quebrar",
+      "tipo": "controle",
+      "nome": "Resgate bancário: Deixar quebrar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_subsidiar_o_combustivel__subsidiar",
+      "tipo": "controle",
+      "nome": "Subsidiar o combustível?: Subsidiar o combustível",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_subsidiar_o_combustivel__taxar_petroleiras",
+      "tipo": "controle",
+      "nome": "Subsidiar o combustível?: Taxar o lucro das petroleiras",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_subsidiar_o_combustivel__repassar",
+      "tipo": "controle",
+      "nome": "Subsidiar o combustível?: Repassar o preço",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_o_que_fazer_com_a_bonanca__poupar",
+      "tipo": "controle",
+      "nome": "O que fazer com a bonança?: Guardar para os tempos ruins",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_o_que_fazer_com_a_bonanca__obras",
+      "tipo": "controle",
+      "nome": "O que fazer com a bonança?: Investir em obras",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_o_que_fazer_com_a_bonanca__baixar_impostos",
+      "tipo": "controle",
+      "nome": "O que fazer com a bonança?: Baixar impostos por um tempo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_o_que_fazer_com_a_bonanca__gastar",
+      "tipo": "controle",
+      "nome": "O que fazer com a bonança?: Distribuir entre os ministérios",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_escolher_um_lado_na_guerra_comercial__aliar",
+      "tipo": "controle",
+      "nome": "De que lado ficar?: Fechar o acordo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_escolher_um_lado_na_guerra_comercial__neutro",
+      "tipo": "controle",
+      "nome": "De que lado ficar?: Ficar neutro",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_escolher_um_lado_na_guerra_comercial__aproveitar",
+      "tipo": "controle",
+      "nome": "De que lado ficar?: Leiloar a neutralidade",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_quem_explora_o_petroleo__estatal",
+      "tipo": "controle",
+      "nome": "Quem explora o petróleo?: Só a estatal explora",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_quem_explora_o_petroleo__partilha",
+      "tipo": "controle",
+      "nome": "Quem explora o petróleo?: Partilha com empresas privadas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_quem_explora_o_petroleo__leilao",
+      "tipo": "controle",
+      "nome": "Quem explora o petróleo?: Leilão para quem pagar mais",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_comida_cara__zerar_tarifas",
+      "tipo": "controle",
+      "nome": "Comida cara: Zerar a tarifa de importação de alimentos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_comida_cara__estoques",
+      "tipo": "controle",
+      "nome": "Comida cara: Vender estoques públicos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_comida_cara__tabelar",
+      "tipo": "controle",
+      "nome": "Comida cara: Tabelar os preços",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_comida_cara__esperar",
+      "tipo": "controle",
+      "nome": "Comida cara: Esperar a próxima safra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_estrangeiro_quer_comprar_estatal__vender",
+      "tipo": "controle",
+      "nome": "Oferta pela estatal: Vender",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_estrangeiro_quer_comprar_estatal__golden_share",
+      "tipo": "controle",
+      "nome": "Oferta pela estatal: Vender com poder de veto do governo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_estrangeiro_quer_comprar_estatal__recusar",
+      "tipo": "controle",
+      "nome": "Oferta pela estatal: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_montadora_pede_socorro__isencao",
+      "tipo": "controle",
+      "nome": "{empresa} pede socorro: Dar isenção e crédito",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_montadora_pede_socorro__contrapartida",
+      "tipo": "controle",
+      "nome": "{empresa} pede socorro: Ajudar com contrapartidas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_montadora_pede_socorro__negar",
+      "tipo": "controle",
+      "nome": "{empresa} pede socorro: Negar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_agro__ceder",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Ceder a isenção",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_agro__trocar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Trocar por apoio numa reforma",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_agro__negar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Negar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_industria__ceder",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Ceder a isenção",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_industria__trocar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Trocar por apoio numa reforma",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_industria__negar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Negar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_servicos__ceder",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Ceder a isenção",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_servicos__trocar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Trocar por apoio numa reforma",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_lobby_pede_isencao_servicos__negar",
+      "tipo": "controle",
+      "nome": "Setor pede isenção: Negar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_banco_central_pressiona__atacar",
+      "tipo": "controle",
+      "nome": "Banco Central contra o governo: Atacar o Banco Central em público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_banco_central_pressiona__cortar_gastos",
+      "tipo": "controle",
+      "nome": "Banco Central contra o governo: Anunciar corte de gastos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_banco_central_pressiona__silencio",
+      "tipo": "controle",
+      "nome": "Banco Central contra o governo: Ficar em silêncio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_reajuste_do_salario_minimo__ganho_real",
+      "tipo": "controle",
+      "nome": "Reajuste do salário mínimo: Dar ganho acima da inflação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_reajuste_do_salario_minimo__inflacao",
+      "tipo": "controle",
+      "nome": "Reajuste do salário mínimo: Só repor a inflação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_reajuste_do_salario_minimo__congelar",
+      "tipo": "controle",
+      "nome": "Reajuste do salário mínimo: Segurar abaixo da inflação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_protesto_contra_imposto__recuar",
+      "tipo": "controle",
+      "nome": "Revolta contra o imposto: Recuar parcialmente",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_protesto_contra_imposto__compensar",
+      "tipo": "controle",
+      "nome": "Revolta contra o imposto: Compensar os mais pobres",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_protesto_contra_imposto__manter",
+      "tipo": "controle",
+      "nome": "Revolta contra o imposto: Manter e explicar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_empresarios_ameacam_sair__negociar",
+      "tipo": "controle",
+      "nome": "Empresas ameaçam ir embora: Negociar incentivos por investimento",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_empresarios_ameacam_sair__endurecer",
+      "tipo": "controle",
+      "nome": "Empresas ameaçam ir embora: Taxar quem sair",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_empresarios_ameacam_sair__ignorar",
+      "tipo": "controle",
+      "nome": "Empresas ameaçam ir embora: Pagar para ver",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Fazenda"
+    },
+    {
+      "id": "ocorrencia_guerra_entre_potencias",
+      "tipo": "controle",
+      "nome": "Evento: Guerra entre potências",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_guerra_no_vizinho",
+      "tipo": "controle",
+      "nome": "Evento: Guerra no país vizinho",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_golpe_no_vizinho",
+      "tipo": "controle",
+      "nome": "Evento: Golpe no país vizinho",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sancoes_internacionais",
+      "tipo": "controle",
+      "nome": "Evento: Sanções internacionais",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_crise_diplomatica",
+      "tipo": "controle",
+      "nome": "Evento: Crise diplomática",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_espionagem_revelada",
+      "tipo": "controle",
+      "nome": "Evento: Espionagem revelada",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_ataque_hacker",
+      "tipo": "controle",
+      "nome": "Evento: Ataque hacker ao governo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_cupula_no_pais",
+      "tipo": "controle",
+      "nome": "Evento: Cúpula internacional no país",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_assento_no_conselho",
+      "tipo": "controle",
+      "nome": "Evento: Vaga no conselho mundial",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_corrida_armamentista",
+      "tipo": "controle",
+      "nome": "Evento: Corrida armamentista na região",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_compatriota_condenado_no_exterior",
+      "tipo": "controle",
+      "nome": "Evento: Compatriota condenado à morte",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_programa_nuclear__bomba",
+      "tipo": "controle",
+      "nome": "A bomba: Construir a bomba",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_programa_nuclear__civil_com_inspecao",
+      "tipo": "controle",
+      "nome": "A bomba: Só uso civil, com inspeção aberta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_programa_nuclear__ambiguidade",
+      "tipo": "controle",
+      "nome": "A bomba: Manter a dúvida",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_programa_nuclear__abandonar",
+      "tipo": "controle",
+      "nome": "A bomba: Abandonar o enriquecimento",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_neutralidade_na_guerra__aliar",
+      "tipo": "controle",
+      "nome": "Que lado tomar na guerra?: Alinhar com o bloco ocidental",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_neutralidade_na_guerra__neutro",
+      "tipo": "controle",
+      "nome": "Que lado tomar na guerra?: Neutralidade",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_neutralidade_na_guerra__mediar",
+      "tipo": "controle",
+      "nome": "Que lado tomar na guerra?: Oferecer-se como mediador",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_neutralidade_na_guerra__vender_armas",
+      "tipo": "controle",
+      "nome": "Que lado tomar na guerra?: Vender armas e comida aos dois",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_crise_na_fronteira__acolher",
+      "tipo": "controle",
+      "nome": "Crise na fronteira: Acolher e interiorizar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_crise_na_fronteira__triagem",
+      "tipo": "controle",
+      "nome": "Crise na fronteira: Triagem na fronteira",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_crise_na_fronteira__fechar",
+      "tipo": "controle",
+      "nome": "Crise na fronteira: Fechar a fronteira",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_crise_na_fronteira__pedir_ajuda",
+      "tipo": "controle",
+      "nome": "Crise na fronteira: Pedir ajuda internacional",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_resgatar_compatriotas__aviao",
+      "tipo": "controle",
+      "nome": "Compatriotas na zona de guerra: Mandar aviões da Força Aérea",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_resgatar_compatriotas__negociar",
+      "tipo": "controle",
+      "nome": "Compatriotas na zona de guerra: Negociar corredor humanitário",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_resgatar_compatriotas__consulado",
+      "tipo": "controle",
+      "nome": "Compatriotas na zona de guerra: Deixar com o consulado",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reconhecer_o_novo_governo__reconhecer",
+      "tipo": "controle",
+      "nome": "Reconhecer o governo golpista?: Reconhecer",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reconhecer_o_novo_governo__condenar",
+      "tipo": "controle",
+      "nome": "Reconhecer o governo golpista?: Condenar e suspender acordos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reconhecer_o_novo_governo__aguardar",
+      "tipo": "controle",
+      "nome": "Reconhecer o governo golpista?: Esperar a poeira baixar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_responder_as_sancoes__ceder",
+      "tipo": "controle",
+      "nome": "Como responder às sanções?: Negociar o fim do programa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_responder_as_sancoes__resistir",
+      "tipo": "controle",
+      "nome": "Como responder às sanções?: Resistir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_responder_as_sancoes__outro_bloco",
+      "tipo": "controle",
+      "nome": "Como responder às sanções?: Buscar o bloco rival",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_potencia_oferece_investimento__aceitar",
+      "tipo": "controle",
+      "nome": "Uma potência quer investir: Aceitar como está",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_potencia_oferece_investimento__negociar",
+      "tipo": "controle",
+      "nome": "Uma potência quer investir: Negociar conteúdo local",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_potencia_oferece_investimento__recusar",
+      "tipo": "controle",
+      "nome": "Uma potência quer investir: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_copa__sediar",
+      "tipo": "controle",
+      "nome": "Sediar a Copa do Mundo?: Sediar com tudo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_copa__austero",
+      "tipo": "controle",
+      "nome": "Sediar a Copa do Mundo?: Sediar só com o que já existe",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_copa__recusar",
+      "tipo": "controle",
+      "nome": "Sediar a Copa do Mundo?: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_olimpiadas__sediar",
+      "tipo": "controle",
+      "nome": "Sediar as Olimpíadas?: Sediar com tudo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_olimpiadas__austero",
+      "tipo": "controle",
+      "nome": "Sediar as Olimpíadas?: Sediar só com o que já existe",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_sediar_olimpiadas__recusar",
+      "tipo": "controle",
+      "nome": "Sediar as Olimpíadas?: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reagir_a_espionagem__expulsar",
+      "tipo": "controle",
+      "nome": "Reagir à espionagem: Expulsar o embaixador",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reagir_a_espionagem__protesto",
+      "tipo": "controle",
+      "nome": "Reagir à espionagem: Protesto formal",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_reagir_a_espionagem__contraespionagem",
+      "tipo": "controle",
+      "nome": "Reagir à espionagem: Investir em contraespionagem",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_pagar_o_resgate__pagar",
+      "tipo": "controle",
+      "nome": "Pagar o resgate aos hackers?: Pagar em segredo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_pagar_o_resgate__nao_pagar",
+      "tipo": "controle",
+      "nome": "Pagar o resgate aos hackers?: Não pagar e reconstruir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_pagar_o_resgate__culpar",
+      "tipo": "controle",
+      "nome": "Pagar o resgate aos hackers?: Acusar uma potência estrangeira",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_asilo_a_opositor__conceder",
+      "tipo": "controle",
+      "nome": "Asilo a um opositor: Conceder asilo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_asilo_a_opositor__negociar",
+      "tipo": "controle",
+      "nome": "Asilo a um opositor: Negociar um salvo-conduto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_asilo_a_opositor__entregar",
+      "tipo": "controle",
+      "nome": "Asilo a um opositor: Entregar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_base_militar_estrangeira__aceitar",
+      "tipo": "controle",
+      "nome": "Base militar estrangeira: Aceitar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_base_militar_estrangeira__cooperacao",
+      "tipo": "controle",
+      "nome": "Base militar estrangeira: Só exercícios conjuntos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_base_militar_estrangeira__recusar",
+      "tipo": "controle",
+      "nome": "Base militar estrangeira: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_voto_na_assembleia__condenar",
+      "tipo": "controle",
+      "nome": "O voto na assembleia mundial: Votar a favor da condenação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_voto_na_assembleia__abster",
+      "tipo": "controle",
+      "nome": "O voto na assembleia mundial: Abster-se",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_voto_na_assembleia__contra",
+      "tipo": "controle",
+      "nome": "O voto na assembleia mundial: Votar contra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_compatriota_no_corredor_da_morte__pressionar",
+      "tipo": "controle",
+      "nome": "Salvar o compatriota condenado?: Pressionar publicamente",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_compatriota_no_corredor_da_morte__carta",
+      "tipo": "controle",
+      "nome": "Salvar o compatriota condenado?: Carta discreta de clemência",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_compatriota_no_corredor_da_morte__nada",
+      "tipo": "controle",
+      "nome": "Salvar o compatriota condenado?: Respeitar a justiça de lá",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério das Relações Exteriores"
+    },
+    {
+      "id": "ocorrencia_escandalo_de_corrupcao",
+      "tipo": "controle",
+      "nome": "Evento: Escândalo de corrupção",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_vazamento_de_audios",
+      "tipo": "controle",
+      "nome": "Evento: Vazamento de áudios",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_fake_news_poupanca",
+      "tipo": "controle",
+      "nome": "Evento: Notícia falsa viraliza",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_fake_news_vacina",
+      "tipo": "controle",
+      "nome": "Evento: Notícia falsa viraliza",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_fake_news_aposentadorias",
+      "tipo": "controle",
+      "nome": "Evento: Notícia falsa viraliza",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_fake_news_urnas",
+      "tipo": "controle",
+      "nome": "Evento: Notícia falsa viraliza",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_cpi_instalada",
+      "tipo": "controle",
+      "nome": "Evento: CPI contra o governo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_pedido_de_impeachment",
+      "tipo": "controle",
+      "nome": "Evento: Pedido de impeachment",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_tentativa_de_golpe",
+      "tipo": "controle",
+      "nome": "Evento: Tentativa de golpe",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_partido_aliado_racha",
+      "tipo": "controle",
+      "nome": "Evento: Racha no {partido_aliado}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_greve_de_servidores",
+      "tipo": "controle",
+      "nome": "Evento: Greve dos servidores federais",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_ex_presidente_preso",
+      "tipo": "controle",
+      "nome": "Evento: Ex-presidente é preso",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_escandalo_do_ministro__proteger",
+      "tipo": "controle",
+      "nome": "O escândalo do ministro: Proteger o ministro",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_escandalo_do_ministro__demitir_investigar",
+      "tipo": "controle",
+      "nome": "O escândalo do ministro: Demitir e mandar investigar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_escandalo_do_ministro__demitir_silencio",
+      "tipo": "controle",
+      "nome": "O escândalo do ministro: Demitir em silêncio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_escandalo_maior__entregar",
+      "tipo": "controle",
+      "nome": "O escândalo voltou maior: Entregar todos os envolvidos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_escandalo_maior__resistir",
+      "tipo": "controle",
+      "nome": "O escândalo voltou maior: Resistir e atacar a investigação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_saude__ceder",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Ceder a pasta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_saude__outra",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Oferecer uma pasta menor",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_saude__recusar",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_infraestrutura__ceder",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Ceder a pasta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_infraestrutura__outra",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Oferecer uma pasta menor",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_infraestrutura__recusar",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_educacao__ceder",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Ceder a pasta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_educacao__outra",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Oferecer uma pasta menor",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_aliado_pede_ministerio_educacao__recusar",
+      "tipo": "controle",
+      "nome": "Aliado pede ministério: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_obra_na_terra_do_aliado__aprovar",
+      "tipo": "controle",
+      "nome": "Obra na terra do aliado: Aprovar a obra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_obra_na_terra_do_aliado__auditoria",
+      "tipo": "controle",
+      "nome": "Obra na terra do aliado: Aprovar com auditoria",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_obra_na_terra_do_aliado__vetar",
+      "tipo": "controle",
+      "nome": "Obra na terra do aliado: Vetar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_ministros_brigam__fazenda",
+      "tipo": "controle",
+      "nome": "Ministros brigam por verba: A Fazenda vence",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_ministros_brigam__social",
+      "tipo": "controle",
+      "nome": "Ministros brigam por verba: A área social vence",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_ministros_brigam__dividir",
+      "tipo": "controle",
+      "nome": "Ministros brigam por verba: Dividir a diferença",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_indicacao_ao_supremo__aliado",
+      "tipo": "controle",
+      "nome": "Vaga no Supremo: Indicar um aliado fiel",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_indicacao_ao_supremo__tecnico",
+      "tipo": "controle",
+      "nome": "Vaga no Supremo: Indicar um jurista respeitado",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_indicacao_ao_supremo__centrao",
+      "tipo": "controle",
+      "nome": "Vaga no Supremo: Indicar o nome do Congresso",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_emendas_secretas__aceitar",
+      "tipo": "controle",
+      "nome": "Emendas sem dono: Aceitar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_emendas_secretas__transparencia",
+      "tipo": "controle",
+      "nome": "Emendas sem dono: Aceitar só com nome de quem pediu",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_emendas_secretas__recusar",
+      "tipo": "controle",
+      "nome": "Emendas sem dono: Recusar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_sobreviver_ao_impeachment__comprar_apoio",
+      "tipo": "controle",
+      "nome": "Sobreviver ao impeachment: Distribuir cargos e emendas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_sobreviver_ao_impeachment__ruas",
+      "tipo": "controle",
+      "nome": "Sobreviver ao impeachment: Chamar o povo às ruas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_sobreviver_ao_impeachment__lutar",
+      "tipo": "controle",
+      "nome": "Sobreviver ao impeachment: Defender-se no Congresso",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_depois_do_golpe__punir",
+      "tipo": "controle",
+      "nome": "Depois da tentativa de golpe: Punir todos, inclusive militares",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_depois_do_golpe__pacificar",
+      "tipo": "controle",
+      "nome": "Depois da tentativa de golpe: Anistia em nome da paz",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_censurar_imprensa__responder",
+      "tipo": "controle",
+      "nome": "Reportagem hostil: Responder com dados",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_censurar_imprensa__cortar_publicidade",
+      "tipo": "controle",
+      "nome": "Reportagem hostil: Cortar a publicidade oficial no jornal",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_censurar_imprensa__processar",
+      "tipo": "controle",
+      "nome": "Reportagem hostil: Processar os jornalistas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_reeleicao_em_pauta__apoiar",
+      "tipo": "controle",
+      "nome": "Mudar as regras da reeleição?: Apoiar a emenda",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_reeleicao_em_pauta__recusar",
+      "tipo": "controle",
+      "nome": "Mudar as regras da reeleição?: Recusar em público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Casa Civil"
+    },
+    {
+      "id": "ocorrencia_pandemia",
+      "tipo": "controle",
+      "nome": "Evento: Pandemia",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_surto_de_dengue",
+      "tipo": "controle",
+      "nome": "Evento: Surto de dengue em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_epidemia_de_sarampo",
+      "tipo": "controle",
+      "nome": "Evento: Epidemia no {regiao}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_epidemia_de_febre_amarela",
+      "tipo": "controle",
+      "nome": "Evento: Epidemia no {regiao}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_epidemia_de_chikungunya",
+      "tipo": "controle",
+      "nome": "Evento: Epidemia no {regiao}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_falta_de_remedios",
+      "tipo": "controle",
+      "nome": "Evento: Falta de remédios",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_hospital_fecha",
+      "tipo": "controle",
+      "nome": "Evento: Hospital fecha em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_fila_recorde",
+      "tipo": "controle",
+      "nome": "Evento: Fila recorde por cirurgias",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_vacina_nacional",
+      "tipo": "controle",
+      "nome": "Evento: Vacina desenvolvida no país",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_onda_de_calor_hospitais",
+      "tipo": "controle",
+      "nome": "Evento: Onda de calor lota hospitais",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_lockdown_ou_economia__fechar_tudo",
+      "tipo": "controle",
+      "nome": "Fechar ou manter aberto?: Fechar tudo e pagar auxílio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_lockdown_ou_economia__parcial",
+      "tipo": "controle",
+      "nome": "Fechar ou manter aberto?: Fechar o essencial por regiões",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_lockdown_ou_economia__aberto",
+      "tipo": "controle",
+      "nome": "Fechar ou manter aberto?: Manter tudo aberto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_campanha_de_vacinacao__obrigar",
+      "tipo": "controle",
+      "nome": "Campanha de vacinação: Exigir vacina para escola e emprego público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_campanha_de_vacinacao__campanha",
+      "tipo": "controle",
+      "nome": "Campanha de vacinação: Campanha nacional nas escolas e na TV",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_campanha_de_vacinacao__liberdade",
+      "tipo": "controle",
+      "nome": "Campanha de vacinação: Deixar cada um decidir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_quebrar_patente__quebrar",
+      "tipo": "controle",
+      "nome": "Quebrar a patente?: Licença compulsória",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_quebrar_patente__negociar",
+      "tipo": "controle",
+      "nome": "Quebrar a patente?: Negociar desconto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_quebrar_patente__pagar",
+      "tipo": "controle",
+      "nome": "Quebrar a patente?: Pagar o preço cheio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_mutirao_ou_privados__privados",
+      "tipo": "controle",
+      "nome": "Como zerar a fila?: Comprar cirurgias da rede privada",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_mutirao_ou_privados__rede_publica",
+      "tipo": "controle",
+      "nome": "Como zerar a fila?: Abrir mais leitos públicos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_mutirao_ou_privados__nada",
+      "tipo": "controle",
+      "nome": "Como zerar a fila?: Culpar os estados",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_medicos_em_greve__reajuste",
+      "tipo": "controle",
+      "nome": "Médicos em greve: Dar reajuste",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_medicos_em_greve__importar_medicos",
+      "tipo": "controle",
+      "nome": "Médicos em greve: Contratar médicos estrangeiros",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_medicos_em_greve__esperar",
+      "tipo": "controle",
+      "nome": "Médicos em greve: Esperar a greve acabar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_plano_de_saude_reajuste__limitar",
+      "tipo": "controle",
+      "nome": "Reajuste dos planos de saúde: Limitar o reajuste",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_plano_de_saude_reajuste__autorizar",
+      "tipo": "controle",
+      "nome": "Reajuste dos planos de saúde: Autorizar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_fechar_hospitais_psiquiatricos__comunitario",
+      "tipo": "controle",
+      "nome": "Hospitais psiquiátricos: Fechar e investir em atendimento comunitário",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_fechar_hospitais_psiquiatricos__reformar",
+      "tipo": "controle",
+      "nome": "Hospitais psiquiátricos: Reformar o hospital",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Saúde"
+    },
+    {
+      "id": "ocorrencia_tiroteio_no_bairro",
+      "tipo": "controle",
+      "nome": "Evento: Tiroteio no {bairro}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_chacina",
+      "tipo": "controle",
+      "nome": "Evento: Chacina em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_ataques_de_faccao",
+      "tipo": "controle",
+      "nome": "Evento: Ataques do {faccao}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_rebeliao_em_presidio",
+      "tipo": "controle",
+      "nome": "Evento: Rebelião em presídio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_fuga_em_massa",
+      "tipo": "controle",
+      "nome": "Evento: Fuga em massa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_operacao_policial_desastrosa",
+      "tipo": "controle",
+      "nome": "Evento: Operação policial termina em mortes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_assassinato_de_politico",
+      "tipo": "controle",
+      "nome": "Evento: Assassinato de político",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_atentado_terrorista",
+      "tipo": "controle",
+      "nome": "Evento: Atentado terrorista",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_apreensao_recorde",
+      "tipo": "controle",
+      "nome": "Evento: Apreensão recorde",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_milicia_domina_bairro",
+      "tipo": "controle",
+      "nome": "Evento: Milícia toma o {bairro}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_assalto_a_banco",
+      "tipo": "controle",
+      "nome": "Evento: Ataque a banco em {cidade}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_ataques__forcas_armadas",
+      "tipo": "controle",
+      "nome": "Resposta aos ataques: Forças Armadas nas ruas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_ataques__inteligencia",
+      "tipo": "controle",
+      "nome": "Resposta aos ataques: Inteligência e asfixia financeira",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_ataques__tregua",
+      "tipo": "controle",
+      "nome": "Resposta aos ataques: Negociar uma trégua por baixo dos panos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_ataques__apoio_limitado",
+      "tipo": "controle",
+      "nome": "Resposta aos ataques: Mandar só a Força Nacional",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_a_violencia__pacote",
+      "tipo": "controle",
+      "nome": "O país cobra resposta: Pacote de segurança com dinheiro novo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_a_violencia__endurecer_penas",
+      "tipo": "controle",
+      "nome": "O país cobra resposta: Propor penas mais duras",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_resposta_a_violencia__nota",
+      "tipo": "controle",
+      "nome": "O país cobra resposta: Nota de pesar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_policial_mata_inocente__afastar",
+      "tipo": "controle",
+      "nome": "Polícia acusada de execução: Afastar e investigar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_policial_mata_inocente__cameras",
+      "tipo": "controle",
+      "nome": "Polícia acusada de execução: Anunciar câmeras em todas as fardas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_policial_mata_inocente__defender",
+      "tipo": "controle",
+      "nome": "Polícia acusada de execução: Defender a polícia",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_policial_mata_inocente__aguardar",
+      "tipo": "controle",
+      "nome": "Polícia acusada de execução: Esperar a investigação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_denuncia_de_tortura__intervir",
+      "tipo": "controle",
+      "nome": "Denúncia de tortura: Intervenção federal no presídio",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_denuncia_de_tortura__investigar",
+      "tipo": "controle",
+      "nome": "Denúncia de tortura: Abrir investigação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_denuncia_de_tortura__negar",
+      "tipo": "controle",
+      "nome": "Denúncia de tortura: Contestar o relatório",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_escandalo_tregua__assumir",
+      "tipo": "controle",
+      "nome": "Vazou a trégua: Assumir e explicar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_escandalo_tregua__demitir",
+      "tipo": "controle",
+      "nome": "Vazou a trégua: Demitir quem negociou",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_escandalo_tregua__negar",
+      "tipo": "controle",
+      "nome": "Vazou a trégua: Negar tudo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_lei_antiterror__sancionar",
+      "tipo": "controle",
+      "nome": "Lei antiterror: Sancionar a lei dura",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_lei_antiterror__versao_moderada",
+      "tipo": "controle",
+      "nome": "Lei antiterror: Negociar uma versão moderada",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_lei_antiterror__vetar",
+      "tipo": "controle",
+      "nome": "Lei antiterror: Vetar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_juiz_solta_lider__recorrer",
+      "tipo": "controle",
+      "nome": "Juiz solta líder do {faccao}: Recorrer e cobrar o Judiciário",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_juiz_solta_lider__atacar_juiz",
+      "tipo": "controle",
+      "nome": "Juiz solta líder do {faccao}: Atacar o juiz em público",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_juiz_solta_lider__respeitar",
+      "tipo": "controle",
+      "nome": "Juiz solta líder do {faccao}: Respeitar a decisão",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_indulto_de_natal__amplo",
+      "tipo": "controle",
+      "nome": "Indulto de Natal: Indulto amplo para crimes sem violência",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_indulto_de_natal__restrito",
+      "tipo": "controle",
+      "nome": "Indulto de Natal: Indulto restrito, humanitário",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_indulto_de_natal__nenhum",
+      "tipo": "controle",
+      "nome": "Indulto de Natal: Nenhum indulto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_armas_flexibilizar__flexibilizar",
+      "tipo": "controle",
+      "nome": "Clubes de tiro pedem mais armas: Flexibilizar o porte",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_armas_flexibilizar__manter",
+      "tipo": "controle",
+      "nome": "Clubes de tiro pedem mais armas: Manter as regras",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério da Justiça"
+    },
+    {
+      "id": "ocorrencia_protestos_de_massa",
+      "tipo": "controle",
+      "nome": "Evento: Protestos de massa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_panelaco",
+      "tipo": "controle",
+      "nome": "Evento: Panelaço",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_ocupacao_de_terras",
+      "tipo": "controle",
+      "nome": "Evento: Ocupação de terras",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_saques",
+      "tipo": "controle",
+      "nome": "Evento: Saques a supermercados",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_fome_volta",
+      "tipo": "controle",
+      "nome": "Evento: A fome volta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_ataque_a_escola",
+      "tipo": "controle",
+      "nome": "Evento: Ataque a escola",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_prova_vazada",
+      "tipo": "controle",
+      "nome": "Evento: Prova nacional vazada",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_selecao_campea",
+      "tipo": "controle",
+      "nome": "Evento: A seleção é campeã",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_festa_popular_recorde",
+      "tipo": "controle",
+      "nome": "Evento: Festa popular recorde",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_jovens_desistem_de_procurar",
+      "tipo": "controle",
+      "nome": "Evento: Geração sem emprego",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_explosao_das_apostas",
+      "tipo": "controle",
+      "nome": "Evento: Febre das apostas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_dos_caminhoneiros__subsidiar_diesel",
+      "tipo": "controle",
+      "nome": "Greve dos caminhoneiros: Subsidiar o diesel",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_dos_caminhoneiros__negociar",
+      "tipo": "controle",
+      "nome": "Greve dos caminhoneiros: Negociar frete mínimo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_dos_caminhoneiros__reprimir",
+      "tipo": "controle",
+      "nome": "Greve dos caminhoneiros: Mandar a polícia liberar as estradas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_dos_caminhoneiros__estoques",
+      "tipo": "controle",
+      "nome": "Greve dos caminhoneiros: Liberar estoques e esperar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_geral__atender",
+      "tipo": "controle",
+      "nome": "Greve geral: Atender a pauta",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_geral__negociar",
+      "tipo": "controle",
+      "nome": "Greve geral: Mesa de negociação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_geral__endurecer",
+      "tipo": "controle",
+      "nome": "Greve geral: Cortar o ponto e não ceder",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_professores__reajuste",
+      "tipo": "controle",
+      "nome": "Greve de Professores: Dar o reajuste",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_professores__negociar",
+      "tipo": "controle",
+      "nome": "Greve de Professores: Negociar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_professores__cortar_ponto",
+      "tipo": "controle",
+      "nome": "Greve de Professores: Cortar o ponto",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_metroviarios__reajuste",
+      "tipo": "controle",
+      "nome": "Greve de Metroviários: Dar o reajuste",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_metroviarios__negociar",
+      "tipo": "controle",
+      "nome": "Greve de Metroviários: Negociar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_metroviarios__justica",
+      "tipo": "controle",
+      "nome": "Greve de Metroviários: Pedir à Justiça que declare a greve ilegal",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_petroleiros__reajuste",
+      "tipo": "controle",
+      "nome": "Greve de Petroleiros: Dar o reajuste",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_petroleiros__negociar",
+      "tipo": "controle",
+      "nome": "Greve de Petroleiros: Negociar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_petroleiros__importar",
+      "tipo": "controle",
+      "nome": "Greve de Petroleiros: Importar combustível e esperar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_residentes__reajuste",
+      "tipo": "controle",
+      "nome": "Greve de Médicos residentes: Aumentar a bolsa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_residentes__negociar",
+      "tipo": "controle",
+      "nome": "Greve de Médicos residentes: Negociar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_de_residentes__contratar",
+      "tipo": "controle",
+      "nome": "Greve de Médicos residentes: Contratar temporários",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_motim_policial__forca_nacional",
+      "tipo": "controle",
+      "nome": "Motim da polícia: Mandar a Força Nacional",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_motim_policial__anistia_e_reajuste",
+      "tipo": "controle",
+      "nome": "Motim da polícia: Reajuste com anistia",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_motim_policial__punir",
+      "tipo": "controle",
+      "nome": "Motim da polícia: Prender os líderes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_contra_privatizacao__manter",
+      "tipo": "controle",
+      "nome": "Greve contra a privatização: Manter a privatização",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_contra_privatizacao__compensar",
+      "tipo": "controle",
+      "nome": "Greve contra a privatização: Garantir os empregos por dois anos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_greve_contra_privatizacao__recuar",
+      "tipo": "controle",
+      "nome": "Greve contra a privatização: Recuar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aposentados_protestam__manter",
+      "tipo": "controle",
+      "nome": "Aposentados nas ruas: Manter a regra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aposentados_protestam__transicao",
+      "tipo": "controle",
+      "nome": "Aposentados nas ruas: Criar regra de transição",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aposentados_protestam__recuar",
+      "tipo": "controle",
+      "nome": "Aposentados nas ruas: Recuar para a regra anterior",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_ruralistas_bloqueiam__manter",
+      "tipo": "controle",
+      "nome": "Tratoraço contra a reforma agrária: Manter a reforma",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_ruralistas_bloqueiam__credito_rural",
+      "tipo": "controle",
+      "nome": "Tratoraço contra a reforma agrária: Compensar com crédito rural",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_ruralistas_bloqueiam__recuar",
+      "tipo": "controle",
+      "nome": "Tratoraço contra a reforma agrária: Limitar a reforma a títulos de terra",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aplicativos_ameacam_sair__manter",
+      "tipo": "controle",
+      "nome": "Aplicativos ameaçam sair do país: Pagar para ver",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aplicativos_ameacam_sair__transicao",
+      "tipo": "controle",
+      "nome": "Aplicativos ameaçam sair do país: Dar prazo de adaptação",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_aplicativos_ameacam_sair__recuar",
+      "tipo": "controle",
+      "nome": "Aplicativos ameaçam sair do país: Criar uma categoria própria",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_entregadores_param__regular",
+      "tipo": "controle",
+      "nome": "Breque dos entregadores: Mandar projeto com piso por hora",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_entregadores_param__dialogo",
+      "tipo": "controle",
+      "nome": "Breque dos entregadores: Chamar as empresas para conversar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_entregadores_param__ignorar",
+      "tipo": "controle",
+      "nome": "Breque dos entregadores: Ignorar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_reintegracao_de_posse__cumprir",
+      "tipo": "controle",
+      "nome": "Reintegração de posse: Cumprir a ordem com a tropa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_reintegracao_de_posse__mediar",
+      "tipo": "controle",
+      "nome": "Reintegração de posse: Mediar a saída",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_reintegracao_de_posse__assentar",
+      "tipo": "controle",
+      "nome": "Reintegração de posse: Desapropriar e assentar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_protestos__dialogar",
+      "tipo": "controle",
+      "nome": "O que fazer com as ruas?: Chamar os líderes ao {palacio}",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_protestos__pacote",
+      "tipo": "controle",
+      "nome": "O que fazer com as ruas?: Anunciar um pacote de bondades",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_protestos__reprimir",
+      "tipo": "controle",
+      "nome": "O que fazer com as ruas?: Reprimir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_resposta_aos_protestos__plebiscito",
+      "tipo": "controle",
+      "nome": "O que fazer com as ruas?: Propor um plebiscito",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_seguranca_nas_escolas__armar",
+      "tipo": "controle",
+      "nome": "Segurança nas escolas: Guardas armados e detectores",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_seguranca_nas_escolas__prevencao",
+      "tipo": "controle",
+      "nome": "Segurança nas escolas: Psicólogos e prevenção",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_seguranca_nas_escolas__armas",
+      "tipo": "controle",
+      "nome": "Segurança nas escolas: Restringir o acesso às armas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_regular_as_apostas__proibir",
+      "tipo": "controle",
+      "nome": "O que fazer com as apostas?: Proibir",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_regular_as_apostas__regras",
+      "tipo": "controle",
+      "nome": "O que fazer com as apostas?: Limitar propaganda e depósitos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_regular_as_apostas__taxar",
+      "tipo": "controle",
+      "nome": "O que fazer com as apostas?: Taxar mais e liberar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_pacote_contra_a_fome__cestas",
+      "tipo": "controle",
+      "nome": "Pacote contra a fome: Distribuir cestas básicas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_pacote_contra_a_fome__ampliar_renda",
+      "tipo": "controle",
+      "nome": "Pacote contra a fome: Ampliar a transferência de renda",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_pacote_contra_a_fome__restaurantes",
+      "tipo": "controle",
+      "nome": "Pacote contra a fome: Restaurantes populares e cozinhas",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_tarifa_do_onibus__subsidio",
+      "tipo": "controle",
+      "nome": "A tarifa do ônibus: Subsidiar a tarifa",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_tarifa_do_onibus__passe_livre",
+      "tipo": "controle",
+      "nome": "A tarifa do ônibus: Passe livre para estudantes",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_tarifa_do_onibus__nada",
+      "tipo": "controle",
+      "nome": "A tarifa do ônibus: É problema da prefeitura",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_igrejas_pedem_isencao__conceder",
+      "tipo": "controle",
+      "nome": "Igrejas pedem mais isenções: Conceder",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_igrejas_pedem_isencao__negar",
+      "tipo": "controle",
+      "nome": "Igrejas pedem mais isenções: Negar",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_populacao_de_rua_cresce__moradia_primeiro",
+      "tipo": "controle",
+      "nome": "Cracolândias crescem: Moradia primeiro",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_populacao_de_rua_cresce__abrigos",
+      "tipo": "controle",
+      "nome": "Cracolândias crescem: Ampliar abrigos",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
+      "id": "ocorrencia_populacao_de_rua_cresce__internacao",
+      "tipo": "controle",
+      "nome": "Cracolândias crescem: Internação compulsória",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "valorInicial": 0,
+      "area": "Ministério do Trabalho e Desenvolvimento Social"
+    },
+    {
       "id": "apagao",
       "tipo": "situacao",
       "nome": "Apagão",
@@ -1463,6 +5735,18 @@
         "maximo": 60
       },
       "resposta": 1
+    },
+    {
+      "id": "base_congresso",
+      "tipo": "calculado",
+      "nome": "Base de apoio no Congresso",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Casa Civil",
+      "avaliacao": "maior_melhor"
     },
     {
       "id": "cambio",
@@ -2846,6 +7130,18 @@
       "avaliacao": "maior_melhor"
     },
     {
+      "id": "qualidade_de_vida",
+      "tipo": "calculado",
+      "nome": "Qualidade de vida",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Geral",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "qualificacao_trabalho",
       "tipo": "calculado",
       "nome": "Qualificação do trabalho",
@@ -3040,6 +7336,18 @@
       },
       "area": "Finanças",
       "avaliacao": "neutra"
+    },
+    {
+      "id": "tensao_internacional",
+      "tipo": "calculado",
+      "nome": "Tensão internacional",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Direitos e Defesa",
+      "avaliacao": "maior_pior"
     },
     {
       "id": "trabalho_infantil",

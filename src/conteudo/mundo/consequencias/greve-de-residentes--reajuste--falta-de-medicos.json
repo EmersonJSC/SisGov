@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-residentes--reajuste--falta-de-medicos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_residentes__reajuste",
+  "alvo": "falta_de_medicos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

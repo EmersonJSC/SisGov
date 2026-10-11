@@ -1,0 +1,17 @@
+{
+  "id": "campanha-de-vacinacao--liberdade--epidemia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_campanha_de_vacinacao__liberdade",
+  "alvo": "epidemia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 5.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

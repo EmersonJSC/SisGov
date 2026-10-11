@@ -1,0 +1,17 @@
+{
+  "id": "tensao-internacional--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "tensao_internacional",
+  "alvo": "risco_pais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.15,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

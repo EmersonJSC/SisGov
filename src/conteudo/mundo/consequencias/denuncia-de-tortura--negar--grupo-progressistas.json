@@ -1,0 +1,17 @@
+{
+  "id": "denuncia-de-tortura--negar--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_denuncia_de_tortura__negar",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

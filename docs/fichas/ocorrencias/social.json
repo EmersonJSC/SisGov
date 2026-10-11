@@ -1,0 +1,377 @@
+{
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "eventos": [
+    {
+      "id": "protestos-de-massa",
+      "nome": "Protestos de massa",
+      "manchete": "Milhões vão às ruas em todas as capitais",
+      "descricao": "Começou com uma pauta e virou um grito geral de insatisfação. Ninguém sabe direito quem lidera.",
+      "origem": "pais", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0.25, "se": [["protestos", ">", 45]], "porTurnos": 1,
+      "duracao": 3, "intervalo": 10,
+      "fatores": [["popularidade_governo", 45, 20, 2]],
+      "efeitos": {"estabilidade_politica": -6, "margem_manobra_governo": -4, "confianca_empresarial": -3, "polarizacao": 3},
+      "desdobra": [["resposta-aos-protestos", 1, 1, 1]]
+    },
+    {
+      "id": "panelaco",
+      "nome": "Panelaço",
+      "manchete": "Panelaço ecoa nas janelas de {cidade} durante discurso do presidente",
+      "descricao": "Barulho de panela nos bairros de classe média. Pequeno, mas vai para todas as redes.",
+      "origem": "pais", "nivel": 1, "avaliacao": "negativa",
+      "chance": 0.06, "duracao": 1, "intervalo": 4,
+      "fatores": [["grupo_classe_media", 45, 20, 3]],
+      "efeitos": {"polarizacao": 1, "grupo_classe_media": -0.5}
+    },
+    {
+      "id": "ocupacao-de-terras",
+      "nome": "Ocupação de terras",
+      "manchete": "Sem-terra ocupam fazenda improdutiva em {estado}",
+      "descricao": "Mil famílias montam acampamento numa fazenda parada. O dono pede reintegração; os movimentos pedem reforma agrária.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.02, "duracao": 6, "intervalo": 8,
+      "fatores": [["conflitos_fundiarios", 20, 60, 3], ["lei:reforma-agraria", 100, 0, 2]],
+      "efeitos": {"conflitos_fundiarios": 4, "grupo_agro": -2},
+      "desdobra": [["reintegracao-de-posse", 1, 1, 1]]
+    },
+    {
+      "id": "saques",
+      "nome": "Saques a supermercados",
+      "manchete": "Multidão saqueia supermercados na periferia de {cidade}",
+      "descricao": "Com fome e sem dinheiro, moradores invadem lojas. As imagens chocam o país.",
+      "origem": "pais", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0.2, "se": [["inseguranca_alimentar", ">", 32]], "porTurnos": 2,
+      "duracao": 2, "intervalo": 10,
+      "fatores": [["desabastecimento", 10, 50, 2]],
+      "efeitos": {"sensacao_seguranca": -5, "crimes_patrimoniais": 3, "protestos": 8, "grupo_pequenos_negocios": -3}
+    },
+    {
+      "id": "fome-volta",
+      "nome": "A fome volta",
+      "manchete": "Pesquisa mostra milhões passando fome",
+      "descricao": "O número de famílias sem comida garantida volta a crescer. Igrejas e ONGs não dão conta das filas.",
+      "origem": "pais", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0.3, "se": [["inseguranca_alimentar", ">", 30]], "porTurnos": 3,
+      "duracao": 6, "intervalo": 16,
+      "efeitos": {"grupo_pobres": -4, "grupo_progressistas": -3, "saude_populacao": -1}
+    },
+    {
+      "id": "ataque-a-escola",
+      "nome": "Ataque a escola",
+      "manchete": "Ataque a escola em {cidade} deixa alunos mortos",
+      "descricao": "Um ex-aluno armado invade uma escola. O país está de luto e quer respostas.",
+      "origem": "pais", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0.004, "duracao": 3, "intervalo": 16,
+      "fatores": [["armas_em_circulacao", 30, 80, 3], ["sofrimento_mental", 20, 50, 2]],
+      "efeitos": {"sensacao_seguranca": -6, "sofrimento_mental": 1, "grupo_jovens": -2},
+      "desdobra": [["seguranca-nas-escolas", 1, 1, 1]]
+    },
+    {
+      "id": "prova-vazada",
+      "nome": "Prova nacional vazada",
+      "manchete": "Prova nacional do ensino médio vaza horas antes do exame",
+      "descricao": "Milhões de estudantes terão de refazer a prova. Pais e alunos estão furiosos.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.01, "duracao": 3, "intervalo": 12,
+      "fatores": [["capacidade_estatal", 70, 30, 2]],
+      "efeitos": {"grupo_jovens": -4, "confianca_instituicoes": -2, "gasto_publico": 0.01}
+    },
+    {
+      "id": "selecao-campea",
+      "nome": "A seleção é campeã",
+      "manchete": "Seleção é campeã do mundo e o país para para comemorar",
+      "descricao": "Carreata, feriado improvisado e um humor nacional raro. Dura pouco, mas dura.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "positiva",
+      "chance": 0.01, "duracao": 3, "intervalo": 16,
+      "efeitos": {"grupo_classe_media": 1.5, "grupo_trabalhadores": 1.5, "grupo_jovens": 2, "grupo_pobres": 1, "polarizacao": -2, "consumo": 1, "turismo": 2}
+    },
+    {
+      "id": "festa-popular-recorde",
+      "nome": "Festa popular recorde",
+      "manchete": "{festa} bate recorde de turistas em {cidade}",
+      "descricao": "Hotéis lotados, blocos gigantes e a economia local girando.",
+      "origem": "pais", "nivel": 1, "avaliacao": "positiva",
+      "chance": 0.05, "duracao": 2, "intervalo": 4,
+      "fatores": [["sensacao_seguranca", 30, 70, 2], ["vitalidade_cultural", 30, 70, 1.5]],
+      "efeitos": {"turismo": 2, "consumo": 0.5, "grupo_pequenos_negocios": 1}
+    },
+    {
+      "id": "jovens-desistem-de-procurar",
+      "nome": "Geração sem emprego",
+      "manchete": "Um em cada quatro jovens não estuda nem trabalha",
+      "descricao": "Pesquisa mostra uma geração parada. Sem perspectiva, cresce a emigração e o recrutamento pelo crime.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.3, "se": [["oportunidades_juvenis", "<", 35]], "porTurnos": 4,
+      "duracao": 6, "intervalo": 16,
+      "efeitos": {"grupo_jovens": -4, "crime_organizado": 1, "fuga_de_cerebros": 1}
+    },
+    {
+      "id": "explosao-das-apostas",
+      "nome": "Febre das apostas",
+      "manchete": "Famílias perdem salário inteiro em apostas online",
+      "descricao": "Os aplicativos de aposta viraram epidemia: dívidas, depressão e salários perdidos no mesmo dia em que caem na conta.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.2, "se": [["vicio_em_apostas", ">", 15]], "porTurnos": 2,
+      "duracao": 3, "intervalo": 12,
+      "efeitos": {"endividamento_familias": 2, "sofrimento_mental": 1, "grupo_pobres": -2},
+      "desdobra": [["regular-as-apostas", 0.8, 1, 1]]
+    }
+  ],
+  "dilemas": [
+    {
+      "id": "greve-dos-caminhoneiros",
+      "nome": "Greve dos caminhoneiros",
+      "manchete": "Caminhoneiros bloqueiam estradas contra o preço do diesel",
+      "descricao": "Postos sem combustível, prateleiras vazias e hospitais racionando oxigênio. Cada dia de greve custa caro.",
+      "origem": "crise", "nivel": 3,
+      "chance": 0.12, "se": [["preco_energia", ">", 62]], "porTurnos": 1, "intervalo": 12,
+      "fatores": [["preco_energia", 62, 90, 3]],
+      "padrao": "negociar",
+      "opcoes": [
+        {"id": "subsidiar-diesel", "rotulo": "Subsidiar o diesel", "descricao": "A greve acaba amanhã. A conta fica com o Tesouro.", "duracao": 12, "efeitos": {"gasto_publico": 0.15, "preco_energia": -4, "grupo_trabalhadores": 2, "grupo_agro": 2, "risco_pais": 2}},
+        {"id": "negociar", "rotulo": "Negociar frete mínimo", "descricao": "Uma semana de caos até o acordo. Quem contrata frete paga mais.", "duracao": 6, "efeitos": {"desabastecimento": 12, "inflacao": 0.8, "pib": -0.4, "grupo_agro": -2}},
+        {"id": "reprimir", "rotulo": "Mandar a polícia liberar as estradas", "descricao": "Estradas abertas à força. Imagens de confronto e categoria ressentida.", "duracao": 6, "efeitos": {"desabastecimento": 5, "protestos": 8, "liberdade_civil": -2, "grupo_trabalhadores": -3, "grupo_conservadores": -1}},
+        {"id": "estoques", "rotulo": "Liberar estoques e esperar", "descricao": "Usar reservas para segurar o desabastecimento e vencer pelo cansaço.", "duracao": 6, "efeitos": {"desabastecimento": 8, "pib": -0.3, "gasto_publico": 0.03}}
+      ]
+    },
+    {
+      "id": "greve-geral",
+      "nome": "Greve geral",
+      "manchete": "Centrais sindicais convocam greve geral",
+      "descricao": "Metrôs, bancos, fábricas e escolas param no mesmo dia. As centrais dizem que é só o começo.",
+      "origem": "crise", "nivel": 3,
+      "chance": 0.25, "se": [["grupo_trabalhadores", "<", 30]], "porTurnos": 2, "intervalo": 12,
+      "fatores": [["desemprego", 8, 18, 1.5]],
+      "padrao": "negociar",
+      "opcoes": [
+        {"id": "atender", "rotulo": "Atender a pauta", "descricao": "Reajustes e recuo nas reformas. Trabalhadores comemoram, empresários e mercado não.", "duracao": 12, "efeitos": {"greve_geral": -20, "grupo_trabalhadores": 8, "custo_trabalhista": 3, "confianca_empresarial": -5, "gasto_publico": 0.1}},
+        {"id": "negociar", "rotulo": "Mesa de negociação", "descricao": "Dias de paralisação e um acordo parcial.", "duracao": 6, "efeitos": {"greve_geral": 15, "pib": -0.5, "grupo_trabalhadores": 2}},
+        {"id": "endurecer", "rotulo": "Cortar o ponto e não ceder", "descricao": "Quem parar perde o dia. A greve pode murchar ou explodir.", "duracao": 6, "efeitos": {"greve_geral": 5, "protestos": 10, "grupo_trabalhadores": -5, "grupo_empresarios": 3, "polarizacao": 3}}
+      ]
+    },
+    {
+      "id": "greve-de-{categoria_id}",
+      "nome": "Greve de {categoria}",
+      "manchete": "{categoria} entram em greve por reajuste",
+      "descricao": "{categoria} cruzam os braços em {cidade} e outras capitais. {consequencia}",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.015, "intervalo": 10,
+      "padrao": "negociar",
+      "variantes": [
+        {"categoria": "Professores", "categoria_id": "professores", "consequencia": "Milhões de alunos sem aula.",
+          "fatores": [["grupo_servidores", 50, 25, 2], ["lei:piso-salarial-professores", 100, 0, 2]],
+          "opcoes": [
+            {"id": "reajuste", "rotulo": "Dar o reajuste", "descricao": "Aulas voltam; o piso sobe para todos.", "duracao": 12, "efeitos": {"greve_de_professores": -20, "gasto_publico": 0.08, "grupo_servidores": 4}},
+            {"id": "negociar", "rotulo": "Negociar", "descricao": "Semanas sem aula até o acordo.", "duracao": 6, "efeitos": {"greve_de_professores": 15, "aprendizagem": -1, "evasao_escolar": 1}},
+            {"id": "cortar-ponto", "rotulo": "Cortar o ponto", "descricao": "Pressão dura. Pais divididos.", "duracao": 6, "efeitos": {"greve_de_professores": 5, "grupo_servidores": -5, "grupo_progressistas": -2}}]},
+        {"categoria": "Metroviários", "categoria_id": "metroviarios", "consequencia": "A cidade trava e o trânsito bate recorde.",
+          "opcoes": [
+            {"id": "reajuste", "rotulo": "Dar o reajuste", "descricao": "Trens voltam; tarifa pressionada.", "duracao": 12, "efeitos": {"gasto_publico": 0.02, "grupo_trabalhadores": 1}},
+            {"id": "negociar", "rotulo": "Negociar", "descricao": "Dias de caos no transporte.", "duracao": 3, "efeitos": {"mobilidade_urbana": -4, "pib": -0.1, "grupo_classe_media": -1}},
+            {"id": "justica", "rotulo": "Pedir à Justiça que declare a greve ilegal", "descricao": "Multa pesada ao sindicato. A greve acaba, a raiva fica.", "duracao": 6, "efeitos": {"mobilidade_urbana": -1, "grupo_trabalhadores": -3, "liberdade_civil": -1}}]},
+        {"categoria": "Petroleiros", "categoria_id": "petroleiros", "consequencia": "Refinarias param e o combustível começa a faltar.",
+          "opcoes": [
+            {"id": "reajuste", "rotulo": "Dar o reajuste", "descricao": "Refinarias voltam; margem da estatal cai.", "duracao": 12, "efeitos": {"grupo_trabalhadores": 2, "arrecadacao": -0.03}},
+            {"id": "negociar", "rotulo": "Negociar", "descricao": "Duas semanas de estoques baixos.", "duracao": 3, "efeitos": {"desabastecimento": 6, "preco_energia": 2}},
+            {"id": "importar", "rotulo": "Importar combustível e esperar", "descricao": "Abastecimento garantido, a um preço alto.", "duracao": 3, "efeitos": {"importacoes": 2, "preco_energia": 3, "grupo_trabalhadores": -2}}]},
+        {"categoria": "Médicos residentes", "categoria_id": "residentes", "consequencia": "Hospitais universitários atendem só emergências.",
+          "fatores": [["pressao_hospitalar", 40, 80, 2]],
+          "opcoes": [
+            {"id": "reajuste", "rotulo": "Aumentar a bolsa", "descricao": "Residentes voltam; a conta sobe.", "duracao": 12, "efeitos": {"gasto_publico": 0.02, "falta_de_medicos": -1}},
+            {"id": "negociar", "rotulo": "Negociar", "descricao": "Filas maiores por semanas.", "duracao": 3, "efeitos": {"crise_atendimento": 6, "pressao_hospitalar": 2}},
+            {"id": "contratar", "rotulo": "Contratar temporários", "descricao": "Substitui grevistas. Qualidade cai, sindicato reage.", "duracao": 6, "efeitos": {"gasto_publico": 0.02, "grupo_servidores": -3, "saude_populacao": -0.5}}]}
+      ]
+    },
+    {
+      "id": "motim-policial",
+      "nome": "Motim da polícia",
+      "manchete": "Policiais de {estado} se aquartelam e a criminalidade dispara",
+      "descricao": "Sem polícia nas ruas, lojas fecham e os homicídios triplicam em uma semana. A greve de policiais é proibida, mas está acontecendo.",
+      "origem": "crise", "nivel": 3, "chance": 0.008, "intervalo": 20,
+      "fatores": [["grupo_servidores", 50, 20, 3]],
+      "padrao": "forca-nacional",
+      "opcoes": [
+        {"id": "forca-nacional", "rotulo": "Mandar a Força Nacional", "descricao": "Tropas federais assumem o policiamento até o motim acabar.", "duracao": 3, "efeitos": {"gasto_publico": 0.02, "violencia_letal": 1, "sensacao_seguranca": -2}},
+        {"id": "anistia-e-reajuste", "rotulo": "Reajuste com anistia", "descricao": "O motim acaba amanhã; outras polícias aprendem a lição.", "duracao": 12, "efeitos": {"gasto_publico": 0.03, "impunidade": 3, "forca_instituicoes": -2, "grupo_servidores": 2}},
+        {"id": "punir", "rotulo": "Prender os líderes", "descricao": "Autoridade restabelecida, tropa ressentida.", "duracao": 6, "efeitos": {"violencia_letal": 2, "forca_instituicoes": 2, "grupo_conservadores": -2}}
+      ]
+    },
+    {
+      "id": "greve-contra-privatizacao",
+      "nome": "Greve contra a privatização",
+      "manchete": "Trabalhadores das estatais param contra a venda das empresas",
+      "descricao": "A decisão de vender estatais levou sindicatos às ruas. Refinarias, correios e companhias de energia param.",
+      "origem": "reacao", "nivel": 2,
+      "chance": 0.75, "reacao": {"lei": "empresas-estatais-e-privatizacao", "desce": 30, "janela": 2}, "intervalo": 8,
+      "padrao": "manter",
+      "opcoes": [
+        {"id": "manter", "rotulo": "Manter a privatização", "descricao": "A greve dura semanas, mas a venda segue.", "duracao": 6, "efeitos": {"protestos": 10, "grupo_trabalhadores": -3, "grupo_empresarios": 2, "pib": -0.2}},
+        {"id": "compensar", "rotulo": "Garantir os empregos por dois anos", "descricao": "Estabilidade temporária para quem trabalha nas estatais. Vale menos na venda.", "duracao": 24, "efeitos": {"grupo_trabalhadores": 2, "ied": -0.1, "custo_trabalhista": 1}},
+        {"id": "recuar", "rotulo": "Recuar", "descricao": "As estatais estratégicas ficam com o Estado. O mercado perde a confiança no governo.", "duracao": 12, "leis": {"empresas-estatais-e-privatizacao": "estatais-estrategicas"}, "efeitos": {"confianca_empresarial": -5, "risco_pais": 3, "grupo_trabalhadores": 3}}
+      ]
+    },
+    {
+      "id": "aposentados-protestam",
+      "nome": "Aposentados nas ruas",
+      "manchete": "Aposentados e centrais protestam contra a nova idade mínima",
+      "descricao": "A idade mínima subiu e quem estava perto de se aposentar viu o prazo fugir. A pressão é por uma regra de transição.",
+      "origem": "reacao", "nivel": 2,
+      "chance": 0.75, "reacao": {"lei": "idade-minima-aposentadoria", "sobe": 20, "janela": 2}, "intervalo": 8,
+      "padrao": "manter",
+      "opcoes": [
+        {"id": "manter", "rotulo": "Manter a regra", "descricao": "A conta da Previdência agradece; os idosos não.", "duracao": 6, "efeitos": {"grupo_aposentados": -4, "grupo_trabalhadores": -3, "protestos": 6}},
+        {"id": "transicao", "rotulo": "Criar regra de transição", "descricao": "Quem está perto paga um pedágio menor. Economia menor.", "duracao": 24, "efeitos": {"deficit_previdenciario": 0.1, "grupo_aposentados": 2, "grupo_trabalhadores": 2}},
+        {"id": "recuar", "rotulo": "Recuar para a regra anterior", "descricao": "Paz nas ruas, dúvidas no mercado.", "duracao": 12, "leis": {"idade-minima-aposentadoria": "moderada"}, "efeitos": {"risco_pais": 3, "confianca_empresarial": -3, "grupo_aposentados": 3}}
+      ]
+    },
+    {
+      "id": "ruralistas-bloqueiam",
+      "nome": "Tratoraço contra a reforma agrária",
+      "manchete": "Ruralistas bloqueiam rodovias com tratores",
+      "descricao": "A ampliação da reforma agrária levou produtores às estradas. A bancada ruralista ameaça travar as votações.",
+      "origem": "reacao", "nivel": 2,
+      "chance": 0.75, "reacao": {"lei": "reforma-agraria", "sobe": 30, "janela": 2}, "intervalo": 8,
+      "padrao": "manter",
+      "opcoes": [
+        {"id": "manter", "rotulo": "Manter a reforma", "descricao": "Assentamentos seguem; a bancada fica contra.", "duracao": 12, "efeitos": {"base_congresso": -5, "grupo_agro": -5, "grupo_pobres": 2}},
+        {"id": "credito-rural", "rotulo": "Compensar com crédito rural", "descricao": "Dinheiro barato para os produtores aceitarem.", "duracao": 12, "efeitos": {"gasto_publico": 0.06, "grupo_agro": 3, "base_congresso": 2}},
+        {"id": "recuar", "rotulo": "Limitar a reforma a títulos de terra", "descricao": "Recuo para titular quem já está na terra.", "duracao": 12, "leis": {"reforma-agraria": "titulacao-e-mercado"}, "efeitos": {"grupo_agro": 4, "conflitos_fundiarios": 3, "grupo_progressistas": -4}}
+      ]
+    },
+    {
+      "id": "aplicativos-ameacam-sair",
+      "nome": "Aplicativos ameaçam sair do país",
+      "manchete": "Plataformas de entrega e transporte ameaçam deixar o país",
+      "descricao": "Com o vínculo de emprego obrigatório, as empresas de aplicativo dizem que o negócio não fecha.",
+      "origem": "reacao", "nivel": 2,
+      "chance": 0.7, "reacao": {"lei": "trabalho-por-aplicativo", "sobe": 30, "janela": 2}, "intervalo": 8,
+      "padrao": "manter",
+      "opcoes": [
+        {"id": "manter", "rotulo": "Pagar para ver", "descricao": "Algumas saem; outras se adaptam.", "duracao": 12, "efeitos": {"desemprego": 0.4, "informalidade": -1, "grupo_trabalhadores": 1, "grupo_empresarios": -2}},
+        {"id": "transicao", "rotulo": "Dar prazo de adaptação", "descricao": "Regras entram aos poucos, em dois anos.", "duracao": 24, "efeitos": {"grupo_empresarios": 1}},
+        {"id": "recuar", "rotulo": "Criar uma categoria própria", "descricao": "Nem emprego, nem autônomo: piso por hora e previdência.", "duracao": 12, "leis": {"trabalho-por-aplicativo": "categoria-propria"}, "efeitos": {"grupo_trabalhadores": -2, "grupo_empresarios": 2}}
+      ]
+    },
+    {
+      "id": "entregadores-param",
+      "nome": "Breque dos entregadores",
+      "manchete": "Entregadores de aplicativo fazem breque em {cidade}",
+      "descricao": "Sem regra nenhuma, os entregadores rodam 12 horas por dia por menos que um salário mínimo. Hoje, desligaram os aplicativos.",
+      "origem": "cotidiano", "nivel": 1,
+      "chance": 0.025, "se": [["lei:trabalho-por-aplicativo", "em", ["sem-regulacao"]]], "intervalo": 8,
+      "padrao": "dialogo",
+      "opcoes": [
+        {"id": "regular", "rotulo": "Mandar projeto com piso por hora", "descricao": "Uma categoria própria, com previdência.", "duracao": 12, "leis": {"trabalho-por-aplicativo": "categoria-propria"}, "efeitos": {"grupo_trabalhadores": 2, "grupo_jovens": 2, "grupo_empresarios": -1}},
+        {"id": "dialogo", "rotulo": "Chamar as empresas para conversar", "descricao": "Promessas de melhoria, nada no papel.", "duracao": 3, "efeitos": {"grupo_jovens": -0.5}},
+        {"id": "ignorar", "rotulo": "Ignorar", "descricao": "Mercado livre se regula sozinho.", "duracao": 3, "efeitos": {"grupo_jovens": -2, "grupo_trabalhadores": -1}}
+      ]
+    },
+    {
+      "id": "reintegracao-de-posse",
+      "nome": "Reintegração de posse",
+      "manchete": "Justiça manda desocupar fazenda em {estado}",
+      "descricao": "A ordem está dada. Mil famílias, crianças e uma tropa de choque. O desfecho depende do governo.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "mediar",
+      "opcoes": [
+        {"id": "cumprir", "rotulo": "Cumprir a ordem com a tropa", "descricao": "A fazenda é desocupada. Pode haver mortos.", "duracao": 6, "efeitos": {"conflitos_fundiarios": -3, "letalidade_policial": 1, "grupo_agro": 3, "grupo_progressistas": -5}},
+        {"id": "mediar", "rotulo": "Mediar a saída", "descricao": "Semanas de conversa e um terreno provisório.", "duracao": 6, "efeitos": {"conflitos_fundiarios": -1, "gasto_publico": 0.01}},
+        {"id": "assentar", "rotulo": "Desapropriar e assentar", "descricao": "Compra a fazenda e assenta as famílias. Incentiva novas ocupações.", "duracao": 12, "requer": [["lei:reforma-agraria", ">=", 67]], "motivo": "A lei de reforma agrária não permite desapropriar.", "efeitos": {"conflitos_fundiarios": 2, "grupo_pobres": 2, "grupo_agro": -5, "gasto_publico": 0.02}}
+      ]
+    },
+    {
+      "id": "resposta-aos-protestos",
+      "nome": "O que fazer com as ruas?",
+      "manchete": "As ruas não esvaziam e o governo precisa responder",
+      "descricao": "Os protestos já duram semanas. Ministros divergem: ouvir, ceder ou endurecer.",
+      "origem": "desdobramento", "nivel": 3, "chance": 0,
+      "padrao": "dialogar",
+      "opcoes": [
+        {"id": "dialogar", "rotulo": "Chamar os líderes ao {palacio}", "descricao": "Gestos de escuta. Funciona se houver algo para oferecer.", "duracao": 6, "efeitos": {"protestos": -5, "polarizacao": -1}},
+        {"id": "pacote", "rotulo": "Anunciar um pacote de bondades", "descricao": "Passe livre, isenções e reajustes. Acalma rápido, custa caro.", "duracao": 12, "efeitos": {"protestos": -15, "gasto_publico": 0.15, "grupo_pobres": 3, "grupo_jovens": 3, "risco_pais": 2}},
+        {"id": "reprimir", "rotulo": "Reprimir", "descricao": "Bomba de gás e prisões. Pode esvaziar as ruas ou incendiá-las.", "duracao": 6, "efeitos": {"protestos": 5, "liberdade_civil": -5, "letalidade_policial": 1, "grupo_progressistas": -6, "grupo_conservadores": 2, "reputacao_internacional": -3}},
+        {"id": "plebiscito", "rotulo": "Propor um plebiscito", "descricao": "Devolve a pergunta ao povo. O Congresso não gosta.", "duracao": 12, "efeitos": {"protestos": -8, "participacao_eleitoral": 2, "base_congresso": -4}}
+      ]
+    },
+    {
+      "id": "seguranca-nas-escolas",
+      "nome": "Segurança nas escolas",
+      "manchete": "Depois do ataque, pais exigem escolas seguras",
+      "descricao": "O debate se divide: detector de metal e guarda armado, ou psicólogos e prevenção?",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "prevencao",
+      "opcoes": [
+        {"id": "armar", "rotulo": "Guardas armados e detectores", "descricao": "Escolas viram fortalezas.", "duracao": 24, "efeitos": {"gasto_publico": 0.04, "sensacao_seguranca": 2, "grupo_conservadores": 3, "grupo_progressistas": -2}},
+        {"id": "prevencao", "rotulo": "Psicólogos e prevenção", "descricao": "Efeito lento, mas mira a raiz.", "duracao": 24, "efeitos": {"gasto_publico": 0.03, "sofrimento_mental": -1, "grupo_progressistas": 2}},
+        {"id": "armas", "rotulo": "Restringir o acesso às armas", "descricao": "Mexe com a lei de armas. A bancada da bala reage.", "duracao": 24, "efeitos": {"armas_em_circulacao": -0.1, "base_congresso": -3, "grupo_conservadores": -3, "grupo_progressistas": 3}}
+      ]
+    },
+    {
+      "id": "regular-as-apostas",
+      "nome": "O que fazer com as apostas?",
+      "manchete": "Bancada pede proibir as apostas online",
+      "descricao": "As casas de aposta patrocinam metade dos times e pagam impostos. Também quebram famílias.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0.01, "intervalo": 16,
+      "fatores": [["vicio_em_apostas", 10, 30, 2]],
+      "padrao": "regras",
+      "opcoes": [
+        {"id": "proibir", "rotulo": "Proibir", "descricao": "Fim da propaganda e dos aplicativos. Parte migra para sites ilegais.", "duracao": 24, "efeitos": {"vicio_em_apostas": -4, "arrecadacao": -0.05, "mercado_paralelo": 3, "grupo_conservadores": 3}},
+        {"id": "regras", "rotulo": "Limitar propaganda e depósitos", "descricao": "Meio-termo: sem anúncio na TV e com limite por pessoa.", "duracao": 24, "efeitos": {"vicio_em_apostas": -2, "arrecadacao": -0.02}},
+        {"id": "taxar", "rotulo": "Taxar mais e liberar", "descricao": "Se é para existir, que pague.", "duracao": 24, "efeitos": {"arrecadacao": 0.06, "vicio_em_apostas": 1}}
+      ]
+    },
+    {
+      "id": "pacote-contra-a-fome",
+      "nome": "Pacote contra a fome",
+      "manchete": "Movimentos cobram ação imediata contra a fome",
+      "descricao": "Com a fome crescendo, há três caminhos na mesa — todos custam.",
+      "origem": "crise", "nivel": 2,
+      "chance": 0.15, "se": [["inseguranca_alimentar", ">", 28]], "porTurnos": 2, "intervalo": 12,
+      "padrao": "cestas",
+      "opcoes": [
+        {"id": "cestas", "rotulo": "Distribuir cestas básicas", "descricao": "Alívio imediato e temporário.", "duracao": 6, "efeitos": {"inseguranca_alimentar": -3, "gasto_publico": 0.04, "grupo_pobres": 2}},
+        {"id": "ampliar-renda", "rotulo": "Ampliar a transferência de renda", "descricao": "Mais famílias no programa, de forma permanente.", "duracao": 24, "efeitos": {"inseguranca_alimentar": -5, "pobreza": -1, "gasto_publico": 0.15, "grupo_pobres": 4, "grupo_classe_media": -1}},
+        {"id": "restaurantes", "rotulo": "Restaurantes populares e cozinhas", "descricao": "Comida barata nas periferias, com a ajuda das prefeituras.", "duracao": 24, "efeitos": {"inseguranca_alimentar": -3, "gasto_publico": 0.05, "grupo_pobres": 2, "grupo_pequenos_negocios": -1}}
+      ]
+    },
+    {
+      "id": "tarifa-do-onibus",
+      "nome": "A tarifa do ônibus",
+      "manchete": "Aumento da tarifa de ônibus em {cidade} leva estudantes às ruas",
+      "descricao": "Vinte centavos a mais na passagem e os estudantes ocuparam as avenidas. A prefeitura pede socorro federal.",
+      "origem": "cotidiano", "nivel": 1, "chance": 0.02, "intervalo": 8,
+      "fatores": [["inflacao", 3, 10, 2]],
+      "padrao": "nada",
+      "opcoes": [
+        {"id": "subsidio", "rotulo": "Subsidiar a tarifa", "descricao": "Os vinte centavos saem do caixa federal.", "duracao": 12, "efeitos": {"gasto_publico": 0.03, "mobilidade_urbana": 1, "grupo_jovens": 2}},
+        {"id": "passe-livre", "rotulo": "Passe livre para estudantes", "descricao": "A bandeira do movimento. Caro e popular.", "duracao": 24, "efeitos": {"gasto_publico": 0.06, "grupo_jovens": 4, "evasao_escolar": -0.5}},
+        {"id": "nada", "rotulo": "É problema da prefeitura", "descricao": "Os protestos podem crescer.", "duracao": 3, "efeitos": {"protestos": 4, "grupo_jovens": -2}}
+      ]
+    },
+    {
+      "id": "igrejas-pedem-isencao",
+      "nome": "Igrejas pedem mais isenções",
+      "manchete": "Líderes religiosos pedem isenção ampliada para templos",
+      "descricao": "Em troca, prometem apoio da bancada religiosa nas próximas votações.",
+      "origem": "cotidiano", "nivel": 1, "chance": 0.015, "intervalo": 12,
+      "padrao": "negar",
+      "opcoes": [
+        {"id": "conceder", "rotulo": "Conceder", "descricao": "Votos garantidos; o Estado laico reclama.", "duracao": 24, "efeitos": {"arrecadacao": -0.02, "base_congresso": 4, "grupo_conservadores": 3, "grupo_progressistas": -3}},
+        {"id": "negar", "rotulo": "Negar", "descricao": "A bancada se ressente.", "duracao": 6, "efeitos": {"base_congresso": -2, "grupo_conservadores": -1}}
+      ]
+    },
+    {
+      "id": "populacao-de-rua-cresce",
+      "nome": "Cracolândias crescem",
+      "manchete": "População de rua dobra no centro de {cidade}",
+      "descricao": "Barracas em todas as calçadas do centro. Comerciantes pedem remoção; assistentes sociais pedem moradia.",
+      "origem": "crise", "nivel": 2,
+      "chance": 0.15, "se": [["populacao_de_rua", ">", 0.3]], "porTurnos": 2, "intervalo": 12,
+      "padrao": "abrigos",
+      "opcoes": [
+        {"id": "moradia-primeiro", "rotulo": "Moradia primeiro", "descricao": "Casa antes de tudo, depois tratamento e emprego. Caro e eficaz.", "duracao": 24, "efeitos": {"populacao_de_rua": -0.1, "gasto_publico": 0.05, "grupo_progressistas": 3}},
+        {"id": "abrigos", "rotulo": "Ampliar abrigos", "descricao": "Vagas temporárias. Muitos não aceitam.", "duracao": 12, "efeitos": {"populacao_de_rua": -0.03, "gasto_publico": 0.02}},
+        {"id": "internacao", "rotulo": "Internação compulsória", "descricao": "Limpa as ruas à força. Juristas e médicos protestam.", "duracao": 12, "efeitos": {"populacao_de_rua": -0.05, "liberdade_civil": -3, "grupo_conservadores": 3, "grupo_progressistas": -4, "grupo_pequenos_negocios": 2}}
+      ]
+    }
+  ]
+}

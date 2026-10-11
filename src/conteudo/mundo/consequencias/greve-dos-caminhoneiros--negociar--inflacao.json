@@ -1,0 +1,17 @@
+{
+  "id": "greve-dos-caminhoneiros--negociar--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_dos_caminhoneiros__negociar",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.8,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

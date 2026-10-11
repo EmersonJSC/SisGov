@@ -1,0 +1,186 @@
+{
+  "area": "Ministério da Saúde",
+  "eventos": [
+    {
+      "id": "pandemia",
+      "nome": "Pandemia",
+      "manchete": "Novo vírus se espalha e lota hospitais",
+      "descricao": "Um vírus novo chega ao país. Vacinação alta e atenção básica forte seguram o pior; hospitais sem folga entram em colapso.",
+      "origem": "mundo", "nivel": 4, "avaliacao": "negativa",
+      "chance": 0.003, "duracao": 12, "intervalo": 40,
+      "fatores": [["cobertura_vacinal", 90, 50, 1.6]],
+      "efeitos": {"epidemia": 55, "saude_populacao": -10, "pressao_hospitalar": 20, "pib": -5, "desemprego": 3, "turismo": -20, "sofrimento_mental": 8},
+      "desdobra": [["lockdown-ou-economia", 1, 1, 1]]
+    },
+    {
+      "id": "surto-de-dengue",
+      "nome": "Surto de dengue em {cidade}",
+      "manchete": "{cidade} decreta emergência por dengue",
+      "descricao": "Água parada e calor fazem a dengue explodir em {cidade}. Postos lotados e falta de leitos.",
+      "origem": "natureza", "nivel": 1, "avaliacao": "negativa",
+      "chance": 0.1, "duracao": 2, "intervalo": 2,
+      "fatores": [["infraestrutura_saneamento", 70, 30, 3], ["cobertura_aps", 70, 30, 1.5]],
+      "efeitos": {"pressao_hospitalar": 2, "saude_populacao": -0.5}
+    },
+    {
+      "id": "epidemia-de-{doenca_id}",
+      "nome": "Epidemia no {regiao}",
+      "manchete": "Epidemia de {doenca} se espalha pelo {regiao}",
+      "descricao": "Casos de {doenca} crescem rápido no {regiao}. Vacinação e saneamento fazem a diferença.",
+      "origem": "natureza", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.02, "duracao": 4, "intervalo": 8,
+      "fatores": [["cobertura_vacinal", 90, 50, 3], ["infraestrutura_saneamento", 70, 30, 2]],
+      "variantes": [
+        {"doenca": "sarampo", "doenca_id": "sarampo"},
+        {"doenca": "febre amarela", "doenca_id": "febre-amarela"},
+        {"doenca": "chikungunya", "doenca_id": "chikungunya"}
+      ],
+      "efeitos": {"epidemia": 20, "pressao_hospitalar": 6, "saude_populacao": -2},
+      "desdobra": [["campanha-de-vacinacao", 0.6, 1, 1]]
+    },
+    {
+      "id": "falta-de-remedios",
+      "nome": "Falta de remédios",
+      "manchete": "Farmácias e hospitais ficam sem remédios básicos",
+      "descricao": "Antibióticos e insulina somem das prateleiras. Fornecedores culpam o preço; pacientes culpam o governo.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.15, "se": [["preco_medicamentos", ">", 65]], "porTurnos": 2,
+      "duracao": 3, "intervalo": 8,
+      "efeitos": {"saude_populacao": -2, "gasto_bolso_saude": 4, "grupo_aposentados": -4},
+      "desdobra": [["quebrar-patente", 0.6, 1, 1]]
+    },
+    {
+      "id": "hospital-fecha",
+      "nome": "Hospital fecha em {cidade}",
+      "manchete": "Maior hospital de {cidade} fecha as portas por falta de verba",
+      "descricao": "Sem repasses, o hospital de {cidade} suspende o atendimento. Pacientes são transferidos para cidades vizinhas.",
+      "origem": "pais", "nivel": 1, "avaliacao": "negativa",
+      "chance": 0.05, "duracao": 2, "intervalo": 3,
+      "fatores": [["pressao_hospitalar", 50, 90, 3]],
+      "efeitos": {"pressao_hospitalar": 1.5, "grupo_pobres": -1}
+    },
+    {
+      "id": "fila-recorde",
+      "nome": "Fila recorde por cirurgias",
+      "manchete": "Fila por cirurgias passa de um milhão de pessoas",
+      "descricao": "Pacientes esperam anos por operações simples. A imprensa conta histórias de quem morreu na fila.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.3, "se": [["pressao_hospitalar", ">", 70]], "porTurnos": 3,
+      "duracao": 3, "intervalo": 12,
+      "efeitos": {"crise_atendimento": 15, "grupo_aposentados": -4, "grupo_pobres": -3},
+      "desdobra": [["mutirao-ou-privados", 0.7, 1, 1]]
+    },
+    {
+      "id": "vacina-nacional",
+      "nome": "Vacina desenvolvida no país",
+      "manchete": "Laboratório público cria vacina e atrai atenção mundial",
+      "descricao": "Pesquisadores de um instituto público desenvolvem uma vacina eficaz. Orgulho nacional e exportações.",
+      "origem": "pais", "nivel": 3, "avaliacao": "positiva", "unica": true,
+      "chance": 0.006, "duracao": 12,
+      "fatores": [["inovacao", 40, 80, 3]],
+      "efeitos": {"cobertura_vacinal": 4, "reputacao_internacional": 5, "inovacao": 3}
+    },
+    {
+      "id": "onda-de-calor-hospitais",
+      "nome": "Onda de calor lota hospitais",
+      "manchete": "Calor recorde mata idosos e lota emergências no {regiao}",
+      "descricao": "Temperaturas acima de 40 graus por dias seguidos no {regiao}. Os mais velhos sofrem primeiro.",
+      "origem": "natureza", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.03, "duracao": 1, "intervalo": 4,
+      "fatores": [["emissoes", 40, 80, 2], ["desmatamento", 30, 80, 1.5]],
+      "efeitos": {"pressao_hospitalar": 5, "saude_populacao": -1.5, "grupo_aposentados": -2}
+    }
+  ],
+  "dilemas": [
+    {
+      "id": "lockdown-ou-economia",
+      "nome": "Fechar ou manter aberto?",
+      "manchete": "Hospitais no limite: governo decide se fecha o país",
+      "descricao": "A pandemia avança. Fechar salva vidas e quebra empresas; manter aberto segura empregos e enche cemitérios.",
+      "origem": "desdobramento", "nivel": 4, "chance": 0,
+      "padrao": "aberto",
+      "opcoes": [
+        {"id": "fechar-tudo", "rotulo": "Fechar tudo e pagar auxílio", "descricao": "Isolamento rígido por seis meses e um auxílio para quem parou.", "duracao": 6, "efeitos": {"epidemia": -25, "pressao_hospitalar": -10, "pib": -3, "gasto_publico": 1.5, "grupo_pequenos_negocios": -8, "grupo_pobres": 4, "sofrimento_mental": 4}},
+        {"id": "parcial", "rotulo": "Fechar o essencial por regiões", "descricao": "Restrições onde os hospitais lotarem.", "duracao": 6, "efeitos": {"epidemia": -12, "pressao_hospitalar": -5, "pib": -1.2, "gasto_publico": 0.4}},
+        {"id": "aberto", "rotulo": "Manter tudo aberto", "descricao": "A economia segue; o vírus também.", "duracao": 6, "efeitos": {"epidemia": 12, "pressao_hospitalar": 10, "saude_populacao": -4, "grupo_empresarios": 3, "grupo_aposentados": -6}}
+      ]
+    },
+    {
+      "id": "campanha-de-vacinacao",
+      "nome": "Campanha de vacinação",
+      "manchete": "Vacinar à força ou convencer?",
+      "descricao": "A epidemia trouxe de volta a discussão: obrigar a vacinação, convencer com campanha ou deixar cada um decidir.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "campanha",
+      "opcoes": [
+        {"id": "obrigar", "rotulo": "Exigir vacina para escola e emprego público", "descricao": "Cobertura sobe rápido; parte do país se revolta.", "duracao": 12, "leis": {"vacinacao-obrigatoria": "obrigatoria-com-multa"}, "efeitos": {"cobertura_vacinal": 8, "grupo_conservadores": -5, "protestos": 6}},
+        {"id": "campanha", "rotulo": "Campanha nacional nas escolas e na TV", "descricao": "Convencer custa, mas não divide.", "duracao": 6, "efeitos": {"cobertura_vacinal": 4, "gasto_publico": 0.03}},
+        {"id": "liberdade", "rotulo": "Deixar cada um decidir", "descricao": "Sem pressão. A doença volta a circular.", "duracao": 6, "efeitos": {"cobertura_vacinal": -3, "grupo_conservadores": 3, "epidemia": 5}}
+      ]
+    },
+    {
+      "id": "quebrar-patente",
+      "nome": "Quebrar a patente?",
+      "manchete": "Remédio de alto custo divide governo e farmacêuticas",
+      "descricao": "Um remédio essencial custa uma fortuna por causa da patente. Quebrá-la barateia o tratamento, mas enfurece laboratórios e governos estrangeiros.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0.01, "intervalo": 16,
+      "padrao": "negociar",
+      "opcoes": [
+        {"id": "quebrar", "rotulo": "Licença compulsória", "descricao": "Produção nacional do genérico. Remédio barato, retaliação lá fora.", "duracao": 12, "efeitos": {"preco_medicamentos": -8, "grupo_pobres": 4, "grupo_aposentados": 4, "reputacao_internacional": -3, "ied": -0.2}},
+        {"id": "negociar", "rotulo": "Negociar desconto", "descricao": "Compra em grande volume com preço menor.", "duracao": 12, "efeitos": {"preco_medicamentos": -3, "gasto_publico": 0.05}},
+        {"id": "pagar", "rotulo": "Pagar o preço cheio", "descricao": "Respeitar a patente e comprar menos.", "duracao": 6, "efeitos": {"gasto_publico": 0.1, "grupo_aposentados": -2}}
+      ]
+    },
+    {
+      "id": "mutirao-ou-privados",
+      "nome": "Como zerar a fila?",
+      "manchete": "Governo promete zerar a fila de cirurgias",
+      "descricao": "A fila virou escândalo. Comprar cirurgias de hospitais privados é rápido; investir na rede pública é duradouro.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "nada",
+      "opcoes": [
+        {"id": "privados", "rotulo": "Comprar cirurgias da rede privada", "descricao": "Fila anda já. Dinheiro público vai para hospitais privados.", "duracao": 6, "efeitos": {"crise_atendimento": -15, "gasto_publico": 0.15, "grupo_aposentados": 4, "grupo_progressistas": -2}},
+        {"id": "rede-publica", "rotulo": "Abrir mais leitos públicos", "descricao": "Leva tempo e dinheiro, fica para sempre.", "duracao": 24, "efeitos": {"crise_atendimento": -8, "pressao_hospitalar": -4, "gasto_publico": 0.15}},
+        {"id": "nada", "rotulo": "Culpar os estados", "descricao": "Saúde é dever de todos. A fila continua.", "duracao": 3, "efeitos": {"grupo_aposentados": -3, "confianca_instituicoes": -2}}
+      ]
+    },
+    {
+      "id": "medicos-em-greve",
+      "nome": "Médicos em greve",
+      "manchete": "Médicos da rede pública param por salário e condições",
+      "descricao": "Os médicos dos hospitais federais cruzam os braços. Só emergência funciona.",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.012, "intervalo": 12,
+      "fatores": [["pressao_hospitalar", 50, 90, 2]],
+      "padrao": "esperar",
+      "opcoes": [
+        {"id": "reajuste", "rotulo": "Dar reajuste", "descricao": "A greve acaba. Outras categorias pedem o mesmo.", "duracao": 12, "efeitos": {"gasto_publico": 0.05, "grupo_servidores": 3, "pressao_hospitalar": -2}},
+        {"id": "importar-medicos", "rotulo": "Contratar médicos estrangeiros", "descricao": "Cobre o buraco e irrita as entidades médicas.", "duracao": 12, "leis": {"programa-medicos-no-interior": "importacao-de-medicos"}, "efeitos": {"falta_de_medicos": -5, "grupo_classe_media": -2, "grupo_pobres": 3}},
+        {"id": "esperar", "rotulo": "Esperar a greve acabar", "descricao": "Pacientes pagam a conta.", "duracao": 2, "efeitos": {"pressao_hospitalar": 8, "saude_populacao": -1.5, "grupo_pobres": -3}}
+      ]
+    },
+    {
+      "id": "plano-de-saude-reajuste",
+      "nome": "Reajuste dos planos de saúde",
+      "manchete": "Planos de saúde pedem reajuste de dois dígitos",
+      "descricao": "As operadoras dizem que o custo subiu. Famílias de classe média já não conseguem pagar.",
+      "origem": "cotidiano", "nivel": 1, "chance": 0.015, "intervalo": 8,
+      "padrao": "autorizar",
+      "opcoes": [
+        {"id": "limitar", "rotulo": "Limitar o reajuste", "descricao": "Proteger as famílias. Algumas operadoras ameaçam sair.", "duracao": 12, "efeitos": {"grupo_classe_media": 4, "cobertura_planos_saude": -2, "grupo_empresarios": -3}},
+        {"id": "autorizar", "rotulo": "Autorizar", "descricao": "O mercado decide. Quem não pagar, vai para o {sistema_saude}.", "duracao": 6, "efeitos": {"grupo_classe_media": -3, "cobertura_planos_saude": -3, "pressao_hospitalar": 2}}
+      ]
+    },
+    {
+      "id": "fechar-hospitais-psiquiatricos",
+      "nome": "Hospitais psiquiátricos",
+      "manchete": "Denúncias de abuso em hospital psiquiátrico de {estado}",
+      "descricao": "Internos em condições degradantes num hospital psiquiátrico de {estado}. Fechar e criar atendimento comunitário leva anos; reformar é mais rápido.",
+      "origem": "cotidiano", "nivel": 1, "chance": 0.008, "intervalo": 20,
+      "padrao": "reformar",
+      "opcoes": [
+        {"id": "comunitario", "rotulo": "Fechar e investir em atendimento comunitário", "descricao": "Modelo moderno, transição difícil.", "duracao": 24, "leis": {"saude-mental": "rede-comunitaria"}, "efeitos": {"sofrimento_mental": -2, "gasto_publico": 0.05, "populacao_de_rua": 1}},
+        {"id": "reformar", "rotulo": "Reformar o hospital", "descricao": "Tira da manchete, muda pouco.", "duracao": 6, "efeitos": {"gasto_publico": 0.01}}
+      ]
+    }
+  ]
+}

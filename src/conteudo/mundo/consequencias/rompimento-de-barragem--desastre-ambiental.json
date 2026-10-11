@@ -1,0 +1,17 @@
+{
+  "id": "rompimento-de-barragem--desastre-ambiental",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_rompimento_de_barragem",
+  "alvo": "desastre_ambiental",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 40.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

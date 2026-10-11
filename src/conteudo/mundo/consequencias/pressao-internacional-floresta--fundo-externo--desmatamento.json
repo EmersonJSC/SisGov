@@ -1,0 +1,17 @@
+{
+  "id": "pressao-internacional-floresta--fundo-externo--desmatamento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_pressao_internacional_floresta__fundo_externo",
+  "alvo": "desmatamento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -4.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

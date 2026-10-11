@@ -1,0 +1,17 @@
+{
+  "id": "renda-familias--qualidade-de-vida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "renda_familias",
+  "alvo": "qualidade_de_vida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.25,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

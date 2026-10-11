@@ -1,0 +1,47 @@
+{
+  "id": "seca-historica",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Seca histórica",
+  "descricao": "Meses sem chuva derrubam a safra, encarecem a comida e baixam os reservatórios das hidrelétricas. Desmatamento e degradação tornam secas assim mais frequentes.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Pior seca em décadas seca reservatórios e lavouras no {regiao}",
+  "origem": "natureza",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.02,
+    "fatores": [
+      {
+        "variavel": "desmatamento",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "qualidade_ambiental",
+        "de": 60,
+        "ate": 20,
+        "multiplica": 2
+      }
+    ]
+  },
+  "consequencias": [
+    "seca-historica--producao-agropecuaria",
+    "seca-historica--preco-alimentos",
+    "seca-historica--oferta-energia",
+    "seca-historica--desastre-ambiental",
+    "seca-historica--inseguranca-alimentar",
+    "seca-historica--grupo-agro"
+  ],
+  "controle": "ocorrencia_seca_historica",
+  "duracaoMeses": 6,
+  "desdobramentos": [
+    {
+      "ocorrencia": "racionamento-de-energia",
+      "chance": 0.8,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

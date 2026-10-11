@@ -1,0 +1,88 @@
+{
+  "id": "greve-geral",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Greve geral",
+  "descricao": "Metrôs, bancos, fábricas e escolas param no mesmo dia. As centrais dizem que é só o começo.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Centrais sindicais convocam greve geral",
+  "origem": "crise",
+  "nivel": 3,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.25,
+    "fatores": [
+      {
+        "variavel": "desemprego",
+        "de": 8,
+        "ate": 18,
+        "multiplica": 1.5
+      }
+    ],
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "grupo_trabalhadores",
+      "operador": "menor_que",
+      "valor": 30.0
+    },
+    "porTurnos": 2
+  },
+  "padrao": "negociar",
+  "opcoes": [
+    {
+      "id": "atender",
+      "rotulo": "Atender a pauta",
+      "descricao": "Reajustes e recuo nas reformas. Trabalhadores comemoram, empresários e mercado não.",
+      "controle": "ocorrencia_greve_geral__atender",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "greve-geral--atender--greve-geral",
+        "greve-geral--atender--grupo-trabalhadores",
+        "greve-geral--atender--custo-trabalhista",
+        "greve-geral--atender--confianca-empresarial",
+        "greve-geral--atender--gasto-publico"
+      ]
+    },
+    {
+      "id": "negociar",
+      "rotulo": "Mesa de negociação",
+      "descricao": "Dias de paralisação e um acordo parcial.",
+      "controle": "ocorrencia_greve_geral__negociar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "greve-geral--negociar--greve-geral",
+        "greve-geral--negociar--pib",
+        "greve-geral--negociar--grupo-trabalhadores"
+      ]
+    },
+    {
+      "id": "endurecer",
+      "rotulo": "Cortar o ponto e não ceder",
+      "descricao": "Quem parar perde o dia. A greve pode murchar ou explodir.",
+      "controle": "ocorrencia_greve_geral__endurecer",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "greve-geral--endurecer--greve-geral",
+        "greve-geral--endurecer--protestos",
+        "greve-geral--endurecer--grupo-trabalhadores",
+        "greve-geral--endurecer--grupo-empresarios",
+        "greve-geral--endurecer--polarizacao"
+      ]
+    }
+  ],
+  "consequencias": [
+    "greve-geral--atender--greve-geral",
+    "greve-geral--atender--grupo-trabalhadores",
+    "greve-geral--atender--custo-trabalhista",
+    "greve-geral--atender--confianca-empresarial",
+    "greve-geral--atender--gasto-publico",
+    "greve-geral--negociar--greve-geral",
+    "greve-geral--negociar--pib",
+    "greve-geral--negociar--grupo-trabalhadores",
+    "greve-geral--endurecer--greve-geral",
+    "greve-geral--endurecer--protestos",
+    "greve-geral--endurecer--grupo-trabalhadores",
+    "greve-geral--endurecer--grupo-empresarios",
+    "greve-geral--endurecer--polarizacao"
+  ]
+}

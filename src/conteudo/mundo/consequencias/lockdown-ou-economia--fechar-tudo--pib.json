@@ -1,0 +1,17 @@
+{
+  "id": "lockdown-ou-economia--fechar-tudo--pib",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_lockdown_ou_economia__fechar_tudo",
+  "alvo": "pib",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -3.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

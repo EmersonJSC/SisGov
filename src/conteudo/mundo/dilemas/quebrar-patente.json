@@ -1,0 +1,65 @@
+{
+  "id": "quebrar-patente",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Quebrar a patente?",
+  "descricao": "Um remédio essencial custa uma fortuna por causa da patente. Quebrá-la barateia o tratamento, mas enfurece laboratórios e governos estrangeiros.",
+  "area": "Ministério da Saúde",
+  "manchete": "Remédio de alto custo divide governo e farmacêuticas",
+  "origem": "desdobramento",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.01
+  },
+  "padrao": "negociar",
+  "opcoes": [
+    {
+      "id": "quebrar",
+      "rotulo": "Licença compulsória",
+      "descricao": "Produção nacional do genérico. Remédio barato, retaliação lá fora.",
+      "controle": "ocorrencia_quebrar_patente__quebrar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "quebrar-patente--quebrar--preco-medicamentos",
+        "quebrar-patente--quebrar--grupo-pobres",
+        "quebrar-patente--quebrar--grupo-aposentados",
+        "quebrar-patente--quebrar--reputacao-internacional",
+        "quebrar-patente--quebrar--ied"
+      ]
+    },
+    {
+      "id": "negociar",
+      "rotulo": "Negociar desconto",
+      "descricao": "Compra em grande volume com preço menor.",
+      "controle": "ocorrencia_quebrar_patente__negociar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "quebrar-patente--negociar--preco-medicamentos",
+        "quebrar-patente--negociar--gasto-publico"
+      ]
+    },
+    {
+      "id": "pagar",
+      "rotulo": "Pagar o preço cheio",
+      "descricao": "Respeitar a patente e comprar menos.",
+      "controle": "ocorrencia_quebrar_patente__pagar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "quebrar-patente--pagar--gasto-publico",
+        "quebrar-patente--pagar--grupo-aposentados"
+      ]
+    }
+  ],
+  "consequencias": [
+    "quebrar-patente--quebrar--preco-medicamentos",
+    "quebrar-patente--quebrar--grupo-pobres",
+    "quebrar-patente--quebrar--grupo-aposentados",
+    "quebrar-patente--quebrar--reputacao-internacional",
+    "quebrar-patente--quebrar--ied",
+    "quebrar-patente--negociar--preco-medicamentos",
+    "quebrar-patente--negociar--gasto-publico",
+    "quebrar-patente--pagar--gasto-publico",
+    "quebrar-patente--pagar--grupo-aposentados"
+  ]
+}

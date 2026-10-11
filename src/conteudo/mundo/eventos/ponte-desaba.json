@@ -1,0 +1,30 @@
+{
+  "id": "ponte-desaba",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Ponte desaba em {estado}",
+  "descricao": "Uma ponte sem manutenção cai em {estado}. Carros e caminhões vão junto; a rota de escoamento fica cortada por meses.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Ponte de rodovia federal desaba em {estado}",
+  "origem": "pais",
+  "nivel": 1,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 3,
+  "gatilho": {
+    "chance": 0.05,
+    "fatores": [
+      {
+        "variavel": "infraestrutura_transportes",
+        "de": 60,
+        "ate": 20,
+        "multiplica": 3
+      }
+    ]
+  },
+  "consequencias": [
+    "ponte-desaba--infraestrutura-transportes",
+    "ponte-desaba--grupo-agro"
+  ],
+  "controle": "ocorrencia_ponte_desaba",
+  "duracaoMeses": 3
+}

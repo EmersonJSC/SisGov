@@ -1,0 +1,74 @@
+{
+  "id": "subsidiar-o-combustivel",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Subsidiar o combustível?",
+  "descricao": "Com o petróleo nas alturas, o preço do combustível pesa em todo mundo. Segurar o preço custa dinheiro público; repassar custa aprovação.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Gasolina mais cara pressiona o governo",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "repassar",
+  "opcoes": [
+    {
+      "id": "subsidiar",
+      "rotulo": "Subsidiar o combustível",
+      "descricao": "O Tesouro paga a diferença por um ano: preço contido, conta alta.",
+      "controle": "ocorrencia_subsidiar_o_combustivel__subsidiar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "subsidiar-o-combustivel--subsidiar--gasto-publico",
+        "subsidiar-o-combustivel--subsidiar--preco-energia",
+        "subsidiar-o-combustivel--subsidiar--inflacao",
+        "subsidiar-o-combustivel--subsidiar--grupo-agro",
+        "subsidiar-o-combustivel--subsidiar--grupo-trabalhadores"
+      ]
+    },
+    {
+      "id": "taxar-petroleiras",
+      "rotulo": "Taxar o lucro das petroleiras",
+      "descricao": "Um imposto extraordinário sobre o lucro do setor paga um vale-combustível para os mais pobres.",
+      "controle": "ocorrencia_subsidiar_o_combustivel__taxar_petroleiras",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "subsidiar-o-combustivel--taxar-petroleiras--arrecadacao",
+        "subsidiar-o-combustivel--taxar-petroleiras--grupo-pobres",
+        "subsidiar-o-combustivel--taxar-petroleiras--confianca-empresarial",
+        "subsidiar-o-combustivel--taxar-petroleiras--grupo-empresarios",
+        "subsidiar-o-combustivel--taxar-petroleiras--investimento"
+      ]
+    },
+    {
+      "id": "repassar",
+      "rotulo": "Repassar o preço",
+      "descricao": "O mercado manda. Combustível caro, inflação mais alta e motoristas irritados.",
+      "controle": "ocorrencia_subsidiar_o_combustivel__repassar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "subsidiar-o-combustivel--repassar--inflacao",
+        "subsidiar-o-combustivel--repassar--grupo-trabalhadores",
+        "subsidiar-o-combustivel--repassar--grupo-pequenos-negocios",
+        "subsidiar-o-combustivel--repassar--protestos"
+      ]
+    }
+  ],
+  "consequencias": [
+    "subsidiar-o-combustivel--subsidiar--gasto-publico",
+    "subsidiar-o-combustivel--subsidiar--preco-energia",
+    "subsidiar-o-combustivel--subsidiar--inflacao",
+    "subsidiar-o-combustivel--subsidiar--grupo-agro",
+    "subsidiar-o-combustivel--subsidiar--grupo-trabalhadores",
+    "subsidiar-o-combustivel--taxar-petroleiras--arrecadacao",
+    "subsidiar-o-combustivel--taxar-petroleiras--grupo-pobres",
+    "subsidiar-o-combustivel--taxar-petroleiras--confianca-empresarial",
+    "subsidiar-o-combustivel--taxar-petroleiras--grupo-empresarios",
+    "subsidiar-o-combustivel--taxar-petroleiras--investimento",
+    "subsidiar-o-combustivel--repassar--inflacao",
+    "subsidiar-o-combustivel--repassar--grupo-trabalhadores",
+    "subsidiar-o-combustivel--repassar--grupo-pequenos-negocios",
+    "subsidiar-o-combustivel--repassar--protestos"
+  ]
+}

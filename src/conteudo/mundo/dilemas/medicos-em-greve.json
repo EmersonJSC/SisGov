@@ -1,0 +1,79 @@
+{
+  "id": "medicos-em-greve",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Médicos em greve",
+  "descricao": "Os médicos dos hospitais federais cruzam os braços. Só emergência funciona.",
+  "area": "Ministério da Saúde",
+  "manchete": "Médicos da rede pública param por salário e condições",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.012,
+    "fatores": [
+      {
+        "variavel": "pressao_hospitalar",
+        "de": 50,
+        "ate": 90,
+        "multiplica": 2
+      }
+    ]
+  },
+  "padrao": "esperar",
+  "opcoes": [
+    {
+      "id": "reajuste",
+      "rotulo": "Dar reajuste",
+      "descricao": "A greve acaba. Outras categorias pedem o mesmo.",
+      "controle": "ocorrencia_medicos_em_greve__reajuste",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "medicos-em-greve--reajuste--gasto-publico",
+        "medicos-em-greve--reajuste--grupo-servidores",
+        "medicos-em-greve--reajuste--pressao-hospitalar"
+      ]
+    },
+    {
+      "id": "importar-medicos",
+      "rotulo": "Contratar médicos estrangeiros",
+      "descricao": "Cobre o buraco e irrita as entidades médicas.",
+      "controle": "ocorrencia_medicos_em_greve__importar_medicos",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "medicos-em-greve--importar-medicos--falta-de-medicos",
+        "medicos-em-greve--importar-medicos--grupo-classe-media",
+        "medicos-em-greve--importar-medicos--grupo-pobres"
+      ],
+      "leis": [
+        {
+          "lei": "programa-medicos-no-interior",
+          "nivel": 67.0
+        }
+      ]
+    },
+    {
+      "id": "esperar",
+      "rotulo": "Esperar a greve acabar",
+      "descricao": "Pacientes pagam a conta.",
+      "controle": "ocorrencia_medicos_em_greve__esperar",
+      "duracaoMeses": 2,
+      "consequencias": [
+        "medicos-em-greve--esperar--pressao-hospitalar",
+        "medicos-em-greve--esperar--saude-populacao",
+        "medicos-em-greve--esperar--grupo-pobres"
+      ]
+    }
+  ],
+  "consequencias": [
+    "medicos-em-greve--reajuste--gasto-publico",
+    "medicos-em-greve--reajuste--grupo-servidores",
+    "medicos-em-greve--reajuste--pressao-hospitalar",
+    "medicos-em-greve--importar-medicos--falta-de-medicos",
+    "medicos-em-greve--importar-medicos--grupo-classe-media",
+    "medicos-em-greve--importar-medicos--grupo-pobres",
+    "medicos-em-greve--esperar--pressao-hospitalar",
+    "medicos-em-greve--esperar--saude-populacao",
+    "medicos-em-greve--esperar--grupo-pobres"
+  ]
+}

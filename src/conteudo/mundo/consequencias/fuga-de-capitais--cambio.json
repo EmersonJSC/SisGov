@@ -1,0 +1,17 @@
+{
+  "id": "fuga-de-capitais--cambio",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_fuga_de_capitais",
+  "alvo": "cambio",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 12.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

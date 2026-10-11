@@ -1,0 +1,17 @@
+{
+  "id": "resposta-aos-ataques--apoio-limitado--onda-violencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resposta_aos_ataques__apoio_limitado",
+  "alvo": "onda_violencia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -6.0,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

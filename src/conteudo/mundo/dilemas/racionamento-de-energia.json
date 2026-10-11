@@ -1,0 +1,77 @@
+{
+  "id": "racionamento-de-energia",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Racionamento de energia",
+  "descricao": "A seca esvaziou as hidrelétricas. Ou se economiza agora, ou se arrisca um apagão.",
+  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "manchete": "Reservatórios no limite: governo discute racionamento",
+  "origem": "desdobramento",
+  "nivel": 3,
+  "gatilho": {
+    "chance": 0.0
+  },
+  "padrao": "arriscar",
+  "opcoes": [
+    {
+      "id": "racionar",
+      "rotulo": "Racionar já",
+      "descricao": "Metas de economia e multas. Indústria freia, apagão evitado.",
+      "controle": "ocorrencia_racionamento_de_energia__racionar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "racionamento-de-energia--racionar--pib",
+        "racionamento-de-energia--racionar--apagao",
+        "racionamento-de-energia--racionar--grupo-empresarios",
+        "racionamento-de-energia--racionar--grupo-classe-media"
+      ]
+    },
+    {
+      "id": "termeletricas",
+      "rotulo": "Ligar as termelétricas",
+      "descricao": "Energia garantida, conta de luz e poluição em alta.",
+      "controle": "ocorrencia_racionamento_de_energia__termeletricas",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "racionamento-de-energia--termeletricas--preco-energia",
+        "racionamento-de-energia--termeletricas--emissoes",
+        "racionamento-de-energia--termeletricas--inflacao"
+      ]
+    },
+    {
+      "id": "importar",
+      "rotulo": "Importar energia dos vizinhos",
+      "descricao": "Cara e limitada, mas sem racionamento.",
+      "controle": "ocorrencia_racionamento_de_energia__importar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "racionamento-de-energia--importar--preco-energia",
+        "racionamento-de-energia--importar--gasto-publico"
+      ]
+    },
+    {
+      "id": "arriscar",
+      "rotulo": "Torcer pela chuva",
+      "descricao": "Se não chover, o país apaga.",
+      "controle": "ocorrencia_racionamento_de_energia__arriscar",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "racionamento-de-energia--arriscar--apagao",
+        "racionamento-de-energia--arriscar--confianca-empresarial"
+      ]
+    }
+  ],
+  "consequencias": [
+    "racionamento-de-energia--racionar--pib",
+    "racionamento-de-energia--racionar--apagao",
+    "racionamento-de-energia--racionar--grupo-empresarios",
+    "racionamento-de-energia--racionar--grupo-classe-media",
+    "racionamento-de-energia--termeletricas--preco-energia",
+    "racionamento-de-energia--termeletricas--emissoes",
+    "racionamento-de-energia--termeletricas--inflacao",
+    "racionamento-de-energia--importar--preco-energia",
+    "racionamento-de-energia--importar--gasto-publico",
+    "racionamento-de-energia--arriscar--apagao",
+    "racionamento-de-energia--arriscar--confianca-empresarial"
+  ]
+}

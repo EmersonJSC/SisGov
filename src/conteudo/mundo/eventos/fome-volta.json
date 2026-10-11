@@ -1,0 +1,30 @@
+{
+  "id": "fome-volta",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "A fome volta",
+  "descricao": "O número de famílias sem comida garantida volta a crescer. Igrejas e ONGs não dão conta das filas.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Pesquisa mostra milhões passando fome",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.3,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "inseguranca_alimentar",
+      "operador": "maior_que",
+      "valor": 30.0
+    },
+    "porTurnos": 3
+  },
+  "consequencias": [
+    "fome-volta--grupo-pobres",
+    "fome-volta--grupo-progressistas",
+    "fome-volta--saude-populacao"
+  ],
+  "controle": "ocorrencia_fome_volta",
+  "duracaoMeses": 6
+}

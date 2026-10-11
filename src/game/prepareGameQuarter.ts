@@ -8,6 +8,11 @@ import {
 } from "../engine";
 import type { GameState } from "./createGame";
 import { preparePolicyExecution } from "./preparePolicyExecution";
+import {
+  advanceOccurrenceMonths,
+  occurrenceMonth,
+  type OccurrenceState,
+} from "./occurrences";
 import type { PolicyState } from "../domain/game";
 import {
   defaultProposalTiming,
@@ -24,6 +29,8 @@ export type PreparedGameQuarter = Readonly<{
   months: readonly PreparedGameMonth[];
   policies: readonly PolicyState[];
   proposals: GameState["proposals"];
+  /** Ocorrências depois dos três meses (o que acabou saiu das ativas). */
+  occurrences?: OccurrenceState;
 }>;
 
 function invalid(field: string, message: string): ValidationResult<never> {
@@ -61,7 +68,23 @@ export function prepareGameQuarter(
   for (const [index, states] of monthlyPolicyStates.entries()) {
     const batch = preparePolicyExecution(content, graph, states);
     if (!batch.ok) return batch;
-    const advanced = advanceExecution(content, graph, execution, batch.value);
+    // SG106: eventos em curso e escolhas de dilema ligam os próprios nós
+    const occurrence = game.occurrences
+      ? occurrenceMonth(content, graph, game.occurrences, index)
+      : undefined;
+    const merged = occurrence
+      ? {
+          controlCommands: [
+            ...batch.value.controlCommands,
+            ...occurrence.commands,
+          ],
+          activeRelationIds: [
+            ...batch.value.activeRelationIds,
+            ...occurrence.relationIds,
+          ],
+        }
+      : batch.value;
+    const advanced = advanceExecution(content, graph, execution, merged);
     if (!advanced.ok) return advanced;
     execution = advanced.value.execution;
     months.push({
@@ -82,6 +105,15 @@ export function prepareGameQuarter(
       months,
       policies: monthlyPolicyStates[2],
       proposals: proposals.value,
+      ...(game.occurrences
+        ? {
+            occurrences: advanceOccurrenceMonths(
+              game.occurrences,
+              3,
+              game.currentTurn + 1,
+            ),
+          }
+        : {}),
     },
   };
 }

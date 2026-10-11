@@ -1,0 +1,17 @@
+{
+  "id": "ocupacao-de-terras--conflitos-fundiarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_ocupacao_de_terras",
+  "alvo": "conflitos_fundiarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 4.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

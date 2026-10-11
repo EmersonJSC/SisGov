@@ -1,0 +1,78 @@
+{
+  "id": "greve-contra-privatizacao",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Greve contra a privatização",
+  "descricao": "A decisão de vender estatais levou sindicatos às ruas. Refinarias, correios e companhias de energia param.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Trabalhadores das estatais param contra a venda das empresas",
+  "origem": "reacao",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 8,
+  "gatilho": {
+    "chance": 0.75,
+    "reacao": {
+      "controle": "nivel_empresas_estatais_e_privatizacao",
+      "janelaTurnos": 2,
+      "desce": 30.0
+    }
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "manter",
+      "rotulo": "Manter a privatização",
+      "descricao": "A greve dura semanas, mas a venda segue.",
+      "controle": "ocorrencia_greve_contra_privatizacao__manter",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "greve-contra-privatizacao--manter--protestos",
+        "greve-contra-privatizacao--manter--grupo-trabalhadores",
+        "greve-contra-privatizacao--manter--grupo-empresarios",
+        "greve-contra-privatizacao--manter--pib"
+      ]
+    },
+    {
+      "id": "compensar",
+      "rotulo": "Garantir os empregos por dois anos",
+      "descricao": "Estabilidade temporária para quem trabalha nas estatais. Vale menos na venda.",
+      "controle": "ocorrencia_greve_contra_privatizacao__compensar",
+      "duracaoMeses": 24,
+      "consequencias": [
+        "greve-contra-privatizacao--compensar--grupo-trabalhadores",
+        "greve-contra-privatizacao--compensar--ied",
+        "greve-contra-privatizacao--compensar--custo-trabalhista"
+      ]
+    },
+    {
+      "id": "recuar",
+      "rotulo": "Recuar",
+      "descricao": "As estatais estratégicas ficam com o Estado. O mercado perde a confiança no governo.",
+      "controle": "ocorrencia_greve_contra_privatizacao__recuar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "greve-contra-privatizacao--recuar--confianca-empresarial",
+        "greve-contra-privatizacao--recuar--risco-pais",
+        "greve-contra-privatizacao--recuar--grupo-trabalhadores"
+      ],
+      "leis": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "nivel": 67.0
+        }
+      ]
+    }
+  ],
+  "consequencias": [
+    "greve-contra-privatizacao--manter--protestos",
+    "greve-contra-privatizacao--manter--grupo-trabalhadores",
+    "greve-contra-privatizacao--manter--grupo-empresarios",
+    "greve-contra-privatizacao--manter--pib",
+    "greve-contra-privatizacao--compensar--grupo-trabalhadores",
+    "greve-contra-privatizacao--compensar--ied",
+    "greve-contra-privatizacao--compensar--custo-trabalhista",
+    "greve-contra-privatizacao--recuar--confianca-empresarial",
+    "greve-contra-privatizacao--recuar--risco-pais",
+    "greve-contra-privatizacao--recuar--grupo-trabalhadores"
+  ]
+}

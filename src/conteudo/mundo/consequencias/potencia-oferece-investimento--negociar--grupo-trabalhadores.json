@@ -1,0 +1,17 @@
+{
+  "id": "potencia-oferece-investimento--negociar--grupo-trabalhadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_potencia_oferece_investimento__negociar",
+  "alvo": "grupo_trabalhadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

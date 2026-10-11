@@ -1,0 +1,67 @@
+{
+  "id": "armas-flexibilizar",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Clubes de tiro pedem mais armas",
+  "descricao": "Parlamentares e atiradores querem facilitar o porte de armas. Especialistas alertam para mais mortes em brigas e feminicídios.",
+  "area": "Ministério da Justiça",
+  "manchete": "Bancada da bala pressiona por porte mais fácil",
+  "origem": "cotidiano",
+  "nivel": 2,
+  "intervaloMinimoTurnos": 16,
+  "gatilho": {
+    "chance": 0.012,
+    "condicao": {
+      "tipo": "ou",
+      "condicoes": [
+        {
+          "tipo": "comparacao",
+          "variavel": "nivel_porte_de_armas",
+          "operador": "igual",
+          "valor": 0.0
+        },
+        {
+          "tipo": "comparacao",
+          "variavel": "nivel_porte_de_armas",
+          "operador": "igual",
+          "valor": 33.0
+        }
+      ]
+    }
+  },
+  "padrao": "manter",
+  "opcoes": [
+    {
+      "id": "flexibilizar",
+      "rotulo": "Flexibilizar o porte",
+      "descricao": "Mais armas legais nas ruas.",
+      "controle": "ocorrencia_armas_flexibilizar__flexibilizar",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "armas-flexibilizar--flexibilizar--base-congresso",
+        "armas-flexibilizar--flexibilizar--grupo-conservadores",
+        "armas-flexibilizar--flexibilizar--grupo-progressistas"
+      ],
+      "leis": [
+        {
+          "lei": "porte-de-armas",
+          "nivel": 67.0
+        }
+      ]
+    },
+    {
+      "id": "manter",
+      "rotulo": "Manter as regras",
+      "descricao": "A bancada fica contrariada.",
+      "controle": "ocorrencia_armas_flexibilizar__manter",
+      "duracaoMeses": 6,
+      "consequencias": ["armas-flexibilizar--manter--base-congresso"]
+    }
+  ],
+  "consequencias": [
+    "armas-flexibilizar--flexibilizar--base-congresso",
+    "armas-flexibilizar--flexibilizar--grupo-conservadores",
+    "armas-flexibilizar--flexibilizar--grupo-progressistas",
+    "armas-flexibilizar--manter--base-congresso"
+  ]
+}

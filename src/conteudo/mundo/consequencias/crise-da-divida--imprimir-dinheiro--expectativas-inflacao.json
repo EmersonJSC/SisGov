@@ -1,0 +1,17 @@
+{
+  "id": "crise-da-divida--imprimir-dinheiro--expectativas-inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_crise_da_divida__imprimir_dinheiro",
+  "alvo": "expectativas_inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 10.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

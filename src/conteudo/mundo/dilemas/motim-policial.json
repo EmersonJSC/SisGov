@@ -1,0 +1,75 @@
+{
+  "id": "motim-policial",
+  "tipo": "dilema",
+  "versaoEsquema": 1,
+  "nome": "Motim da polícia",
+  "descricao": "Sem polícia nas ruas, lojas fecham e os homicídios triplicam em uma semana. A greve de policiais é proibida, mas está acontecendo.",
+  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "manchete": "Policiais de {estado} se aquartelam e a criminalidade dispara",
+  "origem": "crise",
+  "nivel": 3,
+  "intervaloMinimoTurnos": 20,
+  "gatilho": {
+    "chance": 0.008,
+    "fatores": [
+      {
+        "variavel": "grupo_servidores",
+        "de": 50,
+        "ate": 20,
+        "multiplica": 3
+      }
+    ]
+  },
+  "padrao": "forca-nacional",
+  "opcoes": [
+    {
+      "id": "forca-nacional",
+      "rotulo": "Mandar a Força Nacional",
+      "descricao": "Tropas federais assumem o policiamento até o motim acabar.",
+      "controle": "ocorrencia_motim_policial__forca_nacional",
+      "duracaoMeses": 3,
+      "consequencias": [
+        "motim-policial--forca-nacional--gasto-publico",
+        "motim-policial--forca-nacional--violencia-letal",
+        "motim-policial--forca-nacional--sensacao-seguranca"
+      ]
+    },
+    {
+      "id": "anistia-e-reajuste",
+      "rotulo": "Reajuste com anistia",
+      "descricao": "O motim acaba amanhã; outras polícias aprendem a lição.",
+      "controle": "ocorrencia_motim_policial__anistia_e_reajuste",
+      "duracaoMeses": 12,
+      "consequencias": [
+        "motim-policial--anistia-e-reajuste--gasto-publico",
+        "motim-policial--anistia-e-reajuste--impunidade",
+        "motim-policial--anistia-e-reajuste--forca-instituicoes",
+        "motim-policial--anistia-e-reajuste--grupo-servidores"
+      ]
+    },
+    {
+      "id": "punir",
+      "rotulo": "Prender os líderes",
+      "descricao": "Autoridade restabelecida, tropa ressentida.",
+      "controle": "ocorrencia_motim_policial__punir",
+      "duracaoMeses": 6,
+      "consequencias": [
+        "motim-policial--punir--violencia-letal",
+        "motim-policial--punir--forca-instituicoes",
+        "motim-policial--punir--grupo-conservadores"
+      ]
+    }
+  ],
+  "consequencias": [
+    "motim-policial--forca-nacional--gasto-publico",
+    "motim-policial--forca-nacional--violencia-letal",
+    "motim-policial--forca-nacional--sensacao-seguranca",
+    "motim-policial--anistia-e-reajuste--gasto-publico",
+    "motim-policial--anistia-e-reajuste--impunidade",
+    "motim-policial--anistia-e-reajuste--forca-instituicoes",
+    "motim-policial--anistia-e-reajuste--grupo-servidores",
+    "motim-policial--punir--violencia-letal",
+    "motim-policial--punir--forca-instituicoes",
+    "motim-policial--punir--grupo-conservadores"
+  ]
+}

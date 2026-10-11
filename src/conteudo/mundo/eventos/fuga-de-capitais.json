@@ -1,0 +1,40 @@
+{
+  "id": "fuga-de-capitais",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Corrida contra a moeda",
+  "descricao": "O mercado perde a confiança: juros da dívida altos, contas no vermelho e risco crescente fazem o dinheiro sair de uma vez.",
+  "area": "Ministério da Fazenda",
+  "manchete": "Dólar dispara e investidores tiram dinheiro do país",
+  "origem": "pais",
+  "nivel": 3,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 12,
+  "gatilho": {
+    "chance": 0.08,
+    "fatores": [
+      {
+        "variavel": "juros_explosivos",
+        "de": 20,
+        "ate": 50,
+        "multiplica": 3
+      }
+    ],
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "risco_pais",
+      "operador": "maior_que",
+      "valor": 65.0
+    },
+    "porTurnos": 2
+  },
+  "consequencias": [
+    "fuga-de-capitais--fuga-capitais",
+    "fuga-de-capitais--cambio",
+    "fuga-de-capitais--inflacao",
+    "fuga-de-capitais--taxa-juros",
+    "fuga-de-capitais--confianca-empresarial"
+  ],
+  "controle": "ocorrencia_fuga_de_capitais",
+  "duracaoMeses": 6
+}

@@ -1,0 +1,17 @@
+{
+  "id": "greve-de-metroviarios--justica--mobilidade-urbana",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_greve_de_metroviarios__justica",
+  "alvo": "mobilidade_urbana",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

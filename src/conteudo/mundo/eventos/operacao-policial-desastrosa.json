@@ -1,0 +1,45 @@
+{
+  "id": "operacao-policial-desastrosa",
+  "tipo": "evento",
+  "versaoEsquema": 1,
+  "nome": "Operação policial termina em mortes",
+  "descricao": "Uma operação contra o tráfico no {bairro} termina com inocentes mortos. Vídeos circulam e a polícia é acusada de execução.",
+  "area": "Ministério da Justiça",
+  "manchete": "Operação no {bairro}, em {cidade}, deixa moradores mortos",
+  "origem": "pais",
+  "nivel": 2,
+  "avaliacao": "negativa",
+  "intervaloMinimoTurnos": 6,
+  "gatilho": {
+    "chance": 0.03,
+    "fatores": [
+      {
+        "variavel": "letalidade_policial",
+        "de": 30,
+        "ate": 80,
+        "multiplica": 3
+      },
+      {
+        "variavel": "nivel_cameras_corporais",
+        "de": 100,
+        "ate": 0,
+        "multiplica": 1.5
+      }
+    ]
+  },
+  "consequencias": [
+    "operacao-policial-desastrosa--confianca-instituicoes",
+    "operacao-policial-desastrosa--protestos",
+    "operacao-policial-desastrosa--grupo-pobres",
+    "operacao-policial-desastrosa--grupo-progressistas"
+  ],
+  "controle": "ocorrencia_operacao_policial_desastrosa",
+  "duracaoMeses": 2,
+  "desdobramentos": [
+    {
+      "ocorrencia": "policial-mata-inocente",
+      "chance": 0.8,
+      "emTurnos": [1, 1]
+    }
+  ]
+}

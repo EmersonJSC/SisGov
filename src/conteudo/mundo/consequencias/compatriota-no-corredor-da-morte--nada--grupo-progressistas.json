@@ -1,0 +1,17 @@
+{
+  "id": "compatriota-no-corredor-da-morte--nada--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_compatriota_no_corredor_da_morte__nada",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

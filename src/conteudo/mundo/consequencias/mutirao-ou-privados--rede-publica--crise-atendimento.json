@@ -1,0 +1,17 @@
+{
+  "id": "mutirao-ou-privados--rede-publica--crise-atendimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_mutirao_ou_privados__rede_publica",
+  "alvo": "crise_atendimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -8.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

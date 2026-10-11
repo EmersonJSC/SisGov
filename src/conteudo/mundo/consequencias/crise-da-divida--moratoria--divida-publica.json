@@ -1,0 +1,17 @@
+{
+  "id": "crise-da-divida--moratoria--divida-publica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_crise_da_divida__moratoria",
+  "alvo": "divida_publica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -2.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

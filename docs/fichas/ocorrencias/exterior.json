@@ -1,0 +1,314 @@
+{
+  "area": "Ministério das Relações Exteriores",
+  "eventos": [
+    {
+      "id": "guerra-entre-potencias",
+      "nome": "Guerra entre potências",
+      "manchete": "Potências entram em guerra aberta e o mundo prende a respiração",
+      "descricao": "Duas grandes potências trocam ataques diretos. Petróleo e comida disparam, as bolsas desabam e todo país é pressionado a escolher um lado. Quanto mais tensão no mundo, mais perto disso.",
+      "origem": "mundo", "nivel": 4, "avaliacao": "negativa",
+      "chance": 0.003, "duracao": 18, "intervalo": 60,
+      "fatores": [["tensao_internacional", 30, 80, 3]],
+      "efeitos": {"preco_energia": 15, "preco_alimentos": 10, "inflacao": 3, "exportacoes": -8, "investimento": -6, "risco_pais": 8, "tensao_internacional": 20, "pib": -2},
+      "desdobra": [["neutralidade-na-guerra", 1, 1, 1]]
+    },
+    {
+      "id": "guerra-no-vizinho",
+      "nome": "Guerra no país vizinho",
+      "manchete": "Guerra civil explode em {vizinho} e milhares fogem para a fronteira",
+      "descricao": "O governo de {vizinho} perdeu o controle de parte do território. Famílias inteiras cruzam a fronteira com o que conseguem carregar.",
+      "origem": "mundo", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0.006, "duracao": 12, "intervalo": 30,
+      "fatores": [["tensao_internacional", 20, 70, 2]],
+      "efeitos": {"crise_migratoria": 20, "tensao_internacional": 8, "exportacoes": -2, "sensacao_seguranca": -2},
+      "desdobra": [["crise-na-fronteira", 1, 1, 1], ["resgatar-compatriotas", 0.5, 1, 2]]
+    },
+    {
+      "id": "golpe-no-vizinho",
+      "nome": "Golpe no país vizinho",
+      "manchete": "Militares derrubam o governo de {vizinho}",
+      "descricao": "Tanques nas ruas de {vizinho}. O novo regime pede reconhecimento; a oposição pede ajuda.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.008, "duracao": 6, "intervalo": 20,
+      "efeitos": {"tensao_internacional": 4, "crise_migratoria": 6},
+      "desdobra": [["reconhecer-o-novo-governo", 1, 1, 1]]
+    },
+    {
+      "id": "sancoes-internacionais",
+      "nome": "Sanções internacionais",
+      "manchete": "Potências anunciam sanções contra o país",
+      "descricao": "Bancos estrangeiros cortam linhas de crédito, compradores cancelam contratos e as peças importadas somem das prateleiras.",
+      "origem": "desdobramento", "nivel": 3, "avaliacao": "negativa",
+      "chance": 0, "duracao": 24,
+      "efeitos": {"exportacoes": -10, "importacoes": -8, "ied": -0.8, "risco_pais": 12, "reputacao_internacional": -10, "inflacao": 2, "credito": -4},
+      "desdobra": [["responder-as-sancoes", 1, 1, 2]]
+    },
+    {
+      "id": "crise-diplomatica",
+      "nome": "Crise diplomática",
+      "manchete": "{potencia} convoca embaixador após declaração do governo",
+      "descricao": "Uma frase mal colocada vira crise. {potencia} ameaça rever acordos e os exportadores ficam apreensivos.",
+      "origem": "mundo", "nivel": 1, "avaliacao": "negativa",
+      "chance": 0.03, "duracao": 3, "intervalo": 6,
+      "fatores": [["tensao_internacional", 20, 70, 2], ["polarizacao", 40, 80, 1.5]],
+      "efeitos": {"reputacao_internacional": -2, "exportacoes": -1}
+    },
+    {
+      "id": "espionagem-revelada",
+      "nome": "Espionagem revelada",
+      "manchete": "Documentos mostram que {potencia} grampeou o presidente",
+      "descricao": "Um vazamento revela anos de escutas no {palacio} e na estatal de energia. O país quer uma resposta.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.008, "duracao": 3, "intervalo": 24,
+      "efeitos": {"confianca_instituicoes": -2, "tensao_internacional": 3},
+      "desdobra": [["reagir-a-espionagem", 1, 1, 1]]
+    },
+    {
+      "id": "ataque-hacker",
+      "nome": "Ataque hacker ao governo",
+      "manchete": "Hackers derrubam sistemas do governo e pedem resgate",
+      "descricao": "Os sistemas de benefícios, notas fiscais e passaportes saem do ar. Os criminosos pedem pagamento em criptomoeda.",
+      "origem": "pais", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.012, "duracao": 2, "intervalo": 12,
+      "fatores": [["capacidade_estatal", 70, 30, 2], ["tensao_internacional", 30, 70, 1.5]],
+      "efeitos": {"capacidade_estatal": -5, "confianca_instituicoes": -2, "arrecadacao": -0.1},
+      "desdobra": [["pagar-o-resgate", 1, 1, 1]]
+    },
+    {
+      "id": "cupula-no-pais",
+      "nome": "Cúpula internacional no país",
+      "manchete": "Chefes de Estado desembarcam em {cidade} para a cúpula",
+      "descricao": "O país sedia uma reunião de líderes mundiais. Fotos, acordos e holofotes. Mais provável com boa reputação.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "positiva",
+      "chance": 0.01, "duracao": 3, "intervalo": 24,
+      "fatores": [["reputacao_internacional", 40, 80, 2]],
+      "efeitos": {"reputacao_internacional": 4, "turismo": 3, "ied": 0.1}
+    },
+    {
+      "id": "assento-no-conselho",
+      "nome": "Vaga no conselho mundial",
+      "manchete": "País é eleito para o conselho de segurança mundial",
+      "descricao": "Com reputação em alta, o país ganha uma cadeira temporária no órgão que decide guerras e sanções.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "positiva",
+      "chance": 0.2, "se": [["reputacao_internacional", ">", 70]], "porTurnos": 4,
+      "duracao": 24, "intervalo": 40,
+      "efeitos": {"reputacao_internacional": 3, "confianca_empresarial": 2, "grupo_classe_media": 1}
+    },
+    {
+      "id": "corrida-armamentista",
+      "nome": "Corrida armamentista na região",
+      "manchete": "{vizinho} compra caças e tanques e reacende a desconfiança",
+      "descricao": "O vizinho dobra o orçamento militar. Generais pedem resposta; diplomatas pedem calma.",
+      "origem": "mundo", "nivel": 2, "avaliacao": "negativa",
+      "chance": 0.01, "duracao": 12, "intervalo": 24,
+      "fatores": [["tensao_internacional", 30, 70, 2]],
+      "efeitos": {"tensao_internacional": 5, "grupo_conservadores": -1}
+    },
+    {
+      "id": "compatriota-condenado-no-exterior",
+      "nome": "Compatriota condenado à morte",
+      "manchete": "Cidadão {gentilico} é condenado à morte por tráfico em {potencia}",
+      "descricao": "A família implora por ajuda; o governo de lá diz que a lei é para todos.",
+      "origem": "mundo", "nivel": 1, "avaliacao": "negativa",
+      "chance": 0.01, "duracao": 3, "intervalo": 20,
+      "efeitos": {"reputacao_internacional": -1, "polarizacao": 1},
+      "desdobra": [["compatriota-no-corredor-da-morte", 1, 1, 1]]
+    }
+  ],
+  "dilemas": [
+    {
+      "id": "programa-nuclear",
+      "nome": "A bomba",
+      "manchete": "Cientistas dizem que o país pode ter a bomba em cinco anos",
+      "descricao": "Com usinas e enriquecimento de urânio, falta só a decisão política. Os generais querem; o mundo vai reagir.",
+      "origem": "cotidiano", "nivel": 3,
+      "chance": 0.01, "se": [["lei:energia-nuclear", "em", ["manutencao", "expansao"]]], "intervalo": 40, "unica": true,
+      "fatores": [["tensao_internacional", 30, 80, 3]],
+      "padrao": "abandonar",
+      "opcoes": [
+        {"id": "bomba", "rotulo": "Construir a bomba", "descricao": "Dissuasão definitiva. Sanções quase certas e vizinhos assustados.", "duracao": 36, "efeitos": {"capacidade_defesa": 0.4, "tensao_internacional": 15, "reputacao_internacional": -15, "risco_pais": 6, "gasto_publico": 0.15, "grupo_conservadores": 4, "grupo_progressistas": -6}, "desdobra": [["sancoes-internacionais", 0.8, 2, 4]]},
+        {"id": "civil-com-inspecao", "rotulo": "Só uso civil, com inspeção aberta", "descricao": "Abre as usinas aos inspetores. Ganha confiança, perde a carta na manga.", "duracao": 24, "efeitos": {"reputacao_internacional": 4, "tensao_internacional": -3, "oferta_energia": 2, "grupo_conservadores": -2}},
+        {"id": "ambiguidade", "rotulo": "Manter a dúvida", "descricao": "Não constrói nem desmente. Ninguém confia, ninguém ataca.", "duracao": 24, "efeitos": {"tensao_internacional": 5, "reputacao_internacional": -4}, "desdobra": [["sancoes-internacionais", 0.2, 4, 8]]},
+        {"id": "abandonar", "rotulo": "Abandonar o enriquecimento", "descricao": "Engaveta o programa. Os militares se calam, contrariados.", "duracao": 12, "efeitos": {"reputacao_internacional": 2, "grupo_conservadores": -2}}
+      ]
+    },
+    {
+      "id": "neutralidade-na-guerra",
+      "nome": "Que lado tomar na guerra?",
+      "manchete": "As potências em guerra cobram uma posição do país",
+      "descricao": "Um lado oferece contratos; o outro, ameaças. Ficar neutro também tem preço.",
+      "origem": "desdobramento", "nivel": 4, "chance": 0,
+      "padrao": "neutro",
+      "opcoes": [
+        {"id": "aliar", "rotulo": "Alinhar com o bloco ocidental", "descricao": "Contratos e crédito de um lado, retaliação do outro.", "duracao": 24, "efeitos": {"ied": 0.4, "exportacoes": -3, "tensao_internacional": 4, "grupo_progressistas": -3, "grupo_conservadores": 3}},
+        {"id": "neutro", "rotulo": "Neutralidade", "descricao": "Vende para quem puder e não toma lado. Os dois desconfiam.", "duracao": 12, "efeitos": {"reputacao_internacional": -1}},
+        {"id": "mediar", "rotulo": "Oferecer-se como mediador", "descricao": "Aposta alta na diplomacia: prestígio se der certo, ridículo se não.", "duracao": 12, "efeitos": {"reputacao_internacional": 4, "tensao_internacional": -2, "margem_manobra_governo": -2}},
+        {"id": "vender-armas", "rotulo": "Vender armas e comida aos dois", "descricao": "Lucro de guerra. Dinheiro entra, a imagem sai.", "duracao": 24, "efeitos": {"exportacoes": 6, "pib": 0.6, "reputacao_internacional": -8, "grupo_progressistas": -4, "grupo_agro": 3}}
+      ]
+    },
+    {
+      "id": "crise-na-fronteira",
+      "nome": "Crise na fronteira",
+      "manchete": "Milhares de refugiados de {vizinho} acampam na fronteira de {estado}",
+      "descricao": "Abrigos lotados, cidades pequenas sobrecarregadas e prefeitos pedindo socorro. O mundo observa como o país vai tratar quem foge.",
+      "origem": "desdobramento", "nivel": 3, "chance": 0.15,
+      "se": [["crise_migratoria", ">", 40]], "intervalo": 12,
+      "padrao": "triagem",
+      "opcoes": [
+        {"id": "acolher", "rotulo": "Acolher e interiorizar", "descricao": "Documentos, abrigo e transporte para cidades com emprego. Caro, mas humano.", "duracao": 12, "requer": [["lei:refugiados-e-asilo", ">=", 50]], "motivo": "A lei de refugiados está fechada demais para acolhida em massa.", "efeitos": {"crise_migratoria": -15, "gasto_publico": 0.08, "reputacao_internacional": 5, "imigracao": 4, "grupo_conservadores": -4, "grupo_progressistas": 3}},
+        {"id": "triagem", "rotulo": "Triagem na fronteira", "descricao": "Abrigos provisórios e entrada lenta. A fila cresce.", "duracao": 6, "efeitos": {"crise_migratoria": -4, "gasto_publico": 0.03}},
+        {"id": "fechar", "rotulo": "Fechar a fronteira", "descricao": "Exército na divisa. A crise vira problema do outro lado — e manchete no mundo.", "duracao": 12, "leis": {"refugiados-e-asilo": "dissuasao-externa"}, "efeitos": {"crise_migratoria": -8, "reputacao_internacional": -8, "grupo_conservadores": 4, "grupo_progressistas": -6, "liberdade_civil": -2}},
+        {"id": "pedir-ajuda", "rotulo": "Pedir ajuda internacional", "descricao": "Agências mundiais montam campos com dinheiro de fora. Demora, mas não sai do caixa.", "duracao": 12, "efeitos": {"crise_migratoria": -6, "reputacao_internacional": 2, "margem_manobra_governo": -1}}
+      ]
+    },
+    {
+      "id": "resgatar-compatriotas",
+      "nome": "Compatriotas na zona de guerra",
+      "manchete": "Centenas de {gentilicos} presos em {vizinho} pedem resgate",
+      "descricao": "Aeroportos fechados e estradas bombardeadas. Os parentes acampam na frente do Ministério das Relações Exteriores.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "consulado",
+      "opcoes": [
+        {"id": "aviao", "rotulo": "Mandar aviões da Força Aérea", "descricao": "Resgate ousado e caro. Se der certo, todo mundo aplaude.", "duracao": 3, "efeitos": {"gasto_publico": 0.02, "grupo_classe_media": 3, "grupo_conservadores": 2, "tensao_internacional": 1}},
+        {"id": "negociar", "rotulo": "Negociar corredor humanitário", "descricao": "Demora semanas, mas ninguém corre risco.", "duracao": 3, "efeitos": {"reputacao_internacional": 2, "grupo_classe_media": 1}},
+        {"id": "consulado", "rotulo": "Deixar com o consulado", "descricao": "Cada um por si, com apoio à distância. As famílias não perdoam.", "duracao": 3, "efeitos": {"grupo_classe_media": -3, "confianca_instituicoes": -1}}
+      ]
+    },
+    {
+      "id": "reconhecer-o-novo-governo",
+      "nome": "Reconhecer o governo golpista?",
+      "manchete": "Junta militar de {vizinho} pede reconhecimento do país",
+      "descricao": "O vizinho é parceiro comercial importante. Reconhecer legitima o golpe; não reconhecer fecha portas.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "aguardar",
+      "opcoes": [
+        {"id": "reconhecer", "rotulo": "Reconhecer", "descricao": "Negócios continuam. Democratas protestam.", "duracao": 12, "efeitos": {"exportacoes": 1, "reputacao_internacional": -4, "grupo_progressistas": -4}},
+        {"id": "condenar", "rotulo": "Condenar e suspender acordos", "descricao": "Posição firme pela democracia; exportadores perdem.", "duracao": 12, "efeitos": {"reputacao_internacional": 4, "exportacoes": -2, "tensao_internacional": 2, "grupo_agro": -2}},
+        {"id": "aguardar", "rotulo": "Esperar a poeira baixar", "descricao": "Nota genérica pedindo diálogo.", "duracao": 3, "efeitos": {"reputacao_internacional": -1}}
+      ]
+    },
+    {
+      "id": "responder-as-sancoes",
+      "nome": "Como responder às sanções?",
+      "manchete": "Sanções apertam e empresários pedem saída",
+      "descricao": "Fábricas sem peças, exportadores sem compradores. Ceder salva a economia; resistir salva o orgulho.",
+      "origem": "desdobramento", "nivel": 3, "chance": 0,
+      "padrao": "resistir",
+      "opcoes": [
+        {"id": "ceder", "rotulo": "Negociar o fim do programa", "descricao": "Aceitar inspeções e desmontar parte do programa em troca do fim das sanções.", "duracao": 12, "leis": {"energia-nuclear": "sem-novas"}, "efeitos": {"risco_pais": -8, "exportacoes": 6, "reputacao_internacional": 6, "tensao_internacional": -6, "grupo_conservadores": -4}},
+        {"id": "resistir", "rotulo": "Resistir", "descricao": "Discurso de soberania e economia de guerra.", "duracao": 12, "efeitos": {"inflacao": 2, "grupo_conservadores": 3, "polarizacao": 3, "pib": -0.5}},
+        {"id": "outro-bloco", "rotulo": "Buscar o bloco rival", "descricao": "Vender para quem não sancionou. Mercados novos, dependência nova.", "duracao": 24, "efeitos": {"exportacoes": 4, "tensao_internacional": 6, "reputacao_internacional": -3}}
+      ]
+    },
+    {
+      "id": "potencia-oferece-investimento",
+      "nome": "Uma potência quer investir",
+      "manchete": "{potencia} oferece bilhões para construir ferrovia e porto",
+      "descricao": "O dinheiro vem barato e a obra sai rápido. Em troca, empresas de {potencia} operam o porto por décadas.",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.015, "intervalo": 16,
+      "fatores": [["investimento", 60, 20, 2]],
+      "padrao": "negociar",
+      "opcoes": [
+        {"id": "aceitar", "rotulo": "Aceitar como está", "descricao": "Obra rápida, influência estrangeira longa.", "duracao": 36, "efeitos": {"infraestrutura_transportes": 0.15, "ied": 0.5, "exportacoes": 3, "tensao_internacional": 3, "grupo_conservadores": -2}},
+        {"id": "negociar", "rotulo": "Negociar conteúdo local", "descricao": "Exigir peças e mão de obra nacionais. Menor e mais lento.", "duracao": 24, "efeitos": {"infraestrutura_transportes": 0.08, "ied": 0.2, "grupo_trabalhadores": 2}},
+        {"id": "recusar", "rotulo": "Recusar", "descricao": "Infraestrutura é soberania.", "duracao": 6, "efeitos": {"grupo_empresarios": -2, "grupo_agro": -2}}
+      ]
+    },
+    {
+      "id": "sediar-{evento_id}",
+      "nome": "Sediar {evento_grande}?",
+      "manchete": "País é convidado a sediar {evento_grande}",
+      "descricao": "{evento_grande} traz turistas e orgulho — e estádios caros que podem virar elefantes brancos.",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.006, "intervalo": 40, "unica": true,
+      "padrao": "recusar",
+      "variantes": [
+        {"evento_grande": "a Copa do Mundo", "evento_id": "copa"},
+        {"evento_grande": "as Olimpíadas", "evento_id": "olimpiadas"}
+      ],
+      "opcoes": [
+        {"id": "sediar", "rotulo": "Sediar com tudo", "descricao": "Estádios novos, metrô novo, festa garantida e conta alta.", "duracao": 36, "efeitos": {"gasto_publico": 0.15, "turismo": 8, "mobilidade_urbana": 3, "corrupcao": 3, "reputacao_internacional": 3, "grupo_classe_media": 2}},
+        {"id": "austero", "rotulo": "Sediar só com o que já existe", "descricao": "Evento modesto, sem obras faraônicas.", "duracao": 24, "efeitos": {"gasto_publico": 0.04, "turismo": 4, "reputacao_internacional": 1}},
+        {"id": "recusar", "rotulo": "Recusar", "descricao": "Prioridade é hospital, não estádio.", "duracao": 6, "efeitos": {"grupo_jovens": -1}}
+      ]
+    },
+    {
+      "id": "reagir-a-espionagem",
+      "nome": "Reagir à espionagem",
+      "manchete": "Oposição cobra resposta dura a {potencia}",
+      "descricao": "Os grampos estão nos jornais. Cada resposta tem um custo diplomático diferente.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "protesto",
+      "opcoes": [
+        {"id": "expulsar", "rotulo": "Expulsar o embaixador", "descricao": "Resposta firme. Acordos ficam congelados.", "duracao": 12, "efeitos": {"tensao_internacional": 5, "exportacoes": -2, "grupo_conservadores": 2, "grupo_progressistas": 2}},
+        {"id": "protesto", "rotulo": "Protesto formal", "descricao": "Nota dura, nada além.", "duracao": 3, "efeitos": {"confianca_instituicoes": -1}},
+        {"id": "contraespionagem", "rotulo": "Investir em contraespionagem", "descricao": "Proteger as comunicações do Estado.", "duracao": 24, "efeitos": {"capacidade_estatal": 2, "gasto_publico": 0.02, "capacidade_defesa": 0.05}}
+      ]
+    },
+    {
+      "id": "pagar-o-resgate",
+      "nome": "Pagar o resgate aos hackers?",
+      "manchete": "Hackers dão prazo para liberar os sistemas",
+      "descricao": "Sem pagar, a reconstrução pode levar meses. Pagando, o país vira alvo preferido.",
+      "origem": "desdobramento", "nivel": 2, "chance": 0,
+      "padrao": "nao-pagar",
+      "opcoes": [
+        {"id": "pagar", "rotulo": "Pagar em segredo", "descricao": "Os sistemas voltam amanhã. Se vazar, é escândalo.", "duracao": 6, "efeitos": {"capacidade_estatal": 3, "corrupcao": 1, "confianca_instituicoes": -1}},
+        {"id": "nao-pagar", "rotulo": "Não pagar e reconstruir", "descricao": "Meses de filas e papel. O recado aos criminosos fica dado.", "duracao": 6, "efeitos": {"capacidade_estatal": -3, "gasto_publico": 0.02}},
+        {"id": "culpar", "rotulo": "Acusar uma potência estrangeira", "descricao": "Transforma o ataque em causa nacional, sem provas sólidas.", "duracao": 6, "efeitos": {"tensao_internacional": 4, "polarizacao": 2, "grupo_conservadores": 2}}
+      ]
+    },
+    {
+      "id": "asilo-a-opositor",
+      "nome": "Asilo a um opositor",
+      "manchete": "Líder da oposição de {vizinho} pede asilo na embaixada",
+      "descricao": "Perseguido pelo governo de {vizinho}, ele se refugiou na embaixada. Entregá-lo seria uma condenação.",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.008, "intervalo": 20,
+      "padrao": "negociar",
+      "opcoes": [
+        {"id": "conceder", "rotulo": "Conceder asilo", "descricao": "Gesto humanitário; o vizinho corta relações.", "duracao": 12, "efeitos": {"reputacao_internacional": 3, "tensao_internacional": 4, "exportacoes": -1}},
+        {"id": "negociar", "rotulo": "Negociar um salvo-conduto", "descricao": "Tirar ele do país discretamente para um terceiro destino.", "duracao": 6, "efeitos": {"reputacao_internacional": 1}},
+        {"id": "entregar", "rotulo": "Entregar", "descricao": "Não interferir em assuntos internos dos outros.", "duracao": 12, "efeitos": {"reputacao_internacional": -6, "grupo_progressistas": -4, "grupo_classe_media": -2}}
+      ]
+    },
+    {
+      "id": "base-militar-estrangeira",
+      "nome": "Base militar estrangeira",
+      "manchete": "{potencia} pede para instalar base militar no litoral",
+      "descricao": "Em troca, oferece tecnologia militar e investimento. Nacionalistas de esquerda e de direita reclamam.",
+      "origem": "cotidiano", "nivel": 2, "chance": 0.006, "intervalo": 30,
+      "fatores": [["tensao_internacional", 30, 80, 2]],
+      "padrao": "recusar",
+      "opcoes": [
+        {"id": "aceitar", "rotulo": "Aceitar", "descricao": "Defesa mais forte e alinhamento claro.", "duracao": 36, "efeitos": {"capacidade_defesa": 0.15, "tensao_internacional": 6, "ied": 0.2, "grupo_progressistas": -5, "grupo_conservadores": 1}},
+        {"id": "cooperacao", "rotulo": "Só exercícios conjuntos", "descricao": "Cooperação sem soldados estrangeiros permanentes.", "duracao": 12, "efeitos": {"capacidade_defesa": 0.05, "tensao_internacional": 2}},
+        {"id": "recusar", "rotulo": "Recusar", "descricao": "Soberania não se negocia.", "duracao": 6, "efeitos": {"grupo_conservadores": 1}}
+      ]
+    },
+    {
+      "id": "voto-na-assembleia",
+      "nome": "O voto na assembleia mundial",
+      "manchete": "Votação para condenar {potencia} divide o governo",
+      "descricao": "{potencia} é acusada de violar direitos humanos. É também um dos maiores compradores do país.",
+      "origem": "cotidiano", "nivel": 1, "chance": 0.02, "intervalo": 8,
+      "padrao": "abster",
+      "opcoes": [
+        {"id": "condenar", "rotulo": "Votar a favor da condenação", "descricao": "Coerência com os direitos humanos. O comprador anota.", "duracao": 6, "efeitos": {"reputacao_internacional": 2, "exportacoes": -1.5, "grupo_agro": -1}},
+        {"id": "abster", "rotulo": "Abster-se", "descricao": "Nem lá nem cá.", "duracao": 3, "efeitos": {"reputacao_internacional": -0.5}},
+        {"id": "contra", "rotulo": "Votar contra", "descricao": "Lealdade ao parceiro. Críticas em casa e fora.", "duracao": 6, "efeitos": {"reputacao_internacional": -3, "exportacoes": 1, "grupo_progressistas": -2}}
+      ]
+    },
+    {
+      "id": "compatriota-no-corredor-da-morte",
+      "nome": "Salvar o compatriota condenado?",
+      "manchete": "Família pede que o presidente interceda pelo {gentilico} condenado em {potencia}",
+      "descricao": "A execução está marcada. Pedir clemência tem custo diplomático; não pedir, custo em casa.",
+      "origem": "desdobramento", "nivel": 1, "chance": 0,
+      "padrao": "carta",
+      "opcoes": [
+        {"id": "pressionar", "rotulo": "Pressionar publicamente", "descricao": "Chamar o embaixador e ir à imprensa.", "duracao": 6, "efeitos": {"tensao_internacional": 2, "grupo_classe_media": 1, "exportacoes": -0.5}},
+        {"id": "carta", "rotulo": "Carta discreta de clemência", "descricao": "Diplomacia de bastidor.", "duracao": 3, "efeitos": {"reputacao_internacional": 0.5}},
+        {"id": "nada", "rotulo": "Respeitar a justiça de lá", "descricao": "Lei é lei, mesmo a dos outros.", "duracao": 3, "efeitos": {"grupo_progressistas": -2, "grupo_classe_media": -1}}
+      ]
+    }
+  ]
+}

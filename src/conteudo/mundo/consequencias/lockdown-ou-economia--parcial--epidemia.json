@@ -1,0 +1,17 @@
+{
+  "id": "lockdown-ou-economia--parcial--epidemia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_lockdown_ou_economia__parcial",
+  "alvo": "epidemia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -12.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

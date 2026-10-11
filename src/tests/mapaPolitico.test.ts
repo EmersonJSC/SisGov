@@ -26,7 +26,7 @@ import {
 import { efeitoDe, indexarRelacoes, vizinhanca } from "../ui/mapa/relacoes";
 import { MEDIDAS } from "../ui/mapa/tema";
 
-const criada = criarPartida();
+const criada = criarPartida({ ocorrencias: false });
 if (!criada.ok) throw new Error(criada.erros.join(" "));
 const visao = verPartida(criada.value);
 const base = montarBase(visao);
