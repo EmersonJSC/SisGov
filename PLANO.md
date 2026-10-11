@@ -724,6 +724,7 @@ referência, não prazo.
 | B-20 | Vários cenários do mesmo país (Brasil 2003, Brasil 2026…): cada um com seu estado inicial e seus índices (D-55)                                                                         | Ideia do autor (10/out); hoje só Brasil 2026                                                      |
 | B-21 | Sensação de jogo, "só mais uma coisinha" (problema C16): metas curtas visíveis (ex.: "tire 3 grupos do vermelho"), recompensa clara ao fechar o turno, algo pendente sempre à vista (lei em implantação, dilema chegando, eleição se aproximando), progresso do mandato | Problema registrado pelo autor (11/out); exige desenho próprio antes de virar chamado (R-06) |
 | B-22 | Extinguir e criar ministérios na partida: o jogador corta (ou recria) um ministério; leis passam para outra pasta ou deixam de existir, conforme a regra `extincao` de cada ministério (D-64) | Ideia do autor (10/out); a regra já está no conteúdo e em `extinguirMinisterio` (testada), falta a ação na partida e o efeito (custo, apoio) |
+| B-23 | Check de realismo: testes que conferem se cada lei mexe nos dados na direção e no tamanho certos (ex.: pena maior aumenta a população carcerária; mais verba da PF reduz o crime organizado), comparando com os números reais das fichas | Pedido do autor (11/out); vem depois da calibração (M7) |
 
 ---
 
