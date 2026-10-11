@@ -8,6 +8,7 @@ import {
   criarPartida,
   encerrarTurno,
   mudarLei,
+  revogarLei,
   responderDilema,
   verPartida,
   type Partida,
@@ -25,6 +26,7 @@ import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
 import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
 import { BuscaDeLeis } from "./BuscaDeLeis";
+import { CatalogoDeLeis } from "./CatalogoDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
 import { fotoDoTurno, montarJornal, type FotoDoTurno } from "./jornal";
 import { PaginaDeJornal } from "./PaginaDeJornal";
@@ -308,6 +310,7 @@ export function TelaPrincipal() {
   );
   const [mesaAberta, setMesaAberta] = useState(true);
   const [buscaAberta, setBuscaAberta] = useState(false);
+  const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [jornalAberto, setJornalAberto] = useState(false);
   const fecharJornal = useCallback(() => setJornalAberto(false), []);
   // a lupa abre com "/" ou Ctrl+K (fora de um campo de texto)
@@ -368,9 +371,20 @@ export function TelaPrincipal() {
     () => (partida ? verPartida(partida) : null),
     [partida],
   );
-  // A estrutura (leis, bolhas, ligações) não muda entre turnos: calcula uma vez.
+  // A estrutura (leis, bolhas, ligações) só muda quando uma lei entra em
+  // vigor ou é revogada (D-65): refaz só nessa hora.
   const estrutura = useRef<ReturnType<typeof montarEstrutura> | null>(null);
-  if (visao && !estrutura.current) estrutura.current = montarEstrutura(visao);
+  const chaveEstrutura = useRef("");
+  if (visao) {
+    const chave = visao.leis
+      .filter((l) => l.emVigor)
+      .map((l) => l.id)
+      .join("|");
+    if (!estrutura.current || chave !== chaveEstrutura.current) {
+      estrutura.current = montarEstrutura(visao);
+      chaveEstrutura.current = chave;
+    }
+  }
 
   const frente = janelas.at(-1)?.id ?? null;
 
@@ -447,6 +461,14 @@ export function TelaPrincipal() {
   const aplicar = (leiId: string, nivel: number): string | null => {
     if (!partida) return null;
     const r = mudarLei(partida, leiId, nivel);
+    if (!r.ok) return r.erros.join(" ");
+    setPartida(r.value);
+    return null;
+  };
+
+  const revogar = (leiId: string): string | null => {
+    if (!partida) return null;
+    const r = revogarLei(partida, leiId);
     if (!r.ok) return r.erros.join(" ");
     setPartida(r.value);
     return null;
@@ -612,6 +634,15 @@ export function TelaPrincipal() {
           <Icone nome={ICONE_INTERFACE.busca} tamanho={22} />
           <span>Buscar lei</span>
         </button>
+        <button
+          type="button"
+          className="botao-busca"
+          onClick={() => setCatalogoAberto(true)}
+          title="Leis que hoje não valem: aprove uma para pôr no mapa"
+        >
+          <Icone nome={ICONE_INTERFACE.catalogo} tamanho={22} />
+          <span>Leis fora do mapa</span>
+        </button>
         <div className="turno">
           <Icone nome={ICONE_INTERFACE.turno} tamanho={20} />
           <span>
@@ -641,6 +672,16 @@ export function TelaPrincipal() {
             if (r.tipo === "lei" && r.ministerio) setAberta(r.ministerio);
             selecionar(r.id);
           }}
+        />
+      ) : null}
+
+      {catalogoAberto ? (
+        <CatalogoDeLeis
+          leis={visao.leis}
+          governo={visao.governo}
+          corDoMinisterio={(m) => base.porNome.get(m)?.cor}
+          onFechar={() => setCatalogoAberto(false)}
+          onEscolher={(lei) => selecionar(lei.id)}
         />
       ) : null}
 
@@ -702,6 +743,7 @@ export function TelaPrincipal() {
                 horizonte={horizonte}
                 onHorizonte={setHorizonte}
                 onAplicar={aplicar}
+                onRevogar={revogar}
                 onPrevisao={guardarPrevisao}
               />
             );
@@ -785,7 +827,21 @@ export function TelaPrincipal() {
   );
 }
 
-function montarEstrutura(visao: ReturnType<typeof verPartida>) {
+function montarEstrutura(completa: ReturnType<typeof verPartida>) {
+  // as leis fora de vigor (catálogo) e as setas delas não entram no mapa
+  const fora = new Set(
+    completa.leis.filter((l) => !l.emVigor).map((l) => l.id),
+  );
+  const visao = {
+    ...completa,
+    leis: completa.leis.filter((l) => l.emVigor),
+    ligacoes: completa.ligacoes.filter(
+      (g) =>
+        !fora.has(g.origem) &&
+        !fora.has(g.alvo) &&
+        !fora.has(g.alvo.replace(/^eficacia:/, "")),
+    ),
+  };
   return {
     base: montarBase(visao),
     indice: indexarRelacoes(visao),

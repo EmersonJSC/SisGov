@@ -58,6 +58,7 @@ export function JanelaLei({
   horizonte,
   onHorizonte,
   onAplicar,
+  onRevogar,
   onPrevisao,
   onFechar,
   onSelecionar,
@@ -72,24 +73,36 @@ export function JanelaLei({
   onHorizonte: (h: Horizonte) => void;
   /** Aplica a mudança; devolve a mensagem de erro, se houver. */
   onAplicar: (leiId: string, nivel: number) => string | null;
+  /** Revoga a lei (D-65); devolve a mensagem de erro, se houver. */
+  onRevogar: (leiId: string) => string | null;
   onPrevisao: (leiId: string, previsao: PrevisaoLei | null) => void;
   onFechar: () => void;
   onSelecionar: (id: string) => void;
 }) {
-  const [rascunho, setRascunho] = useState(lei.meta);
+  // Lei fora do mapa (catálogo): começa na primeira opção, e qualquer
+  // escolha é uma proposta nova (não há meta em vigor para comparar).
+  const inicial = () =>
+    lei.emVigor ||
+    !lei.opcoes?.length ||
+    lei.opcoes.some((o) => Math.abs(o.valor - lei.meta) < 1e-9)
+      ? lei.meta
+      : lei.opcoes[0].valor;
+  const referencia = lei.emVigor ? lei.meta : Number.NaN;
+  const igual = (valor: number) => Math.abs(valor - referencia) < 1e-9;
+  const [rascunho, setRascunho] = useState(inicial);
   const [previsao, setPrevisao] = useState<PrevisaoLei | null>(null);
   const [calculando, setCalculando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
   // Depois de assinar (ou de outra janela mudar a meta), volta à meta.
   useEffect(() => {
-    setRascunho(lei.meta);
+    setRascunho(inicial());
     setErro(null);
-  }, [lei.meta]);
+  }, [lei.meta, lei.emVigor]);
 
   // Prévia de 1 ano (4 turnos), um instante depois do jogador parar.
   useEffect(() => {
-    if (Math.abs(rascunho - lei.meta) < 1e-9) {
+    if (igual(rascunho)) {
       setPrevisao(null);
       setCalculando(false);
       return;
@@ -107,15 +120,12 @@ export function JanelaLei({
       }
     }, 140);
     return () => window.clearTimeout(id);
-  }, [partida, lei.id, lei.meta, rascunho]);
+  }, [partida, lei.id, referencia, rascunho]);
 
   // SG138: filhas que cairiam com esta redação, para avisar antes de assinar
   const quedas = useMemo(
-    () =>
-      Math.abs(rascunho - lei.meta) < 1e-9
-        ? []
-        : leisQueCaem(partida, lei.id, rascunho),
-    [partida, lei.id, lei.meta, rascunho],
+    () => (igual(rascunho) ? [] : leisQueCaem(partida, lei.id, rascunho)),
+    [partida, lei.id, referencia, rascunho],
   );
 
   useEffect(() => onPrevisao(lei.id, previsao), [lei.id, previsao, onPrevisao]);
@@ -136,6 +146,11 @@ export function JanelaLei({
       horizonte={horizonte}
       onHorizonte={onHorizonte}
       onAssinar={() => setErro(onAplicar(lei.id, rascunho))}
+      onRevogar={
+        lei.emVigor && lei.revogavel
+          ? () => setErro(onRevogar(lei.id))
+          : undefined
+      }
       onFechar={onFechar}
       onSelecionar={onSelecionar}
       {...janela}

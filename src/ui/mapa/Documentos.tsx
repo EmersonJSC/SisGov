@@ -34,7 +34,13 @@ import {
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { corDaBondade, intensidadeDaBolha } from "./intensidade";
-import { ehConstitucional, type BaseMapa } from "./layout";
+import { ficaNaPresidencia, type BaseMapa } from "./layout";
+
+const NOME_NIVEL_LEGAL: Readonly<Record<string, string>> = {
+  petrea: "Cláusula pétrea",
+  constitucional: "Constitucional · PEC (60%)",
+  derivada: "Lei derivada",
+};
 import {
   efeitoDe,
   type Efeito,
@@ -448,6 +454,7 @@ export function DocumentoLei({
   horizonte,
   onHorizonte,
   onAssinar,
+  onRevogar,
   onFechar,
   onSelecionar,
   ...janela
@@ -466,6 +473,8 @@ export function DocumentoLei({
   horizonte: Horizonte;
   onHorizonte: (h: Horizonte) => void;
   onAssinar: () => void;
+  /** Revogar a lei (D-65): ausente se ela não pode sair do mapa. */
+  onRevogar?: () => void;
   onFechar: () => void;
   onSelecionar: (id: string) => void;
 }) {
@@ -482,9 +491,12 @@ export function DocumentoLei({
   const relacoes = indice.porNo.get(lei.id) ?? [];
   const efeitosDiretos = relacoes.filter((r) => r.de === lei.id);
   const condicoes = relacoes.filter((r) => r.para === lei.id && r.eficacia);
-  const mudou = Math.abs(rascunho - lei.meta) > 1e-9;
-  const pendente = Math.abs(lei.meta - lei.nivel) > 1e-6;
-  const constitucional = ehConstitucional(lei);
+  // fora do mapa (catálogo), qualquer opção escolhida é uma lei nova
+  const mudou = !lei.emVigor || Math.abs(rascunho - lei.meta) > 1e-9;
+  const pendente = lei.emVigor && Math.abs(lei.meta - lei.nivel) > 1e-6;
+  const constitucional = ficaNaPresidencia(lei);
+  // três níveis: pétrea ou exigência não cumprida trancam a lei inteira
+  const travada = !!lei.nivelLegal && !!lei.bloqueio;
   const numero = `Nº ${String(visao.leis.indexOf(lei) + 1).padStart(3, "0")}/${2026 + Math.floor(visao.turno / 4)}`;
   const [carimbo, setCarimbo] = useState(false);
   const secaoImpacto = useRef<HTMLElement>(null);
@@ -579,7 +591,11 @@ export function DocumentoLei({
   return (
     <Documento
       orgao={lei.ministerios[0]}
-      setor="Gabinete · Proposta de alteração"
+      setor={
+        lei.emVigor
+          ? "Gabinete · Proposta de alteração"
+          : "Gabinete · Proposta de nova lei"
+      }
       numero={numero}
       cor={cor}
       icone={ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei}
@@ -593,10 +609,21 @@ export function DocumentoLei({
             <small>Presidente da República</small>
           </div>
           <div className="acoes-doc">
+            {onRevogar ? (
+              <button
+                type="button"
+                className="botao-revogar"
+                title="A lei sai do mapa e volta para as leis fora do mapa"
+                onClick={onRevogar}
+              >
+                <Icone nome={ICONE_INTERFACE.revogar} tamanho={18} />
+                Revogar
+              </button>
+            ) : null}
             <button
               type="button"
               className="botao-arquivar"
-              disabled={!mudou}
+              disabled={!mudou || !lei.emVigor}
               onClick={() => onRascunho(lei.meta)}
             >
               Desfazer
@@ -604,17 +631,19 @@ export function DocumentoLei({
             <button
               type="button"
               className="botao-assinar"
-              disabled={!mudou || carimbo}
+              disabled={!mudou || carimbo || travada}
               onClick={assinar}
             >
               <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
-              Assinar
+              {lei.emVigor ? "Assinar" : "Aprovar"}
             </button>
           </div>
         </>
       }
     >
-      {carimbo ? <div className="carimbo">Assinado</div> : null}
+      {carimbo ? (
+        <div className="carimbo">{lei.emVigor ? "Assinado" : "Aprovada"}</div>
+      ) : null}
       <p className="tipo-doc">
         {NOME_PROCESSO[lei.processo] ?? lei.processo} ·{" "}
         {NOME_GRUPO[lei.grupo] ?? lei.grupo}
@@ -633,6 +662,11 @@ export function DocumentoLei({
               ?.cargo ?? lei.ministerio}
           </span>
         ))}
+        {lei.nivelLegal ? (
+          <span className={`etiqueta nivel-legal ${lei.nivelLegal}`}>
+            {NOME_NIVEL_LEGAL[lei.nivelLegal]}
+          </span>
+        ) : null}
         {constitucional ? (
           <span
             className="etiqueta constitucional"
@@ -660,7 +694,11 @@ export function DocumentoLei({
         <dl className="campos">
           <div>
             <dt>Em vigor</dt>
-            <dd>{rotuloOpcao(lei.nivel)}</dd>
+            <dd>
+              {lei.emVigor
+                ? rotuloOpcao(lei.nivel)
+                : "Não: a lei está fora do mapa"}
+            </dd>
           </div>
           {pendente ? (
             <div>
@@ -685,7 +723,35 @@ export function DocumentoLei({
         <h2>
           <span>II.</span> Nova redação
         </h2>
-        {lei.exige ? (
+        {travada ? (
+          <p className="bloqueio-doc" role="note">
+            <Icone nome={ICONE_INTERFACE.trancada} tamanho={18} />
+            <span>{lei.bloqueio}</span>
+          </p>
+        ) : null}
+        {lei.nivelLegal ? (
+          lei.exigencias.map((exige) => (
+            <button
+              key={exige.lei}
+              type="button"
+              className={`vinculo-doc${exige.atendida ? "" : " fora"}`}
+              onClick={() => onSelecionar(exige.lei)}
+            >
+              <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
+              <span>
+                <strong>Depende de {exige.nome}</strong> em{" "}
+                {listaOu(exige.opcoes)}.
+                {exige.motivo ? <small> {exige.motivo}</small> : null}
+                {exige.atendida ? null : (
+                  <em>
+                    Hoje {exige.nome} está fora: esta lei não pode entrar em
+                    vigor.
+                  </em>
+                )}
+              </span>
+            </button>
+          ))
+        ) : lei.exige ? (
           <button
             type="button"
             className={`vinculo-doc${lei.exige.atendida ? "" : " fora"}`}
@@ -714,7 +780,8 @@ export function DocumentoLei({
               const ativa = Math.abs(opcao.valor - rascunho) < 1e-9;
               const vigente = opcao.id === lei.opcaoAtual;
               // lei filha com a mãe fora: só a base (a primeira opção)
-              const bloqueada = !!lei.exige && !lei.exige.atendida && i > 0;
+              const bloqueada =
+                travada || (!!lei.exige && !lei.exige.atendida && i > 0);
               return (
                 <button
                   key={opcao.id}
@@ -723,16 +790,20 @@ export function DocumentoLei({
                   aria-checked={ativa}
                   disabled={bloqueada}
                   title={
-                    bloqueada
-                      ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
-                      : undefined
+                    travada
+                      ? lei.bloqueio
+                      : bloqueada
+                        ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
+                        : undefined
                   }
                   className={`opcao-doc${ativa ? " ativa" : ""}${bloqueada ? " bloqueada" : ""}`}
                   onClick={() => onRascunho(opcao.valor)}
                 >
                   <span className="caixinha">{ativa ? "✕" : ""}</span>
                   <span className="opcao-rotulo">{opcao.rotulo}</span>
-                  {vigente ? <span className="opcao-tag">em vigor</span> : null}
+                  {vigente && lei.emVigor ? (
+                    <span className="opcao-tag">em vigor</span>
+                  ) : null}
                   {Math.abs(opcao.saldoAnual) >= 100 ? (
                     <span
                       className={`opcao-custo ${opcao.saldoAnual > 0 ? "arrecada" : "custa"}`}
@@ -762,14 +833,16 @@ export function DocumentoLei({
           <div className="quedas-doc" role="alert">
             <Icone nome={ICONE_INTERFACE.vinculoQuebrado} tamanho={18} />
             <span>
-              <strong>Ao assinar, caem para a base:</strong>
+              <strong>Ao assinar, caem junto:</strong>
               {quedas.map((q) => (
                 <button
                   key={q.id}
                   type="button"
                   onClick={() => onSelecionar(q.id)}
                 >
-                  {q.nome} → “{q.base}”
+                  {q.revogada
+                    ? `${q.nome} (sai do mapa)`
+                    : `${q.nome} → “${q.base}”`}
                 </button>
               ))}
             </span>

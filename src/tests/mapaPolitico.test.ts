@@ -244,3 +244,22 @@ describe("mapa político: intensidade (D-43)", () => {
     );
   });
 });
+
+describe("leis em três níveis no mapa (D-65)", () => {
+  const todas = [...base.leis.keys()];
+  it("só as leis em vigor entram no mapa; as do catálogo ficam fora", () => {
+    expect(base.leis.has("pena-de-morte")).toBe(false);
+    expect(base.leis.has("cannabis-legal")).toBe(false);
+    expect(
+      base.ministerios.flatMap((m) => m.leis).includes("pena-de-morte"),
+    ).toBe(false);
+    expect(todas).toContain("lei-de-drogas");
+  });
+
+  it("as pétreas ficam no centro; as constitucionais, só no ministério", () => {
+    expect(base.constitucionais).toContain("garantias-penais");
+    expect(base.constitucionais).toContain("policias-dos-estados");
+    expect(base.constitucionais).not.toContain("maioridade-penal");
+    expect(todas).toContain("maioridade-penal");
+  });
+});

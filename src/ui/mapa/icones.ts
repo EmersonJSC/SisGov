@@ -736,6 +736,9 @@ export const ICONE_INTERFACE: Readonly<Record<string, string>> = {
   vinculoQuebrado: "link-variant-off",
   busca: "magnify",
   jornal: "newspaper-variant-outline",
+  catalogo: "book-open-variant",
+  trancada: "door-closed-lock",
+  revogar: "link-variant-off",
   // áreas do governo (D-64)
   economia: "cash-multiple",
   empresas: "factory",

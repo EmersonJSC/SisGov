@@ -112,6 +112,15 @@ export function ehConstitucional(lei: VisaoLei): boolean {
   return lei.processo === "emenda-constitucional";
 }
 
+/**
+ * Leis que ficam também no centro, na Presidência: as pétreas (D-65) e, nas
+ * áreas ainda no formato antigo, as constitucionais. As constitucionais de
+ * três níveis ficam só no ministério (quadradas).
+ */
+export function ficaNaPresidencia(lei: VisaoLei): boolean {
+  return lei.nivelLegal ? lei.nivelLegal === "petrea" : ehConstitucional(lei);
+}
+
 const ORDEM_GRUPO: Readonly<Record<string, number>> = {
   orcamentaria: 0,
   tributaria: 1,
@@ -168,7 +177,9 @@ export function quebrarNome(texto: string, largura = 16, linhas = 2) {
 // Base: ministérios e bolhas
 // ---------------------------------------------------------------------------
 
-export function montarBase(visao: VisaoPartida): BaseMapa {
+export function montarBase(completa: VisaoPartida): BaseMapa {
+  // só as leis em vigor ocupam o mapa; as outras ficam no catálogo (D-65)
+  const visao = { ...completa, leis: completa.leis.filter((l) => l.emVigor) };
   const areas = visao.governo.filter((area) =>
     visao.leis.some((lei) => lei.areas.includes(area.id)),
   );
@@ -198,7 +209,7 @@ export function montarBase(visao: VisaoPartida): BaseMapa {
   const porNome = new Map(ministerios.map((m) => [m.nome, m]));
   const leis = new Map(visao.leis.map((lei) => [lei.id, lei]));
   const constitucionais = visao.leis
-    .filter(ehConstitucional)
+    .filter(ficaNaPresidencia)
     .map((lei) => lei.id);
   const bolhas = posicionarBolhas(visao, porNome, leis);
   const limites = calcularLimites(bolhas);

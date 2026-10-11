@@ -272,6 +272,52 @@ function aoTeclar(acao: () => void) {
   };
 }
 
+/** Forma do nó de lei pelo nível legal (D-65): escudo, quadrado ou círculo. */
+export type FormaLei = "escudo" | "quadrado" | "circulo";
+
+export function formaDaLei(lei: VisaoLei): FormaLei {
+  if (lei.nivelLegal === "petrea") return "escudo";
+  if (lei.nivelLegal === "constitucional") return "quadrado";
+  return "circulo";
+}
+
+const NOME_DO_NIVEL: Partial<Record<FormaLei, string>> = {
+  escudo: ", cláusula pétrea",
+  quadrado: ", lei constitucional",
+};
+
+/** Contorno da forma com "raio" `r`; o resto (cor, traço) vem da classe. */
+function Forma({
+  forma,
+  r,
+  ...resto
+}: { forma: FormaLei; r: number } & React.SVGProps<SVGElement>) {
+  const props = resto as React.SVGProps<SVGPathElement>;
+  if (forma === "quadrado") {
+    const l = r * 0.9;
+    return (
+      <rect
+        {...(props as React.SVGProps<SVGRectElement>)}
+        x={-l}
+        y={-l}
+        width={l * 2}
+        height={l * 2}
+        rx={r * 0.22}
+      />
+    );
+  }
+  if (forma === "escudo") {
+    const k = (n: number) => (n * r).toFixed(2);
+    return (
+      <path
+        {...props}
+        d={`M0 ${k(-1.02)} L${k(0.92)} ${k(-0.66)} L${k(0.92)} ${k(0.08)} Q${k(0.88)} ${k(0.72)} 0 ${k(1.08)} Q${k(-0.88)} ${k(0.72)} ${k(-0.92)} ${k(0.08)} L${k(-0.92)} ${k(-0.66)} Z`}
+      />
+    );
+  }
+  return <circle {...(props as React.SVGProps<SVGCircleElement>)} r={r} />;
+}
+
 /** Anel de nível: trilha + parte cheia, animável pelo `stroke-dasharray`. */
 function Anel({
   r,
@@ -279,19 +325,25 @@ function Anel({
   cor,
   largura,
   classe,
+  forma = "circulo",
 }: {
   r: number;
   fracao: number;
   cor: string;
   largura: number;
   classe: string;
+  forma?: FormaLei;
 }) {
   const f = Math.min(1, Math.max(0, fracao));
   return (
-    <g className={classe} transform="rotate(-90)">
-      <circle className="trilha" r={r} strokeWidth={largura} />
+    <g
+      className={classe}
+      transform={forma === "circulo" ? "rotate(-90)" : undefined}
+    >
+      <Forma forma={forma} className="trilha" r={r} strokeWidth={largura} />
       {f > 0.005 ? (
-        <circle
+        <Forma
+          forma={forma}
           className="cheio"
           r={r}
           pathLength={100}
@@ -331,6 +383,7 @@ const NoLei = memo(function NoLei({
   onClicar: (id: string) => void;
 }) {
   const constitucional = ehConstitucional(lei);
+  const forma = formaDaLei(lei);
   const pendente = Math.abs(lei.meta - lei.nivel) > 1e-6;
   const sua = lei.alteradaPorVoce;
   const r = RAIO_BASE_LEI * (pos.r / MEDIDAS.raioLei);
@@ -338,12 +391,12 @@ const NoLei = memo(function NoLei({
   const raioVisivel = r * escala;
   return (
     <g
-      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""}`}
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma}`}
       transform={`translate(${pos.x} ${pos.y})`}
       style={{ "--cor": cor } as React.CSSProperties}
       role="button"
       tabIndex={0}
-      aria-label={`${lei.nome}${constitucional ? ", lei constitucional" : ""}${sua ? ", mudada por você" : ""}`}
+      aria-label={`${lei.nome}${NOME_DO_NIVEL[forma] ?? (constitucional ? ", lei constitucional" : "")}${sua ? ", mudada por você" : ""}`}
       aria-pressed={selecionada}
       onPointerEnter={() => onEntrar(lei.id)}
       onPointerLeave={onSair}
@@ -359,15 +412,16 @@ const NoLei = memo(function NoLei({
       <circle className="alvo-toque" r={r * 1.35 + 10} />
       <g className="corpo">
         <g className="inflavel" style={{ transform: `scale(${escala})` }}>
-          <circle className="halo" r={r + 9} />
-          {sua ? <circle className="aro-sua" r={r + 9.5} /> : null}
-          <circle className="disco" r={r} />
+          <Forma forma={forma} className="halo" r={r + 9} />
+          {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
+          <Forma forma={forma} className="disco" r={r} />
           <Anel
             r={r + 4.5}
             fracao={nivel}
             cor={cor}
             largura={3.5}
             classe="anel-nivel"
+            forma={forma}
           />
           <IconeSvg
             nome={ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei}
@@ -375,7 +429,7 @@ const NoLei = memo(function NoLei({
             cor="var(--icone)"
           />
         </g>
-        {constitucional ? (
+        {constitucional && !lei.nivelLegal ? (
           <g
             transform={`translate(${raioVisivel * 0.74 + 2} ${-raioVisivel * 0.74 - 2})`}
             className="selo-constituicao"

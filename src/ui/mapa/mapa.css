@@ -3792,3 +3792,121 @@ button {
   text-align: right;
   font-weight: 700;
 }
+
+/* Leis em três níveis (D-65): a forma diz o nível */
+.no-lei.forma-escudo .disco {
+  fill: #fdf6df;
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+}
+
+.no-lei.forma-quadrado .disco {
+  stroke-linejoin: round;
+}
+
+/* Leis fora do mapa (catálogo) */
+.catalogo {
+  overflow-y: auto;
+}
+
+.catalogo-topo {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e3d6b4;
+  background: #fcf8ec;
+  --icone: #5b6676;
+}
+
+.catalogo-topo div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.catalogo-topo strong {
+  font-size: 21px;
+}
+
+.catalogo-topo small {
+  font-size: 14.5px;
+  color: #5b5040;
+}
+
+.catalogo-fechar {
+  border: 0;
+  background: transparent;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.catalogo-area h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 22px 0;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cor);
+  --icone: var(--cor);
+}
+
+.catalogo-area .busca-resultados {
+  overflow: visible;
+}
+
+.catalogo-area .busca-resultados button {
+  cursor: pointer;
+}
+
+.catalogo-area .busca-resultados button:hover {
+  background: #fff;
+  box-shadow: inset 4px 0 0 var(--cor);
+}
+
+.catalogo-area .busca-resultados button.trancada {
+  opacity: 0.72;
+}
+
+.catalogo-area button.trancada .busca-icone {
+  background: #ece6d6;
+  --icone: #8a7f68;
+}
+
+.botao-revogar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+  padding: 8px 14px;
+  border: 1.5px solid #b4553f;
+  border-radius: 8px;
+  background: transparent;
+  color: #9c3f2b;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  --icone: #9c3f2b;
+}
+
+.botao-revogar:hover {
+  background: #b4553f14;
+}
+
+.bloqueio-doc {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #ece6d6;
+  color: #5b5040;
+  --icone: #8a7f68;
+}
