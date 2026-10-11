@@ -3485,3 +3485,21 @@ button {
     display: none;
   }
 }
+
+/* D-64: nome de cada ministério na borda da área aberta */
+.rotulo-pasta {
+  fill: var(--cor);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  paint-order: stroke;
+  stroke: #fffdf7;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.busca-pastas {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.82em;
+  opacity: 0.75;
+}

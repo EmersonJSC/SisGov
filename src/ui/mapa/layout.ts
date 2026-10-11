@@ -4,21 +4,32 @@
  *
  * A posição é só da tela: o motor não lê nada daqui (regra 6 do projeto).
  */
-import type { VisaoBolha, VisaoLei, VisaoPartida } from "../../app/partida";
-import {
-  MEDIDAS,
-  ORDEM_MINISTERIOS,
-  corDoMinisterio,
-  temaDoMinisterio,
-} from "./tema";
+import type {
+  VisaoBolha,
+  VisaoLei,
+  VisaoMinisterio,
+  VisaoPartida,
+} from "../../app/partida";
+import { MEDIDAS, corDaArea } from "./tema";
 
 export const PRESIDENCIA = "presidencia";
 
 export type Ponto = Readonly<{ x: number; y: number }>;
 
+/**
+ * Uma esfera do anel: uma área do governo (D-64), com os ministérios reais
+ * dentro. `nome` é o id da área.
+ */
 export type Ministerio = Readonly<{
   nome: string;
   titulo: string;
+  /** Título curto, para a esfera vista de longe. */
+  curto: string;
+  /** Cargo de quem dá o rosto da área. */
+  cargo: string;
+  faz: string;
+  /** Ministérios da área, na ordem do conteúdo. */
+  pastas: readonly VisaoMinisterio[];
   cor: string;
   indice: number;
   /** Ângulo do ministério no anel fechado (radianos, 0 = direita). */
@@ -81,6 +92,17 @@ export type LayoutMapa = Readonly<{
   leis: ReadonlyMap<string, PosicaoLei>;
   /** Leis reveladas que não couberam na esfera fechada, por esfera. */
   excedentes: ReadonlyMap<string, number>;
+  /** Nome de cada ministério na borda da área aberta, sobre a sua fatia. */
+  pastas: readonly RotuloPasta[];
+}>;
+
+export type RotuloPasta = Readonly<{
+  id: string;
+  cargo: string;
+  x: number;
+  y: number;
+  /** Ângulo a partir do centro da esfera (para alinhar o texto). */
+  angulo: number;
 }>;
 
 const TAU = Math.PI * 2;
@@ -147,23 +169,30 @@ export function quebrarNome(texto: string, largura = 16, linhas = 2) {
 // ---------------------------------------------------------------------------
 
 export function montarBase(visao: VisaoPartida): BaseMapa {
-  const nomes = [...new Set(visao.leis.flatMap((lei) => lei.ministerios))];
-  nomes.sort((a, b) => {
-    const ia = ORDEM_MINISTERIOS.indexOf(a);
-    const ib = ORDEM_MINISTERIOS.indexOf(b);
-    return (
-      (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b, "pt-BR")
-    );
-  });
-  const ministerios = nomes.map((nome, indice): Ministerio => ({
-    nome,
-    titulo: temaDoMinisterio(nome),
-    cor: corDoMinisterio(nome, indice),
+  const areas = visao.governo.filter((area) =>
+    visao.leis.some((lei) => lei.areas.includes(area.id)),
+  );
+  const ordemDaPasta = new Map(
+    areas.flatMap((area) => area.ministerios.map((m, i) => [m.id, i])),
+  );
+  const ministerios = areas.map((area, indice): Ministerio => ({
+    nome: area.id,
+    titulo: area.titulo,
+    curto: area.curto,
+    cargo: area.cargo,
+    faz: area.faz,
+    pastas: area.ministerios,
+    cor: corDaArea(area.id, indice),
     indice,
-    anguloBase: anguloBase(indice, nomes.length),
+    anguloBase: anguloBase(indice, areas.length),
+    // as leis de cada ministério ficam juntas: viram uma fatia da área aberta
     leis: visao.leis
-      .filter((lei) => lei.ministerios.includes(nome))
-      .sort(porGrupoENome)
+      .filter((lei) => lei.areas.includes(area.id))
+      .sort(
+        (a, b) =>
+          (ordemDaPasta.get(a.ministerioId) ?? 99) -
+            (ordemDaPasta.get(b.ministerioId) ?? 99) || porGrupoENome(a, b),
+      )
       .map((lei) => lei.id),
   }));
   const porNome = new Map(ministerios.map((m) => [m.nome, m]));
@@ -218,12 +247,12 @@ function posicionarBolhas(
   for (const ligacao of visao.ligacoes) {
     const lei = leis.get(ligacao.origem);
     if (lei) {
-      for (const m of lei.ministerios) somar(ligacao.alvo, m, 1);
+      for (const m of lei.areas) somar(ligacao.alvo, m, 1);
       continue;
     }
     if (ligacao.alvo.startsWith("eficacia:")) {
       const alvo = leis.get(ligacao.alvo.slice("eficacia:".length));
-      for (const m of alvo?.ministerios ?? []) somar(ligacao.origem, m, 0.4);
+      for (const m of alvo?.areas ?? []) somar(ligacao.origem, m, 0.4);
       continue;
     }
     vizinhos.set(ligacao.origem, [
@@ -800,7 +829,7 @@ function vagasDaPresidencia(base: BaseMapa): {
       ids: m.leis.filter(
         (id) =>
           base.constitucionais.includes(id) &&
-          base.leis.get(id)?.ministerios[0] === m.nome,
+          base.leis.get(id)?.areas[0] === m.nome,
       ),
     }))
     .filter((g) => g.ids.length);
@@ -926,6 +955,7 @@ export function montarLayout(
 
   const leis = new Map<string, PosicaoLei>();
   const excedentes = new Map<string, number>();
+  const pastas: RotuloPasta[] = [];
   const constitucional = new Set(base.constitucionais);
 
   // 1. Esfera ministerial aberta: lente (constitucionais) + vagas internas.
@@ -956,6 +986,7 @@ export function montarLayout(
         rotulo: tamanhoDoRotulo(vagas.passo),
       }),
     );
+    pastas.push(...rotulosDasPastas(base, ministerio, esfera, leis));
   }
 
   // 2. Presidência aberta: todas as constitucionais no anel interno.
@@ -979,7 +1010,7 @@ export function montarLayout(
     if (leis.has(id)) continue;
     const lei = base.leis.get(id);
     if (!lei) continue;
-    const nome = lei.ministerios[0];
+    const nome = lei.areas[0];
     if (!esferas.has(nome)) continue;
     porEsfera.set(nome, [...(porEsfera.get(nome) ?? []), id]);
   }
@@ -1026,5 +1057,39 @@ export function montarLayout(
     esferas,
     leis,
     excedentes,
+    pastas,
   };
+}
+
+/**
+ * O nome de cada ministério fica na borda da área aberta, no meio da sua
+ * fatia de leis (as leis de uma pasta ocupam vagas seguidas). Só as leis
+ * de dentro contam: as da lente ficam na Presidência.
+ */
+function rotulosDasPastas(
+  base: BaseMapa,
+  area: Ministerio,
+  esfera: Esfera,
+  leis: ReadonlyMap<string, PosicaoLei>,
+): RotuloPasta[] {
+  if (area.pastas.length < 2) return [];
+  return area.pastas.flatMap((pasta) => {
+    const pontos = pasta.leis
+      .map((id) => leis.get(id))
+      .filter((p): p is PosicaoLei => p?.lugar === "interna");
+    if (!pontos.length) return [];
+    const x = pontos.reduce((s, p) => s + p.x - esfera.x, 0);
+    const y = pontos.reduce((s, p) => s + p.y - esfera.y, 0);
+    const angulo = Math.atan2(y, x);
+    const raio = esfera.r + 30;
+    return [
+      {
+        id: pasta.id,
+        cargo: pasta.cargo,
+        x: esfera.x + Math.cos(angulo) * raio,
+        y: esfera.y + Math.sin(angulo) * raio,
+        angulo,
+      },
+    ];
+  });
 }

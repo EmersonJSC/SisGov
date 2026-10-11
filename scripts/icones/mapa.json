@@ -280,17 +280,16 @@
     "vinculo": "link-variant",
     "vinculoQuebrado": "link-variant-off",
     "busca": "magnify",
-    "Ministério da Fazenda": "cash-multiple",
-    "Ministério da Economia": "factory",
-    "Ministério do Trabalho": "briefcase-outline",
-    "Ministério da Previdência": "umbrella-outline",
-    "Ministério da Saúde": "heart-pulse",
-    "Ministério da Educação": "school",
-    "Ministério da Justiça": "police-badge-outline",
-    "Ministério do Meio Ambiente": "leaf",
-    "Ministério das Cidades": "city-variant-outline",
-    "Ministério dos Direitos Humanos": "scale-balance",
-    "Casa Civil": "bank",
-    "Ministério da Defesa e Relações Exteriores": "earth"
+    "economia": "cash-multiple",
+    "empresas": "factory",
+    "trabalho": "briefcase-outline",
+    "previdencia": "umbrella-outline",
+    "saude": "heart-pulse",
+    "educacao": "school",
+    "infraestrutura": "city-variant-outline",
+    "ambiente": "leaf",
+    "seguranca": "police-badge-outline",
+    "direitos": "scale-balance",
+    "governo": "bank"
   }
 }

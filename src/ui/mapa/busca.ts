@@ -4,8 +4,7 @@
  * as palavras que o jogador usa ("estatizar", "juros", "aposentadoria").
  * Só lê a `VisaoPartida`; não mexe no jogo.
  */
-import type { VisaoBolha, VisaoLei } from "../../app/partida";
-import { TEMAS, temaDoMinisterio } from "./tema";
+import type { VisaoArea, VisaoBolha, VisaoLei } from "../../app/partida";
 
 export function normalizar(texto: string): string {
   return texto.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -104,9 +103,12 @@ export type Resultado = Readonly<{
   tipo: "lei" | "bolha";
   id: string;
   nome: string;
-  /** Tema do ministério ("Economia e empresas") ou "Indicador". */
+  /** Área do governo ("Economia") ou "Indicador". */
   tema: string;
+  /** Id da área (a esfera que a lupa abre). */
   ministerio?: string;
+  /** Ministério dono da lei ("Fazenda"). */
+  pasta?: string;
   /** Opção em vigor (leis de opções). */
   vigente?: string;
   /** Por que apareceu: a opção ou o trecho que bateu. */
@@ -126,6 +128,7 @@ export function buscar(
   consulta: string,
   leis: readonly VisaoLei[],
   bolhas: readonly VisaoBolha[],
+  governo: readonly VisaoArea[] = [],
   limite = 12,
 ): Resultado[] {
   const q = normalizar(consulta).trim();
@@ -143,12 +146,19 @@ export function buscar(
         indicadas.set(id, Math.max(indicadas.get(id) ?? 0, 9 - i)),
       );
   }
+  const areas = new Map(governo.map((a) => [a.id, a]));
   const saida: Resultado[] = [];
   for (const lei of leis) {
     const nome = normalizar(lei.nome);
-    const ministerio = lei.ministerios[0];
-    const tema = temaDoMinisterio(ministerio);
-    const faz = normalizar(TEMAS[ministerio]?.faz ?? "");
+    const ministerio = lei.areas[0];
+    const area = areas.get(ministerio);
+    const pasta = area?.ministerios.find((m) => m.id === lei.ministerioId);
+    const tema = area?.titulo ?? lei.ministerio;
+    const faz = normalizar(area?.faz ?? "");
+    // o nome do ministério também acha a lei ("fazenda", "itamaraty")
+    const nomeDaPasta = normalizar(
+      `${pasta?.nome ?? ""} ${pasta?.cargo ?? ""}`,
+    );
     let pontos = indicadas.get(lei.id) ?? 0;
     let motivo: string | undefined;
     for (const t of termos) {
@@ -166,6 +176,7 @@ export function buscar(
       if (normalizar(tema).includes(t)) pontos += 3;
       if (GRUPO[lei.grupo]?.includes(t)) pontos += 3;
       if (faz.includes(t)) pontos += 1;
+      if (t.length >= 4 && nomeDaPasta.includes(t)) pontos += 3;
     }
     if (pontos <= 1) continue;
     const vigente = lei.opcoes?.find((o) => o.id === lei.opcaoAtual)?.rotulo;
@@ -175,6 +186,7 @@ export function buscar(
       nome: lei.nome,
       tema,
       ministerio,
+      ...(pasta ? { pasta: pasta.cargo } : {}),
       ...(vigente ? { vigente } : {}),
       ...(motivo ? { motivo } : {}),
       pontos,

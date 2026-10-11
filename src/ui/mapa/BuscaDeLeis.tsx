@@ -11,11 +11,10 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import type { VisaoBolha, VisaoLei } from "../../app/partida";
+import type { VisaoArea, VisaoBolha, VisaoLei } from "../../app/partida";
 import { buscar, type Resultado } from "./busca";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
-import { TEMAS } from "./tema";
 
 const SUGESTOES = [
   "privatizar",
@@ -31,12 +30,14 @@ const SUGESTOES = [
 export function BuscaDeLeis({
   leis,
   bolhas,
+  governo,
   corDoMinisterio,
   onEscolher,
   onFechar,
 }: {
   leis: readonly VisaoLei[];
   bolhas: readonly VisaoBolha[];
+  governo: readonly VisaoArea[];
   corDoMinisterio: (ministerio: string) => string | undefined;
   onEscolher: (r: Resultado) => void;
   onFechar: () => void;
@@ -45,8 +46,8 @@ export function BuscaDeLeis({
   const [ativo, setAtivo] = useState(0);
   const entrada = useRef<HTMLInputElement>(null);
   const resultados = useMemo(
-    () => buscar(consulta, leis, bolhas),
-    [consulta, leis, bolhas],
+    () => buscar(consulta, leis, bolhas, governo),
+    [consulta, leis, bolhas, governo],
   );
 
   useEffect(() => entrada.current?.focus(), []);
@@ -104,21 +105,22 @@ export function BuscaDeLeis({
             </div>
             <p className="busca-temas-titulo">Onde fica cada assunto:</p>
             <ul className="busca-temas">
-              {Object.entries(TEMAS).map(([ministerio, t]) => (
+              {governo.map((area) => (
                 <li
-                  key={ministerio}
-                  style={
-                    { "--cor": corDoMinisterio(ministerio) } as CSSProperties
-                  }
+                  key={area.id}
+                  style={{ "--cor": corDoMinisterio(area.id) } as CSSProperties}
                 >
                   <strong>
                     <Icone
-                      nome={ICONE_INTERFACE[ministerio] ?? "bank"}
+                      nome={ICONE_INTERFACE[area.id] ?? "bank"}
                       tamanho={18}
                     />
-                    {t.titulo}
+                    {area.titulo}
                   </strong>
-                  <span>{t.faz}</span>
+                  <span>{area.faz}</span>
+                  <span className="busca-pastas">
+                    {area.ministerios.map((m) => m.cargo).join(" · ")}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -158,6 +160,7 @@ export function BuscaDeLeis({
                     <strong>{r.nome}</strong>
                     <small>
                       <em className="busca-tema">{r.tema}</em>
+                      {r.pasta ? ` · ${r.pasta}` : ""}
                       {r.vigente ? ` · em vigor: ${r.vigente}` : ""}
                     </small>
                     {r.motivo ? (

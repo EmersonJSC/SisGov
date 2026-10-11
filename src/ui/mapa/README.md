@@ -1,10 +1,12 @@
 # Mapa político (tela principal)
 
-A tela principal do jogo: Presidência no centro, doze esferas ministeriais
-em anel, cada uma com um tema claro (Impostos, Economia e empresas, Trabalho,
-Previdência, Saúde, Educação, Cidades, Meio ambiente, Segurança, Direitos,
-Defesa e exterior, Instituições — `TEMAS` em `tema.ts`), leis dentro das
-esferas e indicadores no anel externo. Lê só a
+A tela principal do jogo: Presidência no centro, onze esferas em anel, uma
+por **área do governo** (D-64): Economia, Empresas e comércio, Trabalho,
+Previdência e assistência, Saúde, Educação, Infraestrutura, Meio ambiente,
+Segurança e defesa, Direitos, Governo e instituições. Cada área agrupa
+ministérios reais (os 38 do Brasil 2026, em
+`conteudo/paises/brasil/ministerios.json`); as leis ficam dentro das esferas
+e os indicadores no anel externo. Lê só a
 `VisaoPartida` (`src/app/partida.ts`); não importa nada do motor.
 
 ## Arquivos
@@ -39,12 +41,14 @@ esferas e indicadores no anel externo. Lê só a
 
 ## Regras de leitura do mapa
 
-- **Esfera fechada:** retrato, tema, cargo e número de leis ("Fazenda · 14
-  leis"). Nenhuma lei aparece na
+- **Esfera fechada:** retrato de quem coordena a área, título, número de
+  ministérios e de leis ("2 ministérios · 18 leis"). Nenhuma lei aparece na
   visão geral.
 - **Esfera aberta:** cresce, as vizinhas encolhem e abrem espaço, a câmera vai
   até ela. As leis ficam numa grade alinhada à tela, para os rótulos nunca se
-  cruzarem.
+  cruzarem; as de um mesmo ministério ficam juntas, numa fatia, com o nome
+  da pasta na borda da esfera (`layout.pastas`). Ministério sem lei aparece
+  na lupa ("onde fica cada assunto"), não no mapa.
 - **Lente constitucional:** as leis com `processo: "emenda-constitucional"`
   são do ministério e também da Presidência. Elas ficam na parte da esfera
   que cobre a Presidência (um nó só, nunca duplicado). Com a Presidência

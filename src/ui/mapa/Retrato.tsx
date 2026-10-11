@@ -27,7 +27,7 @@ const PELE = ["#f3cfb1", "#e3b08a", "#c98d62", "#a46a43", "#7b4b2e"];
 
 /** Pessoas provisórias por ministério (só aparência). */
 const PESSOAS: Readonly<Record<string, Pessoa>> = {
-  "Ministério da Fazenda": {
+  Fazenda: {
     pele: PELE[1],
     cabelo: "lateral",
     corCabelo: "#8c8c8c",
@@ -35,28 +35,28 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     gravata: "#3f6fb5",
     oculos: true,
   },
-  "Ministério da Economia": {
+  "Indústria e Comércio": {
     pele: PELE[3],
     cabelo: "chanel",
     corCabelo: "#2b1d14",
     paleto: "#2e5856",
     blusa: "#e9e4d8",
   },
-  "Ministério do Meio Ambiente": {
+  "Meio Ambiente": {
     pele: PELE[3],
     cabelo: "curto",
     corCabelo: "#1d1712",
     paleto: "#3e5a3c",
     barba: true,
   },
-  "Ministério do Trabalho": {
+  Trabalho: {
     pele: PELE[2],
     cabelo: "longo",
     corCabelo: "#2a1b12",
     paleto: "#7a2e2a",
     blusa: "#f1ebe0",
   },
-  "Ministério da Previdência": {
+  Previdência: {
     pele: PELE[0],
     cabelo: "calvo",
     corCabelo: "#9a958d",
@@ -64,14 +64,14 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     gravata: "#8a3d6a",
     oculos: true,
   },
-  "Ministério da Saúde": {
+  Saúde: {
     pele: PELE[1],
     cabelo: "coque",
     corCabelo: "#5a3a24",
     paleto: "#f4f2ee",
     blusa: "#c9414f",
   },
-  "Ministério da Educação": {
+  Educação: {
     pele: PELE[4],
     cabelo: "crespo",
     corCabelo: "#1b1410",
@@ -79,14 +79,14 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     blusa: "#f3eee3",
     oculos: true,
   },
-  "Ministério da Defesa e Relações Exteriores": {
+  Defesa: {
     pele: PELE[2],
     cabelo: "curto",
     corCabelo: "#2a2a2a",
     paleto: "#4c5a2a",
     gravata: "#2a3218",
   },
-  "Ministério da Justiça": {
+  Justiça: {
     pele: PELE[3],
     cabelo: "lateral",
     corCabelo: "#1a1410",
@@ -94,7 +94,7 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     gravata: "#5d43a0",
     barba: true,
   },
-  "Ministério das Cidades": {
+  Cidades: {
     pele: PELE[2],
     cabelo: "calvo",
     corCabelo: "#3a2c22",
@@ -102,7 +102,7 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     gravata: "#c9a24a",
     barba: true,
   },
-  "Ministério dos Direitos Humanos": {
+  "Direitos Humanos": {
     pele: PELE[4],
     cabelo: "longo",
     corCabelo: "#1b1410",

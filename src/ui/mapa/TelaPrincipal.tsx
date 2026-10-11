@@ -604,6 +604,7 @@ export function TelaPrincipal() {
         <BuscaDeLeis
           leis={visao.leis}
           bolhas={visao.bolhas}
+          governo={visao.governo}
           corDoMinisterio={(m) => base.porNome.get(m)?.cor}
           onFechar={() => setBuscaAberta(false)}
           onEscolher={(r) => {

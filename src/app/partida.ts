@@ -37,6 +37,18 @@ import { commitGameQuarter } from "../game/commitGameQuarter";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { advancePolicyImplementation } from "../game/advancePolicyImplementation";
 import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import type { EstruturaDeGoverno } from "../game/ministerios";
+
+/** Ministérios de cada país (D-64), pelo nome da pasta do país. */
+const ESTRUTURAS: Readonly<Record<string, EstruturaDeGoverno>> =
+  Object.fromEntries(
+    Object.entries(
+      import.meta.glob<EstruturaDeGoverno>(
+        "../conteudo/paises/*/ministerios.json",
+        { eager: true, import: "default" },
+      ),
+    ).map(([caminho, estrutura]) => [caminho.split("/").at(-2)!, estrutura]),
+  );
 
 export type Resultado<T> =
   { ok: true; value: T } | { ok: false; erros: readonly string[] };
@@ -79,9 +91,13 @@ export type VisaoLei = Readonly<{
   descricao: string;
   grupo: "orcamentaria" | "regulatoria" | "tributaria" | "institucional";
   area: string;
-  /** Ministérios a que esta política pertence; hoje o conteúdo expõe um. */
+  /** Ministérios (nome real) a que esta lei pertence; hoje um só. */
   ministerios: readonly string[];
   ministerio: string;
+  /** Id do ministério dono da lei (D-64). */
+  ministerioId: string;
+  /** Áreas do governo (esferas do mapa) onde a lei mora. */
+  areas: readonly string[];
   /**
    * Como a lei muda: `emenda-constitucional`, `lei-ordinaria`,
    * `execucao-programa-autorizado`… A tela põe as constitucionais também na
@@ -249,6 +265,27 @@ export type VisaoPartida = Readonly<{
   grupos: readonly VisaoGrupo[];
   /** Eventos, dilemas e situações (SG106). */
   ocorrencias: VisaoOcorrencias;
+  /** Áreas do governo e seus ministérios, na ordem do anel (D-64). */
+  governo: readonly VisaoArea[];
+}>;
+
+export type VisaoMinisterio = Readonly<{
+  id: string;
+  nome: string;
+  cargo: string;
+  leis: readonly string[];
+  /** Pode ser extinto (não é do núcleo do governo). */
+  extinguivel: boolean;
+}>;
+
+export type VisaoArea = Readonly<{
+  id: string;
+  titulo: string;
+  curto: string;
+  faz: string;
+  /** Cargo de quem dá o rosto da área ("Fazenda"). */
+  cargo: string;
+  ministerios: readonly VisaoMinisterio[];
 }>;
 
 /** Seta de uma ocorrência: o que ela mexe enquanto dura. */
@@ -1257,6 +1294,23 @@ export function verPartida(partida: Partida): VisaoPartida {
   );
   const exigencias = policyRequirements(content);
   const nomeDaLei = new Map(content.policies.map((p) => [p.id, p.nome]));
+  const governo = governoDaPartida(content);
+  const lugares = new Map(
+    governo.flatMap((area) =>
+      area.ministerios.flatMap((m) =>
+        m.leis.map((lei) => [lei, { area: area.id, ministerio: m }] as const),
+      ),
+    ),
+  );
+  const lugarDaLei = (id: string) => {
+    const lugar = lugares.get(id);
+    return {
+      ministerio: lugar?.ministerio.nome ?? "",
+      ministerios: lugar ? [lugar.ministerio.nome] : [],
+      ministerioId: lugar?.ministerio.id ?? "",
+      areas: lugar ? [lugar.area] : [],
+    };
+  };
   const leis = content.policies.map((policy): VisaoLei => {
     const state = states.get(policy.id);
     const nivel = state?.implementedLevel ?? 0;
@@ -1277,8 +1331,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       descricao: policy.descricao ?? "",
       grupo: policy.grupo,
       area: policy.area ?? "",
-      ministerio: policy.ministerio ?? policy.area ?? "",
-      ministerios: [policy.ministerio ?? policy.area ?? ""].filter(Boolean),
+      ...lugarDaLei(policy.id),
       processo: policy.processoAutorizacao,
       nivel,
       meta: state?.desiredLevel ?? nivel,
@@ -1419,10 +1472,61 @@ export function verPartida(partida: Partida): VisaoPartida {
     contas: lerContas(content, values),
     grupos: gruposDaPartida(partida, values, alteradas),
     ocorrencias: ocorrenciasDaPartida(partida),
+    governo,
     leis,
     bolhas,
     ligacoes,
   };
+}
+
+/**
+ * Áreas e ministérios do país (D-64). País sem `ministerios.json` (os
+ * pacotes de teste) cai no campo `ministerio` de cada lei: uma área por
+ * ministério citado.
+ */
+function governoDaPartida(content: ResolvedPackage): VisaoArea[] {
+  const estrutura = ESTRUTURAS[content.manifest?.id ?? ""];
+  if (estrutura) {
+    const existe = new Set(content.policies.map((p) => p.id));
+    return estrutura.areas.map((area) => {
+      const ministerios = estrutura.ministerios
+        .filter((m) => m.area === area.id)
+        .map((m) => ({
+          id: m.id,
+          nome: m.nome,
+          cargo: m.cargo,
+          leis: m.leis.filter((lei) => existe.has(lei)),
+          extinguivel: Boolean(m.extincao),
+        }));
+      return {
+        id: area.id,
+        titulo: area.titulo,
+        curto: area.curto,
+        faz: area.faz,
+        cargo:
+          ministerios.find((m) => m.id === area.coordenador)?.cargo ??
+          ministerios[0]?.cargo ??
+          "",
+        ministerios,
+      };
+    });
+  }
+  const porNome = new Map<string, string[]>();
+  for (const policy of content.policies) {
+    const nome = policy.ministerio ?? policy.area ?? "Governo";
+    porNome.set(nome, [...(porNome.get(nome) ?? []), policy.id]);
+  }
+  return [...porNome].map(([nome, leis]) => {
+    const curto = nome.replace(/^Ministério (da|do|dos|das|de) /, "");
+    return {
+      id: nome,
+      titulo: curto,
+      curto,
+      faz: "",
+      cargo: curto,
+      ministerios: [{ id: nome, nome, cargo: curto, leis, extinguivel: false }],
+    };
+  });
 }
 
 /** Setas que saem do nó de uma ocorrência (o que ela mexe enquanto dura). */

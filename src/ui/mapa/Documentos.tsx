@@ -41,7 +41,7 @@ import {
   type IndiceRelacoes,
   type Relacao,
 } from "./relacoes";
-import { COR_EFEITO, COR_PRESIDENCIA, temaDoMinisterio } from "./tema";
+import { COR_EFEITO, COR_PRESIDENCIA } from "./tema";
 
 export type Horizonte = "turno" | "ano";
 
@@ -477,7 +477,7 @@ export function DocumentoLei({
     () => new Map(visao.leis.map((l) => [l.id, l])),
     [visao],
   );
-  const ministerio = base.porNome.get(lei.ministerios[0]);
+  const ministerio = base.porNome.get(lei.areas[0]);
   const cor = ministerio?.cor ?? "#666";
   const relacoes = indice.porNo.get(lei.id) ?? [];
   const efeitosDiretos = relacoes.filter((r) => r.de === lei.id);
@@ -621,13 +621,16 @@ export function DocumentoLei({
       </p>
       <h1 className="titulo-doc">{lei.nome}</h1>
       <div className="etiquetas">
-        {lei.ministerios.map((m) => (
+        {lei.areas.map((m) => (
           <span
             key={m}
             className="etiqueta"
             style={{ "--cor": base.porNome.get(m)?.cor } as CSSProperties}
           >
-            {temaDoMinisterio(m)}
+            {base.porNome.get(m)?.titulo ?? m}
+            {" · "}
+            {base.porNome.get(m)?.pastas.find((p) => p.id === lei.ministerioId)
+              ?.cargo ?? lei.ministerio}
           </span>
         ))}
         {constitucional ? (
@@ -1186,7 +1189,7 @@ export function DocumentoBolha({
           style={
             lei
               ? ({
-                  "--cor-efeito": base.porNome.get(lei.ministerios[0])?.cor,
+                  "--cor-efeito": base.porNome.get(lei.areas[0])?.cor,
                 } as CSSProperties)
               : undefined
           }
@@ -1204,7 +1207,7 @@ export function DocumentoBolha({
           <strong>{lei?.nome ?? bolhas.get(r.de)?.nome ?? r.de}</strong>
           <small>
             {lei
-              ? `Lei · ${temaDoMinisterio(lei.ministerios[0])}`
+              ? `Lei · ${base.porNome.get(lei.areas[0])?.titulo ?? lei.ministerio}`
               : bolhas.get(r.de)?.tipo === "grupo"
                 ? `Grupo social · satisfação ${Math.round(bolhas.get(r.de)!.valor)}`
                 : "Indicador"}{" "}

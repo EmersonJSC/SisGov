@@ -112,7 +112,7 @@ export function ligacoesDeFundo(
   visao: VisaoPartida,
 ): readonly LigacaoDeFundo[] {
   const ministerioDaLei = new Map(
-    visao.leis.map((lei) => [lei.id, lei.ministerios[0]]),
+    visao.leis.map((lei) => [lei.id, lei.areas[0]]),
   );
   const contagem = new Map<string, Map<string, number>>();
   for (const ligacao of visao.ligacoes) {

@@ -65,13 +65,7 @@ import {
   type Relacao,
 } from "./relacoes";
 import { PRESIDENTE, Retrato, pessoaDoCargo } from "./Retrato";
-import {
-  COR_EFEITO,
-  COR_PRESIDENCIA,
-  MEDIDAS,
-  cargoDoMinisterio,
-  temaCurto,
-} from "./tema";
+import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS } from "./tema";
 
 export type MarcaPrevista = Readonly<{ efeito: Efeito; sobe: boolean }>;
 
@@ -1232,7 +1226,7 @@ export function MapaPolitico({
       const i = intensidades.get(id);
       return { ...bolha, r: RAIO_BASE_BOLHA * (i?.escala ?? 1) + 6 };
     }
-    const dono = base.leis.get(id)?.ministerios[0];
+    const dono = base.leis.get(id)?.areas[0];
     const esfera = dono ? layout.esferas.get(dono) : undefined;
     return esfera ? { x: esfera.x, y: esfera.y, r: 40 } : null;
   };
@@ -1245,11 +1239,11 @@ export function MapaPolitico({
           ? "vizinho"
           : "apagado";
 
-  const ministerioDoFoco = foco ? (base.leis.get(foco)?.ministerios ?? []) : [];
+  const ministerioDoFoco = foco ? (base.leis.get(foco)?.areas ?? []) : [];
   const esferaRelacionada = (nome: string) =>
     !comFoco ||
     ministerioDoFoco.includes(nome) ||
-    [...viz.leis].some((id) => base.leis.get(id)?.ministerios.includes(nome));
+    [...viz.leis].some((id) => base.leis.get(id)?.areas.includes(nome));
 
   const pontaFundo = Math.min(18, Math.max(9, 7 / k));
   const pontaFoco = Math.min(24, Math.max(12, 10 / k));
@@ -1494,7 +1488,7 @@ export function MapaPolitico({
             const longe = !e.aberta && k < LONGE;
             const tituloLonge = longe
               ? (() => {
-                  const linhas = quebrarNome(temaCurto(ministerio.nome), 12, 2);
+                  const linhas = quebrarNome(ministerio.curto, 12, 2);
                   const tamanho = Math.min(e.r * 0.34, 17 / k);
                   return { linhas, tamanho, entrelinha: tamanho * 1.02 };
                 })()
@@ -1518,12 +1512,12 @@ export function MapaPolitico({
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`${ministerio.nome}, ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
+                aria-label={`${ministerio.titulo}: ${ministerio.pastas.map((p) => p.cargo).join(", ")}; ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
                 aria-expanded={e.aberta}
                 onKeyDown={aoTeclar(() => abrirEsfera(ministerio.nome))}
               >
                 <Retrato
-                  pessoa={pessoaDoCargo(ministerio.nome, ministerio.indice)}
+                  pessoa={pessoaDoCargo(ministerio.cargo, ministerio.indice)}
                   cor={ministerio.cor}
                   r={rr}
                   x={bloco.retrato.x}
@@ -1612,8 +1606,10 @@ export function MapaPolitico({
                     fontSize={bloco.contagem.tamanho}
                     textAnchor="middle"
                   >
-                    {cargoDoMinisterio(ministerio.nome)} ·{" "}
-                    {ministerio.leis.length} leis
+                    {ministerio.pastas.length > 1
+                      ? `${ministerio.pastas.length} ministérios`
+                      : ministerio.cargo}{" "}
+                    · {ministerio.leis.length} leis
                     {constit && e.aberta
                       ? ` · ${constit} constituciona${constit > 1 ? "is" : "l"}`
                       : ""}
@@ -1641,7 +1637,7 @@ export function MapaPolitico({
                     }}
                     role="button"
                     tabIndex={0}
-                    aria-label={`Fechar ${ministerio.nome}`}
+                    aria-label={`Fechar ${ministerio.titulo}`}
                     onKeyDown={aoTeclar(() => onAbrir(null))}
                   >
                     <circle r={20} />
@@ -1655,6 +1651,33 @@ export function MapaPolitico({
               </g>
             );
           })}
+
+          {/* Ministérios da área aberta: o nome de cada um na sua fatia */}
+          {esferaAberta && layout.pastas.length ? (
+            <g
+              className="rotulos-pastas"
+              pointerEvents="none"
+              style={{ "--cor": corDaEsfera(aberta!) } as React.CSSProperties}
+            >
+              {layout.pastas.map((pasta) => {
+                const c = Math.cos(pasta.angulo);
+                return (
+                  <text
+                    key={pasta.id}
+                    className="rotulo-pasta"
+                    x={pasta.x}
+                    y={pasta.y + 7}
+                    fontSize={Math.max(20, 13 / k)}
+                    textAnchor={
+                      c > 0.35 ? "start" : c < -0.35 ? "end" : "middle"
+                    }
+                  >
+                    {pasta.cargo}
+                  </text>
+                );
+              })}
+            </g>
+          ) : null}
 
           {/* Centro: Presidente e Constituição */}
           <g
@@ -1771,8 +1794,8 @@ export function MapaPolitico({
           {[...layout.leis.values()].map((pos) => {
             const lei = leisPorId.get(pos.id);
             if (!lei) return null;
-            const cor = corDaEsfera(lei.ministerios[0]);
-            const extras = [...lei.ministerios.slice(1).map(corDaEsfera)];
+            const cor = corDaEsfera(lei.areas[0]);
+            const extras = [...lei.areas.slice(1).map(corDaEsfera)];
             const estado = estadoDe(pos.id);
             const mostrarRotulo =
               pos.lugar !== "revelada" ||
