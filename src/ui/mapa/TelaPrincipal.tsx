@@ -26,6 +26,8 @@ import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
+import { montarJornal } from "./jornal";
+import { PaginaDeJornal } from "./PaginaDeJornal";
 import {
   MES_DO_HORIZONTE,
   type Desvio,
@@ -306,6 +308,8 @@ export function TelaPrincipal() {
   );
   const [mesaAberta, setMesaAberta] = useState(true);
   const [buscaAberta, setBuscaAberta] = useState(false);
+  const [jornalAberto, setJornalAberto] = useState(false);
+  const fecharJornal = useCallback(() => setJornalAberto(false), []);
   // a lupa abre com "/" ou Ctrl+K (fora de um campo de texto)
   useEffect(() => {
     const tecla = (e: KeyboardEvent) => {
@@ -335,6 +339,8 @@ export function TelaPrincipal() {
   );
   const [relatorio, setRelatorio] = useState<RelatorioTurno | null>(null);
   const [aviso, setAviso] = useState<RelatorioTurno | null>(null);
+  /** A visão antes do último turno: o jornal compara com ela. */
+  const [visaoAnterior, setVisaoAnterior] = useState<VisaoPartida | null>(null);
   const [erroTurno, setErroTurno] = useState<string | null>(null);
   const [pulsos, setPulsos] = useState<ReadonlySet<string>>(new Set());
   const [passando, setPassando] = useState(false);
@@ -487,8 +493,11 @@ export function TelaPrincipal() {
       setVariacoes(mudaram);
       setVariacoesVoce(porVoce);
       setMostrarVariacoes(true);
+      setVisaoAnterior(visao);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
+      // o jornal do trimestre chega com o fim do turno
+      setJornalAberto(true);
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
       setMesaAberta(true);
@@ -585,6 +594,15 @@ export function TelaPrincipal() {
         <button
           type="button"
           className="botao-busca"
+          onClick={() => setJornalAberto(true)}
+          title="Jornal do trimestre: notícias, índices e opiniões"
+        >
+          <Icone nome={ICONE_INTERFACE.jornal} tamanho={22} />
+          <span>Jornal</span>
+        </button>
+        <button
+          type="button"
+          className="botao-busca"
           onClick={() => setBuscaAberta(true)}
           title="Buscar lei ou indicador (atalho: / ou Ctrl+K)"
         >
@@ -599,6 +617,15 @@ export function TelaPrincipal() {
           </span>
         </div>
       </header>
+
+      {jornalAberto ? (
+        <PaginaDeJornal
+          edicao={montarJornal(visao, visaoAnterior, relatorio)}
+          data={trimestre(visao.turno)}
+          numero={visao.turno + 1}
+          onFechar={fecharJornal}
+        />
+      ) : null}
 
       {buscaAberta ? (
         <BuscaDeLeis

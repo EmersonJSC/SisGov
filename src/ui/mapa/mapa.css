@@ -3503,3 +3503,219 @@ button {
   font-size: 0.82em;
   opacity: 0.75;
 }
+
+/* Página de jornal (11/out) */
+.jp-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+  overflow-y: auto;
+  background: rgba(20, 24, 32, 0.55);
+}
+
+.jp-pagina {
+  position: relative;
+  width: min(1040px, 100%);
+  padding: 28px 36px 36px;
+  background: #f7f3ea;
+  color: #1d1b17;
+  font-family: Georgia, "Times New Roman", serif;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.jp-fechar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.jp-cabecalho {
+  text-align: center;
+  border-bottom: 3px double #1d1b17;
+  margin-bottom: 18px;
+}
+
+.jp-linha {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #1d1b17;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.jp-cabecalho h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.jp-capa h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.jp-colunas {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #1d1b17;
+}
+
+.jp-pagina h3 {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #1d1b17;
+  padding-bottom: 4px;
+}
+
+.jp-materia {
+  border-bottom: 1px dotted #8a8478;
+  padding: 8px 0;
+}
+
+.jp-titulo-materia {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.12rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jp-materia.nivel-1 .jp-titulo-materia {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.jp-titulo-materia small {
+  flex: none;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7a3b1f;
+  text-transform: uppercase;
+}
+
+.jp-materia.principal .jp-titulo-materia {
+  justify-content: flex-start;
+}
+
+.jp-corpo p {
+  margin: 6px 0;
+  line-height: 1.45;
+}
+
+.jp-efeitos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 6px 0 2px;
+  padding: 0;
+  list-style: none;
+  font-family: system-ui, sans-serif;
+  font-size: 0.88rem;
+}
+
+.jp-pagina .efeito-melhora {
+  color: #1f7a52;
+}
+
+.jp-pagina .efeito-piora {
+  color: #b23345;
+}
+
+.jp-pagina .efeito-neutro,
+.jp-duracao,
+.jp-sem-efeito,
+.jp-calmo {
+  color: #5f5a50;
+}
+
+.jp-indices table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.jp-indices th,
+.jp-indices td {
+  padding: 5px 4px;
+  border-bottom: 1px solid #ddd5c4;
+  text-align: right;
+}
+
+.jp-indices th {
+  text-align: left;
+  font-weight: 500;
+}
+
+.jp-opiniao {
+  margin-top: 22px;
+}
+
+.jp-opiniao-colunas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.jp-opiniao h4 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.jp-opiniao blockquote {
+  margin: 0 0 14px;
+  padding-left: 10px;
+  border-left: 3px solid currentColor;
+}
+
+.jp-opiniao blockquote p {
+  margin: 0 0 4px;
+  color: #1d1b17;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.jp-opiniao cite {
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
+@media (max-width: 760px) {
+  .jp-pagina {
+    padding: 22px 16px 26px;
+  }
+
+  .jp-colunas,
+  .jp-opiniao-colunas {
+    grid-template-columns: 1fr;
+  }
+}
