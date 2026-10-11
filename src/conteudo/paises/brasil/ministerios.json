@@ -1,0 +1,558 @@
+{
+  "id": "ministerios-brasil-2026",
+  "tipo": "ministerios",
+  "versaoEsquema": 1,
+  "nome": "Ministérios do Brasil (2026)",
+  "descricao": "Os 38 ministérios reais (31 ministérios e 7 órgãos com status de ministério), agrupados em 11 áreas do mapa. Ministério sem 'extincao' é o núcleo do governo e não pode ser extinto; com 'extincao', as leis vão para o 'destino', salvo as exceções em 'leis' (outra pasta, ou null: a lei deixa de existir). Decisão D-64.",
+  "areas": [
+    {
+      "id": "economia",
+      "titulo": "Economia",
+      "curto": "Economia",
+      "faz": "Impostos, regra fiscal, juros, câmbio, bancos, cofre e apostas.",
+      "coordenador": "fazenda"
+    },
+    {
+      "id": "empresas",
+      "titulo": "Empresas e comércio",
+      "curto": "Empresas",
+      "faz": "Estatizar ou privatizar, indústria, preços, concorrência, importações, investimento estrangeiro e pequenas empresas.",
+      "coordenador": "mdic"
+    },
+    {
+      "id": "trabalho",
+      "titulo": "Trabalho e emprego",
+      "curto": "Trabalho",
+      "faz": "Salário mínimo, jornada, CLT, sindicatos, seguro-desemprego, FGTS e aplicativos.",
+      "coordenador": "trabalho"
+    },
+    {
+      "id": "previdencia",
+      "titulo": "Previdência e assistência",
+      "curto": "Previdência",
+      "faz": "Aposentadoria, pensões, benefícios a idosos, transferência de renda e combate à fome.",
+      "coordenador": "previdencia"
+    },
+    {
+      "id": "saude",
+      "titulo": "Saúde e esporte",
+      "curto": "Saúde",
+      "faz": "Sistema de saúde, piso da saúde, vacinas, remédios, planos de saúde e saúde mental.",
+      "coordenador": "saude"
+    },
+    {
+      "id": "educacao",
+      "titulo": "Educação e cultura",
+      "curto": "Educação",
+      "faz": "Escolas, universidades, ensino técnico, professores, pesquisa, cultura e redes sociais.",
+      "coordenador": "educacao"
+    },
+    {
+      "id": "infraestrutura",
+      "titulo": "Infraestrutura e energia",
+      "curto": "Infraestrutura",
+      "faz": "Obras, estradas, saneamento, transporte público, moradia, petróleo, mineração e energia.",
+      "coordenador": "cidades"
+    },
+    {
+      "id": "ambiente",
+      "titulo": "Meio ambiente e campo",
+      "curto": "Meio ambiente",
+      "faz": "Florestas, licenças, carbono, agrotóxicos, reforma agrária e terras indígenas.",
+      "coordenador": "meio-ambiente"
+    },
+    {
+      "id": "seguranca",
+      "titulo": "Segurança e defesa",
+      "curto": "Segurança",
+      "faz": "Polícia, armas, penas, presídios, drogas, crime organizado, imigração, Forças Armadas e diplomacia.",
+      "coordenador": "justica"
+    },
+    {
+      "id": "direitos",
+      "titulo": "Direitos e cidadania",
+      "curto": "Direitos",
+      "faz": "Aborto, casamento, eutanásia, religião, natalidade, mulheres e igualdade racial.",
+      "coordenador": "direitos-humanos"
+    },
+    {
+      "id": "governo",
+      "titulo": "Governo e instituições",
+      "curto": "Instituições",
+      "faz": "Sistema de governo, eleições, reeleição, Judiciário, imprensa, transparência, corrupção e servidores.",
+      "coordenador": "casa-civil"
+    }
+  ],
+  "ministerios": [
+    {
+      "id": "fazenda",
+      "nome": "Ministério da Fazenda",
+      "cargo": "Fazenda",
+      "area": "economia",
+      "leis": [
+        "imposto-renda-pessoas",
+        "imposto-renda-empresas",
+        "imposto-sobre-consumo",
+        "imposto-seletivo",
+        "imposto-grandes-fortunas",
+        "imposto-heranca",
+        "imposto-propriedade-urbana-rural",
+        "imposto-transacoes-financeiras",
+        "tributacao-dividendos",
+        "modelo-tributario",
+        "fundo-soberano",
+        "autonomia-banco-central",
+        "meta-de-inflacao",
+        "regime-cambial",
+        "controle-de-capitais",
+        "regulacao-bancaria",
+        "apostas-e-jogos-de-azar"
+      ]
+    },
+    {
+      "id": "planejamento",
+      "nome": "Ministério do Planejamento e Orçamento",
+      "cargo": "Planejamento",
+      "area": "economia",
+      "leis": ["regra-fiscal"],
+      "extincao": {
+        "destino": "fazenda"
+      }
+    },
+    {
+      "id": "mdic",
+      "nome": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
+      "cargo": "Indústria e Comércio",
+      "area": "empresas",
+      "leis": [
+        "politica-industrial",
+        "tarifas-de-importacao",
+        "defesa-da-concorrencia",
+        "investimento-estrangeiro",
+        "banco-de-desenvolvimento",
+        "controle-de-precos",
+        "empresas-estatais-e-privatizacao"
+      ],
+      "extincao": {
+        "destino": "fazenda"
+      }
+    },
+    {
+      "id": "empreendedorismo",
+      "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
+      "cargo": "Empreendedorismo",
+      "area": "empresas",
+      "leis": ["regime-simplificado-pequenas-empresas"],
+      "extincao": {
+        "destino": "mdic"
+      }
+    },
+    {
+      "id": "turismo",
+      "nome": "Ministério do Turismo",
+      "cargo": "Turismo",
+      "area": "empresas",
+      "leis": [],
+      "extincao": {
+        "destino": "mdic"
+      }
+    },
+    {
+      "id": "trabalho",
+      "nome": "Ministério do Trabalho e Emprego",
+      "cargo": "Trabalho",
+      "area": "trabalho",
+      "leis": [
+        "salario-minimo",
+        "jornada-de-trabalho",
+        "legislacao-trabalhista",
+        "fundo-de-garantia",
+        "licenca-parental",
+        "negociacao-coletiva-e-sindicatos",
+        "reducao-de-jornada-subsidiada",
+        "seguro-desemprego",
+        "terceirizacao",
+        "trabalho-infantil-e-aprendizagem",
+        "trabalho-por-aplicativo"
+      ],
+      "extincao": {
+        "destino": "fazenda"
+      }
+    },
+    {
+      "id": "previdencia",
+      "nome": "Ministério da Previdência Social",
+      "cargo": "Previdência",
+      "area": "previdencia",
+      "leis": [
+        "sistema-previdenciario",
+        "idade-minima-aposentadoria",
+        "pensao-por-morte",
+        "previdencia-rural",
+        "reajuste-de-beneficios"
+      ],
+      "extincao": {
+        "destino": "trabalho"
+      }
+    },
+    {
+      "id": "desenvolvimento-social",
+      "nome": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
+      "cargo": "Desenvolvimento Social",
+      "area": "previdencia",
+      "leis": [
+        "transferencia-de-renda",
+        "beneficio-idosos-e-deficientes",
+        "cuidados-de-longa-duracao",
+        "seguranca-alimentar"
+      ],
+      "extincao": {
+        "destino": "previdencia",
+        "leis": {
+          "seguranca-alimentar": null
+        }
+      }
+    },
+    {
+      "id": "saude",
+      "nome": "Ministério da Saúde",
+      "cargo": "Saúde",
+      "area": "saude",
+      "leis": [
+        "sistema-de-saude",
+        "piso-saude",
+        "farmacia-popular",
+        "genericos-e-patentes-medicamentos",
+        "regulacao-planos-de-saude",
+        "restricao-tabaco-e-alcool",
+        "saude-mental",
+        "vacinacao-obrigatoria",
+        "vigilancia-epidemiologica",
+        "programa-medicos-no-interior"
+      ]
+    },
+    {
+      "id": "esporte",
+      "nome": "Ministério do Esporte",
+      "cargo": "Esporte",
+      "area": "saude",
+      "leis": [],
+      "extincao": {
+        "destino": "educacao"
+      }
+    },
+    {
+      "id": "educacao",
+      "nome": "Ministério da Educação",
+      "cargo": "Educação",
+      "area": "educacao",
+      "leis": [
+        "ensino-obrigatorio",
+        "piso-educacao",
+        "acesso-ensino-superior",
+        "avaliacao-escolas",
+        "educacao-domiciliar",
+        "ensino-tecnico-profissional",
+        "escola-tempo-integral",
+        "piso-salarial-professores",
+        "vouchers-escolares"
+      ]
+    },
+    {
+      "id": "ciencia",
+      "nome": "Ministério da Ciência, Tecnologia e Inovação",
+      "cargo": "Ciência e Tecnologia",
+      "area": "educacao",
+      "leis": ["investimento-pesquisa"],
+      "extincao": {
+        "destino": "educacao"
+      }
+    },
+    {
+      "id": "cultura",
+      "nome": "Ministério da Cultura",
+      "cargo": "Cultura",
+      "area": "educacao",
+      "leis": ["incentivo-cultura"],
+      "extincao": {
+        "destino": "educacao"
+      }
+    },
+    {
+      "id": "comunicacoes",
+      "nome": "Ministério das Comunicações",
+      "cargo": "Comunicações",
+      "area": "educacao",
+      "leis": ["regulacao-redes-sociais"],
+      "extincao": {
+        "destino": "ciencia"
+      }
+    },
+    {
+      "id": "cidades",
+      "nome": "Ministério das Cidades",
+      "cargo": "Cidades",
+      "area": "infraestrutura",
+      "leis": [
+        "saneamento-basico",
+        "transporte-publico",
+        "programa-habitacao-popular"
+      ],
+      "extincao": {
+        "destino": "integracao"
+      }
+    },
+    {
+      "id": "transportes",
+      "nome": "Ministério dos Transportes",
+      "cargo": "Transportes",
+      "area": "infraestrutura",
+      "leis": ["investimento-em-infraestrutura"],
+      "extincao": {
+        "destino": "cidades"
+      }
+    },
+    {
+      "id": "portos",
+      "nome": "Ministério de Portos e Aeroportos",
+      "cargo": "Portos e Aeroportos",
+      "area": "infraestrutura",
+      "leis": [],
+      "extincao": {
+        "destino": "transportes"
+      }
+    },
+    {
+      "id": "minas-energia",
+      "nome": "Ministério de Minas e Energia",
+      "cargo": "Minas e Energia",
+      "area": "infraestrutura",
+      "leis": [
+        "matriz-energetica",
+        "energia-nuclear",
+        "regime-do-petroleo-e-mineracao"
+      ]
+    },
+    {
+      "id": "integracao",
+      "nome": "Ministério da Integração e do Desenvolvimento Regional",
+      "cargo": "Integração",
+      "area": "infraestrutura",
+      "leis": ["incentivos-fiscais-regionais"],
+      "extincao": {
+        "destino": "cidades"
+      }
+    },
+    {
+      "id": "meio-ambiente",
+      "nome": "Ministério do Meio Ambiente e Mudança do Clima",
+      "cargo": "Meio Ambiente",
+      "area": "ambiente",
+      "leis": [
+        "codigo-florestal",
+        "licenciamento-ambiental",
+        "precificacao-carbono"
+      ],
+      "extincao": {
+        "destino": "agricultura"
+      }
+    },
+    {
+      "id": "agricultura",
+      "nome": "Ministério da Agricultura e Pecuária",
+      "cargo": "Agricultura",
+      "area": "ambiente",
+      "leis": ["agrotoxicos"]
+    },
+    {
+      "id": "desenvolvimento-agrario",
+      "nome": "Ministério do Desenvolvimento Agrário e Agricultura Familiar",
+      "cargo": "Desenvolvimento Agrário",
+      "area": "ambiente",
+      "leis": ["reforma-agraria"],
+      "extincao": {
+        "destino": "agricultura",
+        "leis": {
+          "reforma-agraria": null
+        }
+      }
+    },
+    {
+      "id": "pesca",
+      "nome": "Ministério da Pesca e Aquicultura",
+      "cargo": "Pesca",
+      "area": "ambiente",
+      "leis": [],
+      "extincao": {
+        "destino": "agricultura"
+      }
+    },
+    {
+      "id": "povos-indigenas",
+      "nome": "Ministério dos Povos Indígenas",
+      "cargo": "Povos Indígenas",
+      "area": "ambiente",
+      "leis": ["terras-indigenas"],
+      "extincao": {
+        "destino": "justica"
+      }
+    },
+    {
+      "id": "justica",
+      "nome": "Ministério da Justiça e Segurança Pública",
+      "cargo": "Justiça",
+      "area": "seguranca",
+      "leis": [
+        "modelo-de-policia",
+        "combate-crime-organizado",
+        "porte-de-armas",
+        "penas-maximas",
+        "politica-de-drogas",
+        "politica-de-encarceramento",
+        "gestao-de-presidios",
+        "maioridade-penal",
+        "cameras-corporais",
+        "delacao-e-acordos-penais",
+        "politica-de-imigracao",
+        "refugiados-e-asilo",
+        "protecao-de-dados"
+      ]
+    },
+    {
+      "id": "defesa",
+      "nome": "Ministério da Defesa",
+      "cargo": "Defesa",
+      "area": "seguranca",
+      "leis": ["gasto-com-defesa", "servico-militar"]
+    },
+    {
+      "id": "relacoes-exteriores",
+      "nome": "Ministério das Relações Exteriores",
+      "cargo": "Itamaraty",
+      "area": "seguranca",
+      "leis": ["acordos-comerciais"]
+    },
+    {
+      "id": "gsi",
+      "nome": "Gabinete de Segurança Institucional",
+      "cargo": "GSI",
+      "area": "seguranca",
+      "leis": [],
+      "extincao": {
+        "destino": "casa-civil"
+      }
+    },
+    {
+      "id": "direitos-humanos",
+      "nome": "Ministério dos Direitos Humanos e da Cidadania",
+      "cargo": "Direitos Humanos",
+      "area": "direitos",
+      "leis": [
+        "aborto",
+        "casamento-e-uniao-civil",
+        "eutanasia",
+        "laicidade-do-estado",
+        "politica-de-natalidade"
+      ],
+      "extincao": {
+        "destino": "justica"
+      }
+    },
+    {
+      "id": "mulheres",
+      "nome": "Ministério das Mulheres",
+      "cargo": "Mulheres",
+      "area": "direitos",
+      "leis": ["protecao-violencia-domestica", "igualdade-salarial-de-genero"],
+      "extincao": {
+        "destino": "direitos-humanos",
+        "leis": {
+          "protecao-violencia-domestica": "justica",
+          "igualdade-salarial-de-genero": "trabalho"
+        }
+      }
+    },
+    {
+      "id": "igualdade-racial",
+      "nome": "Ministério da Igualdade Racial",
+      "cargo": "Igualdade Racial",
+      "area": "direitos",
+      "leis": ["acoes-afirmativas"],
+      "extincao": {
+        "destino": "direitos-humanos"
+      }
+    },
+    {
+      "id": "casa-civil",
+      "nome": "Casa Civil da Presidência",
+      "cargo": "Casa Civil",
+      "area": "governo",
+      "leis": [
+        "sistema-de-governo",
+        "federalismo",
+        "reeleicao",
+        "voto-obrigatorio",
+        "financiamento-de-campanhas",
+        "foro-privilegiado",
+        "independencia-judiciario"
+      ]
+    },
+    {
+      "id": "secretaria-geral",
+      "nome": "Secretaria-Geral da Presidência",
+      "cargo": "Secretaria-Geral",
+      "area": "governo",
+      "leis": [],
+      "extincao": {
+        "destino": "casa-civil"
+      }
+    },
+    {
+      "id": "relacoes-institucionais",
+      "nome": "Secretaria de Relações Institucionais",
+      "cargo": "Relações Institucionais",
+      "area": "governo",
+      "leis": [],
+      "extincao": {
+        "destino": "casa-civil"
+      }
+    },
+    {
+      "id": "comunicacao-social",
+      "nome": "Secretaria de Comunicação Social",
+      "cargo": "Comunicação Social",
+      "area": "governo",
+      "leis": ["liberdade-imprensa"],
+      "extincao": {
+        "destino": "casa-civil"
+      }
+    },
+    {
+      "id": "cgu",
+      "nome": "Controladoria-Geral da União",
+      "cargo": "CGU",
+      "area": "governo",
+      "leis": ["lei-anticorrupcao", "transparencia-publica"],
+      "extincao": {
+        "destino": "casa-civil"
+      }
+    },
+    {
+      "id": "agu",
+      "nome": "Advocacia-Geral da União",
+      "cargo": "AGU",
+      "area": "governo",
+      "leis": []
+    },
+    {
+      "id": "gestao",
+      "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
+      "cargo": "Gestão",
+      "area": "governo",
+      "leis": ["estabilidade-servidores-publicos"],
+      "extincao": {
+        "destino": "planejamento"
+      }
+    }
+  ]
+}

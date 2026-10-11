@@ -18,6 +18,8 @@ conteudo/
       estado-inicial.json  (leis vigentes e níveis, limites próprios,
                             valores iniciais dos nós, fiscal, política)
       organizacao-politica.json
+      ministerios.json     (os ministérios reais, as áreas do mapa e a
+                            regra de extinção de cada um — D-64)
   testes/         ← pacotes pequenos usados pelos testes e pela bancada
 ```
 
