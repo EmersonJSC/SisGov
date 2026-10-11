@@ -825,9 +825,9 @@
       "area": "Saúde"
     },
     {
-      "id": "nivel_politica_de_drogas",
+      "id": "nivel_policias_dos_estados",
       "tipo": "controle",
-      "nome": "Política de drogas",
+      "nome": "Polícias dos estados",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -837,9 +837,33 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_porte_de_armas",
+      "id": "nivel_garantias_penais",
       "tipo": "controle",
-      "nome": "Posse e porte de armas",
+      "nome": "Garantias penais",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_ciclo_policial",
+      "tipo": "controle",
+      "nome": "Ciclo policial",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_policia_militar",
+      "tipo": "controle",
+      "nome": "Polícia de rua militar ou civil",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -851,7 +875,7 @@
     {
       "id": "nivel_maioridade_penal",
       "tipo": "controle",
-      "nome": "Maioridade penal e justiça juvenil",
+      "nome": "Maioridade penal",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -861,9 +885,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_penas_maximas",
+      "id": "nivel_lei_de_drogas",
       "tipo": "controle",
-      "nome": "Penas máximas",
+      "nome": "Lei de drogas",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -873,9 +897,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_politica_de_encarceramento",
+      "id": "nivel_cannabis_legal",
       "tipo": "controle",
-      "nome": "Política de encarceramento",
+      "nome": "Maconha legal e regulada",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -885,9 +909,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_modelo_de_policia",
+      "id": "nivel_armas_de_fogo",
       "tipo": "controle",
-      "nome": "Modelo de polícia",
+      "nome": "Posse e porte de armas",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -897,9 +921,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_cameras_corporais",
+      "id": "nivel_excludente_de_ilicitude",
       "tipo": "controle",
-      "nome": "Câmeras corporais na polícia",
+      "nome": "Excludente de ilicitude",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -909,9 +933,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_delacao_e_acordos_penais",
+      "id": "nivel_penas_e_progressao",
       "tipo": "controle",
-      "nome": "Delação e acordos penais",
+      "nome": "Tempo de prisão",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -921,9 +945,9 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_gestao_de_presidios",
+      "id": "nivel_delacao_premiada",
       "tipo": "controle",
-      "nome": "Gestão de presídios",
+      "nome": "Delação premiada",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -933,13 +957,57 @@
       "area": "Segurança, justiça e drogas"
     },
     {
-      "id": "nivel_combate_crime_organizado",
+      "id": "nivel_pena_de_morte",
       "tipo": "controle",
-      "nome": "Estratégia contra o crime organizado",
+      "nome": "Pena de morte",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
         "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "recursos_cameras_corporais",
+      "tipo": "controle",
+      "nome": "Recursos: Câmeras corporais",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "recursos_verba_policia_federal",
+      "tipo": "controle",
+      "nome": "Recursos: Verba da Polícia Federal",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "recursos_fundo_seguranca_publica",
+      "tipo": "controle",
+      "nome": "Recursos: Dinheiro para as polícias dos estados",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "recursos_vagas_em_presidios",
+      "tipo": "controle",
+      "nome": "Recursos: Vagas em presídios",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
       },
       "valorInicial": 0,
       "area": "Segurança, justiça e drogas"

@@ -27,7 +27,7 @@ describe("lupa", () => {
     expect(primeira("juros")?.id).toBe("autonomia-banco-central");
     expect(primeira("aposentadoria")?.id).toBe("idade-minima-aposentadoria");
     expect(primeira("salario minimo")?.id).toBe("salario-minimo");
-    expect(primeira("armas")?.id).toBe("porte-de-armas");
+    expect(primeira("armas")?.id).toBe("armas-de-fogo");
     // indicadores também aparecem
     expect(
       buscar("inflação", visao.leis, visao.bolhas).some(

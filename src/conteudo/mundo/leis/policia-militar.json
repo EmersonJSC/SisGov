@@ -1,0 +1,41 @@
+{
+  "id": "policia-militar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Polícia de rua militar ou civil",
+  "descricao": "Se a polícia que patrulha a rua é militar (com quartel e Justiça Militar) ou civil.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "controle": {
+    "variavel": "nivel_policia_militar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "militar",
+        "rotulo": "Polícia Militar",
+        "valor": 0
+      },
+      {
+        "id": "civil",
+        "rotulo": "Polícia civil desmilitarizada",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "policia-militar--letalidade-policial",
+    "policia-militar--confianca-instituicoes",
+    "policia-militar--sensacao-seguranca",
+    "policia-militar--grupo-conservadores",
+    "policia-militar--grupo-jovens",
+    "policia-militar--grupo-progressistas",
+    "policia-militar--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "garantias-penais--sensacao-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_garantias_penais",
+  "alvo": "sensacao_seguranca",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.06,
+    "limiar": 50,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

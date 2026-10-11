@@ -1,0 +1,35 @@
+{
+  "id": "vagas-em-presidios",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Vagas em presídios",
+  "descricao": "Quanto a União repassa por ano (Fundo Penitenciário) para abrir vagas e melhorar presídios.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "nivelLegal": "derivada",
+  "revogavel": false,
+  "controle": {
+    "variavel": "recursos_vagas_em_presidios",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.1
+    }
+  },
+  "consequencias": [
+    "vagas-em-presidios--lotacao-prisional",
+    "vagas-em-presidios--rebeliao-presidios",
+    "vagas-em-presidios--crime-organizado",
+    "vagas-em-presidios--grupo-conservadores",
+    "vagas-em-presidios--gasto-publico"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

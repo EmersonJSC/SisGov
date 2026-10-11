@@ -2,11 +2,11 @@
   "id": "cameras-corporais--sensacao-seguranca",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_cameras_corporais",
+  "origem": "recursos_cameras_corporais",
   "alvo": "sensacao_seguranca",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.03,
+    "coeficiente": -0.0025,
     "termoConstante": 0.0
   },
   "unidade": "indice_0_100",

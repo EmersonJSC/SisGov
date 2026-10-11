@@ -2,59 +2,34 @@
   "id": "cameras-corporais",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "regulatoria",
-  "nome": "Câmeras corporais na polícia",
-  "descricao": "Define se policiais usam câmeras no uniforme e quem decide quando gravar.",
+  "grupo": "orcamentaria",
+  "nome": "Câmeras corporais",
+  "descricao": "Quanto a União paga por ano para os estados comprarem câmeras para os uniformes da polícia.",
   "area": "Segurança, justiça e drogas",
   "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "lei-ordinaria",
-  "requer": {
-    "lei": "modelo-de-policia",
-    "opcoes": [
-      "comunitaria-civil",
-      "ciclo-completo",
-      "dual-militarizada",
-      "forcas-armadas"
-    ],
-    "motivo": "Câmera corporal precisa de polícia profissional para usá-la."
-  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
   "controle": {
-    "variavel": "nivel_cameras_corporais",
-    "unidade": "nivel_escopo",
-    "opcoes": [
-      {
-        "id": "nenhuma",
-        "rotulo": "Sem câmeras",
-        "valor": 0
-      },
-      {
-        "id": "a-criterio",
-        "rotulo": "Cada corporação decide",
-        "valor": 33
-      },
-      {
-        "id": "policial-aciona",
-        "rotulo": "Obrigatória, policial liga",
-        "valor": 67
-      },
-      {
-        "id": "gravacao-continua",
-        "rotulo": "Gravação ininterrupta",
-        "valor": 100
-      }
-    ]
+    "variavel": "recursos_cameras_corporais",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.01
+    }
   },
   "consequencias": [
     "cameras-corporais--letalidade-policial",
-    "cameras-corporais--confianca-instituicoes",
     "cameras-corporais--impunidade",
-    "cameras-corporais--liberdade-civil",
+    "cameras-corporais--confianca-instituicoes",
     "cameras-corporais--sensacao-seguranca",
-    "cameras-corporais--gasto-publico",
     "cameras-corporais--grupo-conservadores",
     "cameras-corporais--grupo-pobres",
     "cameras-corporais--grupo-progressistas",
-    "cameras-corporais--grupo-servidores"
+    "cameras-corporais--grupo-servidores",
+    "cameras-corporais--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

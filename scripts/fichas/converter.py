@@ -155,6 +155,8 @@ def elos_do_custo(lid: str, var: str, valores_op: dict[str, float]) -> dict[str,
         if faltam:
             raise SystemExit(f"custos.json: {lid}.{lado} não bate com as opções: {sorted(faltam)}")
         pontos = sorted([valores_op[o], v] for o, v in tabela.items())
+        if pontos[0][0] > 0:  # D-65: fora de vigor (nível zero) não custa nada
+            pontos.insert(0, [0, 0])
         cid = f"{lid}--{sufixo}"
         c = {"id": cid, "tipo": "consequencia", "versaoEsquema": 1, "origem": var, "alvo": alvo,
              "mecanismo": "pontos", "parametros": {"pontos": pontos}, "leitura": "nivel"}
@@ -478,27 +480,46 @@ def main(aplicar: bool) -> None:
     for area, f in fichas:
         lid, grupo = f["id"], f["grupo"]
         processo = {"institucional": "emenda-constitucional", "orcamentaria": "execucao-programa-autorizado"}.get(grupo, "lei-ordinaria")
+        nivel_legal = f.get("nivel")  # D-65: três níveis
+        if nivel_legal == "petrea":
+            processo = "clausula-petrea"
+        elif nivel_legal == "constitucional":
+            processo = "emenda-constitucional"
+        elif nivel_legal == "derivada":
+            processo = f.get("processo") or ("execucao-programa-autorizado" if grupo == "orcamentaria" else "lei-ordinaria")
+        # fora de vigor no Brasil: a lei fica no catálogo (D-65)
+        vigente = f.get("vigente", True)
         lei = {"id": lid, "tipo": "lei", "versaoEsquema": 2, "grupo": grupo, "nome": f["nome"],
                "descricao": f["descricao"], "area": area, "ministerio": MINISTERIO_POR_LEI.get(f["id"]) or MINISTERIO_POR_AREA.get(area, f.get("ministerio") or "Presidência"),
                "processoAutorizacao": processo}
         opcoes = f.get("opcoes") or []
         faixa = f.get("faixa") or {}
+        if nivel_legal:
+            lei["nivelLegal"] = nivel_legal
+            if "revogavel" in f:
+                lei["revogavel"] = f["revogavel"]
         if f.get("requer"):  # lei filha (SG138): o validador confere a mãe
-            lei["requer"] = {k: f["requer"][k] for k in ("lei", "opcoes", "motivo") if k in f["requer"]}
+            so = lambda r: {k: r[k] for k in ("lei", "opcoes", "motivo") if k in r}
+            lei["requer"] = [so(r) for r in f["requer"]] if isinstance(f["requer"], list) else so(f["requer"])
         if grupo in ("regulatoria", "institucional"):
             var = f"nivel_{snake(lid)}"
             n = len(opcoes)
             valores_op = {o["id"]: round(100 * i / (n - 1)) for i, o in enumerate(opcoes)}
+            if nivel_legal == "derivada" and f.get("revogavel", True):
+                # D-65: derivada que sai do mapa: o zero é "sem a lei" (fora de
+                # vigor, efeito nenhum) e as opções vêm depois dele
+                valores_op = {o["id"]: round(100 * (i + 1) / n) for i, o in enumerate(opcoes)}
             ops = []
             for o in opcoes:
                 ops.append({"id": o["id"], "rotulo": o["rotulo"], "valor": valores_op[o["id"]]})
             lei["controle"] = {"variavel": var, "unidade": "nivel_escopo", "opcoes": ops}
             variaveis[var] = {"id": var, "tipo": "controle", "nome": f["nome"], "unidade": "nivel_escopo",
-                              "dominio": {"minimo": 0, "maximo": 100}, "valorInicial": ops[0]["valor"], "area": area}
+                              "dominio": {"minimo": 0, "maximo": 100}, "valorInicial": 0 if min(valores_op.values()) > 0 else ops[0]["valor"], "area": area}
             amplitude, inicio = 100, 0
             escolha = f.get("brasil") if f.get("brasil") in valores_op else opcoes[0]["id"]
-            vigentes.append({"lei": lid, "opcao": escolha})
-            valores_controle[var] = valores_op[escolha]
+            if vigente:
+                vigentes.append({"lei": lid, "opcao": escolha})
+                valores_controle[var] = valores_op[escolha]
         elif grupo == "orcamentaria" and (f.get("orcamento") or {}).get("modo") == "percentual_receita":
             # SG137: vinculação. O nível é a parte da receita (%); o dinheiro
             # que chega à rede é nível × arrecadação ÷ 100, em % do PIB, e os
@@ -526,9 +547,10 @@ def main(aplicar: bool) -> None:
             variaveis[var] = {"id": var, "tipo": "controle", "nome": f"Recursos: {f['nome']}", "unidade": "moeda_ano",
                               "dominio": {"minimo": 0}, "valorInicial": 0, "area": area}
             amplitude, inicio = faixa.get("maximo", 1) * PIB / 100, 0
-            nivel = round(float(f.get("brasil") or 0) * PIB / 100)
-            vigentes.append({"lei": lid, "nivel": nivel})
-            valores_controle[var] = nivel
+            nivel = round(float(f.get("brasil") or 0) * PIB / 100) if vigente else 0
+            if vigente:
+                vigentes.append({"lei": lid, "nivel": nivel})
+                valores_controle[var] = nivel
             gasto_brasil += nivel
             valores_op = {}
         else:  # tributaria
@@ -540,8 +562,9 @@ def main(aplicar: bool) -> None:
                               "dominio": {"minimo": 0, "maximo": 100}, "valorInicial": faixa.get("minimo", 0), "area": area}
             amplitude, inicio = max(faixa.get("maximo", 100) - faixa.get("minimo", 0), 1e-9), faixa.get("minimo", 0)
             nivel = float(f.get("brasil") or 0)
-            vigentes.append({"lei": lid, "nivel": nivel})
-            valores_controle[var] = nivel
+            if vigente:
+                vigentes.append({"lei": lid, "nivel": nivel})
+                valores_controle[var] = nivel
             valores_op = {}
 
         ids_lei = []

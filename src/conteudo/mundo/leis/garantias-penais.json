@@ -1,0 +1,39 @@
+{
+  "id": "garantias-penais",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Garantias penais",
+  "descricao": "Se o Estado pode matar ou prender para sempre quem cometeu um crime.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "clausula-petrea",
+  "nivelLegal": "petrea",
+  "controle": {
+    "variavel": "nivel_garantias_penais",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-pena-de-morte",
+        "rotulo": "Sem pena de morte nem prisão perpétua",
+        "valor": 0
+      },
+      {
+        "id": "pena-de-morte-permitida",
+        "rotulo": "Pena de morte permitida",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "garantias-penais--reputacao-internacional",
+    "garantias-penais--liberdade-civil",
+    "garantias-penais--sensacao-seguranca",
+    "garantias-penais--grupo-conservadores",
+    "garantias-penais--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "ciclo-policial",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Ciclo policial",
+  "descricao": "Se a mesma polícia patrulha e investiga o crime, ou se o trabalho é dividido entre duas.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "controle": {
+    "variavel": "nivel_ciclo_policial",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "dividido",
+        "rotulo": "Dividido: PM patrulha, Polícia Civil investiga",
+        "valor": 0
+      },
+      {
+        "id": "completo",
+        "rotulo": "Ciclo completo",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "ciclo-policial--impunidade",
+    "ciclo-policial--sensacao-seguranca",
+    "ciclo-policial--confianca-instituicoes",
+    "ciclo-policial--gasto-publico",
+    "ciclo-policial--grupo-classe-media",
+    "ciclo-policial--grupo-pequenos-negocios",
+    "ciclo-policial--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

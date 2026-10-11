@@ -1,0 +1,18 @@
+{
+  "id": "policias-dos-estados--golpe-risco",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_policias_dos_estados",
+  "alvo": "golpe_risco",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.14,
+    "limiar": 50,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

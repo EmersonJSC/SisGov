@@ -1,0 +1,50 @@
+{
+  "id": "lei-de-drogas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Lei de drogas",
+  "descricao": "O que acontece com quem é pego usando drogas.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "revogavel": false,
+  "controle": {
+    "variavel": "nivel_lei_de_drogas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "guerra-as-drogas",
+        "rotulo": "Usuário vai preso",
+        "valor": 0
+      },
+      {
+        "id": "usuario-nao-preso",
+        "rotulo": "Usuário não vai preso",
+        "valor": 50
+      },
+      {
+        "id": "uso-e-saude",
+        "rotulo": "Uso é questão de saúde",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "lei-de-drogas--lotacao-prisional",
+    "lei-de-drogas--letalidade-policial",
+    "lei-de-drogas--uso-drogas",
+    "lei-de-drogas--saude-populacao",
+    "lei-de-drogas--sensacao-seguranca",
+    "lei-de-drogas--gasto-publico",
+    "lei-de-drogas--grupo-classe-media",
+    "lei-de-drogas--grupo-conservadores",
+    "lei-de-drogas--grupo-jovens",
+    "lei-de-drogas--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

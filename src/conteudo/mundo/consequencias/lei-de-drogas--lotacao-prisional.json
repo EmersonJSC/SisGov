@@ -1,0 +1,17 @@
+{
+  "id": "lei-de-drogas--lotacao-prisional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_lei_de_drogas",
+  "alvo": "lotacao_prisional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

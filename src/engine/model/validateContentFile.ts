@@ -2236,7 +2236,7 @@ function validatePolicy(
       "controle",
       "orcamento",
       "tributo",
-      "nivel",
+      "nivelLegal",
       "revogavel",
       "requer",
       "consequencias",
@@ -2319,11 +2319,14 @@ function validatePolicy(
   }
   requiredString(value, file, "processoAutorizacao", diagnostics);
   requiredStringArray(value, file, "consequencias", diagnostics);
-  if (value.nivel !== undefined && !policyTiers.includes(value.nivel as never))
+  if (
+    value.nivelLegal !== undefined &&
+    !policyTiers.includes(value.nivelLegal as never)
+  )
     diagnostics.push(
       diagnostic(
         file,
-        "nivel",
+        "nivelLegal",
         "VALOR_INVALIDO",
         `Use ${policyTiers.join(", ")}.`,
       ),
@@ -2339,13 +2342,13 @@ function validatePolicy(
     );
   if (value.requer !== undefined) {
     const lista = Array.isArray(value.requer) ? value.requer : [value.requer];
-    if (Array.isArray(value.requer) && value.nivel === undefined)
+    if (Array.isArray(value.requer) && value.nivelLegal === undefined)
       diagnostics.push(
         diagnostic(
           file,
           "requer",
           "VALOR_INVALIDO",
-          "Só leis de três níveis (com nivel) exigem mais de uma lei.",
+          "Só leis de três níveis (com nivelLegal) exigem mais de uma lei.",
         ),
       );
     for (const [index, requer] of lista.entries()) {
@@ -2415,7 +2418,12 @@ function validatePolicy(
     requiredString(value.controle, file, "controle.variavel", diagnostics);
     requiredString(value.controle, file, "controle.unidade", diagnostics);
     if (group === "regulatoria")
-      validatePolicyOptions(value.controle, file, 3, diagnostics);
+      validatePolicyOptions(
+        value.controle,
+        file,
+        value.nivelLegal === undefined ? 3 : 2,
+        diagnostics,
+      );
     else if (group === "institucional")
       validatePolicyOptions(value.controle, file, 2, diagnostics);
     else if (group && value.controle.opcoes !== undefined)

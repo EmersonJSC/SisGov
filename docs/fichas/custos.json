@@ -138,30 +138,8 @@
     "programa-medicos-no-interior": {
       "gasto": { "sem-programa": 0, "incentivos": 0.05, "importacao-de-medicos": 0.08, "servico-obrigatorio": 0.06 }
     },
-    "politica-de-drogas": {
-      "gasto": { "guerra-total": 0.4, "proibicao-punitiva": 0.3, "despenalizacao": 0.2, "descriminalizacao": 0.15, "regulacao-legal": 0.1, "mercado-livre": 0.05 },
-      "receita": { "guerra-total": 0, "proibicao-punitiva": 0, "despenalizacao": 0, "descriminalizacao": 0, "regulacao-legal": 0.2, "mercado-livre": 0.1 }
-    },
     "maioridade-penal": {
-      "gasto": { "sem-justica-juvenil": 0, "adulto-em-crime-grave": 0.01, "maioridade-16": 0.02, "maioridade-18": 0.03, "juvenil-ate-21": 0.05 }
-    },
-    "penas-maximas": {
-      "gasto": { "teto-curto": 0.1, "teto-longo": 0.2, "perpetua-revisavel": 0.3, "perpetua-sem-revisao": 0.4, "pena-de-morte": 0.45 }
-    },
-    "politica-de-encarceramento": {
-      "gasto": { "ultimo-recurso": 0.15, "alternativas-crimes-leves": 0.3, "prisao-como-regra": 0.6, "mao-dura": 1.0 }
-    },
-    "modelo-de-policia": {
-      "gasto": { "sem-policia": 0, "comunitaria-civil": 1.0, "ciclo-completo": 1.1, "dual-militarizada": 1.2, "forcas-armadas": 1.3 }
-    },
-    "cameras-corporais": {
-      "gasto": { "nenhuma": 0, "a-criterio": 0.01, "policial-aciona": 0.03, "gravacao-continua": 0.05 }
-    },
-    "gestao-de-presidios": {
-      "gasto": { "faccoes-mandam": 0.05, "estatal": 0.2, "comunitaria": 0.15, "cogestao": 0.2, "privada": 0.25 }
-    },
-    "combate-crime-organizado": {
-      "gasto": { "sem-estrategia": 0, "tregua-negociada": 0.02, "asfixia-financeira": 0.05, "ofensiva-militar": 0.3, "estado-de-excecao": 0.6 }
+      "gasto": { "18-anos": 0.03, "16-anos": 0.05 }
     },
     "protecao-violencia-domestica": {
       "gasto": { "assunto-privado": 0, "crime-comum": 0.01, "medidas-protetivas": 0.03, "protecao-integral": 0.06 }
@@ -220,6 +198,22 @@
     },
     "imposto-seletivo": {
       "receita": { "nenhum": 0, "vicios-tradicionais": 0.3, "saude-ampla": 0.5, "saude-e-ambiente": 0.7 }
+    },
+    "ciclo-policial": {
+      "gasto": { "dividido": 1.2, "completo": 1.15 }
+    },
+    "lei-de-drogas": {
+      "gasto": { "guerra-as-drogas": 0.3, "usuario-nao-preso": 0.2, "uso-e-saude": 0.15 }
+    },
+    "cannabis-legal": {
+      "gasto": { "clubes": 0.005, "farmacias": 0.01, "lojas": 0.01 },
+      "receita": { "clubes": 0, "farmacias": 0.02, "lojas": 0.05 }
+    },
+    "penas-e-progressao": {
+      "gasto": { "penas-curtas": 0.4, "teto-40-anos": 0.7, "sem-progressao": 1.0 }
+    },
+    "pena-de-morte": {
+      "gasto": { "crimes-hediondos": 0.01, "tambem-trafico": 0.02 }
     }
   }
 }

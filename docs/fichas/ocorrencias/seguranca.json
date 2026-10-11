@@ -61,7 +61,7 @@
       "descricao": "Uma operação contra o tráfico no {bairro} termina com inocentes mortos. Vídeos circulam e a polícia é acusada de execução.",
       "origem": "pais", "nivel": 2, "avaliacao": "negativa",
       "chance": 0.03, "duracao": 2, "intervalo": 6,
-      "fatores": [["letalidade_policial", 30, 80, 3], ["lei:cameras-corporais", 100, 0, 1.5]],
+      "fatores": [["letalidade_policial", 30, 80, 3], ["lei:cameras-corporais", 1200, 0, 1.5]],
       "efeitos": {"confianca_instituicoes": -4, "protestos": 10, "grupo_pobres": -4, "grupo_progressistas": -5},
       "desdobra": [["policial-mata-inocente", 0.8, 1, 1]]
     },
@@ -154,7 +154,7 @@
       "padrao": "aguardar",
       "opcoes": [
         {"id": "afastar", "rotulo": "Afastar e investigar", "descricao": "Os policiais são afastados e o caso vai à Polícia Federal.", "duracao": 6, "efeitos": {"confianca_instituicoes": 3, "grupo_progressistas": 4, "grupo_conservadores": -3, "letalidade_policial": -2}},
-        {"id": "cameras", "rotulo": "Anunciar câmeras em todas as fardas", "descricao": "Gravação contínua obrigatória. A tropa resiste.", "duracao": 12, "leis": {"cameras-corporais": "gravacao-continua"}, "efeitos": {"letalidade_policial": -3, "grupo_conservadores": -2}},
+        {"id": "cameras", "rotulo": "Anunciar câmeras em todas as fardas", "descricao": "Cinco vezes mais verba para câmeras nas fardas. A tropa resiste.", "duracao": 12, "leis": {"cameras-corporais": 600}, "efeitos": {"letalidade_policial": -3, "grupo_conservadores": -2}},
         {"id": "defender", "rotulo": "Defender a polícia", "descricao": "Guerra se faz com risco. A base conservadora aplaude.", "duracao": 6, "efeitos": {"grupo_conservadores": 4, "grupo_progressistas": -6, "grupo_jovens": -4, "protestos": 8}},
         {"id": "aguardar", "rotulo": "Esperar a investigação", "descricao": "Sem posição até o inquérito acabar.", "duracao": 3, "efeitos": {"confianca_instituicoes": -2}}
       ]
@@ -232,10 +232,10 @@
       "manchete": "Bancada da bala pressiona por porte mais fácil",
       "descricao": "Parlamentares e atiradores querem facilitar o porte de armas. Especialistas alertam para mais mortes em brigas e feminicídios.",
       "origem": "cotidiano", "nivel": 2, "chance": 0.012, "intervalo": 16,
-      "se": [["lei:porte-de-armas", "em", ["proibicao-quase-total", "restritiva"]]],
+      "se": [["lei:armas-de-fogo", "em", ["proibidas", "restritas"]]],
       "padrao": "manter",
       "opcoes": [
-        {"id": "flexibilizar", "rotulo": "Flexibilizar o porte", "descricao": "Mais armas legais nas ruas.", "duracao": 12, "leis": {"porte-de-armas": "licenca-com-requisitos"}, "efeitos": {"base_congresso": 5, "grupo_conservadores": 5, "grupo_progressistas": -5}},
+        {"id": "flexibilizar", "rotulo": "Flexibilizar o porte", "descricao": "Mais armas legais nas ruas.", "duracao": 12, "leis": {"armas-de-fogo": "facilitadas"}, "efeitos": {"base_congresso": 5, "grupo_conservadores": 5, "grupo_progressistas": -5}},
         {"id": "manter", "rotulo": "Manter as regras", "descricao": "A bancada fica contrariada.", "duracao": 6, "efeitos": {"base_congresso": -3}}
       ]
     }

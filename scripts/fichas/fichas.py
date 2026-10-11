@@ -25,6 +25,8 @@ SINAIS = {"+", "-"}
 FORCAS = {"fraca", "media", "forte"}
 ATRASOS = {"imediato", "meses", "anos"}
 MIN_OPCOES = {"regulatoria": 3, "institucional": 2}
+NIVEIS = {"petrea", "constitucional", "derivada"}
+PROCESSOS = {"decreto", "lei-ordinaria", "lei-complementar", "execucao-programa-autorizado"}
 
 
 def carregar():
@@ -66,11 +68,26 @@ def checar_lei(lei, bolhas, novas, todas_leis, existentes, grupos):
         erros.append(f"grupo inválido: {grupo}")
     opcoes = lei.get("opcoes") or []
     faixa = lei.get("faixa")
+    nivel = lei.get("nivel")
+    # D-65: três níveis; fora de vigor no Brasil = "vigente": false (catálogo)
+    vigente = lei.get("vigente", True)
+    if nivel is not None and nivel not in NIVEIS:
+        erros.append(f"nivel inválido: {nivel}")
+    if nivel == "petrea" and (lei.get("requer") or grupo in ("orcamentaria", "tributaria")):
+        erros.append("pétrea não tem custo nem depende de outra lei")
+    if lei.get("processo") and lei["processo"] not in PROCESSOS:
+        erros.append(f"processo inválido: {lei['processo']}")
     if grupo in MIN_OPCOES:
-        if len(opcoes) < MIN_OPCOES[grupo]:
+        if nivel:
+            if not 2 <= len(opcoes) <= 3:
+                erros.append(f"{len(opcoes)} opções (três níveis: de 2 a 3)")
+            for o in opcoes:
+                if not o.get("no_jogo"):
+                    erros.append(f"opção {o.get('id')} sem no_jogo (o que muda no jogo)")
+        elif len(opcoes) < MIN_OPCOES[grupo]:
             erros.append(f"{grupo} com {len(opcoes)} opções (mínimo {MIN_OPCOES[grupo]})")
         ids_op = [o.get("id") for o in opcoes]
-        if lei.get("brasil") not in ids_op:
+        if vigente and lei.get("brasil") not in ids_op:
             erros.append(f"brasil={lei.get('brasil')!r} não é opção")
         for o in opcoes:
             if not o.get("manchete"):
@@ -80,7 +97,7 @@ def checar_lei(lei, bolhas, novas, todas_leis, existentes, grupos):
             erros.append("orçamentária/tributária sem faixa")
         else:
             b = lei.get("brasil")
-            if not isinstance(b, (int, float)) or not (faixa.get("minimo", -1e9) <= b <= faixa.get("maximo", 1e9)):
+            if vigente and (not isinstance(b, (int, float)) or not (faixa.get("minimo", -1e9) <= b <= faixa.get("maximo", 1e9))):
                 erros.append(f"brasil={b!r} fora da faixa")
     efeitos = lei.get("efeitos") or []
     if not 3 <= len(efeitos) <= 8:
@@ -99,6 +116,16 @@ def checar_lei(lei, bolhas, novas, todas_leis, existentes, grupos):
         for gid in g.get(lado, []):
             if gid not in grupos:
                 erros.append(f"grupo desconhecido: {gid}")
+    requer = lei.get("requer") or []
+    for r in requer if isinstance(requer, list) else [requer]:
+        rid = r.get("lei")
+        if rid not in todas_leis:
+            erros.append(f"requer aponta para lei inexistente: {rid}")
+        else:
+            ops_r = {o.get("id") for o in (todas_leis[rid][0][1].get("opcoes") or [])}
+            for op in r.get("opcoes") or []:
+                if op not in ops_r:
+                    erros.append(f"requer: {rid} não tem a opção {op}")
     mae = lei.get("mae")
     if mae:
         mid = mae.get("lei")

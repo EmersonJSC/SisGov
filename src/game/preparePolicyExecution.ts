@@ -49,10 +49,22 @@ export function preparePolicyExecution(
     })),
   );
   if (!translated.ok) return translated;
+  // Formato antigo: o nível zero é "sem a lei". Três níveis (D-65): a lei em
+  // vigor vale em qualquer opção, inclusive a de valor zero; fora de vigor,
+  // só enquanto a implantação ainda não chegou a zero.
+  const threeTier = new Set(
+    content.policies
+      .filter((policy) => policy.nivelLegal !== undefined)
+      .map((policy) => policy.id),
+  );
   const activePolicies = new Set(
     states
       .filter(
-        (state) => state.status !== "encerrada" && state.implementedLevel > 0,
+        (state) =>
+          state.status !== "encerrada" &&
+          (state.implementedLevel > 0 ||
+            (state.status === "vigente" &&
+              threeTier.has(state.policyDefinitionId))),
       )
       .map((state) => state.policyDefinitionId),
   );

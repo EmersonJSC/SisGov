@@ -1,0 +1,17 @@
+{
+  "id": "fundo-seguranca-publica--crimes-patrimoniais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_fundo_seguranca_publica",
+  "alvo": "crimes_patrimoniais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0001666667,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

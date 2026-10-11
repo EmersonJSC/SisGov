@@ -39,18 +39,22 @@ const opcaoDaMeta = (partida: Partida, id: string) => {
 describe("SG138 — leis com opções", () => {
   const partida = nova();
 
-  it("nenhuma lei regulatória ou institucional tem menos de 3 opções", () => {
+  it("nenhuma lei regulatória ou institucional antiga tem menos de 3 opções", () => {
+    // nas leis de três níveis (D-65) a regra é outra: de 2 a 3
     for (const l of verPartida(partida).leis)
-      if (l.grupo === "regulatoria" || l.grupo === "institucional")
+      if (
+        !l.nivelLegal &&
+        (l.grupo === "regulatoria" || l.grupo === "institucional")
+      )
         expect(l.opcoes?.length ?? 0, l.id).toBeGreaterThanOrEqual(3);
   });
 
   it("trocar de opção muda o custo e as consequências", () => {
-    const cameras = lei(partida, "cameras-corporais");
-    const custos = new Set(cameras.opcoes!.map((o) => o.saldoAnual));
+    const drogas = lei(partida, "lei-de-drogas");
+    const custos = new Set(drogas.opcoes!.map((o) => o.saldoAnual));
     expect(custos.size).toBeGreaterThan(1);
-    const continua = cameras.opcoes!.find((o) => o.id === "gravacao-continua")!;
-    const previa = preverLei(partida, cameras.id, continua.valor, 4);
+    const guerra = drogas.opcoes!.find((o) => o.id === "guerra-as-drogas")!;
+    const previa = preverLei(partida, drogas.id, guerra.valor, 4);
     if (!previa.ok) throw new Error(previa.erros.join(" "));
     const ids = previa.value.efeitos.map((e) => e.id);
     expect(ids).toContain("gasto_publico");

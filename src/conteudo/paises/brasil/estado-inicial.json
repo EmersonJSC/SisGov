@@ -407,44 +407,60 @@
       "nivel": 6000
     },
     {
-      "lei": "politica-de-drogas",
-      "opcao": "despenalizacao"
+      "lei": "policias-dos-estados",
+      "opcao": "governadores"
     },
     {
-      "lei": "porte-de-armas",
-      "opcao": "restritiva"
+      "lei": "garantias-penais",
+      "opcao": "sem-pena-de-morte"
+    },
+    {
+      "lei": "ciclo-policial",
+      "opcao": "dividido"
+    },
+    {
+      "lei": "policia-militar",
+      "opcao": "militar"
     },
     {
       "lei": "maioridade-penal",
-      "opcao": "maioridade-18"
+      "opcao": "18-anos"
     },
     {
-      "lei": "penas-maximas",
-      "opcao": "teto-longo"
+      "lei": "lei-de-drogas",
+      "opcao": "usuario-nao-preso"
     },
     {
-      "lei": "politica-de-encarceramento",
-      "opcao": "alternativas-crimes-leves"
+      "lei": "armas-de-fogo",
+      "opcao": "restritas"
     },
     {
-      "lei": "modelo-de-policia",
-      "opcao": "dual-militarizada"
+      "lei": "excludente-de-ilicitude",
+      "opcao": "restrito"
+    },
+    {
+      "lei": "penas-e-progressao",
+      "opcao": "teto-40-anos"
+    },
+    {
+      "lei": "delacao-premiada",
+      "opcao": "delacao-com-juiz"
     },
     {
       "lei": "cameras-corporais",
-      "opcao": "a-criterio"
+      "nivel": 120
     },
     {
-      "lei": "delacao-e-acordos-penais",
-      "opcao": "colaboracao-premiada"
+      "lei": "verba-policia-federal",
+      "nivel": 9600
     },
     {
-      "lei": "gestao-de-presidios",
-      "opcao": "estatal"
+      "lei": "fundo-seguranca-publica",
+      "nivel": 2400
     },
     {
-      "lei": "combate-crime-organizado",
-      "opcao": "sem-estrategia"
+      "lei": "vagas-em-presidios",
+      "nivel": 600
     },
     {
       "lei": "protecao-violencia-domestica",
@@ -817,16 +833,20 @@
     "nivel_programa_medicos_no_interior": 67,
     "recursos_farmacia_popular": 6000,
     "recursos_vigilancia_epidemiologica": 6000,
-    "nivel_politica_de_drogas": 40,
-    "nivel_porte_de_armas": 33,
-    "nivel_maioridade_penal": 75,
-    "nivel_penas_maximas": 25,
-    "nivel_politica_de_encarceramento": 33,
-    "nivel_modelo_de_policia": 75,
-    "nivel_cameras_corporais": 33,
-    "nivel_delacao_e_acordos_penais": 67,
-    "nivel_gestao_de_presidios": 25,
-    "nivel_combate_crime_organizado": 0,
+    "nivel_policias_dos_estados": 0,
+    "nivel_garantias_penais": 0,
+    "nivel_ciclo_policial": 0,
+    "nivel_policia_militar": 0,
+    "nivel_maioridade_penal": 0,
+    "nivel_lei_de_drogas": 50,
+    "nivel_armas_de_fogo": 50,
+    "nivel_excludente_de_ilicitude": 0,
+    "nivel_penas_e_progressao": 50,
+    "nivel_delacao_premiada": 50,
+    "recursos_cameras_corporais": 120,
+    "recursos_verba_policia_federal": 9600,
+    "recursos_fundo_seguranca_publica": 2400,
+    "recursos_vagas_em_presidios": 600,
     "nivel_protecao_violencia_domestica": 67,
     "nivel_aborto": 40,
     "nivel_casamento_e_uniao_civil": 100,

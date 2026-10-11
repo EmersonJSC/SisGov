@@ -367,7 +367,7 @@ export function validatePackageCoherence(
   );
   for (const policy of content.policies) {
     // Pétrea (D-65): princípio sem valor nem custo, e não depende de nada.
-    if (policy.nivel === "petrea") {
+    if (policy.nivelLegal === "petrea") {
       if (policy.orcamento || policy.tributo)
         diagnostics.push(
           issue(
@@ -384,7 +384,7 @@ export function validatePackageCoherence(
     const requirements = requirementsById.get(policy.id) ?? [];
     const multiple = Array.isArray(policy.requer);
     const own = policy.controle.opcoes ?? [];
-    if (requirements.length > 0 && !policy.nivel && own.length === 0)
+    if (requirements.length > 0 && !policy.nivelLegal && own.length === 0)
       diagnostics.push(
         issue(
           policy.id,
@@ -434,7 +434,7 @@ export function validatePackageCoherence(
         allowed.some((value) => Math.abs(value - parentLevel) < 1e-9);
       // três níveis: a filha em vigor exige a mãe certa; formato antigo: só
       // a filha fora da base
-      const childNeedsParent = policy.nivel
+      const childNeedsParent = policy.nivelLegal
         ? childLevel !== undefined
         : own.length > 0 &&
           childLevel !== undefined &&
@@ -444,7 +444,7 @@ export function validatePackageCoherence(
           issue(
             initialStateFile,
             "leisVigentes",
-            policy.nivel
+            policy.nivelLegal
               ? `A lei ${policy.id} começa em vigor, mas a lei ${parent.id} não está numa das opções que ela exige.`
               : `A lei ${policy.id} começa fora da base, mas a lei ${parent.id} não está numa das opções que ela exige.`,
           ),

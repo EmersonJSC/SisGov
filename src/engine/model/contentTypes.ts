@@ -317,17 +317,17 @@ export type PolicyFile = {
   };
   tributo?: { base: string; limites?: PolicyLimits };
   /**
-   * Nível da lei (D-65): pétrea não muda por votação; constitucional muda
+   * Nível da lei (D-65; `nivel` é a quantidade, D-24): pétrea não muda por votação; constitucional muda
    * por PEC; derivada é lei ordinária, complementar ou decreto. Sem o campo,
    * a lei é do formato antigo (área ainda não migrada).
    */
-  nivel?: PolicyTier;
+  nivelLegal?: PolicyTier;
   /** Pode sair do mapa (voltar ao catálogo)? Padrão: só derivadas (D-65). */
   revogavel?: boolean;
   /**
    * Lei filha (SG138): fora da opção de base (a primeira), só vale com a lei
    * mãe numa destas opções; quando a mãe sai delas, a filha cai para a base.
-   * No formato de três níveis (`nivel`), pode exigir mais de uma lei, e a
+   * No formato de três níveis (`nivelLegal`), pode exigir mais de uma lei, e a
    * filha sem a base deixa de valer (volta ao catálogo).
    */
   requer?: PolicyRequirementFile | readonly PolicyRequirementFile[];

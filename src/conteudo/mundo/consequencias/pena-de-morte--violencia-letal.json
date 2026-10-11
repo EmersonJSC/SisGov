@@ -1,0 +1,18 @@
+{
+  "id": "pena-de-morte--violencia-letal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_pena_de_morte",
+  "alvo": "violencia_letal",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.072,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

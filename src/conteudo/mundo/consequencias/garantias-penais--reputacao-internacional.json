@@ -1,0 +1,18 @@
+{
+  "id": "garantias-penais--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_garantias_penais",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.14,
+    "limiar": 50,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "pena-de-morte",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Pena de morte",
+  "descricao": "Se a Justiça pode condenar à morte, e por quais crimes.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "requer": [
+    {
+      "lei": "garantias-penais",
+      "opcoes": ["pena-de-morte-permitida"],
+      "motivo": "A Constituição proíbe a pena de morte, e é cláusula pétrea."
+    }
+  ],
+  "controle": {
+    "variavel": "nivel_pena_de_morte",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "crimes-hediondos",
+        "rotulo": "Só para homicídio qualificado e terrorismo",
+        "valor": 50
+      },
+      {
+        "id": "tambem-trafico",
+        "rotulo": "Também para grande tráfico",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "pena-de-morte--sensacao-seguranca",
+    "pena-de-morte--reputacao-internacional",
+    "pena-de-morte--violencia-letal",
+    "pena-de-morte--liberdade-civil",
+    "pena-de-morte--gasto-publico",
+    "pena-de-morte--grupo-progressistas",
+    "pena-de-morte--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

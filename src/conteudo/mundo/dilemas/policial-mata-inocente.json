@@ -29,7 +29,7 @@
     {
       "id": "cameras",
       "rotulo": "Anunciar câmeras em todas as fardas",
-      "descricao": "Gravação contínua obrigatória. A tropa resiste.",
+      "descricao": "Cinco vezes mais verba para câmeras nas fardas. A tropa resiste.",
       "controle": "ocorrencia_policial_mata_inocente__cameras",
       "duracaoMeses": 12,
       "consequencias": [
@@ -39,7 +39,7 @@
       "leis": [
         {
           "lei": "cameras-corporais",
-          "nivel": 100.0
+          "nivel": 600.0
         }
       ]
     },

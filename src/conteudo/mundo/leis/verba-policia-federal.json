@@ -1,0 +1,38 @@
+{
+  "id": "verba-policia-federal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "orcamentaria",
+  "nome": "Verba da Polícia Federal",
+  "descricao": "Quanto a Polícia Federal recebe por ano para investigar o crime organizado, a corrupção e as fronteiras.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "execucao-programa-autorizado",
+  "nivelLegal": "derivada",
+  "revogavel": false,
+  "controle": {
+    "variavel": "recursos_verba_policia_federal",
+    "unidade": "moeda_ano"
+  },
+  "orcamento": {
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0.02,
+      "maximoPercentualPib": 0.3
+    }
+  },
+  "consequencias": [
+    "verba-policia-federal--crime-organizado",
+    "verba-policia-federal--corrupcao",
+    "verba-policia-federal--impunidade",
+    "verba-policia-federal--polarizacao",
+    "verba-policia-federal--grupo-classe-media",
+    "verba-policia-federal--grupo-empresarios",
+    "verba-policia-federal--grupo-servidores",
+    "verba-policia-federal--gasto-publico"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

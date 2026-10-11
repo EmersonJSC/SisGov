@@ -164,16 +164,16 @@ describe("SG157 fase 2 — custos das leis no Brasil", () => {
   const lei = (id: string) => visao.leis.find((l) => l.id === id)!;
 
   it("cada opção mostra o seu custo, e trocar de opção muda o custo", () => {
-    const cameras = lei("cameras-corporais");
-    const custos = cameras.opcoes!.map((o) => o.saldoAnual);
-    expect(custos[0]).toBe(0);
-    // Gravação contínua custa mais que deixar a critério de cada corporação.
-    expect(custos[3]).toBeLessThan(custos[1]);
-    expect(cameras.saldoAnual).toBeCloseTo(
-      cameras.opcoes!.find((o) => o.id === cameras.opcaoAtual)!.saldoAnual,
+    const drogas = lei("lei-de-drogas");
+    const custos = drogas.opcoes!.map((o) => o.saldoAnual);
+    // Prender o usuário custa mais (presídio) que tratá-lo como saúde.
+    expect(custos[0]).toBeLessThan(custos[2]);
+    expect(custos[0]).toBeLessThan(0);
+    expect(drogas.saldoAnual).toBeCloseTo(
+      drogas.opcoes!.find((o) => o.id === drogas.opcaoAtual)!.saldoAnual,
       0,
     );
-    const mudada = mudarLei(partida, cameras.id, cameras.opcoes![3].valor);
+    const mudada = mudarLei(partida, drogas.id, drogas.opcoes![2].valor);
     expect(mudada.ok).toBe(true);
   });
 
@@ -231,8 +231,11 @@ describe("SG157 fase 2 — custos das leis no Brasil", () => {
     expect(c.resultado).toBeGreaterThan(-12);
   });
 
-  it("nenhuma lei de opções tem menos de 3 opções", () => {
+  it("nenhuma lei de opções tem menos de 3 opções (três níveis: 2 a 3)", () => {
     for (const l of visao.leis)
-      if (l.opcoes) expect(l.opcoes.length, l.id).toBeGreaterThanOrEqual(3);
+      if (l.opcoes && l.nivelLegal)
+        expect(l.opcoes.length, l.id).toBeGreaterThanOrEqual(2);
+      else if (l.opcoes)
+        expect(l.opcoes.length, l.id).toBeGreaterThanOrEqual(3);
   });
 });

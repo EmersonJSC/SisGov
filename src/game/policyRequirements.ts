@@ -53,7 +53,7 @@ function requirementOf(
   const own = policy.controle.opcoes ?? [];
   const parentOptions = parent?.controle.opcoes ?? [];
   if (!parent) return undefined;
-  if (!policy.nivel && own.length === 0) return undefined;
+  if (!policy.nivelLegal && own.length === 0) return undefined;
   const allowed = parentOptions.filter((option) =>
     requer.opcoes.includes(option.id),
   );
@@ -62,7 +62,7 @@ function requirementOf(
     parentId: parent.id,
     allowedLevels: allowed.map((option) => option.valor),
     allowedLabels: allowed.map((option) => option.rotulo),
-    ...(policy.nivel
+    ...(policy.nivelLegal
       ? {}
       : { baseLevel: own[0].valor, baseLabel: own[0].rotulo }),
     reason: requer.motivo,
@@ -132,7 +132,7 @@ export function requirementBlock(
   if (!policy) return;
   const current = policyInForce(policies, policyId);
   if (
-    policy.nivel === "petrea" &&
+    policy.nivelLegal === "petrea" &&
     !(current && same(current.desiredLevel, desiredLevel))
   )
     return "Lei pétrea: não muda por votação. Mexer nela é romper a ordem constitucional.";
@@ -152,7 +152,7 @@ export function requirementBlock(
 
 /** A lei pode sair do mapa (voltar ao catálogo)? Padrão: só derivadas. */
 export function policyRevocable(policy: PolicyFile): boolean {
-  return policy.revogavel ?? policy.nivel === "derivada";
+  return policy.revogavel ?? policy.nivelLegal === "derivada";
 }
 
 /** Motivo para recusar a revogação, ou `undefined` se pode. */
@@ -164,7 +164,7 @@ export function revocationBlock(
   const policy = content.policies.find((item) => item.id === policyId);
   if (!policy) return `Lei inexistente: ${policyId}.`;
   if (!policyInForce(policies, policyId)) return "Esta lei não está em vigor.";
-  if (policy.nivel === "petrea")
+  if (policy.nivelLegal === "petrea")
     return "Lei pétrea: não pode ser revogada. Mexer nela é romper a ordem constitucional.";
   if (!policyRevocable(policy))
     return "Esta lei não sai do mapa; mude a opção dela.";

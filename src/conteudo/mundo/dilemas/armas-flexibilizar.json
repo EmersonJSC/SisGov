@@ -16,15 +16,15 @@
       "condicoes": [
         {
           "tipo": "comparacao",
-          "variavel": "nivel_porte_de_armas",
+          "variavel": "nivel_armas_de_fogo",
           "operador": "igual",
           "valor": 0.0
         },
         {
           "tipo": "comparacao",
-          "variavel": "nivel_porte_de_armas",
+          "variavel": "nivel_armas_de_fogo",
           "operador": "igual",
-          "valor": 33.0
+          "valor": 50.0
         }
       ]
     }
@@ -44,8 +44,8 @@
       ],
       "leis": [
         {
-          "lei": "porte-de-armas",
-          "nivel": 67.0
+          "lei": "armas-de-fogo",
+          "nivel": 100.0
         }
       ]
     },

@@ -90,7 +90,8 @@ export function validatePolicyAction(
     return invalid("proposals", `Já existe proposta aberta para ${policy.id}.`);
   const current = policyInForce(game.policies, policy.id);
   const hasExecutiveAuthorization =
-    policy.processoAutorizacao.startsWith("execucao-");
+    policy.processoAutorizacao.startsWith("execucao-") ||
+    policy.processoAutorizacao === "decreto";
   return {
     ok: true,
     value: {

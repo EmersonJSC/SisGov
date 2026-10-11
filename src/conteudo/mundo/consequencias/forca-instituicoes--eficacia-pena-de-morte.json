@@ -1,0 +1,17 @@
+{
+  "id": "forca-instituicoes--eficacia-pena-de-morte",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "forca_instituicoes",
+  "alvo": "eficacia:pena-de-morte",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

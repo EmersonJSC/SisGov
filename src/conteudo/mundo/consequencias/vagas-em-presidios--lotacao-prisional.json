@@ -1,0 +1,17 @@
+{
+  "id": "vagas-em-presidios--lotacao-prisional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "recursos_vagas_em_presidios",
+  "alvo": "lotacao_prisional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0005833333,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

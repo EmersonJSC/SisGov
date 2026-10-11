@@ -1,0 +1,49 @@
+{
+  "id": "delacao-premiada",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Delação premiada",
+  "descricao": "Se o acusado pode ganhar pena menor por entregar comparsas e provas.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "revogavel": false,
+  "controle": {
+    "variavel": "nivel_delacao_premiada",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-acordos",
+        "rotulo": "Sem acordos",
+        "valor": 0
+      },
+      {
+        "id": "delacao-com-juiz",
+        "rotulo": "Delação com controle do juiz",
+        "valor": 50
+      },
+      {
+        "id": "acordo-como-regra",
+        "rotulo": "Acordo como regra",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "delacao-premiada--impunidade",
+    "delacao-premiada--corrupcao",
+    "delacao-premiada--crime-organizado",
+    "delacao-premiada--liberdade-civil",
+    "delacao-premiada--polarizacao",
+    "delacao-premiada--grupo-classe-media",
+    "delacao-premiada--grupo-empresarios",
+    "delacao-premiada--grupo-pobres",
+    "delacao-premiada--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

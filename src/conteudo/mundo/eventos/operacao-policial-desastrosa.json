@@ -20,8 +20,8 @@
         "multiplica": 3
       },
       {
-        "variavel": "nivel_cameras_corporais",
-        "de": 100,
+        "variavel": "recursos_cameras_corporais",
+        "de": 1200,
         "ate": 0,
         "multiplica": 1.5
       }

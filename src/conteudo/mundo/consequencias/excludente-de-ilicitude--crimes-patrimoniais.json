@@ -1,0 +1,17 @@
+{
+  "id": "excludente-de-ilicitude--crimes-patrimoniais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_excludente_de_ilicitude",
+  "alvo": "crimes_patrimoniais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

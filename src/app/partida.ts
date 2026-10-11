@@ -1440,7 +1440,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       opcaoAtual: nearest?.id,
       saldoAnual: saldo(policy.id),
       alteradaPorVoce: alteradas.has(policy.id),
-      ...(policy.nivel ? { nivelLegal: policy.nivel } : {}),
+      ...(policy.nivelLegal ? { nivelLegal: policy.nivelLegal } : {}),
       emVigor: policyInForce(game.policies, policy.id) !== undefined,
       revogavel:
         policyRevocable(policy) &&
