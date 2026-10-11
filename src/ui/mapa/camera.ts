@@ -55,6 +55,20 @@ export function visaoGeral(
   return limitar({ k, x: c.x - desvio, y: c.y }, limites, tela, ocupado);
 }
 
+/**
+ * Vista inicial: o anel dos ministérios (raio do mundo em volta do centro)
+ * enche a área livre. De perto, as letras ficam legíveis; para ver os grupos
+ * e o resto, é só afastar.
+ */
+export function visaoDoAnel(
+  raio: number,
+  tela: Tela,
+  ocupado: Ocupado = {},
+): Camera {
+  const quadrado = { minX: -raio, maxX: raio, minY: -raio, maxY: raio };
+  return visaoGeral(quadrado, tela, ocupado);
+}
+
 /** Pixels da tela cobertos por painéis fixos de cada lado. */
 export type Ocupado = Readonly<{ esquerda?: number; direita?: number }>;
 

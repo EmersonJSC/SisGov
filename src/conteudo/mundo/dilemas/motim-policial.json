@@ -4,7 +4,7 @@
   "versaoEsquema": 1,
   "nome": "Motim da polícia",
   "descricao": "Sem polícia nas ruas, lojas fecham e os homicídios triplicam em uma semana. A greve de policiais é proibida, mas está acontecendo.",
-  "area": "Ministério do Trabalho e Desenvolvimento Social",
+  "area": "Ministério do Trabalho",
   "manchete": "Policiais de {estado} se aquartelam e a criminalidade dispara",
   "origem": "crise",
   "nivel": 3,

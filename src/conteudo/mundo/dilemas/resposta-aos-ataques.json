@@ -5,7 +5,7 @@
   "nome": "Resposta aos ataques",
   "descricao": "Depois dos ataques, o governador pede as Forças Armadas. Especialistas dizem que inteligência e dinheiro do crime pesam mais que soldados na rua.",
   "area": "Ministério da Justiça",
-  "manchete": "Governador pede ajuda federal contra o {faccao}",
+  "manchete": "Governador pede ajuda federal contra a facção {faccao}",
   "origem": "desdobramento",
   "nivel": 2,
   "gatilho": {

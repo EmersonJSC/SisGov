@@ -1421,7 +1421,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_enchente",
@@ -1433,7 +1433,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_enchente_devastadora",
@@ -1445,7 +1445,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_queimadas_recorde",
@@ -1457,7 +1457,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_deslizamento",
@@ -1469,7 +1469,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_rompimento_de_barragem",
@@ -1481,7 +1481,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_vazamento_de_oleo",
@@ -1493,7 +1493,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_apagao_nacional",
@@ -1505,7 +1505,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_ponte_desaba",
@@ -1517,7 +1517,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_terremoto",
@@ -1529,7 +1529,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_safra_recorde",
@@ -1541,7 +1541,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_reconstrucao__imprimir",
@@ -1553,7 +1553,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_reconstrucao__cortar_saude",
@@ -1565,7 +1565,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_reconstrucao__imposto_temporario",
@@ -1577,7 +1577,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_reconstrucao__devagar",
@@ -1589,7 +1589,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_racionamento_de_energia__racionar",
@@ -1601,7 +1601,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_racionamento_de_energia__termeletricas",
@@ -1613,7 +1613,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_racionamento_de_energia__importar",
@@ -1625,7 +1625,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_racionamento_de_energia__arriscar",
@@ -1637,7 +1637,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_punir_a_mineradora__multa_maxima",
@@ -1649,7 +1649,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_punir_a_mineradora__endurecer_licencas",
@@ -1661,7 +1661,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_punir_a_mineradora__acordo",
@@ -1673,7 +1673,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_pressao_internacional_floresta__fiscalizar",
@@ -1685,7 +1685,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_pressao_internacional_floresta__fundo_externo",
@@ -1697,7 +1697,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_pressao_internacional_floresta__soberania",
@@ -1709,7 +1709,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_hidreletrica_na_floresta__construir",
@@ -1721,7 +1721,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_hidreletrica_na_floresta__solar_eolica",
@@ -1733,7 +1733,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_hidreletrica_na_floresta__adiar",
@@ -1745,7 +1745,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_mineracao_em_terra_indigena__retirar",
@@ -1757,7 +1757,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_mineracao_em_terra_indigena__legalizar",
@@ -1769,7 +1769,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_mineracao_em_terra_indigena__fingir",
@@ -1781,7 +1781,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_conferencia_do_clima__ambiciosa",
@@ -1793,7 +1793,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_conferencia_do_clima__modesta",
@@ -1805,7 +1805,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_conferencia_do_clima__boicotar",
@@ -1817,7 +1817,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_concessao_de_rodovias__conceder",
@@ -1829,7 +1829,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_concessao_de_rodovias__obra_publica",
@@ -1841,7 +1841,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_concessao_de_rodovias__manter",
@@ -1853,7 +1853,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_ferrovia__retomar",
@@ -1865,7 +1865,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_ferrovia__auditar",
@@ -1877,7 +1877,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_ferrovia__abandonar",
@@ -1889,7 +1889,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_transposicao__retomar",
@@ -1901,7 +1901,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_transposicao__auditar",
@@ -1913,7 +1913,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_transposicao__abandonar",
@@ -1925,7 +1925,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_metro__retomar",
@@ -1937,7 +1937,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_metro__auditar",
@@ -1949,7 +1949,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_obra_parada_metro__abandonar",
@@ -1961,7 +1961,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Meio Ambiente e Infraestrutura"
+      "area": "Ministério do Meio Ambiente"
     },
     {
       "id": "ocorrencia_crise_mundial_do_petroleo",
@@ -2729,7 +2729,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_guerra_no_vizinho",
@@ -2741,7 +2741,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_golpe_no_vizinho",
@@ -2753,7 +2753,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sancoes_internacionais",
@@ -2765,7 +2765,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_crise_diplomatica",
@@ -2777,7 +2777,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_espionagem_revelada",
@@ -2789,7 +2789,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_ataque_hacker",
@@ -2801,7 +2801,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_cupula_no_pais",
@@ -2813,7 +2813,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_assento_no_conselho",
@@ -2825,7 +2825,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_corrida_armamentista",
@@ -2837,7 +2837,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_compatriota_condenado_no_exterior",
@@ -2849,7 +2849,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_programa_nuclear__bomba",
@@ -2861,7 +2861,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_programa_nuclear__civil_com_inspecao",
@@ -2873,7 +2873,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_programa_nuclear__ambiguidade",
@@ -2885,7 +2885,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_programa_nuclear__abandonar",
@@ -2897,7 +2897,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_neutralidade_na_guerra__aliar",
@@ -2909,7 +2909,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_neutralidade_na_guerra__neutro",
@@ -2921,7 +2921,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_neutralidade_na_guerra__mediar",
@@ -2933,7 +2933,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_neutralidade_na_guerra__vender_armas",
@@ -2945,7 +2945,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_crise_na_fronteira__acolher",
@@ -2957,7 +2957,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_crise_na_fronteira__triagem",
@@ -2969,7 +2969,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_crise_na_fronteira__fechar",
@@ -2981,7 +2981,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_crise_na_fronteira__pedir_ajuda",
@@ -2993,7 +2993,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_resgatar_compatriotas__aviao",
@@ -3005,7 +3005,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_resgatar_compatriotas__negociar",
@@ -3017,7 +3017,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_resgatar_compatriotas__consulado",
@@ -3029,7 +3029,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reconhecer_o_novo_governo__reconhecer",
@@ -3041,7 +3041,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reconhecer_o_novo_governo__condenar",
@@ -3053,7 +3053,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reconhecer_o_novo_governo__aguardar",
@@ -3065,7 +3065,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_responder_as_sancoes__ceder",
@@ -3077,7 +3077,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_responder_as_sancoes__resistir",
@@ -3089,7 +3089,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_responder_as_sancoes__outro_bloco",
@@ -3101,7 +3101,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_potencia_oferece_investimento__aceitar",
@@ -3113,7 +3113,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_potencia_oferece_investimento__negociar",
@@ -3125,7 +3125,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_potencia_oferece_investimento__recusar",
@@ -3137,7 +3137,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_copa__sediar",
@@ -3149,7 +3149,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_copa__austero",
@@ -3161,7 +3161,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_copa__recusar",
@@ -3173,7 +3173,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_olimpiadas__sediar",
@@ -3185,7 +3185,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_olimpiadas__austero",
@@ -3197,7 +3197,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_sediar_olimpiadas__recusar",
@@ -3209,7 +3209,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reagir_a_espionagem__expulsar",
@@ -3221,7 +3221,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reagir_a_espionagem__protesto",
@@ -3233,7 +3233,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_reagir_a_espionagem__contraespionagem",
@@ -3245,7 +3245,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_pagar_o_resgate__pagar",
@@ -3257,7 +3257,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_pagar_o_resgate__nao_pagar",
@@ -3269,7 +3269,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_pagar_o_resgate__culpar",
@@ -3281,7 +3281,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_asilo_a_opositor__conceder",
@@ -3293,7 +3293,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_asilo_a_opositor__negociar",
@@ -3305,7 +3305,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_asilo_a_opositor__entregar",
@@ -3317,7 +3317,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_base_militar_estrangeira__aceitar",
@@ -3329,7 +3329,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_base_militar_estrangeira__cooperacao",
@@ -3341,7 +3341,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_base_militar_estrangeira__recusar",
@@ -3353,7 +3353,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_voto_na_assembleia__condenar",
@@ -3365,7 +3365,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_voto_na_assembleia__abster",
@@ -3377,7 +3377,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_voto_na_assembleia__contra",
@@ -3389,7 +3389,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_compatriota_no_corredor_da_morte__pressionar",
@@ -3401,7 +3401,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_compatriota_no_corredor_da_morte__carta",
@@ -3413,7 +3413,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_compatriota_no_corredor_da_morte__nada",
@@ -3425,7 +3425,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério das Relações Exteriores"
+      "area": "Ministério da Defesa e Relações Exteriores"
     },
     {
       "id": "ocorrencia_escandalo_de_corrupcao",
@@ -4378,7 +4378,7 @@
     {
       "id": "ocorrencia_ataques_de_faccao",
       "tipo": "controle",
-      "nome": "Evento: Ataques do {faccao}",
+      "nome": "Evento: Ataques da facção {faccao}",
       "unidade": "indice_0_1",
       "dominio": {
         "minimo": 0,
@@ -4726,7 +4726,7 @@
     {
       "id": "ocorrencia_juiz_solta_lider__recorrer",
       "tipo": "controle",
-      "nome": "Juiz solta líder do {faccao}: Recorrer e cobrar o Judiciário",
+      "nome": "Juiz solta líder da facção {faccao}: Recorrer e cobrar o Judiciário",
       "unidade": "indice_0_1",
       "dominio": {
         "minimo": 0,
@@ -4738,7 +4738,7 @@
     {
       "id": "ocorrencia_juiz_solta_lider__atacar_juiz",
       "tipo": "controle",
-      "nome": "Juiz solta líder do {faccao}: Atacar o juiz em público",
+      "nome": "Juiz solta líder da facção {faccao}: Atacar o juiz em público",
       "unidade": "indice_0_1",
       "dominio": {
         "minimo": 0,
@@ -4750,7 +4750,7 @@
     {
       "id": "ocorrencia_juiz_solta_lider__respeitar",
       "tipo": "controle",
-      "nome": "Juiz solta líder do {faccao}: Respeitar a decisão",
+      "nome": "Juiz solta líder da facção {faccao}: Respeitar a decisão",
       "unidade": "indice_0_1",
       "dominio": {
         "minimo": 0,
@@ -4829,7 +4829,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_panelaco",
@@ -4841,7 +4841,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_ocupacao_de_terras",
@@ -4853,7 +4853,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_saques",
@@ -4865,7 +4865,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_fome_volta",
@@ -4877,7 +4877,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_ataque_a_escola",
@@ -4889,7 +4889,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_prova_vazada",
@@ -4901,7 +4901,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_selecao_campea",
@@ -4913,7 +4913,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_festa_popular_recorde",
@@ -4925,7 +4925,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_jovens_desistem_de_procurar",
@@ -4937,7 +4937,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_explosao_das_apostas",
@@ -4949,7 +4949,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_dos_caminhoneiros__subsidiar_diesel",
@@ -4961,7 +4961,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_dos_caminhoneiros__negociar",
@@ -4973,7 +4973,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_dos_caminhoneiros__reprimir",
@@ -4985,7 +4985,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_dos_caminhoneiros__estoques",
@@ -4997,7 +4997,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_geral__atender",
@@ -5009,7 +5009,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_geral__negociar",
@@ -5021,7 +5021,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_geral__endurecer",
@@ -5033,7 +5033,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_professores__reajuste",
@@ -5045,7 +5045,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_professores__negociar",
@@ -5057,7 +5057,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_professores__cortar_ponto",
@@ -5069,7 +5069,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_metroviarios__reajuste",
@@ -5081,7 +5081,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_metroviarios__negociar",
@@ -5093,7 +5093,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_metroviarios__justica",
@@ -5105,7 +5105,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_petroleiros__reajuste",
@@ -5117,7 +5117,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_petroleiros__negociar",
@@ -5129,7 +5129,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_petroleiros__importar",
@@ -5141,7 +5141,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_residentes__reajuste",
@@ -5153,7 +5153,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_residentes__negociar",
@@ -5165,7 +5165,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_de_residentes__contratar",
@@ -5177,7 +5177,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_motim_policial__forca_nacional",
@@ -5189,7 +5189,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_motim_policial__anistia_e_reajuste",
@@ -5201,7 +5201,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_motim_policial__punir",
@@ -5213,7 +5213,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_contra_privatizacao__manter",
@@ -5225,7 +5225,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_contra_privatizacao__compensar",
@@ -5237,7 +5237,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_greve_contra_privatizacao__recuar",
@@ -5249,7 +5249,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aposentados_protestam__manter",
@@ -5261,7 +5261,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aposentados_protestam__transicao",
@@ -5273,7 +5273,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aposentados_protestam__recuar",
@@ -5285,7 +5285,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_ruralistas_bloqueiam__manter",
@@ -5297,7 +5297,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_ruralistas_bloqueiam__credito_rural",
@@ -5309,7 +5309,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_ruralistas_bloqueiam__recuar",
@@ -5321,7 +5321,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aplicativos_ameacam_sair__manter",
@@ -5333,7 +5333,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aplicativos_ameacam_sair__transicao",
@@ -5345,7 +5345,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_aplicativos_ameacam_sair__recuar",
@@ -5357,7 +5357,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_entregadores_param__regular",
@@ -5369,7 +5369,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_entregadores_param__dialogo",
@@ -5381,7 +5381,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_entregadores_param__ignorar",
@@ -5393,7 +5393,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_reintegracao_de_posse__cumprir",
@@ -5405,7 +5405,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_reintegracao_de_posse__mediar",
@@ -5417,7 +5417,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_reintegracao_de_posse__assentar",
@@ -5429,7 +5429,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_resposta_aos_protestos__dialogar",
@@ -5441,7 +5441,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_resposta_aos_protestos__pacote",
@@ -5453,7 +5453,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_resposta_aos_protestos__reprimir",
@@ -5465,7 +5465,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_resposta_aos_protestos__plebiscito",
@@ -5477,7 +5477,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_seguranca_nas_escolas__armar",
@@ -5489,7 +5489,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_seguranca_nas_escolas__prevencao",
@@ -5501,7 +5501,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_seguranca_nas_escolas__armas",
@@ -5513,7 +5513,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_regular_as_apostas__proibir",
@@ -5525,7 +5525,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_regular_as_apostas__regras",
@@ -5537,7 +5537,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_regular_as_apostas__taxar",
@@ -5549,7 +5549,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_pacote_contra_a_fome__cestas",
@@ -5561,7 +5561,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_pacote_contra_a_fome__ampliar_renda",
@@ -5573,7 +5573,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_pacote_contra_a_fome__restaurantes",
@@ -5585,7 +5585,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_tarifa_do_onibus__subsidio",
@@ -5597,7 +5597,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_tarifa_do_onibus__passe_livre",
@@ -5609,7 +5609,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_tarifa_do_onibus__nada",
@@ -5621,7 +5621,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_igrejas_pedem_isencao__conceder",
@@ -5633,7 +5633,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_igrejas_pedem_isencao__negar",
@@ -5645,7 +5645,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_populacao_de_rua_cresce__moradia_primeiro",
@@ -5657,7 +5657,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_populacao_de_rua_cresce__abrigos",
@@ -5669,7 +5669,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "ocorrencia_populacao_de_rua_cresce__internacao",
@@ -5681,7 +5681,7 @@
         "maximo": 1
       },
       "valorInicial": 0,
-      "area": "Ministério do Trabalho e Desenvolvimento Social"
+      "area": "Ministério do Trabalho"
     },
     {
       "id": "apagao",

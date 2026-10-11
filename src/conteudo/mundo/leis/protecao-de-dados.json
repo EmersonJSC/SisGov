@@ -6,7 +6,7 @@
   "nome": "Proteção de dados pessoais",
   "descricao": "Define o que empresas (e o Estado) podem fazer com os dados pessoais dos cidadãos e quem fiscaliza.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_protecao_de_dados",

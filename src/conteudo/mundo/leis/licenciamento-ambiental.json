@@ -6,7 +6,7 @@
   "nome": "Licenciamento ambiental",
   "descricao": "Define se e como uma obra ou empreendimento precisa provar que não vai destruir o ambiente antes de sair do papel.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
+  "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_licenciamento_ambiental",

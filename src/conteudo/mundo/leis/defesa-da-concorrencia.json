@@ -6,7 +6,7 @@
   "nome": "Defesa da concorrência",
   "descricao": "Define quanto o Estado vigia cartéis, fusões e abusos de empresas dominantes.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério do Desenvolvimento",
+  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_defesa_da_concorrencia",

@@ -6,7 +6,7 @@
   "nome": "Casamento e união civil",
   "descricao": "Define que casais o Estado reconhece como família, com herança, pensão, adoção e plano de saúde.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_casamento_e_uniao_civil",

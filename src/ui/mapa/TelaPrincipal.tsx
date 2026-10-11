@@ -24,6 +24,7 @@ import { montarBase } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
 import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
+import { BuscaDeLeis } from "./BuscaDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
 import {
   MES_DO_HORIZONTE,
@@ -304,6 +305,25 @@ export function TelaPrincipal() {
     [],
   );
   const [mesaAberta, setMesaAberta] = useState(true);
+  const [buscaAberta, setBuscaAberta] = useState(false);
+  // a lupa abre com "/" ou Ctrl+K (fora de um campo de texto)
+  useEffect(() => {
+    const tecla = (e: KeyboardEvent) => {
+      const alvo = e.target as HTMLElement | null;
+      const escrevendo =
+        alvo?.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(alvo?.tagName ?? "");
+      if (
+        (e.key === "/" && !escrevendo) ||
+        (e.key.toLowerCase() === "k" && (e.ctrlKey || e.metaKey))
+      ) {
+        e.preventDefault();
+        setBuscaAberta(true);
+      }
+    };
+    window.addEventListener("keydown", tecla);
+    return () => window.removeEventListener("keydown", tecla);
+  }, []);
   const [partida, setPartida] = useState<Partida | null>(
     inicial.ok ? inicial.value : null,
   );
@@ -515,7 +535,7 @@ export function TelaPrincipal() {
 
   return (
     <div className="tela">
-      <header className="barra-superior">
+      <header className="barra-superior" data-borda-rola>
         <div className="pais">
           <Bandeira pais={visao.pais} />
           <div>
@@ -547,9 +567,9 @@ export function TelaPrincipal() {
           {aprovacao ? (
             <Metrica
               icone={ICONE_INTERFACE.aprovacao}
-              rotulo="Aprovação do governo"
+              rotulo="Aprovação"
               valor={`${aprovacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`}
-              detalhe={`${gruposContentes} de ${grupos.length} grupos satisfeitos`}
+              detalhe={`${gruposContentes}/${grupos.length} grupos satisfeitos`}
               classe={
                 aprovacao.valor >= 50
                   ? "boa"
@@ -562,6 +582,15 @@ export function TelaPrincipal() {
             />
           ) : null}
         </div>
+        <button
+          type="button"
+          className="botao-busca"
+          onClick={() => setBuscaAberta(true)}
+          title="Buscar lei ou indicador (atalho: / ou Ctrl+K)"
+        >
+          <Icone nome={ICONE_INTERFACE.busca} tamanho={22} />
+          <span>Buscar lei</span>
+        </button>
         <div className="turno">
           <Icone nome={ICONE_INTERFACE.turno} tamanho={20} />
           <span>
@@ -570,6 +599,19 @@ export function TelaPrincipal() {
           </span>
         </div>
       </header>
+
+      {buscaAberta ? (
+        <BuscaDeLeis
+          leis={visao.leis}
+          bolhas={visao.bolhas}
+          corDoMinisterio={(m) => base.porNome.get(m)?.cor}
+          onFechar={() => setBuscaAberta(false)}
+          onEscolher={(r) => {
+            if (r.tipo === "lei" && r.ministerio) setAberta(r.ministerio);
+            selecionar(r.id);
+          }}
+        />
+      ) : null}
 
       <main className="area-mapa">
         <MapaPolitico

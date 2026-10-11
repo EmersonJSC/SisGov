@@ -41,7 +41,7 @@ import {
   type IndiceRelacoes,
   type Relacao,
 } from "./relacoes";
-import { COR_EFEITO, COR_PRESIDENCIA, nomeCurto } from "./tema";
+import { COR_EFEITO, COR_PRESIDENCIA, temaDoMinisterio } from "./tema";
 
 export type Horizonte = "turno" | "ano";
 
@@ -627,7 +627,7 @@ export function DocumentoLei({
             className="etiqueta"
             style={{ "--cor": base.porNome.get(m)?.cor } as CSSProperties}
           >
-            {nomeCurto(m)}
+            {temaDoMinisterio(m)}
           </span>
         ))}
         {constitucional ? (
@@ -1204,7 +1204,7 @@ export function DocumentoBolha({
           <strong>{lei?.nome ?? bolhas.get(r.de)?.nome ?? r.de}</strong>
           <small>
             {lei
-              ? `Lei · ${nomeCurto(lei.ministerios[0])}`
+              ? `Lei · ${temaDoMinisterio(lei.ministerios[0])}`
               : bolhas.get(r.de)?.tipo === "grupo"
                 ? `Grupo social · satisfação ${Math.round(bolhas.get(r.de)!.valor)}`
                 : "Indicador"}{" "}

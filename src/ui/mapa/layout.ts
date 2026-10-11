@@ -5,7 +5,12 @@
  * A posição é só da tela: o motor não lê nada daqui (regra 6 do projeto).
  */
 import type { VisaoBolha, VisaoLei, VisaoPartida } from "../../app/partida";
-import { MEDIDAS, ORDEM_MINISTERIOS, corDoMinisterio, nomeCurto } from "./tema";
+import {
+  MEDIDAS,
+  ORDEM_MINISTERIOS,
+  corDoMinisterio,
+  temaDoMinisterio,
+} from "./tema";
 
 export const PRESIDENCIA = "presidencia";
 
@@ -152,7 +157,7 @@ export function montarBase(visao: VisaoPartida): BaseMapa {
   });
   const ministerios = nomes.map((nome, indice): Ministerio => ({
     nome,
-    titulo: nomeCurto(nome),
+    titulo: temaDoMinisterio(nome),
     cor: corDoMinisterio(nome, indice),
     indice,
     anguloBase: anguloBase(indice, nomes.length),
@@ -347,7 +352,7 @@ function posicionarGrupos(
 const TOPO = -MEDIDAS.raioBolhaMaximo;
 
 /** Elipse que contém as bolhas: larga, para caber em telas largas. */
-export const ELIPSE_EXTERNA = { rx: 2020, ry: 1140 } as const;
+export const ELIPSE_EXTERNA = { rx: 2120, ry: 1240 } as const;
 
 const FOLGA_CAIXAS = 10;
 
@@ -495,6 +500,42 @@ function calcularLimites(bolhas: ReadonlyMap<string, PosicaoBolha>): Limites {
  * tangentes e a sobra é repartida. A esfera aberta fica no seu lugar e as
  * outras abrem espaço.
  */
+/** Ângulo que cada esfera precisa para não tocar a seguinte. */
+function passosDoAnel(
+  raios: readonly number[],
+  distancias: readonly number[],
+): number[] {
+  const n = raios.length;
+  return raios.map((r, i) => {
+    const j = (i + 1) % n;
+    const di = distancias[i];
+    const dj = distancias[j];
+    const corda = r + raios[j] + MEDIDAS.folgaEsferas;
+    const cos = (di * di + dj * dj - corda * corda) / (2 * di * dj);
+    return Math.acos(Math.max(-1, Math.min(1, cos)));
+  });
+}
+
+/**
+ * Distância do anel em que as esferas fechadas cabem lado a lado: com mais
+ * ministérios, o anel se afasta em vez de as esferas se sobreporem.
+ */
+export function distanciaDoAnel(
+  raios: readonly number[],
+  aberta: number,
+): number {
+  let d: number = MEDIDAS.distanciaAnel;
+  for (let i = 0; i < 120; i++) {
+    const distancias = raios.map((_, j) =>
+      j === aberta ? MEDIDAS.distanciaAberta : d,
+    );
+    const total = passosDoAnel(raios, distancias).reduce((a, b) => a + b, 0);
+    if (total <= TAU) break;
+    d += 10;
+  }
+  return d;
+}
+
 function angulosDoAnel(
   raios: readonly number[],
   distancias: readonly number[],
@@ -503,14 +544,7 @@ function angulosDoAnel(
 ): number[] {
   const n = raios.length;
   if (n === 1) return [base[0]];
-  const passos = raios.map((r, i) => {
-    const j = (i + 1) % n;
-    const di = distancias[i];
-    const dj = distancias[j];
-    const corda = r + raios[j] + MEDIDAS.folgaEsferas;
-    const cos = (di * di + dj * dj - corda * corda) / (2 * di * dj);
-    return Math.acos(Math.max(-1, Math.min(1, cos)));
-  });
+  const passos = passosDoAnel(raios, distancias);
   const total = passos.reduce((s, p) => s + p, 0);
   const ajustados =
     total < TAU
@@ -868,8 +902,9 @@ export function montarLayout(
         ? m.raioFechadaRecuada
         : m.raioFechada,
   );
+  const anel = distanciaDoAnel(raios, indiceAberto);
   const distancias = base.ministerios.map((_, i) =>
-    i === indiceAberto ? m.distanciaAberta : m.distanciaAnel,
+    i === indiceAberto ? m.distanciaAberta : anel,
   );
   const angulos = angulosDoAnel(
     raios,

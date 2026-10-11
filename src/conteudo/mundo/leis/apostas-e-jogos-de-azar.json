@@ -6,7 +6,7 @@
   "nome": "Apostas e jogos de azar",
   "descricao": "Define se apostas, cassinos e loterias são proibidos, monopólio do Estado, mercado licenciado ou terra sem lei.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_apostas_e_jogos_de_azar",

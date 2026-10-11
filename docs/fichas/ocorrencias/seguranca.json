@@ -24,9 +24,9 @@
     },
     {
       "id": "ataques-de-faccao",
-      "nome": "Ataques do {faccao}",
-      "manchete": "{faccao} incendeia ônibus e para {cidade}",
-      "descricao": "O {faccao} reage à transferência de líderes presos com ataques coordenados em {cidade}. Comércio fechado, transporte parado, medo nas ruas.",
+      "nome": "Ataques da facção {faccao}",
+      "manchete": "Facção {faccao} incendeia ônibus e para {cidade}",
+      "descricao": "A facção {faccao} reage à transferência de líderes presos com ataques coordenados em {cidade}. Comércio fechado, transporte parado, medo nas ruas.",
       "origem": "pais", "nivel": 2, "avaliacao": "negativa",
       "chance": 0.025, "duracao": 2, "intervalo": 6,
       "fatores": [["crime_organizado", 40, 80, 3], ["lotacao_prisional", 50, 90, 1.5]],
@@ -121,7 +121,7 @@
     {
       "id": "resposta-aos-ataques",
       "nome": "Resposta aos ataques",
-      "manchete": "Governador pede ajuda federal contra o {faccao}",
+      "manchete": "Governador pede ajuda federal contra a facção {faccao}",
       "descricao": "Depois dos ataques, o governador pede as Forças Armadas. Especialistas dizem que inteligência e dinheiro do crime pesam mais que soldados na rua.",
       "origem": "desdobramento", "nivel": 2, "chance": 0,
       "padrao": "apoio-limitado",
@@ -176,7 +176,7 @@
     {
       "id": "escandalo-tregua",
       "nome": "Vazou a trégua",
-      "manchete": "Áudios revelam acordo do governo com o {faccao}",
+      "manchete": "Áudios revelam acordo do governo com a facção {faccao}",
       "descricao": "A trégua secreta com a facção vazou. A oposição fala em governo refém do crime.",
       "origem": "desdobramento", "nivel": 3, "chance": 0,
       "padrao": "negar",
@@ -201,9 +201,9 @@
     },
     {
       "id": "juiz-solta-lider",
-      "nome": "Juiz solta líder do {faccao}",
-      "manchete": "Decisão judicial solta chefe do {faccao}",
-      "descricao": "Um juiz manda soltar um dos chefes do {faccao} por excesso de prazo. Ele some no mesmo dia.",
+      "nome": "Juiz solta líder da facção {faccao}",
+      "manchete": "Decisão judicial solta chefe da facção {faccao}",
+      "descricao": "Um juiz manda soltar um dos chefes da facção {faccao} por excesso de prazo. Ele some no mesmo dia.",
       "origem": "cotidiano", "nivel": 2, "chance": 0.01, "intervalo": 16,
       "fatores": [["impunidade", 30, 80, 2]],
       "padrao": "respeitar",

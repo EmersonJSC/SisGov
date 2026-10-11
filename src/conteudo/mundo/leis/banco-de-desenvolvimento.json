@@ -6,7 +6,7 @@
   "nome": "Banco de desenvolvimento",
   "descricao": "Define o papel do banco público de fomento: não existir, emprestar a preço de mercado por meio de outros bancos, ou conceder crédito barato e direcionado com dinheiro do Tesouro.",
   "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério do Desenvolvimento",
+  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_banco_de_desenvolvimento",

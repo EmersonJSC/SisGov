@@ -4,7 +4,7 @@
   "versaoEsquema": 1,
   "nome": "Rompimento de barragem",
   "descricao": "Uma barragem de rejeitos da {empresa} rompe em {estado}. A lama destrói casas, mata pessoas e um rio inteiro. O licenciamento frouxo vira assunto nacional.",
-  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "area": "Ministério do Meio Ambiente",
   "manchete": "Barragem da {empresa} se rompe e lama soterra cidade em {estado}",
   "origem": "pais",
   "nivel": 3,

@@ -6,7 +6,7 @@
   "nome": "Regime do petróleo e da mineração",
   "descricao": "Define quem pode explorar o subsolo (petróleo, gás e minérios) e quanto da riqueza fica com o Estado.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
-  "ministerio": "Ministério do Meio Ambiente e Infraestrutura",
+  "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_regime_do_petroleo_e_mineracao",

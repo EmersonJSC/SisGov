@@ -35,14 +35,14 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     gravata: "#3f6fb5",
     oculos: true,
   },
-  "Ministério do Desenvolvimento": {
+  "Ministério da Economia": {
     pele: PELE[3],
     cabelo: "chanel",
     corCabelo: "#2b1d14",
     paleto: "#2e5856",
     blusa: "#e9e4d8",
   },
-  "Ministério do Meio Ambiente e Infraestrutura": {
+  "Ministério do Meio Ambiente": {
     pele: PELE[3],
     cabelo: "curto",
     corCabelo: "#1d1712",
@@ -79,7 +79,7 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     blusa: "#f3eee3",
     oculos: true,
   },
-  "Ministério dos Direitos e da Defesa": {
+  "Ministério da Defesa e Relações Exteriores": {
     pele: PELE[2],
     cabelo: "curto",
     corCabelo: "#2a2a2a",
@@ -93,6 +93,21 @@ const PESSOAS: Readonly<Record<string, Pessoa>> = {
     paleto: "#1f2229",
     gravata: "#5d43a0",
     barba: true,
+  },
+  "Ministério das Cidades": {
+    pele: PELE[2],
+    cabelo: "calvo",
+    corCabelo: "#3a2c22",
+    paleto: "#5a4d40",
+    gravata: "#c9a24a",
+    barba: true,
+  },
+  "Ministério dos Direitos Humanos": {
+    pele: PELE[4],
+    cabelo: "longo",
+    corCabelo: "#1b1410",
+    paleto: "#7d2f4e",
+    blusa: "#f3eee3",
   },
   "Casa Civil": {
     pele: PELE[0],

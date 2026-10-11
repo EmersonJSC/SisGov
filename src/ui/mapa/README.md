@@ -1,7 +1,10 @@
 # Mapa político (tela principal)
 
-A tela principal do jogo: Presidência no centro, dez esferas ministeriais em
-anel, leis dentro das esferas e indicadores no anel externo. Lê só a
+A tela principal do jogo: Presidência no centro, doze esferas ministeriais
+em anel, cada uma com um tema claro (Impostos, Economia e empresas, Trabalho,
+Previdência, Saúde, Educação, Cidades, Meio ambiente, Segurança, Direitos,
+Defesa e exterior, Instituições — `TEMAS` em `tema.ts`), leis dentro das
+esferas e indicadores no anel externo. Lê só a
 `VisaoPartida` (`src/app/partida.ts`); não importa nada do motor.
 
 ## Arquivos
@@ -15,13 +18,29 @@ anel, leis dentro das esferas e indicadores no anel externo. Lê só a
 | `layout.ts`         | Posições (funções puras, testadas em `src/tests/mapaPolitico.test.ts`).                       |
 | `intensidade.ts`    | Tamanho e anel de cada nó (D-43): bolha pelo valor na escala, lei pelo quanto está ligada.    |
 | `relacoes.ts`       | Setas a partir das `ligacoes`; bom/ruim pela `avaliacao` da bolha.                            |
-| `camera.ts`         | Zoom mínimo/máximo e limites de arraste.                                                      |
+| `camera.ts`         | Zoom mínimo/máximo, limites de arraste e a vista inicial (o anel dos ministérios).            |
+| `busca.ts`          | A lupa: acha leis e indicadores por nome, opção, descrição, tema e palavras do dia a dia.     |
+| `BuscaDeLeis.tsx`   | Janela da lupa (botão da barra, "/" ou Ctrl+K) com os resultados e "onde fica cada assunto".  |
 | `Retrato.tsx`       | Retratos provisórios em SVG.                                                                  |
 | `icones.ts`         | Gerado por `scripts/icones/gerar.py` a partir de `scripts/icones/mapa.json`.                  |
 
+## Navegação
+
+- **Mouse:** arrastar move (com inércia ao soltar); a roda aproxima no ponto
+  do cursor; encostar o cursor numa borda da tela por um instante faz o mapa
+  andar para aquele lado.
+- **Touchpad:** dois dedos movem o mapa; a pinça aproxima.
+- **Teclado:** setas ou WASD andam, + e − aproximam, Esc fecha.
+- **Vista inicial:** o anel dos ministérios enche a tela. O botão de visão
+  geral volta a ela; clicado de novo, mostra o mapa inteiro (grupos e
+  indicadores de fora).
+- **De longe** (zoom abaixo de 0,62) a esfera fechada vira cartaz: o tema em
+  letra grande, com tamanho mínimo na tela.
+
 ## Regras de leitura do mapa
 
-- **Esfera fechada:** retrato, nome e número de leis. Nenhuma lei aparece na
+- **Esfera fechada:** retrato, tema, cargo e número de leis ("Fazenda · 14
+  leis"). Nenhuma lei aparece na
   visão geral.
 - **Esfera aberta:** cresce, as vizinhas encolhem e abrem espaço, a câmera vai
   até ela. As leis ficam numa grade alinhada à tela, para os rótulos nunca se

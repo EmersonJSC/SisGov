@@ -6,7 +6,7 @@
   "nome": "Autonomia do banco central",
   "descricao": "Define se o presidente do banco central pode ser demitido pelo governo e se ele decide os juros sozinho.",
   "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
+  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
     "variavel": "nivel_autonomia_banco_central",

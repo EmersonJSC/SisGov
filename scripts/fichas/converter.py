@@ -81,14 +81,34 @@ PARTIDA_BRASIL = {"divida_publica": 77, "reservas_internacionais": 16, "envelhec
 MINISTERIO_POR_AREA = {
     "Trabalho e emprego": "Ministério do Trabalho",
     "Tributação": "Ministério da Fazenda",
-    "Economia, finanças e comércio exterior": "Ministério do Desenvolvimento",
+    "Economia, finanças e comércio exterior": "Ministério da Economia",
     "Saúde": "Ministério da Saúde",
     "Educação, ciência e cultura": "Ministério da Educação",
     "Previdência e assistência social": "Ministério da Previdência",
     "Segurança, justiça e drogas": "Ministério da Justiça",
-    "Direitos civis, costumes, imigração, mídia e defesa": "Ministério dos Direitos e da Defesa",
+    "Direitos civis, costumes, imigração, mídia e defesa": "Ministério dos Direitos Humanos",
     "Instituições, Estado e sistema político": "Casa Civil",
-    "Meio ambiente, energia, agro e infraestrutura": "Ministério do Meio Ambiente e Infraestrutura",
+    "Meio ambiente, energia, agro e infraestrutura": "Ministério do Meio Ambiente",
+}
+# Leis que saem do ministério da sua área de ficha: cada ministério cuida de
+# um tema claro (Impostos, Economia e empresas, Defesa e exterior…).
+MINISTERIO_POR_LEI = {
+    # contas públicas ficam com a Fazenda
+    "regra-fiscal": "Ministério da Fazenda",
+    # moeda, juros e câmbio são economia, não política
+    "autonomia-banco-central": "Ministério da Economia",
+    "regime-cambial": "Ministério da Economia",
+    # obras, cidades e moradia
+    "investimento-em-infraestrutura": "Ministério das Cidades",
+    "saneamento-basico": "Ministério das Cidades",
+    "transporte-publico": "Ministério das Cidades",
+    "programa-habitacao-popular": "Ministério das Cidades",
+    # defesa e relações exteriores
+    "gasto-com-defesa": "Ministério da Defesa e Relações Exteriores",
+    "servico-militar": "Ministério da Defesa e Relações Exteriores",
+    "acordos-comerciais": "Ministério da Defesa e Relações Exteriores",
+    "politica-de-imigracao": "Ministério da Defesa e Relações Exteriores",
+    "refugiados-e-asilo": "Ministério da Defesa e Relações Exteriores",
 }
 BASE_TRIBUTO = {"imposto-renda-pessoas": "renda_familias", "imposto-sobre-consumo": "consumo"}
 
@@ -459,7 +479,7 @@ def main(aplicar: bool) -> None:
         lid, grupo = f["id"], f["grupo"]
         processo = {"institucional": "emenda-constitucional", "orcamentaria": "execucao-programa-autorizado"}.get(grupo, "lei-ordinaria")
         lei = {"id": lid, "tipo": "lei", "versaoEsquema": 2, "grupo": grupo, "nome": f["nome"],
-               "descricao": f["descricao"], "area": area, "ministerio": MINISTERIO_POR_AREA.get(area, f.get("ministerio") or "Presidência"),
+               "descricao": f["descricao"], "area": area, "ministerio": MINISTERIO_POR_LEI.get(f["id"]) or MINISTERIO_POR_AREA.get(area, f.get("ministerio") or "Presidência"),
                "processoAutorizacao": processo}
         opcoes = f.get("opcoes") or []
         faixa = f.get("faixa") or {}

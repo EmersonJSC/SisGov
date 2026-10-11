@@ -6,7 +6,7 @@
   "nome": "Política de natalidade",
   "descricao": "Define se o Estado tenta reduzir, deixar em paz ou aumentar o número de filhos que as famílias têm, e com que instrumentos.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_politica_de_natalidade",

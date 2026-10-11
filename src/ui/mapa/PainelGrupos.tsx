@@ -44,7 +44,7 @@ function Motivo({
 }
 
 /** Largura que a lista aberta cobre do mapa (CSS: 300 + 14 de margem + folga). */
-export const LARGURA_PAINEL_GRUPOS = 328;
+export const LARGURA_PAINEL_GRUPOS = 364;
 
 export function PainelGrupos({
   grupos,
@@ -67,6 +67,7 @@ export function PainelGrupos({
   if (!grupos.length) return null;
   return (
     <aside
+      data-borda-rola
       className={`painel-grupos${aberto ? " aberto" : ""}`}
       aria-label="Grupos sociais"
     >

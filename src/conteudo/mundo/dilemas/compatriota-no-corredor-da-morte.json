@@ -4,7 +4,7 @@
   "versaoEsquema": 1,
   "nome": "Salvar o compatriota condenado?",
   "descricao": "A execução está marcada. Pedir clemência tem custo diplomático; não pedir, custo em casa.",
-  "area": "Ministério das Relações Exteriores",
+  "area": "Ministério da Defesa e Relações Exteriores",
   "manchete": "Família pede que o presidente interceda pelo {gentilico} condenado em {potencia}",
   "origem": "desdobramento",
   "nivel": 1,

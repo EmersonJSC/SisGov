@@ -48,7 +48,7 @@ function colisoes(leis: readonly PosicaoLei[]) {
 
 describe("mapa político: layout", () => {
   it("cria uma esfera por ministério, em anel e sem sobreposição", () => {
-    expect(base.ministerios).toHaveLength(10);
+    expect(base.ministerios).toHaveLength(12);
     const layout = montarLayout(base, null, new Set());
     const esferas = [...layout.esferas.values()];
     esferas.forEach((a, i) => {

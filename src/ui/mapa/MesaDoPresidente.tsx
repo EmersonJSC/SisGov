@@ -144,6 +144,21 @@ function CartaoDilema({
         <p className="dilema-causa">Por causa de: {dilema.causa.nome}</p>
       ) : null}
       <p className="dilema-texto">{dilema.descricao}</p>
+      <p className="legenda-dilema">
+        <span>
+          <i style={{ "--cor-efeito": COR_EFEITO.melhora } as CSSProperties} />
+          bom para o país
+        </span>
+        <span>
+          <i style={{ "--cor-efeito": COR_EFEITO.piora } as CSSProperties} />
+          ruim para o país
+        </span>
+        <span>
+          <i style={{ "--cor-efeito": COR_EFEITO.neutro } as CSSProperties} />
+          depende
+        </span>
+        <span>▲ sobe · ▼ desce</span>
+      </p>
       <div className="opcoes-dilema" role="radiogroup" aria-label="Opções">
         {dilema.opcoes.map((op) => {
           const ativa = escolhida === op.id;

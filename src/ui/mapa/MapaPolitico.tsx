@@ -22,6 +22,7 @@ import {
   focarCirculo,
   limitar,
   paraTela,
+  visaoDoAnel,
   visaoGeral,
   zoomNoPonto,
   ESCALA_MAXIMA,
@@ -64,7 +65,13 @@ import {
   type Relacao,
 } from "./relacoes";
 import { PRESIDENTE, Retrato, pessoaDoCargo } from "./Retrato";
-import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS } from "./tema";
+import {
+  COR_EFEITO,
+  COR_PRESIDENCIA,
+  MEDIDAS,
+  cargoDoMinisterio,
+  temaCurto,
+} from "./tema";
 
 export type MarcaPrevista = Readonly<{ efeito: Efeito; sobe: boolean }>;
 
@@ -220,6 +227,9 @@ function curva(
     meio,
   };
 }
+
+/** Abaixo deste zoom, as esferas fechadas viram cartazes de tema. */
+const LONGE = 0.62;
 
 /** Arco logo fora da Presidência, para o nome da lente ficar de pé. */
 function arcoDaLente(angulo: number) {
@@ -720,7 +730,10 @@ export function MapaPolitico({
     cy: number;
     moveu: boolean;
     id: number;
+    /** Últimas posições (px, tempo), para a inércia ao soltar. */
+    rastro: { x: number; y: number; t: number }[];
   } | null>(null);
+  const inercia = useRef(0);
   const [escala, setEscala] = useState(0.4);
   const [pronto, setPronto] = useState(false);
   const [sobre, setSobre] = useState<string | null>(null);
@@ -823,7 +836,22 @@ export function MapaPolitico({
     [aplicar, base],
   );
 
+  // o anel dos ministérios (sem nenhuma aberta), para a vista inicial
+  const raioDoAnel = useMemo(() => {
+    let r: number = MEDIDAS.raioPresidencia;
+    for (const e of montarLayout(base, null, new Set()).esferas.values())
+      r = Math.max(r, Math.hypot(e.x, e.y) + e.r);
+    // folga para a barra de cima e os botões de baixo
+    return r + 110;
+  }, [base]);
+  const vistaInicial = useCallback(
+    () => visaoDoAnel(raioDoAnel, tela.current, ocupadoAtual.current),
+    [raioDoAnel],
+  );
   const irParaVisaoGeral = useCallback(() => {
+    animarPara(vistaInicial());
+  }, [animarPara, vistaInicial]);
+  const verTudo = useCallback(() => {
     animarPara(visaoGeral(base.limites, tela.current, ocupadoAtual.current));
   }, [animarPara, base]);
 
@@ -835,7 +863,7 @@ export function MapaPolitico({
       const primeira = !pronto;
       tela.current = { largura: r.width, altura: r.height };
       if (primeira) {
-        aplicar(visaoGeral(base.limites, tela.current, ocupadoAtual.current));
+        aplicar(vistaInicial());
         setPronto(true);
       } else aplicar(camera.current);
     };
@@ -843,7 +871,7 @@ export function MapaPolitico({
     const observador = new ResizeObserver(medir);
     observador.observe(el);
     return () => observador.disconnect();
-  }, [aplicar, base, pronto]);
+  }, [aplicar, base, pronto, vistaInicial]);
 
   // Abrir ou fechar uma área move a câmera até ela.
   const abertaAnterior = useRef<string | null>(null);
@@ -952,29 +980,149 @@ export function MapaPolitico({
   useEffect(() => {
     const el = caixa.current;
     if (!el) return;
+    // Roda do mouse aproxima; no touchpad, dois dedos movem e a pinça
+    // (que chega como ctrl + roda) aproxima.
     const roda = (e: WheelEvent) => {
       e.preventDefault();
       setExplorou(true);
       cancelAnimationFrame(animacaoCamera.current);
-      const r = el.getBoundingClientRect();
-      const fator = Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0016));
-      aplicar(
-        zoomNoPonto(
-          camera.current,
-          fator,
-          e.clientX - r.left,
-          e.clientY - r.top,
-          tela.current,
-        ),
-      );
+      cancelAnimationFrame(inercia.current);
+      const passo =
+        e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? tela.current.altura : 1;
+      const dx = e.deltaX * passo;
+      const dy = e.deltaY * passo;
+      const pinca = e.ctrlKey;
+      const rodaDoMouse =
+        !pinca &&
+        (e.deltaMode !== 0 ||
+          (dx === 0 && Math.abs(dy) >= 40 && Number.isInteger(dy)));
+      const c = camera.current;
+      if (pinca || rodaDoMouse) {
+        const r = el.getBoundingClientRect();
+        const fator = Math.exp(-dy * (pinca ? 0.012 : 0.0016));
+        aplicar(
+          zoomNoPonto(
+            c,
+            fator,
+            e.clientX - r.left,
+            e.clientY - r.top,
+            tela.current,
+          ),
+        );
+      } else aplicar({ k: c.k, x: c.x + dx / c.k, y: c.y + dy / c.k });
     };
     el.addEventListener("wheel", roda, { passive: false });
     return () => el.removeEventListener("wheel", roda);
   }, [aplicar]);
 
+  // Bordas da tela e teclado: o mapa anda enquanto o mouse fica encostado
+  // numa borda (depois de um instante, para não andar sem querer) ou uma
+  // seta/WASD está apertada. + e − aproximam.
+  useEffect(() => {
+    const el = caixa.current;
+    if (!el) return;
+    const MARGEM = 28;
+    const VELOCIDADE = 950; // px de tela por segundo, na borda
+    const ponteiro = { x: -1, y: -1, dentro: false, desde: 0 };
+    const teclas = new Set<string>();
+    let quadro = 0;
+    let anterior = 0;
+    const podeRolar = (alvo: EventTarget | null) =>
+      alvo instanceof Element &&
+      (el.contains(alvo) || alvo.closest("[data-borda-rola]") !== null);
+    const mover = (e: MouseEvent) => {
+      const dentro = podeRolar(e.target) && e.buttons === 0;
+      if (dentro && !ponteiro.dentro) ponteiro.desde = performance.now();
+      ponteiro.x = e.clientX;
+      ponteiro.y = e.clientY;
+      ponteiro.dentro = dentro;
+    };
+    const sairJanela = (e: MouseEvent) => {
+      if (!e.relatedTarget) ponteiro.dentro = false;
+    };
+    const perderFoco = () => {
+      ponteiro.dentro = false;
+      teclas.clear();
+    };
+    const DIRECOES: Record<string, [number, number]> = {
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1],
+      a: [-1, 0],
+      d: [1, 0],
+      w: [0, -1],
+      s: [0, 1],
+    };
+    const escrevendo = (alvo: EventTarget | null) =>
+      alvo instanceof HTMLElement &&
+      (alvo.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(alvo.tagName));
+    const apertar = (e: KeyboardEvent) => {
+      if (escrevendo(e.target) || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tecla = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      if (DIRECOES[tecla]) {
+        teclas.add(tecla);
+        e.preventDefault();
+      } else if (tecla === "+" || tecla === "=") {
+        const c = camera.current;
+        animarPara({ ...c, k: c.k * 1.3 }, 220);
+      } else if (tecla === "-" || tecla === "_") {
+        const c = camera.current;
+        animarPara({ ...c, k: c.k / 1.3 }, 220);
+      }
+    };
+    const soltar = (e: KeyboardEvent) => {
+      const tecla = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      teclas.delete(tecla);
+    };
+    const passo = (agora: number) => {
+      const dt = anterior ? Math.min(0.05, (agora - anterior) / 1000) : 0;
+      anterior = agora;
+      let vx = 0;
+      let vy = 0;
+      if (ponteiro.dentro && !arraste.current && agora - ponteiro.desde > 220) {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const forca = (d: number) => Math.max(0, 1 - d / MARGEM);
+        vx += forca(ponteiro.x) * -1 + forca(w - 1 - ponteiro.x);
+        vy += forca(ponteiro.y) * -1 + forca(h - 1 - ponteiro.y);
+      }
+      for (const t of teclas) {
+        vx += DIRECOES[t][0] * 0.8;
+        vy += DIRECOES[t][1] * 0.8;
+      }
+      if ((vx || vy) && dt > 0) {
+        cancelAnimationFrame(animacaoCamera.current);
+        const c = camera.current;
+        aplicar({
+          k: c.k,
+          x: c.x + (vx * VELOCIDADE * dt) / c.k,
+          y: c.y + (vy * VELOCIDADE * dt) / c.k,
+        });
+      }
+      quadro = requestAnimationFrame(passo);
+    };
+    quadro = requestAnimationFrame(passo);
+    window.addEventListener("mousemove", mover);
+    document.addEventListener("mouseout", sairJanela);
+    window.addEventListener("blur", perderFoco);
+    window.addEventListener("keydown", apertar);
+    window.addEventListener("keyup", soltar);
+    return () => {
+      cancelAnimationFrame(quadro);
+      window.removeEventListener("mousemove", mover);
+      document.removeEventListener("mouseout", sairJanela);
+      window.removeEventListener("blur", perderFoco);
+      window.removeEventListener("keydown", apertar);
+      window.removeEventListener("keyup", soltar);
+    };
+  }, [aplicar, animarPara]);
+
   const aoApertar = (e: PointerEventReact<HTMLDivElement>) => {
     if (e.button !== 0) return;
     cancelAnimationFrame(animacaoCamera.current);
+    cancelAnimationFrame(inercia.current);
     arraste.current = {
       x: e.clientX,
       y: e.clientY,
@@ -982,6 +1130,7 @@ export function MapaPolitico({
       cy: camera.current.y,
       moveu: false,
       id: e.pointerId,
+      rastro: [{ x: e.clientX, y: e.clientY, t: performance.now() }],
     };
   };
   const aoMover = (e: PointerEventReact<HTMLDivElement>) => {
@@ -998,12 +1147,42 @@ export function MapaPolitico({
     }
     const k = camera.current.k;
     aplicar({ k, x: a.cx - dx / k, y: a.cy - dy / k });
+    const agora = performance.now();
+    a.rastro.push({ x: e.clientX, y: e.clientY, t: agora });
+    while (a.rastro.length > 2 && agora - a.rastro[0].t > 90) a.rastro.shift();
   };
   const aoSoltar = (e: PointerEventReact<HTMLDivElement>) => {
     const a = arraste.current;
     if (a && a.moveu) {
       caixa.current?.releasePointerCapture(e.pointerId);
       caixa.current?.classList.remove("arrastando");
+      // inércia: o mapa desliza um pouco na direção do arraste e para
+      const agora = performance.now();
+      const ultimo = a.rastro[a.rastro.length - 1];
+      const primeiro = a.rastro[0];
+      const tempo = Math.max(1, ultimo.t - primeiro.t);
+      if (agora - ultimo.t < 60 && a.rastro.length > 1) {
+        let vx = (ultimo.x - primeiro.x) / tempo; // px por ms
+        let vy = (ultimo.y - primeiro.y) / tempo;
+        let antes = agora;
+        const deslizar = (t: number) => {
+          const dt = Math.min(40, t - antes);
+          antes = t;
+          const atrito = Math.pow(0.9945, dt);
+          vx *= atrito;
+          vy *= atrito;
+          const c = camera.current;
+          aplicar({
+            k: c.k,
+            x: c.x - (vx * dt) / c.k,
+            y: c.y - (vy * dt) / c.k,
+          });
+          if (Math.hypot(vx, vy) > 0.02)
+            inercia.current = requestAnimationFrame(deslizar);
+        };
+        if (Math.hypot(vx, vy) > 0.15)
+          inercia.current = requestAnimationFrame(deslizar);
+      }
       // engole o clique que viria depois do arraste
       const engolir = (ev: MouseEvent) => {
         ev.stopPropagation();
@@ -1310,6 +1489,16 @@ export function MapaPolitico({
               (l) => l.esfera === ministerio.nome && l.lugar === "revelada",
             );
             const bloco = blocoCentral(e, ministerio.titulo);
+            // De longe (zoom baixo), a esfera vira um cartaz: retrato menor e
+            // o tema em letra grande, com tamanho mínimo na tela.
+            const longe = !e.aberta && k < LONGE;
+            const tituloLonge = longe
+              ? (() => {
+                  const linhas = quebrarNome(temaCurto(ministerio.nome), 12, 2);
+                  const tamanho = Math.min(e.r * 0.34, 17 / k);
+                  return { linhas, tamanho, entrelinha: tamanho * 1.02 };
+                })()
+              : null;
             const constit = ministerio.leis.filter((id) =>
               base.constitucionais.includes(id),
             ).length;
@@ -1340,6 +1529,31 @@ export function MapaPolitico({
                   x={bloco.retrato.x}
                   y={bloco.retrato.y}
                 />
+                {tituloLonge ? (
+                  <text
+                    className="titulo-esfera longe"
+                    y={
+                      bloco.retrato.y +
+                      rr +
+                      tituloLonge.tamanho * 0.95 -
+                      (tituloLonge.linhas.length - 1) *
+                        tituloLonge.entrelinha *
+                        0.35
+                    }
+                    fontSize={tituloLonge.tamanho}
+                    textAnchor="middle"
+                  >
+                    {tituloLonge.linhas.map((linha, i) => (
+                      <tspan
+                        key={i}
+                        x={e.x}
+                        dy={i === 0 ? 0 : tituloLonge.entrelinha}
+                      >
+                        {linha}
+                      </tspan>
+                    ))}
+                  </text>
+                ) : null}
                 <g
                   transform={`translate(${bloco.retrato.x + rr * 0.7} ${bloco.retrato.y + rr * 0.7})`}
                   className="selo-ministerio"
@@ -1351,22 +1565,24 @@ export function MapaPolitico({
                     cor="#fff"
                   />
                 </g>
-                <text
-                  className="titulo-esfera"
-                  y={bloco.titulo.y}
-                  fontSize={bloco.titulo.tamanho}
-                  textAnchor="middle"
-                >
-                  {bloco.titulo.linhas.map((linha, i) => (
-                    <tspan
-                      key={i}
-                      x={bloco.titulo.x}
-                      dy={i === 0 ? 0 : bloco.titulo.entrelinha}
-                    >
-                      {linha}
-                    </tspan>
-                  ))}
-                </text>
+                {tituloLonge ? null : (
+                  <text
+                    className="titulo-esfera"
+                    y={bloco.titulo.y}
+                    fontSize={bloco.titulo.tamanho}
+                    textAnchor="middle"
+                  >
+                    {bloco.titulo.linhas.map((linha, i) => (
+                      <tspan
+                        key={i}
+                        x={bloco.titulo.x}
+                        dy={i === 0 ? 0 : bloco.titulo.entrelinha}
+                      >
+                        {linha}
+                      </tspan>
+                    ))}
+                  </text>
+                )}
                 {suasNaEsfera(ministerio.leis) ? (
                   <g
                     transform={`translate(${bloco.retrato.x - rr * 0.7} ${bloco.retrato.y + rr * 0.7})`}
@@ -1388,7 +1604,7 @@ export function MapaPolitico({
                     </text>
                   </g>
                 ) : null}
-                {!e.aberta || !revelando ? (
+                {!longe && (!e.aberta || !revelando) ? (
                   <text
                     className="contagem-esfera"
                     x={bloco.contagem.x}
@@ -1396,6 +1612,7 @@ export function MapaPolitico({
                     fontSize={bloco.contagem.tamanho}
                     textAnchor="middle"
                   >
+                    {cargoDoMinisterio(ministerio.nome)} ·{" "}
                     {ministerio.leis.length} leis
                     {constit && e.aberta
                       ? ` · ${constit} constituciona${constit > 1 ? "is" : "l"}`
@@ -1648,10 +1865,20 @@ export function MapaPolitico({
             e.stopPropagation();
             onSelecionar(null);
             if (aberta) onAbrir(null);
-            else irParaVisaoGeral();
+            else {
+              // já no anel: o segundo clique mostra o mapa inteiro
+              const anel = vistaInicial();
+              const c = camera.current;
+              if (
+                Math.abs(c.k - anel.k) / anel.k < 0.04 &&
+                Math.hypot(c.x - anel.x, c.y - anel.y) < 40
+              )
+                verTudo();
+              else irParaVisaoGeral();
+            }
           }}
           aria-label="Voltar à visão geral"
-          title="Visão geral"
+          title="Visão geral (clique de novo para ver o mapa inteiro)"
         >
           <Icone nome={ICONE_INTERFACE.visao} />
         </button>
@@ -1699,8 +1926,8 @@ export function MapaPolitico({
       ) : null}
       {!explorou && aberta === null && !comFoco ? (
         <div className="dica-mapa" aria-hidden="true">
-          Clique numa esfera para abrir as leis · arraste para mover · role para
-          aproximar
+          Clique numa esfera · arraste ou encoste na borda para andar · roda ou
+          pinça aproxima · / busca uma lei
         </div>
       ) : null}
       <span className="sr-only" aria-live="polite">

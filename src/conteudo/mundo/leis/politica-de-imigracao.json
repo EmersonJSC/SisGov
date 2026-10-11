@@ -6,7 +6,7 @@
   "nome": "Política de imigração",
   "descricao": "Define quem pode entrar no país para viver e trabalhar, por quanto tempo e se pode virar cidadão.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério da Defesa e Relações Exteriores",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_politica_de_imigracao",

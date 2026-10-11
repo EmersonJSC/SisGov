@@ -6,7 +6,7 @@
   "nome": "Regulação das redes sociais",
   "descricao": "Define quanto as plataformas respondem pelo que circula nelas: nada, só após ordem judicial, com dever de cuidado ou sob controle do Estado.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos e da Defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "nivel_regulacao_redes_sociais",

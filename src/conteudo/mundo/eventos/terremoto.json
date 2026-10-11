@@ -4,7 +4,7 @@
   "versaoEsquema": 1,
   "nome": "Terremoto",
   "descricao": "Um tremor de magnitude incomum atinge o {regiao}. Construções antigas não resistem.",
-  "area": "Ministério do Meio Ambiente e Infraestrutura",
+  "area": "Ministério do Meio Ambiente",
   "manchete": "Terremoto raro atinge o {regiao} e derruba prédios",
   "origem": "natureza",
   "nivel": 3,
