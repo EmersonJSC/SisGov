@@ -16,6 +16,7 @@ describe("SG106 — cinco mandatos", () => {
     if (!criada.ok) throw new Error(criada.erros.join(" "));
     let atual = criada.value;
     let calmos = 0;
+    const turnosComDilema: number[] = [];
     for (let t = 0; t < 80; t++) {
       const vista = verPartida(atual).ocorrencias;
       // nenhuma variável do texto fica sem trocar ({cidade}, {ministro}…)
@@ -42,6 +43,8 @@ describe("SG106 — cinco mandatos", () => {
       atual = passou.value.partida;
       const o = passou.value.relatorio.ocorrencias;
       if (!o.eventos.length && !o.dilemas.length) calmos++;
+      expect(o.dilemas.length).toBeLessThanOrEqual(1);
+      if (o.dilemas.length) turnosComDilema.push(t);
     }
     const historia = atual.game.occurrences!.history.filter(
       (h) => h.kind !== "situacao",
@@ -51,7 +54,13 @@ describe("SG106 — cinco mandatos", () => {
     const dilemas = historia.filter((h) => h.kind === "dilema").length;
     expect(vezes.size).toBeGreaterThanOrEqual(60);
     expect(Math.max(...vezes.values())).toBeLessThanOrEqual(4);
-    expect(dilemas).toBeGreaterThanOrEqual(25);
+    // poucos dilemas (11/out): no máximo um a cada 3 turnos
+    expect(dilemas).toBeGreaterThanOrEqual(12);
+    expect(dilemas).toBeLessThanOrEqual(27);
+    for (let i = 1; i < turnosComDilema.length; i++)
+      expect(
+        turnosComDilema[i] - turnosComDilema[i - 1],
+      ).toBeGreaterThanOrEqual(3);
     expect(calmos).toBeGreaterThan(0);
     expect(calmos).toBeLessThan(40);
   }, 180_000);

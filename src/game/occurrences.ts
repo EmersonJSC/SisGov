@@ -8,7 +8,9 @@
  * - O sorteio é por hash da semente, do turno e da ocorrência: a mesma
  *   partida repete igual e o piloto automático recebe os mesmos números.
  * - Dilemas e eventos saem pela chance que o contexto dá (nem todo turno tem);
- *   a mesa tem no máximo dois dilemas (o segundo vem de um desdobramento).
+ *   a mesa tem no máximo um dilema por turno, e um dilema novo só chega
+ *   `TURNOS_ENTRE_DILEMAS` turnos depois do anterior (pedido do autor, 11/out:
+ *   eram dilemas demais).
  */
 import type {
   DilemmaOptionFile,
@@ -88,7 +90,9 @@ export type OccurrenceState = Readonly<{
 /** Quantos eventos e dilemas podem começar num turno. */
 export const MAX_EVENTOS_GRANDES_POR_TURNO = 1;
 export const MAX_EVENTOS_LOCAIS_POR_TURNO = 1;
-export const MAX_DILEMAS_POR_TURNO = 2;
+export const MAX_DILEMAS_POR_TURNO = 1;
+/** Dilema novo só depois de tantos turnos do último (desdobramento também). */
+export const TURNOS_ENTRE_DILEMAS = 3;
 /** Depois de vista, a chance cai (segunda vez ×0,3, terceira ×0,1). */
 const SEEN_DECAY = [1, 0.3, 0.1];
 const LAW_CHANGE_MEMORY = 12;
@@ -631,7 +635,13 @@ export function rollTurn(input: {
   // ficam para o próximo turno, como "a enchente do turno 3, o dilema do 4")
 
   // a mesa de dilemas: desdobramento → crise → reação → cotidiano
-  if (pending.length === 0) {
+  const ultimoDilema = Math.max(
+    -Infinity,
+    ...catalog.all
+      .filter((o) => o.tipo === "dilema")
+      .map((o) => state.lastStarted[o.id] ?? -Infinity),
+  );
+  if (pending.length === 0 && turn - ultimoDilema >= TURNOS_ENTRE_DILEMAS) {
     for (const f of followUpDilemmas.slice(0, MAX_DILEMAS_POR_TURNO))
       openDilemma(f.o, f.cause, f.vars);
     if (pending.length < MAX_DILEMAS_POR_TURNO) {
