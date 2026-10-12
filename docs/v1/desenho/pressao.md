@@ -1,7 +1,6 @@
 # Grupos de pressão (V1-09)
 
-**Status:** PARA APROVAÇÃO (versão 4: decisões 1 a 5 tomadas; nomes dos
-países definidos; falta a 6). O código só começa depois do seu ok.
+**Status:** APROVADO pelo autor em 12/out (versão 4; decisões na seção 8).
 
 ## 0. O que mudou da versão 1
 
@@ -435,7 +434,8 @@ cada opção é escrito na implementação.
    inteligência, interceptação, câmeras e reconhecimento facial, poderes da
    polícia), mais as que já existem (verba da PF, armas, proteção de dados).
    Seção 4.4.
-6. Efeitos provisórios das ações: em aberto.
+6. Efeitos provisórios das ações: **sim**. Até existirem Senado e Supremo,
+   cada ação tem um efeito pequeno e direto num índice e na aprovação.
 
 ## Fontes
 

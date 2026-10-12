@@ -247,7 +247,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/pressao.md`)
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/pressao.md`)
 - [ ] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
 - [ ] Cada ação tem efeito em índice ou capital
 
@@ -277,7 +277,7 @@
 
 **Aceite**
 
-- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
+- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/capital.md`)
 - [ ] Ação sem capital suficiente é recusada com motivo
 - [ ] Ganho por turno segue a fórmula documentada (teste)
 
@@ -328,7 +328,7 @@
 
 **Aceite**
 
-- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
+- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/eleicao.md`)
 - [ ] Mesma semente, mesmo resultado
 - [ ] Governo com aprovação muito alta vence e muito baixa perde (teste)
 
