@@ -15,6 +15,7 @@
     "rede:simular": "vite-node scripts/rede/simular.ts",
     "rede:contexto": "vite-node scripts/rede/contexto.ts",
     "rede:calibrar": "vite-node scripts/rede/calibrar.ts",
+    "rede:sensibilidade": "vite-node scripts/rede/sensibilidade.ts",
     "fichas:migracao": "vite-node scripts/fichas/migracao.ts"
   },
   "dependencies": {
