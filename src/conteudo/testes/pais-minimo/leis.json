@@ -1,5 +1,17 @@
 {
   "tipo": "pais-leis",
-  "emVigor": [{ "lei": "policia-militar", "opcao": "civil" }],
-  "controles": { "nivel_policia_militar": 100 }
+  "emVigor": [
+    {
+      "lei": "policia-militar",
+      "opcao": "civil"
+    },
+    {
+      "lei": "destino-do-resultado-fiscal",
+      "opcao": "dividir"
+    }
+  ],
+  "controles": {
+    "nivel_policia_militar": 100,
+    "nivel_destino_do_resultado_fiscal": 50
+  }
 }

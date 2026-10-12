@@ -87,6 +87,17 @@ export type VariableDefinition = {
   entrada?: number;
   /** Só situação: soma em que ela acaba (no máximo `entrada`). */
   saida?: number;
+  /**
+   * Só estoque (V1-07): o que passar do domínio ou do `teto` vai para outro
+   * estoque da mesma unidade, em vez de sumir. `oposto`: um é bem e o outro
+   * é dívida (cofre negativo vira dívida; dívida negativa vira cofre). Acima
+   * do teto, só passa o que o outro estoque consegue receber.
+   */
+  transbordo?: {
+    estoque: string;
+    sentido: "oposto" | "igual";
+    teto?: number;
+  };
   area?: string;
   avaliacao?: "maior_melhor" | "maior_pior" | "neutra";
   /**

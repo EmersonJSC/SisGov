@@ -1,7 +1,9 @@
 /**
- * SG157 fase 4 (D-49, D-57): sem dívida, o superávit enche o cofre; o cofre
- * rende juros, cobre déficits e, pela lei "Uso do cofre", pode ser emprestado
- * ou virar obra.
+ * Cofre (SG157 fase 4; V1-07): dívida e cofre são dois estoques. A lei
+ * "Destino do resultado fiscal" reparte o superávit entre os dois; o déficit
+ * sai do cofre na mesma parte e o resto vira dívida. Com dívida, o cofre tem
+ * teto de 10% do PIB. O cofre rende juros e, pela lei "Uso do cofre", pode ser
+ * emprestado ou virar obra.
  */
 import { describe, expect, it } from "vitest";
 import {
@@ -18,8 +20,8 @@ function nova(): Partida {
   return criada.value;
 }
 
-/** Mesma partida com a dívida líquida trocada (negativa = cofre). */
-function comDivida(partida: Partida, divida: number): Partida {
+/** Mesma partida com dívida e cofre trocados (dois estoques, V1-07). */
+function comContas(partida: Partida, divida: number, cofre: number): Partida {
   const execution = partida.game.execution;
   return {
     ...partida,
@@ -27,7 +29,7 @@ function comDivida(partida: Partida, divida: number): Partida {
       ...partida.game,
       execution: {
         ...execution,
-        values: { ...execution.values, divida_publica: divida },
+        values: { ...execution.values, divida_publica: divida, cofre },
       },
     },
   };
@@ -54,43 +56,84 @@ function lei(partida: Partida, id: string, opcao: string): Partida {
 const v = (p: Partida, id: string) => p.game.execution.values[id] ?? 0;
 
 describe("SG157 fase 4 — cofre", () => {
-  it("o Brasil 2026 começa sem cofre e com a lei em 'guardar'", () => {
+  it("o Brasil 2026 começa sem cofre, dividindo o resultado", () => {
     const visao = verPartida(nova());
     expect(visao.contas.cofre).toBe(0);
     expect(visao.bolhas.find((b) => b.id === "cofre")!.valor).toBe(0);
     const fundo = visao.leis.find((l) => l.id === "fundo-soberano")!;
     expect(fundo.opcaoAtual).toBe("guardar");
+    const destino = visao.leis.find(
+      (l) => l.id === "destino-do-resultado-fiscal",
+    )!;
+    expect(destino.opcaoAtual).toBe("dividir");
   });
 
-  it("sem dívida, o superávit enche o cofre e o cofre rende juros", () => {
-    // contas primárias com sobra e dívida quase paga
-    const quase = comDivida(nova(), 0.5);
-    const iva = mudarLei(quase, "imposto-sobre-consumo", 30);
+  it("com dívida, o superávit paga a dívida e enche o cofre ao mesmo tempo", () => {
+    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 30);
+    if (!iva.ok) throw new Error(iva.erros.join(" "));
+    const depois = turnos(iva.value, 4);
+    expect(v(depois, "resultado_fiscal")).toBeGreaterThan(0);
+    expect(v(depois, "divida_publica")).toBeLessThan(5);
+    expect(v(depois, "divida_publica")).toBeGreaterThan(0);
+    expect(v(depois, "cofre")).toBeGreaterThan(0);
+  });
+
+  it("'tudo para a dívida' não guarda nada no cofre", () => {
+    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 30);
+    if (!iva.ok) throw new Error(iva.erros.join(" "));
+    const depois = turnos(
+      lei(iva.value, "destino-do-resultado-fiscal", "pagar-a-divida"),
+      4,
+    );
+    expect(v(depois, "cofre")).toBe(0);
+    expect(v(depois, "divida_publica")).toBeLessThan(5);
+  });
+
+  it("sem dívida, todo o superávit vai para o cofre, que rende juros", () => {
+    const iva = mudarLei(
+      comContas(nova(), 0.5, 0),
+      "imposto-sobre-consumo",
+      30,
+    );
     if (!iva.ok) throw new Error(iva.erros.join(" "));
     const depois = turnos(iva.value, 9);
     expect(v(depois, "resultado_fiscal")).toBeGreaterThan(0);
     const contas = verPartida(depois).contas;
-    expect(v(depois, "divida_publica")).toBeLessThan(0);
+    expect(v(depois, "divida_publica")).toBe(0);
     expect(contas.divida).toBe(0);
     expect(contas.cofre).toBeGreaterThan(0);
-    expect(v(depois, "cofre")).toBeGreaterThan(0);
     // juros negativos = rendimento do cofre
     expect(contas.juros).toBeLessThan(0);
   });
 
-  it("déficit gasta o cofre antes de criar dívida", () => {
-    const comCofre = comDivida(nova(), -10);
+  it("com dívida, o cofre não passa do teto: o resto abate a dívida", () => {
+    const iva = mudarLei(
+      comContas(nova(), 5, 9.9),
+      "imposto-sobre-consumo",
+      30,
+    );
+    if (!iva.ok) throw new Error(iva.erros.join(" "));
+    const depois = turnos(
+      lei(iva.value, "destino-do-resultado-fiscal", "guardar"),
+      4,
+    );
+    expect(v(depois, "cofre")).toBeLessThanOrEqual(10 + 1e-9);
+    expect(v(depois, "divida_publica")).toBeLessThan(5);
+  });
+
+  it("déficit gasta o cofre e o que falta vira dívida", () => {
+    const comCofre = comContas(nova(), 50, 10);
     // corta o IVA pela metade: déficit
     const corte = mudarLei(comCofre, "imposto-sobre-consumo", 13);
     if (!corte.ok) throw new Error(corte.erros.join(" "));
     const depois = turnos(corte.value, 4);
     expect(v(depois, "resultado_fiscal")).toBeLessThan(0);
     expect(v(depois, "cofre")).toBeLessThan(10);
-    expect(v(depois, "divida_publica")).toBeGreaterThan(-10);
+    expect(v(depois, "divida_publica")).toBeGreaterThan(50);
   });
 
   it("emprestar o cofre às empresas mexe no crédito e no investimento", () => {
-    const comCofre = comDivida(nova(), -10);
+    const comCofre = comContas(nova(), 0, 10);
     // a corrupção chega com atraso de um ano: olha dois anos
     const guardar = turnos(comCofre, 8);
     const emprestar = turnos(
@@ -106,7 +149,7 @@ describe("SG157 fase 4 — cofre", () => {
   });
 
   it("investir em obras gasta o cofre e melhora a infraestrutura", () => {
-    const comCofre = comDivida(nova(), -10);
+    const comCofre = comContas(nova(), 0, 10);
     const guardar = turnos(comCofre, 4);
     const obras = turnos(lei(comCofre, "fundo-soberano", "investir-obras"), 4);
     expect(v(obras, "gasto_publico")).toBeGreaterThan(

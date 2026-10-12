@@ -233,6 +233,11 @@ Entra se, depois da otimização, abertura com 4.2 ou fim de turno passar de
    do cofre ou aumenta a dívida (a mesma lei decide a ordem); o cofre tem teto
    (padrão 10% do PIB) e o que passa vai para a dívida. Os usos de hoje
    (juros, empréstimo, obras) continuam.
+   **Feito (12/out):** campo genérico `transbordo` nos estoques (o que passa
+   do domínio ou do teto vai para o outro, sem sumir dinheiro); lei v3
+   "Destino do resultado fiscal" (tudo para a dívida, metade, tudo para o
+   cofre), com o Brasil em "metade"; rendimento do cofre desconta os juros.
+   Testes: `transbordo.test.ts`, `cofre.test.ts`.
 5. **Ordem:** desempenho, situações, índices, calibragem, sensibilidade.
 
 ## 9. Rede sem números soltos (pedido do autor)

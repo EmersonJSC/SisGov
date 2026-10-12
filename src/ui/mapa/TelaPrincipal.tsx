@@ -105,12 +105,13 @@ function ContasDoGoverno({
 }) {
   const sai = contas.gasto + contas.juros;
   const sobra = contas.resultado >= 0;
+  // V1-07: dívida e cofre convivem; a lei do destino reparte o resultado.
   const destino = sobra
     ? contas.divida > 0
-      ? "abate a dívida"
+      ? "abate a dívida e enche o cofre"
       : "vai para o cofre"
     : contas.cofre > 0
-      ? "sai do cofre"
+      ? "sai do cofre e vira dívida"
       : "vira dívida";
   const juros =
     contas.juros >= 0
@@ -166,8 +167,8 @@ function ContasDoGoverno({
         onClick={() => onAbrir(BOLHAS_DO_ORCAMENTO.resultado)}
         title={
           sobra
-            ? "Superávit: sobra dinheiro no ano. Primeiro paga a dívida; sem dívida, enche o cofre."
-            : "Déficit: falta dinheiro no ano. A falta é paga com dívida nova (ou com o cofre, se houver)."
+            ? "Superávit: sobra dinheiro no ano. A lei 'Destino do resultado fiscal' reparte entre pagar a dívida e encher o cofre."
+            : "Déficit: falta dinheiro no ano. Parte sai do cofre (a mesma parte da lei 'Destino do resultado fiscal'); o resto vira dívida nova."
         }
       >
         <span>
@@ -579,6 +580,14 @@ export function TelaPrincipal() {
         </div>
         <div className="metricas">
           <ContasDoGoverno contas={contas} onAbrir={selecionar} />
+          <Metrica
+            icone={ICONE_INTERFACE.divida}
+            rotulo="Dívida"
+            valor={moeda(contas.divida)}
+            detalhe={pctPib(contas.percentualPib.divida)}
+            classe="ruim"
+            titulo={`PIB de ${moeda(contas.pib)}/ano. A lei 'Destino do resultado fiscal' decide quanto do superávit paga a dívida.`}
+          />
           {contas.cofre > 0 ? (
             <Metrica
               icone={ICONE_INTERFACE.caixa}
@@ -586,18 +595,9 @@ export function TelaPrincipal() {
               valor={moeda(contas.cofre)}
               detalhe={pctPib(contas.percentualPib.cofre)}
               classe="boa"
-              titulo="A dívida acabou: o superávit fica guardado aqui e rende juros. A lei 'Uso do cofre' decide o que fazer com ele."
+              titulo="Superávit guardado; rende juros. Acima do teto, o que entra vai para a dívida. A lei 'Uso do cofre' decide o que fazer com ele."
             />
-          ) : (
-            <Metrica
-              icone={ICONE_INTERFACE.divida}
-              rotulo="Dívida"
-              valor={moeda(contas.divida)}
-              detalhe={pctPib(contas.percentualPib.divida)}
-              classe="ruim"
-              titulo={`PIB de ${moeda(contas.pib)}/ano. Quando a dívida acaba, o superávit vai para o cofre.`}
-            />
-          )}
+          ) : null}
           {aprovacao ? (
             <Metrica
               icone={ICONE_INTERFACE.aprovacao}

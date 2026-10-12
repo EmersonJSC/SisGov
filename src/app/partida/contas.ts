@@ -44,7 +44,8 @@ export function lerContas(
   const percentualPib: Contas = {
     ...lidas,
     divida: Math.max(0, lidas.divida),
-    cofre: Math.max(0, -lidas.divida),
+    // V1-07: o cofre é um estoque próprio, ao lado da dívida.
+    cofre: Math.max(0, values.cofre ?? 0),
   };
   const emMoeda = Object.fromEntries(
     Object.entries(percentualPib).map(([conta, v]) => [conta, (v * pib) / 100]),

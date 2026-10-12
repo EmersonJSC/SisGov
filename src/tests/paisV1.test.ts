@@ -37,17 +37,20 @@ describe("configuração do país (V1-06)", () => {
     // organizacao-politica.json e ministerios.json (commit 4bbf2a7).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(990);
+    // V1-07: +3 nós da lei "Destino do resultado fiscal" (controle,
+    // eficácia e apoio); os índices continuam iguais.
+    expect(Object.keys(valores)).toHaveLength(993);
     expect(valores.popularidade_governo).toBeCloseTo(51.41, 6);
     expect(valores.divida_publica).toBe(77);
     expect(valores.inflacao).toBeCloseTo(5, 6);
     expect(valores.desemprego).toBeCloseTo(6, 6);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    // V1-07: o contexto das situações mira metade da saída, não da entrada;
-    // por isso a soma caiu 45,5 em relação ao Brasil antigo.
-    expect(soma).toBeCloseTo(12681009.333573977, 3);
-    expect(p.content.policies).toHaveLength(123);
+    // V1-07: o contexto das situações mira metade da saída, não da entrada,
+    // e a lei nova soma 51 (controle 50, eficácia 1); o contexto da reputação
+    // internacional absorve o efeito dela (−0,5).
+    expect(soma).toBeCloseTo(12681059.833573977, 3);
+    expect(p.content.policies).toHaveLength(124);
     expect(p.content.events).toHaveLength(79);
     expect(p.content.dilemmas).toHaveLength(91);
   });

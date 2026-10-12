@@ -160,11 +160,8 @@ describe("ficha de lei v3", () => {
 
   it("relatório mostra quantas leis faltam migrar", () => {
     const relatorio = relatorioDeMigracao(arquivos, "mundo/catalogo-leis.json");
-    expect(relatorio.migradas).toEqual([
-      expect.any(String),
-      expect.any(String),
-      expect.any(String),
-    ]);
-    expect(relatorio.faltam).toHaveLength(relatorio.total - 3);
+    // 3 pilotos (V1-05) e a lei nova do destino do resultado (V1-07)
+    expect(relatorio.migradas).toHaveLength(4);
+    expect(relatorio.faltam).toHaveLength(relatorio.total - 4);
   });
 });

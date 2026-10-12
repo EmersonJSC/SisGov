@@ -4,6 +4,7 @@ import { graphIndex } from "../graph/graphIndex";
 import { calculateContribution } from "../mechanisms/calculateContribution";
 import { updateStock, type StockRate } from "../mechanisms/updateStock";
 import { efficacyNodeId, isLawNode, lawNodeBase } from "../model/lawNodes";
+import type { VariableDefinition } from "../model/contentTypes";
 import type { ResolvedPackage } from "../model/resolvePackage";
 
 export type ContributionExplanation = Readonly<{
@@ -440,20 +441,57 @@ export function computeNetwork(
     settle(id, 0, result.value.sum, result.value.contributions);
   }
 
-  // 3. Estoques acumulam o que recebem neste mês.
+  // 3. Estoques acumulam o que recebem neste mês. Estoque com transbordo
+  // soma sem parar no domínio: o que passar vai para o outro (3b).
+  const overflowing: VariableDefinition[] = [];
   for (const variable of content.variables.variaveis) {
     if (variable.tipo !== "estoque" || input.accumulateStocks === false)
       continue;
     const result = explain(variable.id, "rede");
     if (!result.ok) return result;
     const updated = updateStock(
-      variable,
+      variable.transbordo ? { ...variable, dominio: {} } : variable,
       previous[variable.id],
       result.value.rates,
       input.duration,
     );
     if (!updated.ok) return { ok: false, diagnostics: updated.diagnostics };
     next[variable.id] = updated.value.value;
+    if (variable.transbordo) overflowing.push(variable);
+  }
+  // 3b. Transbordo (V1-07), em ordem de id. Fora do domínio, passa tudo
+  // (dinheiro não some); acima do teto, só o que o outro consegue receber.
+  for (const stock of overflowing.sort((left, right) =>
+    left.id.localeCompare(right.id),
+  )) {
+    const rule = stock.transbordo!;
+    const target = graph.nodesById[rule.estoque];
+    const value = next[stock.id];
+    const { minimo, maximo } = stock.dominio;
+    let excess = 0;
+    let hard = true;
+    if (minimo !== undefined && value < minimo) excess = value - minimo;
+    else if (maximo !== undefined && value > maximo) excess = value - maximo;
+    else if (rule.teto !== undefined && value > rule.teto) {
+      excess = value - rule.teto;
+      hard = false;
+    }
+    if (excess === 0 || !target) continue;
+    const sign = rule.sentido === "oposto" ? -1 : 1;
+    const received = next[target.id];
+    const room =
+      sign * excess > 0
+        ? target.dominio.maximo === undefined
+          ? Infinity
+          : Math.max(0, target.dominio.maximo - received)
+        : target.dominio.minimo === undefined
+          ? Infinity
+          : Math.max(0, received - target.dominio.minimo);
+    const moved = hard
+      ? excess
+      : Math.sign(excess) * Math.min(Math.abs(excess), room);
+    next[stock.id] = value - moved;
+    next[target.id] = received + sign * moved;
   }
 
   const { nodeRank } = graphIndex(graph);

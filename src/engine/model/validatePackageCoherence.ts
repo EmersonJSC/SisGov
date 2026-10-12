@@ -333,6 +333,25 @@ export function validatePackageCoherence(
     }
   }
 
+  // Transbordo (V1-07): vai para outro estoque, da mesma unidade.
+  for (const variable of content.variables.variaveis) {
+    if (!variable.transbordo) continue;
+    const target = variablesById.get(variable.transbordo.estoque);
+    if (
+      !target ||
+      target.tipo !== "estoque" ||
+      target.id === variable.id ||
+      target.unidade !== variable.unidade
+    )
+      diagnostics.push(
+        issue(
+          content.variables.id,
+          `variaveis.${variable.id}.transbordo`,
+          "O transbordo precisa ir para outro estoque da mesma unidade.",
+        ),
+      );
+  }
+
   // Uma lei só lista consequências que saem do seu próprio controle; as
   // ligações entre bolhas são da rede e valem sempre (D-41).
   for (const policy of content.policies)

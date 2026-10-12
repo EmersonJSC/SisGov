@@ -484,6 +484,10 @@
     {
       "lei": "fundo-soberano",
       "opcao": "guardar"
+    },
+    {
+      "lei": "destino-do-resultado-fiscal",
+      "opcao": "dividir"
     }
   ],
   "controles": {
@@ -608,6 +612,7 @@
     "nivel_imposto_seletivo": 33,
     "aliquota_imposto_transacoes_financeiras": 0.38,
     "nivel_fundo_soberano": 0,
-    "pib_nominal": 12000000
+    "pib_nominal": 12000000,
+    "nivel_destino_do_resultado_fiscal": 50
   }
 }

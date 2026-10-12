@@ -188,10 +188,11 @@ export type Contas = Readonly<
 /**
  * As contas do governo, lidas das bolhas do orçamento. Receita, gasto, juros
  * e resultado são por ano; resultado = receita − gasto − juros (positivo é
- * superávit). O déficit soma na dívida e o superávit abate (D-49). A rede
- * guarda a dívida líquida: abaixo de zero, ela é o `cofre` (fase 4) e os
- * `juros` ficam negativos (é o rendimento do cofre). `divida` e `cofre` nunca
- * são negativos.
+ * superávit). Dívida e cofre são dois estoques (V1-07): a lei "Destino do
+ * resultado fiscal" reparte o superávit entre pagar a dívida e encher o
+ * cofre, e o déficit sai do cofre na mesma parte; o resto vira dívida. Os
+ * `juros` descontam o rendimento do cofre. `divida` e `cofre` nunca são
+ * negativos.
  */
 export type VisaoContas = Contas &
   Readonly<{

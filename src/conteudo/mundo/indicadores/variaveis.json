@@ -1468,6 +1468,18 @@
       "area": "Tributação"
     },
     {
+      "id": "nivel_destino_do_resultado_fiscal",
+      "tipo": "controle",
+      "nome": "Destino do resultado fiscal",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Contas públicas"
+    },
+    {
       "id": "nivel_fundo_soberano",
       "tipo": "controle",
       "nome": "Uso do cofre (fundo soberano)",
@@ -5927,7 +5939,7 @@
     },
     {
       "id": "cofre",
-      "tipo": "situacao",
+      "tipo": "estoque",
       "nome": "Cofre do Tesouro",
       "unidade": "percentual_pib",
       "dominio": {
@@ -5939,9 +5951,11 @@
         "minimo": 0,
         "maximo": 50
       },
-      "resposta": 1,
-      "entrada": 0,
-      "saida": 0
+      "transbordo": {
+        "estoque": "divida_publica",
+        "sentido": "oposto",
+        "teto": 10
+      }
     },
     {
       "id": "complexidade_tributaria",
@@ -6294,12 +6308,18 @@
       "tipo": "estoque",
       "nome": "Dívida pública",
       "unidade": "percentual_pib",
-      "dominio": {},
+      "dominio": {
+        "minimo": 0
+      },
       "area": "Contas públicas",
       "avaliacao": "maior_pior",
       "faixaVisual": {
-        "minimo": -50,
+        "minimo": 0,
         "maximo": 250
+      },
+      "transbordo": {
+        "estoque": "cofre",
+        "sentido": "oposto"
       }
     },
     {

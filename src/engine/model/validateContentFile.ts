@@ -1196,6 +1196,7 @@ function validateVariables(
           "valorInicial",
           "entrada",
           "saida",
+          "transbordo",
           "area",
           "avaliacao",
           "resposta",
@@ -1383,7 +1384,34 @@ function validateVariables(
               "A saída da situação não pode passar da entrada.",
             ),
           );
-      } else
+      } else if (item.transbordo !== undefined && type !== "estoque")
+        diagnostics.push(
+          diagnostic(
+            file,
+            `variaveis[${index}].transbordo`,
+            "VALOR_INVALIDO",
+            "Só estoques transbordam.",
+          ),
+        );
+      else if (item.transbordo !== undefined) {
+        const t = item.transbordo;
+        if (
+          !isObject(t) ||
+          typeof t.estoque !== "string" ||
+          (t.sentido !== "oposto" && t.sentido !== "igual") ||
+          (t.teto !== undefined &&
+            (typeof t.teto !== "number" || !Number.isFinite(t.teto)))
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `variaveis[${index}].transbordo`,
+              "VALOR_INVALIDO",
+              "Transbordo: { estoque, sentido: oposto | igual, teto? }.",
+            ),
+          );
+      }
+      if (type !== "situacao")
         for (const campo of ["entrada", "saida"] as const)
           if (item[campo] !== undefined)
             diagnostics.push(
