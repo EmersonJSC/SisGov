@@ -4,6 +4,11 @@ export { validatePackageCoherence } from "./model/validatePackageCoherence";
 export { buildGraph } from "./graph/buildGraph";
 export { analyzePackage } from "./diagnostics/analyzePackage";
 export {
+  implausibility,
+  theilDecomposition,
+  type TheilDecomposition,
+} from "./diagnostics/calibration";
+export {
   checkNetworkRules,
   type NetworkRules,
 } from "./diagnostics/networkRules";

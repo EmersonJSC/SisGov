@@ -1509,10 +1509,30 @@ function validateInitialState(
         diagnostic(file, "cenario", "TIPO_INVALIDO", "Deve ser um objeto."),
       );
     else {
-      validateKnownFields(value.cenario, file, ["nome", "ano"], diagnostics);
+      validateKnownFields(
+        value.cenario,
+        file,
+        ["nome", "ano", "aquecimentoMeses"],
+        diagnostics,
+      );
       requiredString(value.cenario, file, "cenario.nome", diagnostics);
       if (value.cenario.ano !== undefined)
         requiredNumber(value.cenario, file, "cenario.ano", diagnostics);
+      const warmUp = value.cenario.aquecimentoMeses;
+      if (
+        warmUp !== undefined &&
+        (!Number.isInteger(warmUp) ||
+          (warmUp as number) < 0 ||
+          (warmUp as number) > 60)
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "cenario.aquecimentoMeses",
+            "VALOR_INVALIDO",
+            "Use um número inteiro de meses, de 0 a 60.",
+          ),
+        );
     }
   }
   if (value.indicesIniciais !== undefined) {

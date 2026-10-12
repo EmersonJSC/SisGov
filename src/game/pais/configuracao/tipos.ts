@@ -40,7 +40,12 @@ export type PaisV2 = {
   tipo: "pais";
   versaoEsquema: 2;
   nome: string;
-  cenario: { nome: string; ano: number };
+  /**
+   * `ano`: o ano em que a partida começa. Com `aquecimentoTrimestres`, os
+   * valores do país são do começo do aquecimento (V1-07: jan/2025 e 4
+   * trimestres para começar em 2026).
+   */
+  cenario: { nome: string; ano: number; aquecimentoTrimestres?: number };
   mundo: string;
   unidadeTemporal: NonNullable<ScenarioManifest["unidadeTemporal"]>;
   caracteristicas: CaracteristicaDoPais[];

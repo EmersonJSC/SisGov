@@ -1,4 +1,5 @@
 import {
+  advanceExecution,
   createExecution,
   createPackageContentIdentity,
   resolveInheritedLawLevels,
@@ -9,6 +10,7 @@ import {
 } from "../engine";
 import type { ResolvedPackage } from "../engine";
 import { createInheritedPolicyState, type PolicyState } from "./leis";
+import { preparePolicyExecution } from "./preparePolicyExecution";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import { createRandomState, type RandomState } from "./randomState";
 import {
@@ -247,7 +249,28 @@ export function createGame(
         ],
       }
     : undefined;
-  const execution = createExecution(content, graph);
+  let execution = createExecution(content, graph);
+  // Aquecimento (V1-07): o país anda sozinho, com as leis herdadas e sem
+  // ocorrências, do começo dos dados até o turno 0.
+  const warmUp = content.initialState.cenario?.aquecimentoMeses ?? 0;
+  if (warmUp > 0) {
+    const batch = preparePolicyExecution(content, graph, policies);
+    if (!batch.ok)
+      return failure(content, "aquecimento", batch.diagnostics[0].message);
+    for (let month = 0; month < warmUp; month += 1) {
+      const advanced = advanceExecution(
+        content,
+        graph,
+        execution,
+        batch.value,
+        1,
+        { explain: false },
+      );
+      if (!advanced.ok)
+        return failure(content, "aquecimento", advanced.diagnostics[0].message);
+      execution = advanced.value.execution;
+    }
+  }
   // SG106: o primeiro turno já começa com um dilema na mesa
   const occurrences =
     options.occurrences !== false && occurrenceCatalog(content).all.length > 0

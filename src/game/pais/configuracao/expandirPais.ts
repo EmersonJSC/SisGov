@@ -189,7 +189,13 @@ export function expandirPais(
     id: `${pais.id}-estado-inicial`,
     tipo: "estado-inicial",
     versaoEsquema: 1,
-    cenario: pais.cenario,
+    cenario: {
+      nome: pais.cenario.nome,
+      ano: pais.cenario.ano,
+      ...(pais.cenario.aquecimentoTrimestres !== undefined
+        ? { aquecimentoMeses: pais.cenario.aquecimentoTrimestres * 3 }
+        : {}),
+    },
     indicesIniciais: valores.indices,
     economia: economia.economia,
     limitesProprios: economia.limitesProprios ?? [],

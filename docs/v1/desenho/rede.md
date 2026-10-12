@@ -152,6 +152,16 @@ Limite: as leis de 2024 a 2026 ficam como as de 2026. Mudança real de lei
 nesse período (por exemplo, a reforma tributária) aparece como erro de
 calibragem, não como decisão.
 
+**Feito (V1-07).** `cenario.aquecimentoTrimestres` no `pais.json` vira
+`aquecimentoMeses` no estado inicial; `createGame` roda esses meses com as
+leis herdadas e sem ocorrências, e a partida começa no turno 0 com a
+história dos atrasos cheia (`aquecimento.test.ts`). Theil e a
+implausibilidade estão em `engine/diagnostics/calibration.ts`;
+`npm run rede:calibrar` compara com `paises/<pais>/calibragem.json`. **O
+Brasil ainda não liga o aquecimento:** os valores de hoje são de 2026 e em
+pontos. Liga quando a lista de índices (`indices.md`) for revisada e os
+valores de jan/2025 entrarem na unidade real, junto com a série de 2025.
+
 **4.3 History matching (depois, em script).** É o método atual para modelos
 caros com muitos parâmetros incertos (Vernon, Goldstein e Bower 2010; pacote
 `hmer`, 2022). Cada coeficiente ganha uma faixa plausível. O script sorteia

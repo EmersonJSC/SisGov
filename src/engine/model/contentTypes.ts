@@ -142,7 +142,16 @@ export type InitialStateFile = {
   versaoEsquema: 1;
   valores: Record<string, number>;
   /** Cenário que este estado representa (ex.: Brasil 2026). */
-  cenario?: { nome: string; ano?: number };
+  cenario?: {
+    nome: string;
+    ano?: number;
+    /**
+     * Meses que a carga roda sem o jogador antes do turno 0 (V1-07): os
+     * valores declarados são do começo do aquecimento, e a partida começa
+     * onde a simulação parou, com os atrasos já tendo história.
+     */
+    aquecimentoMeses?: number;
+  };
   /**
    * Valor de cada índice ou situação no turno 0 do cenário (D-55). A parte
    * que as leis e a rede não explicam vira o nó visível `contexto:<bolha>`
