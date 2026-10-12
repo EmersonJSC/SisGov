@@ -59,10 +59,14 @@ novo no motor:
 - O país não declara valor para esses nós: sem contexto, quem está
   mobilizado no turno 0 é o que a base diz.
 
-Com o limite comum 60/50 e a satisfação de jan/2025 (V1-08), começam
-mobilizados: confederação da indústria, comércio e serviços, agronegócio,
-mercado financeiro e facções. Frentes evangélicas ficam logo abaixo
-(pressão 59).
+Com o limite comum 60/50 e a satisfação de jan/2025 (V1-08), a conta dá
+mobilizados no turno 0: confederação da indústria (60,8), comércio e
+serviços (62), agronegócio (62), mercado financeiro (60,2) e grandes grupos
+de mídia (60,2). Logo abaixo: frentes evangélicas (59,3) e associações de
+policiais (58,8). Os movimentos sociais ficam entre 42 e 49. Facções e
+povos originários não têm base: a pressão deles vem de índices, e proponho
+calibrar as facções para começar mobilizadas, porque o crime organizado age
+hoje.
 
 ### 3.2 Recursos
 
@@ -158,8 +162,9 @@ efeito.
 1. **Mobilização como situação** (sem mecanismo novo), com o limite comum
    60/50? Recomendo sim. A outra opção é um limite por grupo, que exige um
    número por grupo de alguma fonte.
-2. **Mobilizados no turno 0:** indústria, comércio, agro, mercado e facções
-   (evangélicos por pouco fora). Faz sentido para jan/2025?
+2. **Mobilizados no turno 0:** indústria, comércio, agro, mercado, mídia e
+   facções (evangélicos e policiais por pouco fora). Faz sentido para
+   jan/2025?
 3. **Reaproveitar os eventos que já existem** como ações dos grupos?
    Recomendo sim, para não ter duas greves de servidores.
 4. **Patrocínio:** só o efeito agora e a revelação depois (recomendo), ou
