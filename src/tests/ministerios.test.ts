@@ -3,14 +3,14 @@
  * extinção (leis mudam de pasta ou deixam de existir).
  */
 import { describe, expect, it } from "vitest";
-import estrutura from "../conteudo/paises/brasil/ministerios.json";
+import politica from "../conteudo/paises/brasil/politica.json";
 import {
   extinguirMinisterio,
   validarEstrutura,
   type EstruturaDeGoverno,
 } from "../game/ministerios";
 
-const brasil = estrutura as EstruturaDeGoverno;
+const brasil = politica.ministerios as EstruturaDeGoverno;
 const leis = Object.keys(
   import.meta.glob("../conteudo/mundo/leis/*.json", { eager: true }),
 ).map((caminho) => caminho.split("/").at(-1)!.replace(".json", ""));

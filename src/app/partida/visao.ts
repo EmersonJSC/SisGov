@@ -251,7 +251,7 @@ export function verPartida(partida: Partida): VisaoPartida {
 }
 
 /**
- * Áreas e ministérios do país (D-64). País sem `ministerios.json` (os
+ * Áreas e ministérios do país (D-64). País sem ministérios em `politica.json` (os
  * pacotes de teste) cai no campo `ministerio` de cada lei: uma área por
  * ministério citado.
  */

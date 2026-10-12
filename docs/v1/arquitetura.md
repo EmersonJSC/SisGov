@@ -68,15 +68,23 @@ src/conteudo/
     ocorrencias/     eventos e dilemas do mundo
   paises/
     brasil/
-      pais.json        identidade e características
-      politica.json    mandato, calendário, ministérios
-      economia.json    população, PIB, orçamento de partida
-      leis.json        leis em vigor e valores
-      valores.json     valor inicial dos índices
-      populacao.json   tamanho dos segmentos e força dos grupos de pressão
-      historia.json    abertura e metas do mandato
-      ocorrencias/     eventos e dilemas só deste país
+      pais.json        identidade, cenário e características (versaoEsquema 2)
+      politica.json    ministérios, organização política, estado político, leis eleitorais
+      economia.json    população, PIB, orçamento de partida, limites próprios
+      leis.json        leis em vigor (lei + opção) e valor de cada controle
+      valores.json     valor inicial dos índices e dos estoques
+      populacao.json   perfis da população
+      historia.json    abertura, metas do mandato e lugares do mapa
+  testes/
+    pais-minimo/       país de teste sem litoral; prova que a configuração funciona
 ```
+
+**Carga.** `game/pais/configuracao/expandirPais.ts` lê os sete arquivos, recusa
+característica desconhecida, arquivo ausente e lei em vigor que o país não
+comporta, tira do pacote as leis, eventos, situações e dilemas cujo `requer` o país
+não atende e monta o manifesto e o estado inicial que o motor já conhecia. O motor
+não muda e não vê `requer`. Ocorrências só de um país ficam para quando houver o
+segundo país.
 
 **Fonte única.** As fichas em `docs/fichas/v3/` são a fonte das leis; o JSON em
 `src/conteudo/mundo/leis/` é gerado e não se edita à mão. O verificador roda no

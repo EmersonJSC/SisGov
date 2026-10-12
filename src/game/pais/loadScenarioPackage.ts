@@ -9,6 +9,7 @@ import {
   type ValidationResult,
 } from "../../engine";
 import type { ResolvedPackage } from "../../engine";
+import { expandirPais } from "./configuracao";
 import { expandirFichasV3 } from "./fichaV3";
 
 export type LoadedScenarioPackage = Readonly<{
@@ -22,10 +23,13 @@ export function loadScenarioPackage(
   files: PackageFiles,
   distributedFiles: readonly string[] = [],
 ): ValidationResult<LoadedScenarioPackage> {
-  // Fichas v3 viram lei v2 + consequências antes do motor (V1-05).
-  const expanded = expandirFichasV3(files);
+  // País da versão 1 vira manifesto + estado inicial, já sem o que ele não
+  // comporta (V1-06); depois, fichas v3 viram lei v2 + consequências (V1-05).
+  const pais = expandirPais(manifestPath, files);
+  if (!pais.ok) return pais;
+  const expanded = expandirFichasV3(pais.value.files);
   if (!expanded.ok) return expanded;
-  const resolved = resolvePackage(manifestPath, expanded.value);
+  const resolved = resolvePackage(pais.value.manifestPath, expanded.value);
   if (!resolved.ok) return resolved;
   const coherent = validatePackageCoherence(resolved.value);
   if (!coherent.ok) return coherent;

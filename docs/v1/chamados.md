@@ -157,8 +157,8 @@
 
 **Aceite**
 
-- [ ] Turno 0 do Brasil idêntico ao de antes (teste de comparação)
-- [ ] Evento que pede litoral não sorteia no país de teste sem litoral
+- [x] Turno 0 do Brasil idêntico ao de antes (teste de comparação)
+- [x] Evento que pede litoral não sorteia no país de teste sem litoral
 
 **Você vê.** O Brasil igual, carregado da pasta nova.
 

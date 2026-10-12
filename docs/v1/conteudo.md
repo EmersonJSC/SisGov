@@ -63,6 +63,11 @@ litoral, fronteira terrestre, moeda própria, federação, petróleo, mineraçã
 floresta tropical, seca, terremotos, furacões, povos originários, tecnologia
 nuclear, crime organizado forte, membro de bloco econômico.
 
+O `requer` vai na ficha de lei e no arquivo da ocorrência:
+`"requer": { "exige": ["litoral"], "proibe": ["..."] }`. O país que não atende
+fica sem aquela lei ou ocorrência; uma lei em vigor que o país não atende é erro de
+carga. A lista de ids está em `src/game/pais/configuracao/tipos.ts`.
+
 Criar um país novo é copiar a pasta, trocar características e valores e escolher
 as leis em vigor. Nenhuma lei precisa ser escrita de novo. A versão 1 é jogável
 só com o Brasil; um país de teste prova que a configuração funciona.

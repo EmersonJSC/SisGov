@@ -1,0 +1,10 @@
+{
+  "id": "pais-minimo",
+  "tipo": "pais",
+  "versaoEsquema": 2,
+  "nome": "País mínimo",
+  "cenario": { "nome": "País mínimo de teste", "ano": 2026 },
+  "mundo": "mundo/mundo.json",
+  "unidadeTemporal": "trimestre",
+  "caracteristicas": ["fronteira-terrestre", "moeda-propria"]
+}

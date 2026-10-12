@@ -2,15 +2,19 @@ import type { VariableDefinition } from "../../engine";
 import type { EstruturaDeGoverno } from "../../game/ministerios";
 import type { Resultado } from "./tipos";
 
-/** Ministérios de cada país (D-64), pelo nome da pasta do país. */
+/** Ministérios de cada país (D-64), pelo nome da pasta do país (V1-06). */
 export const ESTRUTURAS: Readonly<Record<string, EstruturaDeGoverno>> =
   Object.fromEntries(
     Object.entries(
-      import.meta.glob<EstruturaDeGoverno>(
-        "../../conteudo/paises/*/ministerios.json",
+      import.meta.glob<{ ministerios?: EstruturaDeGoverno }>(
+        "../../conteudo/paises/*/politica.json",
         { eager: true, import: "default" },
       ),
-    ).map(([caminho, estrutura]) => [caminho.split("/").at(-2)!, estrutura]),
+    ).flatMap(([caminho, politica]) =>
+      politica.ministerios
+        ? [[caminho.split("/").at(-2)!, politica.ministerios]]
+        : [],
+    ),
   );
 
 /** Escala de desenho da bolha: a faixa visual, ou o domínio (SG159). */

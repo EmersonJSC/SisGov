@@ -8,6 +8,9 @@
   "manchete": "Manchas de óleo chegam às praias do litoral do {regiao}",
   "origem": "natureza",
   "nivel": 2,
+  "requer": {
+    "exige": ["litoral"]
+  },
   "avaliacao": "negativa",
   "intervaloMinimoTurnos": 12,
   "gatilho": {

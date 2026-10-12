@@ -317,17 +317,24 @@ def cmd_gerar(args) -> None:
                 acoes.append(f"+ catálogo {caminho}")
 
     pais = c.get("paises", {}).get(args.pais) if args.pais else None
-    estado_path = PAISES / (args.pais or "") / "estado-inicial.json"
-    estado = ler(estado_path) if pais else None
+    # País v2 (V1-06): leis vigentes e controles em leis.json, estoques em
+    # valores.json.
+    leis_path = PAISES / (args.pais or "") / "leis.json"
+    valores_path = PAISES / (args.pais or "") / "valores.json"
+    leis_pais = ler(leis_path) if pais else None
+    valores_pais = ler(valores_path) if pais else None
     if pais:
-        vigentes = {l["lei"] for l in estado["leisVigentes"]}
+        tipos = {v["id"]: v.get("tipo") for v in variaveis["variaveis"]}
+        vigentes = {l["lei"] for l in leis_pais["emVigor"]}
         for lei, opcao in pais["leis"].items():
             if lei not in vigentes:
-                estado["leisVigentes"].append({"lei": lei, "opcao": opcao})
+                leis_pais["emVigor"].append({"lei": lei, "opcao": opcao})
                 acoes.append(f"+ {args.pais}: lei vigente {lei} = {opcao}")
         for bid, valor in pais["valores"].items():
-            if bid not in estado["valores"]:
-                estado["valores"][bid] = valor
+            destino = (valores_pais["estoques"] if tipos.get(bid) == "estoque"
+                       else leis_pais["controles"])
+            if bid not in destino:
+                destino[bid] = valor
                 acoes.append(f"+ {args.pais}: {bid} = {valor}")
 
     if not acoes:
@@ -338,7 +345,8 @@ def cmd_gerar(args) -> None:
         escrever(VARIAVEIS, variaveis)
         escrever(CATALOGO, catalogo)
         if pais:
-            escrever(estado_path, estado)
+            escrever(leis_path, leis_pais)
+            escrever(valores_path, valores_pais)
         print("\nGerado. Rode `npm run rede:documento` e `npm run check`.")
     else:
         print("\nEnsaio: nada foi gravado. Use --aplicar para gerar.")

@@ -1,0 +1,5 @@
+{
+  "tipo": "pais-leis",
+  "emVigor": [{ "lei": "policia-militar", "opcao": "civil" }],
+  "controles": { "nivel_policia_militar": 100 }
+}

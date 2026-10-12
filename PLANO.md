@@ -84,7 +84,7 @@ O código fica menor e com camadas claras. Nada muda para quem joga.
 A ficha de lei v3, a configuração do país e os índices com situações.
 
 - [ ] **V1-05** Ficha de lei v3, verificador e conversor (M). Feito em 12/out, commit local; 3 leis piloto migradas, Brasil após 4 turnos idêntico; aguarda revisão da ficha piloto e o `npm run check` do autor
-- [ ] **V1-06** Configuração do país (M)
+- [ ] **V1-06** Configuração do país (M). Feito em 12/out, commit local; Brasil em 7 arquivos com turno 0 idêntico, país de teste sem litoral; aguarda revisão da abertura em `historia.json` e o `npm run check` do autor
 - [ ] **V1-07** Índices e situações (M)
 
 ### Marco C. População (v0.3)

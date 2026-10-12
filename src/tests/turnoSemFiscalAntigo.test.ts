@@ -13,7 +13,7 @@ import {
 } from "../app/partida";
 import { advancePolicyImplementation } from "../game/advancePolicyImplementation";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
-import estado from "../conteudo/paises/brasil/estado-inicial.json";
+import economiaDoBrasil from "../conteudo/paises/brasil/economia.json";
 
 function nova(): Partida {
   const criada = criarPartida({ ocorrencias: false });
@@ -45,7 +45,7 @@ describe("SG105 — fiscal no turno real", () => {
     const partida = nova();
     expect("fiscal" in partida.game).toBe(false);
     expect("credit" in partida.game).toBe(false);
-    expect("fiscal" in estado).toBe(false);
+    expect("fiscal" in economiaDoBrasil.economia).toBe(false);
     const { contas } = verPartida(partida);
     // a dívida em R$ da tela é a bolha da rede × PIB
     expect(contas.divida).toBeCloseTo(

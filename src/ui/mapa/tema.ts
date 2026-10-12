@@ -7,7 +7,7 @@
 
 /**
  * Cor de cada área do governo (D-64). A ordem do anel, os títulos e os
- * ministérios de cada área vêm do conteúdo do país (`ministerios.json`).
+ * ministérios de cada área vêm do conteúdo do país (`politica.json`, campo `ministerios`).
  */
 const CORES: Readonly<Record<string, string>> = {
   economia: "#2f6bb3",

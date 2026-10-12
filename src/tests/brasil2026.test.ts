@@ -17,7 +17,7 @@ import {
   translateAuthorizedPolicies,
   validatePackageCoherence,
 } from "../engine";
-import estado from "../conteudo/paises/brasil/estado-inicial.json";
+import valoresDoBrasil from "../conteudo/paises/brasil/valores.json";
 
 function nova(): Partida {
   const criada = criarPartida({ ocorrencias: false });
@@ -38,7 +38,7 @@ function turnos(partida: Partida, n: number): Partida[] {
 describe("SG157 fase 3 — Brasil 2026", () => {
   const partida = nova();
   const visao = verPartida(partida);
-  const declarados = estado.indicesIniciais as Record<string, number>;
+  const declarados = valoresDoBrasil.indices as Record<string, number>;
 
   it("o turno 0 tem os índices declarados do cenário", () => {
     expect(visao.cenario).toBe("Brasil 2026");
