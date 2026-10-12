@@ -1,0 +1,321 @@
+import type { ResolvedPackage } from "../../engine";
+import { contextNodeId } from "../../engine/model/lawNodes";
+import { occurrenceCatalog } from "../../game/occurrences";
+import {
+  policyInForce,
+  policyRequirements,
+  policyRevocable,
+  requirementBlock,
+  requirementMet,
+  revocationBlock,
+} from "../../game/policyRequirements";
+import { policyLevelRulesFromContent } from "../../game/policyRulesFromContent";
+import type {
+  Partida,
+  VisaoLei,
+  VisaoExigencia,
+  VisaoLigacao,
+  VisaoPartida,
+  VisaoArea,
+  VisaoEfeitoOcorrencia,
+} from "./tipos";
+import { ESTRUTURAS, escalaDe } from "./comum";
+import { preencher, leisAlteradas } from "./turno";
+import {
+  lerContas,
+  saldoDasLeis,
+  gruposDaPartida,
+  brutoDasSituacoes,
+} from "./contas";
+import { ocorrenciasDaPartida } from "./ocorrencias";
+
+/** Tudo o que a tela precisa desenhar, sem tipos do motor. */
+export function verPartida(partida: Partida): VisaoPartida {
+  const { content, game } = partida;
+  const values = game.execution.values;
+  const saldo = saldoDasLeis(partida, values);
+  const alteradas = leisAlteradas(game, partida.piloto);
+  const states = new Map(
+    game.policies.map((state) => [state.policyDefinitionId, state]),
+  );
+  const exigencias = policyRequirements(content);
+  const nomeDaLei = new Map(content.policies.map((p) => [p.id, p.nome]));
+  const governo = governoDaPartida(content);
+  const lugares = new Map(
+    governo.flatMap((area) =>
+      area.ministerios.flatMap((m) =>
+        m.leis.map((lei) => [lei, { area: area.id, ministerio: m }] as const),
+      ),
+    ),
+  );
+  const lugarDaLei = (id: string) => {
+    const lugar = lugares.get(id);
+    return {
+      ministerio: lugar?.ministerio.nome ?? "",
+      ministerios: lugar ? [lugar.ministerio.nome] : [],
+      ministerioId: lugar?.ministerio.id ?? "",
+      areas: lugar ? [lugar.area] : [],
+    };
+  };
+  const leis = content.policies.map((policy): VisaoLei => {
+    const state = states.get(policy.id);
+    const nivel = state?.implementedLevel ?? 0;
+    const opcoes = policy.controle.opcoes;
+    const nearest = opcoes?.reduce((best, option) =>
+      Math.abs(option.valor - nivel) < Math.abs(best.valor - nivel)
+        ? option
+        : best,
+    );
+    const variable = content.variables.variaveis.find(
+      (item) => item.id === policy.controle.variavel,
+    );
+    const definicao = policyLevelRulesFromContent(content, policy.id);
+    const regras = definicao.ok ? definicao.value.rules : undefined;
+    return {
+      id: policy.id,
+      nome: policy.nome,
+      descricao: policy.descricao ?? "",
+      grupo: policy.grupo,
+      area: policy.area ?? "",
+      ...lugarDaLei(policy.id),
+      processo: policy.processoAutorizacao,
+      nivel,
+      meta: state?.desiredLevel ?? nivel,
+      // limites efetivos: os mesmos que a partida aceita (SG159)
+      minimo: regras?.domain.minimum ?? variable?.dominio.minimo,
+      maximo: regras?.domain.maximum ?? variable?.dominio.maximo,
+      unidade: policy.controle.unidade,
+      opcoes: opcoes?.map(({ id, rotulo, valor }) => ({
+        id,
+        rotulo,
+        valor,
+        saldoAnual: saldo(policy.id, valor),
+      })),
+      opcaoAtual: nearest?.id,
+      saldoAnual: saldo(policy.id),
+      alteradaPorVoce: alteradas.has(policy.id),
+      ...(policy.nivelLegal ? { nivelLegal: policy.nivelLegal } : {}),
+      emVigor: policyInForce(game.policies, policy.id) !== undefined,
+      revogavel:
+        policyRevocable(policy) &&
+        revocationBlock(content, game.policies, policy.id) === undefined,
+      ...bloqueioDa(policy.id, state),
+      ...exigenciasDa(policy.id),
+      filhas: [...exigencias.values()]
+        .flat()
+        .filter((r) => r.parentId === policy.id)
+        .map((r) => {
+          const filha = policyInForce(game.policies, r.childId);
+          return {
+            id: r.childId,
+            nome: nomeDaLei.get(r.childId) ?? r.childId,
+            valores: r.allowedLevels,
+            ativa:
+              filha !== undefined &&
+              (r.baseLevel === undefined ||
+                Math.abs(filha.desiredLevel - r.baseLevel) > 1e-9),
+          };
+        }),
+    };
+  });
+  function bloqueioDa(
+    id: string,
+    state: (typeof game.policies)[number] | undefined,
+  ): { bloqueio?: string } {
+    const emVigor = policyInForce(game.policies, id);
+    // em vigor: a meta atual sempre vale; testa uma meta diferente qualquer
+    const bloqueio = requirementBlock(
+      content,
+      game.policies,
+      id,
+      emVigor ? Number.NaN : (state?.desiredLevel ?? 0),
+    );
+    return bloqueio ? { bloqueio } : {};
+  }
+  function exigenciasDa(id: string): {
+    exige?: VisaoExigencia;
+    exigencias: readonly VisaoExigencia[];
+  } {
+    const lista = (exigencias.get(id) ?? []).map((r): VisaoExigencia => ({
+      lei: r.parentId,
+      nome: nomeDaLei.get(r.parentId) ?? r.parentId,
+      opcoes: r.allowedLabels,
+      base: r.baseLabel ?? "",
+      atendida: requirementMet(r, game.policies),
+      ...(r.reason ? { motivo: r.reason } : {}),
+    }));
+    return lista.length > 0
+      ? { exige: lista[0], exigencias: lista }
+      : { exigencias: lista };
+  }
+  const brutoDe = brutoDasSituacoes(partida, values);
+  const comPiloto = partida.piloto !== game;
+  const pilotoValues = partida.piloto.execution.values;
+  const brutoPiloto = brutoDasSituacoes(partida, pilotoValues);
+  const bolhas = content.variables.variaveis
+    .filter((variable) => variable.tipo !== "controle")
+    .map((variable) => ({
+      id: variable.id,
+      nome: variable.nome,
+      tipo: variable.tipo,
+      unidade: variable.unidade,
+      area: variable.area ?? "",
+      avaliacao: variable.avaliacao,
+      valor:
+        variable.tipo === "situacao"
+          ? brutoDe(variable.id, variable.surgimento ?? 0)
+          : (values[variable.id] ?? 0),
+      ...escalaDe(variable),
+      surgimento: variable.surgimento,
+      ...(values[contextNodeId(variable.id)] !== undefined
+        ? { contexto: values[contextNodeId(variable.id)] }
+        : {}),
+      ...(comPiloto
+        ? {
+            semVoce:
+              variable.tipo === "situacao"
+                ? brutoPiloto(variable.id, variable.surgimento ?? 0)
+                : (pilotoValues[variable.id] ?? 0),
+          }
+        : {}),
+    }));
+  const controlToLaw = new Map(
+    content.policies.map((policy) => [policy.controle.variavel, policy.id]),
+  );
+  // SG106: as setas de ocorrência só aparecem enquanto ela está em curso
+  const catalogo = occurrenceCatalog(content);
+  const emCurso = new Map(
+    (game.occurrences?.active ?? []).map((a) => [a.control, a]),
+  );
+  const ligacoes = content.consequences.flatMap((consequence) => {
+    const parametros = consequence.parametros;
+    const dona = catalogo.ownerByControl.get(consequence.origem);
+    let ocorrencia: VisaoLigacao["ocorrencia"];
+    if (dona) {
+      const ativa = emCurso.get(consequence.origem);
+      if (!ativa) return [];
+      const o = catalogo.byId.get(dona);
+      const opcao = o?.opcoes?.find((x) => x.id === ativa.optionId);
+      ocorrencia = {
+        id: dona,
+        nome: opcao
+          ? `${preencher(o?.nome ?? dona, ativa.vars)}: ${opcao.rotulo}`
+          : preencher(o?.nome ?? dona, ativa.vars),
+      };
+    }
+    // Tabela de pontos (custo por opção): o sinal é o da maior saída.
+    const forte = parametros.pontos
+      ? parametros.pontos.reduce(
+          (best, [, y]) => (Math.abs(y) > Math.abs(best) ? y : best),
+          0,
+        )
+      : Number(parametros.coeficiente ?? 1);
+    const ligacao: VisaoLigacao = {
+      id: consequence.id,
+      origem: controlToLaw.get(consequence.origem) ?? consequence.origem,
+      alvo: consequence.alvo,
+      sinal: forte < 0 ? -1 : 1,
+      // O conteúdo da partida já é mensal (prepareMonthlyContent).
+      atrasoMeses: consequence.atrasoPassos,
+      mecanismo: consequence.mecanismo,
+      ...(ocorrencia ? { ocorrencia } : {}),
+    };
+    // Produto (D-50) e custo que reage (D-52): o outro nó também empurra o
+    // alvo (consumo → receita, dívida → juros, desemprego → gasto), e o
+    // jogador precisa ver essa seta.
+    const outros = [consequence.normalizacao?.fator, consequence.escala?.fator];
+    return [
+      ligacao,
+      ...outros
+        .filter((id): id is string => id !== undefined)
+        .map((id) => ({
+          ...ligacao,
+          id: `${consequence.id}~${id}`,
+          origem: id,
+          mecanismo: "produto",
+        })),
+    ];
+  });
+  return {
+    pais: content.manifest?.nome ?? "",
+    cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
+    turno: game.currentTurn,
+    contas: lerContas(content, values),
+    grupos: gruposDaPartida(partida, values, alteradas),
+    ocorrencias: ocorrenciasDaPartida(partida),
+    governo,
+    leis,
+    bolhas,
+    ligacoes,
+  };
+}
+
+/**
+ * Áreas e ministérios do país (D-64). País sem `ministerios.json` (os
+ * pacotes de teste) cai no campo `ministerio` de cada lei: uma área por
+ * ministério citado.
+ */
+function governoDaPartida(content: ResolvedPackage): VisaoArea[] {
+  const estrutura = ESTRUTURAS[content.manifest?.id ?? ""];
+  if (estrutura) {
+    const existe = new Set(content.policies.map((p) => p.id));
+    return estrutura.areas.map((area) => {
+      const ministerios = estrutura.ministerios
+        .filter((m) => m.area === area.id)
+        .map((m) => ({
+          id: m.id,
+          nome: m.nome,
+          cargo: m.cargo,
+          leis: m.leis.filter((lei) => existe.has(lei)),
+          extinguivel: Boolean(m.extincao),
+        }));
+      return {
+        id: area.id,
+        titulo: area.titulo,
+        curto: area.curto,
+        faz: area.faz,
+        cargo:
+          ministerios.find((m) => m.id === area.coordenador)?.cargo ??
+          ministerios[0]?.cargo ??
+          "",
+        ministerios,
+      };
+    });
+  }
+  const porNome = new Map<string, string[]>();
+  for (const policy of content.policies) {
+    const nome = policy.ministerio ?? policy.area ?? "Governo";
+    porNome.set(nome, [...(porNome.get(nome) ?? []), policy.id]);
+  }
+  return [...porNome].map(([nome, leis]) => {
+    const curto = nome.replace(/^Ministério (da|do|dos|das|de) /, "");
+    return {
+      id: nome,
+      titulo: curto,
+      curto,
+      faz: "",
+      cargo: curto,
+      ministerios: [{ id: nome, nome, cargo: curto, leis, extinguivel: false }],
+    };
+  });
+}
+
+/** Setas que saem do nó de uma ocorrência (o que ela mexe enquanto dura). */
+export function efeitosDoNo(
+  content: ResolvedPackage,
+  controle: string,
+): VisaoEfeitoOcorrencia[] {
+  const variaveis = new Map(content.variables.variaveis.map((v) => [v.id, v]));
+  return content.consequences
+    .filter((c) => c.origem === controle)
+    .map((c) => {
+      const alvo = variaveis.get(c.alvo);
+      return {
+        id: c.alvo,
+        nome: alvo?.nome ?? c.alvo,
+        unidade: alvo?.unidade ?? c.unidade,
+        pontos: c.parametros.coeficiente ?? 0,
+        ...(alvo?.avaliacao ? { avaliacao: alvo.avaliacao } : {}),
+      };
+    });
+}

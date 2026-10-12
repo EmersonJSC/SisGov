@@ -7,6 +7,10 @@ nada de `src/engine/`, `src/game/`, `src/domain/` nem `src/conteudo/`.
 Tudo o que a tela desenha sai de `verPartida`; tudo o que o jogador faz entra
 por `mudarLei`, `responderDilema` e `encerrarTurno`.
 
+Desde o V1-03, `src/app/partida.ts` só reexporta a API. O código fica em
+`src/app/partida/`: `tipos`, `comum`, `criar`, `leis`, `previsao`, `turno`,
+`contas`, `visao` e `ocorrencias`.
+
 ## Funções
 
 | Função                                                  | Entrada                                                                                  | Devolve                                 | Quando usar                                   |
