@@ -38,6 +38,39 @@ export function valorReal(valor: number): string {
   return numero(valor, v < 10 ? 2 : v < 100 ? 1 : 0);
 }
 
+type ComMedida = Readonly<{
+  unidade: string;
+  medida?: Readonly<{ convertida: boolean; zero?: number; cem?: number }>;
+}>;
+
+const escalaReal = (b: ComMedida) =>
+  b.medida?.convertida &&
+  b.medida.zero !== undefined &&
+  b.medida.cem !== undefined
+    ? { zero: b.medida.zero, passo: (b.medida.cem - b.medida.zero) / 100 }
+    : undefined;
+
+/** Valor da bolha como o jogador lê: na medida real quando há (V1-07). */
+export function valorNaTela(b: ComMedida, valor: number): string {
+  const e = escalaReal(b);
+  return e
+    ? valorReal(e.zero + e.passo * valor)
+    : valorDaBolha(valor, b.unidade);
+}
+
+/** Variação em pontos do motor convertida para a medida real, com sinal real. */
+export function variacaoReal(b: ComMedida, delta: number): number {
+  const e = escalaReal(b);
+  return e ? delta * e.passo : delta;
+}
+
+/** Diferença da bolha na medida que a tela usa. */
+export function diferencaNaTela(b: ComMedida, delta: number): string {
+  return escalaReal(b)
+    ? diferenca(variacaoReal(b, delta), "")
+    : diferenca(delta, b.unidade);
+}
+
 /** Diferença curta, com sinal: "+0,4", "−1,2". */
 export function diferenca(valor: number, unidade: string): string {
   const casas = Math.abs(valor) < 0.1 ? 2 : 1;

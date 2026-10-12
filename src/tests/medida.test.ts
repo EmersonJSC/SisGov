@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { valorNaMedida } from "../app/partida/medida";
+import { diferencaNaTela, valorNaTela } from "../ui/mapa/formatos";
 import { validateContentFile } from "../engine";
 
 const variaveis = (medida: unknown, tipo = "calculado") =>
@@ -51,5 +52,17 @@ describe("medida real do índice (V1-07)", () => {
     expect(valorNaMedida({ unidade: "h", zero: 0, cem: 60 }, 50)).toBe(30);
     expect(valorNaMedida({ unidade: "h", zero: 90, cem: 10 }, 25)).toBe(70);
     expect(valorNaMedida({ unidade: "% do PIB" }, 77)).toBe(77);
+  });
+
+  it("a tela mostra a medida real e a variação com o sinal real", () => {
+    const feminicidio = {
+      unidade: "indice_0_100",
+      medida: { convertida: true, zero: 5, cem: 0 },
+    };
+    expect(valorNaTela(feminicidio, 80)).toBe("1");
+    // o motor sobe 10 pontos (melhora): na medida real, caem 0,5
+    expect(diferencaNaTela(feminicidio, 10)).toBe("−0,5");
+    const pobreza = { unidade: "percentual_0_100" };
+    expect(valorNaTela(pobreza, 27.4)).toBe("27,4%");
   });
 });

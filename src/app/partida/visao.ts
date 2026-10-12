@@ -182,6 +182,9 @@ export function verPartida(partida: Partida): VisaoPartida {
               unidade: variable.medida.unidade,
               fontes: variable.medida.fontes ?? [],
               convertida: variable.medida.zero !== undefined,
+              ...(variable.medida.zero !== undefined
+                ? { zero: variable.medida.zero, cem: variable.medida.cem }
+                : {}),
             },
           }
         : {}),

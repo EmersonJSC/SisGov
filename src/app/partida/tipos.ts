@@ -165,6 +165,9 @@ export type VisaoBolha = Readonly<{
     fontes: readonly string[];
     /** Tem balizas: o valor real difere dos pontos do motor. */
     convertida: boolean;
+    /** Medida real nos pontos 0 e 100 do motor (só quando convertida). */
+    zero?: number;
+    cem?: number;
   }>;
   /**
    * Valor que a bolha teria sem nenhuma decisão do jogador (o país no

@@ -29,7 +29,10 @@ import {
   diferenca,
   moeda,
   nivelDaLei,
+  diferencaNaTela,
   valorDaBolha,
+  valorNaTela,
+  variacaoReal,
 } from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
@@ -1166,11 +1169,11 @@ function Regua({ bolha }: { bolha: VisaoBolha }) {
         ) : null}
       </div>
       <div className="regua-legenda">
-        <span>{valorDaBolha(bolha.minimo, bolha.unidade)}</span>
+        <span>{valorNaTela(bolha, bolha.minimo)}</span>
         {surge !== null ? (
-          <span>surge em {valorDaBolha(bolha.entrada!, bolha.unidade)}</span>
+          <span>surge em {valorNaTela(bolha, bolha.entrada!)}</span>
         ) : null}
-        <span>{valorDaBolha(bolha.maximo, bolha.unidade)}</span>
+        <span>{valorNaTela(bolha, bolha.maximo)}</span>
       </div>
     </div>
   );
@@ -1313,7 +1316,7 @@ export function DocumentoBolha({
       <h1 className="titulo-doc">{bolha.nome}</h1>
       <div className="valor-boletim">
         <strong style={{ color: corDaBondade(intensidade.bondade) }}>
-          {valorDaBolha(bolha.valor, bolha.unidade)}
+          {valorNaTela(bolha, bolha.valor)}
         </strong>
         {d !== undefined && Math.abs(d) >= 0.005 ? (
           <span
@@ -1327,10 +1330,17 @@ export function DocumentoBolha({
                 ],
             }}
           >
-            {d > 0 ? "▲" : "▼"} {diferenca(d, bolha.unidade)} no último turno
+            {variacaoReal(bolha, d) > 0 ? "▲" : "▼"} {diferencaNaTela(bolha, d)}{" "}
+            no último turno
           </span>
         ) : null}
       </div>
+      {bolha.medida ? (
+        <p className="nota medida-boletim">
+          {bolha.medida.convertida ? `Em ${bolha.medida.unidade}. ` : ""}
+          Fonte: {bolha.medida.fontes.join("; ")}.
+        </p>
+      ) : null}
       <Regua bolha={bolha} />
       <p className="nota">{avaliacao}.</p>
       {bolha.semVoce !== undefined &&
@@ -1338,13 +1348,13 @@ export function DocumentoBolha({
         (bolha.maximo - bolha.minimo || 1) >=
         0.002 ? (
         <p className="sem-voce-boletim">
-          <b>Sua marca:</b> {bolha.valor > bolha.semVoce ? "+" : "−"}
-          {diferenca(
-            Math.abs(bolha.valor - bolha.semVoce),
-            bolha.unidade,
-          ).slice(1)}
-          . Sem as suas decisões, estaria em{" "}
-          {valorDaBolha(bolha.semVoce, bolha.unidade)}.
+          <b>Sua marca:</b>{" "}
+          {variacaoReal(bolha, bolha.valor - bolha.semVoce) > 0 ? "+" : "−"}
+          {diferencaNaTela(bolha, Math.abs(bolha.valor - bolha.semVoce)).slice(
+            1,
+          )}
+          . Sem as suas decisões, estaria em {valorNaTela(bolha, bolha.semVoce)}
+          .
         </p>
       ) : null}
       {bolha.contexto !== undefined && Math.abs(bolha.contexto) >= 0.05 ? (

@@ -29,7 +29,7 @@ import {
   type Camera,
   type Tela,
 } from "./camera";
-import { diferenca, valorDaBolha } from "./formatos";
+import { diferencaNaTela, valorNaTela, variacaoReal } from "./formatos";
 import {
   RAIO_BASE_BOLHA,
   RAIO_BASE_LEI,
@@ -567,7 +567,7 @@ const NoBolha = memo(function NoBolha({
       style={{ "--bondade": cor } as React.CSSProperties}
       role="button"
       tabIndex={0}
-      aria-label={`${bolha.nome}: ${valorDaBolha(bolha.valor, bolha.unidade)}${situacao && !ativa ? " (ainda não surgiu)" : ""}`}
+      aria-label={`${bolha.nome}: ${valorNaTela(bolha, bolha.valor)}${bolha.medida?.convertida ? ` ${bolha.medida.unidade}` : ""}${situacao && !ativa ? " (ainda não surgiu)" : ""}`}
       aria-pressed={selecionada}
       onPointerEnter={() => onEntrar(bolha.id)}
       onPointerLeave={onSair}
@@ -667,11 +667,11 @@ const NoBolha = memo(function NoBolha({
               fontSize={14}
               textAnchor="middle"
             >
-              {valorDaBolha(bolha.valor, bolha.unidade)}
+              {valorNaTela(bolha, bolha.valor)}
               {mudou ? (
                 <tspan fill={corVariacao} dx={6}>
-                  {variacao! > 0 ? "▲" : "▼"}{" "}
-                  {diferenca(variacao!, bolha.unidade)}
+                  {variacaoReal(bolha, variacao!) > 0 ? "▲" : "▼"}{" "}
+                  {diferencaNaTela(bolha, variacao!)}
                 </tspan>
               ) : null}
             </text>
@@ -680,7 +680,7 @@ const NoBolha = memo(function NoBolha({
       ) : null}
       {etiqueta && sua ? (
         <EtiquetaVariacao
-          texto={`${variacaoVoce! > 0 ? "▲" : "▼"} ${diferenca(variacaoVoce!, bolha.unidade)} · você`}
+          texto={`${variacaoReal(bolha, variacaoVoce!) > 0 ? "▲" : "▼"} ${diferencaNaTela(bolha, variacaoVoce!)} · você`}
           cor={corSua}
           y={-raioVisivel - 2}
           escala={Math.min(3.2, Math.max(0.9, 1.15 / escalaTela))}
@@ -688,7 +688,7 @@ const NoBolha = memo(function NoBolha({
         />
       ) : etiqueta && variacao !== undefined ? (
         <EtiquetaVariacao
-          texto={`${variacao > 0 ? "▲" : "▼"} ${diferenca(variacao, bolha.unidade)}`}
+          texto={`${variacaoReal(bolha, variacao) > 0 ? "▲" : "▼"} ${diferencaNaTela(bolha, variacao)}`}
           cor={corVariacao}
           y={-raioVisivel - 2}
           escala={Math.min(2.2, Math.max(0.6, 0.75 / escalaTela))}
