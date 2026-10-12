@@ -1,7 +1,7 @@
 # Rede: índices, situações, calibragem, sensibilidade e desempenho
 
-> **Status: EM REVISÃO.** Etapa 0 do V1-07. Decisões do autor na seção 8;
-> falta definir o tamanho da seção 9 no V1-07.
+> **Status: APROVADO** pelo autor em 12/out. Etapa 0 do V1-07; decisões na
+> seção 8.
 
 ## 1. O que existe hoje (medido em 12/out, commit `0c613a2`)
 
@@ -252,6 +252,10 @@ O relatório (`npm run rede:contexto`) lista, por índice, o valor real, o que
 a rede dá, a diferença e as entradas atuais. O verificador ganha as regras
 acima com uma trava: o número de violações só pode cair (teste que guarda a
 contagem). Quando chegar a zero, vira erro de carga.
+
+**Tamanho (decisão de 12/out): por área.** O V1-07 entrega o relatório e a
+trava. A limpeza de cada área entra no aceite do chamado de conteúdo dela
+(V1-14 a V1-23).
 
 ## Fontes
 

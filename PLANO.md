@@ -105,7 +105,7 @@ O mandato jogável do começo ao fim: capital político, níveis legais, eleiç�
 
 ### Marco E. Conteúdo (v0.5 a v0.7)
 
-O catálogo de 350 a 400 leis, área por área, eventos, dilemas e o Brasil 2026 completo.
+O catálogo de 350 a 400 leis, área por área, eventos, dilemas e o Brasil 2026 completo. Cada área também zera o contexto dos seus índices e completa as ligações (decisão de 12/out, `docs/v1/desenho/rede.md` seção 9).
 
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)

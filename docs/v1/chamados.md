@@ -176,14 +176,19 @@
 - Lista de cerca de 100 índices com fonte
 - Situação com limite de entrada e de saída no motor
 - Cerca de 20 situações iniciais
+- Grafo compilado (turno abaixo de 20 ms, mesmos números)
+- Cofre separado da dívida, com divisão do superávit por lei
+- Partida que começa em jan/2025 e roda 4 trimestres antes do jogador
+- Relatório de contexto e de ligações, com trava que só deixa a contagem cair
 
 **Não entra**
 
 - Todas as 60 situações (o resto entra com o conteúdo)
+- Zerar o contexto e completar as ligações: vai área por área, nos chamados V1-14 a V1-23
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [ ] Situação entra acima do limite e só sai abaixo do limite menor (teste do motor)
 - [ ] Todo índice tem unidade e fonte
 
@@ -214,7 +219,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [ ] Soma dos pesos dos perfis = 100%
 - [ ] Lei que agrada um segmento sobe a satisfação dele no turno certo
 - [ ] Aprovação inicial do Brasil perto da real (faixa definida no teste)
@@ -242,7 +247,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [ ] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
 - [ ] Cada ação tem efeito em índice ou capital
 
@@ -272,7 +277,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [ ] Ação sem capital suficiente é recusada com motivo
 - [ ] Ganho por turno segue a fórmula documentada (teste)
 
@@ -323,7 +328,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código
+- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [ ] Mesma semente, mesmo resultado
 - [ ] Governo com aprovação muito alta vence e muito baixa perde (teste)
 
@@ -377,6 +382,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -403,6 +409,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -429,6 +436,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -455,6 +463,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -481,6 +490,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -507,6 +517,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -533,6 +544,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -559,6 +571,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -585,6 +598,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -611,6 +625,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
+- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
