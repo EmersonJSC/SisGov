@@ -247,7 +247,7 @@
 
 **Aceite**
 
-- [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
+- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/pressao.md`)
 - [ ] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
 - [ ] Cada ação tem efeito em índice ou capital
 
