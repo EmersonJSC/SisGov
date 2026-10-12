@@ -141,8 +141,8 @@ turno (~25 ms).
 | --- | --- |
 | Ricos | as leis de imposto progressivo (fortunas, herança, dividendos, IR) com o sinal das ligações dos empresários; risco país, juros |
 | Informais e de aplicativo | trabalho por aplicativo, legislação trabalhista, transferência de renda; desemprego, informalidade, renda |
-| Agricultura familiar | reforma agrária, previdência rural, crédito rural, segurança alimentar; produção agro, estiagem |
-| Famílias com filhos | creches, escola em tempo integral, licença parental, transferência de renda; aprendizagem, preço dos alimentos |
+| Agricultura familiar | reforma agrária, previdência rural, segurança alimentar, agrotóxicos; produção agro, estiagem |
+| Famílias com filhos | escola em tempo integral, licença parental, transferência de renda, política de natalidade; aprendizagem, preço dos alimentos |
 | Evangélicos | as leis de costumes (aborto, drogas, casamento, educação domiciliar, laicidade) com o sinal dos conservadores |
 | Católicos | as mesmas leis de costumes com metade do peso; pobreza |
 | Ambientalistas | as leis ambientais e de energia com o sinal dos progressistas; desmatamento, emissões, queimadas |
@@ -179,7 +179,8 @@ o humor dos segmentos, agora os 20.
 
 - Soma dos pesos dos perfis = 100% (erro < 0,01%).
 - Lei que agrada um segmento sobe a satisfação dele no turno certo: por
-  exemplo, subir a creche sobe Famílias com filhos no atraso da ligação.
+  exemplo, subir a escola em tempo integral sobe Famílias
+com filhos no atraso da ligação.
 - Aprovação inicial do Brasil entre 44 e 50.
 
 ## 8. Decisões para você
