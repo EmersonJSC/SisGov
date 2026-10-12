@@ -24,6 +24,7 @@ Todo documento tem um de três status:
 | [`v1/conteudo.md`](v1/conteudo.md) | Regras de conteúdo |
 | [`v1/engenharia.md`](v1/engenharia.md) | Processo de trabalho |
 | [`v1/ideias.md`](v1/ideias.md) | Ideias para depois |
+| [`v1/desenho/`](v1/desenho/README.md) | Desenhos de cada sistema novo, aprovados antes do código |
 
 ## Referência técnica
 

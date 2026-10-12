@@ -172,6 +172,7 @@
 
 **Entra**
 
+- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/rede.md` (calibragem, sensibilidade e desempenho da rede); o código só começa com o desenho aprovado pelo autor
 - Lista de cerca de 100 índices com fonte
 - Situação com limite de entrada e de saída no motor
 - Cerca de 20 situações iniciais
@@ -182,6 +183,7 @@
 
 **Aceite**
 
+- [ ] Desenho aprovado pelo autor antes do código
 - [ ] Situação entra acima do limite e só sai abaixo do limite menor (teste do motor)
 - [ ] Todo índice tem unidade e fonte
 
@@ -200,6 +202,7 @@
 
 **Entra**
 
+- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/populacao.md` (população sintética a partir de dados do IBGE e opinião por perfil); o código só começa com o desenho aprovado pelo autor
 - Os 20 segmentos de conteudo.md 3.1
 - Perfis sintéticos com peso, gerados das distribuições do país
 - Satisfação por segmento e aprovação geral
@@ -211,6 +214,7 @@
 
 **Aceite**
 
+- [ ] Desenho aprovado pelo autor antes do código
 - [ ] Soma dos pesos dos perfis = 100%
 - [ ] Lei que agrada um segmento sobe a satisfação dele no turno certo
 - [ ] Aprovação inicial do Brasil perto da real (faixa definida no teste)
@@ -227,6 +231,7 @@
 
 **Entra**
 
+- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/pressao.md` (atores com recursos, limiar de mobilização e repertório de ações); o código só começa com o desenho aprovado pelo autor
 - Os 20 grupos de conteudo.md 3.2
 - Mobilização por insatisfação da base
 - Ações do repertório como ocorrências (greve, ocupação, campanha, ameaça)
@@ -237,6 +242,7 @@
 
 **Aceite**
 
+- [ ] Desenho aprovado pelo autor antes do código
 - [ ] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
 - [ ] Cada ação tem efeito em índice ou capital
 
@@ -255,6 +261,7 @@
 
 **Entra**
 
+- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/capital.md` (de onde vem o capital político e quanto custa cada ação); o código só começa com o desenho aprovado pelo autor
 - Ganho por turno (aprovação, lua de mel no começo do mandato)
 - Custo por ação definido na ficha da lei
 - Barra de capital na tela
@@ -265,6 +272,7 @@
 
 **Aceite**
 
+- [ ] Desenho aprovado pelo autor antes do código
 - [ ] Ação sem capital suficiente é recusada com motivo
 - [ ] Ganho por turno segue a fórmula documentada (teste)
 
@@ -304,6 +312,7 @@
 
 **Entra**
 
+- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/eleicao.md` (escolha probabilística do voto, abstenção e pesquisas com margem de erro); o código só começa com o desenho aprovado pelo autor
 - Calendário do país
 - Voto por perfil (governo ou oposição, comparecimento)
 - Tela de resultado, novo mandato ou fim de jogo
@@ -314,6 +323,7 @@
 
 **Aceite**
 
+- [ ] Desenho aprovado pelo autor antes do código
 - [ ] Mesma semente, mesmo resultado
 - [ ] Governo com aprovação muito alta vence e muito baixa perde (teste)
 

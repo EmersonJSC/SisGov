@@ -23,7 +23,12 @@ Regras:
    (`docs/v1/ideias.md`), não para o chamado em andamento.
 2. **Chamado G não começa.** É dividido antes.
 3. **Refatorar e mudar comportamento são chamados separados.**
-4. **Na terceira tentativa sem fechar**, o chamado é revisto com o autor: escopo
+4. **Sistema novo começa pelo desenho.** Chamado que cria um sistema (população,
+   pressão, eleição, capital político, calibragem) tem uma etapa 0: pesquisar os
+   métodos usados hoje, com fontes, e escrever `docs/v1/desenho/<tema>.md` com o
+   problema, duas ou três opções, a escolha, as fórmulas (nossas), os dados reais
+   e como testar. O código só começa com o desenho aprovado pelo autor.
+5. **Na terceira tentativa sem fechar**, o chamado é revisto com o autor: escopo
    errado, dependência faltando ou decisão pendente.
 
 ## 2. Pronto
