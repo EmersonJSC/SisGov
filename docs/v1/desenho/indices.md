@@ -18,6 +18,30 @@ Balizas e fontes são propostas minhas a partir de estatísticas públicas; nenh
 
 Além dos índices medidos, cada área pode ter um **pilar**: um índice composto que resume o conjunto (método do *Handbook on constructing composite indicators*, OCDE/JRC). Ele não tem estatística própria: é a média ponderada dos índices da área, com pesos escritos e explicados na ficha da área. Exemplo: pilar Segurança = violência letal, crimes patrimoniais, vitimização e sensação de segurança. A sensação continua sendo um índice medido (pesquisa), uma das partes do pilar. Os pilares entram nos chamados de conteúdo (V1-14 a V1-23), começando por Segurança.
 
+## Pilares por área (proposta, 12/out)
+
+O pilar é o índice que resume a área e aparece na primeira página do
+jornal, na abertura e a cada turno. Hoje o quadro tem 10 índices fixos no
+código (`ui/mapa/jornal.ts`), 4 deles de economia, e 5 áreas sem nenhum.
+Proposta: um pilar por área (saúde e proteção social com dois), marcado no
+conteúdo (`pilar: true` na variável), e o jornal lê dali.
+
+| Área | Pilar | Hoje no jornal? |
+| --- | --- | --- |
+| Segurança e justiça penal | Violência letal (depois: pilar composto Segurança) | sim |
+| Contas, tributos e economia | PIB | sim |
+| Poder e instituições | Aprovação do governo | sim |
+| Direitos e liberdades | Liberdades civis | não |
+| Defesa e mundo | Reputação internacional | sim |
+| Trabalho e mercado | Desemprego | sim |
+| Proteção social e saúde | Pobreza; Saúde da população | pobreza sim |
+| Educação, ciência e cultura | Aprendizagem | não |
+| Meio ambiente, energia e campo | Desmatamento | não |
+| Cidades e transporte | Infraestrutura (média das três) | não |
+
+Saem do quadro, mas continuam na seção Mercado do jornal, que já os lê:
+inflação, taxa de juros, dívida pública e risco país.
+
 ## Resumo
 
 116 índices: 30 manter, 77 converter, 1 composto, 3 juntar, 5 técnico.
