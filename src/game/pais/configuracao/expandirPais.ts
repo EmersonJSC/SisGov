@@ -143,15 +143,16 @@ export function expandirPais(
   const historia = lidos.historia as unknown as HistoriaDoPais;
   const out: Record<string, string> = { ...files };
 
-  // Leis, eventos, situações e dilemas que o país não comporta saem do pacote.
-  // O `requer` das ocorrências sai do arquivo: o motor não o conhece.
-  const filtrar = (paths: readonly string[], ocorrencia: boolean) =>
+  // Leis, eventos, situações, dilemas e ligações da rede que o país não
+  // comporta saem do pacote. O `requer` das ocorrências e das ligações sai
+  // do arquivo: o motor não o conhece.
+  const filtrar = (paths: readonly string[], tirarRequer: boolean) =>
     paths.filter((path) => {
       const arquivo = parse(files[path]);
       const requer = requerDe(arquivo);
       if (!requer) return true;
       if (!atendeRequer(requer, caracteristicas)) return false;
-      if (ocorrencia) {
+      if (tirarRequer) {
         const semRequer: Json = { ...arquivo };
         delete semRequer.requer;
         out[path] = JSON.stringify(semRequer);
@@ -159,7 +160,7 @@ export function expandirPais(
       return true;
     });
   const novoMundo: Json = { ...mundo };
-  for (const lista of ["eventos", "situacoes", "dilemas"])
+  for (const lista of ["eventos", "situacoes", "dilemas", "consequencias"])
     if (Array.isArray(mundo[lista]))
       novoMundo[lista] = filtrar(strings(mundo[lista]), true);
   out[pais.mundo] = JSON.stringify(novoMundo);

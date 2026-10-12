@@ -1,0 +1,17 @@
+{
+  "id": "enchente--producao-agropecuaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "enchente",
+  "alvo": "producao_agropecuaria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.2,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

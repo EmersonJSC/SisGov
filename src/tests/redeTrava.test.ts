@@ -11,7 +11,7 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
  * carga. Detalhe por índice: `npm run rede:contexto`.
  */
 const limites = {
-  indicesSemSaida: 55,
+  indicesSemSaida: 54,
   indicesSemEntrada: 2,
   leisSemModulacao: 1,
   indicesSemMedida: 116,

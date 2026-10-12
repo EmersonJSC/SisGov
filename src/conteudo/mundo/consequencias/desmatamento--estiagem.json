@@ -1,0 +1,20 @@
+{
+  "id": "desmatamento--estiagem",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "requer": {
+    "exige": ["seca"]
+  },
+  "origem": "desmatamento",
+  "alvo": "estiagem",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.4,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

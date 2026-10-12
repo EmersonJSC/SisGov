@@ -7285,6 +7285,62 @@
       "saida": 10
     },
     {
+      "id": "estiagem",
+      "tipo": "situacao",
+      "nome": "Estiagem",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior",
+      "entrada": 30,
+      "saida": 24
+    },
+    {
+      "id": "queimadas",
+      "tipo": "situacao",
+      "nome": "Queimadas",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior",
+      "entrada": 30,
+      "saida": 24
+    },
+    {
+      "id": "crise_cambial",
+      "tipo": "situacao",
+      "nome": "Crise cambial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia, finanças e comércio exterior",
+      "avaliacao": "maior_pior",
+      "entrada": 30,
+      "saida": 24
+    },
+    {
+      "id": "enchente",
+      "tipo": "situacao",
+      "nome": "Enchentes",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Meio ambiente, energia, agro e infraestrutura",
+      "avaliacao": "maior_pior",
+      "entrada": 30,
+      "saida": 24
+    },
+    {
       "id": "reincidencia",
       "tipo": "calculado",
       "nome": "Reincidência criminal",

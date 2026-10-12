@@ -1,0 +1,17 @@
+{
+  "id": "infraestrutura-saneamento--enchente",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "infraestrutura_saneamento",
+  "alvo": "enchente",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 15
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

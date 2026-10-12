@@ -1,0 +1,20 @@
+{
+  "id": "desmatamento--queimadas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "requer": {
+    "exige": ["floresta-tropical"]
+  },
+  "origem": "desmatamento",
+  "alvo": "queimadas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.5,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

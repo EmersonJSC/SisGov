@@ -1,0 +1,17 @@
+{
+  "id": "deficit-habitacional--enchente",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "deficit_habitacional",
+  "alvo": "enchente",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

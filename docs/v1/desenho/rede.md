@@ -117,6 +117,19 @@ entre os dois: fica como está
   (sem requisito). Cada uma tem entrada, saída, as arestas que dela saem e a
   fonte de onde vem a ideia do limite.
 
+**Feito: as 4 novas (12/out).** Todas com entrada 30 e saída 24, pressão
+de índices que já existem, saídas com atraso de um trimestre, e todas
+inativas no Brasil de hoje (pressão entre 11 e 21). As ligações de entrada
+levam `requer` da característica; o país sem ela não as recebe
+(`paisV1.test.ts`). Coeficientes são meus, para a calibragem acertar.
+
+| Situação | Requer | Pressão vem de | Mexe em | De onde vem a ideia do limite |
+| --- | --- | --- | --- | --- |
+| Estiagem | `seca` | desmatamento, qualidade ambiental | produção agro, preço dos alimentos, oferta de energia | Monitor de Secas (ANA): seca moderada ou pior |
+| Queimadas | `floresta-tropical` | desmatamento, estiagem | qualidade ambiental, saúde, reputação, emissões | Inpe (Programa Queimadas): focos acima da média histórica |
+| Crise cambial | `moeda-propria` | risco país, fuga de capitais, reservas (−) | inflação, expectativas, confiança empresarial | Frankel e Rose (1996): queda da moeda de 25% ou mais no ano |
+| Enchentes | nenhum | desmatamento, saneamento (−), déficit habitacional | déficit habitacional, saúde, mobilidade, produção agro | S2iD (Defesa Civil): decretos de emergência por chuva |
+
 **Teste do motor (aceite):** a pressão sobe acima de `entrada` e a situação
 ativa. Ela cai entre os limites e a situação continua ativa. Ela cai abaixo de
 `saida` e a situação desativa. Em seguida, sobe até um valor entre os limites

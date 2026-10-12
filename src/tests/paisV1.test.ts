@@ -39,7 +39,7 @@ describe("configuração do país (V1-06)", () => {
     const valores = p.game.execution.values;
     // V1-07: +3 nós da lei "Destino do resultado fiscal" (controle,
     // eficácia e apoio); os índices continuam iguais.
-    expect(Object.keys(valores)).toHaveLength(993);
+    expect(Object.keys(valores)).toHaveLength(997);
     expect(valores.popularidade_governo).toBeCloseTo(51.41, 6);
     expect(valores.divida_publica).toBe(77);
     expect(valores.inflacao).toBeCloseTo(5, 6);
@@ -72,6 +72,30 @@ describe("configuração do país (V1-06)", () => {
       occurrences: true,
     });
     expect(jogo.ok).toBe(true);
+  });
+
+  it("ligação da rede com requer só entra no país que tem a característica", () => {
+    const entradas = (path: string) => {
+      const r = loadDistributedScenario(path);
+      if (!r.ok) throw new Error("país não carregou");
+      return r.value.graph.relations
+        .filter((rel) => ["estiagem", "crise_cambial"].includes(rel.targetId))
+        .map((rel) => rel.consequenceId)
+        .sort();
+    };
+    // Brasil: seca e moeda própria; país mínimo: só moeda própria.
+    expect(entradas("paises/brasil/pais.json")).toEqual([
+      "desmatamento--estiagem",
+      "fuga-capitais--crise-cambial",
+      "qualidade-ambiental--estiagem",
+      "reservas-internacionais--crise-cambial",
+      "risco-pais--crise-cambial",
+    ]);
+    expect(entradas(MINIMO)).toEqual([
+      "fuga-capitais--crise-cambial",
+      "reservas-internacionais--crise-cambial",
+      "risco-pais--crise-cambial",
+    ]);
   });
 
   it("o motor não recebe o requer da ocorrência", () => {

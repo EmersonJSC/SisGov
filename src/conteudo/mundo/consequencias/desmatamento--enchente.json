@@ -1,0 +1,17 @@
+{
+  "id": "desmatamento--enchente",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "desmatamento",
+  "alvo": "enchente",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.3,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
