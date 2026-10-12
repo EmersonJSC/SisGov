@@ -3752,6 +3752,12 @@ button {
   font-size: 1.2rem;
 }
 
+.jp-indice-unidade {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
 .jp-barra {
   display: block;
   height: 8px;

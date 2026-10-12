@@ -190,7 +190,7 @@
 
 - [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/rede.md`)
 - [x] Situação entra acima do limite e só sai abaixo do limite menor (teste do motor; `situacoes.test.ts`)
-- [ ] Todo índice tem unidade e fonte (lista em `docs/v1/desenho/indices.md`, esperando a revisão do autor; a trava conta os que faltam)
+- [x] Todo índice tem unidade e fonte (`medida` no `variaveis.json`, lista aprovada em `docs/v1/desenho/indices.md`; trava em 0)
 
 **Você vê.** Situações aparecendo e sumindo no jornal.
 

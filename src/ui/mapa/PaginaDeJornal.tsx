@@ -80,6 +80,9 @@ function CartaoIndice({ indice }: { indice: IndiceDoJornal }) {
         <strong>{indice.valor}</strong>
         <Linha serie={indice.serie} cor={cor} />
       </div>
+      {indice.unidadeReal ? (
+        <small className="jp-indice-unidade">{indice.unidadeReal}</small>
+      ) : null}
       <div className="jp-barra" aria-hidden>
         <span style={{ width: `${indice.t * 100}%`, background: cor }} />
       </div>

@@ -11,7 +11,7 @@ import type {
   VisaoGrupo,
   VisaoPartida,
 } from "../../app/partida";
-import { diferenca, valorDaBolha } from "./formatos";
+import { diferenca, valorDaBolha, valorReal } from "./formatos";
 import { efeitoDe, type Efeito } from "./relacoes";
 
 /** Índices da primeira página: os pilares das áreas, na ordem do quadro. */
@@ -26,6 +26,8 @@ export type IndiceDoJornal = Readonly<{
   id: string;
   nome: string;
   valor: string;
+  /** Unidade real quando o valor está convertido (V1-07): "homicídios por 100 mil hab.". */
+  unidadeReal?: string;
   /** "+0,4 p.p."; vazio quando não há edição anterior ou não mudou. */
   variacao: string;
   efeito: Efeito;
@@ -171,7 +173,9 @@ function indices(
       {
         id,
         nome: b.nome,
-        valor: valorDaBolha(b.valor, b.unidade),
+        ...(b.medida?.convertida
+          ? { valor: valorReal(b.medida.valor), unidadeReal: b.medida.unidade }
+          : { valor: valorDaBolha(b.valor, b.unidade) }),
         variacao: mudou ? diferenca(d, b.unidade) : "",
         efeito: mudou ? efeitoDe(Math.sign(d), b.avaliacao) : "neutro",
         sobe: d > 0,

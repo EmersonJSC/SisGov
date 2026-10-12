@@ -5788,7 +5788,13 @@
       },
       "area": "Educação, ciência e cultura",
       "avaliacao": "maior_melhor",
-      "pilar": 9
+      "pilar": 9,
+      "medida": {
+        "unidade": "nota média no PISA (leitura, matemática, ciências)",
+        "zero": 300,
+        "cem": 600,
+        "fontes": ["OCDE PISA", "Inep (Saeb)"]
+      }
     },
     {
       "id": "armas_em_circulacao",
@@ -5800,7 +5806,13 @@
         "maximo": 100
       },
       "area": "Segurança, justiça e drogas",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "armas de fogo civis por 100 hab.",
+        "zero": 0,
+        "cem": 120,
+        "fontes": ["Small Arms Survey", "registros Sinarm/SIGMA"]
+      }
     },
     {
       "id": "arrecadacao",
@@ -5816,7 +5828,11 @@
         "minimo": 0,
         "maximo": 60
       },
-      "resposta": 1
+      "resposta": 1,
+      "medida": {
+        "unidade": "carga tributária bruta (% do PIB)",
+        "fontes": ["Tesouro Nacional", "OCDE Revenue Statistics"]
+      }
     },
     {
       "id": "base_congresso",
@@ -5828,7 +5844,11 @@
         "maximo": 100
       },
       "area": "Casa Civil",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% de deputados que votam com o governo",
+        "tecnico": true
+      }
     },
     {
       "id": "cambio",
@@ -5840,7 +5860,13 @@
         "maximo": 100
       },
       "area": "Finanças",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "câmbio real efetivo (base 100 = média de 10 anos)",
+        "zero": 60,
+        "cem": 160,
+        "fontes": ["Banco Central (IPCA-REER)", "BIS"]
+      }
     },
     {
       "id": "capacidade_defesa",
@@ -5852,7 +5878,13 @@
         "maximo": 100
       },
       "area": "Direitos civis, costumes, imigração, mídia e defesa",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "gasto militar (% do PIB) acumulado em capacidade",
+        "zero": 0,
+        "cem": 5,
+        "fontes": ["SIPRI Military Expenditure"]
+      }
     },
     {
       "id": "capacidade_estatal",
@@ -5864,7 +5896,13 @@
         "maximo": 100
       },
       "area": "Governo",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "eficácia do governo (WGI, −2,5 a +2,5)",
+        "zero": -2.5,
+        "cem": 2.5,
+        "fontes": ["Banco Mundial (Worldwide Governance Indicators)"]
+      }
     },
     {
       "id": "captura_politica",
@@ -5876,7 +5914,13 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "controle da corrupção (WGI)",
+        "zero": 2.5,
+        "cem": -2.5,
+        "fontes": ["Banco Mundial (WGI)", "V-Dem"]
+      }
     },
     {
       "id": "carga_evento_demanda",
@@ -5888,7 +5932,11 @@
         "maximo": 1
       },
       "area": "Saúde",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "demanda extra aberta por um evento",
+        "tecnico": true
+      }
     },
     {
       "id": "cobertura_aps",
@@ -5900,7 +5948,11 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da população coberta pela atenção primária",
+        "fontes": ["Ministério da Saúde (e-Gestor)"]
+      }
     },
     {
       "id": "cobertura_planos_saude",
@@ -5912,7 +5964,11 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "% da população com plano de saúde",
+        "fontes": ["ANS (Sala de Situação)"]
+      }
     },
     {
       "id": "cobertura_previdenciaria",
@@ -5924,7 +5980,11 @@
         "maximo": 100
       },
       "area": "Previdência e assistência social",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% de idosos 65+ que recebem aposentadoria ou pensão",
+        "fontes": ["IBGE PNAD Contínua", "OIT (World Social Protection)"]
+      }
     },
     {
       "id": "cobertura_vacinal",
@@ -5936,7 +5996,11 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "cobertura do calendário infantil (média das vacinas, %)",
+        "fontes": ["PNI/DataSUS", "OMS/UNICEF (WUENIC)"]
+      }
     },
     {
       "id": "cofre",
@@ -5956,6 +6020,10 @@
         "estoque": "divida_publica",
         "sentido": "oposto",
         "teto": 10
+      },
+      "medida": {
+        "unidade": "ativos do fundo soberano / caixa livre (% do PIB)",
+        "fontes": ["Tesouro (conta única)", "SWF Institute"]
       }
     },
     {
@@ -5968,7 +6036,13 @@
         "maximo": 100
       },
       "area": "Tributação",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "horas por ano para pagar tributos (empresa média)",
+        "zero": 100,
+        "cem": 2000,
+        "fontes": ["Banco Mundial Doing Business (série até 2020)"]
+      }
     },
     {
       "id": "concentracao_fundiaria",
@@ -5980,7 +6054,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Gini da distribuição de terras",
+        "zero": 0.3,
+        "cem": 0.9,
+        "fontes": ["IBGE (Censo Agropecuário)"]
+      }
     },
     {
       "id": "concentracao_mercado",
@@ -5992,7 +6072,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de setores com HHI acima de 2.500",
+        "zero": 0,
+        "cem": 60,
+        "fontes": ["Cade", "OCDE (competition indicators)"]
+      }
     },
     {
       "id": "confianca_empresarial",
@@ -6004,7 +6090,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "índice de confiança empresarial (100 = neutro)",
+        "zero": 60,
+        "cem": 140,
+        "fontes": ["FGV/IBRE (ICE)"]
+      }
     },
     {
       "id": "confianca_instituicoes",
@@ -6016,7 +6108,13 @@
         "maximo": 100
       },
       "area": "Governo",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% que confia no Congresso, Justiça e governo (média)",
+        "zero": 5,
+        "cem": 80,
+        "fontes": ["Latinobarómetro", "OCDE Trust Survey"]
+      }
     },
     {
       "id": "conflitos_fundiarios",
@@ -6028,7 +6126,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "conflitos no campo por ano",
+        "zero": 0,
+        "cem": 2500,
+        "fontes": ["CPT (Conflitos no Campo Brasil)"]
+      }
     },
     {
       "id": "consumo",
@@ -6040,7 +6144,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "crescimento do consumo das famílias (% ao ano)",
+        "zero": -6,
+        "cem": 8,
+        "fontes": ["IBGE Contas Nacionais"]
+      }
     },
     {
       "id": "consumo_tabaco_alcool",
@@ -6052,7 +6162,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de adultos fumantes + consumo abusivo de álcool (média)",
+        "zero": 5,
+        "cem": 40,
+        "fontes": ["Vigitel", "OMS"]
+      }
     },
     {
       "id": "corrupcao",
@@ -6064,7 +6180,13 @@
         "maximo": 100
       },
       "area": "Governo",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "100 − nota no Índice de Percepção da Corrupção",
+        "zero": 10,
+        "cem": 90,
+        "fontes": ["Transparência Internacional (IPC)"]
+      }
     },
     {
       "id": "credito",
@@ -6076,7 +6198,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "crédito ao setor privado (% do PIB)",
+        "zero": 20,
+        "cem": 150,
+        "fontes": ["Banco Central", "Banco Mundial"]
+      }
     },
     {
       "id": "crime_organizado",
@@ -6088,7 +6216,13 @@
         "maximo": 100
       },
       "area": "Segurança",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "índice de criminalidade organizada (0 a 10)",
+        "zero": 1,
+        "cem": 9,
+        "fontes": ["Global Organized Crime Index (GI-TOC)"]
+      }
     },
     {
       "id": "crimes_patrimoniais",
@@ -6100,7 +6234,13 @@
         "maximo": 100
       },
       "area": "Segurança, justiça e drogas",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "roubos e furtos registrados por 100 mil hab.",
+        "zero": 0,
+        "cem": 3000,
+        "fontes": ["Anuário Brasileiro de Segurança Pública (FBSP)"]
+      }
     },
     {
       "id": "crise_atendimento",
@@ -6154,7 +6294,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "encargos sobre a folha (% do salário)",
+        "zero": 10,
+        "cem": 100,
+        "fontes": ["OCDE Taxing Wages", "Dieese"]
+      }
     },
     {
       "id": "deficit_habitacional",
@@ -6166,7 +6312,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "déficit habitacional (% dos domicílios)",
+        "zero": 0,
+        "cem": 20,
+        "fontes": ["Fundação João Pinheiro"]
+      }
     },
     {
       "id": "deficit_previdenciario",
@@ -6178,7 +6330,11 @@
         "maximo": 100
       },
       "area": "Previdência e assistência social",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "déficit do RGPS+RPPS (% do PIB)",
+        "fontes": ["Tesouro (RTN)", "Secretaria de Previdência"]
+      }
     },
     {
       "id": "desabastecimento",
@@ -6219,7 +6375,11 @@
       },
       "area": "Trabalho",
       "avaliacao": "maior_pior",
-      "pilar": 6
+      "pilar": 6,
+      "medida": {
+        "unidade": "taxa de desocupação (%)",
+        "fontes": ["IBGE PNAD Contínua"]
+      }
     },
     {
       "id": "desenvolvimento",
@@ -6231,7 +6391,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "IDH (0 a 1)",
+        "zero": 0.4,
+        "cem": 1,
+        "fontes": ["PNUD"]
+      }
     },
     {
       "id": "desigualdade",
@@ -6243,7 +6409,13 @@
         "maximo": 100
       },
       "area": "Desenvolvimento Social",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "índice de Gini da renda domiciliar per capita",
+        "zero": 0.25,
+        "cem": 0.65,
+        "fontes": ["IBGE PNAD Contínua", "Banco Mundial"]
+      }
     },
     {
       "id": "desigualdade_regional",
@@ -6255,7 +6427,13 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "razão do PIB per capita da UF mais rica para a mais pobre",
+        "zero": 1,
+        "cem": 8,
+        "fontes": ["IBGE (PIB dos Municípios/UFs)"]
+      }
     },
     {
       "id": "desinformacao",
@@ -6267,7 +6445,13 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "disseminação de desinformação pelo governo e partidos (V-Dem)",
+        "zero": 0,
+        "cem": 4,
+        "fontes": ["V-Dem (Digital Society Project)"]
+      }
     },
     {
       "id": "desmatamento",
@@ -6280,7 +6464,13 @@
       },
       "area": "Geral",
       "avaliacao": "maior_pior",
-      "pilar": 10
+      "pilar": 10,
+      "medida": {
+        "unidade": "área desmatada por ano (mil km²)",
+        "zero": 0,
+        "cem": 30,
+        "fontes": ["Inpe (Prodes)"]
+      }
     },
     {
       "id": "diferenca_salarial_genero",
@@ -6292,7 +6482,11 @@
         "maximo": 100
       },
       "area": "Direitos civis, costumes, imigração, mídia e defesa",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "diferença de rendimento mulheres/homens (%)",
+        "fontes": ["IBGE PNAD Contínua", "OIT"]
+      }
     },
     {
       "id": "discriminacao",
@@ -6304,7 +6498,13 @@
         "maximo": 100
       },
       "area": "Direitos civis, costumes, imigração, mídia e defesa",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% que relata ter sofrido discriminação no último ano",
+        "zero": 5,
+        "cem": 50,
+        "fontes": ["Pesquisas de vitimização", "Latinobarómetro"]
+      }
     },
     {
       "id": "divida_publica",
@@ -6323,6 +6523,10 @@
       "transbordo": {
         "estoque": "cofre",
         "sentido": "oposto"
+      },
+      "medida": {
+        "unidade": "dívida bruta do governo geral (% do PIB)",
+        "fontes": ["Banco Central (DBGG)", "FMI WEO"]
       }
     },
     {
@@ -6335,7 +6539,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "emissões de GEE (t CO₂e por habitante)",
+        "zero": 0,
+        "cem": 20,
+        "fontes": ["SEEG/Observatório do Clima", "EDGAR"]
+      }
     },
     {
       "id": "endividamento_familias",
@@ -6347,7 +6557,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "dívida das famílias / renda de 12 meses (%)",
+        "zero": 10,
+        "cem": 100,
+        "fontes": ["Banco Central (RNDBF)"]
+      }
     },
     {
       "id": "envelhecimento",
@@ -6359,7 +6575,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "% da população com 65+",
+        "zero": 3,
+        "cem": 30,
+        "fontes": ["IBGE (Projeções da População)"]
+      }
     },
     {
       "id": "epidemia",
@@ -6385,7 +6607,13 @@
         "maximo": 100
       },
       "area": "Educação",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "anos médios de estudo da população 25+",
+        "zero": 2,
+        "cem": 14,
+        "fontes": ["IBGE PNAD Contínua", "Barro-Lee"]
+      }
     },
     {
       "id": "estabilidade_politica",
@@ -6397,7 +6625,13 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "estabilidade política e ausência de violência (WGI)",
+        "zero": -2.5,
+        "cem": 2.5,
+        "fontes": ["Banco Mundial (WGI)"]
+      }
     },
     {
       "id": "evasao_escolar",
@@ -6409,7 +6643,11 @@
         "maximo": 100
       },
       "area": "Educação, ciência e cultura",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de jovens 15–17 fora da escola sem o médio",
+        "fontes": ["IBGE PNAD Contínua", "Inep (Censo Escolar)"]
+      }
     },
     {
       "id": "expectativas_inflacao",
@@ -6421,7 +6659,11 @@
         "maximo": 100
       },
       "area": "Economia, finanças e comércio exterior",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "IPCA esperado 12 meses à frente (%)",
+        "fontes": ["Banco Central (Focus)"]
+      }
     },
     {
       "id": "exportacoes",
@@ -6433,7 +6675,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "exportações de bens e serviços (% do PIB)",
+        "zero": 5,
+        "cem": 60,
+        "fontes": ["IBGE", "Secex/MDIC"]
+      }
     },
     {
       "id": "falta_de_medicos",
@@ -6445,7 +6693,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "médicos por 1.000 hab.",
+        "zero": 5,
+        "cem": 0.2,
+        "fontes": ["CFM (Demografia Médica)", "OMS"]
+      }
     },
     {
       "id": "forca_instituicoes",
@@ -6457,7 +6711,13 @@
         "maximo": 100
       },
       "area": "Instituições",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "índice de democracia liberal (0 a 1)",
+        "zero": 0,
+        "cem": 0.9,
+        "fontes": ["V-Dem (LDI)"]
+      }
     },
     {
       "id": "fuga_capitais",
@@ -6469,7 +6729,13 @@
         "maximo": 100
       },
       "area": "Tributação",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "saída líquida de capital de residentes (% do PIB)",
+        "zero": 0,
+        "cem": 6,
+        "fontes": ["Banco Central (balanço de pagamentos)"]
+      }
     },
     {
       "id": "fuga_de_cerebros",
@@ -6481,7 +6747,13 @@
         "maximo": 100
       },
       "area": "Educação, ciência e cultura",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "doutores brasileiros vivendo fora (% dos titulados)",
+        "zero": 0,
+        "cem": 20,
+        "fontes": ["CGEE", "OCDE (DIOC)"]
+      }
     },
     {
       "id": "gasto_bolso_saude",
@@ -6493,7 +6765,11 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "gasto direto das famílias (% do gasto total em saúde)",
+        "fontes": ["OMS (Global Health Expenditure Database)"]
+      }
     },
     {
       "id": "gasto_publico",
@@ -6509,7 +6785,11 @@
         "minimo": 0,
         "maximo": 60
       },
-      "resposta": 1
+      "resposta": 1,
+      "medida": {
+        "unidade": "despesa primária do governo geral (% do PIB)",
+        "fontes": ["Tesouro Nacional", "FMI Fiscal Monitor"]
+      }
     },
     {
       "id": "golpe_risco",
@@ -6695,7 +6975,11 @@
         "maximo": 100
       },
       "area": "Economia, finanças e comércio exterior",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "investimento direto no país (% do PIB)",
+        "fontes": ["Banco Central (BP)"]
+      }
     },
     {
       "id": "imigracao",
@@ -6707,7 +6991,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "imigrantes residentes (% da população)",
+        "zero": 0,
+        "cem": 30,
+        "fontes": ["ONU DESA (International Migrant Stock)", "SisMigra"]
+      }
     },
     {
       "id": "importacoes",
@@ -6719,7 +7009,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "importações de bens e serviços (% do PIB)",
+        "zero": 5,
+        "cem": 60,
+        "fontes": ["IBGE", "Secex/MDIC"]
+      }
     },
     {
       "id": "impunidade",
@@ -6731,7 +7027,13 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de homicídios sem autoria esclarecida",
+        "zero": 10,
+        "cem": 90,
+        "fontes": ["Instituto Sou da Paz (\"Onde mora a impunidade\")"]
+      }
     },
     {
       "id": "inflacao",
@@ -6743,7 +7045,11 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "IPCA acumulado em 12 meses (%)",
+        "fontes": ["IBGE IPCA"]
+      }
     },
     {
       "id": "informalidade",
@@ -6755,7 +7061,11 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de ocupados informais",
+        "fontes": ["IBGE PNAD Contínua"]
+      }
     },
     {
       "id": "infraestrutura",
@@ -6768,7 +7078,11 @@
       },
       "area": "Infraestrutura",
       "avaliacao": "maior_melhor",
-      "pilar": 11
+      "pilar": 11,
+      "medida": {
+        "unidade": "média de energia, saneamento e transportes",
+        "tecnico": true
+      }
     },
     {
       "id": "infraestrutura_energia",
@@ -6780,7 +7094,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "horas sem energia por domicílio no ano (DEC)",
+        "zero": 40,
+        "cem": 0,
+        "fontes": ["Aneel (DEC/FEC)"]
+      }
     },
     {
       "id": "infraestrutura_saneamento",
@@ -6792,7 +7112,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da população com coleta de esgoto",
+        "zero": 0,
+        "cem": 100,
+        "fontes": ["SNIS/SINISA (Ministério das Cidades)"]
+      }
     },
     {
       "id": "infraestrutura_transportes",
@@ -6804,7 +7130,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da malha rodoviária em estado bom ou ótimo",
+        "zero": 10,
+        "cem": 90,
+        "fontes": ["CNT (Pesquisa de Rodovias)"]
+      }
     },
     {
       "id": "inovacao",
@@ -6816,7 +7148,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "gasto em P&D (% do PIB)",
+        "zero": 0,
+        "cem": 5,
+        "fontes": ["MCTI", "Unesco UIS", "OCDE MSTI"]
+      }
     },
     {
       "id": "inseguranca_alimentar",
@@ -6828,7 +7166,11 @@
         "maximo": 100
       },
       "area": "Previdência e assistência social",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de domicílios em insegurança alimentar moderada ou grave",
+        "fontes": ["IBGE PNAD (EBIA)", "Rede Penssan"]
+      }
     },
     {
       "id": "investimento",
@@ -6840,7 +7182,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "formação bruta de capital fixo (% do PIB)",
+        "zero": 10,
+        "cem": 35,
+        "fontes": ["IBGE Contas Nacionais"]
+      }
     },
     {
       "id": "juros_da_divida",
@@ -6854,7 +7202,11 @@
         "minimo": -10,
         "maximo": 20
       },
-      "resposta": 1
+      "resposta": 1,
+      "medida": {
+        "unidade": "juros nominais da dívida (% do PIB)",
+        "fontes": ["Banco Central (NFSP)"]
+      }
     },
     {
       "id": "juros_explosivos",
@@ -6880,7 +7232,13 @@
         "maximo": 100
       },
       "area": "Segurança, justiça e drogas",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "mortes por intervenção policial por 100 mil hab.",
+        "zero": 0,
+        "cem": 10,
+        "fontes": ["Anuário Brasileiro de Segurança Pública"]
+      }
     },
     {
       "id": "liberdade_civil",
@@ -6893,7 +7251,13 @@
       },
       "area": "Geral",
       "avaliacao": "maior_melhor",
-      "pilar": 4
+      "pilar": 4,
+      "medida": {
+        "unidade": "nota de liberdades civis (0 a 60)",
+        "zero": 0,
+        "cem": 60,
+        "fontes": ["Freedom House (Freedom in the World)"]
+      }
     },
     {
       "id": "litigio_trabalhista",
@@ -6905,7 +7269,13 @@
         "maximo": 100
       },
       "area": "Trabalho e emprego",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "novos processos trabalhistas por 1.000 empregados",
+        "zero": 0,
+        "cem": 60,
+        "fontes": ["TST (Relatório Geral)", "CNJ Justiça em Números"]
+      }
     },
     {
       "id": "lotacao_prisional",
@@ -6917,7 +7287,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "presos por vaga (%)",
+        "zero": 50,
+        "cem": 250,
+        "fontes": ["Sisdepen/Senappen", "World Prison Brief"]
+      }
     },
     {
       "id": "margem_manobra_governo",
@@ -6929,7 +7305,11 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "folga política acumulada do governo",
+        "tecnico": true
+      }
     },
     {
       "id": "mercado_paralelo",
@@ -6955,7 +7335,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "tempo médio casa–trabalho nas metrópoles (min)",
+        "zero": 20,
+        "cem": 90,
+        "fontes": ["IBGE (Censo 2022)", "Moovit"]
+      }
     },
     {
       "id": "natalidade",
@@ -6967,7 +7353,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "taxa de fecundidade total (filhos por mulher)",
+        "zero": 0.8,
+        "cem": 4,
+        "fontes": ["IBGE", "ONU World Population Prospects"]
+      }
     },
     {
       "id": "oferta_energia",
@@ -6979,7 +7371,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "folga de capacidade sobre demanda máxima (%)",
+        "zero": -10,
+        "cem": 40,
+        "fontes": ["ONS", "EPE (Balanço Energético Nacional)"]
+      }
     },
     {
       "id": "onda_violencia",
@@ -7005,7 +7403,13 @@
         "maximo": 100
       },
       "area": "Trabalho",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% de 15 a 29 anos que nem estudam nem trabalham",
+        "zero": 40,
+        "cem": 5,
+        "fontes": ["IBGE (Síntese de Indicadores Sociais)", "OCDE NEET"]
+      }
     },
     {
       "id": "participacao_eleitoral",
@@ -7017,7 +7421,11 @@
         "maximo": 100
       },
       "area": "Instituições, Estado e sistema político",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "comparecimento na última eleição nacional (%)",
+        "fontes": ["TSE", "IDEA Voter Turnout"]
+      }
     },
     {
       "id": "participacao_trabalho_cuidadoras",
@@ -7029,7 +7437,13 @@
         "maximo": 100
       },
       "area": "Trabalho",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "taxa de participação das mulheres 25–54 anos (%)",
+        "zero": 30,
+        "cem": 90,
+        "fontes": ["IBGE PNAD Contínua", "OIT"]
+      }
     },
     {
       "id": "participacao_trabalho_idosos",
@@ -7041,7 +7455,11 @@
         "maximo": 100
       },
       "area": "Previdência e assistência social",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% de 65+ ocupados",
+        "fontes": ["IBGE PNAD Contínua", "OCDE"]
+      }
     },
     {
       "id": "pib",
@@ -7054,7 +7472,13 @@
       },
       "area": "Economia",
       "avaliacao": "maior_melhor",
-      "pilar": 2
+      "pilar": 2,
+      "medida": {
+        "unidade": "crescimento real do PIB (% ao ano)",
+        "zero": -8,
+        "cem": 10,
+        "fontes": ["IBGE Contas Nacionais"]
+      }
     },
     {
       "id": "pobreza",
@@ -7067,7 +7491,11 @@
       },
       "area": "Desenvolvimento Social",
       "avaliacao": "maior_pior",
-      "pilar": 7
+      "pilar": 7,
+      "medida": {
+        "unidade": "% abaixo da linha de US$ 6,85/dia PPC",
+        "fontes": ["IBGE (Síntese de Indicadores Sociais)", "Banco Mundial"]
+      }
     },
     {
       "id": "polarizacao",
@@ -7079,7 +7507,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "polarização política (V-Dem, 0 a 4)",
+        "zero": 0,
+        "cem": 4,
+        "fontes": ["V-Dem (v2cacamps)"]
+      }
     },
     {
       "id": "populacao_de_rua",
@@ -7091,7 +7525,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "pessoas em situação de rua por 100 mil hab.",
+        "zero": 0,
+        "cem": 300,
+        "fontes": ["CadÚnico/MDHC", "Ipea"]
+      }
     },
     {
       "id": "popularidade_governo",
@@ -7104,7 +7544,8 @@
       },
       "area": "Grupos sociais",
       "avaliacao": "maior_melhor",
-      "pilar": 3
+      "pilar": 3,
+      "medida": { "unidade": "% que aprova o governo", "tecnico": true }
     },
     {
       "id": "poupanca_domestica",
@@ -7116,7 +7557,11 @@
         "maximo": 100
       },
       "area": "Previdência e assistência social",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "poupança bruta nacional (% do PIB)",
+        "fontes": ["IBGE Contas Nacionais"]
+      }
     },
     {
       "id": "preco_alimentos",
@@ -7128,7 +7573,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "IPCA alimentação no domicílio em 12 meses (%)",
+        "zero": -5,
+        "cem": 25,
+        "fontes": ["IBGE IPCA"]
+      }
     },
     {
       "id": "preco_energia",
@@ -7140,7 +7591,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "tarifa residencial média (R$/MWh de 2025)",
+        "zero": 300,
+        "cem": 1500,
+        "fontes": ["Aneel"]
+      }
     },
     {
       "id": "preco_medicamentos",
@@ -7152,7 +7609,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "variação real do preço de remédios (% ao ano)",
+        "zero": -5,
+        "cem": 15,
+        "fontes": ["IBGE IPCA (produtos farmacêuticos)", "CMED"]
+      }
     },
     {
       "id": "pressao_hospitalar",
@@ -7164,7 +7627,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "taxa de ocupação de leitos SUS (%)",
+        "zero": 40,
+        "cem": 110,
+        "fontes": ["DataSUS (SIH/CNES)"]
+      }
     },
     {
       "id": "producao_agropecuaria",
@@ -7176,7 +7645,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "crescimento real do valor bruto da produção (% ao ano)",
+        "zero": -15,
+        "cem": 15,
+        "fontes": ["Mapa (VBP)", "IBGE (PAM/PPM)"]
+      }
     },
     {
       "id": "producao_mineral",
@@ -7188,7 +7663,13 @@
         "maximo": 100
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "produção de petróleo (mil barris/dia equivalentes)",
+        "zero": 0,
+        "cem": 6000,
+        "fontes": ["ANP", "ANM"]
+      }
     },
     {
       "id": "produtividade",
@@ -7200,7 +7681,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "PIB por hora trabalhada (US$ PPC)",
+        "zero": 5,
+        "cem": 80,
+        "fontes": ["Penn World Table", "Conference Board"]
+      }
     },
     {
       "id": "protecao_efetiva_mulheres",
@@ -7212,7 +7699,13 @@
         "maximo": 100
       },
       "area": "Mulheres",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "feminicídios por 100 mil mulheres",
+        "zero": 5,
+        "cem": 0,
+        "fontes": ["Anuário Brasileiro de Segurança Pública", "SIM"]
+      }
     },
     {
       "id": "protestos",
@@ -7238,7 +7731,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "nota no Environmental Performance Index (0 a 100)",
+        "zero": 20,
+        "cem": 80,
+        "fontes": ["Yale EPI"]
+      }
     },
     {
       "id": "qualidade_de_vida",
@@ -7250,7 +7749,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "IDH (0 a 1)",
+        "zero": 0.4,
+        "cem": 1,
+        "fontes": ["PNUD (Relatório de Desenvolvimento Humano)"]
+      }
     },
     {
       "id": "qualificacao_trabalho",
@@ -7262,7 +7767,13 @@
         "maximo": 100
       },
       "area": "Trabalho",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% dos ocupados com ensino médio completo",
+        "zero": 10,
+        "cem": 95,
+        "fontes": ["IBGE PNAD Contínua"]
+      }
     },
     {
       "id": "rebeliao_presidios",
@@ -7358,7 +7869,13 @@
         "maximo": 100
       },
       "area": "Segurança, justiça e drogas",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de egressos que voltam ao sistema em 5 anos",
+        "zero": 10,
+        "cem": 70,
+        "fontes": ["Depen/UFPE (2022)", "estudos do CNJ"]
+      }
     },
     {
       "id": "renda_familias",
@@ -7370,7 +7887,13 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "rendimento domiciliar per capita real (R$ de 2025)",
+        "zero": 300,
+        "cem": 6000,
+        "fontes": ["IBGE PNAD Contínua"]
+      }
     },
     {
       "id": "reputacao_internacional",
@@ -7383,7 +7906,13 @@
       },
       "area": "Geral",
       "avaliacao": "maior_melhor",
-      "pilar": 5
+      "pilar": 5,
+      "medida": {
+        "unidade": "nota de imagem do país (0 a 100)",
+        "zero": 0,
+        "cem": 100,
+        "fontes": ["Anholt-Ipsos Nation Brands Index", "Pew Global Attitudes"]
+      }
     },
     {
       "id": "reservas_internacionais",
@@ -7395,7 +7924,11 @@
         "maximo": 100
       },
       "area": "Finanças",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "reservas internacionais (% do PIB)",
+        "fontes": ["Banco Central"]
+      }
     },
     {
       "id": "resultado_fiscal",
@@ -7409,7 +7942,11 @@
         "minimo": -20,
         "maximo": 20
       },
-      "resposta": 1
+      "resposta": 1,
+      "medida": {
+        "unidade": "resultado primário (% do PIB)",
+        "fontes": ["Banco Central (NFSP)", "Tesouro"]
+      }
     },
     {
       "id": "risco_pais",
@@ -7421,7 +7958,13 @@
         "maximo": 100
       },
       "area": "Finanças",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "spread soberano (pontos-base)",
+        "zero": 50,
+        "cem": 1500,
+        "fontes": ["JP Morgan EMBI", "CDS 5 anos"]
+      }
     },
     {
       "id": "rotatividade_emprego",
@@ -7433,7 +7976,11 @@
         "maximo": 100
       },
       "area": "Trabalho e emprego",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "taxa de rotatividade anual do emprego formal (%)",
+        "fontes": ["Caged/Rais", "Dieese"]
+      }
     },
     {
       "id": "saude_populacao",
@@ -7446,7 +7993,13 @@
       },
       "area": "Saúde",
       "avaliacao": "maior_melhor",
-      "pilar": 8
+      "pilar": 8,
+      "medida": {
+        "unidade": "expectativa de vida ao nascer (anos)",
+        "zero": 50,
+        "cem": 85,
+        "fontes": ["IBGE (Tábuas de Mortalidade)", "OMS"]
+      }
     },
     {
       "id": "segregacao_escolar",
@@ -7458,7 +8011,13 @@
         "maximo": 100
       },
       "area": "Educação, ciência e cultura",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "índice de dissimilaridade socioeconômica entre escolas",
+        "zero": 0,
+        "cem": 0.7,
+        "fontes": ["OCDE PISA (isolation/dissimilarity)"]
+      }
     },
     {
       "id": "sensacao_seguranca",
@@ -7470,7 +8029,13 @@
         "maximo": 100
       },
       "area": "Segurança",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% que se sente seguro andando à noite no bairro",
+        "zero": 20,
+        "cem": 95,
+        "fontes": ["Gallup Law and Order", "PNAD 2021 (módulo vitimização)"]
+      }
     },
     {
       "id": "sofrimento_mental",
@@ -7482,7 +8047,13 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de adultos com diagnóstico de depressão",
+        "zero": 2,
+        "cem": 20,
+        "fontes": ["IBGE PNS", "OMS"]
+      }
     },
     {
       "id": "sonegacao",
@@ -7494,7 +8065,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "hiato de conformidade tributária (% da arrecadação potencial)",
+        "zero": 5,
+        "cem": 40,
+        "fontes": ["Sindifisco/IBPT", "FMI (tax gap)"]
+      }
     },
     {
       "id": "taxa_juros",
@@ -7506,7 +8083,11 @@
         "maximo": 100
       },
       "area": "Finanças",
-      "avaliacao": "neutra"
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "taxa básica de juros (% ao ano)",
+        "fontes": ["Banco Central (Selic)"]
+      }
     },
     {
       "id": "tensao_internacional",
@@ -7518,7 +8099,11 @@
         "maximo": 100
       },
       "area": "Direitos e Defesa",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "clima externo do país (sem estatística única)",
+        "tecnico": true
+      }
     },
     {
       "id": "trabalho_infantil",
@@ -7530,7 +8115,11 @@
         "maximo": 100
       },
       "area": "Trabalho e emprego",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de 5 a 17 anos em trabalho infantil",
+        "fontes": ["IBGE PNAD Contínua", "OIT/UNICEF"]
+      }
     },
     {
       "id": "transparencia_fiscal_internacional",
@@ -7542,7 +8131,13 @@
         "maximo": 100
       },
       "area": "Tributação",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "nota no Global Forum (troca de informações), 0 a 4 níveis",
+        "zero": 0,
+        "cem": 4,
+        "fontes": ["OCDE Global Forum"]
+      }
     },
     {
       "id": "turismo",
@@ -7554,7 +8149,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "chegadas de turistas estrangeiros por 100 hab.",
+        "zero": 0,
+        "cem": 100,
+        "fontes": ["Embratur", "ONU Turismo"]
+      }
     },
     {
       "id": "uso_drogas",
@@ -7566,7 +8167,13 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de adultos que usaram droga ilícita no último ano",
+        "zero": 0,
+        "cem": 20,
+        "fontes": ["UNODC World Drug Report", "LENAD/Fiocruz"]
+      }
     },
     {
       "id": "vicio_em_apostas",
@@ -7578,7 +8185,13 @@
         "maximo": 100
       },
       "area": "Direitos civis, costumes, imigração, mídia e defesa",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% de adultos com aposta problemática",
+        "zero": 0,
+        "cem": 10,
+        "fontes": ["Datafolha/LENAD", "Banco Central (Pix para bets)"]
+      }
     },
     {
       "id": "violencia_letal",
@@ -7591,7 +8204,11 @@
       },
       "area": "Segurança",
       "avaliacao": "maior_pior",
-      "pilar": 1
+      "pilar": 1,
+      "medida": {
+        "unidade": "homicídios por 100 mil hab.",
+        "fontes": ["SIM/DATASUS", "Atlas da Violência (Ipea/FBSP)"]
+      }
     },
     {
       "id": "vitalidade_cultural",
@@ -7603,7 +8220,13 @@
         "maximo": 100
       },
       "area": "Educação, ciência e cultura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da população que frequentou atividade cultural no ano",
+        "zero": 10,
+        "cem": 90,
+        "fontes": ["IBGE (Sistema de Informações e Indicadores Culturais)"]
+      }
     }
   ]
 }

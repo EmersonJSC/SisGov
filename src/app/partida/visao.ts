@@ -181,6 +181,7 @@ export function verPartida(partida: Partida): VisaoPartida {
               valor: valorNaMedida(variable.medida, values[variable.id] ?? 0),
               unidade: variable.medida.unidade,
               fontes: variable.medida.fontes ?? [],
+              convertida: variable.medida.zero !== undefined,
             },
           }
         : {}),

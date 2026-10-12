@@ -52,6 +52,12 @@ describe("jornal", () => {
       "infraestrutura",
     ]);
     expect(pilaresDoJornal(verPartida(criada.value))).toHaveLength(11);
+    // medida real (V1-07): convertida mostra a unidade; mantida, não
+    const pib = edicao.indices.find((i) => i.id === "pib")!;
+    expect(pib.unidadeReal).toBe("crescimento real do PIB (% ao ano)");
+    const letal = edicao.indices.find((i) => i.id === "violencia_letal")!;
+    expect(letal.unidadeReal).toBeUndefined();
+    expect(letal.valor).toMatch(/por 100 mil$/);
     // sem edição anterior, nada "mudou"
     expect(edicao.indices.every((i) => i.variacao === "")).toBe(true);
     const secoes = new Set(edicao.opinioes.map((o) => o.secao));

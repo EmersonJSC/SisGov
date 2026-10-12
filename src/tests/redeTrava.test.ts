@@ -13,7 +13,7 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 const limites = {
   indicesSemEntrada: 2,
   leisSemModulacao: 1,
-  indicesSemMedida: 116,
+  indicesSemMedida: 0,
   contextoAcimaDe5: 109,
   contextoAcimaDe25: 67,
   contextoAcimaDe50: 28,

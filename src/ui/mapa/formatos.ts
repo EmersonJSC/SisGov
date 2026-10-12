@@ -32,6 +32,12 @@ export function valorDaBolha(valor: number, unidade: string): string {
   }
 }
 
+/** Valor numa medida real (V1-07): casas conforme o tamanho do número. */
+export function valorReal(valor: number): string {
+  const v = Math.abs(valor);
+  return numero(valor, v < 10 ? 2 : v < 100 ? 1 : 0);
+}
+
 /** Diferença curta, com sinal: "+0,4", "−1,2". */
 export function diferenca(valor: number, unidade: string): string {
   const casas = Math.abs(valor) < 0.1 ? 2 : 1;
