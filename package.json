@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "check": "npm run format:check && npm run lint && npm run build && npm test",
     "rede:documento": "vite-node scripts/rede/documento.ts",
-    "rede:simular": "vite-node scripts/rede/simular.ts"
+    "rede:simular": "vite-node scripts/rede/simular.ts",
+    "fichas:migracao": "vite-node scripts/fichas/migracao.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

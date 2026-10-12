@@ -45,7 +45,8 @@ Todo documento tem um de três status:
 
 Tudo em [`desativado/`](desativado/LEIA-ME.md), com o motivo e o substituto de cada
 arquivo. Também estão desativadas, mas continuam no lugar porque os scripts ainda
-as leem, as fichas v1 e v2 em [`fichas/`](fichas/LEIA-ME.md). Saem no V1-05.
+as leem, as fichas v1 e v2 em [`fichas/`](fichas/LEIA-ME.md). Saem quando a última
+área migrar para a ficha v3 ([`fichas/v3/`](fichas/v3/README.md)).
 
 ## Fora do git
 

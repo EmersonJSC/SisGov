@@ -6,7 +6,7 @@
  */
 import { writeFileSync } from "node:fs";
 import { createExecution, type GraphRelation } from "../../src/engine";
-import { loadDistributedScenario } from "../../src/scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../../src/game/pais/loadScenarioPackage";
 
 const loaded = loadDistributedScenario("paises/brasil/pais.json");
 if (!loaded.ok) throw new Error(JSON.stringify(loaded.diagnostics, null, 2));

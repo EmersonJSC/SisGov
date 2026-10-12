@@ -18,9 +18,17 @@ function load(path: string) {
 it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional", () => {
   const paths = Object.keys(worldFiles);
   expect(paths.length).toBeGreaterThan(20);
-  for (const [path, text] of Object.entries(worldFiles))
+  for (const [path, raw] of Object.entries(worldFiles)) {
+    // Ficha v3 (V1-05): a história e as fontes citam países de propósito
+    // (conteudo.md 1.2); o resto da ficha continua neutro.
+    const json = JSON.parse(raw) as Record<string, unknown>;
+    const text =
+      json.versaoEsquema === 3
+        ? JSON.stringify({ ...json, historia: undefined, fontes: undefined })
+        : raw;
     for (const forbidden of [/brasil/i, /moeda_milhoes/, /\bSUS\b/, /gov\.br/])
       expect(forbidden.test(text), `${path} cita ${forbidden}`).toBe(false);
+  }
 });
 
 it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {

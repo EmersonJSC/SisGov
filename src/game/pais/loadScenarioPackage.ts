@@ -9,6 +9,7 @@ import {
   type ValidationResult,
 } from "../../engine";
 import type { ResolvedPackage } from "../../engine";
+import { expandirFichasV3 } from "./fichaV3";
 
 export type LoadedScenarioPackage = Readonly<{
   definition: ResolvedPackage;
@@ -21,7 +22,10 @@ export function loadScenarioPackage(
   files: PackageFiles,
   distributedFiles: readonly string[] = [],
 ): ValidationResult<LoadedScenarioPackage> {
-  const resolved = resolvePackage(manifestPath, files);
+  // Fichas v3 viram lei v2 + consequências antes do motor (V1-05).
+  const expanded = expandirFichasV3(files);
+  if (!expanded.ok) return expanded;
+  const resolved = resolvePackage(manifestPath, expanded.value);
   if (!resolved.ok) return resolved;
   const coherent = validatePackageCoherence(resolved.value);
   if (!coherent.ok) return coherent;

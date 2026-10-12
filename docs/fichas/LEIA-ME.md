@@ -1,8 +1,8 @@
 # Fichas v1 e v2
 
 > **Status: DESATIVADO.** Não escreva leis neste formato. O formato da versão 1 é
-> a ficha v3, descrita em [`docs/v1/conteudo.md`](../v1/conteudo.md), que ficará em
-> `docs/fichas/v3/` a partir do chamado V1-05.
+> a ficha v3, descrita em [`v3/README.md`](v3/README.md). Desde a V1-05,
+> `scripts/fichas/converter.py` se recusa a rodar quando o catálogo tem ficha v3.
 
 Os arquivos desta pasta continuam aqui só porque os scripts de `scripts/fichas/`
 ainda os leem para gerar o conteúdo atual do jogo:

@@ -35,7 +35,8 @@ antes.
 | `historia` | Países que usam cada opção e o caso brasileiro |
 | `fontes` | Pelo menos uma, com link, para os números |
 
-O JSON do jogo é gerado da ficha. O verificador recusa ficha sem fonte, com
+O JSON do jogo é gerado da ficha (detalhes do formato em
+`docs/fichas/v3/README.md`). O verificador recusa ficha sem fonte, com
 efeito em índice inexistente, com nome de programa de um país no texto ou com
 travessão.
 

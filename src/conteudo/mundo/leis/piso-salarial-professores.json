@@ -1,13 +1,12 @@
 {
   "id": "piso-salarial-professores",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 3,
   "nome": "Piso salarial dos professores",
   "descricao": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é em relação a outras profissões de nível superior.",
   "area": "Educação, ciência e cultura",
   "ministerio": "Ministério da Educação",
-  "processoAutorizacao": "lei-ordinaria",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_piso_salarial_professores",
     "unidade": "nivel_escopo",
@@ -34,18 +33,110 @@
       }
     ]
   },
-  "consequencias": [
-    "piso-salarial-professores--aprendizagem",
-    "piso-salarial-professores--greve-de-professores",
-    "piso-salarial-professores--desigualdade",
-    "piso-salarial-professores--custo-trabalhista",
-    "piso-salarial-professores--gasto-publico",
-    "piso-salarial-professores--grupo-empresarios",
-    "piso-salarial-professores--grupo-jovens",
-    "piso-salarial-professores--grupo-trabalhadores"
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "efeitos": [
+    {
+      "alvo": "aprendizagem",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": -0.0
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "greve_de_professores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0.0
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "desigualdade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.04477612,
+        "limiar": 33,
+        "direcao": "acima"
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "custo_trabalhista",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.3],
+          [67, 0.7],
+          [100, 1.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel"
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "historia": {
+    "opcoes": {
+      "sem-piso-nacional": ["Estados Unidos"],
+      "piso-nacional-minimo": ["Brasil"],
+      "carreira-nacional": ["França", "Coreia do Sul"],
+      "salario-de-elite": ["Luxemburgo"]
+    },
+    "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 11.738/2008, piso salarial profissional nacional do magistério",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
+      "usadoPara": "opção vigente no Brasil"
+    },
+    {
+      "titulo": "OCDE, Education at a Glance (salários de professores por país)",
+      "url": "https://www.oecd.org/education/education-at-a-glance/",
+      "usadoPara": "países por opção"
+    }
+  ]
 }

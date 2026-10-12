@@ -131,9 +131,9 @@
 
 **Aceite**
 
-- [ ] As três leis piloto se comportam como antes no turno (teste)
-- [ ] Ficha sem fonte é recusada com mensagem clara
-- [ ] Relatório mostra quantas leis faltam migrar
+- [x] As três leis piloto se comportam como antes no turno (teste)
+- [x] Ficha sem fonte é recusada com mensagem clara
+- [x] Relatório mostra quantas leis faltam migrar
 
 **Você vê.** Nada novo; as três leis piloto continuam iguais.
 

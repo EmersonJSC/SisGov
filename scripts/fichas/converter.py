@@ -799,5 +799,19 @@ def main(aplicar: bool) -> None:
     print("Gravado.")
 
 
+def recusar_se_ha_ficha_v3() -> None:
+    """V1-05: o catálogo já tem fichas v3, que este conversor apagaria."""
+    v3 = sorted(
+        p.stem for p in Path("src/conteudo/mundo/leis").glob("*.json")
+        if json.loads(p.read_text(encoding="utf-8")).get("versaoEsquema") == 3
+    )
+    if v3:
+        raise SystemExit(
+            "Formato desativado: o catálogo já tem fichas v3 "
+            f"({', '.join(v3)}). Veja docs/fichas/v3/README.md."
+        )
+
+
 if __name__ == "__main__":
+    recusar_se_ha_ficha_v3()
     main("--aplicar" in sys.argv)

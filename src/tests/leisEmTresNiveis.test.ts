@@ -19,6 +19,20 @@ import {
   type PolicyFile,
   type ResolvedPackage,
 } from "../engine";
+import { relatorioDeMigracao } from "../game/pais/fichaV3";
+
+const fichasV3 = relatorioDeMigracao(
+  Object.fromEntries(
+    Object.entries(
+      import.meta.glob<string>("../conteudo/mundo/**/*.json", {
+        eager: true,
+        query: "?raw",
+        import: "default",
+      }),
+    ).map(([path, text]) => [path.slice("../conteudo/".length), text]),
+  ),
+  "mundo/catalogo-leis.json",
+);
 
 type Ajuste = Partial<Pick<PolicyFile, "nivelLegal" | "revogavel" | "requer">>;
 
@@ -90,9 +104,13 @@ describe("SG161 — Segurança em três níveis", () => {
     );
   });
 
-  it("derivada tem no máximo 3 opções", () => {
+  it("derivada do formato antigo tem no máximo 3 opções", () => {
+    // Ficha v3 segue conteudo.md 1.1 (lei com 2 a 5 opções), conferida pelo
+    // verificador da ficha (V1-05).
+    const v3 = new Set(fichasV3.migradas);
     for (const l of verPartida(partida).leis)
-      if (l.nivelLegal) expect(l.opcoes?.length ?? 0, l.id).toBeLessThan(4);
+      if (l.nivelLegal && !v3.has(l.id))
+        expect(l.opcoes?.length ?? 0, l.id).toBeLessThan(4);
   });
 });
 

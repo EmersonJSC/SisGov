@@ -12,7 +12,7 @@ export {
   type Contribution,
 } from "./mechanisms/calculateContribution";
 export { combineCalculatedValue } from "./mechanisms/combineCalculatedValue";
-export { updateStock } from "./mechanisms/updateStock";
+export { rateUnitFor, updateStock } from "./mechanisms/updateStock";
 export { applyGradualResponse } from "./mechanisms/applyGradualResponse";
 export { evaluateCondition } from "./mechanisms/evaluateCondition";
 export { evaluateSituation } from "./runtime/evaluateSituation";
