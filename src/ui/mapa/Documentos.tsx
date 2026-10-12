@@ -1148,8 +1148,8 @@ function Regua({ bolha }: { bolha: VisaoBolha }) {
   const i = intensidadeDaBolha(bolha);
   const amplitude = bolha.maximo - bolha.minimo || 1;
   const surge =
-    bolha.surgimento !== undefined && bolha.surgimento > bolha.minimo
-      ? (bolha.surgimento - bolha.minimo) / amplitude
+    bolha.entrada !== undefined && bolha.entrada > bolha.minimo
+      ? (bolha.entrada - bolha.minimo) / amplitude
       : null;
   return (
     <div className="regua" aria-hidden="true">
@@ -1168,7 +1168,7 @@ function Regua({ bolha }: { bolha: VisaoBolha }) {
       <div className="regua-legenda">
         <span>{valorDaBolha(bolha.minimo, bolha.unidade)}</span>
         {surge !== null ? (
-          <span>surge em {valorDaBolha(bolha.surgimento!, bolha.unidade)}</span>
+          <span>surge em {valorDaBolha(bolha.entrada!, bolha.unidade)}</span>
         ) : null}
         <span>{valorDaBolha(bolha.maximo, bolha.unidade)}</span>
       </div>

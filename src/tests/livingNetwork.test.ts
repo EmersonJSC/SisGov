@@ -231,7 +231,8 @@ function healthNetwork(): Record<string, string> {
           nome: "Crise no atendimento",
           unidade: "indice_0_100",
           dominio: { minimo: 0, maximo: 100 },
-          surgimento: 70,
+          entrada: 70,
+          saida: 70,
         },
       ],
     }),
@@ -382,14 +383,12 @@ describe("SG154 — o país não declara bolhas (D-41)", () => {
       ],
     });
     delete variables.variaveis[7].valorInicial;
-    delete variables.variaveis[8].surgimento;
+    delete variables.variaveis[8].entrada;
     expect(
       validateContentFile("variaveis.json", json(variables)),
     ).toMatchObject({
       ok: false,
-      diagnostics: [
-        expect.objectContaining({ field: "variaveis[8].surgimento" }),
-      ],
+      diagnostics: [expect.objectContaining({ field: "variaveis[8].entrada" })],
     });
   });
 

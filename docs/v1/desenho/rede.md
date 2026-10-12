@@ -98,14 +98,17 @@ ativa    --pressão <= saida---->  inativa
 entre os dois: fica como está
 ```
 
-- **Intensidade** enquanto ativa: `(pressão − saida) / (entrada − saida)`,
-  limitada a 0..1. É isso que alimenta as arestas que saem da situação.
-  Inativa, a intensidade é 0.
-- **No motor.** O estado da execução ganha `situacoesAtivas: Set<id>`, e a
-  passada de cada mês avalia as situações depois das bolhas. O motor fica
-  puro, e salvar e carregar levam o conjunto junto.
-- `surgimento` sai. O jornal lê `situacoesAtivas`, e o defeito da seção 1
-  some junto.
+- **Valor** enquanto existe: `pressão − saida` (positivo). Acabada, 0. Foi
+  escolhido em vez de uma intensidade 0..1 para os coeficientes que já saem
+  das situações continuarem na mesma escala. Valor positivo no motor quer
+  dizer "existe": não precisa de estado novo na execução, e salvar e carregar
+  não mudam.
+- **Amortecimento.** Situação que acaba vai a 0 na hora; sem isso a resposta
+  lenta a deixaria positiva (existindo) para sempre.
+- **Saída padrão:** 80% da entrada (ex.: entra em 30, sai em 24). O cofre fica
+  com entrada e saída 0 até virar estoque.
+- `surgimento` sai. O registro de ocorrências lê "valor positivo", e o
+  defeito da seção 1 some junto. **Feito em 12/out** (`situacoes.test.ts`).
 - `cofre` deixa de ser situação: é um estoque (dinheiro guardado), e hoje usa
   `surgimento: 0` só para não ficar negativo.
 - **Cerca de 20 iniciais.** São as 16 de hoje (sem o cofre) e mais umas 4

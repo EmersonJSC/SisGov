@@ -168,9 +168,10 @@ export function prepareMonthlyContent(
         ...(variable.valorInicial !== undefined
           ? { valorInicial: variable.valorInicial / 3 }
           : {}),
-        ...(variable.surgimento !== undefined
-          ? { surgimento: variable.surgimento / 3 }
+        ...(variable.entrada !== undefined
+          ? { entrada: variable.entrada / 3 }
           : {}),
+        ...(variable.saida !== undefined ? { saida: variable.saida / 3 } : {}),
         dominio: {
           ...(variable.dominio.minimo !== undefined
             ? { minimo: variable.dominio.minimo / 3 }

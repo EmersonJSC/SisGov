@@ -44,7 +44,9 @@ describe("configuração do país (V1-06)", () => {
     expect(valores.desemprego).toBeCloseTo(6, 6);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12681054.833573977, 3);
+    // V1-07: o contexto das situações mira metade da saída, não da entrada;
+    // por isso a soma caiu 45,5 em relação ao Brasil antigo.
+    expect(soma).toBeCloseTo(12681009.333573977, 3);
     expect(p.content.policies).toHaveLength(123);
     expect(p.content.events).toHaveLength(79);
     expect(p.content.dilemmas).toHaveLength(91);

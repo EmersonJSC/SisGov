@@ -142,8 +142,12 @@ export type VisaoBolha = Readonly<{
   /** Escala da bolha (do domínio no conteúdo). */
   minimo: number;
   maximo: number;
-  /** Situação: valor a partir do qual ela surge. */
-  surgimento?: number;
+  /** Situação: soma a partir da qual ela surge (V1-07). */
+  entrada?: number;
+  /** Situação: soma em que ela acaba; entre saída e entrada, fica como está. */
+  saida?: number;
+  /** Situação: existe agora (o motor guarda valor positivo). */
+  ativa?: boolean;
   /**
    * Contexto do cenário (D-55): a parte do valor que as leis e a rede não
    * explicam (história, geografia, cultura). Fixo desde o turno 0.

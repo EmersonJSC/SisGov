@@ -44,12 +44,12 @@ describe("SG157 fase 3 — Brasil 2026", () => {
     expect(visao.cenario).toBe("Brasil 2026");
     const motor = partida.game.execution.values;
     for (const [id, valor] of Object.entries(declarados)) {
-      // situação: o motor guarda o quanto passou do surgimento (0 = não surgiu)
+      // situação: o motor guarda o quanto a soma passa da saída (0 = não existe)
       expect(motor[id], id).toBeCloseTo(valor, 3);
       const bolha = visao.bolhas.find((b) => b.id === id)!;
       if (bolha.tipo === "situacao")
-        // a tela mostra a soma, abaixo do ponto de surgimento
-        expect(bolha.valor, id).toBeLessThanOrEqual(bolha.surgimento ?? 0);
+        // a tela mostra a soma, abaixo da entrada
+        expect(bolha.valor, id).toBeLessThanOrEqual(bolha.entrada ?? 0);
       else expect(bolha.valor, id).toBeCloseTo(valor, 3);
     }
   });

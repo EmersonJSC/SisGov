@@ -52,10 +52,12 @@ def lenta(id, nome, unidade, minimo, maximo, area, avaliacao, explicacao):
     return item
 
 
-def situacao(id, nome, area, surgimento, explicacao):
+def situacao(id, nome, area, entrada, explicacao, saida=None):
+    """Situação com histerese (V1-07): surge em `entrada`, acaba em `saida`."""
     item = indice(id, nome, "percentual_0_100", 0, 100, area, "maior_pior", explicacao)
     item["json"]["tipo"] = "situacao"
-    item["json"]["surgimento"] = surgimento
+    item["json"]["entrada"] = entrada
+    item["json"]["saida"] = round(entrada * 0.8) if saida is None else saida
     return item
 
 

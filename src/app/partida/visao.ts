@@ -163,10 +163,16 @@ export function verPartida(partida: Partida): VisaoPartida {
       avaliacao: variable.avaliacao,
       valor:
         variable.tipo === "situacao"
-          ? brutoDe(variable.id, variable.surgimento ?? 0)
+          ? brutoDe(variable.id, variable.entrada ?? 0, variable.saida ?? 0)
           : (values[variable.id] ?? 0),
       ...escalaDe(variable),
-      surgimento: variable.surgimento,
+      ...(variable.tipo === "situacao"
+        ? {
+            entrada: variable.entrada,
+            saida: variable.saida,
+            ativa: (values[variable.id] ?? 0) > 0,
+          }
+        : {}),
       ...(values[contextNodeId(variable.id)] !== undefined
         ? { contexto: values[contextNodeId(variable.id)] }
         : {}),
@@ -174,7 +180,11 @@ export function verPartida(partida: Partida): VisaoPartida {
         ? {
             semVoce:
               variable.tipo === "situacao"
-                ? brutoPiloto(variable.id, variable.surgimento ?? 0)
+                ? brutoPiloto(
+                    variable.id,
+                    variable.entrada ?? 0,
+                    variable.saida ?? 0,
+                  )
                 : (pilotoValues[variable.id] ?? 0),
           }
         : {}),

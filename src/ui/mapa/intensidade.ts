@@ -3,8 +3,8 @@
  * conforme o seu valor.
  *
  * - Índice e bolha lenta: pelo valor dentro da própria escala (domínio).
- * - Situação: some (vira um ponto apagado) abaixo do ponto de surgimento;
- *   acima dele cresce com a gravidade e pisca quando fica séria.
+ * - Situação: some (vira um ponto apagado) enquanto não existe (V1-07);
+ *   existindo, cresce com a gravidade e pisca quando fica séria.
  * - Lei: pelo quanto está "ligada" — posição entre as opções, gasto (leis de
  *   dinheiro, comparadas entre si) ou alíquota (impostos, comparados entre si).
  *
@@ -20,7 +20,7 @@ export type IntensidadeBolha = Readonly<{
   escala: number;
   /** 0 = ruim para o país, 1 = bom; `null` quando a bolha é neutra. */
   bondade: number | null;
-  /** Situação acima do ponto de surgimento. */
+  /** Situação existindo (passou da entrada e ainda não caiu à saída). */
   ativa: boolean;
   /** Situação séria: pisca. */
   grave: boolean;
@@ -49,10 +49,11 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
         ? 1 - t
         : null;
   if (bolha.tipo === "situacao") {
-    const surgimento = bolha.surgimento ?? bolha.minimo;
-    const ativa = bolha.valor > surgimento;
+    const entrada = bolha.entrada ?? bolha.minimo;
+    const saida = bolha.saida ?? entrada;
+    const ativa = bolha.ativa ?? bolha.valor > entrada;
     const gravidade = prender(
-      (bolha.valor - surgimento) / (bolha.maximo - surgimento || 1),
+      (bolha.valor - saida) / (bolha.maximo - saida || 1),
     );
     // Situação boa (o cofre): aparece verde, cresce e não pisca.
     if (bolha.avaliacao === "maior_melhor")

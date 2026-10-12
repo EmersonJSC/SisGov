@@ -81,7 +81,7 @@ export type OccurrenceState = Readonly<{
   lawSnapshot: Readonly<Record<string, number>>;
   lastStarted: Readonly<Record<string, number>>;
   timesSeen: Readonly<Record<string, number>>;
-  /** Situações acima do ponto de surgimento no último sorteio. */
+  /** Situações existindo no último sorteio (valor positivo no motor). */
   situations: Readonly<Record<string, boolean>>;
   lastDilemmaArea?: string;
   history: readonly OccurrenceRecord[];
@@ -503,9 +503,9 @@ export function rollTurn(input: {
   const situations: Record<string, boolean> = {};
   const situationRecords: OccurrenceRecord[] = [];
   for (const variable of content.variables.variaveis) {
-    if (variable.tipo !== "situacao" || variable.surgimento === undefined)
-      continue;
-    const on = (values[variable.id] ?? 0) > variable.surgimento;
+    if (variable.tipo !== "situacao") continue;
+    // O motor guarda o quanto a soma passa da saída: positivo = existe.
+    const on = (values[variable.id] ?? 0) > 0;
     situations[variable.id] = on;
     const was = state.situations[variable.id] ?? false;
     if (on && !was) {

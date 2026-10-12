@@ -1194,7 +1194,8 @@ function validateVariables(
           "unidade",
           "dominio",
           "valorInicial",
-          "surgimento",
+          "entrada",
+          "saida",
           "area",
           "avaliacao",
           "resposta",
@@ -1356,22 +1357,43 @@ function validateVariables(
           `variaveis[${index}].valorInicial`,
           diagnostics,
         );
-      if (type === "situacao")
-        requiredNumber(
+      if (type === "situacao") {
+        const entrada = requiredNumber(
           item,
           file,
-          `variaveis[${index}].surgimento`,
+          `variaveis[${index}].entrada`,
           diagnostics,
         );
-      else if (item.surgimento !== undefined)
-        diagnostics.push(
-          diagnostic(
-            file,
-            `variaveis[${index}].surgimento`,
-            "VALOR_INVALIDO",
-            "Só situações têm ponto de surgimento.",
-          ),
+        const saida = requiredNumber(
+          item,
+          file,
+          `variaveis[${index}].saida`,
+          diagnostics,
         );
+        if (
+          typeof entrada === "number" &&
+          typeof saida === "number" &&
+          saida > entrada
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              `variaveis[${index}].saida`,
+              "VALOR_INVALIDO",
+              "A saída da situação não pode passar da entrada.",
+            ),
+          );
+      } else
+        for (const campo of ["entrada", "saida"] as const)
+          if (item[campo] !== undefined)
+            diagnostics.push(
+              diagnostic(
+                file,
+                `variaveis[${index}].${campo}`,
+                "VALOR_INVALIDO",
+                "Só situações têm entrada e saída.",
+              ),
+            );
     });
   }
   return diagnostics.length === 0 ? (value as VariablesFile) : undefined;

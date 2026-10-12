@@ -369,7 +369,8 @@
       },
       "area": "Saúde",
       "avaliacao": "maior_pior",
-      "surgimento": 62
+      "entrada": 62,
+      "saida": 62
     },
     {
       "id": "onda_violencia",
@@ -382,7 +383,8 @@
       },
       "area": "Segurança",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 30
     },
     {
       "id": "recessao",
@@ -395,7 +397,8 @@
       },
       "area": "Economia",
       "avaliacao": "maior_pior",
-      "surgimento": 12
+      "entrada": 12,
+      "saida": 12
     },
     {
       "id": "carga_evento_demanda",

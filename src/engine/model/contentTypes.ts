@@ -67,8 +67,9 @@ export type ScenarioManifest = {
  * - controle: valor de uma lei (nível); o país ou o jogador define;
  * - estoque: acumula com o tempo (ex.: dívida); o país declara o valor inicial;
  * - calculado (índice) e situacao: bolhas sem valor próprio nem base — são
- *   exatamente o resultado do que recebem. A situação só existe acima de
- *   `surgimento` e sua intensidade é o quanto passou desse ponto.
+ *   exatamente o resultado do que recebem. A situação tem histerese (V1-07):
+ *   surge quando a soma chega a `entrada`, só acaba quando cai a `saida` ou
+ *   menos, e enquanto existe o valor é o quanto a soma passa de `saida`.
  */
 export type VariableDefinition = {
   id: string;
@@ -82,8 +83,10 @@ export type VariableDefinition = {
   dominio: { minimo?: number; maximo?: number };
   /** Só controle e estoque; bolhas não têm valor inicial (D-41). */
   valorInicial?: number;
-  /** Só situação: ponto a partir do qual ela passa a existir. */
-  surgimento?: number;
+  /** Só situação: soma a partir da qual ela surge. */
+  entrada?: number;
+  /** Só situação: soma em que ela acaba (no máximo `entrada`). */
+  saida?: number;
   area?: string;
   avaliacao?: "maior_melhor" | "maior_pior" | "neutra";
   /**

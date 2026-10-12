@@ -37,10 +37,10 @@ export type TargetExplanation = Readonly<{
   /** Neutro estrutural: 0 para bolhas; 1 para eficácia de lei (D-41). */
   baseValue: number;
   contributions: readonly ContributionExplanation[];
-  /** Soma antes do surgimento (situação) e dos limites do domínio. */
+  /** Soma antes da histerese (situação) e dos limites do domínio. */
   rawValue: number;
   /**
-   * Para onde a bolha vai (soma depois do surgimento e dos limites). Com
+   * Para onde a bolha vai (soma depois da histerese e dos limites). Com
    * resposta menor que 1 (D-54), o resultado anda só parte do caminho.
    */
   targetValue: number;
@@ -387,17 +387,28 @@ export function computeNetwork(
     contributions: ContributionExplanation[],
   ) => {
     const node = graph.nodesById[targetId];
-    const emerged =
-      node.tipo === "situacao"
-        ? Math.max(0, raw - (node.surgimento ?? 0))
-        : raw;
+    // Situação (V1-07): surge com a soma em `entrada` ou mais e só acaba com
+    // a soma em `saida` ou menos; entre os dois, fica como estava. Existindo,
+    // o valor é o quanto a soma passa de `saida` (positivo); acabada, 0.
+    const situation = node.tipo === "situacao";
+    const wasActive = (previous[targetId] ?? 0) > 0;
+    const exit = node.saida ?? 0;
+    const active =
+      situation &&
+      (wasActive ? raw > exit : raw >= (node.entrada ?? 0) && raw > exit);
+    const emerged = situation ? (active ? raw - exit : 0) : raw;
     const target = clamp(emerged, node.dominio.minimo, node.dominio.maximo);
     const before = previous[targetId];
     // D-54: bolha calculada anda parte do caminho por passo (amortece ciclos).
     // Bolha com resposta própria (as contas, SG159) usa a dela.
     const own = node.resposta ?? response;
+    // Situação que acaba vai a 0 na hora: senão o amortecimento a deixaria
+    // positiva (existindo) para sempre.
     const result =
-      own < 1 && !isLawNode(targetId) && before !== undefined
+      own < 1 &&
+      !isLawNode(targetId) &&
+      before !== undefined &&
+      !(situation && !active)
         ? before + own * (target - before)
         : target;
     next[targetId] = result;

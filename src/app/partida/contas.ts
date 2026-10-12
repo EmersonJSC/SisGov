@@ -110,8 +110,8 @@ export function saldoDasLeis(
 }
 
 /**
- * Situação na régua da tela: o motor guarda só o quanto ela passou do ponto
- * de surgimento; a tela mostra a soma inteira, para o jogador ver quando ela
+ * Situação na régua da tela: o motor guarda só o quanto a soma passa da
+ * saída (V1-07); a tela mostra a soma inteira, para o jogador ver quando ela
  * está chegando perto de surgir (ex.: juros em 26% da receita, surge em 32%).
  */
 /** Aprovação do governo: a média dos grupos pelos pesos (SG143). */
@@ -188,7 +188,7 @@ export function gruposDaPartida(
 export function brutoDasSituacoes(
   partida: Partida,
   values: Readonly<Record<string, number>>,
-): (id: string, surgimento: number) => number {
+): (id: string, entrada: number, saida: number) => number {
   const { content, graph } = partida;
   const lawByControl = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
@@ -200,9 +200,9 @@ export function brutoDasSituacoes(
     const effect = (values[id] ?? 0) * (values[efficacyNodeId(law)] ?? 1);
     return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
   };
-  return (id, surgimento) => {
+  return (id, entrada, saida) => {
     const now = values[id] ?? 0;
-    if (now > 0) return now + surgimento;
+    if (now > 0) return now + saida;
     let soma = 0;
     for (const relation of graph.relations) {
       // aproximação: as setas com atraso entram com os valores de agora
@@ -214,6 +214,6 @@ export function brutoDasSituacoes(
       const c = calculateContribution(relation, origem, delivered);
       if (c.ok) soma += c.value.value;
     }
-    return Math.min(surgimento, Math.max(0, soma));
+    return Math.min(entrada, Math.max(0, soma));
   };
 }

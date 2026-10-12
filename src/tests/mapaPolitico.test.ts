@@ -226,10 +226,10 @@ describe("mapa político: intensidade (D-43)", () => {
     expect(alta.bondade).toBeLessThan(baixa.bondade!);
   });
 
-  it("situação abaixo do surgimento encolhe; acima, cresce e pisca", () => {
+  it("situação que não existe encolhe; existindo, cresce e pisca", () => {
     const base = bolha("apagao");
     const dormindo = intensidadeDaBolha({ ...base, valor: 0 });
-    const seria = intensidadeDaBolha({ ...base, valor: 90 });
+    const seria = intensidadeDaBolha({ ...base, valor: 90, ativa: true });
     expect(dormindo.ativa).toBe(false);
     expect(seria.ativa && seria.grave).toBe(true);
     expect(seria.escala).toBeGreaterThan(dormindo.escala);

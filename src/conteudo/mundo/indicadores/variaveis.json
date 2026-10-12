@@ -5762,7 +5762,8 @@
       },
       "area": "Geral",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "aprendizagem",
@@ -5934,12 +5935,13 @@
       },
       "area": "Contas públicas",
       "avaliacao": "maior_melhor",
-      "surgimento": 0,
       "faixaVisual": {
         "minimo": 0,
         "maximo": 50
       },
-      "resposta": 1
+      "resposta": 1,
+      "entrada": 0,
+      "saida": 0
     },
     {
       "id": "complexidade_tributaria",
@@ -6096,7 +6098,8 @@
       },
       "area": "Saúde",
       "avaliacao": "maior_pior",
-      "surgimento": 62
+      "entrada": 62,
+      "saida": 50
     },
     {
       "id": "crise_financeira",
@@ -6109,7 +6112,8 @@
       },
       "area": "Finanças",
       "avaliacao": "maior_pior",
-      "surgimento": 25
+      "entrada": 25,
+      "saida": 20
     },
     {
       "id": "crise_migratoria",
@@ -6122,7 +6126,8 @@
       },
       "area": "Direitos civis, costumes, imigração, mídia e defesa",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "custo_trabalhista",
@@ -6171,7 +6176,8 @@
       },
       "area": "Economia, finanças e comércio exterior",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "desastre_ambiental",
@@ -6184,7 +6190,8 @@
       },
       "area": "Meio ambiente, energia, agro e infraestrutura",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "desemprego",
@@ -6342,7 +6349,8 @@
       },
       "area": "Saúde",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "escolaridade",
@@ -6491,7 +6499,8 @@
       },
       "area": "Geral",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "greve_de_professores",
@@ -6504,7 +6513,8 @@
       },
       "area": "Educação, ciência e cultura",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "greve_geral",
@@ -6517,7 +6527,8 @@
       },
       "area": "Geral",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "grupo_agro",
@@ -6832,7 +6843,8 @@
       },
       "area": "Contas públicas",
       "avaliacao": "maior_pior",
-      "surgimento": 32
+      "entrada": 32,
+      "saida": 26
     },
     {
       "id": "letalidade_policial",
@@ -6905,7 +6917,8 @@
       },
       "area": "Economia, finanças e comércio exterior",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "mobilidade_urbana",
@@ -6954,7 +6967,8 @@
       },
       "area": "Segurança",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "oportunidades_juvenis",
@@ -7183,7 +7197,8 @@
       },
       "area": "Geral",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "qualidade_ambiental",
@@ -7232,7 +7247,8 @@
       },
       "area": "Segurança, justiça e drogas",
       "avaliacao": "maior_pior",
-      "surgimento": 30
+      "entrada": 30,
+      "saida": 24
     },
     {
       "id": "recessao",
@@ -7245,7 +7261,8 @@
       },
       "area": "Economia",
       "avaliacao": "maior_pior",
-      "surgimento": 12
+      "entrada": 12,
+      "saida": 10
     },
     {
       "id": "reincidencia",

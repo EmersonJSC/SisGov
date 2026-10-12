@@ -61,17 +61,18 @@ export function createExecution(
   );
   // Contexto do cenário (D-55): a cada passada, o nó `contexto:<bolha>`
   // corrige metade da distância entre o que a rede dá e o valor declarado.
-  // Situação com valor 0 mira metade do ponto de surgimento (longe de surgir).
+  // Situação com valor 0 mira metade da saída (longe de surgir); com valor,
+  // mira a soma que dá esse valor (saída + valor).
   const targets = Object.entries(content.initialState.indicesIniciais ?? {})
     .filter(([id]) => graph.nodesById[id] !== undefined)
     .map(([id, value]) => {
       const node = graph.nodesById[id];
-      const emergence = node.surgimento ?? 0;
+      const exit = node.saida ?? 0;
       const raw =
         node.tipo === "situacao"
           ? value > 0
-            ? value + emergence
-            : emergence / 2
+            ? value + exit
+            : exit / 2
           : value;
       return {
         id,
@@ -108,7 +109,7 @@ export function createExecution(
         const item = reached.get(target.id);
         if (!item) continue;
         // Índice: compara o valor para onde a bolha vai (já limitado ao
-        // domínio); situação: a soma antes do surgimento.
+        // domínio); situação: a soma antes da histerese.
         const now = target.situation ? item.rawValue : item.targetValue;
         const miss = target.raw - now;
         gap = Math.max(gap, Math.abs(miss));
