@@ -265,7 +265,8 @@ Entra se, depois da otimização, abertura com 4.2 ou fim de turno passar de
 
 ## 9. Rede sem números soltos (pedido do autor)
 
-**Regra.** Todo índice recebe influência de algo e influencia algo. Toda lei
+**Regra.** Todo índice recebe influência de algo; influenciar outro é
+opcional (o autor corrigiu em 12/out: um índice pode ser só resultado). Toda lei
 recebe pelo menos um índice que muda o efeito dela (por exemplo, a eficácia
 de um programa depende da capacidade do Estado) e mexe em outros. O
 contexto é zero.
@@ -294,12 +295,12 @@ contagem). Quando chegar a zero, vira erro de carga.
 
 **Feito (V1-07).** `checkNetworkRules` (motor, `diagnostics/networkRules.ts`)
 conta as regras e entra na análise do pacote como avisos
-(`INDICE_SEM_SAIDA`, `INDICE_SEM_ENTRADA`, `LEI_SEM_MODULACAO`,
+(`INDICE_SEM_ENTRADA`, `LEI_SEM_MODULACAO`,
 `INDICE_SEM_MEDIDA`). `npm run rede:contexto` dá o relatório por índice.
-`src/tests/redeTrava.test.ts` guarda os limites: 55 sem saída, 2 sem
+`src/tests/redeTrava.test.ts` guarda os limites: 2 sem
 entrada, 1 lei, 116 sem medida, contexto acima de 5/25/50 em 109/67/28 dos
 121 valores declarados. Influenciar conta origem, fator e divisor de uma
-relação; uma situação que só dispara evento ainda conta como sem saída.
+relação; "sem saída" aparece só no relatório, sem aviso nem trava.
 
 **Tamanho (decisão de 12/out): por área.** O V1-07 entrega o relatório e a
 trava. A limpeza de cada área entra no aceite do chamado de conteúdo dela

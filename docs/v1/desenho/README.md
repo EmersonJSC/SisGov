@@ -6,7 +6,7 @@
 | Tema | Chamado | Documento | Situação |
 | --- | --- | --- | --- |
 | Calibragem, sensibilidade e desempenho da rede | V1-07 | `rede.md` | Aprovado (12/out) |
-| Índices com unidade real | V1-07 | `indices.md` | Para revisão |
+| Índices com unidade real | V1-07 | `indices.md` | Aprovado (12/out) |
 | População sintética e opinião por perfil | V1-08 | `populacao.md` | A fazer |
 | Grupos de pressão | V1-09 | `pressao.md` | A fazer |
 | Capital político | V1-10 | `capital.md` | A fazer |

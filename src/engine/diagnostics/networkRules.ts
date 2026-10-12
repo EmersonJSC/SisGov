@@ -8,7 +8,10 @@ import type { ResolvedPackage } from "../model/resolvePackage";
  * uma relação que não vem do contexto.
  */
 export type NetworkRules = Readonly<{
-  /** Índices e situações que não influenciam nada. */
+  /**
+   * Índices e situações que não influenciam nada. Só informação: um índice
+   * pode ser só resultado (decisão do autor, 12/out).
+   */
   withoutOutput: readonly string[];
   /** Índices e situações que nada influencia (fora o contexto). */
   withoutInput: readonly string[];

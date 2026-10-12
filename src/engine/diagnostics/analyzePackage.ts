@@ -7,7 +7,6 @@ export type PackageWarningCode =
   | "COMPONENTE_DESCONECTADO"
   | "CONTEUDO_NAO_UTILIZADO"
   | "ARQUIVO_ORFAO"
-  | "INDICE_SEM_SAIDA"
   | "INDICE_SEM_ENTRADA"
   | "LEI_SEM_MODULACAO"
   | "INDICE_SEM_MEDIDA";
@@ -161,11 +160,6 @@ export function analyzePackage(
       file,
       message: `Arquivo distribuído sem uso no manifesto: ${file}.`,
     })),
-    ...rule(
-      "INDICE_SEM_SAIDA",
-      networkRules.withoutOutput,
-      "Índice que não influencia nada",
-    ),
     ...rule(
       "INDICE_SEM_ENTRADA",
       networkRules.withoutInput,

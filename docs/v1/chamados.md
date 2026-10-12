@@ -382,7 +382,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -409,7 +409,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -436,7 +436,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -463,7 +463,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -490,7 +490,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -517,7 +517,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -544,7 +544,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -571,7 +571,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -598,7 +598,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 
@@ -625,7 +625,7 @@
 **Aceite**
 
 - [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero, recebendo e influenciando; leis da área com um índice que muda o efeito (trava do V1-07)
+- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
 - [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
 - [ ] Checagem de diferenciacao-d4.md feita
 

@@ -11,7 +11,6 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
  * carga. Detalhe por índice: `npm run rede:contexto`.
  */
 const limites = {
-  indicesSemSaida: 54,
   indicesSemEntrada: 2,
   leisSemModulacao: 1,
   indicesSemMedida: 116,
@@ -35,7 +34,6 @@ describe("trava da rede (V1-07)", () => {
     const acima = (limite: number) =>
       contextos.filter((valor) => valor > limite).length;
     const agora = {
-      indicesSemSaida: rules.withoutOutput.length,
       indicesSemEntrada: rules.withoutInput.length,
       leisSemModulacao: rules.unmodulatedLaws.length,
       indicesSemMedida: rules.withoutMeasure.length,

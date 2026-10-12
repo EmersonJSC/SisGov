@@ -1,6 +1,6 @@
 # Índices com unidade real (V1-07)
 
-**Status:** PARA REVISÃO. Nada daqui entrou nos JSON ainda; cada linha só vira `medida` depois do seu ok.
+**Status:** APROVADO pelo autor (12/out). Próximo passo: cada linha vira `medida` no `variaveis.json`.
 
 ## Como ler
 
