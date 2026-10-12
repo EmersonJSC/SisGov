@@ -1,7 +1,7 @@
 # Grupos de pressão (V1-09)
 
-**Status:** PARA APROVAÇÃO (versão 2, com as mudanças de 12/out à noite). O
-código só começa depois do seu ok.
+**Status:** PARA APROVAÇÃO (versão 3: níveis e patrocinadores satíricos,
+12/out à noite). O código só começa depois do seu ok.
 
 ## 0. O que mudou da versão 1
 
@@ -11,11 +11,14 @@ código só começa depois do seu ok.
 - **"Visto como" separado da causa.** Um movimento que luta por um direito
   não é "de esquerda" por natureza; a polarização é que o enxerga assim. Cada
   grupo tem um campo `vistoComo`, que só mexe na polarização.
-- **Limite próprio por grupo**, calibrado para o turno 0 ficar como o Brasil
-  em jan/2025.
-- **Patrocínio completo:** patrocinadores com interesse econômico, um `K`
-  por grupo e patrocinador, financiamento oculto, segurança e investigação
-  para revelar.
+- **Todo grupo existe desde o começo, em níveis:** sem muitos adeptos,
+  organizando, mobilizado e preocupação nacional. Cada grupo tem limites
+  próprios por nível, calibrados para o turno 0 ficar como o Brasil em
+  jan/2025. Só a partir de "mobilizado" ele age em público e aparece com
+  destaque na tela.
+- **Patrocínio completo:** patrocinadores com nomes satíricos (países,
+  empresas, igrejas, fundações), um `K` por grupo e patrocinador,
+  financiamento oculto, segurança e investigação para revelar.
 - **Eventos sempre com causa.** Nada dispara só por sorte.
 - **Efeitos provisórios.** Os efeitos finais das ações ficam para quando
   houver Senado e Supremo.
@@ -62,19 +65,33 @@ código só começa depois do seu ok.
 
 ## 3. Proposta
 
-### 3.1 Mobilização = uma situação por grupo
+### 3.1 Pressão e níveis
 
-Cada grupo vira um nó `pressao_<grupo>` do tipo **situação**, sem
-mecanismo novo no motor:
+Todo grupo existe e tem pressão desde o turno 0. A pressão decide o
+**nível** dele:
 
-- **Pressão** = insatisfação da base (`Σ peso × (100 − satisfação)` dos
-  segmentos que o grupo representa) + leis que tocam o interesse dele +
-  índices + patrocínio (seção 4).
-- **Limites próprios:** cada grupo tem `entrada` (mobiliza) e `saida`
-  (desmobiliza, quando é atendido). Entre os dois, fica como estava.
-- **Intensidade** enquanto mobilizado = pressão − saída.
-- O país não declara valor para esses nós; quem está mobilizado no turno 0
-  sai da conta. Os limites é que são calibrados (seção 3.5).
+| Nível | O que significa | O que faz | Na tela |
+| --- | --- | --- | --- |
+| 0. Sem muitos adeptos | a causa existe, quase ninguém se mexe | nada | só no painel, apagado |
+| 1. Organizando | reuniões, redes, arrecadação | nada em público; a pressão do contramovimento já sente | no painel, com "organizando" |
+| 2. Mobilizado | vai à rua e à mídia | ações leves (campanha, ato, nota) | no painel em destaque; ações no jornal, nas páginas de dentro |
+| 3. Preocupação nacional | o país inteiro fala dele | ações pesadas (greve, ocupação, bloqueio, corrida contra a moeda, ataque) | alerta na barra de cima, manchete do jornal |
+
+- **Pressão** (0 a 100, nó `pressao_<grupo>`) = insatisfação da base
+  (`Σ peso × (100 − satisfação)` dos segmentos que o grupo representa) +
+  leis que tocam o interesse dele + índices + patrocínio (seção 4).
+- **Limites por nível e por grupo:** cada passagem tem uma entrada (sobe de
+  nível) e uma saída menor (desce), como nas situações do V1-07. Ex.:
+  sindicatos de servidores sobem a "mobilizado" com pressão 55 e só descem
+  com 45; a maior facção vive entre "mobilizado" e "preocupação nacional".
+  Grupo com muita gente e pouca organização tem limites altos; grupo pequeno
+  e organizado, baixos (Olson).
+- **Nível** (nó `nivel_<grupo>`, de 0 a 3) sobe e desce um degrau por vez.
+  Isso precisa de uma extensão pequena no motor: a situação ganha uma lista
+  de níveis (`niveis: [{entrada, saida}, …]`) em vez de um par só. O resto
+  (histerese, um degrau por mês) é o que a situação já faz.
+- O país não declara valor para esses nós; o nível do turno 0 sai da conta.
+  Os limites é que são calibrados (seção 3.5).
 
 ### 3.2 Recursos e "visto como"
 
@@ -87,12 +104,10 @@ mecanismo novo no motor:
 
 ### 3.3 Ações = eventos com causa
 
-- **Condição:** o grupo está mobilizado (`pressao_<grupo>` > 0).
-- **Chance:** base por turno × intensidade (fator de 1 a 3 entre intensidade
-  0 e 30).
-- **Escala:** ações leves (campanha, ato) com qualquer intensidade; pesadas
-  (greve, ocupação, bloqueio, fuga de investimento, ataque) com intensidade
-  10 ou mais.
+- **Condição:** nível 2 (mobilizado) para as ações leves; nível 3
+  (preocupação nacional) para as pesadas.
+- **Chance:** base por turno × quanto a pressão passa do limite do nível
+  (fator de 1 a 3).
 - **Toda ação nasce de uma causa** que o jogador consegue ver: a lei ou o
   índice que subiu a pressão do grupo aparece no texto ("contra a nova regra
   das câmeras corporais").
@@ -220,26 +235,20 @@ crise longa na região.
 
 ### 3.5 Turno 0 = Brasil em jan/2025
 
-Os limites de cada grupo são ajustados para o turno 0 ficar assim (este é
-o modo "Brasil 2025"; outros modos podem começar diferente):
+Todos os 54 começam existindo. Os limites de cada grupo são ajustados para
+o turno 0 ficar assim (este é o modo "Brasil 2025"; outros modos podem
+começar diferente):
 
-| Mobilizados | Por quê (jan/2025) |
-| --- | --- |
-| Mercado financeiro | Pânico fiscal de dez/2024, câmbio na máxima |
-| Rede de influenciadores de direita, movimentos conservadores | Crise da norma do Pix (revogada em 15/jan), campanha pela anistia (ato em 16/mar) |
-| Igrejas neopentecostais | Oposição aberta ao governo |
-| Sindicatos de professores | Educação liderou as greves de 2025 (49% das greves no setor público, DIEESE) |
-| Povos originários | Disputa do marco temporal |
-| As facções, as milícias, garimpo e madeira ilegais | Agem o tempo todo |
-
-| Perto do limite | Por quê |
-| --- | --- |
-| Entregadores e motoristas de aplicativo | Breque nacional em 31/mar e 1º/abr |
-| Movimentos por terra | Jornada de abril |
-| Frentes populares de esquerda | Atos contra a anistia em 30/mar |
-
-O resto começa parado, inclusive os sindicatos de servidores federais, que
-fecharam acordo depois da greve de 2024.
+| Nível no turno 0 | Grupos | Por quê (jan/2025) |
+| --- | --- | --- |
+| 3. Preocupação nacional | Mercado financeiro | Pânico fiscal de dez/2024, câmbio na máxima |
+| 3. Preocupação nacional | A maior facção, milícias | Agem o tempo todo, em escala nacional |
+| 2. Mobilizado | Rede de influenciadores de direita, movimentos conservadores de costumes | Crise da norma do Pix (revogada em 15/jan), campanha pela anistia (ato em 16/mar) |
+| 2. Mobilizado | Igrejas neopentecostais | Oposição aberta ao governo |
+| 2. Mobilizado | Sindicatos de professores | Educação liderou as greves de 2025 (49% das greves no setor público, DIEESE) |
+| 2. Mobilizado | Povos originários; garimpo e madeira ilegais; facção rival | Disputa do marco temporal; crime ambiental e disputa de território contínuos |
+| 1. Organizando | Entregadores de aplicativo, movimentos por terra, frentes populares de esquerda, movimento ambientalista | Breque de 31/mar; jornada de abril; atos contra a anistia em 30/mar; ano da conferência do clima no país |
+| 0 ou 1 | Todos os outros | Sem mobilização nacional em jan/2025 (os servidores federais fecharam acordo depois da greve de 2024) |
 
 ### 3.6 Contramovimento
 
@@ -258,25 +267,71 @@ agora e à eleição por estado depois (V1-12).
 
 ## 4. Patrocínio
 
-### 4.1 Patrocinadores
+### 4.1 Patrocinadores (sátira)
 
-Sem citar nomes no jogo. No conteúdo, cada um tem um id e um nome de tela:
+O mundo ganha um arquivo `mundo/patrocinadores.json` com patrocinadores de
+nome satírico: dá para reconhecer quem é, mas nenhum nome real aparece. A
+mídia nacional fica no arquivo do país, porque muda de país para país.
+
+**Países**
 
 | Id | No jogo | Interesses |
 | --- | --- | --- |
-| `superpotencia_militar` | "a grande potência militar" | segurança, tecnologia, petróleo, mídia e plataformas |
-| `superpotencia_industrial` | "a grande potência industrial" | minério, soja, infraestrutura, portos |
-| `bloco_continental` | "o bloco de países do outro lado do oceano" | clima, florestas, acordos comerciais |
-| `potencia_energetica` | "a potência do gás e das armas" | energia, fertilizantes, desinformação |
-| `potencia_teocratica` | "a potência religiosa do Golfo" | religião, petróleo |
-| `monarquias_do_petroleo` | "as monarquias do petróleo" | petróleo, esporte, imóveis |
-| setores | "um grupo de empresas do setor X" | o interesse do setor (agro, mineração, bancos, apostas, plataformas, armas) |
-| igrejas e fundações | "uma fundação estrangeira" | costumes, clima, direitos |
+| `dolarica` | **Estados Unidos da Dolárica**, a grande potência militar | bases, tecnologia, petróleo, plataformas |
+| `madeinia` | **República Popular de Madeínia**, a grande potência industrial | minério, soja, portos, ferrovias |
+| `burocrania` | **União das Normas**, o bloco de países ricos do outro lado do oceano | clima, florestas, regras de comércio |
+| `gasprussia` | **Federação Gasprussa**, a potência do gás e das armas | energia, fertilizantes, desinformação |
+| `enriquistao` | **República do Enriquistão**, a teocracia nuclear | religião, petróleo, rivalidade com a Dolárica |
+| `petrodolar` | **Emirados Unidos do Petrodólar** | petróleo, futebol, fundos soberanos |
+| `bilhonesia` | **União de Bilhonésia**, o gigante populoso | remédios genéricos, tecnologia, grãos |
 
-Qual país real é cada id fica só neste documento (EUA, China, União
-Europeia, Rússia, Irã e monarquias do Golfo), nunca no jogo nem nos arquivos
-do mundo. O Brasil não aparece como patrocinador no modo Brasil, porque é o
-governo do jogador.
+**Empresas**
+
+| Id | No jogo | Setor e interesse |
+| --- | --- | --- |
+| `invidia` | **Invídia Chips** | chips e IA; data centers, energia barata |
+| `metade` | **Metade Plataformas** | redes sociais; contra a regulação das redes |
+| `gogol` | **Gogol Busca** | busca e publicidade; contra a regulação e o imposto digital |
+| `ipsilon` | **Ípsilon**, a rede do bilionário dos foguetes | rede social; contra a regulação, a favor da "liberdade total" |
+| `tiquetaque` | **TiqueTaque** | vídeos curtos; dados dos jovens |
+| `amozao` | **Amozão Entregas** | comércio online; contra tributação e regras dos entregadores |
+| `janelas` | **Janelas S.A.** | programas e nuvem; contratos com o governo |
+| `ouro_sacos` | **Ouro & Sacos** | banco de investimento; juros, regra fiscal |
+| `pedra_negra` | **PedraNegra Investimentos** | fundo gigante; privatizações, clima "verde" de fachada |
+| `exagero_mobil` | **Exagero Mobil** | petróleo; contra transição energética |
+| `concha` | **Concha Petróleo** | petróleo em águas profundas |
+| `monstanto` | **Monstanto Sementes** | sementes e agrotóxicos |
+| `cargao` | **Cargão Grãos** | comércio de soja; contra o código florestal |
+| `lucro_martin` | **Lucro Martin Defesa** | armas e aviões; gasto com defesa |
+| `touro_armas` | **Touro Armas** | armas leves; flexibilizar a posse e o porte |
+| `bet366` | **Bet366** | apostas; contra restrição às apostas |
+| `pfazer` | **Pfaz-Tudo Farma** | remédios; patentes, contra genéricos |
+
+**Igrejas e fundações**
+
+| Id | No jogo | Interesse |
+| --- | --- | --- |
+| `reino_dizimo` | **Igreja Mundial do Reino do Dízimo** | costumes, isenção de impostos, concessões de TV |
+| `assembleia_geral` | **Assembleia Geral de Deus** | costumes, cargos |
+| `santa_sede_central` | **A Santa Sede Central** | aborto, eutanásia, fome |
+| `cinturao_biblico` | **Fundação Evangélica do Cinturão Bíblico** (da Dolárica) | costumes, aliados no exterior |
+| `sociedade_escancarada` | **Fundação Sociedade Escancarada** | direitos civis, imprensa, drogas |
+| `portoes` | **Fundação Portões** | vacinas, saúde, agricultura |
+| `floresta_eterna` | **Fundo Floresta Eterna** (da União das Normas) | florestas, povos originários |
+
+**Mídia nacional do Brasil** (em `paises/brasil`)
+
+| Id | No jogo |
+| --- | --- |
+| `rede_bolha` | **Rede Bolha**, a maior rede de TV aberta |
+| `rede_recorde` | **Rede Recorde**, a TV ligada à Igreja Mundial do Reino do Dízimo |
+| `folha_estadinho` | **Folha do Estadinho**, os jornais e portais |
+| `tv_aviaozinho` | **TV Aviãozinho**, a rede popular de rádio e TV |
+| `rede_mundial_24h` | **Rede Mundial 24h**, a mídia internacional (no mundo) |
+
+O Brasil não é patrocinador no modo Brasil, porque é o governo do jogador.
+Num modo com outro país, entra como **República das Bananas Federativas**
+(sugestão).
 
 ### 4.2 Quanto e para quem
 
@@ -285,8 +340,9 @@ governo do jogador.
   do que ele quer. Lei que ameaça o interesse aumenta o dinheiro.
 - **`K` (0 a 1) por grupo e patrocinador:** quanto o grupo aceita dinheiro
   daquele patrocinador. Ex.: os movimentos ambientalistas aceitam bem
-  fundações e o bloco continental e quase nada de mineração; a rede de
-  influenciadores de direita aceita bem a potência militar e as plataformas.
+  o Fundo Floresta Eterna e quase nada da Monstanto; a rede de
+  influenciadores de direita aceita bem a Dolárica e a Ípsilon; as igrejas
+  neopentecostais, a Igreja Mundial do Reino do Dízimo e o Cinturão Bíblico.
 - **Dinheiro que chega** = `K × interesse ameaçado × poder econômico`. Ele
   soma nos recursos (dinheiro) e na pressão do grupo, mesmo com a base
   satisfeita.
@@ -307,11 +363,15 @@ governo do jogador.
 
 ## 5. Tela
 
-- **Jornal:** a ação sai como manchete com o grupo e a causa ("Caminhoneiros
-  bloqueiam estradas contra o preço do diesel").
-- **Painel:** uma aba "Pressão" ao lado do "Eleitorado", com os grupos por
-  tipo, a barra de pressão com os dois limites de cada um, a última ação e
-  "financiado por" (com "?" quando oculto).
+- **Jornal:** ação de grupo em "preocupação nacional" sai como manchete, com
+  o grupo e a causa ("Caminhoneiros bloqueiam estradas contra o preço do
+  diesel"); ação de grupo "mobilizado" sai nas páginas de dentro. Subir de
+  nível também é notícia ("Entregadores começam a se organizar").
+- **Painel:** uma aba "Pressão" ao lado do "Eleitorado". Todos os grupos,
+  por tipo, com o nível escrito ("organizando", "mobilizado"…), a barra de
+  pressão com os limites de cada nível, a última ação e "financiado por"
+  (com "?" quando oculto). Níveis 0 e 1 aparecem apagados.
+- **Barra de cima:** um alerta para cada grupo em "preocupação nacional".
 - **Mapa:** sem bolha para os grupos de pressão; ficam no painel e no
   jornal. (Se preferir as bolhas, é só dizer.)
 
@@ -331,24 +391,27 @@ governo do jogador.
 
 ## 7. Aceite (do chamado, com o que o teste confere)
 
-- Grupo se mobiliza quando passa do próprio limite de entrada e desmobiliza
-  quando cai ao de saída: baixar a satisfação dos servidores leva os
-  sindicatos de servidores a mobilizar; subir até a saída desmobiliza; entre
-  os dois, continua como estava.
+- Grupo sobe de nível quando passa da entrada do nível e desce quando cai à
+  saída: baixar a satisfação dos servidores leva os sindicatos de servidores
+  de "organizando" a "mobilizado"; subir até a saída volta a "organizando";
+  entre os dois, continua como estava. Sobe e desce um degrau por vez.
 - Cada ação tem efeito em índice ou capital: o teste percorre as ações e
   confere que toda ação tem ao menos uma ligação para um índice (ou para a
   aprovação, até o V1-10).
-- Turno 0: os grupos da tabela 3.5 estão mobilizados e os outros não.
+- Turno 0: cada grupo está no nível da tabela 3.5.
+- Nenhum nome real de país, empresa ou igreja nos arquivos do jogo.
 - Patrocínio oculto não aparece na tela; investigação com sucesso revela.
 
 ## 8. Decisões para você
 
-1. **54 grupos** na seção 3.4: algum a mais, a menos ou com a base errada?
-2. **Nomes das potências** da seção 4.1: servem, ou prefere outros?
-3. **Turno 0** da seção 3.5: confere com o que você lembra de jan/2025?
-4. **Inteligência:** usar a verba da Polícia Federal que já existe, ou criar
+1. **Os quatro níveis** da seção 3.1 (sem muitos adeptos, organizando,
+   mobilizado, preocupação nacional): servem?
+2. **54 grupos** na seção 3.4: algum a mais, a menos ou com a base errada?
+3. **Nomes satíricos** da seção 4.1: quais trocar? Pode mandar os seus.
+4. **Turno 0** da seção 3.5: confere com o que você lembra de jan/2025?
+5. **Inteligência:** usar a verba da Polícia Federal que já existe, ou criar
    uma lei de inteligência e contrainteligência?
-5. **Efeitos provisórios** das ações até o V1-10 (pequenos, num índice e na
+6. **Efeitos provisórios** das ações até o V1-10 (pequenos, num índice e na
    aprovação): pode ser?
 
 ## Fontes
