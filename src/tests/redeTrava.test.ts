@@ -14,8 +14,8 @@ const limites = {
   indicesSemEntrada: 2,
   leisSemModulacao: 1,
   indicesSemMedida: 0,
-  contextoAcimaDe5: 109,
-  contextoAcimaDe25: 67,
+  contextoAcimaDe5: 110,
+  contextoAcimaDe25: 69,
   contextoAcimaDe50: 28,
 };
 

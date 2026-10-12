@@ -211,12 +211,12 @@ describe("mapa político: intensidade (D-43)", () => {
   const bolha = (id: string) => visao.bolhas.find((b) => b.id === id)!;
 
   it("bolha com valor maior fica maior", () => {
-    const previdencia = intensidadeDaBolha(bolha("cobertura_previdenciaria"));
-    const poupanca = intensidadeDaBolha(bolha("cobertura_vacinal"));
+    const pobreza = intensidadeDaBolha(bolha("pobreza"));
+    const vacinas = intensidadeDaBolha(bolha("cobertura_vacinal"));
     expect(bolha("cobertura_vacinal").valor).toBeGreaterThan(
-      bolha("cobertura_previdenciaria").valor,
+      bolha("pobreza").valor,
     );
-    expect(poupanca.escala).toBeGreaterThan(previdencia.escala);
+    expect(vacinas.escala).toBeGreaterThan(pobreza.escala);
   });
 
   it("a cor do anel diz se o valor é bom ou ruim para o país", () => {

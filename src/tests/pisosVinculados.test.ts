@@ -72,20 +72,22 @@ describe("SG137 — pisos vinculados à receita", () => {
   it("a conversão não muda o orçamento do Brasil 2026", () => {
     const partida = nova();
     const v = partida.game.execution.values;
-    // antes do SG137: R$ 516 bi (4,3% do PIB) e R$ 660 bi (5,5%)
+    // antes do SG137: R$ 516 bi (4,3% do PIB) e R$ 660 bi (5,5%). Com os
+    // valores de jan/2025 (V1-07) a arrecadação sobe de 31,4 para 31,8% do
+    // PIB, e os pisos, que são parte dela, sobem junto.
     const { contas } = verPartida(partida);
     const pib = contas.pib;
     expect((-lei(partida, "piso-saude").saldoAnual / pib) * 100).toBeCloseTo(
-      4.3,
+      4.36,
       2,
     );
     expect((-lei(partida, "piso-educacao").saldoAnual / pib) * 100).toBeCloseTo(
-      5.5,
+      5.58,
       2,
     );
-    // gasto total do turno 0 igual ao de antes: 31,03% do PIB, mais 0,16
-    // das verbas da Segurança em três níveis (PF, fundo, presídios; SG161)
-    expect(v.gasto_publico).toBeCloseTo(31.19, 1);
+    // gasto total do turno 0: 31,03% do PIB, mais 0,16 das verbas da
+    // Segurança em três níveis (SG161), mais os pisos maiores (V1-07)
+    expect(v.gasto_publico).toBeCloseTo(31.29, 1);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {

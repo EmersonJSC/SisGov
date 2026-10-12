@@ -22,10 +22,20 @@ it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional"
     // Ficha v3 (V1-05): a história e as fontes citam países de propósito
     // (conteudo.md 1.2); o resto da ficha continua neutro.
     const json = JSON.parse(raw) as Record<string, unknown>;
+    // Medida dos índices (V1-07): as fontes citam institutos de propósito.
+    const semFontesDaMedida = Array.isArray(json.variaveis)
+      ? JSON.stringify({
+          ...json,
+          variaveis: (json.variaveis as Record<string, unknown>[]).map((v) => ({
+            ...v,
+            medida: v.medida && { ...v.medida, fontes: undefined },
+          })),
+        })
+      : raw;
     const text =
       json.versaoEsquema === 3
         ? JSON.stringify({ ...json, historia: undefined, fontes: undefined })
-        : raw;
+        : semFontesDaMedida;
     for (const forbidden of [/brasil/i, /moeda_milhoes/, /\bSUS\b/, /gov\.br/])
       expect(forbidden.test(text), `${path} cita ${forbidden}`).toBe(false);
   }

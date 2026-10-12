@@ -5,7 +5,8 @@
   "nome": "Brasil",
   "cenario": {
     "nome": "Brasil 2026",
-    "ano": 2026
+    "ano": 2026,
+    "aquecimentoTrimestres": 4
   },
   "mundo": "mundo/mundo.json",
   "unidadeTemporal": "trimestre",

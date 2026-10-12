@@ -27,7 +27,11 @@ it("cria a partida do Brasil real com as leis das fichas", () => {
     contas.receita - contas.gasto - contas.juros,
     -1,
   );
-  expect(contas.divida).toBeCloseTo((77 * contas.pib) / 100, -3);
+  const nos = nova().game.execution.values;
+  expect(contas.divida).toBeCloseTo(
+    (nos.divida_publica * contas.pib) / 100,
+    -3,
+  );
   const salario = visao.leis.find((lei) => lei.id === "salario-minimo");
   expect(salario?.opcaoAtual).toBe("piso-moderado");
 });

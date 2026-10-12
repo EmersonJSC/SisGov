@@ -171,9 +171,12 @@ leis herdadas e sem ocorrências, e a partida começa no turno 0 com a
 história dos atrasos cheia (`aquecimento.test.ts`). Theil e a
 implausibilidade estão em `engine/diagnostics/calibration.ts`;
 `npm run rede:calibrar` compara com `paises/<pais>/calibragem.json`. **O
-Brasil ainda não liga o aquecimento:** os valores de hoje são de 2026 e em
-pontos. Liga quando a lista de índices (`indices.md`) for revisada e os
-valores de jan/2025 entrarem na unidade real, junto com a série de 2025.
+Brasil liga o aquecimento** (12/out): valores de jan/2025 na unidade real
+(`valores-2025.md`), 4 trimestres, partida em jan/2026. Achados ao ligar:
+PIB, consumo, renda e envelhecimento são bases de contas (impostos e
+previdência) e ficaram como nível; com a Selic de jan/2025 (12,25%) os
+juros caem para ~7% do PIB, e a dívida sobe ~6 pontos por ano sem ação
+(o real fica perto de 3): primeiro alvo da calibragem com a série real.
 
 **4.3 History matching (depois, em script).** É o método atual para modelos
 caros com muitos parâmetros incertos (Vernon, Goldstein e Bower 2010; pacote

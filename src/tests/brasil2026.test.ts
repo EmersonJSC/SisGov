@@ -40,17 +40,19 @@ describe("SG157 fase 3 — Brasil 2026", () => {
   const visao = verPartida(partida);
   const declarados = valoresDoBrasil.indices as Record<string, number>;
 
-  it("o turno 0 tem os índices declarados do cenário", () => {
+  it("o turno 0 é jan/2025 depois de um ano de aquecimento", () => {
     expect(visao.cenario).toBe("Brasil 2026");
+    expect(partida.game.execution.step).toBe(12);
     const motor = partida.game.execution.values;
     for (const [id, valor] of Object.entries(declarados)) {
-      // situação: o motor guarda o quanto a soma passa da saída (0 = não existe)
-      expect(motor[id], id).toBeCloseTo(valor, 3);
+      // um ano sozinho anda pouco: menos de um ponto em cada índice.
+      // Situação: o motor guarda o quanto a soma passa da saída (0 = não existe)
+      expect(Math.abs(motor[id] - valor), id).toBeLessThan(1);
       const bolha = visao.bolhas.find((b) => b.id === id)!;
       if (bolha.tipo === "situacao")
         // a tela mostra a soma, abaixo da entrada
         expect(bolha.valor, id).toBeLessThanOrEqual(bolha.entrada ?? 0);
-      else expect(bolha.valor, id).toBeCloseTo(valor, 3);
+      else expect(Math.abs(bolha.valor - valor), id).toBeLessThan(1);
     }
   });
 
@@ -90,19 +92,20 @@ describe("SG157 fase 3 — Brasil 2026", () => {
     expect(c.receita).toBeLessThan(34);
     expect(c.gasto).toBeGreaterThan(28);
     expect(c.gasto).toBeLessThan(34);
-    expect(c.juros).toBeGreaterThan(7);
+    // Selic de 12,25% em jan/2025 (era 15% com os valores de 2026)
+    expect(c.juros).toBeGreaterThan(6.5);
     expect(c.juros).toBeLessThan(9);
-    expect(c.resultado).toBeLessThan(-6.5);
+    expect(c.resultado).toBeLessThan(-6);
     expect(c.resultado).toBeGreaterThan(-9);
   });
 
   it("juros explosivos não existem no início e surgem se nada for feito", () => {
     const valor = (p: Partida) => p.game.execution.values.juros_explosivos ?? 0;
     expect(valor(partida)).toBe(0);
-    const lista = turnos(partida, 16);
-    // antes do fim do primeiro mandato, ainda não
-    expect(valor(lista[8])).toBe(0);
-    expect(valor(lista[16])).toBeGreaterThan(0);
+    const lista = turnos(partida, 24);
+    // no primeiro mandato, ainda não; com a Selic de jan/2025, no segundo
+    expect(valor(lista[16])).toBe(0);
+    expect(valor(lista[24])).toBeGreaterThan(0);
   });
 });
 

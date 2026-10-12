@@ -48,7 +48,9 @@ describe("SG143 — grupos sociais", () => {
   it("a aprovação é a média dos grupos e começa como a do país (D-35)", () => {
     const v = partida.game.execution.values;
     const media = grupos.reduce((s, g) => s + g.valor * pesos.get(g.id)!, 0);
-    expect(v.popularidade_governo).toBeCloseTo(media, 6);
+    // depois do aquecimento (V1-07) a aprovação segue os grupos com a
+    // resposta gradual: igual até a terceira casa
+    expect(v.popularidade_governo).toBeCloseTo(media, 3);
     // valores declarados do Brasil 2026: vencedor da eleição com ~51%
     expect(v.popularidade_governo).toBeGreaterThan(48);
     expect(v.popularidade_governo).toBeLessThan(55);

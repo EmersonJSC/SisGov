@@ -6146,9 +6146,9 @@
       "area": "Economia",
       "avaliacao": "maior_melhor",
       "medida": {
-        "unidade": "crescimento do consumo das famílias (% ao ano)",
-        "zero": -6,
-        "cem": 8,
+        "unidade": "consumo real das famílias (jan/2025 = 100)",
+        "zero": 50,
+        "cem": 150,
         "fontes": ["IBGE Contas Nacionais"]
       }
     },
@@ -6332,7 +6332,7 @@
       "area": "Previdência e assistência social",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "déficit do RGPS+RPPS (% do PIB)",
+        "unidade": "déficit da previdência pública (% do PIB)",
         "fontes": ["Tesouro (RTN)", "Secretaria de Previdência"]
       }
     },
@@ -6429,7 +6429,7 @@
       "area": "Instituições, Estado e sistema político",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "razão do PIB per capita da UF mais rica para a mais pobre",
+        "unidade": "razão do PIB per capita da região mais rica para a mais pobre",
         "zero": 1,
         "cem": 8,
         "fontes": ["IBGE (PIB dos Municípios/UFs)"]
@@ -6578,9 +6578,9 @@
       "avaliacao": "neutra",
       "medida": {
         "unidade": "% da população com 65+",
-        "zero": 3,
-        "cem": 30,
-        "fontes": ["IBGE (Projeções da População)"]
+        "zero": 0,
+        "cem": 27.25,
+        "fontes": ["IBGE (Projeções da População)", "IBGE Censo 2022"]
       }
     },
     {
@@ -6661,7 +6661,7 @@
       "area": "Economia, finanças e comércio exterior",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "IPCA esperado 12 meses à frente (%)",
+        "unidade": "inflação esperada 12 meses à frente (%)",
         "fontes": ["Banco Central (Focus)"]
       }
     },
@@ -6749,7 +6749,7 @@
       "area": "Educação, ciência e cultura",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "doutores brasileiros vivendo fora (% dos titulados)",
+        "unidade": "doutores do país vivendo fora (% dos titulados)",
         "zero": 0,
         "cem": 20,
         "fontes": ["CGEE", "OCDE (DIOC)"]
@@ -7047,7 +7047,7 @@
       "area": "Economia",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "IPCA acumulado em 12 meses (%)",
+        "unidade": "inflação ao consumidor em 12 meses (%)",
         "fontes": ["IBGE IPCA"]
       }
     },
@@ -7474,9 +7474,9 @@
       "avaliacao": "maior_melhor",
       "pilar": 2,
       "medida": {
-        "unidade": "crescimento real do PIB (% ao ano)",
-        "zero": -8,
-        "cem": 10,
+        "unidade": "PIB real (jan/2025 = 100)",
+        "zero": 55,
+        "cem": 155,
         "fontes": ["IBGE Contas Nacionais"]
       }
     },
@@ -7575,7 +7575,7 @@
       "area": "Geral",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "IPCA alimentação no domicílio em 12 meses (%)",
+        "unidade": "inflação dos alimentos no domicílio em 12 meses (%)",
         "zero": -5,
         "cem": 25,
         "fontes": ["IBGE IPCA"]
@@ -7593,7 +7593,7 @@
       "area": "Geral",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "tarifa residencial média (R$/MWh de 2025)",
+        "unidade": "tarifa residencial média (moeda local por MWh, preços de 2025)",
         "zero": 300,
         "cem": 1500,
         "fontes": ["Aneel"]
@@ -7629,7 +7629,7 @@
       "area": "Saúde",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "taxa de ocupação de leitos SUS (%)",
+        "unidade": "taxa de ocupação de leitos públicos (%)",
         "zero": 40,
         "cem": 110,
         "fontes": ["DataSUS (SIH/CNES)"]
@@ -7889,9 +7889,9 @@
       "area": "Economia",
       "avaliacao": "maior_melhor",
       "medida": {
-        "unidade": "rendimento domiciliar per capita real (R$ de 2025)",
+        "unidade": "rendimento domiciliar per capita real (moeda local de 2025)",
         "zero": 300,
-        "cem": 6000,
+        "cem": 4122,
         "fontes": ["IBGE PNAD Contínua"]
       }
     },

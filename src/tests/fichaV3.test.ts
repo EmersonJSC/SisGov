@@ -41,8 +41,9 @@ const mensagens = (ficha: FichaV3) =>
 
 describe("ficha de lei v3", () => {
   it("as três leis piloto se comportam como antes no turno", () => {
-    // Valores gravados antes da migração (formato v2), com as três leis
-    // mudadas pelo jogador e quatro turnos sem ocorrências.
+    // Valores gravados (a migração do formato v2 foi conferida com o Brasil
+    // antigo; regravados com os valores de jan/2025 do V1-07), com as três
+    // leis mudadas pelo jogador e quatro turnos sem ocorrências.
     let p = (
       criarPartida({ semente: 7, ocorrencias: false }) as { value: Partida }
     ).value;
@@ -64,10 +65,10 @@ describe("ficha de lei v3", () => {
     expect(v.nivel_piso_salarial_professores).toBeCloseTo(58.8366, 9);
     expect(v.nivel_policia_militar).toBeCloseTo(75.99, 9);
     expect(v.recursos_verba_policia_federal).toBeCloseTo(13247.52, 9);
-    expect(v.letalidade_policial).toBeCloseTo(11.99856875675812, 9);
-    expect(v.crime_organizado).toBeCloseTo(59.65769491969755, 9);
-    expect(v.gasto_publico).toBeCloseTo(31.495190460729628, 9);
-    expect(v.popularidade_governo).toBeCloseTo(52.38532713691791, 9);
+    expect(v.letalidade_policial).toBeCloseTo(30.994181791945064, 9);
+    expect(v.crime_organizado).toBeCloseTo(71.76826225556152, 9);
+    expect(v.gasto_publico).toBeCloseTo(31.525773700795302, 9);
+    expect(v.popularidade_governo).toBeCloseTo(52.25286625905935, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {

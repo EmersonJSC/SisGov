@@ -32,24 +32,20 @@ const mensagens = (r: {
 }) => (r.ok ? [] : (r.diagnostics ?? [])).map((d) => d.message);
 
 describe("configuração do país (V1-06)", () => {
-  it("o Brasil no formato novo começa igual ao formato antigo", () => {
-    // Valores gravados com o Brasil ainda em estado-inicial.json,
-    // organizacao-politica.json e ministerios.json (commit 4bbf2a7).
+  it("o Brasil começa no turno 0 com os valores gravados", () => {
+    // V1-07: valores de jan/2025 na unidade real (desenho/valores-2025.md)
+    // e um ano de aquecimento; os números abaixo são o turno 0 depois dele.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    // V1-07: +3 nós da lei "Destino do resultado fiscal" (controle,
-    // eficácia e apoio); os índices continuam iguais.
     expect(Object.keys(valores)).toHaveLength(997);
-    expect(valores.popularidade_governo).toBeCloseTo(51.41, 6);
-    expect(valores.divida_publica).toBe(77);
-    expect(valores.inflacao).toBeCloseTo(5, 6);
-    expect(valores.desemprego).toBeCloseTo(6, 6);
+    expect(p.game.execution.step).toBe(12);
+    expect(valores.popularidade_governo).toBeCloseTo(51.3995, 3);
+    expect(valores.divida_publica).toBeCloseTo(82.305, 2);
+    expect(valores.inflacao).toBeCloseTo(4.833, 2);
+    expect(valores.desemprego).toBeCloseTo(6.177, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    // V1-07: o contexto das situações mira metade da saída, não da entrada,
-    // e a lei nova soma 51 (controle 50, eficácia 1); o contexto da reputação
-    // internacional absorve o efeito dela (−0,5).
-    expect(soma).toBeCloseTo(12681059.833573977, 3);
+    expect(soma).toBeCloseTo(12681236.904166829, 3);
     expect(p.content.policies).toHaveLength(124);
     expect(p.content.events).toHaveLength(79);
     expect(p.content.dilemmas).toHaveLength(91);

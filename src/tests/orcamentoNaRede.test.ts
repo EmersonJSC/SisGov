@@ -103,8 +103,10 @@ describe("SG157 — orçamento na rede", () => {
   it("juros = taxa × dívida, e uma dívida só", () => {
     const partida = nova();
     const v = partida.game.execution.values;
+    // taxa e dívida do fim do mês anterior (o último do aquecimento, V1-07)
+    const antes = partida.game.execution.history[0].values;
     expect(v.juros_da_divida).toBeCloseTo(
-      (0.7 * v.taxa_juros * v.divida_publica) / 100,
+      (0.7 * antes.taxa_juros * antes.divida_publica) / 100,
       6,
     );
     const contas = verPartida(partida).contas;
