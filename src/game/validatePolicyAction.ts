@@ -3,7 +3,7 @@ import type {
   ResolvedPackage,
   ValidationResult,
 } from "../engine";
-import { validatePolicyLevel, type Proposal } from "../domain/game";
+import { validatePolicyLevel } from "./leis";
 import type { GameState } from "./createGame";
 import { policyInForce, requirementBlock } from "./policyRequirements";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
@@ -33,20 +33,9 @@ function invalid(field: string, message: string): ValidationResult<never> {
   };
 }
 
-function openProposalFor(
-  proposals: readonly Proposal[],
-  policyId: string,
-): boolean {
-  return proposals.some(
-    (proposal) =>
-      proposal.policyDefinitionId === policyId &&
-      ["rascunho", "apresentada", "em_votacao"].includes(proposal.status),
-  );
-}
-
 /**
- * Read-only gate before a command becomes either an executive adjustment or a
- * parliamentary proposal. It has no random draw and does not mutate GameState.
+ * Read-only gate before a command becomes an executive adjustment. Changes
+ * that need the Congress are refused until version 2 (V1-04). It has no random draw and does not mutate GameState.
  */
 export function validatePolicyAction(
   game: GameState,
@@ -86,8 +75,6 @@ export function validatePolicyAction(
     level.value,
   );
   if (blocked) return invalid("desiredLevel", blocked);
-  if (openProposalFor(game.proposals, policy.id))
-    return invalid("proposals", `Já existe proposta aberta para ${policy.id}.`);
   const current = policyInForce(game.policies, policy.id);
   const hasExecutiveAuthorization =
     policy.processoAutorizacao.startsWith("execucao-") ||

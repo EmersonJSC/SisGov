@@ -13,11 +13,7 @@ import {
   occurrenceMonth,
   type OccurrenceState,
 } from "./occurrences";
-import type { PolicyState } from "../domain/game";
-import {
-  defaultProposalTiming,
-  prepareProposalTramitation,
-} from "./prepareProposalTramitation";
+import type { PolicyState } from "./leis";
 
 export type PreparedGameMonth = Readonly<{
   execution: EngineExecution;
@@ -28,7 +24,6 @@ export type PreparedGameQuarter = Readonly<{
   execution: EngineExecution;
   months: readonly PreparedGameMonth[];
   policies: readonly PolicyState[];
-  proposals: GameState["proposals"];
   /** Ocorrências depois dos três meses (o que acabou saiu das ativas). */
   occurrences?: OccurrenceState;
 }>;
@@ -55,13 +50,6 @@ export function prepareGameQuarter(
 ): ValidationResult<PreparedGameQuarter> {
   if (monthlyPolicyStates.length !== 3)
     return invalid("turno", "Um turno trimestral exige três estados mensais.");
-
-  const proposals = prepareProposalTramitation(
-    game.proposals,
-    game.currentTurn + 1,
-    defaultProposalTiming,
-  );
-  if (!proposals.ok) return proposals;
 
   let execution = game.execution;
   const months: PreparedGameMonth[] = [];
@@ -104,7 +92,6 @@ export function prepareGameQuarter(
       execution,
       months,
       policies: monthlyPolicyStates[2],
-      proposals: proposals.value,
       ...(game.occurrences
         ? {
             occurrences: advanceOccurrenceMonths(

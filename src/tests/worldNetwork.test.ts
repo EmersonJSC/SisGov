@@ -6,7 +6,7 @@ import {
   type EngineExecution,
 } from "../engine";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function brazil() {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");

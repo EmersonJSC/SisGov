@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { commitPolicyAction } from "../game/commitPolicyAction";
 import { createGame } from "../game/createGame";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function setup() {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
@@ -11,7 +11,7 @@ function setup() {
   return { content: loaded.value.definition, game: game.value };
 }
 
-it("confirma ajuste executivo após a validação, sem criar proposta", () => {
+it("confirma ajuste executivo após a validação", () => {
   const { content, game } = setup();
   const result = commitPolicyAction(game, content, {
     id: "ajuste-aps",
@@ -21,7 +21,6 @@ it("confirma ajuste executivo após a validação, sem criar proposta", () => {
   expect(result).toMatchObject({
     ok: true,
     value: {
-      proposals: [],
       policies: expect.arrayContaining([
         expect.objectContaining({
           policyDefinitionId: "atencao-basica",
@@ -32,7 +31,7 @@ it("confirma ajuste executivo após a validação, sem criar proposta", () => {
   });
 });
 
-it("cria proposta para política sem autorização executiva corrente", () => {
+it("recusa mudança que precisa do Congresso (versão 2)", () => {
   const { content: original, game } = setup();
   const content = structuredClone(original);
   content.policies = [
@@ -49,14 +48,11 @@ it("cria proposta para política sem autorização executiva corrente", () => {
     desiredLevel: 1,
   });
   expect(result).toMatchObject({
-    ok: true,
-    value: {
-      proposals: [
-        expect.objectContaining({
-          id: "proposta-lei-nova",
-          status: "rascunho",
-        }),
-      ],
-    },
+    ok: false,
+    diagnostics: [
+      expect.objectContaining({
+        message: expect.stringContaining("Congresso"),
+      }),
+    ],
   });
 });

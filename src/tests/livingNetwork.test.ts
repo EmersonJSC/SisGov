@@ -11,7 +11,7 @@ import {
   type ResolvedPackage,
   type ScenarioGraph,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 const json = (value: object) => JSON.stringify(value);
 

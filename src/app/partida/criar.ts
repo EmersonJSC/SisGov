@@ -1,6 +1,6 @@
 import { createGame } from "../../game/createGame";
 import { prepareMonthlyContent } from "../../game/prepareMonthlyContent";
-import { loadDistributedScenario } from "../../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../../game/pais/loadScenarioPackage";
 import type { Resultado, ModoPartida, Partida } from "./tipos";
 import { falha } from "./comum";
 

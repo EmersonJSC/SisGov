@@ -6,7 +6,7 @@ import {
   resolvePackage,
   translateAuthorizedPolicies,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function example() {
   const loaded = loadDistributedScenario("testes/exemplo/cenario.json");

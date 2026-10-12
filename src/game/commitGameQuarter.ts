@@ -10,7 +10,6 @@ export function commitGameQuarter(
     ...game,
     currentTurn: game.currentTurn + 1,
     policies: prepared.policies,
-    proposals: prepared.proposals,
     execution: prepared.execution,
     ...(prepared.occurrences ? { occurrences: prepared.occurrences } : {}),
   };

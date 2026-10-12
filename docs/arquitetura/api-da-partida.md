@@ -3,7 +3,7 @@
 > **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
 
 A interface fala com o jogo **só** por `src/app/partida.ts`. Ela não importa
-nada de `src/engine/`, `src/game/`, `src/domain/` nem `src/conteudo/`.
+nada de `src/engine/`, `src/game/` nem `src/conteudo/` (o teste de camadas confere).
 Tudo o que a tela desenha sai de `verPartida`; tudo o que o jogador faz entra
 por `mudarLei`, `responderDilema` e `encerrarTurno`.
 
@@ -174,7 +174,7 @@ if (passou.ok) {
 
 ## Regras para quem mexe na interface
 
-1. Não importar `engine/`, `game/`, `domain/` nem os JSONs de `conteudo/`.
+1. Não importar `engine/`, `game/` nem os JSONs de `conteudo/`.
 2. Posição, cor e tamanho das bolhas são só da tela; nunca mudam o jogo.
 3. Se faltar algum dado na `VisaoPartida`, peça para acrescentar aqui, em vez
    de ler o motor direto.

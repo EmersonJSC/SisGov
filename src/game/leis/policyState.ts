@@ -4,7 +4,6 @@ import {
   validatePolicyLevel,
   type PolicyLevelRules,
 } from "./policyRules";
-import type { Proposal } from "./proposal";
 
 /** Implementation lifecycle; legal authority is stored separately. */
 export const policyStatuses = ["vigente", "em_revogacao", "encerrada"] as const;
@@ -14,11 +13,6 @@ export type PolicyStatus = (typeof policyStatuses)[number];
 export type LegalPolicyStatus = "vigente" | "revogada";
 
 export type PolicyOrigin =
-  | Readonly<{
-      kind: "aprovada";
-      proposalId: string;
-      turn: number;
-    }>
   | Readonly<{
       kind: "herdada";
       scenarioId: string;
@@ -98,57 +92,6 @@ function createState(
         implementedLevel: input.implementedLevel,
       },
     ],
-  };
-}
-
-/** A aprovação autoriza a política; a implantação continua sendo gradual. */
-export function createPolicyStateFromApproval(
-  id: string,
-  proposal: Proposal,
-  rules: PolicyLevelRules,
-  implementedLevel: number,
-): DomainResult<PolicyState> {
-  if (!id)
-    return domainFailure(
-      "ESTADO_INVALIDO",
-      "A política vigente precisa de ID.",
-    );
-  if (proposal.status !== "aprovada")
-    return domainFailure(
-      "DECISAO_INVALIDA",
-      "Apenas uma proposta aprovada pode criar uma política vigente.",
-    );
-  if (proposal.policyDefinitionId !== rules.policyDefinitionId)
-    return domainFailure(
-      "DEFINICAO_INVALIDA",
-      "A proposta e as regras precisam apontar para a mesma política.",
-    );
-  const authorizedAtTurn = proposal.decidedAtTurn;
-  if (authorizedAtTurn === undefined || !validTurn(authorizedAtTurn))
-    return domainFailure(
-      "ESTADO_INVALIDO",
-      "O turno de autorização é inválido.",
-    );
-  const levels = validLevels(proposal.desiredLevel, implementedLevel, rules);
-  if (!levels.ok) return levels;
-  return {
-    ok: true,
-    value: createState(
-      {
-        id,
-        policyDefinitionId: proposal.policyDefinitionId,
-        status: "vigente",
-        legalStatus: "vigente",
-        desiredLevel: proposal.desiredLevel,
-        implementedLevel,
-        origin: {
-          kind: "aprovada",
-          proposalId: proposal.id,
-          turn: authorizedAtTurn,
-        },
-      },
-      "autorizada",
-    ),
   };
 }
 

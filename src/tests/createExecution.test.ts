@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createExecution, readExecutionSnapshot } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 describe("createExecution", () => {
   it("cria partidas independentes sem alterar o pacote", () => {

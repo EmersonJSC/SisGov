@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { validatePackageCoherence } from "../engine";
 import { createGame } from "../game/createGame";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function brasil() {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
@@ -18,7 +18,6 @@ it("creates independent games from the same country without advancing simulation
 
   expect(first.value).toMatchObject({
     currentTurn: 0,
-    proposals: [],
     scenario: { id: "brasil" },
     execution: { step: 0 },
   });

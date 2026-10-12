@@ -4,7 +4,7 @@ import type {
   ResolvedPackage,
   ValidationResult,
 } from "../engine";
-import type { PolicyLevelRules } from "../domain/game";
+import type { PolicyLevelRules } from "./leis";
 
 export type PolicyDefinitionWithRules = Readonly<{
   policy: PolicyFile;

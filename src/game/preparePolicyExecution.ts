@@ -5,7 +5,7 @@ import {
   type ScenarioGraph,
   type ValidationResult,
 } from "../engine";
-import type { PolicyState } from "../domain/game";
+import type { PolicyState } from "./leis";
 
 function invalid(
   field: string,

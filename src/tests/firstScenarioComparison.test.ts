@@ -5,7 +5,7 @@ import {
   createExecution,
   translateAuthorizedPolicies,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 type TrajectoryPoint = Readonly<{
   turn: number;

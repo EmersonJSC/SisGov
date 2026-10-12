@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createExecution, exportExecution, restoreExecution } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function setup() {
   const loaded = loadDistributedScenario("testes/exemplo/cenario.json");

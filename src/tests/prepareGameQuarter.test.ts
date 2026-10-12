@@ -3,7 +3,7 @@ import { createGame } from "../game/createGame";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { commitGameQuarter } from "../game/commitGameQuarter";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 it("prepara e confirma os três meses do turno sem livro fiscal à parte (SG105)", () => {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");

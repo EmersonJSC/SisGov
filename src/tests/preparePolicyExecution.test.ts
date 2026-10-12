@@ -4,9 +4,9 @@ import {
   beginPolicyRevocation,
   createInheritedPolicyState,
   updateImplementedLevel,
-} from "../domain/game";
+} from "../game/leis";
 import { preparePolicyExecution } from "../game/preparePolicyExecution";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 it("keeps a fixed-duration effect after legal revocation and zero implementation", () => {
   const loaded = loadDistributedScenario("testes/exemplo/cenario.json");

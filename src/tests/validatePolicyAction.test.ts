@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { createGame } from "../game/createGame";
 import { validatePolicyAction } from "../game/validatePolicyAction";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function setup(randomSeed?: number) {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");

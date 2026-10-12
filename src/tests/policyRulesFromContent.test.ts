@@ -1,6 +1,6 @@
 import { expect, it } from "vitest";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function content() {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");

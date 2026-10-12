@@ -4,7 +4,7 @@ import {
   createExecution,
   translateAuthorizedPolicies,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 describe("primeiro cenário brasileiro", () => {
   it("carrega o estado herdado e calcula os índices pela rede", () => {

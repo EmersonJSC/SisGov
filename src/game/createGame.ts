@@ -8,11 +8,7 @@ import {
   type ScenarioGraph,
 } from "../engine";
 import type { ResolvedPackage } from "../engine";
-import {
-  createInheritedPolicyState,
-  type PolicyState,
-  type Proposal,
-} from "../domain/game";
+import { createInheritedPolicyState, type PolicyState } from "./leis";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 import { createRandomState, type RandomState } from "./randomState";
 import {
@@ -38,7 +34,6 @@ export type GameState = Readonly<{
     status: "novo_mandato" | "derrota";
     tieRolls: readonly number[];
   }>[];
-  proposals: readonly Proposal[];
   policies: readonly PolicyState[];
   electoralLaws: readonly ElectoralLawState[];
   political?: PoliticalGameState;
@@ -278,7 +273,6 @@ export function createGame(
       currentTurn: 0,
       gameStatus: "ativa",
       elections: [],
-      proposals: [],
       policies,
       electoralLaws,
       political,

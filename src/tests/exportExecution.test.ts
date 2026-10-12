@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createExecution, exportExecution } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 describe("exportExecution", () => {
   it("exporta identidade, execução, histórico e ocorrências sem compartilhar objetos", () => {

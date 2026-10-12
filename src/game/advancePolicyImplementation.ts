@@ -1,5 +1,5 @@
 import type { ResolvedPackage, ValidationResult } from "../engine";
-import { updateImplementedLevel, type PolicyState } from "../domain/game";
+import { updateImplementedLevel, type PolicyState } from "./leis";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 /** Abaixo desta distância relativa da meta, a lei é considerada implantada. */

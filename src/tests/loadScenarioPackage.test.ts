@@ -3,7 +3,7 @@ import {
   listDistributedScenarios,
   loadDistributedScenario,
   loadScenarioPackage,
-} from "../scenarios/loadScenarioPackage";
+} from "../game/pais/loadScenarioPackage";
 
 describe("loadDistributedScenario", () => {
   it("descobre todos os manifestos válidos sem cadastro na interface", () => {

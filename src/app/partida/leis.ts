@@ -1,7 +1,4 @@
-import {
-  changePolicyTarget,
-  createDecreedPolicyState,
-} from "../../domain/game";
+import { changePolicyTarget, createDecreedPolicyState } from "../../game/leis";
 import {
   applyRequirementFalls,
   policyInForce,

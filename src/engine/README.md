@@ -21,7 +21,7 @@ arquivos JSON de um país
   → calcular contribuições e confirmar um passo
 ```
 
-Exemplo artificial disponível em `src/scenarios/exemplo`:
+Exemplo artificial disponível em `src/conteudo/testes/exemplo`:
 
 ```text
 Material escolar, verba 20

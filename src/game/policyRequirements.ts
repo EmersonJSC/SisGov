@@ -23,7 +23,7 @@ import {
   beginPolicyRevocation,
   changePolicyTarget,
   type PolicyState,
-} from "../domain/game";
+} from "./leis";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 export type PolicyRequirement = Readonly<{

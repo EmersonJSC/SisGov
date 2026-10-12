@@ -76,8 +76,8 @@ O código fica menor e com camadas claras. Nada muda para quem joga.
 
 - [x] **V1-01** Documentos novos e antigos desativados (P). 12/out, `94f1134`, verificador de links e `npm run check` do autor
 - [x] **V1-02** Tirar código morto e restos do D4 (P). 12/out, `6e29d15`, busca sem D4 e `npm run check` do autor
-- [ ] **V1-03** Dividir a partida em módulos (M). Feito em 12/out, commit local; aguarda o `npm run check` do autor
-- [ ] **V1-04** Tirar o parlamento da versão 1 e fixar as camadas (M)
+- [x] **V1-03** Dividir a partida em módulos (M). 12/out, `f994ad4`, 17 testes da partida sem alteração e `npm run check` do autor
+- [ ] **V1-04** Tirar o parlamento da versão 1 e fixar as camadas (M). Feito em 12/out, commit local; estado do Brasil após 4 turnos idêntico, teste de camadas; aguarda o `npm run check` do autor
 
 ### Marco B. Formato e país (v0.2)
 

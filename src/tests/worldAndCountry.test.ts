@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { createGame } from "../game/createGame";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 const worldFiles = import.meta.glob<string>("../conteudo/mundo/**/*.json", {
   eager: true,

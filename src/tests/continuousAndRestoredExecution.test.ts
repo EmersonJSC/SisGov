@@ -9,7 +9,7 @@ import {
   type EngineExecution,
   type ScenarioGraph,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 describe("execução contínua e retomada", () => {
   it("mantém trajetória, explicações, histórico e pendências iguais", () => {

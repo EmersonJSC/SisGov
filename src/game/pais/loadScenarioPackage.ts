@@ -7,8 +7,8 @@ import {
   type PackageAnalysis,
   type ScenarioGraph,
   type ValidationResult,
-} from "../engine";
-import type { ResolvedPackage } from "../engine";
+} from "../../engine";
+import type { ResolvedPackage } from "../../engine";
 
 export type LoadedScenarioPackage = Readonly<{
   definition: ResolvedPackage;
@@ -38,12 +38,12 @@ export function loadScenarioPackage(
 
 const distributedFiles = Object.fromEntries(
   Object.entries(
-    import.meta.glob<string>("../conteudo/**/*.json", {
+    import.meta.glob<string>("../../conteudo/**/*.json", {
       eager: true,
       query: "?raw",
       import: "default",
     }),
-  ).map(([path, text]) => [path.slice("../conteudo/".length), text]),
+  ).map(([path, text]) => [path.slice("../../conteudo/".length), text]),
 );
 
 export function loadDistributedScenario(

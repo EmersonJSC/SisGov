@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { translateAuthorizedPolicies } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function exampleScenario() {
   const loaded = loadDistributedScenario("testes/exemplo/cenario.json");

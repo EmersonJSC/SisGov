@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { createExecution, validateContentFile } from "../engine";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 function scenario() {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");

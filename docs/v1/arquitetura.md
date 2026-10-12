@@ -29,9 +29,11 @@
 └──────────────────────┘   └──────────────────────────────┘
 ```
 
-**Regra de dependência:** cada camada só importa a de baixo. `ui` só fala com
-`app`; `app` com `jogo`; `jogo` com `motor`; `motor` com nada do projeto. Um teste
-automático (V1-04) quebra se alguém importar no sentido errado.
+**Regra de dependência:** nenhuma camada importa uma de cima. `ui` só fala com
+`app`; `app` usa `jogo` e, por enquanto, tipos e explicações do `motor`; `jogo` usa
+`motor`; `motor` não usa nada do projeto. Só `app` e `jogo` leem os JSONs de
+`conteudo/`. O teste `src/tests/camadas.test.ts` (V1-04) quebra se alguém importar
+no sentido errado.
 
 Os nomes das pastas continuam `engine/` e `game/` para não mexer em centenas de
 importações sem ganho. `domain/` e `scenarios/` deixam de existir: o que serve vai

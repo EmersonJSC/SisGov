@@ -19,11 +19,10 @@ Documentos em `docs/desativado/` são histórico e não são para seguir.
 ## Estrutura
 
 - `src/engine`: motor de simulação (variáveis, ligações, mecanismos). Não conhece leis nem países.
-- `src/game`: regras do jogo (leis, turno, ocorrências, ministérios).
+- `src/game`: regras do jogo (leis em `game/leis`, leitura do país em `game/pais`, turno, ocorrências, ministérios).
 - `src/app`: fachada da partida, a única porta entre a tela e o jogo.
 - `src/ui`: componentes React (mapa, janelas, painéis).
 - `src/conteudo`: conteúdo em JSON, `mundo/` (vale para todos os países) e `paises/` (estado inicial de cada país).
-- `src/domain` e `src/scenarios`: saem na reestruturação (V1-04).
 - `scripts/`: ferramentas de conteúdo (fichas e rede).
 - `src/tests`: testes automatizados (Vitest).
 

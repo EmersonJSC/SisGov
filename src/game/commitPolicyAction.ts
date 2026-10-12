@@ -3,7 +3,7 @@ import type {
   ResolvedPackage,
   ValidationResult,
 } from "../engine";
-import { changePolicyTarget, createProposal } from "../domain/game";
+import { changePolicyTarget } from "./leis";
 import type { GameState } from "./createGame";
 import { applyRequirementFalls } from "./policyRequirements";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
@@ -51,23 +51,13 @@ export function commitPolicyAction(
   if (!definition.ok) return definition;
   const { rules } = definition.value;
   if (!command.id.trim()) return invalid("id", "A ação precisa ter ID.");
-  if (validated.value.route === "proposta") {
-    const proposal = createProposal(
-      {
-        id: command.id,
-        policyDefinitionId: command.policyId,
-        desiredLevel: command.desiredLevel,
-        createdAtTurn: game.currentTurn,
-      },
-      rules,
-      game.proposals,
+  // V1-04: o Congresso fica para a versão 2; sem rota executiva, a mudança
+  // é recusada em vez de virar uma proposta que nunca é votada.
+  if (validated.value.route === "proposta")
+    return invalid(
+      "policy",
+      "Esta mudança precisa do Congresso, que entra na versão 2.",
     );
-    if (!proposal.ok) return invalid("proposal", proposal.error.message);
-    return {
-      ok: true,
-      value: { ...game, proposals: [...game.proposals, proposal.value] },
-    };
-  }
   const index = game.policies.findIndex(
     (state) => state.policyDefinitionId === command.policyId,
   );

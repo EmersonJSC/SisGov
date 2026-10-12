@@ -5,7 +5,7 @@ import {
   createExecution,
   translateAuthorizedPolicies,
 } from "../engine";
-import { loadDistributedScenario } from "../scenarios/loadScenarioPackage";
+import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
 describe("tempo das políticas no exemplo", () => {
   it("preserva os resultados durante o atraso e degrada gradualmente depois", () => {
