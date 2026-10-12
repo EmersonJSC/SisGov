@@ -91,7 +91,7 @@ A ficha de lei v3, a configuração do país e os índices com situações.
 
 Os 20 segmentos do eleitorado e os 20 grupos de pressão.
 
-- [ ] **V1-08** Segmentos do eleitorado e perfis sintéticos (M)
+- [x] **V1-08** Segmentos do eleitorado e perfis sintéticos (M)
 - [ ] **V1-09** Grupos de pressão (M)
 
 ### Marco D. Ciclo do mandato (v0.4)
