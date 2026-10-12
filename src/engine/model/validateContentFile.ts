@@ -162,6 +162,7 @@ function validateManifest(
       "situacoes",
       "dilemas",
       "perfis",
+      "aprovacaoPorPerfis",
       "organizacaoPolitica",
       "unidadeTemporal",
       "respostaDasBolhas",
@@ -279,6 +280,8 @@ function validateManifest(
         requiredStringArray(profile, file, "interesses", diagnostics);
       });
   }
+  if (value.aprovacaoPorPerfis !== undefined)
+    validateProfileApproval(value.aprovacaoPorPerfis, file, diagnostics);
   if (
     diagnostics.length > 0 ||
     !nome ||
@@ -289,6 +292,95 @@ function validateManifest(
   )
     return undefined;
   return value as ScenarioManifest;
+}
+
+/** Aprovação pelos perfis (V1-08): forma, k positivo e pesos somando 1. */
+function validateProfileApproval(
+  value: unknown,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+) {
+  const field = "aprovacaoPorPerfis";
+  if (!isObject(value)) {
+    diagnostics.push(
+      diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+    );
+    return;
+  }
+  validateKnownFields(
+    value,
+    file,
+    ["alvo", "k", "pesos", "perfis", "eixos"],
+    diagnostics,
+  );
+  requiredString(value, file, `${field}.alvo`, diagnostics);
+  const k = requiredNumber(value, file, `${field}.k`, diagnostics);
+  if (k !== undefined && k <= 0)
+    diagnostics.push(
+      diagnostic(file, `${field}.k`, "VALOR_INVALIDO", "Use k maior que 0."),
+    );
+  const weights = isObject(value.pesos) ? value.pesos : undefined;
+  if (
+    !weights ||
+    Object.values(weights).some(
+      (weight) =>
+        typeof weight !== "number" || !Number.isFinite(weight) || weight <= 0,
+    )
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        `${field}.pesos`,
+        "VALOR_INVALIDO",
+        "Deve ligar cada segmento a um peso maior que 0.",
+      ),
+    );
+  if (!Array.isArray(value.perfis) || value.perfis.length === 0) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        `${field}.perfis`,
+        "VALOR_INVALIDO",
+        "Deve ser uma lista de perfis.",
+      ),
+    );
+    return;
+  }
+  let total = 0;
+  value.perfis.forEach((profile, index) => {
+    const at = `${field}.perfis.${index}`;
+    if (
+      !isObject(profile) ||
+      typeof profile.peso !== "number" ||
+      !Number.isFinite(profile.peso) ||
+      profile.peso < 0 ||
+      !Array.isArray(profile.segmentos) ||
+      profile.segmentos.length === 0 ||
+      profile.segmentos.some(
+        (id) => typeof id !== "string" || weights?.[id] === undefined,
+      )
+    ) {
+      diagnostics.push(
+        diagnostic(
+          file,
+          at,
+          "VALOR_INVALIDO",
+          "Cada perfil tem peso (0 ou mais) e segmentos que constam em pesos.",
+        ),
+      );
+      return;
+    }
+    total += profile.peso;
+  });
+  if (Math.abs(total - 1) > 0.0001)
+    diagnostics.push(
+      diagnostic(
+        file,
+        `${field}.perfis`,
+        "VALOR_INVALIDO",
+        `Os pesos dos perfis devem somar 1 (somam ${total}).`,
+      ),
+    );
 }
 
 function validateBubbleResponse(

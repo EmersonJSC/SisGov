@@ -45,7 +45,8 @@
     "codigo-florestal--conflitos-fundiarios",
     "codigo-florestal--gasto-publico",
     "codigo-florestal--grupo-agro",
-    "codigo-florestal--grupo-progressistas"
+    "codigo-florestal--grupo-progressistas",
+    "codigo-florestal--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

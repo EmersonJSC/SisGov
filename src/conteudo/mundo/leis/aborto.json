@@ -53,7 +53,9 @@
     "aborto--gasto-publico",
     "aborto--grupo-conservadores",
     "aborto--grupo-progressistas",
-    "aborto--grupo-servidores"
+    "aborto--grupo-servidores",
+    "aborto--grupo-evangelicos",
+    "aborto--grupo-catolicos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

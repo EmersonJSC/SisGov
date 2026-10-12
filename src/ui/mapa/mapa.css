@@ -2538,6 +2538,26 @@ button {
   gap: 4px;
 }
 
+/* V1-08: os segmentos vêm por eixo; a rolagem é da lista inteira. */
+.eixos-grupos {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.eixos-grupos .lista-grupos {
+  overflow: visible;
+}
+
+.eixo-grupos h4 {
+  margin: 8px 12px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
 .lista-grupos li {
   border-radius: 10px;
   padding: 4px 6px 6px;

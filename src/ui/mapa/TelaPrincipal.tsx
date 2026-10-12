@@ -555,7 +555,7 @@ export function TelaPrincipal() {
 
   const { base, indice, fundo } = estrutura.current;
   const contas = visao.contas;
-  // SG143: aprovação = média dos grupos sociais pelo peso no eleitorado
+  // V1-08: aprovação = parte do eleitorado que aprova, pelos perfis
   const aprovacao = visao.bolhas.find((b) => b.id === "popularidade_governo");
   const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
   const gruposContentes = grupos.filter((g) => g.valor >= 50).length;
@@ -603,7 +603,7 @@ export function TelaPrincipal() {
               icone={ICONE_INTERFACE.aprovacao}
               rotulo="Aprovação"
               valor={`${aprovacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`}
-              detalhe={`${gruposContentes}/${grupos.length} grupos satisfeitos`}
+              detalhe={`${gruposContentes}/${grupos.length} segmentos satisfeitos`}
               classe={
                 aprovacao.valor >= 50
                   ? "boa"
@@ -611,7 +611,7 @@ export function TelaPrincipal() {
                     ? "neutra"
                     : "ruim"
               }
-              titulo="Média da satisfação dos grupos sociais, pelo peso de cada um no eleitorado. Clique para ver cada grupo."
+              titulo="Parte do eleitorado que aprova o governo. Cada perfil de eleitor aprova conforme a satisfação dos segmentos em que está (renda, ocupação, valores, religião, território, idade e família, meio ambiente). Clique para ver cada segmento."
               onClick={() => selecionar(aprovacao.id)}
             />
           ) : null}

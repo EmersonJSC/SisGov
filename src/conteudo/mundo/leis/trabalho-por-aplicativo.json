@@ -48,7 +48,8 @@
     "trabalho-por-aplicativo--grupo-jovens",
     "trabalho-por-aplicativo--grupo-pobres",
     "trabalho-por-aplicativo--grupo-progressistas",
-    "trabalho-por-aplicativo--grupo-trabalhadores"
+    "trabalho-por-aplicativo--grupo-trabalhadores",
+    "trabalho-por-aplicativo--grupo-informais"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

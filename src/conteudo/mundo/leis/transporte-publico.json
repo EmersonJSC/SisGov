@@ -44,7 +44,8 @@
     "transporte-publico--gasto-publico",
     "transporte-publico--grupo-classe-media",
     "transporte-publico--grupo-jovens",
-    "transporte-publico--grupo-trabalhadores"
+    "transporte-publico--grupo-trabalhadores",
+    "transporte-publico--grupo-periferias"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

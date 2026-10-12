@@ -77,6 +77,26 @@ export function validatePackageCoherence(
       ...lawInfluenceNodes(content.policies),
     ].map((variable) => [variable.id, variable]),
   );
+  const approval = content.manifest.aprovacaoPorPerfis;
+  if (approval) {
+    if (variablesById.get(approval.alvo)?.tipo !== "calculado")
+      diagnostics.push(
+        issue(
+          content.manifest.id,
+          "aprovacaoPorPerfis.alvo",
+          `O alvo da aprovação precisa ser um índice: ${approval.alvo}.`,
+        ),
+      );
+    for (const id of Object.keys(approval.pesos))
+      if (variablesById.get(id)?.tipo !== "grupo")
+        diagnostics.push(
+          issue(
+            content.manifest.id,
+            "aprovacaoPorPerfis.pesos",
+            `Segmento inexistente: ${id}.`,
+          ),
+        );
+  }
   const initialStateFile = content.pathsById[content.initialState.id];
   const policiesById = new Map(
     content.policies.map((policy) => [policy.id, policy]),

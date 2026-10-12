@@ -29,7 +29,8 @@
     "tributacao-dividendos--grupo-pequenos-negocios",
     "tributacao-dividendos--grupo-progressistas",
     "tributacao-dividendos--grupo-trabalhadores",
-    "tributacao-dividendos--arrecadacao"
+    "tributacao-dividendos--arrecadacao",
+    "tributacao-dividendos--grupo-ricos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

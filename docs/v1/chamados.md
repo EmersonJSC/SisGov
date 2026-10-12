@@ -220,9 +220,9 @@
 **Aceite**
 
 - [x] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/populacao.md`)
-- [ ] Soma dos pesos dos perfis = 100%
-- [ ] Lei que agrada um segmento sobe a satisfação dele no turno certo
-- [ ] Aprovação inicial do Brasil perto da real (faixa definida no teste)
+- [x] Soma dos pesos dos perfis = 100%
+- [x] Lei que agrada um segmento sobe a satisfação dele no turno certo
+- [x] Aprovação inicial do Brasil perto da real (faixa definida no teste)
 
 **Você vê.** Painel com os 20 segmentos.
 

@@ -47,7 +47,8 @@
     "precificacao-carbono--grupo-empresarios",
     "precificacao-carbono--grupo-jovens",
     "precificacao-carbono--grupo-progressistas",
-    "precificacao-carbono--grupo-trabalhadores"
+    "precificacao-carbono--grupo-trabalhadores",
+    "precificacao-carbono--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

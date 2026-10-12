@@ -234,8 +234,13 @@ export type VisaoGrupo = Readonly<{
   nome: string;
   /** Satisfação de 0 a 100. */
   satisfacao: number;
-  /** Parte do eleitorado (0–1); a aprovação é a média pelos pesos. */
+  /**
+   * Parte do eleitorado (0–1) que está no segmento (V1-08). Cada eleitor
+   * está em vários segmentos, então as partes não somam 1.
+   */
   peso: number;
+  /** Eixo do segmento (renda, ocupação, religião…), para a tela agrupar. */
+  eixo?: Readonly<{ id: string; nome: string; ordem: number }>;
   /** O que mais aumenta a satisfação, do maior para o menor. */
   gosta: readonly VisaoMotivo[];
   /** O que mais derruba a satisfação, do maior para o menor. */

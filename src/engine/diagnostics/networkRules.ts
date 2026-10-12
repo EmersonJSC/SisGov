@@ -43,6 +43,12 @@ export function checkNetworkRules(
       influencing.add(relation.normalization.divisor);
     if (!isContextNode(relation.originId)) influenced.add(relation.targetId);
   }
+  // Aprovação pelos perfis (V1-08): o alvo é influenciado pelos segmentos.
+  const approval = graph.profileApproval;
+  if (approval) {
+    influenced.add(approval.targetId);
+    for (const id of approval.inputs) influencing.add(id);
+  }
   const modulated = (lawId: string) =>
     influenced.has(efficacyNodeId(lawId)) ||
     graph.relations.some(

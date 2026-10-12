@@ -194,6 +194,43 @@ com filhos no atraso da ligação.
 4. **Regras dos 9 segmentos novos** (seção 4): alguma linha errada ou
    faltando? *(Nenhuma)*
 
+## 9. Como ficou (implementação, 12/out)
+
+- **Motor:** `aprovacaoPorPerfis` no manifesto (alvo, `k`, peso do eixo de
+  cada segmento, perfis). O mecanismo está em
+  `src/engine/mechanisms/profileApproval.ts`; a ordem das bolhas põe a
+  aprovação depois dos 20 segmentos. As 11 ligações `afim` antigas foram
+  movidas para `docs/desativado/aprovacao-media/`.
+- **Mundo:** `mundo/populacao.json` liga atributo a segmento e dá o peso de
+  cada eixo e o `k`. **País:** `paises/brasil/populacao.json` traz os totais
+  com fonte e as afinidades (hipóteses da semente); `npm run
+  populacao:gerar` grava `perfis.json`.
+- **Corte dos perfis: 0,01%, não 0,05%.** Com 0,05% o corte levava metade
+  do eleitorado e os totais deixavam de bater (erro de 2 pontos); com 0,01%
+  saem 13% e o novo ajuste volta a bater (erro < 1e-9). Sobram 2.090
+  perfis; na carga, os que caem nos mesmos segmentos viram um só: 1.748.
+- **`k` = 12** (no mundo). A aprovação inicial quase não depende de `k`,
+  porque a satisfação inicial de cada segmento com pesquisa sai da própria
+  pesquisa (`50 + k × logit(aprova)`). O `k` diz quanto a aprovação reage:
+  com 12, cada ponto de satisfação em todos os segmentos vale cerca de
+  2 pontos de aprovação (o modelo antigo dava 1). A série do `rede:calibrar`
+  ajusta isso depois.
+- **Satisfação inicial (Quaest, 23 a 26/jan/2025, aprova 47%):** pobres
+  (até 2 SM, 56%), classe média (2 a 5 SM, 43%), ricos (mais de 5 SM, 39%),
+  aposentados (60+, 52%), jovens (16 a 34, 45%), evangélicos (37%),
+  católicos (52%). Inferidos: informais e agricultura familiar pela faixa
+  até 2 SM; famílias com filhos pela faixa de 35 a 59 (46%); ambientalistas,
+  periferias e interior pela média nacional (47%). Os outros 7 seguem como
+  estavam. Resultado: **48,3%** de aprovação no turno 0.
+- **Ligações dos 9 novos:** 62, geradas por `npm run populacao:ligacoes`.
+  Índice sem ligação para copiar recebe ±0,3 pelo sentido dele. Ficaram de
+  fora: Periferias ← polícias dos estados (nenhum segmento de origem tem
+  essa ligação). Ricos só recebem ligações que derrubam a satisfação
+  (impostos, juros, risco): ainda não há nada de que gostem.
+- **Totais a conferir:** renda, filhos, valores, ambientalista, território e
+  a faixa de 16 a 29 são estimativas; cada uma diz isso na fonte, em
+  `populacao.json`.
+
 ## Fontes
 
 - Deming, W. E.; Stephan, F. F. (1940). *On a least squares adjustment of a
@@ -210,3 +247,7 @@ com filhos no atraso da ligação.
   electoral outcomes.* Annual Review of Political Science 3.
 - IBGE: PNAD Contínua; Censo Demográfico 2022 (religião, território). TSE:
   estatísticas do eleitorado.
+- Genial/Quaest, pesquisa de 23 a 26/jan/2025 (4.500 entrevistas):
+  <https://www.folhape.com.br/politica/aprovacao-de-lula-cai-5-pp-de-52-para-47-aponta-pesquisa/387067/>
+- TSE, eleitorado de mar/2026 (60+ = 23,2%):
+  <https://www.opovo.com.br/noticias/politica/2026/04/15/numero-de-eleitores-com-mais-de-60-anos-cresceu-74-aponta-pesquisa.html>

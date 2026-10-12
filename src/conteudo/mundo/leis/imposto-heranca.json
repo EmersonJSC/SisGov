@@ -30,7 +30,8 @@
     "imposto-heranca--grupo-jovens",
     "imposto-heranca--grupo-pobres",
     "imposto-heranca--grupo-progressistas",
-    "imposto-heranca--arrecadacao"
+    "imposto-heranca--arrecadacao",
+    "imposto-heranca--grupo-ricos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

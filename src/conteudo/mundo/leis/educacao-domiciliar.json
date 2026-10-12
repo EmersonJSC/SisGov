@@ -42,7 +42,9 @@
     "educacao-domiciliar--gasto-publico",
     "educacao-domiciliar--grupo-conservadores",
     "educacao-domiciliar--grupo-progressistas",
-    "educacao-domiciliar--grupo-servidores"
+    "educacao-domiciliar--grupo-servidores",
+    "educacao-domiciliar--grupo-evangelicos",
+    "educacao-domiciliar--grupo-catolicos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

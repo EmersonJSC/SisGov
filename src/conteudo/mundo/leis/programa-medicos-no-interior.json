@@ -47,7 +47,8 @@
     "programa-medicos-no-interior--grupo-jovens",
     "programa-medicos-no-interior--grupo-pobres",
     "programa-medicos-no-interior--grupo-progressistas",
-    "programa-medicos-no-interior--grupo-servidores"
+    "programa-medicos-no-interior--grupo-servidores",
+    "programa-medicos-no-interior--grupo-interior"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -87,8 +87,35 @@ export type ValoresDoPais = {
 /** `populacao.json`: segmentos e grupos de pressão (V1-08 e V1-09). */
 export type PopulacaoDoPais = {
   tipo: "pais-populacao";
-  /** Perfis de interesse antigos; viram segmentos na V1-08. */
+  /** Perfis eleitorais antigos; ficam até a eleição nova (V1-12). */
   perfis?: ScenarioManifest["perfis"];
+  /** Totais de cada atributo do eleitorado, com fonte (lidos pelo gerador). */
+  totais?: Record<string, { fonte: string; valores: Record<string, number> }>;
+  /** Hipóteses da semente do ajuste (lidas pelo gerador). */
+  afinidades?: { se: Record<string, string>; fator: number; motivo: string }[];
+  afinidadesNota?: string;
+};
+
+/** `perfis.json`: perfis do eleitorado gerados por `npm run populacao:gerar`. */
+export type PerfisDoPais = {
+  tipo: "pais-perfis";
+  atributos: string[];
+  valores: Record<string, string[]>;
+  /** Cada perfil: [peso, índice do valor de cada atributo, na ordem]. */
+  perfis: number[][];
+};
+
+/** `mundo/populacao.json`: atributos viram segmentos; peso de cada eixo. */
+export type PopulacaoDoMundo = {
+  tipo: "mundo-populacao";
+  alvo: string;
+  k: number;
+  eixos: {
+    id: string;
+    nome: string;
+    peso: number;
+    atributos: Record<string, Record<string, string>>;
+  }[];
 };
 
 /** `historia.json`: abertura, metas do mandato e lugares para os textos. */

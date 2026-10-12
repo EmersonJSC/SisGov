@@ -45,7 +45,8 @@
     "energia-nuclear--gasto-publico",
     "energia-nuclear--grupo-empresarios",
     "energia-nuclear--grupo-progressistas",
-    "energia-nuclear--grupo-servidores"
+    "energia-nuclear--grupo-servidores",
+    "energia-nuclear--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

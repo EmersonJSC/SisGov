@@ -53,7 +53,8 @@
     "politica-de-natalidade--gasto-publico",
     "politica-de-natalidade--grupo-classe-media",
     "politica-de-natalidade--grupo-conservadores",
-    "politica-de-natalidade--grupo-progressistas"
+    "politica-de-natalidade--grupo-progressistas",
+    "politica-de-natalidade--grupo-familias-com-filhos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

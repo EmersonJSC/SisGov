@@ -45,7 +45,8 @@
     "licenca-parental--grupo-classe-media",
     "licenca-parental--grupo-empresarios",
     "licenca-parental--grupo-pequenos-negocios",
-    "licenca-parental--grupo-progressistas"
+    "licenca-parental--grupo-progressistas",
+    "licenca-parental--grupo-familias-com-filhos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

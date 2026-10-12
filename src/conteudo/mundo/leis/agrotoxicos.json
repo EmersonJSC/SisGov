@@ -50,7 +50,9 @@
     "agrotoxicos--grupo-agro",
     "agrotoxicos--grupo-pobres",
     "agrotoxicos--grupo-progressistas",
-    "agrotoxicos--grupo-servidores"
+    "agrotoxicos--grupo-servidores",
+    "agrotoxicos--grupo-agricultura-familiar",
+    "agrotoxicos--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

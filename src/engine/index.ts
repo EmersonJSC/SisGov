@@ -62,6 +62,7 @@ export type {
   PolicyTier,
   PolicyCatalogFile,
   PoliticalOrganizationFile,
+  ProfileApproval,
   ScenarioManifest,
   VariableDefinition,
   VariableMeasure,

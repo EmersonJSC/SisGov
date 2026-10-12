@@ -6834,9 +6834,33 @@
       "saida": 24
     },
     {
+      "id": "grupo_agricultura_familiar",
+      "tipo": "grupo",
+      "nome": "Agricultura familiar",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "grupo_agro",
       "tipo": "grupo",
-      "nome": "Agro",
+      "nome": "Agronegócio",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_ambientalistas",
+      "tipo": "grupo",
+      "nome": "Ambientalistas",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -6849,6 +6873,18 @@
       "id": "grupo_aposentados",
       "tipo": "grupo",
       "nome": "Aposentados",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_catolicos",
+      "tipo": "grupo",
+      "nome": "Católicos",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -6894,6 +6930,54 @@
       "avaliacao": "maior_melhor"
     },
     {
+      "id": "grupo_evangelicos",
+      "tipo": "grupo",
+      "nome": "Evangélicos",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_familias_com_filhos",
+      "tipo": "grupo",
+      "nome": "Famílias com filhos",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_informais",
+      "tipo": "grupo",
+      "nome": "Informais e de aplicativo",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_interior",
+      "tipo": "grupo",
+      "nome": "Interior",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "grupo_jovens",
       "tipo": "grupo",
       "nome": "Jovens",
@@ -6908,7 +6992,19 @@
     {
       "id": "grupo_pequenos_negocios",
       "tipo": "grupo",
-      "nome": "Pequenos negócios",
+      "nome": "Pequenos empreendedores",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_periferias",
+      "tipo": "grupo",
+      "nome": "Periferias das metrópoles",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -6942,6 +7038,18 @@
       "avaliacao": "maior_melhor"
     },
     {
+      "id": "grupo_ricos",
+      "tipo": "grupo",
+      "nome": "Ricos",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "grupo_servidores",
       "tipo": "grupo",
       "nome": "Servidores públicos",
@@ -6956,7 +7064,7 @@
     {
       "id": "grupo_trabalhadores",
       "tipo": "grupo",
-      "nome": "Trabalhadores",
+      "nome": "Trabalhadores com carteira",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
@@ -7545,7 +7653,10 @@
       "area": "Grupos sociais",
       "avaliacao": "maior_melhor",
       "pilar": 3,
-      "medida": { "unidade": "% que aprova o governo", "tecnico": true }
+      "medida": {
+        "unidade": "% que aprova o governo",
+        "tecnico": true
+      }
     },
     {
       "id": "poupanca_domestica",

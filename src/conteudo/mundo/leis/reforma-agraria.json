@@ -46,7 +46,8 @@
     "reforma-agraria--grupo-conservadores",
     "reforma-agraria--grupo-empresarios",
     "reforma-agraria--grupo-pobres",
-    "reforma-agraria--grupo-progressistas"
+    "reforma-agraria--grupo-progressistas",
+    "reforma-agraria--grupo-agricultura-familiar"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

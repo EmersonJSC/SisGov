@@ -2,6 +2,7 @@ import type { ValidationResult } from "../diagnostics/contentDiagnostic";
 import type { GraphRelation, ScenarioGraph } from "../graph/buildGraph";
 import { graphIndex } from "../graph/graphIndex";
 import { calculateContribution } from "../mechanisms/calculateContribution";
+import { profileApproval } from "../mechanisms/profileApproval";
 import { updateStock, type StockRate } from "../mechanisms/updateStock";
 import { efficacyNodeId, isLawNode, lawNodeBase } from "../model/lawNodes";
 import type { VariableDefinition } from "../model/contentTypes";
@@ -47,6 +48,8 @@ export type TargetExplanation = Readonly<{
   targetValue: number;
   /** O resultado bateu no limite do domínio. */
   limited: boolean;
+  /** Parte que veio dos perfis do eleitorado (aprovação, V1-08). */
+  profileApproval?: number;
   result: number;
 }>;
 
@@ -184,6 +187,12 @@ export function calculatedBubbleOrder(graph: ScenarioGraph): readonly string[] {
     .filter((id) => isCalculatedBubble(graph, id))
     .sort((left, right) => left.localeCompare(right));
   const pending = new Map(bubbles.map((id) => [id, new Set<string>()]));
+  // A aprovação pelos perfis lê os segmentos do mesmo mês (V1-08).
+  const approval = graph.profileApproval;
+  if (approval && pending.has(approval.targetId))
+    for (const id of approval.inputs)
+      if (id !== approval.targetId && pending.has(id))
+        pending.get(approval.targetId)!.add(id);
   for (const relation of graph.relations) {
     if (relation.delaySteps > 0 || !pending.has(relation.targetId)) continue;
     // A origem e os nós da normalização (divisor, fator) entram antes.
@@ -386,6 +395,7 @@ export function computeNetwork(
     base: number,
     raw: number,
     contributions: ContributionExplanation[],
+    fromProfiles?: number,
   ) => {
     const node = graph.nodesById[targetId];
     // Situação (V1-07): surge com a soma em `entrada` ou mais e só acaba com
@@ -422,6 +432,7 @@ export function computeNetwork(
       rawValue: raw,
       targetValue: target,
       limited: target !== emerged,
+      ...(fromProfiles === undefined ? {} : { profileApproval: fromProfiles }),
       result,
     });
   };
@@ -435,9 +446,29 @@ export function computeNetwork(
   }
 
   // 2. Bolhas em cadeia: sem valor próprio, só o que recebem.
+  const approval = content.manifest.aprovacaoPorPerfis;
   for (const id of calculatedBubbleOrder(graph)) {
     const result = explain(id, "rede");
     if (!result.ok) return result;
+    if (approval?.alvo === id) {
+      const fromProfiles = profileApproval(
+        approval,
+        (segment) => next[segment],
+      );
+      if (fromProfiles === undefined)
+        return failure(
+          `valores.${id}`,
+          "Um segmento dos perfis do eleitorado não tem valor.",
+        );
+      settle(
+        id,
+        0,
+        result.value.sum + fromProfiles,
+        result.value.contributions,
+        fromProfiles,
+      );
+      continue;
+    }
     settle(id, 0, result.value.sum, result.value.contributions);
   }
 

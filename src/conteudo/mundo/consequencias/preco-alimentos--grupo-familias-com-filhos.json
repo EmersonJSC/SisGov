@@ -1,0 +1,17 @@
+{
+  "id": "preco-alimentos--grupo-familias-com-filhos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "preco_alimentos",
+  "alvo": "grupo_familias_com_filhos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.2,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

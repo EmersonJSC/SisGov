@@ -1,0 +1,17 @@
+{
+  "id": "queimadas--grupo-ambientalistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "queimadas",
+  "alvo": "grupo_ambientalistas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

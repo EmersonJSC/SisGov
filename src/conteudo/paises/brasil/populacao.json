@@ -19,5 +19,238 @@
       "peso": 0.45,
       "interesses": ["violência", "saldo disponível", "saúde", "proteção"]
     }
-  ]
+  ],
+  "totais": {
+    "renda": {
+      "fonte": "PNAD Contínua 2024 (IBGE), rendimento domiciliar per capita; faixas aproximadas: pobre até 1 salário mínimo per capita, rica no décimo mais alto. A conferir.",
+      "valores": {
+        "pobre": 0.4,
+        "media": 0.45,
+        "rica": 0.15
+      }
+    },
+    "ocupacao": {
+      "fonte": "PNAD Contínua 2024 (IBGE): 103 mi ocupados, 39 mi com carteira, 12,5 mi no setor público, 4,3 mi empregadores, informalidade de 38,6%; Censo Agropecuário 2017 para a agricultura familiar; INSS para aposentados. Dividido pelo eleitorado de 156 mi. Aproximação a conferir.",
+      "valores": {
+        "carteira": 0.25,
+        "informal": 0.2,
+        "servidor": 0.08,
+        "empresario": 0.02,
+        "pequeno-empreendedor": 0.04,
+        "agro-patronal": 0.007,
+        "agricultura-familiar": 0.05,
+        "aposentado": 0.19,
+        "fora": 0.163
+      }
+    },
+    "idade": {
+      "fonte": "TSE, eleitorado de mar/2026: 60 anos ou mais = 23,2% (36,2 mi de 156,2 mi). A faixa de 16 a 29 é estimativa a conferir.",
+      "valores": {
+        "16-29": 0.2,
+        "30-59": 0.568,
+        "60+": 0.232
+      }
+    },
+    "filhos": {
+      "fonte": "Estimativa a conferir na PNAD Contínua (adultos que moram com filho menor de 18 anos).",
+      "valores": {
+        "com": 0.38,
+        "sem": 0.62
+      }
+    },
+    "religiao": {
+      "fonte": "Censo 2022 (IBGE), pessoas de 10 anos ou mais: católicos 56,7%, evangélicos 26,9%, outras e sem religião 16,4%.",
+      "valores": {
+        "evangelica": 0.269,
+        "catolica": 0.567,
+        "outra": 0.164
+      }
+    },
+    "valores": {
+      "fonte": "Estimativa a conferir em pesquisa de autoposicionamento (Datafolha, Quaest).",
+      "valores": {
+        "progressista": 0.3,
+        "centro": 0.3,
+        "conservador": 0.4
+      }
+    },
+    "ambientalista": {
+      "fonte": "Estimativa a conferir: quem põe o meio ambiente entre as prioridades do país em pesquisas de opinião.",
+      "valores": {
+        "sim": 0.2,
+        "nao": 0.8
+      }
+    },
+    "territorio": {
+      "fonte": "Censo 2022 (IBGE): população das regiões metropolitanas e das periferias delas; divisão aproximada a conferir.",
+      "valores": {
+        "periferia": 0.22,
+        "metropole": 0.2,
+        "interior": 0.58
+      }
+    }
+  },
+  "afinidades": [
+    {
+      "se": {
+        "ocupacao": "aposentado",
+        "idade": "16-29"
+      },
+      "fator": 0,
+      "motivo": "Não há aposentado jovem no eleitorado, em número que conte."
+    },
+    {
+      "se": {
+        "ocupacao": "aposentado",
+        "idade": "30-59"
+      },
+      "fator": 0.25,
+      "motivo": "Aposentadoria antes dos 60 é minoria."
+    },
+    {
+      "se": {
+        "ocupacao": "aposentado",
+        "idade": "60+"
+      },
+      "fator": 4,
+      "motivo": "A maior parte das pessoas com 60 anos ou mais é aposentada."
+    },
+    {
+      "se": {
+        "idade": "60+",
+        "filhos": "com"
+      },
+      "fator": 0.1,
+      "motivo": "Poucas pessoas com 60 anos ou mais moram com filho menor."
+    },
+    {
+      "se": {
+        "idade": "16-29",
+        "filhos": "com"
+      },
+      "fator": 0.6,
+      "motivo": "Menos jovens já têm filhos."
+    },
+    {
+      "se": {
+        "renda": "rica",
+        "ocupacao": "informal"
+      },
+      "fator": 0.15,
+      "motivo": "Informal raramente está no décimo mais rico."
+    },
+    {
+      "se": {
+        "renda": "rica",
+        "ocupacao": "agricultura-familiar"
+      },
+      "fator": 0.1,
+      "motivo": "Agricultura familiar é de renda baixa."
+    },
+    {
+      "se": {
+        "renda": "pobre",
+        "ocupacao": "empresario"
+      },
+      "fator": 0.1,
+      "motivo": "Empregador quase nunca é pobre."
+    },
+    {
+      "se": {
+        "renda": "pobre",
+        "ocupacao": "agro-patronal"
+      },
+      "fator": 0.05,
+      "motivo": "Produtor patronal quase nunca é pobre."
+    },
+    {
+      "se": {
+        "renda": "rica",
+        "ocupacao": "empresario"
+      },
+      "fator": 5,
+      "motivo": "Empregadores concentram-se no topo da renda."
+    },
+    {
+      "se": {
+        "renda": "rica",
+        "ocupacao": "agro-patronal"
+      },
+      "fator": 5,
+      "motivo": "Produtor patronal concentra-se no topo da renda."
+    },
+    {
+      "se": {
+        "renda": "pobre",
+        "ocupacao": "informal"
+      },
+      "fator": 2,
+      "motivo": "A informalidade é maior entre os mais pobres."
+    },
+    {
+      "se": {
+        "ocupacao": "agricultura-familiar",
+        "territorio": "interior"
+      },
+      "fator": 6,
+      "motivo": "Agricultura é atividade do interior."
+    },
+    {
+      "se": {
+        "ocupacao": "agro-patronal",
+        "territorio": "interior"
+      },
+      "fator": 6,
+      "motivo": "Agricultura é atividade do interior."
+    },
+    {
+      "se": {
+        "renda": "pobre",
+        "territorio": "periferia"
+      },
+      "fator": 1.6,
+      "motivo": "Periferia concentra renda baixa."
+    },
+    {
+      "se": {
+        "renda": "rica",
+        "territorio": "periferia"
+      },
+      "fator": 0.3,
+      "motivo": "Periferia concentra renda baixa."
+    },
+    {
+      "se": {
+        "religiao": "evangelica",
+        "valores": "conservador"
+      },
+      "fator": 1.8,
+      "motivo": "Evangélicos se dizem mais conservadores."
+    },
+    {
+      "se": {
+        "religiao": "outra",
+        "valores": "progressista"
+      },
+      "fator": 1.8,
+      "motivo": "Sem religião se dizem mais progressistas."
+    },
+    {
+      "se": {
+        "ambientalista": "sim",
+        "valores": "progressista"
+      },
+      "fator": 2,
+      "motivo": "Prioridade ambiental é maior entre progressistas."
+    },
+    {
+      "se": {
+        "idade": "16-29",
+        "ambientalista": "sim"
+      },
+      "fator": 1.4,
+      "motivo": "Prioridade ambiental é maior entre jovens."
+    }
+  ],
+  "afinidadesNota": "Sem tabela cruzada real ainda: a semente do ajuste parte da tabela uniforme com estes fatores (hipóteses), e o ajuste faz cada total bater. Troque por cruzadas da PNAD e do Censo quando houver."
 }

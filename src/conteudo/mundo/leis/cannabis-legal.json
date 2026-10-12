@@ -48,7 +48,9 @@
     "cannabis-legal--grupo-conservadores",
     "cannabis-legal--grupo-jovens",
     "cannabis-legal--grupo-pequenos-negocios",
-    "cannabis-legal--grupo-progressistas"
+    "cannabis-legal--grupo-progressistas",
+    "cannabis-legal--grupo-evangelicos",
+    "cannabis-legal--grupo-catolicos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

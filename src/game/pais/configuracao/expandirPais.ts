@@ -11,11 +11,14 @@ import {
   type HistoriaDoPais,
   type LeisDoPais,
   type PaisV2,
+  type PerfisDoPais,
   type PoliticaDoPais,
+  type PopulacaoDoMundo,
   type PopulacaoDoPais,
   type RequerCaracteristicas,
   type ValoresDoPais,
 } from "./tipos";
+import { aprovacaoDosPerfis } from "./perfisDoPais";
 
 export type PacoteDoPais = Readonly<{
   manifestPath: string;
@@ -159,7 +162,39 @@ export function expandirPais(
       }
       return true;
     });
+  // Aprovação pelos perfis (V1-08): o mundo diz como atributo vira segmento;
+  // o país traz os perfis gerados. O motor recebe a lista pronta.
+  const populacaoDoMundo =
+    typeof mundo.populacao === "string"
+      ? parse(files[mundo.populacao])
+      : undefined;
+  const perfisPath = `${pasta}perfis.json`;
+  const perfisDoPais = parse(files[perfisPath]);
+  let aprovacaoPorPerfis: ScenarioManifest["aprovacaoPorPerfis"];
+  if (populacaoDoMundo && perfisDoPais) {
+    if (populacaoDoMundo.tipo !== "mundo-populacao")
+      erro(
+        String(mundo.populacao),
+        "tipo",
+        "O tipo deve ser mundo-populacao.",
+        "TIPO_INVALIDO",
+      );
+    else if (perfisDoPais.tipo !== "pais-perfis")
+      erro(perfisPath, "tipo", "O tipo deve ser pais-perfis.", "TIPO_INVALIDO");
+    else {
+      const aprovacao = aprovacaoDosPerfis(
+        populacaoDoMundo as unknown as PopulacaoDoMundo,
+        perfisDoPais as unknown as PerfisDoPais,
+      );
+      if (typeof aprovacao === "string") erro(perfisPath, "perfis", aprovacao);
+      else aprovacaoPorPerfis = aprovacao;
+    }
+  }
+  if (diagnostics.length > 0) return { ok: false, diagnostics };
+
   const novoMundo: Json = { ...mundo };
+  // O motor não conhece o arquivo de população do mundo.
+  delete novoMundo.populacao;
   for (const lista of ["eventos", "situacoes", "dilemas", "consequencias"])
     if (Array.isArray(mundo[lista]))
       novoMundo[lista] = filtrar(strings(mundo[lista]), true);
@@ -222,6 +257,7 @@ export function expandirPais(
     unidadeTemporal: pais.unidadeTemporal,
     mundo: pais.mundo,
     ...(populacao.perfis ? { perfis: populacao.perfis } : {}),
+    ...(aprovacaoPorPerfis ? { aprovacaoPorPerfis } : {}),
     ...(organizacaoPath ? { organizacaoPolitica: organizacaoPath } : {}),
     estadoInicial: estadoPath,
   } as ScenarioManifest;

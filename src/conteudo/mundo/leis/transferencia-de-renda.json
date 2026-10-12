@@ -31,7 +31,9 @@
     "transferencia-de-renda--grupo-empresarios",
     "transferencia-de-renda--grupo-pobres",
     "transferencia-de-renda--grupo-progressistas",
-    "transferencia-de-renda--gasto-publico"
+    "transferencia-de-renda--gasto-publico",
+    "transferencia-de-renda--grupo-informais",
+    "transferencia-de-renda--grupo-familias-com-filhos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

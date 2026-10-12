@@ -43,7 +43,8 @@
     "seguranca-alimentar--gasto-publico",
     "seguranca-alimentar--grupo-agro",
     "seguranca-alimentar--grupo-pequenos-negocios",
-    "seguranca-alimentar--grupo-pobres"
+    "seguranca-alimentar--grupo-pobres",
+    "seguranca-alimentar--grupo-agricultura-familiar"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

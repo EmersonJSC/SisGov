@@ -40,7 +40,8 @@
     "escola-tempo-integral--grupo-empresarios",
     "escola-tempo-integral--grupo-jovens",
     "escola-tempo-integral--grupo-pobres",
-    "escola-tempo-integral--grupo-progressistas"
+    "escola-tempo-integral--grupo-progressistas",
+    "escola-tempo-integral--grupo-familias-com-filhos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

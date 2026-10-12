@@ -14,9 +14,11 @@ const limites = {
   indicesSemEntrada: 2,
   leisSemModulacao: 1,
   indicesSemMedida: 0,
-  contextoAcimaDe5: 110,
-  contextoAcimaDe25: 69,
-  contextoAcimaDe50: 28,
+  // V1-08: +9 segmentos novos, que começam com o contexto como os outros
+  // grupos (110/69/28 antes deles).
+  contextoAcimaDe5: 119,
+  contextoAcimaDe25: 76,
+  contextoAcimaDe50: 33,
 };
 
 describe("trava da rede (V1-07)", () => {

@@ -46,7 +46,8 @@
     "matriz-energetica--grupo-empresarios",
     "matriz-energetica--grupo-jovens",
     "matriz-energetica--grupo-progressistas",
-    "matriz-energetica--grupo-trabalhadores"
+    "matriz-energetica--grupo-trabalhadores",
+    "matriz-energetica--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

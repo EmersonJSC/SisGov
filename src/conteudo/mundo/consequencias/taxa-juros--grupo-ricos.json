@@ -1,0 +1,17 @@
+{
+  "id": "taxa-juros--grupo-ricos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_juros",
+  "alvo": "grupo_ricos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.4,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

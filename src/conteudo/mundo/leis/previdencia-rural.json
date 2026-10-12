@@ -51,7 +51,8 @@
     "previdencia-rural--grupo-aposentados",
     "previdencia-rural--grupo-classe-media",
     "previdencia-rural--grupo-pobres",
-    "previdencia-rural--grupo-trabalhadores"
+    "previdencia-rural--grupo-trabalhadores",
+    "previdencia-rural--grupo-agricultura-familiar"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

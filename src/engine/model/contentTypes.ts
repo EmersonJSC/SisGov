@@ -54,12 +54,31 @@ export type ScenarioManifest = {
   /** Ver `WorldFile.respostaDasBolhas` (D-54); o mundo do país prevalece. */
   respostaDasBolhas?: number;
   organizacaoPolitica?: string;
+  /** Aprovação calculada pelos perfis do eleitorado (V1-08). */
+  aprovacaoPorPerfis?: ProfileApproval;
   perfis?: readonly {
     id: string;
     nome: string;
     peso: number;
     interesses: readonly string[];
   }[];
+};
+
+/**
+ * Aprovação pelos perfis do eleitorado (V1-08, desenho/populacao.md). Cada
+ * perfil é uma fatia do eleitorado (`peso`, somando 1) e está em alguns
+ * segmentos (bolhas do tipo `grupo`). A satisfação do perfil é a média dos
+ * segmentos dele, ponderada pelo peso do eixo de cada segmento (`pesos`); a
+ * chance de aprovar é 1/(1 + e^(−(satisfação − 50)/k)). O alvo recebe
+ * 100 × a soma das chances pelos pesos, além das ligações comuns.
+ */
+export type ProfileApproval = {
+  alvo: string;
+  k: number;
+  pesos: Readonly<Record<string, number>>;
+  perfis: readonly { peso: number; segmentos: readonly string[] }[];
+  /** Eixos de cada segmento, só para a tela agrupar. O motor não lê. */
+  eixos?: readonly { id: string; nome: string; segmentos: readonly string[] }[];
 };
 
 /**

@@ -52,7 +52,9 @@
     "laicidade-do-estado--confianca-instituicoes",
     "laicidade-do-estado--golpe-risco",
     "laicidade-do-estado--grupo-conservadores",
-    "laicidade-do-estado--grupo-progressistas"
+    "laicidade-do-estado--grupo-progressistas",
+    "laicidade-do-estado--grupo-evangelicos",
+    "laicidade-do-estado--grupo-catolicos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

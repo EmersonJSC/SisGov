@@ -29,7 +29,8 @@
     "investimento-em-infraestrutura--grupo-empresarios",
     "investimento-em-infraestrutura--grupo-progressistas",
     "investimento-em-infraestrutura--grupo-trabalhadores",
-    "investimento-em-infraestrutura--gasto-publico"
+    "investimento-em-infraestrutura--gasto-publico",
+    "investimento-em-infraestrutura--grupo-interior"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -47,7 +47,8 @@
     "legislacao-trabalhista--grupo-pequenos-negocios",
     "legislacao-trabalhista--grupo-pobres",
     "legislacao-trabalhista--grupo-progressistas",
-    "legislacao-trabalhista--grupo-trabalhadores"
+    "legislacao-trabalhista--grupo-trabalhadores",
+    "legislacao-trabalhista--grupo-informais"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

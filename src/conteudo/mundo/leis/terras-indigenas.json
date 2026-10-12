@@ -45,7 +45,8 @@
     "terras-indigenas--gasto-publico",
     "terras-indigenas--grupo-agro",
     "terras-indigenas--grupo-empresarios",
-    "terras-indigenas--grupo-progressistas"
+    "terras-indigenas--grupo-progressistas",
+    "terras-indigenas--grupo-ambientalistas"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

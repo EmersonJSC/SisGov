@@ -68,7 +68,7 @@ describe("ficha de lei v3", () => {
     expect(v.letalidade_policial).toBeCloseTo(30.994181791945064, 9);
     expect(v.crime_organizado).toBeCloseTo(71.76826225556152, 9);
     expect(v.gasto_publico).toBeCloseTo(31.525773700795302, 9);
-    expect(v.popularidade_governo).toBeCloseTo(52.25286625905935, 9);
+    expect(v.popularidade_governo).toBeCloseTo(48.386594384474385, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {

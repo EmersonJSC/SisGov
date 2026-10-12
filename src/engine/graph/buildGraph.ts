@@ -6,6 +6,7 @@ import type {
 } from "../model/contentTypes";
 import { contextNodeId, lawInfluenceNodes } from "../model/lawNodes";
 import type { ResolvedPackage } from "../model/resolvePackage";
+import { profileApprovalInputs } from "../mechanisms/profileApproval";
 
 export type GraphNode = Readonly<VariableDefinition>;
 
@@ -35,6 +36,8 @@ export type ScenarioGraph = Readonly<{
   nodesById: Readonly<Record<string, GraphNode>>;
   relationsById: Readonly<Record<string, GraphRelation>>;
   relations: readonly GraphRelation[];
+  /** Aprovação pelos perfis (V1-08): o alvo lê estes segmentos no mês. */
+  profileApproval?: Readonly<{ targetId: string; inputs: readonly string[] }>;
 }>;
 
 function addRelations(
@@ -152,5 +155,18 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
   const relationsById: Record<string, GraphRelation> = {};
   for (const relation of relations) relationsById[relation.id] = relation;
 
-  return { nodesById, relationsById, relations };
+  const approval = content.manifest.aprovacaoPorPerfis;
+  return {
+    nodesById,
+    relationsById,
+    relations,
+    ...(approval
+      ? {
+          profileApproval: {
+            targetId: approval.alvo,
+            inputs: profileApprovalInputs(approval),
+          },
+        }
+      : {}),
+  };
 }

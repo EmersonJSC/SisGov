@@ -41,7 +41,9 @@
     "lei-de-drogas--grupo-classe-media",
     "lei-de-drogas--grupo-conservadores",
     "lei-de-drogas--grupo-jovens",
-    "lei-de-drogas--grupo-progressistas"
+    "lei-de-drogas--grupo-progressistas",
+    "lei-de-drogas--grupo-evangelicos",
+    "lei-de-drogas--grupo-catolicos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

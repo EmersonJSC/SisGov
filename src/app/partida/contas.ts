@@ -115,9 +115,6 @@ export function saldoDasLeis(
  * saída (V1-07); a tela mostra a soma inteira, para o jogador ver quando ela
  * está chegando perto de surgir (ex.: juros em 26% da receita, surge em 32%).
  */
-/** Aprovação do governo: a média dos grupos pelos pesos (SG143). */
-const APROVACAO = "popularidade_governo";
-
 /** Por que cada grupo está como está: as setas que chegam nele, agora. */
 export function gruposDaPartida(
   partida: Partida,
@@ -136,10 +133,19 @@ export function gruposDaPartida(
     const effect = (values[id] ?? 0) * (values[efficacyNodeId(law.id)] ?? 1);
     return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
   };
-  const peso = new Map(
-    graph.relations
-      .filter((r) => r.targetId === APROVACAO)
-      .map((r) => [r.originId, r.parameters.coeficiente ?? 0]),
+  // Parte do eleitorado de cada segmento: a soma dos perfis em que ele entra
+  // (V1-08). Um eleitor está em vários segmentos; as partes não somam 1.
+  const aprovacao = content.manifest.aprovacaoPorPerfis;
+  const peso = new Map<string, number>();
+  for (const perfil of aprovacao?.perfis ?? [])
+    for (const id of perfil.segmentos)
+      peso.set(id, (peso.get(id) ?? 0) + perfil.peso);
+  const eixoDe = new Map(
+    (aprovacao?.eixos ?? []).flatMap((eixo, ordem) =>
+      eixo.segmentos.map(
+        (id) => [id, { id: eixo.id, nome: eixo.nome, ordem }] as const,
+      ),
+    ),
   );
   // Muitas leis batem no teto da oscilação (±10): em meio ponto de
   // diferença, a lei que o jogador mudou vem antes das outras.
@@ -179,6 +185,7 @@ export function gruposDaPartida(
         nome: variable.nome,
         satisfacao: values[variable.id] ?? 0,
         peso: peso.get(variable.id) ?? 0,
+        ...(eixoDe.has(variable.id) ? { eixo: eixoDe.get(variable.id)! } : {}),
         gosta: maiores(motivos.filter((m) => m.pontos > 0)),
         odeia: maiores(motivos.filter((m) => m.pontos < 0)),
       };

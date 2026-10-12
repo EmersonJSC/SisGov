@@ -1,0 +1,17 @@
+{
+  "id": "desemprego--grupo-informais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "desemprego",
+  "alvo": "grupo_informais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.8,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -29,7 +29,8 @@
     "imposto-grandes-fortunas--grupo-pobres",
     "imposto-grandes-fortunas--grupo-progressistas",
     "imposto-grandes-fortunas--grupo-trabalhadores",
-    "imposto-grandes-fortunas--arrecadacao"
+    "imposto-grandes-fortunas--arrecadacao",
+    "imposto-grandes-fortunas--grupo-ricos"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

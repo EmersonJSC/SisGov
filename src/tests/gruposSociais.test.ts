@@ -1,7 +1,7 @@
 /**
- * SG143 — grupos sociais como nós da rede: a satisfação de cada grupo vem de
- * leis e indicadores; a aprovação do governo é a média dos grupos pelo peso
- * de cada um no eleitorado (sem dupla contagem).
+ * SG143, V1-08 — segmentos do eleitorado como nós da rede: a satisfação de
+ * cada segmento vem de leis e indicadores; a aprovação do governo é a parte
+ * do eleitorado que aprova, somada pelos perfis (desenho/populacao.md).
  */
 import { describe, expect, it } from "vitest";
 import {
@@ -11,6 +11,7 @@ import {
   verPartida,
   type Partida,
 } from "../app/partida";
+import { profileApproval } from "../engine/mechanisms/profileApproval";
 
 function nova(): Partida {
   const criada = criarPartida({ ocorrencias: false });
@@ -32,28 +33,31 @@ describe("SG143 — grupos sociais", () => {
   const partida = nova();
   const visao = verPartida(partida);
   const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
-  const pesos = new Map(
-    partida.graph.relations
-      .filter((r) => r.targetId === "popularidade_governo")
-      .map((r) => [r.originId, r.parameters.coeficiente ?? 0]),
-  );
+  const aprovacao = partida.content.manifest.aprovacaoPorPerfis!;
+  // parte do eleitorado em cada segmento: soma dos perfis em que ele entra
+  const pesos = new Map<string, number>();
+  for (const perfil of aprovacao.perfis)
+    for (const id of perfil.segmentos)
+      pesos.set(id, (pesos.get(id) ?? 0) + perfil.peso);
 
-  it("onze grupos, cada pessoa conta em um só (pesos somam 1)", () => {
-    expect(grupos).toHaveLength(11);
+  it("vinte segmentos, todos presentes nos perfis do eleitorado", () => {
+    expect(grupos).toHaveLength(20);
     expect([...pesos.keys()].sort()).toEqual(grupos.map((g) => g.id).sort());
-    const soma = [...pesos.values()].reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(1, 9);
+    expect(Object.keys(aprovacao.pesos).sort()).toEqual(
+      grupos.map((g) => g.id).sort(),
+    );
   });
 
-  it("a aprovação é a média dos grupos e começa como a do país (D-35)", () => {
+  it("a aprovação sai dos perfis e começa perto da real (Quaest jan/2025: 47%)", () => {
     const v = partida.game.execution.values;
-    const media = grupos.reduce((s, g) => s + g.valor * pesos.get(g.id)!, 0);
-    // depois do aquecimento (V1-07) a aprovação segue os grupos com a
+    // depois do aquecimento (V1-07) a aprovação segue os segmentos com a
     // resposta gradual: igual até a terceira casa
-    expect(v.popularidade_governo).toBeCloseTo(media, 3);
-    // valores declarados do Brasil 2026: vencedor da eleição com ~51%
-    expect(v.popularidade_governo).toBeGreaterThan(48);
-    expect(v.popularidade_governo).toBeLessThan(55);
+    expect(v.popularidade_governo).toBeCloseTo(
+      profileApproval(aprovacao, (id) => v[id])!,
+      3,
+    );
+    expect(v.popularidade_governo).toBeGreaterThanOrEqual(44);
+    expect(v.popularidade_governo).toBeLessThanOrEqual(50);
   });
 
   it("a satisfação é explicável: leis e indicadores ligados a cada grupo", () => {
@@ -66,7 +70,9 @@ describe("SG143 — grupos sociais", () => {
         visao.bolhas.some((x) => x.id === l.origem),
       );
       expect(leis.length, g.id).toBeGreaterThan(0);
-      expect(indicadores.length, g.id).toBeGreaterThan(0);
+      // Evangélicos só recebem das leis de costumes (desenho/populacao.md §4)
+      if (g.id !== "grupo_evangelicos")
+        expect(indicadores.length, g.id).toBeGreaterThan(0);
     }
     const pobres = visao.ligacoes.filter((l) => l.alvo === "grupo_pobres");
     expect(pobres.some((l) => l.origem === "pobreza" && l.sinal < 0)).toBe(
@@ -105,7 +111,10 @@ describe("SG143 — grupos sociais", () => {
         grupos.find((b) => b.id === g.id)!.valor,
         9,
       );
-      expect(g.gosta.length, g.id).toBeGreaterThan(0);
+      // Ricos só recebem ligações que derrubam (impostos, juros, risco):
+      // não há nada de que gostem ainda (desenho/populacao.md §4).
+      if (g.id !== "grupo_ricos")
+        expect(g.gosta.length, g.id).toBeGreaterThan(0);
       expect(g.odeia.length, g.id).toBeGreaterThan(0);
       expect(g.gosta.length).toBeLessThanOrEqual(5);
       expect(g.odeia.length).toBeLessThanOrEqual(5);

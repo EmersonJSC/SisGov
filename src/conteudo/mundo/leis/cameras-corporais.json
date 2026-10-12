@@ -29,7 +29,8 @@
     "cameras-corporais--grupo-pobres",
     "cameras-corporais--grupo-progressistas",
     "cameras-corporais--grupo-servidores",
-    "cameras-corporais--gasto-publico"
+    "cameras-corporais--gasto-publico",
+    "cameras-corporais--grupo-periferias"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

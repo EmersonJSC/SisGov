@@ -1,0 +1,87 @@
+{
+  "tipo": "mundo-populacao",
+  "descricao": "Como os atributos de um perfil do eleitorado viram segmentos e quanto cada eixo pesa na satisfação do perfil (V1-08, docs/v1/desenho/populacao.md). Vale para todo país.",
+  "alvo": "popularidade_governo",
+  "k": 12,
+  "eixos": [
+    {
+      "id": "renda",
+      "nome": "Renda",
+      "peso": 3,
+      "atributos": {
+        "renda": {
+          "pobre": "grupo_pobres",
+          "media": "grupo_classe_media",
+          "rica": "grupo_ricos"
+        }
+      }
+    },
+    {
+      "id": "ocupacao",
+      "nome": "Ocupação",
+      "peso": 3,
+      "atributos": {
+        "ocupacao": {
+          "carteira": "grupo_trabalhadores",
+          "informal": "grupo_informais",
+          "servidor": "grupo_servidores",
+          "empresario": "grupo_empresarios",
+          "pequeno-empreendedor": "grupo_pequenos_negocios",
+          "agro-patronal": "grupo_agro",
+          "agricultura-familiar": "grupo_agricultura_familiar",
+          "aposentado": "grupo_aposentados"
+        }
+      }
+    },
+    {
+      "id": "valores",
+      "nome": "Valores",
+      "peso": 2,
+      "atributos": {
+        "valores": {
+          "progressista": "grupo_progressistas",
+          "conservador": "grupo_conservadores"
+        }
+      }
+    },
+    {
+      "id": "religiao",
+      "nome": "Religião",
+      "peso": 1.5,
+      "atributos": {
+        "religiao": {
+          "evangelica": "grupo_evangelicos",
+          "catolica": "grupo_catolicos"
+        }
+      }
+    },
+    {
+      "id": "territorio",
+      "nome": "Território",
+      "peso": 1,
+      "atributos": {
+        "territorio": {
+          "periferia": "grupo_periferias",
+          "interior": "grupo_interior"
+        }
+      }
+    },
+    {
+      "id": "idade-familia",
+      "nome": "Idade e família",
+      "peso": 1,
+      "atributos": {
+        "idade": { "16-29": "grupo_jovens" },
+        "filhos": { "com": "grupo_familias_com_filhos" }
+      }
+    },
+    {
+      "id": "ambiente",
+      "nome": "Meio ambiente",
+      "peso": 1,
+      "atributos": {
+        "ambientalista": { "sim": "grupo_ambientalistas" }
+      }
+    }
+  ]
+}
