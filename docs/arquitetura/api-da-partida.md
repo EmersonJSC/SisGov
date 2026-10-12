@@ -1,5 +1,7 @@
 # API da partida
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 A interface fala com o jogo **só** por `src/app/partida.ts`. Ela não importa
 nada de `src/engine/`, `src/game/`, `src/domain/` nem `src/conteudo/`.
 Tudo o que a tela desenha sai de `verPartida`; tudo o que o jogador faz entra

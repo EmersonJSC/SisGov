@@ -1,5 +1,7 @@
 # Orçamento na rede
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 **Estado:** proposta aprovada pelo autor em 10/out/2026 (D-47 a D-50).
 Implementação no chamado SG157, por fases. **As quatro fases foram feitas
 em 10/out** (ver "Como ficou a fase 1" a "… fase 4").

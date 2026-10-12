@@ -1,5 +1,7 @@
 # Ocorrências: eventos, dilemas e situações
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 **Estado:** implementado no SG106 (D-62), decidido com o autor em
 10–11/out/2026. Decidido:
 

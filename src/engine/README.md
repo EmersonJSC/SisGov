@@ -1,5 +1,7 @@
 # Motor do SisGov
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje (vale para todos os `.md` desta pasta); não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../../docs/README.md).
+
 ## O que ele é hoje
 
 O motor lê um pacote de país, confere suas regras e calcula consequências numéricas. Ele não sabe se o pacote representa Brasil, Estados Unidos ou outro país. Também não desenha tela, não recebe texto digitado pelo jogador, não autoriza leis e não encerra partidas.

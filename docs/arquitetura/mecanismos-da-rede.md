@@ -1,5 +1,7 @@
 # Mecanismos da rede
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 **Estado:** implementado no SG141 (9/out/2026). Fonte:
 `src/engine/mechanisms/calculateContribution.ts`.
 

@@ -1,9 +1,11 @@
 # Catálogo de leis v2 — formato e organização
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 **Estado:** especificação aprovada em 9/out/2026 (decisões D-23 a D-29 do
 [PLANO](../../PLANO.md)). **Formato implementado no SG135**; percentual,
 custo de opções, tributos e PIB entram nos chamados SG136–SG140.
-Complementa o [contrato do motor e dos JSONs](contrato-motor-json.md).
+Complementa o [contrato do motor e dos JSONs](../desativado/arquitetura/contrato-motor-json.md).
 
 ## Regra central
 

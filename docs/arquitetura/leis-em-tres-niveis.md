@@ -1,5 +1,7 @@
 # Leis em três níveis (proposta, 11/out/2026)
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 > Pedido do autor (11/out): as leis atuais estão técnicas demais, amplas
 > demais e não passam sensação de mudança. Este documento propõe o novo
 > desenho. Ele **substitui o formato das fichas** (`docs/fichas/METODO.md`)

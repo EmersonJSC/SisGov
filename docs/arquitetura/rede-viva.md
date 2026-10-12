@@ -1,5 +1,7 @@
 # A rede viva — leis, índices e situações
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../README.md).
+
 **Estado:** modelo aprovado pelo autor em 9/out/2026 (decisões D-40 a D-43
 do [PLANO](../../PLANO.md)). **Motor implementado no SG154**
 (`src/engine/runtime/computeNetwork.ts`); conteúdo do Brasil no SG142.

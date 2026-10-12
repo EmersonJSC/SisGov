@@ -1,5 +1,7 @@
 # Conteúdo do SisGov
 
+> **Status: REFERÊNCIA TÉCNICA.** Descreve o código como está hoje; não define o que vamos fazer. O que vale está no [PLANO](../../PLANO.md) e no [índice dos documentos](../../docs/README.md).
+
 Todo o conteúdo do jogo é JSON e fica aqui, em três partes (decisões D-38 e
 D-39 do [PLANO](../../PLANO.md)):
 

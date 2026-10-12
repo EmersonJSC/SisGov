@@ -1,23 +1,34 @@
 # Referências obrigatórias do SisGov
 
-O documento mestre é o [PLANO.md](PLANO.md). Antes de qualquer trabalho, leia a
-seção 10 (status), o chamado em questão e as **regras anti-ciclo da seção 7**,
-que são obrigatórias. Antes de alterar motor político, leis, países ou eleições,
-leia também [docs/arquitetura/contrato-motor-json.md](docs/arquitetura/contrato-motor-json.md).
-`docs/plano-de-producao.md` é apenas histórico.
+> **Status: VIGENTE.** Regras para quem trabalha no código, pessoas ou IA.
+> Atualizado em 12/out/2026 (V1-01).
 
-- Um chamado por sessão; ao fim, atualize a seção 10 do PLANO (data, commit,
-  teste). Status só existe lá.
-- Aceite = critério do chamado + `npm run check` verde. Trabalho direto na
-  `main` (D-22).
-- Não escreva aceites do tipo "conclui quando X integrar" (R-03). Na 3ª
-  iteração sem fechar, reavalie o chamado (R-05). Se repetir a mesma correção
-  duas vezes, pare e registre o bloqueio (R-10).
-- Não trate parâmetros do JSON inicial do Brasil como constantes universais do
-  motor. Definições de leis pertencem ao catálogo compartilhado; o JSON de cada
-  país declara apenas seu estado inicial. Lei ausente inicialmente não é proibida.
-- Valor numérico ausente vira hipótese marcada (`origem: "hipotese"`); só
-  mecanismo novo exige decisão (R-09).
+O documento mestre é o [PLANO.md](PLANO.md), única fonte de status. Antes de
+qualquer trabalho, leia:
+
+1. O chamado em [docs/v1/chamados.md](docs/v1/chamados.md) e a linha dele no PLANO.
+2. [docs/v1/engenharia.md](docs/v1/engenharia.md): como um chamado é feito e
+   quando está pronto.
+3. [docs/v1/diferenciacao-d4.md](docs/v1/diferenciacao-d4.md): **nada do
+   Democracy 4 entra no projeto.** Não abra `docs/Exemplos/` nem
+   `docs/desativado/restrito-d4/` para escrever conteúdo.
+4. Conforme o assunto: [arquitetura](docs/v1/arquitetura.md),
+   [reestruturação](docs/v1/reestruturacao.md) ou [conteúdo](docs/v1/conteudo.md).
+
+Documentos em `docs/desativado/` **não são para seguir**. O índice completo, com o
+status de cada documento, está em [docs/README.md](docs/README.md).
+
+## Regras
+
+- Um chamado por vez. Ideia nova vai para [docs/v1/ideias.md](docs/v1/ideias.md).
+- Aceite = itens do chamado, cada um com teste, e `npm run check` verde na máquina
+  do autor. Trabalho direto na `main` (D-22).
+- Refatorar e mudar comportamento são chamados separados.
+- Commit com `V1-NN: o que mudou`. `git push` só com a palavra do autor.
+- Na terceira tentativa sem fechar um chamado, pare e reveja com o autor.
+- O motor não conhece nomes de leis, partidos ou países (D-03). Leis e índices são
+  do mundo; o país declara só o estado inicial (D-04, D-38).
+- Toda lei, índice e grupo tem fonte real. Número sem fonte é hipótese marcada.
 
 ## Coordenação com subagentes
 
