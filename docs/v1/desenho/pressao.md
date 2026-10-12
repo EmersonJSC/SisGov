@@ -1,7 +1,7 @@
 # Grupos de pressão (V1-09)
 
-**Status:** PARA APROVAÇÃO (versão 4: decisões 1 a 5 tomadas; falta a 6
-e o ok nos nomes dos países). O código só começa depois do seu ok.
+**Status:** PARA APROVAÇÃO (versão 4: decisões 1 a 5 tomadas; nomes dos
+países definidos; falta a 6). O código só começa depois do seu ok.
 
 ## 0. O que mudou da versão 1
 
@@ -277,12 +277,12 @@ mídia nacional fica no arquivo do país, porque muda de país para país.
 
 | Id | No jogo | Interesses |
 | --- | --- | --- |
-| `amerika` | **Estados Unidos da Amérika**, a grande potência militar | bases, tecnologia, petróleo, plataformas |
-| `xing_ling` | **República Popular de Xing Ling**, a fábrica do mundo | minério, soja, portos, ferrovias |
+| `liberdolandia` | **Liberdolândia**, a grande potência militar | bases, tecnologia, petróleo, plataformas |
+| `dragao` | **República Popular do Dragão**, a fábrica do mundo | minério, soja, portos, ferrovias |
 | `eurocracia` | **União Eurocrática**, o bloco das regras e dos subsídios | clima, florestas, regras de comércio |
-| `russica` | **Federação Rússica**, a potência do gás e das armas | energia, fertilizantes, desinformação |
-| `iranio` | **República Islâmica do Irânio**, a teocracia que enriquece urânio | religião, petróleo, rivalidade com a Amérika |
-| `saldita` | **Reino da Arábia Saldita**, os petrodólares do deserto | petróleo, futebol, fundos soberanos |
+| `grande_urso` | **Grande Urso Federado**, a potência do gás e das armas | energia, fertilizantes, desinformação |
+| `iranio` | **República Islâmica do Irânio**, a teocracia que enriquece urânio | religião, petróleo, rivalidade com a Liberdolândia |
+| `petrabia` | **Reino da Petrábia**, os petrodólares do deserto | petróleo, futebol, fundos soberanos |
 | `bilhindia` | **União da Bilhíndia**, o gigante de um bilhão e meio | remédios genéricos, tecnologia, grãos |
 
 **Empresas**
@@ -314,7 +314,7 @@ mídia nacional fica no arquivo do país, porque muda de país para país.
 | `reino_dizimo` | **Igreja Mundial do Reino do Dízimo** | costumes, isenção de impostos, concessões de TV |
 | `assembleia_geral` | **Assembleia Geral de Deus** | costumes, cargos |
 | `santa_sede_central` | **A Santa Sede Central** | aborto, eutanásia, fome |
-| `cinturao_biblico` | **Fundação Evangélica do Cinturão Bíblico** (da Amérika) | costumes, aliados no exterior |
+| `cinturao_biblico` | **Fundação Evangélica do Cinturão Bíblico** (da Liberdolândia) | costumes, aliados no exterior |
 | `sociedade_escancarada` | **Fundação Sociedade Escancarada** | direitos civis, imprensa, drogas |
 | `portoes` | **Fundação Portões** | vacinas, saúde, agricultura |
 | `floresta_eterna` | **Fundo Floresta Eterna** (da União Eurocrática) | florestas, povos originários |
@@ -341,7 +341,7 @@ Num modo com outro país, entra como **República das Bananas Federativas**
 - **`K` (0 a 1) por grupo e patrocinador:** quanto o grupo aceita dinheiro
   daquele patrocinador. Ex.: os movimentos ambientalistas aceitam bem
   o Fundo Floresta Eterna e quase nada da Monstanto; a rede de
-  influenciadores de direita aceita bem a Amérika e a Ípsilon; as igrejas
+  influenciadores de direita aceita bem a Liberdolândia e a Ípsilon; as igrejas
   neopentecostais, a Igreja Mundial do Reino do Dízimo e o Cinturão Bíblico.
 - **Dinheiro que chega** = `K × interesse ameaçado × poder econômico`. Ele
   soma nos recursos (dinheiro) e na pressão do grupo, mesmo com a base
@@ -425,8 +425,11 @@ cada opção é escrito na implementação.
 
 1. Os quatro níveis: **sim**.
 2. Os 54 grupos: **sim**, como estão.
-3. Nomes: os países trocados por sátiras que lembrem o país (seção 4.1,
-   versão 4). Empresas, igrejas e mídia ficaram como estavam.
+3. Nomes dos países (seção 4.1): Liberdolândia, República Popular do
+   Dragão, União Eurocrática, Grande Urso Federado, República Islâmica do
+   Irânio, Reino da Petrábia e União da Bilhíndia. A sátira usa símbolos do
+   país, sem julgamento político nem piada étnica. Empresas, igrejas e mídia
+   ficaram como estavam.
 4. Turno 0: **sim**.
 5. Inteligência: **leis novas** (programa espacial e satélites, agência de
    inteligência, interceptação, câmeras e reconhecimento facial, poderes da
