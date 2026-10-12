@@ -5787,7 +5787,8 @@
         "maximo": 100
       },
       "area": "Educação, ciência e cultura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 9
     },
     {
       "id": "armas_em_circulacao",
@@ -6217,7 +6218,8 @@
         "maximo": 100
       },
       "area": "Trabalho",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "pilar": 6
     },
     {
       "id": "desenvolvimento",
@@ -6277,7 +6279,8 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "pilar": 10
     },
     {
       "id": "diferenca_salarial_genero",
@@ -6764,7 +6767,8 @@
         "maximo": 100
       },
       "area": "Infraestrutura",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 11
     },
     {
       "id": "infraestrutura_energia",
@@ -6888,7 +6892,8 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 4
     },
     {
       "id": "litigio_trabalhista",
@@ -7048,7 +7053,8 @@
         "maximo": 100
       },
       "area": "Economia",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 2
     },
     {
       "id": "pobreza",
@@ -7060,7 +7066,8 @@
         "maximo": 100
       },
       "area": "Desenvolvimento Social",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "pilar": 7
     },
     {
       "id": "polarizacao",
@@ -7096,7 +7103,8 @@
         "maximo": 100
       },
       "area": "Grupos sociais",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 3
     },
     {
       "id": "poupanca_domestica",
@@ -7374,7 +7382,8 @@
         "maximo": 100
       },
       "area": "Geral",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 5
     },
     {
       "id": "reservas_internacionais",
@@ -7436,7 +7445,8 @@
         "maximo": 100
       },
       "area": "Saúde",
-      "avaliacao": "maior_melhor"
+      "avaliacao": "maior_melhor",
+      "pilar": 8
     },
     {
       "id": "segregacao_escolar",
@@ -7580,7 +7590,8 @@
         "maximo": 60
       },
       "area": "Segurança",
-      "avaliacao": "maior_pior"
+      "avaliacao": "maior_pior",
+      "pilar": 1
     },
     {
       "id": "vitalidade_cultural",

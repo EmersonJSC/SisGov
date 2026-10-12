@@ -119,6 +119,11 @@ export type VariableDefinition = {
    * estatística real (aprovação, base); dispensa fontes.
    */
   medida?: VariableMeasure;
+  /**
+   * Pilar da área (V1-07): índice que resume a área e vai para a primeira
+   * página do jornal. O número é a posição no quadro (1 primeiro).
+   */
+  pilar?: number;
 };
 
 export type VariableMeasure = {

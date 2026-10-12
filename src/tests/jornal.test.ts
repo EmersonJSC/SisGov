@@ -11,7 +11,7 @@ import {
   type Partida,
 } from "../app/partida";
 import {
-  INDICES_DO_JORNAL,
+  pilaresDoJornal,
   fotoDoTurno,
   montarJornal,
   type FotoDoTurno,
@@ -37,12 +37,21 @@ describe("jornal", () => {
   it("primeira edição: índices, manchete e as três seções de opinião", () => {
     const edicao = montarJornal(verPartida(criada.value), null, null);
     expect(edicao.manchete).not.toBe("");
-    expect(edicao.indices.map((i) => i.id)).toEqual(
-      INDICES_DO_JORNAL.filter((id) =>
-        verPartida(criada.value).bolhas.some((b) => b.id === id),
-      ),
-    );
-    expect(edicao.indices.length).toBeGreaterThanOrEqual(8);
+    // um pilar por área (saúde e proteção social com dois), na ordem do quadro
+    expect(edicao.indices.map((i) => i.id)).toEqual([
+      "violencia_letal",
+      "pib",
+      "popularidade_governo",
+      "liberdade_civil",
+      "reputacao_internacional",
+      "desemprego",
+      "pobreza",
+      "saude_populacao",
+      "aprendizagem",
+      "desmatamento",
+      "infraestrutura",
+    ]);
+    expect(pilaresDoJornal(verPartida(criada.value))).toHaveLength(11);
     // sem edição anterior, nada "mudou"
     expect(edicao.indices.every((i) => i.variacao === "")).toBe(true);
     const secoes = new Set(edicao.opinioes.map((o) => o.secao));

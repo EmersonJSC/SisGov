@@ -157,6 +157,8 @@ export type VisaoBolha = Readonly<{
    * O valor na medida real (V1-07), quando o índice tem `medida` com
    * balizas: a tela mostra isto em vez dos pontos do motor.
    */
+  /** Pilar da área: posição na primeira página do jornal (V1-07). */
+  pilar?: number;
   medida?: Readonly<{
     valor: number;
     unidade: string;

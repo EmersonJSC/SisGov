@@ -14,19 +14,13 @@ import type {
 import { diferenca, valorDaBolha } from "./formatos";
 import { efeitoDe, type Efeito } from "./relacoes";
 
-/** Índices da primeira página, na ordem do quadro. */
-export const INDICES_DO_JORNAL: readonly string[] = [
-  "pib",
-  "inflacao",
-  "desemprego",
-  "taxa_juros",
-  "divida_publica",
-  "popularidade_governo",
-  "pobreza",
-  "violencia_letal",
-  "risco_pais",
-  "reputacao_internacional",
-];
+/** Índices da primeira página: os pilares das áreas, na ordem do quadro. */
+export function pilaresDoJornal(visao: VisaoPartida): readonly string[] {
+  return visao.bolhas
+    .filter((b) => b.pilar !== undefined)
+    .sort((a, b) => a.pilar! - b.pilar!)
+    .map((b) => b.id);
+}
 
 export type IndiceDoJornal = Readonly<{
   id: string;
@@ -157,7 +151,7 @@ function indices(
 ): IndiceDoJornal[] {
   const agora = new Map(visao.bolhas.map((b) => [b.id, b]));
   const antes = new Map((anterior?.bolhas ?? []).map((b) => [b.id, b]));
-  return INDICES_DO_JORNAL.flatMap((id) => {
+  return pilaresDoJornal(visao).flatMap((id) => {
     const b = agora.get(id);
     if (!b) return [];
     const d = b.valor - (antes.get(id)?.valor ?? b.valor);

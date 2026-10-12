@@ -1202,6 +1202,7 @@ function validateVariables(
           "resposta",
           "faixaVisual",
           "medida",
+          "pilar",
         ],
         diagnostics,
       );
@@ -1412,6 +1413,20 @@ function validateVariables(
             ),
           );
       }
+      if (
+        item.pilar !== undefined &&
+        (!Number.isInteger(item.pilar) ||
+          (item.pilar as number) < 1 ||
+          (type !== "calculado" && type !== "estoque"))
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            `variaveis[${index}].pilar`,
+            "VALOR_INVALIDO",
+            "Pilar é a posição no jornal (inteiro a partir de 1), só em índice calculado ou estoque.",
+          ),
+        );
       if (item.medida !== undefined)
         validateMeasure(
           item.medida,

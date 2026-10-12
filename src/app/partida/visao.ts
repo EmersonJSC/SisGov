@@ -174,6 +174,7 @@ export function verPartida(partida: Partida): VisaoPartida {
             ativa: (values[variable.id] ?? 0) > 0,
           }
         : {}),
+      ...(variable.pilar !== undefined ? { pilar: variable.pilar } : {}),
       ...(variable.medida && !variable.medida.tecnico
         ? {
             medida: {
