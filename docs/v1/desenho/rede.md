@@ -1,7 +1,7 @@
 # Rede: índices, situações, calibragem, sensibilidade e desempenho
 
-> **Status: EM REVISÃO.** Etapa 0 do V1-07. O código só começa depois que o
-> autor aprovar as decisões da seção 8.
+> **Status: EM REVISÃO.** Etapa 0 do V1-07. Decisões do autor na seção 8;
+> falta definir o tamanho da seção 9 no V1-07.
 
 ## 1. O que existe hoje (medido em 12/out, commit `0c613a2`)
 
@@ -209,16 +209,49 @@ Entra se, depois da otimização, abertura com 4.2 ou fim de turno passar de
 - Mudar coeficientes por causa da calibragem: o V1-07 mede e relata; ajustar
   é trabalho de conteúdo.
 
-## 8. Decisões para o autor
+## 8. Decisões do autor (12/out)
 
-1. **Unidade:** escala interna 0 a 100 com `medida` real por cima
-   (recomendado), ou motor em unidade real reescrevendo os coeficientes.
-2. **Começar antes:** dois anos (2024, recomendado) ou um ano (2025).
-3. **Limite do contexto:** 25 (recomendado) ou 50, como estava em
-   `conversa-12-out.md`.
-4. **Cofre:** passa a estoque (recomendado).
-5. **Ordem:** desempenho primeiro, depois situações, índices e calibragem
-   4.1 e 4.2, e por último o relatório de sensibilidade (recomendado).
+1. **Unidade:** fichas escritas em unidade real, motor em pontos 0 a 100. O
+   conversor da ficha v3 faz a passagem na carga, e a tela mostra a unidade
+   real. As fichas antigas ficam em pontos até serem migradas.
+2. **Começar antes:** um ano (jan/2025), 4 trimestres de aquecimento.
+3. **Contexto: nenhum número sem explicação.** O contexto não é aceito como
+   limite; a meta é zero. Ver seção 9.
+4. **Cofre separado da dívida** (ideia do autor): dois estoques. O superávit
+   paga dívida e enche o cofre (divisão por lei, padrão 50/50); o déficit sai
+   do cofre ou aumenta a dívida (a mesma lei decide a ordem); o cofre tem teto
+   (padrão 10% do PIB) e o que passa vai para a dívida. Os usos de hoje
+   (juros, empréstimo, obras) continuam.
+5. **Ordem:** desempenho, situações, índices, calibragem, sensibilidade.
+
+## 9. Rede sem números soltos (pedido do autor)
+
+**Regra.** Todo índice recebe influência de algo e influencia algo. Toda lei
+recebe pelo menos um índice que muda o efeito dela (por exemplo, a eficácia
+de um programa depende da capacidade do Estado) e mexe em outros. O
+contexto é zero.
+
+**Medido no Brasil, turno 0:**
+
+| Regra | Hoje |
+| --- | --- |
+| Índice sem saída (só recebe) | 56 de 132, entre eles 12 situações sem efeito nenhum |
+| Índice sem entrada | 2 (`carga_evento_demanda`, `transparencia_fiscal_internacional`) |
+| Lei com algum índice mudando o efeito | 0 de 123 |
+| Contexto acima de 5 pontos | 110 de 121; acima de 25: 67; acima de 50: 28 |
+
+**Como o contexto chega a zero.** Para cada índice, a diferença entre o real
+e o que a rede dá tem três saídas, nesta ordem:
+
+1. falta uma ligação (um índice ou lei que deveria influenciar e não
+   influencia);
+2. um coeficiente está fora da faixa que a fonte dá;
+3. as leis vigentes não estão todas no Brasil de 2025/2026.
+
+O relatório (`npm run rede:contexto`) lista, por índice, o valor real, o que
+a rede dá, a diferença e as entradas atuais. O verificador ganha as regras
+acima com uma trava: o número de violações só pode cair (teste que guarda a
+contagem). Quando chegar a zero, vira erro de carga.
 
 ## Fontes
 
