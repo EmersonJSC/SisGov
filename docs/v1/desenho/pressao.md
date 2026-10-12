@@ -1,7 +1,7 @@
 # Grupos de pressão (V1-09)
 
-**Status:** PARA APROVAÇÃO (versão 3: níveis e patrocinadores satíricos,
-12/out à noite). O código só começa depois do seu ok.
+**Status:** PARA APROVAÇÃO (versão 4: decisões 1 a 5 tomadas; falta a 6
+e o ok nos nomes dos países). O código só começa depois do seu ok.
 
 ## 0. O que mudou da versão 1
 
@@ -277,13 +277,13 @@ mídia nacional fica no arquivo do país, porque muda de país para país.
 
 | Id | No jogo | Interesses |
 | --- | --- | --- |
-| `dolarica` | **Estados Unidos da Dolárica**, a grande potência militar | bases, tecnologia, petróleo, plataformas |
-| `madeinia` | **República Popular de Madeínia**, a grande potência industrial | minério, soja, portos, ferrovias |
-| `burocrania` | **União das Normas**, o bloco de países ricos do outro lado do oceano | clima, florestas, regras de comércio |
-| `gasprussia` | **Federação Gasprussa**, a potência do gás e das armas | energia, fertilizantes, desinformação |
-| `enriquistao` | **República do Enriquistão**, a teocracia nuclear | religião, petróleo, rivalidade com a Dolárica |
-| `petrodolar` | **Emirados Unidos do Petrodólar** | petróleo, futebol, fundos soberanos |
-| `bilhonesia` | **União de Bilhonésia**, o gigante populoso | remédios genéricos, tecnologia, grãos |
+| `amerika` | **Estados Unidos da Amérika**, a grande potência militar | bases, tecnologia, petróleo, plataformas |
+| `xing_ling` | **República Popular de Xing Ling**, a fábrica do mundo | minério, soja, portos, ferrovias |
+| `eurocracia` | **União Eurocrática**, o bloco das regras e dos subsídios | clima, florestas, regras de comércio |
+| `russica` | **Federação Rússica**, a potência do gás e das armas | energia, fertilizantes, desinformação |
+| `iranio` | **República Islâmica do Irânio**, a teocracia que enriquece urânio | religião, petróleo, rivalidade com a Amérika |
+| `saldita` | **Reino da Arábia Saldita**, os petrodólares do deserto | petróleo, futebol, fundos soberanos |
+| `bilhindia` | **União da Bilhíndia**, o gigante de um bilhão e meio | remédios genéricos, tecnologia, grãos |
 
 **Empresas**
 
@@ -314,10 +314,10 @@ mídia nacional fica no arquivo do país, porque muda de país para país.
 | `reino_dizimo` | **Igreja Mundial do Reino do Dízimo** | costumes, isenção de impostos, concessões de TV |
 | `assembleia_geral` | **Assembleia Geral de Deus** | costumes, cargos |
 | `santa_sede_central` | **A Santa Sede Central** | aborto, eutanásia, fome |
-| `cinturao_biblico` | **Fundação Evangélica do Cinturão Bíblico** (da Dolárica) | costumes, aliados no exterior |
+| `cinturao_biblico` | **Fundação Evangélica do Cinturão Bíblico** (da Amérika) | costumes, aliados no exterior |
 | `sociedade_escancarada` | **Fundação Sociedade Escancarada** | direitos civis, imprensa, drogas |
 | `portoes` | **Fundação Portões** | vacinas, saúde, agricultura |
-| `floresta_eterna` | **Fundo Floresta Eterna** (da União das Normas) | florestas, povos originários |
+| `floresta_eterna` | **Fundo Floresta Eterna** (da União Eurocrática) | florestas, povos originários |
 
 **Mídia nacional do Brasil** (em `paises/brasil`)
 
@@ -341,7 +341,7 @@ Num modo com outro país, entra como **República das Bananas Federativas**
 - **`K` (0 a 1) por grupo e patrocinador:** quanto o grupo aceita dinheiro
   daquele patrocinador. Ex.: os movimentos ambientalistas aceitam bem
   o Fundo Floresta Eterna e quase nada da Monstanto; a rede de
-  influenciadores de direita aceita bem a Dolárica e a Ípsilon; as igrejas
+  influenciadores de direita aceita bem a Amérika e a Ípsilon; as igrejas
   neopentecostais, a Igreja Mundial do Reino do Dízimo e o Cinturão Bíblico.
 - **Dinheiro que chega** = `K × interesse ameaçado × poder econômico`. Ele
   soma nos recursos (dinheiro) e na pressão do grupo, mesmo com a base
@@ -351,15 +351,34 @@ Num modo com outro país, entra como **República das Bananas Federativas**
 
 - Quase todo patrocínio começa oculto: a tela mostra "financiado por: ?".
 - **Revelar exige:**
-  - **Segurança e inteligência:** investimento em inteligência e
-    contrainteligência (a verba da Polícia Federal hoje; uma lei nova de
-    inteligência, se você quiser);
+  - **Capacidade de investigação**, que vem de leis (as novas são da seção
+    4.4);
   - **Investigação:** o jogador abre uma investigação sobre um grupo. A
-    chance de sucesso por turno = `investimento / (investimento + c × poder
+    chance de sucesso por turno = `capacidade / (capacidade + c × poder
     econômico do patrocinador)`. Patrocinador rico esconde melhor.
 - **Revelado:** o grupo perde parte da legitimidade (pressão e mídia caem),
   o patrocinador perde acesso, e a relação com o país dele piora
   (reputação, tensão internacional).
+
+### 4.4 Leis de inteligência e vigilância (novas)
+
+A capacidade de investigação sai de um índice novo, `capacidade_inteligencia`,
+que recebe destas leis. Cada uma também tem custo: liberdade civil,
+privacidade, dinheiro, e a pressão dos grupos que reagem a ela.
+
+| Lei | Opções (da mais fraca à mais forte) | Ajuda a investigar | Custa |
+| --- | --- | --- | --- |
+| **Programa espacial e satélites** (recursos) | verba por ano | imagem de desmatamento, garimpo, fronteira; comunicação própria | dinheiro |
+| **Agência de inteligência e contrainteligência** (recursos) | verba por ano | investigação de patrocínio, espionagem estrangeira | dinheiro; risco de abuso |
+| **Verba da Polícia Federal** (já existe) | verba por ano | crime organizado, lavagem, patrocínio | dinheiro |
+| **Interceptação telefônica e digital** | proibida; só com ordem judicial e prazo; com ordem e sem prazo; sem ordem em "segurança nacional" | muito | liberdade civil, confiança nas instituições; movimentos de direitos e a imprensa reagem |
+| **Câmeras e reconhecimento facial** | proibido; só em locais públicos com regra; em toda a cidade; com cadastro nacional de rostos | crimes de rua, foragidos | privacidade; erro maior com negros (o movimento negro reage) |
+| **Poderes da polícia na investigação** | só com ordem; infiltração e ação controlada; quebra de sigilo sem ordem | facções, milícias, patrocínio | liberdade civil; associações de policiais apoiam |
+| **Posse e porte de armas** (já existe) | — | (inverso) mais armas em circulação dificulta | — |
+| **Proteção de dados pessoais** (já existe) | — | (inverso) mais proteção dificulta | — |
+
+As leis novas seguem a ficha v3 do V1-05 e entram no catálogo; o texto de
+cada opção é escrito na implementação.
 
 ## 5. Tela
 
@@ -402,17 +421,18 @@ Num modo com outro país, entra como **República das Bananas Federativas**
 - Nenhum nome real de país, empresa ou igreja nos arquivos do jogo.
 - Patrocínio oculto não aparece na tela; investigação com sucesso revela.
 
-## 8. Decisões para você
+## 8. Decisões do autor (12/out)
 
-1. **Os quatro níveis** da seção 3.1 (sem muitos adeptos, organizando,
-   mobilizado, preocupação nacional): servem?
-2. **54 grupos** na seção 3.4: algum a mais, a menos ou com a base errada?
-3. **Nomes satíricos** da seção 4.1: quais trocar? Pode mandar os seus.
-4. **Turno 0** da seção 3.5: confere com o que você lembra de jan/2025?
-5. **Inteligência:** usar a verba da Polícia Federal que já existe, ou criar
-   uma lei de inteligência e contrainteligência?
-6. **Efeitos provisórios** das ações até o V1-10 (pequenos, num índice e na
-   aprovação): pode ser?
+1. Os quatro níveis: **sim**.
+2. Os 54 grupos: **sim**, como estão.
+3. Nomes: os países trocados por sátiras que lembrem o país (seção 4.1,
+   versão 4). Empresas, igrejas e mídia ficaram como estavam.
+4. Turno 0: **sim**.
+5. Inteligência: **leis novas** (programa espacial e satélites, agência de
+   inteligência, interceptação, câmeras e reconhecimento facial, poderes da
+   polícia), mais as que já existem (verba da PF, armas, proteção de dados).
+   Seção 4.4.
+6. Efeitos provisórios das ações: em aberto.
 
 ## Fontes
 
