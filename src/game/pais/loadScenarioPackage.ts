@@ -11,6 +11,7 @@ import {
 import type { ResolvedPackage } from "../../engine";
 import { expandirPais } from "./configuracao";
 import { expandirFichasV3 } from "./fichaV3";
+import { expandirPressao } from "./pressao";
 
 export type LoadedScenarioPackage = Readonly<{
   definition: ResolvedPackage;
@@ -24,12 +25,16 @@ export function loadScenarioPackage(
   distributedFiles: readonly string[] = [],
 ): ValidationResult<LoadedScenarioPackage> {
   // País da versão 1 vira manifesto + estado inicial, já sem o que ele não
-  // comporta (V1-06); depois, fichas v3 viram lei v2 + consequências (V1-05).
+  // comporta (V1-06); depois, fichas v3 viram lei v2 + consequências (V1-05);
+  // por fim, os grupos de pressão entram (V1-09).
   const pais = expandirPais(manifestPath, files);
   if (!pais.ok) return pais;
   const expanded = expandirFichasV3(pais.value.files);
   if (!expanded.ok) return expanded;
-  const resolved = resolvePackage(pais.value.manifestPath, expanded.value);
+  // Grupos de pressão (V1-09): nós, setas e eventos dos grupos e patrocinadores.
+  const pressao = expandirPressao(pais.value.manifestPath, expanded.value);
+  if (!pressao.ok) return pressao;
+  const resolved = resolvePackage(pais.value.manifestPath, pressao.value);
   if (!resolved.ok) return resolved;
   const coherent = validatePackageCoherence(resolved.value);
   if (!coherent.ok) return coherent;

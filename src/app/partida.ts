@@ -30,6 +30,10 @@ export type {
   VisaoRegistro,
   VisaoOcorrencias,
   RelatorioTurno,
+  VisaoGrupoPressao,
+  VisaoPressao,
+  VisaoMudancaDeNivel,
+  VisaoInvestigacaoConcluida,
   EfeitoPrevisto,
   PrevisaoLei,
 } from "./partida/tipos";
@@ -40,3 +44,4 @@ export { responderDilema, preverDilema, encerrarTurno } from "./partida/turno";
 export { BOLHAS_DO_ORCAMENTO } from "./partida/contas";
 export { verPartida } from "./partida/visao";
 export { chanceDaOcorrencia } from "./partida/ocorrencias";
+export { investigarGrupo } from "./partida/pressao";

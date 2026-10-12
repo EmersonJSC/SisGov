@@ -4,6 +4,8 @@
   "versaoEsquema": 1,
   "nome": "Mundo do SisGov",
   "populacao": "mundo/populacao.json",
+  "pressao": "mundo/pressao.json",
+  "patrocinadores": "mundo/patrocinadores.json",
   "respostaDasBolhas": 0.875,
   "variaveis": "mundo/indicadores/variaveis.json",
   "catalogoPoliticas": "mundo/catalogo-leis.json",
@@ -2952,7 +2954,14 @@
     "mundo/consequencias/incentivos-fiscais-regionais--grupo-interior.json",
     "mundo/consequencias/programa-medicos-no-interior--grupo-interior.json",
     "mundo/consequencias/producao-agropecuaria--grupo-interior.json",
-    "mundo/consequencias/desigualdade-regional--grupo-interior.json"
+    "mundo/consequencias/desigualdade-regional--grupo-interior.json",
+    "mundo/consequencias/protecao-de-dados--capacidade-inteligencia.json",
+    "mundo/consequencias/armas-em-circulacao--capacidade-inteligencia.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-programa-espacial-e-satelites.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-agencia-de-inteligencia.json",
+    "mundo/consequencias/forca-instituicoes--eficacia-interceptacao-de-comunicacoes.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-cameras-e-reconhecimento-facial.json",
+    "mundo/consequencias/corrupcao--eficacia-poderes-de-investigacao-policial.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

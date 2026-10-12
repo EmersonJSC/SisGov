@@ -991,6 +991,64 @@
       "area": "Segurança, justiça e drogas"
     },
     {
+      "id": "recursos_programa_espacial_e_satelites",
+      "tipo": "controle",
+      "nome": "Recursos: Programa espacial e satélites",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "recursos_agencia_de_inteligencia",
+      "tipo": "controle",
+      "nome": "Recursos: Agência de inteligência e contrainteligência",
+      "unidade": "moeda_ano",
+      "dominio": {
+        "minimo": 0
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_interceptacao_de_comunicacoes",
+      "tipo": "controle",
+      "nome": "Interceptação telefônica e digital",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_cameras_e_reconhecimento_facial",
+      "tipo": "controle",
+      "nome": "Câmeras e reconhecimento facial",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_poderes_de_investigacao_policial",
+      "tipo": "controle",
+      "nome": "Poderes da polícia na investigação",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
       "id": "recursos_fundo_seguranca_publica",
       "tipo": "controle",
       "nome": "Recursos: Dinheiro para as polícias dos estados",
@@ -7141,6 +7199,22 @@
         "zero": 10,
         "cem": 90,
         "fontes": ["Instituto Sou da Paz (\"Onde mora a impunidade\")"]
+      }
+    },
+    {
+      "id": "capacidade_inteligencia",
+      "tipo": "calculado",
+      "nome": "Capacidade de investigação",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Segurança",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "soma das leis de inteligência e investigação",
+        "tecnico": true
       }
     },
     {

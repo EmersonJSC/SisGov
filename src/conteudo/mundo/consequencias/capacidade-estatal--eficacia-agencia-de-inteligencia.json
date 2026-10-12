@@ -1,0 +1,17 @@
+{
+  "id": "capacidade-estatal--eficacia-agencia-de-inteligencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capacidade_estatal",
+  "alvo": "eficacia:agencia-de-inteligencia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

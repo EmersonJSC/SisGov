@@ -24,6 +24,12 @@ import {
   compararSeries,
 } from "./previsao";
 import { lerContas } from "./contas";
+import { rollPressure, groupActions } from "../../game/pressao";
+import {
+  investigacoesConcluidas,
+  mudancasDeNivel,
+  nosForaDoMapa,
+} from "./pressao";
 
 /** O piloto automático (D-58) responde a mesa com a opção padrão. */
 function responderComPadrao(partida: Partida, game: GameState): GameState {
@@ -43,9 +49,29 @@ function responderComPadrao(partida: Partida, game: GameState): GameState {
 function sortearTurno(
   content: ResolvedPackage,
   game: GameState,
-): { game: GameState; jornal: RelatorioTurno["ocorrencias"] } {
+): {
+  game: GameState;
+  jornal: RelatorioTurno["ocorrencias"];
+  pressao: RelatorioTurno["pressao"];
+} {
+  // V1-09: níveis dos grupos e investigações; a revelação de um patrocinador
+  // estrangeiro dispara o evento dele
+  const p = game.pressure
+    ? rollPressure({
+        content,
+        state: game.pressure,
+        values: game.execution.values,
+        turn: game.currentTurn,
+        seed: game.random?.seed ?? 1,
+      })
+    : undefined;
+  if (p) game = { ...game, pressure: p.state };
+  const pressao = {
+    niveis: mudancasDeNivel({ content }, p?.changes ?? []),
+    investigacoes: investigacoesConcluidas({ content }, p?.finished ?? []),
+  };
   const vazio = { eventos: [], dilemas: [], surgiram: [], acabaram: [] };
-  if (!game.occurrences) return { game, jornal: vazio };
+  if (!game.occurrences) return { game, jornal: vazio, pressao };
   const r = rollTurn({
     content,
     state: game.occurrences,
@@ -53,6 +79,7 @@ function sortearTurno(
     turn: game.currentTurn,
     seed: game.random?.seed ?? 1,
     laws: lawTargets(content, game.policies),
+    forcedEvents: p?.events ?? [],
   });
   const turno = game.currentTurn;
   const registro = (
@@ -81,6 +108,7 @@ function sortearTurno(
       .filter((x): x is VisaoRegistro => x !== undefined);
   return {
     game: { ...game, occurrences: r.state },
+    pressao,
     jornal: {
       eventos: lista("evento", r.events),
       dilemas: lista("dilema", r.dilemmas),
@@ -122,6 +150,7 @@ const GENERICO: Readonly<Record<string, string>> = {
   palacio: "palácio do governo",
   festa: "A festa popular",
   sistema_saude: "sistema público de saúde",
+  causa: "a insatisfação acumulada",
   ministro: "um ministro do governo",
   ministerio: "do governo",
   pasta: "governo",
@@ -154,11 +183,14 @@ export function registroDeOcorrencia(
   const o = occurrenceCatalog(content).byId.get(record.id);
   if (!o) return undefined;
   const opcao = o.opcoes?.find((x) => x.id === record.optionId);
+  const grupo = groupActions(content).get(o.id)?.group.id;
   return {
     tipo: record.kind,
     id: record.id,
     nome: preencher(o.nome, record.vars),
     manchete: preencher(o.manchete ?? o.nome, record.vars),
+    ...(o.descricao ? { descricao: preencher(o.descricao, record.vars) } : {}),
+    ...(grupo ? { grupo } : {}),
     nivel: o.nivel ?? 2,
     turno: record.turn,
     ...(record.endedTurn !== undefined ? { fim: record.endedTurn } : {}),
@@ -295,8 +327,12 @@ export function encerrarTurno(
   const after = next.execution.values;
   const pilotoBefore = piloto.execution.values;
   const pilotoAfter = pilotoNext.execution.values;
+  const foraDoMapa = nosForaDoMapa(content);
   const mudancas = content.variables.variaveis
-    .filter((variable) => variable.tipo !== "controle")
+    .filter(
+      (variable) =>
+        variable.tipo !== "controle" && !foraDoMapa.has(variable.id),
+    )
     .map((variable) => {
       const id = variable.id;
       const antes = before[id] ?? 0;
@@ -332,6 +368,7 @@ export function encerrarTurno(
         leisAlteradas: leisAlteradas(next, pilotoNext).size,
         dilemasDiferentes: dilemasDiferentes(next, pilotoNext),
         ocorrencias: rolado.jornal,
+        pressao: rolado.pressao,
       },
     },
   };

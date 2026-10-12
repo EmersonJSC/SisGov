@@ -53,7 +53,13 @@ describe("SG106 — cinco mandatos", () => {
     for (const h of historia) vezes.set(h.id, (vezes.get(h.id) ?? 0) + 1);
     const dilemas = historia.filter((h) => h.kind === "dilema").length;
     expect(vezes.size).toBeGreaterThanOrEqual(60);
-    expect(Math.max(...vezes.values())).toBeLessThanOrEqual(4);
+    // Ações de grupos de pressão (V1-09) voltam enquanto o grupo segue
+    // mobilizado; as outras ocorrências repetem pouco.
+    const origem = new Map(atual.content.events.map((e) => [e.id, e.origem]));
+    const deGrupo = [...vezes].filter(([id]) => origem.get(id) === "grupo");
+    const outras = [...vezes].filter(([id]) => origem.get(id) !== "grupo");
+    expect(Math.max(...outras.map(([, n]) => n))).toBeLessThanOrEqual(4);
+    expect(Math.max(...deGrupo.map(([, n]) => n))).toBeLessThanOrEqual(12);
     // poucos dilemas (11/out): no máximo um a cada 3 turnos
     expect(dilemas).toBeGreaterThanOrEqual(12);
     expect(dilemas).toBeLessThanOrEqual(27);

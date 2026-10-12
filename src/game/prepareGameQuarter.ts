@@ -13,6 +13,7 @@ import {
   type OccurrenceState,
 } from "./occurrences";
 import type { PolicyState } from "./leis";
+import { pressureMonth } from "./pressao";
 
 /** Um mês do trimestre. Sem explicações: o turno não as lê (V1-07). */
 export type PreparedGameMonth = Readonly<{
@@ -59,18 +60,24 @@ export function prepareGameQuarter(
     const occurrence = game.occurrences
       ? occurrenceMonth(content, graph, game.occurrences, index)
       : undefined;
-    const merged = occurrence
-      ? {
-          controlCommands: [
-            ...batch.value.controlCommands,
-            ...occurrence.commands,
-          ],
-          activeRelationIds: [
-            ...batch.value.activeRelationIds,
-            ...occurrence.relationIds,
-          ],
-        }
-      : batch.value;
+    // V1-09: dinheiro dos patrocinadores e revelações
+    const pressure = game.pressure
+      ? pressureMonth(content, graph, game.pressure)
+      : [];
+    const merged =
+      occurrence || pressure.length
+        ? {
+            controlCommands: [
+              ...batch.value.controlCommands,
+              ...(occurrence?.commands ?? []),
+              ...pressure,
+            ],
+            activeRelationIds: [
+              ...batch.value.activeRelationIds,
+              ...(occurrence?.relationIds ?? []),
+            ],
+          }
+        : batch.value;
     const advanced = advanceExecution(content, graph, execution, merged, 1, {
       explain: false,
     });

@@ -44,7 +44,8 @@
     "protecao-de-dados--grupo-classe-media",
     "protecao-de-dados--grupo-empresarios",
     "protecao-de-dados--grupo-pequenos-negocios",
-    "protecao-de-dados--grupo-progressistas"
+    "protecao-de-dados--grupo-progressistas",
+    "protecao-de-dados--capacidade-inteligencia"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

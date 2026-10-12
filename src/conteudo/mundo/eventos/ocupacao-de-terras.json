@@ -3,15 +3,21 @@
   "tipo": "evento",
   "versaoEsquema": 1,
   "nome": "Ocupação de terras",
-  "descricao": "Mil famílias montam acampamento numa fazenda parada. O dono pede reintegração; os movimentos pedem reforma agrária.",
+  "descricao": "Mil famílias montam acampamento numa fazenda parada. O dono pede reintegração; os movimentos pedem reforma agrária. O motivo: {causa}.",
   "area": "Ministério do Trabalho",
   "manchete": "Sem-terra ocupam fazenda improdutiva em {estado}",
-  "origem": "pais",
+  "origem": "grupo",
   "nivel": 2,
   "avaliacao": "negativa",
   "intervaloMinimoTurnos": 8,
   "gatilho": {
-    "chance": 0.02,
+    "chance": 0.25,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "nivel_terra",
+      "operador": "maior_ou_igual",
+      "valor": 3
+    },
     "fatores": [
       {
         "variavel": "conflitos_fundiarios",

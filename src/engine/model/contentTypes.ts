@@ -56,6 +56,12 @@ export type ScenarioManifest = {
   organizacaoPolitica?: string;
   /** Aprovação calculada pelos perfis do eleitorado (V1-08). */
   aprovacaoPorPerfis?: ProfileApproval;
+  /**
+   * Grupos de pressão (V1-09), gerados na carga do país. O motor não lê: os
+   * nós, setas e eventos dos grupos já estão no pacote; isto é o mapa que a
+   * partida usa para níveis, causas, patrocínio e tela.
+   */
+  gruposDePressao?: PressureGroupsManifest;
   perfis?: readonly {
     id: string;
     nome: string;
@@ -79,6 +85,68 @@ export type ProfileApproval = {
   perfis: readonly { peso: number; segmentos: readonly string[] }[];
   /** Eixos de cada segmento, só para a tela agrupar. O motor não lê. */
   eixos?: readonly { id: string; nome: string; segmentos: readonly string[] }[];
+};
+
+/** Grupos de pressão na partida (V1-09); ver `ScenarioManifest.gruposDePressao`. */
+export type PressureGroupsManifest = {
+  /** Nome de cada nível, do 0 ao último. */
+  niveis: readonly string[];
+  secoes: readonly { id: string; nome: string }[];
+  grupos: readonly PressureGroupManifest[];
+  patrocinadores: readonly {
+    id: string;
+    nome: string;
+    tipo: string;
+    descricao: string;
+    poder: number;
+    /** Nó do interesse ameaçado (0 a 100). */
+    interesse: string;
+    /** Evento que a revelação dispara (só países). */
+    eventoRevelado?: string;
+  }[];
+  investigacao: {
+    /** Chance por turno = capacidade ÷ (capacidade + c × poder). */
+    c: number;
+    turnos: number;
+    aoMesmoTempo: number;
+    /** Nó da capacidade de investigação. */
+    capacidade: string;
+  };
+};
+
+export type PressureGroupManifest = {
+  id: string;
+  nome: string;
+  plural: boolean;
+  secao: string;
+  visto: "esquerda" | "direita" | "nenhum";
+  recursos: { gente: number; dinheiro: number; midia: number; forca: number };
+  /** Nó da pressão (0 a 100) e nó do nível (situação em níveis). */
+  pressao: string;
+  nivel: string;
+  limites: readonly { entrada: number; saida: number }[];
+  /** Eventos do grupo e o nível em que cada um pode acontecer. */
+  acoes: readonly { evento: string; nivel: number }[];
+  /** O que o grupo vigia, para a tela dizer o motivo da ação. */
+  causas: readonly {
+    origem: string;
+    nome: string;
+    coeficiente: number;
+    constante: number;
+    peso: number;
+    porPib?: boolean;
+  }[];
+  patrocinio: readonly {
+    patrocinador: string;
+    k: number;
+    publico: boolean;
+    /** Controle 0 ou 1: o dinheiro chega (1) ou foi cortado pela revelação (0). */
+    acesso: string;
+    /** Pontos de pressão por ponto de interesse. */
+    coeficiente: number;
+  }[];
+  /** Controle 0 ou 1: algum patrocínio oculto foi revelado. */
+  revelado?: string;
 };
 
 /**
@@ -106,6 +174,13 @@ export type VariableDefinition = {
   entrada?: number;
   /** Só situação: soma em que ela acaba (no máximo `entrada`). */
   saida?: number;
+  /**
+   * Só situação, no lugar de `entrada` e `saida` (V1-09): situação em
+   * níveis. O valor é o nível (0 a `niveis.length`). Do nível k sobe para
+   * k + 1 quando a soma chega a `niveis[k].entrada`; desce de k + 1 para k
+   * quando a soma cai a `niveis[k].saida` ou menos. Um degrau por passo.
+   */
+  niveis?: readonly { entrada: number; saida: number }[];
   /**
    * Só estoque (V1-07): o que passar do domínio ou do `teto` vai para outro
    * estoque da mesma unidade, em vez de sumir. `oposto`: um é bem e o outro
@@ -561,7 +636,9 @@ export type OccurrenceOrigin =
   | "reacao"
   | "desdobramento"
   | "crise"
-  | "cotidiano";
+  | "cotidiano"
+  /** Ação de um grupo de pressão (V1-09). */
+  | "grupo";
 
 export type OccurrenceFile = {
   id: string;

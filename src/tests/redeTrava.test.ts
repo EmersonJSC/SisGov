@@ -11,7 +11,8 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
  * carga. Detalhe por índice: `npm run rede:contexto`.
  */
 const limites = {
-  indicesSemEntrada: 2,
+  // V1-09: +1, a base fixa dos grupos de pressão (nó técnico de valor 1).
+  indicesSemEntrada: 3,
   leisSemModulacao: 1,
   indicesSemMedida: 0,
   // V1-08: +9 segmentos novos, que começam com o contexto como os outros

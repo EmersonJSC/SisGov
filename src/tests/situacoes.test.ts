@@ -98,3 +98,63 @@ describe("situação com entrada e saída (V1-07)", () => {
     expect(r.ok && r.value.values.crise).toBe(0);
   });
 });
+
+describe("situação em níveis (V1-09)", () => {
+  // Três passagens: sobe em 40, 60 e 80; desce em 30, 50 e 70.
+  const nivel = {
+    id: "crise",
+    tipo: "situacao" as const,
+    nome: "Nível",
+    unidade: "nivel",
+    dominio: { minimo: 0, maximo: 3 },
+    niveis: [
+      { entrada: 40, saida: 30 },
+      { entrada: 60, saida: 50 },
+      { entrada: 80, saida: 70 },
+    ],
+  };
+  const emNiveis = {
+    ...content,
+    variables: { variaveis: [nivel, pressao] },
+  } as unknown as ResolvedPackage;
+  const grafo: ScenarioGraph = {
+    ...graph,
+    nodesById: { crise: nivel, pressao },
+  };
+  const passo = (anterior: number, soma: number) => {
+    const previous = { crise: anterior, pressao: soma };
+    const r = computeNetwork({
+      content: emNiveis,
+      graph: grafo,
+      previous,
+      controls: {},
+      activeRelations: [relacao],
+      readDelayed: () => previous,
+      duration: 1,
+      accumulateStocks: false,
+    });
+    if (!r.ok) throw new Error(r.diagnostics[0].message);
+    return r.value.values.crise;
+  };
+
+  it("sobe e desce um degrau por passo, com histerese em cada passagem", () => {
+    let n = 0;
+    const passos: [number, number][] = [
+      [35, 0], // abaixo da primeira entrada
+      [90, 1], // muito acima: sobe só um degrau
+      [90, 2],
+      [90, 3],
+      [95, 3], // no teto
+      [75, 3], // entre saída e entrada da última passagem: fica
+      [70, 2], // na saída: desce
+      [55, 2], // entre 50 e 60: fica
+      [10, 1], // muito abaixo: desce só um degrau
+      [10, 0],
+      [10, 0],
+    ];
+    for (const [soma, esperado] of passos) {
+      n = passo(n, soma);
+      expect(n, `soma ${soma}`).toBe(esperado);
+    }
+  });
+});

@@ -260,6 +260,8 @@ export type VisaoPartida = Readonly<{
   grupos: readonly VisaoGrupo[];
   /** Eventos, dilemas e situações (SG106). */
   ocorrencias: VisaoOcorrencias;
+  /** Grupos de pressão (V1-09); ausente se o país não tem. */
+  pressao?: VisaoPressao;
   /** Áreas do governo e seus ministérios, na ordem do anel (D-64). */
   governo: readonly VisaoArea[];
 }>;
@@ -345,6 +347,10 @@ export type VisaoRegistro = Readonly<{
   id: string;
   nome: string;
   manchete: string;
+  /** Texto com as variáveis trocadas (inclui "O motivo: …" das ações). */
+  descricao?: string;
+  /** Ocorrência de grupo de pressão: o grupo (V1-09). */
+  grupo?: string;
   nivel: number;
   turno: number;
   fim?: number;
@@ -391,6 +397,80 @@ export type RelatorioTurno = Readonly<{
     surgiram: readonly VisaoRegistro[];
     acabaram: readonly VisaoRegistro[];
   }>;
+  /** Grupos que mudaram de nível e investigações que acabaram (V1-09). */
+  pressao: Readonly<{
+    niveis: readonly VisaoMudancaDeNivel[];
+    investigacoes: readonly VisaoInvestigacaoConcluida[];
+  }>;
+}>;
+
+/** Nível de um grupo de pressão: 0 sem muitos adeptos … 3 preocupação nacional. */
+export type VisaoGrupoPressao = Readonly<{
+  id: string;
+  nome: string;
+  secao: string;
+  visto: "esquerda" | "direita" | "nenhum";
+  recursos: Readonly<{
+    gente: number;
+    dinheiro: number;
+    midia: number;
+    forca: number;
+  }>;
+  /** Pressão de 0 a 100. */
+  pressao: number;
+  nivel: number;
+  nomeDoNivel: string;
+  /** Entrada (sobe) e saída (desce) de cada nível, do 1 ao 3. */
+  limites: readonly Readonly<{ entrada: number; saida: number }>[];
+  /** O que mais empurra a pressão agora. */
+  motivo?: string;
+  ultimaAcao?: VisaoRegistro;
+  /**
+   * Patrocinadores conhecidos: os públicos e os revelados. O oculto não
+   * aparece (a tela mostra "?" enquanto ninguém investigou).
+   */
+  financiadoPor: readonly Readonly<{
+    id: string;
+    nome: string;
+    tipo: string;
+    revelado: boolean;
+  }>[];
+  /** Investigação em curso: turnos que ainda faltam. */
+  investigacao?: Readonly<{ turnosRestantes: number }>;
+  /** Última investigação concluída sobre o grupo (turno). */
+  investigadoEm?: number;
+}>;
+
+export type VisaoPressao = Readonly<{
+  niveis: readonly string[];
+  secoes: readonly Readonly<{ id: string; nome: string }>[];
+  /** Na ordem das seções e, dentro delas, do maior nível ao menor. */
+  grupos: readonly VisaoGrupoPressao[];
+  /** Grupos em preocupação nacional (alerta na barra de cima). */
+  alertas: readonly string[];
+  investigacao: Readonly<{
+    /** Capacidade de investigação (0 a 100). */
+    capacidade: number;
+    aoMesmoTempo: number;
+    emCurso: number;
+    turnos: number;
+  }>;
+}>;
+
+export type VisaoMudancaDeNivel = Readonly<{
+  grupo: string;
+  nome: string;
+  de: number;
+  para: number;
+  manchete: string;
+}>;
+
+export type VisaoInvestigacaoConcluida = Readonly<{
+  grupo: string;
+  nome: string;
+  /** Nomes dos patrocinadores achados (vazio: nada). */
+  achados: readonly string[];
+  manchete: string;
 }>;
 
 /** Trajetória de uma bolha nos três meses do próximo turno. */

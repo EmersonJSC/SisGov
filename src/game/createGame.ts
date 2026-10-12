@@ -19,6 +19,7 @@ import {
   rollTurn,
   type OccurrenceState,
 } from "./occurrences";
+import { createPressureState, type PressureState } from "./pressao";
 
 export type GameState = Readonly<{
   id: string;
@@ -42,6 +43,8 @@ export type GameState = Readonly<{
   random?: RandomState;
   /** Eventos, dilemas e situações (SG106); ausente sem catálogo. */
   occurrences?: OccurrenceState;
+  /** Grupos de pressão (V1-09); ausente sem grupos no pacote. */
+  pressure?: PressureState;
   execution: EngineExecution;
 }>;
 
@@ -284,6 +287,7 @@ export function createGame(
           onlyDilemmas: true,
         }).state
       : undefined;
+  const pressure = createPressureState(content, execution.values);
   return {
     ok: true,
     value: {
@@ -301,6 +305,7 @@ export function createGame(
       political,
       random: random?.value,
       ...(occurrences ? { occurrences } : {}),
+      ...(pressure ? { pressure } : {}),
       execution,
     },
   };

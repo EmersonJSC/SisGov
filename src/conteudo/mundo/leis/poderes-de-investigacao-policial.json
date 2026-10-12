@@ -1,0 +1,101 @@
+{
+  "id": "poderes-de-investigacao-policial",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Poderes da polícia na investigação",
+  "descricao": "O que a polícia pode fazer para investigar facções e quem as financia: só com ordem de juiz, também infiltrar agentes e esperar o melhor momento de agir, ou ainda quebrar sigilos sem ordem.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "nivel": "lei",
+  "controle": {
+    "variavel": "nivel_poderes_de_investigacao_policial",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-com-ordem",
+        "rotulo": "Só com ordem de juiz",
+        "valor": 0
+      },
+      {
+        "id": "infiltracao",
+        "rotulo": "Infiltração e ação controlada",
+        "valor": 50
+      },
+      {
+        "id": "sigilo-sem-ordem",
+        "rotulo": "Quebra de sigilo sem ordem",
+        "valor": 100
+      }
+    ]
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.3
+  },
+  "efeitos": [
+    {
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.15,
+        "termoConstante": 0
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.04,
+        "termoConstante": 0
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06,
+        "termoConstante": 3.0
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.05,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.08,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "brasil": "Lei 12.850/2013 (organizações criminosas): permite infiltração de agentes e ação controlada, com autorização judicial."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 12.850/2013 (organizações criminosas)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12850.htm",
+      "usadoPara": "opção vigente no Brasil"
+    }
+  ]
+}

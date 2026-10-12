@@ -29,6 +29,7 @@ import {
   brutoDasSituacoes,
 } from "./contas";
 import { ocorrenciasDaPartida } from "./ocorrencias";
+import { nosForaDoMapa, pressaoDaPartida } from "./pressao";
 
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
 export function verPartida(partida: Partida): VisaoPartida {
@@ -153,8 +154,12 @@ export function verPartida(partida: Partida): VisaoPartida {
   const comPiloto = partida.piloto !== game;
   const pilotoValues = partida.piloto.execution.values;
   const brutoPiloto = brutoDasSituacoes(partida, pilotoValues);
+  const foraDoMapa = nosForaDoMapa(content);
   const bolhas = content.variables.variaveis
-    .filter((variable) => variable.tipo !== "controle")
+    .filter(
+      (variable) =>
+        variable.tipo !== "controle" && !foraDoMapa.has(variable.id),
+    )
     .map((variable) => ({
       id: variable.id,
       nome: variable.nome,
@@ -213,6 +218,8 @@ export function verPartida(partida: Partida): VisaoPartida {
     (game.occurrences?.active ?? []).map((a) => [a.control, a]),
   );
   const ligacoes = content.consequences.flatMap((consequence) => {
+    if (foraDoMapa.has(consequence.alvo) || foraDoMapa.has(consequence.origem))
+      return [];
     const parametros = consequence.parametros;
     const dona = catalogo.ownerByControl.get(consequence.origem);
     let ocorrencia: VisaoLigacao["ocorrencia"];
@@ -261,6 +268,7 @@ export function verPartida(partida: Partida): VisaoPartida {
         })),
     ];
   });
+  const pressao = pressaoDaPartida(partida);
   return {
     pais: content.manifest?.nome ?? "",
     cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
@@ -268,6 +276,7 @@ export function verPartida(partida: Partida): VisaoPartida {
     contas: lerContas(content, values),
     grupos: gruposDaPartida(partida, values, alteradas),
     ocorrencias: ocorrenciasDaPartida(partida),
+    ...(pressao ? { pressao } : {}),
     governo,
     leis,
     bolhas,

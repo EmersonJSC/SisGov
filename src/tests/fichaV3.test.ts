@@ -42,7 +42,8 @@ const mensagens = (ficha: FichaV3) =>
 describe("ficha de lei v3", () => {
   it("as três leis piloto se comportam como antes no turno", () => {
     // Valores gravados (a migração do formato v2 foi conferida com o Brasil
-    // antigo; regravados com os valores de jan/2025 do V1-07), com as três
+    // antigo; regravados com os valores de jan/2025 do V1-07 e com as leis de
+    // inteligência do V1-09, que mudam o gasto e a verba da PF), com as três
     // leis mudadas pelo jogador e quatro turnos sem ocorrências.
     let p = (
       criarPartida({ semente: 7, ocorrencias: false }) as { value: Partida }
@@ -65,18 +66,21 @@ describe("ficha de lei v3", () => {
     expect(v.nivel_piso_salarial_professores).toBeCloseTo(58.8366, 9);
     expect(v.nivel_policia_militar).toBeCloseTo(75.99, 9);
     expect(v.recursos_verba_policia_federal).toBeCloseTo(13247.52, 9);
-    expect(v.letalidade_policial).toBeCloseTo(30.994181791945064, 9);
-    expect(v.crime_organizado).toBeCloseTo(71.76826225556152, 9);
-    expect(v.gasto_publico).toBeCloseTo(31.525773700795302, 9);
-    expect(v.popularidade_governo).toBeCloseTo(48.386594384474385, 9);
+    expect(v.letalidade_policial).toBeCloseTo(30.994180586820043, 9);
+    expect(v.crime_organizado).toBeCloseTo(71.76787003706171, 9);
+    expect(v.gasto_publico).toBeCloseTo(31.535364066598728, 9);
+    expect(v.popularidade_governo).toBeCloseTo(48.38662140389702, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {
     const loaded = loadScenarioPackage("paises/brasil/pais.json", arquivos);
     expect(loaded.ok).toBe(true);
     if (!loaded.ok) return;
+    // só as da ficha: os grupos de pressão (V1-09) somam setas à lei
     const relacoes = loaded.value.graph.relations.filter(
-      (r) => r.sourceId === "piso-salarial-professores",
+      (r) =>
+        r.sourceId === "piso-salarial-professores" &&
+        r.consequencePath.startsWith("mundo/leis/piso-salarial-professores"),
     );
     expect(relacoes).toHaveLength(8);
     expect(relacoes[0].consequencePath).toMatch(
@@ -161,8 +165,9 @@ describe("ficha de lei v3", () => {
 
   it("relatório mostra quantas leis faltam migrar", () => {
     const relatorio = relatorioDeMigracao(arquivos, "mundo/catalogo-leis.json");
-    // 3 pilotos (V1-05) e a lei nova do destino do resultado (V1-07)
-    expect(relatorio.migradas).toHaveLength(4);
-    expect(relatorio.faltam).toHaveLength(relatorio.total - 4);
+    // 3 pilotos (V1-05), a lei nova do destino do resultado (V1-07) e as
+    // cinco de inteligência e vigilância (V1-09)
+    expect(relatorio.migradas).toHaveLength(9);
+    expect(relatorio.faltam).toHaveLength(relatorio.total - 9);
   });
 });

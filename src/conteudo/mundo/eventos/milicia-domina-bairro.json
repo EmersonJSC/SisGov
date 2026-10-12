@@ -2,16 +2,25 @@
   "id": "milicia-domina-bairro",
   "tipo": "evento",
   "versaoEsquema": 1,
+  "requer": {
+    "exige": ["crime-organizado-forte"]
+  },
   "nome": "Milícia toma o {bairro}",
-  "descricao": "Um grupo de agentes e ex-agentes controla gás, internet e transporte no {bairro}. Quem não paga, sofre.",
+  "descricao": "Um grupo de agentes e ex-agentes controla gás, internet e transporte no {bairro}. Quem não paga, sofre. O motivo: {causa}.",
   "area": "Ministério da Justiça",
   "manchete": "Milícia passa a cobrar taxa de moradores do {bairro}, em {cidade}",
-  "origem": "pais",
+  "origem": "grupo",
   "nivel": 1,
   "avaliacao": "negativa",
   "intervaloMinimoTurnos": 4,
   "gatilho": {
-    "chance": 0.06,
+    "chance": 0.25,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "nivel_milicias",
+      "operador": "maior_ou_igual",
+      "valor": 3
+    },
     "fatores": [
       {
         "variavel": "crime_organizado",

@@ -53,13 +53,17 @@
       "atraso": 4
     },
     {
-      "alvo": "polarizacao",
+      "alvo": "capacidade_inteligencia",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 8.33333e-5,
-        "termoConstante": -0.0
+        "coeficiente": 66.666667,
+        "termoConstante": 0
       },
-      "atraso": 1
+      "atraso": 2,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      }
     },
     {
       "alvo": "grupo_classe_media",

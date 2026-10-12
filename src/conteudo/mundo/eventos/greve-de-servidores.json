@@ -3,10 +3,10 @@
   "tipo": "evento",
   "versaoEsquema": 1,
   "nome": "Greve dos servidores federais",
-  "descricao": "Universidades, agências e órgãos federais param. Serviços atrasam e a pressão sobe.",
+  "descricao": "Universidades, agências e órgãos federais param. Serviços atrasam e a pressão sobe. O motivo: {causa}.",
   "area": "Casa Civil",
   "manchete": "Servidores federais param por reajuste",
-  "origem": "pais",
+  "origem": "grupo",
   "nivel": 2,
   "avaliacao": "negativa",
   "intervaloMinimoTurnos": 8,
@@ -14,11 +14,10 @@
     "chance": 0.25,
     "condicao": {
       "tipo": "comparacao",
-      "variavel": "grupo_servidores",
-      "operador": "menor_que",
-      "valor": 40.0
-    },
-    "porTurnos": 2
+      "variavel": "nivel_sindicatos_servidores",
+      "operador": "maior_ou_igual",
+      "valor": 3
+    }
   },
   "consequencias": [
     "greve-de-servidores--capacidade-estatal",

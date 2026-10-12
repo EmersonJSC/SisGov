@@ -119,20 +119,46 @@ function noticias(
         ...relatorio.ocorrencias.dilemas,
       ]
     : visao.ocorrencias.emCurso.map((o) => ({ ...o, turno: visao.turno }));
+  // V1-09: ação de grupo em preocupação nacional é manchete
+  const nacional = new Set(visao.pressao?.alertas ?? []);
   for (const r of registros) {
     const ativa = emCurso.get(r.id);
     const dilema = mesa.get(r.id);
+    const grupo = "grupo" in r ? r.grupo : undefined;
     saida.push({
       id: `${r.tipo}-${r.id}`,
       tipo: r.tipo,
       manchete: r.manchete,
-      texto: ativa?.descricao ?? dilema?.descricao ?? "",
-      nivel: r.nivel,
+      texto: ativa?.descricao ?? dilema?.descricao ?? r.descricao ?? "",
+      nivel: grupo && nacional.has(grupo) ? Math.max(r.nivel, 3) : r.nivel,
       boa: r.avaliacao === "positiva",
       efeitos: ativa ? efeitos(ativa.efeitos) : [],
       ...(ativa ? { meses: ativa.mesesRestantes } : {}),
     });
   }
+  // grupos que mudaram de nível e investigações que acabaram (V1-09)
+  for (const n of relatorio?.pressao.niveis ?? [])
+    saida.push({
+      id: `nivel-${n.grupo}`,
+      tipo: "situacao",
+      manchete: n.manchete,
+      texto: "",
+      nivel: n.para > n.de ? Math.max(1, n.para) : 1,
+      boa: n.para < n.de,
+      efeitos: [],
+    });
+  for (const i of relatorio?.pressao.investigacoes ?? [])
+    saida.push({
+      id: `investigacao-${i.grupo}`,
+      tipo: "situacao",
+      manchete: i.manchete,
+      texto: i.achados.length
+        ? "O dinheiro é cortado, e o grupo perde parte da força."
+        : "",
+      nivel: i.achados.length ? 3 : 1,
+      boa: i.achados.length > 0,
+      efeitos: [],
+    });
   for (const s of relatorio?.ocorrencias.acabaram ?? [])
     saida.push({
       id: `fim-${s.id}`,

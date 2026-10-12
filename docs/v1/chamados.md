@@ -2,7 +2,6 @@
 
 > **Status: VIGENTE.** Detalhe de cada chamado. O status fica só no `PLANO.md`. Processo em `engenharia.md`.
 
-
 ## Marco A. Fundação (v0.1)
 
 ### V1-01: Documentos novos e antigos desativados
@@ -108,7 +107,6 @@
 
 **Divisão.** Claude: Remove, move e escreve o teste de camadas. Autor: Roda o check.
 
-
 ## Marco B. Formato e país (v0.2)
 
 ### V1-05: Ficha de lei v3, verificador e conversor
@@ -196,7 +194,6 @@
 
 **Divisão.** Claude: Escreve o mecanismo, revisa os índices e as situações. Autor: Revisa a lista de índices.
 
-
 ## Marco C. População (v0.3)
 
 ### V1-08: Segmentos do eleitorado e perfis sintéticos
@@ -248,13 +245,12 @@
 **Aceite**
 
 - [x] Desenho aprovado pelo autor antes do código (12/out, `docs/v1/desenho/pressao.md`)
-- [ ] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
-- [ ] Cada ação tem efeito em índice ou capital
+- [x] Grupo se mobiliza quando a base passa do limite de insatisfação e desmobiliza quando é atendida
+- [x] Cada ação tem efeito em índice ou capital
 
 **Você vê.** Grupos aparecendo no jornal com as suas ações.
 
 **Divisão.** Claude: Escreve o modelo, os grupos e as ações. Autor: Revisa os nomes e o repertório.
-
 
 ## Marco D. Ciclo do mandato (v0.4)
 
@@ -359,7 +355,6 @@
 **Você vê.** Botões salvar e carregar.
 
 **Divisão.** Claude: Escreve e testa. Autor: Testa no navegador.
-
 
 ## Marco E. Conteúdo (v0.5 a v0.7)
 
@@ -683,7 +678,6 @@
 
 **Divisão.** Claude: Preenche e roda a checagem. Autor: Confere os números que mais importam.
 
-
 ## Marco F. Interface (v0.8)
 
 ### V1-26: Mapa da versão 1
@@ -789,7 +783,6 @@
 
 **Divisão.** Claude: Escreve. Autor: Testa com alguém que não conhece o jogo.
 
-
 ## Marco G. Fechamento (v1.0)
 
 ### V1-31: Balanceamento e realismo
@@ -831,4 +824,3 @@
 **Você vê.** Versão 1 pronta.
 
 **Divisão.** Claude: Prepara. Autor: Faz o push e publica.
-

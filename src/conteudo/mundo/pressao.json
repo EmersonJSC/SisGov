@@ -1,0 +1,2699 @@
+{
+  "id": "pressao",
+  "tipo": "mundo-pressao",
+  "versaoEsquema": 1,
+  "nota": "Grupos de pressão (V1-09, docs/v1/desenho/pressao.md). Cada grupo tem pressão de 0 a 100: a base (insatisfação dos segmentos, peso 60) mais o que ele vigia (leis e índices). Os limites de cada nível são do país (paises/<pais>/pressao.json).",
+  "niveis": [
+    "Sem muitos adeptos",
+    "Organizando",
+    "Mobilizado",
+    "Preocupação nacional"
+  ],
+  "pesoDaBase": 60,
+  "secoes": [
+    {
+      "id": "trabalho",
+      "nome": "Trabalho"
+    },
+    {
+      "id": "empresas",
+      "nome": "Empresas"
+    },
+    {
+      "id": "direitos",
+      "nome": "Movimentos por direitos"
+    },
+    {
+      "id": "esquerda",
+      "nome": "Movimentos políticos de esquerda"
+    },
+    {
+      "id": "direita",
+      "nome": "Movimentos de direita"
+    },
+    {
+      "id": "religiao",
+      "nome": "Religião"
+    },
+    {
+      "id": "estado",
+      "nome": "Estado e força"
+    },
+    {
+      "id": "midia",
+      "nome": "Mídia"
+    },
+    {
+      "id": "crime",
+      "nome": "Crime"
+    },
+    {
+      "id": "separatistas",
+      "nome": "Separatistas"
+    }
+  ],
+  "acoes": {
+    "campanha": {
+      "nome": "Campanha",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "popularidade_governo": -0.4
+      },
+      "manchete": {
+        "singular": "{grupo} lança campanha nacional",
+        "plural": "{grupo} lançam campanha nacional"
+      },
+      "descricao": "Anúncios, redes sociais e abaixo-assinados. O motivo: {causa}."
+    },
+    "ato": {
+      "nome": "Ato",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "popularidade_governo": -0.5,
+        "protestos": 2
+      },
+      "manchete": {
+        "singular": "{grupo} vai às ruas",
+        "plural": "{grupo} vão às ruas"
+      },
+      "descricao": "Atos nas capitais, com faixas e carros de som. O motivo: {causa}."
+    },
+    "greve_geral": {
+      "nome": "Greve geral",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "pib": -0.5,
+        "popularidade_governo": -1,
+        "protestos": 4
+      },
+      "manchete": {
+        "singular": "{grupo} convoca greve geral",
+        "plural": "{grupo} convocam greve geral"
+      },
+      "descricao": "Fábricas, bancos e transporte param por um dia. O motivo: {causa}."
+    },
+    "greve_professores": {
+      "nome": "Greve de professores",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "gente",
+      "efeitos": {
+        "aprendizagem": -0.4,
+        "popularidade_governo": -0.6
+      },
+      "manchete": {
+        "singular": "{grupo} entra em greve",
+        "plural": "{grupo} entram em greve"
+      },
+      "descricao": "Escolas públicas fecham em vários estados. O motivo: {causa}."
+    },
+    "breque": {
+      "nome": "Breque",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "consumo": -0.3,
+        "popularidade_governo": -0.3
+      },
+      "manchete": {
+        "singular": "{grupo} faz breque nacional",
+        "plural": "{grupo} fazem breque nacional"
+      },
+      "descricao": "Pedidos atrasam e restaurantes ficam sem entrega. O motivo: {causa}."
+    },
+    "bloqueio_estradas": {
+      "nome": "Greve e bloqueio de estradas",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "forca",
+      "efeitos": {
+        "preco_alimentos": 1.5,
+        "pib": -0.4,
+        "popularidade_governo": -0.8
+      },
+      "manchete": {
+        "singular": "{grupo} para e bloqueia estradas",
+        "plural": "{grupo} param e bloqueiam estradas"
+      },
+      "descricao": "Rodovias fechadas, e falta combustível e comida em várias cidades. O motivo: {causa}."
+    },
+    "paralisacao_medica": {
+      "nome": "Paralisação",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "dinheiro",
+      "efeitos": {
+        "pressao_hospitalar": 2,
+        "popularidade_governo": -0.4
+      },
+      "manchete": {
+        "singular": "{grupo} anuncia paralisação",
+        "plural": "{grupo} anunciam paralisação"
+      },
+      "descricao": "Consultas e cirurgias marcadas são adiadas. O motivo: {causa}."
+    },
+    "fuga_investimento": {
+      "nome": "Fuga de investimento",
+      "nivel": 3,
+      "meses": 3,
+      "recurso": "dinheiro",
+      "efeitos": {
+        "investimento": -1.5,
+        "confianca_empresarial": -2
+      },
+      "manchete": {
+        "singular": "{grupo} congela investimentos",
+        "plural": "{grupo} congelam investimentos"
+      },
+      "descricao": "Projetos são adiados e o dinheiro vai para fora. O motivo: {causa}."
+    },
+    "fechar_portas": {
+      "nome": "Portas fechadas",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "dinheiro",
+      "efeitos": {
+        "consumo": -0.4,
+        "popularidade_governo": -0.3
+      },
+      "manchete": {
+        "singular": "{grupo} fecha as portas em protesto",
+        "plural": "{grupo} fecham as portas em protesto"
+      },
+      "descricao": "Lojas baixam as portas por um dia. O motivo: {causa}."
+    },
+    "tratoraco": {
+      "nome": "Tratoraço",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "forca",
+      "efeitos": {
+        "popularidade_governo": -0.4,
+        "polarizacao": 0.5
+      },
+      "manchete": {
+        "singular": "{grupo} faz tratoraço na capital",
+        "plural": "{grupo} fazem tratoraço na capital"
+      },
+      "descricao": "Tratores e caminhonetes tomam as avenidas da capital. O motivo: {causa}."
+    },
+    "suspender_investimento": {
+      "nome": "Investimento suspenso",
+      "nivel": 3,
+      "meses": 3,
+      "recurso": "dinheiro",
+      "efeitos": {
+        "investimento": -1,
+        "producao_mineral": -1
+      },
+      "manchete": {
+        "singular": "{grupo} suspende novos projetos",
+        "plural": "{grupo} suspendem novos projetos"
+      },
+      "descricao": "Poços, minas e leilões ficam parados. O motivo: {causa}."
+    },
+    "mudar_algoritmo": {
+      "nome": "Algoritmo contra o governo",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "desinformacao": 2,
+        "popularidade_governo": -0.8
+      },
+      "manchete": {
+        "singular": "{grupo} muda o algoritmo contra o governo",
+        "plural": "{grupo} mudam o algoritmo contra o governo"
+      },
+      "descricao": "Conteúdo contra o governo ganha alcance e as notícias oficiais somem dos feeds. O motivo: {causa}."
+    },
+    "bloqueio": {
+      "nome": "Bloqueio",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "popularidade_governo": -0.3,
+        "protestos": 1.5
+      },
+      "manchete": {
+        "singular": "{grupo} bloqueia rodovia em protesto",
+        "plural": "{grupo} bloqueiam rodovia em protesto"
+      },
+      "descricao": "Pneus queimados e faixas fecham uma rodovia por horas. O motivo: {causa}."
+    },
+    "ocupacao_urbana": {
+      "nome": "Ocupação urbana",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "gente",
+      "efeitos": {
+        "confianca_instituicoes": -0.5,
+        "popularidade_governo": -0.4
+      },
+      "manchete": {
+        "singular": "{grupo} ocupa prédio abandonado no centro",
+        "plural": "{grupo} ocupam prédio abandonado no centro"
+      },
+      "descricao": "Centenas de famílias entram num prédio vazio. O motivo: {causa}."
+    },
+    "ocupacao_escolas": {
+      "nome": "Ocupação de escolas",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "gente",
+      "efeitos": {
+        "evasao_escolar": 0.8,
+        "popularidade_governo": -0.6
+      },
+      "manchete": {
+        "singular": "{grupo} ocupa escolas e reitorias",
+        "plural": "{grupo} ocupam escolas e reitorias"
+      },
+      "descricao": "As aulas param e as ocupações se espalham. O motivo: {causa}."
+    },
+    "retomada": {
+      "nome": "Retomada de território",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "conflitos_fundiarios": 2
+      },
+      "manchete": {
+        "singular": "{grupo} retoma território em disputa",
+        "plural": "{grupo} retomam território em disputa"
+      },
+      "descricao": "Comunidades voltam a uma área que reivindicam, e o conflito com fazendeiros cresce. O motivo: {causa}."
+    },
+    "ocupacao_atingidos": {
+      "nome": "Ocupação de canteiro",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "producao_mineral": -1,
+        "conflitos_fundiarios": 1
+      },
+      "manchete": {
+        "singular": "{grupo} ocupa canteiro de mineradora",
+        "plural": "{grupo} ocupam canteiro de mineradora"
+      },
+      "descricao": "A obra para e a empresa pede reintegração de posse. O motivo: {causa}."
+    },
+    "autodefesa_armada": {
+      "nome": "Autodefesa armada",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "conflitos_fundiarios": 3,
+        "violencia_letal": 0.5
+      },
+      "manchete": {
+        "singular": "{grupo} anuncia vigias armados contra ocupações",
+        "plural": "{grupo} anunciam vigias armados contra ocupações"
+      },
+      "descricao": "Fazendeiros armam vigias, e o conflito no campo esquenta. O motivo: {causa}."
+    },
+    "acampamento": {
+      "nome": "Acampamento",
+      "nivel": 3,
+      "meses": 3,
+      "recurso": "gente",
+      "efeitos": {
+        "estabilidade_politica": -2,
+        "popularidade_governo": -0.5
+      },
+      "manchete": {
+        "singular": "{grupo} acampa em frente aos quartéis",
+        "plural": "{grupo} acampam em frente aos quartéis"
+      },
+      "descricao": "Barracas e faixas pedem que os militares intervenham. O motivo: {causa}."
+    },
+    "pressao_quarteis": {
+      "nome": "Pressão nos quartéis",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "estabilidade_politica": -2,
+        "confianca_instituicoes": -1
+      },
+      "manchete": {
+        "singular": "{grupo} pressiona comandantes por intervenção",
+        "plural": "{grupo} pressionam comandantes por intervenção"
+      },
+      "descricao": "Cartas e reuniões com oficiais da ativa preocupam o governo. O motivo: {causa}."
+    },
+    "campanha_desinformacao": {
+      "nome": "Campanha de desinformação",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "desinformacao": 2,
+        "popularidade_governo": -0.8
+      },
+      "manchete": {
+        "singular": "{grupo} espalha boatos contra o governo",
+        "plural": "{grupo} espalham boatos contra o governo"
+      },
+      "descricao": "Vídeos falsos viralizam e a checagem não alcança. O motivo: {causa}."
+    },
+    "convocar_atos": {
+      "nome": "Convocação de atos",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "midia",
+      "efeitos": {
+        "protestos": 3,
+        "popularidade_governo": -0.5
+      },
+      "manchete": {
+        "singular": "{grupo} convoca atos em todo o país",
+        "plural": "{grupo} convocam atos em todo o país"
+      },
+      "descricao": "Vídeos chamam o público para as ruas no fim de semana. O motivo: {causa}."
+    },
+    "pauta_tv_propria": {
+      "nome": "Pauta no rádio e TV próprios",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "popularidade_governo": -0.8
+      },
+      "manchete": {
+        "singular": "{grupo} usa rádio e TV próprios contra o governo",
+        "plural": "{grupo} usam rádio e TV próprios contra o governo"
+      },
+      "descricao": "Programas e cultos atacam o governo em horário nobre. O motivo: {causa}."
+    },
+    "mobilizacao_fieis": {
+      "nome": "Mobilização de fiéis",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "gente",
+      "efeitos": {
+        "popularidade_governo": -1.2
+      },
+      "manchete": {
+        "singular": "{grupo} mobiliza fiéis contra o governo",
+        "plural": "{grupo} mobilizam fiéis contra o governo"
+      },
+      "descricao": "Cultos e missas viram atos, e cartas são lidas nos templos. O motivo: {causa}."
+    },
+    "operacao_padrao": {
+      "nome": "Operação padrão",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "capacidade_estatal": -1,
+        "crimes_patrimoniais": 0.5
+      },
+      "manchete": {
+        "singular": "{grupo} faz operação padrão",
+        "plural": "{grupo} fazem operação padrão"
+      },
+      "descricao": "Fiscalizações lentas e ocorrências acumuladas. O motivo: {causa}."
+    },
+    "greve_branca": {
+      "nome": "Greve branca",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "sensacao_seguranca": -2,
+        "crimes_patrimoniais": 1.5
+      },
+      "manchete": {
+        "singular": "{grupo} cruza os braços em greve branca",
+        "plural": "{grupo} cruzam os braços em greve branca"
+      },
+      "descricao": "Viaturas paradas e delegacias vazias, sem greve declarada. O motivo: {causa}."
+    },
+    "nota_publica": {
+      "nome": "Nota pública",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "midia",
+      "efeitos": {
+        "estabilidade_politica": -0.5
+      },
+      "manchete": {
+        "singular": "{grupo} divulga nota dura contra o governo",
+        "plural": "{grupo} divulgam nota dura contra o governo"
+      },
+      "descricao": "A nota circula nos quartéis e na imprensa. O motivo: {causa}."
+    },
+    "pressao_comando": {
+      "nome": "Pressão no comando",
+      "nivel": 3,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "estabilidade_politica": -1.5,
+        "golpe_risco": 3
+      },
+      "manchete": {
+        "singular": "{grupo} pressiona o comando das Forças Armadas",
+        "plural": "{grupo} pressionam o comando das Forças Armadas"
+      },
+      "descricao": "Generais da ativa são cobrados a se posicionar. O motivo: {causa}."
+    },
+    "pauta_negativa": {
+      "nome": "Pauta negativa",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "popularidade_governo": -0.8,
+        "confianca_instituicoes": -0.4
+      },
+      "manchete": {
+        "singular": "{grupo} dá destaque às falhas do governo",
+        "plural": "{grupo} dão destaque às falhas do governo"
+      },
+      "descricao": "Reportagens em sequência sobre crises e escândalos. O motivo: {causa}."
+    },
+    "pauta_positiva": {
+      "nome": "Pauta positiva",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "popularidade_governo": 0.6
+      },
+      "manchete": {
+        "singular": "{grupo} destaca boas notícias do governo",
+        "plural": "{grupo} destacam boas notícias do governo"
+      },
+      "descricao": "Reportagens sobre o que funciona ganham o horário nobre.",
+      "quando": "calmo"
+    },
+    "editorial": {
+      "nome": "Editorial",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "midia",
+      "efeitos": {
+        "confianca_empresarial": -0.6,
+        "popularidade_governo": -0.3
+      },
+      "manchete": {
+        "singular": "{grupo} publica editorial contra o governo",
+        "plural": "{grupo} publicam editorial contra o governo"
+      },
+      "descricao": "O editorial cobra o governo e é citado pelo mercado. O motivo: {causa}."
+    },
+    "pauta_policial": {
+      "nome": "Pauta policial",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "sensacao_seguranca": -1.5,
+        "popularidade_governo": -0.4
+      },
+      "manchete": {
+        "singular": "{grupo} faz cobertura policial sem parar",
+        "plural": "{grupo} fazem cobertura policial sem parar"
+      },
+      "descricao": "Crimes ao vivo o dia inteiro, e a sensação de insegurança cresce. O motivo: {causa}."
+    },
+    "reportagem_exterior": {
+      "nome": "Reportagem no exterior",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "midia",
+      "efeitos": {
+        "reputacao_internacional": -1.5
+      },
+      "manchete": {
+        "singular": "{grupo} denuncia o país no exterior",
+        "plural": "{grupo} denunciam o país no exterior"
+      },
+      "descricao": "Reportagem de capa é lida em todas as capitais do mundo. O motivo: {causa}."
+    },
+    "ameaca": {
+      "nome": "Ameaça",
+      "nivel": 2,
+      "meses": 1,
+      "recurso": "forca",
+      "efeitos": {
+        "sensacao_seguranca": -1.5
+      },
+      "manchete": {
+        "singular": "{grupo} ameaça atacar se o governo não recuar",
+        "plural": "{grupo} ameaçam atacar se o governo não recuar"
+      },
+      "descricao": "Bilhetes e áudios circulam nos presídios e nas periferias. O motivo: {causa}."
+    },
+    "guerra_faccoes": {
+      "nome": "Guerra entre facções",
+      "nivel": 3,
+      "meses": 3,
+      "recurso": "forca",
+      "efeitos": {
+        "violencia_letal": 2,
+        "sensacao_seguranca": -2
+      },
+      "manchete": {
+        "singular": "{grupo} entra em guerra por território",
+        "plural": "{grupo} entram em guerra por território"
+      },
+      "descricao": "Tiroteios diários em bairros disputados. O motivo: {causa}."
+    },
+    "cobranca_taxa": {
+      "nome": "Cobrança de taxa",
+      "nivel": 2,
+      "meses": 3,
+      "recurso": "forca",
+      "efeitos": {
+        "crime_organizado": 1,
+        "sensacao_seguranca": -0.5
+      },
+      "manchete": {
+        "singular": "{grupo} amplia cobrança de taxa nos bairros",
+        "plural": "{grupo} ampliam cobrança de taxa nos bairros"
+      },
+      "descricao": "Gás, internet e transporte passam a pagar pedágio ao crime. O motivo: {causa}."
+    },
+    "invasao_terra_indigena": {
+      "nome": "Invasão de terra indígena",
+      "nivel": 2,
+      "meses": 2,
+      "recurso": "forca",
+      "efeitos": {
+        "desmatamento": 1.5,
+        "conflitos_fundiarios": 2
+      },
+      "manchete": {
+        "singular": "{grupo} invade terra indígena",
+        "plural": "{grupo} invadem terra indígena"
+      },
+      "descricao": "Balsas e máquinas entram na reserva. O motivo: {causa}."
+    },
+    "ataque_fiscais": {
+      "nome": "Ataque a fiscais",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "forca",
+      "efeitos": {
+        "capacidade_estatal": -1,
+        "desmatamento": 1
+      },
+      "manchete": {
+        "singular": "{grupo} ataca fiscais ambientais",
+        "plural": "{grupo} atacam fiscais ambientais"
+      },
+      "descricao": "Uma base de fiscalização é incendiada. O motivo: {causa}."
+    },
+    "plebiscito_informal": {
+      "nome": "Plebiscito informal",
+      "nivel": 3,
+      "meses": 1,
+      "recurso": "gente",
+      "efeitos": {
+        "estabilidade_politica": -1,
+        "polarizacao": 1
+      },
+      "manchete": {
+        "singular": "{grupo} faz plebiscito informal pela separação",
+        "plural": "{grupo} fazem plebiscito informal pela separação"
+      },
+      "descricao": "Urnas improvisadas em praças pedem a independência da região. O motivo: {causa}."
+    }
+  },
+  "grupos": [
+    {
+      "id": "centrais_sindicais",
+      "nome": "Centrais sindicais",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_trabalhadores": 0.6,
+        "grupo_informais": 0.2,
+        "grupo_pobres": 0.2
+      },
+      "reage": [
+        {
+          "lei": "legislacao-trabalhista",
+          "sobe": "baixo",
+          "peso": 15
+        },
+        {
+          "lei": "salario-minimo",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "lei": "terceirizacao",
+          "sobe": "baixo",
+          "peso": 5
+        },
+        {
+          "indice": "desemprego",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [3, 20]
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 2
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato", "greve_geral"]
+    },
+    {
+      "id": "sindicatos_servidores",
+      "nome": "Sindicatos de servidores",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_servidores": 1
+      },
+      "reage": [
+        {
+          "lei": "estabilidade-servidores-publicos",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "lei": "regra-fiscal",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "indice": "gasto_publico",
+          "sobe": "baixo",
+          "peso": 10,
+          "faixa": [25, 50]
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "esquerda",
+      "acoes": [
+        "ato",
+        {
+          "id": "greve_servidores",
+          "evento": "greve-de-servidores",
+          "nivel": 3
+        }
+      ]
+    },
+    {
+      "id": "sindicatos_professores",
+      "nome": "Sindicatos de professores",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_servidores": 0.5,
+        "grupo_familias_com_filhos": 0.5
+      },
+      "reage": [
+        {
+          "lei": "piso-salarial-professores",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "lei": "piso-educacao",
+          "sobe": "baixo",
+          "peso": 20,
+          "faixa": [10, 25]
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 2
+      },
+      "visto": "esquerda",
+      "acoes": ["ato", "greve_professores"]
+    },
+    {
+      "id": "aposentados",
+      "nome": "Associações de aposentados",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_aposentados": 1
+      },
+      "reage": [
+        {
+          "lei": "idade-minima-aposentadoria",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "lei": "reajuste-de-beneficios",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "ato"]
+    },
+    {
+      "id": "entregadores",
+      "nome": "Entregadores e motoristas de aplicativo",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_informais": 0.7,
+        "grupo_jovens": 0.3
+      },
+      "reage": [
+        {
+          "lei": "trabalho-por-aplicativo",
+          "sobe": "baixo",
+          "peso": 25
+        },
+        {
+          "indice": "preco_energia",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 2
+      },
+      "visto": "nenhum",
+      "acoes": ["ato", "breque"]
+    },
+    {
+      "id": "caminhoneiros",
+      "nome": "Caminhoneiros autônomos",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_informais": 0.5,
+        "grupo_interior": 0.5
+      },
+      "reage": [
+        {
+          "indice": "preco_energia",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "indice": "infraestrutura_transportes",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "direita",
+      "acoes": ["bloqueio_estradas"]
+    },
+    {
+      "id": "entidades_medicas",
+      "nome": "Entidades médicas",
+      "plural": true,
+      "secao": "trabalho",
+      "base": {
+        "grupo_classe_media": 0.5,
+        "grupo_ricos": 0.5
+      },
+      "reage": [
+        {
+          "lei": "programa-medicos-no-interior",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "lei": "sistema-de-saude",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 2,
+        "forca": 2
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "paralisacao_medica"],
+      "patrocinio": [
+        {
+          "patrocinador": "pfazer",
+          "k": 0.4
+        }
+      ]
+    },
+    {
+      "id": "industria",
+      "nome": "Confederação da indústria",
+      "plural": false,
+      "secao": "empresas",
+      "base": {
+        "grupo_empresarios": 0.8,
+        "grupo_trabalhadores": 0.2
+      },
+      "reage": [
+        {
+          "lei": "tarifas-de-importacao",
+          "sobe": "baixo",
+          "peso": 10,
+          "faixa": [0, 30]
+        },
+        {
+          "indice": "taxa_juros",
+          "sobe": "alto",
+          "peso": 15,
+          "faixa": [2, 20]
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "sobe": "alto",
+          "peso": 15,
+          "faixa": [15, 45]
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "fuga_investimento"]
+    },
+    {
+      "id": "comercio_servicos",
+      "nome": "Comércio e serviços",
+      "plural": false,
+      "secao": "empresas",
+      "base": {
+        "grupo_pequenos_negocios": 0.6,
+        "grupo_empresarios": 0.4
+      },
+      "reage": [
+        {
+          "lei": "imposto-sobre-consumo",
+          "sobe": "alto",
+          "peso": 20,
+          "faixa": [10, 35]
+        },
+        {
+          "lei": "regime-simplificado-pequenas-empresas",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "fechar_portas"]
+    },
+    {
+      "id": "agronegocio",
+      "nome": "Entidades do agronegócio",
+      "plural": true,
+      "secao": "empresas",
+      "base": {
+        "grupo_agro": 1
+      },
+      "reage": [
+        {
+          "lei": "codigo-florestal",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "agrotoxicos",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "terras-indigenas",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 3,
+        "midia": 2,
+        "forca": 2
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "tratoraco", "fuga_investimento"],
+      "contra": ["ambientalista"],
+      "patrocinio": [
+        {
+          "patrocinador": "cargao",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "monstanto",
+          "k": 0.7
+        },
+        {
+          "patrocinador": "dragao",
+          "k": 0.4
+        }
+      ]
+    },
+    {
+      "id": "mercado_financeiro",
+      "nome": "Mercado financeiro",
+      "plural": false,
+      "secao": "empresas",
+      "base": {
+        "grupo_ricos": 0.5,
+        "grupo_empresarios": 0.5
+      },
+      "reage": [
+        {
+          "indice": "risco_pais",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "lei": "regra-fiscal",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "indice": "expectativas_inflacao",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": [
+        "campanha",
+        {
+          "id": "corrida_moeda",
+          "evento": "fuga-de-capitais",
+          "nivel": 3
+        }
+      ],
+      "patrocinio": [
+        {
+          "patrocinador": "ouro_sacos",
+          "k": 0.9
+        },
+        {
+          "patrocinador": "pedra_negra",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "liberdolandia",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "petroleo_mineracao",
+      "nome": "Petróleo e mineração",
+      "plural": true,
+      "secao": "empresas",
+      "base": {
+        "grupo_empresarios": 1
+      },
+      "reage": [
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "lei": "licenciamento-ambiental",
+          "sobe": "alto",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "suspender_investimento"],
+      "patrocinio": [
+        {
+          "patrocinador": "concha",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "exagero_mobil",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "petrabia",
+          "k": 0.5
+        },
+        {
+          "patrocinador": "dragao",
+          "k": 0.5
+        }
+      ]
+    },
+    {
+      "id": "plataformas",
+      "nome": "Plataformas digitais",
+      "plural": true,
+      "secao": "empresas",
+      "base": {
+        "grupo_ricos": 1
+      },
+      "reage": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "lei": "protecao-de-dados",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "mudar_algoritmo"],
+      "patrocinio": [
+        {
+          "patrocinador": "metade",
+          "k": 1
+        },
+        {
+          "patrocinador": "gogol",
+          "k": 1
+        },
+        {
+          "patrocinador": "ipsilon",
+          "k": 1
+        },
+        {
+          "patrocinador": "tiquetaque",
+          "k": 0.9
+        },
+        {
+          "patrocinador": "amozao",
+          "k": 0.7
+        },
+        {
+          "patrocinador": "invidia",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "janelas",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "liberdolandia",
+          "k": 0.6
+        }
+      ]
+    },
+    {
+      "id": "industria_armas",
+      "nome": "Indústria de armas",
+      "plural": false,
+      "secao": "empresas",
+      "base": {
+        "grupo_empresarios": 1
+      },
+      "reage": [
+        {
+          "lei": "armas-de-fogo",
+          "sobe": "baixo",
+          "peso": 40
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha"],
+      "patrocinio": [
+        {
+          "patrocinador": "touro_armas",
+          "k": 1
+        },
+        {
+          "patrocinador": "lucro_martin",
+          "k": 0.6
+        }
+      ]
+    },
+    {
+      "id": "apostas",
+      "nome": "Casas de apostas",
+      "plural": true,
+      "secao": "empresas",
+      "base": {
+        "grupo_empresarios": 1
+      },
+      "reage": [
+        {
+          "lei": "apostas-e-jogos-de-azar",
+          "sobe": "baixo",
+          "peso": 40
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha"],
+      "patrocinio": [
+        {
+          "patrocinador": "bet366",
+          "k": 1
+        },
+        {
+          "patrocinador": "petrabia",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "terra",
+      "nome": "Movimentos por terra",
+      "plural": true,
+      "secao": "direitos",
+      "base": {
+        "grupo_agricultura_familiar": 0.6,
+        "grupo_pobres": 0.4
+      },
+      "reage": [
+        {
+          "lei": "reforma-agraria",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "indice": "conflitos_fundiarios",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "indice": "concentracao_fundiaria",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 2
+      },
+      "visto": "esquerda",
+      "acoes": [
+        "ato",
+        "bloqueio",
+        {
+          "id": "ocupacao_terras",
+          "evento": "ocupacao-de-terras",
+          "nivel": 3
+        }
+      ],
+      "patrocinio": [
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "moradia",
+      "nome": "Movimentos por moradia",
+      "plural": true,
+      "secao": "direitos",
+      "base": {
+        "grupo_periferias": 0.6,
+        "grupo_pobres": 0.4
+      },
+      "reage": [
+        {
+          "lei": "programa-habitacao-popular",
+          "sobe": "baixo",
+          "peso": 20,
+          "faixa": [0, 0.6],
+          "porPib": true
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sobe": "alto",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["ato", "ocupacao_urbana"]
+    },
+    {
+      "id": "estudantes",
+      "nome": "Movimento estudantil",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_jovens": 0.7,
+        "grupo_progressistas": 0.3
+      },
+      "reage": [
+        {
+          "lei": "acesso-ensino-superior",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "lei": "piso-educacao",
+          "sobe": "baixo",
+          "peso": 20,
+          "faixa": [10, 25]
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["ato", "ocupacao_escolas"],
+      "patrocinio": [
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.2
+        }
+      ]
+    },
+    {
+      "id": "movimento_negro",
+      "nome": "Movimento negro",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_pobres": 0.4,
+        "grupo_periferias": 0.3,
+        "grupo_progressistas": 0.3
+      },
+      "reage": [
+        {
+          "lei": "acoes-afirmativas",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "indice": "letalidade_policial",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "indice": "discriminacao",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "cameras-e-reconhecimento-facial",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "portoes",
+          "k": 0.2
+        }
+      ]
+    },
+    {
+      "id": "feminista",
+      "nome": "Movimento feminista",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_progressistas": 0.7,
+        "grupo_familias_com_filhos": 0.3
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "baixo",
+          "peso": 15
+        },
+        {
+          "lei": "igualdade-salarial-de-genero",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "lei": "protecao-violencia-domestica",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.7
+        }
+      ]
+    },
+    {
+      "id": "lgbt",
+      "nome": "Movimento LGBT",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_progressistas": 0.7,
+        "grupo_jovens": 0.3
+      },
+      "reage": [
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "baixo",
+          "peso": 25
+        },
+        {
+          "indice": "discriminacao",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ambientalista",
+      "nome": "Movimento ambientalista",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_ambientalistas": 1
+      },
+      "reage": [
+        {
+          "indice": "desmatamento",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "licenciamento-ambiental",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "indice": "emissoes",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato", "bloqueio"],
+      "contra": ["agronegocio"],
+      "patrocinio": [
+        {
+          "patrocinador": "floresta_eterna",
+          "k": 0.9,
+          "publico": true
+        },
+        {
+          "patrocinador": "eurocracia",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "sociedade_escancarada",
+          "k": 0.4
+        },
+        {
+          "patrocinador": "portoes",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "povos_originarios",
+      "nome": "Povos originários",
+      "plural": true,
+      "secao": "direitos",
+      "requer": {
+        "exige": ["povos-originarios"]
+      },
+      "reage": [
+        {
+          "lei": "terras-indigenas",
+          "sobe": "baixo",
+          "peso": 40
+        },
+        {
+          "indice": "desmatamento",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "indice": "conflitos_fundiarios",
+          "sobe": "alto",
+          "peso": 30
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 2
+      },
+      "visto": "esquerda",
+      "acoes": ["ato", "bloqueio", "retomada"],
+      "patrocinio": [
+        {
+          "patrocinador": "floresta_eterna",
+          "k": 0.8,
+          "publico": true
+        },
+        {
+          "patrocinador": "eurocracia",
+          "k": 0.5
+        }
+      ]
+    },
+    {
+      "id": "quilombolas",
+      "nome": "Comunidades quilombolas",
+      "plural": true,
+      "secao": "direitos",
+      "base": {
+        "grupo_agricultura_familiar": 0.5,
+        "grupo_pobres": 0.5
+      },
+      "reage": [
+        {
+          "indice": "conflitos_fundiarios",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "lei": "reforma-agraria",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "floresta_eterna",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "atingidos",
+      "nome": "Atingidos por barragens e mineração",
+      "plural": true,
+      "secao": "direitos",
+      "requer": {
+        "exige": ["mineracao"]
+      },
+      "base": {
+        "grupo_interior": 0.6,
+        "grupo_pobres": 0.4
+      },
+      "reage": [
+        {
+          "lei": "licenciamento-ambiental",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "indice": "desastre_ambiental",
+          "sobe": "alto",
+          "peso": 20,
+          "faixa": [0, 30]
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["ato", "ocupacao_atingidos"]
+    },
+    {
+      "id": "saude_publica",
+      "nome": "Movimento pela saúde pública",
+      "plural": false,
+      "secao": "direitos",
+      "base": {
+        "grupo_pobres": 0.5,
+        "grupo_servidores": 0.5
+      },
+      "reage": [
+        {
+          "lei": "piso-saude",
+          "sobe": "baixo",
+          "peso": 20,
+          "faixa": [8, 20]
+        },
+        {
+          "lei": "sistema-de-saude",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "portoes",
+          "k": 0.5,
+          "publico": true
+        },
+        {
+          "patrocinador": "bilhindia",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "frentes_esquerda",
+      "nome": "Frentes populares de esquerda",
+      "plural": true,
+      "secao": "esquerda",
+      "base": {
+        "grupo_progressistas": 0.6,
+        "grupo_pobres": 0.2,
+        "grupo_jovens": 0.2
+      },
+      "reage": [
+        {
+          "indice": "golpe_risco",
+          "sobe": "alto",
+          "peso": 20,
+          "faixa": [0, 30]
+        },
+        {
+          "indice": "popularidade_governo",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "indice": "polarizacao",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "contra": [
+        "influenciadores_direita",
+        "liberais_rua",
+        "militares_reserva"
+      ],
+      "patrocinio": [
+        {
+          "patrocinador": "grande_urso",
+          "k": 0.2
+        }
+      ]
+    },
+    {
+      "id": "liberais_rua",
+      "nome": "Movimentos liberais de rua",
+      "plural": true,
+      "secao": "direita",
+      "base": {
+        "grupo_classe_media": 0.5,
+        "grupo_conservadores": 0.3,
+        "grupo_jovens": 0.2
+      },
+      "reage": [
+        {
+          "indice": "corrupcao",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "indice": "arrecadacao",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "regra-fiscal",
+          "sobe": "baixo",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 2,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": [
+        "campanha",
+        {
+          "id": "panelaco",
+          "evento": "panelaco",
+          "nivel": 2
+        }
+      ],
+      "patrocinio": [
+        {
+          "patrocinador": "ipsilon",
+          "k": 0.4
+        },
+        {
+          "patrocinador": "ouro_sacos",
+          "k": 0.3
+        },
+        {
+          "patrocinador": "liberdolandia",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "conservadores_costumes",
+      "nome": "Movimentos conservadores de costumes",
+      "plural": true,
+      "secao": "direita",
+      "base": {
+        "grupo_conservadores": 0.6,
+        "grupo_evangelicos": 0.4
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "lei-de-drogas",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "educacao-domiciliar",
+          "sobe": "baixo",
+          "peso": 5
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 2,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "cinturao_biblico",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "reino_dizimo",
+          "k": 0.5
+        },
+        {
+          "patrocinador": "assembleia_geral",
+          "k": 0.5
+        }
+      ]
+    },
+    {
+      "id": "armamentista",
+      "nome": "Movimento armamentista",
+      "plural": false,
+      "secao": "direita",
+      "base": {
+        "grupo_conservadores": 0.7,
+        "grupo_interior": 0.3
+      },
+      "reage": [
+        {
+          "lei": "armas-de-fogo",
+          "sobe": "baixo",
+          "peso": 25
+        },
+        {
+          "lei": "excludente-de-ilicitude",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 2,
+        "midia": 2,
+        "forca": 2
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "touro_armas",
+          "k": 0.9
+        },
+        {
+          "patrocinador": "lucro_martin",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "ruralistas",
+      "nome": "Ruralistas de base",
+      "plural": true,
+      "secao": "direita",
+      "base": {
+        "grupo_agro": 0.6,
+        "grupo_interior": 0.4
+      },
+      "reage": [
+        {
+          "lei": "reforma-agraria",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "indice": "conflitos_fundiarios",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "terras-indigenas",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "direita",
+      "acoes": ["ato", "tratoraco", "autodefesa_armada"],
+      "patrocinio": [
+        {
+          "patrocinador": "cargao",
+          "k": 0.4
+        },
+        {
+          "patrocinador": "monstanto",
+          "k": 0.4
+        },
+        {
+          "patrocinador": "touro_armas",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "militares_reserva",
+      "nome": "Militares da reserva e grupos de intervenção",
+      "plural": true,
+      "secao": "direita",
+      "base": {
+        "grupo_conservadores": 0.8,
+        "grupo_servidores": 0.2
+      },
+      "reage": [
+        {
+          "indice": "confianca_instituicoes",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "indice": "estabilidade_politica",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 3
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "acampamento", "pressao_quarteis"],
+      "patrocinio": [
+        {
+          "patrocinador": "lucro_martin",
+          "k": 0.3
+        },
+        {
+          "patrocinador": "liberdolandia",
+          "k": 0.2
+        }
+      ]
+    },
+    {
+      "id": "influenciadores_direita",
+      "nome": "Rede de influenciadores de direita",
+      "plural": false,
+      "secao": "direita",
+      "base": {
+        "grupo_conservadores": 0.5,
+        "grupo_jovens": 0.3,
+        "grupo_evangelicos": 0.2
+      },
+      "reage": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "indice": "popularidade_governo",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha_desinformacao", "convocar_atos"],
+      "patrocinio": [
+        {
+          "patrocinador": "ipsilon",
+          "k": 0.9
+        },
+        {
+          "patrocinador": "liberdolandia",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "cinturao_biblico",
+          "k": 0.5
+        },
+        {
+          "patrocinador": "metade",
+          "k": 0.4
+        },
+        {
+          "patrocinador": "grande_urso",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "neopentecostais",
+      "nome": "Igrejas neopentecostais",
+      "plural": true,
+      "secao": "religiao",
+      "base": {
+        "grupo_evangelicos": 0.8,
+        "grupo_periferias": 0.2
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 3,
+        "dinheiro": 3,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "pauta_tv_propria", "mobilizacao_fieis"],
+      "patrocinio": [
+        {
+          "patrocinador": "reino_dizimo",
+          "k": 1
+        },
+        {
+          "patrocinador": "cinturao_biblico",
+          "k": 0.8
+        },
+        {
+          "patrocinador": "assembleia_geral",
+          "k": 0.6
+        }
+      ]
+    },
+    {
+      "id": "evangelicas_tradicionais",
+      "nome": "Igrejas evangélicas tradicionais",
+      "plural": true,
+      "secao": "religiao",
+      "base": {
+        "grupo_evangelicos": 0.7,
+        "grupo_conservadores": 0.3
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "lei": "educacao-domiciliar",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha"],
+      "patrocinio": [
+        {
+          "patrocinador": "assembleia_geral",
+          "k": 0.6
+        },
+        {
+          "patrocinador": "cinturao_biblico",
+          "k": 0.5
+        }
+      ]
+    },
+    {
+      "id": "hierarquia_catolica",
+      "nome": "Hierarquia católica",
+      "plural": false,
+      "secao": "religiao",
+      "base": {
+        "grupo_catolicos": 0.7,
+        "grupo_pobres": 0.3
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "eutanasia",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "indice": "inseguranca_alimentar",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 2,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["campanha", "mobilizacao_fieis"],
+      "patrocinio": [
+        {
+          "patrocinador": "santa_sede_central",
+          "k": 0.9
+        }
+      ]
+    },
+    {
+      "id": "pastorais",
+      "nome": "Pastorais sociais católicas",
+      "plural": true,
+      "secao": "religiao",
+      "base": {
+        "grupo_catolicos": 0.5,
+        "grupo_pobres": 0.3,
+        "grupo_agricultura_familiar": 0.2
+      },
+      "reage": [
+        {
+          "indice": "inseguranca_alimentar",
+          "sobe": "alto",
+          "peso": 15
+        },
+        {
+          "lei": "reforma-agraria",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sobe": "alto",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["campanha", "ato"],
+      "patrocinio": [
+        {
+          "patrocinador": "santa_sede_central",
+          "k": 0.5
+        }
+      ]
+    },
+    {
+      "id": "matriz_africana",
+      "nome": "Religiões de matriz africana",
+      "plural": true,
+      "secao": "religiao",
+      "base": {
+        "grupo_pobres": 0.5,
+        "grupo_periferias": 0.5
+      },
+      "reage": [
+        {
+          "indice": "discriminacao",
+          "sobe": "alto",
+          "peso": 25
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "sobe": "baixo",
+          "peso": 15
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "esquerda",
+      "acoes": ["ato"]
+    },
+    {
+      "id": "policiais",
+      "nome": "Associações de policiais",
+      "plural": true,
+      "secao": "estado",
+      "base": {
+        "grupo_conservadores": 0.6,
+        "grupo_servidores": 0.4
+      },
+      "reage": [
+        {
+          "lei": "cameras-corporais",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 0.005],
+          "porPib": true
+        },
+        {
+          "lei": "ciclo-policial",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "sobe": "alto",
+          "peso": 10
+        },
+        {
+          "lei": "poderes-de-investigacao-policial",
+          "sobe": "baixo",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "direita",
+      "acoes": ["operacao_padrao", "greve_branca"],
+      "patrocinio": [
+        {
+          "patrocinador": "touro_armas",
+          "k": 0.4
+        }
+      ]
+    },
+    {
+      "id": "militares",
+      "nome": "Associações de militares",
+      "plural": true,
+      "secao": "estado",
+      "base": {
+        "grupo_servidores": 0.5,
+        "grupo_conservadores": 0.5
+      },
+      "reage": [
+        {
+          "lei": "gasto-com-defesa",
+          "sobe": "baixo",
+          "peso": 20,
+          "faixa": [0.5, 2.5],
+          "porPib": true
+        },
+        {
+          "lei": "servico-militar",
+          "sobe": "baixo",
+          "peso": 10
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "direita",
+      "acoes": ["nota_publica", "pressao_comando"],
+      "patrocinio": [
+        {
+          "patrocinador": "lucro_martin",
+          "k": 0.6
+        }
+      ]
+    },
+    {
+      "id": "tv_aberta",
+      "nome": "A maior rede de TV aberta",
+      "plural": false,
+      "secao": "midia",
+      "base": {
+        "grupo_ricos": 0.5,
+        "grupo_classe_media": 0.5
+      },
+      "reage": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["pauta_negativa", "pauta_positiva"]
+    },
+    {
+      "id": "tv_igreja",
+      "nome": "Rede de TV ligada a uma igreja",
+      "plural": false,
+      "secao": "midia",
+      "base": {
+        "grupo_evangelicos": 1
+      },
+      "reage": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "sobe": "alto",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["campanha", "pauta_negativa"],
+      "patrocinio": [
+        {
+          "patrocinador": "reino_dizimo",
+          "k": 1,
+          "publico": true
+        }
+      ]
+    },
+    {
+      "id": "jornais_portais",
+      "nome": "Grupo de jornais e portais",
+      "plural": false,
+      "secao": "midia",
+      "base": {
+        "grupo_ricos": 0.5,
+        "grupo_empresarios": 0.5
+      },
+      "reage": [
+        {
+          "lei": "regra-fiscal",
+          "sobe": "baixo",
+          "peso": 15
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "sobe": "baixo",
+          "peso": 15
+        },
+        {
+          "lei": "interceptacao-de-comunicacoes",
+          "sobe": "alto",
+          "peso": 10
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["pauta_negativa", "editorial"],
+      "patrocinio": [
+        {
+          "patrocinador": "ouro_sacos",
+          "k": 0.3
+        }
+      ]
+    },
+    {
+      "id": "radio_tv_popular",
+      "nome": "Rede de rádio e TV popular",
+      "plural": false,
+      "secao": "midia",
+      "base": {
+        "grupo_pobres": 0.5,
+        "grupo_interior": 0.5
+      },
+      "reage": [
+        {
+          "indice": "sensacao_seguranca",
+          "sobe": "baixo",
+          "peso": 20
+        },
+        {
+          "indice": "preco_alimentos",
+          "sobe": "alto",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "direita",
+      "acoes": ["pauta_policial", "pauta_negativa"]
+    },
+    {
+      "id": "midia_internacional",
+      "nome": "Rede Mundial 24h e a imprensa estrangeira",
+      "plural": false,
+      "secao": "midia",
+      "reage": [
+        {
+          "indice": "desmatamento",
+          "sobe": "alto",
+          "peso": 35
+        },
+        {
+          "indice": "golpe_risco",
+          "sobe": "alto",
+          "peso": 20,
+          "faixa": [0, 30]
+        },
+        {
+          "indice": "liberdade_civil",
+          "sobe": "baixo",
+          "peso": 25
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 3,
+        "forca": 1
+      },
+      "visto": "nenhum",
+      "acoes": ["reportagem_exterior"]
+    },
+    {
+      "id": "faccao_maior",
+      "nome": "A maior facção prisional",
+      "plural": false,
+      "secao": "crime",
+      "requer": {
+        "exige": ["crime-organizado-forte"]
+      },
+      "reage": [
+        {
+          "lei": "penas-e-progressao",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "indice": "lotacao_prisional",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "indice": "crime_organizado",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "indice": "capacidade_estatal",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 3,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "nenhum",
+      "acoes": [
+        "ameaca",
+        {
+          "id": "ataques",
+          "evento": "ataques-de-faccao",
+          "nivel": 3
+        }
+      ]
+    },
+    {
+      "id": "faccao_rival",
+      "nome": "Facção rival regional",
+      "plural": false,
+      "secao": "crime",
+      "requer": {
+        "exige": ["crime-organizado-forte"]
+      },
+      "reage": [
+        {
+          "indice": "crime_organizado",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "indice": "pressao_faccao_maior",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "indice": "capacidade_estatal",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ],
+      "recursos": {
+        "gente": 2,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "nenhum",
+      "acoes": ["guerra_faccoes"]
+    },
+    {
+      "id": "milicias",
+      "nome": "Milícias",
+      "plural": true,
+      "secao": "crime",
+      "requer": {
+        "exige": ["crime-organizado-forte"]
+      },
+      "reage": [
+        {
+          "indice": "sensacao_seguranca",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "indice": "corrupcao",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "indice": "capacidade_estatal",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 2,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "nenhum",
+      "acoes": [
+        "cobranca_taxa",
+        {
+          "id": "dominio_bairro",
+          "evento": "milicia-domina-bairro",
+          "nivel": 3
+        }
+      ]
+    },
+    {
+      "id": "garimpo",
+      "nome": "Garimpo e madeira ilegais",
+      "plural": true,
+      "secao": "crime",
+      "requer": {
+        "exige": ["floresta-tropical"]
+      },
+      "reage": [
+        {
+          "lei": "licenciamento-ambiental",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "lei": "terras-indigenas",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "lei": "codigo-florestal",
+          "sobe": "alto",
+          "peso": 20
+        },
+        {
+          "indice": "capacidade_estatal",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 3,
+        "midia": 1,
+        "forca": 3
+      },
+      "visto": "nenhum",
+      "acoes": ["invasao_terra_indigena", "ataque_fiscais"]
+    }
+  ],
+  "porRegiao": [
+    {
+      "id": "separatistas",
+      "nome": "Separatistas {regiao}",
+      "plural": true,
+      "secao": "separatistas",
+      "requer": {
+        "exige": ["federacao"]
+      },
+      "reage": [
+        {
+          "lei": "federalismo",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "indice": "desigualdade_regional",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "indice": "popularidade_governo",
+          "sobe": "baixo",
+          "peso": 40,
+          "fator": "aprovacaoDaRegiao"
+        }
+      ],
+      "recursos": {
+        "gente": 1,
+        "dinheiro": 1,
+        "midia": 1,
+        "forca": 1
+      },
+      "visto": "regiao",
+      "acoes": ["campanha", "plebiscito_informal"],
+      "patrocinio": [
+        {
+          "patrocinador": "grande_urso",
+          "k": 0.3
+        }
+      ]
+    }
+  ]
+}

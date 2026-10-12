@@ -2,16 +2,25 @@
   "id": "ataques-de-faccao",
   "tipo": "evento",
   "versaoEsquema": 1,
+  "requer": {
+    "exige": ["crime-organizado-forte"]
+  },
   "nome": "Ataques da facção {faccao}",
-  "descricao": "A facção {faccao} reage à transferência de líderes presos com ataques coordenados em {cidade}. Comércio fechado, transporte parado, medo nas ruas.",
+  "descricao": "A facção {faccao} reage à transferência de líderes presos com ataques coordenados em {cidade}. Comércio fechado, transporte parado, medo nas ruas. O motivo: {causa}.",
   "area": "Ministério da Justiça",
   "manchete": "Facção {faccao} incendeia ônibus e para {cidade}",
-  "origem": "pais",
+  "origem": "grupo",
   "nivel": 2,
   "avaliacao": "negativa",
   "intervaloMinimoTurnos": 6,
   "gatilho": {
-    "chance": 0.025,
+    "chance": 0.2,
+    "condicao": {
+      "tipo": "comparacao",
+      "variavel": "nivel_faccao_maior",
+      "operador": "maior_ou_igual",
+      "valor": 3
+    },
     "fatores": [
       {
         "variavel": "crime_organizado",

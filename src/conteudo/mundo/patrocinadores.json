@@ -1,0 +1,646 @@
+{
+  "id": "patrocinadores",
+  "tipo": "mundo-patrocinadores",
+  "versaoEsquema": 1,
+  "nota": "Patrocinadores dos grupos de pressão (V1-09). Sátira: dá para reconhecer quem é, mas nenhum nome real aparece. O interesse ameaçado vai de 0 a 100 (soma dos pesos); o dinheiro que chega a um grupo é k × interesse × poder (o k está no grupo).",
+  "escala": 0.05,
+  "investigacao": {
+    "c": 20,
+    "turnos": 4,
+    "aoMesmoTempo": 2,
+    "legitimidade": 6
+  },
+  "patrocinadores": [
+    {
+      "id": "liberdolandia",
+      "nome": "Liberdolândia",
+      "tipo": "pais",
+      "descricao": "A grande potência militar: bases, tecnologia, petróleo e plataformas.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "dragao",
+      "nome": "República Popular do Dragão",
+      "tipo": "pais",
+      "descricao": "A fábrica do mundo: minério, soja, portos e ferrovias.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "investimento-estrangeiro",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "sobe": "alto",
+          "peso": 40,
+          "faixa": [0, 30]
+        },
+        {
+          "lei": "acordos-comerciais",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "eurocracia",
+      "nome": "União Eurocrática",
+      "tipo": "pais",
+      "descricao": "O bloco das regras e dos subsídios: clima, florestas e regras de comércio.",
+      "poder": 4,
+      "interesses": [
+        {
+          "indice": "desmatamento",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "codigo-florestal",
+          "sobe": "baixo",
+          "peso": 25
+        },
+        {
+          "lei": "agrotoxicos",
+          "sobe": "baixo",
+          "peso": 25
+        }
+      ]
+    },
+    {
+      "id": "grande_urso",
+      "nome": "Grande Urso Federado",
+      "tipo": "pais",
+      "descricao": "A potência do gás e das armas: energia, fertilizantes e desinformação.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "sobe": "alto",
+          "peso": 25,
+          "faixa": [0, 30]
+        },
+        {
+          "lei": "matriz-energetica",
+          "sobe": "alto",
+          "peso": 25
+        }
+      ]
+    },
+    {
+      "id": "iranio",
+      "nome": "República Islâmica do Irânio",
+      "tipo": "pais",
+      "descricao": "A teocracia que enriquece urânio: religião, petróleo e rivalidade com a Liberdolândia.",
+      "poder": 2,
+      "interesses": [
+        {
+          "lei": "laicidade-do-estado",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "lei": "acordos-comerciais",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "petrabia",
+      "nome": "Reino da Petrábia",
+      "tipo": "pais",
+      "descricao": "Os petrodólares do deserto: petróleo, futebol e fundos soberanos.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "matriz-energetica",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "sobe": "baixo",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "bilhindia",
+      "nome": "União da Bilhíndia",
+      "tipo": "pais",
+      "descricao": "O gigante de um bilhão e meio: remédios genéricos, tecnologia e grãos.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "genericos-e-patentes-medicamentos",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "sobe": "alto",
+          "peso": 50,
+          "faixa": [0, 30]
+        }
+      ]
+    },
+    {
+      "id": "invidia",
+      "nome": "Invídia Chips",
+      "tipo": "empresa",
+      "descricao": "Chips e inteligência artificial; quer data centers e energia barata.",
+      "poder": 4,
+      "interesses": [
+        {
+          "indice": "preco_energia",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "metade",
+      "nome": "Metade Plataformas",
+      "tipo": "empresa",
+      "descricao": "Redes sociais; contra a regulação das redes.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 60
+        },
+        {
+          "lei": "protecao-de-dados",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "gogol",
+      "nome": "Gogol Busca",
+      "tipo": "empresa",
+      "descricao": "Busca e publicidade; contra a regulação e o imposto digital.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "protecao-de-dados",
+          "sobe": "alto",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "ipsilon",
+      "nome": "Ípsilon",
+      "tipo": "empresa",
+      "descricao": "A rede do bilionário dos foguetes; a favor da \"liberdade total\" nas redes.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 100
+        }
+      ]
+    },
+    {
+      "id": "tiquetaque",
+      "nome": "TiqueTaque",
+      "tipo": "empresa",
+      "descricao": "Vídeos curtos; vive dos dados dos jovens.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "protecao-de-dados",
+          "sobe": "alto",
+          "peso": 60
+        },
+        {
+          "lei": "regulacao-redes-sociais",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "amozao",
+      "nome": "Amozão Entregas",
+      "tipo": "empresa",
+      "descricao": "Comércio online; contra tributação e regras para entregadores.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "trabalho-por-aplicativo",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "imposto-sobre-consumo",
+          "sobe": "alto",
+          "peso": 50,
+          "faixa": [10, 35]
+        }
+      ]
+    },
+    {
+      "id": "janelas",
+      "nome": "Janelas S.A.",
+      "tipo": "empresa",
+      "descricao": "Programas e nuvem; vive de contratos com governos.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "protecao-de-dados",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "sobe": "baixo",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "ouro_sacos",
+      "nome": "Ouro & Sacos",
+      "tipo": "empresa",
+      "descricao": "Banco de investimento; juros altos e regra fiscal dura.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "regra-fiscal",
+          "sobe": "baixo",
+          "peso": 40
+        },
+        {
+          "indice": "risco_pais",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "lei": "tributacao-dividendos",
+          "sobe": "alto",
+          "peso": 30,
+          "faixa": [0, 30]
+        }
+      ]
+    },
+    {
+      "id": "pedra_negra",
+      "nome": "PedraNegra Investimentos",
+      "tipo": "empresa",
+      "descricao": "Fundo gigante; quer privatizações e clima \"verde\" de fachada.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "sobe": "alto",
+          "peso": 60
+        },
+        {
+          "lei": "precificacao-carbono",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "exagero_mobil",
+      "nome": "Exagero Mobil",
+      "tipo": "empresa",
+      "descricao": "Petróleo; contra a transição energética.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "matriz-energetica",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "precificacao-carbono",
+          "sobe": "alto",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "concha",
+      "nome": "Concha Petróleo",
+      "tipo": "empresa",
+      "descricao": "Petróleo em águas profundas.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "sobe": "baixo",
+          "peso": 60
+        },
+        {
+          "lei": "precificacao-carbono",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "monstanto",
+      "nome": "Monstanto Sementes",
+      "tipo": "empresa",
+      "descricao": "Sementes e agrotóxicos.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "agrotoxicos",
+          "sobe": "alto",
+          "peso": 70
+        },
+        {
+          "lei": "codigo-florestal",
+          "sobe": "alto",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "cargao",
+      "nome": "Cargão Grãos",
+      "tipo": "empresa",
+      "descricao": "Comércio de soja; contra o código florestal.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "codigo-florestal",
+          "sobe": "alto",
+          "peso": 60
+        },
+        {
+          "lei": "terras-indigenas",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "lucro_martin",
+      "nome": "Lucro Martin Defesa",
+      "tipo": "empresa",
+      "descricao": "Armas e aviões; quer gasto com defesa.",
+      "poder": 4,
+      "interesses": [
+        {
+          "lei": "gasto-com-defesa",
+          "sobe": "baixo",
+          "peso": 100,
+          "faixa": [0.5, 2.5],
+          "porPib": true
+        }
+      ]
+    },
+    {
+      "id": "touro_armas",
+      "nome": "Touro Armas",
+      "tipo": "empresa",
+      "descricao": "Armas leves; quer flexibilizar a posse e o porte.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "armas-de-fogo",
+          "sobe": "baixo",
+          "peso": 100
+        }
+      ]
+    },
+    {
+      "id": "bet366",
+      "nome": "Bet366",
+      "tipo": "empresa",
+      "descricao": "Apostas; contra restrição às apostas.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "apostas-e-jogos-de-azar",
+          "sobe": "baixo",
+          "peso": 100
+        }
+      ]
+    },
+    {
+      "id": "pfazer",
+      "nome": "Pfaz-Tudo Farma",
+      "tipo": "empresa",
+      "descricao": "Remédios; patentes longas, contra genéricos.",
+      "poder": 5,
+      "interesses": [
+        {
+          "lei": "genericos-e-patentes-medicamentos",
+          "sobe": "baixo",
+          "peso": 60
+        },
+        {
+          "lei": "programa-medicos-no-interior",
+          "sobe": "alto",
+          "peso": 40
+        }
+      ]
+    },
+    {
+      "id": "reino_dizimo",
+      "nome": "Igreja Mundial do Reino do Dízimo",
+      "tipo": "igreja",
+      "descricao": "Costumes, isenção de impostos e concessões de TV.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "alto",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "assembleia_geral",
+      "nome": "Assembleia Geral de Deus",
+      "tipo": "igreja",
+      "descricao": "Costumes e cargos.",
+      "poder": 2,
+      "interesses": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "alto",
+          "peso": 50
+        }
+      ]
+    },
+    {
+      "id": "santa_sede_central",
+      "nome": "A Santa Sede Central",
+      "tipo": "igreja",
+      "descricao": "Aborto, eutanásia e fome.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 40
+        },
+        {
+          "lei": "eutanasia",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "indice": "inseguranca_alimentar",
+          "sobe": "alto",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "cinturao_biblico",
+      "nome": "Fundação Evangélica do Cinturão Bíblico",
+      "tipo": "fundacao",
+      "descricao": "Da Liberdolândia; costumes e aliados no exterior.",
+      "poder": 3,
+      "interesses": [
+        {
+          "lei": "aborto",
+          "sobe": "alto",
+          "peso": 50
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "sobe": "alto",
+          "peso": 30
+        },
+        {
+          "lei": "educacao-domiciliar",
+          "sobe": "baixo",
+          "peso": 20
+        }
+      ]
+    },
+    {
+      "id": "sociedade_escancarada",
+      "nome": "Fundação Sociedade Escancarada",
+      "tipo": "fundacao",
+      "descricao": "Direitos civis, imprensa e política de drogas.",
+      "poder": 4,
+      "interesses": [
+        {
+          "indice": "liberdade_civil",
+          "sobe": "baixo",
+          "peso": 40
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "lei": "lei-de-drogas",
+          "sobe": "baixo",
+          "peso": 30
+        }
+      ]
+    },
+    {
+      "id": "portoes",
+      "nome": "Fundação Portões",
+      "tipo": "fundacao",
+      "descricao": "Vacinas, saúde e agricultura.",
+      "poder": 5,
+      "interesses": [
+        {
+          "indice": "cobertura_vacinal",
+          "sobe": "baixo",
+          "peso": 50
+        },
+        {
+          "lei": "vacinacao-obrigatoria",
+          "sobe": "baixo",
+          "peso": 30
+        },
+        {
+          "indice": "inseguranca_alimentar",
+          "sobe": "alto",
+          "peso": 20
+        }
+      ]
+    },
+    {
+      "id": "floresta_eterna",
+      "nome": "Fundo Floresta Eterna",
+      "tipo": "fundacao",
+      "descricao": "Da União Eurocrática; florestas e povos originários.",
+      "poder": 3,
+      "interesses": [
+        {
+          "indice": "desmatamento",
+          "sobe": "alto",
+          "peso": 60
+        },
+        {
+          "lei": "terras-indigenas",
+          "sobe": "baixo",
+          "peso": 40
+        }
+      ]
+    }
+  ]
+}

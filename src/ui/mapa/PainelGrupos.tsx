@@ -3,10 +3,12 @@
  * eixo (renda, ocupação, valores…), do mais satisfeito ao menos satisfeito
  * dentro de cada eixo, com a parte do eleitorado de cada um e o que mais
  * gosta e mais odeia agora (o escolhido mostra os três maiores de cada lado).
- * Clicar num segmento ou num motivo abre o documento dele.
+ * Clicar num segmento ou num motivo abre o documento dele. A aba "Pressão"
+ * (V1-09) mostra os grupos de pressão.
  */
-import type { VisaoGrupo, VisaoMotivo } from "../../app/partida";
+import type { VisaoGrupo, VisaoMotivo, VisaoPressao } from "../../app/partida";
 import { Icone } from "./Icone";
+import { PainelPressao } from "./PainelPressao";
 import { ICONE_BOLHA, ICONE_LEI } from "./icones";
 import { corDaBondade } from "./intensidade";
 
@@ -61,6 +63,8 @@ function porEixo(grupos: readonly VisaoGrupo[]): [string, VisaoGrupo[]][] {
     .map(([nome, bloco]) => [nome, bloco.lista]);
 }
 
+export type AbaDosGrupos = "eleitorado" | "pressao";
+
 /** Largura que a lista aberta cobre do mapa (CSS: 300 + 14 de margem + folga). */
 export const LARGURA_PAINEL_GRUPOS = 364;
 
@@ -72,6 +76,10 @@ export function PainelGrupos({
   onSelecionar,
   aberto,
   onAlternar,
+  pressao,
+  onInvestigar,
+  aba = "eleitorado",
+  onAba,
 }: {
   grupos: readonly VisaoGrupo[];
   aprovacao?: number;
@@ -81,8 +89,15 @@ export function PainelGrupos({
   onSelecionar: (id: string) => void;
   aberto: boolean;
   onAlternar: () => void;
+  /** Grupos de pressão (V1-09); sem eles, não há a aba. */
+  pressao?: VisaoPressao;
+  onInvestigar?: (grupoId: string) => void;
+  aba?: AbaDosGrupos;
+  onAba?: (aba: AbaDosGrupos) => void;
 }) {
+  const setAba = (a: AbaDosGrupos) => onAba?.(a);
   if (!grupos.length) return null;
+  const naPressao = aba === "pressao" && pressao !== undefined;
   return (
     <aside
       data-borda-rola
@@ -104,7 +119,37 @@ export function PainelGrupos({
         </span>
         <i aria-hidden="true">{aberto ? "‹" : "›"}</i>
       </button>
-      {aberto ? (
+      {aberto && pressao ? (
+        <div className="abas-grupos" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={!naPressao}
+            onClick={() => setAba("eleitorado")}
+          >
+            Eleitorado
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={naPressao}
+            onClick={() => setAba("pressao")}
+          >
+            Pressão
+            {pressao.alertas.length ? (
+              <small className="alerta-contagem">
+                {pressao.alertas.length}
+              </small>
+            ) : null}
+          </button>
+        </div>
+      ) : null}
+      {aberto && naPressao ? (
+        <PainelPressao
+          pressao={pressao}
+          onInvestigar={onInvestigar ?? (() => {})}
+        />
+      ) : aberto ? (
         <div className="eixos-grupos">
           {porEixo(grupos).map(([eixo, lista]) => (
             <section key={eixo} className="eixo-grupos">

@@ -1,0 +1,97 @@
+{
+  "id": "agencia-de-inteligencia",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Agência de inteligência e contrainteligência",
+  "descricao": "Quanto a agência que investiga espionagem, dinheiro estrangeiro e ameaças ao Estado recebe por ano.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Gabinete do presidente",
+  "nivel": "decreto",
+  "revogavel": false,
+  "controle": {
+    "variavel": "recursos_agencia_de_inteligencia",
+    "unidade": "moeda_ano"
+  },
+  "dinheiro": {
+    "tipo": "gasto",
+    "modo": "valor_fixo",
+    "limites": {
+      "minimoPercentualPib": 0,
+      "maximoPercentualPib": 0.05
+    }
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "efeitos": [
+    {
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 500,
+        "termoConstante": 0
+      },
+      "atraso": 2,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      }
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -40,
+        "termoConstante": 0
+      },
+      "atraso": 2,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      }
+    },
+    {
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -20,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      }
+    },
+    {
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel"
+    }
+  ],
+  "historia": {
+    "brasil": "A agência de inteligência foi criada em 1999 e hoje fica na Casa Civil. O valor vigente é aproximado (ordem de grandeza do orçamento anual)."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 9.883/1999 (Sistema Brasileiro de Inteligência)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9883.htm",
+      "usadoPara": "existência do órgão"
+    },
+    {
+      "titulo": "Portal da Transparência, despesas por órgão",
+      "url": "https://portaldatransparencia.gov.br/",
+      "usadoPara": "ordem de grandeza do gasto"
+    }
+  ]
+}

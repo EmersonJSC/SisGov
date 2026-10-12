@@ -7,6 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   criarPartida,
   encerrarTurno,
+  investigarGrupo,
   mudarLei,
   revogarLei,
   responderDilema,
@@ -23,7 +24,11 @@ import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
-import { LARGURA_PAINEL_GRUPOS, PainelGrupos } from "./PainelGrupos";
+import {
+  LARGURA_PAINEL_GRUPOS,
+  PainelGrupos,
+  type AbaDosGrupos,
+} from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { CatalogoDeLeis } from "./CatalogoDeLeis";
@@ -341,6 +346,7 @@ export function TelaPrincipal() {
   const [gruposAbertos, setGruposAbertos] = useState(
     () => typeof window === "undefined" || window.innerWidth >= 1200,
   );
+  const [abaGrupos, setAbaGrupos] = useState<AbaDosGrupos>("eleitorado");
   const [relatorio, setRelatorio] = useState<RelatorioTurno | null>(null);
   const [aviso, setAviso] = useState<RelatorioTurno | null>(null);
   /** A visão antes do último turno: o jornal compara com ela. */
@@ -482,6 +488,18 @@ export function TelaPrincipal() {
     setPartida(r.value);
     setErroTurno(null);
     return null;
+  };
+
+  // V1-09: investigar quem financia um grupo de pressão
+  const investigar = (grupoId: string) => {
+    if (!partida) return;
+    const r = investigarGrupo(partida, grupoId);
+    if (!r.ok) {
+      setErroTurno(r.erros.join(" "));
+      return;
+    }
+    setPartida(r.value);
+    setErroTurno(null);
   };
 
   const passarTurno = () => {
@@ -716,6 +734,10 @@ export function TelaPrincipal() {
           onSelecionar={selecionar}
           aberto={gruposAbertos}
           onAlternar={() => setGruposAbertos((a) => !a)}
+          pressao={visao.pressao}
+          onInvestigar={investigar}
+          aba={abaGrupos}
+          onAba={setAbaGrupos}
         />
 
         {janelas.map((j, camada) => {
@@ -780,7 +802,7 @@ export function TelaPrincipal() {
                 <Icone nome={ICONE_INTERFACE.fechar} tamanho={16} />
               </button>
             </div>
-            <JornalDoTurno jornal={aviso.ocorrencias} />
+            <JornalDoTurno jornal={aviso.ocorrencias} pressao={aviso.pressao} />
             <ResumoDoTurno
               aviso={aviso}
               variacoes={variacoes}
@@ -789,6 +811,27 @@ export function TelaPrincipal() {
               onSelecionar={selecionar}
             />
           </div>
+        ) : null}
+
+        {visao.pressao?.alertas.length ? (
+          <button
+            type="button"
+            className="alerta-pressao"
+            onClick={() => {
+              setGruposAbertos(true);
+              setAbaGrupos("pressao");
+            }}
+            title="Grupos em preocupação nacional: clique para ver a pressão de cada um"
+          >
+            <Icone nome="alert-octagon-outline" tamanho={18} />
+            <span>
+              <b>Preocupação nacional:</b>{" "}
+              {visao.pressao.grupos
+                .filter((g) => visao.pressao!.alertas.includes(g.id))
+                .map((g) => g.nome)
+                .join(" · ")}
+            </span>
+          </button>
         ) : null}
 
         <AcontecendoAgora ocorrencias={visao.ocorrencias.emCurso} />

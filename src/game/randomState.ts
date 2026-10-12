@@ -64,3 +64,25 @@ export function drawRandomValues(
     },
   };
 }
+
+// ---------------------------------------------------------------------------
+// Sorteio por hash (semente, turno, chave)
+// ---------------------------------------------------------------------------
+
+function hash32(text: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  // mistura final (xorshift)
+  h ^= h << 13;
+  h ^= h >>> 17;
+  h ^= h << 5;
+  return h >>> 0;
+}
+
+/** Número em [0, 1) fixo para (semente, turno, chave). */
+export function roll(seed: number, turn: number, key: string): number {
+  return hash32(`${seed}|${turn}|${key}`) / 0x100000000;
+}

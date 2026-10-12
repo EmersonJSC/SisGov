@@ -20,6 +20,10 @@ import type {
   ResolvedPackage,
   ScenarioGraph,
 } from "../engine";
+import { groupActions, pressureCause } from "./pressao";
+import { roll } from "./randomState";
+
+export { roll };
 
 export type ActiveOccurrence = Readonly<{
   occurrenceId: string;
@@ -91,33 +95,14 @@ export type OccurrenceState = Readonly<{
 export const MAX_EVENTOS_GRANDES_POR_TURNO = 1;
 export const MAX_EVENTOS_LOCAIS_POR_TURNO = 1;
 export const MAX_DILEMAS_POR_TURNO = 1;
+/** Ações de grupos de pressão (V1-09), fora do limite dos eventos. */
+export const MAX_ACOES_PESADAS_POR_TURNO = 1;
+export const MAX_ACOES_LEVES_POR_TURNO = 2;
 /** Dilema novo só depois de tantos turnos do último (desdobramento também). */
 export const TURNOS_ENTRE_DILEMAS = 3;
 /** Depois de vista, a chance cai (segunda vez ×0,3, terceira ×0,1). */
 const SEEN_DECAY = [1, 0.3, 0.1];
 const LAW_CHANGE_MEMORY = 12;
-
-// ---------------------------------------------------------------------------
-// Sorteio por hash (semente, turno, chave)
-// ---------------------------------------------------------------------------
-
-function hash32(text: string): number {
-  let h = 0x811c9dc5;
-  for (let i = 0; i < text.length; i++) {
-    h ^= text.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
-  }
-  // mistura final (xorshift)
-  h ^= h << 13;
-  h ^= h >>> 17;
-  h ^= h << 5;
-  return h >>> 0;
-}
-
-/** Número em [0, 1) fixo para (semente, turno, chave). */
-export function roll(seed: number, turn: number, key: string): number {
-  return hash32(`${seed}|${turn}|${key}`) / 0x100000000;
-}
 
 // ---------------------------------------------------------------------------
 // Catálogo
@@ -476,6 +461,8 @@ export function rollTurn(input: {
   laws: Readonly<Record<string, number>>;
   /** Sem eventos (só a mesa de dilemas), como no início da partida. */
   onlyDilemmas?: boolean;
+  /** Eventos que começam já, sem sorteio (ex.: patrocínio revelado). */
+  forcedEvents?: readonly string[];
 }): TurnOccurrences {
   const { content, values, turn, seed, laws } = input;
   const catalog = occurrenceCatalog(content);
@@ -503,7 +490,8 @@ export function rollTurn(input: {
   const situations: Record<string, boolean> = {};
   const situationRecords: OccurrenceRecord[] = [];
   for (const variable of content.variables.variaveis) {
-    if (variable.tipo !== "situacao") continue;
+    // Situação em níveis (grupos de pressão, V1-09) tem o registro próprio.
+    if (variable.tipo !== "situacao" || variable.niveis) continue;
     // O motor guarda o quanto a soma passa da saída: positivo = existe.
     const on = (values[variable.id] ?? 0) > 0;
     situations[variable.id] = on;
@@ -610,8 +598,15 @@ export function rollTurn(input: {
       startEvent(o, item.causeId, item.vars);
   }
 
-  // eventos sorteados (um grande e um local por turno, no máximo)
+  // eventos sorteados (um grande e um local por turno, no máximo); as ações
+  // de grupos de pressão têm a cota delas (uma pesada e duas leves) e saem
+  // com a causa no texto
   if (!input.onlyDilemmas) {
+    for (const id of input.forcedEvents ?? []) {
+      const o = catalog.byId.get(id);
+      if (o && !active.some((a) => a.occurrenceId === id)) startEvent(o);
+    }
+    const actions = groupActions(content);
     const drawn = catalog.all
       .filter((o) => o.tipo === "evento" && (o.gatilho?.chance ?? 0) > 0)
       .map((o) => {
@@ -622,13 +617,34 @@ export function rollTurn(input: {
       })
       .filter((x) => Number.isFinite(x.ratio))
       .sort((a, b) => a.ratio - b.ratio);
-    const big = drawn.filter((x) => (x.o.nivel ?? 2) >= 2);
-    const local = drawn.filter((x) => (x.o.nivel ?? 2) < 2);
+    const common = drawn.filter((x) => x.o.origem !== "grupo");
+    const big = common.filter((x) => (x.o.nivel ?? 2) >= 2);
+    const local = common.filter((x) => (x.o.nivel ?? 2) < 2);
     for (const x of [
       ...big.slice(0, MAX_EVENTOS_GRANDES_POR_TURNO),
       ...local.slice(0, MAX_EVENTOS_LOCAIS_POR_TURNO),
     ])
       startEvent(x.o);
+    // um grupo faz no máximo uma ação por turno
+    const acted = new Set<string>();
+    const ofGroups = drawn.filter((x) => {
+      if (x.o.origem !== "grupo") return false;
+      const id = actions.get(x.o.id)?.group.id;
+      if (id === undefined) return true;
+      if (acted.has(id)) return false;
+      acted.add(id);
+      return true;
+    });
+    const heavy = ofGroups.filter((x) => actions.get(x.o.id)?.heavy);
+    const light = ofGroups.filter((x) => !actions.get(x.o.id)?.heavy);
+    for (const x of [
+      ...heavy.slice(0, MAX_ACOES_PESADAS_POR_TURNO),
+      ...light.slice(0, MAX_ACOES_LEVES_POR_TURNO),
+    ]) {
+      const group = actions.get(x.o.id)?.group;
+      const causa = group ? pressureCause(group, values) : undefined;
+      startEvent(x.o, undefined, causa ? { causa } : undefined);
+    }
   }
 
   // desdobramentos de eventos deste turno que vencem já (emTurnos 0 não existe:

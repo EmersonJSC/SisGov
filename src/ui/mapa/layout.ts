@@ -428,7 +428,7 @@ function desembaracar(caixas: Caixa[]) {
       const x0 = c.x;
       const y0 = c.y;
       let achou = false;
-      for (let raio = 16; raio <= 900 && !achou; raio += 16) {
+      for (let raio = 16; raio <= 1400 && !achou; raio += 16) {
         // passos de ~12 px ao longo do círculo: a faixa perto da elipse é fina
         const passos = Math.max(32, Math.ceil((raio * Math.PI * 2) / 12));
         for (let k = 0; k < passos && !achou; k++) {
@@ -729,10 +729,15 @@ function vagasDaEsfera(
     nota: number;
     passo: number;
   } | null = null;
+  // grades da maior para a menor; as menores só quando a área tem muitas
+  // leis (V1-09: a Segurança ganhou as de inteligência)
   for (const [dx, dy] of [
     [112, 92],
     [106, 88],
     [100, 84],
+    [94, 80],
+    [88, 80],
+    [82, 80],
   ]) {
     if (melhor && melhor.nota >= 0) break;
     for (const fx of [0, 0.25, 0.5, 0.75]) {

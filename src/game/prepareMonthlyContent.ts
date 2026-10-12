@@ -172,6 +172,14 @@ export function prepareMonthlyContent(
           ? { entrada: variable.entrada / 3 }
           : {}),
         ...(variable.saida !== undefined ? { saida: variable.saida / 3 } : {}),
+        ...(variable.niveis
+          ? {
+              niveis: variable.niveis.map((level) => ({
+                entrada: level.entrada / 3,
+                saida: level.saida / 3,
+              })),
+            }
+          : {}),
         dominio: {
           ...(variable.dominio.minimo !== undefined
             ? { minimo: variable.dominio.minimo / 3 }

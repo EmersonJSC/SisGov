@@ -398,6 +398,32 @@ export function computeNetwork(
     fromProfiles?: number,
   ) => {
     const node = graph.nodesById[targetId];
+    // Situação em níveis (V1-09): um degrau por passo, com histerese em cada
+    // passagem. O valor é o nível; não amortece.
+    if (node.niveis) {
+      const level = Math.round(previous[targetId] ?? 0);
+      const up = node.niveis[level];
+      const down = node.niveis[level - 1];
+      const result =
+        up !== undefined && raw >= up.entrada
+          ? level + 1
+          : down !== undefined && raw <= down.saida
+            ? level - 1
+            : level;
+      next[targetId] = result;
+      computed.add(targetId);
+      explanations.push({
+        targetId,
+        previousValue: previous[targetId] ?? base,
+        baseValue: base,
+        contributions,
+        rawValue: raw,
+        targetValue: result,
+        limited: false,
+        result,
+      });
+      return;
+    }
     // Situação (V1-07): surge com a soma em `entrada` ou mais e só acaba com
     // a soma em `saida` ou menos; entre os dois, fica como estava. Existindo,
     // o valor é o quanto a soma passa de `saida` (positivo); acabada, 0.

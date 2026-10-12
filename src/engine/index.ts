@@ -63,6 +63,8 @@ export type {
   PolicyCatalogFile,
   PoliticalOrganizationFile,
   ProfileApproval,
+  PressureGroupManifest,
+  PressureGroupsManifest,
   ScenarioManifest,
   VariableDefinition,
   VariableMeasure,

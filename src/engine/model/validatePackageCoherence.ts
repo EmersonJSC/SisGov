@@ -33,6 +33,8 @@ const supportedUnits = new Set([
   "pontos",
   "nivel_escopo",
   "taxa_por_100_mil",
+  // Nível de uma situação em níveis (V1-09).
+  "nivel",
 ]);
 
 function issue(

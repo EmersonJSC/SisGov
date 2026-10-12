@@ -25,15 +25,22 @@ function Noticia({ item, rotulo }: { item: VisaoRegistro; rotulo?: string }) {
 
 export function JornalDoTurno({
   jornal,
+  pressao,
 }: {
   jornal: RelatorioTurno["ocorrencias"];
+  /** Grupos de pressão que mudaram de nível e investigações (V1-09). */
+  pressao?: RelatorioTurno["pressao"];
 }) {
   const eventos = [...jornal.eventos].sort((a, b) => b.nivel - a.nivel);
+  const niveis = pressao?.niveis ?? [];
+  const investigacoes = pressao?.investigacoes ?? [];
   const vazio =
     !eventos.length &&
     !jornal.surgiram.length &&
     !jornal.acabaram.length &&
-    !jornal.dilemas.length;
+    !jornal.dilemas.length &&
+    !niveis.length &&
+    !investigacoes.length;
   if (vazio) return null;
   const capa = eventos.find((e) => e.nivel >= 4);
   return (
@@ -57,6 +64,24 @@ export function JornalDoTurno({
         ))}
         {jornal.dilemas.map((d) => (
           <Noticia key={`d-${d.id}`} item={d} rotulo="Na sua mesa" />
+        ))}
+        {niveis.map((n) => (
+          <li
+            key={`p-${n.grupo}`}
+            className={`noticia ${n.para > n.de ? "ruim" : "boa"}`}
+          >
+            <span className="selo-nivel pressao">Pressão</span>
+            <span className="noticia-texto">{n.manchete}</span>
+          </li>
+        ))}
+        {investigacoes.map((i) => (
+          <li
+            key={`i-${i.grupo}`}
+            className={`noticia ${i.achados.length ? "boa" : ""}`}
+          >
+            <span className="selo-nivel pressao">Investigação</span>
+            <span className="noticia-texto">{i.manchete}</span>
+          </li>
         ))}
       </ul>
     </section>

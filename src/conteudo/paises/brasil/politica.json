@@ -266,7 +266,7 @@
         "nome": "Ministério da Ciência, Tecnologia e Inovação",
         "cargo": "Ciência e Tecnologia",
         "area": "educacao",
-        "leis": ["investimento-pesquisa"],
+        "leis": ["investimento-pesquisa", "programa-espacial-e-satelites"],
         "extincao": {
           "destino": "educacao"
         }
@@ -418,6 +418,9 @@
           "pena-de-morte",
           "cameras-corporais",
           "verba-policia-federal",
+          "interceptacao-de-comunicacoes",
+          "cameras-e-reconhecimento-facial",
+          "poderes-de-investigacao-policial",
           "fundo-seguranca-publica",
           "vagas-em-presidios",
           "politica-de-imigracao",
@@ -506,7 +509,8 @@
           "voto-obrigatorio",
           "financiamento-de-campanhas",
           "foro-privilegiado",
-          "independencia-judiciario"
+          "independencia-judiciario",
+          "agencia-de-inteligencia"
         ]
       },
       {

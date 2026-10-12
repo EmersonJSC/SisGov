@@ -322,6 +322,26 @@
       "nivel": 9600
     },
     {
+      "lei": "programa-espacial-e-satelites",
+      "nivel": 250
+    },
+    {
+      "lei": "agencia-de-inteligencia",
+      "nivel": 900
+    },
+    {
+      "lei": "interceptacao-de-comunicacoes",
+      "opcao": "ordem-e-prazo"
+    },
+    {
+      "lei": "cameras-e-reconhecimento-facial",
+      "opcao": "locais-publicos"
+    },
+    {
+      "lei": "poderes-de-investigacao-policial",
+      "opcao": "infiltracao"
+    },
+    {
       "lei": "fundo-seguranca-publica",
       "nivel": 2400
     },
@@ -571,6 +591,11 @@
     "nivel_delacao_premiada": 50,
     "recursos_cameras_corporais": 120,
     "recursos_verba_policia_federal": 9600,
+    "recursos_programa_espacial_e_satelites": 250,
+    "recursos_agencia_de_inteligencia": 900,
+    "nivel_interceptacao_de_comunicacoes": 33,
+    "nivel_cameras_e_reconhecimento_facial": 33,
+    "nivel_poderes_de_investigacao_policial": 50,
     "recursos_fundo_seguranca_publica": 2400,
     "recursos_vagas_em_presidios": 600,
     "nivel_protecao_violencia_domestica": 67,

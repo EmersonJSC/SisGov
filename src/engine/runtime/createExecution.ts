@@ -81,6 +81,9 @@ export function createExecution(
         situation: node.tipo === "situacao",
       };
     });
+  const levelIds = Object.values(graph.nodesById)
+    .filter((node) => node.niveis !== undefined)
+    .map((node) => node.id);
   let settled: Record<string, number> = start;
   let gap = Infinity;
   for (let pass = 0; pass < settlePasses; pass += 1) {
@@ -101,10 +104,22 @@ export function createExecution(
     const previous = settled;
     settled = { ...network.value.values };
     gap = 0;
+    const reached = new Map(
+      network.value.explanations.map((item) => [item.targetId, item]),
+    );
+    // Situação em níveis: na largada não há histórico, então o nível é o
+    // que a soma sustenta (a maior entrada alcançada), sem a histerese que
+    // prenderia um pico passageiro das passadas.
+    for (const id of levelIds) {
+      const item = reached.get(id);
+      if (!item) continue;
+      const steps = graph.nodesById[id].niveis ?? [];
+      let level = 0;
+      while (level < steps.length && item.rawValue >= steps[level].entrada)
+        level += 1;
+      settled[id] = level;
+    }
     if (targets.length) {
-      const reached = new Map(
-        network.value.explanations.map((item) => [item.targetId, item]),
-      );
       for (const target of targets) {
         const item = reached.get(target.id);
         if (!item) continue;

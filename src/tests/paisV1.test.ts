@@ -36,19 +36,21 @@ describe("configuração do país (V1-06)", () => {
     // V1-07: valores de jan/2025 na unidade real (desenho/valores-2025.md)
     // e um ano de aquecimento; os números abaixo são o turno 0 depois dele.
     // V1-08: 20 segmentos e aprovação pelos perfis (Quaest jan/2025: 47%).
+    // V1-09: 54 grupos de pressão (pressão, nível, patrocínio e ações) e
+    // cinco leis de inteligência, duas com verba (a dívida sobe um pouco).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1015);
+    expect(Object.keys(valores)).toHaveLength(1388);
     expect(p.game.execution.step).toBe(12);
     expect(valores.popularidade_governo).toBeCloseTo(48.2574, 3);
-    expect(valores.divida_publica).toBeCloseTo(82.305, 2);
+    expect(valores.divida_publica).toBeCloseTo(82.315, 2);
     expect(valores.inflacao).toBeCloseTo(4.833, 2);
     expect(valores.desemprego).toBeCloseTo(6.177, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12682078.385086281, 3);
-    expect(p.content.policies).toHaveLength(124);
-    expect(p.content.events).toHaveLength(79);
+    expect(soma).toBeCloseTo(12687897.527233493, 3);
+    expect(p.content.policies).toHaveLength(129);
+    expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });
 
@@ -60,7 +62,7 @@ describe("configuração do país (V1-06)", () => {
       r.ok ? r.value.definition.events.map((e) => e.id) : [];
     expect(ids(brasil)).toContain("vazamento-de-oleo");
     expect(ids(minimo)).not.toContain("vazamento-de-oleo");
-    expect(ids(minimo)).toHaveLength(78);
+    expect(ids(minimo)).toHaveLength(165);
 
     const mensal = prepareMonthlyContent(minimo.value.definition);
     if (!mensal.ok) throw new Error("conteúdo mensal falhou");

@@ -163,6 +163,7 @@ function validateManifest(
       "dilemas",
       "perfis",
       "aprovacaoPorPerfis",
+      "gruposDePressao",
       "organizacaoPolitica",
       "unidadeTemporal",
       "respostaDasBolhas",
@@ -282,6 +283,21 @@ function validateManifest(
   }
   if (value.aprovacaoPorPerfis !== undefined)
     validateProfileApproval(value.aprovacaoPorPerfis, file, diagnostics);
+  // Grupos de pressão (V1-09): dado da partida, gerado na carga; o motor só
+  // confere a forma de fora.
+  if (
+    value.gruposDePressao !== undefined &&
+    (!isObject(value.gruposDePressao) ||
+      !Array.isArray(value.gruposDePressao.grupos))
+  )
+    diagnostics.push(
+      diagnostic(
+        file,
+        "gruposDePressao",
+        "TIPO_INVALIDO",
+        "Grupos de pressão: objeto com a lista de grupos.",
+      ),
+    );
   if (
     diagnostics.length > 0 ||
     !nome ||
@@ -1288,6 +1304,7 @@ function validateVariables(
           "valorInicial",
           "entrada",
           "saida",
+          "niveis",
           "transbordo",
           "area",
           "avaliacao",
@@ -1452,7 +1469,9 @@ function validateVariables(
           `variaveis[${index}].valorInicial`,
           diagnostics,
         );
-      if (type === "situacao") {
+      if (type === "situacao" && item.niveis !== undefined)
+        validateLevels(item, file, `variaveis[${index}]`, diagnostics);
+      else if (type === "situacao") {
         const entrada = requiredNumber(
           item,
           file,
@@ -1528,7 +1547,7 @@ function validateVariables(
           diagnostics,
         );
       if (type !== "situacao")
-        for (const campo of ["entrada", "saida"] as const)
+        for (const campo of ["entrada", "saida", "niveis"] as const)
           if (item[campo] !== undefined)
             diagnostics.push(
               diagnostic(
@@ -1541,6 +1560,61 @@ function validateVariables(
     });
   }
   return diagnostics.length === 0 ? (value as VariablesFile) : undefined;
+}
+
+/**
+ * Situação em níveis (V1-09); ver `VariableDefinition.niveis`. Sem `entrada`
+ * e `saida` soltas; cada passagem com a saída abaixo da entrada; entradas e
+ * saídas crescentes; domínio de 0 ao número de passagens.
+ */
+function validateLevels(
+  item: Record<string, unknown>,
+  file: string,
+  path: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  const fail = (field: string, message: string) =>
+    diagnostics.push(
+      diagnostic(file, `${path}.${field}`, "VALOR_INVALIDO", message),
+    );
+  if (item.entrada !== undefined || item.saida !== undefined)
+    fail("niveis", "Situação em níveis não tem entrada e saída soltas.");
+  const levels = item.niveis;
+  if (
+    !Array.isArray(levels) ||
+    levels.length === 0 ||
+    !levels.every(
+      (level) =>
+        isObject(level) &&
+        typeof level.entrada === "number" &&
+        Number.isFinite(level.entrada) &&
+        typeof level.saida === "number" &&
+        Number.isFinite(level.saida) &&
+        Object.keys(level).every((k) => k === "entrada" || k === "saida"),
+    )
+  )
+    return void fail(
+      "niveis",
+      "Níveis: lista de { entrada, saida }, um por passagem.",
+    );
+  const list = levels as { entrada: number; saida: number }[];
+  list.forEach((level, k) => {
+    if (level.saida >= level.entrada)
+      fail(`niveis.${k}.saida`, "A saída precisa ficar abaixo da entrada.");
+    if (k > 0 && level.entrada <= list[k - 1].entrada)
+      fail(`niveis.${k}.entrada`, "As entradas precisam crescer.");
+    if (k > 0 && level.saida <= list[k - 1].saida)
+      fail(`niveis.${k}.saida`, "As saídas precisam crescer.");
+  });
+  const domain = item.dominio;
+  if (
+    isObject(domain) &&
+    (domain.minimo !== 0 || domain.maximo !== list.length)
+  )
+    fail(
+      "dominio",
+      `O domínio de uma situação em níveis vai de 0 a ${list.length}.`,
+    );
 }
 
 /** Medida real de um índice (V1-07); ver `VariableMeasure`. */
@@ -3188,6 +3262,7 @@ const OCCURRENCE_ORIGINS = new Set([
   "desdobramento",
   "crise",
   "cotidiano",
+  "grupo",
 ]);
 const COMPARISONS = new Set([
   "maior_que",
