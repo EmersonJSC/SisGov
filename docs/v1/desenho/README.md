@@ -13,3 +13,6 @@
 
 O ponto de partida é o documento "SisGov: como a simulação funciona e como
 melhorar" (12/out/2026), que compara o D4, o SisGov hoje e métodos mais novos.
+
+Decisões, achados e ideias da conversa de 12/out estão em
+`conversa-12-out.md`.
