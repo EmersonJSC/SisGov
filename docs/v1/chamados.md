@@ -219,7 +219,7 @@
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/populacao.md`)
+- [x] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/populacao.md`)
 - [ ] Soma dos pesos dos perfis = 100%
 - [ ] Lei que agrada um segmento sobe a satisfação dele no turno certo
 - [ ] Aprovação inicial do Brasil perto da real (faixa definida no teste)

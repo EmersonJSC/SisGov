@@ -1,6 +1,6 @@
 # Segmentos do eleitorado e perfis sintéticos (V1-08)
 
-**Status:** PARA APROVAÇÃO. O código só começa depois do seu ok.
+**Status:** APROVADO pelo autor em 12/out (decisões na seção 8).
 
 ## 1. O que existe hoje (medido em 12/out)
 
@@ -187,11 +187,12 @@ com filhos no atraso da ligação.
 
 1. **Aprovação por curva (logística) ou média (como hoje)?** Recomendo a
    curva: ela dá a porcentagem que aprova, como a pesquisa mede.
-2. **Pesos dos eixos** da seção 3.3: servem como ponto de partida?
+   *(A curva mesmo, media e simples de mais)*
+2. **Pesos dos eixos** da seção 3.3: servem como ponto de partida? *(Isso, pode ser esse o ponto de partida)*
 3. **Alvo de aprovação:** "aprova" (47%) ou "ótimo/bom" (35%)? Recomendo
-   "aprova".
+   "aprova". *(CCERTO)*
 4. **Regras dos 9 segmentos novos** (seção 4): alguma linha errada ou
-   faltando?
+   faltando? *(Nenhuma)*
 
 ## Fontes
 
