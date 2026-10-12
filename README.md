@@ -23,7 +23,7 @@ Documentos em `docs/desativado/` são histórico e não são para seguir.
 - `src/app`: fachada da partida, a única porta entre a tela e o jogo.
 - `src/ui`: componentes React (mapa, janelas, painéis).
 - `src/conteudo`: conteúdo em JSON, `mundo/` (vale para todos os países) e `paises/` (estado inicial de cada país).
-- `src/domain` e `src/scenarios`: saem na reestruturação (V1-02 e V1-04).
+- `src/domain` e `src/scenarios`: saem na reestruturação (V1-04).
 - `scripts/`: ferramentas de conteúdo (fichas e rede).
 - `src/tests`: testes automatizados (Vitest).
 

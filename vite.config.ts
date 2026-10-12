@@ -8,12 +8,4 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
   },
-  build: {
-    rollupOptions: {
-      input: {
-        main: "index.html",
-        motorDemo: "motor-demo.html",
-      },
-    },
-  },
 });

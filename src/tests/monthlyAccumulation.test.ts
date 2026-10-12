@@ -7,14 +7,12 @@ import {
   type ResolvedPackage,
 } from "../engine";
 import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
-import { createD4ReferenceSandbox } from "../scenarios/d4ReferenceSandbox";
 
 function fixture(
   duration: ConsequenceFile["duracao"],
   income = 120,
   expense = -90,
 ): ResolvedPackage {
-  const base = createD4ReferenceSandbox().content;
   const consequences: ConsequenceFile[] = [income, expense].map(
     (value, index) => ({
       id: `flow-${index}`,
@@ -30,10 +28,28 @@ function fixture(
     }),
   );
   return {
-    ...base,
-    initialState: { ...base.initialState, valores: { control: 1, cash: 100 } },
+    manifest: {
+      id: "teste-acumulacao-mensal",
+      unidadeTemporal: "trimestre",
+      tipo: "cenario",
+      versaoEsquema: 1,
+      nome: "Teste de acumulação mensal",
+      estadoInicial: "gerado",
+      variaveis: "gerado",
+      politicas: [],
+      consequencias: [],
+      situacoes: [],
+    },
+    initialState: {
+      id: "estado-gerado",
+      tipo: "estado-inicial",
+      versaoEsquema: 1,
+      valores: { control: 1, cash: 100 },
+    },
     variables: {
-      ...base.variables,
+      id: "variaveis-geradas",
+      tipo: "variaveis",
+      versaoEsquema: 1,
       variaveis: [
         {
           id: "control",
@@ -55,20 +71,30 @@ function fixture(
     },
     policies: [
       {
-        ...base.policies[0],
         id: "policy",
+        tipo: "lei",
+        versaoEsquema: 2,
+        grupo: "orcamentaria",
+        orcamento: { modo: "valor_fixo" },
+        nome: "Política de teste",
+        descricao: "Política mínima para testar a acumulação mensal.",
+        area: "Fazenda",
+        processoAutorizacao: "execucao-programa-autorizado",
         controle: {
           variavel: "control",
           unidade: "quantidade",
         },
         consequencias: consequences.map((effect) => effect.id),
+        respostaTemporal: { implantacao: 0.2, degradacao: 0.12 },
       },
     ],
     consequences,
     events: [],
     situations: [],
     dilemmas: [],
-  };
+    filesById: {},
+    pathsById: {},
+  } as unknown as ResolvedPackage;
 }
 
 function run(content: ResolvedPackage, steps: number) {

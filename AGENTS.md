@@ -10,8 +10,8 @@ qualquer trabalho, leia:
 2. [docs/v1/engenharia.md](docs/v1/engenharia.md): como um chamado é feito e
    quando está pronto.
 3. [docs/v1/diferenciacao-d4.md](docs/v1/diferenciacao-d4.md): **nada do
-   Democracy 4 entra no projeto.** Não abra `docs/Exemplos/` nem
-   `docs/desativado/restrito-d4/` para escrever conteúdo.
+   Democracy 4 entra no projeto.** Não abra `docs/Exemplos/` para escrever
+   conteúdo.
 4. Conforme o assunto: [arquitetura](docs/v1/arquitetura.md),
    [reestruturação](docs/v1/reestruturacao.md) ou [conteúdo](docs/v1/conteudo.md).
 

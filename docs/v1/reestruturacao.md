@@ -23,10 +23,10 @@
 | `src/engine/model/validateContentFile.ts` | 3.500 | **Divide** por tipo de arquivo (lei, índice, país, ocorrência) | V1-05 |
 | `src/app/partida.ts` | 1.800 | **Divide** em `criar`, `leis`, `turno`, `visao`, `previsao`, `salvar`, sem mudar comportamento | V1-03 |
 | `src/game/` partida, turno, ações sobre leis, implantação, ocorrências, ministérios, requisitos | 2.100 | **Fica e ajusta** | V1-03, V1-06 |
-| `src/game/` propostas, votação, Senado, eleição antiga e laboratório (`commitApprovedProposal`, `prepareProposalTramitation`, `resolveParliamentaryVote`, `sampleParliamentaryVotes`, `commitSenateElection`, `commitElection`, `elections`, `advanceLaboratoryTurn`, `advanceQuarterlyLaboratoryTurn` e o que o grafo de importações mostrar fora do caminho da partida) | 1.600 | **Sai da versão 1.** O parlamento volta na versão 2 com desenho novo; a etiqueta guarda o código. A eleição da versão 1 é escrita do zero (V1-12). | V1-04 |
+| `src/game/` propostas, votação, Senado, eleição antiga (`commitApprovedProposal`, `prepareProposalTramitation`, `resolveParliamentaryVote`, `sampleParliamentaryVotes`, `commitSenateElection`, `commitElection`, `elections` e o que o grafo de importações mostrar fora do caminho da partida) | 1.600 | **Sai da versão 1.** O parlamento volta na versão 2 com desenho novo; a etiqueta guarda o código. A eleição da versão 1 é escrita do zero (V1-12). | V1-04 |
 | `src/domain/game/` | 800 | O que a partida usa (`policyState`, `result`, `policyRules`) vai para `game/leis/`; propostas saem com o parlamento | V1-04 |
-| `src/scenarios/` | 700 | `loadScenarioPackage` vai para `game/pais/`; `brazilMap`, `brazilPresidency` e `d4ReferenceSandbox` **saem** | V1-02 |
-| `src/motorDemo.ts`, `motor-demo.html`, `src/ui/GameMap.tsx`, `MapFilters.tsx`, `TurnLogPanel.tsx`, `src/influenceLayout.ts`, `src/mapPhysics.ts`, `src/mapMetrics.ts`, `src/relationPaths.ts` | 2.600 | **Saem.** A tela principal não usa nada disso. | V1-02 |
+| `src/scenarios/` | 700 | `loadScenarioPackage` vai para `game/pais/`; `brazilMap`, `brazilPresidency` e `d4ReferenceSandbox` **saíram** no V1-02, junto com `engine/validateScenario` e `types/scenario`, que só serviam a eles | V1-02 |
+| `src/motorDemo.ts`, `motor-demo.html`, `src/ui/GameMap.tsx`, `MapFilters.tsx`, `TurnLogPanel.tsx`, `src/influenceLayout.ts`, `src/mapPhysics.ts`, `src/mapMetrics.ts`, `src/relationPaths.ts`, laboratório (`advanceLaboratoryTurn`, `advanceQuarterlyLaboratoryTurn`, `turnJournal`) | 2.600 | **Saíram no V1-02.** A tela principal não usava nada disso. | V1-02 |
 | `src/ui/mapa/` | 9.200 | **Fica e ajusta.** `MapaPolitico.tsx` (2.000) e `Documentos.tsx` (1.400) são divididos quando o mapa v1 e a janela v1 forem feitos. | V1-26, V1-27 |
 | `src/conteudo/mundo/` | 3.200 arquivos | **Refaz** a partir das fichas v3, área por área. As 2.896 ligações em arquivos soltos viram efeitos dentro de cada ficha. | V1-05, V1-14 a V1-23 |
 | `src/conteudo/paises/brasil/` | 4 arquivos | **Refaz** como configuração do país | V1-06 |
@@ -34,7 +34,7 @@
 | `docs/fichas/` (v1 e v2) | | **Desativado.** O formato novo fica em `docs/fichas/v3/`. | V1-05 |
 | `scripts/fichas/` | | **Ajusta**: conversor e verificador do formato v3 | V1-05 |
 | `src/tests/` (70 arquivos) | | Os do motor ficam. Os que testam o que sai, saem junto. Os de conteúdo são refeitos com o conteúdo. | cada chamado |
-| `SisGov-backup-2026-09-25.bundle`, `dist/` | | Saem do repositório (o backup fica fora dele) | V1-02 |
+| `SisGov-backup-2026-09-25.bundle`, `dist/` | | O backup saiu do git no V1-02 e fica só no notebook (`*.bundle` no `.gitignore`); `dist/` já era ignorado | V1-02 |
 
 ## 3. Ordem
 

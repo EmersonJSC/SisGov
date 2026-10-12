@@ -75,7 +75,7 @@ três).
 O código fica menor e com camadas claras. Nada muda para quem joga.
 
 - [ ] **V1-01** Documentos novos e antigos desativados (P). Feito em 12/out, commit local; aguarda a leitura e a aprovação do autor
-- [ ] **V1-02** Tirar código morto e restos do D4 (P)
+- [ ] **V1-02** Tirar código morto e restos do D4 (P). Feito em 12/out, commit local; build, lint e testes afetados verdes; aguarda o `npm run check` do autor
 - [ ] **V1-03** Dividir a partida em módulos (M)
 - [ ] **V1-04** Tirar o parlamento da versão 1 e fixar as camadas (M)
 

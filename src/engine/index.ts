@@ -1,4 +1,3 @@
-export { validateScenario } from "./validateScenario";
 export { validateContentFile } from "./model/validateContentFile";
 export { resolvePackage } from "./model/resolvePackage";
 export { validatePackageCoherence } from "./model/validatePackageCoherence";

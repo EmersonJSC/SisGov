@@ -22,13 +22,11 @@ Percentuais de cobertura, por exemplo, pertencem ao intervalo de 0 a 100 porque 
 
 Se um cálculo produzir um valor impossível para o domínio declarado, o passo falha e preserva o estado anterior. Quando uma grandeza limitada precisar se aproximar do máximo com retornos decrescentes, isso será responsabilidade de um mecanismo explícito do motor, e não de um corte aplicado depois do cálculo.
 
-Democracy 4 usa valores de simulação abstratos geralmente configurados entre 0 e 1. O SisGov não adota essa escala como regra geral: prefere unidades observáveis ou índices cuja composição e interpretação sejam declaradas.
+O SisGov não usa uma escala abstrata única (como 0 a 1) para todos os valores: prefere unidades observáveis ou índices cuja composição e interpretação sejam declaradas.
 
-## Adaptação do indicador de saúde de Democracy 4
+## Exemplo: o indicador de saúde
 
-Democracy 4 representa `Health` como um valor abstrato da rede, normalmente na escala de 0 a 1. Políticas, eventos e outros valores produzem influências positivas ou negativas, e a inércia distribui a mudança ao longo dos turnos. O valor não corresponde diretamente à porcentagem da população saudável.
-
-O SisGov preserva a rede de causas, a inércia e a possibilidade de inspecionar influências, mas substitui o valor abstrato por uma medida documentada. Para o primeiro cenário, a referência recomendada é o Índice de Cobertura de Serviços de Saúde Universal da OMS, apresentado de 0 a 100 e composto por indicadores de serviços essenciais. Ele será identificado como índice sem unidade, não como percentual de pessoas saudáveis.
+Um indicador de saúde abstrato, sem definição, não diz o que mede. O SisGov mantém a rede de causas, a inércia e a possibilidade de inspecionar influências, mas usa uma medida documentada. Para o primeiro cenário, a referência recomendada é o Índice de Cobertura de Serviços de Saúde Universal da OMS, apresentado de 0 a 100 e composto por indicadores de serviços essenciais. Ele será identificado como índice sem unidade, não como percentual de pessoas saudáveis.
 
 ```text
 políticas e condições sociais

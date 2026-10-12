@@ -46,8 +46,8 @@ para ficar longe de qualquer dúvida.
    ficha sem fonte (chamado V1-05).
 4. **Nenhum campo de conteúdo diz "origem: D4".** A origem registrada é a lei real
    ou o estudo.
-5. Os documentos antigos que estudaram o D4 ficam desativados e marcados como
-   "restritos: não usar como base" (ver `docs/desativado/LEIA-ME.md`). Arquivos que eu (Claude) gerei a partir deles nesta fase, como a comparação de 11/out, foram apagados. O código de
+5. Os documentos antigos que estudaram o D4 saíram do git no V1-02 e ficam só
+   em `docs/Exemplos/estudos-antigos/`, na máquina do autor. Arquivos que eu (Claude) gerei a partir deles nesta fase, como a comparação de 11/out, foram apagados. O código de
    referência ao D4 (`src/scenarios/d4ReferenceSandbox.ts`) sai no chamado V1-02.
 6. **Correção do meu documento de revisão de 11/out.** Ele propunha copiar a
    estrutura de grupos do D4 (11 organizações e 9 versões radicais), a amostra de

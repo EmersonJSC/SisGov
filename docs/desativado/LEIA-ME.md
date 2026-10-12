@@ -9,16 +9,13 @@ Os links dentro destes arquivos podem estar quebrados, porque eles foram movidos
 de lugar. O conteúdo não foi alterado; cada arquivo `.md` ganhou só um aviso no
 topo.
 
-## Restritos: não usar como base
+## Estudos do Democracy 4
 
-Estes arquivos estudaram o Democracy 4 diretamente. Pela regra de sala limpa
-([`diferenciacao-d4.md`](../v1/diferenciacao-d4.md), D-67), **ninguém que escreve
-conteúdo deve abri-los**. Eles saem do repositório no chamado V1-02.
-
-| Arquivo | Motivo |
-| --- | --- |
-| `restrito-d4/Estudo Democracy 4 Politicas Grupos e Efeitos.docx` | Estudo das políticas, grupos e efeitos do D4 |
-| `restrito-d4/pesquisa-democracy4-efeitos-apoio.md` | Pesquisa sobre efeitos e apoio no D4 |
+Os dois estudos diretos do D4 (um `.docx` e `pesquisa-democracy4-efeitos-apoio.md`)
+saíram do git no chamado V1-02. Ficam só na máquina do autor, em
+`docs/Exemplos/estudos-antigos/`, que o git ignora. Pela regra de sala limpa
+([`diferenciacao-d4.md`](../v1/diferenciacao-d4.md), D-67), ninguém que escreve
+conteúdo deve abri-los.
 
 ## Planos e processo
 
