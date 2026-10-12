@@ -5,7 +5,7 @@
 
 | Tema | Chamado | Documento | Situação |
 | --- | --- | --- | --- |
-| Calibragem, sensibilidade e desempenho da rede | V1-07 | `rede.md` | A fazer |
+| Calibragem, sensibilidade e desempenho da rede | V1-07 | `rede.md` | Em revisão |
 | População sintética e opinião por perfil | V1-08 | `populacao.md` | A fazer |
 | Grupos de pressão | V1-09 | `pressao.md` | A fazer |
 | Capital político | V1-10 | `capital.md` | A fazer |
