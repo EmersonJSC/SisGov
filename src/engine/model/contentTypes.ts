@@ -111,6 +111,22 @@ export type VariableDefinition = {
    * aberto. O motor não usa: não limita nada.
    */
   faixaVisual?: { minimo: number; maximo: number };
+  /**
+   * Só calculado e estoque (V1-07): o que o valor do motor quer dizer no
+   * mundo real. O motor segue em 0 a 100; `zero` e `cem` são a medida real
+   * nesses dois pontos (uma reta; `zero` maior que `cem` inverte). Sem os
+   * dois, o valor do motor já está na unidade. `tecnico`: estado interno sem
+   * estatística real (aprovação, base); dispensa fontes.
+   */
+  medida?: VariableMeasure;
+};
+
+export type VariableMeasure = {
+  unidade: string;
+  zero?: number;
+  cem?: number;
+  fontes?: string[];
+  tecnico?: boolean;
 };
 
 export type VariablesFile = {

@@ -253,7 +253,7 @@ contexto é zero.
 | --- | --- |
 | Índice sem saída (só recebe) | 56 de 132, entre eles 12 situações sem efeito nenhum |
 | Índice sem entrada | 2 (`carga_evento_demanda`, `transparencia_fiscal_internacional`) |
-| Lei com algum índice mudando o efeito | 0 de 123 |
+| Lei com algum índice mudando o efeito | 123 de 124 (pela eficácia; falta `fundo-soberano`). A medida anterior, "0 de 123", estava errada: não contava as ligações que entram em `eficacia:<lei>` |
 | Contexto acima de 5 pontos | 110 de 121; acima de 25: 67; acima de 50: 28 |
 
 **Como o contexto chega a zero.** Para cada índice, a diferença entre o real
@@ -268,6 +268,15 @@ O relatório (`npm run rede:contexto`) lista, por índice, o valor real, o que
 a rede dá, a diferença e as entradas atuais. O verificador ganha as regras
 acima com uma trava: o número de violações só pode cair (teste que guarda a
 contagem). Quando chegar a zero, vira erro de carga.
+
+**Feito (V1-07).** `checkNetworkRules` (motor, `diagnostics/networkRules.ts`)
+conta as regras e entra na análise do pacote como avisos
+(`INDICE_SEM_SAIDA`, `INDICE_SEM_ENTRADA`, `LEI_SEM_MODULACAO`,
+`INDICE_SEM_MEDIDA`). `npm run rede:contexto` dá o relatório por índice.
+`src/tests/redeTrava.test.ts` guarda os limites: 55 sem saída, 2 sem
+entrada, 1 lei, 116 sem medida, contexto acima de 5/25/50 em 109/67/28 dos
+121 valores declarados. Influenciar conta origem, fator e divisor de uma
+relação; uma situação que só dispara evento ainda conta como sem saída.
 
 **Tamanho (decisão de 12/out): por área.** O V1-07 entrega o relatório e a
 trava. A limpeza de cada área entra no aceite do chamado de conteúdo dela

@@ -1,11 +1,16 @@
 import type { ScenarioGraph } from "../graph/buildGraph";
 import type { ResolvedPackage } from "../model/resolvePackage";
+import { checkNetworkRules, type NetworkRules } from "./networkRules";
 
 export type PackageWarningCode =
   | "CICLO"
   | "COMPONENTE_DESCONECTADO"
   | "CONTEUDO_NAO_UTILIZADO"
-  | "ARQUIVO_ORFAO";
+  | "ARQUIVO_ORFAO"
+  | "INDICE_SEM_SAIDA"
+  | "INDICE_SEM_ENTRADA"
+  | "LEI_SEM_MODULACAO"
+  | "INDICE_SEM_MEDIDA";
 
 export type PackageWarning = Readonly<{
   code: PackageWarningCode;
@@ -19,6 +24,8 @@ export type PackageAnalysis = Readonly<{
   disconnectedComponents: readonly (readonly string[])[];
   unusedContentIds: readonly string[];
   orphanFiles: readonly string[];
+  /** Rede sem números soltos (V1-07); a trava está em redeTrava.test.ts. */
+  networkRules: NetworkRules;
   warnings: readonly PackageWarning[];
 }>;
 
@@ -126,6 +133,13 @@ export function analyzePackage(
   const orphanFiles = sorted(
     distributedFiles.filter((file) => !includedFiles.has(file)),
   );
+  const networkRules = checkNetworkRules(content, graph);
+  const rule = (
+    code: PackageWarningCode,
+    ids: readonly string[],
+    message: string,
+  ): PackageWarning[] =>
+    ids.map((id) => ({ code, ids: [id], message: `${message}: ${id}.` }));
   const warnings: PackageWarning[] = [
     ...cycles.map((ids) => ({
       code: "CICLO" as const,
@@ -147,12 +161,33 @@ export function analyzePackage(
       file,
       message: `Arquivo distribuído sem uso no manifesto: ${file}.`,
     })),
+    ...rule(
+      "INDICE_SEM_SAIDA",
+      networkRules.withoutOutput,
+      "Índice que não influencia nada",
+    ),
+    ...rule(
+      "INDICE_SEM_ENTRADA",
+      networkRules.withoutInput,
+      "Índice que nada influencia",
+    ),
+    ...rule(
+      "LEI_SEM_MODULACAO",
+      networkRules.unmodulatedLaws,
+      "Lei cujo efeito nenhum índice muda",
+    ),
+    ...rule(
+      "INDICE_SEM_MEDIDA",
+      networkRules.withoutMeasure,
+      "Índice sem medida real e fonte",
+    ),
   ];
   return {
     cycles,
     disconnectedComponents,
     unusedContentIds,
     orphanFiles,
+    networkRules,
     warnings,
   };
 }

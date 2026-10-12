@@ -1,5 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
 import { contextNodeId } from "../../engine/model/lawNodes";
+import { valorNaMedida } from "./medida";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
   policyInForce,
@@ -171,6 +172,15 @@ export function verPartida(partida: Partida): VisaoPartida {
             entrada: variable.entrada,
             saida: variable.saida,
             ativa: (values[variable.id] ?? 0) > 0,
+          }
+        : {}),
+      ...(variable.medida && !variable.medida.tecnico
+        ? {
+            medida: {
+              valor: valorNaMedida(variable.medida, values[variable.id] ?? 0),
+              unidade: variable.medida.unidade,
+              fontes: variable.medida.fontes ?? [],
+            },
           }
         : {}),
       ...(values[contextNodeId(variable.id)] !== undefined

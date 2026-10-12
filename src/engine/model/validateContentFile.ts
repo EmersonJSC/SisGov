@@ -1201,6 +1201,7 @@ function validateVariables(
           "avaliacao",
           "resposta",
           "faixaVisual",
+          "medida",
         ],
         diagnostics,
       );
@@ -1411,6 +1412,14 @@ function validateVariables(
             ),
           );
       }
+      if (item.medida !== undefined)
+        validateMeasure(
+          item.medida,
+          type,
+          file,
+          `variaveis[${index}].medida`,
+          diagnostics,
+        );
       if (type !== "situacao")
         for (const campo of ["entrada", "saida"] as const)
           if (item[campo] !== undefined)
@@ -1425,6 +1434,48 @@ function validateVariables(
     });
   }
   return diagnostics.length === 0 ? (value as VariablesFile) : undefined;
+}
+
+/** Medida real de um índice (V1-07); ver `VariableMeasure`. */
+function validateMeasure(
+  value: unknown,
+  type: string | undefined,
+  file: string,
+  path: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  const fail = (message: string) =>
+    diagnostics.push(diagnostic(file, path, "VALOR_INVALIDO", message));
+  if (type !== "calculado" && type !== "estoque")
+    return void fail("Só índices calculados e estoques têm medida.");
+  if (!isObject(value))
+    return void fail("Medida: { unidade, zero?, cem?, fontes?, tecnico? }.");
+  validateKnownFields(
+    value,
+    file,
+    ["unidade", "zero", "cem", "fontes", "tecnico"],
+    diagnostics,
+  );
+  requiredString(value, file, `${path}.unidade`, diagnostics);
+  const ends = [value.zero, value.cem];
+  if (ends.some((end) => end !== undefined)) {
+    if (value.tecnico === true) fail("Medida técnica não tem zero e cem.");
+    else if (
+      !ends.every((end) => typeof end === "number" && Number.isFinite(end))
+    )
+      fail("Zero e cem vêm juntos, como números.");
+    else if (value.zero === value.cem)
+      fail("Zero e cem precisam ser diferentes.");
+  }
+  if (value.tecnico !== undefined && typeof value.tecnico !== "boolean")
+    fail("Técnico é verdadeiro ou falso.");
+  if (value.tecnico === true) return;
+  if (
+    !Array.isArray(value.fontes) ||
+    value.fontes.length === 0 ||
+    !value.fontes.every((fonte) => typeof fonte === "string" && fonte.trim())
+  )
+    fail("Uma medida real precisa de pelo menos uma fonte.");
 }
 
 function validateInitialState(

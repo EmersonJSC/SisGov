@@ -3,6 +3,10 @@ export { resolvePackage } from "./model/resolvePackage";
 export { validatePackageCoherence } from "./model/validatePackageCoherence";
 export { buildGraph } from "./graph/buildGraph";
 export { analyzePackage } from "./diagnostics/analyzePackage";
+export {
+  checkNetworkRules,
+  type NetworkRules,
+} from "./diagnostics/networkRules";
 export { createExecution } from "./runtime/createExecution";
 export { translateAuthorizedPolicies } from "./runtime/translatePolicyCommands";
 export { advanceExecution } from "./runtime/advanceExecution";
@@ -55,6 +59,7 @@ export type {
   PoliticalOrganizationFile,
   ScenarioManifest,
   VariableDefinition,
+  VariableMeasure,
   VariablesFile,
   WorldFile,
 } from "./model/contentTypes";

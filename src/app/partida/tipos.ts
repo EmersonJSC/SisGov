@@ -154,6 +154,15 @@ export type VisaoBolha = Readonly<{
    */
   contexto?: number;
   /**
+   * O valor na medida real (V1-07), quando o índice tem `medida` com
+   * balizas: a tela mostra isto em vez dos pontos do motor.
+   */
+  medida?: Readonly<{
+    valor: number;
+    unidade: string;
+    fontes: readonly string[];
+  }>;
+  /**
    * Valor que a bolha teria sem nenhuma decisão do jogador (o país no
    * piloto automático). Só existe depois que o jogador muda alguma lei.
    */

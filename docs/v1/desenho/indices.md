@@ -14,6 +14,10 @@ O motor continua em 0 a 100. A `medida` diz o que 0 e 100 significam no mundo re
 
 Balizas e fontes são propostas minhas a partir de estatísticas públicas; nenhuma veio do D4. Os valores do Brasil em jan/2025 entram na calibragem (passo seguinte), não aqui.
 
+## Pilares (ideia do autor, 12/out)
+
+Além dos índices medidos, cada área pode ter um **pilar**: um índice composto que resume o conjunto (método do *Handbook on constructing composite indicators*, OCDE/JRC). Ele não tem estatística própria: é a média ponderada dos índices da área, com pesos escritos e explicados na ficha da área. Exemplo: pilar Segurança = violência letal, crimes patrimoniais, vitimização e sensação de segurança. A sensação continua sendo um índice medido (pesquisa), uma das partes do pilar. Os pilares entram nos chamados de conteúdo (V1-14 a V1-23), começando por Segurança.
+
 ## Resumo
 
 116 índices: 30 manter, 77 converter, 1 composto, 3 juntar, 5 técnico.
@@ -45,6 +49,8 @@ Balizas e fontes são propostas minhas a partir de estatísticas públicas; nenh
 | Sensação de segurança<br>`sensacao_seguranca` | converter | % que se sente seguro andando à noite no bairro | 20% a 95% | Gallup Law and Order; PNAD 2021 (módulo vitimização) |
 | Uso de drogas<br>`uso_drogas` | converter | % de adultos que usaram droga ilícita no último ano | 0% a 20% | UNODC World Drug Report; LENAD/Fiocruz |
 | Violência letal<br>`violencia_letal` | manter | homicídios por 100 mil hab. | 0 a 60 | SIM/DATASUS; Atlas da Violência (Ipea/FBSP) |
+
+**Falta (autor, 12/out):** um índice de segurança em si, não só letal. Proposta para o V1-14: `vitimizacao`, % de pessoas que sofreram algum crime em 12 meses (PNAD módulo vitimização; pesquisas estaduais de vitimização).
 
 ## Contas, tributos e economia (V1-15)
 
