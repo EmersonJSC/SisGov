@@ -3,6 +3,7 @@ import type {
   ValidationResult,
 } from "../diagnostics/contentDiagnostic";
 import type { ScenarioGraph } from "../graph/buildGraph";
+import { graphIndex } from "../graph/graphIndex";
 import type { ResolvedPackage } from "../model/resolvePackage";
 
 export type AuthorizedPolicyChange = Readonly<{
@@ -25,6 +26,33 @@ function issue(field: string, message: string): ContentDiagnostic {
   return { code: "COMANDO_INVALIDO", file: "$comando", field, message };
 }
 
+const contentCache = new WeakMap<
+  ResolvedPackage,
+  Readonly<{
+    policiesById: ReadonlyMap<string, ResolvedPackage["policies"][number]>;
+    variablesById: ReadonlyMap<
+      string,
+      ResolvedPackage["variables"]["variaveis"][number]
+    >;
+  }>
+>();
+
+function contentIndex(content: ResolvedPackage) {
+  let index = contentCache.get(content);
+  if (!index) {
+    index = {
+      policiesById: new Map(
+        content.policies.map((policy) => [policy.id, policy]),
+      ),
+      variablesById: new Map(
+        content.variables.variaveis.map((variable) => [variable.id, variable]),
+      ),
+    };
+    contentCache.set(content, index);
+  }
+  return index;
+}
+
 /** Traduz escolhas já autorizadas em controles aplicados e relações ativas. */
 export function translateAuthorizedPolicies(
   content: ResolvedPackage,
@@ -32,12 +60,8 @@ export function translateAuthorizedPolicies(
   changes: readonly AuthorizedPolicyChange[],
 ): ValidationResult<PolicyCommandBatch> {
   const diagnostics: ContentDiagnostic[] = [];
-  const policiesById = new Map(
-    content.policies.map((policy) => [policy.id, policy]),
-  );
-  const variablesById = new Map(
-    content.variables.variaveis.map((variable) => [variable.id, variable]),
-  );
+  const { policiesById, variablesById } = contentIndex(content);
+  const { bySource, relationRank } = graphIndex(graph);
   const controlCommands: ControlCommand[] = [];
   const activeRelationIds: string[] = [];
   const changedControls = new Set<string>();
@@ -95,11 +119,8 @@ export function translateAuthorizedPolicies(
       value: change.intensity,
       policyId: policy.id,
     });
-    activeRelationIds.push(
-      ...graph.relations
-        .filter((relation) => relation.sourceId === policy.id)
-        .map((relation) => relation.id),
-    );
+    for (const relation of bySource.get(policy.id) ?? [])
+      activeRelationIds.push(relation.id);
   }
 
   if (diagnostics.length > 0) return { ok: false, diagnostics };
@@ -109,8 +130,9 @@ export function translateAuthorizedPolicies(
       controlCommands: controlCommands.sort((left, right) =>
         left.controlId.localeCompare(right.controlId),
       ),
-      activeRelationIds: activeRelationIds.sort((left, right) =>
-        left.localeCompare(right),
+      // Mesma ordem de `localeCompare`, pela posição já calculada no grafo.
+      activeRelationIds: activeRelationIds.sort(
+        (left, right) => relationRank.get(left)! - relationRank.get(right)!,
       ),
     },
   };

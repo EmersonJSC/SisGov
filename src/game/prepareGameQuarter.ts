@@ -3,7 +3,6 @@ import {
   type EngineExecution,
   type ResolvedPackage,
   type ScenarioGraph,
-  type TargetExplanation,
   type ValidationResult,
 } from "../engine";
 import type { GameState } from "./createGame";
@@ -15,9 +14,9 @@ import {
 } from "./occurrences";
 import type { PolicyState } from "./leis";
 
+/** Um mês do trimestre. Sem explicações: o turno não as lê (V1-07). */
 export type PreparedGameMonth = Readonly<{
   execution: EngineExecution;
-  explanations: readonly TargetExplanation[];
 }>;
 
 export type PreparedGameQuarter = Readonly<{
@@ -72,13 +71,12 @@ export function prepareGameQuarter(
           ],
         }
       : batch.value;
-    const advanced = advanceExecution(content, graph, execution, merged);
+    const advanced = advanceExecution(content, graph, execution, merged, 1, {
+      explain: false,
+    });
     if (!advanced.ok) return advanced;
     execution = advanced.value.execution;
-    months.push({
-      execution,
-      explanations: advanced.value.explanations,
-    });
+    months.push({ execution });
     if (execution.step !== game.execution.step + index + 1)
       return invalid(
         `meses.${index}`,

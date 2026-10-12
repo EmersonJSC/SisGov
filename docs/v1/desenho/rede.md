@@ -191,6 +191,14 @@ outra lei. Com as 123 leis como fatores e 10 trajetórias, são 1240 partidas de
 | Explicação (contribuições) só quando a tela pede | `computeNetwork` | Hoje se criam objetos de explicação para 990 nós em todo mês |
 | `Map<origem, arestas>` | `engine/graph` | Busca por origem em O(1) |
 
+**Feito (12/out):** `graphIndex` (relações por origem, ordem por id e posição
+de cada nó, uma vez por grafo), um retrato por atraso no mês em vez de um por
+relação (era o maior custo: copiava 990 valores por relação), e o turno do
+jogo sem a lista de contribuições. Turno: ~100 ms → ~20 a 30 ms de CPU
+(máquina com 2 núcleos, medida ruidosa). Valores de 6 turnos idênticos byte a
+byte. Criar a partida ainda leva ~1 s: o acerto do contexto roda até 1500
+passadas da rede; some com o contexto, área por área.
+
 **Garantia:** o teste de 4 turnos (`partida.test.ts`, `fichaV3.test.ts`) e o
 turno 0 (`paisV1.test.ts`) devem dar os mesmos números com tolerância 1e-9.
 É refatoração, não mudança de modelo.

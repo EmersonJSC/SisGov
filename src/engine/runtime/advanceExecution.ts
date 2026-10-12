@@ -45,6 +45,7 @@ export function advanceExecution(
   execution: EngineExecution,
   batch: PolicyCommandBatch,
   duration = 1,
+  options: Readonly<{ explain?: boolean }> = {},
 ): ValidationResult<StepExecutionResult> {
   if (!Number.isFinite(duration) || duration <= 0)
     return failure("duracao", "A duração deve ser positiva e finita.");
@@ -94,14 +95,24 @@ export function advanceExecution(
     },
   );
 
+  const snapshots = new Map<number, Readonly<Record<string, number>>>();
   const network = computeNetwork({
     content,
     graph,
     previous: execution.values,
     controls,
     activeRelations,
-    readDelayed: (stepsAgo) => readExecutionSnapshot(execution, stepsAgo),
+    readDelayed: (stepsAgo) => {
+      // Um retrato por atraso no mês, não um por relação (V1-07).
+      let snapshot = snapshots.get(stepsAgo);
+      if (!snapshot) {
+        snapshot = readExecutionSnapshot(execution, stepsAgo);
+        snapshots.set(stepsAgo, snapshot);
+      }
+      return snapshot;
+    },
     duration,
+    explain: options.explain,
   });
   if (!network.ok) return network;
 

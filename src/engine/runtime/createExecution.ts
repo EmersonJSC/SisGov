@@ -92,6 +92,7 @@ export function createExecution(
       readDelayed: () => settled,
       duration: 1,
       accumulateStocks: false,
+      explain: false,
     });
     // Pacotes inválidos já foram recusados pela coerência; se a rede não
     // fechar, a partida começa do estado declarado e o erro aparece no passo.

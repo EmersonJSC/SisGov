@@ -1,5 +1,6 @@
 import type { ValidationResult } from "../diagnostics/contentDiagnostic";
 import type { GraphRelation, ScenarioGraph } from "../graph/buildGraph";
+import { graphIndex } from "../graph/graphIndex";
 import { calculateContribution } from "../mechanisms/calculateContribution";
 import { updateStock, type StockRate } from "../mechanisms/updateStock";
 import { efficacyNodeId, isLawNode, lawNodeBase } from "../model/lawNodes";
@@ -88,6 +89,48 @@ const isCalculatedBubble = (graph: ScenarioGraph, id: string) => {
 };
 
 const orderCache = new WeakMap<ScenarioGraph, readonly string[]>();
+
+/** Listas fixas do grafo para o passo do mês, calculadas uma vez. */
+type NetworkLists = Readonly<{
+  lawNodes: readonly string[];
+  bubbles: ReadonlySet<string>;
+  /** Nós que entram em `intensities` pelo próprio valor. */
+  valueNodes: readonly string[];
+}>;
+const listsCache = new WeakMap<ScenarioGraph, NetworkLists>();
+
+function networkLists(graph: ScenarioGraph): NetworkLists {
+  const cached = listsCache.get(graph);
+  if (cached) return cached;
+  const ids = Object.keys(graph.nodesById);
+  const lists: NetworkLists = {
+    lawNodes: ids
+      .filter(isLawNode)
+      .sort((left, right) => left.localeCompare(right)),
+    bubbles: new Set(ids.filter((id) => isCalculatedBubble(graph, id))),
+    valueNodes: ids.filter(
+      (id) => !isLawNode(id) && graph.nodesById[id].tipo !== "controle",
+    ),
+  };
+  listsCache.set(graph, lists);
+  return lists;
+}
+
+const lawByControlCache = new WeakMap<
+  ResolvedPackage,
+  ReadonlyMap<string, string>
+>();
+
+function lawsByControl(content: ResolvedPackage): ReadonlyMap<string, string> {
+  let map = lawByControlCache.get(content);
+  if (!map) {
+    map = new Map(
+      content.policies.map((policy) => [policy.controle.variavel, policy.id]),
+    );
+    lawByControlCache.set(content, map);
+  }
+  return map;
+}
 
 /** Componente fortemente conexa de cada nó (Tarjan); `inputs` = quem envia. */
 function stronglyConnected(
@@ -195,6 +238,11 @@ export type NetworkInput = Readonly<{
   duration: number;
   /** false no turno 0: estoques ficam no valor declarado pelo país. */
   accumulateStocks?: boolean;
+  /**
+   * false: cada alvo vem sem a lista de contribuições (V1-07). O turno do
+   * jogo não lê as contribuições; a tela que pergunta "por que mudou" pede.
+   */
+  explain?: boolean;
 }>;
 
 /**
@@ -208,16 +256,20 @@ export function computeNetwork(
 ): ValidationResult<NetworkResult> {
   const { content, graph, previous } = input;
   const response = content.manifest.respostaDasBolhas ?? 1;
+  const explaining = input.explain !== false;
   const next: Record<string, number> = { ...previous, ...input.controls };
-  const lawByControl = new Map(
-    content.policies.map((policy) => [policy.controle.variavel, policy.id]),
-  );
+  const lawByControl = lawsByControl(content);
+  const lists = networkLists(graph);
   const computed = new Set<string>();
+  // Relações de cada alvo já em ordem de id: percorre a ordem fixa do grafo
+  // e fica com as ativas, em vez de ordenar cada alvo a cada mês.
+  const active = new Set(input.activeRelations);
   const byTarget = new Map<string, GraphRelation[]>();
-  for (const relation of input.activeRelations) {
-    const list = byTarget.get(relation.targetId) ?? [];
-    list.push(relation);
-    byTarget.set(relation.targetId, list);
+  for (const relation of graphIndex(graph).sortedById) {
+    if (!active.has(relation)) continue;
+    const list = byTarget.get(relation.targetId);
+    if (list) list.push(relation);
+    else byTarget.set(relation.targetId, [relation]);
   }
 
   // Valor que uma origem entrega: lei = nível × eficácia; demais = valor.
@@ -251,10 +303,7 @@ export function computeNetwork(
     const contributions: ContributionExplanation[] = [];
     const rates: StockRate[] = [];
     let sum = 0;
-    const relations = [...(byTarget.get(targetId) ?? [])].sort((left, right) =>
-      left.id.localeCompare(right.id),
-    );
-    for (const relation of relations) {
+    for (const relation of byTarget.get(targetId) ?? []) {
       let source: Readonly<Record<string, number>>;
       let readsPreviousMonth = false;
       if (relation.delaySteps > 0)
@@ -265,7 +314,7 @@ export function computeNetwork(
       } else {
         const origin = graph.nodesById[relation.originId];
         const pendingBubble =
-          isCalculatedBubble(graph, relation.originId) &&
+          lists.bubbles.has(relation.originId) &&
           !computed.has(relation.originId);
         const stock = origin?.tipo === "estoque";
         source = pendingBubble || stock ? previous : next;
@@ -289,37 +338,38 @@ export function computeNetwork(
         value: calculated.value.value,
         unit: relation.unit,
       });
-      contributions.push({
-        relationId: relation.id,
-        policyOrEventId: relation.sourceId,
-        consequenceId: relation.consequenceId,
-        originId: relation.originId,
-        targetId: relation.targetId,
-        sourceValue,
-        mechanism: relation.mechanism,
-        parameters: relation.parameters,
-        inputValue: calculated.value.inputValue,
-        ...(relation.normalization?.divisor !== undefined
-          ? {
-              divisorId: relation.normalization.divisor,
-              divisorValue: calculated.value.divisorValue,
-            }
-          : {}),
-        ...(relation.normalization?.fator !== undefined
-          ? {
-              factorId: relation.normalization.fator,
-              factorValue: calculated.value.factorValue,
-            }
-          : {}),
-        ...(relation.scale
-          ? {
-              scaleId: relation.scale.fator,
-              scaleValue: calculated.value.scaleValue,
-            }
-          : {}),
-        ...(readsPreviousMonth ? { readsPreviousMonth } : {}),
-        contribution: calculated.value.value,
-      });
+      if (explaining)
+        contributions.push({
+          relationId: relation.id,
+          policyOrEventId: relation.sourceId,
+          consequenceId: relation.consequenceId,
+          originId: relation.originId,
+          targetId: relation.targetId,
+          sourceValue,
+          mechanism: relation.mechanism,
+          parameters: relation.parameters,
+          inputValue: calculated.value.inputValue,
+          ...(relation.normalization?.divisor !== undefined
+            ? {
+                divisorId: relation.normalization.divisor,
+                divisorValue: calculated.value.divisorValue,
+              }
+            : {}),
+          ...(relation.normalization?.fator !== undefined
+            ? {
+                factorId: relation.normalization.fator,
+                factorValue: calculated.value.factorValue,
+              }
+            : {}),
+          ...(relation.scale
+            ? {
+                scaleId: relation.scale.fator,
+                scaleValue: calculated.value.scaleValue,
+              }
+            : {}),
+          ...(readsPreviousMonth ? { readsPreviousMonth } : {}),
+          contribution: calculated.value.value,
+        });
     }
     if (!Number.isFinite(sum))
       return failure(
@@ -365,9 +415,7 @@ export function computeNetwork(
   };
 
   // 1. Eficácia e apoio das leis, lendo o mês anterior.
-  for (const id of Object.keys(graph.nodesById)
-    .filter(isLawNode)
-    .sort((left, right) => left.localeCompare(right))) {
+  for (const id of lists.lawNodes) {
     const base = lawNodeBase(id)!;
     const result = explain(id, "lei");
     if (!result.ok) return result;
@@ -397,21 +445,21 @@ export function computeNetwork(
     next[variable.id] = updated.value.value;
   }
 
+  const { nodeRank } = graphIndex(graph);
   const intensities: Record<string, number> = {};
   for (const policy of content.policies) {
     const value = delivered(next, policy.controle.variavel);
     if (value !== undefined) intensities[policy.id] = value;
   }
-  for (const id of Object.keys(graph.nodesById))
-    if (!isLawNode(id) && graph.nodesById[id].tipo !== "controle")
-      intensities[id] = next[id];
+  for (const id of lists.valueNodes) intensities[id] = next[id];
 
   return {
     ok: true,
     value: {
       values: next,
-      explanations: explanations.sort((left, right) =>
-        left.targetId.localeCompare(right.targetId),
+      explanations: explanations.sort(
+        (left, right) =>
+          nodeRank.get(left.targetId)! - nodeRank.get(right.targetId)!,
       ),
       intensities,
     },
