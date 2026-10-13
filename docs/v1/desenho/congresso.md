@@ -5,18 +5,78 @@ a aprovação do autor.
 
 ## 0. Resumo
 
-O Congresso vira **5 bancadas** (blocos de partidos), cada uma com cadeiras
-na Câmara e no Senado, um ponto na bússola, os segmentos que ela representa e
-uma **disposição** (0 a 100) com o seu governo. A composição de partida é a
-eleita em 4/out/2026, que toma posse junto com você. Os nomes dos partidos
-reais ficam só na calibragem (`src/conteudo/bussola/`); no jogo aparecem as
-bancadas.
+O Congresso tem **5 bancadas** (blocos de partidos), mas o tamanho delas e o
+voto delas **saem da rede**, não da estatística copiada. A eleição real de
+2026 serve de **prova**, como os 10 programas serviram para a bússola: o
+modelo tem que chegar perto dela sozinho.
 
-Por cima das bancadas há as **frentes** (agro, evangélica), que cortam todas
-elas: um deputado do centro que é da frente do agro vota com o agro quando a
-lei mexe com o campo.
+São três camadas, cada uma de um método estudado:
 
-## 1. Os números de verdade
+1. **Quem elegeu quem.** Os 2.090 perfis sintéticos escolhem bancada pela
+   distância na bússola e pelos segmentos (voto espacial probabilístico). As
+   cadeiras saem da soma desses votos pela regra do país.
+2. **Como cada cadeira vota.** Pelo humor dos segmentos que a elegeram
+   (representação diádica), pela bússola, pelo partido e pelos acordos.
+3. **As cadeiras mudam no mandato.** Quando o eleitor de uma bancada fica
+   irritado, cadeiras trocam de bancada (o troca-troca real).
+
+Os nomes dos partidos reais ficam só na calibragem (`src/conteudo/bussola/`);
+no jogo aparecem as bancadas.
+
+## 0.1 As três camadas
+
+### Camada 1: as cadeiras saem dos perfis
+
+- Cada bancada tem um ponto na bússola. Cada perfil também tem um ponto,
+  tirado dos atributos dele: renda e ocupação puxam a economia; valores e
+  religião puxam os costumes (regra a calibrar, inferida).
+- A chance de um perfil votar numa bancada cai com a distância entre os dois
+  e sobe com a ligação dos segmentos dele com ela. É o **modelo de voto
+  espacial probabilístico** (logit multinomial), o padrão da ciência
+  política para simular eleição a partir de eleitores (Adams, Merrill e
+  Grofman, 2005; Desposato, 2004, com regras do Brasil).
+- Somando os 2.090 perfis pelo peso de cada um, sai a fatia de votos de cada
+  bancada. A **Câmara** reparte as 513 cadeiras pela regra proporcional
+  (quociente e sobras, como o Código Eleitoral). O **Senado** é por maioria
+  em cada estado, o que dá mais cadeiras para quem ganha (aproximação a
+  calibrar).
+- **Prova:** a composição que sai do modelo tem que ficar perto da eleita em
+  2026 (tabela da seção 2), bancada por bancada, dentro de uma tolerância.
+  Se não ficar, o erro mostra o que falta na rede, como aconteceu com a
+  bússola.
+- Bônus: com isso, cada bancada **sabe quem votou nela** (quanto do eleitor
+  dela é pobre, evangélico, do agro…). A coluna "Representa" da seção 2 deixa
+  de ser escrita à mão e passa a ser calculada.
+
+### Camada 2: o voto de cada cadeira
+
+Cada cadeira olha para o eleitor que a elegeu. É a **representação
+diádica**: o deputado vota conforme a opinião da sua base (Miller e Stokes,
+1963, e os estudos que seguiram). A nota de cada bancada numa lei soma:
+
+1. O efeito da lei no **humor dos segmentos que a elegeram**, pesado pela
+   fatia de cada um no eleitor dela.
+2. A **distância na bússola** entre a lei e a bancada.
+3. A **disciplina** e os **acordos** com o governo (mais de 80% da base
+   segue o líder, Figueiredo e Limongi).
+4. As **frentes** (agro, evangélica), que são a parte de cada bancada eleita
+   por esses segmentos.
+
+A nota vira a chance de cada cadeira votar sim, com sorteio de semente.
+
+### Camada 3: as cadeiras andam no mandato
+
+Na vida real, **122 deputados (1 em cada 4) trocaram de partido** na janela
+de março de 2026. No jogo:
+
+- Uma vez por ano, parte das cadeiras de uma bancada cujo eleitor ficou
+  irritado passa para a bancada mais próxima dos segmentos insatisfeitos.
+- Um governo popular atrai cadeiras do centro para a base (adesismo); um
+  governo impopular perde.
+- Quando houver eleição (versão 2), a camada 1 roda de novo com o humor do
+  momento.
+
+## 1. Os números de verdade (servem de prova, não de entrada)
 
 | Dado                                      | Valor                                                                                                | Fonte                                               |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -33,9 +93,11 @@ junto sempre. Por isso entram com um peso menor (seção 4).
 
 ## 2. As 5 bancadas
 
-Cadeiras somadas dos partidos (a lista partido → bancada fica em
-`bussola/`). O ponto na bússola é a média dos partidos no V-Party, pesada
-pelas cadeiras.
+Cadeiras eleitas em 2026, somadas por bancada: é o **alvo da prova** da
+camada 1, não o número que o jogo usa. A lista partido → bancada fica em
+`bussola/`. O ponto na bússola é a média dos partidos no V-Party, pesada
+pelas cadeiras. A coluna "Representa" é só um palpite para conferir: no
+jogo ela sai da camada 1.
 
 | Bancada         | Partidos (calibragem)                               |  Câmara | Senado | Bússola (eco, cost.) | Representa                                                                                |
 | --------------- | --------------------------------------------------- | ------: | -----: | -------------------- | ----------------------------------------------------------------------------------------- |
@@ -70,19 +132,7 @@ A disposição (0 a 100) é o humor da bancada com o seu governo. Ela:
 
 ## 4. O voto (base para o V1-12)
 
-Para cada bancada e cada lei, uma nota soma quatro coisas:
-
-1. **O que a lei faz aos segmentos dela** (já sai da rede: as ligações da lei
-   com os segmentos).
-2. **A distância na bússola:** a lei puxa o país para perto ou para longe do
-   ponto da bancada.
-3. **A disposição** da bancada com o governo.
-4. **As frentes:** a parte da bancada que é da frente do agro ou da
-   evangélica pesa mais o efeito da lei no agro ou nos evangélicos.
-
-A nota vira a chance de cada cadeira votar sim. Os votos saem por sorteio com
-semente (mesma semente, mesma votação), então nem toda cadeira vota igual. A
-disciplina medida (mais de 80% com o líder) calibra quanto a bancada racha.
+Está na camada 2 (seção 0.1). O V1-12 usa essa nota para a tramitação.
 
 ## 5. O seu partido
 
@@ -117,13 +167,12 @@ vêm da eleição de 2026, do V-Party e dos estudos citados.
 
 ## 9. Perguntas para você
 
-1. **As 5 bancadas** (Direita, Centrão, Centro, Centro-esquerda, Esquerda)
-   servem? Recomendo.
-2. **A composição de partida** é a eleita em 2026, que toma posse com você?
-   Recomendo (a outra opção é a de 2023 a 2026).
-3. **O seu partido:** você escolhe uma das 5 bancadas no começo? Recomendo.
-4. **As frentes** (agro e evangélica) cortando as bancadas entram já no V1-11?
+1. As **três camadas** (cadeiras saindo dos perfis, voto pela base que
+   elegeu, troca-troca no mandato), com a eleição de 2026 só como prova?
    Recomendo.
+2. **O seu partido:** você escolhe uma das 5 bancadas no começo? Recomendo.
+3. **As frentes** (agro e evangélica) saem da camada 1, como a parte de cada
+   bancada eleita por esses segmentos? Recomendo.
 
 ## Fontes
 
@@ -138,5 +187,14 @@ vêm da eleição de 2026, do V-Party e dos estudos citados.
 - Revista Pesquisa FAPESP, "Desconstruindo mitos" (Figueiredo e Limongi).
 - V-Party, V-Dem Institute (pontos dos partidos, já em
   `bussola/referencias.json`).
+- Miller e Stokes, "Constituency Influence in Congress", American Political
+  Science Review, 1963 (representação diádica).
+- Adams, Merrill e Grofman, "A Unified Theory of Party Competition",
+  Cambridge, 2005 (voto espacial probabilístico).
+- Desposato, "How Robust are Electoral Institutions? An Agent-Based Test of
+  Electoral Rules and Ideal Points", 2004 (simulação com lista aberta, como
+  no Brasil).
+- Congresso em Foco, "Um em cada quatro deputados trocou de partido na
+  janela" (abr/2026).
 - Zucco e Lauderdale, "Ideal Point Estimates of Brazilian Legislators
   (1989-2011)", LSE (método dos pontos).
