@@ -9,7 +9,7 @@
 | Índices com unidade real                       | V1-07    | `indices.md`   | Aprovado (12/out)                   |
 | Segmentos do eleitorado e perfis sintéticos    | V1-08    | `populacao.md` | Aprovado                            |
 | Grupos de pressão                              | V1-09    | `pressao.md`   | Aprovado (12/out) e implementado    |
-| Bússola política                               | V1-10    | `bussola.md`   | A fazer                             |
+| Bússola política                               | V1-10    | `bussola.md`   | Em revisão (13/out)                 |
 | Câmara e Senado                                | V1-11    | `congresso.md` | A fazer                             |
 | Capital político                               | (saiu)   | `capital.md`   | Substituído pelo Congresso (13/out) |
 | Eleição                                        | versão 2 | `eleicao.md`   | Fica para a versão 2                |

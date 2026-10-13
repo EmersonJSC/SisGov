@@ -353,6 +353,8 @@ com caminhos diferentes.
   cláusula pétrea não muda
 - Voto de cada bancada pelo que a lei faz aos segmentos que ela representa,
   pela disposição dela e pelos acordos feitos
+- Um pouco de sorte no voto: nem toda cadeira de uma bancada vota igual,
+  nem as do seu partido
 - Resultado: passa, adia (volta à pauta no turno seguinte) ou cai
 - Pedidos do Congresso como dilemas: uma bancada pede algo em troca de votos;
   aceitar ou recusar soma ou tira apoio
