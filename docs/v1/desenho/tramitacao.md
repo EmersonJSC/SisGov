@@ -56,13 +56,17 @@ disposição de partida, tem que aprovar perto disso.
   direito penal, eleições, direitos políticos e nacionalidade (art. 62,
   § 1º). Ela vale enquanto tramita; se cair, a lei volta ao que era e o
   efeito desfaz. Usar muito irrita o Congresso.
-- **A fila** (decisão do autor, 13/out): você pode mandar várias leis, mas
-  o Congresso não vota tudo de uma vez. Cada casa vota no máximo 2 projetos
-  seus por turno (valor inferido, a calibrar jogando), na ordem em que
-  chegaram. Os outros esperam na fila. Urgência e modo emergência passam a
-  lei para a frente. Medida provisória que passa de um turno sem votação
-  **tranca a fila** (art. 62, § 6º): nada mais é votado naquela casa até ela
-  ser votada.
+- **A fila** (decisões do autor, 13/out): você pode mandar várias leis, mas
+  o Congresso não vota tudo de uma vez.
+  - **Quantas por turno** depende do seu apoio: a média da sua popularidade
+    com a disposição das bancadas (pesada pelas cadeiras). Com apoio alto,
+    até 4 votações por casa no turno; com apoio baixo, 1; sem apoio
+    (abaixo de 20), o Congresso **ignora** a fila naquele turno.
+  - **A ordem** vai pela opinião pública: a lei que o eleitorado mais quer
+    (o efeito previsto dela no humor de todos os perfis) passa na frente.
+    Urgência e modo emergência somam prioridade.
+  - **Medida provisória** que passa de um turno sem votação **tranca a
+    fila** (art. 62, § 6º): ela é votada antes de tudo naquela casa.
 
 ## 3. A votação
 
@@ -132,8 +136,8 @@ aprovada, o nível passa a ser um campo só, no arquivo do país.
 1. Medida provisória: **sim** (autor, 13/out).
 2. Tempo de 2 e 4 turnos, com urgência: **sim**, e com modo emergência
    (autor, 13/out).
-3. Fila: **sim**, com até 2 votações suas por casa a cada turno (autor,
-   13/out).
+3. Fila: **sim**; quantas por turno depende da popularidade e do apoio, e
+   a ordem vai pela opinião pública (autor, 13/out).
 4. Pedidos (ministério, emendas, apoio a uma lei da bancada): **sim** (autor,
    13/out).
 
