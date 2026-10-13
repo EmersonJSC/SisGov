@@ -1,27 +1,29 @@
 /**
- * A página de jornal (pedido do autor, 11/out): chega a cada fim de turno e
- * pode ser aberta pela barra. Manchete e notícias (clicar mostra as
- * consequências), o quadro dos principais índices e as opiniões da rua, do
- * mercado e da imprensa estrangeira. O conteúdo vem de `montarJornal`.
+ * O tablet do turno (pedido do autor, 11/out; virou tablet em 13/out): chega
+ * a cada fim de turno e pode ser aberto pela barra. Cabe numa tela só: os
+ * números do país em destaque no topo, as notícias (clicar mostra as
+ * consequências) e os posts da rua, dos grupos de pressão, do mercado e de
+ * fora. O conteúdo vem de `montarJornal`.
  */
 import { useEffect, useState } from "react";
 import type {
   EdicaoDoJornal,
-  HumorDoGrupo,
   IndiceDoJornal,
   NoticiaDoJornal,
+  OpiniaoDoJornal,
 } from "./jornal";
 import { Icone } from "./Icone";
 import { ICONE_INTERFACE } from "./icones";
 import { corDaBondade } from "./intensidade";
+import { NOME_NIVEL } from "./MesaDoPresidente";
 
 /** Linha de evolução do índice desde o começo da partida. */
 function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
-  const largura = 96;
-  const altura = 28;
+  const largura = 72;
+  const altura = 22;
   if (serie.length < 2)
     return (
-      <svg className="jp-linha-grafico" width={largura} height={altura}>
+      <svg className="tb-linha" width={largura} height={altura} aria-hidden>
         <line
           x1={0}
           x2={largura}
@@ -46,12 +48,7 @@ function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
   ]);
   const [ux, uy] = pontos[pontos.length - 1];
   return (
-    <svg
-      className="jp-linha-grafico"
-      width={largura}
-      height={altura}
-      aria-hidden
-    >
+    <svg className="tb-linha" width={largura} height={altura} aria-hidden>
       <polyline
         points={pontos.map((p) => p.join(",")).join(" ")}
         fill="none"
@@ -64,87 +61,46 @@ function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
   );
 }
 
-function CartaoIndice({ indice }: { indice: IndiceDoJornal }) {
+function Numero({ indice }: { indice: IndiceDoJornal }) {
   const cor = corDaBondade(indice.bondade);
   return (
-    <li className="jp-indice">
-      <div className="jp-indice-topo">
-        <span className="jp-indice-nome">{indice.nome}</span>
-        <span className={`jp-indice-var efeito-${indice.efeito}`}>
+    <li
+      className="tb-numero"
+      title={indice.unidadeReal}
+      style={{ borderTopColor: cor }}
+    >
+      <span className="tb-numero-nome">{indice.nome}</span>
+      <strong>{indice.valor}</strong>
+      <span className="tb-numero-pe">
+        <Linha serie={indice.serie} cor={cor} />
+        <span className={`tb-variacao efeito-${indice.efeito}`}>
           {indice.variacao
             ? `${indice.sobe ? "▲" : "▼"} ${indice.variacao}`
             : "="}
         </span>
-      </div>
-      <div className="jp-indice-meio">
-        <strong>{indice.valor}</strong>
-        <Linha serie={indice.serie} cor={cor} />
-      </div>
-      {indice.unidadeReal ? (
-        <small className="jp-indice-unidade">{indice.unidadeReal}</small>
-      ) : null}
-      <div className="jp-barra" aria-hidden>
-        <span style={{ width: `${indice.t * 100}%`, background: cor }} />
-      </div>
+      </span>
     </li>
   );
 }
 
-function Humor({ grupos }: { grupos: readonly HumorDoGrupo[] }) {
-  return (
-    <ul className="jp-humor" aria-label="Satisfação dos grupos sociais">
-      {grupos.map((g) => (
-        <li key={g.id}>
-          <span className="jp-humor-nome">{g.nome}</span>
-          <span className="jp-barra jp-humor-barra">
-            <span
-              style={{
-                width: `${g.satisfacao}%`,
-                background: corDaBondade(g.satisfacao / 100),
-              }}
-            />
-          </span>
-          <span className="jp-humor-valor">
-            {Math.round(g.satisfacao)}
-            {Math.abs(g.delta) >= 0.5 ? (
-              <small
-                className={g.delta > 0 ? "efeito-melhora" : "efeito-piora"}
-              >
-                {g.delta > 0 ? " ▲" : " ▼"}
-                {Math.abs(g.delta).toFixed(0)}
-              </small>
-            ) : null}
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-const SECOES = [
-  { id: "povo", titulo: "Na rua" },
-  { id: "mercado", titulo: "Mercado" },
-  { id: "internacional", titulo: "Lá fora" },
-] as const;
-
 function Consequencias({ noticia }: { noticia: NoticiaDoJornal }) {
   if (!noticia.efeitos.length)
     return (
-      <p className="jp-sem-efeito">
+      <p className="tb-sem-efeito">
         {noticia.tipo === "dilema"
           ? "Está na sua mesa: as consequências dependem da sua resposta."
           : "Sem efeito direto nos índices."}
       </p>
     );
   return (
-    <ul className="jp-efeitos">
+    <ul className="tb-efeitos">
       {noticia.efeitos.map((e) => (
         <li key={e.nome} className={`efeito-${e.efeito}`}>
           <span aria-hidden>{e.sobe ? "▲" : "▼"}</span> {e.nome}
         </li>
       ))}
       {noticia.meses ? (
-        <li className="jp-duracao">
+        <li className="tb-duracao">
           por mais {noticia.meses} {noticia.meses === 1 ? "mês" : "meses"}
         </li>
       ) : null}
@@ -152,7 +108,7 @@ function Consequencias({ noticia }: { noticia: NoticiaDoJornal }) {
   );
 }
 
-function Materia({
+function Noticia({
   noticia,
   aberta,
   onAlternar,
@@ -163,25 +119,52 @@ function Materia({
   onAlternar: () => void;
   principal?: boolean;
 }) {
+  const rotulo =
+    noticia.tipo === "dilema"
+      ? "Na sua mesa"
+      : (NOME_NIVEL[noticia.nivel] ?? "Local");
   return (
     <article
-      className={`jp-materia nivel-${noticia.nivel}${noticia.boa ? " boa" : ""}${principal ? " principal" : ""}`}
+      className={`tb-noticia nivel-${noticia.nivel}${noticia.boa ? " boa" : ""}${principal ? " principal" : ""}`}
     >
-      <button
-        type="button"
-        className="jp-titulo-materia"
-        aria-expanded={aberta}
-        onClick={onAlternar}
-      >
-        {principal ? null : <span>{noticia.manchete}</span>}
-        <small>{aberta ? "Fechar" : "Consequências"}</small>
+      <button type="button" aria-expanded={aberta} onClick={onAlternar}>
+        <span className="tb-selo">{rotulo}</span>
+        <strong>{noticia.manchete}</strong>
+        {noticia.texto && !aberta ? (
+          <span className="tb-resumo">{noticia.texto}</span>
+        ) : null}
       </button>
       {aberta ? (
-        <div className="jp-corpo">
+        <div className="tb-corpo-noticia">
           {noticia.texto ? <p>{noticia.texto}</p> : null}
           <Consequencias noticia={noticia} />
         </div>
       ) : null}
+    </article>
+  );
+}
+
+const iniciais = (nome: string) =>
+  nome
+    .split(/\s+/)
+    .filter((p) => p.length > 2 || /^[A-ZÀ-Ú]/.test(p))
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join("");
+
+function Post({ post }: { post: OpiniaoDoJornal }) {
+  return (
+    <article className={`tb-post secao-${post.secao}`}>
+      <span className="tb-avatar" aria-hidden>
+        {iniciais(post.autor)}
+      </span>
+      <div>
+        <p className="tb-post-topo">
+          <strong>{post.autor}</strong> <span>{post.arroba}</span>
+        </p>
+        {post.quem ? <p className="tb-post-quem">{post.quem}</p> : null}
+        <p className="tb-post-texto">{post.texto}</p>
+      </div>
     </article>
   );
 }
@@ -207,92 +190,79 @@ export function PaginaDeJornal({
     window.addEventListener("keydown", tecla);
     return () => window.removeEventListener("keydown", tecla);
   }, [onFechar]);
+  const principal = edicao.principal;
 
   return (
     <div
-      className="jp-fundo"
+      className="tb-fundo"
       role="dialog"
-      aria-label="Jornal"
+      aria-label="Notícias do turno"
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onFechar();
       }}
     >
-      <div className="jp-pagina">
-        <button
-          type="button"
-          className="jp-fechar"
-          onClick={onFechar}
-          aria-label="Fechar o jornal"
-        >
-          <Icone nome={ICONE_INTERFACE.fechar} tamanho={20} />
-        </button>
-        <header className="jp-cabecalho">
-          <p className="jp-linha">
-            <span>Edição nº {numero}</span>
-            <span>{data}</span>
-            <span>Brasília</span>
-          </p>
-          <h1>Diário da República</h1>
-        </header>
+      <div className="tb-aparelho">
+        <span className="tb-camera" aria-hidden />
+        <div className="tb-tela">
+          <header className="tb-app">
+            <div>
+              <h1>Diário da República</h1>
+              <p>
+                Edição nº {numero} · {data}
+              </p>
+            </div>
+            <button
+              type="button"
+              className="tb-fechar"
+              onClick={onFechar}
+              aria-label="Fechar"
+            >
+              <Icone nome={ICONE_INTERFACE.fechar} tamanho={20} />
+            </button>
+          </header>
 
-        <section className="jp-capa">
-          <h2>{edicao.manchete}</h2>
-          {edicao.principal ? (
-            <Materia
-              noticia={edicao.principal}
-              principal
-              aberta={aberta === edicao.principal.id}
-              onAlternar={() => alternar(edicao.principal!.id)}
-            />
-          ) : null}
-        </section>
+          <section className="tb-numeros" aria-label="O país em números">
+            <ul>
+              {edicao.indices.map((i) => (
+                <Numero key={i.id} indice={i} />
+              ))}
+            </ul>
+          </section>
 
-        <div className="jp-colunas">
-          <section className="jp-noticias" aria-label="Notícias">
-            <h3>Notícias</h3>
-            {edicao.noticias.length ? (
-              edicao.noticias.map((n) => (
-                <Materia
+          <div className="tb-colunas">
+            <section className="tb-noticias" aria-label="Notícias">
+              <h2>Notícias</h2>
+              {principal ? (
+                <Noticia
+                  noticia={principal}
+                  principal
+                  aberta={aberta === principal.id}
+                  onAlternar={() => alternar(principal.id)}
+                />
+              ) : (
+                <p className="tb-manchete-calma">{edicao.manchete}</p>
+              )}
+              {edicao.noticias.map((n) => (
+                <Noticia
                   key={n.id}
                   noticia={n}
                   aberta={aberta === n.id}
                   onAlternar={() => alternar(n.id)}
                 />
-              ))
-            ) : (
-              <p className="jp-calmo">Nenhuma outra notícia no trimestre.</p>
-            )}
-          </section>
-
-          <aside className="jp-indices" aria-label="Indicadores do país">
-            <h3>O país em números</h3>
-            <ul className="jp-lista-indices">
-              {edicao.indices.map((i) => (
-                <CartaoIndice key={i.id} indice={i} />
               ))}
-            </ul>
-          </aside>
-        </div>
+              {!principal && !edicao.noticias.length ? (
+                <p className="tb-calmo">Nenhuma outra notícia no trimestre.</p>
+              ) : null}
+            </section>
 
-        <section className="jp-opiniao" aria-label="Opinião">
-          <h3>Opinião</h3>
-          <div className="jp-opiniao-colunas">
-            {SECOES.map((s) => (
-              <div key={s.id}>
-                <h4>{s.titulo}</h4>
-                {s.id === "povo" ? <Humor grupos={edicao.humor} /> : null}
-                {edicao.opinioes
-                  .filter((o) => o.secao === s.id)
-                  .map((o) => (
-                    <blockquote key={o.autor} className={`efeito-${o.tom}`}>
-                      <p>{o.texto}</p>
-                      <cite>{o.autor}</cite>
-                    </blockquote>
-                  ))}
-              </div>
-            ))}
+            <section className="tb-rede" aria-label="O que dizem na rede">
+              <h2>Na rede</h2>
+              {edicao.opinioes.map((o) => (
+                <Post key={o.arroba} post={o} />
+              ))}
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

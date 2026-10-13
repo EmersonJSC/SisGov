@@ -1,7 +1,7 @@
 /**
- * A página de jornal (pedido do autor, 11/out): o que aconteceu no turno, os
- * principais índices do país e o que dizem as pessoas, o mercado e a
- * imprensa estrangeira. Funções puras sobre a `VisaoPartida`: tudo é lido
+ * O tablet do turno (pedido do autor, 11/out; virou tablet em 13/out): o que
+ * aconteceu no turno, os principais índices do país e os posts das pessoas,
+ * dos grupos de pressão, do mercado e da imprensa estrangeira. Funções puras sobre a `VisaoPartida`: tudo é lido
  * da rede, nada é inventado fora dela; só o texto é da tela.
  */
 import type {
@@ -40,15 +40,6 @@ export type IndiceDoJornal = Readonly<{
   serie: readonly number[];
 }>;
 
-/** Um grupo social no gráfico de barras do humor da rua. */
-export type HumorDoGrupo = Readonly<{
-  id: string;
-  nome: string;
-  satisfacao: number;
-  /** Mudança no turno, em pontos. */
-  delta: number;
-}>;
-
 /** Valores das bolhas num turno, para as linhas de evolução do jornal. */
 export type FotoDoTurno = ReadonlyMap<string, number>;
 
@@ -73,9 +64,15 @@ export type NoticiaDoJornal = Readonly<{
   meses?: number;
 }>;
 
+/** Um post na rede: quem fala, de onde e o quê. */
 export type OpiniaoDoJornal = Readonly<{
-  secao: "povo" | "mercado" | "internacional";
+  secao: "povo" | "pressao" | "mercado" | "internacional";
+  /** Nome de quem posta. */
   autor: string;
+  /** "@cida.diarista". */
+  arroba: string;
+  /** Quem é: "58, diarista em Recife · Pobres, satisfação 53". */
+  quem: string;
   texto: string;
   tom: Efeito;
 }>;
@@ -87,9 +84,8 @@ export type EdicaoDoJornal = Readonly<{
   /** As outras notícias, da maior para a menor. */
   noticias: readonly NoticiaDoJornal[];
   indices: readonly IndiceDoJornal[];
+  /** Posts: a rua, os grupos de pressão, o mercado e quem está fora. */
   opinioes: readonly OpiniaoDoJornal[];
-  /** Todos os grupos, do mais ao menos satisfeito. */
-  humor: readonly HumorDoGrupo[];
 }>;
 
 const fmt = (v: number, casas = 1) =>
@@ -218,25 +214,120 @@ function indices(
   });
 }
 
-/** Quem fala por cada grupo social (personagens de rua, não pessoas reais). */
-const VOZ_DO_GRUPO: Readonly<Record<string, string>> = {
-  pobres: "Dona Cida, 58, diarista em Recife",
-  trabalhadores: "Marcos, 41, metalúrgico no ABC",
-  classe_media: "Patrícia, 45, professora em Curitiba",
-  jovens: "Lucas, 22, entregador de aplicativo em São Paulo",
-  aposentados: "Seu Antônio, 71, aposentado em Belo Horizonte",
-  servidores: "Renata, 39, enfermeira do SUS em Brasília",
-  pequenos_negocios: "Jorge, 50, dono de padaria em Porto Alegre",
-  agro: "Valdir, 63, produtor de soja em Sorriso (MT)",
-  empresarios: "Helena, 55, presidente de uma rede de varejo",
-  progressistas: "Bianca, 29, ativista no Rio de Janeiro",
-  conservadores: "Pastor Elias, 52, de Goiânia",
+/** Quem posta por cada segmento (personagens de rua, não pessoas reais). */
+const VOZ_DO_GRUPO: Readonly<
+  Record<string, Readonly<{ nome: string; arroba: string; quem: string }>>
+> = {
+  pobres: {
+    nome: "Dona Cida",
+    arroba: "cida.diarista",
+    quem: "58, diarista em Recife",
+  },
+  trabalhadores: {
+    nome: "Marcos",
+    arroba: "marcos_metalurgico",
+    quem: "41, metalúrgico no ABC",
+  },
+  informais: {
+    nome: "Wesley",
+    arroba: "wesley_entregas",
+    quem: "24, entregador de aplicativo em São Paulo",
+  },
+  classe_media: {
+    nome: "Patrícia",
+    arroba: "prof.patricia",
+    quem: "45, professora em Curitiba",
+  },
+  ricos: {
+    nome: "Fernando",
+    arroba: "fernando.invest",
+    quem: "60, investidor em São Paulo",
+  },
+  jovens: {
+    nome: "Lucas",
+    arroba: "lucas22",
+    quem: "22, estudante em Campinas",
+  },
+  familias_com_filhos: {
+    nome: "Juliana",
+    arroba: "ju.mae2",
+    quem: "34, mãe de dois em Fortaleza",
+  },
+  aposentados: {
+    nome: "Seu Antônio",
+    arroba: "seuantonio71",
+    quem: "71, aposentado em Belo Horizonte",
+  },
+  servidores: {
+    nome: "Renata",
+    arroba: "renata.enf",
+    quem: "39, enfermeira da rede pública em Brasília",
+  },
+  pequenos_negocios: {
+    nome: "Jorge",
+    arroba: "padariadojorge",
+    quem: "50, dono de padaria em Porto Alegre",
+  },
+  agro: {
+    nome: "Valdir",
+    arroba: "valdir.soja",
+    quem: "63, produtor de soja em Sorriso (MT)",
+  },
+  agricultura_familiar: {
+    nome: "Seu Zé",
+    arroba: "ze.do.sitio",
+    quem: "55, agricultor no sertão da Paraíba",
+  },
+  empresarios: {
+    nome: "Helena",
+    arroba: "helena_varejo",
+    quem: "55, presidente de uma rede de varejo",
+  },
+  progressistas: {
+    nome: "Bianca",
+    arroba: "bia.ativista",
+    quem: "29, ativista no Rio de Janeiro",
+  },
+  conservadores: {
+    nome: "Rogério",
+    arroba: "rogerio.goiania",
+    quem: "57, corretor de imóveis em Goiânia",
+  },
+  evangelicos: {
+    nome: "Pastor Elias",
+    arroba: "pr.elias",
+    quem: "52, pastor em Manaus",
+  },
+  catolicos: {
+    nome: "Dona Lourdes",
+    arroba: "lourdes.paroquia",
+    quem: "66, catequista em Salvador",
+  },
+  periferias: {
+    nome: "Thaís",
+    arroba: "thais.zl",
+    quem: "31, moradora da zona leste de São Paulo",
+  },
+  interior: {
+    nome: "Cláudio",
+    arroba: "claudio.mc",
+    quem: "48, comerciante em Montes Claros (MG)",
+  },
+  ambientalistas: {
+    nome: "Iara",
+    arroba: "iara.floresta",
+    quem: "36, bióloga em Belém",
+  },
 };
 
 const chaveDoGrupo = (id: string) => id.replace(/^grupo[_-]/, "");
 
 function falaDoGrupo(g: VisaoGrupo, delta: number): OpiniaoDoJornal {
-  const autor = VOZ_DO_GRUPO[chaveDoGrupo(g.id)] ?? g.nome;
+  const voz = VOZ_DO_GRUPO[chaveDoGrupo(g.id)] ?? {
+    nome: g.nome,
+    arroba: chaveDoGrupo(g.id),
+    quem: "",
+  };
   const gosta = g.gosta[0]?.nome.toLowerCase();
   const odeia = g.odeia[0]?.nome.toLowerCase();
   const s = g.satisfacao;
@@ -259,8 +350,12 @@ function falaDoGrupo(g: VisaoGrupo, delta: number): OpiniaoDoJornal {
       : "Estamos abandonados. Ninguém olha para nós.";
   return {
     secao: "povo",
-    autor: `${autor} (${g.nome.toLowerCase()}, satisfação ${Math.round(s)})`,
-    texto: `“${texto}”`,
+    autor: voz.nome,
+    arroba: `@${voz.arroba}`,
+    quem: [voz.quem, `${g.nome}, satisfação ${Math.round(s)}`]
+      .filter(Boolean)
+      .join(" · "),
+    texto,
     tom:
       s >= 60 || delta >= 1.5
         ? "melhora"
@@ -336,14 +431,18 @@ function mercado(
   }
   saida.push({
     secao: "mercado",
-    autor: "Economista-chefe de um grande banco",
+    autor: "Economista-chefe",
+    arroba: "@economista.chefe",
+    quem: "de um grande banco",
     texto,
     tom,
   });
   if (inflacao !== undefined && juros !== undefined)
     saida.push({
       secao: "mercado",
-      autor: "Gestora de fundos em São Paulo",
+      autor: "Carla Mendes",
+      arroba: "@carla.fundos",
+      quem: "gestora de fundos em São Paulo",
       texto:
         inflacao >= 6
           ? `Com a inflação em ${fmt(inflacao)}%, o Banco Central não tem como aliviar: juros em ${fmt(juros)}% por um bom tempo.`
@@ -385,11 +484,39 @@ function internacional(
   return [
     {
       secao: "internacional",
-      autor: "Correspondente de um jornal europeu",
+      autor: "Correspondente estrangeiro",
+      arroba: "@correspondente",
+      quem: "de um jornal europeu",
       texto,
       tom,
     },
   ];
+}
+
+/**
+ * Os grupos de pressão mais altos (mobilizados ou mais) postam (V1-09). O
+ * crime não posta: aparece pelas ações, nas notícias.
+ */
+function pressao(visao: VisaoPartida): OpiniaoDoJornal[] {
+  return [...(visao.pressao?.grupos ?? [])]
+    .filter((g) => g.nivel >= 2 && g.secao !== "crime")
+    .sort((a, b) => b.nivel - a.nivel || b.pressao - a.pressao)
+    .slice(0, 2)
+    .map((g) => ({
+      secao: "pressao",
+      autor: g.nome,
+      arroba: `@${g.id.replace(/_/g, "")}`,
+      quem: g.nomeDoNivel.toLowerCase(),
+      texto: [
+        g.nivel >= 3
+          ? "Passou do limite. Não vamos parar."
+          : "Estamos mobilizados.",
+        g.motivo ? `O motivo: ${g.motivo}.` : "",
+      ]
+        .filter(Boolean)
+        .join(" "),
+      tom: "piora" as const,
+    }));
 }
 
 export function montarJornal(
@@ -401,7 +528,6 @@ export function montarJornal(
 ): EdicaoDoJornal {
   const lista = noticias(visao, relatorio);
   const quadro = indices(visao, anterior, historico);
-  const antes = new Map((anterior?.grupos ?? []).map((g) => [g.id, g]));
   // manchete: a maior notícia; sem notícia, o índice que mais mexeu
   const maior = [...quadro]
     .filter((i) => i.variacao)
@@ -420,14 +546,9 @@ export function montarJornal(
     indices: quadro,
     opinioes: [
       ...povo(visao, anterior),
+      ...pressao(visao),
       ...mercado(visao, anterior),
       ...internacional(visao, anterior),
     ],
-    humor: visao.grupos.map((g) => ({
-      id: g.id,
-      nome: g.nome,
-      satisfacao: g.satisfacao,
-      delta: g.satisfacao - (antes.get(g.id)?.satisfacao ?? g.satisfacao),
-    })),
   };
 }

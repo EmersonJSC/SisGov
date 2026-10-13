@@ -1,6 +1,7 @@
 /**
- * A página de jornal (11/out): índices com variação, notícias com as
- * consequências e opiniões da rua, do mercado e de fora, tudo lido da partida.
+ * O tablet do turno (11/out; tablet em 13/out): índices com variação,
+ * notícias com as consequências e posts da rua, dos grupos de pressão, do
+ * mercado e de fora, tudo lido da partida.
  */
 import { describe, expect, it } from "vitest";
 import {
@@ -61,7 +62,12 @@ describe("jornal", () => {
     // sem edição anterior, nada "mudou"
     expect(edicao.indices.every((i) => i.variacao === "")).toBe(true);
     const secoes = new Set(edicao.opinioes.map((o) => o.secao));
-    expect([...secoes].sort()).toEqual(["internacional", "mercado", "povo"]);
+    for (const s of ["internacional", "mercado", "povo"])
+      expect(secoes).toContain(s);
+    // posts: cada um com nome e @ próprio (a chave da lista)
+    const arrobas = edicao.opinioes.map((o) => o.arroba);
+    expect(new Set(arrobas).size).toBe(arrobas.length);
+    expect(arrobas.every((a) => /^@[\w.]+$/.test(a))).toBe(true);
   });
 
   it("depois de alguns turnos: variação dos índices e consequências das notícias", () => {
@@ -85,7 +91,6 @@ describe("jornal", () => {
         expect(i.t).toBeLessThanOrEqual(1);
         expect(i.serie).toHaveLength(t + 2);
       }
-      expect(edicao.humor.length).toBe(verPartida(atual).grupos.length);
       if (edicao.indices.some((i) => i.variacao)) comVariacao = true;
       const todas = [
         ...(edicao.principal ? [edicao.principal] : []),
