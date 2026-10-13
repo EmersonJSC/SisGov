@@ -41,6 +41,11 @@ export type {
   VisaoReferencia,
 } from "./partida/tipos";
 export { criarPartida } from "./partida/criar";
+export {
+  VERSAO_DO_SALVO,
+  carregarPartida,
+  salvarPartida,
+} from "./partida/salvar";
 export { mudarLei, leisQueCaem, revogarLei } from "./partida/leis";
 export { MAXIMO_TRIMESTRES_PREVIA, preverLei } from "./partida/previsao";
 export { responderDilema, preverDilema, encerrarTurno } from "./partida/turno";

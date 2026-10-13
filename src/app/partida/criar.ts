@@ -4,6 +4,17 @@ import { loadDistributedScenario } from "../../game/pais/loadScenarioPackage";
 import type { Resultado, ModoPartida, Partida } from "./tipos";
 import { falha } from "./comum";
 
+/** O conteúdo do país, pronto para a partida (também ao carregar, V1-33). */
+export function carregarConteudo(
+  pais: string,
+): Resultado<Pick<Partida, "content" | "graph">> {
+  const loaded = loadDistributedScenario(`paises/${pais}/pais.json`);
+  if (!loaded.ok) return falha(loaded.diagnostics);
+  const prepared = prepareMonthlyContent(loaded.value.definition);
+  if (!prepared.ok) return falha(prepared.diagnostics);
+  return { ok: true, value: prepared.value };
+}
+
 export function criarPartida(
   opcoes: Readonly<{
     pais?: string;
@@ -13,13 +24,9 @@ export function criarPartida(
     ocorrencias?: boolean;
   }> = {},
 ): Resultado<Partida> {
-  const loaded = loadDistributedScenario(
-    `paises/${opcoes.pais ?? "brasil"}/pais.json`,
-  );
-  if (!loaded.ok) return falha(loaded.diagnostics);
-  const prepared = prepareMonthlyContent(loaded.value.definition);
-  if (!prepared.ok) return falha(prepared.diagnostics);
-  const { content, graph } = prepared.value;
+  const conteudo = carregarConteudo(opcoes.pais ?? "brasil");
+  if (!conteudo.ok) return conteudo;
+  const { content, graph } = conteudo.value;
   const game = createGame("partida", content, graph, {
     randomSeed: opcoes.semente ?? 1,
     occurrences: opcoes.ocorrencias ?? true,

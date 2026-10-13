@@ -758,6 +758,8 @@ export const ICONE_INTERFACE: Readonly<Record<string, string>> = {
   busca: "magnify",
   jornal: "newspaper-variant-outline",
   congresso: "bank",
+  partida: "export",
+  abrirArquivo: "import",
   economia: "cash-multiple",
   empresas: "factory",
   trabalho: "briefcase-outline",

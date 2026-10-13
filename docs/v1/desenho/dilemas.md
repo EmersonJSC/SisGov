@@ -1,6 +1,6 @@
 # Dilemas com lados e notificações no tablet (V1-13)
 
-**Status:** PROPOSTA (13/out), esperando o autor.
+**Status:** APROVADO (13/out).
 
 ## 0. Resumo
 

@@ -48,6 +48,7 @@ import {
   type Retangulo,
 } from "./Documentos";
 import { JanelaBolha, JanelaLei, abrirJanela, type Janela } from "./Janelas";
+import { JanelaPartida, type PartidaCarregada } from "./JanelaPartida";
 import { efeitoDe, indexarRelacoes, ligacoesDeFundo } from "./relacoes";
 import { COR_EFEITO } from "./tema";
 import "./mapa.css";
@@ -328,6 +329,7 @@ export function TelaPrincipal() {
   const [mesaAberta, setMesaAberta] = useState(true);
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
+  const [salvarAberto, setSalvarAberto] = useState(false);
   // tablet: false fechado; senão, o app que abre (V1-10)
   const [tablet, setTablet] = useState<false | AppDoTablet>(false);
   const jornalAberto = tablet !== false;
@@ -503,6 +505,27 @@ export function TelaPrincipal() {
     if (!r.ok) return r.erros.join(" ");
     setPartida(r.value);
     return null;
+  };
+
+  // V1-33: a partida carregada substitui a atual; a tela recomeça limpa
+  const carregar = ({ partida: nova, anexos }: PartidaCarregada) => {
+    setPartida(nova);
+    setHistorico(
+      Array.isArray(anexos.historico)
+        ? (anexos.historico as readonly FotoDoTurno[])
+        : [],
+    );
+    setVisaoAnterior(null);
+    setRelatorio(null);
+    setAviso(null);
+    setErroTurno(null);
+    setVariacoes(new Map());
+    setVariacoesVoce(new Map());
+    setPulsos(new Set());
+    setJanelas([]);
+    setSalvarAberto(false);
+    setTablet(false);
+    setMesaAberta(true);
   };
 
   // V1-12: aceitar ou recusar o pedido de uma bancada
@@ -725,6 +748,15 @@ export function TelaPrincipal() {
         </button>
         <button
           type="button"
+          className="botao-busca"
+          onClick={() => setSalvarAberto(true)}
+          title="Salvar ou carregar a partida"
+        >
+          <Icone nome={ICONE_INTERFACE.partida} tamanho={22} />
+          <span>Salvar</span>
+        </button>
+        <button
+          type="button"
           className="botao-busca botao-tema"
           onClick={alternarTema}
           aria-label={tema === "noturno" ? "Modo claro" : "Modo noturno"}
@@ -759,6 +791,16 @@ export function TelaPrincipal() {
           nomeDaLei={(id) => visao.leis.find((l) => l.id === id)?.nome ?? id}
           onResponderPedido={responderAoPedido}
           appInicial={tablet || "jornal"}
+        />
+      ) : null}
+
+      {salvarAberto && partida ? (
+        <JanelaPartida
+          partida={partida}
+          turno={trimestre(visao.turno)}
+          anexos={{ historico }}
+          onCarregar={carregar}
+          onFechar={() => setSalvarAberto(false)}
         />
       ) : null}
 

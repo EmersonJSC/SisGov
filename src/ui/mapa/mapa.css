@@ -4814,3 +4814,77 @@ button {
       "capacidade";
   }
 }
+
+/* ------------------------------------------- salvar e carregar (V1-33) -- */
+
+.salvar-janela {
+  display: grid;
+  gap: 8px;
+  width: min(440px, 100%);
+  padding: 14px 18px 18px;
+  border-radius: 14px;
+  background: light-dark(#fff, #262626);
+  color: light-dark(#1b2230, #e0e6f0);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.salvar-janela header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.salvar-janela h2 {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.3rem;
+}
+
+.salvar-janela h3 {
+  margin: 6px 0 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.salvar-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.salvar-linha button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border: 1px solid light-dark(#c9d2df, #4a4f57);
+  border-radius: 999px;
+  background: light-dark(#eef1f5, #1d1f22);
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.salvar-linha button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.salvar-nota {
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.82rem;
+}
+
+.salvar-aviso {
+  margin: 4px 0 0;
+  color: light-dark(#1f7a52, #71c699);
+  font-weight: 700;
+}
+
+.salvar-aviso.erro {
+  color: light-dark(#b23345, #fd8a91);
+}
