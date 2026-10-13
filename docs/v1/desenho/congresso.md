@@ -183,6 +183,30 @@ ou a Rede de influenciadores de direita se mobilizam, a Extrema direita
 endurece; quando as Frentes populares de esquerda ou os Movimentos por terra
 se mobilizam, a Extrema esquerda endurece.
 
+## 5.2 Frentes: voto mais influência (decisão do autor, 13/out)
+
+Uma frente (agro, evangélica, armas, sindical…) é a parte de cada bancada
+que vota junto com um grupo. O tamanho dela vem de duas coisas:
+
+1. **Voto:** a fatia do eleitor da bancada que é daquele segmento (camada 1).
+   Se 30% dos votos do Centro vieram do agro, 30% do Centro já pende para o
+   agro.
+2. **Influência:** o dinheiro e a mídia do grupo de pressão ligado
+   (`pressao.md` 3.2, mais o patrocínio). Influência alta puxa mais cadeiras
+   para a frente, além das que o voto deu. É o lobby, o financiamento de
+   campanha e as emendas: o agro no Brasil pesa mais no Congresso do que o
+   tamanho do seu eleitorado.
+
+**A influência muda com as leis.** Hoje os recursos de cada grupo são fixos
+(1 a 3). Passam a andar: lei que beneficia o grupo aumenta o dinheiro dele
+com o tempo; lei que o prejudica diminui. Exemplo: uma reforma agrária tira
+terra e renda do agro, a influência do agro cai e a frente do agro perde
+força nas votações seguintes. Um imposto sobre apostas enfraquece as casas
+de apostas; liberar armas fortalece a indústria de armas.
+
+Isso vira um minijogo de ordem: enfraquecer um grupo antes de votar a lei que
+ele bloquearia. O custo é a reação do grupo (pressão) no meio do caminho.
+
 ## 6. O que o jogador vê (decisão do autor, 13/out)
 
 O Congresso **não aparece fisicamente** no jogo: não tem painel nem
@@ -209,7 +233,8 @@ vêm da eleição de 2026, do V-Party e dos estudos citados.
 1. Três camadas, com a eleição de 2026 só como prova: **sim**.
 2. Escolher bancada: **nunca**. O seu partido nasce pequeno e anda com as
    suas leis (seção 5).
-3. Frentes: explicadas de novo ao autor, aguardando.
+3. Frentes: **sim**, com voto e influência, e a influência muda com as
+   leis (seção 5.2).
 4. Extrema direita e extrema esquerda, com grupos de pressão ligados: **sim**
    (seção 5.1).
 
