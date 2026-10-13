@@ -30,7 +30,8 @@
       "duracaoMeses": 6,
       "consequencias": [
         "juiz-solta-lider--recorrer--grupo-conservadores",
-        "juiz-solta-lider--recorrer--forca-instituicoes"
+        "juiz-solta-lider--recorrer--forca-instituicoes",
+        "juiz-solta-lider--recorrer--impunidade"
       ]
     },
     {
@@ -66,6 +67,7 @@
     "juiz-solta-lider--atacar-juiz--forca-instituicoes",
     "juiz-solta-lider--atacar-juiz--polarizacao",
     "juiz-solta-lider--respeitar--impunidade",
-    "juiz-solta-lider--respeitar--grupo-conservadores"
+    "juiz-solta-lider--respeitar--grupo-conservadores",
+    "juiz-solta-lider--recorrer--impunidade"
   ]
 }

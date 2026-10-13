@@ -34,7 +34,8 @@
       "controle": "ocorrencia_conferencia_do_clima__modesta",
       "duracaoMeses": 6,
       "consequencias": [
-        "conferencia-do-clima--modesta--reputacao-internacional"
+        "conferencia-do-clima--modesta--reputacao-internacional",
+        "conferencia-do-clima--modesta--grupo-progressistas"
       ]
     },
     {
@@ -58,6 +59,7 @@
     "conferencia-do-clima--modesta--reputacao-internacional",
     "conferencia-do-clima--boicotar--reputacao-internacional",
     "conferencia-do-clima--boicotar--grupo-agro",
-    "conferencia-do-clima--boicotar--tensao-internacional"
+    "conferencia-do-clima--boicotar--tensao-internacional",
+    "conferencia-do-clima--modesta--grupo-progressistas"
   ]
 }

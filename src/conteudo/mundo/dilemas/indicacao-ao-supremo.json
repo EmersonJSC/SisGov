@@ -34,7 +34,8 @@
       "duracaoMeses": 24,
       "consequencias": [
         "indicacao-ao-supremo--tecnico--forca-instituicoes",
-        "indicacao-ao-supremo--tecnico--confianca-instituicoes"
+        "indicacao-ao-supremo--tecnico--confianca-instituicoes",
+        "indicacao-ao-supremo--tecnico--base-congresso"
       ]
     },
     {
@@ -56,6 +57,7 @@
     "indicacao-ao-supremo--tecnico--forca-instituicoes",
     "indicacao-ao-supremo--tecnico--confianca-instituicoes",
     "indicacao-ao-supremo--centrao--base-congresso",
-    "indicacao-ao-supremo--centrao--forca-instituicoes"
+    "indicacao-ao-supremo--centrao--forca-instituicoes",
+    "indicacao-ao-supremo--tecnico--base-congresso"
   ]
 }

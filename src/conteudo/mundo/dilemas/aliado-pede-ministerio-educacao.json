@@ -33,7 +33,8 @@
       "controle": "ocorrencia_aliado_pede_ministerio_educacao__outra",
       "duracaoMeses": 12,
       "consequencias": [
-        "aliado-pede-ministerio-educacao--outra--base-congresso"
+        "aliado-pede-ministerio-educacao--outra--base-congresso",
+        "aliado-pede-ministerio-educacao--outra--margem-manobra-governo"
       ]
     },
     {
@@ -54,6 +55,7 @@
     "aliado-pede-ministerio-educacao--ceder--grupo-progressistas",
     "aliado-pede-ministerio-educacao--outra--base-congresso",
     "aliado-pede-ministerio-educacao--recusar--base-congresso",
-    "aliado-pede-ministerio-educacao--recusar--grupo-classe-media"
+    "aliado-pede-ministerio-educacao--recusar--grupo-classe-media",
+    "aliado-pede-ministerio-educacao--outra--margem-manobra-governo"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "id": "aliado-pede-ministerio-saude--outra--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_aliado_pede_ministerio_saude__outra",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

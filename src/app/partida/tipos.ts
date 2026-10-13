@@ -316,6 +316,12 @@ export type VisaoOpcaoDilema = Readonly<{
   leis: readonly Readonly<{ id: string; nome: string; para: string }>[];
   /** O que o piloto automático escolheria (não fazer nada). */
   padrao: boolean;
+  /**
+   * Lado da opção na bússola (V1-13): [economia, costumes], de −2 a +2
+   * (− Estado e liberdade, + mercado e autoridade). Ausente se o dilema
+   * ainda não tem lado.
+   */
+  lado?: readonly [number, number];
 }>;
 
 export type CamposOcorrencia = Readonly<{

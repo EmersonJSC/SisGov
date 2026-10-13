@@ -14,6 +14,7 @@ import type {
 } from "./tipos";
 import { preencher, registroDeOcorrencia } from "./turno";
 import { efeitosDoNo } from "./visao";
+import { bussolaDoMundo } from "../../game/bussola";
 
 function camposDe(
   o: OccurrenceFile,
@@ -62,6 +63,9 @@ export function ocorrenciasDaPartida(partida: Partida): VisaoOcorrencias {
             ...(disponivel ? {} : { motivo: op.motivoRequer }),
             duracaoMeses: op.duracaoMeses,
             efeitos: efeitosDoNo(content, op.controle),
+            ...(bussolaDoMundo.dilemas?.[o.id]?.opcoes[op.id]
+              ? { lado: bussolaDoMundo.dilemas[o.id].opcoes[op.id] }
+              : {}),
             leis: (op.leis ?? []).map((l) => {
               const lei = nomeDaLei.get(l.lei);
               const opcao = lei?.controle.opcoes?.find(

@@ -6,7 +6,8 @@
     "emenda-constitucional": 3,
     "clausula-petrea": 3,
     "lei-ordinaria": 2,
-    "outras": 1
+    "outras": 1,
+    "dilema": 1
   },
   "fatorDoRumo": { "economia": 4, "costumes": 1.5 },
   "temas": {
@@ -1288,6 +1289,842 @@
         "gestao-terceirizada": [0.5, 0],
         "voucher-focalizado": [1, 0],
         "voucher-universal": [2, 0]
+      }
+    }
+  },
+  "dilemas": {
+    "aliado-pede-ministerio-educacao": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "ceder": [0, 0],
+        "outra": [0, 0],
+        "recusar": [0, 0]
+      }
+    },
+    "aliado-pede-ministerio-infraestrutura": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "ceder": [0, 0],
+        "outra": [0, 0],
+        "recusar": [0, 0]
+      }
+    },
+    "aliado-pede-ministerio-saude": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "ceder": [0, 0],
+        "outra": [0, 0],
+        "recusar": [0, 0]
+      }
+    },
+    "aplicativos-ameacam-sair": {
+      "manifesto": ["per701", "per403", "per401"],
+      "porque": "Manter o vínculo de emprego é regulação a favor do trabalhador; a categoria própria cede ao modelo das plataformas.",
+      "opcoes": {
+        "manter": [-1.5, 0],
+        "transicao": [-0.5, 0],
+        "recuar": [0.5, 0]
+      }
+    },
+    "aposentados-protestam": {
+      "manifesto": ["per504", "per505", "per414"],
+      "porque": "Manter a idade mínima é contenção do Estado de bem-estar; recuar é expandi-lo.",
+      "opcoes": {
+        "manter": [1, 0],
+        "transicao": [0, 0],
+        "recuar": [-1, 0]
+      }
+    },
+    "armas-flexibilizar": {
+      "manifesto": ["per605", "per603"],
+      "porque": "Mesmo sentido da lei de armas: facilitar o porte é lei e ordem pela mão do cidadão e moral tradicional.",
+      "opcoes": {
+        "flexibilizar": [1, 1.5],
+        "manter": [0, 0]
+      }
+    },
+    "asilo-a-opositor": {
+      "manifesto": ["per201", "per601"],
+      "porque": "Conceder asilo é defesa de direitos humanos acima da relação entre Estados; entregar é não interferir.",
+      "opcoes": {
+        "conceder": [0, -1],
+        "negociar": [0, -0.5],
+        "entregar": [0, 1]
+      }
+    },
+    "banco-central-pressiona": {
+      "manifesto": ["per414", "per409", "per305"],
+      "porque": "Cortar gastos é ortodoxia; atacar o Banco Central é gasto ativo e mais poder político sobre a moeda.",
+      "opcoes": {
+        "atacar": [-1, 0.5],
+        "cortar-gastos": [1.5, 0],
+        "silencio": [0, 0]
+      }
+    },
+    "base-militar-estrangeira": {
+      "manifesto": ["per104", "per105", "per601"],
+      "porque": "Aceitar a base é forças armadas fortes com alinhamento externo; recusar é soberania. A esquerda e a direita nacionalistas se juntam no não.",
+      "opcoes": {
+        "aceitar": [0.5, 1],
+        "cooperacao": [0, 0.5],
+        "recusar": [0, 0]
+      }
+    },
+    "campanha-de-vacinacao": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Mesmo sentido da lei da vacinação: exigir é autoridade do Estado; deixar cada um decidir é liberdade individual.",
+      "opcoes": {
+        "obrigar": [-0.5, 1],
+        "campanha": [0, 0],
+        "liberdade": [0.5, -1]
+      }
+    },
+    "censurar-imprensa": {
+      "manifesto": ["per201", "per202", "per305"],
+      "porque": "Processar jornalistas e cortar verba de quem critica é autoridade contra liberdade de imprensa.",
+      "opcoes": {
+        "responder": [0, -0.5],
+        "cortar-publicidade": [0, 1],
+        "processar": [0, 2]
+      }
+    },
+    "comida-cara": {
+      "manifesto": ["per407", "per406", "per412", "per401"],
+      "porque": "Zerar tarifas é comércio aberto; estoques e tabelamento são o Estado no preço, com o tabelamento no extremo.",
+      "opcoes": {
+        "zerar-tarifas": [1, 0],
+        "estoques": [-0.5, 0],
+        "tabelar": [-2, 0.5],
+        "esperar": [1, 0]
+      }
+    },
+    "compatriota-no-corredor-da-morte": {
+      "manifesto": ["per201", "per601"],
+      "porque": "Pedir clemência é direitos humanos; respeitar a pena de lá é aceitar a punição máxima.",
+      "opcoes": {
+        "pressionar": [0, -1],
+        "carta": [0, -0.5],
+        "nada": [0, 0.5]
+      }
+    },
+    "concessao-de-rodovias": {
+      "manifesto": ["per401", "per413"],
+      "porque": "Conceder é mercado na infraestrutura; recuperar com dinheiro público é Estado.",
+      "opcoes": {
+        "conceder": [1.5, 0],
+        "obra-publica": [-1, 0],
+        "manter": [0, 0]
+      }
+    },
+    "conferencia-do-clima": {
+      "manifesto": ["per501", "per601"],
+      "porque": "Meta ambiciosa é proteção ambiental com regra; não assinar é soberania sobre a produção.",
+      "opcoes": {
+        "ambiciosa": [-1, 0],
+        "modesta": [0, 0],
+        "boicotar": [1, 0.5]
+      }
+    },
+    "crise-da-divida": {
+      "manifesto": ["per414", "per409", "per412"],
+      "porque": "Socorro com teto de gastos é ortodoxia; imprimir dinheiro e moratória são o Estado acima do mercado de crédito.",
+      "opcoes": {
+        "socorro-externo": [2, 0],
+        "moratoria": [-1.5, 0],
+        "imprimir-dinheiro": [-2, 0],
+        "empurrar": [0, 0]
+      }
+    },
+    "crise-na-fronteira": {
+      "manifesto": ["per201", "per601", "per608"],
+      "porque": "Mesmo sentido da lei de refugiados: acolher é direitos humanos; fechar é modo de vida nacional e controle.",
+      "opcoes": {
+        "acolher": [-0.5, -1.5],
+        "triagem": [0, 0.5],
+        "fechar": [0, 2],
+        "pedir-ajuda": [0, -0.5]
+      }
+    },
+    "denuncia-de-tortura": {
+      "manifesto": ["per201", "per605"],
+      "porque": "Intervir no presídio é direitos humanos acima da ordem; contestar o relatório é defender a disciplina.",
+      "opcoes": {
+        "intervir": [-0.5, -1],
+        "investigar": [0, -0.5],
+        "negar": [0, 1.5]
+      }
+    },
+    "depois-do-golpe": {
+      "manifesto": ["per202", "per104", "per605"],
+      "porque": "Punir golpistas é defesa da democracia pela lei; anistia é pacificação que poupa a farda.",
+      "opcoes": {
+        "punir": [0, -1],
+        "pacificar": [0, 1]
+      }
+    },
+    "emendas-secretas": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "aceitar": [0, 0],
+        "transparencia": [0, 0],
+        "recusar": [0, 0]
+      }
+    },
+    "empresarios-ameacam-sair": {
+      "manifesto": ["per402", "per412", "per503"],
+      "porque": "Incentivo por investimento é a favor da empresa; taxar a saída é controle de capital.",
+      "opcoes": {
+        "negociar": [1, 0],
+        "endurecer": [-1.5, 0],
+        "ignorar": [0, 0]
+      }
+    },
+    "entregadores-param": {
+      "manifesto": ["per701", "per403", "per401"],
+      "porque": "Mesmo sentido da lei do trabalho por aplicativo: piso é regulação; ignorar é deixar o mercado decidir.",
+      "opcoes": {
+        "regular": [-0.5, 0],
+        "dialogo": [0.5, 0],
+        "ignorar": [1.5, 0]
+      }
+    },
+    "escandalo-do-ministro": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "proteger": [0, 0],
+        "demitir-investigar": [0, 0],
+        "demitir-silencio": [0, 0]
+      }
+    },
+    "escandalo-maior": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "entregar": [0, 0],
+        "resistir": [0, 0]
+      }
+    },
+    "escandalo-tregua": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "assumir": [0, 0],
+        "demitir": [0, 0],
+        "negar": [0, 0]
+      }
+    },
+    "escolher-um-lado-na-guerra-comercial": {
+      "manifesto": ["per407", "per406", "per601"],
+      "porque": "Fechar o acordo é abrir mercado com um lado; ficar neutro é proteger a autonomia comercial.",
+      "opcoes": {
+        "aliar": [1, 0],
+        "neutro": [-0.5, 0],
+        "aproveitar": [0.5, 0]
+      }
+    },
+    "estrangeiro-quer-comprar-estatal": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Mesmo sentido da lei das estatais: vender é mercado; recusar é Estado empresário.",
+      "opcoes": {
+        "vender": [1.5, 0],
+        "golden-share": [0.5, 0],
+        "recusar": [-1, 0]
+      }
+    },
+    "fechar-hospitais-psiquiatricos": {
+      "manifesto": ["per504", "per201", "per305"],
+      "porque": "Mesmo sentido da lei de saúde mental: rede comunitária é liberdade do paciente; o hospital é internação.",
+      "opcoes": {
+        "comunitario": [-0.5, -1],
+        "reformar": [0, 0.5]
+      }
+    },
+    "greve-contra-privatizacao": {
+      "manifesto": ["per413", "per401", "per701"],
+      "porque": "Manter a venda é mercado contra o sindicato; recuar devolve as estatais estratégicas ao Estado.",
+      "opcoes": {
+        "manter": [1.5, 0],
+        "compensar": [0, 0],
+        "recuar": [-1, 0]
+      }
+    },
+    "greve-de-metroviarios": {
+      "manifesto": ["per701", "per702", "per605"],
+      "porque": "Dar o reajuste é a favor do sindicato; pedir a greve ilegal é contra o sindicato e pela ordem.",
+      "opcoes": {
+        "reajuste": [-1, 0],
+        "negociar": [0, 0],
+        "justica": [0.5, 0.5]
+      }
+    },
+    "greve-de-petroleiros": {
+      "manifesto": ["per701", "per702", "per407"],
+      "porque": "Dar o reajuste é a favor do sindicato; importar e esperar é vencer a greve pelo mercado.",
+      "opcoes": {
+        "reajuste": [-1, 0],
+        "negociar": [0, 0],
+        "importar": [1, 0]
+      }
+    },
+    "greve-de-professores": {
+      "manifesto": ["per701", "per506", "per702"],
+      "porque": "Dar o reajuste é sindicato e educação pública; cortar o ponto é contra a greve.",
+      "opcoes": {
+        "reajuste": [-1, 0],
+        "negociar": [0, 0],
+        "cortar-ponto": [0.5, 0.5]
+      }
+    },
+    "greve-de-residentes": {
+      "manifesto": ["per701", "per504", "per702"],
+      "porque": "Aumentar a bolsa é a favor da categoria; contratar temporários é contra a greve.",
+      "opcoes": {
+        "reajuste": [-1, 0],
+        "negociar": [0, 0],
+        "contratar": [0.5, 0]
+      }
+    },
+    "greve-dos-caminhoneiros": {
+      "manifesto": ["per412", "per403", "per605"],
+      "porque": "Subsidiar o diesel e tabelar o frete são o Estado no preço; mandar a polícia é ordem.",
+      "opcoes": {
+        "subsidiar-diesel": [-1, 0],
+        "negociar": [-1, 0],
+        "reprimir": [0.5, 1.5],
+        "estoques": [0, 0]
+      }
+    },
+    "greve-geral": {
+      "manifesto": ["per701", "per702", "per605"],
+      "porque": "Atender a pauta é a favor dos sindicatos; cortar o ponto e não ceder é contra eles.",
+      "opcoes": {
+        "atender": [-1.5, 0],
+        "negociar": [-0.5, 0],
+        "endurecer": [1, 0.5]
+      }
+    },
+    "hidreletrica-na-floresta": {
+      "manifesto": ["per501", "per705", "per404"],
+      "porque": "Construir a usina é obra pública acima da floresta e das terras indígenas; solar e eólica é proteção ambiental.",
+      "opcoes": {
+        "construir": [-0.5, 0.5],
+        "solar-eolica": [-1, -0.5],
+        "adiar": [0, 0]
+      }
+    },
+    "igrejas-pedem-isencao": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Isentar igrejas em troca de votos reforça a moral religiosa no Estado; negar defende o Estado laico.",
+      "opcoes": {
+        "conceder": [0, 1],
+        "negar": [0, -0.5]
+      }
+    },
+    "indicacao-ao-supremo": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "aliado": [0, 0],
+        "tecnico": [0, 0],
+        "centrao": [0, 0]
+      }
+    },
+    "indulto-de-natal": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Indulto amplo é menos prisão; nenhum indulto é lei e ordem.",
+      "opcoes": {
+        "amplo": [0, -1.5],
+        "restrito": [0, -0.5],
+        "nenhum": [0, 1]
+      }
+    },
+    "juiz-solta-lider": {
+      "manifesto": ["per605", "per202"],
+      "porque": "Atacar o juiz é ordem acima da independência do Judiciário; respeitar é o contrário.",
+      "opcoes": {
+        "recorrer": [0, 0.5],
+        "atacar-juiz": [0, 1.5],
+        "respeitar": [0, -0.5]
+      }
+    },
+    "lei-antiterror": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Vigilância ampla e prisão sem julgamento é lei e ordem acima das liberdades; vetar é o contrário.",
+      "opcoes": {
+        "sancionar": [0, 2],
+        "versao-moderada": [0, 0.5],
+        "vetar": [0, -1]
+      }
+    },
+    "lobby-pede-isencao-agro": {
+      "manifesto": ["per402", "per414"],
+      "porque": "Isenção para um setor é incentivo à empresa; negar é tratar todos igual.",
+      "opcoes": {
+        "ceder": [1, 0],
+        "trocar": [0.5, 0],
+        "negar": [0, 0]
+      }
+    },
+    "lobby-pede-isencao-industria": {
+      "manifesto": ["per402", "per414"],
+      "porque": "Isenção para um setor é incentivo à empresa; negar é tratar todos igual.",
+      "opcoes": {
+        "ceder": [1, 0],
+        "trocar": [0.5, 0],
+        "negar": [0, 0]
+      }
+    },
+    "lobby-pede-isencao-servicos": {
+      "manifesto": ["per402", "per414"],
+      "porque": "Isenção para um setor é incentivo à empresa; negar é tratar todos igual.",
+      "opcoes": {
+        "ceder": [1, 0],
+        "trocar": [0.5, 0],
+        "negar": [0, 0]
+      }
+    },
+    "lockdown-ou-economia": {
+      "manifesto": ["per504", "per305", "per401"],
+      "porque": "Fechar tudo com auxílio é Estado forte na economia e na rua; manter aberto é mercado e liberdade.",
+      "opcoes": {
+        "fechar-tudo": [-1.5, 1],
+        "parcial": [-0.5, 0.5],
+        "aberto": [1, -0.5]
+      }
+    },
+    "medicos-em-greve": {
+      "manifesto": ["per701", "per504", "per305"],
+      "porque": "Mesmo sentido do programa de médicos: trazer médicos de fora é o Estado suprindo a falta; esperar é deixar como está.",
+      "opcoes": {
+        "reajuste": [-0.5, 0],
+        "importar-medicos": [-1, 0],
+        "esperar": [0.5, 0]
+      }
+    },
+    "mineracao-em-terra-indigena": {
+      "manifesto": ["per705", "per501", "per401"],
+      "porque": "Retirar o garimpo protege terra indígena e floresta; legalizar é exploração com mercado.",
+      "opcoes": {
+        "retirar": [-0.5, 0],
+        "legalizar": [1, 1],
+        "fingir": [0.5, 0]
+      }
+    },
+    "ministros-brigam": {
+      "manifesto": ["per414", "per504"],
+      "porque": "A Fazenda vencer é ortodoxia; a área social vencer é expandir o bem-estar.",
+      "opcoes": {
+        "fazenda": [1.5, 0],
+        "social": [-1.5, 0],
+        "dividir": [0, 0]
+      }
+    },
+    "montadora-pede-socorro": {
+      "manifesto": ["per402", "per404", "per401"],
+      "porque": "Isenção para uma empresa é incentivo; contrapartida é planejamento; negar é mercado.",
+      "opcoes": {
+        "isencao": [0.5, 0],
+        "contrapartida": [-1, 0],
+        "negar": [1, 0]
+      }
+    },
+    "motim-policial": {
+      "manifesto": ["per605", "per202"],
+      "porque": "Prender os líderes é ordem pela lei; anistia é ceder à força armada.",
+      "opcoes": {
+        "forca-nacional": [0, 0.5],
+        "anistia-e-reajuste": [-0.5, -0.5],
+        "punir": [0, 1]
+      }
+    },
+    "mutirao-ou-privados": {
+      "manifesto": ["per504", "per401", "per413"],
+      "porque": "Comprar da rede privada é mercado na saúde; abrir leitos públicos é Estado.",
+      "opcoes": {
+        "privados": [1, 0],
+        "rede-publica": [-1, 0],
+        "nada": [0, 0]
+      }
+    },
+    "neutralidade-na-guerra": {
+      "manifesto": ["per104", "per105", "per601"],
+      "porque": "Alinhar com um bloco é escolha de forças armadas e alianças; mediar é diplomacia.",
+      "opcoes": {
+        "aliar": [0.5, 1],
+        "neutro": [0, 0],
+        "mediar": [0, -0.5],
+        "vender-armas": [1, 0]
+      }
+    },
+    "o-que-fazer-com-a-bonanca": {
+      "manifesto": ["per414", "per409", "per504"],
+      "porque": "Poupar é ortodoxia; obras e ministérios são gasto; baixar impostos é devolver ao mercado.",
+      "opcoes": {
+        "poupar": [1.5, 0],
+        "obras": [-1, 0],
+        "baixar-impostos": [1, 0],
+        "gastar": [-1, 0]
+      }
+    },
+    "obra-na-terra-do-aliado": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "aprovar": [0, 0],
+        "auditoria": [0, 0],
+        "vetar": [0, 0]
+      }
+    },
+    "obra-parada-ferrovia": {
+      "manifesto": ["per404", "per414"],
+      "porque": "Retomar com dinheiro público é planejamento; abandonar é corte.",
+      "opcoes": {
+        "retomar": [-1, 0],
+        "auditar": [0, 0],
+        "abandonar": [1, 0]
+      }
+    },
+    "obra-parada-metro": {
+      "manifesto": ["per404", "per414"],
+      "porque": "Retomar com dinheiro público é planejamento; abandonar é corte.",
+      "opcoes": {
+        "retomar": [-1, 0],
+        "auditar": [0, 0],
+        "abandonar": [1, 0]
+      }
+    },
+    "obra-parada-transposicao": {
+      "manifesto": ["per404", "per414"],
+      "porque": "Retomar com dinheiro público é planejamento; abandonar é corte.",
+      "opcoes": {
+        "retomar": [-1, 0],
+        "auditar": [0, 0],
+        "abandonar": [1, 0]
+      }
+    },
+    "pacote-contra-a-fome": {
+      "manifesto": ["per504", "per503"],
+      "porque": "Ampliar a transferência de renda é bem-estar permanente; cestas e restaurantes são alívio pontual.",
+      "opcoes": {
+        "cestas": [-0.5, 0],
+        "ampliar-renda": [-1.5, 0],
+        "restaurantes": [-0.5, 0]
+      }
+    },
+    "pagar-o-resgate": {
+      "manifesto": ["per605", "per601"],
+      "porque": "Não pagar é firmeza da lei; acusar uma potência é nacionalismo.",
+      "opcoes": {
+        "pagar": [0, -0.5],
+        "nao-pagar": [0, 0.5],
+        "culpar": [0, 1]
+      }
+    },
+    "plano-de-saude-reajuste": {
+      "manifesto": ["per403", "per401"],
+      "porque": "Limitar o reajuste é regular o mercado; autorizar é deixar o preço livre.",
+      "opcoes": {
+        "limitar": [-1, 0],
+        "autorizar": [1, 0]
+      }
+    },
+    "policial-mata-inocente": {
+      "manifesto": ["per201", "per605"],
+      "porque": "Mesmo sentido da lei das câmeras corporais: afastar e filmar é controle da polícia; defender a tropa é lei e ordem.",
+      "opcoes": {
+        "afastar": [0, -1],
+        "cameras": [0, -0.5],
+        "defender": [0, 1.5],
+        "aguardar": [0, 0]
+      }
+    },
+    "populacao-de-rua-cresce": {
+      "manifesto": ["per504", "per201", "per305"],
+      "porque": "Moradia primeiro é bem-estar com liberdade; internação compulsória é autoridade.",
+      "opcoes": {
+        "moradia-primeiro": [-1, -0.5],
+        "abrigos": [-0.5, 0],
+        "internacao": [0, 2]
+      }
+    },
+    "potencia-oferece-investimento": {
+      "manifesto": ["per401", "per406", "per601"],
+      "porque": "Aceitar como está é capital estrangeiro sem condição; conteúdo local é protecionismo.",
+      "opcoes": {
+        "aceitar": [1, 0],
+        "negociar": [-0.5, 0],
+        "recusar": [-0.5, 0.5]
+      }
+    },
+    "pressao-internacional-floresta": {
+      "manifesto": ["per501", "per601", "per403"],
+      "porque": "Mesmo sentido do código florestal: desmatamento zero é proteção ambiental; a floresta é nossa é soberania.",
+      "opcoes": {
+        "fiscalizar": [-1.5, 0],
+        "fundo-externo": [-0.5, -0.5],
+        "soberania": [0.5, 1]
+      }
+    },
+    "programa-nuclear": {
+      "manifesto": ["per104", "per105", "per601"],
+      "porque": "Construir a bomba é poder militar e nacionalismo; abrir aos inspetores é o contrário.",
+      "opcoes": {
+        "bomba": [0, 2],
+        "civil-com-inspecao": [0, -0.5],
+        "ambiguidade": [0, 0.5],
+        "abandonar": [0, -1]
+      }
+    },
+    "protesto-contra-imposto": {
+      "manifesto": ["per414", "per503", "per505"],
+      "porque": "Recuar no imposto é menos Estado; compensar os mais pobres é igualdade.",
+      "opcoes": {
+        "recuar": [1, 0],
+        "compensar": [-1, 0],
+        "manter": [0, 0]
+      }
+    },
+    "punir-a-mineradora": {
+      "manifesto": ["per403", "per501", "per605"],
+      "porque": "Multa máxima e licenças duras são regulação; o acordo deixa a empresa operar.",
+      "opcoes": {
+        "multa-maxima": [-1, 0.5],
+        "endurecer-licencas": [-1, 0],
+        "acordo": [0.5, 0]
+      }
+    },
+    "quebrar-patente": {
+      "manifesto": ["per403", "per504", "per401"],
+      "porque": "Licença compulsória é o Estado acima da propriedade da patente; pagar o preço cheio a respeita.",
+      "opcoes": {
+        "quebrar": [-1.5, 0],
+        "negociar": [0, 0],
+        "pagar": [1, 0]
+      }
+    },
+    "quem-explora-o-petroleo": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Mesmo sentido do regime do petróleo: monopólio estatal é Estado; leilão é mercado.",
+      "opcoes": {
+        "estatal": [-2, 0],
+        "partilha": [-0.5, 0],
+        "leilao": [1.5, 0]
+      }
+    },
+    "racionamento-de-energia": {
+      "manifesto": ["per404", "per501", "per305"],
+      "porque": "Racionar com metas e multas é planejamento e autoridade; termelétricas e importação pagam pelo preço.",
+      "opcoes": {
+        "racionar": [-1, 0.5],
+        "termeletricas": [0.5, 0],
+        "importar": [0, 0],
+        "arriscar": [0.5, 0]
+      }
+    },
+    "reagir-a-espionagem": {
+      "manifesto": ["per601", "per104"],
+      "porque": "Expulsar o embaixador é nacionalismo; investir em contraespionagem é defesa.",
+      "opcoes": {
+        "expulsar": [0, 1],
+        "protesto": [0, 0],
+        "contraespionagem": [0, 0.5]
+      }
+    },
+    "reajuste-do-salario-minimo": {
+      "manifesto": ["per503", "per701", "per414"],
+      "porque": "Ganho real é igualdade e trabalho; segurar abaixo da inflação é ortodoxia.",
+      "opcoes": {
+        "ganho-real": [-1.5, 0],
+        "inflacao": [0, 0],
+        "congelar": [1.5, 0]
+      }
+    },
+    "reconhecer-o-novo-governo": {
+      "manifesto": ["per202", "per407"],
+      "porque": "Condenar o golpe é democracia acima do comércio; reconhecer é o comércio primeiro.",
+      "opcoes": {
+        "reconhecer": [0.5, 0.5],
+        "condenar": [0, -1],
+        "aguardar": [0, 0]
+      }
+    },
+    "reconstrucao": {
+      "manifesto": ["per409", "per414", "per504"],
+      "porque": "Imprimir dinheiro é gasto sem lastro; cortar da saúde é ortodoxia; imposto temporário é o Estado cobrando.",
+      "opcoes": {
+        "imprimir": [-1.5, 0],
+        "cortar-saude": [1.5, 0],
+        "imposto-temporario": [-0.5, 0],
+        "devagar": [0.5, 0]
+      }
+    },
+    "reeleicao-em-pauta": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Mesmo sentido da lei da reeleição: mais tempo no poder é autoridade política.",
+      "opcoes": {
+        "apoiar": [0, 2],
+        "recusar": [0, -0.5]
+      }
+    },
+    "regular-as-apostas": {
+      "manifesto": ["per603", "per403", "per401"],
+      "porque": "Proibir é moral tradicional; taxar e liberar é mercado.",
+      "opcoes": {
+        "proibir": [-0.5, 1.5],
+        "regras": [-0.5, 0.5],
+        "taxar": [0.5, -0.5]
+      }
+    },
+    "reintegracao-de-posse": {
+      "manifesto": ["per605", "per503", "per413"],
+      "porque": "Mesmo sentido da reforma agrária: cumprir a ordem com a tropa é propriedade e ordem; desapropriar é redistribuir.",
+      "opcoes": {
+        "cumprir": [1, 1],
+        "mediar": [0, 0],
+        "assentar": [-1.5, 0]
+      }
+    },
+    "resgatar-compatriotas": {
+      "manifesto": ["per104", "per601"],
+      "porque": "Mandar a Força Aérea é usar as forças armadas; o corredor humanitário é diplomacia.",
+      "opcoes": {
+        "aviao": [0, 1],
+        "negociar": [0, -0.5],
+        "consulado": [0, 0]
+      }
+    },
+    "resgate-bancario": {
+      "manifesto": ["per401", "per413", "per414"],
+      "porque": "Socorro com dinheiro público e fusão com banco público são o Estado no crédito; deixar quebrar é mercado.",
+      "opcoes": {
+        "salvar": [-1.5, 0],
+        "fusao-forcada": [-1, 0],
+        "deixar-quebrar": [1.5, 0]
+      }
+    },
+    "responder-as-sancoes": {
+      "manifesto": ["per601", "per104", "per407"],
+      "porque": "Resistir é soberania e economia de guerra; ceder abre o comércio.",
+      "opcoes": {
+        "ceder": [0.5, -0.5],
+        "resistir": [-0.5, 1],
+        "outro-bloco": [0, 0.5]
+      }
+    },
+    "resposta-a-violencia": {
+      "manifesto": ["per605", "per504"],
+      "porque": "Penas mais duras é lei e ordem; o pacote com prevenção é gasto social na segurança.",
+      "opcoes": {
+        "pacote": [-0.5, 0],
+        "endurecer-penas": [0, 1.5],
+        "nota": [0, 0]
+      }
+    },
+    "resposta-aos-ataques": {
+      "manifesto": ["per605", "per104", "per201"],
+      "porque": "Forças Armadas nas ruas é ordem acima das liberdades; inteligência mira o dinheiro do crime.",
+      "opcoes": {
+        "forcas-armadas": [0, 2],
+        "inteligencia": [0, 0],
+        "tregua": [0, -0.5],
+        "apoio-limitado": [0, 0.5]
+      }
+    },
+    "resposta-aos-protestos": {
+      "manifesto": ["per202", "per605", "per504"],
+      "porque": "Reprimir é ordem; plebiscito e diálogo são democracia; o pacote é gasto social.",
+      "opcoes": {
+        "dialogar": [0, -0.5],
+        "pacote": [-1, 0],
+        "reprimir": [0, 2],
+        "plebiscito": [0, -1]
+      }
+    },
+    "ruralistas-bloqueiam": {
+      "manifesto": ["per503", "per413", "per401"],
+      "porque": "Mesmo sentido da reforma agrária: manter é redistribuir; titular é mercado de terras.",
+      "opcoes": {
+        "manter": [-1.5, 0],
+        "credito-rural": [-0.5, 0],
+        "recuar": [1, 0]
+      }
+    },
+    "sediar-copa": {
+      "manifesto": ["per404", "per414", "per601"],
+      "porque": "Sediar com tudo é obra pública grande e orgulho nacional; recusar é corte.",
+      "opcoes": {
+        "sediar": [-1, 0.5],
+        "austero": [0, 0],
+        "recusar": [0.5, 0]
+      }
+    },
+    "sediar-olimpiadas": {
+      "manifesto": ["per404", "per414", "per601"],
+      "porque": "Sediar com tudo é obra pública grande e orgulho nacional; recusar é corte.",
+      "opcoes": {
+        "sediar": [-1, 0.5],
+        "austero": [0, 0],
+        "recusar": [0.5, 0]
+      }
+    },
+    "seguranca-nas-escolas": {
+      "manifesto": ["per605", "per504", "per603"],
+      "porque": "Guarda armado é lei e ordem; psicólogos é prevenção; restringir armas é o contrário da lei de armas facilitadas.",
+      "opcoes": {
+        "armar": [0, 1.5],
+        "prevencao": [-0.5, -0.5],
+        "armas": [-0.5, -1]
+      }
+    },
+    "sobreviver-ao-impeachment": {
+      "manifesto": ["per202"],
+      "porque": "Troca de cargo, verba ou proteção por apoio: não tem lado na bússola. A escolha é entre base no Congresso e confiança nas instituições.",
+      "eixo": "governo",
+      "opcoes": {
+        "comprar-apoio": [0, 0],
+        "ruas": [0, 0],
+        "lutar": [0, 0]
+      }
+    },
+    "subsidiar-o-combustivel": {
+      "manifesto": ["per412", "per403", "per401"],
+      "porque": "Subsidiar e taxar o lucro são o Estado no preço; repassar é mercado.",
+      "opcoes": {
+        "subsidiar": [-1.5, 0],
+        "taxar-petroleiras": [-1.5, 0],
+        "repassar": [1.5, 0]
+      }
+    },
+    "tarifa-do-onibus": {
+      "manifesto": ["per504", "per301"],
+      "porque": "Subsidiar e passe livre são bem-estar pago pela União; deixar com a prefeitura é descentralizar.",
+      "opcoes": {
+        "subsidio": [-1, 0],
+        "passe-livre": [-1.5, 0],
+        "nada": [0.5, 0]
+      }
+    },
+    "voto-na-assembleia": {
+      "manifesto": ["per201", "per407"],
+      "porque": "Condenar é direitos humanos acima do comércio; votar contra é o comércio primeiro.",
+      "opcoes": {
+        "condenar": [0, -1],
+        "abster": [0, 0],
+        "contra": [0.5, 0.5]
       }
     }
   }

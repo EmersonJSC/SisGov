@@ -1,0 +1,17 @@
+{
+  "id": "quem-explora-o-petroleo--partilha--grupo-trabalhadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_quem_explora_o_petroleo__partilha",
+  "alvo": "grupo_trabalhadores",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

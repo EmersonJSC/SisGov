@@ -9,6 +9,7 @@ import dadosDasReferencias from "../../conteudo/bussola/referencias.json";
 import { distancia, mediaDasLeis, pontoComRumo } from "./calculo";
 import type {
   BussolaDoMundo,
+  DecisaoNaBussola,
   EstadoDaBussola,
   PontoDaBussola,
   Referencia,
@@ -50,9 +51,17 @@ export function pontoAtual(
 ): PontoDaBussola {
   return pontoComRumo(
     estado.inicio,
-    mediaDasLeis(content, bussola, policies),
+    mediaDasLeis(content, bussola, policies, estado.decisoes),
     bussola.fatorDoRumo,
   );
+}
+
+/** Anota a resposta a um dilema: ela passa a contar no ponto (V1-13). */
+export function anotarDecisao(
+  estado: EstadoDaBussola,
+  decisao: DecisaoNaBussola,
+): EstadoDaBussola {
+  return { ...estado, decisoes: [...(estado.decisoes ?? []), decisao] };
 }
 
 /** Anota o ponto no fim do turno. */

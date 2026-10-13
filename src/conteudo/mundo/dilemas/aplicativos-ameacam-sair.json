@@ -39,7 +39,8 @@
       "controle": "ocorrencia_aplicativos_ameacam_sair__transicao",
       "duracaoMeses": 24,
       "consequencias": [
-        "aplicativos-ameacam-sair--transicao--grupo-empresarios"
+        "aplicativos-ameacam-sair--transicao--grupo-empresarios",
+        "aplicativos-ameacam-sair--transicao--grupo-trabalhadores"
       ]
     },
     {
@@ -67,6 +68,7 @@
     "aplicativos-ameacam-sair--manter--grupo-empresarios",
     "aplicativos-ameacam-sair--transicao--grupo-empresarios",
     "aplicativos-ameacam-sair--recuar--grupo-trabalhadores",
-    "aplicativos-ameacam-sair--recuar--grupo-empresarios"
+    "aplicativos-ameacam-sair--recuar--grupo-empresarios",
+    "aplicativos-ameacam-sair--transicao--grupo-trabalhadores"
   ]
 }

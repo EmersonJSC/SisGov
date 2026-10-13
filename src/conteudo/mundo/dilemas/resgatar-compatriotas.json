@@ -34,7 +34,8 @@
       "duracaoMeses": 3,
       "consequencias": [
         "resgatar-compatriotas--negociar--reputacao-internacional",
-        "resgatar-compatriotas--negociar--grupo-classe-media"
+        "resgatar-compatriotas--negociar--grupo-classe-media",
+        "resgatar-compatriotas--negociar--margem-manobra-governo"
       ]
     },
     {
@@ -57,6 +58,7 @@
     "resgatar-compatriotas--negociar--reputacao-internacional",
     "resgatar-compatriotas--negociar--grupo-classe-media",
     "resgatar-compatriotas--consulado--grupo-classe-media",
-    "resgatar-compatriotas--consulado--confianca-instituicoes"
+    "resgatar-compatriotas--consulado--confianca-instituicoes",
+    "resgatar-compatriotas--negociar--margem-manobra-governo"
   ]
 }

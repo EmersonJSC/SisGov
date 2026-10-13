@@ -46,6 +46,41 @@ function Chip({ efeito }: { efeito: VisaoEfeitoOcorrencia }) {
   );
 }
 
+/** Para onde a opção puxa o governo na bússola (V1-13). */
+function LadoNaBussola({ lado }: { lado: readonly [number, number] }) {
+  const [economia, costumes] = lado;
+  const parte = (v: number, menos: string, mais: string) =>
+    Math.abs(v) < 0.25
+      ? null
+      : `${Math.abs(v) >= 1 ? "" : "um pouco "}${v < 0 ? menos : mais}`;
+  const partes = [
+    parte(economia, "Estado", "mercado"),
+    parte(costumes, "liberdade", "autoridade"),
+  ].filter((p): p is string => p !== null);
+  const r = 9;
+  const x = 12 + (economia / 2) * r;
+  const y = 12 - (costumes / 2) * r;
+  return (
+    <span
+      className="lado-bussola"
+      title="Para onde esta escolha puxa o governo na bússola"
+    >
+      <svg width={24} height={24} viewBox="0 0 24 24" aria-hidden>
+        <circle cx={12} cy={12} r={r + 1} className="lado-aro" />
+        <line x1={2} x2={22} y1={12} y2={12} className="lado-eixo" />
+        <line x1={12} x2={12} y1={2} y2={22} className="lado-eixo" />
+        {partes.length ? (
+          <line x1={12} y1={12} x2={x} y2={y} className="lado-seta" />
+        ) : null}
+        <circle cx={x} cy={y} r={2.4} className="lado-ponta" />
+      </svg>
+      {partes.length
+        ? `Puxa para ${partes.join(" e ")}`
+        : "Não puxa para lado nenhum"}
+    </span>
+  );
+}
+
 function Previa({
   efeitos,
   calculando,
@@ -179,6 +214,7 @@ export function CartaoDilema({
             >
               <strong>{op.rotulo}</strong>
               <span className="opcao-texto">{op.descricao}</span>
+              {op.lado ? <LadoNaBussola lado={op.lado} /> : null}
               {efeitos.length ? (
                 <span className="chips-efeito">
                   {efeitos.map((e) => (

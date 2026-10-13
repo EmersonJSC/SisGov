@@ -56,7 +56,10 @@
         {
           "ocorrencia": "escandalo-tregua",
           "chance": 0.4,
-          "emTurnos": [2, 6]
+          "emTurnos": [
+            2,
+            6
+          ]
         }
       ]
     },
@@ -66,7 +69,10 @@
       "descricao": "Apoio simbólico. O estado se vira.",
       "controle": "ocorrencia_resposta_aos_ataques__apoio_limitado",
       "duracaoMeses": 3,
-      "consequencias": ["resposta-aos-ataques--apoio-limitado--onda-violencia"]
+      "consequencias": [
+        "resposta-aos-ataques--apoio-limitado--onda-violencia",
+        "resposta-aos-ataques--apoio-limitado--confianca-instituicoes"
+      ]
     }
   ],
   "consequencias": [
@@ -83,6 +89,7 @@
     "resposta-aos-ataques--tregua--crime-organizado",
     "resposta-aos-ataques--tregua--impunidade",
     "resposta-aos-ataques--tregua--corrupcao",
-    "resposta-aos-ataques--apoio-limitado--onda-violencia"
+    "resposta-aos-ataques--apoio-limitado--onda-violencia",
+    "resposta-aos-ataques--apoio-limitado--confianca-instituicoes"
   ]
 }

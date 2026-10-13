@@ -1,6 +1,6 @@
 # Dilemas com lados e notificações no tablet (V1-13)
 
-**Status:** APROVADO (13/out).
+**Status:** APROVADO E FEITO (13/out). O que o código decidiu sozinho na seção 7.
 
 ## 0. Resumo
 
@@ -132,3 +132,23 @@ dilema é escrito a partir de caso real. O que já é nosso:
 2. Lados: a entrada `dilemas` na bússola, o verificador e o ponto que anda
    com a escolha.
 3. Revisão dos 91 dilemas, em lotes por área, com a lista para você ler.
+
+## 7. Como ficou (13/out)
+
+- **Lados:** os 91 dilemas têm lado em `mundo/bussola.json` (`dilemas`). 10
+  são de governo: os 3 pedidos de ministério, emendas secretas, os 3
+  escândalos, obra na terra do aliado, indicação ao Supremo e sobreviver ao
+  impeachment.
+- **Regra do dilema de governo:** precisa haver duas opções em que a que dá
+  mais base no Congresso tem saldo pior nas instituições (confiança e força
+  das instituições contam a favor; corrupção e captura política, contra).
+  Todos os 10 já passavam.
+- **Nenhuma opção de graça:** "gasto público sobe" conta como custo. Eram 20
+  opções só com ganho; cada uma ganhou um custo pequeno e coerente com o
+  texto (por exemplo, indicar um jurista respeitado tira 2 pontos da base, e
+  recusar a emenda da reeleição tira 3).
+- **O ponto anda:** cada resposta entra na média da bússola como uma lei de
+  importância 1 (`importancia.dilema`) e fica guardada na partida
+  (`compass.decisoes`).
+- **Na tela:** cada opção mostra a setinha da bússola e a frase "Puxa para
+  …". A frase do rumo no jornal (seção 3) fica para depois.

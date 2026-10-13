@@ -1,0 +1,17 @@
+{
+  "id": "resposta-aos-ataques--apoio-limitado--confianca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_resposta_aos_ataques__apoio_limitado",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

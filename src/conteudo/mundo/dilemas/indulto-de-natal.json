@@ -32,7 +32,10 @@
       "descricao": "Só doentes graves e idosos.",
       "controle": "ocorrencia_indulto_de_natal__restrito",
       "duracaoMeses": 3,
-      "consequencias": ["indulto-de-natal--restrito--lotacao-prisional"]
+      "consequencias": [
+        "indulto-de-natal--restrito--lotacao-prisional",
+        "indulto-de-natal--restrito--grupo-conservadores"
+      ]
     },
     {
       "id": "nenhum",
@@ -54,6 +57,7 @@
     "indulto-de-natal--restrito--lotacao-prisional",
     "indulto-de-natal--nenhum--lotacao-prisional",
     "indulto-de-natal--nenhum--grupo-conservadores",
-    "indulto-de-natal--nenhum--rebeliao-presidios"
+    "indulto-de-natal--nenhum--rebeliao-presidios",
+    "indulto-de-natal--restrito--grupo-conservadores"
   ]
 }

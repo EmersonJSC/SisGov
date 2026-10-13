@@ -17,6 +17,7 @@ import { policyLevelRulesFromContent } from "../policyRulesFromContent";
 import type {
   BussolaDaLei,
   BussolaDoMundo,
+  DecisaoNaBussola,
   PontoDaBussola,
   VetorDaLei,
 } from "./tipos";
@@ -151,6 +152,7 @@ export function mediaDasLeis(
   content: ResolvedPackage,
   bussola: BussolaDoMundo,
   policies: readonly PolicyState[],
+  decisoes: readonly DecisaoNaBussola[] = [],
 ): PontoDaBussola {
   const ext = extremos(content, bussola);
   if (ext.peso === 0) return { economia: 0, costumes: 0 };
@@ -162,6 +164,14 @@ export function mediaDasLeis(
     const w = importancia(bussola, policy.processoAutorizacao);
     soma[0] += w * v[0];
     soma[1] += w * v[1];
+  }
+  // V1-13: cada resposta a dilema pesa como uma lei de importância "dilema"
+  const wDilema = bussola.importancia.dilema ?? 1;
+  for (const d of decisoes) {
+    const v = bussola.dilemas?.[d.dilema]?.opcoes[d.opcao];
+    if (!v) continue;
+    soma[0] += wDilema * v[0];
+    soma[1] += wDilema * v[1];
   }
   return {
     economia: escala(soma[0] / ext.peso, ext.minimo[0], ext.maximo[0]),

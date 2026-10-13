@@ -32,7 +32,10 @@
       "descricao": "Meio-termo. O aliado fica desconfiado.",
       "controle": "ocorrencia_aliado_pede_ministerio_saude__outra",
       "duracaoMeses": 12,
-      "consequencias": ["aliado-pede-ministerio-saude--outra--base-congresso"]
+      "consequencias": [
+        "aliado-pede-ministerio-saude--outra--base-congresso",
+        "aliado-pede-ministerio-saude--outra--margem-manobra-governo"
+      ]
     },
     {
       "id": "recusar",
@@ -52,6 +55,7 @@
     "aliado-pede-ministerio-saude--ceder--pressao-hospitalar",
     "aliado-pede-ministerio-saude--outra--base-congresso",
     "aliado-pede-ministerio-saude--recusar--base-congresso",
-    "aliado-pede-ministerio-saude--recusar--grupo-classe-media"
+    "aliado-pede-ministerio-saude--recusar--grupo-classe-media",
+    "aliado-pede-ministerio-saude--outra--margem-manobra-governo"
   ]
 }

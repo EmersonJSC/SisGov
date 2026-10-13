@@ -45,7 +45,8 @@
       "consequencias": [
         "potencia-oferece-investimento--negociar--infraestrutura-transportes",
         "potencia-oferece-investimento--negociar--ied",
-        "potencia-oferece-investimento--negociar--grupo-trabalhadores"
+        "potencia-oferece-investimento--negociar--grupo-trabalhadores",
+        "potencia-oferece-investimento--negociar--confianca-empresarial"
       ]
     },
     {
@@ -70,6 +71,7 @@
     "potencia-oferece-investimento--negociar--ied",
     "potencia-oferece-investimento--negociar--grupo-trabalhadores",
     "potencia-oferece-investimento--recusar--grupo-empresarios",
-    "potencia-oferece-investimento--recusar--grupo-agro"
+    "potencia-oferece-investimento--recusar--grupo-agro",
+    "potencia-oferece-investimento--negociar--confianca-empresarial"
   ]
 }

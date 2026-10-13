@@ -21,7 +21,8 @@
       "duracaoMeses": 6,
       "consequencias": [
         "resposta-aos-protestos--dialogar--protestos",
-        "resposta-aos-protestos--dialogar--polarizacao"
+        "resposta-aos-protestos--dialogar--polarizacao",
+        "resposta-aos-protestos--dialogar--margem-manobra-governo"
       ]
     },
     {
@@ -82,6 +83,7 @@
     "resposta-aos-protestos--reprimir--reputacao-internacional",
     "resposta-aos-protestos--plebiscito--protestos",
     "resposta-aos-protestos--plebiscito--participacao-eleitoral",
-    "resposta-aos-protestos--plebiscito--base-congresso"
+    "resposta-aos-protestos--plebiscito--base-congresso",
+    "resposta-aos-protestos--dialogar--margem-manobra-governo"
   ]
 }

@@ -59,7 +59,8 @@
       "duracaoMeses": 12,
       "consequencias": [
         "estrangeiro-quer-comprar-estatal--golden-share--divida-publica",
-        "estrangeiro-quer-comprar-estatal--golden-share--ied"
+        "estrangeiro-quer-comprar-estatal--golden-share--ied",
+        "estrangeiro-quer-comprar-estatal--golden-share--confianca-empresarial"
       ]
     },
     {
@@ -83,6 +84,7 @@
     "estrangeiro-quer-comprar-estatal--golden-share--divida-publica",
     "estrangeiro-quer-comprar-estatal--golden-share--ied",
     "estrangeiro-quer-comprar-estatal--recusar--confianca-empresarial",
-    "estrangeiro-quer-comprar-estatal--recusar--grupo-trabalhadores"
+    "estrangeiro-quer-comprar-estatal--recusar--grupo-trabalhadores",
+    "estrangeiro-quer-comprar-estatal--golden-share--confianca-empresarial"
   ]
 }

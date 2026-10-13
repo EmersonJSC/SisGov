@@ -54,7 +54,8 @@
       "controle": "ocorrencia_base_militar_estrangeira__recusar",
       "duracaoMeses": 6,
       "consequencias": [
-        "base-militar-estrangeira--recusar--grupo-conservadores"
+        "base-militar-estrangeira--recusar--grupo-conservadores",
+        "base-militar-estrangeira--recusar--ied"
       ]
     }
   ],
@@ -66,6 +67,7 @@
     "base-militar-estrangeira--aceitar--grupo-conservadores",
     "base-militar-estrangeira--cooperacao--capacidade-defesa",
     "base-militar-estrangeira--cooperacao--tensao-internacional",
-    "base-militar-estrangeira--recusar--grupo-conservadores"
+    "base-militar-estrangeira--recusar--grupo-conservadores",
+    "base-militar-estrangeira--recusar--ied"
   ]
 }

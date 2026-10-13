@@ -32,7 +32,8 @@
       "controle": "ocorrencia_compatriota_no_corredor_da_morte__carta",
       "duracaoMeses": 3,
       "consequencias": [
-        "compatriota-no-corredor-da-morte--carta--reputacao-internacional"
+        "compatriota-no-corredor-da-morte--carta--reputacao-internacional",
+        "compatriota-no-corredor-da-morte--carta--grupo-classe-media"
       ]
     },
     {
@@ -53,6 +54,7 @@
     "compatriota-no-corredor-da-morte--pressionar--exportacoes",
     "compatriota-no-corredor-da-morte--carta--reputacao-internacional",
     "compatriota-no-corredor-da-morte--nada--grupo-progressistas",
-    "compatriota-no-corredor-da-morte--nada--grupo-classe-media"
+    "compatriota-no-corredor-da-morte--nada--grupo-classe-media",
+    "compatriota-no-corredor-da-morte--carta--grupo-classe-media"
   ]
 }

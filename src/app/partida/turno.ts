@@ -7,7 +7,7 @@ import {
 } from "../../game/occurrences";
 import { lawTargets, type GameState } from "../../game/createGame";
 import { commitGameQuarter } from "../../game/commitGameQuarter";
-import { anotarTurno, pontoAtual } from "../../game/bussola";
+import { anotarDecisao, anotarTurno, pontoAtual } from "../../game/bussola";
 import { passarTurnoNoCongresso } from "../../game/congresso";
 import type {
   Resultado,
@@ -226,7 +226,20 @@ function responder(
   if (!r.ok) return { ok: false, erros: [r.error] };
   let atual: Partida = {
     ...partida,
-    game: { ...game, occurrences: r.state },
+    game: {
+      ...game,
+      occurrences: r.state,
+      // V1-13: a resposta tem lado e anda o ponto da bússola
+      ...(game.compass
+        ? {
+            compass: anotarDecisao(game.compass, {
+              dilema: dilemaId,
+              opcao: opcaoId,
+              turno: game.currentTurn,
+            }),
+          }
+        : {}),
+    },
   };
   // a opção pode mudar leis (ex.: socorro externo impõe teto de gastos)
   for (const lei of r.laws) {

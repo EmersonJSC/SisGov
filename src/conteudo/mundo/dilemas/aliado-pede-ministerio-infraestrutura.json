@@ -32,7 +32,8 @@
       "controle": "ocorrencia_aliado_pede_ministerio_infraestrutura__outra",
       "duracaoMeses": 12,
       "consequencias": [
-        "aliado-pede-ministerio-infraestrutura--outra--base-congresso"
+        "aliado-pede-ministerio-infraestrutura--outra--base-congresso",
+        "aliado-pede-ministerio-infraestrutura--outra--margem-manobra-governo"
       ]
     },
     {
@@ -52,6 +53,7 @@
     "aliado-pede-ministerio-infraestrutura--ceder--corrupcao",
     "aliado-pede-ministerio-infraestrutura--outra--base-congresso",
     "aliado-pede-ministerio-infraestrutura--recusar--base-congresso",
-    "aliado-pede-ministerio-infraestrutura--recusar--grupo-classe-media"
+    "aliado-pede-ministerio-infraestrutura--recusar--grupo-classe-media",
+    "aliado-pede-ministerio-infraestrutura--outra--margem-manobra-governo"
   ]
 }

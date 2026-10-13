@@ -1,0 +1,17 @@
+{
+  "id": "censurar-imprensa--responder--base-congresso",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_censurar_imprensa__responder",
+  "alvo": "base_congresso",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

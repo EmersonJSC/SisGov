@@ -32,7 +32,10 @@
       "descricao": "Tirar ele do país discretamente para um terceiro destino.",
       "controle": "ocorrencia_asilo_a_opositor__negociar",
       "duracaoMeses": 6,
-      "consequencias": ["asilo-a-opositor--negociar--reputacao-internacional"]
+      "consequencias": [
+        "asilo-a-opositor--negociar--reputacao-internacional",
+        "asilo-a-opositor--negociar--tensao-internacional"
+      ]
     },
     {
       "id": "entregar",
@@ -54,6 +57,7 @@
     "asilo-a-opositor--negociar--reputacao-internacional",
     "asilo-a-opositor--entregar--reputacao-internacional",
     "asilo-a-opositor--entregar--grupo-progressistas",
-    "asilo-a-opositor--entregar--grupo-classe-media"
+    "asilo-a-opositor--entregar--grupo-classe-media",
+    "asilo-a-opositor--negociar--tensao-internacional"
   ]
 }

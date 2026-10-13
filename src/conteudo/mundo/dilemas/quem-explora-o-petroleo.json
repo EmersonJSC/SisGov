@@ -37,7 +37,10 @@
       "descricao": "Empresas exploram e o Estado fica com parte do óleo.",
       "controle": "ocorrencia_quem_explora_o_petroleo__partilha",
       "duracaoMeses": 6,
-      "consequencias": ["quem-explora-o-petroleo--partilha--ied"],
+      "consequencias": [
+        "quem-explora-o-petroleo--partilha--ied",
+        "quem-explora-o-petroleo--partilha--grupo-trabalhadores"
+      ],
       "leis": [
         {
           "lei": "regime-do-petroleo-e-mineracao",
@@ -73,6 +76,7 @@
     "quem-explora-o-petroleo--leilao--arrecadacao",
     "quem-explora-o-petroleo--leilao--ied",
     "quem-explora-o-petroleo--leilao--grupo-progressistas",
-    "quem-explora-o-petroleo--leilao--reputacao-internacional"
+    "quem-explora-o-petroleo--leilao--reputacao-internacional",
+    "quem-explora-o-petroleo--partilha--grupo-trabalhadores"
   ]
 }

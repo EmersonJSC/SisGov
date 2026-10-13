@@ -48,7 +48,8 @@
       "duracaoMeses": 12,
       "consequencias": [
         "reeleicao-em-pauta--recusar--forca-instituicoes",
-        "reeleicao-em-pauta--recusar--confianca-instituicoes"
+        "reeleicao-em-pauta--recusar--confianca-instituicoes",
+        "reeleicao-em-pauta--recusar--base-congresso"
       ]
     }
   ],
@@ -59,6 +60,7 @@
     "reeleicao-em-pauta--apoiar--grupo-progressistas",
     "reeleicao-em-pauta--apoiar--grupo-classe-media",
     "reeleicao-em-pauta--recusar--forca-instituicoes",
-    "reeleicao-em-pauta--recusar--confianca-instituicoes"
+    "reeleicao-em-pauta--recusar--confianca-instituicoes",
+    "reeleicao-em-pauta--recusar--base-congresso"
   ]
 }

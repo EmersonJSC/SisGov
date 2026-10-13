@@ -15,6 +15,25 @@ export type BussolaDaLei = Readonly<{
   foraDeVigor?: VetorDaLei;
 }>;
 
+/**
+ * Lado de cada opção de um dilema (V1-13, docs/v1/desenho/dilemas.md). Dilema
+ * de governo (`eixo: "governo"`) troca apoio no Congresso por confiança nas
+ * instituições e pode ter as opções no mesmo lugar da bússola.
+ */
+export type BussolaDoDilema = Readonly<{
+  manifesto: readonly string[];
+  porque: string;
+  eixo?: "governo";
+  opcoes: Readonly<Record<string, VetorDaLei>>;
+}>;
+
+/** Uma resposta a dilema: entra no ponto como uma lei de importância 1. */
+export type DecisaoNaBussola = Readonly<{
+  dilema: string;
+  opcao: string;
+  turno: number;
+}>;
+
 export type BussolaDoMundo = Readonly<{
   tipo: "mundo-bussola";
   versaoEsquema: 1;
@@ -24,6 +43,7 @@ export type BussolaDoMundo = Readonly<{
   fatorDoRumo: PontoDaBussola;
   temas: Readonly<Record<string, string>>;
   leis: Readonly<Record<string, BussolaDaLei>>;
+  dilemas?: Readonly<Record<string, BussolaDoDilema>>;
 }>;
 
 export type Referencia = Readonly<{
@@ -61,4 +81,6 @@ export type EstadoDaBussola = Readonly<{
   inicio: PontoDaBussola;
   /** O ponto ao fim de cada turno, a partir do turno 0. */
   caminho: readonly Readonly<PontoDaBussola & { turno: number }>[];
+  /** Respostas a dilemas (V1-13); ausente nas partidas de antes. */
+  decisoes?: readonly DecisaoNaBussola[];
 }>;

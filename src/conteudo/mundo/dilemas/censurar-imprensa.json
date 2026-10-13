@@ -20,7 +20,10 @@
       "descricao": "Contestar ponto a ponto.",
       "controle": "ocorrencia_censurar_imprensa__responder",
       "duracaoMeses": 3,
-      "consequencias": ["censurar-imprensa--responder--confianca-instituicoes"]
+      "consequencias": [
+        "censurar-imprensa--responder--confianca-instituicoes",
+        "censurar-imprensa--responder--base-congresso"
+      ]
     },
     {
       "id": "cortar-publicidade",
@@ -56,6 +59,7 @@
     "censurar-imprensa--processar--liberdade-civil",
     "censurar-imprensa--processar--reputacao-internacional",
     "censurar-imprensa--processar--grupo-progressistas",
-    "censurar-imprensa--processar--grupo-classe-media"
+    "censurar-imprensa--processar--grupo-classe-media",
+    "censurar-imprensa--responder--base-congresso"
   ]
 }

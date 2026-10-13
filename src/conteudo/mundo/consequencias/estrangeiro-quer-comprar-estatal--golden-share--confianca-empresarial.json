@@ -1,0 +1,17 @@
+{
+  "id": "estrangeiro-quer-comprar-estatal--golden-share--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "ocorrencia_estrangeiro_quer_comprar_estatal__golden_share",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1.0,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
