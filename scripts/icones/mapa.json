@@ -312,6 +312,8 @@
     "ambiente": "leaf",
     "seguranca": "police-badge-outline",
     "direitos": "scale-balance",
-    "governo": "bank"
+    "governo": "bank",
+    "noturno": "weather-night",
+    "claro": "white-balance-sunny"
   }
 }

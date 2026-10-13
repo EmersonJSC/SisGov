@@ -1418,12 +1418,12 @@ export function MapaPolitico({
             height="48"
             patternUnits="userSpaceOnUse"
           >
-            <circle cx="24" cy="24" r="1.6" fill="#d9d2c0" />
+            <circle cx="24" cy="24" r="1.6" className="ponto-grade" />
           </pattern>
           <radialGradient id="fundo-presidencia" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stopColor="#ffffff" stopOpacity="0.9" />
-            <stop offset="0.55" stopColor="#eef5ee" stopOpacity="0.8" />
-            <stop offset="1" stopColor="#d5e8da" stopOpacity="0.85" />
+            <stop offset="0" className="fundo-presidencia-0" />
+            <stop offset="0.55" className="fundo-presidencia-1" />
+            <stop offset="1" className="fundo-presidencia-2" />
           </radialGradient>
           <clipPath id="corte-presidencia">
             <circle cx={p.x} cy={p.y} r={p.r} />

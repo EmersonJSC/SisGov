@@ -30,6 +30,7 @@ import {
   type AbaDosGrupos,
 } from "./PainelGrupos";
 import { MesaDoPresidente } from "./MesaDoPresidente";
+import { useModoNoturno } from "./modoNoturno";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { CatalogoDeLeis } from "./CatalogoDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
@@ -318,6 +319,7 @@ export function TelaPrincipal() {
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [jornalAberto, setJornalAberto] = useState(false);
+  const [tema, alternarTema] = useModoNoturno();
   const fecharJornal = useCallback(() => setJornalAberto(false), []);
   // a lupa abre com "/" ou Ctrl+K (fora de um campo de texto)
   useEffect(() => {
@@ -660,6 +662,22 @@ export function TelaPrincipal() {
         >
           <Icone nome={ICONE_INTERFACE.catalogo} tamanho={22} />
           <span>Leis fora do mapa</span>
+        </button>
+        <button
+          type="button"
+          className="botao-busca botao-tema"
+          onClick={alternarTema}
+          aria-label={tema === "noturno" ? "Modo claro" : "Modo noturno"}
+          title={tema === "noturno" ? "Modo claro" : "Modo noturno"}
+        >
+          <Icone
+            nome={
+              tema === "noturno"
+                ? ICONE_INTERFACE.claro
+                : ICONE_INTERFACE.noturno
+            }
+            tamanho={22}
+          />
         </button>
         <div className="turno">
           <Icone nome={ICONE_INTERFACE.turno} tamanho={20} />
