@@ -1,0 +1,87 @@
+{
+  "tipo": "congresso-bussola",
+  "versaoEsquema": 1,
+  "metodo": "O ponto de cada bancada é a média dos partidos de referência no V-Party (bussola/referencias.json). As cadeiras de cada bancada saem da camada 1; a eleição de 2026 é a prova, comparada em três somas porque partido real não se divide em extremo e não extremo.",
+  "bancadas": [
+    {
+      "id": "extrema_esquerda",
+      "nome": "Extrema esquerda",
+      "referencias": ["esquerda-de", "lfi", "podemos"]
+    },
+    {
+      "id": "esquerda",
+      "nome": "Esquerda",
+      "referencias": ["pt", "psb", "pdt"]
+    },
+    {
+      "id": "centro",
+      "nome": "Centro",
+      "referencias": ["psd-br", "mdb", "psdb"]
+    },
+    {
+      "id": "centrao",
+      "nome": "Centrão",
+      "referencias": ["pp", "republicanos-br", "dem"]
+    },
+    {
+      "id": "direita",
+      "nome": "Direita",
+      "referencias": ["dem", "pro", "rn-cl"]
+    },
+    {
+      "id": "extrema_direita",
+      "nome": "Extrema direita",
+      "referencias": ["psl", "vox", "liga"]
+    }
+  ],
+  "prova": {
+    "pais": "brasil",
+    "tolerancia": 0.1,
+    "fontes": [
+      "CNN Brasil, 'PL terá maior bancada da Câmara; federação do PT mantém segundo lugar' (out/2026), contagem da Câmara com 99,99% das urnas",
+      "CNN Brasil, 'PL elege 19 senadores e terá a maior bancada do Senado' (out/2026)"
+    ],
+    "grupos": [
+      {
+        "id": "esquerda",
+        "bancadas": ["extrema_esquerda", "esquerda"],
+        "camara": {
+          "cadeiras": 124,
+          "partidos": "Federação PT-PCdoB-PV 88, PSB 15, PSOL-Rede 15, PDT 6"
+        },
+        "senado": {
+          "cadeiras": 15,
+          "partidos": "PT 9, PSB 4, PDT 1, Rede 1"
+        }
+      },
+      {
+        "id": "centro",
+        "bancadas": ["centro", "centrao"],
+        "camara": {
+          "cadeiras": 257,
+          "partidos": "Federação União-PP 87, PSD 43, Republicanos 41, MDB 36, Podemos 27, PSDB-Cidadania 11, PRD-Solidariedade 7, Avante 5"
+        },
+        "senado": {
+          "cadeiras": 35,
+          "partidos": "MDB 8, Republicanos 6, PP 6, União 5, PSD 5, Podemos 2, PSDB 2, sem partido 1"
+        }
+      },
+      {
+        "id": "direita",
+        "bancadas": ["direita", "extrema_direita"],
+        "camara": {
+          "cadeiras": 132,
+          "partidos": "PL 121, Novo 10, Missão 1"
+        },
+        "senado": {
+          "cadeiras": 31,
+          "partidos": "PL 28, Novo 3"
+        }
+      }
+    ]
+  },
+  "trocaTroca": {
+    "taxaPorAno": 0.06,
+    "fonte": "Congresso em Foco, 'Um em cada quatro deputados trocou de partido na janela' (abr/2026): 122 de 513 deputados na janela de março de 2026, cerca de 24% por legislatura de 4 anos, 6% por ano."
+  }
+}

@@ -1,7 +1,7 @@
 # Câmara e Senado (V1-11)
 
-**Status:** EM REVISÃO (13/out). Desenho da etapa 0; o código só começa com
-a aprovação do autor.
+**Status:** APROVADO (13/out) e implementado (V1-11). Resultado da prova na
+seção 10.
 
 ## 0. Resumo
 
@@ -91,7 +91,10 @@ Os números da eleição ainda podem mudar um pouco (candidaturas sub judice).
 As frentes são listas de assinatura e incham: muita gente assina e não vota
 junto sempre. Por isso entram com um peso menor (seção 4).
 
-## 2. As 5 bancadas
+## 2. As 5 bancadas (primeira versão)
+
+> Substituída pelas 6 bancadas da seção 5.1. Fica como registro da soma real
+> por partido.
 
 Cadeiras eleitas em 2026, somadas por bancada: é o **alvo da prova** da
 camada 1, não o número que o jogo usa. A lista partido → bancada fica em
@@ -103,8 +106,8 @@ jogo ela sai da camada 1.
 | --------------- | --------------------------------------------------- | ------: | -----: | -------------------- | ----------------------------------------------------------------------------------------- |
 | Direita         | PL, Novo                                            |     131 |     31 | (7,4; 7,2)           | Conservadores, Evangélicos, Agronegócio, Empresários, Interior                            |
 | Centrão         | União-PP, Republicanos, Podemos, Missão             |     156 |     19 | (5,3; 1,9)           | Evangélicos, Agronegócio, Interior, Pequenos empreendedores                               |
-| Centro          | PSD, MDB, PSDB-Cidadania, PRD-Solidariedade, Avante |     102 |     16 | (2,3; -1,1)          | Interior, Classe média, Aposentados, Servidores públicos                                  |
-| Centro-esquerda | Federação PT-PCdoB-PV, PSB, PDT                     |     109 |     14 | (-2,2; -5,7)         | Pobres, Trabalhadores com carteira, Periferias, Agricultura familiar, Servidores públicos |
+| Centro          | PSD, MDB, PSDB-Cidadania, PRD-Solidariedade, Avante |     102 |     16 | (2,4; -1,3)          | Interior, Classe média, Aposentados, Servidores públicos                                  |
+| Centro-esquerda | Federação PT-PCdoB-PV, PSB, PDT                     |     109 |     14 | (-1,9; -4,7)         | Pobres, Trabalhadores com carteira, Periferias, Agricultura familiar, Servidores públicos |
 | Esquerda        | PSOL-Rede                                           |      15 |      1 | (-6; -8)             | Progressistas, Ambientalistas, Jovens, Informais e de aplicativo                          |
 | **Total**       |                                                     | **513** | **81** |                      |                                                                                           |
 
@@ -165,8 +168,8 @@ bússola vem de partidos de referência medidos no V-Party (já em
 | Bancada          | Referências (V-Party)                            | Bússola (eco, cost.) |
 | ---------------- | ------------------------------------------------ | -------------------- |
 | Extrema esquerda | A Esquerda (DE), França Insubmissa, Podemos (ES) | (-7,8; -5,6)         |
-| Esquerda         | PT, PSB, PDT                                     | (-2,2; -5,7)         |
-| Centro           | PSD, MDB, PSDB                                   | (2,3; -1,1)          |
+| Esquerda         | PT, PSB, PDT                                     | (-1,9; -4,7)         |
+| Centro           | PSD, MDB, PSDB                                   | (2,4; -1,3)          |
 | Centrão          | PP, Republicanos, DEM                            | (5,2; 1,0)           |
 | Direita          | DEM, PRO (AR), Renovação Nacional (CL)           | (4,9; -1,3)          |
 | Extrema direita  | PSL de 2018, Vox, Liga                           | (6,8; 6,3)           |
@@ -237,6 +240,52 @@ vêm da eleição de 2026, do V-Party e dos estudos citados.
    leis (seção 5.2).
 4. Extrema direita e extrema esquerda, com grupos de pressão ligados: **sim**
    (seção 5.1).
+
+## 10. Feito e prova (13/out)
+
+Código em `src/game/congresso/`, regras em `mundo/congresso.json`, bancadas e
+prova em `bussola/congresso.json`, casas em `paises/brasil/politica.json`.
+Relatório: `npx vite-node scripts/congresso/prova.ts`. Testes:
+`src/tests/congresso.test.ts` (16).
+
+**Camada 1, só com as 6 bancadas (perfis de agora):**
+
+| Grupo    | Câmara: modelo | Câmara: real | Erro | Senado: modelo | Senado: real | Erro |
+| -------- | -------------: | -----------: | ---: | -------------: | -----------: | ---: |
+| Esquerda |            141 |          124 | +14% |             22 |           15 | +47% |
+| Centro   |            251 |          257 |  −2% |             40 |           35 | +14% |
+| Direita  |            121 |          132 |  −8% |             19 |           31 | −39% |
+
+Passam 2 de 6 (tolerância de 10%): centro e direita na Câmara. O teste
+trava esse resultado; a meta é passarem os seis.
+
+**Por que não passa (medido, não ajustado à força):**
+
+- **Esquerda alta na Câmara.** O eleitor brasileiro vota mais à esquerda
+  para presidente do que para deputado (voto pessoal e clientelista no
+  deputado). Uma grade de ajuste acerta tudo se apagar a diferença entre os
+  perfis (fatores de 0,05 e 0,2), o que seria copiar a eleição; ficamos com
+  fatores de 0,4, que mantêm o perfil importando.
+- **Senado.** Os perfis não têm estado, e o Senado dá 3 cadeiras a cada
+  estado; os estados menores e mais conservadores pesam mais. Os perfis
+  também não cruzam território com valores (o IPF só cruza renda, ocupação,
+  idade e religião). Sem isso, o Senado fica como a Câmara.
+- **Frentes.** Na Câmara, o modelo dá 33% de agro (real: cerca de 64%,
+  estimativa do presidente da frente) e 49% de evangélica (real: 43%).
+  Faltam o agro como ocupação ligada ao interior e a religião ligada aos
+  valores nos perfis.
+
+**Próximos passos para a prova passar (a decidir):** cruzar nos perfis
+religião × valores e território × valores (pesquisas Datafolha e Quaest
+publicam esses cruzamentos), e dar estado aos perfis para o Senado.
+
+**Turno 0 com o seu partido:** 26 deputados e 4 senadores (5%). Disposição
+inicial: Extrema esquerda 49, Esquerda 63, Centro 61, Centrão 51, Direita 54,
+Extrema direita 38 (o ponto inicial do jogador é o ponto do país).
+
+**Valores inferidos, a calibrar no jogo:** bônus do governo (2), desvantagem
+do partido novo (1), peso da influência na frente (0,3), passo da influência
+(0,1 por turno). A taxa do troca-troca (6% ao ano) vem da janela de 2026.
 
 ## Fontes
 

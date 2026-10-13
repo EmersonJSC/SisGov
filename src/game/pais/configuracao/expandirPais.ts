@@ -190,11 +190,69 @@ export function expandirPais(
       else aprovacaoPorPerfis = aprovacao;
     }
   }
+  // Congresso (V1-11): as regras do mundo, as casas do país e os perfis com
+  // os atributos, para a partida eleger as bancadas.
+  let congresso: ScenarioManifest["congresso"];
+  const regrasDoCongresso =
+    typeof mundo.congresso === "string"
+      ? parse(files[mundo.congresso])
+      : undefined;
+  if (
+    politica.congresso &&
+    regrasDoCongresso &&
+    populacaoDoMundo &&
+    perfisDoPais
+  ) {
+    if (regrasDoCongresso.tipo !== "mundo-congresso")
+      erro(
+        String(mundo.congresso),
+        "tipo",
+        "O tipo deve ser mundo-congresso.",
+        "TIPO_INVALIDO",
+      );
+    else {
+      const perfisLidos = perfisDoPais as unknown as PerfisDoPais;
+      const segmentoDe: Record<string, string> = {};
+      const pesoDoSegmento: Record<string, number> = {};
+      for (const eixo of (populacaoDoMundo as unknown as PopulacaoDoMundo)
+        .eixos)
+        for (const [atributo, mapa] of Object.entries(eixo.atributos))
+          for (const [valor, segmento] of Object.entries(mapa)) {
+            segmentoDe[`${atributo}=${valor}`] = segmento;
+            pesoDoSegmento[segmento] = eixo.peso;
+          }
+      politica.congresso.casas.forEach((casa, i) => {
+        if (!(casa.cadeiras > 0) || !Number.isInteger(casa.cadeiras))
+          erro(
+            `${pasta}politica.json`,
+            `congresso.casas.${i}.cadeiras`,
+            "A casa precisa de um número inteiro de cadeiras.",
+          );
+      });
+      congresso = {
+        regras: regrasDoCongresso,
+        casas: politica.congresso.casas.map(
+          ({ id, nome, cadeiras, regra }) => ({
+            id,
+            nome,
+            cadeiras,
+            regra,
+          }),
+        ),
+        atributos: perfisLidos.atributos,
+        valores: perfisLidos.valores,
+        perfis: perfisLidos.perfis,
+        segmentoDe,
+        pesoDoSegmento,
+      };
+    }
+  }
   if (diagnostics.length > 0) return { ok: false, diagnostics };
 
   const novoMundo: Json = { ...mundo };
-  // O motor não conhece o arquivo de população do mundo.
+  // O motor não conhece os arquivos de população e do Congresso do mundo.
   delete novoMundo.populacao;
+  delete novoMundo.congresso;
   for (const lista of ["eventos", "situacoes", "dilemas", "consequencias"])
     if (Array.isArray(mundo[lista]))
       novoMundo[lista] = filtrar(strings(mundo[lista]), true);
@@ -258,6 +316,7 @@ export function expandirPais(
     mundo: pais.mundo,
     ...(populacao.perfis ? { perfis: populacao.perfis } : {}),
     ...(aprovacaoPorPerfis ? { aprovacaoPorPerfis } : {}),
+    ...(congresso ? { congresso } : {}),
     ...(organizacaoPath ? { organizacaoPolitica: organizacaoPath } : {}),
     estadoInicial: estadoPath,
   } as ScenarioManifest;

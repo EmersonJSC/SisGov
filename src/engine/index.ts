@@ -65,6 +65,7 @@ export type {
   ProfileApproval,
   PressureGroupManifest,
   PressureGroupsManifest,
+  CongressManifest,
   ScenarioManifest,
   VariableDefinition,
   VariableMeasure,

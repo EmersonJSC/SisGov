@@ -21,6 +21,7 @@ import {
 } from "./occurrences";
 import { createPressureState, type PressureState } from "./pressao";
 import { criarBussola, type EstadoDaBussola } from "./bussola";
+import { criarCongresso, type EstadoDoCongresso } from "./congresso";
 
 export type GameState = Readonly<{
   id: string;
@@ -48,6 +49,8 @@ export type GameState = Readonly<{
   pressure?: PressureState;
   /** Bússola política (V1-10): início e caminho do ponto. */
   compass?: EstadoDaBussola;
+  /** Congresso (V1-11): cadeiras, influência dos grupos e troca-troca. */
+  congress?: EstadoDoCongresso;
   execution: EngineExecution;
 }>;
 
@@ -292,6 +295,7 @@ export function createGame(
       : undefined;
   const pressure = createPressureState(content, execution.values);
   const compass = criarBussola(content, policies);
+  const congress = criarCongresso(content);
   return {
     ok: true,
     value: {
@@ -311,6 +315,7 @@ export function createGame(
       ...(occurrences ? { occurrences } : {}),
       ...(pressure ? { pressure } : {}),
       compass,
+      ...(congress ? { congress } : {}),
       execution,
     },
   };

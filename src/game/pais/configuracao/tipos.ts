@@ -60,6 +60,17 @@ export type PoliticaDoPais = {
   /** Partidos e perfis eleitorais antigos; saem com a eleição nova (V1-12). */
   estadoPolitico?: InitialStateFile["politica"];
   leisEleitorais?: readonly string[];
+  /** Casas do Congresso (V1-11): cadeiras e regra de cada uma. */
+  congresso?: {
+    fonte?: string;
+    casas: {
+      id: string;
+      nome: string;
+      cadeiras: number;
+      regra: "proporcional";
+      nota?: string;
+    }[];
+  };
 };
 
 /** `economia.json`: PIB e limites do orçamento de partida. */

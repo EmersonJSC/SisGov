@@ -828,5 +828,23 @@
   "leisEleitorais": [
     "eleicao-presidencial-pluralidade-nacional",
     "eleicao-senatorial-maiores-quotientes"
-  ]
+  ],
+  "congresso": {
+    "fonte": "Constituição, arts. 45 e 46: 513 deputados (proporcional) e 81 senadores (3 por estado, por maioria).",
+    "casas": [
+      {
+        "id": "camara",
+        "nome": "Câmara dos Deputados",
+        "cadeiras": 513,
+        "regra": "proporcional"
+      },
+      {
+        "id": "senado",
+        "nome": "Senado Federal",
+        "cadeiras": 81,
+        "regra": "proporcional",
+        "nota": "Na vida real é por maioria em cada estado; os perfis ainda não têm estado, então a regra fica proporcional (lacuna da prova)."
+      }
+    ]
+  }
 }

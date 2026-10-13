@@ -62,6 +62,11 @@ export type ScenarioManifest = {
    * partida usa para níveis, causas, patrocínio e tela.
    */
   gruposDePressao?: PressureGroupsManifest;
+  /**
+   * Congresso (V1-11), gerado na carga do país. O motor não lê: é o que a
+   * partida usa para eleger as bancadas a partir dos perfis.
+   */
+  congresso?: CongressManifest;
   perfis?: readonly {
     id: string;
     nome: string;
@@ -85,6 +90,25 @@ export type ProfileApproval = {
   perfis: readonly { peso: number; segmentos: readonly string[] }[];
   /** Eixos de cada segmento, só para a tela agrupar. O motor não lê. */
   eixos?: readonly { id: string; nome: string; segmentos: readonly string[] }[];
+};
+
+/** Congresso na partida (V1-11); ver `ScenarioManifest.congresso`. */
+export type CongressManifest = {
+  /** Regras do mundo (`mundo/congresso.json`), como estão no arquivo. */
+  regras: Readonly<Record<string, unknown>>;
+  casas: readonly {
+    id: string;
+    nome: string;
+    cadeiras: number;
+    regra: "proporcional";
+  }[];
+  /** Os perfis do país com os atributos (`perfis.json`). */
+  atributos: readonly string[];
+  valores: Readonly<Record<string, readonly string[]>>;
+  perfis: readonly (readonly number[])[];
+  /** `atributo=valor` → segmento, e o peso do eixo de cada segmento. */
+  segmentoDe: Readonly<Record<string, string>>;
+  pesoDoSegmento: Readonly<Record<string, number>>;
 };
 
 /** Grupos de pressão na partida (V1-09); ver `ScenarioManifest.gruposDePressao`. */

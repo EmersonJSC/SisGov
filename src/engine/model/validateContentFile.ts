@@ -164,6 +164,7 @@ function validateManifest(
       "perfis",
       "aprovacaoPorPerfis",
       "gruposDePressao",
+      "congresso",
       "organizacaoPolitica",
       "unidadeTemporal",
       "respostaDasBolhas",

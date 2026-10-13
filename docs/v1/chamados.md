@@ -335,6 +335,12 @@ Brasil, montado por estatística a partir da população.
 **Você vê.** Nada novo na tela: a votação acontece por trás e o resultado
 chega pelo tablet no V1-12.
 
+**Onde parou (13/out).** Feito, aguardando o `npm run check` do autor:
+bancadas saindo dos perfis, seu partido, troca-troca anual, frentes com
+influência e a nota do voto (camada 2) para o V1-12. Cadeiras somam 513 e 81
+(teste). Composição: passam centro e direita na Câmara; esquerda (+14%) e o
+Senado não passam (`desenho/congresso.md`, seção 10).
+
 **Divisão.** Claude: Pesquisa, monta as bancadas e o painel. Autor: Confere a
 composição e as bancadas.
 

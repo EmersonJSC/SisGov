@@ -6,6 +6,7 @@
   "populacao": "mundo/populacao.json",
   "pressao": "mundo/pressao.json",
   "patrocinadores": "mundo/patrocinadores.json",
+  "congresso": "mundo/congresso.json",
   "respostaDasBolhas": 0.875,
   "variaveis": "mundo/indicadores/variaveis.json",
   "catalogoPoliticas": "mundo/catalogo-leis.json",
