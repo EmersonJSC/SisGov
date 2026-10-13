@@ -181,6 +181,27 @@ Valor de venda: lucro da fatia × múltiplo do setor (com fonte de bolsa). A
 fatia estatal de partida em cada setor (petróleo, bancos, energia,
 saneamento, correios…) vai ter fonte no arquivo do país.
 
+### 8.1b Regras decididas pelo autor (13/out)
+
+- **Três leis por setor:** vender (privatizar), estatizar comprando e
+  expropriar. Uma trinca para cada setor: alimentos, mineração, eólica,
+  solar, petróleo, bancos… São muitas leis de privatização e estatização.
+- **O jogador escolhe a %** na lei (ex.: estatizar 50% das mineradoras). A
+  % é sobre o total das empresas grandes daquele setor.
+- **Leva no mínimo 2 turnos** para concluir. Durante a transição o cofre paga
+  (estatizar) ou recebe (vender) em parcelas, a cada turno.
+- **Não pode haver duas aprovadas juntas no mesmo setor.** Vender e estatizar
+  a mesma área se anulam: com uma em vigor, a outra nem vai ao Congresso.
+- **Expropriar é pegar sem pagar.** O cofre não paga nada, mas a confiança
+  das empresas e o investimento estrangeiro despencam, os patrocinadores
+  estrangeiros daquele setor reagem, e a lei exige antes mudar a Constituição
+  (no Brasil a desapropriação exige indenização prévia e justa, CF art. 5º,
+  XXIV). Foi o caminho de Cuba (1960) e da Venezuela (anos 2000).
+- **As duas rendem conforme as políticas.** A estatal rende mais ou menos
+  conforme o investimento que o governo põe nela e a gestão (lei das
+  estatais). A privada rende conforme a economia: valor da moeda, juros,
+  menos pobreza (mais gente comprando), impostos e regras do setor.
+
 ### 8.2 Energia: a corrida da capacidade
 
 Hoje o jogo já tem `preco_energia`, `oferta_energia` e `apagao`, e 15 coisas
@@ -204,16 +225,35 @@ para ele valer:
 | Nuclear | 5 anos  | Muito alto | Firme e limpa, mas cara, lenta e com risco                                     |
 
 O minijogo é planejar com anos de antecedência: quem não investe hoje tem
-apagão daqui a 3 anos. Se o autor preferir não ter isso, a energia sai do
-estudo e os três índices viram só pano de fundo.
+apagão daqui a 3 anos.
+
+**Decidido pelo autor (13/out):** a energia vira minijogo. A demanda sobe
+com o PIB, com as empresas e com a população. O governo tem um **orçamento
+de investimento em energia** que também cresce com o PIB (o país ganhando
+mais), e o jogador divide esse dinheiro entre as fontes.
+
+### 8.3 O mesmo molde em outras áreas (ideia para os chamados das áreas)
+
+O molde da energia é este: a necessidade cresce sozinha, a capacidade só
+cresce com investimento e prazo, e se faltar vem a crise. Ele serve para:
+
+- **Saúde:** leitos e médicos contra uma população que envelhece. Se faltar,
+  vêm fila, mortes evitáveis e queda da aprovação.
+- **Segurança:** vagas nos presídios e policiais contra a criminalidade. Se
+  faltar, vêm superlotação, facções e rebelião.
+- **Educação:** escolas e professores contra os alunos. Se faltar, vêm turma
+  lotada e queda no aprendizado.
+- **Transporte:** estradas e trilhos contra a carga que cresce com o PIB. Se
+  faltar, o frete encarece e a exportação perde.
+
+Cada um fica no chamado da sua área (V1-14 a V1-23), não no V1-35.
 
 ## 9. Perguntas para você
 
-1. A gangorra fica entre estatais e grandes privadas nacionais, com vender,
-   comprar ou expropriar? Recomendo.
-2. A energia vira a corrida da capacidade (demanda puxada pelo PIB, apagão,
-   escolha de fonte)? Recomendo.
-3. Faço o V1-35 antes de reescrever as 129 leis? Recomendo.
+1. A ordem fica assim: o desenho fica pronto agora, e o código do V1-35 só
+   vem depois do Congresso (V1-11 e V1-12), porque a lei de 2 turnos e a
+   regra de vender e estatizar não poderem estar juntas dependem da
+   tramitação? Recomendo.
 
 ## Fontes
 

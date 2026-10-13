@@ -465,7 +465,7 @@ Autor: Aprova a estrutura e confere os programas que mais conhece.
 
 ### V1-35: Empresas do país e Estado empresário
 
-**Tamanho:** G · **Depende de:** V1-34 · **Vem antes de:** V1-14 a V1-23
+**Tamanho:** G · **Depende de:** V1-34 e V1-12 (tramitação) · **Vem antes de:** V1-14 a V1-23
 
 **Objetivo.** Dar à economia empresas de verdade: o país tem grupos de
 empresas por setor, que faturam mais ou menos conforme as leis e os índices,
@@ -482,8 +482,12 @@ investir passam a mexer no cofre.
 - Faturamento puxado por leis e índices; imposto para as privadas e
   dividendo para as estatais
 - Privatizar e estatizar com dinheiro de uma vez entrando ou saindo do cofre
-- Investimentos com custo, prazo e capacidade a mais (projetos estratégicos
-  por setor, a energia por fonte como primeira mesa)
+- Três leis por setor (vender, estatizar comprando, expropriar), com a %
+  escolhida pelo jogador, no mínimo 2 turnos de transição pagos ou recebidos
+  em parcelas, e vender e estatizar o mesmo setor nunca em vigor juntos
+- Energia como minijogo: a demanda cresce com o PIB e a população, o
+  orçamento de investimento cresce com o PIB, e o jogador divide entre as
+  fontes; se a capacidade não acompanha, a energia encarece e vem o apagão
 
 **Não entra**
 
