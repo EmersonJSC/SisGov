@@ -109,6 +109,7 @@ O mandato jogável do começo ao fim: capital político, níveis legais, eleiç�
 O catálogo de 350 a 400 leis, área por área, eventos, dilemas e o Brasil 2026 completo. Cada área também zera o contexto dos seus índices e completa as ligações (decisão de 12/out, `docs/v1/desenho/rede.md` seção 9).
 
 - [ ] **V1-34** Leis de todos os lados e prova real da bússola (G)
+- [ ] **V1-35** Empresas do país e Estado empresário (G)
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)

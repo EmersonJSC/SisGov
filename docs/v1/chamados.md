@@ -463,6 +463,46 @@ terminou e a distância até o governo de verdade.
 **Divisão.** Claude: Pesquisa os programas, escreve o desenho e roda a prova.
 Autor: Aprova a estrutura e confere os programas que mais conhece.
 
+### V1-35: Empresas do país e Estado empresário
+
+**Tamanho:** G · **Depende de:** V1-34 · **Vem antes de:** V1-14 a V1-23
+
+**Objetivo.** Dar à economia empresas de verdade: o país tem grupos de
+empresas por setor, que faturam mais ou menos conforme as leis e os índices,
+e pagam impostos (privadas) ou dividendos (estatais). Privatizar, estatizar e
+investir passam a mexer no cofre.
+
+**Entra**
+
+- Etapa 0, desenho: `docs/v1/desenho/empresas-do-pais.md`, aprovado pelo
+  autor antes do código
+- Empresas do país na configuração do país: 4 grupos (estatais, grandes
+  privadas nacionais, multinacionais, pequenos negócios) em 10 setores, com
+  faturamento, dívida, lucro e capacidade física, números com fonte
+- Faturamento puxado por leis e índices; imposto para as privadas e
+  dividendo para as estatais
+- Privatizar e estatizar com dinheiro de uma vez entrando ou saindo do cofre
+- Investimentos com custo, prazo e capacidade a mais (projetos estratégicos
+  por setor, a energia por fonte como primeira mesa)
+
+**Não entra**
+
+- As leis novas de cada área (ficam nos chamados V1-14 a V1-23)
+
+**Aceite**
+
+- [ ] Desenho aprovado pelo autor antes do código
+- [ ] Privatizar e estatizar mudam o cofre no turno (teste)
+- [ ] Um investimento só aumenta a capacidade depois do prazo (teste)
+- [ ] Cada número da configuração tem fonte
+- [ ] Checagem de diferenciacao-d4.md feita
+
+**Você vê.** As empresas do país por grupo e setor, e o dinheiro de
+impostos e dividendos entrando no cofre a cada turno.
+
+**Divisão.** Claude: Pesquisa os números, escreve o desenho e o código.
+Autor: Aprova os grupos, os setores e a mesa de energia.
+
 ### V1-14: Conteúdo: Segurança e justiça penal
 
 **Tamanho:** M · **Depende de:** V1-05 a V1-11
