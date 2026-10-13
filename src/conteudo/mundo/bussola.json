@@ -915,13 +915,13 @@
       }
     },
     "protecao-violencia-domestica": {
-      "manifesto": ["per706", "per603"],
-      "porque": "Proteção da mulher contra a família como assunto privado.",
+      "manifesto": ["per706", "per603", "per605", "per504"],
+      "porque": "Tratar a agressão como assunto de família é moral tradicional. A lei especial junta proteção da mulher (igualdade) e pena mais dura (ordem), que se anulam: é pauta votada pelos dois lados. A proteção integral soma a rede de abrigos e atendimento, gasto do Estado.",
       "opcoes": {
         "assunto-privado": [0, 2],
         "crime-comum": [0, 0.5],
-        "medidas-protetivas": [0, -0.5],
-        "protecao-integral": [-0.5, -1]
+        "medidas-protetivas": [0, 0],
+        "protecao-integral": [-0.25, 0]
       }
     },
     "reajuste-de-beneficios": {

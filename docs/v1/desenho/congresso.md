@@ -298,6 +298,25 @@ direita também votam por pena maior para o feminicídio, e o jogo trata a
 proteção da mulher como pauta só da esquerda. Corrigir isso é mexer no
 conteúdo da lei (bússola dela e grupos que reagem), não na conta do voto.
 
+**Corrigido pela pesquisa (13/out, Marco E).** A lei contra a violência
+doméstica foi recodificada pelos temas do Manifesto Project, sem olhar a
+votação para escolher os números:
+
+- a lei especial junta a proteção da mulher (per706, igualdade) e a pena mais
+  dura (per605, lei e ordem), que puxam para lados opostos nos costumes:
+  `medidas-protetivas` passou de [0; −0,5] para [0; 0];
+- a proteção integral soma a rede de abrigos e atendimento (per504, gasto do
+  Estado): `protecao-integral` passou de [−0,5; −1] para [−0,25; 0];
+- os conservadores perdem pouco (−0,03 em vez de −0,1): na lei do feminicídio
+  de 2015 a bancada evangélica votou a favor e só pediu "sexo feminino" no
+  lugar de "gênero".
+
+Resultado: 17 de 18 lados certos e erro médio de 0,124 (antes, 16 e 0,151).
+O feminicídio ficou em 0,93 / 0,66 / 0,46 contra o real 1,00 / 0,92 / 0,61.
+O que sobra é a direita (46% contra 61%): o voto ainda pesa que a proteção
+integral aumenta o gasto e que a oposição vota menos com o governo. A
+catraca subiu para 17 lados e erro de 0,13.
+
 Ficou como teste de catraca (`bussola/votacoes-reais.json` e
 `tramitacao.test.ts`): o modelo não pode piorar. Duas votações importantes
 ficaram de fora porque o jogo já começa com elas valendo (arcabouço fiscal e

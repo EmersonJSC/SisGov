@@ -6,7 +6,7 @@
   "alvo": "grupo_conservadores",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.1,
+    "coeficiente": -0.03,
     "termoConstante": 0
   },
   "unidade": "indice_0_100",

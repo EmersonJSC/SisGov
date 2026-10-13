@@ -4,9 +4,9 @@
   "metodo": "Votações nominais do Plenário da Câmara (2023 a 2025) com uma lei parecida no jogo. Para cada uma, a parte dos deputados que votou sim em cada grupo (esquerda: PT, PCdoB, PV, PSB, PSOL, Rede, PDT; direita: PL, Novo; centro: os outros), sem contar abstenções. A prova manda a mesma mudança ao Congresso do turno 0 e compara a chance média de sim de cada grupo, pesada pelas cadeiras.",
   "fonte": "Câmara dos Deputados, dados abertos: votacoes, votacoesVotos e votacoesProposicoes de 2023, 2024 e 2025 (dadosabertos.camara.leg.br/arquivos), baixados em 13/out/2026. Contagem em scripts/congresso/votacoes_reais.py.",
   "prova": {
-    "ladoCertoMinimo": 16,
-    "erroMedioMaximo": 0.16,
-    "nota": "Medido em 13/out/2026: 16 de 18 lados certos e erro médio de 0,151. Os dois erros são a lei do feminicídio, que no Brasil o centro e a direita também apoiam (o jogo trata a proteção da mulher como pauta só da esquerda). Catraca: só pode melhorar."
+    "ladoCertoMinimo": 17,
+    "erroMedioMaximo": 0.13,
+    "nota": "Medido em 13/out/2026, depois de corrigir o lado da lei contra a violência doméstica pela pesquisa: 17 de 18 lados certos e erro médio de 0,124 (antes, 16 e 0,151). O erro que sobra é a direita no feminicídio: o modelo dá 46% de sim, a votação real deu 61%. Catraca: só pode melhorar."
   },
   "votacoes": [
     {
