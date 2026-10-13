@@ -1,10 +1,9 @@
 /**
- * A cadeira do presidente (SG106): os dilemas da mesa. O jogo pausa até o
- * jogador escolher uma opção; cada opção mostra o que mexe, quanto tempo
- * dura, as leis que muda e, escolhida, a prévia de um ano. O jogador pode
- * baixar a mesa para olhar o país antes de decidir.
+ * O cartão do dilema (SG106): cada opção mostra o que mexe, quanto tempo
+ * dura, as leis que muda e, escolhida, a prévia de um ano. Desde o V1-13 ele
+ * aparece no app de notificações do tablet, não numa janela própria.
  */
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import {
   preverDilema,
   type EfeitoPrevisto,
@@ -96,7 +95,7 @@ function Previa({
   );
 }
 
-function CartaoDilema({
+export function CartaoDilema({
   dilema,
   partida,
   onEscolher,
@@ -215,72 +214,5 @@ function CartaoDilema({
         </button>
       </footer>
     </article>
-  );
-}
-
-export function MesaDoPresidente({
-  dilemas,
-  partida,
-  onEscolher,
-  aberta,
-  onAbrir,
-  onBaixar,
-}: {
-  dilemas: readonly VisaoDilema[];
-  partida: Partida;
-  onEscolher: (dilemaId: string, opcaoId: string) => string | null;
-  aberta: boolean;
-  onAbrir: () => void;
-  onBaixar: () => void;
-}) {
-  const [indice, setIndice] = useState(0);
-  const atual = dilemas[Math.min(indice, dilemas.length - 1)];
-  const quantos = dilemas.length;
-  useEffect(() => setIndice(0), [quantos]);
-  const titulo = useMemo(
-    () =>
-      quantos === 1
-        ? "Um dilema na sua mesa"
-        : `${quantos} dilemas na sua mesa`,
-    [quantos],
-  );
-  if (!atual) return null;
-  if (!aberta)
-    return (
-      <button type="button" className="mesa-minimizada" onClick={onAbrir}>
-        <Icone nome={ICONE_INTERFACE.caneta} tamanho={18} />
-        {titulo}: decida para encerrar o turno
-      </button>
-    );
-  return (
-    <div className="mesa-fundo" role="dialog" aria-label={titulo}>
-      <div className="mesa">
-        <div className="mesa-barra">
-          <span className="mesa-titulo">A cadeira do presidente</span>
-          {quantos > 1 ? (
-            <span className="mesa-paginas">
-              {dilemas.map((d, i) => (
-                <button
-                  key={d.id}
-                  type="button"
-                  className={i === indice ? "ativa" : undefined}
-                  onClick={() => setIndice(i)}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </span>
-          ) : null}
-          <button type="button" className="mesa-baixar" onClick={onBaixar}>
-            Ver o país antes
-          </button>
-        </div>
-        <CartaoDilema
-          dilema={atual}
-          partida={partida}
-          onEscolher={onEscolher}
-        />
-      </div>
-    </div>
   );
 }

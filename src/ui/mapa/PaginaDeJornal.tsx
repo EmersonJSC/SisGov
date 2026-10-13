@@ -1,9 +1,10 @@
 /**
- * O tablet do turno (pedido do autor, 11/out; virou tablet em 13/out): chega
- * a cada fim de turno e pode ser aberto pela barra. Cabe numa tela só: os
- * números do país em destaque no topo, as notícias (clicar mostra as
- * consequências) e os posts da rua, dos grupos de pressão, do mercado e de
- * fora. O conteúdo vem de `montarJornal`.
+ * O tablet do presidente (pedido do autor, 11/out; virou tablet em 13/out):
+ * chega com o jornal a cada fim de turno e abre pela barra. Tela inicial com
+ * as notificações e os apps (V1-13): notificações (dilemas e pedidos do
+ * Congresso), jornal (os números do país e as notícias), rede (os posts da
+ * rua, dos grupos de pressão, do mercado e de fora), Congresso e bússola. O
+ * conteúdo do jornal vem de `montarJornal`.
  */
 import { useEffect, useState } from "react";
 import type {
@@ -16,17 +17,23 @@ import { Icone } from "./Icone";
 import { ICONE_INTERFACE } from "./icones";
 import { corDaBondade } from "./intensidade";
 import { NOME_NIVEL } from "./MesaDoPresidente";
-import type { VisaoBussola, VisaoDaTramitacao } from "../../app/partida";
+import type {
+  Partida,
+  VisaoBussola,
+  VisaoDaTramitacao,
+  VisaoDilema,
+} from "../../app/partida";
 import { BussolaPolitica } from "./BussolaPolitica";
 import { CongressoNoTablet } from "./CongressoNoTablet";
+import {
+  NotificacoesNoTablet,
+  TituloDaNotificacao,
+  notificacoesDe,
+  type Notificacao,
+} from "./NotificacoesNoTablet";
 
-export type AppDoTablet = "jornal" | "bussola" | "congresso";
-
-const TITULO_DO_APP: Readonly<Record<AppDoTablet, string>> = {
-  jornal: "Notícias do turno",
-  bussola: "Bússola política",
-  congresso: "Congresso Nacional",
-};
+export type AppDoTablet =
+  "inicio" | "notificacoes" | "jornal" | "rede" | "bussola" | "congresso";
 
 /** Linha de evolução do índice desde o começo da partida. */
 function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
@@ -180,6 +187,96 @@ function Post({ post }: { post: OpiniaoDoJornal }) {
   );
 }
 
+type App = Readonly<{
+  id: AppDoTablet;
+  nome: string;
+  icone: string;
+  titulo: string;
+}>;
+
+const APPS: readonly App[] = [
+  {
+    id: "notificacoes",
+    nome: "Notificações",
+    icone: ICONE_INTERFACE.notificacoes,
+    titulo: "Notificações",
+  },
+  {
+    id: "jornal",
+    nome: "Jornal",
+    icone: ICONE_INTERFACE.jornal,
+    titulo: "Diário da República",
+  },
+  { id: "rede", nome: "Rede", icone: ICONE_INTERFACE.rede, titulo: "Na rede" },
+  {
+    id: "congresso",
+    nome: "Congresso",
+    icone: ICONE_INTERFACE.congresso,
+    titulo: "Congresso Nacional",
+  },
+  {
+    id: "bussola",
+    nome: "Bússola",
+    icone: ICONE_INTERFACE.bussola,
+    titulo: "Bússola política",
+  },
+];
+
+/** Tela inicial: a data, as notificações e os apps. */
+function Inicio({
+  apps,
+  data,
+  notificacoes,
+  contagem,
+  onAbrir,
+  onNotificacao,
+}: {
+  apps: readonly App[];
+  data: string;
+  notificacoes: readonly Notificacao[];
+  contagem: (app: AppDoTablet) => number;
+  onAbrir: (app: AppDoTablet) => void;
+  onNotificacao: (id: string) => void;
+}) {
+  return (
+    <div className="ti-inicio">
+      <p className="ti-data">{data}</p>
+      <section className="ti-avisos" aria-label="Notificações">
+        {notificacoes.length ? (
+          <ul>
+            {notificacoes.slice(0, 4).map((n) => (
+              <li key={n.id}>
+                <button
+                  type="button"
+                  className={`nt-item nt-${n.tipo}`}
+                  onClick={() => onNotificacao(n.id)}
+                >
+                  <TituloDaNotificacao n={n} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="tb-calmo">Nenhuma notificação.</p>
+        )}
+      </section>
+      <nav className="ti-apps" aria-label="Apps">
+        {apps.map((a) => (
+          <button key={a.id} type="button" onClick={() => onAbrir(a.id)}>
+            <span className="ti-icone">
+              <Icone nome={a.icone} tamanho={30} />
+              {contagem(a.id) ? (
+                <span className="tb-contador">{contagem(a.id)}</span>
+              ) : null}
+            </span>
+            {a.nome}
+          </button>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
 export function PaginaDeJornal({
   edicao,
   data,
@@ -187,28 +284,34 @@ export function PaginaDeJornal({
   onFechar,
   bussola,
   congresso,
+  partida,
+  dilemas = [],
+  onEscolherDilema = () => null,
   nomeDaLei = (id) => id,
   onResponderPedido = () => {},
-  appInicial = "jornal",
+  appInicial = "inicio",
 }: {
   edicao: EdicaoDoJornal;
   /** "2º trimestre · ano 1". */
   data: string;
   numero: number;
   onFechar: () => void;
-  /** App da bússola (V1-10); sem ela, o tablet só tem o jornal. */
+  /** App da bússola (V1-10). */
   bussola?: VisaoBussola;
   /** App do Congresso (V1-12): as cadeiras, a fila e as votações. */
   congresso?: VisaoDaTramitacao;
+  /** A partida, para a prévia dos dilemas (V1-13). */
+  partida?: Partida;
+  /** Dilemas esperando resposta: viram notificações (V1-13). */
+  dilemas?: readonly VisaoDilema[];
+  onEscolherDilema?: (dilemaId: string, opcaoId: string) => string | null;
   nomeDaLei?: (id: string) => string;
   onResponderPedido?: (pedidoId: string, aceitar: boolean) => void;
   appInicial?: AppDoTablet;
 }) {
-  const tem = (a: AppDoTablet) =>
-    a === "jornal" || (a === "bussola" ? !!bussola : !!congresso);
-  const [app, setApp] = useState<AppDoTablet>(
-    tem(appInicial) ? appInicial : "jornal",
-  );
+  const [app, setApp] = useState<AppDoTablet>(appInicial);
+  useEffect(() => setApp(appInicial), [appInicial]);
+  const [selecionada, setSelecionada] = useState<string | null>(null);
   const [aberta, setAberta] = useState<string | null>(null);
   const alternar = (id: string) => setAberta((a) => (a === id ? null : id));
   useEffect(() => {
@@ -219,12 +322,38 @@ export function PaginaDeJornal({
     return () => window.removeEventListener("keydown", tecla);
   }, [onFechar]);
   const principal = edicao.principal;
+  const notificacoes = notificacoesDe(partida ? dilemas : [], congresso);
+  const tem = (a: AppDoTablet) =>
+    a === "bussola" ? !!bussola : a === "congresso" ? !!congresso : true;
+  const apps = APPS.filter((a) => tem(a.id));
+  const contagem = (a: AppDoTablet) =>
+    a === "notificacoes" ? notificacoes.length : 0;
+  const abrirNotificacao = (id: string) => {
+    setSelecionada(id);
+    setApp("notificacoes");
+  };
+  const titulo =
+    app === "inicio"
+      ? "Tablet do presidente"
+      : (APPS.find((a) => a.id === app)?.titulo ?? "");
+  const subtitulo =
+    app === "jornal"
+      ? `Edição nº ${numero} · ${data}`
+      : app === "bussola"
+        ? `Para onde as suas leis levam o país · ${data}`
+        : app === "congresso"
+          ? `Quem senta onde e o que vai a voto · ${data}`
+          : app === "rede"
+            ? `O que dizem do governo · ${data}`
+            : app === "notificacoes"
+              ? "Os dilemas seguram o turno até a resposta"
+              : "Notificações e apps";
 
   return (
     <div
       className="tb-fundo"
       role="dialog"
-      aria-label={TITULO_DO_APP[app]}
+      aria-label={titulo}
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onFechar();
       }}
@@ -233,24 +362,10 @@ export function PaginaDeJornal({
         <span className="tb-camera" aria-hidden />
         <div className="tb-tela">
           <header className="tb-app">
-            {app === "jornal" ? (
-              <div>
-                <h1>Diário da República</h1>
-                <p>
-                  Edição nº {numero} · {data}
-                </p>
-              </div>
-            ) : app === "bussola" ? (
-              <div>
-                <h1>Bússola política</h1>
-                <p>Para onde as suas leis levam o país · {data}</p>
-              </div>
-            ) : (
-              <div>
-                <h1>Congresso Nacional</h1>
-                <p>Quem senta onde e o que vai a voto · {data}</p>
-              </div>
-            )}
+            <div>
+              <h1>{titulo}</h1>
+              <p>{subtitulo}</p>
+            </div>
             <button
               type="button"
               className="tb-fechar"
@@ -261,7 +376,25 @@ export function PaginaDeJornal({
             </button>
           </header>
 
-          {app === "bussola" && bussola ? (
+          {app === "inicio" ? (
+            <Inicio
+              apps={apps}
+              data={data}
+              notificacoes={notificacoes}
+              contagem={contagem}
+              onAbrir={setApp}
+              onNotificacao={abrirNotificacao}
+            />
+          ) : app === "notificacoes" && partida ? (
+            <NotificacoesNoTablet
+              notificacoes={notificacoes}
+              selecionada={selecionada}
+              onSelecionar={setSelecionada}
+              partida={partida}
+              onEscolherDilema={onEscolherDilema}
+              onResponderPedido={onResponderPedido}
+            />
+          ) : app === "bussola" && bussola ? (
             <BussolaPolitica bussola={bussola} />
           ) : app === "congresso" && congresso ? (
             <CongressoNoTablet
@@ -269,6 +402,14 @@ export function PaginaDeJornal({
               nomeDaLei={nomeDaLei}
               onResponder={onResponderPedido}
             />
+          ) : app === "rede" ? (
+            <div className="tb-colunas tb-uma-coluna">
+              <section className="tb-rede" aria-label="O que dizem na rede">
+                {edicao.opinioes.map((o) => (
+                  <Post key={o.arroba} post={o} />
+                ))}
+              </section>
+            </div>
           ) : (
             <div className="tb-jornal">
               <section className="tb-numeros" aria-label="O país em números">
@@ -279,7 +420,7 @@ export function PaginaDeJornal({
                 </ul>
               </section>
 
-              <div className="tb-colunas">
+              <div className="tb-colunas tb-uma-coluna">
                 <section className="tb-noticias" aria-label="Notícias">
                   <h2>Notícias</h2>
                   {principal ? (
@@ -306,54 +447,38 @@ export function PaginaDeJornal({
                     </p>
                   ) : null}
                 </section>
-
-                <section className="tb-rede" aria-label="O que dizem na rede">
-                  <h2>Na rede</h2>
-                  {edicao.opinioes.map((o) => (
-                    <Post key={o.arroba} post={o} />
-                  ))}
-                </section>
               </div>
             </div>
           )}
-          {bussola || congresso ? (
-            <nav className="tb-dock" aria-label="Apps do tablet">
+          <nav className="tb-dock" aria-label="Apps do tablet">
+            <button
+              type="button"
+              aria-pressed={app === "inicio"}
+              onClick={() => setApp("inicio")}
+            >
+              <Icone nome={ICONE_INTERFACE.inicio} tamanho={20} />
+              Início
+            </button>
+            {apps.map((a) => (
               <button
+                key={a.id}
                 type="button"
-                aria-pressed={app === "jornal"}
-                onClick={() => setApp("jornal")}
+                aria-pressed={app === a.id}
+                onClick={() => setApp(a.id)}
               >
-                <Icone nome={ICONE_INTERFACE.jornal} tamanho={20} />
-                Jornal
+                <Icone nome={a.icone} tamanho={20} />
+                {a.nome}
+                {contagem(a.id) ? (
+                  <span
+                    className="tb-contador"
+                    aria-label={`${contagem(a.id)} esperando`}
+                  >
+                    {contagem(a.id)}
+                  </span>
+                ) : null}
               </button>
-              <button
-                type="button"
-                aria-pressed={app === "bussola"}
-                onClick={() => setApp("bussola")}
-              >
-                <Icone nome={ICONE_INTERFACE.bussola} tamanho={20} />
-                Bússola
-              </button>
-              {congresso ? (
-                <button
-                  type="button"
-                  aria-pressed={app === "congresso"}
-                  onClick={() => setApp("congresso")}
-                >
-                  <Icone nome={ICONE_INTERFACE.congresso} tamanho={20} />
-                  Congresso
-                  {congresso.pedidos.length ? (
-                    <span
-                      className="tb-contador"
-                      aria-label={`${congresso.pedidos.length} pedidos`}
-                    >
-                      {congresso.pedidos.length}
-                    </span>
-                  ) : null}
-                </button>
-              ) : null}
-            </nav>
-          ) : null}
+            ))}
+          </nav>
         </div>
       </div>
     </div>

@@ -34,7 +34,6 @@ import {
   PainelGrupos,
   type AbaDosGrupos,
 } from "./PainelGrupos";
-import { MesaDoPresidente } from "./MesaDoPresidente";
 import { useModoNoturno } from "./modoNoturno";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { CatalogoDeLeis } from "./CatalogoDeLeis";
@@ -326,7 +325,6 @@ export function TelaPrincipal() {
       }),
     [],
   );
-  const [mesaAberta, setMesaAberta] = useState(true);
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [salvarAberto, setSalvarAberto] = useState(false);
@@ -398,6 +396,9 @@ export function TelaPrincipal() {
     () => (partida ? verTramitacao(partida) : null),
     [partida],
   );
+  // V1-13: dilemas e pedidos do Congresso esperando no tablet
+  const avisosNoTablet =
+    (visao?.ocorrencias.mesa.length ?? 0) + (congresso?.pedidos.length ?? 0);
   // A estrutura (leis, bolhas, ligações) só muda quando uma lei entra em
   // vigor ou é revogada (D-65): refaz só nessa hora.
   const estrutura = useRef<ReturnType<typeof montarEstrutura> | null>(null);
@@ -525,7 +526,6 @@ export function TelaPrincipal() {
     setJanelas([]);
     setSalvarAberto(false);
     setTablet(false);
-    setMesaAberta(true);
   };
 
   // V1-12: aceitar ou recusar o pedido de uma bancada
@@ -563,9 +563,9 @@ export function TelaPrincipal() {
 
   const passarTurno = () => {
     if (!partida || passando) return;
-    // SG106: com dilema na mesa, o botão traz a mesa de volta
+    // V1-13: com dilema sem resposta, o botão abre as notificações
     if (visao && visao.ocorrencias.mesa.length > 0) {
-      setMesaAberta(true);
+      setTablet("notificacoes");
       return;
     }
     setPassando(true);
@@ -599,14 +599,11 @@ export function TelaPrincipal() {
       setHistorico((h) => [...h, fotoDoTurno(visao!)]);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
-      // o jornal do trimestre chega com o fim do turno; com pedido de
-      // bancada esperando resposta, abre o Congresso
-      setTablet(
-        verTramitacao(r.value.partida).pedidos.length ? "congresso" : "jornal",
-      );
+      // o jornal do trimestre chega com o fim do turno; dilemas e pedidos
+      // ficam nas notificações do tablet (V1-13)
+      setTablet("jornal");
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
-      setMesaAberta(true);
     }, 30);
   };
 
@@ -699,35 +696,15 @@ export function TelaPrincipal() {
         <button
           type="button"
           className="botao-busca"
-          onClick={() => setTablet("jornal")}
-          title="Jornal do trimestre: notícias, índices e opiniões"
+          onClick={() => setTablet("inicio")}
+          title="Tablet: notificações, jornal, rede, Congresso e bússola"
         >
-          <Icone nome={ICONE_INTERFACE.jornal} tamanho={22} />
-          <span>Jornal</span>
+          <Icone nome={ICONE_INTERFACE.tablet} tamanho={22} />
+          <span>Tablet</span>
+          {avisosNoTablet ? (
+            <span className="tb-contador">{avisosNoTablet}</span>
+          ) : null}
         </button>
-        <button
-          type="button"
-          className="botao-busca"
-          onClick={() => setTablet("bussola")}
-          title="Bússola política: para onde as suas leis levam o país"
-        >
-          <Icone nome={ICONE_INTERFACE.bussola} tamanho={22} />
-          <span>Bússola</span>
-        </button>
-        {congresso?.casas.length ? (
-          <button
-            type="button"
-            className="botao-busca"
-            onClick={() => setTablet("congresso")}
-            title="Congresso: as bancadas, a fila de votação e os pedidos"
-          >
-            <Icone nome={ICONE_INTERFACE.congresso} tamanho={22} />
-            <span>Congresso</span>
-            {congresso.pedidos.length ? (
-              <span className="tb-contador">{congresso.pedidos.length}</span>
-            ) : null}
-          </button>
-        ) : null}
         <button
           type="button"
           className="botao-busca"
@@ -790,7 +767,10 @@ export function TelaPrincipal() {
           congresso={congresso?.casas.length ? congresso : undefined}
           nomeDaLei={(id) => visao.leis.find((l) => l.id === id)?.nome ?? id}
           onResponderPedido={responderAoPedido}
-          appInicial={tablet || "jornal"}
+          partida={partida ?? undefined}
+          dilemas={visao.ocorrencias.mesa}
+          onEscolherDilema={escolherDilema}
+          appInicial={tablet || "inicio"}
         />
       ) : null}
 
@@ -961,15 +941,6 @@ export function TelaPrincipal() {
 
         <AcontecendoAgora ocorrencias={visao.ocorrencias.emCurso} />
 
-        <MesaDoPresidente
-          dilemas={visao.ocorrencias.mesa}
-          partida={partida}
-          onEscolher={escolherDilema}
-          aberta={mesaAberta}
-          onAbrir={() => setMesaAberta(true)}
-          onBaixar={() => setMesaAberta(false)}
-        />
-
         <button
           type="button"
           className={`botao-turno${passando ? " ocupado" : ""}${visao.ocorrencias.mesa.length ? " travado" : ""}`}
@@ -977,7 +948,7 @@ export function TelaPrincipal() {
           disabled={passando}
           title={
             visao.ocorrencias.mesa.length
-              ? "Decida o dilema da mesa para encerrar o turno"
+              ? "Responda os dilemas nas notificações do tablet para encerrar o turno"
               : undefined
           }
         >
@@ -985,7 +956,7 @@ export function TelaPrincipal() {
             {passando
               ? "Calculando…"
               : visao.ocorrencias.mesa.length
-                ? "Decida o dilema"
+                ? "Responder dilema"
                 : "Encerrar turno"}
           </span>
           <Icone nome={ICONE_INTERFACE.seguir} tamanho={22} />

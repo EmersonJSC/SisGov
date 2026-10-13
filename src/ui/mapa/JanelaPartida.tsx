@@ -194,7 +194,7 @@ export function JanelaPartida({
         <h3>Em arquivo</h3>
         <div className="salvar-linha">
           <button type="button" disabled={ocupado} onClick={baixar}>
-            <Icone nome={ICONE_INTERFACE.partida} tamanho={18} />
+            <Icone nome={ICONE_INTERFACE.baixarArquivo} tamanho={18} />
             Baixar arquivo
           </button>
           <button

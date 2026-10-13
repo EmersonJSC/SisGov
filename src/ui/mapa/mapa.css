@@ -4888,3 +4888,185 @@ button {
 .salvar-aviso.erro {
   color: light-dark(#b23345, #fd8a91);
 }
+
+/* ------------------------- tablet: início e notificações (V1-13) -- */
+
+/* com seis apps no dock, a largura do tablet vem da tela, não do dock */
+.tb-fundo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tb-dock {
+  justify-content: safe center;
+  overflow-x: auto;
+}
+
+.tb-colunas.tb-uma-coluna {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
+.ti-inicio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 14px;
+  min-height: 0;
+  padding: 18px 24px;
+  overflow-y: auto;
+}
+
+.ti-data {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.ti-avisos ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ti-apps {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 18px;
+  padding-top: 6px;
+}
+
+.ti-apps button {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 92px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ti-icone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: light-dark(#fff, #262626);
+  box-shadow: 0 1px 3px rgba(20, 30, 50, 0.15);
+}
+
+.ti-icone .tb-contador {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.nt-app {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: 14px;
+  min-height: 0;
+  padding: 12px 18px;
+}
+
+.nt-vazio {
+  display: block;
+}
+
+.nt-lista {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.nt-item {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+  border-left: 4px solid light-dark(#b23345, #fd8a91);
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nt-item.nt-pedido {
+  border-left-color: light-dark(#c98a00, #f0c050);
+}
+
+.nt-item[aria-current="true"] {
+  border-color: light-dark(#c9d2df, #4a4f57);
+  background: light-dark(#e3e8ef, #1d1f22);
+}
+
+.nt-item strong {
+  font-family: var(--serifa);
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.nt-item small {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+}
+
+.nt-detalhe {
+  display: flex;
+  min-height: 0;
+}
+
+.mesa.nt-mesa {
+  width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.nt-pedido {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+}
+
+.nt-pedido h2 {
+  margin: 0;
+  font-family: var(--serifa);
+}
+
+.nt-pedido p {
+  margin: 0;
+}
+
+.nt-origem {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .nt-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
