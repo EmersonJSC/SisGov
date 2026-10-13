@@ -5,7 +5,7 @@ a aprovação do autor.
 
 ## 0. Resumo
 
-O Congresso tem **5 bancadas** (blocos de partidos), mas o tamanho delas e o
+O Congresso tem **6 bancadas mais o seu partido** (blocos de partidos), mas o tamanho delas e o
 voto delas **saem da rede**, não da estatística copiada. A eleição real de
 2026 serve de **prova**, como os 10 programas serviram para a bússola: o
 modelo tem que chegar perto dela sozinho.
@@ -134,15 +134,54 @@ A disposição (0 a 100) é o humor da bancada com o seu governo. Ela:
 
 Está na camada 2 (seção 0.1). O V1-12 usa essa nota para a tramitação.
 
-## 5. O seu partido
+## 5. O seu partido (decisão do autor, 13/out)
 
-Você escolhe, no começo, **qual bancada é a sua**. As cadeiras dela votam com
-você quase sempre (disciplina alta, mas não 100%, como na vida real). As
-outras você conquista com o que faz e com acordos.
+**Regra: o jogo nunca pergunta o lado do jogador.** O sistema descobre pelas
+leis que ele faz, como a bússola já faz.
+
+- O seu partido é **um bloco a mais**, fora das 6 bancadas. Ele ganhou a
+  eleição de 2026 (pode ser lido como terceira via, PT ou PL, mas o jogo não
+  diz), e começa com **poucas cadeiras**.
+- **O ponto dele na bússola é o seu ponto** (o rumo das suas leis). Começa
+  no ponto do país e anda com você.
+- **As cadeiras andam até ele** pela camada 3: cada ano, parte das cadeiras
+  das bancadas mais perto do seu ponto, cujo eleitor está satisfeito, passa
+  para o seu partido. Se você vai para a direita, quem vem é da direita; se
+  vai para a esquerda, vem da esquerda. Se você fica impopular, elas saem.
+- As cadeiras do seu partido votam com você quase sempre (mais de 80%,
+  como a base real segue o líder).
 
 Para outros países, a configuração diz quantas casas há (o Brasil tem duas;
 um país pode ter uma), quantas cadeiras cada uma tem, as bancadas e as
 regras de votação.
+
+## 5.1 Extremos e grupos de pressão (decisão do autor, 13/out)
+
+As bancadas passam a ser **6 mais o seu partido**: Extrema esquerda,
+Esquerda, Centro, Centrão, Direita e Extrema direita. O ponto de cada uma na
+bússola vem de partidos de referência medidos no V-Party (já em
+`bussola/referencias.json`), não do Brasil:
+
+| Bancada          | Referências (V-Party)                            | Bússola (eco, cost.) |
+| ---------------- | ------------------------------------------------ | -------------------- |
+| Extrema esquerda | A Esquerda (DE), França Insubmissa, Podemos (ES) | (-7,8; -5,6)         |
+| Esquerda         | PT, PSB, PDT                                     | (-2,2; -5,7)         |
+| Centro           | PSD, MDB, PSDB                                   | (2,3; -1,1)          |
+| Centrão          | PP, Republicanos, DEM                            | (5,2; 1,0)           |
+| Direita          | DEM, PRO (AR), Renovação Nacional (CL)           | (4,9; -1,3)          |
+| Extrema direita  | PSL de 2018, Vox, Liga                           | (6,8; 6,3)           |
+
+Quantas cadeiras cada uma tem sai da camada 1. A prova compara somas, porque
+partido real não se divide em extremo e não extremo: Extrema esquerda mais
+Esquerda tem que dar perto de 124 (PT e federação, PSB, PDT, PSOL-Rede), e
+assim por diante.
+
+**Grupos de pressão ligados a um extremo.** Alguns grupos de `pressao.md`
+são de um lado só (os "vistos como E" ou "D"). Eles pesam no humor da
+bancada do seu lado: quando os Militares da reserva, o Movimento armamentista
+ou a Rede de influenciadores de direita se mobilizam, a Extrema direita
+endurece; quando as Frentes populares de esquerda ou os Movimentos por terra
+se mobilizam, a Extrema esquerda endurece.
 
 ## 6. O que o jogador vê (decisão do autor, 13/out)
 
@@ -165,14 +204,14 @@ casas votam lá dentro com as três camadas, e volta para você só o resultado
 Não usa nada do D4: o D4 não tem Congresso com bancadas e votação. Os números
 vêm da eleição de 2026, do V-Party e dos estudos citados.
 
-## 9. Perguntas para você
+## 9. Respostas do autor (13/out)
 
-1. As **três camadas** (cadeiras saindo dos perfis, voto pela base que
-   elegeu, troca-troca no mandato), com a eleição de 2026 só como prova?
-   Recomendo.
-2. **O seu partido:** você escolhe uma das 5 bancadas no começo? Recomendo.
-3. **As frentes** (agro e evangélica) saem da camada 1, como a parte de cada
-   bancada eleita por esses segmentos? Recomendo.
+1. Três camadas, com a eleição de 2026 só como prova: **sim**.
+2. Escolher bancada: **nunca**. O seu partido nasce pequeno e anda com as
+   suas leis (seção 5).
+3. Frentes: explicadas de novo ao autor, aguardando.
+4. Extrema direita e extrema esquerda, com grupos de pressão ligados: **sim**
+   (seção 5.1).
 
 ## Fontes
 
