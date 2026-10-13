@@ -47,6 +47,12 @@ disposição de partida, tem que aprovar perto disso.
 
 - **Urgência** (art. 64, § 1º) encurta, mas custa: cada bancada perde um
   pouco de disposição (atropelar o Congresso irrita).
+- **Modo emergência** (pedido do autor, 13/out): o Congresso vota mais
+  rápido. Lei ordinária e complementar passam pelas duas casas no mesmo
+  turno, e a emenda cai de 4 para 2 turnos (na vida real, a "quebra de
+  interstício" e o calendário especial, como na emenda votada em poucos dias
+  no fim de 2022). Custa mais disposição que a urgência, e só pode ser usado
+  poucas vezes por ano.
 - **Medida provisória** só para o que seria lei ordinária e não trata de
   direito penal, eleições, direitos políticos e nacionalidade (art. 62,
   § 1º). Ela vale enquanto tramita; se cair, a lei volta ao que era e o
@@ -119,10 +125,9 @@ aprovada, o nível passa a ser um campo só, no arquivo do país.
 
 ## 8. Perguntas para você
 
-1. **Medida provisória** entra (vale já, cai em 2 turnos se não passar)?
-   Recomendo.
-2. **Tempo:** lei ordinária em 2 turnos e emenda em 4, com urgência que
-   encurta e irrita? Recomendo.
+1. Medida provisória: **sim** (autor, 13/out).
+2. Tempo de 2 e 4 turnos, com urgência: **sim**, e com modo emergência
+   (autor, 13/out).
 3. **Pauta com até 4 projetos** ao mesmo tempo? Recomendo, a calibrar.
 4. **Pedidos** (ministério, emendas, apoio a uma lei da bancada)? Recomendo.
 
