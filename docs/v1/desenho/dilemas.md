@@ -86,9 +86,9 @@ O V1-24 completa o conjunto depois.
   na barra de cima.
 - **App "Notificações"** no tablet: uma lista com os dilemas esperando
   resposta e os pedidos das bancadas do Congresso. Tocar num dilema abre a
-  mesma escolha de hoje (opções, efeitos e prévia de um ano), agora dentro do
-  tablet. Cada opção também mostra a setinha da bússola: para onde aquela
-  escolha puxa o governo.
+  escolha dentro do tablet. As opções mostram só o título e o texto: os
+  efeitos, as leis que mudam e a prévia de um ano aparecem depois de assinar.
+  A bússola muda calada; o jogador vê no app dela (pedido do autor, 13/out).
 - **O turno espera os dilemas.** Se você tenta encerrar o turno com dilema sem
   resposta, o tablet abre nas notificações. Os pedidos do Congresso não
   travam o turno: o projeto fica parado na fila até você responder.
@@ -114,7 +114,7 @@ dilema é escrito a partir de caso real. O que já é nosso:
 
 - as opções vêm de casos reais, com fonte;
 - cada opção tem lado medido na bússola, pelo Manifesto Project;
-- a prévia mostra os efeitos de um ano antes de escolher;
+- a decisão é às cegas: os efeitos e a prévia de um ano aparecem depois;
 - tudo chega pelo tablet, junto com o Congresso.
 
 ## 5. Aceite
@@ -150,5 +150,5 @@ dilema é escrito a partir de caso real. O que já é nosso:
 - **O ponto anda:** cada resposta entra na média da bússola como uma lei de
   importância 1 (`importancia.dilema`) e fica guardada na partida
   (`compass.decisoes`).
-- **Na tela:** cada opção mostra a setinha da bússola e a frase "Puxa para
-  …". A frase do rumo no jornal (seção 3) fica para depois.
+- **Na tela:** nada antes de assinar. Depois, o cartão mostra o que a decisão
+  mexe e a prévia de um ano, sem a bússola. A frase do rumo no jornal (seção 3) fica para depois.

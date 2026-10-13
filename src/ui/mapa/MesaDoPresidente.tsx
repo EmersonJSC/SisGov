@@ -1,7 +1,8 @@
 /**
- * O cartão do dilema (SG106): cada opção mostra o que mexe, quanto tempo
- * dura, as leis que muda e, escolhida, a prévia de um ano. Desde o V1-13 ele
- * aparece no app de notificações do tablet, não numa janela própria.
+ * O cartão do dilema (SG106): desde o V1-13 ele aparece no app de
+ * notificações do tablet. As opções não contam o que vão mexer: o
+ * resultado só aparece depois de assinar, e a bússola muda calada (o
+ * jogador vê no app dela).
  */
 import { useEffect, useState, type CSSProperties } from "react";
 import {
@@ -46,41 +47,6 @@ function Chip({ efeito }: { efeito: VisaoEfeitoOcorrencia }) {
   );
 }
 
-/** Para onde a opção puxa o governo na bússola (V1-13). */
-function LadoNaBussola({ lado }: { lado: readonly [number, number] }) {
-  const [economia, costumes] = lado;
-  const parte = (v: number, menos: string, mais: string) =>
-    Math.abs(v) < 0.25
-      ? null
-      : `${Math.abs(v) >= 1 ? "" : "um pouco "}${v < 0 ? menos : mais}`;
-  const partes = [
-    parte(economia, "Estado", "mercado"),
-    parte(costumes, "liberdade", "autoridade"),
-  ].filter((p): p is string => p !== null);
-  const r = 9;
-  const x = 12 + (economia / 2) * r;
-  const y = 12 - (costumes / 2) * r;
-  return (
-    <span
-      className="lado-bussola"
-      title="Para onde esta escolha puxa o governo na bússola"
-    >
-      <svg width={24} height={24} viewBox="0 0 24 24" aria-hidden>
-        <circle cx={12} cy={12} r={r + 1} className="lado-aro" />
-        <line x1={2} x2={22} y1={12} y2={12} className="lado-eixo" />
-        <line x1={12} x2={12} y1={2} y2={22} className="lado-eixo" />
-        {partes.length ? (
-          <line x1={12} y1={12} x2={x} y2={y} className="lado-seta" />
-        ) : null}
-        <circle cx={x} cy={y} r={2.4} className="lado-ponta" />
-      </svg>
-      {partes.length
-        ? `Puxa para ${partes.join(" e ")}`
-        : "Não puxa para lado nenhum"}
-    </span>
-  );
-}
-
 function Previa({
   efeitos,
   calculando,
@@ -110,7 +76,7 @@ function Previa({
   return (
     <div className="previa-dilema">
       <strong>
-        No próximo ano, o maior efeito (comparado com não responder):
+        No próximo ano, o maior efeito (comparado com não ter decidido):
       </strong>
       <ul>
         {itens.map(({ e, d }) => (
@@ -130,36 +96,97 @@ function Previa({
   );
 }
 
+/** O que a decisão assinada mexe: só aparece depois de assinar. */
+export type DilemaRespondido = Readonly<{
+  dilema: VisaoDilema;
+  opcao: VisaoDilema["opcoes"][number];
+  efeitos: readonly EfeitoPrevisto[] | null;
+}>;
+
+export function ResultadoDoDilema({
+  resultado,
+  onFechar,
+}: {
+  resultado: DilemaRespondido;
+  onFechar: () => void;
+}) {
+  const { dilema, opcao, efeitos } = resultado;
+  const chips = [...opcao.efeitos]
+    .sort((a, b) => Math.abs(b.pontos) - Math.abs(a.pontos))
+    .slice(0, 6);
+  return (
+    <article className={`dilema nivel-${dilema.nivel} dilema-resultado`}>
+      <header className="dilema-topo">
+        <span className={`selo-nivel nivel-${dilema.nivel}`}>Decidido</span>
+        <span className="dilema-origem">{dilema.manchete}</span>
+      </header>
+      <h2>{opcao.rotulo}</h2>
+      <p className="dilema-texto">{opcao.descricao}</p>
+      {chips.length ? (
+        <span className="chips-efeito">
+          {chips.map((e) => (
+            <Chip key={e.id} efeito={e} />
+          ))}
+        </span>
+      ) : null}
+      {opcao.leis.map((l) => (
+        <span key={l.id} className="opcao-lei">
+          Muda a lei {l.nome} → {l.para}
+        </span>
+      ))}
+      <small className="opcao-duracao">
+        Vale por {opcao.duracaoMeses}{" "}
+        {opcao.duracaoMeses === 1 ? "mês" : "meses"}
+      </small>
+      <Previa efeitos={efeitos} calculando={false} />
+      <footer className="dilema-rodape">
+        <button type="button" className="assinar-dilema" onClick={onFechar}>
+          Entendi
+        </button>
+      </footer>
+    </article>
+  );
+}
+
 export function CartaoDilema({
   dilema,
   partida,
   onEscolher,
+  onRespondido = () => {},
 }: {
   dilema: VisaoDilema;
   partida: Partida;
   onEscolher: (dilemaId: string, opcaoId: string) => string | null;
+  onRespondido?: (resultado: DilemaRespondido) => void;
 }) {
   const [escolhida, setEscolhida] = useState<string | null>(null);
-  const [previa, setPrevia] = useState<readonly EfeitoPrevisto[] | null>(null);
-  const [calculando, setCalculando] = useState(false);
+  const [assinando, setAssinando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
     setEscolhida(null);
-    setPrevia(null);
+    setAssinando(false);
     setErro(null);
   }, [dilema.id]);
 
-  useEffect(() => {
-    if (!escolhida) return;
-    setCalculando(true);
-    const id = window.setTimeout(() => {
-      const r = preverDilema(partida, dilema.id, escolhida, 4);
-      setCalculando(false);
-      setPrevia(r.ok ? r.value.efeitos : null);
-    }, 60);
-    return () => window.clearTimeout(id);
-  }, [partida, dilema.id, escolhida]);
+  const assinar = () => {
+    const opcao = dilema.opcoes.find((o) => o.id === escolhida);
+    if (!opcao) return;
+    setAssinando(true);
+    // deixa o botão mostrar o estado antes de simular o ano
+    window.setTimeout(() => {
+      const previa = preverDilema(partida, dilema.id, opcao.id, 4);
+      const falha = onEscolher(dilema.id, opcao.id);
+      setAssinando(false);
+      setErro(falha);
+      if (!falha)
+        onRespondido({
+          dilema,
+          opcao,
+          efeitos: previa.ok ? previa.value.efeitos : null,
+        });
+    }, 30);
+  };
 
   const nivel = dilema.nivel;
   return (
@@ -178,34 +205,16 @@ export function CartaoDilema({
         <p className="dilema-causa">Por causa de: {dilema.causa.nome}</p>
       ) : null}
       <p className="dilema-texto">{dilema.descricao}</p>
-      <p className="legenda-dilema">
-        <span>
-          <i style={{ "--cor-efeito": COR_EFEITO.melhora } as CSSProperties} />
-          bom para o país
-        </span>
-        <span>
-          <i style={{ "--cor-efeito": COR_EFEITO.piora } as CSSProperties} />
-          ruim para o país
-        </span>
-        <span>
-          <i style={{ "--cor-efeito": COR_EFEITO.neutro } as CSSProperties} />
-          depende
-        </span>
-        <span>▲ sobe · ▼ desce</span>
-      </p>
       <div className="opcoes-dilema" role="radiogroup" aria-label="Opções">
         {dilema.opcoes.map((op) => {
           const ativa = escolhida === op.id;
-          const efeitos = [...op.efeitos]
-            .sort((a, b) => Math.abs(b.pontos) - Math.abs(a.pontos))
-            .slice(0, 6);
           return (
             <button
               key={op.id}
               type="button"
               role="radio"
               aria-checked={ativa}
-              disabled={!op.disponivel}
+              disabled={!op.disponivel || assinando}
               className={`opcao-dilema${ativa ? " ativa" : ""}${op.disponivel ? "" : " bloqueada"}`}
               onClick={() => {
                 setEscolhida(op.id);
@@ -214,39 +223,23 @@ export function CartaoDilema({
             >
               <strong>{op.rotulo}</strong>
               <span className="opcao-texto">{op.descricao}</span>
-              {op.lado ? <LadoNaBussola lado={op.lado} /> : null}
-              {efeitos.length ? (
-                <span className="chips-efeito">
-                  {efeitos.map((e) => (
-                    <Chip key={e.id} efeito={e} />
-                  ))}
-                </span>
-              ) : null}
-              {op.leis.map((l) => (
-                <span key={l.id} className="opcao-lei">
-                  Muda a lei {l.nome} → {l.para}
-                </span>
-              ))}
-              <small className="opcao-duracao">
-                {op.disponivel
-                  ? `Vale por ${op.duracaoMeses} ${op.duracaoMeses === 1 ? "mês" : "meses"}`
-                  : op.motivo}
-              </small>
+              {op.disponivel ? null : (
+                <small className="opcao-duracao">{op.motivo}</small>
+              )}
             </button>
           );
         })}
       </div>
-      {escolhida ? <Previa efeitos={previa} calculando={calculando} /> : null}
       {erro ? <p className="erro">{erro}</p> : null}
       <footer className="dilema-rodape">
         <button
           type="button"
           className="assinar-dilema"
-          disabled={!escolhida}
-          onClick={() => escolhida && setErro(onEscolher(dilema.id, escolhida))}
+          disabled={!escolhida || assinando}
+          onClick={assinar}
         >
           <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
-          Assinar decisão
+          {assinando ? "Assinando…" : "Assinar decisão"}
         </button>
       </footer>
     </article>

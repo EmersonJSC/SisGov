@@ -9,7 +9,13 @@ import type {
   VisaoDaTramitacao,
   VisaoDilema,
 } from "../../app/partida";
-import { CartaoDilema, NOME_NIVEL } from "./MesaDoPresidente";
+import { useState } from "react";
+import {
+  CartaoDilema,
+  NOME_NIVEL,
+  ResultadoDoDilema,
+  type DilemaRespondido,
+} from "./MesaDoPresidente";
 
 type Pedido = VisaoDaTramitacao["pedidos"][number];
 
@@ -111,8 +117,22 @@ export function NotificacoesNoTablet({
   onEscolherDilema: (dilemaId: string, opcaoId: string) => string | null;
   onResponderPedido: (pedidoId: string, aceitar: boolean) => void;
 }) {
+  // a decisão assinada fica na tela até o jogador fechar
+  const [resultado, setResultado] = useState<DilemaRespondido | null>(null);
+  const verResultado = resultado ? (
+    <div className="mesa nt-mesa">
+      <ResultadoDoDilema
+        resultado={resultado}
+        onFechar={() => setResultado(null)}
+      />
+    </div>
+  ) : null;
   if (!notificacoes.length)
-    return (
+    return verResultado ? (
+      <div className="nt-app nt-so-detalhe">
+        <div className="nt-detalhe">{verResultado}</div>
+      </div>
+    ) : (
       <div className="nt-app nt-vazio">
         <p className="tb-calmo">
           Nenhuma notificação. Pode encerrar o turno quando quiser.
@@ -128,9 +148,12 @@ export function NotificacoesNoTablet({
           <li key={n.id}>
             <button
               type="button"
-              aria-current={n.id === atual.id}
+              aria-current={!resultado && n.id === atual.id}
               className={`nt-item nt-${n.tipo}`}
-              onClick={() => onSelecionar(n.id)}
+              onClick={() => {
+                setResultado(null);
+                onSelecionar(n.id);
+              }}
             >
               <TituloDaNotificacao n={n} />
             </button>
@@ -138,18 +161,20 @@ export function NotificacoesNoTablet({
         ))}
       </ul>
       <div className="nt-detalhe">
-        {atual.tipo === "dilema" ? (
-          // o papel da antiga mesa do presidente, agora dentro do tablet
-          <div className="mesa nt-mesa">
-            <CartaoDilema
-              dilema={atual.dilema}
-              partida={partida}
-              onEscolher={onEscolherDilema}
-            />
-          </div>
-        ) : (
-          <Pedido pedido={atual.pedido} onResponder={onResponderPedido} />
-        )}
+        {verResultado ??
+          (atual.tipo === "dilema" ? (
+            // o papel da antiga mesa do presidente, agora dentro do tablet
+            <div className="mesa nt-mesa">
+              <CartaoDilema
+                dilema={atual.dilema}
+                partida={partida}
+                onEscolher={onEscolherDilema}
+                onRespondido={setResultado}
+              />
+            </div>
+          ) : (
+            <Pedido pedido={atual.pedido} onResponder={onResponderPedido} />
+          ))}
       </div>
     </div>
   );
