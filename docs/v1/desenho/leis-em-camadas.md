@@ -132,14 +132,35 @@ Com "sistema público universal", a verba não pode ficar abaixo do piso
 A idade mínima, que hoje é lei solta, entra como camada de lei da mesa da
 previdência, travada pelo regime que está na Constituição.
 
-## 5. Como fica no tablet
+## 5. Como fica no mapa
 
-- **Uma mesa por assunto**, com as três camadas empilhadas, de cima para
-  baixo.
-- **Opção trancada aparece cinza**, com o motivo e a camada que trava.
-- **Vínculos aparecem como setas** para as outras mesas, com o efeito.
-- **O caminho no Congresso** vem da camada (V1-12): emenda na de cima, lei
-  na do meio, decreto na de baixo.
+A mesa não é uma tela nova: é um cacho de leis no mapa que já existe
+(`src/ui/mapa/README.md`), com a Presidência no centro e as 11 esferas em
+anel.
+
+- **Constituição na lente:** a camada de cima fica na parte da esfera voltada
+  para a Presidência, como as leis constitucionais já ficam hoje, com o
+  quadrado (emenda) ou o escudo (pétrea). Com a Presidência aberta, aparecem
+  todas juntas.
+- **Lei dentro da esfera:** no meio da esfera, junto do ministério dono, como
+  hoje.
+- **Alavanca colada na sua lei:** um nó menor encostado na lei que ela regula
+  (o valor do salário mínimo ao lado da fórmula).
+- **Um fio liga as camadas da mesma mesa,** da lente até a alavanca. Passar o
+  cursor numa delas acende as outras.
+- **Trava:** na janela da lei, a opção trancada aparece cinza, com o motivo
+  e um clique que leva à camada que trava ("tranca: Constituição, quem decide
+  o salário mínimo").
+- **Vínculo:** seta para a lei de outra esfera, como as setas de hoje (o
+  salário mínimo, em Trabalho, aponta para o reajuste dos benefícios, em
+  Previdência).
+- **Lei fora de vigor fica no tablet, não no mapa.** O tablet é o catálogo:
+  só as leis que o país não tem, separadas por área como no mapa, para
+  mandar ao Congresso. Quando passa, a lei sai do tablet e entra no mapa, na
+  sua mesa. Exemplo: no Brasil, a camada de Constituição do salário mínimo
+  está no mapa; uma lei nova que o Brasil não tem, como o programa de privatização, começa no tablet.
+- **O caminho no Congresso** vem da camada (V1-12): emenda na lente, lei no
+  meio, decreto na alavanca.
 
 ## 6. O que muda nas 129 leis
 
@@ -163,8 +184,7 @@ mesa com camadas que se trancam é nossa.
 
 1. **Cada assunto vira uma mesa com até três camadas** (Constituição, lei e
    alavanca), e a de cima tranca a de baixo? Recomendo.
-2. **Começamos pela mesa do salário mínimo** como piloto, jogável no tablet,
-   antes de converter as outras? Recomendo, para você testar se o minijogo
-   funciona.
+2. **Começamos pela mesa do salário mínimo** como piloto, jogável no mapa, antes de converter as outras? Recomendo, para você testar se o
+   minijogo funciona.
 3. **Os vínculos entre mesas** (salário mínimo puxa a previdência) entram já
    no piloto? Recomendo, porque é a parte que ensina.
