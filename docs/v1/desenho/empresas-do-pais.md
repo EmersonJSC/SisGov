@@ -154,14 +154,66 @@ Elas se juntam ao que já existe: estatais e privatização, regime do petróleo
 banco de desenvolvimento, saneamento, matriz energética, energia nuclear,
 investimento estrangeiro e imposto das empresas.
 
-## 8. Perguntas para você
+## 8. Os dois minijogos (pedido do autor, 13/out)
 
-1. **Os 4 grupos e os 10 setores** servem de base? Recomendo.
-2. **A energia** fica como a mesa da seção 5.3, com investimento estatal ou
-   leilão por fonte? Recomendo.
-3. **Isso vira o chamado V1-35** (Empresas do país e Estado empresário), feito
-   antes das leis de cada área, porque Contas, Trabalho e Energia dependem
-   dele? Recomendo, e já deixei proposto no plano.
+Regra: um número do país só existe no jogo se tiver minijogo por trás ou mexer
+em algum índice.
+
+### 8.1 Estatizar e privatizar: a gangorra
+
+As **estatais** e as **grandes privadas nacionais** ficam nas mãos das leis.
+Em cada setor, as duas somam 100% da parte nacional grande, e o jogador muda a
+divisão: privatizar aumenta a fatia privada e reduz a estatal, estatizar faz o
+contrário. **Multinacionais** e **pequenos negócios** ficam em outras leis
+(investimento estrangeiro, Simples, MEI) e não entram na gangorra.
+
+| O jogador faz | Cofre no turno                                                  | Depois, a cada turno                                                                              | Quem reage                                                |
+| ------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Privatiza X%  | Entra o valor de venda da fatia (uma vez)                       | Sai o dividendo dessa fatia; a empresa rende mais e paga mais imposto                             | Mercado gosta; sindicatos e funcionários das estatais não |
+| Estatiza X%   | Sai o valor de compra da fatia (uma vez, vira dívida se faltar) | Entra o dividendo; rende menos, mas o governo pode usar a estatal (segurar preço, crédito barato) | Sindicatos gostam; mercado e investidores não             |
+| Expropria X%  | Não sai nada                                                    | Igual a estatizar, mais um tombo na confiança empresarial e no investimento estrangeiro           | Patrocinadores estrangeiros e mercado reagem forte        |
+
+A escolha de verdade é: **dinheiro agora** (vender) ou **renda e controle depois**
+(manter ou comprar). A estatal dá uma alavanca a mais (segurar o preço do
+combustível, juro baixo no banco público), que custa lucro.
+
+Valor de venda: lucro da fatia × múltiplo do setor (com fonte de bolsa). A
+fatia estatal de partida em cada setor (petróleo, bancos, energia,
+saneamento, correios…) vai ter fonte no arquivo do país.
+
+### 8.2 Energia: a corrida da capacidade
+
+Hoje o jogo já tem `preco_energia`, `oferta_energia` e `apagao`, e 15 coisas
+mexem neles, mas **nenhum deles mexe em nada** (conferido nas consequências
+em 13/out). Ou seja, hoje o preço da energia não serve para nada. Proposta
+para ele valer:
+
+- **A demanda cresce junto com o PIB.** Se a capacidade não acompanha, falta
+  energia: o preço sobe e, se faltar muito, vem o apagão.
+- **O preço da energia** pesa na inflação (conta de luz), no custo da
+  indústria (que fatura menos e paga menos imposto) e no humor dos mais pobres.
+- **O apagão** derruba o PIB e a aprovação no turno.
+- **O jogador escolhe onde investir**, e cada fonte é uma troca:
+
+| Fonte   | Obra    | Custo      | Troca                                                                          |
+| ------- | ------- | ---------- | ------------------------------------------------------------------------------ |
+| Solar   | 1 ano   | Baixo      | Rápida e barata, mas só de dia: sem bateria ou gás, não segura o pico da noite |
+| Eólica  | 2 anos  | Baixo      | Barata, mas varia com o vento                                                  |
+| Gás     | 3 anos  | Médio      | Firme, mas emite e depende do preço do gás lá fora                             |
+| Hidro   | 5+ anos | Alto       | Energia barata por décadas, mas alaga floresta e sofre na seca                 |
+| Nuclear | 5 anos  | Muito alto | Firme e limpa, mas cara, lenta e com risco                                     |
+
+O minijogo é planejar com anos de antecedência: quem não investe hoje tem
+apagão daqui a 3 anos. Se o autor preferir não ter isso, a energia sai do
+estudo e os três índices viram só pano de fundo.
+
+## 9. Perguntas para você
+
+1. A gangorra fica entre estatais e grandes privadas nacionais, com vender,
+   comprar ou expropriar? Recomendo.
+2. A energia vira a corrida da capacidade (demanda puxada pelo PIB, apagão,
+   escolha de fonte)? Recomendo.
+3. Faço o V1-35 antes de reescrever as 129 leis? Recomendo.
 
 ## Fontes
 
