@@ -15,6 +15,7 @@ import {
 } from "react";
 import {
   BOLHAS_DO_ORCAMENTO,
+  type OpcoesDoEnvio,
   type PrevisaoLei,
   type RelatorioTurno,
   type VisaoBolha,
@@ -38,6 +39,13 @@ import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { corDaBondade, intensidadeDaBolha } from "./intensidade";
 import { ficaNaPresidencia, type BaseMapa } from "./layout";
+
+/** O caminho da lei no Congresso (V1-12). */
+const NOME_CAMINHO: Readonly<Record<string, string>> = {
+  "lei-ordinaria": "lei ordinária (maioria dos votos)",
+  "lei-complementar": "lei complementar (maioria absoluta)",
+  emenda: "emenda à Constituição (3/5, dois turnos em cada casa)",
+};
 
 const NOME_NIVEL_LEGAL: Readonly<Record<string, string>> = {
   petrea: "Cláusula pétrea",
@@ -475,7 +483,8 @@ export function DocumentoLei({
   erro: string | null;
   horizonte: Horizonte;
   onHorizonte: (h: Horizonte) => void;
-  onAssinar: () => void;
+  /** Com Congresso (modo real), as opções do envio vêm junto. */
+  onAssinar: (opcoes?: OpcoesDoEnvio) => void;
   /** Revogar a lei (D-65): ausente se ela não pode sair do mapa. */
   onRevogar?: () => void;
   onFechar: () => void;
@@ -502,6 +511,12 @@ export function DocumentoLei({
   const travada = !!lei.nivelLegal && !!lei.bloqueio;
   const numero = `Nº ${String(visao.leis.indexOf(lei) + 1).padStart(3, "0")}/${2026 + Math.floor(visao.turno / 4)}`;
   const [carimbo, setCarimbo] = useState(false);
+  // V1-12: a lei que precisa de votação vai ao Congresso
+  const congresso = lei.congresso;
+  const [pressa, setPressa] = useState<"normal" | "urgencia" | "emergencia">(
+    "normal",
+  );
+  const [provisoria, setProvisoria] = useState(false);
   const secaoImpacto = useRef<HTMLElement>(null);
   // Ao marcar uma nova redação, o papel rola até o relatório de impacto.
   useEffect(() => {
@@ -586,7 +601,13 @@ export function DocumentoLei({
   const assinar = () => {
     setCarimbo(true);
     temporizadores.current.push(
-      window.setTimeout(onAssinar, 650),
+      window.setTimeout(
+        () =>
+          onAssinar(
+            congresso ? { pressa, medidaProvisoria: provisoria } : undefined,
+          ),
+        650,
+      ),
       window.setTimeout(() => setCarimbo(false), 1500),
     );
   };
@@ -638,19 +659,71 @@ export function DocumentoLei({
                 !mudou ||
                 carimbo ||
                 travada ||
+                !!congresso?.naFila ||
                 (!lei.emVigor && !lei.opcoes?.length && rascunho <= 0)
               }
               onClick={assinar}
             >
               <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
-              {lei.emVigor ? "Assinar" : "Aprovar"}
+              {congresso
+                ? "Enviar ao Congresso"
+                : lei.emVigor
+                  ? "Assinar"
+                  : "Aprovar"}
             </button>
           </div>
         </>
       }
     >
       {carimbo ? (
-        <div className="carimbo">{lei.emVigor ? "Assinado" : "Aprovada"}</div>
+        <div className="carimbo">
+          {congresso ? "Enviado" : lei.emVigor ? "Assinado" : "Aprovada"}
+        </div>
+      ) : null}
+      {congresso ? (
+        <div className="cg-envio">
+          {congresso.naFila ? (
+            <p>
+              <span className="cg-selo">Na fila do Congresso</span> Veja a
+              previsão de votos no app Congresso do tablet.
+            </p>
+          ) : (
+            <>
+              <p>
+                Vai ao Congresso como{" "}
+                <b>{NOME_CAMINHO[congresso.tipo] ?? congresso.tipo}</b>: só muda
+                no mapa se for aprovada.
+              </p>
+              <label>
+                Pressa{" "}
+                <select
+                  value={pressa}
+                  onChange={(e) => setPressa(e.target.value as typeof pressa)}
+                >
+                  <option value="normal">Normal</option>
+                  {congresso.tipo !== "emenda" ? (
+                    <option value="urgencia">
+                      Urgência (irrita as bancadas)
+                    </option>
+                  ) : null}
+                  <option value="emergencia">
+                    Modo emergência (vota primeiro, irrita mais)
+                  </option>
+                </select>
+              </label>
+              {congresso.tipo === "lei-ordinaria" ? (
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={provisoria}
+                    onChange={(e) => setProvisoria(e.target.checked)}
+                  />{" "}
+                  Medida provisória: vale já e cai se o Congresso rejeitar
+                </label>
+              ) : null}
+            </>
+          )}
+        </div>
       ) : null}
       <p className="tipo-doc">
         {NOME_PROCESSO[lei.processo] ?? lei.processo} ·{" "}

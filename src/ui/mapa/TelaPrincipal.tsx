@@ -7,12 +7,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   criarPartida,
   encerrarTurno,
+  enviarAoCongresso,
   investigarGrupo,
   mudarLei,
   revogarLei,
   responderDilema,
+  responderPedido,
   verPartida,
   verBussola,
+  verTramitacao,
+  type OpcoesDoEnvio,
   type Partida,
   type PrevisaoLei,
   type RelatorioTurno,
@@ -313,7 +317,12 @@ function ResumoDoTurno({
 export function TelaPrincipal() {
   // cada partida nova ganha uma semente própria: eventos diferentes (SG106)
   const inicial = useMemo(
-    () => criarPartida({ semente: 1 + Math.floor(Math.random() * 0xfffffffe) }),
+    () =>
+      // V1-12: as leis passam pelo Congresso (modo real)
+      criarPartida({
+        semente: 1 + Math.floor(Math.random() * 0xfffffffe),
+        modo: "real",
+      }),
     [],
   );
   const [mesaAberta, setMesaAberta] = useState(true);
@@ -381,6 +390,10 @@ export function TelaPrincipal() {
 
   const visao = useMemo(
     () => (partida ? verPartida(partida) : null),
+    [partida],
+  );
+  const congresso = useMemo(
+    () => (partida ? verTramitacao(partida) : null),
     [partida],
   );
   // A estrutura (leis, bolhas, ligações) só muda quando uma lei entra em
@@ -470,9 +483,15 @@ export function TelaPrincipal() {
     return mapa;
   }, [previsao, visao, horizonte]);
 
-  const aplicar = (leiId: string, nivel: number): string | null => {
+  const aplicar = (
+    leiId: string,
+    nivel: number,
+    opcoes?: OpcoesDoEnvio,
+  ): string | null => {
     if (!partida) return null;
-    const r = mudarLei(partida, leiId, nivel);
+    const r = opcoes
+      ? enviarAoCongresso(partida, leiId, nivel, opcoes)
+      : mudarLei(partida, leiId, nivel);
     if (!r.ok) return r.erros.join(" ");
     setPartida(r.value);
     return null;
@@ -484,6 +503,18 @@ export function TelaPrincipal() {
     if (!r.ok) return r.erros.join(" ");
     setPartida(r.value);
     return null;
+  };
+
+  // V1-12: aceitar ou recusar o pedido de uma bancada
+  const responderAoPedido = (pedidoId: string, aceitar: boolean) => {
+    if (!partida) return;
+    const r = responderPedido(partida, pedidoId, aceitar);
+    if (!r.ok) {
+      setErroTurno(r.erros.join(" "));
+      return;
+    }
+    setPartida(r.value);
+    setErroTurno(null);
   };
 
   const escolherDilema = (dilemaId: string, opcaoId: string): string | null => {
@@ -545,8 +576,11 @@ export function TelaPrincipal() {
       setHistorico((h) => [...h, fotoDoTurno(visao!)]);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
-      // o jornal do trimestre chega com o fim do turno
-      setTablet("jornal");
+      // o jornal do trimestre chega com o fim do turno; com pedido de
+      // bancada esperando resposta, abre o Congresso
+      setTablet(
+        verTramitacao(r.value.partida).pedidos.length ? "congresso" : "jornal",
+      );
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
       setMesaAberta(true);
@@ -657,6 +691,20 @@ export function TelaPrincipal() {
           <Icone nome={ICONE_INTERFACE.bussola} tamanho={22} />
           <span>Bússola</span>
         </button>
+        {congresso?.casas.length ? (
+          <button
+            type="button"
+            className="botao-busca"
+            onClick={() => setTablet("congresso")}
+            title="Congresso: as bancadas, a fila de votação e os pedidos"
+          >
+            <Icone nome={ICONE_INTERFACE.congresso} tamanho={22} />
+            <span>Congresso</span>
+            {congresso.pedidos.length ? (
+              <span className="tb-contador">{congresso.pedidos.length}</span>
+            ) : null}
+          </button>
+        ) : null}
         <button
           type="button"
           className="botao-busca"
@@ -707,6 +755,9 @@ export function TelaPrincipal() {
           numero={visao.turno + 1}
           onFechar={fecharJornal}
           bussola={partida ? verBussola(partida) : undefined}
+          congresso={congresso?.casas.length ? congresso : undefined}
+          nomeDaLei={(id) => visao.leis.find((l) => l.id === id)?.nome ?? id}
+          onResponderPedido={responderAoPedido}
           appInicial={tablet || "jornal"}
         />
       ) : null}

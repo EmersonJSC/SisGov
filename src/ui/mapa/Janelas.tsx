@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   leisQueCaem,
   preverLei,
+  type OpcoesDoEnvio,
   type Partida,
   type PrevisaoLei,
   type RelatorioTurno,
@@ -72,7 +73,11 @@ export function JanelaLei({
   horizonte: Horizonte;
   onHorizonte: (h: Horizonte) => void;
   /** Aplica a mudança; devolve a mensagem de erro, se houver. */
-  onAplicar: (leiId: string, nivel: number) => string | null;
+  onAplicar: (
+    leiId: string,
+    nivel: number,
+    opcoes?: OpcoesDoEnvio,
+  ) => string | null;
   /** Revoga a lei (D-65); devolve a mensagem de erro, se houver. */
   onRevogar: (leiId: string) => string | null;
   onPrevisao: (leiId: string, previsao: PrevisaoLei | null) => void;
@@ -151,7 +156,7 @@ export function JanelaLei({
       erro={erro}
       horizonte={horizonte}
       onHorizonte={onHorizonte}
-      onAssinar={() => setErro(onAplicar(lei.id, rascunho))}
+      onAssinar={(opcoes) => setErro(onAplicar(lei.id, rascunho, opcoes))}
       onRevogar={
         lei.emVigor && lei.revogavel
           ? () => setErro(onRevogar(lei.id))

@@ -29,6 +29,8 @@ export type Projeto = Readonly<{
   nivel: number;
   tipo: Exclude<NivelNoCongresso, "decreto" | "petrea">;
   pressa: Pressa;
+  /** O projeto tira a lei do mapa (revogação), em vez de mudar o nível. */
+  revogar?: boolean;
   /** Medida provisória: já vale; o que havia antes, para desfazer se cair. */
   medidaProvisoria?: Readonly<{ emVigor: boolean; nivel: number }>;
   enviadoNoTurno: number;

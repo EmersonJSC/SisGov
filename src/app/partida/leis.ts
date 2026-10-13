@@ -77,7 +77,7 @@ export function leisQueCaem(
  * Revoga uma lei em vigor (D-65): ela sai do mapa e volta ao catálogo; o
  * efeito some aos poucos, como a implantação. As filhas que dependiam dela
  * caem junto. No modo real, só leis de execução direta (decreto); a
- * revogação por votação vem com a tela de propostas (SG115).
+ * revogação de lei que precisa de votação vai ao Congresso (V1-12).
  */
 export function revogarLei(
   partida: Partida,
@@ -87,15 +87,13 @@ export function revogarLei(
   const bloqueio = revocationBlock(content, game.policies, leiId);
   if (bloqueio) return { ok: false, erros: [bloqueio] };
   const policy = content.policies.find((p) => p.id === leiId)!;
+  // V1-12: no modo real, revogar lei que precisa de votação vai ao Congresso
   if (
     partida.modo === "real" &&
-    !policy.processoAutorizacao.startsWith("execucao-") &&
-    policy.processoAutorizacao !== "decreto"
+    game.congress &&
+    nivelNoCongresso(policy) !== "decreto"
   )
-    return {
-      ok: false,
-      erros: ["Por enquanto, revogar pelo Congresso só no modo teste."],
-    };
+    return enviarAoCongresso(partida, leiId, 0, { revogar: true });
   const index = game.policies.findIndex(
     (state) => state.policyDefinitionId === leiId,
   );

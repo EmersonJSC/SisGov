@@ -757,6 +757,7 @@ export const ICONE_INTERFACE: Readonly<Record<string, string>> = {
   vinculoQuebrado: "link-variant-off",
   busca: "magnify",
   jornal: "newspaper-variant-outline",
+  congresso: "bank",
   economia: "cash-multiple",
   empresas: "factory",
   trabalho: "briefcase-outline",

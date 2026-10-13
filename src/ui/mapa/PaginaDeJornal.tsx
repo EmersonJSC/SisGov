@@ -16,10 +16,17 @@ import { Icone } from "./Icone";
 import { ICONE_INTERFACE } from "./icones";
 import { corDaBondade } from "./intensidade";
 import { NOME_NIVEL } from "./MesaDoPresidente";
-import type { VisaoBussola } from "../../app/partida";
+import type { VisaoBussola, VisaoDaTramitacao } from "../../app/partida";
 import { BussolaPolitica } from "./BussolaPolitica";
+import { CongressoNoTablet } from "./CongressoNoTablet";
 
-export type AppDoTablet = "jornal" | "bussola";
+export type AppDoTablet = "jornal" | "bussola" | "congresso";
+
+const TITULO_DO_APP: Readonly<Record<AppDoTablet, string>> = {
+  jornal: "Notícias do turno",
+  bussola: "Bússola política",
+  congresso: "Congresso Nacional",
+};
 
 /** Linha de evolução do índice desde o começo da partida. */
 function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
@@ -179,6 +186,9 @@ export function PaginaDeJornal({
   numero,
   onFechar,
   bussola,
+  congresso,
+  nomeDaLei = (id) => id,
+  onResponderPedido = () => {},
   appInicial = "jornal",
 }: {
   edicao: EdicaoDoJornal;
@@ -188,9 +198,17 @@ export function PaginaDeJornal({
   onFechar: () => void;
   /** App da bússola (V1-10); sem ela, o tablet só tem o jornal. */
   bussola?: VisaoBussola;
+  /** App do Congresso (V1-12): as cadeiras, a fila e as votações. */
+  congresso?: VisaoDaTramitacao;
+  nomeDaLei?: (id: string) => string;
+  onResponderPedido?: (pedidoId: string, aceitar: boolean) => void;
   appInicial?: AppDoTablet;
 }) {
-  const [app, setApp] = useState<AppDoTablet>(bussola ? appInicial : "jornal");
+  const tem = (a: AppDoTablet) =>
+    a === "jornal" || (a === "bussola" ? !!bussola : !!congresso);
+  const [app, setApp] = useState<AppDoTablet>(
+    tem(appInicial) ? appInicial : "jornal",
+  );
   const [aberta, setAberta] = useState<string | null>(null);
   const alternar = (id: string) => setAberta((a) => (a === id ? null : id));
   useEffect(() => {
@@ -206,7 +224,7 @@ export function PaginaDeJornal({
     <div
       className="tb-fundo"
       role="dialog"
-      aria-label={app === "jornal" ? "Notícias do turno" : "Bússola política"}
+      aria-label={TITULO_DO_APP[app]}
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onFechar();
       }}
@@ -222,10 +240,15 @@ export function PaginaDeJornal({
                   Edição nº {numero} · {data}
                 </p>
               </div>
-            ) : (
+            ) : app === "bussola" ? (
               <div>
                 <h1>Bússola política</h1>
                 <p>Para onde as suas leis levam o país · {data}</p>
+              </div>
+            ) : (
+              <div>
+                <h1>Congresso Nacional</h1>
+                <p>Quem senta onde e o que vai a voto · {data}</p>
               </div>
             )}
             <button
@@ -240,6 +263,12 @@ export function PaginaDeJornal({
 
           {app === "bussola" && bussola ? (
             <BussolaPolitica bussola={bussola} />
+          ) : app === "congresso" && congresso ? (
+            <CongressoNoTablet
+              congresso={congresso}
+              nomeDaLei={nomeDaLei}
+              onResponder={onResponderPedido}
+            />
           ) : (
             <div className="tb-jornal">
               <section className="tb-numeros" aria-label="O país em números">
@@ -287,7 +316,7 @@ export function PaginaDeJornal({
               </div>
             </div>
           )}
-          {bussola ? (
+          {bussola || congresso ? (
             <nav className="tb-dock" aria-label="Apps do tablet">
               <button
                 type="button"
@@ -305,6 +334,24 @@ export function PaginaDeJornal({
                 <Icone nome={ICONE_INTERFACE.bussola} tamanho={20} />
                 Bússola
               </button>
+              {congresso ? (
+                <button
+                  type="button"
+                  aria-pressed={app === "congresso"}
+                  onClick={() => setApp("congresso")}
+                >
+                  <Icone nome={ICONE_INTERFACE.congresso} tamanho={20} />
+                  Congresso
+                  {congresso.pedidos.length ? (
+                    <span
+                      className="tb-contador"
+                      aria-label={`${congresso.pedidos.length} pedidos`}
+                    >
+                      {congresso.pedidos.length}
+                    </span>
+                  ) : null}
+                </button>
+              ) : null}
             </nav>
           ) : null}
         </div>

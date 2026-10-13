@@ -4508,3 +4508,309 @@ button {
     overflow-y: auto;
   }
 }
+
+/* ------------------------------------------ tablet: app do Congresso (V1-12) -- */
+
+.tb-contador {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: light-dark(#b23345, #fd8a91);
+  color: light-dark(#fff, #151618);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.cg-app {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  min-height: 0;
+  padding: 12px 18px 12px;
+  overflow-y: auto;
+}
+
+.cg-casas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.cg-casa {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-areas:
+    "titulo titulo"
+    "plenario legenda"
+    "capacidade capacidade";
+  gap: 6px 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
+}
+
+.cg-app h2 {
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cg-casa h2 {
+  grid-area: titulo;
+  color: light-dark(#1b2230, #e0e6f0);
+  font-family: var(--serifa);
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cg-casa h2 small {
+  color: light-dark(#5d6778, #a0abbe);
+  font-family: var(--sem-serifa);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.cg-plenario {
+  grid-area: plenario;
+  width: 100%;
+  height: auto;
+}
+
+.cg-legenda {
+  grid-area: legenda;
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.78rem;
+}
+
+.cg-legenda li {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto 3.2em;
+  align-items: center;
+  gap: 6px;
+}
+
+.cg-bolinha {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cg-nome {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cg-pct {
+  color: light-dark(#5d6778, #a0abbe);
+  text-align: right;
+}
+
+.cg-capacidade {
+  grid-area: capacidade;
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+}
+
+.cg-colunas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.cg-colunas > section {
+  display: grid;
+  gap: 8px;
+}
+
+.cg-pedidos,
+.cg-fila,
+.cg-votacoes {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cg-pedido,
+.cg-projeto,
+.cg-votacoes li {
+  display: grid;
+  gap: 4px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
+}
+
+.cg-pedido {
+  border-left: 4px solid light-dark(#c98a00, #f0c050);
+}
+
+.cg-pedido p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.cg-botoes {
+  display: flex;
+  gap: 8px;
+}
+
+.cg-botoes button {
+  padding: 4px 14px;
+  border: 1px solid light-dark(#1f7a52, #71c699);
+  border-radius: 999px;
+  background: light-dark(#1f7a52, #71c699);
+  color: light-dark(#fff, #151618);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cg-botoes .cg-recusar {
+  background: transparent;
+  color: light-dark(#b23345, #fd8a91);
+  border-color: light-dark(#b23345, #fd8a91);
+}
+
+.cg-projeto-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.cg-projeto-topo strong {
+  font-family: var(--serifa);
+  font-size: 0.95rem;
+}
+
+.cg-tipo,
+.cg-selo {
+  color: light-dark(#6b7383, #9ca5b6);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cg-selo {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: light-dark(#fff3d6, #3a3220);
+  color: light-dark(#8a5a00, #f0c050);
+}
+
+.cg-projeto-pe {
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.78rem;
+}
+
+.cg-a-favor {
+  color: light-dark(#1f7a52, #71c699);
+}
+
+.cg-contra {
+  color: light-dark(#b23345, #fd8a91);
+}
+
+.cg-resultado {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cg-avancou,
+.cg-passou {
+  color: light-dark(#1f7a52, #71c699);
+}
+
+.cg-adiou {
+  color: light-dark(#8a5a00, #f0c050);
+}
+
+.cg-caiu {
+  color: light-dark(#b23345, #fd8a91);
+}
+
+.cg-barra {
+  position: relative;
+  display: flex;
+  height: 10px;
+  overflow: visible;
+  border-radius: 3px;
+  background: light-dark(#dde2ea, #3c3f43);
+}
+
+.cg-barra > span {
+  height: 100%;
+}
+
+.cg-quorum {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: light-dark(#1b2230, #e0e6f0);
+}
+
+/* o envio ao Congresso no documento da lei */
+.cg-envio {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 4px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: light-dark(#f3efe4, #2c2a25);
+  font-family: var(--sem-serifa);
+  font-size: 13px;
+}
+
+.cg-envio p {
+  margin: 0;
+}
+
+.cg-envio label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cg-envio select {
+  width: auto;
+  font: inherit;
+}
+
+@media (max-width: 760px) {
+  .cg-casa,
+  .cg-colunas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cg-casa {
+    grid-template-areas:
+      "titulo"
+      "plenario"
+      "legenda"
+      "capacidade";
+  }
+}

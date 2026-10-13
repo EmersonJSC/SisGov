@@ -89,6 +89,12 @@ export type VisaoLei = Readonly<{
   /** Pode sair do mapa (revogar) agora. */
   revogavel: boolean;
   /**
+   * Modo real com Congresso (V1-12): a lei precisa de votação. `tipo` é o
+   * caminho (lei ordinária, complementar, emenda); `naFila` diz se já há um
+   * projeto dela esperando votação.
+   */
+  congresso?: Readonly<{ tipo: string; naFila: boolean }>;
+  /**
    * Por que a lei não pode entrar em vigor ou mudar agora (exigência não
    * cumprida ou lei pétrea). Ausente se pode.
    */

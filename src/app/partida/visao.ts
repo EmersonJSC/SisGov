@@ -11,6 +11,7 @@ import {
   revocationBlock,
 } from "../../game/policyRequirements";
 import { policyLevelRulesFromContent } from "../../game/policyRulesFromContent";
+import { nivelNoCongresso } from "../../game/tramitacao";
 import type {
   Partida,
   VisaoLei,
@@ -42,6 +43,9 @@ export function verPartida(partida: Partida): VisaoPartida {
   );
   const exigencias = policyRequirements(content);
   const nomeDaLei = new Map(content.policies.map((p) => [p.id, p.nome]));
+  const naFila = new Set(
+    (game.bills?.fila ?? []).map((projeto) => projeto.lei),
+  );
   const governo = governoDaPartida(content);
   const lugares = new Map(
     governo.flatMap((area) =>
@@ -101,6 +105,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       revogavel:
         policyRevocable(policy) &&
         revocationBlock(content, game.policies, policy.id) === undefined,
+      ...congressoDa(policy),
       ...bloqueioDa(policy.id, state),
       ...exigenciasDa(policy.id),
       filhas: [...exigencias.values()]
@@ -120,6 +125,14 @@ export function verPartida(partida: Partida): VisaoPartida {
         }),
     };
   });
+  function congressoDa(policy: (typeof content.policies)[number]): {
+    congresso?: VisaoLei["congresso"];
+  } {
+    if (partida.modo !== "real" || !game.congress) return {};
+    const tipo = nivelNoCongresso(policy);
+    if (tipo === "decreto") return {};
+    return { congresso: { tipo, naFila: naFila.has(policy.id) } };
+  }
   function bloqueioDa(
     id: string,
     state: (typeof game.policies)[number] | undefined,

@@ -9,6 +9,9 @@ import {
   encerrarTurno,
   enviarAoCongresso,
   responderPedido,
+  revogarLei,
+  verPartida,
+  verTramitacao,
   type Partida,
 } from "../app/partida";
 import {
@@ -289,6 +292,54 @@ describe("votação", () => {
     const fim = ateSair(r.value, lei.id);
     expect(["caiu", "caducou"]).toContain(fim.saida.motivo);
     expect(nivelDe(fim.partida, lei.id)).toBe(lei.antes);
+  });
+});
+
+describe("na tela (modo real)", () => {
+  it("o tablet mostra as cadeiras de cada bancada nas duas casas", () => {
+    const visao = verTramitacao(partida);
+    expect(visao.casas.length).toBe(2);
+    for (const casa of visao.casas) {
+      const soma = visao.bancadas.reduce(
+        (s, b) => s + (b.cadeiras[casa.id] ?? 0),
+        0,
+      );
+      expect(soma).toBe(casa.cadeiras);
+    }
+  });
+
+  it("a lei enviada aparece na fila e no documento", () => {
+    const real: Partida = { ...partida, modo: "real" };
+    const lei = leiDo(real, "lei-ordinaria");
+    const r = enviarAoCongresso(real, lei.id, lei.nivel);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    expect(verTramitacao(r.value).fila.map((p) => p.lei)).toContain(lei.id);
+    const naTela = verPartida(r.value).leis.find((l) => l.id === lei.id);
+    expect(naTela?.congresso).toEqual({ tipo: "lei-ordinaria", naFila: true });
+    // no modo teste, a lei muda na hora: nada de Congresso no documento
+    expect(
+      verPartida(partida).leis.find((l) => l.id === lei.id)?.congresso,
+    ).toBeUndefined();
+  });
+
+  it("revogar lei votada vai ao Congresso e, aprovado, tira a lei do mapa", () => {
+    const real: Partida = { ...comCongresso(partida, 0.7, -100), modo: "real" };
+    const alvo = verPartida(real).leis.find(
+      (l) =>
+        l.emVigor &&
+        l.revogavel &&
+        l.congresso?.tipo === "lei-ordinaria" &&
+        revogarLei(real, l.id).ok,
+    );
+    if (!alvo) throw new Error("Nenhuma lei ordinária revogável.");
+    const r = revogarLei(real, alvo.id);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    // ainda vale: só sai se o Congresso aprovar
+    expect(nivelDe(r.value, alvo.id)).toBeDefined();
+    expect(verTramitacao(r.value).fila[0]?.revogar).toBe(true);
+    const fim = ateSair(r.value, alvo.id);
+    expect(fim.saida.motivo).toBe<Saida["motivo"]>("passou");
+    expect(nivelDe(fim.partida, alvo.id)).toBeUndefined();
   });
 });
 

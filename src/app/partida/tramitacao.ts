@@ -52,7 +52,7 @@ import {
   type Votacao,
 } from "../../game/tramitacao";
 import type { Partida, Resultado } from "./tipos";
-import { aplicarMeta } from "./leis";
+import { aplicarMeta, revogarLei } from "./leis";
 import { serieSemMudanca, simularTrimestres } from "./previsao";
 
 type RegraDeVotacao = Readonly<{
@@ -207,6 +207,8 @@ export type OpcoesDoEnvio = Readonly<{
   pressa?: Pressa;
   /** Vale já; se cair ou caducar, a lei volta ao que era (art. 62). */
   medidaProvisoria?: boolean;
+  /** Projeto para tirar a lei do mapa (o nível é ignorado). */
+  revogar?: boolean;
 }>;
 
 /**
@@ -233,7 +235,9 @@ export function enviarAoCongresso(
   if (estado.fila.some((p) => p.lei === leiId))
     return erro("Esta lei já está na fila do Congresso.");
   const atual = policyInForce(game.policies, leiId);
-  if (atual && Math.abs(atual.desiredLevel - nivel) < 1e-9)
+  const revogar = opcoes.revogar === true;
+  if (revogar && !atual) return erro("Esta lei não está valendo.");
+  if (!revogar && atual && Math.abs(atual.desiredLevel - nivel) < 1e-9)
     return erro("Esta lei já vale nessa opção.");
   const livre = estado.bloqueadas[leiId];
   if (livre !== undefined && game.currentTurn < livre)
@@ -251,6 +255,8 @@ export function enviarAoCongresso(
       `O modo emergência só pode ser usado ${tramitacao.emergenciasPorAno} vezes por ano.`,
     );
   const mp = opcoes.medidaProvisoria === true;
+  if (mp && revogar)
+    return erro("Revogação vai ao Congresso, não por medida provisória.");
   if (mp && tipo !== "lei-ordinaria")
     return erro("Medida provisória só serve para o que seria lei ordinária.");
   if (
@@ -270,7 +276,9 @@ export function enviarAoCongresso(
       Math.floor(s.turno / turnosPorAno(pacote)) === Number(ano),
   );
   // valida a lei (filhas, pétrea) e dá o país com a mudança, para prever
-  const depois = aplicarMeta(partida, leiId, nivel);
+  const depois = revogar
+    ? revogarLei({ ...partida, modo: "teste" }, leiId)
+    : aplicarMeta(partida, leiId, nivel);
   if (!depois.ok) return depois;
   const previsao = prever(partida, depois.value, pacote);
   if (!previsao.ok) return previsao;
@@ -280,6 +288,7 @@ export function enviarAoCongresso(
     nivel,
     tipo,
     pressa,
+    ...(revogar ? { revogar: true } : {}),
     enviadoNoTurno: game.currentTurn,
     etapas: etapasDo(
       tipo,
@@ -591,8 +600,11 @@ export function votarNoCongresso(
       }
     }
     if (fim === "passou" && !p.medidaProvisoria) {
-      const aplicada = aplicarMeta(atual, p.lei, p.nivel);
-      if (aplicada.ok) atual = { ...aplicada.value, acoes: atual.acoes };
+      const aplicada = p.revogar
+        ? revogarLei({ ...atual, modo: "teste" }, p.lei)
+        : aplicarMeta(atual, p.lei, p.nivel);
+      if (aplicada.ok)
+        atual = { ...aplicada.value, modo: atual.modo, acoes: atual.acoes };
       else fim = "caiu";
     }
     if (fim === "caiu") {
@@ -702,6 +714,7 @@ export type VisaoDoProjeto = Readonly<{
   tipo: Projeto["tipo"];
   pressa: Pressa;
   medidaProvisoria: boolean;
+  revogar: boolean;
   /** Opinião pública prevista (pontos de humor do eleitorado todo). */
   opiniao: number;
   /** Votações que faltam, com os votos esperados contra o quórum. */
@@ -715,6 +728,17 @@ export type VisaoDoProjeto = Readonly<{
 }>;
 
 export type VisaoDaTramitacao = Readonly<{
+  /** As casas, na ordem de votação. */
+  casas: readonly Readonly<{ id: string; nome: string; cadeiras: number }>[];
+  /** As bancadas e o seu partido: cadeiras em cada casa e disposição. */
+  bancadas: readonly Readonly<{
+    id: string;
+    nome: string;
+    cadeiras: Readonly<Record<string, number>>;
+    disposicao: number;
+    /** Ponto na bússola (o do seu partido é o seu). */
+    ponto: PontoDaBussola;
+  }>[];
   /** Votações que o Congresso aceita fazer por casa no próximo turno. */
   capacidade: Readonly<Record<string, number>>;
   fila: readonly VisaoDoProjeto[];
@@ -739,6 +763,8 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
   const estado = estadoDaTramitacao(game);
   const pacote = congressoDoPacote(content);
   const vazia = {
+    casas: [],
+    bancadas: [],
     capacidade: {},
     fila: [],
     pedidos: [],
@@ -756,6 +782,14 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
     content.policies.find((p: PolicyFile) => p.id === id)?.nome ?? id;
   const ultimo = estado.votacoes.at(-1)?.turno;
   return {
+    casas: pacote.casas,
+    bancadas: retrato.map((b) => ({
+      id: b.id,
+      nome: b.nome,
+      cadeiras: b.cadeiras,
+      disposicao: b.disposicao,
+      ponto: b.ponto,
+    })),
     capacidade: capacidades(
       pacote,
       retrato,
@@ -771,6 +805,7 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
         tipo: p.tipo,
         pressa: p.pressa,
         medidaProvisoria: p.medidaProvisoria !== undefined,
+        revogar: p.revogar === true,
         opiniao: p.previsao.opiniao,
         etapas: p.etapas.map(({ casa, rodada }) => ({
           casa,
