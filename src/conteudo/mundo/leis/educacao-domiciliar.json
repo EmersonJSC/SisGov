@@ -6,6 +6,11 @@
   "nome": "Educação domiciliar",
   "descricao": "Define se os pais podem educar os filhos em casa em vez de matriculá-los numa escola, e com que controle do Estado.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

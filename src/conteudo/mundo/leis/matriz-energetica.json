@@ -6,6 +6,11 @@
   "nome": "Matriz energética",
   "descricao": "Define se o Estado barateia o combustível fóssil, fica neutro, incentiva renováveis ou força a saída do fóssil.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

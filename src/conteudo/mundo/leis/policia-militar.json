@@ -5,6 +5,11 @@
   "nome": "Polícia de rua militar ou civil",
   "descricao": "Se a polícia que patrulha a rua é militar (com quartel e Justiça Militar) ou civil.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "nivel": "constituicao",
   "controle": {

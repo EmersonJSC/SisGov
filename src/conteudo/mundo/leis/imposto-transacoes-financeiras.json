@@ -6,6 +6,11 @@
   "nome": "Imposto sobre transações financeiras",
   "descricao": "Define a alíquota cobrada sobre cada movimentação financeira, de débitos em conta corrente a compras de ações e operações de câmbio.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

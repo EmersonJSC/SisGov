@@ -5,6 +5,11 @@
   "nome": "Programa espacial e satélites",
   "descricao": "Quanto o governo põe por ano em satélites próprios: imagens de floresta, fronteira e garimpo, e comunicação que não depende de outro país.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Ciência e Tecnologia",
   "nivel": "decreto",
   "revogavel": false,

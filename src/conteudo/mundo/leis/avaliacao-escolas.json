@@ -6,6 +6,11 @@
   "nome": "Avaliação das escolas",
   "descricao": "Define se o país mede o aprendizado dos alunos, se divulga a nota de cada escola e se essa nota traz prêmios ou punições.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

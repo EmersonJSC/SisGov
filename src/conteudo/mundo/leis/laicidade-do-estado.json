@@ -6,6 +6,11 @@
   "nome": "Laicidade do Estado",
   "descricao": "Define a relação entre o Estado e as religiões: quem manda em quem, quem recebe privilégios e quem é vigiado.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "religiao",
+    "nome": "Religião",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Investimento em infraestrutura",
   "descricao": "Define quanto do PIB o Estado investe por ano em estradas, ferrovias, portos, energia e redes.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério das Cidades",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

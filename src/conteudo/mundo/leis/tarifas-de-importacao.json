@@ -6,6 +6,11 @@
   "nome": "Tarifas de importação",
   "descricao": "Define a tarifa média cobrada sobre os produtos que entram no país.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "comercio-exterior",
+    "nome": "Comércio exterior e capital estrangeiro",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

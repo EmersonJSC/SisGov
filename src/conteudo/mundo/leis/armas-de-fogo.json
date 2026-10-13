@@ -6,6 +6,11 @@
   "nome": "Posse e porte de armas",
   "descricao": "Quem pode ter arma em casa e quem pode andar armado na rua.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "armas",
+    "nome": "Armas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

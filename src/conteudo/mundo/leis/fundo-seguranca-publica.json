@@ -6,6 +6,11 @@
   "nome": "Dinheiro para as polícias dos estados",
   "descricao": "Quanto a União repassa por ano aos estados pelo Fundo Nacional de Segurança Pública (viaturas, armas, inteligência).",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "execucao-programa-autorizado",
   "nivelLegal": "derivada",

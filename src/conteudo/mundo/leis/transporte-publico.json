@@ -6,6 +6,11 @@
   "nome": "Transporte público",
   "descricao": "Define quem organiza e quem paga o ônibus, metrô e trem: mercado livre, usuário, subsídio ou tarifa zero.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
+  },
   "ministerio": "Ministério das Cidades",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

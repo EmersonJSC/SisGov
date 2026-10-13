@@ -6,6 +6,11 @@
   "nome": "Segurança alimentar",
   "descricao": "Define como o Estado garante comida a quem passa fome: deixa com o mercado, faz ações pontuais (cestas, restaurantes populares), dá cartão-alimentação ou distribui grãos em massa.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "assistencia-social",
+    "nome": "Assistência social",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

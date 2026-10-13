@@ -6,6 +6,11 @@
   "nome": "Investimento estrangeiro",
   "descricao": "Define em que setores estrangeiros podem abrir ou comprar empresas, e se o país os atrai com incentivos.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "comercio-exterior",
+    "nome": "Comércio exterior e capital estrangeiro",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Federalismo",
   "descricao": "Define quanto poder, dinheiro e responsabilidade ficam com o governo central e quanto com estados e municípios.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "constituicao"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Maconha legal e regulada",
   "descricao": "Se a maconha pode ser vendida legalmente, com registro e imposto, e por quem.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "drogas",
+    "nome": "Drogas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

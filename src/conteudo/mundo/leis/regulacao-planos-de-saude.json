@@ -6,6 +6,11 @@
   "nome": "Regulação dos planos de saúde",
   "descricao": "Define o que as seguradoras de saúde podem fazer: escolher clientes e preços livremente, cumprir um rol mínimo, competir sob preço único com compensação de risco, ou só cobrir o que o público não cobre.",
   "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

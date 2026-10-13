@@ -6,6 +6,11 @@
   "nome": "Imposto de renda das empresas",
   "descricao": "Define a alíquota nominal cobrada sobre o lucro das empresas.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

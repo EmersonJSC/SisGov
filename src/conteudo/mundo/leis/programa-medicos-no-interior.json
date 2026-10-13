@@ -6,6 +6,11 @@
   "nome": "Médicos no interior",
   "descricao": "Define como o país leva médicos aonde eles não querem ir: deixa o mercado decidir, paga incentivos, importa médicos estrangeiros ou obriga recém-formados a servir no interior.",
   "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

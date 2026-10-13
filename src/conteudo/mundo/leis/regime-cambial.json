@@ -6,6 +6,11 @@
   "nome": "Regime cambial",
   "descricao": "Define se o valor da moeda nacional é fixado pelo governo ou decidido pelo mercado.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "moeda",
+    "nome": "Moeda e banco central",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

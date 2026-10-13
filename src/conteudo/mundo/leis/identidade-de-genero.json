@@ -1,0 +1,122 @@
+{
+  "id": "identidade-de-genero",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Identidade de gênero",
+  "descricao": "Se a pessoa trans pode mudar nome e gênero nos documentos: não pode, pode no cartório, ou uma lei garante a mudança e o atendimento.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
+  "nivel": "lei",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_identidade_de_genero",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reconhecimento",
+        "rotulo": "Sem reconhecimento",
+        "valor": 0
+      },
+      {
+        "id": "cartorio",
+        "rotulo": "Mudança no cartório",
+        "valor": 50
+      },
+      {
+        "id": "lei-de-identidade",
+        "rotulo": "Lei de identidade de gênero, com direitos e saúde",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "discriminacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [50, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [50, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_conservadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -2],
+          [50, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 2
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "sem-reconhecimento": ["Rússia (desde 2023)", "Hungria (2020)"],
+      "cartorio": ["Brasil (STF, ADI 4275, 2018)"],
+      "lei-de-identidade": [
+        "Argentina (Lei 26.743/2012)",
+        "Chile (Lei 21.120/2018)",
+        "Espanha (2023)"
+      ]
+    },
+    "brasil": "O STF garantiu a mudança de nome e gênero direto no cartório (ADI 4275, 2018); não há lei aprovada pelo Congresso."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 21.120/2018 do Chile (identidade de gênero)",
+      "url": "https://en.wikipedia.org/wiki/Transgender_rights_in_Chile",
+      "usadoPara": "lei de identidade"
+    },
+    {
+      "titulo": "STF, ADI 4275 (2018)",
+      "url": "https://en.wikipedia.org/wiki/LGBT_rights_in_Brazil",
+      "usadoPara": "opção do Brasil"
+    }
+  ]
+}

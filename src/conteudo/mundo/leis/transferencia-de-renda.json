@@ -6,6 +6,11 @@
   "nome": "Transferência de renda às famílias pobres",
   "descricao": "Define quanto do PIB vai para pagamentos mensais em dinheiro às famílias pobres, com ou sem exigências como frequência escolar e vacinação.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "assistencia-social",
+    "nome": "Assistência social",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

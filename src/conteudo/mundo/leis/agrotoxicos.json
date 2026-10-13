@@ -6,6 +6,11 @@
   "nome": "Agrotóxicos",
   "descricao": "Define como o país aprova, restringe ou proíbe pesticidas e defensivos químicos na lavoura.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

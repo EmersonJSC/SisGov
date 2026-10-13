@@ -1,0 +1,121 @@
+{
+  "id": "liberdade-economica",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Liberdade econômica",
+  "descricao": "Que licença o Estado exige para abrir um negócio: licença prévia para tudo, licença conforme o risco ou nenhuma licença para atividade de baixo risco.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério da Economia",
+  "nivel": "lei",
+  "mesa": {
+    "id": "mercado",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_liberdade_economica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "licenca-previa",
+        "rotulo": "Licença prévia para qualquer atividade",
+        "valor": 0
+      },
+      {
+        "id": "por-risco",
+        "rotulo": "Licença conforme o risco da atividade",
+        "valor": 50
+      },
+      {
+        "id": "sem-licenca-baixo-risco",
+        "rotulo": "Sem licença para atividade de baixo risco",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "informalidade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 5],
+          [50, 2],
+          [100, 0]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "confianca_empresarial",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [50, -1],
+          [100, 0]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -5],
+          [50, -2],
+          [100, 0]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "corrupcao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 1],
+          [100, 0]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "qualidade_ambiental",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.5],
+          [50, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 4
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "licenca-previa": [
+        "Brasil antes de 2019",
+        "Índia antes de 1991 (Licence Raj)"
+      ],
+      "por-risco": ["Portugal (Licenciamento Zero, 2011)"],
+      "sem-licenca-baixo-risco": ["Brasil (Lei 13.874/2019)"]
+    },
+    "brasil": "A Lei da Liberdade Econômica (Lei 13.874/2019) dispensa licença para atividade de baixo risco (art. 3º, I)."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 13.874/2019 (Liberdade Econômica)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/l13874.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Licence Raj (Índia)",
+      "url": "https://en.wikipedia.org/wiki/Licence_Raj",
+      "usadoPara": "licença prévia para tudo"
+    }
+  ]
+}

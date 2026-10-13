@@ -6,6 +6,11 @@
   "nome": "Vigilância epidemiológica",
   "descricao": "Fixa quanto o Estado gasta para detectar surtos cedo: laboratórios, notificação de casos, rastreamento, estoques estratégicos e equipes de resposta.",
   "area": "Saúde",
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

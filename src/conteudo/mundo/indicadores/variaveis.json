@@ -8436,6 +8436,342 @@
         "cem": 90,
         "fontes": ["IBGE (Sistema de Informações e Indicadores Culturais)"]
       }
+    },
+    {
+      "id": "nivel_partidos",
+      "tipo": "controle",
+      "nome": "Partidos políticos",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_participacao_direta",
+      "tipo": "controle",
+      "nome": "Participação direta",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_governadores",
+      "tipo": "controle",
+      "nome": "Governadores",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_tribunais_superiores",
+      "tipo": "controle",
+      "nome": "Tamanho e nomeação dos tribunais superiores",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_concessoes_de_radio_e_tv",
+      "tipo": "controle",
+      "nome": "Concessões de rádio e TV",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_ongs_e_financiamento_estrangeiro",
+      "tipo": "controle",
+      "nome": "ONGs e financiamento estrangeiro",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_crimes_da_ditadura",
+      "tipo": "controle",
+      "nome": "Crimes da ditadura",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Instituições, Estado e sistema político"
+    },
+    {
+      "id": "nivel_propriedade_dos_meios_de_producao",
+      "tipo": "controle",
+      "nome": "Propriedade dos meios de produção",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_programa_de_privatizacao",
+      "tipo": "controle",
+      "nome": "Programa de privatização",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_nacionalizacao",
+      "tipo": "controle",
+      "nome": "Nacionalização",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_cooperativas_e_autogestao",
+      "tipo": "controle",
+      "nome": "Cooperativas e autogestão",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_planejamento_da_economia",
+      "tipo": "controle",
+      "nome": "Planejamento da economia",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_liberdade_economica",
+      "tipo": "controle",
+      "nome": "Liberdade econômica",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Economia, finanças e comércio exterior"
+    },
+    {
+      "id": "nivel_direito_de_greve",
+      "tipo": "controle",
+      "nome": "Direito de greve",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_contribuicao_sindical",
+      "tipo": "controle",
+      "nome": "Contribuição sindical",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_programas_sociais_por_missao",
+      "tipo": "controle",
+      "nome": "Programas sociais por missão",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_direito_a_moradia",
+      "tipo": "controle",
+      "nome": "Direito à moradia",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_habitacao_publica",
+      "tipo": "controle",
+      "nome": "Habitação pública",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Previdência e assistência social"
+    },
+    {
+      "id": "nivel_gestao_da_escola_publica",
+      "tipo": "controle",
+      "nome": "Gestão da escola pública",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_conteudo_moral_e_sexual",
+      "tipo": "controle",
+      "nome": "Conteúdo moral e sexual na escola",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Educação, ciência e cultura"
+    },
+    {
+      "id": "nivel_vigilancia_de_bairro",
+      "tipo": "controle",
+      "nome": "Vigilância de bairro",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Segurança, justiça e drogas"
+    },
+    {
+      "id": "nivel_ensino_religioso",
+      "tipo": "controle",
+      "nome": "Ensino religioso",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_dinheiro_para_igrejas",
+      "tipo": "controle",
+      "nome": "Dinheiro para igrejas",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_identidade_de_genero",
+      "tipo": "controle",
+      "nome": "Identidade de gênero",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_discriminacao_por_orientacao_sexual",
+      "tipo": "controle",
+      "nome": "Discriminação por orientação sexual",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_igualdade_racial",
+      "tipo": "controle",
+      "nome": "Igualdade racial",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_saida_do_pais",
+      "tipo": "controle",
+      "nome": "Saída do país",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Direitos civis, costumes, imigração, mídia e defesa"
+    },
+    {
+      "id": "nivel_carvao",
+      "tipo": "controle",
+      "nome": "Carvão",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia, agro e infraestrutura"
     }
   ]
 }

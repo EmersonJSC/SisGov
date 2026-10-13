@@ -1,0 +1,17 @@
+{
+  "id": "capacidade-estatal--eficacia-saida-do-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capacidade_estatal",
+  "alvo": "eficacia:saida-do-pais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

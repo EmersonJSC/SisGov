@@ -6,6 +6,11 @@
   "nome": "Liberdade de imprensa",
   "descricao": "Define o quanto jornais, TVs e rádios podem publicar sem censura, licença política ou punição.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "imprensa-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "constituicao"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

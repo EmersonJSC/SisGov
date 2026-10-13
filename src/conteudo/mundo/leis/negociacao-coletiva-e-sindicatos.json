@@ -6,6 +6,11 @@
   "nome": "Negociação coletiva e sindicatos",
   "descricao": "Define quem negocia salários e condições: sindicato controlado pelo Estado, empresa a empresa, por setor ou num grande pacto nacional.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "sindicatos-e-greve",
+    "nome": "Sindicatos e greve",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

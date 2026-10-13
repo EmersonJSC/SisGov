@@ -6,6 +6,11 @@
   "nome": "Eutanásia e morte assistida",
   "descricao": "Define se, e em que condições, alguém pode pedir ajuda médica para morrer.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
   "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

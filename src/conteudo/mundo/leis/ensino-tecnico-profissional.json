@@ -6,6 +6,11 @@
   "nome": "Ensino técnico e profissional",
   "descricao": "Define o peso da trilha técnica no ensino médio e quando o aluno é separado entre o caminho acadêmico e o profissional.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Estabilidade dos servidores públicos",
   "descricao": "Define se servidores entram por concurso e se podem ser demitidos por desempenho ou por vontade do governo.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "servico-publico",
+    "nome": "Serviço público e integridade",
+    "camada": "constituicao"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

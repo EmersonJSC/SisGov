@@ -746,7 +746,8 @@ function vagasDaEsfera(
         const interna: Ponto[] = [];
         const n = Math.ceil(esfera.r / dy) + 1;
         for (let j = -n; j <= n; j++) {
-          const y = esfera.y + (j + fy) * dy;
+          // linha em pixel inteiro: a distância entre linhas fica exata
+          const y = Math.round(esfera.y + (j + fy) * dy);
           const desloca = (j & 1 ? 0.5 : 0) + fx;
           const m = Math.ceil(esfera.r / dx) + 1;
           for (let i = -m; i <= m; i++) {

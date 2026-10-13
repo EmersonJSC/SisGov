@@ -6,6 +6,11 @@
   "nome": "Fundo de garantia e indenização por demissão",
   "descricao": "Define o que o empregador deve ao trabalhador demitido: nada, uma conta portátil, um fundo com multa ou uma indenização por tempo de casa.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

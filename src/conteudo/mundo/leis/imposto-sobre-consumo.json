@@ -6,6 +6,11 @@
   "nome": "Imposto sobre consumo (IVA)",
   "descricao": "Define a alíquota padrão do imposto cobrado sobre bens e serviços em cada etapa da venda, com crédito do que foi pago antes.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

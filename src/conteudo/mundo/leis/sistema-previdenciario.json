@@ -6,6 +6,11 @@
   "nome": "Sistema previdenciário",
   "descricao": "Define quem carrega o risco da velhice: cada um sozinho, cada um com sua conta individual, um sistema misto ou um pacto coletivo em que quem trabalha hoje paga quem já se aposentou.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

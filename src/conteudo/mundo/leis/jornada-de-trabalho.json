@@ -6,6 +6,11 @@
   "nome": "Jornada de trabalho",
   "descricao": "Define a jornada semanal legal e o limite de horas extras.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

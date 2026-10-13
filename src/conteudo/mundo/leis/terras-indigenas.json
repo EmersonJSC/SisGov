@@ -6,6 +6,11 @@
   "nome": "Terras indígenas",
   "descricao": "Define se o Estado reconhece os territórios dos povos originários e quanto poder eles têm sobre o que acontece neles.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

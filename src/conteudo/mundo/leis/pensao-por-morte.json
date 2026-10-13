@@ -6,6 +6,11 @@
   "nome": "Pensão por morte",
   "descricao": "Define o que a família recebe quando morre quem contribuía: nada, uma ajuda temporária, uma parte do benefício por dependente ou o benefício inteiro para sempre.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "lei-ordinaria",
   "requer": {

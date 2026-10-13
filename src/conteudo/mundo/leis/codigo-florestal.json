@@ -6,6 +6,11 @@
   "nome": "Código florestal",
   "descricao": "Define quanto de vegetação nativa cada propriedade rural é obrigada a manter de pé.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

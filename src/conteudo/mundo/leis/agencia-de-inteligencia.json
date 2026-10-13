@@ -5,6 +5,11 @@
   "nome": "Agência de inteligência e contrainteligência",
   "descricao": "Quanto a agência que investiga espionagem, dinheiro estrangeiro e ameaças ao Estado recebe por ano.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "alavanca"
+  },
   "ministerio": "Gabinete do presidente",
   "nivel": "decreto",
   "revogavel": false,

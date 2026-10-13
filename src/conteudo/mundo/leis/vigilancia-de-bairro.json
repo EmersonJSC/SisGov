@@ -1,0 +1,133 @@
+{
+  "id": "vigilancia-de-bairro",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Vigilância de bairro",
+  "descricao": "Se os moradores vigiam o bairro: ninguém, conselhos de segurança de voluntários ou comitês do Estado em cada quarteirão.",
+  "area": "Segurança, justiça e drogas",
+  "ministerio": "Ministério da Justiça",
+  "nivel": "lei",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_vigilancia_de_bairro",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Nenhuma",
+        "valor": 0
+      },
+      {
+        "id": "voluntarios",
+        "rotulo": "Conselhos de segurança de voluntários",
+        "valor": 50
+      },
+      {
+        "id": "comites-do-estado",
+        "rotulo": "Comitês do Estado em cada quarteirão",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, 2]
+        ]
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "crimes_patrimoniais",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -3]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -12]
+        ]
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, -3]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -5]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_classe_media",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, -2]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "nenhuma": ["Brasil (no nível nacional)", "Argentina"],
+      "voluntarios": ["Reino Unido (Neighbourhood Watch)", "Estados Unidos"],
+      "comites-do-estado": [
+        "Cuba (Comitês de Defesa da Revolução, 1960)",
+        "Coreia do Norte"
+      ]
+    },
+    "brasil": "Não há lei nacional; alguns estados têm conselhos comunitários de segurança, ligados à polícia."
+  },
+  "fontes": [
+    {
+      "titulo": "Comitês de Defesa da Revolução (Cuba, 1960)",
+      "url": "https://en.wikipedia.org/wiki/Committees_for_the_Defense_of_the_Revolution",
+      "usadoPara": "comitês do Estado"
+    },
+    {
+      "titulo": "Vigilância de bairro voluntária",
+      "url": "https://en.wikipedia.org/wiki/Neighborhood_watch",
+      "usadoPara": "conselhos de voluntários"
+    }
+  ]
+}

@@ -6,6 +6,11 @@
   "nome": "Uso do cofre (fundo soberano)",
   "descricao": "Decide o que fazer com o dinheiro que sobra quando a dívida acaba: guardar no Tesouro, aplicar fora do país, emprestar às empresas ou investir em obras. Só faz diferença quando há cofre.",
   "area": "Tributação",
+  "mesa": {
+    "id": "regra-fiscal",
+    "nome": "Regra fiscal",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

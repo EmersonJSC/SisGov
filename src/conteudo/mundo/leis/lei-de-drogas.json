@@ -6,6 +6,11 @@
   "nome": "Lei de drogas",
   "descricao": "O que acontece com quem é pego usando drogas.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "drogas",
+    "nome": "Drogas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

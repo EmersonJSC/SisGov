@@ -5,39 +5,74 @@
   "nome": "Destino do resultado fiscal",
   "descricao": "Decide quanto do superávit vai para pagar a dívida e quanto fica guardado no cofre do Tesouro. No déficit, a mesma parte sai do cofre e o resto vira dívida nova.",
   "area": "Tributação",
+  "mesa": {
+    "id": "regra-fiscal",
+    "nome": "Regra fiscal",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_destino_do_resultado_fiscal",
     "unidade": "nivel_escopo",
     "opcoes": [
-      { "id": "pagar-a-divida", "rotulo": "Tudo para a dívida", "valor": 0 },
-      { "id": "dividir", "rotulo": "Metade para cada", "valor": 50 },
-      { "id": "guardar", "rotulo": "Tudo para o cofre", "valor": 100 }
+      {
+        "id": "pagar-a-divida",
+        "rotulo": "Tudo para a dívida",
+        "valor": 0
+      },
+      {
+        "id": "dividir",
+        "rotulo": "Metade para cada",
+        "valor": 50
+      },
+      {
+        "id": "guardar",
+        "rotulo": "Tudo para o cofre",
+        "valor": 100
+      }
     ]
   },
-  "implantacao": { "entrada": 1, "saida": 1 },
+  "implantacao": {
+    "entrada": 1,
+    "saida": 1
+  },
   "efeitos": [
     {
       "alvo": "cofre",
       "mecanismo": "afim",
-      "parametros": { "coeficiente": 0.25, "termoConstante": 0 },
-      "normalizacao": { "fator": "resultado_fiscal", "multiplicador": 0.01 },
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "normalizacao": {
+        "fator": "resultado_fiscal",
+        "multiplicador": 0.01
+      },
       "leitura": "nivel",
       "atraso": 0
     },
     {
       "alvo": "divida_publica",
       "mecanismo": "afim",
-      "parametros": { "coeficiente": 0.25, "termoConstante": 0 },
-      "normalizacao": { "fator": "resultado_fiscal", "multiplicador": 0.01 },
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "normalizacao": {
+        "fator": "resultado_fiscal",
+        "multiplicador": 0.01
+      },
       "leitura": "nivel",
       "atraso": 0
     },
     {
       "alvo": "reputacao_internacional",
       "mecanismo": "afim",
-      "parametros": { "coeficiente": 0.01, "termoConstante": 0 },
+      "parametros": {
+        "coeficiente": 0.01,
+        "termoConstante": 0
+      },
       "atraso": 4
     }
   ],

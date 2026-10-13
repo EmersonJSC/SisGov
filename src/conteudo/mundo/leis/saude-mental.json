@@ -6,6 +6,11 @@
   "nome": "Política de saúde mental",
   "descricao": "Define como o país cuida de quem tem transtorno mental grave: deixa com a família, interna em manicômios, mistura hospital e ambulatório, ou fecha os manicômios e trata em liberdade.",
   "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

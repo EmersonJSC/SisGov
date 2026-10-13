@@ -6,6 +6,11 @@
   "nome": "Imposto seletivo (tabaco, álcool, açúcar e poluentes)",
   "descricao": "Define quais produtos nocivos pagam um imposto extra para desestimular o consumo: nenhum, só os vícios tradicionais, também o açúcar, ou também poluentes e veículos.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

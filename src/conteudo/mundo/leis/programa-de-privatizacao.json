@@ -1,0 +1,152 @@
+{
+  "id": "programa-de-privatizacao",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Programa de privatização",
+  "descricao": "Se o governo põe estatais à venda: nenhuma, uma lista de empresas escolhidas ou todas as que restam.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério da Economia",
+  "nivel": "lei",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_programa_de_privatizacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhuma estatal à venda",
+        "valor": 0
+      },
+      {
+        "id": "lista",
+        "rotulo": "Lista de empresas à venda",
+        "valor": 50,
+        "requer": [
+          {
+            "lei": "propriedade-dos-meios-de-producao",
+            "opcoes": ["privada", "mista"],
+            "motivo": "Com propriedade socialista não há empresa para vender ao setor privado."
+          }
+        ]
+      },
+      {
+        "id": "venda-ampla",
+        "rotulo": "Venda das estatais restantes",
+        "valor": 100,
+        "requer": [
+          {
+            "lei": "propriedade-dos-meios-de-producao",
+            "opcoes": ["privada", "mista"],
+            "motivo": "Com propriedade socialista não há empresa para vender ao setor privado."
+          }
+        ]
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "confianca_empresarial",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -2],
+          [50, 0],
+          [100, 4]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1],
+          [50, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "grupo_servidores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -5]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -2],
+          [50, 0],
+          [100, 3]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "greve_geral",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 1
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "nenhum": ["Venezuela", "Cuba"],
+      "lista": [
+        "Brasil (Programa Nacional de Desestatização, Lei 9.491/1997)",
+        "França (privatizações de 1986)"
+      ],
+      "venda-ampla": ["Reino Unido de 1979 a 1997", "Nova Zelândia (anos 1980)"]
+    },
+    "brasil": "O Programa Nacional de Desestatização (Lei 9.491/1997) mantém uma lista de empresas que podem ser vendidas; a Eletrobras foi vendida em 2022 (Lei 14.182/2021)."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 9.491/1997 (Programa Nacional de Desestatização)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9491.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Lei 14.182/2021 (venda da Eletrobras)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14182.htm",
+      "usadoPara": "lista de empresas à venda"
+    },
+    {
+      "titulo": "Privatizações britânicas de 1979 a 1997",
+      "url": "https://en.wikipedia.org/wiki/Thatcherism",
+      "usadoPara": "venda das estatais restantes"
+    }
+  ]
+}

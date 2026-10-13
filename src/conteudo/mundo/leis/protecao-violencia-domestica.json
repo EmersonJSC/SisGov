@@ -6,6 +6,11 @@
   "nome": "Lei contra a violência doméstica",
   "descricao": "Define como a lei trata a agressão dentro de casa: assunto de família, crime comum, lei especial com medidas protetivas ou sistema integral.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

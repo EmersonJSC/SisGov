@@ -6,6 +6,11 @@
   "nome": "Escola em tempo integral",
   "descricao": "Define quantas horas por dia o aluno da rede pública passa na escola: meio turno, integral em parte das escolas ou integral para todos.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

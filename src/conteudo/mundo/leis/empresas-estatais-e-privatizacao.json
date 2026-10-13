@@ -6,6 +6,11 @@
   "nome": "Empresas estatais e privatização",
   "descricao": "Define o tamanho do Estado como empresário: quais setores têm empresas públicas e quais são vendidos ao setor privado.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

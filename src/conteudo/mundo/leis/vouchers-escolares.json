@@ -6,6 +6,11 @@
   "nome": "Vouchers escolares",
   "descricao": "Define se o dinheiro público da educação básica segue o aluno, podendo pagar escolas privadas ou geridas por terceiros escolhidas pela família.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

@@ -38,10 +38,11 @@ describe("configuração do país (V1-06)", () => {
     // V1-08: 20 segmentos e aprovação pelos perfis (Quaest jan/2025: 47%).
     // V1-09: 54 grupos de pressão (pressão, nível, patrocínio e ações) e
     // cinco leis de inteligência, duas com verba (a dívida sobe um pouco).
-    // V1-34: as duas camadas novas da mesa do salário mínimo.
+    // V1-34: as duas camadas novas da mesa do salário mínimo e as 28 leis
+    // novas das mesas (controle, eficácia e o estado de cada uma).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1394);
+    expect(Object.keys(valores)).toHaveLength(1478);
     expect(p.game.execution.step).toBe(12);
     expect(valores.popularidade_governo).toBeCloseTo(48.2574, 3);
     expect(valores.divida_publica).toBeCloseTo(82.315, 2);
@@ -49,8 +50,8 @@ describe("configuração do país (V1-06)", () => {
     expect(valores.desemprego).toBeCloseTo(6.177, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12688061.105388107, 3);
-    expect(p.content.policies).toHaveLength(131);
+    expect(soma).toBeCloseTo(12688859.026432712, 3);
+    expect(p.content.policies).toHaveLength(159);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });

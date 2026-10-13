@@ -6,6 +6,11 @@
   "nome": "Legislação trabalhista",
   "descricao": "Define quanto a lei protege o empregado: contrato livre, regras mínimas, código trabalhista completo ou proteção máxima contra demissão.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Redução de jornada subsidiada (lay-off)",
   "descricao": "Define se, numa crise, o Estado paga parte do salário para empresas reduzirem horas em vez de demitir.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

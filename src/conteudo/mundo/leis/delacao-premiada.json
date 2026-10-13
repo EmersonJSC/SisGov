@@ -6,6 +6,11 @@
   "nome": "Delação premiada",
   "descricao": "Se o acusado pode ganhar pena menor por entregar comparsas e provas.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

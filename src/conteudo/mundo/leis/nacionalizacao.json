@@ -1,0 +1,122 @@
+{
+  "id": "nacionalizacao",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Nacionalização",
+  "descricao": "Como o Estado pode tomar uma empresa: só com indenização prévia em dinheiro, por setor estratégico ou por decreto.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério da Economia",
+  "nivel": "lei",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_nacionalizacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "indenizacao-previa",
+        "rotulo": "Só com indenização prévia em dinheiro",
+        "valor": 0
+      },
+      {
+        "id": "setor-estrategico",
+        "rotulo": "Por setor estratégico, com indenização",
+        "valor": 50
+      },
+      {
+        "id": "expropriacao",
+        "rotulo": "Expropriação por decreto",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "risco_pais",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 4],
+          [100, 15]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -3],
+          [100, -10]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "confianca_empresarial",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -5],
+          [100, -15]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -5],
+          [100, -15]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, 1]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "indenizacao-previa": ["Brasil", "Estados Unidos (5ª Emenda)"],
+      "setor-estrategico": [
+        "Bolívia (gás, 2006)",
+        "México (petróleo, 1938)",
+        "França (1982)"
+      ],
+      "expropriacao": ["Venezuela (2007 e 2008)", "Cuba (1960)"]
+    },
+    "brasil": "A desapropriação exige indenização justa e prévia em dinheiro (art. 5º, XXIV)."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal de 1988",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "art. 5º, XXIV, opção do Brasil"
+    },
+    {
+      "titulo": "Nacionalizações na Venezuela (2007 e 2008)",
+      "url": "https://en.wikipedia.org/wiki/Economy_of_Venezuela",
+      "usadoPara": "expropriação"
+    }
+  ]
+}

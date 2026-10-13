@@ -180,6 +180,30 @@
           "opcao": "restritas",
           "como": "aprovou",
           "fonte": "Firearms (Amendment) Act 1988"
+        },
+        {
+          "lei": "programa-de-privatizacao",
+          "opcao": "venda-ampla",
+          "como": "aprovou",
+          "fonte": "Privatizações de 1979 a 1990 (British Telecom, British Gas, British Steel, água)"
+        },
+        {
+          "lei": "direito-de-greve",
+          "opcao": "votacao-secreta",
+          "como": "aprovou",
+          "fonte": "Trade Union Act 1984"
+        },
+        {
+          "lei": "habitacao-publica",
+          "opcao": "venda-ao-morador",
+          "como": "aprovou",
+          "fonte": "Housing Act 1980 (direito de compra)"
+        },
+        {
+          "lei": "conteudo-moral-e-sexual",
+          "opcao": "proibido",
+          "como": "aprovou",
+          "fonte": "Local Government Act 1988, seção 28"
         }
       ]
     },
@@ -350,6 +374,30 @@
           "opcao": "sem-regra",
           "como": "manteve",
           "fonte": "Sem lei (o Marco Civil é de 2014)"
+        },
+        {
+          "lei": "igualdade-racial",
+          "opcao": "estatuto",
+          "como": "aprovou",
+          "fonte": "Lei 12.288/2010"
+        },
+        {
+          "lei": "habitacao-publica",
+          "opcao": "financiamento",
+          "como": "aprovou",
+          "fonte": "Lei 11.977/2009 (Minha Casa, Minha Vida)"
+        },
+        {
+          "lei": "contribuicao-sindical",
+          "opcao": "obrigatoria",
+          "como": "manteve",
+          "fonte": "Lei 11.648/2008 (parte do imposto sindical às centrais)"
+        },
+        {
+          "lei": "participacao-direta",
+          "opcao": "conselhos-consultivos",
+          "como": "manteve",
+          "fonte": "Conferências nacionais de 2003 a 2010"
         }
       ]
     },
@@ -436,6 +484,24 @@
           "opcao": "moderada",
           "como": "aprovou",
           "fonte": "Emenda Constitucional 103/2019 (65 e 62 anos)"
+        },
+        {
+          "lei": "gestao-da-escola-publica",
+          "opcao": "civico-militar",
+          "como": "aprovou",
+          "fonte": "Decreto 10.004/2019"
+        },
+        {
+          "lei": "liberdade-economica",
+          "opcao": "sem-licenca-baixo-risco",
+          "como": "aprovou",
+          "fonte": "Lei 13.874/2019"
+        },
+        {
+          "lei": "contribuicao-sindical",
+          "opcao": "voluntaria",
+          "como": "manteve",
+          "fonte": "MP 873/2019 (cobrança só por boleto)"
         }
       ]
     },
@@ -642,6 +708,48 @@
           "opcao": "guerra-as-drogas",
           "como": "manteve",
           "fonte": "Código Penal (Lei 62/1987); Decreto-Lei 232/2003"
+        },
+        {
+          "lei": "partidos",
+          "opcao": "partido-unico",
+          "como": "manteve",
+          "fonte": "Constituição de Cuba de 1976, art. 5"
+        },
+        {
+          "lei": "propriedade-dos-meios-de-producao",
+          "opcao": "socialista",
+          "como": "manteve",
+          "fonte": "Constituição de Cuba de 1976, art. 14"
+        },
+        {
+          "lei": "planejamento-da-economia",
+          "opcao": "plano-central",
+          "como": "manteve",
+          "fonte": "Junta Central de Planejamento (JUCEPLAN, 1960)"
+        },
+        {
+          "lei": "nacionalizacao",
+          "opcao": "expropriacao",
+          "como": "manteve",
+          "fonte": "Lei 851/1960 de nacionalização"
+        },
+        {
+          "lei": "saida-do-pais",
+          "opcao": "com-autorizacao",
+          "como": "aprovou",
+          "fonte": "Lei 1312/1976 de Migração"
+        },
+        {
+          "lei": "vigilancia-de-bairro",
+          "opcao": "comites-do-estado",
+          "como": "manteve",
+          "fonte": "Comitês de Defesa da Revolução (1960)"
+        },
+        {
+          "lei": "ensino-religioso",
+          "opcao": "proibido",
+          "como": "manteve",
+          "fonte": "Lei de Nacionalização do Ensino (1961)"
         }
       ]
     },
@@ -818,6 +926,30 @@
           "opcao": "guerra-as-drogas",
           "como": "manteve",
           "fonte": "Lei 3-FZ/1998; Código Penal, art. 228"
+        },
+        {
+          "lei": "ongs-e-financiamento-estrangeiro",
+          "opcao": "agente-estrangeiro",
+          "como": "aprovou",
+          "fonte": "Lei 121-FZ/2012"
+        },
+        {
+          "lei": "governadores",
+          "opcao": "indicados",
+          "como": "aprovou",
+          "fonte": "Lei 159-FZ/2004"
+        },
+        {
+          "lei": "conteudo-moral-e-sexual",
+          "opcao": "proibido",
+          "como": "aprovou",
+          "fonte": "Lei 135-FZ/2013"
+        },
+        {
+          "lei": "discriminacao-por-orientacao-sexual",
+          "opcao": "propaganda-proibida",
+          "como": "aprovou",
+          "fonte": "Lei 135-FZ/2013"
         }
       ]
     },
@@ -1030,6 +1162,36 @@
           "opcao": "monopolio-estatal",
           "como": "aprovou",
           "fonte": "Loteria estatal Sportloto (1970)"
+        },
+        {
+          "lei": "partidos",
+          "opcao": "partido-unico",
+          "como": "aprovou",
+          "fonte": "Constituição da URSS de 1977, art. 6"
+        },
+        {
+          "lei": "propriedade-dos-meios-de-producao",
+          "opcao": "socialista",
+          "como": "aprovou",
+          "fonte": "Constituição da URSS de 1977, arts. 10 a 13"
+        },
+        {
+          "lei": "planejamento-da-economia",
+          "opcao": "plano-central",
+          "como": "aprovou",
+          "fonte": "Constituição da URSS de 1977, art. 16 (Gosplan)"
+        },
+        {
+          "lei": "direito-a-moradia",
+          "opcao": "garantida",
+          "como": "aprovou",
+          "fonte": "Constituição da URSS de 1977, art. 44"
+        },
+        {
+          "lei": "saida-do-pais",
+          "opcao": "com-autorizacao",
+          "como": "manteve",
+          "fonte": "Visto de saída soviético"
         }
       ]
     },
@@ -1182,6 +1344,12 @@
           "opcao": "voluntario",
           "como": "manteve",
           "fonte": "Forças Armadas voluntárias"
+        },
+        {
+          "lei": "concessoes-de-radio-e-tv",
+          "opcao": "cotas-e-limites",
+          "como": "aprovou",
+          "fonte": "Lei 19.307/2014"
         }
       ]
     },
@@ -1334,6 +1502,18 @@
           "opcao": "principio-legal",
           "como": "manteve",
           "fonte": "Lei 20.348/2009"
+        },
+        {
+          "lei": "identidade-de-genero",
+          "opcao": "lei-de-identidade",
+          "como": "aprovou",
+          "fonte": "Lei 21.120/2018"
+        },
+        {
+          "lei": "discriminacao-por-orientacao-sexual",
+          "opcao": "lei-civil",
+          "como": "aprovou",
+          "fonte": "Lei 20.609/2012 (Lei Zamudio)"
         }
       ]
     },
@@ -1510,6 +1690,36 @@
           "opcao": "guerra-as-drogas",
           "como": "aprovou",
           "fonte": "Lei Orgânica de Drogas (2010)"
+        },
+        {
+          "lei": "participacao-direta",
+          "opcao": "referendo-revogatorio",
+          "como": "aprovou",
+          "fonte": "Constituição da Venezuela de 1999, art. 72"
+        },
+        {
+          "lei": "tribunais-superiores",
+          "opcao": "ampliacao-por-lei",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica do Tribunal Supremo de Justiça (2004)"
+        },
+        {
+          "lei": "concessoes-de-radio-e-tv",
+          "opcao": "criterio-do-governo",
+          "como": "aprovou",
+          "fonte": "Fim da concessão da RCTV (2007)"
+        },
+        {
+          "lei": "nacionalizacao",
+          "opcao": "expropriacao",
+          "como": "aprovou",
+          "fonte": "Nacionalizações de 2007 e 2008"
+        },
+        {
+          "lei": "programas-sociais-por-missao",
+          "opcao": "missoes",
+          "como": "aprovou",
+          "fonte": "Missões sociais (2003)"
         }
       ]
     },
@@ -1692,6 +1902,18 @@
           "opcao": "flutuante",
           "como": "manteve",
           "fonte": "Euro flutuante"
+        },
+        {
+          "lei": "carvao",
+          "opcao": "saida-com-data",
+          "como": "aprovou",
+          "fonte": "Lei de saída do carvão (KVBG, 2020)"
+        },
+        {
+          "lei": "dinheiro-para-igrejas",
+          "opcao": "imposto-da-igreja",
+          "como": "manteve",
+          "fonte": "Lei Fundamental, art. 140"
         }
       ]
     }

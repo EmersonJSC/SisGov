@@ -6,6 +6,11 @@
   "nome": "Câmeras corporais",
   "descricao": "Quanto a União paga por ano para os estados comprarem câmeras para os uniformes da polícia.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "decreto",
   "nivelLegal": "derivada",

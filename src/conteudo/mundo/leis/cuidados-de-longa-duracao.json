@@ -6,6 +6,11 @@
   "nome": "Cuidados de longa duração",
   "descricao": "Define quem cuida de idosos dependentes e pessoas com deficiência grave: a família sozinha, uma rede só para os pobres, um seguro-cuidado obrigatório ou um serviço público universal.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "familia-e-cuidados",
+    "nome": "Família e cuidados",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

@@ -1,10 +1,9 @@
 # Catálogo em mesas (V1-34)
 
-**Status:** EM REVISÃO (13/out). Proposta; nada muda no jogo antes da sua
-aprovação. Junta as 129 leis de hoje (`organizacao-das-leis.md`) e as leis
-que saíram dos programas de governo da prova real (`programas.json`), no
-molde de mesas com camadas (`leis-em-camadas.md`). As perguntas estão na
-seção 4.
+**Status:** EM PARTE NO JOGO (13/out). As 41 mesas e as 28 leis novas
+estão no jogo (seção 5). As opções novas, as junções e a revisão por dados
+esperam o estudo das leis, índices e grupos que o autor pediu antes de mexer
+no resto.
 
 ## 0. Resumo
 
@@ -446,3 +445,23 @@ seção 4.
    vigilância de bairro ou ensino religioso, que são sensíveis)?
 3. **O próximo passo** é rodar a prova real com o catálogo em mesas,
    começando pela mesa do salário mínimo como piloto jogável? Recomendo.
+
+## 5. O que entrou no jogo (13/out)
+
+- **Todas as leis têm mesa e camada** (campo `mesa`), e a janela da lei mostra
+  a mesa inteira.
+- **28 leis novas** em ficha v3, com fonte, lado na bússola e efeitos. O
+  Brasil está numa opção de 25; ONGs e financiamento estrangeiro, programas
+  sociais por missão e vigilância de bairro ficam fora de vigor (no tablet).
+- **Mudanças na pesquisa, conferidas na lei:** planejamento da economia fica
+  em plano indicativo (art. 174); liberdade econômica já dispensa licença
+  para baixo risco (Lei 13.874/2019); carvão está com subsídio (Lei
+  14.299/2022); gestão da escola é democrática (art. 206, VI); governadores
+  são da Constituição (art. 28); conteúdo moral e discriminação ganharam uma
+  opção do meio.
+- **Travas novas:** programa de privatização exige propriedade privada ou
+  mista; plano central exige propriedade mista ou socialista.
+- **Ainda não:** as 5 opções novas em leis que já existem, a pena de morte
+  como opção, a junção das polícias e do cofre, e os níveis do Brasil.
+- **Prova real:** continuam 6 de 10 (Lula, Bolsonaro, Mujica e Chávez
+  ainda não chegam).

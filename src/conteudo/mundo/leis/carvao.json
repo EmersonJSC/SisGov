@@ -1,0 +1,134 @@
+{
+  "id": "carvao",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Carvão",
+  "descricao": "O que o país faz com as usinas a carvão: subsídio e contratos garantidos, uso livre sem subsídio, ou fechamento com data marcada.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "ministerio": "Ministério do Meio Ambiente",
+  "nivel": "lei",
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_carvao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "subsidio",
+        "rotulo": "Subsídio e contratos garantidos",
+        "valor": 0
+      },
+      {
+        "id": "livre",
+        "rotulo": "Uso livre, sem subsídio",
+        "valor": 50
+      },
+      {
+        "id": "saida-com-data",
+        "rotulo": "Saída com data marcada",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "emissoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -0.5],
+          [100, -2]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "qualidade_ambiental",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "preco_energia",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.5],
+          [100, 1]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "oferta_energia",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "grupo_ambientalistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, 5]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "subsidio": ["Brasil (Lei 14.299/2022)", "China", "Índia"],
+      "livre": ["Estados Unidos", "Austrália"],
+      "saida-com-data": [
+        "Alemanha (saída até 2038, lei de 2020)",
+        "Reino Unido (última usina fechou em 2024)",
+        "Chile (plano de 2019)"
+      ]
+    },
+    "brasil": "A Lei 14.299/2022 manteve contratos das usinas a carvão de Santa Catarina até 2040."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 14.299/2022 (transição energética justa)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14299.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Lei alemã de saída do carvão (KVBG, 2020)",
+      "url": "https://www.gesetze-im-internet.de/kvbg/",
+      "usadoPara": "saída com data marcada"
+    }
+  ]
+}

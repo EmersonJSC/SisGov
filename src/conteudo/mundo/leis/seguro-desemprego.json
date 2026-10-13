@@ -6,6 +6,11 @@
   "nome": "Seguro-desemprego",
   "descricao": "Define se e como o Estado sustenta quem perdeu o emprego: nada, poupança individual, seguro curto ou seguro generoso com contrapartidas.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

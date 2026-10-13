@@ -6,6 +6,11 @@
   "nome": "Lei anticorrupção",
   "descricao": "Define quem paga pela corrupção (só a pessoa, também a empresa) e se existe uma agência com superpoderes para investigar.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "servico-publico",
+    "nome": "Serviço público e integridade",
+    "camada": "lei"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

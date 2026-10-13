@@ -6,6 +6,11 @@
   "nome": "Controle de preços",
   "descricao": "Define se o governo fixa ou limita preços de bens e serviços, e de quantos.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "mercado",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

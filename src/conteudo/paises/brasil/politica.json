@@ -109,7 +109,8 @@
           "regime-cambial",
           "controle-de-capitais",
           "regulacao-bancaria",
-          "apostas-e-jogos-de-azar"
+          "apostas-e-jogos-de-azar",
+          "dinheiro-para-igrejas"
         ]
       },
       {
@@ -134,7 +135,12 @@
           "investimento-estrangeiro",
           "banco-de-desenvolvimento",
           "controle-de-precos",
-          "empresas-estatais-e-privatizacao"
+          "empresas-estatais-e-privatizacao",
+          "propriedade-dos-meios-de-producao",
+          "programa-de-privatizacao",
+          "nacionalizacao",
+          "cooperativas-e-autogestao",
+          "planejamento-da-economia"
         ],
         "extincao": {
           "destino": "fazenda"
@@ -145,7 +151,10 @@
         "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
         "cargo": "Empreendedorismo",
         "area": "empresas",
-        "leis": ["regime-simplificado-pequenas-empresas"],
+        "leis": [
+          "regime-simplificado-pequenas-empresas",
+          "liberdade-economica"
+        ],
         "extincao": {
           "destino": "mdic"
         }
@@ -178,7 +187,9 @@
           "seguro-desemprego",
           "terceirizacao",
           "trabalho-infantil-e-aprendizagem",
-          "trabalho-por-aplicativo"
+          "trabalho-por-aplicativo",
+          "direito-de-greve",
+          "contribuicao-sindical"
         ],
         "extincao": {
           "destino": "fazenda"
@@ -209,7 +220,8 @@
           "transferencia-de-renda",
           "beneficio-idosos-e-deficientes",
           "cuidados-de-longa-duracao",
-          "seguranca-alimentar"
+          "seguranca-alimentar",
+          "programas-sociais-por-missao"
         ],
         "extincao": {
           "destino": "previdencia",
@@ -260,7 +272,10 @@
           "ensino-tecnico-profissional",
           "escola-tempo-integral",
           "piso-salarial-professores",
-          "vouchers-escolares"
+          "vouchers-escolares",
+          "gestao-da-escola-publica",
+          "conteudo-moral-e-sexual",
+          "ensino-religioso"
         ]
       },
       {
@@ -288,7 +303,7 @@
         "nome": "Ministério das Comunicações",
         "cargo": "Comunicações",
         "area": "educacao",
-        "leis": ["regulacao-redes-sociais"],
+        "leis": ["regulacao-redes-sociais", "concessoes-de-radio-e-tv"],
         "extincao": {
           "destino": "ciencia"
         }
@@ -301,7 +316,9 @@
         "leis": [
           "saneamento-basico",
           "transporte-publico",
-          "programa-habitacao-popular"
+          "programa-habitacao-popular",
+          "direito-a-moradia",
+          "habitacao-publica"
         ],
         "extincao": {
           "destino": "integracao"
@@ -335,7 +352,8 @@
         "leis": [
           "matriz-energetica",
           "energia-nuclear",
-          "regime-do-petroleo-e-mineracao"
+          "regime-do-petroleo-e-mineracao",
+          "carvao"
         ]
       },
       {
@@ -427,7 +445,9 @@
           "vagas-em-presidios",
           "politica-de-imigracao",
           "refugiados-e-asilo",
-          "protecao-de-dados"
+          "protecao-de-dados",
+          "vigilancia-de-bairro",
+          "saida-do-pais"
         ]
       },
       {
@@ -464,7 +484,10 @@
           "casamento-e-uniao-civil",
           "eutanasia",
           "laicidade-do-estado",
-          "politica-de-natalidade"
+          "politica-de-natalidade",
+          "crimes-da-ditadura",
+          "identidade-de-genero",
+          "discriminacao-por-orientacao-sexual"
         ],
         "extincao": {
           "destino": "justica"
@@ -492,7 +515,7 @@
         "nome": "Ministério da Igualdade Racial",
         "cargo": "Igualdade Racial",
         "area": "direitos",
-        "leis": ["acoes-afirmativas"],
+        "leis": ["acoes-afirmativas", "igualdade-racial"],
         "extincao": {
           "destino": "direitos-humanos"
         }
@@ -512,7 +535,12 @@
           "financiamento-de-campanhas",
           "foro-privilegiado",
           "independencia-judiciario",
-          "agencia-de-inteligencia"
+          "agencia-de-inteligencia",
+          "partidos",
+          "participacao-direta",
+          "governadores",
+          "tribunais-superiores",
+          "ongs-e-financiamento-estrangeiro"
         ]
       },
       {

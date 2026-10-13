@@ -6,6 +6,11 @@
   "nome": "Regime simplificado para pequenas empresas",
   "descricao": "Define se pequenos negócios pagam pelo regime geral ou por uma guia única simplificada, e até que tamanho valem as vantagens.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

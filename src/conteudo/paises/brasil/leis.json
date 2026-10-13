@@ -516,6 +516,106 @@
     {
       "lei": "destino-do-resultado-fiscal",
       "opcao": "dividir"
+    },
+    {
+      "lei": "partidos",
+      "opcao": "pluripartidarismo"
+    },
+    {
+      "lei": "participacao-direta",
+      "opcao": "conselhos-consultivos"
+    },
+    {
+      "lei": "governadores",
+      "opcao": "eleitos"
+    },
+    {
+      "lei": "tribunais-superiores",
+      "opcao": "fixos"
+    },
+    {
+      "lei": "concessoes-de-radio-e-tv",
+      "opcao": "renovacao-automatica"
+    },
+    {
+      "lei": "crimes-da-ditadura",
+      "opcao": "anistia-ampla"
+    },
+    {
+      "lei": "propriedade-dos-meios-de-producao",
+      "opcao": "privada"
+    },
+    {
+      "lei": "programa-de-privatizacao",
+      "opcao": "lista"
+    },
+    {
+      "lei": "nacionalizacao",
+      "opcao": "indenizacao-previa"
+    },
+    {
+      "lei": "cooperativas-e-autogestao",
+      "opcao": "livre"
+    },
+    {
+      "lei": "planejamento-da-economia",
+      "opcao": "plano-indicativo"
+    },
+    {
+      "lei": "liberdade-economica",
+      "opcao": "sem-licenca-baixo-risco"
+    },
+    {
+      "lei": "direito-de-greve",
+      "opcao": "ampla"
+    },
+    {
+      "lei": "contribuicao-sindical",
+      "opcao": "voluntaria"
+    },
+    {
+      "lei": "direito-a-moradia",
+      "opcao": "direito-social"
+    },
+    {
+      "lei": "habitacao-publica",
+      "opcao": "financiamento"
+    },
+    {
+      "lei": "gestao-da-escola-publica",
+      "opcao": "democratica"
+    },
+    {
+      "lei": "conteudo-moral-e-sexual",
+      "opcao": "biologia-e-saude"
+    },
+    {
+      "lei": "ensino-religioso",
+      "opcao": "facultativo"
+    },
+    {
+      "lei": "dinheiro-para-igrejas",
+      "opcao": "isencao"
+    },
+    {
+      "lei": "identidade-de-genero",
+      "opcao": "cartorio"
+    },
+    {
+      "lei": "discriminacao-por-orientacao-sexual",
+      "opcao": "crime"
+    },
+    {
+      "lei": "igualdade-racial",
+      "opcao": "estatuto"
+    },
+    {
+      "lei": "saida-do-pais",
+      "opcao": "livre"
+    },
+    {
+      "lei": "carvao",
+      "opcao": "subsidio"
     }
   ],
   "controles": {
@@ -648,6 +748,31 @@
     "aliquota_imposto_transacoes_financeiras": 0.38,
     "nivel_fundo_soberano": 0,
     "pib_nominal": 12000000,
-    "nivel_destino_do_resultado_fiscal": 50
+    "nivel_destino_do_resultado_fiscal": 50,
+    "nivel_partidos": 100,
+    "nivel_participacao_direta": 33,
+    "nivel_governadores": 0,
+    "nivel_tribunais_superiores": 0,
+    "nivel_concessoes_de_radio_e_tv": 0,
+    "nivel_crimes_da_ditadura": 0,
+    "nivel_propriedade_dos_meios_de_producao": 0,
+    "nivel_programa_de_privatizacao": 50,
+    "nivel_nacionalizacao": 0,
+    "nivel_cooperativas_e_autogestao": 0,
+    "nivel_planejamento_da_economia": 50,
+    "nivel_liberdade_economica": 100,
+    "nivel_direito_de_greve": 100,
+    "nivel_contribuicao_sindical": 0,
+    "nivel_direito_a_moradia": 50,
+    "nivel_habitacao_publica": 50,
+    "nivel_gestao_da_escola_publica": 0,
+    "nivel_conteudo_moral_e_sexual": 33,
+    "nivel_ensino_religioso": 50,
+    "nivel_dinheiro_para_igrejas": 50,
+    "nivel_identidade_de_genero": 50,
+    "nivel_discriminacao_por_orientacao_sexual": 0,
+    "nivel_igualdade_racial": 50,
+    "nivel_saida_do_pais": 0,
+    "nivel_carvao": 0
   }
 }

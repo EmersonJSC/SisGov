@@ -6,6 +6,11 @@
   "nome": "Genéricos e patentes de medicamentos",
   "descricao": "Define quanto o país protege a patente de remédios: nenhuma proteção, patente restrita, patente com genéricos e licença compulsória, padrão da OMC ou proteção estendida.",
   "area": "Saúde",
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

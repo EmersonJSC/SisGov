@@ -1,0 +1,121 @@
+{
+  "id": "cooperativas-e-autogestao",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Cooperativas e autogestão",
+  "descricao": "O lugar das cooperativas e das empresas dos próprios trabalhadores: só a livre associação, incentivo fiscal e crédito, ou empresas geridas pelos trabalhadores.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério da Economia",
+  "nivel": "lei",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_cooperativas_e_autogestao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre",
+        "rotulo": "Livre associação, sem incentivo",
+        "valor": 0
+      },
+      {
+        "id": "incentivo",
+        "rotulo": "Incentivo fiscal e crédito às cooperativas",
+        "valor": 50
+      },
+      {
+        "id": "autogestao",
+        "rotulo": "Empresas geridas pelos trabalhadores",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "desigualdade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -3]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -3]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 4]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -6]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 2]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "livre": ["Brasil", "Estados Unidos"],
+      "incentivo": ["Itália (Lei Basevi, 1947)", "Espanha (Mondragón)"],
+      "autogestao": [
+        "Iugoslávia (Lei do Trabalho Associado, 1976)",
+        "Argentina (empresas recuperadas, Lei 26.684/2011)"
+      ]
+    },
+    "brasil": "A Constituição garante a livre associação (art. 5º, XVIII) e a Lei 5.764/1971 regula as cooperativas, sem regime de autogestão."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 5.764/1971 (cooperativas)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5764.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Autogestão dos trabalhadores",
+      "url": "https://en.wikipedia.org/wiki/Workers%27_self-management",
+      "usadoPara": "Iugoslávia e Argentina"
+    }
+  ]
+}

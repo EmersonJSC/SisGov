@@ -6,6 +6,11 @@
   "nome": "Imposto sobre grandes fortunas",
   "descricao": "Define a alíquota anual máxima cobrada sobre o patrimônio líquido dos mais ricos, acima de um limite de isenção.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

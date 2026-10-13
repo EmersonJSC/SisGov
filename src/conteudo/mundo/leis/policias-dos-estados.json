@@ -6,6 +6,11 @@
   "nome": "Polícias dos estados",
   "descricao": "Quem manda na polícia de rua e na polícia que investiga: os governadores ou o presidente.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "clausula-petrea",
   "nivelLegal": "petrea",

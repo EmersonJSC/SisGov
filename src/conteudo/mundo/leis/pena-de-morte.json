@@ -6,6 +6,11 @@
   "nome": "Pena de morte",
   "descricao": "Se a Justiça pode condenar à morte, e por quais crimes.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

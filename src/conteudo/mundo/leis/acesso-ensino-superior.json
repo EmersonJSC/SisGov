@@ -6,6 +6,11 @@
   "nome": "Acesso ao ensino superior",
   "descricao": "Define quem paga a universidade: a família, o próprio estudante depois de formado, ou o contribuinte (para todos ou só para os mais pobres).",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "ensino-superior",
+    "nome": "Ensino superior",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

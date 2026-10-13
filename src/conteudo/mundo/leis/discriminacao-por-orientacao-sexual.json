@@ -1,0 +1,134 @@
+{
+  "id": "discriminacao-por-orientacao-sexual",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Discriminação por orientação sexual",
+  "descricao": "O que a lei faz com a discriminação contra pessoas LGBT: é crime, dá multa e indenização, não há lei, ou a lei proíbe a 'propaganda' LGBT.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "ministerio": "Ministério dos Direitos Humanos",
+  "nivel": "lei",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_discriminacao_por_orientacao_sexual",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "crime",
+        "rotulo": "Discriminação é crime",
+        "valor": 0
+      },
+      {
+        "id": "lei-civil",
+        "rotulo": "Proibida, com multa e indenização",
+        "valor": 33
+      },
+      {
+        "id": "sem-lei",
+        "rotulo": "Sem lei",
+        "valor": 67
+      },
+      {
+        "id": "propaganda-proibida",
+        "rotulo": "Proibida a 'propaganda' LGBT",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "discriminacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1],
+          [67, 2],
+          [100, 6]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0],
+          [100, -4]
+        ]
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -1],
+          [67, -3],
+          [100, -6]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1],
+          [67, 2],
+          [100, 3]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, -1],
+          [100, -5]
+        ]
+      },
+      "atraso": 1
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "crime": ["Brasil (STF, ADO 26, 2019)", "França", "Espanha"],
+      "lei-civil": ["Chile (Lei 20.609/2012)"],
+      "sem-lei": ["Japão"],
+      "propaganda-proibida": ["Rússia (Lei 135-FZ/2013)", "Hungria (2021)"]
+    },
+    "brasil": "O STF enquadrou a homofobia e a transfobia na lei do racismo (ADO 26, 2019)."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei federal russa 135-FZ/2013 (propaganda LGBT)",
+      "url": "https://en.wikipedia.org/wiki/Russian_gay_propaganda_law",
+      "usadoPara": "propaganda proibida"
+    },
+    {
+      "titulo": "Lei 20.609/2012 do Chile (Lei Zamudio)",
+      "url": "https://es.wikipedia.org/wiki/Ley_Zamudio",
+      "usadoPara": "lei civil"
+    },
+    {
+      "titulo": "STF, ADO 26 (2019)",
+      "url": "https://en.wikipedia.org/wiki/LGBT_rights_in_Brazil",
+      "usadoPara": "opção do Brasil"
+    }
+  ]
+}

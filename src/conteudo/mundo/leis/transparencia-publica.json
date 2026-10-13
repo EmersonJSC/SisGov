@@ -6,6 +6,11 @@
   "nome": "Transparência pública",
   "descricao": "Define se o cidadão tem direito de ver contratos, gastos, salários e documentos do governo.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "imprensa-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "lei"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Ensino obrigatório",
   "descricao": "Define dos quantos aos quantos anos toda criança e jovem é obrigado a estar estudando, e o Estado obrigado a oferecer vaga.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

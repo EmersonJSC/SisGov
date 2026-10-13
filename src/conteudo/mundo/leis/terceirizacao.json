@@ -6,6 +6,11 @@
   "nome": "Terceirização",
   "descricao": "Define se e como uma empresa pode usar trabalhadores contratados por outra empresa.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

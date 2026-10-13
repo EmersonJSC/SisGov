@@ -5,6 +5,11 @@
   "nome": "Interceptação telefônica e digital",
   "descricao": "Quando a polícia e a inteligência podem ouvir telefonemas e ler mensagens: nunca, só com ordem de juiz e prazo, com ordem e sem prazo, ou sem ordem em casos de segurança nacional.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "nivel": "lei",
   "controle": {

@@ -6,6 +6,11 @@
   "nome": "Piso de gasto em educação",
   "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a educação (escolas, professores, merenda e transporte escolar). Se a arrecadação cai, a educação cai junto.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Educação",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

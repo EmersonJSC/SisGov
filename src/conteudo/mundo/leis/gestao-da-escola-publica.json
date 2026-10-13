@@ -1,0 +1,121 @@
+{
+  "id": "gestao-da-escola-publica",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Gestão da escola pública",
+  "descricao": "Quem dirige a escola pública: gestão democrática com conselho escolar, diretor indicado pelo governo ou gestão cívico-militar.",
+  "area": "Educação, ciência e cultura",
+  "ministerio": "Ministério da Educação",
+  "nivel": "lei",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_gestao_da_escola_publica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "democratica",
+        "rotulo": "Gestão democrática, com conselho escolar",
+        "valor": 0
+      },
+      {
+        "id": "diretor-indicado",
+        "rotulo": "Diretor indicado pelo governo",
+        "valor": 50
+      },
+      {
+        "id": "civico-militar",
+        "rotulo": "Gestão cívico-militar",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "evasao_escolar",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -0.5],
+          [100, -2]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "grupo_conservadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, 4]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -4]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "democratica": ["Brasil (art. 206, VI)", "Portugal"],
+      "diretor-indicado": ["França", "Chile"],
+      "civico-militar": [
+        "Brasil de 2019 a 2023 (Decreto 10.004/2019)",
+        "Estados Unidos (academias militares públicas)"
+      ]
+    },
+    "brasil": "A Constituição manda a gestão democrática do ensino público (art. 206, VI); o programa de escolas cívico-militares (Decreto 10.004/2019) foi encerrado em 2023."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal de 1988",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "art. 206, VI, opção do Brasil"
+    },
+    {
+      "titulo": "Decreto 10.004/2019 (escolas cívico-militares)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d10004.htm",
+      "usadoPara": "gestão cívico-militar"
+    }
+  ]
+}

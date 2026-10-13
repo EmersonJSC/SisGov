@@ -6,6 +6,11 @@
   "nome": "Aborto",
   "descricao": "Define em que casos interromper a gravidez é crime e em que casos é um serviço de saúde.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
   "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

@@ -5,6 +5,11 @@
   "nome": "Piso salarial dos professores",
   "descricao": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é em relação a outras profissões de nível superior.",
   "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Educação",
   "nivel": "lei",
   "controle": {

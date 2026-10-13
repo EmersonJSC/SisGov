@@ -1,0 +1,137 @@
+{
+  "id": "crimes-da-ditadura",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Crimes da ditadura",
+  "descricao": "O que o Estado faz com os crimes de um regime anterior: anistia ampla, comissão da verdade sem punição ou julgamento dos responsáveis.",
+  "area": "Instituições, Estado e sistema político",
+  "ministerio": "Ministério dos Direitos Humanos",
+  "nivel": "lei",
+  "mesa": {
+    "id": "memoria-e-transicao",
+    "nome": "Memória e transição",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_crimes_da_ditadura",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "anistia-ampla",
+        "rotulo": "Anistia ampla",
+        "valor": 0
+      },
+      {
+        "id": "comissao-da-verdade",
+        "rotulo": "Comissão da Verdade, sem punição",
+        "valor": 50
+      },
+      {
+        "id": "julgamento",
+        "rotulo": "Julgamento dos crimes",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 3]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "polarizacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 6]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "impunidade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -3]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 5]
+        ]
+      },
+      "atraso": 1
+    },
+    {
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 5]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_conservadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -3],
+          [100, -5]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "anistia-ampla": [
+        "Brasil (Lei 6.683/1979)",
+        "Espanha (Lei de Anistia de 1977)"
+      ],
+      "comissao-da-verdade": [
+        "Brasil (Comissão Nacional da Verdade, 2012 a 2014)",
+        "África do Sul (1995)",
+        "Chile (Comissão Rettig, 1990)"
+      ],
+      "julgamento": ["Argentina (desde 2005)", "Uruguai (desde 2011)", "Chile"]
+    },
+    "brasil": "A Lei da Anistia de 1979 segue valendo (STF, ADPF 153, 2010); a Comissão Nacional da Verdade (Lei 12.528/2011) apurou os crimes, sem punição."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 6.683/1979 (Lei da Anistia)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l6683.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Lei 12.528/2011 (Comissão Nacional da Verdade)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12528.htm",
+      "usadoPara": "comissão da verdade"
+    }
+  ]
+}

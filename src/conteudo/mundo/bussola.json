@@ -9,7 +9,10 @@
     "outras": 1,
     "dilema": 1
   },
-  "fatorDoRumo": { "economia": 4, "costumes": 1.5 },
+  "fatorDoRumo": {
+    "economia": 4,
+    "costumes": 1.5
+  },
   "temas": {
     "per104": "Forças armadas: a favor",
     "per105": "Forças armadas: contra",
@@ -1309,6 +1312,257 @@
         "gestao-terceirizada": [0.5, 0],
         "voucher-focalizado": [1, 0],
         "voucher-universal": [2, 0]
+      }
+    },
+    "partidos": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Proibir a disputa entre partidos é autoridade política; a competição livre entre partidos é a democracia comum.",
+      "opcoes": {
+        "partido-unico": [0, 2],
+        "partido-hegemonico": [0, 1],
+        "pluripartidarismo": [0, 0]
+      }
+    },
+    "participacao-direta": {
+      "manifesto": ["per202", "per403"],
+      "porque": "Mais canais de decisão direta é a democracia participativa defendida pela esquerda; só eleições é o modelo representativo puro.",
+      "opcoes": {
+        "nenhuma": [0, 0.5],
+        "conselhos-consultivos": [0, 0],
+        "conselhos-deliberativos": [-0.5, -1],
+        "referendo-revogatorio": [-0.5, -1]
+      }
+    },
+    "governadores": {
+      "manifesto": ["per301", "per302", "per305"],
+      "porque": "Tirar a eleição dos governadores centraliza o poder no presidente.",
+      "opcoes": {
+        "eleitos": [0, 0],
+        "indicados": [0, 1.5]
+      }
+    },
+    "tribunais-superiores": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Aumentar a corte para ter maioria ou deixar o partido escolher os juízes é autoridade política.",
+      "opcoes": {
+        "fixos": [0, 0],
+        "ampliacao-por-lei": [0, 1],
+        "nomeacao-pelo-partido": [0, 2]
+      }
+    },
+    "concessoes-de-radio-e-tv": {
+      "manifesto": ["per401", "per403", "per305"],
+      "porque": "Regular o mercado de mídia é Estado na economia; renovar a concessão só para quem agrada ao governo é autoridade.",
+      "opcoes": {
+        "renovacao-automatica": [0.5, 0],
+        "cotas-e-limites": [-0.5, 0],
+        "criterio-do-governo": [-0.5, 1.5]
+      }
+    },
+    "ongs-e-financiamento-estrangeiro": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Rotular quem recebe dinheiro de fora como agente estrangeiro restringe a sociedade civil.",
+      "opcoes": {
+        "livre": [0, 0],
+        "registro": [0, 0.5],
+        "agente-estrangeiro": [0, 2]
+      }
+    },
+    "crimes-da-ditadura": {
+      "manifesto": ["per201", "per202", "per605"],
+      "porque": "Investigar e julgar crimes do Estado é defesa dos direitos humanos; a anistia ampla põe a ordem e o esquecimento na frente.",
+      "opcoes": {
+        "anistia-ampla": [0, 0.5],
+        "comissao-da-verdade": [0, -0.5],
+        "julgamento": [0, -1]
+      }
+    },
+    "propriedade-dos-meios-de-producao": {
+      "manifesto": ["per401", "per413", "per412"],
+      "porque": "A propriedade estatal dos meios de produção é o polo do Estado na economia; a propriedade privada garantida é o do mercado.",
+      "opcoes": {
+        "privada": [0.5, 0],
+        "mista": [-0.5, 0],
+        "socialista": [-2, 0]
+      }
+    },
+    "programa-de-privatizacao": {
+      "manifesto": ["per401", "per413"],
+      "porque": "Vender estatais é mercado; manter todas é Estado na economia.",
+      "opcoes": {
+        "nenhum": [-0.5, 0],
+        "lista": [0.5, 0],
+        "venda-ampla": [1.5, 0]
+      }
+    },
+    "nacionalizacao": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Tomar empresas pelo Estado é estatização.",
+      "opcoes": {
+        "indenizacao-previa": [0, 0],
+        "setor-estrategico": [-1, 0],
+        "expropriacao": [-2, 0.5]
+      }
+    },
+    "cooperativas-e-autogestao": {
+      "manifesto": ["per403", "per413", "per701"],
+      "porque": "Dar a empresa aos trabalhadores tira o controle do dono e do mercado.",
+      "opcoes": {
+        "livre": [0, 0],
+        "incentivo": [-0.5, 0],
+        "autogestao": [-1.5, -0.5]
+      }
+    },
+    "planejamento-da-economia": {
+      "manifesto": ["per404", "per412", "per401"],
+      "porque": "O plano central obrigatório é a economia controlada pelo Estado; o mercado sem plano é o outro polo.",
+      "opcoes": {
+        "mercado": [0.5, 0],
+        "plano-indicativo": [0, 0],
+        "plano-central": [-2, 0.5]
+      }
+    },
+    "liberdade-economica": {
+      "manifesto": ["per401", "per402", "per403"],
+      "porque": "Exigir licença para tudo é Estado regulando; dispensar a licença é mercado.",
+      "opcoes": {
+        "licenca-previa": [-1, 0],
+        "por-risco": [0, 0],
+        "sem-licenca-baixo-risco": [0.5, 0]
+      }
+    },
+    "direito-de-greve": {
+      "manifesto": ["per701", "per702", "per305"],
+      "porque": "Restringir a greve tira poder dos sindicatos; proibir é também autoridade.",
+      "opcoes": {
+        "proibida": [1, 1.5],
+        "votacao-secreta": [0.5, 0.5],
+        "ampla": [0, 0]
+      }
+    },
+    "contribuicao-sindical": {
+      "manifesto": ["per701", "per702"],
+      "porque": "Contribuição obrigatória fortalece os sindicatos; a voluntária enfraquece.",
+      "opcoes": {
+        "voluntaria": [0.5, 0],
+        "obrigatoria": [-0.5, 0]
+      }
+    },
+    "programas-sociais-por-missao": {
+      "manifesto": ["per413", "per504", "per305"],
+      "porque": "Missões ligadas ao presidente põem o Estado mais perto da família e o programa nas mãos do governante.",
+      "opcoes": {
+        "por-ministerio": [0, 0],
+        "missoes": [-1, 1]
+      }
+    },
+    "direito-a-moradia": {
+      "manifesto": ["per504", "per413"],
+      "porque": "Garantir moradia a cada família é Estado de bem-estar no grau máximo.",
+      "opcoes": {
+        "sem-previsao": [0.5, 0],
+        "direito-social": [0, 0],
+        "garantida": [-1.5, 0]
+      }
+    },
+    "habitacao-publica": {
+      "manifesto": ["per504", "per401"],
+      "porque": "Moradia pública alugada é o Estado como dono; vender ao morador é propriedade privada.",
+      "opcoes": {
+        "aluguel-social": [-1, 0],
+        "financiamento": [0, 0],
+        "venda-ao-morador": [1, 0]
+      }
+    },
+    "gestao-da-escola-publica": {
+      "manifesto": ["per305", "per605", "per603"],
+      "porque": "A gestão cívico-militar põe disciplina e hierarquia na escola.",
+      "opcoes": {
+        "democratica": [0, 0],
+        "diretor-indicado": [0, 0.5],
+        "civico-militar": [0, 1.5]
+      }
+    },
+    "conteudo-moral-e-sexual": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Proibir o tema é moral tradicional; ensinar gênero no currículo é o polo oposto.",
+      "opcoes": {
+        "educacao-integral": [0, -1],
+        "biologia-e-saude": [0, 0],
+        "escolha-da-familia": [0, 0.5],
+        "proibido": [0, 1.5]
+      }
+    },
+    "vigilancia-de-bairro": {
+      "manifesto": ["per305", "per605", "per201"],
+      "porque": "Comitês do Estado vigiando os vizinhos é controle político; conselhos voluntários são lei e ordem moderada.",
+      "opcoes": {
+        "nenhuma": [0, 0],
+        "voluntarios": [0, 0.3],
+        "comites-do-estado": [0, 2]
+      }
+    },
+    "ensino-religioso": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Religião obrigatória na escola é moral tradicional; proibir é laicidade estrita.",
+      "opcoes": {
+        "proibido": [0, -1],
+        "facultativo": [0, 0],
+        "obrigatorio": [0, 1.5]
+      }
+    },
+    "dinheiro-para-igrejas": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Sustentar igrejas com dinheiro do Estado é moral tradicional; tratá-las como qualquer contribuinte é laicidade.",
+      "opcoes": {
+        "sem-isencao": [0, -0.5],
+        "isencao": [0, 0],
+        "imposto-da-igreja": [0, 0.5]
+      }
+    },
+    "identidade-de-genero": {
+      "manifesto": ["per603", "per604", "per705"],
+      "porque": "Reconhecer a identidade de gênero é direito de minoria; negar é moral tradicional.",
+      "opcoes": {
+        "sem-reconhecimento": [0, 1],
+        "cartorio": [0, 0],
+        "lei-de-identidade": [0, -1]
+      }
+    },
+    "discriminacao-por-orientacao-sexual": {
+      "manifesto": ["per705", "per603"],
+      "porque": "Proteger minorias é o lado da liberdade; proibir a 'propaganda' LGBT é moral tradicional imposta pelo Estado.",
+      "opcoes": {
+        "crime": [0, -0.5],
+        "lei-civil": [0, 0],
+        "sem-lei": [0, 0.5],
+        "propaganda-proibida": [0, 2]
+      }
+    },
+    "igualdade-racial": {
+      "manifesto": ["per705", "per503", "per607"],
+      "porque": "Política com recorte racial é igualdade promovida pelo Estado e proteção de minorias.",
+      "opcoes": {
+        "sem-politica": [0.5, 0.5],
+        "estatuto": [0, 0],
+        "recorte-racial": [-0.5, -0.5]
+      }
+    },
+    "saida-do-pais": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Prender o cidadão no país é autoridade política.",
+      "opcoes": {
+        "livre": [0, 0],
+        "com-autorizacao": [0, 2]
+      }
+    },
+    "carvao": {
+      "manifesto": ["per501", "per403", "per402"],
+      "porque": "Fechar as usinas por lei é regulação ambiental; subsidiar é proteger a indústria do carvão.",
+      "opcoes": {
+        "subsidio": [0, 0],
+        "livre": [0.5, 0],
+        "saida-com-data": [-0.5, 0]
       }
     }
   },

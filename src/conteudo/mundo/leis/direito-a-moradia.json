@@ -1,0 +1,122 @@
+{
+  "id": "direito-a-moradia",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Direito à moradia",
+  "descricao": "O que a Constituição diz da moradia: nada, um direito social que guia as políticas, ou moradia garantida pelo Estado a cada família.",
+  "area": "Previdência e assistência social",
+  "ministerio": "Ministério das Cidades",
+  "nivel": "constituicao",
+  "mesa": {
+    "id": "moradia",
+    "nome": "Moradia",
+    "camada": "constituicao"
+  },
+  "controle": {
+    "variavel": "nivel_direito_a_moradia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-previsao",
+        "rotulo": "Sem previsão",
+        "valor": 0
+      },
+      {
+        "id": "direito-social",
+        "rotulo": "Direito social, sem garantia individual",
+        "valor": 50
+      },
+      {
+        "id": "garantida",
+        "rotulo": "Moradia garantida pelo Estado",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "deficit_habitacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -6]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "populacao_de_rua",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.5],
+          [50, 0],
+          [100, -3]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "grupo_pobres",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1],
+          [50, 0],
+          [100, 5]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_periferias",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1],
+          [50, 0],
+          [100, 4]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_ricos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "sem-previsao": ["Estados Unidos", "Alemanha"],
+      "direito-social": [
+        "Brasil (art. 6º, desde 2000)",
+        "Portugal (art. 65)",
+        "África do Sul (art. 26)"
+      ],
+      "garantida": ["União Soviética (Constituição de 1977, art. 44)", "Cuba"]
+    },
+    "brasil": "A moradia entrou entre os direitos sociais em 2000 (art. 6º, Emenda 26)."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal de 1988",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "art. 6º, opção do Brasil"
+    },
+    {
+      "titulo": "Constituição da URSS de 1977",
+      "url": "https://en.wikipedia.org/wiki/1977_Constitution_of_the_Soviet_Union",
+      "usadoPara": "moradia garantida (art. 44)"
+    }
+  ]
+}

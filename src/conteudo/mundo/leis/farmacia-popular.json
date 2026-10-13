@@ -6,6 +6,11 @@
   "nome": "Farmácia popular",
   "descricao": "Fixa quanto o Estado gasta para dar de graça ou com desconto, na farmácia, os remédios de uso contínuo (pressão, diabetes, asma).",
   "area": "Saúde",
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

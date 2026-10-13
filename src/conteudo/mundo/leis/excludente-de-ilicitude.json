@@ -6,6 +6,11 @@
   "nome": "Excludente de ilicitude",
   "descricao": "Quando o policial que mata em serviço deixa de responder por crime.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

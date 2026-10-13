@@ -6,6 +6,11 @@
   "nome": "Tributação de dividendos",
   "descricao": "Define a alíquota máxima cobrada do acionista quando a empresa distribui lucro.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

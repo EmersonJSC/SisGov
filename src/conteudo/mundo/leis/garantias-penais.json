@@ -6,6 +6,11 @@
   "nome": "Garantias penais",
   "descricao": "Se o Estado pode matar ou prender para sempre quem cometeu um crime.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "clausula-petrea",
   "nivelLegal": "petrea",

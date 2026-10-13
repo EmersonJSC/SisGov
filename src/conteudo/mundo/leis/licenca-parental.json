@@ -6,6 +6,11 @@
   "nome": "Licença parental",
   "descricao": "Define quanto tempo de licença paga mães e pais têm com a chegada de um filho, e se o pai tem parte reservada.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "familia-e-cuidados",
+    "nome": "Família e cuidados",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

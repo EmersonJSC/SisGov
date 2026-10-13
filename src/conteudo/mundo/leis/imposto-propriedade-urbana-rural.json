@@ -6,6 +6,11 @@
   "nome": "Imposto sobre imóveis urbanos e rurais",
   "descricao": "Define quanto se arrecada todo ano com imóveis urbanos e terras rurais, com valores venais atualizados ou não.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

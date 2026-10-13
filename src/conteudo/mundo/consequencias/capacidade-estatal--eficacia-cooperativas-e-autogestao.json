@@ -1,0 +1,17 @@
+{
+  "id": "capacidade-estatal--eficacia-cooperativas-e-autogestao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "capacidade_estatal",
+  "alvo": "eficacia:cooperativas-e-autogestao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.002,
+    "termoConstante": 0
+  },
+  "unidade": "fator",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

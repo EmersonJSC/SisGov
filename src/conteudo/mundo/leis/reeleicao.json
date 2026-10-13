@@ -6,6 +6,11 @@
   "nome": "Reeleição do chefe do Executivo",
   "descricao": "Define quantas vezes o presidente pode se reeleger.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "constituicao"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

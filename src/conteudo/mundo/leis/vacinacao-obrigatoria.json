@@ -6,6 +6,11 @@
   "nome": "Vacinação obrigatória",
   "descricao": "Define se as vacinas do calendário infantil são oferecidas, recomendadas, exigidas para escola e benefícios, punidas com multa ou aplicadas à força.",
   "area": "Saúde",
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

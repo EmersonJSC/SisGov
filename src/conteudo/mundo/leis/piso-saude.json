@@ -6,6 +6,11 @@
   "nome": "Piso de gasto em saúde",
   "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a saúde (hospitais, postos, remédios e vigilância saem daqui). Se a arrecadação cai, a saúde cai junto.",
   "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {

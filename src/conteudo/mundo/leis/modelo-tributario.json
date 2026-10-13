@@ -6,6 +6,11 @@
   "nome": "Modelo tributário",
   "descricao": "Define de onde o Estado tira seu dinheiro: quase nada de impostos, peso no consumo, alíquota única para todos, sistema dual nórdico ou cobrança progressiva sobre a renda.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

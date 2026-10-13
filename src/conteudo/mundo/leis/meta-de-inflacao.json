@@ -6,6 +6,11 @@
   "nome": "Meta de inflação",
   "descricao": "Define qual é a âncora da política monetária: nenhuma, inflação e emprego juntos, ou uma meta numérica de inflação com tolerância maior ou menor.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "moeda",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "emenda-constitucional",
   "requer": {

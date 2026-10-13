@@ -6,6 +6,11 @@
   "nome": "Política industrial",
   "descricao": "Define se e como o Estado escolhe setores para estimular: nada, apoio geral a todos, apoio a setores com metas de exportação ou proteção do mercado interno.",
   "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "mercado",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

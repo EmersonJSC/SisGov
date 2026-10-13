@@ -6,6 +6,11 @@
   "nome": "Trabalho por aplicativo",
   "descricao": "Define o status de motoristas e entregadores de plataformas digitais: autônomos sem regra, categoria própria, presunção de vínculo ou empregados.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

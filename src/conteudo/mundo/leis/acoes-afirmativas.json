@@ -6,6 +6,11 @@
   "nome": "Ações afirmativas",
   "descricao": "Define se o Estado reserva vagas em universidades, concursos e candidaturas para grupos historicamente excluídos, e com que critério.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "ensino-superior",
+    "nome": "Ensino superior",
+    "camada": "lei"
+  },
   "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

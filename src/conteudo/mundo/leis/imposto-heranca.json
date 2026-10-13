@@ -6,6 +6,11 @@
   "nome": "Imposto sobre herança e doações",
   "descricao": "Define a alíquota máxima cobrada sobre heranças e doações, acima de uma faixa isenta.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

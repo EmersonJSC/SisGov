@@ -6,6 +6,11 @@
   "nome": "Restrição ao tabaco e ao álcool",
   "descricao": "Define as regras de venda, propaganda e consumo de cigarro e bebida: da liberdade total à lei seca.",
   "area": "Saúde",
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

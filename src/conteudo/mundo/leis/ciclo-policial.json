@@ -6,6 +6,11 @@
   "nome": "Ciclo policial",
   "descricao": "Se a mesma polícia patrulha e investiga o crime, ou se o trabalho é dividido entre duas.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "emenda-constitucional",
   "nivelLegal": "constitucional",

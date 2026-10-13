@@ -6,6 +6,11 @@
   "nome": "Sistema de governo",
   "descricao": "Define quem chefia o governo e se ele pode ser derrubado pelo Parlamento.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "constituicao"
+  },
   "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

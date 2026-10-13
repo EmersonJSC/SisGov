@@ -6,6 +6,11 @@
   "nome": "Imposto de renda da pessoa física",
   "descricao": "Define a alíquota máxima cobrada sobre a renda das pessoas (salários, aluguéis, ganhos), com faixas progressivas abaixo dela.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

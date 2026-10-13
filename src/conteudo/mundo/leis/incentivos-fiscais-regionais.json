@@ -6,6 +6,11 @@
   "nome": "Incentivos fiscais regionais",
   "descricao": "Define se o país dá isenções de impostos para atrair empresas a certas regiões e qual o formato: zona de exportação, fundo para regiões pobres ou zona franca ampla.",
   "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

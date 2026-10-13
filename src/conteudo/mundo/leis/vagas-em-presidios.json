@@ -6,6 +6,11 @@
   "nome": "Vagas em presídios",
   "descricao": "Quanto a União repassa por ano (Fundo Penitenciário) para abrir vagas e melhorar presídios.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "execucao-programa-autorizado",
   "nivelLegal": "derivada",

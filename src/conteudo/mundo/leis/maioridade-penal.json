@@ -6,6 +6,11 @@
   "nome": "Maioridade penal",
   "descricao": "A partir de que idade quem comete crime vai para a prisão comum.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "emenda-constitucional",
   "nivelLegal": "constitucional",

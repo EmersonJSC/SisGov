@@ -6,6 +6,11 @@
   "nome": "Serviço militar",
   "descricao": "Define como o país forma suas Forças Armadas: sem Forças Armadas, só voluntários, sorteio seletivo ou serviço obrigatório para todos.",
   "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "defesa",
+    "nome": "Defesa",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Defesa e Relações Exteriores",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

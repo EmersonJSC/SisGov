@@ -5,6 +5,11 @@
   "nome": "Verba da Polícia Federal",
   "descricao": "Quanto a Polícia Federal recebe por ano para investigar o crime organizado, a corrupção e as fronteiras.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
   "ministerio": "Ministério da Justiça",
   "nivel": "decreto",
   "revogavel": false,

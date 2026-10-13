@@ -6,6 +6,11 @@
   "nome": "Licenciamento ambiental",
   "descricao": "Define se e como uma obra ou empreendimento precisa provar que não vai destruir o ambiente antes de sair do papel.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

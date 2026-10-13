@@ -6,6 +6,11 @@
   "nome": "Reforma agrária",
   "descricao": "Define se e como o Estado redistribui terra rural concentrada para quem trabalha nela.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério do Meio Ambiente",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

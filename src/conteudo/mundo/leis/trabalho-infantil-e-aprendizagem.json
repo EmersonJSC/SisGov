@@ -6,6 +6,11 @@
   "nome": "Trabalho infantil e aprendizagem",
   "descricao": "Define a idade mínima para trabalhar e como o jovem entra no mercado: sem limite, com exceções, com cota de aprendiz ou com sistema dual escola-empresa.",
   "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
   "controle": {

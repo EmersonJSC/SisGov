@@ -6,6 +6,11 @@
   "nome": "Tempo de prisão",
   "descricao": "Quanto tempo o condenado fica preso e quando passa para o semiaberto.",
   "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",

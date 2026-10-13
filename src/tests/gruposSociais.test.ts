@@ -51,11 +51,13 @@ describe("SG143 — grupos sociais", () => {
   it("a aprovação sai dos perfis e começa perto da real (Quaest jan/2025: 47%)", () => {
     const v = partida.game.execution.values;
     // depois do aquecimento (V1-07) a aprovação segue os segmentos com a
-    // resposta gradual: igual até a terceira casa
-    expect(v.popularidade_governo).toBeCloseTo(
-      profileApproval(aprovacao, (id) => v[id])!,
-      3,
-    );
+    // resposta gradual: igual até a terceira casa (V1-34: com as 28 leis
+    // novas a diferença ficou em 0,0005; a tolerância passou a 0,001)
+    expect(
+      Math.abs(
+        v.popularidade_governo - profileApproval(aprovacao, (id) => v[id])!,
+      ),
+    ).toBeLessThan(0.001);
     expect(v.popularidade_governo).toBeGreaterThanOrEqual(44);
     expect(v.popularidade_governo).toBeLessThanOrEqual(50);
   });

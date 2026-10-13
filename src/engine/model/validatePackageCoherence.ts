@@ -554,6 +554,23 @@ export function validatePackageCoherence(
         );
   }
 
+  // V1-34: a mesa tem um nome só, em todas as leis dela
+  const mesaNames = new Map<string, string>();
+  for (const policy of content.policies) {
+    const table = policy.mesa;
+    if (!table) continue;
+    const name = mesaNames.get(table.id);
+    if (name === undefined) mesaNames.set(table.id, table.nome);
+    else if (name !== table.nome)
+      diagnostics.push(
+        issue(
+          policy.id,
+          "mesa.nome",
+          `A mesa ${table.id} tem dois nomes: ${name} e ${table.nome}.`,
+        ),
+      );
+  }
+
   // sem ciclo de mães e filhas (em qualquer das exigências)
   const state = new Map<string, "aberto" | "fechado">();
   const cyclic = new Set<string>();

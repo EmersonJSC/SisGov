@@ -6,6 +6,11 @@
   "nome": "Regra fiscal",
   "descricao": "Define se o governo tem uma regra numérica que limita déficit ou gasto, e de que tipo.",
   "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "regra-fiscal",
+    "nome": "Regra fiscal",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {

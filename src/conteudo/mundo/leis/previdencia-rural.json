@@ -6,6 +6,11 @@
   "nome": "Previdência rural",
   "descricao": "Define como o pequeno agricultor, que quase nunca tem salário fixo nem carteira, entra na previdência: fora dela, por adesão voluntária, por regime agrícola contributivo ou só comprovando que trabalhou na roça.",
   "area": "Previdência e assistência social",
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "lei"
+  },
   "ministerio": "Ministério da Previdência",
   "processoAutorizacao": "emenda-constitucional",
   "requer": {

@@ -6,6 +6,11 @@
   "nome": "Sistema de saúde",
   "descricao": "Define quem paga e quem presta o atendimento de saúde: cada um por si, um sistema misto, seguro obrigatório, saúde pública universal ou monopólio estatal.",
   "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "constituicao"
+  },
   "ministerio": "Ministério da Saúde",
   "processoAutorizacao": "emenda-constitucional",
   "controle": {
