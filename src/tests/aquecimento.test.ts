@@ -47,7 +47,8 @@ describe("aquecimento antes do turno 0 (V1-07)", () => {
       frio.execution.values.divida_publica,
     );
     expect(jogo(4).execution.values).toEqual(quente.execution.values);
-  });
+    // cria o jogo três vezes: perto de 3 s sozinho, mais com a suíte toda
+  }, 30_000);
 
   it("recusa aquecimento fora de 0 a 60 meses", () => {
     expect(() => jogo(21)).toThrow(
