@@ -457,6 +457,13 @@ as políticas de uma referência leva o ponto para perto dela.
 - [ ] Cada programa tem fonte para cada lei
 - [ ] Checagem de diferenciacao-d4.md feita
 
+**Onde parou (13/out).** Feito: programas das 10 referências com fonte, prova
+real (6 de 10 passam) e fator da bússola por eixo. Em revisão pelo autor:
+`organizacao-das-leis.md`, `leis-em-camadas.md`, `catalogo-em-mesas.md` e
+`estudo-das-leis.md`. Falta: reescrever as 129 leis nas camadas e mesas, e
+fazer os 10 programas passarem. O nível de cada lei (`organizacao-das-leis.md`)
+é usado antes, no V1-12, para o caminho e o quórum.
+
 **Você vê.** Um relatório da prova real: para cada programa, onde o ponto
 terminou e a distância até o governo de verdade.
 
