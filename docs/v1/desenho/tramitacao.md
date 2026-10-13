@@ -1,6 +1,7 @@
 # Tramitação e votação (V1-12)
 
-**Status:** APROVADO (13/out). Respostas do autor na seção 8.
+**Status:** APROVADO E FEITO (13/out). Respostas do autor na seção 8; o que
+o código decidiu sozinho na seção 9.
 
 ## 0. Resumo
 
@@ -140,6 +141,31 @@ aprovada, o nível passa a ser um campo só, no arquivo do país.
    a ordem vai pela opinião pública (autor, 13/out).
 4. Pedidos (ministério, emendas, apoio a uma lei da bancada): **sim** (autor,
    13/out).
+
+## 9. O que o código decidiu (13/out)
+
+Pontos pequenos que o desenho não fixou, com o valor escolhido (todos em
+`mundo/congresso.json`, fáceis de mudar):
+
+- **Adiar só uma vez por votação:** se faltar pouco de novo, cai. Sem isso,
+  uma lei podia ficar adiada para sempre.
+- **Um pedido por projeto, e uma bancada com um pedido aberto por vez.**
+  Enquanto você não responde, aquele projeto espera; os outros andam.
+- **Quem pede o quê:** bancada com 15% da casa ou mais pede ministério; as
+  menores pedem verba ou apoio a uma lei (meio a meio, por sorteio com
+  semente). A lei pedida é a lei ordinária que mais puxa o país para o lado
+  da bancada na bússola.
+- **Ministério:** por enquanto só mexe na disposição (sobe a da bancada,
+  desce um pouco a das outras). Trocar o ministro de verdade fica para
+  depois.
+- **Verba:** 0,05% do PIB sai do cofre; o que faltar vira dívida.
+- **Previsão:** quatro turnos à frente, com e sem a lei, como a prévia.
+
+Primeira rodada sem calibrar (8 leis mandadas no começo, Congresso de
+partida): em 4 turnos, 4 passaram, 2 caíram (armas de fogo e autonomia do
+Banco Central), 1 esperava a resposta a um pedido de ministério do Centro e
+1 emenda seguia na segunda votação. A meta de 77% fica para quando você
+jogar um mandato.
 
 ## Fontes
 

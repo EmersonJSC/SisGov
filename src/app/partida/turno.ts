@@ -18,6 +18,7 @@ import type {
 } from "./tipos";
 import { falha } from "./comum";
 import { aplicarMeta } from "./leis";
+import { votarNoCongresso } from "./tramitacao";
 import {
   MAXIMO_TRIMESTRES_PREVIA,
   simularTrimestre,
@@ -327,7 +328,7 @@ export function encerrarTurno(
       }
     : rolado.game;
   // V1-11: influência dos grupos e, uma vez por ano, o troca-troca
-  const next =
+  const noCongresso =
     comBussola.congress && comBussola.compass
       ? {
           ...comBussola,
@@ -344,6 +345,9 @@ export function encerrarTurno(
           }),
         }
       : comBussola;
+  // V1-12: o Congresso vota a fila no fim do turno
+  const votado = votarNoCongresso({ ...partida, game: noCongresso });
+  const next = votado.partida.game;
   // O piloto automático só precisa andar à parte se o jogador mudou algo.
   let pilotoNext = next;
   if (piloto !== game) {
@@ -400,6 +404,7 @@ export function encerrarTurno(
         dilemasDiferentes: dilemasDiferentes(next, pilotoNext),
         ocorrencias: rolado.jornal,
         pressao: rolado.pressao,
+        congresso: votado.resultado,
       },
     },
   };

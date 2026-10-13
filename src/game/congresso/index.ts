@@ -169,6 +169,7 @@ export function criarCongresso(
   return {
     casas,
     exatas: casas,
+    humor: {},
     influencia: Object.fromEntries(grupos.map((g) => [g.id, 1])),
     trocas: [],
   };
@@ -206,9 +207,16 @@ export function passarTurnoNoCongresso(input: {
       estado.influencia[g.id] ?? 1,
       danoDasLeis(g.causas, leis, valores),
     );
+  // o humor dos acordos e das pressas some aos poucos
+  const { memoria } = pacote.regras.tramitacao.humor;
+  const humor = Object.fromEntries(
+    Object.entries(estado.humor ?? {})
+      .map(([id, h]) => [id, h * memoria] as const)
+      .filter(([, h]) => Math.abs(h) >= 0.05),
+  );
   const { taxaPorAno, turnosPorAno } = pacote.regras.trocaTroca;
   if (turno <= 0 || turno % turnosPorAno !== 0)
-    return { ...estado, influencia };
+    return { ...estado, humor, influencia };
   const agora = eleicaoComJogador(pacote, pontoDoJogador, valores);
   const casas: Record<string, Cadeiras> = {};
   const exatas: Record<string, Readonly<Record<string, number>>> = {};
@@ -231,7 +239,13 @@ export function passarTurnoNoCongresso(input: {
     if (Object.keys(saldo).length > 0)
       trocas.push({ turno, casa: casa.id, saldo });
   }
-  return { casas, exatas, influencia, trocas: [...estado.trocas, ...trocas] };
+  return {
+    casas,
+    exatas,
+    humor,
+    influencia,
+    trocas: [...estado.trocas, ...trocas],
+  };
 }
 
 export type RetratoDaBancada = Readonly<{
@@ -291,7 +305,17 @@ export function retratoDoCongresso(input: {
       disposicao:
         b.id === JOGADOR
           ? 100
-          : disposicao(pacote.regras, satisfacaoDoEleitor, distanciaDoJogador),
+          : Math.max(
+              0,
+              Math.min(
+                100,
+                disposicao(
+                  pacote.regras,
+                  satisfacaoDoEleitor,
+                  distanciaDoJogador,
+                ) + (estado.humor?.[b.id] ?? 0),
+              ),
+            ),
       eleitor,
       frentes: Object.fromEntries(
         pacote.regras.frentes.map((f) => {

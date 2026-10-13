@@ -19,6 +19,7 @@ export * from "./tipos";
 export {
   distancia,
   extremos,
+  faixaDaLei,
   importancia,
   mediaDasLeis,
   pontoComRumo,

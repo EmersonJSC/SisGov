@@ -375,13 +375,22 @@ com caminhos diferentes.
 
 **Aceite**
 
-- [ ] Emenda sem 3/5 nas duas casas não passa (teste)
-- [ ] Com maioria própria, lei ordinária passa sem acordo (teste)
-- [ ] Mesma semente, mesma votação (teste)
-- [ ] Pedido aceito muda o voto da bancada que pediu (teste)
+- [x] Emenda sem 3/5 nas duas casas não passa (teste)
+- [x] Com maioria própria, lei ordinária passa sem acordo (teste)
+- [x] Mesma semente, mesma votação (teste)
+- [x] Pedido aceito muda o voto da bancada que pediu (teste)
 
 **Você vê.** A pauta no tablet, a votação de cada lei e os pedidos das
 bancadas.
+
+**Onde parou (13/out).** Feita a regra, aguardando o `npm run check` do
+autor (`docs/v1/desenho/tramitacao.md`, testes em
+`src/tests/tramitacao.test.ts`): envio com previsão, fila que anda pelo
+apoio e pela opinião pública, urgência, modo emergência, medida provisória
+que desfaz se cair ou caducar, pedidos (ministério, verba, apoio) e o modo
+`real` mandando ao Congresso. Falta a tela da pauta no tablet (as funções
+`verTramitacao`, `enviarAoCongresso` e `responderPedido` já existem) e as
+leis que se anulam (vêm com o V1-35).
 
 **Divisão.** Claude: Escreve a regra, a pauta e os pedidos. Autor: Joga um
 mandato e diz se passar lei está fácil ou difícil demais.

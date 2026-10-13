@@ -845,6 +845,25 @@
         "regra": "proporcional",
         "nota": "Na vida real é por maioria em cada estado; os perfis ainda não têm estado, então a regra fica proporcional (lacuna da prova)."
       }
-    ]
+    ],
+    "votacao": {
+      "fonte": "Constituição, arts. 47, 60, 62 e 69.",
+      "lei-ordinaria": {
+        "quorum": "maioria-dos-votos",
+        "rodadas": 1
+      },
+      "lei-complementar": {
+        "quorum": "maioria-absoluta",
+        "rodadas": 1
+      },
+      "emenda": {
+        "quorum": 0.6,
+        "rodadas": 2
+      },
+      "medidaProvisoria": {
+        "proibidaNasAreas": ["Segurança, justiça e drogas"],
+        "nota": "Art. 62, § 1º: medida provisória não trata de direito penal, processo penal, direitos políticos, eleições e nacionalidade."
+      }
+    }
   }
 }

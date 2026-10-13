@@ -22,6 +22,7 @@ import {
 import { createPressureState, type PressureState } from "./pressao";
 import { criarBussola, type EstadoDaBussola } from "./bussola";
 import { criarCongresso, type EstadoDoCongresso } from "./congresso";
+import type { EstadoDaTramitacao } from "./tramitacao";
 
 export type GameState = Readonly<{
   id: string;
@@ -51,6 +52,8 @@ export type GameState = Readonly<{
   compass?: EstadoDaBussola;
   /** Congresso (V1-11): cadeiras, influência dos grupos e troca-troca. */
   congress?: EstadoDoCongresso;
+  /** Fila do Congresso, votações e pedidos (V1-12); ausente = fila vazia. */
+  bills?: EstadoDaTramitacao;
   execution: EngineExecution;
 }>;
 

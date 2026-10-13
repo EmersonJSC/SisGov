@@ -70,6 +70,8 @@ export type PoliticaDoPais = {
       regra: "proporcional";
       nota?: string;
     }[];
+    /** Quórum e rodadas por nível de lei (V1-12). */
+    votacao?: Record<string, unknown>;
   };
 };
 

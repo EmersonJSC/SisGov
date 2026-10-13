@@ -71,7 +71,11 @@
     "pesoDaDisposicao": 1,
     "pesoDasFrentes": 1,
     "inclinacao": 4,
-    "nota": "Camada 2 (usada no V1-12): nota = soma dos pesos × termos de −1 a 1; chance de sim = 1 ÷ (1 + e^(−inclinacao × nota))."
+    "nota": "Camada 2: nota = soma dos pesos × termos de −1 a 1; chance de sim = 1 ÷ (1 + e^(−inclinacao × nota)). Termos: efeito previsto da lei no humor do eleitor da bancada (pontos ÷ escalaDosSegmentos), quanto a lei aproxima o país da bancada (pontos da bússola ÷ escalaDaBussola), (disposição − 50) ÷ 50, e as frentes (tamanho × queda do dano das leis ao grupo × escalaDasFrentes). As cadeiras do partido do jogador votam sim com chance disciplinaDoJogador.",
+    "escalaDosSegmentos": 10,
+    "escalaDaBussola": 1,
+    "escalaDasFrentes": 3,
+    "disciplinaDoJogador": 0.9
   },
   "frentes": [
     {
@@ -104,5 +108,35 @@
       "nome": "Frente empresarial",
       "grupos": ["industria", "comercio_servicos", "mercado_financeiro"]
     }
-  ]
+  ],
+  "tramitacao": {
+    "adiaSeFaltarAte": 0.05,
+    "emergenciasPorAno": 2,
+    "prazoDaMedidaProvisoria": 2,
+    "turnosDaPrevisao": 4,
+    "humor": {
+      "urgencia": -3,
+      "emergencia": -8,
+      "medidaProvisoria": -2,
+      "memoria": 0.9
+    },
+    "pedidos": {
+      "chanceMinima": 0.3,
+      "chanceMaxima": 0.7,
+      "ministerio": 20,
+      "verba": 12,
+      "apoio": 10,
+      "recusa": -5,
+      "ciume": -3,
+      "verbaEmPctDoPib": 0.05
+    },
+    "nota": "Valores inferidos, a calibrar jogando (desenho/tramitacao.md). humor: pontos de disposição que cada bancada perde ou ganha; a cada turno sobra memoria × o ajuste. pedidos: a bancada decisiva pede quando a chance dela de votar sim fica entre chanceMinima e chanceMaxima; aceitar soma os pontos dela, recusar tira; ministério também tira ciume das outras; a verba sai do cofre (verbaEmPctDoPib % do PIB do ano).",
+    "fila": {
+      "maximoPorCasa": 4,
+      "apoioMinimo": 20,
+      "nota": "Votações por casa no turno = arredonda(maximoPorCasa × apoio ÷ 100), no mínimo 1 com apoio de apoioMinimo para cima e 0 abaixo (o Congresso ignora). Apoio = média da popularidade do governo com a disposição das bancadas pesada pelas cadeiras. Ordem: medida provisória vencida primeiro; depois a maior prioridade = opinião pública da lei (pontos de humor previstos no eleitorado todo) + urgencia ou emergencia.",
+      "prioridadeDaUrgencia": 5,
+      "prioridadeDaEmergencia": 10
+    }
+  }
 }

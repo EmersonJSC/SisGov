@@ -102,6 +102,8 @@ export type CongressManifest = {
     cadeiras: number;
     regra: "proporcional";
   }[];
+  /** Regras de votação do país (quórum e rodadas por nível), como no arquivo. */
+  votacao?: Readonly<Record<string, unknown>>;
   /** Os perfis do país com os atributos (`perfis.json`). */
   atributos: readonly string[];
   valores: Readonly<Record<string, readonly string[]>>;

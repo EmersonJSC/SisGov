@@ -49,3 +49,12 @@ export { verPartida } from "./partida/visao";
 export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
 export { verBussola } from "./partida/bussola";
+export {
+  enviarAoCongresso,
+  responderPedido,
+  verTramitacao,
+  type OpcoesDoEnvio,
+  type ResultadoDoCongresso,
+  type VisaoDaTramitacao,
+  type VisaoDoProjeto,
+} from "./partida/tramitacao";

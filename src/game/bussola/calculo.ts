@@ -32,7 +32,10 @@ export function importancia(
 
 type Faixa = Readonly<{ minimo: number; maximo: number }>;
 
-function faixaDaLei(content: ResolvedPackage, id: string): Faixa | undefined {
+export function faixaDaLei(
+  content: ResolvedPackage,
+  id: string,
+): Faixa | undefined {
   const regras = policyLevelRulesFromContent(content, id);
   if (!regras.ok) return undefined;
   const { minimum, maximum } = regras.value.rules.domain;

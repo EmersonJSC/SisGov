@@ -1,13 +1,15 @@
 import type { ResolvedPackage, ScenarioGraph } from "../../engine";
 import type { GameState } from "../../game/createGame";
 import { BOLHAS_DO_ORCAMENTO } from "./contas";
+import type { ResultadoDoCongresso } from "./tramitacao";
 
 export type Resultado<T> =
   { ok: true; value: T } | { ok: false; erros: readonly string[] };
 
 /**
  * `teste`: toda mudança de lei vale na hora (o Congresso ainda não vota).
- * `real`: leis que exigem o Congresso viram proposta (votação ainda não ligada).
+ * `real`: leis que exigem o Congresso vão para a fila dele e só valem se
+ * passarem na votação (V1-12).
  */
 export type ModoPartida = "teste" | "real";
 
@@ -402,6 +404,8 @@ export type RelatorioTurno = Readonly<{
     niveis: readonly VisaoMudancaDeNivel[];
     investigacoes: readonly VisaoInvestigacaoConcluida[];
   }>;
+  /** O que o Congresso votou, pediu e tirou da fila no turno (V1-12). */
+  congresso: ResultadoDoCongresso;
 }>;
 
 /** Nível de um grupo de pressão: 0 sem muitos adeptos … 3 preocupação nacional. */

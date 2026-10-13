@@ -11,6 +11,8 @@ import { commitPolicyAction } from "../../game/commitPolicyAction";
 import { policyLevelRulesFromContent } from "../../game/policyRulesFromContent";
 import type { Resultado, Partida, VisaoQueda } from "./tipos";
 import { falha } from "./comum";
+import { nivelNoCongresso } from "../../game/tramitacao";
+import { enviarAoCongresso } from "./tramitacao";
 
 /** Escolhe um novo nível (ou o valor de uma opção) para uma lei. */
 export function mudarLei(
@@ -26,6 +28,10 @@ export function mudarLei(
   if (atual && Math.abs(atual.desiredLevel - nivel) < 1e-9)
     return { ok: true, value: partida };
   if (partida.modo === "real") {
+    // V1-12: o que precisa de votação vai para a fila do Congresso
+    const policy = content.policies.find((p) => p.id === leiId);
+    if (policy && game.congress && nivelNoCongresso(policy) !== "decreto")
+      return enviarAoCongresso(partida, leiId, nivel);
     const committed = commitPolicyAction(game, content, {
       id: `acao-${partida.acoes + 1}`,
       policyId: leiId,

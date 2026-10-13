@@ -32,12 +32,44 @@ export type RegrasDoCongresso = Readonly<{
     nome: string;
     grupos: readonly string[];
   }>[];
+  tramitacao: Readonly<{
+    adiaSeFaltarAte: number;
+    emergenciasPorAno: number;
+    prazoDaMedidaProvisoria: number;
+    turnosDaPrevisao: number;
+    humor: Readonly<{
+      urgencia: number;
+      emergencia: number;
+      medidaProvisoria: number;
+      memoria: number;
+    }>;
+    pedidos: Readonly<{
+      chanceMinima: number;
+      chanceMaxima: number;
+      ministerio: number;
+      verba: number;
+      apoio: number;
+      recusa: number;
+      ciume: number;
+      verbaEmPctDoPib: number;
+    }>;
+    fila: Readonly<{
+      maximoPorCasa: number;
+      apoioMinimo: number;
+      prioridadeDaUrgencia: number;
+      prioridadeDaEmergencia: number;
+    }>;
+  }>;
   voto: Readonly<{
     pesoDosSegmentos: number;
     pesoDaBussola: number;
     pesoDaDisposicao: number;
     pesoDasFrentes: number;
     inclinacao: number;
+    escalaDosSegmentos: number;
+    escalaDaBussola: number;
+    escalaDasFrentes: number;
+    disciplinaDoJogador: number;
   }>;
 }>;
 
@@ -102,6 +134,11 @@ export type EstadoDoCongresso = Readonly<{
    * mudanças pequenas se acumulem de um ano para o outro.
    */
   exatas: Readonly<Record<string, Readonly<Record<string, number>>>>;
+  /**
+   * Pontos de disposição que cada bancada ganhou ou perdeu com o governo
+   * (acordos, urgências, medidas provisórias; V1-12). Somem aos poucos.
+   */
+  humor: Readonly<Record<string, number>>;
   /** Fator de influência de cada grupo de pressão (1 = os recursos dele). */
   influencia: Readonly<Record<string, number>>;
   trocas: readonly TrocaDeCadeiras[];

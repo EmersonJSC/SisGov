@@ -239,6 +239,9 @@ export function expandirPais(
             regra,
           }),
         ),
+        ...(politica.congresso.votacao
+          ? { votacao: politica.congresso.votacao }
+          : {}),
         atributos: perfisLidos.atributos,
         valores: perfisLidos.valores,
         perfis: perfisLidos.perfis,
