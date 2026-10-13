@@ -110,6 +110,8 @@ O catálogo de 350 a 400 leis, área por área, eventos, dilemas e o Brasil 2026
 
 Ideias guardadas em 13/out para este marco: as leis em camadas (Constituição, lei e alavanca, `leis-em-camadas.md`), o catálogo em mesas (`catalogo-em-mesas.md`), o estudo das leis (`estudo-das-leis.md`) e as empresas do país (`empresas-do-pais.md`). Cada área usa o molde de minijogo da energia quando couber: a necessidade cresce sozinha, a capacidade só cresce com investimento e prazo, e se faltar vem a crise (saúde, segurança, educação, transporte).
 
+Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou "de direita" por opinião. Cada lei nasce de uma lei ou programa que existe em algum governo, com a fonte; o lado dela na bússola sai de pesquisa (votações reais, posição dos partidos no Manifesto Project); e, quando houver votação nominal no Brasil, ela entra na prova com votações reais da Câmara (`congresso.md` 5.4). Primeiro caso a corrigir: o feminicídio, que o centro e a direita também apoiam.
+
 - [ ] **V1-34** Leis de todos os lados e prova real da bússola (G)
 - [ ] **V1-35** Empresas do país e Estado empresário (G)
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
