@@ -47,7 +47,7 @@ para `game/` e `app/`.
 | motor  | `mechanisms/`  | Afim, pontos, limiar, estoque, resposta gradual                                       |
 | motor  | `runtime/`     | Avançar o passo, atrasos, situações com entrada e saída, explicação                   |
 | jogo   | `leis/`        | Catálogo, níveis (Constituição, lei, decreto), dependências, cascata, implantação     |
-| jogo   | `bussola/`     | Bússola política: questionário, posição do partido, das leis e dos dilemas            |
+| jogo   | `bussola/`     | Bússola política: ponto do país pelas leis em vigor, peso das leis, referências       |
 | jogo   | `congresso/`   | Câmara e Senado: bancadas, pauta, tramitação e votação                                |
 | jogo   | `turno/`       | Ordem do trimestre: ações, três meses de motor, ocorrências, população, fechamento    |
 | jogo   | `populacao/`   | Segmentos, perfis sintéticos, satisfação, aprovação                                   |

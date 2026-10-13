@@ -264,21 +264,22 @@
 
 **Tamanho:** M · **Depende de:** V1-08
 
-**Objetivo.** Saber onde o jogador está no espectro político e dar um eixo
-comum para leis, dilemas e bancadas.
+**Objetivo.** Mostrar para onde o seu governo leva o país no espectro
+político, perto de quais personalidades e partidos.
 
 **Entra**
 
-- Etapa 0, desenho: pesquisar métodos atuais (questionários de posição
-  política, escalas de especialistas, dados de partidos) e escrever
-  `docs/v1/desenho/bussola.md` com os eixos, o questionário, como cada opção de
-  lei ganha uma posição e quem aparece na bússola como referência; o código só
-  começa com o desenho aprovado pelo autor
-- Questionário no começo da partida, que põe o seu partido num ponto da bússola
-- Referências na bússola (políticos e partidos conhecidos), para você escolher
-  de quem quer chegar perto
-- Posição na bússola para cada opção de lei e de dilema
-- O seu ponto anda com as decisões ao longo do mandato
+- Etapa 0, desenho: pesquisar métodos atuais (escalas de posição política,
+  dados de partidos e de governantes) e escrever `docs/v1/desenho/bussola.md`
+  com os eixos, o peso de cada opção de lei em cada eixo e a posição das
+  referências; o código só começa com o desenho aprovado pelo autor
+- Sem questionário: o ponto inicial é a média das leis em vigor no país (o
+  Brasil começa onde estão as políticas de hoje)
+- Cada opção de lei tem um peso em cada eixo, com fonte; o ponto anda conforme
+  as leis que você aprova, muda e revoga
+- Referências na bússola: personalidades e partidos famosos da esquerda e da
+  direita, em duas camadas separadas, cada posição com fonte
+- O caminho do seu ponto ao longo do mandato
 
 **Não entra**
 
@@ -287,15 +288,15 @@ comum para leis, dilemas e bancadas.
 **Aceite**
 
 - [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/bussola.md`)
-- [ ] As mesmas respostas dão o mesmo ponto (teste)
-- [ ] Toda opção de lei e de dilema tem posição na bússola (teste do verificador)
+- [ ] O ponto inicial vem das leis em vigor (teste)
+- [ ] Toda opção de lei tem peso nos eixos (teste do verificador)
 - [ ] A posição de cada referência tem fonte
 
-**Você vê.** O questionário, a bússola com o seu ponto e as referências, e o
-ponto andando com as suas decisões.
+**Você vê.** A bússola com o seu ponto, o caminho que ele fez e as
+personalidades e partidos em volta.
 
-**Divisão.** Claude: Pesquisa, escreve o questionário e posiciona as leis.
-Autor: Responde o questionário, confere as referências e a posição das leis.
+**Divisão.** Claude: Pesquisa, dá peso às leis e posiciona as referências.
+Autor: Confere o ponto inicial do Brasil, as referências e o peso das leis.
 
 ### V1-11: Câmara e Senado
 
@@ -312,11 +313,11 @@ Brasil, montado por estatística a partir da população.
   pelo autor
 - Casas, cadeiras e regras de votação na configuração do país (o Brasil é
   bicameral, 513 e 81; outro país pode ter outra forma)
-- Bancadas como blocos com cadeiras, ponto na bússola e grupos sociais que
-  representam, calibradas pela composição real (sem os 513 nomes)
-- O seu partido: um bloco que vota sempre com você
-- Humor de cada bancada ligado à rede (satisfação dos segmentos que ela
-  representa, pressão dos grupos ligados a ela)
+- Bancadas como blocos com cadeiras e os grupos sociais que representam,
+  calibradas pela composição real (sem os 513 nomes)
+- O seu partido: as cadeiras dele votam sempre com você
+- Disposição de cada bancada: sobe quando os segmentos que ela representa
+  estão satisfeitos e cai quando estão insatisfeitos
 - Painel do Congresso: bancadas, cadeiras e humor, sem um ponto por deputado
 
 **Não entra**
@@ -350,8 +351,8 @@ com caminhos diferentes.
   lei ordinária precisa de maioria simples; lei complementar, de maioria
   absoluta; emenda constitucional, de 3/5 nas duas casas, em dois turnos;
   cláusula pétrea não muda
-- Voto de cada bancada pela distância na bússola, pelo humor e pelos acordos
-  feitos
+- Voto de cada bancada pelo que a lei faz aos segmentos que ela representa,
+  pela disposição dela e pelos acordos feitos
 - Resultado: passa, adia (volta à pauta no turno seguinte) ou cai
 - Pedidos do Congresso como dilemas: uma bancada pede algo em troca de votos;
   aceitar ou recusar soma ou tira apoio
@@ -386,7 +387,7 @@ chega como notificação.
 
 - Regra nova: as opções de um dilema são contrárias entre si em algum eixo
   (mercado e Estado, punir e prevenir, liberdade e ordem…), cada uma com
-  ganhadores e perdedores e com posição na bússola; o verificador recusa opção
+  ganhadores e perdedores e com peso na bússola; o verificador recusa opção
   sem lado
 - Exemplo: "Uma grande empresa quebrou" tem salvar com dinheiro público para
   manter os empregos, salvar em troca de participação nas ações, ou deixar
