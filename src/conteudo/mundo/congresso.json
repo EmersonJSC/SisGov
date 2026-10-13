@@ -72,7 +72,7 @@
     "pesoDaBussola": 0.5,
     "pesoDaDisposicao": 1,
     "pesoDasFrentes": 1,
-    "inclinacao": 4,
+    "inclinacao": 6,
     "nota": "Camada 2: nota = soma dos pesos × termos de −1 a 1; chance de sim = 1 ÷ (1 + e^(−inclinacao × nota)). Termos: efeito previsto da lei no humor do eleitor da bancada (pontos ÷ escalaDosSegmentos), quanto a lei aproxima o país da bancada (pontos da bússola ÷ escalaDaBussola), (disposição − 50) ÷ 50, e as frentes (tamanho × queda do dano das leis ao grupo × escalaDasFrentes). As cadeiras do partido do jogador votam sim com chance disciplinaDoJogador.",
     "escalaDosSegmentos": 10,
     "escalaDaBussola": 0.3,

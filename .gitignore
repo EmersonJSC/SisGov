@@ -8,3 +8,6 @@ __pycache__/
 
 # Backups do repositório ficam fora do git
 *.bundle
+
+# Dados brutos baixados (votações da Câmara etc.): só locais
+dados/

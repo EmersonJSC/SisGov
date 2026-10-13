@@ -3,6 +3,7 @@
  * (docs/v1/desenho/tramitacao.md, seção 7).
  */
 import { beforeAll, describe, expect, it } from "vitest";
+import votacoesReais from "../conteudo/bussola/votacoes-reais.json";
 import {
   criarPartida,
   encerrarTurno,
@@ -332,6 +333,50 @@ describe("frentes dos dois lados (congresso.md 5.3)", () => {
       for (const b of contra) expect(c[b], b).toBeLessThan(0.5);
     },
   );
+
+  it("prova: votações reais da Câmara (2023 a 2025), o lado e o tamanho do voto de cada grupo", () => {
+    const pacote = congressoDoPacote(partida.content)!;
+    const retrato = retratoDoCongresso({
+      content: partida.content,
+      estado: partida.game.congress!,
+      valores: partida.game.execution.values,
+      pontoDoJogador: pontoAtual(
+        partida.content,
+        partida.game.compass!,
+        partida.game.policies,
+      ),
+    });
+    const grupos = {
+      esquerda: ["extrema_esquerda", "esquerda"],
+      centro: ["centro", "centrao"],
+      direita: ["direita", "extrema_direita"],
+    } as const;
+    let ladoCerto = 0;
+    let erro = 0;
+    let n = 0;
+    for (const v of votacoesReais.votacoes) {
+      const c = chances(v.lei, v.nivel);
+      for (const [grupo, ids] of Object.entries(grupos)) {
+        let sim = 0;
+        let cadeiras = 0;
+        for (const b of retrato)
+          if ((ids as readonly string[]).includes(b.id)) {
+            sim += c[b.id] * b.cadeiras.camara;
+            cadeiras += b.cadeiras.camara;
+          }
+        const modelo = sim / cadeiras;
+        const real = v.sim[grupo as keyof typeof v.sim];
+        if (modelo > 0.5 === real > 0.5) ladoCerto += 1;
+        erro += Math.abs(modelo - real);
+        n += 1;
+      }
+    }
+    expect(pacote.casas.length).toBeGreaterThan(0);
+    expect(ladoCerto).toBeGreaterThanOrEqual(
+      votacoesReais.prova.ladoCertoMinimo,
+    );
+    expect(erro / n).toBeLessThanOrEqual(votacoesReais.prova.erroMedioMaximo);
+  });
 
   it("medida provisória da lei que acabou de cair irrita mais", () => {
     const lei = leiDo(

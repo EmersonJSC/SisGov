@@ -270,6 +270,39 @@ na mesma sessão (art. 62, § 10); no jogo vale, com um custo de humor bem
 maior que a medida provisória comum. Os ganhos e perdas dos segmentos vêm
 sozinhos, porque a lei vale na hora.
 
+## 5.4 Prova com votações reais da Câmara (13/out)
+
+**Pergunta do autor:** isso tem base científica? **Resposta:** o método
+(voto pela distância ideológica, como o "ponto ideal" que a ciência política
+tira das votações nominais) tem; os pesos eram estimativa. Por isso a prova:
+votações nominais reais do Plenário (2023 a 2025, dados abertos da Câmara),
+com uma lei parecida no jogo, comparadas com a chance que o modelo dá a cada
+grupo no turno 0.
+
+| Votação real                              | Lei no jogo               | Modelo (E / C / D) | Real (E / C / D)   |
+| ----------------------------------------- | ------------------------- | ------------------ | ------------------ |
+| Marco temporal (PL 490/2007)              | terras indígenas → 33     | 0,21 / 0,90 / 0,74 | 0,03 / 0,86 / 0,99 |
+| Licenciamento (PL 2159/2021)              | licenciamento → 33        | 0,13 / 0,88 / 0,80 | 0,01 / 0,91 / 1,00 |
+| Invasores de terra (PL 709/2023)          | reforma agrária → 0       | 0,12 / 0,89 / 0,81 | 0,10 / 0,94 / 0,99 |
+| Progressão com 80% (PL 1112/2023)         | penas e progressão → 100  | 0,31 / 0,81 / 0,68 | 0,38 / 0,99 / 1,00 |
+| Sustar decreto de armas (PDL 3/2023)      | armas → 100               | 0,33 / 0,97 / 0,96 | 0,01 / 0,76 / 0,98 |
+| Feminicídio com pena maior (PL 4015/2023) | violência doméstica → 100 | 0,94 / 0,39 / 0,29 | 1,00 / 0,92 / 0,61 |
+
+(Valores do modelo com `inclinacao` 4; com 6, a usada agora, ficam um pouco
+mais firmes.)
+
+**Resultado:** 16 de 18 lados certos; erro médio de 0,15 (0,17 antes de
+subir a `inclinacao` de 4 para 6, o que combina com a disciplina de mais de
+80% dos partidos). Os dois erros são a mesma lei: no Brasil o centro e a
+direita também votam por pena maior para o feminicídio, e o jogo trata a
+proteção da mulher como pauta só da esquerda. Corrigir isso é mexer no
+conteúdo da lei (bússola dela e grupos que reagem), não na conta do voto.
+
+Ficou como teste de catraca (`bussola/votacoes-reais.json` e
+`tramitacao.test.ts`): o modelo não pode piorar. Duas votações importantes
+ficaram de fora porque o jogo já começa com elas valendo (arcabouço fiscal e
+igualdade salarial).
+
 ## 6. O que o jogador vê (decisão do autor, 13/out)
 
 O Congresso **não aparece fisicamente** no jogo: não tem painel nem
