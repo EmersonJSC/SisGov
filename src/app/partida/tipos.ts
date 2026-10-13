@@ -540,7 +540,7 @@ export type VisaoBussola = Readonly<{
     costumes: number;
     porque: string;
   }>[];
-  fatorDoRumo: number;
+  fatorDoRumo: Readonly<{ economia: number; costumes: number }>;
   fonte: string;
   semMedida: readonly Readonly<{ nome: string; motivo: string }>[];
 }>;

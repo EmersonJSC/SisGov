@@ -8,7 +8,7 @@
     "lei-ordinaria": 2,
     "outras": 1
   },
-  "fatorDoRumo": 4,
+  "fatorDoRumo": { "economia": 4, "costumes": 1.5 },
   "temas": {
     "per104": "Forças armadas: a favor",
     "per105": "Forças armadas: contra",

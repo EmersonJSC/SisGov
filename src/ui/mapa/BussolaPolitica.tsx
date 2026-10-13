@@ -246,7 +246,10 @@ export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
         <figcaption>
           Economia {um(bussola.ponto.economia)} · Costumes{" "}
           {um(bussola.ponto.costumes)}. O círculo vazio é onde as leis do país
-          estavam na posse; o que você muda conta {bussola.fatorDoRumo} vezes.
+          estavam na posse; o que você muda conta{" "}
+          {bussola.fatorDoRumo.economia.toLocaleString("pt-BR")} vezes na
+          economia e {bussola.fatorDoRumo.costumes.toLocaleString("pt-BR")} nos
+          costumes.
         </figcaption>
       </figure>
 

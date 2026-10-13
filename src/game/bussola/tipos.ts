@@ -20,7 +20,8 @@ export type BussolaDoMundo = Readonly<{
   versaoEsquema: 1;
   metodo: string;
   importancia: Readonly<Record<string, number>>;
-  fatorDoRumo: number;
+  /** Quanto conta o rumo em cada eixo (ajustado na prova real, V1-34). */
+  fatorDoRumo: PontoDaBussola;
   temas: Readonly<Record<string, string>>;
   leis: Readonly<Record<string, BussolaDaLei>>;
 }>;

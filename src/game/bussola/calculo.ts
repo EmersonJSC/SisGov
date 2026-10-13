@@ -7,7 +7,8 @@
  *   vigor vale zero (ou o `foraDeVigor` dela).
  * - A média vira escala de −10 a +10 pela parte do caminho até o país mais
  *   extremo possível com as mesmas leis, em cada sentido.
- * - O ponto é o início mais o rumo ampliado: início + fator × (agora − início).
+ * - O ponto é o início mais o rumo ampliado: início + fator × (agora − início),
+ *   com um fator por eixo (V1-34).
  */
 import type { ResolvedPackage } from "../../engine";
 import type { PolicyState } from "../leis/policyState";
@@ -169,13 +170,13 @@ export function mediaDasLeis(
 export function pontoComRumo(
   inicio: PontoDaBussola,
   agora: PontoDaBussola,
-  fator: number,
+  fator: PontoDaBussola,
 ): PontoDaBussola {
-  const anda = (a: number, b: number) =>
-    Math.max(-10, Math.min(10, a + fator * (b - a)));
+  const anda = (a: number, b: number, f: number) =>
+    Math.max(-10, Math.min(10, a + f * (b - a)));
   return {
-    economia: anda(inicio.economia, agora.economia),
-    costumes: anda(inicio.costumes, agora.costumes),
+    economia: anda(inicio.economia, agora.economia, fator.economia),
+    costumes: anda(inicio.costumes, agora.costumes, fator.costumes),
   };
 }
 

@@ -81,7 +81,10 @@ function relatorio(titulo: string, fator: PontoDaBussola) {
 }
 
 const fator = bussolaDoMundo.fatorDoRumo;
-relatorio(`Fator atual (${fator}):`, { economia: fator, costumes: fator });
+relatorio(
+  `Fator atual (economia ${fator.economia}, costumes ${fator.costumes}):`,
+  fator,
+);
 const ajustado = { economia: ajuste("economia"), costumes: ajuste("costumes") };
 relatorio(
   `Fator ajustado no treino (economia ${ajustado.economia.toFixed(2)}, costumes ${ajustado.costumes.toFixed(2)}):`,

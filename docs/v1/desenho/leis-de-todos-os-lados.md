@@ -148,7 +148,8 @@ nossa e não existe em jogo nenhum que conhecemos.
    Fidel, Lula, Thatcher, Putin e Chávez no meio; Merkel no centro.
 3. **Passa quem termina a 3 ou menos** da referência e mais perto dela do que
    dos opostos.
-4. **Fator 4 mantido** até a prova mostrar outra coisa (seção 9).
+4. **Fator por eixo:** a prova mostrou que o 4 exagera nos costumes, e o
+   autor aprovou 4 na economia e 1,5 nos costumes (seção 9).
 
 ## 9. Prova com 10 programas (13/out)
 
@@ -198,8 +199,8 @@ Piñera, Chávez e Merkel. Rodar: `npx vite-node scripts/bussola/prova.ts`.
 
 O que a prova pede, na ordem:
 
-1. **Fator por eixo**, ajustado no treino e conferido no teste (proposta: 4 na
-   economia, 1,5 nos costumes).
+1. **Fator por eixo: feito** (4 na economia, 1,5 nos costumes; passam 6 de
+   10, e o teste confere quais).
 2. **Leis que faltam**, saídas das falhas acima e dos quatro cantos, com boa
    parte fora de vigor no Brasil (meta de um terço).
 3. **Verbas com escala** (o dobro do que o país gasta no começo como teto).

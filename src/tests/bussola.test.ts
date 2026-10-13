@@ -79,15 +79,18 @@ describe("o ponto", () => {
 
   it("o rumo do jogador conta o fator do desenho e fica dentro da bússola", () => {
     const inicio = { economia: -1, costumes: 2 };
-    expect(pontoComRumo(inicio, { economia: -0.5, costumes: 2 }, 4)).toEqual({
+    const fator = { economia: 4, costumes: 1.5 };
+    expect(
+      pontoComRumo(inicio, { economia: -0.5, costumes: 3 }, fator),
+    ).toEqual({
       economia: 1,
-      costumes: 2,
+      costumes: 3.5,
     });
-    expect(pontoComRumo(inicio, { economia: 5, costumes: -9 }, 4)).toEqual({
+    expect(pontoComRumo(inicio, { economia: 5, costumes: -9 }, fator)).toEqual({
       economia: 10,
       costumes: -10,
     });
-    expect(bussolaDoMundo.fatorDoRumo).toBe(4);
+    expect(bussolaDoMundo.fatorDoRumo).toEqual(fator);
   });
 
   it("aprovar uma lei move o ponto, e o fim do turno guarda o caminho", () => {

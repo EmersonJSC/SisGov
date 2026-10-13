@@ -2,7 +2,9 @@
 
 **Status:** APROVADO E FEITO (13/out). O autor aprovou os dois eixos, o fator
 4 do rumo e as referências pelos dados, e pediu uma lista maior (China,
-Rússia e outros). O resultado do Brasil está na seção 9.
+Rússia e outros). O resultado do Brasil está na seção 9. Em 13/out a prova
+real (V1-34) trocou o fator 4 por um fator por eixo: 4 na economia e 1,5 nos
+costumes (`leis-de-todos-os-lados.md`, seção 9).
 
 ## 0. Resumo
 

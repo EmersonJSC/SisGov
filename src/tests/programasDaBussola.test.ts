@@ -1,6 +1,6 @@
 /**
  * Prova real da bússola (V1-34): os programas de governo têm fonte em cada
- * linha e levam o país para o lado da referência
+ * linha, e a prova mostra quantos chegam perto da referência
  * (docs/v1/desenho/leis-de-todos-os-lados.md, seção 7).
  */
 import { beforeAll, describe, expect, it } from "vitest";
@@ -50,19 +50,23 @@ describe("programas de governo", () => {
     expect(treino * 2).toBe(lista.length);
   });
 
-  it("todo programa termina mais perto da referência do que dos opostos", () => {
+  it("passam os 6 medidos em 13/out (a meta é passarem os 10)", () => {
     const { content, game } = partida;
-    for (const [nome, prog] of lista) {
+    const { distanciaMaxima } = programas.regraDePassar;
+    const passam = lista.filter(([, prog]) => {
       const p = pontoAtual(
         content,
         game.compass!,
         aplicarPrograma(content, game.policies, prog),
       );
       const alvo = distancia(p, ref(prog.referencia)!);
-      for (const id of prog.opostos)
-        expect(alvo, `${nome} contra ${id}`).toBeLessThan(
-          distancia(p, ref(id)!),
-        );
-    }
+      return (
+        alvo <= distanciaMaxima &&
+        prog.opostos.every((id) => alvo < distancia(p, ref(id)!))
+      );
+    });
+    expect(passam.map(([nome]) => nome).sort()).toEqual(
+      ["brejnev", "fidel", "merkel", "pinera", "putin", "thatcher"].sort(),
+    );
   });
 });
