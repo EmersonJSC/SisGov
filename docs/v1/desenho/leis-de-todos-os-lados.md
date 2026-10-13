@@ -1,7 +1,7 @@
 # Leis de todos os lados e prova real da bússola (V1-34)
 
-**Status:** EM REVISÃO (13/out). O código só começa com a sua aprovação; as
-perguntas estão na seção 8.
+**Status:** APROVADO (13/out). Programas e prova feitos; a reestruturação do
+catálogo é o próximo passo (seção 9).
 
 ## 0. Resumo
 
@@ -138,14 +138,70 @@ nossa e não existe em jogo nenhum que conhecemos.
 - O relatório da prova mostra, para cada programa, o ponto, a distância e as
   leis que mais puxaram.
 
-## 8. Perguntas para você
+## 8. Decisões (13/out)
 
-1. **Programas pelo que o governo aprovou** (opção A)? Recomendo.
-2. **Quais referências entram na prova da versão 1?** Proponho 16, dos
-   quatro cantos: Che e Fidel (Cuba), Mao, Xi, Putin, Chávez, Mujica, Lula,
-   FHC, Bolsonaro, Thatcher, Reagan, Merkel, Palme, Orbán e Khomeini. Metade
-   para treino, metade para teste.
-3. **Limite de 3 de distância** para passar? Recomendo.
-4. **Fator 4 do rumo:** com ele, 6 a 27 leis levam a qualquer ponto, e Cuba
-   passa da borda. Proponho manter o 4 até a prova completa e decidir com os
-   16 programas na mão.
+1. **Programas pelo que o governo aprovou ou manteve** (opção A), com fonte em
+   cada linha. Leis diferentes de cada país entram na lei do jogo que faz a
+   mesma coisa.
+2. **Referências pelos dados:** um extremo de cada canto, alguns do meio e um
+   do centro. Ficaram 10: Brejnev, Mujica, Bolsonaro e Piñera nos cantos;
+   Fidel, Lula, Thatcher, Putin e Chávez no meio; Merkel no centro.
+3. **Passa quem termina a 3 ou menos** da referência e mais perto dela do que
+   dos opostos.
+4. **Fator 4 mantido** até a prova mostrar outra coisa (seção 9).
+
+## 9. Prova com 10 programas (13/out)
+
+`src/conteudo/bussola/programas.json`: 264 linhas, cada uma com a lei do jogo,
+a opção, se o governo aprovou ou manteve, e a fonte (lei, número e ano).
+Treino: Thatcher, Lula, Bolsonaro, Fidel e Putin. Teste: Brejnev, Mujica,
+Piñera, Chávez e Merkel. Rodar: `npx vite-node scripts/bussola/prova.ts`.
+
+| Programa  | Grupo  | Leis | Fator 4     | Distância | Fator do treino | Distância |
+| --------- | ------ | ---- | ----------- | --------- | --------------- | --------- |
+| Thatcher  | treino | 27   | 5,4 · 1,3   | **1,4**   | 5,6 · −1,2      | **1,4**   |
+| Lula      | treino | 26   | −3,5 · 1,3  | 7,1       | −3,6 · −1,2     | 4,7       |
+| Bolsonaro | treino | 12   | 1,5 · 2,3   | 7,9       | 1,6 · −0,8      | 10,3      |
+| Fidel     | treino | 33   | −7,8 · 10,0 | 7,3       | −8,1 · 4,9      | **2,3**   |
+| Putin     | treino | 28   | 0,5 · 9,9   | 6,6       | 0,6 · 1,9       | **1,4**   |
+| Brejnev   | teste  | 34   | −7,7 · 10,0 | 6,1       | −7,9 · 5,4      | **2,1**   |
+| Mujica    | teste  | 24   | 0,0 · −7,7  | 3,3       | 0,0 · −4,4      | 3,3       |
+| Piñera    | teste  | 24   | 7,4 · −1,4  | **1,9**   | 7,7 · −2,2      | **2,2**   |
+| Chávez    | teste  | 28   | −10 · 10    | 7,9       | −10 · 2,7       | 4,7       |
+| Merkel    | teste  | 28   | −0,4 · −4,4 | **2,9**   | −0,4 · −3,3     | **2,1**   |
+
+- **Direção certa em todos:** com o fator 4, os 10 terminam mais perto da
+  própria referência do que dos opostos (teste
+  `programasDaBussola.test.ts`).
+- **Com o fator 4 passam 3 de 10.** Os quatro autoritários (Fidel, Putin,
+  Brejnev, Chávez) batem na borda dos costumes: o 4 é demais nesse eixo.
+- **O fator que melhor acerta o treino é 4,15 na economia e 1,43 nos
+  costumes** (mínimos quadrados nos 5 programas de treino). Com ele passam 6
+  de 10, e 3 dos 5 de teste, que o ajuste nunca viu. Isso confirma o 4 na
+  economia e pede cerca de 1,5 nos costumes.
+- **Lula fica conservador nos costumes:** o Brasil de 2003–2010 não tinha
+  união homoafetiva, lei de acesso nem LGPD, e o catálogo não tem o que o
+  governo fez de liberal (conferências, Comissão da Verdade, políticas LGBT e
+  de igualdade racial na saúde e na escola).
+- **Bolsonaro quase não sai do lugar:** só 12 linhas mudam algo, porque boa
+  parte do que aprovou já está no Brasil do turno 0, e o que o distingue não
+  existe no catálogo (escolas cívico-militares, privatizações por empresa,
+  liberdade econômica, abertura comercial, costumes religiosos na educação).
+- **Mujica e Chávez erram na economia:** o Uruguai de Mujica tem economia mais
+  à esquerda do que o catálogo representa (estatais em monopólio, conselhos
+  de salários), e o Chávez passa da borda da esquerda.
+- **Achado no cálculo:** leis de verba (moeda por ano) não têm teto no
+  domínio, então a bússola as põe sempre no meio. Os programas ainda não usam
+  verbas; o conserto entra na reestruturação.
+
+## 10. Próximo passo: reestruturar o catálogo
+
+O que a prova pede, na ordem:
+
+1. **Fator por eixo**, ajustado no treino e conferido no teste (proposta: 4 na
+   economia, 1,5 nos costumes).
+2. **Leis que faltam**, saídas das falhas acima e dos quatro cantos, com boa
+   parte fora de vigor no Brasil (meta de um terço).
+3. **Verbas com escala** (o dobro do que o país gasta no começo como teto).
+4. **Ligações anula e pacote** (seção 4.3), para o caminho entre as leis.
+5. Rodar a prova de novo a cada mudança; a meta é os 10 passarem.

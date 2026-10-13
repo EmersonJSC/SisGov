@@ -11,7 +11,7 @@
 | Grupos de pressão                              | V1-09    | `pressao.md`                | Aprovado (12/out) e implementado    |
 | Bússola política                               | V1-10    | `bussola.md`                | Aprovado e feito (13/out)           |
 | Câmara e Senado                                | V1-11    | `congresso.md`              | A fazer                             |
-| Leis de todos os lados e prova real            | V1-34    | `leis-de-todos-os-lados.md` | Em revisão (13/out)                 |
+| Leis de todos os lados e prova real            | V1-34    | `leis-de-todos-os-lados.md` | Aprovado; prova feita (13/out)      |
 | Capital político                               | (saiu)   | `capital.md`                | Substituído pelo Congresso (13/out) |
 | Eleição                                        | versão 2 | `eleicao.md`                | Fica para a versão 2                |
 

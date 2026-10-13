@@ -1,0 +1,1675 @@
+{
+  "tipo": "programas-bussola",
+  "versaoEsquema": 1,
+  "metodo": "Cada programa é o que o governo aprovou ou manteve em vigor, lei por lei, com a fonte. Lei que o programa não cita fica como o país do jogo tem no começo. Treino guia o catálogo; teste só mede.",
+  "regraDePassar": {
+    "distanciaMaxima": 3,
+    "maisPertoQueOsOpostos": true
+  },
+  "programas": {
+    "thatcher": {
+      "referencia": "thatcher",
+      "periodo": "Reino Unido, 1979–1990",
+      "grupo": "treino",
+      "opostos": ["fidel", "corbyn", "lula", "palme"],
+      "leis": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estatais-minimas",
+          "como": "aprovou",
+          "fonte": "Telecommunications Act 1984, Gas Act 1986, British Steel Act 1988, Water Act 1989"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-aberta",
+          "como": "aprovou",
+          "fonte": "Fim do controle de câmbio (Exchange Control Act 1947 suspenso em outubro de 1979)"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "flutuante",
+          "como": "manteve",
+          "fonte": "Libra flutuante desde 1972"
+        },
+        {
+          "lei": "controle-de-precos",
+          "opcao": "precos-livres",
+          "como": "aprovou",
+          "fonte": "Competition Act 1980 (extinção da Price Commission)"
+        },
+        {
+          "lei": "negociacao-coletiva-e-sindicatos",
+          "opcao": "por-empresa",
+          "como": "aprovou",
+          "fonte": "Employment Acts 1980 e 1982; Trade Union Act 1984"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "minima",
+          "como": "aprovou",
+          "fonte": "Employment Acts 1980, 1982 e 1988"
+        },
+        {
+          "lei": "salario-minimo",
+          "opcao": "sem-piso",
+          "como": "aprovou",
+          "fonte": "Wages Act 1986 (jovens fora dos Wages Councils); sem salário mínimo nacional até 1998"
+        },
+        {
+          "lei": "imposto-renda-pessoas",
+          "nivel": 40,
+          "como": "aprovou",
+          "fonte": "Finance Act 1988 (alíquota máxima de 60% para 40%)"
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "nivel": 35,
+          "como": "aprovou",
+          "fonte": "Finance Act 1984 (de 52% para 35%)"
+        },
+        {
+          "lei": "modelo-tributario",
+          "opcao": "consumo",
+          "como": "aprovou",
+          "fonte": "Finance Act 1979 (IVA de 8% para 15%, corte no imposto de renda)"
+        },
+        {
+          "lei": "regulacao-bancaria",
+          "opcao": "basileia-padrao",
+          "como": "aprovou",
+          "fonte": "Banking Act 1987; Acordo de Basileia de 1988"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "universal-publico",
+          "como": "manteve",
+          "fonte": "National Health Service Act 1946; NHS and Community Care Act 1990"
+        },
+        {
+          "lei": "transporte-publico",
+          "opcao": "tarifa-integral",
+          "como": "aprovou",
+          "fonte": "Transport Act 1985 (desregulamentação dos ônibus)"
+        },
+        {
+          "lei": "saneamento-basico",
+          "opcao": "privatizacao-plena",
+          "como": "aprovou",
+          "fonte": "Water Act 1989"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "concessao",
+          "como": "aprovou",
+          "fonte": "Oil and Gas (Enterprise) Act 1982; fim da BNOC em 1985"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "subordinado",
+          "como": "manteve",
+          "fonte": "Bank of England Act 1946 (autonomia só em 1998)"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "centralizado",
+          "como": "aprovou",
+          "fonte": "Rates Act 1984; Local Government Act 1985 (fim do GLC)"
+        },
+        {
+          "lei": "vouchers-escolares",
+          "opcao": "voucher-focalizado",
+          "como": "aprovou",
+          "fonte": "Education Act 1980 (Assisted Places Scheme)"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "misto",
+          "como": "aprovou",
+          "fonte": "Social Security Act 1986 (previdência pessoal)"
+        },
+        {
+          "lei": "acordos-comerciais",
+          "opcao": "livre-comercio-amplo",
+          "como": "aprovou",
+          "fonte": "Single European Act 1986"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "seletiva",
+          "como": "aprovou",
+          "fonte": "British Nationality Act 1981"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "voluntario",
+          "como": "manteve",
+          "fonte": "Fim do National Service em 1960"
+        },
+        {
+          "lei": "garantias-penais",
+          "opcao": "sem-pena-de-morte",
+          "como": "manteve",
+          "fonte": "Murder (Abolition of Death Penalty) Act 1965; volta rejeitada em 1983"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "motivos-amplos",
+          "como": "manteve",
+          "fonte": "Abortion Act 1967"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "sem-reconhecimento",
+          "como": "manteve",
+          "fonte": "Sem união civil até o Civil Partnership Act 2004"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "guerra-as-drogas",
+          "como": "aprovou",
+          "fonte": "Misuse of Drugs Act 1971; Drug Trafficking Offences Act 1986"
+        },
+        {
+          "lei": "armas-de-fogo",
+          "opcao": "restritas",
+          "como": "aprovou",
+          "fonte": "Firearms (Amendment) Act 1988"
+        }
+      ]
+    },
+    "lula": {
+      "referencia": "lula",
+      "periodo": "Brasil, 2003–2010",
+      "grupo": "treino",
+      "opostos": ["bolsonaro", "thatcher", "reagan", "trump"],
+      "leis": [
+        {
+          "lei": "salario-minimo",
+          "opcao": "piso-alto",
+          "como": "aprovou",
+          "fonte": "Política de valorização acordada com as centrais (Lei 11.498/2007 e seguintes)"
+        },
+        {
+          "lei": "reajuste-de-beneficios",
+          "opcao": "salario-minimo",
+          "como": "manteve",
+          "fonte": "Constituição, art. 201 §2º (piso dos benefícios no salário mínimo)"
+        },
+        {
+          "lei": "acoes-afirmativas",
+          "opcao": "cotas-sociais-e-raciais",
+          "como": "aprovou",
+          "fonte": "ProUni (Lei 11.096/2005); Estatuto da Igualdade Racial (Lei 12.288/2010)"
+        },
+        {
+          "lei": "banco-de-desenvolvimento",
+          "opcao": "credito-subsidiado-massivo",
+          "como": "aprovou",
+          "fonte": "Aportes do Tesouro ao BNDES (Lei 11.948/2009); PSI (Lei 12.096/2009)"
+        },
+        {
+          "lei": "politica-industrial",
+          "opcao": "setorial-exportadora",
+          "como": "aprovou",
+          "fonte": "Política de Desenvolvimento Produtivo (2008)"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "partilha",
+          "como": "aprovou",
+          "fonte": "Lei 12.351/2010 (pré-sal)"
+        },
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estatais-estrategicas",
+          "como": "aprovou",
+          "fonte": "Capitalização da Petrobras (Lei 12.276/2010); fim das privatizações"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "autonomia-parcial",
+          "como": "manteve",
+          "fonte": "Autonomia de fato, sem lei (a lei só veio em 2021)"
+        },
+        {
+          "lei": "regra-fiscal",
+          "opcao": "meta-resultado",
+          "como": "manteve",
+          "fonte": "Lei de Responsabilidade Fiscal (LC 101/2000) e metas de superávit nas LDOs"
+        },
+        {
+          "lei": "seguranca-alimentar",
+          "opcao": "cartao-alimentacao",
+          "como": "aprovou",
+          "fonte": "Cartão Alimentação (Lei 10.689/2003); LOSAN (Lei 11.346/2006)"
+        },
+        {
+          "lei": "armas-de-fogo",
+          "opcao": "restritas",
+          "como": "aprovou",
+          "fonte": "Estatuto do Desarmamento (Lei 10.826/2003)"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "usuario-nao-preso",
+          "como": "aprovou",
+          "fonte": "Lei 11.343/2006"
+        },
+        {
+          "lei": "protecao-violencia-domestica",
+          "opcao": "medidas-protetivas",
+          "como": "aprovou",
+          "fonte": "Lei Maria da Penha (Lei 11.340/2006)"
+        },
+        {
+          "lei": "terras-indigenas",
+          "opcao": "demarcacao",
+          "como": "aprovou",
+          "fonte": "Homologação da Raposa Serra do Sol (decreto de 15/04/2005)"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "ampla",
+          "como": "aprovou",
+          "fonte": "Anistia migratória (Lei 11.961/2009)"
+        },
+        {
+          "lei": "acordos-comerciais",
+          "opcao": "uniao-aduaneira",
+          "como": "manteve",
+          "fonte": "Mercosul (Tratado de Assunção, 1991)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "controles-prudenciais",
+          "como": "aprovou",
+          "fonte": "IOF sobre capital estrangeiro (Decreto 6.983/2009)"
+        },
+        {
+          "lei": "piso-salarial-professores",
+          "opcao": "piso-nacional-minimo",
+          "como": "aprovou",
+          "fonte": "Lei 11.738/2008"
+        },
+        {
+          "lei": "ensino-obrigatorio",
+          "opcao": "ate-18",
+          "como": "aprovou",
+          "fonte": "Emenda Constitucional 59/2009 (dos 4 aos 17 anos)"
+        },
+        {
+          "lei": "pensao-por-morte",
+          "opcao": "integral-vitalicia",
+          "como": "manteve",
+          "fonte": "Lei 8.213/1991 (a mudança veio em 2015)"
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "opcao": "baixa",
+          "como": "manteve",
+          "fonte": "Aposentadoria por tempo de contribuição sem idade mínima (EC 20/1998)"
+        },
+        {
+          "lei": "terceirizacao",
+          "opcao": "restrita",
+          "como": "manteve",
+          "fonte": "Súmula 331 do TST (só atividade-meio)"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "sem-reconhecimento",
+          "como": "manteve",
+          "fonte": "Código Civil, art. 1.723 (o STF reconheceu a união só em 2011)"
+        },
+        {
+          "lei": "transparencia-publica",
+          "opcao": "acesso-limitado",
+          "como": "manteve",
+          "fonte": "Sem lei de acesso (a LAI é de 2011); Portal da Transparência de 2004"
+        },
+        {
+          "lei": "protecao-de-dados",
+          "opcao": "setorial",
+          "como": "manteve",
+          "fonte": "Sem lei geral (a LGPD é de 2018)"
+        },
+        {
+          "lei": "regulacao-redes-sociais",
+          "opcao": "sem-regra",
+          "como": "manteve",
+          "fonte": "Sem lei (o Marco Civil é de 2014)"
+        }
+      ]
+    },
+    "bolsonaro": {
+      "referencia": "bolsonaro",
+      "periodo": "Brasil, 2019–2022",
+      "grupo": "treino",
+      "opostos": ["lula", "dilma", "mujica", "sanchez"],
+      "leis": [
+        {
+          "lei": "armas-de-fogo",
+          "opcao": "facilitadas",
+          "como": "aprovou",
+          "fonte": "Decretos 9.785/2019, 9.846/2019 e 10.627 a 10.630/2021"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "autonomia-plena",
+          "como": "aprovou",
+          "fonte": "Lei Complementar 179/2021"
+        },
+        {
+          "lei": "saneamento-basico",
+          "opcao": "concessao-com-metas",
+          "como": "aprovou",
+          "fonte": "Marco do saneamento (Lei 14.026/2020)"
+        },
+        {
+          "lei": "regra-fiscal",
+          "opcao": "teto-gastos",
+          "como": "manteve",
+          "fonte": "Emenda Constitucional 95/2016"
+        },
+        {
+          "lei": "terras-indigenas",
+          "opcao": "reconhecimento-limitado",
+          "como": "manteve",
+          "fonte": "Nenhuma terra homologada; Parecer AGU 001/2017 (marco temporal) mantido"
+        },
+        {
+          "lei": "saude-mental",
+          "opcao": "misto-hospital-geral",
+          "como": "aprovou",
+          "fonte": "Lei 13.840/2019; Nota Técnica 11/2019 do Ministério da Saúde"
+        },
+        {
+          "lei": "penas-e-progressao",
+          "opcao": "teto-40-anos",
+          "como": "aprovou",
+          "fonte": "Pacote Anticrime (Lei 13.964/2019)"
+        },
+        {
+          "lei": "programa-medicos-no-interior",
+          "opcao": "incentivos",
+          "como": "aprovou",
+          "fonte": "Médicos pelo Brasil (Lei 13.958/2019), no lugar do Mais Médicos"
+        },
+        {
+          "lei": "trabalho-por-aplicativo",
+          "opcao": "sem-regulacao",
+          "como": "manteve",
+          "fonte": "Sem lei para aplicativos"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "minima",
+          "como": "manteve",
+          "fonte": "Reforma trabalhista (Lei 13.467/2017); Liberdade Econômica (Lei 13.874/2019)"
+        },
+        {
+          "lei": "terceirizacao",
+          "opcao": "ampla-com-garantias",
+          "como": "manteve",
+          "fonte": "Lei 13.429/2017"
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "opcao": "moderada",
+          "como": "aprovou",
+          "fonte": "Emenda Constitucional 103/2019 (65 e 62 anos)"
+        }
+      ]
+    },
+    "fidel": {
+      "referencia": "fidel",
+      "periodo": "Cuba, 1976–2006",
+      "grupo": "treino",
+      "opostos": ["thatcher", "reagan", "macri", "pinera"],
+      "leis": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estado-empresario",
+          "como": "manteve",
+          "fonte": "Lei 851/1960 (nacionalizações); Constituição de 1976, arts. 14 e 15"
+        },
+        {
+          "lei": "controle-de-precos",
+          "opcao": "tabelamento-geral",
+          "como": "manteve",
+          "fonte": "Lei 1015/1962 (caderneta de abastecimento)"
+        },
+        {
+          "lei": "seguranca-alimentar",
+          "opcao": "distribuicao-massiva",
+          "como": "manteve",
+          "fonte": "Lei 1015/1962 (caderneta de abastecimento)"
+        },
+        {
+          "lei": "reforma-agraria",
+          "opcao": "redistribuicao-ampla",
+          "como": "manteve",
+          "fonte": "Leis de Reforma Agrária de 1959 e 1963"
+        },
+        {
+          "lei": "regulacao-bancaria",
+          "opcao": "repressao-financeira",
+          "como": "manteve",
+          "fonte": "Lei 891/1960 (nacionalização dos bancos)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-fechada",
+          "como": "manteve",
+          "fonte": "Constituição de 1976, art. 18 (monopólio estatal do comércio exterior)"
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "opcao": "lista-negativa",
+          "como": "aprovou",
+          "fonte": "Decreto-Lei 50/1982; Lei 77/1995 (empresas mistas com aprovação do Estado)"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "fixo",
+          "como": "manteve",
+          "fonte": "Peso oficial fixo no dólar"
+        },
+        {
+          "lei": "politica-industrial",
+          "opcao": "protecao-mercado-interno",
+          "como": "manteve",
+          "fonte": "Planejamento central (JUCEPLAN)"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "monopolio-estatal",
+          "como": "manteve",
+          "fonte": "Petróleo e minas do Estado (CUPET)"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "estatal-unico",
+          "como": "aprovou",
+          "fonte": "Lei 41/1983 da Saúde Pública"
+        },
+        {
+          "lei": "programa-medicos-no-interior",
+          "opcao": "servico-obrigatorio",
+          "como": "manteve",
+          "fonte": "Serviço social obrigatório dos recém-formados (desde 1963)"
+        },
+        {
+          "lei": "acesso-ensino-superior",
+          "opcao": "gratuito-universal",
+          "como": "manteve",
+          "fonte": "Constituição de 1976, art. 39"
+        },
+        {
+          "lei": "vouchers-escolares",
+          "opcao": "so-escola-estatal",
+          "como": "manteve",
+          "fonte": "Lei de Nacionalização do Ensino (1961)"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "reparticao",
+          "como": "aprovou",
+          "fonte": "Lei 24/1979 da Seguridade Social"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "protetiva",
+          "como": "aprovou",
+          "fonte": "Código do Trabalho (Lei 49/1984)"
+        },
+        {
+          "lei": "negociacao-coletiva-e-sindicatos",
+          "opcao": "controlados",
+          "como": "manteve",
+          "fonte": "Central única (CTC) ligada ao partido; Lei 49/1984"
+        },
+        {
+          "lei": "licenca-parental",
+          "opcao": "longa-materna",
+          "como": "aprovou",
+          "fonte": "Lei 1263/1974 da Maternidade da Trabalhadora"
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "opcao": "censura",
+          "como": "manteve",
+          "fonte": "Constituição de 1976, art. 52 (imprensa é propriedade estatal ou social); Lei 88/1999"
+        },
+        {
+          "lei": "independencia-judiciario",
+          "opcao": "controlado",
+          "como": "manteve",
+          "fonte": "Constituição de 1976 (tribunais subordinados à Assembleia Nacional)"
+        },
+        {
+          "lei": "transparencia-publica",
+          "opcao": "sigilo-amplo",
+          "como": "manteve",
+          "fonte": "Sem lei de acesso à informação"
+        },
+        {
+          "lei": "reeleicao",
+          "opcao": "ilimitada",
+          "como": "manteve",
+          "fonte": "Constituição de 1976, sem limite de mandatos (limite só em 2019)"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "centralizado",
+          "como": "manteve",
+          "fonte": "Constituição de 1976 (Estado unitário, centralismo democrático)"
+        },
+        {
+          "lei": "policias-dos-estados",
+          "opcao": "policia-nacional",
+          "como": "manteve",
+          "fonte": "Polícia Nacional Revolucionária"
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "opcao": "controle-estatal",
+          "como": "manteve",
+          "fonte": "Constituição de 1976 (Estado ateu até a reforma de 1992)"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "sem-reconhecimento",
+          "como": "manteve",
+          "fonte": "Código de Família (Lei 1289/1975)"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "a-pedido",
+          "como": "manteve",
+          "fonte": "Legal no sistema de saúde desde 1965; Código Penal (Lei 62/1987)"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "obrigatorio-masculino",
+          "como": "manteve",
+          "fonte": "Lei 75/1994 da Defesa Nacional; serviço obrigatório desde 1963"
+        },
+        {
+          "lei": "garantias-penais",
+          "opcao": "pena-de-morte-permitida",
+          "como": "manteve",
+          "fonte": "Código Penal (Lei 62/1987)"
+        },
+        {
+          "lei": "pena-de-morte",
+          "opcao": "tambem-trafico",
+          "como": "aprovou",
+          "fonte": "Lei 87/1999 (pena de morte também para tráfico de drogas)"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "fechada",
+          "como": "manteve",
+          "fonte": "Lei 1312/1976 de Migração"
+        },
+        {
+          "lei": "apostas-e-jogos-de-azar",
+          "opcao": "proibicao",
+          "como": "aprovou",
+          "fonte": "Fechamento dos cassinos (1959)"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "guerra-as-drogas",
+          "como": "manteve",
+          "fonte": "Código Penal (Lei 62/1987); Decreto-Lei 232/2003"
+        }
+      ]
+    },
+    "putin": {
+      "referencia": "putin",
+      "periodo": "Rússia, 2000–2016",
+      "grupo": "treino",
+      "opostos": ["mujica", "trudeau", "sanchez", "corbyn"],
+      "leis": [
+        {
+          "lei": "imposto-renda-pessoas",
+          "nivel": 13,
+          "como": "aprovou",
+          "fonte": "Código Tributário, capítulo 23 (alíquota única de 13%, 2001)"
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "nivel": 20,
+          "como": "aprovou",
+          "fonte": "Código Tributário, capítulo 25 (de 24% para 20% em 2009)"
+        },
+        {
+          "lei": "modelo-tributario",
+          "opcao": "proporcional",
+          "como": "aprovou",
+          "fonte": "Imposto de renda de alíquota única (2001)"
+        },
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estatais-estrategicas",
+          "como": "aprovou",
+          "fonte": "Lei Federal 57-FZ/2008 (setores estratégicos); Rostec (2007)"
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "opcao": "lista-negativa",
+          "como": "aprovou",
+          "fonte": "Lei Federal 57-FZ/2008"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "concessao",
+          "como": "manteve",
+          "fonte": "Lei do Subsolo (1992), com as restrições de 2008"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-aberta",
+          "como": "aprovou",
+          "fonte": "Lei 173-FZ/2003 de câmbio; restrições retiradas em julho de 2006"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "flutuante",
+          "como": "aprovou",
+          "fonte": "Banco da Rússia deixa o rublo flutuar (novembro de 2014)"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "autonomia-parcial",
+          "como": "manteve",
+          "fonte": "Lei 86-FZ/2002 do Banco Central"
+        },
+        {
+          "lei": "fundo-soberano",
+          "opcao": "guardar",
+          "como": "aprovou",
+          "fonte": "Fundo de Estabilização (2004); Fundo de Reserva e Fundo Nacional de Bem-Estar (2008)"
+        },
+        {
+          "lei": "acordos-comerciais",
+          "opcao": "uniao-aduaneira",
+          "como": "aprovou",
+          "fonte": "União Econômica Eurasiática (tratado de 2014)"
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "nivel": 7.8,
+          "como": "aprovou",
+          "fonte": "Entrada na OMC (2012), tarifa média consolidada de 7,8%"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "seguro-obrigatorio",
+          "como": "aprovou",
+          "fonte": "Lei 326-FZ/2010 do seguro-saúde obrigatório"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "misto",
+          "como": "aprovou",
+          "fonte": "Reforma de 2002 (Lei 173-FZ/2001, parte capitalizada)"
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "opcao": "baixa",
+          "como": "manteve",
+          "fonte": "60 e 55 anos (a alta veio com a Lei 350-FZ/2018)"
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "opcao": "restrita",
+          "como": "aprovou",
+          "fonte": "Lei 121-FZ/2012 (agentes estrangeiros); Lei 97-FZ/2014 (blogueiros)"
+        },
+        {
+          "lei": "regulacao-redes-sociais",
+          "opcao": "controle-estatal",
+          "como": "aprovou",
+          "fonte": "Lei 139-FZ/2012 (lista de bloqueio); Lei 374-FZ/2016"
+        },
+        {
+          "lei": "independencia-judiciario",
+          "opcao": "parcial",
+          "como": "aprovou",
+          "fonte": "Reforma de 2014 (fim da Suprema Corte de Arbitragem)"
+        },
+        {
+          "lei": "interceptacao-de-comunicacoes",
+          "opcao": "ordem-sem-prazo",
+          "como": "aprovou",
+          "fonte": "Lei 144-FZ/1995; Lei 374-FZ/2016 (guarda de dados para a polícia)"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "centralizado",
+          "como": "aprovou",
+          "fonte": "Lei 159-FZ/2004 (fim da eleição direta de governadores)"
+        },
+        {
+          "lei": "policias-dos-estados",
+          "opcao": "policia-nacional",
+          "como": "aprovou",
+          "fonte": "Lei 3-FZ/2011 da Polícia"
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "opcao": "religiao-favorecida",
+          "como": "manteve",
+          "fonte": "Lei 125-FZ/1997 (papel especial da Igreja Ortodoxa)"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "sem-reconhecimento",
+          "como": "manteve",
+          "fonte": "Código de Família (1995); Lei 135-FZ/2013"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "a-pedido",
+          "como": "manteve",
+          "fonte": "Lei 323-FZ/2011, art. 56 (até 12 semanas)"
+        },
+        {
+          "lei": "garantias-penais",
+          "opcao": "sem-pena-de-morte",
+          "como": "manteve",
+          "fonte": "Moratória (Tribunal Constitucional, 1999 e 2009)"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "obrigatorio-masculino",
+          "como": "manteve",
+          "fonte": "Lei 53-FZ/1998"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "seletiva",
+          "como": "aprovou",
+          "fonte": "Lei 115-FZ/2002"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "guerra-as-drogas",
+          "como": "manteve",
+          "fonte": "Lei 3-FZ/1998; Código Penal, art. 228"
+        }
+      ]
+    },
+    "brejnev": {
+      "referencia": "brejnev",
+      "periodo": "URSS, 1964–1982",
+      "grupo": "teste",
+      "opostos": ["pinera", "macri", "macron", "reagan"],
+      "leis": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estado-empresario",
+          "como": "manteve",
+          "fonte": "Constituição da URSS de 1977, arts. 10 e 11"
+        },
+        {
+          "lei": "controle-de-precos",
+          "opcao": "tabelamento-geral",
+          "como": "manteve",
+          "fonte": "Comitê Estatal de Preços (Goskomtsen)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-fechada",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 73 (monopólio do comércio exterior)"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "fixo",
+          "como": "manteve",
+          "fonte": "Rublo não conversível, câmbio oficial"
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "opcao": "fechado",
+          "como": "manteve",
+          "fonte": "Sem investimento estrangeiro até 1987"
+        },
+        {
+          "lei": "regulacao-bancaria",
+          "opcao": "repressao-financeira",
+          "como": "manteve",
+          "fonte": "Gosbank como banco único"
+        },
+        {
+          "lei": "politica-industrial",
+          "opcao": "protecao-mercado-interno",
+          "como": "manteve",
+          "fonte": "Planos quinquenais (Gosplan)"
+        },
+        {
+          "lei": "reforma-agraria",
+          "opcao": "redistribuicao-ampla",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 12 (terra coletiva e estatal)"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "monopolio-estatal",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 11"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "estatal-unico",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 42"
+        },
+        {
+          "lei": "acesso-ensino-superior",
+          "opcao": "gratuito-universal",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 45"
+        },
+        {
+          "lei": "vouchers-escolares",
+          "opcao": "so-escola-estatal",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 45"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "reparticao",
+          "como": "manteve",
+          "fonte": "Lei de Pensões do Estado (1956)"
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "opcao": "baixa",
+          "como": "manteve",
+          "fonte": "60 anos para homens e 55 para mulheres (Lei de 1956)"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "protetiva",
+          "como": "aprovou",
+          "fonte": "Código do Trabalho da RSFSR (1971)"
+        },
+        {
+          "lei": "negociacao-coletiva-e-sindicatos",
+          "opcao": "controlados",
+          "como": "manteve",
+          "fonte": "Sindicatos subordinados ao partido (VTsSPS)"
+        },
+        {
+          "lei": "licenca-parental",
+          "opcao": "longa-materna",
+          "como": "manteve",
+          "fonte": "112 dias de licença-maternidade"
+        },
+        {
+          "lei": "igualdade-salarial-de-genero",
+          "opcao": "principio-legal",
+          "como": "aprovou",
+          "fonte": "Constituição de 1977, art. 35"
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "opcao": "censura",
+          "como": "manteve",
+          "fonte": "Censura prévia (Glavlit)"
+        },
+        {
+          "lei": "independencia-judiciario",
+          "opcao": "controlado",
+          "como": "manteve",
+          "fonte": "Constituição de 1977, art. 6 (papel dirigente do partido)"
+        },
+        {
+          "lei": "transparencia-publica",
+          "opcao": "sigilo-amplo",
+          "como": "manteve",
+          "fonte": "Sem lei de acesso à informação"
+        },
+        {
+          "lei": "reeleicao",
+          "opcao": "ilimitada",
+          "como": "manteve",
+          "fonte": "Sem limite de mandatos"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "centralizado",
+          "como": "aprovou",
+          "fonte": "Constituição de 1977, art. 3 (centralismo democrático)"
+        },
+        {
+          "lei": "policias-dos-estados",
+          "opcao": "policia-nacional",
+          "como": "manteve",
+          "fonte": "Milícia do Ministério do Interior (MVD)"
+        },
+        {
+          "lei": "interceptacao-de-comunicacoes",
+          "opcao": "sem-ordem-seguranca-nacional",
+          "como": "manteve",
+          "fonte": "KGB sem controle judicial"
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "opcao": "controle-estatal",
+          "como": "aprovou",
+          "fonte": "Lei das associações religiosas (1929, alterada em 1975)"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "criminalizacao",
+          "como": "manteve",
+          "fonte": "Código Penal da RSFSR (1960), art. 121"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "a-pedido",
+          "como": "manteve",
+          "fonte": "Decreto de 23/11/1955"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "fechada",
+          "como": "manteve",
+          "fonte": "Saída e entrada controladas pelo Estado"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "obrigatorio-masculino",
+          "como": "aprovou",
+          "fonte": "Lei do Serviço Militar Universal (1967)"
+        },
+        {
+          "lei": "garantias-penais",
+          "opcao": "pena-de-morte-permitida",
+          "como": "manteve",
+          "fonte": "Código Penal da RSFSR (1960)"
+        },
+        {
+          "lei": "pena-de-morte",
+          "opcao": "crimes-hediondos",
+          "como": "manteve",
+          "fonte": "Código Penal da RSFSR (1960)"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "guerra-as-drogas",
+          "como": "aprovou",
+          "fonte": "Decreto de 25/04/1974 (Código Penal, art. 224)"
+        },
+        {
+          "lei": "apostas-e-jogos-de-azar",
+          "opcao": "monopolio-estatal",
+          "como": "aprovou",
+          "fonte": "Loteria estatal Sportloto (1970)"
+        }
+      ]
+    },
+    "mujica": {
+      "referencia": "mujica",
+      "periodo": "Uruguai, 2010–2015",
+      "grupo": "teste",
+      "opostos": ["bolsonaro", "salvini", "orban", "trump"],
+      "leis": [
+        {
+          "lei": "cannabis-legal",
+          "opcao": "farmacias",
+          "como": "aprovou",
+          "fonte": "Lei 19.172/2013 (farmácias, clubes e cultivo próprio)"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "uso-e-saude",
+          "como": "aprovou",
+          "fonte": "Lei 19.172/2013"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "a-pedido",
+          "como": "aprovou",
+          "fonte": "Lei 18.987/2012 (até 12 semanas)"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "casamento-igualitario",
+          "como": "aprovou",
+          "fonte": "Lei 19.075/2013"
+        },
+        {
+          "lei": "acoes-afirmativas",
+          "opcao": "cotas-sociais-e-raciais",
+          "como": "aprovou",
+          "fonte": "Lei 19.122/2013 (8% das vagas públicas para afrodescendentes)"
+        },
+        {
+          "lei": "licenca-parental",
+          "opcao": "compartilhada-com-cota-pai",
+          "como": "aprovou",
+          "fonte": "Lei 19.161/2013 (licença-paternidade e meio horário compartilhado)"
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "opcao": "regulada",
+          "como": "aprovou",
+          "fonte": "Lei 19.307/2014 de serviços de comunicação audiovisual"
+        },
+        {
+          "lei": "laicidade-do-estado",
+          "opcao": "laicidade-estrita",
+          "como": "manteve",
+          "fonte": "Constituição, art. 5"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "ampla",
+          "como": "aprovou",
+          "fonte": "Lei 18.250/2008; Lei 19.254/2014 (residência para o Mercosul)"
+        },
+        {
+          "lei": "refugiados-e-asilo",
+          "opcao": "acolhida-ampla",
+          "como": "aprovou",
+          "fonte": "Lei 18.076/2006; reassentamento de sírios (2014)"
+        },
+        {
+          "lei": "transparencia-publica",
+          "opcao": "acesso-informacao",
+          "como": "manteve",
+          "fonte": "Lei 18.381/2008"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "protetiva",
+          "como": "aprovou",
+          "fonte": "Lei 19.196/2014 (responsabilidade penal do empregador)"
+        },
+        {
+          "lei": "negociacao-coletiva-e-sindicatos",
+          "opcao": "centralizada",
+          "como": "manteve",
+          "fonte": "Conselhos de Salários tripartites (Lei 18.566/2009)"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "seguro-obrigatorio",
+          "como": "manteve",
+          "fonte": "Sistema Nacional Integrado de Saúde (Lei 18.211/2007)"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "misto",
+          "como": "manteve",
+          "fonte": "Lei 16.713/1995"
+        },
+        {
+          "lei": "imposto-renda-pessoas",
+          "nivel": 30,
+          "como": "manteve",
+          "fonte": "IRPF (Lei 18.083/2006), alíquota máxima de 30%"
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "nivel": 25,
+          "como": "manteve",
+          "fonte": "IRAE (Lei 18.083/2006), 25%"
+        },
+        {
+          "lei": "tributacao-dividendos",
+          "nivel": 7,
+          "como": "manteve",
+          "fonte": "IRPF (Lei 18.083/2006), 7% sobre dividendos"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "flutuante",
+          "como": "manteve",
+          "fonte": "Câmbio flutuante desde 2002"
+        },
+        {
+          "lei": "investimento-estrangeiro",
+          "opcao": "atracao-com-incentivos",
+          "como": "manteve",
+          "fonte": "Lei 16.906/1998 de investimentos"
+        },
+        {
+          "lei": "armas-de-fogo",
+          "opcao": "restritas",
+          "como": "aprovou",
+          "fonte": "Lei 19.247/2014"
+        },
+        {
+          "lei": "ensino-obrigatorio",
+          "opcao": "ate-18",
+          "como": "manteve",
+          "fonte": "Lei Geral de Educação (Lei 18.437/2008)"
+        },
+        {
+          "lei": "maioridade-penal",
+          "opcao": "18-anos",
+          "como": "manteve",
+          "fonte": "Plebiscito de 2014 rejeitou a redução"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "voluntario",
+          "como": "manteve",
+          "fonte": "Forças Armadas voluntárias"
+        }
+      ]
+    },
+    "pinera": {
+      "referencia": "pinera",
+      "periodo": "Chile, 2010–2014 e 2018–2022",
+      "grupo": "teste",
+      "opostos": ["brejnev", "fidel", "mao", "chavez"],
+      "leis": [
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "casamento-igualitario",
+          "como": "aprovou",
+          "fonte": "Lei 21.400/2021"
+        },
+        {
+          "lei": "sistema-previdenciario",
+          "opcao": "capitalizacao",
+          "como": "manteve",
+          "fonte": "Decreto-Lei 3.500/1980 (AFPs)"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "seguro-obrigatorio",
+          "como": "manteve",
+          "fonte": "Fonasa e Isapres (7% obrigatório)"
+        },
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estatais-minimas",
+          "como": "manteve",
+          "fonte": "Poucas estatais (Codelco, ENAP)"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "concessao",
+          "como": "manteve",
+          "fonte": "Lei 18.097/1982 de concessões mineiras"
+        },
+        {
+          "lei": "acordos-comerciais",
+          "opcao": "livre-comercio-amplo",
+          "como": "aprovou",
+          "fonte": "Rede de tratados; CPTPP assinado em 2018"
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "nivel": 6,
+          "como": "manteve",
+          "fonte": "Tarifa geral de 6% (Lei 19.589/1998)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-aberta",
+          "como": "manteve",
+          "fonte": "Fim do encaixe em 2001"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "flutuante",
+          "como": "manteve",
+          "fonte": "Câmbio flutuante desde 1999"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "autonomia-plena",
+          "como": "manteve",
+          "fonte": "Lei Orgânica 18.840/1989"
+        },
+        {
+          "lei": "regra-fiscal",
+          "opcao": "meta-resultado",
+          "como": "manteve",
+          "fonte": "Lei 20.128/2006 (meta de saldo estrutural)"
+        },
+        {
+          "lei": "fundo-soberano",
+          "opcao": "fundo-exterior",
+          "como": "manteve",
+          "fonte": "Lei 20.128/2006 (FEES e FRP)"
+        },
+        {
+          "lei": "imposto-renda-pessoas",
+          "nivel": 40,
+          "como": "aprovou",
+          "fonte": "Lei 21.210/2020 (alíquota máxima de 40%)"
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "nivel": 27,
+          "como": "manteve",
+          "fonte": "Lei 20.780/2014, mantida pela Lei 21.210/2020"
+        },
+        {
+          "lei": "vouchers-escolares",
+          "opcao": "voucher-universal",
+          "como": "manteve",
+          "fonte": "Subvenção escolar por aluno (DFL 2/1998)"
+        },
+        {
+          "lei": "acesso-ensino-superior",
+          "opcao": "gratuidade-focalizada",
+          "como": "manteve",
+          "fonte": "Lei 21.091/2018 (gratuidade para os mais pobres)"
+        },
+        {
+          "lei": "negociacao-coletiva-e-sindicatos",
+          "opcao": "por-empresa",
+          "como": "manteve",
+          "fonte": "Código do Trabalho (negociação por empresa)"
+        },
+        {
+          "lei": "licenca-parental",
+          "opcao": "longa-materna",
+          "como": "aprovou",
+          "fonte": "Lei 20.545/2011 (pós-natal parental de seis meses)"
+        },
+        {
+          "lei": "seguro-desemprego",
+          "opcao": "conta-individual",
+          "como": "manteve",
+          "fonte": "Lei 19.728/2001 (contas individuais)"
+        },
+        {
+          "lei": "terceirizacao",
+          "opcao": "ampla-com-garantias",
+          "como": "manteve",
+          "fonte": "Lei 20.123/2006"
+        },
+        {
+          "lei": "saneamento-basico",
+          "opcao": "privatizacao-plena",
+          "como": "manteve",
+          "fonte": "Lei 19.549/1998 (venda das sanitárias)"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "seletiva",
+          "como": "aprovou",
+          "fonte": "Lei 21.325/2021 de migração"
+        },
+        {
+          "lei": "garantias-penais",
+          "opcao": "sem-pena-de-morte",
+          "como": "manteve",
+          "fonte": "Lei 19.734/2001"
+        },
+        {
+          "lei": "igualdade-salarial-de-genero",
+          "opcao": "principio-legal",
+          "como": "manteve",
+          "fonte": "Lei 20.348/2009"
+        }
+      ]
+    },
+    "chavez": {
+      "referencia": "chavez",
+      "periodo": "Venezuela, 1999–2013",
+      "grupo": "teste",
+      "opostos": ["macron", "macri", "pinera", "merkel"],
+      "leis": [
+        {
+          "lei": "empresas-estatais-e-privatizacao",
+          "opcao": "estado-empresario",
+          "como": "aprovou",
+          "fonte": "Nacionalização de CANTV e Electricidad de Caracas (2007) e SIDOR (2008)"
+        },
+        {
+          "lei": "regime-do-petroleo-e-mineracao",
+          "opcao": "monopolio-estatal",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica de Hidrocarbonetos (2001); Decreto-Lei 5.200/2007"
+        },
+        {
+          "lei": "controle-de-precos",
+          "opcao": "tabelamento-geral",
+          "como": "aprovou",
+          "fonte": "Lei de Custos e Preços Justos (2011)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-fechada",
+          "como": "aprovou",
+          "fonte": "Convênio Cambial nº 1 (2003, CADIVI)"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "fixo",
+          "como": "aprovou",
+          "fonte": "Convênio Cambial nº 1 (2003)"
+        },
+        {
+          "lei": "reforma-agraria",
+          "opcao": "redistribuicao-ampla",
+          "como": "aprovou",
+          "fonte": "Lei de Terras e Desenvolvimento Agrário (2001)"
+        },
+        {
+          "lei": "seguranca-alimentar",
+          "opcao": "distribuicao-massiva",
+          "como": "aprovou",
+          "fonte": "Missão Mercal (2003)"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "universal-publico",
+          "como": "aprovou",
+          "fonte": "Constituição de 1999, arts. 83 e 84"
+        },
+        {
+          "lei": "programa-medicos-no-interior",
+          "opcao": "importacao-de-medicos",
+          "como": "aprovou",
+          "fonte": "Missão Barrio Adentro (convênio com Cuba, 2003)"
+        },
+        {
+          "lei": "acesso-ensino-superior",
+          "opcao": "gratuito-universal",
+          "como": "aprovou",
+          "fonte": "Constituição de 1999, art. 103; Missão Sucre"
+        },
+        {
+          "lei": "banco-de-desenvolvimento",
+          "opcao": "credito-direcionado",
+          "como": "aprovou",
+          "fonte": "Lei de Instituições do Setor Bancário (2010), carteiras obrigatórias"
+        },
+        {
+          "lei": "regulacao-bancaria",
+          "opcao": "repressao-financeira",
+          "como": "aprovou",
+          "fonte": "Tetos de juros do Banco Central; Lei de 2010"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "subordinado",
+          "como": "aprovou",
+          "fonte": "Reforma da Lei do Banco Central (2005)"
+        },
+        {
+          "lei": "fundo-soberano",
+          "opcao": "investir-obras",
+          "como": "aprovou",
+          "fonte": "FONDEN (2005)"
+        },
+        {
+          "lei": "legislacao-trabalhista",
+          "opcao": "protetiva",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica do Trabalho (LOTTT, 2012)"
+        },
+        {
+          "lei": "terceirizacao",
+          "opcao": "restrita",
+          "como": "aprovou",
+          "fonte": "LOTTT (2012), art. 48"
+        },
+        {
+          "lei": "saneamento-basico",
+          "opcao": "estatal-regional",
+          "como": "manteve",
+          "fonte": "Lei Orgânica de Água Potável e Saneamento (2001)"
+        },
+        {
+          "lei": "liberdade-imprensa",
+          "opcao": "restrita",
+          "como": "aprovou",
+          "fonte": "Lei de Responsabilidade Social em Rádio e TV (2004); fim da concessão da RCTV (2007)"
+        },
+        {
+          "lei": "regulacao-redes-sociais",
+          "opcao": "controle-estatal",
+          "como": "aprovou",
+          "fonte": "Reforma da Lei de Responsabilidade Social (2010), incluindo a internet"
+        },
+        {
+          "lei": "independencia-judiciario",
+          "opcao": "controlado",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica do Tribunal Supremo (2004)"
+        },
+        {
+          "lei": "reeleicao",
+          "opcao": "ilimitada",
+          "como": "aprovou",
+          "fonte": "Emenda Constitucional nº 1 (2009)"
+        },
+        {
+          "lei": "transparencia-publica",
+          "opcao": "acesso-limitado",
+          "como": "manteve",
+          "fonte": "Sem lei de acesso à informação"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "centralizado",
+          "como": "aprovou",
+          "fonte": "Reforma da Lei de Descentralização (2009)"
+        },
+        {
+          "lei": "policias-dos-estados",
+          "opcao": "policia-nacional",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica do Serviço de Polícia (2008), Polícia Nacional Bolivariana"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "risco-de-vida",
+          "como": "manteve",
+          "fonte": "Código Penal, arts. 430 a 435"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "sem-reconhecimento",
+          "como": "manteve",
+          "fonte": "Constituição de 1999, art. 77"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "ampla",
+          "como": "aprovou",
+          "fonte": "Lei de Estrangeiros e Migração (2004); Missão Identidade"
+        },
+        {
+          "lei": "lei-de-drogas",
+          "opcao": "guerra-as-drogas",
+          "como": "aprovou",
+          "fonte": "Lei Orgânica de Drogas (2010)"
+        }
+      ]
+    },
+    "merkel": {
+      "referencia": "merkel",
+      "periodo": "Alemanha, 2005–2021",
+      "grupo": "teste",
+      "opostos": ["brejnev", "bolsonaro", "iglesias", "fidel"],
+      "leis": [
+        {
+          "lei": "salario-minimo",
+          "opcao": "piso-moderado",
+          "como": "aprovou",
+          "fonte": "Lei do Salário Mínimo (MiLoG, 2014)"
+        },
+        {
+          "lei": "sistema-de-saude",
+          "opcao": "seguro-obrigatorio",
+          "como": "aprovou",
+          "fonte": "Reforma de 2007 (GKV-WSG), seguro obrigatório para todos"
+        },
+        {
+          "lei": "cuidados-de-longa-duracao",
+          "opcao": "seguro-obrigatorio",
+          "como": "aprovou",
+          "fonte": "Seguro de cuidados (1995) e Pflegestärkungsgesetze (2015–2017)"
+        },
+        {
+          "lei": "idade-minima-aposentadoria",
+          "opcao": "alta",
+          "como": "aprovou",
+          "fonte": "Aposentadoria aos 67 (lei de 2007)"
+        },
+        {
+          "lei": "regra-fiscal",
+          "opcao": "meta-resultado",
+          "como": "aprovou",
+          "fonte": "Freio da dívida (Lei Fundamental, art. 115, 2009)"
+        },
+        {
+          "lei": "autonomia-banco-central",
+          "opcao": "autonomia-plena",
+          "como": "manteve",
+          "fonte": "Banco Central Europeu (Tratado da UE)"
+        },
+        {
+          "lei": "banco-de-desenvolvimento",
+          "opcao": "segundo-piso-mercado",
+          "como": "manteve",
+          "fonte": "KfW (repasse pelos bancos)"
+        },
+        {
+          "lei": "reducao-de-jornada-subsidiada",
+          "opcao": "permanente",
+          "como": "manteve",
+          "fonte": "Kurzarbeitergeld (Código Social III), ampliado em 2009"
+        },
+        {
+          "lei": "licenca-parental",
+          "opcao": "compartilhada-com-cota-pai",
+          "como": "aprovou",
+          "fonte": "Elterngeld (BEEG, 2007), com meses do pai"
+        },
+        {
+          "lei": "imposto-renda-pessoas",
+          "nivel": 45,
+          "como": "aprovou",
+          "fonte": "Imposto dos ricos (2007), alíquota máxima de 45%"
+        },
+        {
+          "lei": "imposto-renda-empresas",
+          "nivel": 30,
+          "como": "aprovou",
+          "fonte": "Reforma de 2008 (15% federal mais imposto municipal, cerca de 30%)"
+        },
+        {
+          "lei": "tributacao-dividendos",
+          "nivel": 25,
+          "como": "aprovou",
+          "fonte": "Abgeltungsteuer (2009)"
+        },
+        {
+          "lei": "imposto-heranca",
+          "nivel": 30,
+          "como": "manteve",
+          "fonte": "Lei do Imposto sobre Herança (ErbStG), 30% na faixa alta da classe I"
+        },
+        {
+          "lei": "casamento-e-uniao-civil",
+          "opcao": "casamento-igualitario",
+          "como": "aprovou",
+          "fonte": "Ehe für alle (2017)"
+        },
+        {
+          "lei": "aborto",
+          "opcao": "motivos-amplos",
+          "como": "manteve",
+          "fonte": "Código Penal, §218a (sem pena até 12 semanas, com aconselhamento)"
+        },
+        {
+          "lei": "politica-de-imigracao",
+          "opcao": "seletiva",
+          "como": "aprovou",
+          "fonte": "Lei de Imigração (2005); Lei de Imigração de Trabalhadores Qualificados (2019)"
+        },
+        {
+          "lei": "refugiados-e-asilo",
+          "opcao": "acolhida-ampla",
+          "como": "aprovou",
+          "fonte": "Abertura às pessoas refugiadas (setembro de 2015)"
+        },
+        {
+          "lei": "servico-militar",
+          "opcao": "voluntario",
+          "como": "aprovou",
+          "fonte": "Suspensão do serviço obrigatório (2011)"
+        },
+        {
+          "lei": "energia-nuclear",
+          "opcao": "sem-novas",
+          "como": "aprovou",
+          "fonte": "Saída da energia nuclear (13ª emenda da Lei Atômica, 2011)"
+        },
+        {
+          "lei": "matriz-energetica",
+          "opcao": "transicao-forcada",
+          "como": "aprovou",
+          "fonte": "Lei de Saída do Carvão (2020)"
+        },
+        {
+          "lei": "precificacao-carbono",
+          "opcao": "mercado-com-teto",
+          "como": "aprovou",
+          "fonte": "Comércio de emissões da UE; Lei Nacional de Emissões (BEHG, 2019)"
+        },
+        {
+          "lei": "protecao-de-dados",
+          "opcao": "protecao-estrita",
+          "como": "aprovou",
+          "fonte": "RGPD (2018) e nova Lei Federal de Proteção de Dados (2018)"
+        },
+        {
+          "lei": "federalismo",
+          "opcao": "descentralizado",
+          "como": "aprovou",
+          "fonte": "Reforma do federalismo (2006)"
+        },
+        {
+          "lei": "vacinacao-obrigatoria",
+          "opcao": "obrigatoria-com-multa",
+          "como": "aprovou",
+          "fonte": "Lei de Proteção contra o Sarampo (2020)"
+        },
+        {
+          "lei": "terceirizacao",
+          "opcao": "limitada-com-igualdade",
+          "como": "aprovou",
+          "fonte": "Reforma da Lei de Trabalho Temporário (AÜG, 2017)"
+        },
+        {
+          "lei": "acordos-comerciais",
+          "opcao": "livre-comercio-amplo",
+          "como": "manteve",
+          "fonte": "Mercado único europeu; CETA (2017)"
+        },
+        {
+          "lei": "controle-de-capitais",
+          "opcao": "conta-aberta",
+          "como": "manteve",
+          "fonte": "Livre circulação de capitais na UE"
+        },
+        {
+          "lei": "regime-cambial",
+          "opcao": "flutuante",
+          "como": "manteve",
+          "fonte": "Euro flutuante"
+        }
+      ]
+    }
+  }
+}
