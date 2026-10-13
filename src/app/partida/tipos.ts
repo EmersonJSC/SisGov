@@ -500,3 +500,47 @@ export type PrevisaoLei = Readonly<{
    */
   interrompida?: string;
 }>;
+
+/** Um ponto da bússola (V1-10): de −10 a +10 em cada eixo. */
+export type VisaoPontoBussola = Readonly<{
+  /** − Estado, + mercado. */
+  economia: number;
+  /** − liberdade, + autoridade. */
+  costumes: number;
+}>;
+
+/** Personalidade ou partido de referência, com a origem do ponto. */
+export type VisaoReferencia = VisaoPontoBussola &
+  Readonly<{
+    id: string;
+    nome: string;
+    pais: string;
+    /** Sigla do partido da personalidade; vazio num partido. */
+    partido: string;
+    /** Anos de eleição usados na média. */
+    anos: readonly number[];
+  }>;
+
+export type VisaoBussola = Readonly<{
+  ponto: VisaoPontoBussola;
+  /** Onde as leis do país estavam no começo do mandato. */
+  inicio: VisaoPontoBussola;
+  /** O ponto no fim de cada turno. */
+  caminho: readonly (VisaoPontoBussola & Readonly<{ turno: number }>)[];
+  personalidades: readonly VisaoReferencia[];
+  partidos: readonly VisaoReferencia[];
+  pertoPersonalidades: readonly (VisaoReferencia &
+    Readonly<{ distancia: number }>)[];
+  pertoPartidos: readonly (VisaoReferencia & Readonly<{ distancia: number }>)[];
+  /** Leis em vigor que mais puxam o ponto (importância × seta). */
+  leisQueMaisPuxam: readonly Readonly<{
+    id: string;
+    nome: string;
+    economia: number;
+    costumes: number;
+    porque: string;
+  }>[];
+  fatorDoRumo: number;
+  fonte: string;
+  semMedida: readonly Readonly<{ nome: string; motivo: string }>[];
+}>;

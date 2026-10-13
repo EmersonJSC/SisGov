@@ -1,7 +1,8 @@
 # Bússola política (V1-10)
 
-**Status:** EM REVISÃO (13/out). O código só começa com a sua aprovação; as
-perguntas estão na seção 8.
+**Status:** APROVADO E FEITO (13/out). O autor aprovou os dois eixos, o fator
+4 do rumo e as referências pelos dados, e pediu uma lista maior (China,
+Rússia e outros). O resultado do Brasil está na seção 9.
 
 ## 0. Resumo
 
@@ -97,9 +98,18 @@ a lei não fala daquele eixo. Exemplos:
 ### 4.3 O ponto
 
 ```
-média(leis) = Σ (importância × vetor da opção em vigor) ÷ Σ importância × 5
-ponto       = média(leis do turno 0) + 4 × (média(leis de agora) − média(leis do turno 0))
+média(leis) = Σ (importância × vetor da opção em vigor) ÷ Σ importância de todas as leis do catálogo
+escala      = média ÷ média do país mais extremo possível naquele sentido × 10
+ponto       = escala(turno 0) + 4 × (escala(agora) − escala(turno 0))
 ```
+
+- Lei fora de vigor vale zero (ou o `foraDeVigor` dela, como a maconha legal,
+  que fora de vigor quer dizer proibida).
+- **Por que a escala:** a média simples de 129 leis fica perto de zero, porque
+  muitas opções são moderadas. Dividir pelo país mais extremo possível (todas
+  as leis na opção mais à esquerda, ou mais à direita, naquele eixo) diz que
+  parte do caminho até a borda as leis percorreram. As referências usam a
+  mesma ideia: 3 desvios-padrão dos partidos do mundo = borda.
 
 - O ponto inicial é a média das leis em vigor no turno 0. No Brasil, a nossa
   expectativa é ficar perto do PT. **Não ajustamos os vetores para cair lá:**
@@ -116,17 +126,34 @@ ponto       = média(leis do turno 0) + 4 × (média(leis de agora) − média(l
 
 - **Partidos e personalidades em duas camadas**, que você liga e desliga na
   tela.
-- **Partidos:** brasileiros (PT, PSOL, PCdoB, PSB, PDT, MDB, PSD, PSDB, União
-  Brasil, PP, Republicanos, PL, Novo) e de fora (por exemplo, Democratas e
-  Republicanos dos EUA, Trabalhistas e Conservadores do Reino Unido, Morena
-  do México e A Liberdade Avança da Argentina).
-- **Personalidades:** da esquerda à direita, de vários países e épocas. Por
-  exemplo, Che Guevara, Fidel Castro, Hugo Chávez, Salvador Allende, José
-  Mujica, Lula, Bernie Sanders, Barack Obama, Fernando Henrique Cardoso,
-  Angela Merkel, Margaret Thatcher, Ronald Reagan, Donald Trump, Jair
-  Bolsonaro, Javier Milei e Viktor Orbán.
-- **Conversão:** CHES de 0 a 10 vira −10 a +10 (×2 − 10); as escalas do
-  V-Party são padronizadas pelo conjunto e levadas à mesma faixa.
+- **Fonte única: V-Party** (V-Dem, pacote `vdemdata` 16.0, partidos de 1970 a
+  2019). O CHES ficou de fora: o site não abre daqui, e o V-Party cobre o
+  mundo todo com a mesma régua, inclusive China, Rússia e Cuba.
+- **Economia:** média de `v2pariglef` (esquerda e direita econômica) e de
+  `v2pawelf` com sinal trocado (apoio ao Estado de bem-estar), padronizados.
+- **Costumes:** média de dois blocos padronizados: valores (`v2palgbt`,
+  `v2parelig`, `v2pagender`, `v2paimmig`, `v2paculsup`, com sinal trocado) e
+  antipluralismo (`v2xpa_antiplural`).
+- **Escala:** padronizado sobre os 6.252 partidos-ano com os oito itens; 3
+  desvios-padrão = borda.
+- **Partidos (59):** 11 do Brasil (PT, PDT, PSB, MDB, PSDB, PSD, DEM, PP, PL,
+  Republicanos e PSL, em 2018) e 48 de fora (EUA, Canadá, Reino Unido,
+  Alemanha, França, Espanha, Itália, Suécia, Grécia, Hungria, Polônia,
+  Turquia, Rússia, China, Cuba, Venezuela, Bolívia, Uruguai, Chile,
+  Argentina, México, Colômbia, Índia, Israel, Japão e África do Sul).
+- **Personalidades (66):** do Brejnev ao Salvini, passando por Mao, Deng, Xi,
+  Putin, Gorbachev, Fidel, Che, Chávez, Maduro, Allende, Mujica, Lula, Dilma,
+  Brizola, FHC, Bolsonaro, Obama, Trump, Reagan, Thatcher, Merkel, Orbán,
+  Erdoğan, Modi, Khomeini, Mandela e outros. Cada uma é a média do partido
+  dela nos anos de eleição em que governou ou liderou.
+- **Sem medida (18):** Lênin, Stálin, Kruschev, Ho Chi Minh, Vargas,
+  Roosevelt, Churchill, Hitler, Mussolini, De Gaulle, Salazar e Nasser (a base
+  só mede de 1970 em diante), Milei (partido depois de 2019), Sanders (nunca
+  liderou um partido), Duterte, PSOL, PCdoB e Novo (fora da base). Aparecem
+  na tela como "sem medida", com o motivo.
+- **Arquivos:** `src/conteudo/bussola/referencias.json`, gerado por
+  `scripts/bussola/gerar.py` (a lista de pessoas e partidos fica em
+  `pessoas.py` e `partidos.py`).
 - **Na ficha de cada referência:** fonte, ano da medida e o partido usado. O
   texto não opina: só o nome, o país, a época e a fonte.
 - A "personalidade mais próxima" do seu ponto aparece no painel e no jornal
@@ -170,3 +197,22 @@ da seção 2.
    tirar ou pôr nomes.
 4. **Eixos:** economia (Estado e mercado) e costumes (liberdade e
    autoridade). Recomendo esses dois.
+
+## 9. Resultado (13/out)
+
+- **Brasil no turno 0:** economia −0,5 e costumes −2,6. As mais perto são
+  Barack Obama (0,3), Indira Gandhi, Bill Clinton e Nelson Mandela; entre os
+  partidos, o Democrata dos EUA (0,2) e o CNA da África do Sul. O PT de 2018
+  está em −2,3 e −6,1; Lula (2002 e 2006) em −2,0 e −5,6.
+- **Por que não caiu no PT:** as leis de hoje somam governos diferentes. O
+  que mais puxa para o mercado são a autonomia do banco central, a meta de
+  inflação, o trabalho por aplicativo sem regra e as concessões de
+  saneamento; para o Estado, o sistema de saúde universal, a política
+  industrial, a previdência e o crédito do banco de desenvolvimento. Não
+  mexemos nos vetores para chegar ao PT.
+- **Na tela:** botão "Bússola" na barra e um app no tablet, com camadas de
+  personalidades e de partidos, os cinco mais perto, as leis que mais puxam o
+  ponto e a fonte de cada número.
+- **Ainda não:** a frase "O governo está cada vez mais perto de …" no jornal
+  e a setinha na janela da lei (seção 4.5) ficam para o V1-13, junto com os
+  dilemas com lados.

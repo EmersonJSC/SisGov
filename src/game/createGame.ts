@@ -20,6 +20,7 @@ import {
   type OccurrenceState,
 } from "./occurrences";
 import { createPressureState, type PressureState } from "./pressao";
+import { criarBussola, type EstadoDaBussola } from "./bussola";
 
 export type GameState = Readonly<{
   id: string;
@@ -45,6 +46,8 @@ export type GameState = Readonly<{
   occurrences?: OccurrenceState;
   /** Grupos de pressão (V1-09); ausente sem grupos no pacote. */
   pressure?: PressureState;
+  /** Bússola política (V1-10): início e caminho do ponto. */
+  compass?: EstadoDaBussola;
   execution: EngineExecution;
 }>;
 
@@ -288,6 +291,7 @@ export function createGame(
         }).state
       : undefined;
   const pressure = createPressureState(content, execution.values);
+  const compass = criarBussola(content, policies);
   return {
     ok: true,
     value: {
@@ -306,6 +310,7 @@ export function createGame(
       random: random?.value,
       ...(occurrences ? { occurrences } : {}),
       ...(pressure ? { pressure } : {}),
+      compass,
       execution,
     },
   };

@@ -287,10 +287,10 @@ político, perto de quais personalidades e partidos.
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/bussola.md`)
-- [ ] O ponto inicial vem das leis em vigor (teste)
-- [ ] Toda opção de lei tem peso nos eixos (teste do verificador)
-- [ ] A posição de cada referência tem fonte
+- [x] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/bussola.md`)
+- [x] O ponto inicial vem das leis em vigor (teste)
+- [x] Toda opção de lei tem peso nos eixos (teste do verificador)
+- [x] A posição de cada referência tem fonte
 
 **Você vê.** A bússola com o seu ponto, o caminho que ele fez e as
 personalidades e partidos em volta.

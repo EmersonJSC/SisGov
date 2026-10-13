@@ -1,0 +1,1294 @@
+{
+  "tipo": "mundo-bussola",
+  "versaoEsquema": 1,
+  "metodo": "Cada opção tem um vetor de −2 a +2 em economia (− Estado, + mercado) e costumes (− liberdade, + autoridade). A direção vem dos temas do Manifesto Project (MARPOR) ligados à lei; 0 quer dizer que a lei não fala daquele eixo. Leis com faixa vão do vetor do mínimo ao do máximo. Desenho: docs/v1/desenho/bussola.md.",
+  "importancia": {
+    "emenda-constitucional": 3,
+    "clausula-petrea": 3,
+    "lei-ordinaria": 2,
+    "outras": 1
+  },
+  "fatorDoRumo": 4,
+  "temas": {
+    "per104": "Forças armadas: a favor",
+    "per105": "Forças armadas: contra",
+    "per201": "Liberdade e direitos humanos",
+    "per202": "Democracia",
+    "per301": "Descentralização",
+    "per302": "Centralização",
+    "per305": "Autoridade política",
+    "per401": "Livre mercado",
+    "per402": "Incentivos à empresa",
+    "per403": "Regulação do mercado",
+    "per404": "Planejamento econômico",
+    "per406": "Protecionismo: a favor",
+    "per407": "Protecionismo: contra",
+    "per409": "Gestão da demanda",
+    "per412": "Economia controlada",
+    "per413": "Estatização",
+    "per414": "Ortodoxia econômica",
+    "per501": "Proteção ambiental",
+    "per503": "Igualdade",
+    "per504": "Estado de bem-estar: expandir",
+    "per505": "Estado de bem-estar: limitar",
+    "per506": "Educação: expandir",
+    "per507": "Educação: limitar",
+    "per601": "Modo de vida nacional: a favor",
+    "per602": "Modo de vida nacional: contra",
+    "per603": "Moral tradicional: a favor",
+    "per604": "Moral tradicional: contra",
+    "per605": "Lei e ordem",
+    "per607": "Multiculturalismo: a favor",
+    "per608": "Multiculturalismo: contra",
+    "per701": "Trabalhadores e sindicatos: a favor",
+    "per702": "Trabalhadores e sindicatos: contra",
+    "per705": "Minorias desfavorecidas",
+    "per706": "Grupos demográficos (mulheres, idosos, jovens)"
+  },
+  "leis": {
+    "aborto": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Moral tradicional contra autonomia do corpo; não mexe na economia.",
+      "opcoes": {
+        "proibicao-total": [0, 2],
+        "risco-de-vida": [0, 1.5],
+        "casos-restritos": [0, 0.5],
+        "motivos-amplos": [0, -0.5],
+        "a-pedido": [0, -1.5],
+        "sem-lei-penal": [0, -2]
+      }
+    },
+    "acesso-ensino-superior": {
+      "manifesto": ["per506", "per505"],
+      "porque": "Quem paga a faculdade: a família (mercado) ou o Estado.",
+      "opcoes": {
+        "pago-pela-familia": [2, 0],
+        "emprestimo-contingente": [1, 0],
+        "gratuidade-focalizada": [0, 0],
+        "gratuito-seletivo": [-1, 0],
+        "gratuito-universal": [-2, 0]
+      }
+    },
+    "acoes-afirmativas": {
+      "manifesto": ["per705", "per503"],
+      "porque": "Reserva para minorias desfavorecidas e busca de igualdade.",
+      "opcoes": {
+        "proibidas": [0, 1.5],
+        "sem-politica": [0, 0.5],
+        "cotas-sociais": [-0.5, -0.5],
+        "cotas-sociais-e-raciais": [-0.5, -1],
+        "reservas-amplas": [-1, -2]
+      }
+    },
+    "acordos-comerciais": {
+      "manifesto": ["per406", "per407"],
+      "porque": "Abertura comercial contra proteção da produção nacional.",
+      "opcoes": {
+        "sem-acordos": [-1.5, 0.5],
+        "uniao-aduaneira": [-0.5, 0],
+        "rede-seletiva": [0.5, 0],
+        "livre-comercio-amplo": [2, 0]
+      }
+    },
+    "agencia-de-inteligencia": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Mais verba de inteligência é mais poder de vigiar.",
+      "faixa": {
+        "minimo": [0, -1],
+        "maximo": [0, 1.5]
+      }
+    },
+    "agrotoxicos": {
+      "manifesto": ["per403", "per501"],
+      "porque": "Grau de regulação do mercado de defensivos.",
+      "opcoes": {
+        "sem-registro": [2, 0],
+        "permissiva": [1, 0],
+        "avaliacao-de-risco": [0, 0],
+        "precaucao": [-1, 0],
+        "so-organico": [-2, 0]
+      }
+    },
+    "apostas-e-jogos-de-azar": {
+      "manifesto": ["per603", "per401", "per413"],
+      "porque": "Moral tradicional, monopólio estatal ou mercado livre de apostas.",
+      "opcoes": {
+        "proibicao": [-0.5, 1.5],
+        "monopolio-estatal": [-1.5, 0.5],
+        "licenciado-restrito": [0, 0],
+        "licenciado-liberal": [1, -0.5],
+        "sem-regulacao": [2, -1]
+      }
+    },
+    "armas-de-fogo": {
+      "manifesto": ["per605", "per603"],
+      "porque": "Nas bases de partidos, armas facilitadas andam com lei e ordem e moral tradicional.",
+      "opcoes": {
+        "proibidas": [-0.5, -1],
+        "restritas": [0, 0],
+        "facilitadas": [1, 1.5]
+      }
+    },
+    "autonomia-banco-central": {
+      "manifesto": ["per414", "per404"],
+      "porque": "Ortodoxia monetária contra moeda a serviço do governo.",
+      "opcoes": {
+        "subordinado": [-2, 0],
+        "autonomia-parcial": [-0.5, 0],
+        "autonomia-plena": [1.5, 0]
+      }
+    },
+    "avaliacao-escolas": {
+      "manifesto": ["per506"],
+      "porque": "Prova com consequência é cobrança por resultado, ideia de gestão de mercado.",
+      "opcoes": {
+        "sem-avaliacao": [-0.5, 0],
+        "amostral-diagnostica": [0, 0],
+        "censitaria-publica": [0.5, 0],
+        "com-consequencias": [1, 0.5]
+      }
+    },
+    "banco-de-desenvolvimento": {
+      "manifesto": ["per404", "per402"],
+      "porque": "Crédito dirigido pelo Estado contra crédito de mercado.",
+      "opcoes": {
+        "sem-banco": [2, 0],
+        "segundo-piso-mercado": [1, 0],
+        "credito-direcionado": [-1, 0],
+        "credito-subsidiado-massivo": [-2, 0]
+      }
+    },
+    "beneficio-idosos-e-deficientes": {
+      "manifesto": ["per504", "per505"],
+      "porque": "Tamanho do Estado de bem-estar.",
+      "opcoes": {
+        "nenhum": [2, 0],
+        "focalizado-estrito": [1, 0],
+        "focalizado-amplo": [-0.5, 0],
+        "universal": [-2, 0]
+      }
+    },
+    "cameras-corporais": {
+      "manifesto": ["per201", "per605"],
+      "porque": "Câmera na farda é controle sobre a força policial.",
+      "faixa": {
+        "minimo": [0, 0.5],
+        "maximo": [0, -1]
+      }
+    },
+    "cameras-e-reconhecimento-facial": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Vigilância do Estado contra privacidade.",
+      "opcoes": {
+        "proibido": [0, -2],
+        "locais-publicos": [0, 0],
+        "cidade-inteira": [0, 1],
+        "cadastro-nacional": [0, 2]
+      }
+    },
+    "cannabis-legal": {
+      "manifesto": ["per604", "per401"],
+      "porque": "Liberdade individual; as lojas abrem também um mercado.",
+      "opcoes": {
+        "clubes": [0, -1],
+        "farmacias": [0, -1.5],
+        "lojas": [1, -2]
+      },
+      "foraDeVigor": [0, 0.5]
+    },
+    "casamento-e-uniao-civil": {
+      "manifesto": ["per603", "per604", "per705"],
+      "porque": "Moral tradicional contra direitos LGBT.",
+      "opcoes": {
+        "criminalizacao": [0, 2],
+        "sem-reconhecimento": [0, 1],
+        "uniao-civil": [0, -0.5],
+        "casamento-igualitario": [0, -1.5]
+      }
+    },
+    "ciclo-policial": {
+      "manifesto": ["per605"],
+      "porque": "Ciclo completo dá mais poder a cada polícia.",
+      "opcoes": {
+        "dividido": [0, 0],
+        "completo": [0, 0.5]
+      }
+    },
+    "codigo-florestal": {
+      "manifesto": ["per403", "per501"],
+      "porque": "Regulação do uso da terra.",
+      "opcoes": {
+        "sem-protecao": [2, 0],
+        "so-areas-sensiveis": [1, 0],
+        "reserva-legal": [-0.5, 0],
+        "desmatamento-zero": [-1.5, 0]
+      }
+    },
+    "controle-de-capitais": {
+      "manifesto": ["per401", "per412"],
+      "porque": "Livre circulação de capital contra economia controlada.",
+      "opcoes": {
+        "conta-aberta": [2, 0],
+        "controles-prudenciais": [0.5, 0],
+        "controles-amplos": [-1, 0],
+        "conta-fechada": [-2, 0]
+      }
+    },
+    "controle-de-precos": {
+      "manifesto": ["per412", "per401"],
+      "porque": "Preço de mercado contra preço tabelado.",
+      "opcoes": {
+        "precos-livres": [1.5, 0],
+        "precos-administrados": [-0.5, 0],
+        "tetos-cesta-basica": [-1, 0],
+        "tabelamento-geral": [-2, 0]
+      }
+    },
+    "cuidados-de-longa-duracao": {
+      "manifesto": ["per504", "per603"],
+      "porque": "Cuidado pela família (tradicional) ou pelo Estado.",
+      "opcoes": {
+        "familia": [1.5, 0.5],
+        "assistencia-focalizada": [0.5, 0],
+        "seguro-obrigatorio": [-0.5, 0],
+        "universal-publico": [-2, 0]
+      }
+    },
+    "defesa-da-concorrencia": {
+      "manifesto": ["per403", "per401", "per601"],
+      "porque": "Mercado sem regra, campeões escolhidos pelo Estado ou regulação da concorrência.",
+      "opcoes": {
+        "sem-politica": [1.5, 0],
+        "campeoes-nacionais": [-1, 0.5],
+        "moderada": [0, 0],
+        "rigorosa": [-1, 0]
+      }
+    },
+    "delacao-premiada": {
+      "manifesto": ["per605"],
+      "porque": "Instrumento de lei e ordem.",
+      "opcoes": {
+        "sem-acordos": [0, -0.5],
+        "delacao-com-juiz": [0, 0],
+        "acordo-como-regra": [0, 1]
+      }
+    },
+    "destino-do-resultado-fiscal": {
+      "manifesto": ["per414"],
+      "porque": "Pagar a dívida é a escolha ortodoxa.",
+      "opcoes": {
+        "pagar-a-divida": [1, 0],
+        "dividir": [0, 0],
+        "guardar": [0, 0]
+      }
+    },
+    "educacao-domiciliar": {
+      "manifesto": ["per603", "per506"],
+      "porque": "Bandeira de partidos religiosos e de mercado; proibir reforça a escola do Estado.",
+      "opcoes": {
+        "proibida": [-0.5, -0.5],
+        "excepcional-autorizada": [0, 0],
+        "regulada-com-provas": [0.5, 0.5],
+        "livre": [1, 1]
+      }
+    },
+    "empresas-estatais-e-privatizacao": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Estatização contra privatização.",
+      "opcoes": {
+        "sem-estatais": [2, 0],
+        "estatais-minimas": [1, 0],
+        "estatais-estrategicas": [-0.5, 0],
+        "estado-empresario": [-2, 0]
+      }
+    },
+    "energia-nuclear": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "opcoes": {
+        "proibida": [0, 0],
+        "sem-novas": [0, 0],
+        "manutencao": [0, 0],
+        "expansao": [0, 0]
+      }
+    },
+    "ensino-obrigatorio": {
+      "manifesto": ["per506"],
+      "porque": "Mais anos de escola obrigatória é expandir a educação.",
+      "opcoes": {
+        "sem-obrigatoriedade": [1.5, 0],
+        "primario": [0.5, 0],
+        "basico-9-anos": [0, 0],
+        "ate-18": [-1, 0]
+      }
+    },
+    "ensino-tecnico-profissional": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "opcoes": {
+        "so-academico": [0, 0],
+        "tecnico-como-opcao": [0, 0],
+        "tecnico-em-massa": [0, 0],
+        "separacao-precoce": [0, 0]
+      }
+    },
+    "escola-tempo-integral": {
+      "manifesto": ["per506"],
+      "porque": "Expansão da educação pública.",
+      "opcoes": {
+        "meio-turno": [0.5, 0],
+        "integral-parcial": [0, 0],
+        "integral-universal": [-1, 0]
+      }
+    },
+    "estabilidade-servidores-publicos": {
+      "manifesto": ["per505", "per701"],
+      "porque": "Servidor com regra de mercado ou protegido pelo Estado.",
+      "opcoes": {
+        "livre-nomeacao": [0.5, 0.5],
+        "contrato-comum": [1.5, 0],
+        "estabilidade-com-avaliacao": [0, 0],
+        "estabilidade-plena": [-1, 0]
+      }
+    },
+    "eutanasia": {
+      "manifesto": ["per603", "per604"],
+      "porque": "Moral tradicional contra autonomia.",
+      "opcoes": {
+        "proibida": [0, 1.5],
+        "passiva": [0, 0.5],
+        "suicidio-assistido": [0, -0.5],
+        "eutanasia-terminal": [0, -1],
+        "eutanasia-ampla": [0, -2]
+      }
+    },
+    "excludente-de-ilicitude": {
+      "manifesto": ["per605"],
+      "porque": "Lei e ordem.",
+      "opcoes": {
+        "restrito": [0, -0.5],
+        "amplo": [0, 1.5]
+      }
+    },
+    "farmacia-popular": {
+      "manifesto": ["per504"],
+      "porque": "Remédio pago pelo Estado.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "federalismo": {
+      "manifesto": ["per301", "per302"],
+      "porque": "Poder concentrado no centro ou espalhado.",
+      "opcoes": {
+        "centralizado": [-0.5, 0.5],
+        "cooperativo": [0, 0],
+        "descentralizado": [0.5, -0.5]
+      }
+    },
+    "financiamento-de-campanhas": {
+      "manifesto": ["per202", "per403"],
+      "porque": "Dinheiro privado livre ou campanha paga pelo Estado.",
+      "opcoes": {
+        "livre": [1, 0],
+        "privado-limitado": [0.5, 0],
+        "misto": [0, 0],
+        "publico-predominante": [-1, 0]
+      }
+    },
+    "foro-privilegiado": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Proteção da autoridade contra igualdade perante a lei.",
+      "opcoes": {
+        "justica-comum": [0, -0.5],
+        "foro-funcional": [0, 0],
+        "foro-amplo": [0, 0.5],
+        "imunidade": [0, 1.5]
+      }
+    },
+    "fundo-de-garantia": {
+      "manifesto": ["per701", "per505"],
+      "porque": "Proteção do trabalhador demitido.",
+      "opcoes": {
+        "nenhum": [2, 0],
+        "conta-portatil": [1, 0],
+        "fundo-com-multa": [-0.5, 0],
+        "indenizacao-por-tempo": [-1.5, 0]
+      }
+    },
+    "fundo-seguranca-publica": {
+      "manifesto": ["per605"],
+      "porque": "Verba de polícia é lei e ordem.",
+      "faixa": {
+        "minimo": [0, -0.5],
+        "maximo": [0, 1]
+      }
+    },
+    "fundo-soberano": {
+      "manifesto": ["per414", "per404"],
+      "porque": "Guardar (ortodoxo) ou o Estado investir.",
+      "opcoes": {
+        "guardar": [1, 0],
+        "fundo-exterior": [0.5, 0],
+        "emprestar-empresas": [-1, 0],
+        "investir-obras": [-1.5, 0]
+      }
+    },
+    "garantias-penais": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Pena de morte é o extremo da lei e ordem.",
+      "opcoes": {
+        "sem-pena-de-morte": [0, -0.5],
+        "pena-de-morte-permitida": [0, 2]
+      }
+    },
+    "gasto-com-defesa": {
+      "manifesto": ["per104", "per105"],
+      "porque": "Forças armadas fortes contra fracas.",
+      "faixa": {
+        "minimo": [0, -1],
+        "maximo": [0, 1.5]
+      }
+    },
+    "genericos-e-patentes-medicamentos": {
+      "manifesto": ["per401", "per403"],
+      "porque": "Propriedade privada contra regulação do mercado de remédios.",
+      "opcoes": {
+        "sem-patentes": [-2, 0],
+        "patente-restrita": [-1, 0],
+        "genericos-e-licenca": [-0.5, 0],
+        "padrao-omc": [0.5, 0],
+        "patente-estendida": [1.5, 0]
+      }
+    },
+    "idade-minima-aposentadoria": {
+      "manifesto": ["per505", "per504"],
+      "porque": "Limitar ou expandir o bem-estar.",
+      "opcoes": {
+        "sem-idade": [-2, 0],
+        "baixa": [-1, 0],
+        "moderada": [0, 0],
+        "alta": [1, 0],
+        "atrelada-expectativa": [1.5, 0]
+      }
+    },
+    "igualdade-salarial-de-genero": {
+      "manifesto": ["per706", "per403"],
+      "porque": "Igualdade de gênero com regulação.",
+      "opcoes": {
+        "sem-garantia": [0.5, 1],
+        "principio-legal": [0, 0],
+        "transparencia": [-0.5, -0.5],
+        "certificacao": [-1, -1]
+      }
+    },
+    "imposto-grandes-fortunas": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Imposto sobre o patrimônio redistribui.",
+      "faixa": {
+        "minimo": [1, 0],
+        "maximo": [-2, 0]
+      }
+    },
+    "imposto-heranca": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Imposto sobre herança redistribui.",
+      "faixa": {
+        "minimo": [1, 0],
+        "maximo": [-2, 0]
+      }
+    },
+    "imposto-propriedade-urbana-rural": {
+      "manifesto": ["per503"],
+      "porque": "Imposto sobre imóveis redistribui.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1, 0]
+      }
+    },
+    "imposto-renda-empresas": {
+      "manifesto": ["per402", "per503"],
+      "porque": "Imposto baixo nas empresas é incentivo de mercado.",
+      "faixa": {
+        "minimo": [1.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "imposto-renda-pessoas": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Imposto de renda redistribui.",
+      "faixa": {
+        "minimo": [1.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "imposto-seletivo": {
+      "manifesto": ["per403"],
+      "porque": "Imposto que corrige o mercado.",
+      "opcoes": {
+        "nenhum": [1, 0],
+        "vicios-tradicionais": [0, 0],
+        "saude-ampla": [-0.5, 0],
+        "saude-e-ambiente": [-1, 0]
+      }
+    },
+    "imposto-sobre-consumo": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "faixa": {
+        "minimo": [0, 0],
+        "maximo": [0, 0]
+      }
+    },
+    "imposto-transacoes-financeiras": {
+      "manifesto": ["per403"],
+      "porque": "Imposto sobre o mercado financeiro.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1, 0]
+      }
+    },
+    "incentivo-cultura": {
+      "manifesto": ["per401", "per601", "per305"],
+      "porque": "Mercado, fomento do Estado ou cultura dirigida pelo governo.",
+      "opcoes": {
+        "mercado-e-filantropia": [1.5, 0],
+        "mecenato-incentivado": [0.5, 0],
+        "fomento-direto": [-0.5, 0],
+        "excecao-cultural": [-1, 0.5],
+        "cultura-dirigida": [-2, 2]
+      }
+    },
+    "incentivos-fiscais-regionais": {
+      "manifesto": ["per402", "per404"],
+      "porque": "Planejamento regional pelo Estado.",
+      "opcoes": {
+        "nenhum": [1, 0],
+        "zonas-exportacao": [0.5, 0],
+        "fundos-regionais": [-0.5, 0],
+        "zona-franca-ampla": [-1, 0]
+      }
+    },
+    "independencia-judiciario": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Juiz controlado é sinal de autoritarismo.",
+      "opcoes": {
+        "controlado": [0, 2],
+        "parcial": [0, 1],
+        "plena": [0, -1]
+      }
+    },
+    "interceptacao-de-comunicacoes": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Vigilância contra privacidade.",
+      "opcoes": {
+        "proibida": [0, -1.5],
+        "ordem-e-prazo": [0, -0.5],
+        "ordem-sem-prazo": [0, 0.5],
+        "sem-ordem-seguranca-nacional": [0, 2]
+      }
+    },
+    "investimento-em-infraestrutura": {
+      "manifesto": ["per409", "per404"],
+      "porque": "Investimento público.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1, 0]
+      }
+    },
+    "investimento-estrangeiro": {
+      "manifesto": ["per407", "per406", "per601"],
+      "porque": "Abertura ao capital estrangeiro.",
+      "opcoes": {
+        "fechado": [-2, 0.5],
+        "lista-negativa": [-1, 0],
+        "restricoes-setoriais": [0, 0],
+        "sem-restricoes": [1.5, 0],
+        "atracao-com-incentivos": [1, 0]
+      }
+    },
+    "investimento-pesquisa": {
+      "manifesto": ["per404"],
+      "porque": "Pesquisa paga pelo Estado.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-0.5, 0]
+      }
+    },
+    "jornada-de-trabalho": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Proteção do trabalhador.",
+      "opcoes": {
+        "sem-limite": [2, 0],
+        "longa-48h": [1, 0],
+        "padrao-44h": [0, 0],
+        "reduzida-40h": [-1, 0],
+        "curta-35h": [-2, 0]
+      }
+    },
+    "laicidade-do-estado": {
+      "manifesto": ["per603", "per604", "per305"],
+      "porque": "Religião no Estado é moral tradicional; Estado que controla a religião é autoritário.",
+      "opcoes": {
+        "teocracia": [0, 2],
+        "religiao-oficial": [0, 1.5],
+        "religiao-favorecida": [0, 0.5],
+        "neutro": [0, -0.5],
+        "laicidade-estrita": [0, -1],
+        "controle-estatal": [0, 1]
+      }
+    },
+    "legislacao-trabalhista": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Proteção do trabalhador.",
+      "opcoes": {
+        "sem-regras": [2, 0],
+        "minima": [1, 0],
+        "clt": [-0.5, 0],
+        "protetiva": [-1.5, 0]
+      }
+    },
+    "lei-anticorrupcao": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "opcoes": {
+        "so-pessoas": [0, 0],
+        "empresa-limpa": [0, 0],
+        "agencia-forte": [0, 0]
+      }
+    },
+    "lei-de-drogas": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Lei e ordem contra saúde e liberdade.",
+      "opcoes": {
+        "guerra-as-drogas": [0, 2],
+        "usuario-nao-preso": [0, 0],
+        "uso-e-saude": [0, -1.5]
+      }
+    },
+    "liberdade-imprensa": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Censura é autoritarismo.",
+      "opcoes": {
+        "censura": [0, 2],
+        "restrita": [0, 1.5],
+        "regulada": [0, 0],
+        "plena": [0, -1]
+      }
+    },
+    "licenca-parental": {
+      "manifesto": ["per504", "per706"],
+      "porque": "Bem-estar e igualdade de gênero.",
+      "opcoes": {
+        "nenhuma": [1.5, 0.5],
+        "curta-maternidade": [0.5, 0],
+        "longa-materna": [-1, 0],
+        "compartilhada-com-cota-pai": [-1, -1]
+      }
+    },
+    "licenciamento-ambiental": {
+      "manifesto": ["per403", "per501", "per705"],
+      "porque": "Regulação; a consulta protege povos tradicionais.",
+      "opcoes": {
+        "sem-licenciamento": [2, 0],
+        "autodeclaracao": [1, 0],
+        "trifasico": [-0.5, 0],
+        "rigoroso-com-consulta": [-1.5, -0.5]
+      }
+    },
+    "maioridade-penal": {
+      "manifesto": ["per605"],
+      "porque": "Lei e ordem.",
+      "opcoes": {
+        "18-anos": [0, -0.5],
+        "16-anos": [0, 1.5]
+      }
+    },
+    "matriz-energetica": {
+      "manifesto": ["per403", "per501"],
+      "porque": "Neutra é o mercado decidir; subsídio e transição forçada são o Estado escolhendo.",
+      "opcoes": {
+        "subsidio-fossil": [-0.5, 0],
+        "neutra": [1, 0],
+        "incentivo-renovavel": [-0.5, 0],
+        "transicao-forcada": [-1.5, 0]
+      }
+    },
+    "meta-de-inflacao": {
+      "manifesto": ["per414", "per409"],
+      "porque": "Ortodoxia contra gestão da demanda.",
+      "opcoes": {
+        "sem-meta": [-1.5, 0],
+        "mandato-duplo": [-0.5, 0],
+        "meta-flexivel": [0.5, 0],
+        "meta-estrita": [1.5, 0]
+      }
+    },
+    "modelo-tributario": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Progressividade redistribui.",
+      "opcoes": {
+        "quase-sem-impostos": [2, 0],
+        "consumo": [1, 0],
+        "proporcional": [0.5, 0],
+        "dual": [-0.5, 0],
+        "progressivo": [-1.5, 0]
+      }
+    },
+    "negociacao-coletiva-e-sindicatos": {
+      "manifesto": ["per701", "per702", "per305"],
+      "porque": "Força dos sindicatos; sindicato controlado pelo Estado é corporativismo autoritário.",
+      "opcoes": {
+        "controlados": [-1, 1.5],
+        "por-empresa": [1, 0],
+        "setorial": [-0.5, 0],
+        "centralizada": [-1.5, 0]
+      }
+    },
+    "pena-de-morte": {
+      "manifesto": ["per605"],
+      "porque": "Lei e ordem no extremo.",
+      "opcoes": {
+        "crimes-hediondos": [0, 1.5],
+        "tambem-trafico": [0, 2]
+      }
+    },
+    "penas-e-progressao": {
+      "manifesto": ["per605"],
+      "porque": "Lei e ordem.",
+      "opcoes": {
+        "penas-curtas": [0, -1],
+        "teto-40-anos": [0, 0.5],
+        "sem-progressao": [0, 1.5]
+      }
+    },
+    "pensao-por-morte": {
+      "manifesto": ["per504", "per505"],
+      "porque": "Tamanho do bem-estar.",
+      "opcoes": {
+        "nenhuma": [1.5, 0],
+        "temporaria": [0.5, 0],
+        "cotas": [0, 0],
+        "integral-vitalicia": [-1.5, 0]
+      }
+    },
+    "piso-educacao": {
+      "manifesto": ["per506"],
+      "porque": "Gasto obrigatório com educação.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "piso-salarial-professores": {
+      "manifesto": ["per506", "per701"],
+      "porque": "Carreira pública definida pelo Estado.",
+      "opcoes": {
+        "sem-piso-nacional": [1, 0],
+        "piso-nacional-minimo": [0, 0],
+        "carreira-nacional": [-1, 0],
+        "salario-de-elite": [-1.5, 0]
+      }
+    },
+    "piso-saude": {
+      "manifesto": ["per504"],
+      "porque": "Gasto obrigatório com saúde.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "poderes-de-investigacao-policial": {
+      "manifesto": ["per605", "per201"],
+      "porque": "Poder da polícia contra garantias.",
+      "opcoes": {
+        "so-com-ordem": [0, -1],
+        "infiltracao": [0, 0.5],
+        "sigilo-sem-ordem": [0, 2]
+      }
+    },
+    "policia-militar": {
+      "manifesto": ["per605", "per104"],
+      "porque": "Polícia militarizada é lei e ordem.",
+      "opcoes": {
+        "militar": [0, 1],
+        "civil": [0, -1]
+      }
+    },
+    "policias-dos-estados": {
+      "manifesto": ["per302", "per605"],
+      "porque": "Polícia nacional concentra a força.",
+      "opcoes": {
+        "governadores": [0, 0],
+        "policia-nacional": [0, 0.5]
+      }
+    },
+    "politica-de-imigracao": {
+      "manifesto": ["per601", "per602", "per607", "per608"],
+      "porque": "Nação e cultura própria contra abertura.",
+      "opcoes": {
+        "fechada": [0, 2],
+        "temporaria": [0, 1],
+        "seletiva": [0, 0],
+        "ampla": [0, -1],
+        "livre-circulacao": [0, -2]
+      }
+    },
+    "politica-de-natalidade": {
+      "manifesto": ["per603", "per305"],
+      "porque": "Família tradicional; coerção nos dois sentidos é autoritária.",
+      "opcoes": {
+        "antinatalista-coercitiva": [0, 2],
+        "antinatalista-incentivo": [0, 0],
+        "neutra": [0, -0.5],
+        "incentivos-moderados": [0, 0.5],
+        "pronatalismo-intenso": [-0.5, 1],
+        "pronatalismo-coercitivo": [0, 2]
+      }
+    },
+    "politica-industrial": {
+      "manifesto": ["per404", "per406"],
+      "porque": "Planejamento e proteção contra mercado.",
+      "opcoes": {
+        "nenhuma": [2, 0],
+        "horizontal": [0.5, 0],
+        "setorial-exportadora": [-1, 0],
+        "protecao-mercado-interno": [-2, 0.5]
+      }
+    },
+    "precificacao-carbono": {
+      "manifesto": ["per403", "per501"],
+      "porque": "Regulação ambiental do mercado.",
+      "opcoes": {
+        "sem-preco": [1, 0],
+        "mercado-brando": [0, 0],
+        "mercado-com-teto": [-0.5, 0],
+        "taxa-alta": [-1, 0]
+      }
+    },
+    "previdencia-rural": {
+      "manifesto": ["per504"],
+      "porque": "Bem-estar no campo.",
+      "opcoes": {
+        "nenhuma": [1.5, 0],
+        "voluntaria-subsidiada": [0.5, 0],
+        "contributiva-agricola": [0, 0],
+        "comprovacao-atividade": [-1, 0]
+      }
+    },
+    "programa-espacial-e-satelites": {
+      "manifesto": ["per404"],
+      "porque": "Programa do Estado.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-0.5, 0]
+      }
+    },
+    "programa-habitacao-popular": {
+      "manifesto": ["per504"],
+      "porque": "Moradia paga pelo Estado.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "programa-medicos-no-interior": {
+      "manifesto": ["per504", "per305"],
+      "porque": "Estado levando médicos; serviço obrigatório é imposição.",
+      "opcoes": {
+        "sem-programa": [1, 0],
+        "incentivos": [0, 0],
+        "importacao-de-medicos": [-1, 0],
+        "servico-obrigatorio": [-1, 0.5]
+      }
+    },
+    "protecao-de-dados": {
+      "manifesto": ["per201", "per403"],
+      "porque": "Privacidade com regulação.",
+      "opcoes": {
+        "sem-lei": [1, 0.5],
+        "setorial": [0.5, 0],
+        "lei-geral": [0, -0.5],
+        "protecao-estrita": [-0.5, -1]
+      }
+    },
+    "protecao-violencia-domestica": {
+      "manifesto": ["per706", "per603"],
+      "porque": "Proteção da mulher contra a família como assunto privado.",
+      "opcoes": {
+        "assunto-privado": [0, 2],
+        "crime-comum": [0, 0.5],
+        "medidas-protetivas": [0, -0.5],
+        "protecao-integral": [-0.5, -1]
+      }
+    },
+    "reajuste-de-beneficios": {
+      "manifesto": ["per504", "per414"],
+      "porque": "Tamanho do bem-estar.",
+      "opcoes": {
+        "discricionario": [1, 0],
+        "inflacao": [0.5, 0],
+        "salarios": [0, 0],
+        "salario-minimo": [-1, 0],
+        "trava-tripla": [-1.5, 0]
+      }
+    },
+    "reducao-de-jornada-subsidiada": {
+      "manifesto": ["per409"],
+      "porque": "Estado sustentando o emprego.",
+      "opcoes": {
+        "nenhum": [1, 0],
+        "emergencial": [0, 0],
+        "permanente": [-1, 0]
+      }
+    },
+    "reeleicao": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Reeleição sem limite concentra poder.",
+      "opcoes": {
+        "sem-reeleicao": [0, -0.5],
+        "nao-consecutiva": [0, -0.5],
+        "uma-reeleicao": [0, 0],
+        "ilimitada": [0, 2]
+      }
+    },
+    "reforma-agraria": {
+      "manifesto": ["per413", "per503", "per401"],
+      "porque": "Redistribuição de terra contra mercado de terras.",
+      "opcoes": {
+        "nenhuma": [1.5, 0],
+        "titulacao-e-mercado": [1, 0],
+        "desapropriacao-improdutiva": [-0.5, 0],
+        "redistribuicao-ampla": [-2, 0]
+      }
+    },
+    "refugiados-e-asilo": {
+      "manifesto": ["per201", "per601", "per608"],
+      "porque": "Direitos humanos contra fronteira fechada.",
+      "opcoes": {
+        "sem-asilo": [0, 2],
+        "dissuasao-externa": [0, 1.5],
+        "restritiva": [0, 0.5],
+        "convencao": [0, -0.5],
+        "acolhida-ampla": [0, -1.5]
+      }
+    },
+    "regime-cambial": {
+      "manifesto": ["per401", "per412"],
+      "porque": "Câmbio de mercado contra câmbio controlado.",
+      "opcoes": {
+        "fixo": [-0.5, 0],
+        "bandas": [0, 0],
+        "flutuante-administrado": [0, 0],
+        "flutuante": [1, 0]
+      }
+    },
+    "regime-do-petroleo-e-mineracao": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Estatização contra concessão.",
+      "opcoes": {
+        "proibicao": [-1, 0],
+        "monopolio-estatal": [-2, 0],
+        "partilha": [-0.5, 0],
+        "concessao": [1.5, 0]
+      }
+    },
+    "regime-simplificado-pequenas-empresas": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "opcoes": {
+        "nenhum": [0, 0],
+        "limiar-iva": [0, 0],
+        "monotributo": [0, 0],
+        "amplo": [0, 0]
+      }
+    },
+    "regra-fiscal": {
+      "manifesto": ["per414", "per409"],
+      "porque": "Ortodoxia fiscal.",
+      "opcoes": {
+        "sem-regra": [-1.5, 0],
+        "meta-resultado": [0.5, 0],
+        "teto-gastos": [2, 0],
+        "arcabouco": [0.5, 0]
+      }
+    },
+    "regulacao-bancaria": {
+      "manifesto": ["per403", "per412"],
+      "porque": "Regulação do mercado financeiro.",
+      "opcoes": {
+        "minima": [2, 0],
+        "basileia-padrao": [0.5, 0],
+        "basileia-reforcada": [-0.5, 0],
+        "repressao-financeira": [-2, 0]
+      }
+    },
+    "regulacao-planos-de-saude": {
+      "manifesto": ["per403", "per504"],
+      "porque": "Mercado de saúde regulado ou só complementar ao público.",
+      "opcoes": {
+        "livre": [2, 0],
+        "solvencia": [1, 0],
+        "rol-minimo": [0, 0],
+        "competicao-regulada": [-0.5, 0],
+        "so-complementar": [-1.5, 0]
+      }
+    },
+    "regulacao-redes-sociais": {
+      "manifesto": ["per201", "per305", "per403"],
+      "porque": "Liberdade de expressão contra controle; controle do Estado é autoritário.",
+      "opcoes": {
+        "sem-regra": [0.5, 0],
+        "ordem-judicial": [0, -0.5],
+        "dever-de-cuidado": [-0.5, 0],
+        "protecao-reforcada": [-0.5, 0.5],
+        "controle-estatal": [-1, 2]
+      }
+    },
+    "restricao-tabaco-e-alcool": {
+      "manifesto": ["per403", "per603"],
+      "porque": "Regulação; a proibição é moral imposta.",
+      "opcoes": {
+        "livre": [1, 0],
+        "avisos-basicos": [0.5, 0],
+        "restricao-forte": [-0.5, 0],
+        "preco-minimo-e-geracional": [-1, 0.5],
+        "proibicao": [-1, 1.5]
+      }
+    },
+    "salario-minimo": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Proteção do trabalhador.",
+      "opcoes": {
+        "sem-piso": [2, 0],
+        "piso-baixo": [1, 0],
+        "piso-moderado": [0, 0],
+        "piso-alto": [-1.5, 0]
+      }
+    },
+    "saneamento-basico": {
+      "manifesto": ["per413", "per401"],
+      "porque": "Serviço estatal ou privado.",
+      "opcoes": {
+        "sem-politica": [1, 0],
+        "municipal-publico": [-1, 0],
+        "estatal-regional": [-1.5, 0],
+        "concessao-com-metas": [1, 0],
+        "privatizacao-plena": [2, 0]
+      }
+    },
+    "saude-mental": {
+      "manifesto": ["per504", "per201", "per305"],
+      "porque": "Internação forçada é autoridade; rede comunitária é liberdade.",
+      "opcoes": {
+        "sem-politica": [0.5, 0],
+        "manicomial": [0, 1.5],
+        "misto-hospital-geral": [0, 0.5],
+        "rede-comunitaria": [-0.5, -1]
+      }
+    },
+    "seguranca-alimentar": {
+      "manifesto": ["per504"],
+      "porque": "Bem-estar.",
+      "opcoes": {
+        "nenhuma": [1.5, 0],
+        "acoes-pontuais": [0.5, 0],
+        "cartao-alimentacao": [-0.5, 0],
+        "distribuicao-massiva": [-1.5, 0]
+      }
+    },
+    "seguro-desemprego": {
+      "manifesto": ["per504", "per505"],
+      "porque": "Bem-estar.",
+      "opcoes": {
+        "nenhum": [2, 0],
+        "conta-individual": [1, 0],
+        "basico-curto": [0, 0],
+        "moderado": [-0.5, 0],
+        "generoso-com-ativacao": [-1.5, 0]
+      }
+    },
+    "servico-militar": {
+      "manifesto": ["per104", "per105"],
+      "porque": "Forças armadas e dever imposto ao cidadão.",
+      "opcoes": {
+        "sem-forcas-armadas": [0, -2],
+        "voluntario": [0, -0.5],
+        "seletivo": [0, 0],
+        "obrigatorio-masculino": [0, 1],
+        "universal": [0, 1.5]
+      }
+    },
+    "sistema-de-governo": {
+      "manifesto": [],
+      "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
+      "opcoes": {
+        "presidencialismo": [0, 0],
+        "semipresidencialismo": [0, 0],
+        "parlamentarismo": [0, 0],
+        "diretorial": [0, 0]
+      }
+    },
+    "sistema-de-saude": {
+      "manifesto": ["per504", "per505"],
+      "porque": "Saúde de mercado ou do Estado.",
+      "opcoes": {
+        "mercado-privado": [2, 0],
+        "misto-focalizado": [1, 0],
+        "seguro-obrigatorio": [0, 0],
+        "universal-publico": [-1.5, 0],
+        "estatal-unico": [-2, 0]
+      }
+    },
+    "sistema-previdenciario": {
+      "manifesto": ["per504", "per401"],
+      "porque": "Previdência de mercado ou do Estado.",
+      "opcoes": {
+        "sem-sistema": [2, 0],
+        "capitalizacao": [1.5, 0],
+        "misto": [0, 0],
+        "reparticao": [-1, 0]
+      }
+    },
+    "tarifas-de-importacao": {
+      "manifesto": ["per406", "per407"],
+      "porque": "Proteção contra abertura.",
+      "faixa": {
+        "minimo": [1.5, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "terceirizacao": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Proteção do trabalhador.",
+      "opcoes": {
+        "livre": [2, 0],
+        "ampla-com-garantias": [1, 0],
+        "limitada-com-igualdade": [-0.5, 0],
+        "restrita": [-1.5, 0]
+      }
+    },
+    "terras-indigenas": {
+      "manifesto": ["per705", "per601"],
+      "porque": "Direitos de povos tradicionais contra a nação única.",
+      "opcoes": {
+        "sem-reconhecimento": [0, 2],
+        "reconhecimento-limitado": [0, 1],
+        "demarcacao": [0, -0.5],
+        "autonomia": [0, -1.5]
+      }
+    },
+    "trabalho-infantil-e-aprendizagem": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Regulação do trabalho.",
+      "opcoes": {
+        "sem-idade-minima": [1.5, 0.5],
+        "permissiva": [1, 0],
+        "idade-14-com-excecoes": [0, 0],
+        "idade-16-com-cota": [-0.5, 0],
+        "sistema-dual": [0, 0]
+      }
+    },
+    "trabalho-por-aplicativo": {
+      "manifesto": ["per701", "per403"],
+      "porque": "Proteção do trabalhador.",
+      "opcoes": {
+        "sem-regulacao": [2, 0],
+        "categoria-propria": [0.5, 0],
+        "presuncao-de-vinculo": [-1, 0],
+        "emprego-obrigatorio": [-2, 0]
+      }
+    },
+    "transferencia-de-renda": {
+      "manifesto": ["per504", "per503"],
+      "porque": "Bem-estar e igualdade.",
+      "faixa": {
+        "minimo": [1, 0],
+        "maximo": [-2, 0]
+      }
+    },
+    "transparencia-publica": {
+      "manifesto": ["per202", "per305"],
+      "porque": "Sigilo é poder sem controle.",
+      "opcoes": {
+        "sigilo-amplo": [0, 2],
+        "acesso-limitado": [0, 1],
+        "acesso-informacao": [0, -0.5],
+        "dados-abertos": [0, -1]
+      }
+    },
+    "transporte-publico": {
+      "manifesto": ["per504"],
+      "porque": "Serviço pago pelo Estado.",
+      "opcoes": {
+        "sem-sistema-publico": [2, 0],
+        "tarifa-integral": [1, 0],
+        "subsidio-parcial": [-0.5, 0],
+        "tarifa-zero": [-2, 0]
+      }
+    },
+    "tributacao-dividendos": {
+      "manifesto": ["per503", "per402"],
+      "porque": "Imposto sobre o capital redistribui.",
+      "faixa": {
+        "minimo": [1, 0],
+        "maximo": [-1.5, 0]
+      }
+    },
+    "vacinacao-obrigatoria": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Obrigar à força é autoridade sobre o corpo.",
+      "opcoes": {
+        "sem-programa": [0.5, 0],
+        "recomendada": [0, 0],
+        "exigida": [0, 0],
+        "obrigatoria-com-multa": [-0.5, 0.5],
+        "compulsoria": [-0.5, 1]
+      }
+    },
+    "vagas-em-presidios": {
+      "manifesto": ["per605"],
+      "porque": "Mais prisão é lei e ordem.",
+      "faixa": {
+        "minimo": [0, -0.5],
+        "maximo": [0, 1]
+      }
+    },
+    "verba-policia-federal": {
+      "manifesto": ["per605"],
+      "porque": "Verba de polícia é lei e ordem.",
+      "faixa": {
+        "minimo": [0, -0.5],
+        "maximo": [0, 1]
+      }
+    },
+    "vigilancia-epidemiologica": {
+      "manifesto": ["per504"],
+      "porque": "Saúde pública paga pelo Estado.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-0.5, 0]
+      }
+    },
+    "voto-obrigatorio": {
+      "manifesto": ["per201", "per305"],
+      "porque": "Voto como dever imposto ou como liberdade.",
+      "opcoes": {
+        "facultativo": [0.5, -0.5],
+        "obrigatorio-nominal": [0, 0],
+        "obrigatorio-com-sancoes": [0, 0.5]
+      }
+    },
+    "vouchers-escolares": {
+      "manifesto": ["per401", "per506"],
+      "porque": "Escola do Estado contra escolha de mercado.",
+      "opcoes": {
+        "so-escola-estatal": [-1.5, 0],
+        "gestao-terceirizada": [0.5, 0],
+        "voucher-focalizado": [1, 0],
+        "voucher-universal": [2, 0]
+      }
+    }
+  }
+}

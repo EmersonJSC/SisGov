@@ -16,6 +16,10 @@ import { Icone } from "./Icone";
 import { ICONE_INTERFACE } from "./icones";
 import { corDaBondade } from "./intensidade";
 import { NOME_NIVEL } from "./MesaDoPresidente";
+import type { VisaoBussola } from "../../app/partida";
+import { BussolaPolitica } from "./BussolaPolitica";
+
+export type AppDoTablet = "jornal" | "bussola";
 
 /** Linha de evolução do índice desde o começo da partida. */
 function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
@@ -174,13 +178,19 @@ export function PaginaDeJornal({
   data,
   numero,
   onFechar,
+  bussola,
+  appInicial = "jornal",
 }: {
   edicao: EdicaoDoJornal;
   /** "2º trimestre · ano 1". */
   data: string;
   numero: number;
   onFechar: () => void;
+  /** App da bússola (V1-10); sem ela, o tablet só tem o jornal. */
+  bussola?: VisaoBussola;
+  appInicial?: AppDoTablet;
 }) {
+  const [app, setApp] = useState<AppDoTablet>(bussola ? appInicial : "jornal");
   const [aberta, setAberta] = useState<string | null>(null);
   const alternar = (id: string) => setAberta((a) => (a === id ? null : id));
   useEffect(() => {
@@ -196,7 +206,7 @@ export function PaginaDeJornal({
     <div
       className="tb-fundo"
       role="dialog"
-      aria-label="Notícias do turno"
+      aria-label={app === "jornal" ? "Notícias do turno" : "Bússola política"}
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) onFechar();
       }}
@@ -205,12 +215,19 @@ export function PaginaDeJornal({
         <span className="tb-camera" aria-hidden />
         <div className="tb-tela">
           <header className="tb-app">
-            <div>
-              <h1>Diário da República</h1>
-              <p>
-                Edição nº {numero} · {data}
-              </p>
-            </div>
+            {app === "jornal" ? (
+              <div>
+                <h1>Diário da República</h1>
+                <p>
+                  Edição nº {numero} · {data}
+                </p>
+              </div>
+            ) : (
+              <div>
+                <h1>Bússola política</h1>
+                <p>Para onde as suas leis levam o país · {data}</p>
+              </div>
+            )}
             <button
               type="button"
               className="tb-fechar"
@@ -221,47 +238,75 @@ export function PaginaDeJornal({
             </button>
           </header>
 
-          <section className="tb-numeros" aria-label="O país em números">
-            <ul>
-              {edicao.indices.map((i) => (
-                <Numero key={i.id} indice={i} />
-              ))}
-            </ul>
-          </section>
+          {app === "bussola" && bussola ? (
+            <BussolaPolitica bussola={bussola} />
+          ) : (
+            <div className="tb-jornal">
+              <section className="tb-numeros" aria-label="O país em números">
+                <ul>
+                  {edicao.indices.map((i) => (
+                    <Numero key={i.id} indice={i} />
+                  ))}
+                </ul>
+              </section>
 
-          <div className="tb-colunas">
-            <section className="tb-noticias" aria-label="Notícias">
-              <h2>Notícias</h2>
-              {principal ? (
-                <Noticia
-                  noticia={principal}
-                  principal
-                  aberta={aberta === principal.id}
-                  onAlternar={() => alternar(principal.id)}
-                />
-              ) : (
-                <p className="tb-manchete-calma">{edicao.manchete}</p>
-              )}
-              {edicao.noticias.map((n) => (
-                <Noticia
-                  key={n.id}
-                  noticia={n}
-                  aberta={aberta === n.id}
-                  onAlternar={() => alternar(n.id)}
-                />
-              ))}
-              {!principal && !edicao.noticias.length ? (
-                <p className="tb-calmo">Nenhuma outra notícia no trimestre.</p>
-              ) : null}
-            </section>
+              <div className="tb-colunas">
+                <section className="tb-noticias" aria-label="Notícias">
+                  <h2>Notícias</h2>
+                  {principal ? (
+                    <Noticia
+                      noticia={principal}
+                      principal
+                      aberta={aberta === principal.id}
+                      onAlternar={() => alternar(principal.id)}
+                    />
+                  ) : (
+                    <p className="tb-manchete-calma">{edicao.manchete}</p>
+                  )}
+                  {edicao.noticias.map((n) => (
+                    <Noticia
+                      key={n.id}
+                      noticia={n}
+                      aberta={aberta === n.id}
+                      onAlternar={() => alternar(n.id)}
+                    />
+                  ))}
+                  {!principal && !edicao.noticias.length ? (
+                    <p className="tb-calmo">
+                      Nenhuma outra notícia no trimestre.
+                    </p>
+                  ) : null}
+                </section>
 
-            <section className="tb-rede" aria-label="O que dizem na rede">
-              <h2>Na rede</h2>
-              {edicao.opinioes.map((o) => (
-                <Post key={o.arroba} post={o} />
-              ))}
-            </section>
-          </div>
+                <section className="tb-rede" aria-label="O que dizem na rede">
+                  <h2>Na rede</h2>
+                  {edicao.opinioes.map((o) => (
+                    <Post key={o.arroba} post={o} />
+                  ))}
+                </section>
+              </div>
+            </div>
+          )}
+          {bussola ? (
+            <nav className="tb-dock" aria-label="Apps do tablet">
+              <button
+                type="button"
+                aria-pressed={app === "jornal"}
+                onClick={() => setApp("jornal")}
+              >
+                <Icone nome={ICONE_INTERFACE.jornal} tamanho={20} />
+                Jornal
+              </button>
+              <button
+                type="button"
+                aria-pressed={app === "bussola"}
+                onClick={() => setApp("bussola")}
+              >
+                <Icone nome={ICONE_INTERFACE.bussola} tamanho={20} />
+                Bússola
+              </button>
+            </nav>
+          ) : null}
         </div>
       </div>
     </div>

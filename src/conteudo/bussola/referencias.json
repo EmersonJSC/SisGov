@@ -1,0 +1,1320 @@
+{
+  "tipo": "referencias-bussola",
+  "versaoEsquema": 1,
+  "fonte": {
+    "nome": "V-Party, Varieties of Party Identity and Organization (V-Dem Institute)",
+    "versao": "pacote vdemdata 16.0 (github.com/vdeminstitute/vdemdata), dados de 1970 a 2019",
+    "citacao": "Lührmann, A. et al. Varieties of Party Identity and Organization (V-Party) Dataset. V-Dem Institute."
+  },
+  "metodo": {
+    "economia": "média de v2pariglef (esquerda e direita econômica) e de v2pawelf com sinal trocado (apoio ao Estado de bem-estar), cada um padronizado; + é mercado",
+    "costumes": "média de dois blocos padronizados: valores (v2palgbt, v2parelig, v2pagender, v2paimmig e v2paculsup, todos com sinal trocado) e antipluralismo (v2xpa_antiplural); + é autoridade",
+    "escala": "padronizado sobre todos os partidos e anos da base com os oito itens; 3 desvios-padrão = borda (±10)",
+    "personalidade": "média do partido dela nos anos de eleição em que governou ou liderou o partido"
+  },
+  "personalidades": [
+    {
+      "id": "brejnev",
+      "nome": "Leonid Brejnev",
+      "pais": "Rússia",
+      "partido": "CPSU",
+      "partidoNaFonte": "Communist Party of the Soviet Union",
+      "anos": [1970, 1974, 1979],
+      "economia": -9.7,
+      "costumes": 4.3
+    },
+    {
+      "id": "gorbachev",
+      "nome": "Mikhail Gorbachev",
+      "pais": "Rússia",
+      "partido": "CPSU",
+      "partidoNaFonte": "Communist Party of the Soviet Union",
+      "anos": [1989],
+      "economia": -9.2,
+      "costumes": 4.2
+    },
+    {
+      "id": "che",
+      "nome": "Che Guevara",
+      "pais": "Cuba",
+      "partido": "PCC",
+      "partidoNaFonte": "Communist Party of Cuba",
+      "anos": [1965],
+      "economia": -8.7,
+      "costumes": 3.4
+    },
+    {
+      "id": "iglesias",
+      "nome": "Pablo Iglesias",
+      "pais": "Espanha",
+      "partido": "PODEMOS",
+      "partidoNaFonte": "We Can",
+      "anos": [2015, 2016, 2019],
+      "economia": -8.0,
+      "costumes": -6.2
+    },
+    {
+      "id": "fidel",
+      "nome": "Fidel Castro",
+      "pais": "Cuba",
+      "partido": "PCC",
+      "partidoNaFonte": "Communist Party of Cuba",
+      "anos": [1976, 1981, 1986, 1993, 1998, 2003],
+      "economia": -7.7,
+      "costumes": 2.7
+    },
+    {
+      "id": "melenchon",
+      "nome": "Jean-Luc Mélenchon",
+      "pais": "França",
+      "partido": "FI",
+      "partidoNaFonte": "Unbowed France",
+      "anos": [2017],
+      "economia": -7.2,
+      "costumes": -4.0
+    },
+    {
+      "id": "mao",
+      "nome": "Mao Tsé-tung",
+      "pais": "China",
+      "partido": "CPC",
+      "partidoNaFonte": "Communist Party of China",
+      "anos": [1975],
+      "economia": -6.8,
+      "costumes": 4.1
+    },
+    {
+      "id": "maduro",
+      "nome": "Nicolás Maduro",
+      "pais": "Venezuela",
+      "partido": "PSUV",
+      "partidoNaFonte": "United Socialist Party of Venezuela",
+      "anos": [2015],
+      "economia": -6.3,
+      "costumes": 3.3
+    },
+    {
+      "id": "allende",
+      "nome": "Salvador Allende",
+      "pais": "Chile",
+      "partido": "PS",
+      "partidoNaFonte": "Socialist Party of Chile",
+      "anos": [1973],
+      "economia": -6.0,
+      "costumes": 1.5
+    },
+    {
+      "id": "raul",
+      "nome": "Raúl Castro",
+      "pais": "Cuba",
+      "partido": "PCC",
+      "partidoNaFonte": "Communist Party of Cuba",
+      "anos": [2008, 2013],
+      "economia": -5.7,
+      "costumes": 1.5
+    },
+    {
+      "id": "chavez",
+      "nome": "Hugo Chávez",
+      "pais": "Venezuela",
+      "partido": "MVR",
+      "partidoNaFonte": "Fifth Republic Movement",
+      "anos": [1998, 2000, 2005],
+      "economia": -5.4,
+      "costumes": 3.6
+    },
+    {
+      "id": "corbyn",
+      "nome": "Jeremy Corbyn",
+      "pais": "Reino Unido",
+      "partido": "Lab",
+      "partidoNaFonte": "Labour",
+      "anos": [2017, 2019],
+      "economia": -5.4,
+      "costumes": -4.4
+    },
+    {
+      "id": "assad",
+      "nome": "Hafez al-Assad",
+      "pais": "Síria",
+      "partido": "Baath",
+      "partidoNaFonte": "Arab Socialist Ba'ath Party – Syria Region",
+      "anos": [1971, 1973],
+      "economia": -4.6,
+      "costumes": 3.6
+    },
+    {
+      "id": "palme",
+      "nome": "Olof Palme",
+      "pais": "Suécia",
+      "partido": "S",
+      "partidoNaFonte": "Social Democrats",
+      "anos": [1970, 1973, 1976, 1979, 1982, 1985],
+      "economia": -4.4,
+      "costumes": -4.7
+    },
+    {
+      "id": "sanchez",
+      "nome": "Pedro Sánchez",
+      "pais": "Espanha",
+      "partido": "PSOE",
+      "partidoNaFonte": "Spanish Socialist Workers Party",
+      "anos": [2015, 2016, 2019],
+      "economia": -4.3,
+      "costumes": -6.1
+    },
+    {
+      "id": "tsipras",
+      "nome": "Alexis Tsipras",
+      "pais": "Grécia",
+      "partido": "SYRIZA",
+      "partidoNaFonte": "Coalition of the Radical Left",
+      "anos": [2015, 2019],
+      "economia": -4.1,
+      "costumes": -3.2
+    },
+    {
+      "id": "amlo",
+      "nome": "Andrés Manuel López Obrador",
+      "pais": "México",
+      "partido": "MORENA",
+      "partidoNaFonte": "National Regeneration Movement",
+      "anos": [2018],
+      "economia": -4.0,
+      "costumes": 0.4
+    },
+    {
+      "id": "deng",
+      "nome": "Deng Xiaoping",
+      "pais": "China",
+      "partido": "CPC",
+      "partidoNaFonte": "Communist Party of China",
+      "anos": [1978, 1984, 1988],
+      "economia": -3.8,
+      "costumes": 3.3
+    },
+    {
+      "id": "brandt",
+      "nome": "Willy Brandt",
+      "pais": "Alemanha",
+      "partido": "SPD",
+      "partidoNaFonte": "Social Democratic Party of Germany",
+      "anos": [1972],
+      "economia": -3.5,
+      "costumes": -3.5
+    },
+    {
+      "id": "peron",
+      "nome": "Juan Perón",
+      "pais": "Argentina",
+      "partido": "PJ",
+      "partidoNaFonte": "Justicialist [Peronist] Party",
+      "anos": [1973],
+      "economia": -3.1,
+      "costumes": 1.3
+    },
+    {
+      "id": "correa",
+      "nome": "Rafael Correa",
+      "pais": "Equador",
+      "partido": "PAIS",
+      "partidoNaFonte": "PAIS Alliance",
+      "anos": [2007, 2009, 2013],
+      "economia": -2.9,
+      "costumes": 1.8
+    },
+    {
+      "id": "mujica",
+      "nome": "José Mujica",
+      "pais": "Uruguai",
+      "partido": "FA/EP",
+      "partidoNaFonte": "Broad Front / Progressive Encounter",
+      "anos": [2009],
+      "economia": -2.9,
+      "costumes": -6.0
+    },
+    {
+      "id": "evo",
+      "nome": "Evo Morales",
+      "pais": "Bolívia",
+      "partido": "MAS",
+      "partidoNaFonte": "Movement for Socialism",
+      "anos": [2005, 2009, 2014],
+      "economia": -2.8,
+      "costumes": 1.4
+    },
+    {
+      "id": "cristina",
+      "nome": "Cristina Kirchner",
+      "pais": "Argentina",
+      "partido": "FPV-PJ",
+      "partidoNaFonte": "Front for Victory",
+      "anos": [2007, 2011],
+      "economia": -2.8,
+      "costumes": -4.2
+    },
+    {
+      "id": "brizola",
+      "nome": "Leonel Brizola",
+      "pais": "Brasil",
+      "partido": "PDT",
+      "partidoNaFonte": "Democratic Labour Party",
+      "anos": [1982, 1986, 1990, 1994, 1998],
+      "economia": -2.8,
+      "costumes": -3.2
+    },
+    {
+      "id": "ortega",
+      "nome": "Daniel Ortega",
+      "pais": "Nicarágua",
+      "partido": "FSLN",
+      "partidoNaFonte": "Sandinista National Liberation Front",
+      "anos": [1984, 2006, 2011, 2016],
+      "economia": -2.5,
+      "costumes": 3.2
+    },
+    {
+      "id": "trudeau",
+      "nome": "Justin Trudeau",
+      "pais": "Canadá",
+      "partido": "LP",
+      "partidoNaFonte": "Liberal Party of Canada",
+      "anos": [2015, 2019],
+      "economia": -2.5,
+      "costumes": -5.8
+    },
+    {
+      "id": "mitterrand",
+      "nome": "François Mitterrand",
+      "pais": "França",
+      "partido": "PS",
+      "partidoNaFonte": "Socialist Party",
+      "anos": [1981, 1986, 1988, 1993],
+      "economia": -2.4,
+      "costumes": -4.4
+    },
+    {
+      "id": "bachelet",
+      "nome": "Michelle Bachelet",
+      "pais": "Chile",
+      "partido": "PS",
+      "partidoNaFonte": "Socialist Party of Chile",
+      "anos": [2005, 2013],
+      "economia": -2.3,
+      "costumes": -4.6
+    },
+    {
+      "id": "tito",
+      "nome": "Josip Broz Tito",
+      "pais": "Iugoslávia",
+      "partido": "SKJ",
+      "partidoNaFonte": "League of Communists of Yugoslavia",
+      "anos": [1974, 1978],
+      "economia": -2.2,
+      "costumes": 1.0
+    },
+    {
+      "id": "lula",
+      "nome": "Lula",
+      "pais": "Brasil",
+      "partido": "PT",
+      "partidoNaFonte": "Workers' Party",
+      "anos": [2002, 2006],
+      "economia": -2.0,
+      "costumes": -5.6
+    },
+    {
+      "id": "dilma",
+      "nome": "Dilma Rousseff",
+      "pais": "Brasil",
+      "partido": "PT",
+      "partidoNaFonte": "Workers' Party",
+      "anos": [2010, 2014],
+      "economia": -1.6,
+      "costumes": -6.0
+    },
+    {
+      "id": "mugabe",
+      "nome": "Robert Mugabe",
+      "pais": "Zimbábue",
+      "partido": "ZANU-PF",
+      "partidoNaFonte": "Zimbabwe African National Union – Patriotic Front",
+      "anos": [1980, 1985, 1990, 1995, 2000, 2005, 2008, 2013],
+      "economia": -1.3,
+      "costumes": 5.5
+    },
+    {
+      "id": "kaczynski",
+      "nome": "Jarosław Kaczyński",
+      "pais": "Polônia",
+      "partido": "PiS",
+      "partidoNaFonte": "Law and Justice",
+      "anos": [2005, 2007, 2015, 2019],
+      "economia": -1.1,
+      "costumes": 3.5
+    },
+    {
+      "id": "blair",
+      "nome": "Tony Blair",
+      "pais": "Reino Unido",
+      "partido": "Lab",
+      "partidoNaFonte": "Labour",
+      "anos": [1997, 2001, 2005],
+      "economia": -0.8,
+      "costumes": -4.1
+    },
+    {
+      "id": "indira",
+      "nome": "Indira Gandhi",
+      "pais": "Índia",
+      "partido": "INC",
+      "partidoNaFonte": "Indian National Congress",
+      "anos": [1971, 1980, 1984],
+      "economia": -0.5,
+      "costumes": -1.9
+    },
+    {
+      "id": "obama",
+      "nome": "Barack Obama",
+      "pais": "Estados Unidos",
+      "partido": "Dem",
+      "partidoNaFonte": "Democratic Party",
+      "anos": [2008, 2010, 2012, 2014],
+      "economia": -0.2,
+      "costumes": -2.8
+    },
+    {
+      "id": "mandela",
+      "nome": "Nelson Mandela",
+      "pais": "África do Sul",
+      "partido": "ANC",
+      "partidoNaFonte": "African National Congress",
+      "anos": [1994],
+      "economia": -0.2,
+      "costumes": -3.6
+    },
+    {
+      "id": "clinton",
+      "nome": "Bill Clinton",
+      "pais": "Estados Unidos",
+      "partido": "Dem",
+      "partidoNaFonte": "Democratic Party",
+      "anos": [1992, 1994, 1996, 1998],
+      "economia": 0.3,
+      "costumes": -2.2
+    },
+    {
+      "id": "xi",
+      "nome": "Xi Jinping",
+      "pais": "China",
+      "partido": "CPC",
+      "partidoNaFonte": "Communist Party of China",
+      "anos": [2013],
+      "economia": 0.5,
+      "costumes": 2.9
+    },
+    {
+      "id": "putin",
+      "nome": "Vladimir Putin",
+      "pais": "Rússia",
+      "partido": "ER",
+      "partidoNaFonte": "United Russia",
+      "anos": [2003, 2007, 2011, 2016],
+      "economia": 0.8,
+      "costumes": 3.3
+    },
+    {
+      "id": "kohl",
+      "nome": "Helmut Kohl",
+      "pais": "Alemanha",
+      "partido": "CDU",
+      "partidoNaFonte": "Christian Democratic Union",
+      "anos": [1983, 1987, 1990, 1994],
+      "economia": 1.3,
+      "costumes": -0.3
+    },
+    {
+      "id": "merkel",
+      "nome": "Angela Merkel",
+      "pais": "Alemanha",
+      "partido": "CDU",
+      "partidoNaFonte": "Christian Democratic Union",
+      "anos": [2005, 2009, 2013, 2017],
+      "economia": 1.4,
+      "costumes": -2.1
+    },
+    {
+      "id": "fhc",
+      "nome": "Fernando Henrique Cardoso",
+      "pais": "Brasil",
+      "partido": "PSDB",
+      "partidoNaFonte": "Brazilian Social Democracy Party",
+      "anos": [1994, 1998],
+      "economia": 1.6,
+      "costumes": -2.8
+    },
+    {
+      "id": "macron",
+      "nome": "Emmanuel Macron",
+      "pais": "França",
+      "partido": "LaREM",
+      "partidoNaFonte": "The Republic Onwards!",
+      "anos": [2017],
+      "economia": 2.3,
+      "costumes": -4.1
+    },
+    {
+      "id": "le-pen",
+      "nome": "Marine Le Pen",
+      "pais": "França",
+      "partido": "FN",
+      "partidoNaFonte": "National Front",
+      "anos": [2012, 2017],
+      "economia": 2.5,
+      "costumes": 2.3
+    },
+    {
+      "id": "orban",
+      "nome": "Viktor Orbán",
+      "pais": "Hungria",
+      "partido": "Fidesz",
+      "partidoNaFonte": "Fidesz – Hungarian Civic Alliance",
+      "anos": [2010, 2014, 2018],
+      "economia": 3.1,
+      "costumes": 5.5
+    },
+    {
+      "id": "abe",
+      "nome": "Shinzo Abe",
+      "pais": "Japão",
+      "partido": "LDP",
+      "partidoNaFonte": "Liberal Democratic Party",
+      "anos": [2012, 2014, 2017],
+      "economia": 3.5,
+      "costumes": 0.3
+    },
+    {
+      "id": "fujimori-keiko",
+      "nome": "Keiko Fujimori",
+      "pais": "Peru",
+      "partido": "FP",
+      "partidoNaFonte": "Popular Force 2011",
+      "anos": [2011, 2016],
+      "economia": 3.6,
+      "costumes": 3.1
+    },
+    {
+      "id": "macri",
+      "nome": "Mauricio Macri",
+      "pais": "Argentina",
+      "partido": "PRO",
+      "partidoNaFonte": "Republican Proposal",
+      "anos": [2015, 2017],
+      "economia": 4.1,
+      "costumes": -2.6
+    },
+    {
+      "id": "khomeini",
+      "nome": "Ruhollah Khomeini",
+      "pais": "Irã",
+      "partido": "IRP",
+      "partidoNaFonte": "Islamic Republican Party",
+      "anos": [1979, 1980, 1984],
+      "economia": 4.2,
+      "costumes": 6.4
+    },
+    {
+      "id": "meloni",
+      "nome": "Giorgia Meloni",
+      "pais": "Itália",
+      "partido": "FdI",
+      "partidoNaFonte": "Brothers of Italy",
+      "anos": [2018],
+      "economia": 4.3,
+      "costumes": 5.6
+    },
+    {
+      "id": "erdogan",
+      "nome": "Recep Tayyip Erdoğan",
+      "pais": "Turquia",
+      "partido": "AKP",
+      "partidoNaFonte": "Justice and Development Party",
+      "anos": [2002, 2007, 2011, 2015],
+      "economia": 4.5,
+      "costumes": 2.7
+    },
+    {
+      "id": "bush",
+      "nome": "George W. Bush",
+      "pais": "Estados Unidos",
+      "partido": "Rep",
+      "partidoNaFonte": "Republican Party",
+      "anos": [2000, 2002, 2004, 2006],
+      "economia": 4.6,
+      "costumes": 1.1
+    },
+    {
+      "id": "modi",
+      "nome": "Narendra Modi",
+      "pais": "Índia",
+      "partido": "BJP",
+      "partidoNaFonte": "Indian People's Party",
+      "anos": [2014, 2019],
+      "economia": 4.6,
+      "costumes": 5.6
+    },
+    {
+      "id": "thatcher",
+      "nome": "Margaret Thatcher",
+      "pais": "Reino Unido",
+      "partido": "Con",
+      "partidoNaFonte": "Conservatives",
+      "anos": [1979, 1983, 1987],
+      "economia": 4.9,
+      "costumes": -0.0
+    },
+    {
+      "id": "boris",
+      "nome": "Boris Johnson",
+      "pais": "Reino Unido",
+      "partido": "Con",
+      "partidoNaFonte": "Conservatives",
+      "anos": [2019],
+      "economia": 5.2,
+      "costumes": -0.6
+    },
+    {
+      "id": "berlusconi",
+      "nome": "Silvio Berlusconi",
+      "pais": "Itália",
+      "partido": "FI",
+      "partidoNaFonte": "Forward Italy (2013)",
+      "anos": [2018],
+      "economia": 5.3,
+      "costumes": 2.7
+    },
+    {
+      "id": "trump",
+      "nome": "Donald Trump",
+      "pais": "Estados Unidos",
+      "partido": "Rep",
+      "partidoNaFonte": "Republican Party",
+      "anos": [2016, 2018],
+      "economia": 5.4,
+      "costumes": 3.8
+    },
+    {
+      "id": "pinera",
+      "nome": "Sebastián Piñera",
+      "pais": "Chile",
+      "partido": "RN",
+      "partidoNaFonte": "National Renewal",
+      "anos": [2009, 2017],
+      "economia": 5.5,
+      "costumes": -1.8
+    },
+    {
+      "id": "abascal",
+      "nome": "Santiago Abascal",
+      "pais": "Espanha",
+      "partido": "Vox",
+      "partidoNaFonte": "Voice",
+      "anos": [2019],
+      "economia": 5.6,
+      "costumes": 4.6
+    },
+    {
+      "id": "reagan",
+      "nome": "Ronald Reagan",
+      "pais": "Estados Unidos",
+      "partido": "Rep",
+      "partidoNaFonte": "Republican Party",
+      "anos": [1980, 1982, 1984, 1986],
+      "economia": 5.8,
+      "costumes": -0.0
+    },
+    {
+      "id": "uribe",
+      "nome": "Álvaro Uribe",
+      "pais": "Colômbia",
+      "partido": "CD",
+      "partidoNaFonte": "Democratic Centre",
+      "anos": [2014, 2018],
+      "economia": 6.3,
+      "costumes": 2.6
+    },
+    {
+      "id": "netanyahu",
+      "nome": "Benjamin Netanyahu",
+      "pais": "Israel",
+      "partido": "L",
+      "partidoNaFonte": "Likud-National Liberal Movement",
+      "anos": [1996, 2009, 2013, 2015, 2019],
+      "economia": 6.9,
+      "costumes": 0.3
+    },
+    {
+      "id": "bolsonaro",
+      "nome": "Jair Bolsonaro",
+      "pais": "Brasil",
+      "partido": "PSL",
+      "partidoNaFonte": "Social Liberal Party",
+      "anos": [2018],
+      "economia": 7.3,
+      "costumes": 7.7
+    },
+    {
+      "id": "salvini",
+      "nome": "Matteo Salvini",
+      "pais": "Itália",
+      "partido": "LN",
+      "partidoNaFonte": "North League",
+      "anos": [2018],
+      "economia": 7.4,
+      "costumes": 6.6
+    }
+  ],
+  "partidos": [
+    {
+      "id": "pt",
+      "nome": "PT",
+      "pais": "Brasil",
+      "partidoNaFonte": "Workers' Party",
+      "anos": [2018],
+      "economia": -2.3,
+      "costumes": -6.1
+    },
+    {
+      "id": "pdt",
+      "nome": "PDT",
+      "pais": "Brasil",
+      "partidoNaFonte": "Democratic Labour Party",
+      "anos": [2018],
+      "economia": -1.8,
+      "costumes": -4.3
+    },
+    {
+      "id": "psb",
+      "nome": "PSB",
+      "pais": "Brasil",
+      "partidoNaFonte": "Brazilian Socialist Party",
+      "anos": [2018],
+      "economia": -1.7,
+      "costumes": -3.8
+    },
+    {
+      "id": "mdb",
+      "nome": "MDB",
+      "pais": "Brasil",
+      "partidoNaFonte": "Partido do Movimento Democrático Brasileiro",
+      "anos": [2018],
+      "economia": 1.7,
+      "costumes": -2.1
+    },
+    {
+      "id": "psdb",
+      "nome": "PSDB",
+      "pais": "Brasil",
+      "partidoNaFonte": "Brazilian Social Democracy Party",
+      "anos": [2018],
+      "economia": 2.8,
+      "costumes": -1.5
+    },
+    {
+      "id": "psd-br",
+      "nome": "PSD",
+      "pais": "Brasil",
+      "partidoNaFonte": "Social Democratic Party",
+      "anos": [2018],
+      "economia": 2.8,
+      "costumes": -0.2
+    },
+    {
+      "id": "dem",
+      "nome": "DEM",
+      "pais": "Brasil",
+      "partidoNaFonte": "Liberal Front / Democrats",
+      "anos": [2018],
+      "economia": 5.2,
+      "costumes": -0.0
+    },
+    {
+      "id": "pp",
+      "nome": "PP",
+      "pais": "Brasil",
+      "partidoNaFonte": "Progressive Party / Brazilian Progressive Party (PPB)",
+      "anos": [2018],
+      "economia": 6.0,
+      "costumes": 0.1
+    },
+    {
+      "id": "pl",
+      "nome": "PL",
+      "pais": "Brasil",
+      "partidoNaFonte": "Party of the Republic / Liberal Party",
+      "anos": [2018],
+      "economia": 5.2,
+      "costumes": -0.6
+    },
+    {
+      "id": "republicanos-br",
+      "nome": "Republicanos (PRB)",
+      "pais": "Brasil",
+      "partidoNaFonte": "Brazilian Republican Party",
+      "anos": [2018],
+      "economia": 4.5,
+      "costumes": 2.9
+    },
+    {
+      "id": "psl",
+      "nome": "PSL",
+      "pais": "Brasil",
+      "partidoNaFonte": "Social Liberal Party",
+      "anos": [2018],
+      "economia": 7.3,
+      "costumes": 7.7
+    },
+    {
+      "id": "democratas-eua",
+      "nome": "Partido Democrata",
+      "pais": "Estados Unidos",
+      "partidoNaFonte": "Democratic Party",
+      "anos": [2018],
+      "economia": -0.5,
+      "costumes": -2.8
+    },
+    {
+      "id": "republicanos-eua",
+      "nome": "Partido Republicano",
+      "pais": "Estados Unidos",
+      "partidoNaFonte": "Republican Party",
+      "anos": [2018],
+      "economia": 5.4,
+      "costumes": 3.9
+    },
+    {
+      "id": "liberal-ca",
+      "nome": "Partido Liberal",
+      "pais": "Canadá",
+      "partidoNaFonte": "Liberal Party of Canada",
+      "anos": [2019],
+      "economia": -2.3,
+      "costumes": -5.8
+    },
+    {
+      "id": "trabalhistas-uk",
+      "nome": "Partido Trabalhista",
+      "pais": "Reino Unido",
+      "partidoNaFonte": "Labour",
+      "anos": [2019],
+      "economia": -5.4,
+      "costumes": -4.4
+    },
+    {
+      "id": "conservadores-uk",
+      "nome": "Partido Conservador",
+      "pais": "Reino Unido",
+      "partidoNaFonte": "Conservatives",
+      "anos": [2019],
+      "economia": 5.2,
+      "costumes": -0.6
+    },
+    {
+      "id": "cdu",
+      "nome": "CDU",
+      "pais": "Alemanha",
+      "partidoNaFonte": "Christian Democratic Union",
+      "anos": [2017],
+      "economia": 1.3,
+      "costumes": -2.5
+    },
+    {
+      "id": "spd",
+      "nome": "SPD",
+      "pais": "Alemanha",
+      "partidoNaFonte": "Social Democratic Party of Germany",
+      "anos": [2017],
+      "economia": -2.9,
+      "costumes": -5.8
+    },
+    {
+      "id": "verdes-de",
+      "nome": "Os Verdes",
+      "pais": "Alemanha",
+      "partidoNaFonte": "Alliance 90 / Greens",
+      "anos": [2017],
+      "economia": -2.5,
+      "costumes": -8.5
+    },
+    {
+      "id": "esquerda-de",
+      "nome": "A Esquerda",
+      "pais": "Alemanha",
+      "partidoNaFonte": "The Left",
+      "anos": [2017],
+      "economia": -8.6,
+      "costumes": -6.3
+    },
+    {
+      "id": "afd",
+      "nome": "AfD",
+      "pais": "Alemanha",
+      "partidoNaFonte": "Alternative for Germany",
+      "anos": [2017],
+      "economia": 2.3,
+      "costumes": 4.2
+    },
+    {
+      "id": "lrem",
+      "nome": "A República em Marcha",
+      "pais": "França",
+      "partidoNaFonte": "The Republic Onwards!",
+      "anos": [2017],
+      "economia": 2.3,
+      "costumes": -4.1
+    },
+    {
+      "id": "ps-fr",
+      "nome": "Partido Socialista",
+      "pais": "França",
+      "partidoNaFonte": "Socialist Party",
+      "anos": [2017],
+      "economia": -3.2,
+      "costumes": -5.8
+    },
+    {
+      "id": "lfi",
+      "nome": "França Insubmissa",
+      "pais": "França",
+      "partidoNaFonte": "Unbowed France",
+      "anos": [2017],
+      "economia": -7.2,
+      "costumes": -4.0
+    },
+    {
+      "id": "fn",
+      "nome": "Frente Nacional",
+      "pais": "França",
+      "partidoNaFonte": "National Front",
+      "anos": [2017],
+      "economia": 2.7,
+      "costumes": 2.2
+    },
+    {
+      "id": "psoe",
+      "nome": "PSOE",
+      "pais": "Espanha",
+      "partidoNaFonte": "Spanish Socialist Workers Party",
+      "anos": [2019],
+      "economia": -4.4,
+      "costumes": -6.1
+    },
+    {
+      "id": "pp-es",
+      "nome": "Partido Popular",
+      "pais": "Espanha",
+      "partidoNaFonte": "People's Alliance-Party / People's Party",
+      "anos": [2019],
+      "economia": 1.0,
+      "costumes": -2.5
+    },
+    {
+      "id": "podemos",
+      "nome": "Podemos",
+      "pais": "Espanha",
+      "partidoNaFonte": "We Can",
+      "anos": [2019],
+      "economia": -7.7,
+      "costumes": -6.6
+    },
+    {
+      "id": "vox",
+      "nome": "Vox",
+      "pais": "Espanha",
+      "partidoNaFonte": "Voice",
+      "anos": [2019],
+      "economia": 5.6,
+      "costumes": 4.6
+    },
+    {
+      "id": "pd-it",
+      "nome": "Partido Democrático",
+      "pais": "Itália",
+      "partidoNaFonte": "Democratic Party",
+      "anos": [2018],
+      "economia": -2.5,
+      "costumes": -4.8
+    },
+    {
+      "id": "m5s",
+      "nome": "Movimento 5 Estrelas",
+      "pais": "Itália",
+      "partidoNaFonte": "Five Star Movement",
+      "anos": [2018],
+      "economia": 1.4,
+      "costumes": 0.6
+    },
+    {
+      "id": "liga",
+      "nome": "Liga",
+      "pais": "Itália",
+      "partidoNaFonte": "North League",
+      "anos": [2018],
+      "economia": 7.4,
+      "costumes": 6.6
+    },
+    {
+      "id": "fdi",
+      "nome": "Irmãos de Itália",
+      "pais": "Itália",
+      "partidoNaFonte": "Brothers of Italy",
+      "anos": [2018],
+      "economia": 4.3,
+      "costumes": 5.6
+    },
+    {
+      "id": "s-se",
+      "nome": "Social-Democratas",
+      "pais": "Suécia",
+      "partidoNaFonte": "Social Democrats",
+      "anos": [2018],
+      "economia": -3.5,
+      "costumes": -5.5
+    },
+    {
+      "id": "sd-se",
+      "nome": "Democratas Suecos",
+      "pais": "Suécia",
+      "partidoNaFonte": "Sweden Democrats",
+      "anos": [2018],
+      "economia": -0.2,
+      "costumes": -1.6
+    },
+    {
+      "id": "syriza",
+      "nome": "Syriza",
+      "pais": "Grécia",
+      "partidoNaFonte": "Coalition of the Radical Left",
+      "anos": [2019],
+      "economia": -4.0,
+      "costumes": -3.7
+    },
+    {
+      "id": "fidesz",
+      "nome": "Fidesz",
+      "pais": "Hungria",
+      "partidoNaFonte": "Fidesz – Hungarian Civic Alliance",
+      "anos": [2018],
+      "economia": 3.9,
+      "costumes": 7.3
+    },
+    {
+      "id": "pis",
+      "nome": "Lei e Justiça (PiS)",
+      "pais": "Polônia",
+      "partidoNaFonte": "Law and Justice",
+      "anos": [2019],
+      "economia": -1.9,
+      "costumes": 5.7
+    },
+    {
+      "id": "akp",
+      "nome": "AKP",
+      "pais": "Turquia",
+      "partidoNaFonte": "Justice and Development Party",
+      "anos": [2015],
+      "economia": 5.8,
+      "costumes": 5.6
+    },
+    {
+      "id": "russia-unida",
+      "nome": "Rússia Unida",
+      "pais": "Rússia",
+      "partidoNaFonte": "United Russia",
+      "anos": [2016],
+      "economia": 0.7,
+      "costumes": 4.2
+    },
+    {
+      "id": "kprf",
+      "nome": "Partido Comunista da Federação Russa",
+      "pais": "Rússia",
+      "partidoNaFonte": "Communist Party ot the Russian Federation",
+      "anos": [2016],
+      "economia": -7.2,
+      "costumes": 3.9
+    },
+    {
+      "id": "pcch",
+      "nome": "Partido Comunista da China",
+      "pais": "China",
+      "partidoNaFonte": "Communist Party of China",
+      "anos": [2013],
+      "economia": 0.5,
+      "costumes": 2.9
+    },
+    {
+      "id": "pcc",
+      "nome": "Partido Comunista de Cuba",
+      "pais": "Cuba",
+      "partidoNaFonte": "Communist Party of Cuba",
+      "anos": [2013],
+      "economia": -5.6,
+      "costumes": 1.4
+    },
+    {
+      "id": "psuv",
+      "nome": "PSUV",
+      "pais": "Venezuela",
+      "partidoNaFonte": "United Socialist Party of Venezuela",
+      "anos": [2015],
+      "economia": -6.3,
+      "costumes": 3.3
+    },
+    {
+      "id": "mas",
+      "nome": "MAS",
+      "pais": "Bolívia",
+      "partidoNaFonte": "Movement for Socialism",
+      "anos": [2019],
+      "economia": -2.1,
+      "costumes": 2.3
+    },
+    {
+      "id": "fa-uy",
+      "nome": "Frente Ampla",
+      "pais": "Uruguai",
+      "partidoNaFonte": "Broad Front / Progressive Encounter",
+      "anos": [2019],
+      "economia": -2.9,
+      "costumes": -6.6
+    },
+    {
+      "id": "ps-cl",
+      "nome": "Partido Socialista",
+      "pais": "Chile",
+      "partidoNaFonte": "Socialist Party of Chile",
+      "anos": [2017],
+      "economia": -2.1,
+      "costumes": -4.9
+    },
+    {
+      "id": "rn-cl",
+      "nome": "Renovação Nacional",
+      "pais": "Chile",
+      "partidoNaFonte": "National Renewal",
+      "anos": [2017],
+      "economia": 5.5,
+      "costumes": -1.6
+    },
+    {
+      "id": "peronismo",
+      "nome": "Partido Justicialista",
+      "pais": "Argentina",
+      "partidoNaFonte": "Frente Justicialista-Justicialist [Peronist] Party",
+      "anos": [2019],
+      "economia": 0.1,
+      "costumes": -3.7
+    },
+    {
+      "id": "pro",
+      "nome": "PRO",
+      "pais": "Argentina",
+      "partidoNaFonte": "Republican Proposal",
+      "anos": [2019],
+      "economia": 4.1,
+      "costumes": -2.4
+    },
+    {
+      "id": "morena",
+      "nome": "Morena",
+      "pais": "México",
+      "partidoNaFonte": "National Regeneration Movement",
+      "anos": [2018],
+      "economia": -4.0,
+      "costumes": 0.4
+    },
+    {
+      "id": "pan",
+      "nome": "PAN",
+      "pais": "México",
+      "partidoNaFonte": "National Action Party",
+      "anos": [2018],
+      "economia": 5.1,
+      "costumes": -0.9
+    },
+    {
+      "id": "pri",
+      "nome": "PRI",
+      "pais": "México",
+      "partidoNaFonte": "Institutional Revolutionary Party",
+      "anos": [2018],
+      "economia": 3.2,
+      "costumes": -0.5
+    },
+    {
+      "id": "cd-co",
+      "nome": "Centro Democrático",
+      "pais": "Colômbia",
+      "partidoNaFonte": "Democratic Centre",
+      "anos": [2018],
+      "economia": 6.3,
+      "costumes": 2.4
+    },
+    {
+      "id": "bjp",
+      "nome": "BJP",
+      "pais": "Índia",
+      "partidoNaFonte": "Indian People's Party",
+      "anos": [2019],
+      "economia": 4.7,
+      "costumes": 5.7
+    },
+    {
+      "id": "inc",
+      "nome": "Congresso Nacional Indiano",
+      "pais": "Índia",
+      "partidoNaFonte": "Indian National Congress",
+      "anos": [2019],
+      "economia": -1.4,
+      "costumes": -3.0
+    },
+    {
+      "id": "likud",
+      "nome": "Likud",
+      "pais": "Israel",
+      "partidoNaFonte": "Likud-National Liberal Movement",
+      "anos": [2019],
+      "economia": 6.8,
+      "costumes": 1.3
+    },
+    {
+      "id": "ldp-jp",
+      "nome": "Partido Liberal Democrata",
+      "pais": "Japão",
+      "partidoNaFonte": "Liberal Democratic Party",
+      "anos": [2017],
+      "economia": 3.3,
+      "costumes": 0.3
+    },
+    {
+      "id": "anc",
+      "nome": "CNA",
+      "pais": "África do Sul",
+      "partidoNaFonte": "African National Congress",
+      "anos": [2019],
+      "economia": -0.8,
+      "costumes": -3.1
+    }
+  ],
+  "semMedida": [
+    {
+      "id": "lenin",
+      "nome": "Vladimir Lênin",
+      "pais": "Rússia",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "stalin",
+      "nome": "Josef Stálin",
+      "pais": "Rússia",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "kruschev",
+      "nome": "Nikita Kruschev",
+      "pais": "Rússia",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "ho-chi-minh",
+      "nome": "Ho Chi Minh",
+      "pais": "Vietnã",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "vargas",
+      "nome": "Getúlio Vargas",
+      "pais": "Brasil",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "roosevelt",
+      "nome": "Franklin Roosevelt",
+      "pais": "Estados Unidos",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "churchill",
+      "nome": "Winston Churchill",
+      "pais": "Reino Unido",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "hitler",
+      "nome": "Adolf Hitler",
+      "pais": "Alemanha",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "mussolini",
+      "nome": "Benito Mussolini",
+      "pais": "Itália",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "de-gaulle",
+      "nome": "Charles de Gaulle",
+      "pais": "França",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "salazar",
+      "nome": "António Salazar",
+      "pais": "Portugal",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "nasser",
+      "nome": "Gamal Abdel Nasser",
+      "pais": "Egito",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "duterte",
+      "nome": "Rodrigo Duterte",
+      "pais": "Filipinas",
+      "motivo": "o V-Party não mede o partido dele nos anos em que governou ou liderou"
+    },
+    {
+      "id": "sanders",
+      "nome": "Bernie Sanders",
+      "pais": "Estados Unidos",
+      "motivo": "nunca liderou um partido; o V-Party mede partidos, não pessoas"
+    },
+    {
+      "id": "milei",
+      "nome": "Javier Milei",
+      "pais": "Argentina",
+      "motivo": "o partido dele surgiu depois de 2019, último ano da base"
+    },
+    {
+      "id": "psol",
+      "nome": "PSOL",
+      "pais": "Brasil",
+      "motivo": "partido pequeno demais para entrar na base (menos de 5% das cadeiras)"
+    },
+    {
+      "id": "pcdob",
+      "nome": "PCdoB",
+      "pais": "Brasil",
+      "motivo": "partido pequeno demais para entrar na base (menos de 5% das cadeiras)"
+    },
+    {
+      "id": "novo",
+      "nome": "Novo",
+      "pais": "Brasil",
+      "motivo": "partido pequeno demais para entrar na base (menos de 5% das cadeiras)"
+    }
+  ]
+}

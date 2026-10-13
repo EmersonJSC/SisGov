@@ -36,6 +36,9 @@ export type {
   VisaoInvestigacaoConcluida,
   EfeitoPrevisto,
   PrevisaoLei,
+  VisaoBussola,
+  VisaoPontoBussola,
+  VisaoReferencia,
 } from "./partida/tipos";
 export { criarPartida } from "./partida/criar";
 export { mudarLei, leisQueCaem, revogarLei } from "./partida/leis";
@@ -45,3 +48,4 @@ export { BOLHAS_DO_ORCAMENTO } from "./partida/contas";
 export { verPartida } from "./partida/visao";
 export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
+export { verBussola } from "./partida/bussola";

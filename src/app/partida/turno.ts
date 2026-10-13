@@ -7,6 +7,7 @@ import {
 } from "../../game/occurrences";
 import { lawTargets, type GameState } from "../../game/createGame";
 import { commitGameQuarter } from "../../game/commitGameQuarter";
+import { anotarTurno } from "../../game/bussola";
 import type {
   Resultado,
   Partida,
@@ -312,7 +313,18 @@ export function encerrarTurno(
     content,
     commitGameQuarter(game, prepared.prepared),
   );
-  const next = rolado.game;
+  // V1-10: o ponto da bússola no fim do turno
+  const next = rolado.game.compass
+    ? {
+        ...rolado.game,
+        compass: anotarTurno(
+          content,
+          rolado.game.compass,
+          rolado.game.policies,
+          rolado.game.currentTurn,
+        ),
+      }
+    : rolado.game;
   // O piloto automático só precisa andar à parte se o jogador mudou algo.
   let pilotoNext = next;
   if (piloto !== game) {

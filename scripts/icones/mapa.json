@@ -314,6 +314,7 @@
     "direitos": "scale-balance",
     "governo": "bank",
     "noturno": "weather-night",
-    "claro": "white-balance-sunny"
+    "claro": "white-balance-sunny",
+    "bussola": "compass-outline"
   }
 }

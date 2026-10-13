@@ -12,6 +12,7 @@ import {
   revogarLei,
   responderDilema,
   verPartida,
+  verBussola,
   type Partida,
   type PrevisaoLei,
   type RelatorioTurno,
@@ -35,7 +36,7 @@ import { BuscaDeLeis } from "./BuscaDeLeis";
 import { CatalogoDeLeis } from "./CatalogoDeLeis";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
 import { fotoDoTurno, montarJornal, type FotoDoTurno } from "./jornal";
-import { PaginaDeJornal } from "./PaginaDeJornal";
+import { PaginaDeJornal, type AppDoTablet } from "./PaginaDeJornal";
 import {
   MES_DO_HORIZONTE,
   type Desvio,
@@ -318,9 +319,11 @@ export function TelaPrincipal() {
   const [mesaAberta, setMesaAberta] = useState(true);
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
-  const [jornalAberto, setJornalAberto] = useState(false);
+  // tablet: false fechado; senão, o app que abre (V1-10)
+  const [tablet, setTablet] = useState<false | AppDoTablet>(false);
+  const jornalAberto = tablet !== false;
   const [tema, alternarTema] = useModoNoturno();
-  const fecharJornal = useCallback(() => setJornalAberto(false), []);
+  const fecharJornal = useCallback(() => setTablet(false), []);
   // a lupa abre com "/" ou Ctrl+K (fora de um campo de texto)
   useEffect(() => {
     const tecla = (e: KeyboardEvent) => {
@@ -543,7 +546,7 @@ export function TelaPrincipal() {
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
       // o jornal do trimestre chega com o fim do turno
-      setJornalAberto(true);
+      setTablet("jornal");
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
       setMesaAberta(true);
@@ -639,11 +642,20 @@ export function TelaPrincipal() {
         <button
           type="button"
           className="botao-busca"
-          onClick={() => setJornalAberto(true)}
+          onClick={() => setTablet("jornal")}
           title="Jornal do trimestre: notícias, índices e opiniões"
         >
           <Icone nome={ICONE_INTERFACE.jornal} tamanho={22} />
           <span>Jornal</span>
+        </button>
+        <button
+          type="button"
+          className="botao-busca"
+          onClick={() => setTablet("bussola")}
+          title="Bússola política: para onde as suas leis levam o país"
+        >
+          <Icone nome={ICONE_INTERFACE.bussola} tamanho={22} />
+          <span>Bússola</span>
         </button>
         <button
           type="button"
@@ -694,6 +706,8 @@ export function TelaPrincipal() {
           data={trimestre(visao.turno)}
           numero={visao.turno + 1}
           onFechar={fecharJornal}
+          bussola={partida ? verBussola(partida) : undefined}
+          appInicial={tablet || "jornal"}
         />
       ) : null}
 

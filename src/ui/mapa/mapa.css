@@ -3791,7 +3791,7 @@ button {
 
 .tb-tela {
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100%;
   overflow: hidden;
   border-radius: 16px;
@@ -4234,4 +4234,277 @@ button {
   background: light-dark(#ece6d6, #1d1a12);
   color: light-dark(#5b5040, #c0b3a1);
   --icone: light-dark(#8a7f68, #a99d85);
+}
+
+/* ------------------------------------------- tablet: apps e bússola (V1-10) -- */
+
+.tb-jornal {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+}
+
+.tb-dock {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 12px 8px;
+  background: light-dark(#fff, #262626);
+  border-top: 1px solid light-dark(#dde2ea, #3c3f43);
+}
+
+.tb-dock button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: light-dark(#5d6778, #a0abbe);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tb-dock button[aria-pressed="true"] {
+  border-color: light-dark(#c9d2df, #4a4f57);
+  background: light-dark(#eef1f5, #1d1f22);
+  color: light-dark(#1b2230, #e0e6f0);
+  font-weight: 700;
+}
+
+.bs-app {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 16px;
+  min-height: 0;
+  padding: 12px 18px 12px;
+}
+
+.bs-grafico {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  margin: 0;
+}
+
+.bs-grafico svg {
+  width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  flex: 1;
+}
+
+.bs-grafico figcaption {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.78rem;
+}
+
+.bs-q {
+  stroke: none;
+}
+
+.bs-q-ea {
+  fill: light-dark(#f6dede, #3a2426);
+}
+
+.bs-q-ma {
+  fill: light-dark(#dde6f6, #222c3c);
+}
+
+.bs-q-el {
+  fill: light-dark(#ddefe3, #1f3328);
+}
+
+.bs-q-ml {
+  fill: light-dark(#f3ecd7, #35301f);
+}
+
+.bs-eixo {
+  stroke: light-dark(#8d97a8, #6b7385);
+  stroke-width: 1;
+}
+
+.bs-rotulo-eixo {
+  fill: light-dark(#4b5568, #aeb8c9);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bs-ref {
+  cursor: pointer;
+}
+
+.bs-ref circle {
+  fill: light-dark(#7b8496, #8c95a7);
+  stroke: light-dark(#fff, #151618);
+  stroke-width: 1;
+}
+
+.bs-ref text {
+  fill: light-dark(#2c3546, #d2d9e5);
+  font-size: 10px;
+  paint-order: stroke;
+  stroke: light-dark(rgb(255 255 255 / 80%), rgb(21 22 24 / 80%));
+  stroke-width: 3px;
+}
+
+.bs-ref.escolhida circle,
+.bs-ref:hover circle {
+  fill: light-dark(#1b2230, #e0e6f0);
+}
+
+.bs-caminho {
+  fill: none;
+  stroke: light-dark(#c9a24a, #d9b45c);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+
+.bs-inicio circle {
+  fill: light-dark(#fff, #151618);
+  stroke: light-dark(#c9a24a, #d9b45c);
+  stroke-width: 2;
+}
+
+.bs-voce circle {
+  fill: light-dark(#c9a24a, #d9b45c);
+  stroke: light-dark(#1b2230, #fff);
+  stroke-width: 2;
+}
+
+.bs-voce text {
+  fill: light-dark(#1b2230, #fff);
+  font-size: 12px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: light-dark(rgb(255 255 255 / 85%), rgb(21 22 24 / 85%));
+  stroke-width: 3px;
+}
+
+.bs-lado {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  font-size: 0.85rem;
+}
+
+.bs-lado h2 {
+  margin: 0 0 6px;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bs-camadas {
+  display: flex;
+  gap: 6px;
+}
+
+.bs-camadas button {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid light-dark(#c9d2df, #4a4f57);
+  border-radius: 8px;
+  background: light-dark(#fff, #1d1f22);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.bs-camadas button[aria-pressed="true"] {
+  background: light-dark(#1b2230, #e0e6f0);
+  color: light-dark(#fff, #151618);
+  font-weight: 700;
+}
+
+.bs-ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-left: 3px solid light-dark(#c9a24a, #d9b45c);
+  border-radius: 6px;
+  background: light-dark(#fff, #1d1f22);
+}
+
+.bs-ficha span {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.78rem;
+}
+
+.bs-perto,
+.bs-leis {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bs-perto li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: light-dark(#fff, #1d1f22);
+}
+
+.bs-perto button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bs-perto button span,
+.bs-leis span {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+}
+
+.bs-distancia {
+  color: light-dark(#5d6778, #a0abbe);
+  font-variant-numeric: tabular-nums;
+}
+
+.bs-leis li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid light-dark(#dde2ea, #2e3136);
+}
+
+.bs-fonte {
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+}
+
+.bs-fonte summary {
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .bs-app {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
 }
