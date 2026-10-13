@@ -417,13 +417,14 @@ aprova o tablet.
 
 ## Marco E. Conteúdo (v0.5 a v0.7)
 
-### V1-34: Leis para jogar de qualquer lado e prova real da bússola
+### V1-34: Leis de todos os lados e prova real da bússola
 
 **Tamanho:** G · **Depende de:** V1-10 · **Vem antes de:** V1-14 a V1-23
 
 **Objetivo.** Reestruturar o catálogo para que o jogador consiga governar
-como qualquer referência da bússola, do Che ao Bolsonaro, e provar isso:
-seguir as políticas de uma referência leva o ponto para perto dela.
+com as políticas de qualquer referência da bússola, do Che ao Bolsonaro
+(o jogador continua sendo ele mesmo, não a pessoa), e provar isso: seguir
+as políticas de uma referência leva o ponto para perto dela.
 
 **Entra**
 
