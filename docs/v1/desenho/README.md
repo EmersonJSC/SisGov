@@ -14,6 +14,7 @@
 | Leis de todos os lados e prova real            | V1-34    | `leis-de-todos-os-lados.md` | Aprovado; prova feita (13/out)      |
 | Organização das leis                           | V1-34    | `organizacao-das-leis.md`   | Em revisão (13/out)                 |
 | Leis em camadas como minijogo                  | V1-34    | `leis-em-camadas.md`        | Em revisão (13/out)                 |
+| Catálogo em mesas                              | V1-34    | `catalogo-em-mesas.md`      | Em revisão (13/out)                 |
 | Capital político                               | (saiu)   | `capital.md`                | Substituído pelo Congresso (13/out) |
 | Eleição                                        | versão 2 | `eleicao.md`                | Fica para a versão 2                |
 
