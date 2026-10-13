@@ -206,6 +206,7 @@ export function passarTurnoNoCongresso(input: {
       pacote.regras,
       estado.influencia[g.id] ?? 1,
       danoDasLeis(g.causas, leis, valores),
+      Math.round(valores[g.nivel] ?? 0),
     );
   // o humor dos acordos e das pressas some aos poucos
   const { memoria } = pacote.regras.tramitacao.humor;

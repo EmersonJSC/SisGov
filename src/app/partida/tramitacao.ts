@@ -261,6 +261,14 @@ export function enviarAoCongresso(
     return erro(
       "Medida provisória não trata de direito penal, eleições, direitos políticos e nacionalidade (art. 62, § 1º).",
     );
+  // medida provisória da lei que o Congresso acabou de derrubar: vale no
+  // jogo (na Constituição, não na mesma sessão, art. 62, § 10), mas irrita mais
+  const derrotadaNoAno = estado.saidas.some(
+    (s) =>
+      s.lei === leiId &&
+      s.motivo === "caiu" &&
+      Math.floor(s.turno / turnosPorAno(pacote)) === Number(ano),
+  );
   // valida a lei (filhas, pétrea) e dá o país com a mudança, para prever
   const depois = aplicarMeta(partida, leiId, nivel);
   if (!depois.ok) return depois;
@@ -293,7 +301,12 @@ export function enviarAoCongresso(
       ? tramitacao.humor.urgencia
       : pressa === "emergencia"
         ? tramitacao.humor.emergencia
-        : 0) + (mp ? tramitacao.humor.medidaProvisoria : 0);
+        : 0) +
+    (!mp
+      ? 0
+      : derrotadaNoAno
+        ? tramitacao.humor.medidaProvisoriaDepoisDaDerrota
+        : tramitacao.humor.medidaProvisoria);
   // a medida provisória já vale: segue do país com a mudança
   const base = mp ? depois.value.game : game;
   const congress = custo

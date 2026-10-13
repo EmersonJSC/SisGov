@@ -291,6 +291,84 @@ describe("votação", () => {
   });
 });
 
+describe("frentes dos dois lados (congresso.md 5.3)", () => {
+  /** Chance de sim de cada bancada se a lei for mandada nesse nível. */
+  function chances(lei: string, nivel: number) {
+    const r = enviarAoCongresso(partida, lei, nivel);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    const pacote = congressoDoPacote(partida.content)!;
+    const retrato = retratoDoCongresso({
+      content: partida.content,
+      estado: partida.game.congress!,
+      valores: partida.game.execution.values,
+      pontoDoJogador: pontoAtual(
+        partida.content,
+        partida.game.compass!,
+        partida.game.policies,
+      ),
+    });
+    const previsao = estadoDaTramitacao(r.value.game).fila[0].previsao;
+    return chancesDoProjeto(pacote, retrato, previsao);
+  }
+
+  it.each([
+    ["aborto", 0, "direita"],
+    ["aborto", 100, "esquerda"],
+    ["armas-de-fogo", 100, "direita"],
+    ["armas-de-fogo", 0, "esquerda"],
+  ] as const)(
+    "lei de costumes %s = %d divide: a %s a favor, o outro lado contra",
+    (lei, nivel, lado) => {
+      const c = chances(lei, nivel);
+      const aFavor =
+        lado === "direita"
+          ? ["direita", "extrema_direita"]
+          : ["esquerda", "extrema_esquerda"];
+      const contra =
+        lado === "direita"
+          ? ["esquerda", "extrema_esquerda"]
+          : ["direita", "extrema_direita"];
+      for (const b of aFavor) expect(c[b], b).toBeGreaterThan(0.5);
+      for (const b of contra) expect(c[b], b).toBeLessThan(0.5);
+    },
+  );
+
+  it("medida provisória da lei que acabou de cair irrita mais", () => {
+    const lei = leiDo(
+      partida,
+      "lei-ordinaria",
+      (a) => a !== "Segurança, justiça e drogas",
+    );
+    const pacote = congressoDoPacote(partida.content)!;
+    const { humor } = pacote.regras.tramitacao;
+    const derrotada: Partida = {
+      ...partida,
+      game: {
+        ...partida.game,
+        bills: {
+          ...estadoDaTramitacao(partida.game),
+          saidas: [
+            { turno: 0, projeto: "projeto-0", lei: lei.id, motivo: "caiu" },
+          ],
+        },
+      },
+    };
+    const comum = enviarAoCongresso(partida, lei.id, lei.nivel, {
+      medidaProvisoria: true,
+    });
+    const depois = enviarAoCongresso(derrotada, lei.id, lei.nivel, {
+      medidaProvisoria: true,
+    });
+    if (!comum.ok || !depois.ok) throw new Error("medida provisória");
+    expect(comum.value.game.congress!.humor.centro).toBeCloseTo(
+      humor.medidaProvisoria,
+    );
+    expect(depois.value.game.congress!.humor.centro).toBeCloseTo(
+      humor.medidaProvisoriaDepoisDaDerrota,
+    );
+  });
+});
+
 describe("pedidos", () => {
   it("pedido aceito muda o voto da bancada que pediu", () => {
     const lei = leiDo(partida, "lei-ordinaria");

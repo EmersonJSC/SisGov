@@ -210,6 +210,66 @@ de apostas; liberar armas fortalece a indústria de armas.
 Isso vira um minijogo de ordem: enfraquecer um grupo antes de votar a lei que
 ele bloquearia. O custo é a reação do grupo (pressão) no meio do caminho.
 
+## 5.3 Frentes dos dois lados e força pela pressão social (pedido do autor, 13/out)
+
+**Aprovado e feito (13/out).**
+
+**O problema que a primeira votação mostrou.** A proibição total do aborto
+passou com 18 dos 27 votos da Extrema esquerda. Medido: a frente evangélica
+contava 45% dentro da Extrema esquerda e puxava o sim; não havia nenhuma
+frente do outro lado puxando o não; e a bússola e o humor do eleitor pesavam
+pouco.
+
+**O que muda:**
+
+1. **Frentes dos dois lados.** Entram frentes com os grupos de pressão que já
+   existem:
+   - direitos das mulheres: feminista;
+   - diversidade: LGBT, movimento negro, matriz africana;
+   - direitos humanos e povos: povos originários, quilombolas, pastorais;
+   - e os movimentos conservadores de costumes entram na frente evangélica.
+2. **A força anda com a pressão social, a cada turno.** O fator de influência
+   hoje só cai com as leis que machucam o grupo. Passa a subir também com o
+   nível de pressão do grupo (0 a 3, `pressao.md`). Exemplo: o feminicídio sobe
+   a pressão do movimento feminista, a frente das mulheres ganha força e a
+   liberação do aborto ganha votos, mesmo com a frente evangélica contra. É
+   assim que o jogador enfraquece uma frente grande: mudando a opinião pública
+   e a situação do país, não só por lei.
+3. **A frente só pesa onde a base dela é forte.** Hoje toda bancada tem um
+   pedaço de toda frente (a influência era somada por igual). Passa a ser a
+   parte do eleitor da bancada na base do grupo vezes quanto ela passa da
+   média do país: onde a base é fraca, a frente quase some.
+4. **Prova nova:** uma lei polêmica de costumes divide o Congresso como na
+   vida real (esquerda contra, direita a favor, centro dividido), e uma
+   lei de costumes do outro lado divide ao contrário. Fica como teste.
+
+**Feito.** Frentes novas e as contas em `mundo/congresso.json`
+(`influencia.pesoDaPressao` 0,25, `teto` 2, `voto.escalaDaBussola` de 1 para
+0,3, porque uma lei sozinha mexe pouco no ponto do país e o voto ficava sem
+lado). Testes em `congresso.test.ts` e `tramitacao.test.ts`. Medido no turno
+0, chance de cada bancada votar sim:
+
+| Lei                        | Extr. esq. | Esquerda | Centro | Centrão | Direita | Extr. dir. |
+| -------------------------- | ---------- | -------- | ------ | ------- | ------- | ---------- |
+| Aborto: proibição total    | 0,20       | 0,21     | 0,90   | 0,91    | 0,78    | 0,90       |
+| Aborto: sem lei penal      | 0,84       | 0,98     | 0,17   | 0,04    | 0,14    | 0,01       |
+| Armas: posse e porte fácil | 0,18       | 0,37     | 0,97   | 0,96    | 0,96    | 0,93       |
+| Armas: quase proibidas     | 0,75       | 0,94     | 0,18   | 0,06    | 0,14    | 0,01       |
+
+A proibição total ainda passa (350 votos na Câmara), agora com a esquerda
+contra (7 de 27 e 22 de 106 votam sim). É o problema do jogador que o autor
+descreveu: o Centro vota com a direita nos costumes, e para virar isso é
+preciso subir a pressão do outro lado.
+
+**Depois (chamado próprio):** ferramentas do jogador para mudar a opinião
+pública (campanha, comunicação, aliados na mídia).
+
+**Medida provisória depois da derrota.** Se o Congresso derrubar a lei, o
+presidente pode baixá-la por medida provisória. Na vida real isso é proibido
+na mesma sessão (art. 62, § 10); no jogo vale, com um custo de humor bem
+maior que a medida provisória comum. Os ganhos e perdas dos segmentos vêm
+sozinhos, porque a lei vale na hora.
+
 ## 6. O que o jogador vê (decisão do autor, 13/out)
 
 O Congresso **não aparece fisicamente** no jogo: não tem painel nem

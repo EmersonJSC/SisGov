@@ -63,7 +63,9 @@
     "maximo": 1.5,
     "passo": 0.1,
     "pesoNaFrente": 0.3,
-    "nota": "Influência do grupo = (dinheiro + mídia) ÷ 6 × fator. O fator anda passo × (alvo − fator) por turno; alvo = maximo − (maximo − minimo) × dano, e dano é a parte da pressão das leis que o grupo vigia (0 a 1). Frente na bancada = média, entre os grupos da frente, da parte do eleitor dela na base do grupo + pesoNaFrente × influência do grupo, até 1."
+    "pesoDaPressao": 0.25,
+    "teto": 2.0,
+    "nota": "Influência do grupo = (dinheiro + mídia) ÷ 6 × fator. O fator anda passo × (alvo − fator) por turno; alvo = maximo − (maximo − minimo) × dano + pesoDaPressao × nível de pressão do grupo (0 a 3), entre minimo e teto. dano é a parte da pressão das leis que o grupo vigia (0 a 1): lei que machuca o grupo tira força; pressão social (feminicídio, violência, crise) dá força. Frente na bancada = média, entre os grupos da frente, de voto × (voto ÷ média do país) × (1 + pesoNaFrente × influência), até 1, onde voto é a parte do eleitor da bancada na base do grupo: a frente se concentra onde a base é forte."
   },
   "voto": {
     "pesoDosSegmentos": 1,
@@ -73,7 +75,7 @@
     "inclinacao": 4,
     "nota": "Camada 2: nota = soma dos pesos × termos de −1 a 1; chance de sim = 1 ÷ (1 + e^(−inclinacao × nota)). Termos: efeito previsto da lei no humor do eleitor da bancada (pontos ÷ escalaDosSegmentos), quanto a lei aproxima o país da bancada (pontos da bússola ÷ escalaDaBussola), (disposição − 50) ÷ 50, e as frentes (tamanho × queda do dano das leis ao grupo × escalaDasFrentes). As cadeiras do partido do jogador votam sim com chance disciplinaDoJogador.",
     "escalaDosSegmentos": 10,
-    "escalaDaBussola": 1,
+    "escalaDaBussola": 0.3,
     "escalaDasFrentes": 3,
     "disciplinaDoJogador": 0.9
   },
@@ -86,7 +88,11 @@
     {
       "id": "evangelica",
       "nome": "Frente evangélica",
-      "grupos": ["neopentecostais", "evangelicas_tradicionais"]
+      "grupos": [
+        "neopentecostais",
+        "evangelicas_tradicionais",
+        "conservadores_costumes"
+      ]
     },
     {
       "id": "seguranca",
@@ -107,6 +113,21 @@
       "id": "empresarial",
       "nome": "Frente empresarial",
       "grupos": ["industria", "comercio_servicos", "mercado_financeiro"]
+    },
+    {
+      "id": "mulheres",
+      "nome": "Frente dos direitos das mulheres",
+      "grupos": ["feminista"]
+    },
+    {
+      "id": "diversidade",
+      "nome": "Frente da diversidade",
+      "grupos": ["lgbt", "movimento_negro", "matriz_africana"]
+    },
+    {
+      "id": "direitos_humanos",
+      "nome": "Frente dos direitos humanos",
+      "grupos": ["povos_originarios", "quilombolas", "pastorais"]
     }
   ],
   "tramitacao": {
@@ -118,6 +139,7 @@
       "urgencia": -3,
       "emergencia": -8,
       "medidaProvisoria": -2,
+      "medidaProvisoriaDepoisDaDerrota": -8,
       "memoria": 0.9
     },
     "pedidos": {

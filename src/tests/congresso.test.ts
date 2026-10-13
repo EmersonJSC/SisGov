@@ -259,6 +259,42 @@ describe("troca-troca", () => {
     expect(depois("max")).toBeLessThan(1);
     expect(depois("zero")).toBeGreaterThan(1);
   });
+
+  it("pressão social dá força à frente: o movimento feminista em nível 3 cresce", () => {
+    const grupo = pressureGroups(partida.content)!.grupos.find(
+      (g) => g.id === "feminista",
+    )!;
+    const fator = (nivel: number) => {
+      let estado = partida.game.congress!;
+      for (let turno = 1; turno <= 4; turno++)
+        estado = passarTurnoNoCongresso({
+          content: partida.content,
+          estado,
+          valores: { ...partida.game.execution.values, [grupo.nivel]: nivel },
+          pontoDoJogador: centro,
+          turno: turno * 10 + 1,
+        });
+      return estado.influencia.feminista;
+    };
+    expect(fator(3)).toBeGreaterThan(fator(0));
+    expect(fator(3)).toBeLessThanOrEqual(regras.influencia.teto);
+  });
+
+  it("a frente se concentra onde a base é forte", () => {
+    const retrato = retratoDoCongresso({
+      content: partida.content,
+      estado: partida.game.congress!,
+      valores: partida.game.execution.values,
+      pontoDoJogador: centro,
+    });
+    const de = (id: string) => retrato.find((b) => b.id === id)!.frentes;
+    expect(de("extrema_direita").evangelica).toBeGreaterThan(
+      2 * de("extrema_esquerda").evangelica,
+    );
+    expect(de("esquerda").mulheres).toBeGreaterThan(
+      2 * de("extrema_direita").mulheres,
+    );
+  });
 });
 
 describe("partida", () => {

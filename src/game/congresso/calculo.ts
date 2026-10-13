@@ -226,21 +226,30 @@ export function danoDasLeis(
   return maximo > 0 ? limitar(pontos / maximo, 0, 1) : 0;
 }
 
-/** Um passo do fator de influência rumo ao alvo que o dano das leis dá. */
+/**
+ * Um passo do fator de influência rumo ao alvo: o dano das leis puxa para
+ * baixo, a pressão social do grupo (nível 0 a 3) puxa para cima.
+ */
 export function passoDaInfluencia(
   regras: RegrasDoCongresso,
   fator: number,
   dano: number,
+  nivel = 0,
 ): number {
-  const { minimo, maximo, passo } = regras.influencia;
-  const alvo = maximo - (maximo - minimo) * dano;
-  return limitar(fator + passo * (alvo - fator), minimo, maximo);
+  const { minimo, maximo, passo, pesoDaPressao, teto } = regras.influencia;
+  const alvo = limitar(
+    maximo - (maximo - minimo) * dano + pesoDaPressao * nivel,
+    minimo,
+    teto,
+  );
+  return limitar(fator + passo * (alvo - fator), minimo, teto);
 }
 
 /**
  * Tamanho da frente de um grupo numa bancada (0 a 1): a parte do eleitor dela
- * na base do grupo, mais a influência do grupo, que rende mais onde a base
- * dele é maior que a média do país.
+ * na base do grupo, vezes quanto essa parte passa da média do país (a frente
+ * se concentra onde a base é forte e some onde é fraca), mais a influência do
+ * grupo.
  */
 export function frente(
   regras: RegrasDoCongresso,
@@ -258,7 +267,7 @@ export function frente(
   const media = naBase(parteDoPais);
   const relativo = media > 0 ? voto / media : 0;
   return limitar(
-    voto + regras.influencia.pesoNaFrente * influencia * relativo,
+    voto * relativo * (1 + regras.influencia.pesoNaFrente * influencia),
     0,
     1,
   );

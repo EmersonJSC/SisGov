@@ -25,6 +25,8 @@ export type RegrasDoCongresso = Readonly<{
     maximo: number;
     passo: number;
     pesoNaFrente: number;
+    pesoDaPressao: number;
+    teto: number;
   }>;
   /** Frentes parlamentares: grupos de pressão que votam juntos. */
   frentes: readonly Readonly<{
@@ -41,6 +43,7 @@ export type RegrasDoCongresso = Readonly<{
       urgencia: number;
       emergencia: number;
       medidaProvisoria: number;
+      medidaProvisoriaDepoisDaDerrota: number;
       memoria: number;
     }>;
     pedidos: Readonly<{
