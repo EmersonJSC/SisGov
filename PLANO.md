@@ -22,20 +22,20 @@ personagens com mecânica e o dobro de conteúdo (seção 6).
 
 ## 2. O que entra e o que fica para depois
 
-| Entra na versão 1 | Fica para a versão 2 |
-| --- | --- |
-| Catálogo de 350 a 400 leis reais em 10 áreas, com Constituição, lei e decreto | Votação no Congresso, Senado, tramitação |
-| Configuração do país: dados, ministérios, características, história de abertura | Partidos, bancadas e coalizão |
-| Orçamento real em % do PIB, com receita, gasto, juros e dívida | Medida provisória e PEC com rito próprio |
-| Cerca de 100 índices e 60 situações com entrada e saída | Personagens com opinião e mecânica |
-| 20 segmentos do eleitorado e perfis sintéticos com peso | Lobby e negociação |
-| 20 grupos de pressão com repertório de ações | Campanha eleitoral |
-| Capital político como custo das ações | Mais países jogáveis |
-| Cerca de 120 eventos, 100 dilemas e 30 conquistas | Golpe, ruptura e reforma do Estado |
-| Eleição no fim do mandato; vencer continua, perder encerra | |
-| "Por que mudou?" em todo número | |
-| Salvar e carregar | |
-| Brasil 2026 completo | |
+| Entra na versão 1                                                               | Fica para a versão 2                     |
+| ------------------------------------------------------------------------------- | ---------------------------------------- |
+| Catálogo de 350 a 400 leis reais em 10 áreas, com Constituição, lei e decreto   | Votação no Congresso, Senado, tramitação |
+| Configuração do país: dados, ministérios, características, história de abertura | Partidos, bancadas e coalizão            |
+| Orçamento real em % do PIB, com receita, gasto, juros e dívida                  | Medida provisória e PEC com rito próprio |
+| Cerca de 100 índices e 60 situações com entrada e saída                         | Personagens com opinião e mecânica       |
+| 20 segmentos do eleitorado e perfis sintéticos com peso                         | Lobby e negociação                       |
+| 20 grupos de pressão com repertório de ações                                    | Campanha eleitoral                       |
+| Capital político como custo das ações                                           | Mais países jogáveis                     |
+| Cerca de 120 eventos, 100 dilemas e 30 conquistas                               | Golpe, ruptura e reforma do Estado       |
+| Eleição no fim do mandato; vencer continua, perder encerra                      |                                          |
+| "Por que mudou?" em todo número                                                 |                                          |
+| Salvar e carregar                                                               |                                          |
+| Brasil 2026 completo                                                            |                                          |
 
 ## 3. Princípios
 
@@ -51,17 +51,17 @@ personagens com mecânica e o dobro de conteúdo (seção 6).
 
 ## 4. Documentos
 
-| Documento | Para que serve |
-| --- | --- |
-| Este `PLANO.md` | Visão, escopo, marcos, status e decisões |
-| [`docs/v1/chamados.md`](docs/v1/chamados.md) | O que cada chamado faz, aceite e divisão do trabalho |
-| [`docs/v1/diferenciacao-d4.md`](docs/v1/diferenciacao-d4.md) | O que nunca vem do D4 e o processo de sala limpa |
-| [`docs/v1/arquitetura.md`](docs/v1/arquitetura.md) | Camadas, módulos, dados e estado da partida |
-| [`docs/v1/reestruturacao.md`](docs/v1/reestruturacao.md) | O destino de cada parte do código atual |
-| [`docs/v1/conteudo.md`](docs/v1/conteudo.md) | Regras de leis, índices, população e ocorrências |
-| [`docs/v1/engenharia.md`](docs/v1/engenharia.md) | Chamado, pronto, testes, git e documentos |
-| [`docs/v1/ideias.md`](docs/v1/ideias.md) | Ideias que surgem durante um chamado |
-| [`docs/README.md`](docs/README.md) | Índice de tudo: vigente, referência técnica e desativado |
+| Documento                                                    | Para que serve                                           |
+| ------------------------------------------------------------ | -------------------------------------------------------- |
+| Este `PLANO.md`                                              | Visão, escopo, marcos, status e decisões                 |
+| [`docs/v1/chamados.md`](docs/v1/chamados.md)                 | O que cada chamado faz, aceite e divisão do trabalho     |
+| [`docs/v1/diferenciacao-d4.md`](docs/v1/diferenciacao-d4.md) | O que nunca vem do D4 e o processo de sala limpa         |
+| [`docs/v1/arquitetura.md`](docs/v1/arquitetura.md)           | Camadas, módulos, dados e estado da partida              |
+| [`docs/v1/reestruturacao.md`](docs/v1/reestruturacao.md)     | O destino de cada parte do código atual                  |
+| [`docs/v1/conteudo.md`](docs/v1/conteudo.md)                 | Regras de leis, índices, população e ocorrências         |
+| [`docs/v1/engenharia.md`](docs/v1/engenharia.md)             | Chamado, pronto, testes, git e documentos                |
+| [`docs/v1/ideias.md`](docs/v1/ideias.md)                     | Ideias que surgem durante um chamado                     |
+| [`docs/README.md`](docs/README.md)                           | Índice de tudo: vigente, referência técnica e desativado |
 
 ## 5. Marcos e chamados
 
@@ -98,15 +98,17 @@ Os 20 segmentos do eleitorado e os 20 grupos de pressão.
 
 O mandato jogável do começo ao fim: capital político, níveis legais, eleição, salvar. **Primeira versão jogável da V1.**
 
-- [ ] **V1-10** Capital político (M)
-- [ ] **V1-11** Níveis legais na jogabilidade (P)
-- [ ] **V1-12** Eleição do fim do mandato (M)
-- [ ] **V1-13** Salvar e carregar (P)
+- [ ] **V1-10** Bússola política (M)
+- [ ] **V1-11** Câmara e Senado (M)
+- [ ] **V1-12** Tramitação e votação (M)
+- [ ] **V1-13** Dilemas com lados e notificações no tablet (M)
+- [ ] **V1-33** Salvar e carregar (P)
 
 ### Marco E. Conteúdo (v0.5 a v0.7)
 
 O catálogo de 350 a 400 leis, área por área, eventos, dilemas e o Brasil 2026 completo. Cada área também zera o contexto dos seus índices e completa as ligações (decisão de 12/out, `docs/v1/desenho/rede.md` seção 9).
 
+- [ ] **V1-34** Leis para jogar de qualquer lado e prova real da bússola (G)
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)
@@ -153,45 +155,45 @@ chamado só depois da versão 1.0.
 
 ### 7.1 Decisões da versão 1
 
-| ID | Data | Decisão |
-| --- | --- | --- |
-| D-67 | 12/out/2026 | **Diferenciação do D4.** Nada do D4 entra no SisGov: dados, números, fórmulas, listas, textos, arte ou nomes. Os arquivos do D4 ficam só na máquina do autor, fora do git. Ver `docs/v1/diferenciacao-d4.md`. |
+| ID   | Data        | Decisão                                                                                                                                                                                                                                                                                         |
+| ---- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| D-67 | 12/out/2026 | **Diferenciação do D4.** Nada do D4 entra no SisGov: dados, números, fórmulas, listas, textos, arte ou nomes. Os arquivos do D4 ficam só na máquina do autor, fora do git. Ver `docs/v1/diferenciacao-d4.md`.                                                                                   |
 | D-68 | 12/out/2026 | **Arquitetura em camadas** `ui → app → jogo → motor`, com teste que barra importação no sentido errado. Parlamento, Senado, eleição antiga e laboratório saem do código da versão 1 e ficam guardados na etiqueta `v0-antes-da-v1`. Ver `docs/v1/arquitetura.md` e `docs/v1/reestruturacao.md`. |
-| D-69 | 12/out/2026 | **Ficha de lei v3** com três níveis jogáveis (Constituição, lei, decreto e orçamento), custo em capital político, dinheiro em % do PIB, efeitos dentro da ficha e fonte obrigatória. Altera a D-65 (sai o nível pétreo) e substitui as D-23 a D-26. |
-| D-70 | 12/out/2026 | **População e pressão próprias.** 20 segmentos do eleitorado com perfis sintéticos e 20 grupos de pressão da política real, com repertório de ações. Substitui a D-60. |
-| D-71 | 12/out/2026 | **Processo de engenharia** da versão 1 (`docs/v1/engenharia.md`). Substitui as regras anti-ciclo R-01 a R-11 do plano antigo. |
+| D-69 | 12/out/2026 | **Ficha de lei v3** com três níveis jogáveis (Constituição, lei, decreto e orçamento), custo em capital político, dinheiro em % do PIB, efeitos dentro da ficha e fonte obrigatória. Altera a D-65 (sai o nível pétreo) e substitui as D-23 a D-26.                                             |
+| D-70 | 12/out/2026 | **População e pressão próprias.** 20 segmentos do eleitorado com perfis sintéticos e 20 grupos de pressão da política real, com repertório de ações. Substitui a D-60.                                                                                                                          |
+| D-71 | 12/out/2026 | **Processo de engenharia** da versão 1 (`docs/v1/engenharia.md`). Substitui as regras anti-ciclo R-01 a R-11 do plano antigo.                                                                                                                                                                   |
 
 ### 7.2 Decisões antigas que continuam valendo
 
 O texto completo está na seção 9 do
 [plano antigo](docs/desativado/PLANO-antigo.md). Continuam valendo:
 
-| ID | Em uma linha |
-| --- | --- |
-| D-01, D-02 | Turno de 3 meses calculado em 3 passos mensais; mandato de 16 turnos |
-| D-03 | O motor não conhece nomes de leis, partidos ou países |
-| D-04, D-38, D-39 | Mundo e país: leis, índices e ligações são do mundo; o país é o estado inicial |
-| D-22 | Projeto pessoal: trabalho direto na `main`; aceite é `npm run check` verde no notebook; push só com a palavra do autor |
-| D-31, D-34, D-35 | O jogador é o partido que acabou de vencer; dá nome, sigla e cor; começa com a popularidade da eleição |
-| D-40 a D-59 | A rede viva e o orçamento na rede: nada escondido, contas em % do PIB, juros como bolha, contas sem furos |
-| D-61 | Lei filha: cai em cascata quando a mãe muda |
-| D-62 | Ocorrências: eventos, dilemas e situações na partida |
-| D-64 | Ministérios reais declarados pelo país |
-| D-66 | Leis e índices universais, com nomes neutros; o país escolhe a opção de partida |
+| ID               | Em uma linha                                                                                                           |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| D-01, D-02       | Turno de 3 meses calculado em 3 passos mensais; mandato de 16 turnos                                                   |
+| D-03             | O motor não conhece nomes de leis, partidos ou países                                                                  |
+| D-04, D-38, D-39 | Mundo e país: leis, índices e ligações são do mundo; o país é o estado inicial                                         |
+| D-22             | Projeto pessoal: trabalho direto na `main`; aceite é `npm run check` verde no notebook; push só com a palavra do autor |
+| D-31, D-34, D-35 | O jogador é o partido que acabou de vencer; dá nome, sigla e cor; começa com a popularidade da eleição                 |
+| D-40 a D-59      | A rede viva e o orçamento na rede: nada escondido, contas em % do PIB, juros como bolha, contas sem furos              |
+| D-61             | Lei filha: cai em cascata quando a mãe muda                                                                            |
+| D-62             | Ocorrências: eventos, dilemas e situações na partida                                                                   |
+| D-64             | Ministérios reais declarados pelo país                                                                                 |
+| D-66             | Leis e índices universais, com nomes neutros; o país escolhe a opção de partida                                        |
 
 ### 7.3 Decisões antigas que saem
 
-| ID | Motivo |
-| --- | --- |
-| D-05, D-32, D-36 | Personagens ficam para a versão 2 |
-| D-06, D-07 | Substituídas pelo escopo da seção 2 |
-| D-08, D-10, D-12, D-13, D-14, D-37 | Senado, votação e tramitação ficam para a versão 2 |
-| D-11 | Campanha fica para a versão 2 |
-| D-15, D-16 | Substituídas pela rede (D-47 a D-59) e pela população da D-70 |
-| D-17 | Substituída pela fonte obrigatória da D-67 |
-| D-18, D-19, D-20, D-21 | Substituídas pelo processo da D-71 |
-| D-23 a D-26 | Substituídas pela ficha v3 (D-69) |
-| D-27 a D-30 | Absorvidas pelas D-40 a D-59 e pela D-69 |
-| D-33 | Executada no V1-02 |
-| D-60 | Substituída pela D-70 |
-| D-63, D-65 | Alteradas pela D-64 e pela D-69 |
+| ID                                 | Motivo                                                        |
+| ---------------------------------- | ------------------------------------------------------------- |
+| D-05, D-32, D-36                   | Personagens ficam para a versão 2                             |
+| D-06, D-07                         | Substituídas pelo escopo da seção 2                           |
+| D-08, D-10, D-12, D-13, D-14, D-37 | Senado, votação e tramitação ficam para a versão 2            |
+| D-11                               | Campanha fica para a versão 2                                 |
+| D-15, D-16                         | Substituídas pela rede (D-47 a D-59) e pela população da D-70 |
+| D-17                               | Substituída pela fonte obrigatória da D-67                    |
+| D-18, D-19, D-20, D-21             | Substituídas pelo processo da D-71                            |
+| D-23 a D-26                        | Substituídas pela ficha v3 (D-69)                             |
+| D-27 a D-30                        | Absorvidas pelas D-40 a D-59 e pela D-69                      |
+| D-33                               | Executada no V1-02                                            |
+| D-60                               | Substituída pela D-70                                         |
+| D-63, D-65                         | Alteradas pela D-64 e pela D-69                               |

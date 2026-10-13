@@ -417,6 +417,51 @@ aprova o tablet.
 
 ## Marco E. Conteúdo (v0.5 a v0.7)
 
+### V1-34: Leis para jogar de qualquer lado e prova real da bússola
+
+**Tamanho:** G · **Depende de:** V1-10 · **Vem antes de:** V1-14 a V1-23
+
+**Objetivo.** Reestruturar o catálogo para que o jogador consiga governar
+como qualquer referência da bússola, do Che ao Bolsonaro, e provar isso:
+seguir as políticas de uma referência leva o ponto para perto dela.
+
+**Entra**
+
+- Etapa 0, desenho: pesquisar o que os governos das referências da bússola
+  aprovaram de fato (do Che e Fidel em Cuba ao Bolsonaro, passando por PT,
+  PSDB, Thatcher, Xi, Putin e os outros) e escrever `docs/v1/desenho/leis-de-todos-os-lados.md`; o código
+  só começa com o desenho aprovado pelo autor
+- Regra para as áreas V1-14 a V1-23: cada área tem leis que só um lado
+  aprovaria, em todos os cantos da bússola (estatização total, partido
+  único, livre mercado radical, teocracia…), e boa parte delas fica fora de
+  vigor no Brasil (hoje só 2 de 129 estão fora)
+- Ligações entre leis que façam o jogador planejar o caminho: uma lei que
+  exige outra, leis que se anulam, pacotes que só funcionam juntos
+- Programas de governo como dados: a lista de leis e opções de cada
+  referência da bússola, com fonte
+- Prova real: partidas automáticas que aplicam cada programa e medem a
+  distância até a referência do governo na bússola
+
+**Não entra**
+
+- As leis novas de cada área (ficam nos chamados V1-14 a V1-23, seguindo a
+  regra deste)
+
+**Aceite**
+
+- [ ] Desenho aprovado pelo autor antes do código
+- [ ] Jogar o programa de uma referência deixa o ponto mais perto dela do
+      que das referências do lado oposto, para toda referência com programa
+      (teste)
+- [ ] Cada programa tem fonte para cada lei
+- [ ] Checagem de diferenciacao-d4.md feita
+
+**Você vê.** Um relatório da prova real: para cada programa, onde o ponto
+terminou e a distância até o governo de verdade.
+
+**Divisão.** Claude: Pesquisa os programas, escreve o desenho e roda a prova.
+Autor: Aprova a estrutura e confere os programas que mais conhece.
+
 ### V1-14: Conteúdo: Segurança e justiça penal
 
 **Tamanho:** M · **Depende de:** V1-05 a V1-11
