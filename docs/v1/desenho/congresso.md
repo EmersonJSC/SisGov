@@ -144,12 +144,12 @@ Para outros países, a configuração diz quantas casas há (o Brasil tem duas;
 um país pode ter uma), quantas cadeiras cada uma tem, as bancadas e as
 regras de votação.
 
-## 6. O painel
+## 6. O que o jogador vê (decisão do autor, 13/out)
 
-Um semicírculo por casa, dividido nas 5 bancadas, com a cor da disposição.
-Sem ponto por deputado. Ao tocar numa bancada aparecem: cadeiras, ponto na
-bússola, segmentos que representa, quanto dela é de cada frente e por que a
-disposição mudou.
+O Congresso **não aparece fisicamente** no jogo: não tem painel nem
+plenário. Ele é um mecanismo por trás. Você manda a lei pelo tablet, as duas
+casas votam lá dentro com as três camadas, e volta para você só o resultado
+(passou, adiou ou caiu, com o placar). O que importa é o mecanismo da votação.
 
 ## 7. Arquivos
 

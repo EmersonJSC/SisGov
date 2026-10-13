@@ -318,7 +318,8 @@ Brasil, montado por estatística a partir da população.
 - O seu partido: as cadeiras dele votam sempre com você
 - Disposição de cada bancada: sobe quando os segmentos que ela representa
   estão satisfeitos e cai quando estão insatisfeitos
-- Painel do Congresso: bancadas, cadeiras e humor, sem um ponto por deputado
+- Sem painel: o Congresso é um mecanismo por trás, que recebe a lei, vota
+  nas duas casas e devolve só o resultado (decisão de 13/out)
 
 **Não entra**
 
@@ -331,7 +332,8 @@ Brasil, montado por estatística a partir da população.
 - [ ] As cadeiras somam 513 e 81 no Brasil (teste)
 - [ ] A composição inicial bate com a real dentro da tolerância do desenho
 
-**Você vê.** O Congresso no painel, com as bancadas e o seu partido.
+**Você vê.** Nada novo na tela: a votação acontece por trás e o resultado
+chega pelo tablet no V1-12.
 
 **Divisão.** Claude: Pesquisa, monta as bancadas e o painel. Autor: Confere a
 composição e as bancadas.
