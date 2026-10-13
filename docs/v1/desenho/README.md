@@ -9,7 +9,7 @@
 | Índices com unidade real                       | V1-07   | `indices.md`   | Aprovado (12/out)                |
 | Segmentos do eleitorado e perfis sintéticos    | V1-08   | `populacao.md` | Aprovado                         |
 | Grupos de pressão                              | V1-09   | `pressao.md`   | Aprovado (12/out) e implementado |
-| Capital político                               | V1-10   | `capital.md`   | A fazer                          |
+| Capital político                               | V1-10   | `capital.md`   | Em revisão (13/out)              |
 | Eleição                                        | V1-12   | `eleicao.md`   | A fazer                          |
 
 O ponto de partida é o documento "SisGov: como a simulação funciona e como
