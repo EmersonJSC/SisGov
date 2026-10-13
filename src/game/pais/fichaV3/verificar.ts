@@ -169,6 +169,36 @@ export function verificarFicha(
           "REFERENCIA_QUEBRADA",
         );
   });
+  // Travas por opção e vínculos (V1-34).
+  (ficha.controle.opcoes ?? []).forEach((opcao, i) =>
+    (opcao.requer ?? []).forEach((dependencia, j) => {
+      const mae = contexto.leis.get(dependencia.lei);
+      const campo = `controle.opcoes.${i}.requer.${j}`;
+      if (!mae) {
+        push(
+          `${campo}.lei`,
+          `A lei ${dependencia.lei} não existe no catálogo.`,
+          "REFERENCIA_QUEBRADA",
+        );
+        return;
+      }
+      for (const id of dependencia.opcoes)
+        if (!mae.includes(id))
+          push(
+            `${campo}.opcoes`,
+            `A lei ${dependencia.lei} não tem a opção ${id}.`,
+            "REFERENCIA_QUEBRADA",
+          );
+    }),
+  );
+  (ficha.vinculos ?? []).forEach((vinculo, i) => {
+    if (!contexto.leis.has(vinculo.lei))
+      push(
+        `vinculos.${i}.lei`,
+        `A lei ${vinculo.lei} não existe no catálogo.`,
+        "REFERENCIA_QUEBRADA",
+      );
+  });
   (ficha.excludentes ?? []).forEach((lei, i) => {
     if (!contexto.leis.has(lei))
       push(

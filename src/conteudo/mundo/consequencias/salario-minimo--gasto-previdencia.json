@@ -1,0 +1,26 @@
+{
+  "id": "salario-minimo--gasto-previdencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_salario_minimo",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -1.9],
+      [33, -0.95],
+      [67, 0],
+      [100, 0.95]
+    ]
+  },
+  "leitura": "nivel",
+  "escala": {
+    "fator": "nivel_reajuste_de_beneficios",
+    "referencia": 75
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

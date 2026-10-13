@@ -43,7 +43,9 @@ describe("ficha de lei v3", () => {
   it("as três leis piloto se comportam como antes no turno", () => {
     // Valores gravados (a migração do formato v2 foi conferida com o Brasil
     // antigo; regravados com os valores de jan/2025 do V1-07 e com as leis de
-    // inteligência do V1-09, que mudam o gasto e a verba da PF), com as três
+    // inteligência do V1-09, que mudam o gasto e a verba da PF, e com a lei
+    // da violência doméstica do V1-34, que mexe nos conservadores), com as
+    // três
     // leis mudadas pelo jogador e quatro turnos sem ocorrências.
     let p = (
       criarPartida({ semente: 7, ocorrencias: false }) as { value: Partida }
@@ -69,7 +71,7 @@ describe("ficha de lei v3", () => {
     expect(v.letalidade_policial).toBeCloseTo(30.994180586820043, 9);
     expect(v.crime_organizado).toBeCloseTo(71.76787003706171, 9);
     expect(v.gasto_publico).toBeCloseTo(31.535364066598728, 9);
-    expect(v.popularidade_governo).toBeCloseTo(48.38662140389702, 9);
+    expect(v.popularidade_governo).toBeCloseTo(48.387758670775646, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {
@@ -166,8 +168,9 @@ describe("ficha de lei v3", () => {
   it("relatório mostra quantas leis faltam migrar", () => {
     const relatorio = relatorioDeMigracao(arquivos, "mundo/catalogo-leis.json");
     // 3 pilotos (V1-05), a lei nova do destino do resultado (V1-07) e as
-    // cinco de inteligência e vigilância (V1-09)
-    expect(relatorio.migradas).toHaveLength(9);
-    expect(relatorio.faltam).toHaveLength(relatorio.total - 9);
+    // cinco de inteligência e vigilância (V1-09) e duas da mesa do salário
+    // mínimo (V1-34)
+    expect(relatorio.migradas).toHaveLength(11);
+    expect(relatorio.faltam).toHaveLength(relatorio.total - 11);
   });
 });

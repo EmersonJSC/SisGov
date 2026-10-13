@@ -449,7 +449,22 @@ export type PolicyOption = {
   /** Intensidade que a opção coloca no grafo (definição da opção, não quantidade do país). */
   valor: number;
   custoAnualPercentualPib?: number;
+  /**
+   * Trava da opção (V1-34): ela só vale com estas leis nestas opções. Fora
+   * delas, a lei anda para a opção liberada mais perto.
+   */
+  requer?: readonly PolicyRequirementFile[];
 };
+
+/** Camada da mesa (V1-34, leis-em-camadas.md): quem decide, a regra, o valor. */
+export const policyLayers = ["constituicao", "lei", "alavanca"] as const;
+export type PolicyLayer = (typeof policyLayers)[number];
+
+/** A mesa de uma lei: o assunto e a camada dela. */
+export type PolicyTable = { id: string; nome: string; camada: PolicyLayer };
+
+/** Vínculo (V1-34): mexer nesta lei puxa a outra, de outra mesa. */
+export type PolicyLinkFile = { lei: string; motivo: string };
 
 /**
  * Lei do catálogo comum, esquema v2: diz o que a lei é e seus limites, nunca
@@ -495,6 +510,10 @@ export type PolicyFile = {
    * filha sem a base deixa de valer (volta ao catálogo).
    */
   requer?: PolicyRequirementFile | readonly PolicyRequirementFile[];
+  /** Mesa e camada (V1-34). */
+  mesa?: PolicyTable;
+  /** Leis de outras mesas que esta puxa (V1-34). */
+  vinculos?: readonly PolicyLinkFile[];
   consequencias: string[];
 };
 

@@ -2512,6 +2512,8 @@
     "mundo/consequencias/salario-minimo--informalidade.json",
     "mundo/consequencias/salario-minimo--pobreza.json",
     "mundo/consequencias/salario-minimo--renda-familias.json",
+    "mundo/consequencias/salario-minimo--gasto-previdencia.json",
+    "mundo/consequencias/salario-minimo--deficit-previdenciario.json",
     "mundo/consequencias/sancoes-internacionais--credito.json",
     "mundo/consequencias/sancoes-internacionais--exportacoes.json",
     "mundo/consequencias/sancoes-internacionais--ied.json",
@@ -2928,6 +2930,7 @@
     "mundo/consequencias/transferencia-de-renda--grupo-informais.json",
     "mundo/consequencias/desemprego--grupo-informais.json",
     "mundo/consequencias/informalidade--grupo-informais.json",
+    "mundo/consequencias/informalidade--eficacia-formula-do-salario-minimo.json",
     "mundo/consequencias/renda-familias--grupo-informais.json",
     "mundo/consequencias/reforma-agraria--grupo-agricultura-familiar.json",
     "mundo/consequencias/previdencia-rural--grupo-agricultura-familiar.json",
@@ -2982,6 +2985,7 @@
     "mundo/consequencias/capacidade-estatal--eficacia-agencia-de-inteligencia.json",
     "mundo/consequencias/forca-instituicoes--eficacia-interceptacao-de-comunicacoes.json",
     "mundo/consequencias/capacidade-estatal--eficacia-cameras-e-reconhecimento-facial.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-quem-decide-o-salario-minimo.json",
     "mundo/consequencias/corrupcao--eficacia-poderes-de-investigacao-policial.json"
   ],
   "eventos": [

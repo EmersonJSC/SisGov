@@ -37,6 +37,21 @@ export type VisaoOpcao = Readonly<{
    * país como está agora (moeda do país). 0 se não toca o orçamento.
    */
   saldoAnual: number;
+  /**
+   * Trava (V1-34): outra camada da mesa não deixa escolher esta opção agora.
+   * `lei` é a lei que trava, para a tela levar até ela.
+   */
+  trava?: Readonly<{ lei: string; nome: string; motivo: string }>;
+}>;
+
+/** Uma camada da mesa (V1-34): Constituição, lei ou alavanca. */
+export type VisaoCamada = Readonly<{
+  lei: string;
+  nome: string;
+  camada: "constituicao" | "lei" | "alavanca";
+  emVigor: boolean;
+  /** Rótulo da opção em vigor. */
+  opcao?: string;
 }>;
 
 export type VisaoLei = Readonly<{
@@ -108,6 +123,15 @@ export type VisaoLei = Readonly<{
   exigencias: readonly VisaoExigencia[];
   /** Leis filhas desta: caem (ou saem de vigor) se esta sair das opções. */
   filhas: readonly VisaoFilha[];
+  /** A mesa da lei (V1-34): o assunto e as camadas, de cima para baixo. */
+  mesa?: Readonly<{
+    id: string;
+    nome: string;
+    camada: VisaoCamada["camada"];
+    camadas: readonly VisaoCamada[];
+  }>;
+  /** Leis de outras mesas que esta puxa (V1-34). */
+  vinculos?: readonly Readonly<{ lei: string; nome: string; motivo: string }>[];
 }>;
 
 export type VisaoExigencia = Readonly<{

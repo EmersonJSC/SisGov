@@ -166,6 +166,8 @@
         "cargo": "Trabalho",
         "area": "trabalho",
         "leis": [
+          "quem-decide-o-salario-minimo",
+          "formula-do-salario-minimo",
           "salario-minimo",
           "jornada-de-trabalho",
           "legislacao-trabalhista",

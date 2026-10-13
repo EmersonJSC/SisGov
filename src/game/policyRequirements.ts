@@ -147,7 +147,60 @@ export function requirementBlock(
       continue;
     return unmetMessage(content, requirement);
   }
+  // V1-34: a opção pedida pode estar travada por outra camada; a meta atual
+  // (já em vigor) sempre vale
+  if (!(current && same(current.desiredLevel, desiredLevel))) {
+    const lock = optionLock(content, policies, policyId, desiredLevel);
+    if (lock) return lockMessage(lock);
+  }
   return undefined;
+}
+
+/** Uma trava de opção (V1-34) que não está cumprida agora. */
+export type OptionLock = Readonly<{
+  /** Lei que trava a opção. */
+  parentId: string;
+  parentName: string;
+  /** Opções dela que liberam. */
+  allowedLabels: readonly string[];
+  reason?: string;
+}>;
+
+/** A primeira trava não cumprida da opção neste nível, ou `undefined`. */
+export function optionLock(
+  content: ResolvedPackage,
+  policies: readonly PolicyState[],
+  policyId: string,
+  level: number,
+): OptionLock | undefined {
+  const policy = content.policies.find((item) => item.id === policyId);
+  const option = policy?.controle.opcoes?.find((item) =>
+    same(item.valor, level),
+  );
+  for (const requer of option?.requer ?? []) {
+    const parent = content.policies.find((item) => item.id === requer.lei);
+    if (!parent) continue;
+    const allowed = (parent.controle.opcoes ?? []).filter((item) =>
+      requer.opcoes.includes(item.id),
+    );
+    const current = policyInForce(policies, parent.id)?.desiredLevel;
+    if (
+      current !== undefined &&
+      allowed.some((item) => same(item.valor, current))
+    )
+      continue;
+    return {
+      parentId: parent.id,
+      parentName: parent.nome,
+      allowedLabels: allowed.map((item) => item.rotulo),
+      ...(requer.motivo ? { reason: requer.motivo } : {}),
+    };
+  }
+  return undefined;
+}
+
+function lockMessage(lock: OptionLock): string {
+  return `Esta opção exige ${lock.parentName} em: ${lock.allowedLabels.join(", ")}.`;
 }
 
 /** A lei pode sair do mapa (voltar ao catálogo)? Padrão: só derivadas. */
@@ -207,7 +260,11 @@ export function applyRequirementFalls(
   let current = policies;
   const fallen: FallenPolicy[] = [];
   // cada volta derruba uma geração; o conteúdo não tem ciclos (validador)
-  for (let round = 0; round <= requirements.length; round++) {
+  for (
+    let round = 0;
+    round <= requirements.length + content.policies.length;
+    round++
+  ) {
     let changed = false;
     for (const requirement of requirements) {
       const index = current.findIndex(
@@ -244,6 +301,49 @@ export function applyRequirementFalls(
           ? {}
           : { to: requirement.baseLevel }),
         revoked: requirement.baseLevel === undefined,
+      });
+      changed = true;
+    }
+    // V1-34: lei numa opção travada anda para a opção liberada mais perto
+    for (const policy of content.policies) {
+      const options = policy.controle.opcoes ?? [];
+      if (!options.some((option) => option.requer?.length)) continue;
+      const index = current.findIndex(
+        (state) => state.policyDefinitionId === policy.id,
+      );
+      if (index < 0) continue;
+      const state = current[index];
+      if (state.status !== "vigente" || state.legalStatus !== "vigente")
+        continue;
+      if (!optionLock(content, current, policy.id, state.desiredLevel))
+        continue;
+      const target = options
+        .filter(
+          (option) => !optionLock(content, current, policy.id, option.valor),
+        )
+        .sort(
+          (a, b) =>
+            Math.abs(a.valor - state.desiredLevel) -
+            Math.abs(b.valor - state.desiredLevel),
+        )[0];
+      if (!target) continue;
+      const rules = policyLevelRulesFromContent(content, policy.id);
+      if (!rules.ok) continue;
+      const moved = changePolicyTarget(
+        state,
+        target.valor,
+        turn,
+        rules.value.rules,
+      );
+      if (!moved.ok) continue;
+      const updated = [...current];
+      updated[index] = moved.value;
+      current = updated;
+      fallen.push({
+        policyId: policy.id,
+        from: state.desiredLevel,
+        to: target.valor,
+        revoked: false,
       });
       changed = true;
     }

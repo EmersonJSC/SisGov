@@ -188,3 +188,28 @@ mesa com camadas que se trancam é nossa.
    minijogo funciona.
 3. **Os vínculos entre mesas** (salário mínimo puxa a previdência) entram já
    no piloto? Recomendo, porque é a parte que ensina.
+
+## 9. Piloto (13/out)
+
+As três respostas da seção 8 foram seguidas como recomendado. A mesa do
+salário mínimo está jogável:
+
+- **Constituição:** "Quem decide o salário mínimo" (não existe, negociação
+  sindical, comissão técnica, lei nacional).
+- **Lei:** "Fórmula do salário mínimo" (sem regra, só inflação, inflação mais
+  o crescimento da economia, meta da mediana). Só existe com comissão técnica
+  ou lei nacional.
+- **Alavanca:** "Valor do salário mínimo" (a lei antiga, renomeada).
+- **Travas por opção** (`requer` em cada opção): a fórmula de inflação mais
+  crescimento tranca o piso baixo; "não existe" derruba a fórmula e leva o
+  valor para "sem piso". Quando a trava muda, o valor vai para a opção
+  permitida mais perto.
+- **Vínculo:** o valor puxa o gasto da previdência no mesmo turno
+  (cerca de R$ 370 mi por R$ 1 de salário mínimo, Ministério do
+  Planejamento, PLDO 2025), escalado pela regra de reajuste dos benefícios.
+- **Na tela:** a janela da lei mostra a faixa da mesa com as três camadas
+  (tocar abre a camada), o vínculo e as opções travadas, com quem trava.
+- Teste: `src/tests/mesaDoSalarioMinimo.test.ts`.
+
+Depois do seu teste, as outras mesas do `catalogo-em-mesas.md` seguem o mesmo
+formato.

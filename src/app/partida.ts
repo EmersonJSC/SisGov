@@ -11,6 +11,7 @@ export type {
   ModoPartida,
   Partida,
   VisaoOpcao,
+  VisaoCamada,
   VisaoLei,
   VisaoExigencia,
   VisaoFilha,

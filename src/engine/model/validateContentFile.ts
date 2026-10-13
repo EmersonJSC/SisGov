@@ -2466,9 +2466,16 @@ function validatePolicyOptions(
     validateKnownFields(
       option,
       file,
-      ["id", "rotulo", "valor", "custoAnualPercentualPib"],
+      ["id", "rotulo", "valor", "custoAnualPercentualPib", "requer"],
       diagnostics,
     );
+    if (option.requer !== undefined)
+      validateOptionRequirements(
+        option.requer,
+        file,
+        `${field}.requer`,
+        diagnostics,
+      );
     const id = requiredString(option, file, `${field}.id`, diagnostics);
     if (id !== undefined) {
       if (ids.has(id))
@@ -2502,6 +2509,118 @@ function validatePolicyOptions(
         );
     }
   });
+}
+
+/** Trava da opção (V1-34): lista de `{lei, opcoes, motivo?}`. */
+function validateOptionRequirements(
+  value: unknown,
+  file: string,
+  field: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (!Array.isArray(value) || value.length === 0) {
+    diagnostics.push(
+      diagnostic(
+        file,
+        field,
+        "TIPO_INVALIDO",
+        "Deve ser uma lista com pelo menos uma lei.",
+      ),
+    );
+    return;
+  }
+  value.forEach((requer, index) => {
+    const campo = `${field}[${index}]`;
+    if (!isObject(requer)) {
+      diagnostics.push(
+        diagnostic(file, campo, "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+      return;
+    }
+    validateKnownFields(requer, file, ["lei", "opcoes", "motivo"], diagnostics);
+    if (typeof requer.lei !== "string" || !requer.lei)
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${campo}.lei`,
+          "CAMPO_AUSENTE",
+          "Diga a lei exigida.",
+        ),
+      );
+    if (
+      !Array.isArray(requer.opcoes) ||
+      requer.opcoes.length === 0 ||
+      requer.opcoes.some((item) => typeof item !== "string")
+    )
+      diagnostics.push(
+        diagnostic(
+          file,
+          `${campo}.opcoes`,
+          "VALOR_INVALIDO",
+          "Diga pelo menos uma opção da lei exigida.",
+        ),
+      );
+    if (requer.motivo !== undefined && typeof requer.motivo !== "string")
+      diagnostics.push(
+        diagnostic(file, `${campo}.motivo`, "TIPO_INVALIDO", "Deve ser texto."),
+      );
+  });
+}
+
+/** Mesa e vínculos da lei (V1-34). */
+function validatePolicyTable(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (value.mesa !== undefined) {
+    if (!isObject(value.mesa))
+      diagnostics.push(
+        diagnostic(file, "mesa", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(
+        value.mesa,
+        file,
+        ["id", "nome", "camada"],
+        diagnostics,
+      );
+      requiredString(value.mesa, file, "mesa.id", diagnostics);
+      requiredString(value.mesa, file, "mesa.nome", diagnostics);
+      if (
+        !["constituicao", "lei", "alavanca"].includes(
+          value.mesa.camada as string,
+        )
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "mesa.camada",
+            "VALOR_INVALIDO",
+            "Use constituicao, lei ou alavanca.",
+          ),
+        );
+    }
+  }
+  if (value.vinculos !== undefined) {
+    if (!Array.isArray(value.vinculos))
+      diagnostics.push(
+        diagnostic(file, "vinculos", "TIPO_INVALIDO", "Deve ser uma lista."),
+      );
+    else
+      value.vinculos.forEach((vinculo, index) => {
+        const campo = `vinculos[${index}]`;
+        if (!isObject(vinculo)) {
+          diagnostics.push(
+            diagnostic(file, campo, "TIPO_INVALIDO", "Deve ser um objeto."),
+          );
+          return;
+        }
+        validateKnownFields(vinculo, file, ["lei", "motivo"], diagnostics);
+        requiredString(vinculo, file, `${campo}.lei`, diagnostics);
+        requiredString(vinculo, file, `${campo}.motivo`, diagnostics);
+      });
+  }
 }
 
 function validatePolicy(
@@ -2542,11 +2661,14 @@ function validatePolicy(
       "nivelLegal",
       "revogavel",
       "requer",
+      "mesa",
+      "vinculos",
       "consequencias",
       ...quantityFields,
     ],
     diagnostics,
   );
+  validatePolicyTable(value, file, diagnostics);
   requiredString(value, file, "id", diagnostics);
   if (value.tipo !== "lei")
     diagnostics.push(

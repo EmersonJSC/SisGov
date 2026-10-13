@@ -3,11 +3,11 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Salário mínimo",
-  "descricao": "Define o piso que qualquer empregador deve pagar, medido em relação ao salário típico do país.",
+  "nome": "Valor do salário mínimo",
+  "descricao": "O valor do salário mínimo deste ano, medido em relação ao salário típico do país. A fórmula e quem decide limitam até onde ele vai.",
   "area": "Trabalho e emprego",
   "ministerio": "Ministério do Trabalho",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "decreto",
   "controle": {
     "variavel": "nivel_salario_minimo",
     "unidade": "nivel_escopo",
@@ -15,25 +15,74 @@
       {
         "id": "sem-piso",
         "rotulo": "Sem salário mínimo",
-        "valor": 0
+        "valor": 0,
+        "requer": [
+          {
+            "lei": "quem-decide-o-salario-minimo",
+            "opcoes": ["nao-existe", "negociacao-sindical"],
+            "motivo": "Com salário mínimo fixado pelo Estado, o valor não pode ser zero."
+          }
+        ]
       },
       {
         "id": "piso-baixo",
         "rotulo": "Piso baixo",
-        "valor": 33
+        "valor": 33,
+        "requer": [
+          {
+            "lei": "quem-decide-o-salario-minimo",
+            "opcoes": ["comissao-tecnica", "lei-nacional"],
+            "motivo": "Sem salário mínimo fixado pelo Estado, não há valor para escolher."
+          },
+          {
+            "lei": "formula-do-salario-minimo",
+            "opcoes": ["sem-regra", "so-inflacao"],
+            "motivo": "O ganho real acumulado ou a meta não deixam o valor cair tanto."
+          }
+        ]
       },
       {
         "id": "piso-moderado",
         "rotulo": "Piso moderado",
-        "valor": 67
+        "valor": 67,
+        "requer": [
+          {
+            "lei": "quem-decide-o-salario-minimo",
+            "opcoes": ["comissao-tecnica", "lei-nacional"],
+            "motivo": "Sem salário mínimo fixado pelo Estado, não há valor para escolher."
+          }
+        ]
       },
       {
         "id": "piso-alto",
         "rotulo": "Piso alto",
-        "valor": 100
+        "valor": 100,
+        "requer": [
+          {
+            "lei": "quem-decide-o-salario-minimo",
+            "opcoes": ["comissao-tecnica", "lei-nacional"],
+            "motivo": "Sem salário mínimo fixado pelo Estado, não há valor para escolher."
+          },
+          {
+            "lei": "formula-do-salario-minimo",
+            "opcoes": ["sem-regra", "inflacao-mais-pib"],
+            "motivo": "Só repor a inflação ou seguir a meta não leva o valor tão alto."
+          }
+        ]
       }
     ]
   },
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "alavanca"
+  },
+  "vinculos": [
+    {
+      "lei": "reajuste-de-beneficios",
+      "motivo": "Os benefícios não podem ser menores que o salário mínimo: subir o mínimo sobe o gasto da previdência no mesmo turno."
+    }
+  ],
   "consequencias": [
     "salario-minimo--renda-familias",
     "salario-minimo--pobreza",
@@ -46,7 +95,9 @@
     "salario-minimo--grupo-empresarios",
     "salario-minimo--grupo-pequenos-negocios",
     "salario-minimo--grupo-pobres",
-    "salario-minimo--grupo-trabalhadores"
+    "salario-minimo--grupo-trabalhadores",
+    "salario-minimo--gasto-previdencia",
+    "salario-minimo--deficit-previdenciario"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

@@ -41,6 +41,13 @@ import { corDaBondade, intensidadeDaBolha } from "./intensidade";
 import { ficaNaPresidencia, type BaseMapa } from "./layout";
 
 /** O caminho da lei no Congresso (V1-12). */
+/** As camadas da mesa (V1-34, leis-em-camadas.md). */
+const NOME_DA_CAMADA: Readonly<Record<string, string>> = {
+  constituicao: "Constituição: quem decide",
+  lei: "Lei: a regra",
+  alavanca: "Alavanca: o valor",
+};
+
 const NOME_CAMINHO: Readonly<Record<string, string>> = {
   "lei-ordinaria": "lei ordinária (maioria dos votos)",
   "lei-complementar": "lei complementar (maioria absoluta)",
@@ -810,6 +817,44 @@ export function DocumentoLei({
             <span>{lei.bloqueio}</span>
           </p>
         ) : null}
+        {lei.mesa ? (
+          <nav className="mesa-doc" aria-label={`Mesa: ${lei.mesa.nome}`}>
+            <span className="mesa-titulo">Mesa: {lei.mesa.nome}</span>
+            <ol>
+              {lei.mesa.camadas.map((c) => (
+                <li key={c.lei}>
+                  <button
+                    type="button"
+                    aria-current={c.lei === lei.id}
+                    className={c.emVigor ? undefined : "fora"}
+                    onClick={() => {
+                      if (c.lei !== lei.id) onSelecionar(c.lei);
+                    }}
+                  >
+                    <small>{NOME_DA_CAMADA[c.camada]}</small>
+                    <strong>{c.nome}</strong>
+                    <span>
+                      {c.emVigor ? (c.opcao ?? "em vigor") : "fora de vigor"}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : null}
+        {lei.vinculos?.map((v) => (
+          <button
+            key={v.lei}
+            type="button"
+            className="vinculo-doc"
+            onClick={() => onSelecionar(v.lei)}
+          >
+            <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
+            <span>
+              <strong>Puxa {v.nome}.</strong> <small>{v.motivo}</small>
+            </span>
+          </button>
+        ))}
         {lei.nivelLegal ? (
           lei.exigencias.map((exige) => (
             <button
@@ -862,7 +907,9 @@ export function DocumentoLei({
               const vigente = opcao.id === lei.opcaoAtual;
               // lei filha com a mãe fora: só a base (a primeira opção)
               const bloqueada =
-                travada || (!!lei.exige && !lei.exige.atendida && i > 0);
+                travada ||
+                !!opcao.trava ||
+                (!!lei.exige && !lei.exige.atendida && i > 0);
               return (
                 <button
                   key={opcao.id}
@@ -873,15 +920,23 @@ export function DocumentoLei({
                   title={
                     travada
                       ? lei.bloqueio
-                      : bloqueada
-                        ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
-                        : undefined
+                      : opcao.trava
+                        ? opcao.trava.motivo
+                        : bloqueada
+                          ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
+                          : undefined
                   }
                   className={`opcao-doc${ativa ? " ativa" : ""}${bloqueada ? " bloqueada" : ""}`}
                   onClick={() => onRascunho(opcao.valor)}
                 >
                   <span className="caixinha">{ativa ? "✕" : ""}</span>
                   <span className="opcao-rotulo">{opcao.rotulo}</span>
+                  {opcao.trava ? (
+                    <span className="opcao-tag trava">
+                      <Icone nome={ICONE_INTERFACE.trancada} tamanho={12} />
+                      travada
+                    </span>
+                  ) : null}
                   {vigente && lei.emVigor ? (
                     <span className="opcao-tag">em vigor</span>
                   ) : null}
@@ -901,6 +956,26 @@ export function DocumentoLei({
                 </button>
               );
             })}
+            {lei.opcoes.some((o) => o.trava) ? (
+              <ul className="travas-doc" aria-label="Opções travadas">
+                {lei.opcoes
+                  .filter((o) => o.trava)
+                  .map((o) => (
+                    <li key={o.id}>
+                      <button
+                        type="button"
+                        onClick={() => onSelecionar(o.trava!.lei)}
+                      >
+                        <Icone nome={ICONE_INTERFACE.trancada} tamanho={16} />
+                        <span>
+                          <strong>{o.rotulo}:</strong> {o.trava!.motivo}{" "}
+                          <u>Abrir {o.trava!.nome}</u>
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+              </ul>
+            ) : null}
           </div>
         ) : (
           <ControleNumerico

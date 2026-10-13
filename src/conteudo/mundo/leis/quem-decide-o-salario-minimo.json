@@ -1,0 +1,112 @@
+{
+  "id": "quem-decide-o-salario-minimo",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Quem decide o salário mínimo",
+  "descricao": "Se o país tem salário mínimo e quem fixa o valor: ninguém, os sindicatos com os patrões, uma comissão técnica ou a lei nacional.",
+  "area": "Trabalho e emprego",
+  "ministerio": "Ministério do Trabalho",
+  "nivel": "constituicao",
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "constituicao"
+  },
+  "controle": {
+    "variavel": "nivel_quem_decide_o_salario_minimo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nao-existe",
+        "rotulo": "Não existe salário mínimo",
+        "valor": 0
+      },
+      {
+        "id": "negociacao-sindical",
+        "rotulo": "Só a negociação de sindicatos e patrões",
+        "valor": 33
+      },
+      {
+        "id": "comissao-tecnica",
+        "rotulo": "Uma comissão técnica fixa o valor",
+        "valor": 67
+      },
+      {
+        "id": "lei-nacional",
+        "rotulo": "Por lei nacional",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.02,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.01,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.01,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "nao-existe": ["Reino Unido até 1998", "Estados Unidos até 1938"],
+      "negociacao-sindical": [
+        "Suécia",
+        "Dinamarca",
+        "Noruega",
+        "Finlândia",
+        "Áustria"
+      ],
+      "comissao-tecnica": ["Reino Unido desde 1998", "Alemanha desde 2015"],
+      "lei-nacional": ["Brasil", "Estados Unidos", "França"]
+    },
+    "brasil": "A Constituição de 1988 manda ter um salário mínimo nacional, fixado em lei (art. 7º, IV). Não é cláusula pétrea: muda por emenda."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal de 1988, art. 7º, IV",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "National Minimum Wage Act 1998 (Reino Unido)",
+      "url": "https://www.legislation.gov.uk/ukpga/1998/39/contents",
+      "usadoPara": "comissão técnica (Low Pay Commission)"
+    },
+    {
+      "titulo": "Mindestlohngesetz (MiLoG, Alemanha, 2014), §4 a §9",
+      "url": "https://www.gesetze-im-internet.de/milog/",
+      "usadoPara": "comissão técnica"
+    },
+    {
+      "titulo": "Eurofound, Minimum wages in 2024: annual review",
+      "url": "https://www.eurofound.europa.eu/en/publications/2024/minimum-wages-2024-annual-review",
+      "usadoPara": "países sem salário mínimo em lei, só negociação coletiva"
+    },
+    {
+      "titulo": "Fair Labor Standards Act de 1938 (Estados Unidos)",
+      "url": "https://www.dol.gov/agencies/whd/flsa",
+      "usadoPara": "lei nacional"
+    }
+  ]
+}

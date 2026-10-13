@@ -2,8 +2,10 @@ import type {
   ConsequenceFile,
   PolicyFile,
   PolicyLimits,
+  PolicyLinkFile,
   PolicyOption,
   PolicyRequirementFile,
+  PolicyTable,
 } from "../../../engine";
 
 /** Nível da lei na versão 1 (conteudo.md 1.1). */
@@ -69,6 +71,10 @@ export type FichaV3 = {
   implantacao?: { entrada: number; saida: number };
   /** Outras leis exigidas (vira `requer` da lei v2). */
   dependeDe?: PolicyRequirementFile[];
+  /** Mesa e camada (V1-34, leis-em-camadas.md). */
+  mesa?: PolicyTable;
+  /** Leis de outras mesas que esta puxa (V1-34). */
+  vinculos?: PolicyLinkFile[];
   /** Leis que não convivem com esta; verificado, ainda sem regra no jogo. */
   excludentes?: string[];
   /** Características do país (V1-06); aceito e ainda não usado. */

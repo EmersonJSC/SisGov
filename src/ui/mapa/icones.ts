@@ -568,6 +568,8 @@ export const ICONE_LEI: Readonly<Record<string, string>> = {
   "regulacao-planos-de-saude": "card-account-details-outline",
   "regulacao-redes-sociais": "cellphone-message",
   "restricao-tabaco-e-alcool": "glass-wine",
+  "quem-decide-o-salario-minimo": "scale-balance",
+  "formula-do-salario-minimo": "calculator-variant-outline",
   "salario-minimo": "cash",
   "saneamento-basico": "water-pump",
   "saude-mental": "brain",

@@ -492,6 +492,68 @@ export function validatePackageCoherence(
         );
     }
   }
+  // travas por opção e vínculos (V1-34)
+  for (const policy of content.policies) {
+    const startLevel = initialDesired.get(policy.id);
+    for (const [index, option] of (policy.controle.opcoes ?? []).entries()) {
+      for (const [position, requirement] of (option.requer ?? []).entries()) {
+        const field = `controle.opcoes[${index}].requer[${position}]`;
+        const parent = policiesById.get(requirement.lei);
+        if (!parent || parent.id === policy.id) {
+          diagnostics.push(
+            issue(
+              policy.id,
+              `${field}.lei`,
+              parent
+                ? "A opção não pode exigir a própria lei."
+                : `Lei exigida inexistente: ${requirement.lei}.`,
+            ),
+          );
+          continue;
+        }
+        const parentOptions = parent.controle.opcoes ?? [];
+        const allowed: number[] = [];
+        for (const optionId of requirement.opcoes) {
+          const found = parentOptions.find((item) => item.id === optionId);
+          if (!found)
+            diagnostics.push(
+              issue(
+                policy.id,
+                `${field}.opcoes`,
+                `A lei ${parent.id} não tem a opção ${optionId}.`,
+              ),
+            );
+          else allowed.push(found.valor);
+        }
+        const parentLevel = initialDesired.get(parent.id);
+        if (
+          startLevel !== undefined &&
+          Math.abs(startLevel - option.valor) < 1e-9 &&
+          !(
+            parentLevel !== undefined &&
+            allowed.some((value) => Math.abs(value - parentLevel) < 1e-9)
+          )
+        )
+          diagnostics.push(
+            issue(
+              initialStateFile,
+              "leisVigentes",
+              `A lei ${policy.id} começa na opção ${option.id}, mas a lei ${parent.id} não está numa das opções que ela exige.`,
+            ),
+          );
+      }
+    }
+    for (const [index, link] of (policy.vinculos ?? []).entries())
+      if (!policiesById.has(link.lei) || link.lei === policy.id)
+        diagnostics.push(
+          issue(
+            policy.id,
+            `vinculos[${index}].lei`,
+            `Lei do vínculo inexistente: ${link.lei}.`,
+          ),
+        );
+  }
+
   // sem ciclo de mães e filhas (em qualquer das exigências)
   const state = new Map<string, "aberto" | "fechado">();
   const cyclic = new Set<string>();

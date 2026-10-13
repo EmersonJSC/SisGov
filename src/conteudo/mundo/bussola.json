@@ -1058,6 +1058,26 @@
         "proibicao": [-1, 1.5]
       }
     },
+    "quem-decide-o-salario-minimo": {
+      "manifesto": ["per401", "per403", "per701"],
+      "porque": "Sem salário mínimo é livre mercado; deixar para sindicatos e patrões tira o Estado do valor; a lei nacional é o Estado regulando o mercado de trabalho.",
+      "opcoes": {
+        "nao-existe": [1.5, 0],
+        "negociacao-sindical": [0.5, 0],
+        "comissao-tecnica": [0, 0],
+        "lei-nacional": [-0.5, 0]
+      }
+    },
+    "formula-do-salario-minimo": {
+      "manifesto": ["per414", "per503", "per701"],
+      "porque": "Só repor a inflação é ortodoxia fiscal; ganho real todo ano é redistribuição pelo salário; a meta da mediana regula sem prometer ganho fixo.",
+      "opcoes": {
+        "sem-regra": [0, 0],
+        "so-inflacao": [0.5, 0],
+        "inflacao-mais-pib": [-1, 0],
+        "meta-da-mediana": [-0.5, 0]
+      }
+    },
     "salario-minimo": {
       "manifesto": ["per701", "per403"],
       "porque": "Proteção do trabalhador.",

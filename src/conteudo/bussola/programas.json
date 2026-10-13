@@ -50,6 +50,12 @@
           "fonte": "Employment Acts 1980, 1982 e 1988"
         },
         {
+          "lei": "quem-decide-o-salario-minimo",
+          "opcao": "nao-existe",
+          "como": "manteve",
+          "fonte": "Sem salário mínimo nacional até o National Minimum Wage Act 1998"
+        },
+        {
           "lei": "salario-minimo",
           "opcao": "sem-piso",
           "como": "aprovou",
@@ -183,6 +189,12 @@
       "grupo": "treino",
       "opostos": ["bolsonaro", "thatcher", "reagan", "trump"],
       "leis": [
+        {
+          "lei": "formula-do-salario-minimo",
+          "opcao": "inflacao-mais-pib",
+          "como": "aprovou",
+          "fonte": "Política de valorização do salário mínimo (Lei 14.663/2023)"
+        },
         {
           "lei": "salario-minimo",
           "opcao": "piso-alto",
@@ -412,6 +424,12 @@
           "opcao": "ampla-com-garantias",
           "como": "manteve",
           "fonte": "Lei 13.429/2017"
+        },
+        {
+          "lei": "formula-do-salario-minimo",
+          "opcao": "so-inflacao",
+          "como": "aprovou",
+          "fonte": "Lei 14.158/2021 (salário mínimo de 2021 só com a inflação)"
         },
         {
           "lei": "idade-minima-aposentadoria",
@@ -1501,6 +1519,12 @@
       "grupo": "teste",
       "opostos": ["brejnev", "bolsonaro", "iglesias", "fidel"],
       "leis": [
+        {
+          "lei": "quem-decide-o-salario-minimo",
+          "opcao": "comissao-tecnica",
+          "como": "aprovou",
+          "fonte": "Mindestlohngesetz 2014, §4 (comissão do salário mínimo)"
+        },
         {
           "lei": "salario-minimo",
           "opcao": "piso-moderado",

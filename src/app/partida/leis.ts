@@ -63,14 +63,22 @@ export function leisQueCaem(
   );
   const { fallen } = applyRequirementFalls(content, hipotese, game.currentTurn);
   const exigencias = policyRequirements(content);
-  return fallen.map((queda) => ({
-    id: queda.policyId,
-    nome:
-      content.policies.find((p) => p.id === queda.policyId)?.nome ??
-      queda.policyId,
-    base: exigencias.get(queda.policyId)?.[0]?.baseLabel ?? "",
-    revogada: queda.revoked,
-  }));
+  return fallen.map((queda) => {
+    const policy = content.policies.find((p) => p.id === queda.policyId);
+    // V1-34: a trava de opção leva para a opção liberada mais perto
+    const destino =
+      queda.to === undefined
+        ? undefined
+        : policy?.controle.opcoes?.find(
+            (o) => Math.abs(o.valor - queda.to!) < 1e-9,
+          )?.rotulo;
+    return {
+      id: queda.policyId,
+      nome: policy?.nome ?? queda.policyId,
+      base: destino ?? exigencias.get(queda.policyId)?.[0]?.baseLabel ?? "",
+      revogada: queda.revoked,
+    };
+  });
 }
 
 /**

@@ -3,6 +3,7 @@ import { contextNodeId } from "../../engine/model/lawNodes";
 import { valorNaMedida } from "./medida";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
+  optionLock,
   policyInForce,
   policyRequirements,
   policyRevocable,
@@ -15,6 +16,7 @@ import { nivelNoCongresso } from "../../game/tramitacao";
 import type {
   Partida,
   VisaoLei,
+  VisaoOpcao,
   VisaoExigencia,
   VisaoLigacao,
   VisaoPartida,
@@ -33,6 +35,9 @@ import { ocorrenciasDaPartida } from "./ocorrencias";
 import { nosForaDoMapa, pressaoDaPartida } from "./pressao";
 
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
+/** Ordem das camadas da mesa, de cima para baixo (V1-34). */
+const ORDEM_DA_CAMADA = { constituicao: 0, lei: 1, alavanca: 2 } as const;
+
 export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
   const values = game.execution.values;
@@ -96,6 +101,7 @@ export function verPartida(partida: Partida): VisaoPartida {
         rotulo,
         valor,
         saldoAnual: saldo(policy.id, valor),
+        ...travaDa(policy.id, valor, state),
       })),
       opcaoAtual: nearest?.id,
       saldoAnual: saldo(policy.id),
@@ -108,6 +114,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       ...congressoDa(policy),
       ...bloqueioDa(policy.id, state),
       ...exigenciasDa(policy.id),
+      ...mesaDa(policy),
       filhas: [...exigencias.values()]
         .flat()
         .filter((r) => r.parentId === policy.id)
@@ -146,6 +153,69 @@ export function verPartida(partida: Partida): VisaoPartida {
       emVigor ? Number.NaN : (state?.desiredLevel ?? 0),
     );
     return bloqueio ? { bloqueio } : {};
+  }
+  // V1-34: trava de opção (a meta atual sempre vale)
+  function travaDa(
+    id: string,
+    valor: number,
+    state: (typeof game.policies)[number] | undefined,
+  ): { trava?: VisaoOpcao["trava"] } {
+    if (state && Math.abs(state.desiredLevel - valor) < 1e-9) return {};
+    const lock = optionLock(content, game.policies, id, valor);
+    if (!lock) return {};
+    return {
+      trava: {
+        lei: lock.parentId,
+        nome: lock.parentName,
+        motivo: `Exige ${lock.parentName} em: ${lock.allowedLabels.join(", ")}.${lock.reason ? ` ${lock.reason}` : ""}`,
+      },
+    };
+  }
+  // V1-34: a mesa e os vínculos da lei
+  function mesaDa(policy: (typeof content.policies)[number]): {
+    mesa?: VisaoLei["mesa"];
+    vinculos?: VisaoLei["vinculos"];
+  } {
+    const vinculos = (policy.vinculos ?? []).map((v) => ({
+      lei: v.lei,
+      nome: nomeDaLei.get(v.lei) ?? v.lei,
+      motivo: v.motivo,
+    }));
+    const mesa = policy.mesa;
+    return {
+      ...(vinculos.length ? { vinculos } : {}),
+      ...(mesa
+        ? {
+            mesa: {
+              id: mesa.id,
+              nome: mesa.nome,
+              camada: mesa.camada,
+              camadas: content.policies
+                .filter((p) => p.mesa?.id === mesa.id)
+                .sort(
+                  (a, b) =>
+                    ORDEM_DA_CAMADA[a.mesa!.camada] -
+                    ORDEM_DA_CAMADA[b.mesa!.camada],
+                )
+                .map((p) => {
+                  const vigente = policyInForce(game.policies, p.id);
+                  const opcao = vigente
+                    ? p.controle.opcoes?.find(
+                        (o) => Math.abs(o.valor - vigente.desiredLevel) < 1e-9,
+                      )
+                    : undefined;
+                  return {
+                    lei: p.id,
+                    nome: p.nome,
+                    camada: p.mesa!.camada,
+                    emVigor: !!vigente,
+                    ...(opcao ? { opcao: opcao.rotulo } : {}),
+                  };
+                }),
+            },
+          }
+        : {}),
+    };
   }
   function exigenciasDa(id: string): {
     exige?: VisaoExigencia;

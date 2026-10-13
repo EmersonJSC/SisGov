@@ -414,6 +414,14 @@
       "opcao": "clt"
     },
     {
+      "lei": "quem-decide-o-salario-minimo",
+      "opcao": "lei-nacional"
+    },
+    {
+      "lei": "formula-do-salario-minimo",
+      "opcao": "inflacao-mais-pib"
+    },
+    {
       "lei": "salario-minimo",
       "opcao": "piso-moderado"
     },
@@ -614,6 +622,8 @@
     "recursos_gasto_com_defesa": 192000,
     "nivel_politica_de_natalidade": 40,
     "nivel_legislacao_trabalhista": 67,
+    "nivel_quem_decide_o_salario_minimo": 100,
+    "nivel_formula_do_salario_minimo": 67,
     "nivel_salario_minimo": 67,
     "nivel_jornada_de_trabalho": 50,
     "nivel_seguro_desemprego": 75,

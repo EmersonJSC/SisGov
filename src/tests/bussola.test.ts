@@ -204,12 +204,19 @@ describe("frase do rumo no jornal (V1-13)", () => {
     if (!turno.ok) throw new Error(turno.erros.join("\n"));
     const v = verBussola(turno.value.partida)!;
     const [antes, agora] = v.caminho;
-    const alvo = referenciasDaBussola.personalidades.find(
-      (r) => r.id === v.rumo?.referencia.id,
-    )!;
-    expect(distancia(antes, alvo) - distancia(agora, alvo)).toBeGreaterThan(
-      0.1,
-    );
+    const rumo = v.rumo!;
+    if (rumo.antes)
+      // a mais perto mudou
+      expect(rumo.antes.id).not.toBe(rumo.referencia.id);
+    else {
+      // a mesma: o ponto chegou mais perto dela
+      const alvo = referenciasDaBussola.personalidades.find(
+        (r) => r.id === rumo.referencia.id,
+      )!;
+      expect(distancia(antes, alvo) - distancia(agora, alvo)).toBeGreaterThan(
+        0.1,
+      );
+    }
     const noticia = noticiaDoRumo(v.rumo);
     expect(noticia?.manchete).toMatch(/O governo .*perto de/);
     expect(noticia?.texto).toContain("app Bússola");

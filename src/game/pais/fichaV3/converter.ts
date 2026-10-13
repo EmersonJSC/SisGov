@@ -97,6 +97,8 @@ export function converterFicha(
         }
       : {}),
     ...(ficha.dependeDe?.length ? { requer: ficha.dependeDe } : {}),
+    ...(ficha.mesa ? { mesa: ficha.mesa } : {}),
+    ...(ficha.vinculos?.length ? { vinculos: ficha.vinculos } : {}),
     consequencias: consequencias.map((c) => c.id),
     ...(ficha.implantacao
       ? {

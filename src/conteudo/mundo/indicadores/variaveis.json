@@ -1262,9 +1262,33 @@
       "area": "Trabalho e emprego"
     },
     {
+      "id": "nivel_quem_decide_o_salario_minimo",
+      "tipo": "controle",
+      "nome": "Quem decide o salário mínimo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
+      "id": "nivel_formula_do_salario_minimo",
+      "tipo": "controle",
+      "nome": "Fórmula do salário mínimo",
+      "unidade": "nivel_escopo",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
       "id": "nivel_salario_minimo",
       "tipo": "controle",
-      "nome": "Salário mínimo",
+      "nome": "Valor do salário mínimo",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
