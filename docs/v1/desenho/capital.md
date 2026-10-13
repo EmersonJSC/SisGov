@@ -1,7 +1,7 @@
 # Capital político (V1-10)
 
-**Status:** EM REVISÃO (13/out). O código só começa com a sua aprovação; as
-perguntas estão na seção 8.
+**Status:** SUBSTITUÍDO (13/out). O autor trocou o capital político pelo
+Congresso de verdade (V1-11 e V1-12, ver `chamados.md`). Fica como registro.
 
 ## 0. Resumo
 

@@ -41,21 +41,22 @@ para `game/` e `app/`.
 
 ## 2. Módulos da versão 1
 
-| Camada | Módulo | Responsabilidade |
-| --- | --- | --- |
-| motor | `model/` | Tipos e validação do pacote resolvido |
-| motor | `mechanisms/` | Afim, pontos, limiar, estoque, resposta gradual |
-| motor | `runtime/` | Avançar o passo, atrasos, situações com entrada e saída, explicação |
-| jogo | `leis/` | Catálogo, níveis (Constituição, lei, decreto), dependências, cascata, implantação |
-| jogo | `capital/` | Capital político: ganho por turno e custo de cada ação |
-| jogo | `turno/` | Ordem do trimestre: ações, três meses de motor, ocorrências, população, fechamento |
-| jogo | `populacao/` | Segmentos, perfis sintéticos, satisfação, aprovação |
-| jogo | `pressao/` | Grupos de pressão: mobilização e ações |
-| jogo | `ocorrencias/` | Situações, eventos e dilemas |
-| jogo | `eleicao/` | Eleição do fim do mandato |
-| jogo | `pais/` | Leitura da configuração do país e das características |
-| app | `partida/` | Fachada dividida por assunto: `criar`, `leis`, `turno`, `visao`, `previsao`, `salvar` |
-| ui | `mapa/` | Mapa de influência, janelas, catálogo, jornal, painéis |
+| Camada | Módulo         | Responsabilidade                                                                      |
+| ------ | -------------- | ------------------------------------------------------------------------------------- |
+| motor  | `model/`       | Tipos e validação do pacote resolvido                                                 |
+| motor  | `mechanisms/`  | Afim, pontos, limiar, estoque, resposta gradual                                       |
+| motor  | `runtime/`     | Avançar o passo, atrasos, situações com entrada e saída, explicação                   |
+| jogo   | `leis/`        | Catálogo, níveis (Constituição, lei, decreto), dependências, cascata, implantação     |
+| jogo   | `bussola/`     | Bússola política: questionário, posição do partido, das leis e dos dilemas            |
+| jogo   | `congresso/`   | Câmara e Senado: bancadas, pauta, tramitação e votação                                |
+| jogo   | `turno/`       | Ordem do trimestre: ações, três meses de motor, ocorrências, população, fechamento    |
+| jogo   | `populacao/`   | Segmentos, perfis sintéticos, satisfação, aprovação                                   |
+| jogo   | `pressao/`     | Grupos de pressão: mobilização e ações                                                |
+| jogo   | `ocorrencias/` | Situações, eventos e dilemas                                                          |
+| jogo   | `eleicao/`     | Eleição do fim do mandato                                                             |
+| jogo   | `pais/`        | Leitura da configuração do país e das características                                 |
+| app    | `partida/`     | Fachada dividida por assunto: `criar`, `leis`, `turno`, `visao`, `previsao`, `salvar` |
+| ui     | `mapa/`        | Mapa de influência, janelas, catálogo, jornal, painéis                                |
 
 ## 3. Dados
 

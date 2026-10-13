@@ -252,109 +252,165 @@
 
 **Divisão.** Claude: Escreve o modelo, os grupos e as ações. Autor: Revisa os nomes e o repertório.
 
-## Marco D. Ciclo do mandato (v0.4)
+## Marco D. Congresso e mandato (v0.4)
 
-### V1-10: Capital político
+> Replanejado em 13/out (pedido do autor): o parlamento volta para a versão 1 e
+> o capital político sai. Você joga como o **partido**: as cadeiras do seu
+> partido votam sempre com você, e o resto do Congresso precisa ser convencido.
+> Eleição, escolha de candidatos, ministros, nome do partido e personagens
+> aleatórios ficam para a versão 2 (`ideias.md`).
 
-**Tamanho:** M · **Depende de:** V1-09
-
-**Objetivo.** Dar custo político às decisões.
-
-**Entra**
-
-- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/capital.md` (de onde vem o capital político e quanto custa cada ação); o código só começa com o desenho aprovado pelo autor
-- Ganho por turno (aprovação, lua de mel no começo do mandato)
-- Custo por ação definido na ficha da lei
-- Barra de capital na tela
-
-**Não entra**
-
-- Parlamento
-
-**Aceite**
-
-- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/capital.md`)
-- [ ] Ação sem capital suficiente é recusada com motivo
-- [ ] Ganho por turno segue a fórmula documentada (teste)
-
-**Você vê.** Barra de capital e custo em cada decisão.
-
-**Divisão.** Claude: Escreve a regra, a API e a barra. Autor: Joga dois mandatos e diz se o ritmo está bom.
-
-### V1-11: Níveis legais na jogabilidade
-
-**Tamanho:** P · **Depende de:** V1-10
-
-**Objetivo.** Fazer Constituição, lei e decreto se comportarem de forma diferente.
-
-**Entra**
-
-- Custo e prazo por nível
-- Constituição exige aprovação mínima (no lugar do parlamento, até a versão 2)
-
-**Não entra**
-
-- Votação
-
-**Aceite**
-
-- [ ] Mudança constitucional com aprovação abaixo do mínimo é recusada
-- [ ] Prazo de cada nível respeitado no turno
-
-**Você vê.** Etiqueta do nível e o caminho de cada mudança.
-
-**Divisão.** Claude: Escreve as regras e os testes. Autor: Confere os números de custo e prazo.
-
-### V1-12: Eleição do fim do mandato
+### V1-10: Bússola política
 
 **Tamanho:** M · **Depende de:** V1-08
 
-**Objetivo.** Fechar o mandato com eleição pelo voto dos perfis.
+**Objetivo.** Saber onde o jogador está no espectro político e dar um eixo
+comum para leis, dilemas e bancadas.
 
 **Entra**
 
-- Etapa 0, desenho: pesquisar métodos atuais e escrever `docs/v1/desenho/eleicao.md` (escolha probabilística do voto, abstenção e pesquisas com margem de erro); o código só começa com o desenho aprovado pelo autor
-- Calendário do país
-- Voto por perfil (governo ou oposição, comparecimento)
-- Tela de resultado, novo mandato ou fim de jogo
+- Etapa 0, desenho: pesquisar métodos atuais (questionários de posição
+  política, escalas de especialistas, dados de partidos) e escrever
+  `docs/v1/desenho/bussola.md` com os eixos, o questionário, como cada opção de
+  lei ganha uma posição e quem aparece na bússola como referência; o código só
+  começa com o desenho aprovado pelo autor
+- Questionário no começo da partida, que põe o seu partido num ponto da bússola
+- Referências na bússola (políticos e partidos conhecidos), para você escolher
+  de quem quer chegar perto
+- Posição na bússola para cada opção de lei e de dilema
+- O seu ponto anda com as decisões ao longo do mandato
 
 **Não entra**
 
-- Senado, partidos, segundo turno detalhado
+- Escolha de candidato e nome do partido (versão 2)
 
 **Aceite**
 
-- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/eleicao.md`)
-- [ ] Mesma semente, mesmo resultado
-- [ ] Governo com aprovação muito alta vence e muito baixa perde (teste)
+- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/bussola.md`)
+- [ ] As mesmas respostas dão o mesmo ponto (teste)
+- [ ] Toda opção de lei e de dilema tem posição na bússola (teste do verificador)
+- [ ] A posição de cada referência tem fonte
 
-**Você vê.** A eleição no fim de 16 turnos.
+**Você vê.** O questionário, a bússola com o seu ponto e as referências, e o
+ponto andando com as suas decisões.
 
-**Divisão.** Claude: Escreve a eleição e a tela. Autor: Joga até a eleição.
+**Divisão.** Claude: Pesquisa, escreve o questionário e posiciona as leis.
+Autor: Responde o questionário, confere as referências e a posição das leis.
 
-### V1-13: Salvar e carregar
+### V1-11: Câmara e Senado
 
-**Tamanho:** P · **Depende de:** V1-12
+**Tamanho:** M · **Depende de:** V1-10
 
-**Objetivo.** Guardar e retomar a partida.
+**Objetivo.** Ter um Congresso na rede, com 513 deputados e 81 senadores no
+Brasil, montado por estatística a partir da população.
 
 **Entra**
 
-- Salvar no navegador e exportar arquivo
-- Versão do esquema na partida salva
+- Etapa 0, desenho: pesquisar métodos atuais (composição real das bancadas,
+  modelos espaciais de voto, frentes parlamentares) e escrever
+  `docs/v1/desenho/congresso.md`; o código só começa com o desenho aprovado
+  pelo autor
+- Casas, cadeiras e regras de votação na configuração do país (o Brasil é
+  bicameral, 513 e 81; outro país pode ter outra forma)
+- Bancadas como blocos com cadeiras, ponto na bússola e grupos sociais que
+  representam, calibradas pela composição real (sem os 513 nomes)
+- O seu partido: um bloco que vota sempre com você
+- Humor de cada bancada ligado à rede (satisfação dos segmentos que ela
+  representa, pressão dos grupos ligados a ela)
+- Painel do Congresso: bancadas, cadeiras e humor, sem um ponto por deputado
 
 **Não entra**
 
-- Nuvem
+- Eleição do Congresso (versão 2)
+- Deputados com nome
 
 **Aceite**
 
-- [ ] Partida salva e carregada produz o mesmo próximo turno
-- [ ] Versão errada é recusada com mensagem
+- [ ] Desenho aprovado pelo autor antes do código (`docs/v1/desenho/congresso.md`)
+- [ ] As cadeiras somam 513 e 81 no Brasil (teste)
+- [ ] A composição inicial bate com a real dentro da tolerância do desenho
 
-**Você vê.** Botões salvar e carregar.
+**Você vê.** O Congresso no painel, com as bancadas e o seu partido.
 
-**Divisão.** Claude: Escreve e testa. Autor: Testa no navegador.
+**Divisão.** Claude: Pesquisa, monta as bancadas e o painel. Autor: Confere a
+composição e as bancadas.
+
+### V1-12: Tramitação e votação
+
+**Tamanho:** M · **Depende de:** V1-11
+
+**Objetivo.** Fazer a lei passar pelo Congresso: Constituição, lei e decreto
+com caminhos diferentes.
+
+**Entra**
+
+- Pauta: um lugar no tablet com as leis em tramitação, a fase de cada uma e a
+  previsão de votos
+- Caminho por nível, com as regras reais do Brasil: decreto vale sem votação;
+  lei ordinária precisa de maioria simples; lei complementar, de maioria
+  absoluta; emenda constitucional, de 3/5 nas duas casas, em dois turnos;
+  cláusula pétrea não muda
+- Voto de cada bancada pela distância na bússola, pelo humor e pelos acordos
+  feitos
+- Resultado: passa, adia (volta à pauta no turno seguinte) ou cai
+- Pedidos do Congresso como dilemas: uma bancada pede algo em troca de votos;
+  aceitar ou recusar soma ou tira apoio
+- Toda lei com a informação do caminho e do quórum
+
+**Não entra**
+
+- Negociação com parlamentar por nome
+- Veto e derrubada de veto (versão 2)
+
+**Aceite**
+
+- [ ] Emenda sem 3/5 nas duas casas não passa (teste)
+- [ ] Com maioria própria, lei ordinária passa sem acordo (teste)
+- [ ] Mesma semente, mesma votação (teste)
+- [ ] Pedido aceito muda o voto da bancada que pediu (teste)
+
+**Você vê.** A pauta no tablet, a votação de cada lei e os pedidos das
+bancadas.
+
+**Divisão.** Claude: Escreve a regra, a pauta e os pedidos. Autor: Joga um
+mandato e diz se passar lei está fácil ou difícil demais.
+
+### V1-13: Dilemas com lados e notificações no tablet
+
+**Tamanho:** M · **Depende de:** V1-12
+
+**Objetivo.** Dilema é uma escolha entre lados, não entre bom, médio e ruim, e
+chega como notificação.
+
+**Entra**
+
+- Regra nova: as opções de um dilema são contrárias entre si em algum eixo
+  (mercado e Estado, punir e prevenir, liberdade e ordem…), cada uma com
+  ganhadores e perdedores e com posição na bússola; o verificador recusa opção
+  sem lado
+- Exemplo: "Uma grande empresa quebrou" tem salvar com dinheiro público para
+  manter os empregos, salvar em troca de participação nas ações, ou deixar
+  quebrar e amparar os demitidos
+- Revisão dos 91 dilemas atuais por essa regra (o V1-24 completa o conjunto)
+- Dilemas e pedidos do Congresso chegam como notificação no tablet, sem janela
+  piscando na tela; o turno espera as que pedem resposta
+- Tablet com cara de tablet: tela inicial com apps (notícias, rede, pauta,
+  notificações)
+
+**Não entra**
+
+- Personagens que pedem por nome (versão 2)
+
+**Aceite**
+
+- [ ] Todo dilema tem opções com posição diferente na bússola (teste do verificador)
+- [ ] Nenhum dilema abre janela sozinho; a notificação fica no tablet até a resposta
+- [ ] Checagem de diferenciacao-d4.md feita
+
+**Você vê.** O tablet com notificações; dilemas com escolhas de lado.
+
+**Divisão.** Claude: Reescreve os dilemas e o tablet. Autor: Lê uma amostra e
+aprova o tablet.
 
 ## Marco E. Conteúdo (v0.5 a v0.7)
 
@@ -632,7 +688,8 @@
 
 **Tamanho:** M · **Depende de:** V1-23
 
-**Objetivo.** Revisar os eventos e dilemas e completar o conjunto.
+**Objetivo.** Revisar os eventos e completar os eventos e dilemas (os dilemas
+atuais já passam pela regra de lados no V1-13).
 
 **Entra**
 
@@ -646,6 +703,7 @@
 
 **Aceite**
 
+- [ ] Todo dilema segue a regra de lados do V1-13 (teste do verificador)
 - [ ] Em 80 turnos, nenhuma ocorrência mais de 3 vezes (teste já existente, mantido)
 - [ ] Todo texto escrito por nós
 
@@ -694,7 +752,7 @@
 
 **Não entra**
 
-- Parlamento no centro (versão 2)
+- Um ponto por deputado (o Congresso fica no painel do V1-11)
 
 **Aceite**
 
@@ -714,7 +772,7 @@
 **Entra**
 
 - Dividir Documentos.tsx
-- Controle, custo político, dinheiro, efeitos com atraso, segmentos, história, fontes
+- Controle, caminho no Congresso e quórum, posição na bússola, dinheiro, efeitos com atraso, segmentos, história, fontes
 - Catálogo com busca e filtros
 
 **Aceite**
@@ -754,6 +812,7 @@
 
 - Metas da história do país
 - Cerca de 30 conquistas
+- Balanço do mandato no fim dos 16 turnos (a eleição é da versão 2)
 
 **Aceite**
 
@@ -805,9 +864,33 @@
 
 **Divisão.** Claude: Roda as partidas e ajusta. Autor: Joga e decide.
 
-### V1-32: Versão 1.0
+### V1-33: Salvar e carregar
 
 **Tamanho:** P · **Depende de:** V1-31
+
+**Objetivo.** Guardar e retomar a partida.
+
+**Entra**
+
+- Salvar no navegador e exportar arquivo
+- Versão do esquema na partida salva
+
+**Não entra**
+
+- Nuvem
+
+**Aceite**
+
+- [ ] Partida salva e carregada produz o mesmo próximo turno
+- [ ] Versão errada é recusada com mensagem
+
+**Você vê.** Botões salvar e carregar.
+
+**Divisão.** Claude: Escreve e testa. Autor: Testa no navegador.
+
+### V1-32: Versão 1.0
+
+**Tamanho:** P · **Depende de:** V1-33
 
 **Objetivo.** Publicar a versão 1.
 
@@ -819,7 +902,7 @@
 **Aceite**
 
 - [ ] npm run check verde
-- [ ] Partida completa de dois mandatos sem erro
+- [ ] Partida completa de um mandato sem erro, com o balanço no fim
 
 **Você vê.** Versão 1 pronta.
 

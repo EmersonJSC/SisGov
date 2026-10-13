@@ -8,11 +8,11 @@
 
 ### 1.1 Níveis
 
-| Nível | O que é | Controle | Como muda no jogo (versão 1) |
-| --- | --- | --- | --- |
-| Constituição | Regra do Estado | 2 a 5 opções com nome | Custa muito capital político e exige aprovação popular mínima; leva 4 turnos |
-| Lei | O modelo de um assunto | 2 a 5 opções com nome | Custo médio; leva de 1 a 2 turnos |
-| Decreto e orçamento | Uma alavanca: valor, programa ou proibição | Faixa ou liga e desliga | Custo baixo; vale no turno seguinte |
+| Nível               | O que é                                    | Controle                | Como muda no jogo (versão 1)                                                 |
+| ------------------- | ------------------------------------------ | ----------------------- | ---------------------------------------------------------------------------- |
+| Constituição        | Regra do Estado                            | 2 a 5 opções com nome   | Emenda: 3/5 das duas casas, em dois turnos (V1-12)                           |
+| Lei                 | O modelo de um assunto                     | 2 a 5 opções com nome   | Votação no Congresso: maioria simples (ordinária) ou absoluta (complementar) |
+| Decreto e orçamento | Uma alavanca: valor, programa ou proibição | Faixa ou liga e desliga | Sem votação; vale no turno seguinte                                          |
 
 Uma lei pode depender de outra (o cheque-escola só existe se a escola não for só
 estatal). Quando a lei mãe muda, as filhas que deixam de caber caem, com aviso
@@ -20,20 +20,20 @@ antes.
 
 ### 1.2 Ficha (formato v3)
 
-| Campo | Regra |
-| --- | --- |
-| `id`, `nome`, `descricao` | Nome neutro, sem nome de programa ou órgão de um país |
-| `area`, `ministerio` | Uma das 10 áreas; o ministério vem da configuração do país |
-| `nivel`, `controle` | Conforme 1.1 |
-| `custoPolitico` | Aprovar, revogar, subir e baixar, em pontos de capital |
-| `dinheiro` | Gasto ou receita no mínimo e no máximo, em % do PIB |
-| `implantacao` | Turnos até fazer efeito e curva de entrada |
-| `dependeDe`, `excludentes` | Só quando faz sentido |
-| `requer` | Características do país exigidas ou proibidas |
-| `efeitos` | De 3 a 8, em índices, com mecanismo do motor, atraso e duração |
-| `populacao` | Segmentos que gostam e que não gostam, com intensidade |
-| `historia` | Países que usam cada opção e o caso brasileiro |
-| `fontes` | Pelo menos uma, com link, para os números |
+| Campo                      | Regra                                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `id`, `nome`, `descricao`  | Nome neutro, sem nome de programa ou órgão de um país                                                         |
+| `area`, `ministerio`       | Uma das 10 áreas; o ministério vem da configuração do país                                                    |
+| `nivel`, `controle`        | Conforme 1.1                                                                                                  |
+| `custoPolitico`            | Fora de uso: o capital político saiu no replanejamento de 13/out; o caminho no Congresso vem do nível (V1-12) |
+| `dinheiro`                 | Gasto ou receita no mínimo e no máximo, em % do PIB                                                           |
+| `implantacao`              | Turnos até fazer efeito e curva de entrada                                                                    |
+| `dependeDe`, `excludentes` | Só quando faz sentido                                                                                         |
+| `requer`                   | Características do país exigidas ou proibidas                                                                 |
+| `efeitos`                  | De 3 a 8, em índices, com mecanismo do motor, atraso e duração                                                |
+| `populacao`                | Segmentos que gostam e que não gostam, com intensidade                                                        |
+| `historia`                 | Países que usam cada opção e o caso brasileiro                                                                |
+| `fontes`                   | Pelo menos uma, com link, para os números                                                                     |
 
 O JSON do jogo é gerado da ficha (detalhes do formato em
 `docs/fichas/v3/README.md`). O verificador recusa ficha sem fonte, com
@@ -80,14 +80,14 @@ Taxonomia própria, baseada nos cortes que as pesquisas eleitorais brasileiras
 usam (renda, ocupação, religião, idade, território e valores). Uma pessoa está em
 vários segmentos ao mesmo tempo.
 
-| Eixo | Segmentos |
-| --- | --- |
-| Renda | Pobres; Classe média; Ricos |
-| Ocupação | Trabalhadores com carteira; Informais e de aplicativo; Servidores públicos; Empresários; Pequenos empreendedores; Agronegócio; Agricultura familiar; Aposentados |
-| Idade e família | Jovens; Famílias com filhos |
-| Religião | Evangélicos; Católicos |
-| Valores | Progressistas; Conservadores; Ambientalistas |
-| Território | Periferias das metrópoles; Interior |
+| Eixo            | Segmentos                                                                                                                                                        |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Renda           | Pobres; Classe média; Ricos                                                                                                                                      |
+| Ocupação        | Trabalhadores com carteira; Informais e de aplicativo; Servidores públicos; Empresários; Pequenos empreendedores; Agronegócio; Agricultura familiar; Aposentados |
+| Idade e família | Jovens; Famílias com filhos                                                                                                                                      |
+| Religião        | Evangélicos; Católicos                                                                                                                                           |
+| Valores         | Progressistas; Conservadores; Ambientalistas                                                                                                                     |
+| Território      | Periferias das metrópoles; Interior                                                                                                                              |
 
 **Perfis sintéticos.** O eleitorado é um conjunto de algumas centenas de perfis
 com peso (por exemplo: "mulher, 35 anos, informal, evangélica, periferia,
@@ -101,19 +101,19 @@ Atores reais da vida política, com nomes genéricos para servir a qualquer paí
 Cada um tem uma base (segmentos que representa), recursos e um **repertório**
 próprio de ações.
 
-| Tipo | Grupos | Repertório |
-| --- | --- | --- |
-| Trabalho | Centrais sindicais; Sindicatos de servidores; Associações de aposentados | Greve, ato, campanha |
-| Empresas | Confederação da indústria; Entidades do comércio e serviços; Entidades do agronegócio; Mercado financeiro | Campanha na mídia, fuga de investimento, lobby (versão 2) |
-| Movimentos sociais | Movimentos por terra; Movimentos por moradia; Movimento estudantil; Movimento negro; Movimento feminista; Movimento LGBT; Movimento ambientalista; Povos originários | Ocupação, ato, bloqueio, campanha |
-| Religião | Frentes evangélicas; Hierarquia católica | Campanha, mobilização de fiéis |
-| Estado e força | Associações de policiais e militares | Operação padrão, greve branca |
-| Mídia | Grandes grupos de mídia | Pauta negativa, que aumenta o efeito das crises |
-| Crime | Facções e milícias | Ameaça e ataque, quando a repressão sobe ou o Estado recua |
+| Tipo               | Grupos                                                                                                                                                               | Repertório                                                 |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Trabalho           | Centrais sindicais; Sindicatos de servidores; Associações de aposentados                                                                                             | Greve, ato, campanha                                       |
+| Empresas           | Confederação da indústria; Entidades do comércio e serviços; Entidades do agronegócio; Mercado financeiro                                                            | Campanha na mídia, fuga de investimento, lobby (versão 2)  |
+| Movimentos sociais | Movimentos por terra; Movimentos por moradia; Movimento estudantil; Movimento negro; Movimento feminista; Movimento LGBT; Movimento ambientalista; Povos originários | Ocupação, ato, bloqueio, campanha                          |
+| Religião           | Frentes evangélicas; Hierarquia católica                                                                                                                             | Campanha, mobilização de fiéis                             |
+| Estado e força     | Associações de policiais e militares                                                                                                                                 | Operação padrão, greve branca                              |
+| Mídia              | Grandes grupos de mídia                                                                                                                                              | Pauta negativa, que aumenta o efeito das crises            |
+| Crime              | Facções e milícias                                                                                                                                                   | Ameaça e ataque, quando a repressão sobe ou o Estado recua |
 
 A versão 1 calcula a **mobilização** de cada grupo (cresce com a insatisfação da
 base e cai com o atendimento) e dispara ações do repertório. Lobby no
-parlamento fica para a versão 2.
+parlamento entra com o Congresso (V1-11 e V1-12).
 
 ## 4. Índices e situações
 
