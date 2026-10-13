@@ -11,7 +11,7 @@
 | Grupos de pressão                              | V1-09    | `pressao.md`                | Aprovado (12/out) e implementado    |
 | Bússola política                               | V1-10    | `bussola.md`                | Aprovado e feito (13/out)           |
 | Câmara e Senado                                | V1-11    | `congresso.md`              | Aprovado e feito (13/out)           |
-| Tramitação e votação                           | V1-12    | `tramitacao.md`             | Em revisão (13/out)                 |
+| Tramitação e votação                           | V1-12    | `tramitacao.md`             | Aprovado (13/out)                   |
 | Leis de todos os lados e prova real            | V1-34    | `leis-de-todos-os-lados.md` | Aprovado; prova feita (13/out)      |
 | Organização das leis                           | V1-34    | `organizacao-das-leis.md`   | Em revisão (13/out)                 |
 | Leis em camadas como minijogo                  | V1-34    | `leis-em-camadas.md`        | Em revisão (13/out)                 |

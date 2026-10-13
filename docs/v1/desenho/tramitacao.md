@@ -1,12 +1,11 @@
 # Tramitação e votação (V1-12)
 
-**Status:** EM REVISÃO (13/out). Desenho da etapa 0; o código só começa com
-a aprovação do autor. As perguntas estão na seção 8.
+**Status:** APROVADO (13/out). Respostas do autor na seção 8.
 
 ## 0. Resumo
 
 Você escolhe no tablet uma lei que não está em vigor (ou quer mudar a opção
-de uma que está) e manda ao Congresso. Ela entra na **pauta**, passa pela
+de uma que está) e manda ao Congresso. Ela entra na **fila**, passa pela
 Câmara e pelo Senado, um turno em cada casa, e cada bancada vota pela nota da
 camada 2 do Congresso (`congresso.md`). Volta para você só o resultado:
 **passou**, **adiou** ou **caiu**, com o placar. O caminho e o quórum
@@ -57,8 +56,13 @@ disposição de partida, tem que aprovar perto disso.
   direito penal, eleições, direitos políticos e nacionalidade (art. 62,
   § 1º). Ela vale enquanto tramita; se cair, a lei volta ao que era e o
   efeito desfaz. Usar muito irrita o Congresso.
-- **A pauta** tem lugar para até 4 projetos seus ao mesmo tempo (valor
-  inferido, a calibrar jogando). Isso força escolher prioridades.
+- **A fila** (decisão do autor, 13/out): você pode mandar várias leis, mas
+  o Congresso não vota tudo de uma vez. Cada casa vota no máximo 2 projetos
+  seus por turno (valor inferido, a calibrar jogando), na ordem em que
+  chegaram. Os outros esperam na fila. Urgência e modo emergência passam a
+  lei para a frente. Medida provisória que passa de um turno sem votação
+  **tranca a fila** (art. 62, § 6º): nada mais é votado naquela casa até ela
+  ser votada.
 
 ## 3. A votação
 
@@ -73,11 +77,11 @@ Cada cadeira sorteia o voto com semente (mesma semente, mesma votação). As do
 seu partido seguem você com 90% de chance (a base segue o líder em mais de
 80% das votações). Passa se os votos sim chegam ao quórum.
 
-- **Adia:** faltaram menos de 5% do quórum. A lei volta na pauta no turno
+- **Adia:** faltaram menos de 5% do quórum. A lei volta na fila no turno
   seguinte sem perder o lugar.
-- **Cai:** faltou mais. Sai da pauta; emenda só volta no ano seguinte.
+- **Cai:** faltou mais. Sai da fila; emenda só volta no ano seguinte.
 
-A pauta mostra a **previsão**: os votos esperados (soma das chances) contra
+A fila mostra a **previsão**: os votos esperados (soma das chances) contra
 o quórum, por casa, antes de votar.
 
 ## 4. Pedidos do Congresso
@@ -90,17 +94,17 @@ no tablet:
 | -------------------- | ----------------------------------------------------- | ---------------------------- |
 | Um ministério        | disposição da bancada sobe; o ministério muda de mãos | disposição dela cai um pouco |
 | Emendas (verba)      | sai dinheiro do cofre; disposição sobe                | disposição dela cai um pouco |
-| Apoio a uma lei dela | a lei dela entra na sua pauta                         | disposição dela cai um pouco |
+| Apoio a uma lei dela | a lei dela entra na sua fila                          | disposição dela cai um pouco |
 
 Aceitar muda o voto da bancada nesta votação (aceite do chamado).
 
 ## 5. Regras entre leis
 
-- **Leis que se anulam** não ficam juntas: com uma em vigor ou na pauta, a
+- **Leis que se anulam** não ficam juntas: com uma em vigor ou na fila, a
   outra nem vai ao Congresso. Exemplo do V1-35: vender e estatizar o mesmo
   setor.
-- **Lei que exige outra** (já existe no jogo): só pode ir à pauta com a mãe
-  em vigor na opção certa, ou junto com ela na pauta.
+- **Lei que exige outra** (já existe no jogo): só pode ir à fila com a mãe
+  em vigor na opção certa, ou junto com ela na fila.
 - **Camadas** (`leis-em-camadas.md`): mudar a Constituição destrava ou trava
   as leis de baixo; a votação da emenda vem antes.
 
@@ -128,8 +132,10 @@ aprovada, o nível passa a ser um campo só, no arquivo do país.
 1. Medida provisória: **sim** (autor, 13/out).
 2. Tempo de 2 e 4 turnos, com urgência: **sim**, e com modo emergência
    (autor, 13/out).
-3. **Pauta com até 4 projetos** ao mesmo tempo? Recomendo, a calibrar.
-4. **Pedidos** (ministério, emendas, apoio a uma lei da bancada)? Recomendo.
+3. Fila: **sim**, com até 2 votações suas por casa a cada turno (autor,
+   13/out).
+4. Pedidos (ministério, emendas, apoio a uma lei da bancada): **sim** (autor,
+   13/out).
 
 ## Fontes
 
