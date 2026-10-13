@@ -396,6 +396,10 @@ export function TelaPrincipal() {
     () => (partida ? verTramitacao(partida) : null),
     [partida],
   );
+  const visaoDaBussola = useMemo(
+    () => (partida ? verBussola(partida) : undefined),
+    [partida],
+  );
   // V1-13: dilemas e pedidos do Congresso esperando no tablet
   const avisosNoTablet =
     (visao?.ocorrencias.mesa.length ?? 0) + (congresso?.pedidos.length ?? 0);
@@ -759,11 +763,17 @@ export function TelaPrincipal() {
 
       {jornalAberto ? (
         <PaginaDeJornal
-          edicao={montarJornal(visao, visaoAnterior, relatorio, historico)}
+          edicao={montarJornal(
+            visao,
+            visaoAnterior,
+            relatorio,
+            historico,
+            visaoDaBussola?.rumo,
+          )}
           data={trimestre(visao.turno)}
           numero={visao.turno + 1}
           onFechar={fecharJornal}
-          bussola={partida ? verBussola(partida) : undefined}
+          bussola={visaoDaBussola}
           congresso={congresso?.casas.length ? congresso : undefined}
           nomeDaLei={(id) => visao.leis.find((l) => l.id === id)?.nome ?? id}
           onResponderPedido={responderAoPedido}

@@ -215,6 +215,6 @@ da seção 2.
 - **Na tela:** botão "Bússola" na barra e um app no tablet, com camadas de
   personalidades e de partidos, os cinco mais perto, as leis que mais puxam o
   ponto e a fonte de cada número.
-- **Ainda não:** a frase "O governo está cada vez mais perto de …" no jornal
-  e a setinha na janela da lei (seção 4.5) ficam para o V1-13, junto com os
-  dilemas com lados.
+- **Depois, no V1-13:** a frase "O governo está cada vez mais perto de …"
+  entrou no jornal, e a setinha da lei ficou de fora das escolhas de dilema
+  (o autor pediu escolha às cegas).

@@ -557,6 +557,11 @@ export type VisaoBussola = Readonly<{
     porque: string;
   }>[];
   fatorDoRumo: Readonly<{ economia: number; costumes: number }>;
+  /**
+   * A frase do rumo no jornal: a personalidade de quem o último turno
+   * aproximou o governo, e a que era a mais perto antes, se mudou.
+   */
+  rumo?: Readonly<{ referencia: VisaoReferencia; antes?: VisaoReferencia }>;
   fonte: string;
   semMedida: readonly Readonly<{ nome: string; motivo: string }>[];
 }>;

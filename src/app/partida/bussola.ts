@@ -8,6 +8,7 @@ import {
   maisProximas,
   pontoAtual,
   referenciasDaBussola,
+  rumoDoTurno,
   vetoresDasLeis,
   type Referencia,
 } from "../../game/bussola";
@@ -56,6 +57,7 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
         Math.hypot(b.economia, b.costumes) - Math.hypot(a.economia, a.costumes),
     )
     .slice(0, 8);
+  const rumo = rumoDoTurno(estado.caminho, referenciasDaBussola.personalidades);
   return {
     ponto,
     inicio: estado.inicio,
@@ -66,6 +68,14 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
     pertoPartidos: perto(referenciasDaBussola.partidos),
     leisQueMaisPuxam: puxam,
     fatorDoRumo: bussolaDoMundo.fatorDoRumo,
+    ...(rumo
+      ? {
+          rumo: {
+            referencia: visaoDa(rumo.referencia),
+            ...(rumo.antes ? { antes: visaoDa(rumo.antes) } : {}),
+          },
+        }
+      : {}),
     fonte: `${referenciasDaBussola.fonte.nome}; ${referenciasDaBussola.fonte.versao}.`,
     semMedida: referenciasDaBussola.semMedida.map(({ nome, motivo }) => ({
       nome,

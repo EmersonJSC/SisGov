@@ -151,4 +151,6 @@ dilema é escrito a partir de caso real. O que já é nosso:
   importância 1 (`importancia.dilema`) e fica guardada na partida
   (`compass.decisoes`).
 - **Na tela:** nada antes de assinar. Depois, o cartão mostra o que a decisão
-  mexe e a prévia de um ano, sem a bússola. A frase do rumo no jornal (seção 3) fica para depois.
+  mexe e a prévia de um ano, sem a bússola. A frase do rumo saiu no jornal: quando o turno muda a personalidade
+  mais perto, ou o ponto chega pelo menos 0,1 mais perto de alguém, entra a
+  notícia "O governo está cada vez mais perto de …".

@@ -96,3 +96,31 @@ export function maisProximas(
     .sort((a, b) => a.distancia - b.distancia)
     .slice(0, quantas);
 }
+
+/** Quanto o ponto precisa chegar perto, num turno, para virar notícia. */
+export const PASSO_DO_RUMO = 0.1;
+
+/**
+ * A frase do rumo (V1-10 e V1-13): de quem o último turno aproximou o
+ * governo. Vale quando a referência mais perto mudou; senão, é a mais perto
+ * de quem o ponto chegou pelo menos `PASSO_DO_RUMO` mais perto no turno.
+ */
+export function rumoDoTurno(
+  caminho: EstadoDaBussola["caminho"],
+  lista: readonly Referencia[],
+): Readonly<{ referencia: Referencia; antes?: Referencia }> | undefined {
+  if (caminho.length < 2 || !lista.length) return undefined;
+  const ordem = [...caminho].sort((a, b) => a.turno - b.turno);
+  const antes = ordem[ordem.length - 2];
+  const agora = ordem[ordem.length - 1];
+  const perto = maisProximas(agora, lista, lista.length).map(
+    (p) => p.referencia,
+  );
+  const pertoAntes = maisProximas(antes, lista, 1)[0].referencia;
+  if (pertoAntes.id !== perto[0].id)
+    return { referencia: perto[0], antes: pertoAntes };
+  const alvo = perto.find(
+    (r) => distancia(antes, r) - distancia(agora, r) >= PASSO_DO_RUMO,
+  );
+  return alvo ? { referencia: alvo } : undefined;
+}

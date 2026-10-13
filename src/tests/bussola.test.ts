@@ -13,9 +13,12 @@ import {
 import {
   bussolaDoMundo,
   criarBussola,
+  distancia,
   pontoComRumo,
   referenciasDaBussola,
+  rumoDoTurno,
 } from "../game/bussola";
+import { noticiaDoRumo } from "../ui/mapa/jornal";
 
 const leisDoMundo = Object.values(
   import.meta.glob<{ id: string; controle: { opcoes?: { id: string }[] } }>(
@@ -140,5 +143,79 @@ describe("referências", () => {
       v.pertoPersonalidades[4].distancia,
     );
     expect(v.leisQueMaisPuxam.length).toBeGreaterThan(0);
+  });
+});
+
+describe("frase do rumo no jornal (V1-13)", () => {
+  const refs = referenciasDaBussola.personalidades;
+  const alvo = refs[0];
+  const outro = refs.find(
+    (r) =>
+      Math.hypot(r.economia - alvo.economia, r.costumes - alvo.costumes) > 4,
+  )!;
+
+  it("sai quando o ponto chega perto de uma referência", () => {
+    const longe = { economia: alvo.economia + 1, costumes: alvo.costumes };
+    const perto = { economia: alvo.economia + 0.2, costumes: alvo.costumes };
+    const rumo = rumoDoTurno(
+      [
+        { turno: 0, ...longe },
+        { turno: 1, ...perto },
+      ],
+      [alvo, outro],
+    );
+    expect(rumo?.referencia.id).toBe(alvo.id);
+    expect(rumo?.antes).toBeUndefined();
+  });
+
+  it("diz quem era o mais perto quando muda", () => {
+    const rumo = rumoDoTurno(
+      [
+        { turno: 0, economia: outro.economia, costumes: outro.costumes },
+        { turno: 1, economia: alvo.economia, costumes: alvo.costumes },
+      ],
+      [alvo, outro],
+    );
+    expect(rumo?.antes?.id).toBe(outro.id);
+  });
+
+  it("não sai quando o ponto fica parado", () => {
+    const p = { economia: alvo.economia + 1, costumes: alvo.costumes };
+    expect(
+      rumoDoTurno(
+        [
+          { turno: 0, ...p },
+          { turno: 1, ...p },
+        ],
+        [alvo, outro],
+      ),
+    ).toBeUndefined();
+  });
+
+  it("vira notícia no jornal quando a lei muda o rumo", () => {
+    // tarifa zero no transporte: o ponto anda para o Estado
+    const lei = partida.content.policies.find(
+      (p) => p.id === "transporte-publico",
+    )!;
+    const zero = lei.controle.opcoes!.find((o) => o.id === "tarifa-zero")!;
+    const mudada = mudarLei(partida, lei.id, zero.valor);
+    if (!mudada.ok) throw new Error(mudada.erros.join("\n"));
+    const turno = encerrarTurno(mudada.value);
+    if (!turno.ok) throw new Error(turno.erros.join("\n"));
+    const v = verBussola(turno.value.partida)!;
+    const [antes, agora] = v.caminho;
+    const alvo = referenciasDaBussola.personalidades.find(
+      (r) => r.id === v.rumo?.referencia.id,
+    )!;
+    expect(distancia(antes, alvo) - distancia(agora, alvo)).toBeGreaterThan(
+      0.1,
+    );
+    const noticia = noticiaDoRumo(v.rumo);
+    expect(noticia?.manchete).toMatch(/O governo .*perto de/);
+    expect(noticia?.texto).toContain("app Bússola");
+    // sem lei nova, o ponto fica e não há notícia
+    const parado = encerrarTurno(turno.value.partida);
+    if (!parado.ok) throw new Error(parado.erros.join("\n"));
+    expect(verBussola(parado.value.partida)!.rumo).toBeUndefined();
   });
 });

@@ -9,7 +9,9 @@ import type {
   VisaoBolha,
   VisaoEfeitoOcorrencia,
   VisaoGrupo,
+  VisaoBussola,
   VisaoPartida,
+  VisaoReferencia,
 } from "../../app/partida";
 import { diferenca, valorDaBolha, valorReal } from "./formatos";
 import { efeitoDe, type Efeito } from "./relacoes";
@@ -519,14 +521,42 @@ function pressao(visao: VisaoPartida): OpiniaoDoJornal[] {
     }));
 }
 
+const quemE = (r: VisaoReferencia) =>
+  `${r.nome} (${[r.partido, r.pais].filter(Boolean).join(", ")})`;
+
+/**
+ * A frase do rumo (V1-10 e V1-13): para perto de quem as leis e as decisões
+ * do turno levaram o governo na bússola. Só diz o fato, sem opinião.
+ */
+export function noticiaDoRumo(
+  rumo: VisaoBussola["rumo"],
+): NoticiaDoJornal | undefined {
+  if (!rumo) return undefined;
+  const { referencia, antes } = rumo;
+  return {
+    id: `rumo-${referencia.id}`,
+    tipo: "situacao",
+    manchete: antes
+      ? `O governo agora está mais perto de ${referencia.nome} do que de ${antes.nome}`
+      : `O governo está cada vez mais perto de ${referencia.nome}`,
+    texto: `Na bússola política, as leis e as decisões deste trimestre levaram o governo para perto de ${quemE(referencia)}.${antes ? ` Antes, o mais perto era ${quemE(antes)}.` : ""} O caminho todo está no app Bússola.`,
+    nivel: 1,
+    boa: false,
+    efeitos: [],
+  };
+}
+
 export function montarJornal(
   visao: VisaoPartida,
   anterior: VisaoPartida | null,
   relatorio: RelatorioTurno | null,
   /** Fotos dos turnos passados (a mais antiga primeiro), sem o atual. */
   historico: readonly FotoDoTurno[] = [],
+  /** O rumo na bússola: vira uma notícia quando o governo anda (V1-13). */
+  rumo?: VisaoBussola["rumo"],
 ): EdicaoDoJornal {
-  const lista = noticias(visao, relatorio);
+  const doRumo = relatorio ? noticiaDoRumo(rumo) : undefined;
+  const lista = [...noticias(visao, relatorio), ...(doRumo ? [doRumo] : [])];
   const quadro = indices(visao, anterior, historico);
   // manchete: a maior notícia; sem notícia, o índice que mais mexeu
   const maior = [...quadro]
