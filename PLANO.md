@@ -65,8 +65,9 @@ personagens com mecânica e o dobro de conteúdo (seção 6).
 
 ## 5. Marcos e chamados
 
-> **Ordem de trabalho (decisão do autor, 15/out/2026).** 1) Eleição (V1-39),
-> que fecha o Marco D. 2) Documentos de mecanismos: o jogo separado em
+> **Ordem de trabalho (decisão do autor, 15/out/2026).** 1) Eleição (V1-39):
+> primeiro um documento de desenho estudando como ela funciona, aprovado pelo
+> autor, depois o código; fecha o Marco D. 2) Documentos de mecanismos: o jogo separado em
 > mecanismos (economia primeiro), que são a jogabilidade; V1-35, V1-37 e V1-38
 > entram aqui. 3) Revisão lei a lei, bloco a bloco, pondo os mecanismos em jogo
 > (Marco E). 4) Equilibrar os números e testar (V1-31). A interface (Marco F)

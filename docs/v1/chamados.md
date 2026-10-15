@@ -608,6 +608,10 @@ acontece. O escopo da versão 1 promete "eleição no fim do mandato; vencer
 continua, perder encerra", mas nenhum chamado a fazia (o V1-04 a mandava para
 o V1-12, que virou tramitação). Decisão do autor: entra no Marco D.
 
+**Antes do código.** Documento de desenho `docs/v1/desenho/eleicao.md`,
+estudando como a eleição funciona, aprovado pelo autor. O "Entra" abaixo é a
+proposta inicial e muda com o documento.
+
 **Entra**
 
 - Eleição no turno 16, com os perfis sintéticos do eleitorado (V1-08):
