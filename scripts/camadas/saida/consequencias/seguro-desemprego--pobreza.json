@@ -1,0 +1,17 @@
+{
+  "id": "seguro-desemprego--pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_seguro_desemprego",
+  "alvo": "pobreza",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.18,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "id": "terras-indigenas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Terras indígenas",
+  "descricao": "o Estado reconhece as terras dos povos indígenas, por qual regra, e com quanto autogoverno?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_terras_indigenas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reconhecimento",
+        "rotulo": "Sem reconhecimento",
+        "valor": 0,
+        "apoiam": [
+          "Garimpo e madeira ilegais",
+          "Entidades do agronegócio"
+        ],
+        "rejeitam": [
+          "Povos originários",
+          "Movimento ambientalista"
+        ],
+        "efeitos": "Desmatamento ↑; conflitos no campo ↑ forte; produção de petróleo e minérios ↑; reputação internacional ↓; mineração em terra indígena sem custo legal"
+      },
+      {
+        "id": "reconhecimento-limitado-por-data-de-ocupacao",
+        "rotulo": "Reconhecimento limitado por data de ocupação (hoje na referência, em disputa)",
+        "valor": 33.33,
+        "apoiam": [
+          "Agronegócio",
+          "Conservadores",
+          "Interior"
+        ],
+        "rejeitam": [
+          "Povos originários",
+          "Movimento ambientalista",
+          "Progressistas"
+        ],
+        "efeitos": "Conflitos no campo ↑; desmatamento ↑"
+      },
+      {
+        "id": "demarcacao-pela-ocupacao-tradicional-sem-data",
+        "rotulo": "Demarcação pela ocupação tradicional, sem data",
+        "valor": 66.67,
+        "custoTexto": "0,01 a 0,03% do PIB (aprox.)",
+        "apoiam": [
+          "Povos originários",
+          "Movimento ambientalista",
+          "Progressistas",
+          "Pastorais sociais católicas"
+        ],
+        "rejeitam": [
+          "Agronegócio",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Desmatamento ↓ (aprox.); produção de petróleo e minérios ↓ onde há jazida; reputação internacional ↑"
+      },
+      {
+        "id": "autonomia-autogoverno-do-territorio",
+        "rotulo": "Autonomia: autogoverno do território",
+        "valor": 100,
+        "custoTexto": "0,03% do PIB (aprox.)",
+        "apoiam": [
+          "Povos originários"
+        ],
+        "rejeitam": [
+          "Agronegócio",
+          "Entidades do agronegócio",
+          "Associações de militares"
+        ],
+        "efeitos": "Desmatamento ↓; produção de petróleo e minérios ↓; tensão com as Forças Armadas ↑ (estimado)"
+      }
+    ]
+  },
+  "consequencias": [
+    "terras-indigenas--desmatamento",
+    "terras-indigenas--conflitos-fundiarios",
+    "terras-indigenas--producao-mineral",
+    "terras-indigenas--reputacao-internacional"
+  ],
+  "mae": {
+    "texto": "Licenciamento de obras e empresas. Rigoroso com consulta lá tranca esta lei em Demarcação ou Autonomia. Autonomia aqui exige Rigoroso com consulta lá.",
+    "leis": [
+      "licenciamento-de-obras-e-empresas"
+    ]
+  }
+}

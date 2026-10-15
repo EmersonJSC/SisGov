@@ -1,0 +1,17 @@
+{
+  "id": "investimento-em-pesquisa--fuga-de-cerebros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_investimento_em_pesquisa",
+  "alvo": "fuga_de_cerebros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

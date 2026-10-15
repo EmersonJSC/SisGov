@@ -1,0 +1,17 @@
+{
+  "id": "incentivos-fiscais-regionais--exportacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_incentivos_fiscais_regionais",
+  "alvo": "exportacoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

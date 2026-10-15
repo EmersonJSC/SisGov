@@ -1,0 +1,17 @@
+{
+  "id": "banco-de-desenvolvimento--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_banco_de_desenvolvimento",
+  "alvo": "investimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.138,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

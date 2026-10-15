@@ -1,0 +1,17 @@
+{
+  "id": "energia-nuclear--tensao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_energia_nuclear",
+  "alvo": "tensao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

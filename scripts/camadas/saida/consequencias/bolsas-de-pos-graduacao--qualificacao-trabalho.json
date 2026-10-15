@@ -1,0 +1,17 @@
+{
+  "id": "bolsas-de-pos-graduacao--qualificacao-trabalho",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_bolsas_de_pos_graduacao",
+  "alvo": "qualificacao_trabalho",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

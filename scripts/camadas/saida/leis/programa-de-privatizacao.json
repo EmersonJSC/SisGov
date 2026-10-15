@@ -1,0 +1,73 @@
+{
+  "id": "programa-de-privatizacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Programa de privatização",
+  "descricao": "O governo vende empresas estatais, e quantas?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_programa_de_privatizacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Nada muda"
+      },
+      {
+        "id": "lista-caso-a-caso",
+        "rotulo": "Lista, caso a caso",
+        "valor": 50.0,
+        "custoTexto": "Receita única no cofre",
+        "apoiam": [
+          "Comércio e serviços"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Dívida ↓; eficiência da empresa ↑ (aprox.); evento de greve contra a privatização"
+      },
+      {
+        "id": "venda-ampla",
+        "rotulo": "Venda ampla",
+        "valor": 100,
+        "custoTexto": "Receita única e perda de dividendos",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Dívida ↓; tarifa ambígua; greve contra a privatização ↑"
+      }
+    ]
+  },
+  "consequencias": [],
+  "mae": {
+    "texto": "Propriedade dos meios de produção: \"socialista\" tranca esta lei",
+    "leis": [
+      "propriedade-dos-meios-de-producao"
+    ]
+  }
+}

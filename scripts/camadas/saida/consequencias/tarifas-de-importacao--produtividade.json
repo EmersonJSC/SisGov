@@ -1,0 +1,17 @@
+{
+  "id": "tarifas-de-importacao--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_tarifas_de_importacao",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.32153,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

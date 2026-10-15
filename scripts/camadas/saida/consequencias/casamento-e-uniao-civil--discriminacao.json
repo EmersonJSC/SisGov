@@ -1,0 +1,17 @@
+{
+  "id": "casamento-e-uniao-civil--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_casamento_e_uniao_civil",
+  "alvo": "discriminacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.201,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

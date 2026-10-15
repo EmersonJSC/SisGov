@@ -1,0 +1,66 @@
+{
+  "id": "lista-de-remedios-e-incorporacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Lista de remédios e incorporação",
+  "descricao": "Quem decide quais remédios e tratamentos o sistema público paga: uma lista técnica ou o juiz, caso a caso?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_lista_de_remedios_e_incorporacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "caso-a-caso-o-juiz-pode-mandar-pagar-qualquer-tratamento",
+        "rotulo": "Caso a caso: o juiz pode mandar pagar qualquer tratamento",
+        "valor": 0,
+        "custoTexto": "Gasto com judicialização ↑",
+        "apoiam": [
+          "Indústria farmacêutica"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Gasto com judicialização ↑ sozinho; Fila ↑ (verba presa)"
+      },
+      {
+        "id": "lista-com-excecoes-lista-tecnica-e-o-juiz-so-decide-fora-del",
+        "rotulo": "Lista com exceções: lista técnica e o juiz só decide fora dela com critério",
+        "valor": 50.0,
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Gasto com judicialização ↓; preço pago ↓ com compra central"
+      },
+      {
+        "id": "lista-fechada-por-custo-efetividade-obrigatoria-para-o-juiz",
+        "rotulo": "Lista fechada por custo-efetividade, obrigatória para o juiz",
+        "valor": 100,
+        "custoTexto": "Cofre ↑",
+        "apoiam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Indústria farmacêutica",
+          "Aposentados"
+        ],
+        "efeitos": "Gasto com judicialização ↓ forte; Aprovação do governo ↓ entre pacientes de doenças raras"
+      }
+    ]
+  },
+  "consequencias": [
+    "lista-de-remedios-e-incorporacao--popularidade-governo"
+  ]
+}

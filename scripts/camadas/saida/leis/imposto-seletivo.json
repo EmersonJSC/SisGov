@@ -1,0 +1,98 @@
+{
+  "id": "imposto-seletivo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Imposto seletivo",
+  "descricao": "O país cobra imposto extra sobre produtos que fazem mal à saúde ou ao ambiente?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_imposto_seletivo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "custoTexto": "receita 0",
+        "apoiam": [
+          "Indústria"
+        ],
+        "rejeitam": [
+          "Entidades de saúde pública"
+        ]
+      },
+      {
+        "id": "vicios-tradicionais",
+        "rotulo": "Vícios tradicionais (cigarro e álcool)",
+        "valor": 33.33,
+        "custoTexto": "receita +0,2 a +0,4% do PIB (aprox.)",
+        "apoiam": [
+          "Entidades de saúde pública",
+          "Igrejas evangélicas",
+          "Católicos"
+        ],
+        "rejeitam": [
+          "Apostas",
+          "Comércio e serviços"
+        ],
+        "efeitos": "Consumo de tabaco e álcool ↓; Contrabando ↑ com alíquota alta"
+      },
+      {
+        "id": "saude-ampla",
+        "rotulo": "Saúde ampla (mais bebida açucarada e ultraprocessado) (hoje na referência é parecido, pela EC 132)",
+        "valor": 66.67,
+        "custoTexto": "receita +0,4 a +0,6% do PIB (aprox.)",
+        "apoiam": [
+          "Entidades de saúde pública",
+          "Famílias com filhos"
+        ],
+        "rejeitam": [
+          "Indústria",
+          "Pobres",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Saúde da população ↑ com atraso de anos; Progressividade ↓"
+      },
+      {
+        "id": "saude-e-ambiente",
+        "rotulo": "Saúde e ambiente (mais combustível fóssil e mineração)",
+        "valor": 100,
+        "custoTexto": "receita +0,6 a +1,0% do PIB (aprox.)",
+        "apoiam": [
+          "Ambientalistas",
+          "Entidades de saúde pública"
+        ],
+        "rejeitam": [
+          "Petróleo e mineração",
+          "Caminhoneiros",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Emissões ↓; Preço da energia ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "imposto-seletivo--consumo-tabaco-alcool",
+    "imposto-seletivo--saude-populacao",
+    "imposto-seletivo--emissoes",
+    "imposto-seletivo--preco-energia"
+  ],
+  "mae": {
+    "texto": "Imposto sobre consumo. O estudo diz que \"IVA amplo com devolução\" libera o seletivo como ferramenta de saúde. Proposta minha: \"Saúde ampla\" e \"Saúde e ambiente\" exigem IVA (dual ou amplo).",
+    "leis": [
+      "imposto-sobre-consumo"
+    ]
+  }
+}

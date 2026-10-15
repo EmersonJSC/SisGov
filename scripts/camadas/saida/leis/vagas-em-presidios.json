@@ -1,0 +1,74 @@
+{
+  "id": "vagas-em-presidios",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Vagas em presídios",
+  "descricao": "Quanto o governo gasta para manter e abrir vagas nas prisões?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_vagas_em_presidios",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "minimo-0-10-do-pib",
+        "rotulo": "Mínimo: 0,10% do PIB",
+        "valor": 33.33,
+        "custoAnualPercentualPib": 0.1,
+        "rejeitam": [
+          "Associações de policiais",
+          "Conservadores"
+        ],
+        "efeitos": "Lotação ↑; rebelião ↑; crime organizado ↑"
+      },
+      {
+        "id": "referencia-0-17-do-pib",
+        "rotulo": "Referência: ≈0,17% do PIB (aprox.)",
+        "valor": 66.67,
+        "custoTexto": "≈0,17% do PIB, segurança",
+        "efeitos": "Faltam 174 mil vagas; 1,36 preso por vaga"
+      },
+      {
+        "id": "maximo-0-30-do-pib",
+        "rotulo": "Máximo: 0,30% do PIB",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.3,
+        "apoiam": [
+          "Conservadores",
+          "Associações de policiais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Lotação ↓ em 2 a 4 anos; rebelião ↓; crime organizado ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "vagas-em-presidios--crime-organizado"
+  ]
+}

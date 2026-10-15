@@ -1,0 +1,70 @@
+{
+  "id": "nacionalizacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Nacionalização",
+  "descricao": "Quando o Estado toma uma empresa privada, como ele paga?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_nacionalizacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "indenizacao-previa-em-dinheiro",
+        "rotulo": "Indenização prévia em dinheiro",
+        "valor": 0,
+        "custoTexto": "Indenização paga pelo Tesouro",
+        "efeitos": "Risco-país estável"
+      },
+      {
+        "id": "so-em-setor-estrategico",
+        "rotulo": "Só em setor estratégico",
+        "valor": 50.0,
+        "custoTexto": "Indenização",
+        "apoiam": [
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Petróleo e mineração"
+        ],
+        "efeitos": "Risco-país ↑; investimento estrangeiro ↓"
+      },
+      {
+        "id": "expropriacao-sem-pagar",
+        "rotulo": "Expropriação sem pagar",
+        "valor": 100,
+        "rejeitam": [
+          "Mercado financeiro",
+          "Confederação da indústria",
+          "Petróleo e mineração",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Risco-país ↑ forte; investimento estrangeiro ↓; fuga de capitais ↑; produção da empresa ↓ no médio prazo; desabastecimento ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "nacionalizacao--risco-pais",
+    "nacionalizacao--ied",
+    "nacionalizacao--fuga-capitais"
+  ],
+  "mae": {
+    "texto": "Propriedade dos meios de produção: \"socialista\" libera \"expropriação\"",
+    "leis": [
+      "propriedade-dos-meios-de-producao"
+    ]
+  }
+}

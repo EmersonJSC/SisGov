@@ -113,11 +113,20 @@ describe("SG143 — grupos sociais", () => {
         grupos.find((b) => b.id === g.id)!.valor,
         9,
       );
-      // Ricos só recebem ligações que derrubam (impostos, juros, risco):
-      // não há nada de que gostem ainda (desenho/populacao.md §4).
-      if (g.id !== "grupo_ricos")
-        expect(g.gosta.length, g.id).toBeGreaterThan(0);
-      expect(g.odeia.length, g.id).toBeGreaterThan(0);
+      // o painel mostra o que MUDOU desde o início (15/out): no turno 0 ainda
+      // nada mudou, então não há o que gostar nem odiar
+      expect(g.gosta, g.id).toEqual([]);
+      expect(g.odeia, g.id).toEqual([]);
+    }
+  });
+
+  it("depois que o jogador muda leis, os motivos aparecem do lado e com o sinal certos", () => {
+    const lei = visao.leis.find((l) => l.id === "transferencia-de-renda")!;
+    const mudada = mudarLei(partida, lei.id, lei.maximo!);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    const depois = verPartida(turnos(mudada.value, 4));
+    let comMotivo = 0;
+    for (const g of depois.grupos) {
       expect(g.gosta.length).toBeLessThanOrEqual(5);
       expect(g.odeia.length).toBeLessThanOrEqual(5);
       // cada lado vem do maior para o menor, com o sinal certo
@@ -130,24 +139,36 @@ describe("SG143 — grupos sociais", () => {
         if (i) expect(g.odeia[i - 1].pontos).toBeLessThanOrEqual(m.pontos);
       });
       // o motivo é um nó que existe e liga mesmo ao grupo
-      for (const m of [...g.gosta, ...g.odeia])
+      for (const m of [...g.gosta, ...g.odeia]) {
+        comMotivo += 1;
         expect(
-          visao.ligacoes.some((l) => l.origem === m.id && l.alvo === g.id),
+          depois.ligacoes.some((l) => l.origem === m.id && l.alvo === g.id),
           `${m.id} > ${g.id}`,
         ).toBe(true);
+      }
     }
+    expect(comMotivo).toBeGreaterThan(0);
+    // a transferência de renda é motivo para os pobres gostarem e para a
+    // classe média desgostar (o que a lei mudou, não o que ela é)
+    const pobres = depois.grupos.find((g) => g.id === "grupo_pobres")!;
+    const classeMedia = depois.grupos.find(
+      (g) => g.id === "grupo_classe_media",
+    )!;
+    expect(pobres.gosta.some((m) => m.id === lei.id)).toBe(true);
+    expect(classeMedia.odeia.some((m) => m.id === lei.id)).toBe(true);
   });
 
-  it("revogar a lei que o grupo odeia tira ela da lista", () => {
+  it("a lei que o jogador não mexeu não vira motivo só por existir", () => {
+    // regra fiscal está em vigor desde o início: sem mudar, não aparece
     const antes = visao.grupos.find((g) => g.id === "grupo_pobres")!;
-    expect(antes.odeia.some((m) => m.id === "regra-fiscal")).toBe(true);
+    expect(antes.odeia.some((m) => m.id === "regra-fiscal")).toBe(false);
     const lei = visao.leis.find((l) => l.id === "regra-fiscal")!;
     const mudada = mudarLei(partida, lei.id, lei.minimo!);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));
-    const depois = verPartida(turnos(mudada.value, 4)).grupos.find(
-      (g) => g.id === "grupo_pobres",
-    )!;
-    expect(depois.odeia.some((m) => m.id === "regra-fiscal")).toBe(false);
+    const depois = verPartida(turnos(mudada.value, 4));
+    const motivos = depois.grupos.flatMap((g) => [...g.gosta, ...g.odeia]);
+    // ao mexer nela, ela passa a pesar em quem se liga a ela
+    expect(motivos.some((m) => m.id === "regra-fiscal")).toBe(true);
   });
 
   it("mais transferência de renda: pobres mais satisfeitos, classe média menos", () => {

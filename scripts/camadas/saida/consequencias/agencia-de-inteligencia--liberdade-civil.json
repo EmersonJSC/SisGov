@@ -1,0 +1,17 @@
+{
+  "id": "agencia-de-inteligencia--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_agencia_de_inteligencia",
+  "alvo": "liberdade_civil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.063,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "divisao-da-verba-atencao-basica-x-hospitais--pressao-hospitalar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_divisao_da_verba_atencao_basica_x_hospitais",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.093,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

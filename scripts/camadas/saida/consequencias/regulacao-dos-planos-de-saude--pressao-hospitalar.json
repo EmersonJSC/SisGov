@@ -1,0 +1,17 @@
+{
+  "id": "regulacao-dos-planos-de-saude--pressao-hospitalar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regulacao_dos_planos_de_saude",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

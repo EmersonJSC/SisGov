@@ -1,0 +1,83 @@
+{
+  "id": "imposto-de-renda-das-empresas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Imposto de renda das empresas",
+  "descricao": "Quanto o lucro das empresas paga de imposto?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_imposto_de_renda_das_empresas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "baixa",
+        "rotulo": "Baixa (0 a 12,5%)",
+        "valor": 0,
+        "custoTexto": "receita −1,5 a −2% do PIB (aprox.)",
+        "apoiam": [
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Centrais sindicais"
+        ],
+        "efeitos": "Investimento e investimento estrangeiro ↑; Receita ↓"
+      },
+      {
+        "id": "minimo-global",
+        "rotulo": "Mínimo global (15%)",
+        "valor": 33.33,
+        "custoTexto": "receita −1% do PIB (aprox.)",
+        "apoiam": [
+          "Indústria"
+        ],
+        "efeitos": "Cooperação fiscal internacional ↑; Investimento ↑"
+      },
+      {
+        "id": "media",
+        "rotulo": "Média (20 a 25%)",
+        "valor": 66.67,
+        "custoTexto": "receita −0,5% do PIB (aprox.)",
+        "apoiam": [
+          "Indústria",
+          "Comércio e serviços"
+        ],
+        "efeitos": "Investimento ↑ pouco"
+      },
+      {
+        "id": "alta",
+        "rotulo": "Alta (30 a 35%) (hoje na referência, 34%)",
+        "valor": 100,
+        "apoiam": [
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Empresários",
+          "Indústria"
+        ],
+        "efeitos": "Elisão ↑ (transferência de lucro); o capital é a base que mais foge"
+      }
+    ]
+  },
+  "consequencias": [
+    "imposto-de-renda-das-empresas--transparencia-fiscal-internacional",
+    "imposto-de-renda-das-empresas--investimento"
+  ],
+  "mae": {
+    "texto": "Modelo tributário (tranca a faixa da alavanca).",
+    "leis": [
+      "modelo-tributario"
+    ]
+  }
+}

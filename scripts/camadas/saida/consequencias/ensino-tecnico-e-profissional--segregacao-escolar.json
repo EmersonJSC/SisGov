@@ -1,0 +1,17 @@
+{
+  "id": "ensino-tecnico-e-profissional--segregacao-escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_tecnico_e_profissional",
+  "alvo": "segregacao_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.108,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

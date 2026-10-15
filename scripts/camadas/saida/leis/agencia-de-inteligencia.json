@@ -1,0 +1,77 @@
+{
+  "id": "agencia-de-inteligencia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Agência de inteligência",
+  "descricao": "Quanto dinheiro vai para o serviço de inteligência do Estado?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_agencia_de_inteligencia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "minimo-metade-da-verba-de-hoje",
+        "rotulo": "Mínimo: metade da verba de hoje",
+        "valor": 33.33,
+        "custoTexto": "economia pequena",
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Militares"
+        ],
+        "efeitos": "Capacidade de investigação ↓; crime organizado ↑ (sem número)"
+      },
+      {
+        "id": "referencia-verba-livre-perto-de-r-85-milhoes-em-2024",
+        "rotulo": "Referência: verba livre perto de  85 milhões em 2024 (derivado de um corte de  17 milhões, cerca de 20%)",
+        "valor": 66.67,
+        "custoTexto": "pequeno"
+      },
+      {
+        "id": "maximo-o-triplo-de-hoje",
+        "rotulo": "Máximo: o triplo de hoje",
+        "valor": 100,
+        "custoTexto": "pequeno (aprox.)",
+        "apoiam": [
+          "Militares",
+          "Militares da reserva"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Capacidade de investigação ↑; crime organizado ↓; liberdades civis ↓ se o Congresso não controla"
+      }
+    ]
+  },
+  "consequencias": [
+    "agencia-de-inteligencia--capacidade-inteligencia",
+    "agencia-de-inteligencia--crime-organizado",
+    "agencia-de-inteligencia--liberdade-civil"
+  ]
+}

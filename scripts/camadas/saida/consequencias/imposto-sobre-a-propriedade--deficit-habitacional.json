@@ -1,0 +1,17 @@
+{
+  "id": "imposto-sobre-a-propriedade--deficit-habitacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_imposto_sobre_a_propriedade",
+  "alvo": "deficit_habitacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

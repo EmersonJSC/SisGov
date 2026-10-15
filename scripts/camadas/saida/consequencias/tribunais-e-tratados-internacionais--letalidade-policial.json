@@ -1,0 +1,17 @@
+{
+  "id": "tribunais-e-tratados-internacionais--letalidade-policial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_e_tratados_internacionais",
+  "alvo": "letalidade_policial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.009,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

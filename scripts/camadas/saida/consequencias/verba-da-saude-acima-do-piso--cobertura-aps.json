@@ -1,0 +1,17 @@
+{
+  "id": "verba-da-saude-acima-do-piso--cobertura-aps",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_verba_da_saude_acima_do_piso",
+  "alvo": "cobertura_aps",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.028,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

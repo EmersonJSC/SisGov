@@ -1,0 +1,17 @@
+{
+  "id": "fontes-de-energia-favorecidas--preco-energia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fontes_de_energia_favorecidas",
+  "alvo": "preco_energia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.168,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

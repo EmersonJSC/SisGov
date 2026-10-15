@@ -1,0 +1,86 @@
+{
+  "id": "acolhida-e-interiorizacao-de-imigrantes",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Acolhida e interiorização de imigrantes",
+  "descricao": "Quanto o governo gasta por ano para receber imigrantes na fronteira e levá-los a cidades com trabalho?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "imigracao-e-saida-do-pais",
+    "nome": "Imigração e saída do país",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_acolhida_e_interiorizacao_de_imigrantes",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 33.33,
+        "apoiam": [
+          "Parte dos Conservadores"
+        ],
+        "rejeitam": [
+          "Pastorais sociais católicas",
+          "Progressistas",
+          "Interior"
+        ],
+        "efeitos": "Crise migratória ↑ forte com fluxo concentrado; Protestos locais ↑"
+      },
+      {
+        "id": "referencia-r-300-milhoes-em-2024",
+        "rotulo": "Referência:  300 milhões em 2024",
+        "valor": 66.67,
+        "custoTexto": "cerca de 0,003% do PIB",
+        "apoiam": [
+          "Pastorais sociais católicas",
+          "Empresários"
+        ],
+        "efeitos": "Crise migratória ↓ contra Zero; Pressão hospitalar local ↓ pouco; Protestos locais ↓ (estimado)"
+      },
+      {
+        "id": "alta",
+        "rotulo": "Alta (o dobro; proposta minha)",
+        "valor": 100,
+        "custoTexto": "cerca de 0,005% do PIB",
+        "apoiam": [
+          "Progressistas",
+          "Empresários",
+          "Agronegócio"
+        ],
+        "rejeitam": [
+          "Conservadores"
+        ],
+        "efeitos": "Crise migratória ↓; Pressão hospitalar local ↓; força de trabalho no Sul ↑"
+      }
+    ]
+  },
+  "consequencias": [],
+  "mae": {
+    "texto": "Refúgio e asilo. Com \"Sem asilo\", a verba vai a zero (proposta minha).",
+    "leis": [
+      "refugio-e-asilo"
+    ]
+  }
+}

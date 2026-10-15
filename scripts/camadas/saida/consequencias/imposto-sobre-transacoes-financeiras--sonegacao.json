@@ -1,0 +1,17 @@
+{
+  "id": "imposto-sobre-transacoes-financeiras--sonegacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_imposto_sobre_transacoes_financeiras",
+  "alvo": "sonegacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

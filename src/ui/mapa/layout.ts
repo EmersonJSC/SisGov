@@ -10,6 +10,7 @@ import type {
   VisaoMinisterio,
   VisaoPartida,
 } from "../../app/partida";
+import { escalaDaLei, nivelRelativo, referenciaDasLeis } from "./intensidade";
 import { MEDIDAS, corDaArea } from "./tema";
 
 export const PRESIDENCIA = "presidencia";
@@ -87,24 +88,80 @@ export type BaseMapa = Readonly<{
 }>;
 
 /**
- * Com todas as esferas fechadas, as bolhas dos índices chegam mais perto dos
- * ministérios; quando uma esfera infla e mostra as leis, voltam para fora.
- * (Os grupos sociais, medalhões maiores, ficam onde estão.)
+ * Posição das bolhas dos índices (V1-34, 15/out). Com todas as esferas
+ * fechadas elas chegam mais perto dos ministérios; quando uma esfera infla e
+ * mostra as leis, elas se desviam para fora da borda dela (sem se sobrepor
+ * entre si) e voltam quando a esfera recolhe. Grupos sociais, medalhões
+ * maiores, ficam onde estão.
  */
 export const APROXIMACAO_DAS_BOLHAS = 140;
-export function aproximarBolhas(base: BaseMapa, perto: boolean): BaseMapa {
-  if (!perto) return base;
-  const bolhas = new Map<string, PosicaoBolha>();
+const RAIO_DE_RESERVA_DA_BOLHA = 78; // maior desenho (70) mais o rótulo
+
+export function posicoesDasBolhas(
+  base: BaseMapa,
+  perto: boolean,
+  esfera: Readonly<{ x: number; y: number; r: number }> | null,
+): ReadonlyMap<string, PosicaoBolha> {
+  const bolhas = new Map<
+    string,
+    { -readonly [K in keyof PosicaoBolha]: PosicaoBolha[K] }
+  >();
+  type Movel = { x: number; y: number };
+  const moveis: Movel[] = [];
   for (const [id, b] of base.bolhas) {
     const d = Math.hypot(b.x, b.y);
-    if (b.r > MEDIDAS.raioBolha || d <= APROXIMACAO_DAS_BOLHAS) {
-      bolhas.set(id, b);
+    if (b.r > MEDIDAS.raioBolha) {
+      bolhas.set(id, b); // medalhão de grupo social
       continue;
     }
-    const f = (d - APROXIMACAO_DAS_BOLHAS) / d;
-    bolhas.set(id, { ...b, x: b.x * f, y: b.y * f });
+    if (perto && d > APROXIMACAO_DAS_BOLHAS) {
+      const f = (d - APROXIMACAO_DAS_BOLHAS) / d;
+      const p = { ...b, x: b.x * f, y: b.y * f };
+      bolhas.set(id, p);
+      moveis.push(p);
+    } else {
+      const p = { ...b };
+      bolhas.set(id, p);
+      moveis.push(p);
+    }
   }
-  return { ...base, bolhas };
+  if (!esfera) return bolhas;
+  const folga = 28;
+  const minimo = esfera.r + RAIO_DE_RESERVA_DA_BOLHA + folga;
+  const empurrar = (p: { x: number; y: number }) => {
+    const dx = p.x - esfera.x;
+    const dy = p.y - esfera.y;
+    const d = Math.hypot(dx, dy) || 1;
+    if (d >= minimo) return false;
+    p.x = esfera.x + (dx / d) * minimo;
+    p.y = esfera.y + (dy / d) * minimo;
+    return true;
+  };
+  for (const p of moveis) empurrar(p);
+  // as que foram empurradas podem se encostar: separa aos pares, sem voltar
+  // para dentro da esfera
+  const separacao = RAIO_DE_RESERVA_DA_BOLHA * 1.7;
+  for (let volta = 0; volta < 60; volta++) {
+    let mexeu = false;
+    for (let i = 0; i < moveis.length; i++)
+      for (let j = i + 1; j < moveis.length; j++) {
+        const a = moveis[i];
+        const b = moveis[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const d = Math.hypot(dx, dy) || 0.01;
+        if (d >= separacao) continue;
+        const e = (separacao - d) / 2;
+        a.x -= (dx / d) * e;
+        a.y -= (dy / d) * e;
+        b.x += (dx / d) * e;
+        b.y += (dy / d) * e;
+        mexeu = true;
+      }
+    for (const p of moveis) if (empurrar(p)) mexeu = true;
+    if (!mexeu) break;
+  }
+  return bolhas;
 }
 
 export type LayoutMapa = Readonly<{
@@ -449,7 +506,7 @@ function desembaracar(caixas: Caixa[]) {
       const x0 = c.x;
       const y0 = c.y;
       let achou = false;
-      for (let raio = 16; raio <= 1400 && !achou; raio += 16) {
+      for (let raio = 16; raio <= 700 && !achou; raio += 16) {
         // passos de ~12 px ao longo do círculo: a faixa perto da elipse é fina
         const passos = Math.max(32, Math.ceil((raio * Math.PI * 2) / 12));
         for (let k = 0; k < passos && !achou; k++) {
@@ -588,7 +645,9 @@ export function distanciaDoAnel(
   let d: number = MEDIDAS.distanciaAnel;
   for (let i = 0; i < 120; i++) {
     const distancias = raios.map((_, j) =>
-      j === aberta ? MEDIDAS.distanciaAberta : d,
+      j === aberta
+        ? MEDIDAS.distanciaAberta + (raios[j] - MEDIDAS.raioAberta)
+        : d,
     );
     const total = passosDoAnel(raios, distancias).reduce((a, b) => a + b, 0);
     if (total <= TAU) break;
@@ -992,6 +1051,119 @@ function tamanhoDoRotulo(passo: number) {
   return 14.5 * Math.min(1, passo / 112);
 }
 
+/**
+ * Afasta leis que se encostam (cada uma com o seu raio) sem tirá-las da
+ * região permitida: empurra aos pares e só aceita o passo se o lugar novo
+ * continuar válido.
+ */
+/** O ponto, ou o mais perto dele no caminho até o centro, que ainda é válido. */
+function trazerParaDentro(
+  p: Ponto,
+  r: number,
+  centro: Ponto,
+  valido: (x: number, y: number, r: number) => boolean,
+): Ponto | null {
+  for (let k = 0; k <= 12; k++) {
+    const f = 1 - 0.05 * k;
+    const x = centro.x + (p.x - centro.x) * f;
+    const y = centro.y + (p.y - centro.y) * f;
+    if (valido(x, y, r)) return { x, y };
+  }
+  return null;
+}
+
+function espalharLeis(
+  itens: readonly PosicaoLei[],
+  raioDe: (id: string) => number,
+  valido: (x: number, y: number, r: number) => boolean,
+  saida: Map<string, PosicaoLei> | null,
+  centro: Ponto,
+  fator = 1,
+): number {
+  const n = itens.length;
+  if (n < 1) return 0;
+  const p = itens.map((i) => ({
+    id: i.id,
+    x: i.x,
+    y: i.y,
+    r: raioDe(i.id) * fator,
+  }));
+  // quem começa em lugar inválido (em cima do título, fora da esfera) vai para
+  // o lugar válido mais perto
+  for (const q of p) {
+    if (valido(q.x, q.y, q.r)) continue;
+    let achou = false;
+    for (let raio = 12; raio <= 700 && !achou; raio += 12)
+      for (let k = 0; k < 28 && !achou; k++) {
+        const a = (k / 28) * Math.PI * 2;
+        const x = q.x + Math.cos(a) * raio;
+        const y = q.y + Math.sin(a) * raio;
+        if (valido(x, y, q.r)) {
+          q.x = x;
+          q.y = y;
+          achou = true;
+        }
+      }
+  }
+  const folga = 24; // espaço mínimo visível entre as leis
+  for (let volta = 0; volta < 120; volta++) {
+    let mexeu = false;
+    for (let i = 0; i < n; i++)
+      for (let j = i + 1; j < n; j++) {
+        const a = p[i];
+        const b = p[j];
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        let d = Math.hypot(dx, dy);
+        const minimo = a.r + b.r + folga;
+        if (d >= minimo) continue;
+        if (d < 0.01) {
+          dx = Math.cos(i * 2.4);
+          dy = Math.sin(i * 2.4);
+          d = 1;
+        }
+        const empurra = (minimo - d) / 2;
+        const ux = dx / d;
+        const uy = dy / d;
+        // a maior anda menos (a pequena sai do caminho)
+        const pa = b.r / (a.r + b.r);
+        const pb = a.r / (a.r + b.r);
+        const na = {
+          x: a.x - ux * empurra * 2 * pa,
+          y: a.y - uy * empurra * 2 * pa,
+        };
+        const nb = {
+          x: b.x + ux * empurra * 2 * pb,
+          y: b.y + uy * empurra * 2 * pb,
+        };
+        const pa2 = trazerParaDentro(na, a.r, centro, valido);
+        if (pa2) {
+          a.x = pa2.x;
+          a.y = pa2.y;
+          mexeu = true;
+        }
+        const pb2 = trazerParaDentro(nb, b.r, centro, valido);
+        if (pb2) {
+          b.x = pb2.x;
+          b.y = pb2.y;
+          mexeu = true;
+        }
+      }
+    if (!mexeu) break;
+  }
+  let encostadas = 0;
+  for (let i = 0; i < n; i++)
+    for (let j = i + 1; j < n; j++)
+      if (Math.hypot(p[i].x - p[j].x, p[i].y - p[j].y) < p[i].r + p[j].r - 1)
+        encostadas++;
+  if (saida)
+    for (const q of p) {
+      const antes = saida.get(q.id)!;
+      saida.set(q.id, { ...antes, x: q.x, y: q.y });
+    }
+  return encostadas;
+}
+
 export function montarLayout(
   base: BaseMapa,
   aberta: string | null,
@@ -1000,16 +1172,22 @@ export function montarLayout(
   const m = MEDIDAS;
   const presidenciaAberta = aberta === PRESIDENCIA;
   const indiceAberto = base.ministerios.findIndex((x) => x.nome === aberta);
+  // A zona de influência aberta cresce com o número de leis (Economia, com 54,
+  // fica bem maior): assim as leis cabem espalhadas, sem encolher.
+  const raioAbertoDe = (i: number) =>
+    m.raioAberta *
+    Math.min(2, Math.max(1, Math.sqrt(base.ministerios[i].leis.length / 18)));
   const raios = base.ministerios.map((_, i) =>
     i === indiceAberto
-      ? m.raioAberta
+      ? raioAbertoDe(i)
       : indiceAberto >= 0
         ? m.raioFechadaRecuada
         : m.raioFechada,
   );
   const anel = distanciaDoAnel(raios, indiceAberto);
   const distancias = base.ministerios.map((_, i) =>
-    i === indiceAberto ? m.distanciaAberta : anel,
+    // a borda de dentro fica onde estava: a esfera maior cresce para fora
+    i === indiceAberto ? m.distanciaAberta + (raios[i] - m.raioAberta) : anel,
   );
   const angulos = angulosDoAnel(
     raios,
@@ -1062,6 +1240,63 @@ export function montarLayout(
         rotulo: tamanhoDoRotulo(vagas.passo),
       }),
     );
+    // As leis têm tamanhos de 8 a 46 de raio (pelo valor): afasta as que se
+    // encostam, respeitando o raio de cada uma e os limites da esfera.
+    const referencia = referenciaDasLeis([...base.leis.values()]);
+    const raioVisivel = (id: string) => {
+      const lei = base.leis.get(id);
+      return lei
+        ? m.raioLei * escalaDaLei(nivelRelativo(lei, referencia))
+        : m.raioLei;
+    };
+    const rp = m.raioPresidencia;
+    const c = bloco.caixa;
+    const noBloco = (x: number, y: number, r: number) =>
+      x + r > c.minX && x - r < c.maxX && y + r > c.minY && y - r < c.maxY;
+    const centroLente = {
+      x: Math.cos(esfera.angulo) * (rp * 0.7),
+      y: Math.sin(esfera.angulo) * (rp * 0.7),
+    };
+    // a lente também não cobre o retrato do Presidente
+    const retrato = BLOCO_PRESIDENCIA_ABERTA;
+    const cobreRetrato = (x: number, y: number, r: number) =>
+      x + Math.max(40, r) > retrato.minX &&
+      x - Math.max(40, r) < retrato.maxX &&
+      y + Math.max(50, r) > retrato.minY &&
+      y - Math.max(20, r) < retrato.maxY;
+    const validoLente = (x: number, y: number, r: number) =>
+      Math.hypot(x, y) <= rp - r - 6 &&
+      !noBloco(x, y, r) &&
+      !cobreRetrato(x, y, r);
+    const validoInterna = (x: number, y: number, r: number) =>
+      Math.hypot(x - esfera.x, y - esfera.y) <= esfera.r - r - 8 &&
+      Math.hypot(x, y) >= rp + r + 8 &&
+      !noBloco(x, y, r);
+    const lenteLeis = naLente.map((id) => leis.get(id)!).filter(Boolean);
+    const internaLeis = dentro.map((id) => leis.get(id)!).filter(Boolean);
+    // esfera cheia: só se não couberem com o espaço mínimo as leis encolhem (até 62%)
+    let fator = 1;
+    for (const f of [1, 0.9, 0.8, 0.7, 0.62]) {
+      fator = f;
+      const tocam =
+        espalharLeis(
+          lenteLeis,
+          raioVisivel,
+          validoLente,
+          null,
+          centroLente,
+          f,
+        ) +
+        espalharLeis(internaLeis, raioVisivel, validoInterna, null, esfera, f);
+      if (tocam === 0) break;
+    }
+    espalharLeis(lenteLeis, raioVisivel, validoLente, leis, centroLente, fator);
+    espalharLeis(internaLeis, raioVisivel, validoInterna, leis, esfera, fator);
+    if (fator < 1)
+      for (const id of [...naLente, ...dentro]) {
+        const q = leis.get(id);
+        if (q) leis.set(id, { ...q, r: q.r * fator });
+      }
     pastas.push(...rotulosDasPastas(base, ministerio, esfera, leis));
   }
 

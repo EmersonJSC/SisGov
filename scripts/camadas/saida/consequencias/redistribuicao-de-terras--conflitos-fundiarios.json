@@ -1,0 +1,17 @@
+{
+  "id": "redistribuicao-de-terras--conflitos-fundiarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_redistribuicao_de_terras",
+  "alvo": "conflitos_fundiarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.15,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

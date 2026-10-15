@@ -314,17 +314,41 @@ function ResumoDoTurno({
   );
 }
 
+type Inicial = ReturnType<typeof criarPartida>;
+
+/**
+ * Carrega o conteúdo (validar ~3.800 arquivos leva alguns segundos): mostra
+ * uma tela de carregamento primeiro e só então cria a partida, para a página
+ * não ficar em branco (15/out).
+ */
 export function TelaPrincipal() {
-  // cada partida nova ganha uma semente própria: eventos diferentes (SG106)
-  const inicial = useMemo(
-    () =>
-      // V1-12: as leis passam pelo Congresso (modo real)
-      criarPartida({
-        semente: 1 + Math.floor(Math.random() * 0xfffffffe),
-        modo: "real",
-      }),
-    [],
-  );
+  const [inicial, setInicial] = useState<Inicial | null>(null);
+  useEffect(() => {
+    const id = window.setTimeout(
+      () =>
+        // cada partida nova ganha uma semente própria: eventos diferentes
+        // (SG106); V1-12: as leis passam pelo Congresso (modo real)
+        setInicial(
+          criarPartida({
+            semente: 1 + Math.floor(Math.random() * 0xfffffffe),
+            modo: "real",
+          }),
+        ),
+      60,
+    );
+    return () => window.clearTimeout(id);
+  }, []);
+  if (!inicial)
+    return (
+      <div className="carregando" role="status" aria-live="polite">
+        <div className="carregando-giro" aria-hidden="true" />
+        <p>Carregando o governo…</p>
+      </div>
+    );
+  return <TelaPrincipalCarregada inicial={inicial} />;
+}
+
+function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [salvarAberto, setSalvarAberto] = useState(false);

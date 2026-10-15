@@ -1,0 +1,17 @@
+{
+  "id": "armas-de-fogo--violencia-letal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_armas_de_fogo",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.084,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "regime-do-petroleo-e-mineracao--ied",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_do_petroleo_e_mineracao",
+  "alvo": "ied",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.084,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

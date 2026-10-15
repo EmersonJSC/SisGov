@@ -1,0 +1,59 @@
+{
+  "id": "imposto-sobre-transacoes-financeiras",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Imposto sobre transações financeiras",
+  "descricao": "O governo cobra imposto sobre cada movimentação de dinheiro?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_imposto_sobre_transacoes_financeiras",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 0,
+        "custoTexto": "receita 0",
+        "apoiam": [
+          "Mercado financeiro",
+          "Empresários"
+        ]
+      },
+      {
+        "id": "imposto-so-para-regular-o-mercado",
+        "rotulo": "Imposto só para regular o mercado (hoje na referência, o IOF)",
+        "valor": 50.0,
+        "custoTexto": "receita 0,5 a 0,7% do PIB (aprox.)",
+        "efeitos": "pouco efeito"
+      },
+      {
+        "id": "imposto-sobre-cada-movimentacao-de-0-2-a-0-4",
+        "rotulo": "Imposto sobre cada movimentação, de 0,2 a 0,4%",
+        "valor": 100,
+        "custoTexto": "receita +1 a +1,5% do PIB (aprox.)",
+        "rejeitam": [
+          "Empresários",
+          "Classe média",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Sonegação ↓ (deixa rastro); Crédito e Investimento ↓; Popularidade ↓; protesto contra imposto"
+      }
+    ]
+  },
+  "consequencias": [
+    "imposto-sobre-transacoes-financeiras--sonegacao",
+    "imposto-sobre-transacoes-financeiras--popularidade-governo"
+  ]
+}

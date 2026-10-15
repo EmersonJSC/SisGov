@@ -1,0 +1,17 @@
+{
+  "id": "liberdade-de-imprensa--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_liberdade_de_imprensa",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.12599,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

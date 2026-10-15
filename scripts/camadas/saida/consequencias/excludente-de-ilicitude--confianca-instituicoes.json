@@ -1,0 +1,17 @@
+{
+  "id": "excludente-de-ilicitude--confianca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_excludente_de_ilicitude",
+  "alvo": "confianca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

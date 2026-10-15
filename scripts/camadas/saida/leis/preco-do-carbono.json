@@ -1,0 +1,90 @@
+{
+  "id": "preco-do-carbono",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Preço do carbono",
+  "descricao": "quem emite gás de efeito estufa paga por isso, e quanto?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_preco_do_carbono",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-preco",
+        "rotulo": "Sem preço",
+        "valor": 0,
+        "apoiam": [
+          "Petróleo e mineração",
+          "Confederação da indústria"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista"
+        ],
+        "efeitos": "Emissões sem mudança"
+      },
+      {
+        "id": "mercado-brando-com-isencoes",
+        "rotulo": "Mercado brando, com isenções",
+        "valor": 33.33,
+        "custoTexto": "Arrecada pouco",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Emissões ↓ pouco, com atraso de 2 a 5 anos"
+      },
+      {
+        "id": "mercado-com-teto",
+        "rotulo": "Mercado com teto",
+        "valor": 66.67,
+        "custoTexto": "Arrecada 0,1 a 0,3% do PIB (aprox.)",
+        "apoiam": [
+          "Movimento ambientalista",
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Confederação da indústria"
+        ],
+        "efeitos": "Emissões ↓, atraso de 2 a 5 anos; preço da energia e do combustível ↑; desmatamento ↓ se a floresta gerar crédito (aprox.)"
+      },
+      {
+        "id": "taxa-alta",
+        "rotulo": "Taxa alta",
+        "valor": 100,
+        "custoTexto": "Arrecada 0,5 a 1% do PIB (aprox.)",
+        "apoiam": [
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Confederação da indústria",
+          "Caminhoneiros autônomos",
+          "Pobres"
+        ],
+        "efeitos": "Emissões ↓ forte; preço da energia e do combustível ↑; arrecadação ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "preco-do-carbono--emissoes",
+    "preco-do-carbono--desmatamento"
+  ],
+  "mae": {
+    "texto": "Proteção da vegetação nativa. Sem proteção lá tranca esta lei em Sem preço ou Mercado brando.",
+    "leis": []
+  }
+}

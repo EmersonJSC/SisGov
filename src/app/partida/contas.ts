@@ -126,13 +126,21 @@ export function gruposDaPartida(
   const lawByControl = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy]),
   );
-  const delivered = (id: string) => {
-    const law = lawByControl.get(id);
-    if (law === undefined) return values[id];
-    const ceiling = graph.nodesById[id]?.dominio.maximo;
-    const effect = (values[id] ?? 0) * (values[efficacyNodeId(law.id)] ?? 1);
-    return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
-  };
+  // Valor que chega à rede: nível × eficácia da lei, limitado ao teto.
+  const entregueCom =
+    (vals: Readonly<Record<string, number>>) => (id: string) => {
+      const law = lawByControl.get(id);
+      if (law === undefined) return vals[id];
+      const ceiling = graph.nodesById[id]?.dominio.maximo;
+      const effect = (vals[id] ?? 0) * (vals[efficacyNodeId(law.id)] ?? 1);
+      return ceiling !== undefined ? Math.min(effect, ceiling) : effect;
+    };
+  const delivered = entregueCom(values);
+  // Linha de base: o mesmo país no piloto automático (sem as decisões do
+  // jogador). O painel mostra o que as decisões dele mudaram, e não o nível ×
+  // peso de cada coisa, que não diz nada sem uma base (15/out).
+  const valoresPiloto = partida.piloto.execution.values;
+  const deliveredPiloto = entregueCom(valoresPiloto);
   // Parte do eleitorado de cada segmento: a soma dos perfis em que ele entra
   // (V1-08). Um eleitor está em vários segmentos; as partes não somam 1.
   const aprovacao = content.manifest.aprovacaoPorPerfis;
@@ -171,13 +179,26 @@ export function gruposDaPartida(
           : delivered(relation.originId);
         if (origem === undefined) continue;
         const c = calculateContribution(relation, origem, delivered);
-        if (!c.ok || Math.abs(c.value.value) < 0.05) continue;
+        if (!c.ok) continue;
+        const origemPiloto = relation.readsLevel
+          ? valoresPiloto[relation.originId]
+          : deliveredPiloto(relation.originId);
+        let pontos = c.value.value;
+        if (origemPiloto !== undefined) {
+          const base = calculateContribution(
+            relation,
+            origemPiloto,
+            deliveredPiloto,
+          );
+          if (base.ok) pontos -= base.value.value;
+        }
+        if (Math.abs(pontos) < 0.05) continue;
         const lei = lawByControl.get(relation.originId);
         motivos.push({
           id: lei?.id ?? relation.originId,
           nome: lei?.nome ?? graph.nodesById[relation.originId]?.nome ?? "",
           tipo: lei ? "lei" : "bolha",
-          pontos: c.value.value,
+          pontos,
         });
       }
       return {

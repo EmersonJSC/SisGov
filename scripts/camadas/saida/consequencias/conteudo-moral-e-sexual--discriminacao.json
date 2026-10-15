@@ -1,0 +1,17 @@
+{
+  "id": "conteudo-moral-e-sexual--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_conteudo_moral_e_sexual",
+  "alvo": "discriminacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fiscalizacao-ambiental--desmatamento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fiscalizacao_ambiental",
+  "alvo": "desmatamento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.186,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

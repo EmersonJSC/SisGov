@@ -1,0 +1,17 @@
+{
+  "id": "vouchers-escolares--segregacao-escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vouchers_escolares",
+  "alvo": "segregacao_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.129,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

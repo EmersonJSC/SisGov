@@ -1,0 +1,82 @@
+{
+  "id": "piso-salarial-dos-professores",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso salarial dos professores",
+  "descricao": "O país fixa um salário mínimo nacional para o professor da escola pública?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_piso_salarial_dos_professores",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-piso-nacional",
+        "rotulo": "Sem piso nacional",
+        "valor": 0,
+        "apoiam": [
+          "Mercado financeiro",
+          "Prefeitos endividados"
+        ],
+        "rejeitam": [
+          "Sindicatos de professores"
+        ],
+        "efeitos": "Greve de professores ↑"
+      },
+      {
+        "id": "piso-nacional-minimo",
+        "rotulo": "Piso nacional mínimo",
+        "valor": 33.33,
+        "custoTexto": "+0,1 a 0,3% do PIB (aprox.), educação",
+        "apoiam": [
+          "Sindicatos de professores",
+          "Servidores"
+        ],
+        "rejeitam": [
+          "Prefeitos pobres"
+        ],
+        "efeitos": "Aprendizagem ≈ 0 no curto prazo; Greve de professores ↓ se pago, ↑ se não pago; Resultado fiscal dos municípios ↓"
+      },
+      {
+        "id": "carreira-nacional-com-avaliacao",
+        "rotulo": "Carreira nacional com avaliação",
+        "valor": 66.67,
+        "custoTexto": "+0,3% do PIB (aprox.), educação",
+        "apoiam": [
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Sindicatos de professores"
+        ],
+        "efeitos": "Aprendizagem ↑ no longo prazo pela seleção (aprox.)"
+      },
+      {
+        "id": "salario-de-elite-com-selecao-dura",
+        "rotulo": "Salário de elite com seleção dura",
+        "valor": 100,
+        "custoTexto": "+0,6 a 1,0% do PIB (aprox.), educação",
+        "apoiam": [
+          "Empresários",
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Sindicatos de professores",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Aprendizagem ↑ no longo prazo; Resultado fiscal ↓"
+      }
+    ]
+  },
+  "consequencias": []
+}

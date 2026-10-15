@@ -1,0 +1,73 @@
+{
+  "id": "participacao-direta",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Participação direta",
+  "descricao": "O cidadão decide diretamente sobre orçamento, leis ou mandatos, ou só pelo voto?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_participacao_direta",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Nenhuma",
+        "valor": 0,
+        "rejeitam": [
+          "Movimentos por moradia",
+          "Movimentos por terra"
+        ],
+        "efeitos": "Protestos ↑ (aprox.)"
+      },
+      {
+        "id": "conselhos-consultivos",
+        "rotulo": "Conselhos consultivos",
+        "valor": 33.33,
+        "apoiam": [
+          "Servidores"
+        ],
+        "efeitos": "Pequeno"
+      },
+      {
+        "id": "conselhos-deliberativos-e-orcamento-participativo",
+        "rotulo": "Conselhos deliberativos e orçamento participativo",
+        "valor": 66.67,
+        "custoAnualPercentualPib": 0.01,
+        "apoiam": [
+          "Periferias",
+          "Hierarquia católica e pastorais"
+        ],
+        "rejeitam": [
+          "Empresários"
+        ],
+        "efeitos": "Gasto vai para saúde e saneamento; Mortalidade infantil ↓; Arrecadação local ↑ 39% (um estudo, 253 casos); efeito cresce com os anos de uso; Protestos ↓ (aprox.)"
+      },
+      {
+        "id": "referendo-revogatorio",
+        "rotulo": "Referendo revogatório",
+        "valor": 100,
+        "custoTexto": "~0,02% do PIB por consulta",
+        "apoiam": [
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Bancadas do governo"
+        ],
+        "efeitos": "Estabilidade ↓ (estimado); Protestos ↓ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": []
+}

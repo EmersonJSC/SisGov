@@ -1,0 +1,80 @@
+{
+  "id": "energia-nuclear",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Energia nuclear",
+  "descricao": "o país pode ter usinas nucleares, e pode construir novas?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_energia_nuclear",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Proibida",
+        "valor": 0,
+        "apoiam": [
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Associações de militares",
+          "Confederação da indústria"
+        ],
+        "efeitos": "Folga do sistema ↓; tranca a fatia nuclear do investimento em geração"
+      },
+      {
+        "id": "sem-novas-usinas",
+        "rotulo": "Sem novas usinas",
+        "valor": 33.33,
+        "custoTexto": "Custo de desmontar (aprox.)",
+        "apoiam": [
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Associações de militares"
+        ],
+        "efeitos": "Folga do sistema ↓ quando as velhas fecham"
+      },
+      {
+        "id": "manutencao-das-usinas-atuais",
+        "rotulo": "Manutenção das usinas atuais",
+        "valor": 66.67,
+        "custoTexto": "cerca de 0,01% do PIB",
+        "efeitos": "Folga do sistema ↑ pouco contra Sem novas usinas; emissões estáveis; custo baixo, cerca de 0,01% do PIB"
+      },
+      {
+        "id": "expansao",
+        "rotulo": "Expansão",
+        "valor": 100,
+        "custoTexto": "Uma usina grande: cerca de  17 bi para terminar (caso Angra 3)",
+        "apoiam": [
+          "Associações de militares",
+          "Confederação da indústria",
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista",
+          "Atingidos por barragens e mineração"
+        ],
+        "efeitos": "Folga do sistema ↑ com atraso de mais de 10 anos; preço da energia ↑ (cerca de  144/MWh contra  80/MWh na hidrelétrica); emissões ↓; tensão internacional ↑; abre o dilema do programa nuclear"
+      }
+    ]
+  },
+  "consequencias": [
+    "energia-nuclear--preco-energia",
+    "energia-nuclear--emissoes",
+    "energia-nuclear--tensao-internacional"
+  ]
+}

@@ -33,6 +33,7 @@ import { diferencaNaTela, valorNaTela, variacaoReal } from "./formatos";
 import {
   RAIO_BASE_BOLHA,
   RAIO_BASE_LEI,
+  arco,
   corDaBondade,
   escalaDaLei,
   intensidadeDaBolha,
@@ -45,7 +46,8 @@ import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import {
   PRESIDENCIA,
   ehConstitucional,
-  aproximarBolhas,
+  posicoesDasBolhas,
+  type PosicaoBolha,
   montarLayout,
   quebrarNome,
   blocoCentral,
@@ -72,7 +74,7 @@ import {
   leiPassaNoFiltro,
   type FiltroDeLeis,
 } from "./filtro";
-import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS, corDaLei } from "./tema";
+import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS } from "./tema";
 
 export type MarcaPrevista = Readonly<{ efeito: Efeito; sobe: boolean }>;
 
@@ -118,6 +120,16 @@ function interpolar(de: LayoutMapa, para: LayoutMapa, t: number): LayoutMapa {
   const esferas = new Map<string, Esfera>();
   for (const [id, e] of para.esferas) {
     const a = de.esferas.get(id);
+    if (
+      a &&
+      a.x === e.x &&
+      a.y === e.y &&
+      a.r === e.r &&
+      a.angulo === e.angulo
+    ) {
+      esferas.set(id, e);
+      continue;
+    }
     esferas.set(
       id,
       a
@@ -134,6 +146,11 @@ function interpolar(de: LayoutMapa, para: LayoutMapa, t: number): LayoutMapa {
   const leis = new Map<string, PosicaoLei>();
   for (const [id, l] of para.leis) {
     const a = de.leis.get(id);
+    // lei parada: mesma referência, para o nó não ser redesenhado a cada quadro
+    if (a && a.x === l.x && a.y === l.y && a.r === l.r) {
+      leis.set(id, l);
+      continue;
+    }
     leis.set(
       id,
       a
@@ -160,6 +177,47 @@ function useLayoutAnimado(alvo: LayoutMapa): LayoutMapa {
     const passo = (agora: number) => {
       const t = Math.min(1, (agora - inicio) / DURACAO);
       const proximo = interpolar(de, alvo, suave(t));
+      atual.current = proximo;
+      setQuadro(proximo);
+      if (t < 1) id = requestAnimationFrame(passo);
+    };
+    id = requestAnimationFrame(passo);
+    return () => cancelAnimationFrame(id);
+  }, [alvo]);
+  return quadro;
+}
+
+/** Bolhas que se deslocam suavemente de uma posição para a outra (420 ms). */
+function useBolhasAnimadas(
+  alvo: ReadonlyMap<string, PosicaoBolha>,
+): ReadonlyMap<string, PosicaoBolha> {
+  const [quadro, setQuadro] = useState(alvo);
+  const atual = useRef(alvo);
+  useEffect(() => {
+    const de = atual.current;
+    if (de === alvo) return;
+    const inicio = performance.now();
+    let id = 0;
+    const passo = (agora: number) => {
+      const t = Math.min(1, (agora - inicio) / DURACAO);
+      let proximo: ReadonlyMap<string, PosicaoBolha> = alvo;
+      if (t < 1) {
+        const mapa = new Map<string, PosicaoBolha>();
+        for (const [chave, fim] of alvo) {
+          const ini = de.get(chave);
+          mapa.set(
+            chave,
+            ini && (ini.x !== fim.x || ini.y !== fim.y)
+              ? {
+                  ...fim,
+                  x: mix(ini.x, fim.x, suave(t)),
+                  y: mix(ini.y, fim.y, suave(t)),
+                }
+              : fim,
+          );
+        }
+        proximo = mapa;
+      }
       atual.current = proximo;
       setQuadro(proximo);
       if (t < 1) id = requestAnimationFrame(passo);
@@ -288,6 +346,43 @@ export function formaDaLei(lei: VisaoLei): FormaLei {
   return "circulo";
 }
 
+/** Tipo da lei na tela: a camada da mesa (Constituição, Lei, Alavanca). */
+type TipoDeLei = "constituicao" | "lei" | "alavanca";
+function tipoDaLei(lei: VisaoLei): TipoDeLei {
+  return lei.mesa?.camada ?? (lei.nivelLegal ? "constituicao" : "lei");
+}
+
+/** Cada tipo de lei tem o seu desenho dentro do disco (pedido de 15/out). */
+function TexturaDoTipo({ tipo, r }: { tipo: TipoDeLei; r: number }) {
+  if (tipo === "constituicao")
+    return <circle className="textura textura-constituicao" r={r * 0.8} />;
+  if (tipo === "alavanca")
+    return <circle className="textura textura-alavanca" r={r * 0.76} />;
+  return null;
+}
+
+/** Vários setores: o aro do disco é dividido em arcos, um por cor. */
+function ArosDosSetores({ cores, r }: { cores: readonly string[]; r: number }) {
+  const n = cores.length;
+  return (
+    <g
+      className="aros-setores"
+      fill="none"
+      strokeWidth={4}
+      strokeLinecap="butt"
+    >
+      {cores.map((c, i) => (
+        <path
+          key={c + i}
+          d={arco(r, 1 / n - 0.012)}
+          stroke={c}
+          transform={`rotate(${(i * 360) / n})`}
+        />
+      ))}
+    </g>
+  );
+}
+
 const NOME_DO_NIVEL: Partial<Record<FormaLei, string>> = {
   escudo: ", cláusula pétrea",
   quadrado: ", lei constitucional",
@@ -364,6 +459,7 @@ function Anel({
 }
 
 const NoLei = memo(function NoLei({
+  escalaTela,
   lei,
   pos,
   cor,
@@ -385,6 +481,8 @@ const NoLei = memo(function NoLei({
   mostrarRotulo: boolean;
   /** Quanto a lei está ligada (0–1): define o tamanho e o anel. */
   nivel: number;
+  /** Zoom do mapa: o nome da lei compensa, para ter sempre tamanho legível. */
+  escalaTela: number;
   onEntrar: (id: string) => void;
   onSair: () => void;
   onClicar: (id: string) => void;
@@ -398,7 +496,7 @@ const NoLei = memo(function NoLei({
   const raioVisivel = r * escala;
   return (
     <g
-      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma}`}
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)}`}
       transform={`translate(${pos.x} ${pos.y})`}
       style={{ "--cor": cor } as React.CSSProperties}
       role="button"
@@ -422,6 +520,10 @@ const NoLei = memo(function NoLei({
           <Forma forma={forma} className="halo" r={r + 9} />
           {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
           <Forma forma={forma} className="disco" r={r} />
+          <TexturaDoTipo tipo={tipoDaLei(lei)} r={r} />
+          {forma === "circulo" && coresExtras.length > 0 ? (
+            <ArosDosSetores cores={[cor, ...coresExtras]} r={r} />
+          ) : null}
           <Anel
             r={r + 4.5}
             fracao={nivel}
@@ -447,17 +549,19 @@ const NoLei = memo(function NoLei({
             </text>
           </g>
         ) : null}
-        {coresExtras.map((extra, i) => (
-          <circle
-            key={extra}
-            cx={-raioVisivel * 0.78 + i * 9}
-            cy={-raioVisivel * 0.78}
-            r={5}
-            fill={extra}
-            stroke="#fff"
-            strokeWidth={2}
-          />
-        ))}
+        {forma !== "circulo"
+          ? coresExtras.map((extra, i) => (
+              <circle
+                key={extra}
+                cx={-raioVisivel * 0.78 + i * 9}
+                cy={-raioVisivel * 0.78}
+                r={5}
+                fill={extra}
+                stroke="#fff"
+                strokeWidth={2}
+              />
+            ))
+          : null}
         {sua ? (
           <g
             transform={`translate(${-raioVisivel * 0.74 - 2} ${raioVisivel * 0.74 + 2})`}
@@ -488,8 +592,8 @@ const NoLei = memo(function NoLei({
       {mostrarRotulo ? (
         <Rotulo
           linhas={quebrarNome(lei.nome, 22, 3)}
-          y={raioVisivel + 26}
-          tamanho={Math.max(22, pos.rotulo * 1.7)}
+          y={raioVisivel + Math.min(150, Math.max(14, 18 / escalaTela)) * 1.1}
+          tamanho={Math.min(150, Math.max(14, 18 / escalaTela))}
           classe="rotulo-lei"
         />
       ) : null}
@@ -756,7 +860,7 @@ function EtiquetaVariacao({
 
 export function MapaPolitico({
   visao,
-  base: baseOriginal,
+  base,
   indice,
   fundo,
   aberta,
@@ -773,11 +877,20 @@ export function MapaPolitico({
   painelEsquerdo = 0,
   cobertura,
 }: Props) {
-  // Com as esferas fechadas, as bolhas dos índices chegam mais perto dos ministérios.
-  const base = useMemo(
-    () => aproximarBolhas(baseOriginal, aberta === null),
-    [baseOriginal, aberta],
+  // Bolhas dos índices móveis: perto dos ministérios com as esferas fechadas;
+  // se afastam da borda da esfera que infla e voltam quando ela recolhe.
+  const geometriaAberta = useMemo(
+    () =>
+      aberta && aberta !== PRESIDENCIA && base.porNome.has(aberta)
+        ? (montarLayout(base, aberta, new Set()).esferas.get(aberta) ?? null)
+        : null,
+    [base, aberta],
   );
+  const bolhasAlvo = useMemo(
+    () => posicoesDasBolhas(base, aberta === null, geometriaAberta),
+    [base, aberta, geometriaAberta],
+  );
+  const bolhasPos = useBolhasAnimadas(bolhasAlvo);
   const caixa = useRef<HTMLDivElement>(null);
   const mundo = useRef<SVGGElement>(null);
   const camera = useRef<Camera>({ x: 0, y: 0, k: 0.4 });
@@ -811,6 +924,12 @@ export function MapaPolitico({
   );
   const suasNaEsfera = (ids: readonly string[]) =>
     ids.filter((id) => suas.has(id)).length;
+  // Ao abrir ou fechar uma esfera os nós se movem sob o mouse e o "saiu" pode
+  // nunca chegar: sem isto uma lei fica presa no foco, mostrando as setas e
+  // apagando o resto (15/out).
+  useEffect(() => {
+    setSobre(null);
+  }, [aberta]);
   const foco = sobre ?? selecionado;
   const viz = useMemo(
     () => vizinhanca(indice, foco, ehLei),
@@ -844,6 +963,42 @@ export function MapaPolitico({
     () => referenciaDasLeis([...base.leis.values()]),
     [base],
   );
+  // Setores de cada lei: o dela e os das áreas que mais mexem nos índices que
+  // ela afeta (até 3, em ordem de peso); as cores do ícone seguem esses setores.
+  const setoresPorLei = useMemo(() => {
+    const areaDaBolha = new Map<string, Map<string, number>>();
+    for (const f of fundo) {
+      const m = areaDaBolha.get(f.bolha) ?? new Map<string, number>();
+      m.set(f.ministerio, (m.get(f.ministerio) ?? 0) + f.peso);
+      areaDaBolha.set(f.bolha, m);
+    }
+    const porLei = new Map<string, Map<string, number>>();
+    for (const l of visao.ligacoes) {
+      const areas = areaDaBolha.get(l.alvo);
+      if (!areas || !base.leis.has(l.origem)) continue;
+      const total = [...areas.values()].reduce((a, b) => a + b, 0) || 1;
+      const m = porLei.get(l.origem) ?? new Map<string, number>();
+      for (const [area, peso] of areas)
+        m.set(area, (m.get(area) ?? 0) + peso / total);
+      porLei.set(l.origem, m);
+    }
+    const resultado = new Map<string, string[]>();
+    for (const lei of base.leis.values()) {
+      const propria = lei.areas[0];
+      const outras = [...(porLei.get(lei.id) ?? [])]
+        .filter(([area]) => area !== propria)
+        .sort((a, b) => b[1] - a[1]);
+      const soma = outras.reduce((s, [, p]) => s + p, 0) || 1;
+      resultado.set(lei.id, [
+        propria,
+        ...outras
+          .filter(([, p]) => p / soma >= 0.3)
+          .slice(0, 2)
+          .map(([area]) => area),
+      ]);
+    }
+    return resultado;
+  }, [fundo, visao.ligacoes, base]);
   const intensidades = useMemo(
     () => new Map(visao.bolhas.map((b) => [b.id, intensidadeDaBolha(b)])),
     [visao],
@@ -985,7 +1140,7 @@ export function MapaPolitico({
       esquerdoAnterior.current = painelEsquerdo;
     }
     const p = selecionado
-      ? (alvo.leis.get(selecionado) ?? base.bolhas.get(selecionado))
+      ? (alvo.leis.get(selecionado) ?? bolhasPos.get(selecionado))
       : undefined;
     if (p) {
       const t = tela.current;
@@ -1290,7 +1445,7 @@ export function MapaPolitico({
       const escala = visao ? escalaDaLei(nivelRelativo(visao, referencia)) : 1;
       return { ...lei, r: lei.r * escala * 1.2 };
     }
-    const bolha = base.bolhas.get(id);
+    const bolha = bolhasPos.get(id);
     if (bolha) {
       const i = intensidades.get(id);
       return { ...bolha, r: RAIO_BASE_BOLHA * (i?.escala ?? 1) + 6 };
@@ -1327,7 +1482,7 @@ export function MapaPolitico({
   if (!comFoco) {
     for (const ligacao of fundo) {
       const esfera = layout.esferas.get(ligacao.ministerio);
-      const bolha = base.bolhas.get(ligacao.bolha);
+      const bolha = bolhasPos.get(ligacao.bolha);
       if (!esfera || !bolha) continue;
       if (
         aberta &&
@@ -1429,6 +1584,7 @@ export function MapaPolitico({
     >
       <svg
         className="mapa-svg"
+        onPointerLeave={() => setSobre(null)}
         role="application"
         aria-label="Mapa político do governo"
       >
@@ -1509,13 +1665,7 @@ export function MapaPolitico({
                   abrirEsfera(ministerio.nome);
                 }}
               >
-                <circle
-                  cx={e.x}
-                  cy={e.y}
-                  r={e.r}
-                  className="disco-esfera"
-                  filter="url(#sombra)"
-                />
+                <circle cx={e.x} cy={e.y} r={e.r} className="disco-esfera" />
               </g>
             );
           })}
@@ -1876,8 +2026,9 @@ export function MapaPolitico({
             .map((pos) => {
               const lei = leisPorId.get(pos.id);
               if (!lei) return null;
-              const cor = corDaLei(lei.mesa?.id ?? lei.id);
-              const extras = [...lei.areas.slice(1).map(corDaEsfera)];
+              const setores = setoresPorLei.get(lei.id) ?? [lei.areas[0]];
+              const cor = corDaEsfera(setores[0]);
+              const extras = setores.slice(1).map(corDaEsfera);
               const estado = estadoDe(pos.id);
               // sem etiquetas fixas: o nome aparece grande com o mouse em cima
               const mostrarRotulo = pos.id === foco || pos.id === selecionado;
@@ -1891,6 +2042,9 @@ export function MapaPolitico({
                   estado={estado}
                   selecionada={pos.id === selecionado}
                   mostrarRotulo={mostrarRotulo}
+                  // só a lei com nome à mostra acompanha o zoom (as outras não
+                  // são redesenhadas a cada quadro dele)
+                  escalaTela={mostrarRotulo ? k : 1}
                   nivel={nivelRelativo(lei, referencia)}
                   onEntrar={entrar}
                   onSair={sair}
@@ -1901,7 +2055,7 @@ export function MapaPolitico({
 
           {/* Indicadores, situações e estoques */}
           {visao.bolhas.map((bolha) => {
-            const pos = base.bolhas.get(bolha.id);
+            const pos = bolhasPos.get(bolha.id);
             if (!pos) return null;
             const estado = estadoDe(bolha.id);
             const marca = marcas.get(bolha.id);

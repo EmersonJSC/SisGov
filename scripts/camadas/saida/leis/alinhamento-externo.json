@@ -1,0 +1,103 @@
+{
+  "id": "alinhamento-externo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Alinhamento externo",
+  "descricao": "De que lado do mundo o país fica?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_alinhamento_externo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "alinhamento-com-potencia-ocidental",
+        "rotulo": "Alinhamento com potência ocidental",
+        "valor": 0,
+        "apoiam": [
+          "Conservadores",
+          "Evangélicos",
+          "Empresários",
+          "Agro"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Investimento estrangeiro ocidental ↑; Tensão internacional ↑ com o rival"
+      },
+      {
+        "id": "ocidental-pragmatico",
+        "rotulo": "Ocidental pragmático",
+        "valor": 25.0,
+        "apoiam": [
+          "Empresários",
+          "Classe média"
+        ],
+        "efeitos": "Investimento estrangeiro ↑ pouco"
+      },
+      {
+        "id": "nao-alinhamento-ativo",
+        "rotulo": "Não alinhamento ativo (hoje na referência, tradição)",
+        "valor": 50.0,
+        "apoiam": [
+          "Católicos",
+          "Agro"
+        ],
+        "efeitos": "Influência externa ↑ por mediar (aprox.)"
+      },
+      {
+        "id": "bloco-alternativo",
+        "rotulo": "Bloco alternativo",
+        "valor": 75.0,
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Empresários",
+          "Conservadores",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Tensão internacional ↑ com o polo ocidental; chance de sanções ↑; dispara “potência oferece investimento”"
+      },
+      {
+        "id": "isolamento-soberanista",
+        "rotulo": "Isolamento soberanista",
+        "valor": 100,
+        "apoiam": [
+          "Conservadores"
+        ],
+        "rejeitam": [
+          "Empresários",
+          "Agro",
+          "Progressistas"
+        ],
+        "efeitos": "Chance de sanções ↑ muito; Exportações ↓; trava Integração regional e Missões de paz"
+      }
+    ]
+  },
+  "consequencias": [
+    "alinhamento-externo--tensao-internacional",
+    "alinhamento-externo--ied",
+    "alinhamento-externo--exportacoes"
+  ],
+  "mae": {
+    "texto": "Aliança militar (“bases estrangeiras” trava esta lei em “alinhamento com potência ocidental” ou “ocidental pragmático”). Programa nuclear (“dissuasão nuclear” mexe nesta lei, ver pontos abertos). É mãe de Integração regional e Missões de paz.",
+    "leis": [
+      "integracao-regional",
+      "alianca-militar",
+      "missoes-de-paz",
+      "programa-nuclear"
+    ]
+  }
+}

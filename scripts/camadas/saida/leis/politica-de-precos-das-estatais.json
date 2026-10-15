@@ -1,0 +1,69 @@
+{
+  "id": "politica-de-precos-das-estatais",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de preços das estatais",
+  "descricao": "A petroleira e outras estatais cobram o preço internacional ou o governo segura o preço?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_politica_de_precos_das_estatais",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "paridade-internacional",
+        "rotulo": "Paridade internacional",
+        "valor": 0,
+        "apoiam": [
+          "Mercado financeiro",
+          "Petróleo e mineração"
+        ],
+        "rejeitam": [
+          "Caminhoneiros autônomos"
+        ],
+        "efeitos": "Inflação sobe junto com o petróleo; investimento da estatal estável"
+      },
+      {
+        "id": "suavizacao",
+        "rotulo": "Suavização (amortecedor ou fundo)",
+        "valor": 50.0,
+        "custoTexto": "Variável",
+        "efeitos": "Inflação mais estável"
+      },
+      {
+        "id": "preco-politico",
+        "rotulo": "Preço político (congelamento)",
+        "valor": 100,
+        "custoTexto": "Prejuízo da estatal (o país de referência 2011-2014: dezenas de  bi, aprox.)",
+        "apoiam": [
+          "Caminhoneiros autônomos",
+          "Pobres"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Inflação ↓ no curto prazo e ↑ depois; dívida ↑ via aporte; investimento da estatal ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-precos-das-estatais--inflacao"
+  ],
+  "mae": {
+    "texto": "Papel do Estado empresário: \"sem estatais\" tranca esta lei (proposta minha)",
+    "leis": [
+      "papel-do-estado-empresario"
+    ]
+  }
+}

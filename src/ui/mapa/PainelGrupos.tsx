@@ -203,6 +203,12 @@ export function PainelGrupos({
                         </span>
                       </button>
                       <div className="grupo-motivos">
+                        {g.gosta.length + g.odeia.length === 0 ? (
+                          <p className="sem-motivos">
+                            Suas decisões ainda não mudaram nada para este
+                            grupo.
+                          </p>
+                        ) : null}
                         <div className="motivos-coluna">
                           {g.gosta.slice(0, quantos).map((m) => (
                             <Motivo

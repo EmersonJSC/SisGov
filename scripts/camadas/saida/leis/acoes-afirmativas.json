@@ -1,0 +1,106 @@
+{
+  "id": "acoes-afirmativas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Ações afirmativas",
+  "descricao": "A universidade reserva vagas para grupos em desvantagem?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "ensino-superior",
+    "nome": "Ensino superior",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_acoes_afirmativas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibidas",
+        "rotulo": "Proibidas",
+        "valor": 0,
+        "apoiam": [
+          "Militares da reserva",
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Movimento negro",
+          "Movimento estudantil"
+        ],
+        "efeitos": "Desigualdade ↑; Discriminação ↑"
+      },
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 25.0,
+        "apoiam": [
+          "Ricos"
+        ],
+        "rejeitam": [
+          "Movimento negro"
+        ],
+        "efeitos": "Nada muda"
+      },
+      {
+        "id": "cotas-para-escola-publica-e-baixa-renda",
+        "rotulo": "Cotas para escola pública e baixa renda",
+        "valor": 50.0,
+        "custoTexto": "+0,01% do PIB (aprox.), educação",
+        "apoiam": [
+          "Pobres",
+          "Classe média"
+        ],
+        "efeitos": "Escolaridade dos pobres ↑; Desigualdade ↓ (5+ anos)"
+      },
+      {
+        "id": "cotas-sociais-e-raciais",
+        "rotulo": "Cotas sociais e raciais",
+        "valor": 75.0,
+        "custoTexto": "+0,02% do PIB (aprox.), educação",
+        "apoiam": [
+          "Movimento negro",
+          "Movimento estudantil",
+          "Povos originários",
+          "Quilombolas"
+        ],
+        "rejeitam": [
+          "Militares da reserva",
+          "Ricos"
+        ],
+        "efeitos": "Escolaridade de pretos e pardos ↑; Desigualdade e Discriminação ↓ (5+ anos); cotistas concluem mais; Polarização ↑ pequeno"
+      },
+      {
+        "id": "reserva-ampla-mais-de-50-tambem-em-concursos",
+        "rotulo": "Reserva ampla, mais de 50%, também em concursos",
+        "valor": 100,
+        "custoTexto": "+0,03% do PIB, educação",
+        "apoiam": [
+          "Movimento negro"
+        ],
+        "rejeitam": [
+          "Classe média",
+          "Ricos"
+        ],
+        "efeitos": "Desigualdade ↓; Polarização ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "acoes-afirmativas--desigualdade",
+    "acoes-afirmativas--discriminacao",
+    "acoes-afirmativas--polarizacao"
+  ],
+  "mae": {
+    "texto": "Acesso ao ensino superior: \"Paga pela família\" esvazia esta lei. A opção com recorte racial depende de Igualdade racial nas opções \"recorte racial\" ou \"estatuto\" (Direitos).",
+    "leis": [
+      "acesso-ao-ensino-superior",
+      "igualdade-racial"
+    ]
+  }
+}

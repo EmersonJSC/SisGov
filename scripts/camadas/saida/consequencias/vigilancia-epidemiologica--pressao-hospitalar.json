@@ -1,0 +1,17 @@
+{
+  "id": "vigilancia-epidemiologica--pressao-hospitalar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vigilancia_epidemiologica",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.105,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

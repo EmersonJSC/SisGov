@@ -1,0 +1,78 @@
+{
+  "id": "orcamento-do-judiciario",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Orçamento do Judiciário",
+  "descricao": "Quanto o país gasta com juízes, tribunais e servidores da Justiça?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "justica",
+    "nome": "Justiça",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_orcamento_do_judiciario",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0-6",
+        "rotulo": "0,6% (mínimo)",
+        "valor": 33.33,
+        "custoAnualPercentualPib": 0.6,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Servidores",
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Impunidade ↑ e Justiça mais lenta (tamanho: lacuna)"
+      },
+      {
+        "id": "1-2",
+        "rotulo": "1,2% (o país de referência, 2024:  146,5 bilhões)",
+        "valor": 66.67,
+        "custoAnualPercentualPib": 1.2,
+        "efeitos": "Hoje: 27,7% dos presos ainda sem julgamento (dado de Segurança)"
+      },
+      {
+        "id": "2",
+        "rotulo": "2% (máximo)",
+        "valor": 100,
+        "custoAnualPercentualPib": 2.0,
+        "apoiam": [
+          "Servidores",
+          "Sindicatos de servidores"
+        ],
+        "rejeitam": [
+          "Classe média",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Impunidade ↓ (tamanho: lacuna)"
+      }
+    ]
+  },
+  "consequencias": [
+    "orcamento-do-judiciario--impunidade"
+  ]
+}

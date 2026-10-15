@@ -1,0 +1,17 @@
+{
+  "id": "alfabetizacao-na-idade-certa--evasao-escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_alfabetizacao_na_idade_certa",
+  "alvo": "evasao_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.009,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "banco-de-desenvolvimento",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Banco de desenvolvimento",
+  "descricao": "O país tem um banco público que empresta às empresas, e a que preço?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_banco_de_desenvolvimento",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-banco",
+        "rotulo": "Sem banco",
+        "valor": 0,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Confederação da indústria"
+        ],
+        "efeitos": "Investimento ↓ em infraestrutura; juros ganham força"
+      },
+      {
+        "id": "segundo-piso-juro-de-mercado",
+        "rotulo": "Segundo piso, juro de mercado (foco em infraestrutura e pequenas empresas)",
+        "valor": 33.33,
+        "custoTexto": "Baixo",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Investimento ↑ leve"
+      },
+      {
+        "id": "credito-direcionado",
+        "rotulo": "Crédito direcionado",
+        "valor": 66.67,
+        "custoTexto": "Subsídio para cobrir a diferença de juros (lacuna)",
+        "apoiam": [
+          "Confederação da indústria",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Investimento ↑ (menor que no nível da firma); juros perdem força"
+      },
+      {
+        "id": "credito-subsidiado-em-massa",
+        "rotulo": "Crédito subsidiado em massa",
+        "valor": 100,
+        "custoTexto": "Alto (lacuna)",
+        "apoiam": [
+          "Confederação da indústria"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Investimento ↑ curto; taxa básica necessária ↑; cofre ↓; spread do crédito livre ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "banco-de-desenvolvimento--investimento"
+  ]
+}

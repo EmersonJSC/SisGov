@@ -1,0 +1,75 @@
+{
+  "id": "tribunais-superiores",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Tribunais superiores",
+  "descricao": "Quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "justica",
+    "nome": "Justiça",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_tribunais_superiores",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "numero-fixo-e-cargo-ate-os-75-anos",
+        "rotulo": "Número fixo e cargo até os 75 anos",
+        "valor": 0
+      },
+      {
+        "id": "mandato-fixo-de-9-a-12-anos",
+        "rotulo": "Mandato fixo de 9 a 12 anos",
+        "valor": 33.33,
+        "apoiam": [
+          "lacuna"
+        ],
+        "rejeitam": [
+          "Ministros das cortes"
+        ],
+        "efeitos": "Sem efeito medido"
+      },
+      {
+        "id": "ampliacao-por-lei",
+        "rotulo": "Ampliação por lei (o governo cria cadeiras)",
+        "valor": 66.67,
+        "apoiam": [
+          "Bancadas do governo"
+        ],
+        "rejeitam": [
+          "Bancadas de oposição"
+        ],
+        "efeitos": "Independência ↓; Confiança ↓; Captura política ↑; Polarização ↑"
+      },
+      {
+        "id": "nomeacao-pelo-partido",
+        "rotulo": "Nomeação pelo partido",
+        "valor": 100,
+        "rejeitam": [
+          "Quase todos os grupos"
+        ],
+        "efeitos": "Os mesmos efeitos, mais fortes"
+      }
+    ]
+  },
+  "consequencias": [
+    "tribunais-superiores--confianca-empresarial",
+    "tribunais-superiores--captura-politica",
+    "tribunais-superiores--polarizacao"
+  ],
+  "mae": {
+    "texto": "Independência do Judiciário (\"Controlado\" libera \"Nomeação pelo partido\")",
+    "leis": [
+      "independencia-do-judiciario"
+    ]
+  }
+}

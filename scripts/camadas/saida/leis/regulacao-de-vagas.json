@@ -1,0 +1,63 @@
+{
+  "id": "regulacao-de-vagas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regulação de vagas",
+  "descricao": "Quem decide quem é atendido primeiro e onde?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_regulacao_de_vagas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "cada-municipio-cuida-da-sua-fila",
+        "rotulo": "Cada município cuida da sua fila",
+        "valor": 0,
+        "apoiam": [
+          "Interior"
+        ],
+        "rejeitam": [
+          "Pobres"
+        ],
+        "efeitos": "Fila fragmentada; o paciente entra numa fila nova a cada etapa"
+      },
+      {
+        "id": "central-regional-com-fila-unica-e-publica",
+        "rotulo": "Central regional com fila única e pública",
+        "valor": 50.0,
+        "custoTexto": "baixo",
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Fila ↓; transparência ↑; Gasto com judicialização ↓"
+      },
+      {
+        "id": "tempo-maximo-garantido-passou-do-prazo-o-estado-paga-o-priva",
+        "rotulo": "Tempo máximo garantido: passou do prazo, o Estado paga o privado",
+        "valor": 100,
+        "custoTexto": "médio",
+        "apoiam": [
+          "Classe média",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Fila ↓ rápido; Gasto com judicialização ↓; Cofre ↓; torna o mutirão automático"
+      }
+    ]
+  },
+  "consequencias": []
+}

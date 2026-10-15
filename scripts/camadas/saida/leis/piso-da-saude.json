@@ -1,0 +1,92 @@
+{
+  "id": "piso-da-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso da saúde",
+  "descricao": "O governo é obrigado a gastar um mínimo com saúde, e como esse mínimo é calculado?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_piso_da_saude",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-piso",
+        "rotulo": "Sem piso",
+        "valor": 0,
+        "custoTexto": "livre (o gasto vira escolha anual)",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Servidores",
+          "Aposentados"
+        ],
+        "efeitos": "Libera cortar a verba; Cofre ↑ se cortar; Cobertura da atenção básica ↓ e Fila ↑ se cortar (1 a 3 anos)"
+      },
+      {
+        "id": "piso-congelado-so-corrige-pela-inflacao",
+        "rotulo": "Piso congelado: só corrige pela inflação",
+        "valor": 33.33,
+        "custoTexto": "União perderia 25% do mínimo até 2026 frente à regra por receita",
+        "apoiam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Gasto por pessoa cai com o envelhecimento; Fila ↑ (1 a 3 anos); Resultado fiscal ↑"
+      },
+      {
+        "id": "piso-por-receita-da-receita-de-cada-governo",
+        "rotulo": "Piso por receita: % da receita de cada governo",
+        "valor": 66.67,
+        "custoTexto": "4 a 4,5% do PIB, Saúde",
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Verba sobe e desce com a arrecadação"
+      },
+      {
+        "id": "piso-por-pib-6-do-pib-ate-2030",
+        "rotulo": "Piso por PIB: 6% do PIB até 2030",
+        "valor": 100,
+        "custoTexto": "+1,7% do PIB sobre hoje, Saúde",
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Cobertura da atenção básica ↑ (1 a 2 anos); Fila ↓ (1 a 3 anos); Cofre ↓; Resultado fiscal ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "piso-da-saude--cobertura-aps"
+  ],
+  "mae": {
+    "texto": "Modelo do sistema de saúde. \"Mercado privado\" trava esta lei em \"sem piso\". As outras opções liberam todas.",
+    "leis": [
+      "modelo-do-sistema-de-saude"
+    ]
+  }
+}

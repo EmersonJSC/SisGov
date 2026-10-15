@@ -1,0 +1,17 @@
+{
+  "id": "ensino-obrigatorio--escolaridade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_obrigatorio",
+  "alvo": "escolaridade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.192,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

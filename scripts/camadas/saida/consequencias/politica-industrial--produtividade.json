@@ -1,0 +1,17 @@
+{
+  "id": "politica-industrial--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_industrial",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.051,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

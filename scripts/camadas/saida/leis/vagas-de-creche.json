@@ -1,0 +1,81 @@
+{
+  "id": "vagas-de-creche",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Vagas de creche",
+  "descricao": "Quantas crianças de 0 a 3 anos têm vaga em creche paga pelo Estado?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-familia-e-cuidados",
+    "nome": "Mesa Família e cuidados",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_vagas_de_creche",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "minimo-nenhuma-vaga-publica",
+        "rotulo": "Mínimo: nenhuma vaga pública",
+        "valor": 0,
+        "rejeitam": [
+          "Famílias com filhos",
+          "Movimento feminista",
+          "Periferias"
+        ],
+        "efeitos": "Trabalho das mães ↓; pobreza infantil ↑"
+      },
+      {
+        "id": "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam",
+        "rotulo": "Referência: cerca de 40% das crianças de 0 a 3 anos frequentam (2024); 2,3 milhões querem e não têm vaga",
+        "valor": 33.33,
+        "custoTexto": "lacuna (% do PIB no país de referência)",
+        "rejeitam": [
+          "Famílias com filhos"
+        ],
+        "efeitos": "Trabalho das mães ↑ contra Mínimo; pobreza infantil ↓ pouco; 28% dos mais pobres sem vaga contra 7% dos mais ricos (estimado)"
+      },
+      {
+        "id": "meta-do-plano-nacional-de-educacao-50",
+        "rotulo": "Meta do plano nacional de educação: 50%",
+        "valor": 66.67,
+        "custoTexto": "lacuna; média da OCDE em creche e pré-escola: pouco mais de 0,8% do PIB",
+        "apoiam": [
+          "Famílias com filhos",
+          "Movimento feminista",
+          "Pobres"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Trabalho das mães ↑; pobreza infantil ↓; fecundidade ↑ (sem tamanho)"
+      },
+      {
+        "id": "maximo-cobertura-dos-paises-nordicos",
+        "rotulo": "Máximo: cobertura dos países nórdicos",
+        "valor": 100,
+        "custoTexto": "Cerca de 1,6% a 1,7% do PIB (Suécia e Islândia, creche e pré-escola juntas)",
+        "apoiam": [
+          "Progressistas",
+          "Movimento feminista",
+          "Famílias com filhos"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Conservadores"
+        ],
+        "efeitos": "Fecundidade ↑ (a política com efeito mais durável segundo a revisão N-IUSSP; Noruega: mais creche, mais filhos por mulher, sem tamanho aberto); trabalho das mães ↑; diferença salarial de gênero ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "vagas-de-creche--diferenca-salarial-genero"
+  ]
+}

@@ -112,7 +112,7 @@ Ideias guardadas em 13/out para este marco: as leis em camadas (Constituição, 
 
 Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou "de direita" por opinião. Cada lei nasce de uma lei ou programa que existe em algum governo, com a fonte; o lado dela na bússola sai de pesquisa (votações reais, posição dos partidos no Manifesto Project); e, quando houver votação nominal no Brasil, ela entra na prova com votações reais da Câmara (`congresso.md` 5.4). Primeiro caso a corrigir: o feminicídio, que o centro e a direita também apoiam.
 
-- [ ] **V1-34** Leis de todos os lados e prova real da bússola (G)
+- [x] **V1-34** Leis de todos os lados e prova real da bússola (G) — feito em 15/out (commit 07ae654 e seguintes), com as pendências abaixo
   - Pendência (15/out): a prova com votações reais da Câmara piorou com os
     lados novos das fichas: erro médio 0,162 (era 0,124) e o teto em
     `src/conteudo/bussola/votacoes-reais.json` subiu de 0,13 para 0,17 só para
@@ -123,6 +123,43 @@ Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou
     do governo e disposição das bancadas, que mudam com as leis novas em
     vigor), não o lado de uma lei só.
 - [ ] **V1-35** Empresas do país e Estado empresário (G)
+- Rodada de 15/out (mapa e leis, pedidos do autor):
+  - [x] Todas as leis no mapa, espalhadas pelo raio de cada uma, e zona de
+        influência que cresce com o número de leis
+  - [x] Filtro por popularidade (país e segmentos) e por valor
+  - [x] Tamanho das leis pelo valor (raio de 8 a 46) e bolhas de índice maiores
+  - [x] Cor do ícone pelos setores ligados à lei; padrão por tipo (Constituição,
+        Lei, Alavanca)
+  - [x] Índices móveis: se afastam da esfera que abre e voltam ao fechar
+  - [x] Nome da lei com tamanho legível em qualquer zoom
+  - [x] Lentidão: sombras dos nós e desfoque da esfera (de 380 ms para ~70 ms
+        por quadro), tela de carregamento
+  - [x] Painel do eleitorado mostra o que as decisões do jogador mudaram
+  - [x] Ícone com sentido para cada lei (Material Design Icons)
+  - [x] `implantacaoTurnos` vira a velocidade de implantação no motor
+  - [ ] Faixa contínua, custo por opção no orçamento e travas por opção
+  - [ ] Leis de dinheiro e alíquota com a ficha nova (`pendencias-resto.md`)
+  - [ ] Validação do conteúdo (2,8 s) já pronta no build
+- [ ] **V1-36** A folha da lei, controle com deslizador e leis do mundo (G)
+  - Pedido do autor (15/out), detalhado em `docs/v1/chamados.md`: folha dupla
+    (duas páginas, como uma pasta aberta) com menos texto e mais gráfico;
+    deslizador com degraus em toda lei com faixa; leis do mundo (sem o Brasil
+    como centro, estatizar e privatizar como duas leis); leis econômicas
+    espalhadas pelas áreas; pressa no Congresso e medida provisória com ícones
+    e nível de urgência.
+  - A cor do ícone segue a cor dos setores ligados à lei (vários setores
+    combinam as cores) e cada tipo de lei (Constituição, Lei, Alavanca) tem
+    padrão e cor próprios. Já feito na tela do mapa (15/out); falta a legenda e
+    a revisão dos setores ligados a cada lei.
+  - Feito em 15/out: [x] folha da lei em duas páginas (lei e controle à
+    esquerda, efeitos como barrinhas verdes e vermelhas à direita); [x]
+    deslizador com degraus nas leis com 3 ou mais opções; [x] pressa no
+    Congresso como nível de urgência com ícones e medida provisória como
+    botão; [x] cabeçalho da folha sem o país; [x] 55 leis que caíram na esfera
+    errada voltaram à esfera do assunto (Economia de 62 para 27); [x] proposta
+    do catálogo novo em `docs/v1/desenho/catalogo-novo.md` (revisão do autor).
+    Falta: [ ] aprovar o catálogo novo; [ ] processo em etapas para estatizar e privatizar por setor (sem ideologias escolhíveis; o rumo do país vira um termômetro calculado);
+    [ ] esfera de Defesa; [ ] explicação neutra de cada lei; [ ] leis do mundo.
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)

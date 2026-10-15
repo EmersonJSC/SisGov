@@ -1,0 +1,17 @@
+{
+  "id": "servico-militar--produtividade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_servico_militar",
+  "alvo": "produtividade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.036,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

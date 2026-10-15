@@ -1,0 +1,70 @@
+{
+  "id": "crimes-da-ditadura",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Crimes da ditadura",
+  "descricao": "Os agentes do Estado que cometeram crimes num regime autoritário passado são perdoados, expostos ou julgados?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "memoria-e-transicao",
+    "nome": "Memória e transição",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_crimes_da_ditadura",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "anistia-ampla",
+        "rotulo": "Anistia ampla",
+        "valor": 0,
+        "apoiam": [
+          "Militares",
+          "Militares da reserva"
+        ],
+        "rejeitam": [
+          "lacuna"
+        ],
+        "efeitos": "Impunidade ↑; Ameaça de golpe ↑ (golpes passados predizem os futuros)"
+      },
+      {
+        "id": "comissao-da-verdade",
+        "rotulo": "Comissão da verdade",
+        "valor": 50.0,
+        "custoAnualPercentualPib": 0.001,
+        "apoiam": [
+          "Hierarquia católica e pastorais"
+        ],
+        "rejeitam": [
+          "Militares"
+        ],
+        "efeitos": "Polarização ↑ pouco no curto prazo"
+      },
+      {
+        "id": "julgamento",
+        "rotulo": "Julgamento",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.002,
+        "apoiam": [
+          "lacuna"
+        ],
+        "rejeitam": [
+          "Militares",
+          "Militares da reserva"
+        ],
+        "efeitos": "Impunidade ↓; Polarização ↑ no curto prazo; tensão com militares (evento \"motim\"); Ameaça de golpe ↓ no longo prazo (sem número aberto)"
+      }
+    ]
+  },
+  "consequencias": [
+    "crimes-da-ditadura--impunidade",
+    "crimes-da-ditadura--polarizacao"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "acoes-afirmativas--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_acoes_afirmativas",
+  "alvo": "discriminacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.056,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

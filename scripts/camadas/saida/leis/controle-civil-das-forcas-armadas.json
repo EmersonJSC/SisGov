@@ -1,0 +1,83 @@
+{
+  "id": "controle-civil-das-forcas-armadas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Controle civil das Forças Armadas",
+  "descricao": "Quem manda nos militares e eles podem fazer política?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_controle_civil_das_forcas_armadas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "tutela-militar",
+        "rotulo": "Tutela militar",
+        "valor": 0,
+        "apoiam": [
+          "Militares da reserva e grupos de intervenção"
+        ],
+        "rejeitam": [
+          "Progressistas",
+          "Católicos",
+          "Empresários"
+        ],
+        "efeitos": "Risco de golpe ↑; Força das instituições ↓; trava imprensa e Judiciário plenos"
+      },
+      {
+        "id": "um-ministerio-por-forca",
+        "rotulo": "Um ministério por Força",
+        "valor": 33.33,
+        "apoiam": [
+          "Conservadores"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Força das instituições ↓ pouco (estimado)"
+      },
+      {
+        "id": "ministerio-civil-da-defesa",
+        "rotulo": "Ministério civil da Defesa",
+        "valor": 66.67,
+        "apoiam": [
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Associações de militares"
+        ],
+        "efeitos": "Risco de golpe ↓ contra Tutela militar; Força das instituições ↑; Capacidade de defesa estável (estimado)"
+      },
+      {
+        "id": "controle-civil-reforcado-carreira-civil-na-defesa-quarentena",
+        "rotulo": "Controle civil reforçado: carreira civil na Defesa, quarentena antes de eleição e de cargo político, justiça militar só para crime militar",
+        "valor": 100,
+        "apoiam": [
+          "Progressistas",
+          "Jovens"
+        ],
+        "rejeitam": [
+          "Conservadores",
+          "Servidores",
+          "Associações de militares"
+        ],
+        "efeitos": "Risco de golpe ↓; Força das instituições ↑; Capacidade de defesa ↓ pouco; no primeiro ano, chance maior de motim ou tentativa de golpe (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "controle-civil-das-forcas-armadas--forca-instituicoes",
+    "controle-civil-das-forcas-armadas--capacidade-defesa"
+  ]
+}

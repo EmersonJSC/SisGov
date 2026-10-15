@@ -1,0 +1,17 @@
+{
+  "id": "protecao-contra-violencia-domestica--protecao-efetiva-mulheres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_protecao_contra_violencia_domestica",
+  "alvo": "protecao_efetiva_mulheres",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

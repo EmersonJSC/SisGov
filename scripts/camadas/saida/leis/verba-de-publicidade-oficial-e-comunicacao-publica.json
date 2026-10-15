@@ -1,0 +1,75 @@
+{
+  "id": "verba-de-publicidade-oficial-e-comunicacao-publica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Verba de publicidade oficial e comunicação pública",
+  "descricao": "Quanto o governo gasta com propaganda própria e com mídia pública?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "imprensa-internet-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_verba_de_publicidade_oficial_e_comunicacao_publica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0",
+        "rotulo": "0",
+        "valor": 33.33,
+        "apoiam": [
+          "Classe média"
+        ],
+        "rejeitam": [
+          "As 5 mídias"
+        ],
+        "efeitos": "lacuna"
+      },
+      {
+        "id": "0-007",
+        "rotulo": "~0,007% (o país de referência, 2025:  876 milhões orçados em comunicação, aprox.)",
+        "valor": 66.67,
+        "custoAnualPercentualPib": 0.007,
+        "efeitos": "lacuna"
+      },
+      {
+        "id": "0-02",
+        "rotulo": "0,02% (máximo)",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.02,
+        "apoiam": [
+          "Mídias que recebem a verba"
+        ],
+        "rejeitam": [
+          "Classe média"
+        ],
+        "efeitos": "Popularidade ↑ (estimado); Captura política ↑ (estimado)"
+      }
+    ]
+  },
+  "consequencias": [
+    "verba-de-publicidade-oficial-e-comunicacao-publica--popularidade-governo",
+    "verba-de-publicidade-oficial-e-comunicacao-publica--captura-politica"
+  ]
+}

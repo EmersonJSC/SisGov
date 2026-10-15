@@ -1,0 +1,17 @@
+{
+  "id": "jornada-de-trabalho--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_jornada_de_trabalho",
+  "alvo": "informalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.056,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

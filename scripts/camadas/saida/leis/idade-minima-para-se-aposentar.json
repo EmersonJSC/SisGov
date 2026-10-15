@@ -1,0 +1,101 @@
+{
+  "id": "idade-minima-para-se-aposentar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Idade mínima para se aposentar",
+  "descricao": "A partir de que idade a pessoa pode se aposentar?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-previdencia",
+    "nome": "Mesa Previdência",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_idade_minima_para_se_aposentar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-idade",
+        "rotulo": "Sem idade (só tempo de contribuição)",
+        "valor": 0,
+        "custoTexto": "O mais alto: aposentadoria cedo dos que ganham mais",
+        "apoiam": [
+          "Servidores",
+          "Trabalhadores com carteira"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Jovens"
+        ],
+        "efeitos": "Déficit ↑"
+      },
+      {
+        "id": "baixa",
+        "rotulo": "Baixa (até 60 anos)",
+        "valor": 25.0,
+        "custoTexto": "Alto",
+        "apoiam": [
+          "Aposentados",
+          "Associações de aposentados",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Déficit ↑; popularidade com aposentados ↑"
+      },
+      {
+        "id": "moderada-62-a-65",
+        "rotulo": "Moderada, 62 a 65 (hoje na referência: 65 homem, 62 mulher)",
+        "valor": 50.0,
+        "custoTexto": "Referência atual",
+        "apoiam": [
+          "Classe média",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Centrais sindicais"
+        ],
+        "efeitos": "Déficit ↑ contra Alta (67 ou mais) e ↓ contra Baixa; popularidade com aposentados ↑ pouco contra Alta; pobreza de quem faz serviço pesado ↓ contra Alta (estimado)"
+      },
+      {
+        "id": "alta",
+        "rotulo": "Alta (67 ou mais)",
+        "valor": 75.0,
+        "custoTexto": "Menor",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Trabalhadores com carteira",
+          "Interior",
+          "Informais"
+        ],
+        "efeitos": "Déficit ↓ em 5 a 15 anos (transição); idosos trabalhando ↑; pobreza de quem faz serviço pesado ↑ se não houver exceção"
+      },
+      {
+        "id": "atrelada-a-expectativa-de-vida",
+        "rotulo": "Atrelada à expectativa de vida",
+        "valor": 100,
+        "custoTexto": "Menor e estável",
+        "apoiam": [
+          "Classe média",
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Trabalhadores com carteira",
+          "Aposentados"
+        ],
+        "efeitos": "Idade sobe sozinha com o nó de expectativa de vida; tira a necessidade de nova reforma a cada década"
+      }
+    ]
+  },
+  "consequencias": []
+}

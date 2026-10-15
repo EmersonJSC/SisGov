@@ -1,0 +1,17 @@
+{
+  "id": "credito-estudantil--escolaridade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_credito_estudantil",
+  "alvo": "escolaridade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.141,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

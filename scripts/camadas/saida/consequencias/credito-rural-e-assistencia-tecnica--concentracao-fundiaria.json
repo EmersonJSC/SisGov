@@ -1,0 +1,17 @@
+{
+  "id": "credito-rural-e-assistencia-tecnica--concentracao-fundiaria",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_credito_rural_e_assistencia_tecnica",
+  "alvo": "concentracao_fundiaria",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.056,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

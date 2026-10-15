@@ -1,0 +1,68 @@
+{
+  "id": "protecao-de-dados",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Proteção de dados",
+  "descricao": "Que regras empresas e governo seguem para coletar e usar dados pessoais?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "imprensa-internet-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_protecao_de_dados",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-lei",
+        "rotulo": "Sem lei",
+        "valor": 0,
+        "apoiam": [
+          "Plataformas digitais"
+        ],
+        "efeitos": "Dano do ataque hacker ↑"
+      },
+      {
+        "id": "regras-por-setor",
+        "rotulo": "Regras por setor",
+        "valor": 33.33,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Plataformas digitais",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Meio-termo"
+      },
+      {
+        "id": "lei-geral-com-agencia",
+        "rotulo": "Lei geral com agência",
+        "valor": 66.67,
+        "custoTexto": "lacuna",
+        "efeitos": "Liberdades civis ↑; Dano do ataque hacker ↓"
+      },
+      {
+        "id": "protecao-estrita",
+        "rotulo": "Proteção estrita",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "rejeitam": [
+          "Plataformas digitais",
+          "Empresários"
+        ],
+        "efeitos": "Liberdades civis ↑; Inovação ↓ fraco (aprox.); Dano do ataque hacker ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "protecao-de-dados--liberdade-civil",
+    "protecao-de-dados--inovacao"
+  ]
+}

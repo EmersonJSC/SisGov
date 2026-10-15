@@ -1,0 +1,17 @@
+{
+  "id": "regulacao-das-redes-sociais--desinformacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regulacao_das_redes_sociais",
+  "alvo": "desinformacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.084,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

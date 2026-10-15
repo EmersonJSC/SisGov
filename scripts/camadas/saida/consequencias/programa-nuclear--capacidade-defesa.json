@@ -1,0 +1,17 @@
+{
+  "id": "programa-nuclear--capacidade-defesa",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_nuclear",
+  "alvo": "capacidade_defesa",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

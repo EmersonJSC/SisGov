@@ -1,0 +1,71 @@
+{
+  "id": "alternativas-penais-e-audiencia-de-custodia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Alternativas penais e audiência de custódia",
+  "descricao": "Quem ainda não foi julgado ou cometeu crime leve vai para a prisão ou cumpre pena fora dela?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_alternativas_penais_e_audiencia_de_custodia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "prisao-como-regra",
+        "rotulo": "Prisão como regra",
+        "valor": 0,
+        "custoTexto": "custo prisional ↑",
+        "apoiam": [
+          "Conservadores",
+          "Associações de policiais"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Lotação ↑"
+      },
+      {
+        "id": "custodia-em-24-horas-e-alternativas",
+        "rotulo": "Custódia em 24 horas e alternativas (tornozeleira, pena restritiva, prazo para a prisão provisória) (hoje na referência, estimado)",
+        "valor": 50.0,
+        "custoTexto": "baixo",
+        "apoiam": [
+          "Progressistas",
+          "Hierarquia católica e pastorais"
+        ],
+        "rejeitam": [
+          "Conservadores"
+        ],
+        "efeitos": "Lotação ↓ (27,7% dos presos são provisórios); reincidência ↓ (aprox.)"
+      },
+      {
+        "id": "alternativas-amplas",
+        "rotulo": "Alternativas amplas",
+        "valor": 100,
+        "custoTexto": "custo prisional ↓",
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Conservadores",
+          "Associações de policiais"
+        ],
+        "efeitos": "Lotação ↓↓; sensação de segurança ↓ em Conservadores (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "alternativas-penais-e-audiencia-de-custodia--sensacao-seguranca"
+  ]
+}

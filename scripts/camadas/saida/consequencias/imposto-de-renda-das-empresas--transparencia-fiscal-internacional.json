@@ -1,0 +1,17 @@
+{
+  "id": "imposto-de-renda-das-empresas--transparencia-fiscal-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_imposto_de_renda_das_empresas",
+  "alvo": "transparencia_fiscal_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "politica-de-sancoes",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de sanções",
+  "descricao": "O que o país faz com as sanções que outros países aplicam?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_politica_de_sancoes",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-as-sancoes-da-onu",
+        "rotulo": "Só as sanções da ONU (hoje na referência, aprox.)",
+        "valor": 0,
+        "apoiam": [
+          "Agro",
+          "Empresários"
+        ],
+        "efeitos": "Exportações ↑ contra aderir às sanções do polo ocidental; Tensão com o alvo ↓ (estimado)"
+      },
+      {
+        "id": "adere-as-sancoes-do-polo-ocidental",
+        "rotulo": "Adere às sanções do polo ocidental",
+        "valor": 33.33,
+        "custoTexto": "perde exportações para o alvo",
+        "apoiam": [
+          "Conservadores"
+        ],
+        "rejeitam": [
+          "Agro",
+          "Confederação da indústria"
+        ],
+        "efeitos": "Exportações ↓ para o alvo; Tensão com o alvo ↑"
+      },
+      {
+        "id": "sancoes-proprias",
+        "rotulo": "Sanções próprias",
+        "valor": 66.67,
+        "rejeitam": [
+          "Empresários"
+        ],
+        "efeitos": "Tensão internacional ↑ (estimado)"
+      },
+      {
+        "id": "contorna-sancoes",
+        "rotulo": "Contorna sanções",
+        "valor": 100,
+        "custoTexto": "risco de sanção secundária",
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Exportações ↑ para o alvo; chance de sanção contra o próprio país ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-sancoes--exportacoes",
+    "politica-de-sancoes--tensao-internacional"
+  ]
+}

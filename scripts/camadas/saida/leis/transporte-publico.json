@@ -1,0 +1,81 @@
+{
+  "id": "transporte-publico",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Transporte público",
+  "descricao": "quem paga o ônibus e o metrô: o passageiro, o Estado, ou os dois?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_transporte_publico",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-sistema-publico",
+        "rotulo": "Sem sistema público",
+        "valor": 0,
+        "rejeitam": [
+          "Periferias das metrópoles"
+        ],
+        "efeitos": "Mobilidade urbana ↓"
+      },
+      {
+        "id": "tarifa-integral",
+        "rotulo": "Tarifa integral",
+        "valor": 33.33,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Periferias das metrópoles",
+          "Jovens"
+        ],
+        "efeitos": "Mobilidade urbana ↓; espiral da tarifa (diesel sobe, passageiro some, tarifa sobe)"
+      },
+      {
+        "id": "subsidio-parcial",
+        "rotulo": "Subsídio parcial (hoje nas grandes capitais, aprox.)",
+        "valor": 66.67,
+        "custoTexto": "0,1 a 0,2% do PIB (aprox.)",
+        "apoiam": [
+          "Periferias das metrópoles"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Mobilidade urbana ↑ contra Tarifa integral; renda das famílias pobres ↑ pouco; cofre ↓ pouco; espiral da tarifa atenuada (aprox.)"
+      },
+      {
+        "id": "tarifa-zero",
+        "rotulo": "Tarifa zero",
+        "valor": 100,
+        "custoTexto": "0,3 a 0,5% do PIB (aprox.)",
+        "apoiam": [
+          "Periferias das metrópoles",
+          "Jovens",
+          "Movimento estudantil"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "efeitos": "Mobilidade urbana ↑; renda das famílias pobres ↑; emissões ↓ (sem medida); cofre ↓; some o dilema da tarifa do ônibus"
+      }
+    ]
+  },
+  "consequencias": [
+    "transporte-publico--mobilidade-urbana",
+    "transporte-publico--emissoes"
+  ]
+}

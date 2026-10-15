@@ -1,0 +1,17 @@
+{
+  "id": "crimes-da-ditadura--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_crimes_da_ditadura",
+  "alvo": "polarizacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

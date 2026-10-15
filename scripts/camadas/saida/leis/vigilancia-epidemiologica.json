@@ -1,0 +1,74 @@
+{
+  "id": "vigilancia-epidemiologica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Vigilância epidemiológica",
+  "descricao": "Quanto gastar para detectar e conter surtos de doença?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_vigilancia_epidemiologica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 33.33,
+        "rejeitam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Epidemia mais longa e maior; Pressão hospitalar ↑ em surto"
+      },
+      {
+        "id": "0-05-a-0-1-do-pib",
+        "rotulo": "0,05 a 0,1% do PIB (hoje na referência, aprox.)",
+        "valor": 66.67,
+        "custoTexto": "0,05 a 0,1% do PIB (aprox.), Saúde",
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Epidemia ↓ duração e tamanho contra Zero (estimado); Pressão hospitalar ↓ em surto contra Zero (tamanho lacuna)"
+      },
+      {
+        "id": "0-2-do-pib",
+        "rotulo": "0,2% do PIB",
+        "valor": 100,
+        "custoTexto": "0,2% do PIB, Saúde",
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Epidemia ↓ duração e tamanho; Pressão hospitalar ↓ em surto (tamanho lacuna)"
+      }
+    ]
+  },
+  "consequencias": [
+    "vigilancia-epidemiologica--pressao-hospitalar"
+  ]
+}

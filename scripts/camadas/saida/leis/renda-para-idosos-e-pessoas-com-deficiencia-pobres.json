@@ -1,0 +1,84 @@
+{
+  "id": "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Renda para idosos e pessoas com deficiência pobres",
+  "descricao": "O Estado paga renda a idoso ou pessoa com deficiência pobre que nunca contribuiu? Quanto e para quem?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-assistencia-social",
+    "nome": "Mesa Assistência social",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_renda_para_idosos_e_pessoas_com_deficiencia_pobres",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "rejeitam": [
+          "Pobres",
+          "Aposentados"
+        ],
+        "efeitos": "Pobreza dos idosos ↑ forte"
+      },
+      {
+        "id": "focalizado-estrito",
+        "rotulo": "Focalizado estrito (renda até 1/4 do mínimo, valor abaixo do mínimo)",
+        "valor": 33.33,
+        "custoTexto": "Cerca de 0,6% do PIB (aprox.)",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Pobres",
+          "Pastorais católicas"
+        ],
+        "efeitos": "Pobreza dos idosos ↓ menos; incentivo a contribuir ↑ (hipótese)"
+      },
+      {
+        "id": "focalizado-amplo-1-salario-minimo",
+        "rotulo": "Focalizado amplo, 1 salário mínimo",
+        "valor": 66.67,
+        "custoTexto": "Cerca de 1,0% do PIB (2025)",
+        "apoiam": [
+          "Pobres",
+          "Aposentados",
+          "Pastorais católicas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Pobreza dos idosos ↓; cobertura previdenciária ↓ (quem ganha pouco recebe o mesmo sem pagar; hipótese sem tamanho); custo ↑ sozinho com o envelhecimento"
+      },
+      {
+        "id": "universal",
+        "rotulo": "Universal (pensão social para todo idoso)",
+        "valor": 100,
+        "custoTexto": "Alto (aprox. 2% a 3% do PIB)",
+        "apoiam": [
+          "Progressistas",
+          "Aposentados"
+        ],
+        "rejeitam": [
+          "Ricos",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Pobreza dos idosos ↓ forte; desigualdade ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "renda-para-idosos-e-pessoas-com-deficiencia-pobres--cobertura-previdenciaria",
+    "renda-para-idosos-e-pessoas-com-deficiencia-pobres--desigualdade"
+  ]
+}

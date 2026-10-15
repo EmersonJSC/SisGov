@@ -1,0 +1,17 @@
+{
+  "id": "educacao-domiciliar--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_educacao_domiciliar",
+  "alvo": "polarizacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

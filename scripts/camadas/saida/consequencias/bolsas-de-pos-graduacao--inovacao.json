@@ -1,0 +1,17 @@
+{
+  "id": "bolsas-de-pos-graduacao--inovacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_bolsas_de_pos_graduacao",
+  "alvo": "inovacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.14,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

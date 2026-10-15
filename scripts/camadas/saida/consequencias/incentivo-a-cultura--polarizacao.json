@@ -1,0 +1,17 @@
+{
+  "id": "incentivo-a-cultura--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_incentivo_a_cultura",
+  "alvo": "polarizacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.028,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

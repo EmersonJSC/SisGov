@@ -1,0 +1,68 @@
+{
+  "id": "policiamento-orientado",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Policiamento orientado",
+  "descricao": "O governo adota um programa de prevenção focada, e qual: lugares quentes, metas com dados ou dissuasão com serviços?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_policiamento_orientado",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-programa",
+        "rotulo": "Sem programa",
+        "valor": 0
+      },
+      {
+        "id": "pontos-quentes",
+        "rotulo": "Pontos quentes (patrulha onde o crime se concentra)",
+        "valor": 33.33,
+        "custoTexto": "baixo (realoca efetivo)",
+        "apoiam": [
+          "Conservadores",
+          "Classe média"
+        ],
+        "efeitos": "Crimes contra o patrimônio ↓ pouco (aprox.); violência letal ↓ (aprox.)"
+      },
+      {
+        "id": "metas-e-gestao",
+        "rotulo": "Metas e gestão (pacto com dados e cobrança)",
+        "valor": 66.67,
+        "custoTexto": "≈0,02% do PIB (aprox.), segurança",
+        "apoiam": [
+          "Associações de policiais",
+          "Classe média"
+        ],
+        "efeitos": "Violência letal ↓ (programas estaduais, tamanho aprox.); 1 a 3 anos"
+      },
+      {
+        "id": "dissuasao-focada-com-servicos",
+        "rotulo": "Dissuasão focada com serviços (aviso a grupos de risco e oferta de saída)",
+        "valor": 100,
+        "custoTexto": "≈0,03% do PIB (aprox.), segurança",
+        "apoiam": [
+          "Progressistas",
+          "Hierarquia católica e pastorais"
+        ],
+        "efeitos": "Violência letal ↓ (aprox.); reincidência ↓ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "policiamento-orientado--crimes-patrimoniais",
+    "policiamento-orientado--violencia-letal"
+  ]
+}

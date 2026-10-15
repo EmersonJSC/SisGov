@@ -1,0 +1,17 @@
+{
+  "id": "fundo-soberano--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fundo_soberano",
+  "alvo": "investimento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.009,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -87,9 +87,9 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
       grave: false,
     };
   }
-  // raio entre 15 e 73 (referência 30): a mais cheia tem quase 5 vezes o raio
+  // raio entre 15 e 70 (referência 30): a mais cheia tem quase 5 vezes o raio
   // da mais vazia (pedido do autor, 15/out: bolhas maiores e diferença maior)
-  const raio = 15 + 58 * Math.pow(t, 0.85);
+  const raio = 15 + 55 * Math.pow(t, 0.85);
   return {
     t,
     escala: raio / RAIO_BASE_BOLHA,

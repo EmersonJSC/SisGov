@@ -593,7 +593,13 @@ button {
   fill: light-dark(#fff, #262626);
   stroke: var(--cor);
   stroke-width: 3;
-  filter: drop-shadow(0 3px 5px #1c1a1027);
+  /* sem drop-shadow nos nós: com centenas deles, cada quadro da animação
+     custava até 380 ms (medido em 15/out); a sombra vem só no foco */
+}
+
+.no-lei.foco .disco,
+.no-lei.selecionada .disco {
+  filter: drop-shadow(0 3px 5px #1c1a1040);
 }
 
 .no-lei.selecionada,
@@ -677,7 +683,7 @@ button {
   fill: light-dark(#fffefb, #272625);
   stroke: var(--aro);
   stroke-width: 2.5;
-  filter: drop-shadow(0 3px 6px #2a261427);
+  /* sombra só no foco (desempenho) */
 }
 
 .no-bolha.tipo-situacao .disco {
@@ -5251,4 +5257,596 @@ button {
 .filtro-leis-painel p {
   margin: 0;
   opacity: 0.75;
+}
+
+/* Tela de carregamento (15/out) */
+.carregando {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: light-dark(#f7f4ec, #171511);
+  color: var(--tinta, light-dark(#1f2a3a, #becde2));
+  font-family: var(--serifa, serif);
+  z-index: 50;
+}
+
+.carregando p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.carregando-giro {
+  width: 46px;
+  height: 46px;
+  border: 4px solid #8b9ab044;
+  border-top-color: #e09a2a;
+  border-radius: 50%;
+  animation: giro-carregando 0.9s linear infinite;
+}
+
+@keyframes giro-carregando {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sem-motivos {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+
+/* Tipos de lei (15/out): cada camada tem preenchimento e desenho próprios */
+.no-lei.tipo-constituicao:not(.foco):not(.selecionada) .disco {
+  fill: color-mix(in srgb, var(--cor) 22%, light-dark(#fff, #262626));
+  stroke-width: 4.5;
+}
+
+.no-lei.tipo-alavanca:not(.foco):not(.selecionada) .disco {
+  fill: light-dark(#fff, #262626);
+  stroke-dasharray: 5 3;
+}
+
+.no-lei .textura {
+  fill: none;
+  pointer-events: none;
+}
+
+.no-lei .textura-constituicao {
+  stroke: var(--cor);
+  stroke-width: 1.6;
+  opacity: 0.7;
+}
+
+.no-lei .textura-alavanca {
+  stroke: var(--cor);
+  stroke-width: 1.8;
+  stroke-dasharray: 1.5 4.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.aros-setores {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Folha da lei: duas páginas lado a lado, como uma pasta aberta (V1-36)
+   ------------------------------------------------------------------------- */
+.documento.duplo {
+  width: min(1100px, calc(100% - 28px));
+  height: min(660px, calc(100% - 36px));
+}
+
+.duplo .papel-corpo {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+}
+
+.folha {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 16px 1fr;
+  min-height: 0;
+}
+
+.pagina {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 26px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbb98c transparent;
+}
+
+.pagina-direita {
+  background: linear-gradient(
+    90deg,
+    light-dark(#00000010, #00000030),
+    transparent 7%
+  );
+}
+
+.pagina-esquerda {
+  background: linear-gradient(
+    270deg,
+    light-dark(#00000010, #00000030),
+    transparent 7%
+  );
+}
+
+.lombada {
+  background: linear-gradient(
+    90deg,
+    light-dark(#d9caa0, #3a3322),
+    light-dark(#f1e7c8, #2a2418) 50%,
+    light-dark(#d9caa0, #3a3322)
+  );
+  box-shadow:
+    inset 1px 0 0 #fff6,
+    inset -1px 0 0 #0002;
+}
+
+.folha-tipo {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.pagina .titulo-doc {
+  margin: 0;
+  font-size: 28px;
+}
+
+.folha-explica {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.aviso-folha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid light-dark(#cbb98c, #544b32);
+  border-radius: 10px;
+  background: light-dark(#fff8e4, #231e12);
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.aviso-folha.fora,
+.aviso-folha.queda {
+  border-color: #cd404e;
+  background: light-dark(#fdeceb, #2c1717);
+}
+
+.aviso-folha button {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.controle-folha {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+  padding: 14px 4px 4px;
+}
+
+.degrau-atual {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.degrau-atual strong {
+  font-size: 1.3rem;
+  line-height: 1.15;
+}
+
+.degrau-atual small,
+.duas-opcoes small {
+  padding: 1px 8px;
+  border-radius: 9px;
+  background: var(--cor);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.trava-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #cd404e;
+  border-radius: 9px;
+  padding: 1px 8px;
+  background: none;
+  color: #cd404e;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.deslizador {
+  --p: 0;
+  position: relative;
+  height: 44px;
+  display: grid;
+  align-items: center;
+}
+
+.deslizador input[type="range"] {
+  appearance: none;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: grab;
+}
+
+.deslizador input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--cor) calc(var(--p) * 100%),
+    light-dark(#d9caa0, #3a3322) calc(var(--p) * 100%)
+  );
+}
+
+.deslizador input[type="range"]::-moz-range-track {
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--cor) calc(var(--p) * 100%),
+    light-dark(#d9caa0, #3a3322) calc(var(--p) * 100%)
+  );
+}
+
+.deslizador input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -9px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--cor);
+  box-shadow: 0 2px 6px #0004;
+}
+
+.deslizador input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--cor);
+  box-shadow: 0 2px 6px #0004;
+}
+
+.degraus {
+  position: absolute;
+  inset: 0 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.degraus i {
+  width: 8px;
+  height: 8px;
+  margin: 0 -4px;
+  border-radius: 50%;
+  background: light-dark(#fff, #262626);
+  border: 2px solid light-dark(#b9a877, #6a5e3e);
+  z-index: 1;
+}
+
+.degraus i.cheio {
+  border-color: #fff;
+  background: #fff8;
+}
+
+.degraus i.vigente {
+  outline: 2px solid var(--cor);
+  outline-offset: 2px;
+}
+
+.degraus i.trancado {
+  background: #cd404e;
+  border-color: #cd404e;
+}
+
+.extremos {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.74rem;
+  opacity: 0.6;
+}
+
+.extremos span {
+  max-width: 45%;
+}
+
+.duas-opcoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.duas-opcoes button {
+  min-height: 56px;
+  padding: 10px;
+  border: 2px solid light-dark(#cbb98c, #544b32);
+  border-radius: 12px;
+  background: light-dark(#fffdf6, #1f1b12);
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+}
+
+.duas-opcoes button.ativa {
+  border-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 18%, light-dark(#fffdf6, #1f1b12));
+}
+
+.duas-opcoes button:disabled {
+  opacity: 0.45;
+}
+
+.custo-folha {
+  margin: 0;
+  font-weight: 800;
+}
+
+.custo-folha.arrecada {
+  color: #269666;
+}
+
+.custo-folha.custa {
+  color: #cd404e;
+}
+
+/* Congresso: pressa como nível de urgência e medida provisória como botão */
+.folha-congresso {
+  display: grid;
+  gap: 10px;
+  padding-top: 6px;
+  border-top: 1px dashed light-dark(#cbb98c, #544b32);
+}
+
+.urgencia {
+  display: flex;
+  gap: 8px;
+}
+
+.nivel-urgencia {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  border: 2px solid light-dark(#cbb98c, #544b32);
+  border-radius: 12px;
+  background: light-dark(#fffdf6, #1f1b12);
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.nivel-urgencia.ativa.n0 {
+  border-color: #6f8098;
+  background: #6f809822;
+}
+
+.nivel-urgencia.ativa.n1 {
+  border-color: #e09a2a;
+  background: #e09a2a2e;
+  color: #a86a0a;
+}
+
+.nivel-urgencia.ativa.n2 {
+  border-color: #cd404e;
+  background: #cd404e2e;
+  color: #cd404e;
+  animation: pulsar-urgencia 1.2s ease-in-out infinite;
+}
+
+@keyframes pulsar-urgencia {
+  50% {
+    box-shadow: 0 0 0 4px #cd404e33;
+  }
+}
+
+.botao-mp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 2px dashed light-dark(#cbb98c, #544b32);
+  border-radius: 12px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+}
+
+.botao-mp.ligado {
+  border: 2px solid #8e5bd6;
+  background: #8e5bd622;
+  color: #8e5bd6;
+}
+
+.folha-caminho {
+  opacity: 0.6;
+}
+
+/* Efeitos: só o nome do índice e a barrinha que sobe ou desce */
+.folha-efeitos-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.folha-efeitos-topo h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.efeitos-folha {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.efeito-linha {
+  display: grid;
+  grid-template-columns: 24px 1fr 42px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.efeito-linha:hover {
+  background: light-dark(#0000000a, #ffffff0d);
+}
+
+.efeito-nome {
+  font-weight: 700;
+}
+
+.mini-grafico {
+  position: relative;
+  width: 42px;
+  height: 32px;
+}
+
+.mini-grafico .linha-base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: light-dark(#b9a877, #6a5e3e);
+}
+
+.mini-grafico .barra {
+  position: absolute;
+  left: 15px;
+  width: 12px;
+  border-radius: 3px;
+  transition:
+    height 0.3s ease-out,
+    background 0.3s;
+}
+
+.mini-grafico .barra.sobe {
+  bottom: 50%;
+}
+
+.mini-grafico .barra.desce {
+  top: 50%;
+}
+
+.mini-grafico .barra.neutra {
+  top: calc(50% - 1px);
+  left: 12px;
+  width: 18px;
+  height: 2px;
+  background: light-dark(#b9a877, #6a5e3e);
+}
+
+.mesa-folha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed light-dark(#cbb98c, #544b32);
+}
+
+.mesa-folha button {
+  display: grid;
+  padding: 4px 10px;
+  border: 1px solid light-dark(#cbb98c, #544b32);
+  border-radius: 10px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.mesa-folha button small {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.mesa-folha button[aria-current="true"] {
+  border-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 14%, transparent);
+}
+
+.mesa-folha button.fora {
+  opacity: 0.55;
+}
+
+@media (max-width: 820px) {
+  .folha {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .lombada {
+    display: none;
+  }
+}
+
+.degrau-detalhe {
+  margin: -4px 0 0;
+  font-size: 0.8rem;
+  opacity: 0.65;
 }

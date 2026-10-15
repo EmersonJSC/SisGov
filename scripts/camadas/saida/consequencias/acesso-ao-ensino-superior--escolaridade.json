@@ -1,0 +1,17 @@
+{
+  "id": "acesso-ao-ensino-superior--escolaridade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_acesso_ao_ensino_superior",
+  "alvo": "escolaridade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.084,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

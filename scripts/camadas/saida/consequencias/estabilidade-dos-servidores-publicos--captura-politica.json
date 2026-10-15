@@ -1,0 +1,17 @@
+{
+  "id": "estabilidade-dos-servidores-publicos--captura-politica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_estabilidade_dos_servidores_publicos",
+  "alvo": "captura_politica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.063,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

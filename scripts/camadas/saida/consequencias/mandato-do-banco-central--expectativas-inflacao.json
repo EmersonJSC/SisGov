@@ -1,0 +1,17 @@
+{
+  "id": "mandato-do-banco-central--expectativas-inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_mandato_do_banco_central",
+  "alvo": "expectativas_inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12599,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

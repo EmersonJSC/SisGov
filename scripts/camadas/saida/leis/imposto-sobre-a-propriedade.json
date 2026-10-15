@@ -1,0 +1,80 @@
+{
+  "id": "imposto-sobre-a-propriedade",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Imposto sobre a propriedade",
+  "descricao": "Quanto pagam imóveis, terras e veículos, e com que valor de referência?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_imposto_sobre_a_propriedade",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "simbolico",
+        "rotulo": "Simbólico",
+        "valor": 0,
+        "custoTexto": "receita abaixo de 0,5% do PIB",
+        "apoiam": [
+          "Entidades do agronegócio",
+          "Classe média"
+        ],
+        "efeitos": "Federalismo ↓ (municípios sem receita própria)"
+      },
+      {
+        "id": "atual-planta-antiga-imposto-rural-quase-zero",
+        "rotulo": "Atual: planta antiga, imposto rural quase zero",
+        "valor": 33.33,
+        "custoTexto": "receita perto de 1,5% do PIB (aprox.)",
+        "apoiam": [
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Progressividade ↓ (pesa mais nos pobres)"
+      },
+      {
+        "id": "atualizado-e-progressivo",
+        "rotulo": "Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa)",
+        "valor": 66.67,
+        "custoTexto": "receita 2 a 2,5% do PIB (aprox.)",
+        "apoiam": [
+          "Moradia",
+          "Terra"
+        ],
+        "rejeitam": [
+          "Entidades do agronegócio",
+          "Classe média"
+        ],
+        "efeitos": "Déficit habitacional ↓; Concentração de terra ↓; Progressividade ↑; protesto contra imposto se atualizar de uma vez"
+      },
+      {
+        "id": "imposto-sobre-o-valor-da-terra",
+        "rotulo": "Imposto sobre o valor da terra",
+        "valor": 100,
+        "custoTexto": "receita 2 a 3% do PIB (aprox.)",
+        "apoiam": [
+          "Moradia"
+        ],
+        "rejeitam": [
+          "Entidades do agronegócio",
+          "Classe média"
+        ],
+        "efeitos": "Terra ociosa ↓; Federalismo ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "imposto-sobre-a-propriedade--deficit-habitacional",
+    "imposto-sobre-a-propriedade--concentracao-fundiaria"
+  ]
+}

@@ -492,6 +492,69 @@ terminou e a distância até o governo de verdade.
 **Divisão.** Claude: Pesquisa os programas, escreve o desenho e roda a prova.
 Autor: Aprova a estrutura e confere os programas que mais conhece.
 
+### V1-36: A folha da lei, controle com deslizador e leis do mundo
+
+**Tamanho:** G · **Depende de:** V1-34 · **Vem antes de:** V1-14 a V1-23
+
+**Origem.** Pedido do autor em 15/out/2026, depois de testar o jogo com as leis
+das fichas. Nada daqui foi feito ainda.
+
+**Objetivo.** A lei deve ser jogável como um painel de controle, não como um
+formulário: o jogador sente que aumenta uma coisa e diminui outra, vê o efeito
+em gráfico e escolhe sem ler um muro de texto.
+
+**Entra**
+
+- **A folha da lei, em duas páginas lado a lado** (como uma pasta aberta). Hoje
+  tem informação demais, espalhada, e as opções de escolha, que são o principal,
+  ficam apagadas. A página da esquerda diz o que a lei é e faz; a da direita é o
+  controle (as opções) e o que ele mexe.
+- **Menos texto, mais visual.** O que a lei empurra para cima ou para baixo
+  vira só o nome do índice com um gráfico pequeno, vermelho e verde; quando o
+  jogador muda a lei, o gráfico sobe ou desce na hora. Texto só para o que o
+  gráfico não diz.
+- **Cada lei com uma explicação do que faz, sem o Brasil como centro.** O jogo é
+  amplo: o texto da lei não cita o Brasil nem informações do Brasil. O Brasil é
+  só o estado inicial do país (D-03, D-04, D-38).
+- **Deslizador com degraus.** Toda lei com faixa de valor ou com opções ordenadas
+  ganha um deslizador que "pula" entre os pontos (e deixa o meio-termo quando a
+  lei tem valor contínuo), para dar a sensação de aumentar aqui e diminuir ali.
+  Exemplo: verba de controle, em vez de escolher "ponto da faixa" ou "máximo".
+- **Leis do mundo.** Revisar o catálogo: o jogo não deve ter só leis que o Brasil
+  tem. Leis opostas são leis separadas (estatizar e privatizar são duas, não
+  uma opção da outra: um país não é estatizado e privatizado ao mesmo tempo).
+  Muita lei só existe porque o Brasil tem; deve haver as dos outros países.
+- **Leis econômicas espalhadas pelas áreas.** Economia é geral: a lei econômica
+  de saúde fica na esfera de Saúde, a de previdência em Previdência, e assim
+  por diante; cada esfera cuida da economia dela. Hoje Economia tem 54 leis e
+  Previdência poucas: equilibrar.
+- **Pressa no Congresso e medida provisória.** A pressa hoje é uma caixa sem
+  desenho. Ela vira nível de urgência com ícones (e a medida provisória ganha
+  ícone e botão próprio).
+
+**Não entra**
+
+- Mudar o motor das leis (fica no V1-34). Aqui é a tela e a organização do
+  catálogo.
+
+**Aceite**
+
+- [ ] Folha da lei em duas páginas, com o controle visível sem rolar (teste de
+      tela)
+- [ ] Nenhum texto de lei do mundo cita o Brasil (teste, como o SG153)
+- [ ] Toda lei com faixa ou opções ordenadas tem deslizador com degraus (teste)
+- [ ] Nenhum par de leis opostas é uma lei só (revisão do catálogo, com lista)
+- [ ] Nenhuma área com menos de um mínimo de leis nem uma com mais do dobro da
+      média (teste de distribuição, número a combinar)
+- [ ] Pressa e medida provisória com ícone e nível de urgência
+- [ ] `npm run check` verde na máquina do autor
+
+**Você vê.** A folha de uma lei aberta, mudando o deslizador e vendo os
+gráficos subirem e descerem.
+
+**Divisão.** Claude: Desenha a folha, o deslizador e a redistribuição das leis.
+Autor: Aprova o desenho e a lista de leis opostas e dos países de referência.
+
 ### V1-35: Empresas do país e Estado empresário
 
 **Tamanho:** G · **Depende de:** V1-34 e V1-12 (tramitação) · **Vem antes de:** V1-14 a V1-23

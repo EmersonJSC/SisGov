@@ -1,0 +1,17 @@
+{
+  "id": "terras-indigenas--producao-mineral",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_terras_indigenas",
+  "alvo": "producao_mineral",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.147,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

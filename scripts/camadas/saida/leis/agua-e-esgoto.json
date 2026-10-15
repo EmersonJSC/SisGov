@@ -1,0 +1,102 @@
+{
+  "id": "agua-e-esgoto",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Água e esgoto",
+  "descricao": "quem leva água tratada e coleta esgoto nas cidades: município, companhia estadual ou empresa privada, e com que metas?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_agua_e_esgoto",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 0,
+        "rejeitam": [
+          "Quase todos"
+        ],
+        "efeitos": "Infraestrutura de saneamento ↓; saúde da população ↓"
+      },
+      {
+        "id": "servico-municipal-publico",
+        "rotulo": "Serviço municipal público",
+        "valor": 25.0,
+        "custoTexto": "0,3 a 0,4% do PIB",
+        "apoiam": [
+          "Servidores públicos",
+          "Centrais sindicais",
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Infraestrutura de saneamento ↑ se houver verba e regra clara; cofre ↓"
+      },
+      {
+        "id": "companhias-estaduais",
+        "rotulo": "Companhias estaduais",
+        "valor": 50.0,
+        "custoTexto": "0,25% do PIB (o país de referência, 2024)",
+        "apoiam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "efeitos": "Infraestrutura de saneamento ↑ devagar"
+      },
+      {
+        "id": "concessao-com-metas",
+        "rotulo": "Concessão com metas",
+        "valor": 75.0,
+        "custoTexto": "0,05% do PIB (regulação e subsídio às cidades pequenas)",
+        "apoiam": [
+          "Mercado financeiro",
+          "Confederação da indústria",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Centrais sindicais",
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Infraestrutura de saneamento ↑ se houver regulação; mortalidade infantil ↓ em 5 a 10 anos; cofre ↑ com outorga"
+      },
+      {
+        "id": "privatizacao-plena-sem-metas",
+        "rotulo": "Privatização plena, sem metas",
+        "valor": 100,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Periferias das metrópoles",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Tarifa ↑ e pobres ↓; infraestrutura de saneamento sem garantia de alta"
+      }
+    ]
+  },
+  "consequencias": [
+    "agua-e-esgoto--infraestrutura-saneamento",
+    "agua-e-esgoto--saude-populacao"
+  ],
+  "mae": {
+    "texto": "Empresas estatais e privatização (Economia). Concessão com metas só abre se lá não estiver em Estado empresário.",
+    "leis": []
+  }
+}

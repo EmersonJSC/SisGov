@@ -1,0 +1,107 @@
+{
+  "id": "modelo-tributario",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Modelo tributário",
+  "descricao": "Sobre quais bases o país cobra imposto (consumo, renda, capital) e quanto pesa a carga total?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_modelo_tributario",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "quase-sem-impostos",
+        "rotulo": "Quase sem impostos",
+        "valor": 0,
+        "custoTexto": "carga total abaixo de 15% do PIB",
+        "apoiam": [
+          "Ricos",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Servidores",
+          "Pobres",
+          "Aposentados"
+        ],
+        "efeitos": "Receita ↓↓; trava saúde universal e seguro-desemprego generoso pelo custo; Margem de manobra ↓"
+      },
+      {
+        "id": "base-no-consumo",
+        "rotulo": "Base no consumo (IVA e encargos)",
+        "valor": 25.0,
+        "custoTexto": "carga de 15 a 25% do PIB",
+        "apoiam": [
+          "Empresários",
+          "Entidades do agronegócio"
+        ],
+        "rejeitam": [
+          "Pobres",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Progressividade ↓; Receita estável (consumo não tem pico de Laffer)"
+      },
+      {
+        "id": "proporcional",
+        "rotulo": "Proporcional (alíquota única na renda, mais IVA)",
+        "valor": 50.0,
+        "custoTexto": "carga de 20 a 30% do PIB",
+        "apoiam": [
+          "Pequenos negócios",
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Centrais sindicais",
+          "Pobres"
+        ],
+        "efeitos": "Complexidade tributária ↓; Progressividade ↓; trava o IR do topo igual ao da base"
+      },
+      {
+        "id": "dual",
+        "rotulo": "Dual (trabalho com faixas, capital com alíquota única)",
+        "valor": 75.0,
+        "custoTexto": "carga de 30 a 45% do PIB",
+        "apoiam": [
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Centrais sindicais",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Progressividade ↑ pouco; Fuga de capitais estável"
+      },
+      {
+        "id": "progressivo",
+        "rotulo": "Progressivo (renda global com faixas, capital somado)",
+        "valor": 100,
+        "custoTexto": "carga de 35 a 45% do PIB",
+        "apoiam": [
+          "Pobres",
+          "Trabalhadores",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Ricos",
+          "Empresários",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Progressividade ↑; Fuga de capitais ↑ sem cooperação internacional; libera dividendos na tabela progressiva"
+      }
+    ]
+  },
+  "consequencias": [
+    "modelo-tributario--margem-manobra-governo",
+    "modelo-tributario--fuga-capitais"
+  ]
+}

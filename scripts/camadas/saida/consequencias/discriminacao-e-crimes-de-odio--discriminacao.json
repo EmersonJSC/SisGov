@@ -1,0 +1,17 @@
+{
+  "id": "discriminacao-e-crimes-de-odio--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_discriminacao_e_crimes_de_odio",
+  "alvo": "discriminacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.156,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

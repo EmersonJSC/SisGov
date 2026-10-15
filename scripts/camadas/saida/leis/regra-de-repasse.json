@@ -1,0 +1,91 @@
+{
+  "id": "regra-de-repasse",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regra de repasse",
+  "descricao": "Como o dinheiro federal é repartido entre estados e municípios?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_regra_de_repasse",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "criterio-do-governo",
+        "rotulo": "Critério do governo (convênios e emendas, caso a caso)",
+        "valor": 0,
+        "apoiam": [
+          "Bancadas do Congresso",
+          "Interior"
+        ],
+        "rejeitam": [
+          "Classe média",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Prefeito aliado recebe de 26% a 41% mais repasse; Captura política ↑; Corrupção ↑ (para cada 10% a mais de repasse, corrupção de 17% a 24% maior)"
+      },
+      {
+        "id": "por-populacao",
+        "rotulo": "Por população (mesmo valor por habitante)",
+        "valor": 33.33,
+        "apoiam": [
+          "Ricos",
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Pobres",
+          "Agricultura familiar"
+        ],
+        "efeitos": "Desigualdade regional ↑ (estimado); Captura política ↓"
+      },
+      {
+        "id": "por-populacao-e-renda",
+        "rotulo": "Por população e renda (mais para quem é mais pobre) (hoje na referência, com uma parte por emendas)",
+        "valor": 66.67,
+        "apoiam": [
+          "Pobres",
+          "Interior"
+        ],
+        "rejeitam": [
+          "Ricos"
+        ],
+        "efeitos": "Desigualdade regional ↓ (tamanho: lacuna); Corrupção ↑ onde o repasse é grande e sem controle"
+      },
+      {
+        "id": "parte-por-resultado",
+        "rotulo": "Parte por resultado (metas de educação e saúde)",
+        "valor": 100,
+        "apoiam": [
+          "Classe média",
+          "Famílias com filhos"
+        ],
+        "rejeitam": [
+          "Sindicatos de professores"
+        ],
+        "efeitos": "Aprendizagem ↑ 0,15 desvio-padrão no 9º ano; o dobro com apoio técnico aos municípios; leva alguns anos"
+      }
+    ]
+  },
+  "consequencias": [
+    "regra-de-repasse--captura-politica",
+    "regra-de-repasse--corrupcao",
+    "regra-de-repasse--desigualdade-regional"
+  ],
+  "mae": {
+    "texto": "Federalismo (liberada em \"Cooperativo\" e \"Descentralizado\"; em \"Centralizado\" o repasse é pequeno e a lei fica travada em \"Critério do governo\"; proposta minha)",
+    "leis": [
+      "federalismo"
+    ]
+  }
+}

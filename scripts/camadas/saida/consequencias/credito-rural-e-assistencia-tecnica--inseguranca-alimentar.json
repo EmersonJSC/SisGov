@@ -1,0 +1,17 @@
+{
+  "id": "credito-rural-e-assistencia-tecnica--inseguranca-alimentar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_credito_rural_e_assistencia_tecnica",
+  "alvo": "inseguranca_alimentar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.028,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

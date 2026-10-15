@@ -1,0 +1,17 @@
+{
+  "id": "industria-de-defesa--inovacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_industria_de_defesa",
+  "alvo": "inovacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.075,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

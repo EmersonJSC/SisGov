@@ -1,0 +1,78 @@
+{
+  "id": "mandato-do-banco-central",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Mandato do banco central",
+  "descricao": "O banco central persegue só a inflação, também o emprego, ou nenhuma meta?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_mandato_do_banco_central",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-meta",
+        "rotulo": "Sem meta",
+        "valor": 0,
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Tranca a alavanca Valor da meta de inflação (proposta minha); expectativas de inflação ↑"
+      },
+      {
+        "id": "mandato-duplo",
+        "rotulo": "Mandato duplo (inflação e emprego)",
+        "valor": 33.33,
+        "apoiam": [
+          "Centrais sindicais",
+          "Confederação da indústria"
+        ],
+        "efeitos": "Juros reagem mais ao PIB fraco; PIB ↑ no curto prazo; inflação ↑ leve"
+      },
+      {
+        "id": "meta-flexivel",
+        "rotulo": "Meta flexível (meta contínua com tolerância)",
+        "valor": 66.67,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Juros seguem regra de reação; expectativas ancoradas"
+      },
+      {
+        "id": "meta-estrita",
+        "rotulo": "Meta estrita (horizonte curto, banda estreita)",
+        "valor": 100,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Trabalhadores com carteira"
+        ],
+        "efeitos": "Juros ↑ mais rápido em choque; expectativas ↓; PIB ↓ no curto prazo"
+      }
+    ]
+  },
+  "consequencias": [
+    "mandato-do-banco-central--expectativas-inflacao",
+    "mandato-do-banco-central--pib",
+    "mandato-do-banco-central--inflacao",
+    "mandato-do-banco-central--taxa-juros"
+  ],
+  "mae": {
+    "texto": "Quem controla o banco central: \"subordinado\" libera o mandato duplo com meta de emprego (regra do estudo)",
+    "leis": [
+      "quem-controla-o-banco-central"
+    ]
+  }
+}

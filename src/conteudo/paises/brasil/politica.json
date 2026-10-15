@@ -108,51 +108,16 @@
           "controle-de-capitais",
           "regulacao-dos-bancos",
           "apostas-e-jogos-de-azar",
-          "imunidade-e-dinheiro-para-igrejas",
-          "regime-contra-faccoes",
-          "cooperacao-internacional",
-          "policiamento-orientado",
           "meta-de-resultado-primario",
-          "industria-de-defesa",
-          "protecao-de-fronteiras",
           "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-          "alinhamento-externo",
-          "delacao-premiada-e-acordos",
-          "verba-de-controle",
-          "politica-de-sancoes",
-          "investimento-em-defesa",
-          "alternativas-penais-e-audiencia-de-custodia",
-          "coordenacao-das-policias",
-          "programa-nuclear-lei",
           "devolucao-de-imposto-aos-pobres",
-          "fundo-de-equalizacao",
-          "papel-das-forcas-armadas",
           "vinculacoes-orcamentarias",
-          "ciberseguranca",
-          "protecao-social-dos-militares",
-          "orcamento-do-judiciario",
-          "integracao-regional",
-          "rede-diplomatica",
-          "fiscalizacao-do-trabalho",
-          "clausula-de-desempenho",
-          "gestao-dos-presidios",
-          "intermediacao-e-qualificacao",
-          "tribunais-e-tratados-internacionais",
           "revisao-de-gastos-tributarios",
-          "exportacao-de-armas",
-          "controle-civil-das-forcas-armadas",
-          "verba-de-publicidade-oficial-e-comunicacao-publica",
-          "custo-de-processar-na-justica-do-trabalho",
           "conselho-fiscal-independente",
           "imposto-sobre-a-propriedade",
-          "regra-de-repasse",
-          "natureza-da-policia-de-rua",
-          "valor-do-fundo-eleitoral",
-          "missoes-de-paz",
           "destino-do-resultado-fiscal",
           "fundo-soberano",
-          "alianca-militar",
-          "regra-de-reajuste-dos-beneficios"
+          "regime-simplificado-para-pequenas-empresas"
         ]
       },
       {
@@ -201,10 +166,7 @@
         "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
         "cargo": "Empreendedorismo",
         "area": "empresas",
-        "leis": [
-          "regime-simplificado-para-pequenas-empresas",
-          "licenca-para-abrir-negocio"
-        ],
+        "leis": ["licenca-para-abrir-negocio"],
         "extincao": {
           "destino": "mdic"
         }
@@ -239,7 +201,10 @@
           "salario-minimo",
           "seguro-desemprego",
           "contribuicao-sindical",
-          "legislacao-trabalhista"
+          "legislacao-trabalhista",
+          "custo-de-processar-na-justica-do-trabalho",
+          "fiscalizacao-do-trabalho",
+          "intermediacao-e-qualificacao"
         ],
         "extincao": {
           "destino": "fazenda"
@@ -271,7 +236,17 @@
           "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
           "quem-cuida-do-idoso-dependente",
           "garantia-de-comida",
-          "organizacao-dos-programas-sociais"
+          "organizacao-dos-programas-sociais",
+          "aposentadoria-do-trabalhador-rural",
+          "como-a-aposentadoria-e-financiada",
+          "como-o-estado-entrega-casa",
+          "direito-a-moradia-na-constituicao",
+          "idade-minima-para-se-aposentar",
+          "licenca-para-cuidar-do-bebe",
+          "regra-de-reajuste-dos-beneficios",
+          "transferencia-de-renda-as-familias-pobres",
+          "vagas-de-creche",
+          "verba-do-programa-habitacional"
         ],
         "extincao": {
           "destino": "previdencia",
@@ -336,19 +311,12 @@
           "ensino-religioso",
           "financiamento-com-resultado",
           "alfabetizacao-na-idade-certa",
-          "verba-para-juventude-negra-e-saude-da-populacao-negra",
           "credito-estudantil",
           "incentivo-fiscal-a-pesquisa-nas-empresas",
           "vagas-publicas-no-ensino-superior",
-          "acolhida-e-interiorizacao-de-imigrantes",
-          "verba-de-planejamento-familiar-e-de-aborto-legal",
-          "bloqueio-de-pagamentos-a-casas-sem-licenca",
           "piso-de-gasto-em-educacao",
           "bolsas-de-pos-graduacao",
-          "tributo-sobre-apostas",
           "bolsa-de-permanencia-no-ensino-medio",
-          "publicidade-de-apostas",
-          "protecao-da-vida-desde-a-concepcao",
           "gestao-da-escola-publica"
         ]
       },
@@ -377,7 +345,7 @@
         "nome": "Ministério das Comunicações",
         "cargo": "Comunicações",
         "area": "educacao",
-        "leis": ["regulacao-das-redes-sociais", "concessoes-de-radio-e-tv"],
+        "leis": ["concessoes-de-radio-e-tv"],
         "extincao": {
           "destino": "ciencia"
         }
@@ -390,22 +358,13 @@
         "leis": [
           "agua-e-esgoto",
           "programa-habitacao-popular",
-          "direito-a-moradia-na-constituicao",
           "habitacao-publica",
           "licenciamento-de-obras-e-empresas",
           "fontes-de-energia-favorecidas",
-          "licenca-para-cuidar-do-bebe",
           "protecao-da-vegetacao-nativa-nas-propriedades-rurais",
-          "transferencia-de-renda-as-familias-pobres",
-          "como-o-estado-entrega-casa",
           "fiscalizacao-ambiental",
-          "aposentadoria-do-trabalhador-rural",
-          "vagas-de-creche",
           "credito-rural-e-assistencia-tecnica",
           "investimento-em-geracao-por-fonte",
-          "idade-minima-para-se-aposentar",
-          "verba-do-programa-habitacional",
-          "como-a-aposentadoria-e-financiada",
           "transporte-publico"
         ],
         "extincao": {
@@ -525,7 +484,6 @@
           "poderes-de-investigacao",
           "fundo-seguranca-publica",
           "vagas-em-presidios",
-          "refugio-e-asilo",
           "protecao-de-dados",
           "vigilancia-de-bairro",
           "saida-do-pais",
@@ -535,7 +493,14 @@
           "maioridade-penal",
           "pena-de-morte",
           "politica-de-imigracao",
-          "penas-e-progressao"
+          "penas-e-progressao",
+          "alternativas-penais-e-audiencia-de-custodia",
+          "coordenacao-das-policias",
+          "delacao-premiada-e-acordos",
+          "gestao-dos-presidios",
+          "natureza-da-policia-de-rua",
+          "policiamento-orientado",
+          "regime-contra-faccoes"
         ]
       },
       {
@@ -543,7 +508,27 @@
         "nome": "Ministério da Defesa",
         "cargo": "Defesa",
         "area": "seguranca",
-        "leis": ["gasto-com-defesa", "servico-militar"]
+        "leis": [
+          "gasto-com-defesa",
+          "servico-militar",
+          "alianca-militar",
+          "alinhamento-externo",
+          "ciberseguranca",
+          "controle-civil-das-forcas-armadas",
+          "cooperacao-internacional",
+          "exportacao-de-armas",
+          "industria-de-defesa",
+          "integracao-regional",
+          "investimento-em-defesa",
+          "missoes-de-paz",
+          "papel-das-forcas-armadas",
+          "politica-de-sancoes",
+          "programa-nuclear-lei",
+          "protecao-de-fronteiras",
+          "protecao-social-dos-militares",
+          "rede-diplomatica",
+          "tribunais-e-tratados-internacionais"
+        ]
       },
       {
         "id": "relacoes-exteriores",
@@ -575,7 +560,16 @@
           "crimes-da-ditadura",
           "identidade-de-genero",
           "discriminacao-e-crimes-de-odio",
-          "aborto"
+          "aborto",
+          "acolhida-e-interiorizacao-de-imigrantes",
+          "bloqueio-de-pagamentos-a-casas-sem-licenca",
+          "imunidade-e-dinheiro-para-igrejas",
+          "protecao-da-vida-desde-a-concepcao",
+          "publicidade-de-apostas",
+          "refugio-e-asilo",
+          "tributo-sobre-apostas",
+          "verba-de-planejamento-familiar-e-de-aborto-legal",
+          "verba-para-juventude-negra-e-saude-da-populacao-negra"
         ],
         "extincao": {
           "destino": "justica"
@@ -628,7 +622,15 @@
           "ongs-e-financiamento-estrangeiro",
           "reeleicao",
           "agencia-de-inteligencia",
-          "tribunais-superiores"
+          "tribunais-superiores",
+          "clausula-de-desempenho",
+          "fundo-de-equalizacao",
+          "orcamento-do-judiciario",
+          "regra-de-repasse",
+          "regulacao-das-redes-sociais",
+          "valor-do-fundo-eleitoral",
+          "verba-de-controle",
+          "verba-de-publicidade-oficial-e-comunicacao-publica"
         ]
       },
       {

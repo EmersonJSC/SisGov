@@ -1,0 +1,66 @@
+{
+  "id": "gestao-dos-presidios",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Gestão dos presídios",
+  "descricao": "Quem administra a prisão: o Estado, uma empresa que presta serviços ao Estado ou uma empresa que constrói e opera?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_gestao_dos_presidios",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "estatal",
+        "rotulo": "Estatal (hoje na referência, quase todas)",
+        "valor": 0,
+        "custoTexto": "≈ 2,7 mil por preso por mês (2017)",
+        "apoiam": [
+          "Sindicatos de servidores"
+        ],
+        "rejeitam": [
+          "Empresários"
+        ]
+      },
+      {
+        "id": "cogestao-o-estado-dirige-a-empresa-presta-servicos",
+        "rotulo": "Cogestão: o Estado dirige, a empresa presta serviços",
+        "valor": 50.0,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "lacuna"
+      },
+      {
+        "id": "parceria-privada-a-empresa-constroi-e-opera-por-25-anos-e-re",
+        "rotulo": "Parceria privada: a empresa constrói e opera por 25 anos e recebe por meta",
+        "valor": 100,
+        "custoTexto": "≈ 3,5 mil por vaga por mês (2017), metade para a obra",
+        "apoiam": [
+          "Empresários",
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Vagas novas sem gasto inicial; rebelião ↓ (aprox.); custo por mês ↑"
+      }
+    ]
+  },
+  "consequencias": []
+}

@@ -1,0 +1,87 @@
+{
+  "id": "fundo-de-garantia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Fundo de garantia",
+  "descricao": "O que o trabalhador recebe quando é demitido?",
+  "area": "Trabalho, salário e sindicatos",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_fundo_de_garantia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": [
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Trabalhadores com carteira"
+        ],
+        "efeitos": "Custo de contratar ↓; poupança doméstica ↓; crédito para habitação ↓"
+      },
+      {
+        "id": "conta-portatil-sem-multa",
+        "rotulo": "Conta portátil, sem multa",
+        "valor": 33.33,
+        "apoiam": [
+          "Pequenos negócios",
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Centrais sindicais"
+        ],
+        "efeitos": "Custo de contratar ↓ pouco; Rotatividade ↓ (aprox.); poupança ↑"
+      },
+      {
+        "id": "fundo-com-multa-na-demissao",
+        "rotulo": "Fundo com multa na demissão (hoje na referência: 8% ao mês e 40% de multa)",
+        "valor": 66.67,
+        "custoTexto": "0 (fundo privado que financia moradia)",
+        "apoiam": [
+          "Trabalhadores com carteira"
+        ],
+        "rejeitam": [
+          "Empresários"
+        ],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑"
+      },
+      {
+        "id": "indenizacao-por-tempo-de-casa",
+        "rotulo": "Indenização por tempo de casa",
+        "valor": 100,
+        "apoiam": [
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Empresários"
+        ],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "fundo-de-garantia--custo-trabalhista",
+    "fundo-de-garantia--poupanca-domestica",
+    "fundo-de-garantia--credito"
+  ],
+  "mae": {
+    "texto": "Legislação trabalhista. \"Sem regras\" e \"Mínima\" travam em nenhum ou conta portátil.",
+    "leis": [
+      "legislacao-trabalhista"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "crimes-da-ditadura--impunidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_crimes_da_ditadura",
+  "alvo": "impunidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.14,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

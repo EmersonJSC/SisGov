@@ -1,0 +1,75 @@
+{
+  "id": "interceptacao-de-comunicacoes",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Interceptação de comunicações",
+  "descricao": "A polícia pode escutar telefone e ler mensagens, e com que ordem e prazo?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_interceptacao_de_comunicacoes",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Proibida",
+        "valor": 0,
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Associações de policiais"
+        ],
+        "efeitos": "Capacidade de investigação ↓; liberdades civis ↑"
+      },
+      {
+        "id": "com-ordem-do-juiz-e-prazo-de-15-dias-renovaveis",
+        "rotulo": "Com ordem do juiz e prazo de 15 dias renováveis",
+        "valor": 33.33,
+        "apoiam": [
+          "Classe média"
+        ]
+      },
+      {
+        "id": "com-ordem-sem-prazo",
+        "rotulo": "Com ordem, sem prazo",
+        "valor": 66.67,
+        "apoiam": [
+          "Associações de policiais"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓"
+      },
+      {
+        "id": "sem-ordem-por-seguranca-nacional",
+        "rotulo": "Sem ordem, por segurança nacional",
+        "valor": 100,
+        "apoiam": [
+          "Militares da reserva"
+        ],
+        "rejeitam": [
+          "Progressistas",
+          "Jornais e portais"
+        ],
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓↓; mais chance de \"espionagem revelada\""
+      }
+    ]
+  },
+  "consequencias": [
+    "interceptacao-de-comunicacoes--capacidade-inteligencia",
+    "interceptacao-de-comunicacoes--liberdade-civil"
+  ]
+}

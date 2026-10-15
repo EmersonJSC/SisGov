@@ -1,0 +1,17 @@
+{
+  "id": "trabalho-por-aplicativo--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_trabalho_por_aplicativo",
+  "alvo": "informalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.12599,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

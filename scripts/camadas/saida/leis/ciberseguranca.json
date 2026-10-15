@@ -1,0 +1,82 @@
+{
+  "id": "ciberseguranca",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Cibersegurança",
+  "descricao": "Quem protege o país na internet, e com que poder?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "soberania-nuclear-digital-e-de-fronteira",
+    "nome": "Soberania nuclear, digital e de fronteira",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_ciberseguranca",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 0,
+        "rejeitam": [
+          "Empresários",
+          "Servidores"
+        ],
+        "efeitos": "Ameaça cibernética ↑"
+      },
+      {
+        "id": "comite-coordenador-consultivo",
+        "rotulo": "Comitê coordenador consultivo",
+        "valor": 33.33,
+        "custoTexto": "quase zero",
+        "efeitos": "Ameaça cibernética ↓ pouco contra Sem política e ↑ contra Agência civil (estimado)"
+      },
+      {
+        "id": "agencia-civil-com-regras-e-supervisao",
+        "rotulo": "Agência civil com regras e supervisão",
+        "valor": 66.67,
+        "custoTexto": "+0,01 a +0,02% do PIB (aprox.)",
+        "apoiam": [
+          "Empresários",
+          "Classe média"
+        ],
+        "rejeitam": [
+          "Plataformas digitais"
+        ],
+        "efeitos": "Ameaça cibernética ↓; bônus com proteção de dados forte"
+      },
+      {
+        "id": "comando-militar-ofensivo",
+        "rotulo": "Comando militar ofensivo",
+        "valor": 100,
+        "custoTexto": "+0,02 a +0,05% do PIB (aprox.)",
+        "apoiam": [
+          "Associações de militares",
+          "Conservadores"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "Ameaça cibernética ↓; Tensão internacional ↑; Liberdades civis ↓ se somado a interceptação sem ordem judicial"
+      }
+    ]
+  },
+  "consequencias": [
+    "ciberseguranca--tensao-internacional",
+    "ciberseguranca--liberdade-civil"
+  ],
+  "mae": {
+    "texto": "Papel das Forças Armadas (“comando militar ofensivo” exige que haja Forças Armadas). Proteção de dados (Direitos): a agência ganha bônus de efeito com lei geral de dados ou mais.",
+    "leis": [
+      "protecao-de-dados",
+      "papel-das-forcas-armadas"
+    ]
+  }
+}

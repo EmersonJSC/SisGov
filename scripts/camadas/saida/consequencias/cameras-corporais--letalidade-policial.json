@@ -1,0 +1,17 @@
+{
+  "id": "cameras-corporais--letalidade-policial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cameras_corporais",
+  "alvo": "letalidade_policial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

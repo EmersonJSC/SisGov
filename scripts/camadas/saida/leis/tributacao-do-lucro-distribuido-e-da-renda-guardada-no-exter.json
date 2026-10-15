@@ -1,0 +1,92 @@
+{
+  "id": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Tributação do lucro distribuído e da renda guardada no exterior",
+  "descricao": "O lucro que a empresa paga ao sócio, e a renda que fica parada em empresas no exterior ou em fundos de um só dono, pagam imposto na pessoa física, e quando?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_tributacao_do_lucro_distribuido_e_da_renda_guardada_no_exter",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "isento-e-renda-no-exterior-so-paga-quando-volta",
+        "rotulo": "Isento, e renda no exterior só paga quando volta",
+        "valor": 0,
+        "custoTexto": "receita 0",
+        "apoiam": [
+          "Empresários",
+          "Ricos",
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Centrais sindicais",
+          "Pobres"
+        ],
+        "efeitos": "Progressividade ↓ no topo; \"pejotização\" de alta renda ↑"
+      },
+      {
+        "id": "retencao-minima-e-15-ao-ano-no-exterior-e-nos-fundos-exclusi",
+        "rotulo": "Retenção mínima (10% acima de um limite, com redutor) e 15% ao ano no exterior e nos fundos exclusivos (hoje na referência, desde 2026)",
+        "valor": 33.33,
+        "custoTexto": "receita +0,2 a +0,3% do PIB (aprox.); offshores e fundos: previsão inicial de  20 bi em 2024",
+        "apoiam": [
+          "Trabalhadores",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Empresários",
+          "Ricos"
+        ],
+        "efeitos": "Progressividade ↑ pouco; Fuga de capitais ↑ pouco, com atraso"
+      },
+      {
+        "id": "aliquota-unica-de-15-a-25-no-dividendo-com-corte-no-imposto-",
+        "rotulo": "Alíquota única de 15 a 25% no dividendo, com corte no imposto da empresa, e 15% ao ano no exterior",
+        "valor": 66.67,
+        "custoTexto": "neutro a +0,3% do PIB;  22 a 39 bi",
+        "apoiam": [
+          "Indústria"
+        ],
+        "efeitos": "Progressividade ↑; Investimento estável"
+      },
+      {
+        "id": "integrado-na-tabela-progressiva-e-renda-no-exterior-somada-t",
+        "rotulo": "Integrado na tabela progressiva, e renda no exterior somada todo ano",
+        "valor": 100,
+        "custoTexto": "receita +0,4 a +0,6% do PIB (aprox.)",
+        "apoiam": [
+          "Centrais sindicais",
+          "Pobres"
+        ],
+        "rejeitam": [
+          "Ricos",
+          "Empresários",
+          "Pequenos negócios"
+        ],
+        "efeitos": "Progressividade ↑↑; Fuga de capitais ↑; carga somada passa de 50% sem corte no imposto da empresa"
+      }
+    ]
+  },
+  "consequencias": [
+    "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter--fuga-capitais"
+  ],
+  "mae": {
+    "texto": "Modelo tributário. \"Progressivo\" libera \"Integrado na tabela progressiva\"; nas outras opções ela fica travada.",
+    "leis": [
+      "modelo-tributario"
+    ]
+  }
+}

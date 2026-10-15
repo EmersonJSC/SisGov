@@ -1,0 +1,66 @@
+{
+  "id": "poderes-de-investigacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Poderes de investigação",
+  "descricao": "A polícia pode infiltrar agentes, adiar prisões para seguir o grupo e pedir dados sem ordem do juiz?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_poderes_de_investigacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-com-ordem-do-juiz",
+        "rotulo": "Só com ordem do juiz",
+        "valor": 0,
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Associações de policiais"
+        ],
+        "efeitos": "Capacidade de investigação ↓ pouco"
+      },
+      {
+        "id": "infiltracao-e-acao-controlada-com-juiz",
+        "rotulo": "Infiltração e ação controlada, com juiz (hoje na referência, aprox.)",
+        "valor": 50.0,
+        "apoiam": [
+          "Associações de policiais"
+        ],
+        "efeitos": "Capacidade de investigação ↑; crime organizado ↓"
+      },
+      {
+        "id": "acesso-a-dados-e-sigilo-sem-ordem",
+        "rotulo": "Acesso a dados e sigilo sem ordem",
+        "valor": 100,
+        "apoiam": [
+          "Associações de policiais",
+          "Militares da reserva"
+        ],
+        "rejeitam": [
+          "Progressistas",
+          "Jornais e portais"
+        ],
+        "efeitos": "Capacidade de investigação ↑↑; crime organizado ↓; liberdades civis ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "poderes-de-investigacao--capacidade-inteligencia",
+    "poderes-de-investigacao--crime-organizado",
+    "poderes-de-investigacao--liberdade-civil"
+  ]
+}

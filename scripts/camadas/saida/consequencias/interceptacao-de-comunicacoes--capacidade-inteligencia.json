@@ -1,0 +1,17 @@
+{
+  "id": "interceptacao-de-comunicacoes--capacidade-inteligencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_interceptacao_de_comunicacoes",
+  "alvo": "capacidade_inteligencia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.147,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

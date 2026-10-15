@@ -1,0 +1,99 @@
+{
+  "id": "gasto-com-defesa",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Gasto com defesa",
+  "descricao": "Quanto do PIB o país gasta com defesa?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_gasto_com_defesa",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0-5-do-pib",
+        "rotulo": "0,5% do PIB",
+        "valor": 25.0,
+        "custoTexto": "−0,5% do PIB a menos que hoje",
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Associações de militares",
+          "Conservadores"
+        ],
+        "efeitos": "Capacidade de defesa ↓ com atraso; sobra verba"
+      },
+      {
+        "id": "1-0",
+        "rotulo": "1,0%",
+        "valor": 50.0,
+        "custoAnualPercentualPib": 1.0,
+        "efeitos": "Capacidade de defesa ↑ com atraso contra 0,5% do PIB; 85% vai para pessoal; Investimento em defesa segue baixo (estimado)"
+      },
+      {
+        "id": "2-0",
+        "rotulo": "2,0% (meta da OTAN)",
+        "valor": 75.0,
+        "custoTexto": "+1,0% do PIB",
+        "apoiam": [
+          "Associações de militares",
+          "Conservadores"
+        ],
+        "rejeitam": [
+          "Progressistas"
+        ],
+        "efeitos": "PIB ↑ pouco; Capacidade de defesa só sobe se Investimento em defesa subir"
+      },
+      {
+        "id": "2-5-a-10",
+        "rotulo": "2,5% (média mundial) a 10%",
+        "valor": 100,
+        "custoTexto": "+1,5 a +9% do PIB",
+        "apoiam": [
+          "Associações de militares"
+        ],
+        "rejeitam": [
+          "Progressistas",
+          "Mercado financeiro"
+        ],
+        "efeitos": "PIB ↓ acima de um teto (relação não linear); Tensão internacional ↑ (corrida armamentista)"
+      }
+    ]
+  },
+  "consequencias": [
+    "gasto-com-defesa--capacidade-defesa",
+    "gasto-com-defesa--pib",
+    "gasto-com-defesa--tensao-internacional"
+  ],
+  "mae": {
+    "texto": "Aliança militar. “Defesa mútua” cria um piso de 2% do PIB.",
+    "leis": [
+      "alianca-militar"
+    ]
+  }
+}

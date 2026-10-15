@@ -1,0 +1,17 @@
+{
+  "id": "imposto-sobre-heranca--fuga-capitais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_imposto_sobre_heranca",
+  "alvo": "fuga_capitais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.129,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

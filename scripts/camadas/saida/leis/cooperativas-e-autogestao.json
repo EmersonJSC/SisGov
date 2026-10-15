@@ -1,0 +1,64 @@
+{
+  "id": "cooperativas-e-autogestao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Cooperativas e autogestão",
+  "descricao": "O governo incentiva empresas de propriedade dos trabalhadores e cooperativas?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_cooperativas_e_autogestao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre-sem-incentivo",
+        "rotulo": "Livre, sem incentivo",
+        "valor": 0,
+        "apoiam": [
+          "Comércio e serviços"
+        ],
+        "efeitos": "Nada muda"
+      },
+      {
+        "id": "incentivo",
+        "rotulo": "Incentivo (crédito e imposto menor) (hoje na referência, aprox.)",
+        "valor": 50.0,
+        "custoTexto": "Renúncia (lacuna)",
+        "apoiam": [
+          "Agricultura familiar",
+          "Movimentos por terra"
+        ],
+        "efeitos": "Crédito cooperativo ↑; spread local ↓ (aprox.); agricultura familiar ↑"
+      },
+      {
+        "id": "autogestao",
+        "rotulo": "Autogestão (empresas passam aos trabalhadores)",
+        "valor": 100,
+        "apoiam": [
+          "Movimentos por terra",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Empresários",
+          "Confederação da indústria"
+        ],
+        "efeitos": "Confiança empresarial ↓; investimento privado ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "cooperativas-e-autogestao--confianca-empresarial",
+    "cooperativas-e-autogestao--investimento"
+  ]
+}

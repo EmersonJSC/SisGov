@@ -1,0 +1,17 @@
+{
+  "id": "lei-de-drogas--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_lei_de_drogas",
+  "alvo": "crime_organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.084,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

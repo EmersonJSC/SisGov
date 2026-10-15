@@ -1,0 +1,17 @@
+{
+  "id": "imposto-de-renda-das-pessoas--fuga-de-cerebros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_imposto_de_renda_das_pessoas",
+  "alvo": "fuga_de_cerebros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.024,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

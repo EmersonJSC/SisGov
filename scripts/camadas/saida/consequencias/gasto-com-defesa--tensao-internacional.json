@@ -1,0 +1,17 @@
+{
+  "id": "gasto-com-defesa--tensao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gasto_com_defesa",
+  "alvo": "tensao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.056,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

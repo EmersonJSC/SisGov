@@ -1,0 +1,17 @@
+{
+  "id": "controle-civil-das-forcas-armadas--forca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_controle_civil_das_forcas_armadas",
+  "alvo": "forca_instituicoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.156,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

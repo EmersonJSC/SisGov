@@ -1,0 +1,17 @@
+{
+  "id": "protecao-contra-violencia-domestica--violencia-letal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_protecao_contra_violencia_domestica",
+  "alvo": "violencia_letal",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.0054,
+    "termoConstante": 0
+  },
+  "unidade": "taxa_por_100_mil",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

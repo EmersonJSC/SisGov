@@ -1,0 +1,17 @@
+{
+  "id": "restricao-a-tabaco-e-alcool--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_restricao_a_tabaco_e_alcool",
+  "alvo": "crime_organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.124,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

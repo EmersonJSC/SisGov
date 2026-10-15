@@ -1,0 +1,104 @@
+{
+  "id": "servico-militar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Serviço militar",
+  "descricao": "Quem serve nas Forças Armadas, e é obrigado?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_servico_militar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-forcas-armadas",
+        "rotulo": "Sem Forças Armadas",
+        "valor": 0,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Conservadores",
+          "Associações de militares"
+        ],
+        "efeitos": "Capacidade de defesa ↓ muito"
+      },
+      {
+        "id": "voluntario",
+        "rotulo": "Voluntário",
+        "valor": 25.0,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Jovens",
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Associações de militares"
+        ],
+        "efeitos": "Produtividade sem perda; Oportunidades para jovens sem ganho"
+      },
+      {
+        "id": "seletivo",
+        "rotulo": "Seletivo",
+        "valor": 50.0,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Associações de militares"
+        ],
+        "efeitos": "Oportunidades para jovens ↑ pouco para os menos escolarizados"
+      },
+      {
+        "id": "obrigatorio-masculino",
+        "rotulo": "Obrigatório masculino",
+        "valor": 75.0,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Conservadores",
+          "Associações de militares"
+        ],
+        "rejeitam": [
+          "Jovens",
+          "Progressistas"
+        ],
+        "efeitos": "Produtividade ↓ pouco (custo alto quando a escolaridade é alta); Oportunidades para jovens ↑ para os menos escolarizados"
+      },
+      {
+        "id": "universal",
+        "rotulo": "Universal (homens e mulheres)",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "apoiam": [
+          "Associações de militares"
+        ],
+        "rejeitam": [
+          "Jovens",
+          "Progressistas"
+        ],
+        "efeitos": "Produtividade ↓ pouco; Oportunidades para jovens ↑ para os menos escolarizados"
+      }
+    ]
+  },
+  "consequencias": [
+    "servico-militar--capacidade-defesa",
+    "servico-militar--oportunidades-juvenis",
+    "servico-militar--produtividade"
+  ],
+  "mae": {
+    "texto": "Papel das Forças Armadas. “Sem Forças Armadas” lá trava esta lei em “sem Forças Armadas”.",
+    "leis": [
+      "papel-das-forcas-armadas"
+    ]
+  }
+}

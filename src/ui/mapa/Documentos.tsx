@@ -25,9 +25,7 @@ import {
 } from "../../app/partida";
 import {
   NOME_GRUPO,
-  NOME_PROCESSO,
   atraso,
-  diferenca,
   moeda,
   nivelDaLei,
   diferencaNaTela,
@@ -65,7 +63,7 @@ import {
   type IndiceRelacoes,
   type Relacao,
 } from "./relacoes";
-import { COR_EFEITO, COR_PRESIDENCIA } from "./tema";
+import { COR_EFEITO } from "./tema";
 
 export type Horizonte = "turno" | "ano";
 
@@ -73,11 +71,6 @@ export type Horizonte = "turno" | "ano";
 export const MES_DO_HORIZONTE: Readonly<Record<Horizonte, number>> = {
   turno: 2,
   ano: 11,
-};
-
-const NOME_HORIZONTE: Readonly<Record<Horizonte, string>> = {
-  turno: "no próximo turno",
-  ano: "em 1 ano",
 };
 
 /** Diferença mínima (fração da escala) para contar como efeito. */
@@ -150,6 +143,7 @@ function Documento({
   rodape,
   children,
   rotulo,
+  duplo = false,
   desvio,
   onDesvio,
   onRetangulo,
@@ -166,6 +160,8 @@ function Documento({
   rodape?: ReactNode;
   children: ReactNode;
   rotulo: string;
+  /** Duas páginas lado a lado, como uma pasta aberta (V1-36). */
+  duplo?: boolean;
 }) {
   const janela = useRef<HTMLElement>(null);
   const arraste = useRef<{
@@ -244,7 +240,7 @@ function Documento({
   return (
     <aside
       ref={janela}
-      className={`documento${ativa ? " ativa" : ""}`}
+      className={`documento${duplo ? " duplo" : ""}${ativa ? " ativa" : ""}`}
       role="dialog"
       aria-label={rotulo}
       style={
@@ -278,7 +274,6 @@ function Documento({
           <span className="pegador" aria-hidden="true" />
           <Selo icone={icone} cor={cor} />
           <div className="timbre-texto">
-            <small>República Federativa do Brasil</small>
             <strong>{orgao}</strong>
             <span>{setor}</span>
           </div>
@@ -303,22 +298,6 @@ function Documento({
 // Peças do relatório de impacto
 // ---------------------------------------------------------------------------
 
-/** 1 a 5 marcas, pela fração da escala que mudou. */
-function forca(relativo: number) {
-  const degraus = [0.001, 0.005, 0.015, 0.04, 0.1];
-  return Math.max(1, degraus.filter((d) => relativo >= d).length);
-}
-
-function Marcas({ quantas, cor }: { quantas: number; cor: string }) {
-  return (
-    <span className="marcas" aria-label={`força ${quantas} de 5`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <i key={i} style={i < quantas ? { background: cor } : undefined} />
-      ))}
-    </span>
-  );
-}
-
 type ItemImpacto = Readonly<{
   id: string;
   nome: string;
@@ -330,76 +309,6 @@ type ItemImpacto = Readonly<{
   atual: string;
   detalhe: string;
 }>;
-
-function CartaoImpacto({
-  item,
-  ordem,
-  onClick,
-}: {
-  item: ItemImpacto;
-  ordem: number;
-  onClick: () => void;
-}) {
-  const cor = COR_EFEITO[item.efeito];
-  const sobe = item.delta > 0;
-  return (
-    <button
-      type="button"
-      className={`cartao-impacto ${item.efeito}`}
-      style={
-        {
-          "--cor-efeito": cor,
-          animationDelay: `${ordem * 40}ms`,
-        } as CSSProperties
-      }
-      onClick={onClick}
-    >
-      <span className="cartao-icone">
-        <Icone nome={item.icone} tamanho={22} />
-        <span className="cartao-seta">
-          <Icone
-            nome={sobe ? ICONE_INTERFACE.subir : ICONE_INTERFACE.descer}
-            tamanho={13}
-          />
-        </span>
-      </span>
-      <span className="cartao-texto">
-        <strong>{item.nome}</strong>
-        <small>
-          agora {item.atual} · {item.detalhe}
-        </small>
-      </span>
-      <span className="cartao-numeros">
-        <b>{diferenca(item.delta, item.unidade)}</b>
-        <Marcas quantas={forca(item.relativo)} cor={cor} />
-      </span>
-    </button>
-  );
-}
-
-function Placar({ itens }: { itens: readonly ItemImpacto[] }) {
-  const melhora = itens.filter((i) => i.efeito === "melhora").length;
-  const piora = itens.filter((i) => i.efeito === "piora").length;
-  const neutro = itens.length - melhora - piora;
-  return (
-    <div className="placar">
-      <div className="placar-item melhora">
-        <Icone nome={ICONE_INTERFACE.subir} tamanho={18} />
-        <b>{melhora}</b>
-        <span>melhoram</span>
-      </div>
-      <div className="placar-item piora">
-        <Icone nome={ICONE_INTERFACE.descer} tamanho={18} />
-        <b>{piora}</b>
-        <span>pioram</span>
-      </div>
-      <div className="placar-item neutro">
-        <b>{neutro}</b>
-        <span>neutros</span>
-      </div>
-    </div>
-  );
-}
 
 function Abas({
   horizonte,
@@ -452,12 +361,6 @@ function faixaNumerica(lei: VisaoLei) {
   return { min, max, passo: max <= 5 ? 0.01 : max <= 30 ? 0.1 : 0.5 };
 }
 
-function motivoSemEfeito(r: Relacao, meses: number) {
-  if (r.atrasoMeses > meses) return `começa ${atraso(r.atrasoMeses)}`;
-  if (r.mecanismo === "limiar") return "só reage além de um certo nível";
-  return "efeito pequeno demais para aparecer";
-}
-
 export function DocumentoLei({
   lei,
   visao,
@@ -501,18 +404,12 @@ export function DocumentoLei({
     () => new Map(visao.bolhas.map((b) => [b.id, b])),
     [visao],
   );
-  const leis = useMemo(
-    () => new Map(visao.leis.map((l) => [l.id, l])),
-    [visao],
-  );
   const ministerio = base.porNome.get(lei.areas[0]);
   const cor = ministerio?.cor ?? "#666";
   const relacoes = indice.porNo.get(lei.id) ?? [];
   const efeitosDiretos = relacoes.filter((r) => r.de === lei.id);
-  const condicoes = relacoes.filter((r) => r.para === lei.id && r.eficacia);
   // fora do mapa (catálogo), qualquer opção escolhida é uma lei nova
   const mudou = !lei.emVigor || Math.abs(rascunho - lei.meta) > 1e-9;
-  const pendente = lei.emVigor && Math.abs(lei.meta - lei.nivel) > 1e-6;
   const constitucional = ficaNaPresidencia(lei);
   // três níveis: pétrea ou exigência não cumprida trancam a lei inteira
   const travada = !!lei.nivelLegal && !!lei.bloqueio;
@@ -535,11 +432,6 @@ export function DocumentoLei({
   }, [mudou]);
   const temporizadores = useRef<number[]>([]);
   useEffect(() => () => temporizadores.current.forEach(clearTimeout), []);
-
-  const rotuloOpcao = (valor: number) =>
-    lei.opcoes?.reduce((melhor, o) =>
-      Math.abs(o.valor - valor) < Math.abs(melhor.valor - valor) ? o : melhor,
-    ).rotulo ?? nivelDaLei(valor, lei.unidade);
 
   const mes = MES_DO_HORIZONTE[horizonte];
   const itens: ItemImpacto[] = useMemo(() => {
@@ -572,19 +464,6 @@ export function DocumentoLei({
       .sort((a, b) => b.relativo - a.relativo);
   }, [previsao, mes, bolhas, efeitosDiretos]);
 
-  const semEfeito = useMemo(() => {
-    if (!previsao) return [];
-    const com = new Set(itens.map((i) => i.id));
-    return efeitosDiretos.filter((r) => !r.eficacia && !com.has(r.para));
-  }, [previsao, itens, efeitosDiretos]);
-
-  const custoExtra = !mudou
-    ? 0
-    : lei.unidade === "moeda_ano"
-      ? rascunho - lei.meta
-      : lei.unidade === "percentual_receita"
-        ? ((rascunho - lei.meta) / 100) * visao.contas.receita
-        : 0;
   // Efeito no resultado (receita − gasto − juros), em moeda por ano.
   const efeitoContas = useMemo(() => {
     const e = previsao?.efeitos.find(
@@ -594,16 +473,6 @@ export function DocumentoLei({
     const i = Math.min(mes, e.comMudanca.length - 1);
     return ((e.comMudanca[i] - e.semMudanca[i]) * visao.contas.pib) / 100;
   }, [previsao, mes, visao.contas.pib]);
-  const implantado = previsao
-    ? previsao.implantacao[Math.min(mes, previsao.implantacao.length - 1)]
-    : null;
-  const progresso =
-    implantado !== null && Math.abs(rascunho - lei.nivel) > 1e-9
-      ? Math.min(
-          1,
-          Math.max(0, (implantado - lei.nivel) / (rascunho - lei.nivel)),
-        )
-      : 1;
 
   const assinar = () => {
     setCarimbo(true);
@@ -619,67 +488,144 @@ export function DocumentoLei({
     );
   };
 
+  const opcoes = lei.opcoes ?? [];
+  const bloqueadaNoIndice = (i: number) =>
+    travada ||
+    !!opcoes[i].trava ||
+    (!!lei.exige && !lei.exige.atendida && i > 0);
+  // opção mais perto do rascunho (a lei fora do mapa começa na primeira)
+  const indiceAtual = opcoes.length
+    ? opcoes.reduce(
+        (melhor, o, i) =>
+          Math.abs(o.valor - rascunho) <
+          Math.abs(opcoes[melhor].valor - rascunho)
+            ? i
+            : melhor,
+        0,
+      )
+    : -1;
+  const camada = lei.mesa?.camada;
+  // efeitos curtos: só nomes de índices com a barrinha que sobe ou desce
+  const linhasDeEfeito = mudou
+    ? itens.slice(0, 12).map((i) => ({
+        id: i.id,
+        nome: i.nome,
+        icone: i.icone,
+        delta: i.delta,
+        relativo: i.relativo,
+        efeito: i.efeito,
+      }))
+    : efeitosDiretos
+        .filter((r) => !r.eficacia)
+        .slice(0, 12)
+        .map((r) => ({
+          id: r.para,
+          nome: bolhas.get(r.para)?.nome ?? r.para,
+          icone: ICONE_BOLHA[r.para] ?? "chart-line",
+          delta: 0,
+          relativo: 0,
+          efeito: r.efeito,
+        }));
+  const resumo = (texto: string) => {
+    const t = texto.replace(/\s+/g, " ").trim();
+    const fim = t.search(/[.?!](\s|$)/);
+    const frase = fim > 0 ? t.slice(0, fim + 1) : t;
+    return frase.length > 190 ? `${frase.slice(0, 187)}…` : frase;
+  };
+  const avisos: ReactNode[] = [];
+  if (travada && lei.exigencias.every((e) => e.atendida))
+    avisos.push(
+      <p key="b" className="aviso-folha trava" role="note">
+        <Icone nome={ICONE_INTERFACE.cadeado} tamanho={16} />
+        {lei.bloqueio}
+      </p>,
+    );
+  const exigencias = lei.nivelLegal
+    ? lei.exigencias
+    : lei.exige
+      ? [{ ...lei.exige }]
+      : [];
+  for (const exige of exigencias)
+    avisos.push(
+      <button
+        key={`e-${exige.lei}`}
+        type="button"
+        className={`aviso-folha dep${exige.atendida ? "" : " fora"}`}
+        title={`Depende de ${exige.nome} em ${listaOu(exige.opcoes)}${exige.motivo ? `: ${exige.motivo}` : ""}`}
+        onClick={() => onSelecionar(exige.lei)}
+      >
+        <Icone nome={ICONE_INTERFACE.vinculo} tamanho={16} />
+        {exige.atendida
+          ? `Depende de ${exige.nome}`
+          : `Falta ${exige.nome} (${listaOu(exige.opcoes)})`}
+      </button>,
+    );
+  if (quedas.length)
+    avisos.push(
+      <p key="q" className="aviso-folha queda" role="alert">
+        <Icone nome={ICONE_INTERFACE.vinculoQuebrado} tamanho={16} />
+        Cai junto:{" "}
+        {quedas.map((q, i) => (
+          <button key={q.id} type="button" onClick={() => onSelecionar(q.id)}>
+            {i ? ", " : ""}
+            {q.nome}
+          </button>
+        ))}
+      </p>,
+    );
+
   return (
     <Documento
+      duplo
       orgao={lei.ministerios[0]}
-      setor={
-        lei.emVigor
-          ? "Gabinete · Proposta de alteração"
-          : "Gabinete · Proposta de nova lei"
-      }
+      setor={lei.emVigor ? "Alterar lei" : "Nova lei"}
       numero={numero}
       cor={cor}
       icone={ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei}
       onFechar={onFechar}
-      rotulo={`Documento da lei ${lei.nome}`}
+      rotulo={`Folha da lei ${lei.nome}`}
       {...janela}
       rodape={
-        <>
-          <div className="assinatura">
-            <span className="linha-assinatura" />
-            <small>Presidente da República</small>
-          </div>
-          <div className="acoes-doc">
-            {onRevogar ? (
-              <button
-                type="button"
-                className="botao-revogar"
-                title="A lei sai do mapa e volta para as leis fora do mapa"
-                onClick={onRevogar}
-              >
-                <Icone nome={ICONE_INTERFACE.revogar} tamanho={18} />
-                Revogar
-              </button>
-            ) : null}
+        <div className="acoes-doc">
+          {onRevogar ? (
             <button
               type="button"
-              className="botao-arquivar"
-              disabled={!mudou || !lei.emVigor}
-              onClick={() => onRascunho(lei.meta)}
+              className="botao-revogar"
+              title="A lei sai do mapa e volta para as leis fora do mapa"
+              onClick={onRevogar}
             >
-              Desfazer
+              <Icone nome={ICONE_INTERFACE.revogar} tamanho={18} />
+              Revogar
             </button>
-            <button
-              type="button"
-              className="botao-assinar"
-              disabled={
-                !mudou ||
-                carimbo ||
-                travada ||
-                !!congresso?.naFila ||
-                (!lei.emVigor && !lei.opcoes?.length && rascunho <= 0)
-              }
-              onClick={assinar}
-            >
-              <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
-              {congresso
-                ? "Enviar ao Congresso"
-                : lei.emVigor
-                  ? "Assinar"
-                  : "Aprovar"}
-            </button>
-          </div>
-        </>
+          ) : null}
+          <button
+            type="button"
+            className="botao-arquivar"
+            disabled={!mudou || !lei.emVigor}
+            onClick={() => onRascunho(lei.meta)}
+          >
+            Desfazer
+          </button>
+          <button
+            type="button"
+            className="botao-assinar"
+            disabled={
+              !mudou ||
+              carimbo ||
+              travada ||
+              !!congresso?.naFila ||
+              (!lei.emVigor && !lei.opcoes?.length && rascunho <= 0)
+            }
+            onClick={assinar}
+          >
+            <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
+            {congresso
+              ? "Enviar ao Congresso"
+              : lei.emVigor
+                ? "Assinar"
+                : "Aprovar"}
+          </button>
+        </div>
       }
     >
       {carimbo ? (
@@ -687,545 +633,343 @@ export function DocumentoLei({
           {congresso ? "Enviado" : lei.emVigor ? "Assinado" : "Aprovada"}
         </div>
       ) : null}
-      {congresso ? (
-        <div className="cg-envio">
-          {congresso.naFila ? (
-            <p>
-              <span className="cg-selo">Na fila do Congresso</span> Veja a
-              previsão de votos no app Congresso do tablet.
-            </p>
+      <div className="folha">
+        <section className="pagina pagina-esquerda" aria-label="A lei">
+          <p className="folha-tipo">
+            {camada ? NOME_DA_CAMADA[camada] : NOME_GRUPO[lei.grupo]}
+            {lei.nivelLegal ? ` · ${NOME_NIVEL_LEGAL[lei.nivelLegal]}` : ""}
+            {constitucional ? " · § Presidência" : ""}
+            {lei.alteradaPorVoce ? " · mudada por você" : ""}
+          </p>
+          <h1 className="titulo-doc">{lei.nome}</h1>
+          {lei.descricao ? (
+            <p className="folha-explica">{resumo(lei.descricao)}</p>
+          ) : null}
+          {avisos}
+          {opcoes.length ? (
+            <ControleEmDegraus
+              opcoes={opcoes}
+              indice={indiceAtual}
+              vigente={lei.emVigor ? lei.opcaoAtual : undefined}
+              bloqueada={bloqueadaNoIndice}
+              motivo={(i) =>
+                travada
+                  ? lei.bloqueio
+                  : opcoes[i].trava
+                    ? opcoes[i].trava!.motivo
+                    : lei.exige
+                      ? `Exige ${lei.exige.nome} em ${listaOu(lei.exige.opcoes)}`
+                      : undefined
+              }
+              onEscolher={(i) => onRascunho(opcoes[i].valor)}
+              onSelecionar={onSelecionar}
+            />
           ) : (
-            <>
-              <p>
-                Vai ao Congresso como{" "}
-                <b>{NOME_CAMINHO[congresso.tipo] ?? congresso.tipo}</b>: só muda
-                no mapa se for aprovada.
-              </p>
-              <label>
-                Pressa{" "}
-                <select
-                  value={pressa}
-                  onChange={(e) => setPressa(e.target.value as typeof pressa)}
-                >
-                  <option value="normal">Normal</option>
-                  {congresso.tipo !== "emenda" ? (
-                    <option value="urgencia">
-                      Urgência (irrita as bancadas)
-                    </option>
-                  ) : null}
-                  <option value="emergencia">
-                    Modo emergência (vota primeiro, irrita mais)
-                  </option>
-                </select>
-              </label>
-              {congresso.tipo === "lei-ordinaria" ? (
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={provisoria}
-                    onChange={(e) => setProvisoria(e.target.checked)}
-                  />{" "}
-                  Medida provisória: vale já e cai se o Congresso rejeitar
-                </label>
-              ) : null}
-            </>
+            <ControleNumerico
+              lei={lei}
+              valor={rascunho}
+              onValor={onRascunho}
+              receita={visao.contas.receita}
+            />
           )}
+          {congresso ? (
+            <div className="cg-envio folha-congresso">
+              {congresso.naFila ? (
+                <p>
+                  <span className="cg-selo">Na fila do Congresso</span>
+                </p>
+              ) : (
+                <>
+                  <div
+                    className="urgencia"
+                    role="radiogroup"
+                    aria-label="Pressa"
+                  >
+                    {(
+                      [
+                        [
+                          "normal",
+                          "Normal",
+                          "urgenciaNormal",
+                          "Votação no ritmo normal",
+                        ],
+                        [
+                          "urgencia",
+                          "Urgência",
+                          "urgenciaAlta",
+                          "Passa à frente e irrita as bancadas",
+                        ],
+                        [
+                          "emergencia",
+                          "Emergência",
+                          "urgenciaMaxima",
+                          "Vota primeiro e irrita mais",
+                        ],
+                      ] as const
+                    )
+                      .filter(
+                        ([nivel]) =>
+                          nivel !== "urgencia" || congresso.tipo !== "emenda",
+                      )
+                      .map(([nivel, nome, icone, dica], i) => (
+                        <button
+                          key={nivel}
+                          type="button"
+                          role="radio"
+                          aria-checked={pressa === nivel}
+                          title={dica}
+                          className={`nivel-urgencia n${i}${pressa === nivel ? " ativa" : ""}`}
+                          onClick={() => setPressa(nivel)}
+                        >
+                          <Icone nome={ICONE_INTERFACE[icone]} tamanho={20} />
+                          <span>{nome}</span>
+                        </button>
+                      ))}
+                  </div>
+                  {congresso.tipo === "lei-ordinaria" ? (
+                    <button
+                      type="button"
+                      className={`botao-mp${provisoria ? " ligado" : ""}`}
+                      aria-pressed={provisoria}
+                      title="Vale já e cai se o Congresso rejeitar"
+                      onClick={() => setProvisoria(!provisoria)}
+                    >
+                      <Icone
+                        nome={ICONE_INTERFACE.medidaProvisoria}
+                        tamanho={20}
+                      />
+                      Medida provisória
+                    </button>
+                  ) : null}
+                  <small className="folha-caminho">
+                    {NOME_CAMINHO[congresso.tipo] ?? congresso.tipo}
+                  </small>
+                </>
+              )}
+            </div>
+          ) : null}
+          {erro ? <p className="erro">{erro}</p> : null}
+        </section>
+        <span className="lombada" aria-hidden="true" />
+        <section
+          className="pagina pagina-direita impacto"
+          aria-label="Efeitos"
+          ref={secaoImpacto}
+        >
+          <div className="folha-efeitos-topo">
+            <h2>Efeitos</h2>
+            {mudou ? (
+              <Abas horizonte={horizonte} onHorizonte={onHorizonte} />
+            ) : null}
+          </div>
+          {mudou && calculando && !previsao ? (
+            <p className="vazio">Simulando…</p>
+          ) : null}
+          {mudou && efeitoContas !== null && Math.abs(efeitoContas) >= 100 ? (
+            <div className="efeito-linha contas">
+              <Icone
+                nome={
+                  ICONE_BOLHA[BOLHAS_DO_ORCAMENTO.resultado] ?? "chart-line"
+                }
+                tamanho={20}
+              />
+              <span className="efeito-nome">Contas públicas</span>
+              <MiniGrafico
+                delta={efeitoContas}
+                relativo={Math.min(
+                  1,
+                  (Math.abs(efeitoContas) / (visao.contas.pib || 1)) * 20,
+                )}
+                efeito={efeitoContas > 0 ? "melhora" : "piora"}
+              />
+            </div>
+          ) : null}
+          <ul className="efeitos-folha">
+            {linhasDeEfeito.map((l) => (
+              <li key={l.id}>
+                <button
+                  type="button"
+                  className="efeito-linha"
+                  onClick={() => onSelecionar(l.id)}
+                >
+                  <Icone nome={l.icone} tamanho={20} />
+                  <span className="efeito-nome">{l.nome}</span>
+                  <MiniGrafico
+                    delta={l.delta}
+                    relativo={l.relativo}
+                    efeito={l.efeito}
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+          {!linhasDeEfeito.length && !(mudou && calculando) ? (
+            <p className="vazio">Sem efeito visível.</p>
+          ) : null}
+          {lei.mesa ? (
+            <nav className="mesa-folha" aria-label={`Mesa: ${lei.mesa.nome}`}>
+              {lei.mesa.camadas.map((c) => (
+                <button
+                  key={c.lei}
+                  type="button"
+                  aria-current={c.lei === lei.id}
+                  className={c.emVigor ? undefined : "fora"}
+                  title={`${c.nome}: ${c.emVigor ? (c.opcao ?? "em vigor") : "fora de vigor"}`}
+                  onClick={() => {
+                    if (c.lei !== lei.id) onSelecionar(c.lei);
+                  }}
+                >
+                  <small>{NOME_DA_CAMADA[c.camada]}</small>
+                  <strong>{c.nome}</strong>
+                </button>
+              ))}
+            </nav>
+          ) : null}
+        </section>
+      </div>
+    </Documento>
+  );
+}
+
+/** Barrinha do efeito: sobe (melhora, verde) ou desce (piora, vermelho) da linha. */
+function MiniGrafico({
+  delta,
+  relativo,
+  efeito,
+}: {
+  delta: number;
+  relativo: number;
+  efeito: Efeito;
+}) {
+  const altura = delta === 0 ? 0 : 3 + Math.min(11, relativo * 160);
+  return (
+    <span className="mini-grafico" aria-hidden="true">
+      <i className="linha-base" />
+      {delta === 0 ? (
+        <i className="barra neutra" />
+      ) : (
+        <i
+          className={`barra ${delta > 0 ? "sobe" : "desce"}`}
+          style={{
+            height: `${altura}px`,
+            background: COR_EFEITO[efeito],
+          }}
+        />
+      )}
+    </span>
+  );
+}
+
+/** "Nome (detalhe)": o nome vai em destaque e o detalhe em letra pequena. */
+function partirRotulo(rotulo: string): [string, string] {
+  const m = rotulo.match(/^(.*?)\s*\(([^)]*)\)\s*(.*)$/);
+  if (!m) return [rotulo, ""];
+  const nome = `${m[1]} ${m[3]}`.trim();
+  const detalhe = m[2].replace(/o país de referência/gi, "").trim();
+  return [nome || rotulo, /^[\s\d–-]*$/.test(detalhe) ? "" : detalhe];
+}
+
+/** Deslizador com degraus: um pino por opção, do menor ao maior valor. */
+function ControleEmDegraus({
+  opcoes,
+  indice,
+  vigente,
+  bloqueada,
+  motivo,
+  onEscolher,
+  onSelecionar,
+}: {
+  opcoes: NonNullable<VisaoLei["opcoes"]>;
+  indice: number;
+  vigente: string | undefined;
+  bloqueada: (i: number) => boolean;
+  motivo: (i: number) => string | undefined;
+  onEscolher: (i: number) => void;
+  onSelecionar: (id: string) => void;
+}) {
+  const n = opcoes.length;
+  const atual = opcoes[indice];
+  const proporcao = n > 1 ? indice / (n - 1) : 0;
+  // 2 opções: dois botões lado a lado; 3 ou mais: deslizador com degraus
+  if (n <= 2)
+    return (
+      <div className="controle-folha" role="radiogroup" aria-label="Escolha">
+        <div className="duas-opcoes">
+          {opcoes.map((o, i) => (
+            <button
+              key={o.id}
+              type="button"
+              role="radio"
+              aria-checked={i === indice}
+              disabled={bloqueada(i)}
+              title={bloqueada(i) ? motivo(i) : undefined}
+              className={i === indice ? "ativa" : ""}
+              onClick={() => onEscolher(i)}
+            >
+              {partirRotulo(o.rotulo)[0]}
+              {o.id === vigente ? <small>em vigor</small> : null}
+            </button>
+          ))}
         </div>
-      ) : null}
-      <p className="tipo-doc">
-        {NOME_PROCESSO[lei.processo] ?? lei.processo} ·{" "}
-        {NOME_GRUPO[lei.grupo] ?? lei.grupo}
-      </p>
-      <h1 className="titulo-doc">{lei.nome}</h1>
-      <div className="etiquetas">
-        {lei.areas.map((m) => (
-          <span
-            key={m}
-            className="etiqueta"
-            style={{ "--cor": base.porNome.get(m)?.cor } as CSSProperties}
+      </div>
+    );
+  return (
+    <div className="controle-folha">
+      <div className="degrau-atual" aria-live="polite">
+        <strong>{partirRotulo(atual.rotulo)[0]}</strong>
+        {atual.id === vigente ? <small>em vigor</small> : null}
+        {atual.trava ? (
+          <button
+            type="button"
+            className="trava-chip"
+            title={atual.trava.motivo}
+            onClick={() => onSelecionar(atual.trava!.lei)}
           >
-            {base.porNome.get(m)?.titulo ?? m}
-            {" · "}
-            {base.porNome.get(m)?.pastas.find((p) => p.id === lei.ministerioId)
-              ?.cargo ?? lei.ministerio}
-          </span>
-        ))}
-        {lei.nivelLegal ? (
-          <span className={`etiqueta nivel-legal ${lei.nivelLegal}`}>
-            {NOME_NIVEL_LEGAL[lei.nivelLegal]}
-          </span>
-        ) : null}
-        {constitucional ? (
-          <span
-            className="etiqueta constitucional"
-            style={{ "--cor": COR_PRESIDENCIA } as CSSProperties}
-          >
-            § Também da Presidência
-          </span>
-        ) : null}
-        {lei.alteradaPorVoce ? (
-          <span className="marca-sua">
-            <Icone nome={ICONE_INTERFACE.caneta} tamanho={13} /> Mudada por você
-          </span>
+            <Icone nome={ICONE_INTERFACE.cadeado} tamanho={14} />
+            travada
+          </button>
         ) : null}
       </div>
-      {lei.descricao ? (
-        <p className="ementa">
-          <b>Ementa.</b> {lei.descricao}
+      {partirRotulo(atual.rotulo)[1] ? (
+        <p className="degrau-detalhe">{partirRotulo(atual.rotulo)[1]}</p>
+      ) : null}
+      <div className="deslizador" style={{ "--p": proporcao } as CSSProperties}>
+        <input
+          type="range"
+          min={0}
+          max={n - 1}
+          step={1}
+          value={indice}
+          aria-label="Nível da lei"
+          aria-valuetext={atual.rotulo}
+          onChange={(e) => {
+            const i = Number(e.target.value);
+            if (!bloqueada(i)) onEscolher(i);
+          }}
+        />
+        <div className="degraus" aria-hidden="true">
+          {opcoes.map((o, i) => (
+            <i
+              key={o.id}
+              className={`${i <= indice ? "cheio" : ""}${bloqueada(i) ? " trancado" : ""}${o.id === vigente ? " vigente" : ""}`}
+              title={o.rotulo}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="extremos">
+        <span>{partirRotulo(opcoes[0].rotulo)[0]}</span>
+        <span>{partirRotulo(opcoes[n - 1].rotulo)[0]}</span>
+      </div>
+      {Math.abs(atual.saldoAnual) >= 100 ? (
+        <p
+          className={`custo-folha ${atual.saldoAnual > 0 ? "arrecada" : "custa"}`}
+        >
+          {atual.saldoAnual > 0 ? "+" : "−"}
+          {moeda(Math.abs(atual.saldoAnual))}/ano
         </p>
       ) : null}
-
-      <section className="secao-doc">
-        <h2>
-          <span>I.</span> Situação atual
-        </h2>
-        <dl className="campos">
-          <div>
-            <dt>Em vigor</dt>
-            <dd>
-              {lei.emVigor
-                ? rotuloOpcao(lei.nivel)
-                : "Não: a lei está fora do mapa"}
-            </dd>
-          </div>
-          {pendente ? (
-            <div>
-              <dt>Meta (chega mês a mês)</dt>
-              <dd className="meta">{rotuloOpcao(lei.meta)}</dd>
-            </div>
-          ) : null}
-          {lei.emVigor && Math.abs(lei.saldoAnual) >= 1 ? (
-            <div>
-              <dt>{lei.saldoAnual > 0 ? "Arrecada" : "Custa"}</dt>
-              <dd className={lei.saldoAnual > 0 ? "arrecada" : "custa"}>
-                {lei.saldoAnual > 0 ? "+" : "−"}
-                {moeda(Math.abs(lei.saldoAnual))}/ano
-                <small> · {moeda(Math.abs(lei.saldoAnual) / 12)}/mês</small>
-              </dd>
-            </div>
-          ) : null}
-        </dl>
-      </section>
-
-      <section className="secao-doc">
-        <h2>
-          <span>II.</span> Nova redação
-        </h2>
-        {travada && lei.exigencias.every((e) => e.atendida) ? (
-          <p className="bloqueio-doc" role="note">
-            <Icone nome={ICONE_INTERFACE.trancada} tamanho={18} />
-            <span>{lei.bloqueio}</span>
-          </p>
-        ) : null}
-        {lei.mesa ? (
-          <nav className="mesa-doc" aria-label={`Mesa: ${lei.mesa.nome}`}>
-            <span className="mesa-titulo">Mesa: {lei.mesa.nome}</span>
-            <ol>
-              {lei.mesa.camadas.map((c) => (
-                <li key={c.lei}>
-                  <button
-                    type="button"
-                    aria-current={c.lei === lei.id}
-                    className={c.emVigor ? undefined : "fora"}
-                    onClick={() => {
-                      if (c.lei !== lei.id) onSelecionar(c.lei);
-                    }}
-                  >
-                    <small>{NOME_DA_CAMADA[c.camada]}</small>
-                    <strong>{c.nome}</strong>
-                    <span>
-                      {c.emVigor ? (c.opcao ?? "em vigor") : "fora de vigor"}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        ) : null}
-        {lei.vinculos?.map((v) => (
-          <button
-            key={v.lei}
-            type="button"
-            className="vinculo-doc"
-            onClick={() => onSelecionar(v.lei)}
-          >
-            <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
-            <span>
-              <strong>Puxa {v.nome}.</strong> <small>{v.motivo}</small>
-            </span>
-          </button>
-        ))}
-        {lei.nivelLegal ? (
-          lei.exigencias.map((exige) => (
-            <button
-              key={exige.lei}
-              type="button"
-              className={`vinculo-doc${exige.atendida ? "" : " fora"}`}
-              onClick={() => onSelecionar(exige.lei)}
-            >
-              <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
-              <span>
-                <strong>Depende de {exige.nome}</strong> em{" "}
-                {listaOu(exige.opcoes)}.
-                {exige.motivo ? <small> {exige.motivo}</small> : null}
-                {exige.atendida ? null : (
-                  <em>
-                    Hoje {exige.nome} está fora: esta lei não pode entrar em
-                    vigor.
-                  </em>
-                )}
-              </span>
-            </button>
-          ))
-        ) : lei.exige ? (
-          <button
-            type="button"
-            className={`vinculo-doc${lei.exige.atendida ? "" : " fora"}`}
-            onClick={() => onSelecionar(lei.exige!.lei)}
-          >
-            <Icone nome={ICONE_INTERFACE.vinculo} tamanho={18} />
-            <span>
-              <strong>Depende de {lei.exige.nome}</strong> em{" "}
-              {listaOu(lei.exige.opcoes)}.
-              {lei.exige.motivo ? <small> {lei.exige.motivo}</small> : null}
-              {lei.exige.atendida ? null : (
-                <em>
-                  Hoje {lei.exige.nome} está fora: só vale “{lei.exige.base}”.
-                </em>
-              )}
-            </span>
-          </button>
-        ) : null}
-        {lei.opcoes?.length ? (
-          <div
-            className="opcoes-doc"
-            role="radiogroup"
-            aria-label="Nova redação da lei"
-          >
-            {lei.opcoes.map((opcao, i) => {
-              const ativa = Math.abs(opcao.valor - rascunho) < 1e-9;
-              const vigente = opcao.id === lei.opcaoAtual;
-              // lei filha com a mãe fora: só a base (a primeira opção)
-              const bloqueada =
-                travada ||
-                !!opcao.trava ||
-                (!!lei.exige && !lei.exige.atendida && i > 0);
-              return (
-                <button
-                  key={opcao.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={ativa}
-                  disabled={bloqueada}
-                  title={
-                    travada
-                      ? lei.bloqueio
-                      : opcao.trava
-                        ? opcao.trava.motivo
-                        : bloqueada
-                          ? `Exige ${lei.exige!.nome} em ${listaOu(lei.exige!.opcoes)}`
-                          : undefined
-                  }
-                  className={`opcao-doc${ativa ? " ativa" : ""}${bloqueada ? " bloqueada" : ""}`}
-                  onClick={() => onRascunho(opcao.valor)}
-                >
-                  <span className="caixinha">{ativa ? "✕" : ""}</span>
-                  <span className="opcao-rotulo">{opcao.rotulo}</span>
-                  {opcao.trava ? (
-                    <span className="opcao-tag trava">
-                      <Icone nome={ICONE_INTERFACE.trancada} tamanho={12} />
-                      travada
-                    </span>
-                  ) : null}
-                  {vigente && lei.emVigor ? (
-                    <span className="opcao-tag">em vigor</span>
-                  ) : null}
-                  {Math.abs(opcao.saldoAnual) >= 100 ? (
-                    <span
-                      className={`opcao-custo ${opcao.saldoAnual > 0 ? "arrecada" : "custa"}`}
-                      title={
-                        opcao.saldoAnual > 0
-                          ? "Quanto arrecada por ano nesta opção"
-                          : "Quanto custa por ano nesta opção"
-                      }
-                    >
-                      {opcao.saldoAnual > 0 ? "+" : "−"}
-                      {moeda(Math.abs(opcao.saldoAnual))}/ano
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-            {lei.opcoes.some((o) => o.trava) ? (
-              <ul className="travas-doc" aria-label="Opções travadas">
-                {lei.opcoes
-                  .filter((o) => o.trava)
-                  .map((o) => (
-                    <li key={o.id}>
-                      <button
-                        type="button"
-                        onClick={() => onSelecionar(o.trava!.lei)}
-                      >
-                        <Icone nome={ICONE_INTERFACE.trancada} tamanho={16} />
-                        <span>
-                          <strong>{o.rotulo}:</strong> {o.trava!.motivo}{" "}
-                          <u>Abrir {o.trava!.nome}</u>
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-              </ul>
-            ) : null}
-          </div>
-        ) : (
-          <ControleNumerico
-            lei={lei}
-            valor={rascunho}
-            onValor={onRascunho}
-            receita={visao.contas.receita}
-          />
-        )}
-        {quedas.length ? (
-          <div className="quedas-doc" role="alert">
-            <Icone nome={ICONE_INTERFACE.vinculoQuebrado} tamanho={18} />
-            <span>
-              <strong>Ao assinar, caem junto:</strong>
-              {quedas.map((q) => (
-                <button
-                  key={q.id}
-                  type="button"
-                  onClick={() => onSelecionar(q.id)}
-                >
-                  {q.revogada
-                    ? `${q.nome} (sai do mapa)`
-                    : `${q.nome} → “${q.base}”`}
-                </button>
-              ))}
-            </span>
-          </div>
-        ) : lei.filhas.some((f) => f.ativa) ? (
-          <p className="filhas-doc">
-            Dependem desta lei:{" "}
-            {lei.filhas
-              .filter((f) => f.ativa)
-              .map((f, i) => (
-                <span key={f.id}>
-                  {i ? ", " : ""}
-                  <button type="button" onClick={() => onSelecionar(f.id)}>
-                    {f.nome}
-                  </button>
-                </span>
-              ))}
-            .
-          </p>
-        ) : null}
-        {erro ? <p className="erro">{erro}</p> : null}
-      </section>
-
-      <section className="secao-doc impacto" ref={secaoImpacto}>
-        <h2>
-          <span>III.</span> Impacto previsto
-        </h2>
-        {!mudou ? (
-          <>
-            <p className="vazio">
-              Marque uma nova redação para o motor simular o país com e sem a
-              mudança. Ao reforçar esta lei, ela mexe diretamente com:
-            </p>
-            <div className="lista-cartoes">
-              {efeitosDiretos
-                .filter((r) => !r.eficacia)
-                .map((r, i) => {
-                  const b = bolhas.get(r.para);
-                  return (
-                    <button
-                      key={r.id}
-                      type="button"
-                      className={`cartao-impacto ${r.efeito} simples`}
-                      style={
-                        {
-                          "--cor-efeito": COR_EFEITO[r.efeito],
-                          animationDelay: `${i * 30}ms`,
-                        } as CSSProperties
-                      }
-                      onClick={() => onSelecionar(r.para)}
-                    >
-                      <span className="cartao-icone">
-                        <Icone
-                          nome={ICONE_BOLHA[r.para] ?? "chart-line"}
-                          tamanho={22}
-                        />
-                        <span className="cartao-seta">
-                          <Icone
-                            nome={
-                              r.sinal > 0
-                                ? ICONE_INTERFACE.subir
-                                : ICONE_INTERFACE.descer
-                            }
-                            tamanho={13}
-                          />
-                        </span>
-                      </span>
-                      <span className="cartao-texto">
-                        <strong>{b?.nome ?? r.para}</strong>
-                        <small>
-                          {r.sinal > 0 ? "sobe" : "desce"} ·{" "}
-                          {atraso(r.atrasoMeses)}
-                          {r.mecanismo === "limiar"
-                            ? " · além de um certo nível"
-                            : ""}
-                        </small>
-                      </span>
-                    </button>
-                  );
-                })}
-            </div>
-          </>
-        ) : (
-          <>
-            <Abas horizonte={horizonte} onHorizonte={onHorizonte} />
-            {calculando && !previsao ? (
-              <p className="vazio">O motor está simulando o país…</p>
-            ) : previsao ? (
-              <>
-                {efeitoContas !== null && Math.abs(efeitoContas) >= 100 ? (
-                  <div
-                    className={`contas-impacto ${efeitoContas > 0 ? "melhora" : "piora"}`}
-                  >
-                    <Icone
-                      nome={
-                        ICONE_BOLHA[BOLHAS_DO_ORCAMENTO.resultado] ??
-                        "calculator-variant-outline"
-                      }
-                      tamanho={22}
-                    />
-                    <span>
-                      <small>Contas públicas {NOME_HORIZONTE[horizonte]}</small>
-                      <b>
-                        {efeitoContas > 0 ? "+" : "−"}
-                        {moeda(Math.abs(efeitoContas))}/ano
-                      </b>
-                    </span>
-                    <em>
-                      {efeitoContas > 0
-                        ? "o resultado melhora: menos déficit"
-                        : "o resultado piora: mais déficit"}
-                    </em>
-                  </div>
-                ) : null}
-                {previsao.interrompida ? (
-                  <p className="nota">
-                    A simulação parou antes do fim do horizonte (
-                    {previsao.interrompida}); a prévia mostra só os meses
-                    calculados.
-                  </p>
-                ) : null}
-                <Placar itens={itens} />
-                <div className="resumo-impacto">
-                  {custoExtra ? (
-                    <span className={custoExtra > 0 ? "custo" : "economia"}>
-                      {custoExtra > 0 ? "Custo extra" : "Economia"}:{" "}
-                      {moeda(Math.abs(custoExtra))}/ano
-                    </span>
-                  ) : null}
-                  <span>
-                    Implantação {NOME_HORIZONTE[horizonte]}:
-                    <span className="barra-implantacao">
-                      <i
-                        style={{
-                          width: `${progresso * 100}%`,
-                          background: cor,
-                        }}
-                      />
-                    </span>
-                    {Math.round(progresso * 100)}%
-                  </span>
-                </div>
-                {itens.length ? (
-                  <div className="lista-cartoes">
-                    {itens.slice(0, 14).map((item, i) => (
-                      <CartaoImpacto
-                        key={item.id}
-                        item={item}
-                        ordem={i}
-                        onClick={() => onSelecionar(item.id)}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <p className="vazio">
-                    Nada muda de forma visível {NOME_HORIZONTE[horizonte]}.
-                  </p>
-                )}
-                {itens.length > 14 ? (
-                  <p className="nota">
-                    E mais {itens.length - 14} efeitos menores.
-                  </p>
-                ) : null}
-                {semEfeito.length ? (
-                  <div className="sem-efeito">
-                    <h3>Ainda sem efeito {NOME_HORIZONTE[horizonte]}</h3>
-                    <ul>
-                      {semEfeito.map((r) => (
-                        <li key={r.id}>
-                          <Icone
-                            nome={ICONE_BOLHA[r.para] ?? "chart-line"}
-                            tamanho={15}
-                          />
-                          <b>{bolhas.get(r.para)?.nome ?? r.para}</b>
-                          <span>
-                            {motivoSemEfeito(
-                              r,
-                              MES_DO_HORIZONTE[horizonte] + 1,
-                            )}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-                <p className="nota">
-                  Diferença entre o país com e sem a mudança, simulada pelo
-                  motor. As marcas mostram a força do efeito na escala de cada
-                  indicador.
-                </p>
-              </>
-            ) : null}
-          </>
-        )}
-      </section>
-
-      {condicoes.length ? (
-        <section className="secao-doc">
-          <h2>
-            <span>IV.</span> O que muda a eficácia desta lei
-          </h2>
-          <div className="fichas">
-            {condicoes.map((r) => (
-              <button
-                key={r.id}
-                type="button"
-                className="ficha"
-                onClick={() => onSelecionar(r.de)}
-              >
-                <Icone
-                  nome={
-                    leis.has(r.de)
-                      ? (ICONE_LEI[r.de] ?? ICONE_INTERFACE.lei)
-                      : (ICONE_BOLHA[r.de] ?? "chart-line")
-                  }
-                  tamanho={15}
-                />
-                {leis.get(r.de)?.nome ?? bolhas.get(r.de)?.nome ?? r.de}
-                <i className={r.sinal > 0 ? "sobe" : "desce"}>
-                  {r.sinal > 0 ? "▲" : "▼"}
-                </i>
-              </button>
-            ))}
-          </div>
-        </section>
-      ) : null}
-    </Documento>
+    </div>
   );
 }
 

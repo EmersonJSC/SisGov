@@ -1,0 +1,70 @@
+{
+  "id": "regulacao-dos-bancos",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regulação dos bancos",
+  "descricao": "Quanto capital e quantas regras os bancos precisam cumprir para emprestar?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_regulacao_dos_bancos",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "minima",
+        "rotulo": "Mínima",
+        "valor": 0,
+        "custoTexto": "Risco de ter de salvar bancos",
+        "efeitos": "Crédito ↑; chance de crise financeira ↑"
+      },
+      {
+        "id": "padrao-internacional",
+        "rotulo": "Padrão internacional (Basileia)",
+        "valor": 33.33,
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Ponto de equilíbrio"
+      },
+      {
+        "id": "padrao-reforcado",
+        "rotulo": "Padrão reforçado",
+        "valor": 66.67,
+        "apoiam": [
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Crédito ↓ leve; chance de crise financeira ↓"
+      },
+      {
+        "id": "repressao-financeira",
+        "rotulo": "Repressão financeira (teto de juros, crédito obrigatório)",
+        "valor": 100,
+        "custoTexto": "Subsídio escondido",
+        "apoiam": [
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Spread ↓ no crédito tabelado e ↑ no crédito livre; crédito livre ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "regulacao-dos-bancos--credito"
+  ]
+}

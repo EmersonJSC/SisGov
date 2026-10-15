@@ -1,0 +1,17 @@
+{
+  "id": "reducao-de-jornada-subsidiada--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_reducao_de_jornada_subsidiada",
+  "alvo": "desemprego",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

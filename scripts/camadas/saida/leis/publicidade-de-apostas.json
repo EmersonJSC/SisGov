@@ -1,0 +1,89 @@
+{
+  "id": "publicidade-de-apostas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Publicidade de apostas",
+  "descricao": "Casas de apostas podem anunciar e patrocinar times?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "apostas-e-jogos-de-azar",
+    "nome": "Apostas e jogos de azar",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_publicidade_de_apostas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre",
+        "rotulo": "Livre",
+        "valor": 0,
+        "apoiam": [
+          "Casas de apostas",
+          "TV aberta e emissoras que vendem anúncio"
+        ],
+        "rejeitam": [
+          "Entidades de saúde pública",
+          "Igrejas evangélicas",
+          "Famílias com filhos"
+        ],
+        "efeitos": "Vício em apostas ↑; Jovens apostam mais"
+      },
+      {
+        "id": "com-avisos-e-regras",
+        "rotulo": "Com avisos e regras (o país de referência com a licença de 2024 e 2025, aprox.)",
+        "valor": 33.33,
+        "apoiam": [
+          "Classe média"
+        ],
+        "efeitos": "Vício em apostas ↓ pouco"
+      },
+      {
+        "id": "sem-patrocinio-esportivo",
+        "rotulo": "Sem patrocínio esportivo",
+        "valor": 66.67,
+        "apoiam": [
+          "Entidades de saúde pública",
+          "Famílias com filhos"
+        ],
+        "rejeitam": [
+          "Casas de apostas",
+          "clubes de futebol"
+        ],
+        "efeitos": "Vício em apostas ↓; receita dos clubes ↓"
+      },
+      {
+        "id": "proibida",
+        "rotulo": "Proibida (hoje na referência, junto com a proibição)",
+        "valor": 100,
+        "apoiam": [
+          "Igrejas evangélicas",
+          "Entidades de saúde pública",
+          "Famílias com filhos"
+        ],
+        "rejeitam": [
+          "Casas de apostas",
+          "TV aberta",
+          "Plataformas"
+        ],
+        "efeitos": "Vício em apostas ↓; receita de mídia e de clubes ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "publicidade-de-apostas--vicio-em-apostas"
+  ],
+  "mae": {
+    "texto": "Apostas e jogos de azar (com \"Proibição\", esta alavanca fica desligada e toda publicidade é proibida).",
+    "leis": [
+      "apostas-e-jogos-de-azar"
+    ]
+  }
+}

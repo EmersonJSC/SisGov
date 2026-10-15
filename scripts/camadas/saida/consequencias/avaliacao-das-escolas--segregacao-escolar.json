@@ -1,0 +1,17 @@
+{
+  "id": "avaliacao-das-escolas--segregacao-escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_avaliacao_das_escolas",
+  "alvo": "segregacao_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

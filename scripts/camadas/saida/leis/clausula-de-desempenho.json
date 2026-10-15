@@ -1,0 +1,66 @@
+{
+  "id": "clausula-de-desempenho",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Cláusula de desempenho",
+  "descricao": "Quantos votos um partido precisa ter para receber fundo, tempo de TV e liderança no Congresso?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_clausula_de_desempenho",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-clausula",
+        "rotulo": "Sem cláusula",
+        "valor": 0,
+        "apoiam": [
+          "Bancadas do Congresso de partidos pequenos"
+        ],
+        "rejeitam": [
+          "Bancadas do Congresso de partidos grandes"
+        ],
+        "efeitos": "Fragmentação partidária ↑; Estabilidade ↓"
+      },
+      {
+        "id": "gradual-de-2-a-3",
+        "rotulo": "Gradual, de 2% a 3%",
+        "valor": 50.0,
+        "apoiam": [
+          "Bancadas de partidos grandes"
+        ],
+        "rejeitam": [
+          "Bancadas de partidos pequenos"
+        ],
+        "efeitos": "Fragmentação ↓ (em 2022, só 12 de 32 partidos passaram); Estabilidade ↑"
+      },
+      {
+        "id": "5",
+        "rotulo": "5%",
+        "valor": 100,
+        "rejeitam": [
+          "Bancadas de partidos pequenos"
+        ],
+        "efeitos": "Fragmentação ↓ mais forte; Representação ↓ (em 2022, cerca de 14 milhões de votos ficaram sem cadeira por uma regra parecida)"
+      }
+    ]
+  },
+  "consequencias": [],
+  "mae": {
+    "texto": "Partidos (só existe com \"Pluripartidarismo\"; proposta minha)",
+    "leis": [
+      "partidos"
+    ]
+  }
+}

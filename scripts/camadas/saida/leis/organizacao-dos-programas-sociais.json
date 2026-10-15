@@ -1,0 +1,47 @@
+{
+  "id": "organizacao-dos-programas-sociais",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Organização dos programas sociais",
+  "descricao": "Cada ministério cuida do seu programa, ou o governo junta todos em missões com meta comum (por exemplo, \"zerar a fome\")?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-assistencia-social",
+    "nome": "Mesa Assistência social",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_organizacao_dos_programas_sociais",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "por-ministerio",
+        "rotulo": "Por ministério",
+        "valor": 0,
+        "apoiam": [
+          "Servidores"
+        ],
+        "efeitos": "Efeito das outras leis da mesa sem ganho de coordenação contra Missões com meta medida; coordenação entre pastas ↓ (hipótese de desenho, sem tamanho medido)"
+      },
+      {
+        "id": "missoes-com-meta-medida",
+        "rotulo": "Missões com meta medida",
+        "valor": 100,
+        "custoTexto": "Baixo (gestão)",
+        "apoiam": [
+          "Progressistas",
+          "Servidores"
+        ],
+        "efeitos": "Efeito das outras leis da mesa ↑ (hipótese de desenho, sem tamanho medido)"
+      }
+    ]
+  },
+  "consequencias": []
+}
