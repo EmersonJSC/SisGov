@@ -22,7 +22,9 @@ import type {
   VisaoBussola,
   VisaoDaTramitacao,
   VisaoDilema,
+  VisaoEleicao,
 } from "../../app/partida";
+import { EleicaoNoTablet, faltaCandidato } from "./EleicaoNoTablet";
 import { BussolaPolitica } from "./BussolaPolitica";
 import { CongressoNoTablet } from "./CongressoNoTablet";
 import {
@@ -33,7 +35,13 @@ import {
 } from "./NotificacoesNoTablet";
 
 export type AppDoTablet =
-  "inicio" | "notificacoes" | "jornal" | "rede" | "bussola" | "congresso";
+  | "inicio"
+  | "notificacoes"
+  | "jornal"
+  | "rede"
+  | "bussola"
+  | "congresso"
+  | "eleicao";
 
 /** Linha de evolução do índice desde o começo da partida. */
 function Linha({ serie, cor }: { serie: readonly number[]; cor: string }) {
@@ -220,6 +228,12 @@ const APPS: readonly App[] = [
     icone: ICONE_INTERFACE.bussola,
     titulo: "Bússola política",
   },
+  {
+    id: "eleicao",
+    nome: "Eleição",
+    icone: "vote-outline",
+    titulo: "Partido e eleição",
+  },
 ];
 
 /** Tela inicial: a data, as notificações e os apps. */
@@ -290,6 +304,9 @@ export function PaginaDeJornal({
   nomeDaLei = (id) => id,
   onResponderPedido = () => {},
   appInicial = "inicio",
+  eleicao,
+  onEscolherCandidato = () => null,
+  nomeDoSegmento = (id) => id,
 }: {
   edicao: EdicaoDoJornal;
   /** "2º trimestre · ano 1". */
@@ -308,6 +325,10 @@ export function PaginaDeJornal({
   nomeDaLei?: (id: string) => string;
   onResponderPedido?: (pedidoId: string, aceitar: boolean) => void;
   appInicial?: AppDoTablet;
+  /** App da eleição (V1-39): o partido, as pesquisas e o candidato. */
+  eleicao?: VisaoEleicao;
+  onEscolherCandidato?: (id: string) => string | null;
+  nomeDoSegmento?: (id: string) => string;
 }) {
   const [app, setApp] = useState<AppDoTablet>(appInicial);
   useEffect(() => setApp(appInicial), [appInicial]);
@@ -324,10 +345,20 @@ export function PaginaDeJornal({
   const principal = edicao.principal;
   const notificacoes = notificacoesDe(partida ? dilemas : [], congresso);
   const tem = (a: AppDoTablet) =>
-    a === "bussola" ? !!bussola : a === "congresso" ? !!congresso : true;
+    a === "bussola"
+      ? !!bussola
+      : a === "congresso"
+        ? !!congresso
+        : a === "eleicao"
+          ? !!eleicao
+          : true;
   const apps = APPS.filter((a) => tem(a.id));
   const contagem = (a: AppDoTablet) =>
-    a === "notificacoes" ? notificacoes.length : 0;
+    a === "notificacoes"
+      ? notificacoes.length
+      : a === "eleicao" && eleicao && faltaCandidato(eleicao)
+        ? 1
+        : 0;
   const abrirNotificacao = (id: string) => {
     setSelecionada(id);
     setApp("notificacoes");
@@ -345,9 +376,11 @@ export function PaginaDeJornal({
           ? `Quem senta onde e o que vai a voto · ${data}`
           : app === "rede"
             ? `O que dizem do governo · ${data}`
-            : app === "notificacoes"
-              ? "Os dilemas seguram o turno até a resposta"
-              : "Notificações e apps";
+            : app === "eleicao"
+              ? `O partido e a próxima eleição · ${data}`
+              : app === "notificacoes"
+                ? "Os dilemas seguram o turno até a resposta"
+                : "Notificações e apps";
 
   return (
     <div
@@ -401,6 +434,12 @@ export function PaginaDeJornal({
               congresso={congresso}
               nomeDaLei={nomeDaLei}
               onResponder={onResponderPedido}
+            />
+          ) : app === "eleicao" && eleicao ? (
+            <EleicaoNoTablet
+              eleicao={eleicao}
+              onEscolher={onEscolherCandidato}
+              nomeDoSegmento={nomeDoSegmento}
             />
           ) : app === "rede" ? (
             <div className="tb-colunas tb-uma-coluna">

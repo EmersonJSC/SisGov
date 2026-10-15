@@ -8,6 +8,7 @@ import {
   criarPartida,
   encerrarTurno,
   enviarAoCongresso,
+  escolherCandidato,
   investigarGrupo,
   mudarLei,
   revogarLei,
@@ -16,6 +17,7 @@ import {
   verPartida,
   verBussola,
   verTramitacao,
+  verEleicao,
   type OpcoesDoEnvio,
   type Partida,
   type PrevisaoLei,
@@ -48,6 +50,8 @@ import {
 } from "./Documentos";
 import { JanelaBolha, JanelaLei, abrirJanela, type Janela } from "./Janelas";
 import { JanelaPartida, type PartidaCarregada } from "./JanelaPartida";
+import { TelaDeFundacao, type Fundacao } from "./TelaDeFundacao";
+import { Resultado, faltaCandidato } from "./EleicaoNoTablet";
 import { efeitoDe, indexarRelacoes, ligacoesDeFundo } from "./relacoes";
 import { COR_EFEITO } from "./tema";
 import "./mapa.css";
@@ -322,22 +326,31 @@ type Inicial = ReturnType<typeof criarPartida>;
  * não ficar em branco (15/out).
  */
 export function TelaPrincipal() {
+  // cada partida nova ganha uma semente própria: eventos diferentes (SG106)
+  // e personagens diferentes na primeira tela (V1-39)
+  const [semente] = useState(() => 1 + Math.floor(Math.random() * 0xfffffffe));
+  const [fundacao, setFundacao] = useState<Fundacao | null>(null);
   const [inicial, setInicial] = useState<Inicial | null>(null);
   useEffect(() => {
+    if (!fundacao) return;
     const id = window.setTimeout(
       () =>
-        // cada partida nova ganha uma semente própria: eventos diferentes
-        // (SG106); V1-12: as leis passam pelo Congresso (modo real)
+        // V1-12: as leis passam pelo Congresso (modo real); V1-39: o
+        // jogador é o partido e já começa no governo
         setInicial(
           criarPartida({
-            semente: 1 + Math.floor(Math.random() * 0xfffffffe),
+            semente: fundacao.semente,
             modo: "real",
+            partido: fundacao.partido,
+            presidente: fundacao.presidente,
           }),
         ),
       60,
     );
     return () => window.clearTimeout(id);
-  }, []);
+  }, [fundacao]);
+  if (!fundacao)
+    return <TelaDeFundacao semente={semente} onComecar={setFundacao} />;
   if (!inicial)
     return (
       <div className="carregando" role="status" aria-live="polite">
@@ -424,6 +437,11 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
     () => (partida ? verBussola(partida) : undefined),
     [partida],
   );
+  const eleicao = useMemo(
+    () => (partida ? verEleicao(partida) : undefined),
+    [partida],
+  );
+  const [fimVisto, setFimVisto] = useState(false);
   // V1-13: dilemas e pedidos do Congresso esperando no tablet
   const avisosNoTablet =
     (visao?.ocorrencias.mesa.length ?? 0) + (congresso?.pedidos.length ?? 0);
@@ -589,8 +607,27 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
     setErroTurno(null);
   };
 
+  // V1-39: o partido escolhe quem disputa a eleição
+  const escolherNoPartido = (id: string): string | null => {
+    if (!partida) return null;
+    const r = escolherCandidato(partida, id);
+    if (!r.ok) return r.erros.join(" ");
+    setPartida(r.value);
+    setErroTurno(null);
+    return null;
+  };
+
   const passarTurno = () => {
     if (!partida || passando) return;
+    // V1-39: partida perdida ou sem candidato: o tablet abre na eleição
+    if (eleicao?.encerrada) {
+      setFimVisto(false);
+      return;
+    }
+    if (eleicao && faltaCandidato(eleicao) && eleicao.turnosAteAEleicao === 0) {
+      setTablet("eleicao");
+      return;
+    }
     // V1-13: com dilema sem resposta, o botão abre as notificações
     if (visao && visao.ocorrencias.mesa.length > 0) {
       setTablet("notificacoes");
@@ -603,6 +640,7 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
       setPassando(false);
       if (!r.ok) {
         setErroTurno(r.erros.join(" "));
+        if (eleicao && faltaCandidato(eleicao)) setTablet("eleicao");
         return;
       }
       setErroTurno(null);
@@ -629,7 +667,8 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
       setRelatorio(r.value.relatorio);
       // o jornal do trimestre chega com o fim do turno; dilemas e pedidos
       // ficam nas notificações do tablet (V1-13)
-      setTablet("jornal");
+      // V1-39: no turno da eleição, o tablet abre no resultado
+      setTablet(r.value.relatorio.eleicao?.resultado ? "eleicao" : "jornal");
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
     }, 30);
@@ -805,7 +844,46 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
           dilemas={visao.ocorrencias.mesa}
           onEscolherDilema={escolherDilema}
           appInicial={tablet || "inicio"}
+          eleicao={eleicao}
+          onEscolherCandidato={escolherNoPartido}
+          nomeDoSegmento={(id) =>
+            visao.bolhas.find((b) => b.id === id)?.nome ?? id
+          }
         />
+      ) : null}
+
+      {eleicao?.encerrada && !fimVisto && !jornalAberto && !salvarAberto ? (
+        <div className="fim-fundo" role="dialog" aria-label="Fim da partida">
+          <div className="fim-caixa">
+            <h1>Fim da partida</h1>
+            <p>
+              {eleicao.partido.nome} deixa o governo depois de{" "}
+              {eleicao.mandato === 1
+                ? "um mandato"
+                : `${eleicao.mandato} mandatos`}
+              .
+            </p>
+            {eleicao.resultados.at(-1) ? (
+              <Resultado
+                r={eleicao.resultados.at(-1)!}
+                nomeDoSegmento={(id) =>
+                  visao.bolhas.find((b) => b.id === id)?.nome ?? id
+                }
+              />
+            ) : null}
+            <div className="fim-botoes">
+              <button type="button" onClick={() => window.location.reload()}>
+                Novo partido
+              </button>
+              <button type="button" onClick={() => setSalvarAberto(true)}>
+                Carregar partida
+              </button>
+              <button type="button" onClick={() => setFimVisto(true)}>
+                Ver o país
+              </button>
+            </div>
+          </div>
+        </div>
       ) : null}
 
       {salvarAberto && partida ? (
@@ -989,9 +1067,15 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
           <span>
             {passando
               ? "Calculando…"
-              : visao.ocorrencias.mesa.length
-                ? "Responder dilema"
-                : "Encerrar turno"}
+              : eleicao?.encerrada
+                ? "Fim da partida"
+                : visao.ocorrencias.mesa.length
+                  ? "Responder dilema"
+                  : eleicao &&
+                      faltaCandidato(eleicao) &&
+                      eleicao.turnosAteAEleicao === 0
+                    ? "Escolher candidato"
+                    : "Encerrar turno"}
           </span>
           <Icone nome={ICONE_INTERFACE.seguir} tamanho={22} />
         </button>

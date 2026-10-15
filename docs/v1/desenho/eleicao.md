@@ -464,3 +464,18 @@ temas) e `paises/brasil/eleicao.json`. `criarPartida` recebe `partido` e
 - `npm run check`: formato, lint e build ok; 414 testes (406 + 8 da eleição)
   verdes. Os dois testes de contas com 40 a 80 turnos rodam sem eleição
   (`criarPartida({ eleicao: false })`).
+
+**Telas (15/out, segundo commit).**
+- Primeira tela (`TelaDeFundacao`): nome e sigla do partido e a escolha do
+  presidente entre os 5 nomes da semente. Só depois a partida é criada.
+- App "Eleição" no tablet (`EleicaoNoTablet`): partido e mandato, quanto
+  falta para a eleição, a última pesquisa (1º turno em barras, 2º turno
+  contra cada adversário), o presidente, os nomes que o partido pode lançar
+  (a partir do turno 12, com o aviso de estranhamento), os adversários e as
+  eleições passadas com os melhores e piores segmentos.
+- Se falta candidato, o botão vira "Escolher candidato" e abre o app; no
+  turno da eleição, o tablet abre no resultado. Na derrota, uma janela de
+  fim mostra o resultado e oferece novo partido, carregar partida ou ver
+  o país.
+- Ainda não: carregar uma partida salva pela primeira tela (só depois de
+  fundar um partido).

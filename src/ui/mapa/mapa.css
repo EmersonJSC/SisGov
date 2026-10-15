@@ -5850,3 +5850,373 @@ button {
   font-size: 0.8rem;
   opacity: 0.65;
 }
+
+/* V1-39: personagens, primeira tela, app da eleição e fim da partida */
+.ps-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.ps-cartao {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
+}
+
+.ps-cartao.ps-escolhido {
+  border-color: light-dark(#1f7a52, #71c699);
+}
+
+.ps-cartao header {
+  display: grid;
+  gap: 2px;
+}
+
+.ps-cartao strong {
+  font-family: var(--serifa);
+  font-size: 1rem;
+}
+
+.ps-sub,
+.ps-tracos {
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.75rem;
+}
+
+.ps-selo {
+  justify-self: start;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: light-dark(#fff3d6, #3a3220);
+  color: light-dark(#8a5a00, #f0c050);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ps-bio {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.ps-opinioes {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--serifa);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.ps-estranha {
+  margin: 0;
+  color: light-dark(#b23345, #fd8a91);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ps-botao {
+  justify-self: start;
+  margin-top: 4px;
+  padding: 4px 14px;
+  border: 1px solid light-dark(#1f7a52, #71c699);
+  border-radius: 999px;
+  background: transparent;
+  color: light-dark(#1f7a52, #71c699);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ps-botao[aria-pressed="true"] {
+  background: light-dark(#1f7a52, #71c699);
+  color: light-dark(#fff, #151618);
+}
+
+.fd-tela {
+  display: grid;
+  gap: 18px;
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+  box-sizing: border-box;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+.fd-topo h1 {
+  margin: 0 0 6px;
+  font-family: var(--serifa);
+  font-size: 2rem;
+}
+
+.fd-topo p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--tinta-suave);
+}
+
+.fd-nome {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.fd-nome label {
+  display: grid;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.fd-nome label:first-child {
+  flex: 1 1 280px;
+}
+
+.fd-nome input {
+  padding: 8px 10px;
+  border: 1px solid light-dark(#c9c2b0, #3b372f);
+  border-radius: 8px;
+  background: light-dark(#fff, #262626);
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.fd-nomes h2,
+.el-app h2 {
+  margin: 0 0 8px;
+  font-family: var(--serifa);
+  font-size: 1.15rem;
+}
+
+.fd-pe {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  background: var(--papel);
+}
+
+.fd-comecar {
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: light-dark(#1f7a52, #71c699);
+  color: light-dark(#fff, #151618);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fd-comecar:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.fd-falta {
+  color: var(--tinta-suave);
+  font-size: 0.85rem;
+}
+
+.el-app {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 0;
+  padding: 12px 18px;
+  overflow-y: auto;
+}
+
+.el-topo h2 {
+  margin-bottom: 2px;
+}
+
+.el-topo p,
+.el-legenda {
+  margin: 0;
+  color: light-dark(#5d6778, #a0abbe);
+  font-size: 0.8rem;
+}
+
+.el-topo .el-alerta {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-left: 4px solid light-dark(#c98a00, #f0c050);
+  border-radius: 6px;
+  background: light-dark(#fff3d6, #3a3220);
+  color: inherit;
+}
+
+.el-colunas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.el-pesquisa,
+.el-resultado {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: light-dark(#fff, #262626);
+  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
+}
+
+.el-resultado + .el-resultado {
+  margin-top: 10px;
+}
+
+.el-venceu {
+  border-left: 4px solid light-dark(#1f7a52, #71c699);
+}
+
+.el-perdeu {
+  border-left: 4px solid light-dark(#b23345, #fd8a91);
+}
+
+.el-pesquisa h3,
+.el-resultado h3,
+.el-resultado h4 {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+}
+
+.el-resultado h3 {
+  font-family: var(--serifa);
+  font-size: 1rem;
+}
+
+.el-barras,
+.el-duelos {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+}
+
+.el-barras li {
+  display: grid;
+  grid-template-columns: minmax(0, 11em) minmax(0, 1fr) 4em;
+  align-items: center;
+  gap: 8px;
+}
+
+.el-nome {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.el-barra {
+  height: 8px;
+  border-radius: 4px;
+  background: light-dark(#ece7da, #333);
+}
+
+.el-barra span {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: light-dark(#8b93a0, #6b7383);
+}
+
+.el-nosso {
+  font-weight: 700;
+}
+
+.el-nosso .el-barra span {
+  background: light-dark(#1f7a52, #71c699);
+}
+
+.el-pct {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.el-ganha {
+  color: light-dark(#1f7a52, #71c699);
+}
+
+.el-perde {
+  color: light-dark(#b23345, #fd8a91);
+}
+
+.el-segmentos p {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+}
+
+.fim-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(10, 12, 16, 0.55);
+}
+
+.fim-caixa {
+  display: grid;
+  gap: 12px;
+  width: min(560px, 100%);
+  max-height: 90vh;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 14px;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+.fim-caixa h1 {
+  margin: 0;
+  font-family: var(--serifa);
+}
+
+.fim-caixa p {
+  margin: 0;
+}
+
+.fim-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fim-botoes button {
+  padding: 6px 16px;
+  border: 1px solid light-dark(#1f7a52, #71c699);
+  border-radius: 999px;
+  background: transparent;
+  color: light-dark(#1f7a52, #71c699);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fim-botoes button:first-child {
+  background: light-dark(#1f7a52, #71c699);
+  color: light-dark(#fff, #151618);
+}
