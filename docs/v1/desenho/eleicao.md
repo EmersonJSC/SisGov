@@ -64,11 +64,14 @@ mexem. O voto econômico depende disso e será recalibrado depois do V1-38.
 
 ### 2.2 O ponto e a base do partido
 
-- **Ponto do partido na bússola.** Hoje ele começa no ponto do país e anda
-  com as leis. Proposta: ele **começa no ponto do primeiro candidato** (o
-  partido nasce em volta de quem o lidera) e depois anda com as leis, como
-  hoje. Assim o jogo continua sem perguntar o seu lado: o lado aparece na
-  pessoa que você escolhe e nas leis que faz.
+- **A bússola é do país, não do partido.** Ela mostra onde estão as leis em
+  vigor e anda com cada lei aprovada, como no `bussola.md` (sem mudança).
+- **Ideologia do partido.** O partido tem um ponto próprio, guardado à parte
+  e usado só para medir o estranhamento da base (2.3). Ele nasce no ponto do
+  primeiro presidente escolhido (o partido nasce em volta de quem o lidera)
+  e, a cada novo presidente, anda uma parte (`passoDaIdeologia`, inferido
+  0,3) em direção a ele. Assim o lado aparece na pessoa que você escolhe, sem
+  o jogo perguntar.
 - **Base do partido.** São os perfis que votam no partido, que o V1-11 já
   calcula (`eleitor` de cada candidato em `eleger`). A tela mostra a base por
   segmento: "o seu eleitor é 40% pobre, 30% evangélico…".
@@ -312,14 +315,14 @@ Resultado final = modelo + desvio sorteado com a semente, desvio-padrão
   mesmo (`luaDeMelDaReeleicao`, 0,5); inteira se for um nome novo.
 
 **Perder.** Fim de jogo com o balanço: resultado por segmento (quem largou o
-partido), indicadores do começo e do fim, caminho do partido na bússola,
+partido), indicadores do começo e do fim, caminho do país na bússola,
 leis aprovadas e revogadas, e os presidentes que o partido teve.
 
 ## 9. Configuração (tudo em JSON)
 
 - `mundo/eleicao.json`: pesos do voto, `custoDeGovernar`, `convergencia`,
   `ruido`, pesquisas, `arrasto`, `luaDeMelDaReeleicao`, estranhamento
-  (`tolerancia`, `pesoNoVoto`, `quedaDaDisciplina`).
+  (`tolerancia`, `pesoNoVoto`, `quedaDaDisciplina`, `passoDaIdeologia`).
 - `mundo/personagens.json`: ideologias (centro na bússola, carreiras, frase),
   carreiras (segmentos ligados, faixa de carisma e experiência), moldes das
   biografias, faixas de idade.
@@ -339,13 +342,10 @@ mandato e o resultado da última eleição.
 
 1. **Começo:** o jogo começa no governo. Na primeira tela você escolhe o
    presidente (entre os personagens gerados) e dá o nome ao partido.
-2. **Ponto inicial do partido = ponto do presidente escolhido.** Sim. Em
-   palavras simples: hoje a bússola põe o seu partido no meio do país no
-   turno 0, e ele só anda com as leis. Agora ele nasce onde está o
-   presidente que você escolheu: escolher um sindicalista trabalhista põe o
-   partido na esquerda desde o início; escolher um ruralista liberal, na
-   direita. Depois anda com as leis, como hoje. Isso muda uma linha da regra
-   aprovada da bússola (`bussola.md`, 4.3).
+2. **A bússola continua sendo do país** (correção do Emerson, 15/out): ela
+   mostra as leis em vigor e não muda. O partido tem uma ideologia própria,
+   que nasce no ponto do primeiro presidente e serve para a base estranhar
+   candidatos (2.2 e 2.3).
 3. **Pessoas reais:** sim, só com fatos públicos e com opção para desligar.
 4. **Oposição:** um personagem gerado por campo (dois adversários).
 5. **Condutas vedadas no ano 4:** ficam para depois.
