@@ -2,6 +2,7 @@ import type { ResolvedPackage, ScenarioGraph } from "../../engine";
 import type { GameState } from "../../game/createGame";
 import { BOLHAS_DO_ORCAMENTO } from "./contas";
 import type { ResultadoDoCongresso } from "./tramitacao";
+import type { EleicaoNoTurno } from "./eleicao";
 
 export type Resultado<T> =
   { ok: true; value: T } | { ok: false; erros: readonly string[] };
@@ -451,6 +452,8 @@ export type RelatorioTurno = Readonly<{
   }>;
   /** O que o Congresso votou, pediu e tirou da fila no turno (V1-12). */
   congresso: ResultadoDoCongresso;
+  /** Pesquisa publicada e resultado da eleição, se houve (V1-39). */
+  eleicao?: EleicaoNoTurno;
 }>;
 
 /** Nível de um grupo de pressão: 0 sem muitos adeptos … 3 preocupação nacional. */

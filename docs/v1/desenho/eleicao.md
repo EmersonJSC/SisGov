@@ -397,7 +397,7 @@ mandato e o resultado da última eleição.
    ponto do partido; o longe perde votos da base e disciplina.
 4. **Gerador:** mesma semente, mesmos personagens; todos com 35 anos ou mais;
    pelo menos um de cada lado na escolha; nenhum rótulo do jogo diz o lado ou
-   a ideologia (só frase explícita de personagem com franqueza 3); nenhuma pessoa real com atributo
+   a ideologia (só frase explícita dita pelo personagem); nenhuma pessoa real com atributo
    inventado.
 5. **Vencer e perder:** vencer abre o mandato 2 com Congresso refeito e
    salvo/carga iguais; perder fecha com o balanço; terceiro mandato seguido
@@ -426,3 +426,41 @@ governador e prefeito, presidente que discorda do partido (versão 2).
   Voting Behavior in Brazil*. Cambridge.
 - Carreirão (2007), *Opinião Pública* 13(2).
 - Zucco (2008), *Journal of Latin American Studies* 40(1).
+
+## 13. Como ficou (implementação, 15/out)
+
+**Código.** `src/game/eleicao/` (tipos, gerador de personagens, voto e
+mandato), `src/app/partida/eleicao.ts` (fachada: `primeirosCandidatos`,
+`verEleicao`, `escolherCandidato`), dados em `mundo/eleicao.json`,
+`mundo/personagens.json` (12 ideologias, 17 carreiras, 77 opiniões em 11
+temas) e `paises/brasil/eleicao.json`. `criarPartida` recebe `partido` e
+`presidente`; o estado fica em `GameState.election` e vai no salvo.
+
+**Diferenças do desenho, decididas na calibragem:**
+- **Sensibilidade da urna 0,1** (o Congresso usa 0,3). Prova
+  (`scripts/eleicao/prova.ts`) com os 2º turnos de 2006, 2014, 2018 e 2022,
+  só pela bússola: erro médio de 10 pontos com 0,1 e de 19 com 0,3. Só a
+  distância não explica 2018 e 2022 (Bolsonaro, muito longe do eleitor
+  médio, perderia de lavada); a conjuntura tem de pesar mais.
+- **Costumes pesam metade na urna** (`pesoDosCostumes` 0,5).
+- **Vantagem do cargo** de 0,8 para o presidente que concorre (3 de 4
+  presidentes foram reeleitos). Com 0,5, o partido ficava fora do 2º turno
+  em 7 de 20 sementes no turno 0; com 0,8, em 1 de 20.
+- **Pessoas reais não ganham frases inventadas**: só a biografia com cargos
+  e datas. Brizola fica fora (morto em 2004).
+- **O 2º turno sai junto com o 1º**, no turno 16 (não é um turno a mais).
+- **Ficaram para depois:** lua de mel (o capital político ainda não está no
+  código), tirar o `estadoPolitico` antigo de `politica.json`, e o partido
+  no Congresso continua no ponto da bússola do país.
+
+**Testes de mandato (modo real, 16 turnos).**
+- 10 mandatos parados (sementes 1 a 10): o partido venceu 5 e perdeu 5;
+  aprovação final entre 40% e 48%. Nas derrotas, o candidato ficou em 3º no
+  1º turno três vezes, perdeu um 2º turno por 49,8 a 50,2 e outro por 42,6.
+- Semente 1 (presidente de centro): programa de Piñera, aprovação 53,7, venceu
+  no 1º turno com 66%; Bolsonaro, 43,5, venceu no 2º com 63,9; Mujica, 41,7,
+  venceu no 2º com 63,8. O peso da aprovação ainda é fraco perto da posição
+  do candidato: a calibrar depois do V1-38 (economia que mexe).
+- `npm run check`: formato, lint e build ok; 414 testes (406 + 8 da eleição)
+  verdes. Os dois testes de contas com 40 a 80 turnos rodam sem eleição
+  (`criarPartida({ eleicao: false })`).

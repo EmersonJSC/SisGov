@@ -12,7 +12,7 @@ import {
 
 describe("SG106 — cinco mandatos", () => {
   it("80 turnos: muitas ocorrências distintas, poucas repetições, turnos calmos, textos sem variável solta", () => {
-    const criada = criarPartida({ semente: 3 });
+    const criada = criarPartida({ semente: 3, eleicao: false });
     if (!criada.ok) throw new Error(criada.erros.join(" "));
     let atual = criada.value;
     let calmos = 0;

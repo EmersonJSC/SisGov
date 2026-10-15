@@ -11,6 +11,7 @@ import {
   verBussola,
   verPartida,
   verTramitacao,
+  verEleicao,
   type Partida,
 } from "../../src/app/partida";
 import programas from "../../src/conteudo/bussola/programas.json";
@@ -24,9 +25,19 @@ const ESCOLHIDOS = (process.argv[2] ?? "mujica,chavez,bolsonaro,pinera").split(
   ",",
 );
 const TURNOS = 16;
+/** Sementes (3º argumento, ex.: 1-10 ou 3,7): uma partida por semente. */
+const SEMENTES = (() => {
+  const arg = process.argv[3] ?? "7";
+  const [a, b] = arg.split("-").map(Number);
+  return arg.includes("-")
+    ? Array.from({ length: b - a + 1 }, (_, i) => a + i)
+    : arg.split(",").map(Number);
+})();
+/** Só o resumo da eleição (4º argumento "curto"). */
+const CURTO = process.argv[4] === "curto";
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
-function jogar(nome: string) {
+function jogar(nome: string, semente: number) {
   const prog =
     nome === "nada"
       ? {
@@ -37,7 +48,7 @@ function jogar(nome: string) {
   const ref = referenciasDaBussola.personalidades.find(
     (p) => p.id === prog.referencia,
   )!;
-  const criada = criarPartida({ modo: "real", semente: 7 });
+  const criada = criarPartida({ modo: "real", semente });
   if (!criada.ok) throw new Error(criada.erros.join("\n"));
   let p: Partida = criada.value;
   const t0 = Date.now();
@@ -156,6 +167,16 @@ function jogar(nome: string) {
     .filter(Boolean)
     .join("; ");
   const fim = verPartida(p);
+  const el = verEleicao(p);
+  const res = el?.resultados.at(-1);
+  const linhaEleicao = res
+    ? `Eleição (semente ${semente}): ${res.candidato} ${res.venceu ? "VENCEU" : "PERDEU"}; 1º turno ${res.primeiro.map((x) => `${x.nome} ${r1(x.votos)}`).join(", ")}${res.segundo ? `; 2º turno ${res.segundo.map((x) => `${x.nome} ${r1(x.votos)}`).join(", ")}` : ""}; comparecimento ${r1(res.comparecimento)}%. Aprovação ${r1(bolha(p, /^popularidade_governo$/)?.valor ?? NaN)}. Pesquisas (2º turno, partido): ${(el?.pesquisas ?? []).map((q) => r1(Math.min(...q.segundo.map((x) => x.votos)))).join(" ")}`
+    : `Eleição (semente ${semente}): ${el?.pesquisas.at(-1) ? "sem resultado" : "sem eleição"}`;
+  if (CURTO) {
+    console.log(`${prog.referencia}: ${linhaEleicao}`);
+    return;
+  }
+  console.log(linhaEleicao);
   console.log(
     `\n=== ${prog.referencia} (${ref.economia}, ${ref.costumes}) — ${(Date.now() - t0) / 1000}s ===`,
   );
@@ -183,10 +204,11 @@ function jogar(nome: string) {
   console.log(linhas.filter((_, i) => i % 4 === 3).join("\n"));
 }
 
-for (const nome of ESCOLHIDOS) {
-  try {
-    jogar(nome);
-  } catch (e) {
-    console.log(`\n=== ${nome}: QUEBROU ===\n${(e as Error).stack}`);
+for (const nome of ESCOLHIDOS)
+  for (const semente of SEMENTES) {
+    try {
+      jogar(nome, semente);
+    } catch (e) {
+      console.log(`\n=== ${nome}: QUEBROU ===\n${(e as Error).stack}`);
+    }
   }
-}

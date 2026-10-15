@@ -56,6 +56,16 @@ export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
 export { verBussola } from "./partida/bussola";
 export {
+  escolherCandidato,
+  primeirosCandidatos,
+  verEleicao,
+  type EleicaoNoTurno,
+  type VisaoEleicao,
+  type VisaoPersonagem,
+  type VisaoPesquisa,
+  type VisaoResultado,
+} from "./partida/eleicao";
+export {
   enviarAoCongresso,
   responderPedido,
   verTramitacao,

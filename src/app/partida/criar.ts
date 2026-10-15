@@ -1,4 +1,5 @@
 import { createGame } from "../../game/createGame";
+import { criarEleicao } from "../../game/eleicao";
 import { prepareMonthlyContent } from "../../game/prepareMonthlyContent";
 import { loadDistributedScenario } from "../../game/pais/loadScenarioPackage";
 import type { Resultado, ModoPartida, Partida } from "./tipos";
@@ -22,6 +23,12 @@ export function criarPartida(
     semente?: number;
     /** Eventos e dilemas (SG106); padrão: ligados. */
     ocorrencias?: boolean;
+    /** Nome e sigla do partido do jogador (V1-39). */
+    partido?: Readonly<{ nome?: string; sigla?: string }>;
+    /** Id do presidente, entre os `primeirosCandidatos` da mesma semente. */
+    presidente?: string;
+    /** Eleição no fim do mandato (V1-39); padrão: ligada. Testes longos desligam. */
+    eleicao?: boolean;
   }> = {},
 ): Resultado<Partida> {
   const conteudo = carregarConteudo(opcoes.pais ?? "brasil");
@@ -32,14 +39,27 @@ export function criarPartida(
     occurrences: opcoes.ocorrencias ?? true,
   });
   if (!game.ok) return falha(game.diagnostics);
+  const election =
+    opcoes.eleicao === false
+      ? undefined
+      : criarEleicao({
+          content,
+          pais: opcoes.pais ?? "brasil",
+          semente: opcoes.semente ?? 1,
+          partido: opcoes.partido,
+          presidente: opcoes.presidente,
+          valores: game.value.execution.values,
+          congresso: game.value.congress,
+        });
+  const comEleicao = election ? { ...game.value, election } : game.value;
   return {
     ok: true,
     value: {
       modo: opcoes.modo ?? "teste",
       content,
       graph,
-      game: game.value,
-      piloto: game.value,
+      game: comEleicao,
+      piloto: comEleicao,
       acoes: 0,
     },
   };

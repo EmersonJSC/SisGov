@@ -16,7 +16,7 @@ import {
 import { updateStock, type VariableDefinition } from "../engine";
 
 function nova(): Partida {
-  const criada = criarPartida({ ocorrencias: false });
+  const criada = criarPartida({ ocorrencias: false, eleicao: false });
   if (!criada.ok) throw new Error(criada.erros.join(" "));
   return criada.value;
 }

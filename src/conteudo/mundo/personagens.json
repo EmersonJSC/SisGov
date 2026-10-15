@@ -1,0 +1,870 @@
+{
+  "tipo": "mundo-personagens",
+  "versaoEsquema": 1,
+  "metodo": "Desenho em docs/v1/desenho/eleicao.md, seção 3. O personagem tem lado e ideologia só por dentro: a tela mostra a biografia e de 3 a 5 opiniões. O centro de cada ideologia na bússola é a média dos partidos de referência (bussola/referencias.json, V-Party). Cada opinião tem um eixo, uma posição (−10 a 10) e uma intensidade (1 sutil, 2 clara, 3 explícita); a franqueza do personagem (0 a 3) decide quais intensidades ele usa. Lista nossa; nada vem do Democracy 4.",
+  "desvio": 1.5,
+  "franqueza": {
+    "0": [1],
+    "1": [1, 2],
+    "2": [1, 2],
+    "3": [1, 2, 3]
+  },
+  "explicitasDaFranqueza": {
+    "0": 0,
+    "1": 0,
+    "2": 1,
+    "3": 2
+  },
+  "opinioesPorPersonagem": [3, 5],
+  "idade": [35, 75],
+  "molde": "{nome}, {idade} anos, nasceu em {estado}. {carreira} {caminho}",
+  "caminhos": [
+    "Entrou na política depois de liderar um movimento no bairro onde cresceu.",
+    "Nunca disputou uma eleição e se apresenta como novidade.",
+    "Já trocou de partido duas vezes.",
+    "Ganhou projeção nacional com um discurso que viralizou.",
+    "Passou a juventude no movimento estudantil.",
+    "Chegou à política pelas mãos de um padrinho poderoso.",
+    "Construiu a carreira longe das capitais, no interior do estado.",
+    "Tem fama de negociador e de bom trânsito no Congresso."
+  ],
+  "ideologias": [
+    {
+      "id": "socialismo",
+      "lado": "esquerda",
+      "referencias": ["esquerda-de", "lfi", "podemos"],
+      "carreiras": ["sindicalista", "professor", "artista"],
+      "explicita": "Sou socialista e não tenho vergonha disso."
+    },
+    {
+      "id": "trabalhismo",
+      "lado": "esquerda",
+      "referencias": ["pt", "pdt"],
+      "carreiras": ["sindicalista", "professor", "prefeito", "deputado"],
+      "explicita": "Sou de esquerda, do lado de quem trabalha."
+    },
+    {
+      "id": "social-democracia",
+      "lado": "esquerda",
+      "referencias": ["psb", "spd", "psoe"],
+      "carreiras": ["economista", "prefeito", "governador", "medico"],
+      "explicita": "Sou social-democrata: mercado, sim, mas com rede de proteção."
+    },
+    {
+      "id": "ecologismo",
+      "lado": "esquerda",
+      "referencias": ["verdes-de"],
+      "carreiras": ["cientista", "professor", "artista"],
+      "explicita": "Sou ecologista antes de qualquer outra coisa."
+    },
+    {
+      "id": "social-liberalismo",
+      "lado": "centro",
+      "referencias": ["lrem", "democratas-eua", "liberal-ca"],
+      "carreiras": ["economista", "empresario", "juiz"],
+      "explicita": "Não sou de esquerda nem de direita: sou do que funciona."
+    },
+    {
+      "id": "democracia-crista",
+      "lado": "centro",
+      "referencias": ["cdu", "pp-es", "mdb"],
+      "carreiras": ["advogado", "prefeito", "governador", "medico"],
+      "explicita": "Sou de centro, com valores cristãos."
+    },
+    {
+      "id": "desenvolvimentismo",
+      "lado": "centro",
+      "referencias": ["peronismo", "inc", "anc"],
+      "carreiras": ["economista", "governador", "militar"],
+      "explicita": "Acredito num Estado que puxa o crescimento, sem rótulos."
+    },
+    {
+      "id": "fisiologismo",
+      "lado": "centro",
+      "referencias": ["psd-br", "pp", "pri"],
+      "carreiras": ["prefeito", "deputado", "empresario", "ruralista"],
+      "explicita": "Sou do centro e converso com todo mundo."
+    },
+    {
+      "id": "liberalismo",
+      "lado": "direita",
+      "referencias": ["pro", "dem", "rn-cl", "pan"],
+      "carreiras": ["economista", "empresario"],
+      "explicita": "Sou liberal: menos Estado, mais liberdade."
+    },
+    {
+      "id": "liberal-conservadorismo",
+      "lado": "direita",
+      "referencias": ["republicanos-eua", "pl", "conservadores-uk"],
+      "carreiras": [
+        "empresario",
+        "advogado",
+        "juiz",
+        "governador",
+        "ruralista"
+      ],
+      "explicita": "Sou de direita: liberal na economia, conservador nos costumes."
+    },
+    {
+      "id": "conservadorismo-religioso",
+      "lado": "direita",
+      "referencias": ["republicanos-br", "pis", "akp"],
+      "carreiras": ["pastor", "comunicador", "deputado"],
+      "explicita": "Sou conservador e cristão, com orgulho."
+    },
+    {
+      "id": "nacional-populismo",
+      "lado": "direita",
+      "referencias": ["psl", "liga", "fidesz", "vox"],
+      "carreiras": ["militar", "policial", "comunicador"],
+      "explicita": "Sou de direita, patriota, e não tenho medo de dizer."
+    }
+  ],
+  "carreiras": [
+    {
+      "id": "sindicalista",
+      "nome": {
+        "m": "sindicalista",
+        "f": "sindicalista"
+      },
+      "segmentos": ["grupo_trabalhadores", "grupo_informais"],
+      "experiencia": [0, 2],
+      "carisma": [1, 3],
+      "franqueza": 1,
+      "frase": "Começou numa fábrica e chegou à liderança do sindicato da categoria."
+    },
+    {
+      "id": "professor",
+      "nome": {
+        "m": "professor",
+        "f": "professora"
+      },
+      "segmentos": ["grupo_jovens", "grupo_servidores"],
+      "experiencia": [0, 2],
+      "carisma": [0, 2],
+      "franqueza": 0,
+      "frase": "Deu aula na rede pública por mais de vinte anos."
+    },
+    {
+      "id": "artista",
+      "nome": {
+        "m": "artista",
+        "f": "artista"
+      },
+      "segmentos": ["grupo_jovens", "grupo_progressistas"],
+      "experiencia": [0, 1],
+      "carisma": [2, 3],
+      "franqueza": 0,
+      "frase": "Fez fama nos palcos e na televisão antes de entrar na política."
+    },
+    {
+      "id": "economista",
+      "nome": {
+        "m": "economista",
+        "f": "economista"
+      },
+      "segmentos": ["grupo_empresarios", "grupo_classe_media"],
+      "experiencia": [1, 3],
+      "carisma": [0, 1],
+      "franqueza": -1,
+      "frase": "Trabalhou no mercado financeiro e no banco central antes de ser chamado para o governo."
+    },
+    {
+      "id": "empresario",
+      "nome": {
+        "m": "empresário",
+        "f": "empresária"
+      },
+      "segmentos": ["grupo_empresarios", "grupo_pequenos_negocios"],
+      "experiencia": [0, 2],
+      "carisma": [1, 3],
+      "franqueza": 0,
+      "frase": "Construiu do zero uma rede de lojas com milhares de funcionários."
+    },
+    {
+      "id": "medico",
+      "nome": {
+        "m": "médico",
+        "f": "médica"
+      },
+      "segmentos": ["grupo_familias_com_filhos", "grupo_aposentados"],
+      "experiencia": [1, 2],
+      "carisma": [1, 2],
+      "franqueza": 0,
+      "frase": "Dirigiu hospitais públicos e ganhou projeção durante uma epidemia."
+    },
+    {
+      "id": "juiz",
+      "nome": {
+        "m": "juiz",
+        "f": "juíza"
+      },
+      "segmentos": ["grupo_classe_media"],
+      "experiencia": [1, 2],
+      "carisma": [0, 2],
+      "franqueza": -1,
+      "frase": "Ganhou fama julgando grandes processos de corrupção."
+    },
+    {
+      "id": "advogado",
+      "nome": {
+        "m": "advogado",
+        "f": "advogada"
+      },
+      "segmentos": ["grupo_classe_media"],
+      "experiencia": [1, 2],
+      "carisma": [0, 2],
+      "franqueza": 0,
+      "frase": "Advogou para entidades de classe e presidiu a ordem dos advogados do estado."
+    },
+    {
+      "id": "militar",
+      "nome": {
+        "m": "militar",
+        "f": "militar"
+      },
+      "segmentos": ["grupo_conservadores"],
+      "experiencia": [1, 2],
+      "carisma": [0, 2],
+      "franqueza": 0,
+      "frase": "Fez carreira nas Forças Armadas e chegou ao generalato."
+    },
+    {
+      "id": "policial",
+      "nome": {
+        "m": "policial",
+        "f": "policial"
+      },
+      "segmentos": ["grupo_conservadores", "grupo_periferias"],
+      "experiencia": [0, 2],
+      "carisma": [1, 2],
+      "franqueza": 1,
+      "frase": "Comandou a polícia do estado e virou rosto conhecido no combate ao crime."
+    },
+    {
+      "id": "pastor",
+      "nome": {
+        "m": "pastor",
+        "f": "pastora"
+      },
+      "segmentos": ["grupo_evangelicos"],
+      "experiencia": [0, 2],
+      "carisma": [2, 3],
+      "franqueza": 1,
+      "frase": "Lidera uma igreja com milhares de fiéis e um programa de rádio."
+    },
+    {
+      "id": "comunicador",
+      "nome": {
+        "m": "comunicador",
+        "f": "comunicadora"
+      },
+      "segmentos": ["grupo_periferias", "grupo_interior"],
+      "experiencia": [0, 1],
+      "carisma": [2, 3],
+      "franqueza": 1,
+      "frase": "Comandou por anos um programa popular de rádio e televisão."
+    },
+    {
+      "id": "ruralista",
+      "nome": {
+        "m": "produtor rural",
+        "f": "produtora rural"
+      },
+      "segmentos": ["grupo_agro", "grupo_interior"],
+      "experiencia": [0, 2],
+      "carisma": [0, 2],
+      "franqueza": 0,
+      "frase": "Comanda uma grande produção de grãos e presidiu a federação da agricultura do estado."
+    },
+    {
+      "id": "prefeito",
+      "nome": {
+        "m": "prefeito",
+        "f": "prefeita"
+      },
+      "segmentos": ["grupo_periferias"],
+      "experiencia": [2, 3],
+      "carisma": [1, 3],
+      "franqueza": 0,
+      "frase": "Governou a capital do estado por dois mandatos."
+    },
+    {
+      "id": "governador",
+      "nome": {
+        "m": "governador",
+        "f": "governadora"
+      },
+      "segmentos": ["grupo_interior"],
+      "experiencia": [3, 3],
+      "carisma": [1, 3],
+      "franqueza": 0,
+      "frase": "Governou o estado e saiu com aprovação alta."
+    },
+    {
+      "id": "deputado",
+      "nome": {
+        "m": "deputado federal",
+        "f": "deputada federal"
+      },
+      "segmentos": ["grupo_classe_media"],
+      "experiencia": [2, 3],
+      "carisma": [0, 2],
+      "franqueza": 0,
+      "frase": "Cumpre o quinto mandato seguido na Câmara."
+    },
+    {
+      "id": "cientista",
+      "nome": {
+        "m": "cientista",
+        "f": "cientista"
+      },
+      "segmentos": ["grupo_ambientalistas", "grupo_progressistas"],
+      "experiencia": [0, 1],
+      "carisma": [0, 2],
+      "franqueza": -1,
+      "frase": "Fez carreira em pesquisa sobre o clima e a floresta."
+    }
+  ],
+  "opinioes": [
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Salário mínimo tem de dobrar, e quem lucra que pague a conta."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "O salário mínimo precisa subir acima da inflação todo ano."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Quem trabalha precisa ver o dinheiro render no fim do mês."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "O salário tem de acompanhar o que o país consegue pagar."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Emprego se cria com menos peso sobre quem contrata."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Aumento do mínimo por canetada destrói empregos."
+    },
+    {
+      "tema": "salario_minimo",
+      "eixo": "economia",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "O salário mínimo nacional devia acabar; cada um negocia o seu."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Imposto pesado sobre grandes fortunas, heranças e lucros, já."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Os ricos pagam pouco; é preciso cobrar mais de quem ganha mais."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "O sistema de impostos é injusto com quem tem menos."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Precisamos de impostos mais simples."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "O cidadão trabalha meses do ano só para pagar o governo."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Vou cortar impostos, mesmo que isso exija cortar gastos."
+    },
+    {
+      "tema": "impostos",
+      "eixo": "economia",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Imposto é confisco; o Estado deve cobrar o mínimo possível."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Vou retomar o que foi vendido a preço de banana."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Empresa pública estratégica não se vende."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Algumas riquezas do país têm de ficar nas nossas mãos."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Cada empresa pública deve ser avaliada caso a caso."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "O Estado não precisa ser dono de tudo."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Vou privatizar o que não é estratégico."
+    },
+    {
+      "tema": "privatizacao",
+      "eixo": "economia",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Privatizar tudo: Estado não é lugar de fazer negócio."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Limite de gastos é uma arma contra os pobres e tem de cair."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Programa social não é gasto, é investimento, e deve crescer."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Ninguém pode ficar para trás."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Ajudar quem precisa, sem quebrar as contas."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "O dinheiro público precisa ser gasto com cuidado."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Benefício demais cria dependência; a porta de saída é o emprego."
+    },
+    {
+      "tema": "gasto_social",
+      "eixo": "economia",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Assistencialismo compra votos, e eu vou cortar sem dó."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "A reforma trabalhista tem de ser revogada inteira."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Direito trabalhista conquistado não se negocia."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "O trabalhador precisa de proteção."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Leis do trabalho para os novos tempos, sem abandonar ninguém."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Quem quer empreender encontra barreiras demais."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "As leis do trabalho engessam o emprego e precisam ser flexibilizadas."
+    },
+    {
+      "tema": "trabalho",
+      "eixo": "economia",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Carteira assinada é coisa do passado; vale o contrato livre entre as partes."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Arma na mão de civil é morte anunciada; vou proibir."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Menos armas, menos mortes: controle rígido."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Segurança se faz com inteligência, não com tiros."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "O porte de arma tem de ter regras claras."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "O cidadão precisa poder proteger a família."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "O cidadão de bem tem direito de se defender."
+    },
+    {
+      "tema": "armas",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Povo armado jamais será escravizado."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Aborto legal, seguro e gratuito, sem rodeios."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "A decisão sobre o aborto é da mulher, não do Estado."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Mulheres não podem morrer por falta de cuidado."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "É um tema que a sociedade precisa debater com calma."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Defendo a vida e a família."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Sou contra o aborto e não vou ampliar a lei."
+    },
+    {
+      "tema": "aborto",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Aborto é assassinato, em qualquer caso."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Legalizar as drogas e acabar com uma guerra perdida."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Uso de drogas é questão de saúde, não de polícia."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Prender usuário não resolve nada."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Droga se combate com prevenção e tratamento."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Nossas crianças precisam ficar longe das drogas."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Nada de liberar drogas: quem vende tem de ir para a cadeia."
+    },
+    {
+      "tema": "drogas",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Tolerância zero: traficante é inimigo e será tratado como tal."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "O Estado é laico: religião fora das leis e das escolas."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Toda forma de família merece os mesmos direitos."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Respeito às diferenças acima de tudo."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Fé e política devem conviver com respeito."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "A família é a base de tudo."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "A escola deve ensinar valores, não ideologia."
+    },
+    {
+      "tema": "religiao_familia",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Os valores cristãos devem guiar as leis do país."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "A polícia mata demais e precisa ser desmilitarizada."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Segurança pública começa por direitos e oportunidades."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Violência se combate com educação e emprego."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Polícia bem paga e bem treinada, dentro da lei."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Quem cumpre a lei não pode ter medo de sair de casa."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "Bandido tem de ficar preso; chega de saidinha."
+    },
+    {
+      "tema": "seguranca",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "A polícia tem de agir sem medo: mão pesada contra o crime."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": -8,
+      "intensidade": 3,
+      "texto": "Desmatamento zero já, nem que pare a fronteira agrícola."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": -5,
+      "intensidade": 2,
+      "texto": "Proteger a floresta é proteger o futuro."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": -3,
+      "intensidade": 1,
+      "texto": "Precisamos cuidar do planeta."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": 0,
+      "intensidade": 1,
+      "texto": "Produzir e preservar ao mesmo tempo."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": 3,
+      "intensidade": 1,
+      "texto": "Quem produz no campo precisa de menos burocracia."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": 5,
+      "intensidade": 2,
+      "texto": "As regras ambientais travam o desenvolvimento."
+    },
+    {
+      "tema": "meio_ambiente",
+      "eixo": "costumes",
+      "posicao": 8,
+      "intensidade": 3,
+      "texto": "Ambientalismo é desculpa para atrasar o país."
+    }
+  ]
+}

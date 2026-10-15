@@ -1,3 +1,4 @@
+import type { EstadoDaEleicao } from "./eleicao";
 import {
   advanceExecution,
   createExecution,
@@ -54,6 +55,8 @@ export type GameState = Readonly<{
   congress?: EstadoDoCongresso;
   /** Fila do Congresso, votações e pedidos (V1-12); ausente = fila vazia. */
   bills?: EstadoDaTramitacao;
+  /** Partido, presidente, pesquisas e eleições (V1-39); ausente sem eleição no país. */
+  election?: EstadoDaEleicao;
   execution: EngineExecution;
 }>;
 

@@ -19,6 +19,7 @@ import type {
 import { falha } from "./comum";
 import { aplicarMeta } from "./leis";
 import { votarNoCongresso } from "./tramitacao";
+import { bloqueioDaEleicao, passarEleicao } from "./eleicao";
 import {
   MAXIMO_TRIMESTRES_PREVIA,
   simularTrimestre,
@@ -306,6 +307,9 @@ export function encerrarTurno(
   partida: Partida,
 ): Resultado<Readonly<{ partida: Partida; relatorio: RelatorioTurno }>> {
   const { content, game } = partida;
+  // V1-39: partida encerrada ou eleição sem candidato
+  const bloqueio = bloqueioDaEleicao(game);
+  if (bloqueio) return { ok: false, erros: [bloqueio] };
   // SG106: o turno não passa com dilema na mesa
   const mesa = game.occurrences?.pending ?? [];
   if (mesa.length > 0) {
@@ -360,7 +364,9 @@ export function encerrarTurno(
       : comBussola;
   // V1-12: o Congresso vota a fila no fim do turno
   const votado = votarNoCongresso({ ...partida, game: noCongresso });
-  const next = votado.partida.game;
+  // V1-39: pesquisas e, no fim do mandato, a eleição
+  const comEleicao = passarEleicao(votado.partida);
+  const next = comEleicao.game;
   // O piloto automático só precisa andar à parte se o jogador mudou algo.
   let pilotoNext = next;
   if (piloto !== game) {
@@ -418,6 +424,7 @@ export function encerrarTurno(
         ocorrencias: rolado.jornal,
         pressao: rolado.pressao,
         congresso: votado.resultado,
+        ...(comEleicao.eleicao ? { eleicao: comEleicao.eleicao } : {}),
       },
     },
   };

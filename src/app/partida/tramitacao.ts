@@ -170,11 +170,13 @@ export function chancesDoProjeto(
   pacote: CongressoDoPacote,
   retrato: readonly RetratoDaBancada[],
   previsao: PrevisaoDoProjeto,
+  /** Disciplina do partido do jogador (V1-39: cai se a base estranha o candidato). */
+  disciplina?: number,
 ): Readonly<Record<string, number>> {
   const v = pacote.regras.voto;
   return Object.fromEntries(
     retrato.map((b) => {
-      if (b.id === JOGADOR) return [b.id, v.disciplinaDoJogador];
+      if (b.id === JOGADOR) return [b.id, disciplina ?? v.disciplinaDoJogador];
       let parte = 0;
       let efeito = 0;
       for (const [s, w] of Object.entries(b.eleitor)) {
@@ -502,7 +504,12 @@ export function votarNoCongresso(
   for (const inicial of ordem) {
     let p = inicial;
     let passos = etapasPorTurno(p.tipo, p.pressa);
-    const chances = chancesDoProjeto(pacote, retrato, p.previsao);
+    const chances = chancesDoProjeto(
+      pacote,
+      retrato,
+      p.previsao,
+      partida.game.election?.disciplina,
+    );
     const regra = regraDe(content, p.tipo);
     let fim: Saida["motivo"] | undefined;
     while (passos > 0 && p.etapas.length > 0) {
@@ -796,7 +803,12 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
       game.execution.values.popularidade_governo ?? 50,
     ),
     fila: estado.fila.map((p) => {
-      const chances = chancesDoProjeto(pacote, retrato, p.previsao);
+      const chances = chancesDoProjeto(
+        pacote,
+        retrato,
+        p.previsao,
+        partida.game.election?.disciplina,
+      );
       const regra = regraDe(content, p.tipo);
       return {
         id: p.id,
