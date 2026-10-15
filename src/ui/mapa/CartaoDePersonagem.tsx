@@ -1,8 +1,9 @@
 /**
- * Cartão de um personagem (V1-39): biografia e opiniões. O lado e a
- * ideologia nunca aparecem; o jogador deduz pelo que ele diz.
+ * Cartão de um personagem (V1-39): retrato, biografia e opiniões. O lado e
+ * a ideologia nunca aparecem; o jogador deduz pelo que ele diz.
  */
 import type { VisaoPersonagem } from "../../app/partida";
+import { Retrato } from "./Arte";
 
 const ESTRANHA = [
   "",
@@ -10,6 +11,8 @@ const ESTRANHA = [
   "A base estranha",
   "A base estranha muito",
 ];
+
+export const pontos = (n: number) => "●".repeat(n) + "○".repeat(3 - n);
 
 export function CartaoDePersonagem({
   personagem: p,
@@ -31,13 +34,16 @@ export function CartaoDePersonagem({
       aria-label={p.nome}
     >
       <header>
-        <strong>{p.nome}</strong>
-        <span className="ps-sub">
-          {p.idade} anos · {p.estado}
-          {p.carreira ? ` · ${p.carreira}` : ""}
-          {p.real ? " · pessoa real" : ""}
-        </span>
-        {selo ? <span className="ps-selo">{selo}</span> : null}
+        <Retrato retrato={p.retrato} className="ps-retrato" />
+        <div>
+          <strong>{p.nome}</strong>
+          <span className="ps-sub">
+            {p.idade} anos · {p.estado}
+            {p.carreira ? ` · ${p.carreira}` : ""}
+            {p.real ? " · pessoa real" : ""}
+          </span>
+          {selo ? <span className="ps-selo">{selo}</span> : null}
+        </div>
       </header>
       <p className="ps-bio">{p.biografia}</p>
       {p.opinioes.length ? (
@@ -48,9 +54,7 @@ export function CartaoDePersonagem({
         </ul>
       ) : null}
       <p className="ps-tracos">
-        Carisma {"●".repeat(p.carisma)}
-        {"○".repeat(3 - p.carisma)} · Experiência {"●".repeat(p.experiencia)}
-        {"○".repeat(3 - p.experiencia)}
+        Carisma {pontos(p.carisma)} · Experiência {pontos(p.experiencia)}
       </p>
       {estranha ? <p className="ps-estranha">{estranha}</p> : null}
       {onEscolher ? (

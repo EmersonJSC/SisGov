@@ -8,6 +8,7 @@ import type {
   VisaoPesquisa,
   VisaoResultado,
 } from "../../app/partida";
+import { Arte } from "./Arte";
 import { CartaoDePersonagem } from "./CartaoDePersonagem";
 
 const pct = (x: number) => `${x.toFixed(1).replace(".", ",")}%`;
@@ -76,6 +77,10 @@ export function Resultado({
   const piores = r.porSegmento.slice(-3).reverse();
   return (
     <article className={`el-resultado ${r.venceu ? "el-venceu" : "el-perdeu"}`}>
+      <Arte
+        caminho={r.venceu ? "cenas/vitoria.png" : "cenas/derrota.png"}
+        className="el-cena"
+      />
       <h3>
         {r.venceu
           ? `${r.candidato} venceu a eleição`
@@ -140,7 +145,7 @@ export function EleicaoNoTablet({
   const novos = e.opcoes.filter((o) => o.id !== e.presidente.id);
   return (
     <div className="el-app">
-      <section className="el-topo" aria-label="O partido">
+      <section className="el-topo el-faixa" aria-label="O partido">
         <h2>
           {e.partido.nome}
           {e.partido.sigla ? ` (${e.partido.sigla})` : ""}

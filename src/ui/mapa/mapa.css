@@ -5267,8 +5267,11 @@ button {
   place-content: center;
   justify-items: center;
   gap: 18px;
-  background: light-dark(#f7f4ec, #171511);
-  color: var(--tinta, light-dark(#1f2a3a, #becde2));
+  background:
+    linear-gradient(rgba(11, 19, 34, 0.55), rgba(11, 19, 34, 0.85)),
+    url("/arte/fundos/carregando.png") center / cover no-repeat,
+    #0b1322;
+  color: #f3ead6;
   font-family: var(--serifa, serif);
   z-index: 50;
 }
@@ -5874,7 +5877,13 @@ button {
 }
 
 .ps-cartao header {
+  display: flex;
+  gap: 10px;
+}
+
+.ps-cartao header > div {
   display: grid;
+  align-content: start;
   gap: 2px;
 }
 
@@ -5946,94 +5955,10 @@ button {
   color: light-dark(#fff, #151618);
 }
 
-.fd-tela {
-  display: grid;
-  gap: 18px;
-  max-width: 1100px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 28px 16px 40px;
-  box-sizing: border-box;
-  background: var(--papel);
-  color: var(--tinta);
-}
-
-.fd-topo h1 {
-  margin: 0 0 6px;
-  font-family: var(--serifa);
-  font-size: 2rem;
-}
-
-.fd-topo p {
-  max-width: 62ch;
-  margin: 0;
-  color: var(--tinta-suave);
-}
-
-.fd-nome {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.fd-nome label {
-  display: grid;
-  gap: 4px;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.fd-nome label:first-child {
-  flex: 1 1 280px;
-}
-
-.fd-nome input {
-  padding: 8px 10px;
-  border: 1px solid light-dark(#c9c2b0, #3b372f);
-  border-radius: 8px;
-  background: light-dark(#fff, #262626);
-  color: inherit;
-  font: inherit;
-  font-size: 1rem;
-}
-
-.fd-nomes h2,
 .el-app h2 {
   margin: 0 0 8px;
   font-family: var(--serifa);
   font-size: 1.15rem;
-}
-
-.fd-pe {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  background: var(--papel);
-}
-
-.fd-comecar {
-  padding: 10px 22px;
-  border: 0;
-  border-radius: 999px;
-  background: light-dark(#1f7a52, #71c699);
-  color: light-dark(#fff, #151618);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.fd-comecar:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
-.fd-falta {
-  color: var(--tinta-suave);
-  font-size: 0.85rem;
 }
 
 .el-app {
@@ -6219,4 +6144,468 @@ button {
 .fim-botoes button:first-child {
   background: light-dark(#1f7a52, #71c699);
   color: light-dark(#fff, #151618);
+}
+
+.fd-tela {
+  --fd-noite: #0b1322;
+  --fd-ouro: #d9b45a;
+  --fd-ouro-claro: #f1d898;
+  --fd-papel: #f3ead6;
+  --fd-suave: #b8b2a2;
+  position: relative;
+  min-height: 100vh;
+  color: var(--fd-papel);
+  font-family: var(--sem-serifa);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(11, 19, 34, 0.35) 0%,
+      rgba(11, 19, 34, 0.75) 45%,
+      var(--fd-noite) 100%
+    ),
+    url("/arte/fundos/fundacao.png") center top / cover no-repeat fixed,
+    radial-gradient(
+      ellipse at 75% 10%,
+      #3a3a52 0%,
+      #16203a 40%,
+      var(--fd-noite) 75%
+    );
+  background-color: var(--fd-noite);
+}
+
+.fd-conteudo {
+  display: grid;
+  gap: 26px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 16px 0;
+}
+
+.fd-topo {
+  display: grid;
+  gap: 6px;
+  animation: fd-surgir 0.6s ease-out both;
+}
+
+.fd-logo {
+  width: min(380px, 70vw);
+  height: auto;
+}
+
+.fd-marca {
+  font-family: var(--serifa);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  background: linear-gradient(
+    180deg,
+    var(--fd-ouro-claro),
+    var(--fd-ouro) 60%,
+    #9c7a2c
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 18px rgba(217, 180, 90, 0.25);
+}
+
+.fd-chamada {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  font-style: italic;
+  color: var(--fd-papel);
+}
+
+.fd-passo {
+  display: grid;
+  gap: 12px;
+  animation: fd-surgir 0.6s 0.15s ease-out both;
+}
+
+.fd-passo h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+}
+
+.fd-passo h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(217, 180, 90, 0.6), transparent);
+}
+
+.fd-numero {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--fd-ouro);
+  border-radius: 50%;
+  color: var(--fd-ouro);
+  font-size: 0.85rem;
+}
+
+.fd-dica {
+  margin: -4px 0 0;
+  color: var(--fd-suave);
+}
+
+.fd-partido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid rgba(217, 180, 90, 0.25);
+  border-radius: 14px;
+  background: rgba(11, 19, 34, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.fd-emblema {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border: 3px double var(--fd-ouro);
+  border-radius: 50%;
+  background: radial-gradient(circle, #1d2a46, var(--fd-noite));
+  box-shadow: 0 0 24px rgba(217, 180, 90, 0.25);
+}
+
+.fd-emblema-arte {
+  position: absolute;
+  inset: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+}
+
+.fd-emblema span {
+  position: relative;
+  font-family: var(--serifa);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--fd-ouro-claro);
+  letter-spacing: 0.04em;
+}
+
+.fd-campo {
+  display: grid;
+  gap: 6px;
+  color: var(--fd-ouro);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fd-campo-nome {
+  flex: 1 1 300px;
+}
+
+.fd-campo-sigla {
+  flex: 0 1 140px;
+}
+
+.fd-campo input {
+  padding: 10px 2px;
+  border: 0;
+  border-bottom: 2px solid rgba(217, 180, 90, 0.45);
+  background: transparent;
+  color: var(--fd-papel);
+  font-family: var(--serifa);
+  font-size: 1.4rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.fd-campo input:focus {
+  outline: none;
+  border-bottom-color: var(--fd-ouro-claro);
+}
+
+.fd-campo input::placeholder {
+  color: rgba(243, 234, 214, 0.3);
+}
+
+.fd-elenco {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.fd-rosto {
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(217, 180, 90, 0.2);
+  border-radius: 12px;
+  background: #121c31;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  animation: fd-surgir 0.5s ease-out both;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.fd-rosto:hover,
+.fd-rosto:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(217, 180, 90, 0.7);
+  outline: none;
+}
+
+.fd-rosto.fd-escolhido {
+  transform: translateY(-6px);
+  border-color: var(--fd-ouro-claro);
+  box-shadow:
+    0 0 0 1px var(--fd-ouro),
+    0 10px 30px rgba(217, 180, 90, 0.35);
+}
+
+.fd-retrato {
+  aspect-ratio: 3 / 4;
+}
+
+.fd-placa {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 2px;
+  padding: 28px 10px 10px;
+  background: linear-gradient(180deg, transparent, rgba(8, 12, 22, 0.92) 45%);
+}
+
+.fd-placa strong {
+  font-family: var(--serifa);
+  font-size: 0.98rem;
+  line-height: 1.15;
+}
+
+.fd-placa small {
+  color: var(--fd-suave);
+  font-size: 0.72rem;
+}
+
+.fd-escolhido .fd-placa strong {
+  color: var(--fd-ouro-claro);
+}
+
+.fd-ficha {
+  display: grid;
+  margin-bottom: 8px;
+  gap: 10px;
+  min-height: 150px;
+  padding: 18px 20px;
+  border: 1px solid rgba(217, 180, 90, 0.25);
+  border-left: 4px solid var(--fd-ouro);
+  border-radius: 12px;
+  background: rgba(11, 19, 34, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.fd-ficha header h3 {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.4rem;
+  color: var(--fd-ouro-claro);
+}
+
+.fd-ficha header p,
+.fd-vazia {
+  margin: 0;
+  color: var(--fd-suave);
+  font-size: 0.85rem;
+}
+
+.fd-vazia {
+  align-self: center;
+  font-style: italic;
+}
+
+.fd-bio {
+  margin: 0;
+  max-width: 80ch;
+  line-height: 1.5;
+}
+
+.fd-falas {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--serifa);
+  font-size: 1.02rem;
+  font-style: italic;
+}
+
+.fd-falas li {
+  padding-left: 12px;
+  border-left: 2px solid rgba(217, 180, 90, 0.4);
+}
+
+.fd-medidores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.fd-medidor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fd-suave);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fd-pips {
+  display: flex;
+  gap: 4px;
+}
+
+.fd-pips i {
+  width: 22px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(243, 234, 214, 0.15);
+}
+
+.fd-pips i.fd-cheio {
+  background: var(--fd-ouro);
+  box-shadow: 0 0 6px rgba(217, 180, 90, 0.6);
+}
+
+.fd-pe {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0 22px;
+  background: linear-gradient(180deg, transparent, var(--fd-noite) 40%);
+}
+
+.fd-comecar {
+  padding: 14px 34px;
+  border: 1px solid var(--fd-ouro-claro);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #e9c874, #b88d33);
+  color: #1a1408;
+  font-family: var(--serifa);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(217, 180, 90, 0.35);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.fd-comecar:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(217, 180, 90, 0.5);
+}
+
+.fd-comecar:disabled {
+  filter: grayscale(0.8);
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+}
+
+.fd-falta {
+  order: -1;
+  color: var(--fd-suave);
+  font-size: 0.85rem;
+}
+
+@keyframes fd-surgir {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fd-topo,
+  .fd-passo,
+  .fd-rosto {
+    animation: none;
+  }
+}
+
+/* retratos: silhueta por baixo, a arte por cima quando existe */
+.rt {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #2a3654, #111a2d 70%);
+}
+
+.rt-silhueta {
+  position: absolute;
+  inset: 12% 10% 0;
+  width: 80%;
+  height: 88%;
+  fill: rgba(217, 180, 90, 0.18);
+}
+
+.rt-imagem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ps-retrato {
+  width: 56px;
+  height: 72px;
+  flex: none;
+  border-radius: 8px;
+}
+
+.el-faixa {
+  position: relative;
+  padding: 16px 18px;
+  border-radius: 12px;
+  color: #f3ead6;
+  background:
+    linear-gradient(90deg, rgba(11, 19, 34, 0.92) 30%, rgba(11, 19, 34, 0.35)),
+    url("/arte/cenas/campanha.png") center / cover no-repeat,
+    linear-gradient(120deg, #16203a, #2c2a3e);
+}
+
+.el-faixa p,
+.el-faixa .el-legenda {
+  color: #d4ccb8;
+}
+
+.el-cena {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+  border-radius: 8px;
 }

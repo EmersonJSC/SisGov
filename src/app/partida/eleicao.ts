@@ -10,6 +10,7 @@ import {
   escolherCandidato as escolherNoJogo,
   estranhamento,
   faltaCandidato,
+  mundoDosPersonagens,
   passarTurnoNaEleicao,
   podeConcorrer,
   primeiraEscolha,
@@ -33,6 +34,11 @@ export type VisaoPersonagem = Readonly<{
   opinioes: readonly string[];
   carisma: number;
   experiencia: number;
+  /**
+   * Nome do retrato em `public/arte/retratos/` (sem extensão): carreira e
+   * gênero, ou "pessoa-real" (pessoas reais não ganham rosto de IA).
+   */
+  retrato: string;
   /**
    * Quanto a base do partido estranharia este nome (0 nenhum … 3 muito).
    * Ausente na primeira escolha, quando o partido ainda não tem base.
@@ -84,6 +90,14 @@ export type VisaoEleicao = Readonly<{
 
 const ANO_POR_TURNO = 0.25;
 
+function retratoDe(p: Personagem): string {
+  if (p.real) return "pessoa-real";
+  const carreira = mundoDosPersonagens.carreiras.find(
+    (c) => c.nome[p.genero] === p.carreira,
+  );
+  return carreira ? `${carreira.id}-${p.genero}` : "pessoa-real";
+}
+
 function verPersonagem(
   p: Personagem,
   ano: number,
@@ -101,6 +115,7 @@ function verPersonagem(
     opinioes: p.opinioes,
     carisma: p.carisma,
     experiencia: p.experiencia,
+    retrato: retratoDe(p),
     ...(extra?.estranhamento !== undefined
       ? { estranhamento: Math.min(3, Math.round(extra.estranhamento)) }
       : {}),
