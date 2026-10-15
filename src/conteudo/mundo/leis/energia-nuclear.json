@@ -4,38 +4,62 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Energia nuclear",
-  "descricao": "Define se o país proíbe, congela, mantém ou expande usinas nucleares.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "descricao": "o país pode ter usinas nucleares, e pode construir novas?",
+  "area": "Meio ambiente, energia, terra e cidades",
   "mesa": {
     "id": "clima-e-energia",
     "nome": "Clima e energia",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério do Meio Ambiente",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_energia_nuclear",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "proibida",
-        "rotulo": "Nuclear proibida",
-        "valor": 0
+        "rotulo": "Proibida",
+        "valor": 0,
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Associações de militares", "Confederação da indústria"],
+        "efeitos": "Folga do sistema ↓; tranca a fatia nuclear do investimento em geração"
       },
       {
-        "id": "sem-novas",
-        "rotulo": "Só as que existem",
-        "valor": 33
+        "id": "sem-novas-usinas",
+        "rotulo": "Sem novas usinas",
+        "valor": 33,
+        "custoTexto": "Custo de desmontar (aprox.)",
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Associações de militares"],
+        "efeitos": "Folga do sistema ↓ quando as velhas fecham"
       },
       {
-        "id": "manutencao",
-        "rotulo": "Manter e estender",
-        "valor": 67
+        "id": "manutencao-das-usinas-atuais",
+        "rotulo": "Manutenção das usinas atuais",
+        "valor": 67,
+        "custoTexto": "cerca de 0,01% do PIB",
+        "efeitos": "Folga do sistema ↑ pouco contra Sem novas usinas; emissões estáveis; custo baixo, cerca de 0,01% do PIB"
       },
       {
         "id": "expansao",
-        "rotulo": "Expansão nuclear",
-        "valor": 100
+        "rotulo": "Expansão",
+        "valor": 100,
+        "custoTexto": "Uma usina grande: cerca de  17 bi para terminar (caso Angra 3)",
+        "apoiam": [
+          "Associações de militares",
+          "Confederação da indústria",
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista",
+          "Atingidos por barragens e mineração"
+        ],
+        "efeitos": "Folga do sistema ↑ com atraso de mais de 10 anos; preço da energia ↑ (cerca de  144/MWh contra  80/MWh na hidrelétrica); emissões ↓; tensão internacional ↑; abre o dilema do programa nuclear"
       }
     ]
   },
@@ -51,10 +75,8 @@
     "energia-nuclear--grupo-empresarios",
     "energia-nuclear--grupo-progressistas",
     "energia-nuclear--grupo-servidores",
-    "energia-nuclear--grupo-ambientalistas"
+    "energia-nuclear--grupo-ambientalistas",
+    "energia-nuclear--tensao-internacional"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério do Meio Ambiente"
 }

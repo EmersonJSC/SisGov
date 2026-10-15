@@ -2,7 +2,7 @@
   "id": "regulacao-planos-de-saude--grupo-aposentados",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_regulacao_planos_de_saude",
+  "origem": "nivel_regulacao_dos_planos_de_saude",
   "alvo": "grupo_aposentados",
   "mecanismo": "afim",
   "parametros": {

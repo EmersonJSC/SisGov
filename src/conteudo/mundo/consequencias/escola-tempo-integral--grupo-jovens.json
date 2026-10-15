@@ -2,7 +2,7 @@
   "id": "escola-tempo-integral--grupo-jovens",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_escola_tempo_integral",
+  "origem": "nivel_escola_em_tempo_integral",
   "alvo": "grupo_jovens",
   "mecanismo": "afim",
   "parametros": {

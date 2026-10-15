@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "capacidade_estatal",
-  "alvo": "eficacia:acesso-ensino-superior",
+  "alvo": "eficacia:acesso-ao-ensino-superior",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

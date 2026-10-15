@@ -1,0 +1,60 @@
+{
+  "id": "intervencao-cambial",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Intervenção cambial",
+  "descricao": "Quantos dólares das reservas o banco central compra ou vende neste turno?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_intervencao_cambial",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "minimo-vender-us-40-bi",
+        "rotulo": "Mínimo: vender  40 bi",
+        "valor": 0,
+        "custoTexto": "Reservas ↓",
+        "apoiam": ["Comércio e serviços"],
+        "rejeitam": ["Confederação da indústria"],
+        "efeitos": "Câmbio ↓ no curto prazo; reservas ↓; se as reservas caírem muito, chance de crise cambial ↑"
+      },
+      {
+        "id": "referencia-nenhuma-ou-pontual",
+        "rotulo": "Referência: nenhuma ou pontual",
+        "valor": 50.0,
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Reservas estáveis; câmbio ↓ pouco contra comprar e ↑ pouco contra vender; chance de crise cambial baixa (estimado)"
+      },
+      {
+        "id": "maximo-comprar-us-40-bi",
+        "rotulo": "Máximo: comprar  40 bi",
+        "valor": 100,
+        "custoTexto": "Custo de carregar reservas (lacuna)",
+        "apoiam": ["Confederação da indústria", "Entidades do agronegócio"],
+        "efeitos": "Câmbio ↑; reservas ↑; inflação ↑ leve"
+      }
+    ]
+  },
+  "consequencias": [
+    "intervencao-cambial--cambio",
+    "intervencao-cambial--reservas-internacionais",
+    "intervencao-cambial--inflacao"
+  ],
+  "mae": {
+    "texto": "Regime cambial: com \"fixo\", a venda é automática para defender o preço; com \"flutuante\", só leilões pontuais (proposta minha)",
+    "leis": ["regime-cambial"]
+  },
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+}

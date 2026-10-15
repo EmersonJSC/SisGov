@@ -4,33 +4,47 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Lei anticorrupção",
-  "descricao": "Define quem paga pela corrupção (só a pessoa, também a empresa) e se existe uma agência com superpoderes para investigar.",
-  "area": "Instituições, Estado e sistema político",
+  "descricao": "Quem é punido pela corrupção, só as pessoas ou também as empresas, e quem investiga?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
-    "id": "servico-publico",
+    "id": "servico-publico-e-integridade",
     "nome": "Serviço público e integridade",
     "camada": "lei"
   },
-  "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_lei_anticorrupcao",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "so-pessoas",
-        "rotulo": "Sem lei anticorrupção",
-        "valor": 0
+        "rotulo": "Só pessoas",
+        "valor": 0,
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Classe média"],
+        "efeitos": "Corrupção ↑ (estimado)"
       },
       {
-        "id": "empresa-limpa",
-        "rotulo": "Empresa também paga",
-        "valor": 50
+        "id": "empresa-tambem-responde-com-acordo-de-leniencia",
+        "rotulo": "Empresa também responde, com acordo de leniência (hoje na referência, desde 2013)",
+        "valor": 50,
+        "custoAnualPercentualPib": 0.005,
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Corrupção ↓"
       },
       {
         "id": "agencia-forte",
-        "rotulo": "Superagência anticorrupção",
-        "valor": 100
+        "rotulo": "Agência forte (auditoria por sorteio, órgão autônomo)",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.02,
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Bancadas do Congresso", "Indústria"],
+        "efeitos": "Corrupção ↓ 8% por município auditado; Impunidade ↓ (20% mais ações na Justiça); Investimento ↓ no curto prazo (empresas paradas)"
       }
     ]
   },
@@ -48,8 +62,9 @@
     "lei-anticorrupcao--grupo-empresarios",
     "lei-anticorrupcao--grupo-pequenos-negocios"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Independência do Judiciário (sem \"Plena\", a \"Agência forte\" vira instrumento de perseguição e sobe a Polarização)",
+    "leis": ["independencia-do-judiciario"]
+  },
+  "ministerio": "Casa Civil"
 }

@@ -1,0 +1,56 @@
+{
+  "id": "financiamento-de-campanhas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Financiamento de campanhas",
+  "descricao": "Define de onde vem o dinheiro das campanhas: de empresas e ricos, de pequenos doadores ou dos cofres públicos.",
+  "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "lei"
+  },
+  "ministerio": "Casa Civil",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_financiamento_de_campanhas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre",
+        "rotulo": "Dinheiro livre",
+        "valor": 0
+      },
+      {
+        "id": "privado-limitado",
+        "rotulo": "Privado com limites",
+        "valor": 33
+      },
+      {
+        "id": "misto",
+        "rotulo": "Misto",
+        "valor": 67
+      },
+      {
+        "id": "publico-predominante",
+        "rotulo": "Predominantemente público",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "financiamento-de-campanhas--captura-politica",
+    "financiamento-de-campanhas--corrupcao",
+    "financiamento-de-campanhas--desigualdade",
+    "financiamento-de-campanhas--gasto-publico",
+    "financiamento-de-campanhas--grupo-classe-media",
+    "financiamento-de-campanhas--grupo-empresarios",
+    "financiamento-de-campanhas--grupo-progressistas",
+    "financiamento-de-campanhas--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

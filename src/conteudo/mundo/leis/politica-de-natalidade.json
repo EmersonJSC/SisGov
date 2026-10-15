@@ -4,48 +4,82 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Política de natalidade",
-  "descricao": "Define se o Estado tenta reduzir, deixar em paz ou aumentar o número de filhos que as famílias têm, e com que instrumentos.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "descricao": "O Estado tenta mudar o número de filhos que as famílias têm, e com que meios?",
+  "area": "Previdência, assistência, moradia e demografia",
   "mesa": {
-    "id": "familia-e-cuidados",
-    "nome": "Família e cuidados",
+    "id": "mesa-familia-e-cuidados",
+    "nome": "Mesa Família e cuidados",
     "camada": "lei"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_politica_de_natalidade",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "antinatalista-coercitiva",
-        "rotulo": "Controle de natalidade coercitivo",
-        "valor": 0
+        "id": "contra-filhos-por-coercao",
+        "rotulo": "Contra filhos, por coerção",
+        "valor": 0,
+        "custoTexto": "Baixo",
+        "rejeitam": [
+          "Igrejas evangélicas",
+          "Pastorais católicas",
+          "Progressistas"
+        ],
+        "efeitos": "Fecundidade ↓ forte; liberdades ↓"
       },
       {
-        "id": "antinatalista-incentivo",
-        "rotulo": "Planejamento familiar ativo",
-        "valor": 20
+        "id": "contra-filhos-por-incentivo",
+        "rotulo": "Contra filhos, por incentivo",
+        "valor": 20,
+        "custoTexto": "Baixo",
+        "rejeitam": ["Católicos", "Evangélicos"],
+        "efeitos": "Fecundidade ↓"
       },
       {
-        "id": "neutra",
-        "rotulo": "Sem política",
-        "valor": 40
+        "id": "neutra-com-planejamento-familiar-disponivel",
+        "rotulo": "Neutra, com planejamento familiar disponível",
+        "valor": 40,
+        "custoTexto": "Quase 0",
+        "apoiam": ["Progressistas"],
+        "efeitos": "Fecundidade segue a projeção do IBGE"
       },
       {
         "id": "incentivos-moderados",
-        "rotulo": "Incentivos moderados",
-        "valor": 60
+        "rotulo": "Incentivos moderados (bônus por filho, desconto no imposto de renda)",
+        "valor": 60,
+        "custoTexto": "0,3% a 1% do PIB (aprox.)",
+        "apoiam": ["Famílias com filhos", "Católicos"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Fecundidade ↑ 3% a 12% (Quebec +12% nas famílias elegíveis; Polônia +6%)"
       },
       {
-        "id": "pronatalismo-intenso",
-        "rotulo": "Pronatalismo intenso",
-        "valor": 80
+        "id": "natalidade-intensa",
+        "rotulo": "Natalidade intensa (bônus grande, mãe isenta de imposto, crédito perdoado por filho)",
+        "valor": 80,
+        "custoTexto": "Cerca de 5% do PIB (Hungria, aprox.)",
+        "apoiam": [
+          "Conservadores",
+          "Evangélicos",
+          "Famílias com filhos",
+          "Igrejas evangélicas"
+        ],
+        "rejeitam": ["Movimento feminista", "Mercado financeiro"],
+        "efeitos": "Fecundidade ↑ com teto de +0,1 a +0,3 filho por mulher e recuo depois (Hungria: 1,25 → 1,61 → 1,39); custo por nascimento a mais muito alto ( 389 mil na Polônia)"
       },
       {
-        "id": "pronatalismo-coercitivo",
-        "rotulo": "Pronatalismo coercitivo",
-        "valor": 100
+        "id": "a-favor-de-filhos-por-coercao",
+        "rotulo": "A favor de filhos, por coerção (restringe contracepção e aborto)",
+        "valor": 100,
+        "custoTexto": "Baixo",
+        "apoiam": ["Conservadores", "Igrejas evangélicas"],
+        "rejeitam": ["Movimento feminista", "Progressistas"],
+        "efeitos": "Fecundidade ↑ forte e passageira; mortalidade materna ↑ (aprox.)"
       }
     ]
   },
@@ -61,8 +95,9 @@
     "politica-de-natalidade--grupo-progressistas",
     "politica-de-natalidade--grupo-familias-com-filhos"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Aborto (Direitos): a opção coercitiva a favor de filhos exige aborto proibido ou só em risco de vida. A opção coercitiva contra filhos é barrada pela laicidade e pela independência do Judiciário (vira evento de crise).",
+    "leis": ["aborto", "independencia-do-judiciario"]
+  },
+  "ministerio": "Ministério dos Direitos Humanos"
 }

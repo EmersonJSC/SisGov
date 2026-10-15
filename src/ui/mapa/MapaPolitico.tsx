@@ -45,6 +45,7 @@ import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import {
   PRESIDENCIA,
   ehConstitucional,
+  aproximarBolhas,
   montarLayout,
   quebrarNome,
   blocoCentral,
@@ -65,7 +66,13 @@ import {
   type Relacao,
 } from "./relacoes";
 import { PRESIDENTE, Retrato, pessoaDoCargo } from "./Retrato";
-import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS } from "./tema";
+import {
+  FILTRO_VAZIO,
+  PainelDeFiltro,
+  leiPassaNoFiltro,
+  type FiltroDeLeis,
+} from "./filtro";
+import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS, corDaLei } from "./tema";
 
 export type MarcaPrevista = Readonly<{ efeito: Efeito; sobe: boolean }>;
 
@@ -480,9 +487,9 @@ const NoLei = memo(function NoLei({
       </g>
       {mostrarRotulo ? (
         <Rotulo
-          linhas={quebrarNome(lei.nome, 14, 2)}
-          y={raioVisivel + 19}
-          tamanho={pos.rotulo}
+          linhas={quebrarNome(lei.nome, 22, 3)}
+          y={raioVisivel + 26}
+          tamanho={Math.max(22, pos.rotulo * 1.7)}
           classe="rotulo-lei"
         />
       ) : null}
@@ -749,7 +756,7 @@ function EtiquetaVariacao({
 
 export function MapaPolitico({
   visao,
-  base,
+  base: baseOriginal,
   indice,
   fundo,
   aberta,
@@ -766,6 +773,11 @@ export function MapaPolitico({
   painelEsquerdo = 0,
   cobertura,
 }: Props) {
+  // Com as esferas fechadas, as bolhas dos índices chegam mais perto dos ministérios.
+  const base = useMemo(
+    () => aproximarBolhas(baseOriginal, aberta === null),
+    [baseOriginal, aberta],
+  );
   const caixa = useRef<HTMLDivElement>(null);
   const mundo = useRef<SVGGElement>(null);
   const camera = useRef<Camera>({ x: 0, y: 0, k: 0.4 });
@@ -787,6 +799,9 @@ export function MapaPolitico({
   const [sobre, setSobre] = useState<string | null>(null);
   const [esferaSobre, setEsferaSobre] = useState<string | null>(null);
   const [explorou, setExplorou] = useState(false);
+  // Filtro das leis (15/out): popularidade no país ou num segmento, e valor.
+  const [filtroAberto, setFiltroAberto] = useState(false);
+  const [filtro, setFiltro] = useState<FiltroDeLeis>(FILTRO_VAZIO);
 
   const ehLei = useCallback((id: string) => base.leis.has(id), [base]);
   // Leis que o jogador mudou: a caneta aparece também na esfera fechada.
@@ -1284,14 +1299,20 @@ export function MapaPolitico({
     const esfera = dono ? layout.esferas.get(dono) : undefined;
     return esfera ? { x: esfera.x, y: esfera.y, r: 40 } : null;
   };
+  const passaNoFiltro = (id: string) => {
+    const lei = leisPorId.get(id);
+    return !lei || leiPassaNoFiltro(lei, filtro, referencia);
+  };
   const estadoDe = (id: string): EstadoNo =>
-    !comFoco
-      ? "normal"
-      : id === foco
-        ? "foco"
-        : viz.nos.has(id)
-          ? "vizinho"
-          : "apagado";
+    !passaNoFiltro(id) && id !== foco
+      ? "apagado"
+      : !comFoco
+        ? "normal"
+        : id === foco
+          ? "foco"
+          : viz.nos.has(id)
+            ? "vizinho"
+            : "apagado";
 
   const ministerioDoFoco = foco ? (base.leis.get(foco)?.areas ?? []) : [];
   const esferaRelacionada = (nome: string) =>
@@ -1845,33 +1866,38 @@ export function MapaPolitico({
           <g className="camada-setas-foco">{setasDeFoco}</g>
 
           {/* Leis visíveis */}
-          {[...layout.leis.values()].map((pos) => {
-            const lei = leisPorId.get(pos.id);
-            if (!lei) return null;
-            const cor = corDaEsfera(lei.areas[0]);
-            const extras = [...lei.areas.slice(1).map(corDaEsfera)];
-            const estado = estadoDe(pos.id);
-            const mostrarRotulo =
-              pos.lugar !== "revelada" ||
-              pos.id === foco ||
-              pos.id === selecionado;
-            return (
-              <NoLei
-                key={pos.id}
-                lei={lei}
-                pos={pos}
-                cor={cor}
-                coresExtras={extras}
-                estado={estado}
-                selecionada={pos.id === selecionado}
-                mostrarRotulo={mostrarRotulo}
-                nivel={nivelRelativo(lei, referencia)}
-                onEntrar={entrar}
-                onSair={sair}
-                onClicar={clicarNo}
-              />
-            );
-          })}
+          {/* a lei sob o mouse (ou selecionada) vai por último: o nome grande fica por cima */}
+          {[...layout.leis.values()]
+            .sort(
+              (a, b) =>
+                Number(a.id === foco || a.id === selecionado) -
+                Number(b.id === foco || b.id === selecionado),
+            )
+            .map((pos) => {
+              const lei = leisPorId.get(pos.id);
+              if (!lei) return null;
+              const cor = corDaLei(lei.mesa?.id ?? lei.id);
+              const extras = [...lei.areas.slice(1).map(corDaEsfera)];
+              const estado = estadoDe(pos.id);
+              // sem etiquetas fixas: o nome aparece grande com o mouse em cima
+              const mostrarRotulo = pos.id === foco || pos.id === selecionado;
+              return (
+                <NoLei
+                  key={pos.id}
+                  lei={lei}
+                  pos={pos}
+                  cor={cor}
+                  coresExtras={extras}
+                  estado={estado}
+                  selecionada={pos.id === selecionado}
+                  mostrarRotulo={mostrarRotulo}
+                  nivel={nivelRelativo(lei, referencia)}
+                  onEntrar={entrar}
+                  onSair={sair}
+                  onClicar={clicarNo}
+                />
+              );
+            })}
 
           {/* Indicadores, situações e estoques */}
           {visao.bolhas.map((bolha) => {
@@ -1917,6 +1943,21 @@ export function MapaPolitico({
         </g>
       </svg>
 
+      <PainelDeFiltro
+        aberto={filtroAberto}
+        onAlternar={() => setFiltroAberto((a) => !a)}
+        filtro={filtro}
+        onMudar={setFiltro}
+        segmentos={visao.bolhas
+          .filter((b) => b.tipo === "grupo")
+          .map((b) => ({ id: b.id, nome: b.nome }))}
+        total={visao.leis.filter((l) => l.emVigor).length}
+        passam={
+          visao.leis.filter(
+            (l) => l.emVigor && leiPassaNoFiltro(l, filtro, referencia),
+          ).length
+        }
+      />
       <div
         className="controles-mapa"
         onPointerDown={(e) => e.stopPropagation()}

@@ -2,7 +2,7 @@
   "id": "programa-medicos-no-interior--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_programa_medicos_no_interior",
+  "origem": "nivel_programa_de_medicos_no_interior",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {

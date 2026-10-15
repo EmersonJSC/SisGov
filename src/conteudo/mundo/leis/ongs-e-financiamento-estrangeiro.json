@@ -1,16 +1,21 @@
 {
   "id": "ongs-e-financiamento-estrangeiro",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "ONGs e financiamento estrangeiro",
-  "descricao": "Que regra vale para associações e ONGs que recebem dinheiro de fora: nenhuma, registro e transparência ou o rótulo de agente estrangeiro.",
-  "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
-  "nivel": "lei",
+  "descricao": "Organizações sociais podem receber dinheiro de fora do país, e com que controle?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
-    "id": "imprensa-e-informacao",
+    "id": "imprensa-internet-e-informacao",
     "nome": "Imprensa, internet e informação",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_ongs_e_financiamento_estrangeiro",
@@ -18,105 +23,34 @@
     "opcoes": [
       {
         "id": "livre",
-        "rotulo": "Livre, sem registro especial",
-        "valor": 0
+        "rotulo": "Livre",
+        "valor": 0,
+        "apoiam": ["ONGs ambientalistas", "Povos indígenas"],
+        "rejeitam": ["Entidades do agronegócio"]
       },
       {
-        "id": "registro",
-        "rotulo": "Registro e transparência das doações",
-        "valor": 50
+        "id": "registro-obrigatorio",
+        "rotulo": "Registro obrigatório",
+        "valor": 50,
+        "efeitos": "Pequeno"
       },
       {
-        "id": "agente-estrangeiro",
-        "rotulo": "Rótulo de agente estrangeiro e limites",
-        "valor": 100
+        "id": "rotulo-de-agente-estrangeiro",
+        "rotulo": "Rótulo de agente estrangeiro",
+        "valor": 100,
+        "apoiam": ["Entidades do agronegócio"],
+        "rejeitam": ["ONGs ambientalistas", "Povos indígenas", "As 5 mídias"],
+        "efeitos": "Capacidade de fiscalização ↓; Liberdades civis ↓; Desmatamento ↑ (aprox.); Reputação internacional ↓"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -2],
-          [100, -10]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "reputacao_internacional",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, -6]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "corrupcao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -1],
-          [100, 0]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -1],
-          [100, -5]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "margem_manobra_governo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 1],
-          [100, 4]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "ongs-e-financiamento-estrangeiro--liberdade-civil",
+    "ongs-e-financiamento-estrangeiro--reputacao-internacional",
+    "ongs-e-financiamento-estrangeiro--corrupcao",
+    "ongs-e-financiamento-estrangeiro--grupo-progressistas",
+    "ongs-e-financiamento-estrangeiro--margem-manobra-governo",
+    "ongs-e-financiamento-estrangeiro--desmatamento"
   ],
-  "historia": {
-    "opcoes": {
-      "livre": ["Brasil", "Argentina"],
-      "registro": ["Estados Unidos (FARA, 1938)", "Austrália (2018)"],
-      "agente-estrangeiro": [
-        "Rússia (Lei 121-FZ/2012)",
-        "Hungria (2017)",
-        "Nicarágua (2020)"
-      ]
-    },
-    "brasil": "Não há lei específica: as associações seguem o Código Civil e prestam contas só quando recebem dinheiro público."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei federal russa 121-FZ/2012 (agentes estrangeiros)",
-      "url": "https://en.wikipedia.org/wiki/Russian_foreign_agent_law",
-      "usadoPara": "agente estrangeiro"
-    },
-    {
-      "titulo": "Foreign Agents Registration Act (Estados Unidos, 1938)",
-      "url": "https://en.wikipedia.org/wiki/Foreign_Agents_Registration_Act",
-      "usadoPara": "registro e transparência"
-    }
-  ]
+  "ministerio": "Casa Civil"
 }

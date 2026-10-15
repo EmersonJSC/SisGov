@@ -1,0 +1,20 @@
+{
+  "id": "ensino-religioso--grupo-evangelicos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_religioso",
+  "alvo": "grupo_evangelicos",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -4],
+      [50, 0],
+      [100, 3]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

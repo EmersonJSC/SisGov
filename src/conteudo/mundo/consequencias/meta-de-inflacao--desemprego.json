@@ -2,7 +2,7 @@
   "id": "meta-de-inflacao--desemprego",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_meta_de_inflacao",
+  "origem": "nivel_mandato_do_banco_central",
   "alvo": "desemprego",
   "mecanismo": "limiar",
   "parametros": {

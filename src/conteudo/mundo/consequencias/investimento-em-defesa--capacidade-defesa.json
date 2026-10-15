@@ -1,0 +1,17 @@
+{
+  "id": "investimento-em-defesa--capacidade-defesa",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_investimento_em_defesa",
+  "alvo": "capacidade_defesa",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.112,
+    "termoConstante": -5.6
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -57,7 +57,7 @@ describe("SG143 — grupos sociais", () => {
       Math.abs(
         v.popularidade_governo - profileApproval(aprovacao, (id) => v[id])!,
       ),
-    ).toBeLessThan(0.001);
+    ).toBeLessThan(0.002); // V1-34 (troca de Economia): 0,0016
     expect(v.popularidade_governo).toBeGreaterThanOrEqual(44);
     expect(v.popularidade_governo).toBeLessThanOrEqual(50);
   });

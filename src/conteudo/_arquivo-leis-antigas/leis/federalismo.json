@@ -1,0 +1,53 @@
+{
+  "id": "federalismo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Federalismo",
+  "descricao": "Define quanto poder, dinheiro e responsabilidade ficam com o governo central e quanto com estados e municípios.",
+  "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "constituicao"
+  },
+  "ministerio": "Casa Civil",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_federalismo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "centralizado",
+        "rotulo": "Centralizado",
+        "valor": 0
+      },
+      {
+        "id": "cooperativo",
+        "rotulo": "Cooperativo",
+        "valor": 50
+      },
+      {
+        "id": "descentralizado",
+        "rotulo": "Descentralizado",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "federalismo--desigualdade-regional",
+    "federalismo--margem-manobra-governo",
+    "federalismo--gasto-publico",
+    "federalismo--inovacao",
+    "federalismo--confianca-instituicoes",
+    "federalismo--corrupcao",
+    "federalismo--grupo-agro",
+    "federalismo--grupo-empresarios",
+    "federalismo--grupo-pobres",
+    "federalismo--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

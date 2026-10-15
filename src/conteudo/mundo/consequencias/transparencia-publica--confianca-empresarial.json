@@ -1,0 +1,17 @@
+{
+  "id": "transparencia-publica--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transparencia_publica",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.009,
+    "termoConstante": -0.603
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

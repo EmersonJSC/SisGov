@@ -1,0 +1,17 @@
+{
+  "id": "alternativas-penais-e-audiencia-de-custodia--sensacao-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_alternativas_penais_e_audiencia_de_custodia",
+  "alvo": "sensacao_seguranca",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 3.5
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

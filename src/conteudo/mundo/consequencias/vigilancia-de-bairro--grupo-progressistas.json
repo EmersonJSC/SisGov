@@ -1,0 +1,20 @@
+{
+  "id": "vigilancia-de-bairro--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vigilancia_de_bairro",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 0],
+      [100, -5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

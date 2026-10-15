@@ -2,7 +2,7 @@
   "id": "saneamento-basico--investimento",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_saneamento_basico",
+  "origem": "nivel_agua_e_esgoto",
   "alvo": "investimento",
   "mecanismo": "limiar",
   "parametros": {

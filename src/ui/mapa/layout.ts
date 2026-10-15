@@ -86,6 +86,27 @@ export type BaseMapa = Readonly<{
   limites: Limites;
 }>;
 
+/**
+ * Com todas as esferas fechadas, as bolhas dos índices chegam mais perto dos
+ * ministérios; quando uma esfera infla e mostra as leis, voltam para fora.
+ * (Os grupos sociais, medalhões maiores, ficam onde estão.)
+ */
+export const APROXIMACAO_DAS_BOLHAS = 140;
+export function aproximarBolhas(base: BaseMapa, perto: boolean): BaseMapa {
+  if (!perto) return base;
+  const bolhas = new Map<string, PosicaoBolha>();
+  for (const [id, b] of base.bolhas) {
+    const d = Math.hypot(b.x, b.y);
+    if (b.r > MEDIDAS.raioBolha || d <= APROXIMACAO_DAS_BOLHAS) {
+      bolhas.set(id, b);
+      continue;
+    }
+    const f = (d - APROXIMACAO_DAS_BOLHAS) / d;
+    bolhas.set(id, { ...b, x: b.x * f, y: b.y * f });
+  }
+  return { ...base, bolhas };
+}
+
 export type LayoutMapa = Readonly<{
   presidencia: Readonly<{ x: number; y: number; r: number; aberta: boolean }>;
   esferas: ReadonlyMap<string, Esfera>;
@@ -712,9 +733,9 @@ function vagasDaEsfera(
   const rl = MEDIDAS.raioLei;
   const c = bloco.caixa;
   const livreDoBloco = (p: Ponto) =>
-    p.x + 52 < c.minX - 6 ||
-    p.x - 52 > c.maxX + 6 ||
-    p.y + 62 < c.minY - 6 ||
+    p.x + 30 < c.minX - 6 ||
+    p.x - 30 > c.maxX + 6 ||
+    p.y + 30 < c.minY - 6 ||
     p.y - rl > c.maxY + 6;
   const centroLente = (() => {
     const meio = (rp + Math.hypot(esfera.x, esfera.y) - esfera.r) / 2;
@@ -738,6 +759,11 @@ function vagasDaEsfera(
     [94, 80],
     [88, 80],
     [82, 80],
+    // sem etiquetas fixas (os nomes aparecem no mouse), as grades podem fechar
+    [74, 66],
+    [66, 58],
+    [60, 54],
+    [54, 50],
   ]) {
     if (melhor && melhor.nota >= 0) break;
     for (const fx of [0, 0.25, 0.5, 0.75]) {
@@ -757,16 +783,16 @@ function vagasDaEsfera(
             if (!livreDoBloco(p)) continue;
             // o nó e o rótulo inteiros ficam de um lado da borda da Presidência
             const cantos = [
-              [p.x - 46, p.y - rl],
-              [p.x + 46, p.y - rl],
-              [p.x - 46, p.y + 58],
-              [p.x + 46, p.y + 58],
+              [p.x - 30, p.y - rl],
+              [p.x + 30, p.y - rl],
+              [p.x - 30, p.y + 30],
+              [p.x + 30, p.y + 30],
             ].map(([x, y]) => Math.hypot(x, y));
             const c = BLOCO_PRESIDENCIA_ABERTA;
             const livreDoCentro =
-              p.x + 46 < c.minX ||
-              p.x - 46 > c.maxX ||
-              p.y + 58 < c.minY ||
+              p.x + 30 < c.minX ||
+              p.x - 30 > c.maxX ||
+              p.y + 30 < c.minY ||
               p.y - rl > c.maxY;
             if (Math.max(...cantos) <= rp - 6 && livreDoCentro) lente.push(p);
             else if (Math.min(...cantos) >= rp + 30) interna.push(p);
@@ -783,6 +809,39 @@ function vagasDaEsfera(
     }
   }
   const { lente, interna, passo } = melhor!;
+  // Se ainda faltar lugar, as leis que sobram vão numa espiral em volta do
+  // centro (podem se tocar; o layout fino fica para depois): nenhuma some.
+  const completar = (
+    pontos: Ponto[],
+    total: number,
+    centro: Ponto,
+    lugar: "lente" | "interna",
+  ) => {
+    const extra: Ponto[] = [...pontos];
+    for (let k = 0; extra.length < total && k < 4000; k++) {
+      const raio = 40 + 22 * Math.sqrt(k + 1);
+      const a = k * 2.399963;
+      const p = {
+        x: centro.x + Math.cos(a) * raio,
+        y: centro.y + Math.sin(a) * raio,
+      };
+      // nunca em cima do título central da esfera
+      const d = Math.hypot(p.x, p.y);
+      const lado = lugar === "lente" ? d <= rp - 6 : d >= rp + 30;
+      if (livreDoBloco(p) && lado) extra.push(p);
+    }
+    return extra;
+  };
+  lente.splice(
+    0,
+    lente.length,
+    ...completar(lente, naLente, centroLente, "lente"),
+  );
+  interna.splice(
+    0,
+    interna.length,
+    ...completar(interna, dentro, esfera, "interna"),
+  );
   const perto = (alvo: Ponto) => (a: Ponto, b: Ponto) =>
     Math.hypot(a.x - alvo.x, a.y - alvo.y) -
     Math.hypot(b.x - alvo.x, b.y - alvo.y);

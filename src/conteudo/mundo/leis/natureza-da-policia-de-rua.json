@@ -1,0 +1,51 @@
+{
+  "id": "natureza-da-policia-de-rua",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Natureza da polícia de rua",
+  "descricao": "A polícia que patrulha a rua é militar, com justiça militar, ou civil, com justiça comum?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_natureza_da_policia_de_rua",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "militar-forca-auxiliar-do-exercito",
+        "rotulo": "Militar, força auxiliar do Exército",
+        "valor": 0,
+        "apoiam": ["Militares", "Associações de policiais", "Conservadores"],
+        "rejeitam": ["Progressistas", "Movimento negro"]
+      },
+      {
+        "id": "civil-desmilitarizada",
+        "rotulo": "Civil, desmilitarizada",
+        "valor": 100,
+        "custoTexto": "custo de transição (aprox.)",
+        "apoiam": ["Progressistas", "Movimento negro"],
+        "rejeitam": ["Associações de policiais", "Militares"],
+        "efeitos": "Letalidade policial ↓ esperada, sem estudo causal (lacuna); liberdades civis ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "natureza-da-policia-de-rua--letalidade-policial",
+    "natureza-da-policia-de-rua--liberdade-civil"
+  ],
+  "mae": {
+    "texto": "Coordenação das polícias (\"polícia nacional\" trava esta lei).",
+    "leis": ["coordenacao-das-policias"]
+  },
+  "ministerio": "Ministério da Fazenda"
+}

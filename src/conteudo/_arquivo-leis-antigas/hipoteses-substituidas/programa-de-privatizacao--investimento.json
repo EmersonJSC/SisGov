@@ -1,0 +1,20 @@
+{
+  "id": "programa-de-privatizacao--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_de_privatizacao",
+  "alvo": "investimento",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -1],
+      [50, 0],
+      [100, 2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "calibracao-economia--infraestrutura",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_propriedade_dos_meios_de_producao",
+  "alvo": "infraestrutura",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0,
+    "termoConstante": 0.0804
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

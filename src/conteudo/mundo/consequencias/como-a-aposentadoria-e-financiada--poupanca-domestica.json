@@ -1,0 +1,17 @@
+{
+  "id": "como-a-aposentadoria-e-financiada--poupanca-domestica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_como_a_aposentadoria_e_financiada",
+  "alvo": "poupanca_domestica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 2.1
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

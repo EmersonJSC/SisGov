@@ -2,7 +2,7 @@
   "id": "incentivo-cultura--grupo-conservadores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_incentivo_cultura",
+  "origem": "nivel_incentivo_a_cultura",
   "alvo": "grupo_conservadores",
   "mecanismo": "afim",
   "parametros": {

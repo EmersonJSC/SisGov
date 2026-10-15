@@ -1,0 +1,17 @@
+{
+  "id": "concessoes-de-radio-e-tv--captura-politica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_concessoes_de_radio_e_tv",
+  "alvo": "captura_politica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": -0.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

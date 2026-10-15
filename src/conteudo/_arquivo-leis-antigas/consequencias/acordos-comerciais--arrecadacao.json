@@ -1,0 +1,22 @@
+{
+  "id": "acordos-comerciais--arrecadacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_acordos_comerciais",
+  "alvo": "arrecadacao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [33, -0.05],
+      [67, -0.1],
+      [100, -0.2]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

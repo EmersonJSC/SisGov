@@ -1,0 +1,20 @@
+{
+  "id": "planejamento-da-economia--desemprego",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_planejamento_da_economia",
+  "alvo": "desemprego",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 0],
+      [100, -3]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

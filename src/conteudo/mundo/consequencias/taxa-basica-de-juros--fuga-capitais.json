@@ -1,0 +1,17 @@
+{
+  "id": "taxa-basica-de-juros--fuga-capitais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_taxa_basica_de_juros",
+  "alvo": "fuga_capitais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.06568,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

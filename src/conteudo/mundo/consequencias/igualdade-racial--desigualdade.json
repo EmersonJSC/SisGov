@@ -1,0 +1,20 @@
+{
+  "id": "igualdade-racial--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_igualdade_racial",
+  "alvo": "desigualdade",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [50, 0],
+      [100, -1]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

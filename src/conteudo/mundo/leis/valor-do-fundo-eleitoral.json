@@ -1,0 +1,72 @@
+{
+  "id": "valor-do-fundo-eleitoral",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Valor do fundo eleitoral",
+  "descricao": "Quanto dinheiro público vai para as campanhas?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_valor_do_fundo_eleitoral",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0",
+        "rotulo": "0 (sem fundo)",
+        "valor": 33.33,
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Bancadas do Congresso"],
+        "efeitos": "Captura política ↑ se houver doação privada"
+      },
+      {
+        "id": "0-04",
+        "rotulo": "0,04% (o país de referência, 2024:  4,96 bilhões)",
+        "valor": 66.67,
+        "custoAnualPercentualPib": 0.04,
+        "apoiam": ["Bancadas do Congresso"],
+        "rejeitam": ["Classe média"],
+        "efeitos": "Popularidade ↑ com as bancadas, ↓ com a classe média"
+      },
+      {
+        "id": "0-06",
+        "rotulo": "0,06% (máximo)",
+        "valor": 100,
+        "custoAnualPercentualPib": 0.06,
+        "apoiam": ["Bancadas do Congresso"],
+        "rejeitam": ["Classe média", "Empresários"],
+        "efeitos": "O mesmo, mais forte; Fragmentação ↑ se repartido por votos"
+      }
+    ]
+  },
+  "consequencias": [
+    "valor-do-fundo-eleitoral--captura-politica",
+    "valor-do-fundo-eleitoral--popularidade-governo",
+    "grupos--valor-do-fundo-eleitoral--grupo-classe-media",
+    "grupos--valor-do-fundo-eleitoral--grupo-empresarios"
+  ],
+  "mae": {
+    "texto": "Financiamento de campanhas (fica em 0 com \"Livre\"; proposta minha)",
+    "leis": ["financiamento-de-campanhas"]
+  },
+  "ministerio": "Ministério da Fazenda"
+}

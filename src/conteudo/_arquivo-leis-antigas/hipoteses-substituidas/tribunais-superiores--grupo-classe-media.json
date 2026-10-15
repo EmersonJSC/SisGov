@@ -1,0 +1,20 @@
+{
+  "id": "tribunais-superiores--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_superiores",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, -2],
+      [100, -4]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

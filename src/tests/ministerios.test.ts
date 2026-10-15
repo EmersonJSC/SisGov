@@ -48,7 +48,7 @@ describe("extinguir ministério", () => {
     const r = extinguirMinisterio(brasil, "mulheres");
     if (!r.ok) throw new Error(r.erro);
     expect(r.value.movidas).toEqual([
-      { lei: "protecao-violencia-domestica", para: "justica" },
+      { lei: "protecao-contra-violencia-domestica", para: "justica" },
       { lei: "igualdade-salarial-de-genero", para: "trabalho" },
     ]);
     expect(r.value.extintas).toEqual([]);
@@ -60,10 +60,10 @@ describe("extinguir ministério", () => {
   it("Desenvolvimento Agrário: a reforma agrária deixa de existir", () => {
     const r = extinguirMinisterio(brasil, "desenvolvimento-agrario");
     if (!r.ok) throw new Error(r.erro);
-    expect(r.value.extintas).toEqual(["reforma-agraria"]);
+    expect(r.value.extintas).toEqual(["redistribuicao-de-terras"]);
     expect(
       r.value.estrutura.ministerios.some((m) =>
-        m.leis.includes("reforma-agraria"),
+        m.leis.includes("redistribuicao-de-terras"),
       ),
     ).toBe(false);
   });
@@ -82,7 +82,7 @@ describe("extinguir ministério", () => {
     const r = extinguirMinisterio(sem.value.estrutura, "gestao", "casa-civil");
     if (!r.ok) throw new Error(r.erro);
     expect(r.value.movidas).toEqual([
-      { lei: "estabilidade-servidores-publicos", para: "casa-civil" },
+      { lei: "estabilidade-dos-servidores-publicos", para: "casa-civil" },
     ]);
   });
 

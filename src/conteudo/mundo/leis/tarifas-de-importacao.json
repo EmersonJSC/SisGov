@@ -4,24 +4,59 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Tarifas de importação",
-  "descricao": "Define a tarifa média cobrada sobre os produtos que entram no país.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "Qual a tarifa média sobre o que o país importa?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "comercio-exterior",
+    "id": "comercio-exterior-e-capital-estrangeiro",
     "nome": "Comércio exterior e capital estrangeiro",
     "camada": "alavanca"
   },
-  "ministerio": "Ministério da Economia",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "aliquota_tarifas_de_importacao",
-    "unidade": "percentual_0_100"
-  },
-  "tributo": {
-    "base": "pib",
-    "limites": {
-      "minimo": 0,
-      "maximo": 40
+    "unidade": "percentual_0_100",
+    "opcoes": [
+      {
+        "id": "minimo-0",
+        "rotulo": "Mínimo: 0%",
+        "valor": 0,
+        "custoTexto": "Perde a receita de importação (aprox. 0,5% do PIB)",
+        "apoiam": ["Comércio e serviços", "Entidades do agronegócio"],
+        "rejeitam": ["Confederação da indústria"],
+        "efeitos": "Importações ↑; inflação ↓; produtividade ↑; peso da indústria protegida ↓"
+      },
+      {
+        "id": "referencia-13-35",
+        "rotulo": "Referência: 13,35% (média simples; 7,86% ponderada)",
+        "valor": 13.35,
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Comércio e serviços"],
+        "efeitos": "Importações ↑ pouco contra o Máximo e ↓ contra o Mínimo; inflação ↑ leve contra 0%; peso da indústria protegida mantido; produtividade ↓ pouco (estimado)"
+      },
+      {
+        "id": "maximo-40",
+        "rotulo": "Máximo: 40%",
+        "valor": 40.0,
+        "custoTexto": "Receita de importação ↑ no início",
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": [
+          "Comércio e serviços",
+          "Entidades do agronegócio",
+          "Classe média"
+        ],
+        "efeitos": "Importações ↓; inflação ↑; peso da indústria ↑ no curto prazo; produtividade ↓; chance de guerra comercial ↑"
+      }
+    ],
+    "faixa": {
+      "minimo": 0.0,
+      "maximo": 40.0,
+      "unidade": "% % de tarifa média",
+      "valorReferencia": 13.35
     }
   },
   "consequencias": [
@@ -39,8 +74,20 @@
     "tarifas-de-importacao--grupo-trabalhadores",
     "tarifas-de-importacao--arrecadacao"
   ],
+  "tributo": {
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 40
+    }
+  },
+  "mae": {
+    "texto": "Acordos comerciais: com \"união aduaneira\", só a tarifa comum do bloco",
+    "leis": ["acordos-comerciais"]
+  },
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
-  }
+  },
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

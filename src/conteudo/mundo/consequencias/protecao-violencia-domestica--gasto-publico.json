@@ -2,7 +2,7 @@
   "id": "protecao-violencia-domestica--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_protecao_violencia_domestica",
+  "origem": "nivel_protecao_contra_violencia_domestica",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {

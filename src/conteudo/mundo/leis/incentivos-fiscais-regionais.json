@@ -4,38 +4,56 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Incentivos fiscais regionais",
-  "descricao": "Define se o país dá isenções de impostos para atrair empresas a certas regiões e qual o formato: zona de exportação, fundo para regiões pobres ou zona franca ampla.",
-  "area": "Tributação",
+  "descricao": "O país dá benefício fiscal para atrair empresas a regiões mais pobres, e de que jeito?",
+  "area": "Impostos e contas públicas",
   "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
-    "camada": "lei"
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "constituicao"
   },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_incentivos_fiscais_regionais",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Sem incentivo regional",
-        "valor": 0
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Interior"],
+        "efeitos": "Desigualdade regional ↑"
       },
       {
-        "id": "zonas-exportacao",
+        "id": "zonas-de-exportacao",
         "rotulo": "Zonas de exportação",
-        "valor": 33
+        "valor": 33,
+        "custoTexto": "0,1% do PIB (aprox.)",
+        "apoiam": ["Indústria"],
+        "efeitos": "Exportações ↑"
       },
       {
         "id": "fundos-regionais",
-        "rotulo": "Incentivo a regiões pobres",
-        "valor": 67
+        "rotulo": "Fundos regionais (gasto direto, sem isenção)",
+        "valor": 67,
+        "custoTexto": "0,3 a 0,6% do PIB (aprox.)",
+        "apoiam": ["Interior", "Pobres"],
+        "rejeitam": ["Indústria local beneficiada hoje"],
+        "efeitos": "Desigualdade regional ↓; Complexidade ↓"
       },
       {
         "id": "zona-franca-ampla",
         "rotulo": "Zona franca ampla",
-        "valor": 100
+        "valor": 100,
+        "custoTexto": "0,3 a 0,5% do PIB (aprox.)",
+        "apoiam": ["Interior", "Indústria local"],
+        "rejeitam": ["Indústria do Sul e Sudeste"],
+        "efeitos": "Complexidade ↑; Receita ↓; Desmatamento ↓ (aprox.)"
       }
     ]
   },
@@ -52,10 +70,9 @@
     "incentivos-fiscais-regionais--grupo-pequenos-negocios",
     "incentivos-fiscais-regionais--grupo-servidores",
     "incentivos-fiscais-regionais--grupo-trabalhadores",
-    "incentivos-fiscais-regionais--grupo-interior"
+    "incentivos-fiscais-regionais--grupo-interior",
+    "incentivos-fiscais-regionais--desigualdade-regional",
+    "incentivos-fiscais-regionais--desmatamento"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério da Fazenda"
 }

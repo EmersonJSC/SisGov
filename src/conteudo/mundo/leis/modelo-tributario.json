@@ -2,17 +2,21 @@
   "id": "modelo-tributario",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Modelo tributário",
-  "descricao": "Define de onde o Estado tira seu dinheiro: quase nada de impostos, peso no consumo, alíquota única para todos, sistema dual nórdico ou cobrança progressiva sobre a renda.",
-  "area": "Tributação",
+  "descricao": "Sobre quais bases o país cobra imposto (consumo, renda, capital) e quanto pesa a carga total?",
+  "area": "Impostos e contas públicas",
   "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério da Fazenda",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_modelo_tributario",
     "unidade": "nivel_escopo",
@@ -20,27 +24,47 @@
       {
         "id": "quase-sem-impostos",
         "rotulo": "Quase sem impostos",
-        "valor": 0
+        "valor": 0,
+        "custoTexto": "carga total abaixo de 15% do PIB",
+        "apoiam": ["Ricos", "Empresários"],
+        "rejeitam": ["Servidores", "Pobres", "Aposentados"],
+        "efeitos": "Receita ↓↓; trava saúde universal e seguro-desemprego generoso pelo custo; Margem de manobra ↓"
       },
       {
-        "id": "consumo",
-        "rotulo": "Peso no consumo",
-        "valor": 25
+        "id": "base-no-consumo",
+        "rotulo": "Base no consumo (IVA e encargos)",
+        "valor": 25,
+        "custoTexto": "carga de 15 a 25% do PIB",
+        "apoiam": ["Empresários", "Entidades do agronegócio"],
+        "rejeitam": ["Pobres", "Centrais sindicais"],
+        "efeitos": "Progressividade ↓; Receita estável (consumo não tem pico de Laffer)"
       },
       {
         "id": "proporcional",
-        "rotulo": "Alíquota única",
-        "valor": 50
+        "rotulo": "Proporcional (alíquota única na renda, mais IVA)",
+        "valor": 50,
+        "custoTexto": "carga de 20 a 30% do PIB",
+        "apoiam": ["Pequenos negócios", "Classe média"],
+        "rejeitam": ["Centrais sindicais", "Pobres"],
+        "efeitos": "Complexidade tributária ↓; Progressividade ↓; trava o IR do topo igual ao da base"
       },
       {
         "id": "dual",
-        "rotulo": "Dual nórdico",
-        "valor": 75
+        "rotulo": "Dual (trabalho com faixas, capital com alíquota única)",
+        "valor": 75,
+        "custoTexto": "carga de 30 a 45% do PIB",
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Centrais sindicais", "Mercado financeiro"],
+        "efeitos": "Progressividade ↑ pouco; Fuga de capitais estável"
       },
       {
         "id": "progressivo",
-        "rotulo": "Progressivo na renda",
-        "valor": 100
+        "rotulo": "Progressivo (renda global com faixas, capital somado)",
+        "valor": 100,
+        "custoTexto": "carga de 35 a 45% do PIB",
+        "apoiam": ["Pobres", "Trabalhadores", "Centrais sindicais"],
+        "rejeitam": ["Ricos", "Empresários", "Mercado financeiro"],
+        "efeitos": "Progressividade ↑; Fuga de capitais ↑ sem cooperação internacional; libera dividendos na tabela progressiva"
       }
     ]
   },
@@ -55,10 +79,8 @@
     "modelo-tributario--grupo-empresarios",
     "modelo-tributario--grupo-pobres",
     "modelo-tributario--grupo-progressistas",
-    "modelo-tributario--grupo-trabalhadores"
+    "modelo-tributario--grupo-trabalhadores",
+    "modelo-tributario--margem-manobra-governo"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério da Fazenda"
 }

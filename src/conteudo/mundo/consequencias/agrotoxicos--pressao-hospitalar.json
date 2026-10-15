@@ -2,7 +2,7 @@
   "id": "agrotoxicos--pressao-hospitalar",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "pressao_hospitalar",
   "mecanismo": "afim",
   "parametros": {

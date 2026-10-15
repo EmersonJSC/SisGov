@@ -1,0 +1,20 @@
+{
+  "id": "partidos--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_partidos",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -12],
+      [50, -6],
+      [100, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

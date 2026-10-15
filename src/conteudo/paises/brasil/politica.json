@@ -102,15 +102,57 @@
           "imposto-transacoes-financeiras",
           "tributacao-dividendos",
           "modelo-tributario",
-          "destino-do-resultado-fiscal",
-          "fundo-soberano",
-          "autonomia-banco-central",
-          "meta-de-inflacao",
+          "quem-controla-o-banco-central",
+          "mandato-do-banco-central",
           "regime-cambial",
           "controle-de-capitais",
-          "regulacao-bancaria",
+          "regulacao-dos-bancos",
           "apostas-e-jogos-de-azar",
-          "dinheiro-para-igrejas"
+          "imunidade-e-dinheiro-para-igrejas",
+          "regime-contra-faccoes",
+          "cooperacao-internacional",
+          "policiamento-orientado",
+          "meta-de-resultado-primario",
+          "industria-de-defesa",
+          "protecao-de-fronteiras",
+          "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+          "alinhamento-externo",
+          "delacao-premiada-e-acordos",
+          "verba-de-controle",
+          "politica-de-sancoes",
+          "investimento-em-defesa",
+          "alternativas-penais-e-audiencia-de-custodia",
+          "coordenacao-das-policias",
+          "programa-nuclear-lei",
+          "devolucao-de-imposto-aos-pobres",
+          "fundo-de-equalizacao",
+          "papel-das-forcas-armadas",
+          "vinculacoes-orcamentarias",
+          "ciberseguranca",
+          "protecao-social-dos-militares",
+          "orcamento-do-judiciario",
+          "integracao-regional",
+          "rede-diplomatica",
+          "fiscalizacao-do-trabalho",
+          "clausula-de-desempenho",
+          "gestao-dos-presidios",
+          "intermediacao-e-qualificacao",
+          "tribunais-e-tratados-internacionais",
+          "revisao-de-gastos-tributarios",
+          "exportacao-de-armas",
+          "controle-civil-das-forcas-armadas",
+          "verba-de-publicidade-oficial-e-comunicacao-publica",
+          "custo-de-processar-na-justica-do-trabalho",
+          "conselho-fiscal-independente",
+          "imposto-sobre-a-propriedade",
+          "regra-de-repasse",
+          "natureza-da-policia-de-rua",
+          "valor-do-fundo-eleitoral",
+          "missoes-de-paz",
+          "destino-do-resultado-fiscal",
+          "fundo-soberano",
+          "alianca-militar",
+          "regra-de-reajuste-dos-beneficios"
         ]
       },
       {
@@ -135,12 +177,20 @@
           "investimento-estrangeiro",
           "banco-de-desenvolvimento",
           "controle-de-precos",
-          "empresas-estatais-e-privatizacao",
+          "papel-do-estado-empresario",
           "propriedade-dos-meios-de-producao",
           "programa-de-privatizacao",
           "nacionalizacao",
           "cooperativas-e-autogestao",
-          "planejamento-da-economia"
+          "planejamento-da-economia",
+          "politica-de-precos-das-estatais",
+          "indexacao-de-contratos",
+          "intervencao-cambial",
+          "valor-da-meta-de-inflacao",
+          "volume-de-incentivo-a-industria",
+          "taxa-basica-de-juros",
+          "conteudo-local",
+          "defesa-comercial"
         ],
         "extincao": {
           "destino": "fazenda"
@@ -152,8 +202,8 @@
         "cargo": "Empreendedorismo",
         "area": "empresas",
         "leis": [
-          "regime-simplificado-pequenas-empresas",
-          "liberdade-economica"
+          "regime-simplificado-para-pequenas-empresas",
+          "licenca-para-abrir-negocio"
         ],
         "extincao": {
           "destino": "mdic"
@@ -175,21 +225,21 @@
         "cargo": "Trabalho",
         "area": "trabalho",
         "leis": [
-          "quem-decide-o-salario-minimo",
-          "formula-do-salario-minimo",
-          "salario-minimo",
           "jornada-de-trabalho",
-          "legislacao-trabalhista",
           "fundo-de-garantia",
           "licenca-parental",
           "negociacao-coletiva-e-sindicatos",
           "reducao-de-jornada-subsidiada",
-          "seguro-desemprego",
           "terceirizacao",
           "trabalho-infantil-e-aprendizagem",
           "trabalho-por-aplicativo",
           "direito-de-greve",
-          "contribuicao-sindical"
+          "formula-do-salario-minimo",
+          "quem-decide-o-salario-minimo",
+          "salario-minimo",
+          "seguro-desemprego",
+          "contribuicao-sindical",
+          "legislacao-trabalhista"
         ],
         "extincao": {
           "destino": "fazenda"
@@ -218,15 +268,15 @@
         "area": "previdencia",
         "leis": [
           "transferencia-de-renda",
-          "beneficio-idosos-e-deficientes",
-          "cuidados-de-longa-duracao",
-          "seguranca-alimentar",
-          "programas-sociais-por-missao"
+          "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
+          "quem-cuida-do-idoso-dependente",
+          "garantia-de-comida",
+          "organizacao-dos-programas-sociais"
         ],
         "extincao": {
           "destino": "previdencia",
           "leis": {
-            "seguranca-alimentar": null
+            "garantia-de-comida": null
           }
         }
       },
@@ -236,16 +286,25 @@
         "cargo": "Saúde",
         "area": "saude",
         "leis": [
-          "sistema-de-saude",
+          "modelo-do-sistema-de-saude",
           "piso-saude",
           "farmacia-popular",
-          "genericos-e-patentes-medicamentos",
-          "regulacao-planos-de-saude",
-          "restricao-tabaco-e-alcool",
+          "genericos-e-patentes-de-medicamentos",
+          "restricao-a-tabaco-e-alcool",
           "saude-mental",
           "vacinacao-obrigatoria",
           "vigilancia-epidemiologica",
-          "programa-medicos-no-interior"
+          "campanha-de-vacinacao-lei",
+          "divisao-da-verba-atencao-basica-x-hospitais",
+          "forma-de-gestao-hospitalar",
+          "regulacao-de-vagas",
+          "lista-de-remedios-e-incorporacao",
+          "verba-da-saude-acima-do-piso",
+          "vagas-de-residencia-medica",
+          "mutirao-de-cirurgias",
+          "remedios-em-farmacias-credenciadas",
+          "programa-de-medicos-no-interior",
+          "regulacao-dos-planos-de-saude"
         ]
       },
       {
@@ -266,16 +325,31 @@
         "leis": [
           "ensino-obrigatorio",
           "piso-educacao",
-          "acesso-ensino-superior",
-          "avaliacao-escolas",
+          "acesso-ao-ensino-superior",
+          "avaliacao-das-escolas",
           "educacao-domiciliar",
-          "ensino-tecnico-profissional",
-          "escola-tempo-integral",
+          "ensino-tecnico-e-profissional",
+          "escola-em-tempo-integral",
           "piso-salarial-professores",
           "vouchers-escolares",
-          "gestao-da-escola-publica",
           "conteudo-moral-e-sexual",
-          "ensino-religioso"
+          "ensino-religioso",
+          "financiamento-com-resultado",
+          "alfabetizacao-na-idade-certa",
+          "verba-para-juventude-negra-e-saude-da-populacao-negra",
+          "credito-estudantil",
+          "incentivo-fiscal-a-pesquisa-nas-empresas",
+          "vagas-publicas-no-ensino-superior",
+          "acolhida-e-interiorizacao-de-imigrantes",
+          "verba-de-planejamento-familiar-e-de-aborto-legal",
+          "bloqueio-de-pagamentos-a-casas-sem-licenca",
+          "piso-de-gasto-em-educacao",
+          "bolsas-de-pos-graduacao",
+          "tributo-sobre-apostas",
+          "bolsa-de-permanencia-no-ensino-medio",
+          "publicidade-de-apostas",
+          "protecao-da-vida-desde-a-concepcao",
+          "gestao-da-escola-publica"
         ]
       },
       {
@@ -293,7 +367,7 @@
         "nome": "Ministério da Cultura",
         "cargo": "Cultura",
         "area": "educacao",
-        "leis": ["incentivo-cultura"],
+        "leis": ["incentivo-a-cultura"],
         "extincao": {
           "destino": "educacao"
         }
@@ -303,7 +377,7 @@
         "nome": "Ministério das Comunicações",
         "cargo": "Comunicações",
         "area": "educacao",
-        "leis": ["regulacao-redes-sociais", "concessoes-de-radio-e-tv"],
+        "leis": ["regulacao-das-redes-sociais", "concessoes-de-radio-e-tv"],
         "extincao": {
           "destino": "ciencia"
         }
@@ -314,11 +388,25 @@
         "cargo": "Cidades",
         "area": "infraestrutura",
         "leis": [
-          "saneamento-basico",
-          "transporte-publico",
+          "agua-e-esgoto",
           "programa-habitacao-popular",
-          "direito-a-moradia",
-          "habitacao-publica"
+          "direito-a-moradia-na-constituicao",
+          "habitacao-publica",
+          "licenciamento-de-obras-e-empresas",
+          "fontes-de-energia-favorecidas",
+          "licenca-para-cuidar-do-bebe",
+          "protecao-da-vegetacao-nativa-nas-propriedades-rurais",
+          "transferencia-de-renda-as-familias-pobres",
+          "como-o-estado-entrega-casa",
+          "fiscalizacao-ambiental",
+          "aposentadoria-do-trabalhador-rural",
+          "vagas-de-creche",
+          "credito-rural-e-assistencia-tecnica",
+          "investimento-em-geracao-por-fonte",
+          "idade-minima-para-se-aposentar",
+          "verba-do-programa-habitacional",
+          "como-a-aposentadoria-e-financiada",
+          "transporte-publico"
         ],
         "extincao": {
           "destino": "integracao"
@@ -353,7 +441,7 @@
           "matriz-energetica",
           "energia-nuclear",
           "regime-do-petroleo-e-mineracao",
-          "carvao"
+          "usinas-a-carvao"
         ]
       },
       {
@@ -374,7 +462,7 @@
         "leis": [
           "codigo-florestal",
           "licenciamento-ambiental",
-          "precificacao-carbono"
+          "preco-do-carbono"
         ],
         "extincao": {
           "destino": "agricultura"
@@ -385,18 +473,18 @@
         "nome": "Ministério da Agricultura e Pecuária",
         "cargo": "Agricultura",
         "area": "ambiente",
-        "leis": ["agrotoxicos"]
+        "leis": ["registro-de-agrotoxicos"]
       },
       {
         "id": "desenvolvimento-agrario",
         "nome": "Ministério do Desenvolvimento Agrário e Agricultura Familiar",
         "cargo": "Desenvolvimento Agrário",
         "area": "ambiente",
-        "leis": ["reforma-agraria"],
+        "leis": ["redistribuicao-de-terras"],
         "extincao": {
           "destino": "agricultura",
           "leis": {
-            "reforma-agraria": null
+            "redistribuicao-de-terras": null
           }
         }
       },
@@ -426,28 +514,28 @@
         "cargo": "Justiça",
         "area": "seguranca",
         "leis": [
-          "ciclo-policial",
           "policia-militar",
-          "maioridade-penal",
-          "lei-de-drogas",
           "cannabis-legal",
-          "armas-de-fogo",
           "excludente-de-ilicitude",
-          "penas-e-progressao",
           "delacao-premiada",
-          "pena-de-morte",
           "cameras-corporais",
           "verba-policia-federal",
           "interceptacao-de-comunicacoes",
           "cameras-e-reconhecimento-facial",
-          "poderes-de-investigacao-policial",
+          "poderes-de-investigacao",
           "fundo-seguranca-publica",
           "vagas-em-presidios",
-          "politica-de-imigracao",
-          "refugiados-e-asilo",
+          "refugio-e-asilo",
           "protecao-de-dados",
           "vigilancia-de-bairro",
-          "saida-do-pais"
+          "saida-do-pais",
+          "armas-de-fogo",
+          "ciclo-policial",
+          "lei-de-drogas",
+          "maioridade-penal",
+          "pena-de-morte",
+          "politica-de-imigracao",
+          "penas-e-progressao"
         ]
       },
       {
@@ -480,14 +568,14 @@
         "cargo": "Direitos Humanos",
         "area": "direitos",
         "leis": [
-          "aborto",
           "casamento-e-uniao-civil",
           "eutanasia",
           "laicidade-do-estado",
           "politica-de-natalidade",
           "crimes-da-ditadura",
           "identidade-de-genero",
-          "discriminacao-por-orientacao-sexual"
+          "discriminacao-e-crimes-de-odio",
+          "aborto"
         ],
         "extincao": {
           "destino": "justica"
@@ -499,13 +587,13 @@
         "cargo": "Mulheres",
         "area": "direitos",
         "leis": [
-          "protecao-violencia-domestica",
+          "protecao-contra-violencia-domestica",
           "igualdade-salarial-de-genero"
         ],
         "extincao": {
           "destino": "direitos-humanos",
           "leis": {
-            "protecao-violencia-domestica": "justica",
+            "protecao-contra-violencia-domestica": "justica",
             "igualdade-salarial-de-genero": "trabalho"
           }
         }
@@ -530,17 +618,17 @@
           "garantias-penais",
           "sistema-de-governo",
           "federalismo",
-          "reeleicao",
           "voto-obrigatorio",
           "financiamento-de-campanhas",
           "foro-privilegiado",
-          "independencia-judiciario",
-          "agencia-de-inteligencia",
+          "independencia-do-judiciario",
           "partidos",
           "participacao-direta",
           "governadores",
-          "tribunais-superiores",
-          "ongs-e-financiamento-estrangeiro"
+          "ongs-e-financiamento-estrangeiro",
+          "reeleicao",
+          "agencia-de-inteligencia",
+          "tribunais-superiores"
         ]
       },
       {
@@ -568,7 +656,7 @@
         "nome": "Secretaria de Comunicação Social",
         "cargo": "Comunicação Social",
         "area": "governo",
-        "leis": ["liberdade-imprensa"],
+        "leis": ["liberdade-de-imprensa"],
         "extincao": {
           "destino": "casa-civil"
         }
@@ -595,7 +683,7 @@
         "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
         "cargo": "Gestão",
         "area": "governo",
-        "leis": ["estabilidade-servidores-publicos"],
+        "leis": ["estabilidade-dos-servidores-publicos"],
         "extincao": {
           "destino": "planejamento"
         }

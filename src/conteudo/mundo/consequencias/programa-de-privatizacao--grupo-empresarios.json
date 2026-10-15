@@ -1,0 +1,20 @@
+{
+  "id": "programa-de-privatizacao--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_de_privatizacao",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -2],
+      [50, 0],
+      [100, 3]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

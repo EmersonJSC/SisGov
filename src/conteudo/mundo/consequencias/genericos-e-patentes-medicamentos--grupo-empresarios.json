@@ -2,7 +2,7 @@
   "id": "genericos-e-patentes-medicamentos--grupo-empresarios",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_genericos_e_patentes_medicamentos",
+  "origem": "nivel_genericos_e_patentes_de_medicamentos",
   "alvo": "grupo_empresarios",
   "mecanismo": "afim",
   "parametros": {

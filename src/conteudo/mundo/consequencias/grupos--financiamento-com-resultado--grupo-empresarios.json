@@ -1,0 +1,17 @@
+{
+  "id": "grupos--financiamento-com-resultado--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_financiamento_com_resultado",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

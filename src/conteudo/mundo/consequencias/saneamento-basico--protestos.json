@@ -2,7 +2,7 @@
   "id": "saneamento-basico--protestos",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_saneamento_basico",
+  "origem": "nivel_agua_e_esgoto",
   "alvo": "protestos",
   "mecanismo": "limiar",
   "parametros": {

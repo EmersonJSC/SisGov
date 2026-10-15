@@ -1,0 +1,20 @@
+{
+  "id": "nacionalizacao--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_nacionalizacao",
+  "alvo": "investimento",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, -3],
+      [100, -10]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

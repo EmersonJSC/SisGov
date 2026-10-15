@@ -1,0 +1,17 @@
+{
+  "id": "licenciamento-de-obras-e-empresas--conflitos-fundiarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_licenciamento_de_obras_e_empresas",
+  "alvo": "conflitos_fundiarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.063,
+    "termoConstante": 2.09979
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

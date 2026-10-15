@@ -1,0 +1,55 @@
+{
+  "id": "piso-de-gasto-em-educacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso de gasto em educação",
+  "descricao": "O governo é obrigado a gastar uma parte mínima da receita com educação?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_piso_de_gasto_em_educacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-vinculacao",
+        "rotulo": "Sem vinculação",
+        "valor": 0,
+        "custoTexto": "livre",
+        "apoiam": ["Mercado financeiro", "Empresários"],
+        "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
+        "efeitos": "Margem de manobra do governo ↑; gasto em educação pode cair"
+      },
+      {
+        "id": "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios",
+        "rotulo": "Vinculação de 18% da União e 25% de estados e municípios",
+        "valor": 50.0,
+        "custoTexto": "~5% do PIB no total, educação",
+        "apoiam": ["Sindicatos de professores", "Servidores"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Aprendizagem ↑ pequeno sem gestão; Margem de manobra ↓; Resultado fiscal ↓"
+      },
+      {
+        "id": "meta-de-10-do-pib",
+        "rotulo": "Meta de 10% do PIB",
+        "valor": 100,
+        "custoTexto": "+4 a +5% do PIB vs hoje, educação",
+        "apoiam": ["Movimento estudantil", "Sindicatos de professores"],
+        "rejeitam": ["Mercado financeiro", "Empresários"],
+        "efeitos": "Resultado fiscal ↓ forte; Aprendizagem ↑ pequeno sem gestão"
+      }
+    ]
+  },
+  "consequencias": ["piso-de-gasto-em-educacao--margem-manobra-governo"],
+  "ministerio": "Ministério da Educação"
+}

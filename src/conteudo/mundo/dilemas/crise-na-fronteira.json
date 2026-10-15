@@ -36,7 +36,7 @@
       ],
       "requer": {
         "tipo": "comparacao",
-        "variavel": "nivel_refugiados_e_asilo",
+        "variavel": "nivel_refugio_e_asilo",
         "operador": "maior_ou_igual",
         "valor": 50.0
       },
@@ -68,7 +68,7 @@
       ],
       "leis": [
         {
-          "lei": "refugiados-e-asilo",
+          "lei": "refugio-e-asilo",
           "nivel": 25.0
         }
       ]

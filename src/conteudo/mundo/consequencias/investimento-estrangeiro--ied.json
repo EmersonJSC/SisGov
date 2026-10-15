@@ -6,11 +6,11 @@
   "alvo": "ied",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.12,
-    "termoConstante": -0.0
+    "coeficiente": 0.172,
+    "termoConstante": 0
   },
   "unidade": "percentual_pib",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

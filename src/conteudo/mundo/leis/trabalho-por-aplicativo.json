@@ -4,38 +4,64 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Trabalho por aplicativo",
-  "descricao": "Define o status de motoristas e entregadores de plataformas digitais: autônomos sem regra, categoria própria, presunção de vínculo ou empregados.",
-  "area": "Trabalho e emprego",
+  "descricao": "Que contrato tem quem trabalha por plataforma digital?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
     "nome": "Contrato de trabalho",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Trabalho",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "lei-complementar",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_trabalho_por_aplicativo",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "sem-regulacao",
-        "rotulo": "Sem regra própria",
-        "valor": 0
+        "rotulo": "Sem regulação",
+        "valor": 0,
+        "apoiam": ["Plataformas digitais", "Classe média"],
+        "rejeitam": [
+          "Entregadores e motoristas de aplicativo",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Informalidade ↑ (hoje 71% dos plataformizados são informais); vagas por aplicativo ↑; paralisação de entregadores mais provável"
       },
       {
-        "id": "categoria-propria",
-        "rotulo": "Autônomo com garantias",
-        "valor": 33
+        "id": "categoria-propria-piso-por-hora-e-contribuicao-para-a-previd",
+        "rotulo": "Categoria própria: piso por hora e contribuição para a previdência",
+        "valor": 33,
+        "custoTexto": "receita previdenciária ↑ (tamanho: lacuna)",
+        "apoiam": [
+          "Entregadores e motoristas de aplicativo",
+          "Trabalhadores com carteira"
+        ],
+        "rejeitam": [
+          "Plataformas digitais",
+          "motoristas contrários à contribuição"
+        ],
+        "efeitos": "Informalidade ↓; cobertura previdenciária ↑ (hoje 36%); renda por hora ↑; preço ao consumidor ↑ pouco (aprox.)"
       },
       {
-        "id": "presuncao-de-vinculo",
-        "rotulo": "Presunção de vínculo",
-        "valor": 67
+        "id": "presuncao-de-vinculo-de-emprego",
+        "rotulo": "Presunção de vínculo de emprego",
+        "valor": 67,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Plataformas digitais", "Informais"],
+        "efeitos": "Informalidade ↓; vagas por aplicativo ↓ (aprox.); preço ↑ (aprox.); ameaça das plataformas de sair do país mais provável; Litígio ↑"
       },
       {
         "id": "emprego-obrigatorio",
-        "rotulo": "Vínculo obrigatório",
-        "valor": 100
+        "rotulo": "Emprego obrigatório",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
+        "efeitos": "Vagas por aplicativo ↓↓ (aprox.); Informalidade ↓ entre quem fica; ameaça das plataformas de sair muito provável"
       }
     ]
   },
@@ -54,10 +80,12 @@
     "trabalho-por-aplicativo--grupo-pobres",
     "trabalho-por-aplicativo--grupo-progressistas",
     "trabalho-por-aplicativo--grupo-trabalhadores",
-    "trabalho-por-aplicativo--grupo-informais"
+    "trabalho-por-aplicativo--grupo-informais",
+    "trabalho-por-aplicativo--cobertura-previdenciaria"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Legislação trabalhista (sem trava no estudo).",
+    "leis": ["legislacao-trabalhista"]
+  },
+  "ministerio": "Ministério do Trabalho"
 }

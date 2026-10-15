@@ -87,9 +87,9 @@ export function intensidadeDaBolha(bolha: VisaoBolha): IntensidadeBolha {
       grave: false,
     };
   }
-  // raio entre 13 e 58 (referência 30): a mais cheia tem quase 4,5 vezes
-  // o raio da mais vazia (pedido do autor, 11/out: diferença mais visível)
-  const raio = 13 + 45 * Math.pow(t, 0.85);
+  // raio entre 15 e 73 (referência 30): a mais cheia tem quase 5 vezes o raio
+  // da mais vazia (pedido do autor, 15/out: bolhas maiores e diferença maior)
+  const raio = 15 + 58 * Math.pow(t, 0.85);
   return {
     t,
     escala: raio / RAIO_BASE_BOLHA,
@@ -134,7 +134,7 @@ export function nivelRelativo(
     // três níveis (D-65): a lei no mapa está em vigor; a primeira opção é uma
     // escolha, não "desligada". A pétrea fica sempre grande.
     if (lei.nivelLegal === "petrea") return 0.85;
-    return lei.nivelLegal ? 0.4 + 0.6 * t : t;
+    return lei.nivelLegal ? 0.1 + 0.9 * t : t;
   }
   if (lei.unidade === "moeda_ano")
     return prender(valor / referencia.maiorGasto);
@@ -147,9 +147,10 @@ export function nivelRelativo(
   return prender(valor / referencia.maiorAliquota);
 }
 
-/** Fator de escala da lei: raio entre 12 e 36 (referência 23). */
+/** Fator de escala da lei: raio entre 8 e 46 (referência 23); a maior tem
+ * quase 6 vezes o raio da menor (pedido do autor, 15/out). */
 export function escalaDaLei(t: number): number {
-  return (12 + 24 * Math.pow(t, 0.85)) / RAIO_BASE_LEI;
+  return (8 + 38 * Math.pow(t, 0.9)) / RAIO_BASE_LEI;
 }
 
 /** Cor do anel: vermelho (ruim) → âmbar → verde (bom); ardósia se neutro. */

@@ -65,7 +65,7 @@ describe("SG138 — leis com opções", () => {
 describe("SG138 — leis filhas", () => {
   it("a tela sabe quem exige quem", () => {
     const partida = nova();
-    const meta = lei(partida, "meta-de-inflacao");
+    const meta = lei(partida, "mandato-do-banco-central");
     expect(meta.exige).toMatchObject({
       lei: "regime-cambial",
       atendida: true,
@@ -73,7 +73,9 @@ describe("SG138 — leis filhas", () => {
     });
     expect(meta.exige!.opcoes.length).toBe(3);
     const cambio = lei(partida, "regime-cambial");
-    expect(cambio.filhas.map((f) => f.id)).toEqual(["meta-de-inflacao"]);
+    expect(cambio.filhas.map((f) => f.id)).toEqual([
+      "mandato-do-banco-central",
+    ]);
     expect(cambio.filhas[0].ativa).toBe(true);
     const sistema = lei(partida, "sistema-previdenciario");
     expect(sistema.filhas.map((f) => f.id).sort()).toEqual([
@@ -89,8 +91,8 @@ describe("SG138 — leis filhas", () => {
     )!.valor;
     expect(leisQueCaem(partida, "regime-cambial", fixo)).toEqual([
       {
-        id: "meta-de-inflacao",
-        nome: "Meta de inflação",
+        id: "mandato-do-banco-central",
+        nome: "Mandato do banco central",
         base: "Sem meta",
         revogada: false,
       },
@@ -102,15 +104,15 @@ describe("SG138 — leis filhas", () => {
     expect(leisQueCaem(partida, "regime-cambial", bandas)).toEqual([]);
 
     const depois = mudar(partida, "regime-cambial", "fixo");
-    expect(opcaoDaMeta(depois, "meta-de-inflacao")).toBe("sem-meta");
-    expect(lei(depois, "meta-de-inflacao").exige!.atendida).toBe(false);
+    expect(opcaoDaMeta(depois, "mandato-do-banco-central")).toBe("sem-meta");
+    expect(lei(depois, "mandato-do-banco-central").exige!.atendida).toBe(false);
     // uma única ação do jogador
     expect(depois.acoes).toBe(partida.acoes + 1);
   });
 
   it("com a mãe fora, a filha só aceita a base", () => {
     const partida = mudar(nova(), "regime-cambial", "fixo");
-    const meta = lei(partida, "meta-de-inflacao");
+    const meta = lei(partida, "mandato-do-banco-central");
     const estrita = meta.opcoes!.find((o) => o.id === "meta-estrita")!.valor;
     const recusada = mudarLei(partida, meta.id, estrita);
     expect(recusada.ok).toBe(false);
@@ -122,12 +124,12 @@ describe("SG138 — leis filhas", () => {
     expect(mudarLei(partida, meta.id, meta.opcoes![0].valor).ok).toBe(true);
     // voltar a mãe não religa a filha: o jogador decide de novo
     const voltou = mudar(partida, "regime-cambial", "flutuante");
-    expect(opcaoDaMeta(voltou, "meta-de-inflacao")).toBe("sem-meta");
-    expect(lei(voltou, "meta-de-inflacao").exige!.atendida).toBe(true);
+    expect(opcaoDaMeta(voltou, "mandato-do-banco-central")).toBe("sem-meta");
+    expect(lei(voltou, "mandato-do-banco-central").exige!.atendida).toBe(true);
     expect(
       opcaoDaMeta(
-        mudar(voltou, "meta-de-inflacao", "meta-estrita"),
-        "meta-de-inflacao",
+        mudar(voltou, "mandato-do-banco-central", "meta-estrita"),
+        "mandato-do-banco-central",
       ),
     ).toBe("meta-estrita");
   });
@@ -156,24 +158,27 @@ describe("SG138 — leis filhas", () => {
       ),
     });
     const semOpcao = validatePackageCoherence(
-      trocar("meta-de-inflacao", {
+      trocar("mandato-do-banco-central", {
         lei: "regime-cambial",
         opcoes: ["nao-existe"],
       }),
     );
     expect(semOpcao.ok).toBe(false);
     const ciclo = validatePackageCoherence({
-      ...trocar("meta-de-inflacao", {
+      ...trocar("mandato-do-banco-central", {
         lei: "regime-cambial",
         opcoes: ["flutuante"],
       }),
       policies: content.policies.map((p) =>
-        p.id === "meta-de-inflacao"
+        p.id === "mandato-do-banco-central"
           ? { ...p, requer: { lei: "regime-cambial", opcoes: ["flutuante"] } }
           : p.id === "regime-cambial"
             ? {
                 ...p,
-                requer: { lei: "meta-de-inflacao", opcoes: ["meta-estrita"] },
+                requer: {
+                  lei: "mandato-do-banco-central",
+                  opcoes: ["meta-estrita"],
+                },
               }
             : p,
       ),
@@ -181,7 +186,10 @@ describe("SG138 — leis filhas", () => {
     expect(ciclo.ok).toBe(false);
     // o Brasil começa com meta estrita: exigir câmbio fixo deixa o país incoerente
     const incoerente = validatePackageCoherence(
-      trocar("meta-de-inflacao", { lei: "regime-cambial", opcoes: ["fixo"] }),
+      trocar("mandato-do-banco-central", {
+        lei: "regime-cambial",
+        opcoes: ["fixo"],
+      }),
     );
     expect(incoerente.ok).toBe(false);
     expect(validatePackageCoherence(content).ok).toBe(true);

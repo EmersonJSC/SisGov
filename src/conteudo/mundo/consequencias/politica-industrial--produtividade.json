@@ -4,14 +4,13 @@
   "versaoEsquema": 1,
   "origem": "nivel_politica_industrial",
   "alvo": "produtividade",
-  "mecanismo": "limiar",
+  "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.4375,
-    "limiar": 84,
-    "direcao": "acima"
+    "coeficiente": -0.051,
+    "termoConstante": 13.41045
   },
   "unidade": "indice_0_100",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

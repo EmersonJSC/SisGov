@@ -2,7 +2,7 @@
   "id": "liberdade-imprensa--margem-manobra-governo",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_liberdade_imprensa",
+  "origem": "nivel_liberdade_de_imprensa",
   "alvo": "margem_manobra_governo",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,156 @@
+{
+  "id": "planejamento-da-economia",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Planejamento da economia",
+  "descricao": "Quem decide o que produzir: o mercado, o mercado com um plano de metas do governo, ou um plano central obrigatório.",
+  "area": "Economia, finanças e comércio exterior",
+  "ministerio": "Ministério da Economia",
+  "nivel": "constituicao",
+  "mesa": {
+    "id": "mercado",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "constituicao"
+  },
+  "controle": {
+    "variavel": "nivel_planejamento_da_economia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "mercado",
+        "rotulo": "O mercado decide",
+        "valor": 0
+      },
+      {
+        "id": "plano-indicativo",
+        "rotulo": "Plano com metas, obrigatório só para o governo",
+        "valor": 50
+      },
+      {
+        "id": "plano-central",
+        "rotulo": "Plano central obrigatório para todos",
+        "valor": 100,
+        "requer": [
+          {
+            "lei": "propriedade-dos-meios-de-producao",
+            "opcoes": ["mista", "socialista"],
+            "motivo": "Plano central obrigatório só funciona com as empresas nas mãos do Estado."
+          }
+        ]
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "desabastecimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 15]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "mercado_paralelo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 12]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -10]
+        ]
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -8]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "desemprego",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -3]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -20]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_ricos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -15]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "mercado": ["Estados Unidos", "Reino Unido"],
+      "plano-indicativo": [
+        "Brasil (art. 174 e plano plurianual)",
+        "França (planos de 1946 a 1993)",
+        "Coreia do Sul (planos de 1962 a 1996)"
+      ],
+      "plano-central": [
+        "União Soviética (Gosplan)",
+        "Cuba (Junta Central de Planejamento)"
+      ]
+    },
+    "brasil": "O planejamento é determinante para o setor público e indicativo para o privado (art. 174), com o plano plurianual."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal de 1988",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "art. 174, opção do Brasil"
+    },
+    {
+      "titulo": "Gosplan (União Soviética)",
+      "url": "https://en.wikipedia.org/wiki/Gosplan",
+      "usadoPara": "plano central"
+    }
+  ]
+}

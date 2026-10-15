@@ -2,40 +2,54 @@
   "id": "regime-do-petroleo-e-mineracao",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
-  "nome": "Regime do petróleo e da mineração",
-  "descricao": "Define quem pode explorar o subsolo (petróleo, gás e minérios) e quanto da riqueza fica com o Estado.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "grupo": "regulatoria",
+  "nome": "Regime do petróleo e mineração",
+  "descricao": "Quem explora petróleo e minérios e quanto fica com o Estado?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
     "nome": "Propriedade e estatais",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Meio Ambiente",
-  "processoAutorizacao": "emenda-constitucional",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_regime_do_petroleo_e_mineracao",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "proibicao",
-        "rotulo": "Subsolo fechado",
-        "valor": 0
+        "id": "proibicao-de-novas-exploracoes",
+        "rotulo": "Proibição de novas explorações",
+        "valor": 0,
+        "custoTexto": "Perde royalties",
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Petróleo e mineração", "Centrais sindicais"],
+        "efeitos": "Produção mineral ↓; exportações ↓; emissões ↓"
       },
       {
         "id": "monopolio-estatal",
         "rotulo": "Monopólio estatal",
-        "valor": 33
+        "valor": 33.33,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Petróleo e mineração", "Mercado financeiro"],
+        "efeitos": "Investimento estrangeiro ↓; produção depende da estatal"
       },
       {
         "id": "partilha",
-        "rotulo": "Partilha com estatal",
-        "valor": 67
+        "rotulo": "Partilha (o Estado fica com parte do óleo) (hoje na referência, no pré-sal)",
+        "valor": 66.67,
+        "efeitos": "Royalties e óleo para o Estado"
       },
       {
         "id": "concessao",
-        "rotulo": "Concessão com royalties",
-        "valor": 100
+        "rotulo": "Concessão (empresa paga e fica com o óleo)",
+        "valor": 100,
+        "apoiam": ["Petróleo e mineração", "Mercado financeiro"],
+        "efeitos": "Investimento estrangeiro ↑; produção mineral ↑"
       }
     ]
   },
@@ -51,10 +65,12 @@
     "regime-do-petroleo-e-mineracao--grupo-empresarios",
     "regime-do-petroleo-e-mineracao--grupo-progressistas",
     "regime-do-petroleo-e-mineracao--grupo-trabalhadores",
-    "regime-do-petroleo-e-mineracao--grupo-ambientalistas"
+    "regime-do-petroleo-e-mineracao--grupo-ambientalistas",
+    "regime-do-petroleo-e-mineracao--ied"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
-  }
+  },
+  "ministerio": "Ministério de Minas e Energia"
 }

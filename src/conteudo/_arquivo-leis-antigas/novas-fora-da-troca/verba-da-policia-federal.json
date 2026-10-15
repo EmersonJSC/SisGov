@@ -1,0 +1,73 @@
+{
+  "id": "verba-da-policia-federal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Verba da Polícia Federal",
+  "descricao": "Quanto dinheiro vai para a polícia federal que cuida de crime entre estados, fronteira e corrupção?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_verba_da_policia_federal",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "minimo-metade-da-verba-de-hoje",
+        "rotulo": "Mínimo: metade da verba de hoje",
+        "valor": 33.33,
+        "custoTexto": "economia, valor lacuna",
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Associações de policiais"],
+        "efeitos": "Crime organizado ↑, armas pela fronteira ↑, corrupção ↑ (sem número)"
+      },
+      {
+        "id": "referencia-verba-total-lacuna-corte-de-r-122-milhoes-em-2024",
+        "rotulo": "Referência: verba total lacuna; corte de  122 milhões em 2024",
+        "valor": 66.67,
+        "custoTexto": "lacuna"
+      },
+      {
+        "id": "maximo-o-dobro-de-hoje",
+        "rotulo": "Máximo: o dobro de hoje",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "apoiam": ["Associações de policiais", "Conservadores", "Classe média"],
+        "efeitos": "Capacidade de investigação ↑; crime organizado ↓; corrupção ↓; armas ↓ (sem elasticidade, lacuna)"
+      }
+    ]
+  },
+  "consequencias": [
+    "verba-da-policia-federal--crime-organizado",
+    "verba-da-policia-federal--corrupcao",
+    "verba-da-policia-federal--impunidade",
+    "verba-da-policia-federal--capacidade-inteligencia",
+    "verba-da-policia-federal--grupo-classe-media",
+    "verba-da-policia-federal--grupo-empresarios",
+    "verba-da-policia-federal--grupo-servidores",
+    "verba-da-policia-federal--gasto-publico"
+  ],
+  "ministerio": "Ministério da Justiça",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

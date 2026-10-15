@@ -57,7 +57,7 @@ export const MEDIDAS = {
   raioLeiRevelada: 19,
   raioBolha: 30,
   /** Bolha no máximo da escala, com o anel (ver intensidade.ts). */
-  raioBolhaMaximo: 64,
+  raioBolhaMaximo: 80,
   /** Grupo social (SG143): medalhão bem maior que as bolhas, que incha
    *  com a satisfação, entre o mínimo e o máximo. */
   raioGrupo: 58,
@@ -66,3 +66,29 @@ export const MEDIDAS = {
   raioRetratoMinistro: 72,
   raioRetratoPresidente: 105,
 } as const;
+
+/** Paleta das leis: cada assunto (mesa) tem a sua cor, para o mapa não ficar monocromático. */
+const PALETA_DAS_LEIS = [
+  "#d9534f",
+  "#e8912d",
+  "#c9a227",
+  "#5aa469",
+  "#2a9d8f",
+  "#3a86c8",
+  "#5b6ee1",
+  "#8e5bd6",
+  "#c154a8",
+  "#a0522d",
+  "#6b8e23",
+  "#d1495b",
+] as const;
+
+/** Cor da lei pelo assunto (mesa) dela; sem mesa, pelo id. */
+export function corDaLei(chave: string): string {
+  let h = 2166136261;
+  for (let i = 0; i < chave.length; i++) {
+    h ^= chave.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return PALETA_DAS_LEIS[(h >>> 0) % PALETA_DAS_LEIS.length];
+}

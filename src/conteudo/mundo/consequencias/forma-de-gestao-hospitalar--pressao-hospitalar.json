@@ -1,0 +1,17 @@
+{
+  "id": "forma-de-gestao-hospitalar--pressao-hospitalar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_forma_de_gestao_hospitalar",
+  "alvo": "pressao_hospitalar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.054,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

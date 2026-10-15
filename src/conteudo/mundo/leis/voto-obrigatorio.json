@@ -4,33 +4,44 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Voto obrigatório",
-  "descricao": "Define se votar é um direito opcional ou um dever com punição para quem falta.",
-  "area": "Instituições, Estado e sistema político",
+  "descricao": "O cidadão é obrigado a votar, e com que punição?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "sistema-politico",
     "nome": "Sistema político",
     "camada": "lei"
   },
-  "ministerio": "Casa Civil",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_voto_obrigatorio",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "facultativo",
-        "rotulo": "Voto facultativo",
-        "valor": 0
+        "rotulo": "Facultativo",
+        "valor": 0,
+        "apoiam": ["Jovens", "Classe média"],
+        "rejeitam": ["Bancadas de partidos de base popular"],
+        "efeitos": "Participação eleitoral ↓"
       },
       {
-        "id": "obrigatorio-nominal",
-        "rotulo": "Obrigatório só no papel",
-        "valor": 50
+        "id": "obrigatorio-com-multa-simbolica",
+        "rotulo": "Obrigatório com multa simbólica",
+        "valor": 50,
+        "efeitos": "Participação eleitoral cerca de 10 pontos acima do facultativo"
       },
       {
-        "id": "obrigatorio-com-sancoes",
-        "rotulo": "Obrigatório com punição",
-        "valor": 100
+        "id": "obrigatorio-com-sancao-forte",
+        "rotulo": "Obrigatório com sanção forte",
+        "valor": 100,
+        "apoiam": ["Bancadas de partidos de base popular"],
+        "rejeitam": ["Jovens", "Classe média"],
+        "efeitos": "Participação eleitoral ↑ até 24 pontos sobre o facultativo; Confiança ↑ pouco"
       }
     ]
   },
@@ -42,10 +53,12 @@
     "voto-obrigatorio--gasto-publico",
     "voto-obrigatorio--grupo-empresarios",
     "voto-obrigatorio--grupo-jovens",
-    "voto-obrigatorio--grupo-pobres"
+    "voto-obrigatorio--grupo-pobres",
+    "voto-obrigatorio--confianca-empresarial"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Partidos (\"Partido único\" trava \"Facultativo\")",
+    "leis": ["partidos"]
+  },
+  "ministerio": "Casa Civil"
 }

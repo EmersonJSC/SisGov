@@ -2,7 +2,7 @@
   "id": "agrotoxicos--grupo-agricultura-familiar",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "grupo_agricultura_familiar",
   "mecanismo": "afim",
   "parametros": {

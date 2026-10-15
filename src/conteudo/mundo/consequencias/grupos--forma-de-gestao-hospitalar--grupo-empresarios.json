@@ -1,0 +1,17 @@
+{
+  "id": "grupos--forma-de-gestao-hospitalar--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_forma_de_gestao_hospitalar",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

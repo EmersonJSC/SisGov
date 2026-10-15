@@ -1,16 +1,21 @@
 {
   "id": "direito-de-greve",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Direito de greve",
-  "descricao": "Como os trabalhadores podem parar: greve proibida, greve só com votação secreta e aviso prévio, ou greve decidida em assembleia.",
-  "area": "Trabalho e emprego",
-  "ministerio": "Ministério do Trabalho",
-  "nivel": "lei",
+  "descricao": "Os trabalhadores podem parar, e com que regras?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
     "nome": "Sindicatos e greve",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
   },
   "controle": {
     "variavel": "nivel_direito_de_greve",
@@ -18,113 +23,41 @@
     "opcoes": [
       {
         "id": "proibida",
-        "rotulo": "Greve proibida",
-        "valor": 0
+        "rotulo": "Proibida",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Conflito trabalhista legal ↓, mas greve ilegal e protestos ↑ (aprox.); aprovação ↓"
       },
       {
-        "id": "votacao-secreta",
-        "rotulo": "Só com votação secreta e aviso prévio",
-        "valor": 50
+        "id": "votacao-secreta-e-servicos-minimos",
+        "rotulo": "Votação secreta e serviços mínimos",
+        "valor": 50,
+        "apoiam": ["Empresários", "Classe média"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Conflito trabalhista ↓; Renda do trabalho ↓ pouco"
       },
       {
         "id": "ampla",
-        "rotulo": "Decidida em assembleia",
-        "valor": 100
+        "rotulo": "Ampla",
+        "valor": 100,
+        "apoiam": ["Trabalhadores com carteira", "Servidores"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Conflito trabalhista ↑; Renda do trabalho ↑ pouco"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "greve_geral",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -8],
-          [50, -3],
-          [100, 0]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "grupo_trabalhadores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -10],
-          [50, -3],
-          [100, 0]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_servidores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -6],
-          [50, -2],
-          [100, 0]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -6],
-          [50, -1],
-          [100, 0]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "confianca_empresarial",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 3],
-          [50, 1],
-          [100, 0]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "produtividade",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [50, 0.5],
-          [100, 0]
-        ]
-      },
-      "atraso": 4
-    }
+  "consequencias": [
+    "direito-de-greve--greve-geral",
+    "direito-de-greve--grupo-trabalhadores",
+    "direito-de-greve--grupo-servidores",
+    "direito-de-greve--liberdade-civil",
+    "direito-de-greve--confianca-empresarial",
+    "direito-de-greve--produtividade"
   ],
-  "historia": {
-    "opcoes": {
-      "proibida": ["Cuba", "União Soviética", "China"],
-      "votacao-secreta": ["Reino Unido (Trade Union Act 1984 e 2016)"],
-      "ampla": ["Brasil (Lei 7.783/1989)", "França", "Itália"]
-    },
-    "brasil": "A Constituição garante a greve (art. 9º) e a Lei 7.783/1989 deixa a decisão para a assembleia do sindicato."
+  "mae": {
+    "texto": "Negociação coletiva e sindicatos (sem trava no estudo).",
+    "leis": ["negociacao-coletiva-e-sindicatos"]
   },
-  "fontes": [
-    {
-      "titulo": "Lei 7.783/1989 (greve)",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l7783.htm",
-      "usadoPara": "opção do Brasil"
-    },
-    {
-      "titulo": "Trade Union Act 1984 (Reino Unido)",
-      "url": "https://www.legislation.gov.uk/ukpga/1984/49/contents",
-      "usadoPara": "votação secreta"
-    }
-  ]
+  "ministerio": "Ministério do Trabalho"
 }

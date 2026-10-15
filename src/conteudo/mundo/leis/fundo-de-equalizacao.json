@@ -1,0 +1,68 @@
+{
+  "id": "fundo-de-equalizacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Fundo de equalização",
+  "descricao": "Quanto dinheiro extra o governo central põe para igualar estados e municípios pobres aos ricos?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_fundo_de_equalizacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0",
+        "rotulo": "0 (só os fundos fixos da Constituição; hoje na referência)",
+        "valor": 33.33,
+        "efeitos": "Nada além dos fundos fixos ( 326,9 bilhões em 2024, cerca de 2,8% do PIB, aprox.)"
+      },
+      {
+        "id": "0-5",
+        "rotulo": "0,5%",
+        "valor": 66.67,
+        "custoAnualPercentualPib": 0.5,
+        "apoiam": ["Pobres", "Interior"],
+        "rejeitam": ["Ricos"],
+        "efeitos": "Desigualdade regional ↓ (tamanho: lacuna); Corrupção ↑ se a Verba de controle for baixa"
+      },
+      {
+        "id": "1",
+        "rotulo": "1% (máximo)",
+        "valor": 100,
+        "custoAnualPercentualPib": 1.0,
+        "apoiam": ["Pobres", "Interior"],
+        "rejeitam": ["Ricos", "Mercado financeiro"],
+        "efeitos": "O mesmo, mais forte"
+      }
+    ]
+  },
+  "consequencias": [
+    "fundo-de-equalizacao--desigualdade-regional",
+    "fundo-de-equalizacao--corrupcao"
+  ],
+  "mae": {
+    "texto": "Federalismo (não existe em \"Centralizado\"; proposta minha). A Regra de repasse decide como o fundo é repartido.",
+    "leis": ["federalismo", "regra-de-repasse"]
+  },
+  "ministerio": "Ministério da Fazenda"
+}

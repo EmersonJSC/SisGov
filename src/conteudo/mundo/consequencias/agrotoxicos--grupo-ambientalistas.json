@@ -2,7 +2,7 @@
   "id": "agrotoxicos--grupo-ambientalistas",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "grupo_ambientalistas",
   "mecanismo": "afim",
   "parametros": {

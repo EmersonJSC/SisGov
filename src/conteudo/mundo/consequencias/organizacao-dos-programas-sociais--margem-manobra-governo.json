@@ -1,0 +1,19 @@
+{
+  "id": "organizacao-dos-programas-sociais--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_organizacao_dos_programas_sociais",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [100, 4]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -2,7 +2,7 @@
   "id": "liberdade-imprensa--reputacao-internacional",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_liberdade_imprensa",
+  "origem": "nivel_liberdade_de_imprensa",
   "alvo": "reputacao_internacional",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,83 @@
+{
+  "id": "regime-simplificado-para-pequenas-empresas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regime simplificado para pequenas empresas",
+  "descricao": "Pequenas empresas pagam imposto por um regime mais simples e mais barato?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_regime_simplificado_para_pequenas_empresas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": ["Indústria"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "Informalidade ↑"
+      },
+      {
+        "id": "so-dispensa-do-iva-abaixo-de-um-faturamento",
+        "rotulo": "Só dispensa do IVA abaixo de um faturamento",
+        "valor": 33,
+        "custoTexto": "0,1 a 0,2% do PIB (aprox.)",
+        "apoiam": ["Indústria"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "Complexidade ↓ pouco"
+      },
+      {
+        "id": "valor-fixo-mensal-para-o-microempreendedor",
+        "rotulo": "Valor fixo mensal para o microempreendedor",
+        "valor": 67,
+        "custoTexto": "0,1 a 0,3% do PIB (aprox.)",
+        "apoiam": ["Informais", "Pequenos negócios"],
+        "efeitos": "Informalidade ↓"
+      },
+      {
+        "id": "amplo-com-teto-alto-e-servicos-de-alta-renda",
+        "rotulo": "Amplo, com teto alto e serviços de alta renda",
+        "valor": 100,
+        "custoTexto": "perto de 1% do PIB (aprox.);  120,1 bi em 2026",
+        "apoiam": ["Pequenos negócios", "Comércio e serviços"],
+        "rejeitam": ["Indústria"],
+        "efeitos": "Informalidade ↓; Produtividade ↓ (empresa evita crescer); Progressividade ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "regime-simplificado-pequenas-empresas--informalidade",
+    "regime-simplificado-pequenas-empresas--complexidade-tributaria",
+    "regime-simplificado-pequenas-empresas--produtividade",
+    "regime-simplificado-pequenas-empresas--sonegacao",
+    "regime-simplificado-pequenas-empresas--desemprego",
+    "regime-simplificado-pequenas-empresas--arrecadacao",
+    "regime-simplificado-pequenas-empresas--grupo-empresarios",
+    "regime-simplificado-pequenas-empresas--grupo-jovens",
+    "regime-simplificado-pequenas-empresas--grupo-pequenos-negocios",
+    "regime-simplificado-pequenas-empresas--grupo-pobres",
+    "regime-simplificado-pequenas-empresas--grupo-servidores",
+    "regime-simplificado-pequenas-empresas--grupo-trabalhadores"
+  ],
+  "mae": {
+    "texto": "Imposto sobre consumo. \"Cascata em vários tributos\" trava \"Só dispensa do IVA\".",
+    "leis": ["imposto-sobre-consumo"]
+  },
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Fazenda"
+}

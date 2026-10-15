@@ -12,7 +12,7 @@
   "gatilho": {
     "chance": 0.75,
     "reacao": {
-      "controle": "nivel_reforma_agraria",
+      "controle": "nivel_redistribuicao_de_terras",
       "janelaTurnos": 2,
       "sobe": 30.0
     }
@@ -56,7 +56,7 @@
       ],
       "leis": [
         {
-          "lei": "reforma-agraria",
+          "lei": "redistribuicao-de-terras",
           "nivel": 33.0
         }
       ]

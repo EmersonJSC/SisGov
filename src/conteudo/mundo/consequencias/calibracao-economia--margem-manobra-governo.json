@@ -1,0 +1,17 @@
+{
+  "id": "calibracao-economia--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_propriedade_dos_meios_de_producao",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0,
+    "termoConstante": -12.0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

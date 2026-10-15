@@ -1,0 +1,64 @@
+{
+  "id": "investimento-estrangeiro",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Investimento estrangeiro",
+  "descricao": "Define em que setores estrangeiros podem abrir ou comprar empresas, e se o país os atrai com incentivos.",
+  "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "comercio-exterior",
+    "nome": "Comércio exterior e capital estrangeiro",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério da Economia",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_investimento_estrangeiro",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "fechado",
+        "rotulo": "Fechado",
+        "valor": 0
+      },
+      {
+        "id": "lista-negativa",
+        "rotulo": "Lista negativa",
+        "valor": 25
+      },
+      {
+        "id": "restricoes-setoriais",
+        "rotulo": "Restrições pontuais",
+        "valor": 50
+      },
+      {
+        "id": "sem-restricoes",
+        "rotulo": "Porta aberta",
+        "valor": 75
+      },
+      {
+        "id": "atracao-com-incentivos",
+        "rotulo": "Tapete vermelho",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "investimento-estrangeiro--ied",
+    "investimento-estrangeiro--investimento",
+    "investimento-estrangeiro--produtividade",
+    "investimento-estrangeiro--exportacoes",
+    "investimento-estrangeiro--cambio",
+    "investimento-estrangeiro--arrecadacao",
+    "investimento-estrangeiro--concentracao-mercado",
+    "investimento-estrangeiro--grupo-jovens",
+    "investimento-estrangeiro--grupo-pequenos-negocios",
+    "investimento-estrangeiro--grupo-servidores",
+    "investimento-estrangeiro--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

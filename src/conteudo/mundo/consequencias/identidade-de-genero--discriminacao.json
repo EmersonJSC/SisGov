@@ -1,0 +1,20 @@
+{
+  "id": "identidade-de-genero--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_identidade_de_genero",
+  "alvo": "discriminacao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 3],
+      [50, 0],
+      [100, -1]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

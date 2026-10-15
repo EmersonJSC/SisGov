@@ -2,7 +2,7 @@
   "id": "regulacao-redes-sociais--grupo-classe-media",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_regulacao_redes_sociais",
+  "origem": "nivel_regulacao_das_redes_sociais",
   "alvo": "grupo_classe_media",
   "mecanismo": "afim",
   "parametros": {

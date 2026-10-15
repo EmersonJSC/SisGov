@@ -16,13 +16,13 @@
       "condicoes": [
         {
           "tipo": "comparacao",
-          "variavel": "nivel_empresas_estatais_e_privatizacao",
+          "variavel": "nivel_papel_do_estado_empresario",
           "operador": "igual",
           "valor": 67.0
         },
         {
           "tipo": "comparacao",
-          "variavel": "nivel_empresas_estatais_e_privatizacao",
+          "variavel": "nivel_papel_do_estado_empresario",
           "operador": "igual",
           "valor": 100.0
         }
@@ -46,7 +46,7 @@
       ],
       "leis": [
         {
-          "lei": "empresas-estatais-e-privatizacao",
+          "lei": "papel-do-estado-empresario",
           "nivel": 33.0
         }
       ]

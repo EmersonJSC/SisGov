@@ -4,38 +4,64 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Ensino obrigatório",
-  "descricao": "Define dos quantos aos quantos anos toda criança e jovem é obrigado a estar estudando, e o Estado obrigado a oferecer vaga.",
+  "descricao": "Até que idade o Estado obriga a criança a estar na escola e garante a vaga?",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "escola",
     "nome": "Escola",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério da Educação",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_ensino_obrigatorio",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "sem-obrigatoriedade",
-        "rotulo": "Escola opcional",
-        "valor": 0
+        "rotulo": "Sem obrigatoriedade",
+        "valor": 0,
+        "custoTexto": "−2 a −3% do PIB vs hoje (aprox.), educação",
+        "rejeitam": [
+          "Sindicatos de professores",
+          "Movimento estudantil",
+          "Famílias com filhos"
+        ],
+        "efeitos": "Escolaridade ↓ forte (3 a 5 anos); Evasão escolar ↑; Trabalho infantil ↑"
       },
       {
-        "id": "primario",
+        "id": "so-o-primario",
         "rotulo": "Só o primário",
-        "valor": 33
+        "valor": 33,
+        "custoTexto": "−1% do PIB vs hoje (aprox.), educação",
+        "apoiam": ["Agro"],
+        "rejeitam": ["Famílias com filhos", "Sindicatos de professores"],
+        "efeitos": "Escolaridade ↓ (3 a 5 anos); Trabalho infantil ↑"
       },
       {
-        "id": "basico-9-anos",
-        "rotulo": "Nove anos de ensino básico",
-        "valor": 67
+        "id": "basico-de-9-anos",
+        "rotulo": "Básico de 9 anos",
+        "valor": 67,
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Sindicatos de professores"],
+        "efeitos": "Escolaridade estável"
       },
       {
-        "id": "ate-18",
-        "rotulo": "Da pré-escola aos 18",
-        "valor": 100
+        "id": "dos-4-aos-17-anos",
+        "rotulo": "Dos 4 aos 17 anos",
+        "valor": 100,
+        "custoTexto": "+0,3 a 0,5% do PIB (aprox.), educação",
+        "apoiam": [
+          "Famílias com filhos",
+          "Empresários",
+          "Sindicatos de professores"
+        ],
+        "rejeitam": ["Informais"],
+        "efeitos": "Escolaridade ↑ (3 a 5 anos); Evasão escolar ↓; Trabalho infantil ↓"
       }
     ]
   },
@@ -51,10 +77,8 @@
     "ensino-obrigatorio--grupo-jovens",
     "ensino-obrigatorio--grupo-pobres",
     "ensino-obrigatorio--grupo-progressistas",
-    "ensino-obrigatorio--grupo-servidores"
+    "ensino-obrigatorio--grupo-servidores",
+    "ensino-obrigatorio--trabalho-infantil"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério da Educação"
 }

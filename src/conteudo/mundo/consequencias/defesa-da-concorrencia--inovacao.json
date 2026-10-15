@@ -6,11 +6,11 @@
   "alvo": "inovacao",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.07,
-    "termoConstante": -0.0
+    "coeficiente": 0.093,
+    "termoConstante": 0
   },
   "unidade": "indice_0_100",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

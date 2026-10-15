@@ -1,0 +1,20 @@
+{
+  "id": "crimes-da-ditadura--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_crimes_da_ditadura",
+  "alvo": "polarizacao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 3],
+      [100, 6]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

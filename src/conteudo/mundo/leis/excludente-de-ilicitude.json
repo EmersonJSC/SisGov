@@ -4,30 +4,41 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Excludente de ilicitude",
-  "descricao": "Quando o policial que mata em serviço deixa de responder por crime.",
-  "area": "Segurança, justiça e drogas",
+  "descricao": "Quando o policial que mata em serviço deixa de ser punido?",
+  "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "penas",
     "nome": "Penas",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",
-  "revogavel": false,
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_excludente_de_ilicitude",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "restrito",
-        "rotulo": "Só legítima defesa comprovada",
-        "valor": 0
+        "id": "restrito-legitima-defesa-classica",
+        "rotulo": "Restrito: legítima defesa clássica",
+        "valor": 0,
+        "apoiam": ["Progressistas", "Movimento negro"],
+        "rejeitam": ["Associações de policiais"]
       },
       {
-        "id": "amplo",
-        "rotulo": "Medo, surpresa ou violenta emoção bastam",
-        "valor": 100
+        "id": "amplo-inclui-medo-surpresa-ou-violenta-emocao",
+        "rotulo": "Amplo: inclui \"medo, surpresa ou violenta emoção\"",
+        "valor": 100,
+        "apoiam": [
+          "Associações de policiais",
+          "Atiradores e donos de armas pelo porte",
+          "Conservadores"
+        ],
+        "rejeitam": ["Progressistas", "Movimento negro"],
+        "efeitos": "Letalidade policial ↑ (sem número, lacuna); confiança nas instituições ↓ nas Periferias; mais chance de \"policial mata inocente\""
       }
     ]
   },
@@ -41,8 +52,5 @@
     "excludente-de-ilicitude--grupo-progressistas",
     "excludente-de-ilicitude--grupo-servidores"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério da Justiça"
 }

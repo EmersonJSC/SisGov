@@ -1,0 +1,56 @@
+{
+  "id": "devolucao-de-imposto-aos-pobres",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Devolução de imposto aos pobres",
+  "descricao": "O governo devolve aos mais pobres parte do imposto que eles pagam no consumo?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_devolucao_de_imposto_aos_pobres",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Nenhuma",
+        "valor": 0,
+        "rejeitam": ["Pobres"],
+        "efeitos": "Progressividade ↓"
+      },
+      {
+        "id": "luz-agua-e-gas",
+        "rotulo": "Luz, água e gás",
+        "valor": 50.0,
+        "custoTexto": "lacuna",
+        "apoiam": ["Pobres", "Periferias"],
+        "efeitos": "Progressividade ↑ pouco; Pobreza ↓ pouco"
+      },
+      {
+        "id": "ampla-para-as-familias-do-cadastro-social",
+        "rotulo": "Ampla para as famílias do cadastro social (hoje na referência, a partir de 2027)",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "apoiam": ["Pobres", "Periferias", "Centrais sindicais"],
+        "rejeitam": ["Comércio e serviços"],
+        "efeitos": "Progressividade ↑; Pobreza ↓; permite IVA com menos exceções"
+      }
+    ]
+  },
+  "consequencias": ["devolucao-de-imposto-aos-pobres--pobreza"],
+  "mae": {
+    "texto": "Imposto sobre consumo. \"Cascata em vários tributos\" e \"Imposto sobre vendas no varejo\" travam a lei inteira (sem IVA não há como calcular a devolução; proposta minha). \"IVA amplo com devolução\" trava \"Nenhuma\".",
+    "leis": ["imposto-sobre-consumo"]
+  },
+  "ministerio": "Ministério da Fazenda"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "tribunais-superiores--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_superiores",
+  "alvo": "risco_pais",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 3],
+      [100, 6]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

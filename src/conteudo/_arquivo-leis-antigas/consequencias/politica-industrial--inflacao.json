@@ -1,0 +1,18 @@
+{
+  "id": "politica-industrial--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_politica_industrial",
+  "alvo": "inflacao",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.1875,
+    "limiar": 84,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

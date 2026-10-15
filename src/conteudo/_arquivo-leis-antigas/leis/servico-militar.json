@@ -1,0 +1,63 @@
+{
+  "id": "servico-militar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Serviço militar",
+  "descricao": "Define como o país forma suas Forças Armadas: sem Forças Armadas, só voluntários, sorteio seletivo ou serviço obrigatório para todos.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "defesa",
+    "nome": "Defesa",
+    "camada": "constituicao"
+  },
+  "ministerio": "Ministério da Defesa e Relações Exteriores",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_servico_militar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-forcas-armadas",
+        "rotulo": "Sem Forças Armadas",
+        "valor": 0
+      },
+      {
+        "id": "voluntario",
+        "rotulo": "Só voluntários",
+        "valor": 25
+      },
+      {
+        "id": "seletivo",
+        "rotulo": "Alistamento com seleção",
+        "valor": 50
+      },
+      {
+        "id": "obrigatorio-masculino",
+        "rotulo": "Obrigatório para homens",
+        "valor": 75
+      },
+      {
+        "id": "universal",
+        "rotulo": "Universal, homens e mulheres",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "servico-militar--capacidade-defesa",
+    "servico-militar--oportunidades-juvenis",
+    "servico-militar--liberdade-civil",
+    "servico-militar--desemprego",
+    "servico-militar--capacidade-defesa-4",
+    "servico-militar--gasto-publico",
+    "servico-militar--grupo-classe-media",
+    "servico-militar--grupo-conservadores",
+    "servico-militar--grupo-jovens",
+    "servico-militar--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

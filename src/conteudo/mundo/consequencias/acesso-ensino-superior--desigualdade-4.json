@@ -2,7 +2,7 @@
   "id": "acesso-ensino-superior--desigualdade-4",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_acesso_ensino_superior",
+  "origem": "nivel_acesso_ao_ensino_superior",
   "alvo": "desigualdade",
   "mecanismo": "limiar",
   "parametros": {

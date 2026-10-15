@@ -26,7 +26,7 @@
         "multiplica": 3
       },
       {
-        "variavel": "nivel_reforma_agraria",
+        "variavel": "nivel_redistribuicao_de_terras",
         "de": 100,
         "ate": 0,
         "multiplica": 2

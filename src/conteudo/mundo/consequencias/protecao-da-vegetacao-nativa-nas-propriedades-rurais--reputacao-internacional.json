@@ -1,0 +1,17 @@
+{
+  "id": "protecao-da-vegetacao-nativa-nas-propriedades-rurais--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_protecao_da_vegetacao_nativa_nas_propriedades_rurais",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.135,
+    "termoConstante": -9.00045
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

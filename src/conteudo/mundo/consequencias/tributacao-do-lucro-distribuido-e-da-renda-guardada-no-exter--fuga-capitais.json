@@ -1,0 +1,17 @@
+{
+  "id": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter--fuga-capitais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tributacao_do_lucro_distribuido_e_da_renda_guardada_no_exter",
+  "alvo": "fuga_capitais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.054,
+    "termoConstante": -1.79982
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "nacionalizacao--grupo-trabalhadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_nacionalizacao",
+  "alvo": "grupo_trabalhadores",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 1],
+      [100, 1]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "defesa-da-concorrencia--exportacoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_defesa_da_concorrencia",
+  "alvo": "exportacoes",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.04477612,
+    "limiar": 33,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

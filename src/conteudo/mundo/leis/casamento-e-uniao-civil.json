@@ -4,38 +4,59 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Casamento e união civil",
-  "descricao": "Define que casais o Estado reconhece como família, com herança, pensão, adoção e plano de saúde.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "descricao": "Casais do mesmo sexo podem casar?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
     "id": "familia-e-sexualidade",
     "nome": "Família e sexualidade",
     "camada": "lei"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_casamento_e_uniao_civil",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "criminalizacao",
-        "rotulo": "Relações homoafetivas são crime",
-        "valor": 0
+        "id": "criminalizacao-da-homossexualidade",
+        "rotulo": "Criminalização da homossexualidade",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande no país de referência"],
+        "rejeitam": ["quase todos; Movimento LGBT"],
+        "efeitos": "Discriminação ↑ forte; Liberdades civis ↓ forte; Reputação internacional ↓ forte"
       },
       {
         "id": "sem-reconhecimento",
         "rotulo": "Sem reconhecimento",
-        "valor": 33
+        "valor": 33,
+        "apoiam": ["Evangélicos", "Igrejas evangélicas", "Conservadores"],
+        "rejeitam": ["Progressistas", "Jovens", "Movimento LGBT"],
+        "efeitos": "Discriminação ↑; Sofrimento mental de jovens ↑; Polarização ↑"
       },
       {
         "id": "uniao-civil",
         "rotulo": "União civil",
-        "valor": 67
+        "valor": 67,
+        "apoiam": ["Católicos moderados"],
+        "rejeitam": ["Movimento LGBT e Igrejas evangélicas", "os dois polos"],
+        "efeitos": "Discriminação ↓ pouco"
       },
       {
         "id": "casamento-igualitario",
         "rotulo": "Casamento igualitário",
-        "valor": 100
+        "valor": 100,
+        "apoiam": [
+          "Progressistas",
+          "Jovens",
+          "Classe média de renda mais alta",
+          "Movimento LGBT"
+        ],
+        "rejeitam": ["Evangélicos", "Igrejas evangélicas", "Aposentados"],
+        "efeitos": "Discriminação ↓; tentativas de suicídio −7% em todos os alunos e −14% em alunos LGB, atraso 1 a 3 anos; Polarização ↑ na mudança"
       }
     ]
   },
@@ -50,8 +71,13 @@
     "casamento-e-uniao-civil--grupo-evangelicos",
     "casamento-e-uniao-civil--grupo-catolicos"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Laicidade do Estado (\"Teocracia\" trava casamento igualitário e união civil; proposta minha, ver ponto aberto). Ela é mãe de Identidade de gênero e de Discriminação e crimes de ódio: com \"Criminalização\", Discriminação não pode ser \"Crime\" e Identidade de gênero fica presa em \"Sem reconhecimento\".",
+    "leis": [
+      "identidade-de-genero",
+      "discriminacao-e-crimes-de-odio",
+      "laicidade-do-estado"
+    ]
+  },
+  "ministerio": "Ministério dos Direitos Humanos"
 }

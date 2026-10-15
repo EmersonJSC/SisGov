@@ -1,0 +1,20 @@
+{
+  "id": "gestao-da-escola-publica--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_da_escola_publica",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 1],
+      [100, 4]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

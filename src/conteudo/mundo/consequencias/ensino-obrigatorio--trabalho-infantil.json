@@ -1,0 +1,17 @@
+{
+  "id": "ensino-obrigatorio--trabalho-infantil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_ensino_obrigatorio",
+  "alvo": "trabalho_infantil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.147,
+    "termoConstante": 14.7
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

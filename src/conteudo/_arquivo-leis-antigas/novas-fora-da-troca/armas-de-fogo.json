@@ -1,0 +1,79 @@
+{
+  "id": "armas-de-fogo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Armas de fogo",
+  "descricao": "Quem pode ter e portar arma, quantas e com quanta munição?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "armas",
+    "nome": "Armas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_armas_de_fogo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibidas-para-civis",
+        "rotulo": "Proibidas para civis",
+        "valor": 0,
+        "custoTexto": "recompra ≈0,01% do PIB (aprox.)",
+        "apoiam": ["Progressistas"],
+        "rejeitam": [
+          "Conservadores",
+          "Entidades do agronegócio",
+          "Interior",
+          "Indústria de armas",
+          "Atiradores e donos de armas pelo porte"
+        ],
+        "efeitos": "Armas em circulação ↓↓; violência letal ↓"
+      },
+      {
+        "id": "restritas-ate-2-armas-controle-forte",
+        "rotulo": "Restritas: até 2 armas, controle forte",
+        "valor": 50,
+        "apoiam": ["Progressistas", "Periferias", "Movimento feminista"],
+        "rejeitam": ["Atiradores e donos de armas pelo porte"],
+        "efeitos": "Armas em circulação ↓ em 1 a 3 anos; violência letal ↓ (−1% no estoque dá −0,15% a −0,20%; a lei de 2003 cortou ao menos 12,6% dos homicídios em SP)"
+      },
+      {
+        "id": "facilitadas-4-armas-5-000-cartuchos-por-ano-atirador-amplo",
+        "rotulo": "Facilitadas: 4 armas, 5.000 cartuchos por ano, atirador amplo",
+        "valor": 100,
+        "apoiam": [
+          "Atiradores e donos de armas pelo porte",
+          "Entidades do agronegócio",
+          "Interior",
+          "Conservadores",
+          "Indústria de armas"
+        ],
+        "rejeitam": ["Progressistas", "Movimento feminista", "Periferias"],
+        "efeitos": "Armas em circulação ↑ em 1 a 3 anos; violência letal ↑; feminicídio ↑; crime organizado ↑ (munição desviada); crimes contra o patrimônio sem efeito"
+      }
+    ]
+  },
+  "consequencias": [
+    "armas-de-fogo--armas-em-circulacao",
+    "armas-de-fogo--violencia-letal",
+    "armas-de-fogo--protecao-efetiva-mulheres",
+    "armas-de-fogo--sensacao-seguranca",
+    "armas-de-fogo--liberdade-civil",
+    "armas-de-fogo--grupo-agro",
+    "armas-de-fogo--grupo-conservadores",
+    "armas-de-fogo--grupo-progressistas",
+    "armas-de-fogo--crime-organizado"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Justiça"
+}

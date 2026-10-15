@@ -13,13 +13,14 @@ import { prepareMonthlyContent } from "../game/prepareMonthlyContent";
 const limites = {
   // V1-09: +1, a base fixa dos grupos de pressão (nó técnico de valor 1).
   indicesSemEntrada: 3,
-  leisSemModulacao: 1,
+  // V1-34 (troca das 11 áreas): leis novas ainda sem efeito em índice até a pesquisa
+  leisSemModulacao: 94,
   indicesSemMedida: 0,
   // V1-08: +9 segmentos novos, que começam com o contexto como os outros
   // grupos (110/69/28 antes deles).
   contextoAcimaDe5: 119,
   contextoAcimaDe25: 76,
-  contextoAcimaDe50: 33,
+  contextoAcimaDe50: 35,
 };
 
 describe("trava da rede (V1-07)", () => {

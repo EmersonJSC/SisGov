@@ -78,16 +78,16 @@ describe("SG137 — pisos vinculados à receita", () => {
     const { contas } = verPartida(partida);
     const pib = contas.pib;
     expect((-lei(partida, "piso-saude").saldoAnual / pib) * 100).toBeCloseTo(
-      4.36,
+      4.367, // V1-34: troca de Economia (era 4,36)
       2,
     );
     expect((-lei(partida, "piso-educacao").saldoAnual / pib) * 100).toBeCloseTo(
-      5.58,
+      5.585416650106848,
       2,
     );
     // gasto total do turno 0: 31,03% do PIB, mais 0,16 das verbas da
     // Segurança em três níveis (SG161), mais os pisos maiores (V1-07)
-    expect(v.gasto_publico).toBeCloseTo(31.29, 1);
+    expect(v.gasto_publico).toBeCloseTo(31.216734742454538, 1);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {

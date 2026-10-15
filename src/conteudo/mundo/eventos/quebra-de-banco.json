@@ -14,7 +14,7 @@
     "chance": 0.008,
     "fatores": [
       {
-        "variavel": "nivel_regulacao_bancaria",
+        "variavel": "nivel_regulacao_dos_bancos",
         "de": 67,
         "ate": 0,
         "multiplica": 4

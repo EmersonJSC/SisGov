@@ -2,7 +2,7 @@
   "id": "agrotoxicos--preco-alimentos",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "preco_alimentos",
   "mecanismo": "limiar",
   "parametros": {

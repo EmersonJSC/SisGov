@@ -687,7 +687,7 @@
       },
       "reage": [
         {
-          "lei": "estabilidade-servidores-publicos",
+          "lei": "estabilidade-dos-servidores-publicos",
           "sobe": "baixo",
           "peso": 20
         },
@@ -701,6 +701,12 @@
           "sobe": "baixo",
           "peso": 10,
           "faixa": [25, 50]
+        },
+        {
+          "lei": "forma-de-gestao-hospitalar",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -739,6 +745,12 @@
           "sobe": "baixo",
           "peso": 20,
           "faixa": [10, 25]
+        },
+        {
+          "lei": "financiamento-com-resultado",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -850,12 +862,12 @@
       },
       "reage": [
         {
-          "lei": "programa-medicos-no-interior",
+          "lei": "programa-de-medicos-no-interior",
           "sobe": "alto",
           "peso": 25
         },
         {
-          "lei": "sistema-de-saude",
+          "lei": "modelo-do-sistema-de-saude",
           "sobe": "alto",
           "peso": 15
         }
@@ -886,12 +898,6 @@
       },
       "reage": [
         {
-          "lei": "tarifas-de-importacao",
-          "sobe": "baixo",
-          "peso": 10,
-          "faixa": [0, 30]
-        },
-        {
           "indice": "taxa_juros",
           "sobe": "alto",
           "peso": 15,
@@ -902,6 +908,18 @@
           "sobe": "alto",
           "peso": 15,
           "faixa": [15, 45]
+        },
+        {
+          "lei": "tarifas-de-importacao",
+          "sobe": "baixo",
+          "peso": 10,
+          "faixa": [0, 30]
+        },
+        {
+          "lei": "investimento-em-geracao-por-fonte",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -930,7 +948,7 @@
           "faixa": [10, 35]
         },
         {
-          "lei": "regime-simplificado-pequenas-empresas",
+          "lei": "regime-simplificado-para-pequenas-empresas",
           "sobe": "baixo",
           "peso": 20
         }
@@ -959,7 +977,7 @@
           "peso": 15
         },
         {
-          "lei": "agrotoxicos",
+          "lei": "registro-de-agrotoxicos",
           "sobe": "alto",
           "peso": 10
         },
@@ -1017,6 +1035,36 @@
           "indice": "expectativas_inflacao",
           "sobe": "alto",
           "peso": 10
+        },
+        {
+          "lei": "cannabis-legal",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "intermediacao-e-qualificacao",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "mutirao-de-cirurgias",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "orcamento-do-judiciario",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "politica-de-precos-das-estatais",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -1067,6 +1115,18 @@
           "lei": "licenciamento-ambiental",
           "sobe": "alto",
           "peso": 20
+        },
+        {
+          "lei": "conteudo-local",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "politica-de-precos-das-estatais",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -1106,7 +1166,7 @@
       },
       "reage": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 25
         },
@@ -1206,6 +1266,12 @@
           "lei": "apostas-e-jogos-de-azar",
           "sobe": "baixo",
           "peso": 40
+        },
+        {
+          "lei": "tributo-sobre-apostas",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -1238,7 +1304,7 @@
       },
       "reage": [
         {
-          "lei": "reforma-agraria",
+          "lei": "redistribuicao-de-terras",
           "sobe": "baixo",
           "peso": 20
         },
@@ -1319,7 +1385,7 @@
       },
       "reage": [
         {
-          "lei": "acesso-ensino-superior",
+          "lei": "acesso-ao-ensino-superior",
           "sobe": "baixo",
           "peso": 20
         },
@@ -1417,7 +1483,7 @@
           "peso": 10
         },
         {
-          "lei": "protecao-violencia-domestica",
+          "lei": "protecao-contra-violencia-domestica",
           "sobe": "baixo",
           "peso": 15
         }
@@ -1496,6 +1562,12 @@
           "indice": "emissoes",
           "sobe": "alto",
           "peso": 15
+        },
+        {
+          "lei": "investimento-em-geracao-por-fonte",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -1588,7 +1660,7 @@
           "peso": 20
         },
         {
-          "lei": "reforma-agraria",
+          "lei": "redistribuicao-de-terras",
           "sobe": "baixo",
           "peso": 20
         }
@@ -1659,9 +1731,21 @@
           "faixa": [8, 20]
         },
         {
-          "lei": "sistema-de-saude",
+          "lei": "modelo-do-sistema-de-saude",
           "sobe": "baixo",
           "peso": 20
+        },
+        {
+          "lei": "forma-de-gestao-hospitalar",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
+        },
+        {
+          "lei": "lista-de-remedios-e-incorporacao",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -1894,7 +1978,7 @@
       },
       "reage": [
         {
-          "lei": "reforma-agraria",
+          "lei": "redistribuicao-de-terras",
           "sobe": "alto",
           "peso": 15
         },
@@ -1984,7 +2068,7 @@
       },
       "reage": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 25
         },
@@ -2049,6 +2133,12 @@
           "lei": "casamento-e-uniao-civil",
           "sobe": "alto",
           "peso": 15
+        },
+        {
+          "lei": "cannabis-legal",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -2093,6 +2183,12 @@
           "lei": "educacao-domiciliar",
           "sobe": "baixo",
           "peso": 15
+        },
+        {
+          "lei": "cannabis-legal",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -2138,6 +2234,12 @@
           "indice": "inseguranca_alimentar",
           "sobe": "alto",
           "peso": 15
+        },
+        {
+          "lei": "regime-contra-faccoes",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -2172,7 +2274,7 @@
           "peso": 15
         },
         {
-          "lei": "reforma-agraria",
+          "lei": "redistribuicao-de-terras",
           "sobe": "baixo",
           "peso": 10
         },
@@ -2180,6 +2282,12 @@
           "indice": "deficit_habitacional",
           "sobe": "alto",
           "peso": 15
+        },
+        {
+          "lei": "regime-contra-faccoes",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -2255,9 +2363,15 @@
           "peso": 10
         },
         {
-          "lei": "poderes-de-investigacao-policial",
+          "lei": "poderes-de-investigacao",
           "sobe": "baixo",
           "peso": 10
+        },
+        {
+          "lei": "coordenacao-das-policias",
+          "sobe": "alto",
+          "peso": 10,
+          "faixa": [0, 100]
         }
       ],
       "recursos": {
@@ -2329,12 +2443,12 @@
       },
       "reage": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "baixo",
           "peso": 20
         },
         {
-          "lei": "liberdade-imprensa",
+          "lei": "liberdade-de-imprensa",
           "sobe": "baixo",
           "peso": 20
         }
@@ -2400,7 +2514,7 @@
           "peso": 15
         },
         {
-          "lei": "liberdade-imprensa",
+          "lei": "liberdade-de-imprensa",
           "sobe": "baixo",
           "peso": 15
         },

@@ -1,0 +1,20 @@
+{
+  "id": "gestao-da-escola-publica--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_da_escola_publica",
+  "alvo": "liberdade_civil",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, -0.5],
+      [100, -2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

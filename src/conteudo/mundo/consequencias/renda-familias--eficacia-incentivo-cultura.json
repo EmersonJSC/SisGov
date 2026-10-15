@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "renda_familias",
-  "alvo": "eficacia:incentivo-cultura",
+  "alvo": "eficacia:incentivo-a-cultura",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

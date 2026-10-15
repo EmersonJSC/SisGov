@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "confianca_empresarial",
-  "alvo": "eficacia:ensino-tecnico-profissional",
+  "alvo": "eficacia:ensino-tecnico-e-profissional",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Vouchers escolares",
-  "descricao": "Define se o dinheiro público da educação básica segue o aluno, podendo pagar escolas privadas ou geridas por terceiros escolhidas pela família.",
+  "descricao": "O dinheiro público pode pagar escola privada escolhida pela família?",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "escola",
     "nome": "Escola",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_vouchers_escolares",
     "unidade": "nivel_escopo",
@@ -20,22 +24,36 @@
       {
         "id": "so-escola-estatal",
         "rotulo": "Só escola estatal",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Sindicatos de professores", "Movimento estudantil"],
+        "rejeitam": ["Empresários", "Escolas privadas"],
+        "efeitos": "Nada muda"
       },
       {
-        "id": "gestao-terceirizada",
-        "rotulo": "Escolas públicas geridas por terceiros",
-        "valor": 33
+        "id": "gestao-terceirizada-de-escola-publica",
+        "rotulo": "Gestão terceirizada de escola pública",
+        "valor": 33,
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Sindicatos de professores"],
+        "efeitos": "Aprendizagem ≈ 0 a ↑ pequeno (aprox.)"
       },
       {
-        "id": "voucher-focalizado",
-        "rotulo": "Voucher para os pobres",
-        "valor": 67
+        "id": "voucher-so-para-pobres-sem-cobranca-extra-e-sem-selecao",
+        "rotulo": "Voucher só para pobres, sem cobrança extra e sem seleção",
+        "valor": 67,
+        "custoTexto": "+0,1 a 0,3% do PIB (aprox.), educação",
+        "apoiam": ["Empresários", "Igrejas evangélicas"],
+        "rejeitam": ["Sindicatos de professores"],
+        "efeitos": "Aprendizagem ≈ 0; Segregação escolar ↑ pequeno"
       },
       {
         "id": "voucher-universal",
-        "rotulo": "Voucher para todos",
-        "valor": 100
+        "rotulo": "Voucher universal",
+        "valor": 100,
+        "custoTexto": "ambíguo (subsídio a quem já pagava, aprox.)",
+        "apoiam": ["Mercado financeiro", "Empresários", "Classe média"],
+        "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
+        "efeitos": "Aprendizagem ≈ 0 na média; Segregação escolar ↑ forte; Classe média satisfeita ↑"
       }
     ]
   },
@@ -53,8 +71,9 @@
     "vouchers-escolares--grupo-servidores",
     "vouchers-escolares--grupo-trabalhadores"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Avaliação das escolas. \"Sem avaliação\" trava todas as opções menos \"Só escola estatal\".",
+    "leis": ["avaliacao-das-escolas"]
+  },
+  "ministerio": "Ministério da Educação"
 }

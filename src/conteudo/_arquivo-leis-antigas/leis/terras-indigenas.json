@@ -1,0 +1,60 @@
+{
+  "id": "terras-indigenas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Terras indígenas",
+  "descricao": "Define se o Estado reconhece os territórios dos povos originários e quanto poder eles têm sobre o que acontece neles.",
+  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério do Meio Ambiente",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_terras_indigenas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reconhecimento",
+        "rotulo": "Sem reconhecimento",
+        "valor": 0
+      },
+      {
+        "id": "reconhecimento-limitado",
+        "rotulo": "Reconhecimento limitado",
+        "valor": 33
+      },
+      {
+        "id": "demarcacao",
+        "rotulo": "Demarcação com usufruto exclusivo",
+        "valor": 67
+      },
+      {
+        "id": "autonomia",
+        "rotulo": "Autonomia territorial",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "terras-indigenas--desmatamento",
+    "terras-indigenas--emissoes",
+    "terras-indigenas--qualidade-ambiental",
+    "terras-indigenas--conflitos-fundiarios",
+    "terras-indigenas--producao-mineral",
+    "terras-indigenas--producao-agropecuaria",
+    "terras-indigenas--reputacao-internacional",
+    "terras-indigenas--gasto-publico",
+    "terras-indigenas--grupo-agro",
+    "terras-indigenas--grupo-empresarios",
+    "terras-indigenas--grupo-progressistas",
+    "terras-indigenas--grupo-ambientalistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

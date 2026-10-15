@@ -2,7 +2,7 @@
   "id": "avaliacao-escolas--greve-de-professores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_avaliacao_escolas",
+  "origem": "nivel_avaliacao_das_escolas",
   "alvo": "greve_de_professores",
   "mecanismo": "limiar",
   "parametros": {

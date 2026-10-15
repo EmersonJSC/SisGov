@@ -1,0 +1,17 @@
+{
+  "id": "verba-da-policia-federal--capacidade-inteligencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_verba_da_policia_federal",
+  "alvo": "capacidade_inteligencia",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 66.666667,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "delacao-premiada-e-acordos--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_delacao_premiada_e_acordos",
+  "alvo": "liberdade_civil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 3.5
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

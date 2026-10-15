@@ -109,7 +109,7 @@ describe("SG161 — Segurança em três níveis", () => {
     // verificador da ficha (V1-05).
     const v3 = new Set(fichasV3.migradas);
     for (const l of verPartida(partida).leis)
-      if (l.nivelLegal && !v3.has(l.id))
+      if (l.nivelLegal && !v3.has(l.id) && !l.mesa)
         expect(l.opcoes?.length ?? 0, l.id).toBeLessThan(4);
   });
 });

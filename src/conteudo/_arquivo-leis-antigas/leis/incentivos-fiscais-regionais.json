@@ -1,0 +1,61 @@
+{
+  "id": "incentivos-fiscais-regionais",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Incentivos fiscais regionais",
+  "descricao": "Define se o país dá isenções de impostos para atrair empresas a certas regiões e qual o formato: zona de exportação, fundo para regiões pobres ou zona franca ampla.",
+  "area": "Tributação",
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério da Fazenda",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_incentivos_fiscais_regionais",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Sem incentivo regional",
+        "valor": 0
+      },
+      {
+        "id": "zonas-exportacao",
+        "rotulo": "Zonas de exportação",
+        "valor": 33
+      },
+      {
+        "id": "fundos-regionais",
+        "rotulo": "Incentivo a regiões pobres",
+        "valor": 67
+      },
+      {
+        "id": "zona-franca-ampla",
+        "rotulo": "Zona franca ampla",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "incentivos-fiscais-regionais--investimento",
+    "incentivos-fiscais-regionais--exportacoes",
+    "incentivos-fiscais-regionais--desigualdade",
+    "incentivos-fiscais-regionais--produtividade",
+    "incentivos-fiscais-regionais--complexidade-tributaria",
+    "incentivos-fiscais-regionais--corrupcao",
+    "incentivos-fiscais-regionais--arrecadacao",
+    "incentivos-fiscais-regionais--grupo-classe-media",
+    "incentivos-fiscais-regionais--grupo-empresarios",
+    "incentivos-fiscais-regionais--grupo-pequenos-negocios",
+    "incentivos-fiscais-regionais--grupo-servidores",
+    "incentivos-fiscais-regionais--grupo-trabalhadores",
+    "incentivos-fiscais-regionais--grupo-interior"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

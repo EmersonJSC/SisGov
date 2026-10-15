@@ -1,16 +1,21 @@
 {
   "id": "propriedade-dos-meios-de-producao",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Propriedade dos meios de produção",
-  "descricao": "De quem são as fábricas, as terras e os bancos: propriedade privada garantida, economia mista com setores reservados ao Estado ou propriedade socialista, do Estado e das cooperativas.",
-  "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério da Economia",
-  "nivel": "constituicao",
+  "descricao": "Empresas, terras e fábricas são privadas, mistas ou do Estado?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
     "nome": "Propriedade e estatais",
     "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
   },
   "controle": {
     "variavel": "nivel_propriedade_dos_meios_de_producao",
@@ -18,143 +23,55 @@
     "opcoes": [
       {
         "id": "privada",
-        "rotulo": "Propriedade privada garantida",
-        "valor": 0
+        "rotulo": "Privada",
+        "valor": 0,
+        "apoiam": ["Empresários", "Entidades do agronegócio"],
+        "rejeitam": ["Movimentos por terra"],
+        "efeitos": "Investimento privado ↑; confiança ↑"
       },
       {
         "id": "mista",
-        "rotulo": "Mista, com setores reservados ao Estado",
-        "valor": 50
+        "rotulo": "Mista",
+        "valor": 50.0,
+        "apoiam": ["Confederação da indústria"],
+        "efeitos": "Investimento privado ↑ pouco contra Socialista; confiança estável; produtividade ↑ pouco no longo prazo (estimado)"
       },
       {
         "id": "socialista",
-        "rotulo": "Socialista: do Estado e das cooperativas",
-        "valor": 100
+        "rotulo": "Socialista",
+        "valor": 100,
+        "custoTexto": "O Estado assume todo o investimento",
+        "apoiam": ["Movimentos por terra"],
+        "rejeitam": [
+          "Confederação da indústria",
+          "Comércio e serviços",
+          "Mercado financeiro",
+          "Entidades do agronegócio",
+          "Petróleo e mineração"
+        ],
+        "efeitos": "Fuga de capitais ↑ forte; investimento estrangeiro ↓ forte; produtividade ↓ no longo prazo"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "investimento",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -4],
-          [100, -20]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "produtividade",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -2],
-          [100, -10]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "desigualdade",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -3],
-          [100, -10]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "desabastecimento",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 2],
-          [100, 15]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "mercado_paralelo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 3],
-          [100, 15]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -8],
-          [100, -25]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_ricos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -6],
-          [100, -20]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_pobres",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 1],
-          [100, 2]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "propriedade-dos-meios-de-producao--confianca-empresarial",
+    "propriedade-dos-meios-de-producao--fuga-capitais",
+    "propriedade-dos-meios-de-producao--ied",
+    "propriedade-dos-meios-de-producao--investimento",
+    "propriedade-dos-meios-de-producao--produtividade",
+    "propriedade-dos-meios-de-producao--desigualdade",
+    "propriedade-dos-meios-de-producao--desabastecimento",
+    "propriedade-dos-meios-de-producao--mercado-paralelo",
+    "propriedade-dos-meios-de-producao--grupo-empresarios",
+    "propriedade-dos-meios-de-producao--grupo-ricos",
+    "propriedade-dos-meios-de-producao--grupo-pobres",
+    "calibracao-economia--corrupcao",
+    "calibracao-economia--crise-financeira",
+    "calibracao-economia--infraestrutura",
+    "calibracao-economia--margem-manobra-governo",
+    "calibracao-economia--preco-energia",
+    "calibracao-economia--recessao",
+    "calibracao-economia--reputacao-internacional"
   ],
-  "historia": {
-    "opcoes": {
-      "privada": ["Brasil", "Estados Unidos", "Alemanha"],
-      "mista": [
-        "Índia de 1956 a 1991 (setores reservados ao Estado)",
-        "México (petróleo, art. 27)"
-      ],
-      "socialista": [
-        "União Soviética (Constituição de 1977, arts. 10 a 13)",
-        "Cuba (Constituição de 1976)"
-      ]
-    },
-    "brasil": "A Constituição garante a propriedade privada, com função social (arts. 5º, XXII e XXIII, e 170)."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "arts. 5º e 170, opção do Brasil"
-    },
-    {
-      "titulo": "Constituição da URSS de 1977",
-      "url": "https://en.wikipedia.org/wiki/1977_Constitution_of_the_Soviet_Union",
-      "usadoPara": "propriedade socialista (arts. 10 a 13)"
-    }
-  ]
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

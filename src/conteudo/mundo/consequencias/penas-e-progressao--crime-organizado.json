@@ -1,0 +1,17 @@
+{
+  "id": "penas-e-progressao--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_penas_e_progressao",
+  "alvo": "crime_organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": -1.05
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

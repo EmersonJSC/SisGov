@@ -2,7 +2,7 @@
   "id": "protecao-violencia-domestica--protecao-efetiva-mulheres",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_protecao_violencia_domestica",
+  "origem": "nivel_protecao_contra_violencia_domestica",
   "alvo": "protecao_efetiva_mulheres",
   "mecanismo": "afim",
   "parametros": {

@@ -1,153 +1,68 @@
 {
   "id": "conteudo-moral-e-sexual",
   "tipo": "lei",
-  "versaoEsquema": 3,
-  "nome": "Conteúdo moral e sexual na escola",
-  "descricao": "O que a escola ensina sobre sexo e gênero: educação sexual e de gênero, só biologia e saúde, só com autorização da família ou nada.",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Conteúdo moral e sexual",
+  "descricao": "O que a escola pode ensinar sobre sexualidade, gênero e valores?",
   "area": "Educação, ciência e cultura",
-  "ministerio": "Ministério da Educação",
-  "nivel": "lei",
   "mesa": {
     "id": "escola",
     "nome": "Escola",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
   },
   "controle": {
     "variavel": "nivel_conteudo_moral_e_sexual",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "educacao-integral",
-        "rotulo": "Educação sexual e de gênero no currículo",
-        "valor": 0
+        "id": "educacao-integral-genero-sexualidade-e-diversidade",
+        "rotulo": "Educação integral: gênero, sexualidade e diversidade",
+        "valor": 0,
+        "apoiam": ["LGBT", "Feminista"],
+        "rejeitam": ["Igrejas evangélicas", "Hierarquia católica"],
+        "efeitos": "Discriminação ↓; Gravidez na adolescência ↓ (aprox.); Polarização ↑"
       },
       {
-        "id": "biologia-e-saude",
+        "id": "so-biologia-e-saude",
         "rotulo": "Só biologia e saúde",
-        "valor": 33
+        "valor": 33,
+        "apoiam": ["Saúde pública", "Classe média"],
+        "rejeitam": ["Igrejas evangélicas"],
+        "efeitos": "Gravidez na adolescência ↓ pequeno (aprox.)"
       },
       {
-        "id": "escolha-da-familia",
-        "rotulo": "Só com autorização da família",
-        "valor": 67
+        "id": "a-familia-escolhe-se-o-filho-assiste",
+        "rotulo": "A família escolhe se o filho assiste",
+        "valor": 67,
+        "apoiam": ["Hierarquia católica", "Igrejas evangélicas"],
+        "rejeitam": ["LGBT", "Feminista"],
+        "efeitos": "Polarização ↑ pequeno"
       },
       {
-        "id": "proibido",
-        "rotulo": "Proibido falar de gênero e sexualidade",
-        "valor": 100
+        "id": "proibido-com-controle-do-que-o-professor-diz",
+        "rotulo": "Proibido, com controle do que o professor diz",
+        "valor": 100,
+        "apoiam": ["Igrejas evangélicas"],
+        "rejeitam": ["LGBT", "Feminista", "Sindicatos de professores"],
+        "efeitos": "Polarização ↑; Liberdade civil ↓; conflito com a liberdade de ensinar"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "discriminacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -2],
-          [33, 0],
-          [67, 1],
-          [100, 3]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [33, 0],
-          [67, 0],
-          [100, -2]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "grupo_evangelicos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -4],
-          [33, 0],
-          [67, 2],
-          [100, 4]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_conservadores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -4],
-          [33, 0],
-          [67, 2],
-          [100, 4]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 3],
-          [33, 0],
-          [67, -2],
-          [100, -5]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_jovens",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [33, 0],
-          [67, -1],
-          [100, -2]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "conteudo-moral-e-sexual--discriminacao",
+    "conteudo-moral-e-sexual--liberdade-civil",
+    "conteudo-moral-e-sexual--grupo-evangelicos",
+    "conteudo-moral-e-sexual--grupo-conservadores",
+    "conteudo-moral-e-sexual--grupo-progressistas",
+    "conteudo-moral-e-sexual--grupo-jovens",
+    "conteudo-moral-e-sexual--polarizacao"
   ],
-  "historia": {
-    "opcoes": {
-      "educacao-integral": ["Suécia (desde 1955)", "Países Baixos", "Uruguai"],
-      "biologia-e-saude": ["Brasil (Base Nacional Comum Curricular, 2017)"],
-      "escolha-da-familia": [
-        "Reino Unido (a família pode tirar o filho da aula de sexo)"
-      ],
-      "proibido": [
-        "Reino Unido de 1988 a 2003 (seção 28)",
-        "Rússia (Lei 135-FZ/2013)",
-        "Hungria (2021)"
-      ]
-    },
-    "brasil": "A Base Nacional Comum Curricular (2017) trata do tema em ciências e saúde; o STF derrubou leis municipais que proibiam falar de gênero (ADPF 457, 2020)."
-  },
-  "fontes": [
-    {
-      "titulo": "Seção 28 do Local Government Act 1988 (Reino Unido)",
-      "url": "https://en.wikipedia.org/wiki/Section_28",
-      "usadoPara": "proibido"
-    },
-    {
-      "titulo": "Lei federal russa 135-FZ/2013 (propaganda LGBT)",
-      "url": "https://en.wikipedia.org/wiki/Russian_gay_propaganda_law",
-      "usadoPara": "proibido"
-    },
-    {
-      "titulo": "Base Nacional Comum Curricular",
-      "url": "http://basenacionalcomum.mec.gov.br/",
-      "usadoPara": "opção do Brasil"
-    }
-  ]
+  "ministerio": "Ministério da Educação"
 }

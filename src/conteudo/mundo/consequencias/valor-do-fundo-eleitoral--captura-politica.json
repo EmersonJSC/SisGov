@@ -1,0 +1,17 @@
+{
+  "id": "valor-do-fundo-eleitoral--captura-politica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_valor_do_fundo_eleitoral",
+  "alvo": "captura_politica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

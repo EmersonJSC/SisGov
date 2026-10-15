@@ -1,0 +1,17 @@
+{
+  "id": "tribunais-superiores--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_superiores",
+  "alvo": "polarizacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": -0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "programa-de-privatizacao--grupo-trabalhadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_de_privatizacao",
+  "alvo": "grupo_trabalhadores",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [50, 0],
+      [100, -2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

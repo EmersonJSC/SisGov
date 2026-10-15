@@ -2,7 +2,7 @@
   "id": "avaliacao-escolas--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_avaliacao_escolas",
+  "origem": "nivel_avaliacao_das_escolas",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {

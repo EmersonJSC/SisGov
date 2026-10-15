@@ -2,7 +2,7 @@
   "id": "protecao-violencia-domestica--liberdade-civil",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_protecao_violencia_domestica",
+  "origem": "nivel_protecao_contra_violencia_domestica",
   "alvo": "liberdade_civil",
   "mecanismo": "limiar",
   "parametros": {

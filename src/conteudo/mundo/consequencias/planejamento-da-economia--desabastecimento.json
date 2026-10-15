@@ -1,0 +1,20 @@
+{
+  "id": "planejamento-da-economia--desabastecimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_planejamento_da_economia",
+  "alvo": "desabastecimento",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 0],
+      [100, 15]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

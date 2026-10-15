@@ -2,45 +2,66 @@
   "id": "seguro-desemprego",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Seguro-desemprego",
-  "descricao": "Define se e como o Estado sustenta quem perdeu o emprego: nada, poupança individual, seguro curto ou seguro generoso com contrapartidas.",
-  "area": "Trabalho e emprego",
+  "descricao": "Quem perde o emprego tem direito a renda, e por quanto tempo?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "desemprego",
     "nome": "Desemprego",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_seguro_desemprego",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Sem seguro",
-        "valor": 0
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Trabalhadores com carteira"],
+        "efeitos": "pobreza ↑ na crise; consumo cai mais na recessão; Informalidade ↓ pouco"
       },
       {
-        "id": "conta-individual",
-        "rotulo": "Conta individual",
-        "valor": 25
+        "id": "conta-individual-do-trabalhador",
+        "rotulo": "Conta individual do trabalhador",
+        "valor": 25,
+        "custoTexto": "perto de 0 (sai da conta do trabalhador)",
+        "apoiam": ["Mercado financeiro", "Classe média"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Custo de contratar ↑ pouco; proteção na crise ↓"
       },
       {
-        "id": "basico-curto",
-        "rotulo": "Seguro curto",
-        "valor": 50
+        "id": "basico-e-curto",
+        "rotulo": "Básico e curto",
+        "valor": 50,
+        "custoTexto": "0,3% a 0,5% do PIB (aprox.), Proteção social",
+        "efeitos": "estabilizador fraco na recessão"
       },
       {
-        "id": "moderado",
-        "rotulo": "Seguro moderado",
-        "valor": 75
+        "id": "moderado-3-a-5-parcelas",
+        "rotulo": "Moderado: 3 a 5 parcelas",
+        "valor": 75,
+        "custoTexto": "0,5% a 0,8% do PIB com o abono (aprox.), Proteção social",
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["nenhum grupo grande"],
+        "efeitos": "duração do desemprego ↑ pouco (cada mês a mais de benefício gera 0,86 mês pago, só 15% por mudança de comportamento); pobreza ↓; Informalidade ↑ pouco"
       },
       {
-        "id": "generoso-com-ativacao",
-        "rotulo": "Generoso com contrapartida",
-        "valor": 100
+        "id": "generoso-com-ativacao-beneficio-longo-e-busca-obrigatoria",
+        "rotulo": "Generoso com ativação: benefício longo e busca obrigatória",
+        "valor": 100,
+        "custoTexto": "1% a 2% do PIB (aprox.), Proteção social",
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "pobreza ↓↓; consumo segura na crise; duração do desemprego ↑ pouco; Gasto do FAT ↑↑ quando o desemprego sobe"
       }
     ]
   },
@@ -53,10 +74,13 @@
     "seguro-desemprego--rotatividade-emprego",
     "seguro-desemprego--gasto-publico",
     "seguro-desemprego--grupo-empresarios",
-    "seguro-desemprego--grupo-trabalhadores"
+    "seguro-desemprego--grupo-trabalhadores",
+    "seguro-desemprego--informalidade",
+    "seguro-desemprego--custo-trabalhista"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
-  }
+  },
+  "ministerio": "Ministério do Trabalho"
 }

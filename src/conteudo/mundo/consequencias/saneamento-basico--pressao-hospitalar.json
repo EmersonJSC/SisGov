@@ -2,7 +2,7 @@
   "id": "saneamento-basico--pressao-hospitalar",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_saneamento_basico",
+  "origem": "nivel_agua_e_esgoto",
   "alvo": "pressao_hospitalar",
   "mecanismo": "afim",
   "parametros": {

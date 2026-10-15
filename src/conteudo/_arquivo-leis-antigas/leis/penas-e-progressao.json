@@ -1,0 +1,54 @@
+{
+  "id": "penas-e-progressao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Tempo de prisão",
+  "descricao": "Quanto tempo o condenado fica preso e quando passa para o semiaberto.",
+  "area": "Segurança, justiça e drogas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério da Justiça",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "revogavel": false,
+  "controle": {
+    "variavel": "nivel_penas_e_progressao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "penas-curtas",
+        "rotulo": "Penas curtas, progressão rápida",
+        "valor": 0
+      },
+      {
+        "id": "teto-40-anos",
+        "rotulo": "Teto de 40 anos, progressão por fração",
+        "valor": 50
+      },
+      {
+        "id": "sem-progressao",
+        "rotulo": "Sem progressão para crimes violentos",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "penas-e-progressao--lotacao-prisional",
+    "penas-e-progressao--sensacao-seguranca",
+    "penas-e-progressao--reincidencia",
+    "penas-e-progressao--rebeliao-presidios",
+    "penas-e-progressao--gasto-publico",
+    "penas-e-progressao--grupo-conservadores",
+    "penas-e-progressao--grupo-pobres",
+    "penas-e-progressao--grupo-progressistas",
+    "penas-e-progressao--grupo-servidores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

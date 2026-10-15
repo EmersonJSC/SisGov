@@ -2466,7 +2466,17 @@ function validatePolicyOptions(
     validateKnownFields(
       option,
       file,
-      ["id", "rotulo", "valor", "custoAnualPercentualPib", "requer"],
+      [
+        "id",
+        "rotulo",
+        "valor",
+        "custoAnualPercentualPib",
+        "custoTexto",
+        "apoiam",
+        "rejeitam",
+        "efeitos",
+        "requer",
+      ],
       diagnostics,
     );
     if (option.requer !== undefined)
@@ -2567,6 +2577,129 @@ function validateOptionRequirements(
   });
 }
 
+/** Faixa, implantação e mãe da lei (V1-34, camadas). */
+function validatePolicyLayerFields(
+  value: JsonObject,
+  file: string,
+  diagnostics: ContentDiagnostic[],
+): void {
+  if (isObject(value.controle) && value.controle.faixa !== undefined) {
+    const range = value.controle.faixa;
+    if (!isObject(range))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "controle.faixa",
+          "TIPO_INVALIDO",
+          "Deve ser um objeto.",
+        ),
+      );
+    else {
+      validateKnownFields(
+        range,
+        file,
+        ["minimo", "maximo", "valorReferencia", "unidade"],
+        diagnostics,
+      );
+      const minimum = requiredNumber(
+        range,
+        file,
+        "controle.faixa.minimo",
+        diagnostics,
+      );
+      const maximum = requiredNumber(
+        range,
+        file,
+        "controle.faixa.maximo",
+        diagnostics,
+      );
+      requiredString(range, file, "controle.faixa.unidade", diagnostics);
+      if (minimum !== undefined && maximum !== undefined && minimum >= maximum)
+        diagnostics.push(
+          diagnostic(
+            file,
+            "controle.faixa",
+            "VALOR_INVALIDO",
+            "O mínimo da faixa deve ser menor que o máximo.",
+          ),
+        );
+      if (range.valorReferencia !== undefined) {
+        const brazil = requiredNumber(
+          range,
+          file,
+          "controle.faixa.valorReferencia",
+          diagnostics,
+        );
+        if (
+          brazil !== undefined &&
+          minimum !== undefined &&
+          maximum !== undefined &&
+          (brazil < minimum || brazil > maximum)
+        )
+          diagnostics.push(
+            diagnostic(
+              file,
+              "controle.faixa.valorReferencia",
+              "VALOR_INVALIDO",
+              "O valor do Brasil deve ficar dentro da faixa.",
+            ),
+          );
+      }
+    }
+  }
+  if (value.implantacaoTurnos !== undefined) {
+    const turns = value.implantacaoTurnos;
+    if (!isObject(turns))
+      diagnostics.push(
+        diagnostic(
+          file,
+          "implantacaoTurnos",
+          "TIPO_INVALIDO",
+          "Deve ser um objeto.",
+        ),
+      );
+    else {
+      validateKnownFields(turns, file, ["minimo", "maximo"], diagnostics);
+      const minimum = requiredNumber(
+        turns,
+        file,
+        "implantacaoTurnos.minimo",
+        diagnostics,
+      );
+      const maximum = requiredNumber(
+        turns,
+        file,
+        "implantacaoTurnos.maximo",
+        diagnostics,
+      );
+      if (
+        minimum !== undefined &&
+        maximum !== undefined &&
+        (minimum < 1 || maximum < minimum)
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "implantacaoTurnos",
+            "VALOR_INVALIDO",
+            "Use pelo menos 1 turno, com o máximo igual ou maior que o mínimo.",
+          ),
+        );
+    }
+  }
+  if (value.mae !== undefined) {
+    if (!isObject(value.mae))
+      diagnostics.push(
+        diagnostic(file, "mae", "TIPO_INVALIDO", "Deve ser um objeto."),
+      );
+    else {
+      validateKnownFields(value.mae, file, ["texto", "leis"], diagnostics);
+      requiredString(value.mae, file, "mae.texto", diagnostics);
+      requiredStringArray(value.mae, file, "mae.leis", diagnostics);
+    }
+  }
+}
+
 /** Mesa e vínculos da lei (V1-34). */
 function validatePolicyTable(
   value: JsonObject,
@@ -2662,6 +2795,8 @@ function validatePolicy(
       "revogavel",
       "requer",
       "mesa",
+      "implantacaoTurnos",
+      "mae",
       "vinculos",
       "consequencias",
       ...quantityFields,
@@ -2669,6 +2804,7 @@ function validatePolicy(
     diagnostics,
   );
   validatePolicyTable(value, file, diagnostics);
+  validatePolicyLayerFields(value, file, diagnostics);
   requiredString(value, file, "id", diagnostics);
   if (value.tipo !== "lei")
     diagnostics.push(
@@ -2837,7 +2973,7 @@ function validatePolicy(
     validateKnownFields(
       value.controle,
       file,
-      ["variavel", "unidade", "opcoes"],
+      ["variavel", "unidade", "opcoes", "faixa"],
       diagnostics,
     );
     requiredString(value.controle, file, "controle.variavel", diagnostics);
@@ -2849,9 +2985,12 @@ function validatePolicy(
         value.nivelLegal === undefined ? 3 : 2,
         diagnostics,
       );
-    else if (group === "institucional")
-      validatePolicyOptions(value.controle, file, 2, diagnostics);
-    else if (group && value.controle.opcoes !== undefined)
+    else if (group === "institucional" || group === "tributaria") {
+      // Tributária com opções (V1-34): a alíquota vira degraus nomeados; o
+      // nível da variável segue sendo a alíquota real (% do tributo).
+      if (group === "institucional" || value.controle.opcoes !== undefined)
+        validatePolicyOptions(value.controle, file, 2, diagnostics);
+    } else if (group && value.controle.opcoes !== undefined)
       diagnostics.push(
         diagnostic(
           file,

@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "corrupcao",
-  "alvo": "eficacia:estabilidade-servidores-publicos",
+  "alvo": "eficacia:estabilidade-dos-servidores-publicos",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": -0.002,

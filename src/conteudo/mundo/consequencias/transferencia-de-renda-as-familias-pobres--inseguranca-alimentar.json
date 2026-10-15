@@ -1,0 +1,17 @@
+{
+  "id": "transferencia-de-renda-as-familias-pobres--inseguranca-alimentar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transferencia_de_renda_as_familias_pobres",
+  "alvo": "inseguranca_alimentar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.084,
+    "termoConstante": 5.60028
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "programa-nuclear",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Programa nuclear",
+  "descricao": "Para que o país usa o átomo e quanto deixa ser inspecionado?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "soberania-nuclear-digital-e-de-fronteira",
+    "nome": "Soberania nuclear, digital e de fronteira",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_programa_nuclear",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibido",
+        "rotulo": "Proibido",
+        "valor": 0,
+        "apoiam": ["Ambientalistas", "Progressistas"],
+        "rejeitam": ["Associações de militares", "Confederação da indústria"],
+        "efeitos": "trava Energia nuclear em proibida; Inovação sem ganho"
+      },
+      {
+        "id": "pacifico-com-inspecao-plena",
+        "rotulo": "Pacífico com inspeção plena",
+        "valor": 33.33,
+        "apoiam": ["Progressistas", "Empresários"],
+        "rejeitam": ["Associações de militares"],
+        "efeitos": "Reputação internacional ↑"
+      },
+      {
+        "id": "pacifico-com-autonomia-sem-a-inspecao-extra",
+        "rotulo": "Pacífico com autonomia, sem a inspeção extra",
+        "valor": 66.67,
+        "custoTexto": "+0,01 a +0,02% do PIB (submarino nuclear; aprox., sem fonte aberta)",
+        "apoiam": [
+          "Associações de militares",
+          "Conservadores",
+          "Confederação da indústria"
+        ],
+        "rejeitam": ["Ambientalistas"],
+        "efeitos": "Capacidade de defesa ↑ com atraso maior que 15 anos; Inovação ↑ pouco"
+      },
+      {
+        "id": "dissuasao-nuclear",
+        "rotulo": "Dissuasão nuclear (arma)",
+        "valor": 100,
+        "custoTexto": "+0,3 a +0,5% do PIB (aprox.)",
+        "apoiam": ["Militares da reserva e grupos de intervenção"],
+        "rejeitam": ["Progressistas", "Católicos", "Empresários", "Agro"],
+        "efeitos": "Tensão internacional ↑ muito (aprox.); sanções internacionais muito prováveis; Reputação ↓; exige sair dos tratados de não proliferação"
+      }
+    ]
+  },
+  "consequencias": [
+    "programa-nuclear--reputacao-internacional",
+    "programa-nuclear--capacidade-defesa",
+    "programa-nuclear--inovacao",
+    "programa-nuclear--tensao-internacional"
+  ],
+  "ministerio": "Ministério da Fazenda",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

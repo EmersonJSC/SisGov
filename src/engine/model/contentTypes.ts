@@ -443,12 +443,27 @@ export type PolicyLimits = {
   maximoPercentualPib?: number;
 };
 
+/** Faixa de valor de uma alavanca, na unidade dela (ex.: "% ao ano"). */
+export type PolicyRange = {
+  minimo: number;
+  maximo: number;
+  valorReferencia?: number;
+  unidade: string;
+};
+
 export type PolicyOption = {
   id: string;
   rotulo: string;
   /** Intensidade que a opção coloca no grafo (definição da opção, não quantidade do país). */
   valor: number;
   custoAnualPercentualPib?: number;
+  /** Custo como está na ficha, quando ainda não é número (V1-34). */
+  custoTexto?: string;
+  /** Grupos que apoiam e que rejeitam a opção (ficha da lei). */
+  apoiam?: readonly string[];
+  rejeitam?: readonly string[];
+  /** Efeitos principais em texto, até virarem consequências com número. */
+  efeitos?: string;
   /**
    * Trava da opção (V1-34): ela só vale com estas leis nestas opções. Fora
    * delas, a lei anda para a opção liberada mais perto.
@@ -488,7 +503,13 @@ export type PolicyFile = {
     variavel: string;
     unidade: string;
     opcoes?: readonly PolicyOption[];
+    /** Alavanca com faixa de valor (V1-34): piso, teto e o valor de referência. */
+    faixa?: PolicyRange;
   };
+  /** Turnos até a lei valer: mínimo e máximo (Constituição 4, alavanca 1). */
+  implantacaoTurnos?: { minimo: number; maximo: number };
+  /** Quem trava esta lei, como na ficha: o texto e as leis citadas. */
+  mae?: { texto: string; leis: readonly string[] };
   orcamento?: {
     modo: "valor_fixo" | "percentual_orcamento";
     base?: "receita_total";

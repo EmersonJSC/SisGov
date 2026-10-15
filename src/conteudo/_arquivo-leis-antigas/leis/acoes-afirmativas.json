@@ -1,0 +1,66 @@
+{
+  "id": "acoes-afirmativas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Ações afirmativas",
+  "descricao": "Define se o Estado reserva vagas em universidades, concursos e candidaturas para grupos historicamente excluídos, e com que critério.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "ensino-superior",
+    "nome": "Ensino superior",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério dos Direitos Humanos",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_acoes_afirmativas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibidas",
+        "rotulo": "Proibidas",
+        "valor": 0
+      },
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 25
+      },
+      {
+        "id": "cotas-sociais",
+        "rotulo": "Cotas sociais",
+        "valor": 50
+      },
+      {
+        "id": "cotas-sociais-e-raciais",
+        "rotulo": "Cotas sociais e raciais",
+        "valor": 75
+      },
+      {
+        "id": "reservas-amplas",
+        "rotulo": "Reservas amplas",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "acoes-afirmativas--oportunidades-juvenis",
+    "acoes-afirmativas--desigualdade",
+    "acoes-afirmativas--discriminacao",
+    "acoes-afirmativas--polarizacao",
+    "acoes-afirmativas--escolaridade",
+    "acoes-afirmativas--oportunidades-juvenis-5",
+    "acoes-afirmativas--gasto-publico",
+    "acoes-afirmativas--grupo-classe-media",
+    "acoes-afirmativas--grupo-conservadores",
+    "acoes-afirmativas--grupo-empresarios",
+    "acoes-afirmativas--grupo-jovens",
+    "acoes-afirmativas--grupo-pobres",
+    "acoes-afirmativas--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

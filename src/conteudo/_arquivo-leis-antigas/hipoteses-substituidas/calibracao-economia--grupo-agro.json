@@ -1,0 +1,17 @@
+{
+  "id": "calibracao-economia--grupo-agro",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_propriedade_dos_meios_de_producao",
+  "alvo": "grupo_agro",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0,
+    "termoConstante": 3.4
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

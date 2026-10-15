@@ -2,7 +2,7 @@
   "id": "seguranca-alimentar--escolaridade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_seguranca_alimentar",
+  "origem": "nivel_garantia_de_comida",
   "alvo": "escolaridade",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,21 @@
+{
+  "id": "discriminacao-e-crimes-de-odio--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_discriminacao_e_crimes_de_odio",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [33, 0],
+      [67, -1],
+      [100, -5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

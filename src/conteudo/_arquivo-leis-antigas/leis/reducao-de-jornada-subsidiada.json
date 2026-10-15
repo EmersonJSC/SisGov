@@ -1,0 +1,53 @@
+{
+  "id": "reducao-de-jornada-subsidiada",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Redução de jornada subsidiada (lay-off)",
+  "descricao": "Define se, numa crise, o Estado paga parte do salário para empresas reduzirem horas em vez de demitir.",
+  "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_reducao_de_jornada_subsidiada",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Sem programa",
+        "valor": 0
+      },
+      {
+        "id": "emergencial",
+        "rotulo": "Só na emergência",
+        "valor": 50
+      },
+      {
+        "id": "permanente",
+        "rotulo": "Programa permanente",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "reducao-de-jornada-subsidiada--desemprego",
+    "reducao-de-jornada-subsidiada--recessao",
+    "reducao-de-jornada-subsidiada--consumo",
+    "reducao-de-jornada-subsidiada--produtividade",
+    "reducao-de-jornada-subsidiada--desigualdade",
+    "reducao-de-jornada-subsidiada--gasto-publico",
+    "reducao-de-jornada-subsidiada--grupo-empresarios",
+    "reducao-de-jornada-subsidiada--grupo-jovens",
+    "reducao-de-jornada-subsidiada--grupo-pobres",
+    "reducao-de-jornada-subsidiada--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

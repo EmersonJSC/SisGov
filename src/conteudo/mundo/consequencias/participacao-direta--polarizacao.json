@@ -1,0 +1,21 @@
+{
+  "id": "participacao-direta--polarizacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_participacao_direta",
+  "alvo": "polarizacao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [33, 0],
+      [67, 2],
+      [100, 5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

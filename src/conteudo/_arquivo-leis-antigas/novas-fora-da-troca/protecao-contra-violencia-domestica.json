@@ -1,0 +1,76 @@
+{
+  "id": "protecao-contra-violencia-domestica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Proteção contra violência doméstica",
+  "descricao": "Como o Estado trata a violência contra a mulher dentro de casa?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "violencia-domestica",
+    "nome": "Violência doméstica",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_protecao_contra_violencia_domestica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "assunto-privado-da-familia",
+        "rotulo": "Assunto privado da família",
+        "valor": 0,
+        "rejeitam": ["Movimento feminista", "Progressistas"],
+        "efeitos": "Proteção efetiva às mulheres ↓"
+      },
+      {
+        "id": "crime-comum-sem-regra-especial",
+        "rotulo": "Crime comum, sem regra especial",
+        "valor": 33,
+        "rejeitam": ["Movimento feminista"]
+      },
+      {
+        "id": "medidas-protetivas",
+        "rotulo": "Medidas protetivas (afastar o agressor por ordem do juiz)",
+        "valor": 67,
+        "custoTexto": "baixo",
+        "apoiam": [
+          "Movimento feminista",
+          "Progressistas",
+          "Evangélicos",
+          "Católicos"
+        ],
+        "efeitos": "Homicídios de mulheres em casa ↓ 10%; efeito maior onde há serviço instalado; violência letal ↓ pouco"
+      },
+      {
+        "id": "protecao-integral",
+        "rotulo": "Proteção integral (juizados, casas-abrigo, patrulha e renda)",
+        "valor": 100,
+        "custoTexto": "≈0,02 a 0,05% do PIB (aprox.), proteção social",
+        "apoiam": ["Movimento feminista", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Iguais ao anterior, mais fortes (sem número)"
+      }
+    ]
+  },
+  "consequencias": [
+    "protecao-violencia-domestica--protecao-efetiva-mulheres",
+    "protecao-violencia-domestica--violencia-letal",
+    "protecao-violencia-domestica--impunidade",
+    "protecao-violencia-domestica--lotacao-prisional",
+    "protecao-violencia-domestica--liberdade-civil",
+    "protecao-violencia-domestica--gasto-publico",
+    "protecao-violencia-domestica--grupo-conservadores",
+    "protecao-violencia-domestica--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Justiça"
+}

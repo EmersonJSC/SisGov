@@ -2,55 +2,66 @@
   "id": "banco-de-desenvolvimento",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Banco de desenvolvimento",
-  "descricao": "Define o papel do banco público de fomento: não existir, emprestar a preço de mercado por meio de outros bancos, ou conceder crédito barato e direcionado com dinheiro do Tesouro.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "O país tem um banco público que empresta às empresas, e a que preço?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
     "nome": "Propriedade e estatais",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Economia",
-  "processoAutorizacao": "emenda-constitucional",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_banco_de_desenvolvimento",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "sem-banco",
-        "rotulo": "Sem banco de fomento",
-        "valor": 0
+        "rotulo": "Sem banco",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Confederação da indústria"],
+        "efeitos": "Investimento ↓ em infraestrutura; juros ganham força"
       },
       {
-        "id": "segundo-piso-mercado",
-        "rotulo": "Fomento a preço de mercado",
-        "valor": 33
+        "id": "segundo-piso-juro-de-mercado",
+        "rotulo": "Segundo piso, juro de mercado (foco em infraestrutura e pequenas empresas)",
+        "valor": 33.33,
+        "custoTexto": "Baixo",
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Investimento ↑ leve"
       },
       {
         "id": "credito-direcionado",
         "rotulo": "Crédito direcionado",
-        "valor": 67
+        "valor": 66.67,
+        "custoTexto": "Subsídio para cobrir a diferença de juros (lacuna)",
+        "apoiam": ["Confederação da indústria", "Entidades do agronegócio"],
+        "efeitos": "Investimento ↑ (menor que no nível da firma); juros perdem força"
       },
       {
-        "id": "credito-subsidiado-massivo",
+        "id": "credito-subsidiado-em-massa",
         "rotulo": "Crédito subsidiado em massa",
-        "valor": 100
+        "valor": 100,
+        "custoTexto": "Alto (lacuna)",
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Investimento ↑ curto; taxa básica necessária ↑; cofre ↓; spread do crédito livre ↑"
       }
     ]
   },
   "consequencias": [
-    "banco-de-desenvolvimento--credito",
     "banco-de-desenvolvimento--investimento",
     "banco-de-desenvolvimento--divida-publica",
-    "banco-de-desenvolvimento--taxa-juros",
-    "banco-de-desenvolvimento--corrupcao",
-    "banco-de-desenvolvimento--infraestrutura",
-    "banco-de-desenvolvimento--gasto-publico",
-    "banco-de-desenvolvimento--grupo-agro",
-    "banco-de-desenvolvimento--grupo-empresarios",
-    "banco-de-desenvolvimento--grupo-pequenos-negocios"
+    "banco-de-desenvolvimento--gasto-publico"
   ],
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

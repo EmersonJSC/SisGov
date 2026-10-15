@@ -1,0 +1,17 @@
+{
+  "id": "seguro-desemprego--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_seguro_desemprego",
+  "alvo": "informalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.036,
+    "termoConstante": -2.7
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

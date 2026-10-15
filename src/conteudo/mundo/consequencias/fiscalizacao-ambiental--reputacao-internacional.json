@@ -1,0 +1,17 @@
+{
+  "id": "fiscalizacao-ambiental--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fiscalizacao_ambiental",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": -2.09979
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

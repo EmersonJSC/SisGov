@@ -1,0 +1,20 @@
+{
+  "id": "direito-de-greve--greve-geral",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_direito_de_greve",
+  "alvo": "greve_geral",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -8],
+      [50, -3],
+      [100, 0]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

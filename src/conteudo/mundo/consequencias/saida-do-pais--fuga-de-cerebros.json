@@ -1,0 +1,19 @@
+{
+  "id": "saida-do-pais--fuga-de-cerebros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_saida_do_pais",
+  "alvo": "fuga_de_cerebros",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [100, -2]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "quem-decide-o-salario-minimo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Quem decide o salário mínimo",
+  "descricao": "Existe um piso salarial nacional, e quem o fixa?",
+  "area": "Trabalho, salário e sindicatos",
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_quem_decide_o_salario_minimo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nao-existe-piso-nacional",
+        "rotulo": "Não existe piso nacional",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Trabalhadores com carteira", "Pobres"],
+        "efeitos": "Renda do trabalho na base ↓; desigualdade ↑; gasto com benefícios indexados deixa de crescer pelo mínimo"
+      },
+      {
+        "id": "negociacao-sindical-por-setor",
+        "rotulo": "Negociação sindical por setor",
+        "valor": 33,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["nenhum grupo grande"],
+        "efeitos": "Força sindical ↑; pisos diferentes por setor; Informalidade sem piso fica descoberta (aprox.)"
+      },
+      {
+        "id": "comissao-tecnica-independente",
+        "rotulo": "Comissão técnica independente",
+        "valor": 67,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["nenhum grupo grande"],
+        "efeitos": "reajustes previsíveis; risco de piso alto demais ↓"
+      },
+      {
+        "id": "lei-nacional-votada-pelo-governo-e-congresso",
+        "rotulo": "Lei nacional votada pelo governo e Congresso",
+        "valor": 100,
+        "apoiam": ["Trabalhadores com carteira", "Aposentados"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "o valor vira decisão política anual; aprovação do governo sensível ao reajuste"
+      }
+    ]
+  },
+  "consequencias": [
+    "quem-decide-o-salario-minimo--grupo-trabalhadores",
+    "quem-decide-o-salario-minimo--grupo-empresarios",
+    "quem-decide-o-salario-minimo--grupo-pequenos-negocios",
+    "quem-decide-o-salario-minimo--desigualdade"
+  ],
+  "ministerio": "Ministério do Trabalho",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

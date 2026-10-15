@@ -2,7 +2,7 @@
   "id": "estabilidade-servidores-publicos--margem-manobra-governo",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_estabilidade_servidores_publicos",
+  "origem": "nivel_estabilidade_dos_servidores_publicos",
   "alvo": "margem_manobra_governo",
   "mecanismo": "afim",
   "parametros": {

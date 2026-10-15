@@ -2,17 +2,21 @@
   "id": "acordos-comerciais",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Acordos comerciais",
-  "descricao": "Define a estratégia de integração comercial do país: ficar só nas regras gerais, entrar num bloco com tarifa comum ou assinar acordos de livre comércio com quem quiser.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "Com quem o país faz acordos para baixar tarifas?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "comercio-exterior",
+    "id": "comercio-exterior-e-capital-estrangeiro",
     "nome": "Comércio exterior e capital estrangeiro",
-    "camada": "constituicao"
+    "camada": "lei"
   },
-  "ministerio": "Ministério da Defesa e Relações Exteriores",
-  "processoAutorizacao": "emenda-constitucional",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_acordos_comerciais",
     "unidade": "nivel_escopo",
@@ -20,22 +24,37 @@
       {
         "id": "sem-acordos",
         "rotulo": "Sem acordos",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Entidades do agronegócio"],
+        "efeitos": "Exportações ↓; abertura comercial ↓"
       },
       {
         "id": "uniao-aduaneira",
-        "rotulo": "Bloco com tarifa comum",
-        "valor": 33
+        "rotulo": "União aduaneira (bloco com tarifa comum)",
+        "valor": 33.33,
+        "custoTexto": "Receita de tarifa mantida",
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Tarifa presa à do bloco"
       },
       {
-        "id": "rede-seletiva",
-        "rotulo": "Acordos seletivos",
-        "valor": 67
+        "id": "rede-seletiva-de-acordos",
+        "rotulo": "Rede seletiva de acordos",
+        "valor": 66.67,
+        "custoTexto": "Perda de receita de tarifa (lacuna)",
+        "apoiam": ["Entidades do agronegócio", "Comércio e serviços"],
+        "rejeitam": ["Confederação da indústria"],
+        "efeitos": "Exportações ↑, importações ↑, produtividade ↑; emprego ↓ nas regiões expostas, por até 20 anos"
       },
       {
         "id": "livre-comercio-amplo",
-        "rotulo": "Livre comércio amplo",
-        "valor": 100
+        "rotulo": "Livre comércio amplo (abertura sem esperar os outros)",
+        "valor": 100,
+        "custoTexto": "Perda de receita de tarifa",
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Confederação da indústria", "Centrais sindicais"],
+        "efeitos": "Importações ↑ forte; produtividade ↑; peso da indústria ↓; emprego regional ↓ por décadas"
       }
     ]
   },
@@ -43,13 +62,10 @@
     "acordos-comerciais--exportacoes",
     "acordos-comerciais--importacoes",
     "acordos-comerciais--produtividade",
-    "acordos-comerciais--inflacao",
-    "acordos-comerciais--reputacao-internacional",
     "acordos-comerciais--desemprego",
-    "acordos-comerciais--arrecadacao",
-    "acordos-comerciais--grupo-classe-media",
-    "acordos-comerciais--grupo-trabalhadores"
+    "acordos-comerciais--arrecadacao"
   ],
+  "ministerio": "Ministério das Relações Exteriores",
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

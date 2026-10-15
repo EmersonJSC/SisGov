@@ -1,0 +1,51 @@
+{
+  "id": "indexacao-de-contratos",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Indexação de contratos",
+  "descricao": "Contratos, aluguéis, tarifas e salários podem ser corrigidos automaticamente pela inflação passada?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_indexacao_de_contratos",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "indexacao-livre",
+        "rotulo": "Indexação livre",
+        "valor": 0,
+        "apoiam": ["Sindicatos de servidores", "Associações de aposentados"],
+        "efeitos": "Inércia da inflação ↑; inflação persistente ↑; juro neutro ↑"
+      },
+      {
+        "id": "restrita",
+        "rotulo": "Restrita (só em contratos de 12 meses ou mais)",
+        "valor": 50.0,
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Inércia média"
+      },
+      {
+        "id": "desindexacao-ampla",
+        "rotulo": "Desindexação ampla (inclusive benefícios e tarifas)",
+        "valor": 100,
+        "custoTexto": "Economia nos gastos (lacuna)",
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Associações de aposentados", "Centrais sindicais"],
+        "efeitos": "Inércia ↓; inflação cai mais rápido depois de choque; aposentados perdem poder de compra em inflação alta"
+      }
+    ]
+  },
+  "consequencias": [],
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+}

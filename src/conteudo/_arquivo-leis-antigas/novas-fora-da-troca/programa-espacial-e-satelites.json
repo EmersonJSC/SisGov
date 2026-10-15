@@ -1,0 +1,63 @@
+{
+  "id": "programa-espacial-e-satelites",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Programa espacial e satélites",
+  "descricao": "O país investe em satélites e foguetes próprios?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_programa_espacial_e_satelites",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "rejeitam": ["Militares"],
+        "efeitos": "Capacidade de defesa ↓ pequeno"
+      },
+      {
+        "id": "satelites-em-parceria-com-outro-pais",
+        "rotulo": "Satélites em parceria com outro país",
+        "valor": 50.0,
+        "custoTexto": "0,01 a 0,02% do PIB (aprox.), ciência",
+        "apoiam": ["Militares", "Agro"],
+        "efeitos": "Inovação ↑; Desmatamento ↓ via monitoramento; Reputação internacional ↑"
+      },
+      {
+        "id": "lancador-proprio",
+        "rotulo": "Lançador próprio",
+        "valor": 100,
+        "custoTexto": "0,05 a 0,1% do PIB (aprox.), ciência e defesa",
+        "apoiam": ["Militares", "Militares da reserva"],
+        "rejeitam": ["Mercado financeiro", "Quilombolas", "Ambientalistas"],
+        "efeitos": "Inovação ↑; Capacidade de defesa ↑; Reputação internacional ↑; conflito com quilombolas vira ocorrência"
+      }
+    ]
+  },
+  "consequencias": [
+    "programa-espacial-e-satelites--capacidade-inteligencia",
+    "programa-espacial-e-satelites--desmatamento",
+    "programa-espacial-e-satelites--inovacao",
+    "programa-espacial-e-satelites--gasto-publico",
+    "programa-espacial-e-satelites--capacidade-defesa",
+    "programa-espacial-e-satelites--reputacao-internacional"
+  ],
+  "ministerio": "Ministério da Ciência e Tecnologia",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

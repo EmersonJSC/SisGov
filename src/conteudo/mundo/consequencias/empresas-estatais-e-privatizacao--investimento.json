@@ -2,7 +2,7 @@
   "id": "empresas-estatais-e-privatizacao--investimento",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_empresas_estatais_e_privatizacao",
+  "origem": "nivel_papel_do_estado_empresario",
   "alvo": "investimento",
   "mecanismo": "limiar",
   "parametros": {

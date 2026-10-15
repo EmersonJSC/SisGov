@@ -1,0 +1,19 @@
+{
+  "id": "organizacao-dos-programas-sociais--pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_organizacao_dos_programas_sociais",
+  "alvo": "pobreza",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [100, -2]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

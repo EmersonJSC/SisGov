@@ -1,0 +1,21 @@
+{
+  "id": "participacao-direta--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_participacao_direta",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [33, 0],
+      [67, -2],
+      [100, -2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

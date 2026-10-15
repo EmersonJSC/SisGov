@@ -1,0 +1,62 @@
+{
+  "id": "seguro-desemprego",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Seguro-desemprego",
+  "descricao": "Define se e como o Estado sustenta quem perdeu o emprego: nada, poupança individual, seguro curto ou seguro generoso com contrapartidas.",
+  "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "constituicao"
+  },
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_seguro_desemprego",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Sem seguro",
+        "valor": 0
+      },
+      {
+        "id": "conta-individual",
+        "rotulo": "Conta individual",
+        "valor": 25
+      },
+      {
+        "id": "basico-curto",
+        "rotulo": "Seguro curto",
+        "valor": 50
+      },
+      {
+        "id": "moderado",
+        "rotulo": "Seguro moderado",
+        "valor": 75
+      },
+      {
+        "id": "generoso-com-ativacao",
+        "rotulo": "Generoso com contrapartida",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "seguro-desemprego--pobreza",
+    "seguro-desemprego--consumo",
+    "seguro-desemprego--recessao",
+    "seguro-desemprego--desemprego",
+    "seguro-desemprego--qualificacao-trabalho",
+    "seguro-desemprego--rotatividade-emprego",
+    "seguro-desemprego--gasto-publico",
+    "seguro-desemprego--grupo-empresarios",
+    "seguro-desemprego--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

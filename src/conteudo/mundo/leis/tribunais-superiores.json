@@ -1,138 +1,74 @@
 {
   "id": "tribunais-superiores",
   "tipo": "lei",
-  "versaoEsquema": 3,
-  "nome": "Tamanho e nomeação dos tribunais superiores",
-  "descricao": "Quantos juízes tem a corte mais alta e quem os escolhe: número fixo com aprovação do Senado, ampliação por lei ou escolha pelo partido no poder.",
-  "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
-  "nivel": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Tribunais superiores",
+  "descricao": "Quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "justica",
     "nome": "Justiça",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_tribunais_superiores",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "fixos",
-        "rotulo": "Número fixo, nomeação aprovada pelo Senado",
+        "id": "numero-fixo-e-cargo-ate-os-75-anos",
+        "rotulo": "Número fixo e cargo até os 75 anos",
         "valor": 0
       },
       {
+        "id": "mandato-fixo-de-9-a-12-anos",
+        "rotulo": "Mandato fixo de 9 a 12 anos",
+        "valor": 25.0,
+        "apoiam": ["lacuna"],
+        "rejeitam": ["Ministros das cortes"],
+        "efeitos": "Sem efeito medido"
+      },
+      {
         "id": "ampliacao-por-lei",
-        "rotulo": "O governo pode ampliar a corte por lei",
-        "valor": 50
+        "rotulo": "Ampliação por lei (o governo cria cadeiras)",
+        "valor": 50,
+        "apoiam": ["Bancadas do governo"],
+        "rejeitam": ["Bancadas de oposição"],
+        "efeitos": "Independência ↓; Confiança ↓; Captura política ↑; Polarização ↑"
       },
       {
         "id": "nomeacao-pelo-partido",
-        "rotulo": "Juízes escolhidos pelo partido no poder",
-        "valor": 100
+        "rotulo": "Nomeação pelo partido",
+        "valor": 100,
+        "rejeitam": ["Quase todos os grupos"],
+        "efeitos": "Os mesmos efeitos, mais fortes"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "forca_instituicoes",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -6],
-          [100, -15]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "confianca_instituicoes",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -3],
-          [100, -8]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "impunidade",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 3],
-          [100, 6]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "margem_manobra_governo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 4],
-          [100, 10]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "risco_pais",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 3],
-          [100, 6]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "grupo_classe_media",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -2],
-          [100, -4]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "tribunais-superiores--forca-instituicoes",
+    "tribunais-superiores--confianca-instituicoes",
+    "tribunais-superiores--impunidade",
+    "tribunais-superiores--margem-manobra-governo",
+    "tribunais-superiores--risco-pais",
+    "tribunais-superiores--grupo-classe-media",
+    "tribunais-superiores--confianca-empresarial",
+    "tribunais-superiores--captura-politica",
+    "tribunais-superiores--polarizacao"
   ],
-  "historia": {
-    "opcoes": {
-      "fixos": [
-        "Brasil",
-        "Estados Unidos (nove juízes desde 1869)",
-        "Alemanha"
-      ],
-      "ampliacao-por-lei": [
-        "Venezuela (de 20 para 32 juízes, 2004)",
-        "Argentina (de 5 para 9 juízes, 1990)",
-        "Hungria (de 11 para 15 juízes, 2010)"
-      ],
-      "nomeacao-pelo-partido": ["União Soviética", "Cuba"]
-    },
-    "brasil": "O Supremo tem 11 ministros, indicados pelo presidente e aprovados pelo Senado (art. 101); o número só muda por emenda."
+  "mae": {
+    "texto": "Independência do Judiciário (\"Controlado\" libera \"Nomeação pelo partido\")",
+    "leis": ["independencia-do-judiciario"]
   },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "arts. 101 e 104, opção do Brasil"
-    },
-    {
-      "titulo": "Tribunal Supremo de Justiça da Venezuela (lei orgânica de 2004)",
-      "url": "https://en.wikipedia.org/wiki/Supreme_Tribunal_of_Justice",
-      "usadoPara": "ampliação por lei"
-    }
-  ]
+  "ministerio": "Casa Civil",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
 }

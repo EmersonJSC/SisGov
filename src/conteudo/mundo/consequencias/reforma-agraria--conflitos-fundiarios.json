@@ -2,7 +2,7 @@
   "id": "reforma-agraria--conflitos-fundiarios",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_reforma_agraria",
+  "origem": "nivel_redistribuicao_de_terras",
   "alvo": "conflitos_fundiarios",
   "mecanismo": "limiar",
   "parametros": {

@@ -2,7 +2,7 @@
   "id": "programa-medicos-no-interior--grupo-progressistas",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_programa_medicos_no_interior",
+  "origem": "nivel_programa_de_medicos_no_interior",
   "alvo": "grupo_progressistas",
   "mecanismo": "afim",
   "parametros": {

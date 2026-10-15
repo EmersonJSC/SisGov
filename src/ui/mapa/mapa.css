@@ -5193,3 +5193,62 @@ button {
   color: var(--cor);
   font-weight: 700;
 }
+
+/* Filtro das leis (15/out) */
+.filtro-leis {
+  position: absolute;
+  /* ao lado do botão do eleitorado, que fica no canto */
+  left: 196px;
+  top: 18px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.filtro-leis-botao,
+.filtro-leis-painel button {
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 8px 14px;
+  background: light-dark(#fffdf8, #272624);
+  color: var(--tinta);
+  font-weight: 700;
+  box-shadow: 0 4px 14px #2a241426;
+}
+
+.filtro-leis-botao.ligado {
+  border-color: #e09a2a;
+}
+
+.filtro-leis-botao b {
+  margin-left: 8px;
+  padding: 0 7px;
+  border-radius: 9px;
+  background: #e09a2a;
+  color: #fff;
+}
+
+.filtro-leis-painel {
+  display: grid;
+  gap: 10px;
+  width: 270px;
+  padding: 14px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: light-dark(#fffdf8, #272624);
+  box-shadow: 0 8px 24px #2a241433;
+  color: var(--tinta);
+  font-size: 0.9rem;
+}
+
+.filtro-leis-painel label {
+  display: grid;
+  gap: 4px;
+}
+
+.filtro-leis-painel p {
+  margin: 0;
+  opacity: 0.75;
+}

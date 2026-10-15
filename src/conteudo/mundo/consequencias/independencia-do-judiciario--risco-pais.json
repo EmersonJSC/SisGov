@@ -1,0 +1,17 @@
+{
+  "id": "independencia-do-judiciario--risco-pais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_independencia_do_judiciario",
+  "alvo": "risco_pais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 7.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

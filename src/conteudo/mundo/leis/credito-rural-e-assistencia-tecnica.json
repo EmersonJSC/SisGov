@@ -1,0 +1,92 @@
+{
+  "id": "credito-rural-e-assistencia-tecnica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Crédito rural e assistência técnica",
+  "descricao": "quanto o Estado barateia o crédito do produtor rural e paga técnicos para orientá-lo, e para quem vai esse dinheiro?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_credito_rural_e_assistencia_tecnica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-credito-oficial-juro-de-mercado-sem-tecnico-pago-pelo-es",
+        "rotulo": "Sem crédito oficial: juro de mercado, sem técnico pago pelo Estado",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": [
+          "Agronegócio",
+          "Entidades do agronegócio",
+          "Agricultura familiar",
+          "Movimentos por terra"
+        ],
+        "efeitos": "Produção agropecuária ↓ no curto prazo (estimado); cofre ↑; agricultura familiar perde renda ↓; preço dos alimentos ↑ (estimado)"
+      },
+      {
+        "id": "credito-de-mercado-com-incentivo-so-isencao-nos-titulos-do-a",
+        "rotulo": "Crédito de mercado com incentivo: só isenção nos títulos do agro e seguro rural",
+        "valor": 25.0,
+        "custoTexto": "Renúncia de cerca de  26 bi por ano (isenção dos títulos, média 2023 a 2025)",
+        "apoiam": ["Mercado financeiro", "Entidades do agronegócio", "Ricos"],
+        "rejeitam": ["Agricultura familiar", "Movimentos por terra"],
+        "efeitos": "Produção agropecuária sem mudança para os grandes; agricultura familiar ↓; concentração de terras ↑ (estimado)"
+      },
+      {
+        "id": "credito-amplo-subsidiado-para-todos-os-portes",
+        "rotulo": "Crédito amplo subsidiado, para todos os portes",
+        "valor": 50.0,
+        "custoTexto": "cerca de  60 bi por ano somando tudo (cerca de 0,45% do PIB, aprox.); só os juros subsidiados,  12,5 bi",
+        "apoiam": ["Agronegócio", "Entidades do agronegócio", "Interior"],
+        "rejeitam": ["Mercado financeiro", "Movimentos por terra"],
+        "efeitos": "Produção agropecuária ↑; concentração de terras ↑ (o crédito vai mais para os grandes); desmatamento ↑ se não houver condição ambiental; cofre ↓"
+      },
+      {
+        "id": "foco-na-agricultura-familiar-e-na-assistencia-tecnica",
+        "rotulo": "Foco na agricultura familiar e na assistência técnica",
+        "valor": 75.0,
+        "custoTexto": "Parecido com o de hoje, trocando o destino (estimado)",
+        "apoiam": [
+          "Agricultura familiar",
+          "Movimentos por terra",
+          "Pastorais sociais católicas"
+        ],
+        "rejeitam": ["Entidades do agronegócio", "Agronegócio"],
+        "efeitos": "Renda da agricultura familiar ↑; insegurança alimentar ↓ (estimado); concentração de terras ↓ devagar; produção agropecuária ↑ pouco; o efeito na produtividade depende da assistência e não está medido"
+      },
+      {
+        "id": "credito-verde-subsidio-so-para-producao-de-baixo-carbono",
+        "rotulo": "Crédito verde: subsídio só para produção de baixo carbono",
+        "valor": 100,
+        "custoTexto": "Parecido com o de hoje, com menos tomadores (estimado)",
+        "apoiam": ["Movimento ambientalista", "Mercado financeiro"],
+        "rejeitam": ["Entidades do agronegócio"],
+        "efeitos": "Emissões ↓; desmatamento ↓; produção agropecuária ↓ pouco no curto prazo (estimado)"
+      }
+    ]
+  },
+  "consequencias": [
+    "credito-rural-e-assistencia-tecnica--producao-agropecuaria",
+    "credito-rural-e-assistencia-tecnica--preco-alimentos",
+    "credito-rural-e-assistencia-tecnica--concentracao-fundiaria",
+    "credito-rural-e-assistencia-tecnica--desmatamento",
+    "credito-rural-e-assistencia-tecnica--inseguranca-alimentar",
+    "credito-rural-e-assistencia-tecnica--emissoes"
+  ],
+  "mae": {
+    "texto": "Banco de desenvolvimento (Economia). Sem banco lá tranca Crédito amplo subsidiado aqui (proposta minha). A chave do crédito condicionado fica em Fiscalização ambiental.",
+    "leis": ["banco-de-desenvolvimento", "fiscalizacao-ambiental"]
+  },
+  "ministerio": "Ministério das Cidades"
+}

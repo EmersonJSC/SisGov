@@ -1,0 +1,20 @@
+{
+  "id": "planejamento-da-economia--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_planejamento_da_economia",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 2],
+      [50, 0],
+      [100, -20]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -2,7 +2,7 @@
   "id": "agrotoxicos--saude-populacao",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "saude_populacao",
   "mecanismo": "afim",
   "parametros": {

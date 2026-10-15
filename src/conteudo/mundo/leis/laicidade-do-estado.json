@@ -2,17 +2,21 @@
   "id": "laicidade-do-estado",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Laicidade do Estado",
-  "descricao": "Define a relação entre o Estado e as religiões: quem manda em quem, quem recebe privilégios e quem é vigiado.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "descricao": "Qual a relação entre o Estado e as religiões?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
     "id": "religiao",
     "nome": "Religião",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_laicidade_do_estado",
     "unidade": "nivel_escopo",
@@ -20,32 +24,57 @@
       {
         "id": "teocracia",
         "rotulo": "Teocracia",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["todos", "menos uma minoria"],
+        "efeitos": "Liberdades civis ↓ forte; Discriminação ↑ forte; trava várias leis de costumes"
       },
       {
         "id": "religiao-oficial",
         "rotulo": "Religião oficial",
-        "valor": 20
+        "valor": 20,
+        "custoTexto": "baixo",
+        "apoiam": ["Parte dos Conservadores"],
+        "rejeitam": ["Progressistas", "Religiões de matriz africana"],
+        "efeitos": "Discriminação ↑ (religiões de matriz africana); Liberdades civis ↓; trava opções de aborto e eutanásia"
       },
       {
         "id": "religiao-favorecida",
-        "rotulo": "Religião favorecida",
-        "valor": 40
+        "rotulo": "Religião favorecida (acordo com uma igreja)",
+        "valor": 40,
+        "custoTexto": "baixo",
+        "apoiam": ["Evangélicos", "Católicos"],
+        "rejeitam": ["Progressistas", "Religiões de matriz africana"],
+        "efeitos": "Discriminação ↑ pouco; Polarização ↑"
       },
       {
-        "id": "neutro",
-        "rotulo": "Estado neutro",
-        "valor": 60
+        "id": "neutro-com-colaboracao-de-interesse-publico",
+        "rotulo": "Neutro, com colaboração de interesse público",
+        "valor": 60,
+        "apoiam": ["Católicos", "Classe média"],
+        "efeitos": "Liberdades civis ↑ contra Religião oficial; Discriminação ↓ contra Religião favorecida; Polarização ↑ pouco (estimado)"
       },
       {
         "id": "laicidade-estrita",
-        "rotulo": "Laicidade estrita",
-        "valor": 80
+        "rotulo": "Laicidade estrita (separação rígida)",
+        "valor": 80,
+        "apoiam": ["Progressistas", "Religiões de matriz africana"],
+        "rejeitam": [
+          "Evangélicos",
+          "Católicos",
+          "Igrejas evangélicas",
+          "Hierarquia católica"
+        ],
+        "efeitos": "Trava ensino religioso obrigatório; Polarização ↑"
       },
       {
-        "id": "controle-estatal",
-        "rotulo": "Controle estatal da religião",
-        "valor": 100
+        "id": "controle-estatal-das-religioes",
+        "rotulo": "Controle estatal das religiões",
+        "valor": 100,
+        "custoTexto": "baixo",
+        "apoiam": ["nenhum"],
+        "rejeitam": ["todos os religiosos"],
+        "efeitos": "Liberdades civis ↓ forte; Protestos ↑"
       }
     ]
   },
@@ -61,8 +90,5 @@
     "laicidade-do-estado--grupo-evangelicos",
     "laicidade-do-estado--grupo-catolicos"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério dos Direitos Humanos"
 }

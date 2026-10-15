@@ -1,0 +1,70 @@
+{
+  "id": "destino-do-resultado-fiscal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Destino do resultado fiscal",
+  "descricao": "Quando sobra dinheiro (superávit ou receita extra), para onde ele vai?",
+  "area": "Impostos e contas públicas",
+  "mesa": {
+    "id": "mesa-regra-fiscal",
+    "nome": "Mesa Regra fiscal",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_destino_do_resultado_fiscal",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "pagar-a-divida",
+        "rotulo": "Pagar a dívida",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Servidores", "Interior"],
+        "efeitos": "Dívida ↓; Risco-país ↓"
+      },
+      {
+        "id": "dividir",
+        "rotulo": "Dividir (metade e metade)",
+        "valor": 33.33,
+        "efeitos": "meio caminho"
+      },
+      {
+        "id": "guardar-no-cofre-ou-no-fundo",
+        "rotulo": "Guardar no cofre ou no fundo",
+        "valor": 66.67,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Servidores", "Interior"],
+        "efeitos": "Margem de manobra futura ↑; amortece choques"
+      },
+      {
+        "id": "gastar-em-investimento-ou-programa",
+        "rotulo": "Gastar em investimento ou programa",
+        "valor": 100,
+        "custoTexto": "o gasto que fica depois do boom",
+        "apoiam": ["Interior", "Servidores", "Centrais sindicais"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Popularidade ↑ já; buraco quando a receita extra acaba"
+      }
+    ]
+  },
+  "consequencias": [
+    "destino-do-resultado-fiscal--cofre",
+    "destino-do-resultado-fiscal--divida-publica",
+    "destino-do-resultado-fiscal--reputacao-internacional",
+    "destino-do-resultado-fiscal--risco-pais",
+    "destino-do-resultado-fiscal--margem-manobra-governo",
+    "destino-do-resultado-fiscal--popularidade-governo"
+  ],
+  "ministerio": "Ministério da Fazenda",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

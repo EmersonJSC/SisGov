@@ -2,17 +2,21 @@
   "id": "federalismo",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Federalismo",
-  "descricao": "Define quanto poder, dinheiro e responsabilidade ficam com o governo central e quanto com estados e municípios.",
-  "area": "Instituições, Estado e sistema político",
+  "descricao": "Quanto poder e dinheiro ficam com estados e municípios, e quanto com o governo central?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "federacao",
     "nome": "Federação",
     "camada": "constituicao"
   },
-  "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_federalismo",
     "unidade": "nivel_escopo",
@@ -20,17 +24,23 @@
       {
         "id": "centralizado",
         "rotulo": "Centralizado",
-        "valor": 0
+        "valor": 0,
+        "rejeitam": ["Interior", "governadores"],
+        "efeitos": "Desigualdade regional ↓ (estimado)"
       },
       {
         "id": "cooperativo",
         "rotulo": "Cooperativo",
-        "valor": 50
+        "valor": 50,
+        "efeitos": "Depende da Regra de repasse: repasse grande e sem condição sobe a Corrupção"
       },
       {
         "id": "descentralizado",
         "rotulo": "Descentralizado",
-        "valor": 100
+        "valor": 100,
+        "apoiam": ["Entidades do agronegócio", "Ricos"],
+        "rejeitam": ["Pobres"],
+        "efeitos": "Desigualdade regional ↑; Corrupção ↑ (mais níveis de governo)"
       }
     ]
   },
@@ -46,8 +56,5 @@
     "federalismo--grupo-pobres",
     "federalismo--grupo-progressistas"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Casa Civil"
 }

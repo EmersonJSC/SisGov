@@ -6,11 +6,11 @@
   "alvo": "concentracao_mercado",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.12,
-    "termoConstante": 0.0
+    "coeficiente": -0.156,
+    "termoConstante": 2.37052
   },
   "unidade": "indice_0_100",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

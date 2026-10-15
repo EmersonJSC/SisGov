@@ -2,7 +2,7 @@
   "id": "incentivo-cultura--reputacao-internacional",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_incentivo_cultura",
+  "origem": "nivel_incentivo_a_cultura",
   "alvo": "reputacao_internacional",
   "mecanismo": "limiar",
   "parametros": {

@@ -1,0 +1,17 @@
+{
+  "id": "conselho-fiscal-independente--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_conselho_fiscal_independente",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 1.5
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

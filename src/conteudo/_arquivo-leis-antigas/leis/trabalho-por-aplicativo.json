@@ -1,0 +1,63 @@
+{
+  "id": "trabalho-por-aplicativo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Trabalho por aplicativo",
+  "descricao": "Define o status de motoristas e entregadores de plataformas digitais: autônomos sem regra, categoria própria, presunção de vínculo ou empregados.",
+  "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_trabalho_por_aplicativo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-regulacao",
+        "rotulo": "Sem regra própria",
+        "valor": 0
+      },
+      {
+        "id": "categoria-propria",
+        "rotulo": "Autônomo com garantias",
+        "valor": 33
+      },
+      {
+        "id": "presuncao-de-vinculo",
+        "rotulo": "Presunção de vínculo",
+        "valor": 67
+      },
+      {
+        "id": "emprego-obrigatorio",
+        "rotulo": "Vínculo obrigatório",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "trabalho-por-aplicativo--renda-familias",
+    "trabalho-por-aplicativo--custo-trabalhista",
+    "trabalho-por-aplicativo--informalidade",
+    "trabalho-por-aplicativo--mobilidade-urbana",
+    "trabalho-por-aplicativo--desemprego",
+    "trabalho-por-aplicativo--concentracao-mercado",
+    "trabalho-por-aplicativo--saude-populacao",
+    "trabalho-por-aplicativo--arrecadacao",
+    "trabalho-por-aplicativo--grupo-classe-media",
+    "trabalho-por-aplicativo--grupo-empresarios",
+    "trabalho-por-aplicativo--grupo-jovens",
+    "trabalho-por-aplicativo--grupo-pobres",
+    "trabalho-por-aplicativo--grupo-progressistas",
+    "trabalho-por-aplicativo--grupo-trabalhadores",
+    "trabalho-por-aplicativo--grupo-informais"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

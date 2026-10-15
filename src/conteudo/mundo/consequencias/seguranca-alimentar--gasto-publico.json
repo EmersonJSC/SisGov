@@ -2,7 +2,7 @@
   "id": "seguranca-alimentar--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_seguranca_alimentar",
+  "origem": "nivel_garantia_de_comida",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {

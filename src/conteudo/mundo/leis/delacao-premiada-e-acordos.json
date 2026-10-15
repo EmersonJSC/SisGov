@@ -1,0 +1,52 @@
+{
+  "id": "delacao-premiada-e-acordos",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Delação premiada e acordos",
+  "descricao": "O acusado pode trocar informação ou confissão por pena menor, e com que controle?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_delacao_premiada_e_acordos",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-acordos",
+        "rotulo": "Sem acordos",
+        "valor": 0,
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Associações de policiais"],
+        "efeitos": "Capacidade de investigação contra crime organizado ↓"
+      },
+      {
+        "id": "delacao-com-homologacao-do-juiz",
+        "rotulo": "Delação com homologação do juiz",
+        "valor": 50.0,
+        "apoiam": ["Classe média", "Jornais e portais"],
+        "efeitos": "Capacidade de investigação ↑ contra crime organizado e corrupção; esclarecimento ↑ em crimes em grupo"
+      },
+      {
+        "id": "acordo-como-regra",
+        "rotulo": "Acordo como regra (o réu negocia a pena)",
+        "valor": 100,
+        "custoTexto": "custo judicial ↓",
+        "apoiam": ["Classe média", "Mercado financeiro"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Iguais ao anterior; liberdades civis ↓ com abuso (sem número)"
+      }
+    ]
+  },
+  "consequencias": ["delacao-premiada-e-acordos--liberdade-civil"],
+  "ministerio": "Ministério da Fazenda"
+}

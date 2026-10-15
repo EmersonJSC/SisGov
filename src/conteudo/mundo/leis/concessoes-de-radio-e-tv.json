@@ -1,16 +1,21 @@
 {
   "id": "concessoes-de-radio-e-tv",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Concessões de rádio e TV",
-  "descricao": "Como o Estado dá e renova as concessões de rádio e TV: renovação quase automática, regras de conteúdo e de concentração, ou renovação a critério do governo.",
-  "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
-  "nivel": "lei",
+  "descricao": "Como o governo dá e renova as licenças de rádio e TV?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
-    "id": "imprensa-e-informacao",
+    "id": "imprensa-internet-e-informacao",
     "nome": "Imprensa, internet e informação",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_concessoes_de_radio_e_tv",
@@ -18,122 +23,44 @@
     "opcoes": [
       {
         "id": "renovacao-automatica",
-        "rotulo": "Renovação quase automática",
-        "valor": 0
+        "rotulo": "Renovação automática (hoje na referência, na prática)",
+        "valor": 0,
+        "apoiam": [
+          "Maior rede de TV aberta",
+          "Rede de rádio e TV popular",
+          "Rede de TV ligada a uma igreja"
+        ],
+        "rejeitam": ["lacuna"],
+        "efeitos": "Concentração da mídia fica; rádio na mão de políticos locais (aprox.)"
       },
       {
         "id": "cotas-e-limites",
-        "rotulo": "Cotas de conteúdo e limite de concentração",
-        "valor": 50
+        "rotulo": "Cotas e limites (dono não pode ter tudo; conteúdo regional)",
+        "valor": 50,
+        "apoiam": ["lacuna"],
+        "rejeitam": [
+          "Maior rede de TV aberta",
+          "Rede de TV ligada a uma igreja"
+        ],
+        "efeitos": "Concentração ↓ (estimado)"
       },
       {
         "id": "criterio-do-governo",
-        "rotulo": "Renovação a critério do governo",
-        "valor": 100
+        "rotulo": "Critério do governo",
+        "valor": 100,
+        "rejeitam": ["As 5 mídias"],
+        "efeitos": "Captura política ↑; Desinformação estatal ↑; Liberdade de imprensa ↓"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, -8]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "concentracao_mercado",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -4],
-          [100, -2]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "desinformacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -1],
-          [100, 3]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "vitalidade_cultural",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 3],
-          [100, 0]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -2],
-          [100, -4]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "margem_manobra_governo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, 5]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "concessoes-de-radio-e-tv--liberdade-civil",
+    "concessoes-de-radio-e-tv--concentracao-mercado",
+    "concessoes-de-radio-e-tv--desinformacao",
+    "concessoes-de-radio-e-tv--vitalidade-cultural",
+    "concessoes-de-radio-e-tv--grupo-empresarios",
+    "concessoes-de-radio-e-tv--margem-manobra-governo",
+    "concessoes-de-radio-e-tv--captura-politica"
   ],
-  "historia": {
-    "opcoes": {
-      "renovacao-automatica": ["Brasil", "Estados Unidos"],
-      "cotas-e-limites": [
-        "Uruguai (Lei 19.307/2014)",
-        "Argentina (Lei 26.522/2009)",
-        "França (cotas de música em francês)"
-      ],
-      "criterio-do-governo": ["Venezuela (não renovação da RCTV, 2007)"]
-    },
-    "brasil": "A Constituição só deixa de renovar uma concessão com voto nominal de dois quintos do Congresso (art. 223, § 2º)."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "art. 223, opção do Brasil"
-    },
-    {
-      "titulo": "Lei 19.307/2014 do Uruguai (serviços de comunicação audiovisual)",
-      "url": "https://www.impo.com.uy/bases/leyes/19307-2014",
-      "usadoPara": "cotas e limites"
-    },
-    {
-      "titulo": "Fim da concessão da RCTV (Venezuela, 2007)",
-      "url": "https://en.wikipedia.org/wiki/RCTV",
-      "usadoPara": "renovação a critério do governo"
-    }
-  ]
+  "ministerio": "Casa Civil"
 }

@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Trabalho infantil e aprendizagem",
-  "descricao": "Define a idade mínima para trabalhar e como o jovem entra no mercado: sem limite, com exceções, com cota de aprendiz ou com sistema dual escola-empresa.",
-  "area": "Trabalho e emprego",
+  "descricao": "A partir de que idade se pode trabalhar, e como funciona o contrato de aprendiz?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
     "nome": "Contrato de trabalho",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_trabalho_infantil_e_aprendizagem",
     "unidade": "nivel_escopo",
@@ -20,27 +24,43 @@
       {
         "id": "sem-idade-minima",
         "rotulo": "Sem idade mínima",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["nenhum grupo organizado"],
+        "rejeitam": ["todos os grupos organizados"],
+        "efeitos": "Trabalho infantil ↑↑; Qualificação ↓ em 5 a 10 anos (aprox.); reação externa (fora da convenção da OIT)"
       },
       {
-        "id": "permissiva",
-        "rotulo": "Permissiva",
-        "valor": 25
+        "id": "permissiva-trabalho-a-partir-de-12-anos",
+        "rotulo": "Permissiva: trabalho a partir de 12 anos",
+        "valor": 25,
+        "apoiam": ["Agricultura familiar"],
+        "rejeitam": ["Centrais sindicais", "Estudantes"],
+        "efeitos": "Trabalho infantil ↑; evasão escolar ↑ (aprox.)"
       },
       {
-        "id": "idade-14-com-excecoes",
-        "rotulo": "14 anos com exceções",
-        "valor": 50
+        "id": "14-anos-com-excecoes",
+        "rotulo": "14 anos, com exceções",
+        "valor": 50,
+        "apoiam": ["Entidades do agronegócio"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Trabalho infantil ↑ pouco"
       },
       {
-        "id": "idade-16-com-cota",
-        "rotulo": "16 anos e cota de aprendiz",
-        "valor": 75
+        "id": "16-anos-aprendiz-desde-14-e-cota-de-aprendizes",
+        "rotulo": "16 anos, aprendiz desde 14 e cota de aprendizes",
+        "valor": 75,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "Trabalho infantil ↓; Oportunidades para jovens ↑ pouco"
       },
       {
-        "id": "sistema-dual",
-        "rotulo": "Sistema dual escola-empresa",
-        "valor": 100
+        "id": "sistema-dual-escola-e-empresa-juntas",
+        "rotulo": "Sistema dual: escola e empresa juntas",
+        "valor": 100,
+        "custoTexto": "0,1% a 0,3% do PIB (aprox.), Educação",
+        "apoiam": ["Indústria", "Empresários", "Jovens"],
+        "rejeitam": ["nenhum grupo grande"],
+        "efeitos": "Oportunidades para jovens ↑; Qualificação do trabalho ↑ em 3 a 5 anos; Trabalho infantil ↓"
       }
     ]
   },
@@ -57,10 +77,12 @@
     "trabalho-infantil-e-aprendizagem--grupo-empresarios",
     "trabalho-infantil-e-aprendizagem--grupo-jovens",
     "trabalho-infantil-e-aprendizagem--grupo-pequenos-negocios",
-    "trabalho-infantil-e-aprendizagem--grupo-progressistas"
+    "trabalho-infantil-e-aprendizagem--grupo-progressistas",
+    "trabalho-infantil-e-aprendizagem--evasao-escolar"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Legislação trabalhista (sem trava). \"Sistema dual\" exige, em Educação, Ensino técnico profissional no mínimo como opção ao ensino médio.",
+    "leis": ["legislacao-trabalhista"]
+  },
+  "ministerio": "Ministério do Trabalho"
 }

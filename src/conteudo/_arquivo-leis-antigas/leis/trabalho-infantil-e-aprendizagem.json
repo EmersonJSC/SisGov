@@ -1,0 +1,66 @@
+{
+  "id": "trabalho-infantil-e-aprendizagem",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Trabalho infantil e aprendizagem",
+  "descricao": "Define a idade mínima para trabalhar e como o jovem entra no mercado: sem limite, com exceções, com cota de aprendiz ou com sistema dual escola-empresa.",
+  "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_trabalho_infantil_e_aprendizagem",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-idade-minima",
+        "rotulo": "Sem idade mínima",
+        "valor": 0
+      },
+      {
+        "id": "permissiva",
+        "rotulo": "Permissiva",
+        "valor": 25
+      },
+      {
+        "id": "idade-14-com-excecoes",
+        "rotulo": "14 anos com exceções",
+        "valor": 50
+      },
+      {
+        "id": "idade-16-com-cota",
+        "rotulo": "16 anos e cota de aprendiz",
+        "valor": 75
+      },
+      {
+        "id": "sistema-dual",
+        "rotulo": "Sistema dual escola-empresa",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "trabalho-infantil-e-aprendizagem--trabalho-infantil",
+    "trabalho-infantil-e-aprendizagem--escolaridade",
+    "trabalho-infantil-e-aprendizagem--renda-familias",
+    "trabalho-infantil-e-aprendizagem--oportunidades-juvenis",
+    "trabalho-infantil-e-aprendizagem--qualificacao-trabalho",
+    "trabalho-infantil-e-aprendizagem--desemprego",
+    "trabalho-infantil-e-aprendizagem--custo-trabalhista",
+    "trabalho-infantil-e-aprendizagem--reputacao-internacional",
+    "trabalho-infantil-e-aprendizagem--grupo-agro",
+    "trabalho-infantil-e-aprendizagem--grupo-empresarios",
+    "trabalho-infantil-e-aprendizagem--grupo-jovens",
+    "trabalho-infantil-e-aprendizagem--grupo-pequenos-negocios",
+    "trabalho-infantil-e-aprendizagem--grupo-progressistas"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -3,16 +3,20 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Eutanásia e morte assistida",
-  "descricao": "Define se, e em que condições, alguém pode pedir ajuda médica para morrer.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "nome": "Eutanásia",
+  "descricao": "Um médico pode abreviar a vida a pedido do paciente?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
     "id": "familia-e-sexualidade",
     "nome": "Família e sexualidade",
     "camada": "lei"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_eutanasia",
     "unidade": "nivel_escopo",
@@ -20,27 +24,46 @@
       {
         "id": "proibida",
         "rotulo": "Proibida",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Católicos", "Evangélicos", "Aposentados"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Liberdades civis ↓ pouco"
       },
       {
-        "id": "passiva",
-        "rotulo": "Só suspender tratamento",
-        "valor": 25
+        "id": "so-passiva-suspender-tratamento",
+        "rotulo": "Só passiva: suspender tratamento (hoje na referência, aprox.)",
+        "valor": 25,
+        "apoiam": ["Entidades médicas"],
+        "efeitos": "Liberdades civis ↑ pouco contra Proibida; humor de Católicos estável; Entidades médicas aliviadas (estimado)"
       },
       {
         "id": "suicidio-assistido",
         "rotulo": "Suicídio assistido",
-        "valor": 50
+        "valor": 50,
+        "apoiam": ["Progressistas", "Classe média"],
+        "rejeitam": ["Católicos", "Hierarquia católica"],
+        "efeitos": "Liberdades civis ↑; humor de Católicos ↓"
       },
       {
-        "id": "eutanasia-terminal",
+        "id": "eutanasia-para-doentes-terminais",
         "rotulo": "Eutanásia para doentes terminais",
-        "valor": 75
+        "valor": 75,
+        "apoiam": ["Progressistas"],
+        "rejeitam": [
+          "Católicos",
+          "Evangélicos",
+          "Igrejas evangélicas",
+          "Hierarquia católica"
+        ],
+        "efeitos": "Liberdades civis ↑; humor religioso ↓"
       },
       {
-        "id": "eutanasia-ampla",
-        "rotulo": "Eutanásia ampla",
-        "valor": 100
+        "id": "eutanasia-ampla-inclusive-nao-terminais",
+        "rotulo": "Eutanásia ampla, inclusive não terminais",
+        "valor": 100,
+        "apoiam": ["Parte dos Progressistas"],
+        "rejeitam": ["A maioria"],
+        "efeitos": "Mortes assistidas sobem até cerca de 4,7% das mortes em 7 anos (Canadá); humor religioso ↓ forte"
       }
     ]
   },
@@ -54,8 +77,9 @@
     "eutanasia--grupo-conservadores",
     "eutanasia--grupo-progressistas"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Laicidade do Estado (\"Teocracia\" ou \"Religião oficial\" travam suicídio assistido, eutanásia para doentes terminais e eutanásia ampla).",
+    "leis": ["laicidade-do-estado"]
+  },
+  "ministerio": "Ministério dos Direitos Humanos"
 }

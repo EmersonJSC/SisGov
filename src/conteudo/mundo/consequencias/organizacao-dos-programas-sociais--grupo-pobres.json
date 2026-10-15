@@ -1,0 +1,19 @@
+{
+  "id": "organizacao-dos-programas-sociais--grupo-pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_organizacao_dos_programas_sociais",
+  "alvo": "grupo_pobres",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [100, 4]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

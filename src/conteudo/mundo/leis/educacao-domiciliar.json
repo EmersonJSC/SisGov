@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Educação domiciliar",
-  "descricao": "Define se os pais podem educar os filhos em casa em vez de matriculá-los numa escola, e com que controle do Estado.",
+  "descricao": "A família pode ensinar o filho em casa, sem matricular na escola?",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "escola",
     "nome": "Escola",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Educação",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_educacao_domiciliar",
     "unidade": "nivel_escopo",
@@ -20,22 +24,34 @@
       {
         "id": "proibida",
         "rotulo": "Proibida",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Sindicatos de professores"],
+        "rejeitam": ["Igrejas evangélicas", "Evangélicos"],
+        "efeitos": "Nada muda"
       },
       {
-        "id": "excepcional-autorizada",
-        "rotulo": "Só com autorização",
-        "valor": 33
+        "id": "so-em-casos-excepcionais",
+        "rotulo": "Só em casos excepcionais",
+        "valor": 33,
+        "apoiam": ["Classe média"],
+        "efeitos": "Nada muda"
       },
       {
-        "id": "regulada-com-provas",
-        "rotulo": "Permitida com provas",
-        "valor": 67
+        "id": "regulada-com-registro-e-provas-anuais",
+        "rotulo": "Regulada, com registro e provas anuais",
+        "valor": 67,
+        "custoTexto": "0,001% do PIB, educação",
+        "apoiam": ["Igrejas evangélicas", "Evangélicos", "Hierarquia católica"],
+        "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
+        "efeitos": "Segregação escolar ↑ pequeno; Polarização ↑; Aprendizagem: lacuna"
       },
       {
         "id": "livre",
         "rotulo": "Livre",
-        "valor": 100
+        "valor": 100,
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Sindicatos de professores", "Saúde pública"],
+        "efeitos": "Segregação escolar ↑; Proteção da criança ↓ (aprox.)"
       }
     ]
   },
@@ -49,10 +65,12 @@
     "educacao-domiciliar--grupo-progressistas",
     "educacao-domiciliar--grupo-servidores",
     "educacao-domiciliar--grupo-evangelicos",
-    "educacao-domiciliar--grupo-catolicos"
+    "educacao-domiciliar--grupo-catolicos",
+    "educacao-domiciliar--segregacao-escolar"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Ensino obrigatório. \"Sem obrigatoriedade\" e \"Só o primário\" esvaziam a opção \"Proibida\".",
+    "leis": ["ensino-obrigatorio"]
+  },
+  "ministerio": "Ministério da Educação"
 }

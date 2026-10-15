@@ -2,7 +2,7 @@
   "id": "sistema-de-saude--cobertura-aps",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_sistema_de_saude",
+  "origem": "nivel_modelo_do_sistema_de_saude",
   "alvo": "cobertura_aps",
   "mecanismo": "afim",
   "parametros": {

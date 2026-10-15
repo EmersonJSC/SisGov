@@ -1,0 +1,82 @@
+{
+  "id": "gestao-da-escola-publica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Gestão da escola pública",
+  "descricao": "Quem escolhe e comanda o diretor da escola pública?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_gestao_da_escola_publica",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "eleicao-pela-comunidade",
+        "rotulo": "Eleição pela comunidade (hoje em parte das redes)",
+        "valor": 0,
+        "apoiam": ["Sindicatos de professores", "Movimento estudantil"],
+        "rejeitam": ["Militares", "Policiais"],
+        "efeitos": "Aprendizagem ≈ 0"
+      },
+      {
+        "id": "indicacao-politica",
+        "rotulo": "Indicação política (hoje em parte das redes)",
+        "valor": 33.33,
+        "apoiam": ["Aliados locais"],
+        "rejeitam": [
+          "Sindicatos de professores",
+          "Empresários",
+          "Famílias com filhos"
+        ],
+        "efeitos": "Captura política ↑; Aprendizagem ↓ (aprox.)"
+      },
+      {
+        "id": "diretor-por-merito-selecao-tecnica-e-depois-eleicao",
+        "rotulo": "Diretor por mérito: seleção técnica e depois eleição",
+        "valor": 66.67,
+        "apoiam": ["Empresários", "Famílias com filhos"],
+        "rejeitam": ["Sindicatos de professores"],
+        "efeitos": "Aprendizagem ↑"
+      },
+      {
+        "id": "civico-militar",
+        "rotulo": "Cívico-militar",
+        "valor": 100,
+        "custoTexto": "+0,01% do PIB (aprox.), educação",
+        "apoiam": [
+          "Militares",
+          "Militares da reserva",
+          "Policiais",
+          "Igrejas evangélicas"
+        ],
+        "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
+        "efeitos": "Aprendizagem: lacuna; Sensação de segurança na escola ↑ pequeno (aprox.); Segregação escolar ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "gestao-da-escola-publica--evasao-escolar",
+    "gestao-da-escola-publica--liberdade-civil",
+    "gestao-da-escola-publica--grupo-conservadores",
+    "gestao-da-escola-publica--grupo-progressistas",
+    "gestao-da-escola-publica--grupo-familias-com-filhos",
+    "gestao-da-escola-publica--captura-politica",
+    "gestao-da-escola-publica--segregacao-escolar"
+  ],
+  "ministerio": "Ministério da Educação",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

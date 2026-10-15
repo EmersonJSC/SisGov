@@ -1,0 +1,20 @@
+{
+  "id": "vigilancia-de-bairro--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vigilancia_de_bairro",
+  "alvo": "liberdade_civil",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 0],
+      [100, -12]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

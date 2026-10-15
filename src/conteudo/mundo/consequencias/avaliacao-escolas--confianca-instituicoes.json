@@ -2,7 +2,7 @@
   "id": "avaliacao-escolas--confianca-instituicoes",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_avaliacao_escolas",
+  "origem": "nivel_avaliacao_das_escolas",
   "alvo": "confianca_instituicoes",
   "mecanismo": "afim",
   "parametros": {

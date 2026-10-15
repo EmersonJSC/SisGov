@@ -6,11 +6,11 @@
   "alvo": "producao_mineral",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.12,
-    "termoConstante": -0.0
+    "coeficiente": 0.12599,
+    "termoConstante": -8.399753
   },
   "unidade": "percentual_0_100",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

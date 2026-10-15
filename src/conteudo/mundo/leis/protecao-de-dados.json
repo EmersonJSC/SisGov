@@ -3,16 +3,20 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Proteção de dados pessoais",
-  "descricao": "Define o que empresas (e o Estado) podem fazer com os dados pessoais dos cidadãos e quem fiscaliza.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "nome": "Proteção de dados",
+  "descricao": "Que regras empresas e governo seguem para coletar e usar dados pessoais?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
-    "id": "imprensa-e-informacao",
+    "id": "imprensa-internet-e-informacao",
     "nome": "Imprensa, internet e informação",
     "camada": "lei"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_protecao_de_dados",
     "unidade": "nivel_escopo",
@@ -20,22 +24,32 @@
       {
         "id": "sem-lei",
         "rotulo": "Sem lei",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Plataformas digitais"],
+        "efeitos": "Dano do ataque hacker ↑"
       },
       {
-        "id": "setorial",
-        "rotulo": "Leis setoriais",
-        "valor": 33
+        "id": "regras-por-setor",
+        "rotulo": "Regras por setor",
+        "valor": 33,
+        "custoTexto": "lacuna",
+        "apoiam": ["Plataformas digitais", "Mercado financeiro"],
+        "efeitos": "Meio-termo"
       },
       {
-        "id": "lei-geral",
+        "id": "lei-geral-com-agencia",
         "rotulo": "Lei geral com agência",
-        "valor": 67
+        "valor": 67,
+        "custoTexto": "lacuna",
+        "efeitos": "Liberdades civis ↑; Dano do ataque hacker ↓"
       },
       {
         "id": "protecao-estrita",
         "rotulo": "Proteção estrita",
-        "valor": 100
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "rejeitam": ["Plataformas digitais", "Empresários"],
+        "efeitos": "Liberdades civis ↑; Inovação ↓ fraco (aprox.); Dano do ataque hacker ↓"
       }
     ]
   },
@@ -52,8 +66,5 @@
     "protecao-de-dados--grupo-progressistas",
     "protecao-de-dados--capacidade-inteligencia"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério dos Direitos Humanos"
 }

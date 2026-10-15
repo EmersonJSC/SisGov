@@ -1,0 +1,17 @@
+{
+  "id": "poderes-de-investigacao--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_poderes_de_investigacao",
+  "alvo": "liberdade_civil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.06,
+    "termoConstante": 3.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

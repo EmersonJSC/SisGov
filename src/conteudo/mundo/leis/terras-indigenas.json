@@ -2,17 +2,21 @@
   "id": "terras-indigenas",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Terras indígenas",
-  "descricao": "Define se o Estado reconhece os territórios dos povos originários e quanto poder eles têm sobre o que acontece neles.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
+  "descricao": "o Estado reconhece as terras dos povos indígenas, por qual regra, e com quanto autogoverno?",
+  "area": "Meio ambiente, energia, terra e cidades",
   "mesa": {
     "id": "terra-e-campo",
     "nome": "Terra e campo",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Meio Ambiente",
-  "processoAutorizacao": "emenda-constitucional",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_terras_indigenas",
     "unidade": "nivel_escopo",
@@ -20,22 +24,49 @@
       {
         "id": "sem-reconhecimento",
         "rotulo": "Sem reconhecimento",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Garimpo e madeira ilegais", "Entidades do agronegócio"],
+        "rejeitam": ["Povos originários", "Movimento ambientalista"],
+        "efeitos": "Desmatamento ↑; conflitos no campo ↑ forte; produção de petróleo e minérios ↑; reputação internacional ↓; mineração em terra indígena sem custo legal"
       },
       {
-        "id": "reconhecimento-limitado",
-        "rotulo": "Reconhecimento limitado",
-        "valor": 33
+        "id": "reconhecimento-limitado-por-data-de-ocupacao",
+        "rotulo": "Reconhecimento limitado por data de ocupação (hoje na referência, em disputa)",
+        "valor": 33,
+        "apoiam": ["Agronegócio", "Conservadores", "Interior"],
+        "rejeitam": [
+          "Povos originários",
+          "Movimento ambientalista",
+          "Progressistas"
+        ],
+        "efeitos": "Conflitos no campo ↑; desmatamento ↑"
       },
       {
-        "id": "demarcacao",
-        "rotulo": "Demarcação com usufruto exclusivo",
-        "valor": 67
+        "id": "demarcacao-pela-ocupacao-tradicional-sem-data",
+        "rotulo": "Demarcação pela ocupação tradicional, sem data",
+        "valor": 67,
+        "custoTexto": "0,01 a 0,03% do PIB (aprox.)",
+        "apoiam": [
+          "Povos originários",
+          "Movimento ambientalista",
+          "Progressistas",
+          "Pastorais sociais católicas"
+        ],
+        "rejeitam": ["Agronegócio", "Entidades do agronegócio"],
+        "efeitos": "Desmatamento ↓ (aprox.); produção de petróleo e minérios ↓ onde há jazida; reputação internacional ↑"
       },
       {
-        "id": "autonomia",
-        "rotulo": "Autonomia territorial",
-        "valor": 100
+        "id": "autonomia-autogoverno-do-territorio",
+        "rotulo": "Autonomia: autogoverno do território",
+        "valor": 100,
+        "custoTexto": "0,03% do PIB (aprox.)",
+        "apoiam": ["Povos originários"],
+        "rejeitam": [
+          "Agronegócio",
+          "Entidades do agronegócio",
+          "Associações de militares"
+        ],
+        "efeitos": "Desmatamento ↓; produção de petróleo e minérios ↓; tensão com as Forças Armadas ↑ (estimado)"
       }
     ]
   },
@@ -53,8 +84,9 @@
     "terras-indigenas--grupo-progressistas",
     "terras-indigenas--grupo-ambientalistas"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Licenciamento de obras e empresas. Rigoroso com consulta lá tranca esta lei em Demarcação ou Autonomia. Autonomia aqui exige Rigoroso com consulta lá.",
+    "leis": ["licenciamento-de-obras-e-empresas"]
+  },
+  "ministerio": "Ministério do Meio Ambiente"
 }

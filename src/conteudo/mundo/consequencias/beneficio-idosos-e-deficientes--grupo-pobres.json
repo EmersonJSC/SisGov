@@ -2,7 +2,7 @@
   "id": "beneficio-idosos-e-deficientes--grupo-pobres",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_beneficio_idosos_e_deficientes",
+  "origem": "nivel_renda_para_idosos_e_pessoas_com_deficiencia_pobres",
   "alvo": "grupo_pobres",
   "mecanismo": "afim",
   "parametros": {

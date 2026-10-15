@@ -1,0 +1,17 @@
+{
+  "id": "banco-de-desenvolvimento--cofre",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_banco_de_desenvolvimento",
+  "alvo": "cofre",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.063,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -2,7 +2,7 @@
   "id": "genericos-e-patentes-medicamentos--gasto-bolso-saude",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_genericos_e_patentes_medicamentos",
+  "origem": "nivel_genericos_e_patentes_de_medicamentos",
   "alvo": "gasto_bolso_saude",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,20 @@
+{
+  "id": "partidos--grupo-jovens",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_partidos",
+  "alvo": "grupo_jovens",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -4],
+      [50, -2],
+      [100, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

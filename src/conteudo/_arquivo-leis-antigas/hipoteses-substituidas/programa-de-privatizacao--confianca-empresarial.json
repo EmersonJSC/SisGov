@@ -1,0 +1,20 @@
+{
+  "id": "programa-de-privatizacao--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_de_privatizacao",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -2],
+      [50, 0],
+      [100, 4]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "vacinacao-obrigatoria--desinformacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vacinacao_obrigatoria",
+  "alvo": "desinformacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.084,
+    "termoConstante": -4.2
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

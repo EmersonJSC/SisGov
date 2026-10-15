@@ -2,7 +2,7 @@
   "id": "agrotoxicos--producao-agropecuaria",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_agrotoxicos",
+  "origem": "nivel_registro_de_agrotoxicos",
   "alvo": "producao_agropecuaria",
   "mecanismo": "afim",
   "parametros": {

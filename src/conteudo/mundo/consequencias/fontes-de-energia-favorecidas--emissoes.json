@@ -1,0 +1,17 @@
+{
+  "id": "fontes-de-energia-favorecidas--emissoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_fontes_de_energia_favorecidas",
+  "alvo": "emissoes",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.192,
+    "termoConstante": 12.80064
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

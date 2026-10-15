@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Controle de preços",
-  "descricao": "Define se o governo fixa ou limita preços de bens e serviços, e de quantos.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "O governo fixa preços de produtos, e de quais?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "mercado",
+    "id": "mercado-precos-e-concorrencia",
     "nome": "Mercado, preços e concorrência",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_controle_de_precos",
     "unidade": "nivel_escopo",
@@ -20,39 +24,48 @@
       {
         "id": "precos-livres",
         "rotulo": "Preços livres",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Empresários"],
+        "efeitos": "Nada muda"
       },
       {
-        "id": "precos-administrados",
-        "rotulo": "Só setores regulados",
-        "valor": 33
+        "id": "so-precos-administrados",
+        "rotulo": "Só preços administrados (energia, transporte, remédios)",
+        "valor": 33.33,
+        "efeitos": "Reajuste de energia, transporte e remédios controlado; distorção de preço ↑ pouco contra Preços livres; sem falta geral (estimado)"
       },
       {
-        "id": "tetos-cesta-basica",
+        "id": "teto-na-cesta-basica",
         "rotulo": "Teto na cesta básica",
-        "valor": 67
+        "valor": 66.67,
+        "custoTexto": "Fiscalização",
+        "apoiam": ["Pobres"],
+        "rejeitam": ["Comércio e serviços", "Entidades do agronegócio"],
+        "efeitos": "Alívio temporário nos itens tabelados; sem falta geral"
       },
       {
         "id": "tabelamento-geral",
         "rotulo": "Tabelamento geral",
-        "valor": 100
+        "valor": 100,
+        "custoTexto": "Fiscalização",
+        "rejeitam": [
+          "Confederação da indústria",
+          "Comércio e serviços",
+          "Entidades do agronegócio",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Inflação ↓ por meses e depois volta; desabastecimento ↑; ágio e mercado paralelo ↑"
       }
     ]
   },
   "consequencias": [
     "controle-de-precos--inflacao",
-    "controle-de-precos--inflacao-1",
     "controle-de-precos--desabastecimento",
-    "controle-de-precos--investimento",
-    "controle-de-precos--informalidade",
-    "controle-de-precos--preco-alimentos",
     "controle-de-precos--gasto-publico",
-    "controle-de-precos--grupo-agro",
-    "controle-de-precos--grupo-classe-media",
-    "controle-de-precos--grupo-empresarios",
-    "controle-de-precos--grupo-pequenos-negocios",
-    "controle-de-precos--grupo-pobres"
+    "controle-de-precos--inflacao-1",
+    "controle-de-precos--preco-alimentos"
   ],
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

@@ -1,0 +1,20 @@
+{
+  "id": "vigilancia-de-bairro--sensacao-seguranca",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vigilancia_de_bairro",
+  "alvo": "sensacao_seguranca",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 1],
+      [100, 2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,16 +1,21 @@
 {
   "id": "identidade-de-genero",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Identidade de gênero",
-  "descricao": "Se a pessoa trans pode mudar nome e gênero nos documentos: não pode, pode no cartório, ou uma lei garante a mudança e o atendimento.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério dos Direitos Humanos",
-  "nivel": "lei",
+  "descricao": "Como uma pessoa trans muda nome e sexo no registro?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
     "id": "familia-e-sexualidade",
     "nome": "Família e sexualidade",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_identidade_de_genero",
@@ -19,104 +24,41 @@
       {
         "id": "sem-reconhecimento",
         "rotulo": "Sem reconhecimento",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Conservadores", "Evangélicos", "Igrejas evangélicas"],
+        "rejeitam": ["Progressistas", "Movimento LGBT"],
+        "efeitos": "Discriminação ↑; Liberdades civis ↓"
       },
       {
-        "id": "cartorio",
-        "rotulo": "Mudança no cartório",
-        "valor": 50
+        "id": "no-cartorio-sem-cirurgia-laudo-ou-juiz",
+        "rotulo": "No cartório, sem cirurgia, laudo ou juiz",
+        "valor": 50,
+        "apoiam": ["Progressistas", "Movimento LGBT"],
+        "rejeitam": ["Conservadores"],
+        "efeitos": "Discriminação ↓ contra Sem reconhecimento (efeito não medido); Liberdades civis ↑; Polarização ↑ pouco (estimado)"
       },
       {
-        "id": "lei-de-identidade",
-        "rotulo": "Lei de identidade de gênero, com direitos e saúde",
-        "valor": 100
+        "id": "lei-completa-de-identidade-com-saude-documentos-e-menores",
+        "rotulo": "Lei completa de identidade, com saúde, documentos e menores",
+        "valor": 100,
+        "custoTexto": "baixo (serviço público de saúde)",
+        "apoiam": ["Progressistas", "Movimento LGBT"],
+        "rejeitam": ["Evangélicos", "Igrejas evangélicas", "Conservadores"],
+        "efeitos": "Discriminação ↓ (efeito não medido); Liberdades civis ↑; Polarização ↑"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "discriminacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 3],
-          [50, 0],
-          [100, -1]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -4],
-          [50, 0],
-          [100, 2]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_evangelicos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 3],
-          [50, 0],
-          [100, -2]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_conservadores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 3],
-          [50, 0],
-          [100, -2]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -2],
-          [50, 0],
-          [100, 1]
-        ]
-      },
-      "atraso": 2
-    }
+  "consequencias": [
+    "identidade-de-genero--discriminacao",
+    "identidade-de-genero--grupo-progressistas",
+    "identidade-de-genero--grupo-evangelicos",
+    "identidade-de-genero--grupo-conservadores",
+    "identidade-de-genero--liberdade-civil",
+    "identidade-de-genero--polarizacao"
   ],
-  "historia": {
-    "opcoes": {
-      "sem-reconhecimento": ["Rússia (desde 2023)", "Hungria (2020)"],
-      "cartorio": ["Brasil (STF, ADI 4275, 2018)"],
-      "lei-de-identidade": [
-        "Argentina (Lei 26.743/2012)",
-        "Chile (Lei 21.120/2018)",
-        "Espanha (2023)"
-      ]
-    },
-    "brasil": "O STF garantiu a mudança de nome e gênero direto no cartório (ADI 4275, 2018); não há lei aprovada pelo Congresso."
+  "mae": {
+    "texto": "Casamento e união civil (com \"Criminalização\", só \"Sem reconhecimento\" fica disponível).",
+    "leis": ["casamento-e-uniao-civil"]
   },
-  "fontes": [
-    {
-      "titulo": "Lei 21.120/2018 do Chile (identidade de gênero)",
-      "url": "https://en.wikipedia.org/wiki/Transgender_rights_in_Chile",
-      "usadoPara": "lei de identidade"
-    },
-    {
-      "titulo": "STF, ADI 4275 (2018)",
-      "url": "https://en.wikipedia.org/wiki/LGBT_rights_in_Brazil",
-      "usadoPara": "opção do Brasil"
-    }
-  ]
+  "ministerio": "Ministério dos Direitos Humanos"
 }

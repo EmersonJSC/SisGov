@@ -1,0 +1,102 @@
+{
+  "id": "regulacao-dos-planos-de-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Regulação dos planos de saúde",
+  "descricao": "O que o plano de saúde é obrigado a cobrir, como reajusta e se o gasto com saúde abate imposto de renda?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_regulacao_dos_planos_de_saude",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "livre",
+        "rotulo": "Livre",
+        "valor": 0,
+        "apoiam": ["Operadoras de planos", "Empresários"],
+        "rejeitam": ["Classe média", "Aposentados"],
+        "efeitos": "Pessoas com plano ↑ (planos baratos e ruins); Gasto do bolso ↑; Pressão no SUS ↑"
+      },
+      {
+        "id": "so-exige-caixa",
+        "rotulo": "Só exige caixa (solvência)",
+        "valor": 20.0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Classe média"],
+        "efeitos": "Parecido com livre, menos quebras de operadora"
+      },
+      {
+        "id": "lista-minima-de-cobertura-e-reajuste-controlado",
+        "rotulo": "Lista mínima de cobertura e reajuste controlado",
+        "valor": 40.0,
+        "custoTexto": "— (o custo vai para a mensalidade)",
+        "apoiam": ["Classe média", "Aposentados"],
+        "rejeitam": ["Operadoras de planos"],
+        "efeitos": "Lista ampla: preço ↑ e Pessoas com plano ↓; ações na Justiça contra planos ↑"
+      },
+      {
+        "id": "competicao-regulada-cesta-padrao-risco-compensado-operadoras",
+        "rotulo": "Competição regulada: cesta padrão, risco compensado, operadoras disputam",
+        "valor": 60.0,
+        "custoTexto": "0 a 0,5% do PIB, Saúde",
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Operadoras de planos"],
+        "efeitos": "Gasto do bolso ↓; Pessoas com plano ↑"
+      },
+      {
+        "id": "so-complementar-plano-cobre-so-o-que-o-sus-nao-cobre",
+        "rotulo": "Só complementar: plano cobre só o que o SUS não cobre",
+        "valor": 80.0,
+        "custoTexto": "sobe o gasto do SUS",
+        "apoiam": ["Movimento pela saúde pública"],
+        "rejeitam": ["Classe média", "Ricos", "Operadoras de planos"],
+        "efeitos": "Pessoas com plano ↓ forte; Pressão hospitalar ↑"
+      },
+      {
+        "id": "deducao-no-imposto-de-renda-acabar",
+        "rotulo": "Dedução no imposto de renda: acabar",
+        "valor": 100,
+        "custoTexto": "Cofre ↑ cerca de 0,5% do PIB (aprox.)",
+        "apoiam": ["Movimento pela saúde pública"],
+        "rejeitam": ["Classe média"],
+        "efeitos": "Pessoas com plano ↓ pouco; Arrecadação ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "regulacao-planos-de-saude--gasto-bolso-saude",
+    "regulacao-planos-de-saude--desigualdade",
+    "regulacao-planos-de-saude--cobertura-planos-saude",
+    "regulacao-planos-de-saude--pressao-hospitalar",
+    "regulacao-planos-de-saude--cobertura-planos-saude-4",
+    "regulacao-planos-de-saude--custo-trabalhista",
+    "regulacao-planos-de-saude--confianca-empresarial",
+    "regulacao-planos-de-saude--pressao-hospitalar-7",
+    "regulacao-planos-de-saude--grupo-aposentados",
+    "regulacao-planos-de-saude--grupo-classe-media",
+    "regulacao-planos-de-saude--grupo-empresarios",
+    "regulacao-planos-de-saude--grupo-jovens",
+    "regulacao-planos-de-saude--grupo-progressistas"
+  ],
+  "mae": {
+    "texto": "Modelo do sistema de saúde. \"Estatal único\" trava em \"só complementar\". \"Seguro obrigatório\" trava em \"competição regulada\".",
+    "leis": ["modelo-do-sistema-de-saude"]
+  },
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Saúde"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "vagas-de-residencia-medica--falta-de-medicos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vagas_de_residencia_medica",
+  "alvo": "falta_de_medicos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.108,
+    "termoConstante": 3.59964
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

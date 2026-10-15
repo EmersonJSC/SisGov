@@ -1,0 +1,66 @@
+{
+  "id": "mutirao-de-cirurgias",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Mutirão de cirurgias",
+  "descricao": "Pôr verba extra e temporária para baixar a fila de cirurgias agora?",
+  "area": "Saúde",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_mutirao_de_cirurgias",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 33.33,
+        "rejeitam": ["Aposentados", "Pobres"],
+        "efeitos": "Fila segue as causas de fundo"
+      },
+      {
+        "id": "0-01-do-pib",
+        "rotulo": "0,01% do PIB",
+        "valor": 66.67,
+        "custoTexto": "0,01% do PIB (aprox.), Saúde",
+        "apoiam": ["Aposentados", "Pobres"],
+        "efeitos": "Fila ↓ no ano; volta se a causa não mudar"
+      },
+      {
+        "id": "0-05-do-pib",
+        "rotulo": "0,05% do PIB",
+        "valor": 100,
+        "custoTexto": "0,05% do PIB (aprox.), Saúde",
+        "apoiam": ["Aposentados", "Pobres", "Empresários"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Fila ↓ rápido; Aprovação do governo ↑; tudo volta quando a verba acaba"
+      }
+    ]
+  },
+  "consequencias": [
+    "mutirao-de-cirurgias--popularidade-governo",
+    "grupos--mutirao-de-cirurgias--grupo-aposentados",
+    "grupos--mutirao-de-cirurgias--grupo-empresarios",
+    "grupos--mutirao-de-cirurgias--grupo-pobres"
+  ],
+  "ministerio": "Ministério da Saúde"
+}

@@ -2,17 +2,21 @@
   "id": "sistema-de-governo",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Sistema de governo",
-  "descricao": "Define quem chefia o governo e se ele pode ser derrubado pelo Parlamento.",
-  "area": "Instituições, Estado e sistema político",
+  "descricao": "Quem chefia o governo e se o Congresso pode derrubá-lo?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "sistema-politico",
     "nome": "Sistema político",
     "camada": "constituicao"
   },
-  "ministerio": "Casa Civil",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_sistema_de_governo",
     "unidade": "nivel_escopo",
@@ -20,22 +24,32 @@
       {
         "id": "presidencialismo",
         "rotulo": "Presidencialismo",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Interior"],
+        "efeitos": "Corrupção ↑ (tamanho: lacuna); Polarização ↑"
       },
       {
         "id": "semipresidencialismo",
         "rotulo": "Semipresidencialismo",
-        "valor": 33
+        "valor": 33,
+        "apoiam": ["Ricos", "Empresários"],
+        "rejeitam": ["lacuna"],
+        "efeitos": "Estabilidade ↑ fraco (aprox.)"
       },
       {
         "id": "parlamentarismo",
         "rotulo": "Parlamentarismo",
-        "valor": 67
+        "valor": 67,
+        "apoiam": ["Classe média"],
+        "rejeitam": ["lacuna"],
+        "efeitos": "Estabilidade ↑ no longo prazo, mas o gabinete cai mais vezes; Polarização ↓"
       },
       {
         "id": "diretorial",
-        "rotulo": "Governo colegiado",
-        "valor": 100
+        "rotulo": "Diretorial (conselho de governo)",
+        "valor": 100,
+        "rejeitam": ["Quase todos os grupos"],
+        "efeitos": "Sem efeito medido"
       }
     ]
   },
@@ -46,10 +60,8 @@
     "sistema-de-governo--polarizacao",
     "sistema-de-governo--grupo-classe-media",
     "sistema-de-governo--grupo-empresarios",
-    "sistema-de-governo--grupo-pobres"
+    "sistema-de-governo--grupo-pobres",
+    "sistema-de-governo--corrupcao"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Casa Civil"
 }

@@ -1,0 +1,17 @@
+{
+  "id": "propriedade-dos-meios-de-producao--fuga-capitais",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_propriedade_dos_meios_de_producao",
+  "alvo": "fuga_capitais",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.12,
+    "termoConstante": -2.544137
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

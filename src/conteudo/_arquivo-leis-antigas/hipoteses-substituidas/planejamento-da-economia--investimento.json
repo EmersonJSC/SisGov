@@ -1,0 +1,20 @@
+{
+  "id": "planejamento-da-economia--investimento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_planejamento_da_economia",
+  "alvo": "investimento",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [50, 0],
+      [100, -8]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

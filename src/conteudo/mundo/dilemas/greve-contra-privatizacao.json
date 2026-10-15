@@ -12,7 +12,7 @@
   "gatilho": {
     "chance": 0.75,
     "reacao": {
-      "controle": "nivel_empresas_estatais_e_privatizacao",
+      "controle": "nivel_papel_do_estado_empresario",
       "janelaTurnos": 2,
       "desce": 30.0
     }
@@ -57,7 +57,7 @@
       ],
       "leis": [
         {
-          "lei": "empresas-estatais-e-privatizacao",
+          "lei": "papel-do-estado-empresario",
           "nivel": 67.0
         }
       ]

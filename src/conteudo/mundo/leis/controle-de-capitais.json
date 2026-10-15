@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Controle de capitais",
-  "descricao": "Define quanto o dinheiro pode entrar e sair do país livremente: compra de dólares, remessa de lucros, aplicações de estrangeiros.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "O dinheiro pode entrar e sair do país livremente?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "moeda",
+    "id": "moeda-e-banco-central",
     "nome": "Moeda e banco central",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_controle_de_capitais",
     "unidade": "nivel_escopo",
@@ -20,38 +24,51 @@
       {
         "id": "conta-aberta",
         "rotulo": "Conta aberta",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Mercado financeiro", "Ricos"],
+        "efeitos": "Investimento estrangeiro ↑; volatilidade do câmbio ↑"
       },
       {
         "id": "controles-prudenciais",
-        "rotulo": "Pedágio no dinheiro quente",
-        "valor": 33
+        "rotulo": "Controles prudenciais (imposto que sobe e desce com o fluxo) (o país de referência 2009-2013)",
+        "valor": 33.33,
+        "custoTexto": "Gera receita de imposto",
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Câmbio quase não muda; o imposto sobre derivativos depreciou o real de 4% a 10%; fluxo de carteira ↓"
       },
       {
         "id": "controles-amplos",
-        "rotulo": "Controles amplos",
-        "valor": 67
+        "rotulo": "Controles amplos (cotas de compra de dólar)",
+        "valor": 66.67,
+        "rejeitam": ["Classe média", "Ricos"],
+        "efeitos": "Libera o índice Dólar paralelo; fuga de capitais ↓ no curto prazo; investimento estrangeiro ↓"
       },
       {
         "id": "conta-fechada",
         "rotulo": "Conta fechada",
-        "valor": 100
+        "valor": 100,
+        "rejeitam": [
+          "Mercado financeiro",
+          "Confederação da indústria",
+          "Comércio e serviços",
+          "Petróleo e mineração",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Libera Dólar paralelo e o evento de fuga em massa; investimento estrangeiro ↓ forte"
       }
     ]
   },
   "consequencias": [
-    "controle-de-capitais--crise-financeira",
     "controle-de-capitais--ied",
-    "controle-de-capitais--reservas-internacionais",
-    "controle-de-capitais--investimento",
-    "controle-de-capitais--taxa-juros",
-    "controle-de-capitais--mercado-paralelo",
-    "controle-de-capitais--corrupcao",
-    "controle-de-capitais--risco-pais",
+    "controle-de-capitais--fuga-capitais",
     "controle-de-capitais--arrecadacao",
-    "controle-de-capitais--grupo-classe-media",
-    "controle-de-capitais--grupo-empresarios"
+    "controle-de-capitais--corrupcao",
+    "controle-de-capitais--crise-financeira",
+    "controle-de-capitais--mercado-paralelo",
+    "controle-de-capitais--risco-pais"
   ],
+  "ministerio": "Ministério da Fazenda",
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

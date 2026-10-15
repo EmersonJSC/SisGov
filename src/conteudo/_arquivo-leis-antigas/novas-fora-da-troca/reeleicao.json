@@ -1,0 +1,75 @@
+{
+  "id": "reeleicao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Reeleição",
+  "descricao": "O chefe do Executivo pode se candidatar de novo, e quantas vezes?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_reeleicao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-reeleicao",
+        "rotulo": "Sem reeleição",
+        "valor": 0,
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Governadores e prefeitos"],
+        "efeitos": "Some o incentivo eleitoral: Corrupção passa a depender só de auditoria e imprensa"
+      },
+      {
+        "id": "nao-consecutiva",
+        "rotulo": "Não consecutiva",
+        "valor": 33,
+        "apoiam": ["Classe média"],
+        "efeitos": "Sem efeito medido"
+      },
+      {
+        "id": "uma-reeleicao",
+        "rotulo": "Uma reeleição",
+        "valor": 67,
+        "apoiam": ["Bancadas do Congresso do governo"],
+        "efeitos": "Corrupção no primeiro mandato 27% menor que no segundo"
+      },
+      {
+        "id": "ilimitada",
+        "rotulo": "Ilimitada",
+        "valor": 100,
+        "apoiam": ["lacuna"],
+        "rejeitam": ["As 5 mídias"],
+        "efeitos": "Ameaça de golpe ↑; Captura política ↑; Liberdades civis ↓ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "reeleicao--margem-manobra-governo",
+    "reeleicao--estabilidade-politica",
+    "reeleicao--captura-politica",
+    "reeleicao--forca-instituicoes",
+    "reeleicao--liberdade-civil",
+    "reeleicao--protestos",
+    "reeleicao--grupo-empresarios",
+    "reeleicao--grupo-jovens"
+  ],
+  "mae": {
+    "texto": "Sistema de governo (\"Parlamentarismo\" trava a lei; \"Diretorial\" trava \"Ilimitada\"). Independência do Judiciário: \"Ilimitada\" só existe se ela não for \"Plena\".",
+    "leis": ["sistema-de-governo", "independencia-do-judiciario"]
+  },
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Casa Civil"
+}

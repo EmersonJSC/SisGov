@@ -1,0 +1,51 @@
+{
+  "id": "voto-obrigatorio",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Voto obrigatório",
+  "descricao": "Define se votar é um direito opcional ou um dever com punição para quem falta.",
+  "area": "Instituições, Estado e sistema político",
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "lei"
+  },
+  "ministerio": "Casa Civil",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_voto_obrigatorio",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "facultativo",
+        "rotulo": "Voto facultativo",
+        "valor": 0
+      },
+      {
+        "id": "obrigatorio-nominal",
+        "rotulo": "Obrigatório só no papel",
+        "valor": 50
+      },
+      {
+        "id": "obrigatorio-com-sancoes",
+        "rotulo": "Obrigatório com punição",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "voto-obrigatorio--participacao-eleitoral",
+    "voto-obrigatorio--desigualdade",
+    "voto-obrigatorio--polarizacao",
+    "voto-obrigatorio--liberdade-civil",
+    "voto-obrigatorio--gasto-publico",
+    "voto-obrigatorio--grupo-empresarios",
+    "voto-obrigatorio--grupo-jovens",
+    "voto-obrigatorio--grupo-pobres"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

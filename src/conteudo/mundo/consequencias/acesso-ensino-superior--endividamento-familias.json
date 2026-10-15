@@ -2,7 +2,7 @@
   "id": "acesso-ensino-superior--endividamento-familias",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_acesso_ensino_superior",
+  "origem": "nivel_acesso_ao_ensino_superior",
   "alvo": "endividamento_familias",
   "mecanismo": "limiar",
   "parametros": {

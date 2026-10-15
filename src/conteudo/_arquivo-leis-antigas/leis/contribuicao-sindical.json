@@ -1,0 +1,114 @@
+{
+  "id": "contribuicao-sindical",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Contribuição sindical",
+  "descricao": "Se o trabalhador paga o sindicato só quando autoriza, ou se todos pagam com desconto no salário.",
+  "area": "Trabalho e emprego",
+  "ministerio": "Ministério do Trabalho",
+  "nivel": "lei",
+  "mesa": {
+    "id": "sindicatos-e-greve",
+    "nome": "Sindicatos e greve",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "nivel_contribuicao_sindical",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "voluntaria",
+        "rotulo": "Voluntária, só com autorização",
+        "valor": 0
+      },
+      {
+        "id": "obrigatoria",
+        "rotulo": "Obrigatória, descontada de todos",
+        "valor": 100
+      }
+    ]
+  },
+  "efeitos": [
+    {
+      "alvo": "greve_geral",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 2
+    },
+    {
+      "alvo": "custo_trabalhista",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_servidores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0
+    }
+  ],
+  "historia": {
+    "opcoes": {
+      "voluntaria": [
+        "Brasil desde 2017",
+        "Reino Unido",
+        "Estados Unidos (estados com direito ao trabalho)"
+      ],
+      "obrigatoria": [
+        "Brasil de 1940 a 2017 (imposto sindical)",
+        "Argentina (cota solidária)"
+      ]
+    },
+    "brasil": "A reforma trabalhista (Lei 13.467/2017) tornou a contribuição voluntária."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 13.467/2017 (reforma trabalhista)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13467.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Lei 11.648/2008 (parte do imposto sindical às centrais)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11648.htm",
+      "usadoPara": "contribuição obrigatória"
+    }
+  ]
+}

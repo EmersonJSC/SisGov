@@ -1,16 +1,21 @@
 {
   "id": "governadores",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Governadores",
-  "descricao": "Quem escolhe o governador de cada estado: o povo do estado em eleição ou o presidente.",
-  "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
-  "nivel": "constituicao",
+  "descricao": "Os governantes dos estados são eleitos pelo povo ou indicados pelo governo central?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "federacao",
     "nome": "Federação",
     "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
   },
   "controle": {
     "variavel": "nivel_governadores",
@@ -18,94 +23,31 @@
     "opcoes": [
       {
         "id": "eleitos",
-        "rotulo": "Eleitos pelo povo do estado",
-        "valor": 0
+        "rotulo": "Eleitos",
+        "valor": 0,
+        "apoiam": ["Quase todos os grupos"]
       },
       {
         "id": "indicados",
-        "rotulo": "Indicados pelo presidente",
-        "valor": 100
+        "rotulo": "Indicados",
+        "valor": 100,
+        "rejeitam": ["Interior", "Periferias e os grupos regionais"],
+        "efeitos": "Confiança ↓; Participação eleitoral ↓; Estabilidade ↑ no curto prazo (aprox.)"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -5]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "margem_manobra_governo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, 5]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "confianca_instituicoes",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -3]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "grupo_interior",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -4]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_classe_media",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -2]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "governadores--liberdade-civil",
+    "governadores--margem-manobra-governo",
+    "governadores--confianca-instituicoes",
+    "governadores--grupo-interior",
+    "governadores--grupo-classe-media",
+    "governadores--confianca-empresarial",
+    "governadores--participacao-eleitoral"
   ],
-  "historia": {
-    "opcoes": {
-      "eleitos": ["Brasil", "Estados Unidos", "Argentina", "México"],
-      "indicados": [
-        "Rússia de 2005 a 2012",
-        "Chile até 2021 (intendentes)",
-        "França (prefeitos nomeados)"
-      ]
-    },
-    "brasil": "A Constituição de 1988 manda eleger os governadores (art. 28), e a forma federativa é cláusula pétrea (art. 60, § 4º, I)."
+  "mae": {
+    "texto": "Federalismo (\"Centralizado\" trava \"Eleitos\" com poder fiscal)",
+    "leis": ["federalismo"]
   },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "arts. 28 e 60, opção do Brasil"
-    },
-    {
-      "titulo": "Lei federal russa 159-FZ/2004 (governadores indicados)",
-      "url": "https://en.wikipedia.org/wiki/Federal_subjects_of_Russia",
-      "usadoPara": "governadores indicados"
-    }
-  ]
+  "ministerio": "Casa Civil"
 }

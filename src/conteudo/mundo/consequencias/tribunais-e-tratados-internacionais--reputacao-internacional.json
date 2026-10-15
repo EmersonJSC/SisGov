@@ -1,0 +1,17 @@
+{
+  "id": "tribunais-e-tratados-internacionais--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_e_tratados_internacionais",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.084,
+    "termoConstante": -5.60028
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

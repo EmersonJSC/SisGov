@@ -1,0 +1,17 @@
+{
+  "id": "como-a-aposentadoria-e-financiada--deficit-previdenciario",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_como_a_aposentadoria_e_financiada",
+  "alvo": "deficit_previdenciario",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": -6.3
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

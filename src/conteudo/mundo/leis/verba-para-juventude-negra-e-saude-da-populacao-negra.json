@@ -1,0 +1,67 @@
+{
+  "id": "verba-para-juventude-negra-e-saude-da-populacao-negra",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Verba para juventude negra e saúde da população negra",
+  "descricao": "Quanto o governo gasta por ano em políticas focadas em jovens negros e na saúde da população negra?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "igualdade-racial",
+    "nome": "Igualdade racial",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_verba_para_juventude_negra_e_saude_da_populacao_negra",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 33.33,
+        "apoiam": ["Conservadores"],
+        "rejeitam": ["Movimento negro", "Periferias", "Progressistas"],
+        "efeitos": "Desigualdade racial sem freio"
+      },
+      {
+        "id": "referencia-hoje",
+        "rotulo": "Referência (aprox.: plano de  665 milhões lançado em 2024 para 12 anos; o valor por ano é lacuna)",
+        "valor": 66.67,
+        "custoTexto": "lacuna (aprox. 0,005% do PIB por ano se dividido em 12 anos; conta minha)",
+        "apoiam": ["Movimento negro", "Periferias"],
+        "rejeitam": ["parte dos Conservadores"],
+        "efeitos": "Desigualdade racial ↓ pouco contra Zero (efeito não medido), atraso de anos; Violência letal de jovens negros ↓ pouco (estimado)"
+      },
+      {
+        "id": "alta",
+        "rotulo": "Alta (o dobro de hoje; proposta minha)",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "apoiam": ["Movimento negro", "Periferias", "Jovens", "Progressistas"],
+        "rejeitam": ["Conservadores"],
+        "efeitos": "Desigualdade racial ↓ e Violência letal de jovens negros ↓ (efeito não medido), atraso de anos"
+      }
+    ]
+  },
+  "consequencias": [],
+  "mae": {
+    "texto": "Igualdade racial. Com \"O Estado não usa raça\", esta verba fica desligada (proposta minha).",
+    "leis": ["igualdade-racial"]
+  },
+  "ministerio": "Ministério da Educação"
+}

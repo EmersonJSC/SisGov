@@ -3,36 +3,60 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Posse e porte de armas",
-  "descricao": "Quem pode ter arma em casa e quem pode andar armado na rua.",
-  "area": "Segurança, justiça e drogas",
+  "nome": "Armas de fogo",
+  "descricao": "Quem pode ter e portar arma, quantas e com quanta munição?",
+  "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "armas",
     "nome": "Armas",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
   "nivelLegal": "derivada",
-  "revogavel": false,
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_armas_de_fogo",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "proibidas",
-        "rotulo": "Quase proibidas",
-        "valor": 0
+        "id": "proibidas-para-civis",
+        "rotulo": "Proibidas para civis",
+        "valor": 0,
+        "custoTexto": "recompra ≈0,01% do PIB (aprox.)",
+        "apoiam": ["Progressistas"],
+        "rejeitam": [
+          "Conservadores",
+          "Entidades do agronegócio",
+          "Interior",
+          "Indústria de armas",
+          "Atiradores e donos de armas pelo porte"
+        ],
+        "efeitos": "Armas em circulação ↓↓; violência letal ↓"
       },
       {
-        "id": "restritas",
-        "rotulo": "Só com justificativa",
-        "valor": 50
+        "id": "restritas-ate-2-armas-controle-forte",
+        "rotulo": "Restritas: até 2 armas, controle forte",
+        "valor": 50,
+        "apoiam": ["Progressistas", "Periferias", "Movimento feminista"],
+        "rejeitam": ["Atiradores e donos de armas pelo porte"],
+        "efeitos": "Armas em circulação ↓ em 1 a 3 anos; violência letal ↓ (−1% no estoque dá −0,15% a −0,20%; a lei de 2003 cortou ao menos 12,6% dos homicídios em SP)"
       },
       {
-        "id": "facilitadas",
-        "rotulo": "Posse e porte facilitados",
-        "valor": 100
+        "id": "facilitadas-4-armas-5-000-cartuchos-por-ano-atirador-amplo",
+        "rotulo": "Facilitadas: 4 armas, 5.000 cartuchos por ano, atirador amplo",
+        "valor": 100,
+        "apoiam": [
+          "Atiradores e donos de armas pelo porte",
+          "Entidades do agronegócio",
+          "Interior",
+          "Conservadores",
+          "Indústria de armas"
+        ],
+        "rejeitam": ["Progressistas", "Movimento feminista", "Periferias"],
+        "efeitos": "Armas em circulação ↑ em 1 a 3 anos; violência letal ↑; feminicídio ↑; crime organizado ↑ (munição desviada); crimes contra o patrimônio sem efeito"
       }
     ]
   },
@@ -44,10 +68,12 @@
     "armas-de-fogo--liberdade-civil",
     "armas-de-fogo--grupo-agro",
     "armas-de-fogo--grupo-conservadores",
-    "armas-de-fogo--grupo-progressistas"
+    "armas-de-fogo--grupo-progressistas",
+    "armas-de-fogo--crime-organizado"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
-  }
+  },
+  "ministerio": "Ministério da Justiça"
 }

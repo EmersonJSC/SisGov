@@ -17,14 +17,14 @@ describe("lupa", () => {
   it("estatizar e privatizar levam à lei das estatais, em Economia", () => {
     for (const q of ["privatizar", "estatizar", "Privatização", "estatais"]) {
       const r = primeira(q);
-      expect(r?.id, q).toBe("empresas-estatais-e-privatizacao");
+      expect(r?.id, q).toBe("papel-do-estado-empresario");
       expect(r?.tema).toBe("Empresas e comércio");
       expect(r?.pasta).toBe("Indústria e Comércio");
     }
   });
 
   it("palavras do dia a dia e nomes sem acento", () => {
-    expect(primeira("juros")?.id).toBe("autonomia-banco-central");
+    expect(primeira("juros")?.id).toBe("quem-controla-o-banco-central");
     expect(primeira("aposentadoria")?.id).toBe("idade-minima-aposentadoria");
     expect(primeira("salario minimo")?.id).toBe("salario-minimo");
     expect(primeira("armas")?.id).toBe("armas-de-fogo");

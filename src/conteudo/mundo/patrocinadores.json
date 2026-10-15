@@ -19,7 +19,7 @@
       "poder": 5,
       "interesses": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 40
         },
@@ -78,7 +78,7 @@
           "peso": 25
         },
         {
-          "lei": "agrotoxicos",
+          "lei": "registro-de-agrotoxicos",
           "sobe": "baixo",
           "peso": 25
         }
@@ -92,7 +92,7 @@
       "poder": 3,
       "interesses": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 50
         },
@@ -160,7 +160,7 @@
       "poder": 3,
       "interesses": [
         {
-          "lei": "genericos-e-patentes-medicamentos",
+          "lei": "genericos-e-patentes-de-medicamentos",
           "sobe": "alto",
           "peso": 50
         },
@@ -185,7 +185,7 @@
           "peso": 50
         },
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 50
         }
@@ -199,7 +199,7 @@
       "poder": 5,
       "interesses": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 60
         },
@@ -218,7 +218,7 @@
       "poder": 5,
       "interesses": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 50
         },
@@ -237,7 +237,7 @@
       "poder": 4,
       "interesses": [
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 100
         }
@@ -256,7 +256,7 @@
           "peso": 60
         },
         {
-          "lei": "regulacao-redes-sociais",
+          "lei": "regulacao-das-redes-sociais",
           "sobe": "alto",
           "peso": 40
         }
@@ -334,12 +334,12 @@
       "poder": 5,
       "interesses": [
         {
-          "lei": "empresas-estatais-e-privatizacao",
+          "lei": "papel-do-estado-empresario",
           "sobe": "alto",
           "peso": 60
         },
         {
-          "lei": "precificacao-carbono",
+          "lei": "preco-do-carbono",
           "sobe": "alto",
           "peso": 40
         }
@@ -358,7 +358,7 @@
           "peso": 50
         },
         {
-          "lei": "precificacao-carbono",
+          "lei": "preco-do-carbono",
           "sobe": "alto",
           "peso": 50
         }
@@ -377,7 +377,7 @@
           "peso": 60
         },
         {
-          "lei": "precificacao-carbono",
+          "lei": "preco-do-carbono",
           "sobe": "alto",
           "peso": 40
         }
@@ -391,7 +391,7 @@
       "poder": 4,
       "interesses": [
         {
-          "lei": "agrotoxicos",
+          "lei": "registro-de-agrotoxicos",
           "sobe": "alto",
           "peso": 70
         },
@@ -473,12 +473,12 @@
       "poder": 5,
       "interesses": [
         {
-          "lei": "genericos-e-patentes-medicamentos",
+          "lei": "genericos-e-patentes-de-medicamentos",
           "sobe": "baixo",
           "peso": 60
         },
         {
-          "lei": "programa-medicos-no-interior",
+          "lei": "programa-de-medicos-no-interior",
           "sobe": "alto",
           "peso": 40
         }
@@ -588,7 +588,7 @@
           "peso": 40
         },
         {
-          "lei": "liberdade-imprensa",
+          "lei": "liberdade-de-imprensa",
           "sobe": "baixo",
           "peso": 30
         },

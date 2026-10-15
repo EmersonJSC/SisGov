@@ -1,0 +1,78 @@
+{
+  "id": "verba-de-planejamento-familiar-e-de-aborto-legal",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Verba de planejamento familiar e de aborto legal",
+  "descricao": "Quanto o governo gasta por ano com contraceptivos e com os serviços de aborto previstos em lei?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_verba_de_planejamento_familiar_e_de_aborto_legal",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "zero",
+        "rotulo": "Zero",
+        "valor": 33.33,
+        "apoiam": ["Parte dos Conservadores"],
+        "rejeitam": [
+          "Movimento feminista",
+          "Entidades de saúde pública",
+          "Pobres"
+        ],
+        "efeitos": "Gravidez indesejada ↑; Abortos inseguros ↑; Saúde da população ↓"
+      },
+      {
+        "id": "referencia-hoje",
+        "rotulo": "Referência (lacuna; só se sabe que o implante contraceptivo recebeu  245 milhões em 2025)",
+        "valor": 66.67,
+        "custoTexto": "lacuna",
+        "apoiam": ["Católicos", "Classe média"],
+        "efeitos": "Gravidez indesejada ↓ contra Zero; Abortos inseguros ↓ pouco; Saúde da população ↑ pouco (estimado)"
+      },
+      {
+        "id": "alta",
+        "rotulo": "Alta (cobertura ampla de métodos de longa duração e serviço de aborto legal em todas as regiões)",
+        "valor": 100,
+        "custoTexto": "lacuna (proposta minha: até 0,01% do PIB)",
+        "apoiam": [
+          "Movimento feminista",
+          "Entidades de saúde pública",
+          "Progressistas",
+          "Pobres"
+        ],
+        "rejeitam": ["Igrejas evangélicas e Hierarquia católica"],
+        "efeitos": "Abortos inseguros ↓ (o caso Uruguai mostra a queda antes da lei, vinda do serviço), atraso 1 a 3 anos; Saúde da população ↑; Pressão hospitalar ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "verba-de-planejamento-familiar-e-de-aborto-legal--saude-populacao",
+    "verba-de-planejamento-familiar-e-de-aborto-legal--pressao-hospitalar"
+  ],
+  "mae": {
+    "texto": "Aborto. Com \"Proibição total\", a parte de aborto legal vai a zero e sobra só o planejamento familiar (proposta minha).",
+    "leis": ["aborto"]
+  },
+  "ministerio": "Ministério da Educação"
+}

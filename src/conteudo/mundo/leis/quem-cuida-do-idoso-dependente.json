@@ -1,0 +1,75 @@
+{
+  "id": "quem-cuida-do-idoso-dependente",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Quem cuida do idoso dependente",
+  "descricao": "O idoso que não consegue se cuidar fica com a família, com a assistência para pobres, com um seguro obrigatório ou com um serviço público?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-familia-e-cuidados",
+    "nome": "Mesa Família e cuidados",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_quem_cuida_do_idoso_dependente",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "familia",
+        "rotulo": "Família",
+        "valor": 0,
+        "custoTexto": "Quase 0 (o custo fica no trabalho das mulheres)",
+        "apoiam": ["Conservadores"],
+        "rejeitam": ["Movimento feminista"],
+        "efeitos": "Trabalho de quem cuida ↓"
+      },
+      {
+        "id": "assistencia-so-para-os-pobres",
+        "rotulo": "Assistência só para os pobres",
+        "valor": 33,
+        "custoTexto": "Baixo",
+        "efeitos": "Pressão hospitalar ↓ pouco"
+      },
+      {
+        "id": "seguro-obrigatorio",
+        "rotulo": "Seguro obrigatório",
+        "valor": 67,
+        "custoTexto": "Médio (aprox. 1% a 2% do PIB)",
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Trabalho de quem cuida ↑ (sem tamanho); pressão hospitalar ↓"
+      },
+      {
+        "id": "servico-publico-universal",
+        "rotulo": "Serviço público universal",
+        "valor": 100,
+        "custoTexto": "Alto (aprox. 3% a 4% do PIB)",
+        "apoiam": ["Progressistas", "Aposentados"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Trabalho de quem cuida ↑; pressão hospitalar ↓; custo ↑ sozinho com o envelhecimento"
+      }
+    ]
+  },
+  "consequencias": [
+    "cuidados-de-longa-duracao--participacao-trabalho-cuidadoras",
+    "cuidados-de-longa-duracao--saude-populacao",
+    "cuidados-de-longa-duracao--pressao-hospitalar",
+    "cuidados-de-longa-duracao--custo-trabalhista",
+    "cuidados-de-longa-duracao--desemprego",
+    "cuidados-de-longa-duracao--desigualdade",
+    "cuidados-de-longa-duracao--gasto-publico",
+    "cuidados-de-longa-duracao--grupo-aposentados",
+    "cuidados-de-longa-duracao--grupo-classe-media",
+    "cuidados-de-longa-duracao--grupo-empresarios",
+    "cuidados-de-longa-duracao--grupo-progressistas",
+    "cuidados-de-longa-duracao--grupo-servidores"
+  ],
+  "ministerio": "Ministério da Previdência"
+}

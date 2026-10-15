@@ -1,0 +1,20 @@
+{
+  "id": "licenca-para-abrir-negocio--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_licenca_para_abrir_negocio",
+  "alvo": "corrupcao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 2],
+      [50, 1],
+      [100, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

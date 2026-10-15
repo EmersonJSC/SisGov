@@ -1,0 +1,17 @@
+{
+  "id": "regra-de-repasse--captura-politica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regra_de_repasse",
+  "alvo": "captura_politica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.04199,
+    "termoConstante": 2.799473
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

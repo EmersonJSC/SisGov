@@ -1,0 +1,17 @@
+{
+  "id": "publicidade-de-apostas--vicio-em-apostas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_publicidade_de_apostas",
+  "alvo": "vicio_em_apostas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.138,
+    "termoConstante": 13.8
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

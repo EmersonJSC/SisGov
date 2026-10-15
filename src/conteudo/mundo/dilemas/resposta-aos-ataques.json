@@ -56,10 +56,7 @@
         {
           "ocorrencia": "escandalo-tregua",
           "chance": 0.4,
-          "emTurnos": [
-            2,
-            6
-          ]
+          "emTurnos": [2, 6]
         }
       ]
     },

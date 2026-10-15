@@ -2,7 +2,7 @@
   "id": "seguranca-alimentar--grupo-agro",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_seguranca_alimentar",
+  "origem": "nivel_garantia_de_comida",
   "alvo": "grupo_agro",
   "mecanismo": "afim",
   "parametros": {

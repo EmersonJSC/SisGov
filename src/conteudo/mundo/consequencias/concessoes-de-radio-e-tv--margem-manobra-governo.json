@@ -1,0 +1,20 @@
+{
+  "id": "concessoes-de-radio-e-tv--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_concessoes_de_radio_e_tv",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 0],
+      [100, 5]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -2,7 +2,7 @@
   "id": "estabilidade-servidores-publicos--grupo-classe-media",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_estabilidade_servidores_publicos",
+  "origem": "nivel_estabilidade_dos_servidores_publicos",
   "alvo": "grupo_classe_media",
   "mecanismo": "afim",
   "parametros": {

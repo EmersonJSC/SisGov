@@ -1,0 +1,17 @@
+{
+  "id": "regra-de-reajuste-dos-beneficios--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regra_de_reajuste_dos_beneficios",
+  "alvo": "desigualdade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.028,
+    "termoConstante": 2.1
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Investimento estrangeiro",
-  "descricao": "Define em que setores estrangeiros podem abrir ou comprar empresas, e se o país os atrai com incentivos.",
-  "area": "Economia, finanças e comércio exterior",
+  "descricao": "Empresas de fora podem investir em quais setores e com quais regras?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "comercio-exterior",
+    "id": "comercio-exterior-e-capital-estrangeiro",
     "nome": "Comércio exterior e capital estrangeiro",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Economia",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_investimento_estrangeiro",
     "unidade": "nivel_escopo",
@@ -20,43 +24,55 @@
       {
         "id": "fechado",
         "rotulo": "Fechado",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Associações de militares"],
+        "rejeitam": ["Empresários", "Mercado financeiro"],
+        "efeitos": "Investimento estrangeiro ↓ forte; reservas ↓"
       },
       {
-        "id": "lista-negativa",
-        "rotulo": "Lista negativa",
-        "valor": 25
+        "id": "lista-do-que-e-proibido",
+        "rotulo": "Lista do que é proibido (o resto liberado)",
+        "valor": 25.0,
+        "efeitos": "Investimento estrangeiro ↑"
       },
       {
-        "id": "restricoes-setoriais",
-        "rotulo": "Restrições pontuais",
-        "valor": 50
+        "id": "restricoes-por-setor",
+        "rotulo": "Restrições por setor (mídia, terra, defesa)",
+        "valor": 50.0,
+        "apoiam": ["Entidades do agronegócio"],
+        "efeitos": "Investimento estrangeiro ↑ pouco contra Fechado e ↓ contra Sem restrições; câmbio e reservas estáveis (estimado)"
       },
       {
         "id": "sem-restricoes",
-        "rotulo": "Porta aberta",
-        "valor": 75
+        "rotulo": "Sem restrições",
+        "valor": 75.0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Associações de militares", "Confederação da indústria"],
+        "efeitos": "Investimento estrangeiro ↑ forte; câmbio ↓"
       },
       {
-        "id": "atracao-com-incentivos",
-        "rotulo": "Tapete vermelho",
-        "valor": 100
+        "id": "atracao-com-incentivos-fiscais",
+        "rotulo": "Atração com incentivos fiscais",
+        "valor": 100,
+        "custoTexto": "Renúncia fiscal (lacuna)",
+        "apoiam": ["Confederação da indústria"],
+        "rejeitam": ["Pequenos empreendedores"],
+        "efeitos": "Investimento estrangeiro ↑; investimento ↑"
       }
     ]
   },
   "consequencias": [
     "investimento-estrangeiro--ied",
-    "investimento-estrangeiro--investimento",
-    "investimento-estrangeiro--produtividade",
-    "investimento-estrangeiro--exportacoes",
+    "investimento-estrangeiro--reservas-internacionais",
     "investimento-estrangeiro--cambio",
-    "investimento-estrangeiro--arrecadacao",
-    "investimento-estrangeiro--concentracao-mercado",
-    "investimento-estrangeiro--grupo-jovens",
-    "investimento-estrangeiro--grupo-pequenos-negocios",
-    "investimento-estrangeiro--grupo-servidores",
-    "investimento-estrangeiro--grupo-trabalhadores"
+    "investimento-estrangeiro--investimento",
+    "investimento-estrangeiro--arrecadacao"
   ],
+  "mae": {
+    "texto": "Controle de capitais: \"conta fechada\" tranca \"sem restrições\"",
+    "leis": ["controle-de-capitais"]
+  },
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

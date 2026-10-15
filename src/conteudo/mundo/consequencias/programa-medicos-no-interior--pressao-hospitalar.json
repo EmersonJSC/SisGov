@@ -2,7 +2,7 @@
   "id": "programa-medicos-no-interior--pressao-hospitalar",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_programa_medicos_no_interior",
+  "origem": "nivel_programa_de_medicos_no_interior",
   "alvo": "pressao_hospitalar",
   "mecanismo": "afim",
   "parametros": {

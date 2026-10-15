@@ -1,0 +1,20 @@
+{
+  "id": "direito-de-greve--confianca-empresarial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_direito_de_greve",
+  "alvo": "confianca_empresarial",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 3],
+      [50, 1],
+      [100, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

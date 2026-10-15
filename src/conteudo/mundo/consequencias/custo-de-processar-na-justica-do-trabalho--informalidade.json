@@ -1,0 +1,17 @@
+{
+  "id": "custo-de-processar-na-justica-do-trabalho--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_custo_de_processar_na_justica_do_trabalho",
+  "alvo": "informalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.07,
+    "termoConstante": 0.0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

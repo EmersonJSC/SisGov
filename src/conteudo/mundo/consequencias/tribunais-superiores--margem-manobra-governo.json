@@ -1,0 +1,20 @@
+{
+  "id": "tribunais-superiores--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_superiores",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 4],
+      [100, 10]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

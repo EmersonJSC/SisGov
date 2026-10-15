@@ -1,122 +1,68 @@
 {
   "id": "ensino-religioso",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Ensino religioso",
-  "descricao": "Se a escola pública ensina religião: proibido, facultativo para quem quiser ou obrigatório.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "ministerio": "Ministério da Educação",
-  "nivel": "lei",
+  "descricao": "A escola pública dá aula de religião, e ela é obrigatória?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
     "id": "religiao",
     "nome": "Religião",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_ensino_religioso",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "proibido",
+        "id": "proibido-na-escola-publica",
         "rotulo": "Proibido na escola pública",
-        "valor": 0
+        "valor": 0,
+        "custoTexto": "economiza pouco",
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Evangélicos", "Católicos"],
+        "efeitos": "Polarização ↑"
       },
       {
-        "id": "facultativo",
-        "rotulo": "Facultativo",
-        "valor": 50
+        "id": "oferecido-com-matricula-facultativa",
+        "rotulo": "Oferecido, com matrícula facultativa",
+        "valor": 50,
+        "custoTexto": "baixo",
+        "apoiam": ["Católicos", "Classe média"],
+        "efeitos": "Liberdades civis ↑ contra Obrigatório e confessional; Discriminação religiosa ↓; Polarização ↑ pouco (estimado)"
       },
       {
-        "id": "obrigatorio",
-        "rotulo": "Obrigatório",
-        "valor": 100
+        "id": "obrigatorio-e-confessional",
+        "rotulo": "Obrigatório e confessional",
+        "valor": 100,
+        "custoTexto": "baixo",
+        "apoiam": [
+          "Evangélicos",
+          "Igrejas evangélicas",
+          "parte das Famílias com filhos"
+        ],
+        "rejeitam": ["Progressistas", "Religiões de matriz africana"],
+        "efeitos": "Discriminação religiosa ↑ (aprox.); Liberdades civis ↓; Polarização ↑"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "grupo_evangelicos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -4],
-          [50, 0],
-          [100, 3]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_catolicos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -3],
-          [50, 0],
-          [100, 3]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 2],
-          [50, 0],
-          [100, -4]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "discriminacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, 2]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, -2]
-        ]
-      },
-      "atraso": 2
-    }
+  "consequencias": [
+    "ensino-religioso--grupo-evangelicos",
+    "ensino-religioso--grupo-catolicos",
+    "ensino-religioso--grupo-progressistas",
+    "ensino-religioso--discriminacao",
+    "ensino-religioso--liberdade-civil"
   ],
-  "historia": {
-    "opcoes": {
-      "proibido": [
-        "França (lei de 1905)",
-        "Estados Unidos (escola pública)",
-        "Cuba"
-      ],
-      "facultativo": ["Brasil (art. 210, § 1º)", "Alemanha", "Espanha"],
-      "obrigatorio": ["Irã (Constituição de 1979)", "Arábia Saudita"]
-    },
-    "brasil": "O ensino religioso é de matrícula facultativa (art. 210, § 1º), e o STF aceitou o modelo confessional (ADI 4439, 2017)."
+  "mae": {
+    "texto": "Laicidade do Estado (\"Laicidade estrita\" trava \"Obrigatório\").",
+    "leis": ["laicidade-do-estado"]
   },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "art. 210, § 1º, opção do Brasil"
-    },
-    {
-      "titulo": "Constituição do Irã de 1979",
-      "url": "https://en.wikipedia.org/wiki/Constitution_of_the_Islamic_Republic_of_Iran",
-      "usadoPara": "obrigatório"
-    }
-  ]
+  "ministerio": "Ministério da Educação"
 }

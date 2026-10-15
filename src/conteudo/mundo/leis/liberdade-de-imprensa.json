@@ -1,0 +1,72 @@
+{
+  "id": "liberdade-de-imprensa",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Liberdade de imprensa",
+  "descricao": "O governo pode controlar o que jornais, rádios e TVs publicam?",
+  "area": "Instituições, sistema político e informação",
+  "mesa": {
+    "id": "imprensa-internet-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_liberdade_de_imprensa",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "censura",
+        "rotulo": "Censura",
+        "valor": 0,
+        "rejeitam": ["Todos os grupos"],
+        "efeitos": "Corrupção ↑; Desinformação estatal ↑; Reputação internacional ↓"
+      },
+      {
+        "id": "restrita",
+        "rotulo": "Restrita",
+        "valor": 33,
+        "rejeitam": ["As 5 mídias"],
+        "efeitos": "Os mesmos efeitos, mais fracos"
+      },
+      {
+        "id": "regulada",
+        "rotulo": "Regulada (regras econômicas para a mídia)",
+        "valor": 67,
+        "apoiam": ["lacuna"],
+        "rejeitam": ["Maior rede de TV aberta", "Grupo de jornais e portais"],
+        "efeitos": "Pequeno"
+      },
+      {
+        "id": "plena",
+        "rotulo": "Plena (hoje na referência, no papel)",
+        "valor": 100,
+        "apoiam": ["As 5 mídias"],
+        "efeitos": "Corrupção ↓ onde há imprensa local (a diferença cai de 10 pontos para 1,4); Corrupto mais punido na urna; Desinformação ↓; Reputação internacional ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "liberdade-imprensa--corrupcao",
+    "liberdade-imprensa--liberdade-civil",
+    "liberdade-imprensa--margem-manobra-governo",
+    "liberdade-imprensa--reputacao-internacional",
+    "liberdade-imprensa--desinformacao",
+    "liberdade-imprensa--grupo-classe-media",
+    "liberdade-imprensa--grupo-conservadores",
+    "liberdade-imprensa--grupo-jovens",
+    "liberdade-imprensa--grupo-progressistas",
+    "liberdade-imprensa--grupo-servidores"
+  ],
+  "mae": {
+    "texto": "Partidos (\"Partido único\" trava \"Plena\")",
+    "leis": ["partidos"]
+  },
+  "ministerio": "Casa Civil"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "cooperativas-e-autogestao--grupo-agricultura-familiar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cooperativas_e_autogestao",
+  "alvo": "grupo_agricultura_familiar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 3],
+      [100, 2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

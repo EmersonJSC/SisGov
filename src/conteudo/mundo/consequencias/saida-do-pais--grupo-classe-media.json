@@ -1,0 +1,19 @@
+{
+  "id": "saida-do-pais--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_saida_do_pais",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [100, -6]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

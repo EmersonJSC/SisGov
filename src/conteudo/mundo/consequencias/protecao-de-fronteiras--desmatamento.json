@@ -1,0 +1,17 @@
+{
+  "id": "protecao-de-fronteiras--desmatamento",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_protecao_de_fronteiras",
+  "alvo": "desmatamento",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.021,
+    "termoConstante": 0.69993
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

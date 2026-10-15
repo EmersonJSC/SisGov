@@ -1,0 +1,60 @@
+{
+  "id": "defesa-da-concorrencia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "institucional",
+  "nome": "Defesa da concorrência",
+  "descricao": "Define quanto o Estado vigia cartéis, fusões e abusos de empresas dominantes.",
+  "area": "Economia, finanças e comércio exterior",
+  "mesa": {
+    "id": "mercado",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério da Economia",
+  "processoAutorizacao": "emenda-constitucional",
+  "controle": {
+    "variavel": "nivel_defesa_da_concorrencia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem antitruste",
+        "valor": 0
+      },
+      {
+        "id": "campeoes-nacionais",
+        "rotulo": "Campeões nacionais",
+        "valor": 33
+      },
+      {
+        "id": "moderada",
+        "rotulo": "Antitruste moderado",
+        "valor": 67
+      },
+      {
+        "id": "rigorosa",
+        "rotulo": "Antitruste rigoroso",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "defesa-da-concorrencia--concentracao-mercado",
+    "defesa-da-concorrencia--inflacao",
+    "defesa-da-concorrencia--produtividade",
+    "defesa-da-concorrencia--inovacao",
+    "defesa-da-concorrencia--confianca-empresarial",
+    "defesa-da-concorrencia--investimento",
+    "defesa-da-concorrencia--exportacoes",
+    "defesa-da-concorrencia--gasto-publico",
+    "defesa-da-concorrencia--grupo-classe-media",
+    "defesa-da-concorrencia--grupo-empresarios",
+    "defesa-da-concorrencia--grupo-pequenos-negocios",
+    "defesa-da-concorrencia--grupo-pobres"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

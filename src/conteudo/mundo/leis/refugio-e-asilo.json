@@ -1,0 +1,80 @@
+{
+  "id": "refugio-e-asilo",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Refúgio e asilo",
+  "descricao": "Quem foge de perseguição ou de crise recebe proteção no país?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "imigracao-e-saida-do-pais",
+    "nome": "Imigração e saída do país",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_refugio_e_asilo",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-asilo",
+        "rotulo": "Sem asilo",
+        "valor": 0,
+        "apoiam": ["Parte dos Conservadores"],
+        "rejeitam": ["quase todos"],
+        "efeitos": "Reputação internacional ↓ forte; Imigração ↓"
+      },
+      {
+        "id": "dissuasao-o-pedido-e-processado-fora-do-pais",
+        "rotulo": "Dissuasão: o pedido é processado fora do país",
+        "valor": 25,
+        "custoTexto": "médio",
+        "apoiam": ["Conservadores"],
+        "rejeitam": ["Progressistas", "Pastorais sociais católicas"],
+        "efeitos": "Imigração ↓; Reputação internacional ↓"
+      },
+      {
+        "id": "restritiva",
+        "rotulo": "Restritiva",
+        "valor": 50,
+        "custoTexto": "baixo",
+        "apoiam": ["Interior"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Imigração ↓ pouco"
+      },
+      {
+        "id": "segue-a-convencao-da-onu",
+        "rotulo": "Segue a convenção da ONU",
+        "valor": 75,
+        "custoTexto": "~0,003% do PIB com a acolhida",
+        "apoiam": ["Católicos", "Progressistas"],
+        "efeitos": "Reputação internacional ↑ contra Sem asilo; Imigração ↑ contra Restritiva; Crise migratória no nível atual (estimado)"
+      },
+      {
+        "id": "acolhida-ampla-refugio-coletivo-interiorizacao-e-trabalho",
+        "rotulo": "Acolhida ampla: refúgio coletivo, interiorização e trabalho",
+        "valor": 100,
+        "custoTexto": "maior (lacuna)",
+        "apoiam": ["Progressistas", "Empresários", "Agronegócio"],
+        "rejeitam": ["Conservadores"],
+        "efeitos": "Imigração ↑; Crise migratória ↓ se houver interiorização; Reputação internacional ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "refugiados-e-asilo--imigracao",
+    "refugiados-e-asilo--reputacao-internacional",
+    "refugiados-e-asilo--polarizacao",
+    "refugiados-e-asilo--crise-migratoria",
+    "refugiados-e-asilo--liberdade-civil",
+    "refugiados-e-asilo--gasto-publico",
+    "refugiados-e-asilo--grupo-pobres",
+    "refugiados-e-asilo--grupo-progressistas"
+  ],
+  "ministerio": "Ministério da Defesa e Relações Exteriores"
+}

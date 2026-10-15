@@ -1,0 +1,17 @@
+{
+  "id": "remedios-em-farmacias-credenciadas--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_remedios_em_farmacias_credenciadas",
+  "alvo": "corrupcao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": -4.20021
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

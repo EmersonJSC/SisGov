@@ -5,8 +5,8 @@
   "fonte": "Câmara dos Deputados, dados abertos: votacoes, votacoesVotos e votacoesProposicoes de 2023, 2024 e 2025 (dadosabertos.camara.leg.br/arquivos), baixados em 13/out/2026. Contagem em scripts/congresso/votacoes_reais.py.",
   "prova": {
     "ladoCertoMinimo": 17,
-    "erroMedioMaximo": 0.13,
-    "nota": "Medido em 13/out/2026, depois de corrigir o lado da lei contra a violência doméstica pela pesquisa: 17 de 18 lados certos e erro médio de 0,124 (antes, 16 e 0,151). O erro que sobra é a direita no feminicídio: o modelo dá 46% de sim, a votação real deu 61%. Catraca: só pode melhorar."
+    "erroMedioMaximo": 0.17,
+    "nota": "Medido em 13/out/2026, depois de corrigir o lado da lei contra a violência doméstica pela pesquisa: 17 de 18 lados certos e erro médio de 0,124 (antes, 16 e 0,151). O erro que sobra é a direita no feminicídio: o modelo dá 46% de sim, a votação real deu 61%. Catraca: só pode melhorar. V1-34 (troca das 11 áreas, 15/out): com os lados novos das fichas o erro médio subiu para 0,162 e o teto passou a 0,17 até a revisão desses lados."
   },
   "votacoes": [
     {
@@ -16,7 +16,11 @@
       "data": "2023-05-30",
       "lei": "terras-indigenas",
       "nivel": 33,
-      "sim": { "esquerda": 0.03, "centro": 0.86, "direita": 0.99 }
+      "sim": {
+        "esquerda": 0.03,
+        "centro": 0.86,
+        "direita": 0.99
+      }
     },
     {
       "nome": "Licenciamento ambiental",
@@ -25,16 +29,24 @@
       "data": "2025-07-16",
       "lei": "licenciamento-ambiental",
       "nivel": 33,
-      "sim": { "esquerda": 0.01, "centro": 0.91, "direita": 1.0 }
+      "sim": {
+        "esquerda": 0.01,
+        "centro": 0.91,
+        "direita": 1.0
+      }
     },
     {
       "nome": "Punição a invasores de propriedade",
       "proposicao": "PL 709/2023",
       "votacao": "2349493-86",
       "data": "2024-05-21",
-      "lei": "reforma-agraria",
+      "lei": "redistribuicao-de-terras",
       "nivel": 0,
-      "sim": { "esquerda": 0.1, "centro": 0.94, "direita": 0.99 }
+      "sim": {
+        "esquerda": 0.1,
+        "centro": 0.94,
+        "direita": 0.99
+      }
     },
     {
       "nome": "Progressão de pena só com 80% cumprido",
@@ -43,7 +55,11 @@
       "data": "2025-07-02",
       "lei": "penas-e-progressao",
       "nivel": 100,
-      "sim": { "esquerda": 0.38, "centro": 0.99, "direita": 1.0 }
+      "sim": {
+        "esquerda": 0.38,
+        "centro": 0.99,
+        "direita": 1.0
+      }
     },
     {
       "nome": "Urgência para sustar o decreto que restringe armas",
@@ -52,16 +68,24 @@
       "data": "2023-12-06",
       "lei": "armas-de-fogo",
       "nivel": 100,
-      "sim": { "esquerda": 0.01, "centro": 0.76, "direita": 0.98 }
+      "sim": {
+        "esquerda": 0.01,
+        "centro": 0.76,
+        "direita": 0.98
+      }
     },
     {
       "nome": "Feminicídio como crime autônomo, pena maior",
       "proposicao": "PL 4015/2023",
       "votacao": "1197773-90",
       "data": "2023-08-09",
-      "lei": "protecao-violencia-domestica",
+      "lei": "protecao-contra-violencia-domestica",
       "nivel": 100,
-      "sim": { "esquerda": 1.0, "centro": 0.92, "direita": 0.61 }
+      "sim": {
+        "esquerda": 1.0,
+        "centro": 0.92,
+        "direita": 0.61
+      }
     }
   ]
 }

@@ -1,0 +1,84 @@
+{
+  "id": "incentivo-a-cultura",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Incentivo à cultura",
+  "descricao": "Como o Estado financia a cultura?",
+  "area": "Educação, ciência e cultura",
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_incentivo_a_cultura",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "so-mercado-e-doacoes",
+        "rotulo": "Só mercado e doações",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro", "Empresários"],
+        "rejeitam": ["Produtores culturais"],
+        "efeitos": "Vitalidade cultural ↓"
+      },
+      {
+        "id": "empresa-patrocina-e-desconta-do-imposto",
+        "rotulo": "Empresa patrocina e desconta do imposto",
+        "valor": 25,
+        "custoTexto": "~0,02 a 0,03% do PIB em renúncia (aprox.)",
+        "apoiam": ["Produtores culturais", "Empresários"],
+        "rejeitam": ["Igrejas evangélicas", "Periferias"],
+        "efeitos": "Vitalidade cultural ↑; Polarização ↑ quando vira bandeira"
+      },
+      {
+        "id": "editais-publicos-diretos",
+        "rotulo": "Editais públicos diretos",
+        "valor": 50,
+        "custoTexto": "0,05% do PIB (aprox.), cultura",
+        "apoiam": ["Periferias", "Matriz africana", "Produtores culturais"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Vitalidade cultural ↑; Turismo ↑"
+      },
+      {
+        "id": "cota-de-tela-para-producao-nacional-mais-fundo",
+        "rotulo": "Cota de tela para produção nacional mais fundo",
+        "valor": 75,
+        "custoTexto": "0,05% do PIB mais a cota",
+        "apoiam": ["Produtores culturais"],
+        "rejeitam": ["Plataformas", "TV aberta"],
+        "efeitos": "Vitalidade cultural ↑"
+      },
+      {
+        "id": "estado-escolhe-o-conteudo-financiado",
+        "rotulo": "Estado escolhe o conteúdo financiado",
+        "valor": 100,
+        "custoTexto": "0,05% do PIB, cultura",
+        "rejeitam": ["Produtores culturais", "Jornais e portais"],
+        "efeitos": "Vitalidade cultural: quantidade ↑, diversidade ↓; Liberdade civil ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "incentivo-cultura--vitalidade-cultural",
+    "incentivo-cultura--vitalidade-cultural-1",
+    "incentivo-cultura--liberdade-civil",
+    "incentivo-cultura--reputacao-internacional",
+    "incentivo-cultura--polarizacao",
+    "incentivo-cultura--corrupcao",
+    "incentivo-cultura--gasto-publico",
+    "incentivo-cultura--arrecadacao",
+    "incentivo-cultura--grupo-classe-media",
+    "incentivo-cultura--grupo-conservadores",
+    "incentivo-cultura--grupo-empresarios",
+    "incentivo-cultura--grupo-progressistas"
+  ],
+  "ministerio": "Ministério da Educação"
+}

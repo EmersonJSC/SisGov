@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "capacidade_estatal",
-  "alvo": "eficacia:programas-sociais-por-missao",
+  "alvo": "eficacia:organizacao-dos-programas-sociais",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

@@ -2,7 +2,7 @@
   "id": "saneamento-basico--qualidade-ambiental",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_saneamento_basico",
+  "origem": "nivel_agua_e_esgoto",
   "alvo": "qualidade_ambiental",
   "mecanismo": "afim",
   "parametros": {

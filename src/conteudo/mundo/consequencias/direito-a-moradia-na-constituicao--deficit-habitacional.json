@@ -1,0 +1,20 @@
+{
+  "id": "direito-a-moradia-na-constituicao--deficit-habitacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_direito_a_moradia_na_constituicao",
+  "alvo": "deficit_habitacional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [50, 0],
+      [100, -6]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "capacidade_estatal",
-  "alvo": "eficacia:programa-medicos-no-interior",
+  "alvo": "eficacia:programa-de-medicos-no-interior",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

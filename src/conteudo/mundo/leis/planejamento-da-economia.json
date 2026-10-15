@@ -1,156 +1,67 @@
 {
   "id": "planejamento-da-economia",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Planejamento da economia",
-  "descricao": "Quem decide o que produzir: o mercado, o mercado com um plano de metas do governo, ou um plano central obrigatório.",
-  "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério da Economia",
-  "nivel": "constituicao",
+  "descricao": "O governo planeja a economia toda, só orienta o setor privado ou deixa o mercado decidir?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
-    "id": "mercado",
-    "nome": "Mercado, preços e concorrência",
+    "id": "planejamento",
+    "nome": "Planejamento",
     "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
   },
   "controle": {
     "variavel": "nivel_planejamento_da_economia",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "mercado",
-        "rotulo": "O mercado decide",
-        "valor": 0
+        "id": "mercado-decide",
+        "rotulo": "Mercado decide",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Nada muda no investimento público"
       },
       {
-        "id": "plano-indicativo",
-        "rotulo": "Plano com metas, obrigatório só para o governo",
-        "valor": 50
+        "id": "plano-que-orienta",
+        "rotulo": "Plano que orienta (obrigatório para o Estado, indicativo para empresas)",
+        "valor": 50.0,
+        "apoiam": ["Confederação da indústria"],
+        "efeitos": "Coordenação do investimento público ↑ (lacuna)"
       },
       {
         "id": "plano-central",
-        "rotulo": "Plano central obrigatório para todos",
+        "rotulo": "Plano central",
         "valor": 100,
-        "requer": [
-          {
-            "lei": "propriedade-dos-meios-de-producao",
-            "opcoes": ["mista", "socialista"],
-            "motivo": "Plano central obrigatório só funciona com as empresas nas mãos do Estado."
-          }
-        ]
+        "rejeitam": [
+          "Confederação da indústria",
+          "Comércio e serviços",
+          "Mercado financeiro",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Desabastecimento ↑; dólar paralelo ↑; concentração ↑; produtividade ↓ no longo prazo"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "desabastecimento",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, 15]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "mercado_paralelo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, 12]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "produtividade",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [50, 0],
-          [100, -10]
-        ]
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "investimento",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [50, 0],
-          [100, -8]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "desemprego",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 0],
-          [100, -3]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 2],
-          [50, 0],
-          [100, -20]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_ricos",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [50, 0],
-          [100, -15]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "planejamento-da-economia--concentracao-mercado",
+    "planejamento-da-economia--desabastecimento",
+    "planejamento-da-economia--mercado-paralelo",
+    "planejamento-da-economia--produtividade",
+    "planejamento-da-economia--investimento",
+    "planejamento-da-economia--desemprego",
+    "planejamento-da-economia--grupo-empresarios",
+    "planejamento-da-economia--grupo-ricos"
   ],
-  "historia": {
-    "opcoes": {
-      "mercado": ["Estados Unidos", "Reino Unido"],
-      "plano-indicativo": [
-        "Brasil (art. 174 e plano plurianual)",
-        "França (planos de 1946 a 1993)",
-        "Coreia do Sul (planos de 1962 a 1996)"
-      ],
-      "plano-central": [
-        "União Soviética (Gosplan)",
-        "Cuba (Junta Central de Planejamento)"
-      ]
-    },
-    "brasil": "O planejamento é determinante para o setor público e indicativo para o privado (art. 174), com o plano plurianual."
+  "mae": {
+    "texto": "Propriedade dos meios de produção: \"plano central\" exige \"socialista\" ou \"mista\"; também exige Controle de preços \"tabelamento geral\"",
+    "leis": ["propriedade-dos-meios-de-producao", "controle-de-precos"]
   },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "art. 174, opção do Brasil"
-    },
-    {
-      "titulo": "Gosplan (União Soviética)",
-      "url": "https://en.wikipedia.org/wiki/Gosplan",
-      "usadoPara": "plano central"
-    }
-  ]
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

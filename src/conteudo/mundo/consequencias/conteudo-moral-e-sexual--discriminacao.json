@@ -1,0 +1,21 @@
+{
+  "id": "conteudo-moral-e-sexual--discriminacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_conteudo_moral_e_sexual",
+  "alvo": "discriminacao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, -2],
+      [33, 0],
+      [67, 1],
+      [100, 3]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

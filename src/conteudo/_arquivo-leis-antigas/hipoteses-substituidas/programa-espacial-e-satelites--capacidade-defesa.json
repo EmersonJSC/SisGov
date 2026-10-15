@@ -1,0 +1,17 @@
+{
+  "id": "programa-espacial-e-satelites--capacidade-defesa",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_espacial_e_satelites",
+  "alvo": "capacidade_defesa",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.14,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

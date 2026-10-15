@@ -1,0 +1,77 @@
+{
+  "id": "discriminacao-e-crimes-de-odio",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Discriminação e crimes de ódio",
+  "descricao": "Como o Estado pune a discriminação por raça, orientação sexual, religião e origem?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_discriminacao_e_crimes_de_odio",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibe-a-propaganda-lgbt",
+        "rotulo": "Proíbe a \"propaganda LGBT\"",
+        "valor": 0,
+        "apoiam": ["Parte dos Conservadores"],
+        "rejeitam": ["Progressistas", "Jovens", "Movimento LGBT"],
+        "efeitos": "Liberdades civis ↓; Discriminação ↑; Reputação internacional ↓"
+      },
+      {
+        "id": "sem-lei",
+        "rotulo": "Sem lei",
+        "valor": 33,
+        "apoiam": ["Conservadores", "Igrejas evangélicas"],
+        "rejeitam": ["Progressistas", "Movimento LGBT", "Movimento negro"],
+        "efeitos": "Discriminação ↑"
+      },
+      {
+        "id": "lei-civil-multa-e-indenizacao",
+        "rotulo": "Lei civil: multa e indenização",
+        "valor": 67,
+        "custoTexto": "baixo",
+        "apoiam": ["Católicos", "Classe média"],
+        "rejeitam": ["os dois polos"],
+        "efeitos": "Discriminação ↓ pouco (não medido)"
+      },
+      {
+        "id": "crime-como-o-racismo",
+        "rotulo": "Crime, como o racismo",
+        "valor": 100,
+        "custoTexto": "baixo",
+        "apoiam": [
+          "Progressistas",
+          "Movimento LGBT",
+          "Movimento negro",
+          "Religiões de matriz africana"
+        ],
+        "rejeitam": ["Evangélicos", "Igrejas evangélicas"],
+        "efeitos": "Discriminação ↓ e Violência por ódio ↓ (efeito não medido)"
+      }
+    ]
+  },
+  "consequencias": [
+    "discriminacao-e-crimes-de-odio--discriminacao",
+    "discriminacao-e-crimes-de-odio--liberdade-civil",
+    "discriminacao-e-crimes-de-odio--grupo-progressistas",
+    "discriminacao-e-crimes-de-odio--grupo-evangelicos",
+    "discriminacao-e-crimes-de-odio--reputacao-internacional"
+  ],
+  "mae": {
+    "texto": "Casamento e união civil (com \"Criminalização\", a opção \"Crime\" fica impossível).",
+    "leis": ["casamento-e-uniao-civil"]
+  },
+  "ministerio": "Ministério dos Direitos Humanos"
+}

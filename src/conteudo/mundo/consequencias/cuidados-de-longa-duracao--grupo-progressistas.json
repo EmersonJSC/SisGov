@@ -2,7 +2,7 @@
   "id": "cuidados-de-longa-duracao--grupo-progressistas",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_cuidados_de_longa_duracao",
+  "origem": "nivel_quem_cuida_do_idoso_dependente",
   "alvo": "grupo_progressistas",
   "mecanismo": "afim",
   "parametros": {

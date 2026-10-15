@@ -2,7 +2,7 @@
   "id": "avaliacao-escolas--grupo-trabalhadores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_avaliacao_escolas",
+  "origem": "nivel_avaliacao_das_escolas",
   "alvo": "grupo_trabalhadores",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,68 @@
+{
+  "id": "politica-de-natalidade",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Política de natalidade",
+  "descricao": "Define se o Estado tenta reduzir, deixar em paz ou aumentar o número de filhos que as famílias têm, e com que instrumentos.",
+  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "mesa": {
+    "id": "familia-e-cuidados",
+    "nome": "Família e cuidados",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério dos Direitos Humanos",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_politica_de_natalidade",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "antinatalista-coercitiva",
+        "rotulo": "Controle de natalidade coercitivo",
+        "valor": 0
+      },
+      {
+        "id": "antinatalista-incentivo",
+        "rotulo": "Planejamento familiar ativo",
+        "valor": 20
+      },
+      {
+        "id": "neutra",
+        "rotulo": "Sem política",
+        "valor": 40
+      },
+      {
+        "id": "incentivos-moderados",
+        "rotulo": "Incentivos moderados",
+        "valor": 60
+      },
+      {
+        "id": "pronatalismo-intenso",
+        "rotulo": "Pronatalismo intenso",
+        "valor": 80
+      },
+      {
+        "id": "pronatalismo-coercitivo",
+        "rotulo": "Pronatalismo coercitivo",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "politica-de-natalidade--natalidade",
+    "politica-de-natalidade--envelhecimento",
+    "politica-de-natalidade--liberdade-civil",
+    "politica-de-natalidade--saude-populacao",
+    "politica-de-natalidade--pobreza",
+    "politica-de-natalidade--gasto-publico",
+    "politica-de-natalidade--grupo-classe-media",
+    "politica-de-natalidade--grupo-conservadores",
+    "politica-de-natalidade--grupo-progressistas",
+    "politica-de-natalidade--grupo-familias-com-filhos"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

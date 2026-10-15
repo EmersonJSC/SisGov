@@ -1,0 +1,17 @@
+{
+  "id": "calibracao-economia--reputacao-internacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_propriedade_dos_meios_de_producao",
+  "alvo": "reputacao_internacional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0,
+    "termoConstante": 2.31
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

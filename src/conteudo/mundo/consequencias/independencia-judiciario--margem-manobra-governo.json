@@ -2,7 +2,7 @@
   "id": "independencia-judiciario--margem-manobra-governo",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_independencia_judiciario",
+  "origem": "nivel_independencia_do_judiciario",
   "alvo": "margem_manobra_governo",
   "mecanismo": "afim",
   "parametros": {

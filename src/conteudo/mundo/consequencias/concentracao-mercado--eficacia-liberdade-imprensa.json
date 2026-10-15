@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "concentracao_mercado",
-  "alvo": "eficacia:liberdade-imprensa",
+  "alvo": "eficacia:liberdade-de-imprensa",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": -0.002,

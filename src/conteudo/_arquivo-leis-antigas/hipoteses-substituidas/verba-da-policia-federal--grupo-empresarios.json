@@ -1,0 +1,17 @@
+{
+  "id": "verba-da-policia-federal--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_verba_da_policia_federal",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -33.333333,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

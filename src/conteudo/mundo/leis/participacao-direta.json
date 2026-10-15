@@ -1,16 +1,21 @@
 {
   "id": "participacao-direta",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Participação direta",
-  "descricao": "Que poder o povo tem entre uma eleição e outra: nenhum canal, conferências e conselhos que opinam, conselhos que decidem ou o referendo para tirar o governante.",
-  "area": "Instituições, Estado e sistema político",
-  "ministerio": "Casa Civil",
-  "nivel": "lei",
+  "descricao": "O cidadão decide diretamente sobre orçamento, leis ou mandatos, ou só pelo voto?",
+  "area": "Instituições, sistema político e informação",
   "mesa": {
     "id": "sistema-politico",
     "nome": "Sistema político",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
   },
   "controle": {
     "variavel": "nivel_participacao_direta",
@@ -18,127 +23,44 @@
     "opcoes": [
       {
         "id": "nenhuma",
-        "rotulo": "Só as eleições",
-        "valor": 0
+        "rotulo": "Nenhuma",
+        "valor": 0,
+        "rejeitam": ["Movimentos por moradia", "Movimentos por terra"],
+        "efeitos": "Protestos ↑ (aprox.)"
       },
       {
         "id": "conselhos-consultivos",
-        "rotulo": "Conferências e conselhos que opinam",
-        "valor": 33
+        "rotulo": "Conselhos consultivos",
+        "valor": 33,
+        "apoiam": ["Servidores"],
+        "efeitos": "Pequeno"
       },
       {
-        "id": "conselhos-deliberativos",
-        "rotulo": "Conselhos com poder de decisão",
-        "valor": 67
+        "id": "conselhos-deliberativos-e-orcamento-participativo",
+        "rotulo": "Conselhos deliberativos e orçamento participativo",
+        "valor": 67,
+        "custoAnualPercentualPib": 0.01,
+        "apoiam": ["Periferias", "Hierarquia católica e pastorais"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Gasto vai para saúde e saneamento; Mortalidade infantil ↓; Arrecadação local ↑ 39% (um estudo, 253 casos); efeito cresce com os anos de uso; Protestos ↓ (aprox.)"
       },
       {
         "id": "referendo-revogatorio",
-        "rotulo": "Conselhos e referendo para tirar o governante",
-        "valor": 100
+        "rotulo": "Referendo revogatório",
+        "valor": 100,
+        "custoTexto": "~0,02% do PIB por consulta",
+        "apoiam": ["Classe média"],
+        "rejeitam": ["Bancadas do governo"],
+        "efeitos": "Estabilidade ↓ (estimado); Protestos ↓ (aprox.)"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "confianca_instituicoes",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -2],
-          [33, 0],
-          [67, 3],
-          [100, 2]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "margem_manobra_governo",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 2],
-          [33, 0],
-          [67, -4],
-          [100, -6]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "polarizacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [33, 0],
-          [67, 2],
-          [100, 5]
-        ]
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, -3],
-          [33, 0],
-          [67, 3],
-          [100, 3]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 1],
-          [33, 0],
-          [67, -2],
-          [100, -2]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "participacao-direta--confianca-instituicoes",
+    "participacao-direta--margem-manobra-governo",
+    "participacao-direta--polarizacao",
+    "participacao-direta--grupo-progressistas",
+    "participacao-direta--grupo-empresarios"
   ],
-  "historia": {
-    "opcoes": {
-      "nenhuma": ["Estados Unidos (no nível federal)", "Reino Unido"],
-      "conselhos-consultivos": [
-        "Brasil (conferências nacionais)",
-        "França (debate público obrigatório em grandes obras)"
-      ],
-      "conselhos-deliberativos": [
-        "Porto Alegre (orçamento participativo, 1989)",
-        "Venezuela (conselhos comunais, 2006)"
-      ],
-      "referendo-revogatorio": [
-        "Venezuela (art. 72 da Constituição de 1999)",
-        "Bolívia",
-        "Equador"
-      ]
-    },
-    "brasil": "O país tem conselhos e conferências nacionais que opinam sobre as políticas (saúde, assistência, cidades), mas não decidem."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição da Venezuela de 1999, art. 72",
-      "url": "https://en.wikipedia.org/wiki/Constitution_of_Venezuela",
-      "usadoPara": "referendo revogatório"
-    },
-    {
-      "titulo": "Orçamento participativo",
-      "url": "https://en.wikipedia.org/wiki/Participatory_budgeting",
-      "usadoPara": "conselhos com poder de decisão"
-    },
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "conselhos de políticas públicas (arts. 198 e 204), opção do Brasil"
-    }
-  ]
+  "ministerio": "Casa Civil"
 }

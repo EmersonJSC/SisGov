@@ -2,7 +2,7 @@
   "id": "incentivo-cultura--corrupcao",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_incentivo_cultura",
+  "origem": "nivel_incentivo_a_cultura",
   "alvo": "corrupcao",
   "mecanismo": "limiar",
   "parametros": {

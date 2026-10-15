@@ -1,0 +1,17 @@
+{
+  "id": "investimento-em-defesa--inovacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_investimento_em_defesa",
+  "alvo": "inovacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.012,
+    "termoConstante": -0.6
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

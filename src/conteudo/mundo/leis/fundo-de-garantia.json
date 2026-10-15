@@ -3,39 +3,56 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Fundo de garantia e indenização por demissão",
-  "descricao": "Define o que o empregador deve ao trabalhador demitido: nada, uma conta portátil, um fundo com multa ou uma indenização por tempo de casa.",
-  "area": "Trabalho e emprego",
+  "nome": "Fundo de garantia",
+  "descricao": "O que o trabalhador recebe quando é demitido?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
     "nome": "Contrato de trabalho",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_fundo_de_garantia",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Sem indenização",
-        "valor": 0
+        "rotulo": "Nenhum",
+        "valor": 0,
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Trabalhadores com carteira"],
+        "efeitos": "Custo de contratar ↓; poupança doméstica ↓; crédito para habitação ↓"
       },
       {
-        "id": "conta-portatil",
-        "rotulo": "Conta portátil",
-        "valor": 33
+        "id": "conta-portatil-sem-multa",
+        "rotulo": "Conta portátil, sem multa",
+        "valor": 33,
+        "apoiam": ["Pequenos negócios", "Classe média"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Custo de contratar ↓ pouco; Rotatividade ↓ (aprox.); poupança ↑"
       },
       {
-        "id": "fundo-com-multa",
-        "rotulo": "Fundo com multa",
-        "valor": 67
+        "id": "fundo-com-multa-na-demissao",
+        "rotulo": "Fundo com multa na demissão (hoje na referência: 8% ao mês e 40% de multa)",
+        "valor": 67,
+        "custoTexto": "0 (fundo privado que financia moradia)",
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑"
       },
       {
-        "id": "indenizacao-por-tempo",
+        "id": "indenizacao-por-tempo-de-casa",
         "rotulo": "Indenização por tempo de casa",
-        "valor": 100
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)"
       }
     ]
   },
@@ -51,10 +68,12 @@
     "fundo-de-garantia--grupo-empresarios",
     "fundo-de-garantia--grupo-jovens",
     "fundo-de-garantia--grupo-pequenos-negocios",
-    "fundo-de-garantia--grupo-trabalhadores"
+    "fundo-de-garantia--grupo-trabalhadores",
+    "fundo-de-garantia--poupanca-domestica"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Legislação trabalhista. \"Sem regras\" e \"Mínima\" travam em nenhum ou conta portátil.",
+    "leis": ["legislacao-trabalhista"]
+  },
+  "ministerio": "Ministério do Trabalho"
 }

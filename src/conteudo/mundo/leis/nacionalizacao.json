@@ -1,122 +1,68 @@
 {
   "id": "nacionalizacao",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Nacionalização",
-  "descricao": "Como o Estado pode tomar uma empresa: só com indenização prévia em dinheiro, por setor estratégico ou por decreto.",
-  "area": "Economia, finanças e comércio exterior",
-  "ministerio": "Ministério da Economia",
-  "nivel": "lei",
+  "descricao": "Quando o Estado toma uma empresa privada, como ele paga?",
+  "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
     "nome": "Propriedade e estatais",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
   },
   "controle": {
     "variavel": "nivel_nacionalizacao",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "indenizacao-previa",
-        "rotulo": "Só com indenização prévia em dinheiro",
-        "valor": 0
+        "id": "indenizacao-previa-em-dinheiro",
+        "rotulo": "Indenização prévia em dinheiro",
+        "valor": 0,
+        "custoTexto": "Indenização paga pelo Tesouro",
+        "efeitos": "Risco-país estável"
       },
       {
-        "id": "setor-estrategico",
-        "rotulo": "Por setor estratégico, com indenização",
-        "valor": 50
+        "id": "so-em-setor-estrategico",
+        "rotulo": "Só em setor estratégico",
+        "valor": 50.0,
+        "custoTexto": "Indenização",
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Mercado financeiro", "Petróleo e mineração"],
+        "efeitos": "Risco-país ↑; investimento estrangeiro ↓"
       },
       {
-        "id": "expropriacao",
-        "rotulo": "Expropriação por decreto",
-        "valor": 100
+        "id": "expropriacao-sem-pagar",
+        "rotulo": "Expropriação sem pagar",
+        "valor": 100,
+        "rejeitam": [
+          "Mercado financeiro",
+          "Confederação da indústria",
+          "Petróleo e mineração",
+          "Entidades do agronegócio"
+        ],
+        "efeitos": "Risco-país ↑ forte; investimento estrangeiro ↓; fuga de capitais ↑; produção da empresa ↓ no médio prazo; desabastecimento ↑"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "risco_pais",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 4],
-          [100, 15]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "investimento",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -3],
-          [100, -10]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "confianca_empresarial",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -5],
-          [100, -15]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, -5],
-          [100, -15]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_trabalhadores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [50, 1],
-          [100, 1]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "nacionalizacao--ied",
+    "nacionalizacao--fuga-capitais",
+    "nacionalizacao--risco-pais",
+    "nacionalizacao--investimento",
+    "nacionalizacao--confianca-empresarial",
+    "nacionalizacao--grupo-empresarios",
+    "nacionalizacao--grupo-trabalhadores"
   ],
-  "historia": {
-    "opcoes": {
-      "indenizacao-previa": ["Brasil", "Estados Unidos (5ª Emenda)"],
-      "setor-estrategico": [
-        "Bolívia (gás, 2006)",
-        "México (petróleo, 1938)",
-        "França (1982)"
-      ],
-      "expropriacao": ["Venezuela (2007 e 2008)", "Cuba (1960)"]
-    },
-    "brasil": "A desapropriação exige indenização justa e prévia em dinheiro (art. 5º, XXIV)."
+  "mae": {
+    "texto": "Propriedade dos meios de produção: \"socialista\" libera \"expropriação\"",
+    "leis": ["propriedade-dos-meios-de-producao"]
   },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal de 1988",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "art. 5º, XXIV, opção do Brasil"
-    },
-    {
-      "titulo": "Nacionalizações na Venezuela (2007 e 2008)",
-      "url": "https://en.wikipedia.org/wiki/Economy_of_Venezuela",
-      "usadoPara": "expropriação"
-    }
-  ]
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

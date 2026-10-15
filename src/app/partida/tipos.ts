@@ -74,6 +74,15 @@ export type VisaoLei = Readonly<{
    */
   processo: string;
   /** Nível que já está funcionando (anda até a meta mês a mês). */
+  /**
+   * Popularidade da opção em vigor (0 a 100, 50 = neutra), pelo "quem apoia /
+   * quem rejeita" das fichas: no país (média dos segmentos) e em cada segmento.
+   * Ausente quando a lei não tem esses dados.
+   */
+  popularidade?: Readonly<{
+    pais: number;
+    segmentos: Readonly<Record<string, number>>;
+  }>;
   nivel: number;
   /** Nível escolhido pelo jogador. */
   meta: number;

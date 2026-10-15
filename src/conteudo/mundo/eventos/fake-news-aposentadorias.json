@@ -20,7 +20,7 @@
         "multiplica": 3
       },
       {
-        "variavel": "nivel_regulacao_redes_sociais",
+        "variavel": "nivel_regulacao_das_redes_sociais",
         "de": 0,
         "ate": 75,
         "multiplica": 0.5

@@ -1,0 +1,163 @@
+{
+  "leis": {
+    "acordos-comerciais": "acordos-comerciais",
+    "banco-de-desenvolvimento": "banco-de-desenvolvimento",
+    "controle-de-capitais": "controle-de-capitais",
+    "controle-de-precos": "controle-de-precos",
+    "cooperativas-e-autogestao": "cooperativas-e-autogestao",
+    "defesa-da-concorrencia": "defesa-da-concorrencia",
+    "empresas-estatais-e-privatizacao": "papel-do-estado-empresario",
+    "investimento-estrangeiro": "investimento-estrangeiro",
+    "liberdade-economica": "licenca-para-abrir-negocio",
+    "meta-de-inflacao": "mandato-do-banco-central",
+    "nacionalizacao": "nacionalizacao",
+    "planejamento-da-economia": "planejamento-da-economia",
+    "politica-industrial": "politica-industrial",
+    "programa-de-privatizacao": "programa-de-privatizacao",
+    "propriedade-dos-meios-de-producao": "propriedade-dos-meios-de-producao",
+    "regulacao-bancaria": "regulacao-dos-bancos",
+    "autonomia-banco-central": "quem-controla-o-banco-central",
+    "regime-cambial": "regime-cambial",
+    "tarifas-de-importacao": "tarifas-de-importacao",
+    "regime-do-petroleo-e-mineracao": "regime-do-petroleo-e-mineracao"
+  },
+  "opcoes": {
+    "acordos-comerciais": {
+      "sem-acordos": "sem-acordos",
+      "uniao-aduaneira": "uniao-aduaneira",
+      "rede-seletiva": "rede-seletiva-de-acordos",
+      "livre-comercio-amplo": "livre-comercio-amplo"
+    },
+    "banco-de-desenvolvimento": {
+      "sem-banco": "sem-banco",
+      "segundo-piso-mercado": "segundo-piso-juro-de-mercado",
+      "credito-direcionado": "credito-direcionado",
+      "credito-subsidiado-massivo": "credito-subsidiado-em-massa"
+    },
+    "controle-de-capitais": {
+      "conta-aberta": "conta-aberta",
+      "controles-prudenciais": "controles-prudenciais",
+      "controles-amplos": "controles-amplos",
+      "conta-fechada": "conta-fechada"
+    },
+    "controle-de-precos": {
+      "precos-livres": "precos-livres",
+      "precos-administrados": "so-precos-administrados",
+      "tetos-cesta-basica": "teto-na-cesta-basica",
+      "tabelamento-geral": "tabelamento-geral"
+    },
+    "cooperativas-e-autogestao": {
+      "livre": "livre-sem-incentivo",
+      "incentivo": "incentivo",
+      "autogestao": "autogestao"
+    },
+    "defesa-da-concorrencia": {
+      "sem-politica": "sem-politica",
+      "campeoes-nacionais": "campeoes-nacionais",
+      "moderada": "moderada",
+      "rigorosa": "rigorosa"
+    },
+    "empresas-estatais-e-privatizacao": {
+      "sem-estatais": "sem-estatais",
+      "estatais-minimas": "estatais-minimas",
+      "estatais-estrategicas": "estatais-estrategicas",
+      "estado-empresario": "estado-empresario"
+    },
+    "investimento-estrangeiro": {
+      "fechado": "fechado",
+      "lista-negativa": "lista-do-que-e-proibido",
+      "restricoes-setoriais": "restricoes-por-setor",
+      "sem-restricoes": "sem-restricoes",
+      "atracao-com-incentivos": "atracao-com-incentivos-fiscais"
+    },
+    "liberdade-economica": {
+      "licenca-previa": "licenca-previa-para-tudo",
+      "por-risco": "licenca-conforme-o-risco",
+      "sem-licenca-baixo-risco": "sem-licenca-para-baixo-risco"
+    },
+    "meta-de-inflacao": {
+      "sem-meta": "sem-meta",
+      "mandato-duplo": "mandato-duplo",
+      "meta-flexivel": "meta-flexivel",
+      "meta-estrita": "meta-estrita"
+    },
+    "nacionalizacao": {
+      "indenizacao-previa": "indenizacao-previa-em-dinheiro",
+      "setor-estrategico": "so-em-setor-estrategico",
+      "expropriacao": "expropriacao-sem-pagar"
+    },
+    "planejamento-da-economia": {
+      "mercado": "mercado-decide",
+      "plano-indicativo": "plano-que-orienta",
+      "plano-central": "plano-central"
+    },
+    "politica-industrial": {
+      "nenhuma": "nenhuma",
+      "horizontal": "horizontal",
+      "setorial-exportadora": "setorial-exportadora",
+      "protecao-mercado-interno": "protecao-do-mercado-interno"
+    },
+    "programa-de-privatizacao": {
+      "nenhum": "nenhum",
+      "lista": "lista-caso-a-caso",
+      "venda-ampla": "venda-ampla"
+    },
+    "propriedade-dos-meios-de-producao": {
+      "privada": "privada",
+      "mista": "mista",
+      "socialista": "socialista"
+    },
+    "regulacao-bancaria": {
+      "minima": "minima",
+      "basileia-padrao": "padrao-internacional",
+      "basileia-reforcada": "padrao-reforcado",
+      "repressao-financeira": "repressao-financeira"
+    },
+    "autonomia-banco-central": {
+      "subordinado": "banco-central-subordinado-ao-governo",
+      "autonomia-parcial": "autonomia-parcial",
+      "autonomia-plena": "autonomia-plena"
+    },
+    "regime-cambial": {
+      "fixo": "fixo",
+      "bandas": "bandas",
+      "flutuante-administrado": "flutuante-administrado",
+      "flutuante": "flutuante"
+    },
+    "tarifas-de-importacao": {
+      "_por_faixa": [
+        "minimo-0",
+        "referencia-13-35",
+        "maximo-40"
+      ]
+    },
+    "regime-do-petroleo-e-mineracao": {
+      "proibicao": "proibicao-de-novas-exploracoes",
+      "monopolio-estatal": "monopolio-estatal",
+      "partilha": "partilha",
+      "concessao": "concessao"
+    }
+  },
+  "variaveis": {
+    "nivel_acordos_comerciais": "nivel_acordos_comerciais",
+    "nivel_banco_de_desenvolvimento": "nivel_banco_de_desenvolvimento",
+    "nivel_controle_de_capitais": "nivel_controle_de_capitais",
+    "nivel_controle_de_precos": "nivel_controle_de_precos",
+    "nivel_cooperativas_e_autogestao": "nivel_cooperativas_e_autogestao",
+    "nivel_defesa_da_concorrencia": "nivel_defesa_da_concorrencia",
+    "nivel_empresas_estatais_e_privatizacao": "nivel_papel_do_estado_empresario",
+    "nivel_investimento_estrangeiro": "nivel_investimento_estrangeiro",
+    "nivel_liberdade_economica": "nivel_licenca_para_abrir_negocio",
+    "nivel_meta_de_inflacao": "nivel_mandato_do_banco_central",
+    "nivel_nacionalizacao": "nivel_nacionalizacao",
+    "nivel_planejamento_da_economia": "nivel_planejamento_da_economia",
+    "nivel_politica_industrial": "nivel_politica_industrial",
+    "nivel_programa_de_privatizacao": "nivel_programa_de_privatizacao",
+    "nivel_propriedade_dos_meios_de_producao": "nivel_propriedade_dos_meios_de_producao",
+    "nivel_regulacao_bancaria": "nivel_regulacao_dos_bancos",
+    "nivel_autonomia_banco_central": "nivel_quem_controla_o_banco_central",
+    "nivel_regime_cambial": "nivel_regime_cambial",
+    "aliquota_tarifas_de_importacao": "aliquota_tarifas_de_importacao",
+    "nivel_regime_do_petroleo_e_mineracao": "nivel_regime_do_petroleo_e_mineracao"
+  }
+}

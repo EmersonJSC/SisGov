@@ -1,16 +1,21 @@
 {
   "id": "contribuicao-sindical",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
   "nome": "Contribuição sindical",
-  "descricao": "Se o trabalhador paga o sindicato só quando autoriza, ou se todos pagam com desconto no salário.",
-  "area": "Trabalho e emprego",
-  "ministerio": "Ministério do Trabalho",
-  "nivel": "lei",
+  "descricao": "Como os sindicatos se financiam: só quem quer paga, ou todos os cobertos pelo acordo?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
     "nome": "Sindicatos e greve",
     "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
   },
   "controle": {
     "variavel": "nivel_contribuicao_sindical",
@@ -18,97 +23,48 @@
     "opcoes": [
       {
         "id": "voluntaria",
-        "rotulo": "Voluntária, só com autorização",
-        "valor": 0
+        "rotulo": "Voluntária",
+        "valor": 0,
+        "apoiam": ["Empresários", "Classe média"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Força sindical ↓ (hoje cerca de 8% dos ocupados); número de sindicatos ↓ (aprox.); Conflito trabalhista ↓"
       },
       {
-        "id": "obrigatoria",
-        "rotulo": "Obrigatória, descontada de todos",
-        "valor": 100
+        "id": "taxa-negocial-desconto-de-quem-o-acordo-cobre-com-direito-de",
+        "rotulo": "Taxa negocial: desconto de quem o acordo cobre, com direito de recusa",
+        "valor": 50.0,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Classe média"],
+        "efeitos": "Força sindical ↑ pouco; Renda do trabalho ↑ pouco (aprox.)"
+      },
+      {
+        "id": "obrigatoria-para-todos",
+        "rotulo": "Obrigatória para todos",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": [
+          "Empresários",
+          "Classe média",
+          "Trabalhadores com carteira"
+        ],
+        "efeitos": "Força sindical ↑; número de sindicatos ↑ (aprox.); aprovação entre trabalhadores ↓ pouco (aprox.)"
       }
     ]
   },
-  "efeitos": [
-    {
-      "alvo": "greve_geral",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, 2]
-        ]
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "custo_trabalhista",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, 1]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -1]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_trabalhadores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, -1]
-        ]
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_servidores",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [100, 1]
-        ]
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "contribuicao-sindical--greve-geral",
+    "contribuicao-sindical--custo-trabalhista",
+    "contribuicao-sindical--grupo-empresarios",
+    "contribuicao-sindical--grupo-trabalhadores",
+    "contribuicao-sindical--grupo-servidores"
   ],
-  "historia": {
-    "opcoes": {
-      "voluntaria": [
-        "Brasil desde 2017",
-        "Reino Unido",
-        "Estados Unidos (estados com direito ao trabalho)"
-      ],
-      "obrigatoria": [
-        "Brasil de 1940 a 2017 (imposto sindical)",
-        "Argentina (cota solidária)"
-      ]
-    },
-    "brasil": "A reforma trabalhista (Lei 13.467/2017) tornou a contribuição voluntária."
+  "mae": {
+    "texto": "Negociação coletiva e sindicatos (sem trava no estudo).",
+    "leis": ["negociacao-coletiva-e-sindicatos"]
   },
-  "fontes": [
-    {
-      "titulo": "Lei 13.467/2017 (reforma trabalhista)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13467.htm",
-      "usadoPara": "opção do Brasil"
-    },
-    {
-      "titulo": "Lei 11.648/2008 (parte do imposto sindical às centrais)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11648.htm",
-      "usadoPara": "contribuição obrigatória"
-    }
-  ]
+  "ministerio": "Ministério do Trabalho",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
 }

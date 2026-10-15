@@ -1,0 +1,85 @@
+{
+  "id": "como-a-aposentadoria-e-financiada",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Como a aposentadoria é financiada",
+  "descricao": "O trabalhador de hoje paga o aposentado de hoje, cada um poupa para si, ou uma mistura?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-previdencia",
+    "nome": "Mesa Previdência",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_como_a_aposentadoria_e_financiada",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-sistema-publico",
+        "rotulo": "Sem sistema público",
+        "valor": 0,
+        "rejeitam": [
+          "Aposentados",
+          "Associações de aposentados",
+          "Trabalhadores com carteira",
+          "Pobres"
+        ],
+        "efeitos": "Pobreza dos idosos explode (sem benefícios, iria de 8,3% para 52,3%)"
+      },
+      {
+        "id": "capitalizacao",
+        "rotulo": "Capitalização (cada um poupa para si)",
+        "valor": 33.33,
+        "custoTexto": "Transição alta: quem já se aposentou segue sendo pago sem receita nova (aprox., vários % do PIB por décadas)",
+        "apoiam": ["Mercado financeiro", "Ricos", "Empresários"],
+        "rejeitam": [
+          "Aposentados",
+          "Servidores",
+          "Centrais sindicais",
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Poupança doméstica ↑ (tamanho incerto); cobertura ↓ (Chile: metade dos trabalhadores sem cobertura em 2006); pobreza dos idosos ↑ sem pilar solidário"
+      },
+      {
+        "id": "misto",
+        "rotulo": "Misto (pilar público + conta individual)",
+        "valor": 66.67,
+        "custoTexto": "Despesa pública menor que a da repartição no longo prazo",
+        "apoiam": ["Classe média", "Empresários"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Déficit ↓ devagar; cobertura mantida pelo pilar público"
+      },
+      {
+        "id": "reparticao",
+        "rotulo": "Repartição",
+        "valor": 100,
+        "custoTexto": "Despesa do regime geral 8,2% do PIB (2025)",
+        "apoiam": [
+          "Aposentados",
+          "Servidores",
+          "Trabalhadores com carteira",
+          "Centrais sindicais",
+          "Associações de aposentados"
+        ],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Déficit da previdência ↑ sozinho com o envelhecimento (atraso de décadas)"
+      }
+    ]
+  },
+  "consequencias": [
+    "como-a-aposentadoria-e-financiada--poupanca-domestica",
+    "como-a-aposentadoria-e-financiada--deficit-previdenciario"
+  ],
+  "mae": {
+    "texto": "Benefício a idosos e pessoas com deficiência: a opção \"nenhum\" trava a opção sem sistema (idosos sem renda nenhuma levam a evento de crise).",
+    "leis": []
+  },
+  "ministerio": "Ministério das Cidades"
+}

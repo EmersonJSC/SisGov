@@ -2,7 +2,7 @@
   "id": "ensino-tecnico-profissional--qualificacao-trabalho",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_ensino_tecnico_profissional",
+  "origem": "nivel_ensino_tecnico_e_profissional",
   "alvo": "qualificacao_trabalho",
   "mecanismo": "afim",
   "parametros": {

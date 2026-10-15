@@ -1,0 +1,20 @@
+{
+  "id": "vigilancia-de-bairro--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_vigilancia_de_bairro",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, 1],
+      [100, -2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

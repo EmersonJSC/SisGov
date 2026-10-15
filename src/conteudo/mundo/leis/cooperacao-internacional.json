@@ -1,0 +1,60 @@
+{
+  "id": "cooperacao-internacional",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Cooperação internacional",
+  "descricao": "Quanto da renda nacional o país dá em ajuda a outros países?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_cooperacao_internacional",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "ponto-da-faixa",
+        "rotulo": "Ponto da faixa",
+        "valor": 0,
+        "custoTexto": "Custo",
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
+        "efeitos": "Efeitos principais"
+      },
+      {
+        "id": "0",
+        "rotulo": "0%",
+        "valor": 33.33,
+        "rejeitam": ["Católicos"],
+        "efeitos": "Influência externa ↓ pouco"
+      },
+      {
+        "id": "0-03",
+        "rotulo": "0,03% (hoje na referência, aprox.)",
+        "valor": 66.67,
+        "custoTexto": "0,03% da renda",
+        "efeitos": "Influência externa ↑ pouco contra 0% e ↓ contra 0,7% (estimado)"
+      },
+      {
+        "id": "0-7",
+        "rotulo": "0,7% (meta da ONU e da OCDE)",
+        "valor": 100,
+        "custoTexto": "0,7% da renda",
+        "apoiam": ["Progressistas", "Católicos"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Influência externa ↑; chance de ganhar o voto na assembleia ↑ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [],
+  "ministerio": "Ministério da Fazenda"
+}

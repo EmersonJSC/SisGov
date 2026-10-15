@@ -1,0 +1,64 @@
+{
+  "id": "exportacao-de-armas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Exportação de armas",
+  "descricao": "A quem o país pode vender armas?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_exportacao_de_armas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Proibida",
+        "valor": 0,
+        "custoTexto": "0 (perde receita)",
+        "apoiam": ["Progressistas", "Católicos"],
+        "rejeitam": ["Confederação da indústria", "Associações de militares"],
+        "efeitos": "Exportações ↓ pouco; Reputação internacional ↑ pouco (estimado)"
+      },
+      {
+        "id": "controle-humanitario",
+        "rotulo": "Controle humanitário (não vende a quem viola direitos)",
+        "valor": 33.33,
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Indústria de armas"],
+        "efeitos": "Reputação internacional estável"
+      },
+      {
+        "id": "controle-comercial",
+        "rotulo": "Controle comercial (hoje na referência, aprox.)",
+        "valor": 66.67,
+        "apoiam": ["Confederação da indústria", "Empresários"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ se vender a quem viola direitos (aprox.)"
+      },
+      {
+        "id": "livre",
+        "rotulo": "Livre",
+        "valor": 100,
+        "apoiam": ["Indústria de armas"],
+        "rejeitam": ["Progressistas", "Católicos"],
+        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ (aprox.); Armas em circulação na região ↑ (aprox.)"
+      }
+    ]
+  },
+  "consequencias": [
+    "exportacao-de-armas--exportacoes",
+    "exportacao-de-armas--reputacao-internacional"
+  ],
+  "ministerio": "Ministério da Fazenda"
+}

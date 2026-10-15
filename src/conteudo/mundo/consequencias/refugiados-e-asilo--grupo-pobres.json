@@ -2,7 +2,7 @@
   "id": "refugiados-e-asilo--grupo-pobres",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_refugiados_e_asilo",
+  "origem": "nivel_refugio_e_asilo",
   "alvo": "grupo_pobres",
   "mecanismo": "afim",
   "parametros": {

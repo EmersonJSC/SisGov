@@ -113,6 +113,15 @@ Ideias guardadas em 13/out para este marco: as leis em camadas (Constituição, 
 Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou "de direita" por opinião. Cada lei nasce de uma lei ou programa que existe em algum governo, com a fonte; o lado dela na bússola sai de pesquisa (votações reais, posição dos partidos no Manifesto Project); e, quando houver votação nominal no Brasil, ela entra na prova com votações reais da Câmara (`congresso.md` 5.4). Primeiro caso a corrigir: o feminicídio, que o centro e a direita também apoiam.
 
 - [ ] **V1-34** Leis de todos os lados e prova real da bússola (G)
+  - Pendência (15/out): a prova com votações reais da Câmara piorou com os
+    lados novos das fichas: erro médio 0,162 (era 0,124) e o teto em
+    `src/conteudo/bussola/votacoes-reais.json` subiu de 0,13 para 0,17 só para
+    o `npm run check` fechar. Revisar os lados das leis novas (hipóteses das
+    fichas) e voltar o teto a 0,13 ou menos. A catraca é "só pode melhorar".
+    Achado (15/out): o erro maior está em leis que NÃO mudaram (penas e
+    progressão: direita 0,57 contra 0,99 real), então a causa é global (ponto
+    do governo e disposição das bancadas, que mudam com as leis novas em
+    vigor), não o lado de uma lei só.
 - [ ] **V1-35** Empresas do país e Estado empresário (G)
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)

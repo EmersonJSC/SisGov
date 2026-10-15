@@ -1,0 +1,903 @@
+# Relatório da geração
+
+Leis nas fichas lidas: 228; geradas: 228.
+
+## Avisos (54)
+- volume-de-incentivo-a-industria/referencia-lacuna: lado sem número ('—'); assumi 0/0 (hipótese)
+- volume-de-incentivo-a-industria: faixa sem valor do Brasil identificado
+- meta-de-resultado-primario/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- meta-de-resultado-primario/2-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- meta-de-resultado-primario/0-25-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- meta-de-resultado-primario/3-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- fiscalizacao-do-trabalho/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- salario-minimo/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- intermediacao-e-qualificacao/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- intermediacao-e-qualificacao: faixa sem valor do Brasil identificado
+- verba-da-saude-acima-do-piso/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- verba-da-saude-acima-do-piso/4-3-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- regulacao-dos-planos-de-saude/deducao-no-imposto-de-renda-acabar: lado sem número ('consenso, sem lado claro'); assumi 0/0 (hipótese)
+- divisao-da-verba-atencao-basica-x-hospitais/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- divisao-da-verba-atencao-basica-x-hospitais/cerca-de-22: lado sem número ('—'); assumi 0/0 (hipótese)
+- mutirao-de-cirurgias/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- mutirao-de-cirurgias/zero: lado sem número ('—'); assumi 0/0 (hipótese)
+- mutirao-de-cirurgias/0-01-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- mutirao-de-cirurgias/0-05-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- vagas-de-residencia-medica/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- vagas-de-residencia-medica/cerca-de-16-200-vagas: lado sem número ('—'); assumi 0/0 (hipótese)
+- vagas-de-residencia-medica/cerca-de-24-000-vagas: lado sem número ('—'); assumi 0/0 (hipótese)
+- vagas-de-residencia-medica/cerca-de-33-000-uma-vaga-por-formado: lado sem número ('—'); assumi 0/0 (hipótese)
+- remedios-em-farmacias-credenciadas/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- remedios-em-farmacias-credenciadas/41-itens-gratis-em-31-mil-farmacias: lado sem número ('—'); assumi 0/0 (hipótese)
+- vigilancia-epidemiologica/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- vigilancia-epidemiologica/zero: lado sem número ('—'); assumi 0/0 (hipótese)
+- vigilancia-epidemiologica/0-05-a-0-1-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- vigilancia-epidemiologica/0-2-do-pib: lado sem número ('—'); assumi 0/0 (hipótese)
+- campanha-de-vacinacao/nenhuma: lado sem número ('—'); assumi 0/0 (hipótese)
+- campanha-de-vacinacao/rotina-anual: lado sem número ('—'); assumi 0/0 (hipótese)
+- campanha-de-vacinacao/grande-mobilizacao-campanha-busca-ativa-pela-atencao-basica-: lado sem número ('—'); assumi 0/0 (hipótese)
+- fundo-de-seguranca-publica/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- fundo-de-seguranca-publica/referencia-lacuna: lado sem número ('—'); assumi 0/0 (hipótese)
+- verba-da-policia-federal/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- vagas-em-presidios/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- regime-contra-faccoes/isolar-lideres-e-confiscar-bens: lado sem número ('0 (estimado) / +0,5'); assumi 0/0 (hipótese)
+- regime-contra-faccoes/estado-de-excecao: lado sem número ('0 (estimado) / +1,0'); assumi 0/0 (hipótese)
+- agencia-de-inteligencia/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- verba-de-planejamento-familiar-e-de-aborto-legal/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- verba-para-juventude-negra-e-saude-da-populacao-negra/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- acolhida-e-interiorizacao-de-imigrantes/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- tributo-sobre-apostas/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- valor-do-fundo-eleitoral/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- fundo-de-equalizacao/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- orcamento-do-judiciario/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- verba-de-publicidade-oficial-e-comunicacao-publica/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- verba-de-controle/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- fiscalizacao-ambiental/brasil-hoje: lado sem número ('lacuna'); assumi 0/0 (hipótese)
+- investimento-em-geracao-por-fonte: controle em fatias (minijogo), não vira opções simples
+- gasto-com-defesa/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- investimento-em-defesa/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- rede-diplomatica/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+- cooperacao-internacional/ponto-da-faixa: lado sem número ('Lado (economia, costumes)'); assumi 0/0 (hipótese)
+
+## Efeitos em número
+
+Escala: leve 0,03 · médio 0,07 · forte 0,12 (fração do domínio, da primeira à última opção). Atraso padrão 1 passo.
+
+Fragmentos com seta: 1537; viraram número: 855; sem índice: 682; tamanho em lacuna: 0; opções só com texto sem seta: 128.
+
+- tamanho em lacuna, entrou como hipótese média: quem-controla-o-banco-central / Banco central subordinado ao governo: «expectativas de inflação ↑ (tamanho: lacuna)» → expectativas_inflacao
+- sem seta (texto só qualitativo): quem-controla-o-banco-central / Autonomia parcial (mandato não coincide com o do presidente, sem meta em lei): Juros seguem regra de reação; efeito nas expectativas menor que o da autonomia plena (lacuna)
+- tamanho em lacuna, entrou como hipótese média: quem-controla-o-banco-central / Autonomia plena (mandatos fixos, objetivo em lei): «expectativas ↓ (tamanho: lacuna)» → expectativas_inflacao
+- sem seta (texto só qualitativo): mandato-do-banco-central / Meta flexível (meta contínua com tolerância): Juros seguem regra de reação; expectativas ancoradas
+- sem índice: regime-cambial / Fixo: «Volatilidade ↓»
+- sem índice: regime-cambial / Fixo: «chance de crise cambial ↑ e dólar paralelo ↑»
+- sem índice: regime-cambial / Bandas: «Volatilidade ↓»
+- sem seta (texto só qualitativo): regime-cambial / Flutuante administrado: Volatilidade média; reservas usadas com frequência
+- sem índice: regime-cambial / Flutuante: «Volatilidade do câmbio ↑»
+- sem índice: regime-cambial / Flutuante: «chance de crise cambial ↓»
+- sem índice: intervencao-cambial / Mínimo: vender US$ 40 bi: «chance de crise cambial ↑»
+- sem índice: controle-de-capitais / Conta aberta: «volatilidade do câmbio ↑»
+- sem índice: controle-de-capitais / Controles prudenciais (imposto que sobe e desce com o fluxo) (Brasil 2009-2013): «fluxo de carteira ↓»
+- sem índice: regulacao-dos-bancos / Mínima: «chance de crise financeira ↑»
+- sem seta (texto só qualitativo): regulacao-dos-bancos / Padrão internacional (Basileia): Ponto de equilíbrio
+- sem índice: regulacao-dos-bancos / Padrão reforçado: «chance de crise financeira ↓»
+- sem índice: regulacao-dos-bancos / Repressão financeira (teto de juros, crédito obrigatório): «Spread ↓ no crédito tabelado e ↑ no crédito livre»
+- sem índice: indexacao-de-contratos / Indexação livre: «Inércia da inflação ↑»
+- sem índice: indexacao-de-contratos / Indexação livre: «inflação persistente ↑»
+- sem índice: indexacao-de-contratos / Indexação livre: «juro neutro ↑»
+- sem seta (texto só qualitativo): indexacao-de-contratos / Restrita (só em contratos de 12 meses ou mais): Inércia média
+- sem índice: indexacao-de-contratos / Desindexação ampla (inclusive benefícios e tarifas): «Inércia ↓»
+- sem índice: acordos-comerciais / Sem acordos: «abertura comercial ↓»
+- sem seta (texto só qualitativo): acordos-comerciais / União aduaneira (bloco com tarifa comum): Tarifa presa à do bloco
+- sem índice: acordos-comerciais / Livre comércio amplo (abertura sem esperar os outros): «peso da indústria ↓»
+- sem índice: acordos-comerciais / Livre comércio amplo (abertura sem esperar os outros): «emprego regional ↓ por décadas»
+- sem índice: tarifas-de-importacao / Mínimo: 0%: «peso da indústria protegida ↓»
+- sem índice: tarifas-de-importacao / Máximo: 40%: «peso da indústria ↑ no curto prazo»
+- sem índice: tarifas-de-importacao / Máximo: 40%: «chance de guerra comercial ↑»
+- sem índice: conteudo-local / Sem exigência: «Investimento no petróleo ↑»
+- sem índice: conteudo-local / Sem exigência: «peso da indústria ↓ leve»
+- sem índice: conteudo-local / Margem de preferência nas compras públicas: «Peso da indústria ↑ leve»
+- sem índice: conteudo-local / Conteúdo local alto (petróleo e carros): «Peso da indústria ↑ no setor protegido»
+- sem índice: conteudo-local / Conteúdo local alto (petróleo e carros): «investimento estrangeiro no petróleo ↓»
+- sem índice: defesa-comercial / Sem defesa comercial: «peso da indústria ↓ leve»
+- sem índice: defesa-comercial / Uso amplo (sobretaxa rápida, pouco peso para o interesse do consumidor): «chance de guerra comercial ↑»
+- sem índice: papel-do-estado-empresario / Sem estatais: «Risco de preço político ↓»
+- sem índice: papel-do-estado-empresario / Estatais mínimas: «Risco de preço político ↓»
+- sem índice: papel-do-estado-empresario / Estatais estratégicas (hoje no Brasil: só por segurança nacional ou interesse coletivo): «Risco de preço político ↓ pouco contra Estado empresário»
+- sem índice: papel-do-estado-empresario / Estado empresário: «Risco de uso político dos preços ↑»
+- sem seta (texto só qualitativo): programa-de-privatizacao / Nenhum: Nada muda
+- conta pública (vem do orçamento, não de efeito): programa-de-privatizacao / Lista, caso a caso: «Dívida ↓» → divida_publica
+- sem índice: programa-de-privatizacao / Lista, caso a caso: «eficiência da empresa ↑ (aprox.)»
+- conta pública (vem do orçamento, não de efeito): programa-de-privatizacao / Venda ampla: «Dívida ↓» → divida_publica
+- sem índice: programa-de-privatizacao / Venda ampla: «greve contra a privatização ↑»
+- sem seta (texto só qualitativo): nacionalizacao / Indenização prévia em dinheiro: Risco-país estável
+- sem índice: nacionalizacao / Expropriação sem pagar: «produção da empresa ↓ no médio prazo»
+- sem índice: nacionalizacao / Expropriação sem pagar: «desabastecimento ↑»
+- sem seta (texto só qualitativo): regime-do-petroleo-e-mineracao / Partilha (o Estado fica com parte do óleo) (hoje no Brasil, no pré-sal): Royalties e óleo para o Estado
+- sem índice: banco-de-desenvolvimento / Crédito subsidiado em massa: «Selic necessária ↑»
+- conta pública (vem do orçamento, não de efeito): banco-de-desenvolvimento / Crédito subsidiado em massa: «cofre ↓» → cofre
+- sem índice: banco-de-desenvolvimento / Crédito subsidiado em massa: «spread do crédito livre ↑»
+- sem seta (texto só qualitativo): cooperativas-e-autogestao / Livre, sem incentivo: Nada muda
+- sem índice: cooperativas-e-autogestao / Incentivo (crédito e imposto menor) (hoje no Brasil, aprox.): «Crédito cooperativo ↑»
+- sem índice: cooperativas-e-autogestao / Incentivo (crédito e imposto menor) (hoje no Brasil, aprox.): «spread local ↓ (aprox.)»
+- sem índice: cooperativas-e-autogestao / Incentivo (crédito e imposto menor) (hoje no Brasil, aprox.): «agricultura familiar ↑»
+- sem seta (texto só qualitativo): politica-de-precos-das-estatais / Paridade internacional: Inflação sobe junto com o petróleo; investimento da estatal estável
+- sem seta (texto só qualitativo): politica-de-precos-das-estatais / Suavização (amortecedor ou fundo): Inflação mais estável
+- conta pública (vem do orçamento, não de efeito): politica-de-precos-das-estatais / Preço político (congelamento): «dívida ↑ via aporte» → divida_publica
+- sem índice: politica-de-precos-das-estatais / Preço político (congelamento): «investimento da estatal ↓»
+- sem seta (texto só qualitativo): controle-de-precos / Preços livres: Nada muda
+- sem índice: controle-de-precos / Só preços administrados (energia, transporte, remédios): «distorção de preço ↑ pouco contra Preços livres»
+- sem seta (texto só qualitativo): controle-de-precos / Teto na cesta básica: Alívio temporário nos itens tabelados; sem falta geral
+- sem índice: controle-de-precos / Tabelamento geral: «desabastecimento ↑»
+- sem índice: controle-de-precos / Tabelamento geral: «ágio e mercado paralelo ↑»
+- sem índice: defesa-da-concorrencia / Sem política: «preços ↑»
+- sem índice: defesa-da-concorrencia / Moderada: «spread bancário ↓ pouco»
+- sem índice: defesa-da-concorrencia / Rigorosa: «spread bancário ↓»
+- sem índice: licenca-para-abrir-negocio / Licença conforme o risco: «Abertura de empresas ↑»
+- sem índice: licenca-para-abrir-negocio / Sem licença para baixo risco: «Abertura de empresas ↑»
+- sem seta (texto só qualitativo): politica-industrial / Nenhuma: Tranca a alavanca de volume (proposta minha)
+- sem índice: politica-industrial / Setorial exportadora (missões com metas e prazo): «Peso da indústria ↑»
+- sem índice: politica-industrial / Proteção do mercado interno (tarifa e conteúdo local, sem meta de exportar): «Peso da indústria ↑ no curto prazo»
+- sem seta (texto só qualitativo): volume-de-incentivo-a-industria / Mínimo: 0%: Peso da indústria segue o mercado
+- sem índice: volume-de-incentivo-a-industria / Máximo: 2%: «Peso da indústria ↑»
+- conta pública (vem do orçamento, não de efeito): volume-de-incentivo-a-industria / Máximo: 2%: «cofre ↓» → cofre
+- sem seta (texto só qualitativo): planejamento-da-economia / Mercado decide: Nada muda no investimento público
+- sem índice: planejamento-da-economia / Plano que orienta (obrigatório para o Estado, indicativo para empresas): «Coordenação do investimento público ↑ (lacuna)»
+- sem índice: planejamento-da-economia / Plano central: «Desabastecimento ↑»
+- sem índice: planejamento-da-economia / Plano central: «dólar paralelo ↑»
+- sem índice: modelo-tributario / Quase sem impostos: «Receita ↓↓»
+- sem índice: modelo-tributario / Base no consumo (IVA e encargos): «Progressividade ↓»
+- sem índice: modelo-tributario / Proporcional (alíquota única na renda, mais IVA): «Progressividade ↓»
+- sem índice: modelo-tributario / Dual (trabalho com faixas, capital com alíquota única): «Progressividade ↑ pouco»
+- sem índice: modelo-tributario / Progressivo (renda global com faixas, capital somado): «Progressividade ↑»
+- inclinação zero (efeitos se anulam entre opções): modelo-tributario → complexidade_tributaria
+- sem índice: imposto-de-renda-das-pessoas / Sem imposto de renda: «Receita ↓↓»
+- sem índice: imposto-de-renda-das-pessoas / Sem imposto de renda: «Progressividade ↓↓»
+- sem índice: imposto-de-renda-das-pessoas / Alíquota única com isenção: «Complexidade ↓»
+- sem índice: imposto-de-renda-das-pessoas / Alíquota única com isenção: «Progressividade ↓»
+- sem seta (texto só qualitativo): imposto-de-renda-das-pessoas / Progressivo moderado (topo de 25 a 35%): situação de referência
+- sem índice: imposto-de-renda-das-pessoas / Progressivo com mínimo para altas rendas (hoje no Brasil, desde 2026): «Progressividade ↑»
+- sem índice: imposto-de-renda-das-pessoas / Progressivo alto (topo de 45 a 55%): «Progressividade ↑»
+- sem índice: tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter / Isento, e renda no exterior só paga quando volta: «Progressividade ↓ no topo»
+- sem índice: tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter / Isento, e renda no exterior só paga quando volta: «"pejotização" de alta renda ↑»
+- sem índice: tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter / Retenção mínima (10% acima de um limite, com redutor) e 15% ao ano no exterior e nos fundos exclusivos (hoje no Brasil, desde 2026): «Progressividade ↑ pouco»
+- sem índice: tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter / Alíquota única de 15 a 25% no dividendo, com corte no imposto da empresa, e 15% ao ano no exterior: «Progressividade ↑»
+- sem índice: tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter / Integrado na tabela progressiva, e renda no exterior somada todo ano: «Progressividade ↑↑»
+- sem índice: imposto-de-renda-das-empresas / Baixa (0 a 12,5%): «Investimento e investimento estrangeiro ↑»
+- sem índice: imposto-de-renda-das-empresas / Baixa (0 a 12,5%): «Receita ↓»
+- sem índice: imposto-de-renda-das-empresas / Alta (30 a 35%) (hoje no Brasil, 34%): «Elisão ↑ (transferência de lucro)»
+- sem índice: imposto-sobre-consumo / IVA dual com exceções (cesta, saúde, educação reduzidas) (Brasil de 2027 a 2033): «Complexidade ↓ depois de 2033»
+- sem índice: imposto-sobre-consumo / IVA amplo com devolução aos pobres: «Complexidade ↓↓»
+- sem índice: imposto-sobre-consumo / IVA amplo com devolução aos pobres: «Progressividade ↑»
+- sem índice: imposto-sobre-consumo / Imposto sobre vendas no varejo: «Complexidade ↓»
+- sem índice: imposto-seletivo / Vícios tradicionais (cigarro e álcool): «Contrabando ↑ com alíquota alta»
+- sem índice: imposto-seletivo / Saúde ampla (mais bebida açucarada e ultraprocessado) (hoje no Brasil é parecido, pela EC 132): «Progressividade ↓»
+- sem índice: imposto-sobre-heranca / Isento: «Desigualdade de riqueza ↑»
+- sem seta (texto só qualitativo): imposto-sobre-heranca / Baixo, com teto de 8%: pouco efeito
+- sem índice: imposto-sobre-heranca / Progressivo até 20%: «Progressividade ↑»
+- sem índice: imposto-sobre-heranca / Progressivo até 20%: «Desigualdade de riqueza ↓ com atraso de uma geração»
+- sem índice: imposto-sobre-heranca / Alto, até 45% ou mais: «Progressividade ↑↑»
+- sem índice: imposto-sobre-grandes-fortunas / Mínimo para bilionários (2% da riqueza): «Progressividade ↑»
+- sem índice: imposto-sobre-grandes-fortunas / Imposto amplo (0,5 a 1,5% acima de um limite): «Progressividade ↑»
+- sem índice: imposto-sobre-grandes-fortunas / Imposto amplo (0,5 a 1,5% acima de um limite): «Fuga de capitais e de cérebros ↑»
+- sem índice: imposto-sobre-grandes-fortunas / Imposto amplo (0,5 a 1,5% acima de um limite): «Complexidade ↑ (avaliar patrimônio)»
+- inclinação zero (efeitos se anulam entre opções): imposto-sobre-grandes-fortunas → fuga_capitais
+- sem índice: imposto-sobre-a-propriedade / Simbólico: «Federalismo ↓ (municípios sem receita própria)»
+- sem índice: imposto-sobre-a-propriedade / Atual: planta antiga, imposto rural quase zero: «Progressividade ↓ (pesa mais nos pobres)»
+- sem índice: imposto-sobre-a-propriedade / Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa): «Progressividade ↑»
+- sem índice: imposto-sobre-a-propriedade / Imposto sobre o valor da terra: «Terra ociosa ↓»
+- sem índice: imposto-sobre-a-propriedade / Imposto sobre o valor da terra: «Federalismo ↑»
+- sem seta (texto só qualitativo): imposto-sobre-transacoes-financeiras / Imposto só para regular o mercado (hoje no Brasil, o IOF): pouco efeito
+- sem índice: imposto-sobre-transacoes-financeiras / Imposto sobre cada movimentação, de 0,2 a 0,4%: «Crédito e Investimento ↓»
+- sem índice: regime-simplificado-para-pequenas-empresas / Só dispensa do IVA abaixo de um faturamento: «Complexidade ↓ pouco»
+- sem índice: regime-simplificado-para-pequenas-empresas / Amplo, com teto alto e serviços de alta renda: «Progressividade ↓»
+- sem índice: incentivos-fiscais-regionais / Fundos regionais (gasto direto, sem isenção): «Complexidade ↓»
+- sem índice: incentivos-fiscais-regionais / Zona franca ampla: «Complexidade ↑»
+- sem índice: incentivos-fiscais-regionais / Zona franca ampla: «Receita ↓»
+- sem índice: revisao-de-gastos-tributarios / Nenhuma: «Complexidade ↑ a cada isenção aceita em evento»
+- sem índice: revisao-de-gastos-tributarios / Revisão com prazo de validade: «Receita ↑ aos poucos»
+- sem índice: revisao-de-gastos-tributarios / Revisão com prazo de validade: «Complexidade ↓»
+- sem índice: revisao-de-gastos-tributarios / Corte linear (hoje no Brasil: 10% desde 2026): «Receita ↑ já»
+- sem índice: devolucao-de-imposto-aos-pobres / Nenhuma: «Progressividade ↓»
+- sem índice: devolucao-de-imposto-aos-pobres / Luz, água e gás: «Progressividade ↑ pouco»
+- sem índice: devolucao-de-imposto-aos-pobres / Ampla para as famílias do cadastro social (hoje no Brasil, a partir de 2027): «Progressividade ↑»
+- sem índice: regra-fiscal / Sem regra: «Credibilidade fiscal ↓↓»
+- sem índice: regra-fiscal / Meta de resultado anual (Brasil de 2000 a 2016): «Credibilidade ↑»
+- sem índice: regra-fiscal / Teto de gastos (Brasil de 2017 a 2022): «Credibilidade ↑ no início»
+- sem índice: regra-fiscal / Teto de gastos (Brasil de 2017 a 2022): «↓ quando é furada»
+- sem seta (texto só qualitativo): regra-fiscal / Arcabouço: gasto cresce 70% da receita, entre 0,6 e 2,5% reais, mais meta (hoje no Brasil, desde 2024): Credibilidade média; alguma folga na margem
+- sem índice: regra-fiscal / Balanço estrutural (meta descontado o ciclo e o preço das matérias-primas): «Credibilidade ↑»
+- sem índice: regra-fiscal / Freio da dívida (déficit estrutural máximo, por exemplo 0,35% do PIB): «Credibilidade ↑↑»
+- sem seta (texto só qualitativo): meta-de-resultado-primario / Ponto da faixa: Efeitos principais
+- sem índice: meta-de-resultado-primario / −2% do PIB (mínimo): «Credibilidade ↓»
+- sem seta (texto só qualitativo): meta-de-resultado-primario / +0,25% do PIB (Brasil, meta de 2026, aprox.): o Brasil fez −0,43% em 2025
+- sem índice: meta-de-resultado-primario / +3% do PIB (máximo; perto do que estabiliza a dívida, entre +2,3 e +3,1%): «Credibilidade ↑»
+- conta pública (vem do orçamento, não de efeito): destino-do-resultado-fiscal / Pagar a dívida: «Dívida ↓» → divida_publica
+- sem seta (texto só qualitativo): destino-do-resultado-fiscal / Dividir (metade e metade): meio caminho
+- sem seta (texto só qualitativo): fundo-soberano / Guardar em caixa no Tesouro: rende os juros básicos; protege contra crise
+- sem índice: fundo-soberano / Fundo no exterior, saque limitado ao retorno real (até 3% ao ano): «Dívida líquida ↓»
+- sem índice: conselho-fiscal-independente / Nenhum: «Credibilidade fiscal ↓»
+- sem índice: conselho-fiscal-independente / No Legislativo, só consultivo (hoje no Brasil, desde 2016): «Credibilidade ↑»
+- sem índice: conselho-fiscal-independente / Com poder de veto às projeções do orçamento: «Credibilidade ↑↑»
+- sem índice: legislacao-trabalhista / Sem regras: «Rotatividade ↑↑»
+- sem índice: legislacao-trabalhista / Mínima: contrato livre com piso e segurança: «Litígio ↓»
+- sem índice: legislacao-trabalhista / Mínima: contrato livre com piso e segurança: «Rotatividade ↑»
+- sem índice: legislacao-trabalhista / Negociado sobre legislado: código detalhado, mas o acordo coletivo prevalece: «Litígio ↓ pouco»
+- sem índice: legislacao-trabalhista / Código detalhado: «Litígio ↑ (regra detalhada gera disputa)»
+- sem índice: legislacao-trabalhista / Protetiva: estabilidade e demissão só com motivo: «Rotatividade ↓↓»
+- sem índice: legislacao-trabalhista / Protetiva: estabilidade e demissão só com motivo: «Litígio ↑»
+- sem índice: custo-de-processar-na-justica-do-trabalho / Gratuita sem risco: «Litígio ↑ (cerca de +14% num ano quando a gratuidade volta)»
+- sem índice: custo-de-processar-na-justica-do-trabalho / Gratuita com teto de renda: «Litígio ↓ (tamanho: lacuna)»
+- sem índice: custo-de-processar-na-justica-do-trabalho / Gratuita com teto de renda: «sensação de injustiça entre trabalhadores ↑ pouco (aprox.)»
+- sem índice: custo-de-processar-na-justica-do-trabalho / Quem perde paga: «Litígio ↓ cerca de 20% no 1º ano»
+- sem índice: custo-de-processar-na-justica-do-trabalho / Quem perde paga: «sensação de injustiça ↑ (aprox.)»
+- sem índice: jornada-de-trabalho / Sem limite: «Renda por hora ↓»
+- sem índice: jornada-de-trabalho / 48 horas: «Renda do trabalho por hora ↓ pouco»
+- sem índice: jornada-de-trabalho / 44 horas: «Renda do trabalho por hora ↓ pouco contra 40h e ↑ contra 48h»
+- sem índice: jornada-de-trabalho / 44 horas: «Rotatividade ↑ (quem cumpre 44h tem menor salário e mais rotatividade, IPEA)»
+- sem índice: jornada-de-trabalho / 40 horas: «Renda do trabalho por hora ↑»
+- sem índice: jornada-de-trabalho / 40 horas: «preços ↑ 1% a 6%»
+- sem índice: jornada-de-trabalho / 40 horas: «Desemprego entre 0 e ↑ (faixa ampla)»
+- sem índice: fundo-de-garantia / Conta portátil, sem multa: «Rotatividade ↓ (aprox.)»
+- sem índice: fundo-de-garantia / Fundo com multa na demissão (hoje no Brasil: 8% ao mês e 40% de multa): «Rotatividade ↑ (demissão combinada para sacar; aprox.)»
+- sem índice: fundo-de-garantia / Indenização por tempo de casa: «Rotatividade ↓ (aprox.)»
+- sem índice: terceirizacao / Livre: «Litígio ↑»
+- sem índice: terceirizacao / Livre: «Rotatividade ↑ (aprox.)»
+- sem índice: terceirizacao / Ampla, com a contratante respondendo pelas dívidas: «Litígio ↑ pouco»
+- sem índice: terceirizacao / Limitada, com o mesmo salário do contratado direto: «renda dos terceirizados ↑ (aprox.)»
+- sem índice: terceirizacao / Restrita à atividade de apoio: «Litígio ↑ (fronteira entre atividade principal e de apoio)»
+- sem índice: trabalho-por-aplicativo / Sem regulação: «vagas por aplicativo ↑»
+- sem índice: trabalho-por-aplicativo / Categoria própria: piso por hora e contribuição para a previdência: «renda por hora ↑»
+- sem índice: trabalho-por-aplicativo / Categoria própria: piso por hora e contribuição para a previdência: «preço ao consumidor ↑ pouco (aprox.)»
+- sem índice: trabalho-por-aplicativo / Presunção de vínculo de emprego: «vagas por aplicativo ↓ (aprox.)»
+- sem índice: trabalho-por-aplicativo / Presunção de vínculo de emprego: «preço ↑ (aprox.)»
+- sem índice: trabalho-por-aplicativo / Presunção de vínculo de emprego: «Litígio ↑»
+- sem índice: trabalho-por-aplicativo / Emprego obrigatório: «Vagas por aplicativo ↓↓ (aprox.)»
+- sem índice: trabalho-infantil-e-aprendizagem / Sem idade mínima: «Qualificação ↓ em 5 a 10 anos (aprox.)»
+- tamanho em lacuna, entrou como hipótese média: igualdade-salarial-de-genero / Sem garantia: «Diferença salarial de gênero ↑ (tamanho: lacuna)» → diferenca_salarial_genero
+- sem índice: igualdade-salarial-de-genero / Princípio na lei: «↓ pouco contra Sem garantia (estimado)»
+- sem índice: igualdade-salarial-de-genero / Transparência: relatório público das empresas grandes: «Diferença salarial ↓ (sem estudo causal no Brasil; lacuna)»
+- sem índice: igualdade-salarial-de-genero / Transparência: relatório público das empresas grandes: «Litígio ↑ pouco»
+- sem índice: igualdade-salarial-de-genero / Certificação: multa se a empresa não provar igualdade: «Diferença salarial ↓ (lacuna)»
+- sem índice: igualdade-salarial-de-genero / Certificação: multa se a empresa não provar igualdade: «Litígio ↑ pouco»
+- sem seta (texto só qualitativo): fiscalizacao-do-trabalho / Ponto da faixa: Efeitos principais
+- sem índice: fiscalizacao-do-trabalho / Mínimo: metade de hoje, cerca de 900 (proposta minha): «Litígio ↑ (o descumprimento vai para o tribunal)»
+- sem índice: fiscalizacao-do-trabalho / Referência: cerca de 1.800 ativos: «↑ contra o Máximo»
+- sem índice: fiscalizacao-do-trabalho / Referência: cerca de 1.800 ativos: «Litígio ↑ pouco»
+- sem índice: fiscalizacao-do-trabalho / Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha): «firmas de sobrevivência fechadas ↑ (Desemprego local ↑ no curto prazo)»
+- sem índice: quem-decide-o-salario-minimo / Não existe piso nacional: «Renda do trabalho na base ↓»
+- sem índice: quem-decide-o-salario-minimo / Negociação sindical por setor: «Força sindical ↑»
+- sem índice: quem-decide-o-salario-minimo / Comissão técnica independente: «risco de piso alto demais ↓»
+- sem seta (texto só qualitativo): quem-decide-o-salario-minimo / Lei nacional votada pelo governo e Congresso: o valor vira decisão política anual; aprovação do governo sensível ao reajuste
+- sem seta (texto só qualitativo): formula-do-salario-minimo / Sem regra: o reajuste vira escolha anual na alavanca
+- sem seta (texto só qualitativo): formula-do-salario-minimo / Só inflação: Renda do trabalho real parada; desigualdade para de cair
+- sem índice: formula-do-salario-minimo / Inflação mais crescimento do PIB (hoje no Brasil, com ganho real limitado): «Renda do trabalho ↑»
+- sem índice: formula-do-salario-minimo / Inflação mais crescimento do PIB (hoje no Brasil, com ganho real limitado): «gasto previdenciário ↑ no ano seguinte»
+- sem seta (texto só qualitativo): formula-do-salario-minimo / Meta: uma fração da mediana dos salários: o mínimo segue os salários; risco no emprego controlado pela meta
+- sem seta (texto só qualitativo): salario-minimo / Ponto da faixa: Efeitos principais
+- sem índice: salario-minimo / Sem piso (0%): «Renda do trabalho na base ↓↓»
+- sem índice: salario-minimo / Piso baixo (menos de 40% da mediana): «Renda do trabalho ↓»
+- sem índice: salario-minimo / Piso moderado (40% a 60%; hoje no Brasil, perto de 60%, R$ 1.621 em 2026): «Renda do trabalho ↑ (no ciclo 1996 a 2018, +20 pontos log nos 10% mais pobres)»
+- sem índice: salario-minimo / Piso alto (mais de 60% da mediana): «Renda do trabalho ↑»
+- sem índice: negociacao-coletiva-e-sindicatos / Sindicatos controlados pelo Estado: «Conflito trabalhista ↓ por repressão»
+- sem índice: negociacao-coletiva-e-sindicatos / Sindicatos controlados pelo Estado: «Força sindical independente ↓↓»
+- sem índice: negociacao-coletiva-e-sindicatos / Sindicatos controlados pelo Estado: «protestos ↑ (aprox.)»
+- sem índice: negociacao-coletiva-e-sindicatos / Por empresa: «Força sindical ↓»
+- sem índice: negociacao-coletiva-e-sindicatos / Por empresa: «dispersão de salários ↑»
+- sem índice: negociacao-coletiva-e-sindicatos / Por empresa: «Renda do trabalho ↓ pouco»
+- sem índice: negociacao-coletiva-e-sindicatos / Por setor: «↑ contra Por empresa e ↓ contra Centralizada nacional (estimado)»
+- sem índice: negociacao-coletiva-e-sindicatos / Centralizada nacional: «Força sindical ↑»
+- sem índice: negociacao-coletiva-e-sindicatos / Centralizada nacional: «dispersão de salários ↓»
+- sem índice: negociacao-coletiva-e-sindicatos / Centralizada nacional: «Conflito trabalhista ↓ (aprox.)»
+- sem índice: contribuicao-sindical / Voluntária: «Força sindical ↓ (hoje cerca de 8% dos ocupados)»
+- sem índice: contribuicao-sindical / Voluntária: «número de sindicatos ↓ (aprox.)»
+- sem índice: contribuicao-sindical / Voluntária: «Conflito trabalhista ↓»
+- sem índice: contribuicao-sindical / Taxa negocial: desconto de quem o acordo cobre, com direito de recusa: «Força sindical ↑ pouco»
+- sem índice: contribuicao-sindical / Taxa negocial: desconto de quem o acordo cobre, com direito de recusa: «Renda do trabalho ↑ pouco (aprox.)»
+- sem índice: contribuicao-sindical / Obrigatória para todos: «Força sindical ↑»
+- sem índice: contribuicao-sindical / Obrigatória para todos: «número de sindicatos ↑ (aprox.)»
+- sem índice: contribuicao-sindical / Obrigatória para todos: «aprovação entre trabalhadores ↓ pouco (aprox.)»
+- sem índice: direito-de-greve / Proibida: «Conflito trabalhista legal ↓»
+- sem índice: direito-de-greve / Proibida: «mas greve ilegal e protestos ↑ (aprox.)»
+- sem índice: direito-de-greve / Proibida: «aprovação ↓»
+- sem índice: direito-de-greve / Votação secreta e serviços mínimos: «Conflito trabalhista ↓»
+- sem índice: direito-de-greve / Votação secreta e serviços mínimos: «Renda do trabalho ↓ pouco»
+- sem índice: direito-de-greve / Ampla: «Conflito trabalhista ↑»
+- sem índice: direito-de-greve / Ampla: «Renda do trabalho ↑ pouco»
+- sem índice: seguro-desemprego / Conta individual do trabalhador: «proteção na crise ↓»
+- sem seta (texto só qualitativo): seguro-desemprego / Básico e curto: estabilizador fraco na recessão
+- sem índice: seguro-desemprego / Moderado: 3 a 5 parcelas: «duração do desemprego ↑ pouco (cada mês a mais de benefício gera 0,86 mês pago, só 15% por mudança de comportamento)»
+- sem índice: seguro-desemprego / Generoso com ativação: benefício longo e busca obrigatória: «duração do desemprego ↑ pouco»
+- sem índice: seguro-desemprego / Generoso com ativação: benefício longo e busca obrigatória: «Gasto do FAT ↑↑ quando o desemprego sobe»
+- sem seta (texto só qualitativo): reducao-de-jornada-subsidiada / Nenhum (hoje no Brasil, fora de crise): Desemprego sobe mais na recessão
+- sem índice: reducao-de-jornada-subsidiada / Permanente: «contratação nas outras firmas ↓»
+- sem seta (texto só qualitativo): intermediacao-e-qualificacao / Ponto da faixa: Efeitos principais
+- sem índice: intermediacao-e-qualificacao / Mínimo: 0%: «duração do desemprego ↑ pouco»
+- sem índice: intermediacao-e-qualificacao / Médio: cerca de 0,05% do PIB (proposta minha; valor do Brasil é lacuna): «duração do desemprego ↓ pouco contra 0%»
+- sem seta (texto só qualitativo): como-a-aposentadoria-e-financiada / Sem sistema público: Pobreza dos idosos explode (sem benefícios, iria de 8,3% para 52,3%)
+- sem índice: como-a-aposentadoria-e-financiada / Capitalização (cada um poupa para si): «cobertura ↓ (Chile: metade dos trabalhadores sem cobertura em 2006)»
+- sem índice: como-a-aposentadoria-e-financiada / Capitalização (cada um poupa para si): «pobreza dos idosos ↑ sem pilar solidário»
+- sem índice: como-a-aposentadoria-e-financiada / Misto (pilar público + conta individual): «Déficit ↓ devagar»
+- sem índice: idade-minima-para-se-aposentar / Sem idade (só tempo de contribuição): «Déficit ↑»
+- sem índice: idade-minima-para-se-aposentar / Baixa (até 60 anos): «Déficit ↑»
+- sem índice: idade-minima-para-se-aposentar / Baixa (até 60 anos): «popularidade com aposentados ↑»
+- sem índice: idade-minima-para-se-aposentar / Moderada, 62 a 65 (hoje no Brasil: 65 homem, 62 mulher): «Déficit ↑ contra Alta (67 ou mais)»
+- sem índice: idade-minima-para-se-aposentar / Moderada, 62 a 65 (hoje no Brasil: 65 homem, 62 mulher): «e ↓ contra Baixa»
+- sem índice: idade-minima-para-se-aposentar / Moderada, 62 a 65 (hoje no Brasil: 65 homem, 62 mulher): «popularidade com aposentados ↑ pouco contra Alta»
+- sem índice: idade-minima-para-se-aposentar / Moderada, 62 a 65 (hoje no Brasil: 65 homem, 62 mulher): «pobreza de quem faz serviço pesado ↓ contra Alta (estimado)»
+- sem índice: idade-minima-para-se-aposentar / Alta (67 ou mais): «Déficit ↓ em 5 a 15 anos (transição)»
+- sem índice: idade-minima-para-se-aposentar / Alta (67 ou mais): «idosos trabalhando ↑»
+- sem índice: idade-minima-para-se-aposentar / Alta (67 ou mais): «pobreza de quem faz serviço pesado ↑ se não houver exceção»
+- sem seta (texto só qualitativo): idade-minima-para-se-aposentar / Atrelada à expectativa de vida: Idade sobe sozinha com o nó de expectativa de vida; tira a necessidade de nova reforma a cada década
+- sem índice: pensao-para-viuvos-e-orfaos / Nenhuma: «Pobreza de viúvas e órfãos ↑»
+- sem índice: pensao-para-viuvos-e-orfaos / Temporária (até os filhos crescerem): «Déficit ↓»
+- sem índice: pensao-para-viuvos-e-orfaos / Temporária (até os filhos crescerem): «trabalho das mulheres ↑ (sem tamanho)»
+- sem índice: pensao-para-viuvos-e-orfaos / Cotas: 50% mais 10% por dependente: «Déficit ↓ contra Integral e vitalícia e ↑ contra Temporária»
+- sem índice: pensao-para-viuvos-e-orfaos / Cotas: 50% mais 10% por dependente: «pobreza de viúvas e órfãos ↓ contra Nenhuma»
+- sem índice: pensao-para-viuvos-e-orfaos / Cotas: 50% mais 10% por dependente: «trabalho das mulheres ↓ pouco (sem tamanho)»
+- sem índice: pensao-para-viuvos-e-orfaos / Integral e vitalícia: «Déficit ↑»
+- sem índice: pensao-para-viuvos-e-orfaos / Integral e vitalícia: «pobreza de viúvas ↓»
+- sem índice: pensao-para-viuvos-e-orfaos / Integral e vitalícia: «trabalho das mulheres ↓ (sem tamanho)»
+- sem índice: aposentadoria-do-trabalhador-rural / Nenhuma regra própria: «Pobreza no interior ↑ forte»
+- sem índice: aposentadoria-do-trabalhador-rural / Nenhuma regra própria: «migração para a cidade ↑»
+- sem índice: aposentadoria-do-trabalhador-rural / Voluntária e subsidiada: «Cobertura dos idosos rurais ↓»
+- sem índice: aposentadoria-do-trabalhador-rural / Contributiva agrícola (caixa própria): «Déficit ↓»
+- sem índice: aposentadoria-do-trabalhador-rural / Comprovação de atividade, sem contribuir como o urbano: «Pobreza no interior ↓ forte»
+- sem índice: aposentadoria-do-trabalhador-rural / Comprovação de atividade, sem contribuir como o urbano: «déficit ↑»
+- sem índice: regra-de-reajuste-dos-beneficios / Discricionário (o governo decide): «Popularidade com aposentados ↓»
+- sem seta (texto só qualitativo): regra-de-reajuste-dos-beneficios / Inflação: Déficit estável
+- sem índice: regra-de-reajuste-dos-beneficios / Salários: «Déficit ↑ devagar»
+- sem índice: regra-de-reajuste-dos-beneficios / Salário mínimo (hoje no Brasil para o piso; os demais seguem a inflação): «Déficit ↑ todo ano»
+- sem índice: regra-de-reajuste-dos-beneficios / Salário mínimo (hoje no Brasil para o piso; os demais seguem a inflação): «pobreza dos idosos ↓»
+- sem índice: regra-de-reajuste-dos-beneficios / Salário mínimo (hoje no Brasil para o piso; os demais seguem a inflação): «popularidade com aposentados ↑ no mesmo turno»
+- sem índice: regra-de-reajuste-dos-beneficios / Trava tripla (o maior entre inflação, salários e piso): «Déficit ↑ mais forte»
+- sem índice: regra-de-reajuste-dos-beneficios / Trava tripla (o maior entre inflação, salários e piso): «pobreza dos idosos ↓»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Nenhum: «Pobreza dos idosos ↑ forte»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Focalizado estrito (renda até 1/4 do mínimo, valor abaixo do mínimo): «Pobreza dos idosos ↓ menos»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Focalizado estrito (renda até 1/4 do mínimo, valor abaixo do mínimo): «incentivo a contribuir ↑ (hipótese)»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Focalizado amplo, 1 salário mínimo: «Pobreza dos idosos ↓»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Focalizado amplo, 1 salário mínimo: «custo ↑ sozinho com o envelhecimento»
+- sem índice: renda-para-idosos-e-pessoas-com-deficiencia-pobres / Universal (pensão social para todo idoso): «Pobreza dos idosos ↓ forte»
+- sem índice: transferencia-de-renda-as-familias-pobres / Zero: «Pobreza e pobreza infantil ↑»
+- sem índice: transferencia-de-renda-as-familias-pobres / Baixo e condicionado a escola e vacina: «Extrema pobreza ↓ 25% e pobreza ↓ 15%»
+- sem índice: transferencia-de-renda-as-familias-pobres / Baixo e condicionado a escola e vacina: «Gini ↓ cerca de 10%»
+- sem índice: transferencia-de-renda-as-familias-pobres / Baixo e condicionado a escola e vacina: «frequência escolar ↑»
+- sem índice: transferencia-de-renda-as-familias-pobres / Médio, com valor por criança: «Pobreza infantil ↓ mais»
+- sem índice: transferencia-de-renda-as-familias-pobres / Médio, com valor por criança: «mortalidade infantil ↓ (aprox.)»
+- sem índice: transferencia-de-renda-as-familias-pobres / Médio, com valor por criança: «crime juvenil ↓»
+- conta pública (vem do orçamento, não de efeito): transferencia-de-renda-as-familias-pobres / Renda básica universal: «dívida ↑ forte» → divida_publica
+- sem índice: transferencia-de-renda-as-familias-pobres / Renda básica universal: «trabalho dos adultos ↓ (Polônia: −25 de renda do trabalho para cada 100 recebidos; o Banco Mundial não achou queda no Brasil)»
+- sem índice: garantia-de-comida / Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar): «renda da agricultura familiar ↑»
+- sem índice: garantia-de-comida / Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar): «picos de preço dos alimentos ↓ (sem tamanho)»
+- sem índice: organizacao-dos-programas-sociais / Por ministério: «coordenação entre pastas ↓ (hipótese de desenho, sem tamanho medido)»
+- sem índice: organizacao-dos-programas-sociais / Missões com meta medida: «Efeito das outras leis da mesa ↑ (hipótese de desenho, sem tamanho medido)»
+- sem índice: direito-a-moradia-na-constituicao / Sem previsão: «Remoções ↑»
+- sem índice: direito-a-moradia-na-constituicao / Direito social, sem obrigação direta: «Remoções ↓ pouco contra Sem previsão»
+- sem índice: direito-a-moradia-na-constituicao / Direito social, sem obrigação direta: «ações na Justiça ↑ pouco»
+- sem índice: direito-a-moradia-na-constituicao / Garantida e exigível na Justiça: «ações na Justiça ↑»
+- sem índice: direito-a-moradia-na-constituicao / Garantida e exigível na Justiça: «remoções ↓»
+- sem índice: como-o-estado-entrega-casa / Vale-aluguel no mercado: «Déficit ↓ na parte do aluguel caro (52% do déficit)»
+- sem índice: como-o-estado-entrega-casa / Financiamento subsidiado da casa própria: «Déficit ↓ em coabitação e moradia precária»
+- sem índice: como-o-estado-entrega-casa / Financiamento subsidiado da casa própria: «emprego na construção ↑ (sem tamanho)»
+- sem índice: como-o-estado-entrega-casa / Financiamento subsidiado da casa própria: «transporte e crime ↑»
+- sem índice: como-o-estado-entrega-casa / Venda do imóvel público ao morador: «Estoque público ↓»
+- sem índice: como-o-estado-entrega-casa / Venda do imóvel público ao morador: «déficit ↑ no longo prazo»
+- sem índice: como-o-estado-entrega-casa / Aluguel social em imóvel público: «Déficit ↓ em área central»
+- sem índice: como-o-estado-entrega-casa / Aluguel social em imóvel público: «segregação ↓»
+- sem índice: como-o-estado-entrega-casa / Moradia primeiro, para quem está na rua: «População de rua ↓ (Finlândia: queda de 30% a 50% desde 2008)»
+- sem índice: verba-do-programa-habitacional / Mínimo: 0: «Déficit ↑ com a formação de famílias»
+- sem índice: verba-do-programa-habitacional / Referência: 0,1% a 0,5% do PIB (aprox.; o FGTS paga boa parte fora do orçamento): «Déficit ↓ em 2 a 4 anos»
+- sem índice: verba-do-programa-habitacional / Referência: 0,1% a 0,5% do PIB (aprox.; o FGTS paga boa parte fora do orçamento): «PIB e emprego ↑ no curto prazo»
+- conta pública (vem do orçamento, não de efeito): verba-do-programa-habitacional / Referência: 0,1% a 0,5% do PIB (aprox.; o FGTS paga boa parte fora do orçamento): «dívida ↑» → divida_publica
+- sem índice: verba-do-programa-habitacional / Máximo: 1% do PIB (proposta minha): «Déficit ↓ mais»
+- conta pública (vem do orçamento, não de efeito): verba-do-programa-habitacional / Máximo: 1% do PIB (proposta minha): «dívida ↑» → divida_publica
+- sem índice: licenca-para-cuidar-do-bebe / Nenhuma: «Mortalidade infantil ↑»
+- sem índice: licenca-para-cuidar-do-bebe / Nenhuma: «depressão materna ↑»
+- sem índice: licenca-para-cuidar-do-bebe / Curta, só maternidade (até 12 semanas): «Mortalidade infantil ↓ 1% a 2% (10 semanas)»
+- sem índice: licenca-para-cuidar-do-bebe / Longa, só a mãe, 4 a 6 meses (hoje no Brasil: 17 semanas pagas pela previdência): «Mortalidade infantil ↓ 7% a 9% (30 semanas)»
+- sem índice: licenca-para-cuidar-do-bebe / Longa, só a mãe, 4 a 6 meses (hoje no Brasil: 17 semanas pagas pela previdência): «depressão materna ↓ 5% a 10%»
+- sem índice: licenca-para-cuidar-do-bebe / Longa, só a mãe, 4 a 6 meses (hoje no Brasil: 17 semanas pagas pela previdência): «fecundidade ↑ (Áustria: +15% em 3 anos com licença longa)»
+- sem índice: licenca-para-cuidar-do-bebe / Dividida, com cota só do pai: «fecundidade sem efeito ou ↓»
+- sem índice: licenca-para-cuidar-do-bebe / Longa, 1 ano, paga como % do salário: «Fecundidade ↑ (Alemanha: até +22% entre as mais estudadas)»
+- sem índice: licenca-para-cuidar-do-bebe / Longa, 1 ano, paga como % do salário: «salário da mãe ↓ 18% por ano de licença»
+- sem índice: quem-cuida-do-idoso-dependente / Serviço público universal: «custo ↑ sozinho com o envelhecimento»
+- sem índice: politica-de-natalidade / Contra filhos, por coerção: «Fecundidade ↓ forte»
+- sem índice: politica-de-natalidade / Contra filhos, por incentivo: «Fecundidade ↓»
+- sem seta (texto só qualitativo): politica-de-natalidade / Neutra, com planejamento familiar disponível: Fecundidade segue a projeção do IBGE
+- sem índice: politica-de-natalidade / Incentivos moderados (bônus por filho, desconto no imposto de renda): «Fecundidade ↑ 3% a 12% (Quebec +12% nas famílias elegíveis; Polônia +6%)»
+- sem índice: politica-de-natalidade / Natalidade intensa (bônus grande, mãe isenta de imposto, crédito perdoado por filho): «Fecundidade ↑ com teto de +0»
+- sem índice: politica-de-natalidade / A favor de filhos, por coerção (restringe contracepção e aborto): «Fecundidade ↑ forte e passageira»
+- sem índice: politica-de-natalidade / A favor de filhos, por coerção (restringe contracepção e aborto): «mortalidade materna ↑ (aprox.)»
+- sem índice: vagas-de-creche / Mínimo: nenhuma vaga pública: «Trabalho das mães ↓»
+- sem índice: vagas-de-creche / Mínimo: nenhuma vaga pública: «pobreza infantil ↑»
+- sem índice: vagas-de-creche / Referência: cerca de 40% das crianças de 0 a 3 anos frequentam (2024); 2,3 milhões querem e não têm vaga: «Trabalho das mães ↑ contra Mínimo»
+- sem índice: vagas-de-creche / Referência: cerca de 40% das crianças de 0 a 3 anos frequentam (2024); 2,3 milhões querem e não têm vaga: «pobreza infantil ↓ pouco»
+- sem índice: vagas-de-creche / Meta do plano nacional de educação: 50%: «Trabalho das mães ↑»
+- sem índice: vagas-de-creche / Meta do plano nacional de educação: 50%: «pobreza infantil ↓»
+- sem índice: vagas-de-creche / Meta do plano nacional de educação: 50%: «fecundidade ↑ (sem tamanho)»
+- sem índice: vagas-de-creche / Máximo: cobertura dos países nórdicos: «Fecundidade ↑ (a política com efeito mais durável segundo a revisão N-IUSSP; Noruega: mais creche, mais filhos por mulher, sem tamanho aberto)»
+- sem índice: vagas-de-creche / Máximo: cobertura dos países nórdicos: «trabalho das mães ↑»
+- sem índice: modelo-do-sistema-de-saude / Mercado privado: cada um compra seu plano ou paga do bolso: «Gasto do bolso ↑ forte»
+- sem índice: modelo-do-sistema-de-saude / Mercado privado: cada um compra seu plano ou paga do bolso: «Pessoas com plano ↑»
+- sem índice: modelo-do-sistema-de-saude / Mercado privado: cada um compra seu plano ou paga do bolso: «Expectativa de vida ↓ nos pobres»
+- conta pública (vem do orçamento, não de efeito): modelo-do-sistema-de-saude / Mercado privado: cada um compra seu plano ou paga do bolso: «Cofre ↑» → cofre
+- sem índice: modelo-do-sistema-de-saude / Misto focalizado: Estado só para os pobres: «Gasto do bolso ↑»
+- sem índice: modelo-do-sistema-de-saude / Misto focalizado: Estado só para os pobres: «Pessoas com plano ↑»
+- sem índice: modelo-do-sistema-de-saude / Misto focalizado: Estado só para os pobres: «Fila ↓ para quem paga»
+- sem índice: modelo-do-sistema-de-saude / Misto focalizado: Estado só para os pobres: «↑ para os pobres»
+- sem índice: modelo-do-sistema-de-saude / Seguro obrigatório: fundos e operadoras pagos por contribuição: «Gasto do bolso ↓»
+- sem índice: modelo-do-sistema-de-saude / Seguro obrigatório: fundos e operadoras pagos por contribuição: «Fila ↓»
+- conta pública (vem do orçamento, não de efeito): modelo-do-sistema-de-saude / Seguro obrigatório: fundos e operadoras pagos por contribuição: «Cofre ↓ forte» → cofre
+- sem seta (texto só qualitativo): modelo-do-sistema-de-saude / Universal público com setor privado paralelo: Com pouco dinheiro gera fila; Gasto do bolso médio (26%)
+- sem índice: modelo-do-sistema-de-saude / Estatal único: sem setor privado relevante: «Gasto do bolso ↓ forte»
+- sem índice: modelo-do-sistema-de-saude / Estatal único: sem setor privado relevante: «Pessoas com plano ↓ forte»
+- conta pública (vem do orçamento, não de efeito): modelo-do-sistema-de-saude / Estatal único: sem setor privado relevante: «Cofre ↓ forte» → cofre
+- conta pública (vem do orçamento, não de efeito): piso-da-saude / Sem piso: «Cofre ↑ se cortar» → cofre
+- sem índice: piso-da-saude / Piso congelado: só corrige pela inflação: «Fila ↑ (1 a 3 anos)»
+- conta pública (vem do orçamento, não de efeito): piso-da-saude / Piso congelado: só corrige pela inflação: «Resultado fiscal ↑» → resultado_fiscal
+- sem seta (texto só qualitativo): piso-da-saude / Piso por receita: % da receita de cada governo: Verba sobe e desce com a arrecadação
+- sem índice: piso-da-saude / Piso por PIB: 6% do PIB até 2030: «Fila ↓ (1 a 3 anos)»
+- conta pública (vem do orçamento, não de efeito): piso-da-saude / Piso por PIB: 6% do PIB até 2030: «Cofre ↓» → cofre
+- conta pública (vem do orçamento, não de efeito): piso-da-saude / Piso por PIB: 6% do PIB até 2030: «Resultado fiscal ↓» → resultado_fiscal
+- sem seta (texto só qualitativo): verba-da-saude-acima-do-piso / Ponto da faixa: Efeitos principais
+- sem índice: verba-da-saude-acima-do-piso / No piso, nada a mais: «Fila ↑ devagar com o envelhecimento»
+- conta pública (vem do orçamento, não de efeito): verba-da-saude-acima-do-piso / 4,3% do PIB (hoje no Brasil, 2022): «Cofre ↓ pouco (estimado)» → cofre
+- sem índice: verba-da-saude-acima-do-piso / 6% do PIB: «Fila ↓ (1 a 3 anos)»
+- conta pública (vem do orçamento, não de efeito): verba-da-saude-acima-do-piso / 6% do PIB: «Cofre ↓» → cofre
+- sem índice: verba-da-saude-acima-do-piso / 9% do PIB (nível europeu): «Gasto do bolso ↓»
+- sem índice: verba-da-saude-acima-do-piso / 9% do PIB (nível europeu): «Pessoas com plano ↓»
+- conta pública (vem do orçamento, não de efeito): verba-da-saude-acima-do-piso / 9% do PIB (nível europeu): «Cofre ↓ forte» → cofre
+- conta pública (vem do orçamento, não de efeito): verba-da-saude-acima-do-piso / 9% do PIB (nível europeu): «Resultado fiscal ↓» → resultado_fiscal
+- sem seta (texto só qualitativo): programa-de-medicos-no-interior / Sem programa: Falta de médicos no interior fica como está
+- sem índice: programa-de-medicos-no-interior / Importação de médicos: estrangeiros sem prova de revalidação, por convênio: «Mortalidade infantil ↓»
+- conta pública (vem do orçamento, não de efeito): programa-de-medicos-no-interior / Carreira de Estado: concurso federal, salário maior quanto mais longe: «Cofre ↓ permanente» → cofre
+- sem índice: regulacao-dos-planos-de-saude / Livre: «Pessoas com plano ↑ (planos baratos e ruins)»
+- sem índice: regulacao-dos-planos-de-saude / Livre: «Gasto do bolso ↑»
+- sem índice: regulacao-dos-planos-de-saude / Livre: «Pressão no SUS ↑»
+- sem seta (texto só qualitativo): regulacao-dos-planos-de-saude / Só exige caixa (solvência): Parecido com livre, menos quebras de operadora
+- sem índice: regulacao-dos-planos-de-saude / Lista mínima de cobertura e reajuste controlado: «Lista ampla: preço ↑ e Pessoas com plano ↓»
+- sem índice: regulacao-dos-planos-de-saude / Lista mínima de cobertura e reajuste controlado: «ações na Justiça contra planos ↑»
+- sem índice: regulacao-dos-planos-de-saude / Competição regulada: cesta padrão, risco compensado, operadoras disputam: «Gasto do bolso ↓»
+- sem índice: regulacao-dos-planos-de-saude / Competição regulada: cesta padrão, risco compensado, operadoras disputam: «Pessoas com plano ↑»
+- sem índice: regulacao-dos-planos-de-saude / Só complementar: plano cobre só o que o SUS não cobre: «Pessoas com plano ↓ forte»
+- sem índice: regulacao-dos-planos-de-saude / Dedução no imposto de renda: acabar: «Pessoas com plano ↓ pouco»
+- conta pública (vem do orçamento, não de efeito): regulacao-dos-planos-de-saude / Dedução no imposto de renda: acabar: «Arrecadação ↑» → arrecadacao
+- sem índice: saude-mental / Sem política: «População de rua ↑»
+- sem índice: saude-mental / Hospital psiquiátrico de longa permanência: «População de rua ↓»
+- sem seta (texto só qualitativo): saude-mental / Misto: hospital geral e comunidades terapêuticas: Uso de drogas: efeito lacuna
+- sem índice: saude-mental / Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica: «População de rua ↑»
+- sem seta (texto só qualitativo): forma-de-gestao-hospitalar / Administração direta por servidores: Nada muda na eficiência
+- sem índice: forma-de-gestao-hospitalar / Organização social com metas: «Ocupação dos hospitais ↑ e Fila ↓ (segundo o Banco Mundial; o Conselho Nacional de Saúde diz que não há evidência)»
+- conta pública (vem do orçamento, não de efeito): forma-de-gestao-hospitalar / Parceria público-privada com operação clínica: «Cofre ↓ em contratos longos (aprox.)» → cofre
+- sem seta (texto só qualitativo): regulacao-de-vagas / Cada município cuida da sua fila: Fila fragmentada; o paciente entra numa fila nova a cada etapa
+- sem índice: regulacao-de-vagas / Central regional com fila única e pública: «Fila ↓»
+- sem índice: regulacao-de-vagas / Central regional com fila única e pública: «transparência ↑»
+- sem índice: regulacao-de-vagas / Central regional com fila única e pública: «Gasto com judicialização ↓»
+- sem índice: regulacao-de-vagas / Tempo máximo garantido: passou do prazo, o Estado paga o privado: «Fila ↓ rápido»
+- sem índice: regulacao-de-vagas / Tempo máximo garantido: passou do prazo, o Estado paga o privado: «Gasto com judicialização ↓»
+- conta pública (vem do orçamento, não de efeito): regulacao-de-vagas / Tempo máximo garantido: passou do prazo, o Estado paga o privado: «Cofre ↓» → cofre
+- sem seta (texto só qualitativo): divisao-da-verba-atencao-basica-x-hospitais / Ponto da faixa: Efeitos principais
+- sem índice: divisao-da-verba-atencao-basica-x-hospitais / cerca de 22% (hoje no Brasil, aprox.): «Fila ↓ pouco»
+- sem índice: divisao-da-verba-atencao-basica-x-hospitais / 40%: prioridade à atenção básica: «Fila ↑ nos 2 primeiros anos e ↓ depois»
+- sem índice: divisao-da-verba-atencao-basica-x-hospitais / 40%: prioridade à atenção básica: «Expectativa de vida ↑ (até 8 anos)»
+- sem seta (texto só qualitativo): mutirao-de-cirurgias / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): mutirao-de-cirurgias / Zero: Fila segue as causas de fundo
+- sem índice: mutirao-de-cirurgias / 0,01% do PIB: «Fila ↓ no ano»
+- sem índice: mutirao-de-cirurgias / 0,05% do PIB: «Fila ↓ rápido»
+- sem seta (texto só qualitativo): vagas-de-residencia-medica / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): vagas-de-residencia-medica / Cerca de 16.200 vagas (hoje no Brasil, para 32.600 formados): Metade dos formados fica sem especialização
+- sem índice: vagas-de-residencia-medica / Cerca de 24.000 vagas: «↓ em 3 a 5 anos»
+- sem índice: vagas-de-residencia-medica / Cerca de 24.000 vagas: «Fila ↓ depois disso»
+- sem seta (texto só qualitativo): genericos-e-patentes-de-medicamentos / Regra internacional e genérico rápido: genérico pelo menos 35% mais barato
+- sem seta (texto só qualitativo): remedios-em-farmacias-credenciadas / Ponto da faixa: Efeitos principais
+- sem índice: remedios-em-farmacias-credenciadas / Zero: sem programa: «Gasto do bolso ↑»
+- sem seta (texto só qualitativo): remedios-em-farmacias-credenciadas / 41 itens grátis em 31 mil farmácias: evitou cerca de 17% das internações esperadas por diabetes tipo 2
+- sem índice: remedios-em-farmacias-credenciadas / Todos os remédios essenciais grátis: «Gasto do bolso ↓»
+- sem índice: lista-de-remedios-e-incorporacao / Caso a caso: o juiz pode mandar pagar qualquer tratamento: «Gasto com judicialização ↑ sozinho»
+- sem índice: lista-de-remedios-e-incorporacao / Caso a caso: o juiz pode mandar pagar qualquer tratamento: «Fila ↑ (verba presa)»
+- sem índice: lista-de-remedios-e-incorporacao / Lista com exceções: lista técnica e o juiz só decide fora dela com critério: «Gasto com judicialização ↓»
+- sem índice: lista-de-remedios-e-incorporacao / Lista com exceções: lista técnica e o juiz só decide fora dela com critério: «preço pago ↓ com compra central»
+- sem índice: lista-de-remedios-e-incorporacao / Lista fechada por custo-efetividade, obrigatória para o juiz: «Gasto com judicialização ↓ forte»
+- sem seta (texto só qualitativo): vacinacao-obrigatoria / Recomendada: grátis, sem exigência: Cobertura vacinal depende de campanha e confiança
+- tamanho em lacuna, entrou como hipótese média: vacinacao-obrigatoria / Exigida para escola e benefícios: «Cobertura vacinal ↑ (tamanho lacuna)» → cobertura_vacinal
+- sem índice: vacinacao-obrigatoria / Obrigatória com multa: «Protestos ↑»
+- sem índice: vacinacao-obrigatoria / Compulsória: aplicação à força: «Protestos ↑ forte»
+- sem índice: restricao-a-tabaco-e-alcool / Livre: «Fumo ↑»
+- sem índice: restricao-a-tabaco-e-alcool / Livre: «Consumo de álcool ↑»
+- sem seta (texto só qualitativo): restricao-a-tabaco-e-alcool / Só avisos básicos: Fumo e álcool ficam estáveis
+- sem índice: restricao-a-tabaco-e-alcool / Restrição forte: propaganda, locais fechados, embalagem (hoje no Brasil para o tabaco): «Fumo ↓»
+- sem índice: restricao-a-tabaco-e-alcool / Restrição forte: propaganda, locais fechados, embalagem (hoje no Brasil para o tabaco): «Consumo de álcool ↓»
+- sem índice: restricao-a-tabaco-e-alcool / Preço mínimo e geração sem fumo: proibido vender a quem nasceu depois de um ano: «Fumo ↓ forte em gerações»
+- conta pública (vem do orçamento, não de efeito): restricao-a-tabaco-e-alcool / Proibição: «Arrecadação ↓» → arrecadacao
+- sem seta (texto só qualitativo): vigilancia-epidemiologica / Ponto da faixa: Efeitos principais
+- sem índice: vigilancia-epidemiologica / 0,05 a 0,1% do PIB (hoje no Brasil, aprox.): «Epidemia ↓ duração e tamanho contra Zero (estimado)»
+- tamanho em lacuna, entrou como hipótese média: vigilancia-epidemiologica / 0,05 a 0,1% do PIB (hoje no Brasil, aprox.): «Pressão hospitalar ↓ em surto contra Zero (tamanho lacuna)» → pressao_hospitalar
+- sem índice: vigilancia-epidemiologica / 0,2% do PIB: «Epidemia ↓ duração e tamanho»
+- tamanho em lacuna, entrou como hipótese média: vigilancia-epidemiologica / 0,2% do PIB: «Pressão hospitalar ↓ em surto (tamanho lacuna)» → pressao_hospitalar
+- sem seta (texto só qualitativo): campanha-de-vacinacao / Rotina anual (dias de vacinação): Cobertura vacinal estável
+- sem índice: campanha-de-vacinacao / Grande mobilização: campanha, busca ativa pela atenção básica, horário estendido: «Epidemia ↓»
+- sem seta (texto só qualitativo): ensino-obrigatorio / Básico de 9 anos: Escolaridade estável
+- sem índice: piso-de-gasto-em-educacao / Vinculação de 18% da União e 25% de estados e municípios: «Aprendizagem ↑ pequeno sem gestão»
+- conta pública (vem do orçamento, não de efeito): piso-de-gasto-em-educacao / Vinculação de 18% da União e 25% de estados e municípios: «Resultado fiscal ↓» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): piso-de-gasto-em-educacao / Meta de 10% do PIB: «Resultado fiscal ↓ forte» → resultado_fiscal
+- sem índice: piso-de-gasto-em-educacao / Meta de 10% do PIB: «Aprendizagem ↑ pequeno sem gestão»
+- sem seta (texto só qualitativo): financiamento-com-resultado / Repasse por aluno: Nada muda
+- sem índice: financiamento-com-resultado / Parte por resultado: «Aprendizagem ↑ +4 pontos em português nos anos iniciais (2 a 4 anos)»
+- sem índice: financiamento-com-resultado / Parte por resultado: «Greve de professores ↑ pequeno»
+- sem índice: financiamento-com-resultado / Resultado com apoio técnico (hoje no Ceará): «Aprendizagem ↑ +18»
+- sem seta (texto só qualitativo): avaliacao-das-escolas / Sem avaliação: Trava Vouchers e Financiamento com resultado; o jogador perde a medida de aprendizagem
+- sem índice: avaliacao-das-escolas / Amostral e diagnóstica: «Aprendizagem ↑ pequeno»
+- sem índice: avaliacao-das-escolas / Censitária e pública: «Aprendizagem ↑ quando vira meta com apoio»
+- sem índice: avaliacao-das-escolas / Com consequências (bônus e intervenção): «Aprendizagem ↑ (+0,2 desvio-padrão em matemática, aprox.)»
+- sem índice: avaliacao-das-escolas / Com consequências (bônus e intervenção): «Greve de professores ↑»
+- sem seta (texto só qualitativo): escola-em-tempo-integral / Meio turno: Nada muda
+- sem índice: escola-em-tempo-integral / Integral em parte das vagas, 20 a 30%: «Aprendizagem ↑ +0»
+- sem índice: escola-em-tempo-integral / Integral em parte das vagas, 20 a 30%: «Mães trabalham mais horas ↑»
+- sem índice: escola-em-tempo-integral / Integral universal: «Aprendizagem ↑ (3 anos)»
+- conta pública (vem do orçamento, não de efeito): escola-em-tempo-integral / Integral universal: «Resultado fiscal ↓» → resultado_fiscal
+- inclinação zero (efeitos se anulam entre opções): escola-em-tempo-integral → segregacao_escolar
+- sem seta (texto só qualitativo): bolsa-de-permanencia-no-ensino-medio / Nenhuma: Nada muda
+- conta pública (vem do orçamento, não de efeito): bolsa-de-permanencia-no-ensino-medio / Universal: «Resultado fiscal ↓» → resultado_fiscal
+- inclinação zero (efeitos se anulam entre opções): bolsa-de-permanencia-no-ensino-medio → escolaridade
+- inclinação zero (efeitos se anulam entre opções): bolsa-de-permanencia-no-ensino-medio → trabalho_infantil
+- sem índice: piso-salarial-dos-professores / Sem piso nacional: «Greve de professores ↑»
+- sem índice: piso-salarial-dos-professores / Piso nacional mínimo: «Greve de professores ↓ se pago»
+- sem índice: piso-salarial-dos-professores / Piso nacional mínimo: «↑ se não pago»
+- sem índice: piso-salarial-dos-professores / Piso nacional mínimo: «Resultado fiscal dos municípios ↓»
+- sem índice: piso-salarial-dos-professores / Carreira nacional com avaliação: «Aprendizagem ↑ no longo prazo pela seleção (aprox.)»
+- sem índice: piso-salarial-dos-professores / Salário de elite com seleção dura: «Aprendizagem ↑ no longo prazo»
+- conta pública (vem do orçamento, não de efeito): piso-salarial-dos-professores / Salário de elite com seleção dura: «Resultado fiscal ↓» → resultado_fiscal
+- sem seta (texto só qualitativo): vouchers-escolares / Só escola estatal: Nada muda
+- sem índice: vouchers-escolares / Gestão terceirizada de escola pública: «Aprendizagem ≈ 0 a ↑ pequeno (aprox.)»
+- sem índice: vouchers-escolares / Voucher universal: «Classe média satisfeita ↑»
+- sem seta (texto só qualitativo): educacao-domiciliar / Proibida: Nada muda
+- sem seta (texto só qualitativo): educacao-domiciliar / Só em casos excepcionais: Nada muda
+- sem índice: educacao-domiciliar / Livre: «Proteção da criança ↓ (aprox.)»
+- sem seta (texto só qualitativo): ensino-tecnico-e-profissional / Só acadêmico: Qualificação do trabalho estável
+- sem índice: ensino-tecnico-e-profissional / Técnico em massa, integrado ao médio: «Desemprego de jovens ↓»
+- sem seta (texto só qualitativo): gestao-da-escola-publica / Eleição pela comunidade (hoje em parte das redes): Aprendizagem ≈ 0
+- sem índice: gestao-da-escola-publica / Indicação política (hoje em parte das redes): «Aprendizagem ↓ (aprox.)»
+- sem índice: gestao-da-escola-publica / Diretor por mérito: seleção técnica e depois eleição: «Aprendizagem ↑»
+- sem índice: gestao-da-escola-publica / Cívico-militar: «Sensação de segurança na escola ↑ pequeno (aprox.)»
+- sem índice: conteudo-moral-e-sexual / Educação integral: gênero, sexualidade e diversidade: «Gravidez na adolescência ↓ (aprox.)»
+- sem índice: conteudo-moral-e-sexual / Só biologia e saúde: «Gravidez na adolescência ↓ pequeno (aprox.)»
+- sem seta (texto só qualitativo): alfabetizacao-na-idade-certa / Nenhum programa nacional: Aprendizagem estável (59% alfabetizados no 2º ano em 2024)
+- sem índice: alfabetizacao-na-idade-certa / Formação de professores e material: «Aprendizagem ↑ pequeno»
+- sem índice: alfabetizacao-na-idade-certa / Metas com apoio técnico e incentivo, em parceria com estados e municípios (hoje no Brasil e no Ceará): «Aprendizagem ↑ forte (2 a 4 anos)»
+- sem índice: alfabetizacao-na-idade-certa / Método único de ensino da leitura definido pelo governo central: «Aprendizagem ↑ pequeno (aprox.)»
+- sem índice: alfabetizacao-na-idade-certa / Método único de ensino da leitura definido pelo governo central: «Greve de professores ↑ pequeno»
+- conta pública (vem do orçamento, não de efeito): acesso-ao-ensino-superior / Gratuita para todos, sem vestibular e com mais vagas: «Resultado fiscal ↓» → resultado_fiscal
+- inclinação zero (efeitos se anulam entre opções): acesso-ao-ensino-superior → desigualdade
+- inclinação zero (efeitos se anulam entre opções): acesso-ao-ensino-superior → inovacao
+- sem seta (texto só qualitativo): acoes-afirmativas / Sem política: Nada muda
+- sem índice: acoes-afirmativas / Cotas para escola pública e baixa renda: «Escolaridade dos pobres ↑»
+- sem índice: acoes-afirmativas / Cotas sociais e raciais: «Escolaridade de pretos e pardos ↑»
+- sem índice: acoes-afirmativas / Cotas sociais e raciais: «Desigualdade e Discriminação ↓ (5+ anos)»
+- conta pública (vem do orçamento, não de efeito): credito-estudantil / Sem apoio público: «Resultado fiscal ↑» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): credito-estudantil / Empréstimo amplo, juro baixo e pouca análise: «Resultado fiscal ↓ forte (5 a 10 anos)» → resultado_fiscal
+- sem índice: credito-estudantil / Empréstimo amplo, juro baixo e pouca análise: «Dívida das famílias ↑»
+- conta pública (vem do orçamento, não de efeito): credito-estudantil / Empréstimo com pagamento descontado da renda depois de formado: «Resultado fiscal ↓ pequeno» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): vagas-publicas-no-ensino-superior / Referência: ~21% das matrículas: «Resultado fiscal ↓ pouco (estimado)» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): vagas-publicas-no-ensino-superior / Máximo: expansão, ~40% das matrículas (proposta minha): «Resultado fiscal ↓» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): investimento-em-pesquisa / Médio: 0,5 a 0,6% do PIB: «Resultado fiscal ↓ pouco» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): investimento-em-pesquisa / Alto: 1,0% do PIB ou mais: «Resultado fiscal ↓» → resultado_fiscal
+- inclinação zero (efeitos se anulam entre opções): programa-espacial-e-satelites → desmatamento
+- sem índice: incentivo-a-cultura / Estado escolhe o conteúdo financiado: «Vitalidade cultural: quantidade ↑»
+- sem índice: incentivo-a-cultura / Estado escolhe o conteúdo financiado: «diversidade ↓»
+- inclinação zero (efeitos se anulam entre opções): incentivo-a-cultura → turismo
+- sem índice: incentivo-fiscal-a-pesquisa-nas-empresas / Sem incentivo; o apoio vai só por verba direta: «Receita ↑ pequeno»
+- conta pública (vem do orçamento, não de efeito): incentivo-fiscal-a-pesquisa-nas-empresas / Crédito também para empresa com prejuízo e startups, pago em dinheiro se não houver imposto: «Resultado fiscal ↓» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): bolsas-de-pos-graduacao / Referência: mestrado R$ 2.100, doutorado R$ 3.100 por mês, ~275 mil bolsas do MEC (inclui bolsas de formação de professores): «Resultado fiscal ↓ pequeno (estimado)» → resultado_fiscal
+- conta pública (vem do orçamento, não de efeito): bolsas-de-pos-graduacao / Máximo: mais bolsas e valor perto de um salário inicial de pesquisador (proposta minha): «Resultado fiscal ↓ pequeno» → resultado_fiscal
+- sem índice: coordenacao-das-policias / Cada estado sozinho (Brasil até a reforma): «Crime organizado entre estados ↑ pouco (aprox.)»
+- sem índice: coordenacao-das-policias / Sistema único coordenado (regra nacional e fundo): «crime organizado entre estados ↓ (aprox.)»
+- sem índice: coordenacao-das-policias / Polícia nacional (uma força só): «risco de uso político da polícia ↑ (aprox.)»
+- sem seta (texto só qualitativo): ciclo-policial / Completo: cada polícia patrulha e investiga: Taxa de esclarecimento: sinal desconhecido (lacuna); conflito entre corporações, mais chance de motim policial
+- sem seta (texto só qualitativo): cameras-corporais / Acionada pelo policial: Efeito menor que a gravação contínua (sem número)
+- sem índice: cameras-corporais / Gravação contínua: «lesões ↓ 63%»
+- sem índice: cameras-corporais / Gravação contínua: «registros de violência doméstica ↑»
+- sem seta (texto só qualitativo): fundo-de-seguranca-publica / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): verba-da-policia-federal / Ponto da faixa: Efeitos principais
+- sem índice: verba-da-policia-federal / Mínimo: metade da verba de hoje: «armas pela fronteira ↑»
+- sem índice: verba-da-policia-federal / Máximo: o dobro de hoje: «armas ↓ (sem elasticidade, lacuna)»
+- sem índice: policiamento-orientado / Dissuasão focada com serviços (aviso a grupos de risco e oferta de saída): «reincidência ↓ (aprox.)»
+- sem índice: maioridade-penal / 18 anos com internação longa em crimes graves (até 8 a 10 anos): «Lotação ↑ pouco»
+- sem índice: maioridade-penal / 16 anos em crimes graves: «lotação ↑ imediato»
+- sem índice: maioridade-penal / 16 anos em crimes graves: «reincidência ↑ (comparação não causal)»
+- sem índice: penas-e-progressao / Penas curtas e alternativas: «Lotação ↓»
+- sem índice: penas-e-progressao / Penas curtas e alternativas: «reincidência ↓ (aprox.)»
+- sem índice: penas-e-progressao / Progressão dura: sem saída temporária, com exame criminológico: «Lotação ↑ em 1 a 4 anos»
+- sem índice: penas-e-progressao / Progressão dura: sem saída temporária, com exame criminológico: «reincidência ↑»
+- sem índice: penas-e-progressao / Sem progressão (pena inteira em regime fechado): «rebelião ↑ se faltar vaga»
+- tamanho em lacuna, entrou como hipótese média: excludente-de-ilicitude / Amplo: inclui "medo, surpresa ou violenta emoção": «Letalidade policial ↑ (sem número, lacuna)» → letalidade_policial
+- sem índice: delacao-premiada-e-acordos / Sem acordos: «Capacidade de investigação contra crime organizado ↓»
+- sem índice: delacao-premiada-e-acordos / Delação com homologação do juiz: «esclarecimento ↑ em crimes em grupo»
+- inclinação zero (efeitos se anulam entre opções): delacao-premiada-e-acordos → capacidade_inteligencia
+- sem seta (texto só qualitativo): vagas-em-presidios / Ponto da faixa: Efeitos principais
+- sem índice: vagas-em-presidios / Mínimo: 0,10% do PIB: «Lotação ↑»
+- sem índice: vagas-em-presidios / Mínimo: 0,10% do PIB: «rebelião ↑»
+- sem seta (texto só qualitativo): vagas-em-presidios / Referência: ≈0,17% do PIB (aprox.): Faltam 174 mil vagas; 1,36 preso por vaga
+- sem índice: vagas-em-presidios / Máximo: 0,30% do PIB: «Lotação ↓ em 2 a 4 anos»
+- sem índice: vagas-em-presidios / Máximo: 0,30% do PIB: «rebelião ↓»
+- sem índice: alternativas-penais-e-audiencia-de-custodia / Prisão como regra: «Lotação ↑»
+- sem índice: alternativas-penais-e-audiencia-de-custodia / Custódia em 24 horas e alternativas (tornozeleira, pena restritiva, prazo para a prisão provisória) (hoje no Brasil, estimado): «Lotação ↓ (27,7% dos presos são provisórios)»
+- sem índice: alternativas-penais-e-audiencia-de-custodia / Custódia em 24 horas e alternativas (tornozeleira, pena restritiva, prazo para a prisão provisória) (hoje no Brasil, estimado): «reincidência ↓ (aprox.)»
+- sem índice: alternativas-penais-e-audiencia-de-custodia / Alternativas amplas: «Lotação ↓↓»
+- sem índice: regime-contra-faccoes / Isolar líderes e confiscar bens (presídio federal, bloqueio de celular): «rebelião e ataques ↑ no curto prazo»
+- sem índice: regime-contra-faccoes / Estado de exceção (prisão em massa sem as garantias de sempre): «lotação ↑↑»
+- sem índice: regime-contra-faccoes / Estado de exceção (prisão em massa sem as garantias de sempre): «mortes sob custódia ↑»
+- inclinação zero (efeitos se anulam entre opções): regime-contra-faccoes → crime_organizado
+- sem seta (texto só qualitativo): gestao-dos-presidios / Cogestão: o Estado dirige, a empresa presta serviços: lacuna
+- sem índice: gestao-dos-presidios / Parceria privada: a empresa constrói e opera por 25 anos e recebe por meta: «rebelião ↓ (aprox.)»
+- sem índice: gestao-dos-presidios / Parceria privada: a empresa constrói e opera por 25 anos e recebe por meta: «custo por mês ↑»
+- sem índice: protecao-contra-violencia-domestica / Medidas protetivas (afastar o agressor por ordem do juiz): «Homicídios de mulheres em casa ↓ 10%»
+- sem seta (texto só qualitativo): protecao-contra-violencia-domestica / Proteção integral (juizados, casas-abrigo, patrulha e renda): Iguais ao anterior, mais fortes (sem número)
+- sem índice: lei-de-drogas / Guerra às drogas: porte é crime, sem critério de quantidade: «Lotação ↑»
+- sem índice: lei-de-drogas / Usuário não é preso, mas o policial decide quem é usuário: «Lotação ↑ (tráfico foi de 10% para 30% dos presos)»
+- sem índice: lei-de-drogas / Critério objetivo: até 40 g ou 6 plantas é usuário, com infração administrativa: «Lotação ↓»
+- sem índice: lei-de-drogas / Uso tratado como saúde: todas as drogas descriminalizadas para uso: «uso adolescente e problemático ↓»
+- sem índice: lei-de-drogas / Uso tratado como saúde: todas as drogas descriminalizadas para uso: «mortes por droga ↓»
+- sem índice: lei-de-drogas / Uso tratado como saúde: todas as drogas descriminalizadas para uso: «lotação ↓»
+- sem índice: cannabis / Clubes e cultivo próprio: «lotação ↓»
+- sem índice: cannabis / Venda em farmácia com preço e potência controlados pelo Estado: «uso ↑ pouco»
+- sem índice: cannabis / Lojas comerciais: «uso ↑»
+- conta pública (vem do orçamento, não de efeito): cannabis / Lojas comerciais: «arrecadação ↑» → arrecadacao
+- sem índice: armas-de-fogo / Facilitadas: 4 armas, 5.000 cartuchos por ano, atirador amplo: «feminicídio ↑»
+- sem índice: cameras-e-reconhecimento-facial / Cidade inteira: «prisões erradas de negros ↑ (aprox.)»
+- sem seta (texto só qualitativo): cameras-e-reconhecimento-facial / Cadastro nacional de rostos: Iguais ao anterior, mais fortes
+- sem índice: vigilancia-de-bairro / Comitês do Estado: «milícias ↑ (aprox.)»
+- sem seta (texto só qualitativo): agencia-de-inteligencia / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): protecao-da-vida-desde-a-concepcao / Sem essa proteção: Nada muda; deixa a Lei do aborto livre
+- sem índice: protecao-da-vida-desde-a-concepcao / Com proteção desde a concepção: «Abortos inseguros ↑ se o aborto legal ficar restrito»
+- sem índice: aborto / Proibição total: «Abortos inseguros ↑ forte»
+- sem índice: aborto / Só risco de vida: «Abortos inseguros ↑»
+- sem índice: aborto / Casos restritos: estupro, risco de vida, anencefalia: «Abortos inseguros ↓ contra Proibição total»
+- sem índice: aborto / Motivos amplos, inclusive sociais: «Abortos inseguros ↓»
+- sem índice: aborto / A pedido até 12 a 14 semanas: «Abortos inseguros ↓ forte»
+- sem seta (texto só qualitativo): verba-de-planejamento-familiar-e-de-aborto-legal / Ponto da faixa: Efeitos principais
+- sem índice: verba-de-planejamento-familiar-e-de-aborto-legal / Zero: «Gravidez indesejada ↑»
+- sem índice: verba-de-planejamento-familiar-e-de-aborto-legal / Zero: «Abortos inseguros ↑»
+- sem índice: verba-de-planejamento-familiar-e-de-aborto-legal / Brasil hoje (lacuna; só se sabe que o implante contraceptivo recebeu R$ 245 milhões em 2025): «Gravidez indesejada ↓ contra Zero»
+- sem índice: verba-de-planejamento-familiar-e-de-aborto-legal / Brasil hoje (lacuna; só se sabe que o implante contraceptivo recebeu R$ 245 milhões em 2025): «Abortos inseguros ↓ pouco»
+- sem índice: verba-de-planejamento-familiar-e-de-aborto-legal / Alta (cobertura ampla de métodos de longa duração e serviço de aborto legal em todas as regiões): «Abortos inseguros ↓ (o caso Uruguai mostra a queda antes da lei, vinda do serviço)»
+- sem índice: casamento-e-uniao-civil / Sem reconhecimento: «Sofrimento mental de jovens ↑»
+- sem índice: eutanasia / Suicídio assistido: «humor de Católicos ↓»
+- sem índice: eutanasia / Eutanásia para doentes terminais: «humor religioso ↓»
+- sem índice: eutanasia / Eutanásia ampla, inclusive não terminais: «humor religioso ↓ forte»
+- sem índice: laicidade-do-estado / Controle estatal das religiões: «Protestos ↑»
+- conta pública (vem do orçamento, não de efeito): imunidade-e-dinheiro-para-igrejas / Sem isenção: «Arrecadação ↑ (lacuna)» → arrecadacao
+- sem índice: imunidade-e-dinheiro-para-igrejas / Sem isenção: «poder dos grupos religiosos ↓»
+- sem índice: imunidade-e-dinheiro-para-igrejas / Sem isenção: «humor religioso ↓ forte»
+- sem índice: imunidade-e-dinheiro-para-igrejas / Isenção de impostos (hoje no Brasil, ampliada pela reforma tributária): «poder dos grupos religiosos ↑ contra Sem isenção»
+- conta pública (vem do orçamento, não de efeito): imunidade-e-dinheiro-para-igrejas / Isenção de impostos (hoje no Brasil, ampliada pela reforma tributária): «Arrecadação ↓ (lacuna)» → arrecadacao
+- sem índice: imunidade-e-dinheiro-para-igrejas / Isenção de impostos (hoje no Brasil, ampliada pela reforma tributária): «humor religioso ↑ (estimado)»
+- sem índice: imunidade-e-dinheiro-para-igrejas / Imposto da igreja: o fiel paga, o Estado recolhe: «humor de Igrejas evangélicas ↓»
+- sem índice: ensino-religioso / Oferecido, com matrícula facultativa: «Discriminação religiosa ↓»
+- sem índice: ensino-religioso / Obrigatório e confessional: «Discriminação religiosa ↑ (aprox.)»
+- inclinação zero (efeitos se anulam entre opções): ensino-religioso → polarizacao
+- sem índice: igualdade-racial / O Estado não usa raça (proibição de recorte racial): «Desigualdade racial ↑ no longo prazo»
+- sem seta (texto só qualitativo): igualdade-racial / Sem política: Desigualdade racial sem freio
+- sem índice: igualdade-racial / Recorte racial: cotas e metas com raça (hoje no Brasil, nas leis de 2012 e 2023): «Desigualdade racial ↓ em 10 anos ou mais»
+- sem seta (texto só qualitativo): verba-para-juventude-negra-e-saude-da-populacao-negra / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): verba-para-juventude-negra-e-saude-da-populacao-negra / Zero: Desigualdade racial sem freio
+- sem índice: verba-para-juventude-negra-e-saude-da-populacao-negra / Brasil hoje (aprox.: plano de R$ 665 milhões lançado em 2024 para 12 anos; o valor por ano é lacuna): «Desigualdade racial ↓ pouco contra Zero (efeito não medido)»
+- sem índice: verba-para-juventude-negra-e-saude-da-populacao-negra / Brasil hoje (aprox.: plano de R$ 665 milhões lançado em 2024 para 12 anos; o valor por ano é lacuna): «Violência letal de jovens negros ↓ pouco (estimado)»
+- sem índice: verba-para-juventude-negra-e-saude-da-populacao-negra / Alta (o dobro de hoje; proposta minha): «Desigualdade racial ↓ e Violência letal de jovens negros ↓ (efeito não medido)»
+- sem índice: politica-de-imigracao / Seletiva, por pontos e qualificação: «Produtividade e Inovação ↑ no longo prazo»
+- sem índice: politica-de-imigracao / Ampla, com acesso a serviços: «Crise migratória ↑ se não houver interiorização»
+- sem índice: refugio-e-asilo / Acolhida ampla: refúgio coletivo, interiorização e trabalho: «Crise migratória ↓ se houver interiorização»
+- sem seta (texto só qualitativo): acolhida-e-interiorizacao-de-imigrantes / Ponto da faixa: Efeitos principais
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Zero: «Crise migratória ↑ forte com fluxo concentrado»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Zero: «Protestos locais ↑»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Referência: R$ 300 milhões em 2024: «Crise migratória ↓ contra Zero»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Referência: R$ 300 milhões em 2024: «Pressão hospitalar local ↓ pouco»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Referência: R$ 300 milhões em 2024: «Protestos locais ↓ (estimado)»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Alta (o dobro; proposta minha): «Crise migratória ↓»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Alta (o dobro; proposta minha): «Pressão hospitalar local ↓»
+- sem índice: acolhida-e-interiorizacao-de-imigrantes / Alta (o dobro; proposta minha): «força de trabalho no Sul ↑»
+- sem índice: apostas-e-jogos-de-azar / Proibição (hoje no Brasil, desde set/2026): «Endividamento ↓»
+- conta pública (vem do orçamento, não de efeito): apostas-e-jogos-de-azar / Monopólio estatal: «Arrecadação ↑» → arrecadacao
+- conta pública (vem do orçamento, não de efeito): apostas-e-jogos-de-azar / Licença com limites: publicidade limitada e teto de depósito: «Arrecadação ↑» → arrecadacao
+- sem índice: apostas-e-jogos-de-azar / Licença liberal (Brasil em 2024 e 2025): «Endividamento ↑»
+- conta pública (vem do orçamento, não de efeito): apostas-e-jogos-de-azar / Licença liberal (Brasil em 2024 e 2025): «Arrecadação ↑» → arrecadacao
+- sem índice: apostas-e-jogos-de-azar / Sem regulação (Brasil de 2018 a 2023): «Endividamento ↑»
+- sem índice: publicidade-de-apostas / Sem patrocínio esportivo: «receita dos clubes ↓»
+- sem índice: publicidade-de-apostas / Proibida (hoje no Brasil, junto com a proibição): «receita de mídia e de clubes ↓»
+- sem seta (texto só qualitativo): tributo-sobre-apostas / Ponto da faixa: Efeitos principais
+- conta pública (vem do orçamento, não de efeito): tributo-sobre-apostas / 12% a 15% (Brasil antes da proibição: 12%, subindo até 15% em 2028): «Arrecadação ↑» → arrecadacao
+- conta pública (vem do orçamento, não de efeito): tributo-sobre-apostas / 40% (máximo; o Reino Unido cobra isso do cassino online desde 2026): «Arrecadação ↑ até um ponto» → arrecadacao
+- conta pública (vem do orçamento, não de efeito): bloqueio-de-pagamentos-a-casas-sem-licenca / Não: «Arrecadação ↓» → arrecadacao
+- conta pública (vem do orçamento, não de efeito): bloqueio-de-pagamentos-a-casas-sem-licenca / Sim (hoje no Brasil, com a proibição): «Arrecadação ↑ nas opções de licença» → arrecadacao
+- tamanho em lacuna, entrou como hipótese média: sistema-de-governo / Presidencialismo: «Corrupção ↑ (tamanho: lacuna)» → corrupcao
+- sem índice: sistema-de-governo / Semipresidencialismo: «Estabilidade ↑ fraco (aprox.)»
+- sem índice: sistema-de-governo / Parlamentarismo: «Estabilidade ↑ no longo prazo»
+- sem seta (texto só qualitativo): sistema-de-governo / Diretorial (conselho de governo): Sem efeito medido
+- sem seta (texto só qualitativo): reeleicao / Sem reeleição: Some o incentivo eleitoral: Corrupção passa a depender só de auditoria e imprensa
+- sem seta (texto só qualitativo): reeleicao / Não consecutiva: Sem efeito medido
+- sem seta (texto só qualitativo): reeleicao / Uma reeleição: Corrupção no primeiro mandato 27% menor que no segundo
+- sem índice: reeleicao / Ilimitada: «Ameaça de golpe ↑»
+- sem índice: partidos / Partido único: «Ameaça de golpe ↑ no começo»
+- sem seta (texto só qualitativo): partidos / Partido hegemônico: Os mesmos efeitos, mais fracos (aprox.)
+- sem índice: partidos / Pluripartidarismo: «Ameaça de golpe ↓»
+- sem índice: clausula-de-desempenho / Sem cláusula: «Fragmentação partidária ↑»
+- sem índice: clausula-de-desempenho / Sem cláusula: «Estabilidade ↓»
+- sem índice: clausula-de-desempenho / Gradual, de 2% a 3%: «Fragmentação ↓ (em 2022, só 12 de 32 partidos passaram)»
+- sem índice: clausula-de-desempenho / Gradual, de 2% a 3%: «Estabilidade ↑»
+- sem índice: clausula-de-desempenho / 5%: «Fragmentação ↓ mais forte»
+- sem índice: clausula-de-desempenho / 5%: «Representação ↓ (em 2022, cerca de 14 milhões de votos ficaram sem cadeira por uma regra parecida)»
+- sem seta (texto só qualitativo): voto-obrigatorio / Obrigatório com multa simbólica: Participação eleitoral cerca de 10 pontos acima do facultativo
+- conta pública (vem do orçamento, não de efeito): financiamento-de-campanhas / Público predominante: «Cofre ↓» → cofre
+- sem índice: financiamento-de-campanhas / Público predominante: «Fragmentação ↑ se o fundo é repartido por votos»
+- sem índice: participacao-direta / Nenhuma: «Protestos ↑ (aprox.)»
+- sem seta (texto só qualitativo): participacao-direta / Conselhos consultivos: Pequeno
+- sem índice: participacao-direta / Conselhos deliberativos e orçamento participativo: «Mortalidade infantil ↓»
+- sem índice: participacao-direta / Conselhos deliberativos e orçamento participativo: «Arrecadação local ↑ 39% (um estudo, 253 casos)»
+- sem índice: participacao-direta / Conselhos deliberativos e orçamento participativo: «Protestos ↓ (aprox.)»
+- sem índice: participacao-direta / Referendo revogatório: «Estabilidade ↓ (estimado)»
+- sem índice: participacao-direta / Referendo revogatório: «Protestos ↓ (aprox.)»
+- sem seta (texto só qualitativo): valor-do-fundo-eleitoral / Ponto da faixa: Efeitos principais
+- sem índice: valor-do-fundo-eleitoral / 0,04% (Brasil, 2024: R$ 4,96 bilhões): «↓ com a classe média»
+- sem índice: valor-do-fundo-eleitoral / 0,06% (máximo): «Fragmentação ↑ se repartido por votos»
+- sem seta (texto só qualitativo): federalismo / Cooperativo: Depende da Regra de repasse: repasse grande e sem condição sobe a Corrupção
+- sem índice: governadores / Indicados: «Estabilidade ↑ no curto prazo (aprox.)»
+- tamanho em lacuna, entrou como hipótese média: regra-de-repasse / Por população e renda (mais para quem é mais pobre) (hoje no Brasil, com uma parte por emendas): «Desigualdade regional ↓ (tamanho: lacuna)» → desigualdade_regional
+- sem índice: regra-de-repasse / Parte por resultado (metas de educação e saúde): «Aprendizagem ↑ 0»
+- sem seta (texto só qualitativo): fundo-de-equalizacao / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): fundo-de-equalizacao / 0 (só os fundos fixos da Constituição; hoje no Brasil): Nada além dos fundos fixos (R$ 326,9 bilhões em 2024, cerca de 2,8% do PIB, aprox.)
+- tamanho em lacuna, entrou como hipótese média: fundo-de-equalizacao / 0,5%: «Desigualdade regional ↓ (tamanho: lacuna)» → desigualdade_regional
+- sem seta (texto só qualitativo): fundo-de-equalizacao / 1% (máximo): O mesmo, mais forte
+- sem índice: independencia-do-judiciario / Controlado: «Ameaça de golpe ↑ no começo»
+- sem seta (texto só qualitativo): independencia-do-judiciario / Parcial: Meio-termo (aprox.)
+- sem seta (texto só qualitativo): tribunais-superiores / Mandato fixo de 9 a 12 anos: Sem efeito medido
+- sem índice: tribunais-superiores / Ampliação por lei (o governo cria cadeiras): «Independência ↓»
+- sem seta (texto só qualitativo): tribunais-superiores / Nomeação pelo partido: Os mesmos efeitos, mais fortes
+- sem seta (texto só qualitativo): foro-privilegiado / Foro só para crime no cargo (hoje no Brasil, desde 2018): Meio-termo
+- sem seta (texto só qualitativo): orcamento-do-judiciario / Ponto da faixa: Efeitos principais
+- tamanho em lacuna, entrou como hipótese média: orcamento-do-judiciario / 0,6% (mínimo): «Impunidade ↑ e Justiça mais lenta (tamanho: lacuna)» → impunidade
+- sem seta (texto só qualitativo): orcamento-do-judiciario / 1,2% (Brasil, 2024: R$ 146,5 bilhões): Hoje: 27,7% dos presos ainda sem julgamento (dado de Segurança)
+- tamanho em lacuna, entrou como hipótese média: orcamento-do-judiciario / 2% (máximo): «Impunidade ↓ (tamanho: lacuna)» → impunidade
+- sem índice: liberdade-de-imprensa / Censura: «Desinformação estatal ↑»
+- sem seta (texto só qualitativo): liberdade-de-imprensa / Restrita: Os mesmos efeitos, mais fracos
+- sem seta (texto só qualitativo): liberdade-de-imprensa / Regulada (regras econômicas para a mídia): Pequeno
+- sem seta (texto só qualitativo): concessoes-de-radio-e-tv / Renovação automática (hoje no Brasil, na prática): Concentração da mídia fica; rádio na mão de políticos locais (aprox.)
+- sem índice: concessoes-de-radio-e-tv / Critério do governo: «Desinformação estatal ↑»
+- sem índice: concessoes-de-radio-e-tv / Critério do governo: «Liberdade de imprensa ↓»
+- inclinação zero (efeitos se anulam entre opções): concessoes-de-radio-e-tv → concentracao_mercado
+- sem seta (texto só qualitativo): regulacao-das-redes-sociais / Só por ordem judicial: Desinformação estável
+- tamanho em lacuna, entrou como hipótese média: regulacao-das-redes-sociais / Dever de cuidado (hoje no Brasil, por decisão do tribunal mais alto em 2025): «Desinformação ↓ (tamanho: lacuna)» → desinformacao
+- sem índice: regulacao-das-redes-sociais / Proteção reforçada (regras duras, idade mínima): «Investimento das plataformas ↓ (evento "aplicativos ameaçam sair")»
+- sem índice: regulacao-das-redes-sociais / Controle estatal: «Desinformação estatal ↑»
+- inclinação zero (efeitos se anulam entre opções): regulacao-das-redes-sociais → polarizacao
+- sem índice: protecao-de-dados / Sem lei: «Dano do ataque hacker ↑»
+- sem seta (texto só qualitativo): protecao-de-dados / Regras por setor: Meio-termo
+- sem índice: protecao-de-dados / Lei geral com agência: «Dano do ataque hacker ↓»
+- sem índice: protecao-de-dados / Proteção estrita: «Dano do ataque hacker ↓»
+- sem seta (texto só qualitativo): transparencia-publica / Acesso limitado: Pequeno
+- sem seta (texto só qualitativo): transparencia-publica / Dados abertos: Os mesmos efeitos, mais fortes
+- sem seta (texto só qualitativo): ongs-e-financiamento-estrangeiro / Registro obrigatório: Pequeno
+- sem índice: ongs-e-financiamento-estrangeiro / Rótulo de agente estrangeiro: «Capacidade de fiscalização ↓»
+- sem seta (texto só qualitativo): verba-de-publicidade-oficial-e-comunicacao-publica / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): verba-de-publicidade-oficial-e-comunicacao-publica / 0: lacuna
+- sem seta (texto só qualitativo): verba-de-publicidade-oficial-e-comunicacao-publica / ~0,007% (Brasil, 2025: R$ 876 milhões orçados em comunicação, aprox.): lacuna
+- sem seta (texto só qualitativo): verba-de-controle / Ponto da faixa: Efeitos principais
+- sem índice: crimes-da-ditadura / Anistia ampla: «Ameaça de golpe ↑ (golpes passados predizem os futuros)»
+- sem índice: crimes-da-ditadura / Julgamento: «Ameaça de golpe ↓ no longo prazo (sem número aberto)»
+- sem índice: protecao-da-vegetacao-nativa-nas-propriedades-rurais / Sem proteção: «exportações para mercados com regra contra desmate ↓»
+- sem índice: licenciamento-de-obras-e-empresas / Sem licenciamento: «↑ forte»
+- sem índice: licenciamento-de-obras-e-empresas / Sem licenciamento: «prazo de obra ↓»
+- sem índice: licenciamento-de-obras-e-empresas / Autodeclaração para médio impacto (hoje no Brasil, aprox.): «↑ (aprox.)»
+- sem índice: licenciamento-de-obras-e-empresas / Autodeclaração para médio impacto (hoje no Brasil, aprox.): «prazo de obra ↓»
+- sem índice: licenciamento-de-obras-e-empresas / Três etapas: prévia, instalação, operação: «↓ contra Sem licenciamento»
+- sem índice: licenciamento-de-obras-e-empresas / Três etapas: prévia, instalação, operação: «prazo de obra ↑»
+- sem índice: licenciamento-de-obras-e-empresas / Rigoroso com consulta prévia: «prazo de obra ↑»
+- sem índice: licenciamento-de-obras-e-empresas / Rigoroso com consulta prévia: «↓»
+- sem índice: registro-de-agrotoxicos / Precaução: proíbe pelo perigo, veta cancerígenos: «exportações para a União Europeia ↑»
+- sem índice: fiscalizacao-ambiental / Mínimo: sem fiscalização: «queimadas ↑»
+- sem índice: fiscalizacao-ambiental / Brasil hoje: «queimadas ↓ pouco (estimado; a verba atual é lacuna)»
+- sem índice: fiscalizacao-ambiental / Máximo: satélite, fiscais e embargos: «queimadas ↓»
+- sem índice: fiscalizacao-ambiental / Máximo: satélite, fiscais e embargos: «aprovação no interior da Amazônia ↓»
+- conta pública (vem do orçamento, não de efeito): fontes-de-energia-favorecidas / Subsídio ao combustível fóssil: «cofre ↓» → cofre
+- sem índice: fontes-de-energia-favorecidas / Transição forçada: data para tirar os fósseis: «folga do sistema ↓ se faltar fonte firme»
+- sem índice: usinas-a-carvao / Livre: «desemprego regional ↑ devagar»
+- sem índice: usinas-a-carvao / Saída com data: «desemprego regional ↑ no curto prazo»
+- sem índice: energia-nuclear / Proibida: «Folga do sistema ↓»
+- sem índice: energia-nuclear / Sem novas usinas: «Folga do sistema ↓ quando as velhas fecham»
+- sem índice: energia-nuclear / Manutenção das usinas atuais: «Folga do sistema ↑ pouco contra Sem novas usinas»
+- sem índice: energia-nuclear / Expansão: «Folga do sistema ↑ com atraso de mais de 10 anos»
+- sem seta (texto só qualitativo): preco-do-carbono / Sem preço: Emissões sem mudança
+- sem índice: preco-do-carbono / Mercado com teto: «preço da energia e do combustível ↑»
+- sem índice: preco-do-carbono / Taxa alta: «preço da energia e do combustível ↑»
+- conta pública (vem do orçamento, não de efeito): preco-do-carbono / Taxa alta: «arrecadação ↑» → arrecadacao
+- sem índice: investimento-em-geracao-por-fonte / Fatia solar: «Estoque de capacidade ↑»
+- sem índice: investimento-em-geracao-por-fonte / Fatia eólica: «Estoque de capacidade ↑»
+- sem índice: investimento-em-geracao-por-fonte / Fatia hidrelétrica: «Folga do sistema ↑ com atraso longo»
+- sem índice: investimento-em-geracao-por-fonte / Fatia gás: «Folga do sistema ↑ rápido e firme»
+- sem índice: investimento-em-geracao-por-fonte / Fatia nuclear: «Folga do sistema ↑ firme»
+- sem índice: redistribuicao-de-terras / Nenhuma: «Concentração de terras sem mudança ou ↑»
+- sem índice: redistribuicao-de-terras / Nenhuma: «ocupações e conflitos no campo ↑»
+- sem índice: redistribuicao-de-terras / Desapropriar terra improdutiva: «renda rural ↑ só com crédito e assistência»
+- sem índice: redistribuicao-de-terras / Redistribuição ampla, com teto de tamanho: «investimento e confiança empresarial ↓»
+- sem índice: terras-indigenas / Autonomia: autogoverno do território: «tensão com as Forças Armadas ↑ (estimado)»
+- conta pública (vem do orçamento, não de efeito): credito-rural-e-assistencia-tecnica / Sem crédito oficial: juro de mercado, sem técnico pago pelo Estado: «cofre ↑» → cofre
+- sem índice: credito-rural-e-assistencia-tecnica / Sem crédito oficial: juro de mercado, sem técnico pago pelo Estado: «agricultura familiar perde renda ↓»
+- sem índice: credito-rural-e-assistencia-tecnica / Crédito de mercado com incentivo: só isenção nos títulos do agro e seguro rural: «agricultura familiar ↓»
+- conta pública (vem do orçamento, não de efeito): credito-rural-e-assistencia-tecnica / Crédito amplo subsidiado, para todos os portes: «cofre ↓» → cofre
+- sem índice: credito-rural-e-assistencia-tecnica / Foco na agricultura familiar e na assistência técnica: «Renda da agricultura familiar ↑»
+- conta pública (vem do orçamento, não de efeito): agua-e-esgoto / Serviço municipal público: «cofre ↓» → cofre
+- sem índice: agua-e-esgoto / Concessão com metas: «mortalidade infantil ↓ em 5 a 10 anos»
+- conta pública (vem do orçamento, não de efeito): agua-e-esgoto / Concessão com metas: «cofre ↑ com outorga» → cofre
+- sem índice: agua-e-esgoto / Privatização plena, sem metas: «Tarifa ↑ e pobres ↓»
+- sem índice: transporte-publico / Subsídio parcial (hoje nas grandes capitais, aprox.): «renda das famílias pobres ↑ pouco»
+- conta pública (vem do orçamento, não de efeito): transporte-publico / Subsídio parcial (hoje nas grandes capitais, aprox.): «cofre ↓ pouco» → cofre
+- sem índice: transporte-publico / Tarifa zero: «renda das famílias pobres ↑»
+- conta pública (vem do orçamento, não de efeito): transporte-publico / Tarifa zero: «cofre ↓» → cofre
+- sem índice: investimento-em-infraestrutura / Mínimo: obra só privada: «obras paradas ↑»
+- conta pública (vem do orçamento, não de efeito): investimento-em-infraestrutura / Mínimo: obra só privada: «cofre ↑» → cofre
+- sem índice: investimento-em-infraestrutura / Brasil hoje: «obras paradas ↓ pouco»
+- sem índice: investimento-em-infraestrutura / Brasil hoje: «enchentes ↓ pouco»
+- conta pública (vem do orçamento, não de efeito): investimento-em-infraestrutura / Brasil hoje: «cofre ↓ (0,67% do PIB; com privados, 2,27%)» → cofre
+- sem índice: investimento-em-infraestrutura / Alto: perto do necessário: «folga do sistema ↑ (transmissão)»
+- sem índice: investimento-em-infraestrutura / Alto: perto do necessário: «enchentes ↓ (drenagem)»
+- sem índice: investimento-em-infraestrutura / Alto: perto do necessário: «PIB e produtividade ↑»
+- conta pública (vem do orçamento, não de efeito): investimento-em-infraestrutura / Alto: perto do necessário: «cofre ↓ na hora» → cofre
+- sem índice: papel-das-forcas-armadas / Segurança interna ampla: «Risco de golpe ↑ (aprox.)»
+- sem índice: controle-civil-das-forcas-armadas / Tutela militar: «Risco de golpe ↑»
+- sem índice: controle-civil-das-forcas-armadas / Ministério civil da Defesa: «Risco de golpe ↓ contra Tutela militar»
+- sem índice: controle-civil-das-forcas-armadas / Controle civil reforçado: carreira civil na Defesa, quarentena antes de eleição e de cargo político, justiça militar só para crime militar: «Risco de golpe ↓»
+- sem seta (texto só qualitativo): servico-militar / Voluntário: Produtividade sem perda; Oportunidades para jovens sem ganho
+- sem índice: protecao-social-dos-militares / Integral com paridade: «Déficit previdenciário ↑»
+- sem índice: protecao-social-dos-militares / Regime próprio ajustado: «Déficit previdenciário ↓ contra Integral com paridade»
+- sem índice: protecao-social-dos-militares / Regime próprio ajustado: «Risco de golpe ↑ pouco (aprox.)»
+- sem índice: protecao-social-dos-militares / Regras do servidor civil: «Déficit previdenciário ↓»
+- sem índice: protecao-social-dos-militares / Regras do servidor civil: «Risco de golpe ↑ pouco no curto prazo (aprox.)»
+- sem índice: protecao-social-dos-militares / Regime geral com fundo complementar: «Déficit previdenciário ↓»
+- sem índice: protecao-social-dos-militares / Regime geral com fundo complementar: «Risco de golpe ↑ pouco no curto prazo (aprox.)»
+- sem índice: industria-de-defesa / Estatal de defesa: «custo fiscal ↑»
+- sem seta (texto só qualitativo): exportacao-de-armas / Controle humanitário (não vende a quem viola direitos): Reputação internacional estável
+- sem índice: exportacao-de-armas / Livre: «Armas em circulação na região ↑ (aprox.)»
+- sem seta (texto só qualitativo): gasto-com-defesa / Ponto da faixa: Efeitos principais
+- sem seta (texto só qualitativo): investimento-em-defesa / Ponto da faixa: Efeitos principais
+- sem índice: alinhamento-externo / Alinhamento com potência ocidental: «Investimento estrangeiro ocidental ↑»
+- sem índice: alinhamento-externo / Não alinhamento ativo (hoje no Brasil, tradição): «Influência externa ↑ por mediar (aprox.)»
+- sem índice: alinhamento-externo / Bloco alternativo: «chance de sanções ↑»
+- sem índice: alinhamento-externo / Isolamento soberanista: «Chance de sanções ↑ muito»
+- sem índice: integracao-regional / Fora dos blocos: «Controle de fronteiras ↓ pouco»
+- sem índice: integracao-regional / Fora dos blocos: «Influência externa ↓»
+- sem seta (texto só qualitativo): integracao-regional / Cooperação flexível: Efeito pequeno
+- sem índice: integracao-regional / Blocos intergovernamentais: «Controle de fronteiras ↑ (polícia e inteligência com os vizinhos)»
+- sem índice: integracao-regional / Blocos intergovernamentais: «Tensão internacional regional ↓»
+- sem índice: integracao-regional / Blocos intergovernamentais: «Influência externa ↑»
+- sem índice: integracao-regional / Integração supranacional: «Influência externa ↑»
+- sem índice: integracao-regional / Integração supranacional: «Tensão regional ↓»
+- sem índice: alianca-militar / Cooperação regional de defesa: «Tensão regional ↓»
+- sem índice: alianca-militar / Defesa mútua: «Chance de ser atacado ↓»
+- sem índice: alianca-militar / Defesa mútua: «chance de ser arrastado para guerra entre potências ↑»
+- sem seta (texto só qualitativo): missoes-de-paz / Nenhuma: Reputação e Influência externa sem ganho
+- sem índice: missoes-de-paz / Observadores e policiais (hoje no Brasil, aprox.): «Reputação ↑ pouco»
+- sem índice: missoes-de-paz / Tropas em missão de manutenção da paz: «Reputação e Influência externa ↑ com atraso de 2 a 5 anos»
+- sem índice: missoes-de-paz / Liderar missão com uso da força: «Reputação e Influência externa ↑ mais»
+- sem índice: missoes-de-paz / Liderar missão com uso da força: «Tensão regional ↓ se a missão for na vizinhança»
+- sem seta (texto só qualitativo): tribunais-e-tratados-internacionais / Adesão seletiva: Efeito pequeno
+- sem índice: tribunais-e-tratados-internacionais / Tratados acima da lei: «Reputação ↑»
+- sem índice: politica-de-sancoes / Só as sanções da ONU (hoje no Brasil, aprox.): «Tensão com o alvo ↓ (estimado)»
+- sem índice: politica-de-sancoes / Adere às sanções do polo ocidental: «Tensão com o alvo ↑»
+- sem índice: politica-de-sancoes / Contorna sanções: «chance de sanção contra o próprio país ↑»
+- sem seta (texto só qualitativo): rede-diplomatica / Ponto da faixa: Efeitos principais
+- sem índice: rede-diplomatica / 10 postos: «Influência externa ↓»
+- sem índice: rede-diplomatica / 205 postos (hoje no Brasil, 135 embaixadas e 58 consulados): «Influência externa ↑»
+- sem índice: rede-diplomatica / 280 postos: «Influência externa ↑»
+- sem seta (texto só qualitativo): cooperacao-internacional / Ponto da faixa: Efeitos principais
+- sem índice: cooperacao-internacional / 0%: «Influência externa ↓ pouco»
+- sem índice: cooperacao-internacional / 0,03% (hoje no Brasil, aprox.): «Influência externa ↑ pouco contra 0% e ↓ contra 0»
+- sem índice: cooperacao-internacional / 0,7% (meta da ONU e da OCDE): «Influência externa ↑»
+- sem índice: cooperacao-internacional / 0,7% (meta da ONU e da OCDE): «chance de ganhar o voto na assembleia ↑ (aprox.)»
+- sem seta (texto só qualitativo): programa-nuclear / Proibido: trava Energia nuclear em proibida; Inovação sem ganho
+- sem índice: programa-nuclear / Dissuasão nuclear (arma): «Reputação ↓»
+- sem índice: ciberseguranca / Sem política: «Ameaça cibernética ↑»
+- sem índice: ciberseguranca / Comitê coordenador consultivo: «Ameaça cibernética ↓ pouco contra Sem política e ↑ contra Agência civil (estimado)»
+- sem índice: ciberseguranca / Agência civil com regras e supervisão: «Ameaça cibernética ↓»
+- sem índice: ciberseguranca / Comando militar ofensivo: «Ameaça cibernética ↓»
+- sem índice: protecao-de-fronteiras / Só polícia e Receita: «Controle de fronteiras ↑ pouco (estimado)»
+- sem índice: protecao-de-fronteiras / Programa integrado de órgãos: «Controle de fronteiras ↑»
+- sem índice: protecao-de-fronteiras / Programa integrado de órgãos: «Crime organizado e Armas em circulação ↓ com atraso»
+- sem índice: protecao-de-fronteiras / Forças Armadas com poder de polícia: «Controle de fronteiras ↑ mais»
+- sem índice: protecao-de-fronteiras / Barreira física e militarização: «Controle de fronteiras ↑ mais»

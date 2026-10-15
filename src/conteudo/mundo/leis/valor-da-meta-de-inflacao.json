@@ -1,0 +1,72 @@
+{
+  "id": "valor-da-meta-de-inflacao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Valor da meta de inflação",
+  "descricao": "Qual inflação por ano o banco central deve perseguir?",
+  "area": "Economia, moeda e comércio",
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_valor_da_meta_de_inflacao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "minimo-2",
+        "rotulo": "Mínimo: 2%",
+        "valor": 0,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Centrais sindicais", "Confederação da indústria"],
+        "efeitos": "Juros ↑; expectativas ↓ devagar; PIB ↓ no curto prazo"
+      },
+      {
+        "id": "referencia-3",
+        "rotulo": "Referência: 3% (tolerância de 1,5 ponto)",
+        "valor": 25.0,
+        "apoiam": ["Mercado financeiro"],
+        "efeitos": "Inflação em torno de 3%, juros no nível atual (taxa básica alta); PIB ↓ pouco contra metas mais frouxas; expectativas ancoradas (estimado)"
+      },
+      {
+        "id": "proposta-desenvolvimentista-4-a-4-5",
+        "rotulo": "Proposta desenvolvimentista: 4% a 4,5%",
+        "valor": 50.0,
+        "apoiam": ["Centrais sindicais", "Confederação da indústria"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Juros ↓ no curto prazo; expectativas ↑"
+      },
+      {
+        "id": "maximo-6",
+        "rotulo": "Máximo: 6%",
+        "valor": 100,
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Expectativas ↑ forte; indexação ganha força"
+      }
+    ],
+    "faixa": {
+      "minimo": 2.0,
+      "maximo": 6.0,
+      "unidade": "% % ao ano",
+      "valorReferencia": 3.0
+    }
+  },
+  "consequencias": [
+    "valor-da-meta-de-inflacao--taxa-juros",
+    "valor-da-meta-de-inflacao--expectativas-inflacao",
+    "valor-da-meta-de-inflacao--pib"
+  ],
+  "mae": {
+    "texto": "Mandato do banco central: \"sem meta\" tranca esta alavanca (proposta minha)",
+    "leis": ["mandato-do-banco-central"]
+  },
+  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+}

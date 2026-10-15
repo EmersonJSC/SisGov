@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "forca_instituicoes",
-  "alvo": "eficacia:saneamento-basico",
+  "alvo": "eficacia:agua-e-esgoto",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

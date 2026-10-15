@@ -153,12 +153,12 @@ describe("V1-08 — Brasil", () => {
   it("escola em tempo integral sobe Famílias com filhos no atraso da ligação", () => {
     const ligacao = partida.graph.relations.find(
       (r) =>
-        r.sourceId === "escola-tempo-integral" &&
+        r.sourceId === "escola-em-tempo-integral" &&
         r.targetId === "grupo_familias_com_filhos",
     )!;
     expect(ligacao).toBeDefined();
     const lei = verPartida(partida).leis.find(
-      (l) => l.id === "escola-tempo-integral",
+      (l) => l.id === "escola-em-tempo-integral",
     )!;
     const mudada = mudarLei(partida, lei.id, lei.maximo!);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));

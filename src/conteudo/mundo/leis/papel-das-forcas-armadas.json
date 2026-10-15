@@ -1,0 +1,67 @@
+{
+  "id": "papel-das-forcas-armadas",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Papel das Forças Armadas",
+  "descricao": "Para que servem as Forças Armadas dentro do país?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_papel_das_forcas_armadas",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-forcas-armadas",
+        "rotulo": "Sem Forças Armadas",
+        "valor": 0,
+        "custoTexto": "−1,0% do PIB (economiza o gasto atual)",
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Conservadores", "Servidores", "Associações de militares"],
+        "efeitos": "Capacidade de defesa ↓ muito; trava Serviço militar, Indústria de defesa e tropas em Missões de paz"
+      },
+      {
+        "id": "so-defesa-externa",
+        "rotulo": "Só defesa externa",
+        "valor": 33.33,
+        "apoiam": ["Progressistas", "Jovens"],
+        "rejeitam": ["Conservadores"],
+        "efeitos": "Capacidade de defesa ↑ pouco (o treino não se desvia); Sensação de segurança sem ganho"
+      },
+      {
+        "id": "defesa-externa-e-uso-interno-excepcional-com-prazo-e-area",
+        "rotulo": "Defesa externa e uso interno excepcional, com prazo e área",
+        "valor": 66.67,
+        "custoTexto": "+0,01% do PIB por operação",
+        "apoiam": ["Católicos", "Classe média"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Sensação de segurança ↑ pouco no curto prazo durante a operação"
+      },
+      {
+        "id": "seguranca-interna-ampla",
+        "rotulo": "Segurança interna ampla",
+        "valor": 100,
+        "custoTexto": "+0,05 a +0,1% do PIB",
+        "apoiam": ["Conservadores", "Evangélicos", "Periferias"],
+        "rejeitam": ["Progressistas", "Associações de policiais"],
+        "efeitos": "Sensação de segurança ↑ no curto prazo; Letalidade policial ↑ (aprox.); Risco de golpe ↑ (aprox.); Capacidade de defesa ↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "papel-das-forcas-armadas--capacidade-defesa",
+    "papel-das-forcas-armadas--sensacao-seguranca",
+    "papel-das-forcas-armadas--letalidade-policial"
+  ],
+  "ministerio": "Ministério da Fazenda"
+}

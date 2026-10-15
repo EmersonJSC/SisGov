@@ -1,0 +1,17 @@
+{
+  "id": "cameras-e-reconhecimento-facial--liberdade-civil",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cameras_e_reconhecimento_facial",
+  "alvo": "liberdade_civil",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.06,
+    "termoConstante": 1.98
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

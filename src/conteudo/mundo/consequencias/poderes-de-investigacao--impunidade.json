@@ -1,0 +1,17 @@
+{
+  "id": "poderes-de-investigacao--impunidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_poderes_de_investigacao",
+  "alvo": "impunidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

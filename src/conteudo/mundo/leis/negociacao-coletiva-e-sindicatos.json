@@ -2,40 +2,56 @@
   "id": "negociacao-coletiva-e-sindicatos",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "institucional",
+  "grupo": "regulatoria",
   "nome": "Negociação coletiva e sindicatos",
-  "descricao": "Define quem negocia salários e condições: sindicato controlado pelo Estado, empresa a empresa, por setor ou num grande pacto nacional.",
-  "area": "Trabalho e emprego",
+  "descricao": "Em que nível os salários e as condições são negociados, e os sindicatos são livres do Estado?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
     "nome": "Sindicatos e greve",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_negociacao_coletiva_e_sindicatos",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "controlados",
-        "rotulo": "Sindicato do Estado",
-        "valor": 0
+        "id": "sindicatos-controlados-pelo-estado",
+        "rotulo": "Sindicatos controlados pelo Estado",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Conflito trabalhista ↓ por repressão; Força sindical independente ↓↓; protestos ↑ (aprox.)"
       },
       {
         "id": "por-empresa",
         "rotulo": "Por empresa",
-        "valor": 33
+        "valor": 33,
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Força sindical ↓; dispersão de salários ↑; Renda do trabalho ↓ pouco"
       },
       {
-        "id": "setorial",
+        "id": "por-setor",
         "rotulo": "Por setor",
-        "valor": 67
+        "valor": 67,
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["nenhum grupo grande"],
+        "efeitos": "Força sindical em nível intermediário, ↑ contra Por empresa e ↓ contra Centralizada nacional (estimado); dispersão de salários intermediária (estimado); Conflito trabalhista no nível de hoje (estimado)"
       },
       {
-        "id": "centralizada",
-        "rotulo": "Pacto nacional",
-        "valor": 100
+        "id": "centralizada-nacional",
+        "rotulo": "Centralizada nacional",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Força sindical ↑; dispersão de salários ↓; Conflito trabalhista ↓ (aprox.)"
       }
     ]
   },
@@ -50,8 +66,5 @@
     "negociacao-coletiva-e-sindicatos--grupo-pequenos-negocios",
     "negociacao-coletiva-e-sindicatos--grupo-trabalhadores"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério do Trabalho"
 }

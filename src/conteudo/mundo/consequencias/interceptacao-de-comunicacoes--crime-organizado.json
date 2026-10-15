@@ -1,0 +1,17 @@
+{
+  "id": "interceptacao-de-comunicacoes--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_interceptacao_de_comunicacoes",
+  "alvo": "crime_organizado",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.03,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

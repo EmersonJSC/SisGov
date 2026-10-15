@@ -1,0 +1,77 @@
+{
+  "id": "igualdade-racial",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Igualdade racial",
+  "descricao": "O Estado usa a raça para focar suas políticas?",
+  "area": "Direitos, costumes, religião e imigração",
+  "mesa": {
+    "id": "igualdade-racial",
+    "nome": "Igualdade racial",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_igualdade_racial",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "o-estado-nao-usa-raca",
+        "rotulo": "O Estado não usa raça (proibição de recorte racial)",
+        "valor": 0,
+        "apoiam": ["Conservadores", "parte da Classe média"],
+        "rejeitam": ["Progressistas", "Periferias", "Movimento negro"],
+        "efeitos": "Trava cotas raciais; Desigualdade racial ↑ no longo prazo; Polarização ↑ forte"
+      },
+      {
+        "id": "sem-politica",
+        "rotulo": "Sem política",
+        "valor": 33.33,
+        "rejeitam": ["Progressistas", "Movimento negro"],
+        "efeitos": "Desigualdade racial sem freio"
+      },
+      {
+        "id": "estatuto-direitos-declarados-pouco-recorte",
+        "rotulo": "Estatuto: direitos declarados, pouco recorte (hoje na referência é a base)",
+        "valor": 66.67,
+        "custoTexto": "baixo",
+        "apoiam": ["Católicos", "Pastorais sociais católicas"],
+        "efeitos": "Discriminação ↓ pouco"
+      },
+      {
+        "id": "recorte-racial-cotas-e-metas-com-raca",
+        "rotulo": "Recorte racial: cotas e metas com raça (hoje na referência, nas leis de 2012 e 2023)",
+        "valor": 100,
+        "custoTexto": "baixo (realocação de vagas)",
+        "apoiam": [
+          "Progressistas",
+          "Periferias",
+          "Jovens",
+          "Movimento negro",
+          "Quilombolas e atingidos"
+        ],
+        "rejeitam": ["Conservadores"],
+        "efeitos": "Desigualdade racial ↓ em 10 anos ou mais; Discriminação ↓; Polarização ↑ no início"
+      }
+    ]
+  },
+  "consequencias": [
+    "igualdade-racial--discriminacao",
+    "igualdade-racial--desigualdade",
+    "igualdade-racial--grupo-periferias",
+    "igualdade-racial--grupo-progressistas",
+    "igualdade-racial--grupo-conservadores",
+    "igualdade-racial--polarizacao"
+  ],
+  "ministerio": "Ministério dos Direitos Humanos",
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

@@ -4,38 +4,66 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Legislação trabalhista",
-  "descricao": "Define quanto a lei protege o empregado: contrato livre, regras mínimas, código trabalhista completo ou proteção máxima contra demissão.",
-  "area": "Trabalho e emprego",
+  "descricao": "Que direitos mínimos todo contrato de trabalho garante, e o acordo entre as partes pode valer mais que a lei?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
     "nome": "Contrato de trabalho",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério do Trabalho",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_legislacao_trabalhista",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "sem-regras",
-        "rotulo": "Sem código trabalhista",
-        "valor": 0
+        "rotulo": "Sem regras",
+        "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
+        "efeitos": "Custo de contratar ↓↓ na hora; Informalidade ↓ em 2 a 4 anos; Rotatividade ↑↑"
       },
       {
-        "id": "minima",
-        "rotulo": "Regras mínimas",
-        "valor": 33
+        "id": "minima-contrato-livre-com-piso-e-seguranca",
+        "rotulo": "Mínima: contrato livre com piso e segurança",
+        "valor": 22.33,
+        "apoiam": ["Empresários", "Ricos"],
+        "rejeitam": ["Trabalhadores com carteira"],
+        "efeitos": "Custo de contratar ↓ na hora; Informalidade ↓ em 2 a 4 anos; Litígio ↓; Rotatividade ↑"
       },
       {
-        "id": "clt",
-        "rotulo": "Código trabalhista",
-        "valor": 67
+        "id": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+        "rotulo": "Negociado sobre legislado: código detalhado, mas o acordo coletivo prevalece",
+        "valor": 44.67,
+        "apoiam": [
+          "Empresários",
+          "Pequenos negócios",
+          "Entidades do agronegócio"
+        ],
+        "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
+        "efeitos": "Custo de contratar ↓ pouco; Litígio ↓ pouco; Informalidade ↓ pouco em 2 a 4 anos"
       },
       {
-        "id": "protetiva",
-        "rotulo": "Proteção máxima",
-        "valor": 100
+        "id": "codigo-detalhado",
+        "rotulo": "Código detalhado",
+        "valor": 67,
+        "apoiam": ["Trabalhadores com carteira", "Servidores"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑; Litígio ↑ (regra detalhada gera disputa); Informalidade ↑ em 2 a 4 anos"
+      },
+      {
+        "id": "protetiva-estabilidade-e-demissao-so-com-motivo",
+        "rotulo": "Protetiva: estabilidade e demissão só com motivo",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Empresários", "Pequenos negócios"],
+        "efeitos": "Custo de contratar ↑↑; Rotatividade ↓↓; Informalidade ↑↑ em 2 a 4 anos; Litígio ↑"
       }
     ]
   },
@@ -58,5 +86,6 @@
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
-  }
+  },
+  "ministerio": "Ministério do Trabalho"
 }

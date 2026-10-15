@@ -1,0 +1,17 @@
+{
+  "id": "mandato-do-banco-central--taxa-juros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_mandato_do_banco_central",
+  "alvo": "taxa_juros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.063,
+    "termoConstante": 12.40979
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

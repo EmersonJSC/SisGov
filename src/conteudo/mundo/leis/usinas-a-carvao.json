@@ -1,0 +1,69 @@
+{
+  "id": "usinas-a-carvao",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Usinas a carvão",
+  "descricao": "o Estado sustenta, deixa no mercado ou fecha com data as usinas e minas de carvão?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_usinas_a_carvao",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "subsidio",
+        "rotulo": "Subsídio (hoje na referência, aprox.)",
+        "valor": 0,
+        "custoTexto": "Parte do subsídio na tarifa de luz (aprox., sem número)",
+        "apoiam": [
+          "Trabalhadores com carteira",
+          "Centrais sindicais",
+          "Interior"
+        ],
+        "rejeitam": ["Movimento ambientalista"],
+        "efeitos": "Emissões ↑; preço da energia ↑"
+      },
+      {
+        "id": "livre",
+        "rotulo": "Livre",
+        "valor": 50,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Movimento ambientalista"],
+        "efeitos": "Emissões sem mudança; desemprego regional ↑ devagar"
+      },
+      {
+        "id": "saida-com-data",
+        "rotulo": "Saída com data",
+        "valor": 100,
+        "custoTexto": "Transição justa (aprox., sem número)",
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
+        "efeitos": "Emissões ↓; desemprego regional ↑ no curto prazo"
+      }
+    ]
+  },
+  "consequencias": [
+    "usinas-a-carvao--emissoes",
+    "usinas-a-carvao--qualidade-ambiental",
+    "usinas-a-carvao--preco-energia",
+    "usinas-a-carvao--oferta-energia",
+    "usinas-a-carvao--grupo-ambientalistas",
+    "usinas-a-carvao--grupo-trabalhadores"
+  ],
+  "mae": {
+    "texto": "Fontes de energia favorecidas. Transição forçada lá exige Saída com data aqui.",
+    "leis": ["fontes-de-energia-favorecidas"]
+  },
+  "ministerio": "Ministério do Meio Ambiente"
+}

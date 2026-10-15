@@ -1,0 +1,17 @@
+{
+  "id": "credito-estudantil--desigualdade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_credito_estudantil",
+  "alvo": "desigualdade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.021,
+    "termoConstante": -0.69993
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

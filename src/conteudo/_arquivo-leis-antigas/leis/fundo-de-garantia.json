@@ -1,0 +1,60 @@
+{
+  "id": "fundo-de-garantia",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Fundo de garantia e indenização por demissão",
+  "descricao": "Define o que o empregador deve ao trabalhador demitido: nada, uma conta portátil, um fundo com multa ou uma indenização por tempo de casa.",
+  "area": "Trabalho e emprego",
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério do Trabalho",
+  "processoAutorizacao": "lei-ordinaria",
+  "controle": {
+    "variavel": "nivel_fundo_de_garantia",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhum",
+        "rotulo": "Sem indenização",
+        "valor": 0
+      },
+      {
+        "id": "conta-portatil",
+        "rotulo": "Conta portátil",
+        "valor": 33
+      },
+      {
+        "id": "fundo-com-multa",
+        "rotulo": "Fundo com multa",
+        "valor": 67
+      },
+      {
+        "id": "indenizacao-por-tempo",
+        "rotulo": "Indenização por tempo de casa",
+        "valor": 100
+      }
+    ]
+  },
+  "consequencias": [
+    "fundo-de-garantia--custo-trabalhista",
+    "fundo-de-garantia--rotatividade-emprego",
+    "fundo-de-garantia--oportunidades-juvenis",
+    "fundo-de-garantia--informalidade",
+    "fundo-de-garantia--renda-familias",
+    "fundo-de-garantia--credito",
+    "fundo-de-garantia--deficit-habitacional",
+    "fundo-de-garantia--confianca-empresarial",
+    "fundo-de-garantia--grupo-empresarios",
+    "fundo-de-garantia--grupo-jovens",
+    "fundo-de-garantia--grupo-pequenos-negocios",
+    "fundo-de-garantia--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  }
+}

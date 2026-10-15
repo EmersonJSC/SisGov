@@ -1,0 +1,70 @@
+{
+  "id": "alianca-militar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Aliança militar",
+  "descricao": "Com quem o país se compromete a lutar?",
+  "area": "Defesa e relações exteriores",
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_alianca_militar",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "neutralidade-permanente",
+        "rotulo": "Neutralidade permanente",
+        "valor": 0,
+        "custoTexto": "+0,2% do PIB (defende-se sozinho; aprox.)",
+        "apoiam": ["Católicos", "Progressistas"],
+        "efeitos": "Tensão internacional ↓ pouco (estimado)"
+      },
+      {
+        "id": "sem-alianca",
+        "rotulo": "Sem aliança (hoje na referência, tratado regional inativo, aprox.)",
+        "valor": 25.0,
+        "efeitos": "Tensão internacional ↑ pouco contra Neutralidade permanente; Capacidade de defesa ↓ pouco contra Cooperação regional (estimado)"
+      },
+      {
+        "id": "cooperacao-regional-de-defesa",
+        "rotulo": "Cooperação regional de defesa",
+        "valor": 50.0,
+        "apoiam": ["Progressistas"],
+        "efeitos": "Tensão regional ↓; Capacidade de defesa ↑ pouco"
+      },
+      {
+        "id": "defesa-mutua",
+        "rotulo": "Defesa mútua",
+        "valor": 75.0,
+        "custoTexto": "piso de 2% do PIB no Gasto com defesa",
+        "apoiam": ["Conservadores", "Associações de militares"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Chance de ser atacado ↓; Capacidade de defesa ↑; chance de ser arrastado para guerra entre potências ↑"
+      },
+      {
+        "id": "bases-estrangeiras",
+        "rotulo": "Bases estrangeiras",
+        "valor": 100,
+        "custoTexto": "0 (o anfitrião ganha renda)",
+        "apoiam": ["Conservadores"],
+        "rejeitam": ["Progressistas", "Conservadores"],
+        "efeitos": "Capacidade de defesa ↑; trava Alinhamento externo no polo ocidental; dispara o evento base militar estrangeira"
+      }
+    ]
+  },
+  "consequencias": [
+    "alianca-militar--tensao-internacional",
+    "alianca-militar--capacidade-defesa"
+  ],
+  "ministerio": "Ministério da Fazenda"
+}

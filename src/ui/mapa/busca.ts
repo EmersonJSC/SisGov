@@ -15,18 +15,18 @@ export function normalizar(texto: string): string {
  * o começo da palavra digitada (sem acento).
  */
 const PALAVRAS: Readonly<Record<string, readonly string[]>> = {
-  estatiz: ["empresas-estatais-e-privatizacao"],
-  estata: ["empresas-estatais-e-privatizacao"],
-  estatal: ["empresas-estatais-e-privatizacao"],
-  privatiz: ["empresas-estatais-e-privatizacao"],
-  nacionaliz: [
-    "empresas-estatais-e-privatizacao",
-    "regime-do-petroleo-e-mineracao",
-  ],
+  estatiz: ["papel-do-estado-empresario"],
+  estata: ["papel-do-estado-empresario"],
+  estatal: ["papel-do-estado-empresario"],
+  privatiz: ["papel-do-estado-empresario"],
+  nacionaliz: ["papel-do-estado-empresario", "regime-do-petroleo-e-mineracao"],
   petrol: ["regime-do-petroleo-e-mineracao", "matriz-energetica"],
-  juro: ["meta-de-inflacao", "autonomia-banco-central"],
-  "banco central": ["autonomia-banco-central", "meta-de-inflacao"],
-  inflac: ["meta-de-inflacao", "controle-de-precos"],
+  juro: ["mandato-do-banco-central", "quem-controla-o-banco-central"],
+  "banco central": [
+    "quem-controla-o-banco-central",
+    "mandato-do-banco-central",
+  ],
+  inflac: ["mandato-do-banco-central", "controle-de-precos"],
   dolar: ["regime-cambial", "controle-de-capitais"],
   cambio: ["regime-cambial"],
   preco: ["controle-de-precos"],
@@ -58,7 +58,7 @@ const PALAVRAS: Readonly<Record<string, readonly string[]>> = {
   hospital: ["sistema-de-saude", "piso-saude"],
   remedio: ["farmacia-popular", "genericos-e-patentes-medicamentos"],
   vacina: ["vacinacao-obrigatoria"],
-  escola: ["ensino-obrigatorio", "escola-tempo-integral", "piso-educacao"],
+  escola: ["ensino-obrigatorio", "escola-em-tempo-integral", "piso-educacao"],
   universidade: ["acesso-ensino-superior"],
   faculdade: ["acesso-ensino-superior"],
   floresta: ["codigo-florestal"],

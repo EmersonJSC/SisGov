@@ -68,6 +68,13 @@ export function verPartida(partida: Partida): VisaoPartida {
       areas: lugar ? [lugar.area] : [],
     };
   };
+  const segmentoPorNome = new Map<string, string>(
+    content.variables.variaveis
+      .filter((v) => v.id.startsWith("grupo_"))
+      .map((v) => [v.nome.toLowerCase(), v.id] as [string, string]),
+  );
+  for (const [nome, id] of Object.entries(SEGMENTO_ALIAS))
+    segmentoPorNome.set(nome, id);
   const leis = content.policies.map((policy): VisaoLei => {
     const state = states.get(policy.id);
     const nivel = state?.implementedLevel ?? 0;
@@ -104,6 +111,7 @@ export function verPartida(partida: Partida): VisaoPartida {
         ...travaDa(policy.id, valor, state),
       })),
       opcaoAtual: nearest?.id,
+      ...popularidadeDa(nearest, segmentoPorNome),
       saldoAnual: saldo(policy.id),
       alteradaPorVoce: alteradas.has(policy.id),
       ...(policy.nivelLegal ? { nivelLegal: policy.nivelLegal } : {}),
@@ -435,4 +443,47 @@ export function efeitosDoNo(
         ...(alvo?.avaliacao ? { avaliacao: alvo.avaliacao } : {}),
       };
     });
+}
+
+/** Nomes das fichas que não são o nome exato do segmento. */
+const SEGMENTO_ALIAS: Readonly<Record<string, string>> = {
+  "pequenos negócios": "grupo_pequenos_negocios",
+  "pequenos empreendedores": "grupo_pequenos_negocios",
+  agronegócio: "grupo_agro",
+  agro: "grupo_agro",
+  periferias: "grupo_periferias",
+  informais: "grupo_informais",
+  servidores: "grupo_servidores",
+  trabalhadores: "grupo_trabalhadores",
+};
+
+/** Popularidade da opção: +1 se o segmento apoia, −1 se rejeita, 0 se não cita. */
+function popularidadeDa(
+  opcao:
+    | {
+        readonly apoiam?: readonly string[];
+        readonly rejeitam?: readonly string[];
+      }
+    | undefined,
+  segmentoPorNome: ReadonlyMap<string, string>,
+): Pick<VisaoLei, "popularidade"> {
+  if (!opcao || (!opcao.apoiam?.length && !opcao.rejeitam?.length)) return {};
+  const nota = new Map<string, number>();
+  for (const nome of opcao.apoiam ?? []) {
+    const id = segmentoPorNome.get(nome.toLowerCase());
+    if (id) nota.set(id, (nota.get(id) ?? 0) + 1);
+  }
+  for (const nome of opcao.rejeitam ?? []) {
+    const id = segmentoPorNome.get(nome.toLowerCase());
+    if (id) nota.set(id, (nota.get(id) ?? 0) - 1);
+  }
+  if (!nota.size) return {};
+  const segmentos: Record<string, number> = {};
+  let soma = 0;
+  for (const [id, n] of nota) {
+    const t = 50 + 50 * Math.max(-1, Math.min(1, n));
+    segmentos[id] = t;
+    soma += t;
+  }
+  return { popularidade: { pais: soma / nota.size, segmentos } };
 }

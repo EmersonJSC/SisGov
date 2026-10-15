@@ -1,0 +1,109 @@
+{
+  "id": "cannabis",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Cannabis",
+  "descricao": "A maconha é proibida, só remédio, ou se pode plantar, comprar do Estado ou comprar em loja?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "drogas",
+    "nome": "Drogas",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_cannabis",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "proibida",
+        "rotulo": "Proibida",
+        "valor": 13,
+        "apoiam": [
+          "Evangélicos",
+          "Igrejas evangélicas",
+          "Conservadores",
+          "Famílias com filhos"
+        ],
+        "rejeitam": ["Progressistas"]
+      },
+      {
+        "id": "so-medicinal",
+        "rotulo": "Só medicinal (hoje na referência, estimado)",
+        "valor": 23
+      },
+      {
+        "id": "clubes-e-cultivo-proprio",
+        "rotulo": "Clubes e cultivo próprio",
+        "valor": 33,
+        "apoiam": ["Progressistas", "Jovens"],
+        "rejeitam": ["Evangélicos", "Igrejas evangélicas"],
+        "efeitos": "Crime organizado ↓ pouco; lotação ↓"
+      },
+      {
+        "id": "venda-em-farmacia-com-preco-e-potencia-controlados-pelo-esta",
+        "rotulo": "Venda em farmácia com preço e potência controlados pelo Estado",
+        "valor": 67,
+        "custoTexto": "receita pequena",
+        "apoiam": ["Progressistas"],
+        "rejeitam": [
+          "Evangélicos",
+          "Igrejas evangélicas",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Crime organizado ↓ (no Uruguai o tráfico caiu para 6,7% do mercado); uso ↑ pouco"
+      },
+      {
+        "id": "lojas-comerciais",
+        "rotulo": "Lojas comerciais",
+        "valor": 100,
+        "custoTexto": "receita ↑ (Canadá: C$ 5,4 bi em 7 anos)",
+        "apoiam": ["Jovens", "Empresários"],
+        "rejeitam": ["Evangélicos", "Igrejas evangélicas", "Saúde pública"],
+        "efeitos": "Crime organizado ↓ (78% do gasto vai ao legal no Canadá); uso ↑; risco de psicose com potência alta; arrecadação ↑"
+      }
+    ]
+  },
+  "consequencias": [
+    "cannabis-legal--crime-organizado",
+    "cannabis-legal--uso-drogas",
+    "cannabis-legal--lotacao-prisional",
+    "cannabis-legal--sensacao-seguranca",
+    "cannabis-legal--gasto-publico",
+    "cannabis-legal--arrecadacao",
+    "cannabis-legal--grupo-classe-media",
+    "cannabis-legal--grupo-conservadores",
+    "cannabis-legal--grupo-jovens",
+    "cannabis-legal--grupo-pequenos-negocios",
+    "cannabis-legal--grupo-progressistas",
+    "cannabis-legal--grupo-evangelicos",
+    "cannabis-legal--grupo-catolicos",
+    "grupos--cannabis--grupo-empresarios",
+    "grupos--cannabis--grupo-familias-com-filhos"
+  ],
+  "mae": {
+    "texto": "Lei de drogas: \"guerra às drogas\" trava esta lei; as outras três opções liberam.",
+    "leis": ["lei-de-drogas"]
+  },
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Justiça",
+  "requer": [
+    {
+      "lei": "lei-de-drogas",
+      "opcoes": [
+        "usuario-nao-e-preso-mas-o-policial-decide-quem-e-usuario",
+        "uso-tratado-como-saude-todas-as-drogas-descriminalizadas-par"
+      ],
+      "motivo": "Não dá para vender maconha legalmente enquanto o usuário vai preso."
+    }
+  ]
+}

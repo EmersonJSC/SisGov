@@ -2,7 +2,7 @@
   "id": "liberdade-imprensa--grupo-conservadores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_liberdade_imprensa",
+  "origem": "nivel_liberdade_de_imprensa",
   "alvo": "grupo_conservadores",
   "mecanismo": "afim",
   "parametros": {

@@ -1,0 +1,81 @@
+{
+  "id": "pensao-para-viuvos-e-orfaos",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Pensão para viúvos e órfãos",
+  "descricao": "Quanto recebem o cônjuge e os filhos de quem morre?",
+  "area": "Previdência, assistência, moradia e demografia",
+  "mesa": {
+    "id": "mesa-previdencia",
+    "nome": "Mesa Previdência",
+    "camada": "lei"
+  },
+  "processoAutorizacao": "lei-ordinaria",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "controle": {
+    "variavel": "nivel_pensao_para_viuvos_e_orfaos",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "nenhuma",
+        "rotulo": "Nenhuma",
+        "valor": 0,
+        "rejeitam": ["Aposentados", "Famílias com filhos"],
+        "efeitos": "Pobreza de viúvas e órfãos ↑"
+      },
+      {
+        "id": "temporaria",
+        "rotulo": "Temporária (até os filhos crescerem)",
+        "valor": 33,
+        "custoTexto": "Baixo",
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Aposentados"],
+        "efeitos": "Déficit ↓; trabalho das mulheres ↑ (sem tamanho)"
+      },
+      {
+        "id": "cotas-50-mais-10-por-dependente",
+        "rotulo": "Cotas: 50% mais 10% por dependente",
+        "valor": 67,
+        "custoTexto": "Médio",
+        "rejeitam": ["Aposentados"],
+        "efeitos": "Déficit ↓ contra Integral e vitalícia e ↑ contra Temporária; pobreza de viúvas e órfãos ↓ contra Nenhuma; trabalho das mulheres ↓ pouco (sem tamanho)"
+      },
+      {
+        "id": "integral-e-vitalicia",
+        "rotulo": "Integral e vitalícia",
+        "valor": 100,
+        "custoTexto": "Alto",
+        "apoiam": ["Aposentados", "Servidores"],
+        "rejeitam": ["Jovens", "Mercado financeiro"],
+        "efeitos": "Déficit ↑; pobreza de viúvas ↓; trabalho das mulheres ↓ (sem tamanho)"
+      }
+    ]
+  },
+  "consequencias": [
+    "pensao-por-morte--pobreza",
+    "pensao-por-morte--deficit-previdenciario",
+    "pensao-por-morte--participacao-trabalho-cuidadoras",
+    "pensao-por-morte--corrupcao",
+    "pensao-por-morte--desigualdade",
+    "pensao-por-morte--gasto-publico",
+    "pensao-por-morte--grupo-aposentados",
+    "pensao-por-morte--grupo-classe-media",
+    "pensao-por-morte--grupo-jovens",
+    "pensao-por-morte--grupo-progressistas",
+    "pensao-por-morte--grupo-trabalhadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Previdência",
+  "requer": {
+    "lei": "sistema-previdenciario",
+    "opcoes": ["capitalizacao", "misto", "reparticao"],
+    "motivo": "A pensão por morte é paga pelo sistema previdenciário; sem ele, ela acaba."
+  }
+}

@@ -4,43 +4,78 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Apostas e jogos de azar",
-  "descricao": "Define se apostas, cassinos e loterias são proibidos, monopólio do Estado, mercado licenciado ou terra sem lei.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "descricao": "As apostas online e os cassinos podem funcionar, e sob qual regra?",
+  "area": "Direitos, costumes, religião e imigração",
   "mesa": {
-    "id": "apostas",
-    "nome": "Apostas",
+    "id": "apostas-e-jogos-de-azar",
+    "nome": "Apostas e jogos de azar",
     "camada": "lei"
   },
-  "ministerio": "Ministério dos Direitos Humanos",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_apostas_e_jogos_de_azar",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
         "id": "proibicao",
-        "rotulo": "Proibição total",
-        "valor": 0
+        "rotulo": "Proibição (hoje na referência, desde set/2026)",
+        "valor": 0,
+        "custoTexto": "perde a arrecadação; custo de fiscalização e bloqueio",
+        "apoiam": [
+          "Evangélicos",
+          "Católicos",
+          "Famílias com filhos",
+          "Igrejas evangélicas",
+          "Entidades de saúde pública",
+          "Comércio e serviços"
+        ],
+        "rejeitam": ["Jovens que apostam", "Casas de apostas", "Plataformas"],
+        "efeitos": "Vício em apostas ↓; Endividamento ↓; Consumo ↑; Crime organizado ↑ (mercado ilegal, aprox.)"
       },
       {
         "id": "monopolio-estatal",
         "rotulo": "Monopólio estatal",
-        "valor": 25
+        "valor": 25,
+        "custoTexto": "receita de monopólio",
+        "apoiam": ["Servidores", "parte dos Progressistas"],
+        "rejeitam": ["Empresários", "Casas de apostas"],
+        "efeitos": "Vício em apostas ↓ pouco; Arrecadação ↑"
       },
       {
-        "id": "licenciado-restrito",
-        "rotulo": "Licenciado com limites",
-        "valor": 50
+        "id": "licenca-com-limites-publicidade-limitada-e-teto-de-deposito",
+        "rotulo": "Licença com limites: publicidade limitada e teto de depósito",
+        "valor": 50,
+        "custoTexto": "receita de tributo",
+        "apoiam": ["Classe média", "Entidades de saúde pública"],
+        "rejeitam": ["parte das Casas de apostas"],
+        "efeitos": "Vício em apostas sobe pouco; Arrecadação ↑"
       },
       {
-        "id": "licenciado-liberal",
-        "rotulo": "Mercado aberto",
-        "valor": 75
+        "id": "licenca-liberal",
+        "rotulo": "Licença liberal (o país de referência em 2024 e 2025)",
+        "valor": 75,
+        "custoTexto": "receita de tributo",
+        "apoiam": ["Casas de apostas"],
+        "rejeitam": [
+          "Evangélicos",
+          "Igrejas evangélicas",
+          "Entidades de saúde pública"
+        ],
+        "efeitos": "Vício em apostas ↑; Endividamento ↑; Consumo ↓ (retenção de cerca de 0,3% do PIB por ano); Arrecadação ↑"
       },
       {
         "id": "sem-regulacao",
-        "rotulo": "Liberado sem regras",
-        "valor": 100
+        "rotulo": "Sem regulação (o país de referência de 2018 a 2023)",
+        "valor": 100,
+        "custoTexto": "0 de receita",
+        "apoiam": ["Casas de apostas sem sede no país"],
+        "rejeitam": ["quase todos"],
+        "efeitos": "Vício em apostas ↑ forte; Endividamento ↑; Arrecadação 0"
       }
     ]
   },
@@ -59,8 +94,5 @@
     "apostas-e-jogos-de-azar--grupo-pequenos-negocios",
     "apostas-e-jogos-de-azar--grupo-pobres"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "ministerio": "Ministério dos Direitos Humanos"
 }

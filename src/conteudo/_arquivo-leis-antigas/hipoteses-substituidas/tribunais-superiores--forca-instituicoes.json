@@ -1,0 +1,20 @@
+{
+  "id": "tribunais-superiores--forca-instituicoes",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_tribunais_superiores",
+  "alvo": "forca_instituicoes",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [50, -6],
+      [100, -15]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

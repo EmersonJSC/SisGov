@@ -4,14 +4,13 @@
   "versaoEsquema": 1,
   "origem": "nivel_politica_industrial",
   "alvo": "inflacao",
-  "mecanismo": "limiar",
+  "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.1875,
-    "limiar": 84,
-    "direcao": "acima"
+    "coeficiente": 0.063,
+    "termoConstante": 0
   },
   "unidade": "percentual_0_100",
-  "atrasoPassos": 4,
+  "atrasoPassos": 1,
   "duracao": {
     "modo": "continuo"
   }

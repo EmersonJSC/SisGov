@@ -3,7 +3,7 @@
   "tipo": "consequencia",
   "versaoEsquema": 1,
   "origem": "forca_instituicoes",
-  "alvo": "eficacia:regulacao-redes-sociais",
+  "alvo": "eficacia:regulacao-das-redes-sociais",
   "mecanismo": "afim",
   "parametros": {
     "coeficiente": 0.002,

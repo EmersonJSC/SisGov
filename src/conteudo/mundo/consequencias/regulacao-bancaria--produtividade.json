@@ -2,7 +2,7 @@
   "id": "regulacao-bancaria--produtividade",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_regulacao_bancaria",
+  "origem": "nivel_regulacao_dos_bancos",
   "alvo": "produtividade",
   "mecanismo": "limiar",
   "parametros": {

@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Terceirização",
-  "descricao": "Define se e como uma empresa pode usar trabalhadores contratados por outra empresa.",
-  "area": "Trabalho e emprego",
+  "descricao": "A empresa pode contratar outra empresa para fazer sua atividade principal?",
+  "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
     "nome": "Contrato de trabalho",
     "camada": "lei"
   },
-  "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "controle": {
     "variavel": "nivel_terceirizacao",
     "unidade": "nivel_escopo",
@@ -20,22 +24,34 @@
       {
         "id": "livre",
         "rotulo": "Livre",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Empresários", "Indústria"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)"
       },
       {
-        "id": "ampla-com-garantias",
-        "rotulo": "Ampla com garantias",
-        "valor": 33
+        "id": "ampla-com-a-contratante-respondendo-pelas-dividas",
+        "rotulo": "Ampla, com a contratante respondendo pelas dívidas",
+        "valor": 33,
+        "apoiam": ["Comércio e serviços"],
+        "rejeitam": ["Trabalhadores com carteira"],
+        "efeitos": "Custo de contratar ↓ pouco; Litígio ↑ pouco"
       },
       {
-        "id": "limitada-com-igualdade",
-        "rotulo": "Limitada com salário igual",
-        "valor": 67
+        "id": "limitada-com-o-mesmo-salario-do-contratado-direto",
+        "rotulo": "Limitada, com o mesmo salário do contratado direto",
+        "valor": 67,
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑ pouco; renda dos terceirizados ↑ (aprox.)"
       },
       {
-        "id": "restrita",
-        "rotulo": "Só serviços especializados",
-        "valor": 100
+        "id": "restrita-a-atividade-de-apoio",
+        "rotulo": "Restrita à atividade de apoio",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Indústria"],
+        "efeitos": "Custo de contratar ↑; Litígio ↑ (fronteira entre atividade principal e de apoio)"
       }
     ]
   },
@@ -50,8 +66,9 @@
     "terceirizacao--grupo-empresarios",
     "terceirizacao--grupo-trabalhadores"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Legislação trabalhista. \"Protetiva\" trava a opção \"Livre\".",
+    "leis": ["legislacao-trabalhista"]
+  },
+  "ministerio": "Ministério do Trabalho"
 }

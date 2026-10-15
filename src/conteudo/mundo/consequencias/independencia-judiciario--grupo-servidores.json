@@ -2,7 +2,7 @@
   "id": "independencia-judiciario--grupo-servidores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_independencia_judiciario",
+  "origem": "nivel_independencia_do_judiciario",
   "alvo": "grupo_servidores",
   "mecanismo": "afim",
   "parametros": {

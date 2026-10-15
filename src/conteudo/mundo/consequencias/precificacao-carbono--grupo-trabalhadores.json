@@ -2,7 +2,7 @@
   "id": "precificacao-carbono--grupo-trabalhadores",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_precificacao_carbono",
+  "origem": "nivel_preco_do_carbono",
   "alvo": "grupo_trabalhadores",
   "mecanismo": "afim",
   "parametros": {

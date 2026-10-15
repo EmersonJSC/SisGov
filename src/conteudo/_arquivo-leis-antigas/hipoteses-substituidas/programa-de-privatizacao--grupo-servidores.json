@@ -1,0 +1,20 @@
+{
+  "id": "programa-de-privatizacao--grupo-servidores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_programa_de_privatizacao",
+  "alvo": "grupo_servidores",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 1],
+      [50, 0],
+      [100, -5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

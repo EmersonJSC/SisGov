@@ -2,7 +2,7 @@
   "id": "estabilidade-servidores-publicos--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_estabilidade_servidores_publicos",
+  "origem": "nivel_estabilidade_dos_servidores_publicos",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {

@@ -1,0 +1,84 @@
+{
+  "id": "pena-de-morte",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Pena de morte",
+  "descricao": "O Estado pode matar como pena, e para quais crimes?",
+  "area": "Segurança, penas, drogas e armas",
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "controle": {
+    "variavel": "nivel_pena_de_morte",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "abolida",
+        "rotulo": "Abolida",
+        "valor": 50,
+        "apoiam": ["Progressistas", "Hierarquia católica e pastorais"],
+        "efeitos": "Reputação internacional ↑ pouco"
+      },
+      {
+        "id": "so-em-guerra-declarada",
+        "rotulo": "Só em guerra declarada",
+        "valor": 66.67,
+        "apoiam": ["Católicos"]
+      },
+      {
+        "id": "crimes-hediondos",
+        "rotulo": "Crimes hediondos",
+        "valor": 83.33,
+        "custoTexto": "processos longos (aprox.)",
+        "apoiam": ["Conservadores", "Atiradores e donos de armas pelo porte"],
+        "rejeitam": [
+          "Progressistas",
+          "Católicos",
+          "Hierarquia católica e pastorais"
+        ],
+        "efeitos": "Violência letal: sem efeito; reputação internacional ↓; liberdades civis ↓; sensação de segurança ↑ só em Conservadores"
+      },
+      {
+        "id": "tambem-para-trafico",
+        "rotulo": "Também para tráfico",
+        "valor": 100,
+        "custoTexto": "processos longos (aprox.)",
+        "apoiam": ["Conservadores"],
+        "rejeitam": ["Progressistas", "Mídia internacional"],
+        "efeitos": "Iguais ao anterior, mais forte; reputação internacional ↓↓"
+      }
+    ]
+  },
+  "consequencias": [
+    "pena-de-morte--sensacao-seguranca",
+    "pena-de-morte--reputacao-internacional",
+    "pena-de-morte--violencia-letal",
+    "pena-de-morte--liberdade-civil",
+    "pena-de-morte--gasto-publico",
+    "pena-de-morte--grupo-progressistas",
+    "pena-de-morte--grupo-servidores",
+    "grupos--pena-de-morte--grupo-catolicos",
+    "grupos--pena-de-morte--grupo-conservadores"
+  ],
+  "respostaTemporal": {
+    "implantacao": 0.3,
+    "degradacao": 0.2
+  },
+  "ministerio": "Ministério da Justiça",
+  "requer": [
+    {
+      "lei": "garantias-penais",
+      "opcoes": ["pena-de-morte-permitida"],
+      "motivo": "A Constituição proíbe a pena de morte, e é cláusula pétrea."
+    }
+  ]
+}

@@ -4,15 +4,19 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Serviço militar",
-  "descricao": "Define como o país forma suas Forças Armadas: sem Forças Armadas, só voluntários, sorteio seletivo ou serviço obrigatório para todos.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
+  "descricao": "Quem serve nas Forças Armadas, e é obrigado?",
+  "area": "Defesa e relações exteriores",
   "mesa": {
-    "id": "defesa",
-    "nome": "Defesa",
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
     "camada": "constituicao"
   },
-  "ministerio": "Ministério da Defesa e Relações Exteriores",
-  "processoAutorizacao": "lei-ordinaria",
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "controle": {
     "variavel": "nivel_servico_militar",
     "unidade": "nivel_escopo",
@@ -20,27 +24,46 @@
       {
         "id": "sem-forcas-armadas",
         "rotulo": "Sem Forças Armadas",
-        "valor": 0
+        "valor": 0,
+        "custoTexto": "lacuna",
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Conservadores", "Associações de militares"],
+        "efeitos": "Capacidade de defesa ↓ muito"
       },
       {
         "id": "voluntario",
-        "rotulo": "Só voluntários",
-        "valor": 25
+        "rotulo": "Voluntário",
+        "valor": 25,
+        "custoTexto": "lacuna",
+        "apoiam": ["Jovens", "Progressistas"],
+        "rejeitam": ["Associações de militares"],
+        "efeitos": "Produtividade sem perda; Oportunidades para jovens sem ganho"
       },
       {
         "id": "seletivo",
-        "rotulo": "Alistamento com seleção",
-        "valor": 50
+        "rotulo": "Seletivo",
+        "valor": 50,
+        "custoTexto": "lacuna",
+        "apoiam": ["Associações de militares"],
+        "efeitos": "Oportunidades para jovens ↑ pouco para os menos escolarizados"
       },
       {
         "id": "obrigatorio-masculino",
-        "rotulo": "Obrigatório para homens",
-        "valor": 75
+        "rotulo": "Obrigatório masculino",
+        "valor": 75,
+        "custoTexto": "lacuna",
+        "apoiam": ["Conservadores", "Associações de militares"],
+        "rejeitam": ["Jovens", "Progressistas"],
+        "efeitos": "Produtividade ↓ pouco (custo alto quando a escolaridade é alta); Oportunidades para jovens ↑ para os menos escolarizados"
       },
       {
         "id": "universal",
-        "rotulo": "Universal, homens e mulheres",
-        "valor": 100
+        "rotulo": "Universal (homens e mulheres)",
+        "valor": 100,
+        "custoTexto": "lacuna",
+        "apoiam": ["Associações de militares"],
+        "rejeitam": ["Jovens", "Progressistas"],
+        "efeitos": "Produtividade ↓ pouco; Oportunidades para jovens ↑ para os menos escolarizados"
       }
     ]
   },
@@ -54,10 +77,12 @@
     "servico-militar--grupo-classe-media",
     "servico-militar--grupo-conservadores",
     "servico-militar--grupo-jovens",
-    "servico-militar--grupo-servidores"
+    "servico-militar--grupo-servidores",
+    "servico-militar--produtividade"
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mae": {
+    "texto": "Papel das Forças Armadas. “Sem Forças Armadas” lá trava esta lei em “sem Forças Armadas”.",
+    "leis": ["papel-das-forcas-armadas"]
+  },
+  "ministerio": "Ministério da Defesa e Relações Exteriores"
 }

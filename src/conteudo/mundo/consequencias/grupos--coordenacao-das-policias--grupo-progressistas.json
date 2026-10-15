@@ -1,0 +1,17 @@
+{
+  "id": "grupos--coordenacao-das-policias--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_coordenacao_das_policias",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.07,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

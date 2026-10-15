@@ -1,17 +1,22 @@
 {
   "id": "interceptacao-de-comunicacoes",
   "tipo": "lei",
-  "versaoEsquema": 3,
-  "nome": "Interceptação telefônica e digital",
-  "descricao": "Quando a polícia e a inteligência podem ouvir telefonemas e ler mensagens: nunca, só com ordem de juiz e prazo, com ordem e sem prazo, ou sem ordem em casos de segurança nacional.",
-  "area": "Segurança, justiça e drogas",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Interceptação de comunicações",
+  "descricao": "A polícia pode escutar telefone e ler mensagens, e com que ordem e prazo?",
+  "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "vigilancia",
     "nome": "Vigilância",
     "camada": "lei"
   },
-  "ministerio": "Ministério da Justiça",
-  "nivel": "lei",
+  "processoAutorizacao": "lei-ordinaria",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "controle": {
     "variavel": "nivel_interceptacao_de_comunicacoes",
     "unidade": "nivel_escopo",
@@ -19,102 +24,43 @@
       {
         "id": "proibida",
         "rotulo": "Proibida",
-        "valor": 0
+        "valor": 0,
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Associações de policiais"],
+        "efeitos": "Capacidade de investigação ↓; liberdades civis ↑"
       },
       {
-        "id": "ordem-e-prazo",
-        "rotulo": "Com ordem de juiz e prazo",
-        "valor": 33
+        "id": "com-ordem-do-juiz-e-prazo-de-15-dias-renovaveis",
+        "rotulo": "Com ordem do juiz e prazo de 15 dias renováveis",
+        "valor": 33,
+        "apoiam": ["Classe média"]
       },
       {
-        "id": "ordem-sem-prazo",
-        "rotulo": "Com ordem e sem prazo",
-        "valor": 67
+        "id": "com-ordem-sem-prazo",
+        "rotulo": "Com ordem, sem prazo",
+        "valor": 67,
+        "apoiam": ["Associações de policiais"],
+        "rejeitam": ["Progressistas"],
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓"
       },
       {
-        "id": "sem-ordem-seguranca-nacional",
-        "rotulo": "Sem ordem em segurança nacional",
-        "valor": 100
+        "id": "sem-ordem-por-seguranca-nacional",
+        "rotulo": "Sem ordem, por segurança nacional",
+        "valor": 100,
+        "apoiam": ["Militares da reserva"],
+        "rejeitam": ["Progressistas", "Jornais e portais"],
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓↓; mais chance de \"espionagem revelada\""
       }
     ]
   },
-  "implantacao": {
-    "entrada": 0.4,
-    "saida": 0.3
-  },
-  "efeitos": [
-    {
-      "alvo": "capacidade_inteligencia",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.2,
-        "termoConstante": 0
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "liberdade_civil",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.08,
-        "termoConstante": 2.64
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "confianca_instituicoes",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.03,
-        "termoConstante": 0
-      },
-      "atraso": 2
-    },
-    {
-      "alvo": "crime_organizado",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.03,
-        "termoConstante": 0
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "corrupcao",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.02,
-        "termoConstante": 0
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "grupo_progressistas",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.1,
-        "termoConstante": 0
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_conservadores",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.05,
-        "termoConstante": 0
-      },
-      "atraso": 0
-    }
+  "consequencias": [
+    "interceptacao-de-comunicacoes--capacidade-inteligencia",
+    "interceptacao-de-comunicacoes--liberdade-civil",
+    "interceptacao-de-comunicacoes--confianca-instituicoes",
+    "interceptacao-de-comunicacoes--crime-organizado",
+    "interceptacao-de-comunicacoes--corrupcao",
+    "interceptacao-de-comunicacoes--grupo-progressistas",
+    "interceptacao-de-comunicacoes--grupo-conservadores"
   ],
-  "historia": {
-    "brasil": "Lei 9.296/1996: só com ordem judicial, por 15 dias renováveis, para crime punido com reclusão."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 9.296/1996 (interceptação de comunicações)",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9296.htm",
-      "usadoPara": "opção vigente no Brasil"
-    }
-  ]
+  "ministerio": "Ministério da Justiça"
 }

@@ -1,0 +1,80 @@
+{
+  "id": "fiscalizacao-ambiental",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Fiscalização ambiental",
+  "descricao": "quanto o governo gasta para vigiar a floresta por satélite, multar, embargar e cortar o crédito de quem desmata?",
+  "area": "Meio ambiente, energia, terra e cidades",
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "alavanca"
+  },
+  "processoAutorizacao": "decreto",
+  "nivelLegal": "derivada",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_fiscalizacao_ambiental",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "minimo-sem-fiscalizacao",
+        "rotulo": "Mínimo: sem fiscalização",
+        "valor": 0,
+        "apoiam": [
+          "Garimpo e madeira ilegais",
+          "Entidades do agronegócio",
+          "Interior"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista",
+          "Povos originários",
+          "Mídia internacional"
+        ],
+        "efeitos": "Desmatamento ↑ forte; queimadas ↑; reputação internacional ↓"
+      },
+      {
+        "id": "referencia-hoje",
+        "rotulo": "Referência",
+        "valor": 33.33,
+        "custoTexto": "lacuna (o estudo não dá a verba atual)",
+        "efeitos": "Desmatamento ↓ contra Mínimo, sem o efeito do Máximo; queimadas ↓ pouco (estimado; a verba atual é lacuna)"
+      },
+      {
+        "id": "maximo-satelite-fiscais-e-embargos",
+        "rotulo": "Máximo: satélite, fiscais e embargos",
+        "valor": 66.67,
+        "custoTexto": "cerca de 0,1% do PIB (aprox.)",
+        "apoiam": [
+          "Movimento ambientalista",
+          "Povos originários",
+          "Ambientalistas"
+        ],
+        "rejeitam": [
+          "Garimpo e madeira ilegais",
+          "Entidades do agronegócio",
+          "Interior"
+        ],
+        "efeitos": "Desmatamento ↓ forte, em meses; queimadas ↓; conflitos no campo ↑ no curto prazo (aprox.); aprovação no interior da Amazônia ↓"
+      },
+      {
+        "id": "chave-ligada-credito-condicionado",
+        "rotulo": "Chave ligada: crédito condicionado",
+        "valor": 100,
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Entidades do agronegócio"],
+        "efeitos": "Desmatamento ↓ 15%, sobretudo em municípios de pecuária"
+      }
+    ]
+  },
+  "consequencias": [
+    "fiscalizacao-ambiental--desmatamento",
+    "fiscalizacao-ambiental--reputacao-internacional",
+    "fiscalizacao-ambiental--conflitos-fundiarios"
+  ],
+  "ministerio": "Ministério das Cidades"
+}

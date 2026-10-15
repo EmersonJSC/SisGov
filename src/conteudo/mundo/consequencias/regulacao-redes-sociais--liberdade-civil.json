@@ -2,7 +2,7 @@
   "id": "regulacao-redes-sociais--liberdade-civil",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_regulacao_redes_sociais",
+  "origem": "nivel_regulacao_das_redes_sociais",
   "alvo": "liberdade_civil",
   "mecanismo": "limiar",
   "parametros": {

@@ -69,10 +69,10 @@ describe("ficha de lei v3", () => {
     expect(v.nivel_piso_salarial_professores).toBeCloseTo(58.8366, 9);
     expect(v.nivel_policia_militar).toBeCloseTo(75.99, 9);
     expect(v.recursos_verba_policia_federal).toBeCloseTo(13247.52, 9);
-    expect(v.letalidade_policial).toBeCloseTo(30.994175808199266, 9);
-    expect(v.crime_organizado).toBeCloseTo(71.76734155177763, 9);
-    expect(v.gasto_publico).toBeCloseTo(31.53520408934245, 9);
-    expect(v.popularidade_governo).toBeCloseTo(48.388862976030026, 9);
+    expect(v.letalidade_policial).toBeCloseTo(30.994296816583393, 9);
+    expect(v.crime_organizado).toBeCloseTo(71.79850049971111, 9);
+    expect(v.gasto_publico).toBeCloseTo(31.444360523900382, 9);
+    expect(v.popularidade_governo).toBeCloseTo(48.4068746970398, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {
@@ -170,8 +170,9 @@ describe("ficha de lei v3", () => {
     const relatorio = relatorioDeMigracao(arquivos, "mundo/catalogo-leis.json");
     // 3 pilotos (V1-05), a lei nova do destino do resultado (V1-07) e as
     // cinco de inteligência e vigilância (V1-09), duas da mesa do salário
-    // mínimo e as 28 leis novas das mesas (V1-34)
-    expect(relatorio.migradas).toHaveLength(39);
-    expect(relatorio.faltam).toHaveLength(relatorio.total - 39);
+    // mínimo e as 28 leis novas das mesas (V1-34); a troca de Economia
+    // tirou 6 fichas v3 antigas (suas curvas viraram consequências comuns)
+    expect(relatorio.migradas).toHaveLength(9);
+    expect(relatorio.faltam).toHaveLength(relatorio.total - 9);
   });
 });
