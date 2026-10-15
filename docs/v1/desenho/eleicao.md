@@ -14,7 +14,7 @@ responde nas urnas.
 alguns são **pessoas reais** (com o ponto na bússola tirado dos dados, como
 Lula, FHC ou Bolsonaro), outros são **gerados do nada** (nome, origem,
 carreira, ideologia e uma biografia curta). Cada personagem tem um lado e uma
-ideologia. É isso que traz a história e o enredo para o jogo.
+ideologia, mas o jogo não os mostra: ficam subentendidos no que ele pensa. É isso que traz a história e o enredo para o jogo.
 
 **O candidato.** Antes de cada eleição o partido escolhe um personagem. Se
 ele for muito diferente da base do partido, a base estranha: parte dos seus
@@ -108,8 +108,9 @@ partido). Ficam como exemplos, não como regra.
 | Idade, gênero, estado de origem | 54, mulher, Pernambuco | Narrativa; origem dá um pequeno bônus regional (versão 2) |
 | Carreira | sindicalista, empresária, militar, pastor, juíza, economista, médica, professora, policial, ruralista, artista, prefeita, governadora, deputada | Liga a segmentos (pastor → Evangélicos; sindicalista → Trabalhadores) |
 | Ponto na bússola | economia −3,5, costumes +1,2 | O voto espacial |
-| Lado | esquerda, centro, direita | Sai do ponto (pelos campos do país) |
-| Ideologia | trabalhismo | Rótulo e frase; sai do ponto e da carreira |
+| Lado (oculto) | esquerda, centro, direita | Sai do ponto; só o motor usa |
+| Ideologia (oculta) | trabalhismo | Escolhe as opiniões; nunca aparece na tela |
+| Opiniões | "O salário mínimo tem de subir acima da inflação" | O que o jogador lê; dela ele deduz o lado |
 | Carisma | 0 a 3 | Bônus pequeno na nota de todos os perfis |
 | Experiência | 0 a 3 | Bônus pequeno; dá ar de "nome conhecido" |
 | Biografia | 3 ou 4 frases | O enredo (seção 3.4) |
@@ -145,7 +146,21 @@ partido). Ficam como exemplos, não como regra.
 
 Tudo com a semente da partida: a mesma semente gera os mesmos personagens.
 
-### 3.4 A narrativa (biografia por moldes)
+### 3.4 A narrativa (biografia e opiniões)
+
+**Regra (Emerson, 15/out): o personagem não declara lado nem ideologia.** A
+tela nunca escreve "esquerda", "direita", "trabalhista" ou "liberal" sobre
+ele. O jogador deduz o lado lendo a biografia e as opiniões, como faz com um
+político de verdade. Lado e ideologia existem só dentro do motor.
+
+**Opiniões.** Cada personagem mostra de 3 a 5 frases sobre temas concretos
+(salário mínimo, impostos, privatização, armas, aborto, drogas, religião na
+escola, meio ambiente, polícia). Cada frase do JSON tem um ponto na bússola;
+o gerador escolhe as que ficam mais perto do ponto do personagem, de temas
+diferentes. Exemplos: "Empresa pública estratégica não se vende"; "O
+cidadão de bem tem direito de se defender"; "A escola não é lugar de
+religião".
+
 
 Cada carreira e cada ideologia tem frases-molde no JSON, com lacunas:
 
@@ -154,8 +169,9 @@ Cada carreira e cada ideologia tem frases-molde no JSON, com lacunas:
 
 Exemplos de frases (a escrever com base em trajetórias reais, sem citar
 pessoas): carreira "Começou como metalúrgico e liderou greves no ABC"; "Foi
-juíza federal e ganhou fama em processos de corrupção"; ideologia
-"Defende a presença do Estado na economia e os direitos trabalhistas".
+juíza federal e ganhou fama em processos de corrupção"; opinião
+"Defende a presença do Estado na economia e os direitos trabalhistas"
+(a frase descreve o que pensa, sem rótulo).
 Isso dá variedade sem escrever centenas de biografias à mão, e o mesmo molde
 serve para outros países.
 
@@ -175,8 +191,8 @@ A lista é nossa; nada vem da lista de grupos do Democracy 4.
 
 ### 3.6 Quem aparece para escolher
 
-- **Para você:** 4 a 6 personagens, cobrindo os três lados (pelo menos um de
-  cada), um ou dois reais se a opção estiver ligada. Na primeira escolha não
+- **Para você:** 4 a 6 personagens, cobrindo os três lados por dentro (pelo
+  menos um de cada, sem dizer qual é qual), um ou dois reais se a opção estiver ligada. Na primeira escolha não
   há estranhamento (o partido ainda não tem base). Nas seguintes, o jogo
   mostra o estranhamento de cada um antes de confirmar.
 - **Para a oposição:** cada outro campo recebe um personagem gerado, do lado
@@ -361,7 +377,8 @@ mandato e o resultado da última eleição.
 3. **Base estranha:** o mesmo mandato com um candidato perto e um longe do
    ponto do partido; o longe perde votos da base e disciplina.
 4. **Gerador:** mesma semente, mesmos personagens; todos com 35 anos ou mais;
-   pelo menos um de cada lado na escolha; nenhuma pessoa real com atributo
+   pelo menos um de cada lado na escolha; nenhum texto mostrado diz o lado ou
+   a ideologia; nenhuma pessoa real com atributo
    inventado.
 5. **Vencer e perder:** vencer abre o mandato 2 com Congresso refeito e
    salvo/carga iguais; perder fecha com o balanço; terceiro mandato seguido
