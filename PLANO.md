@@ -160,6 +160,9 @@ Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou
     do catálogo novo em `docs/v1/desenho/catalogo-novo.md` (revisão do autor).
     Falta: [ ] aprovar o catálogo novo; [ ] processo em etapas para estatizar e privatizar por setor (sem ideologias escolhíveis; o rumo do país vira um termômetro calculado);
     [ ] esfera de Defesa; [ ] explicação neutra de cada lei; [ ] leis do mundo.
+- [ ] **V1-37** Faixa contínua, freio do Congresso pelo tamanho do salto e Banco
+      Central que decide sozinho (G). Só documentado (15/out), não começado.
+      Detalhe em `docs/v1/chamados.md`. Vem antes do V1-15 (Contas e tributos).
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)

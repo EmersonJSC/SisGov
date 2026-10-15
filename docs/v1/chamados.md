@@ -921,6 +921,78 @@ atuais já passam pela regra de lados no V1-13).
 
 **Divisão.** Claude: Preenche e roda a checagem. Autor: Confere os números que mais importam.
 
+### V1-37: Faixa contínua, freio do Congresso e Banco Central que decide sozinho
+
+**Tamanho:** G · **Depende de:** V1-36 · **Vem antes de:** V1-15
+
+**Origem.** Conversa com o autor em 15/out/2026. Só documentado; não começar
+antes de o autor chamar.
+
+**Problema.** 224 das 247 leis usam opções fixas (juros: 2%, 13,75% e 30%) e as
+cerca de 24 com número livre têm teto "plausível" (grandes fortunas até 3,5%,
+IR até 60%). O freio está no controle, e isso impede o jogador de explorar.
+
+**Princípio (decisão do autor).** O jogador é universal: se conseguir, faz o que
+quiser. O jogo permite qualquer cenário possível, não só os reais. Quem impede
+que as consequências quebrem o jogo é a política (Congresso) e o próprio mundo
+(consequências), não um teto no controle.
+
+**Entra**
+
+- **Dois tipos de lei.** Leis de quantidade (alíquota, juros, salário mínimo,
+  gasto) viram deslizador livre na faixa fisicamente possível (IR de 0 a 100%,
+  juros de 0 a 50% ou mais), com a marca do valor real como referência. Leis de
+  escolha (sim/não, modelo A/B/C) continuam com opções.
+- **Freio do Congresso pelo tamanho do salto.** O apoio de cada bancada depende
+  da direção da mudança (como hoje) e do tamanho do salto em relação ao valor
+  atual, medido em passos próprios de cada lei (juros: 1 ponto; IR: 5 pontos).
+  Salto pequeno passa com quem já apoia; salto grande perde até aliados, e a
+  resistência cresce mais rápido que o salto. Exemplo do autor: o Congresso
+  aprova 5% de aumento e rejeita 50%. Chegar longe é possível em vários passos.
+- **Emenda do Congresso.** Quando o salto é grande demais, o Congresso pode
+  devolver a lei com uma emenda (um valor menor) que o jogador aceita ou
+  recusa. Pedido do autor: dá jogabilidade.
+- **Medida provisória.** Pula parte do freio na hora, mas cai depois se o salto
+  for grande demais.
+- **Consequências em curva.** Cada lei de quantidade ganha uma curva que satura
+  (IR a 90% não arrecada 1,5 vez o de 60%: fuga, sonegação, queda do
+  investimento; juros a 50% derrubam a economia). As consequências de hoje
+  foram calibradas em 3 pontos; abrir a faixa sem curva extrapola em linha
+  reta e quebra o jogo. É o maior trabalho do chamado.
+- **Juros e Banco Central.** Os juros só ficam com o jogador se "Quem controla o
+  banco central" estiver em "subordinado ao governo" (com o mercado reagindo
+  mais, por menos credibilidade). Com o banco independente, o deslizador fica
+  travado ("decidido pelo Banco Central") e o banco ajusta os juros sozinho a
+  cada mês, em passos pequenos, pela regra do "Mandato do banco central"
+  (inflação acima da meta sobe; abaixo, ou desemprego alto no mandato duplo,
+  desce). Falta decidir: na autonomia parcial o jogador pode pressionar o
+  banco, com custo de credibilidade?
+- **Piloto antes do resto.** Juros, imposto de renda das pessoas e imposto sobre
+  grandes fortunas primeiro; as outras leis de quantidade depois.
+
+**Não entra**
+
+- Leis de escolha (continuam com opções).
+
+**Aceite**
+
+- [ ] As 3 leis do piloto com deslizador livre na faixa fisicamente possível
+      (teste)
+- [ ] Chance de aprovação cai com o tamanho do salto; 5% passa e 50% não passa
+      no estado inicial (teste)
+- [ ] Emenda do Congresso com valor menor quando o salto é grande (teste)
+- [ ] Consequências das 3 leis em curva, sem extrapolar em linha reta (teste
+      nos extremos)
+- [ ] Banco central independente ajusta os juros sozinho e trava o deslizador
+      (teste)
+- [ ] `npm run check` verde na máquina do autor
+
+**Você vê.** Propor IR de 90% de uma vez e ver o Congresso devolver uma emenda;
+com o banco independente, ver os juros subirem sozinhos quando a inflação sobe.
+
+**Divisão.** Claude: Motor da faixa, freio, emenda, curvas e regra do banco.
+Autor: Aprova as faixas, os passos de cada lei e o caso da autonomia parcial.
+
 ## Marco F. Interface (v0.8)
 
 ### V1-26: Mapa da versão 1
