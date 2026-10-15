@@ -95,7 +95,7 @@
 
 **Não entra**
 
-- Escrever a eleição nova (V1-12)
+- Escrever a eleição nova (V1-39)
 
 **Aceite**
 
@@ -599,6 +599,42 @@ impostos e dividendos entrando no cofre a cada turno.
 **Divisão.** Claude: Pesquisa os números, escreve o desenho e o código.
 Autor: Aprova os grupos, os setores e a mesa de energia.
 
+### V1-39: Eleição no fim do mandato
+
+**Tamanho:** M · **Depende de:** V1-08, V1-10, V1-11 · **Marco:** D
+
+**Origem.** Teste de mandato em 15/out/2026: no fim dos 16 turnos nada
+acontece. O escopo da versão 1 promete "eleição no fim do mandato; vencer
+continua, perder encerra", mas nenhum chamado a fazia (o V1-04 a mandava para
+o V1-12, que virou tramitação). Decisão do autor: entra no Marco D.
+
+**Entra**
+
+- Eleição no turno 16, com os perfis sintéticos do eleitorado (V1-08):
+  cada perfil vota pelo voto espacial na bússola (distância até o jogador e
+  até 2 partidos fictícios de oposição) mais o voto econômico (satisfação,
+  renda, emprego, inflação). Modelo em `docs/v1/desenho/populacao.md` e
+  `congresso.md`.
+- Pesquisas de intenção de voto ao longo do mandato (no tablet).
+- Vencer: novo mandato de 16 turnos; a composição do Congresso é refeita com
+  o humor do eleitorado (camada 1 do V1-11).
+- Perder: fim de jogo com o balanço do mandato.
+- Tudo configurável no JSON do país (calendário, partidos, pesos).
+- O salvo (V1-33) guarda a eleição e o mandato atual.
+
+**Não entra**
+
+- Campanha eleitoral, candidatos e debates (versão 2)
+
+**Aceite**
+
+- [ ] Mandato parado com a média das pesquisas reais dá resultado plausível
+- [ ] Governo bem avaliado vence e mal avaliado perde, no teste de mandato
+- [ ] Vencer abre o segundo mandato; perder encerra com o balanço
+
+**Divisão.** Claude: escreve o modelo e roda testes de mandato. Autor: joga e
+decide os pesos.
+
 ### V1-14: Conteúdo: Segurança e justiça penal
 
 **Tamanho:** M · **Depende de:** V1-05 a V1-11
@@ -995,6 +1031,40 @@ Autor: Aprova as faixas, os passos de cada lei e o caso da autonomia parcial.
 
 ## Marco F. Interface (v0.8)
 
+### V1-38: Dívida e política fiscal no motor
+
+**Tamanho:** G · **Depende de:** V1-37 · **Vem antes de:** V1-15
+
+**Origem.** Teste de 4 governos da bússola (Mujica, Chávez, Bolsonaro, Piñera)
+e de um mandato parado, em 15/out/2026 (`scripts/teste/mandato.ts`). Pedido do
+autor: o plano precisa ter a dívida e a política orçamentária e financeira.
+
+**Problema.** A dívida vai de 82% a cerca de 115% do PIB em 16 turnos em
+qualquer governo, até parado (resultado de −6% para −10% do PIB). As leis do
+jogador quase não mudam esse caminho, e inflação e desemprego ficam parados.
+
+**Entra**
+
+- Calibrar o Brasil parado: dívida e resultado andando como os números reais
+  (Tesouro, BC, IFI), não 8 pontos de dívida por ano.
+- Dinâmica da dívida: juros reais, crescimento, resultado primário, rolagem;
+  juros da dívida ligados à taxa básica e ao risco.
+- Leis de orçamento e finanças com efeito visível nas contas: regra fiscal
+  (teto, arcabouço, meta de primário), vinculações, emissão de moeda, prazo e
+  indexação da dívida, venda de reservas e de estatais.
+- Consequências da dívida alta: risco, câmbio, inflação, crédito, mercado
+  financeiro.
+- Revisão lei por lei com o autor, junto com o V1-15.
+
+**Aceite**
+
+- [ ] Brasil parado por 16 turnos com dívida e resultado dentro da faixa real
+- [ ] Governos diferentes terminam com contas diferentes (teste de mandato)
+- [ ] Inflação e desemprego respondem às leis econômicas
+
+**Divisão.** Claude: pesquisa os números, propõe as curvas e roda os testes.
+Autor: decide a arquitetura e revisa cada lei.
+
 ### V1-26: Mapa da versão 1
 
 **Tamanho:** M · **Depende de:** V1-25
@@ -1069,7 +1139,7 @@ Autor: Aprova as faixas, os passos de cada lei e o caso da autonomia parcial.
 
 - Metas da história do país
 - Cerca de 30 conquistas
-- Balanço do mandato no fim dos 16 turnos (a eleição é da versão 2)
+- Balanço do mandato no fim dos 16 turnos (a eleição é o V1-39)
 
 **Aceite**
 

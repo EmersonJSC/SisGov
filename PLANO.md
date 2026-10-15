@@ -65,6 +65,13 @@ personagens com mecânica e o dobro de conteúdo (seção 6).
 
 ## 5. Marcos e chamados
 
+> **Ordem de trabalho (decisão do autor, 15/out/2026).** 1) Eleição (V1-39),
+> que fecha o Marco D. 2) Documentos de mecanismos: o jogo separado em
+> mecanismos (economia primeiro), que são a jogabilidade; V1-35, V1-37 e V1-38
+> entram aqui. 3) Revisão lei a lei, bloco a bloco, pondo os mecanismos em jogo
+> (Marco E). 4) Equilibrar os números e testar (V1-31). A interface (Marco F)
+> vem depois.
+
 Marque `[x]` só com o aceite demonstrado e `npm run check` verde, anotando data,
 commit e teste. O detalhe de cada chamado está em
 [`docs/v1/chamados.md`](docs/v1/chamados.md). Tamanho: P (uma sessão), M (duas ou
@@ -103,6 +110,8 @@ O mandato jogável do começo ao fim: capital político, níveis legais, eleiç�
 - [ ] **V1-12** Tramitação e votação (M)
 - [ ] **V1-13** Dilemas com lados e notificações no tablet (M)
 - [ ] **V1-33** Salvar e carregar (P)
+- [ ] **V1-39** Eleição no fim do mandato (M): vencer continua, perder encerra.
+      Detalhe em `docs/v1/chamados.md`.
 
 ### Marco E. Conteúdo (v0.5 a v0.7)
 
@@ -163,6 +172,9 @@ Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou
 - [ ] **V1-37** Faixa contínua, freio do Congresso pelo tamanho do salto e Banco
       Central que decide sozinho (G). Só documentado (15/out), não começado.
       Detalhe em `docs/v1/chamados.md`. Vem antes do V1-15 (Contas e tributos).
+- [ ] **V1-38** Dívida e política fiscal no motor (G): calibrar o país parado,
+      dinâmica da dívida, leis de orçamento e finanças com efeito. Detalhe em
+      `docs/v1/chamados.md`. Vem antes do V1-15.
 - [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)
