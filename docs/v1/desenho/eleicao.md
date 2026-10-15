@@ -161,6 +161,25 @@ diferentes. Exemplos: "Empresa pública estratégica não se vende"; "O
 cidadão de bem tem direito de se defender"; "A escola não é lugar de
 religião".
 
+**Franqueza (Emerson, 15/out).** Como na vida real, uns falam por rodeios e
+outros dizem tudo. Cada frase tem uma **intensidade** (1 sutil, 2 clara, 3
+explícita) e cada personagem tem uma **franqueza** sorteada de 0 a 3 (a
+carreira puxa: pastor e sindicalista tendem a falar mais claro que
+economista e juíza). A franqueza decide o tipo de frase escolhida:
+
+| Franqueza | Frases | Exemplo (mesmo ponto) |
+| --- | --- | --- |
+| 0 discreto | Só sutis | "O Brasil precisa voltar a crescer com responsabilidade" |
+| 1 moderado | Sutis e claras | "O governo gasta demais e cobra imposto demais" |
+| 2 direto | Claras e uma explícita | "Vou privatizar o que não é estratégico" |
+| 3 sem filtro | Explícitas | "Sou de direita e conservador, com orgulho" |
+
+Só a frase explícita, dita pelo próprio personagem, pode nomear um lado; o
+jogo, nas fichas e nos rótulos, nunca o faz. Um discreto é difícil de ler:
+o jogador pode escolher alguém que a base vai estranhar sem perceber, o que é
+parte do jogo. A franqueza também pode virar efeito no voto mais tarde
+(versão 2: o explícito mobiliza a base e afasta o centro).
+
 
 Cada carreira e cada ideologia tem frases-molde no JSON, com lacunas:
 
@@ -339,7 +358,7 @@ leis aprovadas e revogadas, e os presidentes que o partido teve.
 - `mundo/eleicao.json`: pesos do voto, `custoDeGovernar`, `convergencia`,
   `ruido`, pesquisas, `arrasto`, `luaDeMelDaReeleicao`, estranhamento
   (`tolerancia`, `pesoNoVoto`, `quedaDaDisciplina`, `passoDaIdeologia`).
-- `mundo/personagens.json`: ideologias (centro na bússola, carreiras, frase),
+- `mundo/personagens.json`: ideologias (centro na bússola, carreiras), opiniões (frase, tema e ponto na bússola),
   carreiras (segmentos ligados, faixa de carisma e experiência), moldes das
   biografias, faixas de idade.
 - `paises/brasil/eleicao.json`: calendário (turno 16), regra de maioria e
@@ -377,8 +396,8 @@ mandato e o resultado da última eleição.
 3. **Base estranha:** o mesmo mandato com um candidato perto e um longe do
    ponto do partido; o longe perde votos da base e disciplina.
 4. **Gerador:** mesma semente, mesmos personagens; todos com 35 anos ou mais;
-   pelo menos um de cada lado na escolha; nenhum texto mostrado diz o lado ou
-   a ideologia; nenhuma pessoa real com atributo
+   pelo menos um de cada lado na escolha; nenhum rótulo do jogo diz o lado ou
+   a ideologia (só frase explícita de personagem com franqueza 3); nenhuma pessoa real com atributo
    inventado.
 5. **Vencer e perder:** vencer abre o mandato 2 com Congresso refeito e
    salvo/carga iguais; perder fecha com o balanço; terceiro mandato seguido
