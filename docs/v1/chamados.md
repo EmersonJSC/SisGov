@@ -612,6 +612,11 @@ o V1-12, que virou tramitação). Decisão do autor: entra no Marco D.
 estudando como a eleição funciona, aprovado pelo autor. O "Entra" abaixo é a
 proposta inicial e muda com o documento.
 
+**Documento aprovado (15/out).** `docs/v1/desenho/eleicao.md` vale sobre o
+"Entra" abaixo: o jogador é o partido (nome no começo), escolhe o presidente
+entre personagens gerados (reais ou do nada), e a base estranha candidato
+longe do ponto do partido.
+
 **Entra**
 
 - Eleição no turno 16, com os perfis sintéticos do eleitorado (V1-08):
