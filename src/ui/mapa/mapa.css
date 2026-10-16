@@ -5854,387 +5854,36 @@ button {
   opacity: 0.65;
 }
 
-/* V1-39: personagens, primeira tela, app da eleição e fim da partida */
-.ps-grade {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 12px;
-}
-
-.ps-cartao {
-  display: grid;
-  align-content: start;
-  gap: 6px;
-  padding: 12px 14px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background: light-dark(#fff, #262626);
-  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
-}
-
-.ps-cartao.ps-escolhido {
-  border-color: light-dark(#1f7a52, #71c699);
-}
-
-.ps-cartao header {
-  display: flex;
-  gap: 10px;
-}
-
-.ps-cartao header > div {
-  display: grid;
-  align-content: start;
-  gap: 2px;
-}
-
-.ps-cartao strong {
-  font-family: var(--serifa);
-  font-size: 1rem;
-}
-
-.ps-sub,
-.ps-tracos {
-  margin: 0;
-  color: light-dark(#5d6778, #a0abbe);
-  font-size: 0.75rem;
-}
-
-.ps-selo {
-  justify-self: start;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: light-dark(#fff3d6, #3a3220);
-  color: light-dark(#8a5a00, #f0c050);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.ps-bio {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.4;
-}
-
-.ps-opinioes {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--serifa);
-  font-size: 0.82rem;
-  font-style: italic;
-  line-height: 1.35;
-}
-
-.ps-estranha {
-  margin: 0;
-  color: light-dark(#b23345, #fd8a91);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.ps-botao {
-  justify-self: start;
-  margin-top: 4px;
-  padding: 4px 14px;
-  border: 1px solid light-dark(#1f7a52, #71c699);
-  border-radius: 999px;
-  background: transparent;
-  color: light-dark(#1f7a52, #71c699);
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.ps-botao[aria-pressed="true"] {
-  background: light-dark(#1f7a52, #71c699);
-  color: light-dark(#fff, #151618);
-}
-
-.el-app h2 {
-  margin: 0 0 8px;
-  font-family: var(--serifa);
-  font-size: 1.15rem;
-}
-
-.el-app {
-  display: grid;
-  align-content: start;
-  gap: 16px;
-  min-height: 0;
-  padding: 12px 18px;
-  overflow-y: auto;
-}
-
-.el-topo h2 {
-  margin-bottom: 2px;
-}
-
-.el-topo p,
-.el-legenda {
-  margin: 0;
-  color: light-dark(#5d6778, #a0abbe);
-  font-size: 0.8rem;
-}
-
-.el-topo .el-alerta {
-  margin-top: 6px;
-  padding: 8px 12px;
-  border-left: 4px solid light-dark(#c98a00, #f0c050);
-  border-radius: 6px;
-  background: light-dark(#fff3d6, #3a3220);
-  color: inherit;
-}
-
-.el-colunas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-  align-items: start;
-}
-
-.el-pesquisa,
-.el-resultado {
-  display: grid;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: light-dark(#fff, #262626);
-  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
-}
-
-.el-resultado + .el-resultado {
-  margin-top: 10px;
-}
-
-.el-venceu {
-  border-left: 4px solid light-dark(#1f7a52, #71c699);
-}
-
-.el-perdeu {
-  border-left: 4px solid light-dark(#b23345, #fd8a91);
-}
-
-.el-pesquisa h3,
-.el-resultado h3,
-.el-resultado h4 {
-  margin: 4px 0 0;
-  font-size: 0.85rem;
-}
-
-.el-resultado h3 {
-  font-family: var(--serifa);
-  font-size: 1rem;
-}
-
-.el-barras,
-.el-duelos {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.8rem;
-}
-
-.el-barras li {
-  display: grid;
-  grid-template-columns: minmax(0, 11em) minmax(0, 1fr) 4em;
-  align-items: center;
-  gap: 8px;
-}
-
-.el-nome {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.el-barra {
-  height: 8px;
-  border-radius: 4px;
-  background: light-dark(#ece7da, #333);
-}
-
-.el-barra span {
-  display: block;
-  height: 100%;
-  border-radius: 4px;
-  background: light-dark(#8b93a0, #6b7383);
-}
-
-.el-nosso {
-  font-weight: 700;
-}
-
-.el-nosso .el-barra span {
-  background: light-dark(#1f7a52, #71c699);
-}
-
-.el-pct {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.el-ganha {
-  color: light-dark(#1f7a52, #71c699);
-}
-
-.el-perde {
-  color: light-dark(#b23345, #fd8a91);
-}
-
-.el-segmentos p {
-  margin: 4px 0 0;
-  font-size: 0.78rem;
-}
-
-.fim-fundo {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  display: grid;
-  place-items: center;
-  padding: 16px;
-  background: rgba(10, 12, 16, 0.55);
-}
-
-.fim-caixa {
-  display: grid;
-  gap: 12px;
-  width: min(560px, 100%);
-  max-height: 90vh;
-  padding: 20px;
-  overflow-y: auto;
-  border-radius: 14px;
-  background: var(--papel);
-  color: var(--tinta);
-}
-
-.fim-caixa h1 {
-  margin: 0;
-  font-family: var(--serifa);
-}
-
-.fim-caixa p {
-  margin: 0;
-}
-
-.fim-botoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.fim-botoes button {
-  padding: 6px 16px;
-  border: 1px solid light-dark(#1f7a52, #71c699);
-  border-radius: 999px;
-  background: transparent;
-  color: light-dark(#1f7a52, #71c699);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.fim-botoes button:first-child {
-  background: light-dark(#1f7a52, #71c699);
-  color: light-dark(#fff, #151618);
-}
-
-.fd-tela {
-  --fd-papel: #efe4cc;
-  --fd-papel-escuro: #e2d3b2;
-  --fd-tinta: #2b2620;
-  --fd-sepia: #8a6a43;
-  --fd-oliva: #5d6b3a;
-  --fd-militar: #4a4f48;
-  --fd-ferro: #1d1f22;
-  --fd-ambar: #f0a030;
-  --fd-sol: #f2c230;
-  --fd-mata: #2e8b57;
-  --fd-coral: #e8644a;
-  --fd-turquesa: #2bb3a8;
-  --fd-maquina: "Courier Prime", "Courier New", Courier, monospace;
-  position: relative;
-  min-height: 100vh;
-  color: var(--fd-papel);
-  font-family: var(--sem-serifa);
-  /* a mesa: arte, ou madeira escura com a luz âmbar do abajur */
-  background:
-    radial-gradient(
-      ellipse 60% 45% at 20% 8%,
-      rgba(240, 160, 48, 0.28),
-      transparent 70%
-    ),
-    linear-gradient(180deg, rgba(20, 14, 9, 0.25), rgba(20, 14, 9, 0.6)),
-    url("/arte/fundos/fundacao.jpg") center / cover no-repeat fixed,
-    repeating-linear-gradient(
-      93deg,
-      #3b2618 0 14px,
-      #432c1c 14px 22px,
-      #36231a 22px 41px
-    );
-  background-color: #2f1f14;
-  /* a moldura de concreto */
-  box-shadow:
-    inset 0 0 0 14px #5a5853,
-    inset 0 0 0 16px #2f2e2b,
-    inset 0 0 90px rgba(0, 0, 0, 0.7);
-}
-
-.fd-conteudo {
-  display: grid;
-  gap: 22px;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 40px 32px 0;
-}
-
-.fd-topo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 20px;
-  animation: fd-surgir 0.5s ease-out both;
-}
-
-.fd-logo {
-  width: min(320px, 70vw);
-  height: auto;
-}
-
-/* sem a arte: o nome como carimbo */
-.fd-marca {
-  padding: 4px 18px;
-  border: 4px double var(--fd-papel);
-  border-radius: 10px;
-  color: var(--fd-papel);
-  font-family: var(--fd-maquina);
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transform: rotate(-3deg);
-  opacity: 0.92;
-}
-
-.fd-chamada {
-  margin: 0;
-  font-family: var(--serifa);
-  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
-  font-style: italic;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+/* V1-39: estilo "Dossiê Tropical" (docs/arte/PROMPTS.md): a mesa, o papel,
+   as polaroides, os carimbos e a placa de ferro. Usado na primeira tela, no
+   app da eleição e no fim da partida. */
+.ds-mesa {
+  --ds-papel: #efe4cc;
+  --ds-papel-escuro: #e2d3b2;
+  --ds-tinta: #2b2620;
+  --ds-sepia: #8a6a43;
+  --ds-oliva: #5d6b3a;
+  --ds-militar: #4a4f48;
+  --ds-ferro: #1d1f22;
+  --ds-ambar: #f0a030;
+  --ds-sol: #f2c230;
+  --ds-mata: #2e8b57;
+  --ds-coral: #e8644a;
+  --ds-turquesa: #2bb3a8;
+  --ds-maquina: "Courier Prime", "Courier New", Courier, monospace;
+  --ds-madeira: repeating-linear-gradient(
+    93deg,
+    #3b2618 0 14px,
+    #432c1c 14px 22px,
+    #36231a 22px 41px
+  );
+  color: var(--ds-papel);
 }
 
 /* papel envelhecido */
-.fd-papel {
+.ds-papel {
   position: relative;
-  color: var(--fd-tinta);
+  color: var(--ds-tinta);
   background:
     radial-gradient(
       circle at 85% 20%,
@@ -6246,184 +5895,102 @@ button {
       rgba(138, 106, 67, 0.14),
       transparent 35%
     ),
-    linear-gradient(180deg, var(--fd-papel), var(--fd-papel-escuro));
+    linear-gradient(180deg, var(--ds-papel), var(--ds-papel-escuro));
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.4) inset,
     0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
-.fd-registro {
-  display: grid;
-  gap: 14px;
-  padding: 18px 22px 22px;
-  transform: rotate(-0.4deg);
-  animation: fd-surgir 0.5s 0.1s ease-out both;
-}
-
-.fd-cabecalho {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 4px 12px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--fd-tinta);
-  font-family: var(--fd-maquina);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.fd-partido {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: 18px;
-}
-
-.fd-emblema {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 96px;
-  height: 96px;
-  border: 3px solid var(--fd-oliva);
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 0 5px var(--fd-papel),
-    inset 0 0 0 7px var(--fd-oliva);
-  transform: rotate(-8deg);
-}
-
-.fd-emblema-arte {
-  position: absolute;
-  inset: -6px;
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-}
-
-.fd-emblema span {
-  position: relative;
-  color: var(--fd-oliva);
-  font-family: var(--fd-maquina);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.fd-campo {
-  display: grid;
-  gap: 4px;
-  color: var(--fd-sepia);
-  font-family: var(--fd-maquina);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.fd-campo-nome {
-  flex: 1 1 300px;
-}
-
-.fd-campo-sigla {
-  flex: 0 1 140px;
-}
-
-.fd-campo input {
-  padding: 6px 2px;
-  border: 0;
-  border-bottom: 2px dotted var(--fd-sepia);
-  background: transparent;
-  color: var(--fd-tinta);
-  font-family: var(--fd-maquina);
-  font-size: 1.35rem;
-  letter-spacing: normal;
-  text-transform: none;
-}
-
-.fd-campo input:focus {
-  outline: none;
-  border-bottom: 2px solid var(--fd-tinta);
-  background: rgba(242, 194, 48, 0.18);
-}
-
-.fd-campo input::placeholder {
-  color: rgba(43, 38, 32, 0.3);
-}
-
-.fd-dossie {
-  display: grid;
-  gap: 12px;
-  animation: fd-surgir 0.5s 0.2s ease-out both;
-}
-
 /* aba de pasta de arquivo, com o acento tropical */
-.fd-aba {
+.ds-aba {
   justify-self: start;
+  width: fit-content;
   margin: 0;
   padding: 6px 18px 6px 14px;
   border-radius: 8px 8px 0 0;
-  background: var(--fd-sol);
-  color: var(--fd-tinta);
-  font-family: var(--fd-maquina);
-  font-size: 0.95rem;
+  background: var(--ds-sol);
+  color: var(--ds-tinta);
+  font-family: var(--ds-maquina);
+  font-size: 0.9rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-.fd-dica {
-  margin: -4px 0 0;
+.ds-aba-coral {
+  background: var(--ds-coral);
+}
+
+.ds-aba-turquesa {
+  background: var(--ds-turquesa);
+}
+
+.ds-dica {
+  margin: 0;
   color: #e6d9bd;
   font-style: italic;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-.fd-elenco {
+.ds-dossie {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.ds-elenco {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 22px 18px;
   padding: 10px 4px 4px;
 }
 
-.fd-polaroide {
+.ds-polaroide {
   position: relative;
   display: grid;
+  align-content: start;
   gap: 8px;
   padding: 10px 10px 12px;
   border: 0;
   background: #f6f1e4;
-  color: var(--fd-tinta);
+  color: var(--ds-tinta);
   font: inherit;
   text-align: left;
-  cursor: pointer;
   transform: rotate(var(--giro, 0deg));
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
-  animation: fd-cair 0.45s ease-out both;
+  animation: ds-cair 0.45s ease-out both;
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease;
 }
 
-.fd-polaroide:hover,
-.fd-polaroide:focus-visible {
+button.ds-polaroide {
+  cursor: pointer;
+}
+
+button.ds-polaroide:hover,
+button.ds-polaroide:focus-visible {
   transform: rotate(0deg) translateY(-6px) scale(1.03);
   box-shadow: 0 18px 32px rgba(0, 0, 0, 0.55);
   outline: none;
   z-index: 1;
 }
 
-.fd-polaroide.fd-escolhido {
+.ds-polaroide.ds-escolhido {
   transform: rotate(0deg) translateY(-8px) scale(1.04);
   box-shadow:
-    0 0 0 3px var(--fd-ambar),
+    0 0 0 3px var(--ds-ambar),
     0 0 26px rgba(240, 160, 48, 0.6),
     0 18px 32px rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
-.fd-alfinete {
+.ds-polaroide.ds-grande {
+  width: 210px;
+  transform: rotate(-2deg);
+}
+
+.ds-alfinete {
   position: absolute;
   top: -7px;
   left: 50%;
@@ -6434,80 +6001,92 @@ button {
   background: radial-gradient(
     circle at 35% 35%,
     #ff9f8a,
-    var(--fd-coral) 55%,
+    var(--ds-coral) 55%,
     #8c2f1f
   );
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
 }
 
-.fd-polaroide:nth-child(3n + 2) .fd-alfinete {
+.ds-polaroide:nth-child(3n + 2) .ds-alfinete {
   background: radial-gradient(
     circle at 35% 35%,
     #9ff0e8,
-    var(--fd-turquesa) 55%,
+    var(--ds-turquesa) 55%,
     #135a54
   );
 }
 
-.fd-polaroide:nth-child(3n) .fd-alfinete {
+.ds-polaroide:nth-child(3n) .ds-alfinete {
   background: radial-gradient(
     circle at 35% 35%,
     #fff0a8,
-    var(--fd-sol) 55%,
+    var(--ds-sol) 55%,
     #8a6a10
   );
 }
 
-.fd-retrato {
+.ds-retrato {
   aspect-ratio: 3 / 4;
   filter: sepia(0.25) saturate(0.9);
+  transition: filter 0.18s ease;
 }
 
-.fd-polaroide:hover .fd-retrato,
-.fd-escolhido .fd-retrato {
+button.ds-polaroide:hover .ds-retrato,
+.ds-escolhido .ds-retrato,
+.ds-grande .ds-retrato {
   filter: none;
 }
 
-.fd-legenda {
+.ds-legenda {
   display: grid;
   gap: 1px;
 }
 
-.fd-legenda strong {
+.ds-legenda em {
+  color: var(--ds-oliva);
+  font-family: var(--ds-maquina);
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ds-legenda strong {
   font-family: var(--serifa);
   font-size: 0.95rem;
   line-height: 1.15;
 }
 
-.fd-legenda small {
-  color: var(--fd-sepia);
-  font-family: var(--fd-maquina);
+.ds-legenda small {
+  color: var(--ds-sepia);
+  font-family: var(--ds-maquina);
   font-size: 0.7rem;
 }
 
-.fd-carimbo-escolha {
+.ds-carimbo-foto {
   position: absolute;
   top: 38%;
   left: 50%;
   padding: 2px 10px;
-  border: 3px solid var(--fd-mata);
+  border: 3px solid var(--ds-mata);
   border-radius: 6px;
-  color: var(--fd-mata);
+  color: var(--ds-mata);
   background: rgba(246, 241, 228, 0.75);
-  font-family: var(--fd-maquina);
+  font-family: var(--ds-maquina);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transform: translateX(-50%) rotate(-12deg);
-  animation: fd-carimbar 0.25s ease-out both;
+  animation: ds-carimbar 0.25s ease-out both;
 }
 
-.fd-folha {
+.ds-folha {
   display: grid;
+  align-content: start;
   gap: 10px;
   min-height: 150px;
-  margin-bottom: 8px;
   padding: 20px 24px;
   overflow: hidden;
   background-image:
@@ -6516,19 +6095,19 @@ button {
       transparent 0 27px,
       rgba(43, 38, 32, 0.07) 27px 28px
     ),
-    linear-gradient(180deg, var(--fd-papel), var(--fd-papel-escuro));
+    linear-gradient(180deg, var(--ds-papel), var(--ds-papel-escuro));
 }
 
-.fd-confidencial {
+.ds-carimbo {
   position: absolute;
   top: 18px;
   right: 18px;
   padding: 2px 12px;
-  border: 3px solid var(--fd-coral);
+  border: 3px solid var(--ds-coral);
   border-radius: 4px;
-  color: var(--fd-coral);
-  font-family: var(--fd-maquina);
-  font-size: 1rem;
+  color: var(--ds-coral);
+  font-family: var(--ds-maquina);
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -6536,101 +6115,103 @@ button {
   opacity: 0.8;
 }
 
-.fd-folha header h3 {
+.ds-folha header h3 {
   margin: 0;
-  padding-right: 160px;
+  padding-right: 170px;
   font-family: var(--serifa);
-  font-size: 1.45rem;
+  font-size: 1.4rem;
 }
 
-.fd-folha header p,
-.fd-vazia {
+.ds-folha header p,
+.ds-vazia {
   margin: 0;
-  color: var(--fd-sepia);
-  font-family: var(--fd-maquina);
+  color: var(--ds-sepia);
+  font-family: var(--ds-maquina);
   font-size: 0.82rem;
 }
 
-.fd-vazia {
+.ds-vazia {
   align-self: center;
 }
 
-.fd-bio {
+.ds-bio {
   margin: 0;
   max-width: 80ch;
-  font-family: var(--fd-maquina);
-  font-size: 0.9rem;
+  font-family: var(--ds-maquina);
+  font-size: 0.88rem;
   line-height: 1.55;
 }
 
-.fd-falas {
+.ds-falas {
   display: grid;
   gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
   font-family: var(--serifa);
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
-.fd-falas li {
+.ds-falas li {
   padding-left: 12px;
-  border-left: 3px solid var(--fd-oliva);
+  border-left: 3px solid var(--ds-oliva);
 }
 
-.fd-medidores {
+.ds-medidores {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
 }
 
-.fd-medidor {
+.ds-medidor {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--fd-militar);
-  font-family: var(--fd-maquina);
+  color: var(--ds-militar);
+  font-family: var(--ds-maquina);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.fd-pips {
+.ds-pips {
   display: flex;
   gap: 4px;
 }
 
-.fd-pips i {
+.ds-pips i {
   width: 22px;
   height: 7px;
-  border: 1px solid var(--fd-militar);
-  background: transparent;
+  border: 1px solid var(--ds-militar);
 }
 
-.fd-pips i.fd-cheio {
-  background: var(--fd-oliva);
+.ds-pips i.ds-cheio {
+  background: var(--ds-oliva);
 }
 
-.fd-pe {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 0 26px;
-  background: linear-gradient(180deg, transparent, rgba(20, 14, 9, 0.85) 45%);
+.ds-estranha {
+  justify-self: start;
+  margin: 0;
+  padding: 2px 10px;
+  border: 2px solid var(--ds-coral);
+  color: var(--ds-coral);
+  font-family: var(--ds-maquina);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
 }
 
 /* placa de ferro com a lâmpada âmbar */
-.fd-comecar {
+.ds-placa,
+.ds-assinar {
   display: inline-flex;
   align-items: center;
+  justify-self: start;
   gap: 12px;
-  padding: 14px 30px;
   border: 2px solid #0e0f11;
   border-radius: 4px;
   background:
@@ -6639,99 +6220,74 @@ button {
       rgba(255, 255, 255, 0.03) 0 2px,
       transparent 2px 5px
     ),
-    linear-gradient(180deg, #45484d, var(--fd-ferro));
+    linear-gradient(180deg, #45484d, var(--ds-ferro));
   color: #f3e6c6;
-  font-family: var(--fd-maquina);
-  font-size: 1.15rem;
+  font-family: var(--ds-maquina);
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
     inset 0 -3px 0 rgba(0, 0, 0, 0.5),
-    0 8px 20px rgba(0, 0, 0, 0.6);
+    0 8px 20px rgba(0, 0, 0, 0.45);
   transition: transform 0.12s ease;
 }
 
-.fd-lampada {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--fd-ambar);
-  box-shadow:
-    0 0 10px var(--fd-ambar),
-    0 0 22px rgba(240, 160, 48, 0.7);
+.ds-placa {
+  padding: 14px 30px;
+  font-size: 1.15rem;
 }
 
-.fd-comecar:not(:disabled):hover {
+.ds-assinar {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+.ds-placa:not(:disabled):hover,
+.ds-assinar:not(:disabled):hover {
   transform: translateY(-2px);
 }
 
-.fd-comecar:not(:disabled):active {
-  transform: translateY(1px);
-}
-
-.fd-comecar:disabled {
+.ds-placa:disabled,
+.ds-assinar:disabled {
   color: #8d8a83;
   cursor: default;
 }
 
-.fd-comecar:disabled .fd-lampada {
+.ds-lampada {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ds-ambar);
+  box-shadow:
+    0 0 10px var(--ds-ambar),
+    0 0 22px rgba(240, 160, 48, 0.7);
+}
+
+.ds-placa:disabled .ds-lampada {
   background: #5b4a2e;
   box-shadow: none;
 }
 
-.fd-falta {
-  color: #e6d9bd;
-  font-family: var(--fd-maquina);
-  font-size: 0.85rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes fd-surgir {
+@keyframes ds-surgir {
   from {
     opacity: 0;
     transform: translateY(12px);
   }
 }
 
-@keyframes fd-cair {
+@keyframes ds-cair {
   from {
     opacity: 0;
     transform: rotate(calc(var(--giro, 0deg) * 3)) translateY(-18px);
   }
 }
 
-@keyframes fd-carimbar {
+@keyframes ds-carimbar {
   from {
     opacity: 0;
     transform: translateX(-50%) rotate(-12deg) scale(1.8);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fd-topo,
-  .fd-registro,
-  .fd-dossie,
-  .fd-polaroide,
-  .fd-carimbo-escolha {
-    animation: none;
-  }
-}
-
-@media (max-width: 560px) {
-  .fd-conteudo {
-    padding: 28px 16px 0;
-  }
-
-  .fd-folha header h3 {
-    padding-right: 0;
-  }
-
-  .fd-confidencial {
-    position: static;
-    justify-self: start;
   }
 }
 
@@ -6758,34 +6314,893 @@ button {
   object-fit: cover;
 }
 
-.ps-retrato {
-  width: 56px;
-  height: 72px;
-  flex: none;
-  border-radius: 8px;
+/* primeira tela */
+.fd-tela {
+  position: relative;
+  min-height: 100vh;
+  font-family: var(--sem-serifa);
+  /* a mesa: arte, ou madeira escura com a luz âmbar do abajur */
+  background:
+    radial-gradient(
+      ellipse 60% 45% at 20% 8%,
+      rgba(240, 160, 48, 0.28),
+      transparent 70%
+    ),
+    linear-gradient(180deg, rgba(20, 14, 9, 0.25), rgba(20, 14, 9, 0.6)),
+    url("/arte/fundos/fundacao.jpg") center / cover no-repeat fixed,
+    var(--ds-madeira);
+  background-color: #2f1f14;
+  /* a moldura de concreto */
+  box-shadow:
+    inset 0 0 0 14px #5a5853,
+    inset 0 0 0 16px #2f2e2b,
+    inset 0 0 90px rgba(0, 0, 0, 0.7);
+}
+
+.fd-conteudo {
+  display: grid;
+  gap: 22px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 32px 0;
+}
+
+.fd-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  animation: ds-surgir 0.5s ease-out both;
+}
+
+.fd-logo {
+  width: min(320px, 70vw);
+  height: auto;
+}
+
+/* sem a arte: o nome como carimbo */
+.fd-marca {
+  padding: 4px 18px;
+  border: 4px double var(--ds-papel);
+  border-radius: 10px;
+  font-family: var(--ds-maquina);
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  opacity: 0.92;
+}
+
+.fd-chamada {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  font-style: italic;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.fd-registro {
+  display: grid;
+  gap: 14px;
+  padding: 18px 22px 22px;
+  transform: rotate(-0.4deg);
+  animation: ds-surgir 0.5s 0.1s ease-out both;
+}
+
+.fd-cabecalho,
+.el-timbre {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ds-tinta);
+  font-family: var(--ds-maquina);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fd-partido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 18px;
+}
+
+.fd-emblema {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border: 3px solid var(--ds-oliva);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 5px var(--ds-papel),
+    inset 0 0 0 7px var(--ds-oliva);
+  transform: rotate(-8deg);
+}
+
+.fd-emblema-arte {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+}
+
+.fd-emblema span {
+  position: relative;
+  color: var(--ds-oliva);
+  font-family: var(--ds-maquina);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fd-campo {
+  display: grid;
+  gap: 4px;
+  color: var(--ds-sepia);
+  font-family: var(--ds-maquina);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fd-campo-nome {
+  flex: 1 1 300px;
+}
+
+.fd-campo-sigla {
+  flex: 0 1 140px;
+}
+
+.fd-campo input {
+  padding: 6px 2px;
+  border: 0;
+  border-bottom: 2px dotted var(--ds-sepia);
+  background: transparent;
+  color: var(--ds-tinta);
+  font-family: var(--ds-maquina);
+  font-size: 1.35rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.fd-campo input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--ds-tinta);
+  background: rgba(242, 194, 48, 0.18);
+}
+
+.fd-campo input::placeholder {
+  color: rgba(43, 38, 32, 0.3);
+}
+
+.fd-dossie {
+  display: grid;
+  gap: 12px;
+  animation: ds-surgir 0.5s 0.2s ease-out both;
+}
+
+.fd-dossie .ds-folha {
+  margin-bottom: 8px;
+}
+
+.fd-pe {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0 26px;
+  background: linear-gradient(180deg, transparent, rgba(20, 14, 9, 0.85) 45%);
+}
+
+.fd-falta {
+  color: #e6d9bd;
+  font-family: var(--ds-maquina);
+  font-size: 0.85rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* app da eleição: a mesa dentro do tablet */
+.el-app {
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  min-height: 0;
+  padding: 16px 20px 28px;
+  overflow-y: auto;
+  background:
+    linear-gradient(180deg, rgba(20, 14, 9, 0.55), rgba(20, 14, 9, 0.75)),
+    url("/arte/fundos/fundacao.jpg") center / cover no-repeat,
+    var(--ds-madeira);
+  background-attachment: local;
+}
+
+.el-app > section {
+  display: grid;
+  gap: 10px;
 }
 
 .el-faixa {
-  position: relative;
-  padding: 16px 18px;
-  border-radius: 12px;
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border-radius: 6px;
   color: #f3ead6;
   background:
-    linear-gradient(90deg, rgba(11, 19, 34, 0.92) 30%, rgba(11, 19, 34, 0.35)),
-    url("/arte/cenas/campanha.jpg") center / cover no-repeat,
-    linear-gradient(120deg, #16203a, #2c2a3e);
+    linear-gradient(90deg, rgba(11, 13, 16, 0.92) 30%, rgba(11, 13, 16, 0.3)),
+    url("/arte/cenas/campanha.jpg") center 30% / cover no-repeat,
+    linear-gradient(120deg, #2a2620, #3a3328);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
-.el-faixa p,
-.el-faixa .el-legenda {
+.el-faixa h2 {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.5rem;
+}
+
+.el-faixa p {
+  margin: 0;
   color: #d4ccb8;
+  font-family: var(--ds-maquina);
+  font-size: 0.85rem;
 }
 
-.el-cena {
+.el-faixa .el-alerta {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-left: 4px solid var(--ds-ambar);
+  background: rgba(240, 160, 48, 0.16);
+  color: #f6dfb0;
+}
+
+.el-topo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+.el-topo > section {
+  display: grid;
+  gap: 0;
+}
+
+.el-gabinete {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding-top: 14px;
+}
+
+.el-gabinete .ds-folha header h3 {
+  padding-right: 120px;
+}
+
+.el-relatorio {
+  display: grid;
+  gap: 10px;
+  padding: 16px 20px 18px;
+  transform: rotate(0.5deg);
+}
+
+.el-relatorio h3,
+.el-jornal h4 {
+  margin: 4px 0 0;
+  font-family: var(--ds-maquina);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.el-sem-pesquisa p {
+  margin: 0;
+  font-family: var(--ds-maquina);
+  font-size: 0.88rem;
+}
+
+.el-barras,
+.el-duelos {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ds-maquina);
+  font-size: 0.82rem;
+}
+
+.el-barras li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 14em) minmax(0, 1fr) 4.2em;
+  align-items: center;
+  gap: 8px;
+}
+
+.el-mini {
+  width: 28px;
+  height: 36px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+span.el-mini {
+  background: rgba(43, 38, 32, 0.12);
+  box-shadow: none;
+}
+
+.el-nome {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* barra como tinta de carimbo */
+.el-barra {
+  height: 10px;
+  border: 1px solid rgba(43, 38, 32, 0.35);
+}
+
+.el-barra span {
+  display: block;
+  height: 100%;
+  background: var(--ds-militar);
+}
+
+.el-nosso {
+  font-weight: 700;
+}
+
+.el-nosso .el-barra span {
+  background: var(--ds-oliva);
+}
+
+.el-pct {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.el-duelos li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  border-bottom: 1px dashed rgba(43, 38, 32, 0.3);
+}
+
+.el-ganha {
+  color: var(--ds-mata);
+}
+
+.el-perde {
+  color: var(--ds-coral);
+}
+
+.el-rodape {
+  margin: 4px 0 0;
+  color: var(--ds-sepia);
+  font-family: var(--ds-maquina);
+  font-size: 0.72rem;
+}
+
+/* resultado: recorte de jornal */
+.el-arquivo {
+  gap: 18px;
+}
+
+.el-jornal {
+  display: grid;
+  gap: 10px;
+  padding: 16px 20px 20px;
+  color: #1d1b17;
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(138, 106, 67, 0.18),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #ece6d6, #ddd3bc);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(
+    0 1%,
+    6% 0,
+    18% 1%,
+    31% 0,
+    47% 1%,
+    63% 0,
+    79% 1%,
+    92% 0,
+    100% 1%,
+    100% 99%,
+    88% 100%,
+    71% 99%,
+    55% 100%,
+    38% 99%,
+    22% 100%,
+    9% 99%,
+    0 100%
+  );
+}
+
+.el-cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding-bottom: 6px;
+  border-bottom: 3px double #1d1b17;
+  font-family: var(--serifa);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.el-cabeca span:first-child {
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+
+.el-manchete {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.el-jornal figure {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+
+.el-foto {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 21 / 9;
+  max-height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  filter: sepia(0.35) contrast(1.05);
+}
+
+.el-jornal figcaption {
+  font-family: var(--serifa);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+.el-colunas-jornal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.el-colunas-jornal > section {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.el-jornal .el-barra span {
+  background: #4a4640;
+}
+
+.el-jornal .el-nosso .el-barra span {
+  background: #1d1b17;
+}
+
+.el-segmentos p {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.el-venceu .el-manchete {
+  color: #1d1b17;
+}
+
+.el-perdeu .el-manchete {
+  color: #6e1f12;
+}
+
+/* fim da partida: o jornal sobre a mesa escura */
+.fim-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(10, 8, 6, 0.8), rgba(10, 8, 6, 0.92)),
+    url("/arte/fundos/fundacao.jpg") center / cover no-repeat,
+    #140e09;
+}
+
+.fim-caixa {
+  display: grid;
+  gap: 16px;
+  width: min(760px, 100%);
+  max-height: calc(100dvh - 32px);
+  padding: 4px;
+  overflow-y: auto;
+  color: #f3ead6;
+}
+
+.fim-caixa h1 {
+  margin: 0;
+  font-family: var(--ds-maquina);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fim-caixa > p {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.fim-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fd-topo,
+  .fd-registro,
+  .fd-dossie,
+  .ds-polaroide,
+  .ds-carimbo-foto {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .fd-conteudo {
+    padding: 28px 16px 0;
+  }
+
+  .ds-folha header h3,
+  .el-gabinete .ds-folha header h3 {
+    padding-right: 0;
+  }
+
+  .ds-carimbo {
+    position: static;
+    justify-self: start;
+  }
+
+  .el-gabinete {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* noite da eleição: o painel de ferro com os números âmbar */
+.ap-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 12, 0.72), rgba(8, 9, 12, 0.9)),
+    url("/arte/reserva/capital-noite.jpg") center / cover no-repeat,
+    #0c0d10;
+}
+
+.ap-caixa {
+  display: grid;
+  gap: 16px;
+  width: min(820px, 100%);
+  max-height: calc(100dvh - 32px);
+  padding: 4px;
+  overflow-y: auto;
+}
+
+.ap-plantao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #f6dfb0;
+  font-family: var(--ds-maquina);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ap-plantao .ds-lampada {
+  animation: ap-piscar 1.2s ease-in-out infinite;
+}
+
+.ap-painel {
+  display: grid;
+  gap: 14px;
+  padding: 18px 20px 22px;
+  border: 2px solid #0e0f11;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0 2px,
+      transparent 2px 5px
+    ),
+    linear-gradient(180deg, #2f3236, var(--ds-ferro));
+  color: #f3e6c6;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.ap-placar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 8px 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(240, 160, 48, 0.3);
+}
+
+.ap-titulo {
+  font-family: var(--ds-maquina);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ap-urnas {
+  display: grid;
+  justify-items: end;
+  font-family: var(--ds-maquina);
+}
+
+.ap-urnas small {
+  color: #b9ad94;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ap-urnas strong {
+  color: var(--ds-ambar);
+  font-size: 2.2rem;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 14px rgba(240, 160, 48, 0.55);
+}
+
+.ap-linhas {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ap-linhas li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 13em) minmax(0, 1fr) 5.5em;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.ap-linhas li.ap-frente {
+  background: rgba(240, 160, 48, 0.12);
+}
+
+.ap-retrato {
+  width: 48px;
+  height: 62px;
+  border: 3px solid #f6f1e4;
+}
+
+.ap-nome {
+  display: grid;
+  font-family: var(--serifa);
+  font-size: 1.05rem;
+}
+
+.ap-nome small {
+  color: var(--ds-sol);
+  font-family: var(--ds-maquina);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ap-barra {
+  position: relative;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ap-barra > span {
+  display: block;
+  height: 100%;
+  background: #8d8a83;
+}
+
+.ap-nosso .ap-barra > span {
+  background: var(--ds-ambar);
+  box-shadow: 0 0 10px rgba(240, 160, 48, 0.5);
+}
+
+/* a linha dos 50% no 1º turno */
+.ap-meio {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  border-left: 2px dashed rgba(243, 230, 198, 0.55);
+}
+
+.ap-pct {
+  color: var(--ds-ambar);
+  font-family: var(--ds-maquina);
+  font-size: 1.35rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ap-anuncio {
+  display: grid;
+  gap: 12px;
+  padding: 22px 24px;
+  animation: ds-surgir 0.4s ease-out both;
+}
+
+.ap-anuncio h2 {
+  margin: 0;
+  font-family: var(--serifa);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.ap-anuncio p {
+  margin: 0;
+  font-family: var(--ds-maquina);
+}
+
+.ap-fora {
+  justify-self: start;
+  padding: 4px 12px;
+  border: 3px solid var(--ds-coral);
+  color: var(--ds-coral);
+  font-weight: 700;
+  transform: rotate(-1.5deg);
+}
+
+.ap-duelo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+.ap-duelo figure {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 10px 12px;
+  background: #f6f1e4;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.ap-duelo figure:first-child {
+  transform: rotate(-2deg);
+}
+
+.ap-duelo figure:last-child {
+  transform: rotate(2deg);
+}
+
+.ap-retrato-grande {
+  width: 170px;
+  aspect-ratio: 3 / 4;
+}
+
+.ap-duelo figcaption {
+  font-family: var(--serifa);
+  font-weight: 700;
+  text-align: center;
+}
+
+.ap-botoes,
+.mn-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@keyframes ap-piscar {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* menu principal */
+.mn-tela {
+  display: grid;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px clamp(16px, 8vw, 120px);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(14, 10, 7, 0.92) 0%,
+      rgba(14, 10, 7, 0.75) 40%,
+      rgba(14, 10, 7, 0.1) 75%
+    ),
+    url("/arte/fundos/carregando.jpg") center / cover no-repeat,
+    var(--ds-madeira);
+  box-shadow:
+    inset 0 0 0 14px #5a5853,
+    inset 0 0 0 16px #2f2e2b;
+}
+
+.mn-caixa {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  width: min(620px, 100%);
+  animation: ds-surgir 0.5s ease-out both;
+}
+
+.mn-botoes {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+  width: min(420px, 100%);
+}
+
+.mn-botoes button {
+  justify-content: center;
+}
+
+.mn-nota,
+.mn-erro {
+  margin: 0;
+  font-family: var(--ds-maquina);
+}
+
+.mn-erro {
+  padding: 6px 12px;
+  background: rgba(232, 100, 74, 0.2);
+  color: #ffd2c6;
+}
+
+@media (max-width: 560px) {
+  .ap-linhas li {
+    grid-template-columns: 40px minmax(0, 1fr) 4.5em;
+  }
+
+  .ap-barra {
+    grid-column: 1 / -1;
+  }
 }

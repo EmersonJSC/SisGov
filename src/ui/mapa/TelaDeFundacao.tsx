@@ -6,7 +6,8 @@
  */
 import { useMemo, useState } from "react";
 import { primeirosCandidatos } from "../../app/partida";
-import { Arte, Retrato } from "./Arte";
+import { Arte } from "./Arte";
+import { Dossie } from "./Dossie";
 
 export type Fundacao = Readonly<{
   semente: number;
@@ -23,22 +24,6 @@ const iniciais = (nome: string) =>
     .join("")
     .slice(0, 5);
 
-/** Inclinação de cada polaroide na mesa, em graus. */
-const GIROS = [-2.5, 1.5, -1, 2.2, -1.8, 1];
-
-function Medidor({ rotulo, valor }: { rotulo: string; valor: number }) {
-  return (
-    <div className="fd-medidor">
-      <span>{rotulo}</span>
-      <span className="fd-pips" aria-label={`${valor} de 3`}>
-        {[1, 2, 3].map((i) => (
-          <i key={i} className={i <= valor ? "fd-cheio" : undefined} />
-        ))}
-      </span>
-    </div>
-  );
-}
-
 export function TelaDeFundacao({
   semente,
   onComecar,
@@ -50,12 +35,10 @@ export function TelaDeFundacao({
   const [nome, setNome] = useState("");
   const [sigla, setSigla] = useState("");
   const [presidente, setPresidente] = useState<string | null>(null);
-  const [emFoco, setEmFoco] = useState<string | null>(null);
-  const ficha = nomes.find((p) => p.id === (emFoco ?? presidente));
   const marca = sigla.trim() || iniciais(nome) || "?";
   const pronto = nome.trim().length > 1 && presidente !== null;
   return (
-    <main className="fd-tela">
+    <main className="fd-tela ds-mesa">
       <div className="fd-conteudo">
         <header className="fd-topo">
           <Arte
@@ -70,7 +53,7 @@ export function TelaDeFundacao({
         </header>
 
         <section
-          className="fd-papel fd-registro"
+          className="ds-papel fd-registro"
           aria-label="Ficha de registro do partido"
         >
           <header className="fd-cabecalho">
@@ -104,80 +87,17 @@ export function TelaDeFundacao({
         </section>
 
         <section className="fd-dossie" aria-label="Candidatos à Presidência">
-          <h2 className="fd-aba">Dossiê: quem vai governar</h2>
-          <p className="fd-dica">
+          <h2 className="ds-aba">Dossiê: quem vai governar</h2>
+          <p className="ds-dica">
             Ninguém diz de que lado está. Leia o que cada um pensa.
           </p>
-          <div className="fd-elenco" role="radiogroup">
-            {nomes.map((p, i) => (
-              <button
-                key={p.id}
-                type="button"
-                role="radio"
-                aria-checked={presidente === p.id}
-                className={`fd-polaroide${presidente === p.id ? " fd-escolhido" : ""}`}
-                style={
-                  {
-                    "--giro": `${GIROS[i % GIROS.length]}deg`,
-                    animationDelay: `${i * 70}ms`,
-                  } as React.CSSProperties
-                }
-                onClick={() => setPresidente(p.id)}
-                onMouseEnter={() => setEmFoco(p.id)}
-                onMouseLeave={() => setEmFoco(null)}
-                onFocus={() => setEmFoco(p.id)}
-                onBlur={() => setEmFoco(null)}
-              >
-                <span className="fd-alfinete" aria-hidden />
-                <Retrato retrato={p.retrato} className="fd-retrato" />
-                <span className="fd-legenda">
-                  <strong>{p.nome}</strong>
-                  <small>
-                    {p.idade} anos · {p.carreira || "pessoa real"}
-                  </small>
-                </span>
-                {presidente === p.id ? (
-                  <span className="fd-carimbo-escolha" aria-hidden>
-                    Escolhido
-                  </span>
-                ) : null}
-              </button>
-            ))}
-          </div>
-
-          <article className="fd-papel fd-folha" aria-live="polite">
-            {ficha ? (
-              <>
-                <span className="fd-confidencial" aria-hidden>
-                  Confidencial
-                </span>
-                <header>
-                  <h3>{ficha.nome}</h3>
-                  <p>
-                    {ficha.idade} anos · {ficha.estado}
-                    {ficha.carreira ? ` · ${ficha.carreira}` : ""}
-                    {ficha.real ? " · pessoa real" : ""}
-                  </p>
-                </header>
-                <p className="fd-bio">{ficha.biografia}</p>
-                {ficha.opinioes.length ? (
-                  <ul className="fd-falas">
-                    {ficha.opinioes.map((o) => (
-                      <li key={o}>“{o}”</li>
-                    ))}
-                  </ul>
-                ) : null}
-                <div className="fd-medidores">
-                  <Medidor rotulo="Carisma" valor={ficha.carisma} />
-                  <Medidor rotulo="Experiência" valor={ficha.experiencia} />
-                </div>
-              </>
-            ) : (
-              <p className="fd-vazia">
-                Passe o mouse numa foto para abrir a ficha.
-              </p>
-            )}
-          </article>
+          <Dossie
+            personagens={nomes}
+            escolhido={presidente}
+            onEscolher={setPresidente}
+            escolherNoClique
+            vazio
+          />
         </section>
 
         <footer className="fd-pe">
@@ -190,7 +110,7 @@ export function TelaDeFundacao({
           ) : null}
           <button
             type="button"
-            className="fd-comecar"
+            className="ds-placa fd-comecar"
             disabled={!pronto}
             onClick={() =>
               presidente &&
@@ -204,7 +124,7 @@ export function TelaDeFundacao({
               })
             }
           >
-            <span className="fd-lampada" aria-hidden />
+            <span className="ds-lampada" aria-hidden />
             Tomar posse
           </button>
         </footer>

@@ -29,7 +29,7 @@ async function comprimir(texto: string): Promise<string> {
   return btoa(binario);
 }
 
-async function descomprimir(base64: string): Promise<string> {
+export async function descomprimir(base64: string): Promise<string> {
   const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
   const fluxo = new Blob([bytes])
     .stream()
@@ -37,9 +37,16 @@ async function descomprimir(base64: string): Promise<string> {
   return new Response(fluxo).text();
 }
 
-type Guardada = Readonly<{ salvoEm: string; turno: string; dados: string }>;
+export type Guardada = Readonly<{
+  salvoEm: string;
+  turno: string;
+  dados: string;
+}>;
 
-function lerGuardada(): Guardada | null {
+/** O texto da partida guardada no navegador. */
+export const textoDaGuardada = (g: Guardada) => descomprimir(g.dados);
+
+export function lerGuardada(): Guardada | null {
   try {
     const texto = localStorage.getItem(CHAVE);
     return texto ? (JSON.parse(texto) as Guardada) : null;
@@ -48,7 +55,7 @@ function lerGuardada(): Guardada | null {
   }
 }
 
-const quando = (iso: string) =>
+export const quando = (iso: string) =>
   iso
     ? new Date(iso).toLocaleString("pt-BR", {
         day: "2-digit",

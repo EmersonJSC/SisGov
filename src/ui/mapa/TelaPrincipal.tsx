@@ -23,6 +23,7 @@ import {
   type PrevisaoLei,
   type RelatorioTurno,
   type VisaoPartida,
+  type VisaoResultado,
   BOLHAS_DO_ORCAMENTO,
 } from "../../app/partida";
 import { Bandeira } from "./Bandeira";
@@ -51,7 +52,9 @@ import {
 import { JanelaBolha, JanelaLei, abrirJanela, type Janela } from "./Janelas";
 import { JanelaPartida, type PartidaCarregada } from "./JanelaPartida";
 import { TelaDeFundacao, type Fundacao } from "./TelaDeFundacao";
-import { Resultado, faltaCandidato } from "./EleicaoNoTablet";
+import { faltaCandidato } from "./EleicaoNoTablet";
+import { MenuPrincipal } from "./MenuPrincipal";
+import { NoiteDaApuracao } from "./NoiteDaApuracao";
 import { efeitoDe, indexarRelacoes, ligacoesDeFundo } from "./relacoes";
 import { COR_EFEITO } from "./tema";
 import "./mapa.css";
@@ -325,43 +328,96 @@ type Inicial = ReturnType<typeof criarPartida>;
  * uma tela de carregamento primeiro e só então cria a partida, para a página
  * não ficar em branco (15/out).
  */
+type Tela =
+  | Readonly<{ nome: "menu" }>
+  | Readonly<{ nome: "fundacao"; semente: number }>
+  | Readonly<{ nome: "criando"; fundacao: Fundacao }>
+  | Readonly<{
+      nome: "jogo";
+      id: number;
+      inicial: Inicial;
+      anexos?: Readonly<Record<string, unknown>>;
+    }>;
+
+// cada partida nova ganha uma semente própria: eventos diferentes (SG106)
+// e personagens diferentes na primeira tela (V1-39)
+const novaSemente = () => 1 + Math.floor(Math.random() * 0xfffffffe);
+
 export function TelaPrincipal() {
-  // cada partida nova ganha uma semente própria: eventos diferentes (SG106)
-  // e personagens diferentes na primeira tela (V1-39)
-  const [semente] = useState(() => 1 + Math.floor(Math.random() * 0xfffffffe));
-  const [fundacao, setFundacao] = useState<Fundacao | null>(null);
-  const [inicial, setInicial] = useState<Inicial | null>(null);
+  const [tela, setTela] = useState<Tela>({ nome: "menu" });
   useEffect(() => {
-    if (!fundacao) return;
+    if (tela.nome !== "criando") return;
+    const { fundacao } = tela;
     const id = window.setTimeout(
       () =>
         // V1-12: as leis passam pelo Congresso (modo real); V1-39: o
         // jogador é o partido e já começa no governo
-        setInicial(
-          criarPartida({
+        setTela({
+          nome: "jogo",
+          id: Date.now(),
+          inicial: criarPartida({
             semente: fundacao.semente,
             modo: "real",
             partido: fundacao.partido,
             presidente: fundacao.presidente,
           }),
-        ),
+        }),
       60,
     );
     return () => window.clearTimeout(id);
-  }, [fundacao]);
-  if (!fundacao)
-    return <TelaDeFundacao semente={semente} onComecar={setFundacao} />;
-  if (!inicial)
+  }, [tela]);
+  const novo = () => setTela({ nome: "fundacao", semente: novaSemente() });
+  const menu = () => setTela({ nome: "menu" });
+  if (tela.nome === "menu")
+    return (
+      <MenuPrincipal
+        onNovo={novo}
+        onCarregar={({ partida, anexos }) =>
+          setTela({
+            nome: "jogo",
+            id: Date.now(),
+            inicial: { ok: true, value: partida },
+            anexos,
+          })
+        }
+      />
+    );
+  if (tela.nome === "fundacao")
+    return (
+      <TelaDeFundacao
+        semente={tela.semente}
+        onComecar={(fundacao) => setTela({ nome: "criando", fundacao })}
+      />
+    );
+  if (tela.nome === "criando")
     return (
       <div className="carregando" role="status" aria-live="polite">
         <div className="carregando-giro" aria-hidden="true" />
         <p>Carregando o governo…</p>
       </div>
     );
-  return <TelaPrincipalCarregada inicial={inicial} />;
+  return (
+    <TelaPrincipalCarregada
+      key={tela.id}
+      inicial={tela.inicial}
+      anexos={tela.anexos}
+      onNovo={novo}
+      onMenu={menu}
+    />
+  );
 }
 
-function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
+function TelaPrincipalCarregada({
+  inicial,
+  anexos,
+  onNovo,
+  onMenu,
+}: {
+  inicial: Inicial;
+  anexos?: Readonly<Record<string, unknown>>;
+  onNovo: () => void;
+  onMenu: () => void;
+}) {
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [salvarAberto, setSalvarAberto] = useState(false);
@@ -403,7 +459,11 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
   /** A visão antes do último turno: o jornal compara com ela. */
   const [visaoAnterior, setVisaoAnterior] = useState<VisaoPartida | null>(null);
   /** Valores de cada turno já passado: as linhas de evolução do jornal. */
-  const [historico, setHistorico] = useState<readonly FotoDoTurno[]>([]);
+  const [historico, setHistorico] = useState<readonly FotoDoTurno[]>(() =>
+    Array.isArray(anexos?.historico)
+      ? (anexos.historico as readonly FotoDoTurno[])
+      : [],
+  );
   const [erroTurno, setErroTurno] = useState<string | null>(null);
   const [pulsos, setPulsos] = useState<ReadonlySet<string>>(new Set());
   const [passando, setPassando] = useState(false);
@@ -441,7 +501,11 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
     () => (partida ? verEleicao(partida) : undefined),
     [partida],
   );
-  const [fimVisto, setFimVisto] = useState(false);
+  // V1-39: a noite da apuração, depois do turno da eleição
+  const [apuracao, setApuracao] = useState<VisaoResultado | null>(null);
+  // na derrota (ou ao abrir uma partida perdida) a noite fica na tela
+  const noite =
+    apuracao ?? (eleicao?.encerrada ? eleicao.resultados.at(-1) : undefined);
   // V1-13: dilemas e pedidos do Congresso esperando no tablet
   const avisosNoTablet =
     (visao?.ocorrencias.mesa.length ?? 0) + (congresso?.pedidos.length ?? 0);
@@ -620,10 +684,7 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
   const passarTurno = () => {
     if (!partida || passando) return;
     // V1-39: partida perdida ou sem candidato: o tablet abre na eleição
-    if (eleicao?.encerrada) {
-      setFimVisto(false);
-      return;
-    }
+    if (eleicao?.encerrada) return;
     if (eleicao && faltaCandidato(eleicao) && eleicao.turnosAteAEleicao === 0) {
       setTablet("eleicao");
       return;
@@ -667,8 +728,10 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
       setRelatorio(r.value.relatorio);
       // o jornal do trimestre chega com o fim do turno; dilemas e pedidos
       // ficam nas notificações do tablet (V1-13)
-      // V1-39: no turno da eleição, o tablet abre no resultado
-      setTablet(r.value.relatorio.eleicao?.resultado ? "eleicao" : "jornal");
+      // V1-39: no turno da eleição, a noite da apuração vem antes do jornal
+      const apurada = r.value.relatorio.eleicao?.resultado;
+      if (apurada) setApuracao(apurada);
+      else setTablet("jornal");
       setAviso(r.value.relatorio);
       setPulsos(new Set([...mudaram.keys(), ...porVoce.keys()]));
     }, 30);
@@ -852,38 +915,22 @@ function TelaPrincipalCarregada({ inicial }: { inicial: Inicial }) {
         />
       ) : null}
 
-      {eleicao?.encerrada && !fimVisto && !jornalAberto && !salvarAberto ? (
-        <div className="fim-fundo" role="dialog" aria-label="Fim da partida">
-          <div className="fim-caixa">
-            <h1>Fim da partida</h1>
-            <p>
-              {eleicao.partido.nome} deixa o governo depois de{" "}
-              {eleicao.mandato === 1
-                ? "um mandato"
-                : `${eleicao.mandato} mandatos`}
-              .
-            </p>
-            {eleicao.resultados.at(-1) ? (
-              <Resultado
-                r={eleicao.resultados.at(-1)!}
-                nomeDoSegmento={(id) =>
-                  visao.bolhas.find((b) => b.id === id)?.nome ?? id
-                }
-              />
-            ) : null}
-            <div className="fim-botoes">
-              <button type="button" onClick={() => window.location.reload()}>
-                Novo partido
-              </button>
-              <button type="button" onClick={() => setSalvarAberto(true)}>
-                Carregar partida
-              </button>
-              <button type="button" onClick={() => setFimVisto(true)}>
-                Ver o país
-              </button>
-            </div>
-          </div>
-        </div>
+      {noite ? (
+        <NoiteDaApuracao
+          key={noite.turno}
+          resultado={noite}
+          jaApurada={!apuracao}
+          sigla={eleicao?.partido.sigla}
+          nomeDoSegmento={(id) =>
+            visao.bolhas.find((b) => b.id === id)?.nome ?? id
+          }
+          onContinuar={() => {
+            setApuracao(null);
+            setTablet("jornal");
+          }}
+          onNovo={onNovo}
+          onMenu={onMenu}
+        />
       ) : null}
 
       {salvarAberto && partida ? (

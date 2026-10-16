@@ -68,6 +68,8 @@ export type VisaoResultado = Readonly<{
   primeiro: readonly Readonly<{ nome: string; votos: number }>[];
   segundo?: readonly Readonly<{ nome: string; votos: number }>[];
   comparecimento: number;
+  /** Retrato de cada nome da disputa (os adversários mudam depois). */
+  retratos: Readonly<Record<string, string>>;
   /** % do candidato do partido em cada segmento, do maior para o menor. */
   porSegmento: readonly Readonly<{ id: string; votos: number }>[];
 }>;
@@ -103,15 +105,18 @@ function verPersonagem(
   ano: number,
   extra?: { estranhamento?: number },
 ): VisaoPersonagem {
+  const idade = Math.floor(ano - p.nascimento);
   return {
     id: p.id,
     nome: p.nome,
     real: p.real,
     genero: p.genero,
-    idade: Math.floor(ano - p.nascimento),
+    idade,
     estado: p.estado,
     carreira: p.carreira,
-    biografia: p.biografia,
+    // a biografia foi escrita com a idade de quando o personagem foi
+    // gerado; a idade dela acompanha o ano
+    biografia: p.biografia.replace(/^([^,]+), \d+ anos,/, `$1, ${idade} anos,`),
     opinioes: p.opinioes,
     carisma: p.carisma,
     experiencia: p.experiencia,
@@ -183,6 +188,9 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
       primeiro: lista(r.primeiro.votos),
       ...(r.segundo ? { segundo: lista(r.segundo.votos) } : {}),
       comparecimento: (r.segundo ?? r.primeiro).comparecimento,
+      retratos: Object.fromEntries(
+        [r.candidato, ...r.adversarios].map((p) => [p.nome, retratoDe(p)]),
+      ),
       porSegmento: Object.entries(r.porSegmento)
         .map(([id, votos]) => ({ id, votos }))
         .sort((a, b) => b.votos - a.votos),
