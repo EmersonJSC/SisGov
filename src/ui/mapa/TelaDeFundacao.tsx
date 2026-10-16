@@ -1,7 +1,8 @@
 /**
- * Primeira tela (V1-39): o jogador é um partido. Funda o partido e escolhe
- * quem vai à Presidência, como numa seleção de personagem: os rostos em
- * fila e a ficha de quem está em foco. Ninguém diz de que lado está.
+ * Primeira tela (V1-39), no estilo "Dossiê Tropical" (docs/arte/PROMPTS.md):
+ * a mesa do presidente. O jogador preenche a ficha de registro do partido e
+ * escolhe quem vai governar entre as polaroides do dossiê. Ninguém diz de
+ * que lado está.
  */
 import { useMemo, useState } from "react";
 import { primeirosCandidatos } from "../../app/partida";
@@ -21,6 +22,9 @@ const iniciais = (nome: string) =>
     .map((p) => p[0].toUpperCase())
     .join("")
     .slice(0, 5);
+
+/** Inclinação de cada polaroide na mesa, em graus. */
+const GIROS = [-2.5, 1.5, -1, 2.2, -1.8, 1];
 
 function Medidor({ rotulo, valor }: { rotulo: string; valor: number }) {
   return (
@@ -65,17 +69,21 @@ export function TelaDeFundacao({
           </p>
         </header>
 
-        <section className="fd-passo" aria-label="Funde o seu partido">
-          <h2>
-            <span className="fd-numero">I</span> Funde o seu partido
-          </h2>
+        <section
+          className="fd-papel fd-registro"
+          aria-label="Ficha de registro do partido"
+        >
+          <header className="fd-cabecalho">
+            <span>Ficha de registro de partido político</span>
+            <span>Nº 0001 · via única</span>
+          </header>
           <div className="fd-partido">
             <div className="fd-emblema" aria-hidden>
               <Arte caminho="logo/emblema.png" className="fd-emblema-arte" />
               <span>{marca}</span>
             </div>
             <label className="fd-campo fd-campo-nome">
-              Nome
+              Nome do partido
               <input
                 value={nome}
                 maxLength={60}
@@ -95,10 +103,8 @@ export function TelaDeFundacao({
           </div>
         </section>
 
-        <section className="fd-passo" aria-label="Quem vai governar">
-          <h2>
-            <span className="fd-numero">II</span> Escolha quem vai governar
-          </h2>
+        <section className="fd-dossie" aria-label="Candidatos à Presidência">
+          <h2 className="fd-aba">Dossiê: quem vai governar</h2>
           <p className="fd-dica">
             Ninguém diz de que lado está. Leia o que cada um pensa.
           </p>
@@ -109,28 +115,42 @@ export function TelaDeFundacao({
                 type="button"
                 role="radio"
                 aria-checked={presidente === p.id}
-                className={`fd-rosto${presidente === p.id ? " fd-escolhido" : ""}`}
-                style={{ animationDelay: `${i * 70}ms` }}
+                className={`fd-polaroide${presidente === p.id ? " fd-escolhido" : ""}`}
+                style={
+                  {
+                    "--giro": `${GIROS[i % GIROS.length]}deg`,
+                    animationDelay: `${i * 70}ms`,
+                  } as React.CSSProperties
+                }
                 onClick={() => setPresidente(p.id)}
                 onMouseEnter={() => setEmFoco(p.id)}
                 onMouseLeave={() => setEmFoco(null)}
                 onFocus={() => setEmFoco(p.id)}
                 onBlur={() => setEmFoco(null)}
               >
+                <span className="fd-alfinete" aria-hidden />
                 <Retrato retrato={p.retrato} className="fd-retrato" />
-                <span className="fd-placa">
+                <span className="fd-legenda">
                   <strong>{p.nome}</strong>
                   <small>
                     {p.idade} anos · {p.carreira || "pessoa real"}
                   </small>
                 </span>
+                {presidente === p.id ? (
+                  <span className="fd-carimbo-escolha" aria-hidden>
+                    Escolhido
+                  </span>
+                ) : null}
               </button>
             ))}
           </div>
 
-          <article className="fd-ficha" aria-live="polite">
+          <article className="fd-papel fd-folha" aria-live="polite">
             {ficha ? (
               <>
+                <span className="fd-confidencial" aria-hidden>
+                  Confidencial
+                </span>
                 <header>
                   <h3>{ficha.nome}</h3>
                   <p>
@@ -154,13 +174,20 @@ export function TelaDeFundacao({
               </>
             ) : (
               <p className="fd-vazia">
-                Passe o mouse num rosto para ler a ficha.
+                Passe o mouse numa foto para abrir a ficha.
               </p>
             )}
           </article>
         </section>
 
         <footer className="fd-pe">
+          {!pronto ? (
+            <span className="fd-falta">
+              {nome.trim().length < 2
+                ? "Falta o nome do partido."
+                : "Falta escolher quem vai governar."}
+            </span>
+          ) : null}
           <button
             type="button"
             className="fd-comecar"
@@ -177,15 +204,9 @@ export function TelaDeFundacao({
               })
             }
           >
-            Começar o mandato
+            <span className="fd-lampada" aria-hidden />
+            Tomar posse
           </button>
-          {!pronto ? (
-            <span className="fd-falta">
-              {nome.trim().length < 2
-                ? "Falta o nome do partido."
-                : "Falta escolher o presidente."}
-            </span>
-          ) : null}
         </footer>
       </div>
     </main>

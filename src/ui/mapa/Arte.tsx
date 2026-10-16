@@ -1,6 +1,6 @@
 /**
  * Artes do jogo (V1-39): imagens em `public/arte/`, feitas por IA por
- * enquanto (prompts em `docs/arte/PROMPTS.md`). Toda arte é opcional: se o
+ * enquanto (prompts e guia de estilo em `docs/arte/PROMPTS.md`). Toda arte é opcional: se o
  * arquivo não existe, a tela mostra o substituto e segue igual.
  */
 import { useState, type ReactNode } from "react";
