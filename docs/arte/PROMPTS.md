@@ -52,7 +52,7 @@ A moldura da polaroid, o alfinete, o papel e os carimbos são feitos pelo jogo. 
 | `retratos/{carreira}-m.jpg` e `-f.jpg` | Rosto de cada personagem gerado (34) | 1024×1365 (3:4) |
 | `retratos/pessoa-real.jpg` | Pessoas reais (Lula, FHC etc.) | 1024×1365 (3:4) |
 
-**Já no jogo (16/out):** `fundos/fundacao.jpg`, `fundos/carregando.jpg`, `cenas/campanha.jpg`, `cenas/vitoria.jpg`, `cenas/derrota.jpg`. Em `reserva/` ficaram três do primeiro estilo (comício com palco, capital à noite, mesa à noite), para usar depois. Faltam o logo, o selo e os 35 retratos.
+**Já no jogo (16/out):** `fundos/fundacao.jpg`, `fundos/carregando.jpg`, `cenas/campanha.jpg`, `cenas/vitoria.jpg`, `cenas/derrota.jpg`. Em `reserva/` ficaram três do primeiro estilo (comício com palco, capital à noite, mesa à noite), para usar depois. Retratos: 33 de 35 (16/out). Faltam o logo, o selo e os dois de cientista (`cientista-m.jpg` e `cientista-f.jpg`).
 
 **Pessoas reais não ganham rosto de IA.** Rosto de político real feito por IA é deepfake, e os geradores costumam recusar. Elas usam o retrato neutro `pessoa-real.jpg`.
 
