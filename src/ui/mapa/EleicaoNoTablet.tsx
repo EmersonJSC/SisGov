@@ -78,7 +78,7 @@ export function Resultado({
   return (
     <article className={`el-resultado ${r.venceu ? "el-venceu" : "el-perdeu"}`}>
       <Arte
-        caminho={r.venceu ? "cenas/vitoria.png" : "cenas/derrota.png"}
+        caminho={r.venceu ? "cenas/vitoria.jpg" : "cenas/derrota.jpg"}
         className="el-cena"
       />
       <h3>

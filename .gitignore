@@ -11,3 +11,6 @@ __pycache__/
 
 # Dados brutos baixados (votações da Câmara etc.): só locais
 dados/
+
+# artes de IA em tamanho original (as otimizadas ficam em public/arte)
+/arte-originais/

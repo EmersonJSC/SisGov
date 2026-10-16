@@ -5269,7 +5269,7 @@ button {
   gap: 18px;
   background:
     linear-gradient(rgba(11, 19, 34, 0.55), rgba(11, 19, 34, 0.85)),
-    url("/arte/fundos/carregando.png") center / cover no-repeat,
+    url("/arte/fundos/carregando.jpg") center / cover no-repeat,
     #0b1322;
   color: #f3ead6;
   font-family: var(--serifa, serif);
@@ -6172,7 +6172,7 @@ button {
       transparent 70%
     ),
     linear-gradient(180deg, rgba(20, 14, 9, 0.25), rgba(20, 14, 9, 0.6)),
-    url("/arte/fundos/fundacao.png") center / cover no-repeat fixed,
+    url("/arte/fundos/fundacao.jpg") center / cover no-repeat fixed,
     repeating-linear-gradient(
       93deg,
       #3b2618 0 14px,
@@ -6772,7 +6772,7 @@ button {
   color: #f3ead6;
   background:
     linear-gradient(90deg, rgba(11, 19, 34, 0.92) 30%, rgba(11, 19, 34, 0.35)),
-    url("/arte/cenas/campanha.png") center / cover no-repeat,
+    url("/arte/cenas/campanha.jpg") center / cover no-repeat,
     linear-gradient(120deg, #16203a, #2c2a3e);
 }
 

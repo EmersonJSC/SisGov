@@ -47,7 +47,7 @@ export function Retrato({
         <circle cx="50" cy="46" r="21" />
         <path d="M10 120c0-27 18-44 40-44s40 17 40 44z" />
       </svg>
-      <Arte caminho={`retratos/${retrato}.png`} className="rt-imagem" />
+      <Arte caminho={`retratos/${retrato}.jpg`} className="rt-imagem" />
     </div>
   );
 }
