@@ -1737,7 +1737,7 @@ export function MapaPolitico({
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`${ministerio.titulo}: ${ministerio.pastas.map((p) => p.cargo).join(", ")}; ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
+                aria-label={`${ministerio.titulo}: ${ministerio.faz}. ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
                 aria-expanded={e.aberta}
                 onKeyDown={aoTeclar(() => abrirEsfera(ministerio.nome))}
               >
@@ -1771,6 +1771,18 @@ export function MapaPolitico({
                         {linha}
                       </tspan>
                     ))}
+                  </text>
+                ) : null}
+                {tituloLonge &&
+                ministerio.faz.startsWith("Não implementado") ? (
+                  <text
+                    className="contagem-esfera"
+                    x={e.x}
+                    y={e.y + e.r * 0.82}
+                    fontSize={Math.min(e.r * 0.15, 10 / k)}
+                    textAnchor="middle"
+                  >
+                    NÃO IMPLEMENTADO
                   </text>
                 ) : null}
                 <g
@@ -1831,10 +1843,9 @@ export function MapaPolitico({
                     fontSize={bloco.contagem.tamanho}
                     textAnchor="middle"
                   >
-                    {ministerio.pastas.length > 1
-                      ? `${ministerio.pastas.length} ministérios`
-                      : ministerio.cargo}{" "}
-                    · {ministerio.leis.length} leis
+                    {ministerio.faz.startsWith("Não implementado")
+                      ? "NÃO IMPLEMENTADO"
+                      : `${ministerio.leis.length} leis em teste`}
                     {constit && e.aberta
                       ? ` · ${constit} constituciona${constit > 1 ? "is" : "l"}`
                       : ""}
@@ -1997,7 +2008,9 @@ export function MapaPolitico({
                     textAnchor="middle"
                     className="rotulo-constituicao"
                   >
-                    Constituição Federal
+                    {totalConstitucionais > 0
+                      ? "Constituição"
+                      : "Constituição não implementada"}
                   </text>
                   <text
                     y={86}

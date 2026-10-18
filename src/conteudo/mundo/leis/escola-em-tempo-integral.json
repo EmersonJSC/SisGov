@@ -3,71 +3,58 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Escola em tempo integral",
-  "descricao": "Quantas escolas funcionam o dia inteiro?",
+  "nome": "Oferta de jornada escolar ampliada",
+  "descricao": "Apoia a expansão de matrículas em tempo integral, sujeita a vagas, docentes e serviços de apoio.",
   "area": "Educação, ciência e cultura",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14640.htm",
+  "processoAutorizacao": "expansao-de-oferta",
+  "nivelLegal": "derivada",
+  "revogavel": true,
   "mesa": {
-    "id": "escola",
-    "nome": "Escola",
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
     "camada": "alavanca"
   },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
   "controle": {
-    "variavel": "nivel_escola_em_tempo_integral",
-    "unidade": "nivel_escopo",
+    "variavel": "oferta_jornada_integral",
+    "unidade": "nivel",
     "opcoes": [
       {
-        "id": "meio-turno",
-        "rotulo": "Meio turno",
-        "valor": 0,
-        "rejeitam": ["Famílias com filhos"],
-        "efeitos": "Nada muda"
+        "id": "territorios-vulneraveis",
+        "rotulo": "Priorizar territórios vulneráveis — Começa por escolas em áreas com maior vulnerabilidade, ampliando a jornada onde o apoio pode reduzir barreiras de permanência.",
+        "valor": 1,
+        "efeitos": "Começa por escolas em áreas com maior vulnerabilidade, ampliando a jornada onde o apoio pode reduzir barreiras de permanência. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "integral-em-parte-das-vagas-20-a-30",
-        "rotulo": "Integral em parte das vagas, 20 a 30%",
-        "valor": 50,
-        "custoTexto": "+0,1 a 0,2% do PIB (aprox.), educação",
-        "apoiam": ["Governadores", "Famílias com filhos"],
-        "efeitos": "Aprendizagem ↑ +0,22 desvio-padrão em matemática (3 anos); Mães trabalham mais horas ↑; Segregação escolar ↑ sem bolsa"
+        "id": "expandir-gradualmente",
+        "rotulo": "Expandir gradualmente — Cria vagas de jornada ampliada em etapas, limitadas pela capacidade de escolas e docentes. Cresce mais devagar e reduz risco de expansão sem estrutura.",
+        "valor": 2,
+        "efeitos": "Cria vagas de jornada ampliada em etapas, limitadas pela capacidade de escolas e docentes. Cresce mais devagar e reduz risco de expansão sem estrutura. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "integral-universal",
-        "rotulo": "Integral universal",
-        "valor": 100,
-        "custoTexto": "+0,6 a 1,0% do PIB (aprox.), educação",
-        "apoiam": ["Famílias com filhos", "Sindicatos de professores"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Aprendizagem ↑ (3 anos); Evasão escolar ↓ no geral e ↑ entre quem trabalha; Resultado fiscal ↓"
+        "id": "jornada-completa",
+        "rotulo": "Ampliar jornada — Acelera a oferta de jornada ampliada. Pode elevar permanência e aprendizagem, mas exige mais capacidade e apresenta custo comparativo maior.",
+        "valor": 3,
+        "efeitos": "Acelera a oferta de jornada ampliada. Pode elevar permanência e aprendizagem, mas exige mais capacidade e apresenta custo comparativo maior. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
       }
     ]
   },
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "consequencias": [
-    "escola-tempo-integral--participacao-trabalho-cuidadoras",
-    "escola-tempo-integral--violencia-letal",
-    "escola-tempo-integral--natalidade",
-    "escola-tempo-integral--aprendizagem",
-    "escola-tempo-integral--evasao-escolar",
-    "escola-tempo-integral--gasto-publico",
-    "escola-tempo-integral--grupo-classe-media",
-    "escola-tempo-integral--grupo-empresarios",
-    "escola-tempo-integral--grupo-jovens",
-    "escola-tempo-integral--grupo-pobres",
-    "escola-tempo-integral--grupo-progressistas",
-    "escola-tempo-integral--grupo-familias-com-filhos"
-  ],
-  "mae": {
-    "texto": "Ensino obrigatório. \"Universal\" exige \"Dos 4 aos 17 anos\" (ou mais verba).",
-    "leis": ["ensino-obrigatorio"]
-  },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  },
-  "ministerio": "Ministério da Educação"
+    "educacao-escola-em-tempo-integral-permanencia_escolar",
+    "educacao-escola-em-tempo-integral-grupo_pobres",
+    "educacao-escola-em-tempo-integral-custo_educacao_hipotese",
+    "educacao-escola-em-tempo-integral-vagas_escolares",
+    "educacao-escola-em-tempo-integral-docentes_disponiveis",
+    "educacao-escola-em-tempo-integral-aprendizagem_escolar"
+  ]
 }

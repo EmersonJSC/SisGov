@@ -1,147 +1,59 @@
 {
   "id": "piso-salarial-professores",
   "tipo": "lei",
-  "versaoEsquema": 3,
-  "nome": "Piso salarial dos professores",
-  "descricao": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é em relação a outras profissões de nível superior.",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso e valorização do magistério público",
+  "descricao": "Define o piso nacional do magistério público da educação básica e sua atualização. O efeito de retenção docente no piloto é hipótese.",
   "area": "Educação, ciência e cultura",
+  "fonte": "https://planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15437.htm",
+  "processoAutorizacao": "remuneracao-magisterio",
+  "nivelLegal": "derivada",
+  "revogavel": true,
   "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
   },
-  "ministerio": "Ministério da Educação",
-  "nivel": "lei",
   "controle": {
-    "variavel": "nivel_piso_salarial_professores",
-    "unidade": "nivel_escopo",
+    "variavel": "valorizacao_magisterio",
+    "unidade": "nivel",
     "opcoes": [
       {
-        "id": "sem-piso-nacional",
-        "rotulo": "Cada rede decide",
-        "valor": 0
+        "id": "fiscalizar-piso",
+        "rotulo": "Fiscalizar cumprimento — Prioriza identificar redes que não cumprem o piso legal e apoiar a regularização. O modelo não presume aumento automático de aprendizagem.",
+        "valor": 1,
+        "efeitos": "Prioriza identificar redes que não cumprem o piso legal e apoiar a regularização. O modelo não presume aumento automático de aprendizagem. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+        "apoiam": ["servidores públicos"],
+        "rejeitam": []
       },
       {
-        "id": "piso-nacional-minimo",
-        "rotulo": "Piso nacional",
-        "valor": 33
+        "id": "complementar-redes",
+        "rotulo": "Apoiar redes com dificuldade — Prioriza assistência às redes com menor capacidade de financiar o piso. Tem custo comparativo maior e pode reduzir desigualdades de atendimento.",
+        "valor": 2,
+        "efeitos": "Prioriza assistência às redes com menor capacidade de financiar o piso. Tem custo comparativo maior e pode reduzir desigualdades de atendimento. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+        "apoiam": ["servidores públicos"],
+        "rejeitam": []
       },
       {
-        "id": "carreira-nacional",
-        "rotulo": "Carreira nacional",
-        "valor": 67
-      },
-      {
-        "id": "salario-de-elite",
-        "rotulo": "Salário de elite",
-        "valor": 100
+        "id": "reter-professores",
+        "rotulo": "Reter professores — Prioriza reduzir a saída de docentes e estabilizar equipes. O efeito sobre disponibilidade docente é uma hipótese do piloto.",
+        "valor": 3,
+        "efeitos": "Prioriza reduzir a saída de docentes e estabilizar equipes. O efeito sobre disponibilidade docente é uma hipótese do piloto. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+        "apoiam": ["servidores públicos"],
+        "rejeitam": []
       }
     ]
   },
-  "implantacao": {
-    "entrada": 0.3,
-    "saida": 0.2
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
   },
-  "efeitos": [
-    {
-      "alvo": "aprendizagem",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.07,
-        "termoConstante": -0.0
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "greve_de_professores",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0.0
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "desigualdade",
-      "mecanismo": "limiar",
-      "parametros": {
-        "coeficiente": -0.04477612,
-        "limiar": 33,
-        "direcao": "acima"
-      },
-      "atraso": 4
-    },
-    {
-      "alvo": "custo_trabalhista",
-      "mecanismo": "limiar",
-      "parametros": {
-        "coeficiente": 0.1875,
-        "limiar": 84,
-        "direcao": "acima"
-      },
-      "atraso": 1
-    },
-    {
-      "alvo": "gasto_publico",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0],
-          [33, 0.3],
-          [67, 0.7],
-          [100, 1.5]
-        ]
-      },
-      "atraso": 0,
-      "leitura": "nivel"
-    },
-    {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.1,
-        "termoConstante": 0
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_jovens",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.1,
-        "termoConstante": 0
-      },
-      "atraso": 0
-    },
-    {
-      "alvo": "grupo_trabalhadores",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.1,
-        "termoConstante": 0
-      },
-      "atraso": 0
-    }
-  ],
-  "historia": {
-    "opcoes": {
-      "sem-piso-nacional": ["Estados Unidos"],
-      "piso-nacional-minimo": ["Brasil"],
-      "carreira-nacional": ["França", "Coreia do Sul"],
-      "salario-de-elite": ["Luxemburgo"]
-    },
-    "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.738/2008, piso salarial profissional nacional do magistério",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
-      "usadoPara": "opção vigente no Brasil"
-    },
-    {
-      "titulo": "OCDE, Education at a Glance (salários de professores por país)",
-      "url": "https://www.oecd.org/education/education-at-a-glance/",
-      "usadoPara": "países por opção"
-    }
+  "consequencias": [
+    "educacao-piso-salarial-professores-docentes_disponiveis",
+    "educacao-piso-salarial-professores-grupo_servidores",
+    "educacao-piso-salarial-professores-custo_educacao_hipotese",
+    "educacao-piso-salarial-professores-grupo_interior",
+    "educacao-piso-salarial-professores-permanencia_escolar"
   ]
 }

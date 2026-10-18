@@ -1,0 +1,21 @@
+{
+  "id": "educacao-transporte-escolar-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_transporte_escolar",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 2.4],
+      [2, 2],
+      [3, 1.5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

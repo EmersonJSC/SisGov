@@ -1,41 +1,30 @@
 {
   "tipo": "mundo-eleicao",
   "versaoEsquema": 1,
-  "metodo": "Desenho em docs/v1/desenho/eleicao.md. Cada perfil do eleitorado dá a cada candidato a nota −sensibilidade × distância na bússola + carisma + experiência + carreira; o candidato do partido no governo soma o voto econômico (mudança de inflação, desemprego e renda no mandato), o voto do governo (satisfação do perfil) e tira o custo de governar; os perfis da base do partido tiram o estranhamento. Chance de voto pelo logit (a mesma função do Congresso). Ninguém com mais que a maioria dos válidos: 2º turno entre os dois primeiros.",
+  "metodo": "Eleição indisponível nesta base mínima",
   "voto": {
-    "sensibilidade": 0.1,
-    "pesoEconomico": {
-      "inflacao": -0.3,
-      "desemprego": -0.4,
-      "renda_familias": 0.2
-    },
-    "escalas": {
-      "inflacao": 5,
-      "desemprego": 3,
-      "renda_familias": 10
-    },
-    "pesoDoGoverno": 2,
-    "custoDeGovernar": 0.3,
-    "carisma": 0.15,
-    "experiencia": 0.1,
-    "carreira": 0.3,
-    "convergencia": 0.3,
-    "nota": "Valores inferidos, a calibrar com os testes de mandato. Sinais: inflação e desemprego que sobem tiram nota; renda que sobe dá. Custo de governar: Paldam (1986), cerca de 2 pontos por mandato. convergencia: quanto o candidato da oposição anda do ponto da ideologia dele até o eleitor mediano (Downs, 1957). pesoDosCostumes: na urna presidencial a distância nos costumes vale metade (o voto presidencial segue mais a renda; Singer, 2012, sobre o lulismo); inferido. vantagemDoCargo: o presidente que concorre à reeleição tem visibilidade e máquina (no país, 3 de 4 presidentes que tentaram foram reeleitos); inferido. sensibilidade 0,1 (o Congresso usa 0,3): na prova com os 2º turnos de 2006, 2014, 2018 e 2022 (scripts/eleicao/prova.ts), só a bússola erra em média 10 pontos com 0,1 e 19 com 0,3; o voto presidencial no país depende mais da conjuntura que da distância.",
-    "pesoDosCostumes": 0.5,
-    "vantagemDoCargo": 0.8
+    "pesoEconomico": {},
+    "escalas": {},
+    "pesoDoGoverno": 0,
+    "custoDeGovernar": 0,
+    "carisma": 0,
+    "experiencia": 0,
+    "carreira": 0,
+    "convergencia": 0,
+    "pesoDosCostumes": 0,
+    "sensibilidade": 0,
+    "vantagemDoCargo": 0
   },
-  "ruido": 2,
+  "ruido": 0,
   "pesquisas": {
-    "tamanhoDaAmostra": 2000,
-    "viesDoInstituto": 1.5,
-    "nota": "Erro de amostra ≈ raiz(p(1−p)/n) em pontos; o viés do instituto é sorteado uma vez por mandato, normal com este desvio (pontos)."
+    "tamanhoDaAmostra": 1,
+    "viesDoInstituto": 0
   },
   "estranhamento": {
-    "tolerancia": 2,
-    "pesoNoVoto": 0.3,
-    "quedaDaDisciplina": 0.04,
-    "disciplinaMinima": 0.6,
-    "passoDaIdeologia": 0.3,
-    "nota": "Distância (bússola) entre o candidato e a ideologia do partido acima da tolerância = excesso. Perfis da base perdem pesoNoVoto × excesso × força da base; a disciplina das cadeiras do partido cai quedaDaDisciplina por ponto de excesso, até a mínima. A cada novo presidente, a ideologia do partido anda passoDaIdeologia até ele. Valores inferidos."
+    "tolerancia": 0,
+    "pesoNoVoto": 0,
+    "quedaDaDisciplina": 0,
+    "disciplinaMinima": 0,
+    "passoDaIdeologia": 0
   }
 }

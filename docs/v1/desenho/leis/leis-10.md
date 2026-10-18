@@ -1,12 +1,27 @@
 ## Meio ambiente, energia, terra e cidades
 
-São 15 leis (2 Constituição, 9 Lei, 4 Alavanca), e 5 delas ainda têm ponto aberto.
+O estudo original reunia 15 fichas (2 Constituição, 9 Lei, 4 Alavanca), e 5 delas ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 16 registros nesta área; 15 fichas recentes, 1 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Nota de leitura: o lado vem do estudo da área, que mede pelo Manifesto Project e por votos reais. Lá o eixo de costumes vai de −1 (liberdade) a +1 (autoridade) e é fraco nesta área: só pesa quando a opção usa coerção do Estado sobre pessoas ou comunidades. Os turnos de implantação das leis comuns são proposta minha dentro da regra de 1 a 2 turnos.
 
 ### Floresta e licença
 
 #### Proteção da vegetação nativa nas propriedades rurais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:01`; tabela antiga: codigo-florestal.
+- **Ciclos:** C18 Terra, agro e alimentos.
+- **Decisão:** quanto de cada imóvel rural deve ficar com mata nativa, e o que acontece com quem desmatou antes?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fiscalizar e punir o desmatamento → Desmatamento zero (correspondência textual; conferir intenção do programa); Pagar para preservar → Desmatamento zero (correspondência textual; conferir intenção do programa); Expandir a fronteira agrícola → Sem proteção (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** quanto de cada imóvel rural deve ficar com mata nativa, e o que acontece com quem desmatou antes?
 **Camada:** Lei · **Implantação:** 2 turnos (proposta minha) · **Inventário:** Fica (Código florestal)
@@ -27,6 +42,19 @@ Regras de trava: Desmatamento zero exige licenciamento diferente de Sem licencia
 
 #### Licenciamento de obras e empresas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:02`; tabela antiga: licenciamento-ambiental, licenciamento-de-obras-e-empresas.
+- **Ciclos:** C03 Produção, comércio e empresas, C07 Moradia e cidade, C18 Terra, agro e alimentos, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** quem precisa de licença ambiental para obra ou empresa, em quantas etapas, e se as comunidades afetadas são ouvidas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Liberar a construção → Sem licenciamento (correspondência textual; conferir intenção do programa); Fiscalizar e punir o desmatamento → Rigoroso com consulta prévia (correspondência textual; conferir intenção do programa); Expandir a fronteira agrícola → Sem licenciamento (correspondência textual; conferir intenção do programa); Licença ambiental rápida → Autodeclaração para médio impacto (hoje no Brasil, aprox.) (opção corrigida por sentido do programa; validar evidência); Abrir negócio fácil → Sem licenciamento (correspondência textual; conferir intenção do programa); Liberar a construção → Sem licenciamento (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** quem precisa de licença ambiental para obra ou empresa, em quantas etapas, e se as comunidades afetadas são ouvidas?
 **Camada:** Lei · **Implantação:** 2 turnos (proposta minha) · **Inventário:** Fica (Licenciamento ambiental)
 **Mãe:** nenhuma
@@ -45,6 +73,19 @@ Regras de trava: Rigoroso com consulta tranca terras indígenas em Demarcação 
 **Países que usam:** Autodeclaração para baixo impacto: vários estados dos EUA (aprox.). Três etapas: Brasil antes de 2025. Consulta forte: Colômbia (aprox.).
 
 #### Registro de agrotóxicos
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:03`; tabela antiga: registro-de-agrotoxicos.
+- **Ciclos:** C18 Terra, agro e alimentos, C21 Defesa e relações externas.
+- **Decisão:** quem registra os pesticidas, e por qual critério: o perigo do produto ou o risco do uso?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Erradicação na origem → Permissiva: prazo curto e aprovação tácita (opção corrigida por sentido do programa; validar evidência); Expandir a fronteira agrícola → Permissiva: prazo curto e aprovação tácita (opção corrigida por sentido do programa; validar evidência); Revolução verde → Precaução: proíbe pelo perigo, veta cancerígenos (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** quem registra os pesticidas, e por qual critério: o perigo do produto ou o risco do uso?
 **Camada:** Lei · **Implantação:** 1 turno (proposta minha) · **Inventário:** Fica (Agrotóxicos)
@@ -66,6 +107,19 @@ Regras de trava: Só orgânico tranca o imposto seletivo em "saúde e ambiente" 
 
 #### Fiscalização ambiental
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:04`; tabela antiga: fiscalizacao-ambiental.
+- **Ciclos:** C02 Tributos e dívida, C18 Terra, agro e alimentos.
+- **Decisão:** quanto o governo gasta para vigiar a floresta por satélite, multar, embargar e cortar o crédito de quem desmata?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Ganha força quando Proteção da vegetação nativa está em Desmatamento zero (o efeito dessa opção depende desta verba).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fiscalizar e punir o desmatamento → Chave ligada: crédito condicionado (correspondência textual; conferir intenção do programa); Expandir a fronteira agrícola → Mínimo: sem fiscalização (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** quanto o governo gasta para vigiar a floresta por satélite, multar, embargar e cortar o crédito de quem desmata?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** nenhuma. Ganha força quando Proteção da vegetação nativa está em Desmatamento zero (o efeito dessa opção depende desta verba).
@@ -86,6 +140,19 @@ Regras de trava: Só orgânico tranca o imposto seletivo em "saúde e ambiente" 
 
 #### Fontes de energia favorecidas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:05`; tabela antiga: fontes-de-energia-favorecidas.
+- **Ciclos:** C19 Energia e transição.
+- **Decisão:** que fontes de energia o Estado favorece nos leilões e nos subsídios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Transição verde → Transição forçada: data para tirar os fósseis (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** que fontes de energia o Estado favorece nos leilões e nos subsídios?
 **Camada:** Lei · **Implantação:** 1 turno (proposta minha) · **Inventário:** Fica (Matriz energética)
 **Mãe:** nenhuma
@@ -105,6 +172,19 @@ Regras de trava: Transição forçada exige Carvão em Saída com data.
 
 #### Usinas a carvão
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:06`; tabela antiga: usinas-a-carvao.
+- **Ciclos:** C18 Terra, agro e alimentos, C19 Energia e transição.
+- **Decisão:** o Estado sustenta, deixa no mercado ou fecha com data as usinas e minas de carvão?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Fontes de energia favorecidas. Transição forçada lá exige Saída com data aqui.; ver dependências acima.
+- **Prazo:** 1 turno (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Transição verde → Saída com data (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** o Estado sustenta, deixa no mercado ou fecha com data as usinas e minas de carvão?
 **Camada:** Lei · **Implantação:** 1 turno (proposta minha) · **Inventário:** Fica (Carvão)
 **Mãe:** Fontes de energia favorecidas. Transição forçada lá exige Saída com data aqui.
@@ -120,6 +200,19 @@ Regras de trava: Transição forçada exige Carvão em Saída com data.
 **Países que usam:** Subsídio: Polônia. Livre: EUA. Saída com data: Alemanha (2038).
 
 #### Energia nuclear
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:07`; tabela antiga: energia-nuclear.
+- **Ciclos:** C19 Energia e transição.
+- **Decisão:** o país pode ter usinas nucleares, e pode construir novas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Energia nuclear em escala → Expansão (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** o país pode ter usinas nucleares, e pode construir novas?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -137,6 +230,19 @@ Regras de trava: Transição forçada exige Carvão em Saída com data.
 **Países que usam:** Proibida: Áustria, Itália. Sem novas: Alemanha. Expansão: França, China.
 
 #### Preço do carbono
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:08`; tabela antiga: preco-do-carbono.
+- **Ciclos:** C19 Energia e transição.
+- **Decisão:** quem emite gás de efeito estufa paga por isso, e quanto?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Proteção da vegetação nativa. Sem proteção lá tranca esta lei em Sem preço ou Mercado brando.; ver dependências acima.
+- **Prazo:** 2 turnos (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Imposto de carbono → Taxa alta (correspondência textual; conferir intenção do programa); Mercado de carbono → Mercado com teto (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** quem emite gás de efeito estufa paga por isso, e quanto?
 **Camada:** Lei · **Implantação:** 2 turnos (proposta minha) · **Inventário:** Fica (Precificação de carbono)
@@ -156,6 +262,19 @@ Regra de trava: Taxa alta com devolução em dinheiro às famílias muda Pobres 
 **Países que usam:** Mercado brando: Brasil, China. Mercado com teto: União Europeia. Taxa alta: Suécia.
 
 #### Investimento em geração por fonte
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:09`; tabela antiga: investimento-em-geracao-por-fonte.
+- **Ciclos:** C18 Terra, agro e alimentos, C19 Energia e transição.
+- **Decisão:** quanto da expansão de energia vai para cada fonte nos leilões?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Energia nuclear. Proibida tranca a fatia nuclear. Fontes de energia favorecidas muda o custo de cada fatia.; ver dependências acima.
+- **Prazo:** turno seguinte (a usina leva anos para ficar pronta); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Transição verde → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Energia nuclear em escala → Fatia nuclear (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** quanto da expansão de energia vai para cada fonte nos leilões?
 **Camada:** Alavanca · **Implantação:** turno seguinte (a usina leva anos para ficar pronta) · **Inventário:** Novo
@@ -178,6 +297,19 @@ Regra de trava: Taxa alta com devolução em dinheiro às famílias muda Pobres 
 
 #### Redistribuição de terras
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:10`; tabela antiga: redistribuicao-de-terras.
+- **Ciclos:** C18 Terra, agro e alimentos.
+- **Decisão:** o Estado pode tomar terra para dar a quem não tem, e com que regra?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Propriedade dos meios de produção (Economia). Redistribuição ampla só abre se lá não estiver em privada pura.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Reforma agrária → Redistribuição ampla, com teto de tamanho (correspondência textual; conferir intenção do programa); Coletivização do campo → Redistribuição ampla, com teto de tamanho (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** o Estado pode tomar terra para dar a quem não tem, e com que regra?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica (Reforma agrária)
 **Mãe:** Propriedade dos meios de produção (Economia). Redistribuição ampla só abre se lá não estiver em privada pura.
@@ -195,6 +327,19 @@ Regra de trava: Taxa alta com devolução em dinheiro às famílias muda Pobres 
 
 #### Terras indígenas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:11`; tabela antiga: terras-indigenas.
+- **Ciclos:** C18 Terra, agro e alimentos.
+- **Decisão:** o Estado reconhece as terras dos povos indígenas, por qual regra, e com quanto autogoverno?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Licenciamento de obras e empresas. Rigoroso com consulta lá tranca esta lei em Demarcação ou Autonomia. Autonomia aqui exige Rigoroso com consulta lá.; ver dependências acima.
+- **Prazo:** 2 turnos (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fiscalizar e punir o desmatamento → Autonomia: autogoverno do território (correspondência textual; conferir intenção do programa); Expandir a fronteira agrícola → Sem reconhecimento (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** o Estado reconhece as terras dos povos indígenas, por qual regra, e com quanto autogoverno?
 **Camada:** Lei · **Implantação:** 2 turnos (proposta minha) · **Inventário:** Fica
 **Mãe:** Licenciamento de obras e empresas. Rigoroso com consulta lá tranca esta lei em Demarcação ou Autonomia. Autonomia aqui exige Rigoroso com consulta lá.
@@ -211,6 +356,19 @@ Regra de trava: Taxa alta com devolução em dinheiro às famílias muda Pobres 
 **Países que usam:** Demarcação: Brasil (decisão do STF de 2023). Autonomia: Bolívia, Nunavut (Canadá).
 
 #### Crédito rural e assistência técnica
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:12`; tabela antiga: credito-rural-e-assistencia-tecnica.
+- **Ciclos:** C03 Produção, comércio e empresas, C05 Transferência e pobreza, C18 Terra, agro e alimentos.
+- **Decisão:** quanto o Estado barateia o crédito do produtor rural e paga técnicos para orientá-lo, e para quem vai esse dinheiro?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Banco de desenvolvimento (Economia). Sem banco lá tranca Crédito amplo subsidiado aqui (proposta minha). A chave do crédito condicionado fica em Fiscalização ambiental.; ver dependências acima.
+- **Prazo:** turno seguinte (vale para a safra seguinte); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Comida barata → Crédito amplo subsidiado, para todos os portes (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Fome zero → Foco na agricultura familiar e na assistência técnica (opção proposta por leitura do programa e da ficha; validar juridicamente); Reforma agrária → Foco na agricultura familiar e na assistência técnica (opção proposta por leitura do programa e da ficha; validar juridicamente); Revolução verde → Crédito verde: subsídio só para produção de baixo carbono (opção proposta por leitura do programa e da ficha; validar juridicamente); Apoio à agricultura familiar → Foco na agricultura familiar e na assistência técnica (opção proposta por leitura do programa e da ficha; validar juridicamente); Subsídio e proteção ao agro → Crédito amplo subsidiado, para todos os portes (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 Estudo curto: revisar.
 
@@ -235,6 +393,19 @@ Estudo curto: revisar.
 
 #### Água e esgoto
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:13`; tabela antiga: agua-e-esgoto.
+- **Ciclos:** C18 Terra, agro e alimentos, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** quem leva água tratada e coleta esgoto nas cidades: município, companhia estadual ou empresa privada, e com que metas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Empresas estatais e privatização (Economia). Concessão com metas só abre se lá não estiver em Estado empresário.; ver dependências acima.
+- **Prazo:** 2 turnos (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Saneamento com metas e empresas → Concessão com metas (hoje no Brasil) (corrigida por significado da opção); Saneamento estatal → Companhias estaduais (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** quem leva água tratada e coleta esgoto nas cidades: município, companhia estadual ou empresa privada, e com que metas?
 **Camada:** Lei · **Implantação:** 2 turnos (proposta minha) · **Inventário:** Fica (Saneamento básico)
 **Mãe:** Empresas estatais e privatização (Economia). Concessão com metas só abre se lá não estiver em Estado empresário.
@@ -252,6 +423,19 @@ Estudo curto: revisar.
 **Países que usam:** Municipal público: França (parte), Alemanha. Estadual ou nacional público: Uruguai, Brasil antes de 2020. Concessão com metas: Chile, Brasil. Privatização plena: Inglaterra (1989).
 
 #### Transporte público
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:14`; tabela antiga: transporte-publico.
+- **Ciclos:** C07 Moradia e cidade, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** quem paga o ônibus e o metrô: o passageiro, o Estado, ou os dois?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno (proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Urbanismo social nas periferias → Tarifa zero (correspondência textual; conferir intenção do programa); Transporte sem tarifa → Tarifa zero (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** quem paga o ônibus e o metrô: o passageiro, o Estado, ou os dois?
 **Camada:** Lei · **Implantação:** 1 turno (proposta minha) · **Inventário:** Fica
@@ -271,6 +455,19 @@ Estudo curto: revisar.
 
 #### Investimento em infraestrutura
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-10:15`; tabela antiga: investimento-em-infraestrutura.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C02 Tributos e dívida, C04 Trabalho e renda, C07 Moradia e cidade, C18 Terra, agro e alimentos, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** quanto dinheiro público vai por ano para obras, e em que fatia: transporte, energia e transmissão, ou drenagem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Sofre corte quando a regra fiscal aperta.; ver dependências acima.
+- **Prazo:** turno seguinte (as obras levam de 2 a 10 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Urbanismo social nas periferias → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Salário e crédito → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Grandes obras públicas → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Emprego garantido pelo Estado → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Dinheiro barato → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Fundos para regiões pobres → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente); Licença ambiental rápida → lacuna: opção nova a decidir (sem equivalência textual segura); Saneamento estatal → Alto: perto do necessário (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** quanto dinheiro público vai por ano para obras, e em que fatia: transporte, energia e transmissão, ou drenagem?
 **Camada:** Alavanca · **Implantação:** turno seguinte (as obras levam de 2 a 10 anos) · **Inventário:** Reescreve (passa a ter três fatias)
 **Mãe:** nenhuma. Sofre corte quando a regra fiscal aperta.
@@ -285,3 +482,26 @@ Estudo curto: revisar.
 **Leis relacionadas:** Regra fiscal, Água e esgoto, Transporte público, Investimento em geração por fonte, Banco de desenvolvimento, Programa de privatização
 **Países que usam:** Investimento público alto: China (aprox.). Concessão no lugar de obra pública: Chile (aprox.).
 **Pontos abertos:** a divisão de hoje entre as três fatias é lacuna. O estudo de Impostos e contas usa a infraestrutura geral como alvo; o inventário recomenda apontar para as três fatias (ainda não aceito pelo autor).
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Pagar para preservar
+
+**ID de origem:** `pagamento-por-servicos-ambientais`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 154.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:pagamento-por-servicos-ambientais`; tabela antiga: pagamento-por-servicos-ambientais.
+- **Ciclos:** C18 Terra, agro e alimentos.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Fiscalização ambiental: reforça (Paga quem preserva, multa quem desmata); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Pagar para preservar → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

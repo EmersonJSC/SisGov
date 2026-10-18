@@ -3,56 +3,58 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Bolsa de permanência no ensino médio",
-  "descricao": "O governo paga o jovem pobre para ele ficar na escola até concluir o médio?",
+  "nome": "Incentivo à permanência no ensino médio",
+  "descricao": "Estabelece apoio financeiro educacional à permanência e conclusão do ensino médio público. O alcance quantitativo do piloto é hipotético.",
   "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14818.htm",
+  "processoAutorizacao": "incentivo-educacional",
   "nivelLegal": "derivada",
+  "revogavel": true,
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "apoio_financeiro_permanencia",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "foco-baixa-renda",
+        "rotulo": "Priorizar baixa renda — Concentra o apoio em estudantes de famílias de baixa renda. No piloto, beneficia mais os perfis pobres; o alcance total é menor.",
+        "valor": 1,
+        "efeitos": "Concentra o apoio em estudantes de famílias de baixa renda. No piloto, beneficia mais os perfis pobres; o alcance total é menor. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+        "apoiam": ["jovens", "pobres"],
+        "rejeitam": []
+      },
+      {
+        "id": "ampliar-cobertura",
+        "rotulo": "Ampliar cobertura — Leva o incentivo a mais estudantes elegíveis, com menor concentração nos casos de maior vulnerabilidade.",
+        "valor": 2,
+        "efeitos": "Leva o incentivo a mais estudantes elegíveis, com menor concentração nos casos de maior vulnerabilidade. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+        "apoiam": ["jovens", "pobres"],
+        "rejeitam": []
+      },
+      {
+        "id": "foco-conclusao",
+        "rotulo": "Priorizar conclusão — Concentra o apoio nos estudantes em maior risco de abandonar antes de concluir o ensino médio. Não aumenta vagas escolares.",
+        "valor": 3,
+        "efeitos": "Concentra o apoio nos estudantes em maior risco de abandonar antes de concluir o ensino médio. Não aumenta vagas escolares. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+        "apoiam": ["jovens", "pobres"],
+        "rejeitam": []
+      }
+    ]
+  },
   "implantacaoTurnos": {
     "minimo": 1,
     "maximo": 1
   },
-  "controle": {
-    "variavel": "nivel_bolsa_de_permanencia_no_ensino_medio",
-    "unidade": "nivel_escopo",
-    "opcoes": [
-      {
-        "id": "nenhuma",
-        "rotulo": "Nenhuma",
-        "valor": 0,
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Movimento estudantil"],
-        "efeitos": "Nada muda"
-      },
-      {
-        "id": "focalizada-nos-inscritos-no-cadastro-social",
-        "rotulo": "Focalizada nos inscritos no cadastro social",
-        "valor": 50.0,
-        "custoTexto": "~0,1% do PIB, educação",
-        "apoiam": ["Pobres", "Famílias com filhos", "Movimento estudantil"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Evasão escolar ↓ (abandono caiu de 5,6% para 2,5% em três anos, causa não provada); Escolaridade ↑; Trabalho infantil ↓"
-      },
-      {
-        "id": "universal",
-        "rotulo": "Universal",
-        "valor": 100,
-        "custoTexto": "~0,3% do PIB (aprox.), educação",
-        "apoiam": ["Movimento estudantil", "Jovens"],
-        "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Evasão escolar ↓; Resultado fiscal ↓"
-      }
-    ]
-  },
-  "consequencias": ["bolsa-de-permanencia-no-ensino-medio--evasao-escolar"],
-  "mae": {
-    "texto": "Ensino obrigatório. \"Sem obrigatoriedade\" e \"Só o primário\" travam esta lei; \"Dos 4 aos 17 anos\" libera.",
-    "leis": ["ensino-obrigatorio"]
-  },
-  "ministerio": "Ministério da Educação"
+  "consequencias": [
+    "educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar",
+    "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres",
+    "educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese",
+    "educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar",
+    "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens",
+    "educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar"
+  ]
 }

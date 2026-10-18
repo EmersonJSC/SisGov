@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-educacao-dificuldade_territorial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "prioridade_financiamento_educacao",
+  "alvo": "dificuldade_territorial",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, -10]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

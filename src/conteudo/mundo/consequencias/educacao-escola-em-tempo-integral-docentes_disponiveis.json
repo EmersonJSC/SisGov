@@ -1,0 +1,21 @@
+{
+  "id": "educacao-escola-em-tempo-integral-docentes_disponiveis",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oferta_jornada_integral",
+  "alvo": "docentes_disponiveis",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 4],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

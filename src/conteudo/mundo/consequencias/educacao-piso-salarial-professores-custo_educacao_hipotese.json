@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-salarial-professores-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "valorizacao_magisterio",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 1],
+      [2, 2.5],
+      [3, 2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

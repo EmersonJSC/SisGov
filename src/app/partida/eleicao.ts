@@ -131,7 +131,7 @@ function verPersonagem(
 export function primeirosCandidatos(
   opcoes: Readonly<{ pais?: string; semente?: number }> = {},
 ): readonly VisaoPersonagem[] {
-  const pais = opcoes.pais ?? "brasil";
+  const pais = opcoes.pais ?? "ilha-teste";
   const ano = eleicaoDoPais(pais)?.anoInicial ?? 0;
   return primeiraEscolha(pais, opcoes.semente ?? 1).map((p) =>
     verPersonagem(p, ano),

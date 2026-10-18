@@ -1,0 +1,17 @@
+{
+  "id": "pressao-traz-risco",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "pressao_rede",
+  "alvo": "risco_apagao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "quantidade",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

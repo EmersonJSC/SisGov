@@ -1,0 +1,21 @@
+{
+  "id": "educacao-escola-em-tempo-integral-vagas_escolares",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oferta_jornada_integral",
+  "alvo": "vagas_escolares",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 7],
+      [3, 10]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

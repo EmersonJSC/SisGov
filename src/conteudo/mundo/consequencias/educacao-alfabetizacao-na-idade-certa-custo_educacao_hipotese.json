@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alfabetizacao",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 1.2],
+      [2, 1.8],
+      [3, 1.5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

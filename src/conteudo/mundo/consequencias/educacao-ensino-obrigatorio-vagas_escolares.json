@@ -1,0 +1,21 @@
+{
+  "id": "educacao-ensino-obrigatorio-vagas_escolares",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "implementacao_escolaridade_obrigatoria",
+  "alvo": "vagas_escolares",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 12],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

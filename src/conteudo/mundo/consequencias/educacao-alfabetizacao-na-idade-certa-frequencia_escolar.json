@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alfabetizacao-na-idade-certa-frequencia_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alfabetizacao",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 2],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "tipo": "pais-politica",
+  "ministerios": {
+    "areas": [
+      {
+        "id": "instituicoes",
+        "titulo": "Poder e instituições",
+        "curto": "Instituições",
+        "faz": "Não implementado",
+        "coordenador": "instituicoes"
+      },
+      {
+        "id": "seguranca",
+        "titulo": "Segurança e justiça",
+        "curto": "Segurança",
+        "faz": "Não implementado",
+        "coordenador": "seguranca"
+      },
+      {
+        "id": "defesa",
+        "titulo": "Defesa e mundo",
+        "curto": "Defesa",
+        "faz": "Não implementado",
+        "coordenador": "defesa"
+      },
+      {
+        "id": "direitos",
+        "titulo": "Direitos e liberdades",
+        "curto": "Direitos",
+        "faz": "Não implementado",
+        "coordenador": "direitos"
+      },
+      {
+        "id": "contas",
+        "titulo": "Contas e tributos",
+        "curto": "Contas",
+        "faz": "Não implementado: PIB e dívida são referências; receita e despesa ainda não têm ciclo",
+        "coordenador": "contas"
+      },
+      {
+        "id": "trabalho",
+        "titulo": "Trabalho e mercado",
+        "curto": "Trabalho",
+        "faz": "Não implementado: desemprego é referência inicial",
+        "coordenador": "trabalho"
+      },
+      {
+        "id": "protecao",
+        "titulo": "Proteção social",
+        "curto": "Proteção",
+        "faz": "Não implementado: população é referência inicial",
+        "coordenador": "protecao"
+      },
+      {
+        "id": "educacao",
+        "titulo": "Educação, ciência e cultura",
+        "curto": "Educação",
+        "faz": "Ciclo C1 de acesso e permanência escolar em teste",
+        "coordenador": "educacao"
+      },
+      {
+        "id": "energia",
+        "titulo": "Energia e ambiente",
+        "curto": "Energia",
+        "faz": "Ciclo de rede elétrica em teste",
+        "coordenador": "energia"
+      },
+      {
+        "id": "cidades",
+        "titulo": "Cidades e transporte",
+        "curto": "Cidades",
+        "faz": "Não implementado",
+        "coordenador": "cidades"
+      }
+    ],
+    "ministerios": [
+      {
+        "id": "instituicoes",
+        "nome": "Área de instituicoes",
+        "cargo": "Responsável por instituicoes",
+        "area": "instituicoes",
+        "leis": []
+      },
+      {
+        "id": "seguranca",
+        "nome": "Área de seguranca",
+        "cargo": "Responsável por seguranca",
+        "area": "seguranca",
+        "leis": []
+      },
+      {
+        "id": "defesa",
+        "nome": "Área de defesa",
+        "cargo": "Responsável por defesa",
+        "area": "defesa",
+        "leis": []
+      },
+      {
+        "id": "direitos",
+        "nome": "Área de direitos",
+        "cargo": "Responsável por direitos",
+        "area": "direitos",
+        "leis": []
+      },
+      {
+        "id": "contas",
+        "nome": "Área de contas",
+        "cargo": "Responsável por contas",
+        "area": "contas",
+        "leis": []
+      },
+      {
+        "id": "trabalho",
+        "nome": "Área de trabalho",
+        "cargo": "Responsável por trabalho",
+        "area": "trabalho",
+        "leis": []
+      },
+      {
+        "id": "protecao",
+        "nome": "Área de protecao",
+        "cargo": "Responsável por protecao",
+        "area": "protecao",
+        "leis": []
+      },
+      {
+        "id": "educacao",
+        "nome": "Área de educacao",
+        "cargo": "Responsável por educacao",
+        "area": "educacao",
+        "leis": [
+          "ensino-obrigatorio",
+          "piso-educacao",
+          "escolha-escolar-financiada",
+          "provisao-publica-exclusiva",
+          "bolsa-de-permanencia-no-ensino-medio",
+          "escola-em-tempo-integral",
+          "piso-salarial-professores",
+          "alfabetizacao-na-idade-certa",
+          "transporte-escolar",
+          "alimentacao-escolar",
+          "avaliacao-das-escolas",
+          "financiamento-com-resultado"
+        ]
+      },
+      {
+        "id": "energia",
+        "nome": "Área de energia",
+        "cargo": "Responsável por energia",
+        "area": "energia",
+        "leis": ["expansao-da-rede-eletrica", "manutencao-da-rede-eletrica"]
+      },
+      {
+        "id": "cidades",
+        "nome": "Área de cidades",
+        "cargo": "Responsável por cidades",
+        "area": "cidades",
+        "leis": []
+      }
+    ]
+  }
+}

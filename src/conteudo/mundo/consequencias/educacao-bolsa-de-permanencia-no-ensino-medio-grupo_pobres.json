@@ -1,0 +1,21 @@
+{
+  "id": "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_financeiro_permanencia",
+  "alvo": "grupo_pobres",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 8],
+      [2, 0],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

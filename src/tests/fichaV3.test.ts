@@ -69,10 +69,10 @@ describe("ficha de lei v3", () => {
     expect(v.nivel_piso_salarial_professores).toBeCloseTo(58.8366, 9);
     expect(v.nivel_policia_militar).toBeCloseTo(75.99, 9);
     expect(v.recursos_verba_policia_federal).toBeCloseTo(13247.52, 9);
-    expect(v.letalidade_policial).toBeCloseTo(30.994296816583393, 9);
-    expect(v.crime_organizado).toBeCloseTo(71.79850049971111, 9);
-    expect(v.gasto_publico).toBeCloseTo(31.444360523900382, 9);
-    expect(v.popularidade_governo).toBeCloseTo(48.4068746970398, 9);
+    expect(v.letalidade_policial).toBeCloseTo(30.994296903811303, 9);
+    expect(v.crime_organizado).toBeCloseTo(71.79856458258288, 9);
+    expect(v.gasto_publico).toBeCloseTo(31.555299147149366, 9);
+    expect(v.popularidade_governo).toBeCloseTo(48.40637717659815, 9);
   });
 
   it("gera as consequências dentro do arquivo da ficha", () => {

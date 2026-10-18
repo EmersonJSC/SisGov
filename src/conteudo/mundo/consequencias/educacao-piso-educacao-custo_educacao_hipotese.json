@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-educacao-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "prioridade_financiamento_educacao",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 2.5],
+      [2, 1.5],
+      [3, 1.8]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "educacao-frequencia-aprendizagem",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "frequencia_escolar",
+  "alvo": "aprendizagem_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.45,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

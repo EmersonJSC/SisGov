@@ -1,0 +1,17 @@
+{
+  "id": "expansao-aumenta-capacidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "expansao_executada",
+  "alvo": "capacidade_rede",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.4,
+    "termoConstante": 0
+  },
+  "unidade": "quantidade_por_passo",
+  "atrasoPassos": 6,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

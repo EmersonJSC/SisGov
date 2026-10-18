@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alimentacao-escolar-grupo_interior",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alimentacao_escolar",
+  "alvo": "grupo_interior",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, 5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

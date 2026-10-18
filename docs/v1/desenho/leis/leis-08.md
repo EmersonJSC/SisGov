@@ -1,6 +1,8 @@
 ## Direitos, costumes, religião e imigração
 
-São 20 leis: 4 de Constituição, 10 de Lei e 6 Alavancas; 15 ainda têm ponto aberto.
+O estudo original reunia 20 fichas: 4 de Constituição, 10 de Lei e 6 Alavancas; 15 ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 20 registros nesta área; 20 fichas recentes, 0 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas para ler as fichas:
 - Lado: economia (−1 Estado, +1 mercado) e costumes (−1 liberal nos costumes, +1 conservador). Os números das leis que já existiam vêm do estudo (códigos do Manifesto Project e votos reais). Os das leis novas são "(estimado)".
@@ -10,6 +12,19 @@ Notas para ler as fichas:
 ### Família e sexualidade
 
 #### Proteção da vida desde a concepção
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:01`; tabela antiga: protecao-da-vida-desde-a-concepcao.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** A Constituição deve dizer que a vida é protegida desde a concepção?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Ela é mãe de Aborto: com "Com proteção", Aborto só aceita proibição total, só risco de vida ou casos restritos.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A Constituição deve dizer que a vida é protegida desde a concepção?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo
@@ -26,6 +41,19 @@ Notas para ler as fichas:
 **Pontos abertos:** Estudo curto: revisar. Os lados são estimados. O texto real da PEC brasileira só acrescenta "desde a concepção" ao art. 5º, e críticos dizem que ele pode proibir até os casos legais de hoje; o estudo e o inventário travam só as opções abaixo de casos restritos. O autor decide se "Com proteção" trava também casos restritos.
 
 #### Aborto
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:02`; tabela antiga: aborto.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Em que casos o aborto deixa de ser crime?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Proteção da vida desde a concepção ("Com proteção" trava motivos amplos, a pedido e sem lei penal). Laicidade do Estado ("Religião oficial" ou "Teocracia" travam a pedido e sem lei penal).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Limite de filhos → Sem lei penal (correspondência textual; conferir intenção do programa); Natalidade à força → Proibição total (correspondência textual; conferir intenção do programa); Agenda de direitos civis → Sem lei penal (correspondência textual; conferir intenção do programa); Agenda religiosa → Proibição total (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Em que casos o aborto deixa de ser crime?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -47,6 +75,19 @@ Notas para ler as fichas:
 
 #### Verba de planejamento familiar e de aborto legal
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:03`; tabela antiga: verba-de-planejamento-familiar-e-de-aborto-legal.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Quanto o governo gasta por ano com contraceptivos e com os serviços de aborto previstos em lei?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Aborto. Com "Proibição total", a parte de aborto legal vai a zero e sobra só o planejamento familiar (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Limite de filhos → Alta (cobertura ampla de métodos de longa duração e serviço de aborto legal em todas as regiões) (correspondência textual; conferir intenção do programa); Natalidade à força → Zero (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o governo gasta por ano com contraceptivos e com os serviços de aborto previstos em lei?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Aborto. Com "Proibição total", a parte de aborto legal vai a zero e sobra só o planejamento familiar (proposta minha).
@@ -63,6 +104,19 @@ Notas para ler as fichas:
 **Pontos abertos:** Estudo curto: revisar. Falta o valor anual de hoje (contraceptivos mais rede de aborto legal) e o teto. A divisão em duas partes dentro de uma só verba é proposta minha; pode virar duas alavancas.
 
 #### Casamento e união civil
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:04`; tabela antiga: casamento-e-uniao-civil.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Casais do mesmo sexo podem casar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Laicidade do Estado ("Teocracia" trava casamento igualitário e união civil; proposta minha, ver ponto aberto). Ela é mãe de Identidade de gênero e de Discriminação e crimes de ódio: com "Criminalização", Discriminação não pode ser "Crime" e Identidade de gênero fica presa em "Sem reconhecimento".; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Agenda de direitos civis → Casamento igualitário (hoje no Brasil) (correspondência textual; conferir intenção do programa); Agenda religiosa → Criminalização da homossexualidade (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Casais do mesmo sexo podem casar?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -82,6 +136,19 @@ Notas para ler as fichas:
 
 #### Identidade de gênero
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:05`; tabela antiga: identidade-de-genero.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Como uma pessoa trans muda nome e sexo no registro?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Casamento e união civil (com "Criminalização", só "Sem reconhecimento" fica disponível).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Agenda de direitos civis → Lei completa de identidade, com saúde, documentos e menores (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como uma pessoa trans muda nome e sexo no registro?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** Casamento e união civil (com "Criminalização", só "Sem reconhecimento" fica disponível).
@@ -98,6 +165,19 @@ Notas para ler as fichas:
 **Pontos abertos:** A mudança pelo STF depende do choque "STF decide".
 
 #### Discriminação e crimes de ódio
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:06`; tabela antiga: discriminacao-e-crimes-de-odio.
+- **Ciclos:** C13 Policiamento e investigação, C16 Direitos e costumes.
+- **Decisão:** Como o Estado pune a discriminação por raça, orientação sexual, religião e origem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Casamento e união civil (com "Criminalização", a opção "Crime" fica impossível).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Agenda de direitos civis → Crime, como o racismo (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como o Estado pune a discriminação por raça, orientação sexual, religião e origem?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (era "Discriminação por orientação sexual"; agora junta orientação sexual, raça, religião e origem)
@@ -116,6 +196,19 @@ Notas para ler as fichas:
 **Pontos abertos:** Falta estudo que meça se punir reduz a violência; os efeitos são direção, sem tamanho. A extensão à homofobia no Brasil veio do STF (choque "STF decide").
 
 #### Eutanásia
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:07`; tabela antiga: eutanasia.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Um médico pode abreviar a vida a pedido do paciente?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Laicidade do Estado ("Teocracia" ou "Religião oficial" travam suicídio assistido, eutanásia para doentes terminais e eutanásia ampla).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Um médico pode abreviar a vida a pedido do paciente?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -137,6 +230,19 @@ Notas para ler as fichas:
 
 #### Laicidade do Estado
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:08`; tabela antiga: laicidade-do-estado.
+- **Ciclos:** C08 Educação básica, C16 Direitos e costumes.
+- **Decisão:** Qual a relação entre o Estado e as religiões?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Ela é mãe de Aborto, Eutanásia, Ensino religioso e Casamento e união civil (ver as travas em cada uma).; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola da família e da fé → Religião favorecida (acordo com uma igreja) (opção corrigida por sentido do programa; validar evidência); Agenda religiosa → Teocracia (correspondência textual; conferir intenção do programa); Laicidade estrita → Laicidade estrita (separação rígida) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Qual a relação entre o Estado e as religiões?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. Ela é mãe de Aborto, Eutanásia, Ensino religioso e Casamento e união civil (ver as travas em cada uma).
@@ -157,6 +263,19 @@ Notas para ler as fichas:
 
 #### Imunidade e dinheiro para igrejas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:09`; tabela antiga: imunidade-e-dinheiro-para-igrejas.
+- **Ciclos:** C15 Drogas e cuidado, C16 Direitos e costumes.
+- **Decisão:** As igrejas pagam impostos, e o Estado ajuda a financiá-las?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Internação e comunidades de fé → Isenção de impostos (hoje no Brasil, ampliada pela reforma tributária) (opção corrigida por sentido do programa; validar evidência); Igreja e comunidade primeiro → Isenção de impostos (hoje no Brasil, ampliada pela reforma tributária) (opção corrigida por sentido do programa; validar evidência); Laicidade estrita → Sem isenção (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** As igrejas pagam impostos, e o Estado ajuda a financiá-las?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (era a lei "Dinheiro para igrejas"; sobe para Constituição)
 **Mãe:** nenhuma
@@ -173,6 +292,19 @@ Notas para ler as fichas:
 **Pontos abertos:** Subir esta lei para Constituição ainda não foi marcado pelo autor no inventário (a recomendação é sim). O custo da isenção é lacuna. Liga com a ocorrência "Igrejas pedem isenção".
 
 #### Ensino religioso
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:10`; tabela antiga: ensino-religioso.
+- **Ciclos:** C08 Educação básica, C16 Direitos e costumes.
+- **Decisão:** A escola pública dá aula de religião, e ela é obrigatória?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Laicidade do Estado ("Laicidade estrita" trava "Obrigatório").; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola da família e da fé → Oferecido, com matrícula facultativa (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência); Agenda religiosa → Obrigatório e confessional (correspondência textual; conferir intenção do programa); Laicidade estrita → Proibido na escola pública (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A escola pública dá aula de religião, e ela é obrigatória?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -192,6 +324,19 @@ Notas para ler as fichas:
 
 #### Igualdade racial
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:11`; tabela antiga: igualdade-racial.
+- **Ciclos:** C09 Ensino superior e pesquisa, C16 Direitos e costumes.
+- **Decisão:** O Estado usa a raça para focar suas políticas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Ela é mãe de Ações afirmativas (Ensino superior): "O Estado não usa raça" trava cotas sociais e raciais e reservas amplas. Também é mãe da Verba para juventude negra.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ações afirmativas → Recorte racial: cotas e metas com raça (hoje no Brasil, nas leis de 2012 e 2023) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O Estado usa a raça para focar suas políticas?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (ganha a opção "O Estado não usa raça")
 **Mãe:** nenhuma. Ela é mãe de Ações afirmativas (Ensino superior): "O Estado não usa raça" trava cotas sociais e raciais e reservas amplas. Também é mãe da Verba para juventude negra.
@@ -209,6 +354,19 @@ Notas para ler as fichas:
 **Pontos abertos:** O Brasil hoje tem o estatuto e o recorte ao mesmo tempo. Proposta minha: o ponto de partida é "Recorte racial".
 
 #### Verba para juventude negra e saúde da população negra
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:12`; tabela antiga: verba-para-juventude-negra-e-saude-da-populacao-negra.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quanto o governo gasta por ano em políticas focadas em jovens negros e na saúde da população negra?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Igualdade racial. Com "O Estado não usa raça", esta verba fica desligada (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta por ano em políticas focadas em jovens negros e na saúde da população negra?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
@@ -229,6 +387,19 @@ Notas para ler as fichas:
 
 #### Política de imigração
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:13`; tabela antiga: politica-de-imigracao.
+- **Ciclos:** C11 Atendimento de saúde, C16 Direitos e costumes.
+- **Decisão:** Quem pode entrar no país para morar e trabalhar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mais profissionais na saúde pública → Livre circulação no bloco regional (correspondência textual; conferir intenção do programa); Imigração para repor a população → Livre circulação no bloco regional (correspondência textual; conferir intenção do programa); Fronteira fechada → Fechada (correspondência textual; conferir intenção do programa); Acolhida organizada → Ampla, com acesso a serviços (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência); Regularizar quem já está → Livre circulação no bloco regional (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem pode entrar no país para morar e trabalhar?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -246,6 +417,19 @@ Notas para ler as fichas:
 **Países que usam:** Fechada: Japão antigo (aprox.); Temporária: países do Golfo (aprox.); Seletiva: Canadá, Austrália; Ampla: Brasil, Argentina; Livre circulação: União Europeia, residência no Mercosul
 
 #### Refúgio e asilo
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:14`; tabela antiga: refugio-e-asilo.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Quem foge de perseguição ou de crise recebe proteção no país?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fronteira fechada → Sem asilo (correspondência textual; conferir intenção do programa); Acolhida organizada → Acolhida ampla: refúgio coletivo, interiorização e trabalho (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem foge de perseguição ou de crise recebe proteção no país?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -265,6 +449,19 @@ Notas para ler as fichas:
 
 #### Acolhida e interiorização de imigrantes
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:15`; tabela antiga: acolhida-e-interiorizacao-de-imigrantes.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Quanto o governo gasta por ano para receber imigrantes na fronteira e levá-los a cidades com trabalho?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Refúgio e asilo. Com "Sem asilo", a verba vai a zero (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Imigração para repor a população → Alta (o dobro; proposta minha) (correspondência textual; conferir intenção do programa); Acolhida organizada → Alta (o dobro; proposta minha) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o governo gasta por ano para receber imigrantes na fronteira e levá-los a cidades com trabalho?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Refúgio e asilo. Com "Sem asilo", a verba vai a zero (proposta minha).
@@ -282,6 +479,19 @@ Notas para ler as fichas:
 
 #### Saída do país
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:16`; tabela antiga: saida-do-pais.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** O cidadão precisa de autorização para sair do país?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Proibido sair → Saída com autorização (visto de saída) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O cidadão precisa de autorização para sair do país?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -298,6 +508,19 @@ Notas para ler as fichas:
 ### Apostas e jogos de azar
 
 #### Apostas e jogos de azar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:17`; tabela antiga: apostas-e-jogos-de-azar.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** As apostas online e os cassinos podem funcionar, e sob qual regra?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Ela é mãe das três alavancas de apostas: "Proibição" desliga Tributo e Publicidade e liga Bloqueio de pagamentos.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Regular as apostas → Licença com limites: publicidade limitada e teto de depósito (opção corrigida por sentido do programa; validar evidência); Proibir as apostas → Proibição (hoje no Brasil, desde set/2026) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** As apostas online e os cassinos podem funcionar, e sob qual regra?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -318,6 +541,19 @@ Notas para ler as fichas:
 
 #### Publicidade de apostas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:18`; tabela antiga: publicidade-de-apostas.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Casas de apostas podem anunciar e patrocinar times?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Apostas e jogos de azar (com "Proibição", esta alavanca fica desligada e toda publicidade é proibida).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Regular as apostas → Com avisos e regras (Brasil com a licença de 2024 e 2025, aprox.) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Casas de apostas podem anunciar e patrocinar times?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Apostas e jogos de azar (com "Proibição", esta alavanca fica desligada e toda publicidade é proibida).
@@ -336,6 +572,19 @@ Notas para ler as fichas:
 
 #### Tributo sobre apostas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:19`; tabela antiga: tributo-sobre-apostas.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Quanto as casas de apostas pagam de imposto sobre o que ganham dos apostadores?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Apostas e jogos de azar (só existe nas opções de licença; com "Proibição" fica desligada).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Regular as apostas → 40% (máximo; o Reino Unido cobra isso do cassino online desde 2026) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto as casas de apostas pagam de imposto sobre o que ganham dos apostadores?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Apostas e jogos de azar (só existe nas opções de licença; com "Proibição" fica desligada).
@@ -352,6 +601,19 @@ Notas para ler as fichas:
 **Pontos abertos:** Estudo curto: revisar. O ponto em que imposto alto empurra o apostador para o mercado ilegal é lacuna. Os lados são estimados.
 
 #### Bloqueio de pagamentos a casas sem licença
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-08:20`; tabela antiga: bloqueio-de-pagamentos-a-casas-sem-licenca.
+- **Ciclos:** C16 Direitos e costumes.
+- **Decisão:** Bancos e o Pix devem recusar pagamentos a casas de apostas sem licença?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Apostas e jogos de azar ("Proibição" liga e trava em "Sim", e o bloqueio vale para todas as casas).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Regular as apostas → Sim (hoje no Brasil, com a proibição) (correspondência textual; conferir intenção do programa); Proibir as apostas → Sim (hoje no Brasil, com a proibição) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Bancos e o Pix devem recusar pagamentos a casas de apostas sem licença?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo

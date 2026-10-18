@@ -1,0 +1,21 @@
+{
+  "id": "educacao-financiamento-com-resultado-vagas_escolares",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "complementacao_resultados_educacionais",
+  "alvo": "vagas_escolares",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 4],
+      [2, 3],
+      [3, 5]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

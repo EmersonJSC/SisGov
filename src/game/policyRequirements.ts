@@ -131,6 +131,14 @@ export function requirementBlock(
   const policy = content.policies.find((item) => item.id === policyId);
   if (!policy) return;
   const current = policyInForce(policies, policyId);
+  const conflitos = content.policies.filter(
+    (item) =>
+      item.id !== policyId &&
+      (policy.exclui?.includes(item.id) || item.exclui?.includes(policyId)) &&
+      policyInForce(policies, item.id),
+  );
+  if (conflitos.length > 0)
+    return `Esta lei é incompatível com ${conflitos.map((item) => item.nome).join(", ")}. Revogue a lei conflitante antes de aprová-la.`;
   if (
     policy.nivelLegal === "petrea" &&
     !(current && same(current.desiredLevel, desiredLevel))

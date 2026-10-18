@@ -1,8 +1,0 @@
-{
-  "id": "estado-inicial-inclusao",
-  "tipo": "estado-inicial",
-  "versaoEsquema": 1,
-  "valores": {
-    "cobertura_bibliotecas": 0
-  }
-}

@@ -1,0 +1,21 @@
+{
+  "id": "educacao-financiamento-com-resultado-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "complementacao_resultados_educacionais",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 1.5],
+      [2, 1.2],
+      [3, 2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

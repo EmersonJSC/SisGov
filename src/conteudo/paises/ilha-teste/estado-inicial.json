@@ -1,0 +1,98 @@
+{
+  "id": "ilha-teste-estado-base-minima",
+  "tipo": "estado-inicial",
+  "versaoEsquema": 1,
+  "cenario": {
+    "nome": "Ilha Teste — ilha isolada (fictícia)",
+    "ano": 1,
+    "aquecimentoMeses": 0
+  },
+  "economia": {
+    "pibAnual": 50000
+  },
+  "valores": {
+    "pib_nominal": 50000,
+    "populacao_total": 1000000,
+    "inflacao_anual": 5,
+    "desemprego": 8,
+    "divida_publica": 30,
+    "plano_expansao_rede": 0,
+    "padrao_manutencao_rede": 0,
+    "demanda_rede": 100,
+    "capacidade_rede": 90,
+    "perdas_tecnicas_rede": 5,
+    "perdas_comerciais_rede": 3,
+    "caixa_publico": 1000,
+    "demanda_escolar": 70,
+    "vagas_escolares": 48,
+    "docentes_disponiveis": 52,
+    "dificuldade_territorial": 45,
+    "satisfacao_base_pessoas": 50,
+    "implementacao_escolaridade_obrigatoria": 1,
+    "prioridade_financiamento_educacao": 1,
+    "modelo_provisao_escolar": 1,
+    "provisao_publica_exclusiva": 0,
+    "apoio_financeiro_permanencia": 1,
+    "oferta_jornada_integral": 1,
+    "valorizacao_magisterio": 1,
+    "apoio_alfabetizacao": 1,
+    "apoio_transporte_escolar": 1,
+    "apoio_alimentacao_escolar": 1,
+    "intensidade_avaliacao_educacional": 1,
+    "complementacao_resultados_educacionais": 1
+  },
+  "leisVigentes": [
+    {
+      "lei": "expansao-da-rede-eletrica",
+      "opcao": "sem-projeto"
+    },
+    {
+      "lei": "manutencao-da-rede-eletrica",
+      "opcao": "corrente"
+    },
+    {
+      "lei": "ensino-obrigatorio",
+      "opcao": "busca-ativa"
+    },
+    {
+      "lei": "piso-educacao",
+      "opcao": "novas-vagas"
+    },
+    {
+      "lei": "escolha-escolar-financiada",
+      "opcao": "rede-publica-com-escolha"
+    },
+    {
+      "lei": "bolsa-de-permanencia-no-ensino-medio",
+      "opcao": "foco-baixa-renda"
+    },
+    {
+      "lei": "escola-em-tempo-integral",
+      "opcao": "territorios-vulneraveis"
+    },
+    {
+      "lei": "piso-salarial-professores",
+      "opcao": "fiscalizar-piso"
+    },
+    {
+      "lei": "alfabetizacao-na-idade-certa",
+      "opcao": "alfabetizacao-inicial"
+    },
+    {
+      "lei": "transporte-escolar",
+      "opcao": "rotas-rurais-distantes"
+    },
+    {
+      "lei": "alimentacao-escolar",
+      "opcao": "cobertura-alimentar"
+    },
+    {
+      "lei": "avaliacao-das-escolas",
+      "opcao": "diagnostico-continuo"
+    },
+    {
+      "lei": "financiamento-com-resultado",
+      "opcao": "premiar-equidade"
+    }
+  ]
+}

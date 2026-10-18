@@ -1,0 +1,21 @@
+{
+  "id": "educacao-provisao-publica-exclusiva-grupo_familias_com_filhos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "provisao_publica_exclusiva",
+  "alvo": "grupo_familias_com_filhos",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, -2],
+      [2, -2],
+      [3, -1]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

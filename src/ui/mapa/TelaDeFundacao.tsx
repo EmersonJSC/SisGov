@@ -12,7 +12,7 @@ import { Dossie } from "./Dossie";
 export type Fundacao = Readonly<{
   semente: number;
   partido: Readonly<{ nome: string; sigla: string }>;
-  presidente: string;
+  presidente?: string;
 }>;
 
 /** "Partido da Reconstrução Nacional" → "PRN". */
@@ -36,7 +36,7 @@ export function TelaDeFundacao({
   const [sigla, setSigla] = useState("");
   const [presidente, setPresidente] = useState<string | null>(null);
   const marca = sigla.trim() || iniciais(nome) || "?";
-  const pronto = nome.trim().length > 1 && presidente !== null;
+  const pronto = nome.trim().length > 1;
   return (
     <main className="fd-tela ds-mesa">
       <div className="fd-conteudo">
@@ -86,41 +86,38 @@ export function TelaDeFundacao({
           </div>
         </section>
 
-        <section className="fd-dossie" aria-label="Candidatos à Presidência">
-          <h2 className="ds-aba">Dossiê: quem vai governar</h2>
-          <p className="ds-dica">
-            Ninguém diz de que lado está. Leia o que cada um pensa.
-          </p>
-          <Dossie
-            personagens={nomes}
-            escolhido={presidente}
-            onEscolher={setPresidente}
-            escolherNoClique
-            vazio
-          />
-        </section>
+        {nomes.length > 0 ? (
+          <section className="fd-dossie" aria-label="Candidatos à Presidência">
+            <h2 className="ds-aba">Dossiê: quem vai governar</h2>
+            <p className="ds-dica">
+              Ninguém diz de que lado está. Leia o que cada um pensa.
+            </p>
+            <Dossie
+              personagens={nomes}
+              escolhido={presidente}
+              onEscolher={setPresidente}
+              escolherNoClique
+              vazio
+            />
+          </section>
+        ) : null}
 
         <footer className="fd-pe">
           {!pronto ? (
-            <span className="fd-falta">
-              {nome.trim().length < 2
-                ? "Falta o nome do partido."
-                : "Falta escolher quem vai governar."}
-            </span>
+            <span className="fd-falta">Falta o nome do partido.</span>
           ) : null}
           <button
             type="button"
             className="ds-placa fd-comecar"
             disabled={!pronto}
             onClick={() =>
-              presidente &&
               onComecar({
                 semente,
                 partido: {
                   nome: nome.trim(),
                   sigla: sigla.trim() || iniciais(nome),
                 },
-                presidente,
+                ...(presidente ? { presidente } : {}),
               })
             }
           >

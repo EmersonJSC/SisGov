@@ -85,9 +85,9 @@ describe("SG137 — pisos vinculados à receita", () => {
       5.585416650106848,
       2,
     );
-    // gasto total do turno 0: 31,03% do PIB, mais 0,16 das verbas da
-    // Segurança em três níveis (SG161), mais os pisos maiores (V1-07)
-    expect(v.gasto_publico).toBeCloseTo(31.216734742454538, 1);
+    // Inclui os pisos maiores, as verbas de Segurança e as novas despesas
+    // declaradas pelas sete leis migradas para o orçamento.
+    expect(v.gasto_publico).toBeCloseTo(31.317725454335335, 1);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {

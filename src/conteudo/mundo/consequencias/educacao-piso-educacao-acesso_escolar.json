@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-educacao-acesso_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "prioridade_financiamento_educacao",
+  "alvo": "acesso_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 5],
+      [2, 0],
+      [3, 4]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

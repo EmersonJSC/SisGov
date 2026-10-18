@@ -11,6 +11,17 @@ const inventory = {
 };
 
 describe("updateStock", () => {
+  it("mantém uma taxa percentual observada sem converter pontos em índice", () => {
+    expect(
+      updateStock(
+        { ...inventory, id: "inflacao", unidade: "percentual_0_100" },
+        4.83,
+        [],
+        3,
+      ),
+    ).toMatchObject({ ok: true, value: { value: 4.83 } });
+  });
+
   it("conserva o saldo anterior e aplica taxas pela duração", () => {
     expect(
       updateStock(

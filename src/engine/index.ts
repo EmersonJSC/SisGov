@@ -34,6 +34,25 @@ export {
   exportExecution,
 } from "./runtime/exportExecution";
 export { restoreExecution } from "./runtime/restoreExecution";
+export { validarDefinicao, gerarRodada } from "./generator/validateDefinition";
+export {
+  CICLO_EMPRESAS_PILOTO,
+  simularCicloEmpresas,
+  sugerirInvestimentoPublico,
+  limitesDePropriedade,
+  type ParametrosCicloEmpresas,
+  type EstadoTurnoEmpresas,
+  type FormaDePropriedadePermitida,
+} from "./generator/cicloEmpresas";
+export type {
+  DefinicaoGerador,
+  NoGerado,
+  RelacaoGerada,
+  ParametroAjustavel,
+  Proveniencia,
+  FalhaGerador,
+  RodadaGerador,
+} from "./generator/types";
 export {
   policyTiers,
   requirementsOf,

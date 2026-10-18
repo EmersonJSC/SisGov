@@ -1,12 +1,27 @@
 ## Impostos e contas públicas
 
-São 20 leis: 5 na Constituição, 12 Leis e 3 Alavancas; 17 ainda têm ponto aberto.
+O estudo original reunia 20 fichas: 5 na Constituição, 12 Leis e 3 Alavancas; 17 ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 21 registros nesta área; 20 fichas recentes, 1 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Nota de contagem. O inventário lista 21 leis. A lei nova de offshores e fundos exclusivos foi juntada à lei do lucro distribuído, como o inventário recomenda (item ainda não marcado pelo autor). Por isso são 20.
 
 ### Mesa Impostos
 
 #### Modelo tributário
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:01`; tabela antiga: modelo-tributario.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Sobre quais bases o país cobra imposto (consumo, renda, capital) e quanto pesa a carga total?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe das leis de imposto da mesa: tranca a faixa de alíquota de cada uma.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Imposto progressivo → Progressivo (renda global com faixas, capital somado) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Sobre quais bases o país cobra imposto (consumo, renda, capital) e quanto pesa a carga total?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -29,6 +44,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Imposto de renda das pessoas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:02`; tabela antiga: imposto-renda-pessoas.
+- **Ciclos:** C02 Tributos e dívida, C04 Trabalho e renda, C05 Transferência e pobreza, C06 Previdência e cuidado.
+- **Decisão:** Como a renda das pessoas paga imposto, e quanto paga quem ganha mais?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo tributário. "Proporcional" trava tudo menos "Alíquota única". "Quase sem impostos" trava "Progressivo alto" (proposta minha). A opção "Progressivo com mínimo para altas rendas" exige que a Tributação do lucro distribuído não esteja em "Isento".; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Flexissegurança → Progressivo alto (topo de 45 a 55%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Corte de impostos → Sem imposto de renda (opção proposta por leitura do programa e da ficha; validar juridicamente); Ajuste com imposto no topo → Progressivo alto (topo de 45 a 55%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Renda para todos → Progressivo alto (topo de 45 a 55%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Imposto progressivo → Progressivo alto (topo de 45 a 55%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Seguro de cuidados de idosos → Progressivo alto (topo de 45 a 55%) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como a renda das pessoas paga imposto, e quanto paga quem ganha mais?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Reescreve
 **Mãe:** Modelo tributário. "Proporcional" trava tudo menos "Alíquota única". "Quase sem impostos" trava "Progressivo alto" (proposta minha). A opção "Progressivo com mínimo para altas rendas" exige que a Tributação do lucro distribuído não esteja em "Isento".
@@ -48,6 +76,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Tributação do lucro distribuído e da renda guardada no exterior
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:03`; tabela antiga: tributacao-dividendos.
+- **Ciclos:** C02 Tributos e dívida, C05 Transferência e pobreza.
+- **Decisão:** O lucro que a empresa paga ao sócio, e a renda que fica parada em empresas no exterior ou em fundos de um só dono, pagam imposto na pessoa física, e quando?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo tributário. "Progressivo" libera "Integrado na tabela progressiva"; nas outras opções ela fica travada.; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Taxar fortunas e heranças → Integrado na tabela progressiva, e renda no exterior somada todo ano (opção proposta por leitura do programa e da ficha; validar juridicamente); Imposto progressivo → Integrado na tabela progressiva, e renda no exterior somada todo ano (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O lucro que a empresa paga ao sócio, e a renda que fica parada em empresas no exterior ou em fundos de um só dono, pagam imposto na pessoa física, e quando?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Reescreve; junta a lei nova de offshores e fundos exclusivos
 **Mãe:** Modelo tributário. "Progressivo" libera "Integrado na tabela progressiva"; nas outras opções ela fica travada.
@@ -66,6 +107,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Imposto de renda das empresas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:04`; tabela antiga: imposto-renda-empresas.
+- **Ciclos:** C02 Tributos e dívida, C05 Transferência e pobreza, C21 Defesa e relações externas.
+- **Decisão:** Quanto o lucro das empresas paga de imposto?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo tributário (tranca a faixa da alavanca).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Corte de impostos → Baixa (0 a 12,5%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Fortaleza nacional → Alta (30 a 35%) (hoje no Brasil, 34%) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o lucro das empresas paga de imposto?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve
 **Mãe:** Modelo tributário (tranca a faixa da alavanca).
@@ -82,6 +136,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Países que usam:** baixa: Irlanda; mínimo global: regra do Pilar Dois da OCDE; média: média da OCDE (aprox.).
 
 #### Imposto sobre consumo
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:05`; tabela antiga: imposto-sobre-consumo.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Como o país cobra imposto sobre o que se compra, e como divide essa receita entre União, estados e municípios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Modelo tributário dá a faixa da alavanca. É mãe de Imposto seletivo, Regime simplificado e Devolução de imposto.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Austeridade com corte de Estado → IVA amplo com devolução aos pobres (opção proposta por leitura do programa e da ficha; validar juridicamente); Imposto progressivo → IVA amplo com devolução aos pobres (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como o país cobra imposto sobre o que se compra, e como divide essa receita entre União, estados e municípios?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (sobe de Lei para Constituição)
@@ -101,6 +168,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Imposto seletivo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:06`; tabela antiga: imposto-seletivo.
+- **Ciclos:** C02 Tributos e dívida, C15 Drogas e cuidado.
+- **Decisão:** O país cobra imposto extra sobre produtos que fazem mal à saúde ou ao ambiente?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Imposto sobre consumo. O estudo diz que "IVA amplo com devolução" libera o seletivo como ferramenta de saúde. Proposta minha: "Saúde ampla" e "Saúde e ambiente" exigem IVA (dual ou amplo).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Maconha regulada → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Taxar o que faz mal → Saúde e ambiente (mais combustível fóssil e mineração) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O país cobra imposto extra sobre produtos que fazem mal à saúde ou ao ambiente?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** Imposto sobre consumo. O estudo diz que "IVA amplo com devolução" libera o seletivo como ferramenta de saúde. Proposta minha: "Saúde ampla" e "Saúde e ambiente" exigem IVA (dual ou amplo).
@@ -118,6 +198,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Pontos abertos:** a trava pela mãe é proposta minha e muda o que o estudo diz. O estudo não diz qual opção é o Brasil; a EC 132 inclui bens prejudiciais à saúde e ao ambiente, e "Saúde ampla" é a mais próxima (estimado).
 
 #### Imposto sobre herança
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:07`; tabela antiga: imposto-heranca.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Quanto paga quem recebe herança ou doação?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo tributário. "Quase sem impostos" trava "Progressivo até 20%" e "Alto" (proposta minha).; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Taxar fortunas e heranças → Alto, até 45% ou mais (opção proposta por leitura do programa e da ficha; validar juridicamente); Imposto progressivo → Progressivo até 20% (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto paga quem recebe herança ou doação?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Reescreve
@@ -137,6 +230,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Imposto sobre grandes fortunas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:08`; tabela antiga: imposto-grandes-fortunas.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** O país cobra imposto todo ano sobre a riqueza acumulada?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. A receita real depende do índice Cooperação fiscal internacional: "Mínimo para bilionários" só arrecada perto do previsto acima de um limite dele.; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Taxar fortunas e heranças → Imposto amplo (0,5 a 1,5% acima de um limite) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O país cobra imposto todo ano sobre a riqueza acumulada?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Reescreve
 **Mãe:** nenhuma. A receita real depende do índice Cooperação fiscal internacional: "Mínimo para bilionários" só arrecada perto do previsto acima de um limite dele.
@@ -152,6 +258,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Países que usam:** nenhum: maioria da OCDE; mínimo para bilionários: proposta do G20; amplo: Noruega, Suíça, Espanha (aprox.).
 
 #### Imposto sobre a propriedade
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:09`; tabela antiga: imposto-propriedade-urbana-rural.
+- **Ciclos:** C02 Tributos e dívida, C07 Moradia e cidade, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** Quanto pagam imóveis, terras e veículos, e com que valor de referência?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moradia pública de aluguel → Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa) (opção proposta por leitura do programa e da ficha; validar juridicamente); Imposto sobre casa vazia → Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa) (opção proposta por leitura do programa e da ficha; validar juridicamente); Transporte sem tarifa → Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto pagam imóveis, terras e veículos, e com que valor de referência?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve
@@ -171,6 +290,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Imposto sobre transações financeiras
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:10`; tabela antiga: imposto-transacoes-financeiras.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** O governo cobra imposto sobre cada movimentação de dinheiro?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo cobra imposto sobre cada movimentação de dinheiro?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Reescreve
 **Mãe:** nenhuma.
@@ -188,6 +320,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Regime simplificado para pequenas empresas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:11`; tabela antiga: regime-simplificado-para-pequenas-empresas.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas, C04 Trabalho e renda.
+- **Decisão:** Pequenas empresas pagam imposto por um regime mais simples e mais barato?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Imposto sobre consumo. "Cascata em vários tributos" trava "Só dispensa do IVA".; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Abrir negócio fácil → Amplo, com teto alto e serviços de alta renda (hoje no Brasil) (correspondência textual; conferir intenção do programa); Microcrédito → Amplo, com teto alto e serviços de alta renda (hoje no Brasil) (correspondência textual; conferir intenção do programa); Autônomo por aplicativo → Amplo, com teto alto e serviços de alta renda (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Pequenas empresas pagam imposto por um regime mais simples e mais barato?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** Imposto sobre consumo. "Cascata em vários tributos" trava "Só dispensa do IVA".
@@ -204,6 +349,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Países que usam:** dispensa do IVA: União Europeia; valor fixo: Argentina, Uruguai (aprox.).
 
 #### Incentivos fiscais regionais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:12`; tabela antiga: incentivos-fiscais-regionais.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas, C17 Instituições e integridade.
+- **Decisão:** O país dá benefício fiscal para atrair empresas a regiões mais pobres, e de que jeito?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Zonas econômicas especiais → Zona franca ampla (hoje no Brasil) (correspondência textual; conferir intenção do programa); Emendas e obras na base → Zona franca ampla (hoje no Brasil) (correspondência textual; conferir intenção do programa); Cortar isenções → Nenhum (correspondência textual; conferir intenção do programa); Fundos para regiões pobres → Zona franca ampla (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O país dá benefício fiscal para atrair empresas a regiões mais pobres, e de que jeito?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (sobe de Lei para Constituição)
@@ -223,6 +381,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Revisão de gastos tributários
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:13`; tabela antiga: revisao-de-gastos-tributarios.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** O governo revê ou corta as isenções e benefícios fiscais que já existem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ajuste com imposto no topo → Corte linear (hoje no Brasil: 10% desde 2026) (correspondência textual; conferir intenção do programa); Cortar isenções → Corte linear (hoje no Brasil: 10% desde 2026) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo revê ou corta as isenções e benefícios fiscais que já existem?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
 **Mãe:** nenhuma.
@@ -239,6 +410,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Pontos abertos:** Estudo curto: revisar. O lado e os grupos são estimativa minha. O estudo diz que os dois lados apoiam cortar, por motivos diferentes.
 
 #### Devolução de imposto aos pobres
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:14`; tabela antiga: devolucao-de-imposto-aos-pobres.
+- **Ciclos:** C02 Tributos e dívida, C05 Transferência e pobreza, C19 Energia e transição.
+- **Decisão:** O governo devolve aos mais pobres parte do imposto que eles pagam no consumo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Imposto sobre consumo. "Cascata em vários tributos" e "Imposto sobre vendas no varejo" travam a lei inteira (sem IVA não há como calcular a devolução; proposta minha). "IVA amplo com devolução" trava "Nenhuma".; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Imposto de renda negativo → Ampla para as famílias do cadastro social (hoje no Brasil, a partir de 2027) (correspondência textual; conferir intenção do programa); Imposto de carbono → Ampla para as famílias do cadastro social (hoje no Brasil, a partir de 2027) (correspondência textual; conferir intenção do programa); Família primeiro → Ampla para as famílias do cadastro social (hoje no Brasil, a partir de 2027) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo devolve aos mais pobres parte do imposto que eles pagam no consumo?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
@@ -258,6 +442,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 ### Mesa Regra fiscal
 
 #### Regra fiscal
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:15`; tabela antiga: regra-fiscal.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C02 Tributos e dívida, C03 Produção, comércio e empresas, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** Que tipo de limite amarra o gasto ou o déficit do governo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe da Meta de resultado primário e do Fundo soberano.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moeda presa ao dólar → lacuna: opção nova a decidir (sem equivalência textual segura); Estabilização em fases → lacuna: opção nova a decidir (sem equivalência textual segura); Dolarização → lacuna: opção nova a decidir (sem equivalência textual segura); Pacto de preços e salários → lacuna: opção nova a decidir (sem equivalência textual segura); Grandes obras públicas → Sem regra (correspondência textual; conferir intenção do programa); Choque liberal → Freio da dívida (déficit estrutural máximo, por exemplo 0,35% do PIB) (opção proposta por leitura do programa e da ficha; validar juridicamente); Teto de gastos → Teto de gastos (Brasil de 2017 a 2022) (opção proposta por leitura do programa e da ficha; validar juridicamente); Austeridade com corte de Estado → Freio da dívida (déficit estrutural máximo, por exemplo 0,35% do PIB) (opção proposta por leitura do programa e da ficha; validar juridicamente); Ajuste com imposto no topo → Balanço estrutural (meta descontado o ciclo e o preço das matérias-primas) (opção proposta por leitura do programa e da ficha; validar juridicamente); Pagar com moeda nova → Sem regra (correspondência textual; conferir intenção do programa); Contas vigiadas → Balanço estrutural (meta descontado o ciclo e o preço das matérias-primas) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Que tipo de limite amarra o gasto ou o déficit do governo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve
@@ -279,6 +476,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Meta de resultado primário
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:16`; tabela antiga: meta-de-resultado-primario.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Quanto o governo promete economizar (ou gastar a mais) antes dos juros neste ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Regra fiscal. Com "Sem regra", a meta só indica e furar não custa credibilidade extra (proposta minha). Com "Destino do resultado fiscal" em "Gastar", a meta não funciona (inventário).; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Contas vigiadas → +3% do PIB (máximo; perto do que estabiliza a dívida, entre +2,3 e +3,1%) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o governo promete economizar (ou gastar a mais) antes dos juros neste ano?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
 **Mãe:** Regra fiscal. Com "Sem regra", a meta só indica e furar não custa credibilidade extra (proposta minha). Com "Destino do resultado fiscal" em "Gastar", a meta não funciona (inventário).
@@ -295,6 +505,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Pontos abertos:** a alavanca não tem lado, porque não é opção. A dependência de "Destino do resultado fiscal" vem do inventário; o mais natural seria a Regra fiscal ser a mãe dela (as duas estão aqui).
 
 #### Destino do resultado fiscal
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:17`; tabela antiga: destino-do-resultado-fiscal.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Quando sobra dinheiro (superávit ou receita extra), para onde ele vai?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe do Fundo soberano ("Gastar" trava o fundo) e da Meta de resultado primário ("Gastar" a desliga).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vender estatais para pagar dívida → Pagar a dívida (opção proposta por leitura do programa e da ficha; validar juridicamente); Poupar a riqueza do subsolo → Guardar no cofre ou no fundo (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quando sobra dinheiro (superávit ou receita extra), para onde ele vai?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve (ganha a opção "Gastar")
@@ -314,6 +537,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Fundo soberano
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:18`; tabela antiga: fundo-soberano.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas.
+- **Decisão:** Como o país aplica o dinheiro que guarda?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Regra fiscal ("Sem regra" trava) e Destino do resultado fiscal ("Gastar" trava).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Poupar a riqueza do subsolo → Fundo no exterior, saque limitado ao retorno real (até 3% ao ano) (opção corrigida por sentido do programa; validar evidência); Partilha com conteúdo nacional → Investir em obras (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como o país aplica o dinheiro que guarda?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** Regra fiscal ("Sem regra" trava) e Destino do resultado fiscal ("Gastar" trava).
@@ -332,6 +568,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Conselho fiscal independente
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:19`; tabela antiga: conselho-fiscal-independente.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** Existe um órgão técnico independente que projeta a dívida e confere as contas do governo, e com que poder?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Contas vigiadas → Com poder de veto às projeções do orçamento (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Existe um órgão técnico independente que projeta a dívida e confere as contas do governo, e com que poder?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
 **Mãe:** nenhuma.
@@ -349,6 +598,19 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 
 #### Vinculações orçamentárias
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-02:20`; tabela antiga: vinculacoes-orcamentarias.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** A Constituição pode carimbar parte da receita para um gasto fixo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe dos pisos de saúde e de educação, que moram nas áreas Saúde e Educação: desligada, eles ficam travados.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Teto de gastos → Desligada: receita sem carimbo (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A Constituição pode carimbar parte da receita para um gasto fixo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo (reescrita pela decisão do autor: só liga ou desliga)
 **Mãe:** nenhuma. É mãe dos pisos de saúde e de educação, que moram nas áreas Saúde e Educação: desligada, eles ficam travados.
@@ -362,3 +624,26 @@ Brasil hoje: o estudo não diz qual opção é a do Brasil. Carga de 32,32% do P
 **Leis relacionadas:** Piso de gasto em saúde (Saúde), Piso de gasto em educação (Educação), Regra fiscal, Previdência (Social).
 **Países que usam:** ligada: Brasil, Colômbia (aprox.); desligada: lacuna.
 **Pontos abertos:** o estudo dá −0,5 para "pisos amplos" e +0,5 para "sem pisos"; com a lei só ligando e desligando, uso esses valores para os dois lados. Os grupos são estimativa minha. Falta decidir se fundos carimbados que não são pisos (por exemplo, fundos regionais) também ficam travados quando a lei está desligada.
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Honrar a dívida
+
+**ID de origem:** `pagamento-da-divida`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 6.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:pagamento-da-divida`; tabela antiga: pagamento-da-divida.
+- **Ciclos:** C02 Tributos e dívida.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moratória da dívida → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

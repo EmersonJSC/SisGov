@@ -1,0 +1,17 @@
+{
+  "id": "educacao-frequencia-grupo-familias",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "frequencia_escolar",
+  "alvo": "grupo_familias_com_filhos",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.18,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

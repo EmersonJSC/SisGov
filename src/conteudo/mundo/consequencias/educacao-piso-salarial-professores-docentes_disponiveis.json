@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-salarial-professores-docentes_disponiveis",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "valorizacao_magisterio",
+  "alvo": "docentes_disponiveis",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 4],
+      [2, 8],
+      [3, 12]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

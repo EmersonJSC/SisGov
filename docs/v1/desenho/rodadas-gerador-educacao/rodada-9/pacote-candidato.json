@@ -1,0 +1,14 @@
+{
+  "tipo": "pacote-de-programas-ilha-teste",
+  "rodada": 9,
+  "programas": ["fundeb", "pnate", "pnae", "pe-de-meia"],
+  "opcoes": {
+    "transporte-escolar": "regularidade-rotas",
+    "alimentacao-escolar": "compras-locais",
+    "financiamento-com-resultado": "premiar-equidade",
+    "bolsa-de-permanencia-no-ensino-medio": "foco-conclusao"
+  },
+  "problema": "Uma média nacional pode esconder barreiras rurais e de baixa renda.",
+  "justificativaDaEvolucao": "Direciona apoio a estudantes e territórios com maiores obstáculos e compara ganhos agregados com resultados dos grupos afetados.",
+  "leisGeradasNovamentePelaFonte": false
+}

@@ -3,58 +3,60 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Financiamento com resultado",
-  "descricao": "O dinheiro que vai para as redes de ensino depende só do número de alunos ou também do resultado?",
+  "nome": "Complementação financeira por resultados educacionais",
+  "descricao": "Vincula parte da complementação financeira ao cumprimento de condicionalidades e à evolução de indicadores de atendimento, aprendizagem e equidade.",
   "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14113.htm",
+  "processoAutorizacao": "financiamento-por-resultados",
   "nivelLegal": "derivada",
+  "revogavel": true,
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "alavanca"
+  },
+  "controle": {
+    "variavel": "complementacao_resultados_educacionais",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "premiar-equidade",
+        "rotulo": "Priorizar equidade — Distribui maior apoio para redes que melhoram resultados entre estudantes em desvantagem, para evitar premiar apenas quem já parte de condições melhores.",
+        "valor": 1,
+        "efeitos": "Distribui maior apoio para redes que melhoram resultados entre estudantes em desvantagem, para evitar premiar apenas quem já parte de condições melhores. Intensidade hipotética de apoio financeiro orientado por metas, atendimento, aprendizagem e equidade.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "premiar-frequencia",
+        "rotulo": "Priorizar frequência — Vincula o apoio ao avanço na presença e permanência, sem tratar frequência como prova suficiente de aprendizagem.",
+        "valor": 2,
+        "efeitos": "Vincula o apoio ao avanço na presença e permanência, sem tratar frequência como prova suficiente de aprendizagem. Intensidade hipotética de apoio financeiro orientado por metas, atendimento, aprendizagem e equidade.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "premiar-aprendizagem",
+        "rotulo": "Priorizar aprendizagem — Vincula o apoio à melhora demonstrada de aprendizagem, com salvaguardas para considerar as condições iniciais das redes.",
+        "valor": 3,
+        "efeitos": "Vincula o apoio à melhora demonstrada de aprendizagem, com salvaguardas para considerar as condições iniciais das redes. Intensidade hipotética de apoio financeiro orientado por metas, atendimento, aprendizagem e equidade.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      }
+    ]
+  },
   "implantacaoTurnos": {
     "minimo": 2,
     "maximo": 2
   },
-  "controle": {
-    "variavel": "nivel_financiamento_com_resultado",
-    "unidade": "nivel_escopo",
-    "opcoes": [
-      {
-        "id": "repasse-por-aluno",
-        "rotulo": "Repasse por aluno",
-        "valor": 0,
-        "apoiam": ["Sindicatos de professores"],
-        "efeitos": "Nada muda"
-      },
-      {
-        "id": "parte-por-resultado",
-        "rotulo": "Parte por resultado",
-        "valor": 50.0,
-        "custoTexto": "0, só redistribui",
-        "apoiam": ["Empresários", "Governadores"],
-        "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ +4 pontos em português nos anos iniciais (2 a 4 anos); Greve de professores ↑ pequeno"
-      },
-      {
-        "id": "resultado-com-apoio-tecnico",
-        "rotulo": "Resultado com apoio técnico (hoje no Ceará)",
-        "valor": 100,
-        "custoTexto": "+0,02% do PIB (aprox.), educação",
-        "apoiam": ["Empresários", "Governadores e Prefeitos"],
-        "rejeitam": ["Sindicatos de professores", "mais fraco"],
-        "efeitos": "Aprendizagem ↑ +18,5 pontos em português nos anos iniciais (2 a 4 anos); Desigualdade regional ↓ se o critério inclui equidade"
-      }
-    ]
-  },
   "consequencias": [
-    "financiamento-com-resultado--desigualdade-regional",
-    "grupos--financiamento-com-resultado--grupo-empresarios"
-  ],
-  "mae": {
-    "texto": "Avaliação das escolas. \"Sem avaliação\" trava \"Parte por resultado\" e \"Resultado com apoio técnico\".",
-    "leis": ["avaliacao-das-escolas"]
-  },
-  "ministerio": "Ministério da Educação"
+    "educacao-financiamento-com-resultado-vagas_escolares",
+    "educacao-financiamento-com-resultado-grupo_pobres",
+    "educacao-financiamento-com-resultado-grupo_interior",
+    "educacao-financiamento-com-resultado-custo_educacao_hipotese",
+    "educacao-financiamento-com-resultado-frequencia_escolar",
+    "educacao-financiamento-com-resultado-permanencia_escolar",
+    "educacao-financiamento-com-resultado-aprendizagem_escolar",
+    "educacao-financiamento-com-resultado-informacao_educacional"
+  ]
 }

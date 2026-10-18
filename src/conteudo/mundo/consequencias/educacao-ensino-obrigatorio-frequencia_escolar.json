@@ -1,0 +1,21 @@
+{
+  "id": "educacao-ensino-obrigatorio-frequencia_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "implementacao_escolaridade_obrigatoria",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 5],
+      [2, 0],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

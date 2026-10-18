@@ -1,0 +1,17 @@
+{
+  "id": "expansao-reduz-caixa",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "expansao_executada",
+  "alvo": "caixa_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -5,
+    "termoConstante": 0
+  },
+  "unidade": "moeda_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

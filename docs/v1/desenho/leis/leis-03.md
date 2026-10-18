@@ -1,6 +1,8 @@
 ## Trabalho, salário e sindicatos
 
-São 18 leis: 4 de Constituição, 11 de Lei e 3 de Alavanca. Destas, 5 ainda têm ponto aberto (Jornada de trabalho, Terceirização, Salário mínimo, Fiscalização do trabalho e Intermediação e qualificação).
+O estudo original reunia 18 fichas: 4 de Constituição, 11 de Lei e 3 de Alavanca. Destas, 5 ainda têm ponto aberto (Jornada de trabalho, Terceirização, Salário mínimo, Fiscalização do trabalho e Intermediação e qualificação).
+
+**Conciliação de 17/out/2026:** 18 registros nesta área; 18 fichas recentes, 0 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura:
 - Lado: os números vêm do estudo da área (códigos do Manifesto Project e votos reais). Quando a medida é minha, está escrito "(estimado)".
@@ -10,6 +12,19 @@ Notas de leitura:
 ### Contrato de trabalho
 
 #### Legislação trabalhista
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:01`; tabela antiga: legislacao-trabalhista.
+- **Ciclos:** C03 Produção, comércio e empresas, C04 Trabalho e renda.
+- **Decisão:** Que direitos mínimos todo contrato de trabalho garante, e o acordo entre as partes pode valer mais que a lei?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É a mãe da mesa: "Sem regras" e "Mínima" travam Jornada de trabalho em sem limite ou 48h e Fundo de garantia em nenhum ou conta portátil; "Protetiva" trava a opção "livre" da Terceirização.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Flexissegurança → Mínima: contrato livre com piso e segurança (opção corrigida por sentido do programa; validar evidência); Zonas econômicas especiais → Sem regras (correspondência textual; conferir intenção do programa); Reforma trabalhista → Negociado sobre legislado: código detalhado, mas o acordo coletivo prevalece (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência); Choque liberal → Sem regras (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Que direitos mínimos todo contrato de trabalho garante, e o acordo entre as partes pode valer mais que a lei?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (ganha a opção negociado sobre legislado)
@@ -29,6 +44,19 @@ Notas de leitura:
 
 #### Custo de processar na Justiça do Trabalho
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:02`; tabela antiga: custo-de-processar-na-justica-do-trabalho.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Quem paga honorários e perícia quando o trabalhador perde a ação?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista (sem trava). Depende também da Independência do Judiciário (Instituições): com Judiciário pleno, há chance, por evento, de o tribunal derrubar "Quem perde paga".; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem paga honorários e perícia quando o trabalhador perde a ação?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
 **Mãe:** Legislação trabalhista (sem trava). Depende também da Independência do Judiciário (Instituições): com Judiciário pleno, há chance, por evento, de o tribunal derrubar "Quem perde paga".
@@ -44,6 +72,19 @@ Notas de leitura:
 **Países que usam:** Quem perde paga: regra geral em vários países europeus (aprox.). Gratuita sem risco: Brasil.
 
 #### Jornada de trabalho
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:03`; tabela antiga: jornada-de-trabalho.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Qual é o limite de horas de trabalho por semana?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista. "Sem regras" e "Mínima" travam a jornada em sem limite ou 48h. "35 horas" exige Legislação trabalhista em código detalhado ou protetiva.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Jornada curta → 35 horas (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Qual é o limite de horas de trabalho por semana?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -64,6 +105,19 @@ Notas de leitura:
 
 #### Fundo de garantia
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:04`; tabela antiga: fundo-de-garantia.
+- **Ciclos:** C04 Trabalho e renda, C07 Moradia e cidade.
+- **Decisão:** O que o trabalhador recebe quando é demitido?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista. "Sem regras" e "Mínima" travam em nenhum ou conta portátil.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moradia pública de aluguel → Indenização por tempo de casa (correspondência textual; conferir intenção do programa); Casa própria subsidiada → Fundo com multa na demissão (hoje no Brasil: 8% ao mês e 40% de multa) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O que o trabalhador recebe quando é demitido?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** Legislação trabalhista. "Sem regras" e "Mínima" travam em nenhum ou conta portátil.
@@ -80,6 +134,19 @@ Notas de leitura:
 **Países que usam:** Nenhum: EUA. Conta portátil: Áustria (aprox.). Fundo com multa: Brasil. Indenização por tempo: Chile, Argentina (aprox.).
 
 #### Terceirização
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:05`; tabela antiga: terceirizacao.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** A empresa pode contratar outra empresa para fazer sua atividade principal?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista. "Protetiva" trava a opção "Livre".; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Reforma trabalhista → Ampla, com a contratante respondendo pelas dívidas (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A empresa pode contratar outra empresa para fazer sua atividade principal?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -99,6 +166,19 @@ Notas de leitura:
 
 #### Trabalho por aplicativo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:06`; tabela antiga: trabalho-por-aplicativo.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Que contrato tem quem trabalha por plataforma digital?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista (sem trava no estudo).; ver dependências acima.
+- **Prazo:** 2 turnos (no Brasil é lei complementar, maioria absoluta); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Entregador com direitos → Emprego obrigatório (correspondência textual; conferir intenção do programa); Autônomo por aplicativo → Sem regulação (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Que contrato tem quem trabalha por plataforma digital?
 **Camada:** Lei · **Implantação:** 2 turnos (no Brasil é lei complementar, maioria absoluta) · **Inventário:** Fica
 **Mãe:** Legislação trabalhista (sem trava no estudo).
@@ -115,6 +195,19 @@ Notas de leitura:
 **Países que usam:** Categoria própria: Califórnia (EUA). Presunção de vínculo: Espanha, diretiva da UE de 2024 (aprox.).
 
 #### Trabalho infantil e aprendizagem
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:07`; tabela antiga: trabalho-infantil-e-aprendizagem.
+- **Ciclos:** C04 Trabalho e renda, C08 Educação básica.
+- **Decisão:** A partir de que idade se pode trabalhar, e como funciona o contrato de aprendiz?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Legislação trabalhista (sem trava). "Sistema dual" exige, em Educação, Ensino técnico profissional no mínimo como opção ao ensino médio.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ensino técnico com empresa → Sistema dual: escola e empresa juntas (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A partir de que idade se pode trabalhar, e como funciona o contrato de aprendiz?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -134,6 +227,19 @@ Notas de leitura:
 
 #### Igualdade salarial de gênero
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:08`; tabela antiga: igualdade-salarial-de-genero.
+- **Ciclos:** C04 Trabalho e renda, C16 Direitos e costumes.
+- **Decisão:** Como a lei garante que mulheres e homens recebam o mesmo pelo mesmo trabalho?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Igualdade de gênero no trabalho → Certificação: multa se a empresa não provar igualdade (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como a lei garante que mulheres e homens recebam o mesmo pelo mesmo trabalho?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -150,6 +256,19 @@ Notas de leitura:
 **Países que usam:** Princípio na lei: maioria dos países. Transparência: Brasil, diretiva da UE (aprox.). Certificação: Islândia (aprox.).
 
 #### Fiscalização do trabalho
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:09`; tabela antiga: fiscalizacao-do-trabalho.
+- **Ciclos:** C04 Trabalho e renda, C16 Direitos e costumes.
+- **Decisão:** Quantos auditores e quanta verba o governo põe para fiscalizar o cumprimento das leis do trabalho?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** vale no turno seguinte (contratar auditor leva mais tempo: proposta minha, efeito cheio em 2 turnos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Jornada curta → Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha) (correspondência textual; conferir intenção do programa); Salário mínimo forte → Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha) (correspondência textual; conferir intenção do programa); Regularizar quem já está → Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha) (correspondência textual; conferir intenção do programa); Entregador com direitos → Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quantos auditores e quanta verba o governo põe para fiscalizar o cumprimento das leis do trabalho?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte (contratar auditor leva mais tempo: proposta minha, efeito cheio em 2 turnos) · **Inventário:** Novo
@@ -170,6 +289,19 @@ Notas de leitura:
 
 #### Quem decide o salário mínimo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:10`; tabela antiga: quem-decide-o-salario-minimo.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Existe um piso salarial nacional, e quem o fixa?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É a mãe da mesa: "Não existe" trava a Fórmula do salário mínimo e a alavanca Salário mínimo. "Negociação sindical" exige Negociação coletiva e sindicatos em setorial ou centralizada.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Existe um piso salarial nacional, e quem o fixa?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. É a mãe da mesa: "Não existe" trava a Fórmula do salário mínimo e a alavanca Salário mínimo. "Negociação sindical" exige Negociação coletiva e sindicatos em setorial ou centralizada.
@@ -187,6 +319,19 @@ Notas de leitura:
 
 #### Fórmula do salário mínimo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:11`; tabela antiga: formula-do-salario-minimo.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Por qual regra o salário mínimo é reajustado a cada ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Quem decide o salário mínimo. "Não existe" trava esta lei.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Salário e crédito → Meta: uma fração da mediana dos salários (opção proposta por leitura do programa e da ficha; validar juridicamente); Salário mínimo forte → Meta: uma fração da mediana dos salários (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Por qual regra o salário mínimo é reajustado a cada ano?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** Quem decide o salário mínimo. "Não existe" trava esta lei.
@@ -203,6 +348,19 @@ Notas de leitura:
 **Países que usam:** Só inflação: Brasil 2020 a 2022. Inflação mais PIB: Brasil 2007 a 2019 e desde 2023. Meta da mediana: Reino Unido (2/3 da mediana), UE cita 60% (aprox.).
 
 #### Salário mínimo
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:12`; tabela antiga: salario-minimo.
+- **Ciclos:** C02 Tributos e dívida, C04 Trabalho e renda.
+- **Decisão:** Qual é o valor do salário mínimo neste ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Quem decide o salário mínimo ("Não existe" trava) e Fórmula do salário mínimo (fixa o reajuste automático).; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Salário e crédito → Piso alto (mais de 60% da mediana) (opção proposta por leitura do programa e da ficha; validar juridicamente); Austeridade com corte de Estado → Sem piso (0%) (opção proposta por leitura do programa e da ficha; validar juridicamente); Salário mínimo forte → Piso alto (mais de 60% da mediana) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Qual é o valor do salário mínimo neste ano?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Fica (o evento anual de reajuste deixa de existir; a tela da alavanca abre toda virada de ano)
@@ -224,6 +382,19 @@ Notas de leitura:
 
 #### Negociação coletiva e sindicatos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:13`; tabela antiga: negociacao-coletiva-e-sindicatos.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas, C04 Trabalho e renda.
+- **Decisão:** Em que nível os salários e as condições são negociados, e os sindicatos são livres do Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É a mãe da mesa e libera "Negociação sindical" em Quem decide o salário mínimo quando está em setorial ou centralizada.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Pacto de preços e salários → Centralizada nacional (correspondência textual; conferir intenção do programa); Economia social de mercado → Centralizada nacional (correspondência textual; conferir intenção do programa); Reforma trabalhista → Por empresa (opção corrigida por sentido do programa; validar evidência); Sindicatos fortes → Centralizada nacional (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Em que nível os salários e as condições são negociados, e os sindicatos são livres do Estado?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. É a mãe da mesa e libera "Negociação sindical" em Quem decide o salário mínimo quando está em setorial ou centralizada.
@@ -241,6 +412,19 @@ Notas de leitura:
 
 #### Contribuição sindical
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:14`; tabela antiga: contribuicao-sindical.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Como os sindicatos se financiam: só quem quer paga, ou todos os cobertos pelo acordo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Negociação coletiva e sindicatos (sem trava no estudo).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Reforma trabalhista → Voluntária (correspondência textual; conferir intenção do programa); Sindicatos fortes → Obrigatória para todos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como os sindicatos se financiam: só quem quer paga, ou todos os cobertos pelo acordo?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve (ganha a opção taxa negocial com direito de recusa)
 **Mãe:** Negociação coletiva e sindicatos (sem trava no estudo).
@@ -256,6 +440,19 @@ Notas de leitura:
 **Países que usam:** Voluntária: Brasil 2017 a 2023. Taxa negocial: Brasil após decisão do STF de 2023 (aprox.). Obrigatória: Brasil antes de 2017.
 
 #### Direito de greve
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:15`; tabela antiga: direito-de-greve.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Os trabalhadores podem parar, e com que regras?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Negociação coletiva e sindicatos (sem trava no estudo).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Sindicatos fortes → Ampla (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Os trabalhadores podem parar, e com que regras?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve (a opção de votação secreta passa a incluir serviços mínimos)
@@ -275,6 +472,19 @@ Notas de leitura:
 
 #### Seguro-desemprego
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:16`; tabela antiga: seguro-desemprego.
+- **Ciclos:** C03 Produção, comércio e empresas, C04 Trabalho e renda, C05 Transferência e pobreza.
+- **Decisão:** Quem perde o emprego tem direito a renda, e por quanto tempo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É a mãe da mesa (sem trava no estudo).; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Flexissegurança → Generoso com ativação: benefício longo e busca obrigatória (correspondência textual; conferir intenção do programa); Economia social de mercado → Generoso com ativação: benefício longo e busca obrigatória (correspondência textual; conferir intenção do programa); Redução de jornada paga pelo governo → Generoso com ativação: benefício longo e busca obrigatória (correspondência textual; conferir intenção do programa); Benefício em troca de trabalho → Nenhum (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem perde o emprego tem direito a renda, e por quanto tempo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. É a mãe da mesa (sem trava no estudo).
@@ -293,6 +503,19 @@ Notas de leitura:
 
 #### Redução de jornada subsidiada
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:17`; tabela antiga: reducao-de-jornada-subsidiada.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Na crise, o governo paga parte do salário para a empresa reduzir horas em vez de demitir?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Seguro-desemprego (sem trava no estudo).; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Redução de jornada paga pelo governo → Permanente (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Na crise, o governo paga parte do salário para a empresa reduzir horas em vez de demitir?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** Seguro-desemprego (sem trava no estudo).
@@ -308,6 +531,19 @@ Notas de leitura:
 **Países que usam:** Emergencial: Brasil 2020 e 2021. Permanente: Alemanha, Itália.
 
 #### Intermediação e qualificação
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-03:18`; tabela antiga: intermediacao-e-qualificacao.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** Quanto o governo gasta com agências de emprego e cursos para quem procura trabalho?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Seguro-desemprego (sem trava).; ver dependências acima.
+- **Prazo:** vale no turno seguinte (cursos dão efeito em 2 a 3 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Flexissegurança → Máximo: 0,3% do PIB (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta com agências de emprego e cursos para quem procura trabalho?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte (cursos dão efeito em 2 a 3 anos) · **Inventário:** Novo

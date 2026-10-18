@@ -10,15 +10,15 @@ const numero = (valor: number, casas = 1) =>
 export function moeda(milhoes: number): string {
   const sinal = milhoes < 0 ? "−" : "";
   const v = Math.abs(milhoes);
-  if (v >= 1_000_000) return `${sinal}R$ ${numero(v / 1_000_000)} tri`;
-  if (v >= 1_000) return `${sinal}R$ ${numero(v / 1_000)} bi`;
-  return `${sinal}R$ ${numero(v)} mi`;
+  if (v >= 1_000_000) return `${sinal}Cr ${numero(v / 1_000_000)} tri`;
+  if (v >= 1_000) return `${sinal}Cr ${numero(v / 1_000)} bi`;
+  return `${sinal}Cr ${numero(v)} mi`;
 }
 
 export function valorDaBolha(valor: number, unidade: string): string {
   switch (unidade) {
     case "percentual_0_100":
-      return `${numero(valor)}%`;
+      return `${numero(valor, 2)}%`;
     case "percentual_pib":
       return `${numero(valor)}% do PIB`;
     case "taxa_por_100_mil":

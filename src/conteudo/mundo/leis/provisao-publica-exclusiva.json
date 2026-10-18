@@ -1,0 +1,57 @@
+{
+  "id": "provisao-publica-exclusiva",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Provisão pública exclusiva da educação",
+  "descricao": "Transfere a oferta escolar ordinária privada à administração pública. A lei cubana de 1961 fundamenta o modelo, a nacionalização, a indenização e exceções; números e efeitos da ilha são hipóteses. Posição na bússola pendente de fundamentação.",
+  "area": "Educação, ciência e cultura",
+  "fonte": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/ley_de_nacionalizacion_de_la_educacion.pdf",
+  "processoAutorizacao": "organizacao-da-oferta-escolar",
+  "nivelLegal": "derivada",
+  "revogavel": true,
+  "exclui": ["escolha-escolar-financiada"],
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "provisao_publica_exclusiva",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "incorporacao-indenizada",
+        "rotulo": "Incorporar com indenização — Transfere escolas privadas para a administração pública com indenização. Valor dos ativos e pagamento ainda são hipóteses do piloto; custo e impacto transitório sobre famílias são hipóteses, sem presumir ganho de aprendizagem.",
+        "valor": 1,
+        "efeitos": "Transfere escolas privadas para a administração pública com indenização. Valor dos ativos e pagamento ainda são hipóteses do piloto; custo e impacto transitório sobre famílias são hipóteses, sem presumir ganho de aprendizagem. undefined",
+        "apoiam": [],
+        "rejeitam": []
+      },
+      {
+        "id": "incorporacao-seletiva",
+        "rotulo": "Incorporar com indenização seletiva — Transfere a rede privada à administração pública e diferencia a indenização conforme os critérios da lei. Ativos e pagamentos exigem avaliação individual; o custo comparativo é hipotético.",
+        "valor": 2,
+        "efeitos": "Transfere a rede privada à administração pública e diferencia a indenização conforme os critérios da lei. Ativos e pagamentos exigem avaliação individual; o custo comparativo é hipotético. undefined",
+        "apoiam": [],
+        "rejeitam": []
+      },
+      {
+        "id": "excecoes-transitorias",
+        "rotulo": "Incorporar com exceções transitórias — Prevê exceções autorizadas durante a transferência da oferta para a rede pública. O custo comparativo e o prazo de transição são hipóteses; a exclusividade vale para a oferta ordinária.",
+        "valor": 3,
+        "efeitos": "Prevê exceções autorizadas durante a transferência da oferta para a rede pública. O custo comparativo e o prazo de transição são hipóteses; a exclusividade vale para a oferta ordinária. undefined",
+        "apoiam": [],
+        "rejeitam": []
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "consequencias": [
+    "educacao-provisao-publica-exclusiva-custo_educacao_hipotese",
+    "educacao-provisao-publica-exclusiva-grupo_familias_com_filhos"
+  ]
+}

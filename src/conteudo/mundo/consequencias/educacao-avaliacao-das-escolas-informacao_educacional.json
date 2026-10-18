@@ -1,0 +1,21 @@
+{
+  "id": "educacao-avaliacao-das-escolas-informacao_educacional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "intensidade_avaliacao_educacional",
+  "alvo": "informacao_educacional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 12],
+      [2, 7],
+      [3, 10]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "educacao-ensino-obrigatorio-permanencia_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "implementacao_escolaridade_obrigatoria",
+  "alvo": "permanencia_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, 10]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

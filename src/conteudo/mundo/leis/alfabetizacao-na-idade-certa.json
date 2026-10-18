@@ -3,64 +3,58 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Alfabetização na idade certa",
-  "descricao": "O governo central organiza um esforço para que toda criança leia e escreva até o fim do 2º ano?",
+  "nome": "Cooperação para alfabetização na idade certa",
+  "descricao": "Organiza assistência técnica e colaboração federativa para alfabetização e recomposição da aprendizagem.",
   "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15247.htm",
+  "processoAutorizacao": "cooperacao-alfabetizacao",
   "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
+  "revogavel": true,
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
   },
   "controle": {
-    "variavel": "nivel_alfabetizacao_na_idade_certa",
-    "unidade": "nivel_escopo",
+    "variavel": "apoio_alfabetizacao",
+    "unidade": "nivel",
     "opcoes": [
       {
-        "id": "nenhum-programa-nacional",
-        "rotulo": "Nenhum programa nacional",
-        "valor": 0,
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Famílias com filhos", "Sindicatos de professores"],
-        "efeitos": "Aprendizagem estável (59% alfabetizados no 2º ano em 2024)"
+        "id": "alfabetizacao-inicial",
+        "rotulo": "Foco na alfabetização inicial — Concentra apoio pedagógico nos primeiros anos escolares. A melhora de aprendizagem demora a aparecer.",
+        "valor": 1,
+        "efeitos": "Concentra apoio pedagógico nos primeiros anos escolares. A melhora de aprendizagem demora a aparecer. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "formacao-de-professores-e-material",
-        "rotulo": "Formação de professores e material",
-        "valor": 33.33,
-        "custoTexto": "~0,01% do PIB (proposta minha, sobre o programa de hoje)",
-        "apoiam": ["Sindicatos de professores", "Universidades e cientistas"],
-        "efeitos": "Aprendizagem ↑ pequeno; efeito medido é lacuna"
+        "id": "recomposicao-aprendizagem",
+        "rotulo": "Recompor aprendizagem — Prioriza estudantes que já apresentam defasagem, buscando recuperar habilidades essenciais; exige identificar necessidades diferentes.",
+        "valor": 2,
+        "efeitos": "Prioriza estudantes que já apresentam defasagem, buscando recuperar habilidades essenciais; exige identificar necessidades diferentes. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "metas-com-apoio-tecnico-e-incentivo-em-parceria-com-estados-",
-        "rotulo": "Metas com apoio técnico e incentivo, em parceria com estados e municípios (hoje na referência e no Ceará)",
-        "valor": 66.67,
-        "custoTexto": "~0,01% do PIB ( 1 bi por ano ÷ PIB ~ 12 tri, conta própria), educação",
-        "apoiam": [
-          "Famílias com filhos",
-          "Empresários",
-          "Governadores e Prefeitos"
-        ],
-        "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ forte (2 a 4 anos): o Ceará tem 85% alfabetizados contra 59% no país; Evasão escolar ↓ depois (pouco aprendizado leva a abandono)"
-      },
-      {
-        "id": "metodo-unico-de-ensino-da-leitura-definido-pelo-governo-cent",
-        "rotulo": "Método único de ensino da leitura definido pelo governo central",
-        "valor": 100,
-        "custoTexto": "~0,01% do PIB (aprox.)",
-        "apoiam": ["Igrejas evangélicas", "Famílias com filhos"],
-        "rejeitam": ["Sindicatos de professores", "Universidades e cientistas"],
-        "efeitos": "Aprendizagem ↑ pequeno (aprox.); Greve de professores ↑ pequeno"
+        "id": "formacao-docente",
+        "rotulo": "Apoiar professores — Direciona assistência técnica e formação a docentes. O resultado depende da aplicação pedagógica e não é automático.",
+        "valor": 3,
+        "efeitos": "Direciona assistência técnica e formação a docentes. O resultado depende da aplicação pedagógica e não é automático. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       }
     ]
   },
-  "consequencias": ["alfabetizacao-na-idade-certa--evasao-escolar"],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "consequencias": [
+    "educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar",
+    "educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese",
+    "educacao-alfabetizacao-na-idade-certa-frequencia_escolar",
+    "educacao-alfabetizacao-na-idade-certa-grupo_jovens",
+    "educacao-alfabetizacao-na-idade-certa-docentes_disponiveis",
+    "educacao-alfabetizacao-na-idade-certa-grupo_servidores"
+  ]
 }

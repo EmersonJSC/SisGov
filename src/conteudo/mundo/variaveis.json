@@ -1,0 +1,672 @@
+{
+  "id": "variaveis-base-minima",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "pib_nominal",
+      "tipo": "estoque",
+      "nome": "PIB anual (hipótese da ilha)",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "milhões de créditos por ano",
+        "tecnico": true
+      },
+      "area": "Contas e tributos"
+    },
+    {
+      "id": "populacao_total",
+      "tipo": "estoque",
+      "nome": "População — todos os residentes, de todas as idades (hipótese da ilha)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "pessoas",
+        "tecnico": true
+      },
+      "area": "Proteção social"
+    },
+    {
+      "id": "inflacao_anual",
+      "tipo": "estoque",
+      "nome": "Inflação anual (hipótese da ilha)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "% ao ano",
+        "tecnico": true
+      },
+      "area": "Contas e tributos",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "desemprego",
+      "tipo": "estoque",
+      "nome": "Desemprego (hipótese da ilha)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "% da força de trabalho",
+        "tecnico": true
+      },
+      "area": "Trabalho e mercado",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "divida_publica",
+      "tipo": "estoque",
+      "nome": "Dívida pública (hipótese da ilha)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "% do PIB",
+        "tecnico": true
+      },
+      "area": "Contas e tributos",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "plano_expansao_rede",
+      "tipo": "controle",
+      "nome": "Plano de expansão da rede",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 2
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "padrao_manutencao_rede",
+      "tipo": "controle",
+      "nome": "Padrão de manutenção da rede",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 2
+      },
+      "valorInicial": 0,
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "expansao_executada",
+      "tipo": "calculado",
+      "nome": "Expansão executada (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "níveis executados",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "manutencao_executada",
+      "tipo": "calculado",
+      "nome": "Manutenção executada (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "níveis executados",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "demanda_rede",
+      "tipo": "estoque",
+      "nome": "Demanda da rede (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "capacidade_rede",
+      "tipo": "estoque",
+      "nome": "Capacidade da rede (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "perdas_rede",
+      "tipo": "calculado",
+      "nome": "Perdas totais da rede (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "perdas_tecnicas_rede",
+      "tipo": "estoque",
+      "nome": "Perdas técnicas da rede (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "perdas_comerciais_rede",
+      "tipo": "estoque",
+      "nome": "Perdas comerciais da rede (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo"
+    },
+    {
+      "id": "caixa_publico",
+      "tipo": "estoque",
+      "nome": "Caixa público (hipótese piloto)",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "milhões de créditos do piloto",
+        "tecnico": true
+      },
+      "area": "Contas e tributos"
+    },
+    {
+      "id": "pressao_rede",
+      "tipo": "calculado",
+      "nome": "Pressão sobre o suprimento (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "medida": {
+        "unidade": "unidades do piloto",
+        "tecnico": true
+      },
+      "area": "Meio ambiente, energia e campo",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "risco_apagao",
+      "tipo": "situacao",
+      "nome": "Risco de falta de energia (hipótese piloto)",
+      "unidade": "quantidade",
+      "dominio": {
+        "minimo": 0
+      },
+      "entrada": 15,
+      "saida": 5,
+      "area": "Meio ambiente, energia e campo",
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "implementacao_escolaridade_obrigatoria",
+      "tipo": "controle",
+      "nome": "Garantia da escolaridade obrigatória — Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "prioridade_financiamento_educacao",
+      "tipo": "controle",
+      "nome": "Financiamento da educação básica — Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "modelo_provisao_escolar",
+      "tipo": "controle",
+      "nome": "Escolha entre provedores escolares com financiamento público — Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "provisao_publica_exclusiva",
+      "tipo": "controle",
+      "nome": "Provisão pública exclusiva da educação",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "apoio_financeiro_permanencia",
+      "tipo": "controle",
+      "nome": "Incentivo à permanência no ensino médio — Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "oferta_jornada_integral",
+      "tipo": "controle",
+      "nome": "Oferta de jornada escolar ampliada — Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "valorizacao_magisterio",
+      "tipo": "controle",
+      "nome": "Piso e valorização do magistério público — Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "apoio_alfabetizacao",
+      "tipo": "controle",
+      "nome": "Cooperação para alfabetização na idade certa — Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "apoio_transporte_escolar",
+      "tipo": "controle",
+      "nome": "Apoio ao transporte escolar rural — Alcance hipotético do suporte ao transporte, sobretudo para estudantes rurais com trajetos longos.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "apoio_alimentacao_escolar",
+      "tipo": "controle",
+      "nome": "Oferta de alimentação escolar — Alcance hipotético da oferta de alimentação durante o período escolar.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "intensidade_avaliacao_educacional",
+      "tipo": "controle",
+      "nome": "Avaliação e monitoramento educacional — Intensidade de coleta e acompanhamento de informações sobre escolas e aprendizagem.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "complementacao_resultados_educacionais",
+      "tipo": "controle",
+      "nome": "Complementação financeira por resultados educacionais — Intensidade hipotética de apoio financeiro orientado por metas, atendimento, aprendizagem e equidade.",
+      "unidade": "nivel",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Educação, ciência e cultura",
+      "valorInicial": 1
+    },
+    {
+      "id": "demanda_escolar",
+      "tipo": "estoque",
+      "nome": "Demanda escolar elegível — Índice hipotético da procura por vagas entre crianças e jovens em idade de escolaridade obrigatória. Não é a população total nem uma contagem real de estudantes.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "valorInicial": 70
+    },
+    {
+      "id": "vagas_escolares",
+      "tipo": "estoque",
+      "nome": "Capacidade de vagas escolares — Capacidade estimada de receber estudantes com as escolas, salas e turnos disponíveis. O valor é um índice de teste, não uma contagem de vagas.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "valorInicial": 48
+    },
+    {
+      "id": "docentes_disponiveis",
+      "tipo": "estoque",
+      "nome": "Capacidade docente disponível — Capacidade estimada de professores para atender as turmas. O índice não informa o número real de docentes nem sua distribuição por disciplina.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "valorInicial": 52
+    },
+    {
+      "id": "dificuldade_territorial",
+      "tipo": "estoque",
+      "nome": "Barreira territorial de acesso — Barreiras de distância, tempo de viagem e falta de transporte entre a casa e a escola. Valor alto significa acesso mais difícil; a escala é uma hipótese do piloto.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "valorInicial": 45
+    },
+    {
+      "id": "satisfacao_base_pessoas",
+      "tipo": "estoque",
+      "nome": "Referência inicial de satisfação (hipótese) — Ponto inicial hipotético usado para calcular a satisfação dos perfis sociais da ilha. Não é pesquisa de opinião real.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "valorInicial": 50
+    },
+    {
+      "id": "acesso_escolar",
+      "tipo": "calculado",
+      "nome": "Acesso à escola — Quanto da procura escolar consegue chegar a uma vaga. Acesso maior indica menos pessoas impedidas por falta de capacidade ou barreiras territoriais.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "permanencia_escolar",
+      "tipo": "calculado",
+      "nome": "Permanência escolar — Condições para estudantes continuarem matriculados ao longo do tempo, incluindo apoio financeiro e jornada adequada. Não representa conclusão escolar por si só.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "frequencia_escolar",
+      "tipo": "calculado",
+      "nome": "Frequência escolar — Presença dos estudantes nas aulas. Pode cair mesmo quando há matrícula, por distância, renda ou falta de serviços de apoio.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "abandono_escolar",
+      "tipo": "calculado",
+      "nome": "Pressão de abandono escolar — Pressão estimada para deixar a escola antes de concluir a etapa. Valor maior é pior; é um indicador hipotético, não uma taxa oficial de evasão.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "avaliacao": "maior_pior"
+    },
+    {
+      "id": "aprendizagem_escolar",
+      "tipo": "calculado",
+      "nome": "Aprendizagem escolar — Aprendizagem acumulada estimada a partir de frequência, docentes e apoio pedagógico. Não equivale a uma nota de prova observada.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      },
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "informacao_educacional",
+      "tipo": "calculado",
+      "nome": "Informação para gestão educacional — Informação disponível para identificar diferenças entre escolas e orientar apoio. Avaliar mede informação; não melhora a aprendizagem automaticamente.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      }
+    },
+    {
+      "id": "custo_educacao_hipotese",
+      "tipo": "calculado",
+      "nome": "Custo comparativo da política educacional (hipótese) — Índice comparativo hipotético do esforço de recursos exigido pelas escolhas. Não é dinheiro, orçamento oficial nem estimativa de custo real.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      }
+    },
+    {
+      "id": "popularidade_governo",
+      "tipo": "calculado",
+      "nome": "Aprovação calculada pelos perfis — Aprovação calculada a partir da satisfação dos perfis sintéticos da ilha. Não é uma pesquisa eleitoral real.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "medida": {
+        "unidade": "indice_0_100",
+        "tecnico": true
+      }
+    },
+    {
+      "id": "grupo_jovens",
+      "tipo": "grupo",
+      "nome": "jovens — Satisfação modelada dos perfis de jovens. O valor não conta quantos jovens existem.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_familias_com_filhos",
+      "tipo": "grupo",
+      "nome": "familias com filhos — Satisfação modelada dos perfis de famílias com filhos. O valor não é o tamanho dessas famílias.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_pobres",
+      "tipo": "grupo",
+      "nome": "pobres — Satisfação modelada dos perfis de baixa renda; não mede quantas pessoas estão na pobreza.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_classe_media",
+      "tipo": "grupo",
+      "nome": "classe media — Satisfação modelada dos perfis de classe média; não mede o tamanho desse grupo.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_interior",
+      "tipo": "grupo",
+      "nome": "interior — Satisfação modelada dos perfis que vivem fora das periferias metropolitanas; não é uma contagem de moradores do interior.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_periferias",
+      "tipo": "grupo",
+      "nome": "periferias — Satisfação modelada dos perfis que vivem em periferias metropolitanas; não é uma contagem de moradores.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_servidores",
+      "tipo": "grupo",
+      "nome": "servidores — Satisfação modelada dos perfis de servidores públicos; não mede o número de servidores.",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Educação, ciência e cultura",
+      "avaliacao": "maior_melhor"
+    }
+  ]
+}

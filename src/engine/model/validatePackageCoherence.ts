@@ -407,6 +407,24 @@ export function validatePackageCoherence(
     content.policies.map((policy) => [policy.id, requirementsOf(policy)]),
   );
   for (const policy of content.policies) {
+    for (const [index, excludedId] of (policy.exclui ?? []).entries()) {
+      if (excludedId === policy.id || !policiesById.has(excludedId))
+        diagnostics.push(
+          issue(
+            policy.id,
+            `exclui[${index}]`,
+            `Lei incompatível inexistente ou igual à própria lei: ${excludedId}.`,
+          ),
+        );
+      if (initialDesired.has(policy.id) && initialDesired.has(excludedId))
+        diagnostics.push(
+          issue(
+            initialStateFile,
+            "leisVigentes",
+            `As leis incompatíveis ${policy.id} e ${excludedId} começam vigentes ao mesmo tempo.`,
+          ),
+        );
+    }
     // Pétrea (D-65): princípio sem valor nem custo, e não depende de nada.
     if (policy.nivelLegal === "petrea") {
       if (policy.orcamento || policy.tributo)

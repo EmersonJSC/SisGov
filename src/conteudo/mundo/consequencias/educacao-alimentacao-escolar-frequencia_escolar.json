@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alimentacao-escolar-frequencia_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alimentacao_escolar",
+  "alvo": "frequencia_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 9],
+      [2, 5],
+      [3, 6]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

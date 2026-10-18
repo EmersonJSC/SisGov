@@ -1,6 +1,8 @@
 ## Instituições, sistema político e informação
 
-São 27 leis (8 de Constituição, 14 de Lei e 5 de Alavanca), e 22 delas ainda têm ponto aberto.
+O estudo original reunia 27 fichas (8 de Constituição, 14 de Lei e 5 de Alavanca), e 22 delas ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 31 registros nesta área; 27 fichas recentes, 4 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura:
 - Lado: os números vêm do estudo da área (códigos do Manifesto, votos reais e pesquisas citados no arquivo de fontes). "(estimado)" marca número meu.
@@ -12,6 +14,19 @@ Notas de leitura:
 ### Sistema político
 
 #### Sistema de governo
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:01`; tabela antiga: sistema-de-governo.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quem chefia o governo e se o Congresso pode derrubá-lo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem chefia o governo e se o Congresso pode derrubá-lo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -34,6 +49,19 @@ Trava e libera: o parlamentarismo trava a lei Reeleição (não se aplica ao pre
 
 #### Reeleição
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:02`; tabela antiga: reeleicao.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** O chefe do Executivo pode se candidatar de novo, e quantas vezes?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Sistema de governo ("Parlamentarismo" trava a lei; "Diretorial" trava "Ilimitada"). Independência do Judiciário: "Ilimitada" só existe se ela não for "Plena".; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Partido único → Ilimitada (correspondência textual; conferir intenção do programa); Poder concentrado com eleição → Ilimitada (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O chefe do Executivo pode se candidatar de novo, e quantas vezes?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** Sistema de governo ("Parlamentarismo" trava a lei; "Diretorial" trava "Ilimitada"). Independência do Judiciário: "Ilimitada" só existe se ela não for "Plena".
@@ -51,6 +79,19 @@ Trava e libera: o parlamentarismo trava a lei Reeleição (não se aplica ao pre
 **Pontos abertos:** o evento "reeleição em pauta" deve sair e virar só esta lei (inventário).
 
 #### Partidos
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:03`; tabela antiga: partidos.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quantos partidos podem disputar o poder?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância comunitária do partido → Partido único (correspondência textual; conferir intenção do programa); Partido único → Partido único (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quantos partidos podem disputar o poder?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (a cláusula de desempenho saiu para lei própria)
@@ -70,6 +111,19 @@ Trava: "Partido único" trava Liberdade de imprensa "Plena", a lei Financiamento
 
 #### Cláusula de desempenho
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:04`; tabela antiga: clausula-de-desempenho.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quantos votos um partido precisa ter para receber fundo, tempo de TV e liderança no Congresso?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Partidos (só existe com "Pluripartidarismo"; proposta minha); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha paga com dinheiro público → 5% (correspondência textual; conferir intenção do programa); Menos partidos, mais clareza → 5% (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quantos votos um partido precisa ter para receber fundo, tempo de TV e liderança no Congresso?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo (estava escondida dentro de Partidos)
 **Mãe:** Partidos (só existe com "Pluripartidarismo"; proposta minha)
@@ -86,6 +140,19 @@ Trava: "Partido único" trava Liberdade de imprensa "Plena", a lei Financiamento
 **Pontos abertos:** no Brasil é emenda constitucional (3/5); o inventário a pôs como Lei. Falta decidir se "partidos pequenos" e "partidos grandes" viram bancadas no Congresso.
 
 #### Voto obrigatório
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:05`; tabela antiga: voto-obrigatorio.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** O cidadão é obrigado a votar, e com que punição?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Partidos ("Partido único" trava "Facultativo"); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O cidadão é obrigado a votar, e com que punição?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -105,6 +172,19 @@ Efeito no resultado da eleição: pequeno e incerto (em um país puxa o voto de 
 **Pontos abertos:** "Bancadas de partidos de base popular" depende da decisão sobre bancadas.
 
 #### Financiamento de campanhas
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:06`; tabela antiga: financiamento-de-campanhas.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quem paga as campanhas eleitorais: empresas, pessoas ou o Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Partidos ("Partido único" trava a lei inteira); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha paga com dinheiro público → Público predominante (hoje no Brasil) (correspondência textual; conferir intenção do programa); Menos partidos, mais clareza → Público predominante (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem paga as campanhas eleitorais: empresas, pessoas ou o Estado?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica (ganha a alavanca do fundo eleitoral)
@@ -126,6 +206,19 @@ Efeito na corrupção: incerto em todas as opções (há caixa 2 mesmo com doaç
 
 #### Participação direta
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:07`; tabela antiga: participacao-direta.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** O cidadão decide diretamente sobre orçamento, leis ou mandatos, ou só pelo voto?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Democracia participativa → Referendo revogatório (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O cidadão decide diretamente sobre orçamento, leis ou mandatos, ou só pelo voto?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -143,6 +236,19 @@ Efeito na corrupção: incerto em todas as opções (há caixa 2 mesmo com doaç
 **Pontos abertos:** o estudo pôs no referendo dois grupos que saíram; troquei por Classe média.
 
 #### Valor do fundo eleitoral
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:08`; tabela antiga: valor-do-fundo-eleitoral.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto dinheiro público vai para as campanhas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Financiamento de campanhas (fica em 0 com "Livre"; proposta minha); ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto dinheiro público vai para as campanhas?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
@@ -163,6 +269,19 @@ Efeito na corrupção: incerto em todas as opções (há caixa 2 mesmo com doaç
 
 #### Federalismo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:09`; tabela antiga: federalismo.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto poder e dinheiro ficam com estados e municípios, e quanto com o governo central?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto poder e dinheiro ficam com estados e municípios, e quanto com o governo central?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -181,6 +300,19 @@ Trava e libera: "Centralizado" libera Coordenação das polícias "Polícia naci
 
 #### Governadores
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:10`; tabela antiga: governadores.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Os governantes dos estados são eleitos pelo povo ou indicados pelo governo central?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Federalismo ("Centralizado" trava "Eleitos" com poder fiscal); ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Os governantes dos estados são eleitos pelo povo ou indicados pelo governo central?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** Federalismo ("Centralizado" trava "Eleitos" com poder fiscal)
@@ -196,6 +328,19 @@ Trava e libera: "Centralizado" libera Coordenação das polícias "Polícia naci
 **Pontos abertos:** "Centralizado com governador eleito sem poder fiscal" não é opção; o estudo só diz que "Centralizado" trava "Eleitos" com poder fiscal. Proposta minha: "Centralizado" trava "Eleitos" de vez.
 
 #### Regra de repasse
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:11`; tabela antiga: regra-de-repasse.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Como o dinheiro federal é repartido entre estados e municípios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Federalismo (liberada em "Cooperativo" e "Descentralizado"; em "Centralizado" o repasse é pequeno e a lei fica travada em "Critério do governo"; proposta minha); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como o dinheiro federal é repartido entre estados e municípios?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
@@ -218,6 +363,19 @@ A regra não muda quanto se gasta: muda para onde vai o dinheiro. O tamanho do b
 
 #### Fundo de equalização
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:12`; tabela antiga: fundo-de-equalizacao.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto dinheiro extra o governo central põe para igualar estados e municípios pobres aos ricos?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Federalismo (não existe em "Centralizado"; proposta minha). A Regra de repasse decide como o fundo é repartido.; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto dinheiro extra o governo central põe para igualar estados e municípios pobres aos ricos?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
 **Mãe:** Federalismo (não existe em "Centralizado"; proposta minha). A Regra de repasse decide como o fundo é repartido.
@@ -236,6 +394,19 @@ A regra não muda quanto se gasta: muda para onde vai o dinheiro. O tamanho do b
 ### Justiça
 
 #### Independência do Judiciário
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:13`; tabela antiga: independencia-do-judiciario.
+- **Ciclos:** C14 Justiça e prisões, C17 Instituições e integridade.
+- **Decisão:** Os juízes podem decidir contra o governo sem medo de perder o cargo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Força-tarefa e delação → Plena (hoje no Brasil, no papel) (correspondência textual; conferir intenção do programa); Purga anticorrupção do partido → Controlado (correspondência textual; conferir intenção do programa); Partido único → Controlado (correspondência textual; conferir intenção do programa); Poder concentrado com eleição → Controlado (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Os juízes podem decidir contra o governo sem medo de perder o cargo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica (vinda de Segurança, mesa Justiça)
@@ -256,6 +427,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Tribunais superiores
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:14`; tabela antiga: tribunais-superiores.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Independência do Judiciário ("Controlado" libera "Nomeação pelo partido"); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Poder concentrado com eleição → Nomeação pelo partido (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (vinda de Segurança, mesa Justiça; ganha "Mandato fixo")
 **Mãe:** Independência do Judiciário ("Controlado" libera "Nomeação pelo partido")
@@ -274,6 +458,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Foro privilegiado
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:15`; tabela antiga: foro-privilegiado.
+- **Ciclos:** C14 Justiça e prisões, C17 Instituições e integridade.
+- **Decisão:** Autoridades são julgadas pela Justiça comum ou direto pelas cortes mais altas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Força-tarefa e delação → Justiça comum para todos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Autoridades são julgadas pela Justiça comum ou direto pelas cortes mais altas?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica (vinda de Segurança, mesa Justiça)
 **Mãe:** nenhuma
@@ -291,6 +488,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 **Pontos abertos:** no Brasil é regra constitucional; o inventário recomenda manter como Lei (não marcado pelo autor).
 
 #### Orçamento do Judiciário
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:16`; tabela antiga: orcamento-do-judiciario.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto o país gasta com juízes, tribunais e servidores da Justiça?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o país gasta com juízes, tribunais e servidores da Justiça?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
@@ -311,6 +521,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Liberdade de imprensa
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:17`; tabela antiga: liberdade-de-imprensa.
+- **Ciclos:** C10 Cultura e informação, C17 Instituições e integridade.
+- **Decisão:** O governo pode controlar o que jornais, rádios e TVs publicam?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Partidos ("Partido único" trava "Plena"); ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância comunitária do partido → Censura (correspondência textual; conferir intenção do programa); Purga anticorrupção do partido → Censura (correspondência textual; conferir intenção do programa); Partido único → Censura (correspondência textual; conferir intenção do programa); Expressão sem limite → Plena (hoje no Brasil, no papel) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo pode controlar o que jornais, rádios e TVs publicam?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** Partidos ("Partido único" trava "Plena")
@@ -329,6 +552,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Concessões de rádio e TV
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:18`; tabela antiga: concessoes-de-radio-e-tv.
+- **Ciclos:** C17 Instituições e integridade, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** Como o governo dá e renova as licenças de rádio e TV?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Poder concentrado com eleição → Critério do governo (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como o governo dá e renova as licenças de rádio e TV?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -345,6 +581,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 **Pontos abertos:** quem apoia "Cotas e limites".
 
 #### Regulação das redes sociais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:19`; tabela antiga: regulacao-das-redes-sociais.
+- **Ciclos:** C10 Cultura e informação, C17 Instituições e integridade.
+- **Decisão:** As plataformas respondem pelo conteúdo que circula nelas, e quem manda tirar o que é ilegal?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Regras contra a desinformação → Controle estatal (correspondência textual; conferir intenção do programa); Expressão sem limite → Sem regra (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** As plataformas respondem pelo conteúdo que circula nelas, e quem manda tirar o que é ilegal?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -365,6 +614,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Proteção de dados
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:20`; tabela antiga: protecao-de-dados.
+- **Ciclos:** C10 Cultura e informação, C13 Policiamento e investigação, C17 Instituições e integridade.
+- **Decisão:** Que regras empresas e governo seguem para coletar e usar dados pessoais?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância por câmeras e dados → Sem lei (correspondência textual; conferir intenção do programa); Governo aberto e digital → Proteção estrita (correspondência textual; conferir intenção do programa); Regras contra a desinformação → Proteção estrita (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Que regras empresas e governo seguem para coletar e usar dados pessoais?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -382,6 +644,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 **Pontos abertos:** o estudo só dá a faixa dos lados (economia de +0,5 a −0,4, costumes de 0 a −0,3); os pontos por opção são meus. Efeitos, grupos e custo sem fonte (lacuna do estudo).
 
 #### Transparência pública
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:21`; tabela antiga: transparencia-publica.
+- **Ciclos:** C02 Tributos e dívida, C13 Policiamento e investigação, C17 Instituições e integridade.
+- **Decisão:** O cidadão pode ver documentos, gastos e dados do governo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Gestão por resultados na segurança → Dados abertos (correspondência textual; conferir intenção do programa); Agência anticorrupção independente → Dados abertos (correspondência textual; conferir intenção do programa); Ficha limpa → Dados abertos (correspondência textual; conferir intenção do programa); Governo aberto e digital → Dados abertos (correspondência textual; conferir intenção do programa); Contas vigiadas → Dados abertos (correspondência textual; conferir intenção do programa); Democracia participativa → Dados abertos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O cidadão pode ver documentos, gastos e dados do governo?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -401,6 +676,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### ONGs e financiamento estrangeiro
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:22`; tabela antiga: ongs-e-financiamento-estrangeiro.
+- **Ciclos:** C16 Direitos e costumes, C17 Instituições e integridade.
+- **Decisão:** Organizações sociais podem receber dinheiro de fora do país, e com que controle?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Igreja e comunidade primeiro → Livre (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Poder concentrado com eleição → Rótulo de agente estrangeiro (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Organizações sociais podem receber dinheiro de fora do país, e com que controle?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -417,6 +705,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 **Pontos abertos:** o estudo põe também um grupo que saiu do jogo no apoio ao "agente estrangeiro"; ficou só Entidades do agronegócio.
 
 #### Verba de publicidade oficial e comunicação pública
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:23`; tabela antiga: verba-de-publicidade-oficial-e-comunicacao-publica.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto o governo gasta com propaganda própria e com mídia pública?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta com propaganda própria e com mídia pública?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
@@ -437,6 +738,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Estabilidade dos servidores públicos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:24`; tabela antiga: estabilidade-dos-servidores-publicos.
+- **Ciclos:** C02 Tributos e dívida, C17 Instituições e integridade.
+- **Decisão:** O servidor público pode ser demitido, e por quem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Serviço público por mérito → Estabilidade com avaliação (correspondência textual; conferir intenção do programa); Austeridade com corte de Estado → Livre nomeação pelo governo (correspondência textual; conferir intenção do programa); Reforma do Estado por resultado → Estabilidade com avaliação (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O servidor público pode ser demitido, e por quem?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -454,6 +768,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 
 #### Lei anticorrupção
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:25`; tabela antiga: lei-anticorrupcao, orgao-anticorrupcao.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quem é punido pela corrupção, só as pessoas ou também as empresas, e quem investiga?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Independência do Judiciário (sem "Plena", a "Agência forte" vira instrumento de perseguição e sobe a Polarização); ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Agência anticorrupção independente → Agência forte (auditoria por sorteio, órgão autônomo) (opção proposta por leitura do programa e da ficha; validar juridicamente); Agência anticorrupção independente → Agência forte (auditoria por sorteio, órgão autônomo) (opção proposta por leitura do programa e da ficha; validar juridicamente); Purga anticorrupção do partido → Agência forte (auditoria por sorteio, órgão autônomo) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem é punido pela corrupção, só as pessoas ou também as empresas, e quem investiga?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** Independência do Judiciário (sem "Plena", a "Agência forte" vira instrumento de perseguição e sobe a Polarização)
@@ -470,6 +797,19 @@ Libera: "Controlado" libera Tribunais superiores "Nomeação pelo partido". "Con
 **Pontos abertos:** o estudo põe um grupo que saiu do jogo no apoio à "Agência forte"; ficou Classe média.
 
 #### Verba de controle
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:26`; tabela antiga: verba-de-controle.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** Quanto o governo gasta com auditoria e fiscalização do próprio gasto, inclusive sorteio de municípios auditados?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta com auditoria e fiscalização do próprio gasto, inclusive sorteio de municípios auditados?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Novo
@@ -492,6 +832,19 @@ Este é o minijogo de "quanto gastar em controle": repasse maior pede verba de c
 
 #### Crimes da ditadura
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-09:27`; tabela antiga: crimes-da-ditadura.
+- **Ciclos:** C13 Policiamento e investigação, C16 Direitos e costumes, C17 Instituições e integridade.
+- **Decisão:** Os agentes do Estado que cometeram crimes num regime autoritário passado são perdoados, expostos ou julgados?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Acertar contas com o passado → Julgamento (correspondência textual; conferir intenção do programa); Anistia para pacificar → Anistia ampla (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Os agentes do Estado que cometeram crimes num regime autoritário passado são perdoados, expostos ou julgados?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -506,3 +859,83 @@ Este é o minijogo de "quanto gastar em controle": repasse maior pede verba de c
 **Leis relacionadas:** Independência do Judiciário, leis de defesa (Exterior e defesa)
 **Países que usam:** Anistia ampla: Brasil (1979), Espanha. Comissão da verdade: Brasil (2012 a 2014), África do Sul. Julgamento: Argentina, Chile.
 **Pontos abertos:** quem apoia "Julgamento" e quem rejeita "Anistia ampla"; o efeito na ameaça de golpe não tem número.
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Cargos de livre nomeação
+
+**ID de origem:** `cargos-de-confianca`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 116.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:cargos-de-confianca`; tabela antiga: cargos-de-confianca.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Estabilidade dos servidores: atrapalha (Cargo de nomeação corrói a carreira); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Serviço público por mérito → opção nova pendente (opção antiga; falta ficha recente); Emendas e obras na base → opção nova pendente (opção antiga; falta ficha recente); Reforma do Estado por resultado → opção nova pendente (opção antiga; falta ficha recente); Coalizão por cargos e emendas → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Emendas dos parlamentares
+
+**ID de origem:** `emendas-parlamentares`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 118.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:emendas-parlamentares`; tabela antiga: emendas-parlamentares.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Repasse por regra automática: atrapalha (Emenda passa por fora da regra automática); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Emendas e obras na base → opção nova pendente (opção antiga; falta ficha recente); Coalizão por cargos e emendas → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Ficha limpa
+
+**ID de origem:** `inelegibilidade-de-condenados`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 120.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:inelegibilidade-de-condenados`; tabela antiga: inelegibilidade-de-condenados.
+- **Ciclos:** C14 Justiça e prisões, C17 Instituições e integridade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ficha limpa → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Governo digital
+
+**ID de origem:** `governo-digital`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 126.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:governo-digital`; tabela antiga: governo-digital.
+- **Ciclos:** C17 Instituições e integridade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Proteção de dados pessoais: trava sem ela (Sem lei de dados, governo digital vira vigilância); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Governo aberto e digital → opção nova pendente (opção antiga; falta ficha recente); Reforma do Estado por resultado → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

@@ -1,0 +1,46 @@
+{
+  "id": "manutencao-da-rede-eletrica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Padrão de manutenção da rede elétrica",
+  "descricao": "Escolhe a intensidade da manutenção para reduzir perdas ao longo do tempo.",
+  "area": "Meio ambiente, energia e campo",
+  "fonte": "https://www.gov.br/aneel/pt-br/assuntos/distribuicao/perdas-de-energia/perdas-de-energia",
+  "processoAutorizacao": "execucao-programa",
+  "nivelLegal": "derivada",
+  "mesa": {
+    "id": "suprimento-eletrico",
+    "nome": "Suprimento elétrico",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "padrao_manutencao_rede",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "corrente",
+        "rotulo": "Manutenção corrente",
+        "valor": 0,
+        "efeitos": "Mantém as perdas do cenário inicial."
+      },
+      {
+        "id": "reforcada",
+        "rotulo": "Manutenção reforçada",
+        "valor": 1,
+        "efeitos": "Reduz perdas com gasto recorrente (hipótese)."
+      },
+      {
+        "id": "intensiva",
+        "rotulo": "Manutenção intensiva",
+        "valor": 2,
+        "efeitos": "Reduz mais perdas com custo maior (hipótese)."
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "consequencias": ["manutencao-executada"]
+}

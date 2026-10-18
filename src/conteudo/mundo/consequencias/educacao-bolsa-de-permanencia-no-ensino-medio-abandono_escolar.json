@@ -1,0 +1,21 @@
+{
+  "id": "educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_financeiro_permanencia",
+  "alvo": "abandono_escolar",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, -10]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

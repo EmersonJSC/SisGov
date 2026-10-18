@@ -31,7 +31,7 @@ export function criarPartida(
     eleicao?: boolean;
   }> = {},
 ): Resultado<Partida> {
-  const conteudo = carregarConteudo(opcoes.pais ?? "brasil");
+  const conteudo = carregarConteudo(opcoes.pais ?? "ilha-teste");
   if (!conteudo.ok) return conteudo;
   const { content, graph } = conteudo.value;
   const game = createGame("partida", content, graph, {
@@ -44,7 +44,7 @@ export function criarPartida(
       ? undefined
       : criarEleicao({
           content,
-          pais: opcoes.pais ?? "brasil",
+          pais: opcoes.pais ?? "ilha-teste",
           semente: opcoes.semente ?? 1,
           partido: opcoes.partido,
           presidente: opcoes.presidente,

@@ -1,0 +1,17 @@
+{
+  "id": "educacao-frequencia-abandono",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "frequencia_escolar",
+  "alvo": "abandono_escolar",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.65,
+    "termoConstante": 65
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

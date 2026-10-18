@@ -1,0 +1,17 @@
+{
+  "id": "perdas-tecnicas-na-rede",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "perdas_tecnicas_rede",
+  "alvo": "perdas_rede",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "quantidade",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

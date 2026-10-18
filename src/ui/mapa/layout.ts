@@ -258,8 +258,10 @@ export function quebrarNome(texto: string, largura = 16, linhas = 2) {
 export function montarBase(completa: VisaoPartida): BaseMapa {
   // só as leis em vigor ocupam o mapa; as outras ficam no catálogo (D-65)
   const visao = { ...completa, leis: completa.leis.filter((l) => l.emVigor) };
-  const areas = visao.governo.filter((area) =>
-    visao.leis.some((lei) => lei.areas.includes(area.id)),
+  const areas = visao.governo.filter(
+    (area) =>
+      area.faz.startsWith("Não implementado") ||
+      visao.leis.some((lei) => lei.areas.includes(area.id)),
   );
   const ordemDaPasta = new Map(
     areas.flatMap((area) => area.ministerios.map((m, i) => [m.id, i])),

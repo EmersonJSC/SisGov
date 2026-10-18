@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-educacao-grupo_interior",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "prioridade_financiamento_educacao",
+  "alvo": "grupo_interior",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, 5]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

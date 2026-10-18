@@ -1,12 +1,27 @@
 ## Saúde
 
-São 18 leis: 2 de Constituição, 9 de Lei e 7 de Alavanca; 8 ainda têm ponto aberto (4 delas são "Estudo curto: revisar").
+O estudo original reunia 18 fichas: 2 de Constituição, 9 de Lei e 7 de Alavanca; 8 ainda têm ponto aberto (4 delas são "Estudo curto: revisar").
+
+**Conciliação de 17/out/2026:** 21 registros nesta área; 18 fichas recentes, 3 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como uma linha só (Constituição + alavanca). Aqui ele vira duas fichas: a regra do piso (Constituição) e a verba acima do piso (Alavanca). Nenhum item de checklist do inventário estava marcado; segui as recomendações, e a do piso foi dada como decidida.
 
 ### Sistema de saúde
 
 #### Modelo do sistema de saúde
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:01`; tabela antiga: modelo-do-sistema-de-saude.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quem tem direito ao cuidado de saúde e quem paga por ele?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe de: Piso da saúde (mercado privado trava o piso em "sem piso"), Remédios em farmácias credenciadas (mercado privado põe no mínimo), Regulação dos planos de saúde (estatal único força "só complementar"; seguro obrigatório força "competição regulada").; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Sistema público universal → Universal público com setor privado paralelo (hoje no Brasil) (correspondência textual; conferir intenção do programa); Seguro-saúde obrigatório e regulado → Seguro obrigatório: fundos e operadoras pagos por contribuição (opção corrigida por sentido do programa; validar evidência); Cada um poupa para a saúde → Mercado privado: cada um compra seu plano ou paga do bolso (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem tem direito ao cuidado de saúde e quem paga por ele?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -26,6 +41,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Piso da saúde
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:02`; tabela antiga: piso-saude.
+- **Ciclos:** C11 Atendimento de saúde, C15 Drogas e cuidado.
+- **Decisão:** O governo é obrigado a gastar um mínimo com saúde, e como esse mínimo é calculado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo do sistema de saúde. "Mercado privado" trava esta lei em "sem piso". As outras opções liberam todas.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Redução de danos → Piso por PIB: 6% do PIB até 2030 (opção proposta por leitura do programa e da ficha; validar juridicamente); Sistema público universal → Piso por PIB: 6% do PIB até 2030 (opção proposta por leitura do programa e da ficha; validar juridicamente); Mais profissionais na saúde pública → Piso por PIB: 6% do PIB até 2030 (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo é obrigado a gastar um mínimo com saúde, e como esse mínimo é calculado?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (era alavanca; a regra sobe para a Constituição e o valor acima do piso fica como alavanca)
 **Mãe:** Modelo do sistema de saúde. "Mercado privado" trava esta lei em "sem piso". As outras opções liberam todas.
@@ -42,6 +70,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Sem piso: a maioria dos países (aprox.). Congelado: Brasil 2018 a 2022. Por receita: Brasil. Por PIB: nenhum com regra igual; o nível de 6% ou mais é o da Europa (aprox.).
 
 #### Verba da saúde acima do piso
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:03`; tabela antiga: piso-saude.
+- **Ciclos:** C11 Atendimento de saúde, C15 Drogas e cuidado.
+- **Decisão:** Quanto gastar com saúde além do mínimo obrigatório?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Piso da saúde. O piso escolhido é o mínimo da faixa. Com "sem piso", a faixa começa em zero.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Redução de danos → 6% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Sistema público universal → 9% do PIB (nível europeu) (opção proposta por leitura do programa e da ficha; validar juridicamente); Mais profissionais na saúde pública → 6% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto gastar com saúde além do mínimo obrigatório?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Reescreve (parte "valor" do antigo piso da saúde)
@@ -61,6 +102,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Programa de médicos no interior
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:04`; tabela antiga: programa-de-medicos-no-interior.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Como levar médicos para os lugares onde eles não querem trabalhar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma nesta área. A opção "importação de médicos" depende da lei de imigração (abertura) e da relação com o país que manda os médicos (Exterior).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mais profissionais na saúde pública → Serviço obrigatório: recém-formado serve no interior (correspondência textual; conferir intenção do programa); Médico de família → Serviço obrigatório: recém-formado serve no interior (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como levar médicos para os lugares onde eles não querem trabalhar?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (ganha a opção carreira de Estado)
 **Mãe:** nenhuma nesta área. A opção "importação de médicos" depende da lei de imigração (abertura) e da relação com o país que manda os médicos (Exterior).
@@ -78,6 +132,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Incentivos: Austrália, Canadá rural (aprox.). Importação: Brasil 2013 a 2018. Serviço obrigatório: Chile, México (aprox.). Carreira de Estado: nenhum citado.
 
 #### Regulação dos planos de saúde
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:05`; tabela antiga: regulacao-dos-planos-de-saude.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** O que o plano de saúde é obrigado a cobrir, como reajusta e se o gasto com saúde abate imposto de renda?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo do sistema de saúde. "Estatal único" trava em "só complementar". "Seguro obrigatório" trava em "competição regulada".; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Seguro-saúde obrigatório e regulado → Competição regulada: cesta padrão, risco compensado, operadoras disputam (opção corrigida por sentido do programa; validar evidência); Cada um poupa para a saúde → Livre (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O que o plano de saúde é obrigado a cobrir, como reajusta e se o gasto com saúde abate imposto de renda?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (ganha a escolha da dedução de saúde no imposto de renda)
@@ -99,6 +166,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Saúde mental
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:06`; tabela antiga: saude-mental, internacao-involuntaria.
+- **Ciclos:** C07 Moradia e cidade, C15 Drogas e cuidado.
+- **Decisão:** Onde e como se trata quem tem transtorno mental grave?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Combina com a lei de drogas (Segurança): a opção "uso e saúde" de lá exige "rede comunitária" ou "misto" aqui.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Drogas como questão de saúde → Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica (correspondência textual; conferir intenção do programa); Redução de danos → Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica (correspondência textual; conferir intenção do programa); Saúde mental no bairro → Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica (opção proposta por leitura do programa e da ficha; validar juridicamente); Moradia primeiro → Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica (correspondência textual; conferir intenção do programa); Proibição moral máxima → Hospital psiquiátrico de longa permanência (opção proposta por leitura do programa e da ficha; validar juridicamente); Internação e comunidades de fé → Misto: hospital geral e comunidades terapêuticas (opção proposta por leitura do programa e da ficha; validar juridicamente); Saúde mental no bairro → Rede comunitária: centros de atenção psicossocial, leito em hospital geral, atenção básica (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Onde e como se trata quem tem transtorno mental grave?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. Combina com a lei de drogas (Segurança): a opção "uso e saúde" de lá exige "rede comunitária" ou "misto" aqui.
@@ -115,6 +195,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Hospital psiquiátrico: Brasil antes de 2001. Rede comunitária: Itália, Portugal (aprox.).
 
 #### Forma de gestão hospitalar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:07`; tabela antiga: forma-de-gestao-hospitalar.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quem administra o hospital público?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fim da fila com a rede privada → Parceria público-privada com operação clínica (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem administra o hospital público?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
@@ -133,6 +226,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Regulação de vagas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:08`; tabela antiga: regulacao-de-vagas.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quem decide quem é atendido primeiro e onde?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Sistema público universal → Tempo máximo garantido: passou do prazo, o Estado paga o privado (correspondência textual; conferir intenção do programa); Fim da fila com a rede privada → Tempo máximo garantido: passou do prazo, o Estado paga o privado (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem decide quem é atendido primeiro e onde?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
 **Mãe:** nenhuma.
@@ -148,6 +254,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Central regional: Portugal (aprox.). Tempo máximo: Dinamarca, Noruega (aprox.). O Brasil tem prazo de 60 dias para câncer desde 2012, mas descumprido.
 
 #### Divisão da verba: atenção básica x hospitais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:09`; tabela antiga: divisao-da-verba-atencao-basica-x-hospitais.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Que parte da verba da saúde vai para a atenção básica e que parte vai para os hospitais?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Médico de família → 40%: prioridade à atenção básica (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Que parte da verba da saúde vai para a atenção básica e que parte vai para os hospitais?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
@@ -166,6 +285,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Mutirão de cirurgias
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:10`; tabela antiga: mutirao-de-cirurgias.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Pôr verba extra e temporária para baixar a fila de cirurgias agora?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Com "tempo máximo garantido" na Regulação de vagas, parte do mutirão acontece sozinha.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fim da fila com a rede privada → 0,05% do PIB (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Pôr verba extra e temporária para baixar a fila de cirurgias agora?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo (substitui o evento "mutirão ou privados")
 **Mãe:** nenhuma. Com "tempo máximo garantido" na Regulação de vagas, parte do mutirão acontece sozinha.
@@ -181,6 +313,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Brasil 2023 e 2024 (14 milhões de cirurgias eletivas em 2024, 36% mais que em 2022). Custo exato no Brasil: lacuna.
 
 #### Vagas de residência médica
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:11`; tabela antiga: vagas-de-residencia-medica.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quantas vagas de especialização médica o governo paga por ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte (o efeito chega em 3 a 5 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mais profissionais na saúde pública → Cerca de 33.000: uma vaga por formado (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quantas vagas de especialização médica o governo paga por ano?
 **Camada:** Alavanca · **Implantação:** turno seguinte (o efeito chega em 3 a 5 anos) · **Inventário:** Novo
@@ -201,6 +346,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Genéricos e patentes de medicamentos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:12`; tabela antiga: genericos-e-patentes-de-medicamentos.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quanto tempo a patente protege um remédio e quando a cópia mais barata pode entrar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Sem patentes" trava a opção de livre comércio amplo na lei de acordos comerciais (Exterior).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Remédio barato → Patente restrita e licença compulsória fácil (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto tempo a patente protege um remédio e quando a cópia mais barata pode entrar?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. "Sem patentes" trava a opção de livre comércio amplo na lei de acordos comerciais (Exterior).
@@ -220,6 +378,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 
 #### Remédios em farmácias credenciadas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:13`; tabela antiga: farmacia-popular.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quanto o governo paga de remédio para o paciente retirar em farmácia privada?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Modelo do sistema de saúde. "Mercado privado" põe esta alavanca no mínimo.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Remédio barato → Todos os remédios essenciais grátis (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o governo paga de remédio para o paciente retirar em farmácia privada?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica (ganha custo e o elo com corrupção)
 **Mãe:** Modelo do sistema de saúde. "Mercado privado" põe esta alavanca no mínimo.
@@ -235,6 +406,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 **Países que usam:** Brasil (desde 2004; farmácias privadas desde 2006).
 
 #### Lista de remédios e incorporação
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:14`; tabela antiga: lista-de-remedios-e-incorporacao.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Quem decide quais remédios e tratamentos o sistema público paga: uma lista técnica ou o juiz, caso a caso?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem decide quais remédios e tratamentos o sistema público paga: uma lista técnica ou o juiz, caso a caso?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
@@ -254,6 +438,19 @@ Nota de leitura: o inventário conta 17 leis porque trata o piso da saúde como 
 ### Saúde pública
 
 #### Vacinação obrigatória
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:15`; tabela antiga: vacinacao-obrigatoria.
+- **Ciclos:** C12 Saúde coletiva e epidemias.
+- **Decisão:** O Estado só oferece a vacina ou obriga a tomar, e com que punição?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe de Campanha de vacinação ("sem programa" desliga a campanha; proposta minha).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vacinação para todos → Exigida para escola e benefícios (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O Estado só oferece a vacina ou obriga a tomar, e com que punição?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -275,6 +472,19 @@ Nota: o estudo avisa que esta lei pesa menos que a atenção básica e a confian
 
 #### Restrição a tabaco e álcool
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:16`; tabela antiga: restricao-a-tabaco-e-alcool.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** Até onde o Estado limita propaganda, venda e uso de cigarro e bebida?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. O imposto sobre cigarro e bebida fica na mesa Impostos (imposto seletivo).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Até onde o Estado limita propaganda, venda e uso de cigarro e bebida?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. O imposto sobre cigarro e bebida fica na mesa Impostos (imposto seletivo).
@@ -293,6 +503,19 @@ Nota: o estudo avisa que esta lei pesa menos que a atenção básica e a confian
 
 #### Vigilância epidemiológica
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:17`; tabela antiga: vigilancia-epidemiologica.
+- **Ciclos:** C11 Atendimento de saúde, C12 Saúde coletiva e epidemias.
+- **Decisão:** Quanto gastar para detectar e conter surtos de doença?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vacinação para todos → 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Contenção total de epidemia → 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto gastar para detectar e conter surtos de doença?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -310,6 +533,19 @@ Nota: o estudo avisa que esta lei pesa menos que a atenção básica e a confian
 
 #### Campanha de vacinação
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-05:18`; tabela antiga: campanha-de-vacinacao.
+- **Ciclos:** C05 Transferência e pobreza, C11 Atendimento de saúde, C12 Saúde coletiva e epidemias.
+- **Decisão:** Fazer campanha e busca ativa para vacinar quem está atrasado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Vacinação obrigatória. "Sem programa" desliga a campanha (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Renda com condições → Grande mobilização: campanha, busca ativa pela atenção básica, horário estendido (correspondência textual; conferir intenção do programa); Médico de família → Grande mobilização: campanha, busca ativa pela atenção básica, horário estendido (correspondência textual; conferir intenção do programa); Vacinação para todos → Grande mobilização: campanha, busca ativa pela atenção básica, horário estendido (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Fazer campanha e busca ativa para vacinar quem está atrasado?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo (substitui o evento "campanha de vacinação")
 **Mãe:** Vacinação obrigatória. "Sem programa" desliga a campanha (proposta minha).
@@ -324,3 +560,64 @@ Nota: o estudo avisa que esta lei pesa menos que a atenção básica e a confian
 **Leis relacionadas:** Vacinação obrigatória; Vigilância epidemiológica; Cobertura da atenção básica (índice).
 **Países que usam:** Brasil 2023 e 2024 (a cobertura de DTP3 voltou a 90 a 91%).
 **Pontos abertos:** Estudo curto: revisar. O estudo só nomeia esta alavanca. As três opções, a ligação com a lei de vacinação e o efeito são proposta minha, a partir da recuperação de 2023 e 2024 que o estudo atribui a campanha e busca ativa. Sem lado: é consenso entre os dois campos no estudo.
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Piso salarial da enfermagem e da saúde
+
+**ID de origem:** `piso-profissionais-de-saude`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 191.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:piso-profissionais-de-saude`; tabela antiga: piso-profissionais-de-saude.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Verba da saúde: agrava o colateral (Piso sem verba para pagar fecha leitos); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mais profissionais na saúde pública → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Poupança-saúde obrigatória
+
+**ID de origem:** `contas-de-saude`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 192.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:contas-de-saude`; tabela antiga: contas-de-saude.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Cada um poupa para a saúde → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Subsídio ao seguro-saúde
+
+**ID de origem:** `subsidio-ao-seguro-saude`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 200.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:subsidio-ao-seguro-saude`; tabela antiga: subsidio-ao-seguro-saude.
+- **Ciclos:** C11 Atendimento de saúde.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Regulação dos planos de saúde: trava sem ela (Subsídio só funciona com cesta padrão e preço regulado); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Seguro-saúde obrigatório e regulado → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

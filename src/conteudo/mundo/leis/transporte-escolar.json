@@ -1,0 +1,60 @@
+{
+  "id": "transporte-escolar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Apoio ao transporte escolar rural",
+  "descricao": "Organiza assistência financeira suplementar para o transporte escolar de estudantes da educação básica pública residentes em área rural.",
+  "area": "Educação, ciência e cultura",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.880.htm",
+  "processoAutorizacao": "apoio-transporte-escolar",
+  "nivelLegal": "derivada",
+  "revogavel": true,
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "alavanca"
+  },
+  "controle": {
+    "variavel": "apoio_transporte_escolar",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "rotas-rurais-distantes",
+        "rotulo": "Atender rotas distantes — Prioriza estudantes rurais com trajetos mais longos, reduzindo a barreira territorial onde ela é maior.",
+        "valor": 1,
+        "efeitos": "Prioriza estudantes rurais com trajetos mais longos, reduzindo a barreira territorial onde ela é maior. Alcance hipotético do suporte ao transporte, sobretudo para estudantes rurais com trajetos longos.",
+        "apoiam": ["interior", "familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "ampliar-rotas",
+        "rotulo": "Ampliar cobertura — Leva transporte a mais localidades, com cobertura mais ampla e menor concentração por estudante atendido.",
+        "valor": 2,
+        "efeitos": "Leva transporte a mais localidades, com cobertura mais ampla e menor concentração por estudante atendido. Alcance hipotético do suporte ao transporte, sobretudo para estudantes rurais com trajetos longos.",
+        "apoiam": ["interior", "familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "regularidade-rotas",
+        "rotulo": "Melhorar regularidade — Prioriza a confiabilidade das rotas existentes para reduzir faltas causadas por interrupções do transporte.",
+        "valor": 3,
+        "efeitos": "Prioriza a confiabilidade das rotas existentes para reduzir faltas causadas por interrupções do transporte. Alcance hipotético do suporte ao transporte, sobretudo para estudantes rurais com trajetos longos.",
+        "apoiam": ["interior", "familias com filhos"],
+        "rejeitam": []
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "consequencias": [
+    "educacao-transporte-escolar-dificuldade_territorial",
+    "educacao-transporte-escolar-acesso_escolar",
+    "educacao-transporte-escolar-grupo_interior",
+    "educacao-transporte-escolar-custo_educacao_hipotese",
+    "educacao-transporte-escolar-frequencia_escolar",
+    "educacao-transporte-escolar-permanencia_escolar"
+  ]
+}

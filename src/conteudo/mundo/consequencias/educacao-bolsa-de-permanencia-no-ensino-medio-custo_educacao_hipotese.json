@@ -1,0 +1,21 @@
+{
+  "id": "educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_financeiro_permanencia",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 1.8],
+      [2, 2.8],
+      [3, 2.2]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

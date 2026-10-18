@@ -1,0 +1,21 @@
+{
+  "id": "educacao-escola-em-tempo-integral-custo_educacao_hipotese",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "oferta_jornada_integral",
+  "alvo": "custo_educacao_hipotese",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 1.8],
+      [2, 2],
+      [3, 3]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 3,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -78,6 +78,17 @@ commit e teste. O detalhe de cada chamado está em
 [`docs/v1/chamados.md`](docs/v1/chamados.md). Tamanho: P (uma sessão), M (duas ou
 três).
 
+### Protótipos isolados
+
+- [ ] **G-01** Gerador regenerável da Ilha Teste — C1 Educação. Dez rodadas
+      geradas na branch `codex/gerador-teste-evolucao`. A revisão do par escolar
+      retirou a falsa exclusão Fundeb × escolha e gerou o par de provisão
+      escolar incompatível, com trava jogável nos dois sentidos. Aceite aberto:
+      fluxo monetário de aquisição, playtest e `npm run check` (bloqueado por seis
+      arquivos de conteúdo ausentes nesta branch). Detalhe em
+      `docs/v1/chamados.md` e desenho em
+      `docs/v1/desenho/gerador-teste-evolucao.md`.
+
 ### Marco A. Fundação (v0.1)
 
 O código fica menor e com camadas claras. Nada muda para quem joga.
@@ -229,6 +240,10 @@ chamado só depois da versão 1.0.
 | D-69 | 12/out/2026 | **Ficha de lei v3** com três níveis jogáveis (Constituição, lei, decreto e orçamento), custo em capital político, dinheiro em % do PIB, efeitos dentro da ficha e fonte obrigatória. Altera a D-65 (sai o nível pétreo) e substitui as D-23 a D-26.                                             |
 | D-70 | 12/out/2026 | **População e pressão próprias.** 20 segmentos do eleitorado com perfis sintéticos e 20 grupos de pressão da política real, com repertório de ações. Substitui a D-60.                                                                                                                          |
 | D-71 | 12/out/2026 | **Processo de engenharia** da versão 1 (`docs/v1/engenharia.md`). Substitui as regras anti-ciclo R-01 a R-11 do plano antigo.                                                                                                                                                                   |
+| D-72 | 18/out/2026 | **Leis da Ilha Teste são geradas.** Inclusão ou alteração de lei do protótipo ocorre na definição do gerador, seguida de regeneração e validação; JSON gerado nunca é a fonte de edição. A limpeza de saídas usa manifesto e preserva o conteúdo do Brasil.                                     |
+| D-73 | 18/out/2026 | **O gerador cresce a partir de programas pesquisados.** Sementes documentadas ligam problema, programa, leis, grupos afetados e mecanismos. A composição procedural pode variar, mas mantém fontes, referências e hipóteses explícitas; não inventa leis ou grupos sem sustentação.             |
+| D-74 | 18/out/2026 | **Par excludente na bússola.** Quando o gerador encontrar políticas equivalentes em lados opostos, gera as duas fichas e registra a relação; uma fica posicionada na bússola política e a contraparte permanece no catálogo, fora do mapa. O relatório do gerador audita essa disposição.       |
+| D-75 | 18/out/2026 | **Revisão do par excludente e da cobertura política.** Substitui a D-74: um par exige regras incompatíveis sobre o mesmo objeto e fonte dos dois lados; ambos podem aparecer na bússola quando houver posição fundamentada. O gerador procura políticas nos quatro quadrantes e registra lacunas sem inventar vetores. Fundeb e escolha escolar não formam par excludente. |
 
 ### 7.2 Decisões antigas que continuam valendo
 

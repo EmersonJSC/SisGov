@@ -1,0 +1,21 @@
+{
+  "id": "educacao-piso-educacao-vagas_escolares",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "prioridade_financiamento_educacao",
+  "alvo": "vagas_escolares",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 14],
+      [2, 8],
+      [3, 0]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "id": "pais-teste",
-  "tipo": "cenario",
-  "unidadeTemporal": "trimestre",
-  "versaoEsquema": 1,
-  "nome": "País de teste (mesmo mundo, outro pacote)",
-  "mundo": "testes/legado/mundo/mundo.json",
-  "estadoInicial": "testes/pais-teste/estado-inicial.json"
-}

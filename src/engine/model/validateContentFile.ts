@@ -2793,6 +2793,7 @@ function validatePolicy(
       "tributo",
       "nivelLegal",
       "revogavel",
+      "exclui",
       "requer",
       "mesa",
       "implantacaoTurnos",
@@ -2901,6 +2902,8 @@ function validatePolicy(
         "Deve ser verdadeiro ou falso.",
       ),
     );
+  if (value.exclui !== undefined)
+    requiredStringArray(value, file, "exclui", diagnostics);
   if (value.requer !== undefined) {
     const lista = Array.isArray(value.requer) ? value.requer : [value.requer];
     if (Array.isArray(value.requer) && value.nivelLegal === undefined)

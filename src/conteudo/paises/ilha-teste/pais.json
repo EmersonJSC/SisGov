@@ -1,0 +1,77 @@
+{
+  "id": "ilha-teste",
+  "tipo": "cenario",
+  "versaoEsquema": 1,
+  "nome": "Ilha Teste — ilha isolada (fictícia)",
+  "mundo": "mundo/mundo.json",
+  "estadoInicial": "paises/ilha-teste/estado-inicial.json",
+  "unidadeTemporal": "mes",
+  "aprovacaoPorPerfis": {
+    "alvo": "popularidade_governo",
+    "k": 12,
+    "pesos": {
+      "grupo_jovens": 1,
+      "grupo_familias_com_filhos": 1,
+      "grupo_pobres": 1,
+      "grupo_classe_media": 1,
+      "grupo_interior": 1,
+      "grupo_periferias": 1,
+      "grupo_servidores": 1
+    },
+    "perfis": [
+      {
+        "peso": 0.25,
+        "segmentos": [
+          "grupo_jovens",
+          "grupo_familias_com_filhos",
+          "grupo_pobres",
+          "grupo_periferias"
+        ]
+      },
+      {
+        "peso": 0.25,
+        "segmentos": [
+          "grupo_jovens",
+          "grupo_familias_com_filhos",
+          "grupo_pobres",
+          "grupo_interior"
+        ]
+      },
+      {
+        "peso": 0.25,
+        "segmentos": [
+          "grupo_jovens",
+          "grupo_familias_com_filhos",
+          "grupo_classe_media",
+          "grupo_periferias"
+        ]
+      },
+      {
+        "peso": 0.25,
+        "segmentos": ["grupo_jovens", "grupo_classe_media", "grupo_interior"]
+      }
+    ],
+    "eixos": [
+      {
+        "id": "familia",
+        "nome": "Famílias e jovens",
+        "segmentos": ["grupo_jovens", "grupo_familias_com_filhos"]
+      },
+      {
+        "id": "renda",
+        "nome": "Renda",
+        "segmentos": ["grupo_pobres", "grupo_classe_media"]
+      },
+      {
+        "id": "territorio",
+        "nome": "Território",
+        "segmentos": ["grupo_interior", "grupo_periferias"]
+      },
+      {
+        "id": "ocupacao",
+        "nome": "Ocupação",
+        "segmentos": ["grupo_servidores"]
+      }
+    ]
+  }
+}

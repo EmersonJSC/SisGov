@@ -1,0 +1,46 @@
+{
+  "id": "expansao-da-rede-eletrica",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Programa de expansão da rede elétrica",
+  "descricao": "Escolhe o ritmo de projetos de expansão. Gasto e capacidade nova são apurados em momentos diferentes.",
+  "area": "Meio ambiente, energia e campo",
+  "fonte": "https://www.gov.br/mme/pt-br/assuntos/secretarias/sntep/publicacoes/plano-decenal-de-expansao-de-energia/pde-2034/relatorio_aprovado/pde2034_aprovado.pdf",
+  "processoAutorizacao": "execucao-programa",
+  "nivelLegal": "derivada",
+  "mesa": {
+    "id": "suprimento-eletrico",
+    "nome": "Suprimento elétrico",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "plano_expansao_rede",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "sem-projeto",
+        "rotulo": "Sem projetos novos",
+        "valor": 0,
+        "efeitos": "Preserva caixa; a capacidade atual pode ficar aquém da demanda."
+      },
+      {
+        "id": "gradual",
+        "rotulo": "Expansão gradual",
+        "valor": 1,
+        "efeitos": "Paga projetos agora; a capacidade cresce após o prazo de obra (hipótese)."
+      },
+      {
+        "id": "acelerada",
+        "rotulo": "Expansão acelerada",
+        "valor": 2,
+        "efeitos": "Mais gasto e maior formação de capacidade futura (hipótese)."
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "consequencias": ["expansao-executada"]
+}

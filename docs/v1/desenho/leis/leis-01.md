@@ -1,6 +1,8 @@
 ## Economia, moeda e comércio
 
-São 28 leis: 4 de Constituição, 19 de Lei e 5 de Alavanca; 9 delas têm ponto aberto.
+O estudo original reunia 28 fichas: 4 de Constituição, 19 de Lei e 5 de Alavanca; 9 delas têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 30 registros nesta área; 28 fichas recentes, 2 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura:
 - Lado das opções: vem do estudo (códigos do Manifesto Project e votos reais). Onde o estudo não deu número, está "(estimado)".
@@ -10,6 +12,19 @@ Notas de leitura:
 ### Moeda e banco central
 
 #### Quem controla o banco central
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:01`; tabela antiga: quem-controla-o-banco-central.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas.
+- **Decisão:** O governo manda nos juros ou o banco central decide sozinho, com mandato fixo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Choque de juros → Autonomia plena (mandatos fixos, objetivo em lei) (hoje no Brasil) (correspondência textual; conferir intenção do programa); Estabilização em fases → Autonomia plena (mandatos fixos, objetivo em lei) (hoje no Brasil) (correspondência textual; conferir intenção do programa); Metas de inflação → Autonomia plena (mandatos fixos, objetivo em lei) (hoje no Brasil) (correspondência textual; conferir intenção do programa); Dinheiro barato → Banco central subordinado ao governo (correspondência textual; conferir intenção do programa); Pagar com moeda nova → Banco central subordinado ao governo (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo manda nos juros ou o banco central decide sozinho, com mandato fixo?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -28,6 +43,19 @@ Notas de leitura:
 
 #### Mandato do banco central
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:02`; tabela antiga: mandato-do-banco-central.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas.
+- **Decisão:** O banco central persegue só a inflação, também o emprego, ou nenhuma meta?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Quem controla o banco central: "subordinado" libera o mandato duplo com meta de emprego (regra do estudo); ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Choque de juros → Meta estrita (horizonte curto, banda estreita) (correspondência textual; conferir intenção do programa); Metas de inflação → Meta estrita (horizonte curto, banda estreita) (correspondência textual; conferir intenção do programa); Pagar com moeda nova → Sem meta (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O banco central persegue só a inflação, também o emprego, ou nenhuma meta?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve (vinda de Meta de inflação)
 **Mãe:** Quem controla o banco central: "subordinado" libera o mandato duplo com meta de emprego (regra do estudo)
@@ -44,6 +72,19 @@ Notas de leitura:
 **Países que usam:** sem meta: Argentina (vários anos); duplo: EUA; flexível: Brasil, Chile, Reino Unido; estrita: Nova Zelândia nos anos 1990 (aprox.)
 
 #### Valor da meta de inflação
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:03`; tabela antiga: valor-da-meta-de-inflacao.
+- **Ciclos:** C01 Moeda, câmbio e inflação.
+- **Decisão:** Qual inflação por ano o banco central deve perseguir?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Mandato do banco central: "sem meta" tranca esta alavanca (proposta minha); ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Metas de inflação → Brasil hoje: 3% (tolerância de 1,5 ponto) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Qual inflação por ano o banco central deve perseguir?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Reescreve (vinda de Meta de inflação)
@@ -62,6 +103,19 @@ Notas de leitura:
 
 #### Taxa básica de juros
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:04`; tabela antiga: taxa-basica-de-juros.
+- **Ciclos:** C01 Moeda, câmbio e inflação.
+- **Decisão:** Quanto o governo fixa para os juros básicos da economia, quando é ele quem decide?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Quem controla o banco central: só existe com "subordinado"; "autonomia plena" tranca; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Choque de juros → Máximo: 30% (correspondência textual; conferir intenção do programa); Dinheiro barato → Mínimo: 2% (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o governo fixa para os juros básicos da economia, quando é ele quem decide?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Quem controla o banco central: só existe com "subordinado"; "autonomia plena" tranca
@@ -78,6 +132,19 @@ Notas de leitura:
 **Pontos abertos:** a faixa 2% a 30% é minha; o estudo não dá limites.
 
 #### Regime cambial
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:05`; tabela antiga: regime-cambial.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas.
+- **Decisão:** O preço do dólar é fixado pelo governo, segue uma faixa ou flutua no mercado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Trava: "fixo" exige Controle de capitais "controles prudenciais" ou mais fechado, ou reservas acima de um limiar; "fixo" não pode com Mandato do banco central "meta flexível"; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moeda presa ao dólar → Fixo (opção proposta por leitura do programa e da ficha; validar juridicamente); Metas de inflação → Flutuante (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência); Dolarização → Fixo (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O preço do dólar é fixado pelo governo, segue uma faixa ou flutua no mercado?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
@@ -96,6 +163,19 @@ Notas de leitura:
 
 #### Intervenção cambial
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:06`; tabela antiga: intervencao-cambial.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** Quantos dólares das reservas o banco central compra ou vende neste turno?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Regime cambial: com "fixo", a venda é automática para defender o preço; com "flutuante", só leilões pontuais (proposta minha); ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Indústria exportadora dirigida → Máximo: comprar US$ 40 bi (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quantos dólares das reservas o banco central compra ou vende neste turno?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo (peça citada no cabeçalho da mesa, sem ficha no estudo)
 **Mãe:** Regime cambial: com "fixo", a venda é automática para defender o preço; com "flutuante", só leilões pontuais (proposta minha)
@@ -112,6 +192,19 @@ Notas de leitura:
 **Pontos abertos:** a criação desta alavanca é recomendação do inventário ainda não aceita pelo autor. Estudo curto: revisar.
 
 #### Controle de capitais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:07`; tabela antiga: controle-de-capitais.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C02 Tributos e dívida, C03 Produção, comércio e empresas.
+- **Decisão:** O dinheiro pode entrar e sair do país livremente?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Trava: "conta fechada" tranca Investimento estrangeiro "sem restrições"; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moeda presa ao dólar → Conta aberta (correspondência textual; conferir intenção do programa); Planejamento central → Conta fechada (correspondência textual; conferir intenção do programa); Substituição de importações → Conta fechada (correspondência textual; conferir intenção do programa); Moratória da dívida → Conta fechada (correspondência textual; conferir intenção do programa); Autossuficiência total → Conta fechada (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O dinheiro pode entrar e sair do país livremente?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -130,6 +223,19 @@ Notas de leitura:
 
 #### Regulação dos bancos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:08`; tabela antiga: regulacao-dos-bancos.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** Quanto capital e quantas regras os bancos precisam cumprir para emprestar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto capital e quantas regras os bancos precisam cumprir para emprestar?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -146,6 +252,19 @@ Notas de leitura:
 **Países que usam:** mínima: EUA antes de 2008 (aprox.); reforçado: Suíça, Reino Unido (aprox.); repressão: Índia (aprox.), Brasil antes de 1988 (aprox.)
 
 #### Indexação de contratos
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:09`; tabela antiga: indexacao-de-contratos.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas.
+- **Decisão:** Contratos, aluguéis, tarifas e salários podem ser corrigidos automaticamente pela inflação passada?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Congelamento de preços → Desindexação ampla (inclusive benefícios e tarifas) (opção corrigida por sentido do programa; validar evidência); Estabilização em fases → Indexação livre (correspondência textual; conferir intenção do programa); Pacto de preços e salários → Desindexação ampla (inclusive benefícios e tarifas) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Contratos, aluguéis, tarifas e salários podem ser corrigidos automaticamente pela inflação passada?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
@@ -165,6 +284,19 @@ Notas de leitura:
 
 #### Acordos comerciais
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:10`; tabela antiga: acordos-comerciais.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** Com quem o país faz acordos para baixar tarifas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Trava: "união aduaneira" limita Tarifas de importação à tarifa comum do bloco; "livre comércio amplo" tranca Política industrial "proteção do mercado interno"; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mercado comum regional → Livre comércio amplo (abertura sem esperar os outros) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Com quem o país faz acordos para baixar tarifas?
 **Camada:** Lei (tratado ratificado por maioria simples) · **Implantação:** 2 turnos · **Inventário:** Reescreve (era Constituição, desce para Lei)
 **Mãe:** nenhuma. Trava: "união aduaneira" limita Tarifas de importação à tarifa comum do bloco; "livre comércio amplo" tranca Política industrial "proteção do mercado interno"
@@ -182,6 +314,19 @@ Notas de leitura:
 
 #### Tarifas de importação
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:11`; tabela antiga: tarifas-de-importacao.
+- **Ciclos:** C03 Produção, comércio e empresas, C18 Terra, agro e alimentos, C21 Defesa e relações externas.
+- **Decisão:** Qual a tarifa média sobre o que o país importa?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acordos comerciais: com "união aduaneira", só a tarifa comum do bloco; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Comida barata → Mínimo: 0% (correspondência textual; conferir intenção do programa); Substituição de importações → Máximo: 40% (correspondência textual; conferir intenção do programa); Zonas econômicas especiais → Mínimo: 0% (correspondência textual; conferir intenção do programa); Choque liberal → Mínimo: 0% (correspondência textual; conferir intenção do programa); Fortaleza nacional → Máximo: 40% (correspondência textual; conferir intenção do programa); Subsídio e proteção ao agro → Máximo: 40% (correspondência textual; conferir intenção do programa); Mercado comum regional → Mínimo: 0% (correspondência textual; conferir intenção do programa); Autossuficiência total → Máximo: 40% (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Qual a tarifa média sobre o que o país importa?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
 **Mãe:** Acordos comerciais: com "união aduaneira", só a tarifa comum do bloco
@@ -197,6 +342,19 @@ Notas de leitura:
 **Países que usam:** baixa: Chile, Singapura; média: Brasil; alta: Índia (aprox.), Argentina (aprox.)
 
 #### Investimento estrangeiro
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:12`; tabela antiga: investimento-estrangeiro.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas, C19 Energia e transição, C20 Infraestrutura e serviços urbanos, C21 Defesa e relações externas.
+- **Decisão:** Empresas de fora podem investir em quais setores e com quais regras?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Controle de capitais: "conta fechada" tranca "sem restrições"; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Nacionalização dos recursos → Fechado (correspondência textual; conferir intenção do programa); Zonas econômicas especiais → Atração com incentivos fiscais (correspondência textual; conferir intenção do programa); Fortaleza nacional → Fechado (correspondência textual; conferir intenção do programa); Vender estatais para pagar dívida → Atração com incentivos fiscais (correspondência textual; conferir intenção do programa); Leilão aberto do petróleo → Atração com incentivos fiscais (correspondência textual; conferir intenção do programa); Energia privatizada → Atração com incentivos fiscais (correspondência textual; conferir intenção do programa); Concessões e parcerias privadas → Atração com incentivos fiscais (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Empresas de fora podem investir em quais setores e com quais regras?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -216,6 +374,19 @@ Notas de leitura:
 
 #### Conteúdo local
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:13`; tabela antiga: conteudo-local.
+- **Ciclos:** C03 Produção, comércio e empresas, C21 Defesa e relações externas.
+- **Decisão:** O governo exige que compras públicas, petróleo e carros usem uma parte de peças feitas no país?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Substituição de importações → Conteúdo local alto (petróleo e carros) (correspondência textual; conferir intenção do programa); Petróleo do Estado → Conteúdo local alto (petróleo e carros) (correspondência textual; conferir intenção do programa); Partilha com conteúdo nacional → Conteúdo local alto (petróleo e carros) (correspondência textual; conferir intenção do programa); Indústria de defesa nacional → Conteúdo local alto (petróleo e carros) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo exige que compras públicas, petróleo e carros usem uma parte de peças feitas no país?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -231,6 +402,19 @@ Notas de leitura:
 **Países que usam:** sem exigência: Chile; margem de preferência: EUA; alto: Brasil 2007-2016 (aprox.)
 
 #### Defesa comercial
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:14`; tabela antiga: defesa-comercial.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** O governo põe sobretaxas contra importações vendidas abaixo do custo ou que crescem de repente?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acordos comerciais: com "livre comércio amplo", só a opção técnica (proposta minha); ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fortaleza nacional → Uso amplo (sobretaxa rápida, pouco peso para o interesse do consumidor) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo põe sobretaxas contra importações vendidas abaixo do custo ou que crescem de repente?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo (peça citada no cabeçalho da mesa, sem ficha no estudo nem no inventário)
@@ -251,6 +435,19 @@ Notas de leitura:
 
 #### Propriedade dos meios de produção
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:15`; tabela antiga: propriedade-dos-meios-de-producao.
+- **Ciclos:** C03 Produção, comércio e empresas, C18 Terra, agro e alimentos.
+- **Decisão:** Empresas, terras e fábricas são privadas, mistas ou do Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Trava: "socialista" libera Planejamento "plano central" e Nacionalização "expropriação" e tranca Programa de privatização; "privada" tranca Papel do Estado empresário "Estado empresário"; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Planejamento central → Socialista (correspondência textual; conferir intenção do programa); Economia de cooperativas → Mista (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência); Coletivização do campo → Socialista (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Empresas, terras e fábricas são privadas, mistas ou do Estado?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. Trava: "socialista" libera Planejamento "plano central" e Nacionalização "expropriação" e tranca Programa de privatização; "privada" tranca Papel do Estado empresário "Estado empresário"
@@ -266,6 +463,19 @@ Notas de leitura:
 **Países que usam:** privada: EUA; mista: Brasil, França; socialista: Cuba
 
 #### Papel do Estado empresário
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:16`; tabela antiga: papel-do-estado-empresario.
+- **Ciclos:** C03 Produção, comércio e empresas, C19 Energia e transição, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** O Estado pode ter empresas e em quais setores?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Propriedade dos meios de produção: "privada" tranca "Estado empresário"; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Nacionalização dos recursos → Estado empresário (correspondência textual; conferir intenção do programa); Substituição de importações → Estado empresário (correspondência textual; conferir intenção do programa); Grandes obras públicas → Estado empresário (correspondência textual; conferir intenção do programa); Energia nuclear em escala → Estado empresário (correspondência textual; conferir intenção do programa); Saneamento estatal → Estado empresário (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O Estado pode ter empresas e em quais setores?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -285,6 +495,19 @@ Notas de leitura:
 
 #### Programa de privatização
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:17`; tabela antiga: programa-de-privatizacao.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C02 Tributos e dívida, C03 Produção, comércio e empresas, C06 Previdência e cuidado, C19 Energia e transição, C20 Infraestrutura e serviços urbanos.
+- **Decisão:** O governo vende empresas estatais, e quantas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Propriedade dos meios de produção: "socialista" tranca esta lei; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Estabilização em fases → Venda ampla (correspondência textual; conferir intenção do programa); Choque liberal → Venda ampla (correspondência textual; conferir intenção do programa); Corte de impostos → Venda ampla (correspondência textual; conferir intenção do programa); Austeridade com corte de Estado → Venda ampla (correspondência textual; conferir intenção do programa); Vender estatais para pagar dívida → Venda ampla (correspondência textual; conferir intenção do programa); Leilão aberto do petróleo → Venda ampla (correspondência textual; conferir intenção do programa); Energia privatizada → Venda ampla (correspondência textual; conferir intenção do programa); Aposentadoria por conta individual → Venda ampla (correspondência textual; conferir intenção do programa); Concessões e parcerias privadas → Venda ampla (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo vende empresas estatais, e quantas?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
 **Mãe:** Propriedade dos meios de produção: "socialista" tranca esta lei
@@ -301,6 +524,19 @@ Notas de leitura:
 
 #### Nacionalização
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:18`; tabela antiga: nacionalizacao.
+- **Ciclos:** C03 Produção, comércio e empresas, C21 Defesa e relações externas.
+- **Decisão:** Quando o Estado toma uma empresa privada, como ele paga?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Propriedade dos meios de produção: "socialista" libera "expropriação"; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Nacionalização dos recursos → Expropriação sem pagar (correspondência textual; conferir intenção do programa); Petróleo do Estado → Expropriação sem pagar (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quando o Estado toma uma empresa privada, como ele paga?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** Propriedade dos meios de produção: "socialista" libera "expropriação"
@@ -316,6 +552,19 @@ Notas de leitura:
 **Países que usam:** indenização prévia: Brasil, maioria; expropriação: Venezuela
 
 #### Regime do petróleo e mineração
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:19`; tabela antiga: regime-do-petroleo-e-mineracao.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas.
+- **Decisão:** Quem explora petróleo e minérios e quanto fica com o Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Nacionalização dos recursos → Monopólio estatal (opção corrigida por sentido do programa; validar evidência); Poupar a riqueza do subsolo → Concessão (empresa paga e fica com o óleo) (correspondência textual; conferir intenção do programa); Petróleo do Estado → Monopólio estatal (opção corrigida por sentido do programa; validar evidência); Partilha com conteúdo nacional → Partilha (o Estado fica com parte do óleo) (hoje no Brasil, no pré-sal) (opção corrigida por sentido do programa; validar evidência); Leilão aberto do petróleo → Concessão (empresa paga e fica com o óleo) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem explora petróleo e minérios e quanto fica com o Estado?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica (mexe também em Ambiente: produção mineral; substitui o evento "quem explora o petróleo")
@@ -334,6 +583,19 @@ Notas de leitura:
 
 #### Banco de desenvolvimento
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:20`; tabela antiga: banco-de-desenvolvimento.
+- **Ciclos:** C02 Tributos e dívida, C03 Produção, comércio e empresas, C04 Trabalho e renda, C07 Moradia e cidade, C09 Ensino superior e pesquisa, C19 Energia e transição, C20 Infraestrutura e serviços urbanos, C21 Defesa e relações externas.
+- **Decisão:** O país tem um banco público que empresta às empresas, e a que preço?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Salário e crédito → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Indústria exportadora dirigida → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Substituição de importações → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Grandes obras públicas → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Economia de cooperativas → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Estado inovador → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Fundos para regiões pobres → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Casa própria subsidiada → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Transição verde → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa); Indústria de defesa nacional → Crédito subsidiado em massa (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O país tem um banco público que empresta às empresas, e a que preço?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -351,6 +613,19 @@ Notas de leitura:
 
 #### Cooperativas e autogestão
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:21`; tabela antiga: cooperativas-e-autogestao.
+- **Ciclos:** C03 Produção, comércio e empresas, C18 Terra, agro e alimentos.
+- **Decisão:** O governo incentiva empresas de propriedade dos trabalhadores e cooperativas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Economia de cooperativas → Autogestão (empresas passam aos trabalhadores) (correspondência textual; conferir intenção do programa); Apoio à agricultura familiar → Incentivo (crédito e imposto menor) (hoje no Brasil, aprox.) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo incentiva empresas de propriedade dos trabalhadores e cooperativas?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -367,6 +642,19 @@ Notas de leitura:
 **Pontos abertos:** o estudo não traz grupos nem números; apoio, rejeição e países são estimativa minha.
 
 #### Política de preços das estatais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:22`; tabela antiga: politica-de-precos-das-estatais.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C19 Energia e transição.
+- **Decisão:** A petroleira e outras estatais cobram o preço internacional ou o governo segura o preço?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel do Estado empresário: "sem estatais" tranca esta lei (proposta minha); ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Congelamento de preços → Preço político (congelamento) (correspondência textual; conferir intenção do programa); Combustível barato → Preço político (congelamento) (correspondência textual; conferir intenção do programa); Energia privatizada → Paridade internacional (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A petroleira e outras estatais cobram o preço internacional ou o governo segura o preço?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
@@ -386,6 +674,19 @@ Notas de leitura:
 
 #### Controle de preços
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:23`; tabela antiga: controle-de-precos.
+- **Ciclos:** C01 Moeda, câmbio e inflação, C03 Produção, comércio e empresas, C05 Transferência e pobreza, C11 Atendimento de saúde, C18 Terra, agro e alimentos, C19 Energia e transição.
+- **Decisão:** O governo fixa preços de produtos, e de quais?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Trava: "tabelamento geral" libera o índice Desabastecimento e os eventos de saques e panelaço; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Congelamento de preços → Tabelamento geral (correspondência textual; conferir intenção do programa); Pacto de preços e salários → Tabelamento geral (correspondência textual; conferir intenção do programa); Planejamento central → Tabelamento geral (correspondência textual; conferir intenção do programa); Choque liberal → Preços livres (correspondência textual; conferir intenção do programa); Comida garantida → Tabelamento geral (correspondência textual; conferir intenção do programa); Remédio barato → Tabelamento geral (correspondência textual; conferir intenção do programa); Combustível barato → Tabelamento geral (correspondência textual; conferir intenção do programa); Coletivização do campo → Tabelamento geral (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo fixa preços de produtos, e de quais?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma. Trava: "tabelamento geral" libera o índice Desabastecimento e os eventos de saques e panelaço
@@ -402,6 +703,19 @@ Notas de leitura:
 **Países que usam:** livres: maioria da OCDE; teto na cesta: Argentina; tabelamento geral: Brasil 1986, Venezuela
 
 #### Defesa da concorrência
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:24`; tabela antiga: defesa-da-concorrencia.
+- **Ciclos:** C03 Produção, comércio e empresas, C21 Defesa e relações externas.
+- **Decisão:** O governo impede fusões e cartéis ou ajuda a criar grandes empresas nacionais?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Economia social de mercado → Rigorosa (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo impede fusões e cartéis ou ajuda a criar grandes empresas nacionais?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -421,6 +735,19 @@ Notas de leitura:
 
 #### Licença para abrir negócio
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:25`; tabela antiga: licenca-para-abrir-negocio.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** Quem quer abrir uma empresa precisa pedir licença antes?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Abrir negócio fácil → Sem licença para baixo risco (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem quer abrir uma empresa precisa pedir licença antes?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica (hoje "Liberdade econômica")
 **Mãe:** nenhuma
@@ -436,6 +763,19 @@ Notas de leitura:
 **Países que usam:** sem licença para baixo risco: Brasil desde 2019; por risco: lacuna
 
 #### Política industrial
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:26`; tabela antiga: politica-industrial.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** O governo escolhe setores da indústria para ajudar, e como?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acordos comerciais: "livre comércio amplo" tranca "proteção do mercado interno"; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Indústria exportadora dirigida → Setorial exportadora (missões com metas e prazo) (hoje no Brasil) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo escolhe setores da indústria para ajudar, e como?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Reescreve (opções iguais; ganha a alavanca Volume de incentivo à indústria)
@@ -453,6 +793,19 @@ Notas de leitura:
 **Países que usam:** horizontal: Coreia hoje, OCDE; setorial exportadora: Coreia anos 1970, China, Brasil 2024; proteção: Brasil anos 1970-1980, Argentina
 
 #### Volume de incentivo à indústria
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:27`; tabela antiga: volume-de-incentivo-a-industria.
+- **Ciclos:** C03 Produção, comércio e empresas.
+- **Decisão:** Quanto dinheiro público vai para a política industrial por ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Política industrial: "nenhuma" tranca (proposta minha); ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto dinheiro público vai para a política industrial por ano?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Reescreve (alavanca nova dentro de Política industrial)
@@ -473,6 +826,19 @@ Notas de leitura:
 
 #### Planejamento da economia
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-01:28`; tabela antiga: planejamento-da-economia.
+- **Ciclos:** C03 Produção, comércio e empresas, C05 Transferência e pobreza, C18 Terra, agro e alimentos.
+- **Decisão:** O governo planeja a economia toda, só orienta o setor privado ou deixa o mercado decidir?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Propriedade dos meios de produção: "plano central" exige "socialista" ou "mista"; também exige Controle de preços "tabelamento geral"; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Planejamento central → Plano central (correspondência textual; conferir intenção do programa); Comida garantida → Plano central (correspondência textual; conferir intenção do programa); Coletivização do campo → Plano central (correspondência textual; conferir intenção do programa); Autossuficiência total → Plano central (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo planeja a economia toda, só orienta o setor privado ou deixa o mercado decidir?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica (muda para a mesa nova Planejamento)
 **Mãe:** Propriedade dos meios de produção: "plano central" exige "socialista" ou "mista"; também exige Controle de preços "tabelamento geral"
@@ -487,3 +853,45 @@ Notas de leitura:
 **Leis relacionadas:** Propriedade dos meios de produção; Controle de preços; plano plurianual e investimento público (Impostos e contas)
 **Países que usam:** mercado: EUA (aprox.); plano que orienta: Brasil, França anos 1950-1960; plano central: URSS, Cuba
 **Pontos abertos:** uma Constituição que depende de uma Lei (tabelamento) inverte a hierarquia; proponho que "plano central" ligue o tabelamento sozinho (proposta minha).
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Emprego garantido pelo Estado
+
+**ID de origem:** `emprego-publico-garantido`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 74.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:emprego-publico-garantido`; tabela antiga: emprego-publico-garantido.
+- **Ciclos:** C04 Trabalho e renda.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Emprego garantido pelo Estado → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Moeda própria
+
+**ID de origem:** `moeda-propria`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 80.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:moeda-propria`; tabela antiga: moeda-propria.
+- **Ciclos:** C01 Moeda, câmbio e inflação.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Câmbio fixo: trava sem ela (Dolarizar (moeda própria a 0) é um câmbio fixo sem volta); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Dolarização → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

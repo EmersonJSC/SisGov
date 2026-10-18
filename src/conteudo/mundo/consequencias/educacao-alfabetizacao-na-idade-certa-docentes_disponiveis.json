@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alfabetizacao-na-idade-certa-docentes_disponiveis",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alfabetizacao",
+  "alvo": "docentes_disponiveis",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 0],
+      [2, 0],
+      [3, 3]
+    ]
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

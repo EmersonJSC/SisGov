@@ -1,0 +1,21 @@
+{
+  "id": "educacao-alimentacao-escolar-grupo_pobres",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "apoio_alimentacao_escolar",
+  "alvo": "grupo_pobres",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [1, 6],
+      [2, 4],
+      [3, 3]
+    ]
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

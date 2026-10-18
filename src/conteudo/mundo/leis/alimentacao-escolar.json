@@ -1,0 +1,59 @@
+{
+  "id": "alimentacao-escolar",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Oferta de alimentação escolar",
+  "descricao": "Organiza a oferta de alimentação escolar e ações associadas no período letivo. O efeito quantitativo na frequência é hipótese do piloto.",
+  "area": "Educação, ciência e cultura",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11947.htm",
+  "processoAutorizacao": "alimentacao-escolar",
+  "nivelLegal": "derivada",
+  "revogavel": true,
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "apoio_alimentacao_escolar",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "cobertura-alimentar",
+        "rotulo": "Ampliar cobertura — Prioriza garantir refeição durante os dias letivos para mais estudantes, com efeito esperado na frequência.",
+        "valor": 1,
+        "efeitos": "Prioriza garantir refeição durante os dias letivos para mais estudantes, com efeito esperado na frequência. Alcance hipotético da oferta de alimentação durante o período escolar.",
+        "apoiam": ["pobres", "familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "qualidade-nutricional",
+        "rotulo": "Priorizar qualidade nutricional — Direciona esforço à qualidade nutricional e adequação das refeições; o efeito sobre frequência é menor no piloto.",
+        "valor": 2,
+        "efeitos": "Direciona esforço à qualidade nutricional e adequação das refeições; o efeito sobre frequência é menor no piloto. Alcance hipotético da oferta de alimentação durante o período escolar.",
+        "apoiam": ["pobres", "familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "compras-locais",
+        "rotulo": "Fortalecer compras locais — Prioriza aquisição de alimentos da produção local, com ganho potencial para a oferta territorial e maior custo operacional hipotético.",
+        "valor": 3,
+        "efeitos": "Prioriza aquisição de alimentos da produção local, com ganho potencial para a oferta territorial e maior custo operacional hipotético. Alcance hipotético da oferta de alimentação durante o período escolar.",
+        "apoiam": ["pobres", "familias com filhos"],
+        "rejeitam": []
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "consequencias": [
+    "educacao-alimentacao-escolar-frequencia_escolar",
+    "educacao-alimentacao-escolar-grupo_pobres",
+    "educacao-alimentacao-escolar-custo_educacao_hipotese",
+    "educacao-alimentacao-escolar-aprendizagem_escolar",
+    "educacao-alimentacao-escolar-grupo_interior"
+  ]
+}

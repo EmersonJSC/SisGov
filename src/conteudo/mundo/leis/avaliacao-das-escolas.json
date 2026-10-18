@@ -3,72 +3,54 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Avaliação das escolas",
-  "descricao": "O país mede o que os alunos aprendem, e o que faz com o resultado?",
+  "nome": "Avaliação e monitoramento educacional",
+  "descricao": "Organiza avaliação e acompanhamento para identificar lacunas de aprendizagem e orientar apoio às redes.",
   "area": "Educação, ciência e cultura",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15388.htm",
+  "processoAutorizacao": "avaliacao-educacional",
+  "nivelLegal": "derivada",
+  "revogavel": true,
   "mesa": {
-    "id": "escola",
-    "nome": "Escola",
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
     "camada": "lei"
   },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
+  "controle": {
+    "variavel": "intensidade_avaliacao_educacional",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "diagnostico-continuo",
+        "rotulo": "Diagnóstico frequente — Produz informação frequente para detectar dificuldades durante o ano. Coletar dados não melhora a aprendizagem por si só.",
+        "valor": 1,
+        "efeitos": "Produz informação frequente para detectar dificuldades durante o ano. Coletar dados não melhora a aprendizagem por si só. Intensidade de coleta e acompanhamento de informações sobre escolas e aprendizagem.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "avaliacao-amostral",
+        "rotulo": "Avaliação amostral — Avalia amostras para acompanhar tendências gerais com menor custo e menor detalhe por escola.",
+        "valor": 2,
+        "efeitos": "Avalia amostras para acompanhar tendências gerais com menor custo e menor detalhe por escola. Intensidade de coleta e acompanhamento de informações sobre escolas e aprendizagem.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "devolutiva-por-escola",
+        "rotulo": "Devolutiva por escola — Entrega resultados detalhados a cada escola e rede. A informação é mais específica, com maior esforço de coleta e análise.",
+        "valor": 3,
+        "efeitos": "Entrega resultados detalhados a cada escola e rede. A informação é mais específica, com maior esforço de coleta e análise. Intensidade de coleta e acompanhamento de informações sobre escolas e aprendizagem.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      }
+    ]
+  },
   "implantacaoTurnos": {
     "minimo": 1,
     "maximo": 1
   },
-  "controle": {
-    "variavel": "nivel_avaliacao_das_escolas",
-    "unidade": "nivel_escopo",
-    "opcoes": [
-      {
-        "id": "sem-avaliacao",
-        "rotulo": "Sem avaliação",
-        "valor": 0,
-        "custoTexto": "−0,01% do PIB, educação",
-        "apoiam": ["Sindicatos de professores"],
-        "rejeitam": ["Empresários", "Classe média"],
-        "efeitos": "Trava Vouchers e Financiamento com resultado; o jogador perde a medida de aprendizagem"
-      },
-      {
-        "id": "amostral-e-diagnostica",
-        "rotulo": "Amostral e diagnóstica",
-        "valor": 33,
-        "custoTexto": "0,005% do PIB (aprox.), educação",
-        "apoiam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ pequeno"
-      },
-      {
-        "id": "censitaria-e-publica",
-        "rotulo": "Censitária e pública",
-        "valor": 67,
-        "custoTexto": "0,01% do PIB (aprox.), educação",
-        "apoiam": ["Empresários", "Famílias com filhos"],
-        "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ quando vira meta com apoio; Segregação escolar ↑ se o ranking guia a escolha"
-      },
-      {
-        "id": "com-consequencias",
-        "rotulo": "Com consequências (bônus e intervenção)",
-        "valor": 100,
-        "custoTexto": "0,01% do PIB mais bônus, educação",
-        "apoiam": ["Mercado financeiro", "Empresários"],
-        "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
-        "efeitos": "Aprendizagem ↑ (+0,2 desvio-padrão em matemática, aprox.); Greve de professores ↑; ocorrência \"prova vazada\" fica mais provável"
-      }
-    ]
-  },
   "consequencias": [
-    "avaliacao-escolas--aprendizagem",
-    "avaliacao-escolas--capacidade-estatal",
-    "avaliacao-escolas--confianca-instituicoes",
-    "avaliacao-escolas--segregacao-escolar",
-    "avaliacao-escolas--greve-de-professores",
-    "avaliacao-escolas--evasao-escolar",
-    "avaliacao-escolas--gasto-publico",
-    "avaliacao-escolas--grupo-classe-media",
-    "avaliacao-escolas--grupo-servidores",
-    "avaliacao-escolas--grupo-trabalhadores"
-  ],
-  "ministerio": "Ministério da Educação"
+    "educacao-avaliacao-das-escolas-informacao_educacional",
+    "educacao-avaliacao-das-escolas-custo_educacao_hipotese"
+  ]
 }

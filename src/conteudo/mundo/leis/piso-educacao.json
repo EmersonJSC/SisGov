@@ -2,43 +2,59 @@
   "id": "piso-educacao",
   "tipo": "lei",
   "versaoEsquema": 2,
-  "grupo": "orcamentaria",
-  "nome": "Piso de gasto em educação",
-  "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a educação (escolas, professores, merenda e transporte escolar). Se a arrecadação cai, a educação cai junto.",
+  "grupo": "regulatoria",
+  "nome": "Financiamento da educação básica",
+  "descricao": "Define a prioridade de financiamento e cooperação para a oferta da educação básica. As intensidades e os custos da ilha são hipóteses de teste.",
   "area": "Educação, ciência e cultura",
+  "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14113.htm",
+  "processoAutorizacao": "transferencia-educacional",
+  "nivelLegal": "derivada",
+  "revogavel": true,
   "mesa": {
-    "id": "escola",
-    "nome": "Escola",
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
     "camada": "alavanca"
   },
-  "ministerio": "Ministério da Educação",
-  "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
-    "variavel": "percentual_piso_educacao",
-    "unidade": "percentual_receita"
+    "variavel": "prioridade_financiamento_educacao",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "novas-vagas",
+        "rotulo": "Ampliar vagas — Direciona recursos experimentais à capacidade de receber mais estudantes; tem custo e prazo de implantação maiores.",
+        "valor": 1,
+        "efeitos": "Direciona recursos experimentais à capacidade de receber mais estudantes; tem custo e prazo de implantação maiores. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "manter-escolas",
+        "rotulo": "Manter escolas — Prioriza conservar a capacidade já existente para evitar perda de atendimento. O ganho é gradual e o custo comparativo é intermediário.",
+        "valor": 2,
+        "efeitos": "Prioriza conservar a capacidade já existente para evitar perda de atendimento. O ganho é gradual e o custo comparativo é intermediário. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      },
+      {
+        "id": "reduzir-desigualdade",
+        "rotulo": "Reduzir desigualdade — Prioriza redes e territórios com maior dificuldade de acesso. O efeito maior é reduzir a barreira territorial, não expandir toda a rede igualmente.",
+        "valor": 3,
+        "efeitos": "Prioriza redes e territórios com maior dificuldade de acesso. O efeito maior é reduzir a barreira territorial, não expandir toda a rede igualmente. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+        "apoiam": ["familias com filhos"],
+        "rejeitam": []
+      }
+    ]
   },
-  "orcamento": {
-    "modo": "percentual_orcamento",
-    "base": "receita_total",
-    "limites": {
-      "minimo": 0,
-      "maximo": 40
-    }
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
   },
   "consequencias": [
-    "piso-educacao--escolaridade",
-    "piso-educacao--evasao-escolar",
-    "piso-educacao--aprendizagem",
-    "piso-educacao--qualificacao-trabalho",
-    "piso-educacao--desigualdade",
-    "piso-educacao--grupo-classe-media",
-    "piso-educacao--grupo-empresarios",
-    "piso-educacao--grupo-jovens",
-    "piso-educacao--grupo-servidores",
-    "piso-educacao--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+    "educacao-piso-educacao-vagas_escolares",
+    "educacao-piso-educacao-acesso_escolar",
+    "educacao-piso-educacao-custo_educacao_hipotese",
+    "educacao-piso-educacao-frequencia_escolar",
+    "educacao-piso-educacao-dificuldade_territorial",
+    "educacao-piso-educacao-grupo_interior"
+  ]
 }

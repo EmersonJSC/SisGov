@@ -1,0 +1,1603 @@
+{
+  "tipo": "memoria-gerador-ilha-teste",
+  "versao": 1,
+  "contadorGeracao": 13,
+  "status": "concluida",
+  "semente": 1,
+  "ciclo": "C1 — acesso e permanência na educação",
+  "criadoPor": "scripts/gerador/rodadas-educacao.ts",
+  "arquivosGerados": [
+    "src/conteudo/paises/ilha-teste/pais.json",
+    "src/conteudo/paises/ilha-teste/estado-inicial.json",
+    "src/conteudo/paises/ilha-teste/politica.json",
+    "src/conteudo/mundo/mundo.json",
+    "src/conteudo/mundo/variaveis.json",
+    "src/conteudo/mundo/catalogo-politicas.json",
+    "src/conteudo/mundo/leis/expansao-da-rede-eletrica.json",
+    "src/conteudo/mundo/leis/manutencao-da-rede-eletrica.json",
+    "src/conteudo/mundo/bussola.json",
+    "src/conteudo/bussola/referencias.json",
+    "src/conteudo/bussola/congresso.json",
+    "src/conteudo/mundo/eleicao.json",
+    "src/conteudo/mundo/personagens.json",
+    "src/conteudo/mundo/consequencias/expansao-executada.json",
+    "src/conteudo/mundo/consequencias/manutencao-executada.json",
+    "src/conteudo/mundo/consequencias/expansao-aumenta-capacidade.json",
+    "src/conteudo/mundo/consequencias/expansao-reduz-caixa.json",
+    "src/conteudo/mundo/consequencias/manutencao-reduz-perdas.json",
+    "src/conteudo/mundo/consequencias/manutencao-reduz-caixa.json",
+    "src/conteudo/mundo/consequencias/demanda-pressiona-rede.json",
+    "src/conteudo/mundo/consequencias/capacidade-alivia-rede.json",
+    "src/conteudo/mundo/consequencias/perdas-pressionam-rede.json",
+    "src/conteudo/mundo/consequencias/perdas-tecnicas-na-rede.json",
+    "src/conteudo/mundo/consequencias/perdas-comerciais-na-rede.json",
+    "src/conteudo/mundo/consequencias/pressao-traz-risco.json",
+    "src/conteudo/mundo/leis/ensino-obrigatorio.json",
+    "src/conteudo/mundo/leis/piso-educacao.json",
+    "src/conteudo/mundo/leis/escolha-escolar-financiada.json",
+    "src/conteudo/mundo/leis/provisao-publica-exclusiva.json",
+    "src/conteudo/mundo/leis/bolsa-de-permanencia-no-ensino-medio.json",
+    "src/conteudo/mundo/leis/escola-em-tempo-integral.json",
+    "src/conteudo/mundo/leis/piso-salarial-professores.json",
+    "src/conteudo/mundo/leis/alfabetizacao-na-idade-certa.json",
+    "src/conteudo/mundo/leis/transporte-escolar.json",
+    "src/conteudo/mundo/leis/alimentacao-escolar.json",
+    "src/conteudo/mundo/leis/avaliacao-das-escolas.json",
+    "src/conteudo/mundo/leis/financiamento-com-resultado.json",
+    "src/conteudo/mundo/consequencias/educacao-demanda-vagas.json",
+    "src/conteudo/mundo/consequencias/educacao-vagas-acesso.json",
+    "src/conteudo/mundo/consequencias/educacao-docentes-acesso.json",
+    "src/conteudo/mundo/consequencias/educacao-barreira-acesso.json",
+    "src/conteudo/mundo/consequencias/educacao-acesso-frequencia.json",
+    "src/conteudo/mundo/consequencias/educacao-permanencia-frequencia.json",
+    "src/conteudo/mundo/consequencias/educacao-frequencia-abandono.json",
+    "src/conteudo/mundo/consequencias/educacao-frequencia-aprendizagem.json",
+    "src/conteudo/mundo/consequencias/educacao-docentes-aprendizagem.json",
+    "src/conteudo/mundo/consequencias/educacao-info-aprendizagem.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-jovens.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-familias.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-classe-media.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-interior.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-periferias.json",
+    "src/conteudo/mundo/consequencias/educacao-satisfacao-servidores.json",
+    "src/conteudo/mundo/consequencias/educacao-frequencia-grupo-jovens.json",
+    "src/conteudo/mundo/consequencias/educacao-frequencia-grupo-familias.json",
+    "src/conteudo/mundo/consequencias/educacao-acesso-grupo-pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-acesso-grupo-interior.json",
+    "src/conteudo/mundo/consequencias/educacao-acesso-grupo-periferias.json",
+    "src/conteudo/mundo/consequencias/educacao-aprendizagem-grupo-familias.json",
+    "src/conteudo/mundo/consequencias/educacao-aprendizagem-grupo-servidores.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-acesso_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-vagas_escolares.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-ensino-obrigatorio-abandono_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-vagas_escolares.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-acesso_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-dificuldade_territorial.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-educacao-grupo_interior.json",
+    "src/conteudo/mundo/consequencias/educacao-escolha-escolar-financiada-acesso_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-escolha-escolar-financiada-informacao_educacional.json",
+    "src/conteudo/mundo/consequencias/educacao-escolha-escolar-financiada-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-escolha-escolar-financiada-vagas_escolares.json",
+    "src/conteudo/mundo/consequencias/educacao-escolha-escolar-financiada-dificuldade_territorial.json",
+    "src/conteudo/mundo/consequencias/educacao-provisao-publica-exclusiva-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-provisao-publica-exclusiva-grupo_familias_com_filhos.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens.json",
+    "src/conteudo/mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-grupo_pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-vagas_escolares.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-docentes_disponiveis.json",
+    "src/conteudo/mundo/consequencias/educacao-escola-em-tempo-integral-aprendizagem_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-salarial-professores-docentes_disponiveis.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-salarial-professores-grupo_servidores.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-salarial-professores-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-salarial-professores-grupo_interior.json",
+    "src/conteudo/mundo/consequencias/educacao-piso-salarial-professores-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_jovens.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-docentes_disponiveis.json",
+    "src/conteudo/mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_servidores.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-dificuldade_territorial.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-acesso_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-grupo_interior.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-transporte-escolar-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alimentacao-escolar-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alimentacao-escolar-grupo_pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-alimentacao-escolar-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-alimentacao-escolar-aprendizagem_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-alimentacao-escolar-grupo_interior.json",
+    "src/conteudo/mundo/consequencias/educacao-avaliacao-das-escolas-informacao_educacional.json",
+    "src/conteudo/mundo/consequencias/educacao-avaliacao-das-escolas-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-vagas_escolares.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-grupo_pobres.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-grupo_interior.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-custo_educacao_hipotese.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-frequencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-permanencia_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-aprendizagem_escolar.json",
+    "src/conteudo/mundo/consequencias/educacao-financiamento-com-resultado-informacao_educacional.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-1/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-1/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-2/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-2/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-3/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-3/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-4/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-4/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-5/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-5/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-6/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-6/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-7/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-7/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-8/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-8/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-9/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-9/pacote-candidato.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-10/relatorio.json",
+    "docs/v1/desenho/rodadas-gerador-educacao/rodada-10/pacote-candidato.json"
+  ],
+  "aprendizados": [
+    {
+      "rodada": 1,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "resolvePackage",
+          "validatePackageCoherence",
+          "fontes e referências incluídas no pacote"
+        ],
+        "testesDeSimulacao": [
+          "linha de base",
+          "cada opção isolada",
+          "três combinações",
+          "recuperação após retirar as ações"
+        ],
+        "observacao": "As três estratégias de cada lei produzem trajetórias diferentes no conjunto de métricas acompanhado.",
+        "alternativasDistintas": true,
+        "opcoesTestadas": [
+          {
+            "lei": "ensino-obrigatorio",
+            "opcoes": [
+              {
+                "id": "busca-ativa",
+                "rotulo": "Busca ativa — Localiza crianças fora da escola e prioriza matrícula e acompanhamento das famílias. No piloto, melhora acesso e frequência com custo comparativo moderado.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 5.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.09437185950766,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|5.700000|1000.000000|69.094372|57.500000|63.296000|62.000000|65.000000|62.000000|52.864000"
+              },
+              {
+                "id": "expandir-vagas",
+                "rotulo": "Expandir vagas — Prioriza ampliar a capacidade de atendimento escolar. Tem atraso de implantação e custo comparativo maior; o efeito depende de obras e pessoal.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 464,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 45,
+                  "abandono_escolar": 35.75,
+                  "aprendizagem_escolar": 33.55,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 7.2,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 68.34818081810334,
+                  "grupo_jovens": 56.75,
+                  "grupo_familias_com_filhos": 62.126,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.684
+                },
+                "assinatura": "100.000000|464.000000|52.000000|0.000000|45.000000|35.750000|33.550000|2.000000|7.200000|1000.000000|68.348181|56.750000|62.126000|62.000000|65.000000|62.000000|52.684000"
+              },
+              {
+                "id": "apoio-permanencia",
+                "rotulo": "Apoiar permanência — Prioriza acompanhamento e apoio para que estudantes matriculados continuem frequentando. Não cria vagas por si só.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 10,
+                  "frequencia_escolar": 49,
+                  "abandono_escolar": 27.15,
+                  "aprendizagem_escolar": 35.349999999999994,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 6.2,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 68.94599184391608,
+                  "grupo_jovens": 57.35,
+                  "grupo_familias_com_filhos": 63.062,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.828
+                },
+                "assinatura": "100.000000|272.000000|52.000000|10.000000|49.000000|27.150000|35.350000|2.000000|6.200000|1000.000000|68.945992|57.350000|63.062000|62.000000|65.000000|62.000000|52.828000"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "escolha-escolar-financiada",
+            "opcoes": [
+              {
+                "id": "rede-publica-com-escolha",
+                "rotulo": "Escolha com garantia pública — Permite escolher entre escolas públicas e independentes financiadas pelo poder público. A escolha, sozinha, não presume melhora na aprendizagem.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 5.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.09437185950766,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|5.700000|1000.000000|69.094372|57.500000|63.296000|62.000000|65.000000|62.000000|52.864000"
+              },
+              {
+                "id": "contratos-com-metas",
+                "rotulo": "Financiar provedores com metas — Mantém a escolha entre provedores, mas condiciona parte do financiamento a requisitos e metas públicas; o efeito direto modelado é mais informação e capacidade.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 356,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 36.1,
+                  "informacao_educacional": 4,
+                  "custo_educacao_hipotese": 6.3,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.10604273462081,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.332,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.888
+                },
+                "assinatura": "100.000000|356.000000|52.000000|0.000000|50.000000|32.500000|36.100000|4.000000|6.300000|1000.000000|69.106043|57.500000|63.332000|62.000000|65.000000|62.000000|52.888000"
+              },
+              {
+                "id": "prioridade-rede-municipal",
+                "rotulo": "Priorizar a rede municipal — Concentra o planejamento e os recursos na rede diretamente administrada pelo poder público, com expansão mais gradual no piloto.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 328,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.5,
+                  "informacao_educacional": 0,
+                  "custo_educacao_hipotese": 5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.08269743693592,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.26,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.84
+                },
+                "assinatura": "100.000000|328.000000|52.000000|0.000000|50.000000|32.500000|35.500000|0.000000|5.000000|1000.000000|69.082697|57.500000|63.260000|62.000000|65.000000|62.000000|52.840000"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "piso-educacao",
+            "opcoes": [
+              {
+                "id": "novas-vagas",
+                "rotulo": "Ampliar vagas — Direciona recursos experimentais à capacidade de receber mais estudantes; tem custo e prazo de implantação maiores.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 5.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.09437185950766,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|5.700000|1000.000000|69.094372|57.500000|63.296000|62.000000|65.000000|62.000000|52.864000"
+              },
+              {
+                "id": "manter-escolas",
+                "rotulo": "Manter escolas — Prioriza conservar a capacidade já existente para evitar perda de atendimento. O ganho é gradual e o custo comparativo é intermediário.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 188,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 52,
+                  "abandono_escolar": 31.199999999999996,
+                  "aprendizagem_escolar": 36.7,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 4.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 69.38982941459878,
+                  "grupo_jovens": 57.8,
+                  "grupo_familias_com_filhos": 63.763999999999996,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.936
+                },
+                "assinatura": "100.000000|188.000000|52.000000|0.000000|52.000000|31.200000|36.700000|2.000000|4.700000|1000.000000|69.389829|57.800000|63.764000|62.000000|65.000000|62.000000|52.936000"
+              },
+              {
+                "id": "reduzir-desigualdade",
+                "rotulo": "Reduzir desigualdade — Prioriza redes e territórios com maior dificuldade de acesso. O efeito maior é reduzir a barreira territorial, não expandir toda a rede igualmente.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 76,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 70.36599501410473,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 63.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 70,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|76.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|5.000000|1000.000000|70.365995|57.500000|63.296000|62.000000|70.000000|62.000000|52.864000"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "provisao-publica-exclusiva",
+            "opcoes": [
+              {
+                "id": "incorporacao-indenizada",
+                "rotulo": "Incorporar com indenização — Transfere escolas privadas para a administração pública com indenização. Valor dos ativos e pagamento ainda são hipóteses do piloto; custo e impacto transitório sobre famílias são hipóteses, sem presumir ganho de aprendizagem.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 8.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 68.44046471240628,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 61.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|8.700000|1000.000000|68.440465|57.500000|61.296000|62.000000|65.000000|62.000000|52.864000"
+              },
+              {
+                "id": "incorporacao-seletiva",
+                "rotulo": "Incorporar com indenização seletiva — Transfere a rede privada à administração pública e diferencia a indenização conforme os critérios da lei. Ativos e pagamentos exigem avaliação individual; o custo comparativo é hipotético.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 8.2,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 68.44046471240628,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 61.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|8.200000|1000.000000|68.440465|57.500000|61.296000|62.000000|65.000000|62.000000|52.864000"
+              },
+              {
+                "id": "excecoes-transitorias",
+                "rotulo": "Incorporar com exceções transitórias — Prevê exceções autorizadas durante a transferência da oferta para a rede pública. O custo comparativo e o prazo de transição são hipóteses; a exclusividade vale para a oferta ordinária.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 0,
+                  "frequencia_escolar": 50,
+                  "abandono_escolar": 32.5,
+                  "aprendizagem_escolar": 35.8,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 7.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 68.76876889385335,
+                  "grupo_jovens": 57.5,
+                  "grupo_familias_com_filhos": 62.296,
+                  "grupo_pobres": 62,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 52.864
+                },
+                "assinatura": "100.000000|272.000000|52.000000|0.000000|50.000000|32.500000|35.800000|2.000000|7.700000|1000.000000|68.768769|57.500000|62.296000|62.000000|65.000000|62.000000|52.864000"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          }
+        ]
+      }
+    },
+    {
+      "rodada": 2,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "resolvePackage",
+          "validatePackageCoherence",
+          "fontes e referências incluídas no pacote"
+        ],
+        "testesDeSimulacao": [
+          "linha de base",
+          "cada opção isolada",
+          "três combinações",
+          "recuperação após retirar as ações"
+        ],
+        "observacao": "As três estratégias de cada lei produzem trajetórias diferentes no conjunto de métricas acompanhado.",
+        "alternativasDistintas": true,
+        "opcoesTestadas": [
+          {
+            "lei": "bolsa-de-permanencia-no-ensino-medio",
+            "opcoes": [
+              {
+                "id": "foco-baixa-renda",
+                "rotulo": "Priorizar baixa renda — Concentra o apoio em estudantes de famílias de baixa renda. No piloto, beneficia mais os perfis pobres; o alcance total é menor.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 38.86,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 9.3,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 72.55882907654079,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 64.88719999999999,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 53.1088
+                },
+                "assinatura": "100.000000|272.000000|52.000000|17.000000|56.800000|28.080000|38.860000|2.000000|9.300000|1000.000000|72.558829|58.520000|64.887200|75.000000|65.000000|62.000000|53.108800"
+              },
+              {
+                "id": "ampliar-cobertura",
+                "rotulo": "Ampliar cobertura — Leva o incentivo a mais estudantes elegíveis, com menor concentração nos casos de maior vulnerabilidade.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 15,
+                  "frequencia_escolar": 61,
+                  "abandono_escolar": 25.35,
+                  "aprendizagem_escolar": 40.75,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 10.3,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 73.90417741079021,
+                  "grupo_jovens": 64.15,
+                  "grupo_familias_com_filhos": 65.87,
+                  "grupo_pobres": 67,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 53.26
+                },
+                "assinatura": "100.000000|272.000000|52.000000|15.000000|61.000000|25.350000|40.750000|2.000000|10.300000|1000.000000|73.904177|64.150000|65.870000|67.000000|65.000000|62.000000|53.260000"
+              },
+              {
+                "id": "foco-conclusao",
+                "rotulo": "Priorizar conclusão — Concentra o apoio nos estudantes em maior risco de abandonar antes de concluir o ensino médio. Não aumenta vagas escolares.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 16,
+                  "frequencia_escolar": 56.4,
+                  "abandono_escolar": 18.339999999999996,
+                  "aprendizagem_escolar": 38.67999999999999,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 9.7,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 74.16373398829987,
+                  "grupo_jovens": 65.46,
+                  "grupo_familias_com_filhos": 64.7936,
+                  "grupo_pobres": 67,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 53.0944
+                },
+                "assinatura": "100.000000|272.000000|52.000000|16.000000|56.400000|18.340000|38.680000|2.000000|9.700000|1000.000000|74.163734|65.460000|64.793600|67.000000|65.000000|62.000000|53.094400"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "escola-em-tempo-integral",
+            "opcoes": [
+              {
+                "id": "territorios-vulneraveis",
+                "rotulo": "Priorizar territórios vulneráveis — Começa por escolas em áreas com maior vulnerabilidade, ampliando a jornada onde o apoio pode reduzir barreiras de permanência.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 38.86,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 9.3,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 72.55882907654079,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 64.88719999999999,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 53.1088
+                },
+                "assinatura": "100.000000|272.000000|52.000000|17.000000|56.800000|28.080000|38.860000|2.000000|9.300000|1000.000000|72.558829|58.520000|64.887200|75.000000|65.000000|62.000000|53.108800"
+              },
+              {
+                "id": "expandir-gradualmente",
+                "rotulo": "Expandir gradualmente — Cria vagas de jornada ampliada em etapas, limitadas pela capacidade de escolas e docentes. Cresce mais devagar e reduz risco de expansão sem estrutura.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 363,
+                  "docentes_disponiveis": 104,
+                  "permanencia_escolar": 13,
+                  "frequencia_escolar": 55.2,
+                  "abandono_escolar": 29.119999999999997,
+                  "aprendizagem_escolar": 50.14,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 9.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 71.86083359404219,
+                  "grupo_jovens": 58.28,
+                  "grupo_familias_com_filhos": 65.9528,
+                  "grupo_pobres": 70,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 54.0112
+                },
+                "assinatura": "100.000000|363.000000|104.000000|13.000000|55.200000|29.120000|50.140000|2.000000|9.500000|1000.000000|71.860834|58.280000|65.952800|70.000000|65.000000|62.000000|54.011200"
+              },
+              {
+                "id": "jornada-completa",
+                "rotulo": "Ampliar jornada — Acelera a oferta de jornada ampliada. Pode elevar permanência e aprendizagem, mas exige mais capacidade e apresenta custo comparativo maior.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 402,
+                  "docentes_disponiveis": 52,
+                  "permanencia_escolar": 18,
+                  "frequencia_escolar": 57.2,
+                  "abandono_escolar": 27.82,
+                  "aprendizagem_escolar": 43.04,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 10.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 71.85043840824248,
+                  "grupo_jovens": 58.58,
+                  "grupo_familias_com_filhos": 65.4608,
+                  "grupo_pobres": 70,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 53.4432
+                },
+                "assinatura": "100.000000|402.000000|52.000000|18.000000|57.200000|27.820000|43.040000|2.000000|10.500000|1000.000000|71.850438|58.580000|65.460800|70.000000|65.000000|62.000000|53.443200"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          }
+        ]
+      }
+    },
+    {
+      "rodada": 3,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "resolvePackage",
+          "validatePackageCoherence",
+          "fontes e referências incluídas no pacote"
+        ],
+        "testesDeSimulacao": [
+          "linha de base",
+          "cada opção isolada",
+          "três combinações",
+          "recuperação após retirar as ações"
+        ],
+        "observacao": "As três estratégias de cada lei produzem trajetórias diferentes no conjunto de métricas acompanhado.",
+        "alternativasDistintas": true,
+        "opcoesTestadas": [
+          {
+            "lei": "alfabetizacao-na-idade-certa",
+            "opcoes": [
+              {
+                "id": "alfabetizacao-inicial",
+                "rotulo": "Foco na alfabetização inicial — Concentra apoio pedagógico nos primeiros anos escolares. A melhora de aprendizagem demora a aparecer.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 63.86,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 11.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 73.41657280126432,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 67.8872,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.1088
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|56.800000|28.080000|63.860000|2.000000|11.500000|1000.000000|73.416573|58.520000|67.887200|75.000000|65.000000|62.000000|60.108800"
+              },
+              {
+                "id": "recomposicao-aprendizagem",
+                "rotulo": "Recompor aprendizagem — Prioriza estudantes que já apresentam defasagem, buscando recuperar habilidades essenciais; exige identificar necessidades diferentes.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 58.8,
+                  "abandono_escolar": 26.78,
+                  "aprendizagem_escolar": 62.76,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 12.1,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 74.89926839386088,
+                  "grupo_jovens": 61.82,
+                  "grupo_familias_com_filhos": 68.1152,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.0208
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|58.800000|26.780000|62.760000|2.000000|12.100000|1000.000000|74.899268|61.820000|68.115200|75.000000|65.000000|62.000000|60.020800"
+              },
+              {
+                "id": "formacao-docente",
+                "rotulo": "Apoiar professores — Direciona assistência técnica e formação a docentes. O resultado depende da aplicação pedagógica e não é automático.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 152,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 69.11,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 11.8,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 73.5933173889535,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 68.5172,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 63.528800000000004
+                },
+                "assinatura": "100.000000|272.000000|152.000000|17.000000|56.800000|28.080000|69.110000|2.000000|11.800000|1000.000000|73.593317|58.520000|68.517200|75.000000|65.000000|62.000000|63.528800"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "piso-salarial-professores",
+            "opcoes": [
+              {
+                "id": "fiscalizar-piso",
+                "rotulo": "Fiscalizar cumprimento — Prioriza identificar redes que não cumprem o piso legal e apoiar a regularização. O modelo não presume aumento automático de aprendizagem.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 63.86,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 11.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 73.41657280126432,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 67.8872,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.1088
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|56.800000|28.080000|63.860000|2.000000|11.500000|1000.000000|73.416573|58.520000|67.887200|75.000000|65.000000|62.000000|60.108800"
+              },
+              {
+                "id": "complementar-redes",
+                "rotulo": "Apoiar redes com dificuldade — Prioriza assistência às redes com menor capacidade de financiar o piso. Tem custo comparativo maior e pode reduzir desigualdades de atendimento.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 168,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 56.8,
+                  "abandono_escolar": 28.08,
+                  "aprendizagem_escolar": 75.86,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 13,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 74.7523523898341,
+                  "grupo_jovens": 58.519999999999996,
+                  "grupo_familias_com_filhos": 69.3272,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 69,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 56.0688
+                },
+                "assinatura": "100.000000|272.000000|168.000000|17.000000|56.800000|28.080000|75.860000|2.000000|13.000000|1000.000000|74.752352|58.520000|69.327200|75.000000|69.000000|62.000000|56.068800"
+              },
+              {
+                "id": "reter-professores",
+                "rotulo": "Reter professores — Prioriza reduzir a saída de docentes e estabilizar equipes. O efeito sobre disponibilidade docente é uma hipótese do piloto.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 220,
+                  "permanencia_escolar": 19,
+                  "frequencia_escolar": 57.6,
+                  "abandono_escolar": 27.559999999999995,
+                  "aprendizagem_escolar": 88.22,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 12.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 74.317329480438,
+                  "grupo_jovens": 58.64,
+                  "grupo_familias_com_filhos": 70.95439999999999,
+                  "grupo_pobres": 75,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 57.0576
+                },
+                "assinatura": "100.000000|272.000000|220.000000|19.000000|57.600000|27.560000|88.220000|2.000000|12.500000|1000.000000|74.317329|58.640000|70.954400|75.000000|65.000000|62.000000|57.057600"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          }
+        ]
+      }
+    },
+    {
+      "rodada": 4,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "resolvePackage",
+          "validatePackageCoherence",
+          "fontes e referências incluídas no pacote"
+        ],
+        "testesDeSimulacao": [
+          "linha de base",
+          "cada opção isolada",
+          "três combinações",
+          "recuperação após retirar as ações"
+        ],
+        "observacao": "As três estratégias de cada lei produzem trajetórias diferentes no conjunto de métricas acompanhado.",
+        "alternativasDistintas": true,
+        "opcoesTestadas": [
+          {
+            "lei": "alimentacao-escolar",
+            "opcoes": [
+              {
+                "id": "cobertura-alimentar",
+                "rotulo": "Ampliar cobertura — Prioriza garantir refeição durante os dias letivos para mais estudantes, com efeito esperado na frequência.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 67.91,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 15.9,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 77.26630463003605,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 69.9932,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 73,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.4328
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|65.800000|22.230000|67.910000|2.000000|15.900000|1000.000000|77.266305|59.870000|69.993200|81.000000|73.000000|62.000000|60.432800"
+              },
+              {
+                "id": "qualidade-nutricional",
+                "rotulo": "Priorizar qualidade nutricional — Direciona esforço à qualidade nutricional e adequação das refeições; o efeito sobre frequência é menor no piloto.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 61.8,
+                  "abandono_escolar": 24.83,
+                  "aprendizagem_escolar": 68.11,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 15.700000000000001,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 76.5588112486667,
+                  "grupo_jovens": 59.269999999999996,
+                  "grupo_familias_com_filhos": 69.2972,
+                  "grupo_pobres": 79,
+                  "grupo_interior": 73,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.4488
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|61.800000|24.830000|68.110000|2.000000|15.700000|1000.000000|76.558811|59.270000|69.297200|79.000000|73.000000|62.000000|60.448800"
+              },
+              {
+                "id": "compras-locais",
+                "rotulo": "Fortalecer compras locais — Prioriza aquisição de alimentos da produção local, com ganho potencial para a oferta territorial e maior custo operacional hipotético.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 62.8,
+                  "abandono_escolar": 24.18,
+                  "aprendizagem_escolar": 66.55999999999999,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 16.299999999999997,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 77.49664837178875,
+                  "grupo_jovens": 59.42,
+                  "grupo_familias_com_filhos": 69.2912,
+                  "grupo_pobres": 78,
+                  "grupo_interior": 78,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.324799999999996
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|62.800000|24.180000|66.560000|2.000000|16.300000|1000.000000|77.496648|59.420000|69.291200|78.000000|78.000000|62.000000|60.324800"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "transporte-escolar",
+            "opcoes": [
+              {
+                "id": "rotas-rurais-distantes",
+                "rotulo": "Atender rotas distantes — Prioriza estudantes rurais com trajetos mais longos, reduzindo a barreira territorial onde ela é maior.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 67.91,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 15.9,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 77.26630463003605,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 69.9932,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 73,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.4328
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|65.800000|22.230000|67.910000|2.000000|15.900000|1000.000000|77.266305|59.870000|69.993200|81.000000|73.000000|62.000000|60.432800"
+              },
+              {
+                "id": "ampliar-rotas",
+                "rotulo": "Ampliar cobertura — Leva transporte a mais localidades, com cobertura mais ampla e menor concentração por estudante atendido.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 68.8,
+                  "abandono_escolar": 20.28,
+                  "aprendizagem_escolar": 69.26,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 15.5,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 75.88702509060184,
+                  "grupo_jovens": 60.32,
+                  "grupo_familias_com_filhos": 70.6952,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 65,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.540800000000004
+                },
+                "assinatura": "100.000000|272.000000|116.000000|17.000000|68.800000|20.280000|69.260000|2.000000|15.500000|1000.000000|75.887025|60.320000|70.695200|81.000000|65.000000|62.000000|60.540800"
+              },
+              {
+                "id": "regularidade-rotas",
+                "rotulo": "Melhorar regularidade — Prioriza a confiabilidade das rotas existentes para reduzir faltas causadas por interrupções do transporte.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 272,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 21,
+                  "frequencia_escolar": 76.4,
+                  "abandono_escolar": 15.339999999999996,
+                  "aprendizagem_escolar": 72.67999999999999,
+                  "informacao_educacional": 2,
+                  "custo_educacao_hipotese": 15,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 77.6611681410183,
+                  "grupo_jovens": 61.46,
+                  "grupo_familias_com_filhos": 72.4736,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 69,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.8144
+                },
+                "assinatura": "100.000000|272.000000|116.000000|21.000000|76.400000|15.340000|72.680000|2.000000|15.000000|1000.000000|77.661168|61.460000|72.473600|81.000000|69.000000|62.000000|60.814400"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          }
+        ]
+      }
+    },
+    {
+      "rodada": 5,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "resolvePackage",
+          "validatePackageCoherence",
+          "fontes e referências incluídas no pacote"
+        ],
+        "testesDeSimulacao": [
+          "linha de base",
+          "cada opção isolada",
+          "três combinações",
+          "recuperação após retirar as ações"
+        ],
+        "observacao": "As três estratégias de cada lei produzem trajetórias diferentes no conjunto de métricas acompanhado.",
+        "alternativasDistintas": true,
+        "opcoesTestadas": [
+          {
+            "lei": "avaliacao-das-escolas",
+            "opcoes": [
+              {
+                "id": "diagnostico-continuo",
+                "rotulo": "Diagnóstico frequente — Produz informação frequente para detectar dificuldades durante o ano. Coletar dados não melhora a aprendizagem por si só.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 336,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 69.71,
+                  "informacao_educacional": 14,
+                  "custo_educacao_hipotese": 18.9,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 79.11486167667319,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 70.2092,
+                  "grupo_pobres": 87,
+                  "grupo_interior": 78,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.5768
+                },
+                "assinatura": "100.000000|336.000000|116.000000|17.000000|65.800000|22.230000|69.710000|14.000000|18.900000|1000.000000|79.114862|59.870000|70.209200|87.000000|78.000000|62.000000|60.576800"
+              },
+              {
+                "id": "avaliacao-amostral",
+                "rotulo": "Avaliação amostral — Avalia amostras para acompanhar tendências gerais com menor custo e menor detalhe por escola.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 336,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 68.96,
+                  "informacao_educacional": 9,
+                  "custo_educacao_hipotese": 18.099999999999998,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 79.09378333093072,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 70.1192,
+                  "grupo_pobres": 87,
+                  "grupo_interior": 78,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.5168
+                },
+                "assinatura": "100.000000|336.000000|116.000000|17.000000|65.800000|22.230000|68.960000|9.000000|18.100000|1000.000000|79.093783|59.870000|70.119200|87.000000|78.000000|62.000000|60.516800"
+              },
+              {
+                "id": "devolutiva-por-escola",
+                "rotulo": "Devolutiva por escola — Entrega resultados detalhados a cada escola e rede. A informação é mais específica, com maior esforço de coleta e análise.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 336,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 69.41,
+                  "informacao_educacional": 12,
+                  "custo_educacao_hipotese": 19.4,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 79.10643305874345,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 70.17320000000001,
+                  "grupo_pobres": 87,
+                  "grupo_interior": 78,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.5528
+                },
+                "assinatura": "100.000000|336.000000|116.000000|17.000000|65.800000|22.230000|69.410000|12.000000|19.400000|1000.000000|79.106433|59.870000|70.173200|87.000000|78.000000|62.000000|60.552800"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          },
+          {
+            "lei": "financiamento-com-resultado",
+            "opcoes": [
+              {
+                "id": "premiar-equidade",
+                "rotulo": "Priorizar equidade — Distribui maior apoio para redes que melhoram resultados entre estudantes em desvantagem, para evitar premiar apenas quem já parte de condições melhores.",
+                "valor": 1,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 336,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 69.71,
+                  "informacao_educacional": 14,
+                  "custo_educacao_hipotese": 18.9,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 79.11486167667319,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 70.2092,
+                  "grupo_pobres": 87,
+                  "grupo_interior": 78,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.5768
+                },
+                "assinatura": "100.000000|336.000000|116.000000|17.000000|65.800000|22.230000|69.710000|14.000000|18.900000|1000.000000|79.114862|59.870000|70.209200|87.000000|78.000000|62.000000|60.576800"
+              },
+              {
+                "id": "premiar-frequencia",
+                "rotulo": "Priorizar frequência — Vincula o apoio ao avanço na presença e permanência, sem tratar frequência como prova suficiente de aprendizagem.",
+                "valor": 2,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 323,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 21,
+                  "frequencia_escolar": 72.4,
+                  "abandono_escolar": 17.939999999999998,
+                  "aprendizagem_escolar": 72.68,
+                  "informacao_educacional": 14,
+                  "custo_educacao_hipotese": 18.599999999999998,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 78.08502014146252,
+                  "grupo_jovens": 60.86,
+                  "grupo_familias_com_filhos": 71.7536,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 73,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 60.8144
+                },
+                "assinatura": "100.000000|323.000000|116.000000|21.000000|72.400000|17.940000|72.680000|14.000000|18.600000|1000.000000|78.085020|60.860000|71.753600|81.000000|73.000000|62.000000|60.814400"
+              },
+              {
+                "id": "premiar-aprendizagem",
+                "rotulo": "Priorizar aprendizagem — Vincula o apoio à melhora demonstrada de aprendizagem, com salvaguardas para considerar as condições iniciais das redes.",
+                "valor": 3,
+                "resultadoFinal": {
+                  "turno": 16,
+                  "acesso_escolar": 100,
+                  "vagas_escolares": 349,
+                  "docentes_disponiveis": 116,
+                  "permanencia_escolar": 17,
+                  "frequencia_escolar": 65.8,
+                  "abandono_escolar": 22.229999999999997,
+                  "aprendizagem_escolar": 76.16,
+                  "informacao_educacional": 17,
+                  "custo_educacao_hipotese": 19.4,
+                  "caixa_publico": 1000,
+                  "popularidade_governo": 77.51326497171145,
+                  "grupo_jovens": 59.87,
+                  "grupo_familias_com_filhos": 70.9832,
+                  "grupo_pobres": 81,
+                  "grupo_interior": 73,
+                  "grupo_periferias": 62,
+                  "grupo_servidores": 61.0928
+                },
+                "assinatura": "100.000000|349.000000|116.000000|17.000000|65.800000|22.230000|76.160000|17.000000|19.400000|1000.000000|77.513265|59.870000|70.983200|81.000000|73.000000|62.000000|61.092800"
+              }
+            ],
+            "opcoesComResultadosDistintos": 3
+          }
+        ]
+      }
+    },
+    {
+      "rodada": 6,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "programas e leis resolvidos por referências do catálogo",
+          "todas as estratégias do pacote existem no contrato de conteúdo",
+          "grupos afetados declarados pelas fontes do programa"
+        ],
+        "testesDeSimulacao": [
+          "situação inicial do pacote completo",
+          "pacote integrado de intervenções",
+          "retirada das intervenções no turno 9 e recuperação"
+        ],
+        "conclusao": "O pacote integrado altera resultados observáveis sem violar os limites numéricos acompanhados; comparar ganhos e custos por grupo antes de promover qualquer estratégia.",
+        "deltasNoTurnoFinal": {
+          "acesso_escolar": 0,
+          "vagas_escolares": 0,
+          "docentes_disponiveis": 0,
+          "permanencia_escolar": 0,
+          "frequencia_escolar": 3,
+          "abandono_escolar": -1.9499999999999957,
+          "aprendizagem_escolar": 1.3500000000000085,
+          "informacao_educacional": 0,
+          "custo_educacao_hipotese": -0.3999999999999986,
+          "caixa_publico": 0,
+          "popularidade_governo": -1.259953608731493,
+          "grupo_jovens": 0.45000000000000284,
+          "grupo_familias_com_filhos": 0.7020000000000124,
+          "grupo_pobres": 0,
+          "grupo_interior": -8,
+          "grupo_periferias": 0,
+          "grupo_servidores": 0.10799999999999699
+        },
+        "gruposAfetados": [
+          "grupo_familias_com_filhos",
+          "grupo_interior",
+          "grupo_jovens",
+          "grupo_pobres",
+          "grupo_servidores"
+        ],
+        "variaveisFinitas": true,
+        "caixaFinalNaoNegativo": true
+      }
+    },
+    {
+      "rodada": 7,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "programas e leis resolvidos por referências do catálogo",
+          "todas as estratégias do pacote existem no contrato de conteúdo",
+          "grupos afetados declarados pelas fontes do programa"
+        ],
+        "testesDeSimulacao": [
+          "situação inicial do pacote completo",
+          "pacote integrado de intervenções",
+          "retirada das intervenções no turno 9 e recuperação"
+        ],
+        "conclusao": "O pacote integrado altera resultados observáveis sem violar os limites numéricos acompanhados; comparar ganhos e custos por grupo antes de promover qualquer estratégia.",
+        "deltasNoTurnoFinal": {
+          "acesso_escolar": 0,
+          "vagas_escolares": 130,
+          "docentes_disponiveis": 0,
+          "permanencia_escolar": 0,
+          "frequencia_escolar": -4,
+          "abandono_escolar": -7.399999999999999,
+          "aprendizagem_escolar": 4.200000000000003,
+          "informacao_educacional": 0,
+          "custo_educacao_hipotese": 1.3999999999999986,
+          "caixa_publico": 0,
+          "popularidade_governo": 0.2582343835322405,
+          "grupo_jovens": 6.399999999999999,
+          "grupo_familias_com_filhos": -0.21599999999999397,
+          "grupo_pobres": -15,
+          "grupo_interior": 0,
+          "grupo_periferias": 0,
+          "grupo_servidores": 0.3360000000000056
+        },
+        "gruposAfetados": [
+          "grupo_familias_com_filhos",
+          "grupo_jovens",
+          "grupo_pobres"
+        ],
+        "variaveisFinitas": true,
+        "caixaFinalNaoNegativo": true
+      }
+    },
+    {
+      "rodada": 8,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "programas e leis resolvidos por referências do catálogo",
+          "todas as estratégias do pacote existem no contrato de conteúdo",
+          "grupos afetados declarados pelas fontes do programa"
+        ],
+        "testesDeSimulacao": [
+          "situação inicial do pacote completo",
+          "pacote integrado de intervenções",
+          "retirada das intervenções no turno 9 e recuperação"
+        ],
+        "conclusao": "O pacote integrado altera resultados observáveis sem violar os limites numéricos acompanhados; comparar ganhos e custos por grupo antes de promover qualquer estratégia.",
+        "deltasNoTurnoFinal": {
+          "acesso_escolar": 0,
+          "vagas_escolares": 0,
+          "docentes_disponiveis": 104,
+          "permanencia_escolar": 2,
+          "frequencia_escolar": 2.799999999999997,
+          "abandono_escolar": -1.8199999999999932,
+          "aprendizagem_escolar": 22.960000000000008,
+          "informacao_educacional": -2,
+          "custo_educacao_hipotese": 2.1000000000000014,
+          "caixa_publico": 0,
+          "popularidade_governo": 1.983591521281184,
+          "grupo_jovens": 3.4200000000000017,
+          "grupo_familias_com_filhos": 3.259200000000007,
+          "grupo_pobres": 0,
+          "grupo_interior": 0,
+          "grupo_periferias": 0,
+          "grupo_servidores": -3.1631999999999962
+        },
+        "gruposAfetados": [
+          "grupo_familias_com_filhos",
+          "grupo_interior",
+          "grupo_jovens",
+          "grupo_periferias",
+          "grupo_pobres",
+          "grupo_servidores"
+        ],
+        "variaveisFinitas": true,
+        "caixaFinalNaoNegativo": true
+      }
+    },
+    {
+      "rodada": 9,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "programas e leis resolvidos por referências do catálogo",
+          "todas as estratégias do pacote existem no contrato de conteúdo",
+          "grupos afetados declarados pelas fontes do programa"
+        ],
+        "testesDeSimulacao": [
+          "situação inicial do pacote completo",
+          "pacote integrado de intervenções",
+          "retirada das intervenções no turno 9 e recuperação"
+        ],
+        "conclusao": "O pacote integrado altera resultados observáveis sem violar os limites numéricos acompanhados; comparar ganhos e custos por grupo antes de promover qualquer estratégia.",
+        "deltasNoTurnoFinal": {
+          "acesso_escolar": 0,
+          "vagas_escolares": 0,
+          "docentes_disponiveis": 0,
+          "permanencia_escolar": 3,
+          "frequencia_escolar": 7.200000000000003,
+          "abandono_escolar": -14.68,
+          "aprendizagem_escolar": 3.239999999999995,
+          "informacao_educacional": 0,
+          "custo_educacao_hipotese": -0.09999999999999787,
+          "caixa_publico": 0,
+          "popularidade_governo": 2.0592741250429754,
+          "grupo_jovens": 8.080000000000005,
+          "grupo_familias_com_filhos": 1.6848000000000098,
+          "grupo_pobres": -11,
+          "grupo_interior": 1,
+          "grupo_periferias": 0,
+          "grupo_servidores": 0.2591999999999999
+        },
+        "gruposAfetados": [
+          "grupo_familias_com_filhos",
+          "grupo_interior",
+          "grupo_jovens",
+          "grupo_pobres",
+          "grupo_servidores"
+        ],
+        "variaveisFinitas": true,
+        "caixaFinalNaoNegativo": true
+      }
+    },
+    {
+      "rodada": 10,
+      "aprendizadoDaRodada": {
+        "testesDeValidacao": [
+          "programas e leis resolvidos por referências do catálogo",
+          "todas as estratégias do pacote existem no contrato de conteúdo",
+          "grupos afetados declarados pelas fontes do programa"
+        ],
+        "testesDeSimulacao": [
+          "situação inicial do pacote completo",
+          "pacote integrado de intervenções",
+          "retirada das intervenções no turno 9 e recuperação"
+        ],
+        "conclusao": "O pacote integrado altera resultados observáveis sem violar os limites numéricos acompanhados; comparar ganhos e custos por grupo antes de promover qualquer estratégia.",
+        "deltasNoTurnoFinal": {
+          "acesso_escolar": 0,
+          "vagas_escolares": 13,
+          "docentes_disponiveis": 36,
+          "permanencia_escolar": 0,
+          "frequencia_escolar": 0,
+          "abandono_escolar": 0,
+          "aprendizagem_escolar": 11.400000000000006,
+          "informacao_educacional": 1,
+          "custo_educacao_hipotese": 1.3000000000000007,
+          "caixa_publico": 0,
+          "popularidade_governo": -1.4794264450229377,
+          "grupo_jovens": 0,
+          "grupo_familias_com_filhos": 1.3680000000000092,
+          "grupo_pobres": -6,
+          "grupo_interior": -5,
+          "grupo_periferias": 0,
+          "grupo_servidores": 3.911999999999999
+        },
+        "gruposAfetados": [
+          "grupo_familias_com_filhos",
+          "grupo_interior",
+          "grupo_jovens",
+          "grupo_periferias",
+          "grupo_pobres",
+          "grupo_servidores"
+        ],
+        "variaveisFinitas": true,
+        "caixaFinalNaoNegativo": true
+      }
+    }
+  ],
+  "catalogoDeSementes": [
+    {
+      "id": "direito-a-educacao",
+      "nome": "Direito à educação básica",
+      "fonte": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "leis": ["ensino-obrigatorio"],
+      "gruposAfetados": ["grupo_jovens", "grupo_familias_com_filhos"]
+    },
+    {
+      "id": "fundeb",
+      "nome": "Fundeb",
+      "fonte": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/financiamento/fundeb/fundeb-home",
+      "leis": ["piso-educacao", "financiamento-com-resultado"],
+      "gruposAfetados": [
+        "grupo_familias_com_filhos",
+        "grupo_pobres",
+        "grupo_servidores",
+        "grupo_interior"
+      ]
+    },
+    {
+      "id": "escolha-escolar-suecia",
+      "nome": "Escolha entre escolas municipais e independentes",
+      "fonte": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/valja-forskoleklass-och-grundskola-eller-anpassad-grundskola",
+      "leis": ["escolha-escolar-financiada"],
+      "gruposAfetados": [
+        "grupo_familias_com_filhos",
+        "grupo_classe_media",
+        "grupo_interior"
+      ]
+    },
+    {
+      "id": "nacionalizacao-ensino-cuba",
+      "nome": "Nacionalização geral e gratuita do ensino",
+      "fonte": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/ley_de_nacionalizacion_de_la_educacion.pdf",
+      "leis": ["provisao-publica-exclusiva"],
+      "gruposAfetados": ["grupo_jovens", "grupo_familias_com_filhos"]
+    },
+    {
+      "id": "pe-de-meia",
+      "nome": "Pé-de-Meia",
+      "fonte": "https://www.gov.br/mec/pt-br/pe-de-meia",
+      "leis": ["bolsa-de-permanencia-no-ensino-medio"],
+      "gruposAfetados": [
+        "grupo_jovens",
+        "grupo_pobres",
+        "grupo_familias_com_filhos"
+      ]
+    },
+    {
+      "id": "escola-em-tempo-integral",
+      "nome": "Programa Escola em Tempo Integral",
+      "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14640.htm",
+      "leis": ["escola-em-tempo-integral"],
+      "gruposAfetados": [
+        "grupo_jovens",
+        "grupo_familias_com_filhos",
+        "grupo_pobres"
+      ]
+    },
+    {
+      "id": "valorizacao-do-magisterio",
+      "nome": "Piso nacional do magistério",
+      "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
+      "leis": ["piso-salarial-professores"],
+      "gruposAfetados": [
+        "grupo_servidores",
+        "grupo_familias_com_filhos",
+        "grupo_interior"
+      ]
+    },
+    {
+      "id": "crianca-alfabetizada",
+      "nome": "Compromisso Nacional Criança Alfabetizada",
+      "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11556.htm",
+      "leis": ["alfabetizacao-na-idade-certa"],
+      "gruposAfetados": [
+        "grupo_jovens",
+        "grupo_familias_com_filhos",
+        "grupo_pobres"
+      ]
+    },
+    {
+      "id": "pnate",
+      "nome": "Programa Nacional de Apoio ao Transporte Escolar",
+      "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.880.htm",
+      "leis": ["transporte-escolar"],
+      "gruposAfetados": [
+        "grupo_interior",
+        "grupo_familias_com_filhos",
+        "grupo_pobres"
+      ]
+    },
+    {
+      "id": "pnae",
+      "nome": "Programa Nacional de Alimentação Escolar",
+      "fonte": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae",
+      "leis": ["alimentacao-escolar"],
+      "gruposAfetados": [
+        "grupo_jovens",
+        "grupo_pobres",
+        "grupo_familias_com_filhos"
+      ]
+    },
+    {
+      "id": "saeb",
+      "nome": "Sistema de Avaliação da Educação Básica",
+      "fonte": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb",
+      "leis": ["avaliacao-das-escolas"],
+      "gruposAfetados": [
+        "grupo_jovens",
+        "grupo_familias_com_filhos",
+        "grupo_interior",
+        "grupo_periferias"
+      ]
+    }
+  ],
+  "regraDeRegeracao": "Ao executar, remove apenas os arquivos enumerados neste manifesto e os caminhos de saída conhecidos do gerador; depois recria as cinco rodadas-base, cinco rodadas evolutivas de pacotes programáticos e o conteúdo acumulado da Ilha Teste. As rodadas 6–10 não acrescentam leis sem novas fontes. O conteúdo do Brasil é preservado."
+}

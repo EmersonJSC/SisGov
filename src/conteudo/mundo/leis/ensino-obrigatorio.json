@@ -3,82 +3,58 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Ensino obrigatório",
-  "descricao": "Até que idade o Estado obriga a criança a estar na escola e garante a vaga?",
+  "nome": "Garantia da escolaridade obrigatória",
+  "descricao": "Organiza a busca ativa e o atendimento da população em idade escolar. A obrigação jurídica permanece; as opções representam a capacidade de colocá-la em prática.",
   "area": "Educação, ciência e cultura",
+  "fonte": "https://planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm",
+  "processoAutorizacao": "coordenacao-federativa",
+  "nivelLegal": "constitucional",
+  "revogavel": true,
   "mesa": {
-    "id": "escola",
-    "nome": "Escola",
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
     "camada": "constituicao"
   },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
   "controle": {
-    "variavel": "nivel_ensino_obrigatorio",
-    "unidade": "nivel_escopo",
+    "variavel": "implementacao_escolaridade_obrigatoria",
+    "unidade": "nivel",
     "opcoes": [
       {
-        "id": "sem-obrigatoriedade",
-        "rotulo": "Sem obrigatoriedade",
-        "valor": 0,
-        "custoTexto": "−2 a −3% do PIB vs hoje (aprox.), educação",
-        "rejeitam": [
-          "Sindicatos de professores",
-          "Movimento estudantil",
-          "Famílias com filhos"
-        ],
-        "efeitos": "Escolaridade ↓ forte (3 a 5 anos); Evasão escolar ↑; Trabalho infantil ↑"
+        "id": "busca-ativa",
+        "rotulo": "Busca ativa — Localiza crianças fora da escola e prioriza matrícula e acompanhamento das famílias. No piloto, melhora acesso e frequência com custo comparativo moderado.",
+        "valor": 1,
+        "efeitos": "Localiza crianças fora da escola e prioriza matrícula e acompanhamento das famílias. No piloto, melhora acesso e frequência com custo comparativo moderado. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "so-o-primario",
-        "rotulo": "Só o primário",
-        "valor": 33,
-        "custoTexto": "−1% do PIB vs hoje (aprox.), educação",
-        "apoiam": ["Agro"],
-        "rejeitam": ["Famílias com filhos", "Sindicatos de professores"],
-        "efeitos": "Escolaridade ↓ (3 a 5 anos); Trabalho infantil ↑"
+        "id": "expandir-vagas",
+        "rotulo": "Expandir vagas — Prioriza ampliar a capacidade de atendimento escolar. Tem atraso de implantação e custo comparativo maior; o efeito depende de obras e pessoal.",
+        "valor": 2,
+        "efeitos": "Prioriza ampliar a capacidade de atendimento escolar. Tem atraso de implantação e custo comparativo maior; o efeito depende de obras e pessoal. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       },
       {
-        "id": "basico-de-9-anos",
-        "rotulo": "Básico de 9 anos",
-        "valor": 67,
-        "apoiam": ["Classe média"],
-        "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Escolaridade estável"
-      },
-      {
-        "id": "dos-4-aos-17-anos",
-        "rotulo": "Dos 4 aos 17 anos",
-        "valor": 100,
-        "custoTexto": "+0,3 a 0,5% do PIB (aprox.), educação",
-        "apoiam": [
-          "Famílias com filhos",
-          "Empresários",
-          "Sindicatos de professores"
-        ],
-        "rejeitam": ["Informais"],
-        "efeitos": "Escolaridade ↑ (3 a 5 anos); Evasão escolar ↓; Trabalho infantil ↓"
+        "id": "apoio-permanencia",
+        "rotulo": "Apoiar permanência — Prioriza acompanhamento e apoio para que estudantes matriculados continuem frequentando. Não cria vagas por si só.",
+        "valor": 3,
+        "efeitos": "Prioriza acompanhamento e apoio para que estudantes matriculados continuem frequentando. Não cria vagas por si só. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+        "apoiam": ["jovens", "familias com filhos"],
+        "rejeitam": []
       }
     ]
   },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "consequencias": [
-    "ensino-obrigatorio--escolaridade",
-    "ensino-obrigatorio--evasao-escolar",
-    "ensino-obrigatorio--qualificacao-trabalho",
-    "ensino-obrigatorio--oportunidades-juvenis",
-    "ensino-obrigatorio--renda-familias",
-    "ensino-obrigatorio--participacao-trabalho-cuidadoras",
-    "ensino-obrigatorio--gasto-publico",
-    "ensino-obrigatorio--grupo-agro",
-    "ensino-obrigatorio--grupo-jovens",
-    "ensino-obrigatorio--grupo-pobres",
-    "ensino-obrigatorio--grupo-progressistas",
-    "ensino-obrigatorio--grupo-servidores",
-    "ensino-obrigatorio--trabalho-infantil"
-  ],
-  "ministerio": "Ministério da Educação"
+    "educacao-ensino-obrigatorio-acesso_escolar",
+    "educacao-ensino-obrigatorio-frequencia_escolar",
+    "educacao-ensino-obrigatorio-custo_educacao_hipotese",
+    "educacao-ensino-obrigatorio-vagas_escolares",
+    "educacao-ensino-obrigatorio-permanencia_escolar",
+    "educacao-ensino-obrigatorio-abandono_escolar"
+  ]
 }

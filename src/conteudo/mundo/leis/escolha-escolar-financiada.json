@@ -1,0 +1,60 @@
+{
+  "id": "escolha-escolar-financiada",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Escolha entre provedores escolares com financiamento público",
+  "descricao": "Permite organizar a oferta por escolas diretamente administradas pelo poder público e por escolas independentes financiadas publicamente. A referência sueca fundamenta a existência do modelo; os efeitos da ilha são hipóteses. A posição desta lei na bússola ainda precisa de fundamentação.",
+  "area": "Educação, ciência e cultura",
+  "fonte": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/valja-forskoleklass-och-grundskola-eller-anpassad-grundskola",
+  "processoAutorizacao": "organizacao-da-oferta-escolar",
+  "nivelLegal": "derivada",
+  "revogavel": true,
+  "exclui": ["provisao-publica-exclusiva"],
+  "mesa": {
+    "id": "acesso-e-permanencia",
+    "nome": "Acesso e permanência escolar",
+    "camada": "lei"
+  },
+  "controle": {
+    "variavel": "modelo_provisao_escolar",
+    "unidade": "nivel",
+    "opcoes": [
+      {
+        "id": "rede-publica-com-escolha",
+        "rotulo": "Escolha com garantia pública — Permite escolher entre escolas públicas e independentes financiadas pelo poder público. A escolha, sozinha, não presume melhora na aprendizagem.",
+        "valor": 1,
+        "efeitos": "Permite escolher entre escolas públicas e independentes financiadas pelo poder público. A escolha, sozinha, não presume melhora na aprendizagem. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+        "apoiam": ["familias com filhos", "classe media"],
+        "rejeitam": []
+      },
+      {
+        "id": "contratos-com-metas",
+        "rotulo": "Financiar provedores com metas — Mantém a escolha entre provedores, mas condiciona parte do financiamento a requisitos e metas públicas; o efeito direto modelado é mais informação e capacidade.",
+        "valor": 2,
+        "efeitos": "Mantém a escolha entre provedores, mas condiciona parte do financiamento a requisitos e metas públicas; o efeito direto modelado é mais informação e capacidade. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+        "apoiam": ["familias com filhos", "classe media"],
+        "rejeitam": []
+      },
+      {
+        "id": "prioridade-rede-municipal",
+        "rotulo": "Priorizar a rede municipal — Concentra o planejamento e os recursos na rede diretamente administrada pelo poder público, com expansão mais gradual no piloto.",
+        "valor": 3,
+        "efeitos": "Concentra o planejamento e os recursos na rede diretamente administrada pelo poder público, com expansão mais gradual no piloto. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+        "apoiam": ["familias com filhos", "classe media"],
+        "rejeitam": []
+      }
+    ]
+  },
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "consequencias": [
+    "educacao-escolha-escolar-financiada-acesso_escolar",
+    "educacao-escolha-escolar-financiada-informacao_educacional",
+    "educacao-escolha-escolar-financiada-custo_educacao_hipotese",
+    "educacao-escolha-escolar-financiada-vagas_escolares",
+    "educacao-escolha-escolar-financiada-dificuldade_territorial"
+  ]
+}

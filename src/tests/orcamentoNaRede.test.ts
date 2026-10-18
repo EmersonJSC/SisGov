@@ -141,4 +141,247 @@ describe("SG157 — orçamento na rede", () => {
       resultado.semMudanca.at(-1)!,
     );
   });
+
+  it("fecha o ciclo do IVA: alíquota, caixa, consumo, PIB e nova receita", () => {
+    const partida = nova();
+    const iva = verPartida(partida).leis.find(
+      (lei) => lei.id === "imposto-sobre-consumo",
+    )!;
+    const mudada = mudarLei(partida, iva.id, iva.nivel + 3);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    let sem = partida;
+    let com = mudada.value;
+    const antes = {
+      consumo: valor(partida, "consumo"),
+      pib: valor(partida, "pib"),
+      receita: valor(partida, "arrecadacao"),
+    };
+    sem = turno(sem);
+    com = turno(com);
+    expect(valor(com, "arrecadacao")).toBeGreaterThan(
+      valor(sem, "arrecadacao"),
+    );
+    expect(valor(com, "resultado_fiscal")).toBeGreaterThan(
+      valor(sem, "resultado_fiscal"),
+    );
+    expect(
+      valor(com, "cofre") -
+        valor(sem, "cofre") +
+        valor(sem, "divida_publica") -
+        valor(com, "divida_publica"),
+    ).toBeGreaterThan(0);
+    for (let i = 0; i < 3; i++) {
+      sem = turno(sem);
+      com = turno(com);
+    }
+    expect(valor(com, "consumo")).toBeLessThan(valor(sem, "consumo"));
+    expect(valor(com, "pib")).toBeLessThan(valor(sem, "pib"));
+    const relacao = partida.graph.relations.filter(
+      (r) =>
+        r.targetId === "arrecadacao" &&
+        r.originId === "aliquota_imposto_sobre_consumo",
+    );
+    expect(relacao).toHaveLength(1);
+    expect(relacao[0].normalization?.fator).toBe("consumo");
+    const aliquota = valor(com, "aliquota_imposto_sobre_consumo");
+    const receitaDoIva = (base: number) => {
+      const calculo = calculateContribution(relacao[0], aliquota, (id) =>
+        id === "consumo" ? base : undefined,
+      );
+      if (!calculo.ok) throw new Error(calculo.diagnostics[0].message);
+      return calculo.value.value;
+    };
+    expect(receitaDoIva(valor(com, "consumo"))).toBeLessThan(
+      receitaDoIva(valor(sem, "consumo")),
+    );
+    expect(valor(com, "consumo")).not.toBe(antes.consumo);
+    expect(valor(com, "pib")).not.toBe(antes.pib);
+    expect(valor(com, "arrecadacao")).not.toBe(antes.receita);
+  });
+
+  it("investimento sai do caixa agora e afeta produtividade e PIB depois", () => {
+    const partida = nova();
+    const lei = verPartida(partida).leis.find(
+      (item) => item.id === "investimento-em-infraestrutura",
+    )!;
+    const mudada = mudarLei(
+      partida,
+      lei.id,
+      lei.nivel + verPartida(partida).contas.pib * 0.005,
+    );
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    let sem = partida;
+    let com = mudada.value;
+    sem = turno(sem);
+    com = turno(com);
+    expect(valor(com, "gasto_publico")).toBeGreaterThan(
+      valor(sem, "gasto_publico"),
+    );
+    expect(valor(com, "resultado_fiscal")).toBeLessThan(
+      valor(sem, "resultado_fiscal"),
+    );
+    for (let i = 0; i < 7; i++) {
+      sem = turno(sem);
+      com = turno(com);
+    }
+    expect(valor(com, "produtividade")).toBeGreaterThan(
+      valor(sem, "produtividade"),
+    );
+    expect(valor(com, "pib")).toBeGreaterThan(valor(sem, "pib"));
+    expect(valor(com, "desemprego")).toBeLessThan(valor(sem, "desemprego"));
+    expect(valor(com, "consumo")).toBeGreaterThan(valor(sem, "consumo"));
+    expect(valor(com, "arrecadacao")).toBeGreaterThan(
+      valor(sem, "arrecadacao"),
+    );
+    expect(
+      partida.graph.relations.filter(
+        (r) =>
+          r.originId === "recursos_investimento_em_infraestrutura" &&
+          r.targetId === "pib",
+      ),
+    ).toHaveLength(0);
+  });
+
+  it("cobra os custos declarados das novas alavancas sem multiplicar pela eficácia", () => {
+    const partida = nova();
+    const casos = [
+      {
+        lei: "fundo-de-equalizacao",
+        controle: "nivel_fundo_de_equalizacao",
+        custos: [
+          [33.33, 0],
+          [66.67, 0.5],
+          [100, 1],
+        ],
+      },
+      {
+        lei: "verba-de-publicidade-oficial-e-comunicacao-publica",
+        controle: "nivel_verba_de_publicidade_oficial_e_comunicacao_publica",
+        custos: [
+          [33.33, 0],
+          [66.67, 0.007],
+          [100, 0.02],
+        ],
+      },
+      {
+        lei: "intermediacao-e-qualificacao",
+        controle: "nivel_intermediacao_e_qualificacao",
+        custos: [
+          [0, 0],
+          [16.67, 0.05],
+          [100, 0.3],
+        ],
+      },
+      {
+        lei: "orcamento-do-judiciario",
+        controle: "nivel_orcamento_do_judiciario",
+        custos: [
+          [33.33, 0.6],
+          [66.67, 1.2],
+          [100, 2],
+        ],
+      },
+      {
+        lei: "mutirao-de-cirurgias",
+        controle: "nivel_mutirao_de_cirurgias",
+        custos: [
+          [33.33, 0],
+          [66.67, 0.01],
+          [100, 0.05],
+        ],
+      },
+      {
+        lei: "missoes-de-paz",
+        controle: "nivel_missoes_de_paz",
+        custos: [
+          [0, 0],
+          [33.33, 0.001],
+          [66.67, 0.005],
+          [100, 0.01],
+        ],
+      },
+      {
+        lei: "bolsa-de-permanencia-no-ensino-medio",
+        controle: "nivel_bolsa_de_permanencia_no_ensino_medio",
+        custos: [
+          [0, 0],
+          [50, 0.1],
+          [100, 0.3],
+        ],
+      },
+      {
+        lei: "alfabetizacao-na-idade-certa",
+        controle: "nivel_alfabetizacao_na_idade_certa",
+        custos: [
+          [0, 0],
+          [33.33, 0.01],
+          [66.67, 0.01],
+          [100, 0.01],
+        ],
+      },
+      {
+        lei: "policiamento-orientado",
+        controle: "nivel_policiamento_orientado",
+        custos: [
+          [0, 0],
+          [33.33, 0],
+          [66.67, 0.02],
+          [100, 0.03],
+        ],
+      },
+      {
+        lei: "gestao-da-escola-publica",
+        controle: "nivel_gestao_da_escola_publica",
+        custos: [
+          [0, 0],
+          [25, 0],
+          [50, 0],
+          [100, 0.01],
+        ],
+      },
+    ] as const;
+    for (const caso of casos) {
+      const relacoes = partida.graph.relations.filter(
+        (relacao) =>
+          relacao.originId === caso.controle &&
+          relacao.targetId === "gasto_publico",
+      );
+      expect(relacoes).toHaveLength(1);
+      const relacao = relacoes[0];
+      expect(relacao.readsLevel).toBe(true);
+      for (const [nivel, custo] of caso.custos) {
+        const calculo = calculateContribution(relacao, nivel, () => undefined);
+        if (!calculo.ok) throw new Error(calculo.diagnostics[0].message);
+        expect(calculo.value.value).toBeCloseTo(custo, 6);
+      }
+    }
+
+    const mudada = mudarLei(partida, "fundo-de-equalizacao", 66.67);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    const sem = turno(partida);
+    const com = turno(mudada.value);
+    expect(valor(com, "gasto_publico")).toBeGreaterThan(
+      valor(sem, "gasto_publico"),
+    );
+    expect(valor(com, "resultado_fiscal")).toBeLessThan(
+      valor(sem, "resultado_fiscal"),
+    );
+  });
+
+  it("policiamento orientado altera gasto, resultado e dívida em partida", () => {
+    const partida = nova();
+    const mudada = mudarLei(partida, "policiamento-orientado", 100);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    const sem = turno(partida);
+    const com = turno(mudada.value);
+    expect(valor(com, "gasto_publico")).toBeGreaterThan(
+      valor(sem, "gasto_publico"),
+    );
+    expect(valor(com, "resultado_fiscal")).toBeLessThan(
+      valor(sem, "resultado_fiscal"),
+    );
+    expect(valor(com, "divida_publica")).toBeGreaterThan(
+      valor(sem, "divida_publica"),
+    );
+  });
 });

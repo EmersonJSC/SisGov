@@ -1,0 +1,13 @@
+{
+  "tipo": "pacote-de-programas-ilha-teste",
+  "rodada": 10,
+  "programas": ["saeb", "crianca-alfabetizada", "fundeb"],
+  "opcoes": {
+    "avaliacao-das-escolas": "devolutiva-por-escola",
+    "alfabetizacao-na-idade-certa": "formacao-docente",
+    "financiamento-com-resultado": "premiar-aprendizagem"
+  },
+  "problema": "Dados só ajudam quando orientam apoio e uma decisão posterior.",
+  "justificativaDaEvolucao": "Fecha o laço entre avaliação, intervenção pedagógica e financiamento; compara informação sem resposta com informação usada na alocação de apoio.",
+  "leisGeradasNovamentePelaFonte": false
+}

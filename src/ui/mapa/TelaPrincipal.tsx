@@ -762,6 +762,11 @@ function TelaPrincipalCarregada({
 
   const { base, indice, fundo } = estrutura.current;
   const contas = visao.contas;
+  const contasImplementadas = [
+    BOLHAS_DO_ORCAMENTO.receita,
+    BOLHAS_DO_ORCAMENTO.gasto,
+    BOLHAS_DO_ORCAMENTO.resultado,
+  ].every((id) => partida.content.variables.variaveis.some((v) => v.id === id));
   // V1-08: aprovação = parte do eleitorado que aprova, pelos perfis
   const aprovacao = visao.bolhas.find((b) => b.id === "popularidade_governo");
   const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
@@ -786,14 +791,24 @@ function TelaPrincipalCarregada({
           </div>
         </div>
         <div className="metricas">
-          <ContasDoGoverno contas={contas} onAbrir={selecionar} />
+          {contasImplementadas ? (
+            <ContasDoGoverno contas={contas} onAbrir={selecionar} />
+          ) : (
+            <div className="contas-governo" role="status">
+              Receita e despesa: não implementado
+            </div>
+          )}
           <Metrica
             icone={ICONE_INTERFACE.divida}
-            rotulo="Dívida"
+            rotulo={contasImplementadas ? "Dívida" : "Dívida inicial"}
             valor={moeda(contas.divida)}
             detalhe={pctPib(contas.percentualPib.divida)}
             classe="ruim"
-            titulo={`PIB de ${moeda(contas.pib)}/ano. A lei 'Destino do resultado fiscal' decide quanto do superávit paga a dívida.`}
+            titulo={
+              contasImplementadas
+                ? `PIB de ${moeda(contas.pib)}/ano. A lei 'Destino do resultado fiscal' decide quanto do superávit paga a dívida.`
+                : `PIB hipotético de ${moeda(contas.pib)}/ano. Dívida inicial fixa; o ciclo fiscal ainda não foi implementado.`
+            }
           />
           {contas.cofre > 0 ? (
             <Metrica

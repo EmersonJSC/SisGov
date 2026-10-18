@@ -1,0 +1,3253 @@
+{
+  "paises/ilha-teste/pais.json": {
+    "id": "ilha-teste",
+    "tipo": "cenario",
+    "versaoEsquema": 1,
+    "nome": "Ilha Teste — ilha isolada (fictícia)",
+    "mundo": "mundo/mundo.json",
+    "estadoInicial": "paises/ilha-teste/estado-inicial.json",
+    "unidadeTemporal": "mes",
+    "aprovacaoPorPerfis": {
+      "alvo": "popularidade_governo",
+      "k": 12,
+      "pesos": {
+        "grupo_jovens": 1,
+        "grupo_familias_com_filhos": 1,
+        "grupo_pobres": 1,
+        "grupo_classe_media": 1,
+        "grupo_interior": 1,
+        "grupo_periferias": 1,
+        "grupo_servidores": 1
+      },
+      "perfis": [
+        {
+          "peso": 0.25,
+          "segmentos": [
+            "grupo_jovens",
+            "grupo_familias_com_filhos",
+            "grupo_pobres",
+            "grupo_periferias"
+          ]
+        },
+        {
+          "peso": 0.25,
+          "segmentos": [
+            "grupo_jovens",
+            "grupo_familias_com_filhos",
+            "grupo_pobres",
+            "grupo_interior"
+          ]
+        },
+        {
+          "peso": 0.25,
+          "segmentos": [
+            "grupo_jovens",
+            "grupo_familias_com_filhos",
+            "grupo_classe_media",
+            "grupo_periferias"
+          ]
+        },
+        {
+          "peso": 0.25,
+          "segmentos": ["grupo_jovens", "grupo_classe_media", "grupo_interior"]
+        }
+      ],
+      "eixos": [
+        {
+          "id": "familia",
+          "nome": "Famílias e jovens",
+          "segmentos": ["grupo_jovens", "grupo_familias_com_filhos"]
+        },
+        {
+          "id": "renda",
+          "nome": "Renda",
+          "segmentos": ["grupo_pobres", "grupo_classe_media"]
+        },
+        {
+          "id": "territorio",
+          "nome": "Território",
+          "segmentos": ["grupo_interior", "grupo_periferias"]
+        },
+        {
+          "id": "ocupacao",
+          "nome": "Ocupação",
+          "segmentos": ["grupo_servidores"]
+        }
+      ]
+    }
+  },
+  "paises/ilha-teste/estado-inicial.json": {
+    "id": "ilha-teste-estado-base-minima",
+    "tipo": "estado-inicial",
+    "versaoEsquema": 1,
+    "cenario": {
+      "nome": "Ilha Teste — ilha isolada (fictícia)",
+      "ano": 1,
+      "aquecimentoMeses": 0
+    },
+    "economia": {
+      "pibAnual": 50000
+    },
+    "valores": {
+      "pib_nominal": 50000,
+      "populacao_total": 1000000,
+      "inflacao_anual": 5,
+      "desemprego": 8,
+      "divida_publica": 30,
+      "plano_expansao_rede": 0,
+      "padrao_manutencao_rede": 0,
+      "demanda_rede": 100,
+      "capacidade_rede": 90,
+      "perdas_tecnicas_rede": 5,
+      "perdas_comerciais_rede": 3,
+      "caixa_publico": 1000,
+      "demanda_escolar": 70,
+      "vagas_escolares": 48,
+      "docentes_disponiveis": 52,
+      "dificuldade_territorial": 45,
+      "satisfacao_base_pessoas": 50,
+      "implementacao_escolaridade_obrigatoria": 1,
+      "prioridade_financiamento_educacao": 1,
+      "modelo_provisao_escolar": 1,
+      "provisao_publica_exclusiva": 0,
+      "apoio_financeiro_permanencia": 1,
+      "oferta_jornada_integral": 1,
+      "valorizacao_magisterio": 1,
+      "apoio_alfabetizacao": 1
+    },
+    "leisVigentes": [
+      {
+        "lei": "expansao-da-rede-eletrica",
+        "opcao": "sem-projeto"
+      },
+      {
+        "lei": "manutencao-da-rede-eletrica",
+        "opcao": "corrente"
+      },
+      {
+        "lei": "ensino-obrigatorio",
+        "opcao": "busca-ativa"
+      },
+      {
+        "lei": "piso-educacao",
+        "opcao": "novas-vagas"
+      },
+      {
+        "lei": "escolha-escolar-financiada",
+        "opcao": "rede-publica-com-escolha"
+      },
+      {
+        "lei": "bolsa-de-permanencia-no-ensino-medio",
+        "opcao": "foco-baixa-renda"
+      },
+      {
+        "lei": "escola-em-tempo-integral",
+        "opcao": "territorios-vulneraveis"
+      },
+      {
+        "lei": "piso-salarial-professores",
+        "opcao": "fiscalizar-piso"
+      },
+      {
+        "lei": "alfabetizacao-na-idade-certa",
+        "opcao": "alfabetizacao-inicial"
+      }
+    ]
+  },
+  "paises/ilha-teste/politica.json": {
+    "tipo": "pais-politica",
+    "ministerios": {
+      "areas": [
+        {
+          "id": "instituicoes",
+          "titulo": "Poder e instituições",
+          "curto": "Instituições",
+          "faz": "Não implementado",
+          "coordenador": "instituicoes"
+        },
+        {
+          "id": "seguranca",
+          "titulo": "Segurança e justiça",
+          "curto": "Segurança",
+          "faz": "Não implementado",
+          "coordenador": "seguranca"
+        },
+        {
+          "id": "defesa",
+          "titulo": "Defesa e mundo",
+          "curto": "Defesa",
+          "faz": "Não implementado",
+          "coordenador": "defesa"
+        },
+        {
+          "id": "direitos",
+          "titulo": "Direitos e liberdades",
+          "curto": "Direitos",
+          "faz": "Não implementado",
+          "coordenador": "direitos"
+        },
+        {
+          "id": "contas",
+          "titulo": "Contas e tributos",
+          "curto": "Contas",
+          "faz": "Não implementado: PIB e dívida são referências; receita e despesa ainda não têm ciclo",
+          "coordenador": "contas"
+        },
+        {
+          "id": "trabalho",
+          "titulo": "Trabalho e mercado",
+          "curto": "Trabalho",
+          "faz": "Não implementado: desemprego é referência inicial",
+          "coordenador": "trabalho"
+        },
+        {
+          "id": "protecao",
+          "titulo": "Proteção social",
+          "curto": "Proteção",
+          "faz": "Não implementado: população é referência inicial",
+          "coordenador": "protecao"
+        },
+        {
+          "id": "educacao",
+          "titulo": "Educação, ciência e cultura",
+          "curto": "Educação",
+          "faz": "Ciclo C1 de acesso e permanência escolar em teste",
+          "coordenador": "educacao"
+        },
+        {
+          "id": "energia",
+          "titulo": "Energia e ambiente",
+          "curto": "Energia",
+          "faz": "Ciclo de rede elétrica em teste",
+          "coordenador": "energia"
+        },
+        {
+          "id": "cidades",
+          "titulo": "Cidades e transporte",
+          "curto": "Cidades",
+          "faz": "Não implementado",
+          "coordenador": "cidades"
+        }
+      ],
+      "ministerios": [
+        {
+          "id": "instituicoes",
+          "nome": "Área de instituicoes",
+          "cargo": "Responsável por instituicoes",
+          "area": "instituicoes",
+          "leis": []
+        },
+        {
+          "id": "seguranca",
+          "nome": "Área de seguranca",
+          "cargo": "Responsável por seguranca",
+          "area": "seguranca",
+          "leis": []
+        },
+        {
+          "id": "defesa",
+          "nome": "Área de defesa",
+          "cargo": "Responsável por defesa",
+          "area": "defesa",
+          "leis": []
+        },
+        {
+          "id": "direitos",
+          "nome": "Área de direitos",
+          "cargo": "Responsável por direitos",
+          "area": "direitos",
+          "leis": []
+        },
+        {
+          "id": "contas",
+          "nome": "Área de contas",
+          "cargo": "Responsável por contas",
+          "area": "contas",
+          "leis": []
+        },
+        {
+          "id": "trabalho",
+          "nome": "Área de trabalho",
+          "cargo": "Responsável por trabalho",
+          "area": "trabalho",
+          "leis": []
+        },
+        {
+          "id": "protecao",
+          "nome": "Área de protecao",
+          "cargo": "Responsável por protecao",
+          "area": "protecao",
+          "leis": []
+        },
+        {
+          "id": "educacao",
+          "nome": "Área de educacao",
+          "cargo": "Responsável por educacao",
+          "area": "educacao",
+          "leis": [
+            "ensino-obrigatorio",
+            "piso-educacao",
+            "escolha-escolar-financiada",
+            "provisao-publica-exclusiva",
+            "bolsa-de-permanencia-no-ensino-medio",
+            "escola-em-tempo-integral",
+            "piso-salarial-professores",
+            "alfabetizacao-na-idade-certa"
+          ]
+        },
+        {
+          "id": "energia",
+          "nome": "Área de energia",
+          "cargo": "Responsável por energia",
+          "area": "energia",
+          "leis": ["expansao-da-rede-eletrica", "manutencao-da-rede-eletrica"]
+        },
+        {
+          "id": "cidades",
+          "nome": "Área de cidades",
+          "cargo": "Responsável por cidades",
+          "area": "cidades",
+          "leis": []
+        }
+      ]
+    }
+  },
+  "mundo/mundo.json": {
+    "id": "mundo-base-minima",
+    "tipo": "mundo",
+    "versaoEsquema": 1,
+    "nome": "Mundo — base mínima experimental",
+    "variaveis": "mundo/variaveis.json",
+    "catalogoPoliticas": "mundo/catalogo-politicas.json",
+    "consequencias": [
+      "mundo/consequencias/expansao-executada.json",
+      "mundo/consequencias/manutencao-executada.json",
+      "mundo/consequencias/expansao-aumenta-capacidade.json",
+      "mundo/consequencias/expansao-reduz-caixa.json",
+      "mundo/consequencias/manutencao-reduz-perdas.json",
+      "mundo/consequencias/manutencao-reduz-caixa.json",
+      "mundo/consequencias/demanda-pressiona-rede.json",
+      "mundo/consequencias/capacidade-alivia-rede.json",
+      "mundo/consequencias/perdas-pressionam-rede.json",
+      "mundo/consequencias/perdas-tecnicas-na-rede.json",
+      "mundo/consequencias/perdas-comerciais-na-rede.json",
+      "mundo/consequencias/pressao-traz-risco.json",
+      "mundo/consequencias/educacao-demanda-vagas.json",
+      "mundo/consequencias/educacao-vagas-acesso.json",
+      "mundo/consequencias/educacao-docentes-acesso.json",
+      "mundo/consequencias/educacao-barreira-acesso.json",
+      "mundo/consequencias/educacao-acesso-frequencia.json",
+      "mundo/consequencias/educacao-permanencia-frequencia.json",
+      "mundo/consequencias/educacao-frequencia-abandono.json",
+      "mundo/consequencias/educacao-frequencia-aprendizagem.json",
+      "mundo/consequencias/educacao-docentes-aprendizagem.json",
+      "mundo/consequencias/educacao-info-aprendizagem.json",
+      "mundo/consequencias/educacao-satisfacao-jovens.json",
+      "mundo/consequencias/educacao-satisfacao-familias.json",
+      "mundo/consequencias/educacao-satisfacao-pobres.json",
+      "mundo/consequencias/educacao-satisfacao-classe-media.json",
+      "mundo/consequencias/educacao-satisfacao-interior.json",
+      "mundo/consequencias/educacao-satisfacao-periferias.json",
+      "mundo/consequencias/educacao-satisfacao-servidores.json",
+      "mundo/consequencias/educacao-frequencia-grupo-jovens.json",
+      "mundo/consequencias/educacao-frequencia-grupo-familias.json",
+      "mundo/consequencias/educacao-acesso-grupo-pobres.json",
+      "mundo/consequencias/educacao-acesso-grupo-interior.json",
+      "mundo/consequencias/educacao-acesso-grupo-periferias.json",
+      "mundo/consequencias/educacao-aprendizagem-grupo-familias.json",
+      "mundo/consequencias/educacao-aprendizagem-grupo-servidores.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-acesso_escolar.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-frequencia_escolar.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-vagas_escolares.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-permanencia_escolar.json",
+      "mundo/consequencias/educacao-ensino-obrigatorio-abandono_escolar.json",
+      "mundo/consequencias/educacao-piso-educacao-vagas_escolares.json",
+      "mundo/consequencias/educacao-piso-educacao-acesso_escolar.json",
+      "mundo/consequencias/educacao-piso-educacao-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-piso-educacao-frequencia_escolar.json",
+      "mundo/consequencias/educacao-piso-educacao-dificuldade_territorial.json",
+      "mundo/consequencias/educacao-piso-educacao-grupo_interior.json",
+      "mundo/consequencias/educacao-escolha-escolar-financiada-acesso_escolar.json",
+      "mundo/consequencias/educacao-escolha-escolar-financiada-informacao_educacional.json",
+      "mundo/consequencias/educacao-escolha-escolar-financiada-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-escolha-escolar-financiada-vagas_escolares.json",
+      "mundo/consequencias/educacao-escolha-escolar-financiada-dificuldade_territorial.json",
+      "mundo/consequencias/educacao-provisao-publica-exclusiva-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-provisao-publica-exclusiva-grupo_familias_com_filhos.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens.json",
+      "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-permanencia_escolar.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-grupo_pobres.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-vagas_escolares.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-docentes_disponiveis.json",
+      "mundo/consequencias/educacao-escola-em-tempo-integral-aprendizagem_escolar.json",
+      "mundo/consequencias/educacao-piso-salarial-professores-docentes_disponiveis.json",
+      "mundo/consequencias/educacao-piso-salarial-professores-grupo_servidores.json",
+      "mundo/consequencias/educacao-piso-salarial-professores-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-piso-salarial-professores-grupo_interior.json",
+      "mundo/consequencias/educacao-piso-salarial-professores-permanencia_escolar.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-frequencia_escolar.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_jovens.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-docentes_disponiveis.json",
+      "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_servidores.json"
+    ],
+    "eventos": [],
+    "situacoes": [],
+    "dilemas": []
+  },
+  "mundo/variaveis.json": {
+    "id": "variaveis-base-minima",
+    "tipo": "variaveis",
+    "versaoEsquema": 1,
+    "variaveis": [
+      {
+        "id": "pib_nominal",
+        "tipo": "estoque",
+        "nome": "PIB anual (hipótese da ilha)",
+        "unidade": "moeda",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "milhões de créditos por ano",
+          "tecnico": true
+        },
+        "area": "Contas e tributos"
+      },
+      {
+        "id": "populacao_total",
+        "tipo": "estoque",
+        "nome": "População — todos os residentes, de todas as idades (hipótese da ilha)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "pessoas",
+          "tecnico": true
+        },
+        "area": "Proteção social"
+      },
+      {
+        "id": "inflacao_anual",
+        "tipo": "estoque",
+        "nome": "Inflação anual (hipótese da ilha)",
+        "unidade": "percentual_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "% ao ano",
+          "tecnico": true
+        },
+        "area": "Contas e tributos",
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "desemprego",
+        "tipo": "estoque",
+        "nome": "Desemprego (hipótese da ilha)",
+        "unidade": "percentual_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "% da força de trabalho",
+          "tecnico": true
+        },
+        "area": "Trabalho e mercado",
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "divida_publica",
+        "tipo": "estoque",
+        "nome": "Dívida pública (hipótese da ilha)",
+        "unidade": "percentual_pib",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "% do PIB",
+          "tecnico": true
+        },
+        "area": "Contas e tributos",
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "plano_expansao_rede",
+        "tipo": "controle",
+        "nome": "Plano de expansão da rede",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 2
+        },
+        "valorInicial": 0,
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "padrao_manutencao_rede",
+        "tipo": "controle",
+        "nome": "Padrão de manutenção da rede",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 2
+        },
+        "valorInicial": 0,
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "expansao_executada",
+        "tipo": "calculado",
+        "nome": "Expansão executada (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "níveis executados",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "manutencao_executada",
+        "tipo": "calculado",
+        "nome": "Manutenção executada (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "níveis executados",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "demanda_rede",
+        "tipo": "estoque",
+        "nome": "Demanda da rede (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "capacidade_rede",
+        "tipo": "estoque",
+        "nome": "Capacidade da rede (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "perdas_rede",
+        "tipo": "calculado",
+        "nome": "Perdas totais da rede (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "perdas_tecnicas_rede",
+        "tipo": "estoque",
+        "nome": "Perdas técnicas da rede (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "perdas_comerciais_rede",
+        "tipo": "estoque",
+        "nome": "Perdas comerciais da rede (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo"
+      },
+      {
+        "id": "caixa_publico",
+        "tipo": "estoque",
+        "nome": "Caixa público (hipótese piloto)",
+        "unidade": "moeda",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "milhões de créditos do piloto",
+          "tecnico": true
+        },
+        "area": "Contas e tributos"
+      },
+      {
+        "id": "pressao_rede",
+        "tipo": "calculado",
+        "nome": "Pressão sobre o suprimento (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "medida": {
+          "unidade": "unidades do piloto",
+          "tecnico": true
+        },
+        "area": "Meio ambiente, energia e campo",
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "risco_apagao",
+        "tipo": "situacao",
+        "nome": "Risco de falta de energia (hipótese piloto)",
+        "unidade": "quantidade",
+        "dominio": {
+          "minimo": 0
+        },
+        "entrada": 15,
+        "saida": 5,
+        "area": "Meio ambiente, energia e campo",
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "implementacao_escolaridade_obrigatoria",
+        "tipo": "controle",
+        "nome": "Garantia da escolaridade obrigatória — Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "prioridade_financiamento_educacao",
+        "tipo": "controle",
+        "nome": "Financiamento da educação básica — Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "modelo_provisao_escolar",
+        "tipo": "controle",
+        "nome": "Escolha entre provedores escolares com financiamento público — Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "provisao_publica_exclusiva",
+        "tipo": "controle",
+        "nome": "Provisão pública exclusiva da educação",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "apoio_financeiro_permanencia",
+        "tipo": "controle",
+        "nome": "Incentivo à permanência no ensino médio — Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "oferta_jornada_integral",
+        "tipo": "controle",
+        "nome": "Oferta de jornada escolar ampliada — Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "valorizacao_magisterio",
+        "tipo": "controle",
+        "nome": "Piso e valorização do magistério público — Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "apoio_alfabetizacao",
+        "tipo": "controle",
+        "nome": "Cooperação para alfabetização na idade certa — Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "apoio_transporte_escolar",
+        "tipo": "controle",
+        "nome": "Apoio ao transporte escolar rural — Alcance hipotético do suporte ao transporte, sobretudo para estudantes rurais com trajetos longos.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "apoio_alimentacao_escolar",
+        "tipo": "controle",
+        "nome": "Oferta de alimentação escolar — Alcance hipotético da oferta de alimentação durante o período escolar.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "intensidade_avaliacao_educacional",
+        "tipo": "controle",
+        "nome": "Avaliação e monitoramento educacional — Intensidade de coleta e acompanhamento de informações sobre escolas e aprendizagem.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "complementacao_resultados_educacionais",
+        "tipo": "controle",
+        "nome": "Complementação financeira por resultados educacionais — Intensidade hipotética de apoio financeiro orientado por metas, atendimento, aprendizagem e equidade.",
+        "unidade": "nivel",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 3
+        },
+        "area": "Educação, ciência e cultura",
+        "valorInicial": 1
+      },
+      {
+        "id": "demanda_escolar",
+        "tipo": "estoque",
+        "nome": "Demanda escolar elegível — Índice hipotético da procura por vagas entre crianças e jovens em idade de escolaridade obrigatória. Não é a população total nem uma contagem real de estudantes.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "valorInicial": 70
+      },
+      {
+        "id": "vagas_escolares",
+        "tipo": "estoque",
+        "nome": "Capacidade de vagas escolares — Capacidade estimada de receber estudantes com as escolas, salas e turnos disponíveis. O valor é um índice de teste, não uma contagem de vagas.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "valorInicial": 48
+      },
+      {
+        "id": "docentes_disponiveis",
+        "tipo": "estoque",
+        "nome": "Capacidade docente disponível — Capacidade estimada de professores para atender as turmas. O índice não informa o número real de docentes nem sua distribuição por disciplina.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "valorInicial": 52
+      },
+      {
+        "id": "dificuldade_territorial",
+        "tipo": "estoque",
+        "nome": "Barreira territorial de acesso — Barreiras de distância, tempo de viagem e falta de transporte entre a casa e a escola. Valor alto significa acesso mais difícil; a escala é uma hipótese do piloto.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "valorInicial": 45
+      },
+      {
+        "id": "satisfacao_base_pessoas",
+        "tipo": "estoque",
+        "nome": "Referência inicial de satisfação (hipótese) — Ponto inicial hipotético usado para calcular a satisfação dos perfis sociais da ilha. Não é pesquisa de opinião real.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "valorInicial": 50
+      },
+      {
+        "id": "acesso_escolar",
+        "tipo": "calculado",
+        "nome": "Acesso à escola — Quanto da procura escolar consegue chegar a uma vaga. Acesso maior indica menos pessoas impedidas por falta de capacidade ou barreiras territoriais.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "permanencia_escolar",
+        "tipo": "calculado",
+        "nome": "Permanência escolar — Condições para estudantes continuarem matriculados ao longo do tempo, incluindo apoio financeiro e jornada adequada. Não representa conclusão escolar por si só.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "frequencia_escolar",
+        "tipo": "calculado",
+        "nome": "Frequência escolar — Presença dos estudantes nas aulas. Pode cair mesmo quando há matrícula, por distância, renda ou falta de serviços de apoio.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "abandono_escolar",
+        "tipo": "calculado",
+        "nome": "Pressão de abandono escolar — Pressão estimada para deixar a escola antes de concluir a etapa. Valor maior é pior; é um indicador hipotético, não uma taxa oficial de evasão.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "avaliacao": "maior_pior"
+      },
+      {
+        "id": "aprendizagem_escolar",
+        "tipo": "calculado",
+        "nome": "Aprendizagem escolar — Aprendizagem acumulada estimada a partir de frequência, docentes e apoio pedagógico. Não equivale a uma nota de prova observada.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        },
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "informacao_educacional",
+        "tipo": "calculado",
+        "nome": "Informação para gestão educacional — Informação disponível para identificar diferenças entre escolas e orientar apoio. Avaliar mede informação; não melhora a aprendizagem automaticamente.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        }
+      },
+      {
+        "id": "custo_educacao_hipotese",
+        "tipo": "calculado",
+        "nome": "Custo comparativo da política educacional (hipótese) — Índice comparativo hipotético do esforço de recursos exigido pelas escolhas. Não é dinheiro, orçamento oficial nem estimativa de custo real.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        }
+      },
+      {
+        "id": "popularidade_governo",
+        "tipo": "calculado",
+        "nome": "Aprovação calculada pelos perfis — Aprovação calculada a partir da satisfação dos perfis sintéticos da ilha. Não é uma pesquisa eleitoral real.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "medida": {
+          "unidade": "indice_0_100",
+          "tecnico": true
+        }
+      },
+      {
+        "id": "grupo_jovens",
+        "tipo": "grupo",
+        "nome": "jovens — Satisfação modelada dos perfis de jovens. O valor não conta quantos jovens existem.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_familias_com_filhos",
+        "tipo": "grupo",
+        "nome": "familias com filhos — Satisfação modelada dos perfis de famílias com filhos. O valor não é o tamanho dessas famílias.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_pobres",
+        "tipo": "grupo",
+        "nome": "pobres — Satisfação modelada dos perfis de baixa renda; não mede quantas pessoas estão na pobreza.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_classe_media",
+        "tipo": "grupo",
+        "nome": "classe media — Satisfação modelada dos perfis de classe média; não mede o tamanho desse grupo.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_interior",
+        "tipo": "grupo",
+        "nome": "interior — Satisfação modelada dos perfis que vivem fora das periferias metropolitanas; não é uma contagem de moradores do interior.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_periferias",
+        "tipo": "grupo",
+        "nome": "periferias — Satisfação modelada dos perfis que vivem em periferias metropolitanas; não é uma contagem de moradores.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      },
+      {
+        "id": "grupo_servidores",
+        "tipo": "grupo",
+        "nome": "servidores — Satisfação modelada dos perfis de servidores públicos; não mede o número de servidores.",
+        "unidade": "indice_0_100",
+        "dominio": {
+          "minimo": 0,
+          "maximo": 100
+        },
+        "area": "Educação, ciência e cultura",
+        "avaliacao": "maior_melhor"
+      }
+    ]
+  },
+  "mundo/catalogo-politicas.json": {
+    "id": "catalogo-base-minima",
+    "tipo": "catalogo-politicas",
+    "versaoEsquema": 1,
+    "politicas": [
+      "mundo/leis/expansao-da-rede-eletrica.json",
+      "mundo/leis/manutencao-da-rede-eletrica.json",
+      "mundo/leis/ensino-obrigatorio.json",
+      "mundo/leis/piso-educacao.json",
+      "mundo/leis/escolha-escolar-financiada.json",
+      "mundo/leis/provisao-publica-exclusiva.json",
+      "mundo/leis/bolsa-de-permanencia-no-ensino-medio.json",
+      "mundo/leis/escola-em-tempo-integral.json",
+      "mundo/leis/piso-salarial-professores.json",
+      "mundo/leis/alfabetizacao-na-idade-certa.json"
+    ]
+  },
+  "mundo/leis/expansao-da-rede-eletrica.json": {
+    "id": "expansao-da-rede-eletrica",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Programa de expansão da rede elétrica",
+    "descricao": "Escolhe o ritmo de projetos de expansão. Gasto e capacidade nova são apurados em momentos diferentes.",
+    "area": "Meio ambiente, energia e campo",
+    "fonte": "https://www.gov.br/mme/pt-br/assuntos/secretarias/sntep/publicacoes/plano-decenal-de-expansao-de-energia/pde-2034/relatorio_aprovado/pde2034_aprovado.pdf",
+    "processoAutorizacao": "execucao-programa",
+    "nivelLegal": "derivada",
+    "mesa": {
+      "id": "suprimento-eletrico",
+      "nome": "Suprimento elétrico",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "plano_expansao_rede",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "sem-projeto",
+          "rotulo": "Sem projetos novos",
+          "valor": 0,
+          "efeitos": "Preserva caixa; a capacidade atual pode ficar aquém da demanda."
+        },
+        {
+          "id": "gradual",
+          "rotulo": "Expansão gradual",
+          "valor": 1,
+          "efeitos": "Paga projetos agora; a capacidade cresce após o prazo de obra (hipótese)."
+        },
+        {
+          "id": "acelerada",
+          "rotulo": "Expansão acelerada",
+          "valor": 2,
+          "efeitos": "Mais gasto e maior formação de capacidade futura (hipótese)."
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 1,
+      "maximo": 1
+    },
+    "consequencias": ["expansao-executada"]
+  },
+  "mundo/leis/manutencao-da-rede-eletrica.json": {
+    "id": "manutencao-da-rede-eletrica",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Padrão de manutenção da rede elétrica",
+    "descricao": "Escolhe a intensidade da manutenção para reduzir perdas ao longo do tempo.",
+    "area": "Meio ambiente, energia e campo",
+    "fonte": "https://www.gov.br/aneel/pt-br/assuntos/distribuicao/perdas-de-energia/perdas-de-energia",
+    "processoAutorizacao": "execucao-programa",
+    "nivelLegal": "derivada",
+    "mesa": {
+      "id": "suprimento-eletrico",
+      "nome": "Suprimento elétrico",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "padrao_manutencao_rede",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "corrente",
+          "rotulo": "Manutenção corrente",
+          "valor": 0,
+          "efeitos": "Mantém as perdas do cenário inicial."
+        },
+        {
+          "id": "reforcada",
+          "rotulo": "Manutenção reforçada",
+          "valor": 1,
+          "efeitos": "Reduz perdas com gasto recorrente (hipótese)."
+        },
+        {
+          "id": "intensiva",
+          "rotulo": "Manutenção intensiva",
+          "valor": 2,
+          "efeitos": "Reduz mais perdas com custo maior (hipótese)."
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 1,
+      "maximo": 1
+    },
+    "consequencias": ["manutencao-executada"]
+  },
+  "mundo/bussola.json": {
+    "tipo": "mundo-bussola",
+    "versaoEsquema": 1,
+    "metodo": "Sem calibração política nesta base mínima",
+    "importancia": {
+      "outras": 1
+    },
+    "fatorDoRumo": {
+      "economia": 1,
+      "costumes": 1
+    },
+    "temas": {},
+    "leis": {}
+  },
+  "bussola/referencias.json": {
+    "tipo": "referencias-bussola",
+    "versaoEsquema": 1,
+    "fonte": {
+      "nome": "Sem referências na base mínima",
+      "versao": "piloto",
+      "citacao": "Hipótese técnica: lista vazia."
+    },
+    "metodo": {},
+    "personalidades": [],
+    "partidos": [],
+    "semMedida": []
+  },
+  "bussola/congresso.json": {
+    "tipo": "congresso-bussola",
+    "versaoEsquema": 1,
+    "metodo": "Sem bancadas nesta base mínima",
+    "bancadas": [],
+    "prova": {
+      "pais": "ilha-teste",
+      "tolerancia": 0,
+      "fontes": [],
+      "grupos": []
+    }
+  },
+  "mundo/eleicao.json": {
+    "tipo": "mundo-eleicao",
+    "versaoEsquema": 1,
+    "metodo": "Eleição indisponível nesta base mínima",
+    "voto": {
+      "pesoEconomico": {},
+      "escalas": {},
+      "pesoDoGoverno": 0,
+      "custoDeGovernar": 0,
+      "carisma": 0,
+      "experiencia": 0,
+      "carreira": 0,
+      "convergencia": 0,
+      "pesoDosCostumes": 0,
+      "sensibilidade": 0,
+      "vantagemDoCargo": 0
+    },
+    "ruido": 0,
+    "pesquisas": {
+      "tamanhoDaAmostra": 1,
+      "viesDoInstituto": 0
+    },
+    "estranhamento": {
+      "tolerancia": 0,
+      "pesoNoVoto": 0,
+      "quedaDaDisciplina": 0,
+      "disciplinaMinima": 0,
+      "passoDaIdeologia": 0
+    }
+  },
+  "mundo/personagens.json": {
+    "tipo": "mundo-personagens",
+    "versaoEsquema": 1,
+    "metodo": "Personagens indisponíveis nesta base mínima",
+    "desvio": 0,
+    "franqueza": {},
+    "explicitasDaFranqueza": {},
+    "opinioesPorPersonagem": [0, 0],
+    "idade": [0, 0],
+    "molde": "",
+    "caminhos": [],
+    "ideologias": [],
+    "carreiras": [],
+    "opinioes": []
+  },
+  "mundo/consequencias/expansao-executada.json": {
+    "id": "expansao-executada",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "plano_expansao_rede",
+    "alvo": "expansao_executada",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "escala": {
+      "fator": "caixa_publico",
+      "referencia": 1000
+    },
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/manutencao-executada.json": {
+    "id": "manutencao-executada",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "padrao_manutencao_rede",
+    "alvo": "manutencao_executada",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "normalizacao": {
+      "fator": "perdas_comerciais_rede",
+      "multiplicador": 0.3333333333333333
+    },
+    "escala": {
+      "fator": "caixa_publico",
+      "referencia": 1000
+    },
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/expansao-aumenta-capacidade.json": {
+    "id": "expansao-aumenta-capacidade",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "expansao_executada",
+    "alvo": "capacidade_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.4,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade_por_passo",
+    "atrasoPassos": 6,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/expansao-reduz-caixa.json": {
+    "id": "expansao-reduz-caixa",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "expansao_executada",
+    "alvo": "caixa_publico",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -5,
+      "termoConstante": 0
+    },
+    "unidade": "moeda_por_passo",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/manutencao-reduz-perdas.json": {
+    "id": "manutencao-reduz-perdas",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "manutencao_executada",
+    "alvo": "perdas_comerciais_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -0.1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade_por_passo",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/manutencao-reduz-caixa.json": {
+    "id": "manutencao-reduz-caixa",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "manutencao_executada",
+    "alvo": "caixa_publico",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -1,
+      "termoConstante": 0
+    },
+    "unidade": "moeda_por_passo",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/demanda-pressiona-rede.json": {
+    "id": "demanda-pressiona-rede",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "demanda_rede",
+    "alvo": "pressao_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/capacidade-alivia-rede.json": {
+    "id": "capacidade-alivia-rede",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "capacidade_rede",
+    "alvo": "pressao_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/perdas-pressionam-rede.json": {
+    "id": "perdas-pressionam-rede",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "perdas_rede",
+    "alvo": "pressao_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/perdas-tecnicas-na-rede.json": {
+    "id": "perdas-tecnicas-na-rede",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "perdas_tecnicas_rede",
+    "alvo": "perdas_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/perdas-comerciais-na-rede.json": {
+    "id": "perdas-comerciais-na-rede",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "perdas_comerciais_rede",
+    "alvo": "perdas_rede",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/pressao-traz-risco.json": {
+    "id": "pressao-traz-risco",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "pressao_rede",
+    "alvo": "risco_apagao",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "quantidade",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/leis/ensino-obrigatorio.json": {
+    "id": "ensino-obrigatorio",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Garantia da escolaridade obrigatória",
+    "descricao": "Organiza a busca ativa e o atendimento da população em idade escolar. A obrigação jurídica permanece; as opções representam a capacidade de colocá-la em prática.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm",
+    "processoAutorizacao": "coordenacao-federativa",
+    "nivelLegal": "constitucional",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "constituicao"
+    },
+    "controle": {
+      "variavel": "implementacao_escolaridade_obrigatoria",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "busca-ativa",
+          "rotulo": "Busca ativa — Localiza crianças fora da escola e prioriza matrícula e acompanhamento das famílias. No piloto, melhora acesso e frequência com custo comparativo moderado.",
+          "valor": 1,
+          "efeitos": "Localiza crianças fora da escola e prioriza matrícula e acompanhamento das famílias. No piloto, melhora acesso e frequência com custo comparativo moderado. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "expandir-vagas",
+          "rotulo": "Expandir vagas — Prioriza ampliar a capacidade de atendimento escolar. Tem atraso de implantação e custo comparativo maior; o efeito depende de obras e pessoal.",
+          "valor": 2,
+          "efeitos": "Prioriza ampliar a capacidade de atendimento escolar. Tem atraso de implantação e custo comparativo maior; o efeito depende de obras e pessoal. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "apoio-permanencia",
+          "rotulo": "Apoiar permanência — Prioriza acompanhamento e apoio para que estudantes matriculados continuem frequentando. Não cria vagas por si só.",
+          "valor": 3,
+          "efeitos": "Prioriza acompanhamento e apoio para que estudantes matriculados continuem frequentando. Não cria vagas por si só. Intensidade da busca ativa e da capacidade de atender crianças e jovens que devem frequentar a escola.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 1,
+      "maximo": 1
+    },
+    "consequencias": [
+      "educacao-ensino-obrigatorio-acesso_escolar",
+      "educacao-ensino-obrigatorio-frequencia_escolar",
+      "educacao-ensino-obrigatorio-custo_educacao_hipotese",
+      "educacao-ensino-obrigatorio-vagas_escolares",
+      "educacao-ensino-obrigatorio-permanencia_escolar",
+      "educacao-ensino-obrigatorio-abandono_escolar"
+    ]
+  },
+  "mundo/leis/piso-educacao.json": {
+    "id": "piso-educacao",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Financiamento da educação básica",
+    "descricao": "Define a prioridade de financiamento e cooperação para a oferta da educação básica. As intensidades e os custos da ilha são hipóteses de teste.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14113.htm",
+    "processoAutorizacao": "transferencia-educacional",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "alavanca"
+    },
+    "controle": {
+      "variavel": "prioridade_financiamento_educacao",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "novas-vagas",
+          "rotulo": "Ampliar vagas — Direciona recursos experimentais à capacidade de receber mais estudantes; tem custo e prazo de implantação maiores.",
+          "valor": 1,
+          "efeitos": "Direciona recursos experimentais à capacidade de receber mais estudantes; tem custo e prazo de implantação maiores. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "manter-escolas",
+          "rotulo": "Manter escolas — Prioriza conservar a capacidade já existente para evitar perda de atendimento. O ganho é gradual e o custo comparativo é intermediário.",
+          "valor": 2,
+          "efeitos": "Prioriza conservar a capacidade já existente para evitar perda de atendimento. O ganho é gradual e o custo comparativo é intermediário. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "reduzir-desigualdade",
+          "rotulo": "Reduzir desigualdade — Prioriza redes e territórios com maior dificuldade de acesso. O efeito maior é reduzir a barreira territorial, não expandir toda a rede igualmente.",
+          "valor": 3,
+          "efeitos": "Prioriza redes e territórios com maior dificuldade de acesso. O efeito maior é reduzir a barreira territorial, não expandir toda a rede igualmente. Prioridade experimental dada à expansão e manutenção da oferta de educação básica.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 1,
+      "maximo": 1
+    },
+    "consequencias": [
+      "educacao-piso-educacao-vagas_escolares",
+      "educacao-piso-educacao-acesso_escolar",
+      "educacao-piso-educacao-custo_educacao_hipotese",
+      "educacao-piso-educacao-frequencia_escolar",
+      "educacao-piso-educacao-dificuldade_territorial",
+      "educacao-piso-educacao-grupo_interior"
+    ]
+  },
+  "mundo/leis/escolha-escolar-financiada.json": {
+    "id": "escolha-escolar-financiada",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Escolha entre provedores escolares com financiamento público",
+    "descricao": "Permite organizar a oferta por escolas diretamente administradas pelo poder público e por escolas independentes financiadas publicamente. A referência sueca fundamenta a existência do modelo; os efeitos da ilha são hipóteses. A posição desta lei na bússola ainda precisa de fundamentação.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/valja-forskoleklass-och-grundskola-eller-anpassad-grundskola",
+    "processoAutorizacao": "organizacao-da-oferta-escolar",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "exclui": ["provisao-publica-exclusiva"],
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "modelo_provisao_escolar",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "rede-publica-com-escolha",
+          "rotulo": "Escolha com garantia pública — Permite escolher entre escolas públicas e independentes financiadas pelo poder público. A escolha, sozinha, não presume melhora na aprendizagem.",
+          "valor": 1,
+          "efeitos": "Permite escolher entre escolas públicas e independentes financiadas pelo poder público. A escolha, sozinha, não presume melhora na aprendizagem. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+          "apoiam": ["familias com filhos", "classe media"],
+          "rejeitam": []
+        },
+        {
+          "id": "contratos-com-metas",
+          "rotulo": "Financiar provedores com metas — Mantém a escolha entre provedores, mas condiciona parte do financiamento a requisitos e metas públicas; o efeito direto modelado é mais informação e capacidade.",
+          "valor": 2,
+          "efeitos": "Mantém a escolha entre provedores, mas condiciona parte do financiamento a requisitos e metas públicas; o efeito direto modelado é mais informação e capacidade. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+          "apoiam": ["familias com filhos", "classe media"],
+          "rejeitam": []
+        },
+        {
+          "id": "prioridade-rede-municipal",
+          "rotulo": "Priorizar a rede municipal — Concentra o planejamento e os recursos na rede diretamente administrada pelo poder público, com expansão mais gradual no piloto.",
+          "valor": 3,
+          "efeitos": "Concentra o planejamento e os recursos na rede diretamente administrada pelo poder público, com expansão mais gradual no piloto. Modelo de organização da oferta escolar entre rede pública diretamente administrada e provedores independentes financiados publicamente; hipótese do protótipo.",
+          "apoiam": ["familias com filhos", "classe media"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 2,
+      "maximo": 2
+    },
+    "consequencias": [
+      "educacao-escolha-escolar-financiada-acesso_escolar",
+      "educacao-escolha-escolar-financiada-informacao_educacional",
+      "educacao-escolha-escolar-financiada-custo_educacao_hipotese",
+      "educacao-escolha-escolar-financiada-vagas_escolares",
+      "educacao-escolha-escolar-financiada-dificuldade_territorial"
+    ]
+  },
+  "mundo/leis/provisao-publica-exclusiva.json": {
+    "id": "provisao-publica-exclusiva",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Provisão pública exclusiva da educação",
+    "descricao": "Transfere a oferta escolar ordinária privada à administração pública. A lei cubana de 1961 fundamenta o modelo, a nacionalização, a indenização e exceções; números e efeitos da ilha são hipóteses. Posição na bússola pendente de fundamentação.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/ley_de_nacionalizacion_de_la_educacion.pdf",
+    "processoAutorizacao": "organizacao-da-oferta-escolar",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "exclui": ["escolha-escolar-financiada"],
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "provisao_publica_exclusiva",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "incorporacao-indenizada",
+          "rotulo": "Incorporar com indenização — Transfere escolas privadas para a administração pública com indenização. Valor dos ativos e pagamento ainda são hipóteses do piloto; custo e impacto transitório sobre famílias são hipóteses, sem presumir ganho de aprendizagem.",
+          "valor": 1,
+          "efeitos": "Transfere escolas privadas para a administração pública com indenização. Valor dos ativos e pagamento ainda são hipóteses do piloto; custo e impacto transitório sobre famílias são hipóteses, sem presumir ganho de aprendizagem. undefined",
+          "apoiam": [],
+          "rejeitam": []
+        },
+        {
+          "id": "incorporacao-seletiva",
+          "rotulo": "Incorporar com indenização seletiva — Transfere a rede privada à administração pública e diferencia a indenização conforme os critérios da lei. Ativos e pagamentos exigem avaliação individual; o custo comparativo é hipotético.",
+          "valor": 2,
+          "efeitos": "Transfere a rede privada à administração pública e diferencia a indenização conforme os critérios da lei. Ativos e pagamentos exigem avaliação individual; o custo comparativo é hipotético. undefined",
+          "apoiam": [],
+          "rejeitam": []
+        },
+        {
+          "id": "excecoes-transitorias",
+          "rotulo": "Incorporar com exceções transitórias — Prevê exceções autorizadas durante a transferência da oferta para a rede pública. O custo comparativo e o prazo de transição são hipóteses; a exclusividade vale para a oferta ordinária.",
+          "valor": 3,
+          "efeitos": "Prevê exceções autorizadas durante a transferência da oferta para a rede pública. O custo comparativo e o prazo de transição são hipóteses; a exclusividade vale para a oferta ordinária. undefined",
+          "apoiam": [],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 2,
+      "maximo": 2
+    },
+    "consequencias": [
+      "educacao-provisao-publica-exclusiva-custo_educacao_hipotese",
+      "educacao-provisao-publica-exclusiva-grupo_familias_com_filhos"
+    ]
+  },
+  "mundo/leis/bolsa-de-permanencia-no-ensino-medio.json": {
+    "id": "bolsa-de-permanencia-no-ensino-medio",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Incentivo à permanência no ensino médio",
+    "descricao": "Estabelece apoio financeiro educacional à permanência e conclusão do ensino médio público. O alcance quantitativo do piloto é hipotético.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14818.htm",
+    "processoAutorizacao": "incentivo-educacional",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "apoio_financeiro_permanencia",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "foco-baixa-renda",
+          "rotulo": "Priorizar baixa renda — Concentra o apoio em estudantes de famílias de baixa renda. No piloto, beneficia mais os perfis pobres; o alcance total é menor.",
+          "valor": 1,
+          "efeitos": "Concentra o apoio em estudantes de famílias de baixa renda. No piloto, beneficia mais os perfis pobres; o alcance total é menor. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+          "apoiam": ["jovens", "pobres"],
+          "rejeitam": []
+        },
+        {
+          "id": "ampliar-cobertura",
+          "rotulo": "Ampliar cobertura — Leva o incentivo a mais estudantes elegíveis, com menor concentração nos casos de maior vulnerabilidade.",
+          "valor": 2,
+          "efeitos": "Leva o incentivo a mais estudantes elegíveis, com menor concentração nos casos de maior vulnerabilidade. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+          "apoiam": ["jovens", "pobres"],
+          "rejeitam": []
+        },
+        {
+          "id": "foco-conclusao",
+          "rotulo": "Priorizar conclusão — Concentra o apoio nos estudantes em maior risco de abandonar antes de concluir o ensino médio. Não aumenta vagas escolares.",
+          "valor": 3,
+          "efeitos": "Concentra o apoio nos estudantes em maior risco de abandonar antes de concluir o ensino médio. Não aumenta vagas escolares. Alcance hipotético do apoio financeiro destinado a reduzir obstáculos econômicos à permanência no ensino médio.",
+          "apoiam": ["jovens", "pobres"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 1,
+      "maximo": 1
+    },
+    "consequencias": [
+      "educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar",
+      "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres",
+      "educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese",
+      "educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar",
+      "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens",
+      "educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar"
+    ]
+  },
+  "mundo/leis/escola-em-tempo-integral.json": {
+    "id": "escola-em-tempo-integral",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Oferta de jornada escolar ampliada",
+    "descricao": "Apoia a expansão de matrículas em tempo integral, sujeita a vagas, docentes e serviços de apoio.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14640.htm",
+    "processoAutorizacao": "expansao-de-oferta",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "alavanca"
+    },
+    "controle": {
+      "variavel": "oferta_jornada_integral",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "territorios-vulneraveis",
+          "rotulo": "Priorizar territórios vulneráveis — Começa por escolas em áreas com maior vulnerabilidade, ampliando a jornada onde o apoio pode reduzir barreiras de permanência.",
+          "valor": 1,
+          "efeitos": "Começa por escolas em áreas com maior vulnerabilidade, ampliando a jornada onde o apoio pode reduzir barreiras de permanência. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "expandir-gradualmente",
+          "rotulo": "Expandir gradualmente — Cria vagas de jornada ampliada em etapas, limitadas pela capacidade de escolas e docentes. Cresce mais devagar e reduz risco de expansão sem estrutura.",
+          "valor": 2,
+          "efeitos": "Cria vagas de jornada ampliada em etapas, limitadas pela capacidade de escolas e docentes. Cresce mais devagar e reduz risco de expansão sem estrutura. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "jornada-completa",
+          "rotulo": "Ampliar jornada — Acelera a oferta de jornada ampliada. Pode elevar permanência e aprendizagem, mas exige mais capacidade e apresenta custo comparativo maior.",
+          "valor": 3,
+          "efeitos": "Acelera a oferta de jornada ampliada. Pode elevar permanência e aprendizagem, mas exige mais capacidade e apresenta custo comparativo maior. Escala hipotética de expansão de vagas com jornada ampliada, limitada pela capacidade de escolas e docentes.",
+          "apoiam": ["familias com filhos"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 2,
+      "maximo": 2
+    },
+    "consequencias": [
+      "educacao-escola-em-tempo-integral-permanencia_escolar",
+      "educacao-escola-em-tempo-integral-grupo_pobres",
+      "educacao-escola-em-tempo-integral-custo_educacao_hipotese",
+      "educacao-escola-em-tempo-integral-vagas_escolares",
+      "educacao-escola-em-tempo-integral-docentes_disponiveis",
+      "educacao-escola-em-tempo-integral-aprendizagem_escolar"
+    ]
+  },
+  "mundo/leis/piso-salarial-professores.json": {
+    "id": "piso-salarial-professores",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Piso e valorização do magistério público",
+    "descricao": "Define o piso nacional do magistério público da educação básica e sua atualização. O efeito de retenção docente no piloto é hipótese.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15437.htm",
+    "processoAutorizacao": "remuneracao-magisterio",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "valorizacao_magisterio",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "fiscalizar-piso",
+          "rotulo": "Fiscalizar cumprimento — Prioriza identificar redes que não cumprem o piso legal e apoiar a regularização. O modelo não presume aumento automático de aprendizagem.",
+          "valor": 1,
+          "efeitos": "Prioriza identificar redes que não cumprem o piso legal e apoiar a regularização. O modelo não presume aumento automático de aprendizagem. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+          "apoiam": ["servidores públicos"],
+          "rejeitam": []
+        },
+        {
+          "id": "complementar-redes",
+          "rotulo": "Apoiar redes com dificuldade — Prioriza assistência às redes com menor capacidade de financiar o piso. Tem custo comparativo maior e pode reduzir desigualdades de atendimento.",
+          "valor": 2,
+          "efeitos": "Prioriza assistência às redes com menor capacidade de financiar o piso. Tem custo comparativo maior e pode reduzir desigualdades de atendimento. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+          "apoiam": ["servidores públicos"],
+          "rejeitam": []
+        },
+        {
+          "id": "reter-professores",
+          "rotulo": "Reter professores — Prioriza reduzir a saída de docentes e estabilizar equipes. O efeito sobre disponibilidade docente é uma hipótese do piloto.",
+          "valor": 3,
+          "efeitos": "Prioriza reduzir a saída de docentes e estabilizar equipes. O efeito sobre disponibilidade docente é uma hipótese do piloto. Intensidade hipotética de medidas para valorizar e reter profissionais do magistério; não altera automaticamente a quantidade de professores.",
+          "apoiam": ["servidores públicos"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 2,
+      "maximo": 2
+    },
+    "consequencias": [
+      "educacao-piso-salarial-professores-docentes_disponiveis",
+      "educacao-piso-salarial-professores-grupo_servidores",
+      "educacao-piso-salarial-professores-custo_educacao_hipotese",
+      "educacao-piso-salarial-professores-grupo_interior",
+      "educacao-piso-salarial-professores-permanencia_escolar"
+    ]
+  },
+  "mundo/leis/alfabetizacao-na-idade-certa.json": {
+    "id": "alfabetizacao-na-idade-certa",
+    "tipo": "lei",
+    "versaoEsquema": 2,
+    "grupo": "regulatoria",
+    "nome": "Cooperação para alfabetização na idade certa",
+    "descricao": "Organiza assistência técnica e colaboração federativa para alfabetização e recomposição da aprendizagem.",
+    "area": "Educação, ciência e cultura",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15247.htm",
+    "processoAutorizacao": "cooperacao-alfabetizacao",
+    "nivelLegal": "derivada",
+    "revogavel": true,
+    "mesa": {
+      "id": "acesso-e-permanencia",
+      "nome": "Acesso e permanência escolar",
+      "camada": "lei"
+    },
+    "controle": {
+      "variavel": "apoio_alfabetizacao",
+      "unidade": "nivel",
+      "opcoes": [
+        {
+          "id": "alfabetizacao-inicial",
+          "rotulo": "Foco na alfabetização inicial — Concentra apoio pedagógico nos primeiros anos escolares. A melhora de aprendizagem demora a aparecer.",
+          "valor": 1,
+          "efeitos": "Concentra apoio pedagógico nos primeiros anos escolares. A melhora de aprendizagem demora a aparecer. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "recomposicao-aprendizagem",
+          "rotulo": "Recompor aprendizagem — Prioriza estudantes que já apresentam defasagem, buscando recuperar habilidades essenciais; exige identificar necessidades diferentes.",
+          "valor": 2,
+          "efeitos": "Prioriza estudantes que já apresentam defasagem, buscando recuperar habilidades essenciais; exige identificar necessidades diferentes. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        },
+        {
+          "id": "formacao-docente",
+          "rotulo": "Apoiar professores — Direciona assistência técnica e formação a docentes. O resultado depende da aplicação pedagógica e não é automático.",
+          "valor": 3,
+          "efeitos": "Direciona assistência técnica e formação a docentes. O resultado depende da aplicação pedagógica e não é automático. Alcance hipotético da assistência pedagógica e da cooperação para alfabetização; não garante aprendizagem automática.",
+          "apoiam": ["jovens", "familias com filhos"],
+          "rejeitam": []
+        }
+      ]
+    },
+    "implantacaoTurnos": {
+      "minimo": 2,
+      "maximo": 2
+    },
+    "consequencias": [
+      "educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar",
+      "educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese",
+      "educacao-alfabetizacao-na-idade-certa-frequencia_escolar",
+      "educacao-alfabetizacao-na-idade-certa-grupo_jovens",
+      "educacao-alfabetizacao-na-idade-certa-docentes_disponiveis",
+      "educacao-alfabetizacao-na-idade-certa-grupo_servidores"
+    ]
+  },
+  "mundo/consequencias/educacao-demanda-vagas.json": {
+    "id": "educacao-demanda-vagas",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "demanda_escolar",
+    "alvo": "acesso_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -0.25,
+      "termoConstante": 100
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-vagas-acesso.json": {
+    "id": "educacao-vagas-acesso",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "vagas_escolares",
+    "alvo": "acesso_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.4,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-docentes-acesso.json": {
+    "id": "educacao-docentes-acesso",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "docentes_disponiveis",
+    "alvo": "acesso_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.35,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-barreira-acesso.json": {
+    "id": "educacao-barreira-acesso",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "dificuldade_territorial",
+    "alvo": "acesso_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -0.25,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-acesso-frequencia.json": {
+    "id": "educacao-acesso-frequencia",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "acesso_escolar",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.45,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-permanencia-frequencia.json": {
+    "id": "educacao-permanencia-frequencia",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "permanencia_escolar",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.4,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-frequencia-abandono.json": {
+    "id": "educacao-frequencia-abandono",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "frequencia_escolar",
+    "alvo": "abandono_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": -0.65,
+      "termoConstante": 65
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-frequencia-aprendizagem.json": {
+    "id": "educacao-frequencia-aprendizagem",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "frequencia_escolar",
+    "alvo": "aprendizagem_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.45,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-docentes-aprendizagem.json": {
+    "id": "educacao-docentes-aprendizagem",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "docentes_disponiveis",
+    "alvo": "aprendizagem_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.25,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-info-aprendizagem.json": {
+    "id": "educacao-info-aprendizagem",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "informacao_educacional",
+    "alvo": "aprendizagem_escolar",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.15,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-jovens.json": {
+    "id": "educacao-satisfacao-jovens",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_jovens",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-familias.json": {
+    "id": "educacao-satisfacao-familias",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_familias_com_filhos",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-pobres.json": {
+    "id": "educacao-satisfacao-pobres",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_pobres",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-classe-media.json": {
+    "id": "educacao-satisfacao-classe-media",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_classe_media",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-interior.json": {
+    "id": "educacao-satisfacao-interior",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_interior",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-periferias.json": {
+    "id": "educacao-satisfacao-periferias",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_periferias",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-satisfacao-servidores.json": {
+    "id": "educacao-satisfacao-servidores",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "satisfacao_base_pessoas",
+    "alvo": "grupo_servidores",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 1,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-frequencia-grupo-jovens.json": {
+    "id": "educacao-frequencia-grupo-jovens",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "frequencia_escolar",
+    "alvo": "grupo_jovens",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.15,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-frequencia-grupo-familias.json": {
+    "id": "educacao-frequencia-grupo-familias",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "frequencia_escolar",
+    "alvo": "grupo_familias_com_filhos",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.18,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-acesso-grupo-pobres.json": {
+    "id": "educacao-acesso-grupo-pobres",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "acesso_escolar",
+    "alvo": "grupo_pobres",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.12,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-acesso-grupo-interior.json": {
+    "id": "educacao-acesso-grupo-interior",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "acesso_escolar",
+    "alvo": "grupo_interior",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.15,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-acesso-grupo-periferias.json": {
+    "id": "educacao-acesso-grupo-periferias",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "acesso_escolar",
+    "alvo": "grupo_periferias",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.12,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-aprendizagem-grupo-familias.json": {
+    "id": "educacao-aprendizagem-grupo-familias",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "aprendizagem_escolar",
+    "alvo": "grupo_familias_com_filhos",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.12,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-aprendizagem-grupo-servidores.json": {
+    "id": "educacao-aprendizagem-grupo-servidores",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "aprendizagem_escolar",
+    "alvo": "grupo_servidores",
+    "mecanismo": "afim",
+    "parametros": {
+      "coeficiente": 0.08,
+      "termoConstante": 0
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-acesso_escolar.json": {
+    "id": "educacao-ensino-obrigatorio-acesso_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "acesso_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 8],
+        [2, 5],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-frequencia_escolar.json": {
+    "id": "educacao-ensino-obrigatorio-frequencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 5],
+        [2, 0],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-custo_educacao_hipotese.json": {
+    "id": "educacao-ensino-obrigatorio-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 1],
+        [2, 2.5],
+        [3, 1.5]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-vagas_escolares.json": {
+    "id": "educacao-ensino-obrigatorio-vagas_escolares",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "vagas_escolares",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 12],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-permanencia_escolar.json": {
+    "id": "educacao-ensino-obrigatorio-permanencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "permanencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 10]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-ensino-obrigatorio-abandono_escolar.json": {
+    "id": "educacao-ensino-obrigatorio-abandono_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "implementacao_escolaridade_obrigatoria",
+    "alvo": "abandono_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, -6]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-vagas_escolares.json": {
+    "id": "educacao-piso-educacao-vagas_escolares",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "vagas_escolares",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 14],
+        [2, 8],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-acesso_escolar.json": {
+    "id": "educacao-piso-educacao-acesso_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "acesso_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 5],
+        [2, 0],
+        [3, 4]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-custo_educacao_hipotese.json": {
+    "id": "educacao-piso-educacao-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 2.5],
+        [2, 1.5],
+        [3, 1.8]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-frequencia_escolar.json": {
+    "id": "educacao-piso-educacao-frequencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 2],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-dificuldade_territorial.json": {
+    "id": "educacao-piso-educacao-dificuldade_territorial",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "dificuldade_territorial",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, -10]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-educacao-grupo_interior.json": {
+    "id": "educacao-piso-educacao-grupo_interior",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "prioridade_financiamento_educacao",
+    "alvo": "grupo_interior",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 5]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escolha-escolar-financiada-acesso_escolar.json": {
+    "id": "educacao-escolha-escolar-financiada-acesso_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "modelo_provisao_escolar",
+    "alvo": "acesso_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 5],
+        [2, 0],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escolha-escolar-financiada-informacao_educacional.json": {
+    "id": "educacao-escolha-escolar-financiada-informacao_educacional",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "modelo_provisao_escolar",
+    "alvo": "informacao_educacional",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 2],
+        [2, 4],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escolha-escolar-financiada-custo_educacao_hipotese.json": {
+    "id": "educacao-escolha-escolar-financiada-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "modelo_provisao_escolar",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 2.2],
+        [2, 2.8],
+        [3, 1.5]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escolha-escolar-financiada-vagas_escolares.json": {
+    "id": "educacao-escolha-escolar-financiada-vagas_escolares",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "modelo_provisao_escolar",
+    "alvo": "vagas_escolares",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 6],
+        [3, 4]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escolha-escolar-financiada-dificuldade_territorial.json": {
+    "id": "educacao-escolha-escolar-financiada-dificuldade_territorial",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "modelo_provisao_escolar",
+    "alvo": "dificuldade_territorial",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, -3]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 2,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-provisao-publica-exclusiva-custo_educacao_hipotese.json": {
+    "id": "educacao-provisao-publica-exclusiva-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "provisao_publica_exclusiva",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 3],
+        [2, 2.5],
+        [3, 2]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-provisao-publica-exclusiva-grupo_familias_com_filhos.json": {
+    "id": "educacao-provisao-publica-exclusiva-grupo_familias_com_filhos",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "provisao_publica_exclusiva",
+    "alvo": "grupo_familias_com_filhos",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, -2],
+        [2, -2],
+        [3, -1]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 0,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-permanencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "permanencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 9],
+        [2, 7],
+        [3, 8]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_pobres",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "grupo_pobres",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 8],
+        [2, 0],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 1.8],
+        [2, 2.8],
+        [3, 2.2]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-frequencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 5],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-grupo_jovens",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "grupo_jovens",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 5],
+        [3, 7]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar.json": {
+    "id": "educacao-bolsa-de-permanencia-no-ensino-medio-abandono_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_financeiro_permanencia",
+    "alvo": "abandono_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, -10]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 1,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-permanencia_escolar.json": {
+    "id": "educacao-escola-em-tempo-integral-permanencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "permanencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 8],
+        [2, 4],
+        [3, 9]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-grupo_pobres.json": {
+    "id": "educacao-escola-em-tempo-integral-grupo_pobres",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "grupo_pobres",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 5],
+        [2, 0],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-custo_educacao_hipotese.json": {
+    "id": "educacao-escola-em-tempo-integral-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 1.8],
+        [2, 2],
+        [3, 3]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-vagas_escolares.json": {
+    "id": "educacao-escola-em-tempo-integral-vagas_escolares",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "vagas_escolares",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 7],
+        [3, 10]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-docentes_disponiveis.json": {
+    "id": "educacao-escola-em-tempo-integral-docentes_disponiveis",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "docentes_disponiveis",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 4],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-escola-em-tempo-integral-aprendizagem_escolar.json": {
+    "id": "educacao-escola-em-tempo-integral-aprendizagem_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "oferta_jornada_integral",
+    "alvo": "aprendizagem_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 4]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-salarial-professores-docentes_disponiveis.json": {
+    "id": "educacao-piso-salarial-professores-docentes_disponiveis",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "valorizacao_magisterio",
+    "alvo": "docentes_disponiveis",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 4],
+        [2, 8],
+        [3, 12]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-salarial-professores-grupo_servidores.json": {
+    "id": "educacao-piso-salarial-professores-grupo_servidores",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "valorizacao_magisterio",
+    "alvo": "grupo_servidores",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 5],
+        [2, 0],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-salarial-professores-custo_educacao_hipotese.json": {
+    "id": "educacao-piso-salarial-professores-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "valorizacao_magisterio",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 1],
+        [2, 2.5],
+        [3, 2]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-salarial-professores-grupo_interior.json": {
+    "id": "educacao-piso-salarial-professores-grupo_interior",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "valorizacao_magisterio",
+    "alvo": "grupo_interior",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 4],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-piso-salarial-professores-permanencia_escolar.json": {
+    "id": "educacao-piso-salarial-professores-permanencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "valorizacao_magisterio",
+    "alvo": "permanencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 2]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 3,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-aprendizagem_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "aprendizagem_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 10],
+        [2, 8],
+        [3, 7]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-custo_educacao_hipotese",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "custo_educacao_hipotese",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 1.2],
+        [2, 1.8],
+        [3, 1.5]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-frequencia_escolar.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-frequencia_escolar",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "frequencia_escolar",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 2],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_jovens.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-grupo_jovens",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "grupo_jovens",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 3],
+        [3, 0]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-docentes_disponiveis.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-docentes_disponiveis",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "docentes_disponiveis",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 3]
+      ]
+    },
+    "unidade": "indice_0_100_por_passo",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  },
+  "mundo/consequencias/educacao-alfabetizacao-na-idade-certa-grupo_servidores.json": {
+    "id": "educacao-alfabetizacao-na-idade-certa-grupo_servidores",
+    "tipo": "consequencia",
+    "versaoEsquema": 1,
+    "origem": "apoio_alfabetizacao",
+    "alvo": "grupo_servidores",
+    "mecanismo": "pontos",
+    "parametros": {
+      "pontos": [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+        [3, 3]
+      ]
+    },
+    "unidade": "indice_0_100",
+    "atrasoPassos": 4,
+    "duracao": {
+      "modo": "continuo"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "expansao-executada",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "plano_expansao_rede",
+  "alvo": "expansao_executada",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "quantidade",
+  "escala": {
+    "fator": "caixa_publico",
+    "referencia": 1000
+  },
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

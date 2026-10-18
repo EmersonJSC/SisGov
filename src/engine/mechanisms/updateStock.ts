@@ -23,6 +23,7 @@ export function rateUnitFor(stockUnit: string): string | undefined {
     moeda: "moeda_por_passo",
     quantidade: "quantidade_por_passo",
     indice_0_100: "indice_0_100_por_passo",
+    percentual_0_100: "indice_0_100_por_passo",
     percentual_pib: "percentual_pib_por_passo",
   };
   return units[stockUnit];

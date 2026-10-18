@@ -1,0 +1,21 @@
+{
+  "id": "catalogo-base-minima",
+  "tipo": "catalogo-politicas",
+  "versaoEsquema": 1,
+  "politicas": [
+    "mundo/leis/expansao-da-rede-eletrica.json",
+    "mundo/leis/manutencao-da-rede-eletrica.json",
+    "mundo/leis/ensino-obrigatorio.json",
+    "mundo/leis/piso-educacao.json",
+    "mundo/leis/escolha-escolar-financiada.json",
+    "mundo/leis/provisao-publica-exclusiva.json",
+    "mundo/leis/bolsa-de-permanencia-no-ensino-medio.json",
+    "mundo/leis/escola-em-tempo-integral.json",
+    "mundo/leis/piso-salarial-professores.json",
+    "mundo/leis/alfabetizacao-na-idade-certa.json",
+    "mundo/leis/transporte-escolar.json",
+    "mundo/leis/alimentacao-escolar.json",
+    "mundo/leis/avaliacao-das-escolas.json",
+    "mundo/leis/financiamento-com-resultado.json"
+  ]
+}
