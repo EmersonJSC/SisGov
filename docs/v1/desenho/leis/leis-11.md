@@ -1,12 +1,27 @@
 ## Defesa e relações exteriores
 
-São 19 leis: 6 de Constituição, 9 de Lei e 4 de Alavanca; 12 delas ainda têm ponto aberto.
+O estudo original reunia 19 fichas: 6 de Constituição, 9 de Lei e 4 de Alavanca; 12 delas ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 19 registros nesta área; 19 fichas recentes, 0 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura. Lado em dois eixos: economia (−1 Estado, +1 mercado) e costumes (−1 liberal nos costumes, +1 conservador ou autoridade). Os lados das opções vêm do estudo, medidos pelos códigos do Manifesto Project (militar positivo ou negativo, internacionalismo, integração regional, anti-imperialismo, paz). Nenhuma votação nominal da área foi aberta. Nenhum item da lista “pontos para o autor” do inventário está marcado como aceito; por isso os quatro aparecem como ponto aberto nas fichas que tocam.
 
 ### Forças Armadas
 
 #### Papel das Forças Armadas
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:01`; tabela antiga: papel-das-forcas-armadas.
+- **Ciclos:** C13 Policiamento e investigação, C15 Drogas e cuidado, C21 Defesa e relações externas.
+- **Decisão:** Para que servem as Forças Armadas dentro do país?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe de Serviço militar, Indústria de defesa, Missões de paz, Proteção de fronteiras e Cibersegurança (ver travas abaixo).; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mão firme contra facções → Segurança interna ampla (correspondência textual; conferir intenção do programa); Forças Armadas contra o crime → Segurança interna ampla (correspondência textual; conferir intenção do programa); Guerra às drogas → Segurança interna ampla (correspondência textual; conferir intenção do programa); Erradicação na origem → Segurança interna ampla (correspondência textual; conferir intenção do programa); País sem exército → Sem Forças Armadas (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Para que servem as Forças Armadas dentro do país?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo
@@ -28,6 +43,19 @@ Travas: Sem Forças Armadas trava Serviço militar (só “sem Forças Armadas�
 
 #### Controle civil das Forças Armadas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:02`; tabela antiga: controle-civil-das-forcas-armadas.
+- **Ciclos:** C17 Instituições e integridade, C21 Defesa e relações externas.
+- **Decisão:** Quem manda nos militares e eles podem fazer política?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Tutela militar trava “plena” em Liberdade de imprensa e em Independência do Judiciário.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Acertar contas com o passado → Controle civil reforçado: carreira civil na Defesa, quarentena antes de eleição e de cargo político, justiça militar só para crime militar (correspondência textual; conferir intenção do programa); País sem exército → Controle civil reforçado: carreira civil na Defesa, quarentena antes de eleição e de cargo político, justiça militar só para crime militar (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem manda nos militares e eles podem fazer política?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo
 **Mãe:** nenhuma. Tutela militar trava “plena” em Liberdade de imprensa e em Independência do Judiciário.
@@ -44,6 +72,19 @@ Travas: Sem Forças Armadas trava Serviço militar (só “sem Forças Armadas�
 **Países que usam:** Tutela militar: Mianmar, Egito (aprox.). Ministérios militares: Brasil até 1999 (aprox.). Ministério civil: Brasil. Controle reforçado: Argentina, Chile (aprox.).
 
 #### Serviço militar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:03`; tabela antiga: servico-militar.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Quem serve nas Forças Armadas, e é obrigado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel das Forças Armadas. “Sem Forças Armadas” lá trava esta lei em “sem Forças Armadas”.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Neutralidade armada → Universal (homens e mulheres) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem serve nas Forças Armadas, e é obrigado?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica (passa a Reescreve se o autor aceitar tirar a opção “sem Forças Armadas”)
@@ -66,6 +107,19 @@ O estudo só dá a direção: o alistamento obrigatório é militar positivo e o
 
 #### Proteção social dos militares
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:04`; tabela antiga: protecao-social-dos-militares.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Como se aposentam os militares e quanto recebem as pensões?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Sistema previdenciário (Fiscal e Social). Se for capitalização, só ficam “regras do servidor civil” e “regime geral com fundo”.; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Como se aposentam os militares e quanto recebem as pensões?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
 **Mãe:** Sistema previdenciário (Fiscal e Social). Se for capitalização, só ficam “regras do servidor civil” e “regime geral com fundo”.
@@ -83,6 +137,19 @@ O estudo só dá a direção: o alistamento obrigatório é militar positivo e o
 **Pontos abertos:** lado só pelo código do Manifesto; a votação da reforma militar de 2019 não foi aberta (lacuna do estudo).
 
 #### Indústria de defesa
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:05`; tabela antiga: industria-de-defesa.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** O país compra armas prontas ou fabrica aqui?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel das Forças Armadas (“sem Forças Armadas” trava esta lei). Empresas estatais e privatização: “estatal de defesa” exige que estatais sejam permitidas.; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Dissuasão nuclear → Estatal de defesa (correspondência textual; conferir intenção do programa); Neutralidade armada → Estatal de defesa (correspondência textual; conferir intenção do programa); Indústria de defesa nacional → Estatal de defesa (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O país compra armas prontas ou fabrica aqui?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
@@ -102,6 +169,19 @@ O estudo só dá a direção: o alistamento obrigatório é militar positivo e o
 
 #### Exportação de armas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:06`; tabela antiga: exportacao-de-armas.
+- **Ciclos:** C03 Produção, comércio e empresas, C21 Defesa e relações externas.
+- **Decisão:** A quem o país pode vender armas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Indústria de defesa nacional → Livre (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A quem o país pode vender armas?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -118,6 +198,19 @@ O estudo só dá a direção: o alistamento obrigatório é militar positivo e o
 **Países que usam:** Controle humanitário: Alemanha, Suécia (aprox.). Controle comercial: Brasil (aprox.). Proibida e livre: o estudo não cita país.
 
 #### Gasto com defesa
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:07`; tabela antiga: gasto-com-defesa.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Quanto do PIB o país gasta com defesa?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Aliança militar. “Defesa mútua” cria um piso de 2% do PIB.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Dissuasão nuclear → 2,0% (meta da OTAN) (opção proposta por leitura do programa e da ficha; validar juridicamente); Aliança com uma potência → 2,0% (meta da OTAN) (opção proposta por leitura do programa e da ficha; validar juridicamente); País sem exército → 0,5% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto do PIB o país gasta com defesa?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
@@ -139,6 +232,19 @@ Efeito no PIB: pequeno, positivo até um teto e negativo acima dele. Só a parte
 
 #### Investimento em defesa
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:08`; tabela antiga: investimento-em-defesa.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Que fatia do gasto com defesa vai para equipamento e custeio, e não para pessoal?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Gasto com defesa (é uma fatia dele).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Que fatia do gasto com defesa vai para equipamento e custeio, e não para pessoal?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Gasto com defesa (é uma fatia dele).
@@ -158,6 +264,19 @@ Efeito no PIB: pequeno, positivo até um teto e negativo acima dele. Só a parte
 ### Política externa
 
 #### Alinhamento externo
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:09`; tabela antiga: alinhamento-externo.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** De que lado do mundo o país fica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Aliança militar (“bases estrangeiras” trava esta lei em “alinhamento com potência ocidental” ou “ocidental pragmático”). Programa nuclear (“dissuasão nuclear” mexe nesta lei, ver pontos abertos). É mãe de Integração regional e Missões de paz.; ver dependências acima.
+- **Prazo:** 1 turno (decisão do Executivo, com custo de credibilidade a cada troca); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Erradicação na origem → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Aliança com uma potência → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Não alinhamento ativo → Não alinhamento ativo (hoje no Brasil, tradição) (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** De que lado do mundo o país fica?
 **Camada:** Lei · **Implantação:** 1 turno (decisão do Executivo, com custo de credibilidade a cada troca) · **Inventário:** Novo
@@ -180,6 +299,19 @@ Trocar de lado mexe nas exportações por cerca de 1 ano (um gesto que desagrada
 
 #### Integração regional
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:10`; tabela antiga: integracao-regional.
+- **Ciclos:** C03 Produção, comércio e empresas, C21 Defesa e relações externas.
+- **Decisão:** Quanto o país se amarra aos vizinhos em blocos políticos e de defesa?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Alinhamento externo (“isolamento soberanista” trava esta lei em “fora dos blocos”).; ver dependências acima.
+- **Prazo:** 1 turno (sai e volta por decreto); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Não alinhamento ativo → Integração supranacional (correspondência textual; conferir intenção do programa); Mercado comum regional → Integração supranacional (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto o país se amarra aos vizinhos em blocos políticos e de defesa?
 **Camada:** Lei · **Implantação:** 1 turno (sai e volta por decreto) · **Inventário:** Novo
 **Mãe:** Alinhamento externo (“isolamento soberanista” trava esta lei em “fora dos blocos”).
@@ -196,6 +328,19 @@ Trocar de lado mexe nas exportações por cerca de 1 ano (um gesto que desagrada
 **Países que usam:** Fora dos blocos: Brasil 2019 a 2022 (fora do bloco sul-americano). Cooperação flexível: fórum sul-americano criado em 2019. Intergovernamental: blocos sul-americanos e do Cone Sul. Supranacional: União Europeia.
 
 #### Aliança militar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:11`; tabela antiga: alianca-militar.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Com quem o país se compromete a lutar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe de Gasto com defesa (piso) e de Alinhamento externo (trava).; ver dependências acima.
+- **Prazo:** 4 turnos (tratado aprovado pelo Congresso); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Neutralidade armada → Neutralidade permanente (correspondência textual; conferir intenção do programa); Aliança com uma potência → Bases estrangeiras (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Com quem o país se compromete a lutar?
 **Camada:** Constituição · **Implantação:** 4 turnos (tratado aprovado pelo Congresso) · **Inventário:** Novo
@@ -218,6 +363,19 @@ Compromissos de apoio ofensivo ou de não intervenção sobem as disputas; defes
 
 #### Missões de paz
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:12`; tabela antiga: missoes-de-paz.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** O país manda soldados para missões de paz da ONU?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel das Forças Armadas e Serviço militar (“sem Forças Armadas” deixa só observadores civis). Alinhamento externo (“isolamento soberanista” trava em “nenhuma”).; ver dependências acima.
+- **Prazo:** 2 turnos (cada envio passa pelo Congresso); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O país manda soldados para missões de paz da ONU?
 **Camada:** Lei · **Implantação:** 2 turnos (cada envio passa pelo Congresso) · **Inventário:** Novo
 **Mãe:** Papel das Forças Armadas e Serviço militar (“sem Forças Armadas” deixa só observadores civis). Alinhamento externo (“isolamento soberanista” trava em “nenhuma”).
@@ -237,6 +395,19 @@ Custo líquido: custo menos o reembolso da ONU (US$ 1.428 por soldado por mês),
 
 #### Tribunais e tratados internacionais
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:13`; tabela antiga: tribunais-e-tratados-internacionais.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Quanto as cortes e os tratados de fora valem dentro do país?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. “Tratados acima da lei” trava a pena de morte em Garantias penais.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto as cortes e os tratados de fora valem dentro do país?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo
 **Mãe:** nenhuma. “Tratados acima da lei” trava a pena de morte em Garantias penais.
@@ -253,6 +424,19 @@ Custo líquido: custo menos o reembolso da ONU (US$ 1.428 por soldado por mês),
 **Países que usam:** Soberania plena: EUA (fora do tribunal penal internacional). Adesão plena: Brasil (aprox.). Tratados acima da lei: Argentina (aprox.).
 
 #### Política de sanções
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:14`; tabela antiga: politica-de-sancoes.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** O que o país faz com as sanções que outros países aplicam?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O que o país faz com as sanções que outros países aplicam?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
@@ -273,6 +457,19 @@ Quando o próprio país é sancionado (eventos sanções internacionais e respon
 
 #### Rede diplomática
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:15`; tabela antiga: rede-diplomatica.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Quantas embaixadas e consulados o país mantém no exterior?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Não alinhamento ativo → 280 postos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quantas embaixadas e consulados o país mantém no exterior?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -292,6 +489,19 @@ Expandir é internacionalismo; cortar é soberania e ação sozinha.
 
 #### Cooperação internacional
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:16`; tabela antiga: cooperacao-internacional.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Quanto da renda nacional o país dá em ajuda a outros países?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Erradicação na origem → 0,7% (meta da ONU e da OCDE) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto da renda nacional o país dá em ajuda a outros países?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -309,6 +519,19 @@ Expandir é internacionalismo; cortar é soberania e ação sozinha.
 ### Soberania nuclear, digital e de fronteira
 
 #### Programa nuclear
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:17`; tabela antiga: programa-nuclear-lei.
+- **Ciclos:** C21 Defesa e relações externas.
+- **Decisão:** Para que o país usa o átomo e quanto deixa ser inspecionado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. É mãe de Energia nuclear (Ambiente): “proibido” trava a energia nuclear em proibida. “Dissuasão nuclear” mexe no Alinhamento externo.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Dissuasão nuclear → Dissuasão nuclear (arma) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Para que o país usa o átomo e quanto deixa ser inspecionado?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Novo (substitui o evento programa nuclear)
@@ -328,6 +551,19 @@ Expandir é internacionalismo; cortar é soberania e ação sozinha.
 
 #### Cibersegurança
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:18`; tabela antiga: ciberseguranca.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quem protege o país na internet, e com que poder?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel das Forças Armadas (“comando militar ofensivo” exige que haja Forças Armadas). Proteção de dados (Direitos): a agência ganha bônus de efeito com lei geral de dados ou mais.; ver dependências acima.
+- **Prazo:** 2 turnos (agência criada por lei); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem protege o país na internet, e com que poder?
 **Camada:** Lei · **Implantação:** 2 turnos (agência criada por lei) · **Inventário:** Novo
 **Mãe:** Papel das Forças Armadas (“comando militar ofensivo” exige que haja Forças Armadas). Proteção de dados (Direitos): a agência ganha bônus de efeito com lei geral de dados ou mais.
@@ -345,6 +581,19 @@ Expandir é internacionalismo; cortar é soberania e ação sozinha.
 **Pontos abertos:** entra na segunda leva da mesa Soberania (não marcado).
 
 #### Proteção de fronteiras
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-11:19`; tabela antiga: protecao-de-fronteiras.
+- **Ciclos:** C16 Direitos e costumes, C21 Defesa e relações externas.
+- **Decisão:** Quem vigia a fronteira e com que poder?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Papel das Forças Armadas (“Forças Armadas com poder de polícia” exige no mínimo uso interno excepcional; “segurança interna ampla” libera).; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Fronteira fechada → Barreira física e militarização (correspondência textual; conferir intenção do programa); Proibido sair → Barreira física e militarização (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem vigia a fronteira e com que poder?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo

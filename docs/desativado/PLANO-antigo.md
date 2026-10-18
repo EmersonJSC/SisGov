@@ -807,6 +807,10 @@ referência, não prazo.
 
 ## 10. Checklist de execução (ordem proposta) — **fonte única de status**
 
+**Reexecução produtiva — 10/out/2026:** sobre `bc43e29`, três partidas de 16 turnos (base, privada e estatal), investimentos e revisão fiscal anual. [Relatório](docs/testes/estrategias-produtivas-2026-10-10.md) e evidências JSON na mesma pasta. Sem alteração de implementação, sem aceite, sem `npm run check`; documentos ainda sem commit.
+
+**Execução exploratória solicitada pelo autor — 10/out/2026:** testes de partidas e estresse da rede sobre `c19d691`; relatório em [docs/testes/relatorio-rede-2026-10-10.md](docs/testes/relatorio-rede-2026-10-10.md), com evidências JSON na mesma pasta. Rodada adicional: 461 escolhas válidas, 576 ações aleatórias em 72 turnos, repetição/reversão/ordem de ações, previsões e limites dos controles. Achados e limitações no relatório; nenhuma implementação alterada ou aceite concedido. `npm run check` não executado; relatório ainda sem commit.
+
 Marque `[x]` só com o aceite demonstrado e `npm run check` verde. Anote ao lado:
 data, commit e teste.
 

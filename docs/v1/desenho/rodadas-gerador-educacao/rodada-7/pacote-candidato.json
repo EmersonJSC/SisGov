@@ -1,0 +1,13 @@
+{
+  "tipo": "pacote-de-programas-ilha-teste",
+  "rodada": 7,
+  "programas": ["pe-de-meia", "escola-em-tempo-integral", "pnae"],
+  "opcoes": {
+    "bolsa-de-permanencia-no-ensino-medio": "foco-conclusao",
+    "escola-em-tempo-integral": "jornada-completa",
+    "alimentacao-escolar": "qualidade-nutricional"
+  },
+  "problema": "Matrícula sem apoio material e jornada adequada não garante frequência e conclusão.",
+  "justificativaDaEvolucao": "Combina transferência, jornada ampliada e alimentação e observa efeitos conjuntos por renda e perfil familiar.",
+  "leisGeradasNovamentePelaFonte": false
+}

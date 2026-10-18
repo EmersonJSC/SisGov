@@ -1,6 +1,8 @@
 ## Educação, ciência e cultura
 
-São 22 leis: 3 de Constituição, 11 de Lei e 8 de Alavanca; 10 delas têm ponto aberto (5 são estudo curto).
+O estudo original reunia 22 fichas: 3 de Constituição, 11 de Lei e 8 de Alavanca; 10 delas têm ponto aberto (5 são estudo curto).
+
+**Conciliação de 17/out/2026:** 22 registros nesta área; 22 fichas recentes, 0 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura:
 - Grupos com "(proposto)" ainda não existem no jogo. O inventário recomenda criá-los, mas o autor ainda não marcou esse ponto.
@@ -11,6 +13,19 @@ Notas de leitura:
 ### Escola
 
 #### Ensino obrigatório
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:01`; tabela antiga: ensino-obrigatorio.
+- **Ciclos:** C05 Transferência e pobreza, C08 Educação básica.
+- **Decisão:** Até que idade o Estado obriga a criança a estar na escola e garante a vaga?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Renda com condições → Dos 4 aos 17 anos (hoje no Brasil) (correspondência textual; conferir intenção do programa); Campanha de alfabetização em massa → Dos 4 aos 17 anos (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Até que idade o Estado obriga a criança a estar na escola e garante a vaga?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -28,6 +43,19 @@ Notas de leitura:
 **Países que usam:** Dos 4 aos 17: Brasil, Portugal, Holanda. Só o primário: países de baixa renda.
 
 #### Piso de gasto em educação
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:02`; tabela antiga: piso-educacao.
+- **Ciclos:** C08 Educação básica, C09 Ensino superior e pesquisa.
+- **Decisão:** O governo é obrigado a gastar uma parte mínima da receita com educação?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma nesta área. Conflita com a Regra fiscal (área Fiscal): com teto de gastos, a vinculação cresce sozinha com a receita e aperta o resto do orçamento.; ver dependências acima.
+- **Prazo:** 4 turnos para a regra; o valor vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola em tempo integral → Meta de 10% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Universidade pública gratuita → Meta de 10% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Valorizar o professor → Meta de 10% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo é obrigado a gastar uma parte mínima da receita com educação?
 **Camada:** Constituição (a regra) com valor de Alavanca · **Implantação:** 4 turnos para a regra; o valor vale no turno seguinte · **Inventário:** Reescreve (sobe a regra para a Constituição; o valor fica como alavanca)
@@ -48,6 +76,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Financiamento com resultado
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:03`; tabela antiga: financiamento-com-resultado.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O dinheiro que vai para as redes de ensino depende só do número de alunos ou também do resultado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Avaliação das escolas. "Sem avaliação" trava "Parte por resultado" e "Resultado com apoio técnico".; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Alfabetização com metas → Resultado com apoio técnico (hoje no Ceará) (correspondência textual; conferir intenção do programa); Escola pública com gestão privada → Resultado com apoio técnico (hoje no Ceará) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O dinheiro que vai para as redes de ensino depende só do número de alunos ou também do resultado?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
 **Mãe:** Avaliação das escolas. "Sem avaliação" trava "Parte por resultado" e "Resultado com apoio técnico".
@@ -63,6 +104,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Parte por resultado e com apoio: Ceará; 25 estados aprovaram a versão no repasse de imposto estadual até 2023. Por aluno: a maioria.
 
 #### Avaliação das escolas
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:04`; tabela antiga: avaliacao-das-escolas.
+- **Ciclos:** C08 Educação básica, C09 Ensino superior e pesquisa.
+- **Decisão:** O país mede o que os alunos aprendem, e o que faz com o resultado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mérito sem cotas → Com consequências (bônus e intervenção) (correspondência textual; conferir intenção do programa); Escola pública única → Sem avaliação (correspondência textual; conferir intenção do programa); Alfabetização com metas → Com consequências (bônus e intervenção) (correspondência textual; conferir intenção do programa); Vouchers escolares → Com consequências (bônus e intervenção) (correspondência textual; conferir intenção do programa); Escola pública com gestão privada → Com consequências (bônus e intervenção) (correspondência textual; conferir intenção do programa); Valorizar o professor → Com consequências (bônus e intervenção) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O país mede o que os alunos aprendem, e o que faz com o resultado?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -81,6 +135,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Escola em tempo integral
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:05`; tabela antiga: escola-em-tempo-integral.
+- **Ciclos:** C07 Moradia e cidade, C08 Educação básica, C13 Policiamento e investigação.
+- **Decisão:** Quantas escolas funcionam o dia inteiro?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Ensino obrigatório. "Universal" exige "Dos 4 aos 17 anos" (ou mais verba).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → Integral universal (correspondência textual; conferir intenção do programa); Urbanismo social nas periferias → Integral universal (correspondência textual; conferir intenção do programa); Escola em tempo integral → Integral universal (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quantas escolas funcionam o dia inteiro?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
 **Mãe:** Ensino obrigatório. "Universal" exige "Dos 4 aos 17 anos" (ou mais verba).
@@ -97,6 +164,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Bolsa de permanência no ensino médio
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:06`; tabela antiga: bolsa-de-permanencia-no-ensino-medio.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O governo paga o jovem pobre para ele ficar na escola até concluir o médio?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Ensino obrigatório. "Sem obrigatoriedade" e "Só o primário" travam esta lei; "Dos 4 aos 17 anos" libera.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola em tempo integral → Universal (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O governo paga o jovem pobre para ele ficar na escola até concluir o médio?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo
 **Mãe:** Ensino obrigatório. "Sem obrigatoriedade" e "Só o primário" travam esta lei; "Dos 4 aos 17 anos" libera.
@@ -112,6 +192,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Focalizada: Brasil, México, Colômbia.
 
 #### Piso salarial dos professores
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:07`; tabela antiga: piso-salarial-professores.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O país fixa um salário mínimo nacional para o professor da escola pública?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Salário de elite" pede Estabilidade dos servidores na opção "com avaliação" (Instituições).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Valorizar o professor → Salário de elite com seleção dura (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O país fixa um salário mínimo nacional para o professor da escola pública?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
@@ -130,6 +223,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Vouchers escolares
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:08`; tabela antiga: vouchers-escolares.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O dinheiro público pode pagar escola privada escolhida pela família?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Avaliação das escolas. "Sem avaliação" trava todas as opções menos "Só escola estatal".; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola pública única → Só escola estatal (hoje no Brasil) (correspondência textual; conferir intenção do programa); Vouchers escolares → Voucher universal (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O dinheiro público pode pagar escola privada escolhida pela família?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
 **Mãe:** Avaliação das escolas. "Sem avaliação" trava todas as opções menos "Só escola estatal".
@@ -146,6 +252,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Terceirizada: EUA, Inglaterra. Só para pobres: Chile, Colômbia. Universal: Chile até 2015, Suécia.
 
 #### Educação domiciliar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:09`; tabela antiga: educacao-domiciliar.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** A família pode ensinar o filho em casa, sem matricular na escola?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Ensino obrigatório. "Sem obrigatoriedade" e "Só o primário" esvaziam a opção "Proibida".; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola da família e da fé → Livre (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A família pode ensinar o filho em casa, sem matricular na escola?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -164,6 +283,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Ensino técnico e profissional
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:10`; tabela antiga: ensino-tecnico-e-profissional.
+- **Ciclos:** C03 Produção, comércio e empresas, C08 Educação básica.
+- **Decisão:** Que espaço o ensino técnico tem na escola?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Economia social de mercado → Separação precoce, aos 10 a 12 anos (correspondência textual; conferir intenção do programa); Indústria exportadora dirigida → Técnico em massa, integrado ao médio (opção corrigida por sentido do programa; validar evidência); Ensino técnico com empresa → Técnico em massa, integrado ao médio (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Que espaço o ensino técnico tem na escola?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -180,6 +312,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Integrado: Brasil (rede federal), Finlândia. Separação precoce: Alemanha, Áustria.
 
 #### Gestão da escola pública
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:11`; tabela antiga: diretor-por-merito, gestao-da-escola-publica, escolas-civico-militares.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** Quem escolhe e comanda o diretor da escola pública?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola pública com gestão privada → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Escola com disciplina militar → Cívico-militar (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem escolhe e comanda o diretor da escola pública?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Reescreve (ganha a opção diretor por mérito)
@@ -199,6 +344,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Conteúdo moral e sexual
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:12`; tabela antiga: conteudo-moral-e-sexual.
+- **Ciclos:** C08 Educação básica, C16 Direitos e costumes.
+- **Decisão:** O que a escola pode ensinar sobre sexualidade, gênero e valores?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Escola com disciplina militar → Proibido, com controle do que o professor diz (correspondência textual; conferir intenção do programa); Escola da família e da fé → A família escolhe se o filho assiste (opção corrigida por sentido do programa; validar evidência); Agenda religiosa → Proibido, com controle do que o professor diz (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O que a escola pode ensinar sobre sexualidade, gênero e valores?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -215,6 +373,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Integral: Holanda, Suécia. Biologia e saúde: maioria da OCDE. Família escolhe: Inglaterra (em parte). Proibido: Hungria, Rússia.
 
 #### Alfabetização na idade certa
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:13`; tabela antiga: alfabetizacao-na-idade-certa.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O governo central organiza um esforço para que toda criança leia e escreva até o fim do 2º ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Metas com apoio e incentivo" só funciona se Avaliação das escolas não for "Sem avaliação" (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte (efeito na aprendizagem em 2 a 4 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Alfabetização com metas → Método único de ensino da leitura definido pelo governo central (correspondência textual; conferir intenção do programa); Campanha de alfabetização em massa → Método único de ensino da leitura definido pelo governo central (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo central organiza um esforço para que toda criança leia e escreva até o fim do 2º ano?
 **Camada:** Alavanca · **Implantação:** turno seguinte (efeito na aprendizagem em 2 a 4 anos) · **Inventário:** Novo
@@ -237,6 +408,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Acesso ao ensino superior
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:14`; tabela antiga: acesso-ao-ensino-superior.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** Quem paga a universidade pública, e quem entra nela?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem paga a universidade pública, e quem entra nela?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -256,6 +440,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Ações afirmativas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:15`; tabela antiga: acoes-afirmativas.
+- **Ciclos:** C09 Ensino superior e pesquisa.
+- **Decisão:** A universidade reserva vagas para grupos em desvantagem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acesso ao ensino superior: "Paga pela família" esvazia esta lei. A opção com recorte racial depende de Igualdade racial nas opções "recorte racial" ou "estatuto" (Direitos).; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ações afirmativas → Reserva ampla, mais de 50%, também em concursos (correspondência textual; conferir intenção do programa); Mérito sem cotas → Proibidas (correspondência textual; conferir intenção do programa); Universidade pública gratuita → Reserva ampla, mais de 50%, também em concursos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A universidade reserva vagas para grupos em desvantagem?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Fica
 **Mãe:** Acesso ao ensino superior: "Paga pela família" esvazia esta lei. A opção com recorte racial depende de Igualdade racial nas opções "recorte racial" ou "estatuto" (Direitos).
@@ -273,6 +470,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Proibidas: EUA, França. Sociais: Chile. Sociais e raciais: Brasil, Índia. Reserva ampla: Índia.
 
 #### Crédito estudantil
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:16`; tabela antiga: credito-estudantil.
+- **Ciclos:** C03 Produção, comércio e empresas, C09 Ensino superior e pesquisa.
+- **Decisão:** O governo empresta ou paga para o jovem estudar em faculdade privada?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acesso ao ensino superior. Com "Paga pela família" ou "Empréstimo pago conforme a renda", esta lei passa a valer também para a universidade pública (proposta minha).; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Crédito para estudar → Empréstimo com pagamento descontado da renda depois de formado (hoje no Brasil) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo empresta ou paga para o jovem estudar em faculdade privada?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
@@ -292,6 +502,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Pontos abertos:** Estudo curto. Falta o custo anual em % do PIB de cada opção. A opção "Pagamento pela renda" repete a ideia da opção de mesmo nome em Acesso ao ensino superior: confirmar se as duas leis ficam separadas (uma para a pública, outra para a privada).
 
 #### Vagas públicas no ensino superior
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:17`; tabela antiga: vagas-publicas-no-ensino-superior.
+- **Ciclos:** C08 Educação básica, C09 Ensino superior e pesquisa.
+- **Decisão:** Quantas vagas a universidade pública oferece?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Acesso ao ensino superior. "Gratuita para todos" exige o ponto "Expansão" ou acima (proposta minha). Com "Paga pela família", as vagas públicas passam a ser pagas.; ver dependências acima.
+- **Prazo:** turno seguinte (vagas novas formam gente em 4 a 6 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Ações afirmativas → Máximo: expansão, ~40% das matrículas (proposta minha) (correspondência textual; conferir intenção do programa); Universidade pública gratuita → Máximo: expansão, ~40% das matrículas (proposta minha) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quantas vagas a universidade pública oferece?
 **Camada:** Alavanca · **Implantação:** turno seguinte (vagas novas formam gente em 4 a 6 anos) · **Inventário:** Novo
@@ -313,6 +536,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Investimento em pesquisa
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:18`; tabela antiga: investimento-pesquisa.
+- **Ciclos:** C09 Ensino superior e pesquisa, C18 Terra, agro e alimentos.
+- **Decisão:** Quanto dinheiro público vai para ciência e tecnologia?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** turno seguinte (efeito em inovação em 5 a 10 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Estado inovador → Alto: 1,0% do PIB ou mais (opção proposta por leitura do programa e da ficha; validar juridicamente); Trazer talentos de volta → Alto: 1,0% do PIB ou mais (opção proposta por leitura do programa e da ficha; validar juridicamente); Revolução verde → Alto: 1,0% do PIB ou mais (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto dinheiro público vai para ciência e tecnologia?
 **Camada:** Alavanca · **Implantação:** turno seguinte (efeito em inovação em 5 a 10 anos) · **Inventário:** Reescreve (ganha faixas; as bolsas saem e viram lei própria)
 **Mãe:** nenhuma
@@ -330,6 +566,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Programa espacial e satélites
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:19`; tabela antiga: programa-espacial-e-satelites.
+- **Ciclos:** C08 Educação básica.
+- **Decisão:** O país investe em satélites e foguetes próprios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O país investe em satélites e foguetes próprios?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Reescreve (ganha opções)
 **Mãe:** nenhuma
@@ -345,6 +594,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Países que usam:** Parceria: Brasil. Lançador próprio: Índia.
 
 #### Incentivo à cultura
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:20`; tabela antiga: incentivo-a-cultura.
+- **Ciclos:** C07 Moradia e cidade, C08 Educação básica.
+- **Decisão:** Como o Estado financia a cultura?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Urbanismo social nas periferias → Editais públicos diretos (opção corrigida por mecanismo do programa; validar fonte).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como o Estado financia a cultura?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -365,6 +627,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 
 #### Incentivo fiscal a pesquisa nas empresas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:21`; tabela antiga: incentivo-fiscal-a-pesquisa-nas-empresas.
+- **Ciclos:** C09 Ensino superior e pesquisa.
+- **Decisão:** A empresa que faz pesquisa paga menos imposto?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 turno (efeito em inovação em 3 a 5 anos, proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Estado inovador → Crédito também para empresa com prejuízo e startups, pago em dinheiro se não houver imposto (opção proposta por leitura do programa e da ficha; validar juridicamente); Trazer talentos de volta → Crédito também para empresa com prejuízo e startups, pago em dinheiro se não houver imposto (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A empresa que faz pesquisa paga menos imposto?
 **Camada:** Lei · **Implantação:** 1 turno (efeito em inovação em 3 a 5 anos, proposta minha) · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -383,6 +658,19 @@ Faixa da alavanca (opções com vinculação): mínimo 18% da receita da União;
 **Pontos abertos:** Estudo curto. A renúncia anual atual e a parte do gasto que é adicional (que não seria feita sem o incentivo) são lacuna; o dado por empresa é sigiloso.
 
 #### Bolsas de pós-graduação
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-06:22`; tabela antiga: bolsas-de-pos-graduacao.
+- **Ciclos:** C08 Educação básica, C09 Ensino superior e pesquisa.
+- **Decisão:** Quantas bolsas o governo paga a mestrandos e doutorandos, e de que valor?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Investimento em pesquisa no ponto "Baixo" com bolsas no "Expansão" é permitido, mas o efeito em inovação fica menor (proposta minha).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Estado inovador → Máximo: mais bolsas e valor perto de um salário inicial de pesquisador (proposta minha) (opção proposta por leitura do programa e da ficha; validar juridicamente); Trazer talentos de volta → Máximo: mais bolsas e valor perto de um salário inicial de pesquisador (proposta minha) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quantas bolsas o governo paga a mestrandos e doutorandos, e de que valor?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Novo (separada de Investimento em pesquisa)

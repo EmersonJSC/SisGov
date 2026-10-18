@@ -1243,3 +1243,81 @@ Autor: decide a arquitetura e revisa cada lei.
 **Você vê.** Versão 1 pronta.
 
 **Divisão.** Claude: Prepara. Autor: Faz o push e publica.
+
+## Protótipos isolados
+
+### G-01: Gerador regenerável da Ilha Teste — C1 Educação
+
+**Status.** Em andamento na branch `codex/gerador-teste-evolucao`; não integra
+à versão 1 nem à configuração brasileira.
+
+**Objetivo.** Fazer do gerador procedural a fonte editável do ecossistema de leis
+e grupos do piloto. Ele parte de programas pesquisados, compõe relações entre
+problemas, programas, leis, opções, grupos e consequências, e evolui o mesmo
+protótipo em dez rodadas: cinco lotes de leis e cinco pacotes integrados dos
+programas pesquisados.
+
+**Entra**
+
+- Inclusão e alteração das leis somente em `scripts/gerador/educacaoC1.ts` e
+  nos dados de entrada do gerador; JSON gerado não pode ser editado à mão.
+- O catálogo de entrada (`scripts/gerador/programasEducacao.ts`) registra cada
+  programa-semente com problema, descrição, fonte verificável, leis relacionadas
+  e grupos afetados. As rodadas formam pacotes acumulados a partir dessas
+  relações; não criam leis ou grupos sem fonte.
+- Pares de leis excludentes são registrados somente quando regulam o mesmo
+  objeto com regras incompatíveis, com fonte para ambos os lados. Candidatos
+  pesquisados aparecem no relatório antes de virarem leis jogáveis. A bússola
+  audita cada opção que tiver posição fundamentada; a contraparte não é
+  escondida do mapa por ser oposta.
+- A composição pode variar entre sementes e combinações nas evoluções futuras;
+  cada resultado registra versão, contador, semente, fontes e relações usadas.
+  Consistência significa referências válidas e cadeias explicáveis, não saída
+  idêntica em todas as execuções.
+- Cada lei vigente começa em uma opção concreta; leis alternativas podem começar
+  no catálogo. Não gerar “Manter situação atual”. Nível zero significa ausente.
+- Um comando para remover somente as saídas registradas pelo gerador e
+  reconstruir os cinco candidatos-base, cinco pacotes evolutivos, relatórios,
+  memória de aprendizados e o pacote final da Ilha Teste, incrementando o
+  contador persistente de geração.
+- Em cada rodada, validação estrutural e simulação da base, das três opções de
+  cada lei isoladamente, de combinações e de recuperação.
+- Relatórios mostram programas-semente, leis e grupos sociais cobertos, camadas
+  jurídicas representadas e lacunas nos quatro quadrantes políticos; hipótese
+  de posição política não é promovida a fato nem deslocada para preencher lacuna.
+- Reproducibilidade por semente e verificação de que as três opções de cada lei
+  levam a resultados distintos nas métricas simuladas.
+- Preservar arquivos do Brasil e conteúdo que não esteja sob propriedade do
+  manifesto do gerador.
+
+**Não entra**
+
+- Mudanças adicionais no motor, carregador ou interface do jogo.
+- Edição manual de conteúdo gerado, integração à `main` ou promoção à produção.
+
+**Aceite**
+
+- [x] Cinco rodadas geradas e carregadas pelo contrato atual.
+- [x] Mais cinco rodadas com pacotes integrados, comparação com o pacote
+      anterior, diagnóstico e registro explícito da evolução; sem leis novas
+      quando a pesquisa não trouxe novas fontes.
+- [x] Cada lei expõe três estratégias e as três geram trajetórias distintas
+      na bateria fixa da rodada.
+- [x] O manifesto registra os arquivos próprios, a semente e os aprendizados;
+      uma execução seguinte limpa somente saídas próprias antes de reconstruir.
+- [x] O contador de geração persiste e identifica a mesma execução nos relatórios
+      (teste em `src/tests/geradorEducacao.test.ts`).
+- [x] Teste específico `src/tests/geradorEducacao.test.ts` passa.
+- [x] O par escolar tem duas leis jogáveis sobre o mesmo objeto, com
+      incompatibilidade demonstrada nos dois sentidos; o relatório distingue
+      candidatos pesquisados das leis geradas.
+- [ ] Fundamentar as posições na bússola e modelar transferências patrimoniais
+      e indenização como lançamentos monetários, sem inventar dados reais.
+- [ ] `npm run check` passa sem erros.
+- [ ] Playtest humano confirma que as decisões são claras e interessantes.
+
+**Você vê.** A saída gerada da Ilha Teste muda após executar o gerador; o
+contrato de leis e a decisão do jogo passam a bloquear pares incompatíveis.
+
+**Divisão.** Claude: mantém e testa o gerador. Autor: revisa as opções e joga a
+quinta rodada antes de qualquer promoção.

@@ -1,6 +1,8 @@
 ## Previdência, assistência, moradia e demografia
 
-São 16 leis: 4 de Constituição, 8 de Lei e 4 de Alavanca; 4 ainda têm ponto aberto.
+O estudo original reunia 16 fichas: 4 de Constituição, 8 de Lei e 4 de Alavanca; 4 ainda têm ponto aberto.
+
+**Conciliação de 17/out/2026:** 19 registros nesta área; 16 fichas recentes, 3 legados sem ficha e 0 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 Notas de leitura:
 - Lados vêm do estudo da área (códigos do Manifesto Project e votos de 2019), salvo onde diz "(estimado)".
@@ -10,6 +12,19 @@ Notas de leitura:
 ### Mesa Previdência
 
 #### Como a aposentadoria é financiada
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:01`; tabela antiga: como-a-aposentadoria-e-financiada.
+- **Ciclos:** C03 Produção, comércio e empresas, C06 Previdência e cuidado.
+- **Decisão:** O trabalhador de hoje paga o aposentado de hoje, cada um poupa para si, ou uma mistura?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Benefício a idosos e pessoas com deficiência: a opção "nenhum" trava a opção sem sistema (idosos sem renda nenhuma levam a evento de crise).; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Choque liberal → Capitalização (cada um poupa para si) (opção proposta por leitura do programa e da ficha; validar juridicamente); Aposentadoria por conta individual → Capitalização (cada um poupa para si) (opção proposta por leitura do programa e da ficha; validar juridicamente); Conta nocional → Misto (pilar público + conta individual) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O trabalhador de hoje paga o aposentado de hoje, cada um poupa para si, ou uma mistura?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
@@ -29,6 +44,19 @@ Trava: capitalização tranca o reajuste pelo salário mínimo e a trava tripla;
 **Países que usam:** Capitalização: Chile (1980 a 2008). Misto: Chile após 2008, Suécia, Colômbia. Repartição: Brasil, Alemanha, França.
 
 #### Idade mínima para se aposentar
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:02`; tabela antiga: idade-minima-aposentadoria.
+- **Ciclos:** C02 Tributos e dívida, C05 Transferência e pobreza, C06 Previdência e cuidado.
+- **Decisão:** A partir de que idade a pessoa pode se aposentar?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Austeridade com corte de Estado → Atrelada à expectativa de vida (correspondência textual; conferir intenção do programa); Reforma da idade e das regras → Atrelada à expectativa de vida (correspondência textual; conferir intenção do programa); Conta nocional → Atrelada à expectativa de vida (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A partir de que idade a pessoa pode se aposentar?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (sobe de Lei para Constituição)
@@ -50,6 +78,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 
 #### Pensão para viúvos e órfãos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:03`; tabela antiga: pensao-por-morte.
+- **Ciclos:** C06 Previdência e cuidado.
+- **Decisão:** Quanto recebem o cônjuge e os filhos de quem morre?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Reforma da idade e das regras → Nenhuma (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto recebem o cônjuge e os filhos de quem morre?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -67,6 +108,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 
 #### Aposentadoria do trabalhador rural
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:04`; tabela antiga: previdencia-rural.
+- **Ciclos:** C06 Previdência e cuidado.
+- **Decisão:** O agricultor familiar se aposenta como o urbano ou com regra própria?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Como a aposentadoria é financiada: a opção sem sistema tranca esta lei.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Pensão sem contribuição → Comprovação de atividade, sem contribuir como o urbano (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Aposentadoria rural ampla → Comprovação de atividade, sem contribuir como o urbano (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O agricultor familiar se aposenta como o urbano ou com regra própria?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** Como a aposentadoria é financiada: a opção sem sistema tranca esta lei.
@@ -83,6 +137,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 **Países que usam:** Caixa agrícola: Alemanha (aprox.). Comprovação de atividade: Brasil.
 
 #### Regra de reajuste dos benefícios
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:05`; tabela antiga: regra-de-reajuste-dos-beneficios.
+- **Ciclos:** C02 Tributos e dívida, C04 Trabalho e renda, C05 Transferência e pobreza, C06 Previdência e cuidado.
+- **Decisão:** Como aposentadorias e pensões são corrigidas a cada ano?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Como a aposentadoria é financiada: capitalização tranca "salário mínimo" e "trava tripla".; ver dependências acima.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Teto de gastos → Discricionário (o governo decide) (correspondência textual; conferir intenção do programa); Salário mínimo forte → Trava tripla (o maior entre inflação, salários e piso) (correspondência textual; conferir intenção do programa); Reforma da idade e das regras → Discricionário (o governo decide) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como aposentadorias e pensões são corrigidas a cada ano?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Fica
@@ -104,6 +171,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 
 #### Renda para idosos e pessoas com deficiência pobres
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:06`; tabela antiga: renda-para-idosos-e-pessoas-com-deficiencia-pobres.
+- **Ciclos:** C05 Transferência e pobreza, C06 Previdência e cuidado.
+- **Decisão:** O Estado paga renda a idoso ou pessoa com deficiência pobre que nunca contribuiu? Quanto e para quem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Esta lei é mãe de "Como a aposentadoria é financiada": a opção "nenhum" trava a opção sem sistema.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Pensão sem contribuição → Universal (pensão social para todo idoso) (correspondência textual; conferir intenção do programa); Aposentadoria rural ampla → Universal (pensão social para todo idoso) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O Estado paga renda a idoso ou pessoa com deficiência pobre que nunca contribuiu? Quanto e para quem?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma. Esta lei é mãe de "Como a aposentadoria é financiada": a opção "nenhum" trava a opção sem sistema.
@@ -120,6 +200,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 **Países que usam:** Focalizado estrito: Chile (PGU), México (aprox.). Focalizado amplo: Brasil. Universal: Bolívia (Renta Dignidad), Nova Zelândia (aprox.).
 
 #### Transferência de renda às famílias pobres
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:07`; tabela antiga: condicionalidades, renda-universal, transferencia-de-renda.
+- **Ciclos:** C05 Transferência e pobreza, C07 Moradia e cidade, C16 Direitos e costumes.
+- **Decisão:** Quanto o Estado transfere em dinheiro às famílias pobres, e com que regra?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** vale no turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Renda com condições → Médio, com valor por criança (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Renda para todos → Renda básica universal (opção proposta por leitura do programa e da ficha; validar juridicamente); Renda com condições → Médio, com valor por criança (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Fome zero → Médio, com valor por criança (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Benefício em troca de trabalho → lacuna: opção nova a decidir (sem equivalência textual segura); Igreja e comunidade primeiro → lacuna: opção nova a decidir (sem equivalência textual segura); Moradia primeiro → Médio, com valor por criança (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente); Política familiar universal → Médio, com valor por criança (hoje no Brasil) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o Estado transfere em dinheiro às famílias pobres, e com que regra?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte · **Inventário:** Reescreve (ganha níveis)
@@ -138,6 +231,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 
 #### Garantia de comida
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:08`; tabela antiga: garantia-de-comida.
+- **Ciclos:** C05 Transferência e pobreza, C18 Terra, agro e alimentos.
+- **Decisão:** Além do dinheiro, como o Estado garante que as pessoas comam?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Comida barata → Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar) (correspondência textual; conferir intenção do programa); Comida garantida → Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar) (correspondência textual; conferir intenção do programa); Fome zero → Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar) (correspondência textual; conferir intenção do programa); Apoio à agricultura familiar → Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje no Brasil há merenda e compra da agricultura familiar) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Além do dinheiro, como o Estado garante que as pessoas comam?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -154,6 +260,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 **Países que usam:** Cartão alimentação: EUA (SNAP). Distribuição ampla: Índia (sistema público de distribuição).
 
 #### Organização dos programas sociais
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:09`; tabela antiga: organizacao-dos-programas-sociais.
+- **Ciclos:** C05 Transferência e pobreza.
+- **Decisão:** Cada ministério cuida do seu programa, ou o governo junta todos em missões com meta comum (por exemplo, "zerar a fome")?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. Esta lei multiplica o efeito das outras leis da mesa.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Renda com condições → Missões com meta medida (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Cada ministério cuida do seu programa, ou o governo junta todos em missões com meta comum (por exemplo, "zerar a fome")?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
@@ -173,6 +292,19 @@ Efeito comum: votar esta lei dispara o risco do evento de protesto de aposentado
 
 #### Direito à moradia na Constituição
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:10`; tabela antiga: direito-a-moradia-na-constituicao.
+- **Ciclos:** C07 Moradia e cidade.
+- **Decisão:** Ter onde morar é um direito, e ele pode ser cobrado na Justiça?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Título para quem ocupa → Garantida e exigível na Justiça (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Ter onde morar é um direito, e ele pode ser cobrado na Justiça?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -191,6 +323,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 
 #### Como o Estado entrega casa
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:11`; tabela antiga: habitacao-publica.
+- **Ciclos:** C05 Transferência e pobreza, C07 Moradia e cidade.
+- **Decisão:** O Estado ajuda a pagar o aluguel, financia a compra, vende o imóvel público, aluga casa própria dele ou dá casa primeiro a quem está na rua?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Moradia pública de aluguel → Aluguel social em imóvel público (opção corrigida por sentido do programa; validar evidência); Moradia primeiro → Moradia primeiro, para quem está na rua (opção corrigida por sentido do programa; validar evidência).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O Estado ajuda a pagar o aluguel, financia a compra, vende o imóvel público, aluga casa própria dele ou dá casa primeiro a quem está na rua?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (de 3 para 5 opções)
 **Mãe:** nenhuma
@@ -208,6 +353,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 **Países que usam:** Vale-aluguel: EUA (Section 8), Chile (aprox.). Financiamento subsidiado: Brasil, México. Venda ao morador: Reino Unido (Right to Buy). Aluguel social público: Viena, Singapura. Moradia primeiro: Finlândia, Canadá.
 
 #### Verba do programa habitacional
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:12`; tabela antiga: programa-habitacao-popular.
+- **Ciclos:** C05 Transferência e pobreza, C07 Moradia e cidade.
+- **Decisão:** Quanto o governo gasta por ano para construir ou subsidiar moradia popular?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Direito à moradia na Constituição: "garantida" tranca a verba abaixo de um mínimo (valor do mínimo: lacuna).; ver dependências acima.
+- **Prazo:** vale no turno seguinte; o déficit cai com atraso de 2 a 4 anos (tempo de obra); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Urbanismo social nas periferias → Máximo: 1% do PIB (proposta minha) (opção proposta por leitura do programa e da ficha; validar juridicamente); Casa própria subsidiada → Máximo: 1% do PIB (proposta minha) (opção proposta por leitura do programa e da ficha; validar juridicamente); Família primeiro → Máximo: 1% do PIB (proposta minha) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta por ano para construir ou subsidiar moradia popular?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte; o déficit cai com atraso de 2 a 4 anos (tempo de obra) · **Inventário:** Fica
@@ -228,6 +386,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 
 #### Licença para cuidar do bebê
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:13`; tabela antiga: licenca-parental.
+- **Ciclos:** C04 Trabalho e renda, C05 Transferência e pobreza, C08 Educação básica.
+- **Decisão:** Quanto tempo pai e mãe ficam em casa com o bebê, quem paga e como a licença se divide?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Igualdade de gênero no trabalho → Dividida, com cota só do pai (correspondência textual; conferir intenção do programa); Creche para todos → Dividida, com cota só do pai (correspondência textual; conferir intenção do programa); Família primeiro → Dividida, com cota só do pai (correspondência textual; conferir intenção do programa); Política familiar universal → Dividida, com cota só do pai (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto tempo pai e mãe ficam em casa com o bebê, quem paga e como a licença se divide?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (ganha a opção de 1 ano paga pelo salário)
 **Mãe:** nenhuma
@@ -247,6 +418,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 
 #### Quem cuida do idoso dependente
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:14`; tabela antiga: quem-cuida-do-idoso-dependente.
+- **Ciclos:** C05 Transferência e pobreza, C06 Previdência e cuidado.
+- **Decisão:** O idoso que não consegue se cuidar fica com a família, com a assistência para pobres, com um seguro obrigatório ou com um serviço público?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Seguro de cuidados de idosos → Serviço público universal (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O idoso que não consegue se cuidar fica com a família, com a assistência para pobres, com um seguro obrigatório ou com um serviço público?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Fica
 **Mãe:** nenhuma
@@ -263,6 +447,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 **Países que usam:** Família: Brasil, Itália (aprox.). Assistência só para pobres: EUA (Medicaid), Inglaterra. Seguro: Japão (2000), Alemanha (1995) (aprox.). Universal: Suécia, Holanda, Dinamarca.
 
 #### Política de natalidade
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:15`; tabela antiga: politica-de-natalidade.
+- **Ciclos:** C05 Transferência e pobreza, C16 Direitos e costumes.
+- **Decisão:** O Estado tenta mudar o número de filhos que as famílias têm, e com que meios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Aborto (Direitos): a opção coercitiva a favor de filhos exige aborto proibido ou só em risco de vida. A opção coercitiva contra filhos é barrada pela laicidade e pela independência do Judiciário (vira evento de crise).; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; o efeito no nó de fecundidade vem com atraso de 1 ano; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Limite de filhos → Contra filhos, por coerção (correspondência textual; conferir intenção do programa); Família primeiro → Natalidade intensa (bônus grande, mãe isenta de imposto, crédito perdoado por filho) (opção proposta por leitura do programa e da ficha; validar juridicamente); Natalidade à força → A favor de filhos, por coerção (restringe contracepção e aborto) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O Estado tenta mudar o número de filhos que as famílias têm, e com que meios?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos; o efeito no nó de fecundidade vem com atraso de 1 ano · **Inventário:** Fica
@@ -283,6 +480,19 @@ Trava: "garantida" tranca a verba do programa habitacional abaixo de um mínimo.
 
 #### Vagas de creche
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-04:16`; tabela antiga: vagas-de-creche.
+- **Ciclos:** C04 Trabalho e renda, C05 Transferência e pobreza, C08 Educação básica.
+- **Decisão:** Quantas crianças de 0 a 3 anos têm vaga em creche paga pelo Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma; nenhuma descrita.
+- **Prazo:** vale no turno seguinte; vagas novas levam obra (atraso de 1 a 2 anos, proposta minha); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Igualdade de gênero no trabalho → Máximo: cobertura dos países nórdicos (correspondência textual; conferir intenção do programa); Creche para todos → Máximo: cobertura dos países nórdicos (correspondência textual; conferir intenção do programa); Política familiar universal → Máximo: cobertura dos países nórdicos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quantas crianças de 0 a 3 anos têm vaga em creche paga pelo Estado?
 **Camada:** Alavanca · **Implantação:** vale no turno seguinte; vagas novas levam obra (atraso de 1 a 2 anos, proposta minha) · **Inventário:** Novo
 **Mãe:** nenhuma
@@ -300,3 +510,64 @@ Estudo curto: revisar.
 **Leis relacionadas:** Licença para cuidar do bebê, Política de natalidade, Transferência de renda às famílias pobres (esta área); Ensino obrigatório, Escola em tempo integral, Piso de gasto em educação (Educação); Igualdade salarial de gênero (Trabalho).
 **Países que usam:** Cobertura alta: Suécia, Islândia, Noruega, França. Cobertura baixa: EUA, Colômbia, Costa Rica (gasto abaixo de 0,5% do PIB).
 **Pontos abertos:** Onde mora a lei: o inventário recomenda Família e cuidados, com seta para Educação (proposta minha, ainda não aceita pelo autor). Faltam o custo em % do PIB no Brasil e o tamanho do efeito na fecundidade e no trabalho das mães.
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Controle do aluguel
+
+**ID de origem:** `controle-de-aluguel`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 170.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:controle-de-aluguel`; tabela antiga: controle-de-aluguel.
+- **Ciclos:** C07 Moradia e cidade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Congelar o aluguel → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Microcrédito
+
+**ID de origem:** `microcredito`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 174.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:microcredito`; tabela antiga: microcredito.
+- **Ciclos:** C03 Produção, comércio e empresas, C07 Moradia e cidade.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Microcrédito → opção nova pendente (opção antiga; falta ficha recente); Título para quem ocupa → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Trabalho em troca do benefício
+
+**ID de origem:** `exigencia-de-trabalho-para-beneficio`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 181.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:exigencia-de-trabalho-para-beneficio`; tabela antiga: exigencia-de-trabalho-para-beneficio.
+- **Ciclos:** C05 Transferência e pobreza.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Imposto de renda negativo → opção nova pendente (opção antiga; falta ficha recente); Benefício em troca de trabalho → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->

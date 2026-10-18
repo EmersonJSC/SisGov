@@ -1,10 +1,25 @@
 ## Segurança, penas, drogas e armas
 
-São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto aberto (3 delas são "Estudo curto: revisar").
+O estudo original reunia 25 fichas: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto aberto (3 delas são "Estudo curto: revisar").
+
+**Conciliação de 17/out/2026:** 29 registros nesta área; 25 fichas recentes, 3 legados sem ficha e 1 alavanca nova. As contagens por camada e pontos abertos do parágrafo anterior descrevem apenas o estudo original.
 
 ### Polícias
 
 #### Coordenação das polícias
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:01`; tabela antiga: coordenacao-das-policias.
+- **Ciclos:** C13 Policiamento e investigação, C17 Instituições e integridade.
+- **Decisão:** Quem manda nas polícias e quem faz a regra geral da segurança: cada estado, um sistema nacional coordenado ou uma polícia nacional?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Polícia nacional" trava Ciclo policial e Natureza da polícia de rua, que passam a ser decididos no nível nacional.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância comunitária do partido → Polícia nacional (uma força só) (correspondência textual; conferir intenção do programa); Gestão por resultados na segurança → Sistema único coordenado (regra nacional e fundo) (opção corrigida por mecanismo do programa; validar fonte).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem manda nas polícias e quem faz a regra geral da segurança: cada estado, um sistema nacional coordenado ou uma polícia nacional?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (era "Polícias dos estados")
@@ -23,6 +38,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Ciclo policial
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:02`; tabela antiga: ciclo-policial.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** A mesma polícia que patrulha também investiga, ou as duas tarefas ficam com polícias diferentes?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Coordenação das polícias ("polícia nacional" trava esta lei). Natureza da polícia de rua "civil" libera o ciclo completo sem passar pelo Exército.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A mesma polícia que patrulha também investiga, ou as duas tarefas ficam com polícias diferentes?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Fica
 **Mãe:** Coordenação das polícias ("polícia nacional" trava esta lei). Natureza da polícia de rua "civil" libera o ciclo completo sem passar pelo Exército.
@@ -38,6 +66,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Pontos abertos:** o grupo Associações de policiais fica dos dois lados desta lei; o motor precisa dividir o grupo em dois tons (delegados e PM) ou escolher um. Efeito no esclarecimento: lacuna.
 
 #### Natureza da polícia de rua
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:03`; tabela antiga: natureza-da-policia-de-rua.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** A polícia que patrulha a rua é militar, com justiça militar, ou civil, com justiça comum?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Coordenação das polícias ("polícia nacional" trava esta lei).; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Polícia de proximidade → Civil, desmilitarizada (opção corrigida por sentido do programa; validar evidência); Forças Armadas contra o crime → Militar, força auxiliar do Exército (hoje no Brasil) (corrigida por significado da opção).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A polícia que patrulha a rua é militar, com justiça militar, ou civil, com justiça comum?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (só o nome; era "Polícia militar")
@@ -55,6 +96,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Câmeras corporais
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:04`; tabela antiga: cameras-corporais.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** O policial de rua usa câmera, e quem decide quando ela grava?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte (efeito pleno em meses); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → Gravação contínua (opção proposta por leitura do programa e da ficha; validar juridicamente); Polícia de proximidade → Gravação contínua (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O policial de rua usa câmera, e quem decide quando ela grava?
 **Camada:** Alavanca · **Implantação:** turno seguinte (efeito pleno em meses) · **Inventário:** Reescreve (de liga e desliga para 3 opções)
 **Mãe:** nenhuma.
@@ -70,6 +124,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** acionada pelo policial: EUA (vários); gravação contínua: Reino Unido.
 
 #### Fundo de segurança pública
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:05`; tabela antiga: fundo-seguranca-publica.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quanto o governo central transfere aos estados para segurança e presídios?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Coordenação das polícias ("sistema único coordenado" obriga parte do fundo a ir direto aos estados).; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → Máximo: 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Gestão por resultados na segurança → Máximo: 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Polícia de proximidade → Máximo: 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Desarmamento e recompra → Máximo: 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Proteção à mulher → Máximo: 0,2% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo central transfere aos estados para segurança e presídios?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
@@ -88,6 +155,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Verba da Polícia Federal
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:06`; tabela antiga: verba-policia-federal.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quanto dinheiro vai para a polícia federal que cuida de crime entre estados, fronteira e corrupção?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto dinheiro vai para a polícia federal que cuida de crime entre estados, fronteira e corrupção?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -104,6 +184,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Pontos abertos:** Estudo curto: revisar. A verba total da polícia federal de hoje não foi achada em fonte aberta. A faixa em % da verba atual é proposta minha.
 
 #### Policiamento orientado
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:07`; tabela antiga: policiamento-orientado.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** O governo adota um programa de prevenção focada, e qual: lugares quentes, metas com dados ou dissuasão com serviços?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → Dissuasão focada com serviços (aviso a grupos de risco e oferta de saída) (correspondência textual; conferir intenção do programa); Gestão por resultados na segurança → Metas e gestão (pacto com dados e cobrança) (opção corrigida por mecanismo do programa; validar fonte); Polícia de proximidade → lacuna: opção exata do programa não representada ou não inferível (sem equivalência semântica segura); Tolerância zero → Dissuasão focada com serviços (aviso a grupos de risco e oferta de saída) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O governo adota um programa de prevenção focada, e qual: lugares quentes, metas com dados ou dissuasão com serviços?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
@@ -125,6 +218,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Pena de morte
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:08`; tabela antiga: garantias-penais, pena-de-morte.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões, C15 Drogas e cuidado, C17 Instituições e integridade.
+- **Decisão:** O Estado pode matar como pena, e para quais crimes?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha de massa contra o crime → Crimes hediondos (opção proposta por leitura do programa e da ficha; validar juridicamente); Prisão longa para reincidentes → Crimes hediondos (opção proposta por leitura do programa e da ficha; validar juridicamente); Mão firme contra facções → Crimes hediondos (opção proposta por leitura do programa e da ficha; validar juridicamente); Pena capital → Também para tráfico (opção proposta por leitura do programa e da ficha; validar juridicamente); Guerra às drogas → Crimes hediondos (opção proposta por leitura do programa e da ficha; validar juridicamente); Campanha de massa contra o crime → Crimes hediondos (opção proposta por leitura do programa e da ficha; validar juridicamente); Pena capital → Também para tráfico (opção proposta por leitura do programa e da ficha; validar juridicamente); Proibição moral máxima → Também para tráfico (correspondência textual; conferir intenção do programa); Purga anticorrupção do partido → Também para tráfico (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O Estado pode matar como pena, e para quais crimes?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Junta ("Garantias penais" e "Pena de morte" viram uma lei só)
 **Mãe:** nenhuma.
@@ -143,6 +249,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Maioridade penal
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:09`; tabela antiga: maioridade-penal.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** A partir de que idade quem comete crime grave é julgado como adulto?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** proposta de emenda constitucional; quórum/competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 4 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mão firme contra facções → 16 anos em crimes graves (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A partir de que idade quem comete crime grave é julgado como adulto?
 **Camada:** Constituição · **Implantação:** 4 turnos · **Inventário:** Reescreve (3 opções)
 **Mãe:** nenhuma.
@@ -158,6 +277,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** 18 anos: maioria dos países (aprox.); internação longa: Alemanha (sistema juvenil até 21); 16 anos: EUA (vários estados).
 
 #### Penas e progressão
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:10`; tabela antiga: penas-e-progressao.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões, C15 Drogas e cuidado.
+- **Decisão:** Quanto tempo se fica preso e como o preso volta aos poucos para a rua?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Sem progressão" exige Vagas em presídios alta; sem isso, dispara rebelião.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha de massa contra o crime → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa); Tolerância zero → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa); Prisão longa para reincidentes → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa); Mão firme contra facções → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa); Presídio que ressocializa → Penas curtas e alternativas (correspondência textual; conferir intenção do programa); Pena capital → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa); Guerra às drogas → Sem progressão (pena inteira em regime fechado) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto tempo se fica preso e como o preso volta aos poucos para a rua?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (4 opções)
@@ -176,6 +308,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Excludente de ilicitude
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:11`; tabela antiga: excludente-de-ilicitude.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quando o policial que mata em serviço deixa de ser punido?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Cidadão armado → Amplo: inclui "medo, surpresa ou violenta emoção" (correspondência textual; conferir intenção do programa); Forças Armadas contra o crime → Amplo: inclui "medo, surpresa ou violenta emoção" (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quando o policial que mata em serviço deixa de ser punido?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -192,6 +337,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Delação premiada e acordos
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:12`; tabela antiga: delacao-premiada.
+- **Ciclos:** C14 Justiça e prisões.
+- **Decisão:** O acusado pode trocar informação ou confissão por pena menor, e com que controle?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Força-tarefa e delação → Acordo como regra (o réu negocia a pena) (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** O acusado pode trocar informação ou confissão por pena menor, e com que controle?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -207,6 +365,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** delação com juiz: Brasil, Itália; acordo como regra: EUA.
 
 #### Vagas em presídios
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:13`; tabela antiga: vagas-em-presidios.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões, C15 Drogas e cuidado.
+- **Decisão:** Quanto o governo gasta para manter e abrir vagas nas prisões?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte (obra nova leva 2 a 4 anos); efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Tolerância zero → Máximo: 0,30% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Prisão longa para reincidentes → Máximo: 0,30% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Mão firme contra facções → Máximo: 0,30% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente); Guerra às drogas → Máximo: 0,30% do PIB (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quanto o governo gasta para manter e abrir vagas nas prisões?
 **Camada:** Alavanca · **Implantação:** turno seguinte (obra nova leva 2 a 4 anos) · **Inventário:** Fica
@@ -225,6 +396,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Alternativas penais e audiência de custódia
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:14`; tabela antiga: alternativas-penais.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões, C15 Drogas e cuidado.
+- **Decisão:** Quem ainda não foi julgado ou cometeu crime leve vai para a prisão ou cumpre pena fora dela?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → Alternativas amplas (correspondência textual; conferir intenção do programa); Presídio que ressocializa → Alternativas amplas (correspondência textual; conferir intenção do programa); Drogas como questão de saúde → Alternativas amplas (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem ainda não foi julgado ou cometeu crime leve vai para a prisão ou cumpre pena fora dela?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Novo
 **Mãe:** nenhuma.
@@ -240,6 +424,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** alternativas amplas: Noruega, Holanda (estimado); custódia e alternativas: Brasil.
 
 #### Regime contra facções
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:15`; tabela antiga: regime-contra-faccoes.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** O Estado cria regras especiais contra facções, e até onde vão: isolar líderes e tomar bens, ou suspender garantias?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Mão firme contra facções → Estado de exceção (prisão em massa sem as garantias de sempre) (correspondência textual; conferir intenção do programa); Trégua negociada com gangues → Sem regime especial (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** O Estado cria regras especiais contra facções, e até onde vão: isolar líderes e tomar bens, ou suspender garantias?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Novo
@@ -257,6 +454,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Pontos abertos:** a Lei Antifacção de 2025 não foi conferida (pode mudar o "hoje no Brasil"). Falta ligar o estado de exceção às regras de exceção de Instituições, para não haver duas leis da mesma coisa.
 
 #### Gestão dos presídios
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:16`; tabela antiga: gestao-privada-dos-presidios, gestao-dos-presidios.
+- **Ciclos:** C14 Justiça e prisões.
+- **Decisão:** Quem administra a prisão: o Estado, uma empresa que presta serviços ao Estado ou uma empresa que constrói e opera?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Quem administra a prisão: o Estado, uma empresa que presta serviços ao Estado ou uma empresa que constrói e opera?
 **Camada:** Lei · **Implantação:** 2 turnos · **Inventário:** Novo
@@ -276,6 +486,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 ### Violência doméstica
 
 #### Proteção contra violência doméstica
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:17`; tabela antiga: protecao-contra-violencia-domestica.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Como o Estado trata a violência contra a mulher dentro de casa?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Proteção à mulher → Proteção integral (juizados, casas-abrigo, patrulha e renda) (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Como o Estado trata a violência contra a mulher dentro de casa?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** vinda de Família e sexualidade (Novo nesta área)
@@ -297,6 +520,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Lei de drogas
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:18`; tabela antiga: lei-de-drogas.
+- **Ciclos:** C15 Drogas e cuidado.
+- **Decisão:** Quem porta droga para uso é preso, multado ou encaminhado à saúde, e quem decide quem é usuário?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma. "Guerra às drogas" trava Cannabis.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Drogas como questão de saúde → Uso tratado como saúde: todas as drogas descriminalizadas para uso (corrigida por significado da opção); Guerra às drogas → Guerra às drogas: porte é crime, sem critério de quantidade (corrigida por significado da opção); Redução de danos → Uso tratado como saúde: todas as drogas descriminalizadas para uso (corrigida por significado da opção); Proibição moral máxima → Guerra às drogas: porte é crime, sem critério de quantidade (opção proposta por leitura do programa e da ficha; validar juridicamente); Internação e comunidades de fé → Guerra às drogas: porte é crime, sem critério de quantidade (opção proposta por leitura do programa e da ficha; validar juridicamente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem porta droga para uso é preso, multado ou encaminhado à saúde, e quem decide quem é usuário?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (ganha "critério objetivo": 4 opções)
 **Mãe:** nenhuma. "Guerra às drogas" trava Cannabis.
@@ -314,6 +550,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Pontos abertos:** o Senado aprovou pôr a proibição do porte na Constituição. Falta decidir se isso vira uma opção de Constituição separada (que travaria esta lei e a Cannabis) ou só um custo maior para mudar esta lei.
 
 #### Cannabis
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:19`; tabela antiga: cannabis-legal.
+- **Ciclos:** C13 Policiamento e investigação, C15 Drogas e cuidado.
+- **Decisão:** A maconha é proibida, só remédio, ou se pode plantar, comprar do Estado ou comprar em loja?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Lei de drogas: "guerra às drogas" trava esta lei; as outras três opções liberam.; ver dependências acima.
+- **Prazo:** 1 a 2 turnos; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Maconha regulada → Lojas comerciais (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A maconha é proibida, só remédio, ou se pode plantar, comprar do Estado ou comprar em loja?
 **Camada:** Lei · **Implantação:** 1 a 2 turnos · **Inventário:** Reescreve (deixa de ser filha e ganha "proibida" e "só medicinal": 5 opções)
@@ -335,6 +584,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Armas de fogo
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:20`; tabela antiga: armas-de-fogo.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quem pode ter e portar arma, quantas e com quanta munição?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Cidadão armado → Facilitadas: 4 armas, 5.000 cartuchos por ano, atirador amplo (correspondência textual; conferir intenção do programa); Desarmamento e recompra → Proibidas para civis (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quem pode ter e portar arma, quantas e com quanta munição?
 **Camada:** Lei (com decretos que mudam o detalhe) · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -354,6 +616,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Interceptação de comunicações
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:21`; tabela antiga: interceptacao-de-comunicacoes.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** A polícia pode escutar telefone e ler mensagens, e com que ordem e prazo?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância por câmeras e dados → Sem ordem, por segurança nacional (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A polícia pode escutar telefone e ler mensagens, e com que ordem e prazo?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -370,6 +645,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** com ordem e prazo: Brasil, Alemanha; sem ordem: El Salvador, China.
 
 #### Câmeras e reconhecimento facial
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:22`; tabela antiga: cameras-e-reconhecimento-facial.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** A polícia pode identificar rostos em câmeras públicas, e onde?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Vigilância por câmeras e dados → Cadastro nacional de rostos (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** A polícia pode identificar rostos em câmeras públicas, e onde?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -388,6 +676,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Poderes de investigação
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:23`; tabela antiga: poderes-de-investigacao.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões, C17 Instituições e integridade.
+- **Decisão:** A polícia pode infiltrar agentes, adiar prisões para seguir o grupo e pedir dados sem ordem do juiz?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Tolerância zero → Acesso a dados e sigilo sem ordem (correspondência textual; conferir intenção do programa); Cidadão armado → Acesso a dados e sigilo sem ordem (correspondência textual; conferir intenção do programa); Agência anticorrupção independente → Infiltração e ação controlada, com juiz (hoje no Brasil, aprox.) (opção corrigida por sentido do programa; validar evidência); Força-tarefa e delação → Acesso a dados e sigilo sem ordem (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** A polícia pode infiltrar agentes, adiar prisões para seguir o grupo e pedir dados sem ordem do juiz?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -403,6 +704,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Países que usam:** infiltração com juiz: Brasil (estimado); outros: lacuna.
 
 #### Vigilância de bairro
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:24`; tabela antiga: vigilancia-de-bairro.
+- **Ciclos:** C13 Policiamento e investigação, C17 Instituições e integridade.
+- **Decisão:** Moradores ajudam a vigiar o bairro, e sob o controle de quem?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** processo legislativo e sanção; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** 1 turno; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha de massa contra o crime → Voluntários com a polícia (conselhos comunitários) (opção corrigida por sentido do programa; validar evidência); Vigilância comunitária do partido → Comitês do Estado (correspondência textual; conferir intenção do programa).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
 
 **Decisão:** Moradores ajudam a vigiar o bairro, e sob o controle de quem?
 **Camada:** Lei · **Implantação:** 1 turno · **Inventário:** Fica
@@ -420,6 +734,19 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 
 #### Agência de inteligência
 
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `leis-07:25`; tabela antiga: agencia-de-inteligencia.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** Quanto dinheiro vai para o serviço de inteligência do Estado?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** nenhuma.; ver dependências acima.
+- **Prazo:** turno seguinte; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** nenhum vínculo antigo; definir se entra em programa.
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
 **Decisão:** Quanto dinheiro vai para o serviço de inteligência do Estado?
 **Camada:** Alavanca · **Implantação:** turno seguinte · **Inventário:** Fica
 **Mãe:** nenhuma.
@@ -434,3 +761,93 @@ São 25 leis: 5 de Constituição, 15 de Lei e 5 Alavancas; 15 ainda têm ponto 
 **Leis relacionadas:** Interceptação de comunicações, Verba da Polícia Federal; em Instituições, o controle do Congresso sobre a inteligência.
 **Países que usam:** todos têm; não há opção a citar.
 **Pontos abertos:** Estudo curto: revisar. A verba total da agência não foi achada; o número de hoje é derivado de uma notícia. A faixa é proposta minha.
+
+### Registros da tabela antiga sem ficha equivalente
+
+Estes registros foram preservados para revisão jurídica. A tabela antiga é a fonte de origem, não uma fonte legal externa; por isso não foram promovidos a leis novas.
+
+#### Julgamento rápido
+
+**ID de origem:** `rito-sumario`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 214.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:rito-sumario`; tabela antiga: rito-sumario.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Garantias do acusado: trava sem ela (Julgamento rápido sem defesa exige garantias baixas); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Campanha de massa contra o crime → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Programas para jovens em risco
+
+**ID de origem:** `programas-para-jovens-de-risco`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 225.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:programas-para-jovens-de-risco`; tabela antiga: programas-para-jovens-de-risco.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Escola em tempo integral: reforça (Jovem na escola o dia todo e acompanhado sai do alcance das facções); ver dependências acima.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Prevenção social da violência → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+#### Rastreamento de armas e munição
+
+**ID de origem:** `controle-de-municao`. **Origem:** `tabela-leis.xlsx`, aba `Leis`, linha 227.
+
+**Situação:** ficha jurídica e fonte externa pendentes. Pergunta, camada, opções, aprovação, executor, exclusões e eixos políticos ainda não foram validados.
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `legado:controle-de-municao`; tabela antiga: controle-de-municao.
+- **Ciclos:** C13 Policiamento e investigação.
+- **Decisão:** lacuna: reconstruir pergunta jurídica?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** lacuna: rito conforme camada e federação; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** —; nenhuma descrita.
+- **Prazo:** lacuna; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Desarmamento e recompra → opção nova pendente (opção antiga; falta ficha recente).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+
+### Alavanca acrescentada para fechar o ciclo prisional
+
+#### Oferta de educação prisional
+
+<!-- codex:revisao-estrutural-inicio -->
+**Ficha consolidada para os ciclos (17/out/2026):**
+- **ID e origem:** `nova:educacao-prisional`; tabela antiga: ficha nova nos estudos.
+- **Ciclos:** C13 Policiamento e investigação, C14 Justiça e prisões.
+- **Decisão:** Qual cobertura de educação básica e formação profissional será efetivamente ofertada às pessoas presas?
+- **Efeito direto:** a opção muda a regra descrita na decisão; atendimento e resultado dependem da capacidade do executor.
+- **Aprovação e executor:** ato executivo ou lei orçamentária; competência a conferir; lacuna: competência e órgão executor a conferir.
+- **Condições e exclusões:** Lei de Execução Penal, arts. 17 a 19; depende de vagas, professores, segurança de acesso e articulação com a rede de ensino; ver dependências acima.
+- **Prazo:** turno seguinte para oferta; formação e conclusão com atraso; efeitos mediados dependem do ciclo.
+- **Programas e opções candidatas:** Presídio que ressocializa → Ampliação territorial do ensino básico e profissional nos presídios (associação substituída por alavanca específica com base legal).
+- **Evidência:** opções e eixos estão na tabela abaixo; efeitos finais continuam hipóteses ou lacunas até conferência de fonte específica. Valores financeiros ficam para outra fase.
+<!-- codex:revisao-estrutural-fim -->
+
+**Base legal:** [Lei de Execução Penal, arts. 17 a 19](https://www.planalto.gov.br/ccivil_03/leis/l7210compilado.htm#art17). A assistência educacional inclui instrução escolar e formação profissional.
+
+**Camada:** Alavanca de cobertura. **Executor:** administração prisional e rede de ensino da unidade federativa; arranjo concreto a conferir.
+
+| Opção | Eixo economia | Eixo costumes | Efeito direto | Consequência condicionada |
+| --- | --- | --- | --- | --- |
+| Cumprimento básico do direito à educação prisional | lacuna | lacuna | Mantém a oferta prevista em lei | Acesso limitado às vagas e docentes existentes |
+| Ampliação territorial do ensino básico e profissional nos presídios | lacuna | lacuna | Amplia a oferta executada | Formação depende de adesão e conclusão; efeito em reincidência é hipótese |
+
+**Pontos abertos:** medir cobertura real, vagas, professores, acesso efetivo às aulas e conclusão. Não atribuir redução automática da reincidência. Custos e coeficientes ficam para a fase financeira.
