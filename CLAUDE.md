@@ -6,7 +6,6 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 
 1. `README.md`
 2. `AGENTS.md`
-3. `PLANO.md`
 
 ## Não abrir sem o autor pedir
 
