@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Custo de processar na Justiça do Trabalho",
-  "descricao": "Quem paga honorários e perícia quando o trabalhador perde a ação?",
+  "descricao": "Decidir quem assume o custo de uma ação trabalhista: ninguém, só quem tem renda maior ou toda parte derrotada. Cobrar pode reduzir ações fracas, mas também impedir reclamações legítimas de trabalhadores pobres.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,34 +23,35 @@
     "opcoes": [
       {
         "id": "gratuita-sem-risco",
-        "rotulo": "Gratuita sem risco",
+        "rotulo": "Dar acesso gratuito ao trabalhador mesmo quando perde a ação",
         "valor": 0,
         "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Litígio ↑ (cerca de +14% num ano quando a gratuidade volta); Custo de contratar ↑ pouco"
+        "efeitos": "Facilita cobrar direitos não pagos; aumenta ações e custos de defesa das empresas."
       },
       {
         "id": "gratuita-com-teto-de-renda",
-        "rotulo": "Gratuita com teto de renda",
+        "rotulo": "Dar gratuidade só a quem provar baixa renda",
         "valor": 50.0,
         "apoiam": ["Classe média", "Pequenos negócios"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Litígio ↓ (tamanho: lacuna); sensação de injustiça entre trabalhadores ↑ pouco (aprox.)"
+        "efeitos": "Trabalhadores pobres mantêm acesso; parte das ações de renda maior cai."
       },
       {
         "id": "quem-perde-paga",
-        "rotulo": "Quem perde paga",
+        "rotulo": "Cobrar honorários e perícia da parte derrotada",
         "valor": 100,
         "apoiam": ["Empresários", "Comércio e serviços", "Indústria"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Litígio ↓ cerca de 20% no 1º ano; produtividade ↑ cerca de 5% em 4 anos; emprego formal ↑ (cerca de 1,7 milhão de vagas); sensação de injustiça ↑ (aprox.)"
+        "efeitos": "Ações e custos de defesa caem, mas trabalhadores com receio de perder podem abrir mão de direitos."
       }
     ]
   },
   "consequencias": [
     "custo-de-processar-na-justica-do-trabalho--custo-trabalhista",
     "custo-de-processar-na-justica-do-trabalho--produtividade",
-    "custo-de-processar-na-justica-do-trabalho--informalidade"
+    "custo-de-processar-na-justica-do-trabalho--informalidade",
+    "custo-de-processar-na-justica-do-trabalho--litigio-trabalhista"
   ],
   "mae": {
     "texto": "Legislação trabalhista (sem trava). Depende também da Independência do Judiciário (Instituições): com Judiciário pleno, há chance, por evento, de o tribunal derrubar \"Quem perde paga\".",

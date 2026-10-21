@@ -1,0 +1,13 @@
+{
+  "id": "custo-de-processar-na-justica-do-trabalho--litigio-trabalhista",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_custo_de_processar_na_justica_do_trabalho",
+  "alvo": "litigio_trabalhista",
+  "mecanismo": "pontos",
+  "parametros": { "pontos": [[0, 0], [50, -2], [100, -4]] },
+  "leitura": "nivel",
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

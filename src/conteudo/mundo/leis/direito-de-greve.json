@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Direito de greve",
-  "descricao": "Os trabalhadores podem parar, e com que regras?",
+  "descricao": "Permitir que empregados parem fábricas e serviços para negociar: proibir greve, exigir votação e serviço mínimo, ou liberar paralisações amplas. Poder de barganha disputa com produção e confiança empresarial.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
@@ -23,27 +23,27 @@
     "opcoes": [
       {
         "id": "proibida",
-        "rotulo": "Proibida",
+        "rotulo": "Proibir paralisações coletivas de trabalhadores",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
+        "apoiam": ["Empresários favoráveis a continuidade de serviços"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Conflito trabalhista legal ↓, mas greve ilegal e protestos ↑ (aprox.); aprovação ↓"
+        "efeitos": "A produção para menos por greve legal; liberdade civil e apoio dos trabalhadores caem."
       },
       {
         "id": "votacao-secreta-e-servicos-minimos",
-        "rotulo": "Votação secreta e serviços mínimos",
+        "rotulo": "Exigir votação secreta e manter serviço mínimo durante greves",
         "valor": 50,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Conflito trabalhista ↓; Renda do trabalho ↓ pouco"
+        "efeitos": "Trabalhadores ainda podem parar, com menor interrupção de serviços essenciais."
       },
       {
         "id": "ampla",
-        "rotulo": "Ampla",
+        "rotulo": "Autorizar paralisação ampla após aviso prévio",
         "valor": 100,
         "apoiam": ["Trabalhadores com carteira", "Servidores"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Conflito trabalhista ↑; Renda do trabalho ↑ pouco"
+        "efeitos": "Amplia poder de barganha e liberdade civil, mas traz risco de greve geral e menor produção."
       }
     ]
   },

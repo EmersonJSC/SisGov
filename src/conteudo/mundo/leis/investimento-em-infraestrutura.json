@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Investimento em infraestrutura",
-  "descricao": "Define quanto do PIB o Estado investe por ano em estradas, ferrovias, portos, energia e redes.",
+  "descricao": "Define o investimento público em obras gerais, estradas, saneamento e redes; energia e ferrovias de carga têm decisões próprias.",
   "area": "Meio ambiente, energia, agro e infraestrutura",
   "mesa": {
     "id": "cidades-e-infraestrutura",
@@ -26,7 +26,6 @@
   },
   "consequencias": [
     "investimento-em-infraestrutura--infraestrutura-transportes",
-    "investimento-em-infraestrutura--infraestrutura-energia",
     "investimento-em-infraestrutura--pib",
     "investimento-em-infraestrutura--produtividade",
     "investimento-em-infraestrutura--corrupcao",

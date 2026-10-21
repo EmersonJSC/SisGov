@@ -494,6 +494,61 @@ export function validatePackageCoherence(
   }
   // travas por opção e vínculos (V1-34)
   for (const policy of content.policies) {
+    const piso = policy.controle.pisoPorLei;
+    if (piso) {
+      const parent = policiesById.get(piso.lei);
+      if (!parent || parent.id === policy.id)
+        diagnostics.push(
+          issue(
+            policy.id,
+            "controle.pisoPorLei.lei",
+            "A lei que fixa o piso precisa existir e ser diferente da alavanca.",
+          ),
+        );
+      else {
+        const options = parent.controle.opcoes ?? [];
+        for (const [index, item] of piso.minimos.entries())
+          if (!options.some((option) => option.id === item.opcao))
+            diagnostics.push(
+              issue(
+                policy.id,
+                `controle.pisoPorLei.minimos[${index}].opcao`,
+                `Opção inexistente na lei ${parent.id}: ${item.opcao}.`,
+              ),
+            );
+        for (const option of options)
+          if (
+            piso.minimos.filter((item) => item.opcao === option.id).length !== 1
+          )
+            diagnostics.push(
+              issue(
+                policy.id,
+                "controle.pisoPorLei.minimos",
+                `Declare exatamente um piso para ${parent.id}/${option.id}.`,
+              ),
+            );
+        const parentLevel = initialDesired.get(parent.id);
+        const parentOption = options.find(
+          (option) => option.valor === parentLevel,
+        );
+        const minimum = piso.minimos.find(
+          (item) => item.opcao === parentOption?.id,
+        )?.valor;
+        const childLevel = initialDesired.get(policy.id);
+        if (
+          childLevel !== undefined &&
+          minimum !== undefined &&
+          childLevel < minimum - 1e-9
+        )
+          diagnostics.push(
+            issue(
+              initialStateFile,
+              "leisVigentes",
+              `A lei ${policy.id} começa abaixo do piso fixado por ${parent.id}.`,
+            ),
+          );
+      }
+    }
     const startLevel = initialDesired.get(policy.id);
     for (const [index, option] of (policy.controle.opcoes ?? []).entries()) {
       for (const [position, requirement] of (option.requer ?? []).entries()) {

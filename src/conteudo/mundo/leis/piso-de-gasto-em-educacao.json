@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Piso de gasto em educação",
-  "descricao": "O governo é obrigado a gastar uma parte mínima da receita com educação?",
+  "descricao": "A Constituição deve reservar receita para educação? A verba efetiva é escolhida em Verba executada para a educação. Os mínimos agregados abaixo são hipóteses de jogo: não equivalem literalmente aos percentuais federais e estaduais.",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "escola",
@@ -40,13 +40,26 @@
         "efeitos": "Aprendizagem ↑ pequeno sem gestão; Margem de manobra ↓; Resultado fiscal ↓"
       },
       {
+        "id": "fundeb-ampliado-para-escolas-vulneraveis",
+        "rotulo": "Fundeb ampliado para escolas vulneráveis",
+        "valor": 75,
+        "custoTexto": "Piso agregado de 22% da receita (hipótese de jogo)",
+        "apoiam": [
+          "Sindicatos de professores",
+          "Movimento estudantil",
+          "Municípios pobres"
+        ],
+        "rejeitam": ["Mercado financeiro", "Governadores com restrição fiscal"],
+        "efeitos": "Obriga mais verba em educação básica; reduz desigualdade territorial se a execução priorizar escolas pobres; aperta outras despesas"
+      },
+      {
         "id": "meta-de-10-do-pib",
-        "rotulo": "Meta de 10% do PIB",
+        "rotulo": "Meta de 10% do PIB para educação",
         "valor": 100,
         "custoTexto": "+4 a +5% do PIB vs hoje, educação",
         "apoiam": ["Movimento estudantil", "Sindicatos de professores"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Resultado fiscal ↓ forte; Aprendizagem ↑ pequeno sem gestão"
+        "efeitos": "Piso agregado de 31,5% da receita (hipótese de jogo); resultado fiscal ↓ forte; aprendizagem ↑ apenas com boa execução"
       }
     ]
   },

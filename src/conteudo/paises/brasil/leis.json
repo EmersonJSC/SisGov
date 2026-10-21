@@ -355,7 +355,7 @@
     },
     {
       "lei": "imposto-sobre-consumo",
-      "nivel": 26.5
+      "opcao": "iva-com-cashback"
     },
     {
       "lei": "imposto-renda-empresas",
@@ -411,7 +411,7 @@
     },
     {
       "lei": "propriedade-dos-meios-de-producao",
-      "opcao": "mista"
+      "opcao": "participacao-publica-50"
     },
     {
       "lei": "programa-de-privatizacao",
@@ -510,10 +510,6 @@
       "opcao": "0-03"
     },
     {
-      "lei": "fontes-de-energia-favorecidas",
-      "opcao": "incentivo-a-renovaveis"
-    },
-    {
       "lei": "verba-para-juventude-negra-e-saude-da-populacao-negra",
       "opcao": "referencia-hoje"
     },
@@ -552,10 +548,6 @@
     {
       "lei": "alinhamento-externo",
       "opcao": "nao-alinhamento-ativo"
-    },
-    {
-      "lei": "delacao-premiada-e-acordos",
-      "opcao": "delacao-com-homologacao-do-juiz"
     },
     {
       "lei": "verba-de-controle",
@@ -604,10 +596,6 @@
     {
       "lei": "programa-nuclear-lei",
       "opcao": "pacifico-com-autonomia-sem-a-inspecao-extra"
-    },
-    {
-      "lei": "devolucao-de-imposto-aos-pobres",
-      "opcao": "ampla-para-as-familias-do-cadastro-social"
     },
     {
       "lei": "verba-da-saude-acima-do-piso",
@@ -686,10 +674,6 @@
       "opcao": "controle-comercial"
     },
     {
-      "lei": "aposentadoria-do-trabalhador-rural",
-      "opcao": "comprovacao-de-atividade-sem-contribuir-como-o-urbano"
-    },
-    {
       "lei": "controle-civil-das-forcas-armadas",
       "opcao": "ministerio-civil-da-defesa"
     },
@@ -710,20 +694,12 @@
       "opcao": "no-legislativo-so-consultivo"
     },
     {
-      "lei": "idade-minima-para-se-aposentar",
-      "opcao": "moderada-62-a-65"
-    },
-    {
       "lei": "imposto-sobre-a-propriedade",
       "opcao": "atual-planta-antiga-imposto-rural-quase-zero"
     },
     {
       "lei": "regra-de-repasse",
       "opcao": "por-populacao-e-renda"
-    },
-    {
-      "lei": "natureza-da-policia-de-rua",
-      "opcao": "militar-forca-auxiliar-do-exercito"
     },
     {
       "lei": "bolsa-de-permanencia-no-ensino-medio",
@@ -744,10 +720,6 @@
     {
       "lei": "protecao-da-vida-desde-a-concepcao",
       "opcao": "sem-essa-protecao"
-    },
-    {
-      "lei": "como-a-aposentadoria-e-financiada",
-      "opcao": "reparticao"
     },
     {
       "lei": "escola-em-tempo-integral",
@@ -878,10 +850,6 @@
       "opcao": "sem-alianca"
     },
     {
-      "lei": "regra-de-reajuste-dos-beneficios",
-      "opcao": "salario-minimo"
-    },
-    {
       "lei": "ciclo-policial",
       "opcao": "dividido"
     },
@@ -900,6 +868,10 @@
     {
       "lei": "piso-salarial-professores",
       "opcao": "piso-nacional-minimo"
+    },
+    {
+      "lei": "piso-de-gasto-em-saude",
+      "opcao": "piso-vigente"
     }
   ],
   "controles": {
@@ -1042,7 +1014,6 @@
     "nivel_incentivo_fiscal_a_pesquisa_nas_empresas": 33.33,
     "nivel_tributacao_do_lucro_distribuido_e_da_renda_guardada_no_exter": 33.33,
     "nivel_alinhamento_externo": 50.0,
-    "nivel_delacao_premiada_e_acordos": 50.0,
     "nivel_verba_de_controle": 66.67,
     "nivel_politica_de_sancoes": 0,
     "nivel_investimento_em_defesa": 50.0,
@@ -1055,7 +1026,6 @@
     "nivel_piso_de_gasto_em_educacao": 50.0,
     "nivel_transferencia_de_renda_as_familias_pobres": 66.67,
     "nivel_programa_nuclear": 66.67,
-    "nivel_devolucao_de_imposto_aos_pobres": 100,
     "nivel_verba_da_saude_acima_do_piso": 50.0,
     "nivel_bolsas_de_pos_graduacao": 50.0,
     "nivel_fundo_de_equalizacao": 33.33,
@@ -1075,22 +1045,18 @@
     "nivel_tribunais_e_tratados_internacionais": 66.67,
     "nivel_revisao_de_gastos_tributarios": 100,
     "nivel_exportacao_de_armas": 66.67,
-    "nivel_aposentadoria_do_trabalhador_rural": 100,
     "nivel_controle_civil_das_forcas_armadas": 66.67,
     "nivel_vagas_de_creche": 33.33,
     "nivel_credito_rural_e_assistencia_tecnica": 50.0,
     "nivel_custo_de_processar_na_justica_do_trabalho": 0,
     "nivel_conselho_fiscal_independente": 50.0,
-    "nivel_idade_minima_para_se_aposentar": 50.0,
     "nivel_imposto_sobre_a_propriedade": 33.33,
     "nivel_regra_de_repasse": 66.67,
-    "nivel_natureza_da_policia_de_rua": 0,
     "nivel_bolsa_de_permanencia_no_ensino_medio": 50.0,
     "nivel_publicidade_de_apostas": 100,
     "nivel_verba_do_programa_habitacional": 50.0,
     "nivel_missoes_de_paz": 33.33,
     "nivel_protecao_da_vida_desde_a_concepcao": 0,
-    "nivel_como_a_aposentadoria_e_financiada": 100,
     "recursos_verba_policia_federal": 9600,
     "recursos_programa_espacial_e_satelites": 250,
     "recursos_agencia_de_inteligencia": 900,

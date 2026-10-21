@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Tarifas de importação",
-  "descricao": "Qual a tarifa média sobre o que o país importa?",
+  "descricao": "Escolhe a tarifa média e o tratamento de máquinas, insumos e bens finais.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "comercio-exterior-e-capital-estrangeiro",
@@ -23,33 +23,35 @@
     "opcoes": [
       {
         "id": "minimo-0",
-        "rotulo": "Mínimo: 0%",
+        "rotulo": "Abertura de máquinas, insumos e bens finais",
         "valor": 0,
-        "custoTexto": "Perde a receita de importação (aprox. 0,5% do PIB)",
-        "apoiam": ["Comércio e serviços", "Entidades do agronegócio"],
-        "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Importações ↑; inflação ↓; produtividade ↑; peso da indústria protegida ↓"
+        "apoiam": ["Comércio e serviços"],
+        "rejeitam": ["Indústria protegida"],
+        "efeitos": "Importações sobem; fábricas locais enfrentam concorrência."
       },
       {
         "id": "referencia-13-35",
-        "rotulo": "Referência: 13,35% (média simples; 7,86% ponderada)",
+        "rotulo": "Tarifa moderada com proteção seletiva",
         "valor": 13.35,
         "apoiam": ["Confederação da indústria"],
         "rejeitam": ["Comércio e serviços"],
-        "efeitos": "Importações ↑ pouco contra o Máximo e ↓ contra o Mínimo; inflação ↑ leve contra 0%; peso da indústria protegida mantido; produtividade ↓ pouco (estimado)"
+        "efeitos": "Proteção e preço ao consumidor intermediários."
+      },
+      {
+        "id": "tarifa-diferenciada-insumos",
+        "rotulo": "Insumos baratos e proteção temporária a bens finais",
+        "valor": 25,
+        "apoiam": ["Indústria exportadora", "Trabalhadores com carteira"],
+        "rejeitam": ["Setores protegidos permanentemente"],
+        "efeitos": "Fábricas podem ganhar escala sem encarecer tanto os insumos."
       },
       {
         "id": "maximo-40",
-        "rotulo": "Máximo: 40%",
-        "valor": 40.0,
-        "custoTexto": "Receita de importação ↑ no início",
-        "apoiam": ["Confederação da indústria"],
-        "rejeitam": [
-          "Comércio e serviços",
-          "Entidades do agronegócio",
-          "Classe média"
-        ],
-        "efeitos": "Importações ↓; inflação ↑; peso da indústria ↑ no curto prazo; produtividade ↓; chance de guerra comercial ↑"
+        "rotulo": "Tarifas altas e amplas",
+        "valor": 40,
+        "apoiam": ["Indústria protegida"],
+        "rejeitam": ["Comércio e serviços", "Classe média"],
+        "efeitos": "Produção protegida sobe primeiro; custos e preços sobem."
       }
     ],
     "faixa": {

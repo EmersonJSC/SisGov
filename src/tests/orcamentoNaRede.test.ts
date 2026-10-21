@@ -42,7 +42,7 @@ describe("SG157 — orçamento na rede", () => {
     const iva = verPartida(partida).leis.find(
       (lei) => lei.id === "imposto-sobre-consumo",
     )!;
-    const mudada = mudarLei(partida, iva.id, iva.nivel + 3);
+    const mudada = mudarLei(partida, iva.id, 30);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));
     const sem = turno(partida);
     const com = turno(mudada.value);

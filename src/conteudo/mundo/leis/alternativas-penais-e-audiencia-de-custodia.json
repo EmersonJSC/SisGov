@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Alternativas penais e audiência de custódia",
-  "descricao": "Quem ainda não foi julgado ou cometeu crime leve vai para a prisão ou cumpre pena fora dela?",
+  "descricao": "O governo decide se pessoas sem julgamento ou condenadas por crimes sem violência ficam presas ou cumprem medidas monitoradas. Alternativas aliviam presídios e gasto, mas podem reduzir a segurança percebida.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "penas",
@@ -23,35 +23,40 @@
     "opcoes": [
       {
         "id": "prisao-como-regra",
-        "rotulo": "Prisão como regra",
+        "rotulo": "Prisão provisória como regra e poucas penas alternativas",
         "valor": 0,
-        "custoTexto": "custo prisional ↑",
+        "custoTexto": "Hipótese: +0,03% do PIB ao ano frente à referência",
         "apoiam": ["Conservadores", "Associações de policiais"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Lotação ↑"
+        "efeitos": "Segurança percebida sobe; lotação, custo e reincidência crescem com atraso."
       },
       {
         "id": "custodia-em-24-horas-e-alternativas",
-        "rotulo": "Custódia em 24 horas e alternativas (tornozeleira, pena restritiva, prazo para a prisão provisória) (hoje na referência, estimado)",
+        "rotulo": "Audiência rápida e tornozeleira para crimes sem violência",
         "valor": 50.0,
-        "custoTexto": "baixo",
+        "custoTexto": "Custo de referência",
         "apoiam": ["Progressistas", "Hierarquia católica e pastorais"],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Lotação ↓ (27,7% dos presos são provisórios); reincidência ↓ (aprox.)"
+        "efeitos": "Mantém punição e revisão rápida da prisão; equilibra lotação e segurança percebida."
       },
       {
         "id": "alternativas-amplas",
-        "rotulo": "Alternativas amplas",
+        "rotulo": "Ampliar penas comunitárias, reparação e monitoramento",
         "valor": 100,
-        "custoTexto": "custo prisional ↓",
+        "custoTexto": "Hipótese: economia de 0,03% do PIB ao ano frente à referência",
         "apoiam": ["Progressistas"],
         "rejeitam": ["Conservadores", "Associações de policiais"],
-        "efeitos": "Lotação ↓↓; sensação de segurança ↓ em Conservadores (aprox.)"
+        "efeitos": "Lotação e reincidência caem com atraso; parte da população percebe punição fraca."
       }
     ]
   },
   "consequencias": [
-    "alternativas-penais-e-audiencia-de-custodia--sensacao-seguranca"
+    "alternativas-penais-e-audiencia-de-custodia--sensacao-seguranca",
+    "alternativas-penais-e-audiencia-de-custodia--lotacao-prisional",
+    "alternativas-penais-e-audiencia-de-custodia--reincidencia",
+    "alternativas-penais-e-audiencia-de-custodia--gasto-publico",
+    "alternativas-penais-e-audiencia-de-custodia--grupo-conservadores",
+    "alternativas-penais-e-audiencia-de-custodia--grupo-progressistas"
   ],
   "ministerio": "Ministério da Justiça e Segurança Pública"
 }

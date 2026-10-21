@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Trabalho infantil e aprendizagem",
-  "descricao": "A partir de que idade se pode trabalhar, e como funciona o contrato de aprendiz?",
+  "descricao": "Fixar a idade mínima para trabalhar e criar vagas de aprendiz em empresas. Renda familiar cedo disputa com escola; aprendizagem organizada exige custo e gera qualificação depois.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,15 +23,15 @@
     "opcoes": [
       {
         "id": "sem-idade-minima",
-        "rotulo": "Sem idade mínima",
+        "rotulo": "Permitir contratação de crianças sem idade mínima",
         "valor": 0,
-        "apoiam": ["nenhum grupo organizado"],
-        "rejeitam": ["todos os grupos organizados"],
-        "efeitos": "Trabalho infantil ↑↑; Qualificação ↓ em 5 a 10 anos (aprox.); reação externa (fora da convenção da OIT)"
+        "apoiam": ["Empregadores informais de baixo custo"],
+        "rejeitam": ["Jovens", "Progressistas", "Sindicatos"],
+        "efeitos": "Renda familiar imediata pode subir; escola, qualificação futura e reputação caem."
       },
       {
         "id": "permissiva-trabalho-a-partir-de-12-anos",
-        "rotulo": "Permissiva: trabalho a partir de 12 anos",
+        "rotulo": "Permitir trabalho a partir de 12 anos fora da escola",
         "valor": 25,
         "apoiam": ["Agricultura familiar"],
         "rejeitam": ["Centrais sindicais", "Estudantes"],
@@ -39,7 +39,7 @@
       },
       {
         "id": "14-anos-com-excecoes",
-        "rotulo": "14 anos, com exceções",
+        "rotulo": "Permitir trabalho a partir de 14 anos com exceções setoriais",
         "valor": 50,
         "apoiam": ["Entidades do agronegócio"],
         "rejeitam": ["Centrais sindicais"],
@@ -47,7 +47,7 @@
       },
       {
         "id": "16-anos-aprendiz-desde-14-e-cota-de-aprendizes",
-        "rotulo": "16 anos, aprendiz desde 14 e cota de aprendizes",
+        "rotulo": "Exigir 16 anos, com aprendizagem supervisionada desde os 14",
         "valor": 75,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Pequenos negócios"],
@@ -55,12 +55,13 @@
       },
       {
         "id": "sistema-dual-escola-e-empresa-juntas",
-        "rotulo": "Sistema dual: escola e empresa juntas",
+        "rotulo": "Integrar escola técnica e vagas de aprendiz nas empresas",
         "valor": 100,
-        "custoTexto": "0,1% a 0,3% do PIB (aprox.), Educação",
+        "requer": [{"lei": "ensino-tecnico-e-profissional", "opcoes": ["tecnico-como-opcao-no-medio", "tecnico-em-massa-integrado-ao-medio", "contas-de-formacao-continua"], "motivo": "O sistema dual exige ensino técnico disponível para os aprendizes."}],
+        "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
         "apoiam": ["Indústria", "Empresários", "Jovens"],
-        "rejeitam": ["nenhum grupo grande"],
-        "efeitos": "Oportunidades para jovens ↑; Qualificação do trabalho ↑ em 3 a 5 anos; Trabalho infantil ↓"
+        "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],
+        "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas."
       }
     ]
   },

@@ -1,0 +1,37 @@
+{
+  "id": "transferencia-de-renda-as-familias-pobres--grupo-conservadores",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transferencia_de_renda_as_familias_pobres",
+  "alvo": "grupo_conservadores",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        1
+      ],
+      [
+        33.33,
+        1
+      ],
+      [
+        66.67,
+        0
+      ],
+      [
+        100,
+        -1
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "regime-contra-faccoes--rebeliao-presidios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_contra_faccoes",
+  "alvo": "rebeliao_presidios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        1
+      ],
+      [
+        100,
+        4
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

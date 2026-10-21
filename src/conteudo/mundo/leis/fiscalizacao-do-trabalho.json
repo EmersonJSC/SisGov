@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Fiscalização do trabalho",
-  "descricao": "Quantos auditores e quanta verba o governo põe para fiscalizar o cumprimento das leis do trabalho?",
+  "descricao": "Definir o alcance das inspeções em obras, fazendas e fábricas: nenhum auditor, equipes reduzidas, cobertura atual ou expansão. Mais inspeção combate informalidade e trabalho infantil, mas custa verba e enfrenta resistência de empregadores.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -22,45 +22,47 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "id": "sem-fiscalizacao-ativa",
+        "rotulo": "Suspender inspeções de rotina e agir só após denúncia judicial",
         "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "custoTexto": "Sem despesa direta com inspeções de rotina",
+        "apoiam": ["Empresários favoráveis à desregulação"],
+        "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
+        "efeitos": "Economiza fiscalização, mas aumenta trabalho infantil e informalidade com atraso."
       },
       {
         "id": "minimo-metade-de-hoje-cerca-de-900",
-        "rotulo": "Mínimo: metade de hoje, cerca de 900 (proposta minha)",
+        "rotulo": "Manter equipes reduzidas focadas em acidentes graves",
         "valor": 33.33,
-        "custoTexto": "menos de 0,02% do PIB (estimado), Proteção social",
+        "custoTexto": "Hipótese: +0,015% do PIB ao ano",
         "apoiam": ["Pequenos negócios"],
         "rejeitam": ["Centrais sindicais", "Trabalhadores com carteira"],
-        "efeitos": "Informalidade ↑; Trabalho infantil ↑ (aprox.); Litígio ↑ (o descumprimento vai para o tribunal)"
+        "efeitos": "Cobre riscos graves, mas deixa mais violações de salário e trabalho infantil sem inspeção."
       },
       {
         "id": "referencia-cerca-de-1-800-ativos",
-        "rotulo": "Referência: cerca de 1.800 ativos",
+        "rotulo": "Inspecionar regularmente setores de maior risco",
         "valor": 66.67,
-        "custoTexto": "abaixo de 0,05% do PIB (aprox.)",
-        "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Informalidade fica alta, 37% (estudo), ↑ contra o Máximo; Litígio ↑ pouco, porque o descumprimento é pouco detectado (estimado); Trabalho infantil sem queda adicional (aprox.)"
+        "custoTexto": "Hipótese: +0,03% do PIB ao ano",
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["Pequenos negócios sujeitos a inspeção"],
+        "efeitos": "Reduz parte das violações sem ampliar toda a rede de auditores."
       },
       {
         "id": "maximo-todos-os-cargos-e-mais-os-2-mil-pedidos-cerca-de-5-60",
-        "rotulo": "Máximo: todos os cargos e mais os 2 mil pedidos, cerca de 5.600 (proposta minha)",
+        "rotulo": "Abrir equipes móveis para fiscalizar obras, fazendas e fábricas",
         "valor": 100,
-        "custoTexto": "abaixo de 0,05% do PIB (aprox.)",
+        "custoTexto": "Hipótese: +0,06% do PIB ao ano",
         "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "Informalidade ↓ (a política que mais formaliza); emprego formal ↑; firmas de sobrevivência fechadas ↑ (Desemprego local ↑ no curto prazo); Trabalho infantil ↓ (aprox.)"
+        "efeitos": "Formalização e proteção de crianças melhoram após implantação; pequenas empresas assumem mais custo de conformidade."
       }
     ]
   },
   "consequencias": [
     "fiscalizacao-do-trabalho--informalidade",
-    "fiscalizacao-do-trabalho--trabalho-infantil"
+    "fiscalizacao-do-trabalho--trabalho-infantil",
+    "fiscalizacao-do-trabalho--gasto-publico"
   ],
   "ministerio": "Ministério do Trabalho e Emprego"
 }

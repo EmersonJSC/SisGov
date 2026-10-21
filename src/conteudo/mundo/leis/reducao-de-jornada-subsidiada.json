@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Redução de jornada subsidiada",
-  "descricao": "Na crise, o governo paga parte do salário para a empresa reduzir horas em vez de demitir?",
+  "descricao": "Autorizar o governo a pagar parte do salário quando empresas reduzem horas em vez de demitir. O programa segura emprego e consumo, mas custa caro e pode sustentar firmas pouco produtivas.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "desemprego",
@@ -23,29 +23,43 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum (hoje na referência, fora de crise)",
+        "rotulo": "Não pagar salário de horas cortadas pelas empresas",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
-        "rejeitam": ["Trabalhadores com carteira"],
+        "apoiam": [
+          "Gestores fiscais favoráveis a corte de gasto"
+        ],
+        "rejeitam": [
+          "Trabalhadores com carteira"
+        ],
         "efeitos": "Desemprego sobe mais na recessão"
       },
       {
         "id": "emergencial-ligado-por-decreto-na-crise",
-        "rotulo": "Emergencial: ligado por decreto na crise",
+        "rotulo": "Subsidiar parcialmente contratos com horas reduzidas",
         "valor": 50,
-        "custoTexto": "só na crise; o caso do país de referência custou cerca de 0,4% do PIB em 4 meses (aprox.), Proteção social",
-        "apoiam": ["Empresários", "Trabalhadores com carteira"],
-        "rejeitam": ["nenhum grupo grande"],
-        "efeitos": "Desemprego ↓ na recessão; o efeito some em cerca de 2 anos"
+        "custoTexto": "Hipótese: custo enquanto a opção estiver ativa; desligar exige nova decisão",
+        "apoiam": [
+          "Empresários",
+          "Trabalhadores com carteira"
+        ],
+        "rejeitam": [
+          "Gestores fiscais"
+        ],
+        "efeitos": "Preserva parte das vagas enquanto a regra vigora e aumenta o gasto; o governo pode encerrar o subsídio depois."
       },
       {
         "id": "permanente",
-        "rotulo": "Permanente",
+        "rotulo": "Manter subsídio de jornada reduzida mesmo fora de crise",
         "valor": 100,
-        "custoTexto": "cerca de 0,1% do PIB em tempo normal; até 0,5% em crise forte",
-        "apoiam": ["Centrais sindicais", "Indústria"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Desemprego ↓ cerca de 2% na recessão; produtividade ↓ pouco (firmas fracas usam mais); contratação nas outras firmas ↓"
+        "custoTexto": "Hipótese: gasto persistente maior que o programa temporário",
+        "apoiam": [
+          "Centrais sindicais",
+          "Indústria"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Segura mais empregos, mas transfere custo contínuo ao orçamento e pode reduzir produtividade."
       }
     ]
   },
@@ -63,7 +77,9 @@
   ],
   "mae": {
     "texto": "Seguro-desemprego (sem trava no estudo).",
-    "leis": ["seguro-desemprego"]
+    "leis": [
+      "seguro-desemprego"
+    ]
   },
   "ministerio": "Ministério do Trabalho"
 }

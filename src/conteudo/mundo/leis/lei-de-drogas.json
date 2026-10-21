@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Lei de drogas",
-  "descricao": "O que acontece com quem é pego usando drogas.",
+  "descricao": "O governo decide como distinguir uso pessoal de tráfico e o que fazer com quem usa drogas. Mais repressão pode agradar quem pede ordem, mas aumenta prisões e confrontos; tratamento custa coordenação de saúde.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "drogas",
@@ -21,18 +21,63 @@
     "opcoes": [
       {
         "id": "guerra-as-drogas",
-        "rotulo": "Usuário vai preso",
-        "valor": 0
+        "rotulo": "Prender usuários e intensificar operações de rua",
+        "valor": 0,
+        "custoTexto": "Hipótese: 0,3% do PIB ao ano em repressão",
+        "apoiam": [
+          "Conservadores",
+          "Evangélicos"
+        ],
+        "rejeitam": [
+          "Progressistas",
+          "Jovens"
+        ],
+        "efeitos": "Reforça a resposta policial; eleva lotação prisional e letalidade em operações."
       },
       {
         "id": "usuario-nao-preso",
-        "rotulo": "Usuário não vai preso",
-        "valor": 50
+        "rotulo": "Não prender usuário; manter repressão ao tráfico",
+        "valor": 50,
+        "custoTexto": "Hipótese: 0,2% do PIB ao ano",
+        "apoiam": [
+          "Classe média",
+          "Jovens"
+        ],
+        "rejeitam": [
+          "Conservadores favoráveis à prisão do usuário"
+        ],
+        "efeitos": "Reduz prisões por uso; a distinção entre uso e tráfico ainda depende da avaliação policial."
+      },
+      {
+        "id": "criterio-objetivo-uso-pessoal",
+        "rotulo": "Critério objetivo de uso pessoal com revisão judicial",
+        "valor": 75,
+        "custoTexto": "Hipótese: 0,18% do PIB ao ano em fiscalização e atendimento",
+        "apoiam": [
+          "Progressistas",
+          "Jovens",
+          "Defensores públicos"
+        ],
+        "rejeitam": [
+          "Conservadores favoráveis à repressão ampla"
+        ],
+        "efeitos": "Reduz arbitrariedade e prisão por uso; exige capacidade de diferenciar pequenos vendedores de usuários."
       },
       {
         "id": "uso-e-saude",
-        "rotulo": "Uso é questão de saúde",
-        "valor": 100
+        "rotulo": "Encaminhar usuários a cuidado em saúde, sem pena criminal",
+        "valor": 100,
+        "custoTexto": "Hipótese: 0,15% do PIB líquido ao ano, com atendimento de saúde",
+        "apoiam": [
+          "Progressistas",
+          "Jovens",
+          "Profissionais de saúde"
+        ],
+        "rejeitam": [
+          "Conservadores",
+          "Evangélicos"
+        ],
+        "efeitos": "Prisão por uso e letalidade policial caem; encaminhar requer capacidade de atendimento e continuidade do cuidado. A mudança de acesso e resultados clínicos depende da oferta real de serviços."
       }
     ]
   },
@@ -40,7 +85,6 @@
     "lei-de-drogas--lotacao-prisional",
     "lei-de-drogas--letalidade-policial",
     "lei-de-drogas--uso-drogas",
-    "lei-de-drogas--saude-populacao",
     "lei-de-drogas--sensacao-seguranca",
     "lei-de-drogas--gasto-publico",
     "lei-de-drogas--grupo-classe-media",

@@ -4,10 +4,14 @@
   "versaoEsquema": 1,
   "origem": "aliquota_tarifas_de_importacao",
   "alvo": "produtividade",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.175,
-    "termoConstante": 0.0
+    "pontos": [
+      [0, 0],
+      [13.35, -2.34],
+      [25, -1],
+      [40, -7]
+    ]
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 4,

@@ -609,7 +609,7 @@
         },
         {
           "lei": "negociacao-coletiva-e-sindicatos",
-          "opcao": "sindicatos-controlados-pelo-estado",
+          "opcao": "regras-uniformes-em-lei",
           "como": "manteve",
           "fonte": "Central única (CTC) ligada ao partido; Lei 49/1984"
         },
@@ -717,7 +717,7 @@
         },
         {
           "lei": "propriedade-dos-meios-de-producao",
-          "opcao": "socialista",
+          "opcao": "participacao-publica-100",
           "como": "manteve",
           "fonte": "Constituição de Cuba de 1976, art. 14"
         },
@@ -1051,7 +1051,7 @@
         },
         {
           "lei": "negociacao-coletiva-e-sindicatos",
-          "opcao": "sindicatos-controlados-pelo-estado",
+          "opcao": "regras-uniformes-em-lei",
           "como": "manteve",
           "fonte": "Sindicatos subordinados ao partido (VTsSPS)"
         },
@@ -1171,7 +1171,7 @@
         },
         {
           "lei": "propriedade-dos-meios-de-producao",
-          "opcao": "socialista",
+          "opcao": "participacao-publica-100",
           "como": "aprovou",
           "fonte": "Constituição da URSS de 1977, arts. 10 a 13"
         },

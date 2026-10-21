@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Acesso ao ensino superior",
-  "descricao": "Quem paga a universidade pública, e quem entra nela?",
+  "descricao": "Quem paga a universidade pública, quem recebe isenção e quantas vagas públicas podem ser abertas?",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "ensino-superior",
@@ -23,25 +23,16 @@
     "opcoes": [
       {
         "id": "paga-pela-familia",
-        "rotulo": "Paga pela família",
+        "rotulo": "Mensalidade integral com bolsas e crédito privados",
         "valor": 0,
         "custoTexto": "−0,6 a −0,9% do PIB vs hoje (aprox.), educação",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Movimento estudantil", "Classe média"],
-        "efeitos": "Escolaridade ↓; Ações afirmativas esvaziam (só valem com bolsa)"
-      },
-      {
-        "id": "emprestimo-pago-depois-de-formado-conforme-a-renda",
-        "rotulo": "Empréstimo pago depois de formado, conforme a renda",
-        "valor": 25,
-        "custoTexto": "−0,3% do PIB vs hoje (aprox.), educação",
-        "apoiam": ["Empresários", "Classe média"],
-        "rejeitam": ["Movimento estudantil", "Sindicatos de servidores"],
-        "efeitos": "Escolaridade ↑ se bem desenhado; Desigualdade ↓"
+        "efeitos": "Gasto público ↓; dívida das famílias ↑; vagas privadas ↑ se houver oferta"
       },
       {
         "id": "gratuita-com-vestibular",
-        "rotulo": "Gratuita com vestibular",
+        "rotulo": "Universidade pública gratuita com seleção",
         "valor": 50,
         "custoTexto": "~1% do PIB (aprox.), educação",
         "apoiam": [
@@ -50,25 +41,25 @@
           "Classe média"
         ],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Inovação ↑ via pesquisa; subsídio vai a quem estudou em escola privada"
+        "efeitos": "Pesquisa e qualificação ↑; gasto público estável; disputa intensa pelas vagas"
       },
       {
         "id": "gratuita-so-para-os-mais-pobres",
-        "rotulo": "Gratuita só para os mais pobres",
-        "valor": 75,
+        "rotulo": "Cobrança conforme a renda, isenção para pobres",
+        "valor": 25,
         "custoTexto": "−0,2% do PIB vs hoje, educação",
         "apoiam": ["Pobres"],
         "rejeitam": ["Movimento estudantil", "Classe média"],
-        "efeitos": "Desigualdade ↓"
+        "efeitos": "Gasto público ↓ moderado; acesso dos pobres preservado se a isenção funcionar; classe média paga mais"
       },
       {
         "id": "gratuita-para-todos-sem-vestibular-e-com-mais-vagas",
-        "rotulo": "Gratuita para todos, sem vestibular e com mais vagas",
+        "rotulo": "Universidade pública gratuita com expansão de vagas",
         "valor": 100,
         "custoTexto": "+1 a +2% do PIB (aprox.), educação",
         "apoiam": ["Movimento estudantil", "Jovens"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Escolaridade ↑; Fuga de cérebros ↑ se forma e não absorve; Resultado fiscal ↓"
+        "efeitos": "Escolaridade e qualificação ↑ com atraso; gasto público ↑; fuga de cérebros ↑ se não houver emprego qualificado"
       }
     ]
   },

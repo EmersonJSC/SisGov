@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
-  "nome": "Piso de gasto em educação",
-  "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a educação (escolas, professores, merenda e transporte escolar). Se a arrecadação cai, a educação cai junto.",
+  "nome": "Verba executada para a educação",
+  "descricao": "Escolhe quanto da receita agregada vai para escolas, professores, merenda e transporte. A regra constitucional define o mínimo; esta alavanca pode gastar acima dele.",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "escola",
@@ -15,7 +15,19 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "percentual_piso_educacao",
-    "unidade": "percentual_receita"
+    "unidade": "percentual_receita",
+    "pisoPorLei": {
+      "lei": "piso-de-gasto-em-educacao",
+      "minimos": [
+        { "opcao": "sem-vinculacao", "valor": 0 },
+        {
+          "opcao": "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios",
+          "valor": 17.51
+        },
+        { "opcao": "fundeb-ampliado-para-escolas-vulneraveis", "valor": 22 },
+        { "opcao": "meta-de-10-do-pib", "valor": 31.5 }
+      ]
+    }
   },
   "orcamento": {
     "modo": "percentual_orcamento",

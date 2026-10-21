@@ -35,12 +35,32 @@
       {
         "id": "salario-minimo",
         "rotulo": "Atrelado ao salário mínimo",
-        "valor": 75
+        "valor": 75,
+        "requer": [
+          {
+            "lei": "sistema-previdenciario",
+            "opcoes": [
+              "misto",
+              "reparticao"
+            ],
+            "motivo": "A indexação garantida exige um pilar público de aposentadoria."
+          }
+        ]
       },
       {
         "id": "trava-tripla",
         "rotulo": "O maior entre inflação, salários e piso fixo",
-        "valor": 100
+        "valor": 100,
+        "requer": [
+          {
+            "lei": "sistema-previdenciario",
+            "opcoes": [
+              "misto",
+              "reparticao"
+            ],
+            "motivo": "A indexação garantida exige um pilar público de aposentadoria."
+          }
+        ]
       }
     ]
   },
@@ -53,10 +73,18 @@
     "reajuste-de-beneficios--grupo-aposentados",
     "reajuste-de-beneficios--grupo-empresarios",
     "reajuste-de-beneficios--grupo-jovens",
-    "reajuste-de-beneficios--grupo-trabalhadores"
+    "reajuste-de-beneficios--grupo-trabalhadores",
+    "reajuste-de-beneficios--desigualdade"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2
+  },
+  "mae": {
+    "texto": "A regra do reajuste depende do sistema previdenciário e do piso salarial.",
+    "leis": [
+      "salario-minimo",
+      "sistema-previdenciario"
+    ]
   }
 }

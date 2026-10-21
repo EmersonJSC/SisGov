@@ -1,0 +1,41 @@
+{
+  "id": "investimento-em-geracao-por-fonte--infraestrutura-energia-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_investimento_em_geracao_por_fonte",
+  "alvo": "infraestrutura_energia",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0.025
+      ],
+      [
+        25,
+        0.03
+      ],
+      [
+        50,
+        0.02
+      ],
+      [
+        75,
+        0
+      ],
+      [
+        100,
+        0
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_expansao_eletrica",
+    "referencia": 20000
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 8,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

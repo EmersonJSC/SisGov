@@ -3,7 +3,7 @@
   "tipo": "lei",
   "versaoEsquema": 3,
   "nome": "Polícia de rua militar ou civil",
-  "descricao": "Se a polícia que patrulha a rua é militar (com quartel e Justiça Militar) ou civil.",
+  "descricao": "O governo escolhe se a força que patrulha a rua segue organização e justiça militares ou uma carreira civil. A mudança altera letalidade, confiança e reação dos grupos ao longo dos turnos.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",
@@ -18,12 +18,12 @@
     "opcoes": [
       {
         "id": "militar",
-        "rotulo": "Polícia Militar",
+        "rotulo": "Manter patrulha militar com justiça militar",
         "valor": 0
       },
       {
         "id": "civil",
-        "rotulo": "Polícia civil desmilitarizada",
+        "rotulo": "Converter patrulha em carreira civil com justiça comum",
         "valor": 100
       }
     ]
@@ -48,6 +48,15 @@
       "parametros": {
         "coeficiente": 0.03,
         "termoConstante": -0.0
+      },
+      "atraso": 4
+    },
+    {
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
       },
       "atraso": 4
     },

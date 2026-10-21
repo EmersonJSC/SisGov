@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
-  "nome": "Piso de gasto em saúde",
-  "descricao": "Fixa a parte da receita pública que vai, no mínimo, para a saúde (hospitais, postos, remédios e vigilância saem daqui). Se a arrecadação cai, a saúde cai junto.",
+  "nome": "Verba executada para a saúde",
+  "descricao": "Escolhe quanto da receita agregada financia hospitais, postos, remédios e vigilância. A regra constitucional define o mínimo; esta alavanca pode gastar acima dele.",
   "area": "Saúde",
   "mesa": {
     "id": "sistema-de-saude",
@@ -15,7 +15,28 @@
   "processoAutorizacao": "execucao-programa-autorizado",
   "controle": {
     "variavel": "percentual_piso_saude",
-    "unidade": "percentual_receita"
+    "unidade": "percentual_receita",
+    "pisoPorLei": {
+      "lei": "piso-de-gasto-em-saude",
+      "minimos": [
+        {
+          "opcao": "sem-vinculacao",
+          "valor": 0
+        },
+        {
+          "opcao": "piso-vigente",
+          "valor": 13.69
+        },
+        {
+          "opcao": "piso-ampliado-para-regioes-vulneraveis",
+          "valor": 18
+        },
+        {
+          "opcao": "piso-alto-plurianual",
+          "valor": 23
+        }
+      ]
+    }
   },
   "orcamento": {
     "modo": "percentual_orcamento",

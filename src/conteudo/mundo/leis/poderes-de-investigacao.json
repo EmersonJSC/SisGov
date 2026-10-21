@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Poderes de investigação",
-  "descricao": "A polícia pode infiltrar agentes, adiar prisões para seguir o grupo e pedir dados sem ordem do juiz?",
+  "descricao": "O Congresso decide quais ferramentas a polícia pode usar para descobrir redes de lavagem e facções: só mandados, infiltração supervisionada ou acesso direto a dados. Mais poder melhora investigações, mas reduz garantias.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "vigilancia",
@@ -23,26 +23,27 @@
     "opcoes": [
       {
         "id": "so-com-ordem-do-juiz",
-        "rotulo": "Só com ordem do juiz",
+        "rotulo": "Exigir mandado para infiltração e acesso a dados",
         "valor": 0,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Capacidade de investigação ↓ pouco"
+        "efeitos": "Protege liberdades; redes criminosas ficam mais difíceis de mapear."
       },
       {
         "id": "infiltracao-e-acao-controlada-com-juiz",
-        "rotulo": "Infiltração e ação controlada, com juiz (hoje na referência, aprox.)",
+        "rotulo": "Permitir infiltração e flagrante adiado sob controle judicial",
         "valor": 50,
-        "apoiam": ["Associações de policiais"],
-        "efeitos": "Capacidade de investigação ↑; crime organizado ↓"
+        "apoiam": ["Associações de policiais", "Progressistas que defendem fiscalização judicial"],
+        "rejeitam": ["Conservadores favoráveis a poderes sem mandado"],
+        "efeitos": "A polícia mapeia a cadeia de comando e reduz impunidade com prazo; mantém controle judicial."
       },
       {
         "id": "acesso-a-dados-e-sigilo-sem-ordem",
-        "rotulo": "Acesso a dados e sigilo sem ordem",
+        "rotulo": "Liberar acesso a dados e sigilo sem ordem judicial",
         "valor": 100,
         "apoiam": ["Associações de policiais", "Militares da reserva"],
         "rejeitam": ["Progressistas", "Jornais e portais"],
-        "efeitos": "Capacidade de investigação ↑↑; crime organizado ↓; liberdades civis ↓"
+        "efeitos": "Inteligência sobe cedo e crime organizado cai depois; liberdade civil e apoio progressista caem."
       }
     ]
   },

@@ -2,15 +2,27 @@
   "id": "empresas-estatais-e-privatizacao--gasto-publico",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_papel_do_estado_empresario",
+  "origem": "nivel_propriedade_dos_meios_de_producao",
   "alvo": "gasto_publico",
   "mecanismo": "pontos",
   "parametros": {
     "pontos": [
-      [0, 0],
-      [33, 0.02],
-      [67, 0.1],
-      [100, 0.5]
+      [
+        0,
+        0
+      ],
+      [
+        33,
+        0.02
+      ],
+      [
+        67,
+        0.1
+      ],
+      [
+        100,
+        0.5
+      ]
     ]
   },
   "leitura": "nivel",

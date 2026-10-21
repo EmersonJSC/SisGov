@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Renda para idosos e pessoas com deficiência pobres",
-  "descricao": "O Estado paga renda a idoso ou pessoa com deficiência pobre que nunca contribuiu? Quanto e para quem?",
+  "descricao": "Escolhe a cobertura da renda assistencial para idosos e pessoas com deficiência vulneráveis.",
   "area": "Previdência, assistência, moradia e demografia",
   "mesa": {
     "id": "mesa-assistencia-social",
@@ -22,38 +22,36 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "nenhum",
-        "rotulo": "Nenhum",
-        "valor": 0,
-        "rejeitam": ["Pobres", "Aposentados"],
-        "efeitos": "Pobreza dos idosos ↑ forte"
+        "id": "focalizado-estrito",
+        "rotulo": "Focalização estrita na pobreza extrema",
+        "valor": 33,
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Pobres"],
+        "efeitos": "Gasto contido; exclusões deixam famílias vulneráveis sem renda."
       },
       {
-        "id": "focalizado-estrito",
-        "rotulo": "Focalizado estrito (renda até 1/4 do mínimo, valor abaixo do mínimo)",
-        "valor": 33,
-        "custoTexto": "Cerca de 0,6% do PIB (aprox.)",
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Pobres", "Pastorais católicas"],
-        "efeitos": "Pobreza dos idosos ↓ menos; incentivo a contribuir ↑ (hipótese)"
+        "id": "faixa-de-transicao",
+        "rotulo": "Focalização com faixa gradual de renda",
+        "valor": 50,
+        "apoiam": ["Pobres", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Reduz perda abrupta do benefício; custo intermediário."
       },
       {
         "id": "focalizado-amplo-1-salario-minimo",
-        "rotulo": "Focalizado amplo, 1 salário mínimo",
+        "rotulo": "Cobertura ampliada por renda, deficiência e cuidado",
         "valor": 67,
-        "custoTexto": "Cerca de 1,0% do PIB (2025)",
-        "apoiam": ["Pobres", "Aposentados", "Pastorais católicas"],
+        "apoiam": ["Pobres", "Aposentados"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Pobreza dos idosos ↓; cobertura previdenciária ↓ (quem ganha pouco recebe o mesmo sem pagar; hipótese sem tamanho); custo ↑ sozinho com o envelhecimento"
+        "efeitos": "Pobreza cai; avaliação e gasto público aumentam."
       },
       {
         "id": "universal",
-        "rotulo": "Universal (pensão social para todo idoso)",
+        "rotulo": "Piso universal na velhice com complemento focalizado",
         "valor": 100,
-        "custoTexto": "Alto (aprox. 2% a 3% do PIB)",
-        "apoiam": ["Progressistas", "Aposentados"],
-        "rejeitam": ["Ricos", "Mercado financeiro"],
-        "efeitos": "Pobreza dos idosos ↓ forte; desigualdade ↓"
+        "apoiam": ["Aposentados", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Cobertura ampla; gasto recorrente requer receita estável."
       }
     ]
   },

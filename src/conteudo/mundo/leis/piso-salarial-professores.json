@@ -18,23 +18,38 @@
     "opcoes": [
       {
         "id": "sem-piso-nacional",
-        "rotulo": "Cada rede decide",
-        "valor": 0
+        "rotulo": "Cada município e estado negocia salários",
+        "valor": 0,
+        "apoiam": ["Prefeitos com orçamento apertado", "Mercado financeiro"],
+        "rejeitam": [
+          "Sindicatos de professores",
+          "Professores de municípios pobres"
+        ],
+        "efeitos": "Gasto público ↓; greve e desigualdade regional ↑; redes ricas podem pagar melhor"
       },
       {
         "id": "piso-nacional-minimo",
-        "rotulo": "Piso nacional",
-        "valor": 33
+        "rotulo": "Manter piso nacional corrigido anualmente",
+        "valor": 33,
+        "apoiam": ["Sindicatos de professores", "Famílias de escolas públicas"],
+        "rejeitam": ["Prefeitos com orçamento apertado"],
+        "efeitos": "Gasto público ↑ moderado; rotatividade e greves ↓ com atraso"
       },
       {
         "id": "carreira-nacional",
-        "rotulo": "Carreira nacional",
-        "valor": 67
+        "rotulo": "Piso nacional com adicional para escolas vulneráveis",
+        "valor": 67,
+        "apoiam": ["Professores de municípios pobres", "Famílias de periferia"],
+        "rejeitam": ["Prefeitos com orçamento apertado", "Mercado financeiro"],
+        "efeitos": "Gasto público ↑; desigualdade regional ↓; aprendizagem ↑ após alguns anos"
       },
       {
         "id": "salario-de-elite",
-        "rotulo": "Salário de elite",
-        "valor": 100
+        "rotulo": "Carreira nacional de tempo integral e salário alto",
+        "valor": 100,
+        "apoiam": ["Sindicatos de professores", "Famílias de escolas públicas"],
+        "rejeitam": ["Mercado financeiro", "Prefeitos com orçamento apertado"],
+        "efeitos": "Gasto público ↑ forte; atração de professores ↑; aprendizagem melhora com atraso e boa gestão"
       }
     ]
   },
@@ -125,10 +140,7 @@
   ],
   "historia": {
     "opcoes": {
-      "sem-piso-nacional": ["Estados Unidos"],
-      "piso-nacional-minimo": ["Brasil"],
-      "carreira-nacional": ["França", "Coreia do Sul"],
-      "salario-de-elite": ["Luxemburgo"]
+      "piso-nacional-minimo": ["Brasil"]
     },
     "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
   },

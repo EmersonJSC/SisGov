@@ -1,0 +1,20 @@
+{
+  "id": "bolsas-de-pos-graduacao--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_bolsas_de_pos_graduacao",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [25, 0.01],
+      [50, 0.025],
+      [100, 0.06]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

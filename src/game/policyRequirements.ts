@@ -45,6 +45,23 @@ export type PolicyRequirement = Readonly<{
 
 const same = (a: number, b: number) => Math.abs(a - b) < 1e-9;
 
+/** Piso vigente de uma alavanca, declarado no conteúdo da lei. */
+export function policyMinimum(
+  content: ResolvedPackage,
+  policies: readonly PolicyState[],
+  policyId: string,
+): number | undefined {
+  const policy = content.policies.find((item) => item.id === policyId);
+  const floor = policy?.controle.pisoPorLei;
+  if (!floor) return undefined;
+  const parent = content.policies.find((item) => item.id === floor.lei);
+  const level = policyInForce(policies, floor.lei)?.desiredLevel;
+  const option = parent?.controle.opcoes?.find(
+    (item) => level !== undefined && same(item.valor, level),
+  );
+  return floor.minimos.find((item) => item.opcao === option?.id)?.valor;
+}
+
 function requirementOf(
   policy: PolicyFile,
   requer: PolicyRequirementFile,
@@ -136,6 +153,9 @@ export function requirementBlock(
     !(current && same(current.desiredLevel, desiredLevel))
   )
     return "Lei pétrea: não muda por votação. Mexer nela é romper a ordem constitucional.";
+  const minimum = policyMinimum(content, policies, policyId);
+  if (minimum !== undefined && desiredLevel < minimum - 1e-9)
+    return `A regra vigente de ${nameOf(content, policy.controle.pisoPorLei!.lei)} exige pelo menos ${minimum}% nesta alavanca.`;
   const requirements = policyRequirements(content).get(policyId) ?? [];
   for (const requirement of requirements) {
     if (requirementMet(requirement, policies)) continue;
@@ -343,6 +363,36 @@ export function applyRequirementFalls(
         policyId: policy.id,
         from: state.desiredLevel,
         to: target.valor,
+        revoked: false,
+      });
+      changed = true;
+    }
+    // A regra superior também acompanha alavancas contínuas já em vigor.
+    for (const policy of content.policies) {
+      if (!policy.controle.pisoPorLei) continue;
+      const minimum = policyMinimum(content, current, policy.id);
+      const index = current.findIndex(
+        (state) => state.policyDefinitionId === policy.id,
+      );
+      if (minimum === undefined || index < 0) continue;
+      const state = current[index];
+      if (
+        state.status !== "vigente" ||
+        state.legalStatus !== "vigente" ||
+        state.desiredLevel >= minimum - 1e-9
+      )
+        continue;
+      const rules = policyLevelRulesFromContent(content, policy.id);
+      if (!rules.ok) continue;
+      const moved = changePolicyTarget(state, minimum, turn, rules.value.rules);
+      if (!moved.ok) continue;
+      const updated = [...current];
+      updated[index] = moved.value;
+      current = updated;
+      fallen.push({
+        policyId: policy.id,
+        from: state.desiredLevel,
+        to: minimum,
         revoked: false,
       });
       changed = true;

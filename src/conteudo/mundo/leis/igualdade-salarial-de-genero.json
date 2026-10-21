@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Igualdade salarial de gênero",
-  "descricao": "Como a lei garante que mulheres e homens recebam o mesmo pelo mesmo trabalho?",
+  "descricao": "Escolher como cobrar salários iguais para funções iguais: nenhum dever, princípio geral, publicação de diferenças ou auditoria com multa. Transparência melhora fiscalização, mas cria custo e resistência empresarial.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,35 +23,35 @@
     "opcoes": [
       {
         "id": "sem-garantia",
-        "rotulo": "Sem garantia",
+        "rotulo": "Retirar a obrigação legal de salário igual por função",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
+        "apoiam": ["Empresários favoráveis a contratos totalmente livres"],
         "rejeitam": ["Movimento feminista"],
-        "efeitos": "Diferença salarial de gênero ↑ (tamanho: lacuna)"
+        "efeitos": "Empresas têm liberdade de remuneração; diferença salarial e discriminação tendem a subir."
       },
       {
         "id": "principio-na-lei",
-        "rotulo": "Princípio na lei",
+        "rotulo": "Declarar igualdade na lei, sem exigir dados das empresas",
         "valor": 33,
-        "apoiam": ["quase todos"],
-        "rejeitam": ["nenhum grupo grande"],
-        "efeitos": "Diferença salarial de gênero fica alta, 20,9% (MTE, RAIS 2024), sem queda atribuível à lei; ↓ pouco contra Sem garantia (estimado)"
+        "apoiam": ["Classe média", "Empresários"],
+        "rejeitam": ["Movimento feminista favorável a fiscalização"],
+        "efeitos": "Afirma o direito sem custo alto, mas diferenças ficam difíceis de revelar."
       },
       {
         "id": "transparencia-relatorio-publico-das-empresas-grandes",
-        "rotulo": "Transparência: relatório público das empresas grandes",
+        "rotulo": "Obrigar grandes empresas a publicar diferenças salariais por função",
         "valor": 67,
         "apoiam": ["Movimento feminista"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Diferença salarial ↓ (sem estudo causal no país de referência; lacuna); Custo de contratar ↑ pouco; Litígio ↑ pouco"
+        "efeitos": "Dados expõem diferenças e ajudam trabalhadoras a cobrar correção; empresas assumem custo de reporte."
       },
       {
         "id": "certificacao-multa-se-a-empresa-nao-provar-igualdade",
-        "rotulo": "Certificação: multa se a empresa não provar igualdade",
+        "rotulo": "Auditar salários e multar empresa que não corrigir diferença injustificada",
         "valor": 100,
         "apoiam": ["Movimento feminista"],
         "rejeitam": ["Empresários", "Pequenos negócios"],
-        "efeitos": "Diferença salarial ↓ (lacuna); Custo de contratar ↑; Litígio ↑ pouco"
+        "efeitos": "Diferença salarial e discriminação caem mais; custo de conformidade e resistência empresarial sobem."
       }
     ]
   },

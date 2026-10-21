@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Transferência de renda às famílias pobres",
-  "descricao": "Define quanto do PIB vai para pagamentos mensais em dinheiro às famílias pobres, com ou sem exigências como frequência escolar e vacinação.",
+  "descricao": "Define a verba anual para transferências mensais de renda. Os critérios de acesso são escolhidos em lei separada.",
   "area": "Previdência e assistência social",
   "mesa": {
     "id": "assistencia-social",
@@ -28,7 +28,6 @@
     "transferencia-de-renda--pobreza",
     "transferencia-de-renda--desigualdade",
     "transferencia-de-renda--inseguranca-alimentar",
-    "transferencia-de-renda--escolaridade",
     "transferencia-de-renda--informalidade",
     "transferencia-de-renda--consumo",
     "transferencia-de-renda--participacao-trabalho-cuidadoras",

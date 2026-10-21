@@ -1,0 +1,30 @@
+{
+  "id": "alternativas-penais-e-audiencia-de-custodia--lotacao-prisional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_alternativas_penais_e_audiencia_de_custodia",
+  "alvo": "lotacao_prisional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        3
+      ],
+      [
+        50,
+        0
+      ],
+      [
+        100,
+        -3
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

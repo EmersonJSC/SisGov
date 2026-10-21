@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Gestão dos presídios",
-  "descricao": "Quem administra a prisão: o Estado, uma empresa que presta serviços ao Estado ou uma empresa que constrói e opera?",
+  "descricao": "Quem administra o presídio e responde pelas metas: servidores, cogestão de serviços ou parceria de longo prazo? Contratos podem melhorar operação e vagas, mas criam custo e disputa com carreiras públicas.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "penas",
@@ -23,32 +23,40 @@
     "opcoes": [
       {
         "id": "estatal",
-        "rotulo": "Estatal (hoje na referência, quase todas)",
+        "rotulo": "Administração direta por servidores públicos",
         "valor": 0,
-        "custoTexto": "≈ 2,7 mil por preso por mês (2017)",
+        "custoTexto": "Sem variação de custo frente à referência",
         "apoiam": ["Sindicatos de servidores"],
-        "rejeitam": ["Empresários"]
+        "rejeitam": ["Empresários de serviços prisionais"],
+        "efeitos": "Preserva comando e empregos públicos; capacidade depende da verba separada para vagas e equipes."
       },
       {
         "id": "cogestao-o-estado-dirige-a-empresa-presta-servicos",
-        "rotulo": "Cogestão: o Estado dirige, a empresa presta serviços",
+        "rotulo": "Estado comanda; empresa presta alimentação e manutenção sob metas",
         "valor": 50.0,
-        "custoTexto": "lacuna",
+        "custoTexto": "Hipótese: economia de 0,02% do PIB ao ano frente à gestão direta",
         "apoiam": ["Empresários"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "lacuna"
+        "efeitos": "Serviços mais previsíveis reduzem rebeliões; economiza, mas desloca empregos públicos."
       },
       {
         "id": "parceria-privada-a-empresa-constroi-e-opera-por-25-anos-e-re",
-        "rotulo": "Parceria privada: a empresa constrói e opera por 25 anos e recebe por meta",
+        "rotulo": "PPP constrói e opera unidades com pagamento por metas",
         "valor": 100,
-        "custoTexto": "≈ 3,5 mil por vaga por mês (2017), metade para a obra",
+        "custoTexto": "Hipótese: acréscimo de 0,03% do PIB ao ano em contratos",
         "apoiam": ["Empresários", "Mercado financeiro"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Vagas novas sem gasto inicial; rebelião ↓ (aprox.); custo por mês ↑"
+        "efeitos": "Novas unidades aliviam um pouco a lotação e reduzem rebeliões após quatro turnos; contrato longo custa mais e pode reduzir confiança."
       }
     ]
   },
-  "consequencias": [],
+  "consequencias": [
+    "gestao-dos-presidios--lotacao-prisional",
+    "gestao-dos-presidios--rebeliao-presidios",
+    "gestao-dos-presidios--gasto-publico",
+    "gestao-dos-presidios--confianca-instituicoes",
+    "gestao-dos-presidios--grupo-servidores",
+    "gestao-dos-presidios--grupo-empresarios"
+  ],
   "ministerio": "Ministério da Justiça e Segurança Pública"
 }

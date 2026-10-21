@@ -1,0 +1,87 @@
+{
+  "id": "piso-de-gasto-em-saude",
+  "tipo": "lei",
+  "versaoEsquema": 2,
+  "grupo": "regulatoria",
+  "nome": "Piso constitucional de gasto em saúde",
+  "descricao": "A Constituição reserva um mínimo de receita para a saúde? Os percentuais de receita agregada são hipóteses de jogo, não equivalem aos percentuais jurídicos de cada ente. A despesa real é escolhida em Verba executada para a saúde.",
+  "area": "Saúde",
+  "fonte": "Constituição Federal, art. 198, § 2º: https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm",
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "constituicao"
+  },
+  "processoAutorizacao": "emenda-constitucional",
+  "nivelLegal": "constitucional",
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "controle": {
+    "variavel": "nivel_piso_de_gasto_em_saude",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "sem-vinculacao",
+        "rotulo": "Sem piso constitucional",
+        "valor": 0,
+        "apoiam": [
+          "Mercado financeiro",
+          "Gestores com restrição fiscal"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Servidores"
+        ],
+        "efeitos": "Mais liberdade orçamentária; verba para saúde pode cair (hipótese)"
+      },
+      {
+        "id": "piso-vigente",
+        "rotulo": "Manter piso constitucional atual",
+        "valor": 50,
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Gestores municipais"
+        ],
+        "rejeitam": [
+          "Defensores da desvinculação"
+        ],
+        "efeitos": "Garante o mínimo equivalente a 13,69% da receita agregada no jogo (hipótese)"
+      },
+      {
+        "id": "piso-ampliado-para-regioes-vulneraveis",
+        "rotulo": "Piso ampliado para interior e periferias",
+        "valor": 75,
+        "apoiam": [
+          "Interior",
+          "Periferias",
+          "Movimento pela saúde pública"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Gestores com restrição fiscal"
+        ],
+        "efeitos": "Mínimo de 18% da receita agregada; capacidade de atendimento pode subir com atraso (hipótese)"
+      },
+      {
+        "id": "piso-alto-plurianual",
+        "rotulo": "Piso alto com expansão plurianual da rede",
+        "valor": 100,
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Servidores"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "efeitos": "Mínimo de 23% da receita agregada; cobertura pode subir e margem fiscal cai (hipótese)"
+      }
+    ]
+  },
+  "consequencias": [
+    "piso-de-gasto-em-saude--margem-manobra-governo"
+  ],
+  "ministerio": "Ministério da Saúde"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gestao-dos-presidios--rebeliao-presidios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_dos_presidios",
+  "alvo": "rebeliao_presidios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        -1
+      ],
+      [
+        100,
+        -2
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

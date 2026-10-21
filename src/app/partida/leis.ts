@@ -75,7 +75,10 @@ export function leisQueCaem(
     return {
       id: queda.policyId,
       nome: policy?.nome ?? queda.policyId,
-      base: destino ?? exigencias.get(queda.policyId)?.[0]?.baseLabel ?? "",
+      base:
+        destino ??
+        exigencias.get(queda.policyId)?.[0]?.baseLabel ??
+        (queda.to === undefined ? "" : `${queda.to}%`),
       revogada: queda.revoked,
     };
   });

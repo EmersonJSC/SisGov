@@ -41,7 +41,18 @@
         "custoTexto": "~1% do PIB (aprox.), educação",
         "apoiam": ["Sindicatos de servidores", "Classe média"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Escolaridade ↑ (4 a 6 anos) contra Mínimo; Desigualdade ↓ pouco; Inovação ↑ pouco; Resultado fiscal ↓ pouco (estimado)"
+        "efeitos": "Escolaridade ↑ (4 a 6 anos) contra Mínimo; Desigualdade ↓ pouco; Inovação ↑ pouco; Resultado fiscal ↓ pouco (estimado)",
+        "requer": [
+          {
+            "lei": "acesso-ao-ensino-superior",
+            "opcoes": [
+              "gratuita-so-para-os-mais-pobres",
+              "gratuita-com-vestibular",
+              "gratuita-para-todos-sem-vestibular-e-com-mais-vagas"
+            ],
+            "motivo": "Com cobrança integral, a oferta pública de referência deixa de ser gratuita."
+          }
+        ]
       },
       {
         "id": "maximo-expansao-40-das-matriculas",
@@ -55,7 +66,14 @@
           "Universidades e cientistas"
         ],
         "rejeitam": ["Mercado financeiro", "Faculdades privadas"],
-        "efeitos": "Escolaridade ↑ (4 a 6 anos); Desigualdade ↓; Fuga de cérebros ↑ se a economia não absorve; Resultado fiscal ↓"
+        "efeitos": "Escolaridade ↑ (4 a 6 anos); Desigualdade ↓; Fuga de cérebros ↑ se a economia não absorve; Resultado fiscal ↓",
+        "requer": [
+          {
+            "lei": "acesso-ao-ensino-superior",
+            "opcoes": ["gratuita-para-todos-sem-vestibular-e-com-mais-vagas"],
+            "motivo": "Expansão de vagas públicas depende do modelo de universidade gratuita e ampliada."
+          }
+        ]
       }
     ]
   },

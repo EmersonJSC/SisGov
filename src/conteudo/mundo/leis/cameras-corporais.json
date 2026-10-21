@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Câmeras corporais",
-  "descricao": "Quanto a União paga por ano para os estados comprarem câmeras para os uniformes da polícia.",
+  "descricao": "O governo escolhe de 0 a 0,01% do PIB por ano para equipar policiais com câmeras corporais, guardar gravações e fiscalizar seu uso. Mais cobertura custa dinheiro, mas pode reduzir letalidade e elevar confiança.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",

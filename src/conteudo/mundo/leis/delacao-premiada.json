@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Delação premiada",
-  "descricao": "Se o acusado pode ganhar pena menor por entregar comparsas e provas.",
+  "descricao": "O acusado pode trocar provas sobre corrupção e facções por redução de pena? Acordos esclarecem redes fechadas, mas podem pressionar inocentes e premiar culpados.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "penas",
@@ -21,18 +21,27 @@
     "opcoes": [
       {
         "id": "sem-acordos",
-        "rotulo": "Sem acordos",
-        "valor": 0
+        "rotulo": "Proibir troca de informação por redução de pena",
+        "valor": 0,
+        "apoiam": ["Progressistas críticos a barganhas penais"],
+        "rejeitam": ["Associações de policiais"],
+        "efeitos": "Protege contra pressão em acordos; reduz a capacidade de desmontar redes fechadas."
       },
       {
         "id": "delacao-com-juiz",
-        "rotulo": "Delação com controle do juiz",
-        "valor": 50
+        "rotulo": "Permitir acordo com provas externas e homologação judicial",
+        "valor": 50,
+        "apoiam": ["Classe média", "Jornais e portais"],
+        "rejeitam": ["Facções criminosas"],
+        "efeitos": "Ajuda a esclarecer corrupção e comando de facções; exige prova independente para limitar abusos."
       },
       {
         "id": "acordo-como-regra",
-        "rotulo": "Acordo como regra",
-        "valor": 100
+        "rotulo": "Negociar pena como regra, com ampla margem ao acusador",
+        "valor": 100,
+        "apoiam": ["Associações de policiais", "Classe média"],
+        "rejeitam": ["Progressistas", "Defensores públicos"],
+        "efeitos": "Acelera casos e reduz impunidade; aumenta risco de coerção, polarização e perda de liberdade civil."
       }
     ]
   },

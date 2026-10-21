@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Bolsas de pós-graduação",
-  "descricao": "Quantas bolsas o governo paga a mestrandos e doutorandos, e de que valor?",
+  "descricao": "Cortar bolsas, dividir a conta com empresas ou financiar pesquisa pública? Valores e custos são hipóteses iniciais de jogo, calibráveis na simulação.",
   "area": "Educação, ciência e cultura",
   "mesa": {
     "id": "ciencia-e-cultura",
@@ -23,26 +23,35 @@
     "opcoes": [
       {
         "id": "minimo-corte-de-bolsas-e-valor-congelado",
-        "rotulo": "Mínimo: corte de bolsas e valor congelado (proposta minha)",
+        "rotulo": "Cortar bolsas e congelar valores",
         "valor": 0,
-        "custoTexto": "economia de parte de ~ 2,4 bi (aprox.)",
+        "custoTexto": "0% do PIB nesta alavanca (hipótese)",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Universidades e cientistas", "Movimento estudantil"],
         "efeitos": "Fuga de cérebros ↑ (1 a 3 anos); Inovação ↓ (5 a 10 anos); Qualificação do trabalho ↓ pequeno"
       },
       {
+        "id": "bolsas-em-parceria-com-empresas",
+        "rotulo": "Bolsas de pesquisa aplicada com contrapartida privada",
+        "valor": 25,
+        "custoTexto": "0,01% do PIB público por ano (hipótese)",
+        "apoiam": ["Empresários", "Universidades e cientistas"],
+        "rejeitam": ["Movimento estudantil", "Pesquisadores de ciência básica"],
+        "efeitos": "Inovação aplicada ↑ com atraso; pesquisa básica recebe menos; gasto público ↑ pouco"
+      },
+      {
         "id": "referencia-mestrado-r-2-100-doutorado-r-3-100-por-mes-275-mi",
-        "rotulo": "Referência: mestrado  2.100, doutorado  3.100 por mês, ~275 mil bolsas do MEC (inclui bolsas de formação de professores)",
+        "rotulo": "Manter bolsas públicas de mestrado e doutorado",
         "valor": 50.0,
-        "custoTexto": "lacuna (o reajuste de 2023 somou  2,4 bi)",
+        "custoTexto": "0,025% do PIB por ano (hipótese de jogo)",
         "apoiam": ["Universidades e cientistas", "Classe média"],
         "efeitos": "Fuga de cérebros ↓ (1 a 3 anos) contra Mínimo; Inovação ↑ pouco (5 a 10 anos); Qualificação do trabalho ↑ pequeno; Resultado fiscal ↓ pequeno (estimado)"
       },
       {
         "id": "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe",
-        "rotulo": "Máximo: mais bolsas e valor perto de um salário inicial de pesquisador (proposta minha)",
+        "rotulo": "Expandir bolsas públicas para missões estratégicas",
         "valor": 100,
-        "custoTexto": "lacuna",
+        "custoTexto": "0,06% do PIB por ano (hipótese de jogo)",
         "apoiam": [
           "Universidades e cientistas",
           "Movimento estudantil",
@@ -56,7 +65,8 @@
   "consequencias": [
     "bolsas-de-pos-graduacao--fuga-de-cerebros",
     "bolsas-de-pos-graduacao--inovacao",
-    "bolsas-de-pos-graduacao--qualificacao-trabalho"
+    "bolsas-de-pos-graduacao--qualificacao-trabalho",
+    "bolsas-de-pos-graduacao--gasto-publico"
   ],
   "ministerio": "Ministério da Educação"
 }

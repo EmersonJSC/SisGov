@@ -1,0 +1,30 @@
+{
+  "id": "gestao-dos-presidios--grupo-empresarios",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_dos_presidios",
+  "alvo": "grupo_empresarios",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        2
+      ],
+      [
+        100,
+        4
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

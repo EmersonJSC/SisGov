@@ -2,15 +2,27 @@
   "id": "empresas-estatais-e-privatizacao--arrecadacao",
   "tipo": "consequencia",
   "versaoEsquema": 1,
-  "origem": "nivel_papel_do_estado_empresario",
+  "origem": "nivel_propriedade_dos_meios_de_producao",
   "alvo": "arrecadacao",
   "mecanismo": "pontos",
   "parametros": {
     "pontos": [
-      [0, 0],
-      [33, 0.1],
-      [67, 0.5],
-      [100, 0.8]
+      [
+        0,
+        0
+      ],
+      [
+        33,
+        0.1
+      ],
+      [
+        67,
+        0.5
+      ],
+      [
+        100,
+        0.8
+      ]
     ]
   },
   "leitura": "nivel",

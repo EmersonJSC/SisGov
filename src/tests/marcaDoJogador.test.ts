@@ -41,7 +41,7 @@ describe("D-58 — marca do jogador", () => {
 
   it("subir o IVA: a receita a mais aparece como do jogador", () => {
     const partida = nova();
-    const mudada = mudarLei(partida, "imposto-sobre-consumo", 29.5);
+    const mudada = mudarLei(partida, "imposto-sobre-consumo", 30);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));
     // mudar a lei não mexe no piloto automático
     expect(mudada.value.piloto).toBe(partida.game);
@@ -70,7 +70,7 @@ describe("D-58 — marca do jogador", () => {
 
   it("o piloto automático anda igual a uma partida sem decisões", () => {
     const partida = nova();
-    const mudada = mudarLei(partida, "imposto-sobre-consumo", 29.5);
+    const mudada = mudarLei(partida, "imposto-sobre-consumo", 30);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));
     const comVoce = turno(turno(mudada.value).partida).partida;
     const semVoce = turno(turno(partida).partida).partida;

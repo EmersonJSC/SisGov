@@ -22,13 +22,13 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "id": "suspender-abertura-de-novas-vagas",
+        "rotulo": "Suspender abertura de novas vagas",
         "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "custoTexto": "Economia nas novas bolsas (hipótese)",
+        "apoiam": ["Gestores com restrição fiscal"],
+        "rejeitam": ["Estudantes de medicina", "Pacientes que aguardam especialistas"],
+        "efeitos": "Falta de especialistas pode subir após alguns anos (hipótese)"
       },
       {
         "id": "cerca-de-16-200-vagas",

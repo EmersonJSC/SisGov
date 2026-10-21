@@ -6,7 +6,7 @@
   "alvo": "crimes_patrimoniais",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.009,
+    "coeficiente": -0.009,
     "termoConstante": 0
   },
   "unidade": "percentual_0_100",

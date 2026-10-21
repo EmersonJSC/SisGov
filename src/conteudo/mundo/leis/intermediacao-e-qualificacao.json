@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Intermediação e qualificação",
-  "descricao": "Quanto o governo gasta com agências de emprego e cursos para quem procura trabalho?",
+  "descricao": "Abrir postos que ligam desempregados a vagas e financiar cursos curtos para jovens. A recolocação reage cedo; qualificação melhora depois e exige orçamento.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "desemprego",
@@ -22,53 +22,68 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
-      {
         "id": "minimo-0",
-        "rotulo": "Mínimo: 0%",
+        "rotulo": "Fechar postos de emprego e suspender cursos pagos pelo governo",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
-        "rejeitam": ["Centrais sindicais", "Jovens"],
-        "efeitos": "duração do desemprego ↑ pouco; Oportunidades para jovens ↓ pouco"
+        "apoiam": [
+          "Gestores fiscais favoráveis a corte de gasto"
+        ],
+        "rejeitam": [
+          "Centrais sindicais",
+          "Jovens"
+        ],
+        "efeitos": "Economiza verba, mas jovens levam mais tempo para encontrar trabalho."
       },
       {
         "id": "medio-cerca-de-0-05-do-pib",
-        "rotulo": "Médio: cerca de 0,05% do PIB (proposta minha; valor do o país de referência é lacuna)",
+        "rotulo": "Manter postos locais de emprego e cursos curtos para vagas abertas",
         "valor": 16.67,
-        "custoTexto": "cerca de 0,05% do PIB",
-        "efeitos": "duração do desemprego ↓ pouco contra 0%; Oportunidades para jovens ↑ pouco contra 0% (estimado); Qualificação do trabalho ↑ pouco, bem abaixo do Máximo (estimado)"
+        "custoTexto": "Hipótese: 0,05% do PIB ao ano",
+        "apoiam": [
+          "Jovens",
+          "Empresas com vagas abertas"
+        ],
+        "rejeitam": [
+          "Gestores fiscais favoráveis a corte de gasto"
+        ],
+        "efeitos": "A recolocação melhora cedo; a qualificação cresce pouco e com atraso.",
+        "custoAnualPercentualPib": 0.05
       },
       {
         "id": "maximo-0-3-do-pib",
-        "rotulo": "Máximo: 0,3% do PIB",
+        "rotulo": "Abrir rede nacional de recolocação e formação técnica intensiva",
         "valor": 100,
         "custoAnualPercentualPib": 0.3,
-        "apoiam": ["Centrais sindicais", "Jovens", "Indústria"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "a parte de agências reduz a duração do desemprego já no turno seguinte; a parte de cursos tem efeito nulo no curto prazo e positivo em 2 a 3 anos; Qualificação do trabalho ↑; Oportunidades para jovens ↑"
+        "custoTexto": "Hipótese: 0,3% do PIB ao ano",
+        "apoiam": [
+          "Centrais sindicais",
+          "Jovens",
+          "Indústria"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Mais jovens encontram vaga cedo; produtividade da formação chega com atraso e custa verba alta."
       }
     ],
     "faixa": {
       "minimo": 0.0,
       "maximo": 0.3,
-      "unidade": "% % do PIB por ano, função Proteção social"
+      "unidade": "% do PIB por ano, função Proteção social"
     }
   },
   "consequencias": [
     "intermediacao-e-qualificacao--oportunidades-juvenis",
     "intermediacao-e-qualificacao--qualificacao-trabalho",
+    "intermediacao-e-qualificacao--desemprego",
+    "intermediacao-e-qualificacao--gasto-publico",
     "grupos--intermediacao-e-qualificacao--grupo-jovens"
   ],
   "mae": {
     "texto": "Seguro-desemprego (sem trava).",
-    "leis": ["seguro-desemprego"]
+    "leis": [
+      "seguro-desemprego"
+    ]
   },
   "ministerio": "Ministério do Trabalho e Emprego"
 }

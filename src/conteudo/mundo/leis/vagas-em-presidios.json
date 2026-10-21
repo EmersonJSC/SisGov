@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Vagas em presídios",
-  "descricao": "Quanto a União repassa por ano (Fundo Penitenciário) para abrir vagas e melhorar presídios.",
+  "descricao": "O governo escolhe de zero a 0,1% do PIB por ano para abrir vagas prisionais e reformar unidades. Mais capacidade reduz lotação, rebeliões e força das facções, mas pesa no orçamento; a forma de administrar continua outra lei.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "penas",

@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Propriedade dos meios de produção",
-  "descricao": "Empresas, terras e fábricas são privadas, mistas ou do Estado?",
+  "nome": "Participação pública na propriedade produtiva",
+  "descricao": "Qual é o nível agregado de participação pública nas atividades produtivas? A escala representa o conjunto da economia e não discrimina energia, bancos, transportes ou outros setores.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
@@ -22,26 +22,46 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "privada",
-        "rotulo": "Privada",
+        "id": "participacao-publica-0",
+        "rotulo": "0% de participação pública agregada",
         "valor": 0,
-        "apoiam": ["Empresários", "Entidades do agronegócio"],
-        "rejeitam": ["Movimentos por terra"],
-        "efeitos": "Investimento privado ↑; confiança ↑"
+        "apoiam": [
+          "Empresários",
+          "Entidades do agronegócio"
+        ],
+        "rejeitam": [
+          "Movimentos por terra"
+        ],
+        "efeitos": "Polo de propriedade privada da escala; não representa uma venda de ativos."
       },
       {
-        "id": "mista",
-        "rotulo": "Mista",
-        "valor": 50.0,
-        "apoiam": ["Confederação da indústria"],
-        "efeitos": "Investimento privado ↑ pouco contra Socialista; confiança estável; produtividade ↑ pouco no longo prazo (estimado)"
+        "id": "participacao-publica-25",
+        "rotulo": "25% de participação pública agregada",
+        "valor": 25,
+        "efeitos": "Participação pública minoritária na representação agregada do jogo."
       },
       {
-        "id": "socialista",
-        "rotulo": "Socialista",
+        "id": "participacao-publica-50",
+        "rotulo": "50% de participação pública agregada",
+        "valor": 50,
+        "apoiam": [
+          "Confederação da indústria"
+        ],
+        "efeitos": "Participação pública e privada equilibradas na representação agregada do jogo."
+      },
+      {
+        "id": "participacao-publica-75",
+        "rotulo": "75% de participação pública agregada",
+        "valor": 75,
+        "efeitos": "Participação pública majoritária na representação agregada do jogo."
+      },
+      {
+        "id": "participacao-publica-100",
+        "rotulo": "100% de participação pública agregada",
         "valor": 100,
-        "custoTexto": "O Estado assume todo o investimento",
-        "apoiam": ["Movimentos por terra"],
+        "apoiam": [
+          "Movimentos por terra"
+        ],
         "rejeitam": [
           "Confederação da indústria",
           "Comércio e serviços",
@@ -49,7 +69,7 @@
           "Entidades do agronegócio",
           "Petróleo e mineração"
         ],
-        "efeitos": "Fuga de capitais ↑ forte; investimento estrangeiro ↓ forte; produtividade ↓ no longo prazo"
+        "efeitos": "Polo de propriedade pública da escala; não representa uma aquisição instantânea."
       }
     ]
   },
@@ -71,7 +91,9 @@
     "calibracao-economia--margem-manobra-governo",
     "calibracao-economia--preco-energia",
     "calibracao-economia--recessao",
-    "calibracao-economia--reputacao-internacional"
+    "calibracao-economia--reputacao-internacional",
+    "empresas-estatais-e-privatizacao--arrecadacao",
+    "empresas-estatais-e-privatizacao--gasto-publico"
   ],
   "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

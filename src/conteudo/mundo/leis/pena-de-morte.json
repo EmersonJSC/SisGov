@@ -4,12 +4,12 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Pena de morte",
-  "descricao": "Se a Justiça pode condenar à morte, e por quais crimes.",
+  "descricao": "Onde a Constituição permite pena capital, esta lei define para quais crimes ela pode ser aplicada. A punição eleva a segurança percebida, mas reduz liberdades e reputação internacional; não há ganho automático na violência letal.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "penas",
     "nome": "Penas",
-    "camada": "constituicao"
+    "camada": "lei"
   },
   "ministerio": "Ministério da Justiça",
   "processoAutorizacao": "lei-ordinaria",
@@ -27,13 +27,21 @@
     "opcoes": [
       {
         "id": "crimes-hediondos",
-        "rotulo": "Só para homicídio qualificado e terrorismo",
-        "valor": 50
+        "rotulo": "Aplicar somente a homicídio qualificado e terrorismo",
+        "valor": 50,
+        "custoTexto": "Hipótese: 0,01% do PIB ao ano em julgamento e custódia",
+        "apoiam": ["Conservadores favoráveis à pena capital"],
+        "rejeitam": ["Progressistas", "Defensores de garantias penais"],
+        "efeitos": "Segurança percebida sobe; liberdade e reputação internacional caem."
       },
       {
         "id": "tambem-trafico",
-        "rotulo": "Também para grande tráfico",
-        "valor": 100
+        "rotulo": "Estender a grandes organizações de tráfico",
+        "valor": 100,
+        "custoTexto": "Hipótese: 0,02% do PIB ao ano em julgamento e custódia",
+        "apoiam": ["Conservadores favoráveis à punição máxima"],
+        "rejeitam": ["Progressistas", "Defensores de garantias penais"],
+        "efeitos": "Punição percebida cresce mais; violência não cai por decreto e os custos de liberdade, reputação e processo aumentam."
       }
     ]
   },

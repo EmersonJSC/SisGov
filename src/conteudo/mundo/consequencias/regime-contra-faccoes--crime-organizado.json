@@ -1,0 +1,30 @@
+{
+  "id": "regime-contra-faccoes--crime-organizado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_contra_faccoes",
+  "alvo": "crime_organizado",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        -3
+      ],
+      [
+        100,
+        -4
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

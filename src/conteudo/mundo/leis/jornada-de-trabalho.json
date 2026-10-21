@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Jornada de trabalho",
-  "descricao": "Qual é o limite de horas de trabalho por semana?",
+  "descricao": "Fixar o teto semanal de horas nas fábricas e serviços. Jornadas curtas podem melhorar saúde e repartir trabalho, mas elevam custo por hora; o código constitucional limita as opções extremas.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,15 +23,16 @@
     "opcoes": [
       {
         "id": "sem-limite",
-        "rotulo": "Sem limite",
+        "rotulo": "Retirar o teto legal de horas semanais",
         "valor": 0,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["sem-regras", "minima-contrato-livre-com-piso-e-seguranca"], "motivo": "Um código detalhado já garante limite de jornada."}],
         "apoiam": ["nenhum grupo grande"],
         "rejeitam": ["Trabalhadores com carteira"],
         "efeitos": "Custo de contratar ↓; Renda por hora ↓; Participação no trabalho de quem cuida ↓"
       },
       {
         "id": "48-horas",
-        "rotulo": "48 horas",
+        "rotulo": "Fixar o teto em 48 horas semanais",
         "valor": 25,
         "apoiam": ["Indústria", "Entidades do agronegócio"],
         "rejeitam": ["Trabalhadores com carteira"],
@@ -60,11 +61,12 @@
       },
       {
         "id": "35-horas",
-        "rotulo": "35 horas",
+        "rotulo": "Fixar o teto em 35 horas semanais",
         "valor": 100,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "A jornada de 35 horas exige direitos constitucionais detalhados."}],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários", "Indústria", "Comércio e serviços"],
-        "efeitos": "Custo de contratar ↑↑; PIB ↓ (até −6% na estimativa mais dura para 36h); Informalidade ↑ se o custo for repassado (aprox.)"
+        "efeitos": "Saúde e tempo livre sobem; custo por hora aumenta e produção pode cair antes de ganhos de produtividade."
       }
     ]
   },

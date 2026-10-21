@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Interceptação de comunicações",
-  "descricao": "A polícia pode escutar telefone e ler mensagens, e com que ordem e prazo?",
+  "descricao": "Quem pode autorizar escutas de telefone e mensagens, e por quanto tempo? Investigações podem alcançar líderes de facções, mas escutas longas e sem ordem arriscam a privacidade.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "vigilancia",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "proibida",
-        "rotulo": "Proibida",
+        "rotulo": "Proibir escutas, mesmo com autorização judicial",
         "valor": 0,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Associações de policiais"],
@@ -31,13 +31,15 @@
       },
       {
         "id": "com-ordem-do-juiz-e-prazo-de-15-dias-renovaveis",
-        "rotulo": "Com ordem do juiz e prazo de 15 dias renováveis",
+        "rotulo": "Permitir escuta por 15 dias renováveis, com ordem judicial",
         "valor": 33,
-        "apoiam": ["Classe média"]
+        "apoiam": ["Classe média", "Progressistas favoráveis a fiscalização judicial"],
+        "rejeitam": ["Conservadores favoráveis a escuta mais livre"],
+        "efeitos": "A polícia ganha prova por prazo controlado, sem autorizar monitoramento indefinido."
       },
       {
         "id": "com-ordem-sem-prazo",
-        "rotulo": "Com ordem, sem prazo",
+        "rotulo": "Permitir escuta por prazo indefinido, ainda com ordem judicial",
         "valor": 67,
         "apoiam": ["Associações de policiais"],
         "rejeitam": ["Progressistas"],
@@ -45,7 +47,7 @@
       },
       {
         "id": "sem-ordem-por-seguranca-nacional",
-        "rotulo": "Sem ordem, por segurança nacional",
+        "rotulo": "Permitir escuta sem mandado em casos declarados de segurança nacional",
         "valor": 100,
         "apoiam": ["Militares da reserva"],
         "rejeitam": ["Progressistas", "Jornais e portais"],

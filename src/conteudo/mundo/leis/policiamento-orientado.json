@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Policiamento orientado",
-  "descricao": "O governo adota um programa de prevenção focada, e qual: lugares quentes, metas com dados ou dissuasão com serviços?",
+  "descricao": "Como a polícia patrulha as ruas: reage às chamadas, concentra equipes onde há crimes, cobra metas ou trabalha com a comunidade? Cada escolha altera crime, violência e gasto.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "policias",
@@ -23,38 +23,49 @@
     "opcoes": [
       {
         "id": "sem-programa",
-        "rotulo": "Sem programa",
-        "valor": 0
+        "rotulo": "Patrulha reativa: atender chamadas sem foco territorial",
+        "valor": 0,
+        "custoTexto": "Sem gasto novo",
+        "apoiam": ["Associações de policiais"],
+        "rejeitam": ["Moradores de áreas violentas"],
+        "efeitos": "Mantém a cobertura atual, mas não concentra prevenção; crime e letalidade não recebem redução adicional."
       },
       {
         "id": "pontos-quentes",
         "rotulo": "Pontos quentes (patrulha onde o crime se concentra)",
         "valor": 33.33,
-        "custoTexto": "baixo (realoca efetivo)",
+        "custoTexto": "Hipótese: 0,005% do PIB ao ano em análise e deslocamento",
         "apoiam": ["Conservadores", "Classe média"],
-        "efeitos": "Crimes contra o patrimônio ↓ pouco (aprox.); violência letal ↓ (aprox.)"
+        "rejeitam": ["Policiais lotados fora das áreas priorizadas"],
+        "efeitos": "Crimes patrimoniais e violência letal caem após implantação; bairros fora do mapa recebem menos patrulha."
       },
       {
         "id": "metas-e-gestao",
         "rotulo": "Metas e gestão (pacto com dados e cobrança)",
         "valor": 66.67,
-        "custoTexto": "≈0,02% do PIB (aprox.), segurança",
+        "custoTexto": "Hipótese: 0,02% do PIB ao ano em dados, supervisão e treinamento",
         "apoiam": ["Associações de policiais", "Classe média"],
-        "efeitos": "Violência letal ↓ (programas estaduais, tamanho aprox.); 1 a 3 anos"
+        "rejeitam": [
+          "Equipes contrárias à cobrança por metas",
+          "Progressistas"
+        ],
+        "efeitos": "Crimes e violência letal caem; pressão por números pode gerar abusos e rejeição de grupos."
       },
       {
         "id": "dissuasao-focada-com-servicos",
-        "rotulo": "Dissuasão focada com serviços (aviso a grupos de risco e oferta de saída)",
+        "rotulo": "Patrulha comunitária com dissuasão focada e oferta de saída",
         "valor": 100,
-        "custoTexto": "≈0,03% do PIB (aprox.), segurança",
+        "custoTexto": "Hipótese: 0,03% do PIB ao ano em equipes e serviços",
         "apoiam": ["Progressistas", "Hierarquia católica e pastorais"],
-        "efeitos": "Violência letal ↓ (aprox.); reincidência ↓ (aprox.)"
+        "rejeitam": ["Conservadores que preferem repressão imediata"],
+        "efeitos": "Violência letal e crimes patrimoniais caem com atraso; custa mais e exige coordenação com serviços sociais."
       }
     ]
   },
   "consequencias": [
     "policiamento-orientado--crimes-patrimoniais",
     "policiamento-orientado--violencia-letal",
+    "policiamento-orientado--gasto-publico",
     "grupos--policiamento-orientado--grupo-classe-media",
     "grupos--policiamento-orientado--grupo-conservadores",
     "grupos--policiamento-orientado--grupo-progressistas"

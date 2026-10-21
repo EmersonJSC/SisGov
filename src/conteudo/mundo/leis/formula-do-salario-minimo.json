@@ -3,7 +3,7 @@
   "tipo": "lei",
   "versaoEsquema": 3,
   "nome": "Fórmula do salário mínimo",
-  "descricao": "A regra que corrige o salário mínimo todo ano: sem regra fixa, só a inflação, a inflação mais o crescimento da economia ou uma meta em relação ao salário típico.",
+  "descricao": "Escolher a regra de valorização do piso: decisão anual, só inflação, crescimento da economia ou aproximação ao salário típico. Ganho real melhora renda com atraso, mas eleva custos e pressiona o orçamento.",
   "area": "Trabalho e emprego",
   "ministerio": "Ministério do Trabalho",
   "nivel": "lei",
@@ -25,8 +25,11 @@
     "opcoes": [
       {
         "id": "sem-regra",
-        "rotulo": "Sem regra: o valor é decidido todo ano",
+        "rotulo": "Votar um novo valor do piso a cada ano, sem fórmula",
         "valor": 0,
+        "apoiam": ["Congresso", "Sindicatos que buscam reajuste político"],
+        "rejeitam": ["Empresários que buscam previsibilidade"],
+        "efeitos": "Flexibilidade para negociar cada aumento, com incerteza para famílias e empresas.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -37,13 +40,19 @@
       },
       {
         "id": "so-inflacao",
-        "rotulo": "Só repõe a inflação",
-        "valor": 33
+        "rotulo": "Repor a inflação sem aumento real",
+        "valor": 33,
+        "apoiam": ["Empresários", "Gestores fiscais"],
+        "rejeitam": ["Sindicatos", "Trabalhadores de baixa renda"],
+        "efeitos": "Mantém poder de compra sem promessa de ganho real; menor pressão nos custos."
       },
       {
         "id": "inflacao-mais-pib",
-        "rotulo": "Inflação mais o crescimento da economia",
+        "rotulo": "Repor inflação e repartir parte do crescimento da economia",
         "valor": 67,
+        "apoiam": ["Trabalhadores", "Sindicatos"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "Renda e consumo melhoram após alguns turnos; custo de contratação e gasto com benefícios sobem.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -54,12 +63,39 @@
       },
       {
         "id": "meta-da-mediana",
-        "rotulo": "Meta de 60% do salário típico",
-        "valor": 100
+        "rotulo": "Elevar o piso até 60% do salário típico ao longo do mandato",
+        "valor": 100,
+        "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
+        "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
+        "efeitos": "Combate pobreza mais rápido, com maior risco de custo, informalidade e pressão fiscal."
       }
     ]
   },
   "efeitos": [
+    {
+      "alvo": "renda_familias",
+      "mecanismo": "pontos",
+      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.8], [100, 1.4]] },
+      "atraso": 4
+    },
+    {
+      "alvo": "pobreza",
+      "mecanismo": "pontos",
+      "parametros": { "pontos": [[0, 0], [33, 0], [67, -0.6], [100, -1.2]] },
+      "atraso": 4
+    },
+    {
+      "alvo": "custo_trabalhista",
+      "mecanismo": "pontos",
+      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.5], [100, 1.0]] },
+      "atraso": 4
+    },
+    {
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.05], [100, 0.09]] },
+      "atraso": 4
+    },
     {
       "alvo": "grupo_trabalhadores",
       "mecanismo": "pontos",

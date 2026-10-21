@@ -1,0 +1,30 @@
+{
+  "id": "alternativas-penais-e-audiencia-de-custodia--reincidencia",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_alternativas_penais_e_audiencia_de_custodia",
+  "alvo": "reincidencia",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        2
+      ],
+      [
+        50,
+        0
+      ],
+      [
+        100,
+        -2
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

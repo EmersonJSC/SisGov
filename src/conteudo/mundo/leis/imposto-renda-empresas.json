@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Imposto de renda das empresas",
-  "descricao": "Define a alíquota nominal cobrada sobre o lucro das empresas.",
+  "descricao": "Define a alíquota nominal sobre o lucro tributável. No jogo, o PIB serve como aproximação da base porque o modelo não separa o lucro empresarial.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",

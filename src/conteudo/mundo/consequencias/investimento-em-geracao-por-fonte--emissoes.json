@@ -4,10 +4,34 @@
   "versaoEsquema": 1,
   "origem": "nivel_investimento_em_geracao_por_fonte",
   "alvo": "emissoes",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 0.056,
-    "termoConstante": 0
+    "pontos": [
+      [
+        0,
+        -0.3
+      ],
+      [
+        25,
+        -0.3
+      ],
+      [
+        50,
+        -0.2
+      ],
+      [
+        75,
+        0.5
+      ],
+      [
+        100,
+        -0.3
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_expansao_eletrica",
+    "referencia": 20000
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 1,

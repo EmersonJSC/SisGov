@@ -505,6 +505,11 @@ export type PolicyFile = {
     opcoes?: readonly PolicyOption[];
     /** Alavanca com faixa de valor (V1-34): piso, teto e o valor de referência. */
     faixa?: PolicyRange;
+    /** Piso da alavanca conforme a opção vigente de outra lei. Valores na unidade do controle. */
+    pisoPorLei?: {
+      lei: string;
+      minimos: readonly { opcao: string; valor: number }[];
+    };
   };
   /** Turnos até a lei valer: mínimo e máximo (Constituição 4, alavanca 1). */
   implantacaoTurnos?: { minimo: number; maximo: number };

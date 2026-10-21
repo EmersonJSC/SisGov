@@ -1,0 +1,29 @@
+{
+  "id": "intermediacao-e-qualificacao--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_intermediacao_e_qualificacao",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        16.67,
+        0.05
+      ],
+      [
+        100,
+        0.3
+      ]
+    ]
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

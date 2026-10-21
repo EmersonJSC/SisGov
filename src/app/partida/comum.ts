@@ -26,7 +26,19 @@ export function escalaDe(variable: VariableDefinition) {
 }
 
 export function falha<T>(
-  diagnostics: readonly { message: string }[],
+  diagnostics: readonly {
+    message: string;
+    code?: string;
+    file?: string;
+    field?: string;
+  }[],
 ): Resultado<T> {
-  return { ok: false, erros: diagnostics.map((item) => item.message) };
+  return {
+    ok: false,
+    erros: diagnostics.map((item) =>
+      item.code === "CAMPO_DESCONHECIDO" && item.file && item.field
+        ? `${item.file} · ${item.field}: ${item.message}`
+        : item.message,
+    ),
+  };
 }

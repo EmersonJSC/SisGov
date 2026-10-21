@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Vigilância de bairro",
-  "descricao": "Moradores ajudam a vigiar o bairro, e sob o controle de quem?",
+  "descricao": "O governo decide se moradores podem organizar vigilância de bairro e que poderes recebem. Mais presença pode reduzir furtos, mas a abordagem sem controle ameaça liberdade e confiança.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "vigilancia",
@@ -23,25 +23,30 @@
     "opcoes": [
       {
         "id": "nenhuma",
-        "rotulo": "Nenhuma",
-        "valor": 0
+        "rotulo": "Não credenciar patrulhas de moradores",
+        "valor": 0,
+        "custoTexto": "Sem gasto novo",
+        "apoiam": ["Progressistas contrários a abordagens privadas"],
+        "rejeitam": ["Moradores que pedem vigilância local"],
+        "efeitos": "Evita abordagens por civis, mas não adiciona presença nas ruas."
       },
       {
         "id": "voluntarios-com-a-policia",
-        "rotulo": "Voluntários com a polícia (conselhos comunitários)",
+        "rotulo": "Conselhos de moradores que informam a polícia, sem abordar pessoas",
         "valor": 50,
-        "custoTexto": "baixo",
+        "custoTexto": "Hipótese: 0,005% do PIB ao ano em treinamento e canais de denúncia",
         "apoiam": ["Classe média", "Periferias"],
-        "efeitos": "Sensação de segurança ↑ (aprox.)"
+        "rejeitam": ["Conservadores que pedem poder de abordagem"],
+        "efeitos": "Crimes patrimoniais caem com atraso e a confiança pode subir; requer coordenação da polícia."
       },
       {
         "id": "comites-do-estado",
-        "rotulo": "Comitês do Estado",
+        "rotulo": "Comitês credenciados para patrulhar e abordar suspeitos",
         "valor": 100,
-        "custoTexto": "baixo",
+        "custoTexto": "Hipótese: 0,02% do PIB ao ano em supervisão",
         "apoiam": ["Conservadores"],
-        "rejeitam": ["Progressistas"],
-        "efeitos": "Sensação de segurança ↑ (aprox.); risco de virar milícia, milícias ↑ (aprox.)"
+        "rejeitam": ["Progressistas", "Moradores receosos de abusos"],
+        "efeitos": "Crimes patrimoniais e medo caem mais, mas liberdades civis e confiança institucional pioram."
       }
     ]
   },
@@ -53,7 +58,8 @@
     "vigilancia-de-bairro--grupo-progressistas",
     "vigilancia-de-bairro--grupo-classe-media",
     "grupos--vigilancia-de-bairro--grupo-conservadores",
-    "grupos--vigilancia-de-bairro--grupo-periferias"
+    "grupos--vigilancia-de-bairro--grupo-periferias",
+    "vigilancia-de-bairro--gasto-publico"
   ],
   "ministerio": "Ministério da Justiça"
 }

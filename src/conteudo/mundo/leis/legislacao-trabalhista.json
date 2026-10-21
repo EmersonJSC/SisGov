@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Legislação trabalhista",
-  "descricao": "Que direitos mínimos todo contrato de trabalho garante, e o acordo entre as partes pode valer mais que a lei?",
+  "descricao": "Definir o piso constitucional dos contratos: liberdade quase total, código com negociação coletiva ou proteção forte. Esta decisão limita as leis filhas de jornada e terceirização; custos menores podem gerar rotatividade e informalidade.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,15 +23,15 @@
     "opcoes": [
       {
         "id": "sem-regras",
-        "rotulo": "Sem regras",
+        "rotulo": "Retirar direitos mínimos do contrato e deixar cada firma negociar",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
+        "apoiam": ["Empresários favoráveis à desregulação"],
         "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "efeitos": "Custo de contratar ↓↓ na hora; Informalidade ↓ em 2 a 4 anos; Rotatividade ↑↑"
       },
       {
         "id": "minima-contrato-livre-com-piso-e-seguranca",
-        "rotulo": "Mínima: contrato livre com piso e segurança",
+        "rotulo": "Manter só piso salarial, segurança e contrato livre",
         "valor": 22.33,
         "apoiam": ["Empresários", "Ricos"],
         "rejeitam": ["Trabalhadores com carteira"],
@@ -39,7 +39,7 @@
       },
       {
         "id": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
-        "rotulo": "Negociado sobre legislado: código detalhado, mas o acordo coletivo prevalece",
+        "rotulo": "Permitir que acordo coletivo substitua partes do código trabalhista",
         "valor": 44.67,
         "apoiam": [
           "Empresários",
@@ -51,7 +51,7 @@
       },
       {
         "id": "codigo-detalhado",
-        "rotulo": "Código detalhado",
+        "rotulo": "Aplicar código uniforme de férias, jornada e demissão",
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira", "Servidores"],
         "rejeitam": ["Empresários"],
@@ -59,7 +59,7 @@
       },
       {
         "id": "protetiva-estabilidade-e-demissao-so-com-motivo",
-        "rotulo": "Protetiva: estabilidade e demissão só com motivo",
+        "rotulo": "Exigir motivo para demissão e ampliar estabilidade no emprego",
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários", "Pequenos negócios"],

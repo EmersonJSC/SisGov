@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Imposto sobre consumo (IVA)",
-  "descricao": "Define a alíquota padrão do imposto cobrado sobre bens e serviços em cada etapa da venda, com crédito do que foi pago antes.",
+  "descricao": "Escolhe alíquota e desenho do IVA, incluindo uma opção de devolução focalizada às famílias de baixa renda.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -15,7 +15,41 @@
   "processoAutorizacao": "lei-ordinaria",
   "controle": {
     "variavel": "aliquota_imposto_sobre_consumo",
-    "unidade": "percentual_0_100"
+    "unidade": "percentual_0_100",
+    "opcoes": [
+      {
+        "id": "iva-minimo",
+        "rotulo": "IVA mínimo ou revogado",
+        "valor": 0,
+        "apoiam": ["Comércio e serviços"],
+        "rejeitam": ["Gestores fiscais"],
+        "efeitos": "Preços podem cair; receita tributária cai fortemente."
+      },
+      {
+        "id": "iva-moderado",
+        "rotulo": "IVA moderado com exceções",
+        "valor": 13.35,
+        "apoiam": ["Classe média", "Pequenos empreendedores"],
+        "rejeitam": ["Gestores fiscais"],
+        "efeitos": "Arrecadação intermediária; exceções reduzem a base tributável."
+      },
+      {
+        "id": "iva-alto-base-ampla",
+        "rotulo": "IVA alto e de base ampla",
+        "valor": 30,
+        "apoiam": ["Gestores fiscais"],
+        "rejeitam": ["Pobres", "Comércio e serviços"],
+        "efeitos": "Receita sobe, mas preços e pressão sobre renda baixa também sobem."
+      },
+      {
+        "id": "iva-com-cashback",
+        "rotulo": "IVA amplo com devolução às famílias pobres",
+        "valor": 26.5,
+        "apoiam": ["Pobres", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Devolução reduz pobreza e receita líquida; exige cadastro e administração."
+      }
+    ]
   },
   "tributo": {
     "base": "consumo",
@@ -36,7 +70,9 @@
     "imposto-sobre-consumo--grupo-pequenos-negocios",
     "imposto-sobre-consumo--grupo-pobres",
     "imposto-sobre-consumo--grupo-servidores",
-    "imposto-sobre-consumo--arrecadacao"
+    "imposto-sobre-consumo--arrecadacao",
+    "imposto-sobre-consumo--cashback-pobreza",
+    "imposto-sobre-consumo--cashback-arrecadacao"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

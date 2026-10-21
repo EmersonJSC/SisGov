@@ -4,11 +4,10 @@
   "versaoEsquema": 1,
   "origem": "nivel_acesso_ao_ensino_superior",
   "alvo": "endividamento_familias",
-  "mecanismo": "limiar",
+  "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.09333333,
-    "limiar": 25,
-    "direcao": "acima"
+    "coeficiente": -0.046666665,
+    "termoConstante": 4.6666665
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 4,

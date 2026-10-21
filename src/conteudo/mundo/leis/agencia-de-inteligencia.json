@@ -3,7 +3,7 @@
   "tipo": "lei",
   "versaoEsquema": 3,
   "nome": "Agência de inteligência e contrainteligência",
-  "descricao": "Quanto a agência que investiga espionagem, dinheiro estrangeiro e ameaças ao Estado recebe por ano.",
+  "descricao": "Definir a verba anual da agência que rastreia espionagem, dinheiro externo e ameaças ao Estado. Mais analistas elevam a capacidade de investigação após dois turnos e custam orçamento; sem controles, a vigilância também pressiona liberdades civis.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "vigilancia",

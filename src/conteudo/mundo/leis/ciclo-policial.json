@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "institucional",
   "nome": "Ciclo policial",
-  "descricao": "Se a mesma polícia patrulha e investiga o crime, ou se o trabalho é dividido entre duas.",
+  "descricao": "Quem investiga depois do patrulhamento: uma segunda polícia ou a mesma equipe em ciclo completo? Unificar o ciclo pode acelerar casos, mas exige reorganização e contraria carreiras existentes.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",
@@ -20,13 +20,21 @@
     "opcoes": [
       {
         "id": "dividido",
-        "rotulo": "Dividido: PM patrulha, Polícia Civil investiga",
-        "valor": 0
+        "rotulo": "Patrulha entrega o caso à polícia investigativa",
+        "valor": 0,
+        "custoTexto": "Hipótese: 1,2% do PIB ao ano em estrutura policial",
+        "apoiam": ["Carreiras policiais atuais", "Servidores estaduais"],
+        "rejeitam": ["Vítimas que enfrentam perda de informação entre equipes"],
+        "efeitos": "Preserva funções especializadas, mas a transferência do caso pode atrasar a investigação."
       },
       {
         "id": "completo",
-        "rotulo": "Ciclo completo",
-        "valor": 100
+        "rotulo": "A mesma força patrulha, registra e investiga",
+        "valor": 100,
+        "custoTexto": "Hipótese: 1,15% do PIB ao ano após reorganização",
+        "apoiam": ["Classe média", "Pequenos negócios"],
+        "rejeitam": ["Carreiras policiais que perdem funções exclusivas"],
+        "efeitos": "Reduz impunidade com atraso; requer treinamento e pode reduzir segurança percebida durante a transição."
       }
     ]
   },

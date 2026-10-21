@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Imposto de renda da pessoa física",
-  "descricao": "Define a alíquota máxima cobrada sobre a renda das pessoas (salários, aluguéis, ganhos), com faixas progressivas abaixo dela.",
+  "descricao": "Define a alíquota marginal máxima do imposto de renda pessoal. No jogo, o efeito fiscal é uma aproximação agregada sobre a renda das famílias; as faixas progressivas individuais não são calculadas separadamente.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",

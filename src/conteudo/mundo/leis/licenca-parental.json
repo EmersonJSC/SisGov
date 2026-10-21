@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Licença parental",
-  "descricao": "Define quanto tempo de licença paga mães e pais têm com a chegada de um filho, e se o pai tem parte reservada.",
+  "descricao": "Decidir quem recebe tempo remunerado após o nascimento de uma criança. Licença protege famílias e saúde, mas exige financiamento e pode alterar a contratação de mulheres.",
   "area": "Trabalho e emprego",
   "mesa": {
     "id": "familia-e-cuidados",
@@ -19,23 +19,35 @@
     "opcoes": [
       {
         "id": "nenhuma",
-        "rotulo": "Sem licença paga",
-        "valor": 0
+        "rotulo": "Deixar licença após nascimento sem remuneração garantida",
+        "valor": 0,
+        "apoiam": ["Empresários favoráveis a custo menor"],
+        "rejeitam": ["Famílias com filhos", "Progressistas"],
+        "efeitos": "Custo cai, mas famílias perdem renda e cuidado no início da vida."
       },
       {
         "id": "curta-maternidade",
-        "rotulo": "Licença curta para a mãe",
-        "valor": 33
+        "rotulo": "Pagar licença curta apenas à mãe",
+        "valor": 33,
+        "apoiam": ["Famílias com filhos", "Conservadores"],
+        "rejeitam": ["Progressistas favoráveis à divisão do cuidado"],
+        "efeitos": "Protege o pós-parto com custo contido; mantém o cuidado concentrado na mãe."
       },
       {
         "id": "longa-materna",
-        "rotulo": "Licença longa para a mãe",
-        "valor": 67
+        "rotulo": "Pagar licença mais longa apenas à mãe",
+        "valor": 67,
+        "apoiam": ["Famílias com filhos", "Conservadores"],
+        "rejeitam": ["Empresários", "Progressistas favoráveis à divisão do cuidado"],
+        "efeitos": "Mais tempo de cuidado melhora saúde, mas pode afastar mulheres do trabalho e elevar custo."
       },
       {
         "id": "compartilhada-com-cota-pai",
-        "rotulo": "Compartilhada com cota do pai",
-        "valor": 100
+        "rotulo": "Dividir licença paga e reservar parte intransferível ao pai",
+        "valor": 100,
+        "apoiam": ["Famílias com filhos", "Progressistas"],
+        "rejeitam": ["Pequenos negócios", "Conservadores contrários à cota paterna"],
+        "efeitos": "Pais dividem o cuidado e mulheres voltam ao trabalho; gasto e custo de substituição sobem."
       }
     ]
   },

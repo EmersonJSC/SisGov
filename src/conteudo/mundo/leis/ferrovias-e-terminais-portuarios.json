@@ -1,0 +1,156 @@
+{
+  "id": "ferrovias-e-terminais-portuarios",
+  "tipo": "lei",
+  "versaoEsquema": 3,
+  "nome": "Ferrovias de carga e terminais portuários",
+  "descricao": "Escolhe como ampliar corredores ferroviários de carga e integrar seus terminais aos portos.",
+  "area": "Cidades e transporte",
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
+  },
+  "ministerio": "Ministério dos Transportes",
+  "controle": {
+    "variavel": "nivel_ferrovias_e_terminais_portuarios",
+    "unidade": "nivel_escopo",
+    "opcoes": [
+      {
+        "id": "rodovias-com-manutencao",
+        "rotulo": "Priorizar rodovias e recuperar gargalos",
+        "valor": 0,
+        "apoiam": ["Caminhoneiros autônomos", "Interior"],
+        "rejeitam": ["Confederação da indústria", "Movimento ambientalista"],
+        "efeitos": "Gasto inicial menor; frete pesado e emissões seguem elevados."
+      },
+      {
+        "id": "corredores-publicos-aos-portos",
+        "rotulo": "Construir corredores ferroviários públicos até portos",
+        "valor": 33,
+        "apoiam": [
+          "Confederação da indústria",
+          "Trabalhadores com carteira",
+          "Interior"
+        ],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Gasto público sobe já; frete e emissões caem e exportações crescem após as obras."
+      },
+      {
+        "id": "concessoes-com-acesso-aberto",
+        "rotulo": "Conceder ferrovias e terminais com metas de tarifa e acesso aberto",
+        "valor": 67,
+        "apoiam": [
+          "Empresários",
+          "Mercado financeiro",
+          "Entidades do agronegócio"
+        ],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Expansão depende do cumprimento de metas; pressão fiscal direta menor, com fiscalização e risco contratual."
+      },
+      {
+        "id": "rede-publica-intermodal",
+        "rotulo": "Criar rede pública intermodal para carga e regiões isoladas",
+        "valor": 100,
+        "apoiam": [
+          "Interior",
+          "Agricultura familiar",
+          "Trabalhadores com carteira"
+        ],
+        "rejeitam": ["Mercado financeiro", "Caminhoneiros autônomos"],
+        "efeitos": "Maior acesso regional e menor frete com atraso; gasto público e risco de dívida sobem na implantação."
+      }
+    ]
+  },
+  "historia": {
+    "brasil": "A Lei 14.273/2021 prevê exploração ferroviária por concessão e autorização; corredores ferroviários e acesso portuário são escolhas de política de transportes."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 14.273/2021 (Lei das Ferrovias)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14273.htm",
+      "usadoPara": "regimes de exploração ferroviária"
+    },
+    {
+      "titulo": "ANTT, autorizações ferroviárias",
+      "url": "https://www.gov.br/antt/pt-br/assuntos/ferrovias/autorizacoes-ferroviarias-1",
+      "usadoPara": "modelo de autorização ferroviária"
+    }
+  ],
+  "nivel": "lei",
+  "implantacao": {
+    "entrada": 0.2,
+    "saida": 0.1
+  },
+  "efeitos": [
+    {
+      "alvo": "exportacoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.13],
+          [67, 0.11],
+          [100, 0.15]
+        ]
+      },
+      "unidade": "indice_0_100",
+      "atraso": 8
+    },
+    {
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.04],
+          [67, 0.035],
+          [100, 0.05]
+        ]
+      },
+      "unidade": "indice_0_100",
+      "atraso": 8
+    },
+    {
+      "alvo": "emissoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -0.04],
+          [67, -0.035],
+          [100, -0.05]
+        ]
+      },
+      "unidade": "indice_0_100",
+      "atraso": 8
+    },
+    {
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.3],
+          [67, 0.08],
+          [100, 0.48]
+        ]
+      },
+      "unidade": "percentual_pib",
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_interior",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.4],
+          [67, 0.15],
+          [100, 0.7]
+        ]
+      },
+      "unidade": "indice_0_100",
+      "atraso": 2
+    }
+  ]
+}

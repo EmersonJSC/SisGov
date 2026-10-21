@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Trabalho por aplicativo",
-  "descricao": "Que contrato tem quem trabalha por plataforma digital?",
+  "descricao": "Definir se entregadores e motoristas de aplicativo são autônomos sem proteção, uma categoria com piso e previdência, ou empregados. Proteção amplia renda e cobertura, mas pode elevar preço e reduzir vagas.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,20 +23,20 @@
     "opcoes": [
       {
         "id": "sem-regulacao",
-        "rotulo": "Sem regulação",
+        "rotulo": "Permitir trabalho por aplicativo sem piso nem contribuição obrigatória",
         "valor": 0,
         "apoiam": ["Plataformas digitais", "Classe média"],
         "rejeitam": [
           "Entregadores e motoristas de aplicativo",
           "Centrais sindicais"
         ],
-        "efeitos": "Informalidade ↑ (hoje 71% dos plataformizados são informais); vagas por aplicativo ↑; paralisação de entregadores mais provável"
+        "efeitos": "Acesso à plataforma fica fácil, mas informalidade e falta de cobertura persistem."
       },
       {
         "id": "categoria-propria-piso-por-hora-e-contribuicao-para-a-previd",
-        "rotulo": "Categoria própria: piso por hora e contribuição para a previdência",
+        "rotulo": "Criar categoria própria com piso por hora e contribuição previdenciária",
         "valor": 33,
-        "custoTexto": "receita previdenciária ↑ (tamanho: lacuna)",
+        "custoTexto": "Hipótese: mais contribuição previdenciária e custo de plataforma",
         "apoiam": [
           "Entregadores e motoristas de aplicativo",
           "Trabalhadores com carteira"
@@ -45,11 +45,11 @@
           "Plataformas digitais",
           "motoristas contrários à contribuição"
         ],
-        "efeitos": "Informalidade ↓; cobertura previdenciária ↑ (hoje 36%); renda por hora ↑; preço ao consumidor ↑ pouco (aprox.)"
+        "efeitos": "Renda e cobertura sobem; preço ao consumidor e custo da plataforma também."
       },
       {
         "id": "presuncao-de-vinculo-de-emprego",
-        "rotulo": "Presunção de vínculo de emprego",
+        "rotulo": "Presumir vínculo de emprego quando a plataforma controla jornada e preço",
         "valor": 67,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Plataformas digitais", "Informais"],
@@ -57,11 +57,12 @@
       },
       {
         "id": "emprego-obrigatorio",
-        "rotulo": "Emprego obrigatório",
+        "rotulo": "Exigir carteira de trabalho para todo motorista e entregador",
         "valor": 100,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "Vínculo obrigatório exige direitos mínimos constitucionais definidos."}],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
-        "efeitos": "Vagas por aplicativo ↓↓ (aprox.); Informalidade ↓ entre quem fica; ameaça das plataformas de sair muito provável"
+        "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer."
       }
     ]
   },

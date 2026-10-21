@@ -1,0 +1,30 @@
+{
+  "id": "gestao-dos-presidios--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_dos_presidios",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        -0.02
+      ],
+      [
+        100,
+        0.03
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
