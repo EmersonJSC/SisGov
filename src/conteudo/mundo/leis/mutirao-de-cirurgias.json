@@ -22,13 +22,13 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "id": "suspender-mutirao-e-priorizar-urgencias",
+        "rotulo": "Suspender mutirões e priorizar urgências",
         "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "custoTexto": "Sem gasto extraordinário",
+        "apoiam": ["Gestores com restrição fiscal"],
+        "rejeitam": ["Pacientes na fila eletiva", "Entidades médicas"],
+        "efeitos": "Urgências têm prioridade; fila de cirurgias eletivas tende a crescer (hipótese)"
       },
       {
         "id": "zero",

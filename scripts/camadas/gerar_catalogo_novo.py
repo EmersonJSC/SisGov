@@ -23,8 +23,6 @@ PARA_SAUDE = ["imposto-seletivo"]
 PARA_AMBIENTE = "credito-rural-e-assistencia-tecnica fiscalizacao-ambiental protecao-da-vegetacao-nativa-nas-propriedades-rurais".split()
 PARA_DIREITOS = ["apostas-e-jogos-de-azar"]
 JUNTAS = {
-    "delacao-premiada-e-acordos": ("delacao-premiada", "a ficha nova substitui a antiga"),
-    "idade-minima-para-se-aposentar": ("idade-minima-aposentadoria", "a mesma regra; a ficha vira a Constituição e a antiga vira a alavanca"),
     "regra-de-reajuste-dos-beneficios": ("reajuste-de-beneficios", "a mesma regra"),
     "transferencia-de-renda-as-familias-pobres": ("transferencia-de-renda", "lei (regra) + alavanca (verba)"),
     "piso-de-gasto-em-educacao": ("piso-educacao", "lei (regra) + alavanca (valor)"),

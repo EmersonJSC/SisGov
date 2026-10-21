@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Terceirização",
-  "descricao": "A empresa pode contratar outra empresa para fazer sua atividade principal?",
+  "descricao": "Permitir que uma fábrica contrate outra firma para produzir ou prestar serviços? Terceirização ampla reduz custo e acelera contratação, mas pode baixar salários e transferir riscos ao trabalhador.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,15 +23,16 @@
     "opcoes": [
       {
         "id": "livre",
-        "rotulo": "Livre",
+        "rotulo": "Liberar terceirização em qualquer atividade sem responsabilidade da contratante",
         "valor": 0,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["sem-regras", "minima-contrato-livre-com-piso-e-seguranca", "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole", "codigo-detalhado"], "motivo": "Estabilidade constitucional não permite terceirização sem responsabilidade."}],
         "apoiam": ["Empresários", "Indústria"],
         "rejeitam": ["Centrais sindicais"],
         "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)"
       },
       {
         "id": "ampla-com-a-contratante-respondendo-pelas-dividas",
-        "rotulo": "Ampla, com a contratante respondendo pelas dívidas",
+        "rotulo": "Terceirizar produção e serviços, mas responsabilizar a contratante",
         "valor": 33,
         "apoiam": ["Comércio e serviços"],
         "rejeitam": ["Trabalhadores com carteira"],
@@ -39,7 +40,7 @@
       },
       {
         "id": "limitada-com-o-mesmo-salario-do-contratado-direto",
-        "rotulo": "Limitada, com o mesmo salário do contratado direto",
+        "rotulo": "Permitir terceirização com salário igual ao da equipe direta",
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresários"],
@@ -47,7 +48,7 @@
       },
       {
         "id": "restrita-a-atividade-de-apoio",
-        "rotulo": "Restrita à atividade de apoio",
+        "rotulo": "Restringir terceirização a limpeza, manutenção e apoio",
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Indústria"],

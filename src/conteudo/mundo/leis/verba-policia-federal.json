@@ -3,7 +3,7 @@
   "tipo": "lei",
   "versaoEsquema": 3,
   "nome": "Verba da Polícia Federal",
-  "descricao": "Quanto a Polícia Federal recebe por ano para investigar o crime organizado, a corrupção e as fronteiras.",
+  "descricao": "Definir a verba da Polícia Federal para contratar investigadores, seguir dinheiro de facções e corrupção e fiscalizar fronteiras. O gasto aparece cedo; inteligência cresce depois e investigações rendem em vários turnos.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",

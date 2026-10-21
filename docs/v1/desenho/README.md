@@ -17,7 +17,8 @@
 | Leis em camadas como minijogo                    | V1-34       | `leis-em-camadas.md`                       | Em revisão (13/out)                 |
 | Catálogo em mesas                                | V1-34       | `catalogo-em-mesas.md`                     | Em revisão (13/out)                 |
 | Estudo das leis: mapa, dinheiro e minijogos      | V1-34       | `estudo-das-leis.md`                       | Em revisão (13/out)                 |
-| Ciclos entre programas: segurança e saúde        | V1-14       | `ciclos-dos-programas.md`                  | Em revisão (17/out)                 |
+| Ciclos entre programas: segurança, prisões e saúde | V1-14      | `ciclos-dos-programas.md`                  | Estudo preliminar; incorporado à auditoria de 21/out |
+| Auditoria e desenho do ciclo de segurança        | V1-14       | `../../conteudo/auditoria-seguranca-mecanismos.md`; `ciclo-seguranca-justica.md` | Auditoria feita; opção de estoques agregados aguarda aprovação (21/out) |
 | Empresas do país e Estado empresário             | V1-35       | `empresas-do-pais.md`                      | Em revisão (13/out)                 |
 | Jogabilidade sistêmica e minijogos               | V1-34       | `jogabilidade-e-minijogos.md`              | Rascunho de pesquisa (17/out)       |
 | Minijogo financeiro: orçamento, caixa e dívida   | V1-38       | `minijogo-financeiro.md`                   | Rascunho de pesquisa (17/out)       |

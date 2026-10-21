@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Maconha legal e regulada",
-  "descricao": "Se a maconha pode ser vendida legalmente, com registro e imposto, e por quem.",
+  "descricao": "Quem pode produzir e vender cannabis após a mudança da lei de drogas: clubes, farmácias ou lojas licenciadas? Regulação arrecada e pode tirar receita das facções, mas exige fiscalização e divide a opinião pública.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "drogas",
@@ -17,7 +17,11 @@
   "requer": [
     {
       "lei": "lei-de-drogas",
-      "opcoes": ["usuario-nao-preso", "uso-e-saude"],
+      "opcoes": [
+        "usuario-nao-preso",
+        "criterio-objetivo-uso-pessoal",
+        "uso-e-saude"
+      ],
       "motivo": "Não dá para vender maconha legalmente enquanto o usuário vai preso."
     }
   ],
@@ -27,18 +31,30 @@
     "opcoes": [
       {
         "id": "clubes",
-        "rotulo": "Clubes de cultivo",
-        "valor": 33
+        "rotulo": "Permitir clubes de cultivo sem venda no varejo",
+        "valor": 33,
+        "custoTexto": "Hipótese: +0,005% do PIB em fiscalização; sem nova arrecadação relevante",
+        "apoiam": ["Jovens", "Progressistas"],
+        "rejeitam": ["Conservadores", "Evangélicos"],
+        "efeitos": "Reduz prisões por cultivo e um pouco da renda ilegal, com baixa escala e resistência moral."
       },
       {
         "id": "farmacias",
-        "rotulo": "Venda em farmácias, com cadastro",
-        "valor": 67
+        "rotulo": "Autorizar venda em farmácias com receita e cadastro",
+        "valor": 67,
+        "custoTexto": "Hipótese: +0,01% do PIB em fiscalização; +0,02% em arrecadação",
+        "apoiam": ["Progressistas", "Pequenos negócios"],
+        "rejeitam": ["Conservadores", "Evangélicos"],
+        "efeitos": "Mercado formal cresce com acesso restrito; arrecada, reduz mercado ilegal e custa fiscalização."
       },
       {
         "id": "lojas",
-        "rotulo": "Lojas licenciadas",
-        "valor": 100
+        "rotulo": "Licenciar lojas com idade mínima, imposto e fiscalização",
+        "valor": 100,
+        "custoTexto": "Hipótese: +0,01% do PIB em fiscalização; +0,05% em arrecadação",
+        "apoiam": ["Jovens", "Progressistas", "Pequenos negócios"],
+        "rejeitam": ["Conservadores", "Evangélicos", "Hierarquia católica"],
+        "efeitos": "Maior receita legal enfraquece parte do comércio ilegal, mas o uso pode subir e a segurança percebida cair."
       }
     ]
   },

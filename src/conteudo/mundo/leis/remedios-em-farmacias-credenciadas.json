@@ -22,38 +22,60 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "id": "retirada-apenas-em-unidades-publicas",
+        "rotulo": "Retirada de remédios apenas em unidades públicas",
         "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "custoTexto": "Sem subsídio a farmácias privadas",
+        "apoiam": [
+          "Servidores",
+          "Defensores da rede pública"
+        ],
+        "rejeitam": [
+          "Farmácias privadas",
+          "Moradores longe dos postos"
+        ],
+        "efeitos": "Mais controle direto do estoque; distância pode dificultar acesso; custo depende da rede (hipótese)"
       },
       {
         "id": "zero-sem-programa",
-        "rotulo": "Zero: sem programa",
+        "rotulo": "Sem distribuição pública de remédios",
         "valor": 33.33,
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Aposentados", "Pobres", "Pequenos negócios"],
-        "efeitos": "Gasto do bolso ↑; Pressão hospitalar ↑"
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Aposentados",
+          "Pobres",
+          "Pequenos negócios"
+        ],
+        "efeitos": "Economia fiscal imediata; gasto do bolso e pressão hospitalar tendem a subir (hipótese)"
       },
       {
         "id": "41-itens-gratis-em-31-mil-farmacias",
-        "rotulo": "41 itens grátis em 31 mil farmácias",
+        "rotulo": "Lista essencial gratuita em farmácias credenciadas",
         "valor": 66.67,
         "custoTexto": "0,03 a 0,05% do PIB (aprox.), Saúde",
-        "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
-        "efeitos": "evitou cerca de 17% das internações esperadas por diabetes tipo 2"
+        "apoiam": [
+          "Aposentados",
+          "Pobres",
+          "Pequenos negócios"
+        ],
+        "efeitos": "Acesso próximo de casa ↑; exige controle de reembolsos e estoque"
       },
       {
         "id": "todos-os-remedios-essenciais-gratis",
         "rotulo": "Todos os remédios essenciais grátis",
         "valor": 100,
-        "custoTexto": "lacuna",
-        "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Gasto do bolso ↓; Pressão hospitalar ↓; Corrupção ↑ (fraude em farmácias)"
+        "custoTexto": "Ampliação do subsídio (hipótese)",
+        "apoiam": [
+          "Aposentados",
+          "Pobres",
+          "Pequenos negócios"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Pagamento do bolso ↓; gasto público e fiscalização de reembolsos ↑ (hipótese)"
       }
     ]
   },
@@ -63,7 +85,9 @@
   ],
   "mae": {
     "texto": "Modelo do sistema de saúde. \"Mercado privado\" põe esta alavanca no mínimo.",
-    "leis": ["modelo-do-sistema-de-saude"]
+    "leis": [
+      "modelo-do-sistema-de-saude"
+    ]
   },
   "ministerio": "Ministério da Saúde"
 }

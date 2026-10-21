@@ -124,7 +124,7 @@ describe("SG157 fase 4 — cofre", () => {
   it("déficit gasta o cofre e o que falta vira dívida", () => {
     const comCofre = comContas(nova(), 50, 10);
     // corta o IVA pela metade: déficit
-    const corte = mudarLei(comCofre, "imposto-sobre-consumo", 13);
+    const corte = mudarLei(comCofre, "imposto-sobre-consumo", 13.35);
     if (!corte.ok) throw new Error(corte.erros.join(" "));
     const depois = turnos(corte.value, 4);
     expect(v(depois, "resultado_fiscal")).toBeLessThan(0);

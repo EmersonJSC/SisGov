@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "orcamentaria",
   "nome": "Dinheiro para as polícias dos estados",
-  "descricao": "Quanto a União repassa por ano aos estados pelo Fundo Nacional de Segurança Pública (viaturas, armas, inteligência).",
+  "descricao": "O governo escolhe de 0 a 0,15% do PIB por ano em repasses para viaturas, inteligência e equipes estaduais. Reforçar as polícias custa no orçamento e pode reduzir crimes; não muda quem comanda cada polícia.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",

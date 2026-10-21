@@ -36,7 +36,11 @@ antes.
 | `fontes`                   | Pelo menos uma, com link, para os números                                                                     |
 
 O JSON do jogo é gerado da ficha (detalhes do formato em
-`docs/fichas/v3/README.md`). O verificador recusa ficha sem fonte, com
+`docs/fichas/v3/README.md`). Para o catálogo atual, a fonte completa de edição
+é [`docs/conteudo/indice-leis.jsonl`](../conteudo/indice-leis.jsonl): cada linha
+reúne a lei, seus efeitos e referências iniciais. A geração publica os JSONs
+individuais; o [procedimento](../conteudo/indice-leis.md) evita editar as
+saídas diretamente. O verificador recusa ficha sem fonte, com
 efeito em índice inexistente, com nome de programa de um país no texto ou com
 travessão.
 

@@ -186,7 +186,11 @@ describe("SG157 fase 2 — custos das leis no Brasil", () => {
 
   it("estatais e royalties arrecadam; renúncia tira receita", () => {
     expect(lei("regime-do-petroleo-e-mineracao").saldoAnual).toBeGreaterThan(0);
-    expect(lei("papel-do-estado-empresario").opcoes![2].saldoAnual).not.toBe(0);
+    expect(
+      lei("propriedade-dos-meios-de-producao").opcoes!.some(
+        (opcao) => opcao.saldoAnual !== 0,
+      ),
+    ).toBe(true);
     expect(
       lei("regime-simplificado-para-pequenas-empresas").saldoAnual,
     ).toBeLessThan(0);

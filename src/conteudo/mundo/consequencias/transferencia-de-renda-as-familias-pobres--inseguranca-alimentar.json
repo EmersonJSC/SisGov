@@ -4,10 +4,30 @@
   "versaoEsquema": 1,
   "origem": "nivel_transferencia_de_renda_as_familias_pobres",
   "alvo": "inseguranca_alimentar",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.084,
-    "termoConstante": 5.60028
+    "pontos": [
+      [
+        0,
+        -0.5
+      ],
+      [
+        33.33,
+        0.2
+      ],
+      [
+        66.67,
+        0
+      ],
+      [
+        100,
+        0.6
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
   },
   "unidade": "percentual_0_100",
   "atrasoPassos": 1,

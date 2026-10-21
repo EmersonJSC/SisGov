@@ -1,0 +1,30 @@
+{
+  "id": "gestao-dos-presidios--lotacao-prisional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_gestao_dos_presidios",
+  "alvo": "lotacao_prisional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        0
+      ],
+      [
+        100,
+        -2
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "indice_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

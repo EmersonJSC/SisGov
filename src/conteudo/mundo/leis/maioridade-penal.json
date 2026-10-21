@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Maioridade penal",
-  "descricao": "A partir de que idade quem comete crime vai para a prisão comum.",
+  "descricao": "A Constituição define se adolescentes de 16 e 17 anos podem ser enviados ao sistema penal comum. Reduzir a idade eleva a punição percebida, mas pressiona prisões e pode aumentar reincidência e recrutamento por facções.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "penas",
@@ -20,13 +20,21 @@
     "opcoes": [
       {
         "id": "18-anos",
-        "rotulo": "18 anos",
-        "valor": 0
+        "rotulo": "Manter 18 anos para a prisão comum",
+        "valor": 0,
+        "custoTexto": "Hipótese: 0,03% do PIB ao ano no sistema juvenil",
+        "apoiam": ["Progressistas", "Jovens"],
+        "rejeitam": ["Conservadores favoráveis a punição mais cedo"],
+        "efeitos": "Adolescentes ficam fora da prisão comum; segurança percebida pode ser menor."
       },
       {
         "id": "16-anos",
-        "rotulo": "16 anos",
-        "valor": 100
+        "rotulo": "Enviar adolescentes de 16 e 17 anos à prisão comum",
+        "valor": 100,
+        "custoTexto": "Hipótese: 0,05% do PIB ao ano com mais vagas e custódia",
+        "apoiam": ["Conservadores", "Associações de policiais"],
+        "rejeitam": ["Progressistas", "Jovens"],
+        "efeitos": "Sensação de punição cresce logo; lotação, reincidência e influência de facções crescem depois."
       }
     ]
   },

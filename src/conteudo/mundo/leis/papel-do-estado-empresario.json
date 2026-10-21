@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Papel do Estado empresário",
-  "descricao": "O Estado pode ter empresas e em quais setores?",
+  "nome": "Alcance das empresas estatais",
+  "descricao": "Em quais atividades a Constituição permite que o Estado opere empresas? Esta decisão define o alcance jurídico; não determina a participação acionária por setor.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
@@ -23,50 +23,66 @@
     "opcoes": [
       {
         "id": "sem-estatais",
-        "rotulo": "Sem estatais",
+        "rotulo": "Nenhuma empresa estatal",
         "valor": 0,
-        "custoTexto": "Perde dividendos",
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
-        "efeitos": "Risco de preço político ↓; força a venda das estatais"
+        "custoTexto": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
+        "efeitos": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado."
       },
       {
         "id": "estatais-minimas",
-        "rotulo": "Estatais mínimas",
+        "rotulo": "Serviços públicos e monopólios naturais",
         "valor": 33.33,
-        "apoiam": ["Mercado financeiro", "Comércio e serviços"],
-        "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Risco de preço político ↓"
+        "apoiam": [
+          "Mercado financeiro",
+          "Comércio e serviços"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Permissão restrita a serviços públicos e monopólios naturais."
       },
       {
         "id": "estatais-estrategicas",
-        "rotulo": "Estatais estratégicas (hoje na referência: só por segurança nacional ou interesse coletivo)",
+        "rotulo": "Serviços públicos e setores estratégicos definidos em lei",
         "valor": 66.67,
-        "apoiam": ["Confederação da indústria"],
-        "efeitos": "Risco de preço político ↓ pouco contra Estado empresário; investimento público ↑ pouco; venda de estatais só fora de segurança e interesse coletivo (estimado)"
+        "apoiam": [
+          "Confederação da indústria"
+        ],
+        "efeitos": "Permissão adicional para setores estratégicos, cuja lista depende da legislação."
       },
       {
         "id": "estado-empresario",
-        "rotulo": "Estado empresário",
+        "rotulo": "Atuação empresarial em qualquer setor permitido por lei",
         "valor": 100,
-        "custoTexto": "Aportes do Tesouro (lacuna)",
-        "apoiam": ["Centrais sindicais", "Sindicatos de servidores"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Risco de uso político dos preços ↑; investimento público ↑"
+        "apoiam": [
+          "Centrais sindicais",
+          "Sindicatos de servidores"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Permissão ampla para operar empresas; participação e fluxos fiscais dependem da propriedade efetiva."
       }
     ]
   },
   "consequencias": [
     "papel-do-estado-empresario--investimento",
-    "empresas-estatais-e-privatizacao--arrecadacao",
     "empresas-estatais-e-privatizacao--confianca-empresarial",
     "empresas-estatais-e-privatizacao--desemprego",
-    "empresas-estatais-e-privatizacao--gasto-publico",
     "empresas-estatais-e-privatizacao--investimento"
   ],
   "mae": {
-    "texto": "Propriedade dos meios de produção: \"privada\" tranca \"Estado empresário\"",
-    "leis": ["propriedade-dos-meios-de-producao"]
+    "texto": "A participação pública agregada define se há capital estatal; esta lei define em quais atividades ele pode operar.",
+    "leis": [
+      "propriedade-dos-meios-de-producao"
+    ]
   },
   "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
   "respostaTemporal": {

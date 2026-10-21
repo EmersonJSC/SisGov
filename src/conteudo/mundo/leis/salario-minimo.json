@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Valor do salário mínimo",
-  "descricao": "O valor do salário mínimo deste ano, medido em relação ao salário típico do país. A fórmula e quem decide limitam até onde ele vai.",
+  "descricao": "Escolher o valor do piso nacional neste ano, em relação ao salário típico. Um piso mais alto melhora renda e reduz pobreza, mas pode elevar custo de contratação, informalidade e benefícios vinculados.",
   "area": "Trabalho e emprego",
   "ministerio": "Ministério do Trabalho",
   "processoAutorizacao": "decreto",
@@ -14,8 +14,11 @@
     "opcoes": [
       {
         "id": "sem-piso",
-        "rotulo": "Sem salário mínimo",
+        "rotulo": "Não fixar piso nacional; deixar a negociação por categoria",
         "valor": 0,
+        "apoiam": ["Empresários favoráveis à livre negociação"],
+        "rejeitam": ["Trabalhadores sem sindicato"],
+        "efeitos": "Empresas reduzem custo, mas trabalhadores sem barganha podem perder renda.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -26,8 +29,11 @@
       },
       {
         "id": "piso-baixo",
-        "rotulo": "Piso baixo",
+        "rotulo": "Fixar piso baixo, perto de um terço do salário típico",
         "valor": 33,
+        "apoiam": ["Pequenos negócios", "Gestores fiscais"],
+        "rejeitam": ["Trabalhadores de baixa renda"],
+        "efeitos": "Reduz pressão em contratações e benefícios; protege pouco contra pobreza.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -43,8 +49,11 @@
       },
       {
         "id": "piso-moderado",
-        "rotulo": "Piso moderado",
+        "rotulo": "Fixar piso intermediário, perto de dois terços do salário típico",
         "valor": 67,
+        "apoiam": ["Trabalhadores", "Sindicatos"],
+        "rejeitam": ["Pequenos negócios"],
+        "efeitos": "Eleva renda com custo de contratação e gasto previdenciário moderados.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -55,8 +64,11 @@
       },
       {
         "id": "piso-alto",
-        "rotulo": "Piso alto",
+        "rotulo": "Elevar piso até o salário típico do país",
         "valor": 100,
+        "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
+        "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
+        "efeitos": "Reduz pobreza de quem permanece empregado; aumenta custo, informalidade e benefícios atrelados.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",

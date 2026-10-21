@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Regime contra facções",
-  "descricao": "O Estado cria regras especiais contra facções, e até onde vão: isolar líderes e tomar bens, ou suspender garantias?",
+  "descricao": "O governo escolhe se investiga o dinheiro e isola líderes das facções, ou prende suspeitos em massa. A repressão imediata pode custar vagas, direitos e confiança.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "penas",
@@ -23,28 +23,29 @@
     "opcoes": [
       {
         "id": "sem-regime-especial",
-        "rotulo": "Sem regime especial",
+        "rotulo": "Usar investigação e processo penal comuns, sem regime especial",
         "valor": 0,
+        "apoiam": ["Progressistas"],
         "rejeitam": ["Associações de policiais", "Conservadores"]
       },
       {
         "id": "isolar-lideres-e-confiscar-bens",
-        "rotulo": "Isolar líderes e confiscar bens (presídio federal, bloqueio de celular)",
+        "rotulo": "Rastrear dinheiro, confiscar bens e isolar líderes com ordem judicial",
         "valor": 50.0,
-        "custoTexto": "presídios de segurança máxima (sem número)",
+        "custoTexto": "Hipótese: +0,02% do PIB ao ano em investigação e custódia",
         "apoiam": [
           "Conservadores",
           "Associações de policiais",
           "Progressistas"
         ],
         "rejeitam": ["A maior facção prisional", "Facção rival regional"],
-        "efeitos": "Crime organizado ↓; rebelião e ataques ↑ no curto prazo"
+        "efeitos": "Crime organizado cai após investigação; custa mais e o isolamento pode elevar tensão prisional no começo."
       },
       {
         "id": "estado-de-excecao",
-        "rotulo": "Estado de exceção (prisão em massa sem as garantias de sempre)",
+        "rotulo": "Prender suspeitos em massa e suspender garantias processuais",
         "valor": 100,
-        "custoTexto": "lotação ↑↑",
+        "custoTexto": "Hipótese: +0,08% do PIB ao ano em polícia e presídios",
         "apoiam": [
           "Atiradores e donos de armas pelo porte",
           "Militares da reserva"
@@ -54,13 +55,17 @@
           "Mídia internacional",
           "Hierarquia católica e pastorais"
         ],
-        "efeitos": "Violência letal ↓ forte (exemplo de El Salvador); liberdades civis ↓↓; lotação ↑↑; mortes sob custódia ↑"
+        "efeitos": "Violência aparente cai cedo, mas lotação e risco de abuso sobem muito; liberdades civis caem."
       }
     ]
   },
   "consequencias": [
     "regime-contra-faccoes--violencia-letal",
     "regime-contra-faccoes--liberdade-civil",
+    "regime-contra-faccoes--crime-organizado",
+    "regime-contra-faccoes--lotacao-prisional",
+    "regime-contra-faccoes--gasto-publico",
+    "regime-contra-faccoes--rebeliao-presidios",
     "grupos--regime-contra-faccoes--grupo-conservadores",
     "grupos--regime-contra-faccoes--grupo-progressistas"
   ],

@@ -1,0 +1,20 @@
+{
+  "id": "armas-de-fogo--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_armas_de_fogo",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0.01],
+      [50, 0.005],
+      [75, 0.003],
+      [100, 0.002]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

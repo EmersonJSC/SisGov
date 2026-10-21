@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Banco de desenvolvimento",
-  "descricao": "O país tem um banco público que empresta às empresas, e a que preço?",
+  "descricao": "Define como financiar fábricas, máquinas e inovação com crédito de longo prazo.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "propriedade-e-estatais",
@@ -23,36 +23,35 @@
     "opcoes": [
       {
         "id": "sem-banco",
-        "rotulo": "Sem banco",
+        "rotulo": "Crédito produtivo só a preço de mercado",
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Investimento ↓ em infraestrutura; juros ganham força"
+        "efeitos": "Baixo custo fiscal; investimento depende do crédito privado."
       },
       {
         "id": "segundo-piso-juro-de-mercado",
-        "rotulo": "Segundo piso, juro de mercado (foco em infraestrutura e pequenas empresas)",
+        "rotulo": "Banco público de segundo piso via bancos privados",
         "valor": 33.33,
-        "custoTexto": "Baixo",
-        "apoiam": ["Mercado financeiro"],
-        "efeitos": "Investimento ↑ leve"
+        "apoiam": ["Mercado financeiro", "Pequenos empreendedores"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Expande acesso com risco partilhado; efeito depende da seleção."
       },
       {
         "id": "credito-direcionado",
-        "rotulo": "Crédito direcionado",
+        "rotulo": "Crédito subsidiado a fábricas com metas",
         "valor": 66.67,
-        "custoTexto": "Subsídio para cobrir a diferença de juros (lacuna)",
-        "apoiam": ["Confederação da indústria", "Entidades do agronegócio"],
-        "efeitos": "Investimento ↑ (menor que no nível da firma); juros perdem força"
+        "apoiam": ["Confederação da indústria", "Trabalhadores com carteira"],
+        "rejeitam": ["Mercado financeiro"],
+        "efeitos": "Investimento cresce com atraso; subsídio pressiona contas."
       },
       {
         "id": "credito-subsidiado-em-massa",
-        "rotulo": "Crédito subsidiado em massa",
+        "rotulo": "Crédito de longo prazo para indústria limpa e inovação",
         "valor": 100,
-        "custoTexto": "Alto (lacuna)",
-        "apoiam": ["Confederação da indústria"],
+        "apoiam": ["Movimento ambientalista", "Confederação da indústria"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Investimento ↑ curto; taxa básica necessária ↑; cofre ↓; spread do crédito livre ↑"
+        "efeitos": "Inovação pode subir; custo e risco fiscal crescem."
       }
     ]
   },

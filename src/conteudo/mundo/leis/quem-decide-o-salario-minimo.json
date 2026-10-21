@@ -3,7 +3,7 @@
   "tipo": "lei",
   "versaoEsquema": 3,
   "nome": "Quem decide o salário mínimo",
-  "descricao": "Se o país tem salário mínimo e quem fixa o valor: ninguém, os sindicatos com os patrões, uma comissão técnica ou a lei nacional.",
+  "descricao": "Quem tem a caneta para criar o piso salarial: ninguém, sindicatos com empresas, comissão técnica ou Congresso? A escolha abre ou fecha as regras de reajuste e o valor que o governo poderá fixar.",
   "area": "Trabalho e emprego",
   "ministerio": "Ministério do Trabalho",
   "nivel": "constituicao",
@@ -18,23 +18,35 @@
     "opcoes": [
       {
         "id": "nao-existe",
-        "rotulo": "Não existe salário mínimo",
-        "valor": 0
+        "rotulo": "Extinguir o piso salarial nacional",
+        "valor": 0,
+        "apoiam": ["Empresários favoráveis à livre negociação"],
+        "rejeitam": ["Trabalhadores", "Sindicatos"],
+        "efeitos": "Empresas negociam livremente; o governo perde as alavancas de valor e reajuste do piso."
       },
       {
         "id": "negociacao-sindical",
-        "rotulo": "Só a negociação de sindicatos e patrões",
-        "valor": 33
+        "rotulo": "Deixar sindicatos e empresas fixarem pisos por categoria",
+        "valor": 33,
+        "apoiam": ["Sindicatos com negociação forte", "Empresários setoriais"],
+        "rejeitam": ["Trabalhadores de setores sem sindicato"],
+        "efeitos": "Acordos se adaptam por setor, mas trabalhadores sem representação podem ficar sem piso."
       },
       {
         "id": "comissao-tecnica",
-        "rotulo": "Uma comissão técnica fixa o valor",
-        "valor": 67
+        "rotulo": "Dar a uma comissão técnica o valor do piso nacional",
+        "valor": 67,
+        "apoiam": ["Empresários", "Classe média"],
+        "rejeitam": ["Sindicatos favoráveis à decisão parlamentar"],
+        "efeitos": "Piso nacional previsível; limita reajustes políticos discricionários."
       },
       {
         "id": "lei-nacional",
-        "rotulo": "Por lei nacional",
-        "valor": 100
+        "rotulo": "Fixar o piso nacional por lei votada no Congresso",
+        "valor": 100,
+        "apoiam": ["Trabalhadores", "Sindicatos"],
+        "rejeitam": ["Empresários favoráveis à autonomia setorial"],
+        "efeitos": "Permite ganho real decidido politicamente; sujeita cada reajuste a disputa no Congresso."
       }
     ]
   },

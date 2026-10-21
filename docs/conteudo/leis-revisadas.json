@@ -1,0 +1,122 @@
+{
+  "descricao": "Fichas com integração anterior confirmada nos lotes 1 a 6. Só estas saem da fila; desenho sem integração confirmada permanece pendente. A confirmação considera as alterações das fichas presentes nesta árvore de trabalho, não o balanceamento final.",
+  "lotes": {
+    "1-fazenda": [
+      "imposto-renda-pessoas",
+      "imposto-sobre-consumo",
+      "investimento-em-infraestrutura"
+    ],
+    "2-industria-energia": [
+      "ferrovias-e-terminais-portuarios",
+      "banco-de-desenvolvimento",
+      "tarifas-de-importacao"
+    ],
+    "3-trabalho": [
+      "negociacao-coletiva-e-sindicatos",
+      "ensino-tecnico-e-profissional"
+    ],
+    "4-previdencia": [
+      "previdencia-rural",
+      "renda-para-idosos-e-pessoas-com-deficiencia-pobres"
+    ],
+    "5-educacao": [
+      "piso-de-gasto-em-educacao",
+      "piso-educacao",
+      "acesso-ao-ensino-superior",
+      "vagas-publicas-no-ensino-superior",
+      "credito-estudantil",
+      "piso-salarial-professores",
+      "bolsas-de-pos-graduacao"
+    ],
+    "6-saude": [
+      "modelo-do-sistema-de-saude",
+      "forma-de-gestao-hospitalar",
+      "divisao-da-verba-atencao-basica-x-hospitais",
+      "genericos-e-patentes-de-medicamentos",
+      "remedios-em-farmacias-credenciadas",
+      "piso-de-gasto-em-saude",
+      "piso-saude",
+      "verba-da-saude-acima-do-piso",
+      "mutirao-de-cirurgias",
+      "vagas-de-residencia-medica"
+    ],
+    "7-seguranca-inicial": [
+      "policiamento-orientado",
+      "armas-de-fogo",
+      "penas-e-progressao",
+      "lei-de-drogas"
+    ],
+    "8-seguranca-vigilancia": [
+      "cameras-corporais",
+      "cameras-e-reconhecimento-facial",
+      "vigilancia-de-bairro",
+      "fundo-seguranca-publica"
+    ],
+    "9-organizacao-policial": [
+      "coordenacao-das-policias",
+      "policias-dos-estados",
+      "policia-militar",
+      "ciclo-policial"
+    ],
+    "10-justica-prisoes": [
+      "gestao-dos-presidios",
+      "vagas-em-presidios",
+      "alternativas-penais-e-audiencia-de-custodia",
+      "maioridade-penal",
+      "garantias-penais",
+      "pena-de-morte"
+    ],
+    "11-investigacao-drogas-faccoes": [
+      "cannabis-legal",
+      "regime-contra-faccoes",
+      "poderes-de-investigacao",
+      "interceptacao-de-comunicacoes",
+      "agencia-de-inteligencia"
+    ],
+    "12-justica-protecao": [
+      "delacao-premiada",
+      "excludente-de-ilicitude",
+      "protecao-contra-violencia-domestica",
+      "verba-policia-federal"
+    ],
+    "13-contratos-trabalho": [
+      "legislacao-trabalhista",
+      "terceirizacao",
+      "jornada-de-trabalho",
+      "trabalho-por-aplicativo",
+      "fiscalizacao-do-trabalho"
+    ],
+    "14-piso-seguranca-renda": [
+      "quem-decide-o-salario-minimo",
+      "formula-do-salario-minimo",
+      "salario-minimo",
+      "fundo-de-garantia",
+      "seguro-desemprego"
+    ],
+    "15-sindicatos-direitos": [
+      "contribuicao-sindical",
+      "direito-de-greve",
+      "custo-de-processar-na-justica-do-trabalho",
+      "igualdade-salarial-de-genero"
+    ],
+    "16-emprego-aprendizagem-cuidado": [
+      "intermediacao-e-qualificacao",
+      "reducao-de-jornada-subsidiada",
+      "trabalho-infantil-e-aprendizagem",
+      "licenca-parental"
+    ],
+    "17-reajuste-previdenciario": [
+      "reajuste-de-beneficios"
+    ]
+  },
+  "consolidadas": {
+    "regra-de-reajuste-dos-beneficios": "reajuste-de-beneficios",
+    "fontes-de-energia-favorecidas": "matriz-energetica"
+  },
+  "semConfirmacaoDeIntegracao": [
+    "transferencia-de-renda-as-familias-pobres",
+    "regime-do-petroleo-e-mineracao",
+    "sistema-previdenciario",
+    "idade-minima-aposentadoria"
+  ]
+}

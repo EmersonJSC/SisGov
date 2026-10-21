@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Armas de fogo",
-  "descricao": "Quem pode ter e portar arma, quantas e com quanta munição?",
+  "descricao": "O governo decide quem pode comprar, guardar e transportar armas civis. Mais acesso pode elevar a sensação de autodefesa, mas também a circulação de armas e a violência.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "armas",
@@ -23,9 +23,9 @@
     "opcoes": [
       {
         "id": "proibidas-para-civis",
-        "rotulo": "Proibidas para civis",
+        "rotulo": "Desarmamento civil com recompra e recolhimento",
         "valor": 0,
-        "custoTexto": "recompra ≈0,01% do PIB (aprox.)",
+        "custoTexto": "Hipótese: 0,01% do PIB ao ano em recompra e fiscalização",
         "apoiam": ["Progressistas"],
         "rejeitam": [
           "Conservadores",
@@ -34,20 +34,31 @@
           "Indústria de armas",
           "Atiradores e donos de armas pelo porte"
         ],
-        "efeitos": "Armas em circulação ↓↓; violência letal ↓"
+        "efeitos": "Armas em circulação e violência letal caem após quatro turnos; reduz a autodefesa percebida por parte do interior."
       },
       {
         "id": "restritas-ate-2-armas-controle-forte",
-        "rotulo": "Restritas: até 2 armas, controle forte",
+        "rotulo": "Posse residencial limitada com licença e controle forte",
         "valor": 50,
+        "custoTexto": "Hipótese: 0,005% do PIB ao ano em registro e fiscalização",
         "apoiam": ["Progressistas", "Periferias", "Movimento feminista"],
         "rejeitam": ["Atiradores e donos de armas pelo porte"],
-        "efeitos": "Armas em circulação ↓ em 1 a 3 anos; violência letal ↓ (−1% no estoque dá −0,15% a −0,20%; a lei de 2003 cortou ao menos 12,6% dos homicídios em SP)"
+        "efeitos": "Limita a circulação e mantém posse doméstica; os efeitos sobre violência aparecem com atraso."
+      },
+      {
+        "id": "posse-rural-com-transporte-restrito",
+        "rotulo": "Posse residencial e rural com transporte autorizado",
+        "valor": 75,
+        "custoTexto": "Hipótese: 0,003% do PIB ao ano em registro e fiscalização",
+        "apoiam": ["Interior", "Entidades do agronegócio", "Conservadores"],
+        "rejeitam": ["Progressistas", "Movimento feminista"],
+        "efeitos": "Autodefesa percebida cresce no interior; circulação, desvio e violência tendem a subir em relação à posse restrita."
       },
       {
         "id": "facilitadas-4-armas-5-000-cartuchos-por-ano-atirador-amplo",
-        "rotulo": "Facilitadas: 4 armas, 5.000 cartuchos por ano, atirador amplo",
+        "rotulo": "Porte civil ampliado e compra facilitada",
         "valor": 100,
+        "custoTexto": "Hipótese: 0,002% do PIB ao ano em registro; fiscalização reduzida",
         "apoiam": [
           "Atiradores e donos de armas pelo porte",
           "Entidades do agronegócio",
@@ -56,7 +67,7 @@
           "Indústria de armas"
         ],
         "rejeitam": ["Progressistas", "Movimento feminista", "Periferias"],
-        "efeitos": "Armas em circulação ↑ em 1 a 3 anos; violência letal ↑; feminicídio ↑; crime organizado ↑ (munição desviada); crimes contra o patrimônio sem efeito"
+        "efeitos": "Sensação de autodefesa sobe imediatamente; circulação e violência letal sobem com atraso, e o desvio fortalece o crime organizado."
       }
     ]
   },
@@ -69,7 +80,8 @@
     "armas-de-fogo--grupo-agro",
     "armas-de-fogo--grupo-conservadores",
     "armas-de-fogo--grupo-progressistas",
-    "armas-de-fogo--crime-organizado"
+    "armas-de-fogo--crime-organizado",
+    "armas-de-fogo--gasto-publico"
   ],
   "respostaTemporal": {
     "implantacao": 0.3,

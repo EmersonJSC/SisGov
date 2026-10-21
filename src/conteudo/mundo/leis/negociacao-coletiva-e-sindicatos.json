@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Negociação coletiva e sindicatos",
-  "descricao": "Em que nível os salários e as condições são negociados, e os sindicatos são livres do Estado?",
+  "descricao": "Escolhe como lei, empresas e sindicatos definem salários e condições de trabalho.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
@@ -22,36 +22,36 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "sindicatos-controlados-pelo-estado",
-        "rotulo": "Sindicatos controlados pelo Estado",
+        "id": "regras-uniformes-em-lei",
+        "rotulo": "Regras uniformes em lei; acordos só melhoram condições",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
-        "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Conflito trabalhista ↓ por repressão; Força sindical independente ↓↓; protestos ↑ (aprox.)"
+        "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Proteção uniforme; adaptação local menor."
       },
       {
         "id": "por-empresa",
-        "rotulo": "Por empresa",
+        "rotulo": "Acordo por empresa com representação dos empregados",
         "valor": 33,
         "apoiam": ["Empresários"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Força sindical ↓; dispersão de salários ↑; Renda do trabalho ↓ pouco"
+        "efeitos": "Adaptação local melhora; cobertura desigual."
       },
       {
         "id": "por-setor",
-        "rotulo": "Por setor",
+        "rotulo": "Acordo setorial define piso e ajustes limitados",
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira"],
-        "rejeitam": ["nenhum grupo grande"],
-        "efeitos": "Força sindical em nível intermediário, ↑ contra Por empresa e ↓ contra Centralizada nacional (estimado); dispersão de salários intermediária (estimado); Conflito trabalhista no nível de hoje (estimado)"
+        "rejeitam": ["Empresas sem cobertura setorial"],
+        "efeitos": "Coordenação sustenta salários; menor flexibilidade individual."
       },
       {
         "id": "centralizada-nacional",
-        "rotulo": "Centralizada nacional",
+        "rotulo": "Negociação nacional coordenada com espaço setorial",
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Força sindical ↑; dispersão de salários ↓; Conflito trabalhista ↓ (aprox.)"
+        "efeitos": "Cobertura ampla; acordos locais precisam de espaço."
       }
     ]
   },

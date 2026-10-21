@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "institucional",
   "nome": "Garantias penais",
-  "descricao": "Se o Estado pode matar ou prender para sempre quem cometeu um crime.",
+  "descricao": "A Constituição fixa o limite máximo do poder de punir do Estado. No país inicial a proibição da pena de morte e da prisão perpétua é protegida; uma lei ordinária de execução não pode atravessar essa trava.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "penas",
@@ -20,13 +20,19 @@
     "opcoes": [
       {
         "id": "sem-pena-de-morte",
-        "rotulo": "Sem pena de morte nem prisão perpétua",
-        "valor": 0
+        "rotulo": "Proibir pena de morte e prisão perpétua",
+        "valor": 0,
+        "apoiam": ["Progressistas", "Defensores de garantias penais"],
+        "rejeitam": ["Conservadores favoráveis à pena capital"],
+        "efeitos": "Preserva liberdades e reputação internacional; impede a lei filha de pena de morte."
       },
       {
         "id": "pena-de-morte-permitida",
-        "rotulo": "Pena de morte permitida",
-        "valor": 100
+        "rotulo": "Autorizar pena capital na Constituição",
+        "valor": 100,
+        "apoiam": ["Conservadores favoráveis à pena capital"],
+        "rejeitam": ["Progressistas", "Defensores de garantias penais"],
+        "efeitos": "Eleva a punição percebida, reduz liberdades e reputação; libera a lei filha onde a mudança constitucional for possível."
       }
     ]
   },

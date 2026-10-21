@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Proteção contra violência doméstica",
-  "descricao": "Como o Estado trata a violência contra a mulher dentro de casa?",
+  "descricao": "Quais portas de saída o Estado oferece à mulher ameaçada em casa: nenhum rito próprio, medida protetiva ou uma rede de abrigo, patrulha e renda? Mais proteção exige serviços e dinheiro.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "violencia-domestica",
@@ -23,38 +23,41 @@
     "opcoes": [
       {
         "id": "assunto-privado-da-familia",
-        "rotulo": "Assunto privado da família",
+        "rotulo": "Retirar o tratamento público específico e deixar à família",
         "valor": 0,
+        "apoiam": ["Conservadores que rejeitam intervenção estatal"],
         "rejeitam": ["Movimento feminista", "Progressistas"],
-        "efeitos": "Proteção efetiva às mulheres ↓"
+        "efeitos": "Gasto cai, mas vítimas têm menos proteção e agressores enfrentam menos controle."
       },
       {
         "id": "crime-comum-sem-regra-especial",
-        "rotulo": "Crime comum, sem regra especial",
+        "rotulo": "Processar como crime comum, sem medida protetiva própria",
         "valor": 33,
-        "rejeitam": ["Movimento feminista"]
+        "apoiam": ["Defensores de código penal uniforme"],
+        "rejeitam": ["Movimento feminista"],
+        "efeitos": "Reconhece o crime, mas a vítima depende do rito comum e pode esperar pelo afastamento."
       },
       {
         "id": "medidas-protetivas",
-        "rotulo": "Medidas protetivas (afastar o agressor por ordem do juiz)",
+        "rotulo": "Dar afastamento judicial rápido e patrulha para fiscalizar a ordem",
         "valor": 67,
-        "custoTexto": "baixo",
+        "custoTexto": "Custo público moderado, hipótese de jogo",
         "apoiam": [
           "Movimento feminista",
           "Progressistas",
           "Evangélicos",
           "Católicos"
         ],
-        "efeitos": "Homicídios de mulheres em casa ↓ 10%; efeito maior onde há serviço instalado; violência letal ↓ pouco"
+        "efeitos": "Proteção melhora após instalação do serviço; violência letal e impunidade caem com atraso."
       },
       {
         "id": "protecao-integral",
-        "rotulo": "Proteção integral (juizados, casas-abrigo, patrulha e renda)",
+        "rotulo": "Abrir casas-abrigo, juizados, patrulha e auxílio de renda",
         "valor": 100,
-        "custoTexto": "≈0,02 a 0,05% do PIB (aprox.), proteção social",
+        "custoTexto": "Hipótese: até 0,05% do PIB ao ano em serviços e abrigo",
         "apoiam": ["Movimento feminista", "Progressistas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Iguais ao anterior, mais fortes (sem número)"
+        "efeitos": "Maior proteção e menor violência com atraso; custa mais e exige equipes locais."
       }
     ]
   },

@@ -25,8 +25,13 @@
         "id": "nenhum",
         "rotulo": "Nenhum",
         "valor": 0,
-        "apoiam": ["Sindicatos de servidores", "Centrais sindicais"],
-        "rejeitam": ["Mercado financeiro"],
+        "apoiam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
         "efeitos": "Nada muda"
       },
       {
@@ -34,8 +39,12 @@
         "rotulo": "Lista, caso a caso",
         "valor": 50.0,
         "custoTexto": "Receita única no cofre",
-        "apoiam": ["Comércio e serviços"],
-        "rejeitam": ["Sindicatos de servidores"],
+        "apoiam": [
+          "Comércio e serviços"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
         "efeitos": "Dívida ↓; eficiência da empresa ↑ (aprox.); evento de greve contra a privatização"
       },
       {
@@ -43,8 +52,13 @@
         "rotulo": "Venda ampla",
         "valor": 100,
         "custoTexto": "Receita única e perda de dividendos",
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores",
+          "Centrais sindicais"
+        ],
         "efeitos": "Dívida ↓; tarifa ambígua; greve contra a privatização ↑"
       }
     ]
@@ -58,8 +72,10 @@
     "programa-de-privatizacao--greve-geral"
   ],
   "mae": {
-    "texto": "Propriedade dos meios de produção: \"socialista\" tranca esta lei",
-    "leis": ["propriedade-dos-meios-de-producao"]
+    "texto": "A venda é uma via para reduzir a participação pública; a escala agregada não bloqueia a privatização.",
+    "leis": [
+      "propriedade-dos-meios-de-producao"
+    ]
   },
   "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

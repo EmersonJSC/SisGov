@@ -1,0 +1,41 @@
+{
+  "id": "investimento-em-geracao-por-fonte--infraestrutura-energia-rapida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_investimento_em_geracao_por_fonte",
+  "alvo": "infraestrutura_energia",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        25,
+        0
+      ],
+      [
+        50,
+        0
+      ],
+      [
+        75,
+        0.035
+      ],
+      [
+        100,
+        0
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_expansao_eletrica",
+    "referencia": 20000
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

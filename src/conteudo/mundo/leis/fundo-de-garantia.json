@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Fundo de garantia",
-  "descricao": "O que o trabalhador recebe quando é demitido?",
+  "descricao": "Escolher como o empregado forma reserva para a demissão: nenhuma conta, saldo portátil, fundo com multa ou indenização por tempo de casa. A reserva protege famílias e crédito habitacional, mas encarece contratações.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "contrato-de-trabalho",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum",
+        "rotulo": "Acabar com depósito e indenização na demissão",
         "valor": 0,
         "apoiam": ["Empresários"],
         "rejeitam": ["Trabalhadores com carteira"],
@@ -31,7 +31,7 @@
       },
       {
         "id": "conta-portatil-sem-multa",
-        "rotulo": "Conta portátil, sem multa",
+        "rotulo": "Depositar em conta portátil sem multa ao demitir",
         "valor": 33,
         "apoiam": ["Pequenos negócios", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
@@ -39,8 +39,9 @@
       },
       {
         "id": "fundo-com-multa-na-demissao",
-        "rotulo": "Fundo com multa na demissão (hoje na referência: 8% ao mês e 40% de multa)",
+        "rotulo": "Manter depósito mensal e multa por demissão sem justa causa",
         "valor": 67,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole", "codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "O fundo obrigatório exige direitos trabalhistas mínimos além do contrato livre."}],
         "custoTexto": "0 (fundo privado que financia moradia)",
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresários"],
@@ -48,8 +49,9 @@
       },
       {
         "id": "indenizacao-por-tempo-de-casa",
-        "rotulo": "Indenização por tempo de casa",
+        "rotulo": "Trocar o fundo por indenização crescente com o tempo de casa",
         "valor": 100,
+        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "Indenização legal por antiguidade exige código trabalhista detalhado."}],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários"],
         "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)"

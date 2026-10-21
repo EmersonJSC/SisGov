@@ -25,37 +25,54 @@
         "id": "administracao-direta-por-servidores",
         "rotulo": "Administração direta por servidores",
         "valor": 0,
-        "apoiam": ["Servidores", "Sindicatos de servidores"],
-        "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Nada muda na eficiência"
+        "apoiam": [
+          "Servidores",
+          "Sindicatos de servidores"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "efeitos": "Controle público direto e vínculos estáveis; ganho de eficiência depende da capacidade local"
       },
       {
         "id": "fundacao-ou-empresa-publica",
         "rotulo": "Fundação ou empresa pública",
         "valor": 33.33,
-        "apoiam": ["Servidores"],
-        "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Pressão hospitalar ↓ pouco (aprox.)"
+        "apoiam": [
+          "Servidores"
+        ],
+        "rejeitam": [
+          "Sindicatos de servidores"
+        ],
+        "efeitos": "Autonomia de contratação e metas públicas; pressão hospitalar ↓ de modo gradual (hipótese)"
       },
       {
         "id": "organizacao-social-com-metas",
         "rotulo": "Organização social com metas",
         "valor": 66.67,
-        "apoiam": ["Empresários"],
+        "apoiam": [
+          "Empresários"
+        ],
         "rejeitam": [
           "Movimento pela saúde pública",
           "Sindicatos de servidores"
         ],
-        "efeitos": "Ocupação dos hospitais ↑ e Fila ↓ (segundo o Banco Mundial; o Conselho Nacional de Saúde diz que não há evidência); Corrupção ↑ risco nos contratos (aprox.); greve de servidores"
+        "efeitos": "Contratos por metas podem reduzir filas; fiscalização fraca aumenta risco de desvios (hipótese)"
       },
       {
         "id": "parceria-publico-privada-com-operacao-clinica",
         "rotulo": "Parceria público-privada com operação clínica",
         "valor": 100,
-        "custoTexto": "0 a mais (aprox.)",
-        "apoiam": ["Empresários"],
-        "rejeitam": ["Movimento pela saúde pública", "Servidores"],
-        "efeitos": "Pressão hospitalar ↓ (aprox.); Cofre ↓ em contratos longos (aprox.)"
+        "custoTexto": "Contratos de longo prazo; custo líquido depende da execução (hipótese)",
+        "apoiam": [
+          "Empresários"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Servidores"
+        ],
+        "efeitos": "Expansão de leitos pode reduzir fila; compromissos contratuais prolongados exigem controle (hipótese)"
       }
     ]
   },

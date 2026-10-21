@@ -644,32 +644,56 @@ longe do ponto do partido.
 **Divisão.** Claude: escreve o modelo e roda testes de mandato. Autor: joga e
 decide os pesos.
 
-### V1-14: Conteúdo: Segurança e justiça penal
+### V1-14: Auditoria de game design: segurança e justiça penal
 
-**Tamanho:** M · **Depende de:** V1-05 a V1-11
+**Tamanho:** G · **Depende de:** V1-05 a V1-12, V1-34, V1-37 e V1-38
 
-**Objetivo.** Escrever as leis da área Segurança e justiça penal no formato v3, a partir de leis reais.
+**Objetivo.** Especificar e validar as decisões jogáveis do mecanismo de segurança e justiça penal antes de ampliar ou reescrever leis.
 
 **Entra**
 
-- De 30 a 45 leis com fonte, história e efeitos
-- Leis antigas da área migradas ou substituídas
-- Valor do Brasil em cada lei em vigor
+- Inventário reproduzível do catálogo vigente: leis, opções/controles, efeitos, índices, custos, atrasos, dependências e relações com outras áreas; reconciliar as contagens das fontes atuais sem assumir como vigente a tabela antiga de 246/253 itens.
+- Auditoria automática de IDs, duplicações candidatas, controles repetidos, efeitos ausentes, referências órfãs, custos, dependências e relações não verificadas. Falsos positivos e diferenças entre ficha, índice, JSON gerado e documentos ficam registrados, sem consolidação automática.
+- Mapa do mecanismo por grupos de leis e vínculos externos: prevenção, policiamento, investigação, processo/justiça, custódia e reintegração, saúde prisional, orçamento e efeitos políticos. O agrupamento é hipótese de organização, não uma decisão jurídica.
+- Especificação do ciclo com problema, decisões concretas, alternativas viáveis, restrições, estados causais, efeitos imediatos e atrasados, continuidade entre turnos, feedback, falhas e recuperação. Distinguir evidência, hipótese de design e dado não verificado.
+- Matriz de jogabilidade de 0 a 2 por critério: decisão, restrição, causalidade, tempo, continuidade e feedback. A pontuação é triagem, não prova de equilíbrio. Leis constitucionais, institucionais e de garantia de direitos recebem avaliação própria de habilitação, restrição ou transformação dos mecanismos; não precisam gerar minijogo individual.
+- Partida demonstrativa de vários turnos, com estado inicial e escolhas, mais cenários de referência, estratégias distintas, gargalos e recuperação; resultados esperados e testes reproduzíveis do mecanismo.
+- Recomendações por lei: manter, reformular efeito/ciclo, fundir, dividir, criar mecanismo/ação ou deixar pendente. Cada decisão traz justificativa, vínculos e efeitos preservados; sobreposição de índice isoladamente não prova duplicação.
+- Painel persistente de cobertura: leis classificadas / total reconciliado e ciclos diagnosticados / universo vigente explicitado. Item já analisado não volta a ser contado como novo por surgir outra dependência.
+- Fontes reais para existência legal e dados empíricos. Coeficientes de jogo ficam identificados como hipóteses até calibração; nenhum conteúdo novo é aprovado implicitamente por esta auditoria.
 
 **Não entra**
 
-- Outras áreas
+- Reescrever ou gerar em massa fichas de leis antes de o mecanismo e as decisões necessárias serem aprovados.
+- Alterar silenciosamente leis, índice, JSONs, rede, fórmulas, arquitetura ou contratos técnicos vigentes. Propostas ficam no relatório até decisão explícita e chamado próprio de implementação quando necessário.
+- Auditar integralmente outra área. Dependências de saúde, orçamento, educação ou política são consultadas no recorte necessário e registradas como vínculo externo.
+- Tratar pesquisa, proposta anterior ou planilha histórica como especificação aprovada; divergências entre catálogo/índice, `rede-viva.md`, `catalogo-de-leis-v2.md`, `leis-em-tres-niveis.md`, estudos e jogo são registradas para decisão.
+- Consultar `docs/Exemplos/` ou incorporar material do Democracy 4.
+
+**Entregas obrigatórias**
+
+1. Inventário congelado e relatório da auditoria automática, com data/versão da fonte e trilha para cada item.
+2. Mapa dos mecanismos e dependências, com lacunas e incertezas explícitas.
+3. Ficha do ciclo preenchida, matriz 0–12 justificada e lista de leis classificadas.
+4. Partida demonstrativa e especificação de cenários/testes que mostrem comportamentos esperados e critérios de reprovação.
+5. Painel de cobertura atualizado, sem declarar equilíbrio ou diversão sem playtest humano.
 
 **Aceite**
 
-- [ ] Verificador sem erro na área
-- [ ] Índices da área com contexto zero e recebendo influência; leis da área com um índice que muda o efeito (trava do V1-07)
-- [ ] Brasil parado por 16 turnos sem salto maior que o limite de realismo
-- [ ] Checagem de diferenciacao-d4.md feita
+- [ ] Inventário reconciliado com a fonte única vigente do catálogo, com total e regra de contagem reproduzíveis.
+- [ ] Auditoria automática roda novamente e reporta IDs, controles, efeitos, referências, dependências e custos; cada achado tem evidência e classificação, incluindo falsos positivos conhecidos.
+- [ ] 100% das leis do recorte de segurança e justiça penal estão classificadas; dependências externas têm referência e status, sem inflar a cobertura da área.
+- [ ] Cada mecanismo candidato tem decisões do jogador descritas em termos de ação e resultado, duas ou mais estratégias plausíveis quando aplicável, restrições, causalidade, horizonte temporal, continuidade e feedback; itens ausentes ficam como lacunas, não como aprovados.
+- [ ] Matriz 0–12 preenchida com justificativa por critério; limitações constitucionais/institucionais avaliadas pelo critério próprio de habilitar, restringir ou transformar mecanismos.
+- [ ] Partida demonstrativa cobre vários turnos e ao menos duas estratégias, um gargalo e uma rota de recuperação; estados, escolhas e resultados esperados permitem reprodução.
+- [ ] Testes especificados distinguem duplicação de controles, sobreposição de índices e níveis jurídicos diferentes; nenhuma fusão/divisão/criação foi aplicada sem aprovação.
+- [ ] Cobertura de leis e mecanismos publicada nos registros de retomada e coerente com os totais reconciliados.
+- [ ] Checagem de `diferenciacao-d4.md` feita.
+- [ ] Autor aprova o mecanismo e as recomendações antes de abrir chamado de implementação ou conteúdo.
 
-**Você vê.** As leis novas da área no mapa e no catálogo.
+**Você vê.** Um dossiê de auditoria de segurança com decisões, partida de exemplo, lacunas, recomendações por lei e cobertura verificável; nenhuma mudança de catálogo é aplicada nesta etapa.
 
-**Divisão.** Claude: Escreve as fichas e gera uma revisão por área. Autor: Revisa a tabela da área e marca o que muda.
+**Divisão.** Claude: extrai e audita o inventário, registra evidências e incertezas, propõe ciclo, partida e testes reproduzíveis. Autor: decide o critério de diversão, valida prioridades e fontes, joga a partida e aprova/rejeita o desenho. Nenhuma edição de catálogo ou motor durante a auditoria.
 
 ### V1-15: Conteúdo: Contas e tributos
 

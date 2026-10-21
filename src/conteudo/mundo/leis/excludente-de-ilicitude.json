@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Excludente de ilicitude",
-  "descricao": "Quando o policial que mata em serviço deixa de ser punido?",
+  "descricao": "Quando um agente que usa força letal em serviço fica isento de pena? A regra estreita aumenta controle de abusos; a ampla dá proteção à ação policial, mas pode elevar a letalidade e corroer confiança.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "penas",
@@ -23,14 +23,15 @@
     "opcoes": [
       {
         "id": "restrito-legitima-defesa-classica",
-        "rotulo": "Restrito: legítima defesa clássica",
+        "rotulo": "Isentar somente reação necessária a ameaça concreta e imediata",
         "valor": 0,
         "apoiam": ["Progressistas", "Movimento negro"],
-        "rejeitam": ["Associações de policiais"]
+        "rejeitam": ["Associações de policiais"],
+        "efeitos": "Letalidade e impunidade de abuso caem; parte dos policiais se sente menos protegida."
       },
       {
         "id": "amplo-inclui-medo-surpresa-ou-violenta-emocao",
-        "rotulo": "Amplo: inclui \"medo, surpresa ou violenta emoção\"",
+        "rotulo": "Isentar disparos também por medo, surpresa ou violenta emoção",
         "valor": 100,
         "apoiam": [
           "Associações de policiais",
@@ -38,7 +39,7 @@
           "Conservadores"
         ],
         "rejeitam": ["Progressistas", "Movimento negro"],
-        "efeitos": "Letalidade policial ↑ (sem número, lacuna); confiança nas instituições ↓ nas Periferias; mais chance de \"policial mata inocente\""
+        "efeitos": "Letalidade policial sobe; crime patrimonial pode cair, mas confiança e reputação diminuem."
       }
     ]
   },

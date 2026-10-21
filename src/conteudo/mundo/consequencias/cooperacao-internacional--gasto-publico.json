@@ -1,0 +1,34 @@
+{
+  "id": "cooperacao-internacional--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_cooperacao_internacional",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        33.33,
+        0
+      ],
+      [
+        66.67,
+        0.03
+      ],
+      [
+        100,
+        0.7
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Coordenação das polícias",
-  "descricao": "Quem manda nas polícias e quem faz a regra geral da segurança: cada estado, um sistema nacional coordenado ou uma polícia nacional?",
+  "descricao": "Como os estados compartilham dados, protocolos e operações policiais sem mudar quem comanda suas forças? Uma coordenação nacional melhora a investigação, mas custa dinheiro e pode concentrar poder operacional.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "policias",
@@ -23,34 +23,46 @@
     "opcoes": [
       {
         "id": "cada-estado-sozinho",
-        "rotulo": "Cada estado sozinho (o país de referência até a reforma)",
+        "rotulo": "Estados isolados, sem base nacional compartilhada",
         "valor": 0,
+        "custoTexto": "Sem gasto federal novo",
         "apoiam": ["Conservadores", "Interior", "Associações de policiais"],
-        "rejeitam": ["Progressistas"],
-        "efeitos": "Crime organizado entre estados ↑ pouco (aprox.)"
+        "rejeitam": [
+          "Progressistas",
+          "Equipes de investigação de crimes interestaduais"
+        ],
+        "efeitos": "Preserva autonomia operacional, mas dificulta rastrear facções entre estados."
       },
       {
         "id": "sistema-unico-coordenado",
-        "rotulo": "Sistema único coordenado (regra nacional e fundo)",
+        "rotulo": "Base nacional de crimes e protocolos conjuntos",
         "valor": 50.0,
-        "custoTexto": "+0,05 a +0,1% do PIB (aprox.), segurança",
+        "custoTexto": "Hipótese: 0,05% do PIB ao ano em dados e treinamento",
         "apoiam": ["Progressistas", "Servidores"],
-        "rejeitam": ["Atiradores e donos de armas pelo porte"],
-        "efeitos": "Capacidade de investigação ↑ (sem número); crime organizado entre estados ↓ (aprox.); 2 a 4 anos"
+        "rejeitam": ["Governadores contrários ao compartilhamento de dados"],
+        "efeitos": "Inteligência cresce e facções interestaduais perdem espaço após implantação; exige gasto e acordo entre estados."
       },
       {
-        "id": "policia-nacional",
-        "rotulo": "Polícia nacional (uma força só)",
+        "id": "forcas-tarefa-nacionais-permanentes",
+        "rotulo": "Forças-tarefa permanentes com comando conjunto dos estados",
         "valor": 100,
-        "custoTexto": "aprox. neutro",
-        "apoiam": ["Militares da reserva"],
-        "rejeitam": ["Associações de policiais"],
-        "efeitos": "Capacidade de investigação ↑; risco de uso político da polícia ↑ (aprox.)"
+        "custoTexto": "Hipótese: 0,1% do PIB ao ano em equipes conjuntas",
+        "apoiam": [
+          "Servidores de inteligência",
+          "Governadores que enfrentam facções interestaduais"
+        ],
+        "rejeitam": [
+          "Governadores que preferem autonomia",
+          "Associações de policiais"
+        ],
+        "efeitos": "Investigação e resposta a facções avançam mais; gasto e disputa por comando aumentam. Os estados continuam donos de suas polícias."
       }
     ]
   },
   "consequencias": [
     "coordenacao-das-policias--capacidade-inteligencia",
+    "coordenacao-das-policias--crime-organizado",
+    "coordenacao-das-policias--gasto-publico",
     "grupos--coordenacao-das-policias--grupo-conservadores",
     "grupos--coordenacao-das-policias--grupo-interior",
     "grupos--coordenacao-das-policias--grupo-progressistas",

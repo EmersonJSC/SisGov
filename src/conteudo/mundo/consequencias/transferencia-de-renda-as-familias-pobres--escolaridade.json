@@ -1,0 +1,37 @@
+{
+  "id": "transferencia-de-renda-as-familias-pobres--escolaridade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transferencia_de_renda_as_familias_pobres",
+  "alvo": "escolaridade",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        33.33,
+        0.04
+      ],
+      [
+        66.67,
+        0.025
+      ],
+      [
+        100,
+        0.01
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

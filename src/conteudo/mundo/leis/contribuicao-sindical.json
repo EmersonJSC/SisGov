@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Contribuição sindical",
-  "descricao": "Como os sindicatos se financiam: só quem quer paga, ou todos os cobertos pelo acordo?",
+  "descricao": "Quem paga para manter o sindicato que negocia salários: só associados, todos os beneficiados com direito de recusa, ou todos obrigatoriamente? Caixa sindical amplia mobilização, mas cobra trabalhadores que talvez discordem.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "sindicatos-e-greve",
@@ -23,23 +23,23 @@
     "opcoes": [
       {
         "id": "voluntaria",
-        "rotulo": "Voluntária",
+        "rotulo": "Financiar sindicatos só com mensalidade de quem aderir",
         "valor": 0,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Força sindical ↓ (hoje cerca de 8% dos ocupados); número de sindicatos ↓ (aprox.); Conflito trabalhista ↓"
+        "efeitos": "Trabalhadores não associados guardam a contribuição, mas sindicatos perdem capacidade de mobilização."
       },
       {
         "id": "taxa-negocial-desconto-de-quem-o-acordo-cobre-com-direito-de",
-        "rotulo": "Taxa negocial: desconto de quem o acordo cobre, com direito de recusa",
+        "rotulo": "Cobrar taxa dos beneficiados pelo acordo, com direito de recusa",
         "valor": 50.0,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Classe média"],
-        "efeitos": "Força sindical ↑ pouco; Renda do trabalho ↑ pouco (aprox.)"
+        "efeitos": "A negociação recebe financiamento mais estável sem obrigar quem recusar."
       },
       {
         "id": "obrigatoria-para-todos",
-        "rotulo": "Obrigatória para todos",
+        "rotulo": "Descontar contribuição de todos os trabalhadores da categoria",
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": [
@@ -47,7 +47,7 @@
           "Classe média",
           "Trabalhadores com carteira"
         ],
-        "efeitos": "Força sindical ↑; número de sindicatos ↑ (aprox.); aprovação entre trabalhadores ↓ pouco (aprox.)"
+        "efeitos": "Sindicatos ampliam mobilização e greves, mas parte dos trabalhadores rejeita o desconto obrigatório."
       }
     ]
   },

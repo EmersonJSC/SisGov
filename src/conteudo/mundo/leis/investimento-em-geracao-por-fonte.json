@@ -26,8 +26,12 @@
         "rotulo": "Fatia solar",
         "valor": 0,
         "custoTexto": "lacuna (custo por MWh)",
-        "apoiam": ["Movimento ambientalista"],
-        "rejeitam": ["Petróleo e mineração"],
+        "apoiam": [
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Petróleo e mineração"
+        ],
         "efeitos": "Estoque de capacidade ↑; emissões ↓; pouca firmeza (não entrega à noite)"
       },
       {
@@ -35,8 +39,12 @@
         "rotulo": "Fatia eólica",
         "valor": 25.0,
         "custoTexto": "lacuna",
-        "apoiam": ["Movimento ambientalista"],
-        "rejeitam": ["Petróleo e mineração"],
+        "apoiam": [
+          "Movimento ambientalista"
+        ],
+        "rejeitam": [
+          "Petróleo e mineração"
+        ],
         "efeitos": "Estoque de capacidade ↑; emissões ↓; firmeza média"
       },
       {
@@ -44,7 +52,9 @@
         "rotulo": "Fatia hidrelétrica",
         "valor": 50.0,
         "custoTexto": "cerca de  80/MWh",
-        "apoiam": ["Confederação da indústria"],
+        "apoiam": [
+          "Confederação da indústria"
+        ],
         "rejeitam": [
           "Povos originários",
           "Atingidos por barragens e mineração",
@@ -57,8 +67,12 @@
         "rotulo": "Fatia gás",
         "valor": 75.0,
         "custoTexto": "lacuna",
-        "apoiam": ["Petróleo e mineração"],
-        "rejeitam": ["Movimento ambientalista"],
+        "apoiam": [
+          "Petróleo e mineração"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista"
+        ],
         "efeitos": "Folga do sistema ↑ rápido e firme; emissões ↑; preço da energia segue o gás e o câmbio"
       },
       {
@@ -66,16 +80,37 @@
         "rotulo": "Fatia nuclear",
         "valor": 100,
         "custoTexto": "cerca de  144/MWh",
-        "apoiam": ["Associações de militares"],
-        "rejeitam": ["Movimento ambientalista"],
-        "efeitos": "Folga do sistema ↑ firme, com atraso de mais de 10 anos; emissões ↓"
+        "apoiam": [
+          "Associações de militares"
+        ],
+        "rejeitam": [
+          "Movimento ambientalista"
+        ],
+        "efeitos": "Folga do sistema ↑ firme, com atraso de mais de 10 anos; emissões ↓",
+        "requer": [
+          {
+            "lei": "energia-nuclear",
+            "opcoes": [
+              "expansao"
+            ]
+          }
+        ]
       }
     ]
   },
-  "consequencias": ["investimento-em-geracao-por-fonte--emissoes"],
+  "consequencias": [
+    "investimento-em-geracao-por-fonte--emissoes",
+    "investimento-em-geracao-por-fonte--infraestrutura-energia-rapida",
+    "investimento-em-geracao-por-fonte--infraestrutura-energia-media",
+    "investimento-em-geracao-por-fonte--infraestrutura-energia-nuclear"
+  ],
   "mae": {
-    "texto": "Energia nuclear. Proibida tranca a fatia nuclear. Fontes de energia favorecidas muda o custo de cada fatia.",
-    "leis": ["fontes-de-energia-favorecidas", "energia-nuclear"]
+    "texto": "Orçamento de expansão elétrica fornece a verba; Energia nuclear proibida tranca a fatia nuclear; Matriz energética muda o custo de cada fatia.",
+    "leis": [
+      "energia-nuclear",
+      "matriz-energetica",
+      "orcamento-de-expansao-eletrica"
+    ]
   },
   "ministerio": "Ministério das Cidades"
 }

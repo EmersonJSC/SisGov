@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Genéricos e patentes de medicamentos",
-  "descricao": "Quanto tempo a patente protege um remédio e quando a cópia mais barata pode entrar?",
+  "nome": "Patentes, genéricos e produção de medicamentos",
+  "descricao": "O país pode comprar no mercado, ampliar genéricos ou usar licenças estratégicas e laboratórios públicos para garantir remédios. Efeitos numéricos são hipóteses de jogo.",
   "area": "Saúde",
   "mesa": {
     "id": "remedios",
@@ -22,48 +22,63 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "sem-patentes",
-        "rotulo": "Sem patentes",
+        "id": "licenca-estrategica-e-laboratorios-publicos",
+        "rotulo": "Licenças estratégicas e laboratórios públicos",
         "valor": 0,
-        "custoTexto": "gasto do sistema público de saúde ↓",
-        "apoiam": ["Movimento pela saúde pública"],
-        "rejeitam": ["Indústria farmacêutica"],
-        "efeitos": "Preço dos medicamentos ↓ forte; Tensão internacional ↑; Investimento estrangeiro ↓"
+        "custoTexto": "Investimento inicial em produção pública (hipótese)",
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Servidores",
+          "Pobres"
+        ],
+        "rejeitam": [
+          "Indústria farmacêutica",
+          "Mercado financeiro"
+        ],
+        "efeitos": "Oferta pública e acesso ↑ com atraso; preço tende a cair; gasto inicial e disputa sobre patentes ↑ (hipótese)"
       },
       {
         "id": "patente-restrita-e-licenca-compulsoria-facil",
-        "rotulo": "Patente restrita e licença compulsória fácil",
+        "rotulo": "Licença compulsória seletiva para remédios essenciais",
         "valor": 25,
         "custoTexto": "gasto do sistema público de saúde ↓",
-        "apoiam": ["Movimento pela saúde pública", "Pobres"],
-        "rejeitam": ["Indústria farmacêutica"],
-        "efeitos": "Preço dos medicamentos ↓; retaliação comercial possível"
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Pobres"
+        ],
+        "rejeitam": [
+          "Indústria farmacêutica"
+        ],
+        "efeitos": "Genéricos entram mais cedo em necessidades críticas; preço ↓ e tensão com titulares de patentes ↑ (hipótese)"
       },
       {
         "id": "regra-internacional-e-generico-rapido",
-        "rotulo": "Regra internacional e genérico rápido",
+        "rotulo": "Patentes regulares e genéricos após vencimento",
         "valor": 50,
         "custoTexto": "neutro",
-        "apoiam": ["consenso técnico"],
-        "efeitos": "genérico pelo menos 35% mais barato"
-      },
-      {
-        "id": "so-a-regra-internacional",
-        "rotulo": "Só a regra internacional",
-        "valor": 75,
-        "custoTexto": "gasto do sistema público de saúde ↑",
-        "apoiam": ["Indústria farmacêutica", "Empresários"],
-        "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Preço dos medicamentos ↑"
+        "apoiam": [
+          "Farmácias",
+          "Pacientes",
+          "Indústria de genéricos"
+        ],
+        "efeitos": "Mantém incentivo à pesquisa e concorrência dos genéricos após o prazo legal",
+        "rejeitam": [
+          "Defensores de produção pública ampla"
+        ]
       },
       {
         "id": "patente-estendida-alem-da-regra-internacional",
-        "rotulo": "Patente estendida além da regra internacional",
+        "rotulo": "Proteção prolongada a patentes e pesquisa privada",
         "valor": 100,
         "custoTexto": "gasto do sistema público de saúde ↑",
-        "apoiam": ["Indústria farmacêutica"],
-        "rejeitam": ["Movimento pela saúde pública", "Aposentados"],
-        "efeitos": "Preço dos medicamentos ↑ forte; Investimento estrangeiro ↑ (aprox.)"
+        "apoiam": [
+          "Indústria farmacêutica"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Aposentados"
+        ],
+        "efeitos": "Pesquisa privada pode ganhar incentivo; preço e gasto do bolso ↑, acesso dos mais pobres ↓ (hipótese)"
       }
     ]
   },

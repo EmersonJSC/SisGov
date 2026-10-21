@@ -32,13 +32,13 @@ const lei = (partida: Partida, id: string) =>
   verPartida(partida).leis.find((l) => l.id === id)!;
 
 describe("SG137 — pisos vinculados à receita", () => {
-  it("os dois pisos são % da receita, com teto de 40%", () => {
+  it("os dois pisos são % da receita, com teto de 40%; educação respeita a Constituição", () => {
     const partida = nova();
     for (const id of ["piso-saude", "piso-educacao"]) {
       const piso = lei(partida, id);
       expect(piso.grupo, id).toBe("orcamentaria");
       expect(piso.unidade, id).toBe("percentual_receita");
-      expect(piso.minimo, id).toBe(0);
+      expect(piso.minimo, id).toBe(id === "piso-educacao" ? 17.51 : 0);
       expect(piso.maximo, id).toBe(40);
     }
   });
@@ -78,22 +78,21 @@ describe("SG137 — pisos vinculados à receita", () => {
     const { contas } = verPartida(partida);
     const pib = contas.pib;
     expect((-lei(partida, "piso-saude").saldoAnual / pib) * 100).toBeCloseTo(
-      4.367, // V1-34: troca de Economia (era 4,36)
+      4.318949912171468,
       2,
     );
     expect((-lei(partida, "piso-educacao").saldoAnual / pib) * 100).toBeCloseTo(
-      5.585416650106848,
+      5.52409152389499,
       2,
     );
-    // gasto total do turno 0: 31,03% do PIB, mais 0,16 das verbas da
-    // Segurança em três níveis (SG161), mais os pisos maiores (V1-07)
-    expect(v.gasto_publico).toBeCloseTo(31.216734742454538, 1);
+    // O turno inicial já inclui o IVA com cashback na mesma lei.
+    expect(v.gasto_publico).toBeCloseTo(31.107473856152286, 1);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {
     const partida = nova();
     const iva = lei(partida, "imposto-sobre-consumo");
-    const mudada = mudarLei(partida, iva.id, iva.nivel + 3);
+    const mudada = mudarLei(partida, iva.id, 30);
     if (!mudada.ok) throw new Error(mudada.erros.join(" "));
     const com = turnos(mudada.value, 2);
     const sem = turnos(partida, 2);

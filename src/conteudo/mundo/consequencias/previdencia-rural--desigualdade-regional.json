@@ -1,0 +1,17 @@
+{
+  "id": "previdencia-rural--desigualdade-regional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_previdencia_rural",
+  "alvo": "desigualdade_regional",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.063,
+    "termoConstante": 6.3
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

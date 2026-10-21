@@ -1,0 +1,20 @@
+{
+  "id": "policiamento-orientado--gasto-publico",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_policiamento_orientado",
+  "alvo": "gasto_publico",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [33.33, 0.005],
+      [66.67, 0.02],
+      [100, 0.03]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "percentual_pib",
+  "atrasoPassos": 1,
+  "duracao": { "modo": "continuo" }
+}

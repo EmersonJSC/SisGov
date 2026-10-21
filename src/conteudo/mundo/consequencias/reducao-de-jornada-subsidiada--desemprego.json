@@ -6,7 +6,7 @@
   "alvo": "desemprego",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": -0.12,
+    "coeficiente": -0.015,
     "termoConstante": 0.0
   },
   "unidade": "percentual_0_100",

@@ -1,0 +1,23 @@
+{
+  "id": "imposto-sobre-consumo--cashback-pobreza",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aliquota_imposto_sobre_consumo",
+  "alvo": "pobreza",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [0, 0],
+      [13.35, 0],
+      [26.49, 0],
+      [26.5, -2.65],
+      [26.51, 0],
+      [30, 0]
+    ]
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

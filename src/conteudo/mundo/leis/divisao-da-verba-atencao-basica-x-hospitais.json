@@ -22,37 +22,58 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "id": "prioridade-maxima-a-hospitais",
+        "rotulo": "Prioridade máxima a hospitais e cirurgias",
         "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "custoTexto": "Redistribui a verba existente",
+        "apoiam": [
+          "Gestores hospitalares",
+          "Entidades médicas"
+        ],
+        "rejeitam": [
+          "Equipes de atenção básica",
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Cirurgias recebem prioridade imediata; prevenção ↓ e pressão hospitalar ↑ no longo prazo (hipótese)"
       },
       {
         "id": "15-prioridade-aos-hospitais",
-        "rotulo": "15%: prioridade aos hospitais",
+        "rotulo": "Atenção básica limitada a 15% da verba",
         "valor": 33.33,
         "custoTexto": "— (só redivide)",
-        "apoiam": ["Entidades médicas"],
-        "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Cobertura da atenção básica ↓; Pressão hospitalar ↑ em 2 a 4 anos"
+        "apoiam": [
+          "Entidades médicas"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública"
+        ],
+        "efeitos": "Mais recursos para hospitais agora; cobertura preventiva ↓ e pressão hospitalar ↑ depois (hipótese)"
       },
       {
         "id": "cerca-de-22",
-        "rotulo": "cerca de 22% (hoje na referência, aprox.)",
+        "rotulo": "Divisão atual: cerca de 22% para atenção básica (hipótese)",
         "valor": 66.67,
-        "efeitos": "Cobertura da atenção básica ↑ pouco contra 15% (estimado); Pressão hospitalar ↓ pouco contra 15% (estimado); Fila ↓ pouco, sem mudança de rumo no curto prazo (estimado)"
+        "efeitos": "Preserva a rede atual; prevenção cresce pouco sem novos recursos",
+        "apoiam": [
+          "Gestores municipais",
+          "Entidades médicas"
+        ],
+        "rejeitam": [
+          "Defensores de expansão da atenção básica"
+        ]
       },
       {
         "id": "40-prioridade-a-atencao-basica",
-        "rotulo": "40%: prioridade à atenção básica",
+        "rotulo": "Atenção básica recebe 40% da verba",
         "valor": 100,
         "custoTexto": "— (só redivide)",
-        "apoiam": ["Movimento pela saúde pública"],
-        "rejeitam": ["Interior"],
-        "efeitos": "Cobertura da atenção básica ↑ (1 ano); Fila ↑ nos 2 primeiros anos e ↓ depois; Pressão hospitalar ↓ (2 a 4 anos); Expectativa de vida ↑ (até 8 anos)"
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "rejeitam": [
+          "Gestores hospitalares"
+        ],
+        "efeitos": "Postos e equipes de família ↑; filas hospitalares podem subir no início e cair com prevenção (hipótese)"
       }
     ]
   },

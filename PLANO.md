@@ -176,7 +176,7 @@ Método para reescrever as leis (autor, 13/out): nenhuma lei é "de esquerda" ou
 - [ ] **V1-38** Dívida e política fiscal no motor (G): calibrar o país parado,
       dinâmica da dívida, leis de orçamento e finanças com efeito. Detalhe em
       `docs/v1/chamados.md`. Vem antes do V1-15.
-- [ ] **V1-14** Conteúdo: Segurança e justiça penal (M)
+- [ ] **V1-14** Auditoria de game design: segurança e justiça penal (G). Antes da expansão de conteúdo: reconciliar inventário, auditar controles/efeitos/relações, especificar decisões jogáveis, simular vários turnos e propor destino das leis sem editar catálogo. Aceite e entregas em `docs/v1/chamados.md`.
 - [ ] **V1-15** Conteúdo: Contas e tributos (M)
 - [ ] **V1-16** Conteúdo: Poder e instituições (M)
 - [ ] **V1-17** Conteúdo: Direitos e liberdades (M)
@@ -229,6 +229,8 @@ chamado só depois da versão 1.0.
 | D-69 | 12/out/2026 | **Ficha de lei v3** com três níveis jogáveis (Constituição, lei, decreto e orçamento), custo em capital político, dinheiro em % do PIB, efeitos dentro da ficha e fonte obrigatória. Altera a D-65 (sai o nível pétreo) e substitui as D-23 a D-26.                                             |
 | D-70 | 12/out/2026 | **População e pressão próprias.** 20 segmentos do eleitorado com perfis sintéticos e 20 grupos de pressão da política real, com repertório de ações. Substitui a D-60.                                                                                                                          |
 | D-71 | 12/out/2026 | **Processo de engenharia** da versão 1 (`docs/v1/engenharia.md`). Substitui as regras anti-ciclo R-01 a R-11 do plano antigo.                                                                                                                                                                   |
+| D-72 | 18/out/2026 | **Geração de leis em lotes.** A IA propõe opções e modelagem matemática inicial como hipóteses de jogo; fontes ancoram existência e plausibilidade das políticas, não cada coeficiente. Cada lote ministerial oferece rotas para esquerda econômica, direita econômica, progressismo e conservadorismo. Validação combina esquema, simulação e playtest. Ver [`docs/conteudo/diretriz-geracao-leis-em-lotes.md`](docs/conteudo/diretriz-geracao-leis-em-lotes.md). |
+| D-73 | 19/out/2026 | **Índice como fonte das leis.** Edições, inclusões e exclusões de leis passam pelo índice completo; os JSONs de lei, suas consequências e referências do catálogo são gerados. Consultas seguem compactas. Ver [`docs/conteudo/indice-leis.md`](docs/conteudo/indice-leis.md). |
 
 ### 7.2 Decisões antigas que continuam valendo
 

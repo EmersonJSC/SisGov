@@ -42,16 +42,16 @@ describe("configuração do país (V1-06)", () => {
     // novas das mesas (controle, eficácia e o estado de cada uma).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1742);
+    expect(Object.keys(valores)).toHaveLength(1733);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.282, 3);
-    expect(valores.divida_publica).toBeCloseTo(82.1662, 2);
-    expect(valores.inflacao).toBeCloseTo(4.833, 2);
-    expect(valores.desemprego).toBeCloseTo(6.2001836019814665, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.281449082574, 3);
+    expect(valores.divida_publica).toBeCloseTo(82.44283203439062, 2);
+    expect(valores.inflacao).toBeCloseTo(4.835626054352943, 2);
+    expect(valores.desemprego).toBeCloseTo(6.2003751134216625, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12692693.004554976, 3);
-    expect(p.content.policies).toHaveLength(247);
+    expect(soma).toBeCloseTo(12692340.58168242, 3);
+    expect(p.content.policies).toHaveLength(244);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });

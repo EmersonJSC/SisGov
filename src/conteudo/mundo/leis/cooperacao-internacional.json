@@ -26,15 +26,21 @@
         "rotulo": "Ponto da faixa",
         "valor": 0,
         "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
+        "apoiam": [
+          "Quem apoia"
+        ],
+        "rejeitam": [
+          "Quem rejeita"
+        ],
         "efeitos": "Efeitos principais"
       },
       {
         "id": "0",
         "rotulo": "0%",
         "valor": 33.33,
-        "rejeitam": ["Católicos"],
+        "rejeitam": [
+          "Católicos"
+        ],
         "efeitos": "Influência externa ↓ pouco"
       },
       {
@@ -42,19 +48,26 @@
         "rotulo": "0,03% (hoje na referência, aprox.)",
         "valor": 66.67,
         "custoTexto": "0,03% da renda",
-        "efeitos": "Influência externa ↑ pouco contra 0% e ↓ contra 0,7% (estimado)"
+        "efeitos": "Influência externa ↑ pouco contra 0% e ↓ contra 0,7% (estimado) O custo entra como % do PIB no jogo, aproximando a renda nacional (hipótese)."
       },
       {
         "id": "0-7",
         "rotulo": "0,7% (meta da ONU e da OCDE)",
         "valor": 100,
         "custoTexto": "0,7% da renda",
-        "apoiam": ["Progressistas", "Católicos"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Influência externa ↑; chance de ganhar o voto na assembleia ↑ (aprox.)"
+        "apoiam": [
+          "Progressistas",
+          "Católicos"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Influência externa ↑; chance de ganhar o voto na assembleia ↑ (aprox.) O custo entra como % do PIB no jogo, aproximando a renda nacional (hipótese)."
       }
     ]
   },
-  "consequencias": [],
+  "consequencias": [
+    "cooperacao-internacional--gasto-publico"
+  ],
   "ministerio": "Ministério da Defesa"
 }

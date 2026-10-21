@@ -1,0 +1,37 @@
+{
+  "id": "transferencia-de-renda-as-familias-pobres--grupo-progressistas",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transferencia_de_renda_as_familias_pobres",
+  "alvo": "grupo_progressistas",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        -1
+      ],
+      [
+        33.33,
+        -0.5
+      ],
+      [
+        66.67,
+        0
+      ],
+      [
+        100,
+        2
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

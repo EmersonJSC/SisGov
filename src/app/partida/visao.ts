@@ -4,6 +4,7 @@ import { valorNaMedida } from "./medida";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
   optionLock,
+  policyMinimum,
   policyInForce,
   policyRequirements,
   policyRevocable,
@@ -100,7 +101,10 @@ export function verPartida(partida: Partida): VisaoPartida {
       nivel,
       meta: state?.desiredLevel ?? nivel,
       // limites efetivos: os mesmos que a partida aceita (SG159)
-      minimo: regras?.domain.minimum ?? variable?.dominio.minimo,
+      minimo: Math.max(
+        regras?.domain.minimum ?? variable?.dominio.minimo ?? 0,
+        policyMinimum(content, game.policies, policy.id) ?? 0,
+      ),
       maximo: regras?.domain.maximum ?? variable?.dominio.maximo,
       unidade: policy.controle.unidade,
       opcoes: opcoes?.map(({ id, rotulo, valor }) => ({

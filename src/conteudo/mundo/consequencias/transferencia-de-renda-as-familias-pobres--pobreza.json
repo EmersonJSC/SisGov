@@ -4,10 +4,30 @@
   "versaoEsquema": 1,
   "origem": "nivel_transferencia_de_renda_as_familias_pobres",
   "alvo": "pobreza",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": -0.108,
-    "termoConstante": 7.20036
+    "pontos": [
+      [
+        0,
+        -0.5
+      ],
+      [
+        33.33,
+        0.2
+      ],
+      [
+        66.67,
+        0
+      ],
+      [
+        100,
+        0.8
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
   },
   "unidade": "percentual_0_100",
   "atrasoPassos": 1,

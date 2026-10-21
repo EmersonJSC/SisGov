@@ -1,0 +1,37 @@
+{
+  "id": "transferencia-de-renda-as-familias-pobres--corrupcao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_transferencia_de_renda_as_familias_pobres",
+  "alvo": "corrupcao",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0.2
+      ],
+      [
+        33.33,
+        0.3
+      ],
+      [
+        66.67,
+        0
+      ],
+      [
+        100,
+        -0.5
+      ]
+    ]
+  },
+  "escala": {
+    "fator": "recursos_transferencia_de_renda",
+    "referencia": 168000
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

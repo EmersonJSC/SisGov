@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "institucional",
   "nome": "Polícias dos estados",
-  "descricao": "Quem manda na polícia de rua e na polícia que investiga: os governadores ou o presidente.",
+  "descricao": "A Constituição atribui o comando das polícias territoriais aos governadores ou concentra a força em uma polícia nacional. No país inicial esta é uma regra protegida; compartilhar dados e operações é decisão separada.",
   "area": "Segurança, justiça e drogas",
   "mesa": {
     "id": "policias",
@@ -20,13 +20,19 @@
     "opcoes": [
       {
         "id": "governadores",
-        "rotulo": "Polícias com os governadores",
-        "valor": 0
+        "rotulo": "Governadores comandam as polícias estaduais",
+        "valor": 0,
+        "apoiam": ["Governadores", "Interior", "Servidores estaduais"],
+        "rejeitam": ["Defensores de uma polícia única"],
+        "efeitos": "Distribui o comando territorial entre estados; operações nacionais dependem de coordenação."
       },
       {
         "id": "policia-nacional",
-        "rotulo": "Polícia nacional única",
-        "valor": 100
+        "rotulo": "Presidente comanda uma polícia nacional única",
+        "valor": 100,
+        "apoiam": ["Defensores de comando central"],
+        "rejeitam": ["Governadores", "Servidores estaduais"],
+        "efeitos": "Concentra capacidade estatal e comando, com risco maior de uso político da força."
       }
     ]
   },

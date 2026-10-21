@@ -110,7 +110,6 @@
           "apostas-e-jogos-de-azar",
           "meta-de-resultado-primario",
           "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-          "devolucao-de-imposto-aos-pobres",
           "vinculacoes-orcamentarias",
           "revisao-de-gastos-tributarios",
           "conselho-fiscal-independente",
@@ -125,7 +124,9 @@
         "nome": "Ministério do Planejamento e Orçamento",
         "cargo": "Planejamento",
         "area": "economia",
-        "leis": ["regra-fiscal"],
+        "leis": [
+          "regra-fiscal"
+        ],
         "extincao": {
           "destino": "fazenda"
         }
@@ -166,7 +167,9 @@
         "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
         "cargo": "Empreendedorismo",
         "area": "empresas",
-        "leis": ["licenca-para-abrir-negocio"],
+        "leis": [
+          "licenca-para-abrir-negocio"
+        ],
         "extincao": {
           "destino": "mdic"
         }
@@ -237,13 +240,9 @@
           "quem-cuida-do-idoso-dependente",
           "garantia-de-comida",
           "organizacao-dos-programas-sociais",
-          "aposentadoria-do-trabalhador-rural",
-          "como-a-aposentadoria-e-financiada",
           "como-o-estado-entrega-casa",
           "direito-a-moradia-na-constituicao",
-          "idade-minima-para-se-aposentar",
           "licenca-para-cuidar-do-bebe",
-          "regra-de-reajuste-dos-beneficios",
           "transferencia-de-renda-as-familias-pobres",
           "vagas-de-creche",
           "verba-do-programa-habitacional"
@@ -279,7 +278,8 @@
           "mutirao-de-cirurgias",
           "remedios-em-farmacias-credenciadas",
           "programa-de-medicos-no-interior",
-          "regulacao-dos-planos-de-saude"
+          "regulacao-dos-planos-de-saude",
+          "piso-de-gasto-em-saude"
         ]
       },
       {
@@ -325,7 +325,10 @@
         "nome": "Ministério da Ciência, Tecnologia e Inovação",
         "cargo": "Ciência e Tecnologia",
         "area": "educacao",
-        "leis": ["investimento-pesquisa", "programa-espacial-e-satelites"],
+        "leis": [
+          "investimento-pesquisa",
+          "programa-espacial-e-satelites"
+        ],
         "extincao": {
           "destino": "educacao"
         }
@@ -335,7 +338,9 @@
         "nome": "Ministério da Cultura",
         "cargo": "Cultura",
         "area": "educacao",
-        "leis": ["incentivo-a-cultura"],
+        "leis": [
+          "incentivo-a-cultura"
+        ],
         "extincao": {
           "destino": "educacao"
         }
@@ -345,7 +350,9 @@
         "nome": "Ministério das Comunicações",
         "cargo": "Comunicações",
         "area": "educacao",
-        "leis": ["concessoes-de-radio-e-tv"],
+        "leis": [
+          "concessoes-de-radio-e-tv"
+        ],
         "extincao": {
           "destino": "ciencia"
         }
@@ -360,12 +367,12 @@
           "programa-habitacao-popular",
           "habitacao-publica",
           "licenciamento-de-obras-e-empresas",
-          "fontes-de-energia-favorecidas",
           "protecao-da-vegetacao-nativa-nas-propriedades-rurais",
           "fiscalizacao-ambiental",
           "credito-rural-e-assistencia-tecnica",
           "investimento-em-geracao-por-fonte",
-          "transporte-publico"
+          "transporte-publico",
+          "orcamento-de-expansao-eletrica"
         ],
         "extincao": {
           "destino": "integracao"
@@ -376,7 +383,10 @@
         "nome": "Ministério dos Transportes",
         "cargo": "Transportes",
         "area": "infraestrutura",
-        "leis": ["investimento-em-infraestrutura"],
+        "leis": [
+          "investimento-em-infraestrutura",
+          "ferrovias-e-terminais-portuarios"
+        ],
         "extincao": {
           "destino": "cidades"
         }
@@ -408,7 +418,9 @@
         "nome": "Ministério da Integração e do Desenvolvimento Regional",
         "cargo": "Integração",
         "area": "infraestrutura",
-        "leis": ["incentivos-fiscais-regionais"],
+        "leis": [
+          "incentivos-fiscais-regionais"
+        ],
         "extincao": {
           "destino": "cidades"
         }
@@ -432,14 +444,18 @@
         "nome": "Ministério da Agricultura e Pecuária",
         "cargo": "Agricultura",
         "area": "ambiente",
-        "leis": ["registro-de-agrotoxicos"]
+        "leis": [
+          "registro-de-agrotoxicos"
+        ]
       },
       {
         "id": "desenvolvimento-agrario",
         "nome": "Ministério do Desenvolvimento Agrário e Agricultura Familiar",
         "cargo": "Desenvolvimento Agrário",
         "area": "ambiente",
-        "leis": ["redistribuicao-de-terras"],
+        "leis": [
+          "redistribuicao-de-terras"
+        ],
         "extincao": {
           "destino": "agricultura",
           "leis": {
@@ -462,7 +478,9 @@
         "nome": "Ministério dos Povos Indígenas",
         "cargo": "Povos Indígenas",
         "area": "ambiente",
-        "leis": ["terras-indigenas"],
+        "leis": [
+          "terras-indigenas"
+        ],
         "extincao": {
           "destino": "justica"
         }
@@ -496,9 +514,7 @@
           "penas-e-progressao",
           "alternativas-penais-e-audiencia-de-custodia",
           "coordenacao-das-policias",
-          "delacao-premiada-e-acordos",
           "gestao-dos-presidios",
-          "natureza-da-policia-de-rua",
           "policiamento-orientado",
           "regime-contra-faccoes"
         ]
@@ -535,7 +551,9 @@
         "nome": "Ministério das Relações Exteriores",
         "cargo": "Itamaraty",
         "area": "seguranca",
-        "leis": ["acordos-comerciais"]
+        "leis": [
+          "acordos-comerciais"
+        ]
       },
       {
         "id": "gsi",
@@ -597,7 +615,10 @@
         "nome": "Ministério da Igualdade Racial",
         "cargo": "Igualdade Racial",
         "area": "direitos",
-        "leis": ["acoes-afirmativas", "igualdade-racial"],
+        "leis": [
+          "acoes-afirmativas",
+          "igualdade-racial"
+        ],
         "extincao": {
           "destino": "direitos-humanos"
         }
@@ -658,7 +679,9 @@
         "nome": "Secretaria de Comunicação Social",
         "cargo": "Comunicação Social",
         "area": "governo",
-        "leis": ["liberdade-de-imprensa"],
+        "leis": [
+          "liberdade-de-imprensa"
+        ],
         "extincao": {
           "destino": "casa-civil"
         }
@@ -668,7 +691,10 @@
         "nome": "Controladoria-Geral da União",
         "cargo": "CGU",
         "area": "governo",
-        "leis": ["lei-anticorrupcao", "transparencia-publica"],
+        "leis": [
+          "lei-anticorrupcao",
+          "transparencia-publica"
+        ],
         "extincao": {
           "destino": "casa-civil"
         }
@@ -685,7 +711,9 @@
         "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
         "cargo": "Gestão",
         "area": "governo",
-        "leis": ["estabilidade-dos-servidores-publicos"],
+        "leis": [
+          "estabilidade-dos-servidores-publicos"
+        ],
         "extincao": {
           "destino": "planejamento"
         }
@@ -701,8 +729,14 @@
       {
         "id": "republica-presidencialista",
         "nome": "República presidencialista",
-        "instituicoesAtivas": ["presidencia", "senado"],
-        "eleicoesAtivas": ["presidencial", "senatorial"],
+        "instituicoesAtivas": [
+          "presidencia",
+          "senado"
+        ],
+        "eleicoesAtivas": [
+          "presidencial",
+          "senatorial"
+        ],
         "poderes": [
           {
             "id": "executivo",
@@ -721,7 +755,9 @@
       {
         "id": "ditadura-executiva",
         "nome": "Ditadura executiva",
-        "instituicoesAtivas": ["presidencia"],
+        "instituicoesAtivas": [
+          "presidencia"
+        ],
         "eleicoesAtivas": [],
         "poderes": [
           {
@@ -763,7 +799,10 @@
         "mandatoMeses": 96,
         "renovacao": {
           "intervaloMeses": 48,
-          "cadeirasPorUnidade": [2, 1]
+          "cadeirasPorUnidade": [
+            2,
+            1
+          ]
         },
         "votacaoOrdinaria": {
           "regra": "maioria_absoluta",
@@ -774,7 +813,9 @@
     "processosConstitucionais": [
       {
         "id": "emenda-constitucional",
-        "orgaosAprovadores": ["senado"],
+        "orgaosAprovadores": [
+          "senado"
+        ],
         "fracaoFavoravel": 0.6,
         "rodadas": 2
       }
@@ -788,7 +829,9 @@
         "valor": 1,
         "mandatoMeses": 48,
         "intervaloRenovacaoMeses": 48,
-        "cadeirasPorCiclo": [1]
+        "cadeirasPorCiclo": [
+          1
+        ]
       },
       {
         "id": "abolir-senado",
@@ -943,7 +986,9 @@
       "partido-social": 27,
       "partido-liberal": 21
     },
-    "coalizaoGoverno": ["partido-civico"]
+    "coalizaoGoverno": [
+      "partido-civico"
+    ]
   },
   "leisEleitorais": [
     "eleicao-presidencial-pluralidade-nacional",
@@ -981,7 +1026,9 @@
         "rodadas": 2
       },
       "medidaProvisoria": {
-        "proibidaNasAreas": ["Segurança, justiça e drogas"],
+        "proibidaNasAreas": [
+          "Segurança, justiça e drogas"
+        ],
         "nota": "Art. 62, § 1º: medida provisória não trata de direito penal, processo penal, direitos políticos, eleições e nacionalidade."
       }
     }

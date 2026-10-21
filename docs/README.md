@@ -22,6 +22,13 @@ Todo documento tem um de três status:
 | [`v1/arquitetura.md`](v1/arquitetura.md) | Camadas, módulos e dados |
 | [`v1/reestruturacao.md`](v1/reestruturacao.md) | Destino de cada parte do código |
 | [`v1/conteudo.md`](v1/conteudo.md) | Regras de conteúdo |
+| [`conteudo/diretriz-geracao-leis-em-lotes.md`](conteudo/diretriz-geracao-leis-em-lotes.md) | Metodologia vigente para gerar e revisar leis em lotes |
+| [`conteudo/auditoria-seguranca-mecanismos.md`](conteudo/auditoria-seguranca-mecanismos.md) | Auditoria V1-14: decisões, ciclo atual, lacunas e reformulação de Segurança |
+| [`conteudo/revisao-propriedade-financas-publicas.md`](conteudo/revisao-propriedade-financas-publicas.md) | Execução de quatro leis sobre participação pública, empresas estatais e finanças |
+| [`conteudo/simulacao-propriedade-32-turnos.jsonl`](conteudo/simulacao-propriedade-32-turnos.jsonl) | Séries de dez partidas, com contas em todos os turnos |
+| [`conteudo/revisao-tributacao-e-extremos.md`](conteudo/revisao-tributacao-e-extremos.md) | Revisão de quatro leis tributárias e estresse nos limites legais |
+| [`conteudo/simulacao-tributacao-16-turnos.jsonl`](conteudo/simulacao-tributacao-16-turnos.jsonl) | Séries fiscais de dez rotas tributárias |
+| [`conteudo/plano-mestre-auditoria-leis.md`](conteudo/plano-mestre-auditoria-leis.md) | Plano de auditoria de game design para 100% do catálogo, com lotes, critérios e validação |
 | [`v1/engenharia.md`](v1/engenharia.md) | Processo de trabalho |
 | [`v1/ideias.md`](v1/ideias.md) | Ideias para depois |
 | [`v1/desenho/`](v1/desenho/README.md) | Desenhos de cada sistema novo, aprovados antes do código |

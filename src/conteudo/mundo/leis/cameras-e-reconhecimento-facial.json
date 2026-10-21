@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Câmeras e reconhecimento facial",
-  "descricao": "A polícia pode identificar rostos em câmeras públicas, e onde?",
+  "descricao": "A polícia pode buscar suspeitos por reconhecimento facial em câmeras públicas? Ampliar a cobertura ajuda investigações, mas aumenta gasto, falsos positivos e vigilância da população.",
   "area": "Segurança, penas, drogas e armas",
   "mesa": {
     "id": "vigilancia",
@@ -23,36 +23,39 @@
     "opcoes": [
       {
         "id": "proibido-para-a-policia",
-        "rotulo": "Proibido para a polícia",
+        "rotulo": "Proibir reconhecimento facial em investigações",
         "valor": 0,
         "apoiam": ["Progressistas", "Movimento negro"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Liberdades civis ↑"
+        "custoTexto": "Sem gasto de implantação",
+        "efeitos": "Preserva a privacidade, mas abre mão de buscas automatizadas."
       },
       {
         "id": "so-em-locais-publicos-com-regra-e-auditoria",
         "rotulo": "Só em locais públicos com regra e auditoria (estádios, transporte)",
         "valor": 33,
-        "custoTexto": "baixo",
+        "custoTexto": "Hipótese: 0,01% do PIB ao ano em equipamentos e auditoria",
         "apoiam": ["Classe média"],
-        "efeitos": "Capacidade de investigação ↑ pouco"
+        "rejeitam": ["Progressistas contrários à biometria"],
+        "efeitos": "Ajuda buscas em locais definidos, com auditoria; tem custo e risco limitado de erro."
       },
       {
         "id": "cidade-inteira",
         "rotulo": "Cidade inteira",
         "valor": 67,
-        "custoTexto": "médio",
+        "custoTexto": "Hipótese: 0,03% do PIB ao ano em rede urbana",
         "apoiam": ["Conservadores", "Classe média"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Capacidade de investigação ↑; sensação de segurança ↑ (aprox.); liberdades civis ↓; prisões erradas de negros ↑ (aprox.)"
+        "efeitos": "Busca por suspeitos se amplia e crimes patrimoniais tendem a cair; privacidade e equidade pioram."
       },
       {
         "id": "cadastro-nacional-de-rostos",
-        "rotulo": "Cadastro nacional de rostos",
+        "rotulo": "Cadastro nacional de rostos ligado às câmeras",
         "valor": 100,
-        "custoTexto": "médio",
+        "custoTexto": "Hipótese: 0,05% do PIB ao ano em cadastro e auditoria",
+        "apoiam": ["Conservadores", "Associações de policiais"],
         "rejeitam": ["Progressistas", "Movimento negro"],
-        "efeitos": "Iguais ao anterior, mais fortes"
+        "efeitos": "Investigação mais ampla e maior segurança percebida; custo, discriminação e perda de privacidade aumentam."
       }
     ]
   },
@@ -64,7 +67,8 @@
     "cameras-e-reconhecimento-facial--liberdade-civil",
     "cameras-e-reconhecimento-facial--discriminacao",
     "cameras-e-reconhecimento-facial--grupo-progressistas",
-    "cameras-e-reconhecimento-facial--grupo-periferias"
+    "cameras-e-reconhecimento-facial--grupo-periferias",
+    "cameras-e-reconhecimento-facial--gasto-publico"
   ],
   "ministerio": "Ministério da Justiça"
 }

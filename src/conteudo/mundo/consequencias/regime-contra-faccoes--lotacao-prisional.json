@@ -1,0 +1,30 @@
+{
+  "id": "regime-contra-faccoes--lotacao-prisional",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_regime_contra_faccoes",
+  "alvo": "lotacao_prisional",
+  "mecanismo": "pontos",
+  "parametros": {
+    "pontos": [
+      [
+        0,
+        0
+      ],
+      [
+        50,
+        1
+      ],
+      [
+        100,
+        7
+      ]
+    ]
+  },
+  "leitura": "nivel",
+  "unidade": "indice_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

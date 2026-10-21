@@ -1,0 +1,17 @@
+{
+  "id": "piso-de-gasto-em-saude--margem-manobra-governo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "nivel_piso_de_gasto_em_saude",
+  "alvo": "margem_manobra_governo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.06,
+    "termoConstante": 3
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

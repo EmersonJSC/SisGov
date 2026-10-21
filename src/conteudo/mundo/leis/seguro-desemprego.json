@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Seguro-desemprego",
-  "descricao": "Quem perde o emprego tem direito a renda, e por quanto tempo?",
+  "descricao": "Decidir como sustentar famílias após uma demissão: nenhuma cobertura, conta individual, benefício curto ou parcelas maiores com busca de trabalho. Proteção segura consumo e pobreza na crise, mas exige orçamento.",
   "area": "Trabalho, salário e sindicatos",
   "mesa": {
     "id": "desemprego",
@@ -23,15 +23,15 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum",
+        "rotulo": "Extinguir pagamento de seguro após demissão",
         "valor": 0,
-        "apoiam": ["nenhum grupo grande"],
+        "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
         "rejeitam": ["Trabalhadores com carteira"],
         "efeitos": "pobreza ↑ na crise; consumo cai mais na recessão; Informalidade ↓ pouco"
       },
       {
         "id": "conta-individual-do-trabalhador",
-        "rotulo": "Conta individual do trabalhador",
+        "rotulo": "Usar somente a poupança individual acumulada pelo trabalhador",
         "valor": 25,
         "custoTexto": "perto de 0 (sai da conta do trabalhador)",
         "apoiam": ["Mercado financeiro", "Classe média"],
@@ -40,28 +40,30 @@
       },
       {
         "id": "basico-e-curto",
-        "rotulo": "Básico e curto",
+        "rotulo": "Pagar benefício básico por poucas parcelas",
         "valor": 50,
-        "custoTexto": "0,3% a 0,5% do PIB (aprox.), Proteção social",
-        "efeitos": "estabilizador fraco na recessão"
+        "custoTexto": "Hipótese: custo público intermediário",
+        "apoiam": ["Trabalhadores", "Gestores fiscais moderados"],
+        "rejeitam": ["Sindicatos favoráveis a cobertura longa"],
+        "efeitos": "Evita queda abrupta de consumo por curto período; deixa famílias expostas se a busca de emprego demora."
       },
       {
         "id": "moderado-3-a-5-parcelas",
-        "rotulo": "Moderado: 3 a 5 parcelas",
+        "rotulo": "Pagar de três a cinco parcelas após demissão involuntária",
         "valor": 75,
-        "custoTexto": "0,5% a 0,8% do PIB com o abono (aprox.), Proteção social",
+        "custoTexto": "Hipótese: custo público maior que o benefício curto",
         "apoiam": ["Trabalhadores com carteira"],
-        "rejeitam": ["nenhum grupo grande"],
-        "efeitos": "duração do desemprego ↑ pouco (cada mês a mais de benefício gera 0,86 mês pago, só 15% por mudança de comportamento); pobreza ↓; Informalidade ↑ pouco"
+        "rejeitam": ["Gestores fiscais favoráveis a corte de gasto"],
+        "efeitos": "Pobreza e queda de consumo diminuem; gasto sobe e a procura por trabalho pode demorar um pouco."
       },
       {
         "id": "generoso-com-ativacao-beneficio-longo-e-busca-obrigatoria",
-        "rotulo": "Generoso com ativação: benefício longo e busca obrigatória",
+        "rotulo": "Pagar mais parcelas com busca de emprego e qualificação obrigatórias",
         "valor": 100,
-        "custoTexto": "1% a 2% do PIB (aprox.), Proteção social",
+        "custoTexto": "Hipótese: maior custo fiscal, especialmente nas crises",
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "pobreza ↓↓; consumo segura na crise; duração do desemprego ↑ pouco; Gasto do FAT ↑↑ quando o desemprego sobe"
+        "efeitos": "Segura consumo e reduz pobreza durante recessão; custa mais e precisa de serviço de recolocação."
       }
     ]
   },

@@ -2973,9 +2973,61 @@ function validatePolicy(
     validateKnownFields(
       value.controle,
       file,
-      ["variavel", "unidade", "opcoes", "faixa"],
+      ["variavel", "unidade", "opcoes", "faixa", "pisoPorLei"],
       diagnostics,
     );
+    if (value.controle.pisoPorLei !== undefined) {
+      const piso = value.controle.pisoPorLei;
+      if (!isObject(piso))
+        diagnostics.push(
+          diagnostic(
+            file,
+            "controle.pisoPorLei",
+            "TIPO_INVALIDO",
+            "Deve ser um objeto.",
+          ),
+        );
+      else {
+        validateKnownFields(piso, file, ["lei", "minimos"], diagnostics);
+        requiredString(piso, file, "controle.pisoPorLei.lei", diagnostics);
+        if (!Array.isArray(piso.minimos) || piso.minimos.length === 0)
+          diagnostics.push(
+            diagnostic(
+              file,
+              "controle.pisoPorLei.minimos",
+              "VALOR_INVALIDO",
+              "Declare pelo menos um piso por opção.",
+            ),
+          );
+        else
+          piso.minimos.forEach((item, index) => {
+            const field = `controle.pisoPorLei.minimos[${index}]`;
+            if (!isObject(item)) {
+              diagnostics.push(
+                diagnostic(file, field, "TIPO_INVALIDO", "Deve ser um objeto."),
+              );
+              return;
+            }
+            validateKnownFields(item, file, ["opcao", "valor"], diagnostics);
+            requiredString(item, file, `${field}.opcao`, diagnostics);
+            const amount = requiredNumber(
+              item,
+              file,
+              `${field}.valor`,
+              diagnostics,
+            );
+            if (amount !== undefined && amount < 0)
+              diagnostics.push(
+                diagnostic(
+                  file,
+                  `${field}.valor`,
+                  "VALOR_INVALIDO",
+                  "O piso não pode ser negativo.",
+                ),
+              );
+          });
+      }
+    }
     requiredString(value.controle, file, "controle.variavel", diagnostics);
     requiredString(value.controle, file, "controle.unidade", diagnostics);
     if (group === "regulatoria")

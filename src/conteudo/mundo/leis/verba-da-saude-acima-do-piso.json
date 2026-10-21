@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Verba da saúde acima do piso",
-  "descricao": "Quanto gastar com saúde além do mínimo obrigatório?",
+  "nome": "Prioridade para recursos adicionais da saúde",
+  "descricao": "Define a prioridade política de ampliar serviços acima da base atual. A verba efetivamente gasta é ajustada separadamente em Verba executada para a saúde.",
   "area": "Saúde",
   "mesa": {
     "id": "sistema-de-saude",
@@ -22,54 +22,65 @@
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
-      {
         "id": "no-piso-nada-a-mais",
-        "rotulo": "No piso, nada a mais",
+        "rotulo": "Manter somente os serviços financiados pelo piso",
         "valor": 25.0,
-        "custoTexto": "o piso",
-        "apoiam": ["Mercado financeiro"],
-        "rejeitam": ["Movimento pela saúde pública", "Pobres"],
-        "efeitos": "Fila ↑ devagar com o envelhecimento"
+        "custoTexto": "Sem verba adicional por esta decisão",
+        "apoiam": [
+          "Mercado financeiro"
+        ],
+        "rejeitam": [
+          "Movimento pela saúde pública",
+          "Pobres"
+        ],
+        "efeitos": "Preserva espaço fiscal; filas tendem a piorar se a demanda crescer (hipótese)"
       },
       {
         "id": "4-3-do-pib",
-        "rotulo": "4,3% do PIB (hoje na referência, 2022)",
+        "rotulo": "Manter a rede atual e sua cobertura",
         "valor": 50.0,
-        "custoTexto": "4,3% do PIB, Saúde",
-        "efeitos": "Fila segue alta: 5,7 milhões esperando consulta e 600 mil cirurgia, espera média de 57 dias por especialista (Sisreg, jan/2025); Cobertura da atenção básica ↑ lentamente contra o piso (estimado); Cofre ↓ pouco (estimado)"
+        "custoTexto": "Verba efetiva definida em outra alavanca",
+        "efeitos": "Cobertura da atenção básica cresce lentamente; filas persistem sem reforço (hipótese)"
       },
       {
         "id": "6-do-pib",
-        "rotulo": "6% do PIB",
+        "rotulo": "Ampliar postos e equipes no interior",
         "valor": 75.0,
-        "custoTexto": "+1,7% do PIB, Saúde",
-        "apoiam": ["Movimento pela saúde pública", "Progressistas"],
-        "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Cobertura da atenção básica ↑ (1 a 2 anos); Fila ↓ (1 a 3 anos); Cofre ↓"
+        "custoTexto": "Requer elevar a verba executada",
+        "apoiam": [
+          "Movimento pela saúde pública",
+          "Progressistas"
+        ],
+        "rejeitam": [
+          "Mercado financeiro"
+        ],
+        "efeitos": "Cobertura básica ↑; pressão hospitalar pode cair com atraso (hipótese)"
       },
       {
         "id": "9-do-pib",
-        "rotulo": "9% do PIB (nível europeu)",
+        "rotulo": "Expansão ampla da rede e das especialidades",
         "valor": 100,
-        "custoTexto": "+4,7% do PIB, Saúde",
-        "apoiam": ["Movimento pela saúde pública"],
-        "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Gasto do bolso ↓; Pessoas com plano ↓; Cofre ↓ forte; Resultado fiscal ↓"
+        "custoTexto": "Requer forte aumento da verba executada",
+        "apoiam": [
+          "Movimento pela saúde pública"
+        ],
+        "rejeitam": [
+          "Mercado financeiro",
+          "Empresários"
+        ],
+        "efeitos": "Acesso ↑ se houver profissionais e gestão; pressiona as contas públicas (hipótese)"
       }
     ]
   },
-  "consequencias": ["verba-da-saude-acima-do-piso--cobertura-aps"],
+  "consequencias": [
+    "verba-da-saude-acima-do-piso--cobertura-aps"
+  ],
   "mae": {
-    "texto": "Piso da saúde. O piso escolhido é o mínimo da faixa. Com \"sem piso\", a faixa começa em zero.",
-    "leis": ["piso-da-saude"]
+    "texto": "A regra constitucional fixa o mínimo da verba executada em piso-saude. Esta prioridade não altera automaticamente essa verba.",
+    "leis": [
+      "piso-de-gasto-em-saude",
+      "piso-saude"
+    ]
   },
   "ministerio": "Ministério da Saúde"
 }
