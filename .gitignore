@@ -14,3 +14,8 @@ dados/
 
 # artes de IA em tamanho original (as otimizadas ficam em public/arte)
 /arte-originais/
+
+# inventarios da organizacao (temporarios)
+/inventario.csv
+/auditoria.json
+/passe1c-docs-fora-inventario.csv
