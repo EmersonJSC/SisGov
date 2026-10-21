@@ -8,4 +8,12 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 2. `AGENTS.md`
 3. `PLANO.md`
 
-Não ler `docs/referencia/` nem `docs/v1/desenho/`, salvo se o autor pedir.
+## Não abrir sem o autor pedir
+
+- `docs/v1/desenho/` — desenhos e estudos (pesado)
+- `docs/referencia/` — histórico
+- `docs/arte/PROMPTS.md` — prompts das artes
+- `docs/conteudo/rede.md` — referência da rede
+- `docs/Exemplos/` — referência externa
+
+Referência técnica utilizável: `docs/arquitetura/`.
