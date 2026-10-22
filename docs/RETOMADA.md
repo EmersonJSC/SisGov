@@ -50,7 +50,23 @@ Fora da versão 1: STF, mercado do Victoria 3, Congresso propondo leis e veto.
   prateleiras, estado em palavras e ★ principais; a aba do painel acende o
   grupo no mapa.
 
-## O que estamos fazendo agora
+## O que estamos fazendo agora (atualizado 22/out, 13h)
+
+**Mudou o rumo:** antes do orçamento, o **molde das leis**. Proposta em
+[mecanicas/molde-das-leis.md](jogo/mecanicas/molde-das-leis.md), esperando
+o autor revisar: seis famílias com cor (imposto dourado, verba verde,
+programa verde-água, regra azul, constitucional lilás, pétrea no centro),
+11 áreas por assunto (não por ministério), 8 a 12 leis por área, catálogo
+refeito área por área no formato v4. Depois, cada uma com amostra em HTML:
+mapa em faixas e filtro (só "Leis populares" e "Influência"), janela da lei
+enxuta, eleitorado em janela.
+
+**Orçamento:** os quatro defeitos achados em 22/out (estudo
+[victoria3-e-democracy4.md](jogo/estudos/victoria3-e-democracy4.md), seção 8;
+sonda `scripts/teste/sonda-orcamento.ts`) esperam a área Contas públicas
+ser refeita no molde.
+
+### Antes (manhã de 22/out)
 
 1. **Simulação de 4 ideologias × 2 caminhos fiscais** (32 turnos):
    `npx vite-node scripts/teste/ideologias.ts 0 1 2 3 4 5 6 7 8`, para o GPT

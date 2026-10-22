@@ -42,7 +42,7 @@ o controle, a faixa do mapa e o que a janela mostra.
 | **Programa** | verde-água (perto do verde, mas outra cor) | o governo paga direto às pessoas: renda, remédio, bolsa | valor (R$/ano) | de fora |
 | **Regra** | azul | muda como as coisas funcionam, sem ser principalmente dinheiro | até 3 opções, ou faixa | de fora |
 | **Constitucional** | lilás | decide o que as outras leis podem fazer (piso, teto, permite, proíbe) | até 3 opções | de dentro (entre a esfera e o centro) |
-| **Pétrea** | lilás escuro, com cadeado | não muda por votação comum (mecânica 2, seção 2.4) | nenhum | centro (Constituição Federal) |
+| **Pétrea** | lilás escuro, com escudo (o cadeado é da lei bloqueada, mecânica 2, seção 2.5) | não muda por votação comum (mecânica 2, seção 2.4) | nenhum | centro (Constituição Federal) |
 
 - Cores de partida, a partir das que já estão no `mapa.css`: imposto
   `#c9a24a`, regra `#4b97bf`, constitucional `#9b86c4`. Verba fica num verde
@@ -104,8 +104,14 @@ assunto; o ministério vira só o rótulo de quem cuida dela naquele país.
 | Direitos e costumes | aborto, família, religião, imigração, povos indígenas, igualdade |
 | Governo e instituições | Congresso, eleições, partidos, corrupção, imprensa, federalismo |
 
-- **8 a 12 leis por esfera.** Passou disso, é sinal de lei repetida ou de
+- **8 a 12 leis por esfera**, contando o catálogo inteiro da área (as em
+  vigor e as do catálogo). Passou disso, é sinal de lei repetida ou de
   assunto de outra área.
+- **Contas públicas pode passar do limite.** Hoje o Ministério da Fazenda e o
+  do Planejamento têm 26 leis; tirando juros, câmbio e bancos (que vão para
+  Economia e empresas) e as repetidas, sobram umas 16 a 18, e a mecânica 4
+  ainda pede leis para a folha dos servidores e para os demais gastos.
+  _Decisão do autor (seção 6)._
 - Cada esfera tem as **duas faixas**: constitucionais na de dentro, voltada
   para o centro; impostos, verbas, programas e regras na de fora.
 - **Pétreas** ficam no centro, na Constituição Federal, e não são de nenhuma
@@ -178,5 +184,7 @@ ordem que o autor escolher.
 
 - Tons finais das seis cores (pela amostra).
 - Quais leis de hoje entram, por área (pelo inventário do passo 2).
+- Contas públicas acima de 12 leis: o verificador só avisa nessa área, ou o
+  inventário fixa um limite próprio para ela.
 - Se alguma área ficar com menos de 8 leis boas: juntar com a vizinha ou
   escrever leis novas.

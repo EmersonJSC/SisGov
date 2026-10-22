@@ -41,7 +41,7 @@ a tela (`src/ui`) fica mais para o final.**
 2. **Auditoria:** cada uma das 242 leis recebe nota nos critérios de
    [leis.md 2.3](docs/jogo/mecanicas/leis.md#23-como-uma-lei-deve-ser) e um
    destino: manter, reescrever, dividir, juntar ou remover.
-3. **Reescrita em lotes, um ministério por vez:** primeiro a lista de leis
+3. **Reescrita em lotes, uma área por vez** (molde de 22/out, abaixo): primeiro a lista de leis
    do ministério (o autor aprova), depois o detalhe de cada uma (opções,
    efeitos, bússola, programas reais), gerar, testes.
 
@@ -56,6 +56,14 @@ a tela (`src/ui`) fica mais para o final.**
 - **Nada muda, 32 turnos:** dívida 82% → 166% do PIB; resultado nominal −6,6% → −17,6%; índice de atividade 44,7 → 39,7. A dívida explode rápido demais (o desenho em `equilibrio.md` prevê ~119% em 8 anos).
 - **Social-democrata cortando gastos:** dívida 82% → 232%; atividade 44,7 → 19,2 (−57%); desemprego 6,2% → 10,2%. Cortar gasto derruba a economia muito mais do que deveria, e a dívida piora em vez de melhorar.
 - Conclusão: a calibragem fiscal da rede está fora do alvo de `docs/jogo/leis/equilibrio.md`; entra na mecânica 4 (orçamento), antes de qualquer conteúdo novo de economia.
+
+### Molde das leis (22/out, proposta)
+- Desenho: [molde-das-leis.md](docs/jogo/mecanicas/molde-das-leis.md), esperando revisão do autor.
+- [ ] Verificador do molde (teste)
+- [ ] Inventário das 242 leis por área nova, com destino de cada uma
+- [ ] Áreas por assunto no país; família lida da lei, não adivinhada
+- [ ] Catálogo novo no formato v4, uma área por vez (Contas públicas primeiro)
+- [ ] Depois, com amostra em HTML: mapa em faixas e filtro; janela da lei; eleitorado em janela
 
 ### Mudanças de código já decididas no escopo
 - [ ] Tirar os limites por lei e por país das leis de valor (controle livre de 0 a 100%), inclusive o teto de 3×/4× o valor atual em `faixaNumerica` (`src/ui/mapa/Documentos.tsx`)
