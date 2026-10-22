@@ -33,8 +33,15 @@ it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional"
         })
       : raw;
     const text =
-      json.versaoEsquema === 3
-        ? JSON.stringify({ ...json, historia: undefined, fontes: undefined })
+      // v3 e v4: a história, as fontes e o exemplo no país podem citar o
+      // Brasil; nome, frase e opções não (molde-das-leis.md, 2.2).
+      json.versaoEsquema === 3 || json.versaoEsquema === 4
+        ? JSON.stringify({
+            ...json,
+            historia: undefined,
+            fontes: undefined,
+            exemplo: undefined,
+          })
         : semFontesDaMedida;
     for (const forbidden of [/brasil/i, /moeda_milhoes/, /\bSUS\b/, /gov\.br/])
       expect(forbidden.test(text), `${path} cita ${forbidden}`).toBe(false);
