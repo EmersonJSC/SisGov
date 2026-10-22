@@ -16,7 +16,7 @@ Cada mecânica tem um documento com o mesmo molde:
 | 1 | Tempo | [tempo.md](tempo.md) | Existe |
 | 2 | Leis | [leis.md](leis.md) e [molde-das-leis.md](molde-das-leis.md) (proposta) | Existe; muda (travas, molde v4) |
 | 3 | Tramitação e Congresso | _a escrever_ | Existe em parte |
-| 4 | Orçamento | _a escrever_ | Existe em parte |
+| 4 | Orçamento | [orcamento.md](orcamento.md) (proposta) | Existe em parte |
 | 5 | Rede de consequências | _a escrever_ (base: `src/engine/*.md`) | Existe |
 | 6 | Índices essenciais | _a escrever_ | Novo |
 | 7 | População | _a escrever_ | Novo |
