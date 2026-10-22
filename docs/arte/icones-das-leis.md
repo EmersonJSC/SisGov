@@ -9,27 +9,10 @@
 
 ## 1. Estilo (vale para todos)
 
-**Ícone pintado, não desenho de traço.** Cada lei vira uma **medalha
-pintada à mão** no estilo do jogo, "Dossiê Tropical" (guia em
-[PROMPTS.md](PROMPTS.md)): guache e óleo, papel envelhecido, luz âmbar,
-um acento tropical. A medalha **é** a bolha da lei no mapa; a interface só
-desenha por fora o anel do tipo de lei, os selos e a cor da bússola.
-
-- **Arquivo:** PNG com fundo transparente, **512 × 512**. O desenho fica
-  dentro de um **círculo** de 480 px de diâmetro, centrado (a bolha corta
-  o que passar disso).
-- **Um objeto, grande e centrado**, reconhecível com 40 px na tela. No
-  máximo 2 elementos (o objeto principal e um detalhe).
-- **Fundo do círculo:** cor lisa e suave da família (seção 3), com textura
-  de papel. Nada de cena atrás.
-- **Sem texto, números ou letras**, salvo o símbolo `%` na moeda dos
-  impostos.
-- **Temas sensíveis** (aborto, suicídio assistido, pena de morte, drogas,
-  prostituição): objeto simbólico e neutro, sem cena, sem corpo, sem
-  sangue, sem tomar partido.
-- **Nada de marca, bandeira, logotipo real ou pessoa real.**
-- O prompt pronto, em inglês, está em [PROMPTS.md](PROMPTS.md), seção
-  "Ícones das leis": troque só a linha `SUBJECT`.
+**Futurista: painel de comando holográfico.** Estilo, famílias, arquivo e
+prompt prontos em [briefing-icones-gpt.md](briefing-icones-gpt.md), que
+substitui o estilo pintado. Este arquivo guarda as pastas (seção 2) e a
+lista de desenhos (seções 4 a 6).
 
 ## 2. Onde salvar
 
@@ -61,19 +44,9 @@ as leis atualiza o manifesto.
 Artes maiores (fundos, faixas, cenas) não são ícones: ver
 [artes-de-tela.md](artes-de-tela.md).
 
-## 3. Famílias: base + detalhe
+## 3. Famílias
 
-Para o conjunto ficar coerente e o jogador reconhecer de longe, cada
-família tem um **elemento base** e cada lei acrescenta **um detalhe**.
-
-| Família | Fundo do círculo | Base | Exemplo |
-| --- | --- | --- | --- |
-| Imposto | dourado suave `#e8c770` | moeda de latão com `%` gravado, pequena, no canto inferior direito | moeda + casa = imposto sobre imóveis |
-| Verba | verde-oliva suave `#a9b47c` | saco de pano com moedas, pequeno, no canto inferior direito | saco + trilho = verba para ferrovias |
-| Dono de setor | lilás acinzentado `#a99bb8` | chave de ferro antiga no canto | barril + chave = dono do petróleo |
-| Regra | azul-acinzentado `#8fa7b3` | só o objeto do assunto | balança, porta, relógio |
-| Programa | coral suave `#e3a08a` | só o objeto, com fita amarrada | prato com fita = comida garantida |
-| Constitucional | papel `#efe4cc` com borda sépia | o objeto apoiado num livro grosso aberto | livro + banco = quem manda no banco central |
+Ver [briefing-icones-gpt.md](briefing-icones-gpt.md), seção 4.
 
 ## 4. Peças de interface (fazer primeiro)
 

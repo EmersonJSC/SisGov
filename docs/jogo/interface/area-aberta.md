@@ -83,10 +83,11 @@ conhece o jogo abre tudo de uma vez.
 ## 4.6 A bolha da lei, desenhada
 
 Hoje a bolha é um disco liso com um ícone fino de traço. A bolha nova é uma
-**medalha pintada** com camadas, de dentro para fora:
+**medalha holográfica** (estilo futurista) com camadas, de dentro para fora:
 
-1. **Medalha:** o ícone pintado da lei (PNG, [icones-das-leis.md](../../arte/icones-das-leis.md)),
-   recortado em círculo. É o que chama o olho.
+1. **Medalha:** o ícone holográfico da lei (PNG,
+   [briefing-icones-gpt.md](../../arte/briefing-icones-gpt.md)), recortado em
+   círculo. É o que chama o olho.
 2. **Aro do tipo:** anel grosso de metal na cor do tipo (dourado, oliva,
    lilás, azul, coral; constitucional com aro de papel e borda sépia;
    pétrea como escudo de concreto). Leve brilho de cima, sombra embaixo:
