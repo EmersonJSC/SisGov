@@ -1,22 +1,12 @@
 {
   "id": "agua-e-esgoto",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Água e esgoto",
-  "descricao": "quem leva água tratada e coleta esgoto nas cidades: município, companhia estadual ou empresa privada, e com que metas?",
-  "area": "Meio ambiente, energia, terra e cidades",
-  "mesa": {
-    "id": "cidades-e-infraestrutura",
-    "nome": "Cidades e infraestrutura",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quem leva água tratada e coleta o esgoto nas cidades, e com que metas.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_agua_e_esgoto",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Sem política",
         "valor": 0,
         "rejeitam": ["Quase todos"],
-        "efeitos": "Infraestrutura de saneamento ↓; saúde da população ↓"
+        "efeitos": "Infraestrutura de saneamento ↓; saúde da população ↓",
+        "propoe": "Não há política."
       },
       {
         "id": "servico-municipal-publico",
@@ -39,7 +30,8 @@
           "Progressistas"
         ],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Infraestrutura de saneamento ↑ se houver verba e regra clara; cofre ↓"
+        "efeitos": "Infraestrutura de saneamento ↑ se houver verba e regra clara; cofre ↓",
+        "propoe": "Cada prefeitura cuida do seu serviço."
       },
       {
         "id": "companhias-estaduais",
@@ -48,7 +40,8 @@
         "custoTexto": "0,25% do PIB (o país de referência, 2024)",
         "apoiam": ["Sindicatos de servidores", "Centrais sindicais"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Infraestrutura de saneamento ↑ devagar"
+        "efeitos": "Infraestrutura de saneamento ↑ devagar",
+        "propoe": "Companhias estaduais."
       },
       {
         "id": "concessao-com-metas",
@@ -61,7 +54,8 @@
           "Empresários"
         ],
         "rejeitam": ["Centrais sindicais", "Sindicatos de servidores"],
-        "efeitos": "Infraestrutura de saneamento ↑ se houver regulação; mortalidade infantil ↓ em 5 a 10 anos; cofre ↑ com outorga"
+        "efeitos": "Infraestrutura de saneamento ↑ se houver regulação; mortalidade infantil ↓ em 5 a 10 anos; cofre ↑ com outorga",
+        "propoe": "Empresas contratadas, com metas de cobertura."
       },
       {
         "id": "privatizacao-plena-sem-metas",
@@ -69,28 +63,177 @@
         "valor": 100,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Periferias das metrópoles", "Centrais sindicais"],
-        "efeitos": "Tarifa ↑ e pobres ↓; infraestrutura de saneamento sem garantia de alta"
+        "efeitos": "Tarifa ↑ e pobres ↓; infraestrutura de saneamento sem garantia de alta",
+        "propoe": "Empresas privadas, sem metas."
       }
     ]
   },
-  "consequencias": [
-    "saneamento-basico--infraestrutura-saneamento",
-    "saneamento-basico--saude-populacao",
-    "saneamento-basico--pressao-hospitalar",
-    "saneamento-basico--qualidade-ambiental",
-    "saneamento-basico--investimento",
-    "saneamento-basico--renda-familias",
-    "saneamento-basico--protestos",
-    "saneamento-basico--gasto-publico",
-    "saneamento-basico--grupo-classe-media",
-    "saneamento-basico--grupo-empresarios",
-    "saneamento-basico--grupo-pobres",
-    "saneamento-basico--grupo-servidores",
-    "saneamento-basico--grupo-trabalhadores"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Empresas estatais e privatização (Economia). Concessão com metas só abre se lá não estiver em Estado empresário.",
     "leis": []
   },
-  "ministerio": "Ministério das Cidades"
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "saneamento-basico--infraestrutura-saneamento",
+      "alvo": "infraestrutura_saneamento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.0025,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "saneamento-basico--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--qualidade-ambiental",
+      "alvo": "qualidade_ambiental",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--investimento",
+      "alvo": "investimento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--protestos",
+      "alvo": "protestos",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.25,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "saneamento-basico--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.3],
+          [50, 0.25],
+          [75, 0.1],
+          [100, 0.03]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "saneamento-basico--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saneamento-basico--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

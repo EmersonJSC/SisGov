@@ -253,10 +253,6 @@ if (process.argv[2]) {
     const trava =
       e.trava ??
       (e.familia === "constitucional" ? travasDerivadas(lei, todas) : []);
-    if (e.familia === "constitucional" && trava.length === 0) {
-      console.log(`${e.id}: SEM TRAVA, ficou no formato antigo`);
-      continue;
-    }
     let efeitos: Json[];
     let caminhos: string[] = [];
     if (lei.versaoEsquema === 3) efeitos = lei.efeitos;

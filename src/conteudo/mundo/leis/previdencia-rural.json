@@ -1,23 +1,12 @@
 {
   "id": "previdencia-rural",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Previdência rural",
-  "descricao": "Define como o pequeno agricultor, que quase nunca tem salário fixo nem carteira, entra na previdência: fora dela, por adesão voluntária, por regime agrícola contributivo ou só comprovando que trabalhou na roça.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "previdencia",
-    "nome": "Previdência",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Previdência",
-  "processoAutorizacao": "emenda-constitucional",
-  "requer": {
-    "lei": "sistema-previdenciario",
-    "opcoes": ["capitalizacao", "misto", "reparticao"],
-    "motivo": "Sem previdência obrigatória não há regime rural: ele é um braço do sistema."
-  },
+  "decide": "Define como o pequeno agricultor, que quase nunca tem carteira assinada, entra na previdência.",
+  "area": "protecao-social",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_previdencia_rural",
     "unidade": "nivel_escopo",
@@ -25,43 +14,209 @@
       {
         "id": "nenhuma",
         "rotulo": "Sem regime rural",
-        "valor": 0
+        "valor": 0,
+        "propoe": "Não há regime para o campo."
       },
       {
         "id": "voluntaria-subsidiada",
         "rotulo": "Adesão voluntária subsidiada",
-        "valor": 33
+        "valor": 33,
+        "propoe": "Ele pode entrar por conta própria, com ajuda do governo."
       },
       {
         "id": "contributiva-agricola",
         "rotulo": "Regime agrícola contributivo",
-        "valor": 67
+        "valor": 67,
+        "propoe": "Ele contribui num regime próprio do campo."
       },
       {
         "id": "comprovacao-atividade",
         "rotulo": "Basta comprovar atividade rural",
-        "valor": 100
+        "valor": 100,
+        "propoe": "Basta provar que trabalhou na roça."
       }
     ]
   },
-  "consequencias": [
-    "previdencia-rural--cobertura-previdenciaria",
-    "previdencia-rural--pobreza",
-    "previdencia-rural--desigualdade",
-    "previdencia-rural--consumo",
-    "previdencia-rural--deficit-previdenciario",
-    "previdencia-rural--corrupcao",
-    "previdencia-rural--gasto-publico",
-    "previdencia-rural--grupo-agro",
-    "previdencia-rural--grupo-aposentados",
-    "previdencia-rural--grupo-classe-media",
-    "previdencia-rural--grupo-pobres",
-    "previdencia-rural--grupo-trabalhadores",
-    "previdencia-rural--grupo-agricultura-familiar",
-    "previdencia-rural--desigualdade-regional"
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "dependeDe": [
+    {
+      "lei": "sistema-previdenciario",
+      "opcoes": ["capitalizacao", "misto", "reparticao"],
+      "motivo": "Sem previdência obrigatória não há regime rural: ele é um braço do sistema."
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "previdencia-rural--cobertura-previdenciaria",
+      "alvo": "cobertura_previdenciaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "previdencia-rural--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "previdencia-rural--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--deficit-previdenciario",
+      "alvo": "deficit_previdenciario",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "previdencia-rural--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.15],
+          [67, 0.4],
+          [100, 0.8]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "envelhecimento",
+        "referencia": 40
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "previdencia-rural--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--grupo-agricultura-familiar",
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "previdencia-rural--desigualdade-regional",
+      "alvo": "desigualdade_regional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 6.3
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

@@ -147,8 +147,8 @@ describe("molde das leis (ficha v4)", () => {
     expect(campos(r)).toContain("controle.opcoes.0.propoe");
   });
 
-  it("recusa constitucional sem trava", () => {
-    expect(campos({ ...constitucional(), trava: [] })).toContain("trava");
+  it("aceita constitucional sem trava (autor, 22/out: fica com efeito e grupo)", () => {
+    expect(campos({ ...constitucional(), trava: [] })).toEqual([]);
   });
 
   it("recusa trava para lei que não existe", () => {
@@ -351,6 +351,18 @@ describe("áreas por assunto no país", () => {
       (areasDoMundo as { areas: { titulo: string }[] }).areas.map(
         (a) => a.titulo,
       ),
+    );
+  });
+
+  it("lei do molde fica na área dela, mesmo listada num ministério de outra área", () => {
+    const criada = criarPartida({ semente: 1, ocorrencias: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    const lei = verPartida(criada.value).leis.find(
+      (l) => l.id === "fiscalizacao-ambiental",
+    )!;
+    expect(lei.areas).toEqual(["ambiente-e-campo"]);
+    expect(lei.ministerio).toBe(
+      "Ministério do Meio Ambiente e Mudança do Clima",
     );
   });
 

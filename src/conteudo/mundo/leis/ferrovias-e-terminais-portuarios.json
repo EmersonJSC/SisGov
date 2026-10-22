@@ -1,16 +1,12 @@
 {
   "id": "ferrovias-e-terminais-portuarios",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Ferrovias de carga e terminais portuários",
-  "descricao": "Escolhe como ampliar corredores ferroviários de carga e integrar seus terminais aos portos.",
-  "area": "Cidades e transporte",
-  "mesa": {
-    "id": "cidades-e-infraestrutura",
-    "nome": "Cidades e infraestrutura",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério dos Transportes",
+  "decide": "Define como o país amplia as ferrovias de carga e as liga aos portos.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_ferrovias_e_terminais_portuarios",
     "unidade": "nivel_escopo",
@@ -21,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Caminhoneiros autônomos", "Interior"],
         "rejeitam": ["Confederação da indústria", "Movimento ambientalista"],
-        "efeitos": "Gasto inicial menor; frete pesado e emissões seguem elevados."
+        "efeitos": "Gasto inicial menor; frete pesado e emissões seguem elevados.",
+        "propoe": "Prioridade às estradas; as ferrovias ficam como estão."
       },
       {
         "id": "corredores-publicos-aos-portos",
@@ -33,7 +30,8 @@
           "Interior"
         ],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Gasto público sobe já; frete e emissões caem e exportações crescem após as obras."
+        "efeitos": "Gasto público sobe já; frete e emissões caem e exportações crescem após as obras.",
+        "propoe": "O governo constrói ferrovias de carga até os portos."
       },
       {
         "id": "concessoes-com-acesso-aberto",
@@ -45,7 +43,8 @@
           "Entidades do agronegócio"
         ],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Expansão depende do cumprimento de metas; pressão fiscal direta menor, com fiscalização e risco contratual."
+        "efeitos": "Expansão depende do cumprimento de metas; pressão fiscal direta menor, com fiscalização e risco contratual.",
+        "propoe": "Empresas constroem e operam, com metas de preço e acesso para todos."
       },
       {
         "id": "rede-publica-intermodal",
@@ -57,9 +56,19 @@
           "Trabalhadores com carteira"
         ],
         "rejeitam": ["Mercado financeiro", "Caminhoneiros autônomos"],
-        "efeitos": "Maior acesso regional e menor frete com atraso; gasto público e risco de dívida sobem na implantação."
+        "efeitos": "Maior acesso regional e menor frete com atraso; gasto público e risco de dívida sobem na implantação.",
+        "propoe": "Uma rede pública que liga trem, porto e estrada, inclusive em regiões isoladas."
       }
     ]
+  },
+  "implantacao": {
+    "entrada": 0.2,
+    "saida": 0.1
+  },
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "lei"
   },
   "historia": {
     "brasil": "A Lei 14.273/2021 prevê exploração ferroviária por concessão e autorização; corredores ferroviários e acesso portuário são escolhas de política de transportes."
@@ -76,11 +85,6 @@
       "usadoPara": "modelo de autorização ferroviária"
     }
   ],
-  "nivel": "lei",
-  "implantacao": {
-    "entrada": 0.2,
-    "saida": 0.1
-  },
   "efeitos": [
     {
       "alvo": "exportacoes",

@@ -1,0 +1,122 @@
+{
+  "area": "infraestrutura-e-energia",
+  "leis": [
+    {
+      "id": "energia-nuclear",
+      "familia": "constitucional",
+      "decide": "Define se o país pode ter usinas nucleares e se pode construir novas.",
+      "opcoes": {
+        "proibida": "Usinas nucleares são proibidas.",
+        "sem-novas-usinas": "As atuais funcionam até o fim, mas não se constroem novas.",
+        "manutencao-das-usinas-atuais": "As atuais continuam e são reformadas.",
+        "expansao": "O país constrói novas usinas."
+      },
+      "trava": [
+        {
+          "opcao": "proibida",
+          "lei": "investimento-em-geracao-por-fonte",
+          "opcoes": ["fatia-nuclear"]
+        }
+      ]
+    },
+    {
+      "id": "incentivos-fiscais-regionais",
+      "familia": "constitucional",
+      "decide": "Define se há regiões onde as empresas pagam menos imposto para atrair fábricas.",
+      "opcoes": {
+        "nenhum": "Nenhuma região tem desconto.",
+        "zonas-de-exportacao": "Zonas para fábricas que exportam.",
+        "fundos-regionais": "Fundos que investem nas regiões pobres, em vez de desconto.",
+        "zona-franca-ampla": "Uma região inteira com imposto muito menor."
+      }
+    },
+    {
+      "id": "investimento-em-infraestrutura",
+      "familia": "verba",
+      "decide": "Define quanto o governo gasta por ano com obras: estradas, saneamento e redes."
+    },
+    {
+      "id": "orcamento-de-expansao-eletrica",
+      "familia": "verba",
+      "decide": "Define quanto o governo gasta por ano para contratar ou construir novas usinas de energia."
+    },
+    {
+      "id": "investimento-em-geracao-por-fonte",
+      "familia": "regra",
+      "decide": "Define para qual fonte vai a maior parte das novas usinas de energia.",
+      "opcoes": {
+        "fatia-solar": "Solar.",
+        "fatia-eolica": "Vento.",
+        "fatia-hidreletrica": "Água (hidrelétricas).",
+        "fatia-gas": "Gás.",
+        "fatia-nuclear": "Nuclear."
+      }
+    },
+    {
+      "id": "agua-e-esgoto",
+      "familia": "regra",
+      "decide": "Define quem leva água tratada e coleta o esgoto nas cidades, e com que metas.",
+      "opcoes": {
+        "sem-politica": "Não há política.",
+        "servico-municipal-publico": "Cada prefeitura cuida do seu serviço.",
+        "companhias-estaduais": "Companhias estaduais.",
+        "concessao-com-metas": "Empresas contratadas, com metas de cobertura.",
+        "privatizacao-plena-sem-metas": "Empresas privadas, sem metas."
+      }
+    },
+    {
+      "id": "ferrovias-e-terminais-portuarios",
+      "familia": "regra",
+      "decide": "Define como o país amplia as ferrovias de carga e as liga aos portos.",
+      "opcoes": {
+        "rodovias-com-manutencao": "Prioridade às estradas; as ferrovias ficam como estão.",
+        "corredores-publicos-aos-portos": "O governo constrói ferrovias de carga até os portos.",
+        "concessoes-com-acesso-aberto": "Empresas constroem e operam, com metas de preço e acesso para todos.",
+        "rede-publica-intermodal": "Uma rede pública que liga trem, porto e estrada, inclusive em regiões isoladas."
+      }
+    },
+    {
+      "id": "matriz-energetica",
+      "familia": "regra",
+      "decide": "Define se o Estado barateia o combustível fóssil, fica neutro, incentiva renováveis ou força a saída do fóssil.",
+      "opcoes": {
+        "subsidio-fossil": "O governo barateia gasolina, diesel e gás.",
+        "neutra": "O mercado decide.",
+        "incentivo-renovavel": "O governo incentiva sol, vento e outras fontes limpas.",
+        "transicao-forcada": "O governo força a saída do combustível fóssil, com prazo."
+      }
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao",
+      "familia": "regra",
+      "decide": "Define quem explora petróleo e minérios e quanto fica com o Estado.",
+      "opcoes": {
+        "proibicao-de-novas-exploracoes": "Novas explorações são proibidas.",
+        "monopolio-estatal": "Só a estatal explora.",
+        "partilha": "Empresas exploram, e o Estado fica com parte do que é extraído.",
+        "concessao": "A empresa paga pelo direito e fica com o que extrai."
+      }
+    },
+    {
+      "id": "transporte-publico",
+      "familia": "regra",
+      "decide": "Define quem paga o ônibus e o metrô: o passageiro, o Estado ou os dois.",
+      "opcoes": {
+        "sem-sistema-publico": "Não há sistema público.",
+        "tarifa-integral": "O passageiro paga tudo.",
+        "subsidio-parcial": "O passageiro paga uma parte e o Estado o resto.",
+        "tarifa-zero": "A passagem é de graça."
+      }
+    },
+    {
+      "id": "usinas-a-carvao",
+      "familia": "regra",
+      "decide": "Define se o Estado sustenta, deixa no mercado ou fecha com data as usinas e minas de carvão.",
+      "opcoes": {
+        "subsidio": "O Estado sustenta com subsídio.",
+        "livre": "O mercado decide.",
+        "saida-com-data": "Fecham numa data marcada."
+      }
+    }
+  ]
+}

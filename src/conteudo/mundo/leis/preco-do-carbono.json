@@ -1,22 +1,12 @@
 {
   "id": "preco-do-carbono",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Preço do carbono",
-  "descricao": "quem emite gás de efeito estufa paga por isso, e quanto?",
-  "area": "Meio ambiente, energia, terra e cidades",
-  "mesa": {
-    "id": "clima-e-energia",
-    "nome": "Clima e energia",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define se quem emite gás de efeito estufa paga por isso, e quanto.",
+  "area": "ambiente-e-campo",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_preco_do_carbono",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Petróleo e mineração", "Confederação da indústria"],
         "rejeitam": ["Movimento ambientalista"],
-        "efeitos": "Emissões sem mudança"
+        "efeitos": "Emissões sem mudança",
+        "propoe": "Ninguém paga."
       },
       {
         "id": "mercado-brando-com-isencoes",
@@ -36,7 +27,8 @@
         "custoTexto": "Arrecada pouco",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Movimento ambientalista", "Entidades do agronegócio"],
-        "efeitos": "Emissões ↓ pouco, com atraso de 2 a 5 anos"
+        "efeitos": "Emissões ↓ pouco, com atraso de 2 a 5 anos",
+        "propoe": "Um mercado de licenças para emitir, com muitas isenções."
       },
       {
         "id": "mercado-com-teto",
@@ -45,7 +37,8 @@
         "custoTexto": "Arrecada 0,1 a 0,3% do PIB (aprox.)",
         "apoiam": ["Movimento ambientalista", "Mercado financeiro"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Emissões ↓, atraso de 2 a 5 anos; preço da energia e do combustível ↑; desmatamento ↓ se a floresta gerar crédito (aprox.)"
+        "efeitos": "Emissões ↓, atraso de 2 a 5 anos; preço da energia e do combustível ↑; desmatamento ↓ se a floresta gerar crédito (aprox.)",
+        "propoe": "Um mercado de licenças com teto total de emissões."
       },
       {
         "id": "taxa-alta",
@@ -58,30 +51,196 @@
           "Caminhoneiros autônomos",
           "Pobres"
         ],
-        "efeitos": "Emissões ↓ forte; preço da energia e do combustível ↑; arrecadação ↑"
+        "efeitos": "Emissões ↓ forte; preço da energia e do combustível ↑; arrecadação ↑",
+        "propoe": "Uma taxa alta por tonelada emitida."
       }
     ]
   },
-  "consequencias": [
-    "precificacao-carbono--emissoes",
-    "precificacao-carbono--preco-energia",
-    "precificacao-carbono--inflacao",
-    "precificacao-carbono--inovacao",
-    "precificacao-carbono--exportacoes",
-    "precificacao-carbono--protestos",
-    "precificacao-carbono--reputacao-internacional",
-    "precificacao-carbono--arrecadacao",
-    "precificacao-carbono--grupo-agro",
-    "precificacao-carbono--grupo-empresarios",
-    "precificacao-carbono--grupo-jovens",
-    "precificacao-carbono--grupo-progressistas",
-    "precificacao-carbono--grupo-trabalhadores",
-    "precificacao-carbono--grupo-ambientalistas",
-    "preco-do-carbono--desmatamento"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Proteção da vegetação nativa. Sem proteção lá tranca esta lei em Sem preço ou Mercado brando.",
     "leis": []
   },
-  "ministerio": "Ministério do Meio Ambiente"
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "precificacao-carbono--emissoes",
+      "alvo": "emissoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--preco-energia",
+      "alvo": "preco_energia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "precificacao-carbono--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--protestos",
+      "alvo": "protestos",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "precificacao-carbono--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.05],
+          [67, 0.2],
+          [100, 0.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "precificacao-carbono--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "precificacao-carbono--grupo-ambientalistas",
+      "alvo": "grupo_ambientalistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "preco-do-carbono--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0.693
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

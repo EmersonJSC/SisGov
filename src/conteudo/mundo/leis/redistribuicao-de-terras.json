@@ -1,22 +1,12 @@
 {
   "id": "redistribuicao-de-terras",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Redistribuição de terras",
-  "descricao": "o Estado pode tomar terra para dar a quem não tem, e com que regra?",
-  "area": "Meio ambiente, energia, terra e cidades",
-  "mesa": {
-    "id": "terra-e-campo",
-    "nome": "Terra e campo",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se o Estado pode tomar terra para dar a quem não tem, e com que regra.",
+  "area": "ambiente-e-campo",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_redistribuicao_de_terras",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Agronegócio", "Entidades do agronegócio"],
         "rejeitam": ["Movimentos por terra", "Pastorais sociais católicas"],
-        "efeitos": "Concentração de terras sem mudança ou ↑; ocupações e conflitos no campo ↑"
+        "efeitos": "Concentração de terras sem mudança ou ↑; ocupações e conflitos no campo ↑",
+        "propoe": "O Estado não redistribui terra."
       },
       {
         "id": "titulo-e-credito-fundiario",
@@ -36,7 +27,8 @@
         "custoTexto": "0,02% do PIB (aprox.)",
         "apoiam": ["Agronegócio", "Agricultura familiar", "Mercado financeiro"],
         "rejeitam": ["Movimentos por terra"],
-        "efeitos": "Conflitos no campo ↓ com título claro; desmatamento ↑ se o título premiar quem ocupou (aprox.)"
+        "efeitos": "Conflitos no campo ↓ com título claro; desmatamento ↑ se o título premiar quem ocupou (aprox.)",
+        "propoe": "O Estado dá título e crédito para comprar terra, sem desapropriar."
       },
       {
         "id": "desapropriar-terra-improdutiva",
@@ -49,7 +41,8 @@
           "Pastorais sociais católicas"
         ],
         "rejeitam": ["Agronegócio", "Entidades do agronegócio"],
-        "efeitos": "Concentração de terras ↓ devagar; conflitos no campo ↑ no curto prazo; renda rural ↑ só com crédito e assistência"
+        "efeitos": "Concentração de terras ↓ devagar; conflitos no campo ↑ no curto prazo; renda rural ↑ só com crédito e assistência",
+        "propoe": "O Estado desapropria, pagando, terra que não produz."
       },
       {
         "id": "redistribuicao-ampla-com-teto-de-tamanho",
@@ -63,33 +56,189 @@
           "Ricos",
           "Mercado financeiro"
         ],
-        "efeitos": "Concentração de terras ↓ forte; conflitos no campo ↑ forte no curto prazo; investimento e confiança empresarial ↓; desmatamento ↑ em assentamentos na Amazônia sem apoio (aprox.)"
+        "efeitos": "Concentração de terras ↓ forte; conflitos no campo ↑ forte no curto prazo; investimento e confiança empresarial ↓; desmatamento ↑ em assentamentos na Amazônia sem apoio (aprox.)",
+        "propoe": "Há um tamanho máximo de propriedade; o que passar é redistribuído."
       }
     ]
   },
-  "consequencias": [
-    "reforma-agraria--concentracao-fundiaria",
-    "reforma-agraria--desigualdade",
-    "reforma-agraria--pobreza",
-    "reforma-agraria--producao-agropecuaria",
-    "reforma-agraria--producao-agropecuaria-4",
-    "reforma-agraria--conflitos-fundiarios",
-    "reforma-agraria--confianca-empresarial",
-    "reforma-agraria--gasto-publico",
-    "reforma-agraria--grupo-conservadores",
-    "reforma-agraria--grupo-empresarios",
-    "reforma-agraria--grupo-pobres",
-    "reforma-agraria--grupo-progressistas",
-    "reforma-agraria--grupo-agricultura-familiar",
-    "redistribuicao-de-terras--desmatamento"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "mae": {
     "texto": "Propriedade dos meios de produção (Economia). Redistribuição ampla só abre se lá não estiver em privada pura.",
     "leis": ["propriedade-dos-meios-de-producao"]
   },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "mesa": {
+    "id": "terra-e-campo",
+    "nome": "Terra e campo",
+    "camada": "constituicao"
   },
-  "ministerio": "Ministério do Meio Ambiente"
+  "efeitos": [
+    {
+      "id": "reforma-agraria--concentracao-fundiaria",
+      "alvo": "concentracao_fundiaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "reforma-agraria--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reforma-agraria--producao-agropecuaria",
+      "alvo": "producao_agropecuaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reforma-agraria--producao-agropecuaria-4",
+      "alvo": "producao_agropecuaria",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.75,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reforma-agraria--conflitos-fundiarios",
+      "alvo": "conflitos_fundiarios",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.21212121,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reforma-agraria--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.03],
+          [67, 0.08],
+          [100, 0.4]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "reforma-agraria--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reforma-agraria--grupo-agricultura-familiar",
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "redistribuicao-de-terras--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.04199,
+        "termoConstante": -2.81333
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

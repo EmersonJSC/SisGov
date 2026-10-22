@@ -1,22 +1,12 @@
 {
   "id": "negociacao-coletiva-e-sindicatos",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Negociação coletiva e sindicatos",
-  "descricao": "Escolhe como lei, empresas e sindicatos definem salários e condições de trabalho.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "sindicatos-e-greve",
-    "nome": "Sindicatos e greve",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define como a lei, as empresas e os sindicatos decidem salários e condições de trabalho.",
+  "area": "trabalho",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_negociacao_coletiva_e_sindicatos",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Proteção uniforme; adaptação local menor."
+        "efeitos": "Proteção uniforme; adaptação local menor.",
+        "propoe": "A lei fixa as regras; acordo só pode melhorar."
       },
       {
         "id": "por-empresa",
@@ -35,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Empresários"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Adaptação local melhora; cobertura desigual."
+        "efeitos": "Adaptação local melhora; cobertura desigual.",
+        "propoe": "Cada empresa negocia com seus empregados."
       },
       {
         "id": "por-setor",
@@ -43,7 +35,8 @@
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresas sem cobertura setorial"],
-        "efeitos": "Coordenação sustenta salários; menor flexibilidade individual."
+        "efeitos": "Coordenação sustenta salários; menor flexibilidade individual.",
+        "propoe": "Cada setor negocia um piso e ajustes."
       },
       {
         "id": "centralizada-nacional",
@@ -51,20 +44,122 @@
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Cobertura ampla; acordos locais precisam de espaço."
+        "efeitos": "Cobertura ampla; acordos locais precisam de espaço.",
+        "propoe": "Uma negociação nacional, com espaço para cada setor."
       }
     ]
   },
-  "consequencias": [
-    "negociacao-coletiva-e-sindicatos--renda-familias",
-    "negociacao-coletiva-e-sindicatos--desigualdade",
-    "negociacao-coletiva-e-sindicatos--custo-trabalhista",
-    "negociacao-coletiva-e-sindicatos--liberdade-civil",
-    "negociacao-coletiva-e-sindicatos--greve-geral",
-    "negociacao-coletiva-e-sindicatos--confianca-empresarial",
-    "negociacao-coletiva-e-sindicatos--grupo-empresarios",
-    "negociacao-coletiva-e-sindicatos--grupo-pequenos-negocios",
-    "negociacao-coletiva-e-sindicatos--grupo-trabalhadores"
-  ],
-  "ministerio": "Ministério do Trabalho"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "sindicatos-e-greve",
+    "nome": "Sindicatos e greve",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "negociacao-coletiva-e-sindicatos--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.07,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--greve-geral",
+      "alvo": "greve_geral",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

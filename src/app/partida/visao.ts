@@ -73,10 +73,13 @@ export function verPartida(partida: Partida): VisaoPartida {
   );
   const lugarDaLei = (id: string, areaMundo?: string) => {
     // Lei do molde v4 mora na área dela; o rótulo é o coordenador da área.
+    // Se o ministério da lista é de outra área, vale a área da lei.
     const ministerio = areaMundo ? coordenador.get(areaMundo) : undefined;
+    const listado = lugares.get(id);
     const lugar =
-      lugares.get(id) ??
-      (areaMundo && ministerio ? { area: areaMundo, ministerio } : undefined);
+      areaMundo && ministerio && listado?.area !== areaMundo
+        ? { area: areaMundo, ministerio }
+        : listado;
     return {
       ministerio: lugar?.ministerio.nome ?? "",
       ministerios: lugar ? [lugar.ministerio.nome] : [],

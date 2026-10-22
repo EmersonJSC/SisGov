@@ -9,7 +9,7 @@ Total: 239 leis.
 
 ## Áreas com menos de 8 leis (aviso)
 
-- ambiente-e-campo: 6 leis (o molde pede pelo menos 8)
+- ambiente-e-campo: 7 leis (o molde pede pelo menos 8)
 
 ## Contas públicas (16)
 
@@ -91,9 +91,9 @@ Total: 239 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Direito à moradia na Constituição | `direito-a-moradia-na-constituicao` | constitucional | decide é pergunta |  | |
-| Previdência rural | `previdencia-rural` | constitucional | sem nível |  | |
-| Reajuste de aposentadorias e benefícios | `reajuste-de-beneficios` | constitucional | sem nível |  | |
+| Direito à moradia na Constituição | `direito-a-moradia-na-constituicao` | constitucional | — |  | |
+| Previdência rural | `previdencia-rural` | constitucional | — |  | |
+| Reajuste de aposentadorias e benefícios | `reajuste-de-beneficios` | constitucional | — |  | |
 | Renda para idosos e pessoas com deficiência pobres | `renda-para-idosos-e-pessoas-com-deficiencia-pobres` | constitucional | — |  | |
 | Sistema previdenciário | `sistema-previdenciario` | constitucional | — |  | |
 | Transferência de renda às famílias pobres | `transferencia-de-renda` | programa | — |  | |
@@ -140,7 +140,7 @@ Total: 239 leis.
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
 | Acesso ao ensino superior | `acesso-ao-ensino-superior` | constitucional | — |  | |
-| Ensino obrigatório | `ensino-obrigatorio` | constitucional | decide é pergunta |  | |
+| Ensino obrigatório | `ensino-obrigatorio` | constitucional | — |  | |
 | Piso de gasto em educação | `piso-de-gasto-em-educacao` | constitucional | — |  | |
 | Alfabetização na idade certa | `alfabetizacao-na-idade-certa` | regra | — |  | |
 | Avaliação das escolas | `avaliacao-das-escolas` | regra | — |  | |
@@ -163,35 +163,35 @@ Total: 239 leis.
 | Verba executada para a educação | `piso-educacao` | verba | — |  | |
 | Programa espacial e satélites | `programa-espacial-e-satelites` | verba | — |  | |
 
-## Infraestrutura e energia (14)
+## Infraestrutura e energia (13)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Energia nuclear | `energia-nuclear` | constitucional | decide é pergunta |  | |
+| Energia nuclear | `energia-nuclear` | constitucional | — |  | |
 | Zonas com imposto menor | `incentivos-fiscais-regionais` | constitucional | — |  | |
-| Água e esgoto | `agua-e-esgoto` | regra | decide é pergunta |  | |
+| Água e esgoto | `agua-e-esgoto` | regra | — |  | |
 | Ferrovias de carga e terminais portuários | `ferrovias-e-terminais-portuarios` | regra | — |  | |
-| Fiscalização ambiental | `fiscalizacao-ambiental` | regra | decide é pergunta |  | |
+| Investimento em geração por fonte | `investimento-em-geracao-por-fonte` | regra | — |  | |
 | Licenciamento de obras e empresas | `licenciamento-de-obras-e-empresas` | regra | decide é pergunta |  | |
-| Matriz energética | `matriz-energetica` | regra | sem nível |  | |
+| Matriz energética | `matriz-energetica` | regra | — |  | |
 | Proteção da vegetação nativa nas propriedades rurais | `protecao-da-vegetacao-nativa-nas-propriedades-rurais` | regra | decide é pergunta |  | |
-| Regime do petróleo e mineração | `regime-do-petroleo-e-mineracao` | regra | decide é pergunta |  | |
-| Transporte público | `transporte-publico` | regra | decide é pergunta |  | |
-| Usinas a carvão | `usinas-a-carvao` | regra | decide é pergunta |  | |
-| Investimento em geração por fonte | `investimento-em-geracao-por-fonte` | verba | decide é pergunta |  | |
-| Investimento em infraestrutura | `investimento-em-infraestrutura` | verba | sem nível |  | |
+| Regime do petróleo e mineração | `regime-do-petroleo-e-mineracao` | regra | — |  | |
+| Transporte público | `transporte-publico` | regra | — |  | |
+| Usinas a carvão | `usinas-a-carvao` | regra | — |  | |
+| Investimento em infraestrutura | `investimento-em-infraestrutura` | verba | — |  | |
 | Orçamento de expansão elétrica | `orcamento-de-expansao-eletrica` | verba | — |  | |
 
-## Meio ambiente e campo (6)
+## Meio ambiente e campo (7)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Redistribuição de terras | `redistribuicao-de-terras` | constitucional | decide é pergunta |  | |
-| Código florestal | `codigo-florestal` | regra | sem nível |  | |
-| Crédito rural e assistência técnica | `credito-rural-e-assistencia-tecnica` | regra | decide é pergunta |  | |
-| Licenciamento ambiental | `licenciamento-ambiental` | regra | sem nível |  | |
-| Preço do carbono | `preco-do-carbono` | regra | decide é pergunta |  | |
-| Registro de agrotóxicos | `registro-de-agrotoxicos` | regra | decide é pergunta |  | |
+| Redistribuição de terras | `redistribuicao-de-terras` | constitucional | — |  | |
+| Código florestal | `codigo-florestal` | regra | — |  | |
+| Crédito rural e assistência técnica | `credito-rural-e-assistencia-tecnica` | regra | — |  | |
+| Fiscalização ambiental | `fiscalizacao-ambiental` | regra | — |  | |
+| Licenciamento ambiental | `licenciamento-ambiental` | regra | — |  | |
+| Preço do carbono | `preco-do-carbono` | regra | — |  | |
+| Registro de agrotóxicos | `registro-de-agrotoxicos` | regra | — |  | |
 
 ## Segurança e defesa (46)
 

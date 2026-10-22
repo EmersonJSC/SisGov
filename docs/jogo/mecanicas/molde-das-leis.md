@@ -79,8 +79,11 @@ o controle, a faixa do mapa e o que a janela mostra.
   controle só.
 - **Regra:** cada opção tem "o que propõe" em uma frase, quem apoia, quem
   rejeita e custo, se houver. Na janela: os degraus, cada um com a sua frase.
-- **Constitucional:** cada opção diz **o que trava**, apontando para a lei
-  travada: "o gasto com saúde não fica abaixo de 15% da receita", "imposto
+- **Constitucional:** quando trava outra lei, cada opção diz **o que trava**,
+  apontando para a lei travada (a trava pode bloquear só algumas opções da
+  outra lei). Constitucional que não trava nada é aceita e fica com os seus
+  efeitos; quando fizer sentido, ganha uma sublei para travar (autor, 22/out).
+  Exemplo de trava: "o gasto com saúde não fica abaixo de 15% da receita", "imposto
   sobre fortunas proibido". Na janela: "esta lei trava…"; na lei travada:
   "travada por…".
 - **Pétrea:** o princípio em uma frase e o que ela trava.

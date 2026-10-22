@@ -1,22 +1,12 @@
 {
   "id": "fiscalizacao-ambiental",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fiscalização ambiental",
-  "descricao": "quanto o governo gasta para vigiar a floresta por satélite, multar, embargar e cortar o crédito de quem desmata?",
-  "area": "Meio ambiente, energia, terra e cidades",
-  "mesa": {
-    "id": "floresta-e-licenca",
-    "nome": "Floresta e licença",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto o governo vigia a floresta e pune quem desmata.",
+  "area": "ambiente-e-campo",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_fiscalizacao_ambiental",
     "unidade": "nivel_escopo",
@@ -35,14 +25,16 @@
           "Povos originários",
           "Mídia internacional"
         ],
-        "efeitos": "Desmatamento ↑ forte; queimadas ↑; reputação internacional ↓"
+        "efeitos": "Desmatamento ↑ forte; queimadas ↑; reputação internacional ↓",
+        "propoe": "Sem fiscalização."
       },
       {
         "id": "referencia-hoje",
         "rotulo": "Referência",
         "valor": 33.33,
         "custoTexto": "lacuna (o estudo não dá a verba atual)",
-        "efeitos": "Desmatamento ↓ contra Mínimo, sem o efeito do Máximo; queimadas ↓ pouco (estimado; a verba atual é lacuna)"
+        "efeitos": "Desmatamento ↓ contra Mínimo, sem o efeito do Máximo; queimadas ↓ pouco (estimado; a verba atual é lacuna)",
+        "propoe": "Fiscalização como hoje."
       },
       {
         "id": "maximo-satelite-fiscais-e-embargos",
@@ -59,7 +51,8 @@
           "Entidades do agronegócio",
           "Interior"
         ],
-        "efeitos": "Desmatamento ↓ forte, em meses; queimadas ↓; conflitos no campo ↑ no curto prazo (aprox.); aprovação no interior da Amazônia ↓"
+        "efeitos": "Desmatamento ↓ forte, em meses; queimadas ↓; conflitos no campo ↑ no curto prazo (aprox.); aprovação no interior da Amazônia ↓",
+        "propoe": "Satélite, mais fiscais e embargo das áreas desmatadas."
       },
       {
         "id": "chave-ligada-credito-condicionado",
@@ -67,14 +60,53 @@
         "valor": 100,
         "apoiam": ["Movimento ambientalista"],
         "rejeitam": ["Entidades do agronegócio"],
-        "efeitos": "Desmatamento ↓ 15%, sobretudo em municípios de pecuária"
+        "efeitos": "Desmatamento ↓ 15%, sobretudo em municípios de pecuária",
+        "propoe": "Além disso, quem desmata perde o crédito rural."
       }
     ]
   },
-  "consequencias": [
-    "fiscalizacao-ambiental--desmatamento",
-    "fiscalizacao-ambiental--reputacao-internacional",
-    "fiscalizacao-ambiental--conflitos-fundiarios"
-  ],
-  "ministerio": "Ministério das Cidades"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "fiscalizacao-ambiental--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.186,
+        "termoConstante": 6.19938
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fiscalizacao-ambiental--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -2.09979
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fiscalizacao-ambiental--conflitos-fundiarios",
+      "alvo": "conflitos_fundiarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": -0.69993
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

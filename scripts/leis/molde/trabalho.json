@@ -175,6 +175,29 @@
         "presuncao-de-vinculo-de-emprego": "São empregados quando o aplicativo controla horário e preço.",
         "emprego-obrigatorio": "Todo motorista e entregador tem carteira assinada."
       }
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos",
+      "familia": "constitucional",
+      "decide": "Define como a lei, as empresas e os sindicatos decidem salários e condições de trabalho.",
+      "opcoes": {
+        "regras-uniformes-em-lei": "A lei fixa as regras; acordo só pode melhorar.",
+        "por-empresa": "Cada empresa negocia com seus empregados.",
+        "por-setor": "Cada setor negocia um piso e ajustes.",
+        "centralizada-nacional": "Uma negociação nacional, com espaço para cada setor."
+      }
+    },
+    {
+      "id": "seguro-desemprego",
+      "familia": "constitucional",
+      "decide": "Define como o trabalhador demitido se sustenta até achar outro emprego.",
+      "opcoes": {
+        "nenhum": "Não há seguro.",
+        "conta-individual-do-trabalhador": "Só a poupança que o próprio trabalhador juntou.",
+        "basico-e-curto": "Um benefício básico, por poucos meses.",
+        "moderado-3-a-5-parcelas": "De três a cinco parcelas depois da demissão.",
+        "generoso-com-ativacao-beneficio-longo-e-busca-obrigatoria": "Mais parcelas, com busca de emprego e curso obrigatórios."
+      }
     }
   ]
 }

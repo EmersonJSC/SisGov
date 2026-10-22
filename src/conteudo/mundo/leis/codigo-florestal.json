@@ -1,18 +1,12 @@
 {
   "id": "codigo-florestal",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Código florestal",
-  "descricao": "Define quanto de vegetação nativa cada propriedade rural é obrigada a manter de pé.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
-  "mesa": {
-    "id": "floresta-e-licenca",
-    "nome": "Floresta e licença",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério do Meio Ambiente",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define quanto de mata nativa cada propriedade rural é obrigada a manter de pé.",
+  "area": "ambiente-e-campo",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_codigo_florestal",
     "unidade": "nivel_escopo",
@@ -20,41 +14,178 @@
       {
         "id": "sem-protecao",
         "rotulo": "Desmate livre",
-        "valor": 0
+        "valor": 0,
+        "propoe": "O dono pode desmatar tudo."
       },
       {
         "id": "so-areas-sensiveis",
         "rotulo": "Só margens e encostas",
-        "valor": 33
+        "valor": 33,
+        "propoe": "Só margens de rio e encostas ficam protegidas."
       },
       {
         "id": "reserva-legal",
         "rotulo": "Reserva legal obrigatória",
-        "valor": 67
+        "valor": 67,
+        "propoe": "Uma parte de cada propriedade fica obrigatoriamente com mata."
       },
       {
         "id": "desmatamento-zero",
         "rotulo": "Desmatamento zero",
-        "valor": 100
+        "valor": 100,
+        "propoe": "Nenhum desmatamento novo."
       }
     ]
   },
-  "consequencias": [
-    "codigo-florestal--desmatamento",
-    "codigo-florestal--emissoes",
-    "codigo-florestal--qualidade-ambiental",
-    "codigo-florestal--producao-agropecuaria",
-    "codigo-florestal--preco-alimentos",
-    "codigo-florestal--reputacao-internacional",
-    "codigo-florestal--exportacoes",
-    "codigo-florestal--conflitos-fundiarios",
-    "codigo-florestal--gasto-publico",
-    "codigo-florestal--grupo-agro",
-    "codigo-florestal--grupo-progressistas",
-    "codigo-florestal--grupo-ambientalistas"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "floresta-e-licenca",
+    "nome": "Floresta e licença",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "codigo-florestal--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--emissoes",
+      "alvo": "emissoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--qualidade-ambiental",
+      "alvo": "qualidade_ambiental",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--producao-agropecuaria",
+      "alvo": "producao_agropecuaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "codigo-florestal--preco-alimentos",
+      "alvo": "preco_alimentos",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--conflitos-fundiarios",
+      "alvo": "conflitos_fundiarios",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "codigo-florestal--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.01],
+          [67, 0.02],
+          [100, 0.04]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "codigo-florestal--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "codigo-florestal--grupo-ambientalistas",
+      "alvo": "grupo_ambientalistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

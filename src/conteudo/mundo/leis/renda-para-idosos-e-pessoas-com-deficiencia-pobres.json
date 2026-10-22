@@ -1,22 +1,13 @@
 {
   "id": "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Renda para idosos e pessoas com deficiência pobres",
-  "descricao": "Escolhe a cobertura da renda assistencial para idosos e pessoas com deficiência vulneráveis.",
-  "area": "Previdência, assistência, moradia e demografia",
-  "mesa": {
-    "id": "mesa-assistencia-social",
-    "nome": "Mesa Assistência social",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quem recebe a renda paga a idosos e pessoas com deficiência pobres.",
+  "area": "protecao-social",
+  "exemplo": "No Brasil: Benefício de Prestação Continuada.",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_renda_para_idosos_e_pessoas_com_deficiencia_pobres",
     "unidade": "nivel_escopo",
@@ -27,7 +18,8 @@
         "valor": 33,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Pobres"],
-        "efeitos": "Gasto contido; exclusões deixam famílias vulneráveis sem renda."
+        "efeitos": "Gasto contido; exclusões deixam famílias vulneráveis sem renda.",
+        "propoe": "Só quem está na pobreza extrema."
       },
       {
         "id": "faixa-de-transicao",
@@ -35,7 +27,8 @@
         "valor": 50,
         "apoiam": ["Pobres", "Progressistas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Reduz perda abrupta do benefício; custo intermediário."
+        "efeitos": "Reduz perda abrupta do benefício; custo intermediário.",
+        "propoe": "Pobres, com uma faixa em que o valor diminui aos poucos."
       },
       {
         "id": "focalizado-amplo-1-salario-minimo",
@@ -43,7 +36,8 @@
         "valor": 67,
         "apoiam": ["Pobres", "Aposentados"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Pobreza cai; avaliação e gasto público aumentam."
+        "efeitos": "Pobreza cai; avaliação e gasto público aumentam.",
+        "propoe": "Mais pessoas, olhando renda, deficiência e quem cuida."
       },
       {
         "id": "universal",
@@ -51,21 +45,139 @@
         "valor": 100,
         "apoiam": ["Aposentados", "Progressistas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Cobertura ampla; gasto recorrente requer receita estável."
+        "efeitos": "Cobertura ampla; gasto recorrente requer receita estável.",
+        "propoe": "Todo idoso recebe um piso, com complemento para os pobres."
       }
     ]
   },
-  "consequencias": [
-    "beneficio-idosos-e-deficientes--pobreza",
-    "beneficio-idosos-e-deficientes--cobertura-previdenciaria",
-    "beneficio-idosos-e-deficientes--desigualdade",
-    "beneficio-idosos-e-deficientes--informalidade",
-    "beneficio-idosos-e-deficientes--saude-populacao",
-    "beneficio-idosos-e-deficientes--gasto-publico",
-    "beneficio-idosos-e-deficientes--grupo-aposentados",
-    "beneficio-idosos-e-deficientes--grupo-classe-media",
-    "beneficio-idosos-e-deficientes--grupo-pobres",
-    "beneficio-idosos-e-deficientes--grupo-trabalhadores"
-  ],
-  "ministerio": "Ministério da Previdência"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "mesa-assistencia-social",
+    "nome": "Mesa Assistência social",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "beneficio-idosos-e-deficientes--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--cobertura-previdenciaria",
+      "alvo": "cobertura_previdenciaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.7],
+          [67, 1.2],
+          [100, 2.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "envelhecimento",
+        "referencia": 40
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "beneficio-idosos-e-deficientes--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

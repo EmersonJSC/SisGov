@@ -1,22 +1,12 @@
 {
   "id": "regime-do-petroleo-e-mineracao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Regime do petróleo e mineração",
-  "descricao": "Quem explora petróleo e minérios e quanto fica com o Estado?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quem explora petróleo e minérios e quanto fica com o Estado.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_regime_do_petroleo_e_mineracao",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Perde royalties",
         "apoiam": ["Movimento ambientalista"],
         "rejeitam": ["Petróleo e mineração", "Centrais sindicais"],
-        "efeitos": "Produção mineral ↓; exportações ↓; emissões ↓"
+        "efeitos": "Produção mineral ↓; exportações ↓; emissões ↓",
+        "propoe": "Novas explorações são proibidas."
       },
       {
         "id": "monopolio-estatal",
@@ -36,41 +27,193 @@
         "valor": 33.33,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Petróleo e mineração", "Mercado financeiro"],
-        "efeitos": "Investimento estrangeiro ↓; produção depende da estatal"
+        "efeitos": "Investimento estrangeiro ↓; produção depende da estatal",
+        "propoe": "Só a estatal explora."
       },
       {
         "id": "partilha",
         "rotulo": "Partilha (o Estado fica com parte do óleo) (hoje na referência, no pré-sal)",
         "valor": 66.67,
-        "efeitos": "Royalties e óleo para o Estado"
+        "efeitos": "Royalties e óleo para o Estado",
+        "propoe": "Empresas exploram, e o Estado fica com parte do que é extraído."
       },
       {
         "id": "concessao",
         "rotulo": "Concessão (empresa paga e fica com o óleo)",
         "valor": 100,
         "apoiam": ["Petróleo e mineração", "Mercado financeiro"],
-        "efeitos": "Investimento estrangeiro ↑; produção mineral ↑"
+        "efeitos": "Investimento estrangeiro ↑; produção mineral ↑",
+        "propoe": "A empresa paga pelo direito e fica com o que extrai."
       }
     ]
   },
-  "consequencias": [
-    "regime-do-petroleo-e-mineracao--investimento",
-    "regime-do-petroleo-e-mineracao--producao-mineral",
-    "regime-do-petroleo-e-mineracao--exportacoes",
-    "regime-do-petroleo-e-mineracao--cambio",
-    "regime-do-petroleo-e-mineracao--emissoes",
-    "regime-do-petroleo-e-mineracao--desastre-ambiental",
-    "regime-do-petroleo-e-mineracao--corrupcao",
-    "regime-do-petroleo-e-mineracao--arrecadacao",
-    "regime-do-petroleo-e-mineracao--grupo-empresarios",
-    "regime-do-petroleo-e-mineracao--grupo-progressistas",
-    "regime-do-petroleo-e-mineracao--grupo-trabalhadores",
-    "regime-do-petroleo-e-mineracao--grupo-ambientalistas",
-    "regime-do-petroleo-e-mineracao--ied"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
   },
-  "ministerio": "Ministério de Minas e Energia"
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "regime-do-petroleo-e-mineracao--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--producao-mineral",
+      "alvo": "producao_mineral",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12599,
+        "termoConstante": -8.399753
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": 3.46007
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--cambio",
+      "alvo": "cambio",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--emissoes",
+      "alvo": "emissoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -4.20021
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--desastre-ambiental",
+      "alvo": "desastre_ambiental",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.03,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.04477612,
+        "limiar": 33,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1.5],
+          [67, 1.2],
+          [100, 0.8]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "producao_mineral",
+        "referencia": 50
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--grupo-ambientalistas",
+      "alvo": "grupo_ambientalistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-do-petroleo-e-mineracao--ied",
+      "alvo": "ied",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.084,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_pib"
+    }
+  ]
 }

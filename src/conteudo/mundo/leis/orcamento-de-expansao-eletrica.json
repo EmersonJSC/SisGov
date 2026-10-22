@@ -1,33 +1,49 @@
 {
   "id": "orcamento-de-expansao-eletrica",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Orçamento de expansão elétrica",
-  "descricao": "Define a verba anual para contratar ou construir novas usinas.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
-  "mesa": {
-    "id": "clima-e-energia",
-    "nome": "Clima e energia",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério das Cidades",
-  "processoAutorizacao": "execucao-programa-autorizado",
-  "nivelLegal": "derivada",
+  "decide": "Define quanto o governo gasta por ano para contratar ou construir novas usinas de energia.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_expansao_eletrica",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 2
     }
   },
-  "consequencias": ["orcamento-de-expansao-eletrica--gasto-publico"],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "clima-e-energia",
+    "nome": "Clima e energia",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "orcamento-de-expansao-eletrica--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

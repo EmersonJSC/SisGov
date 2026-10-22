@@ -17,7 +17,10 @@
       "familia": "programa",
       "decide": "Define quanto o governo gasta por ano pagando renda todo mês a famílias pobres.",
       "exemplo": "No Brasil: Bolsa Família.",
-      "publico": { "quem": "famílias pobres", "pessoas": 54000000 }
+      "publico": {
+        "quem": "famílias pobres",
+        "pessoas": 54000000
+      }
     },
     {
       "id": "transferencia-de-renda-as-familias-pobres",
@@ -109,6 +112,51 @@
         "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam": "Cerca de 40% das crianças têm vaga.",
         "meta-do-plano-nacional-de-educacao-50": "Metade das crianças tem vaga.",
         "maximo-cobertura-dos-paises-nordicos": "Quase todas as crianças têm vaga, como nos países nórdicos."
+      }
+    },
+    {
+      "id": "direito-a-moradia-na-constituicao",
+      "familia": "constitucional",
+      "decide": "Define se ter onde morar é um direito e se ele pode ser cobrado na Justiça.",
+      "opcoes": {
+        "sem-previsao": "A Constituição não fala em moradia.",
+        "direito-social-sem-obrigacao-direta": "É um direito, mas não obriga o governo a nada específico.",
+        "garantida-e-exigivel-na-justica": "É garantido, e a pessoa pode cobrar na Justiça."
+      }
+    },
+    {
+      "id": "previdencia-rural",
+      "familia": "constitucional",
+      "decide": "Define como o pequeno agricultor, que quase nunca tem carteira assinada, entra na previdência.",
+      "opcoes": {
+        "nenhuma": "Não há regime para o campo.",
+        "voluntaria-subsidiada": "Ele pode entrar por conta própria, com ajuda do governo.",
+        "contributiva-agricola": "Ele contribui num regime próprio do campo.",
+        "comprovacao-atividade": "Basta provar que trabalhou na roça."
+      }
+    },
+    {
+      "id": "reajuste-de-beneficios",
+      "familia": "constitucional",
+      "decide": "Define como aposentadorias e benefícios são corrigidos todo ano.",
+      "opcoes": {
+        "discricionario": "O governo decide a cada ano.",
+        "inflacao": "Repõe a inflação.",
+        "salarios": "Acompanha os salários.",
+        "salario-minimo": "Acompanha o salário mínimo.",
+        "trava-tripla": "O maior entre inflação, salários e um piso fixo."
+      }
+    },
+    {
+      "id": "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
+      "familia": "constitucional",
+      "decide": "Define quem recebe a renda paga a idosos e pessoas com deficiência pobres.",
+      "exemplo": "No Brasil: Benefício de Prestação Continuada.",
+      "opcoes": {
+        "focalizado-estrito": "Só quem está na pobreza extrema.",
+        "faixa-de-transicao": "Pobres, com uma faixa em que o valor diminui aos poucos.",
+        "focalizado-amplo-1-salario-minimo": "Mais pessoas, olhando renda, deficiência e quem cuida.",
+        "universal": "Todo idoso recebe um piso, com complemento para os pobres."
       }
     }
   ]

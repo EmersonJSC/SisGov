@@ -1,43 +1,164 @@
 {
   "id": "investimento-em-infraestrutura",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Investimento em infraestrutura",
-  "descricao": "Define o investimento público em obras gerais, estradas, saneamento e redes; energia e ferrovias de carga têm decisões próprias.",
-  "area": "Meio ambiente, energia, agro e infraestrutura",
-  "mesa": {
-    "id": "cidades-e-infraestrutura",
-    "nome": "Cidades e infraestrutura",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério das Cidades",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta por ano com obras: estradas, saneamento e redes.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_investimento_em_infraestrutura",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 8
     }
   },
-  "consequencias": [
-    "investimento-em-infraestrutura--infraestrutura-transportes",
-    "investimento-em-infraestrutura--pib",
-    "investimento-em-infraestrutura--produtividade",
-    "investimento-em-infraestrutura--corrupcao",
-    "investimento-em-infraestrutura--desmatamento",
-    "investimento-em-infraestrutura--grupo-empresarios",
-    "investimento-em-infraestrutura--grupo-progressistas",
-    "investimento-em-infraestrutura--grupo-trabalhadores",
-    "investimento-em-infraestrutura--gasto-publico",
-    "investimento-em-infraestrutura--grupo-interior"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "cidades-e-infraestrutura",
+    "nome": "Cidades e infraestrutura",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "investimento-em-infraestrutura--infraestrutura-transportes",
+      "alvo": "infraestrutura_transportes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.604e-7,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "investimento-em-infraestrutura--pib",
+      "alvo": "pib",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000072917,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000072917,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.000003125,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.000003125,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-em-infraestrutura--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "investimento-em-infraestrutura--grupo-interior",
+      "alvo": "grupo_interior",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    }
+  ]
 }

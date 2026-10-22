@@ -1,0 +1,84 @@
+{
+  "area": "ambiente-e-campo",
+  "leis": [
+    {
+      "id": "redistribuicao-de-terras",
+      "familia": "constitucional",
+      "decide": "Define se o Estado pode tomar terra para dar a quem não tem, e com que regra.",
+      "opcoes": {
+        "nenhuma": "O Estado não redistribui terra.",
+        "titulo-e-credito-fundiario": "O Estado dá título e crédito para comprar terra, sem desapropriar.",
+        "desapropriar-terra-improdutiva": "O Estado desapropria, pagando, terra que não produz.",
+        "redistribuicao-ampla-com-teto-de-tamanho": "Há um tamanho máximo de propriedade; o que passar é redistribuído."
+      }
+    },
+    {
+      "id": "codigo-florestal",
+      "familia": "regra",
+      "decide": "Define quanto de mata nativa cada propriedade rural é obrigada a manter de pé.",
+      "opcoes": {
+        "sem-protecao": "O dono pode desmatar tudo.",
+        "so-areas-sensiveis": "Só margens de rio e encostas ficam protegidas.",
+        "reserva-legal": "Uma parte de cada propriedade fica obrigatoriamente com mata.",
+        "desmatamento-zero": "Nenhum desmatamento novo."
+      }
+    },
+    {
+      "id": "credito-rural-e-assistencia-tecnica",
+      "familia": "regra",
+      "decide": "Define quanto o Estado barateia o crédito do produtor rural, paga técnicos para orientá-lo e para quem vai o dinheiro.",
+      "opcoes": {
+        "sem-credito-oficial-juro-de-mercado-sem-tecnico-pago-pelo-es": "Juro de mercado e nenhum técnico pago pelo Estado.",
+        "credito-de-mercado-com-incentivo-so-isencao-nos-titulos-do-a": "Juro de mercado, com isenção nos títulos do agro e seguro rural.",
+        "credito-amplo-subsidiado-para-todos-os-portes": "Crédito barato para produtores de todos os tamanhos.",
+        "foco-na-agricultura-familiar-e-na-assistencia-tecnica": "Crédito barato e técnicos para a agricultura familiar.",
+        "credito-verde-subsidio-so-para-producao-de-baixo-carbono": "Crédito barato só para quem produz com pouca emissão."
+      }
+    },
+    {
+      "id": "licenciamento-ambiental",
+      "familia": "regra",
+      "decide": "Define se e como uma obra ou empresa prova que não vai destruir o ambiente antes de começar.",
+      "opcoes": {
+        "sem-licenciamento": "Não precisa de licença.",
+        "autodeclaracao": "A empresa declara e começa.",
+        "trifasico": "Licença em três etapas: antes, durante e para funcionar.",
+        "rigoroso-com-consulta": "Licença rigorosa, ouvindo as comunidades afetadas."
+      }
+    },
+    {
+      "id": "preco-do-carbono",
+      "familia": "regra",
+      "decide": "Define se quem emite gás de efeito estufa paga por isso, e quanto.",
+      "opcoes": {
+        "sem-preco": "Ninguém paga.",
+        "mercado-brando-com-isencoes": "Um mercado de licenças para emitir, com muitas isenções.",
+        "mercado-com-teto": "Um mercado de licenças com teto total de emissões.",
+        "taxa-alta": "Uma taxa alta por tonelada emitida."
+      }
+    },
+    {
+      "id": "registro-de-agrotoxicos",
+      "familia": "regra",
+      "decide": "Define quem aprova os agrotóxicos e com que critério.",
+      "opcoes": {
+        "sem-registro": "Não precisa de registro.",
+        "permissiva-prazo-curto-e-aprovacao-tacita": "Prazo curto; se o governo não responder, está aprovado.",
+        "avaliacao-de-risco": "Aprova se o uso for seguro.",
+        "precaucao-proibe-pelo-perigo-veta-cancerigenos": "Proíbe o que é perigoso, como o que causa câncer.",
+        "so-organico": "Só produção orgânica."
+      }
+    },
+    {
+      "id": "fiscalizacao-ambiental",
+      "familia": "regra",
+      "decide": "Define quanto o governo vigia a floresta e pune quem desmata.",
+      "opcoes": {
+        "minimo-sem-fiscalizacao": "Sem fiscalização.",
+        "referencia-hoje": "Fiscalização como hoje.",
+        "maximo-satelite-fiscais-e-embargos": "Satélite, mais fiscais e embargo das áreas desmatadas.",
+        "chave-ligada-credito-condicionado": "Além disso, quem desmata perde o crédito rural."
+      }
+    }
+  ]
+}

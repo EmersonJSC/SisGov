@@ -1,5 +1,9 @@
 # Leis que proponho tirar ou juntar (para o autor aprovar)
 
+> **Decidido pelo autor (22/out):** constitucional que não trava nenhuma lei
+> fica constitucional, com seus efeitos; quando fizer sentido, ganha uma
+> sublei para travar. Essas já estão no molde e saíram desta lista.
+>
 > Lista do molde das leis ([molde-das-leis.md](../mecanicas/molde-das-leis.md)).
 > As leis que ficam já estão no molde v4, com os mesmos números. Nada aqui
 > foi tirado ainda: espera a aprovação. Quem sai vai para
@@ -14,24 +18,20 @@
 | Moeda e câmbio (`regime-cambial`) | sai | Não faz nada no jogo; a Compra e venda de dólares já mexe no câmbio |
 | Correção automática pela inflação (`indexacao-de-contratos`) | sai | Não faz nada no jogo (nenhum efeito) |
 
-## Trabalho (16 no molde)
+## Trabalho (18 no molde)
 
 | Lei | Proposta | Por quê |
 | --- | --- | --- |
-| Negociação coletiva e sindicatos (`negociacao-coletiva-e-sindicatos`) | vira regra (lei comum) ou fica constitucional sem trava | É constitucional, mas não trava nenhuma outra lei; as filhas dizem "sem trava no estudo" |
-| Seguro-desemprego (`seguro-desemprego`) | vira programa (verde-água), na mecânica 4 | Paga pessoas, mas está como constitucional e sem custo declarado; o custo entra com o orçamento |
+| Seguro-desemprego (`seguro-desemprego`) | já está no molde como constitucional; vira programa (verde-água) na mecânica 4 | Paga pessoas, mas não tem custo declarado; o custo entra com o orçamento |
 
-## Proteção social (11 no molde)
+## Proteção social (15 no molde)
 
 | Lei | Proposta | Por quê |
 | --- | --- | --- |
 | Como o Estado entrega casa (`como-o-estado-entrega-casa`) | sai | Repete a Habitação pública (mesma escolha: aluguel, financiamento ou venda); tem 1 efeito só |
 | Verba do programa habitacional (`verba-do-programa-habitacional`) | sai | Não faz nada no jogo e repete o Programa de habitação popular |
 | Licença para cuidar do bebê (`licenca-para-cuidar-do-bebe`) | sai | Repete a Licença parental (Trabalho), que tem 12 efeitos; esta tem 1 |
-| Direito à moradia na Constituição (`direito-a-moradia-na-constituicao`) | fica constitucional, travando o Programa de habitação popular num mínimo (valor a definir), ou vira regra | O texto diz que "garantida" trava a verba num mínimo, mas o valor nunca foi definido |
-| Previdência rural (`previdencia-rural`) | vira regra (lei comum) ou fica constitucional sem trava | Não trava nenhuma lei |
-| Reajuste de aposentadorias e benefícios (`reajuste-de-beneficios`) | vira regra ou fica constitucional sem trava | Não trava nenhuma lei |
-| Renda para idosos e pessoas com deficiência pobres (`renda-para-idosos-e-pessoas-com-deficiencia-pobres`) | vira programa (verde-água), na mecânica 4 | Paga pessoas, mas não tem custo declarado |
+| Renda para idosos e pessoas com deficiência pobres (`renda-para-idosos-e-pessoas-com-deficiencia-pobres`) | já está no molde como constitucional; vira programa na mecânica 4 | Paga pessoas, mas não tem custo declarado |
 
 ## Saúde (18 no molde)
 
@@ -42,8 +42,19 @@
 
 Também nesta área: "Farmácia popular" passou a se chamar **Remédios de graça na farmácia** (o nome do programa brasileiro ficou no exemplo), e os Planos de saúde perderam a opção "acabar com a dedução no imposto de renda", que é assunto de imposto.
 
-## Educação e cultura (22 no molde)
+## Educação e cultura (23 no molde)
+
+Nada a tirar.
+
+## Infraestrutura e energia (11 no molde)
 
 | Lei | Proposta | Por quê |
 | --- | --- | --- |
-| Ensino obrigatório (`ensino-obrigatorio`) | vira regra ou fica constitucional sem trava | Não trava nenhuma lei |
+| Licenciamento de obras e empresas (`licenciamento-de-obras-e-empresas`) | sai | Repete o Licenciamento ambiental (Meio ambiente), que tem 11 efeitos; esta tem 4 |
+| Proteção da vegetação nativa nas propriedades rurais (`protecao-da-vegetacao-nativa-nas-propriedades-rurais`) | sai | Repete o Código florestal (mesmas opções), que tem 12 efeitos; esta tem 4 |
+
+A Fiscalização ambiental mudou para Meio ambiente e campo.
+
+## Meio ambiente e campo (7 no molde)
+
+Nada a tirar. Fica com 7 leis, uma abaixo do mínimo de 8 (só aviso).

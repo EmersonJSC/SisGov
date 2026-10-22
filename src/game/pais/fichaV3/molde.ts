@@ -104,12 +104,7 @@ export function verificarMolde(
       );
   });
 
-  if (familia === "constitucional" && (ficha.trava ?? []).length === 0)
-    push(
-      "trava",
-      "A constitucional diz o que trava em outras leis.",
-      "CAMPO_AUSENTE",
-    );
+  // Constitucional sem trava é aceita (autor, 22/out): fica com efeitos.
   const ids = new Set(opcoes.map((o) => o.id));
   (ficha.trava ?? []).forEach((t, i) => {
     const daOutra = contexto.leis.get(t.lei);

@@ -1,22 +1,12 @@
 {
   "id": "incentivos-fiscais-regionais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Zonas com imposto menor",
-  "descricao": "Regiões onde as empresas pagam menos imposto para atrair fábricas.",
-  "area": "Impostos e contas públicas",
-  "mesa": {
-    "id": "mesa-impostos",
-    "nome": "Mesa Impostos",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se há regiões onde as empresas pagam menos imposto para atrair fábricas.",
+  "area": "infraestrutura-e-energia",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_incentivos_fiscais_regionais",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Interior"],
-        "efeitos": "Desigualdade regional ↑"
+        "efeitos": "Desigualdade regional ↑",
+        "propoe": "Nenhuma região tem desconto."
       },
       {
         "id": "zonas-de-exportacao",
@@ -35,7 +26,8 @@
         "valor": 33,
         "custoTexto": "0,1% do PIB (aprox.)",
         "apoiam": ["Indústria"],
-        "efeitos": "Exportações ↑"
+        "efeitos": "Exportações ↑",
+        "propoe": "Zonas para fábricas que exportam."
       },
       {
         "id": "fundos-regionais",
@@ -44,7 +36,8 @@
         "custoTexto": "0,3 a 0,6% do PIB (aprox.)",
         "apoiam": ["Interior", "Pobres"],
         "rejeitam": ["Indústria local beneficiada hoje"],
-        "efeitos": "Desigualdade regional ↓; Complexidade ↓"
+        "efeitos": "Desigualdade regional ↓; Complexidade ↓",
+        "propoe": "Fundos que investem nas regiões pobres, em vez de desconto."
       },
       {
         "id": "zona-franca-ampla",
@@ -53,26 +46,194 @@
         "custoTexto": "0,3 a 0,5% do PIB (aprox.)",
         "apoiam": ["Interior", "Indústria local"],
         "rejeitam": ["Indústria do Sul e Sudeste"],
-        "efeitos": "Complexidade ↑; Receita ↓; Desmatamento ↓ (aprox.)"
+        "efeitos": "Complexidade ↑; Receita ↓; Desmatamento ↓ (aprox.)",
+        "propoe": "Uma região inteira com imposto muito menor."
       }
     ]
   },
-  "consequencias": [
-    "incentivos-fiscais-regionais--investimento",
-    "incentivos-fiscais-regionais--exportacoes",
-    "incentivos-fiscais-regionais--desigualdade",
-    "incentivos-fiscais-regionais--produtividade",
-    "incentivos-fiscais-regionais--complexidade-tributaria",
-    "incentivos-fiscais-regionais--corrupcao",
-    "incentivos-fiscais-regionais--arrecadacao",
-    "incentivos-fiscais-regionais--grupo-classe-media",
-    "incentivos-fiscais-regionais--grupo-empresarios",
-    "incentivos-fiscais-regionais--grupo-pequenos-negocios",
-    "incentivos-fiscais-regionais--grupo-servidores",
-    "incentivos-fiscais-regionais--grupo-trabalhadores",
-    "incentivos-fiscais-regionais--grupo-interior",
-    "incentivos-fiscais-regionais--desigualdade-regional",
-    "incentivos-fiscais-regionais--desmatamento"
-  ],
-  "ministerio": "Ministério da Fazenda"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "incentivos-fiscais-regionais--investimento",
+      "alvo": "investimento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.10447761,
+        "limiar": 33,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.10447761,
+        "limiar": 33,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--complexidade-tributaria",
+      "alvo": "complexidade_tributaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -0.1],
+          [67, -0.2],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--grupo-interior",
+      "alvo": "grupo_interior",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--desigualdade-regional",
+      "alvo": "desigualdade_regional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 8.4
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "incentivos-fiscais-regionais--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 6.3
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
