@@ -32,6 +32,10 @@ nela; a lei antiga continua morando pelo ministério até ser refeita.
 - Pétrea: escudo, centro, não é de nenhuma área (`area` ausente).
 - Nome sem sigla e sem nome de programa de um país (lista `NOMES_DE_PROGRAMA`
   de `verificar.ts`, ampliada com "Farmácia Popular").
+- **Ids não mudam.** Ao refazer uma lei, mantém-se o `id` e a variável do
+  controle; muda o nome que aparece. Se um id precisar mudar, procurar toda
+  referência (`icones.ts`, `busca.ts`, `politica.json`, `brasil/leis.json`,
+  `catalogo-leis.json`, consequências, eventos, dilemas, testes) no mesmo commit.
 - Nada apagado: lei que sai vai para `src/conteudo/_arquivo-leis-antigas/`.
 - Commit com assunto na frente (`leis:`, `mapa:`, `teste:`); sem `git push`.
 - Na máquina do autor, git sem permissão de apagar deixa `.git/*.lock`:
@@ -42,9 +46,9 @@ nela; a lei antiga continua morando pelo ministério até ser refeita.
 ## Review Focus
 
 - Lei v4 numa área cujo país não declara ministério: aparece na esfera, com
-  o rótulo do coordenador da área (teste na Tarefa 3).
+  o rótulo do coordenador da área (teste na Tarefa 4).
 - Lei v2 sem `familia`: continua com a cor adivinhada de hoje, sem quebrar
-  (teste na Tarefa 3).
+  (teste na Tarefa 4).
 - `trava` apontando para lei ou opção que não existe: erro de referência
   quebrada, não silêncio (teste na Tarefa 1).
 - Pétrea com `area` preenchida ou constitucional sem `trava`: erro (teste
@@ -70,7 +74,7 @@ nela; a lei antiga continua morando pelo ministério até ser refeita.
   - `type FichaV4 = Omit<FichaV3, "versaoEsquema" | "area" | "ministerio" | "fontes"> & { versaoEsquema: 4; familia: Familia; decide: string; area?: AreaId; exemplo?: string; trava?: TravaV4[]; publico?: { quem: string; pessoas: number }; fontes?: FonteV3[]; controle: FichaV3["controle"] & { opcoes?: (PolicyOption & { propoe: string })[] } }`
   - `verificarMolde(ficha: FichaV4, arquivo: string, contexto: ContextoDaFicha & { areas: ReadonlySet<string> }): ContentDiagnostic[]`
   - `avisosPorArea(leis: readonly { id: string; area?: string }[], areas: readonly string[]): string[]` (mensagens; vazio se todas entre 8 e 12)
-  - `mundo/areas.json`: `{ "areas": [{ "id", "titulo", "faz" }] }`, os 11 ids e títulos da spec, seção 2.4
+  - `mundo/areas.json`: `{ "areas": [{ "id", "titulo", "faz", "arte" }] }`, os 11 ids e títulos da spec, seção 2.4; `arte` aponta para a faixa que já existe em `public/arte/faixas/` (contas-publicas → `economia.jpg`, economia-e-empresas → `empresas.jpg`, protecao-social → `previdencia.jpg`, os outros pelo primeiro nome)
 
 - [ ] **Step 1: Escrever os testes que falham** em `src/tests/moldeDasLeis.test.ts`, com uma ficha v4 válida de base (`imposto`, área `contas-publicas`, 1 efeito) e uma variação por regra:
   - válida → `[]`
@@ -86,6 +90,7 @@ nela; a lei antiga continua morando pelo ministério até ser refeita.
   - nome "Farmácia Popular" → erro em `nome`
   - imposto sem `dinheiro.tipo: "receita"` → erro em `dinheiro`; verba ou programa sem `dinheiro.tipo: "gasto"` → erro em `dinheiro`
   - programa sem `publico` (quem recebe e quantas pessoas) → erro em `publico`
+  - `familia: "constitucional"` com `nivel: "lei"` → erro em `nivel`; `familia: "petrea"` sem `petrea: true` → erro em `petrea`
   - `avisosPorArea` com 13 leis em `saude` → `["saude: 13 leis (o molde pede 8 a 12)"]`; com 7 → mensagem com 7; com 10 → `[]`
 
 - [ ] **Step 2: Rodar e ver falhar**
@@ -102,7 +107,37 @@ Expected: PASS (os testes da v3 seguem verdes).
 
 - [ ] **Step 5: Commit** `leis: ficha v4 e verificador do molde`
 
-### Task 2: Carregar a ficha v4 no jogo
+### Task 2: Inventário das 242 leis
+
+**Files:**
+- Create: `scripts/leis/inventario.ts`
+- Create (gerado): `docs/jogo/leis/inventario.md`
+- Modify: `package.json` (script `"leis:inventario": "vite-node scripts/leis/inventario.ts"`)
+- Test: `src/tests/inventarioDeLeis.test.ts`
+
+**Interfaces:**
+- Consumes: `verificarMolde`, `avisosPorArea` (Task 1). A tabela ministério → área nova fica **dentro do script** (estática), para o inventário não esperar a Tarefa 4.
+- Produces: `sugerirLinha(lei: PolicyFile | FichaV3, ministerioArea: ReadonlyMap<string, string>): { id: string; nome: string; areaSugerida: string; familiaSugerida: Familia; faltas: string[]; parecidaCom?: string }`
+
+- [ ] **Step 1: Testes que falham** para `sugerirLinha`:
+  - `imposto-renda-pessoas` → área `contas-publicas`, família `imposto`;
+  - `transferencia-de-renda` → `protecao-social`, `programa`;
+  - `regulacao-de-vagas` → `saude`, `regra`, e `faltas` contém "sem efeito na rede" e "decide é pergunta";
+  - `imposto-sobre-a-propriedade` → `parecidaCom: "imposto-propriedade-urbana-rural"`.
+- [ ] **Step 2: Rodar e ver falhar** — `npx vitest run src/tests/inventarioDeLeis.test.ts`, FAIL.
+- [ ] **Step 3: Implementar.**
+  - Área: a do ministério da lei, com uma tabela curta de exceções no próprio script (juros, câmbio e bancos para `economia-e-empresas`; moradia para `protecao-social`).
+  - Família: pétrea e constitucional pelo nível; `tributaria` vira imposto; dinheiro de gasto com público direto (lista de ids no script: transferência de renda, remédios, bolsas, benefícios) vira programa; outro gasto vira verba; o resto vira regra.
+  - Parecida: pelo menos uma palavra igual no id, fora de "imposto", "verba", "lei", "de", "do", "da", "e", "sobre" ("propriedade" liga as duas leis do teste); a coluna só sugere, o autor decide.
+  - O `.md` sai agrupado por área, com o total, o aviso de `avisosPorArea` e uma coluna "Destino" vazia para o autor (entra · junta com · sai).
+- [ ] **Step 4: Rodar** — `npx vitest run src/tests/inventarioDeLeis.test.ts && npm run leis:inventario`, PASS e o arquivo gerado com as 242 linhas.
+- [ ] **Step 5: Commit** `leis: inventário das 242 leis por área nova`
+
+**Para aqui e entrega o inventário ao autor.** As Tarefas 3 e 4 seguem enquanto ele preenche. A Tarefa 5 só começa com a
+coluna "Destino" de Contas públicas preenchida por ele e a decisão sobre o
+limite dessa área.
+
+### Task 3: Carregar a ficha v4 no jogo
 
 **Files:**
 - Modify: `src/game/pais/fichaV3/expandir.ts`, `src/game/pais/fichaV3/converter.ts`, `src/game/pais/loadScenarioPackage.ts`
@@ -119,57 +154,29 @@ Expected: PASS (os testes da v3 seguem verdes).
 - [ ] **Step 4: Rodar** — `npx vitest run src/tests/moldeDasLeis.test.ts && npm test`, PASS.
 - [ ] **Step 5: Commit** `leis: o jogo carrega a ficha v4`
 
-### Task 3: Áreas do mundo, família na tela e cor do programa
+### Task 4: Áreas do mundo e família lida da lei
 
 **Files:**
 - Modify: `src/conteudo/paises/brasil/politica.json` (as `areas` passam a ser os 11 ids do mundo; cada ministério com `area` nova)
 - Modify: `src/app/partida/visao.ts` (`governoDaPartida`, `lugarDaLei`), `src/app/partida/tipos.ts` (`VisaoLei.familia?: Familia`, `VisaoLei.decide?: string`)
-- Modify: `src/ui/mapa/familia.ts`, `src/ui/mapa/mapa.css`
+- Modify: `src/ui/mapa/familia.ts`, `src/tests/ministerios.test.ts` (área `direitos` vira `direitos-e-costumes`)
 - Test: `src/tests/moldeDasLeis.test.ts`, `src/tests/mapaPolitico.test.ts`
 
 **Interfaces:**
-- Consumes: `PolicyFile.familia`, `PolicyFile.areaMundo` (Task 2); `mundo/areas.json` (Task 1)
-- Produces: `familiaDaLei(lei: VisaoLei): Familia` lê `lei.familia` e só adivinha (regra de hoje) quando ausente; `PRATELEIRAS` com `programa` entre verba e regra; classe CSS `familia-programa`
+- Consumes: `PolicyFile.familia`, `PolicyFile.areaMundo` (Task 3); `mundo/areas.json` (Task 1)
+- Produces: `familiaDaLei(lei: VisaoLei): Familia` lê `lei.familia` e só adivinha (regra de hoje) quando ausente; `PRATELEIRAS` com `programa` entre verba e regra. **Sem mudar cores**: os tons de verba e programa saem da amostra da parte 2 (spec 2.1); até lá a classe `familia-programa` usa as variáveis da verba
 
+- [ ] **Step 0: Levantar quem lê os ids de área antigos** (`grep` em `src/` e `public/arte/`) e anotar no commit o que muda. Já visto: `public/arte/faixas/<id>.jpg` (resolvido por `arte` no `areas.json`) e `ministerios.test.ts`.
 - [ ] **Step 1: Testes que falham:**
   - toda área de `brasil/politica.json` existe em `mundo/areas.json`, e todo ministério aponta para uma delas;
+  - as leis `quem-controla-o-banco-central`, `mandato-do-banco-central`, `regime-cambial`, `regulacao-dos-bancos` e `controle-de-capitais` saem da lista da Fazenda e vão para a do Ministério do Desenvolvimento, Indústria, Comércio e Serviços (`economia-e-empresas`); `habitacao-publica` e `verba-do-programa-habitacional` saem das Cidades e vão para o Desenvolvimento e Assistência Social (`protecao-social`);
   - Esporte em `educacao-e-cultura`, Comunicações em `governo-e-instituicoes`, Povos Indígenas em `direitos-e-costumes`, Fazenda e Planejamento em `contas-publicas` (spec 2.4);
   - lei v4 com `areaMundo: "saude"` aparece em `VisaoLei.areas` como `["saude"]`, mesmo sem estar na lista de nenhum ministério; o rótulo é o ministério coordenador da área;
   - `familiaDaLei` devolve `"programa"` para lei com `familia: "programa"` e mantém a dedução de hoje para lei sem `familia`.
 - [ ] **Step 2: Rodar e ver falhar** — `npx vitest run src/tests/moldeDasLeis.test.ts src/tests/mapaPolitico.test.ts`, FAIL.
-- [ ] **Step 3: Implementar.** Títulos e `faz` das áreas vêm de `mundo/areas.json`; o país dá só `coordenador` e ministérios. Banco Central, câmbio e bancos ficam com o ministério que o país indicar em `economia-e-empresas`. Cor de partida da verba `#5fae4f` (anel `#86e05f`) e do programa `#3fae9f` (anel `#45e0c4`); os tons finais saem da amostra da parte 2 (spec 6).
+- [ ] **Step 3: Implementar.** Títulos e `faz` das áreas vêm de `mundo/areas.json`; o país dá só `coordenador` e ministérios. As leis mudam de lista de ministério como diz o teste.
 - [ ] **Step 4: Rodar** — os dois arquivos de teste e `npm test`, PASS. Abrir o jogo (`npm run dev`) e conferir que as 11 esferas aparecem com os títulos novos.
 - [ ] **Step 5: Commit** `mapa: áreas por assunto e família lida da lei`
-
-### Task 4: Inventário das 242 leis
-
-**Files:**
-- Create: `scripts/leis/inventario.ts`
-- Create (gerado): `docs/jogo/leis/inventario.md`
-- Modify: `package.json` (script `"leis:inventario": "vite-node scripts/leis/inventario.ts"`)
-- Test: `src/tests/inventarioDeLeis.test.ts`
-
-**Interfaces:**
-- Consumes: `verificarMolde`, `avisosPorArea` (Task 1); áreas dos ministérios (Task 3)
-- Produces: `sugerirLinha(lei: PolicyFile | FichaV3, ministerioArea: ReadonlyMap<string, string>): { id: string; nome: string; areaSugerida: string; familiaSugerida: Familia; faltas: string[]; parecidaCom?: string }`
-
-- [ ] **Step 1: Testes que falham** para `sugerirLinha`:
-  - `imposto-renda-pessoas` → área `contas-publicas`, família `imposto`;
-  - `transferencia-de-renda` → `protecao-social`, `programa`;
-  - `regulacao-de-vagas` → `saude`, `regra`, e `faltas` contém "sem efeito na rede" e "decide é pergunta";
-  - `imposto-sobre-a-propriedade` → `parecidaCom: "imposto-propriedade-urbana-rural"`.
-- [ ] **Step 2: Rodar e ver falhar** — `npx vitest run src/tests/inventarioDeLeis.test.ts`, FAIL.
-- [ ] **Step 3: Implementar.**
-  - Área: a do ministério da lei, com uma tabela curta de exceções no próprio script (juros, câmbio e bancos para `economia-e-empresas`; moradia para `protecao-social`).
-  - Família: pétrea e constitucional pelo nível; `tributaria` vira imposto; dinheiro de gasto com público direto (lista de ids no script: transferência de renda, remédios, bolsas, benefícios) vira programa; outro gasto vira verba; o resto vira regra.
-  - Parecida: mesmo radical no id ou nome com 2 ou mais palavras iguais além de "imposto", "verba" e "de".
-  - O `.md` sai agrupado por área, com o total, o aviso de `avisosPorArea` e uma coluna "Destino" vazia para o autor (entra · junta com · sai).
-- [ ] **Step 4: Rodar** — `npx vitest run src/tests/inventarioDeLeis.test.ts && npm run leis:inventario`, PASS e o arquivo gerado com as 242 linhas.
-- [ ] **Step 5: Commit** `leis: inventário das 242 leis por área nova`
-
-**Para aqui e entrega o inventário ao autor.** A Tarefa 5 só começa com a
-coluna "Destino" de Contas públicas preenchida por ele e a decisão sobre o
-limite dessa área.
 
 ### Task 5: Contas públicas no molde (primeira área)
 
@@ -180,7 +187,7 @@ limite dessa área.
 - Test: `src/tests/moldeDasLeis.test.ts`
 
 **Interfaces:**
-- Consumes: Tasks 1 a 4; a tabela de impostos da seção 2 do `docs/jogo/leis/equilibrio.md` (alíquota de partida, arrecadação, pico)
+- Consumes: Tasks 1 a 4 (inventário com a coluna "Destino" preenchida); a tabela de impostos da seção 2 do `docs/jogo/leis/equilibrio.md` (alíquota de partida, arrecadação, pico)
 
 - [ ] **Step 1: Teste que falha:** toda lei com área `contas-publicas` é v4 e passa em `verificarMolde`; `avisosPorArea` da área segue a decisão do autor.
 - [ ] **Step 2: Rodar e ver falhar** — `npx vitest run src/tests/moldeDasLeis.test.ts`, FAIL.

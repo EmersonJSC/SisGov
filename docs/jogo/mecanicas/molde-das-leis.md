@@ -1,6 +1,6 @@
 # Molde das leis e áreas do mapa
 
-> **Status: PROPOSTA (22/out/2026), para o autor revisar.** Completa a
+> **Status: VIGENTE (aprovado pelo autor em 22/out/2026).** Completa a
 > [mecânica 2 (leis)](leis.md) e a parte de áreas da mecânica 14 (ministérios
 > e mapa). O que está aqui foi combinado com o autor na conversa de 22/out;
 > vira VIGENTE quando ele aprovar este texto. Índice: [mecânicas](README.md).
