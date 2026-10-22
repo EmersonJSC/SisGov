@@ -1,0 +1,21 @@
+{
+  "id": "crescimento-real--divida-publica",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "crescimento_real",
+  "alvo": "divida_publica",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.25,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "divida_publica",
+    "multiplicador": 0.01
+  },
+  "unidade": "percentual_pib_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -129,7 +129,11 @@ describe("SG157 fase 4 — cofre", () => {
     const depois = turnos(corte.value, 4);
     expect(v(depois, "resultado_fiscal")).toBeLessThan(0);
     expect(v(depois, "cofre")).toBeLessThan(10);
-    expect(v(depois, "divida_publica")).toBeGreaterThan(50);
+    // com diluição (mecânica 4) a dívida pode até cair; o que falta no
+    // cofre faz ela ficar acima de onde ficaria sem o corte
+    expect(v(depois, "divida_publica")).toBeGreaterThan(
+      v(turnos(comCofre, 4), "divida_publica"),
+    );
   });
 
   it("emprestar o cofre às empresas mexe no crédito e no investimento", () => {

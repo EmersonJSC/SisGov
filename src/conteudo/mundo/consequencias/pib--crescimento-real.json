@@ -1,0 +1,17 @@
+{
+  "id": "pib--crescimento-real",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "pib",
+  "alvo": "crescimento_real",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.3,
+    "termoConstante": -11.41
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

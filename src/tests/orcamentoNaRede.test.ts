@@ -84,9 +84,15 @@ describe("SG157 — orçamento na rede", () => {
     partida = turno(partida);
     const subiu = valor(partida, "divida_publica") - antes;
     expect(subiu).toBeGreaterThan(0);
-    // Um trimestre de déficit anual: em torno de −resultado ÷ 4.
-    expect(subiu).toBeGreaterThan(-resultado / 4 / 3);
-    expect(subiu).toBeLessThan((-resultado / 4) * 3);
+    // Um trimestre de déficit anual, menos a diluição (mecânica 4, fase 1):
+    // a dívida perde (crescimento real + inflação) ÷ 4 % de si mesma.
+    const diluicao =
+      ((valor(nova(), "crescimento_real") + valor(nova(), "inflacao")) *
+        antes) /
+      100;
+    const esperado = (-resultado - diluicao) / 4;
+    expect(subiu).toBeGreaterThan(esperado / 3);
+    expect(subiu).toBeLessThan(esperado * 3);
     const relacao = partida.graph.relations.find(
       (r) =>
         r.originId === "resultado_fiscal" && r.targetId === "divida_publica",

@@ -6490,6 +6490,23 @@
       }
     },
     {
+      "id": "crescimento_real",
+      "tipo": "calculado",
+      "nome": "Crescimento real",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -15,
+        "maximo": 15
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor",
+      "resposta": 1,
+      "medida": {
+        "unidade": "crescimento real do PIB (% ao ano)",
+        "fontes": ["IBGE Contas Nacionais"]
+      }
+    },
+    {
       "id": "pobreza",
       "tipo": "calculado",
       "nome": "Pobreza",

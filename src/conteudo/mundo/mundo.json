@@ -1717,7 +1717,10 @@
     "mundo/consequencias/capacidade-estatal--eficacia-discriminacao-por-orientacao-sexual.json",
     "mundo/consequencias/capacidade-estatal--eficacia-igualdade-racial.json",
     "mundo/consequencias/capacidade-estatal--eficacia-saida-do-pais.json",
-    "mundo/consequencias/capacidade-estatal--eficacia-carvao.json"
+    "mundo/consequencias/capacidade-estatal--eficacia-carvao.json",
+    "mundo/consequencias/pib--crescimento-real.json",
+    "mundo/consequencias/crescimento-real--divida-publica.json",
+    "mundo/consequencias/inflacao--divida-publica.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

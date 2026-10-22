@@ -113,6 +113,18 @@ e, no fim da fase, o roteiro de 4 governos × 2 caminhos
 | 5. Pendências | fundo soberano com o destino da sobra; contribuição sobre salários; programas com custo | Testes do cofre verdes; receita total igual à de antes no turno 0 |
 | 6. Aceite | script que roda as estratégias do `simular.py` traduzidas em leis | Direção e ordem de grandeza da tabela 6 do `equilibrio.md`: austeridade e "cortar imposto e gasto" derrubam a dívida para perto de 64%; "social com superávit" segura perto de 85%; "gasto social sem imposto" quebra |
 
+**Fase 1 feita em 22/out (só a diluição).** Nó `crescimento_real` = 2 + 0,3 ×
+(ritmo − 44,7); a dívida perde (crescimento real + inflação) ÷ 4 % de si mesma
+por trimestre. `pib_nominal` **continua constante** por enquanto: 15 verbas em
+reais são divididas por ele, e se ele crescer elas encolhem uns 6,5% ao ano
+(um corte escondido de ~40% em 8 anos). Vira estoque só junto com a correção
+dessas verbas pela inflação. Resultado, "Nada muda": dívida 78,1 → 82,5 (ano 4)
+→ 88,2 (ano 8), antes 82 → 166. A dívida do turno 0 passa de 82,4 para 78,1
+(estoque inicial 77,2; a de 82 era efeito do aquecimento sem diluição; 78 é o
+dado de 2025 e o ponto de partida do `simular.py`). Abaixo do alvo 94/119
+porque no jogo os juros são 6,7% do PIB (≈ 0,7 × Selic × dívida; real ≈ 8%) e
+o primário não piora com o envelhecimento: fases 2 e 3.
+
 **O turno 0 não muda.** Todas as fases são feitas para dar zero no ponto de
 partida do Brasil: o que muda é a dinâmica a partir dele. A foto do turno 0
 (`paisV1.test.ts`) só muda se uma fase precisar, e com nota.
