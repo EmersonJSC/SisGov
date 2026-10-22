@@ -24,7 +24,21 @@ const arquivos = Object.fromEntries(
   ).map(([path, text]) => [path.slice("../conteudo/".length), text]),
 );
 const PISO = "mundo/leis/piso-salarial-professores.json";
-const piso = (): FichaV3 => JSON.parse(arquivos[PISO]) as FichaV3;
+// Fichas v3 fixas: as do catálogo já passaram para o molde v4.
+const V3 = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<string>("./fixtures/*.v3.json", {
+      eager: true,
+      query: "?raw",
+      import: "default",
+    }),
+  ).map(([path, text]) => [
+    path.slice("./fixtures/".length, -".v3.json".length),
+    text,
+  ]),
+);
+const piso = (): FichaV3 =>
+  JSON.parse(V3["piso-salarial-professores"]) as FichaV3;
 const variaveis = new Map(
   (
     JSON.parse(arquivos["mundo/indicadores/variaveis.json"]) as {
@@ -144,18 +158,14 @@ describe("ficha de lei v3", () => {
   });
 
   it("deduz processo, nível legal e grupo do nível e do dinheiro", () => {
-    const decreto = JSON.parse(
-      arquivos["mundo/leis/verba-policia-federal.json"],
-    ) as FichaV3;
+    const decreto = JSON.parse(V3["verba-policia-federal"]) as FichaV3;
     expect(converterFicha(decreto, variaveis).lei).toMatchObject({
       processoAutorizacao: "execucao-programa-autorizado",
       nivelLegal: "derivada",
       grupo: "orcamentaria",
       orcamento: { modo: "valor_fixo" },
     });
-    const constituicao = JSON.parse(
-      arquivos["mundo/leis/policia-militar.json"],
-    ) as FichaV3;
+    const constituicao = JSON.parse(V3["policia-militar"]) as FichaV3;
     expect(converterFicha(constituicao, variaveis).lei).toMatchObject({
       processoAutorizacao: "emenda-constitucional",
       nivelLegal: "constitucional",
