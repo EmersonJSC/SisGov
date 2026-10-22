@@ -49,7 +49,7 @@
       },
       {
         "id": "segue-a-convencao-da-onu",
-        "rotulo": "Segue a convenção das Nações Unidas",
+        "rotulo": "Segue a convenção da ONU (Organização das Nações Unidas)",
         "valor": 75,
         "custoTexto": "~0,003% do PIB com a acolhida",
         "apoiam": ["Católicos", "Progressistas"],

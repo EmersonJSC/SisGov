@@ -46,7 +46,7 @@
       },
       {
         "id": "0-7",
-        "rotulo": "0,7% (meta das Nações Unidas e dos países ricos)",
+        "rotulo": "0,7% (meta da ONU, Organização das Nações Unidas, e da OCDE, Organização para a Cooperação e Desenvolvimento Econômico)",
         "valor": 100,
         "custoTexto": "0,7% da renda",
         "apoiam": ["Progressistas", "Católicos"],
