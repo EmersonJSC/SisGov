@@ -32,7 +32,12 @@ import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase, PRESIDENCIA } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
-import { PainelDaArea } from "./PainelDaArea";
+import {
+  PainelDaArea,
+  destaqueDaAba,
+  leisDaArea,
+  type FiltroDaArea,
+} from "./PainelDaArea";
 import {
   LARGURA_PAINEL_GRUPOS,
   PainelGrupos,
@@ -449,6 +454,13 @@ function TelaPrincipalCarregada({
     inicial.ok ? inicial.value : null,
   );
   const [aberta, setAberta] = useState<string | null>(null);
+  // aba do painel da área (22/out): acende no mapa as leis daquele grupo
+  const [filtroArea, setFiltroArea] = useState<FiltroDaArea>("todas");
+  const [filtroDaAreaAberta, setFiltroDaAreaAberta] = useState(aberta);
+  if (filtroDaAreaAberta !== aberta) {
+    setFiltroDaAreaAberta(aberta);
+    setFiltroArea("todas");
+  }
   const [selecionado, setSelecionado] = useState<string | null>(null);
   // lista dos grupos aberta de saída em telas largas (SG143)
   const [gruposAbertos, setGruposAbertos] = useState(
@@ -976,6 +988,11 @@ function TelaPrincipalCarregada({
           fundo={fundo}
           aberta={aberta}
           onAbrir={setAberta}
+          destaque={
+            aberta && aberta !== PRESIDENCIA
+              ? destaqueDaAba(leisDaArea(visao, aberta), filtroArea)
+              : null
+          }
           selecionado={selecionado}
           onSelecionar={selecionar}
           marcas={marcas}
@@ -997,6 +1014,8 @@ function TelaPrincipalCarregada({
             visao={visao}
             aberta={aberta}
             selecionado={selecionado}
+            filtro={filtroArea}
+            onFiltro={setFiltroArea}
             onSelecionar={selecionar}
             onFechar={() => setAberta(null)}
           />

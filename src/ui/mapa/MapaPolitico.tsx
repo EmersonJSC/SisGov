@@ -86,6 +86,8 @@ type Props = Readonly<{
   indice: IndiceRelacoes;
   fundo: readonly LigacaoDeFundo[];
   aberta: string | null;
+  /** Leis acesas pela aba do painel da área; as outras da área apagam. */
+  destaque?: ReadonlySet<string> | null;
   onAbrir: (id: string | null) => void;
   selecionado: string | null;
   onSelecionar: (id: string | null) => void;
@@ -469,6 +471,7 @@ const NoLei = memo(function NoLei({
   estado,
   selecionada,
   mostrarRotulo,
+  realce,
   nivel,
   onEntrar,
   onSair,
@@ -481,6 +484,8 @@ const NoLei = memo(function NoLei({
   estado: EstadoNo;
   selecionada: boolean;
   mostrarRotulo: boolean;
+  /** true: acesa pela aba do painel; false: apagada; undefined: normal. */
+  realce?: boolean;
   /** Quanto a lei está ligada (0–1): define o tamanho e o anel. */
   nivel: number;
   /** Zoom do mapa: o nome da lei compensa, para ter sempre tamanho legível. */
@@ -498,7 +503,7 @@ const NoLei = memo(function NoLei({
   const raioVisivel = r * escala;
   return (
     <g
-      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)} familia-${familiaDaLei(lei)}`}
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)} familia-${familiaDaLei(lei)}${realce === true ? " realcada" : realce === false ? " apagada" : ""}`}
       transform={`translate(${pos.x} ${pos.y})`}
       style={{ "--cor": cor } as React.CSSProperties}
       role="button"
@@ -866,6 +871,7 @@ export function MapaPolitico({
   indice,
   fundo,
   aberta,
+  destaque = null,
   onAbrir,
   selecionado,
   onSelecionar,
@@ -2047,6 +2053,11 @@ export function MapaPolitico({
                   estado={estado}
                   selecionada={pos.id === selecionado}
                   mostrarRotulo={mostrarRotulo}
+                  realce={
+                    destaque && aberta && lei.areas.includes(aberta)
+                      ? destaque.has(pos.id)
+                      : undefined
+                  }
                   // só a lei com nome à mostra acompanha o zoom (as outras não
                   // são redesenhadas a cada quadro dele)
                   escalaTela={emDestaque ? k : 1}

@@ -3,7 +3,7 @@
  * em prateleiras (impostos, verbas, regras, Constituição), cada uma com o
  * estado em palavras e uma barra. Gaveta à direita; o mapa segue visível.
  */
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { VisaoLei, VisaoPartida } from "../../app/partida";
 import { familiaDaLei, PRATELEIRAS, type Familia } from "./familia";
 import { nivelDaLei } from "./formatos";
@@ -11,7 +11,7 @@ import { Icone } from "./Icone";
 import { iconeLei } from "./iconesPersonalizados";
 import { ICONE_INTERFACE, ICONE_LEI } from "./icones";
 
-type Filtro = Familia | "todas" | "principais";
+export type FiltroDaArea = Familia | "todas" | "principais";
 
 /** O estado da lei em palavras: a opção em vigor ou o valor com unidade. */
 function estadoDaLei(lei: VisaoLei): string {
@@ -37,7 +37,7 @@ function posicaoDaLei(lei: VisaoLei): number {
 }
 
 /** As leis que mais mexem no dinheiro da área (até 3) são as principais. */
-function principaisDa(leis: readonly VisaoLei[]): Set<string> {
+export function principaisDa(leis: readonly VisaoLei[]): Set<string> {
   return new Set(
     [...leis]
       .filter((l) => Math.abs(l.saldoAnual) > 0)
@@ -47,28 +47,47 @@ function principaisDa(leis: readonly VisaoLei[]): Set<string> {
   );
 }
 
+/** Leis em vigor de uma área, em ordem alfabética. */
+export function leisDaArea(
+  visao: VisaoPartida,
+  aberta: string,
+): readonly VisaoLei[] {
+  return visao.leis
+    .filter((l) => l.emVigor && l.areas.includes(aberta))
+    .sort((a, b) => a.nome.localeCompare(b.nome, "pt"));
+}
+
+/** Ids que a aba escolhida acende no mapa (null: nenhuma aba, mapa normal). */
+export function destaqueDaAba(
+  leis: readonly VisaoLei[],
+  filtro: FiltroDaArea,
+): ReadonlySet<string> | null {
+  if (filtro === "todas") return null;
+  if (filtro === "principais") return principaisDa(leis);
+  return new Set(
+    leis.filter((l) => familiaDaLei(l) === filtro).map((l) => l.id),
+  );
+}
+
 export function PainelDaArea({
   visao,
   aberta,
   selecionado,
+  filtro,
+  onFiltro,
   onSelecionar,
   onFechar,
 }: {
   visao: VisaoPartida;
   aberta: string;
   selecionado: string | null;
+  filtro: FiltroDaArea;
+  onFiltro: (f: FiltroDaArea) => void;
   onSelecionar: (id: string) => void;
   onFechar: () => void;
 }) {
-  const [filtro, setFiltro] = useState<Filtro>("todas");
   const area = visao.governo.find((a) => a.id === aberta);
-  const leis = useMemo(
-    () =>
-      visao.leis
-        .filter((l) => l.emVigor && l.areas.includes(aberta))
-        .sort((a, b) => a.nome.localeCompare(b.nome, "pt")),
-    [visao.leis, aberta],
-  );
+  const leis = useMemo(() => leisDaArea(visao, aberta), [visao, aberta]);
   const principais = useMemo(() => principaisDa(leis), [leis]);
   if (!area || leis.length === 0) return null;
 
@@ -119,7 +138,7 @@ export function PainelDaArea({
             key={id}
             type="button"
             className={filtro === id ? "on" : ""}
-            onClick={() => setFiltro(id)}
+            onClick={() => onFiltro(id)}
           >
             {rotulo}
           </button>
