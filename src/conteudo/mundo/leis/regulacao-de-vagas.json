@@ -1,22 +1,12 @@
 {
   "id": "regulacao-de-vagas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Regulação de vagas",
-  "descricao": "Quem decide quem é atendido primeiro e onde?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "sistema-de-saude",
-    "nome": "Sistema de saúde",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define como os pacientes do sistema público entram na fila de consultas e cirurgias, e quem decide a ordem.",
+  "area": "saude",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_regulacao_de_vagas",
     "unidade": "nivel_escopo",
@@ -27,15 +17,17 @@
         "valor": 0,
         "apoiam": ["Interior"],
         "rejeitam": ["Pobres"],
-        "efeitos": "Fila fragmentada; o paciente entra numa fila nova a cada etapa"
+        "efeitos": "Fila fragmentada; o paciente entra numa fila nova a cada etapa",
+        "propoe": "Cada prefeitura tem a sua fila; o paciente recomeça a cada etapa."
       },
       {
         "id": "central-regional-com-fila-unica-e-publica",
         "rotulo": "Central regional com fila única e pública",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "baixo",
         "apoiam": ["Movimento pela saúde pública"],
-        "efeitos": "Fila ↓; transparência ↑; Gasto com judicialização ↓"
+        "efeitos": "Fila ↓; transparência ↑; Gasto com judicialização ↓",
+        "propoe": "Uma central regional, com fila única e pública."
       },
       {
         "id": "tempo-maximo-garantido-passou-do-prazo-o-estado-paga-o-priva",
@@ -44,10 +36,61 @@
         "custoTexto": "médio",
         "apoiam": ["Classe média", "Empresários"],
         "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Fila ↓ rápido; Gasto com judicialização ↓; Cofre ↓; torna o mutirão automático"
+        "efeitos": "Fila ↓ rápido; Gasto com judicialização ↓; Cofre ↓; torna o mutirão automático",
+        "propoe": "Prazo máximo garantido: passou do prazo, o governo paga o atendimento particular."
       }
     ]
   },
-  "consequencias": [],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "regulacao-de-vagas--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06,
+        "termoConstante": 0
+      },
+      "atraso": 2
+    },
+    {
+      "id": "regulacao-de-vagas--popularidade-governo",
+      "alvo": "popularidade_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.04,
+        "termoConstante": 0
+      },
+      "atraso": 2
+    },
+    {
+      "id": "regulacao-de-vagas--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.05,
+        "termoConstante": 0
+      },
+      "atraso": 2
+    },
+    {
+      "id": "regulacao-de-vagas--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "limiar",
+      "parametros": {
+        "limiar": 50,
+        "coeficiente": 0.002,
+        "direcao": "acima"
+      },
+      "atraso": 1
+    }
+  ]
 }

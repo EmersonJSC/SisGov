@@ -64,7 +64,8 @@ a tela (`src/ui`) fica mais para o final.**
 - [x] Inventário das leis por área nova (`npm run leis:inventario` → docs/jogo/leis/inventario.md)
 - [x] Áreas por assunto no país; família lida da lei, não adivinhada
 - [x] Catálogo no formato v4: **221 de 239 leis** nas 11 áreas e as 2 pétreas (22/out), sem mudar nenhum número (foto de todos os valores a cada área). Dados de cada área em `scripts/leis/molde/`.
-- [ ] Autor aprovar `docs/jogo/leis/destinos-propostos.md` (17 leis para sair ou ganhar efeito; Segurança e defesa em duas esferas?)
+- [x] Destinos aprovados e aplicados (22/out): 15 leis saíram; 224 leis no jogo, 223 no molde v4 (falta só Destino da sobra, mecânica 4)
+- [ ] Separar Segurança e defesa em duas esferas (Segurança e justiça; Defesa e exterior): aprovado pelo autor
 - [ ] Mecânica 4: juntar "Destino da sobra" ao fundo soberano (comanda o cofre) e tirar a contribuição sobre salários de dentro da previdência para uma lei própria
 - [ ] Depois, com amostra em HTML: mapa em faixas e filtro; janela da lei; eleitorado em janela
 

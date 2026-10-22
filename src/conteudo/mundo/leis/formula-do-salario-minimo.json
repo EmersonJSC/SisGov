@@ -18,14 +18,14 @@
         "apoiam": ["Congresso", "Sindicatos que buscam reajuste político"],
         "rejeitam": ["Empresários que buscam previsibilidade"],
         "efeitos": "Flexibilidade para negociar cada aumento, com incerteza para famílias e empresas.",
+        "propoe": "Um valor novo é votado a cada ano, sem fórmula.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
             "opcoes": ["lei-nacional"],
             "motivo": "Uma comissão técnica decide pelo critério dela: repor a inflação ou seguir a meta."
           }
-        ],
-        "propoe": "Um valor novo é votado a cada ano, sem fórmula."
+        ]
       },
       {
         "id": "so-inflacao",
@@ -43,14 +43,14 @@
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Pequenos negócios"],
         "efeitos": "Renda e consumo melhoram após alguns turnos; custo de contratação e gasto com benefícios sobem.",
+        "propoe": "Repõe a inflação e soma parte do crescimento da economia.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
             "opcoes": ["lei-nacional"],
             "motivo": "Uma comissão técnica decide pelo critério dela: repor a inflação ou seguir a meta."
           }
-        ],
-        "propoe": "Repõe a inflação e soma parte do crescimento da economia."
+        ]
       },
       {
         "id": "meta-da-mediana",

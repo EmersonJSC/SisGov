@@ -126,10 +126,6 @@
       "opcao": "autonomia-plena"
     },
     {
-      "lei": "regime-cambial",
-      "opcao": "flutuante"
-    },
-    {
       "lei": "independencia-do-judiciario",
       "opcao": "plena"
     },
@@ -359,19 +355,19 @@
     },
     {
       "lei": "imposto-renda-empresas",
-      "nivel": 34.0
+      "nivel": 34
     },
     {
       "lei": "tributacao-dividendos",
-      "nivel": 10.0
+      "nivel": 10
     },
     {
       "lei": "imposto-grandes-fortunas",
-      "nivel": 0.0
+      "nivel": 0
     },
     {
       "lei": "imposto-heranca",
-      "nivel": 8.0
+      "nivel": 8
     },
     {
       "lei": "imposto-propriedade-urbana-rural",
@@ -486,20 +482,8 @@
       "opcao": "referencia-nenhuma-ou-pontual"
     },
     {
-      "lei": "indexacao-de-contratos",
-      "opcao": "restrita"
-    },
-    {
       "lei": "defesa-comercial",
       "opcao": "tecnica-caso-a-caso-pelas-regras-da-omc"
-    },
-    {
-      "lei": "volume-de-incentivo-a-industria",
-      "opcao": "referencia-lacuna"
-    },
-    {
-      "lei": "licenciamento-de-obras-e-empresas",
-      "opcao": "autodeclaracao-para-medio-impacto"
     },
     {
       "lei": "alfabetizacao-na-idade-certa",
@@ -508,18 +492,6 @@
     {
       "lei": "cooperacao-internacional",
       "opcao": "0-03"
-    },
-    {
-      "lei": "verba-para-juventude-negra-e-saude-da-populacao-negra",
-      "opcao": "referencia-hoje"
-    },
-    {
-      "lei": "licenca-para-cuidar-do-bebe",
-      "opcao": "longa-so-a-mae-4-a-6-meses"
-    },
-    {
-      "lei": "protecao-da-vegetacao-nativa-nas-propriedades-rurais",
-      "opcao": "reserva-legal-com-anistia-parcial"
     },
     {
       "lei": "divisao-da-verba-atencao-basica-x-hospitais",
@@ -570,16 +542,8 @@
       "opcao": "cada-municipio-cuida-da-sua-fila"
     },
     {
-      "lei": "acolhida-e-interiorizacao-de-imigrantes",
-      "opcao": "referencia-r-300-milhoes-em-2024"
-    },
-    {
       "lei": "verba-de-planejamento-familiar-e-de-aborto-legal",
       "opcao": "referencia-hoje"
-    },
-    {
-      "lei": "bloqueio-de-pagamentos-a-casas-sem-licenca",
-      "opcao": "sim"
     },
     {
       "lei": "piso-de-gasto-em-educacao",
@@ -592,10 +556,6 @@
     {
       "lei": "programa-nuclear-lei",
       "opcao": "pacifico-com-autonomia-sem-a-inspecao-extra"
-    },
-    {
-      "lei": "verba-da-saude-acima-do-piso",
-      "opcao": "4-3-do-pib"
     },
     {
       "lei": "bolsas-de-pos-graduacao",
@@ -626,16 +586,8 @@
       "opcao": "regime-proprio-ajustado"
     },
     {
-      "lei": "integracao-regional",
-      "opcao": "blocos-intergovernamentais"
-    },
-    {
       "lei": "rede-diplomatica",
       "opcao": "205-postos"
-    },
-    {
-      "lei": "como-o-estado-entrega-casa",
-      "opcao": "financiamento-subsidiado-da-casa-propria"
     },
     {
       "lei": "remedios-em-farmacias-credenciadas",
@@ -692,14 +644,6 @@
     {
       "lei": "bolsa-de-permanencia-no-ensino-medio",
       "opcao": "focalizada-nos-inscritos-no-cadastro-social"
-    },
-    {
-      "lei": "publicidade-de-apostas",
-      "opcao": "proibida"
-    },
-    {
-      "lei": "verba-do-programa-habitacional",
-      "opcao": "referencia-0-1-a-0-5-do-pib"
     },
     {
       "lei": "missoes-de-paz",
@@ -888,10 +832,10 @@
     "nivel_licenca_parental": 33,
     "aliquota_imposto_renda_pessoas": 27.5,
     "aliquota_imposto_sobre_consumo": 26.5,
-    "aliquota_imposto_renda_empresas": 34.0,
-    "aliquota_tributacao_dividendos": 10.0,
-    "aliquota_imposto_grandes_fortunas": 0.0,
-    "aliquota_imposto_heranca": 8.0,
+    "aliquota_imposto_renda_empresas": 34,
+    "aliquota_tributacao_dividendos": 10,
+    "aliquota_imposto_grandes_fortunas": 0,
+    "aliquota_imposto_heranca": 8,
     "aliquota_imposto_propriedade_urbana_rural": 0.5,
     "aliquota_imposto_transacoes_financeiras": 0.38,
     "pib_nominal": 12000000,
@@ -904,22 +848,19 @@
     "nivel_banco_de_desenvolvimento": 66.67,
     "nivel_controle_de_precos": 33.33,
     "nivel_regulacao_dos_bancos": 33.33,
-    "nivel_investimento_estrangeiro": 50.0,
+    "nivel_investimento_estrangeiro": 50,
     "nivel_politica_industrial": 66.67,
     "nivel_quem_controla_o_banco_central": 100,
-    "nivel_regime_cambial": 100,
-    "nivel_propriedade_dos_meios_de_producao": 50.0,
-    "nivel_programa_de_privatizacao": 50.0,
+    "nivel_propriedade_dos_meios_de_producao": 50,
+    "nivel_programa_de_privatizacao": 50,
     "nivel_nacionalizacao": 0,
-    "nivel_cooperativas_e_autogestao": 50.0,
-    "nivel_planejamento_da_economia": 50.0,
+    "nivel_cooperativas_e_autogestao": 50,
+    "nivel_planejamento_da_economia": 50,
     "nivel_licenca_para_abrir_negocio": 100,
-    "nivel_valor_da_meta_de_inflacao": 25.0,
+    "nivel_valor_da_meta_de_inflacao": 25,
     "nivel_taxa_basica_de_juros": 41.96,
-    "nivel_intervencao_cambial": 50.0,
-    "nivel_indexacao_de_contratos": 50.0,
-    "nivel_defesa_comercial": 50.0,
-    "nivel_volume_de_incentivo_a_industria": 50.0,
+    "nivel_intervencao_cambial": 50,
+    "nivel_defesa_comercial": 50,
     "aliquota_tarifas_de_importacao": 13.35,
     "nivel_acesso_ao_ensino_superior": 50,
     "nivel_acoes_afirmativas": 75,
@@ -988,46 +929,37 @@
     "nivel_vacinacao_obrigatoria": 50,
     "nivel_voto_obrigatorio": 100,
     "nivel_vouchers_escolares": 0,
-    "nivel_licenciamento_de_obras_e_empresas": 33.33,
     "nivel_alfabetizacao_na_idade_certa": 66.67,
     "nivel_cooperacao_internacional": 66.67,
     "nivel_fontes_de_energia_favorecidas": 66.67,
-    "nivel_verba_para_juventude_negra_e_saude_da_populacao_negra": 66.67,
-    "nivel_licenca_para_cuidar_do_bebe": 50.0,
-    "nivel_protecao_da_vegetacao_nativa_nas_propriedades_rurais": 66.67,
     "nivel_divisao_da_verba_atencao_basica_x_hospitais": 66.67,
     "nivel_credito_estudantil": 33.33,
     "nivel_industria_de_defesa": 66.67,
     "nivel_protecao_de_fronteiras": 33.33,
     "nivel_incentivo_fiscal_a_pesquisa_nas_empresas": 33.33,
-    "nivel_alinhamento_externo": 50.0,
+    "nivel_alinhamento_externo": 50,
     "nivel_verba_de_controle": 66.67,
     "nivel_politica_de_sancoes": 0,
-    "nivel_investimento_em_defesa": 50.0,
-    "nivel_vagas_publicas_no_ensino_superior": 50.0,
-    "nivel_alternativas_penais_e_audiencia_de_custodia": 50.0,
+    "nivel_investimento_em_defesa": 50,
+    "nivel_vagas_publicas_no_ensino_superior": 50,
+    "nivel_alternativas_penais_e_audiencia_de_custodia": 50,
     "nivel_regulacao_de_vagas": 0,
-    "nivel_acolhida_e_interiorizacao_de_imigrantes": 66.67,
     "nivel_verba_de_planejamento_familiar_e_de_aborto_legal": 66.67,
-    "nivel_bloqueio_de_pagamentos_a_casas_sem_licenca": 100,
-    "nivel_piso_de_gasto_em_educacao": 50.0,
+    "nivel_piso_de_gasto_em_educacao": 50,
     "nivel_piso_de_gasto_em_saude": 50,
     "nivel_transferencia_de_renda_as_familias_pobres": 66.67,
     "nivel_programa_nuclear": 66.67,
-    "nivel_verba_da_saude_acima_do_piso": 50.0,
-    "nivel_bolsas_de_pos_graduacao": 50.0,
+    "nivel_bolsas_de_pos_graduacao": 50,
     "nivel_fundo_de_equalizacao": 33.33,
     "nivel_papel_das_forcas_armadas": 66.67,
     "nivel_vinculacoes_orcamentarias": 100,
     "nivel_vagas_de_residencia_medica": 33.33,
     "nivel_ciberseguranca": 33.33,
     "nivel_protecao_social_dos_militares": 33.33,
-    "nivel_integracao_regional": 66.67,
     "nivel_rede_diplomatica": 66.67,
-    "nivel_como_o_estado_entrega_casa": 25.0,
     "nivel_remedios_em_farmacias_credenciadas": 66.67,
     "nivel_fiscalizacao_do_trabalho": 66.67,
-    "nivel_clausula_de_desempenho": 50.0,
+    "nivel_clausula_de_desempenho": 50,
     "nivel_gestao_dos_presidios": 0,
     "nivel_fiscalizacao_ambiental": 33.33,
     "nivel_tribunais_e_tratados_internacionais": 66.67,
@@ -1035,12 +967,10 @@
     "nivel_exportacao_de_armas": 66.67,
     "nivel_controle_civil_das_forcas_armadas": 66.67,
     "nivel_vagas_de_creche": 33.33,
-    "nivel_credito_rural_e_assistencia_tecnica": 50.0,
+    "nivel_credito_rural_e_assistencia_tecnica": 50,
     "nivel_custo_de_processar_na_justica_do_trabalho": 0,
     "nivel_regra_de_repasse": 66.67,
-    "nivel_bolsa_de_permanencia_no_ensino_medio": 50.0,
-    "nivel_publicidade_de_apostas": 100,
-    "nivel_verba_do_programa_habitacional": 50.0,
+    "nivel_bolsa_de_permanencia_no_ensino_medio": 50,
     "nivel_missoes_de_paz": 33.33,
     "nivel_protecao_da_vida_desde_a_concepcao": 0,
     "recursos_verba_policia_federal": 9600,
@@ -1074,8 +1004,8 @@
     "nivel_seguro_desemprego": 75,
     "nivel_transporte_publico": 67,
     "nivel_tribunais_superiores": 0,
-    "nivel_alianca_militar": 25.0,
-    "nivel_regra_de_reajuste_dos_beneficios": 75.0,
+    "nivel_alianca_militar": 25,
+    "nivel_regra_de_reajuste_dos_beneficios": 75,
     "nivel_ciclo_policial": 0,
     "nivel_lei_de_drogas": 50,
     "nivel_maioridade_penal": 0,

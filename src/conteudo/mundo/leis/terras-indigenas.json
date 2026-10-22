@@ -68,10 +68,6 @@
     "minimo": 2,
     "maximo": 2
   },
-  "mae": {
-    "texto": "Licenciamento de obras e empresas. Rigoroso com consulta lá tranca esta lei em Demarcação ou Autonomia. Autonomia aqui exige Rigoroso com consulta lá.",
-    "leis": ["licenciamento-de-obras-e-empresas"]
-  },
   "mesa": {
     "id": "terra-e-campo",
     "nome": "Terra e campo",

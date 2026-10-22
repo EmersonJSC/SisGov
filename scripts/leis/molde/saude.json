@@ -206,6 +206,59 @@
         "cerca-de-24-000-vagas": "Cerca de 24 mil vagas.",
         "cerca-de-33-000-uma-vaga-por-formado": "Uma vaga para cada médico formado."
       }
+    },
+    {
+      "id": "regulacao-de-vagas",
+      "familia": "regra",
+      "decide": "Define como os pacientes do sistema público entram na fila de consultas e cirurgias, e quem decide a ordem.",
+      "opcoes": {
+        "cada-municipio-cuida-da-sua-fila": "Cada prefeitura tem a sua fila; o paciente recomeça a cada etapa.",
+        "central-regional-com-fila-unica-e-publica": "Uma central regional, com fila única e pública.",
+        "tempo-maximo-garantido-passou-do-prazo-o-estado-paga-o-priva": "Prazo máximo garantido: passou do prazo, o governo paga o atendimento particular."
+      },
+      "efeitos": [
+        {
+          "id": "regulacao-de-vagas--pressao-hospitalar",
+          "alvo": "pressao_hospitalar",
+          "mecanismo": "afim",
+          "parametros": {
+            "coeficiente": -0.06,
+            "termoConstante": 0
+          },
+          "atraso": 2
+        },
+        {
+          "id": "regulacao-de-vagas--popularidade-governo",
+          "alvo": "popularidade_governo",
+          "mecanismo": "afim",
+          "parametros": {
+            "coeficiente": 0.04,
+            "termoConstante": 0
+          },
+          "atraso": 2
+        },
+        {
+          "id": "regulacao-de-vagas--grupo-pobres",
+          "alvo": "grupo_pobres",
+          "mecanismo": "afim",
+          "parametros": {
+            "coeficiente": 0.05,
+            "termoConstante": 0
+          },
+          "atraso": 2
+        },
+        {
+          "id": "regulacao-de-vagas--gasto-publico",
+          "alvo": "gasto_publico",
+          "mecanismo": "limiar",
+          "parametros": {
+            "limiar": 50,
+            "coeficiente": 0.002,
+            "direcao": "acima"
+          },
+          "atraso": 1
+        }
+      ]
     }
   ]
 }

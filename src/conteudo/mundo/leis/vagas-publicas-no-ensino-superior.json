@@ -33,6 +33,7 @@
         "apoiam": ["Sindicatos de servidores", "Classe média"],
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Escolaridade ↑ (4 a 6 anos) contra Mínimo; Desigualdade ↓ pouco; Inovação ↑ pouco; Resultado fiscal ↓ pouco (estimado)",
+        "propoe": "Cerca de 21% das matrículas, como hoje.",
         "requer": [
           {
             "lei": "acesso-ao-ensino-superior",
@@ -43,8 +44,7 @@
             ],
             "motivo": "Com cobrança integral, a oferta pública de referência deixa de ser gratuita."
           }
-        ],
-        "propoe": "Cerca de 21% das matrículas, como hoje."
+        ]
       },
       {
         "id": "maximo-expansao-40-das-matriculas",
@@ -59,14 +59,14 @@
         ],
         "rejeitam": ["Mercado financeiro", "Faculdades privadas"],
         "efeitos": "Escolaridade ↑ (4 a 6 anos); Desigualdade ↓; Fuga de cérebros ↑ se a economia não absorve; Resultado fiscal ↓",
+        "propoe": "Expande para cerca de 40% das matrículas.",
         "requer": [
           {
             "lei": "acesso-ao-ensino-superior",
             "opcoes": ["gratuita-para-todos-sem-vestibular-e-com-mais-vagas"],
             "motivo": "Expansão de vagas públicas depende do modelo de universidade gratuita e ampliada."
           }
-        ],
-        "propoe": "Expande para cerca de 40% das matrículas."
+        ]
       }
     ]
   },

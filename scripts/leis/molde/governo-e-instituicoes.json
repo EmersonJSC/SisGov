@@ -256,6 +256,28 @@
         "obrigatorio-com-multa-simbolica": "Obrigatório, com multa pequena.",
         "obrigatorio-com-sancao-forte": "Obrigatório, com punição forte para quem falta."
       }
+    },
+    {
+      "id": "clausula-de-desempenho",
+      "familia": "regra",
+      "decide": "Define quantos votos um partido precisa ter para receber dinheiro do fundo, tempo de TV e liderança no Congresso.",
+      "opcoes": {
+        "sem-clausula": "Qualquer partido recebe, com qualquer votação.",
+        "gradual-de-2-a-3": "De 2% a 3% dos votos, subindo aos poucos.",
+        "5": "5% dos votos."
+      },
+      "efeitos": [
+        {
+          "id": "clausula-de-desempenho--estabilidade-politica",
+          "alvo": "estabilidade_politica",
+          "mecanismo": "afim",
+          "parametros": {
+            "coeficiente": 0.05,
+            "termoConstante": -2.5
+          },
+          "atraso": 4
+        }
+      ]
     }
   ]
 }

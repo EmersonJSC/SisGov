@@ -34,6 +34,11 @@
         "id": "fundo-com-multa-na-demissao",
         "rotulo": "Manter depósito mensal e multa por demissão sem justa causa",
         "valor": 67,
+        "custoTexto": "0 (fundo privado que financia moradia)",
+        "apoiam": ["Trabalhadores com carteira"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑",
+        "propoe": "Depósito todo mês e multa na demissão sem justa causa.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -44,17 +49,16 @@
             ],
             "motivo": "O fundo obrigatório exige direitos trabalhistas mínimos além do contrato livre."
           }
-        ],
-        "custoTexto": "0 (fundo privado que financia moradia)",
-        "apoiam": ["Trabalhadores com carteira"],
-        "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑",
-        "propoe": "Depósito todo mês e multa na demissão sem justa causa."
+        ]
       },
       {
         "id": "indenizacao-por-tempo-de-casa",
         "rotulo": "Trocar o fundo por indenização crescente com o tempo de casa",
         "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Empresários"],
+        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)",
+        "propoe": "Em vez do fundo, indenização que cresce com o tempo de casa.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -64,11 +68,7 @@
             ],
             "motivo": "Indenização legal por antiguidade exige código trabalhista detalhado."
           }
-        ],
-        "apoiam": ["Centrais sindicais"],
-        "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)",
-        "propoe": "Em vez do fundo, indenização que cresce com o tempo de casa."
+        ]
       }
     ]
   },

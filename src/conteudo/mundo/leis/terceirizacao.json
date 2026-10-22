@@ -15,6 +15,10 @@
         "id": "livre",
         "rotulo": "Liberar terceirização em qualquer atividade sem responsabilidade da contratante",
         "valor": 0,
+        "apoiam": ["Empresários", "Indústria"],
+        "rejeitam": ["Centrais sindicais"],
+        "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)",
+        "propoe": "Pode terceirizar tudo, sem responder pelas dívidas da terceirizada.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -26,11 +30,7 @@
             ],
             "motivo": "Estabilidade constitucional não permite terceirização sem responsabilidade."
           }
-        ],
-        "apoiam": ["Empresários", "Indústria"],
-        "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)",
-        "propoe": "Pode terceirizar tudo, sem responder pelas dívidas da terceirizada."
+        ]
       },
       {
         "id": "ampla-com-a-contratante-respondendo-pelas-dividas",

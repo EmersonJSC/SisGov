@@ -7301,18 +7301,6 @@
       "area": "Economia, finanças e comércio exterior"
     },
     {
-      "id": "nivel_indexacao_de_contratos",
-      "tipo": "controle",
-      "nome": "Indexação de contratos",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Economia, finanças e comércio exterior"
-    },
-    {
       "id": "nivel_investimento_estrangeiro",
       "tipo": "controle",
       "nome": "Investimento estrangeiro",
@@ -7385,18 +7373,6 @@
       "area": "Economia, finanças e comércio exterior"
     },
     {
-      "id": "nivel_regime_cambial",
-      "tipo": "controle",
-      "nome": "Regime cambial",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Economia, finanças e comércio exterior"
-    },
-    {
       "id": "nivel_papel_do_estado_empresario",
       "tipo": "controle",
       "nome": "Papel do Estado empresário",
@@ -7457,18 +7433,6 @@
       "area": "Economia, finanças e comércio exterior"
     },
     {
-      "id": "nivel_volume_de_incentivo_a_industria",
-      "tipo": "controle",
-      "nome": "Volume de incentivo à indústria",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Economia, finanças e comércio exterior"
-    },
-    {
       "id": "nivel_controle_de_precos",
       "tipo": "controle",
       "nome": "Controle de preços",
@@ -7508,18 +7472,6 @@
       "id": "nivel_acordos_comerciais",
       "tipo": "controle",
       "nome": "Acordos comerciais",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Economia, finanças e comércio exterior"
-    },
-    {
-      "id": "nivel_conteudo_local",
-      "tipo": "controle",
-      "nome": "Conteúdo local",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -8429,18 +8381,6 @@
       "area": "Educação, ciência e cultura"
     },
     {
-      "id": "nivel_licenciamento_de_obras_e_empresas",
-      "tipo": "controle",
-      "nome": "Licenciamento de obras e empresas",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Meio ambiente, energia, terra e cidades"
-    },
-    {
       "id": "nivel_regime_contra_faccoes",
       "tipo": "controle",
       "nome": "Regime contra facções",
@@ -8513,18 +8453,6 @@
       "area": "Saúde"
     },
     {
-      "id": "nivel_verba_para_juventude_negra_e_saude_da_populacao_negra",
-      "tipo": "controle",
-      "nome": "Verba para juventude negra e saúde da população negra",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Direitos, costumes, religião e imigração"
-    },
-    {
       "id": "nivel_policiamento_orientado",
       "tipo": "controle",
       "nome": "Policiamento orientado",
@@ -8547,30 +8475,6 @@
       },
       "valorInicial": 0,
       "area": "Impostos e contas públicas"
-    },
-    {
-      "id": "nivel_licenca_para_cuidar_do_bebe",
-      "tipo": "controle",
-      "nome": "Licença para cuidar do bebê",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Previdência, assistência, moradia e demografia"
-    },
-    {
-      "id": "nivel_protecao_da_vegetacao_nativa_nas_propriedades_rurais",
-      "tipo": "controle",
-      "nome": "Proteção da vegetação nativa nas propriedades rurais",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Meio ambiente, energia, terra e cidades"
     },
     {
       "id": "nivel_divisao_da_verba_atencao_basica_x_hospitais",
@@ -8741,33 +8645,9 @@
       "area": "Saúde"
     },
     {
-      "id": "nivel_acolhida_e_interiorizacao_de_imigrantes",
-      "tipo": "controle",
-      "nome": "Acolhida e interiorização de imigrantes",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Direitos, costumes, religião e imigração"
-    },
-    {
       "id": "nivel_verba_de_planejamento_familiar_e_de_aborto_legal",
       "tipo": "controle",
       "nome": "Verba de planejamento familiar e de aborto legal",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Direitos, costumes, religião e imigração"
-    },
-    {
-      "id": "nivel_bloqueio_de_pagamentos_a_casas_sem_licenca",
-      "tipo": "controle",
-      "nome": "Bloqueio de pagamentos a casas sem licença",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -8816,18 +8696,6 @@
       "id": "nivel_lista_de_remedios_e_incorporacao",
       "tipo": "controle",
       "nome": "Lista de remédios e incorporação",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Saúde"
-    },
-    {
-      "id": "nivel_verba_da_saude_acima_do_piso",
-      "tipo": "controle",
-      "nome": "Verba da saúde acima do piso",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
@@ -8933,18 +8801,6 @@
       "area": "Instituições, sistema político e informação"
     },
     {
-      "id": "nivel_integracao_regional",
-      "tipo": "controle",
-      "nome": "Integração regional",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Defesa e relações exteriores"
-    },
-    {
       "id": "nivel_rede_diplomatica",
       "tipo": "controle",
       "nome": "Rede diplomática",
@@ -8979,18 +8835,6 @@
       },
       "valorInicial": 0,
       "area": "Direitos, costumes, religião e imigração"
-    },
-    {
-      "id": "nivel_como_o_estado_entrega_casa",
-      "tipo": "controle",
-      "nome": "Como o Estado entrega casa",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Previdência, assistência, moradia e demografia"
     },
     {
       "id": "nivel_remedios_em_farmacias_credenciadas",
@@ -9207,30 +9051,6 @@
       },
       "valorInicial": 0,
       "area": "Instituições, sistema político e informação"
-    },
-    {
-      "id": "nivel_publicidade_de_apostas",
-      "tipo": "controle",
-      "nome": "Publicidade de apostas",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Direitos, costumes, religião e imigração"
-    },
-    {
-      "id": "nivel_verba_do_programa_habitacional",
-      "tipo": "controle",
-      "nome": "Verba do programa habitacional",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Previdência, assistência, moradia e demografia"
     },
     {
       "id": "nivel_missoes_de_paz",

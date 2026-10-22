@@ -56,10 +56,6 @@
     "minimo": 2,
     "maximo": 2
   },
-  "mae": {
-    "texto": "Sistema previdenciário (Fiscal e Social). Se for capitalização, só ficam “regras do servidor civil” e “regime geral com fundo”.",
-    "leis": []
-  },
   "mesa": {
     "id": "forcas-armadas",
     "nome": "Forças Armadas",

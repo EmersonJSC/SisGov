@@ -62,12 +62,7 @@
   },
   "mae": {
     "texto": "Aliança militar (“bases estrangeiras” trava esta lei em “alinhamento com potência ocidental” ou “ocidental pragmático”). Programa nuclear (“dissuasão nuclear” mexe nesta lei, ver pontos abertos). É mãe de Integração regional e Missões de paz.",
-    "leis": [
-      "integracao-regional",
-      "policia-militar",
-      "missoes-de-paz",
-      "programa-nuclear"
-    ]
+    "leis": ["policia-militar", "missoes-de-paz", "programa-nuclear"]
   },
   "mesa": {
     "id": "politica-externa",

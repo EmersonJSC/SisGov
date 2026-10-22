@@ -329,14 +329,13 @@ describe("áreas por assunto no país", () => {
     for (const lei of [
       "quem-controla-o-banco-central",
       "mandato-do-banco-central",
-      "regime-cambial",
       "regulacao-dos-bancos",
       "controle-de-capitais",
     ]) {
       expect(ministerio("mdic").leis).toContain(lei);
       expect(ministerio("fazenda").leis).not.toContain(lei);
     }
-    for (const lei of ["habitacao-publica", "verba-do-programa-habitacional"])
+    for (const lei of ["habitacao-publica", "programa-habitacao-popular"])
       expect(ministerio("desenvolvimento-social").leis).toContain(lei);
   });
 
@@ -346,7 +345,7 @@ describe("áreas por assunto no país", () => {
     const visao = verPartida(criada.value);
     const lei = (id: string) => visao.leis.find((l) => l.id === id)!;
     expect(lei("imposto-renda-pessoas").areas).toEqual(["contas-publicas"]);
-    expect(lei("regime-cambial").areas).toEqual(["economia-e-empresas"]);
+    expect(lei("controle-de-capitais").areas).toEqual(["economia-e-empresas"]);
     expect(visao.governo.map((a) => a.titulo)).toEqual(
       (areasDoMundo as { areas: { titulo: string }[] }).areas.map(
         (a) => a.titulo,

@@ -1,5 +1,11 @@
-# Leis que proponho tirar ou juntar (para o autor aprovar)
+# Destinos das leis (aprovados pelo autor em 22/out)
 
+> **Aplicado em 22/out:** saíram 15 leis (`scripts/leis/arquivar.ts`), sem
+> mudar nenhum número do jogo; "Correção pela inflação" e "Verba para juventude
+> negra" saíram (a proposta era "ganha efeito ou sai"). Regulação de vagas e
+> Cláusula de desempenho ficaram e ganharam efeito (zero no ponto de partida
+> do Brasil). Segurança e defesa em duas esferas: aprovado, a fazer.
+>
 > **Decidido pelo autor (22/out):** constitucional que não trava nenhuma lei
 > fica constitucional, com seus efeitos; quando fizer sentido, ganha uma
 > sublei para travar. Essas já estão no molde e saíram desta lista.

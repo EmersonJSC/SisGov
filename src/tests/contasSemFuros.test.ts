@@ -36,7 +36,14 @@ function extremo(partida: Partida, impostos: "min" | "max"): Partida {
             : lei.minimo
           : undefined;
     if (alvo === undefined) continue;
-    const mudada = mudarLei(atual, lei.id, alvo);
+    // lei com opções (ex.: imposto sobre apostas) vai à opção da ponta
+    const valores = lei.opcoes?.map((o) => o.valor) ?? [];
+    const ponta = valores.length
+      ? alvo === lei.minimo
+        ? Math.min(...valores)
+        : Math.max(...valores)
+      : alvo;
+    const mudada = mudarLei(atual, lei.id, ponta);
     if (!mudada.ok) throw new Error(`${lei.id}: ${mudada.erros.join(" ")}`);
     atual = mudada.value;
   }

@@ -27,8 +27,8 @@ const PALAVRAS: Readonly<Record<string, readonly string[]>> = {
     "mandato-do-banco-central",
   ],
   inflac: ["mandato-do-banco-central", "controle-de-precos"],
-  dolar: ["regime-cambial", "controle-de-capitais"],
-  cambio: ["regime-cambial"],
+  dolar: ["intervencao-cambial", "controle-de-capitais"],
+  cambio: ["intervencao-cambial"],
   preco: ["controle-de-precos"],
   aposent: [
     "idade-minima-aposentadoria",

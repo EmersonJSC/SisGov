@@ -33,27 +33,27 @@
         "id": "salario-minimo",
         "rotulo": "Atrelado ao salário mínimo",
         "valor": 75,
+        "propoe": "Acompanha o salário mínimo.",
         "requer": [
           {
             "lei": "sistema-previdenciario",
             "opcoes": ["misto", "reparticao"],
             "motivo": "A indexação garantida exige um pilar público de aposentadoria."
           }
-        ],
-        "propoe": "Acompanha o salário mínimo."
+        ]
       },
       {
         "id": "trava-tripla",
         "rotulo": "O maior entre inflação, salários e piso fixo",
         "valor": 100,
+        "propoe": "O maior entre inflação, salários e um piso fixo.",
         "requer": [
           {
             "lei": "sistema-previdenciario",
             "opcoes": ["misto", "reparticao"],
             "motivo": "A indexação garantida exige um pilar público de aposentadoria."
           }
-        ],
-        "propoe": "O maior entre inflação, salários e um piso fixo."
+        ]
       }
     ]
   },

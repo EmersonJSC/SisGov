@@ -44,9 +44,10 @@ describe("configuração do país (V1-06)", () => {
     // 21/out: IVA volta a ser faixa, sem o cashback em 26,5%.
     // 22/out: Contas públicas no molde; saem 3 leis (nível, eficácia e apoio
     // de cada uma: 9 valores). Nenhum outro valor do turno 0 muda.
+    // 22/out (noite): saem mais 15 leis aprovadas pelo autor (45 valores).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1720);
+    expect(Object.keys(valores)).toHaveLength(1675);
     expect(p.game.execution.step).toBe(12);
     expect(valores.popularidade_governo).toBeCloseTo(48.28223467795078, 3);
     expect(valores.divida_publica).toBeCloseTo(82.41351759411515, 2);
@@ -54,8 +55,8 @@ describe("configuração do país (V1-06)", () => {
     expect(valores.desemprego).toBeCloseTo(6.199971590503557, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12692218.562512327, 3);
-    expect(p.content.policies).toHaveLength(239);
+    expect(soma).toBeCloseTo(12691328.548196206, 3);
+    expect(p.content.policies).toHaveLength(224);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });

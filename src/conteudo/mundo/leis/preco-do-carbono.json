@@ -60,10 +60,6 @@
     "minimo": 2,
     "maximo": 2
   },
-  "mae": {
-    "texto": "Proteção da vegetação nativa. Sem proteção lá tranca esta lei em Sem preço ou Mercado brando.",
-    "leis": []
-  },
   "mesa": {
     "id": "clima-e-energia",
     "nome": "Clima e energia",

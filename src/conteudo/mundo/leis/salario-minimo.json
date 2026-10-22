@@ -18,14 +18,14 @@
         "apoiam": ["Empresários favoráveis à livre negociação"],
         "rejeitam": ["Trabalhadores sem sindicato"],
         "efeitos": "Empresas reduzem custo, mas trabalhadores sem barganha podem perder renda.",
+        "propoe": "Não há piso nacional.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
             "opcoes": ["nao-existe", "negociacao-sindical"],
             "motivo": "Com salário mínimo fixado pelo Estado, o valor não pode ser zero."
           }
-        ],
-        "propoe": "Não há piso nacional."
+        ]
       },
       {
         "id": "piso-baixo",
@@ -34,6 +34,7 @@
         "apoiam": ["Pequenos negócios", "Gestores fiscais"],
         "rejeitam": ["Trabalhadores de baixa renda"],
         "efeitos": "Reduz pressão em contratações e benefícios; protege pouco contra pobreza.",
+        "propoe": "Piso de cerca de um terço do salário típico.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -45,8 +46,7 @@
             "opcoes": ["sem-regra", "so-inflacao"],
             "motivo": "O ganho real acumulado ou a meta não deixam o valor cair tanto."
           }
-        ],
-        "propoe": "Piso de cerca de um terço do salário típico."
+        ]
       },
       {
         "id": "piso-moderado",
@@ -55,14 +55,14 @@
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Pequenos negócios"],
         "efeitos": "Eleva renda com custo de contratação e gasto previdenciário moderados.",
+        "propoe": "Piso de cerca de dois terços do salário típico.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
             "opcoes": ["comissao-tecnica", "lei-nacional"],
             "motivo": "Sem salário mínimo fixado pelo Estado, não há valor para escolher."
           }
-        ],
-        "propoe": "Piso de cerca de dois terços do salário típico."
+        ]
       },
       {
         "id": "piso-alto",
@@ -71,6 +71,7 @@
         "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
         "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
         "efeitos": "Reduz pobreza de quem permanece empregado; aumenta custo, informalidade e benefícios atrelados.",
+        "propoe": "Piso igual ao salário típico.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -82,8 +83,7 @@
             "opcoes": ["sem-regra", "inflacao-mais-pib"],
             "motivo": "Só repor a inflação ou seguir a meta não leva o valor tão alto."
           }
-        ],
-        "propoe": "Piso igual ao salário típico."
+        ]
       }
     ]
   },

@@ -26,12 +26,6 @@
           "fonte": "Fim do controle de câmbio (Exchange Control Act 1947 suspenso em outubro de 1979)"
         },
         {
-          "lei": "regime-cambial",
-          "opcao": "flutuante",
-          "como": "manteve",
-          "fonte": "Libra flutuante desde 1972"
-        },
-        {
           "lei": "controle-de-precos",
           "opcao": "precos-livres",
           "como": "aprovou",
@@ -554,12 +548,6 @@
           "fonte": "Decreto-Lei 50/1982; Lei 77/1995 (empresas mistas com aprovação do Estado)"
         },
         {
-          "lei": "regime-cambial",
-          "opcao": "fixo",
-          "como": "manteve",
-          "fonte": "Peso oficial fixo no dólar"
-        },
-        {
           "lei": "politica-industrial",
           "opcao": "protecao-do-mercado-interno",
           "como": "manteve",
@@ -802,12 +790,6 @@
           "fonte": "Lei 173-FZ/2003 de câmbio; restrições retiradas em julho de 2006"
         },
         {
-          "lei": "regime-cambial",
-          "opcao": "flutuante",
-          "como": "aprovou",
-          "fonte": "Banco da Rússia deixa o rublo flutuar (novembro de 2014)"
-        },
-        {
           "lei": "quem-controla-o-banco-central",
           "opcao": "autonomia-parcial",
           "como": "manteve",
@@ -976,12 +958,6 @@
           "opcao": "conta-fechada",
           "como": "manteve",
           "fonte": "Constituição de 1977, art. 73 (monopólio do comércio exterior)"
-        },
-        {
-          "lei": "regime-cambial",
-          "opcao": "fixo",
-          "como": "manteve",
-          "fonte": "Rublo não conversível, câmbio oficial"
         },
         {
           "lei": "investimento-estrangeiro",
@@ -1310,12 +1286,6 @@
           "fonte": "IRPF (Lei 18.083/2006), 7% sobre dividendos"
         },
         {
-          "lei": "regime-cambial",
-          "opcao": "flutuante",
-          "como": "manteve",
-          "fonte": "Câmbio flutuante desde 2002"
-        },
-        {
           "lei": "investimento-estrangeiro",
           "opcao": "atracao-com-incentivos-fiscais",
           "como": "manteve",
@@ -1406,12 +1376,6 @@
           "opcao": "conta-aberta",
           "como": "manteve",
           "fonte": "Fim do encaixe em 2001"
-        },
-        {
-          "lei": "regime-cambial",
-          "opcao": "flutuante",
-          "como": "manteve",
-          "fonte": "Câmbio flutuante desde 1999"
         },
         {
           "lei": "quem-controla-o-banco-central",
@@ -1546,12 +1510,6 @@
           "opcao": "conta-fechada",
           "como": "aprovou",
           "fonte": "Convênio Cambial nº 1 (2003, CADIVI)"
-        },
-        {
-          "lei": "regime-cambial",
-          "opcao": "fixo",
-          "como": "aprovou",
-          "fonte": "Convênio Cambial nº 1 (2003)"
         },
         {
           "lei": "redistribuicao-de-terras",
@@ -1896,12 +1854,6 @@
           "opcao": "conta-aberta",
           "como": "manteve",
           "fonte": "Livre circulação de capitais na UE"
-        },
-        {
-          "lei": "regime-cambial",
-          "opcao": "flutuante",
-          "como": "manteve",
-          "fonte": "Euro flutuante"
         },
         {
           "lei": "usinas-a-carvao",

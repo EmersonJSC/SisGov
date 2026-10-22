@@ -52,6 +52,10 @@
         "id": "emprego-obrigatorio",
         "rotulo": "Exigir carteira de trabalho para todo motorista e entregador",
         "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
+        "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer.",
+        "propoe": "Todo motorista e entregador tem carteira assinada.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -61,11 +65,7 @@
             ],
             "motivo": "Vínculo obrigatório exige direitos mínimos constitucionais definidos."
           }
-        ],
-        "apoiam": ["Centrais sindicais"],
-        "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
-        "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer.",
-        "propoe": "Todo motorista e entregador tem carteira assinada."
+        ]
       }
     ]
   },

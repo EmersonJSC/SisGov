@@ -27,6 +27,8 @@ type Edicao = {
   trava?: Trava[];
   dinheiro?: Record<string, unknown>;
   publico?: { quem: string; pessoas: number };
+  /** Efeitos novos, para lei que ainda não tinha nenhum. */
+  efeitos?: Json[];
 };
 type Trava = {
   opcao: string;
@@ -265,6 +267,7 @@ if (process.argv[2]) {
         caminhos.map((c) => ler(join(CONTEUDO, c))),
       );
     }
+    efeitos = [...efeitos, ...(e.efeitos ?? [])];
     if (efeitos.length === 0) {
       console.log(`${e.id}: SEM EFEITO, ficou no formato antigo`);
       continue;

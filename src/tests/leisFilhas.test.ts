@@ -63,20 +63,18 @@ describe("SG138 — leis com opções", () => {
 });
 
 describe("SG138 — leis filhas", () => {
+  // D-65 (mecânica 2, 2.5): sem a mãe, a filha de três níveis é revogada.
+  // O par do câmbio saiu com o molde das leis (Moeda e câmbio foi arquivada).
   it("a tela sabe quem exige quem", () => {
     const partida = nova();
-    const meta = lei(partida, "mandato-do-banco-central");
-    expect(meta.exige).toMatchObject({
-      lei: "regime-cambial",
+    const formula = lei(partida, "formula-do-salario-minimo");
+    expect(formula.exige).toMatchObject({
+      lei: "quem-decide-o-salario-minimo",
       atendida: true,
-      base: "Crescimento e financiar o governo",
     });
-    expect(meta.exige!.opcoes.length).toBe(3);
-    const cambio = lei(partida, "regime-cambial");
-    expect(cambio.filhas.map((f) => f.id)).toEqual([
-      "mandato-do-banco-central",
-    ]);
-    expect(cambio.filhas[0].ativa).toBe(true);
+    expect(formula.exige!.opcoes.length).toBe(2);
+    const quem = lei(partida, "quem-decide-o-salario-minimo");
+    expect(quem.filhas.map((f) => f.id)).toContain("formula-do-salario-minimo");
     const sistema = lei(partida, "sistema-previdenciario");
     expect(sistema.filhas.map((f) => f.id).sort()).toEqual([
       "pensao-por-morte",
@@ -84,54 +82,34 @@ describe("SG138 — leis filhas", () => {
     ]);
   });
 
-  it("câmbio fixo derruba a meta de inflação, e a tela avisa antes", () => {
+  it("acabar com o salário mínimo nacional revoga a fórmula, e a tela avisa antes", () => {
     const partida = nova();
-    const fixo = lei(partida, "regime-cambial").opcoes!.find(
-      (o) => o.id === "fixo",
+    const naoExiste = lei(partida, "quem-decide-o-salario-minimo").opcoes!.find(
+      (o) => o.id === "nao-existe",
     )!.valor;
-    expect(leisQueCaem(partida, "regime-cambial", fixo)).toEqual([
-      {
-        id: "mandato-do-banco-central",
-        nome: "Missão do banco central",
-        base: "Crescimento e financiar o governo",
-        revogada: false,
-      },
-    ]);
-    // trocar entre opções que mantêm a filha não derruba nada
-    const bandas = lei(partida, "regime-cambial").opcoes!.find(
-      (o) => o.id === "bandas",
-    )!.valor;
-    expect(leisQueCaem(partida, "regime-cambial", bandas)).toEqual([]);
-
-    const depois = mudar(partida, "regime-cambial", "fixo");
-    expect(opcaoDaMeta(depois, "mandato-do-banco-central")).toBe("sem-meta");
-    expect(lei(depois, "mandato-do-banco-central").exige!.atendida).toBe(false);
+    expect(
+      leisQueCaem(partida, "quem-decide-o-salario-minimo", naoExiste),
+    ).toContainEqual({
+      id: "formula-do-salario-minimo",
+      nome: "Fórmula do salário mínimo",
+      base: "",
+      revogada: true,
+    });
+    const depois = mudar(partida, "quem-decide-o-salario-minimo", "nao-existe");
+    expect(lei(depois, "formula-do-salario-minimo").exige!.atendida).toBe(
+      false,
+    );
     // uma única ação do jogador
     expect(depois.acoes).toBe(partida.acoes + 1);
   });
 
-  it("com a mãe fora, a filha só aceita a base", () => {
-    const partida = mudar(nova(), "regime-cambial", "fixo");
-    const meta = lei(partida, "mandato-do-banco-central");
-    const estrita = meta.opcoes!.find((o) => o.id === "meta-estrita")!.valor;
-    const recusada = mudarLei(partida, meta.id, estrita);
+  it("com a mãe fora, a filha não pode ser escolhida", () => {
+    const partida = mudar(nova(), "quem-decide-o-salario-minimo", "nao-existe");
+    const formula = lei(partida, "formula-do-salario-minimo");
+    const so = formula.opcoes!.find((o) => o.id === "so-inflacao")!.valor;
+    const recusada = mudarLei(partida, formula.id, so);
     expect(recusada.ok).toBe(false);
-    if (!recusada.ok)
-      expect(recusada.erros[0]).toMatch(/exige Moeda e câmbio em:/);
-    // a prévia também recusa
-    expect(preverLei(partida, meta.id, estrita, 1).ok).toBe(false);
-    // a base continua permitida (repetir a meta não vira ação)
-    expect(mudarLei(partida, meta.id, meta.opcoes![0].valor).ok).toBe(true);
-    // voltar a mãe não religa a filha: o jogador decide de novo
-    const voltou = mudar(partida, "regime-cambial", "flutuante");
-    expect(opcaoDaMeta(voltou, "mandato-do-banco-central")).toBe("sem-meta");
-    expect(lei(voltou, "mandato-do-banco-central").exige!.atendida).toBe(true);
-    expect(
-      opcaoDaMeta(
-        mudar(voltou, "mandato-do-banco-central", "meta-estrita"),
-        "mandato-do-banco-central",
-      ),
-    ).toBe("meta-estrita");
+    expect(preverLei(partida, formula.id, so, 1).ok).toBe(false);
   });
 
   it("acabar com a previdência derruba as duas filhas", () => {
@@ -157,39 +135,27 @@ describe("SG138 — leis filhas", () => {
         p.id === id ? ({ ...p, requer } as typeof p) : p,
       ),
     });
+    const FILHA = "formula-do-salario-minimo";
+    const MAE = "quem-decide-o-salario-minimo";
     const semOpcao = validatePackageCoherence(
-      trocar("mandato-do-banco-central", {
-        lei: "regime-cambial",
-        opcoes: ["nao-existe"],
-      }),
+      trocar(FILHA, { lei: MAE, opcoes: ["nao-existe-essa"] }),
     );
     expect(semOpcao.ok).toBe(false);
     const ciclo = validatePackageCoherence({
-      ...trocar("mandato-do-banco-central", {
-        lei: "regime-cambial",
-        opcoes: ["flutuante"],
-      }),
+      ...content,
       policies: content.policies.map((p) =>
-        p.id === "mandato-do-banco-central"
-          ? { ...p, requer: { lei: "regime-cambial", opcoes: ["flutuante"] } }
-          : p.id === "regime-cambial"
-            ? {
-                ...p,
-                requer: {
-                  lei: "mandato-do-banco-central",
-                  opcoes: ["meta-estrita"],
-                },
-              }
+        p.id === FILHA
+          ? { ...p, requer: { lei: MAE, opcoes: ["lei-nacional"] } }
+          : p.id === MAE
+            ? { ...p, requer: { lei: FILHA, opcoes: ["inflacao-mais-pib"] } }
             : p,
       ),
     });
     expect(ciclo.ok).toBe(false);
-    // o Brasil começa com meta estrita: exigir câmbio fixo deixa o país incoerente
+    // o Brasil começa com o salário mínimo por lei: exigir que ele não
+    // exista deixa o país incoerente
     const incoerente = validatePackageCoherence(
-      trocar("mandato-do-banco-central", {
-        lei: "regime-cambial",
-        opcoes: ["fixo"],
-      }),
+      trocar(FILHA, { lei: MAE, opcoes: ["nao-existe"] }),
     );
     expect(incoerente.ok).toBe(false);
     expect(validatePackageCoherence(content).ok).toBe(true);

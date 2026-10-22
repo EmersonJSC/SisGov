@@ -15,6 +15,10 @@
         "id": "sem-limite",
         "rotulo": "Retirar o teto legal de horas semanais",
         "valor": 0,
+        "apoiam": ["nenhum grupo grande"],
+        "rejeitam": ["Trabalhadores com carteira"],
+        "efeitos": "Custo de contratar ↓; Renda por hora ↓; Participação no trabalho de quem cuida ↓",
+        "propoe": "Não há limite de horas.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -24,11 +28,7 @@
             ],
             "motivo": "Um código detalhado já garante limite de jornada."
           }
-        ],
-        "apoiam": ["nenhum grupo grande"],
-        "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓; Renda por hora ↓; Participação no trabalho de quem cuida ↓",
-        "propoe": "Não há limite de horas."
+        ]
       },
       {
         "id": "48-horas",
@@ -66,6 +66,10 @@
         "id": "35-horas",
         "rotulo": "Fixar o teto em 35 horas semanais",
         "valor": 100,
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Empresários", "Indústria", "Comércio e serviços"],
+        "efeitos": "Saúde e tempo livre sobem; custo por hora aumenta e produção pode cair antes de ganhos de produtividade.",
+        "propoe": "Até 35 horas por semana.",
         "requer": [
           {
             "lei": "legislacao-trabalhista",
@@ -75,11 +79,7 @@
             ],
             "motivo": "A jornada de 35 horas exige direitos constitucionais detalhados."
           }
-        ],
-        "apoiam": ["Centrais sindicais"],
-        "rejeitam": ["Empresários", "Indústria", "Comércio e serviços"],
-        "efeitos": "Saúde e tempo livre sobem; custo por hora aumenta e produção pode cair antes de ganhos de produtividade.",
-        "propoe": "Até 35 horas por semana."
+        ]
       }
     ]
   },

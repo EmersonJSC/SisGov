@@ -365,7 +365,7 @@ describe("frentes dos dois lados (congresso.md 5.3)", () => {
 
   it.each([
     ["aborto", 0, "direita"],
-    ["aborto", 100, "esquerda"],
+    ["aborto", 80, "esquerda"], // 100 ("sem lei penal") saiu no molde
     ["armas-de-fogo", 100, "direita"],
     ["armas-de-fogo", 0, "esquerda"],
   ] as const)(

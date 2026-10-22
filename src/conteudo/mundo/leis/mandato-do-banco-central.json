@@ -58,13 +58,6 @@
     "texto": "Quem controla o banco central: \"subordinado\" libera o mandato duplo com meta de emprego (regra do estudo)",
     "leis": ["quem-controla-o-banco-central"]
   },
-  "dependeDe": [
-    {
-      "lei": "regime-cambial",
-      "opcoes": ["bandas", "flutuante-administrado", "flutuante"],
-      "motivo": "Com câmbio fixo, os juros servem para defender o câmbio e não sobram para mirar a inflação (trilema da política monetária)."
-    }
-  ],
   "mesa": {
     "id": "moeda-e-banco-central",
     "nome": "Moeda e banco central",

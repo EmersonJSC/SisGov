@@ -33,12 +33,25 @@ describe("inventário das leis", () => {
     });
   });
 
-  it("regulação de vagas: saúde, regra, sem efeito e com pergunta", () => {
+  it("regulação de vagas: saúde, regra, já no molde (sem faltas)", () => {
     const l = linha("regulacao-de-vagas");
     expect(l).toMatchObject({
       areaSugerida: "saude",
       familiaSugerida: "regra",
     });
+    expect(l.faltas).toEqual([]);
+  });
+
+  it("lei antiga sem efeito e com pergunta aparece com as faltas", () => {
+    const antiga: LeiBruta = {
+      id: "lei-de-teste",
+      nome: "Lei de teste",
+      descricao: "Quem decide?",
+      versaoEsquema: 2,
+      nivelLegal: "derivada",
+      consequencias: [],
+    };
+    const l = sugerirLinha(antiga, areaDaLei, leis);
     expect(l.faltas).toContain("sem efeito na rede");
     expect(l.faltas).toContain("decide é pergunta");
   });

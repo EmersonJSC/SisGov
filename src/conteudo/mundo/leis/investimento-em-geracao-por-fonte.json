@@ -63,13 +63,13 @@
         "apoiam": ["Associações de militares"],
         "rejeitam": ["Movimento ambientalista"],
         "efeitos": "Folga do sistema ↑ firme, com atraso de mais de 10 anos; emissões ↓",
+        "propoe": "Nuclear.",
         "requer": [
           {
             "lei": "energia-nuclear",
             "opcoes": ["expansao"]
           }
-        ],
-        "propoe": "Nuclear."
+        ]
       }
     ]
   },

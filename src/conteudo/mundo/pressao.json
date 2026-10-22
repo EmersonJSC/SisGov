@@ -1117,12 +1117,6 @@
           "peso": 20
         },
         {
-          "lei": "conteudo-local",
-          "sobe": "alto",
-          "peso": 10,
-          "faixa": [0, 100]
-        },
-        {
           "lei": "politica-de-precos-das-estatais",
           "sobe": "alto",
           "peso": 10,

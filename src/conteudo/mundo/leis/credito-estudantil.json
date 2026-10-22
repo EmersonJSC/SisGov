@@ -42,14 +42,14 @@
         "apoiam": ["Movimento estudantil", "Faculdades privadas", "Jovens"],
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Escolaridade ↑ forte (1 a 3 anos); Resultado fiscal ↓ forte (5 a 10 anos); Dívida das famílias ↑",
+        "propoe": "Empréstimo amplo, com juro baixo e pouca análise.",
         "requer": [
           {
             "lei": "acesso-ao-ensino-superior",
             "opcoes": ["paga-pela-familia", "gratuita-so-para-os-mais-pobres"],
             "motivo": "Crédito amplo para mensalidades faz sentido quando famílias pagam parte das vagas."
           }
-        ],
-        "propoe": "Empréstimo amplo, com juro baixo e pouca análise."
+        ]
       },
       {
         "id": "emprestimo-com-pagamento-descontado-da-renda-depois-de-forma",
@@ -59,14 +59,14 @@
         "apoiam": ["Mercado financeiro", "Empresários"],
         "rejeitam": ["Movimento estudantil"],
         "efeitos": "Escolaridade ↑ moderado; Resultado fiscal ↓ pequeno",
+        "propoe": "Empréstimo pago como parte do salário, depois de formado.",
         "requer": [
           {
             "lei": "acesso-ao-ensino-superior",
             "opcoes": ["paga-pela-familia", "gratuita-so-para-os-mais-pobres"],
             "motivo": "Pagamento após a formatura depende de mensalidades para parte dos estudantes."
           }
-        ],
-        "propoe": "Empréstimo pago como parte do salário, depois de formado."
+        ]
       }
     ]
   },

@@ -51,6 +51,11 @@
         "id": "sistema-dual-escola-e-empresa-juntas",
         "rotulo": "Integrar escola técnica e vagas de aprendiz nas empresas",
         "valor": 100,
+        "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
+        "apoiam": ["Indústria", "Empresários", "Jovens"],
+        "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],
+        "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas.",
+        "propoe": "Escola técnica e empresa formam o jovem juntas.",
         "requer": [
           {
             "lei": "ensino-tecnico-e-profissional",
@@ -61,12 +66,7 @@
             ],
             "motivo": "O sistema dual exige ensino técnico disponível para os aprendizes."
           }
-        ],
-        "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
-        "apoiam": ["Indústria", "Empresários", "Jovens"],
-        "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],
-        "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas.",
-        "propoe": "Escola técnica e empresa formam o jovem juntas."
+        ]
       }
     ]
   },

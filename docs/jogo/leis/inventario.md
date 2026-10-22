@@ -5,7 +5,7 @@
 > decide é o autor. Destino: **entra** · **junta com <id>** · **sai**.
 > Regras: [molde-das-leis.md](../mecanicas/molde-das-leis.md).
 
-Total: 239 leis.
+Total: 224 leis.
 
 ## Áreas com menos de 8 leis (aviso)
 
@@ -32,7 +32,7 @@ Total: 239 leis.
 | Meta de resultado das contas | `meta-de-resultado-primario` | regra | — |  | |
 | Isenções fiscais | `revisao-de-gastos-tributarios` | regra | — |  | |
 
-## Economia e empresas (27)
+## Economia e empresas (23)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -42,13 +42,11 @@ Total: 239 leis.
 | Quem manda no banco central | `quem-controla-o-banco-central` | constitucional | — |  | |
 | Tarifas de importação | `tarifas-de-importacao` | imposto | — |  | |
 | Banco de desenvolvimento | `banco-de-desenvolvimento` | regra | — |  | |
-| Conteúdo local | `conteudo-local` | regra | decide é pergunta |  | |
 | Controle de capitais | `controle-de-capitais` | regra | — |  | |
 | Controle de preços | `controle-de-precos` | regra | — |  | |
 | Cooperativas e autogestão | `cooperativas-e-autogestao` | regra | — |  | |
 | Defesa comercial | `defesa-comercial` | regra | — |  | |
 | Defesa da concorrência | `defesa-da-concorrencia` | regra | — |  | |
-| Correção automática pela inflação | `indexacao-de-contratos` | regra | sem efeito na rede |  | |
 | Compra e venda de dólares | `intervencao-cambial` | regra | — |  | |
 | Investimento estrangeiro | `investimento-estrangeiro` | regra | — |  | |
 | Licença para abrir negócio | `licenca-para-abrir-negocio` | regra | — |  | |
@@ -57,12 +55,10 @@ Total: 239 leis.
 | Política de preços das estatais | `politica-de-precos-das-estatais` | regra | — |  | |
 | Política industrial | `politica-industrial` | regra | — |  | |
 | Programa de privatização | `programa-de-privatizacao` | regra | — |  | |
-| Moeda e câmbio | `regime-cambial` | regra | sem efeito na rede |  | |
 | Imposto único para pequenas empresas | `regime-simplificado-para-pequenas-empresas` | regra | — |  | |
 | Regras para os bancos | `regulacao-dos-bancos` | regra | — |  | |
 | Juros básicos | `taxa-basica-de-juros` | regra | — |  | |
 | Meta de inflação | `valor-da-meta-de-inflacao` | regra | — |  | |
-| Volume de incentivo à indústria | `volume-de-incentivo-a-industria` | regra | sem efeito na rede; decide é pergunta |  | |
 
 ## Trabalho (18)
 
@@ -87,7 +83,7 @@ Total: 239 leis.
 | Trabalho infantil e aprendizagem | `trabalho-infantil-e-aprendizagem` | regra | — |  | |
 | Trabalho por aplicativo | `trabalho-por-aplicativo` | regra | — |  | |
 
-## Proteção social (18)
+## Proteção social (15)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -97,20 +93,17 @@ Total: 239 leis.
 | Renda para idosos e pessoas com deficiência pobres | `renda-para-idosos-e-pessoas-com-deficiencia-pobres` | constitucional | — |  | |
 | Sistema previdenciário | `sistema-previdenciario` | constitucional | — |  | |
 | Transferência de renda às famílias pobres | `transferencia-de-renda` | programa | — |  | |
-| Como o Estado entrega casa | `como-o-estado-entrega-casa` | regra | decide é pergunta |  | |
 | Garantia de comida | `garantia-de-comida` | regra | — |  | |
 | Habitação pública | `habitacao-publica` | regra | — |  | |
 | Idade mínima de aposentadoria | `idade-minima-aposentadoria` | regra | — |  | |
-| Licença para cuidar do bebê | `licenca-para-cuidar-do-bebe` | regra | decide é pergunta |  | |
 | Organização dos programas sociais | `organizacao-dos-programas-sociais` | regra | — |  | |
 | Pensão por morte | `pensao-por-morte` | regra | — |  | |
 | Quem cuida do idoso dependente | `quem-cuida-do-idoso-dependente` | regra | — |  | |
 | Critérios da transferência de renda | `transferencia-de-renda-as-familias-pobres` | regra | — |  | |
 | Vagas de creche | `vagas-de-creche` | regra | — |  | |
 | Programa de habitação popular | `programa-habitacao-popular` | verba | — |  | |
-| Verba do programa habitacional | `verba-do-programa-habitacional` | verba | sem efeito na rede; decide é pergunta |  | |
 
-## Saúde (20)
+## Saúde (19)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -124,15 +117,14 @@ Total: 239 leis.
 | Lista de remédios e incorporação | `lista-de-remedios-e-incorporacao` | regra | — |  | |
 | Mutirão de cirurgias | `mutirao-de-cirurgias` | regra | — |  | |
 | Programa de médicos no interior | `programa-de-medicos-no-interior` | regra | — |  | |
-| Regulação de vagas | `regulacao-de-vagas` | regra | sem efeito na rede; decide é pergunta |  | |
+| Regulação de vagas | `regulacao-de-vagas` | regra | — |  | |
 | Regulação dos planos de saúde | `regulacao-dos-planos-de-saude` | regra | — |  | |
 | Remédios em farmácias credenciadas | `remedios-em-farmacias-credenciadas` | regra | — |  | |
 | Restrição a tabaco e álcool | `restricao-a-tabaco-e-alcool` | regra | — |  | |
 | Saúde mental | `saude-mental` | regra | — |  | |
 | Vacinação obrigatória | `vacinacao-obrigatoria` | regra | — |  | |
 | Vagas de residência médica | `vagas-de-residencia-medica` | regra | — |  | |
-| Verba executada para a saúde | `piso-saude` | verba | — | `verba-da-saude-acima-do-piso` | |
-| Prioridade para recursos adicionais da saúde | `verba-da-saude-acima-do-piso` | verba | — |  | |
+| Verba executada para a saúde | `piso-saude` | verba | — |  | |
 | Vigilância epidemiológica | `vigilancia-epidemiologica` | verba | — |  | |
 
 ## Educação e cultura (23)
@@ -163,7 +155,7 @@ Total: 239 leis.
 | Verba executada para a educação | `piso-educacao` | verba | — |  | |
 | Programa espacial e satélites | `programa-espacial-e-satelites` | verba | — |  | |
 
-## Infraestrutura e energia (13)
+## Infraestrutura e energia (11)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -172,9 +164,7 @@ Total: 239 leis.
 | Água e esgoto | `agua-e-esgoto` | regra | — |  | |
 | Ferrovias de carga e terminais portuários | `ferrovias-e-terminais-portuarios` | regra | — |  | |
 | Investimento em geração por fonte | `investimento-em-geracao-por-fonte` | regra | — |  | |
-| Licenciamento de obras e empresas | `licenciamento-de-obras-e-empresas` | regra | decide é pergunta |  | |
 | Matriz energética | `matriz-energetica` | regra | — |  | |
-| Proteção da vegetação nativa nas propriedades rurais | `protecao-da-vegetacao-nativa-nas-propriedades-rurais` | regra | decide é pergunta |  | |
 | Regime do petróleo e mineração | `regime-do-petroleo-e-mineracao` | regra | — |  | |
 | Transporte público | `transporte-publico` | regra | — |  | |
 | Usinas a carvão | `usinas-a-carvao` | regra | — |  | |
@@ -193,7 +183,7 @@ Total: 239 leis.
 | Preço do carbono | `preco-do-carbono` | regra | — |  | |
 | Registro de agrotóxicos | `registro-de-agrotoxicos` | regra | — |  | |
 
-## Segurança e defesa (46)
+## Segurança e defesa (45)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -221,7 +211,6 @@ Total: 239 leis.
 | Exportação de armas | `exportacao-de-armas` | regra | — |  | |
 | Gestão dos presídios | `gestao-dos-presidios` | regra | — |  | |
 | Indústria de defesa | `industria-de-defesa` | regra | — |  | |
-| Integração regional | `integracao-regional` | regra | sem efeito na rede; decide é pergunta |  | |
 | Interceptação de comunicações | `interceptacao-de-comunicacoes` | regra | — |  | |
 | Investimento em defesa | `investimento-em-defesa` | regra | — |  | |
 | Lei de drogas | `lei-de-drogas` | regra | — |  | |
@@ -244,7 +233,7 @@ Total: 239 leis.
 | Vagas em presídios | `vagas-em-presidios` | verba | — |  | |
 | Verba da Polícia Federal | `verba-policia-federal` | verba | — |  | |
 
-## Direitos e costumes (23)
+## Direitos e costumes (19)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -254,9 +243,7 @@ Total: 239 leis.
 | Tributo sobre apostas | `tributo-sobre-apostas` | imposto | — |  | |
 | Aborto | `aborto` | regra | — | `verba-de-planejamento-familiar-e-de-aborto-legal` | |
 | Ações afirmativas | `acoes-afirmativas` | regra | — |  | |
-| Acolhida e interiorização de imigrantes | `acolhida-e-interiorizacao-de-imigrantes` | regra | sem efeito na rede; decide é pergunta |  | |
 | Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | — |  | |
-| Bloqueio de pagamentos a casas sem licença | `bloqueio-de-pagamentos-a-casas-sem-licenca` | regra | decide é pergunta |  | |
 | Casamento e união civil | `casamento-e-uniao-civil` | regra | — |  | |
 | Crimes da ditadura | `crimes-da-ditadura` | regra | — |  | |
 | Discriminação e crimes de ódio | `discriminacao-e-crimes-de-odio` | regra | — |  | |
@@ -266,11 +253,9 @@ Total: 239 leis.
 | Igualdade salarial de gênero | `igualdade-salarial-de-genero` | regra | — |  | |
 | Política de natalidade | `politica-de-natalidade` | regra | — |  | |
 | Proteção contra violência doméstica | `protecao-contra-violencia-domestica` | regra | — |  | |
-| Publicidade de apostas | `publicidade-de-apostas` | regra | decide é pergunta |  | |
 | Refúgio e asilo | `refugio-e-asilo` | regra | — |  | |
 | Terras indígenas | `terras-indigenas` | regra | — |  | |
 | Verba de planejamento familiar e de aborto legal | `verba-de-planejamento-familiar-e-de-aborto-legal` | regra | — |  | |
-| Verba para juventude negra e saúde da população negra | `verba-para-juventude-negra-e-saude-da-populacao-negra` | verba | sem efeito na rede; decide é pergunta |  | |
 
 ## Governo e instituições (26)
 
@@ -284,7 +269,7 @@ Total: 239 leis.
 | Partidos | `partidos` | constitucional | — |  | |
 | Reeleição | `reeleicao` | constitucional | — |  | |
 | Sistema de governo | `sistema-de-governo` | constitucional | — |  | |
-| Cláusula de desempenho | `clausula-de-desempenho` | regra | sem efeito na rede; decide é pergunta |  | |
+| Cláusula de desempenho | `clausula-de-desempenho` | regra | — |  | |
 | Concessões de rádio e TV | `concessoes-de-radio-e-tv` | regra | — |  | |
 | Financiamento de campanhas | `financiamento-de-campanhas` | regra | — |  | |
 | Foro privilegiado | `foro-privilegiado` | regra | — |  | |

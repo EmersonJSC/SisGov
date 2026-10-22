@@ -348,38 +348,28 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-2": [1.0, 0.0],
-        "referencia-3": [0.4, 0.0],
-        "proposta-desenvolvimentista-4-a-4-5": [-0.6, 0.0],
-        "maximo-6": [-1.0, 0.0]
+        "minimo-2": [1, 0],
+        "referencia-3": [0.4, 0],
+        "proposta-desenvolvimentista-4-a-4-5": [-0.6, 0],
+        "maximo-6": [-1, 0]
       }
     },
     "taxa-basica-de-juros": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-2": [-1.2, 0.0],
-        "referencia-13-75": [0.6, 0.0],
-        "maximo-30": [1.0, 0.0]
-      }
-    },
-    "regime-cambial": {
-      "manifesto": ["per401", "per412"],
-      "porque": "Câmbio de mercado contra câmbio controlado.",
-      "opcoes": {
-        "fixo": [-0.5, 0],
-        "bandas": [0, 0],
-        "flutuante-administrado": [0, 0],
-        "flutuante": [1, 0]
+        "minimo-2": [-1.2, 0],
+        "referencia-13-75": [0.6, 0],
+        "maximo-30": [1, 0]
       }
     },
     "intervencao-cambial": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-vender-us-40-bi": [0.0, 0.0],
-        "referencia-nenhuma-ou-pontual": [0.6, 0.0],
-        "maximo-comprar-us-40-bi": [-0.4, 0.0]
+        "minimo-vender-us-40-bi": [0, 0],
+        "referencia-nenhuma-ou-pontual": [0.6, 0],
+        "maximo-comprar-us-40-bi": [-0.4, 0]
       }
     },
     "controle-de-capitais": {
@@ -402,15 +392,6 @@
         "repressao-financeira": [-2, 0]
       }
     },
-    "indexacao-de-contratos": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "indexacao-livre": [0.0, 0.0],
-        "restrita": [0.4, 0.0],
-        "desindexacao-ampla": [0.8, 0.0]
-      }
-    },
     "acordos-comerciais": {
       "manifesto": ["per406", "per407"],
       "porque": "Abertura comercial contra proteção da produção nacional.",
@@ -425,10 +406,10 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-0": [1.6, 0.0],
-        "referencia-13-35": [-0.2, 0.0],
-        "maximo-40": [-1.4, 0.0],
-        "tarifa-diferenciada-insumos": [-0.6, 0.0]
+        "minimo-0": [1.6, 0],
+        "referencia-13-35": [-0.2, 0],
+        "maximo-40": [-1.4, 0],
+        "tarifa-diferenciada-insumos": [-0.6, 0]
       }
     },
     "investimento-estrangeiro": {
@@ -442,22 +423,13 @@
         "atracao-com-incentivos-fiscais": [1, 0]
       }
     },
-    "conteudo-local": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "sem-exigencia": [1.2, 0.0],
-        "margem-de-preferencia-nas-compras-publicas": [-0.4, 0.0],
-        "conteudo-local-alto": [-1.2, 0.0]
-      }
-    },
     "defesa-comercial": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-defesa-comercial": [1.4, 0.0],
-        "tecnica-caso-a-caso-pelas-regras-da-omc": [0.2, 0.0],
-        "uso-amplo": [-1.0, 0.0]
+        "sem-defesa-comercial": [1.4, 0],
+        "tecnica-caso-a-caso-pelas-regras-da-omc": [0.2, 0],
+        "uso-amplo": [-1, 0]
       }
     },
     "propriedade-dos-meios-de-producao": {
@@ -522,8 +494,8 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "paridade-internacional": [1.2, 0.0],
-        "suavizacao": [0.0, 0.0],
+        "paridade-internacional": [1.2, 0],
+        "suavizacao": [0, 0],
         "preco-politico": [-1.4, 0.2]
       }
     },
@@ -564,15 +536,6 @@
         "horizontal": [0.5, 0],
         "setorial-exportadora": [-1, 0],
         "protecao-do-mercado-interno": [-2, 0.5]
-      }
-    },
-    "volume-de-incentivo-a-industria": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "minimo-0": [1.2, 0.0],
-        "referencia-lacuna": [0, 0],
-        "maximo-2": [-1.0, 0.0]
       }
     },
     "planejamento-da-economia": {
@@ -1279,21 +1242,11 @@
         "voucher-universal": [2, 0]
       }
     },
-    "licenciamento-de-obras-e-empresas": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "sem-licenciamento": [2.0, 0.0],
-        "autodeclaracao-para-medio-impacto": [1.2, 0.0],
-        "tres-etapas-previa-instalacao-operacao": [0.0, 0.2],
-        "rigoroso-com-consulta-previa": [-1.2, -0.4]
-      }
-    },
     "regime-contra-faccoes": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-regime-especial": [0.0, 0.0],
+        "sem-regime-especial": [0, 0],
         "isolar-lideres-e-confiscar-bens": [0, 0],
         "estado-de-excecao": [0, 0]
       }
@@ -1302,7 +1255,7 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "repasse-por-aluno": [-0.4, 0.0],
+        "repasse-por-aluno": [-0.4, 0],
         "parte-por-resultado": [0.4, 0.2],
         "resultado-com-apoio-tecnico": [0.2, 0.2]
       }
@@ -1311,11 +1264,9 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "nenhum-programa-nacional": [0.6, 0.0],
-        "formacao-de-professores-e-material": [-0.4, 0.0],
-        "metas-com-apoio-tecnico-e-incentivo-em-parceria-com-estados-": [
-          0.0, 0.0
-        ],
+        "nenhum-programa-nacional": [0.6, 0],
+        "formacao-de-professores-e-material": [-0.4, 0],
+        "metas-com-apoio-tecnico-e-incentivo-em-parceria-com-estados-": [0, 0],
         "metodo-unico-de-ensino-da-leitura-definido-pelo-governo-cent": [
           0.2, 0.6
         ]
@@ -1326,28 +1277,18 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "0": [0.4, 0.4],
-        "0-03": [0.0, 0.0],
+        "0-03": [0, 0],
         "0-7": [-0.6, -0.4]
-      }
-    },
-    "verba-para-juventude-negra-e-saude-da-populacao-negra": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "ponto-da-faixa": [0, 0],
-        "zero": [0.6, 0.6],
-        "referencia-hoje": [-0.4, -0.6],
-        "alta": [-0.8, -0.8]
       }
     },
     "policiamento-orientado": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-programa": [0.0, 0.0],
-        "pontos-quentes": [0.0, 0.6],
+        "sem-programa": [0, 0],
+        "pontos-quentes": [0, 0.6],
         "metas-e-gestao": [-0.2, 0.4],
-        "dissuasao-focada-com-servicos": [-0.4, 0.0]
+        "dissuasao-focada-com-servicos": [-0.4, 0]
       }
     },
     "meta-de-resultado-primario": {
@@ -1359,34 +1300,13 @@
         "3-do-pib": [0, 0]
       }
     },
-    "licenca-para-cuidar-do-bebe": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "nenhuma": [1.6, 0.0],
-        "curta-so-maternidade": [0.6, 0.2],
-        "longa-so-a-mae-4-a-6-meses": [-0.4, 0.6],
-        "dividida-com-cota-so-do-pai": [-0.8, -0.8],
-        "longa-1-ano-paga-como-do-salario": [-0.8, 0.0]
-      }
-    },
-    "protecao-da-vegetacao-nativa-nas-propriedades-rurais": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "sem-protecao": [1.8, -0.4],
-        "so-areas-sensiveis": [1.2, 0.0],
-        "reserva-legal-com-anistia-parcial": [0.0, 0.2],
-        "desmatamento-zero": [-1.2, 0.6]
-      }
-    },
     "divisao-da-verba-atencao-basica-x-hospitais": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "15-prioridade-aos-hospitais": [0.0, 0.0],
+        "15-prioridade-aos-hospitais": [0, 0],
         "cerca-de-22": [0, 0],
-        "40-prioridade-a-atencao-basica": [0.0, 0.0],
+        "40-prioridade-a-atencao-basica": [0, 0],
         "prioridade-maxima-a-hospitais": [0, 0]
       }
     },
@@ -1394,19 +1314,17 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-apoio-publico": [1.4, 0.0],
-        "bolsa-em-troca-de-isencao-de-imposto-da-faculdade": [-0.4, 0.0],
-        "emprestimo-amplo-juro-baixo-e-pouca-analise": [-1.0, 0.0],
-        "emprestimo-com-pagamento-descontado-da-renda-depois-de-forma": [
-          0.6, 0.0
-        ]
+        "sem-apoio-publico": [1.4, 0],
+        "bolsa-em-troca-de-isencao-de-imposto-da-faculdade": [-0.4, 0],
+        "emprestimo-amplo-juro-baixo-e-pouca-analise": [-1, 0],
+        "emprestimo-com-pagamento-descontado-da-renda-depois-de-forma": [0.6, 0]
       }
     },
     "industria-de-defesa": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "compra-pronta-no-exterior": [1.4, 0.0],
+        "compra-pronta-no-exterior": [1.4, 0],
         "compra-com-compensacao-e-transferencia-de-tecnologia": [0.4, 0.2],
         "empresa-estrategica-com-preferencia-e-isencao-de-tributos": [
           -0.6, 0.6
@@ -1418,7 +1336,7 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "so-policia-e-receita": [0.0, -0.4],
+        "so-policia-e-receita": [0, -0.4],
         "programa-integrado-de-orgaos": [-0.2, 0.4],
         "forcas-armadas-com-poder-de-policia": [-0.2, 1.2],
         "barreira-fisica-e-militarizacao": [-0.4, 1.6]
@@ -1428,35 +1346,35 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-incentivo-o-apoio-vai-so-por-verba-direta": [-0.6, 0.0],
+        "sem-incentivo-o-apoio-vai-so-por-verba-direta": [-0.6, 0],
         "desconto-no-imposto-de-renda-so-para-empresas-com-lucro-trib": [
-          0.6, 0.0
+          0.6, 0
         ],
         "credito-tambem-para-empresa-com-prejuizo-e-startups-pago-em-": [
-          0.4, 0.0
+          0.4, 0
         ],
-        "incentivo-so-para-setores-escolhidos-com-contrapartida": [-0.4, 0.0]
+        "incentivo-so-para-setores-escolhidos-com-contrapartida": [-0.4, 0]
       }
     },
     "forma-de-gestao-hospitalar": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "administracao-direta-por-servidores": [-1.2, 0.0],
-        "fundacao-ou-empresa-publica": [-0.4, 0.0],
-        "organizacao-social-com-metas": [1.0, 0.0],
-        "parceria-publico-privada-com-operacao-clinica": [1.6, 0.0]
+        "administracao-direta-por-servidores": [-1.2, 0],
+        "fundacao-ou-empresa-publica": [-0.4, 0],
+        "organizacao-social-com-metas": [1, 0],
+        "parceria-publico-privada-com-operacao-clinica": [1.6, 0]
       }
     },
     "alinhamento-externo": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "alinhamento-com-potencia-ocidental": [1.0, 0.6],
-        "ocidental-pragmatico": [0.6, 0.0],
-        "nao-alinhamento-ativo": [0.0, 0.0],
+        "alinhamento-com-potencia-ocidental": [1, 0.6],
+        "ocidental-pragmatico": [0.6, 0],
+        "nao-alinhamento-ativo": [0, 0],
         "bloco-alternativo": [-0.8, 0.2],
-        "isolamento-soberanista": [-0.4, 1.0]
+        "isolamento-soberanista": [-0.4, 1]
       }
     },
     "verba-de-controle": {
@@ -1464,7 +1382,7 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "minimo": [0.4, -0.2],
-        "referencia-hoje": [0.0, 0.0],
+        "referencia-hoje": [0, 0],
         "maximo": [-0.2, 0.4]
       }
     },
@@ -1472,45 +1390,45 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "so-as-sancoes-da-onu": [0.0, 0.0],
+        "so-as-sancoes-da-onu": [0, 0],
         "adere-as-sancoes-do-polo-ocidental": [0.4, 0.4],
         "sancoes-proprias": [-0.2, 0.6],
-        "contorna-sancoes": [-0.4, 0.0]
+        "contorna-sancoes": [-0.4, 0]
       }
     },
     "investimento-em-defesa": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "5": [0.0, 0.0],
-        "15": [0.0, 0.0],
-        "20-a-30": [0.4, 0.4],
-        "50": [0.6, 0.6]
+        "5": [0, 0],
+        "15": [0, 0],
+        "50": [0.6, 0.6],
+        "20-a-30": [0.4, 0.4]
       }
     },
     "vagas-publicas-no-ensino-superior": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-corte-de-vagas-15-das-matriculas": [1.0, 0.0],
-        "referencia-21-das-matriculas": [-0.4, 0.0],
-        "maximo-expansao-40-das-matriculas": [-1.2, 0.0]
+        "minimo-corte-de-vagas-15-das-matriculas": [1, 0],
+        "referencia-21-das-matriculas": [-0.4, 0],
+        "maximo-expansao-40-das-matriculas": [-1.2, 0]
       }
     },
     "alternativas-penais-e-audiencia-de-custodia": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "prisao-como-regra": [0.0, 1.0],
-        "custodia-em-24-horas-e-alternativas": [0.0, -0.6],
-        "alternativas-amplas": [0.0, -1.2]
+        "prisao-como-regra": [0, 1],
+        "custodia-em-24-horas-e-alternativas": [0, -0.6],
+        "alternativas-amplas": [0, -1.2]
       }
     },
     "coordenacao-das-policias": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "cada-estado-sozinho": [0.0, 0.0],
+        "cada-estado-sozinho": [0, 0],
         "sistema-unico-coordenado": [-0.6, 0.2],
         "forcas-tarefa-nacionais-permanentes": [-0.8, 0.4]
       }
@@ -1519,21 +1437,9 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "cada-municipio-cuida-da-sua-fila": [0.0, 0.0],
-        "central-regional-com-fila-unica-e-publica": [-0.4, 0.0],
-        "tempo-maximo-garantido-passou-do-prazo-o-estado-paga-o-priva": [
-          0.6, 0.0
-        ]
-      }
-    },
-    "acolhida-e-interiorizacao-de-imigrantes": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "ponto-da-faixa": [0, 0],
-        "zero": [0.4, 1.0],
-        "referencia-r-300-milhoes-em-2024": [0.0, -0.4],
-        "alta": [-0.4, -0.8]
+        "cada-municipio-cuida-da-sua-fila": [0, 0],
+        "central-regional-com-fila-unica-e-publica": [-0.4, 0],
+        "tempo-maximo-garantido-passou-do-prazo-o-estado-paga-o-priva": [0.6, 0]
       }
     },
     "verba-de-planejamento-familiar-e-de-aborto-legal": {
@@ -1541,35 +1447,27 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "zero": [0.6, 0.8],
-        "referencia-hoje": [0.0, 0.0],
+        "referencia-hoje": [0, 0],
         "alta": [-0.6, -0.8]
-      }
-    },
-    "bloqueio-de-pagamentos-a-casas-sem-licenca": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "nao": [1.0, -0.2],
-        "sim": [-0.4, 0.6]
       }
     },
     "piso-de-gasto-em-educacao": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-vinculacao": [1.4, 0.0],
-        "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios": [-0.6, 0.0],
-        "meta-de-10-do-pib": [-1.6, 0.0],
-        "fundeb-ampliado-para-escolas-vulneraveis": [-1.1, 0.0]
+        "sem-vinculacao": [1.4, 0],
+        "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios": [-0.6, 0],
+        "meta-de-10-do-pib": [-1.6, 0],
+        "fundeb-ampliado-para-escolas-vulneraveis": [-1.1, 0]
       }
     },
     "transferencia-de-renda-as-familias-pobres": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "zero": [1.6, 0.0],
+        "zero": [1.6, 0],
         "baixo-e-condicionado-a-escola-e-vacina": [0.4, 0.4],
-        "medio-com-valor-por-crianca": [-0.8, 0.0],
+        "medio-com-valor-por-crianca": [-0.8, 0],
         "renda-basica-universal": [-1.4, -0.4]
       }
     },
@@ -1580,63 +1478,47 @@
         "caso-a-caso-o-juiz-pode-mandar-pagar-qualquer-tratamento": [
           -0.6, -0.6
         ],
-        "lista-com-excecoes-lista-tecnica-e-o-juiz-so-decide-fora-del": [
-          0.0, 0.0
-        ],
-        "lista-fechada-por-custo-efetividade-obrigatoria-para-o-juiz": [
-          0.6, 0.0
-        ]
-      }
-    },
-    "verba-da-saude-acima-do-piso": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "no-piso-nada-a-mais": [0.8, 0.0],
-        "4-3-do-pib": [0, 0],
-        "6-do-pib": [-0.8, 0.0],
-        "9-do-pib": [-1.4, 0.0]
+        "lista-com-excecoes-lista-tecnica-e-o-juiz-so-decide-fora-del": [0, 0],
+        "lista-fechada-por-custo-efetividade-obrigatoria-para-o-juiz": [0.6, 0]
       }
     },
     "bolsas-de-pos-graduacao": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-corte-de-bolsas-e-valor-congelado": [0.8, 0.0],
+        "minimo-corte-de-bolsas-e-valor-congelado": [0.8, 0],
         "referencia-mestrado-r-2-100-doutorado-r-3-100-por-mes-275-mi": [
-          -0.4, 0.0
+          -0.4, 0
         ],
-        "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe": [
-          -1.0, 0.0
-        ],
-        "bolsas-em-parceria-com-empresas": [0.4, 0.0]
+        "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe": [-1, 0],
+        "bolsas-em-parceria-com-empresas": [0.4, 0]
       }
     },
     "fundo-de-equalizacao": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "0": [0.0, 0.0],
-        "0-5": [-0.6, 0.0],
-        "1": [-1.0, 0.0]
+        "0": [0, 0],
+        "1": [-1, 0],
+        "0-5": [-0.6, 0]
       }
     },
     "papel-das-forcas-armadas": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-forcas-armadas": [0.0, -1.2],
-        "so-defesa-externa": [0.0, -0.6],
-        "defesa-externa-e-uso-interno-excepcional-com-prazo-e-area": [0.0, 0.4],
-        "seguranca-interna-ampla": [0.0, 1.4]
+        "sem-forcas-armadas": [0, -1.2],
+        "so-defesa-externa": [0, -0.6],
+        "defesa-externa-e-uso-interno-excepcional-com-prazo-e-area": [0, 0.4],
+        "seguranca-interna-ampla": [0, 1.4]
       }
     },
     "vinculacoes-orcamentarias": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "desligada-receita-sem-carimbo": [1.0, 0.0],
-        "ligada-vinculacoes-permitidas": [-1.0, 0.0]
+        "desligada-receita-sem-carimbo": [1, 0],
+        "ligada-vinculacoes-permitidas": [-1, 0]
       }
     },
     "vagas-de-residencia-medica": {
@@ -1653,10 +1535,10 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-politica": [1.0, 0.0],
-        "comite-coordenador-consultivo": [0.2, 0.0],
-        "agencia-civil-com-regras-e-supervisao": [-0.6, 0.0],
-        "comando-militar-ofensivo": [-0.4, 1.0]
+        "sem-politica": [1, 0],
+        "comite-coordenador-consultivo": [0.2, 0],
+        "agencia-civil-com-regras-e-supervisao": [-0.6, 0],
+        "comando-militar-ofensivo": [-0.4, 1]
       }
     },
     "protecao-social-dos-militares": {
@@ -1665,36 +1547,26 @@
       "opcoes": {
         "integral-com-paridade": [-0.8, 0.8],
         "regime-proprio-ajustado": [-0.4, 0.4],
-        "regras-do-servidor-civil": [0.4, 0.0],
-        "regime-geral-com-fundo-complementar": [1.2, 0.0]
+        "regras-do-servidor-civil": [0.4, 0],
+        "regime-geral-com-fundo-complementar": [1.2, 0]
       }
     },
     "orcamento-do-judiciario": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "0-6": [0.8, 0.0],
-        "1-2": [0.0, 0.0],
-        "2": [-0.6, 0.0]
-      }
-    },
-    "integracao-regional": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "fora-dos-blocos": [0.6, 0.6],
-        "cooperacao-flexivel": [0.6, 0.2],
-        "blocos-intergovernamentais": [-0.2, 0.0],
-        "integracao-supranacional": [-0.6, -0.2]
+        "2": [-0.6, 0],
+        "0-6": [0.8, 0],
+        "1-2": [0, 0]
       }
     },
     "rede-diplomatica": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "10-postos": [0.0, 0.6],
-        "205-postos": [0.0, 0.0],
-        "280-postos": [0.0, -0.4]
+        "10-postos": [0, 0.6],
+        "205-postos": [0, 0],
+        "280-postos": [0, -0.4]
       }
     },
     "mutirao-de-cirurgias": {
@@ -1712,28 +1584,17 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "0": [1.6, -0.4],
-        "12-a-15": [0.6, 0.0],
-        "40": [-0.8, 0.6]
-      }
-    },
-    "como-o-estado-entrega-casa": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "vale-aluguel-no-mercado": [0.8, 0.0],
-        "financiamento-subsidiado-da-casa-propria": [0.0, 0.0],
-        "venda-do-imovel-publico-ao-morador": [1.0, 0.0],
-        "aluguel-social-em-imovel-publico": [-1.4, 0.0],
-        "moradia-primeiro-para-quem-esta-na-rua": [-0.6, -0.4]
+        "40": [-0.8, 0.6],
+        "12-a-15": [0.6, 0]
       }
     },
     "remedios-em-farmacias-credenciadas": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "zero-sem-programa": [0.8, 0.0],
+        "zero-sem-programa": [0.8, 0],
         "41-itens-gratis-em-31-mil-farmacias": [0, 0],
-        "todos-os-remedios-essenciais-gratis": [-0.8, 0.0],
+        "todos-os-remedios-essenciais-gratis": [-0.8, 0],
         "retirada-apenas-em-unidades-publicas": [0, 0]
       }
     },
@@ -1742,10 +1603,10 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "sem-fiscalizacao-ativa": [0.8, 0.2],
-        "minimo-metade-de-hoje-cerca-de-900": [0.6, 0.0],
-        "referencia-cerca-de-1-800-ativos": [0.0, 0.0],
+        "minimo-metade-de-hoje-cerca-de-900": [0.6, 0],
+        "referencia-cerca-de-1-800-ativos": [0, 0],
         "maximo-todos-os-cargos-e-mais-os-2-mil-pedidos-cerca-de-5-60": [
-          -0.6, 0.0
+          -0.6, 0
         ]
       }
     },
@@ -1753,16 +1614,16 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-clausula": [0.0, -0.2],
-        "gradual-de-2-a-3": [0.0, 0.0],
-        "5": [0.0, 0.2]
+        "5": [0, 0.2],
+        "sem-clausula": [0, -0.2],
+        "gradual-de-2-a-3": [0, 0]
       }
     },
     "gestao-dos-presidios": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "estatal": [-0.6, 0.0],
+        "estatal": [-0.6, 0],
         "cogestao-o-estado-dirige-a-empresa-presta-servicos": [0.6, 0.2],
         "parceria-privada-a-empresa-constroi-e-opera-por-25-anos-e-re": [
           1.2, 0.4
@@ -1773,7 +1634,7 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-sem-fiscalizacao": [1.0, -0.6],
+        "minimo-sem-fiscalizacao": [1, -0.6],
         "referencia-hoje": [0, 0],
         "maximo-satelite-fiscais-e-embargos": [-0.8, 0.6],
         "chave-ligada-credito-condicionado": [-0.4, 0.4]
@@ -1783,28 +1644,28 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "minimo-0": [0.8, 0.0],
-        "medio-cerca-de-0-05-do-pib": [0.0, 0.0],
-        "maximo-0-3-do-pib": [-0.6, 0.0]
+        "minimo-0": [0.8, 0],
+        "medio-cerca-de-0-05-do-pib": [0, 0],
+        "maximo-0-3-do-pib": [-0.6, 0]
       }
     },
     "tribunais-e-tratados-internacionais": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "soberania-plena": [0.0, 1.0],
-        "adesao-seletiva": [0.0, 0.2],
-        "adesao-plena": [0.0, -0.6],
-        "tratados-acima-da-lei": [0.0, -1.0]
+        "soberania-plena": [0, 1],
+        "adesao-seletiva": [0, 0.2],
+        "adesao-plena": [0, -0.6],
+        "tratados-acima-da-lei": [0, -1]
       }
     },
     "revisao-de-gastos-tributarios": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "nenhuma": [0.6, 0.0],
-        "revisao-com-prazo-de-validade": [0.0, 0.0],
-        "corte-linear": [-0.2, 0.0]
+        "nenhuma": [0.6, 0],
+        "revisao-com-prazo-de-validade": [0, 0],
+        "corte-linear": [-0.2, 0]
       }
     },
     "exportacao-de-armas": {
@@ -1812,7 +1673,7 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "proibida": [-0.4, -0.8],
-        "controle-humanitario": [0.0, -0.2],
+        "controle-humanitario": [0, -0.2],
         "controle-comercial": [0.6, 0.4],
         "livre": [1.4, 0.6]
       }
@@ -1821,11 +1682,11 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "tutela-militar": [0.0, 1.8],
-        "um-ministerio-por-forca": [0.0, 0.8],
-        "ministerio-civil-da-defesa": [0.0, 0.0],
+        "tutela-militar": [0, 1.8],
+        "um-ministerio-por-forca": [0, 0.8],
+        "ministerio-civil-da-defesa": [0, 0],
         "controle-civil-reforcado-carreira-civil-na-defesa-quarentena": [
-          0.0, -0.8
+          0, -0.8
         ]
       }
     },
@@ -1834,10 +1695,8 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "minimo-nenhuma-vaga-publica": [1.2, 0.4],
-        "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam": [
-          0.0, 0.0
-        ],
-        "meta-do-plano-nacional-de-educacao-50": [-0.6, 0.0],
+        "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam": [0, 0],
+        "meta-do-plano-nacional-de-educacao-50": [-0.6, 0],
         "maximo-cobertura-dos-paises-nordicos": [-1.2, -0.4]
       }
     },
@@ -1845,8 +1704,8 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "0": [0.8, 0.0],
-        "0-007": [0.0, 0.0],
+        "0": [0.8, 0],
+        "0-007": [0, 0],
         "0-02": [-0.6, 0.4]
       }
     },
@@ -1855,13 +1714,11 @@
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
         "sem-credito-oficial-juro-de-mercado-sem-tecnico-pago-pelo-es": [
-          1.8, 0.0
+          1.8, 0
         ],
-        "credito-de-mercado-com-incentivo-so-isencao-nos-titulos-do-a": [
-          1.0, 0.0
-        ],
-        "credito-amplo-subsidiado-para-todos-os-portes": [-0.4, 0.0],
-        "foco-na-agricultura-familiar-e-na-assistencia-tecnica": [-1.2, 0.0],
+        "credito-de-mercado-com-incentivo-so-isencao-nos-titulos-do-a": [1, 0],
+        "credito-amplo-subsidiado-para-todos-os-portes": [-0.4, 0],
+        "foco-na-agricultura-familiar-e-na-assistencia-tecnica": [-1.2, 0],
         "credito-verde-subsidio-so-para-producao-de-baixo-carbono": [-0.6, 0.2]
       }
     },
@@ -1869,10 +1726,10 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "fatia-solar": [-0.4, 0.0],
-        "fatia-eolica": [-0.4, 0.0],
-        "fatia-hidreletrica": [0.0, 0.0],
-        "fatia-gas": [0.6, 0.0],
+        "fatia-solar": [-0.4, 0],
+        "fatia-eolica": [-0.4, 0],
+        "fatia-hidreletrica": [0, 0],
+        "fatia-gas": [0.6, 0],
         "fatia-nuclear": [-0.4, 0.4]
       }
     },
@@ -1880,74 +1737,55 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "gratuita-sem-risco": [-1.2, 0.0],
-        "gratuita-com-teto-de-renda": [0.0, 0.0],
-        "quem-perde-paga": [1.2, 0.0]
+        "gratuita-sem-risco": [-1.2, 0],
+        "gratuita-com-teto-de-renda": [0, 0],
+        "quem-perde-paga": [1.2, 0]
       }
     },
     "regra-de-repasse": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "criterio-do-governo": [0.0, 0.6],
-        "por-populacao": [0.4, 0.0],
-        "por-populacao-e-renda": [-0.6, 0.0],
-        "parte-por-resultado": [0.2, 0.0]
+        "criterio-do-governo": [0, 0.6],
+        "por-populacao": [0.4, 0],
+        "por-populacao-e-renda": [-0.6, 0],
+        "parte-por-resultado": [0.2, 0]
       }
     },
     "bolsa-de-permanencia-no-ensino-medio": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "nenhuma": [0.6, 0.0],
-        "focalizada-nos-inscritos-no-cadastro-social": [-0.8, 0.0],
-        "universal": [-1.4, 0.0]
+        "nenhuma": [0.6, 0],
+        "focalizada-nos-inscritos-no-cadastro-social": [-0.8, 0],
+        "universal": [-1.4, 0]
       }
     },
     "valor-do-fundo-eleitoral": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "0": [0.8, 0.0],
-        "0-04": [-0.6, 0.0],
-        "0-06": [-1.0, 0.0]
-      }
-    },
-    "publicidade-de-apostas": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "livre": [1.2, -0.4],
-        "com-avisos-e-regras": [0.6, 0.0],
-        "sem-patrocinio-esportivo": [0.0, 0.4],
-        "proibida": [-0.6, 0.8]
-      }
-    },
-    "verba-do-programa-habitacional": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "minimo-0": [1.2, 0.0],
-        "referencia-0-1-a-0-5-do-pib": [0.0, 0.0],
-        "maximo-1-do-pib": [-1.2, 0.0]
+        "0": [0.8, 0],
+        "0-04": [-0.6, 0],
+        "0-06": [-1, 0]
       }
     },
     "missoes-de-paz": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "nenhuma": [0.0, 0.0],
-        "observadores-e-policiais": [0.0, 0.0],
-        "tropas-em-missao-de-manutencao-da-paz": [0.0, 0.2],
-        "liderar-missao-com-uso-da-forca": [0.0, 0.4]
+        "nenhuma": [0, 0],
+        "observadores-e-policiais": [0, 0],
+        "tropas-em-missao-de-manutencao-da-paz": [0, 0.2],
+        "liderar-missao-com-uso-da-forca": [0, 0.4]
       }
     },
     "protecao-da-vida-desde-a-concepcao": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "sem-essa-protecao": [0.0, -0.4],
-        "com-protecao-desde-a-concepcao": [0.0, 1.8]
+        "sem-essa-protecao": [0, -0.4],
+        "com-protecao-desde-a-concepcao": [0, 1.8]
       }
     },
     "verba-policia-federal": {
@@ -1987,8 +1825,8 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "proibido": [0.0, -0.4],
-        "pacifico-com-inspecao-plena": [0.0, 0.0],
+        "proibido": [0, -0.4],
+        "pacifico-com-inspecao-plena": [0, 0],
         "pacifico-com-autonomia-sem-a-inspecao-extra": [-0.4, 0.6],
         "dissuasao-nuclear": [-0.6, 1.6]
       }
@@ -2097,7 +1935,7 @@
         "voluntaria": [0.5, 0],
         "obrigatoria-para-todos": [-0.5, 0],
         "taxa-negocial-desconto-de-quem-o-acordo-cobre-com-direito-de": [
-          -0.4, 0.0
+          -0.4, 0
         ]
       }
     },
@@ -2127,7 +1965,7 @@
         "eleicao-pela-comunidade": [0, 0],
         "diretor-por-merito-selecao-tecnica-e-depois-eleicao": [0, 0.5],
         "civico-militar": [0, 1.5],
-        "indicacao-politica": [0.0, 0.4]
+        "indicacao-politica": [0, 0.4]
       }
     },
     "igualdade-racial": {
@@ -2157,10 +1995,8 @@
         "sem-regras": [1, 0],
         "codigo-detalhado": [-0.5, 0],
         "protetiva-estabilidade-e-demissao-so-com-motivo": [-1.5, 0],
-        "minima-contrato-livre-com-piso-e-seguranca": [1.2, 0.0],
-        "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole": [
-          0.6, 0.0
-        ]
+        "minima-contrato-livre-com-piso-e-seguranca": [1.2, 0],
+        "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole": [0.6, 0]
       }
     },
     "penas-e-progressao": {
@@ -2170,9 +2006,7 @@
         "penas-curtas-e-alternativas": [0, -1],
         "progressao-padrao": [0, 0.5],
         "sem-progressao": [0, 1.5],
-        "progressao-dura-sem-saida-temporaria-com-exame-criminologico": [
-          0.0, 1.2
-        ]
+        "progressao-dura-sem-saida-temporaria-com-exame-criminologico": [0, 1.2]
       }
     },
     "politica-de-imigracao": {
@@ -2193,9 +2027,9 @@
         "sem-programa": [0, 0],
         "importacao-de-medicos-estrangeiros-sem-prova-de-revalidacao-": [-1, 0],
         "servico-obrigatorio-recem-formado-serve-no-interior": [-1, 0.5],
-        "incentivos-bolsa-pontos-na-residencia": [0.0, 0.0],
+        "incentivos-bolsa-pontos-na-residencia": [0, 0],
         "carreira-de-estado-concurso-federal-salario-maior-quanto-mai": [
-          -0.8, 0.0
+          -0.8, 0
         ]
       }
     },
@@ -2280,16 +2114,16 @@
         "numero-fixo-e-cargo-ate-os-75-anos": [0, 0],
         "ampliacao-por-lei": [0, 1],
         "nomeacao-pelo-partido": [0, 2],
-        "mandato-fixo-de-9-a-12-anos": [0.0, 0.0]
+        "mandato-fixo-de-9-a-12-anos": [0, 0]
       }
     },
     "alianca-militar": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "neutralidade-permanente": [0.0, 0.0],
-        "sem-alianca": [0.0, 0.0],
-        "cooperacao-regional-de-defesa": [0.0, 0.0],
+        "neutralidade-permanente": [0, 0],
+        "sem-alianca": [0, 0],
+        "cooperacao-regional-de-defesa": [0, 0],
         "defesa-mutua": [0.2, 0.6],
         "bases-estrangeiras": [0.4, 0.8]
       }

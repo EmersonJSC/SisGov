@@ -52,8 +52,9 @@ Fora da versão 1: STF, mercado do Victoria 3, Congresso propondo leis e veto.
 
 ## O que estamos fazendo agora (atualizado 22/out, 13h)
 
-**Feito em 22/out (noite):** 221 de 239 leis no molde v4, área por área,
-com os mesmos números. Esperando o autor: `docs/jogo/leis/destinos-propostos.md`.
+**Feito em 22/out (noite):** catálogo no molde v4 (223 de 224 leis), área
+por área, com os mesmos números; destinos aprovados e aplicados (15 leis
+saíram). Próximo: separar Segurança e defesa em duas esferas, mecânica 4.
 Decisões do autor: até 5 opções por lei; sem teto de leis por área;
 constitucional que não trava nada fica constitucional, com efeitos.
 
