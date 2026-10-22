@@ -1,22 +1,12 @@
 {
   "id": "genericos-e-patentes-de-medicamentos",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Patentes, genéricos e produção de medicamentos",
-  "descricao": "O país pode comprar no mercado, ampliar genéricos ou usar licenças estratégicas e laboratórios públicos para garantir remédios. Efeitos numéricos são hipóteses de jogo.",
-  "area": "Saúde",
-  "mesa": {
-    "id": "remedios",
-    "nome": "Remédios",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define como o país garante remédios: respeitando patentes, ampliando genéricos ou produzindo em laboratórios públicos.",
+  "area": "saude",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_genericos_e_patentes_de_medicamentos",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Investimento inicial em produção pública (hipótese)",
         "apoiam": ["Movimento pela saúde pública", "Servidores", "Pobres"],
         "rejeitam": ["Indústria farmacêutica", "Mercado financeiro"],
-        "efeitos": "Oferta pública e acesso ↑ com atraso; preço tende a cair; gasto inicial e disputa sobre patentes ↑ (hipótese)"
+        "efeitos": "Oferta pública e acesso ↑ com atraso; preço tende a cair; gasto inicial e disputa sobre patentes ↑ (hipótese)",
+        "propoe": "O país quebra patentes quando precisa e produz em laboratórios públicos."
       },
       {
         "id": "patente-restrita-e-licenca-compulsoria-facil",
@@ -37,7 +28,8 @@
         "custoTexto": "gasto do sistema público de saúde ↓",
         "apoiam": ["Movimento pela saúde pública", "Pobres"],
         "rejeitam": ["Indústria farmacêutica"],
-        "efeitos": "Genéricos entram mais cedo em necessidades críticas; preço ↓ e tensão com titulares de patentes ↑ (hipótese)"
+        "efeitos": "Genéricos entram mais cedo em necessidades críticas; preço ↓ e tensão com titulares de patentes ↑ (hipótese)",
+        "propoe": "Quebra de patente fica fácil para remédios essenciais."
       },
       {
         "id": "regra-internacional-e-generico-rapido",
@@ -46,7 +38,8 @@
         "custoTexto": "neutro",
         "apoiam": ["Farmácias", "Pacientes", "Indústria de genéricos"],
         "efeitos": "Mantém incentivo à pesquisa e concorrência dos genéricos após o prazo legal",
-        "rejeitam": ["Defensores de produção pública ampla"]
+        "rejeitam": ["Defensores de produção pública ampla"],
+        "propoe": "Patentes normais e genéricos logo que elas vencem."
       },
       {
         "id": "patente-estendida-alem-da-regra-internacional",
@@ -55,23 +48,160 @@
         "custoTexto": "gasto do sistema público de saúde ↑",
         "apoiam": ["Indústria farmacêutica"],
         "rejeitam": ["Movimento pela saúde pública", "Aposentados"],
-        "efeitos": "Pesquisa privada pode ganhar incentivo; preço e gasto do bolso ↑, acesso dos mais pobres ↓ (hipótese)"
+        "efeitos": "Pesquisa privada pode ganhar incentivo; preço e gasto do bolso ↑, acesso dos mais pobres ↓ (hipótese)",
+        "propoe": "Patentes protegidas por mais tempo que a regra internacional."
       }
     ]
   },
-  "consequencias": [
-    "genericos-e-patentes-medicamentos--preco-medicamentos",
-    "genericos-e-patentes-medicamentos--gasto-bolso-saude",
-    "genericos-e-patentes-medicamentos--inovacao",
-    "genericos-e-patentes-medicamentos--ied",
-    "genericos-e-patentes-medicamentos--reputacao-internacional",
-    "genericos-e-patentes-medicamentos--saude-populacao",
-    "genericos-e-patentes-medicamentos--gasto-publico",
-    "genericos-e-patentes-medicamentos--grupo-aposentados",
-    "genericos-e-patentes-medicamentos--grupo-empresarios",
-    "genericos-e-patentes-medicamentos--grupo-pequenos-negocios",
-    "genericos-e-patentes-medicamentos--grupo-pobres",
-    "genericos-e-patentes-de-medicamentos--tensao-internacional"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "genericos-e-patentes-medicamentos--preco-medicamentos",
+      "alvo": "preco_medicamentos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--gasto-bolso-saude",
+      "alvo": "gasto_bolso_saude",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--ied",
+      "alvo": "ied",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.25,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.05],
+          [50, 0.1],
+          [75, 0.2],
+          [100, 0.35]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-medicamentos--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "genericos-e-patentes-de-medicamentos--tensao-internacional",
+      "alvo": "tensao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.056,
+        "termoConstante": 2.8
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

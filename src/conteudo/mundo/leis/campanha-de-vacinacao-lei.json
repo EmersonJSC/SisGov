@@ -1,22 +1,12 @@
 {
   "id": "campanha-de-vacinacao-lei",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Campanha de vacinação",
-  "descricao": "Fazer campanha e busca ativa para vacinar quem está atrasado?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "saude-publica",
-    "nome": "Saúde pública",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo faz campanha e procura quem está com a vacina atrasada.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_campanha_de_vacinacao",
     "unidade": "nivel_escopo",
@@ -26,15 +16,17 @@
         "rotulo": "Nenhuma",
         "valor": 0,
         "rejeitam": ["Movimento pela saúde pública", "Famílias com filhos"],
-        "efeitos": "Cobertura vacinal ↓ devagar; Desinformação pesa mais"
+        "efeitos": "Cobertura vacinal ↓ devagar; Desinformação pesa mais",
+        "propoe": "Nenhuma campanha."
       },
       {
         "id": "rotina-anual",
         "rotulo": "Rotina anual (dias de vacinação)",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "lacuna",
         "apoiam": ["Movimento pela saúde pública", "Famílias com filhos"],
-        "efeitos": "Cobertura vacinal estável"
+        "efeitos": "Cobertura vacinal estável",
+        "propoe": "Dias de vacinação todo ano."
       },
       {
         "id": "grande-mobilizacao-campanha-busca-ativa-pela-atencao-basica-",
@@ -46,17 +38,46 @@
           "Famílias com filhos",
           "Entidades médicas"
         ],
-        "efeitos": "Cobertura vacinal ↑ (1 a 2 anos); Epidemia ↓; com Cobertura da atenção básica alta, efeito maior"
+        "efeitos": "Cobertura vacinal ↑ (1 a 2 anos); Epidemia ↓; com Cobertura da atenção básica alta, efeito maior",
+        "propoe": "Grande campanha, com busca de quem está atrasado e posto aberto até mais tarde."
       }
     ]
   },
-  "consequencias": [
-    "campanha-de-vacinacao--cobertura-vacinal",
-    "grupos--campanha-de-vacinacao-lei--grupo-familias-com-filhos"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Vacinação obrigatória. \"Sem programa\" desliga a campanha (proposta minha).",
     "leis": ["vacinacao-obrigatoria"]
   },
-  "ministerio": "Ministério da Saúde"
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "campanha-de-vacinacao--cobertura-vacinal",
+      "alvo": "cobertura_vacinal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.14,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "grupos--campanha-de-vacinacao-lei--grupo-familias-com-filhos",
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

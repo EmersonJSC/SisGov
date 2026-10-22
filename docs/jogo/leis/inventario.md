@@ -116,24 +116,24 @@ Total: 239 leis.
 | --- | --- | --- | --- | --- | --- |
 | Modelo do sistema de saúde | `modelo-do-sistema-de-saude` | constitucional | — |  | |
 | Piso constitucional de gasto em saúde | `piso-de-gasto-em-saude` | constitucional | — |  | |
-| Farmácia popular | `farmacia-popular` | programa | nome de programa ou travessão; sem nível |  | |
-| Remédios em farmácias credenciadas | `remedios-em-farmacias-credenciadas` | programa | decide é pergunta |  | |
-| Campanha de vacinação | `campanha-de-vacinacao-lei` | regra | decide é pergunta |  | |
-| Divisão da verba: atenção básica x hospitais | `divisao-da-verba-atencao-basica-x-hospitais` | regra | decide é pergunta |  | |
-| Forma de gestão hospitalar | `forma-de-gestao-hospitalar` | regra | decide é pergunta |  | |
+| Remédios de graça na farmácia | `farmacia-popular` | programa | — |  | |
+| Campanha de vacinação | `campanha-de-vacinacao-lei` | regra | — |  | |
+| Divisão da verba: atenção básica x hospitais | `divisao-da-verba-atencao-basica-x-hospitais` | regra | — |  | |
+| Forma de gestão hospitalar | `forma-de-gestao-hospitalar` | regra | — |  | |
 | Patentes, genéricos e produção de medicamentos | `genericos-e-patentes-de-medicamentos` | regra | — |  | |
-| Lista de remédios e incorporação | `lista-de-remedios-e-incorporacao` | regra | decide é pergunta |  | |
-| Mutirão de cirurgias | `mutirao-de-cirurgias` | regra | decide é pergunta |  | |
-| Programa de médicos no interior | `programa-de-medicos-no-interior` | regra | decide é pergunta |  | |
+| Lista de remédios e incorporação | `lista-de-remedios-e-incorporacao` | regra | — |  | |
+| Mutirão de cirurgias | `mutirao-de-cirurgias` | regra | — |  | |
+| Programa de médicos no interior | `programa-de-medicos-no-interior` | regra | — |  | |
 | Regulação de vagas | `regulacao-de-vagas` | regra | sem efeito na rede; decide é pergunta |  | |
-| Regulação dos planos de saúde | `regulacao-dos-planos-de-saude` | regra | decide é pergunta; 6 opções (máximo 5) |  | |
-| Restrição a tabaco e álcool | `restricao-a-tabaco-e-alcool` | regra | decide é pergunta |  | |
-| Saúde mental | `saude-mental` | regra | decide é pergunta |  | |
-| Vacinação obrigatória | `vacinacao-obrigatoria` | regra | decide é pergunta |  | |
-| Vagas de residência médica | `vagas-de-residencia-medica` | regra | decide é pergunta |  | |
-| Verba executada para a saúde | `piso-saude` | verba | sem nível | `verba-da-saude-acima-do-piso` | |
+| Regulação dos planos de saúde | `regulacao-dos-planos-de-saude` | regra | — |  | |
+| Remédios em farmácias credenciadas | `remedios-em-farmacias-credenciadas` | regra | — |  | |
+| Restrição a tabaco e álcool | `restricao-a-tabaco-e-alcool` | regra | — |  | |
+| Saúde mental | `saude-mental` | regra | — |  | |
+| Vacinação obrigatória | `vacinacao-obrigatoria` | regra | — |  | |
+| Vagas de residência médica | `vagas-de-residencia-medica` | regra | — |  | |
+| Verba executada para a saúde | `piso-saude` | verba | — | `verba-da-saude-acima-do-piso` | |
 | Prioridade para recursos adicionais da saúde | `verba-da-saude-acima-do-piso` | verba | — |  | |
-| Vigilância epidemiológica | `vigilancia-epidemiologica` | verba | sem nível |  | |
+| Vigilância epidemiológica | `vigilancia-epidemiologica` | verba | — |  | |
 
 ## Educação e cultura (23)
 

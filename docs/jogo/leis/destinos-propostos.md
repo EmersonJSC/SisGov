@@ -32,3 +32,12 @@
 | Previdência rural (`previdencia-rural`) | vira regra (lei comum) ou fica constitucional sem trava | Não trava nenhuma lei |
 | Reajuste de aposentadorias e benefícios (`reajuste-de-beneficios`) | vira regra ou fica constitucional sem trava | Não trava nenhuma lei |
 | Renda para idosos e pessoas com deficiência pobres (`renda-para-idosos-e-pessoas-com-deficiencia-pobres`) | vira programa (verde-água), na mecânica 4 | Paga pessoas, mas não tem custo declarado |
+
+## Saúde (18 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Prioridade para recursos adicionais da saúde (`verba-da-saude-acima-do-piso`) | sai | Repete a Verba executada para a saúde, que é o valor de fato; esta tem 1 efeito só |
+| Regulação de vagas (`regulacao-de-vagas`) | fica, mas precisa ganhar efeito (fila, judicialização, gasto) | Hoje não faz nada no jogo; os efeitos só existem em texto |
+
+Também nesta área: "Farmácia popular" passou a se chamar **Remédios de graça na farmácia** (o nome do programa brasileiro ficou no exemplo), e os Planos de saúde perderam a opção "acabar com a dedução no imposto de renda", que é assunto de imposto.

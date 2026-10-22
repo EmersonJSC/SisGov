@@ -1,42 +1,149 @@
 {
   "id": "vigilancia-epidemiologica",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Vigilância epidemiológica",
-  "descricao": "Fixa quanto o Estado gasta para detectar surtos cedo: laboratórios, notificação de casos, rastreamento, estoques estratégicos e equipes de resposta.",
-  "area": "Saúde",
-  "mesa": {
-    "id": "saude-publica",
-    "nome": "Saúde pública",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Saúde",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta para detectar surtos cedo: laboratórios, notificação, rastreamento e equipes de resposta.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_vigilancia_epidemiologica",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 0.5
     }
   },
-  "consequencias": [
-    "vigilancia-epidemiologica--epidemia",
-    "vigilancia-epidemiologica--pressao-hospitalar",
-    "vigilancia-epidemiologica--saude-populacao",
-    "vigilancia-epidemiologica--reputacao-internacional",
-    "vigilancia-epidemiologica--liberdade-civil",
-    "vigilancia-epidemiologica--grupo-aposentados",
-    "vigilancia-epidemiologica--grupo-empresarios",
-    "vigilancia-epidemiologica--grupo-servidores",
-    "vigilancia-epidemiologica--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "vigilancia-epidemiologica--epidemia",
+      "alvo": "epidemia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0002,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.00005,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.00005,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.00005,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.00005,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 20,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -20,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 20,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vigilancia-epidemiologica--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

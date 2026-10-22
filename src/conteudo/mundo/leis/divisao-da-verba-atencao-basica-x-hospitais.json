@@ -1,22 +1,12 @@
 {
   "id": "divisao-da-verba-atencao-basica-x-hospitais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Divisão da verba: atenção básica x hospitais",
-  "descricao": "Que parte da verba da saúde vai para a atenção básica e que parte vai para os hospitais?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "sistema-de-saude",
-    "nome": "Sistema de saúde",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define que parte da verba da saúde vai para postos e prevenção e que parte vai para hospitais.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_divisao_da_verba_atencao_basica_x_hospitais",
     "unidade": "nivel_escopo",
@@ -31,7 +21,8 @@
           "Equipes de atenção básica",
           "Movimento pela saúde pública"
         ],
-        "efeitos": "Cirurgias recebem prioridade imediata; prevenção ↓ e pressão hospitalar ↑ no longo prazo (hipótese)"
+        "efeitos": "Cirurgias recebem prioridade imediata; prevenção ↓ e pressão hospitalar ↑ no longo prazo (hipótese)",
+        "propoe": "Quase tudo para hospitais e cirurgias."
       },
       {
         "id": "15-prioridade-aos-hospitais",
@@ -40,7 +31,8 @@
         "custoTexto": "— (só redivide)",
         "apoiam": ["Entidades médicas"],
         "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Mais recursos para hospitais agora; cobertura preventiva ↓ e pressão hospitalar ↑ depois (hipótese)"
+        "efeitos": "Mais recursos para hospitais agora; cobertura preventiva ↓ e pressão hospitalar ↑ depois (hipótese)",
+        "propoe": "Postos e prevenção ficam com 15% da verba."
       },
       {
         "id": "cerca-de-22",
@@ -48,7 +40,8 @@
         "valor": 66.67,
         "efeitos": "Preserva a rede atual; prevenção cresce pouco sem novos recursos",
         "apoiam": ["Gestores municipais", "Entidades médicas"],
-        "rejeitam": ["Defensores de expansão da atenção básica"]
+        "rejeitam": ["Defensores de expansão da atenção básica"],
+        "propoe": "Postos e prevenção ficam com cerca de 22%, como hoje."
       },
       {
         "id": "40-prioridade-a-atencao-basica",
@@ -57,13 +50,42 @@
         "custoTexto": "— (só redivide)",
         "apoiam": ["Movimento pela saúde pública"],
         "rejeitam": ["Gestores hospitalares"],
-        "efeitos": "Postos e equipes de família ↑; filas hospitalares podem subir no início e cair com prevenção (hipótese)"
+        "efeitos": "Postos e equipes de família ↑; filas hospitalares podem subir no início e cair com prevenção (hipótese)",
+        "propoe": "Postos e prevenção ficam com 40% da verba."
       }
     ]
   },
-  "consequencias": [
-    "divisao-da-verba-atencao-basica-x-hospitais--cobertura-aps",
-    "divisao-da-verba-atencao-basica-x-hospitais--pressao-hospitalar"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "divisao-da-verba-atencao-basica-x-hospitais--cobertura-aps",
+      "alvo": "cobertura_aps",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.093,
+        "termoConstante": -6.20031
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "divisao-da-verba-atencao-basica-x-hospitais--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.093,
+        "termoConstante": 6.20031
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -166,6 +166,7 @@ export function paraV4(
     ...(lei.populacao ? { populacao: lei.populacao } : {}),
     ...(lei.historia ? { historia: lei.historia } : {}),
     ...(lei.fontes ? { fontes: lei.fontes } : {}),
+    ...(lei.fonte ? { fontes: [{ titulo: lei.fonte, url: "" }] } : {}),
     efeitos,
   };
 }
@@ -192,6 +193,7 @@ const CAMPOS_V2 = [
   "vinculos",
   "consequencias",
   "revogavel",
+  "fonte",
 ];
 const CAMPOS_V3 = [
   "id",
@@ -232,6 +234,11 @@ if (process.argv[2]) {
   const mundoPath = join(CONTEUDO, "mundo/mundo.json");
   const mundo = ler(mundoPath);
   mkdirSync(ARQUIVO, { recursive: true });
+  // Efeito listado cujo arquivo já foi para o arquivo morto sai da lista.
+  mundo.consequencias = (mundo.consequencias as string[]).filter((c) =>
+    existsSync(join(CONTEUDO, c)),
+  );
+  gravar(mundoPath, mundo);
   for (const e of dados.leis) {
     const path = join(pasta, `${e.id}.json`);
     const lei = ler(path);
@@ -275,6 +282,7 @@ if (process.argv[2]) {
       const destino = join(ARQUIVO, c.split("/").at(-1)!);
       if (!existsSync(destino)) renameSync(join(CONTEUDO, c), destino);
     }
+    gravar(mundoPath, mundo);
     console.log(
       `${e.id}: v4 com ${efeitos.length} efeitos${trava.length ? `, ${trava.length} travas` : ""}`,
     );

@@ -1,43 +1,169 @@
 {
   "id": "farmacia-popular",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
-  "nome": "Farmácia popular",
-  "descricao": "Fixa quanto o Estado gasta para dar de graça ou com desconto, na farmácia, os remédios de uso contínuo (pressão, diabetes, asma).",
-  "area": "Saúde",
-  "mesa": {
-    "id": "remedios",
-    "nome": "Remédios",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Saúde",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "versaoEsquema": 4,
+  "familia": "programa",
+  "nome": "Remédios de graça na farmácia",
+  "decide": "Define quanto o governo gasta para dar de graça, ou com desconto, remédios de uso contínuo nas farmácias.",
+  "area": "saude",
+  "exemplo": "No Brasil: Farmácia Popular, desde 2004.",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_farmacia_popular",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 1.5
     }
   },
-  "consequencias": [
-    "farmacia-popular--gasto-bolso-saude",
-    "farmacia-popular--pressao-hospitalar",
-    "farmacia-popular--saude-populacao",
-    "farmacia-popular--pobreza",
-    "farmacia-popular--corrupcao",
-    "farmacia-popular--grupo-aposentados",
-    "farmacia-popular--grupo-empresarios",
-    "farmacia-popular--grupo-pequenos-negocios",
-    "farmacia-popular--grupo-pobres",
-    "farmacia-popular--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "publico": {
+    "quem": "pessoas com doenças crônicas, como pressão alta e diabetes",
+    "pessoas": 24000000
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "farmacia-popular--gasto-bolso-saude",
+      "alvo": "gasto_bolso_saude",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000388889,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "farmacia-popular--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000388889,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000388889,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000166667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "farmacia-popular--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000166667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "farmacia-popular--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

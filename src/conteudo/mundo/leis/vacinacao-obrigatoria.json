@@ -1,22 +1,12 @@
 {
   "id": "vacinacao-obrigatoria",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Vacinação obrigatória",
-  "descricao": "O Estado só oferece a vacina ou obriga a tomar, e com que punição?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "saude-publica",
-    "nome": "Saúde pública",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se o Estado só oferece a vacina ou obriga a tomar, e com que punição.",
+  "area": "saude",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_vacinacao_obrigatoria",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Sem programa",
         "valor": 0,
         "rejeitam": ["Movimento pela saúde pública", "Entidades médicas"],
-        "efeitos": "Cobertura vacinal ↓ forte; Epidemia mais provável"
+        "efeitos": "Cobertura vacinal ↓ forte; Epidemia mais provável",
+        "propoe": "O Estado não oferece vacina."
       },
       {
         "id": "recomendada-gratis-sem-exigencia",
@@ -35,7 +26,8 @@
         "custoTexto": "0,02 a 0,05% do PIB (aprox.), Saúde",
         "apoiam": ["Conservadores", "Evangélicos"],
         "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Cobertura vacinal depende de campanha e confiança"
+        "efeitos": "Cobertura vacinal depende de campanha e confiança",
+        "propoe": "Vacina grátis, sem obrigação."
       },
       {
         "id": "exigida-para-escola-e-beneficios",
@@ -47,7 +39,8 @@
           "Famílias com filhos"
         ],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Cobertura vacinal ↑ (tamanho lacuna)"
+        "efeitos": "Cobertura vacinal ↑ (tamanho lacuna)",
+        "propoe": "Vacina exigida para matrícula na escola e para receber benefícios."
       },
       {
         "id": "obrigatoria-com-multa",
@@ -55,31 +48,180 @@
         "valor": 75,
         "apoiam": ["Movimento pela saúde pública"],
         "rejeitam": ["Conservadores", "Igrejas evangélicas"],
-        "efeitos": "Cobertura vacinal ↑; Desinformação ↑; Protestos ↑"
+        "efeitos": "Cobertura vacinal ↑; Desinformação ↑; Protestos ↑",
+        "propoe": "Vacina obrigatória, com multa."
       },
       {
         "id": "compulsoria-aplicacao-a-forca",
         "rotulo": "Compulsória: aplicação à força",
         "valor": 100,
         "rejeitam": ["quase todos"],
-        "efeitos": "Protestos ↑ forte; Desinformação ↑"
+        "efeitos": "Protestos ↑ forte; Desinformação ↑",
+        "propoe": "Vacina aplicada à força."
       }
     ]
   },
-  "consequencias": [
-    "vacinacao-obrigatoria--cobertura-vacinal",
-    "vacinacao-obrigatoria--epidemia",
-    "vacinacao-obrigatoria--saude-populacao",
-    "vacinacao-obrigatoria--pressao-hospitalar",
-    "vacinacao-obrigatoria--liberdade-civil",
-    "vacinacao-obrigatoria--polarizacao",
-    "vacinacao-obrigatoria--protestos",
-    "vacinacao-obrigatoria--gasto-publico",
-    "vacinacao-obrigatoria--grupo-aposentados",
-    "vacinacao-obrigatoria--grupo-conservadores",
-    "vacinacao-obrigatoria--grupo-pobres",
-    "vacinacao-obrigatoria--grupo-servidores",
-    "vacinacao-obrigatoria--desinformacao"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "vacinacao-obrigatoria--cobertura-vacinal",
+      "alvo": "cobertura_vacinal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--epidemia",
+      "alvo": "epidemia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.06,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--protestos",
+      "alvo": "protestos",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.03],
+          [50, 0.05],
+          [75, 0.06],
+          [100, 0.07]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "vacinacao-obrigatoria--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vacinacao-obrigatoria--desinformacao",
+      "alvo": "desinformacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.084,
+        "termoConstante": -4.2
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

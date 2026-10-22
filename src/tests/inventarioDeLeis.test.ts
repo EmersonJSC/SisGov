@@ -50,8 +50,8 @@ describe("inventário das leis", () => {
   });
 
   it("aponta a lei parecida", () => {
-    expect(linha("transferencia-de-renda").parecidaCom).toBe(
-      "transferencia-de-renda-as-familias-pobres",
+    expect(linha("salario-minimo").parecidaCom).toBe(
+      "formula-do-salario-minimo",
     );
   });
 

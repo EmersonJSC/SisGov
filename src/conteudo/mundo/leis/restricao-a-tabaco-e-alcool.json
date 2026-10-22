@@ -1,22 +1,12 @@
 {
   "id": "restricao-a-tabaco-e-alcool",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Restrição a tabaco e álcool",
-  "descricao": "Até onde o Estado limita propaganda, venda e uso de cigarro e bebida?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "saude-publica",
-    "nome": "Saúde pública",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define até onde o Estado limita propaganda, venda e uso de cigarro e bebida.",
+  "area": "saude",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_restricao_a_tabaco_e_alcool",
     "unidade": "nivel_escopo",
@@ -27,13 +17,15 @@
         "valor": 0,
         "apoiam": ["Indústria"],
         "rejeitam": ["Movimento pela saúde pública"],
-        "efeitos": "Fumo ↑; Consumo de álcool ↑"
+        "efeitos": "Fumo ↑; Consumo de álcool ↑",
+        "propoe": "Sem limites."
       },
       {
         "id": "so-avisos-basicos",
         "rotulo": "Só avisos básicos",
         "valor": 25,
-        "efeitos": "Fumo e álcool ficam estáveis"
+        "efeitos": "Fumo e álcool ficam estáveis",
+        "propoe": "Só avisos na embalagem."
       },
       {
         "id": "restricao-forte-propaganda-locais-fechados-embalagem",
@@ -45,7 +37,8 @@
           "Famílias com filhos"
         ],
         "rejeitam": ["Indústria", "Pequenos negócios"],
-        "efeitos": "Fumo ↓; Consumo de álcool ↓"
+        "efeitos": "Fumo ↓; Consumo de álcool ↓",
+        "propoe": "Proíbe propaganda e o uso em lugar fechado; embalagem com alerta forte."
       },
       {
         "id": "preco-minimo-e-geracao-sem-fumo-proibido-vender-a-quem-nasce",
@@ -53,7 +46,8 @@
         "valor": 75,
         "apoiam": ["Movimento pela saúde pública"],
         "rejeitam": ["Jovens", "Comércio e serviços"],
-        "efeitos": "Fumo ↓ forte em gerações; Crime organizado ↑ (contrabando)"
+        "efeitos": "Fumo ↓ forte em gerações; Crime organizado ↑ (contrabando)",
+        "propoe": "Preço mínimo e venda proibida para quem nasceu depois de certo ano."
       },
       {
         "id": "proibicao",
@@ -62,24 +56,165 @@
         "custoTexto": "gasto com repressão",
         "apoiam": ["Igrejas evangélicas"],
         "rejeitam": ["quase todos"],
-        "efeitos": "Consumo ↓; Crime organizado ↑ forte; Arrecadação ↓"
+        "efeitos": "Consumo ↓; Crime organizado ↑ forte; Arrecadação ↓",
+        "propoe": "Venda proibida."
       }
     ]
   },
-  "consequencias": [
-    "restricao-tabaco-e-alcool--consumo-tabaco-alcool",
-    "restricao-tabaco-e-alcool--saude-populacao",
-    "restricao-tabaco-e-alcool--pressao-hospitalar",
-    "restricao-tabaco-e-alcool--desigualdade",
-    "restricao-tabaco-e-alcool--consumo",
-    "restricao-tabaco-e-alcool--crime-organizado",
-    "restricao-tabaco-e-alcool--liberdade-civil",
-    "restricao-tabaco-e-alcool--grupo-agro",
-    "restricao-tabaco-e-alcool--grupo-classe-media",
-    "restricao-tabaco-e-alcool--grupo-conservadores",
-    "restricao-tabaco-e-alcool--grupo-empresarios",
-    "restricao-tabaco-e-alcool--grupo-pequenos-negocios",
-    "restricao-tabaco-e-alcool--grupo-servidores"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "saude-publica",
+    "nome": "Saúde pública",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "restricao-tabaco-e-alcool--consumo-tabaco-alcool",
+      "alvo": "consumo_tabaco_alcool",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "restricao-tabaco-e-alcool--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

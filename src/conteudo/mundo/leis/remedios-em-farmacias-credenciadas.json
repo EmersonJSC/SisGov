@@ -1,22 +1,12 @@
 {
   "id": "remedios-em-farmacias-credenciadas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Remédios em farmácias credenciadas",
-  "descricao": "Quanto o governo paga de remédio para o paciente retirar em farmácia privada?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "remedios",
-    "nome": "Remédios",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define onde o paciente retira o remédio pago pelo governo.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_remedios_em_farmacias_credenciadas",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Sem subsídio a farmácias privadas",
         "apoiam": ["Servidores", "Defensores da rede pública"],
         "rejeitam": ["Farmácias privadas", "Moradores longe dos postos"],
-        "efeitos": "Mais controle direto do estoque; distância pode dificultar acesso; custo depende da rede (hipótese)"
+        "efeitos": "Mais controle direto do estoque; distância pode dificultar acesso; custo depende da rede (hipótese)",
+        "propoe": "Só em postos e unidades públicas."
       },
       {
         "id": "zero-sem-programa",
@@ -36,7 +27,8 @@
         "valor": 33.33,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Aposentados", "Pobres", "Pequenos negócios"],
-        "efeitos": "Economia fiscal imediata; gasto do bolso e pressão hospitalar tendem a subir (hipótese)"
+        "efeitos": "Economia fiscal imediata; gasto do bolso e pressão hospitalar tendem a subir (hipótese)",
+        "propoe": "O governo não distribui remédios."
       },
       {
         "id": "41-itens-gratis-em-31-mil-farmacias",
@@ -44,7 +36,8 @@
         "valor": 66.67,
         "custoTexto": "0,03 a 0,05% do PIB (aprox.), Saúde",
         "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
-        "efeitos": "Acesso próximo de casa ↑; exige controle de reembolsos e estoque"
+        "efeitos": "Acesso próximo de casa ↑; exige controle de reembolsos e estoque",
+        "propoe": "Uma lista de remédios essenciais sai de graça em farmácias credenciadas."
       },
       {
         "id": "todos-os-remedios-essenciais-gratis",
@@ -53,17 +46,46 @@
         "custoTexto": "Ampliação do subsídio (hipótese)",
         "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Pagamento do bolso ↓; gasto público e fiscalização de reembolsos ↑ (hipótese)"
+        "efeitos": "Pagamento do bolso ↓; gasto público e fiscalização de reembolsos ↑ (hipótese)",
+        "propoe": "Todos os remédios essenciais saem de graça."
       }
     ]
   },
-  "consequencias": [
-    "remedios-em-farmacias-credenciadas--pressao-hospitalar",
-    "remedios-em-farmacias-credenciadas--corrupcao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Modelo do sistema de saúde. \"Mercado privado\" põe esta alavanca no mínimo.",
     "leis": ["modelo-do-sistema-de-saude"]
   },
-  "ministerio": "Ministério da Saúde"
+  "mesa": {
+    "id": "remedios",
+    "nome": "Remédios",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "remedios-em-farmacias-credenciadas--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 5.60028
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "remedios-em-farmacias-credenciadas--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -4.20021
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

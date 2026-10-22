@@ -1,22 +1,12 @@
 {
   "id": "vagas-de-residencia-medica",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Vagas de residência médica",
-  "descricao": "Quantas vagas de especialização médica o governo paga por ano?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "sistema-de-saude",
-    "nome": "Sistema de saúde",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quantas vagas de especialização médica o governo paga por ano.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_vagas_de_residencia_medica",
     "unidade": "nivel_escopo",
@@ -31,7 +21,8 @@
           "Estudantes de medicina",
           "Pacientes que aguardam especialistas"
         ],
-        "efeitos": "Falta de especialistas pode subir após alguns anos (hipótese)"
+        "efeitos": "Falta de especialistas pode subir após alguns anos (hipótese)",
+        "propoe": "Nenhuma vaga nova."
       },
       {
         "id": "cerca-de-16-200-vagas",
@@ -39,7 +30,8 @@
         "valor": 33.33,
         "custoTexto": "baixo (bolsas, aprox.)",
         "rejeitam": ["Jovens", "Estudantes"],
-        "efeitos": "Metade dos formados fica sem especialização"
+        "efeitos": "Metade dos formados fica sem especialização",
+        "propoe": "Cerca de 16 mil vagas, metade dos formados."
       },
       {
         "id": "cerca-de-24-000-vagas",
@@ -47,7 +39,8 @@
         "valor": 66.67,
         "custoTexto": "baixo (aprox.), Saúde",
         "apoiam": ["Entidades médicas", "Jovens", "Estudantes"],
-        "efeitos": "Falta de médicos (especialistas) ↓ em 3 a 5 anos; Fila ↓ depois disso"
+        "efeitos": "Falta de médicos (especialistas) ↓ em 3 a 5 anos; Fila ↓ depois disso",
+        "propoe": "Cerca de 24 mil vagas."
       },
       {
         "id": "cerca-de-33-000-uma-vaga-por-formado",
@@ -56,13 +49,42 @@
         "custoTexto": "lacuna",
         "apoiam": ["Entidades médicas", "Jovens", "Estudantes"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Falta de médicos ↓ forte em 3 a 5 anos; Fuga de cérebros ↓ (proposta minha)"
+        "efeitos": "Falta de médicos ↓ forte em 3 a 5 anos; Fuga de cérebros ↓ (proposta minha)",
+        "propoe": "Uma vaga para cada médico formado."
       }
     ]
   },
-  "consequencias": [
-    "vagas-de-residencia-medica--falta-de-medicos",
-    "vagas-de-residencia-medica--fuga-de-cerebros"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "vagas-de-residencia-medica--falta-de-medicos",
+      "alvo": "falta_de_medicos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.108,
+        "termoConstante": 3.59964
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vagas-de-residencia-medica--fuga-de-cerebros",
+      "alvo": "fuga_de_cerebros",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 2.09979
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

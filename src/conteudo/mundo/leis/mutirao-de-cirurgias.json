@@ -1,22 +1,12 @@
 {
   "id": "mutirao-de-cirurgias",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Mutirão de cirurgias",
-  "descricao": "Pôr verba extra e temporária para baixar a fila de cirurgias agora?",
-  "area": "Saúde",
-  "mesa": {
-    "id": "sistema-de-saude",
-    "nome": "Sistema de saúde",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo põe verba extra, por um tempo, para baixar a fila de cirurgias.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_mutirao_de_cirurgias",
     "unidade": "nivel_escopo",
@@ -28,14 +18,16 @@
         "custoTexto": "Sem gasto extraordinário",
         "apoiam": ["Gestores com restrição fiscal"],
         "rejeitam": ["Pacientes na fila eletiva", "Entidades médicas"],
-        "efeitos": "Urgências têm prioridade; fila de cirurgias eletivas tende a crescer (hipótese)"
+        "efeitos": "Urgências têm prioridade; fila de cirurgias eletivas tende a crescer (hipótese)",
+        "propoe": "Nenhum mutirão; só urgências passam na frente."
       },
       {
         "id": "zero",
         "rotulo": "Zero",
         "valor": 33.33,
         "rejeitam": ["Aposentados", "Pobres"],
-        "efeitos": "Fila segue as causas de fundo"
+        "efeitos": "Fila segue as causas de fundo",
+        "propoe": "Sem verba extra."
       },
       {
         "id": "0-01-do-pib",
@@ -43,7 +35,8 @@
         "valor": 66.67,
         "custoTexto": "0,01% do PIB (aprox.), Saúde",
         "apoiam": ["Aposentados", "Pobres"],
-        "efeitos": "Fila ↓ no ano; volta se a causa não mudar"
+        "efeitos": "Fila ↓ no ano; volta se a causa não mudar",
+        "propoe": "Verba extra pequena, de 0,01% do PIB."
       },
       {
         "id": "0-05-do-pib",
@@ -52,15 +45,64 @@
         "custoTexto": "0,05% do PIB (aprox.), Saúde",
         "apoiam": ["Aposentados", "Pobres", "Empresários"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Fila ↓ rápido; Aprovação do governo ↑; tudo volta quando a verba acaba"
+        "efeitos": "Fila ↓ rápido; Aprovação do governo ↑; tudo volta quando a verba acaba",
+        "propoe": "Verba extra grande, de 0,05% do PIB."
       }
     ]
   },
-  "consequencias": [
-    "mutirao-de-cirurgias--popularidade-governo",
-    "grupos--mutirao-de-cirurgias--grupo-aposentados",
-    "grupos--mutirao-de-cirurgias--grupo-empresarios",
-    "grupos--mutirao-de-cirurgias--grupo-pobres"
-  ],
-  "ministerio": "Ministério da Saúde"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "mutirao-de-cirurgias--popularidade-governo",
+      "alvo": "popularidade_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--mutirao-de-cirurgias--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--mutirao-de-cirurgias--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--mutirao-de-cirurgias--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

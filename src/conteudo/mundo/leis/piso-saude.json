@@ -1,18 +1,12 @@
 {
   "id": "piso-saude",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Verba executada para a saúde",
-  "descricao": "Escolhe quanto da receita agregada financia hospitais, postos, remédios e vigilância. A regra constitucional define o mínimo; esta alavanca pode gastar acima dele.",
-  "area": "Saúde",
-  "mesa": {
-    "id": "sistema-de-saude",
-    "nome": "Sistema de saúde",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Saúde",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto da receita o governo gasta com hospitais, postos, remédios e vigilância.",
+  "area": "saude",
+  "nivel": "decreto",
   "controle": {
     "variavel": "percentual_piso_saude",
     "unidade": "percentual_receita",
@@ -38,7 +32,8 @@
       ]
     }
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "percentual_orcamento",
     "base": "receita_total",
     "limites": {
@@ -46,20 +41,166 @@
       "maximo": 40
     }
   },
-  "consequencias": [
-    "piso-saude--pressao-hospitalar",
-    "piso-saude--crise-atendimento",
-    "piso-saude--gasto-bolso-saude",
-    "piso-saude--saude-populacao",
-    "piso-saude--corrupcao",
-    "piso-saude--grupo-aposentados",
-    "piso-saude--grupo-empresarios",
-    "piso-saude--grupo-pobres",
-    "piso-saude--grupo-servidores",
-    "piso-saude--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "sistema-de-saude",
+    "nome": "Sistema de saúde",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "piso-saude--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.5833333333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--crise-atendimento",
+      "alvo": "crise_atendimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.5833333333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--gasto-bolso-saude",
+      "alvo": "gasto_bolso_saude",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.5833333333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "piso-saude--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.5833333333,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.833333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.833333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.833333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.833333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-saude--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }
