@@ -27,8 +27,11 @@ export function iconeLei(id: string, reserva: string): string {
   return urlsPorLei.has(id) ? `${PREFIXO}${id}` : reserva;
 }
 
-export function urlIconePersonalizado(nome: string): string | undefined {
-  return nome.startsWith(PREFIXO)
+/** Sem nome (alguns ícones da tela chegam vazios), usa o desenho reserva. */
+export function urlIconePersonalizado(
+  nome: string | undefined,
+): string | undefined {
+  return nome?.startsWith(PREFIXO)
     ? urlsPorLei.get(nome.slice(PREFIXO.length))
     : undefined;
 }
