@@ -34,13 +34,14 @@ a tela (`src/ui`) fica mais para o final.**
 
 ### Mudanças de código já decididas no escopo
 - [ ] Tirar os limites por lei e por país das leis de valor (controle livre de 0 a 100%), inclusive o teto de 3×/4× o valor atual em `faixaNumerica` (`src/ui/mapa/Documentos.tsx`)
-- [ ] Trava por valor vinda de outra lei (piso ou teto), além da dependência por opção que já existe
 - [ ] Trava única: soma dos gastos ≤ 100% do PIB; gasto acima da arrecadação vira déficit e dívida
 - [ ] Rever as leis de escolha: liberar todas as opções e converter em valor onde couber
 - [ ] Jogador como partido (não presidente); partida começa com o partido recém-eleito
 - [ ] Desgaste do partido: sobe sempre por baixo, opinião segura, queda em escândalo, crise ou eleição
 - [ ] Índices essenciais como número único: criar industrialização, padrão de vida composto, população real (natalidade, mortalidade, saúde, migração), radicais e lealistas
 - [ ] Tempo corrido: calendário em semanas, pausa, velocidades, números deslizando, acontecimentos datados e pausa automática (motor segue mensal)
+- [ ] Mecânica 4: gasto fixo da rede (~30% do PIB) que nenhuma lei controla; reativar o teste `contasSemFuros` "cofre passa de 100%"
+- [ ] Mecânica 2: pisos de saúde e educação ainda têm teto de 40% (trava a tirar)
 - [ ] Retirar o STF: mudança em pétrea gera reação do Senado e da população
 
 ## 5. Chamados (status)

@@ -355,7 +355,7 @@
     },
     {
       "lei": "imposto-sobre-consumo",
-      "opcao": "iva-com-cashback"
+      "nivel": 26.5
     },
     {
       "lei": "imposto-renda-empresas",

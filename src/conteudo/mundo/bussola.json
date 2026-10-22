@@ -163,11 +163,9 @@
     "imposto-sobre-consumo": {
       "manifesto": [],
       "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
-      "opcoes": {
-        "iva-minimo": [0, 0],
-        "iva-moderado": [0, 0],
-        "iva-alto-base-ampla": [0, 0],
-        "iva-com-cashback": [0, 0]
+      "faixa": {
+        "minimo": [0, 0],
+        "maximo": [0, 0]
       }
     },
     "imposto-transacoes-financeiras": {

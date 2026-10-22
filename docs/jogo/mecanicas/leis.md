@@ -37,7 +37,9 @@ O país só declara quais leis começam em vigor e em que valor.
 2. **Outra lei.** Uma lei pode fixar piso ou teto para outra. Exemplo: a
    Constituição fixa um piso de gasto com educação; enquanto ela estiver
    em vigor, o controle não desce abaixo dele. Para passar, o jogador muda
-   primeiro a lei que trava.
+   primeiro a lei que trava. Já existe no código (`pisoPorLei`): o mínimo
+   da verba de saúde e de educação depende da opção da lei constitucional
+   do piso (sem vinculação = 0%; vigente = 13,69% e 17,51%).
 
 ### 2.2 Leis de escolha
 
@@ -82,8 +84,8 @@ O país só declara quais leis começam em vigor e em que valor.
 - Exemplo: com o ensino superior **pago pela família**, liberam-se
   "Crédito estudantil" e "Bolsas em faculdades privadas"; com ele
   **gratuito**, liberam-se "Vagas nas universidades públicas" e "Cotas".
-- No código: dependência por opção existe (`src/game/policyRequirements.ts`).
-  Dependência por valor (piso ou teto) é nova.
+- No código: dependência por opção (`src/game/policyRequirements.ts`) e por
+  valor (`pisoPorLei` nas leis de verba) já existem.
 
 ### 2.6 Em vigor e catálogo
 
@@ -185,7 +187,7 @@ atrapalhar a diversão ou a clareza, vence a jogabilidade.
 **O que muda na implementação da versão 1:**
 - tirar os limites por lei e por país, e o teto de 3×/4× do controle;
 - criar a trava da soma dos gastos (100% do PIB);
-- criar a trava por valor vinda de outra lei;
+- tirar o teto de 40% dos pisos de saúde e educação;
 - criar a reação do Senado e da população a uma pétrea (sem STF);
 - converter leis de escolha em valor, caso a caso.
 

@@ -41,17 +41,18 @@ describe("configuração do país (V1-06)", () => {
     // V1-34: as duas camadas novas da mesa do salário mínimo e as 28 leis
     // novas das mesas (controle, eficácia e o estado de cada uma).
     // fdc3658: leis consolidadas (244 → 242) e consequências removidas.
+    // 21/out: IVA volta a ser faixa, sem o cashback em 26,5%.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
     expect(Object.keys(valores)).toHaveLength(1729);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.2816861416927, 3);
-    expect(valores.divida_publica).toBeCloseTo(82.66407025918477, 2);
-    expect(valores.inflacao).toBeCloseTo(4.835685533701447, 2);
-    expect(valores.desemprego).toBeCloseTo(6.200130677263957, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.28223467795078, 3);
+    expect(valores.divida_publica).toBeCloseTo(82.41351759411515, 2);
+    expect(valores.inflacao).toBeCloseTo(4.835722703138084, 2);
+    expect(valores.desemprego).toBeCloseTo(6.199971590503557, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12692331.744982902, 3);
+    expect(soma).toBeCloseTo(12692338.222520156, 3);
     expect(p.content.policies).toHaveLength(242);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
