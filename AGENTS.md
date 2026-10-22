@@ -28,7 +28,7 @@ status de cada documento, está em [docs/README.md](docs/README.md).
 - Na terceira tentativa sem fechar um chamado, pare e reveja com o autor.
 - O motor não conhece nomes de leis, partidos ou países (D-03). Leis e índices são
   do mundo; o país declara só o estado inicial (D-04, D-38).
-- Toda lei, índice e grupo tem fonte real. Número sem fonte é hipótese marcada.
+- Jogabilidade primeiro, realidade como base: toda lei tem ligação com o mundo real, mas lei inventada é permitida e número não precisa de precisão empírica ([regras](docs/jogo/mecanicas/leis.md#29-como-escrever-uma-lei-nova)).
 
 ## Coordenação com subagentes
 
