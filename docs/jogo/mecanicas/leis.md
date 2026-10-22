@@ -68,6 +68,17 @@ O país só declara quais leis começam em vigor e em que valor.
    **Organizações conhecidas pela sigla podem aparecer**, sempre com o nome
    real junto na primeira vez: "ONU (Organização das Nações Unidas)",
    "OTAN (Organização do Tratado do Atlântico Norte)". PIB e TV ficam como são.
+6. **Bate o olho e entende.** O nome e a descrição dizem o que a lei faz
+   em linguagem de quem não estuda leis. Sem jargão jurídico.
+7. **Escolha que o jogador vê acontecer.** Nada de "Meios de produção:
+   privada · mista · estatal" com um efeito abstrato. O jogador escolhe
+   **o quê**: quais setores estatizar ou privatizar (petróleo, energia,
+   bancos, correios…), e vê as empresas mudando de mãos.
+8. **Separar pelo que se sente.** Um assunto amplo vira várias leis, uma por
+   alvo. Tributação: imposto sobre o consumo, sobre a renda das pessoas,
+   sobre o lucro das empresas, sobre o patrimônio, sobre heranças…
+9. **Nenhum tema é proibido.** Lei polêmica (permitir o suicídio assistido,
+   por exemplo) entra se for jogável. O critério é jogabilidade, não tabu.
 
 ### 2.4 Os três níveis
 

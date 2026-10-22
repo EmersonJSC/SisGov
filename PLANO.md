@@ -29,8 +29,21 @@ a tela (`src/ui`) fica mais para o final.**
 | # | Mecânica | Documento | Implementação |
 | --- | --- | --- | --- |
 | 1 | Tempo | pronto | em andamento |
+| — | **Índice de conteúdo** (fonte única em YAML; gera os JSONs) | formato aprovado | a fazer |
+| — | **Reforma das leis** (auditoria e reescrita em lotes) | regras em leis.md 2.3 | a fazer |
 | 2 | Leis | pronto | a fazer |
 | 3–15 | demais | a escrever | a fazer |
+
+### Reforma das leis (21/out)
+
+1. **Índice de conteúdo:** converter tudo para o índice e provar que gerar
+   de volta dá zero diferença.
+2. **Auditoria:** cada uma das 242 leis recebe nota nos critérios de
+   [leis.md 2.3](docs/jogo/mecanicas/leis.md#23-como-uma-lei-deve-ser) e um
+   destino: manter, reescrever, dividir, juntar ou remover.
+3. **Reescrita em lotes, um ministério por vez:** primeiro a lista de leis
+   do ministério (o autor aprova), depois o detalhe de cada uma (opções,
+   efeitos, bússola, programas reais), gerar, testes.
 
 ### Mudanças de código já decididas no escopo
 - [ ] Tirar os limites por lei e por país das leis de valor (controle livre de 0 a 100%), inclusive o teto de 3×/4× o valor atual em `faixaNumerica` (`src/ui/mapa/Documentos.tsx`)
