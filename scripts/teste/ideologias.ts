@@ -55,7 +55,9 @@ const CAMINHOS: Record<string, readonly Meta[]> = {
   "Social + PIB": [
     ["investimento-em-infraestrutura", x(1.6)],
     ["investimento-pesquisa", x(1.5)],
-    ["volume-de-incentivo-a-industria", 100],
+    // "Volume de incentivo à indústria" saiu no molde (22/out): a alavanca
+    // industrial agora é a Política industrial, setorial com metas.
+    ["politica-industrial", 66.67],
     ["ensino-tecnico-e-profissional", 67],
     ["escola-em-tempo-integral", 100],
     ["transferencia-de-renda", x(1.3)],

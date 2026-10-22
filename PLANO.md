@@ -56,6 +56,9 @@ a tela (`src/ui`) fica mais para o final.**
 - **Nada muda, 32 turnos:** dívida 82% → 166% do PIB; resultado nominal −6,6% → −17,6%; índice de atividade 44,7 → 39,7. A dívida explode rápido demais (o desenho em `equilibrio.md` prevê ~119% em 8 anos).
 - **Social-democrata cortando gastos:** dívida 82% → 232%; atividade 44,7 → 19,2 (−57%); desemprego 6,2% → 10,2%. Cortar gasto derruba a economia muito mais do que deveria, e a dívida piora em vez de melhorar.
 - Conclusão: a calibragem fiscal da rede está fora do alvo de `docs/jogo/leis/equilibrio.md`; entra na mecânica 4 (orçamento), antes de qualquer conteúdo novo de economia.
+- **22/out (noite), de novo depois do molde:** mesmo quadro. Com corte de gastos, PIB termina entre 18,5 e 24,8 e a dívida vai de 82,4% a 225–254%; com "Social + PIB", PIB entre 43 e 52,2 e dívida 178–193%. O molde não mudou nenhum número, então o resultado era esperado.
+- **Dois problemas a resolver na mecânica 4:** (1) cortar gasto derruba a atividade e a arrecadação demais (receita multiplicada pelo índice de atividade inteiro; seta direta da meta de primário no PIB); (2) a dívida cresce até nos cenários de crescimento (PIB em reais parado, sem diluição; juros sem canal de credibilidade). Diagnóstico e proposta: [estudo](docs/jogo/estudos/victoria3-e-democracy4.md), seção 8.
+- O roteiro `scripts/teste/ideologias.ts` usava `volume-de-incentivo-a-industria`, que saiu no molde; trocado por Política industrial setorial (66,67).
 
 ### Molde das leis (22/out, proposta)
 - Desenho: [molde-das-leis.md](docs/jogo/mecanicas/molde-das-leis.md), aprovado em 22/out. Plano: [2026-10-22-molde-das-leis.md](docs/superpowers/plans/2026-10-22-molde-das-leis.md).
