@@ -64,6 +64,14 @@ O que o sócio paga quando tira o lucro da empresa para o bolso.
 - Indústria: ↑ leve (reinvestimento).
 - Antes: tributacao-dividendos.
 
+### Contribuição sobre os salários            [alíquota · derivada · logo]
+A parte da folha de pagamento que a empresa e o trabalhador pagam para a previdência.
+- Faixa 0% a 100% do salário. Baixa (M·L) · alta (E·L).
+- Ganha com baixa: empresários, informais (formalizar fica barato) · Perde: caixa da previdência.
+- Efeitos: arrecadação ↑ forte (é a terceira maior) · informalidade ↑ e emprego formal ↓ quando sobe · custo trabalhista ↑.
+- Indústria: ↓ quando sobe (a indústria emprega muito com carteira).
+- Novo (no conteúdo antigo era um número fixo, sem lei).
+
 ### Imposto sobre o consumo                     [alíquota · derivada · já]
 A porcentagem que vai no preço de tudo o que se compra.
 - Faixa 0% a 100%. Neutra na bússola: governos de todos os lados usam.

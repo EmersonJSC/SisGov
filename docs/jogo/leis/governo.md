@@ -138,6 +138,13 @@ Se funcionários públicos podem ser demitidos.
 - Efeitos: eficiência do Estado ↑ com avaliação · apoio dos servidores ↓.
 - Antes: estabilidade-dos-servidores-publicos.
 
+### Salário e quantidade de servidores        [verba · derivada · logo]
+Quanto o país gasta com funcionários públicos, entre salários e contratações.
+- Faixa 0% a 20% do PIB. Enxuto (M·L) · amplo (E·L).
+- Ganha com amplo: servidores, serviços públicos (mais professores, médicos, policiais) · Perde: caixa.
+- Efeitos: gasto ↑ forte (é o segundo maior gasto) · capacidade do Estado ↑ · greves de servidores ↑ quando cai.
+- Novo (no conteúdo antigo era gasto fixo da rede, sem lei).
+
 ### Lei anticorrupção                           [regra · derivada · devagar]
 Como a lei pune empresas e políticos corruptos.
 - Branda (neutra) · punição para empresas e acordos de leniência (neutra) · rígida, com prisão e confisco (M·A).
