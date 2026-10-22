@@ -1,22 +1,12 @@
 {
   "id": "vagas-de-creche",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Vagas de creche",
-  "descricao": "Quantas crianças de 0 a 3 anos têm vaga em creche paga pelo Estado?",
-  "area": "Previdência, assistência, moradia e demografia",
-  "mesa": {
-    "id": "mesa-familia-e-cuidados",
-    "nome": "Mesa Família e cuidados",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quantas crianças de 0 a 3 anos têm vaga em creche paga pelo Estado.",
+  "area": "protecao-social",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_vagas_de_creche",
     "unidade": "nivel_escopo",
@@ -30,7 +20,8 @@
           "Movimento feminista",
           "Periferias"
         ],
-        "efeitos": "Trabalho das mães ↓; pobreza infantil ↑"
+        "efeitos": "Trabalho das mães ↓; pobreza infantil ↑",
+        "propoe": "Nenhuma vaga pública."
       },
       {
         "id": "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam",
@@ -38,7 +29,8 @@
         "valor": 33.33,
         "custoTexto": "lacuna (% do PIB no país de referência)",
         "rejeitam": ["Famílias com filhos"],
-        "efeitos": "Trabalho das mães ↑ contra Mínimo; pobreza infantil ↓ pouco; 28% dos mais pobres sem vaga contra 7% dos mais ricos (estimado)"
+        "efeitos": "Trabalho das mães ↑ contra Mínimo; pobreza infantil ↓ pouco; 28% dos mais pobres sem vaga contra 7% dos mais ricos (estimado)",
+        "propoe": "Cerca de 40% das crianças têm vaga."
       },
       {
         "id": "meta-do-plano-nacional-de-educacao-50",
@@ -47,7 +39,8 @@
         "custoTexto": "lacuna; média da OCDE em creche e pré-escola: pouco mais de 0,8% do PIB",
         "apoiam": ["Famílias com filhos", "Movimento feminista", "Pobres"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Trabalho das mães ↑; pobreza infantil ↓; fecundidade ↑ (sem tamanho)"
+        "efeitos": "Trabalho das mães ↑; pobreza infantil ↓; fecundidade ↑ (sem tamanho)",
+        "propoe": "Metade das crianças tem vaga."
       },
       {
         "id": "maximo-cobertura-dos-paises-nordicos",
@@ -60,10 +53,31 @@
           "Famílias com filhos"
         ],
         "rejeitam": ["Mercado financeiro", "Conservadores"],
-        "efeitos": "Fecundidade ↑ (a política com efeito mais durável segundo a revisão N-IUSSP; Noruega: mais creche, mais filhos por mulher, sem tamanho aberto); trabalho das mães ↑; diferença salarial de gênero ↓"
+        "efeitos": "Fecundidade ↑ (a política com efeito mais durável segundo a revisão N-IUSSP; Noruega: mais creche, mais filhos por mulher, sem tamanho aberto); trabalho das mães ↑; diferença salarial de gênero ↓",
+        "propoe": "Quase todas as crianças têm vaga, como nos países nórdicos."
       }
     ]
   },
-  "consequencias": ["vagas-de-creche--diferenca-salarial-genero"],
-  "ministerio": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "mesa-familia-e-cuidados",
+    "nome": "Mesa Família e cuidados",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "vagas-de-creche--diferenca-salarial-genero",
+      "alvo": "diferenca_salarial_genero",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 2.09979
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

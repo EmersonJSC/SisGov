@@ -1,18 +1,12 @@
 {
   "id": "idade-minima-aposentadoria",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Idade mínima de aposentadoria",
-  "descricao": "Define a partir de que idade se pode receber a aposentadoria: sem idade (só tempo de contribuição), idade baixa, moderada, alta ou atrelada à expectativa de vida.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "previdencia",
-    "nome": "Previdência",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Previdência",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define a partir de que idade se pode receber a aposentadoria.",
+  "area": "protecao-social",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_idade_minima_aposentadoria",
     "unidade": "nivel_escopo",
@@ -20,45 +14,167 @@
       {
         "id": "sem-idade",
         "rotulo": "Só tempo de contribuição",
-        "valor": 0
+        "valor": 0,
+        "propoe": "Não há idade mínima; basta o tempo de contribuição."
       },
       {
         "id": "baixa",
         "rotulo": "Idade baixa (até 60)",
-        "valor": 25
+        "valor": 25,
+        "propoe": "A partir de 60 anos ou menos."
       },
       {
         "id": "moderada",
         "rotulo": "Idade moderada (62 a 65)",
-        "valor": 50
+        "valor": 50,
+        "propoe": "A partir de 62 a 65 anos."
       },
       {
         "id": "alta",
         "rotulo": "Idade alta (67)",
-        "valor": 75
+        "valor": 75,
+        "propoe": "A partir de 67 anos."
       },
       {
         "id": "atrelada-expectativa",
         "rotulo": "Atrelada à expectativa de vida",
-        "valor": 100
+        "valor": 100,
+        "propoe": "A idade sobe junto com a expectativa de vida."
       }
     ]
   },
-  "consequencias": [
-    "idade-minima-aposentadoria--deficit-previdenciario",
-    "idade-minima-aposentadoria--gasto-publico",
-    "idade-minima-aposentadoria--participacao-trabalho-idosos",
-    "idade-minima-aposentadoria--desemprego",
-    "idade-minima-aposentadoria--pobreza",
-    "idade-minima-aposentadoria--desigualdade",
-    "idade-minima-aposentadoria--protestos",
-    "idade-minima-aposentadoria--grupo-empresarios",
-    "idade-minima-aposentadoria--grupo-jovens",
-    "idade-minima-aposentadoria--grupo-progressistas",
-    "idade-minima-aposentadoria--grupo-trabalhadores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "idade-minima-aposentadoria--deficit-previdenciario",
+      "alvo": "deficit_previdenciario",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "idade-minima-aposentadoria--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "idade-minima-aposentadoria--participacao-trabalho-idosos",
+      "alvo": "participacao_trabalho_idosos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--protestos",
+      "alvo": "protestos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "idade-minima-aposentadoria--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

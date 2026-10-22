@@ -1,43 +1,165 @@
 {
   "id": "programa-habitacao-popular",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Programa de habitação popular",
-  "descricao": "Define quanto do PIB o Estado gasta para dar moradia a quem não pode pagar: construção subsidiada, financiamento barato ou auxílio-aluguel.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "moradia",
-    "nome": "Moradia",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério das Cidades",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta por ano para dar moradia a quem não pode pagar.",
+  "area": "protecao-social",
+  "exemplo": "No Brasil: Minha Casa, Minha Vida.",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_programa_habitacao_popular",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 1.5
     }
   },
-  "consequencias": [
-    "programa-habitacao-popular--deficit-habitacional",
-    "programa-habitacao-popular--desemprego",
-    "programa-habitacao-popular--pobreza",
-    "programa-habitacao-popular--mobilidade-urbana",
-    "programa-habitacao-popular--corrupcao",
-    "programa-habitacao-popular--grupo-empresarios",
-    "programa-habitacao-popular--grupo-pobres",
-    "programa-habitacao-popular--grupo-progressistas",
-    "programa-habitacao-popular--gasto-publico",
-    "programa-habitacao-popular--grupo-periferias"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "moradia",
+    "nome": "Moradia",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "programa-habitacao-popular--deficit-habitacional",
+      "alvo": "deficit_habitacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000666667,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000166667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000166667,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--mobilidade-urbana",
+      "alvo": "mobilidade_urbana",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000388889,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000166667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "programa-habitacao-popular--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "programa-habitacao-popular--grupo-periferias",
+      "alvo": "grupo_periferias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 6.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    }
+  ]
 }

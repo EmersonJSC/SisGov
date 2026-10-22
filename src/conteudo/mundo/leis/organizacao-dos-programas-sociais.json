@@ -1,22 +1,12 @@
 {
   "id": "organizacao-dos-programas-sociais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Organização dos programas sociais",
-  "descricao": "Cada ministério cuida do seu programa, ou o governo junta todos em missões com meta comum (por exemplo, \"zerar a fome\")?",
-  "area": "Previdência, assistência, moradia e demografia",
-  "mesa": {
-    "id": "mesa-assistencia-social",
-    "nome": "Mesa Assistência social",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se cada ministério cuida do seu programa ou se o governo junta todos em missões com meta comum.",
+  "area": "protecao-social",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_organizacao_dos_programas_sociais",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Por ministério",
         "valor": 0,
         "apoiam": ["Servidores"],
-        "efeitos": "Efeito das outras leis da mesa sem ganho de coordenação contra Missões com meta medida; coordenação entre pastas ↓ (hipótese de desenho, sem tamanho medido)"
+        "efeitos": "Efeito das outras leis da mesa sem ganho de coordenação contra Missões com meta medida; coordenação entre pastas ↓ (hipótese de desenho, sem tamanho medido)",
+        "propoe": "Cada ministério cuida do seu programa."
       },
       {
         "id": "missoes-com-meta-medida",
@@ -34,19 +25,120 @@
         "valor": 100,
         "custoTexto": "Baixo (gestão)",
         "apoiam": ["Progressistas", "Servidores"],
-        "efeitos": "Efeito das outras leis da mesa ↑ (hipótese de desenho, sem tamanho medido)"
+        "efeitos": "Efeito das outras leis da mesa ↑ (hipótese de desenho, sem tamanho medido)",
+        "propoe": "Os programas se juntam em missões com meta medida, como zerar a fome."
       }
     ]
   },
-  "consequencias": [
-    "organizacao-dos-programas-sociais--pobreza",
-    "organizacao-dos-programas-sociais--corrupcao",
-    "organizacao-dos-programas-sociais--margem-manobra-governo",
-    "organizacao-dos-programas-sociais--capacidade-estatal",
-    "organizacao-dos-programas-sociais--grupo-pobres",
-    "organizacao-dos-programas-sociais--grupo-classe-media",
-    "grupos--organizacao-dos-programas-sociais--grupo-progressistas",
-    "grupos--organizacao-dos-programas-sociais--grupo-servidores"
-  ],
-  "ministerio": "Ministério da Previdência"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "mesa-assistencia-social",
+    "nome": "Mesa Assistência social",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "organizacao-dos-programas-sociais--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "organizacao-dos-programas-sociais--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 4]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "organizacao-dos-programas-sociais--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "organizacao-dos-programas-sociais--capacidade-estatal",
+      "alvo": "capacidade_estatal",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "organizacao-dos-programas-sociais--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "organizacao-dos-programas-sociais--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--organizacao-dos-programas-sociais--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--organizacao-dos-programas-sociais--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

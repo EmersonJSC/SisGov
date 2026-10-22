@@ -1,18 +1,12 @@
 {
   "id": "sistema-previdenciario",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Sistema previdenciário",
-  "descricao": "Define quem carrega o risco da velhice: cada um sozinho, cada um com sua conta individual, um sistema misto ou um pacto coletivo em que quem trabalha hoje paga quem já se aposentou.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "previdencia",
-    "nome": "Previdência",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Previdência",
-  "processoAutorizacao": "emenda-constitucional",
+  "decide": "Define quem paga a aposentadoria: cada um sozinho, cada um numa conta própria, um sistema misto ou quem trabalha hoje pagando quem já se aposentou.",
+  "area": "protecao-social",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_sistema_previdenciario",
     "unidade": "nivel_escopo",
@@ -20,42 +14,221 @@
       {
         "id": "sem-sistema",
         "rotulo": "Sem previdência obrigatória",
-        "valor": 0
+        "valor": 0,
+        "propoe": "Não há previdência obrigatória."
       },
       {
         "id": "capitalizacao",
         "rotulo": "Capitalização individual",
-        "valor": 33
+        "valor": 33,
+        "propoe": "Cada trabalhador junta numa conta própria para a velhice."
       },
       {
         "id": "misto",
         "rotulo": "Sistema misto",
-        "valor": 67
+        "valor": 67,
+        "propoe": "Uma parte pública e coletiva, outra em conta própria."
       },
       {
         "id": "reparticao",
         "rotulo": "Repartição pública",
-        "valor": 100
+        "valor": 100,
+        "propoe": "Quem trabalha hoje paga a aposentadoria de quem já parou."
       }
     ]
   },
-  "consequencias": [
-    "sistema-previdenciario--cobertura-previdenciaria",
-    "sistema-previdenciario--pobreza",
-    "sistema-previdenciario--deficit-previdenciario",
-    "sistema-previdenciario--custo-trabalhista",
-    "sistema-previdenciario--poupanca-domestica",
-    "sistema-previdenciario--desigualdade",
-    "sistema-previdenciario--gasto-publico",
-    "sistema-previdenciario--arrecadacao",
-    "sistema-previdenciario--grupo-aposentados",
-    "sistema-previdenciario--grupo-empresarios",
-    "sistema-previdenciario--grupo-jovens",
-    "sistema-previdenciario--grupo-pobres",
-    "sistema-previdenciario--grupo-trabalhadores"
+  "trava": [
+    {
+      "opcao": "sem-sistema",
+      "lei": "pensao-por-morte",
+      "proibe": true
+    },
+    {
+      "opcao": "sem-sistema",
+      "lei": "previdencia-rural",
+      "proibe": true
+    },
+    {
+      "opcao": "sem-sistema",
+      "lei": "reajuste-de-beneficios",
+      "opcoes": ["salario-minimo", "trava-tripla"]
+    },
+    {
+      "opcao": "capitalizacao",
+      "lei": "reajuste-de-beneficios",
+      "opcoes": ["salario-minimo", "trava-tripla"]
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "sistema-previdenciario--cobertura-previdenciaria",
+      "alvo": "cobertura_previdenciaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--deficit-previdenciario",
+      "alvo": "deficit_previdenciario",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "sistema-previdenciario--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--poupanca-domestica",
+      "alvo": "poupanca_domestica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0012,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib_por_passo"
+    },
+    {
+      "id": "sistema-previdenciario--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1],
+          [67, 4],
+          [100, 6.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "envelhecimento",
+        "referencia": 40
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "sistema-previdenciario--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 3.5],
+          [100, 6.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "renda_familias",
+        "referencia": 45
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "sistema-previdenciario--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "sistema-previdenciario--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1,17 +1,12 @@
 {
   "id": "habitacao-publica",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Habitação pública",
-  "descricao": "Como o Estado ajuda a família a ter casa: moradia pública alugada, financiamento subsidiado para comprar ou venda da moradia pública a quem mora nela.",
-  "area": "Previdência e assistência social",
-  "ministerio": "Ministério das Cidades",
+  "decide": "Define como o Estado ajuda a família a ter casa.",
+  "area": "protecao-social",
   "nivel": "lei",
-  "mesa": {
-    "id": "moradia",
-    "nome": "Moradia",
-    "camada": "lei"
-  },
   "controle": {
     "variavel": "nivel_habitacao_publica",
     "unidade": "nivel_escopo",
@@ -19,20 +14,54 @@
       {
         "id": "aluguel-social",
         "rotulo": "Moradia pública alugada",
-        "valor": 0
+        "valor": 0,
+        "propoe": "O Estado aluga moradia pública barata."
       },
       {
         "id": "financiamento",
         "rotulo": "Financiamento subsidiado para comprar",
-        "valor": 50
+        "valor": 50,
+        "propoe": "O Estado ajuda a pagar o financiamento da casa própria."
       },
       {
         "id": "venda-ao-morador",
         "rotulo": "Venda da moradia pública ao morador",
-        "valor": 100
+        "valor": 100,
+        "propoe": "O Estado vende a moradia pública a quem mora nela."
       }
     ]
   },
+  "mesa": {
+    "id": "moradia",
+    "nome": "Moradia",
+    "camada": "lei"
+  },
+  "historia": {
+    "opcoes": {
+      "aluguel-social": ["Áustria (Viena)", "Países Baixos"],
+      "financiamento": [
+        "Brasil (Minha Casa, Minha Vida, Lei 11.977/2009)",
+        "Chile (subsídio habitacional)"
+      ],
+      "venda-ao-morador": [
+        "Reino Unido (Housing Act 1980, direito de compra)",
+        "Singapura"
+      ]
+    },
+    "brasil": "O Minha Casa, Minha Vida (Lei 11.977/2009, refeito pela Lei 14.620/2023) subsidia o financiamento da casa própria."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 11.977/2009 (Minha Casa, Minha Vida)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11977.htm",
+      "usadoPara": "opção do Brasil"
+    },
+    {
+      "titulo": "Housing Act 1980 (Reino Unido)",
+      "url": "https://www.legislation.gov.uk/ukpga/1980/51/contents",
+      "usadoPara": "venda ao morador"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "deficit_habitacional",
@@ -93,32 +122,6 @@
         ]
       },
       "atraso": 4
-    }
-  ],
-  "historia": {
-    "opcoes": {
-      "aluguel-social": ["Áustria (Viena)", "Países Baixos"],
-      "financiamento": [
-        "Brasil (Minha Casa, Minha Vida, Lei 11.977/2009)",
-        "Chile (subsídio habitacional)"
-      ],
-      "venda-ao-morador": [
-        "Reino Unido (Housing Act 1980, direito de compra)",
-        "Singapura"
-      ]
-    },
-    "brasil": "O Minha Casa, Minha Vida (Lei 11.977/2009, refeito pela Lei 14.620/2023) subsidia o financiamento da casa própria."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.977/2009 (Minha Casa, Minha Vida)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11977.htm",
-      "usadoPara": "opção do Brasil"
-    },
-    {
-      "titulo": "Housing Act 1980 (Reino Unido)",
-      "url": "https://www.legislation.gov.uk/ukpga/1980/51/contents",
-      "usadoPara": "venda ao morador"
     }
   ]
 }

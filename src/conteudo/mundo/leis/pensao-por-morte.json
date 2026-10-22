@@ -1,23 +1,12 @@
 {
   "id": "pensao-por-morte",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Pensão por morte",
-  "descricao": "Define o que a família recebe quando morre quem contribuía: nada, uma ajuda temporária, uma parte do benefício por dependente ou o benefício inteiro para sempre.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "previdencia",
-    "nome": "Previdência",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Previdência",
-  "processoAutorizacao": "lei-ordinaria",
-  "requer": {
-    "lei": "sistema-previdenciario",
-    "opcoes": ["capitalizacao", "misto", "reparticao"],
-    "motivo": "A pensão por morte é paga pelo sistema previdenciário; sem ele, ela acaba."
-  },
+  "decide": "Define o que a família recebe quando morre quem contribuía para a previdência.",
+  "area": "protecao-social",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_pensao_por_morte",
     "unidade": "nivel_escopo",
@@ -25,40 +14,178 @@
       {
         "id": "nenhuma",
         "rotulo": "Sem pensão por morte",
-        "valor": 0
+        "valor": 0,
+        "propoe": "A família não recebe nada."
       },
       {
         "id": "temporaria",
         "rotulo": "Pensão de transição",
-        "valor": 33
+        "valor": 33,
+        "propoe": "A família recebe por um tempo, para se reorganizar."
       },
       {
         "id": "cotas",
         "rotulo": "Cotas por dependente",
-        "valor": 67
+        "valor": 67,
+        "propoe": "Cada dependente recebe uma parte do benefício."
       },
       {
         "id": "integral-vitalicia",
         "rotulo": "Integral e vitalícia",
-        "valor": 100
+        "valor": 100,
+        "propoe": "A família recebe o benefício inteiro, para sempre."
       }
     ]
   },
-  "consequencias": [
-    "pensao-por-morte--pobreza",
-    "pensao-por-morte--deficit-previdenciario",
-    "pensao-por-morte--participacao-trabalho-cuidadoras",
-    "pensao-por-morte--corrupcao",
-    "pensao-por-morte--desigualdade",
-    "pensao-por-morte--gasto-publico",
-    "pensao-por-morte--grupo-aposentados",
-    "pensao-por-morte--grupo-classe-media",
-    "pensao-por-morte--grupo-jovens",
-    "pensao-por-morte--grupo-progressistas",
-    "pensao-por-morte--grupo-trabalhadores"
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "dependeDe": [
+    {
+      "lei": "sistema-previdenciario",
+      "opcoes": ["capitalizacao", "misto", "reparticao"],
+      "motivo": "A pensão por morte é paga pelo sistema previdenciário; sem ele, ela acaba."
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "previdencia",
+    "nome": "Previdência",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "pensao-por-morte--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "pensao-por-morte--deficit-previdenciario",
+      "alvo": "deficit_previdenciario",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "pensao-por-morte--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "pensao-por-morte--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.25],
+          [67, 0.5],
+          [100, 0.9]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "envelhecimento",
+        "referencia": 40
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "pensao-por-morte--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pensao-por-morte--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

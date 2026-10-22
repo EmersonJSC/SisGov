@@ -1,46 +1,210 @@
 {
   "id": "transferencia-de-renda",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "programa",
   "nome": "Transferência de renda às famílias pobres",
-  "descricao": "Define a verba anual para transferências mensais de renda. Os critérios de acesso são escolhidos em lei separada.",
-  "area": "Previdência e assistência social",
-  "mesa": {
-    "id": "assistencia-social",
-    "nome": "Assistência social",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Previdência",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta por ano pagando renda todo mês a famílias pobres.",
+  "area": "protecao-social",
+  "exemplo": "No Brasil: Bolsa Família.",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_transferencia_de_renda",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 3
     }
   },
-  "consequencias": [
-    "transferencia-de-renda--pobreza",
-    "transferencia-de-renda--desigualdade",
-    "transferencia-de-renda--inseguranca-alimentar",
-    "transferencia-de-renda--informalidade",
-    "transferencia-de-renda--consumo",
-    "transferencia-de-renda--participacao-trabalho-cuidadoras",
-    "transferencia-de-renda--grupo-classe-media",
-    "transferencia-de-renda--grupo-empresarios",
-    "transferencia-de-renda--grupo-pobres",
-    "transferencia-de-renda--grupo-progressistas",
-    "transferencia-de-renda--gasto-publico",
-    "transferencia-de-renda--grupo-informais",
-    "transferencia-de-renda--grupo-familias-com-filhos"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "publico": {
+    "quem": "famílias pobres",
+    "pessoas": 54000000
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "assistencia-social",
+    "nome": "Assistência social",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "transferencia-de-renda--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000333333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000194444,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--inseguranca-alimentar",
+      "alvo": "inseguranca_alimentar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000194444,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000083333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000083333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000083333,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-informais",
+      "alvo": "grupo_informais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-familias-com-filhos",
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    }
+  ]
 }

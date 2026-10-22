@@ -95,19 +95,19 @@ Total: 239 leis.
 | Previdência rural | `previdencia-rural` | constitucional | sem nível |  | |
 | Reajuste de aposentadorias e benefícios | `reajuste-de-beneficios` | constitucional | sem nível |  | |
 | Renda para idosos e pessoas com deficiência pobres | `renda-para-idosos-e-pessoas-com-deficiencia-pobres` | constitucional | — |  | |
-| Sistema previdenciário | `sistema-previdenciario` | constitucional | sem nível |  | |
-| Pensão por morte | `pensao-por-morte` | programa | sem nível |  | |
-| Programa de habitação popular | `programa-habitacao-popular` | programa | sem nível |  | |
-| Critérios da transferência de renda | `transferencia-de-renda-as-familias-pobres` | programa | — |  | |
-| Transferência de renda às famílias pobres | `transferencia-de-renda` | programa | sem nível | `transferencia-de-renda-as-familias-pobres` | |
+| Sistema previdenciário | `sistema-previdenciario` | constitucional | — |  | |
+| Transferência de renda às famílias pobres | `transferencia-de-renda` | programa | — |  | |
 | Como o Estado entrega casa | `como-o-estado-entrega-casa` | regra | decide é pergunta |  | |
-| Garantia de comida | `garantia-de-comida` | regra | decide é pergunta |  | |
+| Garantia de comida | `garantia-de-comida` | regra | — |  | |
 | Habitação pública | `habitacao-publica` | regra | — |  | |
-| Idade mínima de aposentadoria | `idade-minima-aposentadoria` | regra | sem nível |  | |
+| Idade mínima de aposentadoria | `idade-minima-aposentadoria` | regra | — |  | |
 | Licença para cuidar do bebê | `licenca-para-cuidar-do-bebe` | regra | decide é pergunta |  | |
-| Organização dos programas sociais | `organizacao-dos-programas-sociais` | regra | decide é pergunta |  | |
-| Quem cuida do idoso dependente | `quem-cuida-do-idoso-dependente` | regra | decide é pergunta |  | |
-| Vagas de creche | `vagas-de-creche` | regra | decide é pergunta |  | |
+| Organização dos programas sociais | `organizacao-dos-programas-sociais` | regra | — |  | |
+| Pensão por morte | `pensao-por-morte` | regra | — |  | |
+| Quem cuida do idoso dependente | `quem-cuida-do-idoso-dependente` | regra | — |  | |
+| Critérios da transferência de renda | `transferencia-de-renda-as-familias-pobres` | regra | — |  | |
+| Vagas de creche | `vagas-de-creche` | regra | — |  | |
+| Programa de habitação popular | `programa-habitacao-popular` | verba | — |  | |
 | Verba do programa habitacional | `verba-do-programa-habitacional` | verba | sem efeito na rede; decide é pergunta |  | |
 
 ## Saúde (20)

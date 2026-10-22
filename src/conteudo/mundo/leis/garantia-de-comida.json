@@ -1,22 +1,12 @@
 {
   "id": "garantia-de-comida",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Garantia de comida",
-  "descricao": "Além do dinheiro, como o Estado garante que as pessoas comam?",
-  "area": "Previdência, assistência, moradia e demografia",
-  "mesa": {
-    "id": "mesa-assistencia-social",
-    "nome": "Mesa Assistência social",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define como o Estado garante comida, além do dinheiro.",
+  "area": "protecao-social",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_garantia_de_comida",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Nenhuma",
         "valor": 0,
         "rejeitam": ["Pobres"],
-        "efeitos": "Insegurança alimentar ↑"
+        "efeitos": "Insegurança alimentar ↑",
+        "propoe": "Nada além do dinheiro."
       },
       {
         "id": "acoes-pontuais",
@@ -35,7 +26,8 @@
         "custoTexto": "Baixo",
         "apoiam": ["Evangélicos", "Católicos"],
         "rejeitam": ["Pastorais católicas"],
-        "efeitos": "Insegurança alimentar ↓ pouco, só na crise"
+        "efeitos": "Insegurança alimentar ↓ pouco, só na crise",
+        "propoe": "Doações só em emergência."
       },
       {
         "id": "cartao-alimentacao",
@@ -44,7 +36,8 @@
         "custoTexto": "Médio",
         "apoiam": ["Classe média"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Insegurança alimentar ↓"
+        "efeitos": "Insegurança alimentar ↓",
+        "propoe": "Um cartão que só compra comida."
       },
       {
         "id": "distribuicao-ampla",
@@ -57,21 +50,136 @@
           "Pastorais católicas"
         ],
         "rejeitam": ["Entidades do agronegócio", "Mercado financeiro"],
-        "efeitos": "Insegurança alimentar ↓ forte; renda da agricultura familiar ↑; picos de preço dos alimentos ↓ (sem tamanho)"
+        "efeitos": "Insegurança alimentar ↓ forte; renda da agricultura familiar ↑; picos de preço dos alimentos ↓ (sem tamanho)",
+        "propoe": "Estoques públicos, cozinhas comunitárias e compra de comida da agricultura familiar."
       }
     ]
   },
-  "consequencias": [
-    "seguranca-alimentar--inseguranca-alimentar",
-    "seguranca-alimentar--saude-populacao",
-    "seguranca-alimentar--escolaridade",
-    "seguranca-alimentar--pobreza",
-    "seguranca-alimentar--corrupcao",
-    "seguranca-alimentar--gasto-publico",
-    "seguranca-alimentar--grupo-agro",
-    "seguranca-alimentar--grupo-pequenos-negocios",
-    "seguranca-alimentar--grupo-pobres",
-    "seguranca-alimentar--grupo-agricultura-familiar"
-  ],
-  "ministerio": "Ministério da Previdência"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "mesa-assistencia-social",
+    "nome": "Mesa Assistência social",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "seguranca-alimentar--inseguranca-alimentar",
+      "alvo": "inseguranca_alimentar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--escolaridade",
+      "alvo": "escolaridade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0005,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "seguranca-alimentar--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.05],
+          [67, 0.4],
+          [100, 0.8]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "seguranca-alimentar--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguranca-alimentar--grupo-agricultura-familiar",
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
