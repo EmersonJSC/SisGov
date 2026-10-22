@@ -593,9 +593,9 @@ const NoLei = memo(function NoLei({
       </g>
       {mostrarRotulo ? (
         <Rotulo
-          linhas={quebrarNome(lei.nome, 18, 3)}
-          y={raioVisivel + Math.min(150, Math.max(13, 16 / escalaTela)) * 1.1}
-          tamanho={Math.min(150, Math.max(13, 16 / escalaTela))}
+          linhas={quebrarNome(lei.nome, 16, 3)}
+          y={raioVisivel + Math.min(150, Math.max(13, 13 / escalaTela)) * 1.15}
+          tamanho={Math.min(150, Math.max(13, 13 / escalaTela))}
           classe="rotulo-lei"
         />
       ) : null}

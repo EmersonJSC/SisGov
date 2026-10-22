@@ -1072,6 +1072,11 @@ function trazerParaDentro(
   return null;
 }
 
+/** Espaço do nome da lei embaixo da bolha (unidades do mapa). */
+const LARGURA_DO_NOME = 118;
+const ALTURA_DO_NOME = 44;
+const FOLGA_DOS_NOMES = 10;
+
 function espalharLeis(
   itens: readonly PosicaoLei[],
   raioDe: (id: string) => number,
@@ -1105,7 +1110,10 @@ function espalharLeis(
         }
       }
   }
-  const folga = 24; // espaço mínimo visível entre as leis
+  // 22/out: o nome fica sempre embaixo da bolha; cada lei ocupa uma caixa
+  // (bolha + nome) e as caixas não se tocam
+  const meiaLargura = (r: number) => Math.max(r, LARGURA_DO_NOME / 2);
+  const meiaAltura = (r: number) => r + ALTURA_DO_NOME / 2;
   for (let volta = 0; volta < 120; volta++) {
     let mexeu = false;
     for (let i = 0; i < n; i++)
@@ -1114,17 +1122,20 @@ function espalharLeis(
         const b = p[j];
         let dx = b.x - a.x;
         let dy = b.y - a.y;
-        let d = Math.hypot(dx, dy);
-        const minimo = a.r + b.r + folga;
-        if (d >= minimo) continue;
-        if (d < 0.01) {
+        const sobraX =
+          meiaLargura(a.r) + meiaLargura(b.r) + FOLGA_DOS_NOMES - Math.abs(dx);
+        const sobraY =
+          meiaAltura(a.r) + meiaAltura(b.r) + FOLGA_DOS_NOMES - Math.abs(dy);
+        if (sobraX <= 0 || sobraY <= 0) continue;
+        if (Math.abs(dx) < 0.01 && Math.abs(dy) < 0.01) {
           dx = Math.cos(i * 2.4);
           dy = Math.sin(i * 2.4);
-          d = 1;
         }
-        const empurra = (minimo - d) / 2;
-        const ux = dx / d;
-        const uy = dy / d;
+        // empurra pelo lado que precisa andar menos
+        const horizontal = sobraX / meiaLargura(1) <= sobraY / meiaAltura(1);
+        const empurra = (horizontal ? sobraX : sobraY) / 2 + 0.5;
+        const ux = horizontal ? Math.sign(dx) || 1 : 0;
+        const uy = horizontal ? 0 : Math.sign(dy) || 1;
         // a maior anda menos (a pequena sai do caminho)
         const pa = b.r / (a.r + b.r);
         const pb = a.r / (a.r + b.r);
@@ -1154,7 +1165,11 @@ function espalharLeis(
   let encostadas = 0;
   for (let i = 0; i < n; i++)
     for (let j = i + 1; j < n; j++)
-      if (Math.hypot(p[i].x - p[j].x, p[i].y - p[j].y) < p[i].r + p[j].r - 1)
+      if (
+        Math.abs(p[i].x - p[j].x) <
+          meiaLargura(p[i].r) + meiaLargura(p[j].r) - 1 &&
+        Math.abs(p[i].y - p[j].y) < meiaAltura(p[i].r) + meiaAltura(p[j].r) - 1
+      )
         encostadas++;
   if (saida)
     for (const q of p) {
