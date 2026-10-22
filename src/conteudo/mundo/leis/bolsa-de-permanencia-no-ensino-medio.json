@@ -1,22 +1,13 @@
 {
   "id": "bolsa-de-permanencia-no-ensino-medio",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Bolsa de permanência no ensino médio",
-  "descricao": "O governo paga o jovem pobre para ele ficar na escola até concluir o médio?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo paga o jovem pobre para ele ficar na escola até terminar o ensino médio.",
+  "area": "educacao-e-cultura",
+  "exemplo": "No Brasil: Pé-de-Meia, desde 2024.",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_bolsa_de_permanencia_no_ensino_medio",
     "unidade": "nivel_escopo",
@@ -27,16 +18,18 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Movimento estudantil"],
-        "efeitos": "Nada muda"
+        "efeitos": "Nada muda",
+        "propoe": "Não há bolsa."
       },
       {
         "id": "focalizada-nos-inscritos-no-cadastro-social",
         "rotulo": "Focalizada nos inscritos no cadastro social",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "~0,1% do PIB, educação",
         "apoiam": ["Pobres", "Famílias com filhos", "Movimento estudantil"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Evasão escolar ↓ (abandono caiu de 5,6% para 2,5% em três anos, causa não provada); Escolaridade ↑; Trabalho infantil ↓"
+        "efeitos": "Evasão escolar ↓ (abandono caiu de 5,6% para 2,5% em três anos, causa não provada); Escolaridade ↑; Trabalho infantil ↓",
+        "propoe": "Só jovens de famílias pobres recebem."
       },
       {
         "id": "universal",
@@ -45,14 +38,35 @@
         "custoTexto": "~0,3% do PIB (aprox.), educação",
         "apoiam": ["Movimento estudantil", "Jovens"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Evasão escolar ↓; Resultado fiscal ↓"
+        "efeitos": "Evasão escolar ↓; Resultado fiscal ↓",
+        "propoe": "Todo aluno do ensino médio recebe."
       }
     ]
   },
-  "consequencias": ["bolsa-de-permanencia-no-ensino-medio--evasao-escolar"],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Ensino obrigatório. \"Sem obrigatoriedade\" e \"Só o primário\" travam esta lei; \"Dos 4 aos 17 anos\" libera.",
     "leis": ["ensino-obrigatorio"]
   },
-  "ministerio": "Ministério da Educação"
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "bolsa-de-permanencia-no-ensino-medio--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 3.5
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

@@ -41,3 +41,9 @@
 | Regulação de vagas (`regulacao-de-vagas`) | fica, mas precisa ganhar efeito (fila, judicialização, gasto) | Hoje não faz nada no jogo; os efeitos só existem em texto |
 
 Também nesta área: "Farmácia popular" passou a se chamar **Remédios de graça na farmácia** (o nome do programa brasileiro ficou no exemplo), e os Planos de saúde perderam a opção "acabar com a dedução no imposto de renda", que é assunto de imposto.
+
+## Educação e cultura (22 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Ensino obrigatório (`ensino-obrigatorio`) | vira regra ou fica constitucional sem trava | Não trava nenhuma lei |

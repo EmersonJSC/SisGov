@@ -1,22 +1,12 @@
 {
   "id": "ensino-tecnico-e-profissional",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Ensino técnico e profissional",
-  "descricao": "Escolhe a formação técnica para indústria, serviços e novas tecnologias.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define como o país forma técnicos para a indústria, os serviços e as novas tecnologias.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_ensino_tecnico_e_profissional",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários"],
         "rejeitam": ["Jovens", "Interior"],
-        "efeitos": "Gasto público menor; qualificação desigual entre empresas."
+        "efeitos": "Gasto público menor; qualificação desigual entre empresas.",
+        "propoe": "Escola só com formação geral; as empresas treinam."
       },
       {
         "id": "tecnico-como-opcao-no-medio",
@@ -35,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Jovens", "Confederação da indústria"],
         "rejeitam": ["Empresas sem capacidade de supervisão"],
-        "efeitos": "Acesso ao primeiro emprego e prática sobem."
+        "efeitos": "Acesso ao primeiro emprego e prática sobem.",
+        "propoe": "Curso técnico como opção no ensino médio, com estágio pago."
       },
       {
         "id": "tecnico-em-massa-integrado-ao-medio",
@@ -43,7 +35,8 @@
         "valor": 67,
         "apoiam": ["Jovens", "Interior"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Qualificação sobe com atraso e custo público recorrente."
+        "efeitos": "Qualificação sobe com atraso e custo público recorrente.",
+        "propoe": "Rede pública técnica grande, ligada às vagas da região."
       },
       {
         "id": "contas-de-formacao-continua",
@@ -51,20 +44,126 @@
         "valor": 100,
         "apoiam": ["Trabalhadores com carteira", "Progressistas"],
         "rejeitam": ["Contribuintes preocupados com subsídios"],
-        "efeitos": "Recolocação melhora se os cursos tiverem qualidade."
+        "efeitos": "Recolocação melhora se os cursos tiverem qualidade.",
+        "propoe": "Cada trabalhador tem uma conta para fazer cursos a vida toda."
       }
     ]
   },
-  "consequencias": [
-    "ensino-tecnico-profissional--oportunidades-juvenis",
-    "ensino-tecnico-profissional--qualificacao-trabalho",
-    "ensino-tecnico-profissional--produtividade",
-    "ensino-tecnico-profissional--desemprego",
-    "ensino-tecnico-profissional--desigualdade",
-    "ensino-tecnico-profissional--gasto-publico",
-    "ensino-tecnico-profissional--grupo-empresarios",
-    "ensino-tecnico-profissional--grupo-pobres",
-    "ensino-tecnico-e-profissional--evasao-escolar"
-  ],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "ensino-tecnico-profissional--oportunidades-juvenis",
+      "alvo": "oportunidades_juvenis",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--qualificacao-trabalho",
+      "alvo": "qualificacao_trabalho",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.1],
+          [67, 0.3],
+          [100, 0.15]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "ensino-tecnico-profissional--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-profissional--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-tecnico-e-profissional--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0.693
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

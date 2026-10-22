@@ -1,35 +1,39 @@
 {
   "id": "piso-educacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Verba executada para a educação",
-  "descricao": "Escolhe quanto da receita agregada vai para escolas, professores, merenda e transporte. A regra constitucional define o mínimo; esta alavanca pode gastar acima dele.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Educação",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto da receita o governo gasta com escolas, professores, merenda e transporte.",
+  "area": "educacao-e-cultura",
+  "nivel": "decreto",
   "controle": {
     "variavel": "percentual_piso_educacao",
     "unidade": "percentual_receita",
     "pisoPorLei": {
       "lei": "piso-de-gasto-em-educacao",
       "minimos": [
-        { "opcao": "sem-vinculacao", "valor": 0 },
+        {
+          "opcao": "sem-vinculacao",
+          "valor": 0
+        },
         {
           "opcao": "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios",
           "valor": 17.51
         },
-        { "opcao": "fundeb-ampliado-para-escolas-vulneraveis", "valor": 22 },
-        { "opcao": "meta-de-10-do-pib", "valor": 31.5 }
+        {
+          "opcao": "fundeb-ampliado-para-escolas-vulneraveis",
+          "valor": 22
+        },
+        {
+          "opcao": "meta-de-10-do-pib",
+          "valor": 31.5
+        }
       ]
     }
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "percentual_orcamento",
     "base": "receita_total",
     "limites": {
@@ -37,20 +41,166 @@
       "maximo": 40
     }
   },
-  "consequencias": [
-    "piso-educacao--escolaridade",
-    "piso-educacao--evasao-escolar",
-    "piso-educacao--aprendizagem",
-    "piso-educacao--qualificacao-trabalho",
-    "piso-educacao--desigualdade",
-    "piso-educacao--grupo-classe-media",
-    "piso-educacao--grupo-empresarios",
-    "piso-educacao--grupo-jovens",
-    "piso-educacao--grupo-servidores",
-    "piso-educacao--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "piso-educacao--escolaridade",
+      "alvo": "escolaridade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.012,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "piso-educacao--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.7,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "piso-educacao--aprendizagem",
+      "alvo": "aprendizagem",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.3,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "piso-educacao--qualificacao-trabalho",
+      "alvo": "qualificacao_trabalho",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.7,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.3,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "piso-educacao--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "arrecadacao",
+        "multiplicador": 0.01
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

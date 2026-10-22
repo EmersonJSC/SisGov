@@ -1,41 +1,138 @@
 {
   "id": "investimento-pesquisa",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Investimento em pesquisa e desenvolvimento",
-  "descricao": "Fixa a meta nacional de investimento em pesquisa e desenvolvimento (% do PIB) que o Estado banca e puxa com agências, bolsas, laboratórios e cofinanciamento às empresas.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "ciencia-e-cultura",
-    "nome": "Ciência e cultura",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Educação",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta por ano com pesquisa: agências, bolsas, laboratórios e apoio às empresas.",
+  "area": "educacao-e-cultura",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_investimento_pesquisa",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 6
     }
   },
-  "consequencias": [
-    "investimento-pesquisa--inovacao",
-    "investimento-pesquisa--desenvolvimento",
-    "investimento-pesquisa--produtividade",
-    "investimento-pesquisa--fuga-de-cerebros",
-    "investimento-pesquisa--grupo-jovens",
-    "investimento-pesquisa--grupo-pequenos-negocios",
-    "investimento-pesquisa--grupo-servidores",
-    "investimento-pesquisa--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "investimento-pesquisa--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000097222,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--desenvolvimento",
+      "alvo": "desenvolvimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.472e-7,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "investimento-pesquisa--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000097222,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--fuga-de-cerebros",
+      "alvo": "fuga_de_cerebros",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0000097222,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "investimento-pesquisa--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

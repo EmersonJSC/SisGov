@@ -1,22 +1,12 @@
 {
   "id": "ensino-religioso",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Ensino religioso",
-  "descricao": "A escola pública dá aula de religião, e ela é obrigatória?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "religiao",
-    "nome": "Religião",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se a escola pública dá aula de religião e se ela é obrigatória.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_ensino_religioso",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "economiza pouco",
         "apoiam": ["Progressistas"],
         "rejeitam": ["Evangélicos", "Católicos"],
-        "efeitos": "Polarização ↑"
+        "efeitos": "Polarização ↑",
+        "propoe": "Proibido na escola pública."
       },
       {
         "id": "oferecido-com-matricula-facultativa",
@@ -36,7 +27,8 @@
         "valor": 50,
         "custoTexto": "baixo",
         "apoiam": ["Católicos", "Classe média"],
-        "efeitos": "Liberdades civis ↑ contra Obrigatório e confessional; Discriminação religiosa ↓; Polarização ↑ pouco (estimado)"
+        "efeitos": "Liberdades civis ↑ contra Obrigatório e confessional; Discriminação religiosa ↓; Polarização ↑ pouco (estimado)",
+        "propoe": "Oferecido, e só assiste quem quer."
       },
       {
         "id": "obrigatorio-e-confessional",
@@ -49,20 +41,94 @@
           "parte das Famílias com filhos"
         ],
         "rejeitam": ["Progressistas", "Religiões de matriz africana"],
-        "efeitos": "Discriminação religiosa ↑ (aprox.); Liberdades civis ↓; Polarização ↑"
+        "efeitos": "Discriminação religiosa ↑ (aprox.); Liberdades civis ↓; Polarização ↑",
+        "propoe": "Obrigatório, de uma religião."
       }
     ]
   },
-  "consequencias": [
-    "ensino-religioso--grupo-evangelicos",
-    "ensino-religioso--grupo-catolicos",
-    "ensino-religioso--grupo-progressistas",
-    "ensino-religioso--discriminacao",
-    "ensino-religioso--liberdade-civil"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Laicidade do Estado (\"Laicidade estrita\" trava \"Obrigatório\").",
     "leis": ["laicidade-do-estado"]
   },
-  "ministerio": "Ministério da Educação"
+  "mesa": {
+    "id": "religiao",
+    "nome": "Religião",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "ensino-religioso--grupo-evangelicos",
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [50, 0],
+          [100, 3]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-religioso--grupo-catolicos",
+      "alvo": "grupo_catolicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -3],
+          [50, 0],
+          [100, 3]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-religioso--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-religioso--discriminacao",
+      "alvo": "discriminacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "ensino-religioso--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

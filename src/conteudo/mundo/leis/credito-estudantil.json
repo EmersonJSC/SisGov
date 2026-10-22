@@ -1,22 +1,12 @@
 {
   "id": "credito-estudantil",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Crédito estudantil",
-  "descricao": "O governo empresta ou paga para o jovem estudar em faculdade privada?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "ensino-superior",
-    "nome": "Ensino superior",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define se o governo empresta ou paga para o jovem estudar em faculdade privada.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_credito_estudantil",
     "unidade": "nivel_escopo",
@@ -31,7 +21,8 @@
           "Faculdades privadas",
           "Classe média"
         ],
-        "efeitos": "Escolaridade ↓ (menos matrícula privada); Resultado fiscal ↑"
+        "efeitos": "Escolaridade ↓ (menos matrícula privada); Resultado fiscal ↑",
+        "propoe": "Sem ajuda do governo."
       },
       {
         "id": "bolsa-em-troca-de-isencao-de-imposto-da-faculdade",
@@ -40,7 +31,8 @@
         "custoTexto": "lacuna (renúncia de imposto)",
         "apoiam": ["Pobres", "Jovens", "Faculdades privadas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Escolaridade ↑; Desigualdade ↓"
+        "efeitos": "Escolaridade ↑; Desigualdade ↓",
+        "propoe": "A faculdade dá bolsas e paga menos imposto."
       },
       {
         "id": "emprestimo-amplo-juro-baixo-e-pouca-analise",
@@ -56,7 +48,8 @@
             "opcoes": ["paga-pela-familia", "gratuita-so-para-os-mais-pobres"],
             "motivo": "Crédito amplo para mensalidades faz sentido quando famílias pagam parte das vagas."
           }
-        ]
+        ],
+        "propoe": "Empréstimo amplo, com juro baixo e pouca análise."
       },
       {
         "id": "emprestimo-com-pagamento-descontado-da-renda-depois-de-forma",
@@ -72,17 +65,46 @@
             "opcoes": ["paga-pela-familia", "gratuita-so-para-os-mais-pobres"],
             "motivo": "Pagamento após a formatura depende de mensalidades para parte dos estudantes."
           }
-        ]
+        ],
+        "propoe": "Empréstimo pago como parte do salário, depois de formado."
       }
     ]
   },
-  "consequencias": [
-    "credito-estudantil--escolaridade",
-    "credito-estudantil--desigualdade"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Acesso ao ensino superior. Com \"Paga pela família\" ou \"Empréstimo pago conforme a renda\", esta lei passa a valer também para a universidade pública (proposta minha).",
     "leis": ["acesso-ao-ensino-superior"]
   },
-  "ministerio": "Ministério da Educação"
+  "mesa": {
+    "id": "ensino-superior",
+    "nome": "Ensino superior",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "credito-estudantil--escolaridade",
+      "alvo": "escolaridade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.141,
+        "termoConstante": -4.69953
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "credito-estudantil--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": -0.69993
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

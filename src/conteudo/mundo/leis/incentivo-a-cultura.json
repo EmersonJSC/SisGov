@@ -1,22 +1,12 @@
 {
   "id": "incentivo-a-cultura",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Incentivo à cultura",
-  "descricao": "Como o Estado financia a cultura?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "ciencia-e-cultura",
-    "nome": "Ciência e cultura",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define como o Estado financia a cultura.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_incentivo_a_cultura",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro", "Empresários"],
         "rejeitam": ["Produtores culturais"],
-        "efeitos": "Vitalidade cultural ↓"
+        "efeitos": "Vitalidade cultural ↓",
+        "propoe": "Só o mercado e doações."
       },
       {
         "id": "empresa-patrocina-e-desconta-do-imposto",
@@ -36,7 +27,8 @@
         "custoTexto": "~0,02 a 0,03% do PIB em renúncia (aprox.)",
         "apoiam": ["Produtores culturais", "Empresários"],
         "rejeitam": ["Igrejas evangélicas", "Periferias"],
-        "efeitos": "Vitalidade cultural ↑; Polarização ↑ quando vira bandeira"
+        "efeitos": "Vitalidade cultural ↑; Polarização ↑ quando vira bandeira",
+        "propoe": "A empresa patrocina e desconta do imposto."
       },
       {
         "id": "editais-publicos-diretos",
@@ -45,7 +37,8 @@
         "custoTexto": "0,05% do PIB (aprox.), cultura",
         "apoiam": ["Periferias", "Matriz africana", "Produtores culturais"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Vitalidade cultural ↑; Turismo ↑"
+        "efeitos": "Vitalidade cultural ↑; Turismo ↑",
+        "propoe": "O governo paga projetos escolhidos em concurso público."
       },
       {
         "id": "cota-de-tela-para-producao-nacional-mais-fundo",
@@ -54,7 +47,8 @@
         "custoTexto": "0,05% do PIB mais a cota",
         "apoiam": ["Produtores culturais"],
         "rejeitam": ["Plataformas", "TV aberta"],
-        "efeitos": "Vitalidade cultural ↑"
+        "efeitos": "Vitalidade cultural ↑",
+        "propoe": "Cota para filmes nacionais no cinema e na TV, mais um fundo."
       },
       {
         "id": "estado-escolhe-o-conteudo-financiado",
@@ -62,23 +56,169 @@
         "valor": 100,
         "custoTexto": "0,05% do PIB, cultura",
         "rejeitam": ["Produtores culturais", "Jornais e portais"],
-        "efeitos": "Vitalidade cultural: quantidade ↑, diversidade ↓; Liberdade civil ↓"
+        "efeitos": "Vitalidade cultural: quantidade ↑, diversidade ↓; Liberdade civil ↓",
+        "propoe": "O governo escolhe o que financiar."
       }
     ]
   },
-  "consequencias": [
-    "incentivo-cultura--vitalidade-cultural",
-    "incentivo-cultura--vitalidade-cultural-1",
-    "incentivo-cultura--liberdade-civil",
-    "incentivo-cultura--reputacao-internacional",
-    "incentivo-cultura--polarizacao",
-    "incentivo-cultura--corrupcao",
-    "incentivo-cultura--gasto-publico",
-    "incentivo-cultura--arrecadacao",
-    "incentivo-cultura--grupo-classe-media",
-    "incentivo-cultura--grupo-conservadores",
-    "incentivo-cultura--grupo-empresarios",
-    "incentivo-cultura--grupo-progressistas"
-  ],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "incentivo-cultura--vitalidade-cultural",
+      "alvo": "vitalidade_cultural",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "incentivo-cultura--vitalidade-cultural-1",
+      "alvo": "vitalidade_cultural",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "incentivo-cultura--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -1,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.04,
+        "limiar": 25,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0],
+          [50, 0.05],
+          [75, 0.1],
+          [100, 0.15]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "incentivo-cultura--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, -0.03],
+          [50, -0.01],
+          [75, -0.01],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "incentivo-cultura--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "incentivo-cultura--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

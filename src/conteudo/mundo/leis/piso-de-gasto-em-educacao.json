@@ -1,22 +1,12 @@
 {
   "id": "piso-de-gasto-em-educacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Piso de gasto em educação",
-  "descricao": "A Constituição deve reservar receita para educação? A verba efetiva é escolhida em Verba executada para a educação. Os mínimos agregados abaixo são hipóteses de jogo: não equivalem literalmente aos percentuais federais e estaduais.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define o mínimo da receita que a Constituição obriga a gastar com educação.",
+  "area": "educacao-e-cultura",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_piso_de_gasto_em_educacao",
     "unidade": "nivel_escopo",
@@ -28,16 +18,18 @@
         "custoTexto": "livre",
         "apoiam": ["Mercado financeiro", "Empresários"],
         "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
-        "efeitos": "Margem de manobra do governo ↑; gasto em educação pode cair"
+        "efeitos": "Margem de manobra do governo ↑; gasto em educação pode cair",
+        "propoe": "Não há mínimo obrigatório."
       },
       {
         "id": "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios",
         "rotulo": "Vinculação de 18% da União e 25% de estados e municípios",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "~5% do PIB no total, educação",
         "apoiam": ["Sindicatos de professores", "Servidores"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Aprendizagem ↑ pequeno sem gestão; Margem de manobra ↓; Resultado fiscal ↓"
+        "efeitos": "Aprendizagem ↑ pequeno sem gestão; Margem de manobra ↓; Resultado fiscal ↓",
+        "propoe": "O mínimo atual: 18% da receita federal e 25% da dos estados e municípios."
       },
       {
         "id": "fundeb-ampliado-para-escolas-vulneraveis",
@@ -50,7 +42,8 @@
           "Municípios pobres"
         ],
         "rejeitam": ["Mercado financeiro", "Governadores com restrição fiscal"],
-        "efeitos": "Obriga mais verba em educação básica; reduz desigualdade territorial se a execução priorizar escolas pobres; aperta outras despesas"
+        "efeitos": "Obriga mais verba em educação básica; reduz desigualdade territorial se a execução priorizar escolas pobres; aperta outras despesas",
+        "propoe": "Um mínimo maior, com mais dinheiro para escolas pobres."
       },
       {
         "id": "meta-de-10-do-pib",
@@ -59,10 +52,48 @@
         "custoTexto": "+4 a +5% do PIB vs hoje, educação",
         "apoiam": ["Movimento estudantil", "Sindicatos de professores"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
-        "efeitos": "Piso agregado de 31,5% da receita (hipótese de jogo); resultado fiscal ↓ forte; aprendizagem ↑ apenas com boa execução"
+        "efeitos": "Piso agregado de 31,5% da receita (hipótese de jogo); resultado fiscal ↓ forte; aprendizagem ↑ apenas com boa execução",
+        "propoe": "Meta de gastar 10% do PIB com educação."
       }
     ]
   },
-  "consequencias": ["piso-de-gasto-em-educacao--margem-manobra-governo"],
-  "ministerio": "Ministério da Educação"
+  "trava": [
+    {
+      "opcao": "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios",
+      "lei": "piso-educacao",
+      "minimo": 17.51
+    },
+    {
+      "opcao": "fundeb-ampliado-para-escolas-vulneraveis",
+      "lei": "piso-educacao",
+      "minimo": 22
+    },
+    {
+      "opcao": "meta-de-10-do-pib",
+      "lei": "piso-educacao",
+      "minimo": 31.5
+    }
+  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "piso-de-gasto-em-educacao--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 3.5
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

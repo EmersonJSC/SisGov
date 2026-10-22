@@ -139,28 +139,28 @@ Total: 239 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Acesso ao ensino superior | `acesso-ao-ensino-superior` | constitucional | decide é pergunta |  | |
+| Acesso ao ensino superior | `acesso-ao-ensino-superior` | constitucional | — |  | |
 | Ensino obrigatório | `ensino-obrigatorio` | constitucional | decide é pergunta |  | |
 | Piso de gasto em educação | `piso-de-gasto-em-educacao` | constitucional | — |  | |
-| Bolsa de permanência no ensino médio | `bolsa-de-permanencia-no-ensino-medio` | programa | decide é pergunta |  | |
-| Bolsas de pós-graduação | `bolsas-de-pos-graduacao` | programa | — |  | |
-| Alfabetização na idade certa | `alfabetizacao-na-idade-certa` | regra | decide é pergunta |  | |
-| Avaliação das escolas | `avaliacao-das-escolas` | regra | decide é pergunta |  | |
-| Conteúdo moral e sexual | `conteudo-moral-e-sexual` | regra | decide é pergunta |  | |
-| Crédito estudantil | `credito-estudantil` | regra | decide é pergunta |  | |
-| Educação domiciliar | `educacao-domiciliar` | regra | decide é pergunta |  | |
-| Ensino religioso | `ensino-religioso` | regra | decide é pergunta |  | |
+| Alfabetização na idade certa | `alfabetizacao-na-idade-certa` | regra | — |  | |
+| Avaliação das escolas | `avaliacao-das-escolas` | regra | — |  | |
+| Bolsa de permanência no ensino médio | `bolsa-de-permanencia-no-ensino-medio` | regra | — |  | |
+| Bolsas de pós-graduação | `bolsas-de-pos-graduacao` | regra | — |  | |
+| Conteúdo moral e sexual | `conteudo-moral-e-sexual` | regra | — |  | |
+| Crédito estudantil | `credito-estudantil` | regra | — |  | |
+| Educação domiciliar | `educacao-domiciliar` | regra | — |  | |
+| Ensino religioso | `ensino-religioso` | regra | — |  | |
 | Ensino técnico e profissional | `ensino-tecnico-e-profissional` | regra | — |  | |
-| Escola em tempo integral | `escola-em-tempo-integral` | regra | decide é pergunta |  | |
-| Financiamento com resultado | `financiamento-com-resultado` | regra | decide é pergunta |  | |
-| Gestão da escola pública | `gestao-da-escola-publica` | regra | decide é pergunta |  | |
-| Incentivo à cultura | `incentivo-a-cultura` | regra | decide é pergunta |  | |
-| Incentivo fiscal a pesquisa nas empresas | `incentivo-fiscal-a-pesquisa-nas-empresas` | regra | decide é pergunta |  | |
+| Escola em tempo integral | `escola-em-tempo-integral` | regra | — |  | |
+| Financiamento com resultado | `financiamento-com-resultado` | regra | — |  | |
+| Gestão da escola pública | `gestao-da-escola-publica` | regra | — |  | |
+| Incentivo à cultura | `incentivo-a-cultura` | regra | — |  | |
+| Incentivo fiscal a pesquisa nas empresas | `incentivo-fiscal-a-pesquisa-nas-empresas` | regra | — |  | |
 | Piso salarial dos professores | `piso-salarial-professores` | regra | — |  | |
-| Vagas públicas no ensino superior | `vagas-publicas-no-ensino-superior` | regra | decide é pergunta |  | |
-| Vouchers escolares | `vouchers-escolares` | regra | decide é pergunta |  | |
-| Investimento em pesquisa e desenvolvimento | `investimento-pesquisa` | verba | sem nível |  | |
-| Verba executada para a educação | `piso-educacao` | verba | sem nível |  | |
+| Vagas públicas no ensino superior | `vagas-publicas-no-ensino-superior` | regra | — |  | |
+| Vouchers escolares | `vouchers-escolares` | regra | — |  | |
+| Investimento em pesquisa e desenvolvimento | `investimento-pesquisa` | verba | — |  | |
+| Verba executada para a educação | `piso-educacao` | verba | — |  | |
 | Programa espacial e satélites | `programa-espacial-e-satelites` | verba | — |  | |
 
 ## Infraestrutura e energia (14)

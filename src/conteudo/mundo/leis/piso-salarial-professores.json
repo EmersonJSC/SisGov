@@ -1,16 +1,11 @@
 {
   "id": "piso-salarial-professores",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Piso salarial dos professores",
-  "descricao": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é em relação a outras profissões de nível superior.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Educação",
+  "decide": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é.",
+  "area": "educacao-e-cultura",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_piso_salarial_professores",
@@ -25,7 +20,8 @@
           "Sindicatos de professores",
           "Professores de municípios pobres"
         ],
-        "efeitos": "Gasto público ↓; greve e desigualdade regional ↑; redes ricas podem pagar melhor"
+        "efeitos": "Gasto público ↓; greve e desigualdade regional ↑; redes ricas podem pagar melhor",
+        "propoe": "Cada estado e município negocia."
       },
       {
         "id": "piso-nacional-minimo",
@@ -33,7 +29,8 @@
         "valor": 33,
         "apoiam": ["Sindicatos de professores", "Famílias de escolas públicas"],
         "rejeitam": ["Prefeitos com orçamento apertado"],
-        "efeitos": "Gasto público ↑ moderado; rotatividade e greves ↓ com atraso"
+        "efeitos": "Gasto público ↑ moderado; rotatividade e greves ↓ com atraso",
+        "propoe": "Um piso nacional, corrigido todo ano."
       },
       {
         "id": "carreira-nacional",
@@ -41,7 +38,8 @@
         "valor": 67,
         "apoiam": ["Professores de municípios pobres", "Famílias de periferia"],
         "rejeitam": ["Prefeitos com orçamento apertado", "Mercado financeiro"],
-        "efeitos": "Gasto público ↑; desigualdade regional ↓; aprendizagem ↑ após alguns anos"
+        "efeitos": "Gasto público ↑; desigualdade regional ↓; aprendizagem ↑ após alguns anos",
+        "propoe": "Um piso nacional com adicional em escolas pobres."
       },
       {
         "id": "salario-de-elite",
@@ -49,7 +47,8 @@
         "valor": 100,
         "apoiam": ["Sindicatos de professores", "Famílias de escolas públicas"],
         "rejeitam": ["Mercado financeiro", "Prefeitos com orçamento apertado"],
-        "efeitos": "Gasto público ↑ forte; atração de professores ↑; aprendizagem melhora com atraso e boa gestão"
+        "efeitos": "Gasto público ↑ forte; atração de professores ↑; aprendizagem melhora com atraso e boa gestão",
+        "propoe": "Carreira nacional em tempo integral, com salário alto."
       }
     ]
   },
@@ -57,13 +56,36 @@
     "entrada": 0.3,
     "saida": 0.2
   },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
+  },
+  "historia": {
+    "opcoes": {
+      "piso-nacional-minimo": ["Brasil"]
+    },
+    "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 11.738/2008, piso salarial profissional nacional do magistério",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
+      "usadoPara": "opção vigente no Brasil"
+    },
+    {
+      "titulo": "OCDE, Education at a Glance (salários de professores por país)",
+      "url": "https://www.oecd.org/education/education-at-a-glance/",
+      "usadoPara": "países por opção"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "aprendizagem",
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": 0.07,
-        "termoConstante": -0.0
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -72,7 +94,7 @@
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -0.07,
-        "termoConstante": 0.0
+        "termoConstante": 0
       },
       "atraso": 1
     },
@@ -136,24 +158,6 @@
         "termoConstante": 0
       },
       "atraso": 0
-    }
-  ],
-  "historia": {
-    "opcoes": {
-      "piso-nacional-minimo": ["Brasil"]
-    },
-    "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.738/2008, piso salarial profissional nacional do magistério",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
-      "usadoPara": "opção vigente no Brasil"
-    },
-    {
-      "titulo": "OCDE, Education at a Glance (salários de professores por país)",
-      "url": "https://www.oecd.org/education/education-at-a-glance/",
-      "usadoPara": "países por opção"
     }
   ]
 }

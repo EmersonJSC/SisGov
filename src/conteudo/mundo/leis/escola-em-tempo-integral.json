@@ -1,22 +1,12 @@
 {
   "id": "escola-em-tempo-integral",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Escola em tempo integral",
-  "descricao": "Quantas escolas funcionam o dia inteiro?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quantas escolas funcionam o dia inteiro.",
+  "area": "educacao-e-cultura",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_escola_em_tempo_integral",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Meio turno",
         "valor": 0,
         "rejeitam": ["Famílias com filhos"],
-        "efeitos": "Nada muda"
+        "efeitos": "Nada muda",
+        "propoe": "Todas em meio turno."
       },
       {
         "id": "integral-em-parte-das-vagas-20-a-30",
@@ -34,7 +25,8 @@
         "valor": 50,
         "custoTexto": "+0,1 a 0,2% do PIB (aprox.), educação",
         "apoiam": ["Governadores", "Famílias com filhos"],
-        "efeitos": "Aprendizagem ↑ +0,22 desvio-padrão em matemática (3 anos); Mães trabalham mais horas ↑; Segregação escolar ↑ sem bolsa"
+        "efeitos": "Aprendizagem ↑ +0,22 desvio-padrão em matemática (3 anos); Mães trabalham mais horas ↑; Segregação escolar ↑ sem bolsa",
+        "propoe": "De 20% a 30% das vagas em tempo integral."
       },
       {
         "id": "integral-universal",
@@ -43,31 +35,164 @@
         "custoTexto": "+0,6 a 1,0% do PIB (aprox.), educação",
         "apoiam": ["Famílias com filhos", "Sindicatos de professores"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Aprendizagem ↑ (3 anos); Evasão escolar ↓ no geral e ↑ entre quem trabalha; Resultado fiscal ↓"
+        "efeitos": "Aprendizagem ↑ (3 anos); Evasão escolar ↓ no geral e ↑ entre quem trabalha; Resultado fiscal ↓",
+        "propoe": "Todas em tempo integral."
       }
     ]
   },
-  "consequencias": [
-    "escola-tempo-integral--participacao-trabalho-cuidadoras",
-    "escola-tempo-integral--violencia-letal",
-    "escola-tempo-integral--natalidade",
-    "escola-tempo-integral--aprendizagem",
-    "escola-tempo-integral--evasao-escolar",
-    "escola-tempo-integral--gasto-publico",
-    "escola-tempo-integral--grupo-classe-media",
-    "escola-tempo-integral--grupo-empresarios",
-    "escola-tempo-integral--grupo-jovens",
-    "escola-tempo-integral--grupo-pobres",
-    "escola-tempo-integral--grupo-progressistas",
-    "escola-tempo-integral--grupo-familias-com-filhos"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Ensino obrigatório. \"Universal\" exige \"Dos 4 aos 17 anos\" (ou mais verba).",
     "leis": ["ensino-obrigatorio"]
   },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "alavanca"
   },
-  "ministerio": "Ministério da Educação"
+  "efeitos": [
+    {
+      "id": "escola-tempo-integral--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--violencia-letal",
+      "alvo": "violencia_letal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.018,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "taxa_por_100_mil"
+    },
+    {
+      "id": "escola-tempo-integral--natalidade",
+      "alvo": "natalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--aprendizagem",
+      "alvo": "aprendizagem",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.3],
+          [100, 1.2]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "escola-tempo-integral--grupo-familias-com-filhos",
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

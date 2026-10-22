@@ -1,16 +1,11 @@
 {
   "id": "programa-espacial-e-satelites",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Programa espacial e satélites",
-  "descricao": "Quanto o governo põe por ano em satélites próprios: imagens de floresta, fronteira e garimpo, e comunicação que não depende de outro país.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "ciencia-e-cultura",
-    "nome": "Ciência e cultura",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Ciência e Tecnologia",
+  "decide": "Define quanto o governo gasta por ano com satélites próprios, para vigiar floresta e fronteira e para comunicação.",
+  "area": "educacao-e-cultura",
   "nivel": "decreto",
   "revogavel": false,
   "controle": {
@@ -29,6 +24,26 @@
     "entrada": 0.2,
     "saida": 0.2
   },
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "alavanca"
+  },
+  "historia": {
+    "brasil": "A agência espacial civil existe desde 1994 e o país opera satélites de observação da floresta com parceiros. O valor vigente é aproximado (ordem de grandeza do orçamento anual)."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 8.854/1994 (cria a agência espacial)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8854.htm",
+      "usadoPara": "existência do programa"
+    },
+    {
+      "titulo": "Portal da Transparência, despesas por órgão",
+      "url": "https://portaldatransparencia.gov.br/",
+      "usadoPara": "ordem de grandeza do gasto"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "capacidade_inteligencia",
@@ -82,21 +97,6 @@
         "multiplicador": 100
       },
       "leitura": "nivel"
-    }
-  ],
-  "historia": {
-    "brasil": "A agência espacial civil existe desde 1994 e o país opera satélites de observação da floresta com parceiros. O valor vigente é aproximado (ordem de grandeza do orçamento anual)."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 8.854/1994 (cria a agência espacial)",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8854.htm",
-      "usadoPara": "existência do programa"
-    },
-    {
-      "titulo": "Portal da Transparência, despesas por órgão",
-      "url": "https://portaldatransparencia.gov.br/",
-      "usadoPara": "ordem de grandeza do gasto"
     }
   ]
 }

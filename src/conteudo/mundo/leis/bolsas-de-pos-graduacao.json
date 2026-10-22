@@ -1,22 +1,12 @@
 {
   "id": "bolsas-de-pos-graduacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Bolsas de pós-graduação",
-  "descricao": "Cortar bolsas, dividir a conta com empresas ou financiar pesquisa pública? Valores e custos são hipóteses iniciais de jogo, calibráveis na simulação.",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "ciencia-e-cultura",
-    "nome": "Ciência e cultura",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quantas bolsas de mestrado e doutorado o governo paga e quem divide a conta.",
+  "area": "educacao-e-cultura",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_bolsas_de_pos_graduacao",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "0% do PIB nesta alavanca (hipótese)",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Universidades e cientistas", "Movimento estudantil"],
-        "efeitos": "Fuga de cérebros ↑ (1 a 3 anos); Inovação ↓ (5 a 10 anos); Qualificação do trabalho ↓ pequeno"
+        "efeitos": "Fuga de cérebros ↑ (1 a 3 anos); Inovação ↓ (5 a 10 anos); Qualificação do trabalho ↓ pequeno",
+        "propoe": "Corta bolsas e congela o valor."
       },
       {
         "id": "bolsas-em-parceria-com-empresas",
@@ -37,15 +28,17 @@
         "custoTexto": "0,01% do PIB público por ano (hipótese)",
         "apoiam": ["Empresários", "Universidades e cientistas"],
         "rejeitam": ["Movimento estudantil", "Pesquisadores de ciência básica"],
-        "efeitos": "Inovação aplicada ↑ com atraso; pesquisa básica recebe menos; gasto público ↑ pouco"
+        "efeitos": "Inovação aplicada ↑ com atraso; pesquisa básica recebe menos; gasto público ↑ pouco",
+        "propoe": "Bolsas em parceria com empresas, para pesquisa aplicada."
       },
       {
         "id": "referencia-mestrado-r-2-100-doutorado-r-3-100-por-mes-275-mi",
         "rotulo": "Manter bolsas públicas de mestrado e doutorado",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "0,025% do PIB por ano (hipótese de jogo)",
         "apoiam": ["Universidades e cientistas", "Classe média"],
-        "efeitos": "Fuga de cérebros ↓ (1 a 3 anos) contra Mínimo; Inovação ↑ pouco (5 a 10 anos); Qualificação do trabalho ↑ pequeno; Resultado fiscal ↓ pequeno (estimado)"
+        "efeitos": "Fuga de cérebros ↓ (1 a 3 anos) contra Mínimo; Inovação ↑ pouco (5 a 10 anos); Qualificação do trabalho ↑ pequeno; Resultado fiscal ↓ pequeno (estimado)",
+        "propoe": "Mantém as bolsas públicas como estão."
       },
       {
         "id": "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe",
@@ -58,15 +51,69 @@
           "Jovens"
         ],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Fuga de cérebros ↓; Inovação ↑ (5 a 10 anos); Resultado fiscal ↓ pequeno"
+        "efeitos": "Fuga de cérebros ↓; Inovação ↑ (5 a 10 anos); Resultado fiscal ↓ pequeno",
+        "propoe": "Mais bolsas, com valor perto de um salário de pesquisador."
       }
     ]
   },
-  "consequencias": [
-    "bolsas-de-pos-graduacao--fuga-de-cerebros",
-    "bolsas-de-pos-graduacao--inovacao",
-    "bolsas-de-pos-graduacao--qualificacao-trabalho",
-    "bolsas-de-pos-graduacao--gasto-publico"
-  ],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "ciencia-e-cultura",
+    "nome": "Ciência e cultura",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "bolsas-de-pos-graduacao--fuga-de-cerebros",
+      "alvo": "fuga_de_cerebros",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.14,
+        "termoConstante": 7
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "bolsas-de-pos-graduacao--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.14,
+        "termoConstante": -7
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "bolsas-de-pos-graduacao--qualificacao-trabalho",
+      "alvo": "qualificacao_trabalho",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": -3.5
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "bolsas-de-pos-graduacao--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.01],
+          [50, 0.025],
+          [100, 0.06]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

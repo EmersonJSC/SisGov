@@ -1,22 +1,12 @@
 {
   "id": "avaliacao-das-escolas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Avaliação das escolas",
-  "descricao": "O país mede o que os alunos aprendem, e o que faz com o resultado?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o país mede o que os alunos aprendem e o que faz com o resultado.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_avaliacao_das_escolas",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "−0,01% do PIB, educação",
         "apoiam": ["Sindicatos de professores"],
         "rejeitam": ["Empresários", "Classe média"],
-        "efeitos": "Trava Vouchers e Financiamento com resultado; o jogador perde a medida de aprendizagem"
+        "efeitos": "Trava Vouchers e Financiamento com resultado; o jogador perde a medida de aprendizagem",
+        "propoe": "Não há avaliação nacional."
       },
       {
         "id": "amostral-e-diagnostica",
@@ -36,7 +27,8 @@
         "valor": 33,
         "custoTexto": "0,005% do PIB (aprox.), educação",
         "apoiam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ pequeno"
+        "efeitos": "Aprendizagem ↑ pequeno",
+        "propoe": "Uma prova em parte das escolas, só para diagnóstico."
       },
       {
         "id": "censitaria-e-publica",
@@ -45,7 +37,8 @@
         "custoTexto": "0,01% do PIB (aprox.), educação",
         "apoiam": ["Empresários", "Famílias com filhos"],
         "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ quando vira meta com apoio; Segregação escolar ↑ se o ranking guia a escolha"
+        "efeitos": "Aprendizagem ↑ quando vira meta com apoio; Segregação escolar ↑ se o ranking guia a escolha",
+        "propoe": "Prova em todas as escolas, com resultado público."
       },
       {
         "id": "com-consequencias",
@@ -54,21 +47,139 @@
         "custoTexto": "0,01% do PIB mais bônus, educação",
         "apoiam": ["Mercado financeiro", "Empresários"],
         "rejeitam": ["Sindicatos de professores", "Movimento estudantil"],
-        "efeitos": "Aprendizagem ↑ (+0,2 desvio-padrão em matemática, aprox.); Greve de professores ↑; ocorrência \"prova vazada\" fica mais provável"
+        "efeitos": "Aprendizagem ↑ (+0,2 desvio-padrão em matemática, aprox.); Greve de professores ↑; ocorrência \"prova vazada\" fica mais provável",
+        "propoe": "Prova em todas, com bônus para quem melhora e intervenção em quem piora."
       }
     ]
   },
-  "consequencias": [
-    "avaliacao-escolas--aprendizagem",
-    "avaliacao-escolas--capacidade-estatal",
-    "avaliacao-escolas--confianca-instituicoes",
-    "avaliacao-escolas--segregacao-escolar",
-    "avaliacao-escolas--greve-de-professores",
-    "avaliacao-escolas--evasao-escolar",
-    "avaliacao-escolas--gasto-publico",
-    "avaliacao-escolas--grupo-classe-media",
-    "avaliacao-escolas--grupo-servidores",
-    "avaliacao-escolas--grupo-trabalhadores"
-  ],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "avaliacao-escolas--aprendizagem",
+      "alvo": "aprendizagem",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.21212121,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--capacidade-estatal",
+      "alvo": "capacidade_estatal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--segregacao-escolar",
+      "alvo": "segregacao_escolar",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--greve-de-professores",
+      "alvo": "greve_de_professores",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.005],
+          [67, 0.01],
+          [100, 0.015]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "avaliacao-escolas--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "avaliacao-escolas--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

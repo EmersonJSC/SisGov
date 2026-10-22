@@ -1,22 +1,12 @@
 {
   "id": "conteudo-moral-e-sexual",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Conteúdo moral e sexual",
-  "descricao": "O que a escola pode ensinar sobre sexualidade, gênero e valores?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define o que a escola pode ensinar sobre sexualidade, gênero e valores.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_conteudo_moral_e_sexual",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["LGBT", "Feminista"],
         "rejeitam": ["Igrejas evangélicas", "Hierarquia católica"],
-        "efeitos": "Discriminação ↓; Gravidez na adolescência ↓ (aprox.); Polarização ↑"
+        "efeitos": "Discriminação ↓; Gravidez na adolescência ↓ (aprox.); Polarização ↑",
+        "propoe": "Ensina gênero, sexualidade e diversidade."
       },
       {
         "id": "so-biologia-e-saude",
@@ -35,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Saúde pública", "Classe média"],
         "rejeitam": ["Igrejas evangélicas"],
-        "efeitos": "Gravidez na adolescência ↓ pequeno (aprox.)"
+        "efeitos": "Gravidez na adolescência ↓ pequeno (aprox.)",
+        "propoe": "Só biologia e saúde."
       },
       {
         "id": "a-familia-escolhe-se-o-filho-assiste",
@@ -43,7 +35,8 @@
         "valor": 67,
         "apoiam": ["Hierarquia católica", "Igrejas evangélicas"],
         "rejeitam": ["LGBT", "Feminista"],
-        "efeitos": "Polarização ↑ pequeno"
+        "efeitos": "Polarização ↑ pequeno",
+        "propoe": "A família escolhe se o filho assiste."
       },
       {
         "id": "proibido-com-controle-do-que-o-professor-diz",
@@ -51,18 +44,121 @@
         "valor": 100,
         "apoiam": ["Igrejas evangélicas"],
         "rejeitam": ["LGBT", "Feminista", "Sindicatos de professores"],
-        "efeitos": "Polarização ↑; Liberdade civil ↓; conflito com a liberdade de ensinar"
+        "efeitos": "Polarização ↑; Liberdade civil ↓; conflito com a liberdade de ensinar",
+        "propoe": "Proibido, com controle do que o professor fala."
       }
     ]
   },
-  "consequencias": [
-    "conteudo-moral-e-sexual--discriminacao",
-    "conteudo-moral-e-sexual--liberdade-civil",
-    "conteudo-moral-e-sexual--grupo-evangelicos",
-    "conteudo-moral-e-sexual--grupo-conservadores",
-    "conteudo-moral-e-sexual--grupo-progressistas",
-    "conteudo-moral-e-sexual--grupo-jovens",
-    "conteudo-moral-e-sexual--polarizacao"
-  ],
-  "ministerio": "Ministério da Educação"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "conteudo-moral-e-sexual--discriminacao",
+      "alvo": "discriminacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -2],
+          [33, 0],
+          [67, 1],
+          [100, 3]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--grupo-evangelicos",
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [33, 0],
+          [67, 2],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [33, 0],
+          [67, 2],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [33, 0],
+          [67, -2],
+          [100, -5]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [33, 0],
+          [67, -1],
+          [100, -2]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": -0.693
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1,22 +1,12 @@
 {
   "id": "financiamento-com-resultado",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Financiamento com resultado",
-  "descricao": "O dinheiro que vai para as redes de ensino depende só do número de alunos ou também do resultado?",
-  "area": "Educação, ciência e cultura",
-  "mesa": {
-    "id": "escola",
-    "nome": "Escola",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define se o dinheiro das redes de ensino depende só do número de alunos ou também do que eles aprendem.",
+  "area": "educacao-e-cultura",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_financiamento_com_resultado",
     "unidade": "nivel_escopo",
@@ -26,16 +16,18 @@
         "rotulo": "Repasse por aluno",
         "valor": 0,
         "apoiam": ["Sindicatos de professores"],
-        "efeitos": "Nada muda"
+        "efeitos": "Nada muda",
+        "propoe": "Só pelo número de alunos."
       },
       {
         "id": "parte-por-resultado",
         "rotulo": "Parte por resultado",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "0, só redistribui",
         "apoiam": ["Empresários", "Governadores"],
         "rejeitam": ["Sindicatos de professores"],
-        "efeitos": "Aprendizagem ↑ +4 pontos em português nos anos iniciais (2 a 4 anos); Greve de professores ↑ pequeno"
+        "efeitos": "Aprendizagem ↑ +4 pontos em português nos anos iniciais (2 a 4 anos); Greve de professores ↑ pequeno",
+        "propoe": "Uma parte depende do resultado."
       },
       {
         "id": "resultado-com-apoio-tecnico",
@@ -44,17 +36,46 @@
         "custoTexto": "+0,02% do PIB (aprox.), educação",
         "apoiam": ["Empresários", "Governadores e Prefeitos"],
         "rejeitam": ["Sindicatos de professores", "mais fraco"],
-        "efeitos": "Aprendizagem ↑ +18,5 pontos em português nos anos iniciais (2 a 4 anos); Desigualdade regional ↓ se o critério inclui equidade"
+        "efeitos": "Aprendizagem ↑ +18,5 pontos em português nos anos iniciais (2 a 4 anos); Desigualdade regional ↓ se o critério inclui equidade",
+        "propoe": "Uma parte depende do resultado, com apoio técnico a quem está atrás."
       }
     ]
   },
-  "consequencias": [
-    "financiamento-com-resultado--desigualdade-regional",
-    "grupos--financiamento-com-resultado--grupo-empresarios"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Avaliação das escolas. \"Sem avaliação\" trava \"Parte por resultado\" e \"Resultado com apoio técnico\".",
     "leis": ["avaliacao-das-escolas"]
   },
-  "ministerio": "Ministério da Educação"
+  "mesa": {
+    "id": "escola",
+    "nome": "Escola",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "financiamento-com-resultado--desigualdade-regional",
+      "alvo": "desigualdade_regional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "grupos--financiamento-com-resultado--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

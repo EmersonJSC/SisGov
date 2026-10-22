@@ -1,0 +1,237 @@
+{
+  "area": "educacao-e-cultura",
+  "leis": [
+    {
+      "id": "acesso-ao-ensino-superior",
+      "familia": "constitucional",
+      "decide": "Define quem paga a universidade pública e quem fica isento.",
+      "opcoes": {
+        "paga-pela-familia": "A família paga a mensalidade; há bolsas e crédito.",
+        "gratuita-so-para-os-mais-pobres": "Paga conforme a renda; os pobres não pagam.",
+        "gratuita-com-vestibular": "Gratuita para todos, com prova de seleção.",
+        "gratuita-para-todos-sem-vestibular-e-com-mais-vagas": "Gratuita, sem prova de seleção e com muito mais vagas."
+      }
+    },
+    {
+      "id": "ensino-obrigatorio",
+      "familia": "constitucional",
+      "decide": "Define até que idade a criança é obrigada a estar na escola, com vaga garantida pelo Estado.",
+      "opcoes": {
+        "sem-obrigatoriedade": "Ninguém é obrigado a estudar.",
+        "so-o-primario": "Só os primeiros anos são obrigatórios.",
+        "basico-de-9-anos": "Nove anos de escola obrigatória.",
+        "dos-4-aos-17-anos": "Escola obrigatória dos 4 aos 17 anos."
+      }
+    },
+    {
+      "id": "piso-de-gasto-em-educacao",
+      "familia": "constitucional",
+      "decide": "Define o mínimo da receita que a Constituição obriga a gastar com educação.",
+      "opcoes": {
+        "sem-vinculacao": "Não há mínimo obrigatório.",
+        "vinculacao-de-18-da-uniao-e-25-de-estados-e-municipios": "O mínimo atual: 18% da receita federal e 25% da dos estados e municípios.",
+        "fundeb-ampliado-para-escolas-vulneraveis": "Um mínimo maior, com mais dinheiro para escolas pobres.",
+        "meta-de-10-do-pib": "Meta de gastar 10% do PIB com educação."
+      }
+    },
+    {
+      "id": "piso-educacao",
+      "familia": "verba",
+      "decide": "Define quanto da receita o governo gasta com escolas, professores, merenda e transporte."
+    },
+    {
+      "id": "investimento-pesquisa",
+      "familia": "verba",
+      "decide": "Define quanto o governo gasta por ano com pesquisa: agências, bolsas, laboratórios e apoio às empresas."
+    },
+    {
+      "id": "programa-espacial-e-satelites",
+      "familia": "verba",
+      "decide": "Define quanto o governo gasta por ano com satélites próprios, para vigiar floresta e fronteira e para comunicação."
+    },
+    {
+      "id": "bolsa-de-permanencia-no-ensino-medio",
+      "familia": "regra",
+      "decide": "Define se o governo paga o jovem pobre para ele ficar na escola até terminar o ensino médio.",
+      "exemplo": "No Brasil: Pé-de-Meia, desde 2024.",
+      "opcoes": {
+        "nenhuma": "Não há bolsa.",
+        "focalizada-nos-inscritos-no-cadastro-social": "Só jovens de famílias pobres recebem.",
+        "universal": "Todo aluno do ensino médio recebe."
+      }
+    },
+    {
+      "id": "bolsas-de-pos-graduacao",
+      "familia": "regra",
+      "decide": "Define quantas bolsas de mestrado e doutorado o governo paga e quem divide a conta.",
+      "opcoes": {
+        "minimo-corte-de-bolsas-e-valor-congelado": "Corta bolsas e congela o valor.",
+        "bolsas-em-parceria-com-empresas": "Bolsas em parceria com empresas, para pesquisa aplicada.",
+        "referencia-mestrado-r-2-100-doutorado-r-3-100-por-mes-275-mi": "Mantém as bolsas públicas como estão.",
+        "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe": "Mais bolsas, com valor perto de um salário de pesquisador."
+      }
+    },
+    {
+      "id": "alfabetizacao-na-idade-certa",
+      "familia": "regra",
+      "decide": "Define se o governo organiza um esforço nacional para toda criança ler e escrever até o fim do 2º ano.",
+      "opcoes": {
+        "nenhum-programa-nacional": "Não há programa nacional.",
+        "formacao-de-professores-e-material": "O governo forma professores e manda material.",
+        "metas-com-apoio-tecnico-e-incentivo-em-parceria-com-estados-": "Metas com apoio técnico e prêmio, junto com estados e municípios.",
+        "metodo-unico-de-ensino-da-leitura-definido-pelo-governo-cent": "Um método único de alfabetização, escolhido pelo governo central."
+      }
+    },
+    {
+      "id": "avaliacao-das-escolas",
+      "familia": "regra",
+      "decide": "Define se o país mede o que os alunos aprendem e o que faz com o resultado.",
+      "opcoes": {
+        "sem-avaliacao": "Não há avaliação nacional.",
+        "amostral-e-diagnostica": "Uma prova em parte das escolas, só para diagnóstico.",
+        "censitaria-e-publica": "Prova em todas as escolas, com resultado público.",
+        "com-consequencias": "Prova em todas, com bônus para quem melhora e intervenção em quem piora."
+      }
+    },
+    {
+      "id": "conteudo-moral-e-sexual",
+      "familia": "regra",
+      "decide": "Define o que a escola pode ensinar sobre sexualidade, gênero e valores.",
+      "opcoes": {
+        "educacao-integral-genero-sexualidade-e-diversidade": "Ensina gênero, sexualidade e diversidade.",
+        "so-biologia-e-saude": "Só biologia e saúde.",
+        "a-familia-escolhe-se-o-filho-assiste": "A família escolhe se o filho assiste.",
+        "proibido-com-controle-do-que-o-professor-diz": "Proibido, com controle do que o professor fala."
+      }
+    },
+    {
+      "id": "credito-estudantil",
+      "familia": "regra",
+      "decide": "Define se o governo empresta ou paga para o jovem estudar em faculdade privada.",
+      "opcoes": {
+        "sem-apoio-publico": "Sem ajuda do governo.",
+        "bolsa-em-troca-de-isencao-de-imposto-da-faculdade": "A faculdade dá bolsas e paga menos imposto.",
+        "emprestimo-amplo-juro-baixo-e-pouca-analise": "Empréstimo amplo, com juro baixo e pouca análise.",
+        "emprestimo-com-pagamento-descontado-da-renda-depois-de-forma": "Empréstimo pago como parte do salário, depois de formado."
+      }
+    },
+    {
+      "id": "educacao-domiciliar",
+      "familia": "regra",
+      "decide": "Define se a família pode ensinar o filho em casa, sem matricular na escola.",
+      "opcoes": {
+        "proibida": "Proibido.",
+        "so-em-casos-excepcionais": "Só em casos excepcionais, como doença.",
+        "regulada-com-registro-e-provas-anuais": "Permitido, com registro e prova todo ano.",
+        "livre": "Livre."
+      }
+    },
+    {
+      "id": "ensino-religioso",
+      "familia": "regra",
+      "decide": "Define se a escola pública dá aula de religião e se ela é obrigatória.",
+      "opcoes": {
+        "proibido-na-escola-publica": "Proibido na escola pública.",
+        "oferecido-com-matricula-facultativa": "Oferecido, e só assiste quem quer.",
+        "obrigatorio-e-confessional": "Obrigatório, de uma religião."
+      }
+    },
+    {
+      "id": "ensino-tecnico-e-profissional",
+      "familia": "regra",
+      "decide": "Define como o país forma técnicos para a indústria, os serviços e as novas tecnologias.",
+      "opcoes": {
+        "so-academico": "Escola só com formação geral; as empresas treinam.",
+        "tecnico-como-opcao-no-medio": "Curso técnico como opção no ensino médio, com estágio pago.",
+        "tecnico-em-massa-integrado-ao-medio": "Rede pública técnica grande, ligada às vagas da região.",
+        "contas-de-formacao-continua": "Cada trabalhador tem uma conta para fazer cursos a vida toda."
+      }
+    },
+    {
+      "id": "escola-em-tempo-integral",
+      "familia": "regra",
+      "decide": "Define quantas escolas funcionam o dia inteiro.",
+      "opcoes": {
+        "meio-turno": "Todas em meio turno.",
+        "integral-em-parte-das-vagas-20-a-30": "De 20% a 30% das vagas em tempo integral.",
+        "integral-universal": "Todas em tempo integral."
+      }
+    },
+    {
+      "id": "financiamento-com-resultado",
+      "familia": "regra",
+      "decide": "Define se o dinheiro das redes de ensino depende só do número de alunos ou também do que eles aprendem.",
+      "opcoes": {
+        "repasse-por-aluno": "Só pelo número de alunos.",
+        "parte-por-resultado": "Uma parte depende do resultado.",
+        "resultado-com-apoio-tecnico": "Uma parte depende do resultado, com apoio técnico a quem está atrás."
+      }
+    },
+    {
+      "id": "gestao-da-escola-publica",
+      "familia": "regra",
+      "decide": "Define quem escolhe o diretor da escola pública.",
+      "opcoes": {
+        "eleicao-pela-comunidade": "A comunidade escolar elege.",
+        "indicacao-politica": "O político indica.",
+        "diretor-por-merito-selecao-tecnica-e-depois-eleicao": "Seleção técnica primeiro, depois eleição.",
+        "civico-militar": "A escola passa a ser cívico-militar."
+      }
+    },
+    {
+      "id": "incentivo-a-cultura",
+      "familia": "regra",
+      "decide": "Define como o Estado financia a cultura.",
+      "opcoes": {
+        "so-mercado-e-doacoes": "Só o mercado e doações.",
+        "empresa-patrocina-e-desconta-do-imposto": "A empresa patrocina e desconta do imposto.",
+        "editais-publicos-diretos": "O governo paga projetos escolhidos em concurso público.",
+        "cota-de-tela-para-producao-nacional-mais-fundo": "Cota para filmes nacionais no cinema e na TV, mais um fundo.",
+        "estado-escolhe-o-conteudo-financiado": "O governo escolhe o que financiar."
+      }
+    },
+    {
+      "id": "incentivo-fiscal-a-pesquisa-nas-empresas",
+      "familia": "regra",
+      "decide": "Define se a empresa que faz pesquisa paga menos imposto.",
+      "opcoes": {
+        "sem-incentivo-o-apoio-vai-so-por-verba-direta": "Nenhum desconto; o apoio é só por verba direta.",
+        "desconto-no-imposto-de-renda-so-para-empresas-com-lucro-trib": "Desconto no imposto, só para empresas com lucro.",
+        "credito-tambem-para-empresa-com-prejuizo-e-startups-pago-em-": "Desconto também para empresas com prejuízo e startups, pago em dinheiro.",
+        "incentivo-so-para-setores-escolhidos-com-contrapartida": "Desconto só para setores escolhidos, com contrapartida."
+      }
+    },
+    {
+      "id": "piso-salarial-professores",
+      "familia": "regra",
+      "decide": "Define se há um salário mínimo nacional para o professor da rede pública e quão alto ele é.",
+      "opcoes": {
+        "sem-piso-nacional": "Cada estado e município negocia.",
+        "piso-nacional-minimo": "Um piso nacional, corrigido todo ano.",
+        "carreira-nacional": "Um piso nacional com adicional em escolas pobres.",
+        "salario-de-elite": "Carreira nacional em tempo integral, com salário alto."
+      }
+    },
+    {
+      "id": "vagas-publicas-no-ensino-superior",
+      "familia": "regra",
+      "decide": "Define quantas vagas a universidade pública oferece.",
+      "opcoes": {
+        "minimo-corte-de-vagas-15-das-matriculas": "Corta vagas: cerca de 15% das matrículas.",
+        "referencia-21-das-matriculas": "Cerca de 21% das matrículas, como hoje.",
+        "maximo-expansao-40-das-matriculas": "Expande para cerca de 40% das matrículas."
+      }
+    },
+    {
+      "id": "vouchers-escolares",
+      "familia": "regra",
+      "decide": "Define se o dinheiro público pode pagar a escola privada escolhida pela família.",
+      "opcoes": {
+        "so-escola-estatal": "Só escola pública.",
+        "gestao-terceirizada-de-escola-publica": "A escola continua pública, mas é administrada por uma organização contratada.",
+        "voucher-so-para-pobres-sem-cobranca-extra-e-sem-selecao": "Voucher só para famílias pobres, sem cobrança extra e sem seleção.",
+        "voucher-universal": "Voucher para todos."
+      }
+    }
+  ]
+}
