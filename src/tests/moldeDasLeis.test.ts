@@ -218,7 +218,10 @@ const VERBA_PF = "mundo/leis/verba-policia-federal.json";
 
 function comoV4(mudar: Partial<FichaV4> = {}): string {
   const v3 = JSON.parse(arquivos[VERBA_PF]) as Record<string, unknown>;
-  const { area: _area, ministerio: _m, descricao: _d, ...resto } = v3;
+  const resto = { ...v3 };
+  delete resto.area;
+  delete resto.ministerio;
+  delete resto.descricao;
   return JSON.stringify({
     ...resto,
     versaoEsquema: 4,
