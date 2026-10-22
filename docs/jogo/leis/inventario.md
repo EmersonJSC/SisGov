@@ -5,13 +5,13 @@
 > decide é o autor. Destino: **entra** · **junta com <id>** · **sai**.
 > Regras: [molde-das-leis.md](../mecanicas/molde-das-leis.md).
 
-Total: 242 leis.
+Total: 239 leis.
 
 ## Áreas com menos de 8 leis (aviso)
 
 - ambiente-e-campo: 6 leis (o molde pede pelo menos 8)
 
-## Contas públicas (21)
+## Contas públicas (16)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -24,20 +24,15 @@ Total: 242 leis.
 | Imposto sobre o lucro das empresas | `imposto-renda-empresas` | imposto | — |  | |
 | Imposto sobre a renda das pessoas | `imposto-renda-pessoas` | imposto | — |  | |
 | Imposto sobre o que faz mal | `imposto-seletivo` | imposto | — |  | |
-| Valor dos imóveis para o imposto | `imposto-sobre-a-propriedade` | imposto | — | `imposto-propriedade-urbana-rural` | |
 | Imposto sobre o consumo | `imposto-sobre-consumo` | imposto | — |  | |
 | Imposto sobre transações bancárias | `imposto-transacoes-financeiras` | imposto | — |  | |
 | Imposto sobre dividendos | `tributacao-dividendos` | imposto | — |  | |
-| Imposto do dinheiro guardado no exterior | `tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter` | imposto | — |  | |
-| Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | decide é pergunta; 5 opções (máximo 3) |  | |
-| Conselho fiscal independente | `conselho-fiscal-independente` | regra | — |  | |
 | Destino da sobra do orçamento | `destino-do-resultado-fiscal` | regra | — |  | |
 | Fundo soberano | `fundo-soberano` | regra | — |  | |
 | Meta de resultado das contas | `meta-de-resultado-primario` | regra | — |  | |
-| Imposto único para pequenas empresas | `regime-simplificado-para-pequenas-empresas` | regra | 4 opções (máximo 3) |  | |
 | Isenções fiscais | `revisao-de-gastos-tributarios` | regra | — |  | |
 
-## Economia e empresas (26)
+## Economia e empresas (27)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -62,6 +57,7 @@ Total: 242 leis.
 | Política industrial | `politica-industrial` | regra | decide é pergunta; 4 opções (máximo 3) |  | |
 | Programa de privatização | `programa-de-privatizacao` | regra | decide é pergunta |  | |
 | Moeda e câmbio | `regime-cambial` | regra | sem efeito na rede; 4 opções (máximo 3) |  | |
+| Imposto único para pequenas empresas | `regime-simplificado-para-pequenas-empresas` | regra | 4 opções (máximo 3) |  | |
 | Regras para os bancos | `regulacao-dos-bancos` | regra | 4 opções (máximo 3) |  | |
 | Juros básicos | `taxa-basica-de-juros` | regra | — |  | |
 | Meta de inflação | `valor-da-meta-de-inflacao` | regra | 4 opções (máximo 3) |  | |
@@ -248,7 +244,7 @@ Total: 242 leis.
 | Vagas em presídios | `vagas-em-presidios` | verba | — |  | |
 | Verba da Polícia Federal | `verba-policia-federal` | verba | — |  | |
 
-## Direitos e costumes (22)
+## Direitos e costumes (23)
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
@@ -258,6 +254,7 @@ Total: 242 leis.
 | Aborto | `aborto` | regra | decide é pergunta; 6 opções (máximo 3) |  | |
 | Ações afirmativas | `acoes-afirmativas` | regra | decide é pergunta; 5 opções (máximo 3) |  | |
 | Acolhida e interiorização de imigrantes | `acolhida-e-interiorizacao-de-imigrantes` | regra | sem efeito na rede; decide é pergunta; 4 opções (máximo 3) |  | |
+| Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | decide é pergunta; 5 opções (máximo 3) |  | |
 | Bloqueio de pagamentos a casas sem licença | `bloqueio-de-pagamentos-a-casas-sem-licenca` | regra | decide é pergunta |  | |
 | Casamento e união civil | `casamento-e-uniao-civil` | regra | decide é pergunta; 4 opções (máximo 3) |  | |
 | Crimes da ditadura | `crimes-da-ditadura` | regra | decide é pergunta |  | |

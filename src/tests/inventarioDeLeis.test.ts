@@ -50,8 +50,8 @@ describe("inventário das leis", () => {
   });
 
   it("aponta a lei parecida", () => {
-    expect(linha("imposto-sobre-a-propriedade").parecidaCom).toBe(
-      "imposto-propriedade-urbana-rural",
+    expect(linha("transferencia-de-renda").parecidaCom).toBe(
+      "transferencia-de-renda-as-familias-pobres",
     );
   });
 

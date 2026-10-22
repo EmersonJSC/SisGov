@@ -46,13 +46,13 @@
   "trava": [
     {
       "opcao": "base-no-consumo",
-      "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-      "maximo": 66.67
+      "lei": "tributacao-dividendos",
+      "maximo": 15
     },
     {
       "opcao": "proporcional",
-      "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-      "maximo": 66.67
+      "lei": "tributacao-dividendos",
+      "maximo": 15
     }
   ],
   "implantacaoTurnos": {

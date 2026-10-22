@@ -102,16 +102,11 @@
           "imposto-transacoes-financeiras",
           "tributacao-dividendos",
           "modelo-tributario",
-          "apostas-e-jogos-de-azar",
           "meta-de-resultado-primario",
-          "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
           "vinculacoes-orcamentarias",
           "revisao-de-gastos-tributarios",
-          "conselho-fiscal-independente",
-          "imposto-sobre-a-propriedade",
           "destino-do-resultado-fiscal",
-          "fundo-soberano",
-          "regime-simplificado-para-pequenas-empresas"
+          "fundo-soberano"
         ]
       },
       {
@@ -165,7 +160,10 @@
         "nome": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte",
         "cargo": "Empreendedorismo",
         "area": "economia-e-empresas",
-        "leis": ["licenca-para-abrir-negocio"],
+        "leis": [
+          "licenca-para-abrir-negocio",
+          "regime-simplificado-para-pequenas-empresas"
+        ],
         "extincao": {
           "destino": "mdic"
         }
@@ -568,7 +566,8 @@
           "refugio-e-asilo",
           "tributo-sobre-apostas",
           "verba-de-planejamento-familiar-e-de-aborto-legal",
-          "verba-para-juventude-negra-e-saude-da-populacao-negra"
+          "verba-para-juventude-negra-e-saude-da-populacao-negra",
+          "apostas-e-jogos-de-azar"
         ],
         "extincao": {
           "destino": "justica"

@@ -542,10 +542,6 @@
       "opcao": "desconto-no-imposto-de-renda-so-para-empresas-com-lucro-trib"
     },
     {
-      "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-      "opcao": "retencao-minima-e-15-ao-ano-no-exterior-e-nos-fundos-exclusi"
-    },
-    {
       "lei": "alinhamento-externo",
       "opcao": "nao-alinhamento-ativo"
     },
@@ -688,14 +684,6 @@
     {
       "lei": "custo-de-processar-na-justica-do-trabalho",
       "opcao": "gratuita-sem-risco"
-    },
-    {
-      "lei": "conselho-fiscal-independente",
-      "opcao": "no-legislativo-so-consultivo"
-    },
-    {
-      "lei": "imposto-sobre-a-propriedade",
-      "opcao": "atual-planta-antiga-imposto-rural-quase-zero"
     },
     {
       "lei": "regra-de-repasse",
@@ -1012,7 +1000,6 @@
     "nivel_industria_de_defesa": 66.67,
     "nivel_protecao_de_fronteiras": 33.33,
     "nivel_incentivo_fiscal_a_pesquisa_nas_empresas": 33.33,
-    "nivel_tributacao_do_lucro_distribuido_e_da_renda_guardada_no_exter": 33.33,
     "nivel_alinhamento_externo": 50.0,
     "nivel_verba_de_controle": 66.67,
     "nivel_politica_de_sancoes": 0,
@@ -1050,8 +1037,6 @@
     "nivel_vagas_de_creche": 33.33,
     "nivel_credito_rural_e_assistencia_tecnica": 50.0,
     "nivel_custo_de_processar_na_justica_do_trabalho": 0,
-    "nivel_conselho_fiscal_independente": 50.0,
-    "nivel_imposto_sobre_a_propriedade": 33.33,
     "nivel_regra_de_repasse": 66.67,
     "nivel_bolsa_de_permanencia_no_ensino_medio": 50.0,
     "nivel_publicidade_de_apostas": 100,

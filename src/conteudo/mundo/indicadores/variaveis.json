@@ -8633,18 +8633,6 @@
       "area": "Educação, ciência e cultura"
     },
     {
-      "id": "nivel_tributacao_do_lucro_distribuido_e_da_renda_guardada_no_exter",
-      "tipo": "controle",
-      "nome": "Tributação do lucro distribuído e da renda guardada no exterior",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Impostos e contas públicas"
-    },
-    {
       "id": "nivel_forma_de_gestao_hospitalar",
       "tipo": "controle",
       "nome": "Forma de gestão hospitalar",
@@ -9183,30 +9171,6 @@
       },
       "valorInicial": 0,
       "area": "Trabalho, salário e sindicatos"
-    },
-    {
-      "id": "nivel_conselho_fiscal_independente",
-      "tipo": "controle",
-      "nome": "Conselho fiscal independente",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Impostos e contas públicas"
-    },
-    {
-      "id": "nivel_imposto_sobre_a_propriedade",
-      "tipo": "controle",
-      "nome": "Imposto sobre a propriedade",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Impostos e contas públicas"
     },
     {
       "id": "nivel_regra_de_repasse",

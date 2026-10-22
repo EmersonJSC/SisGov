@@ -268,8 +268,8 @@
           "fonte": "Autonomia de fato, sem lei (a lei só veio em 2021)"
         },
         {
-          "lei": "regra-fiscal",
-          "opcao": "meta-resultado",
+          "lei": "meta-de-resultado-primario",
+          "opcao": "3-do-pib",
           "como": "manteve",
           "fonte": "Lei de Responsabilidade Fiscal (LC 101/2000) e metas de superávit nas LDOs"
         },
@@ -1420,14 +1420,14 @@
           "fonte": "Lei Orgânica 18.840/1989"
         },
         {
-          "lei": "regra-fiscal",
-          "opcao": "meta-resultado",
+          "lei": "meta-de-resultado-primario",
+          "opcao": "2-do-pib",
           "como": "manteve",
           "fonte": "Lei 20.128/2006 (meta de saldo estrutural)"
         },
         {
           "lei": "fundo-soberano",
-          "opcao": "fundo-exterior",
+          "opcao": "guardar",
           "como": "manteve",
           "fonte": "Lei 20.128/2006 (FEES e FRP)"
         },
@@ -1760,8 +1760,8 @@
           "fonte": "Aposentadoria aos 67 (lei de 2007)"
         },
         {
-          "lei": "regra-fiscal",
-          "opcao": "meta-resultado",
+          "lei": "meta-de-resultado-primario",
+          "opcao": "2-do-pib",
           "como": "aprovou",
           "fonte": "Freio da dívida (Lei Fundamental, art. 115, 2009)"
         },

@@ -981,10 +981,8 @@
       "manifesto": ["per503", "per401"],
       "porque": "Progressividade redistribui.",
       "opcoes": {
-        "quase-sem-impostos": [2, 0],
         "base-no-consumo": [1, 0],
         "proporcional": [0.5, 0],
-        "dual": [-0.5, 0],
         "progressivo": [-1.5, 0]
       }
     },
@@ -1361,7 +1359,6 @@
       "opcoes": {
         "ponto-da-faixa": [0, 0],
         "2-do-pib": [0, 0],
-        "0-25-do-pib": [0, 0],
         "3-do-pib": [0, 0]
       }
     },
@@ -1442,22 +1439,6 @@
           0.4, 0.0
         ],
         "incentivo-so-para-setores-escolhidos-com-contrapartida": [-0.4, 0.0]
-      }
-    },
-    "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "isento-e-renda-no-exterior-so-paga-quando-volta": [1.4, 0.0],
-        "retencao-minima-e-15-ao-ano-no-exterior-e-nos-fundos-exclusi": [
-          -0.4, 0.0
-        ],
-        "aliquota-unica-de-15-a-25-no-dividendo-com-corte-no-imposto-": [
-          0.4, 0.0
-        ],
-        "integrado-na-tabela-progressiva-e-renda-no-exterior-somada-t": [
-          -1.2, 0.0
-        ]
       }
     },
     "forma-de-gestao-hospitalar": {
@@ -1915,25 +1896,6 @@
         "quem-perde-paga": [1.2, 0.0]
       }
     },
-    "conselho-fiscal-independente": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "nenhum": [0.0, 0.0],
-        "no-legislativo-so-consultivo": [0.4, 0.0],
-        "com-poder-de-veto-as-projecoes-do-orcamento": [0.8, 0.0]
-      }
-    },
-    "imposto-sobre-a-propriedade": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "simbolico": [1.0, 0.0],
-        "atual-planta-antiga-imposto-rural-quase-zero": [0.4, 0.0],
-        "atualizado-e-progressivo": [-0.6, 0.0],
-        "imposto-sobre-o-valor-da-terra": [-0.2, 0.0]
-      }
-    },
     "regra-de-repasse": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
@@ -2057,7 +2019,6 @@
       "porque": "Guardar (ortodoxo) ou o Estado investir.",
       "opcoes": {
         "guardar": [1, 0],
-        "fundo-exterior": [0.5, 0],
         "emprestar-empresas": [-1, 0],
         "investir-obras": [-1.5, 0]
       }
@@ -2067,7 +2028,6 @@
       "porque": "Ortodoxia fiscal.",
       "opcoes": {
         "sem-regra": [-1.5, 0],
-        "meta-resultado": [0.5, 0],
         "teto-gastos": [2, 0],
         "arcabouco": [0.5, 0]
       }

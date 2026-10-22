@@ -52,13 +52,13 @@
       "trava": [
         {
           "opcao": "base-no-consumo",
-          "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-          "maximo": 66.67
+          "lei": "tributacao-dividendos",
+          "maximo": 15
         },
         {
           "opcao": "proporcional",
-          "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
-          "maximo": 66.67
+          "lei": "tributacao-dividendos",
+          "maximo": 15
         }
       ]
     },
@@ -81,7 +81,10 @@
       "id": "imposto-seletivo",
       "familia": "imposto",
       "decide": "Define quais produtos que fazem mal à saúde ou ao ambiente pagam um imposto extra.",
-      "dinheiro": { "tipo": "receita", "base": "consumo" },
+      "dinheiro": {
+        "tipo": "receita",
+        "base": "consumo"
+      },
       "opcoes": {
         "nenhum": "Nenhum produto paga imposto extra.",
         "vicios-tradicionais": "Cigarro e bebida alcoólica pagam imposto extra.",
