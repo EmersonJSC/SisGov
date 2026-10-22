@@ -952,7 +952,6 @@
       "opcoes": {
         "teocracia": [0, 2],
         "religiao-oficial": [0, 1.5],
-        "religiao-favorecida": [0, 0.5],
         "neutro-com-colaboracao-de-interesse-publico": [0, -0.5],
         "laicidade-estrita": [0, -1],
         "controle-estatal-das-religioes": [0, 1]
@@ -1038,7 +1037,6 @@
       "porque": "Família tradicional; coerção nos dois sentidos é autoritária.",
       "opcoes": {
         "contra-filhos-por-coercao": [0, 2],
-        "contra-filhos-por-incentivo": [0, 0],
         "neutra-com-planejamento-familiar-disponivel": [0, -0.5],
         "incentivos-moderados": [0, 0.5],
         "natalidade-intensa": [-0.5, 1],
@@ -1543,7 +1541,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "zero": [0.6, 0.8],
         "referencia-hoje": [0.0, 0.0],
         "alta": [-0.6, -0.8]
@@ -1717,7 +1714,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "0": [1.6, -0.4],
         "12-a-15": [0.6, 0.0],
         "40": [-0.8, 0.6]
@@ -2086,8 +2082,7 @@
         "so-risco-de-vida": [0, 1.5],
         "casos-restritos-estupro-risco-de-vida-anencefalia": [0, 0.5],
         "motivos-amplos-inclusive-sociais": [0, -0.5],
-        "a-pedido-ate-12-a-14-semanas": [0, -1.5],
-        "sem-lei-penal": [0, -2]
+        "a-pedido-ate-12-a-14-semanas": [0, -1.5]
       }
     },
     "armas-de-fogo": {

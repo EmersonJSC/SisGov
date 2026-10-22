@@ -1,0 +1,275 @@
+{
+  "area": "direitos-e-costumes",
+  "leis": [
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas",
+      "familia": "constitucional",
+      "decide": "Define se as igrejas pagam impostos e se o Estado ajuda a financiá-las.",
+      "opcoes": {
+        "sem-isencao": "Igrejas pagam impostos como qualquer um.",
+        "isencao-de-impostos": "Igrejas não pagam impostos.",
+        "imposto-da-igreja-o-fiel-paga-o-estado-recolhe": "O fiel paga uma contribuição para a sua igreja, e o Estado recolhe."
+      }
+    },
+    {
+      "id": "laicidade-do-estado",
+      "familia": "constitucional",
+      "decide": "Define a relação entre o Estado e as religiões.",
+      "opcoes": {
+        "teocracia": "A religião governa o Estado.",
+        "religiao-oficial": "O Estado tem uma religião oficial, ou dá a uma igreja papel especial.",
+        "neutro-com-colaboracao-de-interesse-publico": "O Estado é neutro, mas colabora com igrejas em ações de interesse público.",
+        "laicidade-estrita": "Separação rígida entre Estado e religião.",
+        "controle-estatal-das-religioes": "O Estado controla as religiões."
+      },
+      "trava": [
+        {
+          "opcao": "laicidade-estrita",
+          "lei": "ensino-religioso",
+          "opcoes": ["obrigatorio-e-confessional"]
+        },
+        {
+          "opcao": "religiao-oficial",
+          "lei": "aborto",
+          "opcoes": [
+            "motivos-amplos-inclusive-sociais",
+            "a-pedido-ate-12-a-14-semanas"
+          ]
+        },
+        {
+          "opcao": "religiao-oficial",
+          "lei": "eutanasia",
+          "opcoes": [
+            "suicidio-assistido",
+            "eutanasia-para-doentes-terminais",
+            "eutanasia-ampla-inclusive-nao-terminais"
+          ]
+        },
+        {
+          "opcao": "teocracia",
+          "lei": "aborto",
+          "opcoes": [
+            "casos-restritos-estupro-risco-de-vida-anencefalia",
+            "motivos-amplos-inclusive-sociais",
+            "a-pedido-ate-12-a-14-semanas"
+          ]
+        },
+        {
+          "opcao": "teocracia",
+          "lei": "eutanasia",
+          "opcoes": [
+            "suicidio-assistido",
+            "eutanasia-para-doentes-terminais",
+            "eutanasia-ampla-inclusive-nao-terminais"
+          ]
+        },
+        {
+          "opcao": "teocracia",
+          "lei": "casamento-e-uniao-civil",
+          "opcoes": ["uniao-civil", "casamento-igualitario"]
+        }
+      ]
+    },
+    {
+      "id": "protecao-da-vida-desde-a-concepcao",
+      "familia": "constitucional",
+      "decide": "Define se a Constituição diz que a vida é protegida desde a concepção.",
+      "opcoes": {
+        "sem-essa-protecao": "A Constituição não diz isso.",
+        "com-protecao-desde-a-concepcao": "A vida é protegida desde a concepção."
+      },
+      "trava": [
+        {
+          "opcao": "com-protecao-desde-a-concepcao",
+          "lei": "aborto",
+          "opcoes": [
+            "motivos-amplos-inclusive-sociais",
+            "a-pedido-ate-12-a-14-semanas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tributo-sobre-apostas",
+      "familia": "imposto",
+      "decide": "Define quanto as casas de apostas pagam de imposto sobre o que ganham dos apostadores.",
+      "dinheiro": {
+        "tipo": "receita",
+        "base": "consumo"
+      },
+      "opcoes": {
+        "0": "Não pagam.",
+        "12-a-15": "De 12% a 15%.",
+        "40": "40%."
+      }
+    },
+    {
+      "id": "aborto",
+      "familia": "regra",
+      "decide": "Define em que casos o aborto deixa de ser crime.",
+      "opcoes": {
+        "proibicao-total": "Em nenhum caso.",
+        "so-risco-de-vida": "Só quando a mãe corre risco de vida.",
+        "casos-restritos-estupro-risco-de-vida-anencefalia": "Em caso de estupro, risco de vida ou bebê sem cérebro.",
+        "motivos-amplos-inclusive-sociais": "Também por motivos sociais e econômicos.",
+        "a-pedido-ate-12-a-14-semanas": "A pedido da mulher, até 12 a 14 semanas."
+      }
+    },
+    {
+      "id": "acoes-afirmativas",
+      "familia": "regra",
+      "decide": "Define se a universidade e os concursos reservam vagas para grupos em desvantagem.",
+      "opcoes": {
+        "proibidas": "Proibido reservar vagas.",
+        "sem-politica": "Sem reserva.",
+        "cotas-para-escola-publica-e-baixa-renda": "Vagas para quem veio de escola pública e tem renda baixa.",
+        "cotas-sociais-e-raciais": "Vagas por renda, escola pública e cor.",
+        "reserva-ampla-mais-de-50-tambem-em-concursos": "Mais da metade das vagas reservada, também em concursos."
+      }
+    },
+    {
+      "id": "apostas-e-jogos-de-azar",
+      "familia": "regra",
+      "decide": "Define se apostas online e cassinos podem funcionar, e com que regra.",
+      "opcoes": {
+        "proibicao": "Proibidos.",
+        "monopolio-estatal": "Só o Estado pode explorar.",
+        "licenca-com-limites-publicidade-limitada-e-teto-de-deposito": "Empresas com licença, propaganda limitada e teto de depósito.",
+        "licenca-liberal": "Empresas com licença, poucas regras.",
+        "sem-regulacao": "Sem regra nenhuma."
+      }
+    },
+    {
+      "id": "casamento-e-uniao-civil",
+      "familia": "regra",
+      "decide": "Define se casais do mesmo sexo podem casar.",
+      "opcoes": {
+        "criminalizacao-da-homossexualidade": "Ser homossexual é crime.",
+        "sem-reconhecimento": "A lei não reconhece o casal.",
+        "uniao-civil": "Podem fazer união civil.",
+        "casamento-igualitario": "Podem casar."
+      }
+    },
+    {
+      "id": "crimes-da-ditadura",
+      "familia": "regra",
+      "decide": "Define se os agentes do Estado que cometeram crimes numa ditadura são perdoados, expostos ou julgados.",
+      "opcoes": {
+        "anistia-ampla": "Perdoados.",
+        "comissao-da-verdade": "Uma comissão expõe o que fizeram, sem julgamento.",
+        "julgamento": "São julgados."
+      }
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio",
+      "familia": "regra",
+      "decide": "Define como o Estado pune a discriminação por cor, orientação sexual, religião e origem.",
+      "opcoes": {
+        "proibe-a-propaganda-lgbt": "Proíbe falar em público a favor de pessoas LGBT.",
+        "sem-lei": "Não há lei.",
+        "lei-civil-multa-e-indenizacao": "Multa e indenização.",
+        "crime-como-o-racismo": "É crime, como o racismo."
+      }
+    },
+    {
+      "id": "eutanasia",
+      "familia": "regra",
+      "decide": "Define se um médico pode abreviar a vida a pedido do paciente.",
+      "opcoes": {
+        "proibida": "Proibido.",
+        "so-passiva-suspender-tratamento": "Só suspender o tratamento.",
+        "suicidio-assistido": "O médico dá o remédio; o paciente toma.",
+        "eutanasia-para-doentes-terminais": "O médico aplica, só em doentes terminais.",
+        "eutanasia-ampla-inclusive-nao-terminais": "O médico aplica, também em quem não é terminal."
+      }
+    },
+    {
+      "id": "identidade-de-genero",
+      "familia": "regra",
+      "decide": "Define como uma pessoa trans muda nome e sexo nos documentos.",
+      "opcoes": {
+        "sem-reconhecimento": "Não pode mudar.",
+        "no-cartorio-sem-cirurgia-laudo-ou-juiz": "Muda direto no cartório, sem cirurgia, laudo ou juiz.",
+        "lei-completa-de-identidade-com-saude-documentos-e-menores": "Uma lei completa, com saúde, documentos e regra para menores."
+      }
+    },
+    {
+      "id": "igualdade-racial",
+      "familia": "regra",
+      "decide": "Define se o Estado usa a cor das pessoas para dirigir suas políticas.",
+      "opcoes": {
+        "o-estado-nao-usa-raca": "Proibido usar cor nas políticas.",
+        "sem-politica": "Não há política.",
+        "estatuto-direitos-declarados-pouco-recorte": "Uma lei declara direitos, com pouco uso da cor nas políticas.",
+        "recorte-racial-cotas-e-metas-com-raca": "Cotas e metas pela cor."
+      }
+    },
+    {
+      "id": "igualdade-salarial-de-genero",
+      "familia": "regra",
+      "decide": "Define como o Estado cobra salário igual para homens e mulheres na mesma função.",
+      "opcoes": {
+        "sem-garantia": "A lei não exige salário igual.",
+        "principio-na-lei": "A lei declara, sem exigir dados.",
+        "transparencia-relatorio-publico-das-empresas-grandes": "Empresas grandes publicam as diferenças de salário.",
+        "certificacao-multa-se-a-empresa-nao-provar-igualdade": "Auditoria e multa para quem não corrigir."
+      }
+    },
+    {
+      "id": "politica-de-natalidade",
+      "familia": "regra",
+      "decide": "Define se o Estado tenta mudar o número de filhos das famílias, e de que jeito.",
+      "opcoes": {
+        "contra-filhos-por-coercao": "Limita filhos à força.",
+        "neutra-com-planejamento-familiar-disponivel": "Neutro, com planejamento familiar disponível.",
+        "incentivos-moderados": "Bônus por filho e desconto no imposto.",
+        "natalidade-intensa": "Bônus grande e mãe isenta de imposto.",
+        "a-favor-de-filhos-por-coercao": "Força mais filhos, restringindo anticoncepcional e aborto."
+      }
+    },
+    {
+      "id": "protecao-contra-violencia-domestica",
+      "familia": "regra",
+      "decide": "Define como o Estado protege a mulher ameaçada dentro de casa.",
+      "opcoes": {
+        "assunto-privado-da-familia": "É assunto da família.",
+        "crime-comum-sem-regra-especial": "Crime comum, sem regra especial.",
+        "medidas-protetivas": "O juiz afasta o agressor rápido, e a polícia fiscaliza.",
+        "protecao-integral": "Abrigo, juizado especial, patrulha e ajuda de renda."
+      }
+    },
+    {
+      "id": "refugio-e-asilo",
+      "familia": "regra",
+      "decide": "Define se quem foge de perseguição ou de crise recebe proteção no país.",
+      "opcoes": {
+        "sem-asilo": "Não recebe.",
+        "dissuasao-o-pedido-e-processado-fora-do-pais": "O pedido é analisado fora do país.",
+        "restritiva": "Recebe, com regras duras.",
+        "segue-a-convencao-da-onu": "Segue a convenção das Nações Unidas.",
+        "acolhida-ampla-refugio-coletivo-interiorizacao-e-trabalho": "Acolhe amplamente, leva para cidades com trabalho."
+      }
+    },
+    {
+      "id": "terras-indigenas",
+      "familia": "regra",
+      "decide": "Define se o Estado reconhece as terras dos povos indígenas, por qual regra e com quanto autogoverno.",
+      "opcoes": {
+        "sem-reconhecimento": "Não reconhece.",
+        "reconhecimento-limitado-por-data-de-ocupacao": "Só terras ocupadas numa data fixa.",
+        "demarcacao-pela-ocupacao-tradicional-sem-data": "Terras de ocupação tradicional, sem data fixa.",
+        "autonomia-autogoverno-do-territorio": "Terra e governo próprio."
+      }
+    },
+    {
+      "id": "verba-de-planejamento-familiar-e-de-aborto-legal",
+      "familia": "regra",
+      "decide": "Define quanto o governo gasta com anticoncepcionais e com o aborto nos casos que a lei permite.",
+      "opcoes": {
+        "zero": "Nada.",
+        "referencia-hoje": "Como hoje.",
+        "alta": "Cobertura ampla de métodos e serviço em todas as regiões."
+      }
+    }
+  ]
+}

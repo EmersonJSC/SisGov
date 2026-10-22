@@ -1,22 +1,12 @@
 {
   "id": "protecao-da-vida-desde-a-concepcao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Proteção da vida desde a concepção",
-  "descricao": "A Constituição deve dizer que a vida é protegida desde a concepção?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "familia-e-sexualidade",
-    "nome": "Família e sexualidade",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se a Constituição diz que a vida é protegida desde a concepção.",
+  "area": "direitos-e-costumes",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_protecao_da_vida_desde_a_concepcao",
     "unidade": "nivel_escopo",
@@ -36,7 +26,8 @@
           "Hierarquia católica",
           "Evangélicos"
         ],
-        "efeitos": "Nada muda; deixa a Lei do aborto livre"
+        "efeitos": "Nada muda; deixa a Lei do aborto livre",
+        "propoe": "A Constituição não diz isso."
       },
       {
         "id": "com-protecao-desde-a-concepcao",
@@ -54,10 +45,41 @@
           "Movimento feminista",
           "Entidades de saúde pública"
         ],
-        "efeitos": "Trava as opções liberais de Aborto; Polarização ↑ forte na votação; Abortos inseguros ↑ se o aborto legal ficar restrito, atraso de 1 a 2 anos"
+        "efeitos": "Trava as opções liberais de Aborto; Polarização ↑ forte na votação; Abortos inseguros ↑ se o aborto legal ficar restrito, atraso de 1 a 2 anos",
+        "propoe": "A vida é protegida desde a concepção."
       }
     ]
   },
-  "consequencias": ["protecao-da-vida-desde-a-concepcao--polarizacao"],
-  "ministerio": "Ministério dos Direitos Humanos e da Cidadania"
+  "trava": [
+    {
+      "opcao": "com-protecao-desde-a-concepcao",
+      "lei": "aborto",
+      "opcoes": [
+        "motivos-amplos-inclusive-sociais",
+        "a-pedido-ate-12-a-14-semanas"
+      ]
+    }
+  ],
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "protecao-da-vida-desde-a-concepcao--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

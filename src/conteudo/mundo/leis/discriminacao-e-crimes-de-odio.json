@@ -1,22 +1,12 @@
 {
   "id": "discriminacao-e-crimes-de-odio",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Discriminação e crimes de ódio",
-  "descricao": "Como o Estado pune a discriminação por raça, orientação sexual, religião e origem?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "familia-e-sexualidade",
-    "nome": "Família e sexualidade",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define como o Estado pune a discriminação por cor, orientação sexual, religião e origem.",
+  "area": "direitos-e-costumes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_discriminacao_e_crimes_de_odio",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Parte dos Conservadores"],
         "rejeitam": ["Progressistas", "Jovens", "Movimento LGBT"],
-        "efeitos": "Liberdades civis ↓; Discriminação ↑; Reputação internacional ↓"
+        "efeitos": "Liberdades civis ↓; Discriminação ↑; Reputação internacional ↓",
+        "propoe": "Proíbe falar em público a favor de pessoas LGBT."
       },
       {
         "id": "sem-lei",
@@ -35,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Conservadores", "Igrejas evangélicas"],
         "rejeitam": ["Progressistas", "Movimento LGBT", "Movimento negro"],
-        "efeitos": "Discriminação ↑"
+        "efeitos": "Discriminação ↑",
+        "propoe": "Não há lei."
       },
       {
         "id": "lei-civil-multa-e-indenizacao",
@@ -44,7 +36,8 @@
         "custoTexto": "baixo",
         "apoiam": ["Católicos", "Classe média"],
         "rejeitam": ["os dois polos"],
-        "efeitos": "Discriminação ↓ pouco (não medido)"
+        "efeitos": "Discriminação ↓ pouco (não medido)",
+        "propoe": "Multa e indenização."
       },
       {
         "id": "crime-como-o-racismo",
@@ -58,20 +51,99 @@
           "Religiões de matriz africana"
         ],
         "rejeitam": ["Evangélicos", "Igrejas evangélicas"],
-        "efeitos": "Discriminação ↓ e Violência por ódio ↓ (efeito não medido)"
+        "efeitos": "Discriminação ↓ e Violência por ódio ↓ (efeito não medido)",
+        "propoe": "É crime, como o racismo."
       }
     ]
   },
-  "consequencias": [
-    "discriminacao-e-crimes-de-odio--discriminacao",
-    "discriminacao-e-crimes-de-odio--liberdade-civil",
-    "discriminacao-e-crimes-de-odio--grupo-progressistas",
-    "discriminacao-e-crimes-de-odio--grupo-evangelicos",
-    "discriminacao-e-crimes-de-odio--reputacao-internacional"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Casamento e união civil (com \"Criminalização\", a opção \"Crime\" fica impossível).",
     "leis": ["casamento-e-uniao-civil"]
   },
-  "ministerio": "Ministério dos Direitos Humanos"
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "discriminacao-e-crimes-de-odio--discriminacao",
+      "alvo": "discriminacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1],
+          [67, 2],
+          [100, 6]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0],
+          [100, -4]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -1],
+          [67, -3],
+          [100, -6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio--grupo-evangelicos",
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 1],
+          [67, 2],
+          [100, 3]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, -1],
+          [100, -5]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

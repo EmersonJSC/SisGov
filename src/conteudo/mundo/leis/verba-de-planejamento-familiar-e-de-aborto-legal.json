@@ -1,35 +1,16 @@
 {
   "id": "verba-de-planejamento-familiar-e-de-aborto-legal",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Verba de planejamento familiar e de aborto legal",
-  "descricao": "Quanto o governo gasta por ano com contraceptivos e com os serviços de aborto previstos em lei?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "familia-e-sexualidade",
-    "nome": "Família e sexualidade",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto o governo gasta com anticoncepcionais e com o aborto nos casos que a lei permite.",
+  "area": "direitos-e-costumes",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_verba_de_planejamento_familiar_e_de_aborto_legal",
     "unidade": "nivel_escopo",
     "opcoes": [
-      {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
       {
         "id": "zero",
         "rotulo": "Zero",
@@ -40,7 +21,8 @@
           "Entidades de saúde pública",
           "Pobres"
         ],
-        "efeitos": "Gravidez indesejada ↑; Abortos inseguros ↑; Saúde da população ↓"
+        "efeitos": "Gravidez indesejada ↑; Abortos inseguros ↑; Saúde da população ↓",
+        "propoe": "Nada."
       },
       {
         "id": "referencia-hoje",
@@ -48,7 +30,8 @@
         "valor": 66.67,
         "custoTexto": "lacuna",
         "apoiam": ["Católicos", "Classe média"],
-        "efeitos": "Gravidez indesejada ↓ contra Zero; Abortos inseguros ↓ pouco; Saúde da população ↑ pouco (estimado)"
+        "efeitos": "Gravidez indesejada ↓ contra Zero; Abortos inseguros ↓ pouco; Saúde da população ↑ pouco (estimado)",
+        "propoe": "Como hoje."
       },
       {
         "id": "alta",
@@ -62,17 +45,46 @@
           "Pobres"
         ],
         "rejeitam": ["Igrejas evangélicas e Hierarquia católica"],
-        "efeitos": "Abortos inseguros ↓ (o caso Uruguai mostra a queda antes da lei, vinda do serviço), atraso 1 a 3 anos; Saúde da população ↑; Pressão hospitalar ↓"
+        "efeitos": "Abortos inseguros ↓ (o caso Uruguai mostra a queda antes da lei, vinda do serviço), atraso 1 a 3 anos; Saúde da população ↑; Pressão hospitalar ↓",
+        "propoe": "Cobertura ampla de métodos e serviço em todas as regiões."
       }
     ]
   },
-  "consequencias": [
-    "verba-de-planejamento-familiar-e-de-aborto-legal--saude-populacao",
-    "verba-de-planejamento-familiar-e-de-aborto-legal--pressao-hospitalar"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Aborto. Com \"Proibição total\", a parte de aborto legal vai a zero e sobra só o planejamento familiar (proposta minha).",
     "leis": ["aborto"]
   },
-  "ministerio": "Ministério dos Direitos Humanos e da Cidadania"
+  "mesa": {
+    "id": "familia-e-sexualidade",
+    "nome": "Família e sexualidade",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "verba-de-planejamento-familiar-e-de-aborto-legal--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.093,
+        "termoConstante": -6.20031
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "verba-de-planejamento-familiar-e-de-aborto-legal--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 4.20021
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

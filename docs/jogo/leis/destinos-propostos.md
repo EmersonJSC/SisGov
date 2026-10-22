@@ -67,3 +67,14 @@ Nada a tirar. Fica com 7 leis, uma abaixo do mínimo de 8 (só aviso).
 | A esfera inteira | separar em **Segurança e justiça** (polícia, penas, drogas, armas, presídios: ~27 leis) e **Defesa e exterior** (Forças Armadas, diplomacia, alianças, comércio exterior: ~18) | Com 45 leis, é de longe a esfera mais cheia; o mapa passaria a ter 12 esferas |
 
 Também nesta área: três leis perderam a opção "Ponto da faixa", que era sobra de rascunho (Cooperação internacional, Rede diplomática, Investimento em defesa).
+
+## Direitos e costumes (20 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Bloqueio de pagamentos a casas sem licença (`bloqueio-de-pagamentos-a-casas-sem-licenca`) | sai | Quatro leis tratam de apostas; esta tem 2 efeitos e cabe na regra geral das Apostas |
+| Publicidade de apostas (`publicidade-de-apostas`) | sai | Idem; tem 1 efeito |
+| Acolhida e interiorização de imigrantes (`acolhida-e-interiorizacao-de-imigrantes`) | sai | Não faz nada no jogo; Refúgio e asilo cobre o assunto |
+| Verba para juventude negra e saúde da população negra (`verba-para-juventude-negra-e-saude-da-populacao-negra`) | sai, ou ganha efeito | Não faz nada no jogo |
+
+Também nesta área, três leis tinham 6 opções e ficaram com 5: Aborto (sai "sem lei penal", que tinha o mesmo efeito de "a pedido"), Política de natalidade (sai "contra filhos, por incentivo") e Laicidade ("religião favorecida" juntou-se a "religião oficial"; o programa da Rússia foi junto).

@@ -269,7 +269,11 @@ if (process.argv[2]) {
       console.log(`${e.id}: SEM EFEITO, ficou no formato antigo`);
       continue;
     }
-    gravar(path, paraV4(lei, efeitos, e, dados.area, trava));
+    const nova = paraV4(lei, efeitos, e, dados.area, trava);
+    const opcoes = nova.controle.opcoes?.length ?? 0;
+    if (opcoes > 5 && (e.familia === "regra" || e.familia === "constitucional"))
+      throw new Error(`${e.id}: ${opcoes} opções; o molde aceita até 5`);
+    gravar(path, nova);
     const fora = new Set(caminhos);
     mundo.consequencias = (mundo.consequencias as string[]).filter(
       (c) => !fora.has(c),

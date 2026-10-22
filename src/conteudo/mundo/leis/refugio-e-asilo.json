@@ -1,22 +1,12 @@
 {
   "id": "refugio-e-asilo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Refúgio e asilo",
-  "descricao": "Quem foge de perseguição ou de crise recebe proteção no país?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "imigracao-e-saida-do-pais",
-    "nome": "Imigração e saída do país",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se quem foge de perseguição ou de crise recebe proteção no país.",
+  "area": "direitos-e-costumes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_refugio_e_asilo",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Parte dos Conservadores"],
         "rejeitam": ["quase todos"],
-        "efeitos": "Reputação internacional ↓ forte; Imigração ↓"
+        "efeitos": "Reputação internacional ↓ forte; Imigração ↓",
+        "propoe": "Não recebe."
       },
       {
         "id": "dissuasao-o-pedido-e-processado-fora-do-pais",
@@ -36,7 +27,8 @@
         "custoTexto": "médio",
         "apoiam": ["Conservadores"],
         "rejeitam": ["Progressistas", "Pastorais sociais católicas"],
-        "efeitos": "Imigração ↓; Reputação internacional ↓"
+        "efeitos": "Imigração ↓; Reputação internacional ↓",
+        "propoe": "O pedido é analisado fora do país."
       },
       {
         "id": "restritiva",
@@ -45,7 +37,8 @@
         "custoTexto": "baixo",
         "apoiam": ["Interior"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Imigração ↓ pouco"
+        "efeitos": "Imigração ↓ pouco",
+        "propoe": "Recebe, com regras duras."
       },
       {
         "id": "segue-a-convencao-da-onu",
@@ -53,7 +46,8 @@
         "valor": 75,
         "custoTexto": "~0,003% do PIB com a acolhida",
         "apoiam": ["Católicos", "Progressistas"],
-        "efeitos": "Reputação internacional ↑ contra Sem asilo; Imigração ↑ contra Restritiva; Crise migratória no nível atual (estimado)"
+        "efeitos": "Reputação internacional ↑ contra Sem asilo; Imigração ↑ contra Restritiva; Crise migratória no nível atual (estimado)",
+        "propoe": "Segue a convenção das Nações Unidas."
       },
       {
         "id": "acolhida-ampla-refugio-coletivo-interiorizacao-e-trabalho",
@@ -62,19 +56,116 @@
         "custoTexto": "maior (lacuna)",
         "apoiam": ["Progressistas", "Empresários", "Agronegócio"],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Imigração ↑; Crise migratória ↓ se houver interiorização; Reputação internacional ↑"
+        "efeitos": "Imigração ↑; Crise migratória ↓ se houver interiorização; Reputação internacional ↑",
+        "propoe": "Acolhe amplamente, leva para cidades com trabalho."
       }
     ]
   },
-  "consequencias": [
-    "refugiados-e-asilo--imigracao",
-    "refugiados-e-asilo--reputacao-internacional",
-    "refugiados-e-asilo--polarizacao",
-    "refugiados-e-asilo--crise-migratoria",
-    "refugiados-e-asilo--liberdade-civil",
-    "refugiados-e-asilo--gasto-publico",
-    "refugiados-e-asilo--grupo-pobres",
-    "refugiados-e-asilo--grupo-progressistas"
-  ],
-  "ministerio": "Ministério dos Direitos Humanos e da Cidadania"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "imigracao-e-saida-do-pais",
+    "nome": "Imigração e saída do país",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "refugiados-e-asilo--imigracao",
+      "alvo": "imigracao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--crise-migratoria",
+      "alvo": "crise_migratoria",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.03,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.15],
+          [50, 0.02],
+          [75, 0.05],
+          [100, 0.15]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "refugiados-e-asilo--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "refugiados-e-asilo--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

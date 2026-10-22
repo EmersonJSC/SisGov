@@ -248,28 +248,28 @@ Total: 239 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Imunidade e dinheiro para igrejas | `imunidade-e-dinheiro-para-igrejas` | constitucional | decide é pergunta |  | |
-| Laicidade do Estado | `laicidade-do-estado` | constitucional | decide é pergunta; 6 opções (máximo 5) |  | |
-| Proteção da vida desde a concepção | `protecao-da-vida-desde-a-concepcao` | constitucional | decide é pergunta |  | |
-| Aborto | `aborto` | regra | decide é pergunta; 6 opções (máximo 5) |  | |
-| Ações afirmativas | `acoes-afirmativas` | regra | decide é pergunta |  | |
+| Imunidade e dinheiro para igrejas | `imunidade-e-dinheiro-para-igrejas` | constitucional | — |  | |
+| Laicidade do Estado | `laicidade-do-estado` | constitucional | — |  | |
+| Proteção da vida desde a concepção | `protecao-da-vida-desde-a-concepcao` | constitucional | — |  | |
+| Tributo sobre apostas | `tributo-sobre-apostas` | imposto | — |  | |
+| Aborto | `aborto` | regra | — | `verba-de-planejamento-familiar-e-de-aborto-legal` | |
+| Ações afirmativas | `acoes-afirmativas` | regra | — |  | |
 | Acolhida e interiorização de imigrantes | `acolhida-e-interiorizacao-de-imigrantes` | regra | sem efeito na rede; decide é pergunta |  | |
-| Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | decide é pergunta |  | |
+| Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | — |  | |
 | Bloqueio de pagamentos a casas sem licença | `bloqueio-de-pagamentos-a-casas-sem-licenca` | regra | decide é pergunta |  | |
-| Casamento e união civil | `casamento-e-uniao-civil` | regra | decide é pergunta |  | |
-| Crimes da ditadura | `crimes-da-ditadura` | regra | decide é pergunta |  | |
-| Discriminação e crimes de ódio | `discriminacao-e-crimes-de-odio` | regra | decide é pergunta |  | |
-| Eutanásia | `eutanasia` | regra | decide é pergunta |  | |
-| Identidade de gênero | `identidade-de-genero` | regra | decide é pergunta |  | |
-| Igualdade racial | `igualdade-racial` | regra | decide é pergunta |  | |
+| Casamento e união civil | `casamento-e-uniao-civil` | regra | — |  | |
+| Crimes da ditadura | `crimes-da-ditadura` | regra | — |  | |
+| Discriminação e crimes de ódio | `discriminacao-e-crimes-de-odio` | regra | — |  | |
+| Eutanásia | `eutanasia` | regra | — |  | |
+| Identidade de gênero | `identidade-de-genero` | regra | — |  | |
+| Igualdade racial | `igualdade-racial` | regra | — |  | |
 | Igualdade salarial de gênero | `igualdade-salarial-de-genero` | regra | — |  | |
-| Política de natalidade | `politica-de-natalidade` | regra | decide é pergunta; 6 opções (máximo 5) |  | |
+| Política de natalidade | `politica-de-natalidade` | regra | — |  | |
 | Proteção contra violência doméstica | `protecao-contra-violencia-domestica` | regra | — |  | |
 | Publicidade de apostas | `publicidade-de-apostas` | regra | decide é pergunta |  | |
-| Refúgio e asilo | `refugio-e-asilo` | regra | decide é pergunta |  | |
-| Terras indígenas | `terras-indigenas` | regra | decide é pergunta |  | |
-| Tributo sobre apostas | `tributo-sobre-apostas` | regra | decide é pergunta |  | |
-| Verba de planejamento familiar e de aborto legal | `verba-de-planejamento-familiar-e-de-aborto-legal` | verba | decide é pergunta |  | |
+| Refúgio e asilo | `refugio-e-asilo` | regra | — |  | |
+| Terras indígenas | `terras-indigenas` | regra | — |  | |
+| Verba de planejamento familiar e de aborto legal | `verba-de-planejamento-familiar-e-de-aborto-legal` | regra | — |  | |
 | Verba para juventude negra e saúde da população negra | `verba-para-juventude-negra-e-saude-da-populacao-negra` | verba | sem efeito na rede; decide é pergunta |  | |
 
 ## Governo e instituições (26)

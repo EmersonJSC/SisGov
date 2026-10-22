@@ -1,22 +1,12 @@
 {
   "id": "politica-de-natalidade",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Política de natalidade",
-  "descricao": "O Estado tenta mudar o número de filhos que as famílias têm, e com que meios?",
-  "area": "Previdência, assistência, moradia e demografia",
-  "mesa": {
-    "id": "mesa-familia-e-cuidados",
-    "nome": "Mesa Família e cuidados",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se o Estado tenta mudar o número de filhos das famílias, e de que jeito.",
+  "area": "direitos-e-costumes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_politica_de_natalidade",
     "unidade": "nivel_escopo",
@@ -31,15 +21,8 @@
           "Pastorais católicas",
           "Progressistas"
         ],
-        "efeitos": "Fecundidade ↓ forte; liberdades ↓"
-      },
-      {
-        "id": "contra-filhos-por-incentivo",
-        "rotulo": "Contra filhos, por incentivo",
-        "valor": 20,
-        "custoTexto": "Baixo",
-        "rejeitam": ["Católicos", "Evangélicos"],
-        "efeitos": "Fecundidade ↓"
+        "efeitos": "Fecundidade ↓ forte; liberdades ↓",
+        "propoe": "Limita filhos à força."
       },
       {
         "id": "neutra-com-planejamento-familiar-disponivel",
@@ -47,7 +30,8 @@
         "valor": 40,
         "custoTexto": "Quase 0",
         "apoiam": ["Progressistas"],
-        "efeitos": "Fecundidade segue a projeção do IBGE"
+        "efeitos": "Fecundidade segue a projeção do IBGE",
+        "propoe": "Neutro, com planejamento familiar disponível."
       },
       {
         "id": "incentivos-moderados",
@@ -56,7 +40,8 @@
         "custoTexto": "0,3% a 1% do PIB (aprox.)",
         "apoiam": ["Famílias com filhos", "Católicos"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Fecundidade ↑ 3% a 12% (Quebec +12% nas famílias elegíveis; Polônia +6%)"
+        "efeitos": "Fecundidade ↑ 3% a 12% (Quebec +12% nas famílias elegíveis; Polônia +6%)",
+        "propoe": "Bônus por filho e desconto no imposto."
       },
       {
         "id": "natalidade-intensa",
@@ -70,7 +55,8 @@
           "Igrejas evangélicas"
         ],
         "rejeitam": ["Movimento feminista", "Mercado financeiro"],
-        "efeitos": "Fecundidade ↑ com teto de +0,1 a +0,3 filho por mulher e recuo depois (Hungria: 1,25 → 1,61 → 1,39); custo por nascimento a mais muito alto ( 389 mil na Polônia)"
+        "efeitos": "Fecundidade ↑ com teto de +0,1 a +0,3 filho por mulher e recuo depois (Hungria: 1,25 → 1,61 → 1,39); custo por nascimento a mais muito alto ( 389 mil na Polônia)",
+        "propoe": "Bônus grande e mãe isenta de imposto."
       },
       {
         "id": "a-favor-de-filhos-por-coercao",
@@ -79,25 +65,144 @@
         "custoTexto": "Baixo",
         "apoiam": ["Conservadores", "Igrejas evangélicas"],
         "rejeitam": ["Movimento feminista", "Progressistas"],
-        "efeitos": "Fecundidade ↑ forte e passageira; mortalidade materna ↑ (aprox.)"
+        "efeitos": "Fecundidade ↑ forte e passageira; mortalidade materna ↑ (aprox.)",
+        "propoe": "Força mais filhos, restringindo anticoncepcional e aborto."
       }
     ]
   },
-  "consequencias": [
-    "politica-de-natalidade--natalidade",
-    "politica-de-natalidade--envelhecimento",
-    "politica-de-natalidade--liberdade-civil",
-    "politica-de-natalidade--saude-populacao",
-    "politica-de-natalidade--pobreza",
-    "politica-de-natalidade--gasto-publico",
-    "politica-de-natalidade--grupo-classe-media",
-    "politica-de-natalidade--grupo-conservadores",
-    "politica-de-natalidade--grupo-progressistas",
-    "politica-de-natalidade--grupo-familias-com-filhos"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Aborto (Direitos): a opção coercitiva a favor de filhos exige aborto proibido ou só em risco de vida. A opção coercitiva contra filhos é barrada pela laicidade e pela independência do Judiciário (vira evento de crise).",
     "leis": ["aborto", "independencia-do-judiciario"]
   },
-  "ministerio": "Ministério dos Direitos Humanos"
+  "mesa": {
+    "id": "mesa-familia-e-cuidados",
+    "nome": "Mesa Família e cuidados",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "politica-de-natalidade--natalidade",
+      "alvo": "natalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--envelhecimento",
+      "alvo": "envelhecimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0005,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "politica-de-natalidade--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.7,
+        "limiar": 90,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.075,
+        "limiar": 60,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.05],
+          [20, 0.05],
+          [40, 0],
+          [60, 0.4],
+          [80, 1.5],
+          [100, 0.3]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "politica-de-natalidade--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-natalidade--grupo-familias-com-filhos",
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

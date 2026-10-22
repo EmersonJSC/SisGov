@@ -1,22 +1,12 @@
 {
   "id": "igualdade-salarial-de-genero",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Igualdade salarial de gênero",
-  "descricao": "Escolher como cobrar salários iguais para funções iguais: nenhum dever, princípio geral, publicação de diferenças ou auditoria com multa. Transparência melhora fiscalização, mas cria custo e resistência empresarial.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define como o Estado cobra salário igual para homens e mulheres na mesma função.",
+  "area": "direitos-e-costumes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_igualdade_salarial_de_genero",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários favoráveis a contratos totalmente livres"],
         "rejeitam": ["Movimento feminista"],
-        "efeitos": "Empresas têm liberdade de remuneração; diferença salarial e discriminação tendem a subir."
+        "efeitos": "Empresas têm liberdade de remuneração; diferença salarial e discriminação tendem a subir.",
+        "propoe": "A lei não exige salário igual."
       },
       {
         "id": "principio-na-lei",
@@ -35,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Classe média", "Empresários"],
         "rejeitam": ["Movimento feminista favorável a fiscalização"],
-        "efeitos": "Afirma o direito sem custo alto, mas diferenças ficam difíceis de revelar."
+        "efeitos": "Afirma o direito sem custo alto, mas diferenças ficam difíceis de revelar.",
+        "propoe": "A lei declara, sem exigir dados."
       },
       {
         "id": "transparencia-relatorio-publico-das-empresas-grandes",
@@ -43,7 +35,8 @@
         "valor": 67,
         "apoiam": ["Movimento feminista"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Dados expõem diferenças e ajudam trabalhadoras a cobrar correção; empresas assumem custo de reporte."
+        "efeitos": "Dados expõem diferenças e ajudam trabalhadoras a cobrar correção; empresas assumem custo de reporte.",
+        "propoe": "Empresas grandes publicam as diferenças de salário."
       },
       {
         "id": "certificacao-multa-se-a-empresa-nao-provar-igualdade",
@@ -51,26 +44,152 @@
         "valor": 100,
         "apoiam": ["Movimento feminista"],
         "rejeitam": ["Empresários", "Pequenos negócios"],
-        "efeitos": "Diferença salarial e discriminação caem mais; custo de conformidade e resistência empresarial sobem."
+        "efeitos": "Diferença salarial e discriminação caem mais; custo de conformidade e resistência empresarial sobem.",
+        "propoe": "Auditoria e multa para quem não corrigir."
       }
     ]
   },
-  "consequencias": [
-    "igualdade-salarial-de-genero--diferenca-salarial-genero",
-    "igualdade-salarial-de-genero--participacao-trabalho-cuidadoras",
-    "igualdade-salarial-de-genero--desigualdade",
-    "igualdade-salarial-de-genero--discriminacao",
-    "igualdade-salarial-de-genero--confianca-empresarial",
-    "igualdade-salarial-de-genero--custo-trabalhista",
-    "igualdade-salarial-de-genero--gasto-publico",
-    "igualdade-salarial-de-genero--grupo-empresarios",
-    "igualdade-salarial-de-genero--grupo-pequenos-negocios",
-    "igualdade-salarial-de-genero--grupo-progressistas",
-    "igualdade-salarial-de-genero--grupo-trabalhadores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
   },
-  "ministerio": "Ministério dos Direitos Humanos"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "igualdade-salarial-de-genero--diferenca-salarial-genero",
+      "alvo": "diferenca_salarial_genero",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--discriminacao",
+      "alvo": "discriminacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0.005],
+          [100, 0.01]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "igualdade-salarial-de-genero--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

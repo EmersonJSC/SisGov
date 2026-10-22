@@ -1,22 +1,12 @@
 {
   "id": "crimes-da-ditadura",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Crimes da ditadura",
-  "descricao": "Os agentes do Estado que cometeram crimes num regime autoritário passado são perdoados, expostos ou julgados?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "memoria-e-transicao",
-    "nome": "Memória e transição",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se os agentes do Estado que cometeram crimes numa ditadura são perdoados, expostos ou julgados.",
+  "area": "direitos-e-costumes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_crimes_da_ditadura",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Militares", "Militares da reserva"],
         "rejeitam": ["lacuna"],
-        "efeitos": "Impunidade ↑; Ameaça de golpe ↑ (golpes passados predizem os futuros)"
+        "efeitos": "Impunidade ↑; Ameaça de golpe ↑ (golpes passados predizem os futuros)",
+        "propoe": "Perdoados."
       },
       {
         "id": "comissao-da-verdade",
@@ -36,7 +27,8 @@
         "custoAnualPercentualPib": 0.001,
         "apoiam": ["Hierarquia católica e pastorais"],
         "rejeitam": ["Militares"],
-        "efeitos": "Polarização ↑ pouco no curto prazo"
+        "efeitos": "Polarização ↑ pouco no curto prazo",
+        "propoe": "Uma comissão expõe o que fizeram, sem julgamento."
       },
       {
         "id": "julgamento",
@@ -45,17 +37,104 @@
         "custoAnualPercentualPib": 0.002,
         "apoiam": ["lacuna"],
         "rejeitam": ["Militares", "Militares da reserva"],
-        "efeitos": "Impunidade ↓; Polarização ↑ no curto prazo; tensão com militares (evento \"motim\"); Ameaça de golpe ↓ no longo prazo (sem número aberto)"
+        "efeitos": "Impunidade ↓; Polarização ↑ no curto prazo; tensão com militares (evento \"motim\"); Ameaça de golpe ↓ no longo prazo (sem número aberto)",
+        "propoe": "São julgados."
       }
     ]
   },
-  "consequencias": [
-    "crimes-da-ditadura--confianca-instituicoes",
-    "crimes-da-ditadura--polarizacao",
-    "crimes-da-ditadura--impunidade",
-    "crimes-da-ditadura--reputacao-internacional",
-    "crimes-da-ditadura--grupo-progressistas",
-    "crimes-da-ditadura--grupo-conservadores"
-  ],
-  "ministerio": "Ministério dos Direitos Humanos"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "memoria-e-transicao",
+    "nome": "Memória e transição",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "crimes-da-ditadura--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 3]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "crimes-da-ditadura--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "crimes-da-ditadura--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -3]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "crimes-da-ditadura--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 5]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "crimes-da-ditadura--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 5]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "crimes-da-ditadura--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -3],
+          [100, -5]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

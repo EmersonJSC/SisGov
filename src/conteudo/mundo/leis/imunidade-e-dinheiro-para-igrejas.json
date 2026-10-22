@@ -1,22 +1,12 @@
 {
   "id": "imunidade-e-dinheiro-para-igrejas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Imunidade e dinheiro para igrejas",
-  "descricao": "As igrejas pagam impostos, e o Estado ajuda a financiá-las?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "religiao",
-    "nome": "Religião",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se as igrejas pagam impostos e se o Estado ajuda a financiá-las.",
+  "area": "direitos-e-costumes",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_imunidade_e_dinheiro_para_igrejas",
     "unidade": "nivel_escopo",
@@ -33,7 +23,8 @@
           "Igrejas evangélicas",
           "Hierarquia católica"
         ],
-        "efeitos": "Arrecadação ↑ (lacuna); poder dos grupos religiosos ↓; humor religioso ↓ forte"
+        "efeitos": "Arrecadação ↑ (lacuna); poder dos grupos religiosos ↓; humor religioso ↓ forte",
+        "propoe": "Igrejas pagam impostos como qualquer um."
       },
       {
         "id": "isencao-de-impostos",
@@ -47,7 +38,8 @@
           "Hierarquia católica"
         ],
         "rejeitam": ["Progressistas"],
-        "efeitos": "poder dos grupos religiosos ↑ contra Sem isenção; Arrecadação ↓ (lacuna); humor religioso ↑ (estimado)"
+        "efeitos": "poder dos grupos religiosos ↑ contra Sem isenção; Arrecadação ↓ (lacuna); humor religioso ↑ (estimado)",
+        "propoe": "Igrejas não pagam impostos."
       },
       {
         "id": "imposto-da-igreja-o-fiel-paga-o-estado-recolhe",
@@ -56,15 +48,76 @@
         "custoTexto": "neutro",
         "apoiam": ["Hierarquia católica"],
         "rejeitam": ["Igrejas evangélicas", "Progressistas"],
-        "efeitos": "Renda das igrejas mais estável; humor de Igrejas evangélicas ↓"
+        "efeitos": "Renda das igrejas mais estável; humor de Igrejas evangélicas ↓",
+        "propoe": "O fiel paga uma contribuição para a sua igreja, e o Estado recolhe."
       }
     ]
   },
-  "consequencias": [
-    "imunidade-e-dinheiro-para-igrejas--grupo-evangelicos",
-    "imunidade-e-dinheiro-para-igrejas--grupo-catolicos",
-    "imunidade-e-dinheiro-para-igrejas--grupo-progressistas",
-    "imunidade-e-dinheiro-para-igrejas--sonegacao"
-  ],
-  "ministerio": "Ministério dos Direitos Humanos e da Cidadania"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "religiao",
+    "nome": "Religião",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas--grupo-evangelicos",
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -6],
+          [50, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas--grupo-catolicos",
+      "alvo": "grupo_catolicos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [50, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas--sonegacao",
+      "alvo": "sonegacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -0.5],
+          [50, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
