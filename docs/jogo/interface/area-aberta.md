@@ -80,6 +80,43 @@ dinheiro, na indústria ou nos índices da área, até 8). Um botão "todas as
 leis (24)" mostra o resto. Quem joga pela primeira vez não se afoga; quem
 conhece o jogo abre tudo de uma vez.
 
+## 4.6 A bolha da lei, desenhada
+
+Hoje a bolha é um disco liso com um ícone fino de traço. A bolha nova é uma
+**medalha pintada** com camadas, de dentro para fora:
+
+1. **Medalha:** o ícone pintado da lei (PNG, [icones-das-leis.md](../../arte/icones-das-leis.md)),
+   recortado em círculo. É o que chama o olho.
+2. **Aro do tipo:** anel grosso de metal na cor do tipo (dourado, oliva,
+   lilás, azul, coral; constitucional com aro de papel e borda sépia;
+   pétrea como escudo de concreto). Leve brilho de cima, sombra embaixo:
+   parece uma peça física sobre a mesa.
+3. **Arco da bússola:** um arco fino por fora, na cor do canto da opção em
+   vigor. Lei neutra: sem arco.
+4. **Anel de nível:** o que já existe (o quanto a lei está ligada), passa a
+   correr por dentro do aro, em âmbar.
+5. **Selos:** até dois, como **carimbos** pequenos presos na borda
+   (⚡ atenção, 🏭 indústria, 🔒 bloqueada, ⇄ exclusiva, ⏳ andamento).
+6. **Etiqueta:** o nome da lei numa tira de papel embaixo da medalha, e não
+   texto solto.
+
+**Tamanho com sentido.** A bolha cresce pela **importância** da lei na
+área (peso no dinheiro, na indústria e nos índices), e não só pelo nível.
+As leis principais são visivelmente maiores que as secundárias.
+
+**Movimento, pouco e com motivo.**
+- Ao passar o mouse, a medalha sobe 2 px, a sombra cresce e a etiqueta
+  mostra uma linha ("Cobra 26,5% em tudo o que se compra").
+- **⚡ Pede atenção:** o aro pulsa devagar em âmbar (uma vez a cada 3 s).
+- **⏳ Em andamento:** o anel de nível enche aos poucos, como um relógio.
+- **Assinada agora:** um carimbo "bate" sobre a medalha, com som seco.
+- **Bloqueada:** medalha em tons de cinza, com o cadeado; sem animação.
+
+**Bolhas dos índices** (o anel de fora) seguem a mesma linguagem: disco de
+papel com o número grande pintado no centro, aro na cor de bom/ruim e a seta
+do último trimestre como um alfinete colorido. Situação grave (crise) vira
+um carimbo vermelho que pulsa.
+
 ## 5. O ministro: "Por onde começo?"
 
 Cada área tem o retrato de quem a coordena (já existe). Ao abrir, ele diz
