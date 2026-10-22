@@ -27,6 +27,7 @@ const NOMES_DE_PROGRAMA = [
   "Obamacare",
   "Medicare",
   "NHS",
+  "Farmácia Popular",
 ];
 
 function erro(
@@ -42,10 +43,10 @@ export function idDoEfeito(lei: string, alvo: string, id?: string): string {
   return id ?? `${lei}--${alvo.replaceAll("_", "-")}`;
 }
 
-function textoProibido(texto: string): string | undefined {
+export function textoProibido(texto: string): string | undefined {
   if (texto.includes("—")) return "travessão (—)";
   return NOMES_DE_PROGRAMA.find((nome) =>
-    new RegExp(`(^|[^\\p{L}])${nome}([^\\p{L}]|$)`, "u").test(texto),
+    new RegExp(`(^|[^\\p{L}])${nome}([^\\p{L}]|$)`, "iu").test(texto),
   );
 }
 

@@ -89,3 +89,55 @@ export type FichaV3 = {
   historia?: { opcoes?: Record<string, string[]>; brasil?: string };
   fontes: FonteV3[];
 };
+
+/** Família da lei (molde-das-leis.md, 2.1): decide cor, controle e faixa. */
+export type Familia =
+  "imposto" | "verba" | "programa" | "regra" | "constitucional" | "petrea";
+
+/** As 11 áreas do mundo (molde-das-leis.md, 2.4; `mundo/areas.json`). */
+export type AreaId =
+  | "contas-publicas"
+  | "economia-e-empresas"
+  | "trabalho"
+  | "protecao-social"
+  | "saude"
+  | "educacao-e-cultura"
+  | "infraestrutura-e-energia"
+  | "ambiente-e-campo"
+  | "seguranca-e-defesa"
+  | "direitos-e-costumes"
+  | "governo-e-instituicoes";
+
+/** O que uma opção constitucional trava em outra lei. */
+export type TravaV4 = {
+  opcao: string;
+  lei: string;
+  minimo?: number;
+  maximo?: number;
+  proibe?: true;
+};
+
+/** Ficha de lei, formato v4 (molde único): a v3 com família, área e frase. */
+export type FichaV4 = Omit<
+  FichaV3,
+  "versaoEsquema" | "area" | "ministerio" | "fontes" | "controle"
+> & {
+  versaoEsquema: 4;
+  familia: Familia;
+  /** O que a lei decide, numa frase afirmativa. */
+  decide: string;
+  /** Ausente só na pétrea, que fica no centro. */
+  area?: AreaId;
+  /** Exemplo no país: "No Brasil: Farmácia Popular, desde 2004." */
+  exemplo?: string;
+  trava?: TravaV4[];
+  /** Só programa: quem recebe e quantas pessoas. */
+  publico?: { quem: string; pessoas: number };
+  fontes?: FonteV3[];
+  ministerio?: string;
+  controle: {
+    variavel: string;
+    unidade: string;
+    opcoes?: (PolicyOption & { propoe: string })[];
+  };
+};
