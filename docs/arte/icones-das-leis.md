@@ -1,0 +1,394 @@
+# Ícones das leis
+
+> **Status: VIGENTE (pedido de arte, 22/out/2026).** Lista de todos os
+> ícones que o jogo precisa e como cada um deve ser. Feito para quem
+> desenha (pessoa ou IA). Regras de arquivo em
+> [src/assets/svg/README.md](../../src/assets/svg/README.md).
+> Leis: [docs/jogo/leis/](../jogo/leis/README.md). Tela:
+> [área aberta](../jogo/interface/area-aberta.md).
+
+## 1. Estilo (vale para todos)
+
+- **Arquivo:** SVG, `viewBox="0 0 24 24"`, fundo transparente, sem texto,
+  sem fontes, sem imagens embutidas.
+- **Traço:** branco `#FFFFFF`, espessura 2, pontas e cantos arredondados.
+  O ícone fica **dentro de uma bolinha colorida** (a cor vem do tipo da lei,
+  ver a tela), por isso é branco e de uma cor só.
+- **Legível em 20 px:** no máximo 3 elementos; nada de detalhe fino. Se
+  precisar escolher, prefira a silhueta.
+- **Uma família visual:** mesmo peso de traço, mesmo nível de detalhe, mesmas
+  proporções. Objetos do dia a dia (casa, carro, fábrica, moeda), não
+  símbolos abstratos.
+- **Temas sensíveis** (aborto, suicídio assistido, pena de morte, drogas,
+  prostituição): desenho simbólico e neutro, sem cena, sem sangue, sem
+  corpo, sem tomar partido.
+- **Nada de marca, bandeira, logotipo real ou personagem conhecido.**
+
+## 2. Famílias: base + detalhe
+
+Para o conjunto ficar coerente e o jogador reconhecer de longe, cada
+família tem um **elemento base** e cada lei acrescenta **um detalhe**.
+
+| Família | Base | Exemplo |
+| --- | --- | --- |
+| Imposto | moeda com o símbolo `%` gravado, no canto inferior direito | moeda + casa = imposto sobre imóveis |
+| Verba | saco de dinheiro pequeno no canto inferior direito | saco + trilho = verba para ferrovias |
+| Dono de setor | o objeto do setor + uma chave no canto | barril + chave = dono do petróleo |
+| Regra | o objeto do assunto, sem base | balança, porta, relógio |
+| Constitucional | o objeto dentro de um livro aberto (a Constituição) | livro + banco = quem manda no banco central |
+
+## 3. Peças de interface (fazer primeiro)
+
+| Arquivo | Desenho |
+| --- | --- |
+| `ui/area-economia` | moeda com seta subindo |
+| `ui/area-empresas` | fábrica com chaminé |
+| `ui/area-trabalho` | capacete de obra |
+| `ui/area-previdencia` | bengala ao lado de uma casa pequena |
+| `ui/area-saude` | cruz dentro de um coração |
+| `ui/area-educacao` | livro aberto com lápis |
+| `ui/area-infraestrutura` | ponte de arco |
+| `ui/area-ambiente` | folha com uma gota |
+| `ui/area-seguranca` | escudo |
+| `ui/area-direitos` | duas mãos dadas |
+| `ui/area-governo` | prédio com colunas e cúpula |
+| `ui/selo-atencao` | raio |
+| `ui/selo-industria` | engrenagem pequena |
+| `ui/selo-bloqueada` | cadeado fechado |
+| `ui/selo-exclusiva` | duas setas opostas (⇄) |
+| `ui/selo-andamento` | ampulheta |
+| `ui/ministro-sugere` | balão de fala com uma seta |
+
+## 4. Setores (leis de dono)
+
+| Arquivo | Desenho |
+| --- | --- |
+| `setor/petroleo` | barril com gota |
+| `setor/mineracao` | picareta sobre pedra |
+| `setor/energia` | torre de transmissão com raio |
+| `setor/siderurgia` | viga em I com faísca |
+| `setor/bancos` | prédio de banco com colunas e moeda |
+| `setor/telecom` | antena com ondas |
+| `setor/correios` | caixa de encomenda com etiqueta |
+| `setor/ferrovias-portos` | trem de frente com âncora pequena |
+| `setor/aviacao` | avião de perfil |
+| `setor/agua` | torneira com gota |
+| `setor/estatizar` | chave passando de uma mão para um prédio público |
+
+## 5. Leis, por área
+
+Arquivos em `leis/<área>/<nome>`. O nome do arquivo segue o nome da lei,
+sem acento, com hífen.
+
+### Economia
+
+| Lei | Desenho |
+| --- | --- |
+| Imposto sobre a renda das pessoas | moeda% + contracheque (folha com linhas) |
+| Isenção do imposto de renda | moeda% riscada + pessoa |
+| Quantas faixas tem o imposto de renda | três degraus de alturas diferentes |
+| Imposto sobre o lucro das empresas | moeda% + fábrica |
+| Imposto sobre dividendos | moeda% + pizza com uma fatia saindo |
+| Contribuição sobre os salários | moeda% + carteira de trabalho |
+| Imposto sobre o consumo | moeda% + carrinho de compras |
+| Imposto sobre o que faz mal | moeda% + garrafa e cigarro |
+| Imposto sobre imóveis e terras | moeda% + casa |
+| Imposto sobre veículos | moeda% + carro |
+| Imposto sobre grandes fortunas | moeda% + pilha alta de moedas |
+| Imposto sobre heranças | moeda% + envelope com fita |
+| Imposto sobre transações bancárias | moeda% + duas setas trocando entre cartões |
+| Imposto do dinheiro guardado no exterior | moeda% + globo |
+| Imposto único para pequenas empresas | moeda% + loja pequena com toldo |
+| Isenções fiscais | etiqueta de preço com "−" |
+| Regra das contas | balança de pratos com moedas |
+| Meta de resultado das contas | alvo com moeda no centro |
+| Conselho fiscal independente | lupa sobre uma planilha |
+| Verbas carimbadas | moeda com carimbo |
+| Fundo soberano | cofre com folha brotando |
+| Dívida pública: pagar ou não | corrente com um elo aberto |
+| Quem manda no banco central | livro + prédio de banco |
+| Missão do banco central | prédio de banco + alvo |
+| Juros básicos | seta curva para cima com % |
+| Meta de inflação | termômetro com marca no meio |
+| Imprimir dinheiro para pagar contas | impressora soltando cédulas |
+| Correção automática pela inflação | etiqueta de preço com seta circular |
+| Moeda e câmbio | duas moedas com setas trocando |
+| Controle de capitais | moeda atrás de uma cerca |
+| Regras para os bancos | prédio de banco com prancheta |
+| Teto para os juros dos bancos | cartão com uma barra horizontal em cima |
+
+### Empresas, indústria e comércio
+
+| Lei | Desenho |
+| --- | --- |
+| Leis de dono, uma por setor | ícones da seção 4 |
+| Como estatizar | prédio público com chave e moeda |
+| Ritmo das privatizações | martelo de leilão |
+| Preços das estatais | bomba de combustível com etiqueta |
+| Política industrial | fábrica com estrela |
+| Verba de incentivo à indústria | saco de dinheiro + engrenagem |
+| Banco de desenvolvimento | prédio de banco com guindaste |
+| Conteúdo nacional obrigatório | peça de engrenagem com alfinete de mapa |
+| Zonas econômicas especiais | cerca formando um quadrado com fábrica dentro |
+| Incentivo à exportação | navio de carga com seta saindo |
+| Tarifas de importação | moeda% + contêiner |
+| Defesa contra concorrência desleal | escudo com etiqueta de preço |
+| Acordos de livre comércio | aperto de mãos sobre contêiner |
+| Investimento estrangeiro | globo com seta entrando numa fábrica |
+| Controle de preços | etiqueta de preço com cadeado |
+| Defesa da concorrência | três prédios de tamanhos parecidos |
+| Abrir uma empresa | porta de loja abrindo |
+| Cooperativas e empresas dos trabalhadores | três pessoas segurando uma engrenagem |
+| Planejamento da economia | prancheta com gráfico e lápis |
+
+### Trabalho
+
+| Lei | Desenho |
+| --- | --- |
+| Salário mínimo | contracheque com seta para baixo apontando um piso |
+| Como o salário mínimo sobe | contracheque com seta para cima |
+| Jornada máxima | relógio com marca de limite |
+| Demissão | porta com seta saindo |
+| Poupança obrigatória do trabalhador | cofrinho com capacete |
+| Seguro-desemprego | guarda-chuva sobre pessoa |
+| Como se negocia o salário | mesa com duas cadeiras |
+| Dinheiro dos sindicatos | punho fechado com moeda |
+| Direito de greve | placa de protesto |
+| Terceirização | crachá com seta para outra empresa |
+| Trabalho por aplicativo | celular com mochila de entrega |
+| Trabalho em troca de benefício | pá com moeda |
+| Trabalho de jovens e aprendizes | capacete pequeno com livro |
+| Fiscalização do trabalho | prancheta com capacete |
+| Quem paga o processo trabalhista | martelo de juiz com moeda |
+| Agências de emprego e cursos | quadro de vagas com alfinete |
+| Crise sem demissão | relógio partido ao meio com pessoa |
+
+### Previdência, assistência, família e moradia
+
+| Lei | Desenho |
+| --- | --- |
+| Como a aposentadoria é paga | livro + cofrinho |
+| Idade mínima para se aposentar | bengala com marcador de régua |
+| Valor da aposentadoria | contracheque com bengala |
+| Reajuste das aposentadorias | bengala com seta para cima |
+| Aposentadoria do trabalhador rural | chapéu de palha com bengala |
+| Pensão para viúvos e órfãos | duas mãos segurando uma casa pequena |
+| Aposentadoria dos servidores | crachá com bengala |
+| Renda para famílias pobres | cartão com coração |
+| Condições para receber a renda | cartão com marca de visto |
+| Renda básica para todos | várias mãos recebendo moedas iguais |
+| Renda para idosos e pessoas com deficiência pobres | cadeira de rodas e bengala lado a lado |
+| Comida garantida | prato com talheres |
+| Cuidado de idosos dependentes | mão segurando outra mão |
+| Licença quando o bebê nasce | carrinho de bebê com relógio |
+| Vagas de creche | blocos de montar |
+| Política de filhos | família de três com sinais de + e − |
+| Moradia como direito na Constituição | livro + casa |
+| Verba para casas populares | saco de dinheiro + casa |
+| Como o Estado entrega casa | chave de casa |
+| Controle de aluguel | casa com cadeado na etiqueta |
+
+### Saúde
+
+| Lei | Desenho |
+| --- | --- |
+| Modelo do sistema de saúde | livro + cruz |
+| Piso de gasto em saúde | cruz sobre uma barra (piso) |
+| Verba da saúde | saco de dinheiro + cruz |
+| Postos de bairro ou hospitais | posto pequeno ao lado de hospital grande |
+| Quem administra os hospitais públicos | hospital com crachá |
+| Fila única de cirurgias e exames | fila de três pessoas com número |
+| Mutirão de cirurgias | bisturi com relógio rápido |
+| Médicos no interior | estetoscópio com casa de campo |
+| Formação de médicos | capelo com estetoscópio |
+| Remédios de graça | caixa de remédio com coração |
+| Patentes de remédios | cápsula com cadeado |
+| Planos de saúde | cartão com cruz |
+| Vacinação obrigatória | seringa com marca de visto |
+| Vigilância de epidemias e campanhas | lupa sobre vírus |
+| Saúde mental e dependência química | cabeça de perfil com folha |
+| Cigarro e bebida | cigarro e garrafa |
+| Esporte e atividade física | tênis de corrida |
+
+### Educação, ciência e cultura
+
+| Lei | Desenho |
+| --- | --- |
+| Escola obrigatória | mochila |
+| Piso de gasto em educação | livro sobre uma barra (piso) |
+| Verba da educação | saco de dinheiro + livro |
+| Salário dos professores | quadro-negro com moeda |
+| Quem administra a escola pública | escola com crachá |
+| Vale para escola particular | bilhete com escola |
+| Escola em casa e escola particular | casa com livro |
+| Escola em tempo integral | escola com sol e lua |
+| Alfabetização na idade certa | letras A B C |
+| Bolsa para terminar o ensino médio | capelo com moeda |
+| Prova e dinheiro por resultado | folha de prova com nota |
+| Ensino técnico | chave inglesa com livro |
+| Moral e sexo na escola | livro com coração |
+| Religião na escola | livro com vela |
+| Quem paga a universidade | livro + capelo |
+| Vagas nas universidades públicas | capelo com cadeira |
+| Crédito estudantil | capelo com cartão |
+| Verba da ciência | saco de dinheiro + frasco de laboratório |
+| Pesquisa nas empresas | frasco com engrenagem |
+| Programa espacial e satélites | foguete |
+| Dinheiro para a cultura | máscaras de teatro |
+
+### Infraestrutura, energia e cidades
+
+| Lei | Desenho |
+| --- | --- |
+| Verba para estradas | saco de dinheiro + estrada em perspectiva |
+| Verba para ferrovias | saco de dinheiro + trilho |
+| Verba para portos e hidrovias | saco de dinheiro + âncora |
+| Como o governo faz obras | guindaste |
+| Licença para obras e fábricas | carimbo sobre uma planta |
+| Verba para novas usinas | saco de dinheiro + raio |
+| De onde vem a energia nova | painel solar, gota e chama juntos |
+| Energia nuclear | livro + átomo |
+| Usinas a carvão | chaminé com fumaça |
+| Tarifa de energia para a indústria | tomada com fábrica |
+| Água e esgoto | cano com gota |
+| Transporte público | ônibus de frente |
+| Internet em todo o país | sinal de wi-fi sobre casa de campo |
+| Fundo para regiões pobres | mapa com alfinete e moeda |
+| Prédios e bairros | prédios de alturas diferentes |
+
+### Meio ambiente e campo
+
+| Lei | Desenho |
+| --- | --- |
+| Floresta nas propriedades rurais | cerca com árvore dentro |
+| Fiscalização ambiental | lupa sobre árvore |
+| Preço do carbono | moeda% + nuvem de fumaça |
+| Metas do clima | termômetro com globo |
+| Agrotóxicos | pulverizador sobre planta |
+| Reforma agrária | livro + enxada |
+| Terras indígenas | cocar simples sobre colina (sem rosto) |
+| Garimpo e mineração em áreas protegidas | bateia com árvore |
+| Crédito para o campo | saco de dinheiro + trator |
+| Pesca | peixe com anzol |
+
+### Segurança, justiça, defesa e relações exteriores
+
+| Lei | Desenho |
+| --- | --- |
+| Polícias dos estados | escudo com mapa |
+| Polícia de rua militar ou civil | quepe |
+| Ciclo policial | distintivo com seta circular |
+| Coordenação nacional das polícias | três distintivos ligados por linhas |
+| Verba da segurança pública | saco de dinheiro + distintivo |
+| Polícia Federal | distintivo com estrela |
+| Como a polícia patrulha | viatura de frente |
+| Câmeras corporais | câmera pequena presa num colete |
+| Quando o policial pode atirar | coldre com ponto de interrogação |
+| Garantias fundamentais | escudo com balança |
+| Pena de morte | balança com um prato vazio (simbólico) |
+| Penas e progressão | grade com seta para fora |
+| Idade para responder como adulto | ampulheta com grade |
+| Alternativas à prisão | tornozeleira |
+| Delação premiada | balão de fala com cadeado aberto |
+| Facções e crime organizado | máscara com corrente |
+| Violência contra a mulher | escudo com símbolo feminino |
+| Lei de drogas | folha com balança |
+| Maconha legal | folha de sete pontas com etiqueta |
+| Armas de fogo | revólver de perfil, simples |
+| Vagas em presídios | saco de dinheiro + grade |
+| Quem administra os presídios | grade com crachá |
+| Câmeras e reconhecimento facial | câmera de rua com quadrado de foco |
+| Escuta de comunicações | telefone com fone de ouvido |
+| Agência de inteligência | olho dentro de uma pasta |
+| Gasto militar | saco de dinheiro + capacete militar |
+| Serviço militar | capacete militar com pessoa |
+| Papel das Forças Armadas | livro + estrela militar |
+| Comando civil das Forças Armadas | gravata sobre estrela militar |
+| Benefícios dos militares | medalha |
+| Indústria de defesa | fábrica com escudo |
+| Exportação de armas | caixa de munição com seta saindo |
+| Programa nuclear militar | livro + átomo com escudo |
+| Defesa cibernética | escudo com cadeado digital |
+| Fronteiras | cerca com marco de fronteira |
+| Alinhamento do país no mundo | bússola sobre globo |
+| Aliança militar | escudos entrelaçados |
+| Integração com os vizinhos | duas peças de quebra-cabeça |
+| Sanções contra outros países | globo com cadeado |
+| Tribunais e tratados internacionais | livro + globo |
+| Missões de paz | capacete com pomba |
+| Ajuda a outros países | mão estendida com globo |
+| Embaixadas | prédio com bandeira lisa (sem país) |
+
+### Direitos e costumes
+
+| Lei | Desenho |
+| --- | --- |
+| Vida desde a concepção na Constituição | livro + broto |
+| Aborto | silhueta feminina com balança (simbólico) |
+| Suicídio assistido e eutanásia | cama de hospital com uma vela |
+| Casamento | duas alianças |
+| Identidade de gênero | documento com silhueta e seta circular |
+| Prostituição | luz de rua (poste) com balança |
+| Cotas | cadeira reservada com etiqueta |
+| Programas contra o racismo | duas mãos de tons diferentes |
+| Salário igual para homens e mulheres | símbolo de igual entre duas silhuetas |
+| Discriminação e crimes de ódio | balão de fala riscado |
+| Estado laico | livro + templo pequeno separado por uma linha |
+| Igrejas: imposto e dinheiro público | templo com moeda |
+| Apostas e jogos de azar | dado |
+| Imposto sobre apostas | moeda% + dado |
+| Proteção de dados pessoais | impressão digital com cadeado |
+| Crimes da ditadura | livro com lupa |
+| Imigração | mala com seta entrando |
+| Refúgio e asilo | barraca com coração |
+| Acolhida de imigrantes | mala com casa |
+| Sair do país | passaporte com seta saindo |
+
+### Governo e instituições
+
+| Lei | Desenho |
+| --- | --- |
+| Sistema de governo | livro + cadeira de presidente |
+| Reeleição | urna com seta circular |
+| Poderes de emergência | sirene |
+| Federação | livro + mapa dividido |
+| Governadores | prédio de governo pequeno com estrela |
+| Repasse para estados e cidades | moeda com setas se dividindo |
+| Tamanho do governo | prédio com setas para dentro |
+| Partidos | três bandeirinhas lisas |
+| Cláusula de desempenho | barra com marca de corte |
+| Voto obrigatório | urna com marca de visto |
+| Consultas populares | mão levantada |
+| Financiamento de campanhas | megafone com moeda |
+| Fundo eleitoral | saco de dinheiro + urna |
+| Liberdade de imprensa | livro + jornal |
+| Concessões de rádio e TV | antena com televisor |
+| Redes sociais | balões de conversa ligados |
+| Propaganda do governo | megafone |
+| ONGs e dinheiro estrangeiro | mão com globo e moeda |
+| Estabilidade dos servidores | crachá com cadeado |
+| Salário e quantidade de servidores | crachá com moeda |
+| Lei anticorrupção | mão com moeda riscada |
+| Transparência pública | vidro com documento atrás |
+| Órgãos de controle | lupa sobre prédio público |
+| Foro privilegiado | cadeira alta de juiz |
+| Independência do Judiciário | livro + martelo de juiz |
+| Verba do Judiciário | saco de dinheiro + martelo de juiz |
+| Tribunais superiores | prédio com cúpula e balança |
+
+## 6. Ordem de produção
+
+1. Peças de interface (seção 3): 17 ícones.
+2. Setores (seção 4): 11 ícones.
+3. Economia e empresas (as primeiras áreas implementadas): 51 ícones.
+4. As outras áreas, na ordem em que forem implementadas.
+
+Total: cerca de 270 ícones. Ícone que faltar usa `landmark` de reserva.
+
+## 7. Como entregar
+
+- Um SVG por arquivo, no caminho da tabela, dentro de `src/assets/svg/`.
+- Uma folha de prova por área (todos os ícones da área lado a lado, em
+  20 px e em 48 px, sobre as cinco cores de tipo) para conferir a família
+  antes de seguir.
+- Registrar a origem e a licença no README dos SVGs.
