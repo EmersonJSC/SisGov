@@ -188,12 +188,10 @@ describe("leis por área", () => {
   const leis = (area: string, n: number) =>
     Array.from({ length: n }, (_, i) => ({ id: `${area}-${i}`, area }));
 
-  it("avisa quando a área passa de 12 ou fica abaixo de 8", () => {
-    expect(avisosPorArea(leis("saude", 13), ["saude"])).toEqual([
-      "saude: 13 leis (o molde pede 8 a 12)",
-    ]);
+  it("avisa só quando a área fica abaixo de 8 (sem teto, autor 22/out)", () => {
+    expect(avisosPorArea(leis("saude", 16), ["saude"])).toEqual([]);
     expect(avisosPorArea(leis("saude", 7), ["saude"])).toEqual([
-      "saude: 7 leis (o molde pede 8 a 12)",
+      "saude: 7 leis (o molde pede pelo menos 8)",
     ]);
     expect(avisosPorArea(leis("saude", 10), ["saude"])).toEqual([]);
   });

@@ -17,7 +17,8 @@ export const FAMILIAS: readonly Familia[] = [
 
 const MAXIMO_DE_EFEITOS = 8;
 const MAXIMO_DE_OPCOES = 3;
-const LEIS_POR_AREA = [8, 12] as const;
+/** Mínimo de leis por área; sem teto (decisão do autor, 22/out). */
+const MINIMO_POR_AREA = 8;
 
 /** Regras da v3 que a v4 troca pelas suas (campo exato do diagnóstico). */
 const TROCADAS_NA_V4 = new Set([
@@ -148,16 +149,15 @@ export function verificarMolde(
   return erros;
 }
 
-/** Áreas fora de 8 a 12 leis, contando o catálogo inteiro. Só aviso. */
+/** Áreas com menos de 8 leis, contando o catálogo inteiro. Só aviso. */
 export function avisosPorArea(
   leis: readonly { id: string; area?: string }[],
   areas: readonly string[],
 ): string[] {
-  const [minimo, maximo] = LEIS_POR_AREA;
   return areas.flatMap((area) => {
     const n = leis.filter((l) => l.area === area).length;
-    return n < minimo || n > maximo
-      ? [`${area}: ${n} leis (o molde pede ${minimo} a ${maximo})`]
+    return n < MINIMO_POR_AREA
+      ? [`${area}: ${n} leis (o molde pede pelo menos ${MINIMO_POR_AREA})`]
       : [];
   });
 }

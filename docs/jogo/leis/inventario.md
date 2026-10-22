@@ -7,19 +7,9 @@
 
 Total: 242 leis.
 
-## Áreas fora de 8 a 12 leis (aviso)
+## Áreas com menos de 8 leis (aviso)
 
-- contas-publicas: 21 leis (o molde pede 8 a 12)
-- economia-e-empresas: 26 leis (o molde pede 8 a 12)
-- trabalho: 18 leis (o molde pede 8 a 12)
-- protecao-social: 18 leis (o molde pede 8 a 12)
-- saude: 20 leis (o molde pede 8 a 12)
-- educacao-e-cultura: 23 leis (o molde pede 8 a 12)
-- infraestrutura-e-energia: 14 leis (o molde pede 8 a 12)
-- ambiente-e-campo: 6 leis (o molde pede 8 a 12)
-- seguranca-e-defesa: 46 leis (o molde pede 8 a 12)
-- direitos-e-costumes: 22 leis (o molde pede 8 a 12)
-- governo-e-instituicoes: 26 leis (o molde pede 8 a 12)
+- ambiente-e-campo: 6 leis (o molde pede pelo menos 8)
 
 ## Contas públicas (21)
 

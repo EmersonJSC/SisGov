@@ -104,14 +104,12 @@ assunto; o ministério vira só o rótulo de quem cuida dela naquele país.
 | Direitos e costumes | aborto, família, religião, imigração, povos indígenas, igualdade |
 | Governo e instituições | Congresso, eleições, partidos, corrupção, imprensa, federalismo |
 
-- **8 a 12 leis por esfera**, contando o catálogo inteiro da área (as em
-  vigor e as do catálogo). Passou disso, é sinal de lei repetida ou de
-  assunto de outra área.
-- **Contas públicas pode passar do limite.** Hoje o Ministério da Fazenda e o
-  do Planejamento têm 26 leis; tirando juros, câmbio e bancos (que vão para
-  Economia e empresas) e as repetidas, sobram umas 16 a 18, e a mecânica 4
-  ainda pede leis para a folha dos servidores e para os demais gastos.
-  _Decisão do autor (seção 6)._
+- **Pelo menos 8 leis por esfera**, contando o catálogo inteiro da área.
+  **Sem teto** (decisão do autor, 22/out): o que importa é o Brasil não ter
+  mais leis do que o mapa dele mostra bem. Lei repetida ou de outro assunto
+  sai pelo inventário, não por um número.
+- **Contas públicas fica com 16** (3 constitucionais, 9 impostos, 3 regras e
+  a contribuição sobre salários, nova), aprovado pelo autor em 22/out.
 - Cada esfera tem as **duas faixas**: constitucionais na de dentro, voltada
   para o centro; impostos, verbas, programas e regras na de fora.
 - **Pétreas** ficam no centro, na Constituição Federal, e não são de nenhuma
@@ -184,7 +182,7 @@ ordem que o autor escolher.
 
 - Tons finais das seis cores (pela amostra).
 - Quais leis de hoje entram, por área (pelo inventário do passo 2).
-- Contas públicas acima de 12 leis: o verificador só avisa nessa área, ou o
-  inventário fixa um limite próprio para ela.
+- O que quer dizer, em número, "o Brasil não ter mais leis do que o mapa
+  mostra bem" (a medir na amostra do mapa, parte 2).
 - Se alguma área ficar com menos de 8 leis boas: juntar com a vizinha ou
   escrever leis novas.

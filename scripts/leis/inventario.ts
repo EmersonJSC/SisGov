@@ -55,7 +55,7 @@ const partes: string[] = [
   "",
   `Total: ${linhas.length} leis.`,
   "",
-  "## Áreas fora de 8 a 12 leis (aviso)",
+  "## Áreas com menos de 8 leis (aviso)",
   "",
   ...(avisos.length ? avisos.map((a) => `- ${a}`) : ["- nenhuma"]),
   "",
