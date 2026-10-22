@@ -1,22 +1,12 @@
 {
   "id": "terceirizacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Terceirização",
-  "descricao": "Permitir que uma fábrica contrate outra firma para produzir ou prestar serviços? Terceirização ampla reduz custo e acelera contratação, mas pode baixar salários e transferir riscos ao trabalhador.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se uma empresa pode contratar outra para fazer parte do seu trabalho.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_terceirizacao",
     "unidade": "nivel_escopo",
@@ -39,7 +29,8 @@
         ],
         "apoiam": ["Empresários", "Indústria"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)"
+        "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)",
+        "propoe": "Pode terceirizar tudo, sem responder pelas dívidas da terceirizada."
       },
       {
         "id": "ampla-com-a-contratante-respondendo-pelas-dividas",
@@ -47,7 +38,8 @@
         "valor": 33,
         "apoiam": ["Comércio e serviços"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓ pouco; Litígio ↑ pouco"
+        "efeitos": "Custo de contratar ↓ pouco; Litígio ↑ pouco",
+        "propoe": "Pode terceirizar tudo, mas responde pelas dívidas trabalhistas."
       },
       {
         "id": "limitada-com-o-mesmo-salario-do-contratado-direto",
@@ -55,7 +47,8 @@
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑ pouco; renda dos terceirizados ↑ (aprox.)"
+        "efeitos": "Custo de contratar ↑ pouco; renda dos terceirizados ↑ (aprox.)",
+        "propoe": "O terceirizado ganha o mesmo que o contratado direto."
       },
       {
         "id": "restrita-a-atividade-de-apoio",
@@ -63,24 +56,125 @@
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Indústria"],
-        "efeitos": "Custo de contratar ↑; Litígio ↑ (fronteira entre atividade principal e de apoio)"
+        "efeitos": "Custo de contratar ↑; Litígio ↑ (fronteira entre atividade principal e de apoio)",
+        "propoe": "Só limpeza, manutenção e apoio podem ser terceirizados."
       }
     ]
   },
-  "consequencias": [
-    "terceirizacao--custo-trabalhista",
-    "terceirizacao--renda-familias",
-    "terceirizacao--desigualdade",
-    "terceirizacao--produtividade",
-    "terceirizacao--desemprego",
-    "terceirizacao--informalidade",
-    "terceirizacao--confianca-empresarial",
-    "terceirizacao--grupo-empresarios",
-    "terceirizacao--grupo-trabalhadores"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Legislação trabalhista. \"Protetiva\" trava a opção \"Livre\".",
     "leis": ["legislacao-trabalhista"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "terceirizacao--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "terceirizacao--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "terceirizacao--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

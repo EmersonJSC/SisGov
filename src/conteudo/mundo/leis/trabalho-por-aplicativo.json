@@ -1,22 +1,12 @@
 {
   "id": "trabalho-por-aplicativo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Trabalho por aplicativo",
-  "descricao": "Definir se entregadores e motoristas de aplicativo são autônomos sem proteção, uma categoria com piso e previdência, ou empregados. Proteção amplia renda e cobertura, mas pode elevar preço e reduzir vagas.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-complementar",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define se motoristas e entregadores de aplicativo são autônomos, uma categoria própria ou empregados.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_trabalho_por_aplicativo",
     "unidade": "nivel_escopo",
@@ -30,7 +20,8 @@
           "Entregadores e motoristas de aplicativo",
           "Centrais sindicais"
         ],
-        "efeitos": "Acesso à plataforma fica fácil, mas informalidade e falta de cobertura persistem."
+        "efeitos": "Acesso à plataforma fica fácil, mas informalidade e falta de cobertura persistem.",
+        "propoe": "Autônomos, sem piso nem contribuição obrigatória."
       },
       {
         "id": "categoria-propria-piso-por-hora-e-contribuicao-para-a-previd",
@@ -45,7 +36,8 @@
           "Plataformas digitais",
           "motoristas contrários à contribuição"
         ],
-        "efeitos": "Renda e cobertura sobem; preço ao consumidor e custo da plataforma também."
+        "efeitos": "Renda e cobertura sobem; preço ao consumidor e custo da plataforma também.",
+        "propoe": "Categoria própria, com piso por hora e previdência."
       },
       {
         "id": "presuncao-de-vinculo-de-emprego",
@@ -53,7 +45,8 @@
         "valor": 67,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Plataformas digitais", "Informais"],
-        "efeitos": "Informalidade ↓; vagas por aplicativo ↓ (aprox.); preço ↑ (aprox.); ameaça das plataformas de sair do país mais provável; Litígio ↑"
+        "efeitos": "Informalidade ↓; vagas por aplicativo ↓ (aprox.); preço ↑ (aprox.); ameaça das plataformas de sair do país mais provável; Litígio ↑",
+        "propoe": "São empregados quando o aplicativo controla horário e preço."
       },
       {
         "id": "emprego-obrigatorio",
@@ -71,31 +64,208 @@
         ],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
-        "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer."
+        "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer.",
+        "propoe": "Todo motorista e entregador tem carteira assinada."
       }
     ]
   },
-  "consequencias": [
-    "trabalho-por-aplicativo--renda-familias",
-    "trabalho-por-aplicativo--custo-trabalhista",
-    "trabalho-por-aplicativo--informalidade",
-    "trabalho-por-aplicativo--mobilidade-urbana",
-    "trabalho-por-aplicativo--desemprego",
-    "trabalho-por-aplicativo--concentracao-mercado",
-    "trabalho-por-aplicativo--saude-populacao",
-    "trabalho-por-aplicativo--arrecadacao",
-    "trabalho-por-aplicativo--grupo-classe-media",
-    "trabalho-por-aplicativo--grupo-empresarios",
-    "trabalho-por-aplicativo--grupo-jovens",
-    "trabalho-por-aplicativo--grupo-pobres",
-    "trabalho-por-aplicativo--grupo-progressistas",
-    "trabalho-por-aplicativo--grupo-trabalhadores",
-    "trabalho-por-aplicativo--grupo-informais",
-    "trabalho-por-aplicativo--cobertura-previdenciaria"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Legislação trabalhista (sem trava no estudo).",
     "leis": ["legislacao-trabalhista"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "trabalho-por-aplicativo--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--mobilidade-urbana",
+      "alvo": "mobilidade_urbana",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--concentracao-mercado",
+      "alvo": "concentracao_mercado",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.05],
+          [67, 0.15],
+          [100, 0.25]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--grupo-informais",
+      "alvo": "grupo_informais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-por-aplicativo--cobertura-previdenciaria",
+      "alvo": "cobertura_previdenciaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

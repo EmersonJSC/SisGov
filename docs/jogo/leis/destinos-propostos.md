@@ -13,3 +13,10 @@
 | Volume de incentivo à indústria (`volume-de-incentivo-a-industria`) | sai | Não faz nada no jogo (nenhum efeito); a Política industrial já cobre |
 | Moeda e câmbio (`regime-cambial`) | sai | Não faz nada no jogo; a Compra e venda de dólares já mexe no câmbio |
 | Correção automática pela inflação (`indexacao-de-contratos`) | sai | Não faz nada no jogo (nenhum efeito) |
+
+## Trabalho (16 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Negociação coletiva e sindicatos (`negociacao-coletiva-e-sindicatos`) | vira regra (lei comum) ou fica constitucional sem trava | É constitucional, mas não trava nenhuma outra lei; as filhas dizem "sem trava no estudo" |
+| Seguro-desemprego (`seguro-desemprego`) | vira programa (verde-água), na mecânica 4 | Paga pessoas, mas está como constitucional e sem custo declarado; o custo entra com o orçamento |

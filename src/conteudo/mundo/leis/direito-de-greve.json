@@ -1,22 +1,12 @@
 {
   "id": "direito-de-greve",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Direito de greve",
-  "descricao": "Permitir que empregados parem fábricas e serviços para negociar: proibir greve, exigir votação e serviço mínimo, ou liberar paralisações amplas. Poder de barganha disputa com produção e confiança empresarial.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "sindicatos-e-greve",
-    "nome": "Sindicatos e greve",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se e como os trabalhadores podem parar o trabalho para negociar.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_direito_de_greve",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários favoráveis a continuidade de serviços"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "A produção para menos por greve legal; liberdade civil e apoio dos trabalhadores caem."
+        "efeitos": "A produção para menos por greve legal; liberdade civil e apoio dos trabalhadores caem.",
+        "propoe": "Greve é proibida."
       },
       {
         "id": "votacao-secreta-e-servicos-minimos",
@@ -35,7 +26,8 @@
         "valor": 50,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Trabalhadores ainda podem parar, com menor interrupção de serviços essenciais."
+        "efeitos": "Trabalhadores ainda podem parar, com menor interrupção de serviços essenciais.",
+        "propoe": "Greve só com votação secreta e serviço mínimo garantido."
       },
       {
         "id": "ampla",
@@ -43,21 +35,108 @@
         "valor": 100,
         "apoiam": ["Trabalhadores com carteira", "Servidores"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Amplia poder de barganha e liberdade civil, mas traz risco de greve geral e menor produção."
+        "efeitos": "Amplia poder de barganha e liberdade civil, mas traz risco de greve geral e menor produção.",
+        "propoe": "Greve ampla, com aviso prévio."
       }
     ]
   },
-  "consequencias": [
-    "direito-de-greve--greve-geral",
-    "direito-de-greve--grupo-trabalhadores",
-    "direito-de-greve--grupo-servidores",
-    "direito-de-greve--liberdade-civil",
-    "direito-de-greve--confianca-empresarial",
-    "direito-de-greve--produtividade"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Negociação coletiva e sindicatos (sem trava no estudo).",
     "leis": ["negociacao-coletiva-e-sindicatos"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "sindicatos-e-greve",
+    "nome": "Sindicatos e greve",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "direito-de-greve--greve-geral",
+      "alvo": "greve_geral",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -8],
+          [50, -3],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "direito-de-greve--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -10],
+          [50, -3],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -6],
+          [50, -2],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -6],
+          [50, -1],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [50, 1],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0.5],
+          [100, 0]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

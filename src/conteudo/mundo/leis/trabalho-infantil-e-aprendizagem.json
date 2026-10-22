@@ -1,22 +1,12 @@
 {
   "id": "trabalho-infantil-e-aprendizagem",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Trabalho infantil e aprendizagem",
-  "descricao": "Fixar a idade mínima para trabalhar e criar vagas de aprendiz em empresas. Renda familiar cedo disputa com escola; aprendizagem organizada exige custo e gera qualificação depois.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define a idade mínima para trabalhar e as vagas de aprendiz nas empresas.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_trabalho_infantil_e_aprendizagem",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empregadores informais de baixo custo"],
         "rejeitam": ["Jovens", "Progressistas", "Sindicatos"],
-        "efeitos": "Renda familiar imediata pode subir; escola, qualificação futura e reputação caem."
+        "efeitos": "Renda familiar imediata pode subir; escola, qualificação futura e reputação caem.",
+        "propoe": "Não há idade mínima para trabalhar."
       },
       {
         "id": "permissiva-trabalho-a-partir-de-12-anos",
@@ -35,7 +26,8 @@
         "valor": 25,
         "apoiam": ["Agricultura familiar"],
         "rejeitam": ["Centrais sindicais", "Estudantes"],
-        "efeitos": "Trabalho infantil ↑; evasão escolar ↑ (aprox.)"
+        "efeitos": "Trabalho infantil ↑; evasão escolar ↑ (aprox.)",
+        "propoe": "Trabalho a partir de 12 anos."
       },
       {
         "id": "14-anos-com-excecoes",
@@ -43,7 +35,8 @@
         "valor": 50,
         "apoiam": ["Entidades do agronegócio"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Trabalho infantil ↑ pouco"
+        "efeitos": "Trabalho infantil ↑ pouco",
+        "propoe": "Trabalho a partir de 14 anos, com exceções."
       },
       {
         "id": "16-anos-aprendiz-desde-14-e-cota-de-aprendizes",
@@ -51,7 +44,8 @@
         "valor": 75,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "Trabalho infantil ↓; Oportunidades para jovens ↑ pouco"
+        "efeitos": "Trabalho infantil ↓; Oportunidades para jovens ↑ pouco",
+        "propoe": "Trabalho aos 16; aprendiz desde os 14, com cota nas empresas."
       },
       {
         "id": "sistema-dual-escola-e-empresa-juntas",
@@ -71,29 +65,183 @@
         "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
         "apoiam": ["Indústria", "Empresários", "Jovens"],
         "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],
-        "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas."
+        "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas.",
+        "propoe": "Escola técnica e empresa formam o jovem juntas."
       }
     ]
   },
-  "consequencias": [
-    "trabalho-infantil-e-aprendizagem--trabalho-infantil",
-    "trabalho-infantil-e-aprendizagem--escolaridade",
-    "trabalho-infantil-e-aprendizagem--renda-familias",
-    "trabalho-infantil-e-aprendizagem--oportunidades-juvenis",
-    "trabalho-infantil-e-aprendizagem--qualificacao-trabalho",
-    "trabalho-infantil-e-aprendizagem--desemprego",
-    "trabalho-infantil-e-aprendizagem--custo-trabalhista",
-    "trabalho-infantil-e-aprendizagem--reputacao-internacional",
-    "trabalho-infantil-e-aprendizagem--grupo-agro",
-    "trabalho-infantil-e-aprendizagem--grupo-empresarios",
-    "trabalho-infantil-e-aprendizagem--grupo-jovens",
-    "trabalho-infantil-e-aprendizagem--grupo-pequenos-negocios",
-    "trabalho-infantil-e-aprendizagem--grupo-progressistas",
-    "trabalho-infantil-e-aprendizagem--evasao-escolar"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Legislação trabalhista (sem trava). \"Sistema dual\" exige, em Educação, Ensino técnico profissional no mínimo como opção ao ensino médio.",
     "leis": ["legislacao-trabalhista"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "trabalho-infantil-e-aprendizagem--trabalho-infantil",
+      "alvo": "trabalho_infantil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--escolaridade",
+      "alvo": "escolaridade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0012,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--oportunidades-juvenis",
+      "alvo": "oportunidades_juvenis",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--qualificacao-trabalho",
+      "alvo": "qualificacao_trabalho",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.05,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--evasao-escolar",
+      "alvo": "evasao_escolar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.028,
+        "termoConstante": 2.1
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

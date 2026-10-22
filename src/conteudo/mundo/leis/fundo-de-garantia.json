@@ -1,22 +1,13 @@
 {
   "id": "fundo-de-garantia",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fundo de garantia",
-  "descricao": "Escolher como o empregado forma reserva para a demissão: nenhuma conta, saldo portátil, fundo com multa ou indenização por tempo de casa. A reserva protege famílias e crédito habitacional, mas encarece contratações.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define como o trabalhador junta uma reserva para quando for demitido.",
+  "area": "trabalho",
+  "exemplo": "No Brasil: Fundo de Garantia do Tempo de Serviço, com multa de 40%.",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_fundo_de_garantia",
     "unidade": "nivel_escopo",
@@ -27,7 +18,8 @@
         "valor": 0,
         "apoiam": ["Empresários"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓; poupança doméstica ↓; crédito para habitação ↓"
+        "efeitos": "Custo de contratar ↓; poupança doméstica ↓; crédito para habitação ↓",
+        "propoe": "Não há reserva nem indenização na demissão."
       },
       {
         "id": "conta-portatil-sem-multa",
@@ -35,7 +27,8 @@
         "valor": 33,
         "apoiam": ["Pequenos negócios", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Custo de contratar ↓ pouco; Rotatividade ↓ (aprox.); poupança ↑"
+        "efeitos": "Custo de contratar ↓ pouco; Rotatividade ↓ (aprox.); poupança ↑",
+        "propoe": "O patrão deposita numa conta do trabalhador, sem multa ao demitir."
       },
       {
         "id": "fundo-com-multa-na-demissao",
@@ -55,7 +48,8 @@
         "custoTexto": "0 (fundo privado que financia moradia)",
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑"
+        "efeitos": "Custo de contratar ↑; Rotatividade ↑ (demissão combinada para sacar; aprox.); crédito para habitação ↑",
+        "propoe": "Depósito todo mês e multa na demissão sem justa causa."
       },
       {
         "id": "indenizacao-por-tempo-de-casa",
@@ -73,28 +67,170 @@
         ],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)"
+        "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)",
+        "propoe": "Em vez do fundo, indenização que cresce com o tempo de casa."
       }
     ]
   },
-  "consequencias": [
-    "fundo-de-garantia--custo-trabalhista",
-    "fundo-de-garantia--rotatividade-emprego",
-    "fundo-de-garantia--oportunidades-juvenis",
-    "fundo-de-garantia--informalidade",
-    "fundo-de-garantia--renda-familias",
-    "fundo-de-garantia--credito",
-    "fundo-de-garantia--deficit-habitacional",
-    "fundo-de-garantia--confianca-empresarial",
-    "fundo-de-garantia--grupo-empresarios",
-    "fundo-de-garantia--grupo-jovens",
-    "fundo-de-garantia--grupo-pequenos-negocios",
-    "fundo-de-garantia--grupo-trabalhadores",
-    "fundo-de-garantia--poupanca-domestica"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Legislação trabalhista. \"Sem regras\" e \"Mínima\" travam em nenhum ou conta portátil.",
     "leis": ["legislacao-trabalhista"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "fundo-de-garantia--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--rotatividade-emprego",
+      "alvo": "rotatividade_emprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--oportunidades-juvenis",
+      "alvo": "oportunidades_juvenis",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--credito",
+      "alvo": "credito",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--deficit-habitacional",
+      "alvo": "deficit_habitacional",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-de-garantia--poupanca-domestica",
+      "alvo": "poupanca_domestica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.04199,
+        "termoConstante": -2.81333
+      },
+      "atraso": 1,
+      "unidade": "percentual_pib_por_passo"
+    }
+  ]
 }

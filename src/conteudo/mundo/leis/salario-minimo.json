@@ -1,13 +1,12 @@
 {
   "id": "salario-minimo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Valor do salário mínimo",
-  "descricao": "Escolher o valor do piso nacional neste ano, em relação ao salário típico. Um piso mais alto melhora renda e reduz pobreza, mas pode elevar custo de contratação, informalidade e benefícios vinculados.",
-  "area": "Trabalho e emprego",
-  "ministerio": "Ministério do Trabalho",
-  "processoAutorizacao": "decreto",
+  "decide": "Define o valor do salário mínimo neste ano, comparado ao salário típico do país.",
+  "area": "trabalho",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_salario_minimo",
     "unidade": "nivel_escopo",
@@ -25,7 +24,8 @@
             "opcoes": ["nao-existe", "negociacao-sindical"],
             "motivo": "Com salário mínimo fixado pelo Estado, o valor não pode ser zero."
           }
-        ]
+        ],
+        "propoe": "Não há piso nacional."
       },
       {
         "id": "piso-baixo",
@@ -45,7 +45,8 @@
             "opcoes": ["sem-regra", "so-inflacao"],
             "motivo": "O ganho real acumulado ou a meta não deixam o valor cair tanto."
           }
-        ]
+        ],
+        "propoe": "Piso de cerca de um terço do salário típico."
       },
       {
         "id": "piso-moderado",
@@ -60,7 +61,8 @@
             "opcoes": ["comissao-tecnica", "lei-nacional"],
             "motivo": "Sem salário mínimo fixado pelo Estado, não há valor para escolher."
           }
-        ]
+        ],
+        "propoe": "Piso de cerca de dois terços do salário típico."
       },
       {
         "id": "piso-alto",
@@ -80,9 +82,14 @@
             "opcoes": ["sem-regra", "inflacao-mais-pib"],
             "motivo": "Só repor a inflação ou seguir a meta não leva o valor tão alto."
           }
-        ]
+        ],
+        "propoe": "Piso igual ao salário típico."
       }
     ]
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
   },
   "mesa": {
     "id": "salario-minimo",
@@ -95,24 +102,181 @@
       "motivo": "Os benefícios não podem ser menores que o salário mínimo: subir o mínimo sobe o gasto da previdência no mesmo turno."
     }
   ],
-  "consequencias": [
-    "salario-minimo--renda-familias",
-    "salario-minimo--pobreza",
-    "salario-minimo--desigualdade",
-    "salario-minimo--custo-trabalhista",
-    "salario-minimo--inflacao",
-    "salario-minimo--informalidade",
-    "salario-minimo--desemprego",
-    "salario-minimo--gasto-publico",
-    "salario-minimo--grupo-empresarios",
-    "salario-minimo--grupo-pequenos-negocios",
-    "salario-minimo--grupo-pobres",
-    "salario-minimo--grupo-trabalhadores",
-    "salario-minimo--gasto-previdencia",
-    "salario-minimo--deficit-previdenciario"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "efeitos": [
+    {
+      "id": "salario-minimo--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "salario-minimo--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "salario-minimo--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "salario-minimo--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "salario-minimo--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "salario-minimo--gasto-previdencia",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1.9],
+          [33, -0.95],
+          [67, 0],
+          [100, 0.95]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "nivel_reajuste_de_beneficios",
+        "referencia": 75
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "salario-minimo--deficit-previdenciario",
+      "alvo": "deficit_previdenciario",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1.9],
+          [33, -0.95],
+          [67, 0],
+          [100, 0.95]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "nivel_reajuste_de_beneficios",
+        "referencia": 75
+      },
+      "unidade": "percentual_pib"
+    }
+  ]
 }

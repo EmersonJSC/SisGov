@@ -1,22 +1,12 @@
 {
   "id": "custo-de-processar-na-justica-do-trabalho",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Custo de processar na Justiça do Trabalho",
-  "descricao": "Decidir quem assume o custo de uma ação trabalhista: ninguém, só quem tem renda maior ou toda parte derrotada. Cobrar pode reduzir ações fracas, mas também impedir reclamações legítimas de trabalhadores pobres.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quem paga os custos de uma ação na Justiça do Trabalho.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_custo_de_processar_na_justica_do_trabalho",
     "unidade": "nivel_escopo",
@@ -27,15 +17,17 @@
         "valor": 0,
         "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Facilita cobrar direitos não pagos; aumenta ações e custos de defesa das empresas."
+        "efeitos": "Facilita cobrar direitos não pagos; aumenta ações e custos de defesa das empresas.",
+        "propoe": "O trabalhador não paga nada, mesmo se perder."
       },
       {
         "id": "gratuita-com-teto-de-renda",
         "rotulo": "Dar gratuidade só a quem provar baixa renda",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Classe média", "Pequenos negócios"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Trabalhadores pobres mantêm acesso; parte das ações de renda maior cai."
+        "efeitos": "Trabalhadores pobres mantêm acesso; parte das ações de renda maior cai.",
+        "propoe": "Só quem prova renda baixa fica isento."
       },
       {
         "id": "quem-perde-paga",
@@ -43,19 +35,72 @@
         "valor": 100,
         "apoiam": ["Empresários", "Comércio e serviços", "Indústria"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Ações e custos de defesa caem, mas trabalhadores com receio de perder podem abrir mão de direitos."
+        "efeitos": "Ações e custos de defesa caem, mas trabalhadores com receio de perder podem abrir mão de direitos.",
+        "propoe": "Quem perde a ação paga advogado e perícia."
       }
     ]
   },
-  "consequencias": [
-    "custo-de-processar-na-justica-do-trabalho--custo-trabalhista",
-    "custo-de-processar-na-justica-do-trabalho--produtividade",
-    "custo-de-processar-na-justica-do-trabalho--informalidade",
-    "custo-de-processar-na-justica-do-trabalho--litigio-trabalhista"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Legislação trabalhista (sem trava). Depende também da Independência do Judiciário (Instituições): com Judiciário pleno, há chance, por evento, de o tribunal derrubar \"Quem perde paga\".",
     "leis": ["legislacao-trabalhista", "independencia-do-judiciario"]
   },
-  "ministerio": "Ministério do Trabalho e Emprego"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "custo-de-processar-na-justica-do-trabalho--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "custo-de-processar-na-justica-do-trabalho--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "custo-de-processar-na-justica-do-trabalho--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "custo-de-processar-na-justica-do-trabalho--litigio-trabalhista",
+      "alvo": "litigio_trabalhista",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -2],
+          [100, -4]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

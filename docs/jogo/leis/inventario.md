@@ -80,9 +80,9 @@ Total: 239 leis.
 | Fundo de garantia | `fundo-de-garantia` | regra | — |  | |
 | Intermediação e qualificação | `intermediacao-e-qualificacao` | regra | — |  | |
 | Jornada de trabalho | `jornada-de-trabalho` | regra | — |  | |
-| Licença parental | `licenca-parental` | regra | sem nível |  | |
+| Licença parental | `licenca-parental` | regra | — |  | |
 | Redução de jornada subsidiada | `reducao-de-jornada-subsidiada` | regra | — |  | |
-| Valor do salário mínimo | `salario-minimo` | regra | sem nível | `formula-do-salario-minimo` | |
+| Valor do salário mínimo | `salario-minimo` | regra | — | `formula-do-salario-minimo` | |
 | Terceirização | `terceirizacao` | regra | — |  | |
 | Trabalho infantil e aprendizagem | `trabalho-infantil-e-aprendizagem` | regra | — |  | |
 | Trabalho por aplicativo | `trabalho-por-aplicativo` | regra | — |  | |

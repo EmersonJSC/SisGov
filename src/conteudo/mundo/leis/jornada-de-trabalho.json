@@ -1,22 +1,12 @@
 {
   "id": "jornada-de-trabalho",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Jornada de trabalho",
-  "descricao": "Fixar o teto semanal de horas nas fábricas e serviços. Jornadas curtas podem melhorar saúde e repartir trabalho, mas elevam custo por hora; o código constitucional limita as opções extremas.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define o máximo de horas de trabalho por semana.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_jornada_de_trabalho",
     "unidade": "nivel_escopo",
@@ -37,7 +27,8 @@
         ],
         "apoiam": ["nenhum grupo grande"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓; Renda por hora ↓; Participação no trabalho de quem cuida ↓"
+        "efeitos": "Custo de contratar ↓; Renda por hora ↓; Participação no trabalho de quem cuida ↓",
+        "propoe": "Não há limite de horas."
       },
       {
         "id": "48-horas",
@@ -45,7 +36,8 @@
         "valor": 25,
         "apoiam": ["Indústria", "Entidades do agronegócio"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓ pouco; Renda do trabalho por hora ↓ pouco"
+        "efeitos": "Custo de contratar ↓ pouco; Renda do trabalho por hora ↓ pouco",
+        "propoe": "Até 48 horas por semana."
       },
       {
         "id": "44-horas",
@@ -53,7 +45,8 @@
         "valor": 50,
         "apoiam": ["Empresários", "Comércio e serviços"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Renda do trabalho por hora ↓ pouco contra 40h e ↑ contra 48h; Rotatividade ↑ (quem cumpre 44h tem menor salário e mais rotatividade, IPEA); Desemprego estável (a queda de 48 para 44h em 1988 não o elevou em 12 meses, PUC-Rio TD 458); Custo de contratar em nível intermediário"
+        "efeitos": "Renda do trabalho por hora ↓ pouco contra 40h e ↑ contra 48h; Rotatividade ↑ (quem cumpre 44h tem menor salário e mais rotatividade, IPEA); Desemprego estável (a queda de 48 para 44h em 1988 não o elevou em 12 meses, PUC-Rio TD 458); Custo de contratar em nível intermediário",
+        "propoe": "Até 44 horas por semana."
       },
       {
         "id": "40-horas",
@@ -66,7 +59,8 @@
           "Centrais sindicais"
         ],
         "rejeitam": ["Indústria", "Comércio e serviços", "Pequenos negócios"],
-        "efeitos": "Custo de contratar ↑ 4,5% a 8%; Renda do trabalho por hora ↑; PIB entre 0 e −0,7% (sorteado na faixa); preços ↑ 1% a 6%; Desemprego entre 0 e ↑ (faixa ampla); Participação de quem cuida ↑"
+        "efeitos": "Custo de contratar ↑ 4,5% a 8%; Renda do trabalho por hora ↑; PIB entre 0 e −0,7% (sorteado na faixa); preços ↑ 1% a 6%; Desemprego entre 0 e ↑ (faixa ampla); Participação de quem cuida ↑",
+        "propoe": "Até 40 horas por semana."
       },
       {
         "id": "35-horas",
@@ -84,27 +78,158 @@
         ],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários", "Indústria", "Comércio e serviços"],
-        "efeitos": "Saúde e tempo livre sobem; custo por hora aumenta e produção pode cair antes de ganhos de produtividade."
+        "efeitos": "Saúde e tempo livre sobem; custo por hora aumenta e produção pode cair antes de ganhos de produtividade.",
+        "propoe": "Até 35 horas por semana."
       }
     ]
   },
-  "consequencias": [
-    "jornada-de-trabalho--saude-populacao",
-    "jornada-de-trabalho--custo-trabalhista",
-    "jornada-de-trabalho--produtividade",
-    "jornada-de-trabalho--pib",
-    "jornada-de-trabalho--informalidade",
-    "jornada-de-trabalho--participacao-trabalho-cuidadoras",
-    "jornada-de-trabalho--renda-familias",
-    "jornada-de-trabalho--confianca-empresarial",
-    "jornada-de-trabalho--grupo-classe-media",
-    "jornada-de-trabalho--grupo-empresarios",
-    "jornada-de-trabalho--grupo-pequenos-negocios",
-    "jornada-de-trabalho--grupo-trabalhadores"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Legislação trabalhista. \"Sem regras\" e \"Mínima\" travam a jornada em sem limite ou 48h. \"35 horas\" exige Legislação trabalhista em código detalhado ou protetiva.",
     "leis": ["legislacao-trabalhista"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "jornada-de-trabalho--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--pib",
+      "alvo": "pib",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.25,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "jornada-de-trabalho--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

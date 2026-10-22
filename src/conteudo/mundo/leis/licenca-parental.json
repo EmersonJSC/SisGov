@@ -1,18 +1,12 @@
 {
   "id": "licenca-parental",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Licença parental",
-  "descricao": "Decidir quem recebe tempo remunerado após o nascimento de uma criança. Licença protege famílias e saúde, mas exige financiamento e pode alterar a contratação de mulheres.",
-  "area": "Trabalho e emprego",
-  "mesa": {
-    "id": "familia-e-cuidados",
-    "nome": "Família e cuidados",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério do Trabalho",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define quem recebe tempo pago para cuidar do filho depois do nascimento.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_licenca_parental",
     "unidade": "nivel_escopo",
@@ -23,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários favoráveis a custo menor"],
         "rejeitam": ["Famílias com filhos", "Progressistas"],
-        "efeitos": "Custo cai, mas famílias perdem renda e cuidado no início da vida."
+        "efeitos": "Custo cai, mas famílias perdem renda e cuidado no início da vida.",
+        "propoe": "Não há licença paga."
       },
       {
         "id": "curta-maternidade",
@@ -31,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Famílias com filhos", "Conservadores"],
         "rejeitam": ["Progressistas favoráveis à divisão do cuidado"],
-        "efeitos": "Protege o pós-parto com custo contido; mantém o cuidado concentrado na mãe."
+        "efeitos": "Protege o pós-parto com custo contido; mantém o cuidado concentrado na mãe.",
+        "propoe": "Licença curta, só para a mãe."
       },
       {
         "id": "longa-materna",
@@ -42,7 +38,8 @@
           "Empresários",
           "Progressistas favoráveis à divisão do cuidado"
         ],
-        "efeitos": "Mais tempo de cuidado melhora saúde, mas pode afastar mulheres do trabalho e elevar custo."
+        "efeitos": "Mais tempo de cuidado melhora saúde, mas pode afastar mulheres do trabalho e elevar custo.",
+        "propoe": "Licença longa, só para a mãe."
       },
       {
         "id": "compartilhada-com-cota-pai",
@@ -53,26 +50,160 @@
           "Pequenos negócios",
           "Conservadores contrários à cota paterna"
         ],
-        "efeitos": "Pais dividem o cuidado e mulheres voltam ao trabalho; gasto e custo de substituição sobem."
+        "efeitos": "Pais dividem o cuidado e mulheres voltam ao trabalho; gasto e custo de substituição sobem.",
+        "propoe": "Licença dividida, com uma parte só do pai."
       }
     ]
   },
-  "consequencias": [
-    "licenca-parental--natalidade",
-    "licenca-parental--participacao-trabalho-cuidadoras",
-    "licenca-parental--participacao-trabalho-cuidadoras-2",
-    "licenca-parental--custo-trabalhista",
-    "licenca-parental--saude-populacao",
-    "licenca-parental--desigualdade",
-    "licenca-parental--gasto-publico",
-    "licenca-parental--grupo-classe-media",
-    "licenca-parental--grupo-empresarios",
-    "licenca-parental--grupo-pequenos-negocios",
-    "licenca-parental--grupo-progressistas",
-    "licenca-parental--grupo-familias-com-filhos"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "familia-e-cuidados",
+    "nome": "Família e cuidados",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "licenca-parental--natalidade",
+      "alvo": "natalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--participacao-trabalho-cuidadoras",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "licenca-parental--participacao-trabalho-cuidadoras-2",
+      "alvo": "participacao_trabalho_cuidadoras",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "licenca-parental--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.15],
+          [67, 0.4],
+          [100, 0.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "licenca-parental--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-parental--grupo-familias-com-filhos",
+      "alvo": "grupo_familias_com_filhos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

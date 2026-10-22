@@ -1,24 +1,12 @@
 {
   "id": "formula-do-salario-minimo",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fórmula do salário mínimo",
-  "descricao": "Escolher a regra de valorização do piso: decisão anual, só inflação, crescimento da economia ou aproximação ao salário típico. Ganho real melhora renda com atraso, mas eleva custos e pressiona o orçamento.",
-  "area": "Trabalho e emprego",
-  "ministerio": "Ministério do Trabalho",
+  "decide": "Define a regra de reajuste do salário mínimo a cada ano.",
+  "area": "trabalho",
   "nivel": "lei",
-  "mesa": {
-    "id": "salario-minimo",
-    "nome": "Salário mínimo",
-    "camada": "lei"
-  },
-  "dependeDe": [
-    {
-      "lei": "quem-decide-o-salario-minimo",
-      "opcoes": ["comissao-tecnica", "lei-nacional"],
-      "motivo": "Sem salário mínimo fixado pelo Estado, não há fórmula."
-    }
-  ],
   "controle": {
     "variavel": "nivel_formula_do_salario_minimo",
     "unidade": "nivel_escopo",
@@ -36,7 +24,8 @@
             "opcoes": ["lei-nacional"],
             "motivo": "Uma comissão técnica decide pelo critério dela: repor a inflação ou seguir a meta."
           }
-        ]
+        ],
+        "propoe": "Um valor novo é votado a cada ano, sem fórmula."
       },
       {
         "id": "so-inflacao",
@@ -44,7 +33,8 @@
         "valor": 33,
         "apoiam": ["Empresários", "Gestores fiscais"],
         "rejeitam": ["Sindicatos", "Trabalhadores de baixa renda"],
-        "efeitos": "Mantém poder de compra sem promessa de ganho real; menor pressão nos custos."
+        "efeitos": "Mantém poder de compra sem promessa de ganho real; menor pressão nos custos.",
+        "propoe": "O mínimo só repõe a inflação."
       },
       {
         "id": "inflacao-mais-pib",
@@ -59,7 +49,8 @@
             "opcoes": ["lei-nacional"],
             "motivo": "Uma comissão técnica decide pelo critério dela: repor a inflação ou seguir a meta."
           }
-        ]
+        ],
+        "propoe": "Repõe a inflação e soma parte do crescimento da economia."
       },
       {
         "id": "meta-da-mediana",
@@ -67,10 +58,57 @@
         "valor": 100,
         "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
         "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
-        "efeitos": "Combate pobreza mais rápido, com maior risco de custo, informalidade e pressão fiscal."
+        "efeitos": "Combate pobreza mais rápido, com maior risco de custo, informalidade e pressão fiscal.",
+        "propoe": "Sobe até 60% do salário típico ao longo do mandato."
       }
     ]
   },
+  "dependeDe": [
+    {
+      "lei": "quem-decide-o-salario-minimo",
+      "opcoes": ["comissao-tecnica", "lei-nacional"],
+      "motivo": "Sem salário mínimo fixado pelo Estado, não há fórmula."
+    }
+  ],
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "lei"
+  },
+  "historia": {
+    "opcoes": {
+      "sem-regra": ["Brasil antes de 2007", "Estados Unidos"],
+      "so-inflacao": ["Brasil de 2020 a 2022"],
+      "inflacao-mais-pib": ["Brasil de 2007 a 2019 e desde 2023"],
+      "meta-da-mediana": [
+        "União Europeia (diretiva de 2022, valor de referência)",
+        "Reino Unido (meta de dois terços da mediana em 2024)"
+      ]
+    },
+    "brasil": "Desde 2023 a lei de valorização corrige o mínimo pela inflação mais o crescimento do PIB de dois anos antes; desde 2024 o ganho acima da inflação fica dentro do limite do arcabouço fiscal."
+  },
+  "fontes": [
+    {
+      "titulo": "Lei 14.663/2023 (política de valorização do salário mínimo)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
+      "usadoPara": "inflação mais PIB"
+    },
+    {
+      "titulo": "Lei 15.077/2024 (ganho real dentro do limite do arcabouço)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/L15077.htm",
+      "usadoPara": "vínculo com a regra fiscal"
+    },
+    {
+      "titulo": "Lei 14.158/2021 (salário mínimo de 2021, só a inflação)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14158.htm",
+      "usadoPara": "só repõe a inflação"
+    },
+    {
+      "titulo": "Diretiva (UE) 2022/2041, salários mínimos adequados",
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2041/oj",
+      "usadoPara": "meta de 60% da mediana"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "renda_familias",
@@ -106,7 +144,7 @@
           [0, 0],
           [33, 0],
           [67, 0.5],
-          [100, 1.0]
+          [100, 1]
         ]
       },
       "atraso": 4
@@ -162,40 +200,6 @@
         ]
       },
       "atraso": 1
-    }
-  ],
-  "historia": {
-    "opcoes": {
-      "sem-regra": ["Brasil antes de 2007", "Estados Unidos"],
-      "so-inflacao": ["Brasil de 2020 a 2022"],
-      "inflacao-mais-pib": ["Brasil de 2007 a 2019 e desde 2023"],
-      "meta-da-mediana": [
-        "União Europeia (diretiva de 2022, valor de referência)",
-        "Reino Unido (meta de dois terços da mediana em 2024)"
-      ]
-    },
-    "brasil": "Desde 2023 a lei de valorização corrige o mínimo pela inflação mais o crescimento do PIB de dois anos antes; desde 2024 o ganho acima da inflação fica dentro do limite do arcabouço fiscal."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 14.663/2023 (política de valorização do salário mínimo)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
-      "usadoPara": "inflação mais PIB"
-    },
-    {
-      "titulo": "Lei 15.077/2024 (ganho real dentro do limite do arcabouço)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/L15077.htm",
-      "usadoPara": "vínculo com a regra fiscal"
-    },
-    {
-      "titulo": "Lei 14.158/2021 (salário mínimo de 2021, só a inflação)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14158.htm",
-      "usadoPara": "só repõe a inflação"
-    },
-    {
-      "titulo": "Diretiva (UE) 2022/2041, salários mínimos adequados",
-      "url": "https://eur-lex.europa.eu/eli/dir/2022/2041/oj",
-      "usadoPara": "meta de 60% da mediana"
     }
   ]
 }

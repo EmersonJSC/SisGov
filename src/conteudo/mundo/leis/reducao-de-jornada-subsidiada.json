@@ -1,22 +1,12 @@
 {
   "id": "reducao-de-jornada-subsidiada",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Redução de jornada subsidiada",
-  "descricao": "Autorizar o governo a pagar parte do salário quando empresas reduzem horas em vez de demitir. O programa segura emprego e consumo, mas custa caro e pode sustentar firmas pouco produtivas.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "desemprego",
-    "nome": "Desemprego",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo paga parte do salário quando a empresa corta horas em vez de demitir.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_reducao_de_jornada_subsidiada",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Desemprego sobe mais na recessão"
+        "efeitos": "Desemprego sobe mais na recessão",
+        "propoe": "O governo não paga nada."
       },
       {
         "id": "emergencial-ligado-por-decreto-na-crise",
@@ -36,7 +27,8 @@
         "custoTexto": "Hipótese: custo enquanto a opção estiver ativa; desligar exige nova decisão",
         "apoiam": ["Empresários", "Trabalhadores com carteira"],
         "rejeitam": ["Gestores fiscais"],
-        "efeitos": "Preserva parte das vagas enquanto a regra vigora e aumenta o gasto; o governo pode encerrar o subsídio depois."
+        "efeitos": "Preserva parte das vagas enquanto a regra vigora e aumenta o gasto; o governo pode encerrar o subsídio depois.",
+        "propoe": "O governo paga só nas crises, por decreto."
       },
       {
         "id": "permanente",
@@ -45,25 +37,139 @@
         "custoTexto": "Hipótese: gasto persistente maior que o programa temporário",
         "apoiam": ["Centrais sindicais", "Indústria"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Segura mais empregos, mas transfere custo contínuo ao orçamento e pode reduzir produtividade."
+        "efeitos": "Segura mais empregos, mas transfere custo contínuo ao orçamento e pode reduzir produtividade.",
+        "propoe": "O governo paga sempre, mesmo fora de crise."
       }
     ]
   },
-  "consequencias": [
-    "reducao-de-jornada-subsidiada--desemprego",
-    "reducao-de-jornada-subsidiada--recessao",
-    "reducao-de-jornada-subsidiada--consumo",
-    "reducao-de-jornada-subsidiada--produtividade",
-    "reducao-de-jornada-subsidiada--desigualdade",
-    "reducao-de-jornada-subsidiada--gasto-publico",
-    "reducao-de-jornada-subsidiada--grupo-empresarios",
-    "reducao-de-jornada-subsidiada--grupo-jovens",
-    "reducao-de-jornada-subsidiada--grupo-pobres",
-    "reducao-de-jornada-subsidiada--grupo-trabalhadores"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Seguro-desemprego (sem trava no estudo).",
     "leis": ["seguro-desemprego"]
   },
-  "ministerio": "Ministério do Trabalho"
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "reducao-de-jornada-subsidiada--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.015,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--recessao",
+      "alvo": "recessao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.05],
+          [100, 0.6]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

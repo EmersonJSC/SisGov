@@ -1,22 +1,12 @@
 {
   "id": "fiscalizacao-do-trabalho",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fiscalização do trabalho",
-  "descricao": "Definir o alcance das inspeções em obras, fazendas e fábricas: nenhum auditor, equipes reduzidas, cobertura atual ou expansão. Mais inspeção combate informalidade e trabalho infantil, mas custa verba e enfrenta resistência de empregadores.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quantos fiscais o governo põe para inspecionar obras, fazendas e fábricas.",
+  "area": "trabalho",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_fiscalizacao_do_trabalho",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Sem despesa direta com inspeções de rotina",
         "apoiam": ["Empresários favoráveis à desregulação"],
         "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
-        "efeitos": "Economiza fiscalização, mas aumenta trabalho infantil e informalidade com atraso."
+        "efeitos": "Economiza fiscalização, mas aumenta trabalho infantil e informalidade com atraso.",
+        "propoe": "Nenhuma inspeção de rotina; só depois de denúncia."
       },
       {
         "id": "minimo-metade-de-hoje-cerca-de-900",
@@ -37,7 +28,8 @@
         "custoTexto": "Hipótese: +0,015% do PIB ao ano",
         "apoiam": ["Pequenos negócios"],
         "rejeitam": ["Centrais sindicais", "Trabalhadores com carteira"],
-        "efeitos": "Cobre riscos graves, mas deixa mais violações de salário e trabalho infantil sem inspeção."
+        "efeitos": "Cobre riscos graves, mas deixa mais violações de salário e trabalho infantil sem inspeção.",
+        "propoe": "Equipes pequenas, só para acidentes graves."
       },
       {
         "id": "referencia-cerca-de-1-800-ativos",
@@ -46,7 +38,8 @@
         "custoTexto": "Hipótese: +0,03% do PIB ao ano",
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Pequenos negócios sujeitos a inspeção"],
-        "efeitos": "Reduz parte das violações sem ampliar toda a rede de auditores."
+        "efeitos": "Reduz parte das violações sem ampliar toda a rede de auditores.",
+        "propoe": "Inspeção regular nos setores de mais risco."
       },
       {
         "id": "maximo-todos-os-cargos-e-mais-os-2-mil-pedidos-cerca-de-5-60",
@@ -55,14 +48,58 @@
         "custoTexto": "Hipótese: +0,06% do PIB ao ano",
         "apoiam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "Formalização e proteção de crianças melhoram após implantação; pequenas empresas assumem mais custo de conformidade."
+        "efeitos": "Formalização e proteção de crianças melhoram após implantação; pequenas empresas assumem mais custo de conformidade.",
+        "propoe": "Equipes móveis em todo o país."
       }
     ]
   },
-  "consequencias": [
-    "fiscalizacao-do-trabalho--informalidade",
-    "fiscalizacao-do-trabalho--trabalho-infantil",
-    "fiscalizacao-do-trabalho--gasto-publico"
-  ],
-  "ministerio": "Ministério do Trabalho e Emprego"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "fiscalizacao-do-trabalho--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.147,
+        "termoConstante": 9.80049
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fiscalizacao-do-trabalho--trabalho-infantil",
+      "alvo": "trabalho_infantil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 5.60028
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "fiscalizacao-do-trabalho--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33.33, 0.015],
+          [66.67, 0.03],
+          [100, 0.06]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

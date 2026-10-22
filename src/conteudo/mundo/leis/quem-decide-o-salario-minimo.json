@@ -1,17 +1,12 @@
 {
   "id": "quem-decide-o-salario-minimo",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Quem decide o salário mínimo",
-  "descricao": "Quem tem a caneta para criar o piso salarial: ninguém, sindicatos com empresas, comissão técnica ou Congresso? A escolha abre ou fecha as regras de reajuste e o valor que o governo poderá fixar.",
-  "area": "Trabalho e emprego",
-  "ministerio": "Ministério do Trabalho",
+  "decide": "Define quem fixa o salário mínimo: ninguém, sindicatos e empresas, uma comissão técnica ou o Congresso.",
+  "area": "trabalho",
   "nivel": "constituicao",
-  "mesa": {
-    "id": "salario-minimo",
-    "nome": "Salário mínimo",
-    "camada": "constituicao"
-  },
   "controle": {
     "variavel": "nivel_quem_decide_o_salario_minimo",
     "unidade": "nivel_escopo",
@@ -22,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários favoráveis à livre negociação"],
         "rejeitam": ["Trabalhadores", "Sindicatos"],
-        "efeitos": "Empresas negociam livremente; o governo perde as alavancas de valor e reajuste do piso."
+        "efeitos": "Empresas negociam livremente; o governo perde as alavancas de valor e reajuste do piso.",
+        "propoe": "Não há salário mínimo nacional."
       },
       {
         "id": "negociacao-sindical",
@@ -30,7 +26,8 @@
         "valor": 33,
         "apoiam": ["Sindicatos com negociação forte", "Empresários setoriais"],
         "rejeitam": ["Trabalhadores de setores sem sindicato"],
-        "efeitos": "Acordos se adaptam por setor, mas trabalhadores sem representação podem ficar sem piso."
+        "efeitos": "Acordos se adaptam por setor, mas trabalhadores sem representação podem ficar sem piso.",
+        "propoe": "Sindicatos e empresas fixam o piso de cada categoria."
       },
       {
         "id": "comissao-tecnica",
@@ -38,7 +35,8 @@
         "valor": 67,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Sindicatos favoráveis à decisão parlamentar"],
-        "efeitos": "Piso nacional previsível; limita reajustes políticos discricionários."
+        "efeitos": "Piso nacional previsível; limita reajustes políticos discricionários.",
+        "propoe": "Uma comissão técnica fixa o valor."
       },
       {
         "id": "lei-nacional",
@@ -46,39 +44,63 @@
         "valor": 100,
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Empresários favoráveis à autonomia setorial"],
-        "efeitos": "Permite ganho real decidido politicamente; sujeita cada reajuste a disputa no Congresso."
+        "efeitos": "Permite ganho real decidido politicamente; sujeita cada reajuste a disputa no Congresso.",
+        "propoe": "O Congresso fixa o valor por lei."
       }
     ]
   },
-  "efeitos": [
+  "trava": [
     {
-      "alvo": "grupo_trabalhadores",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.02,
-        "termoConstante": 0
-      },
-      "atraso": 0
+      "opcao": "nao-existe",
+      "lei": "formula-do-salario-minimo",
+      "proibe": true
     },
     {
-      "alvo": "grupo_empresarios",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.01,
-        "termoConstante": 0
-      },
-      "atraso": 0
+      "opcao": "negociacao-sindical",
+      "lei": "formula-do-salario-minimo",
+      "proibe": true
     },
     {
-      "alvo": "grupo_pequenos_negocios",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.01,
-        "termoConstante": 0
-      },
-      "atraso": 0
+      "opcao": "nao-existe",
+      "lei": "formula-do-salario-minimo",
+      "opcoes": ["sem-regra", "inflacao-mais-pib"]
+    },
+    {
+      "opcao": "negociacao-sindical",
+      "lei": "formula-do-salario-minimo",
+      "opcoes": ["sem-regra", "inflacao-mais-pib"]
+    },
+    {
+      "opcao": "comissao-tecnica",
+      "lei": "formula-do-salario-minimo",
+      "opcoes": ["sem-regra", "inflacao-mais-pib"]
+    },
+    {
+      "opcao": "comissao-tecnica",
+      "lei": "salario-minimo",
+      "opcoes": ["sem-piso"]
+    },
+    {
+      "opcao": "lei-nacional",
+      "lei": "salario-minimo",
+      "opcoes": ["sem-piso"]
+    },
+    {
+      "opcao": "nao-existe",
+      "lei": "salario-minimo",
+      "opcoes": ["piso-baixo", "piso-moderado", "piso-alto"]
+    },
+    {
+      "opcao": "negociacao-sindical",
+      "lei": "salario-minimo",
+      "opcoes": ["piso-baixo", "piso-moderado", "piso-alto"]
     }
   ],
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "constituicao"
+  },
   "historia": {
     "opcoes": {
       "nao-existe": ["Reino Unido até 1998", "Estados Unidos até 1938"],
@@ -119,6 +141,35 @@
       "titulo": "Fair Labor Standards Act de 1938 (Estados Unidos)",
       "url": "https://www.dol.gov/agencies/whd/flsa",
       "usadoPara": "lei nacional"
+    }
+  ],
+  "efeitos": [
+    {
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.02,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.01,
+        "termoConstante": 0
+      },
+      "atraso": 0
+    },
+    {
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.01,
+        "termoConstante": 0
+      },
+      "atraso": 0
     }
   ]
 }

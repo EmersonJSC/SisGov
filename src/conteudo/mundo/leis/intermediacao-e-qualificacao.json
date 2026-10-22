@@ -1,22 +1,12 @@
 {
   "id": "intermediacao-e-qualificacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Intermediação e qualificação",
-  "descricao": "Abrir postos que ligam desempregados a vagas e financiar cursos curtos para jovens. A recolocação reage cedo; qualificação melhora depois e exige orçamento.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "desemprego",
-    "nome": "Desemprego",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo mantém postos que ligam desempregados a vagas e paga cursos curtos.",
+  "area": "trabalho",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_intermediacao_e_qualificacao",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
         "rejeitam": ["Centrais sindicais", "Jovens"],
-        "efeitos": "Economiza verba, mas jovens levam mais tempo para encontrar trabalho."
+        "efeitos": "Economiza verba, mas jovens levam mais tempo para encontrar trabalho.",
+        "propoe": "Sem postos de emprego e sem cursos pagos pelo governo."
       },
       {
         "id": "medio-cerca-de-0-05-do-pib",
@@ -37,7 +28,8 @@
         "apoiam": ["Jovens", "Empresas com vagas abertas"],
         "rejeitam": ["Gestores fiscais favoráveis a corte de gasto"],
         "efeitos": "A recolocação melhora cedo; a qualificação cresce pouco e com atraso.",
-        "custoAnualPercentualPib": 0.05
+        "custoAnualPercentualPib": 0.05,
+        "propoe": "Postos locais e cursos curtos para as vagas abertas."
       },
       {
         "id": "maximo-0-3-do-pib",
@@ -47,25 +39,90 @@
         "custoTexto": "Hipótese: 0,3% do PIB ao ano",
         "apoiam": ["Centrais sindicais", "Jovens", "Indústria"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Mais jovens encontram vaga cedo; produtividade da formação chega com atraso e custa verba alta."
+        "efeitos": "Mais jovens encontram vaga cedo; produtividade da formação chega com atraso e custa verba alta.",
+        "propoe": "Rede nacional de recolocação e formação técnica intensiva."
       }
     ],
     "faixa": {
-      "minimo": 0.0,
+      "minimo": 0,
       "maximo": 0.3,
       "unidade": "% do PIB por ano, função Proteção social"
     }
   },
-  "consequencias": [
-    "intermediacao-e-qualificacao--oportunidades-juvenis",
-    "intermediacao-e-qualificacao--qualificacao-trabalho",
-    "intermediacao-e-qualificacao--desemprego",
-    "intermediacao-e-qualificacao--gasto-publico",
-    "grupos--intermediacao-e-qualificacao--grupo-jovens"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Seguro-desemprego (sem trava).",
     "leis": ["seguro-desemprego"]
   },
-  "ministerio": "Ministério do Trabalho e Emprego"
+  "mesa": {
+    "id": "desemprego",
+    "nome": "Desemprego",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "intermediacao-e-qualificacao--oportunidades-juvenis",
+      "alvo": "oportunidades_juvenis",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0794,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "intermediacao-e-qualificacao--qualificacao-trabalho",
+      "alvo": "qualificacao_trabalho",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.06667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "intermediacao-e-qualificacao--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [16.67, -0.12],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "intermediacao-e-qualificacao--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [16.67, 0.05],
+          [100, 0.3]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "grupos--intermediacao-e-qualificacao--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1,22 +1,12 @@
 {
   "id": "legislacao-trabalhista",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Legislação trabalhista",
-  "descricao": "Definir o piso constitucional dos contratos: liberdade quase total, código com negociação coletiva ou proteção forte. Esta decisão limita as leis filhas de jornada e terceirização; custos menores podem gerar rotatividade e informalidade.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "contrato-de-trabalho",
-    "nome": "Contrato de trabalho",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define os direitos mínimos que a Constituição garante em todo contrato de trabalho.",
+  "area": "trabalho",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_legislacao_trabalhista",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Empresários favoráveis à desregulação"],
         "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
-        "efeitos": "Custo de contratar ↓↓ na hora; Informalidade ↓ em 2 a 4 anos; Rotatividade ↑↑"
+        "efeitos": "Custo de contratar ↓↓ na hora; Informalidade ↓ em 2 a 4 anos; Rotatividade ↑↑",
+        "propoe": "Nenhum direito mínimo: cada empresa negocia tudo."
       },
       {
         "id": "minima-contrato-livre-com-piso-e-seguranca",
@@ -35,7 +26,8 @@
         "valor": 22.33,
         "apoiam": ["Empresários", "Ricos"],
         "rejeitam": ["Trabalhadores com carteira"],
-        "efeitos": "Custo de contratar ↓ na hora; Informalidade ↓ em 2 a 4 anos; Litígio ↓; Rotatividade ↑"
+        "efeitos": "Custo de contratar ↓ na hora; Informalidade ↓ em 2 a 4 anos; Litígio ↓; Rotatividade ↑",
+        "propoe": "Só piso salarial e segurança; o resto é livre."
       },
       {
         "id": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
@@ -47,7 +39,8 @@
           "Entidades do agronegócio"
         ],
         "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
-        "efeitos": "Custo de contratar ↓ pouco; Litígio ↓ pouco; Informalidade ↓ pouco em 2 a 4 anos"
+        "efeitos": "Custo de contratar ↓ pouco; Litígio ↓ pouco; Informalidade ↓ pouco em 2 a 4 anos",
+        "propoe": "Há um código, mas o acordo coletivo pode substituir partes dele."
       },
       {
         "id": "codigo-detalhado",
@@ -55,7 +48,8 @@
         "valor": 67,
         "apoiam": ["Trabalhadores com carteira", "Servidores"],
         "rejeitam": ["Empresários"],
-        "efeitos": "Custo de contratar ↑; Litígio ↑ (regra detalhada gera disputa); Informalidade ↑ em 2 a 4 anos"
+        "efeitos": "Custo de contratar ↑; Litígio ↑ (regra detalhada gera disputa); Informalidade ↑ em 2 a 4 anos",
+        "propoe": "Um código igual para todos: férias, jornada e demissão."
       },
       {
         "id": "protetiva-estabilidade-e-demissao-so-com-motivo",
@@ -63,29 +57,242 @@
         "valor": 100,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários", "Pequenos negócios"],
-        "efeitos": "Custo de contratar ↑↑; Rotatividade ↓↓; Informalidade ↑↑ em 2 a 4 anos; Litígio ↑"
+        "efeitos": "Custo de contratar ↑↑; Rotatividade ↓↓; Informalidade ↑↑ em 2 a 4 anos; Litígio ↑",
+        "propoe": "Demitir exige motivo, e a estabilidade no emprego é maior."
       }
     ]
   },
-  "consequencias": [
-    "legislacao-trabalhista--custo-trabalhista",
-    "legislacao-trabalhista--informalidade",
-    "legislacao-trabalhista--rotatividade-emprego",
-    "legislacao-trabalhista--desemprego",
-    "legislacao-trabalhista--desigualdade",
-    "legislacao-trabalhista--litigio-trabalhista",
-    "legislacao-trabalhista--saude-populacao",
-    "legislacao-trabalhista--confianca-empresarial",
-    "legislacao-trabalhista--grupo-empresarios",
-    "legislacao-trabalhista--grupo-pequenos-negocios",
-    "legislacao-trabalhista--grupo-pobres",
-    "legislacao-trabalhista--grupo-progressistas",
-    "legislacao-trabalhista--grupo-trabalhadores",
-    "legislacao-trabalhista--grupo-informais"
+  "trava": [
+    {
+      "opcao": "sem-regras",
+      "lei": "fundo-de-garantia",
+      "opcoes": ["fundo-com-multa-na-demissao", "indenizacao-por-tempo-de-casa"]
+    },
+    {
+      "opcao": "minima-contrato-livre-com-piso-e-seguranca",
+      "lei": "fundo-de-garantia",
+      "opcoes": ["fundo-com-multa-na-demissao", "indenizacao-por-tempo-de-casa"]
+    },
+    {
+      "opcao": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+      "lei": "fundo-de-garantia",
+      "opcoes": ["indenizacao-por-tempo-de-casa"]
+    },
+    {
+      "opcao": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+      "lei": "jornada-de-trabalho",
+      "opcoes": ["sem-limite", "35-horas"]
+    },
+    {
+      "opcao": "codigo-detalhado",
+      "lei": "jornada-de-trabalho",
+      "opcoes": ["sem-limite"]
+    },
+    {
+      "opcao": "protetiva-estabilidade-e-demissao-so-com-motivo",
+      "lei": "jornada-de-trabalho",
+      "opcoes": ["sem-limite"]
+    },
+    {
+      "opcao": "sem-regras",
+      "lei": "jornada-de-trabalho",
+      "opcoes": ["35-horas"]
+    },
+    {
+      "opcao": "minima-contrato-livre-com-piso-e-seguranca",
+      "lei": "jornada-de-trabalho",
+      "opcoes": ["35-horas"]
+    },
+    {
+      "opcao": "protetiva-estabilidade-e-demissao-so-com-motivo",
+      "lei": "terceirizacao",
+      "opcoes": ["livre"]
+    },
+    {
+      "opcao": "sem-regras",
+      "lei": "trabalho-por-aplicativo",
+      "opcoes": ["emprego-obrigatorio"]
+    },
+    {
+      "opcao": "minima-contrato-livre-com-piso-e-seguranca",
+      "lei": "trabalho-por-aplicativo",
+      "opcoes": ["emprego-obrigatorio"]
+    },
+    {
+      "opcao": "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+      "lei": "trabalho-por-aplicativo",
+      "opcoes": ["emprego-obrigatorio"]
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
   },
-  "ministerio": "Ministério do Trabalho"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "contrato-de-trabalho",
+    "nome": "Contrato de trabalho",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "legislacao-trabalhista--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.21212121,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--rotatividade-emprego",
+      "alvo": "rotatividade_emprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--litigio-trabalhista",
+      "alvo": "litigio_trabalhista",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "legislacao-trabalhista--grupo-informais",
+      "alvo": "grupo_informais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

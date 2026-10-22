@@ -1,22 +1,12 @@
 {
   "id": "contribuicao-sindical",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Contribuição sindical",
-  "descricao": "Quem paga para manter o sindicato que negocia salários: só associados, todos os beneficiados com direito de recusa, ou todos obrigatoriamente? Caixa sindical amplia mobilização, mas cobra trabalhadores que talvez discordem.",
-  "area": "Trabalho, salário e sindicatos",
-  "mesa": {
-    "id": "sindicatos-e-greve",
-    "nome": "Sindicatos e greve",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quem paga para manter os sindicatos.",
+  "area": "trabalho",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_contribuicao_sindical",
     "unidade": "nivel_escopo",
@@ -27,15 +17,17 @@
         "valor": 0,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Trabalhadores não associados guardam a contribuição, mas sindicatos perdem capacidade de mobilização."
+        "efeitos": "Trabalhadores não associados guardam a contribuição, mas sindicatos perdem capacidade de mobilização.",
+        "propoe": "Só paga quem se associa."
       },
       {
         "id": "taxa-negocial-desconto-de-quem-o-acordo-cobre-com-direito-de",
         "rotulo": "Cobrar taxa dos beneficiados pelo acordo, com direito de recusa",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Classe média"],
-        "efeitos": "A negociação recebe financiamento mais estável sem obrigar quem recusar."
+        "efeitos": "A negociação recebe financiamento mais estável sem obrigar quem recusar.",
+        "propoe": "Paga quem o acordo beneficia, mas pode recusar."
       },
       {
         "id": "obrigatoria-para-todos",
@@ -47,24 +39,93 @@
           "Classe média",
           "Trabalhadores com carteira"
         ],
-        "efeitos": "Sindicatos ampliam mobilização e greves, mas parte dos trabalhadores rejeita o desconto obrigatório."
+        "efeitos": "Sindicatos ampliam mobilização e greves, mas parte dos trabalhadores rejeita o desconto obrigatório.",
+        "propoe": "Todos os trabalhadores da categoria pagam, obrigatoriamente."
       }
     ]
   },
-  "consequencias": [
-    "contribuicao-sindical--greve-geral",
-    "contribuicao-sindical--custo-trabalhista",
-    "contribuicao-sindical--grupo-empresarios",
-    "contribuicao-sindical--grupo-trabalhadores",
-    "contribuicao-sindical--grupo-servidores"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Negociação coletiva e sindicatos (sem trava no estudo).",
     "leis": ["negociacao-coletiva-e-sindicatos"]
   },
-  "ministerio": "Ministério do Trabalho",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "sindicatos-e-greve",
+    "nome": "Sindicatos e greve",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "contribuicao-sindical--greve-geral",
+      "alvo": "greve_geral",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "contribuicao-sindical--custo-trabalhista",
+      "alvo": "custo_trabalhista",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "contribuicao-sindical--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "contribuicao-sindical--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "contribuicao-sindical--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, 1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
