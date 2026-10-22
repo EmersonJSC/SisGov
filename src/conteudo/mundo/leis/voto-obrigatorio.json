@@ -1,22 +1,12 @@
 {
   "id": "voto-obrigatorio",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Voto obrigatório",
-  "descricao": "O cidadão é obrigado a votar, e com que punição?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "sistema-politico",
-    "nome": "Sistema político",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se o cidadão é obrigado a votar, e com que punição.",
+  "area": "governo-e-instituicoes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_voto_obrigatorio",
     "unidade": "nivel_escopo",
@@ -27,13 +17,15 @@
         "valor": 0,
         "apoiam": ["Jovens", "Classe média"],
         "rejeitam": ["Bancadas de partidos de base popular"],
-        "efeitos": "Participação eleitoral ↓"
+        "efeitos": "Participação eleitoral ↓",
+        "propoe": "Vota quem quer."
       },
       {
         "id": "obrigatorio-com-multa-simbolica",
         "rotulo": "Obrigatório com multa simbólica",
         "valor": 50,
-        "efeitos": "Participação eleitoral cerca de 10 pontos acima do facultativo"
+        "efeitos": "Participação eleitoral cerca de 10 pontos acima do facultativo",
+        "propoe": "Obrigatório, com multa pequena."
       },
       {
         "id": "obrigatorio-com-sancao-forte",
@@ -41,24 +33,127 @@
         "valor": 100,
         "apoiam": ["Bancadas de partidos de base popular"],
         "rejeitam": ["Jovens", "Classe média"],
-        "efeitos": "Participação eleitoral ↑ até 24 pontos sobre o facultativo; Confiança ↑ pouco"
+        "efeitos": "Participação eleitoral ↑ até 24 pontos sobre o facultativo; Confiança ↑ pouco",
+        "propoe": "Obrigatório, com punição forte para quem falta."
       }
     ]
   },
-  "consequencias": [
-    "voto-obrigatorio--participacao-eleitoral",
-    "voto-obrigatorio--desigualdade",
-    "voto-obrigatorio--polarizacao",
-    "voto-obrigatorio--liberdade-civil",
-    "voto-obrigatorio--gasto-publico",
-    "voto-obrigatorio--grupo-empresarios",
-    "voto-obrigatorio--grupo-jovens",
-    "voto-obrigatorio--grupo-pobres",
-    "voto-obrigatorio--confianca-empresarial"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Partidos (\"Partido único\" trava \"Facultativo\")",
     "leis": ["partidos"]
   },
-  "ministerio": "Casa Civil"
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "voto-obrigatorio--participacao-eleitoral",
+      "alvo": "participacao_eleitoral",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.005],
+          [100, 0.01]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "voto-obrigatorio--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "voto-obrigatorio--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": -3
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

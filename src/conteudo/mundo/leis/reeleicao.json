@@ -1,22 +1,12 @@
 {
   "id": "reeleicao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Reeleição",
-  "descricao": "O chefe do Executivo pode se candidatar de novo, e quantas vezes?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "sistema-politico",
-    "nome": "Sistema político",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se o chefe do governo pode se candidatar de novo, e quantas vezes.",
+  "area": "governo-e-instituicoes",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_reeleicao",
     "unidade": "nivel_escopo",
@@ -27,21 +17,24 @@
         "valor": 0,
         "apoiam": ["Classe média"],
         "rejeitam": ["Governadores e prefeitos"],
-        "efeitos": "Some o incentivo eleitoral: Corrupção passa a depender só de auditoria e imprensa"
+        "efeitos": "Some o incentivo eleitoral: Corrupção passa a depender só de auditoria e imprensa",
+        "propoe": "Não pode."
       },
       {
         "id": "nao-consecutiva",
         "rotulo": "Não consecutiva",
         "valor": 33,
         "apoiam": ["Classe média"],
-        "efeitos": "Sem efeito medido"
+        "efeitos": "Sem efeito medido",
+        "propoe": "Só depois de um mandato fora."
       },
       {
         "id": "uma-reeleicao",
         "rotulo": "Uma reeleição",
         "valor": 67,
         "apoiam": ["Bancadas do Congresso do governo"],
-        "efeitos": "Corrupção no primeiro mandato 27% menor que no segundo"
+        "efeitos": "Corrupção no primeiro mandato 27% menor que no segundo",
+        "propoe": "Pode uma vez seguida."
       },
       {
         "id": "ilimitada",
@@ -49,27 +42,119 @@
         "valor": 100,
         "apoiam": ["lacuna"],
         "rejeitam": ["As 5 mídias"],
-        "efeitos": "Ameaça de golpe ↑; Captura política ↑; Liberdades civis ↓ (aprox.)"
+        "efeitos": "Ameaça de golpe ↑; Captura política ↑; Liberdades civis ↓ (aprox.)",
+        "propoe": "Pode quantas vezes quiser."
       }
     ]
   },
-  "consequencias": [
-    "reeleicao--margem-manobra-governo",
-    "reeleicao--estabilidade-politica",
-    "reeleicao--captura-politica",
-    "reeleicao--forca-instituicoes",
-    "reeleicao--liberdade-civil",
-    "reeleicao--protestos",
-    "reeleicao--grupo-empresarios",
-    "reeleicao--grupo-jovens"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "mae": {
     "texto": "Sistema de governo (\"Parlamentarismo\" trava a lei; \"Diretorial\" trava \"Ilimitada\"). Independência do Judiciário: \"Ilimitada\" só existe se ela não for \"Plena\".",
     "leis": ["sistema-de-governo", "independencia-do-judiciario"]
   },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "constituicao"
   },
-  "ministerio": "Casa Civil"
+  "efeitos": [
+    {
+      "id": "reeleicao--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reeleicao--estabilidade-politica",
+      "alvo": "estabilidade_politica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reeleicao--captura-politica",
+      "alvo": "captura_politica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reeleicao--forca-instituicoes",
+      "alvo": "forca_instituicoes",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reeleicao--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reeleicao--protestos",
+      "alvo": "protestos",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "reeleicao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "reeleicao--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

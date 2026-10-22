@@ -1,22 +1,12 @@
 {
   "id": "federalismo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Federalismo",
-  "descricao": "Quanto poder e dinheiro ficam com estados e municípios, e quanto com o governo central?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "federacao",
-    "nome": "Federação",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quanto poder e dinheiro ficam com estados e municípios, e quanto com o governo central.",
+  "area": "governo-e-instituicoes",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_federalismo",
     "unidade": "nivel_escopo",
@@ -26,13 +16,15 @@
         "rotulo": "Centralizado",
         "valor": 0,
         "rejeitam": ["Interior", "governadores"],
-        "efeitos": "Desigualdade regional ↓ (estimado)"
+        "efeitos": "Desigualdade regional ↓ (estimado)",
+        "propoe": "Quase tudo com o governo central."
       },
       {
         "id": "cooperativo",
         "rotulo": "Cooperativo",
         "valor": 50,
-        "efeitos": "Depende da Regra de repasse: repasse grande e sem condição sobe a Corrupção"
+        "efeitos": "Depende da Regra de repasse: repasse grande e sem condição sobe a Corrupção",
+        "propoe": "Dividido, com cooperação."
       },
       {
         "id": "descentralizado",
@@ -40,21 +32,131 @@
         "valor": 100,
         "apoiam": ["Entidades do agronegócio", "Ricos"],
         "rejeitam": ["Pobres"],
-        "efeitos": "Desigualdade regional ↑; Corrupção ↑ (mais níveis de governo)"
+        "efeitos": "Desigualdade regional ↑; Corrupção ↑ (mais níveis de governo)",
+        "propoe": "Quase tudo com estados e municípios."
       }
     ]
   },
-  "consequencias": [
-    "federalismo--desigualdade-regional",
-    "federalismo--margem-manobra-governo",
-    "federalismo--gasto-publico",
-    "federalismo--inovacao",
-    "federalismo--confianca-instituicoes",
-    "federalismo--corrupcao",
-    "federalismo--grupo-agro",
-    "federalismo--grupo-empresarios",
-    "federalismo--grupo-pobres",
-    "federalismo--grupo-progressistas"
-  ],
-  "ministerio": "Casa Civil"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "federalismo--desigualdade-regional",
+      "alvo": "desigualdade_regional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "federalismo--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "federalismo--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.001,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "federalismo--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "federalismo--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

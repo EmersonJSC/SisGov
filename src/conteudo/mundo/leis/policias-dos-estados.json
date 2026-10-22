@@ -1,19 +1,12 @@
 {
   "id": "policias-dos-estados",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "petrea",
   "nome": "Polícias dos estados",
-  "descricao": "A Constituição atribui o comando das polícias territoriais aos governadores ou concentra a força em uma polícia nacional. No país inicial esta é uma regra protegida; compartilhar dados e operações é decisão separada.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "clausula-petrea",
-  "nivelLegal": "petrea",
+  "decide": "Define se as polícias ficam com os governadores ou viram uma polícia nacional única.",
+  "nivel": "constituicao",
+  "petrea": true,
   "controle": {
     "variavel": "nivel_policias_dos_estados",
     "unidade": "nivel_escopo",
@@ -24,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Governadores", "Interior", "Servidores estaduais"],
         "rejeitam": ["Defensores de uma polícia única"],
-        "efeitos": "Distribui o comando territorial entre estados; operações nacionais dependem de coordenação."
+        "efeitos": "Distribui o comando territorial entre estados; operações nacionais dependem de coordenação.",
+        "propoe": "Cada governador comanda as polícias do seu estado."
       },
       {
         "id": "policia-nacional",
@@ -32,20 +26,89 @@
         "valor": 100,
         "apoiam": ["Defensores de comando central"],
         "rejeitam": ["Governadores", "Servidores estaduais"],
-        "efeitos": "Concentra capacidade estatal e comando, com risco maior de uso político da força."
+        "efeitos": "Concentra capacidade estatal e comando, com risco maior de uso político da força.",
+        "propoe": "O presidente comanda uma polícia nacional única."
       }
     ]
   },
-  "consequencias": [
-    "policias-dos-estados--capacidade-estatal",
-    "policias-dos-estados--liberdade-civil",
-    "policias-dos-estados--golpe-risco",
-    "policias-dos-estados--grupo-conservadores",
-    "policias-dos-estados--grupo-progressistas",
-    "policias-dos-estados--grupo-servidores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "policias-dos-estados--capacidade-estatal",
+      "alvo": "capacidade_estatal",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.06,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "policias-dos-estados--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "policias-dos-estados--golpe-risco",
+      "alvo": "golpe_risco",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "policias-dos-estados--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "policias-dos-estados--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "policias-dos-estados--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

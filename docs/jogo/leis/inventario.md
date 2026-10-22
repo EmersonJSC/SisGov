@@ -276,32 +276,32 @@ Total: 239 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Estabilidade dos servidores públicos | `estabilidade-dos-servidores-publicos` | constitucional | decide é pergunta |  | |
-| Federalismo | `federalismo` | constitucional | decide é pergunta |  | |
-| Governadores | `governadores` | constitucional | decide é pergunta |  | |
-| Independência do Judiciário | `independencia-do-judiciario` | constitucional | decide é pergunta |  | |
-| Liberdade de imprensa | `liberdade-de-imprensa` | constitucional | decide é pergunta |  | |
-| Partidos | `partidos` | constitucional | decide é pergunta |  | |
-| Reeleição | `reeleicao` | constitucional | decide é pergunta |  | |
-| Sistema de governo | `sistema-de-governo` | constitucional | decide é pergunta |  | |
+| Estabilidade dos servidores públicos | `estabilidade-dos-servidores-publicos` | constitucional | — |  | |
+| Federalismo | `federalismo` | constitucional | — |  | |
+| Governadores | `governadores` | constitucional | — |  | |
+| Independência do Judiciário | `independencia-do-judiciario` | constitucional | — |  | |
+| Liberdade de imprensa | `liberdade-de-imprensa` | constitucional | — |  | |
+| Partidos | `partidos` | constitucional | — |  | |
+| Reeleição | `reeleicao` | constitucional | — |  | |
+| Sistema de governo | `sistema-de-governo` | constitucional | — |  | |
 | Cláusula de desempenho | `clausula-de-desempenho` | regra | sem efeito na rede; decide é pergunta |  | |
-| Concessões de rádio e TV | `concessoes-de-radio-e-tv` | regra | decide é pergunta |  | |
-| Financiamento de campanhas | `financiamento-de-campanhas` | regra | decide é pergunta |  | |
-| Foro privilegiado | `foro-privilegiado` | regra | decide é pergunta |  | |
-| Fundo de equalização | `fundo-de-equalizacao` | regra | decide é pergunta |  | |
-| Lei anticorrupção | `lei-anticorrupcao` | regra | decide é pergunta |  | |
-| ONGs e financiamento estrangeiro | `ongs-e-financiamento-estrangeiro` | regra | decide é pergunta |  | |
-| Orçamento do Judiciário | `orcamento-do-judiciario` | regra | decide é pergunta |  | |
-| Participação direta | `participacao-direta` | regra | decide é pergunta |  | |
-| Regra de repasse | `regra-de-repasse` | regra | decide é pergunta |  | |
-| Regulação das redes sociais | `regulacao-das-redes-sociais` | regra | decide é pergunta |  | |
-| Transparência pública | `transparencia-publica` | regra | decide é pergunta |  | |
-| Tribunais superiores | `tribunais-superiores` | regra | decide é pergunta |  | |
-| Valor do fundo eleitoral | `valor-do-fundo-eleitoral` | regra | decide é pergunta |  | |
-| Voto obrigatório | `voto-obrigatorio` | regra | decide é pergunta |  | |
+| Concessões de rádio e TV | `concessoes-de-radio-e-tv` | regra | — |  | |
+| Financiamento de campanhas | `financiamento-de-campanhas` | regra | — |  | |
+| Foro privilegiado | `foro-privilegiado` | regra | — |  | |
+| Fundo de equalização | `fundo-de-equalizacao` | regra | — |  | |
+| Lei anticorrupção | `lei-anticorrupcao` | regra | — |  | |
+| ONGs e financiamento estrangeiro | `ongs-e-financiamento-estrangeiro` | regra | — |  | |
+| Orçamento do Judiciário | `orcamento-do-judiciario` | regra | — |  | |
+| Participação direta | `participacao-direta` | regra | — |  | |
+| Regra de repasse | `regra-de-repasse` | regra | — |  | |
+| Regulação das redes sociais | `regulacao-das-redes-sociais` | regra | — |  | |
+| Transparência pública | `transparencia-publica` | regra | — |  | |
+| Tribunais superiores | `tribunais-superiores` | regra | — |  | |
+| Valor do fundo eleitoral | `valor-do-fundo-eleitoral` | regra | — |  | |
+| Verba de controle | `verba-de-controle` | regra | — |  | |
+| Verba de publicidade oficial e comunicação pública | `verba-de-publicidade-oficial-e-comunicacao-publica` | regra | — |  | |
+| Voto obrigatório | `voto-obrigatorio` | regra | — |  | |
 | Agência de inteligência e contrainteligência | `agencia-de-inteligencia` | verba | — |  | |
-| Verba de controle | `verba-de-controle` | verba | decide é pergunta |  | |
-| Verba de publicidade oficial e comunicação pública | `verba-de-publicidade-oficial-e-comunicacao-publica` | verba | decide é pergunta |  | |
 
 ## Centro (pétreas) (2)
 

@@ -1,22 +1,12 @@
 {
   "id": "partidos",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Partidos",
-  "descricao": "Quantos partidos podem disputar o poder?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "sistema-politico",
-    "nome": "Sistema político",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quantos partidos podem disputar o poder.",
+  "area": "governo-e-instituicoes",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_partidos",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Partido único",
         "valor": 0,
         "rejeitam": ["Todos os grupos"],
-        "efeitos": "Ameaça de golpe ↑ no começo; Liberdades civis ↓; Confiança declarada ↓; Impunidade ↑"
+        "efeitos": "Ameaça de golpe ↑ no começo; Liberdades civis ↓; Confiança declarada ↓; Impunidade ↑",
+        "propoe": "Só um partido."
       },
       {
         "id": "partido-hegemonico",
@@ -34,25 +25,123 @@
         "valor": 50,
         "apoiam": ["lacuna"],
         "rejeitam": ["Bancadas do Congresso de oposição"],
-        "efeitos": "Os mesmos efeitos, mais fracos (aprox.)"
+        "efeitos": "Os mesmos efeitos, mais fracos (aprox.)",
+        "propoe": "Vários partidos, mas um sempre manda."
       },
       {
         "id": "pluripartidarismo",
         "rotulo": "Pluripartidarismo",
         "valor": 100,
         "apoiam": ["Quase todos os grupos"],
-        "efeitos": "Liberdades civis ↑ contra Partido único; Ameaça de golpe ↓; Confiança declarada ↑; Impunidade ↓ pouco (estimado)"
+        "efeitos": "Liberdades civis ↑ contra Partido único; Ameaça de golpe ↓; Confiança declarada ↑; Impunidade ↓ pouco (estimado)",
+        "propoe": "Muitos partidos disputam livremente."
       }
     ]
   },
-  "consequencias": [
-    "partidos--liberdade-civil",
-    "partidos--confianca-instituicoes",
-    "partidos--corrupcao",
-    "partidos--reputacao-internacional",
-    "partidos--grupo-progressistas",
-    "partidos--grupo-jovens",
-    "partidos--impunidade"
-  ],
-  "ministerio": "Casa Civil"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "partidos--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -15],
+          [50, -8],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -5],
+          [50, -3],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 6],
+          [50, 3],
+          [100, 0]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -12],
+          [50, -6],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -6],
+          [50, -3],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -4],
+          [50, -2],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "partidos--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 10
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

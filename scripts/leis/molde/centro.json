@@ -1,0 +1,26 @@
+{
+  "area": "centro",
+  "leis": [
+    {
+      "id": "garantias-penais",
+      "familia": "petrea",
+      "decide": "Define o limite máximo do poder do Estado de punir: se pode haver pena de morte e prisão perpétua.",
+      "opcoes": {
+        "sem-pena-de-morte": "Pena de morte e prisão perpétua são proibidas.",
+        "pena-de-morte-permitida": "A Constituição permite a pena de morte."
+      },
+      "trava": [
+        { "opcao": "sem-pena-de-morte", "lei": "pena-de-morte", "proibe": true }
+      ]
+    },
+    {
+      "id": "policias-dos-estados",
+      "familia": "petrea",
+      "decide": "Define se as polícias ficam com os governadores ou viram uma polícia nacional única.",
+      "opcoes": {
+        "governadores": "Cada governador comanda as polícias do seu estado.",
+        "policia-nacional": "O presidente comanda uma polícia nacional única."
+      }
+    }
+  ]
+}

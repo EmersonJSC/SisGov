@@ -1,22 +1,12 @@
 {
   "id": "regulacao-das-redes-sociais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Regulação das redes sociais",
-  "descricao": "As plataformas respondem pelo conteúdo que circula nelas, e quem manda tirar o que é ilegal?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "imprensa-internet-e-informacao",
-    "nome": "Imprensa, internet e informação",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se as redes sociais respondem pelo que circula nelas e quem manda tirar o que é ilegal.",
+  "area": "governo-e-instituicoes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_regulacao_das_redes_sociais",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Sem regra",
         "valor": 0,
         "apoiam": ["Plataformas digitais"],
-        "efeitos": "Desinformação ↑"
+        "efeitos": "Desinformação ↑",
+        "propoe": "Sem regra."
       },
       {
         "id": "so-por-ordem-judicial",
@@ -34,7 +25,8 @@
         "valor": 25,
         "apoiam": ["Plataformas digitais"],
         "rejeitam": ["Movimento negro", "Movimento feminista"],
-        "efeitos": "Desinformação estável"
+        "efeitos": "Desinformação estável",
+        "propoe": "Só tiram com ordem do juiz."
       },
       {
         "id": "dever-de-cuidado",
@@ -48,7 +40,8 @@
           "Maior rede de TV aberta"
         ],
         "rejeitam": ["Plataformas digitais"],
-        "efeitos": "Desinformação ↓ (tamanho: lacuna); Polarização ↓ fraco"
+        "efeitos": "Desinformação ↓ (tamanho: lacuna); Polarização ↓ fraco",
+        "propoe": "Têm o dever de agir contra conteúdo ilegal."
       },
       {
         "id": "protecao-reforcada",
@@ -57,7 +50,8 @@
         "custoAnualPercentualPib": 0.01,
         "apoiam": ["Famílias com filhos"],
         "rejeitam": ["Plataformas digitais"],
-        "efeitos": "Desinformação ↓; Investimento das plataformas ↓ (evento \"aplicativos ameaçam sair\")"
+        "efeitos": "Desinformação ↓; Investimento das plataformas ↓ (evento \"aplicativos ameaçam sair\")",
+        "propoe": "Regras duras e idade mínima."
       },
       {
         "id": "controle-estatal",
@@ -65,24 +59,173 @@
         "valor": 100,
         "custoAnualPercentualPib": 0.02,
         "rejeitam": ["Quase todos os grupos"],
-        "efeitos": "Liberdades civis ↓; Desinformação estatal ↑"
+        "efeitos": "Liberdades civis ↓; Desinformação estatal ↑",
+        "propoe": "O governo controla o que circula."
       }
     ]
   },
-  "consequencias": [
-    "regulacao-redes-sociais--desinformacao",
-    "regulacao-redes-sociais--liberdade-civil",
-    "regulacao-redes-sociais--liberdade-civil-2",
-    "regulacao-redes-sociais--concentracao-mercado",
-    "regulacao-redes-sociais--saude-populacao",
-    "regulacao-redes-sociais--polarizacao",
-    "regulacao-redes-sociais--reputacao-internacional",
-    "regulacao-redes-sociais--gasto-publico",
-    "regulacao-redes-sociais--grupo-classe-media",
-    "regulacao-redes-sociais--grupo-conservadores",
-    "regulacao-redes-sociais--grupo-jovens",
-    "regulacao-redes-sociais--grupo-pequenos-negocios",
-    "regulacao-redes-sociais--grupo-progressistas"
-  ],
-  "ministerio": "Casa Civil da Presidência"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "imprensa-internet-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "regulacao-redes-sociais--desinformacao",
+      "alvo": "desinformacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--liberdade-civil-2",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -1,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--concentracao-mercado",
+      "alvo": "concentracao_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--saude-populacao",
+      "alvo": "saude_populacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.005],
+          [50, 0.01],
+          [75, 0.02],
+          [100, 0.05]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "regulacao-redes-sociais--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-redes-sociais--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

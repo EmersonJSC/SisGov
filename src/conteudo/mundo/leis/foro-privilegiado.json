@@ -1,22 +1,12 @@
 {
   "id": "foro-privilegiado",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Foro privilegiado",
-  "descricao": "Autoridades são julgadas pela Justiça comum ou direto pelas cortes mais altas?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "justica",
-    "nome": "Justiça",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define se autoridades são julgadas pela Justiça comum ou direto pelas cortes mais altas.",
+  "area": "governo-e-instituicoes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_foro_privilegiado",
     "unidade": "nivel_escopo",
@@ -27,13 +17,15 @@
         "valor": 0,
         "apoiam": ["Classe média"],
         "rejeitam": ["Bancadas do Congresso"],
-        "efeitos": "Impunidade ↓; Corrupção ↓"
+        "efeitos": "Impunidade ↓; Corrupção ↓",
+        "propoe": "Justiça comum para todos."
       },
       {
         "id": "foro-so-para-crime-no-cargo",
         "rotulo": "Foro só para crime no cargo (hoje na referência, desde 2018)",
         "valor": 33,
-        "efeitos": "Meio-termo"
+        "efeitos": "Meio-termo",
+        "propoe": "Corte alta só para crime cometido no cargo."
       },
       {
         "id": "foro-amplo",
@@ -41,7 +33,8 @@
         "valor": 67,
         "apoiam": ["Bancadas do Congresso"],
         "rejeitam": ["Classe média"],
-        "efeitos": "Impunidade ↑ (em 2007, só 4,6% das ações no tribunal mais alto tinham sido julgadas); Corrupção ↑"
+        "efeitos": "Impunidade ↑ (em 2007, só 4,6% das ações no tribunal mais alto tinham sido julgadas); Corrupção ↑",
+        "propoe": "Corte alta para qualquer crime da autoridade."
       },
       {
         "id": "imunidade",
@@ -49,21 +42,130 @@
         "valor": 100,
         "apoiam": ["Bancadas do Congresso"],
         "rejeitam": ["Quase todos os grupos"],
-        "efeitos": "Impunidade ↑ forte; Corrupção ↑; Confiança ↓"
+        "efeitos": "Impunidade ↑ forte; Corrupção ↑; Confiança ↓",
+        "propoe": "Só pode ser processada com licença do Congresso."
       }
     ]
   },
-  "consequencias": [
-    "foro-privilegiado--impunidade",
-    "foro-privilegiado--corrupcao",
-    "foro-privilegiado--confianca-instituicoes",
-    "foro-privilegiado--margem-manobra-governo",
-    "foro-privilegiado--estabilidade-politica",
-    "foro-privilegiado--grupo-classe-media",
-    "foro-privilegiado--grupo-conservadores",
-    "foro-privilegiado--grupo-progressistas",
-    "foro-privilegiado--grupo-servidores",
-    "foro-privilegiado--confianca-empresarial"
-  ],
-  "ministerio": "Casa Civil"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "justica",
+    "nome": "Justiça",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "foro-privilegiado--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "foro-privilegiado--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "foro-privilegiado--estabilidade-politica",
+      "alvo": "estabilidade_politica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "foro-privilegiado--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "foro-privilegiado--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 2.079
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

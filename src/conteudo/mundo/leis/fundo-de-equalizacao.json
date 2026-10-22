@@ -1,40 +1,22 @@
 {
   "id": "fundo-de-equalizacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fundo de equalização",
-  "descricao": "Quanto dinheiro extra o governo central põe para igualar estados e municípios pobres aos ricos?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "federacao",
-    "nome": "Federação",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto dinheiro extra o governo central põe para igualar estados e municípios pobres aos ricos.",
+  "area": "governo-e-instituicoes",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_fundo_de_equalizacao",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
-      {
         "id": "0",
         "rotulo": "0 (só os fundos fixos da Constituição; hoje na referência)",
         "valor": 33.33,
-        "efeitos": "Nada além dos fundos fixos ( 326,9 bilhões em 2024, cerca de 2,8% do PIB, aprox.)"
+        "efeitos": "Nada além dos fundos fixos ( 326,9 bilhões em 2024, cerca de 2,8% do PIB, aprox.)",
+        "propoe": "Nada além dos fundos que a Constituição já manda."
       },
       {
         "id": "0-5",
@@ -43,26 +25,56 @@
         "custoAnualPercentualPib": 0.5,
         "apoiam": ["Pobres", "Interior"],
         "rejeitam": ["Ricos"],
-        "efeitos": "Desigualdade regional ↓ (tamanho: lacuna); Corrupção ↑ se a Verba de controle for baixa"
+        "efeitos": "Desigualdade regional ↓ (tamanho: lacuna); Corrupção ↑ se a Verba de controle for baixa",
+        "propoe": "Mais 0,5% do PIB."
       },
       {
         "id": "1",
         "rotulo": "1% (máximo)",
         "valor": 100,
-        "custoAnualPercentualPib": 1.0,
+        "custoAnualPercentualPib": 1,
         "apoiam": ["Pobres", "Interior"],
         "rejeitam": ["Ricos", "Mercado financeiro"],
-        "efeitos": "O mesmo, mais forte"
+        "efeitos": "O mesmo, mais forte",
+        "propoe": "Mais 1% do PIB."
       }
     ]
   },
-  "consequencias": [
-    "fundo-de-equalizacao--desigualdade-regional",
-    "fundo-de-equalizacao--corrupcao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Federalismo (não existe em \"Centralizado\"; proposta minha). A Regra de repasse decide como o fundo é repartido.",
     "leis": ["federalismo", "regra-de-repasse"]
   },
-  "ministerio": "Casa Civil da Presidência"
+  "mesa": {
+    "id": "federacao",
+    "nome": "Federação",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "fundo-de-equalizacao--desigualdade-regional",
+      "alvo": "desigualdade_regional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0.69993
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "fundo-de-equalizacao--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": -0.69993
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

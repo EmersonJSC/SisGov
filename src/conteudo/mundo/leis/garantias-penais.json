@@ -1,19 +1,12 @@
 {
   "id": "garantias-penais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "petrea",
   "nome": "Garantias penais",
-  "descricao": "A Constituição fixa o limite máximo do poder de punir do Estado. No país inicial a proibição da pena de morte e da prisão perpétua é protegida; uma lei ordinária de execução não pode atravessar essa trava.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "clausula-petrea",
-  "nivelLegal": "petrea",
+  "decide": "Define o limite máximo do poder do Estado de punir: se pode haver pena de morte e prisão perpétua.",
+  "nivel": "constituicao",
+  "petrea": true,
   "controle": {
     "variavel": "nivel_garantias_penais",
     "unidade": "nivel_escopo",
@@ -24,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Progressistas", "Defensores de garantias penais"],
         "rejeitam": ["Conservadores favoráveis à pena capital"],
-        "efeitos": "Preserva liberdades e reputação internacional; impede a lei filha de pena de morte."
+        "efeitos": "Preserva liberdades e reputação internacional; impede a lei filha de pena de morte.",
+        "propoe": "Pena de morte e prisão perpétua são proibidas."
       },
       {
         "id": "pena-de-morte-permitida",
@@ -32,19 +26,85 @@
         "valor": 100,
         "apoiam": ["Conservadores favoráveis à pena capital"],
         "rejeitam": ["Progressistas", "Defensores de garantias penais"],
-        "efeitos": "Eleva a punição percebida, reduz liberdades e reputação; libera a lei filha onde a mudança constitucional for possível."
+        "efeitos": "Eleva a punição percebida, reduz liberdades e reputação; libera a lei filha onde a mudança constitucional for possível.",
+        "propoe": "A Constituição permite a pena de morte."
       }
     ]
   },
-  "consequencias": [
-    "garantias-penais--reputacao-internacional",
-    "garantias-penais--liberdade-civil",
-    "garantias-penais--sensacao-seguranca",
-    "garantias-penais--grupo-conservadores",
-    "garantias-penais--grupo-progressistas"
+  "trava": [
+    {
+      "opcao": "sem-pena-de-morte",
+      "lei": "pena-de-morte",
+      "proibe": true
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "garantias-penais--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "garantias-penais--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "garantias-penais--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.06,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "garantias-penais--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "garantias-penais--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

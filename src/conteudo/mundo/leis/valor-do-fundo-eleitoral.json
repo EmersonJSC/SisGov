@@ -1,42 +1,24 @@
 {
   "id": "valor-do-fundo-eleitoral",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Valor do fundo eleitoral",
-  "descricao": "Quanto dinheiro público vai para as campanhas?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "sistema-politico",
-    "nome": "Sistema político",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto dinheiro público vai para as campanhas.",
+  "area": "governo-e-instituicoes",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_valor_do_fundo_eleitoral",
     "unidade": "nivel_escopo",
     "opcoes": [
-      {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
       {
         "id": "0",
         "rotulo": "0 (sem fundo)",
         "valor": 33.33,
         "apoiam": ["Classe média"],
         "rejeitam": ["Bancadas do Congresso"],
-        "efeitos": "Captura política ↑ se houver doação privada"
+        "efeitos": "Captura política ↑ se houver doação privada",
+        "propoe": "Nada."
       },
       {
         "id": "0-04",
@@ -45,7 +27,8 @@
         "custoAnualPercentualPib": 0.04,
         "apoiam": ["Bancadas do Congresso"],
         "rejeitam": ["Classe média"],
-        "efeitos": "Popularidade ↑ com as bancadas, ↓ com a classe média"
+        "efeitos": "Popularidade ↑ com as bancadas, ↓ com a classe média",
+        "propoe": "0,04% do PIB."
       },
       {
         "id": "0-06",
@@ -54,19 +37,68 @@
         "custoAnualPercentualPib": 0.06,
         "apoiam": ["Bancadas do Congresso"],
         "rejeitam": ["Classe média", "Empresários"],
-        "efeitos": "O mesmo, mais forte; Fragmentação ↑ se repartido por votos"
+        "efeitos": "O mesmo, mais forte; Fragmentação ↑ se repartido por votos",
+        "propoe": "0,06% do PIB."
       }
     ]
   },
-  "consequencias": [
-    "valor-do-fundo-eleitoral--captura-politica",
-    "valor-do-fundo-eleitoral--popularidade-governo",
-    "grupos--valor-do-fundo-eleitoral--grupo-classe-media",
-    "grupos--valor-do-fundo-eleitoral--grupo-empresarios"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Financiamento de campanhas (fica em 0 com \"Livre\"; proposta minha)",
     "leis": ["financiamento-de-campanhas"]
   },
-  "ministerio": "Casa Civil da Presidência"
+  "mesa": {
+    "id": "sistema-politico",
+    "nome": "Sistema político",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "valor-do-fundo-eleitoral--captura-politica",
+      "alvo": "captura_politica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "valor-do-fundo-eleitoral--popularidade-governo",
+      "alvo": "popularidade_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--valor-do-fundo-eleitoral--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--valor-do-fundo-eleitoral--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

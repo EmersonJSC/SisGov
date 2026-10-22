@@ -78,3 +78,17 @@ Também nesta área: três leis perderam a opção "Ponto da faixa", que era sob
 | Verba para juventude negra e saúde da população negra (`verba-para-juventude-negra-e-saude-da-populacao-negra`) | sai, ou ganha efeito | Não faz nada no jogo |
 
 Também nesta área, três leis tinham 6 opções e ficaram com 5: Aborto (sai "sem lei penal", que tinha o mesmo efeito de "a pedido"), Política de natalidade (sai "contra filhos, por incentivo") e Laicidade ("religião favorecida" juntou-se a "religião oficial"; o programa da Rússia foi junto).
+
+## Governo e instituições (25 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Cláusula de desempenho (`clausula-de-desempenho`) | fica, mas precisa ganhar efeito (fragmentação partidária no Congresso) | Hoje não faz nada no jogo |
+
+Também nesta área, cinco leis perderam a opção de rascunho "Ponto da faixa". As duas pétreas do centro (Garantias penais e Polícias dos estados) entraram no molde.
+
+## Fica para a mecânica 4 (orçamento)
+
+- Destino da sobra do orçamento (`destino-do-resultado-fiscal`): juntar ao Fundo soberano; comanda o cofre.
+- Contribuição sobre salários: tirar de dentro da previdência para uma lei própria (imposto).
+- Seguro-desemprego e Renda para idosos e pessoas com deficiência: viram programa, com custo.

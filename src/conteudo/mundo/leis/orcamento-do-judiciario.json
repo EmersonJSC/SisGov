@@ -1,35 +1,16 @@
 {
   "id": "orcamento-do-judiciario",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Orçamento do Judiciário",
-  "descricao": "Quanto o país gasta com juízes, tribunais e servidores da Justiça?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "justica",
-    "nome": "Justiça",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto o país gasta com juízes, tribunais e servidores da Justiça.",
+  "area": "governo-e-instituicoes",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_orcamento_do_judiciario",
     "unidade": "nivel_escopo",
     "opcoes": [
-      {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
       {
         "id": "0-6",
         "rotulo": "0,6% (mínimo)",
@@ -37,30 +18,71 @@
         "custoAnualPercentualPib": 0.6,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Servidores", "Sindicatos de servidores"],
-        "efeitos": "Impunidade ↑ e Justiça mais lenta (tamanho: lacuna)"
+        "efeitos": "Impunidade ↑ e Justiça mais lenta (tamanho: lacuna)",
+        "propoe": "0,6% do PIB."
       },
       {
         "id": "1-2",
         "rotulo": "1,2% (o país de referência, 2024:  146,5 bilhões)",
         "valor": 66.67,
         "custoAnualPercentualPib": 1.2,
-        "efeitos": "Hoje: 27,7% dos presos ainda sem julgamento (dado de Segurança)"
+        "efeitos": "Hoje: 27,7% dos presos ainda sem julgamento (dado de Segurança)",
+        "propoe": "1,2% do PIB, como hoje."
       },
       {
         "id": "2",
         "rotulo": "2% (máximo)",
         "valor": 100,
-        "custoAnualPercentualPib": 2.0,
+        "custoAnualPercentualPib": 2,
         "apoiam": ["Servidores", "Sindicatos de servidores"],
         "rejeitam": ["Classe média", "Mercado financeiro"],
-        "efeitos": "Impunidade ↓ (tamanho: lacuna)"
+        "efeitos": "Impunidade ↓ (tamanho: lacuna)",
+        "propoe": "2% do PIB."
       }
     ]
   },
-  "consequencias": [
-    "orcamento-do-judiciario--impunidade",
-    "grupos--orcamento-do-judiciario--grupo-classe-media",
-    "grupos--orcamento-do-judiciario--grupo-servidores"
-  ],
-  "ministerio": "Casa Civil da Presidência"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "justica",
+    "nome": "Justiça",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "orcamento-do-judiciario--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "grupos--orcamento-do-judiciario--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--orcamento-do-judiciario--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1463,7 +1463,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "minimo": [0.4, -0.2],
         "referencia-hoje": [0.0, 0.0],
         "maximo": [-0.2, 0.4]
@@ -1617,7 +1616,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "0": [0.0, 0.0],
         "0-5": [-0.6, 0.0],
         "1": [-1.0, 0.0]
@@ -1675,7 +1673,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "0-6": [0.8, 0.0],
         "1-2": [0.0, 0.0],
         "2": [-0.6, 0.0]
@@ -1848,7 +1845,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "0": [0.8, 0.0],
         "0-007": [0.0, 0.0],
         "0-02": [-0.6, 0.4]
@@ -1912,7 +1908,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
         "0": [0.8, 0.0],
         "0-04": [-0.6, 0.0],
         "0-06": [-1.0, 0.0]

@@ -1,22 +1,12 @@
 {
   "id": "tribunais-superiores",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Tribunais superiores",
-  "descricao": "Quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "justica",
-    "nome": "Justiça",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define quem escolhe os juízes das cortes mais altas, quantos são e por quanto tempo ficam.",
+  "area": "governo-e-instituicoes",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_tribunais_superiores",
     "unidade": "nivel_escopo",
@@ -24,15 +14,17 @@
       {
         "id": "numero-fixo-e-cargo-ate-os-75-anos",
         "rotulo": "Número fixo e cargo até os 75 anos",
-        "valor": 0
+        "valor": 0,
+        "propoe": "Número fixo, até os 75 anos."
       },
       {
         "id": "mandato-fixo-de-9-a-12-anos",
         "rotulo": "Mandato fixo de 9 a 12 anos",
-        "valor": 25.0,
+        "valor": 25,
         "apoiam": ["lacuna"],
         "rejeitam": ["Ministros das cortes"],
-        "efeitos": "Sem efeito medido"
+        "efeitos": "Sem efeito medido",
+        "propoe": "Mandato fixo de 9 a 12 anos."
       },
       {
         "id": "ampliacao-por-lei",
@@ -40,35 +32,153 @@
         "valor": 50,
         "apoiam": ["Bancadas do governo"],
         "rejeitam": ["Bancadas de oposição"],
-        "efeitos": "Independência ↓; Confiança ↓; Captura política ↑; Polarização ↑"
+        "efeitos": "Independência ↓; Confiança ↓; Captura política ↑; Polarização ↑",
+        "propoe": "O governo pode criar cadeiras por lei."
       },
       {
         "id": "nomeacao-pelo-partido",
         "rotulo": "Nomeação pelo partido",
         "valor": 100,
         "rejeitam": ["Quase todos os grupos"],
-        "efeitos": "Os mesmos efeitos, mais fortes"
+        "efeitos": "Os mesmos efeitos, mais fortes",
+        "propoe": "O partido do governo nomeia."
       }
     ]
   },
-  "consequencias": [
-    "tribunais-superiores--forca-instituicoes",
-    "tribunais-superiores--confianca-instituicoes",
-    "tribunais-superiores--impunidade",
-    "tribunais-superiores--margem-manobra-governo",
-    "tribunais-superiores--risco-pais",
-    "tribunais-superiores--grupo-classe-media",
-    "tribunais-superiores--confianca-empresarial",
-    "tribunais-superiores--captura-politica",
-    "tribunais-superiores--polarizacao"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Independência do Judiciário (\"Controlado\" libera \"Nomeação pelo partido\")",
     "leis": ["independencia-do-judiciario"]
   },
-  "ministerio": "Casa Civil",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "justica",
+    "nome": "Justiça",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "tribunais-superiores--forca-instituicoes",
+      "alvo": "forca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -6],
+          [100, -15]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-superiores--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -3],
+          [100, -8]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-superiores--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 6]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "tribunais-superiores--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 4],
+          [100, 10]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "tribunais-superiores--risco-pais",
+      "alvo": "risco_pais",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 6]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-superiores--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -2],
+          [100, -4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-superiores--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-superiores--captura-politica",
+      "alvo": "captura_politica",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "tribunais-superiores--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
