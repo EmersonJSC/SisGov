@@ -79,6 +79,14 @@ O país só declara quais leis começam em vigor e em que valor.
    sobre o lucro das empresas, sobre o patrimônio, sobre heranças…
 9. **Nenhum tema é proibido.** Lei polêmica (permitir o suicídio assistido,
    por exemplo) entra se for jogável. O critério é jogabilidade, não tabu.
+10. **Todos os lados da bússola.** Cada assunto tem opções e leis para os
+    quatro cantos da bússola (Estado ou mercado na economia; liberdade ou
+    autoridade nos costumes), para o jogador poder seguir qualquer programa
+    real, do Trump ao Che Guevara, nas variáveis jogáveis dele.
+11. **Leis que se excluem.** Algumas leis não podem estar em vigor juntas
+    (exemplo: "Estatizar todo o petróleo" e "Leilões de petróleo para
+    empresas privadas"). A exclusão é declarada na lei; aprovar uma pede
+    revogar a outra.
 
 ### 2.4 Os três níveis
 
@@ -103,7 +111,8 @@ O país só declara quais leis começam em vigor e em que valor.
   "Crédito estudantil" e "Bolsas em faculdades privadas"; com ele
   **gratuito**, liberam-se "Vagas nas universidades públicas" e "Cotas".
 - No código: dependência por opção (`src/game/policyRequirements.ts`) e por
-  valor (`pisoPorLei` nas leis de verba) já existem.
+  valor (`pisoPorLei` nas leis de verba) já existem. **Exclusão entre leis é
+  nova** (regra 11 da seção 2.3).
 
 ### 2.6 Em vigor e catálogo
 

@@ -55,6 +55,7 @@ a tela (`src/ui`) fica mais para o final.**
 - [ ] Tempo corrido: calendário em semanas, pausa, velocidades, números deslizando, acontecimentos datados e pausa automática (motor segue mensal)
 - [ ] Mecânica 4: gasto fixo da rede (~30% do PIB) que nenhuma lei controla; reativar o teste `contasSemFuros` "cofre passa de 100%"
 - [ ] Mecânica 2: pisos de saúde e educação ainda têm teto de 40% (trava a tirar)
+- [ ] Exclusão entre leis: lei declara quais não podem estar em vigor junto; aprovar pede revogar a outra
 - [ ] Retirar o STF: mudança em pétrea gera reação do Senado e da população
 
 ## 5. Chamados (status)
