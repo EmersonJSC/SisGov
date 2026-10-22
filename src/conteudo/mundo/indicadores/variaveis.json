@@ -295,7 +295,7 @@
     {
       "id": "aliquota_imposto_sobre_consumo",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto sobre consumo (IVA)",
+      "nome": "Alíquota: Imposto sobre o consumo",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -2467,7 +2467,7 @@
     {
       "id": "ocorrencia_cpi_instalada",
       "tipo": "controle",
-      "nome": "Evento: CPI contra o governo",
+      "nome": "Evento: Comissão parlamentar de inquérito contra o governo",
       "unidade": "indice_0_1",
       "dominio": {
         "minimo": 0,

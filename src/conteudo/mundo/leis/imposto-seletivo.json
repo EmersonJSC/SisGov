@@ -44,7 +44,7 @@
       },
       {
         "id": "saude-ampla",
-        "rotulo": "Saúde ampla (mais bebida açucarada e ultraprocessado) (hoje na referência é parecido, pela EC 132)",
+        "rotulo": "Saúde ampla (mais bebida açucarada e ultraprocessado) (hoje na referência é parecido)",
         "valor": 67,
         "custoTexto": "receita +0,4 a +0,6% do PIB (aprox.)",
         "apoiam": ["Entidades de saúde pública", "Famílias com filhos"],
@@ -85,7 +85,7 @@
     "imposto-seletivo--preco-energia"
   ],
   "mae": {
-    "texto": "Imposto sobre consumo. O estudo diz que \"IVA amplo com devolução\" libera o seletivo como ferramenta de saúde. Proposta minha: \"Saúde ampla\" e \"Saúde e ambiente\" exigem IVA (dual ou amplo).",
+    "texto": "Imposto sobre consumo. \"Saúde ampla\" e \"Saúde e ambiente\" pedem um imposto sobre o consumo de base ampla.",
     "leis": ["imposto-sobre-consumo"]
   },
   "ministerio": "Ministério da Fazenda"

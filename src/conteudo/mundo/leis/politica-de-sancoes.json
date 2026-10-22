@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "so-as-sancoes-da-onu",
-        "rotulo": "Só as sanções da ONU (hoje na referência, aprox.)",
+        "rotulo": "Só as sanções das Nações Unidas (hoje na referência, aprox.)",
         "valor": 0,
         "apoiam": ["Agro", "Empresários"],
         "efeitos": "Exportações ↑ contra aderir às sanções do polo ocidental; Tensão com o alvo ↓ (estimado)"

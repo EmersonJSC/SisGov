@@ -61,6 +61,10 @@ O país só declara quais leis começam em vigor e em que valor.
    unidade, lado a lado.
 4. **Um efeito que o jogador sente.** Toda lei mexe em pelo menos um índice
    ou grupo que aparece na tela.
+5. **Nome que explica, sem sigla.** "Imposto sobre o consumo", não "IVA";
+   "Imposto sobre a propriedade", não "IPTU"; "Comissão parlamentar de
+   inquérito", não "CPI". Siglas de um país nunca entram (vale também para
+   rótulos de opções e nomes de índices). Exceções: PIB e TV.
 
 ### 2.4 Os três níveis
 

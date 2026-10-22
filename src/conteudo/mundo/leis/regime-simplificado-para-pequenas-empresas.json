@@ -31,7 +31,7 @@
       },
       {
         "id": "so-dispensa-do-iva-abaixo-de-um-faturamento",
-        "rotulo": "Só dispensa do IVA abaixo de um faturamento",
+        "rotulo": "Só dispensa do imposto sobre o consumo abaixo de um faturamento",
         "valor": 33,
         "custoTexto": "0,1 a 0,2% do PIB (aprox.)",
         "apoiam": ["Indústria"],
@@ -72,7 +72,7 @@
     "regime-simplificado-pequenas-empresas--grupo-trabalhadores"
   ],
   "mae": {
-    "texto": "Imposto sobre consumo. \"Cascata em vários tributos\" trava \"Só dispensa do IVA\".",
+    "texto": "Imposto sobre consumo. \"Cascata em vários tributos\" trava \"Só dispensa do imposto sobre o consumo\".",
     "leis": ["imposto-sobre-consumo"]
   },
   "respostaTemporal": {

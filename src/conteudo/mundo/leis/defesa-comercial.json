@@ -31,7 +31,7 @@
       },
       {
         "id": "tecnica-caso-a-caso-pelas-regras-da-omc",
-        "rotulo": "Técnica, caso a caso pelas regras da OMC",
+        "rotulo": "Técnica, caso a caso, pelas regras do comércio mundial",
         "valor": 50.0,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Importações ↑ pouco contra Uso amplo; peso da indústria mantido; chance de guerra comercial baixa (estimado)"

@@ -32,7 +32,7 @@
       },
       {
         "id": "base-no-consumo",
-        "rotulo": "Base no consumo (IVA e encargos)",
+        "rotulo": "Base no consumo (imposto sobre o consumo e encargos)",
         "valor": 25,
         "custoTexto": "carga de 15 a 25% do PIB",
         "apoiam": ["Empresários", "Entidades do agronegócio"],
@@ -41,7 +41,7 @@
       },
       {
         "id": "proporcional",
-        "rotulo": "Proporcional (alíquota única na renda, mais IVA)",
+        "rotulo": "Proporcional (alíquota única na renda, mais imposto sobre o consumo)",
         "valor": 50,
         "custoTexto": "carga de 20 a 30% do PIB",
         "apoiam": ["Pequenos negócios", "Classe média"],
