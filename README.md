@@ -11,7 +11,7 @@ A meta da versão 1 é um jogo do gênero do Democracy 4, melhorado e sem copiar
 1. **[PLANO.md](PLANO.md)**: visão, escopo da versão 1, marcos, decisões e a única fonte de status.
 2. [AGENTS.md](AGENTS.md): regras de trabalho.
 3. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é; mecânicas em [docs/jogo/mecanicas/](docs/jogo/mecanicas/README.md).
-5. [docs/README.md](docs/README.md): índice de todos os documentos, com o que é vigente, referência técnica ou desativado.
+4. [docs/README.md](docs/README.md): índice de todos os documentos, com o que é vigente, referência técnica ou desativado.
 
 Documentos em `docs/desativado/` são histórico e não são para seguir.
 

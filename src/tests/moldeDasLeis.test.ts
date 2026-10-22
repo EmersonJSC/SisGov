@@ -147,6 +147,12 @@ describe("molde das leis (ficha v4)", () => {
     expect(codigo(c, "trava.0.lei")).toBe("REFERENCIA_QUEBRADA");
   });
 
+  it("recusa trava de uma opção que a lei não tem", () => {
+    const c = constitucional();
+    c.trava = [{ opcao: "nao-existe", lei: "regulacao-de-vagas", minimo: 10 }];
+    expect(codigo(c, "trava.0.opcao")).toBe("REFERENCIA_QUEBRADA");
+  });
+
   it("recusa pétrea com área", () => {
     const p: FichaV4 = {
       ...constitucional(),
