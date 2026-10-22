@@ -346,7 +346,7 @@ function listaOu(itens: readonly string[]): string {
   return `${itens.slice(0, -1).join(", ")} ou ${itens.at(-1)}`;
 }
 
-function faixaNumerica(lei: VisaoLei) {
+export function faixaNumerica(lei: VisaoLei) {
   const min = lei.minimo ?? 0;
   const referencia = Math.max(lei.nivel, lei.meta);
   if (lei.unidade === "moeda_ano") {
@@ -356,7 +356,11 @@ function faixaNumerica(lei: VisaoLei) {
     return { min, max, passo };
   }
   const teto = lei.maximo ?? 100;
-  if (lei.unidade === "percentual_receita")
+  // Mecânica 2 (2.1): alíquota e % vão até o teto da lei, sem faixa "normal".
+  if (
+    lei.unidade === "percentual_receita" ||
+    lei.unidade === "percentual_0_100"
+  )
     return { min, max: teto, passo: 0.1 };
   const max = Math.min(teto, Math.max(2, referencia * 4));
   return { min, max, passo: max <= 5 ? 0.01 : max <= 30 ? 0.1 : 0.5 };
