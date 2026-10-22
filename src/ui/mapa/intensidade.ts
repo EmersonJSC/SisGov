@@ -149,8 +149,12 @@ export function nivelRelativo(
 
 /** Fator de escala da lei: raio entre 8 e 46 (referência 23); a maior tem
  * quase 6 vezes o raio da menor (pedido do autor, 15/out). */
+/**
+ * Tamanho da bolha da lei pelo quanto está ligada: de 20 a 28 de raio
+ * (22/out: antes ia de 8 a 46, com leis virando pontinhos e outras gigantes).
+ */
 export function escalaDaLei(t: number): number {
-  return (8 + 38 * Math.pow(t, 0.9)) / RAIO_BASE_LEI;
+  return (20 + 8 * Math.pow(t, 0.9)) / RAIO_BASE_LEI;
 }
 
 /** Cor do anel: vermelho (ruim) → âmbar → verde (bom); ardósia se neutro. */

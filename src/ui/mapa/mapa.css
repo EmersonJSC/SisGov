@@ -7228,10 +7228,10 @@ span.el-mini {
   --fam-icone: #a9dcf3;
 }
 .no-lei.familia-constituicao {
-  --fam-fundo: #24252a;
-  --fam-aro: #b9c2cc;
-  --fam-anel: #e6f6ff;
-  --fam-icone: #eef3f8;
+  --fam-fundo: #241f2e;
+  --fam-aro: #9b86c4;
+  --fam-anel: #c3a8ff;
+  --fam-icone: #ddd0f7;
 }
 
 .no-lei[class*="familia-"] {
@@ -7239,22 +7239,22 @@ span.el-mini {
   --fundo-lei: var(--fam-fundo);
 }
 
+/* um anel só: a borda da bolha é o anel de nível (trilha apagada no disco,
+   parte acesa no anel por cima) */
 .no-lei[class*="familia-"] .disco {
   fill: var(--fam-fundo);
-  stroke: var(--fam-aro);
-  stroke-width: 2.5;
-}
-
-.no-lei[class*="familia-"] .aro-interno {
-  fill: none;
-  stroke: var(--fam-aro);
-  stroke-opacity: 0.55;
-  stroke-width: 1.2;
+  stroke: var(--fam-anel);
+  stroke-opacity: 0.22;
+  stroke-width: 3;
 }
 
 .no-lei[class*="familia-"] .anel-nivel .trilha {
-  stroke: var(--fam-anel);
-  stroke-opacity: 0.18;
+  stroke: none;
+}
+
+/* "você mudou" e "pendente" ficam só nos selinhos, sem tracejado em volta */
+.no-lei[class*="familia-"] .aro-sua {
+  display: none;
 }
 
 .no-lei[class*="familia-"] .anel-nivel .cheio {
@@ -7275,6 +7275,7 @@ span.el-mini {
 .no-lei[class*="familia-"].selecionada .disco {
   fill: color-mix(in srgb, var(--fam-fundo) 75%, var(--fam-aro));
   stroke: var(--fam-anel);
+  stroke-opacity: 0.45;
 }
 
 .no-lei[class*="familia-"]:hover .halo,

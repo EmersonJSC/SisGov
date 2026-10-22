@@ -534,18 +534,15 @@ const NoLei = memo(function NoLei({
           <Forma forma={forma} className="halo" r={r + 9} />
           {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
           <Forma forma={forma} className="disco" r={r} />
-          {forma !== "circulo" ? (
-            <Forma forma={forma} className="aro-interno" r={r - 5} />
-          ) : null}
           <TexturaDoTipo tipo={tipoDaLei(lei)} r={r} />
           {forma === "circulo" && coresExtras.length > 0 ? (
             <ArosDosSetores cores={[cor, ...coresExtras]} r={r} />
           ) : null}
           <Anel
-            r={r + 4.5}
+            r={r}
             fracao={nivel}
             cor={cor}
-            largura={3.5}
+            largura={3}
             classe="anel-nivel"
             forma={forma}
           />
