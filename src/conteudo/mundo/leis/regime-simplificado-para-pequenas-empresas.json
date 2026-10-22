@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Regime simplificado para pequenas empresas",
-  "descricao": "Pequenas empresas pagam imposto por um regime mais simples e mais barato?",
+  "nome": "Imposto único para pequenas empresas",
+  "descricao": "Pequenos negócios pagam um imposto só, simples, sobre o faturamento.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-impostos",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum",
+        "rotulo": "Não existe",
         "valor": 0,
         "apoiam": ["Indústria"],
         "rejeitam": ["Pequenos negócios"],
@@ -40,7 +40,7 @@
       },
       {
         "id": "valor-fixo-mensal-para-o-microempreendedor",
-        "rotulo": "Valor fixo mensal para o microempreendedor",
+        "rotulo": "Valor fixo por mês para o microempreendedor",
         "valor": 67,
         "custoTexto": "0,1 a 0,3% do PIB (aprox.)",
         "apoiam": ["Informais", "Pequenos negócios"],
@@ -48,7 +48,7 @@
       },
       {
         "id": "amplo-com-teto-alto-e-servicos-de-alta-renda",
-        "rotulo": "Amplo, com teto alto e serviços de alta renda",
+        "rotulo": "Amplo, até empresas médias",
         "valor": 100,
         "custoTexto": "perto de 1% do PIB (aprox.);  120,1 bi em 2026",
         "apoiam": ["Pequenos negócios", "Comércio e serviços"],

@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Imposto sobre grandes fortunas",
-  "descricao": "Define a alíquota anual máxima cobrada sobre o patrimônio líquido dos mais ricos, acima de um limite de isenção.",
+  "descricao": "Imposto anual sobre o patrimônio de quem tem muito.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 3.5
+      "maximo": 100
     }
   },
   "consequencias": [

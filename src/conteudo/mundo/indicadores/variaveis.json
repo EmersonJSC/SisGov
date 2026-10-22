@@ -283,7 +283,7 @@
     {
       "id": "aliquota_imposto_renda_pessoas",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto de renda da pessoa física",
+      "nome": "Alíquota: Imposto sobre a renda das pessoas",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -307,7 +307,7 @@
     {
       "id": "aliquota_imposto_renda_empresas",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto de renda das empresas",
+      "nome": "Alíquota: Imposto sobre o lucro das empresas",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -319,7 +319,7 @@
     {
       "id": "aliquota_tributacao_dividendos",
       "tipo": "controle",
-      "nome": "Alíquota: Tributação de dividendos",
+      "nome": "Alíquota: Imposto sobre dividendos",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -343,7 +343,7 @@
     {
       "id": "aliquota_imposto_heranca",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto sobre herança e doações",
+      "nome": "Alíquota: Imposto sobre heranças",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -355,7 +355,7 @@
     {
       "id": "aliquota_imposto_propriedade_urbana_rural",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto sobre imóveis urbanos e rurais",
+      "nome": "Alíquota: Imposto sobre imóveis e terras",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -367,7 +367,7 @@
     {
       "id": "aliquota_imposto_transacoes_financeiras",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto sobre transações financeiras",
+      "nome": "Alíquota: Imposto sobre transações bancárias",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,

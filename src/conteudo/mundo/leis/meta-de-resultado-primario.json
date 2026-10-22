@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Meta de resultado primário",
-  "descricao": "Quanto o governo promete economizar (ou gastar a mais) antes dos juros neste ano?",
+  "nome": "Meta de resultado das contas",
+  "descricao": "Quanto o governo promete economizar por ano.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-regra-fiscal",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
+        "rotulo": "Déficit permitido",
         "valor": 0,
         "custoTexto": "Custo",
         "apoiam": ["Quem apoia"],
@@ -32,7 +32,7 @@
       },
       {
         "id": "2-do-pib",
-        "rotulo": "−2% do PIB (mínimo)",
+        "rotulo": "Zerar o déficit",
         "valor": 33.33,
         "custoTexto": "gasto +2% do PIB acima da receita",
         "apoiam": ["grupos que recebem gasto"],
@@ -41,13 +41,13 @@
       },
       {
         "id": "0-25-do-pib",
-        "rotulo": "+0,25% do PIB (o país de referência, meta de 2026, aprox.)",
+        "rotulo": "Economizar 1% do PIB",
         "valor": 66.67,
         "efeitos": "o o país de referência fez −0,43% em 2025"
       },
       {
         "id": "3-do-pib",
-        "rotulo": "+3% do PIB (máximo; perto do que estabiliza a dívida, entre +2,3 e +3,1%)",
+        "rotulo": "Economizar 3% do PIB",
         "valor": 100,
         "custoTexto": "corte de gasto ou alta de imposto de até 3% do PIB",
         "apoiam": ["Mercado financeiro"],

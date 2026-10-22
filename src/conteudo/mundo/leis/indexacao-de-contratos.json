@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Indexação de contratos",
-  "descricao": "Contratos, aluguéis, tarifas e salários podem ser corrigidos automaticamente pela inflação passada?",
+  "nome": "Correção automática pela inflação",
+  "descricao": "Se aluguéis, salários e contratos sobem sozinhos com a inflação passada.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -23,21 +23,21 @@
     "opcoes": [
       {
         "id": "indexacao-livre",
-        "rotulo": "Indexação livre",
+        "rotulo": "Tudo corrigido pela inflação",
         "valor": 0,
         "apoiam": ["Sindicatos de servidores", "Associações de aposentados"],
         "efeitos": "Inércia da inflação ↑; inflação persistente ↑; juro neutro ↑"
       },
       {
         "id": "restrita",
-        "rotulo": "Restrita (só em contratos de 12 meses ou mais)",
+        "rotulo": "Só salário mínimo e aposentadorias",
         "valor": 50.0,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Inércia média"
       },
       {
         "id": "desindexacao-ampla",
-        "rotulo": "Desindexação ampla (inclusive benefícios e tarifas)",
+        "rotulo": "Proibida",
         "valor": 100,
         "custoTexto": "Economia nos gastos (lacuna)",
         "apoiam": ["Mercado financeiro"],

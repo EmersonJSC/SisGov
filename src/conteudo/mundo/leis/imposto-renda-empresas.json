@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Imposto de renda das empresas",
-  "descricao": "Define a alíquota nominal sobre o lucro tributável. No jogo, o PIB serve como aproximação da base porque o modelo não separa o lucro empresarial.",
+  "nome": "Imposto sobre o lucro das empresas",
+  "descricao": "A parte do lucro que a empresa entrega ao governo.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 40
+      "maximo": 100
     }
   },
   "consequencias": [

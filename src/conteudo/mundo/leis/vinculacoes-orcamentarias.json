@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Vinculações orçamentárias",
-  "descricao": "A Constituição pode carimbar parte da receita para um gasto fixo?",
+  "nome": "Verbas carimbadas",
+  "descricao": "Se a Constituição obriga a gastar uma parte fixa da receita em saúde e educação.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-regra-fiscal",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "desligada-receita-sem-carimbo",
-        "rotulo": "Desligada: receita sem carimbo",
+        "rotulo": "Nenhuma verba carimbada",
         "valor": 0,
         "apoiam": ["Mercado financeiro", "Empresários"],
         "rejeitam": [
@@ -35,7 +35,7 @@
       },
       {
         "id": "ligada-vinculacoes-permitidas",
-        "rotulo": "Ligada: vinculações permitidas",
+        "rotulo": "Saúde e educação com verba carimbada",
         "valor": 100,
         "apoiam": [
           "Entidades de saúde pública",

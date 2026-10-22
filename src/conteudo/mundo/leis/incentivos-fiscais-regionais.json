@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Incentivos fiscais regionais",
-  "descricao": "O país dá benefício fiscal para atrair empresas a regiões mais pobres, e de que jeito?",
+  "nome": "Zonas com imposto menor",
+  "descricao": "Regiões onde as empresas pagam menos imposto para atrair fábricas.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-impostos",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum",
+        "rotulo": "Nenhuma",
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Interior"],
@@ -31,7 +31,7 @@
       },
       {
         "id": "zonas-de-exportacao",
-        "rotulo": "Zonas de exportação",
+        "rotulo": "Zonas para fábricas exportadoras",
         "valor": 33,
         "custoTexto": "0,1% do PIB (aprox.)",
         "apoiam": ["Indústria"],
@@ -39,7 +39,7 @@
       },
       {
         "id": "fundos-regionais",
-        "rotulo": "Fundos regionais (gasto direto, sem isenção)",
+        "rotulo": "Fundos para regiões pobres",
         "valor": 67,
         "custoTexto": "0,3 a 0,6% do PIB (aprox.)",
         "apoiam": ["Interior", "Pobres"],
@@ -48,7 +48,7 @@
       },
       {
         "id": "zona-franca-ampla",
-        "rotulo": "Zona franca ampla",
+        "rotulo": "Zona franca ampla numa região",
         "valor": 100,
         "custoTexto": "0,3 a 0,5% do PIB (aprox.)",
         "apoiam": ["Interior", "Indústria local"],

@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Imposto sobre transações financeiras",
-  "descricao": "Define a alíquota cobrada sobre cada movimentação financeira, de débitos em conta corrente a compras de ações e operações de câmbio.",
+  "nome": "Imposto sobre transações bancárias",
+  "descricao": "Um pouco de cada transferência e pagamento vai para o governo.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 1.2
+      "maximo": 100
     }
   },
   "consequencias": [

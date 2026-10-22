@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Imposto sobre herança e doações",
-  "descricao": "Define a alíquota máxima cobrada sobre heranças e doações, acima de uma faixa isenta.",
+  "nome": "Imposto sobre heranças",
+  "descricao": "O que os herdeiros pagam para receber o que alguém deixou.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 85
+      "maximo": 100
     }
   },
   "consequencias": [

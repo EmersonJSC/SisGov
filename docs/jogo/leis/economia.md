@@ -1,6 +1,10 @@
 # Economia e contas públicas
 
 > **Status: VIGENTE (em desenho).** Método e formato em [README](README.md).
+> **Implementação:** fase 1 feita em 22/out (`scripts/reforma/economia_fase1.py`):
+> nomes, descrições e opções; impostos sem teto e com curva de arrecadação.
+> Fase 2 no [PLANO](../../../PLANO.md).
+>
 > Cantos: **E·L** Estado e liberdade · **E·A** Estado e autoridade ·
 > **M·L** mercado e liberdade · **M·A** mercado e autoridade.
 

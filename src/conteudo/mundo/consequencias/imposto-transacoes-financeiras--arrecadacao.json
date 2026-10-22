@@ -4,19 +4,42 @@
   "versaoEsquema": 1,
   "origem": "aliquota_imposto_transacoes_financeiras",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 1,
-    "termoConstante": 0
-  },
-  "normalizacao": {
-    "fator": "pib",
-    "multiplicador": 0.03511111
+    "pontos": [
+      [0.0, 0.0],
+      [0.15, 0.1425],
+      [0.3, 0.27],
+      [0.38, 0.331867],
+      [0.45, 0.3825],
+      [0.6, 0.48],
+      [0.75, 0.5625],
+      [0.9, 0.63],
+      [1.05, 0.6825],
+      [1.2, 0.72],
+      [1.35, 0.7425],
+      [1.5, 0.75],
+      [1.65, 0.7425],
+      [1.8, 0.72],
+      [1.95, 0.6825],
+      [2.1, 0.63],
+      [2.25, 0.5625],
+      [2.4, 0.48],
+      [2.55, 0.3825],
+      [2.7, 0.27],
+      [2.85, 0.1425],
+      [3.0, 0.0],
+      [100, 0.0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
+  },
+  "escala": {
+    "fator": "pib",
+    "referencia": 24.873419
   }
 }

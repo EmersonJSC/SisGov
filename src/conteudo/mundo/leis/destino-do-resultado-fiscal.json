@@ -2,8 +2,8 @@
   "id": "destino-do-resultado-fiscal",
   "tipo": "lei",
   "versaoEsquema": 3,
-  "nome": "Destino do resultado fiscal",
-  "descricao": "Decide quanto do superávit vai para pagar a dívida e quanto fica guardado no cofre do Tesouro. No déficit, a mesma parte sai do cofre e o resto vira dívida nova.",
+  "nome": "Destino da sobra do orçamento",
+  "descricao": "O que fazer quando o governo arrecada mais do que gasta.",
   "area": "Tributação",
   "mesa": {
     "id": "regra-fiscal",
@@ -18,17 +18,17 @@
     "opcoes": [
       {
         "id": "pagar-a-divida",
-        "rotulo": "Tudo para a dívida",
+        "rotulo": "Pagar a dívida",
         "valor": 0
       },
       {
         "id": "dividir",
-        "rotulo": "Metade para cada",
+        "rotulo": "Metade para a dívida, metade para o fundo",
         "valor": 50
       },
       {
         "id": "guardar",
-        "rotulo": "Tudo para o cofre",
+        "rotulo": "Guardar no fundo soberano",
         "valor": 100
       }
     ]

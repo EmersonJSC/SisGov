@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "tributaria",
   "nome": "Imposto sobre o consumo",
-  "descricao": "Alíquota do imposto sobre o consumo, de 0% a 100%.",
+  "descricao": "A porcentagem que vai no preço de tudo o que se compra.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "consumo",
     "limites": {
       "minimo": 0,
-      "maximo": 30
+      "maximo": 100
     }
   },
   "consequencias": [

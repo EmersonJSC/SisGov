@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Imposto de renda da pessoa física",
-  "descricao": "Define a alíquota marginal máxima do imposto de renda pessoal. No jogo, o efeito fiscal é uma aproximação agregada sobre a renda das famílias; as faixas progressivas individuais não são calculadas separadamente.",
+  "nome": "Imposto sobre a renda das pessoas",
+  "descricao": "Quanto cada pessoa paga sobre o salário e outros ganhos, na faixa mais alta.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "renda_familias",
     "limites": {
       "minimo": 0,
-      "maximo": 60
+      "maximo": 100
     }
   },
   "consequencias": [

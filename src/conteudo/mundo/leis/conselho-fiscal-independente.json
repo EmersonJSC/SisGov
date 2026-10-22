@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Conselho fiscal independente",
-  "descricao": "Existe um órgão técnico independente que projeta a dívida e confere as contas do governo, e com que poder?",
+  "descricao": "Um órgão técnico que confere as contas do governo e avisa quando elas não fecham.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-regra-fiscal",
@@ -23,14 +23,14 @@
     "opcoes": [
       {
         "id": "nenhum",
-        "rotulo": "Nenhum",
+        "rotulo": "Não existe",
         "valor": 0,
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Credibilidade fiscal ↓"
       },
       {
         "id": "no-legislativo-so-consultivo",
-        "rotulo": "No Legislativo, só consultivo (hoje na referência, desde 2016)",
+        "rotulo": "Só dá opinião",
         "valor": 50.0,
         "custoTexto": "lacuna (pequeno)",
         "apoiam": ["Mercado financeiro"],
@@ -38,7 +38,7 @@
       },
       {
         "id": "com-poder-de-veto-as-projecoes-do-orcamento",
-        "rotulo": "Com poder de veto às projeções do orçamento",
+        "rotulo": "Pode travar o orçamento",
         "valor": 100,
         "custoTexto": "lacuna (pequeno)",
         "apoiam": ["Mercado financeiro"],

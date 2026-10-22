@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Tributação de dividendos",
-  "descricao": "Define a alíquota máxima cobrada do acionista quando a empresa distribui lucro.",
+  "nome": "Imposto sobre dividendos",
+  "descricao": "O que o sócio paga quando tira o lucro da empresa para o bolso.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 55
+      "maximo": 100
     }
   },
   "consequencias": [

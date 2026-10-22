@@ -4,19 +4,40 @@
   "versaoEsquema": 1,
   "origem": "aliquota_tributacao_dividendos",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 1,
-    "termoConstante": 0
-  },
-  "normalizacao": {
-    "fator": "pib",
-    "multiplicador": 0.00088889
+    "pontos": [
+      [0.0, 0.0],
+      [5.0, 4.75],
+      [10.0, 9.0],
+      [15.0, 12.75],
+      [20.0, 16.0],
+      [25.0, 18.75],
+      [30.0, 21.0],
+      [35.0, 22.75],
+      [40.0, 24.0],
+      [45.0, 24.75],
+      [50.0, 25.0],
+      [55.0, 24.75],
+      [60.0, 24.0],
+      [65.0, 22.75],
+      [70.0, 21.0],
+      [75.0, 18.75],
+      [80.0, 16.0],
+      [85.0, 12.75],
+      [90.0, 9.0],
+      [95.0, 4.75],
+      [100.0, 0.0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
+  },
+  "escala": {
+    "fator": "pib",
+    "referencia": 1012.494178
   }
 }

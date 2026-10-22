@@ -4,7 +4,7 @@
   "versaoEsquema": 2,
   "grupo": "regulatoria",
   "nome": "Controle de capitais",
-  "descricao": "O dinheiro pode entrar e sair do país livremente?",
+  "descricao": "Se o dinheiro pode entrar e sair do país livremente.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -23,14 +23,14 @@
     "opcoes": [
       {
         "id": "conta-aberta",
-        "rotulo": "Conta aberta",
+        "rotulo": "Livre",
         "valor": 0,
         "apoiam": ["Mercado financeiro", "Ricos"],
         "efeitos": "Investimento estrangeiro ↑; volatilidade do câmbio ↑"
       },
       {
         "id": "controles-prudenciais",
-        "rotulo": "Controles prudenciais (imposto que sobe e desce com o fluxo) (o país de referência 2009-2013)",
+        "rotulo": "Imposto e regras na saída",
         "valor": 33.33,
         "custoTexto": "Gera receita de imposto",
         "apoiam": ["Confederação da indústria"],
@@ -39,14 +39,14 @@
       },
       {
         "id": "controles-amplos",
-        "rotulo": "Controles amplos (cotas de compra de dólar)",
+        "rotulo": "Limite para mandar dinheiro para fora",
         "valor": 66.67,
         "rejeitam": ["Classe média", "Ricos"],
         "efeitos": "Libera o índice Dólar paralelo; fuga de capitais ↓ no curto prazo; investimento estrangeiro ↓"
       },
       {
         "id": "conta-fechada",
-        "rotulo": "Conta fechada",
+        "rotulo": "Saída proibida",
         "valor": 100,
         "rejeitam": [
           "Mercado financeiro",

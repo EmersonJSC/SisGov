@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Valor da meta de inflação",
-  "descricao": "Qual inflação por ano o banco central deve perseguir?",
+  "nome": "Meta de inflação",
+  "descricao": "Quanto de inflação por ano o banco central deve buscar.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "minimo-2",
-        "rotulo": "Mínimo: 2%",
+        "rotulo": "2% ao ano",
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Centrais sindicais", "Confederação da indústria"],
@@ -31,14 +31,14 @@
       },
       {
         "id": "referencia-3",
-        "rotulo": "Referência: 3% (tolerância de 1,5 ponto)",
+        "rotulo": "3% ao ano",
         "valor": 25.0,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Inflação em torno de 3%, juros no nível atual (taxa básica alta); PIB ↓ pouco contra metas mais frouxas; expectativas ancoradas (estimado)"
       },
       {
         "id": "proposta-desenvolvimentista-4-a-4-5",
-        "rotulo": "Proposta desenvolvimentista: 4% a 4,5%",
+        "rotulo": "4% a 4,5% ao ano",
         "valor": 50.0,
         "apoiam": ["Centrais sindicais", "Confederação da indústria"],
         "rejeitam": ["Mercado financeiro"],
@@ -46,7 +46,7 @@
       },
       {
         "id": "maximo-6",
-        "rotulo": "Máximo: 6%",
+        "rotulo": "6% ao ano",
         "valor": 100,
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Expectativas ↑ forte; indexação ganha força"

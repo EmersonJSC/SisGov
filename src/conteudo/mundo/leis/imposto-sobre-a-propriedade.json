@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Imposto sobre a propriedade",
-  "descricao": "Quanto pagam imóveis, terras e veículos, e com que valor de referência?",
+  "nome": "Valor dos imóveis para o imposto",
+  "descricao": "Se o valor de casas e terras usado no imposto acompanha o preço de mercado.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-impostos",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "simbolico",
-        "rotulo": "Simbólico",
+        "rotulo": "Valor simbólico, quase não se paga",
         "valor": 0,
         "custoTexto": "receita abaixo de 0,5% do PIB",
         "apoiam": ["Entidades do agronegócio", "Classe média"],
@@ -31,7 +31,7 @@
       },
       {
         "id": "atual-planta-antiga-imposto-rural-quase-zero",
-        "rotulo": "Atual: planta antiga, imposto rural quase zero",
+        "rotulo": "Valores antigos; terra rural quase não paga",
         "valor": 33.33,
         "custoTexto": "receita perto de 1,5% do PIB (aprox.)",
         "apoiam": ["Entidades do agronegócio"],
@@ -39,7 +39,7 @@
       },
       {
         "id": "atualizado-e-progressivo",
-        "rotulo": "Atualizado e progressivo (planta a cada 4 anos, imposto sobre terra ociosa)",
+        "rotulo": "Valor atualizado, mais caro para quem tem muitos imóveis",
         "valor": 66.67,
         "custoTexto": "receita 2 a 2,5% do PIB (aprox.)",
         "apoiam": ["Moradia", "Terra"],
@@ -48,7 +48,7 @@
       },
       {
         "id": "imposto-sobre-o-valor-da-terra",
-        "rotulo": "Imposto sobre o valor da terra",
+        "rotulo": "Pelo valor da terra, usada ou parada",
         "valor": 100,
         "custoTexto": "receita 2 a 3% do PIB (aprox.)",
         "apoiam": ["Moradia"],

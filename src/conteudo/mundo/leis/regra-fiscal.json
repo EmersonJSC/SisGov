@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "institucional",
-  "nome": "Regra fiscal",
-  "descricao": "Define se o governo tem uma regra numérica que limita déficit ou gasto, e de que tipo.",
+  "nome": "Regra das contas",
+  "descricao": "O que limita o gasto do governo.",
   "area": "Instituições, Estado e sistema político",
   "mesa": {
     "id": "regra-fiscal",
@@ -29,12 +29,12 @@
       },
       {
         "id": "teto-gastos",
-        "rotulo": "Teto de gastos",
+        "rotulo": "Teto de gasto",
         "valor": 67
       },
       {
         "id": "arcabouco",
-        "rotulo": "Arcabouço fiscal",
+        "rotulo": "Gasto cresce menos que a receita",
         "valor": 100
       }
     ]

@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Quem controla o banco central",
-  "descricao": "O governo manda nos juros ou o banco central decide sozinho, com mandato fixo?",
+  "nome": "Quem manda no banco central",
+  "descricao": "Se o governo decide os juros ou se um banco central independente decide.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "banco-central-subordinado-ao-governo",
-        "rotulo": "Banco central subordinado ao governo",
+        "rotulo": "O governo decide os juros",
         "valor": 0,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Mercado financeiro"],
@@ -31,14 +31,14 @@
       },
       {
         "id": "autonomia-parcial",
-        "rotulo": "Autonomia parcial (mandato não coincide com o do presidente, sem meta em lei)",
+        "rotulo": "Diretoria com mandato fixo",
         "valor": 50.0,
         "apoiam": ["Confederação da indústria"],
         "efeitos": "Juros seguem regra de reação; efeito nas expectativas menor que o da autonomia plena (lacuna)"
       },
       {
         "id": "autonomia-plena",
-        "rotulo": "Autonomia plena (mandatos fixos, objetivo em lei)",
+        "rotulo": "Independente, com meta",
         "valor": 100,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Centrais sindicais"],

@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Regime cambial",
-  "descricao": "O preço do dólar é fixado pelo governo, segue uma faixa ou flutua no mercado?",
+  "nome": "Moeda e câmbio",
+  "descricao": "Como o valor da moeda frente ao dólar é decidido.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "fixo",
-        "rotulo": "Fixo",
+        "rotulo": "Câmbio fixo pelo governo",
         "valor": 0,
         "custoTexto": "Custo de manter reservas",
         "rejeitam": ["Entidades do agronegócio"],
@@ -31,21 +31,21 @@
       },
       {
         "id": "bandas",
-        "rotulo": "Bandas",
+        "rotulo": "O dólar só varia dentro de uma faixa",
         "valor": 33.33,
         "apoiam": ["Confederação da indústria"],
         "efeitos": "Volatilidade ↓; risco de crise menor que no fixo"
       },
       {
         "id": "flutuante-administrado",
-        "rotulo": "Flutuante administrado",
+        "rotulo": "Livre, com o banco central comprando e vendendo dólares",
         "valor": 66.67,
         "apoiam": ["Confederação da indústria", "Entidades do agronegócio"],
         "efeitos": "Volatilidade média; reservas usadas com frequência"
       },
       {
         "id": "flutuante",
-        "rotulo": "Flutuante",
+        "rotulo": "Câmbio livre",
         "valor": 100,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Volatilidade do câmbio ↑; repasse do câmbio para a inflação (0,10); chance de crise cambial ↓"

@@ -63,7 +63,8 @@ describe("SG157 — orçamento na rede", () => {
         r.targetId === "arrecadacao" &&
         r.originId === "aliquota_imposto_sobre_consumo",
     )!;
-    expect(relacao.normalization?.fator).toBe("consumo");
+    // reforma da economia: curva de arrecadação; a base entra como escala
+    expect(relacao.scale?.fator).toBe("consumo");
     expect(relacao.readsLevel).toBe(true);
     const com = (consumo: number) => {
       const r = calculateContribution(relacao, 26.5, (id) =>

@@ -69,7 +69,7 @@ describe("SG138 — leis filhas", () => {
     expect(meta.exige).toMatchObject({
       lei: "regime-cambial",
       atendida: true,
-      base: "Sem meta",
+      base: "Crescimento e financiar o governo",
     });
     expect(meta.exige!.opcoes.length).toBe(3);
     const cambio = lei(partida, "regime-cambial");
@@ -92,8 +92,8 @@ describe("SG138 — leis filhas", () => {
     expect(leisQueCaem(partida, "regime-cambial", fixo)).toEqual([
       {
         id: "mandato-do-banco-central",
-        nome: "Mandato do banco central",
-        base: "Sem meta",
+        nome: "Missão do banco central",
+        base: "Crescimento e financiar o governo",
         revogada: false,
       },
     ]);
@@ -117,7 +117,7 @@ describe("SG138 — leis filhas", () => {
     const recusada = mudarLei(partida, meta.id, estrita);
     expect(recusada.ok).toBe(false);
     if (!recusada.ok)
-      expect(recusada.erros[0]).toMatch(/exige Regime cambial em:/);
+      expect(recusada.erros[0]).toMatch(/exige Moeda e câmbio em:/);
     // a prévia também recusa
     expect(preverLei(partida, meta.id, estrita, 1).ok).toBe(false);
     // a base continua permitida (repetir a meta não vira ação)

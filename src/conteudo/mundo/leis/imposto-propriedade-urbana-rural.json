@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "tributaria",
-  "nome": "Imposto sobre imóveis urbanos e rurais",
-  "descricao": "Define quanto se arrecada todo ano com imóveis urbanos e terras rurais, com valores venais atualizados ou não.",
+  "nome": "Imposto sobre imóveis e terras",
+  "descricao": "Imposto anual sobre casas, prédios e terras, em porcentagem do valor.",
   "area": "Tributação",
   "mesa": {
     "id": "impostos",
@@ -21,7 +21,7 @@
     "base": "pib",
     "limites": {
       "minimo": 0,
-      "maximo": 4
+      "maximo": 100
     }
   },
   "consequencias": [

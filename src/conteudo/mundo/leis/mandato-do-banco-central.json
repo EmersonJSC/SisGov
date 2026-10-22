@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Mandato do banco central",
-  "descricao": "O banco central persegue só a inflação, também o emprego, ou nenhuma meta?",
+  "nome": "Missão do banco central",
+  "descricao": "O que o banco central persegue.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -22,28 +22,28 @@
     "opcoes": [
       {
         "id": "sem-meta",
-        "rotulo": "Sem meta",
+        "rotulo": "Crescimento e financiar o governo",
         "valor": 0,
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Tranca a alavanca Valor da meta de inflação (proposta minha); expectativas de inflação ↑"
       },
       {
         "id": "mandato-duplo",
-        "rotulo": "Mandato duplo (inflação e emprego)",
+        "rotulo": "Inflação e emprego",
         "valor": 33.33,
         "apoiam": ["Centrais sindicais", "Confederação da indústria"],
         "efeitos": "Juros reagem mais ao PIB fraco; PIB ↑ no curto prazo; inflação ↑ leve"
       },
       {
         "id": "meta-flexivel",
-        "rotulo": "Meta flexível (meta contínua com tolerância)",
+        "rotulo": "Inflação baixa, com prazo flexível",
         "valor": 66.67,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Juros seguem regra de reação; expectativas ancoradas"
       },
       {
         "id": "meta-estrita",
-        "rotulo": "Meta estrita (horizonte curto, banda estreita)",
+        "rotulo": "Só inflação baixa",
         "valor": 100,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Trabalhadores com carteira"],

@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Regulação dos bancos",
-  "descricao": "Quanto capital e quantas regras os bancos precisam cumprir para emprestar?",
+  "nome": "Regras para os bancos",
+  "descricao": "Quanto o governo fiscaliza o que os bancos podem fazer.",
   "area": "Economia, moeda e comércio",
   "mesa": {
     "id": "moeda-e-banco-central",
@@ -30,14 +30,14 @@
       },
       {
         "id": "padrao-internacional",
-        "rotulo": "Padrão internacional (Basileia)",
+        "rotulo": "Padrão internacional",
         "valor": 33.33,
         "apoiam": ["Mercado financeiro"],
         "efeitos": "Ponto de equilíbrio"
       },
       {
         "id": "padrao-reforcado",
-        "rotulo": "Padrão reforçado",
+        "rotulo": "Rígida, com limite de risco",
         "valor": 66.67,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Mercado financeiro"],
@@ -45,7 +45,7 @@
       },
       {
         "id": "repressao-financeira",
-        "rotulo": "Repressão financeira (teto de juros, crédito obrigatório)",
+        "rotulo": "O governo manda onde os bancos emprestam",
         "valor": 100,
         "custoTexto": "Subsídio escondido",
         "apoiam": ["Centrais sindicais"],

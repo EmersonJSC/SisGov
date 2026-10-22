@@ -4,19 +4,41 @@
   "versaoEsquema": 1,
   "origem": "aliquota_imposto_heranca",
   "alvo": "arrecadacao",
-  "mecanismo": "afim",
+  "mecanismo": "pontos",
   "parametros": {
-    "coeficiente": 1,
-    "termoConstante": 0
-  },
-  "normalizacao": {
-    "fator": "pib",
-    "multiplicador": 0.00042222
+    "pontos": [
+      [0.0, 0.0],
+      [4.0, 3.8],
+      [8.0, 7.2],
+      [12.0, 10.2],
+      [16.0, 12.8],
+      [20.0, 15.0],
+      [24.0, 16.8],
+      [28.0, 18.2],
+      [32.0, 19.2],
+      [36.0, 19.8],
+      [40.0, 20.0],
+      [44.0, 19.8],
+      [48.0, 19.2],
+      [52.0, 18.2],
+      [56.0, 16.8],
+      [60.0, 15.0],
+      [64.0, 12.8],
+      [68.0, 10.2],
+      [72.0, 7.2],
+      [76.0, 3.8],
+      [80.0, 0.0],
+      [100, 0.0]
+    ]
   },
   "leitura": "nivel",
   "unidade": "percentual_pib",
   "atrasoPassos": 0,
   "duracao": {
     "modo": "continuo"
+  },
+  "escala": {
+    "fator": "pib",
+    "referencia": 2131.605312
   }
 }

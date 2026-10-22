@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Revisão de gastos tributários",
-  "descricao": "O governo revê ou corta as isenções e benefícios fiscais que já existem?",
+  "nome": "Isenções fiscais",
+  "descricao": "Quanto o governo deixa de cobrar para ajudar setores, regiões e entidades.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-impostos",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "nenhuma",
-        "rotulo": "Nenhuma",
+        "rotulo": "Mantém todas as isenções",
         "valor": 0,
         "custoTexto": "gastos tributários de 4,53% do PIB (2026) seguem",
         "apoiam": [
@@ -35,7 +35,7 @@
       },
       {
         "id": "revisao-com-prazo-de-validade",
-        "rotulo": "Revisão com prazo de validade",
+        "rotulo": "Isenções com prazo de validade",
         "valor": 50.0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Entidades do agronegócio", "Indústria"],
@@ -43,7 +43,7 @@
       },
       {
         "id": "corte-linear",
-        "rotulo": "Corte linear (hoje na referência: 10% desde 2026)",
+        "rotulo": "Corte geral das isenções",
         "valor": 100,
         "custoTexto": "receita +0,15% do PIB (aprox., a partir de  19,8 bi pedidos pelo governo)",
         "apoiam": ["Mercado financeiro", "Centrais sindicais"],

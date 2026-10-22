@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 2,
   "grupo": "regulatoria",
-  "nome": "Tributação do lucro distribuído e da renda guardada no exterior",
-  "descricao": "O lucro que a empresa paga ao sócio, e a renda que fica parada em empresas no exterior ou em fundos de um só dono, pagam imposto na pessoa física, e quando?",
+  "nome": "Imposto do dinheiro guardado no exterior",
+  "descricao": "O que acontece com o lucro que fica em empresas e contas fora do país.",
   "area": "Impostos e contas públicas",
   "mesa": {
     "id": "mesa-impostos",
@@ -23,7 +23,7 @@
     "opcoes": [
       {
         "id": "isento-e-renda-no-exterior-so-paga-quando-volta",
-        "rotulo": "Isento, e renda no exterior só paga quando volta",
+        "rotulo": "Não cobra; paga só quando o dinheiro volta",
         "valor": 0,
         "custoTexto": "receita 0",
         "apoiam": ["Empresários", "Ricos", "Mercado financeiro"],
@@ -32,7 +32,7 @@
       },
       {
         "id": "retencao-minima-e-15-ao-ano-no-exterior-e-nos-fundos-exclusi",
-        "rotulo": "Retenção mínima (10% acima de um limite, com redutor) e 15% ao ano no exterior e nos fundos exclusivos (hoje na referência, desde 2026)",
+        "rotulo": "Cobrança mínima todo ano",
         "valor": 33.33,
         "custoTexto": "receita +0,2 a +0,3% do PIB (aprox.); offshores e fundos: previsão inicial de  20 bi em 2024",
         "apoiam": ["Trabalhadores", "Centrais sindicais"],
@@ -41,7 +41,7 @@
       },
       {
         "id": "aliquota-unica-de-15-a-25-no-dividendo-com-corte-no-imposto-",
-        "rotulo": "Alíquota única de 15 a 25% no dividendo, com corte no imposto da empresa, e 15% ao ano no exterior",
+        "rotulo": "Alíquota única sobre o lucro distribuído",
         "valor": 66.67,
         "custoTexto": "neutro a +0,3% do PIB;  22 a 39 bi",
         "apoiam": ["Indústria"],
@@ -49,7 +49,7 @@
       },
       {
         "id": "integrado-na-tabela-progressiva-e-renda-no-exterior-somada-t",
-        "rotulo": "Integrado na tabela progressiva, e renda no exterior somada todo ano",
+        "rotulo": "Tudo na tabela do imposto de renda, inclusive o exterior",
         "valor": 100,
         "custoTexto": "receita +0,4 a +0,6% do PIB (aprox.)",
         "apoiam": ["Centrais sindicais", "Pobres"],
