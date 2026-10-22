@@ -44,6 +44,7 @@ import {
 import { Icone, IconeSvg } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { iconeLei } from "./iconesPersonalizados";
+import { familiaDaLei } from "./familia";
 import {
   PRESIDENCIA,
   ehConstitucional,
@@ -349,19 +350,6 @@ export function formaDaLei(lei: VisaoLei): FormaLei {
 
 /** Tipo da lei na tela: a camada da mesa (Constituição, Lei, Alavanca). */
 type TipoDeLei = "constituicao" | "lei" | "alavanca";
-/**
- * Família da lei pela cor da bolha (docs/arte/briefing-icones-gpt.md, seção 4):
- * imposto, verba, Constituição ou regra.
- */
-function familiaDaLei(lei: VisaoLei): string {
-  if (lei.nivelLegal === "petrea" || lei.nivelLegal === "constitucional")
-    return "constituicao";
-  if (ehConstitucional(lei)) return "constituicao";
-  if (lei.grupo === "tributaria") return "imposto";
-  if (lei.grupo === "orcamentaria") return "verba";
-  return "regra";
-}
-
 function tipoDaLei(lei: VisaoLei): TipoDeLei {
   return lei.mesa?.camada ?? (lei.nivelLegal ? "constituicao" : "lei");
 }
@@ -605,9 +593,9 @@ const NoLei = memo(function NoLei({
       </g>
       {mostrarRotulo ? (
         <Rotulo
-          linhas={quebrarNome(lei.nome, 22, 3)}
-          y={raioVisivel + Math.min(150, Math.max(14, 18 / escalaTela)) * 1.1}
-          tamanho={Math.min(150, Math.max(14, 18 / escalaTela))}
+          linhas={quebrarNome(lei.nome, 18, 3)}
+          y={raioVisivel + Math.min(150, Math.max(13, 16 / escalaTela)) * 1.1}
+          tamanho={Math.min(150, Math.max(13, 16 / escalaTela))}
           classe="rotulo-lei"
         />
       ) : null}
@@ -1802,7 +1790,8 @@ export function MapaPolitico({
                   <text
                     className="titulo-esfera"
                     y={bloco.titulo.y}
-                    fontSize={bloco.titulo.tamanho}
+                    // 22/out: título menor, para as leis ganharem o destaque
+                    fontSize={bloco.titulo.tamanho * 0.72}
                     textAnchor="middle"
                   >
                     {bloco.titulo.linhas.map((linha, i) => (
@@ -2044,8 +2033,10 @@ export function MapaPolitico({
               const cor = corDaEsfera(setores[0]);
               const extras = setores.slice(1).map(corDaEsfera);
               const estado = estadoDe(pos.id);
-              // sem etiquetas fixas: o nome aparece grande com o mouse em cima
-              const mostrarRotulo = pos.id === foco || pos.id === selecionado;
+              // 22/out: de perto, todas as leis da área mostram o nome (como os
+              // índices); com o mouse em cima, o nome cresce com o zoom
+              const emDestaque = pos.id === foco || pos.id === selecionado;
+              const mostrarRotulo = emDestaque || k >= 0.75;
               return (
                 <NoLei
                   key={pos.id}
@@ -2058,7 +2049,7 @@ export function MapaPolitico({
                   mostrarRotulo={mostrarRotulo}
                   // só a lei com nome à mostra acompanha o zoom (as outras não
                   // são redesenhadas a cada quadro dele)
-                  escalaTela={mostrarRotulo ? k : 1}
+                  escalaTela={emDestaque ? k : 1}
                   nivel={nivelRelativo(lei, referencia)}
                   onEntrar={entrar}
                   onSair={sair}

@@ -30,8 +30,9 @@ import { Bandeira } from "./Bandeira";
 import { diferenca, moeda } from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
-import { montarBase } from "./layout";
+import { montarBase, PRESIDENCIA } from "./layout";
 import { MapaPolitico, type MarcaPrevista } from "./MapaPolitico";
+import { PainelDaArea } from "./PainelDaArea";
 import {
   LARGURA_PAINEL_GRUPOS,
   PainelGrupos,
@@ -989,6 +990,17 @@ function TelaPrincipalCarregada({
           }
           cobertura={cobertura}
         />
+
+        {aberta && aberta !== PRESIDENCIA ? (
+          <PainelDaArea
+            key={aberta}
+            visao={visao}
+            aberta={aberta}
+            selecionado={selecionado}
+            onSelecionar={selecionar}
+            onFechar={() => setAberta(null)}
+          />
+        ) : null}
 
         <PainelGrupos
           grupos={visao.grupos}
