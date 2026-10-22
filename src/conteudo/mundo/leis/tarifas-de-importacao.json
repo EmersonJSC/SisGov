@@ -1,22 +1,12 @@
 {
   "id": "tarifas-de-importacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "tributaria",
+  "versaoEsquema": 4,
+  "familia": "imposto",
   "nome": "Tarifas de importação",
-  "descricao": "Escolhe a tarifa média e o tratamento de máquinas, insumos e bens finais.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "comercio-exterior-e-capital-estrangeiro",
-    "nome": "Comércio exterior e capital estrangeiro",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define o imposto médio cobrado sobre o que o país compra de fora.",
+  "area": "economia-e-empresas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "aliquota_tarifas_de_importacao",
     "unidade": "percentual_0_100",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Comércio e serviços"],
         "rejeitam": ["Indústria protegida"],
-        "efeitos": "Importações sobem; fábricas locais enfrentam concorrência."
+        "efeitos": "Importações sobem; fábricas locais enfrentam concorrência.",
+        "propoe": "Importar máquinas, peças e produtos prontos não paga tarifa."
       },
       {
         "id": "referencia-13-35",
@@ -35,7 +26,8 @@
         "valor": 13.35,
         "apoiam": ["Confederação da indústria"],
         "rejeitam": ["Comércio e serviços"],
-        "efeitos": "Proteção e preço ao consumidor intermediários."
+        "efeitos": "Proteção e preço ao consumidor intermediários.",
+        "propoe": "Tarifa moderada, com proteção para alguns setores."
       },
       {
         "id": "tarifa-diferenciada-insumos",
@@ -43,7 +35,8 @@
         "valor": 25,
         "apoiam": ["Indústria exportadora", "Trabalhadores com carteira"],
         "rejeitam": ["Setores protegidos permanentemente"],
-        "efeitos": "Fábricas podem ganhar escala sem encarecer tanto os insumos."
+        "efeitos": "Fábricas podem ganhar escala sem encarecer tanto os insumos.",
+        "propoe": "Peças e máquinas entram baratas; produto pronto paga mais por um tempo."
       },
       {
         "id": "maximo-40",
@@ -51,45 +44,194 @@
         "valor": 40,
         "apoiam": ["Indústria protegida"],
         "rejeitam": ["Comércio e serviços", "Classe média"],
-        "efeitos": "Produção protegida sobe primeiro; custos e preços sobem."
+        "efeitos": "Produção protegida sobe primeiro; custos e preços sobem.",
+        "propoe": "Tarifa alta para quase tudo que vem de fora."
       }
     ],
     "faixa": {
-      "minimo": 0.0,
-      "maximo": 40.0,
+      "minimo": 0,
+      "maximo": 40,
       "unidade": "% % de tarifa média",
       "valorReferencia": 13.35
     }
   },
-  "consequencias": [
-    "tarifas-de-importacao--importacoes",
-    "tarifas-de-importacao--inflacao",
-    "tarifas-de-importacao--produtividade",
-    "tarifas-de-importacao--pib",
-    "tarifas-de-importacao--desigualdade",
-    "tarifas-de-importacao--exportacoes",
-    "tarifas-de-importacao--desemprego",
-    "tarifas-de-importacao--grupo-agro",
-    "tarifas-de-importacao--grupo-classe-media",
-    "tarifas-de-importacao--grupo-empresarios",
-    "tarifas-de-importacao--grupo-pobres",
-    "tarifas-de-importacao--grupo-trabalhadores",
-    "tarifas-de-importacao--arrecadacao"
-  ],
-  "tributo": {
+  "dinheiro": {
+    "tipo": "receita",
     "base": "pib",
     "limites": {
       "minimo": 0,
       "maximo": 40
     }
   },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Acordos comerciais: com \"união aduaneira\", só a tarifa comum do bloco",
     "leis": ["acordos-comerciais"]
   },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "mesa": {
+    "id": "comercio-exterior-e-capital-estrangeiro",
+    "nome": "Comércio exterior e capital estrangeiro",
+    "camada": "alavanca"
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "efeitos": [
+    {
+      "id": "tarifas-de-importacao--importacoes",
+      "alvo": "importacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.3,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.175,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [13.35, -2.34],
+          [25, -1],
+          [40, -7]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--pib",
+      "alvo": "pib",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tarifas-de-importacao--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "fator": "pib",
+        "multiplicador": 0.00111111
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

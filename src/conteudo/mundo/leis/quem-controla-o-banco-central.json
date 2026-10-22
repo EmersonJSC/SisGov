@@ -1,22 +1,12 @@
 {
   "id": "quem-controla-o-banco-central",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Quem manda no banco central",
-  "descricao": "Se o governo decide os juros ou se um banco central independente decide.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "moeda-e-banco-central",
-    "nome": "Moeda e banco central",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se quem decide os juros é o governo ou um banco central independente.",
+  "area": "economia-e-empresas",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_quem_controla_o_banco_central",
     "unidade": "nivel_escopo",
@@ -27,14 +17,16 @@
         "valor": 0,
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Libera a alavanca Taxa básica de juros e o mandato duplo; expectativas de inflação ↑ (tamanho: lacuna); risco-país ↑ (aprox.)"
+        "efeitos": "Libera a alavanca Taxa básica de juros e o mandato duplo; expectativas de inflação ↑ (tamanho: lacuna); risco-país ↑ (aprox.)",
+        "propoe": "O governo decide os juros quando quiser."
       },
       {
         "id": "autonomia-parcial",
         "rotulo": "Diretoria com mandato fixo",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Juros seguem regra de reação; efeito nas expectativas menor que o da autonomia plena (lacuna)"
+        "efeitos": "Juros seguem regra de reação; efeito nas expectativas menor que o da autonomia plena (lacuna)",
+        "propoe": "A diretoria tem mandato fixo, mas o governo indica e pressiona."
       },
       {
         "id": "autonomia-plena",
@@ -42,17 +34,68 @@
         "valor": 100,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Tranca a alavanca de juros; juros viram regra automática; expectativas ↓ (tamanho: lacuna); risco-país ↓ (aprox.); o jogador perde um botão"
+        "efeitos": "Tranca a alavanca de juros; juros viram regra automática; expectativas ↓ (tamanho: lacuna); risco-país ↓ (aprox.); o jogador perde um botão",
+        "propoe": "O banco central é independente e persegue uma meta; o governo não mexe nos juros."
       }
     ]
   },
-  "consequencias": [
-    "quem-controla-o-banco-central--expectativas-inflacao",
-    "quem-controla-o-banco-central--risco-pais"
+  "trava": [
+    {
+      "opcao": "autonomia-parcial",
+      "lei": "taxa-basica-de-juros",
+      "proibe": true
+    },
+    {
+      "opcao": "autonomia-plena",
+      "lei": "taxa-basica-de-juros",
+      "proibe": true
+    },
+    {
+      "opcao": "autonomia-parcial",
+      "lei": "mandato-do-banco-central",
+      "opcoes": ["mandato-duplo"]
+    },
+    {
+      "opcao": "autonomia-plena",
+      "lei": "mandato-do-banco-central",
+      "opcoes": ["mandato-duplo"]
+    }
   ],
-  "ministerio": "Ministério da Fazenda",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "quem-controla-o-banco-central--expectativas-inflacao",
+      "alvo": "expectativas_inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.14,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "quem-controla-o-banco-central--risco-pais",
+      "alvo": "risco_pais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.14,
+        "termoConstante": 4
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

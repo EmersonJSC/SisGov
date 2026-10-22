@@ -1,22 +1,12 @@
 {
   "id": "cooperativas-e-autogestao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Cooperativas e autogestão",
-  "descricao": "O governo incentiva empresas de propriedade dos trabalhadores e cooperativas?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo ajuda empresas que pertencem aos próprios trabalhadores.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_cooperativas_e_autogestao",
     "unidade": "nivel_escopo",
@@ -26,15 +16,17 @@
         "rotulo": "Livre, sem incentivo",
         "valor": 0,
         "apoiam": ["Comércio e serviços"],
-        "efeitos": "Nada muda"
+        "efeitos": "Nada muda",
+        "propoe": "Cooperativas podem existir, sem ajuda especial."
       },
       {
         "id": "incentivo",
         "rotulo": "Incentivo (crédito e imposto menor) (hoje na referência, aprox.)",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "Renúncia (lacuna)",
         "apoiam": ["Agricultura familiar", "Movimentos por terra"],
-        "efeitos": "Crédito cooperativo ↑; spread local ↓ (aprox.); agricultura familiar ↑"
+        "efeitos": "Crédito cooperativo ↑; spread local ↓ (aprox.); agricultura familiar ↑",
+        "propoe": "Cooperativas têm crédito mais fácil e pagam menos imposto."
       },
       {
         "id": "autogestao",
@@ -42,18 +34,112 @@
         "valor": 100,
         "apoiam": ["Movimentos por terra", "Centrais sindicais"],
         "rejeitam": ["Empresários", "Confederação da indústria"],
-        "efeitos": "Confiança empresarial ↓; investimento privado ↓"
+        "efeitos": "Confiança empresarial ↓; investimento privado ↓",
+        "propoe": "Empresas passam a ser dos trabalhadores."
       }
     ]
   },
-  "consequencias": [
-    "cooperativas-e-autogestao--confianca-empresarial",
-    "cooperativas-e-autogestao--investimento",
-    "cooperativas-e-autogestao--desigualdade",
-    "cooperativas-e-autogestao--produtividade",
-    "cooperativas-e-autogestao--grupo-trabalhadores",
-    "cooperativas-e-autogestao--grupo-empresarios",
-    "cooperativas-e-autogestao--grupo-agricultura-familiar"
-  ],
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "cooperativas-e-autogestao--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": -5.01
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -3]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -3]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cooperativas-e-autogestao--grupo-agricultura-familiar",
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 2]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

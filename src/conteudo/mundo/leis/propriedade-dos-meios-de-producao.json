@@ -1,22 +1,12 @@
 {
   "id": "propriedade-dos-meios-de-producao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Participação pública na propriedade produtiva",
-  "descricao": "Qual é o nível agregado de participação pública nas atividades produtivas? A escala representa o conjunto da economia e não discrimina energia, bancos, transportes ou outros setores.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quanto da produção do país fica nas mãos do Estado, somando todos os setores.",
+  "area": "economia-e-empresas",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_propriedade_dos_meios_de_producao",
     "unidade": "nivel_escopo",
@@ -27,26 +17,30 @@
         "valor": 0,
         "apoiam": ["Empresários", "Entidades do agronegócio"],
         "rejeitam": ["Movimentos por terra"],
-        "efeitos": "Polo de propriedade privada da escala; não representa uma venda de ativos."
+        "efeitos": "Polo de propriedade privada da escala; não representa uma venda de ativos.",
+        "propoe": "Toda a produção é privada."
       },
       {
         "id": "participacao-publica-25",
         "rotulo": "25% de participação pública agregada",
         "valor": 25,
-        "efeitos": "Participação pública minoritária na representação agregada do jogo."
+        "efeitos": "Participação pública minoritária na representação agregada do jogo.",
+        "propoe": "O Estado tem uma parte pequena da produção."
       },
       {
         "id": "participacao-publica-50",
         "rotulo": "50% de participação pública agregada",
         "valor": 50,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Participação pública e privada equilibradas na representação agregada do jogo."
+        "efeitos": "Participação pública e privada equilibradas na representação agregada do jogo.",
+        "propoe": "Metade pública, metade privada."
       },
       {
         "id": "participacao-publica-75",
         "rotulo": "75% de participação pública agregada",
         "valor": 75,
-        "efeitos": "Participação pública majoritária na representação agregada do jogo."
+        "efeitos": "Participação pública majoritária na representação agregada do jogo.",
+        "propoe": "O Estado tem a maior parte da produção."
       },
       {
         "id": "participacao-publica-100",
@@ -60,31 +54,289 @@
           "Entidades do agronegócio",
           "Petróleo e mineração"
         ],
-        "efeitos": "Polo de propriedade pública da escala; não representa uma aquisição instantânea."
+        "efeitos": "Polo de propriedade pública da escala; não representa uma aquisição instantânea.",
+        "propoe": "Toda a produção é do Estado."
       }
     ]
   },
-  "consequencias": [
-    "propriedade-dos-meios-de-producao--confianca-empresarial",
-    "propriedade-dos-meios-de-producao--fuga-capitais",
-    "propriedade-dos-meios-de-producao--ied",
-    "propriedade-dos-meios-de-producao--investimento",
-    "propriedade-dos-meios-de-producao--produtividade",
-    "propriedade-dos-meios-de-producao--desigualdade",
-    "propriedade-dos-meios-de-producao--desabastecimento",
-    "propriedade-dos-meios-de-producao--mercado-paralelo",
-    "propriedade-dos-meios-de-producao--grupo-empresarios",
-    "propriedade-dos-meios-de-producao--grupo-ricos",
-    "propriedade-dos-meios-de-producao--grupo-pobres",
-    "calibracao-economia--corrupcao",
-    "calibracao-economia--crise-financeira",
-    "calibracao-economia--infraestrutura",
-    "calibracao-economia--margem-manobra-governo",
-    "calibracao-economia--preco-energia",
-    "calibracao-economia--recessao",
-    "calibracao-economia--reputacao-internacional",
-    "empresas-estatais-e-privatizacao--arrecadacao",
-    "empresas-estatais-e-privatizacao--gasto-publico"
+  "trava": [
+    {
+      "opcao": "participacao-publica-0",
+      "lei": "planejamento-da-economia",
+      "opcoes": ["plano-central"]
+    },
+    {
+      "opcao": "participacao-publica-25",
+      "lei": "planejamento-da-economia",
+      "opcoes": ["plano-central"]
+    },
+    {
+      "opcao": "participacao-publica-0",
+      "lei": "redistribuicao-de-terras",
+      "opcoes": ["redistribuicao-ampla-com-teto-de-tamanho"]
+    }
   ],
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "propriedade-dos-meios-de-producao--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": -2.544137
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--ied",
+      "alvo": "ied",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -3],
+          [100, -10]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--desabastecimento",
+      "alvo": "desabastecimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 15]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--mercado-paralelo",
+      "alvo": "mercado_paralelo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 3],
+          [100, 15]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -8],
+          [100, -25]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--grupo-ricos",
+      "alvo": "grupo_ricos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -6],
+          [100, -20]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 1],
+          [100, 2]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "calibracao-economia--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": 12.38
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "calibracao-economia--crise-financeira",
+      "alvo": "crise_financeira",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": -15.04
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "calibracao-economia--infraestrutura",
+      "alvo": "infraestrutura",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": 0.0804
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "calibracao-economia--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": -12
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "calibracao-economia--preco-energia",
+      "alvo": "preco_energia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": -2.01
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "calibracao-economia--recessao",
+      "alvo": "recessao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": -3
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "calibracao-economia--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0,
+        "termoConstante": 2.31
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.1],
+          [67, 0.5],
+          [100, 0.8]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "pib",
+        "referencia": 45
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.02],
+          [67, 0.1],
+          [100, 0.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

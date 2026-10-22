@@ -1,22 +1,12 @@
 {
   "id": "licenca-para-abrir-negocio",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Licença para abrir negócio",
-  "descricao": "Quem quer abrir uma empresa precisa pedir licença antes?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "mercado-precos-e-concorrencia",
-    "nome": "Mercado, preços e concorrência",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se quem quer abrir uma empresa precisa de licença antes de começar.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_licenca_para_abrir_negocio",
     "unidade": "nivel_escopo",
@@ -26,30 +16,100 @@
         "rotulo": "Licença prévia para tudo",
         "valor": 0,
         "rejeitam": ["Pequenos empreendedores"],
-        "efeitos": "Informalidade ↑"
+        "efeitos": "Informalidade ↑",
+        "propoe": "Toda empresa precisa de licença antes de abrir."
       },
       {
         "id": "licenca-conforme-o-risco",
         "rotulo": "Licença conforme o risco",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Comércio e serviços"],
-        "efeitos": "Abertura de empresas ↑"
+        "efeitos": "Abertura de empresas ↑",
+        "propoe": "Só atividades de risco precisam de licença antes."
       },
       {
         "id": "sem-licenca-para-baixo-risco",
         "rotulo": "Sem licença para baixo risco",
         "valor": 100,
         "apoiam": ["Pequenos empreendedores", "Comércio e serviços"],
-        "efeitos": "Abertura de empresas ↑; informalidade ↓ (aprox.); confiança ↑"
+        "efeitos": "Abertura de empresas ↑; informalidade ↓ (aprox.); confiança ↑",
+        "propoe": "Negócio de baixo risco abre na hora, sem licença."
       }
     ]
   },
-  "consequencias": [
-    "licenca-para-abrir-negocio--informalidade",
-    "licenca-para-abrir-negocio--confianca-empresarial",
-    "licenca-para-abrir-negocio--grupo-pequenos-negocios",
-    "licenca-para-abrir-negocio--corrupcao",
-    "licenca-para-abrir-negocio--qualidade-ambiental"
-  ],
-  "ministerio": "Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "mercado-precos-e-concorrencia",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "licenca-para-abrir-negocio--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.14,
+        "termoConstante": 16.31
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-para-abrir-negocio--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-para-abrir-negocio--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -5],
+          [50, -2],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-para-abrir-negocio--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 1],
+          [100, 0]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "licenca-para-abrir-negocio--qualidade-ambiental",
+      "alvo": "qualidade_ambiental",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.5],
+          [50, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

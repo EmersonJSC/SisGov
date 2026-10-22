@@ -1,22 +1,12 @@
 {
   "id": "defesa-da-concorrencia",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Defesa da concorrência",
-  "descricao": "O governo impede fusões e cartéis ou ajuda a criar grandes empresas nacionais?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "mercado-precos-e-concorrencia",
-    "nome": "Mercado, preços e concorrência",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo impede fusões e cartéis ou ajuda a criar grandes empresas nacionais.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_defesa_da_concorrencia",
     "unidade": "nivel_escopo",
@@ -25,7 +15,8 @@
         "id": "sem-politica",
         "rotulo": "Sem política",
         "valor": 0,
-        "efeitos": "Concentração de mercado ↑; preços ↑"
+        "efeitos": "Concentração de mercado ↑; preços ↑",
+        "propoe": "O governo não interfere em fusões nem em cartéis."
       },
       {
         "id": "campeoes-nacionais",
@@ -34,13 +25,15 @@
         "custoTexto": "Crédito público às fusões",
         "apoiam": ["Confederação da indústria"],
         "rejeitam": ["Comércio e serviços"],
-        "efeitos": "Concentração ↑; inovação ↓"
+        "efeitos": "Concentração ↑; inovação ↓",
+        "propoe": "O governo ajuda algumas empresas a crescer e dominar o mercado."
       },
       {
         "id": "moderada",
         "rotulo": "Moderada",
         "valor": 66.67,
-        "efeitos": "Concentração de mercado ↓ pouco contra Sem política; spread bancário ↓ pouco; inovação ↑ pouco contra Campeões nacionais (estimado)"
+        "efeitos": "Concentração de mercado ↓ pouco contra Sem política; spread bancário ↓ pouco; inovação ↑ pouco contra Campeões nacionais (estimado)",
+        "propoe": "Fusões grandes passam por análise; cartel é punido."
       },
       {
         "id": "rigorosa",
@@ -48,20 +41,86 @@
         "valor": 100,
         "apoiam": ["Classe média"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Concentração ↓; spread bancário ↓; inovação ↑"
+        "efeitos": "Concentração ↓; spread bancário ↓; inovação ↑",
+        "propoe": "Fusões que concentram mercado são barradas; cartel é punido com dureza."
       }
     ]
   },
-  "consequencias": [
-    "defesa-da-concorrencia--concentracao-mercado",
-    "defesa-da-concorrencia--inovacao",
-    "defesa-da-concorrencia--exportacoes",
-    "defesa-da-concorrencia--gasto-publico",
-    "defesa-da-concorrencia--investimento"
-  ],
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "mercado-precos-e-concorrencia",
+    "nome": "Mercado, preços e concorrência",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "defesa-da-concorrencia--concentracao-mercado",
+      "alvo": "concentracao_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.156,
+        "termoConstante": 2.37052
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "defesa-da-concorrencia--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.093,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "defesa-da-concorrencia--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.04477612,
+        "limiar": 33,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "defesa-da-concorrencia--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.01],
+          [67, 0.01],
+          [100, 0.02]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "defesa-da-concorrencia--investimento",
+      "alvo": "investimento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

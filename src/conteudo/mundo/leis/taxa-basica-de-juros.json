@@ -1,22 +1,12 @@
 {
   "id": "taxa-basica-de-juros",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Juros básicos",
-  "descricao": "A taxa que puxa todos os juros do país.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "moeda-e-banco-central",
-    "nome": "Moeda e banco central",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define a taxa de juros que puxa todos os juros do país, quando quem decide é o governo.",
+  "area": "economia-e-empresas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_taxa_basica_de_juros",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Juros da dívida ↓ (cada 1 ponto de taxa básica ≈ 0,35% do PIB em 12 meses)",
         "apoiam": ["Confederação da indústria", "Centrais sindicais"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Crédito ↑, consumo ↑, inflação ↑ com atraso, câmbio ↑, fuga de capitais ↑"
+        "efeitos": "Crédito ↑, consumo ↑, inflação ↑ com atraso, câmbio ↑, fuga de capitais ↑",
+        "propoe": "Juros de 2% ao ano."
       },
       {
         "id": "referencia-13-75",
@@ -37,7 +28,8 @@
         "custoTexto": "Juros da dívida altos",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Inflação ↓ com atraso contra o Mínimo; Juros da dívida altos; PIB ↓ pouco; endividamento das famílias pesa; câmbio ↓ pouco (estimado)"
+        "efeitos": "Inflação ↓ com atraso contra o Mínimo; Juros da dívida altos; PIB ↓ pouco; endividamento das famílias pesa; câmbio ↓ pouco (estimado)",
+        "propoe": "Juros de 13,75% ao ano."
       },
       {
         "id": "maximo-30",
@@ -49,27 +41,96 @@
           "Comércio e serviços",
           "Centrais sindicais"
         ],
-        "efeitos": "Inflação ↓ com atraso, PIB ↓, endividamento das famílias pesa mais, câmbio ↓"
+        "efeitos": "Inflação ↓ com atraso, PIB ↓, endividamento das famílias pesa mais, câmbio ↓",
+        "propoe": "Juros de 30% ao ano."
       }
     ],
     "faixa": {
-      "minimo": 2.0,
-      "maximo": 30.0,
+      "minimo": 2,
+      "maximo": 30,
       "unidade": "% % ao ano",
       "valorReferencia": 13.75
     }
   },
-  "consequencias": [
-    "taxa-basica-de-juros--credito",
-    "taxa-basica-de-juros--consumo",
-    "taxa-basica-de-juros--inflacao",
-    "taxa-basica-de-juros--cambio",
-    "taxa-basica-de-juros--fuga-capitais",
-    "taxa-basica-de-juros--pib"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Quem controla o banco central: só existe com \"subordinado\"; \"autonomia plena\" tranca",
     "leis": ["quem-controla-o-banco-central"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "taxa-basica-de-juros--credito",
+      "alvo": "credito",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06568,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "taxa-basica-de-juros--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06568,
+        "termoConstante": 2.755933
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "taxa-basica-de-juros--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.13136,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "taxa-basica-de-juros--cambio",
+      "alvo": "cambio",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.13562,
+        "termoConstante": -1.409385
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "taxa-basica-de-juros--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06568,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "taxa-basica-de-juros--pib",
+      "alvo": "pib",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06993,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1,22 +1,12 @@
 {
   "id": "defesa-comercial",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Defesa comercial",
-  "descricao": "O governo põe sobretaxas contra importações vendidas abaixo do custo ou que crescem de repente?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "comercio-exterior-e-capital-estrangeiro",
-    "nome": "Comércio exterior e capital estrangeiro",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o governo põe sobretaxa em importações vendidas abaixo do custo ou que crescem de repente.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_defesa_comercial",
     "unidade": "nivel_escopo",
@@ -27,14 +17,16 @@
         "valor": 0,
         "apoiam": ["Comércio e serviços"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Importações ↑; peso da indústria ↓ leve"
+        "efeitos": "Importações ↑; peso da indústria ↓ leve",
+        "propoe": "Nenhuma sobretaxa, mesmo contra preço desleal."
       },
       {
         "id": "tecnica-caso-a-caso-pelas-regras-da-omc",
         "rotulo": "Técnica, caso a caso, pelas regras da OMC (Organização Mundial do Comércio)",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Mercado financeiro"],
-        "efeitos": "Importações ↑ pouco contra Uso amplo; peso da indústria mantido; chance de guerra comercial baixa (estimado)"
+        "efeitos": "Importações ↑ pouco contra Uso amplo; peso da indústria mantido; chance de guerra comercial baixa (estimado)",
+        "propoe": "Sobretaxa só depois de investigar cada caso, pelas regras internacionais."
       },
       {
         "id": "uso-amplo",
@@ -42,17 +34,46 @@
         "valor": 100,
         "apoiam": ["Confederação da indústria", "Centrais sindicais"],
         "rejeitam": ["Comércio e serviços", "Entidades do agronegócio"],
-        "efeitos": "Importações ↓; inflação ↑ leve; chance de guerra comercial ↑"
+        "efeitos": "Importações ↓; inflação ↑ leve; chance de guerra comercial ↑",
+        "propoe": "Sobretaxa rápida, pensando mais na fábrica do que no consumidor."
       }
     ]
   },
-  "consequencias": [
-    "defesa-comercial--importacoes",
-    "defesa-comercial--inflacao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Acordos comerciais: com \"livre comércio amplo\", só a opção técnica (proposta minha)",
     "leis": ["acordos-comerciais"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "comercio-exterior-e-capital-estrangeiro",
+    "nome": "Comércio exterior e capital estrangeiro",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "defesa-comercial--importacoes",
+      "alvo": "importacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.14,
+        "termoConstante": 6.66043
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "defesa-comercial--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": -20.298524
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

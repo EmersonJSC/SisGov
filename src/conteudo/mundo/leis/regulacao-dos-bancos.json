@@ -1,22 +1,12 @@
 {
   "id": "regulacao-dos-bancos",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Regras para os bancos",
-  "descricao": "Quanto o governo fiscaliza o que os bancos podem fazer.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "moeda-e-banco-central",
-    "nome": "Moeda e banco central",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quanto o governo fiscaliza o que os bancos podem fazer.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_regulacao_dos_bancos",
     "unidade": "nivel_escopo",
@@ -26,14 +16,16 @@
         "rotulo": "Mínima",
         "valor": 0,
         "custoTexto": "Risco de ter de salvar bancos",
-        "efeitos": "Crédito ↑; chance de crise financeira ↑"
+        "efeitos": "Crédito ↑; chance de crise financeira ↑",
+        "propoe": "Quase nenhuma regra para os bancos."
       },
       {
         "id": "padrao-internacional",
         "rotulo": "Padrão internacional",
         "valor": 33.33,
         "apoiam": ["Mercado financeiro"],
-        "efeitos": "Ponto de equilíbrio"
+        "efeitos": "Ponto de equilíbrio",
+        "propoe": "Regras do padrão internacional."
       },
       {
         "id": "padrao-reforcado",
@@ -41,7 +33,8 @@
         "valor": 66.67,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Crédito ↓ leve; chance de crise financeira ↓"
+        "efeitos": "Crédito ↓ leve; chance de crise financeira ↓",
+        "propoe": "Regras mais duras, com limite para o risco."
       },
       {
         "id": "repressao-financeira",
@@ -50,17 +43,47 @@
         "custoTexto": "Subsídio escondido",
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Spread ↓ no crédito tabelado e ↑ no crédito livre; crédito livre ↓"
+        "efeitos": "Spread ↓ no crédito tabelado e ↑ no crédito livre; crédito livre ↓",
+        "propoe": "O governo manda onde e a que juro os bancos emprestam."
       }
     ]
   },
-  "consequencias": [
-    "regulacao-dos-bancos--credito",
-    "regulacao-bancaria--produtividade"
-  ],
-  "ministerio": "Ministério da Fazenda",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "regulacao-dos-bancos--credito",
+      "alvo": "credito",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.135,
+        "termoConstante": 0.255483
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regulacao-bancaria--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

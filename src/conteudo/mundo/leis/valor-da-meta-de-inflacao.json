@@ -1,22 +1,12 @@
 {
   "id": "valor-da-meta-de-inflacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Meta de inflação",
-  "descricao": "Quanto de inflação por ano o banco central deve buscar.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "moeda-e-banco-central",
-    "nome": "Moeda e banco central",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto de inflação por ano o banco central deve buscar.",
+  "area": "economia-e-empresas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_valor_da_meta_de_inflacao",
     "unidade": "nivel_escopo",
@@ -27,46 +17,88 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Centrais sindicais", "Confederação da indústria"],
-        "efeitos": "Juros ↑; expectativas ↓ devagar; PIB ↓ no curto prazo"
+        "efeitos": "Juros ↑; expectativas ↓ devagar; PIB ↓ no curto prazo",
+        "propoe": "Meta de 2% ao ano."
       },
       {
         "id": "referencia-3",
         "rotulo": "3% ao ano",
-        "valor": 25.0,
+        "valor": 25,
         "apoiam": ["Mercado financeiro"],
-        "efeitos": "Inflação em torno de 3%, juros no nível atual (taxa básica alta); PIB ↓ pouco contra metas mais frouxas; expectativas ancoradas (estimado)"
+        "efeitos": "Inflação em torno de 3%, juros no nível atual (taxa básica alta); PIB ↓ pouco contra metas mais frouxas; expectativas ancoradas (estimado)",
+        "propoe": "Meta de 3% ao ano."
       },
       {
         "id": "proposta-desenvolvimentista-4-a-4-5",
         "rotulo": "4% a 4,5% ao ano",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Centrais sindicais", "Confederação da indústria"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Juros ↓ no curto prazo; expectativas ↑"
+        "efeitos": "Juros ↓ no curto prazo; expectativas ↑",
+        "propoe": "Meta de 4% a 4,5% ao ano."
       },
       {
         "id": "maximo-6",
         "rotulo": "6% ao ano",
         "valor": 100,
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Expectativas ↑ forte; indexação ganha força"
+        "efeitos": "Expectativas ↑ forte; indexação ganha força",
+        "propoe": "Meta de 6% ao ano."
       }
     ],
     "faixa": {
-      "minimo": 2.0,
-      "maximo": 6.0,
+      "minimo": 2,
+      "maximo": 6,
       "unidade": "% % ao ano",
-      "valorReferencia": 3.0
+      "valorReferencia": 3
     }
   },
-  "consequencias": [
-    "valor-da-meta-de-inflacao--taxa-juros",
-    "valor-da-meta-de-inflacao--expectativas-inflacao",
-    "valor-da-meta-de-inflacao--pib"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Mandato do banco central: \"sem meta\" tranca esta alavanca (proposta minha)",
     "leis": ["mandato-do-banco-central"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "valor-da-meta-de-inflacao--taxa-juros",
+      "alvo": "taxa_juros",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.064,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "valor-da-meta-de-inflacao--expectativas-inflacao",
+      "alvo": "expectativas_inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.18743,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "valor-da-meta-de-inflacao--pib",
+      "alvo": "pib",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.06629,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

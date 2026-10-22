@@ -37,32 +37,32 @@ Total: 239 leis.
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
 | Alcance das empresas estatais | `papel-do-estado-empresario` | constitucional | — |  | |
-| Planejamento da economia | `planejamento-da-economia` | constitucional | decide é pergunta |  | |
+| Planejamento da economia | `planejamento-da-economia` | constitucional | — |  | |
 | Participação pública na propriedade produtiva | `propriedade-dos-meios-de-producao` | constitucional | — |  | |
 | Quem manda no banco central | `quem-controla-o-banco-central` | constitucional | — |  | |
 | Tarifas de importação | `tarifas-de-importacao` | imposto | — |  | |
 | Banco de desenvolvimento | `banco-de-desenvolvimento` | regra | — |  | |
 | Conteúdo local | `conteudo-local` | regra | decide é pergunta |  | |
 | Controle de capitais | `controle-de-capitais` | regra | — |  | |
-| Controle de preços | `controle-de-precos` | regra | decide é pergunta |  | |
-| Cooperativas e autogestão | `cooperativas-e-autogestao` | regra | decide é pergunta |  | |
-| Defesa comercial | `defesa-comercial` | regra | decide é pergunta |  | |
-| Defesa da concorrência | `defesa-da-concorrencia` | regra | decide é pergunta |  | |
+| Controle de preços | `controle-de-precos` | regra | — |  | |
+| Cooperativas e autogestão | `cooperativas-e-autogestao` | regra | — |  | |
+| Defesa comercial | `defesa-comercial` | regra | — |  | |
+| Defesa da concorrência | `defesa-da-concorrencia` | regra | — |  | |
 | Correção automática pela inflação | `indexacao-de-contratos` | regra | sem efeito na rede |  | |
 | Compra e venda de dólares | `intervencao-cambial` | regra | — |  | |
-| Licença para abrir negócio | `licenca-para-abrir-negocio` | regra | decide é pergunta |  | |
-| Missão do banco central | `mandato-do-banco-central` | regra | sem nível |  | |
-| Nacionalização | `nacionalizacao` | regra | decide é pergunta |  | |
-| Política de preços das estatais | `politica-de-precos-das-estatais` | regra | decide é pergunta |  | |
-| Política industrial | `politica-industrial` | regra | decide é pergunta |  | |
-| Programa de privatização | `programa-de-privatizacao` | regra | decide é pergunta |  | |
+| Investimento estrangeiro | `investimento-estrangeiro` | regra | — |  | |
+| Licença para abrir negócio | `licenca-para-abrir-negocio` | regra | — |  | |
+| Missão do banco central | `mandato-do-banco-central` | regra | — |  | |
+| Nacionalização | `nacionalizacao` | regra | — |  | |
+| Política de preços das estatais | `politica-de-precos-das-estatais` | regra | — |  | |
+| Política industrial | `politica-industrial` | regra | — |  | |
+| Programa de privatização | `programa-de-privatizacao` | regra | — |  | |
 | Moeda e câmbio | `regime-cambial` | regra | sem efeito na rede |  | |
 | Imposto único para pequenas empresas | `regime-simplificado-para-pequenas-empresas` | regra | — |  | |
 | Regras para os bancos | `regulacao-dos-bancos` | regra | — |  | |
 | Juros básicos | `taxa-basica-de-juros` | regra | — |  | |
 | Meta de inflação | `valor-da-meta-de-inflacao` | regra | — |  | |
 | Volume de incentivo à indústria | `volume-de-incentivo-a-industria` | regra | sem efeito na rede; decide é pergunta |  | |
-| Investimento estrangeiro | `investimento-estrangeiro` | verba | decide é pergunta |  | |
 
 ## Trabalho (18)
 

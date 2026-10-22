@@ -1,22 +1,12 @@
 {
   "id": "intervencao-cambial",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Compra e venda de dólares",
-  "descricao": "Se o banco central usa as reservas para mexer no dólar.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "moeda-e-banco-central",
-    "nome": "Moeda e banco central",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se o banco central usa as reservas em dólar para mexer no câmbio.",
+  "area": "economia-e-empresas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_intervencao_cambial",
     "unidade": "nivel_escopo",
@@ -28,14 +18,16 @@
         "custoTexto": "Reservas ↓",
         "apoiam": ["Comércio e serviços"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Câmbio ↓ no curto prazo; reservas ↓; se as reservas caírem muito, chance de crise cambial ↑"
+        "efeitos": "Câmbio ↓ no curto prazo; reservas ↓; se as reservas caírem muito, chance de crise cambial ↑",
+        "propoe": "Vende reservas para segurar a alta do dólar."
       },
       {
         "id": "referencia-nenhuma-ou-pontual",
         "rotulo": "Só em emergência",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Mercado financeiro"],
-        "efeitos": "Reservas estáveis; câmbio ↓ pouco contra comprar e ↑ pouco contra vender; chance de crise cambial baixa (estimado)"
+        "efeitos": "Reservas estáveis; câmbio ↓ pouco contra comprar e ↑ pouco contra vender; chance de crise cambial baixa (estimado)",
+        "propoe": "Só mexe em emergência."
       },
       {
         "id": "maximo-comprar-us-40-bi",
@@ -43,18 +35,57 @@
         "valor": 100,
         "custoTexto": "Custo de carregar reservas (lacuna)",
         "apoiam": ["Confederação da indústria", "Entidades do agronegócio"],
-        "efeitos": "Câmbio ↑; reservas ↑; inflação ↑ leve"
+        "efeitos": "Câmbio ↑; reservas ↑; inflação ↑ leve",
+        "propoe": "Compra dólares para aumentar as reservas."
       }
     ]
   },
-  "consequencias": [
-    "intervencao-cambial--cambio",
-    "intervencao-cambial--reservas-internacionais",
-    "intervencao-cambial--inflacao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Regime cambial: com \"fixo\", a venda é automática para defender o preço; com \"flutuante\", só leilões pontuais (proposta minha)",
     "leis": ["regime-cambial"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "moeda-e-banco-central",
+    "nome": "Moeda e banco central",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "intervencao-cambial--cambio",
+      "alvo": "cambio",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.14,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "intervencao-cambial--reservas-internacionais",
+      "alvo": "reservas_internacionais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.14,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_pib_por_passo"
+    },
+    {
+      "id": "intervencao-cambial--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

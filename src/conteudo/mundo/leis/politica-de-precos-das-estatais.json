@@ -1,22 +1,12 @@
 {
   "id": "politica-de-precos-das-estatais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Política de preços das estatais",
-  "descricao": "A petroleira e outras estatais cobram o preço internacional ou o governo segura o preço?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se as estatais, como a petroleira, cobram o preço internacional ou o governo segura o preço.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_politica_de_precos_das_estatais",
     "unidade": "nivel_escopo",
@@ -27,14 +17,16 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro", "Petróleo e mineração"],
         "rejeitam": ["Caminhoneiros autônomos"],
-        "efeitos": "Inflação sobe junto com o petróleo; investimento da estatal estável"
+        "efeitos": "Inflação sobe junto com o petróleo; investimento da estatal estável",
+        "propoe": "A estatal segue o preço lá de fora."
       },
       {
         "id": "suavizacao",
         "rotulo": "Suavização (amortecedor ou fundo)",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "Variável",
-        "efeitos": "Inflação mais estável"
+        "efeitos": "Inflação mais estável",
+        "propoe": "Um fundo amortece as altas e baixas do preço."
       },
       {
         "id": "preco-politico",
@@ -43,17 +35,46 @@
         "custoTexto": "Prejuízo da estatal (o país de referência 2011-2014: dezenas de  bi, aprox.)",
         "apoiam": ["Caminhoneiros autônomos", "Pobres"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Inflação ↓ no curto prazo e ↑ depois; dívida ↑ via aporte; investimento da estatal ↓"
+        "efeitos": "Inflação ↓ no curto prazo e ↑ depois; dívida ↑ via aporte; investimento da estatal ↓",
+        "propoe": "O governo congela o preço, e a estatal arca com a diferença."
       }
     ]
   },
-  "consequencias": [
-    "politica-de-precos-das-estatais--inflacao",
-    "grupos--politica-de-precos-das-estatais--grupo-pobres"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Papel do Estado empresário: \"sem estatais\" tranca esta lei (proposta minha)",
     "leis": ["papel-do-estado-empresario"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "politica-de-precos-das-estatais--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "grupos--politica-de-precos-das-estatais--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

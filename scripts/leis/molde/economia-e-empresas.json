@@ -1,0 +1,304 @@
+{
+  "area": "economia-e-empresas",
+  "leis": [
+    {
+      "id": "papel-do-estado-empresario",
+      "familia": "constitucional",
+      "decide": "Define em que atividades a Constituição deixa o Estado ter empresas.",
+      "opcoes": {
+        "sem-estatais": "O Estado não pode ter nenhuma empresa.",
+        "estatais-minimas": "Só serviços públicos e monopólios naturais, como água e energia.",
+        "estatais-estrategicas": "Também setores que uma lei chamar de estratégicos, como petróleo.",
+        "estado-empresario": "O Estado pode ter empresas em qualquer setor."
+      },
+      "trava": [
+        {
+          "opcao": "sem-estatais",
+          "lei": "politica-de-precos-das-estatais",
+          "proibe": true
+        }
+      ]
+    },
+    {
+      "id": "planejamento-da-economia",
+      "familia": "constitucional",
+      "decide": "Define se o governo planeja a economia, só orienta as empresas ou deixa o mercado decidir.",
+      "opcoes": {
+        "mercado-decide": "Não há plano: empresas e consumidores decidem.",
+        "plano-que-orienta": "O plano obriga o governo e só orienta as empresas.",
+        "plano-central": "O governo decide o que se produz, quanto e a que preço."
+      },
+      "trava": [
+        {
+          "opcao": "plano-central",
+          "lei": "controle-de-precos",
+          "minimo": 100
+        }
+      ]
+    },
+    {
+      "id": "propriedade-dos-meios-de-producao",
+      "familia": "constitucional",
+      "decide": "Define quanto da produção do país fica nas mãos do Estado, somando todos os setores.",
+      "opcoes": {
+        "participacao-publica-0": "Toda a produção é privada.",
+        "participacao-publica-25": "O Estado tem uma parte pequena da produção.",
+        "participacao-publica-50": "Metade pública, metade privada.",
+        "participacao-publica-75": "O Estado tem a maior parte da produção.",
+        "participacao-publica-100": "Toda a produção é do Estado."
+      },
+      "trava": [
+        {
+          "opcao": "participacao-publica-0",
+          "lei": "planejamento-da-economia",
+          "opcoes": ["plano-central"]
+        },
+        {
+          "opcao": "participacao-publica-25",
+          "lei": "planejamento-da-economia",
+          "opcoes": ["plano-central"]
+        },
+        {
+          "opcao": "participacao-publica-0",
+          "lei": "redistribuicao-de-terras",
+          "opcoes": ["redistribuicao-ampla-com-teto-de-tamanho"]
+        }
+      ]
+    },
+    {
+      "id": "quem-controla-o-banco-central",
+      "familia": "constitucional",
+      "decide": "Define se quem decide os juros é o governo ou um banco central independente.",
+      "opcoes": {
+        "banco-central-subordinado-ao-governo": "O governo decide os juros quando quiser.",
+        "autonomia-parcial": "A diretoria tem mandato fixo, mas o governo indica e pressiona.",
+        "autonomia-plena": "O banco central é independente e persegue uma meta; o governo não mexe nos juros."
+      },
+      "trava": [
+        {
+          "opcao": "autonomia-parcial",
+          "lei": "taxa-basica-de-juros",
+          "proibe": true
+        },
+        {
+          "opcao": "autonomia-plena",
+          "lei": "taxa-basica-de-juros",
+          "proibe": true
+        },
+        {
+          "opcao": "autonomia-parcial",
+          "lei": "mandato-do-banco-central",
+          "opcoes": ["mandato-duplo"]
+        },
+        {
+          "opcao": "autonomia-plena",
+          "lei": "mandato-do-banco-central",
+          "opcoes": ["mandato-duplo"]
+        }
+      ]
+    },
+    {
+      "id": "tarifas-de-importacao",
+      "familia": "imposto",
+      "decide": "Define o imposto médio cobrado sobre o que o país compra de fora.",
+      "opcoes": {
+        "minimo-0": "Importar máquinas, peças e produtos prontos não paga tarifa.",
+        "referencia-13-35": "Tarifa moderada, com proteção para alguns setores.",
+        "tarifa-diferenciada-insumos": "Peças e máquinas entram baratas; produto pronto paga mais por um tempo.",
+        "maximo-40": "Tarifa alta para quase tudo que vem de fora."
+      }
+    },
+    {
+      "id": "banco-de-desenvolvimento",
+      "familia": "regra",
+      "decide": "Define se e como um banco público empresta a longo prazo para fábricas, máquinas e inovação.",
+      "opcoes": {
+        "sem-banco": "Não há banco público: empresas pegam crédito a preço de mercado.",
+        "segundo-piso-juro-de-mercado": "O banco público empresta pelos bancos privados, a juro de mercado.",
+        "credito-direcionado": "O banco empresta mais barato a fábricas que cumprem metas.",
+        "credito-subsidiado-em-massa": "Muito crédito barato para indústria limpa e inovação."
+      }
+    },
+    {
+      "id": "controle-de-capitais",
+      "familia": "regra",
+      "decide": "Define se o dinheiro pode entrar e sair do país livremente.",
+      "opcoes": {
+        "conta-aberta": "Entrar e sair com dinheiro é livre.",
+        "controles-prudenciais": "Há imposto e regras na saída, para frear especulação.",
+        "controles-amplos": "Mandar dinheiro para fora tem limite.",
+        "conta-fechada": "Tirar dinheiro do país é proibido."
+      }
+    },
+    {
+      "id": "controle-de-precos",
+      "familia": "regra",
+      "decide": "Define se o governo fixa preços e de quais produtos.",
+      "opcoes": {
+        "precos-livres": "Todos os preços são livres.",
+        "so-precos-administrados": "O governo controla só energia, transporte e remédios.",
+        "teto-na-cesta-basica": "Também há preço máximo para a comida da cesta básica.",
+        "tabelamento-geral": "O governo tabela o preço de quase tudo."
+      }
+    },
+    {
+      "id": "cooperativas-e-autogestao",
+      "familia": "regra",
+      "decide": "Define se o governo ajuda empresas que pertencem aos próprios trabalhadores.",
+      "opcoes": {
+        "livre-sem-incentivo": "Cooperativas podem existir, sem ajuda especial.",
+        "incentivo": "Cooperativas têm crédito mais fácil e pagam menos imposto.",
+        "autogestao": "Empresas passam a ser dos trabalhadores."
+      }
+    },
+    {
+      "id": "defesa-comercial",
+      "familia": "regra",
+      "decide": "Define se o governo põe sobretaxa em importações vendidas abaixo do custo ou que crescem de repente.",
+      "opcoes": {
+        "sem-defesa-comercial": "Nenhuma sobretaxa, mesmo contra preço desleal.",
+        "tecnica-caso-a-caso-pelas-regras-da-omc": "Sobretaxa só depois de investigar cada caso, pelas regras internacionais.",
+        "uso-amplo": "Sobretaxa rápida, pensando mais na fábrica do que no consumidor."
+      }
+    },
+    {
+      "id": "defesa-da-concorrencia",
+      "familia": "regra",
+      "decide": "Define se o governo impede fusões e cartéis ou ajuda a criar grandes empresas nacionais.",
+      "opcoes": {
+        "sem-politica": "O governo não interfere em fusões nem em cartéis.",
+        "campeoes-nacionais": "O governo ajuda algumas empresas a crescer e dominar o mercado.",
+        "moderada": "Fusões grandes passam por análise; cartel é punido.",
+        "rigorosa": "Fusões que concentram mercado são barradas; cartel é punido com dureza."
+      }
+    },
+    {
+      "id": "intervencao-cambial",
+      "familia": "regra",
+      "decide": "Define se o banco central usa as reservas em dólar para mexer no câmbio.",
+      "opcoes": {
+        "minimo-vender-us-40-bi": "Vende reservas para segurar a alta do dólar.",
+        "referencia-nenhuma-ou-pontual": "Só mexe em emergência.",
+        "maximo-comprar-us-40-bi": "Compra dólares para aumentar as reservas."
+      }
+    },
+    {
+      "id": "licenca-para-abrir-negocio",
+      "familia": "regra",
+      "decide": "Define se quem quer abrir uma empresa precisa de licença antes de começar.",
+      "opcoes": {
+        "licenca-previa-para-tudo": "Toda empresa precisa de licença antes de abrir.",
+        "licenca-conforme-o-risco": "Só atividades de risco precisam de licença antes.",
+        "sem-licenca-para-baixo-risco": "Negócio de baixo risco abre na hora, sem licença."
+      }
+    },
+    {
+      "id": "mandato-do-banco-central",
+      "familia": "regra",
+      "decide": "Define o que o banco central persegue ao decidir os juros.",
+      "opcoes": {
+        "sem-meta": "Ajudar o crescimento e financiar o governo.",
+        "mandato-duplo": "Inflação baixa e emprego, com o mesmo peso.",
+        "meta-flexivel": "Inflação baixa, com prazo flexível para chegar lá.",
+        "meta-estrita": "Só inflação baixa, o mais rápido possível."
+      }
+    },
+    {
+      "id": "nacionalizacao",
+      "familia": "regra",
+      "decide": "Define como o Estado paga quando toma uma empresa privada.",
+      "opcoes": {
+        "indenizacao-previa-em-dinheiro": "Paga antes e em dinheiro, pelo valor justo.",
+        "so-em-setor-estrategico": "Só pode tomar empresas de setores estratégicos.",
+        "expropriacao-sem-pagar": "Toma sem pagar."
+      }
+    },
+    {
+      "id": "politica-de-precos-das-estatais",
+      "familia": "regra",
+      "decide": "Define se as estatais, como a petroleira, cobram o preço internacional ou o governo segura o preço.",
+      "opcoes": {
+        "paridade-internacional": "A estatal segue o preço lá de fora.",
+        "suavizacao": "Um fundo amortece as altas e baixas do preço.",
+        "preco-politico": "O governo congela o preço, e a estatal arca com a diferença."
+      }
+    },
+    {
+      "id": "politica-industrial",
+      "familia": "regra",
+      "decide": "Define se o governo escolhe setores da indústria para ajudar, e de que jeito.",
+      "opcoes": {
+        "nenhuma": "O governo não escolhe setores.",
+        "horizontal": "Ajuda todos igual: pesquisa, infraestrutura e crédito para exportar.",
+        "setorial-exportadora": "Ajuda setores escolhidos, com metas de exportação e prazo.",
+        "protecao-do-mercado-interno": "Protege setores escolhidos com tarifa e peça nacional, sem meta."
+      }
+    },
+    {
+      "id": "programa-de-privatizacao",
+      "familia": "regra",
+      "decide": "Define se o governo vende empresas estatais, e quantas.",
+      "opcoes": {
+        "nenhum": "Nenhuma estatal é vendida.",
+        "lista-caso-a-caso": "O governo vende algumas, uma de cada vez.",
+        "venda-ampla": "O governo vende a maior parte das estatais."
+      }
+    },
+    {
+      "id": "regime-simplificado-para-pequenas-empresas",
+      "familia": "regra",
+      "decide": "Define se pequenos negócios pagam um imposto só, simples, sobre o faturamento.",
+      "exemplo": "No Brasil: Simples Nacional e microempreendedor individual.",
+      "opcoes": {
+        "nenhum": "Pequenos negócios pagam os mesmos impostos que os grandes.",
+        "so-dispensa-do-iva-abaixo-de-um-faturamento": "Só quem fatura pouco deixa de pagar o imposto sobre o consumo.",
+        "valor-fixo-mensal-para-o-microempreendedor": "O microempreendedor paga um valor fixo por mês.",
+        "amplo-com-teto-alto-e-servicos-de-alta-renda": "Até empresas médias pagam o imposto único."
+      }
+    },
+    {
+      "id": "regulacao-dos-bancos",
+      "familia": "regra",
+      "decide": "Define quanto o governo fiscaliza o que os bancos podem fazer.",
+      "opcoes": {
+        "minima": "Quase nenhuma regra para os bancos.",
+        "padrao-internacional": "Regras do padrão internacional.",
+        "padrao-reforcado": "Regras mais duras, com limite para o risco.",
+        "repressao-financeira": "O governo manda onde e a que juro os bancos emprestam."
+      }
+    },
+    {
+      "id": "taxa-basica-de-juros",
+      "familia": "regra",
+      "decide": "Define a taxa de juros que puxa todos os juros do país, quando quem decide é o governo.",
+      "opcoes": {
+        "minimo-2": "Juros de 2% ao ano.",
+        "referencia-13-75": "Juros de 13,75% ao ano.",
+        "maximo-30": "Juros de 30% ao ano."
+      }
+    },
+    {
+      "id": "valor-da-meta-de-inflacao",
+      "familia": "regra",
+      "decide": "Define quanto de inflação por ano o banco central deve buscar.",
+      "opcoes": {
+        "minimo-2": "Meta de 2% ao ano.",
+        "referencia-3": "Meta de 3% ao ano.",
+        "proposta-desenvolvimentista-4-a-4-5": "Meta de 4% a 4,5% ao ano.",
+        "maximo-6": "Meta de 6% ao ano."
+      }
+    },
+    {
+      "id": "investimento-estrangeiro",
+      "familia": "regra",
+      "decide": "Define em que setores e com que regras empresas de fora podem investir no país.",
+      "opcoes": {
+        "fechado": "Empresas de fora não podem investir.",
+        "lista-do-que-e-proibido": "Tudo liberado, menos uma lista de setores proibidos.",
+        "restricoes-por-setor": "Limites em setores sensíveis, como mídia, terra e defesa.",
+        "sem-restricoes": "Qualquer empresa de fora investe onde quiser.",
+        "atracao-com-incentivos-fiscais": "O governo dá desconto de imposto para atrair empresas de fora."
+      }
+    }
+  ]
+}

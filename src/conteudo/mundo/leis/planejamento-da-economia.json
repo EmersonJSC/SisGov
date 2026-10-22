@@ -1,22 +1,12 @@
 {
   "id": "planejamento-da-economia",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Planejamento da economia",
-  "descricao": "O governo planeja a economia toda, só orienta o setor privado ou deixa o mercado decidir?",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "planejamento",
-    "nome": "Planejamento",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se o governo planeja a economia, só orienta as empresas ou deixa o mercado decidir.",
+  "area": "economia-e-empresas",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_planejamento_da_economia",
     "unidade": "nivel_escopo",
@@ -26,14 +16,16 @@
         "rotulo": "Mercado decide",
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
-        "efeitos": "Nada muda no investimento público"
+        "efeitos": "Nada muda no investimento público",
+        "propoe": "Não há plano: empresas e consumidores decidem."
       },
       {
         "id": "plano-que-orienta",
         "rotulo": "Plano que orienta (obrigatório para o Estado, indicativo para empresas)",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Coordenação do investimento público ↑ (lacuna)"
+        "efeitos": "Coordenação do investimento público ↑ (lacuna)",
+        "propoe": "O plano obriga o governo e só orienta as empresas."
       },
       {
         "id": "plano-central",
@@ -45,23 +37,137 @@
           "Mercado financeiro",
           "Entidades do agronegócio"
         ],
-        "efeitos": "Desabastecimento ↑; dólar paralelo ↑; concentração ↑; produtividade ↓ no longo prazo"
+        "efeitos": "Desabastecimento ↑; dólar paralelo ↑; concentração ↑; produtividade ↓ no longo prazo",
+        "propoe": "O governo decide o que se produz, quanto e a que preço."
       }
     ]
   },
-  "consequencias": [
-    "planejamento-da-economia--concentracao-mercado",
-    "planejamento-da-economia--desabastecimento",
-    "planejamento-da-economia--mercado-paralelo",
-    "planejamento-da-economia--produtividade",
-    "planejamento-da-economia--investimento",
-    "planejamento-da-economia--desemprego",
-    "planejamento-da-economia--grupo-empresarios",
-    "planejamento-da-economia--grupo-ricos"
+  "trava": [
+    {
+      "opcao": "plano-central",
+      "lei": "controle-de-precos",
+      "minimo": 100
+    }
   ],
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "mae": {
     "texto": "Propriedade dos meios de produção: \"plano central\" exige \"socialista\" ou \"mista\"; também exige Controle de preços \"tabelamento geral\"",
     "leis": ["propriedade-dos-meios-de-producao", "controle-de-precos"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
+  "mesa": {
+    "id": "planejamento",
+    "nome": "Planejamento",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "planejamento-da-economia--concentracao-mercado",
+      "alvo": "concentracao_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--desabastecimento",
+      "alvo": "desabastecimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 15]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--mercado-paralelo",
+      "alvo": "mercado_paralelo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, 12]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--investimento",
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -8]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -3]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -20]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "planejamento-da-economia--grupo-ricos",
+      "alvo": "grupo_ricos",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [50, 0],
+          [100, -15]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

@@ -1,22 +1,13 @@
 {
   "id": "regime-simplificado-para-pequenas-empresas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Imposto único para pequenas empresas",
-  "descricao": "Pequenos negócios pagam um imposto só, simples, sobre o faturamento.",
-  "area": "Impostos e contas públicas",
-  "mesa": {
-    "id": "mesa-impostos",
-    "nome": "Mesa Impostos",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se pequenos negócios pagam um imposto só, simples, sobre o faturamento.",
+  "area": "economia-e-empresas",
+  "exemplo": "No Brasil: Simples Nacional e microempreendedor individual.",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_regime_simplificado_para_pequenas_empresas",
     "unidade": "nivel_escopo",
@@ -27,7 +18,8 @@
         "valor": 0,
         "apoiam": ["Indústria"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "Informalidade ↑"
+        "efeitos": "Informalidade ↑",
+        "propoe": "Pequenos negócios pagam os mesmos impostos que os grandes."
       },
       {
         "id": "so-dispensa-do-iva-abaixo-de-um-faturamento",
@@ -36,7 +28,8 @@
         "custoTexto": "0,1 a 0,2% do PIB (aprox.)",
         "apoiam": ["Indústria"],
         "rejeitam": ["Pequenos negócios"],
-        "efeitos": "Complexidade ↓ pouco"
+        "efeitos": "Complexidade ↓ pouco",
+        "propoe": "Só quem fatura pouco deixa de pagar o imposto sobre o consumo."
       },
       {
         "id": "valor-fixo-mensal-para-o-microempreendedor",
@@ -44,7 +37,8 @@
         "valor": 67,
         "custoTexto": "0,1 a 0,3% do PIB (aprox.)",
         "apoiam": ["Informais", "Pequenos negócios"],
-        "efeitos": "Informalidade ↓"
+        "efeitos": "Informalidade ↓",
+        "propoe": "O microempreendedor paga um valor fixo por mês."
       },
       {
         "id": "amplo-com-teto-alto-e-servicos-de-alta-renda",
@@ -53,31 +47,167 @@
         "custoTexto": "perto de 1% do PIB (aprox.);  120,1 bi em 2026",
         "apoiam": ["Pequenos negócios", "Comércio e serviços"],
         "rejeitam": ["Indústria"],
-        "efeitos": "Informalidade ↓; Produtividade ↓ (empresa evita crescer); Progressividade ↓"
+        "efeitos": "Informalidade ↓; Produtividade ↓ (empresa evita crescer); Progressividade ↓",
+        "propoe": "Até empresas médias pagam o imposto único."
       }
     ]
   },
-  "consequencias": [
-    "regime-simplificado-pequenas-empresas--informalidade",
-    "regime-simplificado-pequenas-empresas--complexidade-tributaria",
-    "regime-simplificado-pequenas-empresas--produtividade",
-    "regime-simplificado-pequenas-empresas--sonegacao",
-    "regime-simplificado-pequenas-empresas--desemprego",
-    "regime-simplificado-pequenas-empresas--arrecadacao",
-    "regime-simplificado-pequenas-empresas--grupo-empresarios",
-    "regime-simplificado-pequenas-empresas--grupo-jovens",
-    "regime-simplificado-pequenas-empresas--grupo-pequenos-negocios",
-    "regime-simplificado-pequenas-empresas--grupo-pobres",
-    "regime-simplificado-pequenas-empresas--grupo-servidores",
-    "regime-simplificado-pequenas-empresas--grupo-trabalhadores"
-  ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Imposto sobre consumo. \"Cascata em vários tributos\" trava \"Só dispensa do imposto sobre o consumo\".",
     "leis": ["imposto-sobre-consumo"]
   },
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "lei"
   },
-  "ministerio": "Ministério da Fazenda"
+  "efeitos": [
+    {
+      "id": "regime-simplificado-pequenas-empresas--informalidade",
+      "alvo": "informalidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--complexidade-tributaria",
+      "alvo": "complexidade_tributaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--sonegacao",
+      "alvo": "sonegacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -0.2],
+          [67, -0.6],
+          [100, -1]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regime-simplificado-pequenas-empresas--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

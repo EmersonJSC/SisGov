@@ -1,22 +1,12 @@
 {
   "id": "papel-do-estado-empresario",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Alcance das empresas estatais",
-  "descricao": "Em quais atividades a Constituição permite que o Estado opere empresas? Esta decisão define o alcance jurídico; não determina a participação acionária por setor.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define em que atividades a Constituição deixa o Estado ter empresas.",
+  "area": "economia-e-empresas",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_papel_do_estado_empresario",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
-        "efeitos": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado."
+        "efeitos": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
+        "propoe": "O Estado não pode ter nenhuma empresa."
       },
       {
         "id": "estatais-minimas",
@@ -36,14 +27,16 @@
         "valor": 33.33,
         "apoiam": ["Mercado financeiro", "Comércio e serviços"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Permissão restrita a serviços públicos e monopólios naturais."
+        "efeitos": "Permissão restrita a serviços públicos e monopólios naturais.",
+        "propoe": "Só serviços públicos e monopólios naturais, como água e energia."
       },
       {
         "id": "estatais-estrategicas",
         "rotulo": "Serviços públicos e setores estratégicos definidos em lei",
         "valor": 66.67,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Permissão adicional para setores estratégicos, cuja lista depende da legislação."
+        "efeitos": "Permissão adicional para setores estratégicos, cuja lista depende da legislação.",
+        "propoe": "Também setores que uma lei chamar de estratégicos, como petróleo."
       },
       {
         "id": "estado-empresario",
@@ -51,23 +44,82 @@
         "valor": 100,
         "apoiam": ["Centrais sindicais", "Sindicatos de servidores"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Permissão ampla para operar empresas; participação e fluxos fiscais dependem da propriedade efetiva."
+        "efeitos": "Permissão ampla para operar empresas; participação e fluxos fiscais dependem da propriedade efetiva.",
+        "propoe": "O Estado pode ter empresas em qualquer setor."
       }
     ]
   },
-  "consequencias": [
-    "papel-do-estado-empresario--investimento",
-    "empresas-estatais-e-privatizacao--confianca-empresarial",
-    "empresas-estatais-e-privatizacao--desemprego",
-    "empresas-estatais-e-privatizacao--investimento"
+  "trava": [
+    {
+      "opcao": "sem-estatais",
+      "lei": "politica-de-precos-das-estatais",
+      "proibe": true
+    }
   ],
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "mae": {
     "texto": "A participação pública agregada define se há capital estatal; esta lei define em quais atividades ele pode operar.",
     "leis": ["propriedade-dos-meios-de-producao"]
   },
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "papel-do-estado-empresario--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.072,
+        "termoConstante": -10.9207
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.1875,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.03,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "empresas-estatais-e-privatizacao--investimento",
+      "alvo": "investimento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.21212121,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

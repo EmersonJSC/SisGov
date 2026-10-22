@@ -170,8 +170,10 @@ describe("ficha de lei v3", () => {
     // mínimo e as 28 leis novas das mesas (V1-34); a troca de Economia
     // tirou 6 fichas v3 antigas (suas curvas viraram consequências comuns).
     // Ferrovias e terminais portuários acrescentou mais uma ficha v3.
-    // + 15 leis de Contas públicas no molde v4 (molde-das-leis.md, tarefa 5a).
-    expect(relatorio.migradas).toHaveLength(25);
-    expect(relatorio.faltam).toHaveLength(relatorio.total - 25);
+    // O molde v4 (molde-das-leis.md) migra área por área: o número cresce.
+    expect(relatorio.migradas.length).toBeGreaterThanOrEqual(25);
+    expect(relatorio.migradas.length + relatorio.faltam.length).toBe(
+      relatorio.total,
+    );
   });
 });

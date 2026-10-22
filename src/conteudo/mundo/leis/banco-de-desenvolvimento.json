@@ -1,22 +1,12 @@
 {
   "id": "banco-de-desenvolvimento",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Banco de desenvolvimento",
-  "descricao": "Define como financiar fábricas, máquinas e inovação com crédito de longo prazo.",
-  "area": "Economia, moeda e comércio",
-  "mesa": {
-    "id": "propriedade-e-estatais",
-    "nome": "Propriedade e estatais",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define se e como um banco público empresta a longo prazo para fábricas, máquinas e inovação.",
+  "area": "economia-e-empresas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_banco_de_desenvolvimento",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Confederação da indústria"],
-        "efeitos": "Baixo custo fiscal; investimento depende do crédito privado."
+        "efeitos": "Baixo custo fiscal; investimento depende do crédito privado.",
+        "propoe": "Não há banco público: empresas pegam crédito a preço de mercado."
       },
       {
         "id": "segundo-piso-juro-de-mercado",
@@ -35,7 +26,8 @@
         "valor": 33.33,
         "apoiam": ["Mercado financeiro", "Pequenos empreendedores"],
         "rejeitam": ["Centrais sindicais"],
-        "efeitos": "Expande acesso com risco partilhado; efeito depende da seleção."
+        "efeitos": "Expande acesso com risco partilhado; efeito depende da seleção.",
+        "propoe": "O banco público empresta pelos bancos privados, a juro de mercado."
       },
       {
         "id": "credito-direcionado",
@@ -43,7 +35,8 @@
         "valor": 66.67,
         "apoiam": ["Confederação da indústria", "Trabalhadores com carteira"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Investimento cresce com atraso; subsídio pressiona contas."
+        "efeitos": "Investimento cresce com atraso; subsídio pressiona contas.",
+        "propoe": "O banco empresta mais barato a fábricas que cumprem metas."
       },
       {
         "id": "credito-subsidiado-em-massa",
@@ -51,18 +44,63 @@
         "valor": 100,
         "apoiam": ["Movimento ambientalista", "Confederação da indústria"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Inovação pode subir; custo e risco fiscal crescem."
+        "efeitos": "Inovação pode subir; custo e risco fiscal crescem.",
+        "propoe": "Muito crédito barato para indústria limpa e inovação."
       }
     ]
   },
-  "consequencias": [
-    "banco-de-desenvolvimento--investimento",
-    "banco-de-desenvolvimento--divida-publica",
-    "banco-de-desenvolvimento--gasto-publico"
-  ],
-  "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "propriedade-e-estatais",
+    "nome": "Propriedade e estatais",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "banco-de-desenvolvimento--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.138,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "banco-de-desenvolvimento--divida-publica",
+      "alvo": "divida_publica",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.0075,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_pib_por_passo"
+    },
+    {
+      "id": "banco-de-desenvolvimento--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.02],
+          [67, 0.2],
+          [100, 0.8]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }
