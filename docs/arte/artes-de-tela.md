@@ -22,8 +22,11 @@ substituto.
   (`docs/arte/PROMPTS.md`), o mesmo das artes que já existem.
 - Sem texto, sem bandeira, marca ou pessoa real reconhecível.
 - Espaço calmo à esquerda ou no centro, porque a interface escreve em cima.
-- Formato **JPG**. Tamanhos: 1920 × 1080 (fundos e cenas) e 1600 × 400
+- Formato **JPG**. Tamanhos: 2560 × 1440 (fundos e cenas) e 2560 × 640
   (faixas).
+- **Os prompts prontos, em inglês, estão em `docs/arte/PROMPTS.md`**, seção
+  "Áreas do mapa e crise". Cada um já traz o contexto e o guia de estilo:
+  é só copiar e colar no gerador.
 
 ## Pedidos
 
