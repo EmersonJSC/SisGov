@@ -1,46 +1,205 @@
 {
   "id": "imposto-propriedade-urbana-rural",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "tributaria",
+  "versaoEsquema": 4,
+  "familia": "imposto",
   "nome": "Imposto sobre imóveis e terras",
-  "descricao": "Imposto anual sobre casas, prédios e terras, em porcentagem do valor.",
-  "area": "Tributação",
-  "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define a alíquota do imposto anual sobre casas, prédios e terras.",
+  "area": "contas-publicas",
+  "exemplo": "No Brasil: imposto municipal sobre imóveis e imposto federal sobre terras rurais.",
+  "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_propriedade_urbana_rural",
     "unidade": "percentual_0_100"
   },
-  "tributo": {
+  "dinheiro": {
+    "tipo": "receita",
     "base": "pib",
     "limites": {
       "minimo": 0,
       "maximo": 100
     }
   },
-  "consequencias": [
-    "imposto-propriedade-urbana-rural--desigualdade",
-    "imposto-propriedade-urbana-rural--desigualdade-1",
-    "imposto-propriedade-urbana-rural--deficit-habitacional",
-    "imposto-propriedade-urbana-rural--renda-familias",
-    "imposto-propriedade-urbana-rural--investimento",
-    "imposto-propriedade-urbana-rural--grupo-agro",
-    "imposto-propriedade-urbana-rural--grupo-aposentados",
-    "imposto-propriedade-urbana-rural--grupo-classe-media",
-    "imposto-propriedade-urbana-rural--grupo-empresarios",
-    "imposto-propriedade-urbana-rural--grupo-jovens",
-    "imposto-propriedade-urbana-rural--grupo-pobres",
-    "imposto-propriedade-urbana-rural--grupo-progressistas",
-    "imposto-propriedade-urbana-rural--arrecadacao"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "imposto-propriedade-urbana-rural--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--desigualdade-1",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--deficit-habitacional",
+      "alvo": "deficit_habitacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.75,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [0.3, 0.285],
+          [0.5, 0.458333],
+          [0.6, 0.54],
+          [0.9, 0.765],
+          [1.2, 0.96],
+          [1.5, 1.125],
+          [1.8, 1.26],
+          [2.1, 1.365],
+          [2.4, 1.44],
+          [2.7, 1.485],
+          [3, 1.5],
+          [3.3, 1.485],
+          [3.6, 1.44],
+          [3.9, 1.365],
+          [4.2, 1.26],
+          [4.5, 1.125],
+          [4.8, 0.96],
+          [5.1, 0.765],
+          [5.4, 0.54],
+          [5.7, 0.285],
+          [6, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "pib",
+        "referencia": 20.625004
+      },
+      "unidade": "percentual_pib"
+    }
+  ]
 }

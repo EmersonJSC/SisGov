@@ -1,22 +1,12 @@
 {
   "id": "revisao-de-gastos-tributarios",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Isenções fiscais",
-  "descricao": "Quanto o governo deixa de cobrar para ajudar setores, regiões e entidades.",
-  "area": "Impostos e contas públicas",
-  "mesa": {
-    "id": "mesa-impostos",
-    "nome": "Mesa Impostos",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto imposto o governo deixa de cobrar de setores, regiões e entidades.",
+  "area": "contas-publicas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_revisao_de_gastos_tributarios",
     "unidade": "nivel_escopo",
@@ -31,15 +21,17 @@
           "Indústria",
           "Comércio e serviços"
         ],
-        "efeitos": "Complexidade ↑ a cada isenção aceita em evento"
+        "efeitos": "Complexidade ↑ a cada isenção aceita em evento",
+        "propoe": "Todas as isenções continuam como estão."
       },
       {
         "id": "revisao-com-prazo-de-validade",
         "rotulo": "Isenções com prazo de validade",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Entidades do agronegócio", "Indústria"],
-        "efeitos": "Receita ↑ aos poucos; Complexidade ↓"
+        "efeitos": "Receita ↑ aos poucos; Complexidade ↓",
+        "propoe": "Cada isenção ganha prazo de validade e só é renovada se der resultado."
       },
       {
         "id": "corte-linear",
@@ -52,10 +44,31 @@
           "Indústria",
           "Comércio e serviços"
         ],
-        "efeitos": "Receita ↑ já; Investimento ↓ pouco nos setores cortados"
+        "efeitos": "Receita ↑ já; Investimento ↓ pouco nos setores cortados",
+        "propoe": "O governo corta uma parte de todas as isenções de uma vez."
       }
     ]
   },
-  "consequencias": ["revisao-de-gastos-tributarios--investimento"],
-  "ministerio": "Ministério da Fazenda"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "revisao-de-gastos-tributarios--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 3
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

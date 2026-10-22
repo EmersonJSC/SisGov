@@ -1,35 +1,16 @@
 {
   "id": "modelo-tributario",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Modelo de impostos",
-  "descricao": "Onde o peso dos impostos cai mais: no consumo ou na renda.",
-  "area": "Impostos e contas públicas",
-  "mesa": {
-    "id": "mesa-impostos",
-    "nome": "Mesa Impostos",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define onde cai o peso dos impostos: no consumo, numa alíquota única ou em quem ganha mais.",
+  "area": "contas-publicas",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_modelo_tributario",
     "unidade": "nivel_escopo",
     "opcoes": [
-      {
-        "id": "quase-sem-impostos",
-        "rotulo": "Impostos mínimos",
-        "valor": 0,
-        "custoTexto": "carga total abaixo de 15% do PIB",
-        "apoiam": ["Ricos", "Empresários"],
-        "rejeitam": ["Servidores", "Pobres", "Aposentados"],
-        "efeitos": "Receita ↓↓; trava saúde universal e seguro-desemprego generoso pelo custo; Margem de manobra ↓"
-      },
       {
         "id": "base-no-consumo",
         "rotulo": "Peso no consumo",
@@ -37,7 +18,8 @@
         "custoTexto": "carga de 15 a 25% do PIB",
         "apoiam": ["Empresários", "Entidades do agronegócio"],
         "rejeitam": ["Pobres", "Centrais sindicais"],
-        "efeitos": "Progressividade ↓; Receita estável (consumo não tem pico de Laffer)"
+        "efeitos": "Progressividade ↓; Receita estável (consumo não tem pico de Laffer)",
+        "propoe": "A maior parte da receita vem de impostos sobre o consumo."
       },
       {
         "id": "proporcional",
@@ -46,16 +28,8 @@
         "custoTexto": "carga de 20 a 30% do PIB",
         "apoiam": ["Pequenos negócios", "Classe média"],
         "rejeitam": ["Centrais sindicais", "Pobres"],
-        "efeitos": "Complexidade tributária ↓; Progressividade ↓; trava o IR do topo igual ao da base"
-      },
-      {
-        "id": "dual",
-        "rotulo": "Trabalho com faixas, capital com alíquota única",
-        "valor": 75,
-        "custoTexto": "carga de 30 a 45% do PIB",
-        "apoiam": ["Classe média"],
-        "rejeitam": ["Centrais sindicais", "Mercado financeiro"],
-        "efeitos": "Progressividade ↑ pouco; Fuga de capitais estável"
+        "efeitos": "Complexidade tributária ↓; Progressividade ↓; trava o IR do topo igual ao da base",
+        "propoe": "A renda paga uma alíquota única, e o consumo completa a receita."
       },
       {
         "id": "progressivo",
@@ -64,23 +38,171 @@
         "custoTexto": "carga de 35 a 45% do PIB",
         "apoiam": ["Pobres", "Trabalhadores", "Centrais sindicais"],
         "rejeitam": ["Ricos", "Empresários", "Mercado financeiro"],
-        "efeitos": "Progressividade ↑; Fuga de capitais ↑ sem cooperação internacional; libera dividendos na tabela progressiva"
+        "efeitos": "Progressividade ↑; Fuga de capitais ↑ sem cooperação internacional; libera dividendos na tabela progressiva",
+        "propoe": "Quem ganha mais paga proporcionalmente mais, com muitas faixas."
       }
     ]
   },
-  "consequencias": [
-    "modelo-tributario--desigualdade",
-    "modelo-tributario--arrecadacao",
-    "modelo-tributario--complexidade-tributaria",
-    "modelo-tributario--fuga-capitais",
-    "modelo-tributario--investimento",
-    "modelo-tributario--pobreza",
-    "modelo-tributario--confianca-empresarial",
-    "modelo-tributario--grupo-empresarios",
-    "modelo-tributario--grupo-pobres",
-    "modelo-tributario--grupo-progressistas",
-    "modelo-tributario--grupo-trabalhadores",
-    "modelo-tributario--margem-manobra-governo"
+  "trava": [
+    {
+      "opcao": "base-no-consumo",
+      "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+      "maximo": 66.67
+    },
+    {
+      "opcao": "proporcional",
+      "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+      "maximo": 66.67
+    }
   ],
-  "ministerio": "Ministério da Fazenda"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "mesa-impostos",
+    "nome": "Mesa Impostos",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "modelo-tributario--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.00333333,
+        "limiar": 25,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "modelo-tributario--complexidade-tributaria",
+      "alvo": "complexidade_tributaria",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.58333333,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "modelo-tributario--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.25,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "modelo-tributario--investimento",
+      "alvo": "investimento",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--pobreza",
+      "alvo": "pobreza",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.14,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "modelo-tributario--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.25,
+        "limiar": 88,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "modelo-tributario--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.056,
+        "termoConstante": -1.4
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

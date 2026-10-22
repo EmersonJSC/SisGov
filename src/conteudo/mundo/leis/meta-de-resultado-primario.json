@@ -1,22 +1,12 @@
 {
   "id": "meta-de-resultado-primario",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Meta de resultado das contas",
-  "descricao": "Quanto o governo promete economizar por ano.",
-  "area": "Impostos e contas públicas",
-  "mesa": {
-    "id": "mesa-regra-fiscal",
-    "nome": "Mesa Regra fiscal",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quanto o governo se compromete a sobrar (ou a deixar faltar) nas contas a cada ano, antes dos juros.",
+  "area": "contas-publicas",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_meta_de_resultado_primario",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "Custo",
         "apoiam": ["Quem apoia"],
         "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
+        "efeitos": "Efeitos principais",
+        "propoe": "O governo pode fechar o ano no vermelho."
       },
       {
         "id": "2-do-pib",
@@ -37,13 +28,8 @@
         "custoTexto": "gasto +2% do PIB acima da receita",
         "apoiam": ["grupos que recebem gasto"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Credibilidade ↓; PIB ↑ no curto prazo (o efeito vira negativo com dívida alta)"
-      },
-      {
-        "id": "0-25-do-pib",
-        "rotulo": "Economizar 1% do PIB",
-        "valor": 66.67,
-        "efeitos": "o o país de referência fez −0,43% em 2025"
+        "efeitos": "Credibilidade ↓; PIB ↑ no curto prazo (o efeito vira negativo com dívida alta)",
+        "propoe": "O governo se compromete a gastar no máximo o que arrecada."
       },
       {
         "id": "3-do-pib",
@@ -52,20 +38,79 @@
         "custoTexto": "corte de gasto ou alta de imposto de até 3% do PIB",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Servidores", "Interior", "Aposentados"],
-        "efeitos": "Credibilidade ↑; Risco-país ↓; PIB ↓ no curto prazo, mais na recessão"
+        "efeitos": "Credibilidade ↑; Risco-país ↓; PIB ↓ no curto prazo, mais na recessão",
+        "propoe": "O governo se compromete a sobrar 3% do PIB por ano."
       }
     ]
   },
-  "consequencias": [
-    "meta-de-resultado-primario--pib",
-    "meta-de-resultado-primario--risco-pais",
-    "grupos--meta-de-resultado-primario--grupo-aposentados",
-    "grupos--meta-de-resultado-primario--grupo-interior",
-    "grupos--meta-de-resultado-primario--grupo-servidores"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Regra fiscal. Com \"Sem regra\", a meta só indica e furar não custa credibilidade extra (proposta minha). Com \"Destino do resultado fiscal\" em \"Gastar\", a meta não funciona (inventário).",
     "leis": ["regra-fiscal", "destino-do-resultado-fiscal"]
   },
-  "ministerio": "Ministério da Fazenda"
+  "mesa": {
+    "id": "mesa-regra-fiscal",
+    "nome": "Mesa Regra fiscal",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "meta-de-resultado-primario--pib",
+      "alvo": "pib",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "meta-de-resultado-primario--risco-pais",
+      "alvo": "risco_pais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--meta-de-resultado-primario--grupo-aposentados",
+      "alvo": "grupo_aposentados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--meta-de-resultado-primario--grupo-interior",
+      "alvo": "grupo_interior",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--meta-de-resultado-primario--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

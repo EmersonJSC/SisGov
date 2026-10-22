@@ -1,18 +1,12 @@
 {
   "id": "fundo-soberano",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Fundo soberano",
-  "descricao": "Onde o país aplica o dinheiro guardado para o futuro.",
-  "area": "Tributação",
-  "mesa": {
-    "id": "regra-fiscal",
-    "nome": "Regra fiscal",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define onde o país aplica o dinheiro que guarda para o futuro.",
+  "area": "contas-publicas",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_fundo_soberano",
     "unidade": "nivel_escopo",
@@ -20,39 +14,199 @@
       {
         "id": "guardar",
         "rotulo": "Reservas seguras",
-        "valor": 0
-      },
-      {
-        "id": "fundo-exterior",
-        "rotulo": "Investir no exterior",
-        "valor": 33
+        "valor": 0,
+        "propoe": "O dinheiro fica em reservas seguras, rendendo pouco."
       },
       {
         "id": "emprestar-empresas",
         "rotulo": "Emprestar a empresas do país",
-        "valor": 67
+        "valor": 67,
+        "propoe": "O fundo empresta a empresas do país."
       },
       {
         "id": "investir-obras",
         "rotulo": "Investir em obras",
-        "valor": 100
+        "valor": 100,
+        "propoe": "O fundo paga obras públicas."
       }
     ]
   },
-  "consequencias": [
-    "fundo-soberano--credito",
-    "fundo-soberano--investimento",
-    "fundo-soberano--infraestrutura",
-    "fundo-soberano--gasto-publico",
-    "fundo-soberano--reputacao-internacional",
-    "fundo-soberano--inflacao",
-    "fundo-soberano--corrupcao",
-    "fundo-soberano--grupo-empresarios",
-    "fundo-soberano--grupo-pobres",
-    "fundo-soberano--grupo-servidores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "regra-fiscal",
+    "nome": "Regra fiscal",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "fundo-soberano--credito",
+      "alvo": "credito",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 8],
+          [100, 0]
+        ]
+      },
+      "atraso": 1,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--investimento",
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 5],
+          [100, 3]
+        ]
+      },
+      "atraso": 1,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--infraestrutura",
+      "alvo": "infraestrutura",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0],
+          [100, 0.5]
+        ]
+      },
+      "atraso": 4,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "fundo-soberano--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0],
+          [100, 2]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "fundo-soberano--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [33, 4],
+          [67, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 4,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--inflacao",
+      "alvo": "inflacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -0.5],
+          [67, 0.8],
+          [100, 1]
+        ]
+      },
+      "atraso": 1,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "fundo-soberano--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.5],
+          [67, 2],
+          [100, 3]
+        ]
+      },
+      "atraso": 4,
+      "escala": {
+        "fator": "cofre",
+        "referencia": 10
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-soberano--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

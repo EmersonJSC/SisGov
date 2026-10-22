@@ -15,25 +15,25 @@ Total: 242 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Modelo de impostos | `modelo-tributario` | constitucional | 5 opções (máximo 3) |  | |
-| Regra das contas | `regra-fiscal` | constitucional | 4 opções (máximo 3); sem nível |  | |
+| Modelo de impostos | `modelo-tributario` | constitucional | — |  | |
+| Regra das contas | `regra-fiscal` | constitucional | — |  | |
 | Verbas carimbadas | `vinculacoes-orcamentarias` | constitucional | — |  | |
-| Imposto sobre grandes fortunas | `imposto-grandes-fortunas` | imposto | sem nível |  | |
-| Imposto sobre heranças | `imposto-heranca` | imposto | sem nível |  | |
-| Imposto sobre imóveis e terras | `imposto-propriedade-urbana-rural` | imposto | sem nível |  | |
-| Imposto sobre o lucro das empresas | `imposto-renda-empresas` | imposto | sem nível |  | |
-| Imposto sobre a renda das pessoas | `imposto-renda-pessoas` | imposto | sem nível |  | |
+| Imposto sobre grandes fortunas | `imposto-grandes-fortunas` | imposto | — |  | |
+| Imposto sobre heranças | `imposto-heranca` | imposto | — |  | |
+| Imposto sobre imóveis e terras | `imposto-propriedade-urbana-rural` | imposto | — |  | |
+| Imposto sobre o lucro das empresas | `imposto-renda-empresas` | imposto | — |  | |
+| Imposto sobre a renda das pessoas | `imposto-renda-pessoas` | imposto | — |  | |
 | Imposto sobre o que faz mal | `imposto-seletivo` | imposto | — |  | |
 | Valor dos imóveis para o imposto | `imposto-sobre-a-propriedade` | imposto | — | `imposto-propriedade-urbana-rural` | |
-| Imposto sobre o consumo | `imposto-sobre-consumo` | imposto | sem nível |  | |
-| Imposto sobre transações bancárias | `imposto-transacoes-financeiras` | imposto | sem nível |  | |
-| Imposto sobre dividendos | `tributacao-dividendos` | imposto | sem nível |  | |
+| Imposto sobre o consumo | `imposto-sobre-consumo` | imposto | — |  | |
+| Imposto sobre transações bancárias | `imposto-transacoes-financeiras` | imposto | — |  | |
+| Imposto sobre dividendos | `tributacao-dividendos` | imposto | — |  | |
 | Imposto do dinheiro guardado no exterior | `tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter` | imposto | — |  | |
 | Apostas e jogos de azar | `apostas-e-jogos-de-azar` | regra | decide é pergunta; 5 opções (máximo 3) |  | |
 | Conselho fiscal independente | `conselho-fiscal-independente` | regra | — |  | |
 | Destino da sobra do orçamento | `destino-do-resultado-fiscal` | regra | — |  | |
-| Fundo soberano | `fundo-soberano` | regra | 4 opções (máximo 3); sem nível |  | |
-| Meta de resultado das contas | `meta-de-resultado-primario` | regra | 4 opções (máximo 3) |  | |
+| Fundo soberano | `fundo-soberano` | regra | — |  | |
+| Meta de resultado das contas | `meta-de-resultado-primario` | regra | — |  | |
 | Imposto único para pequenas empresas | `regime-simplificado-para-pequenas-empresas` | regra | 4 opções (máximo 3) |  | |
 | Isenções fiscais | `revisao-de-gastos-tributarios` | regra | — |  | |
 

@@ -1,47 +1,214 @@
 {
   "id": "imposto-renda-pessoas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "tributaria",
+  "versaoEsquema": 4,
+  "familia": "imposto",
   "nome": "Imposto sobre a renda das pessoas",
-  "descricao": "Quanto cada pessoa paga sobre o salário e outros ganhos, na faixa mais alta.",
-  "area": "Tributação",
-  "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define a alíquota mais alta do imposto que as pessoas pagam sobre o salário e outros ganhos.",
+  "area": "contas-publicas",
+  "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_renda_pessoas",
     "unidade": "percentual_0_100"
   },
-  "tributo": {
+  "dinheiro": {
+    "tipo": "receita",
     "base": "renda_familias",
     "limites": {
       "minimo": 0,
       "maximo": 100
     }
   },
-  "consequencias": [
-    "imposto-renda-pessoas--desigualdade",
-    "imposto-renda-pessoas--renda-familias",
-    "imposto-renda-pessoas--consumo",
-    "imposto-renda-pessoas--sonegacao",
-    "imposto-renda-pessoas--fuga-capitais",
-    "imposto-renda-pessoas--inovacao",
-    "imposto-renda-pessoas--grupo-classe-media",
-    "imposto-renda-pessoas--grupo-empresarios",
-    "imposto-renda-pessoas--grupo-pobres",
-    "imposto-renda-pessoas--grupo-progressistas",
-    "imposto-renda-pessoas--grupo-servidores",
-    "imposto-renda-pessoas--grupo-trabalhadores",
-    "imposto-renda-pessoas--arrecadacao",
-    "imposto-renda-pessoas--grupo-ricos"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "imposto-renda-pessoas--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1166666667,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--renda-familias",
+      "alvo": "renda_familias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1166666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--consumo",
+      "alvo": "consumo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.05,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--sonegacao",
+      "alvo": "sonegacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1166666667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.05,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.05,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-pessoas--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [5, 4.807692],
+          [10, 9.230769],
+          [15, 13.269231],
+          [20, 16.923077],
+          [25, 20.192308],
+          [27.5, 21.682692],
+          [30, 23.076923],
+          [35, 25.576923],
+          [40, 27.692308],
+          [45, 29.423077],
+          [50, 30.769231],
+          [55, 31.730769],
+          [60, 32.307692],
+          [65, 32.5],
+          [70, 32.307692],
+          [75, 31.730769],
+          [80, 30.769231],
+          [85, 29.423077],
+          [90, 27.692308],
+          [95, 25.576923],
+          [100, 23.076923]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "renda_familias",
+        "referencia": 325.512356
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "imposto-renda-pessoas--grupo-ricos",
+      "alvo": "grupo_ricos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.166667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

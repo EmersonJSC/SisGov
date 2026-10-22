@@ -1,44 +1,181 @@
 {
   "id": "imposto-grandes-fortunas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "tributaria",
+  "versaoEsquema": 4,
+  "familia": "imposto",
   "nome": "Imposto sobre grandes fortunas",
-  "descricao": "Imposto anual sobre o patrimônio de quem tem muito.",
-  "area": "Tributação",
-  "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define a alíquota anual sobre patrimônios muito grandes.",
+  "area": "contas-publicas",
+  "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_grandes_fortunas",
     "unidade": "percentual_0_100"
   },
-  "tributo": {
+  "dinheiro": {
+    "tipo": "receita",
     "base": "pib",
     "limites": {
       "minimo": 0,
       "maximo": 100
     }
   },
-  "consequencias": [
-    "imposto-grandes-fortunas--desigualdade",
-    "imposto-grandes-fortunas--fuga-capitais",
-    "imposto-grandes-fortunas--investimento",
-    "imposto-grandes-fortunas--complexidade-tributaria",
-    "imposto-grandes-fortunas--grupo-agro",
-    "imposto-grandes-fortunas--grupo-empresarios",
-    "imposto-grandes-fortunas--grupo-pobres",
-    "imposto-grandes-fortunas--grupo-progressistas",
-    "imposto-grandes-fortunas--grupo-trabalhadores",
-    "imposto-grandes-fortunas--arrecadacao",
-    "imposto-grandes-fortunas--grupo-ricos"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "imposto-grandes-fortunas--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.4285714286,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.8571428571,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--complexidade-tributaria",
+      "alvo": "complexidade_tributaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-trabalhadores",
+      "alvo": "grupo_trabalhadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-grandes-fortunas--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [0.4, 0.38],
+          [0.8, 0.72],
+          [1.2, 1.02],
+          [1.6, 1.28],
+          [2, 1.5],
+          [2.4, 1.68],
+          [2.8, 1.82],
+          [3.2, 1.92],
+          [3.6, 1.98],
+          [4, 2],
+          [4.4, 1.98],
+          [4.8, 1.92],
+          [5.2, 1.82],
+          [5.6, 1.68],
+          [6, 1.5],
+          [6.4, 1.28],
+          [6.8, 1.02],
+          [7.2, 0.72],
+          [7.6, 0.38],
+          [8, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "pib",
+        "referencia": 149.999925
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "imposto-grandes-fortunas--grupo-ricos",
+      "alvo": "grupo_ricos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.857143,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

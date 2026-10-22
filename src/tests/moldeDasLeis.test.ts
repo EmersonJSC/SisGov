@@ -361,3 +361,42 @@ describe("áreas por assunto no país", () => {
     ]);
   });
 });
+
+describe("Contas públicas no molde (tarefa 5a)", () => {
+  const criada = criarPartida({ semente: 1, ocorrencias: false });
+  if (!criada.ok) throw new Error(criada.erros.join(" "));
+  const leis = verPartida(criada.value).leis;
+  const ids = [
+    "regra-fiscal",
+    "vinculacoes-orcamentarias",
+    "modelo-tributario",
+    "imposto-renda-pessoas",
+    "imposto-renda-empresas",
+    "imposto-sobre-consumo",
+    "imposto-seletivo",
+    "imposto-propriedade-urbana-rural",
+    "imposto-heranca",
+    "tributacao-dividendos",
+    "imposto-grandes-fortunas",
+    "imposto-transacoes-financeiras",
+    "meta-de-resultado-primario",
+    "revisao-de-gastos-tributarios",
+    "fundo-soberano",
+  ];
+
+  it("as 15 leis entram com família, frase e área", () => {
+    for (const id of ids) {
+      const lei = leis.find((l) => l.id === id)!;
+      expect(lei.familia, id).toBeDefined();
+      expect(lei.decide, id).toMatch(/^Define /);
+      expect(lei.areas, id).toEqual(["contas-publicas"]);
+    }
+  });
+
+  it("os impostos aparecem na cor do imposto e as constitucionais em lilás", () => {
+    const fam = (id: string) => familiaDaLei(leis.find((l) => l.id === id)!);
+    expect(fam("imposto-seletivo")).toBe("imposto");
+    expect(fam("regra-fiscal")).toBe("constituicao");
+    expect(fam("fundo-soberano")).toBe("regra");
+  });
+});

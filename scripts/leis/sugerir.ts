@@ -10,7 +10,11 @@ import type { Familia } from "../../src/game/pais/fichaV3";
 export type LeiBruta = {
   id: string;
   nome: string;
-  descricao: string;
+  descricao?: string;
+  /** Só v4: já declara família, área e frase. */
+  familia?: Familia;
+  area?: string;
+  decide?: string;
   versaoEsquema?: number;
   grupo?: string;
   nivelLegal?: string;
@@ -119,6 +123,7 @@ export function areaDasLeisNoPais(
 }
 
 function familiaSugerida(lei: LeiBruta): Familia {
+  if (lei.versaoEsquema === 4 && lei.familia) return lei.familia;
   if (
     lei.nivelLegal === "petrea" ||
     lei.petrea === true ||
@@ -148,6 +153,7 @@ function familiaSugerida(lei: LeiBruta): Familia {
 }
 
 function areaDe(lei: LeiBruta, areaDaLei: ReadonlyMap<string, string>) {
+  if (lei.versaoEsquema === 4) return lei.area ?? "centro";
   return familiaSugerida(lei) === "petrea"
     ? "centro"
     : (AREA_DA_LEI[lei.id] ?? areaDaLei.get(lei.id) ?? "sem-area");
@@ -164,12 +170,14 @@ export function sugerirLinha(
   const faltas: string[] = [];
   if (!lei.consequencias?.length && !lei.efeitos?.length)
     faltas.push("sem efeito na rede");
-  if (lei.descricao.trim().endsWith("?")) faltas.push("decide é pergunta");
+  if ((lei.decide ?? lei.descricao ?? "").trim().endsWith("?"))
+    faltas.push("decide é pergunta");
   const opcoes = lei.controle?.opcoes?.length ?? 0;
   if ((familia === "regra" || familia === "constitucional") && opcoes > 3)
     faltas.push(`${opcoes} opções (máximo 3)`);
   if (textoProibido(lei.nome)) faltas.push("nome de programa ou travessão");
   if (!lei.nivelLegal && !lei.nivel) faltas.push("sem nível");
+  if (lei.versaoEsquema === 4) faltas.length = 0; // já passou no verificador
 
   const minhas = palavras(lei.id);
   const parecidaCom =

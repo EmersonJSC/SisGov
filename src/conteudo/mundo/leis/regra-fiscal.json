@@ -1,18 +1,13 @@
 {
   "id": "regra-fiscal",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Regra das contas",
-  "descricao": "O que limita o gasto do governo.",
-  "area": "Instituições, Estado e sistema político",
-  "mesa": {
-    "id": "regra-fiscal",
-    "nome": "Regra fiscal",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "emenda-constitucional",
+  "decide": "Define o freio que a Constituição põe no gasto do governo.",
+  "area": "contas-publicas",
+  "exemplo": "No Brasil: teto de gastos (2016) e arcabouço fiscal (2023).",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_regra_fiscal",
     "unidade": "nivel_escopo",
@@ -20,38 +15,142 @@
       {
         "id": "sem-regra",
         "rotulo": "Sem regra",
-        "valor": 0
-      },
-      {
-        "id": "meta-resultado",
-        "rotulo": "Meta de resultado",
-        "valor": 33
+        "valor": 0,
+        "propoe": "O governo gasta o que o Congresso aprovar, sem freio."
       },
       {
         "id": "teto-gastos",
         "rotulo": "Teto de gasto",
-        "valor": 67
+        "valor": 67,
+        "propoe": "O gasto total só cresce pela inflação do ano anterior."
       },
       {
         "id": "arcabouco",
         "rotulo": "Gasto cresce menos que a receita",
-        "valor": 100
+        "valor": 100,
+        "propoe": "O gasto cresce, mas sempre menos que a receita."
       }
     ]
   },
-  "consequencias": [
-    "regra-fiscal--risco-pais",
-    "regra-fiscal--taxa-juros",
-    "regra-fiscal--margem-manobra-governo",
-    "regra-fiscal--infraestrutura",
-    "regra-fiscal--recessao",
-    "regra-fiscal--gasto-publico",
-    "regra-fiscal--grupo-empresarios",
-    "regra-fiscal--grupo-pobres",
-    "regra-fiscal--grupo-servidores"
+  "trava": [
+    {
+      "opcao": "arcabouco",
+      "lei": "meta-de-resultado-primario",
+      "minimo": 33.33
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "regra-fiscal",
+    "nome": "Regra fiscal",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "regra-fiscal--risco-pais",
+      "alvo": "risco_pais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regra-fiscal--taxa-juros",
+      "alvo": "taxa_juros",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regra-fiscal--margem-manobra-governo",
+      "alvo": "margem_manobra_governo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regra-fiscal--infraestrutura",
+      "alvo": "infraestrutura",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.00363636,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "regra-fiscal--recessao",
+      "alvo": "recessao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.09090909,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "regra-fiscal--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.00757576,
+        "limiar": 67,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "regra-fiscal--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regra-fiscal--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "regra-fiscal--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

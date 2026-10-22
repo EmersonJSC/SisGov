@@ -1,42 +1,160 @@
 {
   "id": "imposto-renda-empresas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "tributaria",
+  "versaoEsquema": 4,
+  "familia": "imposto",
   "nome": "Imposto sobre o lucro das empresas",
-  "descricao": "A parte do lucro que a empresa entrega ao governo.",
-  "area": "Tributação",
-  "mesa": {
-    "id": "impostos",
-    "nome": "Impostos",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Fazenda",
-  "processoAutorizacao": "lei-ordinaria",
+  "decide": "Define quanto as empresas pagam de imposto sobre o lucro.",
+  "area": "contas-publicas",
+  "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_renda_empresas",
     "unidade": "percentual_0_100"
   },
-  "tributo": {
+  "dinheiro": {
+    "tipo": "receita",
     "base": "pib",
     "limites": {
       "minimo": 0,
       "maximo": 100
     }
   },
-  "consequencias": [
-    "imposto-renda-empresas--investimento",
-    "imposto-renda-empresas--confianca-empresarial",
-    "imposto-renda-empresas--fuga-capitais",
-    "imposto-renda-empresas--desigualdade",
-    "imposto-renda-empresas--produtividade",
-    "imposto-renda-empresas--grupo-empresarios",
-    "imposto-renda-empresas--grupo-progressistas",
-    "imposto-renda-empresas--grupo-servidores",
-    "imposto-renda-empresas--arrecadacao"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "imposto-renda-empresas--investimento",
+      "alvo": "investimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.3,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.175,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.175,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.075,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.25,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-renda-empresas--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [4.5, 4.275],
+          [9, 8.1],
+          [13.5, 11.475],
+          [18, 14.4],
+          [22.5, 16.875],
+          [27, 18.9],
+          [31.5, 20.475],
+          [34, 21.155556],
+          [36, 21.6],
+          [40.5, 22.275],
+          [45, 22.5],
+          [49.5, 22.275],
+          [54, 21.6],
+          [58.5, 20.475],
+          [63, 18.9],
+          [67.5, 16.875],
+          [72, 14.4],
+          [76.5, 11.475],
+          [81, 8.1],
+          [85.5, 4.275],
+          [90, 0],
+          [100, 0]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "pib",
+        "referencia": 212.121469
+      },
+      "unidade": "percentual_pib"
+    }
+  ]
 }

@@ -1,0 +1,150 @@
+{
+  "area": "contas-publicas",
+  "leis": [
+    {
+      "id": "regra-fiscal",
+      "familia": "constitucional",
+      "decide": "Define o freio que a Constituição põe no gasto do governo.",
+      "exemplo": "No Brasil: teto de gastos (2016) e arcabouço fiscal (2023).",
+      "opcoes": {
+        "sem-regra": "O governo gasta o que o Congresso aprovar, sem freio.",
+        "teto-gastos": "O gasto total só cresce pela inflação do ano anterior.",
+        "arcabouco": "O gasto cresce, mas sempre menos que a receita."
+      },
+      "trava": [
+        {
+          "opcao": "arcabouco",
+          "lei": "meta-de-resultado-primario",
+          "minimo": 33.33
+        }
+      ]
+    },
+    {
+      "id": "vinculacoes-orcamentarias",
+      "familia": "constitucional",
+      "decide": "Define se a Constituição obriga a gastar uma parte fixa da receita com saúde e educação.",
+      "opcoes": {
+        "desligada-receita-sem-carimbo": "Nenhuma área tem verba garantida; o governo divide a receita todo ano.",
+        "ligada-vinculacoes-permitidas": "Saúde e educação têm um mínimo garantido da receita."
+      },
+      "trava": [
+        {
+          "opcao": "ligada-vinculacoes-permitidas",
+          "lei": "piso-saude",
+          "minimo": 13.69
+        },
+        {
+          "opcao": "ligada-vinculacoes-permitidas",
+          "lei": "piso-educacao",
+          "minimo": 17.51
+        }
+      ]
+    },
+    {
+      "id": "modelo-tributario",
+      "familia": "constitucional",
+      "decide": "Define onde cai o peso dos impostos: no consumo, numa alíquota única ou em quem ganha mais.",
+      "opcoes": {
+        "base-no-consumo": "A maior parte da receita vem de impostos sobre o consumo.",
+        "proporcional": "A renda paga uma alíquota única, e o consumo completa a receita.",
+        "progressivo": "Quem ganha mais paga proporcionalmente mais, com muitas faixas."
+      },
+      "trava": [
+        {
+          "opcao": "base-no-consumo",
+          "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+          "maximo": 66.67
+        },
+        {
+          "opcao": "proporcional",
+          "lei": "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter",
+          "maximo": 66.67
+        }
+      ]
+    },
+    {
+      "id": "imposto-renda-pessoas",
+      "familia": "imposto",
+      "decide": "Define a alíquota mais alta do imposto que as pessoas pagam sobre o salário e outros ganhos."
+    },
+    {
+      "id": "imposto-renda-empresas",
+      "familia": "imposto",
+      "decide": "Define quanto as empresas pagam de imposto sobre o lucro."
+    },
+    {
+      "id": "imposto-sobre-consumo",
+      "familia": "imposto",
+      "decide": "Define a alíquota do imposto embutido no preço de bens e serviços."
+    },
+    {
+      "id": "imposto-seletivo",
+      "familia": "imposto",
+      "decide": "Define quais produtos que fazem mal à saúde ou ao ambiente pagam um imposto extra.",
+      "dinheiro": { "tipo": "receita", "base": "consumo" },
+      "opcoes": {
+        "nenhum": "Nenhum produto paga imposto extra.",
+        "vicios-tradicionais": "Cigarro e bebida alcoólica pagam imposto extra.",
+        "saude-ampla": "Cigarro, bebida, açúcar e ultraprocessados pagam imposto extra.",
+        "saude-e-ambiente": "Além desses, combustíveis que poluem pagam imposto extra."
+      }
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural",
+      "familia": "imposto",
+      "decide": "Define a alíquota do imposto anual sobre casas, prédios e terras.",
+      "exemplo": "No Brasil: imposto municipal sobre imóveis e imposto federal sobre terras rurais."
+    },
+    {
+      "id": "imposto-heranca",
+      "familia": "imposto",
+      "decide": "Define quanto se paga de imposto sobre heranças e doações."
+    },
+    {
+      "id": "tributacao-dividendos",
+      "familia": "imposto",
+      "decide": "Define quanto se paga de imposto sobre o lucro que as empresas distribuem aos donos."
+    },
+    {
+      "id": "imposto-grandes-fortunas",
+      "familia": "imposto",
+      "decide": "Define a alíquota anual sobre patrimônios muito grandes."
+    },
+    {
+      "id": "imposto-transacoes-financeiras",
+      "familia": "imposto",
+      "decide": "Define a alíquota cobrada sobre cada movimentação bancária.",
+      "exemplo": "No Brasil: contribuição provisória sobre movimentação financeira (1997 a 2007)."
+    },
+    {
+      "id": "meta-de-resultado-primario",
+      "familia": "regra",
+      "decide": "Define quanto o governo se compromete a sobrar (ou a deixar faltar) nas contas a cada ano, antes dos juros.",
+      "opcoes": {
+        "ponto-da-faixa": "O governo pode fechar o ano no vermelho.",
+        "2-do-pib": "O governo se compromete a gastar no máximo o que arrecada.",
+        "3-do-pib": "O governo se compromete a sobrar 3% do PIB por ano."
+      }
+    },
+    {
+      "id": "revisao-de-gastos-tributarios",
+      "familia": "regra",
+      "decide": "Define quanto imposto o governo deixa de cobrar de setores, regiões e entidades.",
+      "opcoes": {
+        "nenhuma": "Todas as isenções continuam como estão.",
+        "revisao-com-prazo-de-validade": "Cada isenção ganha prazo de validade e só é renovada se der resultado.",
+        "corte-linear": "O governo corta uma parte de todas as isenções de uma vez."
+      }
+    },
+    {
+      "id": "fundo-soberano",
+      "familia": "regra",
+      "decide": "Define onde o país aplica o dinheiro que guarda para o futuro.",
+      "opcoes": {
+        "guardar": "O dinheiro fica em reservas seguras, rendendo pouco.",
+        "emprestar-empresas": "O fundo empresta a empresas do país.",
+        "investir-obras": "O fundo paga obras públicas."
+      }
+    }
+  ]
+}
