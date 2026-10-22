@@ -3,8 +3,9 @@
 > **Status: VIGENTE.** Regras para quem trabalha no código, pessoas ou IA.
 > Atualizado em 22/out/2026 (depois da limpeza dos documentos).
 
-O documento mestre é o [PLANO.md](PLANO.md), única fonte de status. Antes de
-qualquer trabalho, leia:
+Numa conversa nova, comece por [docs/RETOMADA.md](docs/RETOMADA.md) (onde
+paramos). O documento mestre é o [PLANO.md](PLANO.md), única fonte de status.
+Antes de qualquer trabalho, leia:
 
 1. [PLANO.md](PLANO.md): como trabalhamos (uma mecânica por vez), marcos,
    decisões e o que falta.
