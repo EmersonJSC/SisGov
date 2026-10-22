@@ -14,6 +14,7 @@ import {
 } from "./occurrences";
 import type { PolicyState } from "./leis";
 import { pressureMonth } from "./pressao";
+import { MESES_POR_TURNO } from "./calendario";
 
 /** Um mês do trimestre. Sem explicações: o turno não as lê (V1-07). */
 export type PreparedGameMonth = Readonly<{
@@ -38,6 +39,50 @@ function invalid(field: string, message: string): ValidationResult<never> {
 }
 
 /**
+ * Um mês do motor: as leis do mês, as ocorrências em curso e a pressão
+ * entram como comandos, e o motor anda um passo. É a unidade que o tempo
+ * corrido vai usar (docs/jogo/mecanicas/tempo.md).
+ */
+export function prepareGameMonth(
+  content: ResolvedPackage,
+  graph: ScenarioGraph,
+  game: GameState,
+  execution: EngineExecution,
+  states: readonly PolicyState[],
+  index: number,
+): ValidationResult<EngineExecution> {
+  const batch = preparePolicyExecution(content, graph, states);
+  if (!batch.ok) return batch;
+  // SG106: eventos em curso e escolhas de dilema ligam os próprios nós
+  const occurrence = game.occurrences
+    ? occurrenceMonth(content, graph, game.occurrences, index)
+    : undefined;
+  // V1-09: dinheiro dos patrocinadores e revelações
+  const pressure = game.pressure
+    ? pressureMonth(content, graph, game.pressure)
+    : [];
+  const merged =
+    occurrence || pressure.length
+      ? {
+          controlCommands: [
+            ...batch.value.controlCommands,
+            ...(occurrence?.commands ?? []),
+            ...pressure,
+          ],
+          activeRelationIds: [
+            ...batch.value.activeRelationIds,
+            ...(occurrence?.relationIds ?? []),
+          ],
+        }
+      : batch.value;
+  const advanced = advanceExecution(content, graph, execution, merged, 1, {
+    explain: false,
+  });
+  if (!advanced.ok) return advanced;
+  return { ok: true, value: advanced.value.execution };
+}
+
+/**
  * Prepares the quarter's policy execution without mutating the game. The
  * public accounts (revenue, spending, interest, debt) live in the network
  * (SG157); there is no separate fiscal ledger (SG105).
@@ -48,41 +93,22 @@ export function prepareGameQuarter(
   game: GameState,
   monthlyPolicyStates: readonly (readonly PolicyState[])[],
 ): ValidationResult<PreparedGameQuarter> {
-  if (monthlyPolicyStates.length !== 3)
+  if (monthlyPolicyStates.length !== MESES_POR_TURNO)
     return invalid("turno", "Um turno trimestral exige três estados mensais.");
 
   let execution = game.execution;
   const months: PreparedGameMonth[] = [];
   for (const [index, states] of monthlyPolicyStates.entries()) {
-    const batch = preparePolicyExecution(content, graph, states);
-    if (!batch.ok) return batch;
-    // SG106: eventos em curso e escolhas de dilema ligam os próprios nós
-    const occurrence = game.occurrences
-      ? occurrenceMonth(content, graph, game.occurrences, index)
-      : undefined;
-    // V1-09: dinheiro dos patrocinadores e revelações
-    const pressure = game.pressure
-      ? pressureMonth(content, graph, game.pressure)
-      : [];
-    const merged =
-      occurrence || pressure.length
-        ? {
-            controlCommands: [
-              ...batch.value.controlCommands,
-              ...(occurrence?.commands ?? []),
-              ...pressure,
-            ],
-            activeRelationIds: [
-              ...batch.value.activeRelationIds,
-              ...(occurrence?.relationIds ?? []),
-            ],
-          }
-        : batch.value;
-    const advanced = advanceExecution(content, graph, execution, merged, 1, {
-      explain: false,
-    });
+    const advanced = prepareGameMonth(
+      content,
+      graph,
+      game,
+      execution,
+      states,
+      index,
+    );
     if (!advanced.ok) return advanced;
-    execution = advanced.value.execution;
+    execution = advanced.value;
     months.push({ execution });
     if (execution.step !== game.execution.step + index + 1)
       return invalid(
@@ -96,12 +122,12 @@ export function prepareGameQuarter(
     value: {
       execution,
       months,
-      policies: monthlyPolicyStates[2],
+      policies: monthlyPolicyStates[MESES_POR_TURNO - 1],
       ...(game.occurrences
         ? {
             occurrences: advanceOccurrenceMonths(
               game.occurrences,
-              3,
+              MESES_POR_TURNO,
               game.currentTurn + 1,
             ),
           }

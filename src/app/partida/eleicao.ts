@@ -3,6 +3,7 @@
  * nem a ideologia de um personagem: só a biografia e as opiniões.
  */
 import type { GameState } from "../../game/createGame";
+import { anoComFracao, mesesAteOTurno } from "../../game/calendario";
 import { pontoAtual } from "../../game/bussola";
 import {
   candidatoDoPartido,
@@ -90,8 +91,6 @@ export type VisaoEleicao = Readonly<{
   encerrada: boolean;
 }>;
 
-const ANO_POR_TURNO = 0.25;
-
 function retratoDe(p: Personagem): string {
   if (p.real) return "pessoa-real";
   const carreira = mundoDosPersonagens.carreiras.find(
@@ -138,9 +137,11 @@ export function primeirosCandidatos(
   );
 }
 
-const anoDe = (game: GameState) =>
-  (eleicaoDoPais(game.scenario.id)?.anoInicial ?? 0) +
-  game.currentTurn * ANO_POR_TURNO;
+const anoDe = (game: GameState): number =>
+  anoComFracao(
+    eleicaoDoPais(game.scenario.id)?.anoInicial ?? 0,
+    mesesAteOTurno(game.currentTurn),
+  );
 
 export function verEleicao(partida: Partida): VisaoEleicao | undefined {
   const { game } = partida;
