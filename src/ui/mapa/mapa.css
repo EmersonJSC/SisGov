@@ -7206,9 +7206,9 @@ span.el-mini {
 }
 
 /* Bolha futurista (22/out, docs/jogo/interface/area-aberta.md 4.6): vidro
-   escuro, aro e brilho na cor da família da lei, ícone branco. Sem
-   drop-shadow por nó (custo da animação, ver acima): o brilho é um traço
-   largo e transparente no halo. */
+   escuro, um aro e o anel de nível na cor da família da lei, ícone branco.
+   Poucas camadas: o brilho só aparece no foco. Sem drop-shadow por nó
+   (custo da animação, ver acima). */
 .no-lei.familia-imposto {
   --fam: #ffb238;
 }
@@ -7229,32 +7229,34 @@ span.el-mini {
 .no-lei[class*="familia-"] .disco {
   fill: #0f1a25;
   stroke: var(--fam);
-  stroke-width: 2.5;
-}
-
-.no-lei[class*="familia-"] .aro-interno {
-  fill: none;
-  stroke: var(--fam);
-  stroke-opacity: 0.35;
-  stroke-width: 1;
+  stroke-width: 2;
 }
 
 .no-lei .reflexo {
   fill: #ffffff;
-  opacity: 0.07;
+  opacity: 0.06;
   pointer-events: none;
 }
 
-.no-lei[class*="familia-"] .halo {
+/* o anel de nível usa a cor da família, fino, sem trilha pesada */
+.no-lei[class*="familia-"] .anel-nivel .trilha {
   stroke: var(--fam);
-  stroke-opacity: 0.22;
-  stroke-width: 7;
+  stroke-opacity: 0.12;
+}
+
+.no-lei[class*="familia-"] .anel-nivel .cheio {
+  stroke: var(--fam);
+  stroke-opacity: 0.9;
+}
+
+/* sem halo parado nem arcos de vários ministérios em volta */
+.no-lei[class*="familia-"] .halo {
+  stroke: none;
   fill: none;
 }
 
-.no-lei.familia-constituicao .aro-interno {
-  stroke-opacity: 0.8;
-  stroke-width: 1.4;
+.no-lei[class*="familia-"] .aros-setores {
+  display: none;
 }
 
 .no-lei[class*="familia-"]:hover .disco,
@@ -7262,17 +7264,24 @@ span.el-mini {
 .no-lei[class*="familia-"].selecionada .disco {
   fill: #16273a;
   stroke: var(--fam);
-  stroke-width: 3.5;
+  stroke-width: 2.5;
 }
 
+.no-lei[class*="familia-"]:hover .halo,
 .no-lei[class*="familia-"].selecionada .halo,
 .no-lei[class*="familia-"].foco .halo {
+  fill: none;
   stroke: var(--fam);
-  stroke-opacity: 0.5;
-  stroke-width: 9;
+  stroke-opacity: 0.35;
+  stroke-width: 5;
 }
 
 .no-lei[class*="familia-"].selecionada,
 .no-lei[class*="familia-"].foco {
   --icone: #ffffff;
+}
+
+/* a família já diz o tipo: sem anéis de textura dentro da bolha */
+.no-lei[class*="familia-"] .textura {
+  display: none;
 }
