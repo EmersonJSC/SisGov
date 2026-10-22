@@ -4,7 +4,7 @@ import {
   type PolicyFile,
   type VariableDefinition,
 } from "../../../engine";
-import type { FichaV3 } from "./tipos";
+import type { Familia, FichaV3, FichaV4 } from "./tipos";
 import { idDoEfeito } from "./verificar";
 
 export type FichaConvertida = Readonly<{
@@ -12,7 +12,18 @@ export type FichaConvertida = Readonly<{
   consequencias: readonly ConsequenceFile[];
 }>;
 
-function processoDe(ficha: FichaV3): string {
+type Ficha = FichaV3 | FichaV4;
+
+const GRUPO_DA_FAMILIA: Readonly<Record<Familia, PolicyFile["grupo"]>> = {
+  imposto: "tributaria",
+  verba: "orcamentaria",
+  programa: "orcamentaria",
+  constitucional: "institucional",
+  petrea: "institucional",
+  regra: "regulatoria",
+};
+
+function processoDe(ficha: Ficha): string {
   if (ficha.nivel === "constituicao")
     return ficha.petrea ? "clausula-petrea" : "emenda-constitucional";
   if (ficha.nivel === "lei") return "lei-ordinaria";
@@ -21,7 +32,8 @@ function processoDe(ficha: FichaV3): string {
     : "decreto";
 }
 
-function grupoDe(ficha: FichaV3): PolicyFile["grupo"] {
+function grupoDe(ficha: Ficha): PolicyFile["grupo"] {
+  if (ficha.versaoEsquema === 4) return GRUPO_DA_FAMILIA[ficha.familia];
   if (ficha.grupo) return ficha.grupo;
   if (ficha.dinheiro?.tipo === "gasto") return "orcamentaria";
   if (ficha.dinheiro?.tipo === "receita") return "tributaria";
@@ -34,7 +46,7 @@ function grupoDe(ficha: FichaV3): PolicyFile["grupo"] {
  * Toda ficha v3 usa os três níveis (D-65): `nivelLegal` sempre presente.
  */
 export function converterFicha(
-  ficha: FichaV3,
+  ficha: Ficha,
   variaveis: ReadonlyMap<string, VariableDefinition>,
 ): FichaConvertida {
   const consequencias = ficha.efeitos.map((efeito): ConsequenceFile => {
@@ -67,9 +79,21 @@ export function converterFicha(
     versaoEsquema: 2,
     grupo: grupoDe(ficha),
     nome: ficha.nome,
-    descricao: ficha.descricao,
-    area: ficha.area,
-    ministerio: ficha.ministerio,
+    ...(ficha.versaoEsquema === 4
+      ? {
+          descricao: ficha.decide,
+          decide: ficha.decide,
+          familia: ficha.familia,
+          ...(ficha.area ? { area: ficha.area, areaMundo: ficha.area } : {}),
+          ...(ficha.exemplo ? { exemplo: ficha.exemplo } : {}),
+          ...(ficha.trava?.length ? { trava: ficha.trava } : {}),
+          ...(ficha.publico ? { publico: ficha.publico } : {}),
+        }
+      : {
+          descricao: ficha.descricao,
+          area: ficha.area,
+          ministerio: ficha.ministerio,
+        }),
     processoAutorizacao: processoDe(ficha),
     nivelLegal:
       ficha.nivel === "constituicao"

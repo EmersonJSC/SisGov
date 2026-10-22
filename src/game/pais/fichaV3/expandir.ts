@@ -5,10 +5,12 @@ import type {
   VariableDefinition,
 } from "../../../engine";
 import { converterFicha } from "./converter";
-import type { FichaV3 } from "./tipos";
+import { verificarMolde } from "./molde";
+import type { FichaV3, FichaV4 } from "./tipos";
 import { verificarFicha, type ContextoDaFicha } from "./verificar";
 
-const FICHA_V3 = /"versaoEsquema"\s*:\s*3\b/;
+const FICHA_V3 = /"versaoEsquema"\s*:\s*[34]\b/;
+const AREAS = /(^|\/)mundo\/areas\.json$/;
 const LEI = /"tipo"\s*:\s*"lei"/;
 const CONTAINER = /"tipo"\s*:\s*"(mundo|cenario)"/;
 
@@ -63,6 +65,14 @@ function containers(files: PackageFiles): Container[] {
   });
 }
 
+/** Ids das 11 áreas do mundo (`mundo/areas.json`), para o molde v4. */
+function areasDe(files: PackageFiles): Set<string> {
+  const caminho = Object.keys(files).find((p) => AREAS.test(p));
+  const json = parse(caminho && files[caminho]) as
+    { areas?: { id: string }[] } | undefined;
+  return new Set((json?.areas ?? []).map((a) => a.id));
+}
+
 function contextoDe(
   container: Container,
   files: PackageFiles,
@@ -105,12 +115,12 @@ export function expandirFichasV3(
   for (const container of containers(files)) {
     const fichas = container.politicas.filter((p) => ehFichaV3(files[p]));
     if (fichas.length === 0) continue;
-    const contexto = contextoDe(container, files);
+    const contexto = { ...contextoDe(container, files), areas: areasDe(files) };
     const geradas: string[] = [];
     for (const path of fichas) {
       let caminhos = convertidas.get(path);
       if (!caminhos) {
-        const ficha = parse(files[path]) as FichaV3 | undefined;
+        const ficha = parse(files[path]) as FichaV3 | FichaV4 | undefined;
         if (!ficha) {
           diagnostics.push({
             code: "JSON_INVALIDO",
@@ -120,7 +130,10 @@ export function expandirFichasV3(
           });
           continue;
         }
-        const erros = verificarFicha(ficha, path, contexto);
+        const erros =
+          ficha.versaoEsquema === 4
+            ? verificarMolde(ficha, path, contexto)
+            : verificarFicha(ficha, path, contexto);
         if (erros.length > 0) {
           diagnostics.push(...erros);
           continue;

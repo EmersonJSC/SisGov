@@ -464,6 +464,8 @@ export type PolicyOption = {
   rejeitam?: readonly string[];
   /** Efeitos principais em texto, até virarem consequências com número. */
   efeitos?: string;
+  /** O que a opção propõe, numa frase (molde v4). */
+  propoe?: string;
   /**
    * Trava da opção (V1-34): ela só vale com estas leis nestas opções. Fora
    * delas, a lei anda para a opção liberada mais perto.
@@ -492,6 +494,20 @@ export type PolicyFile = {
   grupo: PolicyGroup;
   nome: string;
   descricao: string;
+  /** Só leis do molde v4 (molde-das-leis.md): família, área do mundo e frase. */
+  familia?:
+    "imposto" | "verba" | "programa" | "regra" | "constitucional" | "petrea";
+  areaMundo?: string;
+  decide?: string;
+  exemplo?: string;
+  trava?: readonly {
+    opcao: string;
+    lei: string;
+    minimo?: number;
+    maximo?: number;
+    proibe?: true;
+  }[];
+  publico?: { quem: string; pessoas: number };
   area?: string;
   categoria?: string;
   fonte?: string;

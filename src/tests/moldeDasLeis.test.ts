@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { VariableDefinition } from "../engine";
 import {
   avisosPorArea,
+  expandirFichasV3,
   verificarMolde,
   type FichaV4,
 } from "../game/pais/fichaV3";
@@ -201,5 +202,53 @@ describe("leis por área", () => {
     expect(
       (areasDoMundo as { areas: { id: string }[] }).areas.map((a) => a.id),
     ).toEqual(AREAS);
+  });
+});
+
+const arquivos = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<string>("../conteudo/**/*.json", {
+      eager: true,
+      query: "?raw",
+      import: "default",
+    }),
+  ).map(([path, text]) => [path.slice("../conteudo/".length), text]),
+);
+const VERBA_PF = "mundo/leis/verba-policia-federal.json";
+
+function comoV4(mudar: Partial<FichaV4> = {}): string {
+  const v3 = JSON.parse(arquivos[VERBA_PF]) as Record<string, unknown>;
+  const { area: _area, ministerio: _m, descricao: _d, ...resto } = v3;
+  return JSON.stringify({
+    ...resto,
+    versaoEsquema: 4,
+    familia: "verba",
+    decide: "Define quanto o país gasta com a polícia federal por ano.",
+    area: "seguranca-e-defesa",
+    ...mudar,
+  });
+}
+
+describe("o jogo carrega a ficha v4", () => {
+  it("vira lei do motor com família, área do mundo e a frase", () => {
+    const r = expandirFichasV3({ ...arquivos, [VERBA_PF]: comoV4() });
+    if (!r.ok) throw new Error(JSON.stringify(r.diagnostics.slice(0, 3)));
+    expect(JSON.parse(r.value[VERBA_PF])).toMatchObject({
+      versaoEsquema: 2,
+      familia: "verba",
+      areaMundo: "seguranca-e-defesa",
+      decide: "Define quanto o país gasta com a polícia federal por ano.",
+      descricao: "Define quanto o país gasta com a polícia federal por ano.",
+      grupo: "orcamentaria",
+    });
+  });
+
+  it("ficha v4 fora do molde barra o pacote", () => {
+    const r = expandirFichasV3({
+      ...arquivos,
+      [VERBA_PF]: comoV4({ decide: "Quanto gastar?" }),
+    });
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.diagnostics.map((d) => d.field)).toContain("decide");
   });
 });
