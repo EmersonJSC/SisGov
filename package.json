@@ -19,7 +19,8 @@
     "fichas:migracao": "vite-node scripts/fichas/migracao.ts",
     "populacao:gerar": "vite-node scripts/populacao/gerar.ts",
     "populacao:ligacoes": "vite-node scripts/populacao/ligacoes.ts",
-    "pressao:calibrar": "vite-node scripts/pressao/calibrar.ts"
+    "pressao:calibrar": "vite-node scripts/pressao/calibrar.ts",
+    "leis:inventario": "vite-node scripts/leis/inventario.ts"
   },
   "dependencies": {
     "react": "^19.0.0",
