@@ -41,7 +41,17 @@
         "id": "fundo-com-multa-na-demissao",
         "rotulo": "Manter depósito mensal e multa por demissão sem justa causa",
         "valor": 67,
-        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole", "codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "O fundo obrigatório exige direitos trabalhistas mínimos além do contrato livre."}],
+        "requer": [
+          {
+            "lei": "legislacao-trabalhista",
+            "opcoes": [
+              "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+              "codigo-detalhado",
+              "protetiva-estabilidade-e-demissao-so-com-motivo"
+            ],
+            "motivo": "O fundo obrigatório exige direitos trabalhistas mínimos além do contrato livre."
+          }
+        ],
         "custoTexto": "0 (fundo privado que financia moradia)",
         "apoiam": ["Trabalhadores com carteira"],
         "rejeitam": ["Empresários"],
@@ -51,7 +61,16 @@
         "id": "indenizacao-por-tempo-de-casa",
         "rotulo": "Trocar o fundo por indenização crescente com o tempo de casa",
         "valor": 100,
-        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "Indenização legal por antiguidade exige código trabalhista detalhado."}],
+        "requer": [
+          {
+            "lei": "legislacao-trabalhista",
+            "opcoes": [
+              "codigo-detalhado",
+              "protetiva-estabilidade-e-demissao-so-com-motivo"
+            ],
+            "motivo": "Indenização legal por antiguidade exige código trabalhista detalhado."
+          }
+        ],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Empresários"],
         "efeitos": "Custo de contratar ↑; Rotatividade ↓ (aprox.)"

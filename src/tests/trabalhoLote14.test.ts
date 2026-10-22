@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { criarPartida, encerrarTurno, verPartida, type Partida } from "../app/partida";
+import {
+  criarPartida,
+  encerrarTurno,
+  verPartida,
+  type Partida,
+} from "../app/partida";
 import { aplicarMeta } from "../app/partida/leis";
 
 function nova() {
@@ -27,10 +32,16 @@ function valor(p: Partida, id: string) {
 describe("Lote 14: piso salarial e rede de segurança", () => {
   it("fórmula de ganho real move renda, pobreza e custo após quatro turnos", () => {
     const base = avancar(nova());
-    const soInflacao = avancar(aplicar(nova(), "formula-do-salario-minimo", 33));
-    expect(valor(base, "renda_familias")).toBeGreaterThan(valor(soInflacao, "renda_familias"));
+    const soInflacao = avancar(
+      aplicar(nova(), "formula-do-salario-minimo", 33),
+    );
+    expect(valor(base, "renda_familias")).toBeGreaterThan(
+      valor(soInflacao, "renda_familias"),
+    );
     expect(valor(base, "pobreza")).toBeLessThan(valor(soInflacao, "pobreza"));
-    expect(valor(base, "custo_trabalhista")).toBeGreaterThan(valor(soInflacao, "custo_trabalhista"));
+    expect(valor(base, "custo_trabalhista")).toBeGreaterThan(
+      valor(soInflacao, "custo_trabalhista"),
+    );
   });
 
   it("valor do piso obedece ao decisor e à regra de reajuste", () => {

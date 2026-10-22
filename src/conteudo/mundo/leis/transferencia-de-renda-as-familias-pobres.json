@@ -25,48 +25,30 @@
         "id": "zero",
         "rotulo": "Focalizar famílias em extrema pobreza",
         "valor": 0,
-        "rejeitam": [
-          "Pobres",
-          "Periferias"
-        ],
+        "rejeitam": ["Pobres", "Periferias"],
         "efeitos": "Atende poucos lares com maior valor por pessoa; pode deixar crianças de fora."
       },
       {
         "id": "baixo-e-condicionado-a-escola-e-vacina",
         "rotulo": "Exigir frequência escolar e vacinação para receber",
         "valor": 33.33,
-        "apoiam": [
-          "Classe média",
-          "Católicos"
-        ],
+        "apoiam": ["Classe média", "Católicos"],
         "efeitos": "A condição favorece a escola, mas aumenta burocracia e risco de exclusão."
       },
       {
         "id": "medio-com-valor-por-crianca",
         "rotulo": "Priorizar famílias pobres com adicional por criança",
         "valor": 66.67,
-        "apoiam": [
-          "Pobres",
-          "Famílias com filhos",
-          "Progressistas"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Pobres", "Famílias com filhos", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Amplia a proteção infantil e o alcance entre famílias de baixa renda."
       },
       {
         "id": "renda-basica-universal",
         "rotulo": "Pagar renda universal por pessoa, sem teste de renda",
         "valor": 100,
-        "apoiam": [
-          "Progressistas"
-        ],
-        "rejeitam": [
-          "Ricos",
-          "Conservadores",
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Progressistas"],
+        "rejeitam": ["Ricos", "Conservadores", "Mercado financeiro"],
         "efeitos": "Diminui filtragem e burocracia, mas dilui a verba entre mais pessoas."
       }
     ]

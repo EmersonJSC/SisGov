@@ -26,16 +26,8 @@
         "rotulo": "Rede pública residual para urgências e famílias pobres",
         "valor": 0,
         "custoTexto": "1 a 2% do PIB, Saúde",
-        "apoiam": [
-          "Ricos",
-          "Empresários",
-          "Mercado financeiro"
-        ],
-        "rejeitam": [
-          "Pobres",
-          "Aposentados",
-          "Movimento pela saúde pública"
-        ],
+        "apoiam": ["Ricos", "Empresários", "Mercado financeiro"],
+        "rejeitam": ["Pobres", "Aposentados", "Movimento pela saúde pública"],
         "efeitos": "Gasto público direto ↓; pagamento do bolso e desigualdade de acesso ↑; seguros privados ↑"
       },
       {
@@ -43,15 +35,8 @@
         "rotulo": "Seguro obrigatório universal com operadoras reguladas",
         "valor": 50,
         "custoTexto": "7 a 10% do PIB, Saúde",
-        "apoiam": [
-          "Empresários",
-          "Classe média",
-          "Entidades médicas"
-        ],
-        "rejeitam": [
-          "Servidores",
-          "Movimento pela saúde pública"
-        ],
+        "apoiam": ["Empresários", "Classe média", "Entidades médicas"],
+        "rejeitam": ["Servidores", "Movimento pela saúde pública"],
         "efeitos": "Cobertura universal via seguros e subsídios; custo de contratação e fiscalização ↑; fila pode cair se a oferta acompanhar"
       },
       {
@@ -65,9 +50,7 @@
           "Periferias",
           "Movimento pela saúde pública"
         ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Acesso universal preservado; gasto público e fila dependem da verba executada e da capacidade da rede"
       },
       {
@@ -75,10 +58,7 @@
         "rotulo": "Rede universal administrada pelo setor público",
         "valor": 100,
         "custoTexto": "7 a 9% do PIB, Saúde",
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Progressistas"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Progressistas"],
         "rejeitam": [
           "Ricos",
           "Empresários",

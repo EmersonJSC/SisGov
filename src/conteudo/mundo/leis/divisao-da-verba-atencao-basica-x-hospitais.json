@@ -26,10 +26,7 @@
         "rotulo": "Prioridade máxima a hospitais e cirurgias",
         "valor": 0,
         "custoTexto": "Redistribui a verba existente",
-        "apoiam": [
-          "Gestores hospitalares",
-          "Entidades médicas"
-        ],
+        "apoiam": ["Gestores hospitalares", "Entidades médicas"],
         "rejeitam": [
           "Equipes de atenção básica",
           "Movimento pela saúde pública"
@@ -41,12 +38,8 @@
         "rotulo": "Atenção básica limitada a 15% da verba",
         "valor": 33.33,
         "custoTexto": "— (só redivide)",
-        "apoiam": [
-          "Entidades médicas"
-        ],
-        "rejeitam": [
-          "Movimento pela saúde pública"
-        ],
+        "apoiam": ["Entidades médicas"],
+        "rejeitam": ["Movimento pela saúde pública"],
         "efeitos": "Mais recursos para hospitais agora; cobertura preventiva ↓ e pressão hospitalar ↑ depois (hipótese)"
       },
       {
@@ -54,25 +47,16 @@
         "rotulo": "Divisão atual: cerca de 22% para atenção básica (hipótese)",
         "valor": 66.67,
         "efeitos": "Preserva a rede atual; prevenção cresce pouco sem novos recursos",
-        "apoiam": [
-          "Gestores municipais",
-          "Entidades médicas"
-        ],
-        "rejeitam": [
-          "Defensores de expansão da atenção básica"
-        ]
+        "apoiam": ["Gestores municipais", "Entidades médicas"],
+        "rejeitam": ["Defensores de expansão da atenção básica"]
       },
       {
         "id": "40-prioridade-a-atencao-basica",
         "rotulo": "Atenção básica recebe 40% da verba",
         "valor": 100,
         "custoTexto": "— (só redivide)",
-        "apoiam": [
-          "Movimento pela saúde pública"
-        ],
-        "rejeitam": [
-          "Gestores hospitalares"
-        ],
+        "apoiam": ["Movimento pela saúde pública"],
+        "rejeitam": ["Gestores hospitalares"],
         "efeitos": "Postos e equipes de família ↑; filas hospitalares podem subir no início e cair com prevenção (hipótese)"
       }
     ]

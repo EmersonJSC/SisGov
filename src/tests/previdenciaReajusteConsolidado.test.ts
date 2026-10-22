@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { criarPartida, encerrarTurno, verPartida, type Partida } from "../app/partida";
+import {
+  criarPartida,
+  encerrarTurno,
+  verPartida,
+  type Partida,
+} from "../app/partida";
 import { aplicarMeta } from "../app/partida/leis";
 import catalogo from "../conteudo/mundo/catalogo-leis.json";
 
@@ -22,24 +27,34 @@ function avancar(p: Partida, turnos = 4) {
   return p;
 }
 function valor(p: Partida, id: string) {
-  return verPartida(p).bolhas.find(x => x.id === id)!.valor;
+  return verPartida(p).bolhas.find((x) => x.id === id)!.valor;
 }
 
 describe("Reajuste de benefícios consolidado", () => {
   it("catálogo contém uma única lei de reajuste", () => {
-    expect(catalogo.politicas).toContain("mundo/leis/reajuste-de-beneficios.json");
-    expect(catalogo.politicas).not.toContain("mundo/leis/regra-de-reajuste-dos-beneficios.json");
+    expect(catalogo.politicas).toContain(
+      "mundo/leis/reajuste-de-beneficios.json",
+    );
+    expect(catalogo.politicas).not.toContain(
+      "mundo/leis/regra-de-reajuste-dos-beneficios.json",
+    );
   });
 
   it("trava tripla eleva gasto e reduz desigualdade frente à correção pela inflação", () => {
     const inflacao = avancar(aplicar(nova(), "reajuste-de-beneficios", 25));
     const tripla = avancar(aplicar(nova(), "reajuste-de-beneficios", 100));
-    expect(valor(tripla, "gasto_publico")).toBeGreaterThan(valor(inflacao, "gasto_publico"));
-    expect(valor(tripla, "desigualdade")).toBeLessThan(valor(inflacao, "desigualdade"));
+    expect(valor(tripla, "gasto_publico")).toBeGreaterThan(
+      valor(inflacao, "gasto_publico"),
+    );
+    expect(valor(tripla, "desigualdade")).toBeLessThan(
+      valor(inflacao, "desigualdade"),
+    );
   });
 
   it("trava tripla exige pilar público de aposentadoria", () => {
     const capitalizacao = aplicar(nova(), "sistema-previdenciario", 33);
-    expect(aplicarMeta(capitalizacao, "reajuste-de-beneficios", 100).ok).toBe(false);
+    expect(aplicarMeta(capitalizacao, "reajuste-de-beneficios", 100).ok).toBe(
+      false,
+    );
   });
 });

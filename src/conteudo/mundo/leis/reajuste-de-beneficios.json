@@ -39,10 +39,7 @@
         "requer": [
           {
             "lei": "sistema-previdenciario",
-            "opcoes": [
-              "misto",
-              "reparticao"
-            ],
+            "opcoes": ["misto", "reparticao"],
             "motivo": "A indexação garantida exige um pilar público de aposentadoria."
           }
         ]
@@ -54,10 +51,7 @@
         "requer": [
           {
             "lei": "sistema-previdenciario",
-            "opcoes": [
-              "misto",
-              "reparticao"
-            ],
+            "opcoes": ["misto", "reparticao"],
             "motivo": "A indexação garantida exige um pilar público de aposentadoria."
           }
         ]
@@ -82,9 +76,6 @@
   },
   "mae": {
     "texto": "A regra do reajuste depende do sistema previdenciário e do piso salarial.",
-    "leis": [
-      "salario-minimo",
-      "sistema-previdenciario"
-    ]
+    "leis": ["salario-minimo", "sistema-previdenciario"]
   }
 }

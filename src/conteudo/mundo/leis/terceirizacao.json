@@ -25,7 +25,18 @@
         "id": "livre",
         "rotulo": "Liberar terceirização em qualquer atividade sem responsabilidade da contratante",
         "valor": 0,
-        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["sem-regras", "minima-contrato-livre-com-piso-e-seguranca", "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole", "codigo-detalhado"], "motivo": "Estabilidade constitucional não permite terceirização sem responsabilidade."}],
+        "requer": [
+          {
+            "lei": "legislacao-trabalhista",
+            "opcoes": [
+              "sem-regras",
+              "minima-contrato-livre-com-piso-e-seguranca",
+              "negociado-sobre-legislado-codigo-detalhado-mas-o-acordo-cole",
+              "codigo-detalhado"
+            ],
+            "motivo": "Estabilidade constitucional não permite terceirização sem responsabilidade."
+          }
+        ],
         "apoiam": ["Empresários", "Indústria"],
         "rejeitam": ["Centrais sindicais"],
         "efeitos": "Custo de contratar ↓; Litígio ↑; Rotatividade ↑ (aprox.)"

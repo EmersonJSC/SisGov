@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { criarPartida, encerrarTurno, verPartida, type Partida } from "../app/partida";
+import {
+  criarPartida,
+  encerrarTurno,
+  verPartida,
+  type Partida,
+} from "../app/partida";
 import { aplicarMeta } from "../app/partida/leis";
 
 function nova() {
@@ -27,17 +32,29 @@ function valor(p: Partida, id: string) {
 describe("Lote 13: contratos de trabalho", () => {
   it("substitui a opção provisória de fiscalização por ação concreta", () => {
     const p = nova();
-    const lei = p.content.policies.find((x) => x.id === "fiscalizacao-do-trabalho");
-    expect(lei?.controle.opcoes?.map((x) => x.id)).toContain("sem-fiscalizacao-ativa");
-    expect(lei?.controle.opcoes?.map((x) => x.id)).not.toContain("ponto-da-faixa");
-    expect(lei?.consequencias).toContain("fiscalizacao-do-trabalho--gasto-publico");
+    const lei = p.content.policies.find(
+      (x) => x.id === "fiscalizacao-do-trabalho",
+    );
+    expect(lei?.controle.opcoes?.map((x) => x.id)).toContain(
+      "sem-fiscalizacao-ativa",
+    );
+    expect(lei?.controle.opcoes?.map((x) => x.id)).not.toContain(
+      "ponto-da-faixa",
+    );
+    expect(lei?.consequencias).toContain(
+      "fiscalizacao-do-trabalho--gasto-publico",
+    );
   });
 
   it("mais fiscalização reduz informalidade e trabalho infantil", () => {
     const base = avancar(nova());
     const equipes = avancar(aplicar(nova(), "fiscalizacao-do-trabalho", 100));
-    expect(valor(equipes, "informalidade")).toBeLessThan(valor(base, "informalidade"));
-    expect(valor(equipes, "trabalho_infantil")).toBeLessThan(valor(base, "trabalho_infantil"));
+    expect(valor(equipes, "informalidade")).toBeLessThan(
+      valor(base, "informalidade"),
+    );
+    expect(valor(equipes, "trabalho_infantil")).toBeLessThan(
+      valor(base, "trabalho_infantil"),
+    );
   });
 
   it("opções extremas declaram sua dependência da regra constitucional", () => {
@@ -48,8 +65,9 @@ describe("Lote 13: contratos de trabalho", () => {
       ["trabalho-por-aplicativo", "emprego-obrigatorio"],
     ]) {
       const lei = p.content.policies.find((x) => x.id === leiId);
-      expect(lei?.controle.opcoes?.find((x) => x.id === opcaoId)?.requer?.[0]?.lei)
-        .toBe("legislacao-trabalhista");
+      expect(
+        lei?.controle.opcoes?.find((x) => x.id === opcaoId)?.requer?.[0]?.lei,
+      ).toBe("legislacao-trabalhista");
     }
     const protecao = aplicar(p, "legislacao-trabalhista", 100);
     expect(aplicarMeta(protecao, "terceirizacao", 0).ok).toBe(false);

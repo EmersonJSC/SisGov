@@ -25,13 +25,8 @@
         "id": "participacao-publica-0",
         "rotulo": "0% de participação pública agregada",
         "valor": 0,
-        "apoiam": [
-          "Empresários",
-          "Entidades do agronegócio"
-        ],
-        "rejeitam": [
-          "Movimentos por terra"
-        ],
+        "apoiam": ["Empresários", "Entidades do agronegócio"],
+        "rejeitam": ["Movimentos por terra"],
         "efeitos": "Polo de propriedade privada da escala; não representa uma venda de ativos."
       },
       {
@@ -44,9 +39,7 @@
         "id": "participacao-publica-50",
         "rotulo": "50% de participação pública agregada",
         "valor": 50,
-        "apoiam": [
-          "Confederação da indústria"
-        ],
+        "apoiam": ["Confederação da indústria"],
         "efeitos": "Participação pública e privada equilibradas na representação agregada do jogo."
       },
       {
@@ -59,9 +52,7 @@
         "id": "participacao-publica-100",
         "rotulo": "100% de participação pública agregada",
         "valor": 100,
-        "apoiam": [
-          "Movimentos por terra"
-        ],
+        "apoiam": ["Movimentos por terra"],
         "rejeitam": [
           "Confederação da indústria",
           "Comércio e serviços",

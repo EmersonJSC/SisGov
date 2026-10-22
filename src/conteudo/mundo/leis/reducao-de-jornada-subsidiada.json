@@ -25,12 +25,8 @@
         "id": "nenhum",
         "rotulo": "Não pagar salário de horas cortadas pelas empresas",
         "valor": 0,
-        "apoiam": [
-          "Gestores fiscais favoráveis a corte de gasto"
-        ],
-        "rejeitam": [
-          "Trabalhadores com carteira"
-        ],
+        "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
+        "rejeitam": ["Trabalhadores com carteira"],
         "efeitos": "Desemprego sobe mais na recessão"
       },
       {
@@ -38,13 +34,8 @@
         "rotulo": "Subsidiar parcialmente contratos com horas reduzidas",
         "valor": 50,
         "custoTexto": "Hipótese: custo enquanto a opção estiver ativa; desligar exige nova decisão",
-        "apoiam": [
-          "Empresários",
-          "Trabalhadores com carteira"
-        ],
-        "rejeitam": [
-          "Gestores fiscais"
-        ],
+        "apoiam": ["Empresários", "Trabalhadores com carteira"],
+        "rejeitam": ["Gestores fiscais"],
         "efeitos": "Preserva parte das vagas enquanto a regra vigora e aumenta o gasto; o governo pode encerrar o subsídio depois."
       },
       {
@@ -52,13 +43,8 @@
         "rotulo": "Manter subsídio de jornada reduzida mesmo fora de crise",
         "valor": 100,
         "custoTexto": "Hipótese: gasto persistente maior que o programa temporário",
-        "apoiam": [
-          "Centrais sindicais",
-          "Indústria"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Centrais sindicais", "Indústria"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Segura mais empregos, mas transfere custo contínuo ao orçamento e pode reduzir produtividade."
       }
     ]
@@ -77,9 +63,7 @@
   ],
   "mae": {
     "texto": "Seguro-desemprego (sem trava no estudo).",
-    "leis": [
-      "seguro-desemprego"
-    ]
+    "leis": ["seguro-desemprego"]
   },
   "ministerio": "Ministério do Trabalho"
 }

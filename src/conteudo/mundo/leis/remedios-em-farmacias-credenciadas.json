@@ -26,28 +26,16 @@
         "rotulo": "Retirada de remédios apenas em unidades públicas",
         "valor": 0,
         "custoTexto": "Sem subsídio a farmácias privadas",
-        "apoiam": [
-          "Servidores",
-          "Defensores da rede pública"
-        ],
-        "rejeitam": [
-          "Farmácias privadas",
-          "Moradores longe dos postos"
-        ],
+        "apoiam": ["Servidores", "Defensores da rede pública"],
+        "rejeitam": ["Farmácias privadas", "Moradores longe dos postos"],
         "efeitos": "Mais controle direto do estoque; distância pode dificultar acesso; custo depende da rede (hipótese)"
       },
       {
         "id": "zero-sem-programa",
         "rotulo": "Sem distribuição pública de remédios",
         "valor": 33.33,
-        "apoiam": [
-          "Mercado financeiro"
-        ],
-        "rejeitam": [
-          "Aposentados",
-          "Pobres",
-          "Pequenos negócios"
-        ],
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Aposentados", "Pobres", "Pequenos negócios"],
         "efeitos": "Economia fiscal imediata; gasto do bolso e pressão hospitalar tendem a subir (hipótese)"
       },
       {
@@ -55,11 +43,7 @@
         "rotulo": "Lista essencial gratuita em farmácias credenciadas",
         "valor": 66.67,
         "custoTexto": "0,03 a 0,05% do PIB (aprox.), Saúde",
-        "apoiam": [
-          "Aposentados",
-          "Pobres",
-          "Pequenos negócios"
-        ],
+        "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
         "efeitos": "Acesso próximo de casa ↑; exige controle de reembolsos e estoque"
       },
       {
@@ -67,14 +51,8 @@
         "rotulo": "Todos os remédios essenciais grátis",
         "valor": 100,
         "custoTexto": "Ampliação do subsídio (hipótese)",
-        "apoiam": [
-          "Aposentados",
-          "Pobres",
-          "Pequenos negócios"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Aposentados", "Pobres", "Pequenos negócios"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Pagamento do bolso ↓; gasto público e fiscalização de reembolsos ↑ (hipótese)"
       }
     ]
@@ -85,9 +63,7 @@
   ],
   "mae": {
     "texto": "Modelo do sistema de saúde. \"Mercado privado\" põe esta alavanca no mínimo.",
-    "leis": [
-      "modelo-do-sistema-de-saude"
-    ]
+    "leis": ["modelo-do-sistema-de-saude"]
   },
   "ministerio": "Ministério da Saúde"
 }

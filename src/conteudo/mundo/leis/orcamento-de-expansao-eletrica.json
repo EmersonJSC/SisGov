@@ -25,9 +25,7 @@
       "maximoPercentualPib": 2
     }
   },
-  "consequencias": [
-    "orcamento-de-expansao-eletrica--gasto-publico"
-  ],
+  "consequencias": ["orcamento-de-expansao-eletrica--gasto-publico"],
   "respostaTemporal": {
     "implantacao": 0.3,
     "degradacao": 0.2

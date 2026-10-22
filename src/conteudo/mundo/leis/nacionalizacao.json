@@ -33,13 +33,8 @@
         "rotulo": "Só em setor estratégico",
         "valor": 50.0,
         "custoTexto": "Indenização",
-        "apoiam": [
-          "Centrais sindicais"
-        ],
-        "rejeitam": [
-          "Mercado financeiro",
-          "Petróleo e mineração"
-        ],
+        "apoiam": ["Centrais sindicais"],
+        "rejeitam": ["Mercado financeiro", "Petróleo e mineração"],
         "efeitos": "Risco-país ↑; investimento estrangeiro ↓"
       },
       {
@@ -67,9 +62,7 @@
   ],
   "mae": {
     "texto": "A lei de nacionalização define a forma jurídica da aquisição; não altera automaticamente a escala agregada de participação.",
-    "leis": [
-      "propriedade-dos-meios-de-producao"
-    ]
+    "leis": ["propriedade-dos-meios-de-producao"]
   },
   "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços"
 }

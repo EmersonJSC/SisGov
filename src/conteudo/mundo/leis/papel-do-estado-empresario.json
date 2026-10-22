@@ -26,48 +26,31 @@
         "rotulo": "Nenhuma empresa estatal",
         "valor": 0,
         "custoTexto": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
-        "apoiam": [
-          "Mercado financeiro"
-        ],
-        "rejeitam": [
-          "Sindicatos de servidores",
-          "Centrais sindicais"
-        ],
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
         "efeitos": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado."
       },
       {
         "id": "estatais-minimas",
         "rotulo": "Serviços públicos e monopólios naturais",
         "valor": 33.33,
-        "apoiam": [
-          "Mercado financeiro",
-          "Comércio e serviços"
-        ],
-        "rejeitam": [
-          "Sindicatos de servidores"
-        ],
+        "apoiam": ["Mercado financeiro", "Comércio e serviços"],
+        "rejeitam": ["Sindicatos de servidores"],
         "efeitos": "Permissão restrita a serviços públicos e monopólios naturais."
       },
       {
         "id": "estatais-estrategicas",
         "rotulo": "Serviços públicos e setores estratégicos definidos em lei",
         "valor": 66.67,
-        "apoiam": [
-          "Confederação da indústria"
-        ],
+        "apoiam": ["Confederação da indústria"],
         "efeitos": "Permissão adicional para setores estratégicos, cuja lista depende da legislação."
       },
       {
         "id": "estado-empresario",
         "rotulo": "Atuação empresarial em qualquer setor permitido por lei",
         "valor": 100,
-        "apoiam": [
-          "Centrais sindicais",
-          "Sindicatos de servidores"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Centrais sindicais", "Sindicatos de servidores"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Permissão ampla para operar empresas; participação e fluxos fiscais dependem da propriedade efetiva."
       }
     ]
@@ -80,9 +63,7 @@
   ],
   "mae": {
     "texto": "A participação pública agregada define se há capital estatal; esta lei define em quais atividades ele pode operar.",
-    "leis": [
-      "propriedade-dos-meios-de-producao"
-    ]
+    "leis": ["propriedade-dos-meios-de-producao"]
   },
   "ministerio": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços",
   "respostaTemporal": {

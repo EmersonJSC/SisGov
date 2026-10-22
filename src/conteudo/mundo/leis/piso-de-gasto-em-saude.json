@@ -26,62 +26,36 @@
         "id": "sem-vinculacao",
         "rotulo": "Sem piso constitucional",
         "valor": 0,
-        "apoiam": [
-          "Mercado financeiro",
-          "Gestores com restrição fiscal"
-        ],
-        "rejeitam": [
-          "Movimento pela saúde pública",
-          "Servidores"
-        ],
+        "apoiam": ["Mercado financeiro", "Gestores com restrição fiscal"],
+        "rejeitam": ["Movimento pela saúde pública", "Servidores"],
         "efeitos": "Mais liberdade orçamentária; verba para saúde pode cair (hipótese)"
       },
       {
         "id": "piso-vigente",
         "rotulo": "Manter piso constitucional atual",
         "valor": 50,
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Gestores municipais"
-        ],
-        "rejeitam": [
-          "Defensores da desvinculação"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Gestores municipais"],
+        "rejeitam": ["Defensores da desvinculação"],
         "efeitos": "Garante o mínimo equivalente a 13,69% da receita agregada no jogo (hipótese)"
       },
       {
         "id": "piso-ampliado-para-regioes-vulneraveis",
         "rotulo": "Piso ampliado para interior e periferias",
         "valor": 75,
-        "apoiam": [
-          "Interior",
-          "Periferias",
-          "Movimento pela saúde pública"
-        ],
-        "rejeitam": [
-          "Mercado financeiro",
-          "Gestores com restrição fiscal"
-        ],
+        "apoiam": ["Interior", "Periferias", "Movimento pela saúde pública"],
+        "rejeitam": ["Mercado financeiro", "Gestores com restrição fiscal"],
         "efeitos": "Mínimo de 18% da receita agregada; capacidade de atendimento pode subir com atraso (hipótese)"
       },
       {
         "id": "piso-alto-plurianual",
         "rotulo": "Piso alto com expansão plurianual da rede",
         "valor": 100,
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Servidores"
-        ],
-        "rejeitam": [
-          "Mercado financeiro",
-          "Empresários"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Servidores"],
+        "rejeitam": ["Mercado financeiro", "Empresários"],
         "efeitos": "Mínimo de 23% da receita agregada; cobertura pode subir e margem fiscal cai (hipótese)"
       }
     ]
   },
-  "consequencias": [
-    "piso-de-gasto-em-saude--margem-manobra-governo"
-  ],
+  "consequencias": ["piso-de-gasto-em-saude--margem-manobra-governo"],
   "ministerio": "Ministério da Saúde"
 }

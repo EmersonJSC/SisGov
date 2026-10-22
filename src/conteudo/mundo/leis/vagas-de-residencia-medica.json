@@ -27,7 +27,10 @@
         "valor": 0,
         "custoTexto": "Economia nas novas bolsas (hipótese)",
         "apoiam": ["Gestores com restrição fiscal"],
-        "rejeitam": ["Estudantes de medicina", "Pacientes que aguardam especialistas"],
+        "rejeitam": [
+          "Estudantes de medicina",
+          "Pacientes que aguardam especialistas"
+        ],
         "efeitos": "Falta de especialistas pode subir após alguns anos (hipótese)"
       },
       {

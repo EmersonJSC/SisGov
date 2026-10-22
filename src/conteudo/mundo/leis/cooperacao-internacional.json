@@ -26,21 +26,15 @@
         "rotulo": "Ponto da faixa",
         "valor": 0,
         "custoTexto": "Custo",
-        "apoiam": [
-          "Quem apoia"
-        ],
-        "rejeitam": [
-          "Quem rejeita"
-        ],
+        "apoiam": ["Quem apoia"],
+        "rejeitam": ["Quem rejeita"],
         "efeitos": "Efeitos principais"
       },
       {
         "id": "0",
         "rotulo": "0%",
         "valor": 33.33,
-        "rejeitam": [
-          "Católicos"
-        ],
+        "rejeitam": ["Católicos"],
         "efeitos": "Influência externa ↓ pouco"
       },
       {
@@ -55,19 +49,12 @@
         "rotulo": "0,7% (meta da ONU e da OCDE)",
         "valor": 100,
         "custoTexto": "0,7% da renda",
-        "apoiam": [
-          "Progressistas",
-          "Católicos"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Progressistas", "Católicos"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Influência externa ↑; chance de ganhar o voto na assembleia ↑ (aprox.) O custo entra como % do PIB no jogo, aproximando a renda nacional (hipótese)."
       }
     ]
   },
-  "consequencias": [
-    "cooperacao-internacional--gasto-publico"
-  ],
+  "consequencias": ["cooperacao-internacional--gasto-publico"],
   "ministerio": "Ministério da Defesa"
 }

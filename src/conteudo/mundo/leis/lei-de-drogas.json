@@ -24,14 +24,8 @@
         "rotulo": "Prender usuários e intensificar operações de rua",
         "valor": 0,
         "custoTexto": "Hipótese: 0,3% do PIB ao ano em repressão",
-        "apoiam": [
-          "Conservadores",
-          "Evangélicos"
-        ],
-        "rejeitam": [
-          "Progressistas",
-          "Jovens"
-        ],
+        "apoiam": ["Conservadores", "Evangélicos"],
+        "rejeitam": ["Progressistas", "Jovens"],
         "efeitos": "Reforça a resposta policial; eleva lotação prisional e letalidade em operações."
       },
       {
@@ -39,13 +33,8 @@
         "rotulo": "Não prender usuário; manter repressão ao tráfico",
         "valor": 50,
         "custoTexto": "Hipótese: 0,2% do PIB ao ano",
-        "apoiam": [
-          "Classe média",
-          "Jovens"
-        ],
-        "rejeitam": [
-          "Conservadores favoráveis à prisão do usuário"
-        ],
+        "apoiam": ["Classe média", "Jovens"],
+        "rejeitam": ["Conservadores favoráveis à prisão do usuário"],
         "efeitos": "Reduz prisões por uso; a distinção entre uso e tráfico ainda depende da avaliação policial."
       },
       {
@@ -53,14 +42,8 @@
         "rotulo": "Critério objetivo de uso pessoal com revisão judicial",
         "valor": 75,
         "custoTexto": "Hipótese: 0,18% do PIB ao ano em fiscalização e atendimento",
-        "apoiam": [
-          "Progressistas",
-          "Jovens",
-          "Defensores públicos"
-        ],
-        "rejeitam": [
-          "Conservadores favoráveis à repressão ampla"
-        ],
+        "apoiam": ["Progressistas", "Jovens", "Defensores públicos"],
+        "rejeitam": ["Conservadores favoráveis à repressão ampla"],
         "efeitos": "Reduz arbitrariedade e prisão por uso; exige capacidade de diferenciar pequenos vendedores de usuários."
       },
       {
@@ -68,15 +51,8 @@
         "rotulo": "Encaminhar usuários a cuidado em saúde, sem pena criminal",
         "valor": 100,
         "custoTexto": "Hipótese: 0,15% do PIB líquido ao ano, com atendimento de saúde",
-        "apoiam": [
-          "Progressistas",
-          "Jovens",
-          "Profissionais de saúde"
-        ],
-        "rejeitam": [
-          "Conservadores",
-          "Evangélicos"
-        ],
+        "apoiam": ["Progressistas", "Jovens", "Profissionais de saúde"],
+        "rejeitam": ["Conservadores", "Evangélicos"],
         "efeitos": "Prisão por uso e letalidade policial caem; encaminhar requer capacidade de atendimento e continuidade do cuidado. A mudança de acesso e resultados clínicos depende da oferta real de serviços."
       }
     ]

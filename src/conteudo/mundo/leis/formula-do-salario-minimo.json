@@ -75,25 +75,53 @@
     {
       "alvo": "renda_familias",
       "mecanismo": "pontos",
-      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.8], [100, 1.4]] },
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0.8],
+          [100, 1.4]
+        ]
+      },
       "atraso": 4
     },
     {
       "alvo": "pobreza",
       "mecanismo": "pontos",
-      "parametros": { "pontos": [[0, 0], [33, 0], [67, -0.6], [100, -1.2]] },
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, -0.6],
+          [100, -1.2]
+        ]
+      },
       "atraso": 4
     },
     {
       "alvo": "custo_trabalhista",
       "mecanismo": "pontos",
-      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.5], [100, 1.0]] },
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0.5],
+          [100, 1.0]
+        ]
+      },
       "atraso": 4
     },
     {
       "alvo": "gasto_publico",
       "mecanismo": "pontos",
-      "parametros": { "pontos": [[0, 0], [33, 0], [67, 0.05], [100, 0.09]] },
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0.05],
+          [100, 0.09]
+        ]
+      },
       "atraso": 4
     },
     {

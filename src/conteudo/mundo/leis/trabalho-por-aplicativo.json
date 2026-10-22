@@ -59,7 +59,16 @@
         "id": "emprego-obrigatorio",
         "rotulo": "Exigir carteira de trabalho para todo motorista e entregador",
         "valor": 100,
-        "requer": [{"lei": "legislacao-trabalhista", "opcoes": ["codigo-detalhado", "protetiva-estabilidade-e-demissao-so-com-motivo"], "motivo": "Vínculo obrigatório exige direitos mínimos constitucionais definidos."}],
+        "requer": [
+          {
+            "lei": "legislacao-trabalhista",
+            "opcoes": [
+              "codigo-detalhado",
+              "protetiva-estabilidade-e-demissao-so-com-motivo"
+            ],
+            "motivo": "Vínculo obrigatório exige direitos mínimos constitucionais definidos."
+          }
+        ],
         "apoiam": ["Centrais sindicais"],
         "rejeitam": ["Plataformas digitais", "Informais", "Jovens"],
         "efeitos": "Cobertura e renda dos empregados sobem; parte das vagas e da mobilidade pode desaparecer."

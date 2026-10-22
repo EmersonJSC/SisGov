@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { criarPartida, encerrarTurno, verPartida, type Partida } from "../app/partida";
+import {
+  criarPartida,
+  encerrarTurno,
+  verPartida,
+  type Partida,
+} from "../app/partida";
 import { aplicarMeta } from "../app/partida/leis";
 
 function nova() {
@@ -24,29 +29,47 @@ function avancar(p: Partida, turnos: number) {
 }
 
 function valor(p: Partida, id: string) {
-  return verPartida(p).bolhas.find(x => x.id === id)!.valor;
+  return verPartida(p).bolhas.find((x) => x.id === id)!.valor;
 }
 
 describe("Lote 16: emprego, aprendizagem e cuidado", () => {
   it("rede ampla de recolocação custa verba e reduz desemprego", () => {
     const base = avancar(nova(), 4);
-    const ampla = avancar(aplicar(nova(), "intermediacao-e-qualificacao", 100), 4);
-    expect(valor(ampla, "gasto_publico")).toBeGreaterThan(valor(base, "gasto_publico"));
+    const ampla = avancar(
+      aplicar(nova(), "intermediacao-e-qualificacao", 100),
+      4,
+    );
+    expect(valor(ampla, "gasto_publico")).toBeGreaterThan(
+      valor(base, "gasto_publico"),
+    );
     expect(valor(ampla, "desemprego")).toBeLessThan(valor(base, "desemprego"));
     expect(valor(ampla, "desemprego")).toBeGreaterThan(0);
   });
 
   it("programa de jornada parcial preserva emprego com custo", () => {
     const base = avancar(nova(), 1);
-    const parcial = avancar(aplicar(nova(), "reducao-de-jornada-subsidiada", 50), 1);
-    expect(valor(parcial, "desemprego")).toBeLessThan(valor(base, "desemprego"));
-    expect(valor(parcial, "gasto_publico")).toBeGreaterThan(valor(base, "gasto_publico"));
+    const parcial = avancar(
+      aplicar(nova(), "reducao-de-jornada-subsidiada", 50),
+      1,
+    );
+    expect(valor(parcial, "desemprego")).toBeLessThan(
+      valor(base, "desemprego"),
+    );
+    expect(valor(parcial, "gasto_publico")).toBeGreaterThan(
+      valor(base, "gasto_publico"),
+    );
   });
 
   it("aprendizagem dual exige oferta de ensino técnico", () => {
     const semTecnico = aplicar(nova(), "ensino-tecnico-e-profissional", 0);
-    const tentativa = aplicarMeta(semTecnico, "trabalho-infantil-e-aprendizagem", 100);
+    const tentativa = aplicarMeta(
+      semTecnico,
+      "trabalho-infantil-e-aprendizagem",
+      100,
+    );
     expect(tentativa.ok).toBe(false);
-    expect(aplicarMeta(nova(), "trabalho-infantil-e-aprendizagem", 100).ok).toBe(true);
+    expect(
+      aplicarMeta(nova(), "trabalho-infantil-e-aprendizagem", 100).ok,
+    ).toBe(true);
   });
 });

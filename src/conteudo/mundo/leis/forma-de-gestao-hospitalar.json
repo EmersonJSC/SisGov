@@ -25,35 +25,23 @@
         "id": "administracao-direta-por-servidores",
         "rotulo": "Administração direta por servidores",
         "valor": 0,
-        "apoiam": [
-          "Servidores",
-          "Sindicatos de servidores"
-        ],
-        "rejeitam": [
-          "Mercado financeiro",
-          "Empresários"
-        ],
+        "apoiam": ["Servidores", "Sindicatos de servidores"],
+        "rejeitam": ["Mercado financeiro", "Empresários"],
         "efeitos": "Controle público direto e vínculos estáveis; ganho de eficiência depende da capacidade local"
       },
       {
         "id": "fundacao-ou-empresa-publica",
         "rotulo": "Fundação ou empresa pública",
         "valor": 33.33,
-        "apoiam": [
-          "Servidores"
-        ],
-        "rejeitam": [
-          "Sindicatos de servidores"
-        ],
+        "apoiam": ["Servidores"],
+        "rejeitam": ["Sindicatos de servidores"],
         "efeitos": "Autonomia de contratação e metas públicas; pressão hospitalar ↓ de modo gradual (hipótese)"
       },
       {
         "id": "organizacao-social-com-metas",
         "rotulo": "Organização social com metas",
         "valor": 66.67,
-        "apoiam": [
-          "Empresários"
-        ],
+        "apoiam": ["Empresários"],
         "rejeitam": [
           "Movimento pela saúde pública",
           "Sindicatos de servidores"
@@ -65,13 +53,8 @@
         "rotulo": "Parceria público-privada com operação clínica",
         "valor": 100,
         "custoTexto": "Contratos de longo prazo; custo líquido depende da execução (hipótese)",
-        "apoiam": [
-          "Empresários"
-        ],
-        "rejeitam": [
-          "Movimento pela saúde pública",
-          "Servidores"
-        ],
+        "apoiam": ["Empresários"],
+        "rejeitam": ["Movimento pela saúde pública", "Servidores"],
         "efeitos": "Expansão de leitos pode reduzir fila; compromissos contratuais prolongados exigem controle (hipótese)"
       }
     ]

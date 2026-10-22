@@ -7,18 +7,9 @@
   "mecanismo": "pontos",
   "parametros": {
     "pontos": [
-      [
-        0,
-        0
-      ],
-      [
-        50,
-        1
-      ],
-      [
-        100,
-        7
-      ]
+      [0, 0],
+      [50, 1],
+      [100, 7]
     ]
   },
   "leitura": "nivel",

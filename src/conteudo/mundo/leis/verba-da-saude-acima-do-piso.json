@@ -26,13 +26,8 @@
         "rotulo": "Manter somente os serviços financiados pelo piso",
         "valor": 25.0,
         "custoTexto": "Sem verba adicional por esta decisão",
-        "apoiam": [
-          "Mercado financeiro"
-        ],
-        "rejeitam": [
-          "Movimento pela saúde pública",
-          "Pobres"
-        ],
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Movimento pela saúde pública", "Pobres"],
         "efeitos": "Preserva espaço fiscal; filas tendem a piorar se a demanda crescer (hipótese)"
       },
       {
@@ -47,13 +42,8 @@
         "rotulo": "Ampliar postos e equipes no interior",
         "valor": 75.0,
         "custoTexto": "Requer elevar a verba executada",
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Progressistas"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Progressistas"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Cobertura básica ↑; pressão hospitalar pode cair com atraso (hipótese)"
       },
       {
@@ -61,26 +51,16 @@
         "rotulo": "Expansão ampla da rede e das especialidades",
         "valor": 100,
         "custoTexto": "Requer forte aumento da verba executada",
-        "apoiam": [
-          "Movimento pela saúde pública"
-        ],
-        "rejeitam": [
-          "Mercado financeiro",
-          "Empresários"
-        ],
+        "apoiam": ["Movimento pela saúde pública"],
+        "rejeitam": ["Mercado financeiro", "Empresários"],
         "efeitos": "Acesso ↑ se houver profissionais e gestão; pressiona as contas públicas (hipótese)"
       }
     ]
   },
-  "consequencias": [
-    "verba-da-saude-acima-do-piso--cobertura-aps"
-  ],
+  "consequencias": ["verba-da-saude-acima-do-piso--cobertura-aps"],
   "mae": {
     "texto": "A regra constitucional fixa o mínimo da verba executada em piso-saude. Esta prioridade não altera automaticamente essa verba.",
-    "leis": [
-      "piso-de-gasto-em-saude",
-      "piso-saude"
-    ]
+    "leis": ["piso-de-gasto-em-saude", "piso-saude"]
   },
   "ministerio": "Ministério da Saúde"
 }

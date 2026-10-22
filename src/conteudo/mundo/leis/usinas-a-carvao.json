@@ -31,21 +31,15 @@
           "Centrais sindicais",
           "Interior"
         ],
-        "rejeitam": [
-          "Movimento ambientalista"
-        ],
+        "rejeitam": ["Movimento ambientalista"],
         "efeitos": "Emissões ↑; preço da energia ↑"
       },
       {
         "id": "livre",
         "rotulo": "Livre",
         "valor": 50,
-        "apoiam": [
-          "Mercado financeiro"
-        ],
-        "rejeitam": [
-          "Movimento ambientalista"
-        ],
+        "apoiam": ["Mercado financeiro"],
+        "rejeitam": ["Movimento ambientalista"],
         "efeitos": "Emissões sem mudança; desemprego regional ↑ devagar"
       },
       {
@@ -53,13 +47,8 @@
         "rotulo": "Saída com data",
         "valor": 100,
         "custoTexto": "Transição justa (aprox., sem número)",
-        "apoiam": [
-          "Movimento ambientalista"
-        ],
-        "rejeitam": [
-          "Trabalhadores com carteira",
-          "Centrais sindicais"
-        ],
+        "apoiam": ["Movimento ambientalista"],
+        "rejeitam": ["Trabalhadores com carteira", "Centrais sindicais"],
         "efeitos": "Emissões ↓; desemprego regional ↑ no curto prazo"
       }
     ]
@@ -74,9 +63,7 @@
   ],
   "mae": {
     "texto": "Matriz energética. Transição forçada lá exige Saída com data aqui.",
-    "leis": [
-      "matriz-energetica"
-    ]
+    "leis": ["matriz-energetica"]
   },
   "ministerio": "Ministério do Meio Ambiente"
 }

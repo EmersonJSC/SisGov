@@ -25,13 +25,8 @@
         "id": "minimo-0",
         "rotulo": "Fechar postos de emprego e suspender cursos pagos pelo governo",
         "valor": 0,
-        "apoiam": [
-          "Gestores fiscais favoráveis a corte de gasto"
-        ],
-        "rejeitam": [
-          "Centrais sindicais",
-          "Jovens"
-        ],
+        "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
+        "rejeitam": ["Centrais sindicais", "Jovens"],
         "efeitos": "Economiza verba, mas jovens levam mais tempo para encontrar trabalho."
       },
       {
@@ -39,13 +34,8 @@
         "rotulo": "Manter postos locais de emprego e cursos curtos para vagas abertas",
         "valor": 16.67,
         "custoTexto": "Hipótese: 0,05% do PIB ao ano",
-        "apoiam": [
-          "Jovens",
-          "Empresas com vagas abertas"
-        ],
-        "rejeitam": [
-          "Gestores fiscais favoráveis a corte de gasto"
-        ],
+        "apoiam": ["Jovens", "Empresas com vagas abertas"],
+        "rejeitam": ["Gestores fiscais favoráveis a corte de gasto"],
         "efeitos": "A recolocação melhora cedo; a qualificação cresce pouco e com atraso.",
         "custoAnualPercentualPib": 0.05
       },
@@ -55,14 +45,8 @@
         "valor": 100,
         "custoAnualPercentualPib": 0.3,
         "custoTexto": "Hipótese: 0,3% do PIB ao ano",
-        "apoiam": [
-          "Centrais sindicais",
-          "Jovens",
-          "Indústria"
-        ],
-        "rejeitam": [
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Centrais sindicais", "Jovens", "Indústria"],
+        "rejeitam": ["Mercado financeiro"],
         "efeitos": "Mais jovens encontram vaga cedo; produtividade da formação chega com atraso e custa verba alta."
       }
     ],
@@ -81,9 +65,7 @@
   ],
   "mae": {
     "texto": "Seguro-desemprego (sem trava).",
-    "leis": [
-      "seguro-desemprego"
-    ]
+    "leis": ["seguro-desemprego"]
   },
   "ministerio": "Ministério do Trabalho e Emprego"
 }

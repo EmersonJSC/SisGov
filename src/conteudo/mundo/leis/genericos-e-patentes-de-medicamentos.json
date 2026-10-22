@@ -26,15 +26,8 @@
         "rotulo": "Licenças estratégicas e laboratórios públicos",
         "valor": 0,
         "custoTexto": "Investimento inicial em produção pública (hipótese)",
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Servidores",
-          "Pobres"
-        ],
-        "rejeitam": [
-          "Indústria farmacêutica",
-          "Mercado financeiro"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Servidores", "Pobres"],
+        "rejeitam": ["Indústria farmacêutica", "Mercado financeiro"],
         "efeitos": "Oferta pública e acesso ↑ com atraso; preço tende a cair; gasto inicial e disputa sobre patentes ↑ (hipótese)"
       },
       {
@@ -42,13 +35,8 @@
         "rotulo": "Licença compulsória seletiva para remédios essenciais",
         "valor": 25,
         "custoTexto": "gasto do sistema público de saúde ↓",
-        "apoiam": [
-          "Movimento pela saúde pública",
-          "Pobres"
-        ],
-        "rejeitam": [
-          "Indústria farmacêutica"
-        ],
+        "apoiam": ["Movimento pela saúde pública", "Pobres"],
+        "rejeitam": ["Indústria farmacêutica"],
         "efeitos": "Genéricos entram mais cedo em necessidades críticas; preço ↓ e tensão com titulares de patentes ↑ (hipótese)"
       },
       {
@@ -56,28 +44,17 @@
         "rotulo": "Patentes regulares e genéricos após vencimento",
         "valor": 50,
         "custoTexto": "neutro",
-        "apoiam": [
-          "Farmácias",
-          "Pacientes",
-          "Indústria de genéricos"
-        ],
+        "apoiam": ["Farmácias", "Pacientes", "Indústria de genéricos"],
         "efeitos": "Mantém incentivo à pesquisa e concorrência dos genéricos após o prazo legal",
-        "rejeitam": [
-          "Defensores de produção pública ampla"
-        ]
+        "rejeitam": ["Defensores de produção pública ampla"]
       },
       {
         "id": "patente-estendida-alem-da-regra-internacional",
         "rotulo": "Proteção prolongada a patentes e pesquisa privada",
         "valor": 100,
         "custoTexto": "gasto do sistema público de saúde ↑",
-        "apoiam": [
-          "Indústria farmacêutica"
-        ],
-        "rejeitam": [
-          "Movimento pela saúde pública",
-          "Aposentados"
-        ],
+        "apoiam": ["Indústria farmacêutica"],
+        "rejeitam": ["Movimento pela saúde pública", "Aposentados"],
         "efeitos": "Pesquisa privada pode ganhar incentivo; preço e gasto do bolso ↑, acesso dos mais pobres ↓ (hipótese)"
       }
     ]

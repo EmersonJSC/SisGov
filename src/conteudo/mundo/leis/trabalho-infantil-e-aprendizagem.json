@@ -57,7 +57,17 @@
         "id": "sistema-dual-escola-e-empresa-juntas",
         "rotulo": "Integrar escola técnica e vagas de aprendiz nas empresas",
         "valor": 100,
-        "requer": [{"lei": "ensino-tecnico-e-profissional", "opcoes": ["tecnico-como-opcao-no-medio", "tecnico-em-massa-integrado-ao-medio", "contas-de-formacao-continua"], "motivo": "O sistema dual exige ensino técnico disponível para os aprendizes."}],
+        "requer": [
+          {
+            "lei": "ensino-tecnico-e-profissional",
+            "opcoes": [
+              "tecnico-como-opcao-no-medio",
+              "tecnico-em-massa-integrado-ao-medio",
+              "contas-de-formacao-continua"
+            ],
+            "motivo": "O sistema dual exige ensino técnico disponível para os aprendizes."
+          }
+        ],
         "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
         "apoiam": ["Indústria", "Empresários", "Jovens"],
         "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],

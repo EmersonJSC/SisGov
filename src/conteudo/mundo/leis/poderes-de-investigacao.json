@@ -33,7 +33,10 @@
         "id": "infiltracao-e-acao-controlada-com-juiz",
         "rotulo": "Permitir infiltração e flagrante adiado sob controle judicial",
         "valor": 50,
-        "apoiam": ["Associações de policiais", "Progressistas que defendem fiscalização judicial"],
+        "apoiam": [
+          "Associações de policiais",
+          "Progressistas que defendem fiscalização judicial"
+        ],
         "rejeitam": ["Conservadores favoráveis a poderes sem mandado"],
         "efeitos": "A polícia mapeia a cadeia de comando e reduz impunidade com prazo; mantém controle judicial."
       },
