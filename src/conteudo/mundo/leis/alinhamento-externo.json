@@ -1,22 +1,12 @@
 {
   "id": "alinhamento-externo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Alinhamento externo",
-  "descricao": "De que lado do mundo o país fica?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "politica-externa",
-    "nome": "Política externa",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define de que lado do mundo o país fica.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_alinhamento_externo",
     "unidade": "nivel_escopo",
@@ -27,29 +17,33 @@
         "valor": 0,
         "apoiam": ["Conservadores", "Evangélicos", "Empresários", "Agro"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Investimento estrangeiro ocidental ↑; Tensão internacional ↑ com o rival"
+        "efeitos": "Investimento estrangeiro ocidental ↑; Tensão internacional ↑ com o rival",
+        "propoe": "Alinhado à potência ocidental."
       },
       {
         "id": "ocidental-pragmatico",
         "rotulo": "Ocidental pragmático",
-        "valor": 25.0,
+        "valor": 25,
         "apoiam": ["Empresários", "Classe média"],
-        "efeitos": "Investimento estrangeiro ↑ pouco"
+        "efeitos": "Investimento estrangeiro ↑ pouco",
+        "propoe": "Do lado ocidental, mas pragmático."
       },
       {
         "id": "nao-alinhamento-ativo",
         "rotulo": "Não alinhamento ativo (hoje na referência, tradição)",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Católicos", "Agro"],
-        "efeitos": "Influência externa ↑ por mediar (aprox.)"
+        "efeitos": "Influência externa ↑ por mediar (aprox.)",
+        "propoe": "Sem lado, conversando com todos."
       },
       {
         "id": "bloco-alternativo",
         "rotulo": "Bloco alternativo",
-        "valor": 75.0,
+        "valor": 75,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Empresários", "Conservadores", "Mercado financeiro"],
-        "efeitos": "Tensão internacional ↑ com o polo ocidental; chance de sanções ↑; dispara “potência oferece investimento”"
+        "efeitos": "Tensão internacional ↑ com o polo ocidental; chance de sanções ↑; dispara “potência oferece investimento”",
+        "propoe": "Num bloco que se opõe ao ocidental."
       },
       {
         "id": "isolamento-soberanista",
@@ -57,15 +51,15 @@
         "valor": 100,
         "apoiam": ["Conservadores"],
         "rejeitam": ["Empresários", "Agro", "Progressistas"],
-        "efeitos": "Chance de sanções ↑ muito; Exportações ↓; trava Integração regional e Missões de paz"
+        "efeitos": "Chance de sanções ↑ muito; Exportações ↓; trava Integração regional e Missões de paz",
+        "propoe": "Isolado, sem compromissos."
       }
     ]
   },
-  "consequencias": [
-    "alinhamento-externo--tensao-internacional",
-    "alinhamento-externo--ied",
-    "alinhamento-externo--exportacoes"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Aliança militar (“bases estrangeiras” trava esta lei em “alinhamento com potência ocidental” ou “ocidental pragmático”). Programa nuclear (“dissuasão nuclear” mexe nesta lei, ver pontos abertos). É mãe de Integração regional e Missões de paz.",
     "leis": [
@@ -75,5 +69,44 @@
       "programa-nuclear"
     ]
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "alinhamento-externo--tensao-internacional",
+      "alvo": "tensao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.028,
+        "termoConstante": 1.4
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "alinhamento-externo--ied",
+      "alvo": "ied",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.012,
+        "termoConstante": 0.6
+      },
+      "atraso": 1,
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "alinhamento-externo--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.056,
+        "termoConstante": 2.8
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

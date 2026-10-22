@@ -1,22 +1,12 @@
 {
   "id": "excludente-de-ilicitude",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Excludente de ilicitude",
-  "descricao": "Quando um agente que usa força letal em serviço fica isento de pena? A regra estreita aumenta controle de abusos; a ampla dá proteção à ação policial, mas pode elevar a letalidade e corroer confiança.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quando o policial que mata em serviço fica sem pena.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_excludente_de_ilicitude",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Progressistas", "Movimento negro"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Letalidade e impunidade de abuso caem; parte dos policiais se sente menos protegida."
+        "efeitos": "Letalidade e impunidade de abuso caem; parte dos policiais se sente menos protegida.",
+        "propoe": "Só quando reage a uma ameaça real e imediata."
       },
       {
         "id": "amplo-inclui-medo-surpresa-ou-violenta-emocao",
@@ -39,19 +30,108 @@
           "Conservadores"
         ],
         "rejeitam": ["Progressistas", "Movimento negro"],
-        "efeitos": "Letalidade policial sobe; crime patrimonial pode cair, mas confiança e reputação diminuem."
+        "efeitos": "Letalidade policial sobe; crime patrimonial pode cair, mas confiança e reputação diminuem.",
+        "propoe": "Também quando atira por medo, surpresa ou forte emoção."
       }
     ]
   },
-  "consequencias": [
-    "excludente-de-ilicitude--letalidade-policial",
-    "excludente-de-ilicitude--crimes-patrimoniais",
-    "excludente-de-ilicitude--confianca-instituicoes",
-    "excludente-de-ilicitude--reputacao-internacional",
-    "excludente-de-ilicitude--grupo-conservadores",
-    "excludente-de-ilicitude--grupo-pobres",
-    "excludente-de-ilicitude--grupo-progressistas",
-    "excludente-de-ilicitude--grupo-servidores"
-  ],
-  "ministerio": "Ministério da Justiça"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "excludente-de-ilicitude--letalidade-policial",
+      "alvo": "letalidade_policial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--crimes-patrimoniais",
+      "alvo": "crimes_patrimoniais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "excludente-de-ilicitude--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

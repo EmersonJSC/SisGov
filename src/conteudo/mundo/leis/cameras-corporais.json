@@ -1,44 +1,168 @@
 {
   "id": "cameras-corporais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Câmeras corporais",
-  "descricao": "O governo escolhe de 0 a 0,01% do PIB por ano para equipar policiais com câmeras corporais, guardar gravações e fiscalizar seu uso. Mais cobertura custa dinheiro, mas pode reduzir letalidade e elevar confiança.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
+  "decide": "Define quanto o governo gasta por ano com câmeras no uniforme dos policiais.",
+  "area": "seguranca-e-defesa",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_cameras_corporais",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 0.01
     }
   },
-  "consequencias": [
-    "cameras-corporais--letalidade-policial",
-    "cameras-corporais--impunidade",
-    "cameras-corporais--confianca-instituicoes",
-    "cameras-corporais--sensacao-seguranca",
-    "cameras-corporais--grupo-conservadores",
-    "cameras-corporais--grupo-pobres",
-    "cameras-corporais--grupo-progressistas",
-    "cameras-corporais--grupo-servidores",
-    "cameras-corporais--gasto-publico",
-    "cameras-corporais--grupo-periferias"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "cameras-corporais--letalidade-policial",
+      "alvo": "letalidade_policial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.01,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "cameras-corporais--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "cameras-corporais--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1000,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1000,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1000,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1000,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cameras-corporais--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "cameras-corporais--grupo-periferias",
+      "alvo": "grupo_periferias",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1000,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    }
+  ]
 }

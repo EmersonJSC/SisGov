@@ -1,30 +1,12 @@
 {
   "id": "cannabis-legal",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Maconha legal e regulada",
-  "descricao": "Quem pode produzir e vender cannabis após a mudança da lei de drogas: clubes, farmácias ou lojas licenciadas? Regulação arrecada e pode tirar receita das facções, mas exige fiscalização e divide a opinião pública.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "drogas",
-    "nome": "Drogas",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "requer": [
-    {
-      "lei": "lei-de-drogas",
-      "opcoes": [
-        "usuario-nao-preso",
-        "criterio-objetivo-uso-pessoal",
-        "uso-e-saude"
-      ],
-      "motivo": "Não dá para vender maconha legalmente enquanto o usuário vai preso."
-    }
-  ],
+  "decide": "Define quem pode produzir e vender maconha, quando ela é legal.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_cannabis_legal",
     "unidade": "nivel_escopo",
@@ -36,7 +18,8 @@
         "custoTexto": "Hipótese: +0,005% do PIB em fiscalização; sem nova arrecadação relevante",
         "apoiam": ["Jovens", "Progressistas"],
         "rejeitam": ["Conservadores", "Evangélicos"],
-        "efeitos": "Reduz prisões por cultivo e um pouco da renda ilegal, com baixa escala e resistência moral."
+        "efeitos": "Reduz prisões por cultivo e um pouco da renda ilegal, com baixa escala e resistência moral.",
+        "propoe": "Clubes de cultivo, sem venda em loja."
       },
       {
         "id": "farmacias",
@@ -45,7 +28,8 @@
         "custoTexto": "Hipótese: +0,01% do PIB em fiscalização; +0,02% em arrecadação",
         "apoiam": ["Progressistas", "Pequenos negócios"],
         "rejeitam": ["Conservadores", "Evangélicos"],
-        "efeitos": "Mercado formal cresce com acesso restrito; arrecada, reduz mercado ilegal e custa fiscalização."
+        "efeitos": "Mercado formal cresce com acesso restrito; arrecada, reduz mercado ilegal e custa fiscalização.",
+        "propoe": "Venda em farmácia, com receita."
       },
       {
         "id": "lojas",
@@ -54,27 +38,184 @@
         "custoTexto": "Hipótese: +0,01% do PIB em fiscalização; +0,05% em arrecadação",
         "apoiam": ["Jovens", "Progressistas", "Pequenos negócios"],
         "rejeitam": ["Conservadores", "Evangélicos", "Hierarquia católica"],
-        "efeitos": "Maior receita legal enfraquece parte do comércio ilegal, mas o uso pode subir e a segurança percebida cair."
+        "efeitos": "Maior receita legal enfraquece parte do comércio ilegal, mas o uso pode subir e a segurança percebida cair.",
+        "propoe": "Lojas licenciadas, com idade mínima e imposto."
       }
     ]
   },
-  "consequencias": [
-    "cannabis-legal--crime-organizado",
-    "cannabis-legal--uso-drogas",
-    "cannabis-legal--lotacao-prisional",
-    "cannabis-legal--sensacao-seguranca",
-    "cannabis-legal--gasto-publico",
-    "cannabis-legal--arrecadacao",
-    "cannabis-legal--grupo-classe-media",
-    "cannabis-legal--grupo-conservadores",
-    "cannabis-legal--grupo-jovens",
-    "cannabis-legal--grupo-pequenos-negocios",
-    "cannabis-legal--grupo-progressistas",
-    "cannabis-legal--grupo-evangelicos",
-    "cannabis-legal--grupo-catolicos"
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "dependeDe": [
+    {
+      "lei": "lei-de-drogas",
+      "opcoes": [
+        "usuario-nao-preso",
+        "criterio-objetivo-uso-pessoal",
+        "uso-e-saude"
+      ],
+      "motivo": "Não dá para vender maconha legalmente enquanto o usuário vai preso."
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "drogas",
+    "nome": "Drogas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "cannabis-legal--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--uso-drogas",
+      "alvo": "uso_drogas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--lotacao-prisional",
+      "alvo": "lotacao_prisional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.005],
+          [67, 0.01],
+          [100, 0.01]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "cannabis-legal--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 0.02],
+          [100, 0.05]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "cannabis-legal--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-evangelicos",
+      "alvo": "grupo_evangelicos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "cannabis-legal--grupo-catolicos",
+      "alvo": "grupo_catolicos",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.05,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

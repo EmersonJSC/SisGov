@@ -1,22 +1,12 @@
 {
   "id": "exportacao-de-armas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Exportação de armas",
-  "descricao": "A quem o país pode vender armas?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define a quem o país pode vender armas.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_exportacao_de_armas",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "0 (perde receita)",
         "apoiam": ["Progressistas", "Católicos"],
         "rejeitam": ["Confederação da indústria", "Associações de militares"],
-        "efeitos": "Exportações ↓ pouco; Reputação internacional ↑ pouco (estimado)"
+        "efeitos": "Exportações ↓ pouco; Reputação internacional ↑ pouco (estimado)",
+        "propoe": "A ninguém."
       },
       {
         "id": "controle-humanitario",
@@ -36,7 +27,8 @@
         "valor": 33.33,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Indústria de armas"],
-        "efeitos": "Reputação internacional estável"
+        "efeitos": "Reputação internacional estável",
+        "propoe": "Não vende a quem viola direitos humanos."
       },
       {
         "id": "controle-comercial",
@@ -44,7 +36,8 @@
         "valor": 66.67,
         "apoiam": ["Confederação da indústria", "Empresários"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ se vender a quem viola direitos (aprox.)"
+        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ se vender a quem viola direitos (aprox.)",
+        "propoe": "Vende com controle comercial."
       },
       {
         "id": "livre",
@@ -52,13 +45,42 @@
         "valor": 100,
         "apoiam": ["Indústria de armas"],
         "rejeitam": ["Progressistas", "Católicos"],
-        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ (aprox.); Armas em circulação na região ↑ (aprox.)"
+        "efeitos": "Exportações ↑ pouco; Reputação internacional ↓ (aprox.); Armas em circulação na região ↑ (aprox.)",
+        "propoe": "Vende a quem quiser."
       }
     ]
   },
-  "consequencias": [
-    "exportacao-de-armas--exportacoes",
-    "exportacao-de-armas--reputacao-internacional"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "exportacao-de-armas--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -4.20021
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "exportacao-de-armas--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.111,
+        "termoConstante": 7.40037
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

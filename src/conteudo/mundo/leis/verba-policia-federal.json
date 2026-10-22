@@ -1,16 +1,11 @@
 {
   "id": "verba-policia-federal",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Verba da Polícia Federal",
-  "descricao": "Definir a verba da Polícia Federal para contratar investigadores, seguir dinheiro de facções e corrupção e fiscalizar fronteiras. O gasto aparece cedo; inteligência cresce depois e investigações rendem em vários turnos.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Justiça",
+  "decide": "Define quanto o governo gasta por ano com a polícia federal: investigação, dinheiro de facções e fronteiras.",
+  "area": "seguranca-e-defesa",
   "nivel": "decreto",
   "revogavel": false,
   "controle": {
@@ -29,13 +24,33 @@
     "entrada": 0.3,
     "saida": 0.2
   },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
+  "historia": {
+    "brasil": "Verba definida todo ano na lei orçamentária, executada pelo Ministério da Justiça."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal, art. 144, § 1º (Polícia Federal)",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "existência do órgão"
+    },
+    {
+      "titulo": "Portal da Transparência, despesas por órgão",
+      "url": "https://portaldatransparencia.gov.br/",
+      "usadoPara": "faixa de gasto em % do PIB"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "crime_organizado",
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -0.0001944444,
-        "termoConstante": 0.0
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -44,7 +59,7 @@
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -0.0001944444,
-        "termoConstante": 0.0
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -52,8 +67,8 @@
       "alvo": "impunidade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -8.33333e-5,
-        "termoConstante": 0.0
+        "coeficiente": -0.0000833333,
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -122,21 +137,6 @@
         "multiplicador": 100
       },
       "leitura": "nivel"
-    }
-  ],
-  "historia": {
-    "brasil": "Verba definida todo ano na lei orçamentária, executada pelo Ministério da Justiça."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal, art. 144, § 1º (Polícia Federal)",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "existência do órgão"
-    },
-    {
-      "titulo": "Portal da Transparência, despesas por órgão",
-      "url": "https://portaldatransparencia.gov.br/",
-      "usadoPara": "faixa de gasto em % do PIB"
     }
   ]
 }

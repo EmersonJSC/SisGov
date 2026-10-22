@@ -1,22 +1,12 @@
 {
   "id": "gestao-dos-presidios",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Gestão dos presídios",
-  "descricao": "Quem administra o presídio e responde pelas metas: servidores, cogestão de serviços ou parceria de longo prazo? Contratos podem melhorar operação e vagas, mas criam custo e disputa com carreiras públicas.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quem administra os presídios.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_gestao_dos_presidios",
     "unidade": "nivel_escopo",
@@ -28,16 +18,18 @@
         "custoTexto": "Sem variação de custo frente à referência",
         "apoiam": ["Sindicatos de servidores"],
         "rejeitam": ["Empresários de serviços prisionais"],
-        "efeitos": "Preserva comando e empregos públicos; capacidade depende da verba separada para vagas e equipes."
+        "efeitos": "Preserva comando e empregos públicos; capacidade depende da verba separada para vagas e equipes.",
+        "propoe": "Servidores públicos."
       },
       {
         "id": "cogestao-o-estado-dirige-a-empresa-presta-servicos",
         "rotulo": "Estado comanda; empresa presta alimentação e manutenção sob metas",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "Hipótese: economia de 0,02% do PIB ao ano frente à gestão direta",
         "apoiam": ["Empresários"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Serviços mais previsíveis reduzem rebeliões; economiza, mas desloca empregos públicos."
+        "efeitos": "Serviços mais previsíveis reduzem rebeliões; economiza, mas desloca empregos públicos.",
+        "propoe": "O Estado dirige; uma empresa cuida de comida e manutenção, com metas."
       },
       {
         "id": "parceria-privada-a-empresa-constroi-e-opera-por-25-anos-e-re",
@@ -46,17 +38,110 @@
         "custoTexto": "Hipótese: acréscimo de 0,03% do PIB ao ano em contratos",
         "apoiam": ["Empresários", "Mercado financeiro"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Novas unidades aliviam um pouco a lotação e reduzem rebeliões após quatro turnos; contrato longo custa mais e pode reduzir confiança."
+        "efeitos": "Novas unidades aliviam um pouco a lotação e reduzem rebeliões após quatro turnos; contrato longo custa mais e pode reduzir confiança.",
+        "propoe": "Uma empresa constrói e opera o presídio, paga por metas."
       }
     ]
   },
-  "consequencias": [
-    "gestao-dos-presidios--lotacao-prisional",
-    "gestao-dos-presidios--rebeliao-presidios",
-    "gestao-dos-presidios--gasto-publico",
-    "gestao-dos-presidios--confianca-instituicoes",
-    "gestao-dos-presidios--grupo-servidores",
-    "gestao-dos-presidios--grupo-empresarios"
-  ],
-  "ministerio": "Ministério da Justiça e Segurança Pública"
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "gestao-dos-presidios--lotacao-prisional",
+      "alvo": "lotacao_prisional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gestao-dos-presidios--rebeliao-presidios",
+      "alvo": "rebeliao_presidios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -1],
+          [100, -2]
+        ]
+      },
+      "atraso": 4,
+      "leitura": "nivel",
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "gestao-dos-presidios--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -0.02],
+          [100, 0.03]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "gestao-dos-presidios--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gestao-dos-presidios--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, -2],
+          [100, -4]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gestao-dos-presidios--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 2],
+          [100, 4]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "indice_0_100"
+    }
+  ]
 }

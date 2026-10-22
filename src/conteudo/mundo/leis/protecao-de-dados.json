@@ -1,22 +1,12 @@
 {
   "id": "protecao-de-dados",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Proteção de dados",
-  "descricao": "Que regras empresas e governo seguem para coletar e usar dados pessoais?",
-  "area": "Instituições, sistema político e informação",
-  "mesa": {
-    "id": "imprensa-internet-e-informacao",
-    "nome": "Imprensa, internet e informação",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define as regras que empresas e governo seguem para coletar e usar dados pessoais.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_protecao_de_dados",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Sem lei",
         "valor": 0,
         "apoiam": ["Plataformas digitais"],
-        "efeitos": "Dano do ataque hacker ↑"
+        "efeitos": "Dano do ataque hacker ↑",
+        "propoe": "Sem lei."
       },
       {
         "id": "regras-por-setor",
@@ -34,14 +25,16 @@
         "valor": 33,
         "custoTexto": "lacuna",
         "apoiam": ["Plataformas digitais", "Mercado financeiro"],
-        "efeitos": "Meio-termo"
+        "efeitos": "Meio-termo",
+        "propoe": "Regras diferentes em cada setor."
       },
       {
         "id": "lei-geral-com-agencia",
         "rotulo": "Lei geral com agência",
         "valor": 67,
         "custoTexto": "lacuna",
-        "efeitos": "Liberdades civis ↑; Dano do ataque hacker ↓"
+        "efeitos": "Liberdades civis ↑; Dano do ataque hacker ↓",
+        "propoe": "Uma lei geral, com uma agência que fiscaliza."
       },
       {
         "id": "protecao-estrita",
@@ -49,22 +42,147 @@
         "valor": 100,
         "custoTexto": "lacuna",
         "rejeitam": ["Plataformas digitais", "Empresários"],
-        "efeitos": "Liberdades civis ↑; Inovação ↓ fraco (aprox.); Dano do ataque hacker ↓"
+        "efeitos": "Liberdades civis ↑; Inovação ↓ fraco (aprox.); Dano do ataque hacker ↓",
+        "propoe": "Proteção estrita."
       }
     ]
   },
-  "consequencias": [
-    "protecao-de-dados--liberdade-civil",
-    "protecao-de-dados--inovacao",
-    "protecao-de-dados--concentracao-mercado",
-    "protecao-de-dados--confianca-empresarial",
-    "protecao-de-dados--corrupcao",
-    "protecao-de-dados--gasto-publico",
-    "protecao-de-dados--grupo-classe-media",
-    "protecao-de-dados--grupo-empresarios",
-    "protecao-de-dados--grupo-pequenos-negocios",
-    "protecao-de-dados--grupo-progressistas",
-    "protecao-de-dados--capacidade-inteligencia"
-  ],
-  "ministerio": "Ministério dos Direitos Humanos"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "imprensa-internet-e-informacao",
+    "nome": "Imprensa, internet e informação",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "protecao-de-dados--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.4375,
+        "limiar": 84,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--concentracao-mercado",
+      "alvo": "concentracao_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--confianca-empresarial",
+      "alvo": "confianca_empresarial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0.005],
+          [67, 0.01],
+          [100, 0.02]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "protecao-de-dados--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-dados--capacidade-inteligencia",
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

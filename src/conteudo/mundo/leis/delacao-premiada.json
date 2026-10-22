@@ -1,19 +1,12 @@
 {
   "id": "delacao-premiada",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Delação premiada",
-  "descricao": "O acusado pode trocar provas sobre corrupção e facções por redução de pena? Acordos esclarecem redes fechadas, mas podem pressionar inocentes e premiar culpados.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
+  "decide": "Define se o acusado pode trocar provas contra outros por pena menor.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "revogavel": false,
   "controle": {
     "variavel": "nivel_delacao_premiada",
@@ -25,7 +18,8 @@
         "valor": 0,
         "apoiam": ["Progressistas críticos a barganhas penais"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Protege contra pressão em acordos; reduz a capacidade de desmontar redes fechadas."
+        "efeitos": "Protege contra pressão em acordos; reduz a capacidade de desmontar redes fechadas.",
+        "propoe": "Proibido."
       },
       {
         "id": "delacao-com-juiz",
@@ -33,7 +27,8 @@
         "valor": 50,
         "apoiam": ["Classe média", "Jornais e portais"],
         "rejeitam": ["Facções criminosas"],
-        "efeitos": "Ajuda a esclarecer corrupção e comando de facções; exige prova independente para limitar abusos."
+        "efeitos": "Ajuda a esclarecer corrupção e comando de facções; exige prova independente para limitar abusos.",
+        "propoe": "Permitido, com provas de fora e aprovação do juiz."
       },
       {
         "id": "acordo-como-regra",
@@ -41,23 +36,120 @@
         "valor": 100,
         "apoiam": ["Associações de policiais", "Classe média"],
         "rejeitam": ["Progressistas", "Defensores públicos"],
-        "efeitos": "Acelera casos e reduz impunidade; aumenta risco de coerção, polarização e perda de liberdade civil."
+        "efeitos": "Acelera casos e reduz impunidade; aumenta risco de coerção, polarização e perda de liberdade civil.",
+        "propoe": "Negociar a pena vira a regra."
       }
     ]
   },
-  "consequencias": [
-    "delacao-premiada--impunidade",
-    "delacao-premiada--corrupcao",
-    "delacao-premiada--crime-organizado",
-    "delacao-premiada--liberdade-civil",
-    "delacao-premiada--polarizacao",
-    "delacao-premiada--grupo-classe-media",
-    "delacao-premiada--grupo-empresarios",
-    "delacao-premiada--grupo-pobres",
-    "delacao-premiada--grupo-servidores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "delacao-premiada--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "delacao-premiada--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.28,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--polarizacao",
+      "alvo": "polarizacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "delacao-premiada--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

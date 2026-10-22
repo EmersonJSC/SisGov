@@ -1,22 +1,12 @@
 {
   "id": "armas-de-fogo",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Armas de fogo",
-  "descricao": "O governo decide quem pode comprar, guardar e transportar armas civis. Mais acesso pode elevar a sensação de autodefesa, mas também a circulação de armas e a violência.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "armas",
-    "nome": "Armas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quem pode comprar, guardar e andar com arma.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_armas_de_fogo",
     "unidade": "nivel_escopo",
@@ -34,7 +24,8 @@
           "Indústria de armas",
           "Atiradores e donos de armas pelo porte"
         ],
-        "efeitos": "Armas em circulação e violência letal caem após quatro turnos; reduz a autodefesa percebida por parte do interior."
+        "efeitos": "Armas em circulação e violência letal caem após quatro turnos; reduz a autodefesa percebida por parte do interior.",
+        "propoe": "Civis não podem ter arma; o governo recompra as que existem."
       },
       {
         "id": "restritas-ate-2-armas-controle-forte",
@@ -43,7 +34,8 @@
         "custoTexto": "Hipótese: 0,005% do PIB ao ano em registro e fiscalização",
         "apoiam": ["Progressistas", "Periferias", "Movimento feminista"],
         "rejeitam": ["Atiradores e donos de armas pelo porte"],
-        "efeitos": "Limita a circulação e mantém posse doméstica; os efeitos sobre violência aparecem com atraso."
+        "efeitos": "Limita a circulação e mantém posse doméstica; os efeitos sobre violência aparecem com atraso.",
+        "propoe": "Até duas armas em casa, com licença e controle forte."
       },
       {
         "id": "posse-rural-com-transporte-restrito",
@@ -52,7 +44,8 @@
         "custoTexto": "Hipótese: 0,003% do PIB ao ano em registro e fiscalização",
         "apoiam": ["Interior", "Entidades do agronegócio", "Conservadores"],
         "rejeitam": ["Progressistas", "Movimento feminista"],
-        "efeitos": "Autodefesa percebida cresce no interior; circulação, desvio e violência tendem a subir em relação à posse restrita."
+        "efeitos": "Autodefesa percebida cresce no interior; circulação, desvio e violência tendem a subir em relação à posse restrita.",
+        "propoe": "Arma em casa e na fazenda, com transporte autorizado."
       },
       {
         "id": "facilitadas-4-armas-5-000-cartuchos-por-ano-atirador-amplo",
@@ -67,25 +60,139 @@
           "Indústria de armas"
         ],
         "rejeitam": ["Progressistas", "Movimento feminista", "Periferias"],
-        "efeitos": "Sensação de autodefesa sobe imediatamente; circulação e violência letal sobem com atraso, e o desvio fortalece o crime organizado."
+        "efeitos": "Sensação de autodefesa sobe imediatamente; circulação e violência letal sobem com atraso, e o desvio fortalece o crime organizado.",
+        "propoe": "Compra fácil, mais armas e porte ampliado."
       }
     ]
   },
-  "consequencias": [
-    "armas-de-fogo--armas-em-circulacao",
-    "armas-de-fogo--violencia-letal",
-    "armas-de-fogo--protecao-efetiva-mulheres",
-    "armas-de-fogo--sensacao-seguranca",
-    "armas-de-fogo--liberdade-civil",
-    "armas-de-fogo--grupo-agro",
-    "armas-de-fogo--grupo-conservadores",
-    "armas-de-fogo--grupo-progressistas",
-    "armas-de-fogo--crime-organizado",
-    "armas-de-fogo--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
   },
-  "ministerio": "Ministério da Justiça"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "armas",
+    "nome": "Armas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "armas-de-fogo--armas-em-circulacao",
+      "alvo": "armas_em_circulacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "armas-de-fogo--violencia-letal",
+      "alvo": "violencia_letal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.042,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "taxa_por_100_mil"
+    },
+    {
+      "id": "armas-de-fogo--protecao-efetiva-mulheres",
+      "alvo": "protecao_efetiva_mulheres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": -3.5
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "armas-de-fogo--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.01],
+          [50, 0.005],
+          [75, 0.003],
+          [100, 0.002]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

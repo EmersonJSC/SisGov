@@ -58,3 +58,12 @@ A Fiscalização ambiental mudou para Meio ambiente e campo.
 ## Meio ambiente e campo (7 no molde)
 
 Nada a tirar. Fica com 7 leis, uma abaixo do mínimo de 8 (só aviso).
+
+## Segurança e defesa (45 no molde)
+
+| Lei | Proposta | Por quê |
+| --- | --- | --- |
+| Integração regional (`integracao-regional`) | sai | Não faz nada no jogo; os Acordos comerciais e o Alinhamento externo cobrem o assunto |
+| A esfera inteira | separar em **Segurança e justiça** (polícia, penas, drogas, armas, presídios: ~27 leis) e **Defesa e exterior** (Forças Armadas, diplomacia, alianças, comércio exterior: ~18) | Com 45 leis, é de longe a esfera mais cheia; o mapa passaria a ter 12 esferas |
+
+Também nesta área: três leis perderam a opção "Ponto da faixa", que era sobra de rascunho (Cooperação internacional, Rede diplomática, Investimento em defesa).

@@ -1,22 +1,12 @@
 {
   "id": "industria-de-defesa",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Indústria de defesa",
-  "descricao": "O país compra armas prontas ou fabrica aqui?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define se o país compra armas prontas ou fabrica aqui.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_industria_de_defesa",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "0 (mais barato por unidade; aprox.)",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Confederação da indústria", "Associações de militares"],
-        "efeitos": "Capacidade de defesa ↑ mais rápido; Inovação sem ganho"
+        "efeitos": "Capacidade de defesa ↑ mais rápido; Inovação sem ganho",
+        "propoe": "Compra pronto lá fora."
       },
       {
         "id": "compra-com-compensacao-e-transferencia-de-tecnologia",
@@ -36,7 +27,8 @@
         "valor": 33.33,
         "custoTexto": "+0,01% do PIB",
         "apoiam": ["Empresários"],
-        "efeitos": "Inovação ↑ pouco com atraso"
+        "efeitos": "Inovação ↑ pouco com atraso",
+        "propoe": "Compra lá fora, em troca de tecnologia."
       },
       {
         "id": "empresa-estrategica-com-preferencia-e-isencao-de-tributos",
@@ -45,7 +37,8 @@
         "custoTexto": "+0,02 a +0,05% do PIB (renúncia mais sobrepreço; aprox.)",
         "apoiam": ["Confederação da indústria", "Trabalhadores", "Servidores"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Inovação ↑ com atraso; Exportações ↑ pouco; Capacidade de defesa ↑ com atraso de 10 anos ou mais; Corrupção ↑ pouco (aprox.)"
+        "efeitos": "Inovação ↑ com atraso; Exportações ↑ pouco; Capacidade de defesa ↑ com atraso de 10 anos ou mais; Corrupção ↑ pouco (aprox.)",
+        "propoe": "Empresas nacionais têm preferência e pagam menos imposto."
       },
       {
         "id": "estatal-de-defesa",
@@ -54,19 +47,68 @@
         "custoTexto": "+0,05 a +0,1% do PIB (aprox.)",
         "apoiam": ["Servidores", "Trabalhadores"],
         "rejeitam": ["Empresários", "Mercado financeiro"],
-        "efeitos": "Inovação ↑ com atraso; Capacidade de defesa ↑ com atraso; custo fiscal ↑"
+        "efeitos": "Inovação ↑ com atraso; Capacidade de defesa ↑ com atraso; custo fiscal ↑",
+        "propoe": "Uma estatal fabrica."
       }
     ]
   },
-  "consequencias": [
-    "industria-de-defesa--capacidade-defesa",
-    "industria-de-defesa--inovacao",
-    "industria-de-defesa--exportacoes",
-    "industria-de-defesa--corrupcao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Papel das Forças Armadas (“sem Forças Armadas” trava esta lei). Empresas estatais e privatização: “estatal de defesa” exige que estatais sejam permitidas.",
     "leis": ["papel-das-forcas-armadas"]
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "industria-de-defesa--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": -1.40007
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "industria-de-defesa--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.075,
+        "termoConstante": -5.00025
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "industria-de-defesa--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.009,
+        "termoConstante": -0.60003
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "industria-de-defesa--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.009,
+        "termoConstante": -0.60003
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

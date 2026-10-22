@@ -1,22 +1,12 @@
 {
   "id": "protecao-social-dos-militares",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Proteção social dos militares",
-  "descricao": "Como se aposentam os militares e quanto recebem as pensões?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define como os militares se aposentam e quanto recebem as pensões.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_protecao_social_dos_militares",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "+0,1 a +0,2% do PIB a mais que hoje (aprox.)",
         "apoiam": ["Servidores", "Conservadores", "Associações de militares"],
         "rejeitam": ["Ricos", "Empresários", "Mercado financeiro"],
-        "efeitos": "Déficit previdenciário ↑; Capacidade de defesa ↓ com atraso (come o investimento)"
+        "efeitos": "Déficit previdenciário ↑; Capacidade de defesa ↓ com atraso (come o investimento)",
+        "propoe": "Salário integral, com os mesmos reajustes da ativa."
       },
       {
         "id": "regime-proprio-ajustado",
@@ -36,7 +27,8 @@
         "valor": 33.33,
         "apoiam": ["Servidores", "Associações de militares"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Déficit previdenciário ↓ contra Integral com paridade; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco (aprox.)"
+        "efeitos": "Déficit previdenciário ↓ contra Integral com paridade; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco (aprox.)",
+        "propoe": "Regime próprio, com ajustes."
       },
       {
         "id": "regras-do-servidor-civil",
@@ -45,7 +37,8 @@
         "custoTexto": "−0,1 a −0,2% do PIB em 20 anos (aprox.)",
         "apoiam": ["Empresários", "Ricos"],
         "rejeitam": ["Servidores", "Conservadores", "Associações de militares"],
-        "efeitos": "Déficit previdenciário ↓; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco no curto prazo (aprox.)"
+        "efeitos": "Déficit previdenciário ↓; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco no curto prazo (aprox.)",
+        "propoe": "As mesmas regras do servidor civil."
       },
       {
         "id": "regime-geral-com-fundo-complementar",
@@ -54,14 +47,35 @@
         "custoTexto": "−0,3% do PIB em 30 anos (aprox.)",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Servidores", "Associações de militares"],
-        "efeitos": "Déficit previdenciário ↓; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco no curto prazo (aprox.)"
+        "efeitos": "Déficit previdenciário ↓; Capacidade de defesa ↑ com atraso; Risco de golpe ↑ pouco no curto prazo (aprox.)",
+        "propoe": "As regras de todo trabalhador, com fundo complementar."
       }
     ]
   },
-  "consequencias": ["protecao-social-dos-militares--capacidade-defesa"],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Sistema previdenciário (Fiscal e Social). Se for capitalização, só ficam “regras do servidor civil” e “regime geral com fundo”.",
     "leis": []
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "protecao-social-dos-militares--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.12599,
+        "termoConstante": -4.199247
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    }
+  ]
 }

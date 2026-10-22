@@ -1,22 +1,12 @@
 {
   "id": "tribunais-e-tratados-internacionais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Tribunais e tratados internacionais",
-  "descricao": "Quanto as cortes e os tratados de fora valem dentro do país?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "politica-externa",
-    "nome": "Política externa",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quanto valem no país as cortes e os tratados internacionais.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_tribunais_e_tratados_internacionais",
     "unidade": "nivel_escopo",
@@ -27,13 +17,15 @@
         "valor": 0,
         "apoiam": ["Conservadores"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Reputação internacional ↓; facilita a pena de morte (aprox.)"
+        "efeitos": "Reputação internacional ↓; facilita a pena de morte (aprox.)",
+        "propoe": "Nada de fora vale aqui."
       },
       {
         "id": "adesao-seletiva",
         "rotulo": "Adesão seletiva",
         "valor": 33.33,
-        "efeitos": "Efeito pequeno"
+        "efeitos": "Efeito pequeno",
+        "propoe": "Só alguns tratados e cortes."
       },
       {
         "id": "adesao-plena",
@@ -41,7 +33,8 @@
         "valor": 66.67,
         "apoiam": ["Progressistas", "Católicos"],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Reputação internacional ↑; Liberdades civis ↑ (aprox.); Letalidade policial ↓ pouco por condenações externas (aprox.)"
+        "efeitos": "Reputação internacional ↑; Liberdades civis ↑ (aprox.); Letalidade policial ↓ pouco por condenações externas (aprox.)",
+        "propoe": "O país segue as cortes e os tratados que assinou."
       },
       {
         "id": "tratados-acima-da-lei",
@@ -49,14 +42,53 @@
         "valor": 100,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Conservadores", "Evangélicos"],
-        "efeitos": "Reputação ↑; Liberdades civis ↑ (aprox.); trava pena de morte"
+        "efeitos": "Reputação ↑; Liberdades civis ↑ (aprox.); trava pena de morte",
+        "propoe": "Tratados valem mais que as leis do país."
       }
     ]
   },
-  "consequencias": [
-    "tribunais-e-tratados-internacionais--reputacao-internacional",
-    "tribunais-e-tratados-internacionais--liberdade-civil",
-    "tribunais-e-tratados-internacionais--letalidade-policial"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "tribunais-e-tratados-internacionais--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.084,
+        "termoConstante": -5.60028
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-e-tratados-internacionais--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.084,
+        "termoConstante": -5.60028
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "tribunais-e-tratados-internacionais--letalidade-policial",
+      "alvo": "letalidade_policial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.009,
+        "termoConstante": 0.60003
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

@@ -1,57 +1,41 @@
 {
   "id": "investimento-em-defesa",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Investimento em defesa",
-  "descricao": "Que fatia do gasto com defesa vai para equipamento e custeio, e não para pessoal?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "alavanca"
-  },
-  "processoAutorizacao": "decreto",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define que parte do gasto com defesa vai para equipamento, e não para salários.",
+  "area": "seguranca-e-defesa",
+  "nivel": "decreto",
   "controle": {
     "variavel": "nivel_investimento_em_defesa",
     "unidade": "nivel_escopo",
     "opcoes": [
       {
-        "id": "ponto-da-faixa",
-        "rotulo": "Ponto da faixa",
-        "valor": 0,
-        "custoTexto": "Custo",
-        "apoiam": ["Quem apoia"],
-        "rejeitam": ["Quem rejeita"],
-        "efeitos": "Efeitos principais"
-      },
-      {
         "id": "5",
         "rotulo": "5%",
-        "valor": 25.0,
+        "valor": 25,
         "custoTexto": "sobra para pessoal",
         "apoiam": ["Servidores"],
-        "efeitos": "Capacidade de defesa ↓ com atraso"
+        "efeitos": "Capacidade de defesa ↓ com atraso",
+        "propoe": "5% vai para equipamento."
       },
       {
         "id": "15",
         "rotulo": "15%",
-        "valor": 50.0,
-        "efeitos": "Capacidade de defesa ↑ com atraso contra 5%; Inovação ↑ pouco; abaixo da faixa da OTAN (estimado)"
+        "valor": 50,
+        "efeitos": "Capacidade de defesa ↑ com atraso contra 5%; Inovação ↑ pouco; abaixo da faixa da OTAN (estimado)",
+        "propoe": "15% vai para equipamento."
       },
       {
         "id": "20-a-30",
         "rotulo": "20% a 30% (faixa usual da OTAN, Organização do Tratado do Atlântico Norte)",
-        "valor": 75.0,
+        "valor": 75,
         "custoTexto": "aperta pessoal ou exige subir o gasto",
         "apoiam": ["Confederação da indústria", "Associações de militares"],
         "rejeitam": ["Servidores"],
-        "efeitos": "Capacidade de defesa ↑ com atraso; Inovação ↑ pouco"
+        "efeitos": "Capacidade de defesa ↑ com atraso; Inovação ↑ pouco",
+        "propoe": "De 20% a 30%, como nos países da aliança atlântica."
       },
       {
         "id": "50",
@@ -60,17 +44,46 @@
         "custoTexto": "exige corte em pessoal",
         "apoiam": ["Confederação da indústria"],
         "rejeitam": ["Servidores", "Associações de militares"],
-        "efeitos": "Capacidade de defesa ↑ com atraso; Associações de militares insatisfeitas"
+        "efeitos": "Capacidade de defesa ↑ com atraso; Associações de militares insatisfeitas",
+        "propoe": "Metade vai para equipamento."
       }
     ]
   },
-  "consequencias": [
-    "investimento-em-defesa--capacidade-defesa",
-    "investimento-em-defesa--inovacao"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
   "mae": {
     "texto": "Gasto com defesa (é uma fatia dele).",
     "leis": ["gasto-com-defesa"]
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "investimento-em-defesa--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.112,
+        "termoConstante": -5.6
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "investimento-em-defesa--inovacao",
+      "alvo": "inovacao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.012,
+        "termoConstante": -0.6
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

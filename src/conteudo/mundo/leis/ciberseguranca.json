@@ -1,22 +1,12 @@
 {
   "id": "ciberseguranca",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Cibersegurança",
-  "descricao": "Quem protege o país na internet, e com que poder?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "soberania-nuclear-digital-e-de-fronteira",
-    "nome": "Soberania nuclear, digital e de fronteira",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quem protege o país na internet e com que poder.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_ciberseguranca",
     "unidade": "nivel_escopo",
@@ -26,14 +16,16 @@
         "rotulo": "Sem política",
         "valor": 0,
         "rejeitam": ["Empresários", "Servidores"],
-        "efeitos": "Ameaça cibernética ↑"
+        "efeitos": "Ameaça cibernética ↑",
+        "propoe": "Ninguém em especial."
       },
       {
         "id": "comite-coordenador-consultivo",
         "rotulo": "Comitê coordenador consultivo",
         "valor": 33.33,
         "custoTexto": "quase zero",
-        "efeitos": "Ameaça cibernética ↓ pouco contra Sem política e ↑ contra Agência civil (estimado)"
+        "efeitos": "Ameaça cibernética ↓ pouco contra Sem política e ↑ contra Agência civil (estimado)",
+        "propoe": "Um comitê que só coordena."
       },
       {
         "id": "agencia-civil-com-regras-e-supervisao",
@@ -42,7 +34,8 @@
         "custoTexto": "+0,01 a +0,02% do PIB (aprox.)",
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Plataformas digitais"],
-        "efeitos": "Ameaça cibernética ↓; bônus com proteção de dados forte"
+        "efeitos": "Ameaça cibernética ↓; bônus com proteção de dados forte",
+        "propoe": "Uma agência civil, com regras e supervisão."
       },
       {
         "id": "comando-militar-ofensivo",
@@ -51,17 +44,46 @@
         "custoTexto": "+0,02 a +0,05% do PIB (aprox.)",
         "apoiam": ["Associações de militares", "Conservadores"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Ameaça cibernética ↓; Tensão internacional ↑; Liberdades civis ↓ se somado a interceptação sem ordem judicial"
+        "efeitos": "Ameaça cibernética ↓; Tensão internacional ↑; Liberdades civis ↓ se somado a interceptação sem ordem judicial",
+        "propoe": "Um comando militar que também ataca."
       }
     ]
   },
-  "consequencias": [
-    "ciberseguranca--tensao-internacional",
-    "ciberseguranca--liberdade-civil"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Papel das Forças Armadas (“comando militar ofensivo” exige que haja Forças Armadas). Proteção de dados (Direitos): a agência ganha bônus de efeito com lei geral de dados ou mais.",
     "leis": ["protecao-de-dados", "papel-das-forcas-armadas"]
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "soberania-nuclear-digital-e-de-fronteira",
+    "nome": "Soberania nuclear, digital e de fronteira",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "ciberseguranca--tensao-internacional",
+      "alvo": "tensao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -2.09979
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ciberseguranca--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.063,
+        "termoConstante": 2.09979
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

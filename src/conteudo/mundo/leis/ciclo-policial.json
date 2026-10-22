@@ -1,19 +1,12 @@
 {
   "id": "ciclo-policial",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "institucional",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Ciclo policial",
-  "descricao": "Quem investiga depois do patrulhamento: uma segunda polícia ou a mesma equipe em ciclo completo? Unificar o ciclo pode acelerar casos, mas exige reorganização e contraria carreiras existentes.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
+  "decide": "Define se a mesma polícia que patrulha também investiga.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_ciclo_policial",
     "unidade": "nivel_escopo",
@@ -25,7 +18,8 @@
         "custoTexto": "Hipótese: 1,2% do PIB ao ano em estrutura policial",
         "apoiam": ["Carreiras policiais atuais", "Servidores estaduais"],
         "rejeitam": ["Vítimas que enfrentam perda de informação entre equipes"],
-        "efeitos": "Preserva funções especializadas, mas a transferência do caso pode atrasar a investigação."
+        "efeitos": "Preserva funções especializadas, mas a transferência do caso pode atrasar a investigação.",
+        "propoe": "Uma polícia patrulha e outra investiga."
       },
       {
         "id": "completo",
@@ -34,21 +28,100 @@
         "custoTexto": "Hipótese: 1,15% do PIB ao ano após reorganização",
         "apoiam": ["Classe média", "Pequenos negócios"],
         "rejeitam": ["Carreiras policiais que perdem funções exclusivas"],
-        "efeitos": "Reduz impunidade com atraso; requer treinamento e pode reduzir segurança percebida durante a transição."
+        "efeitos": "Reduz impunidade com atraso; requer treinamento e pode reduzir segurança percebida durante a transição.",
+        "propoe": "A mesma polícia patrulha, registra e investiga."
       }
     ]
   },
-  "consequencias": [
-    "ciclo-policial--impunidade",
-    "ciclo-policial--sensacao-seguranca",
-    "ciclo-policial--confianca-instituicoes",
-    "ciclo-policial--gasto-publico",
-    "ciclo-policial--grupo-classe-media",
-    "ciclo-policial--grupo-pequenos-negocios",
-    "ciclo-policial--grupo-servidores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "ciclo-policial--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "ciclo-policial--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ciclo-policial--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ciclo-policial--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1.2],
+          [100, 1.15]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "ciclo-policial--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ciclo-policial--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "ciclo-policial--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

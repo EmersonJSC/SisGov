@@ -1,22 +1,12 @@
 {
   "id": "alianca-militar",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Aliança militar",
-  "descricao": "Com quem o país se compromete a lutar?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "politica-externa",
-    "nome": "Política externa",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define com quem o país se compromete a lutar.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_alianca_militar",
     "unidade": "nivel_escopo",
@@ -27,29 +17,33 @@
         "valor": 0,
         "custoTexto": "+0,2% do PIB (defende-se sozinho; aprox.)",
         "apoiam": ["Católicos", "Progressistas"],
-        "efeitos": "Tensão internacional ↓ pouco (estimado)"
+        "efeitos": "Tensão internacional ↓ pouco (estimado)",
+        "propoe": "O país é neutro para sempre."
       },
       {
         "id": "sem-alianca",
         "rotulo": "Sem aliança (hoje na referência, tratado regional inativo, aprox.)",
-        "valor": 25.0,
-        "efeitos": "Tensão internacional ↑ pouco contra Neutralidade permanente; Capacidade de defesa ↓ pouco contra Cooperação regional (estimado)"
+        "valor": 25,
+        "efeitos": "Tensão internacional ↑ pouco contra Neutralidade permanente; Capacidade de defesa ↓ pouco contra Cooperação regional (estimado)",
+        "propoe": "Sem aliança militar."
       },
       {
         "id": "cooperacao-regional-de-defesa",
         "rotulo": "Cooperação regional de defesa",
-        "valor": 50.0,
+        "valor": 50,
         "apoiam": ["Progressistas"],
-        "efeitos": "Tensão regional ↓; Capacidade de defesa ↑ pouco"
+        "efeitos": "Tensão regional ↓; Capacidade de defesa ↑ pouco",
+        "propoe": "Cooperação de defesa com os vizinhos."
       },
       {
         "id": "defesa-mutua",
         "rotulo": "Defesa mútua",
-        "valor": 75.0,
+        "valor": 75,
         "custoTexto": "piso de 2% do PIB no Gasto com defesa",
         "apoiam": ["Conservadores", "Associações de militares"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Chance de ser atacado ↓; Capacidade de defesa ↑; chance de ser arrastado para guerra entre potências ↑"
+        "efeitos": "Chance de ser atacado ↓; Capacidade de defesa ↑; chance de ser arrastado para guerra entre potências ↑",
+        "propoe": "Um ataque a um aliado é um ataque ao país."
       },
       {
         "id": "bases-estrangeiras",
@@ -58,13 +52,42 @@
         "custoTexto": "0 (o anfitrião ganha renda)",
         "apoiam": ["Conservadores"],
         "rejeitam": ["Progressistas", "Conservadores"],
-        "efeitos": "Capacidade de defesa ↑; trava Alinhamento externo no polo ocidental; dispara o evento base militar estrangeira"
+        "efeitos": "Capacidade de defesa ↑; trava Alinhamento externo no polo ocidental; dispara o evento base militar estrangeira",
+        "propoe": "Aliados podem ter bases militares no país."
       }
     ]
   },
-  "consequencias": [
-    "alianca-militar--tensao-internacional",
-    "alianca-militar--capacidade-defesa"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "alianca-militar--tensao-internacional",
+      "alvo": "tensao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.012,
+        "termoConstante": -0.3
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "alianca-militar--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.096,
+        "termoConstante": -2.4
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100_por_passo"
+    }
+  ]
 }

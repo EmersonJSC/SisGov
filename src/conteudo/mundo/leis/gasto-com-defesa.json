@@ -1,42 +1,153 @@
 {
   "id": "gasto-com-defesa",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Gasto com defesa",
-  "descricao": "Define quanto do PIB vai para Forças Armadas, equipamentos e indústria de defesa.",
-  "area": "Direitos civis, costumes, imigração, mídia e defesa",
-  "mesa": {
-    "id": "defesa",
-    "nome": "Defesa",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Defesa e Relações Exteriores",
-  "processoAutorizacao": "execucao-programa-autorizado",
+  "decide": "Define quanto o governo gasta por ano com as Forças Armadas.",
+  "area": "seguranca-e-defesa",
+  "nivel": "decreto",
   "controle": {
     "variavel": "recursos_gasto_com_defesa",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 10
     }
   },
-  "consequencias": [
-    "gasto-com-defesa--capacidade-defesa",
-    "gasto-com-defesa--desenvolvimento",
-    "gasto-com-defesa--reputacao-internacional",
-    "gasto-com-defesa--golpe-risco",
-    "gasto-com-defesa--grupo-conservadores",
-    "gasto-com-defesa--grupo-empresarios",
-    "gasto-com-defesa--grupo-pobres",
-    "gasto-com-defesa--grupo-progressistas",
-    "gasto-com-defesa--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "defesa",
+    "nome": "Defesa",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "gasto-com-defesa--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.083e-7,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "gasto-com-defesa--desenvolvimento",
+      "alvo": "desenvolvimento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 4.17e-8,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "gasto-com-defesa--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000025,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--golpe-risco",
+      "alvo": "golpe_risco",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0000025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--grupo-pobres",
+      "alvo": "grupo_pobres",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "gasto-com-defesa--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

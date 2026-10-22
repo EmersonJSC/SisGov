@@ -1,22 +1,12 @@
 {
   "id": "servico-militar",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Serviço militar",
-  "descricao": "Quem serve nas Forças Armadas, e é obrigado?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quem serve nas Forças Armadas e se é obrigado.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_servico_militar",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "lacuna",
         "apoiam": ["Progressistas"],
         "rejeitam": ["Conservadores", "Associações de militares"],
-        "efeitos": "Capacidade de defesa ↓ muito"
+        "efeitos": "Capacidade de defesa ↓ muito",
+        "propoe": "Não há serviço militar."
       },
       {
         "id": "voluntario",
@@ -37,7 +28,8 @@
         "custoTexto": "lacuna",
         "apoiam": ["Jovens", "Progressistas"],
         "rejeitam": ["Associações de militares"],
-        "efeitos": "Produtividade sem perda; Oportunidades para jovens sem ganho"
+        "efeitos": "Produtividade sem perda; Oportunidades para jovens sem ganho",
+        "propoe": "Só quem quer."
       },
       {
         "id": "seletivo",
@@ -45,7 +37,8 @@
         "valor": 50,
         "custoTexto": "lacuna",
         "apoiam": ["Associações de militares"],
-        "efeitos": "Oportunidades para jovens ↑ pouco para os menos escolarizados"
+        "efeitos": "Oportunidades para jovens ↑ pouco para os menos escolarizados",
+        "propoe": "Obrigatório no papel, mas só uma parte é chamada."
       },
       {
         "id": "obrigatorio-masculino",
@@ -54,7 +47,8 @@
         "custoTexto": "lacuna",
         "apoiam": ["Conservadores", "Associações de militares"],
         "rejeitam": ["Jovens", "Progressistas"],
-        "efeitos": "Produtividade ↓ pouco (custo alto quando a escolaridade é alta); Oportunidades para jovens ↑ para os menos escolarizados"
+        "efeitos": "Produtividade ↓ pouco (custo alto quando a escolaridade é alta); Oportunidades para jovens ↑ para os menos escolarizados",
+        "propoe": "Obrigatório para os homens."
       },
       {
         "id": "universal",
@@ -63,26 +57,154 @@
         "custoTexto": "lacuna",
         "apoiam": ["Associações de militares"],
         "rejeitam": ["Jovens", "Progressistas"],
-        "efeitos": "Produtividade ↓ pouco; Oportunidades para jovens ↑ para os menos escolarizados"
+        "efeitos": "Produtividade ↓ pouco; Oportunidades para jovens ↑ para os menos escolarizados",
+        "propoe": "Obrigatório para homens e mulheres."
       }
     ]
   },
-  "consequencias": [
-    "servico-militar--capacidade-defesa",
-    "servico-militar--oportunidades-juvenis",
-    "servico-militar--liberdade-civil",
-    "servico-militar--desemprego",
-    "servico-militar--capacidade-defesa-4",
-    "servico-militar--gasto-publico",
-    "servico-militar--grupo-classe-media",
-    "servico-militar--grupo-conservadores",
-    "servico-militar--grupo-jovens",
-    "servico-militar--grupo-servidores",
-    "servico-militar--produtividade"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
   "mae": {
     "texto": "Papel das Forças Armadas. “Sem Forças Armadas” lá trava esta lei em “sem Forças Armadas”.",
     "leis": ["papel-das-forcas-armadas"]
   },
-  "ministerio": "Ministério da Defesa e Relações Exteriores"
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "servico-militar--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0012,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "servico-militar--oportunidades-juvenis",
+      "alvo": "oportunidades_juvenis",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.12,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.06,
+        "limiar": 50,
+        "direcao": "acima"
+      },
+      "atraso": 0,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "servico-militar--capacidade-defesa-4",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": -0.0025,
+        "limiar": 0,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "servico-militar--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0.1],
+          [50, 0.15],
+          [75, 0.4],
+          [100, 0.7]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "servico-militar--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "servico-militar--produtividade",
+      "alvo": "produtividade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.036,
+        "termoConstante": 1.8
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

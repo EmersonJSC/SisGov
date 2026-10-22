@@ -1,40 +1,98 @@
 {
   "id": "vagas-em-presidios",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Vagas em presídios",
-  "descricao": "O governo escolhe de zero a 0,1% do PIB por ano para abrir vagas prisionais e reformar unidades. Mais capacidade reduz lotação, rebeliões e força das facções, mas pesa no orçamento; a forma de administrar continua outra lei.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "execucao-programa-autorizado",
-  "nivelLegal": "derivada",
+  "decide": "Define quanto o governo gasta por ano para abrir vagas e reformar presídios.",
+  "area": "seguranca-e-defesa",
+  "nivel": "decreto",
   "revogavel": false,
   "controle": {
     "variavel": "recursos_vagas_em_presidios",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 0.1
     }
   },
-  "consequencias": [
-    "vagas-em-presidios--lotacao-prisional",
-    "vagas-em-presidios--rebeliao-presidios",
-    "vagas-em-presidios--crime-organizado",
-    "vagas-em-presidios--grupo-conservadores",
-    "vagas-em-presidios--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "vagas-em-presidios--lotacao-prisional",
+      "alvo": "lotacao_prisional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0005833333,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vagas-em-presidios--rebeliao-presidios",
+      "alvo": "rebeliao_presidios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0005833333,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "vagas-em-presidios--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.00025,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vagas-em-presidios--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 100,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "vagas-em-presidios--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

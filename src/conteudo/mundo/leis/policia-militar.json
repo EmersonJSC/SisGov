@@ -1,16 +1,11 @@
 {
   "id": "policia-militar",
   "tipo": "lei",
-  "versaoEsquema": 3,
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Polícia de rua militar ou civil",
-  "descricao": "O governo escolhe se a força que patrulha a rua segue organização e justiça militares ou uma carreira civil. A mudança altera letalidade, confiança e reação dos grupos ao longo dos turnos.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Justiça",
+  "decide": "Define se a polícia que patrulha a rua é militar ou civil.",
+  "area": "seguranca-e-defesa",
   "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_policia_militar",
@@ -19,12 +14,14 @@
       {
         "id": "militar",
         "rotulo": "Manter patrulha militar com justiça militar",
-        "valor": 0
+        "valor": 0,
+        "propoe": "Polícia militar, com justiça militar."
       },
       {
         "id": "civil",
         "rotulo": "Converter patrulha em carreira civil com justiça comum",
-        "valor": 100
+        "valor": 100,
+        "propoe": "Polícia civil, com justiça comum."
       }
     ]
   },
@@ -32,13 +29,32 @@
     "entrada": 0.3,
     "saida": 0.2
   },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
+  "historia": {
+    "opcoes": {
+      "militar": ["Brasil", "França (Gendarmerie)", "Itália (Carabinieri)"],
+      "civil": ["Reino Unido", "Alemanha", "Japão"]
+    },
+    "brasil": "A polícia de rua dos estados é militar desde a Constituição de 1988 (art. 144), força auxiliar do Exército."
+  },
+  "fontes": [
+    {
+      "titulo": "Constituição Federal, art. 144 (segurança pública)",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "usadoPara": "opção vigente no Brasil"
+    }
+  ],
   "efeitos": [
     {
       "alvo": "letalidade_policial",
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -0.07,
-        "termoConstante": 0.0
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -47,7 +63,7 @@
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": 0.03,
-        "termoConstante": -0.0
+        "termoConstante": 0
       },
       "atraso": 4
     },
@@ -65,7 +81,7 @@
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -0.03,
-        "termoConstante": 0.0
+        "termoConstante": 0
       },
       "atraso": 0
     },
@@ -104,20 +120,6 @@
         "termoConstante": 0
       },
       "atraso": 0
-    }
-  ],
-  "historia": {
-    "opcoes": {
-      "militar": ["Brasil", "França (Gendarmerie)", "Itália (Carabinieri)"],
-      "civil": ["Reino Unido", "Alemanha", "Japão"]
-    },
-    "brasil": "A polícia de rua dos estados é militar desde a Constituição de 1988 (art. 144), força auxiliar do Exército."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal, art. 144 (segurança pública)",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "opção vigente no Brasil"
     }
   ]
 }

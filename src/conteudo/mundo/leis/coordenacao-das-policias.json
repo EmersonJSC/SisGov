@@ -1,22 +1,12 @@
 {
   "id": "coordenacao-das-policias",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Coordenação das polícias",
-  "descricao": "Como os estados compartilham dados, protocolos e operações policiais sem mudar quem comanda suas forças? Uma coordenação nacional melhora a investigação, mas custa dinheiro e pode concentrar poder operacional.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define como as polícias dos estados dividem dados e fazem operações juntas.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_coordenacao_das_policias",
     "unidade": "nivel_escopo",
@@ -31,16 +21,18 @@
           "Progressistas",
           "Equipes de investigação de crimes interestaduais"
         ],
-        "efeitos": "Preserva autonomia operacional, mas dificulta rastrear facções entre estados."
+        "efeitos": "Preserva autonomia operacional, mas dificulta rastrear facções entre estados.",
+        "propoe": "Cada estado trabalha sozinho."
       },
       {
         "id": "sistema-unico-coordenado",
         "rotulo": "Base nacional de crimes e protocolos conjuntos",
-        "valor": 50.0,
+        "valor": 50,
         "custoTexto": "Hipótese: 0,05% do PIB ao ano em dados e treinamento",
         "apoiam": ["Progressistas", "Servidores"],
         "rejeitam": ["Governadores contrários ao compartilhamento de dados"],
-        "efeitos": "Inteligência cresce e facções interestaduais perdem espaço após implantação; exige gasto e acordo entre estados."
+        "efeitos": "Inteligência cresce e facções interestaduais perdem espaço após implantação; exige gasto e acordo entre estados.",
+        "propoe": "Uma base nacional de crimes e protocolos comuns."
       },
       {
         "id": "forcas-tarefa-nacionais-permanentes",
@@ -55,18 +47,101 @@
           "Governadores que preferem autonomia",
           "Associações de policiais"
         ],
-        "efeitos": "Investigação e resposta a facções avançam mais; gasto e disputa por comando aumentam. Os estados continuam donos de suas polícias."
+        "efeitos": "Investigação e resposta a facções avançam mais; gasto e disputa por comando aumentam. Os estados continuam donos de suas polícias.",
+        "propoe": "Forças-tarefa nacionais permanentes, com comando conjunto."
       }
     ]
   },
-  "consequencias": [
-    "coordenacao-das-policias--capacidade-inteligencia",
-    "coordenacao-das-policias--crime-organizado",
-    "coordenacao-das-policias--gasto-publico",
-    "grupos--coordenacao-das-policias--grupo-conservadores",
-    "grupos--coordenacao-das-policias--grupo-interior",
-    "grupos--coordenacao-das-policias--grupo-progressistas",
-    "grupos--coordenacao-das-policias--grupo-servidores"
-  ],
-  "ministerio": "Ministério da Justiça e Segurança Pública"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "coordenacao-das-policias--capacidade-inteligencia",
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "coordenacao-das-policias--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.02,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "coordenacao-das-policias--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.05],
+          [100, 0.1]
+        ]
+      },
+      "atraso": 1,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "grupos--coordenacao-das-policias--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--coordenacao-das-policias--grupo-interior",
+      "alvo": "grupo_interior",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--coordenacao-das-policias--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "grupos--coordenacao-das-policias--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

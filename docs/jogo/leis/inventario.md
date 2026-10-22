@@ -197,50 +197,50 @@ Total: 239 leis.
 
 | Lei | id | Família | O que falta | Parecida com | Destino |
 | --- | --- | --- | --- | --- | --- |
-| Aliança militar | `alianca-militar` | constitucional | decide é pergunta |  | |
+| Aliança militar | `alianca-militar` | constitucional | — |  | |
 | Ciclo policial | `ciclo-policial` | constitucional | — |  | |
-| Controle civil das Forças Armadas | `controle-civil-das-forcas-armadas` | constitucional | decide é pergunta |  | |
+| Controle civil das Forças Armadas | `controle-civil-das-forcas-armadas` | constitucional | — |  | |
 | Coordenação das polícias | `coordenacao-das-policias` | constitucional | — |  | |
 | Maioridade penal | `maioridade-penal` | constitucional | — |  | |
-| Papel das Forças Armadas | `papel-das-forcas-armadas` | constitucional | decide é pergunta |  | |
+| Papel das Forças Armadas | `papel-das-forcas-armadas` | constitucional | — |  | |
 | Polícia de rua militar ou civil | `policia-militar` | constitucional | — |  | |
-| Programa nuclear | `programa-nuclear-lei` | constitucional | decide é pergunta |  | |
-| Saída do país | `saida-do-pais` | constitucional | decide é pergunta |  | |
-| Serviço militar | `servico-militar` | constitucional | decide é pergunta |  | |
-| Tribunais e tratados internacionais | `tribunais-e-tratados-internacionais` | constitucional | decide é pergunta |  | |
-| Acordos comerciais | `acordos-comerciais` | regra | decide é pergunta |  | |
-| Alinhamento externo | `alinhamento-externo` | regra | decide é pergunta |  | |
+| Programa nuclear | `programa-nuclear-lei` | constitucional | — |  | |
+| Saída do país | `saida-do-pais` | constitucional | — |  | |
+| Serviço militar | `servico-militar` | constitucional | — |  | |
+| Tribunais e tratados internacionais | `tribunais-e-tratados-internacionais` | constitucional | — |  | |
+| Acordos comerciais | `acordos-comerciais` | regra | — |  | |
+| Alinhamento externo | `alinhamento-externo` | regra | — |  | |
 | Alternativas penais e audiência de custódia | `alternativas-penais-e-audiencia-de-custodia` | regra | — |  | |
 | Armas de fogo | `armas-de-fogo` | regra | — |  | |
 | Câmeras e reconhecimento facial | `cameras-e-reconhecimento-facial` | regra | — |  | |
 | Maconha legal e regulada | `cannabis-legal` | regra | — |  | |
-| Cibersegurança | `ciberseguranca` | regra | decide é pergunta |  | |
-| Cooperação internacional | `cooperacao-internacional` | regra | decide é pergunta |  | |
+| Cibersegurança | `ciberseguranca` | regra | — |  | |
+| Cooperação internacional | `cooperacao-internacional` | regra | — |  | |
 | Delação premiada | `delacao-premiada` | regra | — |  | |
 | Excludente de ilicitude | `excludente-de-ilicitude` | regra | — |  | |
-| Exportação de armas | `exportacao-de-armas` | regra | decide é pergunta |  | |
+| Exportação de armas | `exportacao-de-armas` | regra | — |  | |
 | Gestão dos presídios | `gestao-dos-presidios` | regra | — |  | |
-| Indústria de defesa | `industria-de-defesa` | regra | decide é pergunta |  | |
+| Indústria de defesa | `industria-de-defesa` | regra | — |  | |
 | Integração regional | `integracao-regional` | regra | sem efeito na rede; decide é pergunta |  | |
 | Interceptação de comunicações | `interceptacao-de-comunicacoes` | regra | — |  | |
+| Investimento em defesa | `investimento-em-defesa` | regra | — |  | |
 | Lei de drogas | `lei-de-drogas` | regra | — |  | |
-| Missões de paz | `missoes-de-paz` | regra | decide é pergunta |  | |
+| Missões de paz | `missoes-de-paz` | regra | — |  | |
 | Pena de morte | `pena-de-morte` | regra | — |  | |
 | Penas e progressão | `penas-e-progressao` | regra | — |  | |
 | Poderes de investigação | `poderes-de-investigacao` | regra | — |  | |
 | Policiamento orientado | `policiamento-orientado` | regra | — |  | |
-| Política de imigração | `politica-de-imigracao` | regra | decide é pergunta |  | |
-| Política de sanções | `politica-de-sancoes` | regra | decide é pergunta |  | |
-| Proteção de dados | `protecao-de-dados` | regra | decide é pergunta |  | |
-| Proteção de fronteiras | `protecao-de-fronteiras` | regra | decide é pergunta |  | |
-| Proteção social dos militares | `protecao-social-dos-militares` | regra | decide é pergunta |  | |
-| Rede diplomática | `rede-diplomatica` | regra | decide é pergunta |  | |
+| Política de imigração | `politica-de-imigracao` | regra | — |  | |
+| Política de sanções | `politica-de-sancoes` | regra | — |  | |
+| Proteção de dados | `protecao-de-dados` | regra | — |  | |
+| Proteção de fronteiras | `protecao-de-fronteiras` | regra | — |  | |
+| Proteção social dos militares | `protecao-social-dos-militares` | regra | — |  | |
+| Rede diplomática | `rede-diplomatica` | regra | — |  | |
 | Regime contra facções | `regime-contra-faccoes` | regra | — |  | |
 | Vigilância de bairro | `vigilancia-de-bairro` | regra | — |  | |
 | Câmeras corporais | `cameras-corporais` | verba | — |  | |
 | Dinheiro para as polícias dos estados | `fundo-seguranca-publica` | verba | — |  | |
-| Gasto com defesa | `gasto-com-defesa` | verba | sem nível |  | |
-| Investimento em defesa | `investimento-em-defesa` | verba | decide é pergunta |  | |
+| Gasto com defesa | `gasto-com-defesa` | verba | — |  | |
 | Vagas em presídios | `vagas-em-presidios` | verba | — |  | |
 | Verba da Polícia Federal | `verba-policia-federal` | verba | — |  | |
 

@@ -1,22 +1,12 @@
 {
   "id": "saida-do-pais",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Saída do país",
-  "descricao": "O cidadão precisa de autorização para sair do país?",
-  "area": "Direitos, costumes, religião e imigração",
-  "mesa": {
-    "id": "imigracao-e-saida-do-pais",
-    "nome": "Imigração e saída do país",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define se o cidadão precisa de autorização para sair do país.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_saida_do_pais",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Saída livre",
         "valor": 0,
         "apoiam": ["quase todos"],
-        "efeitos": "Liberdades civis ↑ forte contra visto de saída; Reputação internacional ↑; Fuga de cérebros ↑ e Fuga de capitais ↓ (estimado)"
+        "efeitos": "Liberdades civis ↑ forte contra visto de saída; Reputação internacional ↑; Fuga de cérebros ↑ e Fuga de capitais ↓ (estimado)",
+        "propoe": "Sair é livre."
       },
       {
         "id": "saida-com-autorizacao",
@@ -35,17 +26,96 @@
         "custoTexto": "custo de controle",
         "apoiam": ["nenhum grupo grande"],
         "rejeitam": ["todos"],
-        "efeitos": "Fuga de cérebros ↓; Liberdades civis ↓ forte; Reputação internacional ↓; Fuga de capitais ↑"
+        "efeitos": "Fuga de cérebros ↓; Liberdades civis ↓ forte; Reputação internacional ↓; Fuga de capitais ↑",
+        "propoe": "Sair exige autorização do governo."
       }
     ]
   },
-  "consequencias": [
-    "saida-do-pais--fuga-de-cerebros",
-    "saida-do-pais--liberdade-civil",
-    "saida-do-pais--reputacao-internacional",
-    "saida-do-pais--grupo-jovens",
-    "saida-do-pais--grupo-classe-media",
-    "saida-do-pais--fuga-capitais"
-  ],
-  "ministerio": "Ministério da Justiça"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "imigracao-e-saida-do-pais",
+    "nome": "Imigração e saída do país",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "saida-do-pais--fuga-de-cerebros",
+      "alvo": "fuga_de_cerebros",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -2]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "saida-do-pais--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -12]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saida-do-pais--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -8]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saida-do-pais--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saida-do-pais--grupo-classe-media",
+      "alvo": "grupo_classe_media",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [100, -6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "saida-do-pais--fuga-capitais",
+      "alvo": "fuga_capitais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

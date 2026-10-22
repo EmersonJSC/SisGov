@@ -1,19 +1,12 @@
 {
   "id": "maioridade-penal",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Maioridade penal",
-  "descricao": "A Constituição define se adolescentes de 16 e 17 anos podem ser enviados ao sistema penal comum. Reduzir a idade eleva a punição percebida, mas pressiona prisões e pode aumentar reincidência e recrutamento por facções.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "constituicao"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
+  "decide": "Define a partir de que idade a pessoa vai para a prisão comum.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_maioridade_penal",
     "unidade": "nivel_escopo",
@@ -25,7 +18,8 @@
         "custoTexto": "Hipótese: 0,03% do PIB ao ano no sistema juvenil",
         "apoiam": ["Progressistas", "Jovens"],
         "rejeitam": ["Conservadores favoráveis a punição mais cedo"],
-        "efeitos": "Adolescentes ficam fora da prisão comum; segurança percebida pode ser menor."
+        "efeitos": "Adolescentes ficam fora da prisão comum; segurança percebida pode ser menor.",
+        "propoe": "A partir dos 18 anos."
       },
       {
         "id": "16-anos",
@@ -34,23 +28,122 @@
         "custoTexto": "Hipótese: 0,05% do PIB ao ano com mais vagas e custódia",
         "apoiam": ["Conservadores", "Associações de policiais"],
         "rejeitam": ["Progressistas", "Jovens"],
-        "efeitos": "Sensação de punição cresce logo; lotação, reincidência e influência de facções crescem depois."
+        "efeitos": "Sensação de punição cresce logo; lotação, reincidência e influência de facções crescem depois.",
+        "propoe": "A partir dos 16 anos."
       }
     ]
   },
-  "consequencias": [
-    "maioridade-penal--sensacao-seguranca",
-    "maioridade-penal--lotacao-prisional",
-    "maioridade-penal--reincidencia",
-    "maioridade-penal--crime-organizado",
-    "maioridade-penal--gasto-publico",
-    "maioridade-penal--grupo-conservadores",
-    "maioridade-penal--grupo-jovens",
-    "maioridade-penal--grupo-progressistas",
-    "maioridade-penal--grupo-servidores"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "maioridade-penal--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--lotacao-prisional",
+      "alvo": "lotacao_prisional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--reincidencia",
+      "alvo": "reincidencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "maioridade-penal--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.03],
+          [100, 0.05]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "maioridade-penal--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--grupo-jovens",
+      "alvo": "grupo_jovens",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "maioridade-penal--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

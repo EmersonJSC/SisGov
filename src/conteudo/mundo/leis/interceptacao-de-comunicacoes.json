@@ -1,22 +1,12 @@
 {
   "id": "interceptacao-de-comunicacoes",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Interceptação de comunicações",
-  "descricao": "Quem pode autorizar escutas de telefone e mensagens, e por quanto tempo? Investigações podem alcançar líderes de facções, mas escutas longas e sem ordem arriscam a privacidade.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "vigilancia",
-    "nome": "Vigilância",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define quem autoriza escuta de telefone e mensagens, e por quanto tempo.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_interceptacao_de_comunicacoes",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Capacidade de investigação ↓; liberdades civis ↑"
+        "efeitos": "Capacidade de investigação ↓; liberdades civis ↑",
+        "propoe": "Proibida, mesmo com ordem do juiz."
       },
       {
         "id": "com-ordem-do-juiz-e-prazo-de-15-dias-renovaveis",
@@ -38,7 +29,8 @@
           "Progressistas favoráveis a fiscalização judicial"
         ],
         "rejeitam": ["Conservadores favoráveis a escuta mais livre"],
-        "efeitos": "A polícia ganha prova por prazo controlado, sem autorizar monitoramento indefinido."
+        "efeitos": "A polícia ganha prova por prazo controlado, sem autorizar monitoramento indefinido.",
+        "propoe": "Com ordem do juiz, por 15 dias renováveis."
       },
       {
         "id": "com-ordem-sem-prazo",
@@ -46,7 +38,8 @@
         "valor": 67,
         "apoiam": ["Associações de policiais"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓"
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓",
+        "propoe": "Com ordem do juiz, sem prazo."
       },
       {
         "id": "sem-ordem-por-seguranca-nacional",
@@ -54,18 +47,97 @@
         "valor": 100,
         "apoiam": ["Militares da reserva"],
         "rejeitam": ["Progressistas", "Jornais e portais"],
-        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓↓; mais chance de \"espionagem revelada\""
+        "efeitos": "Capacidade de investigação ↑; liberdades civis ↓↓; mais chance de \"espionagem revelada\"",
+        "propoe": "Sem ordem do juiz, em casos de segurança nacional."
       }
     ]
   },
-  "consequencias": [
-    "interceptacao-de-comunicacoes--capacidade-inteligencia",
-    "interceptacao-de-comunicacoes--liberdade-civil",
-    "interceptacao-de-comunicacoes--confianca-instituicoes",
-    "interceptacao-de-comunicacoes--crime-organizado",
-    "interceptacao-de-comunicacoes--corrupcao",
-    "interceptacao-de-comunicacoes--grupo-progressistas",
-    "interceptacao-de-comunicacoes--grupo-conservadores"
-  ],
-  "ministerio": "Ministério da Justiça"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "interceptacao-de-comunicacoes--capacidade-inteligencia",
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.2,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.08,
+        "termoConstante": 2.64
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--confianca-instituicoes",
+      "alvo": "confianca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--corrupcao",
+      "alvo": "corrupcao",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.02,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "interceptacao-de-comunicacoes--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.05,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

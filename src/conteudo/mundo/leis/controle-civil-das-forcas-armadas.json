@@ -1,22 +1,12 @@
 {
   "id": "controle-civil-das-forcas-armadas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Controle civil das Forças Armadas",
-  "descricao": "Quem manda nos militares e eles podem fazer política?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define quem manda nos militares e se eles podem fazer política.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_controle_civil_das_forcas_armadas",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Militares da reserva e grupos de intervenção"],
         "rejeitam": ["Progressistas", "Católicos", "Empresários"],
-        "efeitos": "Risco de golpe ↑; Força das instituições ↓; trava imprensa e Judiciário plenos"
+        "efeitos": "Risco de golpe ↑; Força das instituições ↓; trava imprensa e Judiciário plenos",
+        "propoe": "Os militares se comandam e podem intervir na política."
       },
       {
         "id": "um-ministerio-por-forca",
@@ -35,7 +26,8 @@
         "valor": 33.33,
         "apoiam": ["Conservadores"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Força das instituições ↓ pouco (estimado)"
+        "efeitos": "Força das instituições ↓ pouco (estimado)",
+        "propoe": "Cada Força tem o seu ministério, chefiado por militar."
       },
       {
         "id": "ministerio-civil-da-defesa",
@@ -43,7 +35,8 @@
         "valor": 66.67,
         "apoiam": ["Classe média"],
         "rejeitam": ["Associações de militares"],
-        "efeitos": "Risco de golpe ↓ contra Tutela militar; Força das instituições ↑; Capacidade de defesa estável (estimado)"
+        "efeitos": "Risco de golpe ↓ contra Tutela militar; Força das instituições ↑; Capacidade de defesa estável (estimado)",
+        "propoe": "Um ministro civil comanda as três Forças."
       },
       {
         "id": "controle-civil-reforcado-carreira-civil-na-defesa-quarentena",
@@ -51,13 +44,42 @@
         "valor": 100,
         "apoiam": ["Progressistas", "Jovens"],
         "rejeitam": ["Conservadores", "Servidores", "Associações de militares"],
-        "efeitos": "Risco de golpe ↓; Força das instituições ↑; Capacidade de defesa ↓ pouco; no primeiro ano, chance maior de motim ou tentativa de golpe (aprox.)"
+        "efeitos": "Risco de golpe ↓; Força das instituições ↑; Capacidade de defesa ↓ pouco; no primeiro ano, chance maior de motim ou tentativa de golpe (aprox.)",
+        "propoe": "Controle civil reforçado: carreira civil na Defesa e quarentena antes de entrar na política."
       }
     ]
   },
-  "consequencias": [
-    "controle-civil-das-forcas-armadas--forca-instituicoes",
-    "controle-civil-das-forcas-armadas--capacidade-defesa"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "controle-civil-das-forcas-armadas--forca-instituicoes",
+      "alvo": "forca_instituicoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.156,
+        "termoConstante": -10.40052
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "controle-civil-das-forcas-armadas--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.027,
+        "termoConstante": 1.80009
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100_por_passo"
+    }
+  ]
 }

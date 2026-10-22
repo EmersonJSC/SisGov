@@ -1,40 +1,98 @@
 {
   "id": "fundo-seguranca-publica",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "orcamentaria",
+  "versaoEsquema": 4,
+  "familia": "verba",
   "nome": "Dinheiro para as polícias dos estados",
-  "descricao": "O governo escolhe de 0 a 0,15% do PIB por ano em repasses para viaturas, inteligência e equipes estaduais. Reforçar as polícias custa no orçamento e pode reduzir crimes; não muda quem comanda cada polícia.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "policias",
-    "nome": "Polícias",
-    "camada": "alavanca"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "execucao-programa-autorizado",
-  "nivelLegal": "derivada",
+  "decide": "Define quanto o governo repassa por ano para viaturas, inteligência e equipes das polícias dos estados.",
+  "area": "seguranca-e-defesa",
+  "nivel": "decreto",
   "revogavel": false,
   "controle": {
     "variavel": "recursos_fundo_seguranca_publica",
     "unidade": "moeda_ano"
   },
-  "orcamento": {
+  "dinheiro": {
+    "tipo": "gasto",
     "modo": "valor_fixo",
     "limites": {
       "minimoPercentualPib": 0,
       "maximoPercentualPib": 0.15
     }
   },
-  "consequencias": [
-    "fundo-seguranca-publica--sensacao-seguranca",
-    "fundo-seguranca-publica--violencia-letal",
-    "fundo-seguranca-publica--crimes-patrimoniais",
-    "fundo-seguranca-publica--grupo-pequenos-negocios",
-    "fundo-seguranca-publica--gasto-publico"
-  ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "policias",
+    "nome": "Polícias",
+    "camada": "alavanca"
+  },
+  "efeitos": [
+    {
+      "id": "fundo-seguranca-publica--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.0003888889,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-seguranca-publica--violencia-letal",
+      "alvo": "violencia_letal",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0001,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "taxa_por_100_mil"
+    },
+    {
+      "id": "fundo-seguranca-publica--crimes-patrimoniais",
+      "alvo": "crimes_patrimoniais",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.0001666667,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "fundo-seguranca-publica--grupo-pequenos-negocios",
+      "alvo": "grupo_pequenos_negocios",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 66.666667,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "fundo-seguranca-publica--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    }
+  ]
 }

@@ -1,22 +1,12 @@
 {
   "id": "papel-das-forcas-armadas",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "constitucional",
   "nome": "Papel das Forças Armadas",
-  "descricao": "Para que servem as Forças Armadas dentro do país?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "forcas-armadas",
-    "nome": "Forças Armadas",
-    "camada": "constituicao"
-  },
-  "processoAutorizacao": "emenda-constitucional",
-  "nivelLegal": "constitucional",
-  "implantacaoTurnos": {
-    "minimo": 4,
-    "maximo": 4
-  },
+  "decide": "Define para que servem as Forças Armadas dentro do país.",
+  "area": "seguranca-e-defesa",
+  "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_papel_das_forcas_armadas",
     "unidade": "nivel_escopo",
@@ -28,7 +18,8 @@
         "custoTexto": "−1,0% do PIB (economiza o gasto atual)",
         "apoiam": ["Progressistas"],
         "rejeitam": ["Conservadores", "Servidores", "Associações de militares"],
-        "efeitos": "Capacidade de defesa ↓ muito; trava Serviço militar, Indústria de defesa e tropas em Missões de paz"
+        "efeitos": "Capacidade de defesa ↓ muito; trava Serviço militar, Indústria de defesa e tropas em Missões de paz",
+        "propoe": "O país não tem Forças Armadas."
       },
       {
         "id": "so-defesa-externa",
@@ -36,7 +27,8 @@
         "valor": 33.33,
         "apoiam": ["Progressistas", "Jovens"],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Capacidade de defesa ↑ pouco (o treino não se desvia); Sensação de segurança sem ganho"
+        "efeitos": "Capacidade de defesa ↑ pouco (o treino não se desvia); Sensação de segurança sem ganho",
+        "propoe": "Só defendem o país de ataques de fora."
       },
       {
         "id": "defesa-externa-e-uso-interno-excepcional-com-prazo-e-area",
@@ -45,7 +37,8 @@
         "custoTexto": "+0,01% do PIB por operação",
         "apoiam": ["Católicos", "Classe média"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Sensação de segurança ↑ pouco no curto prazo durante a operação"
+        "efeitos": "Sensação de segurança ↑ pouco no curto prazo durante a operação",
+        "propoe": "Defesa externa e, em exceções, segurança interna com prazo e lugar definidos."
       },
       {
         "id": "seguranca-interna-ampla",
@@ -54,14 +47,53 @@
         "custoTexto": "+0,05 a +0,1% do PIB",
         "apoiam": ["Conservadores", "Evangélicos", "Periferias"],
         "rejeitam": ["Progressistas", "Associações de policiais"],
-        "efeitos": "Sensação de segurança ↑ no curto prazo; Letalidade policial ↑ (aprox.); Risco de golpe ↑ (aprox.); Capacidade de defesa ↓"
+        "efeitos": "Sensação de segurança ↑ no curto prazo; Letalidade policial ↑ (aprox.); Risco de golpe ↑ (aprox.); Capacidade de defesa ↓",
+        "propoe": "Também cuidam da segurança dentro do país, sem limite."
       }
     ]
   },
-  "consequencias": [
-    "papel-das-forcas-armadas--capacidade-defesa",
-    "papel-das-forcas-armadas--sensacao-seguranca",
-    "papel-das-forcas-armadas--letalidade-policial"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 4,
+    "maximo": 4
+  },
+  "mesa": {
+    "id": "forcas-armadas",
+    "nome": "Forças Armadas",
+    "camada": "constituicao"
+  },
+  "efeitos": [
+    {
+      "id": "papel-das-forcas-armadas--capacidade-defesa",
+      "alvo": "capacidade_defesa",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.009,
+        "termoConstante": 0.60003
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "papel-das-forcas-armadas--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.072,
+        "termoConstante": -4.80024
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "papel-das-forcas-armadas--letalidade-policial",
+      "alvo": "letalidade_policial",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.063,
+        "termoConstante": -4.20021
+      },
+      "atraso": 1,
+      "unidade": "percentual_0_100"
+    }
+  ]
 }

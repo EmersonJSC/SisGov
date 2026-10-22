@@ -1,22 +1,12 @@
 {
   "id": "politica-de-sancoes",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Política de sanções",
-  "descricao": "O que o país faz com as sanções que outros países aplicam?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "politica-externa",
-    "nome": "Política externa",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 2
-  },
+  "decide": "Define o que o país faz com as sanções que outros países aplicam.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_politica_de_sancoes",
     "unidade": "nivel_escopo",
@@ -26,7 +16,8 @@
         "rotulo": "Só as sanções da ONU (Organização das Nações Unidas) (hoje na referência, aprox.)",
         "valor": 0,
         "apoiam": ["Agro", "Empresários"],
-        "efeitos": "Exportações ↑ contra aderir às sanções do polo ocidental; Tensão com o alvo ↓ (estimado)"
+        "efeitos": "Exportações ↑ contra aderir às sanções do polo ocidental; Tensão com o alvo ↓ (estimado)",
+        "propoe": "Segue só as das Nações Unidas."
       },
       {
         "id": "adere-as-sancoes-do-polo-ocidental",
@@ -35,14 +26,16 @@
         "custoTexto": "perde exportações para o alvo",
         "apoiam": ["Conservadores"],
         "rejeitam": ["Agro", "Confederação da indústria"],
-        "efeitos": "Exportações ↓ para o alvo; Tensão com o alvo ↑"
+        "efeitos": "Exportações ↓ para o alvo; Tensão com o alvo ↑",
+        "propoe": "Segue as do bloco ocidental."
       },
       {
         "id": "sancoes-proprias",
         "rotulo": "Sanções próprias",
         "valor": 66.67,
         "rejeitam": ["Empresários"],
-        "efeitos": "Tensão internacional ↑ (estimado)"
+        "efeitos": "Tensão internacional ↑ (estimado)",
+        "propoe": "Aplica sanções próprias."
       },
       {
         "id": "contorna-sancoes",
@@ -51,13 +44,42 @@
         "custoTexto": "risco de sanção secundária",
         "apoiam": ["Progressistas"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Exportações ↑ para o alvo; chance de sanção contra o próprio país ↑"
+        "efeitos": "Exportações ↑ para o alvo; chance de sanção contra o próprio país ↑",
+        "propoe": "Ajuda os sancionados a contorná-las."
       }
     ]
   },
-  "consequencias": [
-    "politica-de-sancoes--exportacoes",
-    "politica-de-sancoes--tensao-internacional"
-  ],
-  "ministerio": "Ministério da Defesa"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 2
+  },
+  "mesa": {
+    "id": "politica-externa",
+    "nome": "Política externa",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "politica-de-sancoes--exportacoes",
+      "alvo": "exportacoes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-de-sancoes--tensao-internacional",
+      "alvo": "tensao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.021,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

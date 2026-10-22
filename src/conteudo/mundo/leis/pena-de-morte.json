@@ -1,26 +1,12 @@
 {
   "id": "pena-de-morte",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Pena de morte",
-  "descricao": "Onde a Constituição permite pena capital, esta lei define para quais crimes ela pode ser aplicada. A punição eleva a segurança percebida, mas reduz liberdades e reputação internacional; não há ganho automático na violência letal.",
-  "area": "Segurança, justiça e drogas",
-  "mesa": {
-    "id": "penas",
-    "nome": "Penas",
-    "camada": "lei"
-  },
-  "ministerio": "Ministério da Justiça",
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "requer": [
-    {
-      "lei": "garantias-penais",
-      "opcoes": ["pena-de-morte-permitida"],
-      "motivo": "A Constituição proíbe a pena de morte, e é cláusula pétrea."
-    }
-  ],
+  "decide": "Define para quais crimes há pena de morte, quando a Constituição permite.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_pena_de_morte",
     "unidade": "nivel_escopo",
@@ -32,7 +18,8 @@
         "custoTexto": "Hipótese: 0,01% do PIB ao ano em julgamento e custódia",
         "apoiam": ["Conservadores favoráveis à pena capital"],
         "rejeitam": ["Progressistas", "Defensores de garantias penais"],
-        "efeitos": "Segurança percebida sobe; liberdade e reputação internacional caem."
+        "efeitos": "Segurança percebida sobe; liberdade e reputação internacional caem.",
+        "propoe": "Só homicídio qualificado e terrorismo."
       },
       {
         "id": "tambem-trafico",
@@ -41,21 +28,109 @@
         "custoTexto": "Hipótese: 0,02% do PIB ao ano em julgamento e custódia",
         "apoiam": ["Conservadores favoráveis à punição máxima"],
         "rejeitam": ["Progressistas", "Defensores de garantias penais"],
-        "efeitos": "Punição percebida cresce mais; violência não cai por decreto e os custos de liberdade, reputação e processo aumentam."
+        "efeitos": "Punição percebida cresce mais; violência não cai por decreto e os custos de liberdade, reputação e processo aumentam.",
+        "propoe": "Também para chefes de grandes redes de tráfico."
       }
     ]
   },
-  "consequencias": [
-    "pena-de-morte--sensacao-seguranca",
-    "pena-de-morte--reputacao-internacional",
-    "pena-de-morte--violencia-letal",
-    "pena-de-morte--liberdade-civil",
-    "pena-de-morte--gasto-publico",
-    "pena-de-morte--grupo-progressistas",
-    "pena-de-morte--grupo-servidores"
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "dependeDe": [
+    {
+      "lei": "garantias-penais",
+      "opcoes": ["pena-de-morte-permitida"],
+      "motivo": "A Constituição proíbe a pena de morte, e é cláusula pétrea."
+    }
   ],
-  "respostaTemporal": {
-    "implantacao": 0.3,
-    "degradacao": 0.2
-  }
+  "mesa": {
+    "id": "penas",
+    "nome": "Penas",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "pena-de-morte--sensacao-seguranca",
+      "alvo": "sensacao_seguranca",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.07,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pena-de-morte--reputacao-internacional",
+      "alvo": "reputacao_internacional",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.12,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pena-de-morte--violencia-letal",
+      "alvo": "violencia_letal",
+      "mecanismo": "limiar",
+      "parametros": {
+        "coeficiente": 0.072,
+        "limiar": 75,
+        "direcao": "acima"
+      },
+      "atraso": 4,
+      "unidade": "taxa_por_100_mil"
+    },
+    {
+      "id": "pena-de-morte--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pena-de-morte--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [50, 0.01],
+          [100, 0.02]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "pena-de-morte--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "pena-de-morte--grupo-servidores",
+      "alvo": "grupo_servidores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

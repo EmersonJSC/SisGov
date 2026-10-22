@@ -1,22 +1,12 @@
 {
   "id": "poderes-de-investigacao",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Poderes de investigação",
-  "descricao": "O Congresso decide quais ferramentas a polícia pode usar para descobrir redes de lavagem e facções: só mandados, infiltração supervisionada ou acesso direto a dados. Mais poder melhora investigações, mas reduz garantias.",
-  "area": "Segurança, penas, drogas e armas",
-  "mesa": {
-    "id": "vigilancia",
-    "nome": "Vigilância",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 1,
-    "maximo": 1
-  },
+  "decide": "Define que ferramentas a polícia pode usar contra lavagem de dinheiro e facções.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_poderes_de_investigacao",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Associações de policiais"],
-        "efeitos": "Protege liberdades; redes criminosas ficam mais difíceis de mapear."
+        "efeitos": "Protege liberdades; redes criminosas ficam mais difíceis de mapear.",
+        "propoe": "Só com ordem do juiz."
       },
       {
         "id": "infiltracao-e-acao-controlada-com-juiz",
@@ -38,7 +29,8 @@
           "Progressistas que defendem fiscalização judicial"
         ],
         "rejeitam": ["Conservadores favoráveis a poderes sem mandado"],
-        "efeitos": "A polícia mapeia a cadeia de comando e reduz impunidade com prazo; mantém controle judicial."
+        "efeitos": "A polícia mapeia a cadeia de comando e reduz impunidade com prazo; mantém controle judicial.",
+        "propoe": "Infiltração de agentes e flagrante adiado, com controle do juiz."
       },
       {
         "id": "acesso-a-dados-e-sigilo-sem-ordem",
@@ -46,17 +38,86 @@
         "valor": 100,
         "apoiam": ["Associações de policiais", "Militares da reserva"],
         "rejeitam": ["Progressistas", "Jornais e portais"],
-        "efeitos": "Inteligência sobe cedo e crime organizado cai depois; liberdade civil e apoio progressista caem."
+        "efeitos": "Inteligência sobe cedo e crime organizado cai depois; liberdade civil e apoio progressista caem.",
+        "propoe": "Acesso a dados e sigilo sem ordem do juiz."
       }
     ]
   },
-  "consequencias": [
-    "poderes-de-investigacao--capacidade-inteligencia",
-    "poderes-de-investigacao--crime-organizado",
-    "poderes-de-investigacao--impunidade",
-    "poderes-de-investigacao--liberdade-civil",
-    "poderes-de-investigacao--grupo-conservadores",
-    "poderes-de-investigacao--grupo-progressistas"
-  ],
-  "ministerio": "Ministério da Justiça"
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "mesa": {
+    "id": "vigilancia",
+    "nome": "Vigilância",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "poderes-de-investigacao--capacidade-inteligencia",
+      "alvo": "capacidade_inteligencia",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.15,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "poderes-de-investigacao--crime-organizado",
+      "alvo": "crime_organizado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.04,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "poderes-de-investigacao--impunidade",
+      "alvo": "impunidade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.03,
+        "termoConstante": 0
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
+    },
+    {
+      "id": "poderes-de-investigacao--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.06,
+        "termoConstante": 3
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "poderes-de-investigacao--grupo-conservadores",
+      "alvo": "grupo_conservadores",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.05,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "poderes-de-investigacao--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.08,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
 }

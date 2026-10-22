@@ -1,22 +1,12 @@
 {
   "id": "protecao-de-fronteiras",
   "tipo": "lei",
-  "versaoEsquema": 2,
-  "grupo": "regulatoria",
+  "versaoEsquema": 4,
+  "familia": "regra",
   "nome": "Proteção de fronteiras",
-  "descricao": "Quem vigia a fronteira e com que poder?",
-  "area": "Defesa e relações exteriores",
-  "mesa": {
-    "id": "soberania-nuclear-digital-e-de-fronteira",
-    "nome": "Soberania nuclear, digital e de fronteira",
-    "camada": "lei"
-  },
-  "processoAutorizacao": "lei-ordinaria",
-  "nivelLegal": "derivada",
-  "implantacaoTurnos": {
-    "minimo": 2,
-    "maximo": 2
-  },
+  "decide": "Define quem vigia a fronteira e com que poder.",
+  "area": "seguranca-e-defesa",
+  "nivel": "lei",
   "controle": {
     "variavel": "nivel_protecao_de_fronteiras",
     "unidade": "nivel_escopo",
@@ -27,7 +17,8 @@
         "valor": 0,
         "apoiam": ["Progressistas"],
         "rejeitam": ["Conservadores"],
-        "efeitos": "Controle de fronteiras ↑ pouco (estimado)"
+        "efeitos": "Controle de fronteiras ↑ pouco (estimado)",
+        "propoe": "Só polícia e fiscais da receita."
       },
       {
         "id": "programa-integrado-de-orgaos",
@@ -35,7 +26,8 @@
         "valor": 33.33,
         "custoTexto": "+0,01% do PIB (aprox.)",
         "apoiam": ["Interior", "Classe média"],
-        "efeitos": "Controle de fronteiras ↑; Crime organizado e Armas em circulação ↓ com atraso"
+        "efeitos": "Controle de fronteiras ↑; Crime organizado e Armas em circulação ↓ com atraso",
+        "propoe": "Vários órgãos juntos."
       },
       {
         "id": "forcas-armadas-com-poder-de-policia",
@@ -44,7 +36,8 @@
         "custoTexto": "+0,02 a +0,05% do PIB (aprox.)",
         "apoiam": ["Conservadores", "Agro", "Interior"],
         "rejeitam": ["Progressistas"],
-        "efeitos": "Controle de fronteiras ↑ mais; Desmatamento ↓ pelo combate ao garimpo (aprox.); Liberdades civis ↓"
+        "efeitos": "Controle de fronteiras ↑ mais; Desmatamento ↓ pelo combate ao garimpo (aprox.); Liberdades civis ↓",
+        "propoe": "As Forças Armadas, com poder de polícia."
       },
       {
         "id": "barreira-fisica-e-militarizacao",
@@ -53,17 +46,46 @@
         "custoTexto": "+0,05 a +0,1% do PIB (aprox.)",
         "apoiam": ["Conservadores"],
         "rejeitam": ["Progressistas", "Católicos", "Agricultura familiar"],
-        "efeitos": "Controle de fronteiras ↑ mais; fluxo migratório se desloca (aprox.); Liberdades civis ↓"
+        "efeitos": "Controle de fronteiras ↑ mais; fluxo migratório se desloca (aprox.); Liberdades civis ↓",
+        "propoe": "Muro e militares."
       }
     ]
   },
-  "consequencias": [
-    "protecao-de-fronteiras--desmatamento",
-    "protecao-de-fronteiras--liberdade-civil"
-  ],
+  "implantacaoTurnos": {
+    "minimo": 2,
+    "maximo": 2
+  },
   "mae": {
     "texto": "Papel das Forças Armadas (“Forças Armadas com poder de polícia” exige no mínimo uso interno excepcional; “segurança interna ampla” libera).",
     "leis": ["papel-das-forcas-armadas"]
   },
-  "ministerio": "Ministério da Defesa"
+  "mesa": {
+    "id": "soberania-nuclear-digital-e-de-fronteira",
+    "nome": "Soberania nuclear, digital e de fronteira",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "protecao-de-fronteiras--desmatamento",
+      "alvo": "desmatamento",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.021,
+        "termoConstante": 0.69993
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "protecao-de-fronteiras--liberdade-civil",
+      "alvo": "liberdade_civil",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.084,
+        "termoConstante": 2.79972
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    }
+  ]
 }
