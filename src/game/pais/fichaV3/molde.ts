@@ -112,7 +112,15 @@ export function verificarMolde(
     );
   const ids = new Set(opcoes.map((o) => o.id));
   (ficha.trava ?? []).forEach((t, i) => {
-    if (!contexto.leis.has(t.lei))
+    const daOutra = contexto.leis.get(t.lei);
+    for (const o of t.opcoes ?? [])
+      if (daOutra && !daOutra.includes(o))
+        push(
+          `trava.${i}.opcoes`,
+          `A lei ${t.lei} não tem a opção ${o}.`,
+          "REFERENCIA_QUEBRADA",
+        );
+    if (!daOutra)
       push(
         `trava.${i}.lei`,
         `A lei ${t.lei} não existe no catálogo.`,

@@ -115,6 +115,8 @@ export type TravaV4 = {
   minimo?: number;
   maximo?: number;
   proibe?: true;
+  /** Só estas opções da outra lei ficam bloqueadas. */
+  opcoes?: string[];
 };
 
 /** Ficha de lei, formato v4 (molde único): a v3 com família, área e frase. */

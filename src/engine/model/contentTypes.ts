@@ -506,6 +506,7 @@ export type PolicyFile = {
     minimo?: number;
     maximo?: number;
     proibe?: true;
+    opcoes?: readonly string[];
   }[];
   publico?: { quem: string; pessoas: number };
   area?: string;

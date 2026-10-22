@@ -163,6 +163,18 @@ describe("molde das leis (ficha v4)", () => {
     expect(codigo(c, "trava.0.opcao")).toBe("REFERENCIA_QUEBRADA");
   });
 
+  it("trava pode bloquear só algumas opções da outra lei", () => {
+    const c = constitucional();
+    c.trava = [
+      { opcao: "com", lei: "regulacao-de-vagas", opcoes: ["central"] },
+    ];
+    expect(campos(c)).toEqual([]);
+    c.trava = [
+      { opcao: "com", lei: "regulacao-de-vagas", opcoes: ["nao-tem"] },
+    ];
+    expect(codigo(c, "trava.0.opcoes")).toBe("REFERENCIA_QUEBRADA");
+  });
+
   it("recusa pétrea com área", () => {
     const p: FichaV4 = {
       ...constitucional(),
