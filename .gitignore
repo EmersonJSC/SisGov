@@ -19,3 +19,6 @@ dados/
 /inventario.csv
 /auditoria.json
 /passe1c-docs-fora-inventario.csv
+
+# arquivos para o autor apagar
+_lixo/
