@@ -131,6 +131,9 @@ export type FichaV4 = Omit<
   /** Exemplo no país: "No Brasil: Farmácia Popular, desde 2004." */
   exemplo?: string;
   trava?: TravaV4[];
+  /** Do formato antigo, mantidos na conversão (mesmo sentido do PolicyFile). */
+  implantacaoTurnos?: PolicyFile["implantacaoTurnos"];
+  mae?: PolicyFile["mae"];
   /** Só programa: quem recebe e quantas pessoas. */
   publico?: { quem: string; pessoas: number };
   fontes?: FonteV3[];

@@ -15,7 +15,6 @@ export const FAMILIAS: readonly Familia[] = [
   "petrea",
 ];
 
-const MAXIMO_DE_EFEITOS = 8;
 const MAXIMO_DE_OPCOES = 3;
 /** Mínimo de leis por área; sem teto (decisão do autor, 22/out). */
 const MINIMO_POR_AREA = 8;
@@ -86,11 +85,8 @@ export function verificarMolde(
     push("petrea", "A pétrea precisa de petrea: true.");
 
   const efeitos = Array.isArray(ficha.efeitos) ? ficha.efeitos : [];
-  if (efeitos.length < 1 || efeitos.length > MAXIMO_DE_EFEITOS)
-    push(
-      "efeitos",
-      `A lei tem de 1 a ${MAXIMO_DE_EFEITOS} efeitos na rede; esta tem ${efeitos.length}.`,
-    );
+  if (efeitos.length < 1)
+    push("efeitos", "A lei precisa de pelo menos um efeito na rede.");
 
   const opcoes = ficha.controle?.opcoes ?? [];
   if ((familia === "regra" || constituicao) && opcoes.length > MAXIMO_DE_OPCOES)

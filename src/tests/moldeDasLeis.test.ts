@@ -121,6 +121,14 @@ describe("molde das leis (ficha v4)", () => {
     );
   });
 
+  it("aceita muitos efeitos (a spec só pede pelo menos um)", () => {
+    const muitos = Array.from({ length: 14 }, (_, i) => ({
+      ...imposto().efeitos[0],
+      id: `efeito-${i}`,
+    }));
+    expect(campos({ ...imposto(), efeitos: muitos })).toEqual([]);
+  });
+
   it("recusa lei sem nenhum efeito", () => {
     expect(campos({ ...imposto(), efeitos: [] })).toContain("efeitos");
   });
@@ -250,6 +258,21 @@ describe("o jogo carrega a ficha v4", () => {
       decide: "Define quanto o país gasta com a polícia federal por ano.",
       descricao: "Define quanto o país gasta com a polícia federal por ano.",
       grupo: "orcamentaria",
+    });
+  });
+
+  it("leva implantação em turnos e a lei mãe para o motor", () => {
+    const r = expandirFichasV3({
+      ...arquivos,
+      [VERBA_PF]: comoV4({
+        implantacaoTurnos: { minimo: 4, maximo: 4 },
+        mae: { texto: "Depende da regra das contas.", leis: ["regra-fiscal"] },
+      } as never),
+    });
+    if (!r.ok) throw new Error(JSON.stringify(r.diagnostics.slice(0, 3)));
+    expect(JSON.parse(r.value[VERBA_PF])).toMatchObject({
+      implantacaoTurnos: { minimo: 4, maximo: 4 },
+      mae: { texto: "Depende da regra das contas.", leis: ["regra-fiscal"] },
     });
   });
 

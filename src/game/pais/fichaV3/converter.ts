@@ -88,6 +88,10 @@ export function converterFicha(
           ...(ficha.exemplo ? { exemplo: ficha.exemplo } : {}),
           ...(ficha.trava?.length ? { trava: ficha.trava } : {}),
           ...(ficha.publico ? { publico: ficha.publico } : {}),
+          ...(ficha.implantacaoTurnos
+            ? { implantacaoTurnos: ficha.implantacaoTurnos }
+            : {}),
+          ...(ficha.mae ? { mae: ficha.mae } : {}),
         }
       : {
           descricao: ficha.descricao,
