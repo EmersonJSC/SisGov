@@ -40,18 +40,19 @@ describe("configuração do país (V1-06)", () => {
     // cinco leis de inteligência, duas com verba (a dívida sobe um pouco).
     // V1-34: as duas camadas novas da mesa do salário mínimo e as 28 leis
     // novas das mesas (controle, eficácia e o estado de cada uma).
+    // fdc3658: leis consolidadas (244 → 242) e consequências removidas.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1733);
+    expect(Object.keys(valores)).toHaveLength(1729);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.281449082574, 3);
-    expect(valores.divida_publica).toBeCloseTo(82.44283203439062, 2);
-    expect(valores.inflacao).toBeCloseTo(4.835626054352943, 2);
-    expect(valores.desemprego).toBeCloseTo(6.2003751134216625, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.2816861416927, 3);
+    expect(valores.divida_publica).toBeCloseTo(82.66407025918477, 2);
+    expect(valores.inflacao).toBeCloseTo(4.835685533701447, 2);
+    expect(valores.desemprego).toBeCloseTo(6.200130677263957, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12692340.58168242, 3);
-    expect(p.content.policies).toHaveLength(244);
+    expect(soma).toBeCloseTo(12692331.744982902, 3);
+    expect(p.content.policies).toHaveLength(242);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });
