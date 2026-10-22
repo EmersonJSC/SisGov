@@ -40,8 +40,8 @@ o controle, a faixa do mapa e o que a janela mostra.
 | **Imposto** | dourado | tira dinheiro de alguém para o governo | alíquota (%) | de fora |
 | **Verba** | verde | o governo gasta com uma coisa (obra, órgão, serviço) | valor (R$/ano; guardado em % do PIB) | de fora |
 | **Programa** | verde-água (perto do verde, mas outra cor) | o governo paga direto às pessoas: renda, remédio, bolsa | valor (R$/ano) | de fora |
-| **Regra** | azul | muda como as coisas funcionam, sem ser principalmente dinheiro | até 3 opções, ou faixa | de fora |
-| **Constitucional** | lilás | decide o que as outras leis podem fazer (piso, teto, permite, proíbe) | até 3 opções | de dentro (entre a esfera e o centro) |
+| **Regra** | azul | muda como as coisas funcionam, sem ser principalmente dinheiro | até 5 opções, ou faixa | de fora |
+| **Constitucional** | lilás | decide o que as outras leis podem fazer (piso, teto, permite, proíbe) | até 5 opções | de dentro (entre a esfera e o centro) |
 | **Pétrea** | lilás escuro, com escudo (o cadeado é da lei bloqueada, mecânica 2, seção 2.5) | não muda por votação comum (mecânica 2, seção 2.4) | nenhum | centro (Constituição Federal) |
 
 - Cores de partida, a partir das que já estão no `mapa.css`: imposto
@@ -119,8 +119,9 @@ assunto; o ministério vira só o rótulo de quem cuida dela naquele país.
 
 ### 2.5 Mudanças na mecânica 2
 
-- **Regra 2.2 (leis de escolha):** continua "no máximo 3 opções", agora para
-  regra e constitucional.
+- **Regra 2.2 (leis de escolha):** passa a "no máximo 5 opções" (decisão do
+  autor, 22/out: 146 leis têm 4 a 6 opções, e os programas de governo reais
+  apontam para elas), para regra e constitucional.
 - **Tabela 2.4 (níveis):** a coluna "No mapa" passa a ser a da seção 2.1
   deste documento (faixa de dentro, faixa de fora, centro), em vez de
   "no ministério".
@@ -148,7 +149,7 @@ por 10 leis) ganha os campos `familia`, `decide`, `area` (um dos 11 ids),
 
 1. **Verificador do molde:** um teste que lê todas as leis e reprova a que
    não segue as seções 2.1 a 2.4 (família, área válida, frase afirmativa,
-   pelo menos uma seta, até 3 opções, sem sigla, limite por esfera).
+   pelo menos uma seta, até 5 opções, sem sigla, mínimo por esfera).
    Começa valendo só para as leis v4.
 2. **Inventário:** um script lista, para cada uma das 242 leis, a área
    nova sugerida, a família sugerida, o que falta para passar no molde e se

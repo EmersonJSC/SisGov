@@ -24,7 +24,7 @@ nela; a lei antiga continua morando pelo ministério até ser refeita.
   `trabalho`, `protecao-social`, `saude`, `educacao-e-cultura`,
   `infraestrutura-e-energia`, `ambiente-e-campo`, `seguranca-e-defesa`,
   `direitos-e-costumes`, `governo-e-instituicoes`.
-- Regra e constitucional: no máximo 3 opções (mecânica 2, 2.2).
+- Regra e constitucional: no máximo 5 opções (era 3; autor, 22/out).
 - "O que decide" é frase afirmativa: não termina em "?".
 - Toda lei v4 tem pelo menos 1 efeito (seta) e no máximo 8.
 - 8 a 12 leis por área, contando o catálogo inteiro da área. **Fora disso é

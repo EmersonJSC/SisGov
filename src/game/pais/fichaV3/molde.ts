@@ -15,7 +15,8 @@ export const FAMILIAS: readonly Familia[] = [
   "petrea",
 ];
 
-const MAXIMO_DE_OPCOES = 3;
+/** Até 5 opções (decisão do autor, 22/out). */
+const MAXIMO_DE_OPCOES = 5;
 /** Mínimo de leis por área; sem teto (decisão do autor, 22/out). */
 const MINIMO_POR_AREA = 8;
 

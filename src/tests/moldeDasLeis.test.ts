@@ -133,9 +133,11 @@ describe("molde das leis (ficha v4)", () => {
     expect(campos({ ...imposto(), efeitos: [] })).toContain("efeitos");
   });
 
-  it("recusa regra com mais de 3 opções", () => {
+  it("aceita até 5 opções e recusa 6 (autor, 22/out)", () => {
     const r = regra();
-    r.controle.opcoes = [opcao("a"), opcao("b"), opcao("c"), opcao("d")];
+    r.controle.opcoes = ["a", "b", "c", "d", "e"].map((id) => opcao(id));
+    expect(campos(r)).toEqual([]);
+    r.controle.opcoes = ["a", "b", "c", "d", "e", "f"].map((id) => opcao(id));
     expect(campos(r)).toContain("controle.opcoes");
   });
 

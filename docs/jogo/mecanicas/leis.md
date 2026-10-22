@@ -44,7 +44,8 @@ O país só declara quais leis começam em vigor e em que valor.
 ### 2.2 Leis de escolha
 
 - Usadas só quando o mundo real é discreto (permitido / restrito /
-  proibido). No máximo 3 opções, e cada uma diz em uma frase o que
+  proibido). No máximo 5 opções (era 3; mudado pelo autor em 22/out, ver
+  [molde-das-leis.md](molde-das-leis.md)), e cada uma diz em uma frase o que
   acontece no jogo.
 - **Todas as opções ficam liberadas**, inclusive as extremas, como abolir
   a polícia.

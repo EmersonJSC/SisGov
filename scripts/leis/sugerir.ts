@@ -173,8 +173,8 @@ export function sugerirLinha(
   if ((lei.decide ?? lei.descricao ?? "").trim().endsWith("?"))
     faltas.push("decide é pergunta");
   const opcoes = lei.controle?.opcoes?.length ?? 0;
-  if ((familia === "regra" || familia === "constitucional") && opcoes > 3)
-    faltas.push(`${opcoes} opções (máximo 3)`);
+  if ((familia === "regra" || familia === "constitucional") && opcoes > 5)
+    faltas.push(`${opcoes} opções (máximo 5)`);
   if (textoProibido(lei.nome)) faltas.push("nome de programa ou travessão");
   if (!lei.nivelLegal && !lei.nivel) faltas.push("sem nível");
   if (lei.versaoEsquema === 4) faltas.length = 0; // já passou no verificador
