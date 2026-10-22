@@ -1,7 +1,7 @@
-import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { criarPartida, encerrarTurno, verPartida, type Partida } from "../app/partida";
 import { aplicarMeta } from "../app/partida/leis";
+import catalogo from "../conteudo/mundo/catalogo-leis.json";
 
 function nova() {
   const r = criarPartida({ semente: 7, ocorrencias: false, eleicao: false });
@@ -27,7 +27,6 @@ function valor(p: Partida, id: string) {
 
 describe("Reajuste de benefícios consolidado", () => {
   it("catálogo contém uma única lei de reajuste", () => {
-    const catalogo = JSON.parse(readFileSync("src/conteudo/mundo/catalogo-leis.json", "utf8"));
     expect(catalogo.politicas).toContain("mundo/leis/reajuste-de-beneficios.json");
     expect(catalogo.politicas).not.toContain("mundo/leis/regra-de-reajuste-dos-beneficios.json");
   });

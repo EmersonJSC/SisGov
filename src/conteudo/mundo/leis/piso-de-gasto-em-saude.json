@@ -6,7 +6,7 @@
   "nome": "Piso constitucional de gasto em saúde",
   "descricao": "A Constituição reserva um mínimo de receita para a saúde? Os percentuais de receita agregada são hipóteses de jogo, não equivalem aos percentuais jurídicos de cada ente. A despesa real é escolhida em Verba executada para a saúde.",
   "area": "Saúde",
-  "fonte": "Constituição Federal, art. 198, § 2º: https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm",
+  "fonte": "Vinculação constitucional de parte da receita à saúde; a regra de cada país fica no estado inicial dele",
   "mesa": {
     "id": "sistema-de-saude",
     "nome": "Sistema de saúde",

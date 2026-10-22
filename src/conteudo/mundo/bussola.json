@@ -294,12 +294,20 @@
     "imposto-sobre-consumo": {
       "manifesto": [],
       "porque": "Nenhum tema do Manifesto separa esquerda e direita aqui.",
-      "faixa": {
-        "minimo": [
+      "opcoes": {
+        "iva-minimo": [
           0,
           0
         ],
-        "maximo": [
+        "iva-moderado": [
+          0,
+          0
+        ],
+        "iva-alto-base-ampla": [
+          0,
+          0
+        ],
+        "iva-com-cashback": [
           0,
           0
         ]
@@ -893,6 +901,10 @@
         "maximo-40": [
           -1.4,
           0.0
+        ],
+        "tarifa-diferenciada-insumos": [
+          -0.6,
+          0.0
         ]
       }
     },
@@ -1273,10 +1285,6 @@
           2,
           0
         ],
-        "emprestimo-pago-depois-de-formado-conforme-a-renda": [
-          1,
-          0
-        ],
         "gratuita-so-para-os-mais-pobres": [
           0,
           0
@@ -1410,8 +1418,8 @@
       ],
       "porque": "Tamanho do Estado de bem-estar.",
       "opcoes": {
-        "nenhum": [
-          2,
+        "faixa-de-transicao": [
+          0.3,
           0
         ],
         "focalizado-estrito": [
@@ -1792,8 +1800,8 @@
           0,
           0
         ],
-        "separacao-precoce-aos-10-a-12-anos": [
-          0,
+        "contas-de-formacao-continua": [
+          0.3,
           0
         ]
       }
@@ -2272,9 +2280,9 @@
       ],
       "porque": "Força dos sindicatos; sindicato controlado pelo Estado é corporativismo autoritário.",
       "opcoes": {
-        "sindicatos-controlados-pelo-estado": [
+        "regras-uniformes-em-lei": [
           -1,
-          1.5
+          0
         ],
         "por-empresa": [
           1,
@@ -3597,6 +3605,10 @@
         "meta-de-10-do-pib": [
           -1.6,
           0.0
+        ],
+        "fundeb-ampliado-para-escolas-vulneraveis": [
+          -1.1,
+          0.0
         ]
       }
     },
@@ -3640,24 +3652,6 @@
         ]
       }
     },
-    "devolucao-de-imposto-aos-pobres": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "nenhuma": [
-          0.6,
-          0.0
-        ],
-        "luz-agua-e-gas": [
-          -0.2,
-          0.0
-        ],
-        "ampla-para-as-familias-do-cadastro-social": [
-          -0.6,
-          0.0
-        ]
-      }
-    },
     "verba-da-saude-acima-do-piso": {
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
@@ -3694,6 +3688,10 @@
         ],
         "maximo-mais-bolsas-e-valor-perto-de-um-salario-inicial-de-pe": [
           -1.0,
+          0.0
+        ],
+        "bolsas-em-parceria-com-empresas": [
+          0.4,
           0.0
         ]
       }
@@ -4064,10 +4062,6 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [
-          0,
-          0
-        ],
         "minimo-0": [
           0.8,
           0.0
@@ -4141,28 +4135,6 @@
         "livre": [
           1.4,
           0.6
-        ]
-      }
-    },
-    "aposentadoria-do-trabalhador-rural": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "nenhuma-regra-propria": [
-          1.4,
-          0.0
-        ],
-        "voluntaria-e-subsidiada": [
-          0.4,
-          0.0
-        ],
-        "contributiva-agricola": [
-          0.4,
-          0.0
-        ],
-        "comprovacao-de-atividade-sem-contribuir-como-o-urbano": [
-          -1.2,
-          0.0
         ]
       }
     },
@@ -4316,32 +4288,6 @@
         ],
         "com-poder-de-veto-as-projecoes-do-orcamento": [
           0.8,
-          0.0
-        ]
-      }
-    },
-    "idade-minima-para-se-aposentar": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "sem-idade": [
-          -1.2,
-          0.0
-        ],
-        "baixa": [
-          -0.8,
-          0.0
-        ],
-        "moderada-62-a-65": [
-          0.0,
-          0.0
-        ],
-        "alta": [
-          0.8,
-          0.0
-        ],
-        "atrelada-a-expectativa-de-vida": [
-          0.6,
           0.0
         ]
       }
@@ -4503,28 +4449,6 @@
         "com-protecao-desde-a-concepcao": [
           0.0,
           1.8
-        ]
-      }
-    },
-    "como-a-aposentadoria-e-financiada": {
-      "manifesto": [],
-      "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
-      "opcoes": {
-        "sem-sistema-publico": [
-          2.0,
-          0.0
-        ],
-        "capitalizacao": [
-          1.6,
-          0.0
-        ],
-        "misto": [
-          0.6,
-          0.0
-        ],
-        "reparticao": [
-          -1.0,
-          0.0
         ]
       }
     },
@@ -5527,6 +5451,47 @@
         ],
         "piso-alto-plurianual": [
           -2,
+          0
+        ]
+      }
+    },
+    "ferrovias-e-terminais-portuarios": {
+      "manifesto": [
+        "per413",
+        "per401"
+      ],
+      "porque": "Quem constrói e opera a carga sobre trilhos: o Estado ou concessões privadas.",
+      "opcoes": {
+        "rodovias-com-manutencao": [
+          0,
+          0
+        ],
+        "corredores-publicos-aos-portos": [
+          -1,
+          0
+        ],
+        "concessoes-com-acesso-aberto": [
+          1,
+          0
+        ],
+        "rede-publica-intermodal": [
+          -1.5,
+          0
+        ]
+      }
+    },
+    "orcamento-de-expansao-eletrica": {
+      "manifesto": [
+        "per404"
+      ],
+      "porque": "Verba pública para novas usinas: quanto mais, mais o Estado planeja o setor elétrico.",
+      "faixa": {
+        "minimo": [
+          0.5,
+          0
+        ],
+        "maximo": [
+          -0.8,
           0
         ]
       }
