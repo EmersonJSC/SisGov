@@ -24,7 +24,35 @@
   corpo, sem tomar partido.
 - **Nada de marca, bandeira, logotipo real ou personagem conhecido.**
 
-## 2. Famílias: base + detalhe
+## 2. Onde salvar
+
+Todos os ícones vão em **`src/assets/svg/`**, um arquivo `.svg` por ícone:
+
+| Pasta | O que vai nela | Exemplo |
+| --- | --- | --- |
+| `src/assets/svg/ui/` | áreas, selos e peças da tela (seção 4) | `src/assets/svg/ui/selo-industria.svg` |
+| `src/assets/svg/setor/` | setores das leis de dono (seção 5) | `src/assets/svg/setor/petroleo.svg` |
+| `src/assets/svg/leis/economia/` | leis da economia | `src/assets/svg/leis/economia/imposto-sobre-veiculos.svg` |
+| `src/assets/svg/leis/empresas/` | leis de empresas, indústria e comércio | |
+| `src/assets/svg/leis/trabalho/` | leis do trabalho | |
+| `src/assets/svg/leis/previdencia/` | previdência, assistência, família e moradia | |
+| `src/assets/svg/leis/saude/` | saúde | |
+| `src/assets/svg/leis/educacao/` | educação, ciência e cultura | |
+| `src/assets/svg/leis/infraestrutura/` | infraestrutura, energia e cidades | |
+| `src/assets/svg/leis/ambiente/` | meio ambiente e campo | |
+| `src/assets/svg/leis/seguranca/` | segurança, justiça, defesa e relações exteriores | |
+| `src/assets/svg/leis/direitos/` | direitos e costumes | |
+| `src/assets/svg/leis/governo/` | governo e instituições | |
+
+Nome do arquivo: o nome da lei em minúsculas, sem acento e sem pontuação,
+com hífen no lugar dos espaços ("Imposto sobre veículos" →
+`imposto-sobre-veiculos.svg`). O jogo acha o arquivo sozinho; quem liga a
+lei ao ícone é o campo `"icone"` da lei (ex.: `"icone": "leis/economia/imposto-sobre-veiculos"`).
+
+Artes maiores (fundos, faixas, cenas) não são ícones: ver
+[artes-de-tela.md](artes-de-tela.md).
+
+## 3. Famílias: base + detalhe
 
 Para o conjunto ficar coerente e o jogador reconhecer de longe, cada
 família tem um **elemento base** e cada lei acrescenta **um detalhe**.
@@ -37,48 +65,47 @@ família tem um **elemento base** e cada lei acrescenta **um detalhe**.
 | Regra | o objeto do assunto, sem base | balança, porta, relógio |
 | Constitucional | o objeto dentro de um livro aberto (a Constituição) | livro + banco = quem manda no banco central |
 
-## 3. Peças de interface (fazer primeiro)
+## 4. Peças de interface (fazer primeiro)
 
 | Arquivo | Desenho |
 | --- | --- |
-| `ui/area-economia` | moeda com seta subindo |
-| `ui/area-empresas` | fábrica com chaminé |
-| `ui/area-trabalho` | capacete de obra |
-| `ui/area-previdencia` | bengala ao lado de uma casa pequena |
-| `ui/area-saude` | cruz dentro de um coração |
-| `ui/area-educacao` | livro aberto com lápis |
-| `ui/area-infraestrutura` | ponte de arco |
-| `ui/area-ambiente` | folha com uma gota |
-| `ui/area-seguranca` | escudo |
-| `ui/area-direitos` | duas mãos dadas |
-| `ui/area-governo` | prédio com colunas e cúpula |
-| `ui/selo-atencao` | raio |
-| `ui/selo-industria` | engrenagem pequena |
-| `ui/selo-bloqueada` | cadeado fechado |
-| `ui/selo-exclusiva` | duas setas opostas (⇄) |
-| `ui/selo-andamento` | ampulheta |
-| `ui/ministro-sugere` | balão de fala com uma seta |
+| `src/assets/svg/ui/area-economia` | moeda com seta subindo |
+| `src/assets/svg/ui/area-empresas` | fábrica com chaminé |
+| `src/assets/svg/ui/area-trabalho` | capacete de obra |
+| `src/assets/svg/ui/area-previdencia` | bengala ao lado de uma casa pequena |
+| `src/assets/svg/ui/area-saude` | cruz dentro de um coração |
+| `src/assets/svg/ui/area-educacao` | livro aberto com lápis |
+| `src/assets/svg/ui/area-infraestrutura` | ponte de arco |
+| `src/assets/svg/ui/area-ambiente` | folha com uma gota |
+| `src/assets/svg/ui/area-seguranca` | escudo |
+| `src/assets/svg/ui/area-direitos` | duas mãos dadas |
+| `src/assets/svg/ui/area-governo` | prédio com colunas e cúpula |
+| `src/assets/svg/ui/selo-atencao` | raio |
+| `src/assets/svg/ui/selo-industria` | engrenagem pequena |
+| `src/assets/svg/ui/selo-bloqueada` | cadeado fechado |
+| `src/assets/svg/ui/selo-exclusiva` | duas setas opostas (⇄) |
+| `src/assets/svg/ui/selo-andamento` | ampulheta |
+| `src/assets/svg/ui/ministro-sugere` | balão de fala com uma seta |
 
-## 4. Setores (leis de dono)
+## 5. Setores (leis de dono)
 
 | Arquivo | Desenho |
 | --- | --- |
-| `setor/petroleo` | barril com gota |
-| `setor/mineracao` | picareta sobre pedra |
-| `setor/energia` | torre de transmissão com raio |
-| `setor/siderurgia` | viga em I com faísca |
-| `setor/bancos` | prédio de banco com colunas e moeda |
-| `setor/telecom` | antena com ondas |
-| `setor/correios` | caixa de encomenda com etiqueta |
-| `setor/ferrovias-portos` | trem de frente com âncora pequena |
-| `setor/aviacao` | avião de perfil |
-| `setor/agua` | torneira com gota |
-| `setor/estatizar` | chave passando de uma mão para um prédio público |
+| `src/assets/svg/setor/petroleo` | barril com gota |
+| `src/assets/svg/setor/mineracao` | picareta sobre pedra |
+| `src/assets/svg/setor/energia` | torre de transmissão com raio |
+| `src/assets/svg/setor/siderurgia` | viga em I com faísca |
+| `src/assets/svg/setor/bancos` | prédio de banco com colunas e moeda |
+| `src/assets/svg/setor/telecom` | antena com ondas |
+| `src/assets/svg/setor/correios` | caixa de encomenda com etiqueta |
+| `src/assets/svg/setor/ferrovias-portos` | trem de frente com âncora pequena |
+| `src/assets/svg/setor/aviacao` | avião de perfil |
+| `src/assets/svg/setor/agua` | torneira com gota |
+| `src/assets/svg/setor/estatizar` | chave passando de uma mão para um prédio público |
 
-## 5. Leis, por área
+## 6. Leis, por área
 
-Arquivos em `leis/<área>/<nome>`. O nome do arquivo segue o nome da lei,
-sem acento, com hífen.
+Cada tabela vai na pasta da área (seção 2).
 
 ### Economia
 
@@ -121,7 +148,7 @@ sem acento, com hífen.
 
 | Lei | Desenho |
 | --- | --- |
-| Leis de dono, uma por setor | ícones da seção 4 |
+| Leis de dono, uma por setor | ícones da seção 5 |
 | Como estatizar | prédio público com chave e moeda |
 | Ritmo das privatizações | martelo de leilão |
 | Preços das estatais | bomba de combustível com etiqueta |
@@ -376,18 +403,18 @@ sem acento, com hífen.
 | Verba do Judiciário | saco de dinheiro + martelo de juiz |
 | Tribunais superiores | prédio com cúpula e balança |
 
-## 6. Ordem de produção
+## 7. Ordem de produção
 
-1. Peças de interface (seção 3): 17 ícones.
-2. Setores (seção 4): 11 ícones.
+1. Peças de interface (seção 4): 17 ícones.
+2. Setores (seção 5): 11 ícones.
 3. Economia e empresas (as primeiras áreas implementadas): 51 ícones.
 4. As outras áreas, na ordem em que forem implementadas.
 
 Total: cerca de 270 ícones. Ícone que faltar usa `landmark` de reserva.
 
-## 7. Como entregar
+## 8. Como entregar
 
-- Um SVG por arquivo, no caminho da tabela, dentro de `src/assets/svg/`.
+- Um SVG por arquivo, na pasta da seção 2.
 - Uma folha de prova por área (todos os ícones da área lado a lado, em
   20 px e em 48 px, sobre as cinco cores de tipo) para conferir a família
   antes de seguir.

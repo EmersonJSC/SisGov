@@ -4,34 +4,46 @@
 > ícones. Ícones em [icones-das-leis.md](icones-das-leis.md); tela em
 > [área aberta](../jogo/interface/area-aberta.md).
 
+## Onde salvar
+
+Tudo dentro de **`public/arte/`** (a pasta das artes do jogo; regras em
+`public/arte/LEIA.md`). Arquivo que falta não quebra nada: a tela usa um
+substituto.
+
+| Pasta | O que vai nela |
+| --- | --- |
+| `public/arte/fundos/` | fundos de tela inteira (já tem `fundacao.jpg` e `carregando.jpg`) |
+| `public/arte/faixas/` | **pasta nova:** a faixa do topo de cada área aberta |
+| `public/arte/cenas/` | cenas de momento do jogo (já tem `campanha.jpg`, `vitoria.jpg`, `derrota.jpg`) |
+
 ## Estilo comum
 
-- Ilustração plana, com poucas cores e luz suave; cara de "documento de
-  governo moderno", não de foto. Mesmo estilo em todas.
+- Seguir o estilo já definido do jogo, **"Dossiê Tropical"**
+  (`docs/arte/PROMPTS.md`), o mesmo das artes que já existem.
 - Sem texto, sem bandeira, marca ou pessoa real reconhecível.
 - Espaço calmo à esquerda ou no centro, porque a interface escreve em cima.
-- Entrega: PNG ou WebP, 1920 × 1080 (fundos) e 1600 × 400 (faixas), com
-  uma versão escurecida a 60% para o modo escuro.
+- Formato **JPG**. Tamanhos: 1920 × 1080 (fundos e cenas) e 1600 × 400
+  (faixas).
 
 ## Pedidos
 
 | Arquivo | Uso | O que mostrar |
 | --- | --- | --- |
-| `fundo/mapa` | fundo do mapa político | vista de cima de um país fictício estilizado, rios e estradas em linhas finas, quase sem contraste |
-| `faixa/economia` | cabeçalho da área aberta | moedas empilhadas, gráfico subindo, prédio de banco ao fundo |
-| `faixa/empresas` | idem | fábricas com chaminés, guindastes e contêineres num porto |
-| `faixa/trabalho` | idem | trabalhadores de capacete e de escritório indo ao trabalho, de costas |
-| `faixa/previdencia` | idem | casas populares, idosos num banco de praça, de costas |
-| `faixa/saude` | idem | hospital e posto de bairro com ambulância |
-| `faixa/educacao` | idem | escola com pátio, crianças de mochila, de costas |
-| `faixa/infraestrutura` | idem | ponte, trilhos, torres de energia e estrada ao entardecer |
-| `faixa/ambiente` | idem | floresta encontrando plantação, rio no meio |
-| `faixa/seguranca` | idem | rua iluminada à noite com viatura ao longe |
-| `faixa/direitos` | idem | praça cheia de pessoas diversas, de costas |
-| `faixa/governo` | idem | prédio do Congresso fictício com cúpula |
-| `cena/crise` | jornal quando há crise | rua com fumaça leve e placas de protesto sem texto |
-| `cena/eleicao` | tela da eleição | urnas e fila de eleitores, de costas |
-| `cena/fim-de-jogo` | derrota | gabinete vazio com a cadeira virada para a janela |
+| `public/arte/fundos/mapa.jpg` | fundo do mapa político | vista de cima de um país fictício, rios e estradas em linhas finas, quase sem contraste |
+| `public/arte/faixas/economia.jpg` | topo da área aberta | moedas empilhadas, gráfico subindo, prédio de banco ao fundo |
+| `public/arte/faixas/empresas.jpg` | idem | fábricas com chaminés, guindastes e contêineres num porto |
+| `public/arte/faixas/trabalho.jpg` | idem | trabalhadores de capacete e de escritório indo ao trabalho, de costas |
+| `public/arte/faixas/previdencia.jpg` | idem | casas populares, idosos num banco de praça, de costas |
+| `public/arte/faixas/saude.jpg` | idem | hospital e posto de bairro com ambulância |
+| `public/arte/faixas/educacao.jpg` | idem | escola com pátio, crianças de mochila, de costas |
+| `public/arte/faixas/infraestrutura.jpg` | idem | ponte, trilhos, torres de energia e estrada ao entardecer |
+| `public/arte/faixas/ambiente.jpg` | idem | floresta encontrando plantação, rio no meio |
+| `public/arte/faixas/seguranca.jpg` | idem | rua iluminada à noite com viatura ao longe |
+| `public/arte/faixas/direitos.jpg` | idem | praça cheia de pessoas diversas, de costas |
+| `public/arte/faixas/governo.jpg` | idem | prédio do Congresso fictício com cúpula |
+| `public/arte/cenas/crise.jpg` | jornal quando há crise | rua com fumaça leve e placas de protesto sem texto |
 
-Ordem: `faixa/economia` e `faixa/empresas` primeiro (são as áreas em
-implementação), depois o `fundo/mapa`, depois o resto.
+Eleição e fim de jogo já têm arte (`cenas/campanha.jpg` e `cenas/derrota.jpg`).
+
+Ordem: `faixas/economia.jpg` e `faixas/empresas.jpg` primeiro (são as áreas
+em implementação), depois `fundos/mapa.jpg`, depois o resto.
