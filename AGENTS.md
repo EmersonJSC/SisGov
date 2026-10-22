@@ -1,31 +1,31 @@
 # Referências obrigatórias do SisGov
 
 > **Status: VIGENTE.** Regras para quem trabalha no código, pessoas ou IA.
-> Atualizado em 12/out/2026 (V1-01).
+> Atualizado em 22/out/2026 (depois da limpeza dos documentos).
 
 O documento mestre é o [PLANO.md](PLANO.md), única fonte de status. Antes de
 qualquer trabalho, leia:
 
-1. O chamado em [docs/v1/chamados.md](docs/v1/chamados.md) e a linha dele no PLANO.
-2. [docs/v1/engenharia.md](docs/v1/engenharia.md): como um chamado é feito e
-   quando está pronto.
-3. [docs/v1/diferenciacao-d4.md](docs/v1/diferenciacao-d4.md): **nada do
-   Democracy 4 entra no projeto.** Não abra `docs/Exemplos/` para escrever
-   conteúdo.
-4. Conforme o assunto: [arquitetura](docs/v1/arquitetura.md),
-   [reestruturação](docs/v1/reestruturacao.md) ou [conteúdo](docs/v1/conteudo.md).
+1. [PLANO.md](PLANO.md): como trabalhamos (uma mecânica por vez), marcos,
+   decisões e o que falta.
+2. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é.
+3. A mecânica do assunto em [docs/jogo/mecanicas/](docs/jogo/mecanicas/README.md)
+   e, se for lei, o desenho em [docs/jogo/leis/](docs/jogo/leis/README.md).
+4. Referência técnica: os `.md` de `src/engine/` e [docs/arquitetura/](docs/arquitetura/).
 
-Documentos em `docs/desativado/` **não são para seguir**. O índice completo, com o
-status de cada documento, está em [docs/README.md](docs/README.md).
+Os documentos antigos (`docs/v1/`, `docs/desativado/`) foram tirados da `main`
+em 21/out; estão na branch `gpt/estrutura-docs` e **não são para seguir**.
+Nada do Democracy 4 entra no projeto; não abra `docs/Exemplos/` para escrever
+conteúdo.
 
 ## Regras
 
-- Um chamado por vez. Ideia nova vai para [docs/v1/ideias.md](docs/v1/ideias.md).
+- Uma mecânica por vez (ver os marcos do PLANO). Ideia nova vai para o PLANO, seção de pendências.
 - Aceite = itens do chamado, cada um com teste, e `npm run check` verde na máquina
   do autor. Trabalho direto na `main` (D-22).
 - Refatorar e mudar comportamento são chamados separados.
-- Commit com `V1-NN: o que mudou`. `git push` só com a palavra do autor.
-- Na terceira tentativa sem fechar um chamado, pare e reveja com o autor.
+- Commit com o assunto na frente (`tempo: …`, `reforma: …`, `conserto: …`). `git push` só com a palavra do autor.
+- Na terceira tentativa sem fechar uma tarefa, pare e reveja com o autor.
 - O motor não conhece nomes de leis, partidos ou países (D-03). Leis e índices são
   do mundo; o país declara só o estado inicial (D-04, D-38).
 - Jogabilidade primeiro, realidade como base: toda lei tem ligação com o mundo real, mas lei inventada é permitida e número não precisa de precisão empírica ([regras](docs/jogo/mecanicas/leis.md#29-como-escrever-uma-lei-nova)).

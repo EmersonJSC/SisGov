@@ -9,9 +9,8 @@ A meta da versão 1 é um jogo do gênero do Democracy 4, melhorado e sem copiar
 ## Antes de começar
 
 1. **[PLANO.md](PLANO.md)**: visão, escopo da versão 1, marcos, decisões e a única fonte de status.
-2. [docs/v1/chamados.md](docs/v1/chamados.md): o que cada chamado faz e como é aceito.
-3. [docs/v1/engenharia.md](docs/v1/engenharia.md): como trabalhamos.
-4. [docs/v1/diferenciacao-d4.md](docs/v1/diferenciacao-d4.md): o que nunca vem do Democracy 4.
+2. [AGENTS.md](AGENTS.md): regras de trabalho.
+3. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é; mecânicas em [docs/jogo/mecanicas/](docs/jogo/mecanicas/README.md).
 5. [docs/README.md](docs/README.md): índice de todos os documentos, com o que é vigente, referência técnica ou desativado.
 
 Documentos em `docs/desativado/` são histórico e não são para seguir.
@@ -26,7 +25,7 @@ Documentos em `docs/desativado/` são histórico e não são para seguir.
 - `scripts/`: ferramentas de conteúdo (fichas e rede).
 - `src/tests`: testes automatizados (Vitest).
 
-O destino de cada parte está em [docs/v1/reestruturacao.md](docs/v1/reestruturacao.md).
+Referência técnica: os `.md` de `src/engine/` e [docs/arquitetura/](docs/arquitetura/).
 
 ## Ambiente
 
@@ -43,6 +42,6 @@ npm run check   # formatação, lint, tipos, build e testes
 Projeto pessoal, trabalho direto na `main` (D-22).
 
 1. Pegue o próximo chamado aberto na seção 5 do [PLANO.md](PLANO.md).
-2. Faça só o que o chamado pede; ideia nova vai para [docs/v1/ideias.md](docs/v1/ideias.md).
+2. Faça só o que a tarefa pede; ideia nova vai para o PLANO.
 3. Rode `npm run check`. Verde mais os itens do aceite = chamado pronto.
 4. Commit com o ID do chamado (`V1-NN: …`) e marque `[x]` no PLANO com data, commit e teste.
