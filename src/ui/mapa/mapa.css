@@ -7205,51 +7205,62 @@ span.el-mini {
   }
 }
 
-/* Bolha futurista (22/out, docs/jogo/interface/area-aberta.md 4.6): vidro
-   escuro, um aro e o anel de nível na cor da família da lei, ícone branco.
-   Poucas camadas: o brilho só aparece no foco. Sem drop-shadow por nó
-   (custo da animação, ver acima). */
+/* Bolha da lei, proposta A (22/out, aprovada pelo autor): gêmea da bolha
+   de índice, tingida pela família da lei. Disco escuro com tom da família,
+   aro e ícone suaves na mesma cor, anel de nível vivo. Quadrada e escudo
+   ganham um aro interno fino (constitucional). Sem drop-shadow por nó. */
 .no-lei.familia-imposto {
-  --fam: #ffb238;
+  --fam-fundo: #2a2618;
+  --fam-aro: #c9a24a;
+  --fam-anel: #ffb238;
+  --fam-icone: #f2d79a;
 }
 .no-lei.familia-verba {
-  --fam: #3fe0a0;
+  --fam-fundo: #18271f;
+  --fam-aro: #4fae84;
+  --fam-anel: #3fe0a0;
+  --fam-icone: #a8ecc8;
 }
 .no-lei.familia-regra {
-  --fam: #38c8ff;
+  --fam-fundo: #172430;
+  --fam-aro: #4b97bf;
+  --fam-anel: #38c8ff;
+  --fam-icone: #a9dcf3;
 }
 .no-lei.familia-constituicao {
-  --fam: #e6f6ff;
+  --fam-fundo: #24252a;
+  --fam-aro: #b9c2cc;
+  --fam-anel: #e6f6ff;
+  --fam-icone: #eef3f8;
 }
 
 .no-lei[class*="familia-"] {
-  --icone: #eaf7ff;
+  --icone: var(--fam-icone);
+  --fundo-lei: var(--fam-fundo);
 }
 
 .no-lei[class*="familia-"] .disco {
-  fill: #0f1a25;
-  stroke: var(--fam);
-  stroke-width: 2;
+  fill: var(--fam-fundo);
+  stroke: var(--fam-aro);
+  stroke-width: 2.5;
 }
 
-.no-lei .reflexo {
-  fill: #ffffff;
-  opacity: 0.06;
-  pointer-events: none;
+.no-lei[class*="familia-"] .aro-interno {
+  fill: none;
+  stroke: var(--fam-aro);
+  stroke-opacity: 0.55;
+  stroke-width: 1.2;
 }
 
-/* o anel de nível usa a cor da família, fino, sem trilha pesada */
 .no-lei[class*="familia-"] .anel-nivel .trilha {
-  stroke: var(--fam);
-  stroke-opacity: 0.12;
+  stroke: var(--fam-anel);
+  stroke-opacity: 0.18;
 }
 
 .no-lei[class*="familia-"] .anel-nivel .cheio {
-  stroke: var(--fam);
-  stroke-opacity: 0.9;
+  stroke: var(--fam-anel);
 }
 
-/* sem halo parado nem arcos de vários ministérios em volta */
 .no-lei[class*="familia-"] .halo {
   stroke: none;
   fill: none;
@@ -7262,23 +7273,27 @@ span.el-mini {
 .no-lei[class*="familia-"]:hover .disco,
 .no-lei[class*="familia-"].foco .disco,
 .no-lei[class*="familia-"].selecionada .disco {
-  fill: #16273a;
-  stroke: var(--fam);
-  stroke-width: 2.5;
+  fill: color-mix(in srgb, var(--fam-fundo) 75%, var(--fam-aro));
+  stroke: var(--fam-anel);
 }
 
 .no-lei[class*="familia-"]:hover .halo,
 .no-lei[class*="familia-"].selecionada .halo,
 .no-lei[class*="familia-"].foco .halo {
   fill: none;
-  stroke: var(--fam);
-  stroke-opacity: 0.35;
-  stroke-width: 5;
+  stroke: var(--fam-anel);
+  stroke-opacity: 0.3;
+  stroke-width: 4;
 }
 
 .no-lei[class*="familia-"].selecionada,
 .no-lei[class*="familia-"].foco {
   --icone: #ffffff;
+}
+
+.no-lei[class*="familia-"].selecionada .anel-nivel .cheio,
+.no-lei[class*="familia-"].foco .anel-nivel .cheio {
+  stroke: var(--fam-anel);
 }
 
 /* a família já diz o tipo: sem anéis de textura dentro da bolha */

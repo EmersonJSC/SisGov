@@ -1,5 +1,7 @@
-"""Peças dos ícones das leis (24 × 24, traço). F = forma com preenchimento leve."""
-F = 'fill="rgba(234,247,255,.14)"'
+"""Peças dos ícones das leis (24 × 24, traço). F = forma com preenchimento leve.
+
+A cor é `currentColor`: a bolha da lei decide a cor (família da lei)."""
+F = 'fill="currentColor" fill-opacity=".16"'
 P = {
  "moeda": f'<circle cx="12" cy="12" r="8" {F}/><circle cx="12" cy="12" r="5.2"/>',
  "pct": '<path d="M8 16L16 8"/><circle cx="8.6" cy="8.6" r="1.7"/><circle cx="15.4" cy="15.4" r="1.7"/>',

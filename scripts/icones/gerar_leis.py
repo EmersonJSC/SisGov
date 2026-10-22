@@ -158,14 +158,14 @@ ICONES = {
 }
 
 ABRE = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" '
-        'stroke="#EAF7FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">')
+        'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">')
 
 
 def svg(principal, detalhe):
     corpo = P[principal]
     if detalhe:
         corpo = f'<g transform="translate(-1 -1) scale(.92)">{corpo}</g>'
-        corpo += ('<circle cx="18.4" cy="18.4" r="5.3" fill="#0D1620" stroke="#EAF7FF" stroke-width="1.1"/>'
+        corpo += ('<circle cx="18.4" cy="18.4" r="5.3" style="fill:var(--fundo-lei,#0D1620)" stroke-width="1.1"/>'
                   f'<g transform="translate(14.2 14.2) scale(.35)" stroke-width="4">{P[detalhe]}</g>')
     return ABRE + corpo + "</svg>\n"
 

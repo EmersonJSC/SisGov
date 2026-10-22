@@ -534,13 +534,8 @@ const NoLei = memo(function NoLei({
           <Forma forma={forma} className="halo" r={r + 9} />
           {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
           <Forma forma={forma} className="disco" r={r} />
-          {forma === "circulo" ? (
-            <ellipse
-              className="reflexo"
-              cy={-r * 0.5}
-              rx={r * 0.5}
-              ry={r * 0.2}
-            />
+          {forma !== "circulo" ? (
+            <Forma forma={forma} className="aro-interno" r={r - 5} />
           ) : null}
           <TexturaDoTipo tipo={tipoDaLei(lei)} r={r} />
           {forma === "circulo" && coresExtras.length > 0 ? (
