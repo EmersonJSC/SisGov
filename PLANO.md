@@ -30,7 +30,7 @@ a tela (`src/ui`) fica mais para o final.**
 | --- | --- | --- | --- |
 | 1 | Tempo | pronto | em andamento |
 | — | **Índice de conteúdo** (fonte única em YAML; gera os JSONs) | formato aprovado | a fazer |
-| — | **Reforma das leis** (auditoria e reescrita em lotes) | regras em leis.md 2.3 | a fazer |
+| — | **Reforma das leis** (auditoria e reescrita em lotes) | desenho das 11 áreas em `docs/jogo/leis/` (21/out), aguardando aprovação do autor | a fazer |
 | 2 | Leis | pronto | a fazer |
 | 3–15 | demais | a escrever | a fazer |
 
