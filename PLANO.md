@@ -60,10 +60,11 @@ a tela (`src/ui`) fica mais para o final.**
 ### Molde das leis (22/out, proposta)
 - Desenho: [molde-das-leis.md](docs/jogo/mecanicas/molde-das-leis.md), aprovado em 22/out. Plano: [2026-10-22-molde-das-leis.md](docs/superpowers/plans/2026-10-22-molde-das-leis.md).
 - Limite de 8 a 12 leis por área: só aviso até o autor decidir Contas públicas.
-- [ ] Verificador do molde (teste)
-- [ ] Inventário das 242 leis por área nova, com destino de cada uma
-- [ ] Áreas por assunto no país; família lida da lei, não adivinhada
-- [ ] Catálogo novo no formato v4, uma área por vez (Contas públicas primeiro)
+- [x] Verificador do molde (teste)
+- [x] Inventário das leis por área nova (`npm run leis:inventario` → docs/jogo/leis/inventario.md)
+- [x] Áreas por assunto no país; família lida da lei, não adivinhada
+- [ ] Catálogo novo no formato v4, uma área por vez. **Contas públicas feita** (15 leis v4, 3 saíram; `scripts/leis/paraV4.ts` converte sem mudar números). Faltam as outras 10 áreas.
+- [ ] Mecânica 4: juntar "Destino da sobra" ao fundo soberano (comanda o cofre) e tirar a contribuição sobre salários de dentro da previdência para uma lei própria
 - [ ] Depois, com amostra em HTML: mapa em faixas e filtro; janela da lei; eleitorado em janela
 
 ### Mudanças de código já decididas no escopo

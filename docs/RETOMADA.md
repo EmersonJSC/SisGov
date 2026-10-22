@@ -52,6 +52,15 @@ Fora da versão 1: STF, mercado do Victoria 3, Congresso propondo leis e veto.
 
 ## O que estamos fazendo agora (atualizado 22/out, 13h)
 
+**Feito em 22/out (tarde):** molde das leis aprovado e implantado (plano
+`docs/superpowers/plans/2026-10-22-molde-das-leis.md`, tarefas 1 a 5;
+registro em `.superpowers/sdd/2026-10-22-molde-das-leis/progress.md`).
+11 áreas por assunto no mapa; Contas públicas no molde v4. `npm run check`
+(GPT): só falham "três leis piloto" (antiga) e, às vezes, o tempo de
+`partida.test` com a suíte inteira. Próximo: as outras áreas no molde
+(`scripts/leis/paraV4.ts` + um arquivo em `scripts/leis/molde/`), mecânica
+4, e as amostras da janela da lei e do eleitorado em janela.
+
 **Mudou o rumo:** antes do orçamento, o **molde das leis**. Proposta em
 [mecanicas/molde-das-leis.md](jogo/mecanicas/molde-das-leis.md), esperando
 o autor revisar: seis famílias com cor (imposto dourado, verba verde,
