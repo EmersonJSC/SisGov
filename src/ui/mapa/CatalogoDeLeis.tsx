@@ -7,6 +7,7 @@ import { useEffect, type CSSProperties } from "react";
 import type { VisaoArea, VisaoLei } from "../../app/partida";
 import { Icone } from "./Icone";
 import { ICONE_INTERFACE, ICONE_LEI } from "./icones";
+import { iconeLei } from "./iconesPersonalizados";
 
 const NOME_NIVEL: Readonly<Record<string, string>> = {
   petrea: "Cláusula pétrea",
@@ -109,7 +110,10 @@ export function CatalogoDeLeis({
                           nome={
                             lei.bloqueio
                               ? ICONE_INTERFACE.trancada
-                              : (ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei)
+                              : iconeLei(
+                                  lei.id,
+                                  ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei,
+                                )
                           }
                           tamanho={22}
                         />

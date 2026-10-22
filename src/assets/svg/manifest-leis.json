@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "base": "src/assets/svg",
+  "icons": {
+    "imposto-renda-pessoas": {
+      "area": "economia",
+      "name": "Imposto sobre a renda das pessoas",
+      "path": "leis/economia/imposto-sobre-a-renda-das-pessoas.svg"
+    },
+    "imposto-propriedade-urbana-rural": {
+      "area": "economia",
+      "name": "Imposto sobre imóveis e terras",
+      "path": "leis/economia/imposto-sobre-imoveis-e-terras.svg"
+    },
+    "imposto-sobre-consumo": {
+      "area": "economia",
+      "name": "Imposto sobre o consumo",
+      "path": "leis/economia/imposto-sobre-o-consumo.svg"
+    },
+    "taxa-basica-de-juros": {
+      "area": "economia",
+      "name": "Juros básicos",
+      "path": "leis/economia/juros-basicos.svg"
+    },
+    "fundo-soberano": {
+      "area": "economia",
+      "name": "Fundo soberano",
+      "path": "leis/economia/fundo-soberano.svg"
+    },
+    "politica-industrial": {
+      "area": "empresas",
+      "name": "Política industrial",
+      "path": "leis/empresas/politica-industrial.svg"
+    },
+    "controle-de-precos": {
+      "area": "empresas",
+      "name": "Controle de preços",
+      "path": "leis/empresas/controle-de-precos.svg"
+    },
+    "seguro-desemprego": {
+      "area": "trabalho",
+      "name": "Seguro-desemprego",
+      "path": "leis/trabalho/seguro-desemprego.svg"
+    },
+    "verba-do-programa-habitacional": {
+      "area": "previdencia",
+      "name": "Verba do programa habitacional",
+      "path": "leis/previdencia/verba-do-programa-habitacional.svg"
+    },
+    "vacinacao-obrigatoria": {
+      "area": "saude",
+      "name": "Vacinação obrigatória",
+      "path": "leis/saude/vacinacao-obrigatoria.svg"
+    },
+    "verba-da-saude-acima-do-piso": {
+      "area": "saude",
+      "name": "Prioridade para recursos adicionais da saúde",
+      "path": "leis/saude/prioridade-para-recursos-adicionais-da-saude.svg"
+    },
+    "ensino-obrigatorio": {
+      "area": "educacao",
+      "name": "Ensino obrigatório",
+      "path": "leis/educacao/ensino-obrigatorio.svg"
+    },
+    "investimento-em-infraestrutura": {
+      "area": "infraestrutura",
+      "name": "Investimento em infraestrutura",
+      "path": "leis/infraestrutura/investimento-em-infraestrutura.svg"
+    },
+    "preco-do-carbono": {
+      "area": "ambiente",
+      "name": "Preço do carbono",
+      "path": "leis/ambiente/preco-do-carbono.svg"
+    },
+    "armas-de-fogo": {
+      "area": "seguranca",
+      "name": "Armas de fogo",
+      "path": "leis/seguranca/armas-de-fogo.svg"
+    },
+    "direito-a-moradia-na-constituicao": {
+      "area": "direitos",
+      "name": "Direito à moradia na Constituição",
+      "path": "leis/direitos/direito-a-moradia-na-constituicao.svg"
+    },
+    "governadores": {
+      "area": "governo",
+      "name": "Governadores",
+      "path": "leis/governo/governadores.svg"
+    }
+  }
+}

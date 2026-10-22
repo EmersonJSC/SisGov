@@ -845,3 +845,34 @@ ART STYLE "Dossie Tropical": a mix of three references. (1) Base, like Suzerain:
 
 SUBJECT: a city avenue during a crisis: light smoke, protesters seen from behind holding blank placards, a closed shop with metal shutters, a riot police line far away, scattered newspapers on the ground, tense amber and grey light. Center calm for a headline box. FORMAT: 16:9, 2560x1440 px.
 ```
+
+## Ícones das leis (pedido de 22/out/2026)
+
+Lista completa, pastas e famílias em `docs/arte/icones-das-leis.md`. Use o
+prompt abaixo para **todos** os ícones e troque só as duas últimas linhas
+(`FAMILY` e `SUBJECT`), pegando a família e o desenho da lista. Exemplo
+preenchido: imposto sobre veículos.
+
+Arquivo: `src/assets/svg/leis/<área>/<nome-da-lei>.png`
+
+```
+PROJECT CONTEXT: SisGov is a political strategy game in Brazilian Portuguese. The player runs a political party in a fictional Brazil-like tropical presidential republic: picks the president, signs real laws, manages the budget, faces crises and fights an election every four years. The screen is the president's desk.
+
+ART STYLE "Dossie Tropical": a mix of three references. (1) Base, like Suzerain: hand-painted gouache and oil illustration, tactile paper, dossiers, analog photos, rubber stamps, maps with pins, sepia, aged beige paper, olive green, military grey, desaturated 20th-century tones. (2) Weight, like Frostpunk: heavy brutalist concrete and dark iron, Brasilia-style modernist architecture, warm amber lamp light against cold shadow, a sense of pressure and consequence. (3) Color and dry humor, like Tropico 6: tropical sunlight, palm-leaf shadows, and small vibrant accents (sun yellow, jungle green, coral, turquoise) used sparingly against the muted base; people slightly exaggerated and expressive, never a cartoon. No readable text, no logos, no real political party symbols, no real people.
+
+ICON RULES: a game icon for one law, painted as a round medallion. Transparent PNG, 512x512 px. The painting sits inside a perfect circle 480 px wide, centered; nothing outside the circle. Inside the circle: a flat soft background color with subtle aged-paper texture, then ONE large central object painted in gouache with warm amber light from the top-left and a soft shadow, plus at most one small secondary detail. Bold readable silhouette that still reads at 40 px. No scene, no text, no letters or numbers (except a % engraved on a coin when asked), no people's faces, no flags, no logos.
+
+FAMILY: TAX — circle background soft gold #e8c770; a small engraved brass coin with a % sign in the lower-right corner.
+SUBJECT: a compact 1970s family car seen from the front three-quarter view.
+```
+
+Famílias para a linha `FAMILY` (copie a que for da lei):
+
+```
+FAMILY: TAX — circle background soft gold #e8c770; a small engraved brass coin with a % sign in the lower-right corner.
+FAMILY: BUDGET — circle background soft olive #a9b47c; a small cloth money bag with coins in the lower-right corner.
+FAMILY: OWNERSHIP — circle background greyish lilac #a99bb8; an old iron key in the lower-right corner.
+FAMILY: RULE — circle background grey-blue #8fa7b3; only the main object, no extra detail.
+FAMILY: PROGRAM — circle background soft coral #e3a08a; the main object tied with a small ribbon.
+FAMILY: CONSTITUTION — circle background aged paper #efe4cc with a thin sepia rim; the main object resting on a thick open book.
+```

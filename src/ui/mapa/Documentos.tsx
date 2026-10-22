@@ -35,6 +35,7 @@ import {
 } from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
+import { iconeLei } from "./iconesPersonalizados";
 import { corDaBondade, intensidadeDaBolha } from "./intensidade";
 import { ficaNaPresidencia, type BaseMapa } from "./layout";
 
@@ -581,7 +582,7 @@ export function DocumentoLei({
       setor={lei.emVigor ? "Alterar lei" : "Nova lei"}
       numero={numero}
       cor={cor}
-      icone={ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei}
+      icone={iconeLei(lei.id, ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei)}
       onFechar={onFechar}
       rotulo={`Folha da lei ${lei.nome}`}
       {...janela}
@@ -1170,7 +1171,7 @@ export function DocumentoBolha({
           <Icone
             nome={
               lei
-                ? (ICONE_LEI[r.de] ?? ICONE_INTERFACE.lei)
+                ? iconeLei(r.de, ICONE_LEI[r.de] ?? ICONE_INTERFACE.lei)
                 : (ICONE_BOLHA[r.de] ?? "chart-line")
             }
             tamanho={20}
@@ -1294,7 +1295,10 @@ export function DocumentoBolha({
                 <Icone
                   nome={
                     leis.has(r.para)
-                      ? (ICONE_LEI[r.para] ?? ICONE_INTERFACE.lei)
+                      ? iconeLei(
+                          r.para,
+                          ICONE_LEI[r.para] ?? ICONE_INTERFACE.lei,
+                        )
                       : (ICONE_BOLHA[r.para] ?? "chart-line")
                   }
                   tamanho={15}

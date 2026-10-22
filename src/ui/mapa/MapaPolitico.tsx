@@ -43,6 +43,7 @@ import {
 } from "./intensidade";
 import { Icone, IconeSvg } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
+import { iconeLei } from "./iconesPersonalizados";
 import {
   PRESIDENCIA,
   ehConstitucional,
@@ -533,7 +534,7 @@ const NoLei = memo(function NoLei({
             forma={forma}
           />
           <IconeSvg
-            nome={ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei}
+            nome={iconeLei(lei.id, ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei)}
             tamanho={r * 1.08}
             cor="var(--icone)"
           />

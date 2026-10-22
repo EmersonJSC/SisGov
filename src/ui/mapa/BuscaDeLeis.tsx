@@ -15,6 +15,7 @@ import type { VisaoArea, VisaoBolha, VisaoLei } from "../../app/partida";
 import { buscar, type Resultado } from "./busca";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
+import { iconeLei } from "./iconesPersonalizados";
 
 const SUGESTOES = [
   "privatizar",
@@ -150,7 +151,10 @@ export function BuscaDeLeis({
                     <Icone
                       nome={
                         r.tipo === "lei"
-                          ? (ICONE_LEI[r.id] ?? ICONE_INTERFACE.lei)
+                          ? iconeLei(
+                              r.id,
+                              ICONE_LEI[r.id] ?? ICONE_INTERFACE.lei,
+                            )
                           : (ICONE_BOLHA[r.id] ?? "chart-line")
                       }
                       tamanho={22}

@@ -9,30 +9,38 @@
 
 ## 1. Estilo (vale para todos)
 
-- **Arquivo:** SVG, `viewBox="0 0 24 24"`, fundo transparente, sem texto,
-  sem fontes, sem imagens embutidas.
-- **Traço:** branco `#FFFFFF`, espessura 2, pontas e cantos arredondados.
-  O ícone fica **dentro de uma bolinha colorida** (a cor vem do tipo da lei,
-  ver a tela), por isso é branco e de uma cor só.
-- **Legível em 20 px:** no máximo 3 elementos; nada de detalhe fino. Se
-  precisar escolher, prefira a silhueta.
-- **Uma família visual:** mesmo peso de traço, mesmo nível de detalhe, mesmas
-  proporções. Objetos do dia a dia (casa, carro, fábrica, moeda), não
-  símbolos abstratos.
+**Ícone pintado, não desenho de traço.** Cada lei vira uma **medalha
+pintada à mão** no estilo do jogo, "Dossiê Tropical" (guia em
+[PROMPTS.md](PROMPTS.md)): guache e óleo, papel envelhecido, luz âmbar,
+um acento tropical. A medalha **é** a bolha da lei no mapa; a interface só
+desenha por fora o anel do tipo de lei, os selos e a cor da bússola.
+
+- **Arquivo:** PNG com fundo transparente, **512 × 512**. O desenho fica
+  dentro de um **círculo** de 480 px de diâmetro, centrado (a bolha corta
+  o que passar disso).
+- **Um objeto, grande e centrado**, reconhecível com 40 px na tela. No
+  máximo 2 elementos (o objeto principal e um detalhe).
+- **Fundo do círculo:** cor lisa e suave da família (seção 3), com textura
+  de papel. Nada de cena atrás.
+- **Sem texto, números ou letras**, salvo o símbolo `%` na moeda dos
+  impostos.
 - **Temas sensíveis** (aborto, suicídio assistido, pena de morte, drogas,
-  prostituição): desenho simbólico e neutro, sem cena, sem sangue, sem
-  corpo, sem tomar partido.
-- **Nada de marca, bandeira, logotipo real ou personagem conhecido.**
+  prostituição): objeto simbólico e neutro, sem cena, sem corpo, sem
+  sangue, sem tomar partido.
+- **Nada de marca, bandeira, logotipo real ou pessoa real.**
+- O prompt pronto, em inglês, está em [PROMPTS.md](PROMPTS.md), seção
+  "Ícones das leis": troque só a linha `SUBJECT`.
 
 ## 2. Onde salvar
 
-Todos os ícones vão em **`src/assets/svg/`**, um arquivo `.svg` por ícone:
+Todos os ícones vão em **`src/assets/svg/`**, um arquivo **`.png`** por ícone
+(o nome da pasta é antigo; ela aceita PNG, WebP e SVG):
 
 | Pasta | O que vai nela | Exemplo |
 | --- | --- | --- |
-| `src/assets/svg/ui/` | áreas, selos e peças da tela (seção 4) | `src/assets/svg/ui/selo-industria.svg` |
-| `src/assets/svg/setor/` | setores das leis de dono (seção 5) | `src/assets/svg/setor/petroleo.svg` |
-| `src/assets/svg/leis/economia/` | leis da economia | `src/assets/svg/leis/economia/imposto-sobre-veiculos.svg` |
+| `src/assets/svg/ui/` | áreas, selos e peças da tela (seção 4) | `src/assets/svg/ui/selo-industria.png` |
+| `src/assets/svg/setor/` | setores das leis de dono (seção 5) | `src/assets/svg/setor/petroleo.png` |
+| `src/assets/svg/leis/economia/` | leis da economia | `src/assets/svg/leis/economia/imposto-sobre-veiculos.png` |
 | `src/assets/svg/leis/empresas/` | leis de empresas, indústria e comércio | |
 | `src/assets/svg/leis/trabalho/` | leis do trabalho | |
 | `src/assets/svg/leis/previdencia/` | previdência, assistência, família e moradia | |
@@ -46,8 +54,9 @@ Todos os ícones vão em **`src/assets/svg/`**, um arquivo `.svg` por ícone:
 
 Nome do arquivo: o nome da lei em minúsculas, sem acento e sem pontuação,
 com hífen no lugar dos espaços ("Imposto sobre veículos" →
-`imposto-sobre-veiculos.svg`). O jogo acha o arquivo sozinho; quem liga a
-lei ao ícone é o campo `"icone"` da lei (ex.: `"icone": "leis/economia/imposto-sobre-veiculos"`).
+`imposto-sobre-veiculos.png`). A lei é ligada ao arquivo em
+`src/assets/svg/manifest-leis.json` (id da lei → caminho); quem implementa
+as leis atualiza o manifesto.
 
 Artes maiores (fundos, faixas, cenas) não são ícones: ver
 [artes-de-tela.md](artes-de-tela.md).
@@ -57,13 +66,14 @@ Artes maiores (fundos, faixas, cenas) não são ícones: ver
 Para o conjunto ficar coerente e o jogador reconhecer de longe, cada
 família tem um **elemento base** e cada lei acrescenta **um detalhe**.
 
-| Família | Base | Exemplo |
-| --- | --- | --- |
-| Imposto | moeda com o símbolo `%` gravado, no canto inferior direito | moeda + casa = imposto sobre imóveis |
-| Verba | saco de dinheiro pequeno no canto inferior direito | saco + trilho = verba para ferrovias |
-| Dono de setor | o objeto do setor + uma chave no canto | barril + chave = dono do petróleo |
-| Regra | o objeto do assunto, sem base | balança, porta, relógio |
-| Constitucional | o objeto dentro de um livro aberto (a Constituição) | livro + banco = quem manda no banco central |
+| Família | Fundo do círculo | Base | Exemplo |
+| --- | --- | --- | --- |
+| Imposto | dourado suave `#e8c770` | moeda de latão com `%` gravado, pequena, no canto inferior direito | moeda + casa = imposto sobre imóveis |
+| Verba | verde-oliva suave `#a9b47c` | saco de pano com moedas, pequeno, no canto inferior direito | saco + trilho = verba para ferrovias |
+| Dono de setor | lilás acinzentado `#a99bb8` | chave de ferro antiga no canto | barril + chave = dono do petróleo |
+| Regra | azul-acinzentado `#8fa7b3` | só o objeto do assunto | balança, porta, relógio |
+| Programa | coral suave `#e3a08a` | só o objeto, com fita amarrada | prato com fita = comida garantida |
+| Constitucional | papel `#efe4cc` com borda sépia | o objeto apoiado num livro grosso aberto | livro + banco = quem manda no banco central |
 
 ## 4. Peças de interface (fazer primeiro)
 
@@ -410,12 +420,12 @@ Cada tabela vai na pasta da área (seção 2).
 3. Economia e empresas (as primeiras áreas implementadas): 51 ícones.
 4. As outras áreas, na ordem em que forem implementadas.
 
-Total: cerca de 270 ícones. Ícone que faltar usa `landmark` de reserva.
+Total: cerca de 270 ícones. **Fazer todos**, área por área. Ícone que faltar
+usa o desenho antigo de reserva.
 
 ## 8. Como entregar
 
-- Um SVG por arquivo, na pasta da seção 2.
+- Um PNG por arquivo, na pasta da seção 2.
 - Uma folha de prova por área (todos os ícones da área lado a lado, em
-  20 px e em 48 px, sobre as cinco cores de tipo) para conferir a família
-  antes de seguir.
+  40 px e em 128 px) para conferir que a família está igual antes de seguir.
 - Registrar a origem e a licença no README dos SVGs.
