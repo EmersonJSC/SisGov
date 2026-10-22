@@ -7204,3 +7204,75 @@ span.el-mini {
     grid-column: 1 / -1;
   }
 }
+
+/* Bolha futurista (22/out, docs/jogo/interface/area-aberta.md 4.6): vidro
+   escuro, aro e brilho na cor da família da lei, ícone branco. Sem
+   drop-shadow por nó (custo da animação, ver acima): o brilho é um traço
+   largo e transparente no halo. */
+.no-lei.familia-imposto {
+  --fam: #ffb238;
+}
+.no-lei.familia-verba {
+  --fam: #3fe0a0;
+}
+.no-lei.familia-regra {
+  --fam: #38c8ff;
+}
+.no-lei.familia-constituicao {
+  --fam: #e6f6ff;
+}
+
+.no-lei[class*="familia-"] {
+  --icone: #eaf7ff;
+}
+
+.no-lei[class*="familia-"] .disco {
+  fill: #0f1a25;
+  stroke: var(--fam);
+  stroke-width: 2.5;
+}
+
+.no-lei[class*="familia-"] .aro-interno {
+  fill: none;
+  stroke: var(--fam);
+  stroke-opacity: 0.35;
+  stroke-width: 1;
+}
+
+.no-lei .reflexo {
+  fill: #ffffff;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.no-lei[class*="familia-"] .halo {
+  stroke: var(--fam);
+  stroke-opacity: 0.22;
+  stroke-width: 7;
+  fill: none;
+}
+
+.no-lei.familia-constituicao .aro-interno {
+  stroke-opacity: 0.8;
+  stroke-width: 1.4;
+}
+
+.no-lei[class*="familia-"]:hover .disco,
+.no-lei[class*="familia-"].foco .disco,
+.no-lei[class*="familia-"].selecionada .disco {
+  fill: #16273a;
+  stroke: var(--fam);
+  stroke-width: 3.5;
+}
+
+.no-lei[class*="familia-"].selecionada .halo,
+.no-lei[class*="familia-"].foco .halo {
+  stroke: var(--fam);
+  stroke-opacity: 0.5;
+  stroke-width: 9;
+}
+
+.no-lei[class*="familia-"].selecionada,
+.no-lei[class*="familia-"].foco {
+  --icone: #ffffff;
+}

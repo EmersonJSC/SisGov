@@ -349,6 +349,19 @@ export function formaDaLei(lei: VisaoLei): FormaLei {
 
 /** Tipo da lei na tela: a camada da mesa (Constituição, Lei, Alavanca). */
 type TipoDeLei = "constituicao" | "lei" | "alavanca";
+/**
+ * Família da lei pela cor da bolha (docs/arte/briefing-icones-gpt.md, seção 4):
+ * imposto, verba, Constituição ou regra.
+ */
+function familiaDaLei(lei: VisaoLei): string {
+  if (lei.nivelLegal === "petrea" || lei.nivelLegal === "constitucional")
+    return "constituicao";
+  if (ehConstitucional(lei)) return "constituicao";
+  if (lei.grupo === "tributaria") return "imposto";
+  if (lei.grupo === "orcamentaria") return "verba";
+  return "regra";
+}
+
 function tipoDaLei(lei: VisaoLei): TipoDeLei {
   return lei.mesa?.camada ?? (lei.nivelLegal ? "constituicao" : "lei");
 }
@@ -497,7 +510,7 @@ const NoLei = memo(function NoLei({
   const raioVisivel = r * escala;
   return (
     <g
-      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)}`}
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)} familia-${familiaDaLei(lei)}`}
       transform={`translate(${pos.x} ${pos.y})`}
       style={{ "--cor": cor } as React.CSSProperties}
       role="button"
@@ -521,6 +534,13 @@ const NoLei = memo(function NoLei({
           <Forma forma={forma} className="halo" r={r + 9} />
           {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
           <Forma forma={forma} className="disco" r={r} />
+          <Forma forma={forma} className="aro-interno" r={r - 3.5} />
+          <ellipse
+            className="reflexo"
+            cy={-r * 0.48}
+            rx={r * 0.55}
+            ry={r * 0.22}
+          />
           <TexturaDoTipo tipo={tipoDaLei(lei)} r={r} />
           {forma === "circulo" && coresExtras.length > 0 ? (
             <ArosDosSetores cores={[cor, ...coresExtras]} r={r} />
