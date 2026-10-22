@@ -8,6 +8,9 @@ import {
 } from "../game/pais/fichaV3";
 import variaveisDoMundo from "../conteudo/mundo/indicadores/variaveis.json";
 import areasDoMundo from "../conteudo/mundo/areas.json";
+import politica from "../conteudo/paises/brasil/politica.json";
+import { criarPartida, verPartida } from "../app/partida";
+import { familiaDaLei, PRATELEIRAS } from "../ui/mapa/familia";
 
 const AREAS = [
   "contas-publicas",
@@ -251,5 +254,81 @@ describe("o jogo carrega a ficha v4", () => {
     });
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.diagnostics.map((d) => d.field)).toContain("decide");
+  });
+});
+
+describe("áreas por assunto no país", () => {
+  const estrutura = (
+    politica as unknown as {
+      ministerios: {
+        areas: { id: string; coordenador: string }[];
+        ministerios: { id: string; area: string; leis: string[] }[];
+      };
+    }
+  ).ministerios;
+  const ministerio = (id: string) =>
+    estrutura.ministerios.find((m) => m.id === id)!;
+
+  it("o Brasil usa as 11 áreas do mundo, na ordem", () => {
+    expect(estrutura.areas.map((a) => a.id)).toEqual(AREAS);
+    for (const m of estrutura.ministerios) expect(AREAS).toContain(m.area);
+  });
+
+  it("os ministérios vão para a área do assunto", () => {
+    expect(ministerio("esporte").area).toBe("educacao-e-cultura");
+    expect(ministerio("comunicacoes").area).toBe("governo-e-instituicoes");
+    expect(ministerio("povos-indigenas").area).toBe("direitos-e-costumes");
+    expect(ministerio("fazenda").area).toBe("contas-publicas");
+    expect(ministerio("planejamento").area).toBe("contas-publicas");
+  });
+
+  it("Banco Central e câmbio vão para Economia; moradia para Proteção social", () => {
+    for (const lei of [
+      "quem-controla-o-banco-central",
+      "mandato-do-banco-central",
+      "regime-cambial",
+      "regulacao-dos-bancos",
+      "controle-de-capitais",
+    ]) {
+      expect(ministerio("mdic").leis).toContain(lei);
+      expect(ministerio("fazenda").leis).not.toContain(lei);
+    }
+    for (const lei of ["habitacao-publica", "verba-do-programa-habitacional"])
+      expect(ministerio("desenvolvimento-social").leis).toContain(lei);
+  });
+
+  it("a tela recebe a área nova e o título do mundo", () => {
+    const criada = criarPartida({ semente: 1, ocorrencias: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    const visao = verPartida(criada.value);
+    const lei = (id: string) => visao.leis.find((l) => l.id === id)!;
+    expect(lei("imposto-renda-pessoas").areas).toEqual(["contas-publicas"]);
+    expect(lei("regime-cambial").areas).toEqual(["economia-e-empresas"]);
+    expect(visao.governo.map((a) => a.titulo)).toEqual(
+      (areasDoMundo as { areas: { titulo: string }[] }).areas.map(
+        (a) => a.titulo,
+      ),
+    );
+  });
+
+  it("a família vem da lei; sem família, continua a dedução de hoje", () => {
+    const base = { nivelLegal: "derivada", processo: "lei-ordinaria" };
+    expect(
+      familiaDaLei({
+        ...base,
+        grupo: "orcamentaria",
+        familia: "programa",
+      } as never),
+    ).toBe("programa");
+    expect(familiaDaLei({ ...base, grupo: "tributaria" } as never)).toBe(
+      "imposto",
+    );
+    expect(PRATELEIRAS.map((p) => p.familia)).toEqual([
+      "imposto",
+      "verba",
+      "programa",
+      "regra",
+      "constituicao",
+    ]);
   });
 });

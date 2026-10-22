@@ -68,6 +68,11 @@ export type VisaoLei = Readonly<{
   ministerioId: string;
   /** Áreas do governo (esferas do mapa) onde a lei mora. */
   areas: readonly string[];
+  /** Família declarada pela lei do molde v4; ausente nas leis antigas. */
+  familia?:
+    "imposto" | "verba" | "programa" | "regra" | "constitucional" | "petrea";
+  /** O que a lei decide, numa frase (molde v4). */
+  decide?: string;
   /**
    * Como a lei muda: `emenda-constitucional`, `lei-ordinaria`,
    * `execucao-programa-autorizado`… A tela põe as constitucionais também na

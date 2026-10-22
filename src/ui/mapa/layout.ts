@@ -399,7 +399,9 @@ function posicionarBolhas(
     const concentracao = Math.min(1, Math.hypot(v.x, v.y));
     const angulo = Math.atan2(v.y, v.x);
     // t = 0 encosta no núcleo; t = 1 vai até a elipse externa.
-    const t = 0.12 + (1 - concentracao) * 0.8;
+    // 0,7 (era 0,8): com as áreas por assunto, bolhas de duas esferas vizinhas
+    // iam para a borda do topo, que é estreita (molde-das-leis.md).
+    const t = 0.12 + (1 - concentracao) * 0.7;
     const x = Math.cos(angulo) * mix(inicio + 40, ELIPSE_EXTERNA.rx - 90, t);
     const y = Math.sin(angulo) * mix(inicio + 40, ELIPSE_EXTERNA.ry - 70, t);
     const { largura, altura } = caixaDaBolha(bolha.nome);

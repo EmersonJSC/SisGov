@@ -25,6 +25,10 @@ import type {
   VisaoEfeitoOcorrencia,
 } from "./tipos";
 import { ESTRUTURAS, escalaDe } from "./comum";
+import areasDoMundo from "../../conteudo/mundo/areas.json";
+
+/** Título e "o que faz" de cada área vêm do mundo (molde-das-leis.md, 2.4). */
+const AREA_DO_MUNDO = new Map(areasDoMundo.areas.map((a) => [a.id, a]));
 import { preencher, leisAlteradas } from "./turno";
 import {
   lerContas,
@@ -60,8 +64,19 @@ export function verPartida(partida: Partida): VisaoPartida {
       ),
     ),
   );
-  const lugarDaLei = (id: string) => {
-    const lugar = lugares.get(id);
+  const coordenador = new Map(
+    governo.map((area) => [
+      area.id,
+      area.ministerios.find((m) => m.cargo === area.cargo) ??
+        area.ministerios[0],
+    ]),
+  );
+  const lugarDaLei = (id: string, areaMundo?: string) => {
+    // Lei do molde v4 mora na área dela; o rótulo é o coordenador da área.
+    const ministerio = areaMundo ? coordenador.get(areaMundo) : undefined;
+    const lugar =
+      lugares.get(id) ??
+      (areaMundo && ministerio ? { area: areaMundo, ministerio } : undefined);
     return {
       ministerio: lugar?.ministerio.nome ?? "",
       ministerios: lugar ? [lugar.ministerio.nome] : [],
@@ -96,7 +111,9 @@ export function verPartida(partida: Partida): VisaoPartida {
       descricao: policy.descricao ?? "",
       grupo: policy.grupo,
       area: policy.area ?? "",
-      ...lugarDaLei(policy.id),
+      ...lugarDaLei(policy.id, policy.areaMundo),
+      ...(policy.familia ? { familia: policy.familia } : {}),
+      ...(policy.decide ? { decide: policy.decide } : {}),
       processo: policy.processoAutorizacao,
       nivel,
       meta: state?.desiredLevel ?? nivel,
@@ -398,11 +415,12 @@ function governoDaPartida(content: ResolvedPackage): VisaoArea[] {
           leis: m.leis.filter((lei) => existe.has(lei)),
           extinguivel: Boolean(m.extincao),
         }));
+      const doMundo = AREA_DO_MUNDO.get(area.id);
       return {
         id: area.id,
-        titulo: area.titulo,
+        titulo: doMundo?.titulo ?? area.titulo,
         curto: area.curto,
-        faz: area.faz,
+        faz: doMundo?.faz ?? area.faz,
         cargo:
           ministerios.find((m) => m.id === area.coordenador)?.cargo ??
           ministerios[0]?.cargo ??

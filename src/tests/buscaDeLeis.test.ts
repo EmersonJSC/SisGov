@@ -14,11 +14,11 @@ const primeira = (q: string) =>
   buscar(q, visao.leis, visao.bolhas, visao.governo)[0];
 
 describe("lupa", () => {
-  it("estatizar e privatizar levam à lei das estatais, em Economia", () => {
+  it("estatizar e privatizar levam à lei das estatais, em Economia e empresas", () => {
     for (const q of ["privatizar", "estatizar", "Privatização", "estatais"]) {
       const r = primeira(q);
       expect(r?.id, q).toBe("papel-do-estado-empresario");
-      expect(r?.tema).toBe("Empresas e comércio");
+      expect(r?.tema).toBe("Economia e empresas");
       expect(r?.pasta).toBe("Indústria e Comércio");
     }
   });
@@ -59,10 +59,10 @@ describe("áreas e ministérios reais (D-64)", () => {
       return `${area.titulo} / ${lei.ministerio}`;
     };
     expect(lugar("imposto-renda-pessoas")).toBe(
-      "Economia / Ministério da Fazenda",
+      "Contas públicas / Ministério da Fazenda",
     );
     expect(lugar("regra-fiscal")).toBe(
-      "Economia / Ministério do Planejamento e Orçamento",
+      "Contas públicas / Ministério do Planejamento e Orçamento",
     );
     expect(lugar("transporte-publico")).toBe(
       "Infraestrutura e energia / Ministério das Cidades",

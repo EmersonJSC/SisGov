@@ -21,6 +21,16 @@ const CORES: Readonly<Record<string, string>> = {
   seguranca: "#6f4fb0",
   direitos: "#c2577a",
   governo: "#8a6a45",
+  // Áreas por assunto (molde-das-leis.md, 2.4), com as cores das antigas.
+  "contas-publicas": "#2f6bb3",
+  "economia-e-empresas": "#1d8a86",
+  "protecao-social": "#b8508a",
+  "educacao-e-cultura": "#d9921f",
+  "infraestrutura-e-energia": "#7a6a58",
+  "ambiente-e-campo": "#3f9445",
+  "seguranca-e-defesa": "#6f4fb0",
+  "direitos-e-costumes": "#c2577a",
+  "governo-e-instituicoes": "#8a6a45",
 };
 
 const RESERVA = ["#4f7fa8", "#9a5f8f", "#5f8f6b", "#a8774f", "#6a6fb0"];

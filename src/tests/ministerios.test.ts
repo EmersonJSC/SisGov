@@ -88,20 +88,23 @@ describe("extinguir ministério", () => {
 
   it("área sem ministérios some; coordenador que sai é substituído", () => {
     let atual: EstruturaDeGoverno = brasil;
-    for (const id of ["mulheres", "igualdade-racial"]) {
+    for (const id of ["mulheres", "igualdade-racial", "povos-indigenas"]) {
       const r = extinguirMinisterio(atual, id);
       if (!r.ok) throw new Error(r.erro);
       atual = r.value.estrutura;
     }
-    // Direitos Humanos sobra sozinho na área Direitos e cidadania
+    // Direitos Humanos sobra sozinho na área Direitos e costumes
     const r = extinguirMinisterio(atual, "direitos-humanos");
     if (!r.ok) throw new Error(r.erro);
-    expect(r.value.estrutura.areas.map((a) => a.id)).not.toContain("direitos");
+    expect(r.value.estrutura.areas.map((a) => a.id)).not.toContain(
+      "direitos-e-costumes",
+    );
     const cidades = extinguirMinisterio(brasil, "cidades");
     if (!cidades.ok) throw new Error(cidades.erro);
     expect(
-      cidades.value.estrutura.areas.find((a) => a.id === "infraestrutura")
-        ?.coordenador,
+      cidades.value.estrutura.areas.find(
+        (a) => a.id === "infraestrutura-e-energia",
+      )?.coordenador,
     ).toBe("transportes");
   });
 });
