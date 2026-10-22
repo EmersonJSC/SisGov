@@ -52,6 +52,11 @@ Fora da versão 1: STF, mercado do Victoria 3, Congresso propondo leis e veto.
 
 ## O que estamos fazendo agora (atualizado 22/out, 13h)
 
+**Feito em 22/out (noite):** 221 de 239 leis no molde v4, área por área,
+com os mesmos números. Esperando o autor: `docs/jogo/leis/destinos-propostos.md`.
+Decisões do autor: até 5 opções por lei; sem teto de leis por área;
+constitucional que não trava nada fica constitucional, com efeitos.
+
 **Feito em 22/out (tarde):** molde das leis aprovado e implantado (plano
 `docs/superpowers/plans/2026-10-22-molde-das-leis.md`, tarefas 1 a 5;
 registro em `.superpowers/sdd/2026-10-22-molde-das-leis/progress.md`).

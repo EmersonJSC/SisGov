@@ -63,7 +63,8 @@ a tela (`src/ui`) fica mais para o final.**
 - [x] Verificador do molde (teste)
 - [x] Inventário das leis por área nova (`npm run leis:inventario` → docs/jogo/leis/inventario.md)
 - [x] Áreas por assunto no país; família lida da lei, não adivinhada
-- [ ] Catálogo novo no formato v4, uma área por vez. **Contas públicas feita** (15 leis v4, 3 saíram; `scripts/leis/paraV4.ts` converte sem mudar números). Faltam as outras 10 áreas.
+- [x] Catálogo no formato v4: **221 de 239 leis** nas 11 áreas e as 2 pétreas (22/out), sem mudar nenhum número (foto de todos os valores a cada área). Dados de cada área em `scripts/leis/molde/`.
+- [ ] Autor aprovar `docs/jogo/leis/destinos-propostos.md` (17 leis para sair ou ganhar efeito; Segurança e defesa em duas esferas?)
 - [ ] Mecânica 4: juntar "Destino da sobra" ao fundo soberano (comanda o cofre) e tirar a contribuição sobre salários de dentro da previdência para uma lei própria
 - [ ] Depois, com amostra em HTML: mapa em faixas e filtro; janela da lei; eleitorado em janela
 
