@@ -10,6 +10,7 @@ import {
   faixaDe,
   idsComRegua,
   marcasDaEscala,
+  medidaDoPais,
   reguaDaLei,
   referenciasDoPais,
   valorDaLeiNaRegua,
@@ -32,10 +33,10 @@ const comDeslizante = leis
   .map((lei) => lei.id);
 const indices = new Set(variaveis.variaveis.map((v) => v.id));
 const SALARIO_MINIMO_DO_BRASIL = 1621;
-const CESTAS_DO_BRASIL = 1.76;
 const PIB_DO_BRASIL = 12_000_000;
 const MINIMO_EM_PCT_DA_MEDIANA = 66;
-const CESTAS_SAUDAVEIS = 1.3;
+const MINIMO_SAUDAVEL = 50;
+const PESSOAS_DO_BRASIL = 2.34;
 const PORCENTO = 100;
 const DEFESA_DO_BRASIL = 192_000;
 const DEFESA_EM_PCT_DO_PIB = 1.6;
@@ -104,20 +105,29 @@ describe("régua da lei", () => {
     );
   });
 
-  it("salário mínimo: 66% da mediana dá R$ 1.621 e cai na faixa alta de cestas", () => {
+  it("salário mínimo: 66% da mediana dá R$ 1.621 e 2,3 pessoas acima da linha de pobreza", () => {
     const regua = reguaDaLei("aumento-real-do-salario-minimo")!;
     const brasil = referenciasDoPais("Brasil");
     const [dinheiro] = regua.leituras ?? [];
     expect(
       valorDerivado(dinheiro, MINIMO_EM_PCT_DA_MEDIANA, brasil),
     ).toBeCloseTo(SALARIO_MINIMO_DO_BRASIL, PRECISAO_DE_DEZENAS);
-    const medida = variaveis.variaveis.find(
-      (v) => v.id === "salario_minimo_relativo",
-    )!.medida as { cem: number };
-    const cestas = (MINIMO_EM_PCT_DA_MEDIANA * medida.cem) / PORCENTO;
-    expect(cestas).toBeCloseTo(CESTAS_DO_BRASIL, PRECISAO_DE_DECIMOS);
-    expect(faixaDe(regua, cestas).tom).toBe("atencao");
-    expect(faixaDe(regua, CESTAS_SAUDAVEIS).tom).toBe("bom");
+    const medida = medidaDoPais("Brasil", "salario_minimo_relativo")!;
+    const pessoas = (MINIMO_EM_PCT_DA_MEDIANA * medida.cem) / PORCENTO;
+    expect(pessoas).toBeCloseTo(PESSOAS_DO_BRASIL, PRECISAO_DE_DECIMOS);
+    expect(pessoas * brasil.linhaDePobrezaMensal).toBeCloseTo(
+      SALARIO_MINIMO_DO_BRASIL,
+      PRECISAO_DE_DEZENAS,
+    );
+    // as faixas ficam na medida do motor: valem para qualquer país
+    expect(faixaDe(regua, MINIMO_EM_PCT_DA_MEDIANA).tom).toBe("atencao");
+    expect(faixaDe(regua, MINIMO_SAUDAVEL).tom).toBe("bom");
+  });
+
+  it("país sem medida própria fica na medida do mundo", () => {
+    expect(
+      medidaDoPais("Atlântida", "salario_minimo_relativo"),
+    ).toBeUndefined();
   });
 
   it("verba em dinheiro vira % do PIB: defesa de R$ 192 bi é 1,6%", () => {

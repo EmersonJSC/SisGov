@@ -90,10 +90,16 @@ function noHorizonte(
   return { com: efeito.comMudanca[i], sem: efeito.semMudanca[i] };
 }
 
-function formatoDaRegua(regua: Regua, lei: VisaoLei, valor: number): string {
+function formatoDaRegua(
+  regua: Regua,
+  lei: VisaoLei,
+  valor: number,
+  bolha?: VisaoBolha,
+): string {
   if (regua.mede === "pib") return `${numero(valor, casasPara(valor))}% do PIB`;
   if (regua.mede === "controle") return nivelDaLei(valor, lei.unidade);
-  return `${numero(valor, casasPara(valor))}${regua.sufixo ?? ""}`;
+  const naTela = naMedida(bolha, valor);
+  return `${numero(naTela, casasPara(naTela))}${regua.sufixo ?? ""}`;
 }
 
 /** Valor do motor na medida real do índice (ex.: cestas básicas), se houver. */
@@ -108,11 +114,31 @@ function naMedida(bolha: VisaoBolha | undefined, valor: number): number {
   return medida.zero + ((medida.cem - medida.zero) * valor) / PORCENTO;
 }
 
-function rotuloDaMarca(regua: Regua, lei: VisaoLei, valor: number): string {
+function rotuloDaMarca(
+  regua: Regua,
+  lei: VisaoLei,
+  valor: number,
+  bolha?: VisaoBolha,
+): string {
   if (regua.mede === "controle" && lei.unidade === "moeda_ano")
     return moeda(valor);
-  const sufixo = regua.mede === "variavel" ? "" : "%";
-  return `${numero(valor, casasPara(valor))}${sufixo}`;
+  if (regua.mede === "variavel") {
+    const naTela = naMedida(bolha, valor);
+    return numero(naTela, casasPara(naTela));
+  }
+  return `${numero(valor, casasPara(valor))}%`;
+}
+
+/** Do número na tela de volta ao valor do motor (para pôr as marcas do eixo). */
+function doMotor(bolha: VisaoBolha | undefined, naTela: number): number {
+  const medida = bolha?.medida;
+  if (
+    !medida?.convertida ||
+    medida.zero === undefined ||
+    medida.cem === undefined
+  )
+    return naTela;
+  return ((naTela - medida.zero) / (medida.cem - medida.zero || 1)) * PORCENTO;
 }
 
 export function ReguaDaLei({
@@ -139,14 +165,14 @@ export function ReguaDaLei({
   const bolhaDaRegua = bolhas.get(indiceDaRegua);
   const hoje =
     regua.mede === "variavel"
-      ? naMedida(bolhaDaRegua, bolhaDaRegua?.valor ?? 0)
+      ? (bolhaDaRegua?.valor ?? 0)
       : valorDaLeiNaRegua(regua, lei.nivel, pib);
   const projetado = noHorizonte(previsao, indiceDaRegua, mes);
   const depois = ((): number | null => {
     if (!mudou) return null;
     if (regua.mede !== "variavel")
       return valorDaLeiNaRegua(regua, rascunho, pib);
-    return projetado ? naMedida(bolhaDaRegua, projetado.com) : null;
+    return projetado?.com ?? null;
   })();
   const rotuloDepois = regua.mede === "variavel" ? quando : "nova lei";
   const referencia = depois ?? hoje;
@@ -167,7 +193,15 @@ export function ReguaDaLei({
       </rect>
     );
   });
-  const marcas = marcasDaEscala(minimo, maximo).map((m) => (
+  // marcas redondas na medida da tela, postas na escala do motor
+  const pontosDoEixo =
+    regua.mede === "variavel"
+      ? marcasDaEscala(
+          naMedida(bolhaDaRegua, minimo),
+          naMedida(bolhaDaRegua, maximo),
+        ).map((naTela) => doMotor(bolhaDaRegua, naTela))
+      : marcasDaEscala(minimo, maximo);
+  const marcas = pontosDoEixo.map((m) => (
     <g key={`m${m}`}>
       <line
         x1={xDe(m)}
@@ -182,7 +216,7 @@ export function ReguaDaLei({
         textAnchor="middle"
         className="regua-marca"
       >
-        {rotuloDaMarca(regua, lei, m)}
+        {rotuloDaMarca(regua, lei, m, bolhaDaRegua)}
       </text>
     </g>
   ));
@@ -191,7 +225,7 @@ export function ReguaDaLei({
   const xDepois = depois === null ? null : xDe(depois);
 
   const frase = ((): string => {
-    const texto = formatoDaRegua(regua, lei, referencia);
+    const texto = formatoDaRegua(regua, lei, referencia, bolhaDaRegua);
     if (depois === null) return `Hoje: ${texto}, ${faixa.rotulo}.`;
     const mesmaFaixa = faixaDe(regua, hoje) === faixa;
     const comparacao = mesmaFaixa ? "na mesma faixa de hoje" : "muda de faixa";
@@ -254,7 +288,7 @@ export function ReguaDaLei({
             textAnchor="middle"
             className="regua-hoje"
           >
-            hoje {rotuloDaMarca(regua, lei, hoje)}
+            hoje {rotuloDaMarca(regua, lei, hoje, bolhaDaRegua)}
           </text>
           {xDepois !== null && depois !== null ? (
             <g className="regua-nova">
@@ -268,7 +302,7 @@ export function ReguaDaLei({
                 y2={PONTA_DA_SETA}
               />
               <text x={xDepois} y={LINHA_DA_NOVA} textAnchor="middle">
-                {rotuloDepois} {rotuloDaMarca(regua, lei, depois)}
+                {rotuloDepois} {rotuloDaMarca(regua, lei, depois, bolhaDaRegua)}
               </text>
             </g>
           ) : null}

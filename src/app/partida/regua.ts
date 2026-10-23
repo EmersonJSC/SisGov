@@ -99,20 +99,10 @@ const soNumeros = (dados: Readonly<Record<string, unknown>>): Referencias =>
     ),
   );
 
-/** Referências do país pelo nome (a pasta do país é o nome sem acento). */
-export function referenciasDoPais(pais: string): Referencias {
-  const alvo = semAcento(pais);
-  const achado = Object.entries(ARQUIVOS_DE_REFERENCIA).find(([caminho]) => {
-    const pasta = semAcento(pastaDoPais(caminho));
-    return pasta !== "" && (pasta === alvo || alvo.startsWith(pasta));
-  });
-  if (!achado) return {};
-  const modulo = achado[1] as { default?: unknown };
-  return soNumeros((modulo.default ?? modulo) as Record<string, unknown>);
-}
-
-/** O que o país tem hoje para a régua da lei (o exemplo em palavras). */
-export function notaDoPais(pais: string, leiId: string): string | undefined {
+/** O arquivo de referências do país pelo nome (a pasta é o nome sem acento). */
+function dadosDoPais(
+  pais: string,
+): Readonly<Record<string, unknown>> | undefined {
   const alvo = semAcento(pais);
   const achado = Object.entries(ARQUIVOS_DE_REFERENCIA).find(([caminho]) => {
     const pasta = semAcento(pastaDoPais(caminho));
@@ -120,10 +110,35 @@ export function notaDoPais(pais: string, leiId: string): string | undefined {
   });
   if (!achado) return undefined;
   const modulo = achado[1] as { default?: unknown };
-  const dados = (modulo.default ?? modulo) as {
-    noPais?: Readonly<Record<string, string>>;
-  };
-  return dados.noPais?.[leiId];
+  return (modulo.default ?? modulo) as Record<string, unknown>;
+}
+
+/** Os números do país (salário, linha de pobreza…). */
+export function referenciasDoPais(pais: string): Referencias {
+  return soNumeros(dadosDoPais(pais) ?? {});
+}
+
+/** O que o país tem hoje para a régua da lei (o exemplo em palavras). */
+export function notaDoPais(pais: string, leiId: string): string | undefined {
+  const dados = dadosDoPais(pais) as
+    { noPais?: Readonly<Record<string, string>> } | undefined;
+  return dados?.noPais?.[leiId];
+}
+
+/** Medida que o país dá a um índice (unidade e balizas), se der. */
+export type MedidaDoPais = Readonly<{
+  unidade: string;
+  zero: number;
+  cem: number;
+}>;
+
+export function medidaDoPais(
+  pais: string,
+  variavel: string,
+): MedidaDoPais | undefined {
+  const dados = dadosDoPais(pais) as
+    { medidas?: Readonly<Record<string, MedidaDoPais>> } | undefined;
+  return dados?.medidas?.[variavel];
 }
 
 /** Casas decimais para um número pequeno continuar legível (0,0075%). */

@@ -1,7 +1,7 @@
 {
   "tipo": "reguas",
   "versaoEsquema": 1,
-  "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em reais como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui.",
+  "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em reais como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui. Com 'mede: variavel', escala e faixas ficam na medida do motor; os números na tela usam a medida do país (referencias.json, 'medidas'), se houver.",
   "reguas": {
     "imposto-renda-pessoas": {
       "mede": "controle",
@@ -741,32 +741,32 @@
     "aumento-real-do-salario-minimo": {
       "mede": "variavel",
       "variavel": "salario_minimo_relativo",
-      "sufixo": " cestas",
-      "rotulo": "Cestas básicas que o salário mínimo compra",
-      "escala": [0.5, 2.5],
+      "sufixo": " pessoas acima da linha de pobreza",
+      "rotulo": "Pessoas que o salário mínimo sustenta acima da linha de pobreza",
+      "escala": [20, 90],
       "faixas": [
         {
-          "ate": 0.8,
+          "ate": 30,
           "tom": "ruim",
           "rotulo": "baixo: não tira da pobreza"
         },
         {
-          "ate": 1.1,
+          "ate": 40,
           "tom": "atencao",
           "rotulo": "baixo"
         },
         {
-          "ate": 1.6,
+          "ate": 60,
           "tom": "bom",
           "rotulo": "faixa saudável"
         },
         {
-          "ate": 1.9,
+          "ate": 70,
           "tom": "atencao",
           "rotulo": "alto"
         },
         {
-          "ate": 2.5,
+          "ate": 90,
           "tom": "ruim",
           "rotulo": "alto: informalidade e desemprego"
         }
@@ -785,7 +785,7 @@
         "abaixoDe": 0,
         "texto": "Corte em dinheiro: trabalhadores, pobres e aposentados perdem apoio e sobe o risco de greve geral."
       },
-      "fonte": "Diretiva (UE) 2022/2041: referência de 60% da mediana dos salários (perto de 1,6 cesta); OCDE, Minimum relative to median wages."
+      "fonte": "o mínimo em relação aos salários do país (Diretiva (UE) 2022/2041: 60% da mediana; OCDE). Números: linha de pobreza do Banco Mundial, US$ 6,85 por dia (PPC)."
     }
   }
 }

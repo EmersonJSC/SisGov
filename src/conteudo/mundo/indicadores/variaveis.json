@@ -6593,12 +6593,11 @@
       "area": "Trabalho e emprego",
       "avaliacao": "neutra",
       "medida": {
-        "unidade": "cestas básicas que o salário mínimo compra",
+        "unidade": "salário mínimo em % da mediana dos salários",
         "zero": 0,
-        "cem": 2.66,
+        "cem": 100,
         "fontes": [
           "OIT (Global Wage Report)",
-          "DIEESE (cesta básica)",
           "OCDE (minimum relative to median wages)"
         ]
       }

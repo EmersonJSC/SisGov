@@ -1,6 +1,7 @@
 import type { ResolvedPackage } from "../../engine";
 import { contextNodeId } from "../../engine/model/lawNodes";
 import { valorNaMedida } from "./medida";
+import { medidaDoPais } from "./regua";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
   optionLock,
@@ -273,6 +274,16 @@ export function verPartida(partida: Partida): VisaoPartida {
   const pilotoValues = partida.piloto.execution.values;
   const brutoPiloto = brutoDasSituacoes(partida, pilotoValues);
   const foraDoMapa = nosForaDoMapa(content);
+  // o país pode trocar a medida de um índice pela dele (referencias.json)
+  const pais = content.manifest?.nome ?? "";
+  const medidaNoPais = (
+    variable: (typeof content.variables.variaveis)[number],
+  ) => {
+    const doPais = medidaDoPais(pais, variable.id);
+    return doPais && variable.medida
+      ? { ...variable.medida, ...doPais }
+      : variable.medida;
+  };
   const bolhas = content.variables.variaveis
     .filter(
       (variable) =>
@@ -298,19 +309,18 @@ export function verPartida(partida: Partida): VisaoPartida {
           }
         : {}),
       ...(variable.pilar !== undefined ? { pilar: variable.pilar } : {}),
-      ...(variable.medida && !variable.medida.tecnico
-        ? {
-            medida: {
-              valor: valorNaMedida(variable.medida, values[variable.id] ?? 0),
-              unidade: variable.medida.unidade,
-              fontes: variable.medida.fontes ?? [],
-              convertida: variable.medida.zero !== undefined,
-              ...(variable.medida.zero !== undefined
-                ? { zero: variable.medida.zero, cem: variable.medida.cem }
-                : {}),
-            },
-          }
-        : {}),
+      ...((m) =>
+        m && !m.tecnico
+          ? {
+              medida: {
+                valor: valorNaMedida(m, values[variable.id] ?? 0),
+                unidade: m.unidade,
+                fontes: m.fontes ?? [],
+                convertida: m.zero !== undefined,
+                ...(m.zero !== undefined ? { zero: m.zero, cem: m.cem } : {}),
+              },
+            }
+          : {})(medidaNoPais(variable)),
       ...(values[contextNodeId(variable.id)] !== undefined
         ? { contexto: values[contextNodeId(variable.id)] }
         : {}),
