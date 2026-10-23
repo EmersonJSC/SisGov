@@ -355,8 +355,32 @@
     {
       "id": "aliquota_imposto_propriedade_urbana_rural",
       "tipo": "controle",
-      "nome": "Alíquota: Imposto sobre imóveis e terras",
+      "nome": "Alíquota: Imposto sobre imóveis urbanos",
       "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "aliquota_imposto_terras_rurais",
+      "tipo": "controle",
+      "nome": "Alíquota: Imposto sobre terras rurais",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "nivel_quem_paga_imposto_sobre_imoveis_e_terras",
+      "tipo": "controle",
+      "nome": "Quem paga imposto sobre imóveis e terras",
+      "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,
         "maximo": 100

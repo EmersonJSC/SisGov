@@ -1,0 +1,140 @@
+{
+  "id": "imposto-terras-rurais",
+  "tipo": "lei",
+  "versaoEsquema": 4,
+  "familia": "imposto",
+  "nome": "Imposto sobre terras rurais",
+  "decide": "Define a alíquota do imposto anual sobre sítios, fazendas e outras terras no campo.",
+  "area": "contas-publicas",
+  "exemplo": "No Brasil é o ITR, federal; arrecada muito pouco (cerca de 0,03% do PIB) porque o próprio dono declara o valor da terra.",
+  "nivel": "lei",
+  "controle": {
+    "variavel": "aliquota_imposto_terras_rurais",
+    "unidade": "percentual_0_100"
+  },
+  "dinheiro": {
+    "tipo": "receita",
+    "base": "pib",
+    "limites": {
+      "minimo": 0,
+      "maximo": 100
+    }
+  },
+  "implantacao": {
+    "entrada": 0.3,
+    "saida": 0.2
+  },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "imposto-terras-rurais--desigualdade",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-terras-rurais--desigualdade-1",
+      "alvo": "desigualdade",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.75,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-terras-rurais--grupo-agro",
+      "alvo": "grupo_agro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-terras-rurais--grupo-progressistas",
+      "alvo": "grupo_progressistas",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 2.5,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "imposto-terras-rurais--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0.0],
+          [0.3, 0.075],
+          [0.5, 0.12061395],
+          [0.6, 0.14210526],
+          [0.9, 0.20131579],
+          [1.2, 0.25263158],
+          [1.5, 0.29605263],
+          [1.8, 0.33157895],
+          [2.1, 0.35921053],
+          [2.4, 0.37894737],
+          [2.7, 0.39078948],
+          [3, 0.39473684],
+          [3.3, 0.39078948],
+          [3.6, 0.37894737],
+          [3.9, 0.35921053],
+          [4.2, 0.33157895],
+          [4.5, 0.29605263],
+          [4.8, 0.25263158],
+          [5.1, 0.20131579],
+          [5.4, 0.14210526],
+          [5.7, 0.075],
+          [6, 0.0],
+          [100, 0.0]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "escala": {
+        "fator": "pib",
+        "referencia": 44.730626,
+        "peso": 0.3
+      },
+      "unidade": "percentual_pib"
+    },
+    {
+      "id": "imposto-terras-rurais--concentracao-fundiaria",
+      "alvo": "concentracao_fundiaria",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.05,
+        "termoConstante": 0
+      },
+      "atraso": 4,
+      "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "imposto-terras-rurais--grupo-agricultura-familiar",
+      "alvo": "grupo_agricultura_familiar",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1.0,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
+    }
+  ]
+}

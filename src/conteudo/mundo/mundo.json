@@ -1764,7 +1764,13 @@
     "mundo/consequencias/contingenciamento--grupo-interior.json",
     "mundo/consequencias/contingenciamento--grupo-pobres.json",
     "mundo/consequencias/contingenciamento--grupo-classe-media.json",
-    "mundo/consequencias/contingenciamento--infraestrutura.json"
+    "mundo/consequencias/contingenciamento--infraestrutura.json",
+    "mundo/consequencias/corrupcao--eficacia-imposto-terras-rurais.json",
+    "mundo/consequencias/corrupcao--eficacia-quem-paga-imposto-sobre-imoveis-e-terras.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-imposto-terras-rurais.json",
+    "mundo/consequencias/capacidade-estatal--eficacia-quem-paga-imposto-sobre-imoveis-e-terras.json",
+    "mundo/consequencias/forca-instituicoes--eficacia-imposto-terras-rurais.json",
+    "mundo/consequencias/forca-instituicoes--eficacia-quem-paga-imposto-sobre-imoveis-e-terras.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

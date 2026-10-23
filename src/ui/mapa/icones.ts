@@ -630,6 +630,8 @@ export const ICONE_LEI: Readonly<Record<string, string>> = {
   "imposto-grandes-fortunas": "diamond-stone",
   "imposto-heranca": "family-tree",
   "imposto-propriedade-urbana-rural": "home-city-outline",
+  "imposto-terras-rurais": "sprout-outline",
+  "quem-paga-imposto-sobre-imoveis-e-terras": "scale-balance",
   "imposto-renda-empresas": "domain",
   "imposto-renda-pessoas": "account-cash",
   "imposto-seletivo": "smoking-off",

@@ -374,6 +374,14 @@
       "nivel": 0.5
     },
     {
+      "lei": "imposto-terras-rurais",
+      "nivel": 0.2
+    },
+    {
+      "lei": "quem-paga-imposto-sobre-imoveis-e-terras",
+      "opcao": "isenta-pequenos"
+    },
+    {
       "lei": "incentivos-fiscais-regionais",
       "opcao": "zona-franca-ampla"
     },
