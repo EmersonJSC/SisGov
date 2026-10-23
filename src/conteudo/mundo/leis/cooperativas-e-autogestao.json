@@ -21,7 +21,7 @@
       },
       {
         "id": "incentivo",
-        "rotulo": "Incentivo (crédito e imposto menor) (hoje na referência, aprox.)",
+        "rotulo": "Incentivo (crédito e imposto menor)",
         "valor": 50,
         "custoTexto": "Renúncia (lacuna)",
         "apoiam": ["Agricultura familiar", "Movimentos por terra"],
@@ -147,5 +147,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Incentivo (crédito e imposto menor) (aprox.)."
 }

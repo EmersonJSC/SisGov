@@ -23,10 +23,10 @@
       },
       {
         "id": "referencia-hoje",
-        "rotulo": "Referência",
+        "rotulo": "Nível atual",
         "valor": 66.67,
         "custoTexto": "lacuna",
-        "propoe": "Como hoje."
+        "propoe": "Mantém como está."
       },
       {
         "id": "maximo",

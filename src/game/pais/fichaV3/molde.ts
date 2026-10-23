@@ -6,6 +6,34 @@ import type { ContentDiagnostic } from "../../../engine";
 import type { Familia, FichaV3, FichaV4 } from "./tipos";
 import { verificarFicha, type ContextoDaFicha } from "./verificar";
 
+/**
+ * Lei do mundo vale para qualquer país (autor, 23/out): nome, frase e textos
+ * das opções não citam o país de referência; só o `exemplo` conta como é lá.
+ */
+const REFERENCIAS_DE_PAIS: readonly RegExp[] = [
+  /\bBrasil\b/i,
+  /brasileir/i,
+  /pr[ée]-?sal/i,
+  /\bPetrobras\b/i,
+  /\bFundeb\b/i,
+  /\bCear[áa]\b/i,
+  /\bIPTU\b/,
+  /\bITR\b/,
+  /R\$/,
+  /pa[íi]s de refer[êe]ncia/i,
+  /hoje na refer[êe]ncia/i,
+  /\(hoje\b/i,
+];
+
+/** O trecho que cita o país de referência, ou `undefined`. */
+export function referenciaDePais(texto: string): string | undefined {
+  for (const padrao of REFERENCIAS_DE_PAIS) {
+    const achado = texto.match(padrao);
+    if (achado) return achado[0];
+  }
+  return undefined;
+}
+
 export const FAMILIAS: readonly Familia[] = [
   "imposto",
   "verba",
@@ -95,6 +123,23 @@ export function verificarMolde(
       "controle.opcoes",
       `Regra e constitucional têm no máximo ${MAXIMO_DE_OPCOES} opções.`,
     );
+  const textos: [string, unknown][] = [
+    ["nome", ficha.nome],
+    ["decide", ficha.decide],
+    ...opcoes.flatMap((o, i): [string, unknown][] => [
+      [`controle.opcoes.${i}.rotulo`, o.rotulo],
+      [`controle.opcoes.${i}.propoe`, o.propoe],
+    ]),
+  ];
+  for (const [campo, texto] of textos) {
+    const achado =
+      typeof texto === "string" ? referenciaDePais(texto) : undefined;
+    if (achado)
+      push(
+        campo,
+        `O texto cita o país de referência ("${achado}"); isso vai no exemplo.`,
+      );
+  }
   opcoes.forEach((o, i) => {
     if (typeof o.propoe !== "string" || o.propoe.trim() === "")
       push(

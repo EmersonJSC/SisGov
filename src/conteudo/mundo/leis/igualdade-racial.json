@@ -30,7 +30,7 @@
       },
       {
         "id": "estatuto-direitos-declarados-pouco-recorte",
-        "rotulo": "Estatuto: direitos declarados, pouco recorte (hoje na referência é a base)",
+        "rotulo": "Estatuto: direitos declarados, pouco recorte",
         "valor": 50,
         "custoTexto": "baixo",
         "apoiam": ["Católicos", "Pastorais sociais católicas"],
@@ -39,7 +39,7 @@
       },
       {
         "id": "recorte-racial-cotas-e-metas-com-raca",
-        "rotulo": "Recorte racial: cotas e metas com raça (hoje na referência, nas leis de 2012 e 2023)",
+        "rotulo": "Recorte racial: cotas e metas com raça",
         "valor": 60,
         "custoTexto": "baixo (realocação de vagas)",
         "apoiam": [
@@ -150,5 +150,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Estatuto (direitos declarados, pouco recorte: é a base); Recorte racial (cotas e metas com raça, nas leis de 2012 e 2023)."
 }

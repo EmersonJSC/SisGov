@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "subsidio",
-        "rotulo": "Subsídio (hoje na referência, aprox.)",
+        "rotulo": "Subsídio",
         "valor": 0,
         "custoTexto": "Parte do subsídio na tarifa de luz (aprox., sem número)",
         "apoiam": [
@@ -144,5 +144,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Subsídio (aprox.)."
 }

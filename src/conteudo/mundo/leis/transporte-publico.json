@@ -30,7 +30,7 @@
       },
       {
         "id": "subsidio-parcial",
-        "rotulo": "Subsídio parcial (hoje nas grandes capitais, aprox.)",
+        "rotulo": "Subsídio parcial",
         "valor": 67,
         "custoTexto": "0,1 a 0,2% do PIB (aprox.)",
         "apoiam": ["Periferias das metrópoles"],
@@ -195,5 +195,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Subsídio parcial (nas grandes capitais, aprox.)."
 }

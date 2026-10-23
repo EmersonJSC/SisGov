@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "renovacao-automatica",
-        "rotulo": "Renovação automática (hoje na referência, na prática)",
+        "rotulo": "Renovação automática",
         "valor": 0,
         "apoiam": [
           "Maior rede de TV aberta",
@@ -151,5 +151,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Renovação automática (na prática)."
 }

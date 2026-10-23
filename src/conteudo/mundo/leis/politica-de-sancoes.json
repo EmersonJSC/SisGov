@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "so-as-sancoes-da-onu",
-        "rotulo": "Só as sanções da ONU (Organização das Nações Unidas) (hoje na referência, aprox.)",
+        "rotulo": "Só as sanções da ONU (Organização das Nações Unidas)",
         "valor": 0,
         "apoiam": ["Agro", "Empresários"],
         "efeitos": "Exportações ↑ contra aderir às sanções do polo ocidental; Tensão com o alvo ↓ (estimado)",
@@ -81,5 +81,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Só as sanções da ONU (Organização das Nações Unidas) (aprox.)."
 }

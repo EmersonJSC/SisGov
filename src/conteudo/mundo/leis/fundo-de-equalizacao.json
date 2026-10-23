@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "0",
-        "rotulo": "0 (só os fundos fixos da Constituição; hoje na referência)",
+        "rotulo": "0",
         "valor": 33.33,
         "efeitos": "Nada além dos fundos fixos ( 326,9 bilhões em 2024, cerca de 2,8% do PIB, aprox.)",
         "propoe": "Nada além dos fundos que a Constituição já manda."
@@ -76,5 +76,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 0 (só os fundos fixos da Constituição)."
 }

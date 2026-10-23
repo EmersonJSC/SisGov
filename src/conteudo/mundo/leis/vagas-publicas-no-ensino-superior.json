@@ -15,7 +15,7 @@
         "id": "minimo-corte-de-vagas-15-das-matriculas",
         "rotulo": "Mínimo: corte de vagas, ~15% das matrículas (proposta minha)",
         "valor": 0,
-        "custoTexto": "~−0,25% do PIB vs hoje (aprox., proporcional)",
+        "custoTexto": "~−0,25% do PIB vs o atual (aprox., proporcional)",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": [
           "Movimento estudantil",
@@ -27,13 +27,13 @@
       },
       {
         "id": "referencia-21-das-matriculas",
-        "rotulo": "Referência: ~21% das matrículas",
+        "rotulo": "~21% das matrículas",
         "valor": 50,
         "custoTexto": "~1% do PIB (aprox.), educação",
         "apoiam": ["Sindicatos de servidores", "Classe média"],
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Escolaridade ↑ (4 a 6 anos) contra Mínimo; Desigualdade ↓ pouco; Inovação ↑ pouco; Resultado fiscal ↓ pouco (estimado)",
-        "propoe": "Cerca de 21% das matrículas, como hoje.",
+        "propoe": "Cerca de 21% das matrículas, como está.",
         "requer": [
           {
             "lei": "acesso-ao-ensino-superior",
@@ -50,7 +50,7 @@
         "id": "maximo-expansao-40-das-matriculas",
         "rotulo": "Máximo: expansão, ~40% das matrículas (proposta minha)",
         "valor": 100,
-        "custoTexto": "~+1% do PIB vs hoje (aprox., proporcional)",
+        "custoTexto": "~+1% do PIB vs o atual (aprox., proporcional)",
         "apoiam": [
           "Movimento estudantil",
           "Interior",

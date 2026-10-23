@@ -32,7 +32,7 @@
         "id": "preco-politico",
         "rotulo": "Preço político (congelamento)",
         "valor": 100,
-        "custoTexto": "Prejuízo da estatal (o país de referência 2011-2014: dezenas de  bi, aprox.)",
+        "custoTexto": "Prejuízo da estatal",
         "apoiam": ["Caminhoneiros autônomos", "Pobres"],
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Inflação ↓ no curto prazo e ↑ depois; dívida ↑ via aporte; investimento da estatal ↓",

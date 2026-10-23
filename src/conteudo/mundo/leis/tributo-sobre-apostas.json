@@ -23,7 +23,7 @@
       },
       {
         "id": "12-a-15",
-        "rotulo": "12% a 15% (o país de referência antes da proibição: 12%, subindo até 15% em 2028)",
+        "rotulo": "12% a 15%",
         "valor": 66.67,
         "apoiam": ["Classe média"],
         "rejeitam": ["parte das Casas de apostas"],
@@ -92,5 +92,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 12% a 15% (antes da proibição: 12%, subindo até 15% em 2028)."
 }

@@ -4,7 +4,7 @@
   "versaoEsquema": 4,
   "familia": "constitucional",
   "nome": "Quem decide o salário mínimo",
-  "decide": "Define quem fixa o salário mínimo: ninguém, sindicatos e empresas, uma comissão técnica ou o Congresso.",
+  "decide": "Define se existe um salário mínimo para o país inteiro e quem marca o valor dele.",
   "area": "trabalho",
   "nivel": "constituicao",
   "controle": {
@@ -13,39 +13,39 @@
     "opcoes": [
       {
         "id": "nao-existe",
-        "rotulo": "Extinguir o piso salarial nacional",
+        "rotulo": "Não existe salário mínimo",
         "valor": 0,
         "apoiam": ["Empresários favoráveis à livre negociação"],
         "rejeitam": ["Trabalhadores", "Sindicatos"],
         "efeitos": "Empresas negociam livremente; o governo perde as alavancas de valor e reajuste do piso.",
-        "propoe": "Não há salário mínimo nacional."
+        "propoe": "Não há valor mínimo de salário no país; cada empresa paga o que combinar."
       },
       {
         "id": "negociacao-sindical",
-        "rotulo": "Deixar sindicatos e empresas fixarem pisos por categoria",
+        "rotulo": "Cada categoria negocia o seu",
         "valor": 33,
         "apoiam": ["Sindicatos com negociação forte", "Empresários setoriais"],
         "rejeitam": ["Trabalhadores de setores sem sindicato"],
         "efeitos": "Acordos se adaptam por setor, mas trabalhadores sem representação podem ficar sem piso.",
-        "propoe": "Sindicatos e empresas fixam o piso de cada categoria."
+        "propoe": "Não há mínimo nacional; sindicatos e empresas de cada setor combinam um piso para o setor."
       },
       {
         "id": "comissao-tecnica",
-        "rotulo": "Dar a uma comissão técnica o valor do piso nacional",
+        "rotulo": "Uma comissão técnica decide",
         "valor": 67,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Sindicatos favoráveis à decisão parlamentar"],
         "efeitos": "Piso nacional previsível; limita reajustes políticos discricionários.",
-        "propoe": "Uma comissão técnica fixa o valor."
+        "propoe": "Existe mínimo nacional, e o valor é marcado por uma comissão de especialistas, como na Alemanha e no Reino Unido."
       },
       {
         "id": "lei-nacional",
-        "rotulo": "Fixar o piso nacional por lei votada no Congresso",
+        "rotulo": "O Congresso decide",
         "valor": 100,
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Empresários favoráveis à autonomia setorial"],
         "efeitos": "Permite ganho real decidido politicamente; sujeita cada reajuste a disputa no Congresso.",
-        "propoe": "O Congresso fixa o valor por lei."
+        "propoe": "Existe mínimo nacional, e o valor é marcado por lei votada no Congresso."
       }
     ]
   },
@@ -171,5 +171,6 @@
       },
       "atraso": 0
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: o salário mínimo nacional está na Constituição e o valor sai de uma lei votada no Congresso."
 }

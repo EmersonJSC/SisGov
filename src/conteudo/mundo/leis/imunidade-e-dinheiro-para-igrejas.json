@@ -28,7 +28,7 @@
       },
       {
         "id": "isencao-de-impostos",
-        "rotulo": "Isenção de impostos (hoje na referência, ampliada pela reforma tributária)",
+        "rotulo": "Isenção de impostos",
         "valor": 50,
         "custoTexto": "gasto tributário (lacuna)",
         "apoiam": [
@@ -119,5 +119,6 @@
       "atraso": 2,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Isenção de impostos (ampliada pela reforma tributária)."
 }

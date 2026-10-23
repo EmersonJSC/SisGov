@@ -30,7 +30,7 @@
       },
       {
         "id": "dever-de-cuidado",
-        "rotulo": "Dever de cuidado (hoje na referência, por decisão do tribunal mais alto em 2025)",
+        "rotulo": "Dever de cuidado",
         "valor": 50,
         "custoTexto": "~0,005% do PIB (regulador)",
         "apoiam": [
@@ -227,5 +227,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Dever de cuidado (por decisão do tribunal mais alto em 2025)."
 }

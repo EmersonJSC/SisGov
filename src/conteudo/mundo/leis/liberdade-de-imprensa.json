@@ -38,7 +38,7 @@
       },
       {
         "id": "plena",
-        "rotulo": "Plena (hoje na referência, no papel)",
+        "rotulo": "Plena",
         "valor": 100,
         "apoiam": ["As 5 mídias"],
         "efeitos": "Corrupção ↓ onde há imprensa local (a diferença cai de 10 pontos para 1,4); Corrupto mais punido na urna; Desinformação ↓; Reputação internacional ↑",
@@ -171,5 +171,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Plena (no papel)."
 }

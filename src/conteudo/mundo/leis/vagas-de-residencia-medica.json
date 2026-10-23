@@ -26,7 +26,7 @@
       },
       {
         "id": "cerca-de-16-200-vagas",
-        "rotulo": "Cerca de 16.200 vagas (hoje na referência, para 32.600 formados)",
+        "rotulo": "Cerca de 16.200 vagas",
         "valor": 33.33,
         "custoTexto": "baixo (bolsas, aprox.)",
         "rejeitam": ["Jovens", "Estudantes"],
@@ -86,5 +86,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Cerca de 16.200 vagas (para 32.600 formados)."
 }

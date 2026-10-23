@@ -42,7 +42,7 @@
         "id": "expansao",
         "rotulo": "Expansão",
         "valor": 100,
-        "custoTexto": "Uma usina grande: cerca de  17 bi para terminar (caso Angra 3)",
+        "custoTexto": "Uma usina grande: cerca de 17 bi para terminar (caso Angra 3)",
         "apoiam": [
           "Associações de militares",
           "Confederação da indústria",
@@ -52,7 +52,7 @@
           "Movimento ambientalista",
           "Atingidos por barragens e mineração"
         ],
-        "efeitos": "Folga do sistema ↑ com atraso de mais de 10 anos; preço da energia ↑ (cerca de  144/MWh contra  80/MWh na hidrelétrica); emissões ↓; tensão internacional ↑; abre o dilema do programa nuclear",
+        "efeitos": "Folga do sistema ↑ com atraso de mais de 10 anos; preço da energia ↑ (cerca de 144/MWh contra 80/MWh na hidrelétrica); emissões ↓; tensão internacional ↑; abre o dilema do programa nuclear",
         "propoe": "O país constrói novas usinas."
       }
     ]

@@ -32,7 +32,7 @@
       },
       {
         "id": "partilha",
-        "rotulo": "Partilha (o Estado fica com parte do óleo) (hoje na referência, no pré-sal)",
+        "rotulo": "Partilha (o Estado fica com parte do óleo)",
         "valor": 66.67,
         "efeitos": "Royalties e óleo para o Estado",
         "propoe": "Empresas exploram, e o Estado fica com parte do que é extraído."
@@ -215,5 +215,6 @@
       "atraso": 1,
       "unidade": "percentual_pib"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Partilha (o Estado fica com parte do óleo) (no pré-sal)."
 }

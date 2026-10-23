@@ -22,7 +22,7 @@
       },
       {
         "id": "sem-alianca",
-        "rotulo": "Sem aliança (hoje na referência, tratado regional inativo, aprox.)",
+        "rotulo": "Sem aliança",
         "valor": 25,
         "efeitos": "Tensão internacional ↑ pouco contra Neutralidade permanente; Capacidade de defesa ↓ pouco contra Cooperação regional (estimado)",
         "propoe": "Sem aliança militar."
@@ -89,5 +89,6 @@
       "atraso": 1,
       "unidade": "indice_0_100_por_passo"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Sem aliança (tratado regional inativo, aprox.)."
 }

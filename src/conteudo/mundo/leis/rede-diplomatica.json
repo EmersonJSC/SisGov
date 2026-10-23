@@ -22,11 +22,11 @@
       },
       {
         "id": "205-postos",
-        "rotulo": "205 postos (hoje na referência, 135 embaixadas e 58 consulados)",
+        "rotulo": "205 postos",
         "valor": 66.67,
         "custoTexto": "cerca de 0,05% do PIB (aprox.)",
         "efeitos": "Exportações ↑ contra 10 postos e ↓ contra 280 postos; Influência externa ↑; resgatar compatriotas mais fácil (estimado)",
-        "propoe": "Cerca de 200, como hoje."
+        "propoe": "Cerca de 200, como está."
       },
       {
         "id": "280-postos",
@@ -60,5 +60,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 205 postos (135 embaixadas e 58 consulados)."
 }

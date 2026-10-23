@@ -19,7 +19,7 @@
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
         "efeitos": "Participação pública fica em nada",
-        "propoe": "O Estado não pode ter empresa. Petrobras, Caixa, Banco do Brasil e Correios teriam de ser vendidos."
+        "propoe": "O Estado não pode ter empresa: petroleira, bancos públicos e correios estatais teriam de ser vendidos."
       },
       {
         "id": "estatais-minimas",
@@ -35,8 +35,8 @@
         "rotulo": "Serviços públicos e setores estratégicos",
         "valor": 66.67,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Participação pública no máximo pouca (como hoje)",
-        "propoe": "Também setores que uma lei chamar de estratégicos, como petróleo, bancos públicos e defesa (Brasil hoje)."
+        "efeitos": "Participação pública no máximo pouca (como está)",
+        "propoe": "Também setores que uma lei chamar de estratégicos, como petróleo, bancos públicos e defesa."
       },
       {
         "id": "estado-empresario",
@@ -96,5 +96,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: serviços públicos e setores estratégicos definidos em lei."
 }

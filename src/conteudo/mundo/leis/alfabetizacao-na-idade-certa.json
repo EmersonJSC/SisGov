@@ -24,14 +24,14 @@
         "id": "formacao-de-professores-e-material",
         "rotulo": "Formação de professores e material",
         "valor": 33.33,
-        "custoTexto": "~0,01% do PIB (proposta minha, sobre o programa de hoje)",
+        "custoTexto": "~0,01% do PIB (proposta minha)",
         "apoiam": ["Sindicatos de professores", "Universidades e cientistas"],
         "efeitos": "Aprendizagem ↑ pequeno; efeito medido é lacuna",
         "propoe": "O governo forma professores e manda material."
       },
       {
         "id": "metas-com-apoio-tecnico-e-incentivo-em-parceria-com-estados-",
-        "rotulo": "Metas com apoio técnico e incentivo, em parceria com estados e municípios (hoje na referência e no Ceará)",
+        "rotulo": "Metas com apoio técnico e incentivo, em parceria com estados e municípios",
         "valor": 66.67,
         "custoTexto": "~0,01% do PIB ( 1 bi por ano ÷ PIB ~ 12 tri, conta própria), educação",
         "apoiam": [
@@ -76,5 +76,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Metas com apoio técnico e incentivo, em parceria com estados e municípios (e no Ceará)."
 }

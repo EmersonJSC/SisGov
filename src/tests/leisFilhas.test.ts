@@ -91,7 +91,7 @@ describe("SG138 — leis filhas", () => {
       leisQueCaem(partida, "quem-decide-o-salario-minimo", naoExiste),
     ).toContainEqual({
       id: "formula-do-salario-minimo",
-      nome: "Fórmula do salário mínimo",
+      nome: "Reajuste do salário mínimo",
       base: "",
       revogada: true,
     });

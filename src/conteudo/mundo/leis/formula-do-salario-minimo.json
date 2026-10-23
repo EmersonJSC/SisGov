@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 4,
   "familia": "regra",
-  "nome": "Fórmula do salário mínimo",
-  "decide": "Define a regra de reajuste do salário mínimo a cada ano.",
+  "nome": "Reajuste do salário mínimo",
+  "decide": "Define como o salário mínimo é corrigido a cada ano.",
   "area": "trabalho",
   "nivel": "lei",
   "controle": {
@@ -13,12 +13,12 @@
     "opcoes": [
       {
         "id": "sem-regra",
-        "rotulo": "Votar um novo valor do piso a cada ano, sem fórmula",
+        "rotulo": "Sem regra: votado a cada ano",
         "valor": 0,
         "apoiam": ["Congresso", "Sindicatos que buscam reajuste político"],
         "rejeitam": ["Empresários que buscam previsibilidade"],
         "efeitos": "Flexibilidade para negociar cada aumento, com incerteza para famílias e empresas.",
-        "propoe": "Um valor novo é votado a cada ano, sem fórmula.",
+        "propoe": "Não há regra; a cada ano se decide quanto o mínimo sobe.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -29,21 +29,21 @@
       },
       {
         "id": "so-inflacao",
-        "rotulo": "Repor a inflação sem aumento real",
+        "rotulo": "Só repõe a inflação",
         "valor": 33,
         "apoiam": ["Empresários", "Gestores fiscais"],
         "rejeitam": ["Sindicatos", "Trabalhadores de baixa renda"],
         "efeitos": "Mantém poder de compra sem promessa de ganho real; menor pressão nos custos.",
-        "propoe": "O mínimo só repõe a inflação."
+        "propoe": "O mínimo sobe só o que os preços subiram; o poder de compra fica igual."
       },
       {
         "id": "inflacao-mais-pib",
-        "rotulo": "Repor inflação e repartir parte do crescimento da economia",
+        "rotulo": "Inflação mais o crescimento do PIB",
         "valor": 67,
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Pequenos negócios"],
         "efeitos": "Renda e consumo melhoram após alguns turnos; custo de contratação e gasto com benefícios sobem.",
-        "propoe": "Repõe a inflação e soma parte do crescimento da economia.",
+        "propoe": "O mínimo repõe a inflação e ganha parte do crescimento da economia; o poder de compra sobe quando o país cresce.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -54,12 +54,12 @@
       },
       {
         "id": "meta-da-mediana",
-        "rotulo": "Elevar o piso até 60% do salário típico ao longo do mandato",
+        "rotulo": "Acompanha o salário típico",
         "valor": 100,
         "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
         "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
         "efeitos": "Combate pobreza mais rápido, com maior risco de custo, informalidade e pressão fiscal.",
-        "propoe": "Sobe até 60% do salário típico ao longo do mandato."
+        "propoe": "O mínimo é corrigido para ficar sempre na mesma fração do salário típico."
       }
     ]
   },
@@ -201,5 +201,6 @@
       },
       "atraso": 1
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB de dois anos antes."
 }

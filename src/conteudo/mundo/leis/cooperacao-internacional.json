@@ -21,7 +21,7 @@
       },
       {
         "id": "0-03",
-        "rotulo": "0,03% (hoje na referência, aprox.)",
+        "rotulo": "0,03%",
         "valor": 66.67,
         "custoTexto": "0,03% da renda",
         "efeitos": "Influência externa ↑ pouco contra 0% e ↓ contra 0,7% (estimado) O custo entra como % do PIB no jogo, aproximando a renda nacional (hipótese).",
@@ -65,5 +65,6 @@
       "leitura": "nivel",
       "unidade": "percentual_pib"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 0,03% (aprox.)."
 }

@@ -6,7 +6,7 @@
   "nome": "Imposto sobre imóveis urbanos",
   "decide": "Define a alíquota do imposto anual sobre casas, apartamentos, prédios e terrenos nas cidades.",
   "area": "contas-publicas",
-  "exemplo": "No Brasil é o IPTU, cobrado pelas prefeituras; a média fica perto de 0,5% do valor do imóvel por ano.",
+  "exemplo": "Costuma ser cobrado pelas prefeituras; a média fica perto de 0,5% do valor do imóvel por ano.",
   "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_propriedade_urbana_rural",

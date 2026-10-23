@@ -22,7 +22,7 @@
       },
       {
         "id": "reconhecimento-limitado-por-data-de-ocupacao",
-        "rotulo": "Reconhecimento limitado por data de ocupação (hoje na referência, em disputa)",
+        "rotulo": "Reconhecimento limitado por data de ocupação",
         "valor": 33,
         "apoiam": ["Agronegócio", "Conservadores", "Interior"],
         "rejeitam": [
@@ -212,5 +212,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Reconhecimento limitado por data de ocupação (em disputa)."
 }

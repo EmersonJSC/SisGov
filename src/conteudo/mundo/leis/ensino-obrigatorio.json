@@ -15,7 +15,7 @@
         "id": "sem-obrigatoriedade",
         "rotulo": "Sem obrigatoriedade",
         "valor": 0,
-        "custoTexto": "−2 a −3% do PIB vs hoje (aprox.), educação",
+        "custoTexto": "−2 a −3% do PIB vs o atual (aprox.), educação",
         "rejeitam": [
           "Sindicatos de professores",
           "Movimento estudantil",
@@ -28,7 +28,7 @@
         "id": "so-o-primario",
         "rotulo": "Só o primário",
         "valor": 33,
-        "custoTexto": "−1% do PIB vs hoje (aprox.), educação",
+        "custoTexto": "−1% do PIB vs o atual (aprox.), educação",
         "apoiam": ["Agro"],
         "rejeitam": ["Famílias com filhos", "Sindicatos de professores"],
         "efeitos": "Escolaridade ↓ (3 a 5 anos); Trabalho infantil ↑",

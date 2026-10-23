@@ -4,7 +4,7 @@
   "versaoEsquema": 4,
   "familia": "regra",
   "nome": "Valor do salário mínimo",
-  "decide": "Define o valor do salário mínimo neste ano, comparado ao salário típico do país.",
+  "decide": "Define quão alto é o salário mínimo, comparado ao salário típico do país (o que ganha o trabalhador do meio da fila, a mediana).",
   "area": "trabalho",
   "nivel": "decreto",
   "controle": {
@@ -13,12 +13,12 @@
     "opcoes": [
       {
         "id": "sem-piso",
-        "rotulo": "Não fixar piso nacional; deixar a negociação por categoria",
+        "rotulo": "Sem mínimo nacional",
         "valor": 0,
         "apoiam": ["Empresários favoráveis à livre negociação"],
         "rejeitam": ["Trabalhadores sem sindicato"],
         "efeitos": "Empresas reduzem custo, mas trabalhadores sem barganha podem perder renda.",
-        "propoe": "Não há piso nacional.",
+        "propoe": "Só vale quando não existe salário mínimo nacional (ver Quem decide o salário mínimo).",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -29,12 +29,12 @@
       },
       {
         "id": "piso-baixo",
-        "rotulo": "Fixar piso baixo, perto de um terço do salário típico",
+        "rotulo": "Baixo: um terço do salário típico",
         "valor": 33,
         "apoiam": ["Pequenos negócios", "Gestores fiscais"],
         "rejeitam": ["Trabalhadores de baixa renda"],
         "efeitos": "Reduz pressão em contratações e benefícios; protege pouco contra pobreza.",
-        "propoe": "Piso de cerca de um terço do salário típico.",
+        "propoe": "O mínimo fica perto de um terço do salário típico, como nos Estados Unidos.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -50,12 +50,12 @@
       },
       {
         "id": "piso-moderado",
-        "rotulo": "Fixar piso intermediário, perto de dois terços do salário típico",
+        "rotulo": "Médio: dois terços do salário típico",
         "valor": 67,
         "apoiam": ["Trabalhadores", "Sindicatos"],
         "rejeitam": ["Pequenos negócios"],
         "efeitos": "Eleva renda com custo de contratação e gasto previdenciário moderados.",
-        "propoe": "Piso de cerca de dois terços do salário típico.",
+        "propoe": "O mínimo fica perto de dois terços do salário típico.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -66,12 +66,12 @@
       },
       {
         "id": "piso-alto",
-        "rotulo": "Elevar piso até o salário típico do país",
+        "rotulo": "Alto: igual ao salário típico",
         "valor": 100,
         "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
         "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
         "efeitos": "Reduz pobreza de quem permanece empregado; aumenta custo, informalidade e benefícios atrelados.",
-        "propoe": "Piso igual ao salário típico.",
+        "propoe": "O mínimo fica igual ao que ganha o trabalhador do meio da fila; muitos trabalhadores passam a ganhar o mínimo.",
         "requer": [
           {
             "lei": "quem-decide-o-salario-minimo",
@@ -278,5 +278,6 @@
       },
       "unidade": "percentual_pib"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: o mínimo é cerca de dois terços do salário típico, alto para padrões internacionais."
 }

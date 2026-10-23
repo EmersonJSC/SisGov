@@ -41,7 +41,7 @@
       },
       {
         "id": "distribuicao-ampla",
-        "rotulo": "Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar; hoje na referência há merenda e compra da agricultura familiar)",
+        "rotulo": "Distribuição ampla",
         "valor": 100,
         "custoTexto": "Alto",
         "apoiam": [
@@ -181,5 +181,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Distribuição ampla (estoques públicos, cozinhas, compra da agricultura familiar há merenda e compra da agricultura familiar)."
 }

@@ -31,7 +31,7 @@
       },
       {
         "id": "por-populacao-e-renda",
-        "rotulo": "Por população e renda (mais para quem é mais pobre) (hoje na referência, com uma parte por emendas)",
+        "rotulo": "Por população e renda (mais para quem é mais pobre)",
         "valor": 66.67,
         "apoiam": ["Pobres", "Interior"],
         "rejeitam": ["Ricos"],
@@ -96,5 +96,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Por população e renda (mais para quem é mais pobre) (com uma parte por emendas)."
 }

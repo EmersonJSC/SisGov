@@ -33,7 +33,7 @@
       },
       {
         "id": "fundeb-ampliado-para-escolas-vulneraveis",
-        "rotulo": "Fundeb ampliado para escolas vulneráveis",
+        "rotulo": "Fundo de educação ampliado para escolas vulneráveis",
         "valor": 75,
         "custoTexto": "Piso agregado de 22% da receita (hipótese de jogo)",
         "apoiam": [
@@ -49,7 +49,7 @@
         "id": "meta-de-10-do-pib",
         "rotulo": "Meta de 10% do PIB para educação",
         "valor": 100,
-        "custoTexto": "+4 a +5% do PIB vs hoje, educação",
+        "custoTexto": "+4 a +5% do PIB vs o atual, educação",
         "apoiam": ["Movimento estudantil", "Sindicatos de professores"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
         "efeitos": "Piso agregado de 31,5% da receita (hipótese de jogo); resultado fiscal ↓ forte; aprendizagem ↑ apenas com boa execução",

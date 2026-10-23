@@ -15,7 +15,7 @@
         "id": "estatal",
         "rotulo": "Administração direta por servidores públicos",
         "valor": 0,
-        "custoTexto": "Sem variação de custo frente à referência",
+        "custoTexto": "Sem variação de custo frente ao atual",
         "apoiam": ["Sindicatos de servidores"],
         "rejeitam": ["Empresários de serviços prisionais"],
         "efeitos": "Preserva comando e empregos públicos; capacidade depende da verba separada para vagas e equipes.",

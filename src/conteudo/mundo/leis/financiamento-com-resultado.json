@@ -31,7 +31,7 @@
       },
       {
         "id": "resultado-com-apoio-tecnico",
-        "rotulo": "Resultado com apoio técnico (hoje no Ceará)",
+        "rotulo": "Resultado com apoio técnico",
         "valor": 100,
         "custoTexto": "+0,02% do PIB (aprox.), educação",
         "apoiam": ["Empresários", "Governadores e Prefeitos"],
@@ -77,5 +77,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Resultado com apoio técnico (no Ceará)."
 }

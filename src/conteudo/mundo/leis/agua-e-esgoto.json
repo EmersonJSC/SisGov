@@ -37,7 +37,7 @@
         "id": "companhias-estaduais",
         "rotulo": "Companhias estaduais",
         "valor": 50,
-        "custoTexto": "0,25% do PIB (o país de referência, 2024)",
+        "custoTexto": "0,25% do PIB",
         "apoiam": ["Sindicatos de servidores", "Centrais sindicais"],
         "rejeitam": ["Mercado financeiro", "Empresários"],
         "efeitos": "Infraestrutura de saneamento ↑ devagar",

@@ -22,7 +22,7 @@
       },
       {
         "id": "observadores-e-policiais",
-        "rotulo": "Observadores e policiais (hoje na referência, aprox.)",
+        "rotulo": "Observadores e policiais",
         "valor": 33.33,
         "custoTexto": "cerca de 0,001% do PIB",
         "apoiam": ["Católicos"],
@@ -79,5 +79,6 @@
       "atraso": 1,
       "unidade": "indice_0_100_por_passo"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Observadores e policiais (aprox.)."
 }

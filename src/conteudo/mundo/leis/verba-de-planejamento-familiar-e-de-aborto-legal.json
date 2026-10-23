@@ -26,12 +26,12 @@
       },
       {
         "id": "referencia-hoje",
-        "rotulo": "Referência (lacuna; só se sabe que o implante contraceptivo recebeu  245 milhões em 2025)",
+        "rotulo": "Referência (lacuna; só se sabe que o implante contraceptivo recebeu 245 milhões em 2025)",
         "valor": 66.67,
         "custoTexto": "lacuna",
         "apoiam": ["Católicos", "Classe média"],
         "efeitos": "Gravidez indesejada ↓ contra Zero; Abortos inseguros ↓ pouco; Saúde da população ↑ pouco (estimado)",
-        "propoe": "Como hoje."
+        "propoe": "Mantém como está."
       },
       {
         "id": "alta",

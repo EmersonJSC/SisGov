@@ -23,11 +23,11 @@
       },
       {
         "id": "1-2",
-        "rotulo": "1,2% (o país de referência, 2024:  146,5 bilhões)",
+        "rotulo": "1,2%",
         "valor": 66.67,
         "custoAnualPercentualPib": 1.2,
         "efeitos": "Hoje: 27,7% dos presos ainda sem julgamento (dado de Segurança)",
-        "propoe": "1,2% do PIB, como hoje."
+        "propoe": "1,2% do PIB, como está."
       },
       {
         "id": "2",
@@ -84,5 +84,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 1,2% (2024: 146,5 bilhões)."
 }

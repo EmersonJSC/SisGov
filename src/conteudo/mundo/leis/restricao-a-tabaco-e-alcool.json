@@ -29,7 +29,7 @@
       },
       {
         "id": "restricao-forte-propaganda-locais-fechados-embalagem",
-        "rotulo": "Restrição forte: propaganda, locais fechados, embalagem (hoje na referência para o tabaco)",
+        "rotulo": "Restrição forte: propaganda, locais fechados, embalagem",
         "valor": 50,
         "apoiam": [
           "Movimento pela saúde pública",
@@ -216,5 +216,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Restrição forte (propaganda, locais fechados, embalagem: para o tabaco)."
 }

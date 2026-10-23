@@ -37,7 +37,7 @@
         "id": "corte-linear",
         "rotulo": "Corte geral das isenções",
         "valor": 100,
-        "custoTexto": "receita +0,15% do PIB (aprox., a partir de  19,8 bi pedidos pelo governo)",
+        "custoTexto": "receita +0,15% do PIB (aprox., a partir de 19,8 bi pedidos pelo governo)",
         "apoiam": ["Mercado financeiro", "Centrais sindicais"],
         "rejeitam": [
           "Entidades do agronegócio",

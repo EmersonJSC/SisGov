@@ -22,7 +22,7 @@
       },
       {
         "id": "empresa-tambem-responde-com-acordo-de-leniencia",
-        "rotulo": "Empresa também responde, com acordo de leniência (hoje na referência, desde 2013)",
+        "rotulo": "Empresa também responde, com acordo de leniência",
         "valor": 50,
         "custoAnualPercentualPib": 0.005,
         "apoiam": ["Mercado financeiro"],
@@ -193,5 +193,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Empresa também responde, com acordo de leniência (desde 2013)."
 }

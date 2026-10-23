@@ -30,11 +30,11 @@
       },
       {
         "id": "referencia-hoje",
-        "rotulo": "Referência",
+        "rotulo": "Nível atual",
         "valor": 33.33,
         "custoTexto": "lacuna (o estudo não dá a verba atual)",
         "efeitos": "Desmatamento ↓ contra Mínimo, sem o efeito do Máximo; queimadas ↓ pouco (estimado; a verba atual é lacuna)",
-        "propoe": "Fiscalização como hoje."
+        "propoe": "Fiscalização como está."
       },
       {
         "id": "maximo-satelite-fiscais-e-embargos",

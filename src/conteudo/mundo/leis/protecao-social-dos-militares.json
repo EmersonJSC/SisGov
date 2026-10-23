@@ -15,7 +15,7 @@
         "id": "integral-com-paridade",
         "rotulo": "Integral com paridade",
         "valor": 0,
-        "custoTexto": "+0,1 a +0,2% do PIB a mais que hoje (aprox.)",
+        "custoTexto": "+0,1 a +0,2% do PIB a mais que o atual (aprox.)",
         "apoiam": ["Servidores", "Conservadores", "Associações de militares"],
         "rejeitam": ["Ricos", "Empresários", "Mercado financeiro"],
         "efeitos": "Déficit previdenciário ↑; Capacidade de defesa ↓ com atraso (come o investimento)",

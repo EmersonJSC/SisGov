@@ -26,7 +26,7 @@
       },
       {
         "id": "bolsa-em-troca-de-isencao-de-imposto-da-faculdade",
-        "rotulo": "Bolsa em troca de isenção de imposto da faculdade (hoje na referência, junto com o empréstimo)",
+        "rotulo": "Bolsa em troca de isenção de imposto da faculdade",
         "valor": 33.33,
         "custoTexto": "lacuna (renúncia de imposto)",
         "apoiam": ["Pobres", "Jovens", "Faculdades privadas"],
@@ -38,7 +38,7 @@
         "id": "emprestimo-amplo-juro-baixo-e-pouca-analise",
         "rotulo": "Empréstimo amplo, juro baixo e pouca análise",
         "valor": 66.67,
-        "custoTexto": "alto: em 2015, para cada  100 emprestados só  53 voltariam; 49% dos contratos em atraso",
+        "custoTexto": "alto: em 2015, para cada 100 emprestados só 53 voltariam; 49% dos contratos em atraso",
         "apoiam": ["Movimento estudantil", "Faculdades privadas", "Jovens"],
         "rejeitam": ["Mercado financeiro"],
         "efeitos": "Escolaridade ↑ forte (1 a 3 anos); Resultado fiscal ↓ forte (5 a 10 anos); Dívida das famílias ↑",
@@ -106,5 +106,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Bolsa em troca de isenção de imposto da faculdade (junto com o empréstimo)."
 }

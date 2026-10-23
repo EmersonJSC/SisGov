@@ -30,7 +30,7 @@
       },
       {
         "id": "nao-alinhamento-ativo",
-        "rotulo": "Não alinhamento ativo (hoje na referência, tradição)",
+        "rotulo": "Não alinhamento ativo",
         "valor": 50,
         "apoiam": ["Católicos", "Agro"],
         "efeitos": "Influência externa ↑ por mediar (aprox.)",
@@ -103,5 +103,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Não alinhamento ativo (tradição)."
 }

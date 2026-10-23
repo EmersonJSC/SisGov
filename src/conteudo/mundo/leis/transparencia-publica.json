@@ -28,7 +28,7 @@
       },
       {
         "id": "acesso-a-informacao-a-pedido",
-        "rotulo": "Acesso à informação a pedido (hoje na referência, desde 2011)",
+        "rotulo": "Acesso à informação a pedido",
         "valor": 67,
         "custoAnualPercentualPib": 0.005,
         "apoiam": ["Quase todos os grupos"],
@@ -182,5 +182,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Acesso à informação a pedido (desde 2011)."
 }

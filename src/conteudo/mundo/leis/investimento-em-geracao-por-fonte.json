@@ -35,7 +35,7 @@
         "id": "fatia-hidreletrica",
         "rotulo": "Fatia hidrelétrica",
         "valor": 50,
-        "custoTexto": "cerca de  80/MWh",
+        "custoTexto": "cerca de 80/MWh",
         "apoiam": ["Confederação da indústria"],
         "rejeitam": [
           "Povos originários",
@@ -59,7 +59,7 @@
         "id": "fatia-nuclear",
         "rotulo": "Fatia nuclear",
         "valor": 100,
-        "custoTexto": "cerca de  144/MWh",
+        "custoTexto": "cerca de 144/MWh",
         "apoiam": ["Associações de militares"],
         "rejeitam": ["Movimento ambientalista"],
         "efeitos": "Folga do sistema ↑ firme, com atraso de mais de 10 anos; emissões ↓",

@@ -22,7 +22,7 @@
       },
       {
         "id": "foro-so-para-crime-no-cargo",
-        "rotulo": "Foro só para crime no cargo (hoje na referência, desde 2018)",
+        "rotulo": "Foro só para crime no cargo",
         "valor": 33,
         "efeitos": "Meio-termo",
         "propoe": "Corte alta só para crime cometido no cargo."
@@ -167,5 +167,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Foro só para crime no cargo (desde 2018)."
 }

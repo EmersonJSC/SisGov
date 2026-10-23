@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "eleicao-pela-comunidade",
-        "rotulo": "Eleição pela comunidade (hoje em parte das redes)",
+        "rotulo": "Eleição pela comunidade",
         "valor": 0,
         "apoiam": ["Sindicatos de professores", "Movimento estudantil"],
         "rejeitam": ["Militares", "Policiais"],
@@ -22,7 +22,7 @@
       },
       {
         "id": "indicacao-politica",
-        "rotulo": "Indicação política (hoje em parte das redes)",
+        "rotulo": "Indicação política",
         "valor": 25,
         "apoiam": ["Aliados locais"],
         "rejeitam": [
@@ -165,5 +165,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Eleição pela comunidade (em parte das redes); Indicação política (em parte das redes)."
 }

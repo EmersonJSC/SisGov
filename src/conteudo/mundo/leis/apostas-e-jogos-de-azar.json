@@ -13,7 +13,7 @@
     "opcoes": [
       {
         "id": "proibicao",
-        "rotulo": "Proibição (hoje na referência, desde set/2026)",
+        "rotulo": "Proibição",
         "valor": 0,
         "custoTexto": "perde a arrecadação; custo de fiscalização e bloqueio",
         "apoiam": [
@@ -50,7 +50,7 @@
       },
       {
         "id": "licenca-liberal",
-        "rotulo": "Licença liberal (o país de referência em 2024 e 2025)",
+        "rotulo": "Licença liberal",
         "valor": 75,
         "custoTexto": "receita de tributo",
         "apoiam": ["Casas de apostas"],
@@ -64,7 +64,7 @@
       },
       {
         "id": "sem-regulacao",
-        "rotulo": "Sem regulação (o país de referência de 2018 a 2023)",
+        "rotulo": "Sem regulação",
         "valor": 100,
         "custoTexto": "0 de receita",
         "apoiam": ["Casas de apostas sem sede no país"],
@@ -235,5 +235,6 @@
       "atraso": 0,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Proibição (desde set/2026); Licença liberal (em 2024 e 2025); Sem regulação (de 2018 a 2023)."
 }

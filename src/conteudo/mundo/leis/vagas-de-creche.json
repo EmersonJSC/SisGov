@@ -25,9 +25,9 @@
       },
       {
         "id": "referencia-cerca-de-40-das-criancas-de-0-a-3-anos-frequentam",
-        "rotulo": "Referência: cerca de 40% das crianças de 0 a 3 anos frequentam (2024); 2,3 milhões querem e não têm vaga",
+        "rotulo": "cerca de 40% das crianças de 0 a 3 anos frequentam (2024); 2,3 milhões querem e não têm vaga",
         "valor": 33.33,
-        "custoTexto": "lacuna (% do PIB no país de referência)",
+        "custoTexto": "lacuna (% do PIB )",
         "rejeitam": ["Famílias com filhos"],
         "efeitos": "Trabalho das mães ↑ contra Mínimo; pobreza infantil ↓ pouco; 28% dos mais pobres sem vaga contra 7% dos mais ricos (estimado)",
         "propoe": "Cerca de 40% das crianças têm vaga."

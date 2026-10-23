@@ -29,7 +29,7 @@
       },
       {
         "id": "adesao-plena",
-        "rotulo": "Adesão plena (hoje na referência, aprox.)",
+        "rotulo": "Adesão plena",
         "valor": 66.67,
         "apoiam": ["Progressistas", "Católicos"],
         "rejeitam": ["Conservadores"],
@@ -90,5 +90,6 @@
       "atraso": 1,
       "unidade": "percentual_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: Adesão plena (aprox.)."
 }

@@ -56,7 +56,7 @@ describe("mesa do salário mínimo", () => {
     expect(baixo.trava?.lei).toBe(FORMULA);
     const r = mudarLei(partida, VALOR, baixo.valor);
     expect(r.ok).toBe(false);
-    if (!r.ok) expect(r.erros.join(" ")).toContain("Fórmula do salário mínimo");
+    if (!r.ok) expect(r.erros.join(" ")).toContain("Reajuste do salário mínimo");
     // a opção em vigor nunca aparece travada
     expect(
       lei(partida, VALOR).opcoes!.find((o) => o.id === "piso-moderado")!.trava,

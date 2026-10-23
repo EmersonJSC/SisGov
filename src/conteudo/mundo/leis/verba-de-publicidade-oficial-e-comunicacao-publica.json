@@ -22,11 +22,11 @@
       },
       {
         "id": "0-007",
-        "rotulo": "~0,007% (o país de referência, 2025:  876 milhões orçados em comunicação, aprox.)",
+        "rotulo": "~0,007%",
         "valor": 66.67,
         "custoAnualPercentualPib": 0.007,
         "efeitos": "lacuna",
-        "propoe": "Cerca de 0,007% do PIB, como hoje."
+        "propoe": "Cerca de 0,007% do PIB, como está."
       },
       {
         "id": "0-02",
@@ -83,5 +83,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: ~0,007% (2025: 876 milhões orçados em comunicação, aprox.)."
 }

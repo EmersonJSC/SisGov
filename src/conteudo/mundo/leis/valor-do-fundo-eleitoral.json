@@ -22,7 +22,7 @@
       },
       {
         "id": "0-04",
-        "rotulo": "0,04% (o país de referência, 2024:  4,96 bilhões)",
+        "rotulo": "0,04%",
         "valor": 66.67,
         "custoAnualPercentualPib": 0.04,
         "apoiam": ["Bancadas do Congresso"],
@@ -100,5 +100,6 @@
       "atraso": 1,
       "unidade": "indice_0_100"
     }
-  ]
+  ],
+  "exemplo": "Hoje no país de referência: 0,04% (2024: 4,96 bilhões)."
 }
