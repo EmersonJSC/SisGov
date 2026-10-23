@@ -6,8 +6,8 @@
   "alvo": "risco_pais",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.3,
-    "termoConstante": -23.392647
+    "coeficiente": 0.2,
+    "termoConstante": -15.595098
   },
   "unidade": "indice_0_100",
   "atrasoPassos": 1,

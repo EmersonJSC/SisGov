@@ -6262,8 +6262,8 @@
       },
       "area": "Contas públicas",
       "avaliacao": "maior_pior",
-      "entrada": 38,
-      "saida": 32
+      "entrada": 44,
+      "saida": 38
     },
     {
       "id": "letalidade_policial",
@@ -7026,6 +7026,62 @@
       "medida": {
         "unidade": "resultado primário (% do PIB)",
         "fontes": ["Banco Central (NFSP)", "Tesouro"]
+      }
+    },
+    {
+      "id": "meta_primario",
+      "tipo": "calculado",
+      "nome": "Meta de resultado primário",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": -50,
+        "maximo": 10
+      },
+      "area": "Contas públicas",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "primario_sem_corte",
+      "tipo": "calculado",
+      "nome": "Resultado primário antes do corte",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": -50,
+        "maximo": 50
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_melhor",
+      "resposta": 1
+    },
+    {
+      "id": "hiato_da_meta",
+      "tipo": "calculado",
+      "nome": "Quanto falta para a meta",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": -100,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_pior",
+      "resposta": 1
+    },
+    {
+      "id": "contingenciamento",
+      "tipo": "calculado",
+      "nome": "Contingenciamento",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 3
+      },
+      "area": "Contas públicas",
+      "avaliacao": "neutra",
+      "resposta": 0.5,
+      "medida": {
+        "unidade": "gasto cortado para cumprir a meta (% do PIB)",
+        "fontes": ["Tesouro (Relatório de Avaliação Bimestral)"]
       }
     },
     {

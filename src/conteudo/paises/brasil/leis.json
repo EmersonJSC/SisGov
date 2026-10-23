@@ -474,10 +474,6 @@
       "opcao": "referencia-3"
     },
     {
-      "lei": "taxa-basica-de-juros",
-      "opcao": "referencia-13-75"
-    },
-    {
       "lei": "intervencao-cambial",
       "opcao": "referencia-nenhuma-ou-pontual"
     },
@@ -736,6 +732,10 @@
     {
       "lei": "fundo-soberano",
       "opcao": "guardar"
+    },
+    {
+      "lei": "meta-de-resultado-primario",
+      "opcao": "zerar"
     },
     {
       "lei": "regra-fiscal",

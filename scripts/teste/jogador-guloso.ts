@@ -75,7 +75,7 @@ const inicio = Date.now();
 for (const j of cands) {
   const k = `${j[0]}@${j[1]}`;
   if (usadas.has(j[0]) || k in testadas) continue;
-  if (Date.now() - inicio > 150_000) break;
+  if (Date.now() - inicio > Number(process.env.LIMITE ?? 150_000)) break;
   const r = rodar([...estado.pacote, j]);
   testadas[k] = r ? r.nota : -1e9;
 }

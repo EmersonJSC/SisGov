@@ -1,0 +1,17 @@
+{
+  "id": "contingenciamento--primario-sem-corte",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "contingenciamento",
+  "alvo": "primario_sem_corte",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -1,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

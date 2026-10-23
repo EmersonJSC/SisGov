@@ -1,0 +1,18 @@
+{
+  "id": "inflacao--expectativas-inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "inflacao",
+  "alvo": "expectativas_inflacao",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.5,
+    "limiar": 5,
+    "direcao": "acima"
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 2,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

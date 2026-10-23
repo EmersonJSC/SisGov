@@ -6,8 +6,8 @@
   "alvo": "taxa_juros",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.116,
-    "termoConstante": -1.599423
+    "coeficiente": 0.05,
+    "termoConstante": -0.689406
   },
   "escala": {
     "fator": "nivel_quem_controla_o_banco_central",

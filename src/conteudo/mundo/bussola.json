@@ -1295,9 +1295,11 @@
       "manifesto": [],
       "porque": "Lado da ficha da lei (hipótese do estudo, V1-34).",
       "opcoes": {
-        "ponto-da-faixa": [0, 0],
-        "2-do-pib": [0, 0],
-        "3-do-pib": [0, 0]
+        "sem-meta": [-0.2, 0],
+        "deficit-ate-2": [-0.1, 0],
+        "zerar": [0, 0],
+        "superavit-1-5": [0.2, 0],
+        "superavit-3": [0.4, 0]
       }
     },
     "divisao-da-verba-atencao-basica-x-hospitais": {

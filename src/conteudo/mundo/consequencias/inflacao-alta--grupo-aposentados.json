@@ -1,0 +1,18 @@
+{
+  "id": "inflacao-alta--grupo-aposentados",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "inflacao",
+  "alvo": "grupo_aposentados",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -1.0,
+    "limiar": 6,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

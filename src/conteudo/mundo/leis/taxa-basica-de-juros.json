@@ -81,5 +81,12 @@
         "referencia": 100
       }
     }
+  ],
+  "dependeDe": [
+    {
+      "lei": "quem-controla-o-banco-central",
+      "opcoes": ["banco-central-subordinado-ao-governo"],
+      "motivo": "Com o banco central autônomo, quem decide os juros é ele, não o governo."
+    }
   ]
 }

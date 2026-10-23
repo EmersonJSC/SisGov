@@ -21,8 +21,8 @@
     "fatores": [
       {
         "variavel": "juros_explosivos",
-        "de": 14,
-        "ate": 44,
+        "de": 8,
+        "ate": 38,
         "multiplica": 3
       }
     ]

@@ -1,0 +1,18 @@
+{
+  "id": "inflacao-alta--grupo-classe-media",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "inflacao",
+  "alvo": "grupo_classe_media",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": -0.8,
+    "limiar": 6,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
