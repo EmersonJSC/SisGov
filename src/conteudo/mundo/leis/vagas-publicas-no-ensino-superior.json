@@ -89,8 +89,8 @@
       "alvo": "escolaridade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.14,
-        "termoConstante": -7
+        "coeficiente": 0.0028,
+        "termoConstante": -0.14
       },
       "atraso": 4,
       "unidade": "indice_0_100_por_passo"

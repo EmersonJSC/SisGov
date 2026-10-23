@@ -67,7 +67,11 @@ const [ini, fim] = process.argv
   .map(Number);
 const base = rodar(nova());
 const leis = verPartida(nova()).leis;
-for (const l of leis.slice(ini, fim)) {
+const filtro = process.env.LEIS?.split(",");
+const escolhidas = filtro
+  ? leis.filter((l) => filtro.includes(l.id))
+  : leis.slice(ini, fim);
+for (const l of escolhidas) {
   const ops = (l as { opcoes?: { valor: number }[] }).opcoes ?? [];
   const alvos = ops.length
     ? ops.map((o) => o.valor).filter((x) => x !== l.nivel)
