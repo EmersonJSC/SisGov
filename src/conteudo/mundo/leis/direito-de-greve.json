@@ -23,7 +23,7 @@
       {
         "id": "votacao-secreta-e-servicos-minimos",
         "rotulo": "Exigir votação secreta e manter serviço mínimo durante greves",
-        "valor": 50,
+        "valor": 33.33,
         "apoiam": ["Empresários", "Classe média"],
         "rejeitam": ["Centrais sindicais"],
         "efeitos": "Trabalhadores ainda podem parar, com menor interrupção de serviços essenciais.",
@@ -31,12 +31,21 @@
       },
       {
         "id": "ampla",
-        "rotulo": "Autorizar paralisação ampla após aviso prévio",
-        "valor": 100,
+        "rotulo": "Greve ampla, com aviso prévio",
+        "valor": 66.67,
         "apoiam": ["Trabalhadores com carteira", "Servidores"],
         "rejeitam": ["Empresários"],
         "efeitos": "Amplia poder de barganha e liberdade civil, mas traz risco de greve geral e menor produção.",
-        "propoe": "Greve ampla, com aviso prévio."
+        "propoe": "Qualquer categoria pode parar, desde que avise antes e mantenha o mínimo nos serviços essenciais."
+      },
+      {
+        "id": "livre-sem-aviso",
+        "rotulo": "Greve livre, sem aviso",
+        "valor": 100,
+        "apoiam": ["Centrais sindicais", "Sindicatos de servidores"],
+        "rejeitam": ["Empresários", "Classe média"],
+        "efeitos": "Greve de surpresa, inclusive em serviços essenciais e por motivo político; sindicatos ganham força; greves gerais mais prováveis; hospitais e transporte param às vezes; investimento ↓",
+        "propoe": "Qualquer categoria pode parar a qualquer hora, sem aviso e sem manter serviço mínimo."
       }
     ]
   },
@@ -61,8 +70,9 @@
       "parametros": {
         "pontos": [
           [0, -8],
-          [50, -3],
-          [100, 0]
+          [33.33, -3],
+          [66.67, 0],
+          [100, 6]
         ]
       },
       "atraso": 1,
@@ -75,8 +85,9 @@
       "parametros": {
         "pontos": [
           [0, -10],
-          [50, -3],
-          [100, 0]
+          [33.33, -3],
+          [66.67, 0],
+          [100, 2]
         ]
       },
       "atraso": 0,
@@ -89,8 +100,9 @@
       "parametros": {
         "pontos": [
           [0, -6],
-          [50, -2],
-          [100, 0]
+          [33.33, -2],
+          [66.67, 0],
+          [100, 3]
         ]
       },
       "atraso": 0,
@@ -103,8 +115,9 @@
       "parametros": {
         "pontos": [
           [0, -6],
-          [50, -1],
-          [100, 0]
+          [33.33, -1],
+          [66.67, 0],
+          [100, 1]
         ]
       },
       "atraso": 1,
@@ -117,8 +130,9 @@
       "parametros": {
         "pontos": [
           [0, 3],
-          [50, 1],
-          [100, 0]
+          [33.33, 1],
+          [66.67, 0],
+          [100, -3]
         ]
       },
       "atraso": 0,
@@ -131,11 +145,54 @@
       "parametros": {
         "pontos": [
           [0, 1],
-          [50, 0.5],
-          [100, 0]
+          [33.33, 0.5],
+          [66.67, 0],
+          [100, -1]
         ]
       },
       "atraso": 4,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--investimento",
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [66.67, 0],
+          [100, -1.5]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--pressao-hospitalar",
+      "alvo": "pressao_hospitalar",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [66.67, 0],
+          [100, 3]
+        ]
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "direito-de-greve--grupo-empresarios",
+      "alvo": "grupo_empresarios",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [66.67, 0],
+          [100, -5]
+        ]
+      },
+      "atraso": 0,
       "unidade": "indice_0_100"
     }
   ]

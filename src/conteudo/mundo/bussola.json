@@ -701,7 +701,8 @@
       "opcoes": {
         "proibida": [1, 1.5],
         "votacao-secreta-e-servicos-minimos": [0.5, 0.5],
-        "ampla": [0, 0]
+        "ampla": [0, 0],
+        "livre-sem-aviso": [-0.5, -0.5]
       }
     },
     "discriminacao-e-crimes-de-odio": {
