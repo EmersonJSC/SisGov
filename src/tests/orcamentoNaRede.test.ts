@@ -140,6 +140,32 @@ describe("SG157 — orçamento na rede", () => {
     ).toBe(true);
   });
 
+  it("risco-país sobe com a dívida e a Selic reage só com BC autônomo", () => {
+    const partida = nova();
+    const rel = (id: string) =>
+      partida.graph.relations.find((r) => r.id === `rede:${id}`)!;
+    const contrib = (id: string, x: number, bc = 100) => {
+      const r = calculateContribution(rel(id), x, (n) =>
+        n === "nivel_quem_controla_o_banco_central" ? bc : undefined,
+      );
+      if (!r.ok) throw new Error(r.diagnostics[0].message);
+      return r.value.value;
+    };
+    // 10 pontos de dívida a mais: ~3 pontos de risco (~45 pb)
+    expect(
+      contrib("divida-publica--risco-pais", 88) -
+        contrib("divida-publica--risco-pais", 78),
+    ).toBeCloseTo(3, 6);
+    // inflação 2 pontos acima: Selic +3 com BC autônomo, 0 se subordinado
+    const v = partida.game.execution.values;
+    expect(
+      contrib("inflacao--taxa-juros", v.inflacao + 2) -
+        contrib("inflacao--taxa-juros", v.inflacao),
+    ).toBeCloseTo(3, 1);
+    expect(contrib("inflacao--taxa-juros", v.inflacao + 2, 0)).toBe(0);
+    expect(contrib("risco-pais--taxa-juros", 60, 0)).toBe(0);
+  });
+
   it("lei de gasto custa o que foi aprovado e piora o resultado", () => {
     const partida = nova();
     const saude = verPartida(partida).leis.find(

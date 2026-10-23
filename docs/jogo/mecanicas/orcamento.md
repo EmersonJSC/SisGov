@@ -144,6 +144,46 @@ do `simular.py`). Ainda abaixo de 94/119: os juros do jogo são 6,7% do PIB
 corte ainda derruba o índice `pib` em 12 pontos (seta da meta de primário,
 fase 4), e o ciclo agora mostra isso como recessão de −8%.
 
+**Fase 2 feita em 22/out: juros.**
+
+- **Juro médio da dívida** (`juros_implicito`, estoque, começa em 8,6% =
+  0,7 × Selic, como antes): anda 7,5% da distância à Selic por trimestre
+  (~30% ao ano), pelo nó `juros_hiato` (Selic − juro médio). Juros da dívida =
+  juro médio × dívida. A seta antiga `taxa-juros--juros-da-divida` foi para o
+  arquivo.
+- **Risco-país** (1 ponto do índice ≈ 14,5 pb): + 0,3 por ponto de dívida
+  (≈ 4 pb), − 3,45 por ponto de primário (≈ 50 pb), a partir do turno 0, com
+  um trimestre de atraso. _(a calibrar)_
+- **Selic**, só na parte que o BC autônomo decide (as setas são multiplicadas
+  pelo nível de `quem-controla-o-banco-central`: 0 subordinado, 50 metade,
+  100 inteira): + 1,5 por ponto de inflação, + 0,8 por ponto percentual de
+  risco (0,116 por ponto do índice), a partir do turno 0, com um trimestre de
+  atraso.
+- **Juros explosivos** (situação antiga) agora entra com os juros perto de 14%
+  do PIB (entrada 44, saída 37; era 32/26, ~10% do PIB). Com o juro médio indo
+  para a Selic, os 10% chegam no ano 4 do "Nada muda", e a situação somava
+  risco e Selic por cima das setas novas (um penhasco). Fica como crise de
+  verdade.
+
+Resultado (32 turnos, sem eventos, `ideologias.ts`):
+
+| Governo | Caminho | Dívida ano 4 | Dívida ano 8 |
+| --- | --- | --- | --- |
+| Nada muda | — | 91 | 123 (alvo 94 / 119) |
+| Social-democrata | Social + PIB | 94 | 133 |
+| Desenvolvimentista | Social + PIB | 91 | 117 |
+| Liberal | Social + PIB | 92 | 121 |
+| Conservador | Social + PIB | 93 | 130 |
+| Todos | Corte de gastos | 115 a 119 | 181 a 218 |
+
+**O corte ainda quebra**, e não é dos juros: o pacote de corte derruba o
+índice `pib` de 45 para ~20-30 (a seta da meta de primário tira 8,4 pontos e
+a receita cai junto com o índice, contando a queda duas vezes). São as fases 3
+e 4. Desenvolvimentista com BC subordinado paga menos juros (a Selic não sobe
+com o risco) e tem inflação de 7%, que dilui a dívida: é o imposto
+inflacionário, mas o mercado ainda não cobra prêmio por isso. Rever depois
+da fase 4.
+
 **O turno 0 não muda.** Todas as fases são feitas para dar zero no ponto de
 partida do Brasil: o que muda é a dinâmica a partir dele. A foto do turno 0
 (`paisV1.test.ts`) só muda se uma fase precisar, e com nota.

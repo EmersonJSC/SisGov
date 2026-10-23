@@ -1,0 +1,21 @@
+{
+  "id": "risco-pais--taxa-juros",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "risco_pais",
+  "alvo": "taxa_juros",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.116,
+    "termoConstante": -1.599423
+  },
+  "escala": {
+    "fator": "nivel_quem_controla_o_banco_central",
+    "referencia": 100
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

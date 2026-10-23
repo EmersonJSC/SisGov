@@ -1730,7 +1730,12 @@
     "mundo/consequencias/taxa-juros--juros-hiato.json",
     "mundo/consequencias/juros-implicito--juros-hiato.json",
     "mundo/consequencias/juros-hiato--juros-implicito.json",
-    "mundo/consequencias/juros-implicito--juros-da-divida.json"
+    "mundo/consequencias/juros-implicito--juros-da-divida.json",
+    "mundo/consequencias/divida-publica--risco-pais.json",
+    "mundo/consequencias/arrecadacao--risco-pais.json",
+    "mundo/consequencias/gasto-publico--risco-pais.json",
+    "mundo/consequencias/inflacao--taxa-juros.json",
+    "mundo/consequencias/risco-pais--taxa-juros.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

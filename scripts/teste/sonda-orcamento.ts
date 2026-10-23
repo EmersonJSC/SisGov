@@ -36,10 +36,11 @@ for (const nome of ["base", "corte", ...CORTE.map((c) => c[0])]) {
   };
   console.log("==", nome);
   console.log(f(0));
-  for (let t = 1; t <= 8; t++) {
+  const turnos = Number(process.env.TURNOS ?? 8);
+  for (let t = 1; t <= turnos; t++) {
     const r = encerrarTurno(p);
     if (!r.ok) throw Error(r.erros.join());
     p = r.value.partida;
-    if (t % 2 == 0) console.log(f(t));
+    if (t % (turnos / 4) == 0) console.log(f(t));
   }
 }

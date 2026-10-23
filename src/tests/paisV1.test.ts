@@ -53,17 +53,19 @@ describe("configuração do país (V1-06)", () => {
     // ciclo, e o envelhecimento sobe sozinho; 60 valores andam < 0,1 ponto.
     // Fase 2a: juro médio da dívida (juros_implicito, juros_hiato) começa em
     // 8,6% e anda para a Selic; juros do turno 0 6,68 → 6,60.
+    // Fase 2b: dívida e primário → risco-país; inflação e risco → Selic
+    // (só com BC autônomo). Risco do turno 0 13,8 → 14,3; 17 valores < 0,2.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
     expect(Object.keys(valores)).toHaveLength(1679);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.287735480778096, 3);
-    expect(valores.divida_publica).toBeCloseTo(77.97549059860464, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.27899554397753, 3);
+    expect(valores.divida_publica).toBeCloseTo(77.97550376749942, 2);
     expect(valores.inflacao).toBeCloseTo(4.835722703138084, 2);
     expect(valores.desemprego).toBeCloseTo(6.199971590503557, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12691340.28721861, 3);
+    expect(soma).toBeCloseTo(12691342.09979472, 3);
     expect(p.content.policies).toHaveLength(224);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
