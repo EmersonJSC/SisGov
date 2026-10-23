@@ -67,70 +67,19 @@
   },
   "efeitos": [
     {
-      "id": "taxa-basica-de-juros--credito",
-      "alvo": "credito",
+      "id": "taxa-basica-de-juros--taxa-juros",
+      "alvo": "taxa_juros",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.06568,
-        "termoConstante": 0
+        "coeficiente": 0.28,
+        "termoConstante": -11.75
       },
       "atraso": 1,
-      "unidade": "indice_0_100"
-    },
-    {
-      "id": "taxa-basica-de-juros--consumo",
-      "alvo": "consumo",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.06568,
-        "termoConstante": 2.755933
-      },
-      "atraso": 1,
-      "unidade": "indice_0_100"
-    },
-    {
-      "id": "taxa-basica-de-juros--inflacao",
-      "alvo": "inflacao",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.13136,
-        "termoConstante": 0
-      },
-      "atraso": 4,
-      "unidade": "percentual_0_100"
-    },
-    {
-      "id": "taxa-basica-de-juros--cambio",
-      "alvo": "cambio",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.13562,
-        "termoConstante": -1.409385
-      },
-      "atraso": 1,
-      "unidade": "indice_0_100"
-    },
-    {
-      "id": "taxa-basica-de-juros--fuga-capitais",
-      "alvo": "fuga_capitais",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.06568,
-        "termoConstante": 0
-      },
-      "atraso": 1,
-      "unidade": "percentual_0_100"
-    },
-    {
-      "id": "taxa-basica-de-juros--pib",
-      "alvo": "pib",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.06993,
-        "termoConstante": 0
-      },
-      "atraso": 1,
-      "unidade": "indice_0_100"
+      "unidade": "percentual_0_100",
+      "escala": {
+        "fator": "subordinacao_bc",
+        "referencia": 100
+      }
     }
   ]
 }

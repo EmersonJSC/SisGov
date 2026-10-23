@@ -7170,6 +7170,19 @@
       }
     },
     {
+      "id": "subordinacao_bc",
+      "tipo": "calculado",
+      "nome": "Subordinação do banco central",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Finanças",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
       "id": "tensao_internacional",
       "tipo": "calculado",
       "nome": "Tensão internacional",

@@ -112,8 +112,8 @@
       "alvo": "concentracao_fundiaria",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.056,
-        "termoConstante": 2.8
+        "coeficiente": -0.012,
+        "termoConstante": 0.6
       },
       "atraso": 4,
       "unidade": "indice_0_100_por_passo"

@@ -105,10 +105,13 @@
     {
       "id": "planejamento-da-economia--produtividade",
       "alvo": "produtividade",
-      "mecanismo": "afim",
+      "mecanismo": "pontos",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0
+        "pontos": [
+          [0, 0],
+          [50, 0],
+          [100, -5]
+        ]
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -119,8 +122,8 @@
       "mecanismo": "pontos",
       "parametros": {
         "pontos": [
-          [0, 1],
-          [50, 0],
+          [0, 0],
+          [50, 0.5],
           [100, -8]
         ]
       },

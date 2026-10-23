@@ -66,8 +66,8 @@
       "alvo": "reservas_internacionais",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.14,
-        "termoConstante": 0
+        "coeficiente": 0.012,
+        "termoConstante": 6.4
       },
       "atraso": 1,
       "unidade": "percentual_pib_por_passo"

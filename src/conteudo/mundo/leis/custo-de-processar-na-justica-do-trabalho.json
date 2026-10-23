@@ -70,8 +70,8 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.07,
-        "termoConstante": 0
+        "coeficiente": 0.01505,
+        "termoConstante": 0.0
       },
       "atraso": 4,
       "unidade": "indice_0_100"

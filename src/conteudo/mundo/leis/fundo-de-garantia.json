@@ -226,8 +226,8 @@
       "alvo": "poupanca_domestica",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.04199,
-        "termoConstante": -2.81333
+        "coeficiente": 0.00895522,
+        "termoConstante": -0.59999974
       },
       "atraso": 1,
       "unidade": "percentual_pib_por_passo"

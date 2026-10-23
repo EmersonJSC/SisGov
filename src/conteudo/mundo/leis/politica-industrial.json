@@ -71,10 +71,14 @@
     {
       "id": "politica-industrial--produtividade",
       "alvo": "produtividade",
-      "mecanismo": "afim",
+      "mecanismo": "pontos",
       "parametros": {
-        "coeficiente": -0.051,
-        "termoConstante": 13.41045
+        "pontos": [
+          [0, 0],
+          [33.33, 2],
+          [66.67, 1.5],
+          [100, -2]
+        ]
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -95,7 +99,7 @@
       "alvo": "inflacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.063,
+        "coeficiente": 0.015,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -140,6 +144,36 @@
       "atraso": 0,
       "leitura": "nivel",
       "unidade": "percentual_pib"
+    },
+    {
+      "id": "politica-industrial--investimento",
+      "alvo": "investimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33.33, 1],
+          [66.67, 2],
+          [100, 1]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "politica-industrial--desemprego",
+      "alvo": "desemprego",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33.33, 0],
+          [66.67, -0.3],
+          [100, -0.5]
+        ]
+      },
+      "atraso": 2,
+      "unidade": "percentual_0_100"
     }
   ]
 }

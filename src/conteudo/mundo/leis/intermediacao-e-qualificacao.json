@@ -68,8 +68,8 @@
       "alvo": "oportunidades_juvenis",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0794,
-        "termoConstante": 0
+        "coeficiente": 0.0397,
+        "termoConstante": 0.0
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -79,8 +79,8 @@
       "alvo": "qualificacao_trabalho",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.06667,
-        "termoConstante": 0
+        "coeficiente": 0.033335,
+        "termoConstante": 0.0
       },
       "atraso": 1,
       "unidade": "indice_0_100"

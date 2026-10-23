@@ -91,8 +91,8 @@
       "alvo": "confianca_empresarial",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0
+        "coeficiente": -0.035,
+        "termoConstante": 0.0
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -124,8 +124,8 @@
       "alvo": "investimento",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0
+        "coeficiente": -0.035,
+        "termoConstante": 0.0
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -135,8 +135,8 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0
+        "coeficiente": -0.035,
+        "termoConstante": 0.0
       },
       "atraso": 1,
       "unidade": "indice_0_100"

@@ -80,7 +80,7 @@
       "alvo": "expectativas_inflacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.14,
+        "coeficiente": -0.05,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -95,6 +95,18 @@
         "termoConstante": 4
       },
       "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "quem-controla-o-banco-central--subordinacao-bc",
+      "alvo": "subordinacao_bc",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -1,
+        "termoConstante": 100
+      },
+      "atraso": 0,
+      "leitura": "nivel",
       "unidade": "indice_0_100"
     }
   ]

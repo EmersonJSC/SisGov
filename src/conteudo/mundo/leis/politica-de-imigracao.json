@@ -98,7 +98,7 @@
       "alvo": "pib",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.07,
+        "coeficiente": 0.02,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -120,7 +120,7 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.03,
+        "coeficiente": 0.015,
         "termoConstante": 0
       },
       "atraso": 4,

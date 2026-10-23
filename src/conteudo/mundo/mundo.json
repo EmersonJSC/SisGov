@@ -1736,7 +1736,14 @@
     "mundo/consequencias/gasto-publico--risco-pais.json",
     "mundo/consequencias/inflacao--taxa-juros.json",
     "mundo/consequencias/risco-pais--taxa-juros.json",
-    "mundo/consequencias/gasto-publico--pib.json"
+    "mundo/consequencias/gasto-publico--pib.json",
+    "mundo/consequencias/expectativas-inflacao--inflacao.json",
+    "mundo/consequencias/taxa-juros--credito.json",
+    "mundo/consequencias/taxa-juros--consumo.json",
+    "mundo/consequencias/taxa-juros--inflacao.json",
+    "mundo/consequencias/taxa-juros--cambio.json",
+    "mundo/consequencias/taxa-juros--fuga-capitais.json",
+    "mundo/consequencias/taxa-juros--pib.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

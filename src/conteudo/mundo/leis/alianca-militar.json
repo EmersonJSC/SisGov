@@ -83,8 +83,8 @@
       "alvo": "capacidade_defesa",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.096,
-        "termoConstante": -2.4
+        "coeficiente": 0.008,
+        "termoConstante": -0.2
       },
       "atraso": 1,
       "unidade": "indice_0_100_por_passo"

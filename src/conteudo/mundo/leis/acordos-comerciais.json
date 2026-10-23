@@ -93,7 +93,7 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.084,
+        "coeficiente": 0.042,
         "termoConstante": 0
       },
       "atraso": 1,

@@ -70,8 +70,8 @@
       "alvo": "desigualdade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.12,
-        "termoConstante": 0
+        "coeficiente": -0.06,
+        "termoConstante": 0.0
       },
       "atraso": 4,
       "unidade": "indice_0_100"
@@ -130,7 +130,7 @@
       "alvo": "pobreza",
       "mecanismo": "limiar",
       "parametros": {
-        "coeficiente": -0.14,
+        "coeficiente": -0.0504,
         "limiar": 50,
         "direcao": "acima"
       },

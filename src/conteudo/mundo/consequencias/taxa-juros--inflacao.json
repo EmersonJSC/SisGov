@@ -1,0 +1,17 @@
+{
+  "id": "taxa-juros--inflacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_juros",
+  "alvo": "inflacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.469,
+    "termoConstante": 5.74525
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 4,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

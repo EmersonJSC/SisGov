@@ -1,0 +1,17 @@
+{
+  "id": "taxa-juros--pib",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_juros",
+  "alvo": "pib",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.25,
+    "termoConstante": 3.0625
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -52,10 +52,13 @@
     {
       "id": "cooperativas-e-autogestao--confianca-empresarial",
       "alvo": "confianca_empresarial",
-      "mecanismo": "afim",
+      "mecanismo": "pontos",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": -5.01
+        "pontos": [
+          [0, -5.01],
+          [50, -5.51],
+          [100, -12.01]
+        ]
       },
       "atraso": 1,
       "unidade": "indice_0_100"
@@ -63,10 +66,13 @@
     {
       "id": "cooperativas-e-autogestao--investimento",
       "alvo": "investimento",
-      "mecanismo": "afim",
+      "mecanismo": "pontos",
       "parametros": {
-        "coeficiente": -0.07,
-        "termoConstante": 0
+        "pontos": [
+          [0, 0],
+          [50, -0.5],
+          [100, -7]
+        ]
       },
       "atraso": 1,
       "unidade": "indice_0_100"

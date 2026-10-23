@@ -72,7 +72,7 @@
       "alvo": "taxa_juros",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.064,
+        "coeficiente": -0.02,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -83,22 +83,11 @@
       "alvo": "expectativas_inflacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.18743,
+        "coeficiente": 0.04,
         "termoConstante": 0
       },
       "atraso": 4,
       "unidade": "percentual_0_100"
-    },
-    {
-      "id": "valor-da-meta-de-inflacao--pib",
-      "alvo": "pib",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.06629,
-        "termoConstante": 0
-      },
-      "atraso": 1,
-      "unidade": "indice_0_100"
     }
   ]
 }
