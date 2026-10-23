@@ -181,7 +181,12 @@ describe("SG157 fase 2 — mecanismo pontos", () => {
     expect(comPeso(1.5)).toBe(false);
     expect(
       check({
-        parametros: { pontos: [[0, 0], [100, 1]] },
+        parametros: {
+          pontos: [
+            [0, 0],
+            [100, 1],
+          ],
+        },
         escala: { fator: "pib", referencia: 0 },
       }).ok,
     ).toBe(false);
