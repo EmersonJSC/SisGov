@@ -107,14 +107,22 @@ describe("SG157 — orçamento na rede", () => {
     expect(taxa(-6)).toBeCloseTo(0.5, 8);
   });
 
-  it("juros = taxa × dívida, e uma dívida só", () => {
+  it("juros = juro médio × dívida, e uma dívida só", () => {
     const partida = nova();
     const v = partida.game.execution.values;
-    // taxa e dívida do fim do mês anterior (o último do aquecimento, V1-07)
+    // juro médio e dívida do fim do mês anterior (o último do aquecimento)
     const antes = partida.game.execution.history[0].values;
     expect(v.juros_da_divida).toBeCloseTo(
-      (0.7 * antes.taxa_juros * antes.divida_publica) / 100,
+      (antes.juros_implicito * antes.divida_publica) / 100,
       6,
+    );
+    // o juro médio começa abaixo da Selic e anda para ela (fase 2)
+    expect(v.juros_implicito).toBeLessThan(v.taxa_juros);
+    const umAno = turno(turno(turno(turno(partida))));
+    const w = umAno.game.execution.values;
+    expect(w.juros_implicito).toBeGreaterThan(v.juros_implicito);
+    expect(w.taxa_juros - w.juros_implicito).toBeLessThan(
+      (v.taxa_juros - v.juros_implicito) * 0.8,
     );
     const contas = verPartida(partida).contas;
     expect(contas.divida).toBeCloseTo(

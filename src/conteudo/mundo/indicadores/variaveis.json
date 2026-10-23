@@ -6200,6 +6200,40 @@
       }
     },
     {
+      "id": "juros_implicito",
+      "tipo": "estoque",
+      "nome": "Juro médio da dívida",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "taxa implícita da dívida (% ao ano)",
+        "zero": 0,
+        "cem": 100,
+        "fontes": [
+          "Tesouro Nacional (custo médio da DPF)",
+          "Banco Central (NFSP)"
+        ]
+      }
+    },
+    {
+      "id": "juros_hiato",
+      "tipo": "calculado",
+      "nome": "Distância do juro médio à Selic",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -100,
+        "maximo": 100
+      },
+      "area": "Contas públicas",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
       "id": "juros_da_divida",
       "tipo": "calculado",
       "nome": "Juros da dívida",

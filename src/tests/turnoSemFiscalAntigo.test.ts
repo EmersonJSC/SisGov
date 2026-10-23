@@ -81,13 +81,14 @@ describe("SG105 — fiscal no turno real", () => {
     for (const mes of trimestre.value.months) {
       const v = mes.execution.values;
       expect(v.divida_publica).toBeGreaterThan(anterior.divida_publica);
-      // juros = 0,7 × taxa × dívida, as duas do fim do mês anterior
+      // juros = juro médio × dívida, os dois do fim do mês anterior
+      // (mecânica 4, fase 2: o juro médio anda para a Selic aos poucos)
       expect(v.juros_da_divida).toBeCloseTo(
-        (0.7 * anterior.taxa_juros * anterior.divida_publica) / 100,
+        (anterior.juros_implicito * anterior.divida_publica) / 100,
         9,
       );
       expect(v.juros_da_divida).toBeLessThan(
-        (0.7 * v.taxa_juros * v.divida_publica) / 100,
+        (v.juros_implicito * v.divida_publica) / 100,
       );
       anterior = v;
     }

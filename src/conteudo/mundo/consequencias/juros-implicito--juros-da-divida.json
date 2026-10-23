@@ -1,0 +1,21 @@
+{
+  "id": "juros-implicito--juros-da-divida",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "juros_implicito",
+  "alvo": "juros_da_divida",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "divida_publica",
+    "multiplicador": 0.01
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
