@@ -1900,16 +1900,6 @@
         "trava-tripla": [-1.5, 0]
       }
     },
-    "salario-minimo": {
-      "manifesto": ["per701", "per403"],
-      "porque": "Proteção do trabalhador.",
-      "opcoes": {
-        "sem-piso": [2, 0],
-        "piso-baixo": [1, 0],
-        "piso-moderado": [0, 0],
-        "piso-alto": [-1.5, 0]
-      }
-    },
     "aborto": {
       "manifesto": ["per603", "per604"],
       "porque": "Moral tradicional contra autonomia do corpo; não mexe na economia.",

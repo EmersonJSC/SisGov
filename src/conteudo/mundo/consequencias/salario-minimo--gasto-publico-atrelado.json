@@ -1,0 +1,21 @@
+{
+  "id": "salario-minimo--gasto-publico-atrelado",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "salario_minimo_relativo",
+  "alvo": "gasto_publico",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.0288,
+    "termoConstante": -1.9008
+  },
+  "escala": {
+    "fator": "beneficios_atrelados_ao_minimo",
+    "referencia": 1
+  },
+  "unidade": "percentual_pib",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

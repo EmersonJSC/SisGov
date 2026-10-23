@@ -6582,6 +6582,121 @@
       }
     },
     {
+      "id": "salario_minimo_relativo",
+      "tipo": "estoque",
+      "nome": "Salário mínimo",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "salário mínimo em % do salário típico (mediana)",
+        "zero": 0,
+        "cem": 100,
+        "fontes": [
+          "OIT (Global Wage Report)",
+          "OCDE (minimum relative to median wages)"
+        ]
+      }
+    },
+    {
+      "id": "salario_minimo_efetivo",
+      "tipo": "calculado",
+      "nome": "Salário mínimo em vigor",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "aumento_real_do_minimo",
+      "tipo": "calculado",
+      "nome": "Aumento real do salário mínimo",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -40,
+        "maximo": 40
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "resposta": 1,
+      "medida": {
+        "unidade": "aumento acima da inflação (% ao ano)",
+        "fontes": ["regra de reajuste"]
+      }
+    },
+    {
+      "id": "reajuste_nominal_do_minimo",
+      "tipo": "calculado",
+      "nome": "Reajuste do salário mínimo em dinheiro",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -60,
+        "maximo": 80
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "existe_salario_minimo",
+      "tipo": "calculado",
+      "nome": "Existe salário mínimo nacional",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "reajuste_segue_crescimento",
+      "tipo": "calculado",
+      "nome": "Reajuste segue o crescimento",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "area": "Trabalho e emprego",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "beneficios_atrelados_ao_minimo",
+      "tipo": "calculado",
+      "nome": "Benefícios atrelados ao salário mínimo",
+      "unidade": "indice_0_1",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 1
+      },
+      "area": "Previdência",
+      "avaliacao": "neutra",
+      "resposta": 1
+    },
+    {
+      "id": "aumento_real_salario_minimo",
+      "tipo": "controle",
+      "nome": "Aumento real do salário mínimo",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -30,
+        "maximo": 20
+      },
+      "valorInicial": 0,
+      "area": "Trabalho e emprego"
+    },
+    {
       "id": "pobreza",
       "tipo": "calculado",
       "nome": "Pobreza",
@@ -9288,18 +9403,6 @@
       "id": "nivel_quem_decide_o_salario_minimo",
       "tipo": "controle",
       "nome": "Quem decide o salário mínimo",
-      "unidade": "nivel_escopo",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "valorInicial": 0,
-      "area": "Trabalho e emprego"
-    },
-    {
-      "id": "nivel_salario_minimo",
-      "tipo": "controle",
-      "nome": "Valor do salário mínimo",
       "unidade": "nivel_escopo",
       "dominio": {
         "minimo": 0,

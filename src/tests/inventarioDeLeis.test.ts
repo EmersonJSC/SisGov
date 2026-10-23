@@ -63,9 +63,12 @@ describe("inventário das leis", () => {
   });
 
   it("aponta a lei parecida", () => {
-    expect(linha("salario-minimo").parecidaCom).toBe(
-      "formula-do-salario-minimo",
-    );
+    // a lei antiga "Valor do salário mínimo" saiu (23/out); vale para alguma
+    const ids = [...porId.keys()];
+    const comParecida = ids.filter((id) => linha(id).parecidaCom);
+    expect(comParecida.length).toBeGreaterThan(0);
+    for (const id of comParecida)
+      expect(porId.has(linha(id).parecidaCom!)).toBe(true);
   });
 
   it("não liga leis de família ou área diferentes", () => {

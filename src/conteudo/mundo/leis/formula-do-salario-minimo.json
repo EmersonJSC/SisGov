@@ -200,6 +200,22 @@
         ]
       },
       "atraso": 1
+    },
+    {
+      "id": "formula-do-salario-minimo--segue-crescimento",
+      "alvo": "reajuste_segue_crescimento",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 1],
+          [100, 1]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "indice_0_1"
     }
   ],
   "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB de dois anos antes."

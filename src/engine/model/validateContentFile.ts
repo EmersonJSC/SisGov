@@ -3038,7 +3038,15 @@ function validatePolicy(
     }
     requiredString(value.controle, file, "controle.variavel", diagnostics);
     requiredString(value.controle, file, "controle.unidade", diagnostics);
-    if (group === "regulatoria")
+    // Regra numérica (sem opções) só com unidade de valor, não de escopo:
+    // ex.: aumento real do salário mínimo em % ao ano.
+    if (
+      group === "regulatoria" &&
+      !(
+        value.controle.opcoes === undefined &&
+        value.controle.unidade !== "nivel_escopo"
+      )
+    )
       validatePolicyOptions(
         value.controle,
         file,

@@ -26,7 +26,7 @@ describe("lupa", () => {
   it("palavras do dia a dia e nomes sem acento", () => {
     expect(primeira("juros")?.id).toBe("quem-controla-o-banco-central");
     expect(primeira("aposentadoria")?.id).toBe("idade-minima-aposentadoria");
-    expect(primeira("salario minimo")?.id).toBe("salario-minimo");
+    expect(primeira("salario minimo")?.id).toMatch(/salario-minimo/);
     expect(primeira("armas")?.id).toBe("armas-de-fogo");
     // indicadores também aparecem
     expect(

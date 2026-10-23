@@ -123,7 +123,10 @@ export function verPartida(partida: Partida): VisaoPartida {
       // limites efetivos: os mesmos que a partida aceita (SG159)
       minimo: Math.max(
         regras?.domain.minimum ?? variable?.dominio.minimo ?? 0,
-        policyMinimum(content, game.policies, policy.id) ?? 0,
+        policyMinimum(content, game.policies, policy.id) ??
+          regras?.domain.minimum ??
+          variable?.dominio.minimo ??
+          0,
       ),
       maximo: regras?.domain.maximum ?? variable?.dominio.maximo,
       unidade: policy.controle.unidade,

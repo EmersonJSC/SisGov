@@ -50,12 +50,6 @@
           "fonte": "Sem salário mínimo nacional até o National Minimum Wage Act 1998"
         },
         {
-          "lei": "salario-minimo",
-          "opcao": "sem-piso",
-          "como": "aprovou",
-          "fonte": "Wages Act 1986 (jovens fora dos Wages Councils); sem salário mínimo nacional até 1998"
-        },
-        {
           "lei": "imposto-renda-pessoas",
           "nivel": 40,
           "como": "aprovou",
@@ -212,12 +206,6 @@
           "opcao": "inflacao-mais-pib",
           "como": "aprovou",
           "fonte": "Política de valorização do salário mínimo (Lei 14.663/2023)"
-        },
-        {
-          "lei": "salario-minimo",
-          "opcao": "piso-alto",
-          "como": "aprovou",
-          "fonte": "Política de valorização acordada com as centrais (Lei 11.498/2007 e seguintes)"
         },
         {
           "lei": "reajuste-de-beneficios",
@@ -1692,12 +1680,6 @@
           "opcao": "comissao-tecnica",
           "como": "aprovou",
           "fonte": "Mindestlohngesetz 2014, §4 (comissão do salário mínimo)"
-        },
-        {
-          "lei": "salario-minimo",
-          "opcao": "piso-moderado",
-          "como": "aprovou",
-          "fonte": "Lei do Salário Mínimo (MiLoG, 2014)"
         },
         {
           "lei": "modelo-do-sistema-de-saude",

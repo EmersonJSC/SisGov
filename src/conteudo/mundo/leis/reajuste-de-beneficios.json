@@ -63,7 +63,7 @@
   },
   "mae": {
     "texto": "A regra do reajuste depende do sistema previdenciário e do piso salarial.",
-    "leis": ["salario-minimo", "sistema-previdenciario"]
+    "leis": ["sistema-previdenciario"]
   },
   "mesa": {
     "id": "previdencia",
@@ -187,6 +187,23 @@
       },
       "atraso": 1,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "reajuste-de-beneficios--atrelados-ao-minimo",
+      "alvo": "beneficios_atrelados_ao_minimo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [25, 0],
+          [50, 0],
+          [75, 1],
+          [100, 0.5]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "indice_0_1"
     }
   ]
 }

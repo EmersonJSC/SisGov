@@ -1,0 +1,17 @@
+{
+  "id": "aumento-real-do-minimo--reajuste-nominal",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aumento_real_do_minimo",
+  "alvo": "reajuste_nominal_do_minimo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

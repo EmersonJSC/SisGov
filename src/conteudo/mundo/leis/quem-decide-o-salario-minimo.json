@@ -74,26 +74,6 @@
       "opcao": "comissao-tecnica",
       "lei": "formula-do-salario-minimo",
       "opcoes": ["sem-regra", "inflacao-mais-pib"]
-    },
-    {
-      "opcao": "comissao-tecnica",
-      "lei": "salario-minimo",
-      "opcoes": ["sem-piso"]
-    },
-    {
-      "opcao": "lei-nacional",
-      "lei": "salario-minimo",
-      "opcoes": ["sem-piso"]
-    },
-    {
-      "opcao": "nao-existe",
-      "lei": "salario-minimo",
-      "opcoes": ["piso-baixo", "piso-moderado", "piso-alto"]
-    },
-    {
-      "opcao": "negociacao-sindical",
-      "lei": "salario-minimo",
-      "opcoes": ["piso-baixo", "piso-moderado", "piso-alto"]
     }
   ],
   "mesa": {
@@ -170,6 +150,22 @@
         "termoConstante": 0
       },
       "atraso": 0
+    },
+    {
+      "id": "quem-decide-o-salario-minimo--existe",
+      "alvo": "existe_salario_minimo",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, 0],
+          [67, 1],
+          [100, 1]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "indice_0_1"
     }
   ],
   "exemplo": "Hoje no país de referência: o salário mínimo nacional está na Constituição e o valor sai de uma lei votada no Congresso."

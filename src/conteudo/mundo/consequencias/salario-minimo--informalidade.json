@@ -1,0 +1,18 @@
+{
+  "id": "salario-minimo--informalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "salario_minimo_efetivo",
+  "alvo": "informalidade",
+  "mecanismo": "limiar",
+  "parametros": {
+    "coeficiente": 0.4375,
+    "limiar": 75,
+    "direcao": "acima"
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

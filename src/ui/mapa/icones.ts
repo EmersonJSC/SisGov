@@ -692,6 +692,7 @@ export const ICONE_LEI: Readonly<Record<string, string>> = {
   "restricao-tabaco-e-alcool": "glass-wine",
   "quem-decide-o-salario-minimo": "scale-balance",
   "formula-do-salario-minimo": "calculator-variant-outline",
+  "aumento-real-do-salario-minimo": "trending-up",
   "salario-minimo": "cash",
   "saneamento-basico": "water-pump",
   "saude-mental": "brain",

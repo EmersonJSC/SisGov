@@ -17,6 +17,7 @@
     "poupanca_domestica": 50,
     "reservas_internacionais": 16,
     "transparencia_fiscal_internacional": 50,
-    "cofre": 0
+    "cofre": 0,
+    "salario_minimo_relativo": 50
   }
 }

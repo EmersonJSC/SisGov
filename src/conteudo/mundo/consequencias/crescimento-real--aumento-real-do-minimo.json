@@ -1,0 +1,21 @@
+{
+  "id": "crescimento-real--aumento-real-do-minimo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "crescimento_real",
+  "alvo": "aumento_real_do_minimo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "escala": {
+    "fator": "reajuste_segue_crescimento",
+    "referencia": 1
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

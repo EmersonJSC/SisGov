@@ -722,10 +722,6 @@
       "opcao": "uma-reeleicao"
     },
     {
-      "lei": "salario-minimo",
-      "opcao": "piso-moderado"
-    },
-    {
       "lei": "seguro-desemprego",
       "opcao": "moderado-3-a-5-parcelas"
     },
@@ -991,7 +987,6 @@
     "nivel_policia_militar": 0,
     "nivel_quem_decide_o_salario_minimo": 100,
     "nivel_reajuste_de_beneficios": 75,
-    "nivel_salario_minimo": 67,
     "nivel_aborto": 40,
     "nivel_armas_de_fogo": 50,
     "nivel_contribuicao_sindical": 0,

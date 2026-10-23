@@ -1,0 +1,21 @@
+{
+  "id": "aumento-real-do-minimo--salario-minimo-relativo",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "aumento_real_do_minimo",
+  "alvo": "salario_minimo_relativo",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.25,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "salario_minimo_relativo",
+    "multiplicador": 0.01
+  },
+  "unidade": "indice_0_100_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

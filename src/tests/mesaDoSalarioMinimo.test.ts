@@ -1,8 +1,8 @@
 /**
- * V1-34: piloto das leis em camadas (docs/v1/desenho/leis-em-camadas.md).
- * A mesa do salário mínimo tem três camadas: quem decide (Constituição), a
- * fórmula (lei) e o valor (alavanca). A de cima trava as opções da de baixo,
- * e o valor puxa o gasto da previdência (vínculo).
+ * V1-34: leis em camadas. A mesa do salário mínimo tem três camadas: quem
+ * decide (Constituição), o reajuste (lei) e o aumento real (alavanca, só sem
+ * regra automática). O nível do mínimo é um estoque em % do salário típico
+ * (23/out): sobe com o aumento real e cai com o crescimento dos salários.
  */
 import { beforeAll, describe, expect, it } from "vitest";
 import {
@@ -15,7 +15,7 @@ import {
 
 const QUEM = "quem-decide-o-salario-minimo";
 const FORMULA = "formula-do-salario-minimo";
-const VALOR = "salario-minimo";
+const AUMENTO = "aumento-real-do-salario-minimo";
 
 let partida: Partida;
 beforeAll(() => {
@@ -35,46 +35,63 @@ function mudar(p: Partida, id: string, opcao: string): Partida {
   if (!r.ok) throw new Error(r.erros.join("\n"));
   return r.value;
 }
+function turnos(p: Partida, n: number): Partida {
+  for (let i = 0; i < n; i += 1) {
+    const r = encerrarTurno(p);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    p = r.value.partida;
+  }
+  return p;
+}
+const v = (p: Partida, id: string) => p.game.execution.values[id];
 
 describe("mesa do salário mínimo", () => {
-  it("o Brasil começa com as três camadas em vigor, de cima para baixo", () => {
-    const mesa = lei(partida, VALOR).mesa!;
+  it("as três camadas, de cima para baixo; o aumento livre começa fora", () => {
+    const mesa = lei(partida, AUMENTO).mesa!;
     expect(mesa.camadas.map((c) => [c.lei, c.camada, c.emVigor])).toEqual([
       [QUEM, "constituicao", true],
       [FORMULA, "lei", true],
-      [VALOR, "alavanca", true],
+      [AUMENTO, "alavanca", false],
     ]);
-    expect(lei(partida, VALOR).vinculos?.[0].lei).toBe(
-      "reajuste-de-beneficios",
-    );
+    expect(v(partida, "salario_minimo_relativo")).toBeCloseTo(66, 0);
   });
 
-  it("a fórmula de ganho real trava o valor baixo e diz quem trava", () => {
-    const baixo = lei(partida, VALOR).opcoes!.find(
-      (o) => o.id === "piso-baixo",
-    )!;
-    expect(baixo.trava?.lei).toBe(FORMULA);
-    const r = mudarLei(partida, VALOR, baixo.valor);
+  it("com regra de reajuste, o aumento é automático e o controle fica travado", () => {
+    const r = mudarLei(partida, AUMENTO, 10);
     expect(r.ok).toBe(false);
-    if (!r.ok) expect(r.erros.join(" ")).toContain("Reajuste do salário mínimo");
-    // a opção em vigor nunca aparece travada
-    expect(
-      lei(partida, VALOR).opcoes!.find((o) => o.id === "piso-moderado")!.trava,
-    ).toBeUndefined();
+    if (!r.ok)
+      expect(r.erros.join(" ")).toContain("Reajuste do salário mínimo");
+    // inflação + PIB: o mínimo acompanha o salário típico
+    const p = turnos(partida, 8);
+    expect(v(p, "salario_minimo_relativo")).toBeCloseTo(66, 0);
   });
 
-  it("trocar a fórmula destrava; voltar a ela puxa o valor para cima", () => {
-    let p = mudar(partida, FORMULA, "so-inflacao");
-    p = mudar(p, VALOR, "piso-baixo");
-    expect(lei(p, VALOR).meta).toBe(valorDa(p, VALOR, "piso-baixo"));
-    p = mudar(p, FORMULA, "inflacao-mais-pib");
-    expect(lei(p, VALOR).meta).toBe(valorDa(p, VALOR, "piso-moderado"));
+  it("sem regra, o jogador escolhe o aumento: +10% ao ano sobe o mínimo", () => {
+    let p = mudar(partida, FORMULA, "sem-regra");
+    const r = mudarLei(p, AUMENTO, 10);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    p = turnos(r.value, 4);
+    expect(v(p, "salario_minimo_relativo")).toBeGreaterThan(70);
+    expect(v(p, "aumento_real_do_minimo")).toBeCloseTo(10, 0);
   });
 
-  it("sem salário mínimo na Constituição, a fórmula sai e o valor vai a zero", () => {
-    const p = mudar(partida, QUEM, "nao-existe");
+  it("cortar em dinheiro derruba o apoio e traz greve", () => {
+    let p = mudar(partida, FORMULA, "sem-regra");
+    const r = mudarLei(p, AUMENTO, -20);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    const base = turnos(partida, 4);
+    p = turnos(r.value, 4);
+    expect(v(p, "reajuste_nominal_do_minimo")).toBeLessThan(0);
+    expect(v(p, "popularidade_governo")).toBeLessThan(
+      v(base, "popularidade_governo") - 5,
+    );
+    expect(v(p, "greve_geral")).toBeGreaterThan(0);
+  });
+
+  it("sem salário mínimo na Constituição, a regra sai e o mínimo deixa de valer", () => {
+    const p = turnos(mudar(partida, QUEM, "nao-existe"), 1);
     expect(lei(p, FORMULA).emVigor).toBe(false);
-    expect(lei(p, VALOR).meta).toBe(valorDa(p, VALOR, "sem-piso"));
+    expect(v(p, "salario_minimo_efetivo")).toBe(0);
   });
 
   it("com comissão técnica, a fórmula fica entre as que a comissão usa", () => {
@@ -90,20 +107,16 @@ describe("mesa do salário mínimo", () => {
     ).toBe(QUEM);
   });
 
-  it("vínculo: subir o mínimo pesa mais com os benefícios presos a ele", () => {
-    const gastoDepois = (reajuste: string) => {
+  it("o gasto do governo vem dos benefícios atrelados, não do mínimo", () => {
+    const gasto = (reajuste: string) => {
       let p = mudar(partida, "reajuste-de-beneficios", reajuste);
-      const r0 = encerrarTurno(p);
-      if (!r0.ok) throw new Error(r0.erros.join("\n"));
-      const antes = r0.value.partida.game.execution.values.gasto_publico;
-      p = mudar(r0.value.partida, VALOR, "piso-alto");
-      const r1 = encerrarTurno(p);
-      if (!r1.ok) throw new Error(r1.erros.join("\n"));
-      return r1.value.partida.game.execution.values.gasto_publico - antes;
+      p = mudar(p, FORMULA, "sem-regra");
+      const r = mudarLei(p, AUMENTO, 15);
+      if (!r.ok) throw new Error(r.erros.join("\n"));
+      const sem = turnos(p, 4);
+      return v(turnos(r.value, 4), "gasto_publico") - v(sem, "gasto_publico");
     };
-    expect(gastoDepois("salario-minimo")).toBeGreaterThan(
-      // no primeiro turno o valor novo ainda está chegando (implantação)
-      gastoDepois("discricionario") + 0.2,
-    );
+    expect(gasto("salario-minimo")).toBeGreaterThan(0.1);
+    expect(Math.abs(gasto("discricionario"))).toBeLessThan(0.05);
   });
 });

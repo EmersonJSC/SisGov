@@ -1,0 +1,51 @@
+{
+  "id": "aumento-real-do-salario-minimo",
+  "tipo": "lei",
+  "versaoEsquema": 4,
+  "familia": "regra",
+  "nome": "Aumento real do salário mínimo",
+  "decide": "Define quanto o salário mínimo sobe por ano acima da inflação; abaixo de zero a inflação come parte dele, e mais abaixo o valor em dinheiro é cortado.",
+  "area": "trabalho",
+  "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB, e o mínimo vale cerca de dois terços do salário típico.",
+  "nivel": "lei",
+  "controle": {
+    "variavel": "aumento_real_salario_minimo",
+    "unidade": "percentual_0_100"
+  },
+  "dependeDe": [
+    {
+      "lei": "formula-do-salario-minimo",
+      "opcoes": ["sem-regra"],
+      "motivo": "Com uma regra de reajuste, o aumento é automático; para escolher o aumento, a regra tem de ser 'votado a cada ano'."
+    }
+  ],
+  "implantacaoTurnos": {
+    "minimo": 1,
+    "maximo": 1
+  },
+  "efeitos": [
+    {
+      "id": "aumento-real-do-salario-minimo--aumento-real",
+      "alvo": "aumento_real_do_minimo",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_0_100"
+    }
+  ],
+  "mesa": {
+    "id": "salario-minimo",
+    "nome": "Salário mínimo",
+    "camada": "alavanca"
+  },
+  "vinculos": [
+    {
+      "lei": "reajuste-de-beneficios",
+      "motivo": "Com os benefícios atrelados ao salário mínimo, cada aumento dele sobe o gasto da previdência."
+    }
+  ]
+}

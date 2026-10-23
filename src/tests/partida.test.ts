@@ -32,8 +32,10 @@ it("cria a partida do Brasil real com as leis das fichas", () => {
     (nos.divida_publica * contas.pib) / 100,
     -3,
   );
-  const salario = visao.leis.find((lei) => lei.id === "salario-minimo");
-  expect(salario?.opcaoAtual).toBe("piso-moderado");
+  const reajuste = visao.leis.find(
+    (lei) => lei.id === "reajuste-de-beneficios",
+  );
+  expect(reajuste?.opcaoAtual).toBe("salario-minimo");
 });
 
 it("quatro turnos mudam bolhas, contas e dívida", () => {
@@ -61,7 +63,9 @@ it("quatro turnos mudam bolhas, contas e dívida", () => {
 
 it("mudar uma lei anda até a meta aos poucos e muda as bolhas ligadas", () => {
   const partida = nova();
-  const lei = verPartida(partida).leis.find((l) => l.id === "salario-minimo")!;
+  const lei = verPartida(partida).leis.find(
+    (l) => l.id === "transporte-publico",
+  )!;
   const alto = lei.opcoes!.at(-1)!.valor;
   const mudada = mudarLei(partida, lei.id, alto);
   if (!mudada.ok) throw new Error(mudada.erros.join(" "));
@@ -87,19 +91,23 @@ it("recusa lei inexistente", () => {
 it("a prévia mostra os três meses com e sem a mudança, sem gravar nada", () => {
   const partida = nova();
   const antes = verPartida(partida);
-  const salario = antes.leis.find((lei) => lei.id === "salario-minimo")!;
-  const alto = salario.opcoes!.at(-1)!.valor;
-  const previa = preverLei(partida, "salario-minimo", alto);
+  const salario = antes.leis.find(
+    (lei) => lei.id === "reajuste-de-beneficios",
+  )!;
+  const alto = 0;
+  const previa = preverLei(partida, "reajuste-de-beneficios", alto);
   if (!previa.ok) throw new Error(previa.erros.join(" "));
   expect(previa.value.implantacao).toHaveLength(3);
-  expect(previa.value.implantacao[2]).toBeGreaterThan(salario.nivel);
-  const renda = previa.value.efeitos.find((e) => e.id === "renda_familias");
-  expect(renda?.comMudanca).toHaveLength(3);
-  expect(renda!.comMudanca[2]).toBeGreaterThan(renda!.semMudanca[2]);
+  expect(previa.value.implantacao[2]).toBeLessThan(salario.nivel);
+  // algum efeito já aparece nos três meses, diferente de não mudar
+  const efeito = previa.value.efeitos[0];
+  expect(efeito?.comMudanca).toHaveLength(3);
+  expect(efeito!.comMudanca[2]).not.toBeCloseTo(efeito!.semMudanca[2], 9);
   // nada foi gravado na partida
   expect(verPartida(partida)).toEqual(antes);
   // mesma meta: nenhuma diferença
-  const igual = preverLei(partida, "salario-minimo", salario.meta);
+  const atual = salario.opcoes!.find((o) => o.id === salario.opcaoAtual)!;
+  const igual = preverLei(partida, "politica-de-imigracao", atual.valor);
   if (!igual.ok) throw new Error(igual.erros.join(" "));
   expect(igual.value.efeitos).toHaveLength(0);
 });

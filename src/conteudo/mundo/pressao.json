@@ -652,11 +652,6 @@
           "peso": 15
         },
         {
-          "lei": "salario-minimo",
-          "sobe": "baixo",
-          "peso": 10
-        },
-        {
           "lei": "terceirizacao",
           "sobe": "baixo",
           "peso": 5
