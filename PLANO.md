@@ -34,6 +34,40 @@ a tela (`src/ui`) fica mais para o final.**
 | 2 | Leis | pronto | a fazer |
 | 3–15 | demais | a escrever | a fazer |
 
+### Próximos passos (23/out): fechar as mecânicas 1, 2 e 4
+
+Ordem por dependência. Cada item: olhar (script ou lista do que falta),
+amostra ou documento quando há decisão do autor, implementar com teste,
+`npm run check` (GPT), commit.
+
+**0. Base verde**
+- [ ] `npm run check` completo sem falha (hoje: `pressao` "turno 0", "três leis piloto" e testes lentos que passam do tempo)
+
+**A. Leis (mecânica 2): acabamento**
+- [ ] A1. Olhar: script que lista as travas que sobraram (limite por lei e por país, teto de 40% nos pisos, teto de 3×/4× em `faixaNumerica`)
+- [ ] A2. Tirar as travas; controle livre de 0 a 100% (ou ao teto da lei)
+- [ ] A3. Trava única: soma dos gastos ≤ 100% do PIB; acima da receita vira déficit
+- [ ] A4. Exclusão entre leis (a lei declara com quem não convive; aprovar pede revogar a outra)
+- [ ] A5. Liberar as opções travadas e converter em valor onde couber (lista para o autor aprovar)
+- [ ] A6. Explicação de cada lei e opção: amostra da janela, depois área por área, teste que exige
+- [ ] A7. Régua também nas leis de opções? (decisão do autor)
+
+**B. Orçamento (mecânica 4): fases 5 e 6**
+- [ ] B1. Olhar: o gasto fixo da rede (~30% do PIB) que nenhuma lei controla, por pedaço
+- [ ] B2. Dar lei a todo gasto grande: servidores (salário e quantidade), contribuição sobre salários como imposto próprio, seguro-desemprego e renda de idosos como programas
+- [ ] B3. Fundo soberano com o destino da sobra (comanda o cofre)
+- [ ] B4. PIB em reais (`pib_nominal`) e as 15 verbas em reais corrigidas pela inflação
+- [ ] B5. Custo do salário mínimo nos benefícios: coeficiente 0,029 → 0,08 (R$ 400 mi por R$ 1)
+- [ ] B6. Aceite: script com as estratégias de `simular.py` batendo com `equilibrio.md`; reativar `contasSemFuros` "cofre passa de 100%"
+
+**C. Calibragem (rede, mecânica 5)**: depois de B
+- [ ] C1. Varredura completa (`varredura-leis.ts`) e jogador guloso do zero
+- [ ] C2. Pendentes: defesa e reservas, "Sem meta" de inflação, corte que tira PIB demais, leis que mexem mais de 2–3 pontos de PIB em 3 anos sem custo
+
+**D. Tempo (mecânica 1): tempo corrido**: depois de C
+- [ ] D1. Documento da fatia 2 (semanas, pausa, velocidades, acontecimentos datados, pausa automática); motor segue mensal
+- [ ] D2. Implementar no `app` com teste; tela com amostra antes
+
 ### Reforma das leis (21/out)
 
 1. **Índice de conteúdo:** converter tudo para o índice e provar que gerar
