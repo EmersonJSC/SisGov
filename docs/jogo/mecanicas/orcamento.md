@@ -159,17 +159,19 @@ fase 4), e o ciclo agora mostra isso como recessão de −8%.
   100 inteira): + 1,5 por ponto de inflação, + 0,8 por ponto percentual de
   risco (0,116 por ponto do índice), a partir do turno 0, com um trimestre de
   atraso.
-- **Juros explosivos** (situação antiga) agora entra com os juros perto de 14%
-  do PIB (entrada 44, saída 37; era 32/26, ~10% do PIB). Com o juro médio indo
-  para a Selic, os 10% chegam no ano 4 do "Nada muda", e a situação somava
-  risco e Selic por cima das setas novas (um penhasco). Fica como crise de
-  verdade.
+- **Juros explosivos** (situação antiga) agora entra com os juros perto de 12%
+  do PIB (entrada 38, saída 32; era 32/26, ~10% do PIB). Com o juro médio indo
+  para a Selic, os 10% chegavam no ano 4 do "Nada muda", e a situação somava
+  risco e Selic por cima das setas novas (um penhasco). No "Nada muda" ela
+  surge no 2º mandato, como antes. O dilema `crise-da-divida` (valor 26) e o
+  fator de `fuga-de-capitais` (14 a 44) foram deslocados 6 pontos para
+  continuarem disparando no mesmo nível de juros de antes.
 
 Resultado (32 turnos, sem eventos, `ideologias.ts`):
 
 | Governo | Caminho | Dívida ano 4 | Dívida ano 8 |
 | --- | --- | --- | --- |
-| Nada muda | — | 91 | 123 (alvo 94 / 119) |
+| Nada muda | — | 91 | 126 (alvo 94 / 119) |
 | Social-democrata | Social + PIB | 94 | 133 |
 | Desenvolvimentista | Social + PIB | 91 | 117 |
 | Liberal | Social + PIB | 92 | 121 |
@@ -179,10 +181,14 @@ Resultado (32 turnos, sem eventos, `ideologias.ts`):
 **O corte ainda quebra**, e não é dos juros: o pacote de corte derruba o
 índice `pib` de 45 para ~20-30 (a seta da meta de primário tira 8,4 pontos e
 a receita cai junto com o índice, contando a queda duas vezes). São as fases 3
-e 4. Desenvolvimentista com BC subordinado paga menos juros (a Selic não sobe
-com o risco) e tem inflação de 7%, que dilui a dívida: é o imposto
-inflacionário, mas o mercado ainda não cobra prêmio por isso. Rever depois
-da fase 4.
+e 4. Uma alavanca de corte limpa (só a idade mínima, sem a meta de primário)
+também termina com dívida e Selic um pouco acima do "Nada muda": o gasto cai
+0,1 ponto, mas a receita cai 0,6 junto com o índice `pib`. O critério de
+aceite da fase 2 ("superávit sustentado baixa a Selic") só pode ser visto
+depois das fases 3 e 4; a seta em si está testada (`orcamentoNaRede`).
+Desenvolvimentista com BC subordinado parece pagar menos juros (a Selic não
+sobe com o risco; inflação de 7% dilui a dívida) e o mercado ainda não cobra
+prêmio por isso. Comparar isolado depois da fase 4.
 
 **O turno 0 não muda.** Todas as fases são feitas para dar zero no ponto de
 partida do Brasil: o que muda é a dinâmica a partir dele. A foto do turno 0

@@ -15,7 +15,7 @@
       "tipo": "comparacao",
       "variavel": "juros_explosivos",
       "operador": "maior_ou_igual",
-      "valor": 32.0
+      "valor": 26.0
     }
   },
   "padrao": "empurrar",
