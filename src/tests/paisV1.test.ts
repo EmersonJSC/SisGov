@@ -57,18 +57,21 @@ describe("configuração do país (V1-06)", () => {
     // (só com BC autônomo). Risco do turno 0 13,8 → 14,3; 17 valores < 0,2.
     // Fases 3 e 4: 30% da receita acompanha a base; meta de primário corta
     // gasto em vez de tirar PIB; gasto → PIB 0,3. Valores andam < 0,1.
+    // Calibragem (23/out): política monetária ligada, meta em 5 opções,
+    // imóveis urbanos e terras rurais, e o turno 0 ancorado nos índices
+    // declarados (ajusteDoContexto, npm run pais:ancorar).
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1679);
+    expect(Object.keys(valores)).toHaveLength(1690);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.28226232428637, 3);
-    expect(valores.divida_publica).toBeCloseTo(77.99259910493892, 2);
-    expect(valores.inflacao).toBeCloseTo(4.835722703138084, 2);
-    expect(valores.desemprego).toBeCloseTo(6.199971590503557, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.27370945377098, 3);
+    expect(valores.divida_publica).toBeCloseTo(77.80588421051874, 2);
+    expect(valores.inflacao).toBeCloseTo(4.829902141198909, 2);
+    expect(valores.desemprego).toBeCloseTo(6.201144435965286, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12691342.05027632, 3);
-    expect(p.content.policies).toHaveLength(224);
+    expect(soma).toBeCloseTo(12691415.081297668, 3);
+    expect(p.content.policies).toHaveLength(226);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);
   });

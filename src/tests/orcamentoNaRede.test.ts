@@ -156,11 +156,11 @@ describe("SG157 — orçamento na rede", () => {
       if (!r.ok) throw new Error(r.diagnostics[0].message);
       return r.value.value;
     };
-    // 10 pontos de dívida a mais: ~3 pontos de risco (~45 pb)
+    // 10 pontos de dívida a mais: ~2 pontos de risco (~30 pb)
     expect(
       contrib("divida-publica--risco-pais", 88) -
         contrib("divida-publica--risco-pais", 78),
-    ).toBeCloseTo(3, 6);
+    ).toBeCloseTo(2, 6);
     // inflação 2 pontos acima: Selic +3 com BC autônomo, 0 se subordinado
     const v = partida.game.execution.values;
     expect(
