@@ -8,10 +8,12 @@ import { describe, expect, it } from "vitest";
 import {
   criarPartida,
   encerrarTurno,
+  enviarAoCongresso,
   leisQueCaem,
   mudarLei,
   revogarLei,
   verPartida,
+  verTramitacao,
   type Partida,
 } from "../app/partida";
 import {
@@ -178,6 +180,18 @@ describe("SG160 — catálogo: aprovar e revogar", () => {
     const voltou = ok(mudarLei(revogada, "cannabis-legal", farmacias));
     expect(lei(voltou, "cannabis-legal").emVigor).toBe(true);
   });
+
+  it("lei nova de valor pode ir ao Congresso com nível negativo", () => {
+    const partida = nova();
+    const regra = ok(mudarLei(partida, "formula-do-salario-minimo", 0));
+    const enviada = ok(
+      enviarAoCongresso(regra, "aumento-real-do-salario-minimo", -25),
+    );
+
+    expect(verTramitacao(enviada).fila.map((projeto) => projeto.lei)).toContain(
+      "aumento-real-do-salario-minimo",
+    );
+  }, 60_000);
 
   it("derivada sai de vigor quando a base muda, e a tela avisa antes", () => {
     const partida = nova();

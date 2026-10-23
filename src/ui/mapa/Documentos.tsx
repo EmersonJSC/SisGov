@@ -730,7 +730,12 @@ export function DocumentoLei({
               carimbo ||
               travada ||
               !!congresso?.naFila ||
-              (!lei.emVigor && !lei.opcoes?.length && rascunho <= 0)
+              // lei nova de valor em zero não muda nada; com controle que
+              // aceita negativo (aumento real do mínimo), zero e abaixo valem
+              (!lei.emVigor &&
+                !lei.opcoes?.length &&
+                (lei.minimo ?? 0) >= 0 &&
+                rascunho <= 0)
             }
             onClick={assinar}
           >
