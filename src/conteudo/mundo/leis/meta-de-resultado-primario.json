@@ -28,7 +28,7 @@
         "custoTexto": "gasto +2% do PIB acima da receita",
         "apoiam": ["grupos que recebem gasto"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Credibilidade ↓; PIB ↑ no curto prazo (o efeito vira negativo com dívida alta)",
+        "efeitos": "Contingenciamento: gasto ↓ 1% do PIB; Risco-país ↓ um pouco",
         "propoe": "O governo se compromete a gastar no máximo o que arrecada."
       },
       {
@@ -38,7 +38,7 @@
         "custoTexto": "corte de gasto ou alta de imposto de até 3% do PIB",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Servidores", "Interior", "Aposentados"],
-        "efeitos": "Credibilidade ↑; Risco-país ↓; PIB ↓ no curto prazo, mais na recessão",
+        "efeitos": "Contingenciamento: gasto ↓ 3% do PIB; Risco-país ↓; PIB ↓ pelo gasto que sai",
         "propoe": "O governo se compromete a sobrar 3% do PIB por ano."
       }
     ]
@@ -58,15 +58,15 @@
   },
   "efeitos": [
     {
-      "id": "meta-de-resultado-primario--pib",
-      "alvo": "pib",
+      "id": "meta-de-resultado-primario--gasto-publico",
+      "alvo": "gasto_publico",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.084,
+        "coeficiente": -0.03,
         "termoConstante": 0
       },
       "atraso": 1,
-      "unidade": "indice_0_100"
+      "unidade": "percentual_pib"
     },
     {
       "id": "meta-de-resultado-primario--risco-pais",

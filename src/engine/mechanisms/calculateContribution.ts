@@ -130,7 +130,8 @@ export function calculateContribution(
         "escala.fator",
         `O fator ${relation.scale.fator} precisa ser finito.`,
       );
-    value = (value * scaleValue) / relation.scale.referencia;
+    const peso = relation.scale.peso ?? 1;
+    value *= 1 - peso + (peso * scaleValue) / relation.scale.referencia;
   }
   if (!Number.isFinite(value))
     return failure("resultado", "A contribuição calculada não é finita.");

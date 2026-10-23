@@ -610,6 +610,12 @@ export type ConsequenceScale = {
   fator: string;
   /** Valor do fator em que o resultado vale o declarado. Maior que zero. */
   referencia: number;
+  /**
+   * Parte do resultado que acompanha o fator (0 a 1; padrão 1). Com 0,3,
+   * o resultado vale × (0,7 + 0,3 × fator ÷ referência): a receita de um
+   * imposto em % do PIB não cai junto com a economia inteira (mecânica 4).
+   */
+  peso?: number;
 };
 
 /**

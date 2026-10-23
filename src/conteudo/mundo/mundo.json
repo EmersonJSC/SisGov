@@ -1735,7 +1735,8 @@
     "mundo/consequencias/arrecadacao--risco-pais.json",
     "mundo/consequencias/gasto-publico--risco-pais.json",
     "mundo/consequencias/inflacao--taxa-juros.json",
-    "mundo/consequencias/risco-pais--taxa-juros.json"
+    "mundo/consequencias/risco-pais--taxa-juros.json",
+    "mundo/consequencias/gasto-publico--pib.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

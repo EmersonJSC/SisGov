@@ -99,6 +99,22 @@ describe("SG157 fase 2 — mecanismo pontos", () => {
     expect(r).toMatchObject({ ok: true, value: { scaleValue: 7 } });
   });
 
+  it("escala com peso: só a parte `peso` acompanha o fator (mecânica 4, 2.2)", () => {
+    const imposto = relation(
+      {
+        pontos: [
+          [0, 0],
+          [100, 10],
+        ],
+      },
+      { fator: "pib", referencia: 45, peso: 0.3 },
+    );
+    expect(valor(imposto, 100, { pib: 45 })).toBeCloseTo(10);
+    // PIB 10% menor: a receita cai 3%, não 10%
+    expect(valor(imposto, 100, { pib: 40.5 })).toBeCloseTo(9.7);
+    expect(valor(imposto, 100, { pib: 0 })).toBeCloseTo(7);
+  });
+
   it("valida a tabela e a escala", () => {
     const check = (fields: Record<string, unknown>) =>
       validateContentFile(
@@ -147,6 +163,26 @@ describe("SG157 fase 2 — mecanismo pontos", () => {
           ],
         },
         escala: { fator: "desemprego", referencia: 0 },
+      }).ok,
+    ).toBe(false);
+    const comPeso = (peso: number) =>
+      check({
+        parametros: {
+          pontos: [
+            [0, 0],
+            [100, 1],
+          ],
+        },
+        escala: { fator: "pib", referencia: 45, peso },
+      }).ok;
+    expect(comPeso(0.3)).toBe(true);
+    expect(comPeso(1)).toBe(true);
+    expect(comPeso(0)).toBe(false);
+    expect(comPeso(1.5)).toBe(false);
+    expect(
+      check({
+        parametros: { pontos: [[0, 0], [100, 1]] },
+        escala: { fator: "pib", referencia: 0 },
       }).ok,
     ).toBe(false);
   });

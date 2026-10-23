@@ -190,6 +190,43 @@ Desenvolvimentista com BC subordinado parece pagar menos juros (a Selic não
 sobe com o risco; inflação de 7% dilui a dívida) e o mercado ainda não cobra
 prêmio por isso. Comparar isolado depois da fase 4.
 
+**Fases 3 e 4 feitas em 22/out.**
+
+- **Receita (fase 3):** `escala` ganhou `peso` (0 a 1): o resultado vale ×
+  (1 − peso + peso × fator ÷ referência). Os 11 impostos que crescem com PIB,
+  renda ou consumo usam peso 0,3. A tabela de cada um foi multiplicada pelo
+  fator ÷ referência do turno 0 e a referência passou a ser o valor do turno
+  0, para o turno 0 não mudar (os valores andam < 0,1). Royalties da mineração
+  seguem com peso 1 (acompanham a produção).
+- **Meta de resultado (fase 4):** perdeu a seta de −8,4 no PIB. Agora corta
+  gasto (contingenciamento): − 0,03 ponto do PIB por ponto do nível, ou seja
+  "Zerar o déficit" − 1 e "Economizar 3%" − 3. Mantém a seta no risco-país.
+- **Gasto → PIB (fase 4):** + 0,3 ponto do índice por ponto do PIB gasto, a
+  partir do turno 0, com um trimestre de atraso (multiplicador de demanda).
+  Transferências também passam pela renda e pelo consumo.
+
+Resultado (32 turnos, semente 7, sem eventos):
+
+| Governo | Caminho | PIB ano 8 | Dívida ano 4 | Dívida ano 8 | Popularidade ano 8 |
+| --- | --- | --- | --- | --- | --- |
+| Nada muda | — | 41,4 | 90 | 121 | 45 |
+| Social-democrata | Corte | 36,0 | 82 | 91 | 41 |
+| Social-democrata | Social + PIB | 46,1 | 93 | 135 | 49 |
+| Desenvolvimentista | Corte | 36,0 | 82 | 99 | 36 |
+| Desenvolvimentista | Social + PIB | 48,3 | 90 | 115 | 51 |
+| Liberal | Corte | 44,0 | 83 | 94 | 44 |
+| Liberal | Social + PIB | 55,0 | 93 | 129 | 55 |
+| Conservador | Corte | 40,6 | 83 | 96 | 40 |
+| Conservador | Social + PIB | 49,8 | 93 | 136 | 49 |
+
+Cortar agora segura a dívida (91 a 99 contra 121) e custa popularidade e
+emprego; gastar para crescer sobe o PIB e a dívida. Ainda falta: um caminho
+que junte os dois (crescer e baixar a dívida) testado; o corte da
+social-democrata e da desenvolvimentista tira mais PIB (−8,7) que o alvo de
+0,3 a 0,8 por ponto cortado (sobe o desemprego pela idade mínima e a renda cai
+pelas transferências); e com Selic de 12% e envelhecimento, nenhum caminho
+ainda faz a dívida cair em 8 anos.
+
 **O turno 0 não muda.** Todas as fases são feitas para dar zero no ponto de
 partida do Brasil: o que muda é a dinâmica a partir dele. A foto do turno 0
 (`paisV1.test.ts`) só muda se uma fase precisar, e com nota.

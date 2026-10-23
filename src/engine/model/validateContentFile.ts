@@ -3382,10 +3382,23 @@ function validateConsequence(
       validateKnownFields(
         value.escala,
         file,
-        ["fator", "referencia"],
+        ["fator", "referencia", "peso"],
         diagnostics,
       );
       requiredString(value.escala, file, "escala.fator", diagnostics);
+      const peso = value.escala.peso;
+      if (
+        peso !== undefined &&
+        (typeof peso !== "number" || !(peso > 0 && peso <= 1))
+      )
+        diagnostics.push(
+          diagnostic(
+            file,
+            "escala.peso",
+            "VALOR_INVALIDO",
+            "O peso deve ser maior que zero e no máximo 1.",
+          ),
+        );
       const reference = requiredNumber(
         value.escala,
         file,

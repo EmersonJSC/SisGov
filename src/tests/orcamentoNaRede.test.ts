@@ -73,7 +73,12 @@ describe("SG157 — orçamento na rede", () => {
       if (!r.ok) throw new Error(r.diagnostics[0].message);
       return r.value.value;
     };
-    expect(com(24)).toBeCloseTo(com(48) / 2, 8);
+    // mecânica 4 (2.2): só 30% da receita acompanha a base; consumo pela
+    // metade tira 15% da receita, não 50%
+    expect(relacao.scale?.peso).toBe(0.3);
+    expect(com(24)).toBeLessThan(com(48));
+    const ref = relacao.scale!.referencia;
+    expect(com(ref / 2)).toBeCloseTo(com(ref) * 0.85, 8);
   });
 
   it("déficit soma na dívida e superávit abate", () => {
