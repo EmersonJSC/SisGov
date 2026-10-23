@@ -153,7 +153,7 @@ describe("SG159 — contas sem furos", () => {
   it("repetir a meta que já vale não vira ação (N4)", () => {
     const partida = nova();
     const lei = verPartida(partida).leis.find(
-      (l) => l.id === "salario-minimo",
+      (l) => l.id === "imposto-renda-pessoas",
     )!;
     let atual = partida;
     for (let i = 0; i < 50; i++) {

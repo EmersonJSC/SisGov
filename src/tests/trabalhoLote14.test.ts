@@ -44,11 +44,14 @@ describe("Lote 14: piso salarial e rede de segurança", () => {
     );
   });
 
-  it("valor do piso obedece ao decisor e à regra de reajuste", () => {
+  it("aumento real do mínimo obedece ao decisor e à regra de reajuste", () => {
     const p = nova();
-    expect(aplicarMeta(p, "salario-minimo", 0).ok).toBe(false);
+    // com reajuste automático (inflação + PIB), o aumento não se escolhe
+    expect(aplicarMeta(p, "aumento-real-do-salario-minimo", 5).ok).toBe(false);
     const semPisoNacional = aplicar(p, "quem-decide-o-salario-minimo", 33);
-    expect(aplicarMeta(semPisoNacional, "salario-minimo", 100).ok).toBe(false);
+    expect(
+      aplicarMeta(semPisoNacional, "aumento-real-do-salario-minimo", 5).ok,
+    ).toBe(false);
   });
 
   it("fundo com multa exige direitos mínimos constitucionais", () => {
