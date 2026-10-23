@@ -51,7 +51,7 @@
         "id": "sistema-dual-escola-e-empresa-juntas",
         "rotulo": "Integrar escola técnica e vagas de aprendiz nas empresas",
         "valor": 100,
-        "custoTexto": "Hipótese: custo de formação dividido entre escolas e empresas",
+        "custoTexto": "cerca de 0,3% do PIB por ano (escolas técnicas e apoio às empresas)",
         "apoiam": ["Indústria", "Empresários", "Jovens"],
         "rejeitam": ["Pequenos negócios com pouca estrutura de formação"],
         "efeitos": "Vagas e qualificação crescem com atraso; requer escola técnica e supervisão nas empresas.",
@@ -123,7 +123,7 @@
       "alvo": "oportunidades_juvenis",
       "mecanismo": "limiar",
       "parametros": {
-        "coeficiente": 0.28,
+        "coeficiente": 0.15,
         "limiar": 75,
         "direcao": "acima"
       },
@@ -135,11 +135,11 @@
       "alvo": "qualificacao_trabalho",
       "mecanismo": "limiar",
       "parametros": {
-        "coeficiente": 0.58333333,
+        "coeficiente": 0.3,
         "limiar": 88,
         "direcao": "acima"
       },
-      "atraso": 4,
+      "atraso": 8,
       "unidade": "indice_0_100"
     },
     {
@@ -242,6 +242,21 @@
       },
       "atraso": 1,
       "unidade": "percentual_0_100"
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [75, 0],
+          [100, 0.3]
+        ]
+      },
+      "atraso": 0,
+      "leitura": "nivel",
+      "unidade": "percentual_pib"
     }
   ]
 }

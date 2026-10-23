@@ -291,6 +291,9 @@ function curva(
   };
 }
 
+/** Zoom ao clicar numa lei: perto o bastante para ler o nome e os vizinhos. */
+const ZOOM_DA_LEI = 1.2;
+
 /** Abaixo deste zoom, as esferas fechadas viram cartazes de tema. */
 const LONGE = 0.62;
 
@@ -1122,7 +1125,7 @@ export function MapaPolitico({
       ocupado,
     );
     // perto o bastante para ler as leis, longe o bastante para ver as vizinhas
-    animarPara({ ...destino, k: Math.min(destino.k, 0.86) });
+    animarPara({ ...destino, k: Math.min(destino.k, 1) });
   }, [aberta, alvo, animarPara, irParaVisaoGeral, ocupado, pronto]);
 
   // O painel lateral empurra o centro da câmera para a área livre. Uma
@@ -1130,6 +1133,7 @@ export function MapaPolitico({
   // livre da janela.
   const painelAnterior = useRef(painel);
   const esquerdoAnterior = useRef(painelEsquerdo);
+  const selecionadoAnterior = useRef(selecionado);
   const coberturaAtual = useRef(cobertura);
   coberturaAtual.current = cobertura;
   useEffect(() => {
@@ -1150,6 +1154,15 @@ export function MapaPolitico({
     const p = selecionado
       ? (alvo.leis.get(selecionado) ?? bolhasPos.get(selecionado))
       : undefined;
+    // Clicar numa lei aproxima até dar para ler (autor, 23/out: no notebook
+    // o zoom ficava longe demais).
+    const novaSelecao = selecionadoAnterior.current !== selecionado;
+    selecionadoAnterior.current = selecionado;
+    let aproximar = false;
+    if (p && novaSelecao && c.k < ZOOM_DA_LEI) {
+      c = { ...c, k: ZOOM_DA_LEI };
+      aproximar = true;
+    }
     if (p) {
       const t = tela.current;
       const sx = t.largura / 2 + (p.x - c.x) * c.k;
@@ -1168,7 +1181,7 @@ export function MapaPolitico({
         sx > livre - 60 ||
         sy < 60 ||
         sy > t.altura - 60;
-      if (escondido || fora) {
+      if (escondido || fora || aproximar) {
         let alvoX = (painelEsquerdo + livre) / 2;
         if (j) {
           const esquerda = j.left - painelEsquerdo;
