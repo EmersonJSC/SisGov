@@ -113,17 +113,36 @@ e, no fim da fase, o roteiro de 4 governos × 2 caminhos
 | 5. Pendências | fundo soberano com o destino da sobra; contribuição sobre salários; programas com custo | Testes do cofre verdes; receita total igual à de antes no turno 0 |
 | 6. Aceite | script que roda as estratégias do `simular.py` traduzidas em leis | Direção e ordem de grandeza da tabela 6 do `equilibrio.md`: austeridade e "cortar imposto e gasto" derrubam a dívida para perto de 64%; "social com superávit" segura perto de 85%; "gasto social sem imposto" quebra |
 
-**Fase 1 feita em 22/out (só a diluição).** Nó `crescimento_real` = 2 + 0,3 ×
-(ritmo − 44,7); a dívida perde (crescimento real + inflação) ÷ 4 % de si mesma
-por trimestre. `pib_nominal` **continua constante** por enquanto: 15 verbas em
-reais são divididas por ele, e se ele crescer elas encolhem uns 6,5% ao ano
-(um corte escondido de ~40% em 8 anos). Vira estoque só junto com a correção
-dessas verbas pela inflação. Resultado, "Nada muda": dívida 78,1 → 82,5 (ano 4)
-→ 88,2 (ano 8), antes 82 → 166. A dívida do turno 0 passa de 82,4 para 78,1
-(estoque inicial 77,2; a de 82 era efeito do aquecimento sem diluição; 78 é o
-dado de 2025 e o ponto de partida do `simular.py`). Abaixo do alvo 94/119
-porque no jogo os juros são 6,7% do PIB (≈ 0,7 × Selic × dívida; real ≈ 8%) e
-o primário não piora com o envelhecimento: fases 2 e 3.
+**Fase 1 feita em 22/out: crescimento = tendência + ciclo** (troca a fórmula
+"2 + 0,3 × (ritmo − 44,7)", que dava crescimento maior para sempre a quem
+estivesse acima do ponto de partida; o índice `pib` é tamanho, não velocidade).
+
+- **Tendência** (`crescimento_potencial`, % a.a., anda 8% da distância por
+  trimestre, muda em anos): 2% no Brasil de hoje, + 0,04 por ponto de
+  investimento, + 0,03 por ponto de escolaridade, + 0,02 por ponto de
+  infraestrutura, − 0,05 por ponto de envelhecimento, cada um medido a partir
+  do turno 0. _(a calibrar)_ Produtividade fica fora: é nível, e já move o
+  índice `pib`, que entra no ciclo.
+- **Ciclo:** quanto o índice `pib` andou em 4 trimestres (1 ponto ≈ 1% do PIB
+  de 2025). Um choque dá um ano de crescimento maior ou menor e passa. Com
+  isso o índice `pib` passa a querer dizer "PIB em relação à tendência".
+- **Envelhecimento sobe sozinho:** + 0,32 ponto do índice por trimestre (65+
+  sobe ~0,35 ponto da população por ano, IBGE). Puxa a tendência para baixo e
+  o gasto da previdência para cima. Estoque inicial 38,75 para o turno 0
+  seguir em 39,75.
+- **Diluição:** a dívida perde (crescimento real + inflação) ÷ 4 % de si
+  mesma por trimestre.
+- `pib_nominal` **continua constante**: 15 verbas em reais são divididas por
+  ele, e se ele crescer elas encolhem ~6,5% ao ano (corte escondido de ~40% em
+  8 anos). Vira estoque só junto com a correção dessas verbas pela inflação.
+
+Resultado, "Nada muda": dívida 78 → 85 (ano 4) → 98 (ano 8); antes 82 → 166.
+A dívida do turno 0 passa de 82,4 para 78 (estoque inicial 77,2; os 82 eram
+efeito do aquecimento sem diluição; 78 é o dado de 2025 e o ponto de partida
+do `simular.py`). Ainda abaixo de 94/119: os juros do jogo são 6,7% do PIB
+(≈ 0,7 × Selic × dívida) e não andam para a Selic; é a fase 2. O pacote de
+corte ainda derruba o índice `pib` em 12 pontos (seta da meta de primário,
+fase 4), e o ciclo agora mostra isso como recessão de −8%.
 
 **O turno 0 não muda.** Todas as fases são feitas para dar zero no ponto de
 partida do Brasil: o que muda é a dinâmica a partir dele. A foto do turno 0

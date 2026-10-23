@@ -1720,7 +1720,14 @@
     "mundo/consequencias/capacidade-estatal--eficacia-carvao.json",
     "mundo/consequencias/pib--crescimento-real.json",
     "mundo/consequencias/crescimento-real--divida-publica.json",
-    "mundo/consequencias/inflacao--divida-publica.json"
+    "mundo/consequencias/inflacao--divida-publica.json",
+    "mundo/consequencias/investimento--crescimento-potencial.json",
+    "mundo/consequencias/escolaridade--crescimento-potencial.json",
+    "mundo/consequencias/infraestrutura--crescimento-potencial.json",
+    "mundo/consequencias/envelhecimento--crescimento-potencial.json",
+    "mundo/consequencias/crescimento-potencial--crescimento-real.json",
+    "mundo/consequencias/pib-ano-anterior--crescimento-real.json",
+    "mundo/consequencias/transicao-demografica--envelhecimento.json"
   ],
   "eventos": [
     "mundo/eventos/aumento-demanda.json",

@@ -49,17 +49,19 @@ describe("configuração do país (V1-06)", () => {
     // inflação (nó novo crescimento_real). A dívida do turno 0 vai de 82,4
     // para 78,1 (a de 82 vinha do aquecimento sem diluição); mudam só os
     // valores ligados a ela (juros, resultado e 33 apoios, < 0,1 ponto).
+    // Fase 1 refeita: crescimento = tendência (crescimento_potencial) +
+    // ciclo, e o envelhecimento sobe sozinho; 60 valores andam < 0,1 ponto.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1676);
+    expect(Object.keys(valores)).toHaveLength(1677);
     expect(p.game.execution.step).toBe(12);
     expect(valores.popularidade_governo).toBeCloseTo(48.28710551894294, 3);
-    expect(valores.divida_publica).toBeCloseTo(78.0528490367358, 2);
+    expect(valores.divida_publica).toBeCloseTo(78.00290140747143, 2);
     expect(valores.inflacao).toBeCloseTo(4.835722703138084, 2);
     expect(valores.desemprego).toBeCloseTo(6.199971590503557, 2);
     expect(valores.pib_nominal).toBe(12000000);
     const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12691326.232138773, 3);
+    expect(soma).toBeCloseTo(12691327.959470337, 3);
     expect(p.content.policies).toHaveLength(224);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);

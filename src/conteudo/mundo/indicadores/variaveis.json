@@ -6490,6 +6490,23 @@
       }
     },
     {
+      "id": "crescimento_potencial",
+      "tipo": "calculado",
+      "nome": "Crescimento potencial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -5,
+        "maximo": 8
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor",
+      "resposta": 0.08,
+      "medida": {
+        "unidade": "crescimento de tendência do PIB (% ao ano)",
+        "fontes": ["Banco Central (Relatório de Inflação)", "IFI"]
+      }
+    },
+    {
       "id": "crescimento_real",
       "tipo": "calculado",
       "nome": "Crescimento real",

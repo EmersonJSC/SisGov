@@ -32,7 +32,7 @@ for (const nome of ["base", "corte", ...CORTE.map((c) => c[0])]) {
     const v = p.game.execution.values as Record<string, number>;
     const k = verPartida(p).contas.percentualPib as Record<string, number>;
     const r = (n: number) => Math.round(n * 10) / 10;
-    return `t${t} rec ${r(k.receita)} gas ${r(k.gasto)} jur ${r(k.juros)} res ${r(k.resultado)} div ${r(v.divida_publica)} pib ${r(v.pib)} cons ${r(v.consumo)} renda ${r(v.renda_familias ?? NaN)} desemp ${r(v.desemprego)} selic ${r(v.taxa_juros)}`;
+    return `t${t} rec ${r(k.receita)} gas ${r(k.gasto)} jur ${r(k.juros)} res ${r(k.resultado)} div ${r(v.divida_publica)} pib ${r(v.pib)} cons ${r(v.consumo)} renda ${r(v.renda_familias ?? NaN)} desemp ${r(v.desemprego)} selic ${r(v.taxa_juros)} cresc ${r(v.crescimento_real)} pot ${r(v.crescimento_potencial)} env ${r(v.envelhecimento)} risco ${r(v.risco_pais)} infl ${r(v.inflacao)} jimp ${r(v.juros_implicito ?? NaN)}`;
   };
   console.log("==", nome);
   console.log(f(0));

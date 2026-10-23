@@ -1,0 +1,17 @@
+{
+  "id": "escolaridade--crescimento-potencial",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "escolaridade",
+  "alvo": "crescimento_potencial",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.03,
+    "termoConstante": -1.99377
+  },
+  "unidade": "percentual_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
