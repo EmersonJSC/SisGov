@@ -35,7 +35,8 @@ const SALARIO_MINIMO_DO_BRASIL = 1621;
 const CESTAS_DO_BRASIL = 1.76;
 const PIB_DO_BRASIL = 12_000_000;
 const MINIMO_EM_PCT_DA_MEDIANA = 66;
-const MINIMO_SAUDAVEL = 50;
+const CESTAS_SAUDAVEIS = 1.3;
+const PORCENTO = 100;
 const DEFESA_DO_BRASIL = 192_000;
 const DEFESA_EM_PCT_DO_PIB = 1.6;
 const PRECISAO_DE_DEZENAS = -1;
@@ -98,24 +99,25 @@ describe("régua da lei", () => {
         if (l.dividePor) expect(brasil[l.dividePor], id).toBeDefined();
       }),
     );
-    expect(brasil.salarioTipicoMensal).toBe(
-      referenciasDoBrasil.salarioTipicoMensal,
+    expect(brasil.salarioMedianoMensal).toBe(
+      referenciasDoBrasil.salarioMedianoMensal,
     );
   });
 
-  it("salário mínimo: 66% do salário típico dá R$ 1.621 e 1,76 cesta", () => {
+  it("salário mínimo: 66% da mediana dá R$ 1.621 e cai na faixa alta de cestas", () => {
     const regua = reguaDaLei("aumento-real-do-salario-minimo")!;
     const brasil = referenciasDoPais("Brasil");
-    const [dinheiro, cestas] = regua.leituras ?? [];
+    const [dinheiro] = regua.leituras ?? [];
     expect(
       valorDerivado(dinheiro, MINIMO_EM_PCT_DA_MEDIANA, brasil),
     ).toBeCloseTo(SALARIO_MINIMO_DO_BRASIL, PRECISAO_DE_DEZENAS);
-    expect(valorDerivado(cestas, MINIMO_EM_PCT_DA_MEDIANA, brasil)).toBeCloseTo(
-      CESTAS_DO_BRASIL,
-      PRECISAO_DE_DECIMOS,
-    );
-    expect(faixaDe(regua, MINIMO_EM_PCT_DA_MEDIANA).tom).toBe("atencao");
-    expect(faixaDe(regua, MINIMO_SAUDAVEL).tom).toBe("bom");
+    const medida = variaveis.variaveis.find(
+      (v) => v.id === "salario_minimo_relativo",
+    )!.medida as { cem: number };
+    const cestas = (MINIMO_EM_PCT_DA_MEDIANA * medida.cem) / PORCENTO;
+    expect(cestas).toBeCloseTo(CESTAS_DO_BRASIL, PRECISAO_DE_DECIMOS);
+    expect(faixaDe(regua, cestas).tom).toBe("atencao");
+    expect(faixaDe(regua, CESTAS_SAUDAVEIS).tom).toBe("bom");
   });
 
   it("verba em dinheiro vira % do PIB: defesa de R$ 192 bi é 1,6%", () => {

@@ -36,7 +36,7 @@ export type Regua = Readonly<{
   fonte: string;
 }>;
 
-/** Números do país em dinheiro (salário típico, cesta básica…). */
+/** Números do país em dinheiro (mediana dos salários, cesta básica…). */
 export type Referencias = Readonly<Record<string, number>>;
 
 const PORCENTO = 100;

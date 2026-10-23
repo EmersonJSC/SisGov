@@ -1,7 +1,7 @@
 /**
  * V1-34: leis em camadas. A mesa do salário mínimo tem três camadas: quem
  * decide (Constituição), o reajuste (lei) e o aumento real (alavanca, só sem
- * regra automática). O nível do mínimo é um estoque em % do salário típico
+ * regra automática). O nível do mínimo é um estoque em % da mediana dos salários
  * (23/out): sobe com o aumento real e cai com o crescimento dos salários.
  */
 import { beforeAll, describe, expect, it } from "vitest";
@@ -61,7 +61,7 @@ describe("mesa do salário mínimo", () => {
     expect(r.ok).toBe(false);
     if (!r.ok)
       expect(r.erros.join(" ")).toContain("Reajuste do salário mínimo");
-    // inflação + PIB: o mínimo acompanha o salário típico
+    // inflação + PIB: o mínimo acompanha os outros salários
     const p = turnos(partida, 8);
     expect(v(p, "salario_minimo_relativo")).toBeCloseTo(66, 0);
   });

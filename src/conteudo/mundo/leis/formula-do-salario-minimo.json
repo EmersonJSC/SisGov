@@ -54,12 +54,12 @@
       },
       {
         "id": "meta-da-mediana",
-        "rotulo": "Acompanha o salário típico",
+        "rotulo": "Sobe junto com os salários",
         "valor": 100,
         "apoiam": ["Trabalhadores de baixa renda", "Sindicatos"],
         "rejeitam": ["Pequenos negócios", "Gestores fiscais"],
         "efeitos": "Combate pobreza mais rápido, com maior risco de custo, informalidade e pressão fiscal.",
-        "propoe": "O mínimo é corrigido para ficar sempre na mesma fração do salário típico."
+        "propoe": "O mínimo sobe na mesma proporção que os outros salários do país."
       }
     ]
   },

@@ -2,10 +2,10 @@
   "tipo": "pais-referencias",
   "versaoEsquema": 1,
   "descricao": "Números do país em dinheiro de hoje, para as réguas das leis mostrarem valores em reais.",
-  "salarioTipicoMensal": 2456,
+  "salarioMedianoMensal": 2456,
   "cestaBasicaMensal": 922.51,
   "fontes": [
-    "Decreto federal de dezembro de 2025: salário mínimo de R$ 1.621 em 2026; salário típico = mínimo / 0,66 (salario_minimo_relativo).",
+    "Decreto federal de dezembro de 2025: salário mínimo de R$ 1.621 em 2026; mediana dos salários = mínimo / 0,66 (salario_minimo_relativo).",
     "DIEESE, Pesquisa Nacional da Cesta Básica, setembro de 2026: São Paulo, R$ 922,51."
   ],
   "noPais": {
@@ -30,6 +30,6 @@
     "programa-espacial-e-satelites": "Agência Espacial Brasileira perto de R$ 250 milhões por ano.",
     "piso-saude": "A União aplica ao menos 15% da receita corrente líquida (art. 198, EC 86/2015).",
     "piso-educacao": "A União aplica ao menos 18% da receita de impostos (art. 212).",
-    "aumento-real-do-salario-minimo": "R$ 1.621 em 2026, perto de 66% da mediana."
+    "aumento-real-do-salario-minimo": "R$ 1.621 em 2026: compra 1,76 cesta básica de São Paulo."
   }
 }

@@ -116,7 +116,7 @@ do real (coeficiente 0,029 → 0,08).
    mesaDoSalarioMinimo, partida, leisFilhas, inventario, busca, molde,
    mapa). Consertar o que falhar.
 2. **Salário mínimo na tela:** amostra em HTML do controle com a régua
-   (% acima da inflação, % do salário típico com faixas verde/amarela/
+   (% acima da inflação, cestas básicas com faixas verde/amarela/
    vermelha, cestas básicas, valor em dinheiro, custo dos benefícios
    atrelados). Depois implementar. Avaliar uma opção constitucional
    "proibido reduzir o salário em dinheiro".

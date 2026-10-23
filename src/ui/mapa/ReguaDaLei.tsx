@@ -39,6 +39,7 @@ const LINHA_DA_NOVA = 104;
 const INICIO_DA_NOVA = 30;
 
 const CASAS_DO_NUMERO = 2;
+const PORCENTO = 100;
 
 const numero = (valor: number, casas = 1): string =>
   valor.toLocaleString("pt-BR", {
@@ -92,13 +93,25 @@ function noHorizonte(
 function formatoDaRegua(regua: Regua, lei: VisaoLei, valor: number): string {
   if (regua.mede === "pib") return `${numero(valor, casasPara(valor))}% do PIB`;
   if (regua.mede === "controle") return nivelDaLei(valor, lei.unidade);
-  return `${numero(valor, 0)}${regua.sufixo ?? ""}`;
+  return `${numero(valor, casasPara(valor))}${regua.sufixo ?? ""}`;
+}
+
+/** Valor do motor na medida real do índice (ex.: cestas básicas), se houver. */
+function naMedida(bolha: VisaoBolha | undefined, valor: number): number {
+  const medida = bolha?.medida;
+  if (
+    !medida?.convertida ||
+    medida.zero === undefined ||
+    medida.cem === undefined
+  )
+    return valor;
+  return medida.zero + ((medida.cem - medida.zero) * valor) / PORCENTO;
 }
 
 function rotuloDaMarca(regua: Regua, lei: VisaoLei, valor: number): string {
   if (regua.mede === "controle" && lei.unidade === "moeda_ano")
     return moeda(valor);
-  const sufixo = regua.mede === "variavel" ? (regua.sufixo ?? "") : "%";
+  const sufixo = regua.mede === "variavel" ? "" : "%";
   return `${numero(valor, casasPara(valor))}${sufixo}`;
 }
 
@@ -123,16 +136,17 @@ export function ReguaDaLei({
       (LARGURA - MARGEM - MARGEM);
 
   const indiceDaRegua = regua.variavel ?? "";
+  const bolhaDaRegua = bolhas.get(indiceDaRegua);
   const hoje =
     regua.mede === "variavel"
-      ? (bolhas.get(indiceDaRegua)?.valor ?? 0)
+      ? naMedida(bolhaDaRegua, bolhaDaRegua?.valor ?? 0)
       : valorDaLeiNaRegua(regua, lei.nivel, pib);
   const projetado = noHorizonte(previsao, indiceDaRegua, mes);
   const depois = ((): number | null => {
     if (!mudou) return null;
     if (regua.mede !== "variavel")
       return valorDaLeiNaRegua(regua, rascunho, pib);
-    return projetado?.com ?? null;
+    return projetado ? naMedida(bolhaDaRegua, projetado.com) : null;
   })();
   const rotuloDepois = regua.mede === "variavel" ? quando : "nova lei";
   const referencia = depois ?? hoje;

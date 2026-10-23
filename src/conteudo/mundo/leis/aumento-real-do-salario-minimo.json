@@ -6,7 +6,7 @@
   "nome": "Aumento real do salário mínimo",
   "decide": "Define quanto o salário mínimo sobe por ano acima da inflação; abaixo de zero a inflação come parte dele, e mais abaixo o valor em dinheiro é cortado.",
   "area": "trabalho",
-  "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB, e o mínimo vale cerca de dois terços do salário típico.",
+  "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB, e o mínimo compra perto de 1,8 cesta básica.",
   "nivel": "lei",
   "controle": {
     "variavel": "aumento_real_salario_minimo",

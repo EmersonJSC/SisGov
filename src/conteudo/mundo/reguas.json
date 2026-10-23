@@ -741,32 +741,32 @@
     "aumento-real-do-salario-minimo": {
       "mede": "variavel",
       "variavel": "salario_minimo_relativo",
-      "sufixo": "%",
-      "rotulo": "Mínimo em % do salário típico (a mediana)",
-      "escala": [20, 90],
+      "sufixo": " cestas",
+      "rotulo": "Cestas básicas que o salário mínimo compra",
+      "escala": [0.5, 2.5],
       "faixas": [
         {
-          "ate": 30,
+          "ate": 0.8,
           "tom": "ruim",
           "rotulo": "baixo: não tira da pobreza"
         },
         {
-          "ate": 40,
+          "ate": 1.1,
           "tom": "atencao",
           "rotulo": "baixo"
         },
         {
-          "ate": 60,
+          "ate": 1.6,
           "tom": "bom",
           "rotulo": "faixa saudável"
         },
         {
-          "ate": 70,
+          "ate": 1.9,
           "tom": "atencao",
           "rotulo": "alto"
         },
         {
-          "ate": 90,
+          "ate": 2.5,
           "tom": "ruim",
           "rotulo": "alto: informalidade e desemprego"
         }
@@ -775,17 +775,9 @@
         {
           "de": "salario_minimo_relativo",
           "rotulo": "Valor em dinheiro (reais de hoje)",
-          "multiplicaPor": "salarioTipicoMensal",
+          "multiplicaPor": "salarioMedianoMensal",
           "fator": 0.01,
           "formato": "moeda"
-        },
-        {
-          "de": "salario_minimo_relativo",
-          "rotulo": "Cestas básicas que compra",
-          "multiplicaPor": "salarioTipicoMensal",
-          "dividePor": "cestaBasicaMensal",
-          "fator": 0.01,
-          "formato": "numero"
         }
       ],
       "alerta": {
@@ -793,7 +785,7 @@
         "abaixoDe": 0,
         "texto": "Corte em dinheiro: trabalhadores, pobres e aposentados perdem apoio e sobe o risco de greve geral."
       },
-      "fonte": "Diretiva (UE) 2022/2041: referência de 60% da mediana; OCDE, Minimum relative to median wages."
+      "fonte": "Diretiva (UE) 2022/2041: referência de 60% da mediana dos salários (perto de 1,6 cesta); OCDE, Minimum relative to median wages."
     }
   }
 }
