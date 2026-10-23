@@ -4,11 +4,11 @@ Lista de mudanças pedidas jogando. Aplicar quando o autor mandar.
 
 | # | Lei | O que pediu | Proposta | Situação |
 | --- | --- | --- | --- | --- |
-| 1 | Valor do salário mínimo | "Muito confuso" | Esperar o detalhe do que confundiu (números, nomes das opções ou a relação com "Quem decide" e "Fórmula") | aguardando detalhe |
-| 2 | Direito de greve | Poder ser mais radical: greve sem aviso nenhum | 4ª opção "Greve livre, sem aviso e sem serviço mínimo" (vale para essenciais e greves de solidariedade): sindicatos ↑, salários ↑ pouco, mais greves de surpresa (eventos de greve mais prováveis), serviços essenciais param às vezes, confiança e investimento ↓ | anotado |
-| 3 | Meta de resultado das contas | "Déficit permitido" — permitido quanto? | Opções em %: sem meta / déficit de até 2% / zerar / superávit 1,5% / superávit 3%. O corte depende da distância entre o resultado e a meta, com teto de ~3% do PIB por ano. Cortar também deve custar: mais impopular e tira investimento público | aguardando sim |
-| 4 | Imposto sobre imóveis e terras | É sobre todos ou só quem tem mais? | Dividir em "Imóveis urbanos" e "Terras rurais"; cada uma com quem paga: todos iguais / isenta os pequenos / mais para os grandes e improdutivos | aprovado |
-| 5 | Alcance das empresas estatais | Ambíguo; escrever e explicar melhor | Ver abaixo | anotado |
+| 1 | Valor do salário mínimo | "Muito confuso" | Esperar o detalhe do que confundiu (números, nomes das opções ou a relação com "Quem decide" e "Fórmula") | feito: mecânica nova (estoque + aumento real) |
+| 2 | Direito de greve | Poder ser mais radical: greve sem aviso nenhum | 4ª opção "Greve livre, sem aviso e sem serviço mínimo" (vale para essenciais e greves de solidariedade): sindicatos ↑, salários ↑ pouco, mais greves de surpresa (eventos de greve mais prováveis), serviços essenciais param às vezes, confiança e investimento ↓ | feito |
+| 3 | Meta de resultado das contas | "Déficit permitido" — permitido quanto? | Opções em %: sem meta / déficit de até 2% / zerar / superávit 1,5% / superávit 3%. O corte depende da distância entre o resultado e a meta, com teto de ~3% do PIB por ano. Cortar também deve custar: mais impopular e tira investimento público | feito |
+| 4 | Imposto sobre imóveis e terras | É sobre todos ou só quem tem mais? | Dividir em "Imóveis urbanos" e "Terras rurais"; cada uma com quem paga: todos iguais / isenta os pequenos / mais para os grandes e improdutivos | feito |
+| 5 | Alcance das empresas estatais | Ambíguo; escrever e explicar melhor | Ver abaixo | feito |
 
 ## 5. Alcance das empresas estatais — reescrever
 

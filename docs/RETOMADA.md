@@ -1,4 +1,4 @@
-# Retomada: onde paramos (22/out/2026, 03h40)
+# Retomada: onde paramos (23/out/2026, 02h30)
 
 > Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md),
 > [AGENTS.md](../AGENTS.md) e o documento do assunto.
@@ -49,6 +49,86 @@ Fora da versão 1: STF, mercado do Victoria 3, Congresso propondo leis e veto.
   leis visíveis de perto, sem encavalar; **painel da área** à direita com
   prateleiras, estado em palavras e ★ principais; a aba do painel acende o
   grupo no mapa.
+
+## Feito em 22–23/out (noite) — economia e calibragem
+
+Commits locais (sem push), de `075cfe7` a `1c5040f`. Detalhes em
+[mecanicas/orcamento.md](jogo/mecanicas/orcamento.md) e
+[leis/feedback-do-autor.md](jogo/leis/feedback-do-autor.md).
+
+- **Mecânica 4 (orçamento), fases 1–4:**
+  - crescimento = tendência (`crescimento_potencial`: investimento,
+    escolaridade, infraestrutura, envelhecimento) + ciclo (quanto o índice
+    `pib` andou em 4 trimestres); envelhecimento sobe sozinho;
+  - a dívida é diluída pelo crescimento + inflação;
+  - juro médio da dívida (`juros_implicito`) anda para a Selic (15%/trim.);
+  - risco-país sobe com dívida, déficit e inflação; Selic reage à
+    inflação e ao risco só com BC autônomo; risco encarece a dívida;
+  - receita: só 30% acompanha a base (`escala.peso`);
+  - meta de resultado em 5 opções (sem meta / déficit até 2% / zerar /
+    sobrar 1,5% / sobrar 3%) com **contingenciamento** pela distância à
+    meta (teto 3% do PIB/ano), que custa investimento, obras e apoio;
+  - gasto público → PIB 0,3 (multiplicador).
+  - "Nada muda": dívida 78 → ~92 (ano 4) → ~120% (ano 8).
+- **Política monetária ligada:** expectativas puxam a inflação; a Selic
+  real freia inflação, crédito, consumo, câmbio e PIB; inflação alta custa
+  apoio e realimenta expectativas; "Taxa básica de juros" só existe com BC
+  subordinado (o Brasil não começa com ela).
+- **Calibragem por jogador-teste:** `scripts/teste/varredura-leis.ts`
+  (cada opção de cada lei sozinha) e `scripts/teste/jogador-guloso.ts`
+  (procura o melhor pacote). Achou alavancas grátis; corrigidas: 8 leis
+  fortes demais, intervencionistas sem ganho, qualificação instantânea,
+  12 estoques por trimestre rápidos demais, vagas no ensino superior 50×.
+  Hoje o melhor pacote cobra preço (popularidade, PIB ou inflação).
+- **Turno 0 ancorado:** `npm run pais:ancorar` grava `ajusteDoContexto` em
+  `valores.json`; rodar depois de mudar leis do país (desvio 30 → 0,1).
+- **Leis (feedback do autor jogando):**
+  - opções globais: nada de "hoje na referência", Brasil, pré-sal em
+    rótulos e textos; a informação fica no `exemplo`. Regra no molde +
+    `src/tests/leisGlobais.test.ts`;
+  - direito de greve com "greve livre, sem aviso";
+  - "Onde o Estado pode ter empresas estatais" vira limite da
+    participação pública, sem efeitos próprios;
+  - imposto de imóveis dividido: urbanos, terras rurais e "Quem paga";
+  - **salário mínimo novo:** estoque `salario_minimo_relativo` (% do
+    salário típico = mediana; Brasil 66); lei "Aumento real do salário
+    mínimo" (−30% a +20% acima da inflação, só com reajuste "votado a cada
+    ano"); custo do governo só nos benefícios atrelados ao mínimo; corte
+    em dinheiro custa apoio e traz greve; lei "Valor" arquivada.
+- **Mapa:** clicar numa lei aproxima até zoom 1,2.
+
+## Próximo chat: lista de mecânicas e tarefas
+
+1. **`npm run check` pelo GPT** (a suíte inteira não foi rodada; os testes
+   afetados passaram: paisV1, orcamentoNaRede, cofre, brasil2026,
+   mesaDoSalarioMinimo, partida, leisFilhas, inventario, busca, molde,
+   mapa). Consertar o que falhar.
+2. **Salário mínimo na tela:** amostra em HTML do controle com a régua
+   (% acima da inflação, % do salário típico com faixas verde/amarela/
+   vermelha, cestas básicas, valor em dinheiro, custo dos benefícios
+   atrelados). Depois implementar. Avaliar uma opção constitucional
+   "proibido reduzir o salário em dinheiro".
+3. **Descrição clara das leis:** campo de explicação (2–4 frases) na lei e
+   em cada opção (o que muda na prática, quem ganha e quem perde, efeitos
+   em palavras). Amostra da janela primeiro; depois escrever todas, área
+   por área; teste que exige explicação.
+4. **Calibragem, continuar:** varredura completa de novo
+   (`varredura-leis.ts`, ~6 chamadas em paralelo de 2) e jogador guloso do
+   zero; marcar leis que mexem > 2–3 pontos de PIB em 3 anos sem custo.
+   Pendentes vistos: leis de defesa e reservas (estoques), "Sem meta" de
+   inflação ainda reduz muito a dívida (imposto inflacionário), corte da
+   social-democrata tira PIB demais.
+5. **PIB em reais (`pib_nominal`) como estoque:** só junto com corrigir
+   pela inflação as 15 verbas em reais.
+6. **Mecânica 4, fases 5–6:** fundo soberano com o destino da sobra;
+   contribuição sobre salários como imposto próprio; seguro-desemprego e
+   renda de idosos como programas; script de aceite com as estratégias do
+   `simular.py`.
+7. **Tela (com amostra antes):** Segurança e defesa em duas esferas; mapa
+   em faixas e filtro (populares/influência); janela da lei enxuta;
+   eleitorado em janela.
+8. **Limpeza:** `.git` tem dezenas de `stale-*.lock` (renomeados, sem
+   permissão de apagar); autorizar a exclusão e limpar.
 
 ## O que estamos fazendo agora (atualizado 22/out, 13h)
 
