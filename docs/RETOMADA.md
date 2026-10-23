@@ -97,6 +97,18 @@ Commits locais (sem push), de `075cfe7` a `1c5040f`. Detalhes em
     em dinheiro custa apoio e traz greve; lei "Valor" arquivada.
 - **Mapa:** clicar numa lei aproxima até zoom 1,2.
 
+## Feito em 23/out (tarde): régua das leis
+
+Commit `96e59f6` (sem push). As 26 leis com controle deslizante têm régua
+na janela (faixas verde/amarela/vermelha, hoje × nova lei, frase do estado);
+faixas em `conteudo/mundo/reguas.json`, números do país em
+`conteudo/paises/brasil/referencias.json`. O relatório "Efeitos" ao lado
+agora vem por seção (país, apoio dos grupos, pressão) com a mudança em
+palavras, em todas as leis. Teste `reguas.test.ts`. Falta o `npm run check`
+completo (GPT); `pressao.test` "turno 0" falhou e parece anterior à régua.
+Pendente: régua para as leis de opções (degraus)? Custo do mínimo ~3× abaixo
+do real (coeficiente 0,029 → 0,08).
+
 ## Próximo chat: lista de mecânicas e tarefas
 
 1. **`npm run check` pelo GPT** (a suíte inteira não foi rodada; os testes
