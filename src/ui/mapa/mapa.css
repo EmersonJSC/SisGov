@@ -7493,3 +7493,181 @@ span.el-mini {
   stroke-opacity: 0.35;
   stroke-width: 5;
 }
+
+/* Régua da lei (leis com controle deslizante): faixas, marcas e cartões. */
+.regua-lei {
+  --regua-bom: light-dark(#5f9e7d, #3f7a5c);
+  --regua-atencao: light-dark(#d9b45a, #a88532);
+  --regua-ruim: light-dark(#c9636f, #9c3f4a);
+  --regua-nova: light-dark(#2f5f9e, #8fb3e6);
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  font-family: var(--sem-serifa);
+}
+.regua-titulo {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.regua-corpo {
+  overflow-x: auto;
+}
+.regua-corpo svg {
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+}
+.regua-marca {
+  font-size: 11px;
+  fill: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+.regua-hoje {
+  font-size: 11px;
+  fill: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+.regua-nova path {
+  fill: var(--regua-nova);
+}
+.regua-nova line {
+  stroke: var(--regua-nova);
+  stroke-width: 3;
+}
+.regua-nova text {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--regua-nova);
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .regua-nova {
+    transition: transform 0.2s ease;
+  }
+}
+.regua-estado {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.regua-estado i {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.regua-alerta {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: light-dark(#f1cfd2, #3d1c20);
+  color: light-dark(#b3283b, #fd8a8d);
+  font-size: 0.85rem;
+}
+.regua-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+.regua-cartao {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: light-dark(#e9e3d3, #221f18);
+}
+.regua-cartao-rotulo {
+  font-size: 0.75rem;
+  color: var(--tinta-suave);
+}
+.regua-cartao-numero {
+  font-family: var(--serifa);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.regua-cartao-mudanca {
+  font-size: 0.75rem;
+  color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+.regua-cartao-mudanca.melhora,
+.regua-grupos .melhora {
+  color: light-dark(#1d6b4f, #7ac3a3);
+  font-weight: 600;
+}
+.regua-cartao-mudanca.piora,
+.regua-grupos .piora {
+  color: light-dark(#b3283b, #fd8a8d);
+  font-weight: 600;
+}
+.regua-grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+}
+.regua-grupos li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: 3px;
+  border-bottom: 1px solid var(--borda);
+}
+.regua-nota,
+.regua-fonte {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--tinta-suave);
+}
+.regua-fonte {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Relatório de impacto por seção, com a mudança em palavras. */
+.efeitos-secao {
+  display: grid;
+  gap: 2px;
+  margin-top: 10px;
+}
+.efeitos-secao h3 {
+  margin: 0 0 2px 6px;
+  font-family: var(--sem-serifa);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.efeito-linha.com-texto {
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+}
+.efeito-nome small {
+  display: block;
+  font-family: var(--sem-serifa);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+.efeito-texto {
+  font-family: var(--sem-serifa);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,799 @@
+{
+  "tipo": "reguas",
+  "versaoEsquema": 1,
+  "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em reais como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui.",
+  "reguas": {
+    "imposto-renda-pessoas": {
+      "mede": "controle",
+      "rotulo": "Alíquota mais alta do imposto de renda",
+      "escala": [0, 70],
+      "faixas": [
+        {
+          "ate": 10,
+          "tom": "ruim",
+          "rotulo": "quase sem imposto de renda: arrecada pouco"
+        },
+        {
+          "ate": 20,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 50,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 60,
+          "tom": "atencao",
+          "rotulo": "alta"
+        },
+        {
+          "ate": 70,
+          "tom": "ruim",
+          "rotulo": "muito alta: sonegação e fuga de capitais"
+        }
+      ],
+      "fonte": "OCDE, Tax Database: alíquotas máximas entre 20% e 55% na maioria dos países."
+    },
+    "imposto-renda-empresas": {
+      "mede": "controle",
+      "rotulo": "Imposto sobre o lucro das empresas",
+      "escala": [0, 50],
+      "faixas": [
+        {
+          "ate": 5,
+          "tom": "ruim",
+          "rotulo": "paraíso fiscal: arrecada quase nada"
+        },
+        {
+          "ate": 15,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 30,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 40,
+          "tom": "atencao",
+          "rotulo": "alto: afasta investimento"
+        },
+        {
+          "ate": 50,
+          "tom": "ruim",
+          "rotulo": "muito alto: empresas saem do país"
+        }
+      ],
+      "fonte": "OCDE, Corporate Tax Statistics 2024: média de 23,6%; mínimo global de 15% (Pilar 2)."
+    },
+    "imposto-sobre-consumo": {
+      "mede": "controle",
+      "rotulo": "Imposto sobre o consumo",
+      "escala": [0, 40],
+      "faixas": [
+        {
+          "ate": 5,
+          "tom": "atencao",
+          "rotulo": "baixo: arrecada pouco"
+        },
+        {
+          "ate": 25,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 30,
+          "tom": "atencao",
+          "rotulo": "entre os mais altos do mundo"
+        },
+        {
+          "ate": 40,
+          "tom": "ruim",
+          "rotulo": "muito alto: pesa nos pobres e empurra para a informalidade"
+        }
+      ],
+      "fonte": "OCDE, Consumption Tax Trends 2024: IVA padrão de 5% a 27%, média de 19,2%."
+    },
+    "imposto-transacoes-financeiras": {
+      "mede": "controle",
+      "rotulo": "Imposto sobre cada movimentação bancária",
+      "escala": [0, 2],
+      "faixas": [
+        {
+          "ate": 0.2,
+          "tom": "bom",
+          "rotulo": "baixo: pouco atrito nos pagamentos"
+        },
+        {
+          "ate": 0.5,
+          "tom": "atencao",
+          "rotulo": "pesa no crédito"
+        },
+        {
+          "ate": 2,
+          "tom": "ruim",
+          "rotulo": "alto: o dinheiro foge dos bancos"
+        }
+      ],
+      "fonte": "FMI, Taxing Financial Transactions (2011): poucos países cobram; as alíquotas ficam abaixo de 0,5%."
+    },
+    "tributacao-dividendos": {
+      "mede": "controle",
+      "rotulo": "Imposto sobre os dividendos",
+      "escala": [0, 60],
+      "faixas": [
+        {
+          "ate": 5,
+          "tom": "atencao",
+          "rotulo": "quase isento, raro no mundo"
+        },
+        {
+          "ate": 30,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 45,
+          "tom": "atencao",
+          "rotulo": "alto: menos investimento"
+        },
+        {
+          "ate": 60,
+          "tom": "ruim",
+          "rotulo": "muito alto: o lucro sai do país"
+        }
+      ],
+      "fonte": "OCDE, Tax Database: dividendos tributados em geral entre 15% e 30%."
+    },
+    "imposto-heranca": {
+      "mede": "controle",
+      "rotulo": "Alíquota mais alta sobre heranças",
+      "escala": [0, 70],
+      "faixas": [
+        {
+          "ate": 4,
+          "tom": "atencao",
+          "rotulo": "quase sem imposto"
+        },
+        {
+          "ate": 40,
+          "tom": "bom",
+          "rotulo": "faixa comum entre quem cobra"
+        },
+        {
+          "ate": 55,
+          "tom": "atencao",
+          "rotulo": "alta"
+        },
+        {
+          "ate": 70,
+          "tom": "ruim",
+          "rotulo": "muito alta: patrimônio sai do país"
+        }
+      ],
+      "fonte": "OCDE, Inheritance Taxation (2021): Japão 55%, França 45%, Estados Unidos 40%."
+    },
+    "imposto-grandes-fortunas": {
+      "mede": "controle",
+      "rotulo": "Imposto anual sobre grandes fortunas",
+      "escala": [0, 6],
+      "faixas": [
+        {
+          "ate": 1.5,
+          "tom": "bom",
+          "rotulo": "faixa de quem cobra"
+        },
+        {
+          "ate": 3,
+          "tom": "atencao",
+          "rotulo": "alto: estimula a fuga de capitais"
+        },
+        {
+          "ate": 6,
+          "tom": "ruim",
+          "rotulo": "muito alto: os ricos saem do país"
+        }
+      ],
+      "fonte": "OCDE, The Role and Design of Net Wealth Taxes (2018): Noruega 1,1%, Suíça até cerca de 1%, Espanha de 0,2% a 3,5%."
+    },
+    "imposto-propriedade-urbana-rural": {
+      "mede": "controle",
+      "rotulo": "Imposto anual sobre imóveis urbanos (% do valor)",
+      "escala": [0, 4],
+      "faixas": [
+        {
+          "ate": 0.2,
+          "tom": "atencao",
+          "rotulo": "baixo: arrecada pouco e favorece imóvel vazio"
+        },
+        {
+          "ate": 1.5,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 3,
+          "tom": "atencao",
+          "rotulo": "alto: pesa em quem tem casa e pouca renda"
+        },
+        {
+          "ate": 4,
+          "tom": "ruim",
+          "rotulo": "muito alto"
+        }
+      ],
+      "fonte": "Lincoln Institute, 50-State Property Tax Comparison: média de cerca de 1,1% do valor nos Estados Unidos."
+    },
+    "imposto-terras-rurais": {
+      "mede": "controle",
+      "rotulo": "Imposto anual sobre terras rurais (% do valor)",
+      "escala": [0, 8],
+      "faixas": [
+        {
+          "ate": 0.1,
+          "tom": "atencao",
+          "rotulo": "simbólico: não pesa na terra parada"
+        },
+        {
+          "ate": 1.5,
+          "tom": "bom",
+          "rotulo": "pesa na terra parada sem travar quem produz"
+        },
+        {
+          "ate": 5,
+          "tom": "atencao",
+          "rotulo": "alto: pesa no produtor"
+        },
+        {
+          "ate": 8,
+          "tom": "ruim",
+          "rotulo": "muito alto"
+        }
+      ],
+      "fonte": "FAO e Lincoln Institute: impostos sobre a terra rural costumam ficar entre 0,1% e 1% do valor."
+    },
+    "gasto-com-defesa": {
+      "mede": "pib",
+      "rotulo": "Gasto com defesa (% do PIB)",
+      "escala": [0, 6],
+      "faixas": [
+        {
+          "ate": 0.5,
+          "tom": "ruim",
+          "rotulo": "fraco demais para proteger o território"
+        },
+        {
+          "ate": 1,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 2.5,
+          "tom": "bom",
+          "rotulo": "faixa comum no mundo"
+        },
+        {
+          "ate": 4,
+          "tom": "atencao",
+          "rotulo": "alto"
+        },
+        {
+          "ate": 6,
+          "tom": "ruim",
+          "rotulo": "economia de guerra"
+        }
+      ],
+      "fonte": "SIPRI Military Expenditure 2024: média mundial de cerca de 2,5% do PIB; a OTAN pede 2%."
+    },
+    "investimento-pesquisa": {
+      "mede": "pib",
+      "rotulo": "Verba pública de pesquisa (% do PIB)",
+      "escala": [0, 5],
+      "faixas": [
+        {
+          "ate": 0.3,
+          "tom": "ruim",
+          "rotulo": "quase sem pesquisa"
+        },
+        {
+          "ate": 0.8,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 3,
+          "tom": "bom",
+          "rotulo": "faixa de países que inovam"
+        },
+        {
+          "ate": 5,
+          "tom": "atencao",
+          "rotulo": "muito alta para o Estado sozinho"
+        }
+      ],
+      "fonte": "OCDE, Main Science and Technology Indicators: P&D total médio de 2,7% do PIB; Coreia 4,9%."
+    },
+    "investimento-em-infraestrutura": {
+      "mede": "pib",
+      "rotulo": "Investimento em infraestrutura (% do PIB)",
+      "escala": [0, 7],
+      "faixas": [
+        {
+          "ate": 0.5,
+          "tom": "ruim",
+          "rotulo": "o país se desgasta"
+        },
+        {
+          "ate": 2,
+          "tom": "atencao",
+          "rotulo": "abaixo do necessário"
+        },
+        {
+          "ate": 5,
+          "tom": "bom",
+          "rotulo": "repõe e amplia a malha"
+        },
+        {
+          "ate": 7,
+          "tom": "atencao",
+          "rotulo": "risco de obra parada e corrupção"
+        }
+      ],
+      "fonte": "Banco Mundial: estudos pedem de 2% a 4% do PIB ao ano em infraestrutura."
+    },
+    "orcamento-de-expansao-eletrica": {
+      "mede": "pib",
+      "rotulo": "Verba de expansão elétrica (% do PIB)",
+      "escala": [0, 2],
+      "faixas": [
+        {
+          "ate": 0.1,
+          "tom": "ruim",
+          "rotulo": "a rede não acompanha a demanda"
+        },
+        {
+          "ate": 0.3,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 1,
+          "tom": "bom",
+          "rotulo": "acompanha o crescimento"
+        },
+        {
+          "ate": 2,
+          "tom": "atencao",
+          "rotulo": "alta"
+        }
+      ],
+      "fonte": "IEA, World Energy Investment 2024: redes e geração perto de 0,5% a 1% do PIB nos emergentes."
+    },
+    "transferencia-de-renda": {
+      "mede": "pib",
+      "rotulo": "Transferência de renda às famílias pobres (% do PIB)",
+      "escala": [0, 5],
+      "faixas": [
+        {
+          "ate": 0.3,
+          "tom": "ruim",
+          "rotulo": "não alcança os pobres"
+        },
+        {
+          "ate": 0.8,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 2.5,
+          "tom": "bom",
+          "rotulo": "alcança os pobres a custo razoável"
+        },
+        {
+          "ate": 4,
+          "tom": "atencao",
+          "rotulo": "cara"
+        },
+        {
+          "ate": 5,
+          "tom": "ruim",
+          "rotulo": "muito cara"
+        }
+      ],
+      "fonte": "Banco Mundial, ASPIRE: programas de transferência de 0,5% a 2% do PIB nos emergentes."
+    },
+    "programa-habitacao-popular": {
+      "mede": "pib",
+      "rotulo": "Programa de habitação popular (% do PIB)",
+      "escala": [0, 2.5],
+      "faixas": [
+        {
+          "ate": 0.05,
+          "tom": "ruim",
+          "rotulo": "quase nada"
+        },
+        {
+          "ate": 0.15,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 1,
+          "tom": "bom",
+          "rotulo": "reduz o déficit aos poucos"
+        },
+        {
+          "ate": 2,
+          "tom": "atencao",
+          "rotulo": "alto"
+        },
+        {
+          "ate": 2.5,
+          "tom": "ruim",
+          "rotulo": "muito alto"
+        }
+      ],
+      "fonte": "OCDE, Affordable Housing Database: gasto público com habitação entre 0,1% e 1% do PIB."
+    },
+    "farmacia-popular": {
+      "mede": "pib",
+      "rotulo": "Remédios de graça na farmácia (% do PIB)",
+      "escala": [0, 0.8],
+      "faixas": [
+        {
+          "ate": 0.01,
+          "tom": "ruim",
+          "rotulo": "quase nada"
+        },
+        {
+          "ate": 0.03,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 0.3,
+          "tom": "bom",
+          "rotulo": "cobre os remédios básicos"
+        },
+        {
+          "ate": 0.6,
+          "tom": "atencao",
+          "rotulo": "alto"
+        },
+        {
+          "ate": 0.8,
+          "tom": "ruim",
+          "rotulo": "muito alto"
+        }
+      ],
+      "fonte": "OMS, Global Health Expenditure Database: programas de remédio gratuito na farmácia ficam abaixo de 0,3% do PIB."
+    },
+    "vigilancia-epidemiologica": {
+      "mede": "pib",
+      "rotulo": "Vigilância epidemiológica (% do PIB)",
+      "escala": [0, 0.5],
+      "faixas": [
+        {
+          "ate": 0.01,
+          "tom": "ruim",
+          "rotulo": "o país não vê uma epidemia chegando"
+        },
+        {
+          "ate": 0.03,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 0.3,
+          "tom": "bom",
+          "rotulo": "detecta e responde cedo"
+        },
+        {
+          "ate": 0.5,
+          "tom": "atencao",
+          "rotulo": "alta"
+        }
+      ],
+      "fonte": "OMS, Global Health Expenditure Database: saúde pública e prevenção perto de 3% do gasto em saúde."
+    },
+    "verba-policia-federal": {
+      "mede": "pib",
+      "rotulo": "Verba da polícia federal (% do PIB)",
+      "escala": [0, 0.6],
+      "faixas": [
+        {
+          "ate": 0.02,
+          "tom": "ruim",
+          "rotulo": "não investiga o crime organizado"
+        },
+        {
+          "ate": 0.05,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 0.3,
+          "tom": "bom",
+          "rotulo": "investiga e prende"
+        },
+        {
+          "ate": 0.6,
+          "tom": "atencao",
+          "rotulo": "alta"
+        }
+      ],
+      "fonte": "UNODC: polícias nacionais de investigação custam em geral de 0,05% a 0,3% do PIB."
+    },
+    "fundo-seguranca-publica": {
+      "mede": "pib",
+      "rotulo": "Dinheiro para as polícias dos estados (% do PIB)",
+      "escala": [0, 0.4],
+      "faixas": [
+        {
+          "ate": 0.005,
+          "tom": "ruim",
+          "rotulo": "quase nada"
+        },
+        {
+          "ate": 0.015,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 0.15,
+          "tom": "bom",
+          "rotulo": "reforça as polícias"
+        },
+        {
+          "ate": 0.3,
+          "tom": "atencao",
+          "rotulo": "alto"
+        },
+        {
+          "ate": 0.4,
+          "tom": "ruim",
+          "rotulo": "muito alto"
+        }
+      ],
+      "fonte": "UNODC: repasses nacionais às polícias locais ficam em geral abaixo de 0,15% do PIB."
+    },
+    "agencia-de-inteligencia": {
+      "mede": "pib",
+      "rotulo": "Verba da agência de inteligência (% do PIB)",
+      "escala": [0, 0.06],
+      "faixas": [
+        {
+          "ate": 0.002,
+          "tom": "ruim",
+          "rotulo": "o governo fica cego"
+        },
+        {
+          "ate": 0.005,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 0.03,
+          "tom": "bom",
+          "rotulo": "acompanha as ameaças"
+        },
+        {
+          "ate": 0.06,
+          "tom": "atencao",
+          "rotulo": "alta: risco de vigiar a própria população"
+        }
+      ],
+      "fonte": "Estimativas públicas de orçamento de inteligência: de 0,005% a 0,05% do PIB fora das potências militares."
+    },
+    "cameras-corporais": {
+      "mede": "pib",
+      "rotulo": "Verba de câmeras corporais nas polícias (% do PIB)",
+      "escala": [0, 0.006],
+      "faixas": [
+        {
+          "ate": 0.0003,
+          "tom": "ruim",
+          "rotulo": "quase nenhum policial com câmera"
+        },
+        {
+          "ate": 0.0008,
+          "tom": "atencao",
+          "rotulo": "poucas câmeras"
+        },
+        {
+          "ate": 0.004,
+          "tom": "bom",
+          "rotulo": "a maior parte das polícias usa"
+        },
+        {
+          "ate": 0.006,
+          "tom": "atencao",
+          "rotulo": "custo alto para o ganho"
+        }
+      ],
+      "fonte": "Estudos de custo de câmeras corporais (Reino Unido, Estados Unidos): programas nacionais abaixo de 0,005% do PIB."
+    },
+    "vagas-em-presidios": {
+      "mede": "pib",
+      "rotulo": "Verba para novas vagas em presídios (% do PIB)",
+      "escala": [0, 0.03],
+      "faixas": [
+        {
+          "ate": 0.002,
+          "tom": "ruim",
+          "rotulo": "a lotação só piora"
+        },
+        {
+          "ate": 0.004,
+          "tom": "atencao",
+          "rotulo": "abre poucas vagas"
+        },
+        {
+          "ate": 0.02,
+          "tom": "bom",
+          "rotulo": "reduz a lotação"
+        },
+        {
+          "ate": 0.03,
+          "tom": "atencao",
+          "rotulo": "muito dinheiro em cadeia"
+        }
+      ],
+      "fonte": "UNODC, Handbook on Prison Management: construção de vagas abaixo de 0,03% do PIB ao ano na maioria dos países."
+    },
+    "programa-espacial-e-satelites": {
+      "mede": "pib",
+      "rotulo": "Verba do programa espacial (% do PIB)",
+      "escala": [0, 0.15],
+      "faixas": [
+        {
+          "ate": 0.001,
+          "tom": "ruim",
+          "rotulo": "o país depende de satélites alheios"
+        },
+        {
+          "ate": 0.01,
+          "tom": "atencao",
+          "rotulo": "programa pequeno"
+        },
+        {
+          "ate": 0.1,
+          "tom": "bom",
+          "rotulo": "satélites próprios"
+        },
+        {
+          "ate": 0.15,
+          "tom": "atencao",
+          "rotulo": "programa grande para o retorno"
+        }
+      ],
+      "fonte": "OCDE, The Space Economy in Figures (2023): orçamentos espaciais civis de 0,01% a 0,1% do PIB."
+    },
+    "piso-saude": {
+      "mede": "controle",
+      "rotulo": "Parte da receita que vai para a saúde",
+      "escala": [0, 30],
+      "faixas": [
+        {
+          "ate": 8,
+          "tom": "ruim",
+          "rotulo": "o sistema público não se sustenta"
+        },
+        {
+          "ate": 13,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 20,
+          "tom": "bom",
+          "rotulo": "sustenta o atendimento"
+        },
+        {
+          "ate": 25,
+          "tom": "atencao",
+          "rotulo": "alta: tira de outras áreas"
+        },
+        {
+          "ate": 30,
+          "tom": "ruim",
+          "rotulo": "engessa o orçamento"
+        }
+      ],
+      "fonte": "OMS: gasto público em saúde perto de 15% do orçamento na média dos países (meta de Abuja, 15%)."
+    },
+    "piso-educacao": {
+      "mede": "controle",
+      "rotulo": "Parte da receita que vai para a educação",
+      "escala": [0, 35],
+      "faixas": [
+        {
+          "ate": 10,
+          "tom": "ruim",
+          "rotulo": "as escolas não se sustentam"
+        },
+        {
+          "ate": 16,
+          "tom": "atencao",
+          "rotulo": "baixa"
+        },
+        {
+          "ate": 25,
+          "tom": "bom",
+          "rotulo": "sustenta a rede pública"
+        },
+        {
+          "ate": 30,
+          "tom": "atencao",
+          "rotulo": "alta: tira de outras áreas"
+        },
+        {
+          "ate": 35,
+          "tom": "ruim",
+          "rotulo": "engessa o orçamento"
+        }
+      ],
+      "fonte": "UNESCO, Declaração de Incheon: de 15% a 20% do gasto público para a educação."
+    },
+    "aumento-real-do-salario-minimo": {
+      "mede": "variavel",
+      "variavel": "salario_minimo_relativo",
+      "sufixo": "%",
+      "rotulo": "Mínimo em % do salário típico (a mediana)",
+      "escala": [20, 90],
+      "faixas": [
+        {
+          "ate": 30,
+          "tom": "ruim",
+          "rotulo": "baixo: não tira da pobreza"
+        },
+        {
+          "ate": 40,
+          "tom": "atencao",
+          "rotulo": "baixo"
+        },
+        {
+          "ate": 60,
+          "tom": "bom",
+          "rotulo": "faixa saudável"
+        },
+        {
+          "ate": 70,
+          "tom": "atencao",
+          "rotulo": "alto"
+        },
+        {
+          "ate": 90,
+          "tom": "ruim",
+          "rotulo": "alto: informalidade e desemprego"
+        }
+      ],
+      "leituras": [
+        {
+          "de": "salario_minimo_relativo",
+          "rotulo": "Valor em dinheiro (reais de hoje)",
+          "multiplicaPor": "salarioTipicoMensal",
+          "fator": 0.01,
+          "formato": "moeda"
+        },
+        {
+          "de": "salario_minimo_relativo",
+          "rotulo": "Cestas básicas que compra",
+          "multiplicaPor": "salarioTipicoMensal",
+          "dividePor": "cestaBasicaMensal",
+          "fator": 0.01,
+          "formato": "numero"
+        }
+      ],
+      "alerta": {
+        "variavel": "reajuste_nominal_do_minimo",
+        "abaixoDe": 0,
+        "texto": "Corte em dinheiro: trabalhadores, pobres e aposentados perdem apoio e sobe o risco de greve geral."
+      },
+      "fonte": "Diretiva (UE) 2022/2041: referência de 60% da mediana; OCDE, Minimum relative to median wages."
+    }
+  }
+}

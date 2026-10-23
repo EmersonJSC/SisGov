@@ -52,6 +52,22 @@ export { MAXIMO_TRIMESTRES_PREVIA, preverLei } from "./partida/previsao";
 export { responderDilema, preverDilema, encerrarTurno } from "./partida/turno";
 export { BOLHAS_DO_ORCAMENTO } from "./partida/contas";
 export { verPartida } from "./partida/visao";
+export {
+  casasPara,
+  faixaDe,
+  idsComRegua,
+  marcasDaEscala,
+  notaDoPais,
+  reguaDaLei,
+  referenciasDoPais,
+  valorDaLeiNaRegua,
+  valorDerivado,
+  type Faixa,
+  type LeituraDerivada,
+  type Referencias,
+  type Regua,
+  type Tom,
+} from "./partida/regua";
 export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
 export { verBussola } from "./partida/bussola";

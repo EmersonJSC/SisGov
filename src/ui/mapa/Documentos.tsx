@@ -15,6 +15,7 @@ import {
 } from "react";
 import {
   BOLHAS_DO_ORCAMENTO,
+  reguaDaLei,
   type OpcoesDoEnvio,
   type PrevisaoLei,
   type RelatorioTurno,
@@ -38,6 +39,7 @@ import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { iconeLei } from "./iconesPersonalizados";
 import { corDaBondade, intensidadeDaBolha } from "./intensidade";
 import { ficaNaPresidencia, type BaseMapa } from "./layout";
+import { ReguaDaLei } from "./ReguaDaLei";
 
 /** O caminho da lei no Congresso (V1-12). */
 /** As camadas da mesa (V1-34, leis-em-camadas.md). */
@@ -299,6 +301,79 @@ function Documento({
 // Peças do relatório de impacto
 // ---------------------------------------------------------------------------
 
+/** Seções do relatório de impacto: índices, apoio dos grupos, pressão. */
+type SecaoDeEfeito = "indice" | "grupo" | "pressao";
+const ORDEM_DAS_SECOES: readonly SecaoDeEfeito[] = [
+  "indice",
+  "grupo",
+  "pressao",
+];
+const NOME_DA_SECAO: Readonly<Record<SecaoDeEfeito, string>> = {
+  indice: "O que muda no país",
+  grupo: "Apoio dos grupos",
+  pressao: "Grupos de pressão",
+};
+/** Áreas das bolhas dos grupos de pressão e do patrocínio (pressao.md). */
+const AREAS_DE_PRESSAO = new Set(["Grupos de pressão", "Patrocínio"]);
+const MAXIMO_DE_LINHAS = 16;
+const LINHAS_POR_SECAO: Readonly<Record<SecaoDeEfeito, number>> = {
+  indice: 8,
+  grupo: 8,
+  pressao: 5,
+};
+/**
+ * Tira "Pressão: " ou "Nível: " do nome na seção de pressão: "Pressão:
+ * Mercado" vira "Mercado"; "Interesse ameaçado: X" fica como está.
+ * Teste: https://regex101.com/?regex=%5EPress%C3%A3o%3A%5Cs*&testString=Press%C3%A3o%3A%20Mercado
+ */
+const PREFIXO_DO_NOME = /^(Pressão|Nível):\s*/;
+
+/** Nós da pressão que não viram bolha do mapa: reconhecidos pelo nome. */
+const PREFIXOS_DE_PRESSAO: readonly string[] = [
+  "Pressão:",
+  "Nível:",
+  "Interesse ameaçado:",
+];
+
+function secaoDaBolha(
+  b: VisaoBolha | undefined,
+  nome: string,
+  id: string,
+): SecaoDeEfeito {
+  if (b?.tipo === "grupo" || id.startsWith("grupo_")) return "grupo";
+  if (b && AREAS_DE_PRESSAO.has(b.area)) return "pressao";
+  if (PREFIXOS_DE_PRESSAO.some((p) => nome.startsWith(p))) return "pressao";
+  return "indice";
+}
+
+/** O efeito em palavras: "ganha apoio", "pressão sobe", "+0,5 p.p.". */
+function textoDoEfeito(
+  secao: SecaoDeEfeito,
+  b: VisaoBolha | undefined,
+  delta: number,
+): string {
+  if (secao === "grupo") return delta > 0 ? "ganha apoio" : "perde apoio";
+  if (secao === "pressao") return delta > 0 ? "pressão sobe" : "pressão cai";
+  if (!b) return delta > 0 ? "sobe" : "cai";
+  return diferencaNaTela(b, delta);
+}
+
+type LinhaDeEfeito = Readonly<{
+  id: string;
+  nome: string;
+  icone: string;
+  delta: number;
+  relativo: number;
+  efeito: Efeito;
+  secao: SecaoDeEfeito;
+  /** Com prévia: a mudança em palavras; sem prévia, vazio (só a barrinha). */
+  texto: string;
+  antes: string;
+  depois?: string;
+  /** O mesmo índice no horizonte, sem a mudança. */
+  sem?: string;
+}>;
+
 type ItemImpacto = Readonly<{
   id: string;
   nome: string;
@@ -494,6 +569,7 @@ export function DocumentoLei({
   };
 
   const opcoes = lei.opcoes ?? [];
+  const regua = reguaDaLei(lei.id);
   const bloqueadaNoIndice = (i: number) =>
     travada ||
     !!opcoes[i].trava ||
@@ -511,26 +587,61 @@ export function DocumentoLei({
     : -1;
   const camada = lei.mesa?.camada;
   // efeitos curtos: só nomes de índices com a barrinha que sobe ou desce
-  const linhasDeEfeito = mudou
-    ? itens.slice(0, 12).map((i) => ({
-        id: i.id,
-        nome: i.nome,
-        icone: i.icone,
-        delta: i.delta,
-        relativo: i.relativo,
-        efeito: i.efeito,
-      }))
+  const linhasDeEfeito: readonly LinhaDeEfeito[] = mudou
+    ? itens.map((i) => {
+        const b = bolhas.get(i.id);
+        const secao = secaoDaBolha(b, i.nome, i.id);
+        const depois = previsao?.efeitos.find((e) => e.id === i.id);
+        const ultimo = depois ? Math.min(mes, depois.comMudanca.length - 1) : 0;
+        const valorDepois = depois?.comMudanca[ultimo];
+        const valorSem = depois?.semMudanca[ultimo];
+        return {
+          id: i.id,
+          nome: i.nome,
+          icone: i.icone,
+          delta: i.delta,
+          relativo: i.relativo,
+          efeito: i.efeito,
+          secao,
+          texto: textoDoEfeito(secao, b, i.delta),
+          antes: b ? valorNaTela(b, b.valor) : i.atual,
+          depois:
+            b && valorDepois !== undefined
+              ? valorNaTela(b, valorDepois)
+              : undefined,
+          sem:
+            b && valorSem !== undefined ? valorNaTela(b, valorSem) : undefined,
+        };
+      })
     : efeitosDiretos
         .filter((r) => !r.eficacia)
-        .slice(0, 12)
-        .map((r) => ({
-          id: r.para,
-          nome: bolhas.get(r.para)?.nome ?? r.para,
-          icone: ICONE_BOLHA[r.para] ?? "chart-line",
-          delta: 0,
-          relativo: 0,
-          efeito: r.efeito,
-        }));
+        .slice(0, MAXIMO_DE_LINHAS)
+        .map((r) => {
+          const b = bolhas.get(r.para);
+          return {
+            id: r.para,
+            nome: b?.nome ?? r.para,
+            icone: ICONE_BOLHA[r.para] ?? "chart-line",
+            delta: 0,
+            relativo: 0,
+            efeito: r.efeito,
+            secao: secaoDaBolha(b, b?.nome ?? r.para, r.para),
+            texto: "",
+            antes: b ? valorNaTela(b, b.valor) : "",
+            depois: undefined,
+          };
+        });
+  const quandoDoHorizonte =
+    horizonte === "turno" ? "No próximo turno" : "Em 1 ano";
+  const secoesDeEfeito = ORDEM_DAS_SECOES.map((secao) => ({
+    secao,
+    linhas: linhasDeEfeito
+      .filter((l) => l.secao === secao)
+      .filter((l) => l.id !== BOLHAS_DO_ORCAMENTO.resultado)
+      // o nível do grupo de pressão repete a pressão dele
+      .filter((l) => !l.nome.startsWith("Nível:"))
+      .slice(0, LINHAS_POR_SECAO[secao]),
+  })).filter((g) => g.linhas.length);
   const resumo = (texto: string) => {
     const t = texto.replace(/\s+/g, " ").trim();
     const fim = t.search(/[.?!](\s|$)/);
@@ -677,6 +788,21 @@ export function DocumentoLei({
               receita={visao.contas.receita}
             />
           )}
+          {regua && !opcoes.length ? (
+            <ReguaDaLei
+              regua={regua}
+              lei={lei}
+              rascunho={rascunho}
+              mudou={mudou}
+              previsao={previsao}
+              mes={mes}
+              bolhas={bolhas}
+              pib={visao.contas.pib}
+              pais={visao.pais}
+              quando={horizonte === "turno" ? "no próximo turno" : "em 1 ano"}
+              calculando={calculando}
+            />
+          ) : null}
           {congresso ? (
             <div className="cg-envio folha-congresso">
               {congresso.naFila ? (
@@ -771,43 +897,77 @@ export function DocumentoLei({
             <p className="vazio">Simulando…</p>
           ) : null}
           {mudou && efeitoContas !== null && Math.abs(efeitoContas) >= 100 ? (
-            <div className="efeito-linha contas">
+            <div className="efeito-linha contas com-texto">
               <Icone
                 nome={
                   ICONE_BOLHA[BOLHAS_DO_ORCAMENTO.resultado] ?? "chart-line"
                 }
                 tamanho={20}
               />
-              <span className="efeito-nome">Contas públicas</span>
-              <MiniGrafico
-                delta={efeitoContas}
-                relativo={Math.min(
-                  1,
-                  (Math.abs(efeitoContas) / (visao.contas.pib || 1)) * 20,
-                )}
-                efeito={efeitoContas > 0 ? "melhora" : "piora"}
-              />
+              <span className="efeito-nome">
+                Contas públicas
+                <small>
+                  {efeitoContas > 0
+                    ? "melhora o resultado"
+                    : "piora o resultado"}
+                </small>
+              </span>
+              <span
+                className="efeito-texto"
+                style={{
+                  color: COR_EFEITO[efeitoContas > 0 ? "melhora" : "piora"],
+                }}
+              >
+                {efeitoContas > 0 ? "+" : ""}
+                {moeda(efeitoContas)}/ano
+              </span>
             </div>
           ) : null}
-          <ul className="efeitos-folha">
-            {linhasDeEfeito.map((l) => (
-              <li key={l.id}>
-                <button
-                  type="button"
-                  className="efeito-linha"
-                  onClick={() => onSelecionar(l.id)}
-                >
-                  <Icone nome={l.icone} tamanho={20} />
-                  <span className="efeito-nome">{l.nome}</span>
-                  <MiniGrafico
-                    delta={l.delta}
-                    relativo={l.relativo}
-                    efeito={l.efeito}
-                  />
-                </button>
-              </li>
-            ))}
-          </ul>
+          {secoesDeEfeito.map((g) => (
+            <section key={g.secao} className="efeitos-secao">
+              <h3>{NOME_DA_SECAO[g.secao]}</h3>
+              <ul className="efeitos-folha">
+                {g.linhas.map((l) => (
+                  <li key={l.id}>
+                    <button
+                      type="button"
+                      className={`efeito-linha${l.texto ? " com-texto" : ""}`}
+                      onClick={() => onSelecionar(l.id)}
+                    >
+                      <Icone nome={l.icone} tamanho={20} />
+                      <span className="efeito-nome">
+                        {l.secao === "pressao"
+                          ? l.nome.replace(PREFIXO_DO_NOME, "")
+                          : l.nome}
+                        {l.texto && l.secao === "indice" && l.depois ? (
+                          <small>
+                            {quandoDoHorizonte}: {l.depois}
+                            {l.sem && l.sem !== l.depois
+                              ? ` (sem a lei: ${l.sem})`
+                              : ""}
+                          </small>
+                        ) : null}
+                      </span>
+                      {l.texto ? (
+                        <span
+                          className={`efeito-texto ${l.efeito}`}
+                          style={{ color: COR_EFEITO[l.efeito] }}
+                        >
+                          {l.texto}
+                        </span>
+                      ) : (
+                        <MiniGrafico
+                          delta={l.delta}
+                          relativo={l.relativo}
+                          efeito={l.efeito}
+                        />
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
           {!linhasDeEfeito.length && !(mudou && calculando) ? (
             <p className="vazio">Sem efeito visível.</p>
           ) : null}
