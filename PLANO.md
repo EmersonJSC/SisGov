@@ -44,7 +44,7 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 - [ ] `npm run check` completo sem falha (hoje: `pressao` "turno 0", "três leis piloto" e testes lentos que passam do tempo)
 
 **A. Leis (mecânica 2): acabamento**
-- [ ] A1. Olhar: script que lista as travas que sobraram (limite por lei e por país, teto de 40% nos pisos, teto de 3×/4× em `faixaNumerica`)
+- [x] A1. Olhar (23/out): país sem limite próprio; impostos já de 0 a 100%; 16 verbas com teto em % do PIB (`dinheiro.limites`, de 0,01% a 10%) e a Polícia Federal com piso de 0,02%; pisos de saúde e educação com teto de 40% da receita; o 3× da tela não vale para nenhuma lei (todas têm teto); a soma ≤ 100% do PIB não existe; o piso vindo da lei constitucional (`pisoPorLei`) fica
 - [ ] A2. Tirar as travas; controle livre de 0 a 100% (ou ao teto da lei)
 - [ ] A3. Trava única: soma dos gastos ≤ 100% do PIB; acima da receita vira déficit
 - [ ] A4. Exclusão entre leis (a lei declara com quem não convive; aprovar pede revogar a outra)
