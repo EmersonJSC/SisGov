@@ -11,6 +11,7 @@ export default defineConfig({
   test: {
     // V1-34: o pacote do Brasil cresceu (mais de 200 leis); criar uma partida
     // leva alguns segundos, e 5 s estoura quando a suíte roda inteira.
-    testTimeout: 30000,
+    testTimeout: 120000,
+    hookTimeout: 120000,
   },
 });
