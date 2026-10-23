@@ -20,7 +20,8 @@
     "populacao:gerar": "vite-node scripts/populacao/gerar.ts",
     "populacao:ligacoes": "vite-node scripts/populacao/ligacoes.ts",
     "pressao:calibrar": "vite-node scripts/pressao/calibrar.ts",
-    "leis:inventario": "vite-node scripts/leis/inventario.ts"
+    "leis:inventario": "vite-node scripts/leis/inventario.ts",
+    "pais:ancorar": "vite-node scripts/pais/ancorar.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

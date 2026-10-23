@@ -283,6 +283,8 @@ export type InitialStateFile = {
    * ("Contexto do Brasil 2026"): fixo, soma como qualquer outra seta.
    */
   indicesIniciais?: Record<string, number>;
+  /** Somado ao `contexto:<bolha>` depois da acomodação (medido após o aquecimento). */
+  ajusteDoContexto?: Record<string, number>;
   /** Economia do país; o PIB converte limites "% do PIB" das leis em valores. */
   economia?: EconomyInitialState;
   /** Limites que o país impõe a uma lei, além dos limites da própria lei. */

@@ -1680,6 +1680,7 @@ function validateInitialState(
       "politica",
       "cenario",
       "indicesIniciais",
+      "ajusteDoContexto",
       "lugares",
     ],
     diagnostics,

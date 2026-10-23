@@ -95,6 +95,12 @@ export type ValoresDoPais = {
   tipo: "pais-valores";
   indices: Record<string, number>;
   estoques: Record<string, number>;
+  /**
+   * Correção do contexto medida depois do aquecimento (`npm run pais:ancorar`):
+   * a largada acomoda as leis com a eficácia neutra e o aquecimento a leva à
+   * do país; sem isto o turno 0 se afasta dos índices declarados.
+   */
+  ajusteDoContexto?: Record<string, number>;
 };
 
 /** `populacao.json`: segmentos e grupos de pressão (V1-08 e V1-09). */

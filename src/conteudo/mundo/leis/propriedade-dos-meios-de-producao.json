@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 4,
   "familia": "constitucional",
-  "nome": "Participação pública na propriedade produtiva",
-  "decide": "Define quanto da produção do país fica nas mãos do Estado, somando todos os setores.",
+  "nome": "Participação pública na produção",
+  "decide": "Define quanto da produção do país está em empresas do Estado, somando todos os setores. O limite vem da lei Onde o Estado pode ter empresas.",
   "area": "economia-e-empresas",
   "nivel": "constituicao",
   "controle": {
@@ -13,38 +13,63 @@
     "opcoes": [
       {
         "id": "participacao-publica-0",
-        "rotulo": "0% de participação pública agregada",
+        "rotulo": "Nada",
         "valor": 0,
         "apoiam": ["Empresários", "Entidades do agronegócio"],
         "rejeitam": ["Movimentos por terra"],
         "efeitos": "Polo de propriedade privada da escala; não representa uma venda de ativos.",
-        "propoe": "Toda a produção é privada."
+        "propoe": "Toda a produção é privada; o Estado só regula e cobra imposto."
       },
       {
         "id": "participacao-publica-25",
-        "rotulo": "25% de participação pública agregada",
+        "rotulo": "Muito pouca",
         "valor": 25,
         "efeitos": "Participação pública minoritária na representação agregada do jogo.",
-        "propoe": "O Estado tem uma parte pequena da produção."
+        "propoe": "Só água, saneamento e alguma energia ficam com o Estado.",
+        "requer": [
+          {
+            "lei": "papel-do-estado-empresario",
+            "opcoes": [
+              "estatais-minimas",
+              "estatais-estrategicas",
+              "estado-empresario"
+            ],
+            "motivo": "A Constituição não deixa o Estado ter tantas empresas."
+          }
+        ]
       },
       {
         "id": "participacao-publica-50",
-        "rotulo": "50% de participação pública agregada",
+        "rotulo": "Pouca (Brasil hoje)",
         "valor": 50,
         "apoiam": ["Confederação da indústria"],
         "efeitos": "Participação pública e privada equilibradas na representação agregada do jogo.",
-        "propoe": "Metade pública, metade privada."
+        "propoe": "Estatais em poucos setores grandes: petróleo (Petrobras), bancos públicos, energia, correios.",
+        "requer": [
+          {
+            "lei": "papel-do-estado-empresario",
+            "opcoes": ["estatais-estrategicas", "estado-empresario"],
+            "motivo": "A Constituição não deixa o Estado ter tantas empresas."
+          }
+        ]
       },
       {
         "id": "participacao-publica-75",
-        "rotulo": "75% de participação pública agregada",
+        "rotulo": "Metade",
         "valor": 75,
         "efeitos": "Participação pública majoritária na representação agregada do jogo.",
-        "propoe": "O Estado tem a maior parte da produção."
+        "propoe": "Metade da produção é de estatais, como na França ou na Itália dos anos 70.",
+        "requer": [
+          {
+            "lei": "papel-do-estado-empresario",
+            "opcoes": ["estado-empresario"],
+            "motivo": "A Constituição não deixa o Estado ter tantas empresas."
+          }
+        ]
       },
       {
         "id": "participacao-publica-100",
-        "rotulo": "100% de participação pública agregada",
+        "rotulo": "Toda",
         "valor": 100,
         "apoiam": ["Movimentos por terra"],
         "rejeitam": [
@@ -55,7 +80,14 @@
           "Petróleo e mineração"
         ],
         "efeitos": "Polo de propriedade pública da escala; não representa uma aquisição instantânea.",
-        "propoe": "Toda a produção é do Estado."
+        "propoe": "Toda a produção é do Estado, como numa economia planificada.",
+        "requer": [
+          {
+            "lei": "papel-do-estado-empresario",
+            "opcoes": ["estado-empresario"],
+            "motivo": "A Constituição não deixa o Estado ter tantas empresas."
+          }
+        ]
       }
     ]
   },

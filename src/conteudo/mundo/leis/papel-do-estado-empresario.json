@@ -3,8 +3,8 @@
   "tipo": "lei",
   "versaoEsquema": 4,
   "familia": "constitucional",
-  "nome": "Alcance das empresas estatais",
-  "decide": "Define em que atividades a Constituição deixa o Estado ter empresas.",
+  "nome": "Onde o Estado pode ter empresas",
+  "decide": "Define em que setores a Constituição deixa o Estado ter empresas. É só permissão: quanto o Estado tem de fato é a lei Participação pública na produção, e o ritmo de venda é o Programa de privatização.",
   "area": "economia-e-empresas",
   "nivel": "constituicao",
   "controle": {
@@ -13,47 +13,57 @@
     "opcoes": [
       {
         "id": "sem-estatais",
-        "rotulo": "Nenhuma empresa estatal",
+        "rotulo": "Nenhum setor",
         "valor": 0,
         "custoTexto": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
         "apoiam": ["Mercado financeiro"],
         "rejeitam": ["Sindicatos de servidores", "Centrais sindicais"],
-        "efeitos": "Dividendos públicos deixam de existir quando não há participação pública; o fluxo de venda de ativos não é representado.",
-        "propoe": "O Estado não pode ter nenhuma empresa."
+        "efeitos": "Participação pública fica em nada",
+        "propoe": "O Estado não pode ter empresa. Petrobras, Caixa, Banco do Brasil e Correios teriam de ser vendidos."
       },
       {
         "id": "estatais-minimas",
-        "rotulo": "Serviços públicos e monopólios naturais",
+        "rotulo": "Só serviços públicos e monopólios naturais",
         "valor": 33.33,
         "apoiam": ["Mercado financeiro", "Comércio e serviços"],
         "rejeitam": ["Sindicatos de servidores"],
-        "efeitos": "Permissão restrita a serviços públicos e monopólios naturais.",
-        "propoe": "Só serviços públicos e monopólios naturais, como água e energia."
+        "efeitos": "Participação pública no máximo muito pouca",
+        "propoe": "Só onde cabe uma rede só: água, saneamento, energia, transmissão. Petróleo e bancos públicos teriam de ser vendidos."
       },
       {
         "id": "estatais-estrategicas",
-        "rotulo": "Serviços públicos e setores estratégicos definidos em lei",
+        "rotulo": "Serviços públicos e setores estratégicos",
         "valor": 66.67,
         "apoiam": ["Confederação da indústria"],
-        "efeitos": "Permissão adicional para setores estratégicos, cuja lista depende da legislação.",
-        "propoe": "Também setores que uma lei chamar de estratégicos, como petróleo."
+        "efeitos": "Participação pública no máximo pouca (como hoje)",
+        "propoe": "Também setores que uma lei chamar de estratégicos, como petróleo, bancos públicos e defesa (Brasil hoje)."
       },
       {
         "id": "estado-empresario",
-        "rotulo": "Atuação empresarial em qualquer setor permitido por lei",
+        "rotulo": "Qualquer setor",
         "valor": 100,
         "apoiam": ["Centrais sindicais", "Sindicatos de servidores"],
         "rejeitam": ["Mercado financeiro"],
-        "efeitos": "Permissão ampla para operar empresas; participação e fluxos fiscais dependem da propriedade efetiva.",
-        "propoe": "O Estado pode ter empresas em qualquer setor."
+        "efeitos": "Sem limite para a participação pública; o mercado desconfia (confiança ↓)",
+        "propoe": "O Estado pode abrir ou comprar empresa em qualquer ramo, até supermercado ou montadora."
       }
     ]
   },
   "trava": [
     {
       "opcao": "sem-estatais",
-      "lei": "politica-de-precos-das-estatais",
-      "proibe": true
+      "lei": "propriedade-dos-meios-de-producao",
+      "maximo": 0
+    },
+    {
+      "opcao": "estatais-minimas",
+      "lei": "propriedade-dos-meios-de-producao",
+      "maximo": 25
+    },
+    {
+      "opcao": "estatais-estrategicas",
+      "lei": "propriedade-dos-meios-de-producao",
+      "maximo": 50
     }
   ],
   "implantacao": {
@@ -75,17 +85,6 @@
   },
   "efeitos": [
     {
-      "id": "papel-do-estado-empresario--investimento",
-      "alvo": "investimento",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": 0.072,
-        "termoConstante": -10.9207
-      },
-      "atraso": 1,
-      "unidade": "indice_0_100"
-    },
-    {
       "id": "empresas-estatais-e-privatizacao--confianca-empresarial",
       "alvo": "confianca_empresarial",
       "mecanismo": "limiar",
@@ -95,30 +94,6 @@
         "direcao": "acima"
       },
       "atraso": 1,
-      "unidade": "indice_0_100"
-    },
-    {
-      "id": "empresas-estatais-e-privatizacao--desemprego",
-      "alvo": "desemprego",
-      "mecanismo": "limiar",
-      "parametros": {
-        "coeficiente": 0.03,
-        "limiar": 0,
-        "direcao": "acima"
-      },
-      "atraso": 1,
-      "unidade": "percentual_0_100"
-    },
-    {
-      "id": "empresas-estatais-e-privatizacao--investimento",
-      "alvo": "investimento",
-      "mecanismo": "limiar",
-      "parametros": {
-        "coeficiente": 0.21212121,
-        "limiar": 67,
-        "direcao": "acima"
-      },
-      "atraso": 4,
       "unidade": "indice_0_100"
     }
   ]

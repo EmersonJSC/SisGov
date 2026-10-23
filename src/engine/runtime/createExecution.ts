@@ -139,6 +139,13 @@ export function createExecution(
     )
       break;
   }
+  for (const [id, offset] of Object.entries(
+    content.initialState.ajusteDoContexto ?? {},
+  )) {
+    const context = contextNodeId(id);
+    if (settled[context] !== undefined)
+      settled = { ...settled, [context]: settled[context] + offset };
+  }
   const initialValues = settled;
   return {
     step: 0,

@@ -294,6 +294,9 @@ export function expandirPais(
         : {}),
     },
     indicesIniciais: valores.indices,
+    ...(valores.ajusteDoContexto
+      ? { ajusteDoContexto: valores.ajusteDoContexto }
+      : {}),
     economia: economia.economia,
     limitesProprios: economia.limitesProprios ?? [],
     leisVigentes: leis.emVigor,
