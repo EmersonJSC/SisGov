@@ -34,6 +34,24 @@ a tela (`src/ui`) fica mais para o final.**
 | 2 | Leis | pronto | a fazer |
 | 3–15 | demais | a escrever | a fazer |
 
+### Nova ordem (24/out): construir primeiro, calibrar no fim
+
+Até o jogo ter o ciclo inteiro (governar, desgastar, perder a eleição), cada
+mecânica ganha só testes de comportamento; os testes de números exatos da
+economia ficam desligados até a calibragem final. `npm run check` completo
+uma vez por mecânica terminada.
+
+1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), proposta): absorve A2, A3 e as fases 5–6 do orçamento
+2. [ ] Índices essenciais e população
+3. [ ] Grupos com radicais e lealistas
+4. [ ] Desgaste do partido
+5. [ ] Eleição e fim de jogo
+6. [ ] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
+7. [ ] Tempo corrido
+8. [ ] Calibragem de tudo
+
+**Versão 2 (ideia, amostra em [docs/jogo/amostras/telas-v2.html](docs/jogo/amostras/telas-v2.html)):** topo em uma linha com detalhes ao passar o mouse; abas Leis, Política, Orçamento e Economia; tela de política com plenário; economia em cadeias produtivas com produtividade por setor e o porquê. Sem azul: couro e papel.
+
 ### Próximos passos (23/out): fechar as mecânicas 1, 2 e 4
 
 Ordem por dependência. Cada item: olhar (script ou lista do que falta),
