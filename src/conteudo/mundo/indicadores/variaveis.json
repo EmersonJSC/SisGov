@@ -6258,7 +6258,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "diferença entre Selic e juro médio da dívida (% ao ano)",
-        "fontes": ["Banco Central (Selic)", "Tesouro Nacional"]
+        "fontes": ["Banco Central (Selic)", "Tesouro Nacional"],
+        "tecnico": true
       }
     },
     {
@@ -6619,8 +6620,9 @@
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
-        "unidade": "salário mínimo em % do salário típico (mediana)",
-        "fontes": ["regra de salário mínimo do país"]
+        "unidade": "salário mínimo em % da mediana dos salários",
+        "fontes": ["regra de salário mínimo do país"],
+        "tecnico": true
       }
     },
     {
@@ -6654,7 +6656,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "reajuste nominal anual do salário mínimo (%)",
-        "fontes": ["regra de salário mínimo do país", "inflação"]
+        "fontes": ["regra de salário mínimo do país", "inflação"],
+        "tecnico": true
       }
     },
     {
@@ -6671,7 +6674,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "existência de salário mínimo nacional (0 ou 1)",
-        "fontes": ["lei constitucional do país"]
+        "fontes": ["lei constitucional do país"],
+        "tecnico": true
       }
     },
     {
@@ -6688,7 +6692,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "regra inclui crescimento econômico (0 ou 1)",
-        "fontes": ["regra de reajuste do país"]
+        "fontes": ["regra de reajuste do país"],
+        "tecnico": true
       }
     },
     {
@@ -6705,7 +6710,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "parcela dos benefícios vinculada ao salário mínimo (0 a 1)",
-        "fontes": ["regra de reajuste dos benefícios"]
+        "fontes": ["regra de reajuste dos benefícios"],
+        "tecnico": true
       }
     },
     {
@@ -7205,7 +7211,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "meta de resultado primário (% do PIB)",
-        "fontes": ["lei de meta de resultado das contas"]
+        "fontes": ["lei de meta de resultado das contas"],
+        "tecnico": true
       }
     },
     {
@@ -7222,7 +7229,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "resultado primário antes do contingenciamento (% do PIB)",
-        "fontes": ["Banco Central (NFSP)", "Tesouro"]
+        "fontes": ["Banco Central (NFSP)", "Tesouro"],
+        "tecnico": true
       }
     },
     {
@@ -7239,7 +7247,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "distância entre o resultado primário e a meta (% do PIB)",
-        "fontes": ["lei de meta de resultado das contas", "Tesouro"]
+        "fontes": ["lei de meta de resultado das contas", "Tesouro"],
+        "tecnico": true
       }
     },
     {
@@ -7414,7 +7423,8 @@
       "resposta": 1,
       "medida": {
         "unidade": "grau de controle do governo sobre o banco central (%)",
-        "fontes": ["lei de autonomia do banco central"]
+        "fontes": ["lei de autonomia do banco central"],
+        "tecnico": true
       }
     },
     {
