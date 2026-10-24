@@ -69,13 +69,7 @@ reage à economia.
 Nenhuma linha fica sem lei. A linha mostra a conta e as leis que mexem nela;
 clicar numa lei abre a janela dela.
 
-**Receitas que não são imposto:**
-
-| Linha | Conta | Leis |
-| --- | --- | --- |
-| Royalties do petróleo e da mineração | produção do setor × preço × parte do Estado | Regime do petróleo e mineração |
-| Dividendos das estatais | lucro das estatais × parte repassada ao governo | Política de preços das estatais, Papel do Estado empresário |
-| Taxas de serviços públicos | **lei nova**: valor por ano (emissão de documentos, pedágios públicos, cartórios) | Taxas de serviços públicos |
+As receitas estão na tabela da seção 2.2, cada uma com a sua lei.
 
 **Gastos:**
 
