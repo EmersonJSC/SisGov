@@ -64,21 +64,33 @@ dinheiro saindo do país. A curva de cada imposto vem das curvas de hoje, que j�
 têm esse formato de pico e queda. A diferença é que a base agora é visível e
 reage à economia.
 
-### 2.3 Gastos: cada um é uma lei
+### 2.3 Cada linha do orçamento tem lei
 
-| Gasto | Conta | Leis que mexem |
+Nenhuma linha fica sem lei. A linha mostra a conta e as leis que mexem nela;
+clicar numa lei abre a janela dela.
+
+**Receitas que não são imposto:**
+
+| Linha | Conta | Leis |
 | --- | --- | --- |
-| Aposentadorias | aposentados × benefício médio | Idade mínima de aposentadoria (quantos se aposentam), Reajuste de aposentadorias e benefícios (valor), Sistema previdenciário, Previdência rural |
-| Pensões por morte | pensionistas × pensão média | Pensão por morte (quanto a família recebe e as condições para receber) |
-| Salário dos servidores | servidores × salário médio | **duas leis novas**: Quantidade de servidores e Salário dos servidores; Estabilidade dos servidores |
-| Seguro-desemprego | desempregados cobertos × valor | Seguro-desemprego (existe) |
-| Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | Renda para idosos e pessoas com deficiência pobres (existe) |
-| Pisos de saúde e educação | % da receita | pisos (existem) |
-| Verbas e programas | o valor da lei, em reais | existem |
-| Juros da dívida | dívida × juro médio | Juros básicos (o juro) e todas as outras (a dívida) |
+| Royalties do petróleo e da mineração | produção do setor × preço × parte do Estado | Regime do petróleo e mineração |
+| Dividendos das estatais | lucro das estatais × parte repassada ao governo | Política de preços das estatais, Papel do Estado empresário |
+| Taxas de serviços públicos | **lei nova**: valor por ano (emissão de documentos, pedágios públicos, cartórios) | Taxas de serviços públicos |
 
-**Toda linha do orçamento tem lei**, de receita ou de gasto. O teste "nenhum
-gasto sem lei" vale também para a receita.
+**Gastos:**
+
+| Linha | Conta | Leis |
+| --- | --- | --- |
+| Aposentadorias | aposentados × benefício médio; aposentados saem da população idosa | Idade mínima de aposentadoria, Sistema previdenciário, Reajuste de aposentadorias e benefícios, Previdência rural |
+| Pensões | pensionistas × benefício médio; os "ses" (quem tem direito, por quanto tempo, quanto) estão na lei | Pensão por morte |
+| Militares inativos e pensões militares | inativos × benefício | Proteção social dos militares |
+| Salário dos servidores | servidores × salário médio | **duas leis novas:** Quantidade de servidores e Salário dos servidores; Estabilidade dos servidores públicos |
+| Seguro-desemprego | desempregados cobertos × valor | Seguro-desemprego (existe; o gasto passa a sair da conta) |
+| Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | Renda para idosos e pessoas com deficiência pobres (existe; idem) |
+| Transferência de renda | o valor da lei | Transferência de renda às famílias pobres |
+| Pisos de saúde e educação | % da receita | os pisos e as leis constitucionais deles |
+| Demais verbas e programas | o valor da lei, em reais | cada verba |
+| Juros da dívida | dívida × juro médio | não é lei; a linha aponta para Juros básicos e Quem controla o banco central |
 
 - **Sem trava por lei:** saem os tetos em % do PIB das verbas e o teto de 40%
   dos pisos. O piso que vem da Constituição (`pisoPorLei`) continua.
@@ -99,7 +111,13 @@ gasto sem lei" vale também para a receita.
 - **Sobra:** a lei "Destino da sobra" reparte entre pagar a dívida e o
   **fundo soberano**. O fundo rende e pode cobrir um déficit numa crise.
 
-### 2.5 O que o jogador vê
+### 2.5 Toda lei citada é um link
+
+Em qualquer tela (orçamento, painel de efeitos, régua, avisos de dependência,
+"lei:" nos motivos da economia, mesa da lei, textos de opções), o nome de uma
+lei é clicável e abre a janela dela. Vale já para o jogo de hoje.
+
+### 2.6 O que o jogador vê
 
 A aba Orçamento da amostra: entra e sai lado a lado, agrupados; cada linha
 abre a lei; ao passar o mouse aparece a conta ("10% × R$ 600 bi distribuídos,
