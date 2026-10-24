@@ -53,6 +53,11 @@ apagado.
 | Heranças | patrimônio (os três) de quem morre no ano: mortes × patrimônio por pessoa |
 | Grandes fortunas | parte do patrimônio (os três) que está com os mais ricos |
 | Transações bancárias | dinheiro que circula (PIB × giro do crédito) |
+| Royalties do petróleo e dos minérios | produção de petróleo e minérios × parte do Estado (lei Regime do petróleo e mineração) |
+| Lucro das estatais | lucro das empresas do Estado (lei Participação pública na produção; preço pela lei Política de preços das estatais) |
+| Taxas e tarifas públicas (**lei nova**) | serviços que o governo cobra: documentos, cartórios, pedágios de rodovias públicas |
+
+**Nenhuma receita fica em "outras":** cada linha tem a sua lei.
 
 **O que escapa** sobe com a alíquota: sonegação, informalidade, lucro guardado,
 dinheiro saindo do país. A curva de cada imposto vem das curvas de hoje, que já
@@ -61,15 +66,19 @@ reage à economia.
 
 ### 2.3 Gastos: cada um é uma lei
 
-| Gasto | Conta | Lei |
+| Gasto | Conta | Leis que mexem |
 | --- | --- | --- |
-| Aposentadorias e pensões | beneficiários × benefício médio | existe (regras); o valor passa a sair da conta |
-| Salário dos servidores | servidores × salário médio | **duas leis novas**: Quantidade de servidores e Salário dos servidores |
-| Seguro-desemprego | desempregados cobertos × valor | **nova** (hoje está dentro de outra) |
-| Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | **nova** como programa |
-| Pisos de saúde e educação | % da receita | existe |
+| Aposentadorias | aposentados × benefício médio | Idade mínima de aposentadoria (quantos se aposentam), Reajuste de aposentadorias e benefícios (valor), Sistema previdenciário, Previdência rural |
+| Pensões por morte | pensionistas × pensão média | Pensão por morte (quanto a família recebe e as condições para receber) |
+| Salário dos servidores | servidores × salário médio | **duas leis novas**: Quantidade de servidores e Salário dos servidores; Estabilidade dos servidores |
+| Seguro-desemprego | desempregados cobertos × valor | Seguro-desemprego (existe) |
+| Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | Renda para idosos e pessoas com deficiência pobres (existe) |
+| Pisos de saúde e educação | % da receita | pisos (existem) |
 | Verbas e programas | o valor da lei, em reais | existem |
-| Juros da dívida | dívida × juro médio | não é lei: vem da dívida e da Selic |
+| Juros da dívida | dívida × juro médio | Juros básicos (o juro) e todas as outras (a dívida) |
+
+**Toda linha do orçamento tem lei**, de receita ou de gasto. O teste "nenhum
+gasto sem lei" vale também para a receita.
 
 - **Sem trava por lei:** saem os tetos em % do PIB das verbas e o teto de 40%
   dos pisos. O piso que vem da Constituição (`pisoPorLei`) continua.
@@ -124,7 +133,7 @@ abre a lei; ao passar o mouse aparece a conta ("10% × R$ 600 bi distribuídos,
 | 1. Números do país | PIB em reais, população, ocupados, mortes | o PIB crescendo em reais; a população no país |
 | 2. De onde se cobra | salários, lucros, consumo e os três patrimônios, em reais | nada ainda: são as bases da fase 3 |
 | 3. Impostos | cada imposto passa a cobrar da sua base; contribuição sobre salários vira lei | a arrecadação de cada imposto muda com a economia |
-| 4. Gastos | leis novas (quantidade e salário dos servidores, seguro-desemprego, renda de idosos pobres); previdência pela conta; saem as travas; limite de 100% do PIB; juros básicos sempre à vista | todo gasto tem lei; nenhuma verba trava |
+| 4. Gastos | leis novas (Quantidade e Salário dos servidores, Taxas e tarifas públicas); aposentadorias e pensões em linhas separadas, cada uma pela sua conta; seguro-desemprego e renda de idosos pela conta; saem as travas; limite de 100% do PIB; juros básicos sempre à vista | todo gasto tem lei; nenhuma verba trava |
 | 5. Sobra | destino da sobra e fundo soberano | a sobra vira fundo ou paga dívida |
 | 6. Tela | aba Orçamento da amostra | de onde vem e para onde vai cada real |
 
@@ -138,7 +147,8 @@ Sem recalibrar números até o fim do ciclo de jogo.
 - Mais desemprego diminui a massa salarial e a arrecadação sobre salários.
 - Mais mortes (ou mais patrimônio) aumentam a base do imposto sobre heranças.
 - Contratar servidores aumenta o gasto na conta exata (quantidade × salário).
-- Nenhum gasto acima de 1% do PIB fica sem lei.
+- Nenhuma linha do orçamento, de receita ou de gasto, fica sem lei.
+- Endurecer a lei Pensão por morte reduz o gasto com pensões, não com aposentadorias.
 - Uma verba pode ir de 0 até o limite de 100% do PIB; o piso constitucional
   continua.
 - Com sobra, o fundo soberano cresce na parte que a lei manda.
