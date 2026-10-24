@@ -1,14 +1,38 @@
-# Retomada: onde paramos (23/out/2026, 02h30)
+# Retomada: onde paramos (24/out/2026, 02h20)
 
-> Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md),
-> [AGENTS.md](../AGENTS.md) e o documento do assunto.
+> Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md)
+> (seção "Nova ordem (24/out)"), [AGENTS.md](../AGENTS.md) e
+> [economia-e-caixa.md](jogo/mecanicas/economia-e-caixa.md).
 
-## O jogo em uma frase
+## Agora
 
-Victoria 3 reduzido + Democracy 4 avançado: o jogador é um **partido** que
-governa um país (começa pelo Brasil), muda **leis** e tenta industrializar
-o país sem quebrar as contas, até perder uma eleição. Jogabilidade primeiro,
-realidade como base. Escopo: [docs/jogo/escopo.md](jogo/escopo.md).
+- **Jeito de trabalhar (24/out):** construir primeiro, calibrar no fim. Cada
+  mecânica com testes de comportamento só; nada de consertar números da
+  economia no meio do caminho.
+- **Claude e GPT conversam por `canal/CANAL.md`** (fora do git). Claude escreve
+  PEDIDO curto e fechado; GPT faz só aquilo e responde em até 5 linhas; Claude
+  confere no código e escreve OK ou REFAZER. Regras no topo do arquivo.
+- **Em andamento:** mecânica Economia em reais e caixa (aprovada), fase 1.
+  PEDIDO 1 (PIB em reais cresce) está no canal, esperando o GPT.
+- **Feito em 23–24/out:** régua nas 26 leis de valor; painel de efeitos por
+  seção; salário mínimo em "pessoas acima da linha de pobreza" com a medida do
+  país (`paises/brasil/referencias.json`); "Selic" virou "juros básicos";
+  suíte verde (514 testes); amostra das telas da versão 2 em
+  `docs/jogo/amostras/telas-v2.html` (topo em uma linha, política com
+  plenário, orçamento, economia em cadeias).
+- **Para depois:** plenário fiel ao jogo (seu partido começa com 5% das
+  cadeiras; 6 bancadas por ideologia); régua nas leis de opções.
+
+## Combinados com o autor (resumo)
+
+- Amostra em HTML antes de mudar a tela. Nenhuma lei com dois controles.
+- Nada de referência que não exista no jogo ou que só valha para um país.
+- Toda lei citada na tela é um link para a lei.
+- `git push` só com a palavra do autor. Travas do git: renomear, nunca apagar.
+
+---
+
+# Histórico (22–23/out)
 
 ## Mecânicas (versão 1)
 
