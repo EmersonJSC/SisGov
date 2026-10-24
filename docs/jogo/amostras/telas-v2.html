@@ -294,7 +294,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     divida: cartao("Dívida pública", [["Hoje", "R$ 9,3 tri · 77,6% do PIB"], ["Em 1 ano, se nada mudar", "81,9% do PIB"], ["Juro médio", "9,5% ao ano"], ["Risco país", "250 pontos"]], "Sobe quando o caixa fecha no vermelho."),
     aprovacao: cartao("Aprovação do governo", [["Hoje", "48%"], ["Há 1 ano", "46%"], ["Grupos satisfeitos", "8 de 20"], ["Mais insatisfeito", "Agronegócio (38)"]], "Clique para abrir a política."),
     pib: cartao("Crescimento do PIB", [["Em 12 meses", "+2,2%"], ["Tendência", "+2,0% ao ano"], ["PIB", "R$ 12 tri"]], "Vem do investimento, da escolaridade e da infraestrutura."),
-    inflacao: cartao("Inflação", [["Em 12 meses", "4,8%"], ["Meta", "3,0%"], ["Selic", "15,0%"], ["Expectativa", "5,0%"]], "O banco central sobe os juros quando ela passa da meta."),
+    inflacao: cartao("Inflação", [["Em 12 meses", "4,8%"], ["Meta", "3,0%"], ["Juros básicos", "15,0%"], ["Expectativa", "5,0%"]], "O banco central sobe os juros quando ela passa da meta."),
     desemprego: cartao("Desemprego", [["Hoje", "6,2%"], ["Informais", "38% dos ocupados"], ["Ocupados", "103 milhões"]], ""),
   };
   const IR = { caixa: "orcamento", divida: "orcamento", aprovacao: "politica", pib: "economia", inflacao: "economia", desemprego: "economia" };
@@ -365,7 +365,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     ["Pessoal", [["Salário dos servidores", 720, "12 milhões de servidores × R$ 5.000 por mês", "", 1]]],
     ["Serviços públicos", [["Educação", 550, "piso: 17,5% da receita", ""], ["Saúde", 480, "piso: 13,7% da receita", ""], ["Defesa", 192, "1,6% do PIB", ""], ["Infraestrutura", 120, "1% do PIB", ""], ["Outras verbas", 191, "polícias, pesquisa, habitação, remédios", ""]]],
     ["Social", [["Transferência de renda", 168, "21 milhões de famílias × R$ 670 por mês", ""]]],
-    ["Juros", [["Juros da dívida", 879, "R$ 9,3 tri × 9,5% de juro médio", "não é lei: vem da dívida e da Selic"]]],
+    ["Juros", [["Juros da dívida", 879, "R$ 9,3 tri × 9,5% de juro médio", "não é lei: vem da dívida e dos juros básicos"]]],
   ];
   const MAX = 1300;
   const bloco = (grupos, cor) => grupos.map(([titulo, linhas], gi) => {

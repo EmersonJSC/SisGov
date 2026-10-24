@@ -6247,7 +6247,7 @@
     {
       "id": "juros_hiato",
       "tipo": "calculado",
-      "nome": "Distância do juro médio à Selic",
+      "nome": "Distância do juro médio aos juros básicos",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": -100,
@@ -6257,8 +6257,8 @@
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
-        "unidade": "diferença entre Selic e juro médio da dívida (% ao ano)",
-        "fontes": ["Banco Central (Selic)", "Tesouro Nacional"],
+        "unidade": "diferença entre os juros básicos e o juro médio da dívida (% ao ano)",
+        "fontes": ["Banco central (taxa básica de juros)", "Tesouro do país"],
         "tecnico": true
       }
     },
@@ -7396,7 +7396,7 @@
     {
       "id": "taxa_juros",
       "tipo": "calculado",
-      "nome": "Taxa de juros",
+      "nome": "Juros básicos",
       "unidade": "percentual_0_100",
       "dominio": {
         "minimo": 0,
@@ -7406,7 +7406,7 @@
       "avaliacao": "neutra",
       "medida": {
         "unidade": "taxa básica de juros (% ao ano)",
-        "fontes": ["Banco Central (Selic)"]
+        "fontes": ["Banco central (taxa básica de juros)"]
       }
     },
     {

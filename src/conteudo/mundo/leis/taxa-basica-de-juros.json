@@ -88,5 +88,6 @@
       "opcoes": ["banco-central-subordinado-ao-governo"],
       "motivo": "Com o banco central autônomo, quem decide os juros é ele, não o governo."
     }
-  ]
+  ],
+  "exemplo": "No país de referência a taxa básica se chama Selic e é decidida pelo Copom, do Banco Central autônomo; em 2026 está em 15% ao ano."
 }

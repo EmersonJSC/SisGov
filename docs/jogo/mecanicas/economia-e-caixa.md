@@ -66,7 +66,7 @@ reage à economia.
 | Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | **nova** como programa |
 | Pisos de saúde e educação | % da receita | existe |
 | Verbas e programas | o valor da lei, em reais | existem |
-| Juros da dívida | dívida × juro médio | não é lei: vem da dívida e da Selic |
+| Juros da dívida | dívida × juro médio | não é lei: vem da dívida e dos juros básicos |
 
 - **Sem trava por lei:** saem os tetos em % do PIB das verbas e o teto de 40%
   dos pisos. O piso que vem da Constituição (`pisoPorLei`) continua.
