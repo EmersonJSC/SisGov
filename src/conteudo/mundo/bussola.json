@@ -144,6 +144,23 @@
         "maximo": [-1, 0]
       }
     },
+    "imposto-terras-rurais": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Imposto sobre terras redistribui patrimônio e afeta o mercado rural.",
+      "faixa": {
+        "minimo": [0.5, 0],
+        "maximo": [-1, 0]
+      }
+    },
+    "quem-paga-imposto-sobre-imoveis-e-terras": {
+      "manifesto": ["per503", "per401"],
+      "porque": "Isenções e alíquotas maiores para grandes patrimônios tornam a cobrança mais redistributiva.",
+      "opcoes": {
+        "todos-iguais": [0.5, 0],
+        "isenta-pequenos": [-0.5, 0],
+        "grandes-pagam-mais": [-1, 0]
+      }
+    },
     "imposto-renda-empresas": {
       "manifesto": ["per402", "per503"],
       "porque": "Imposto baixo nas empresas é incentivo de mercado.",
@@ -1869,6 +1886,14 @@
         "so-inflacao": [0.5, 0],
         "inflacao-mais-pib": [-1, 0],
         "meta-da-mediana": [-0.5, 0]
+      }
+    },
+    "aumento-real-do-salario-minimo": {
+      "manifesto": ["per503", "per701"],
+      "porque": "Reduzir o mínimo em termos reais favorece o mercado; aumentar o poder de compra redistribui renda para trabalhadores.",
+      "faixa": {
+        "minimo": [1, 0],
+        "maximo": [-1, 0]
       }
     },
     "policia-militar": {

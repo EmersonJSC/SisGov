@@ -14,11 +14,17 @@ function nova() {
   return resultado.value;
 }
 
+function escopoAmplo() {
+  const resultado = aplicarMeta(nova(), "papel-do-estado-empresario", 100);
+  if (!resultado.ok) throw new Error(resultado.erros.join("; "));
+  return resultado.value;
+}
+
 describe("Participação pública na propriedade produtiva", () => {
   it("aceita os cinco níveis de participação da escala", () => {
     for (const nivel of [0, 25, 50, 75, 100]) {
       const alterada = aplicarMeta(
-        nova(),
+        escopoAmplo(),
         "propriedade-dos-meios-de-producao",
         nivel,
       );
@@ -36,7 +42,7 @@ describe("Participação pública na propriedade produtiva", () => {
   it("vincula o saldo fiscal recorrente à participação pública", () => {
     const executar = (nivel: number) => {
       const aplicada = aplicarMeta(
-        nova(),
+        escopoAmplo(),
         "propriedade-dos-meios-de-producao",
         nivel,
       );

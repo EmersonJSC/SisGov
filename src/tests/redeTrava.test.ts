@@ -19,7 +19,8 @@ const limites = {
   // V1-08: +9 segmentos novos, que começam com o contexto como os outros
   // grupos (110/69/28 antes deles).
   contextoAcimaDe5: 119,
-  contextoAcimaDe25: 76,
+  // Salário mínimo relativo entrou como estoque inicial do país (1c5040f).
+  contextoAcimaDe25: 77,
   contextoAcimaDe50: 35,
 };
 

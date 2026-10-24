@@ -251,7 +251,7 @@
         },
         {
           "lei": "meta-de-resultado-primario",
-          "opcao": "3-do-pib",
+          "opcao": "superavit-3",
           "como": "manteve",
           "fonte": "Lei de Responsabilidade Fiscal (LC 101/2000) e metas de superávit nas LDOs"
         },
@@ -1373,7 +1373,7 @@
         },
         {
           "lei": "meta-de-resultado-primario",
-          "opcao": "2-do-pib",
+          "opcao": "zerar",
           "como": "manteve",
           "fonte": "Lei 20.128/2006 (meta de saldo estrutural)"
         },
@@ -1701,7 +1701,7 @@
         },
         {
           "lei": "meta-de-resultado-primario",
-          "opcao": "2-do-pib",
+          "opcao": "zerar",
           "como": "aprovou",
           "fonte": "Freio da dívida (Lei Fundamental, art. 115, 2009)"
         },

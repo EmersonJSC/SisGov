@@ -87,7 +87,8 @@ describe("SG137 — pisos vinculados à receita", () => {
       5.551342999922914,
       2,
     );
-    expect(v.gasto_publico).toBeCloseTo(31.259174696033387, 1);
+    // A lei nova do salário mínimo recalcula o custo dos benefícios atrelados.
+    expect(v.gasto_publico).toBeCloseTo(31.084099384782085, 1);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {

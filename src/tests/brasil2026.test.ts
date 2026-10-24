@@ -102,10 +102,11 @@ describe("SG157 fase 3 — Brasil 2026", () => {
   it("juros explosivos não existem no início e surgem se nada for feito", () => {
     const valor = (p: Partida) => p.game.execution.values.juros_explosivos ?? 0;
     expect(valor(partida)).toBe(0);
-    const lista = turnos(partida, 24);
-    // no primeiro mandato, ainda não; com a Selic de jan/2025, no segundo
+    // A calibragem elevou a entrada de 38 para 44; ela começa a aparecer no
+    // turno 26, ainda no segundo mandato.
+    const lista = turnos(partida, 26);
     expect(valor(lista[16])).toBe(0);
-    expect(valor(lista[24])).toBeGreaterThan(0);
+    expect(valor(lista[26])).toBeGreaterThan(0);
   });
 });
 
