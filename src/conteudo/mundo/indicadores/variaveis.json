@@ -4,8 +4,32 @@
   "versaoEsquema": 1,
   "variaveis": [
     {
-      "id": "pib_nominal",
+      "id": "populacao",
+      "tipo": "estoque",
+      "nome": "População",
+      "unidade": "pessoas",
+      "dominio": { "minimo": 1 },
+      "area": "Economia"
+    },
+    {
+      "id": "taxa_natalidade",
       "tipo": "controle",
+      "nome": "Taxa de natalidade",
+      "unidade": "por mil por ano",
+      "dominio": { "minimo": 0, "maximo": 60 },
+      "area": "Economia"
+    },
+    {
+      "id": "taxa_mortalidade",
+      "tipo": "controle",
+      "nome": "Taxa de mortalidade",
+      "unidade": "por mil por ano",
+      "dominio": { "minimo": 0, "maximo": 60 },
+      "area": "Economia"
+    },
+    {
+      "id": "pib_nominal",
+      "tipo": "estoque",
       "nome": "PIB nominal",
       "unidade": "moeda",
       "dominio": {

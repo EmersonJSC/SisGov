@@ -24,6 +24,8 @@ const supportedUnits = new Set([
   "taxa_por_passo",
   "quantidade",
   "quantidade_por_passo",
+  "pessoas",
+  "por mil por ano",
   "moeda_milhoes_2024_ano",
   "moeda_ano",
   "indice_0_100_por_passo",

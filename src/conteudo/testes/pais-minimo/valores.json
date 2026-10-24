@@ -2,6 +2,7 @@
   "tipo": "pais-valores",
   "indices": {},
   "estoques": {
+    "populacao": 213000000,
     "armas_em_circulacao": 50,
     "capacidade_defesa": 50,
     "concentracao_fundiaria": 50,
@@ -18,6 +19,7 @@
     "reservas_internacionais": 16,
     "transparencia_fiscal_internacional": 50,
     "cofre": 0,
+    "pib_nominal": 12000000,
     "salario_minimo_relativo": 50
   }
 }

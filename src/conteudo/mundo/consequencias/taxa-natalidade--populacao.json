@@ -1,0 +1,21 @@
+{
+  "id": "taxa-natalidade--populacao",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "taxa_natalidade",
+  "alvo": "populacao",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 1,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "populacao",
+    "multiplicador": 0.00008333333333333333
+  },
+  "unidade": "quantidade_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

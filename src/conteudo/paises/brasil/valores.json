@@ -133,6 +133,7 @@
     "vitalidade_cultural": 55
   },
   "estoques": {
+    "populacao": 213000000,
     "armas_em_circulacao": 6.92,
     "capacidade_defesa": 22,
     "cofre": 0,
@@ -146,6 +147,7 @@
     "infraestrutura_saneamento": 56,
     "infraestrutura_transportes": 28.75,
     "juros_implicito": 7.26,
+    "pib_nominal": 12000000,
     "poupanca_domestica": 14.5,
     "reservas_internacionais": 15.2,
     "salario_minimo_relativo": 66,

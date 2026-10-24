@@ -11,6 +11,8 @@
     }
   ],
   "controles": {
+    "taxa_natalidade": 12,
+    "taxa_mortalidade": 7,
     "nivel_policia_militar": 100,
     "nivel_destino_do_resultado_fiscal": 50
   }

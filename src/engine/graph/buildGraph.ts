@@ -87,14 +87,19 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
     ...content.dilemmas,
   ].sort((left, right) => left.id.localeCompare(right.id));
   const listed = new Set(sources.flatMap((source) => source.consequencias));
-  // Consequência que sai de uma bolha (índice, situação ou estoque) e não
-  // pertence a lei nem a ocorrência é uma ligação da rede: vale sempre.
+  // Consequência sem lei ou ocorrência: saídas de bolhas e controles do país
+  // que alimentam estoques são ligações contínuas da rede.
   const network: GraphRelation[] = content.consequences
     .filter(
-      (consequence) =>
-        !listed.has(consequence.id) &&
-        nodesById[consequence.origem] !== undefined &&
-        nodesById[consequence.origem].tipo !== "controle",
+      (consequence) => {
+        const origin = nodesById[consequence.origem];
+        const target = nodesById[consequence.alvo];
+        return (
+          !listed.has(consequence.id) &&
+          origin !== undefined &&
+          (origin.tipo !== "controle" || target?.tipo === "estoque")
+        );
+      },
     )
     .map((consequence) => ({
       id: `rede:${consequence.id}`,

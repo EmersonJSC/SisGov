@@ -811,6 +811,8 @@
     }
   ],
   "controles": {
+    "taxa_natalidade": 12,
+    "taxa_mortalidade": 7,
     "nivel_codigo_florestal": 67,
     "nivel_licenciamento_ambiental": 67,
     "nivel_matriz_energetica": 67,
@@ -842,7 +844,6 @@
     "aliquota_imposto_heranca": 8,
     "aliquota_imposto_propriedade_urbana_rural": 0.5,
     "aliquota_imposto_transacoes_financeiras": 0.38,
-    "pib_nominal": 12000000,
     "nivel_habitacao_publica": 50,
     "nivel_mandato_do_banco_central": 66.67,
     "nivel_controle_de_capitais": 33.33,

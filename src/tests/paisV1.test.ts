@@ -63,15 +63,21 @@ describe("configuração do país (V1-06)", () => {
     // vira estoque (salario_minimo_relativo) e a lei "Valor" sai.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1697);
+    expect(Object.keys(valores)).toHaveLength(1700);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.27376231196191, 3);
-    expect(valores.divida_publica).toBeCloseTo(77.63637393246734, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.268921186198554, 3);
+    expect(valores.divida_publica).toBeCloseTo(77.62973597601184, 2);
     expect(valores.inflacao).toBeCloseTo(4.829895663010673, 2);
     expect(valores.desemprego).toBeCloseTo(6.201094923916466, 2);
-    expect(valores.pib_nominal).toBe(12000000);
-    const soma = Object.values(valores).reduce((a, b) => a + b, 0);
-    expect(soma).toBeCloseTo(12691489.29532123, 3);
+    expect(valores.pib_nominal).toBeCloseTo(12033595.099145133, 3);
+    const soma = Object.entries(valores).reduce(
+      (total, [id, valor]) =>
+        ["populacao", "taxa_natalidade", "taxa_mortalidade"].includes(id)
+          ? total
+          : total + valor,
+      0,
+    );
+    expect(soma).toBeCloseTo(12725084.613728806, 3);
     expect(p.content.policies).toHaveLength(226);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);

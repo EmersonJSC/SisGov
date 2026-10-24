@@ -22,6 +22,7 @@ export function rateUnitFor(stockUnit: string): string | undefined {
   const units: Record<string, string> = {
     moeda: "moeda_por_passo",
     quantidade: "quantidade_por_passo",
+    pessoas: "quantidade_por_passo",
     indice_0_100: "indice_0_100_por_passo",
     percentual_pib: "percentual_pib_por_passo",
   };
