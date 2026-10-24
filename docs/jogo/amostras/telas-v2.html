@@ -1,0 +1,545 @@
+<title>SisGov telas da versão 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: barra do jogo fina no alto (como ficaria no jogo), abas das telas, cada tela num papel. */
+:root {
+  --barra: #13233a; --barra-2: #1b3150; --barra-tinta: #e7efff; --barra-suave: #8fb9da;
+  --papel: #f2eee3; --papel-2: #e7e1d1; --tinta: #1f2a3a; --suave: #5b6676; --borda: #ddd5c2;
+  --bom: #1d6b4f; --bom-f: #cfe3d6; --atencao: #a8730f; --atencao-f: #f1e1b8; --ruim: #b3283b; --ruim-f: #f1cfd2;
+  --azul: #2f5f9e; --ouro: #b08a35; --fundo: #e7e1d1;
+  --serifa: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: Inter, "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papel: #191712; --papel-2: #221f18; --tinta: #becde2; --suave: #a0acbe; --borda: #474237;
+  --bom: #7ac3a3; --bom-f: #1b3329; --atencao: #e0b45e; --atencao-f: #3a2e15; --ruim: #fd8a8d; --ruim-f: #3d1c20;
+  --azul: #8fb3e6; --ouro: #ccad64; --fundo: #100f0c; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papel: #191712; --papel-2: #221f18; --tinta: #becde2; --suave: #a0acbe; --borda: #474237;
+  --bom: #7ac3a3; --bom-f: #1b3329; --atencao: #e0b45e; --atencao-f: #3a2e15; --ruim: #fd8a8d; --ruim-f: #3d1c20;
+  --azul: #8fb3e6; --ouro: #ccad64; --fundo: #100f0c; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font: 14px/1.45 var(--sans); }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.num { font-variant-numeric: tabular-nums; }
+h1, h2, h3 { font-family: var(--serifa); font-weight: 600; margin: 0; text-wrap: balance; }
+.olho { margin: 0; font-size: .68rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--suave); }
+.nota { font-size: .8rem; color: var(--suave); margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+/* ---- barra fina do jogo ---- */
+.barra { background: var(--barra); color: var(--barra-tinta); }
+.barra-in { display: flex; align-items: center; gap: 4px; height: 44px; overflow-x: auto; scrollbar-width: none; }
+.pais { display: flex; align-items: center; gap: 8px; padding-right: 10px; margin-right: 4px; border-right: 1px solid #ffffff1f; font: 600 1rem var(--serifa); white-space: nowrap; }
+.bandeira { width: 22px; height: 15px; border-radius: 2px; background: linear-gradient(#0000,#0000), #1f8a4c; position: relative; }
+.bandeira::after { content: ""; position: absolute; inset: 3px 4px; background: #f2c230; clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 4px 6px; border-radius: 6px; border: 0; background: none; cursor: pointer; white-space: nowrap; }
+.chip:hover { background: var(--barra-2); }
+.chip small { color: var(--barra-suave); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.chip b { font-size: .92rem; }
+.chip .seta { font-size: .72rem; }
+.mal { color: #ff9aa2; } .bem { color: #8be0b4; } .meio { color: #f3d27a; }
+.espaco { flex: 1; min-width: 8px; }
+.telas { display: flex; gap: 2px; }
+.telas button { border: 0; background: none; color: var(--barra-suave); padding: 6px 8px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: .8rem; white-space: nowrap; }
+.telas button[aria-selected="true"] { background: var(--barra-2); color: #fff; }
+.turno { white-space: nowrap; font-size: .8rem; color: var(--barra-suave); padding: 0 8px; }
+.encerrar { background: #2f8f62; color: #fff; border: 0; border-radius: 6px; padding: 6px 12px; font-weight: 800; font-size: .78rem; letter-spacing: .04em; cursor: pointer; white-space: nowrap; }
+
+/* ---- página ---- */
+.pagina { max-width: 1180px; margin: 0 auto; padding-block: 20px 48px; display: grid; gap: 16px; }
+.cabeca { display: grid; gap: 4px; }
+.cabeca p { margin: 0; color: var(--suave); max-width: 72ch; }
+.papel { background: var(--papel); border: 1px solid var(--borda); border-radius: 8px; padding: 18px; min-width: 0; }
+.grade-2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+.grade-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+@media (max-width: 860px) { .grade-2, .grade-3 { grid-template-columns: minmax(0,1fr); } }
+.decisao { border-left: 3px solid var(--ouro); padding: 8px 12px; background: var(--papel-2); border-radius: 0 6px 6px 0; font-size: .85rem; }
+
+/* antes/depois do topo */
+.velho { background: var(--barra); color: var(--barra-tinta); border-radius: 6px; padding: 10px; display: flex; gap: 18px; flex-wrap: wrap; font-size: .78rem; opacity: .85; }
+.velho div { display: grid; } .velho b { font-size: 1.15rem; color: #7ed8ff; } .velho .m { color: #ff9aa2; }
+.lista-mud { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+
+/* ---- política ---- */
+.governo { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+.medidor { display: grid; gap: 4px; min-width: 160px; flex: 1; }
+.medidor .trilho { height: 8px; border-radius: 4px; background: var(--papel-2); overflow: hidden; }
+.medidor .trilho i { display: block; height: 100%; border-radius: 4px; }
+.grupos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.grupo { background: var(--papel); border: 1px solid var(--borda); border-radius: 8px; padding: 12px; display: grid; gap: 8px; cursor: pointer; text-align: left; }
+.grupo:hover { border-color: var(--azul); }
+.grupo-topo { display: flex; gap: 10px; align-items: center; }
+.disco { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 700 .8rem var(--sans); color: #fff; flex: none; }
+.grupo h3 { font-size: 1.02rem; }
+.humor { font-size: .78rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; }
+.h-bom { background: var(--bom-f); color: var(--bom); } .h-meio { background: var(--atencao-f); color: var(--atencao); } .h-ruim { background: var(--ruim-f); color: var(--ruim); }
+.divisao { display: flex; height: 10px; border-radius: 5px; overflow: hidden; }
+.divisao .r { background: var(--ruim); } .divisao .n { background: var(--borda); } .divisao .l { background: var(--bom); }
+.legenda-div { display: flex; justify-content: space-between; font-size: .72rem; color: var(--suave); }
+.querem { font-size: .78rem; color: var(--suave); margin: 0; }
+.querem b { color: var(--tinta); font-weight: 600; }
+.bancadas { display: flex; height: 26px; border-radius: 4px; overflow: hidden; }
+.bancadas span { display: grid; place-items: center; font-size: .7rem; color: #fff; font-weight: 700; }
+
+/* ---- orçamento ---- */
+.saldo { display: flex; gap: 18px; flex-wrap: wrap; align-items: stretch; }
+.saldo > div { flex: 1; min-width: 150px; background: var(--papel-2); border-radius: 6px; padding: 10px 12px; display: grid; gap: 2px; }
+.saldo .valor { font: 600 1.5rem var(--serifa); }
+.linhas { display: grid; gap: 6px; }
+.linha { display: grid; grid-template-columns: minmax(0, 1fr) 90px; gap: 4px 10px; align-items: center; padding: 6px 8px; border-radius: 6px; cursor: pointer; border: 0; background: none; text-align: left; width: 100%; }
+.linha:hover { background: var(--papel-2); }
+.linha .nome { font-weight: 600; }
+.linha .rs { text-align: right; font-weight: 700; }
+.linha .barra-l { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--papel-2); overflow: hidden; }
+.linha .barra-l i { display: block; height: 100%; }
+.linha .conta { grid-column: 1 / -1; font-size: .74rem; color: var(--suave); }
+.sem-lei { font-size: .66rem; font-weight: 800; letter-spacing: .06em; color: var(--ruim); background: var(--ruim-f); padding: 0 6px; border-radius: 3px; margin-left: 6px; }
+.destino { display: flex; gap: 8px; flex-wrap: wrap; }
+.destino span { padding: 4px 10px; border-radius: 999px; background: var(--papel-2); font-size: .8rem; }
+
+/* ---- economia ---- */
+.controles { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.botao { border: 1px solid var(--borda); background: var(--papel); border-radius: 6px; padding: 5px 12px; cursor: pointer; font-weight: 600; font-size: .82rem; }
+.botao[aria-pressed="true"] { background: var(--azul); color: #fff; border-color: var(--azul); }
+.cadeia-box { overflow-x: auto; }
+.cadeia-box svg { display: block; width: 100%; min-width: 720px; height: auto; }
+.no rect { stroke: var(--borda); }
+.no text { fill: var(--tinta); font: 600 13px var(--sans); }
+.no .sub { fill: var(--suave); font: 500 11px var(--sans); }
+.no { cursor: pointer; }
+.no:hover rect.caixa { stroke: var(--azul); stroke-width: 2; }
+.no.ativo rect.caixa { stroke: var(--azul); stroke-width: 2.5; }
+.fluxo { fill: none; opacity: .42; }
+.coluna { fill: var(--suave); font: 800 10px var(--sans); letter-spacing: .12em; }
+.setores { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.setor { background: var(--papel); border: 1px solid var(--borda); border-radius: 6px; padding: 8px 10px; cursor: pointer; text-align: left; display: grid; gap: 4px; }
+.setor.ativo { border-color: var(--azul); box-shadow: 0 0 0 1px var(--azul) inset; }
+.setor .n { font-weight: 700; font-size: .85rem; }
+.spark { height: 26px; width: 100%; }
+.detalhe { display: grid; gap: 10px; }
+.motivos { display: grid; gap: 6px; }
+.motivo { display: grid; grid-template-columns: minmax(0,1fr) 64px; gap: 2px 10px; align-items: center; font-size: .85rem; }
+.motivo .b { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--papel-2); position: relative; overflow: hidden; }
+.motivo .b i { position: absolute; top: 0; bottom: 0; }
+.motivo .v { text-align: right; font-weight: 700; }
+.lei-link { color: var(--azul); font-size: .76rem; }
+.fatos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px 14px; font-size: .82rem; }
+.fatos div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--borda); padding-block: 3px; gap: 8px; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="barra">
+  <div class="barra-in gutter" role="toolbar" aria-label="Barra do jogo">
+    <span class="pais"><span class="bandeira" aria-hidden="true"></span>Brasil</span>
+    <button class="chip" data-ir="orcamento" title="Caixa do ano: entra − sai"><small>Caixa</small><b class="num mal">−R$ 801 bi</b></button>
+    <button class="chip" data-ir="orcamento" title="Dívida pública"><small>Dívida</small><b class="num meio">77,6%</b><span class="seta mal">▲</span></button>
+    <button class="chip" data-ir="politica" title="Aprovação do governo"><small>Aprovação</small><b class="num meio">48%</b><span class="seta bem">▲</span></button>
+    <button class="chip" data-ir="economia" title="Crescimento do PIB em 12 meses"><small>PIB</small><b class="num bem">+2,2%</b></button>
+    <button class="chip" data-ir="economia" title="Inflação em 12 meses"><small>Inflação</small><b class="num meio">4,8%</b></button>
+    <button class="chip" data-ir="economia" title="Desemprego"><small>Desemprego</small><b class="num">6,2%</b></button>
+    <span class="espaco"></span>
+    <nav class="telas" role="tablist" aria-label="Telas">
+      <button role="tab" data-aba="topo" aria-selected="true">Topo</button>
+      <button role="tab" data-aba="mapa">Leis</button>
+      <button role="tab" data-aba="politica">Política</button>
+      <button role="tab" data-aba="orcamento">Orçamento</button>
+      <button role="tab" data-aba="economia">Economia</button>
+    </nav>
+    <span class="turno num">1º tri · 2026</span>
+    <button class="encerrar">Encerrar turno</button>
+  </div>
+</header>
+
+<main class="gutter">
+
+<!-- ================= TOPO ================= -->
+<section class="pagina" data-tela="topo">
+  <div class="cabeca">
+    <p class="olho">Amostra da versão 2 · 1 de 4</p>
+    <h1>Topo do jogo em uma linha</h1>
+    <p>A barra acima é a proposta. Ela ocupa 44 px em vez de uns 75 px e troca blocos grandes por seis números com seta, cada um abrindo a tela certa.</p>
+  </div>
+  <div class="papel">
+    <p class="olho">Hoje</p>
+    <div class="velho" style="margin-top:8px">
+      <div><span>ENTRA</span><b>R$ 3,8 tri</b><span>31,7% do PIB · por ano</span></div>
+      <div><span>SAI</span><b>R$ 4,6 tri</b><span>leis R$ 3,7 tri + juros R$ 878,8 bi</span></div>
+      <div><span>FALTA · DÉFICIT</span><b class="m">R$ 801,1 bi</b><span>vira dívida</span></div>
+      <div><span>DÍVIDA</span><b class="m">R$ 9,3 tri</b><span>77,6% do PIB</span></div>
+      <div><span>APROVAÇÃO</span><b>48%</b><span>8/20 segmentos</span></div>
+      <div><span>+ 5 botões e o turno</span></div>
+    </div>
+  </div>
+  <div class="grade-2">
+    <div class="papel">
+      <h2 style="font-size:1.1rem;margin-bottom:8px">O que muda</h2>
+      <ol class="lista-mud">
+        <li><b>Seis números, uma linha.</b> Caixa do ano, dívida, aprovação, PIB, inflação e desemprego. A cor diz se está bem; a seta, para onde vai.</li>
+        <li><b>Entra e sai saem do topo</b> e vão para a tela de Orçamento, aberta ao clicar em Caixa.</li>
+        <li><b>As telas viram abas</b>: Leis (o mapa de hoje), Política, Orçamento e Economia, como as lentes do Victoria 3.</li>
+        <li><b>Os 5 botões soltos</b> (busca, documentos, salvar, tema, tela cheia) vão para um menu ☰, e a busca abre com <kbd>/</kbd>.</li>
+        <li><b>A lista do eleitorado sai da lateral</b> e vira a tela de Política. O mapa ganha a largura toda.</li>
+      </ol>
+    </div>
+    <div class="papel">
+      <h2 style="font-size:1.1rem;margin-bottom:8px">Para você decidir</h2>
+      <div class="decisao" style="display:grid;gap:6px">
+        <span>1. São estes os seis números? Outros candidatos: risco país, Selic, pressão dos grupos.</span>
+        <span>2. Caixa em reais (−R$ 801 bi) ou em % do PIB (−6,7%)?</span>
+        <span>3. As abas ficam no topo, como aqui, ou numa coluna de ícones à esquerda?</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAPA (placeholder) ================= -->
+<section class="pagina" data-tela="mapa" hidden>
+  <div class="cabeca">
+    <p class="olho">Aba Leis</p>
+    <h1>O mapa de hoje, com a tela toda</h1>
+    <p>Esta aba é o mapa das leis que já existe, sem a lateral do eleitorado. Não muda nada nesta amostra.</p>
+  </div>
+</section>
+
+<!-- ================= POLÍTICA ================= -->
+<section class="pagina" data-tela="politica" hidden>
+  <div class="cabeca">
+    <p class="olho">Amostra da versão 2 · 2 de 4</p>
+    <h1>Política</h1>
+    <p>Quem pesa no país, quem está do lado do governo e por quê. Sem escolher quem entra no governo: isso fica para depois. Os números dos grupos são os da partida de hoje; radicais, lealistas e influência são exemplos.</p>
+  </div>
+  <div class="papel governo">
+    <div class="medidor">
+      <span class="olho">Aprovação do governo</span>
+      <b class="num" style="font:600 1.6rem var(--serifa)">48%</b>
+      <div class="trilho"><i style="width:48%;background:var(--atencao)"></i></div>
+    </div>
+    <div class="medidor">
+      <span class="olho">Desgaste do partido</span>
+      <b class="num" style="font:600 1.6rem var(--serifa)">12 / 100</b>
+      <div class="trilho"><i style="width:12%;background:var(--ruim)"></i></div>
+    </div>
+    <div class="medidor">
+      <span class="olho">Base no Congresso</span>
+      <b class="num" style="font:600 1.6rem var(--serifa)">55%</b>
+      <div class="trilho"><i style="width:55%;background:var(--bom)"></i></div>
+    </div>
+    <div class="medidor">
+      <span class="olho">Próxima eleição</span>
+      <b class="num" style="font:600 1.6rem var(--serifa)">em 15 turnos</b>
+      <span class="nota">outubro de 2029</span>
+    </div>
+  </div>
+  <div class="papel" style="display:grid;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+      <h2 style="font-size:1.1rem">Bancadas no Congresso</h2>
+      <span class="nota">o governo precisa de 257 votos na Câmara</span>
+    </div>
+    <div class="bancadas" id="bancadas"></div>
+    <div class="nota" id="bancadas-leg"></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+    <h2 style="font-size:1.15rem">Grupos de interesse</h2>
+    <div class="controles" role="group" aria-label="Ordenar">
+      <button class="botao" data-ordem="peso" aria-pressed="true">Mais peso</button>
+      <button class="botao" data-ordem="humor" aria-pressed="false">Mais insatisfeitos</button>
+    </div>
+  </div>
+  <div class="grupos" id="grupos"></div>
+  <div class="decisao">Para você decidir: o círculo de cada grupo mostra a influência (quanto pesa na eleição e na rua). A barra mostra radicais (contra), neutros e lealistas (a favor). Os dois números bastam, ou quer também a lista de leis que o grupo pede?</div>
+</section>
+
+<!-- ================= ORÇAMENTO ================= -->
+<section class="pagina" data-tela="orcamento" hidden>
+  <div class="cabeca">
+    <p class="olho">Amostra da versão 2 · 3 de 4</p>
+    <h1>Orçamento: de onde vem e para onde vai</h1>
+    <p>Cada linha é uma lei, e clicar nela abre a lei. Cada imposto mostra a conta: alíquota × base, menos o que escapa. Os totais são os da partida de hoje; a divisão por linha é estimativa para a amostra.</p>
+  </div>
+  <div class="papel saldo">
+    <div><span class="olho">Entra no ano</span><span class="valor num">R$ 3,80 tri</span><span class="nota">31,7% do PIB</span></div>
+    <div><span class="olho">Sai no ano</span><span class="valor num">R$ 4,60 tri</span><span class="nota">leis R$ 3,72 tri + juros R$ 0,88 tri</span></div>
+    <div style="background:var(--ruim-f)"><span class="olho">Falta</span><span class="valor num" style="color:var(--ruim)">−R$ 801 bi</span><span class="nota">vira dívida: 77,6% → 81,9% do PIB em 1 ano</span></div>
+  </div>
+  <div class="grade-2">
+    <div class="papel" style="display:grid;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="font-size:1.1rem">Entra</h2><span class="nota">impostos</span></div>
+      <div class="linhas" id="entra"></div>
+    </div>
+    <div class="papel" style="display:grid;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="font-size:1.1rem">Sai</h2><span class="nota">gastos</span></div>
+      <div class="linhas" id="sai"></div>
+    </div>
+  </div>
+  <div class="papel" style="display:grid;gap:8px">
+    <h2 style="font-size:1.05rem">Quando sobra</h2>
+    <p class="nota">A lei "Destino da sobra" decide para onde vai o superávit:</p>
+    <div class="destino"><span>Pagar a dívida: 70%</span><span>Fundo soberano: 30%</span></div>
+  </div>
+  <div class="decisao">Para você decidir: as linhas marcadas <span class="sem-lei">SEM LEI</span> são gastos que o jogador hoje não controla. A proposta da mecânica 1 é que cada uma ganhe uma lei. Falta alguma linha que você quer ver?</div>
+</section>
+
+<!-- ================= ECONOMIA ================= -->
+<section class="pagina" data-tela="economia" hidden>
+  <div class="cabeca">
+    <p class="olho">Amostra da versão 2 · 4 de 4</p>
+    <h1>Economia: as cadeias produtivas</h1>
+    <p>No lugar dos produtos do Victoria 3, os setores e o que passa entre eles, até chegar às famílias, ao governo e à exportação. A produtividade de cada setor anda turno a turno, e o painel diz por quê. Tudo aqui é ilustração da ideia; a mecânica fica para a versão 2.</p>
+  </div>
+  <div class="papel" style="display:grid;gap:12px">
+    <div class="controles">
+      <button class="botao" id="tocar" aria-pressed="true">⏸ Pausar</button>
+      <span class="nota num" id="relogio">turno 1</span>
+      <span class="espaco"></span>
+      <span class="nota">espessura = valor que passa · cor = produtividade do setor de origem</span>
+    </div>
+    <div class="cadeia-box"><svg id="cadeia" viewBox="0 0 960 440" role="img" aria-label="Cadeias produtivas do país"></svg></div>
+  </div>
+  <div class="grade-2">
+    <div class="papel" style="display:grid;gap:10px">
+      <h2 style="font-size:1.05rem">Setores</h2>
+      <div class="setores" id="setores"></div>
+    </div>
+    <div class="papel detalhe" id="detalhe"></div>
+  </div>
+  <div class="decisao">Para você decidir: a cadeia mostra setores (como aqui) ou bens (alimentos, energia, aço, carros…)? E a produtividade, em índice (100 = média de 2025) ou em "produz X por trabalhador"?</div>
+</section>
+</main>
+
+<script>
+(function () {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const fmt = (v, c = 1) => v.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c });
+
+  // ---------- abas ----------
+  function abrir(aba) {
+    $$(".telas button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.aba === aba)));
+    $$("[data-tela]").forEach(s => s.hidden = s.dataset.tela !== aba);
+    try { localStorage.setItem("aba", aba); } catch (e) {}
+  }
+  $$(".telas button").forEach(b => b.addEventListener("click", () => abrir(b.dataset.aba)));
+  $$("[data-ir]").forEach(b => b.addEventListener("click", () => abrir(b.dataset.ir)));
+  const pedida = location.hash.slice(1);
+  let guardada = null; try { guardada = localStorage.getItem("aba"); } catch (e) {}
+  const ABAS = ["topo","mapa","politica","orcamento","economia"];
+  abrir(ABAS.includes(pedida) ? pedida : (ABAS.includes(guardada) ? guardada : "topo"));
+  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (ABAS.includes(h)) abrir(h); });
+
+  // ---------- política ----------
+  const GRUPOS = [
+    { n: "Trabalhadores com carteira", s: "TC", peso: 25, apoio: 56, cor: "#c0573e", rad: 14, lea: 30, quer: "salário mínimo maior", odeia: "terceirização" },
+    { n: "Pobres", s: "PO", peso: 40, apoio: 53, cor: "#d08a2e", rad: 12, lea: 26, quer: "transferência de renda", odeia: "corte de benefícios" },
+    { n: "Classe média", s: "CM", peso: 45, apoio: 47, cor: "#3e7fa8", rad: 20, lea: 18, quer: "menos imposto de renda", odeia: "inflação" },
+    { n: "Evangélicos", s: "EV", peso: 27, apoio: 44, cor: "#7c5aa6", rad: 24, lea: 15, quer: "proteção da família", odeia: "aborto legal" },
+    { n: "Aposentados", s: "AP", peso: 19, apoio: 52, cor: "#5f8a5a", rad: 11, lea: 22, quer: "reajuste pelo mínimo", odeia: "reforma da previdência" },
+    { n: "Ricos", s: "RI", peso: 15, apoio: 45, cor: "#9a7b2f", rad: 22, lea: 17, quer: "imposto baixo", odeia: "imposto sobre fortunas" },
+    { n: "Empresários", s: "EM", peso: 2, apoio: 41, cor: "#4b5f7a", rad: 28, lea: 14, quer: "juros menores", odeia: "custo trabalhista" },
+    { n: "Agronegócio", s: "AG", peso: 1, apoio: 38, cor: "#6f8f2f", rad: 31, lea: 12, quer: "crédito rural", odeia: "fiscalização ambiental" },
+    { n: "Servidores públicos", s: "SP", peso: 8, apoio: 52, cor: "#2e8a8a", rad: 13, lea: 24, quer: "estabilidade", odeia: "corte de salários" },
+    { n: "Jovens", s: "JO", peso: 20, apoio: 48, cor: "#c24f8a", rad: 18, lea: 19, quer: "emprego e ensino superior", odeia: "desemprego" },
+  ];
+  // influência ilustrativa: peso eleitoral + peso econômico
+  GRUPOS.forEach(g => g.infl = Math.round(g.peso * .6 + ({ "Empresários": 22, "Agronegócio": 18, "Ricos": 14 }[g.n] || 4)));
+  const humor = a => a >= 52 ? ["h-bom", "satisfeito"] : a >= 46 ? ["h-meio", "dividido"] : ["h-ruim", "insatisfeito"];
+  function desenharGrupos(ordem) {
+    const lista = [...GRUPOS].sort((a, b) => ordem === "humor" ? a.apoio - b.apoio : b.infl - a.infl);
+    $("#grupos").innerHTML = lista.map(g => {
+      const [cls, txt] = humor(g.apoio);
+      const neutro = 100 - g.rad - g.lea;
+      const tam = 34 + g.infl * .5;
+      return `<button class="grupo" title="Abrir o grupo ${g.n}">
+        <div class="grupo-topo">
+          <span class="disco" style="background:${g.cor};width:${tam}px;height:${tam}px">${g.infl}%</span>
+          <div style="display:grid;gap:2px;min-width:0"><h3>${g.n}</h3><span class="nota">${g.peso}% do eleitorado · influência ${g.infl}%</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="humor ${cls}">${txt}</span><b class="num">${g.apoio} / 100</b></div>
+        <div class="divisao" aria-label="${g.rad}% radicais, ${g.lea}% lealistas"><span class="r" style="width:${g.rad}%"></span><span class="n" style="width:${neutro}%"></span><span class="l" style="width:${g.lea}%"></span></div>
+        <div class="legenda-div"><span>${g.rad}% radicais</span><span>${g.lea}% lealistas</span></div>
+        <p class="querem">Quer <b>${g.quer}</b> · não aceita <b>${g.odeia}</b></p>
+      </button>`;
+    }).join("");
+  }
+  $$("[data-ordem]").forEach(b => b.addEventListener("click", () => {
+    $$("[data-ordem]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    desenharGrupos(b.dataset.ordem);
+  }));
+  desenharGrupos("peso");
+  const BANCADAS = [["Base do governo", 210, "#2f8f62"], ["Centro negociável", 120, "#8a8f99"], ["Oposição", 183, "#b3283b"]];
+  $("#bancadas").innerHTML = BANCADAS.map(([n, v, c]) => `<span style="width:${v / 513 * 100}%;background:${c}" title="${n}: ${v}">${v}</span>`).join("");
+  $("#bancadas-leg").textContent = BANCADAS.map(([n, v]) => `${n}: ${v}`).join(" · ") + " (513 deputados)";
+
+  // ---------- orçamento ----------
+  const ENTRA = [
+    { n: "Imposto sobre o consumo", v: 1240, conta: "26,5% × R$ 5,6 tri de consumo − 17% que escapam" },
+    { n: "Contribuição sobre os salários", v: 850, conta: "28% × R$ 3,9 tri de salários formais − 22% que escapam", semlei: true },
+    { n: "Imposto sobre a renda das pessoas", v: 550, conta: "alíquotas até 27,5% sobre R$ 4,4 tri de renda; 70% isento" },
+    { n: "Imposto sobre o lucro das empresas", v: 420, conta: "34% × R$ 1,5 tri de lucro − 18% que escapam" },
+    { n: "Imposto sobre imóveis", v: 120, conta: "0,5% × R$ 24 tri em imóveis" },
+    { n: "Imposto sobre dividendos", v: 50, conta: "10% × R$ 600 bi distribuídos − 15% que escapam" },
+    { n: "Transações bancárias", v: 40, conta: "0,38% × R$ 11 tri movimentados" },
+    { n: "Heranças", v: 15, conta: "8% × R$ 220 bi herdados no ano − 15% que escapam" },
+    { n: "Outras receitas", v: 515, conta: "royalties, taxas, empresas estatais", semlei: true },
+  ];
+  const SAI = [
+    { n: "Aposentadorias e pensões", v: 1300, conta: "40 milhões de benefícios × R$ 2.700 por mês", semlei: true },
+    { n: "Salário dos servidores", v: 720, conta: "12 milhões de servidores × R$ 5.000 por mês", semlei: true },
+    { n: "Juros da dívida", v: 879, conta: "R$ 9,3 tri × 9,5% de juro médio" },
+    { n: "Educação (piso)", v: 550, conta: "17,5% da receita" },
+    { n: "Saúde (piso)", v: 480, conta: "13,7% da receita" },
+    { n: "Gasto com defesa", v: 192, conta: "1,6% do PIB" },
+    { n: "Transferência de renda", v: 168, conta: "21 milhões de famílias × R$ 670 por mês" },
+    { n: "Investimento em infraestrutura", v: 120, conta: "1% do PIB" },
+    { n: "Outras verbas", v: 0, conta: "polícias, pesquisa, habitação, remédios…" },
+  ];
+  // fecha a conta do lado do gasto com os totais da partida (R$ 4,6 tri)
+  const somaSai = SAI.reduce((s, l) => s + l.v, 0);
+  SAI[SAI.length - 1].v += 4600 - somaSai;
+  const maxV = Math.max(...ENTRA.map(l => l.v), ...SAI.map(l => l.v));
+  const linha = (l, cor) => `<button class="linha" title="Abrir a lei">
+      <span class="nome">${l.n}${l.semlei ? '<span class="sem-lei">SEM LEI</span>' : ""}</span>
+      <span class="rs num">R$ ${fmt(l.v / 1000, 2)} tri</span>
+      <span class="barra-l"><i style="width:${l.v / maxV * 100}%;background:${cor}"></i></span>
+      <span class="conta">${l.conta}</span>
+    </button>`;
+  $("#entra").innerHTML = ENTRA.map(l => linha(l, "var(--bom)")).join("");
+  $("#sai").innerHTML = SAI.map(l => linha(l, l.n.startsWith("Juros") ? "var(--ruim)" : "var(--azul)")).join("");
+
+  // ---------- economia ----------
+  // setores e quanto cada um vende para os outros (R$ bi por ano, ilustrativo)
+  const SETORES = {
+    energia:   { n: "Energia",            col: 0, prod: 92, emp: 0.6, causas: [["Tarifa e matriz", -6, "Matriz energética"], ["Linhas de transmissão", -3, "Orçamento de expansão elétrica"], ["Chuvas nos reservatórios", 2, null]] },
+    mineracao: { n: "Mineração e petróleo", col: 0, prod: 118, emp: 0.5, causas: [["Preço internacional", 6, null], ["Regime do petróleo", 3, "Regime do petróleo e mineração"], ["Licenciamento lento", -4, "Licenciamento ambiental"]] },
+    agro:      { n: "Agropecuária",       col: 0, prod: 108, emp: 8.2, causas: [["Crédito rural", 4, "Crédito rural e assistência técnica"], ["Estradas e portos", -7, "Investimento em infraestrutura"], ["Câmbio", 3, null]] },
+    industria: { n: "Indústria",          col: 1, prod: 84, emp: 11.4, causas: [["Energia cara", -6, "Matriz energética"], ["Juros altos (Selic 15%)", -8, "Mandato do banco central"], ["Falta de qualificação", -4, "Ensino técnico e profissional"], ["Tarifas de importação", 3, "Tarifas de importação"]] },
+    construcao:{ n: "Construção",         col: 1, prod: 79, emp: 7.1, causas: [["Juros altos (Selic 15%)", -9, "Mandato do banco central"], ["Programa de habitação", 4, "Programa de habitação popular"], ["Licença para obras", -3, "Licença para abrir negócio"]] },
+    comercio:  { n: "Comércio",           col: 2, prod: 96, emp: 19.5, causas: [["Consumo das famílias", 3, null], ["Imposto sobre o consumo", -4, "Imposto sobre o consumo"], ["Informalidade", -3, "Regime simplificado para pequenas empresas"]] },
+    servicos:  { n: "Serviços",           col: 2, prod: 101, emp: 38.0, causas: [["Internet e tecnologia", 4, "Investimento em pesquisa e desenvolvimento"], ["Qualificação", -3, "Ensino técnico e profissional"], ["Burocracia", -2, "Licença para abrir negócio"]] },
+    familias:  { n: "Famílias",           col: 3 },
+    governo:   { n: "Governo",            col: 3 },
+    exportacao:{ n: "Exportação",         col: 3 },
+  };
+  const FLUXOS = [
+    ["energia", "industria", 260], ["energia", "servicos", 140], ["energia", "familias", 180],
+    ["mineracao", "industria", 300], ["mineracao", "exportacao", 420], ["mineracao", "energia", 120],
+    ["agro", "industria", 380], ["agro", "exportacao", 520], ["agro", "comercio", 160],
+    ["industria", "comercio", 980], ["industria", "construcao", 260], ["industria", "exportacao", 380],
+    ["construcao", "familias", 240], ["construcao", "governo", 160],
+    ["comercio", "familias", 1350], ["comercio", "governo", 120],
+    ["servicos", "familias", 2100], ["servicos", "governo", 700], ["servicos", "comercio", 300],
+  ];
+  const COLS = ["DE ONDE VEM", "TRANSFORMA", "DISTRIBUI", "PARA QUEM"];
+  const X = [20, 270, 520, 770], LARG = 170, TOPO = 36, ALT = 390, GAP = 14;
+  // altura do nó = maior entre o que entra e o que sai
+  const total = id => Math.max(FLUXOS.filter(f => f[0] === id).reduce((s, f) => s + f[2], 0), FLUXOS.filter(f => f[1] === id).reduce((s, f) => s + f[2], 0));
+  const escalaCol = c => { const ids = Object.keys(SETORES).filter(k => SETORES[k].col === c); const soma = ids.reduce((s, k) => s + total(k), 0); return (ALT - GAP * (ids.length - 1)) / soma; };
+  const ESC = Math.min(...[0, 1, 2, 3].map(escalaCol));
+  const pos = {};
+  [0, 1, 2, 3].forEach(c => {
+    let y = TOPO;
+    Object.keys(SETORES).filter(k => SETORES[k].col === c).forEach(k => { const h = Math.max(22, total(k) * ESC); pos[k] = { x: X[c], y, h, sai: y, entra: y }; y += h + GAP; });
+  });
+  const corProd = p => p >= 100 ? "var(--bom)" : p >= 90 ? "var(--atencao)" : "var(--ruim)";
+  const produtividade = k => { const s = SETORES[k]; return s.prod === undefined ? null : s.prod; };
+
+  let ativo = "industria";
+  function desenharCadeia() {
+    Object.values(pos).forEach(p => { p.sai = p.y; p.entra = p.y; });
+    const caminhos = FLUXOS.map(([a, b, v]) => {
+      const h = v * ESC, pa = pos[a], pb = pos[b];
+      const y1 = pa.sai + h / 2, y2 = pb.entra + h / 2; pa.sai += h; pb.entra += h;
+      const x1 = pa.x + LARG, x2 = pb.x, m = (x1 + x2) / 2;
+      const p = produtividade(a);
+      const realce = ativo === a || ativo === b ? .7 : .28;
+      return `<path class="fluxo" d="M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}" stroke="${corProd(p)}" stroke-width="${Math.max(1.5, h)}" style="opacity:${realce}"><title>${SETORES[a].n} → ${SETORES[b].n}: R$ ${v} bi/ano</title></path>`;
+    }).join("");
+    const nos = Object.entries(pos).map(([k, p]) => {
+      const s = SETORES[k], pr = produtividade(k);
+      const sub = pr === null ? `recebe R$ ${fmt(total(k) / 1000, 1)} tri` : `produtividade ${Math.round(pr)}`;
+      return `<g class="no${ativo === k ? " ativo" : ""}" data-setor="${k}" tabindex="${pr === null ? -1 : 0}">
+        <rect class="caixa" x="${p.x}" y="${p.y}" width="${LARG}" height="${p.h}" rx="5" fill="var(--papel-2)"/>
+        ${pr === null ? "" : `<rect x="${p.x}" y="${p.y}" width="5" height="${p.h}" rx="2" fill="${corProd(pr)}" stroke="none"/>`}
+        <text x="${p.x + 12}" y="${p.y + Math.min(p.h / 2, 18) + 1}">${s.n}</text>
+        ${p.h > 34 ? `<text class="sub" x="${p.x + 12}" y="${p.y + Math.min(p.h / 2, 18) + 16}">${sub}</text>` : ""}
+      </g>`;
+    }).join("");
+    const cols = COLS.map((t, i) => `<text class="coluna" x="${X[i]}" y="20">${t}</text>`).join("");
+    $("#cadeia").innerHTML = cols + caminhos + nos;
+    $$("#cadeia .no").forEach(g => {
+      const k = g.dataset.setor; if (produtividade(k) === null) return;
+      g.addEventListener("click", () => escolher(k));
+      g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") escolher(k); });
+    });
+  }
+
+  // histórico para as minis curvas
+  const HIST = {}; Object.keys(SETORES).forEach(k => { if (SETORES[k].prod !== undefined) HIST[k] = Array.from({ length: 16 }, (_, i) => SETORES[k].prod - (15 - i) * .15 + Math.sin(i + k.length) * .8); });
+  function spark(k) {
+    const h = HIST[k], mn = Math.min(...h) - .5, mx = Math.max(...h) + .5;
+    const pts = h.map((v, i) => `${(i / (h.length - 1)) * 100},${24 - ((v - mn) / (mx - mn)) * 22}`).join(" ");
+    return `<svg class="spark" viewBox="0 0 100 26" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${corProd(SETORES[k].prod)}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+  }
+  function desenharSetores() {
+    $("#setores").innerHTML = Object.keys(HIST).map(k => {
+      const s = SETORES[k], h = HIST[k], d = h[h.length - 1] - h[h.length - 5];
+      return `<button class="setor${ativo === k ? " ativo" : ""}" data-s="${k}">
+        <span class="n">${s.n}</span>
+        <span style="display:flex;justify-content:space-between"><b class="num" style="color:${corProd(s.prod)}">${Math.round(s.prod)}</b><span class="nota num">${d >= 0 ? "▲" : "▼"} ${fmt(Math.abs(d), 1)} no ano</span></span>
+        ${spark(k)}
+      </button>`;
+    }).join("");
+    $$("#setores .setor").forEach(b => b.addEventListener("click", () => escolher(b.dataset.s)));
+  }
+  function desenharDetalhe() {
+    const s = SETORES[ativo];
+    const soma = s.causas.reduce((t, c) => t + c[1], 0);
+    const vende = FLUXOS.filter(f => f[0] === ativo).reduce((t, f) => t + f[2], 0);
+    const compra = FLUXOS.filter(f => f[1] === ativo).reduce((t, f) => t + f[2], 0);
+    $("#detalhe").innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+        <h2 style="font-size:1.15rem">${s.n}</h2>
+        <span class="humor ${s.prod >= 100 ? "h-bom" : s.prod >= 90 ? "h-meio" : "h-ruim"}">produtividade ${Math.round(s.prod)}</span>
+      </div>
+      <div class="fatos num">
+        <div><span>Vende por ano</span><b>R$ ${fmt(vende / 1000, 2)} tri</b></div>
+        <div><span>Compra de outros setores</span><b>R$ ${fmt(compra / 1000, 2)} tri</b></div>
+        <div><span>Empregos</span><b>${fmt(s.emp, 1)} mi</b></div>
+        <div><span>Lucro sobre vendas</span><b>${fmt(4 + s.prod / 20, 1)}%</b></div>
+      </div>
+      <p class="olho">Por que está assim</p>
+      <div class="motivos">${s.causas.map(([nome, v, lei]) => `
+        <div class="motivo">
+          <span>${nome}${lei ? `<br><span class="lei-link">↳ lei: ${lei}</span>` : ""}</span>
+          <span class="v num" style="color:${v >= 0 ? "var(--bom)" : "var(--ruim)"}">${v > 0 ? "+" : "−"}${Math.abs(v)}</span>
+          <span class="b"><i style="${v >= 0 ? "left:50%" : `right:50%`};width:${Math.abs(v) * 4}%;background:${v >= 0 ? "var(--bom)" : "var(--ruim)"}"></i></span>
+        </div>`).join("")}
+      </div>
+      <p class="nota">Soma dos motivos: <b class="num">${soma > 0 ? "+" : "−"}${Math.abs(soma)}</b> pontos em relação à média de 2025 (100). Clicar numa lei abre a janela dela.</p>`;
+  }
+  function escolher(k) { ativo = k; desenharCadeia(); desenharSetores(); desenharDetalhe(); }
+
+  // "tempo real": a cada segundo um turno, a produtividade anda devagar
+  let turno = 1, tocando = true, relogio = null;
+  const reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function passo() {
+    turno++;
+    Object.keys(HIST).forEach(k => {
+      const s = SETORES[k], alvo = 100 + s.causas.reduce((t, c) => t + c[1], 0);
+      s.prod += (alvo - s.prod) * .04 + (Math.random() - .5) * .6;
+      HIST[k].push(s.prod); HIST[k].shift();
+    });
+    $("#relogio").textContent = `turno ${turno}`;
+    desenharCadeia(); desenharSetores(); desenharDetalhe();
+  }
+  function ligar(v) {
+    tocando = v; $("#tocar").setAttribute("aria-pressed", String(v)); $("#tocar").textContent = v ? "⏸ Pausar" : "▶ Andar";
+    clearInterval(relogio); if (v) relogio = setInterval(passo, 1200);
+  }
+  $("#tocar").addEventListener("click", () => ligar(!tocando));
+  escolher("industria");
+  ligar(!reduz);
+})();
+</script>
