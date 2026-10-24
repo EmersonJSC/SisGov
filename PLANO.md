@@ -41,7 +41,7 @@ mecânica ganha só testes de comportamento; os testes de números exatos da
 economia ficam desligados até a calibragem final. `npm run check` completo
 uma vez por mecânica terminada.
 
-1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), proposta): absorve A2, A3 e as fases 5–6 do orçamento
+1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): absorve A2, A3 e as fases 5–6 do orçamento
 2. [ ] Índices essenciais e população
 3. [ ] Grupos com radicais e lealistas
 4. [ ] Desgaste do partido

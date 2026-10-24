@@ -1,6 +1,6 @@
 # Mecânica 1 da nova ordem: Economia em reais e caixa do governo
 
-> **Status: PROPOSTA (24/out/2026), para o autor aprovar.** Junta o que estava
+> **Status: APROVADA (24/out/2026).** Decisões do autor na seção 7. Junta o que estava
 > espalhado: A2 e A3 (travas das leis de valor), fases 5 e 6 do
 > [orçamento](orcamento.md) e o pedaço da população que o caixa precisa.
 > Tela de referência: aba Orçamento de
@@ -28,7 +28,9 @@ para onde vai cada real, e nenhum real fica sem dono.
 | **Salários (massa salarial)** | ocupados × salário médio | produtividade, salário mínimo, custo do trabalho, informalidade |
 | **Lucros** | PIB − salários − impostos sobre o consumo | o que sobra dos salários; produtividade e confiança |
 | **Consumo das famílias** | renda das famílias × quanto gastam | índice Consumo (já existe), crédito, inflação |
-| **Patrimônio** | estoque: + poupança + valorização | juros, crédito, preço dos imóveis |
+| **Patrimônio em imóveis urbanos** | estoque: + construção + valorização | crédito, juros, renda, habitação |
+| **Patrimônio em terras** | estoque: + valorização | preço dos alimentos e das commodities, juros |
+| **Patrimônio financeiro** | estoque: + poupança + rendimento | juros, lucros, confiança, fuga de capitais |
 | **Mortes no ano** | população × taxa de mortalidade | saúde da população (já existe) |
 
 Os índices de hoje (Consumo, Produtividade, Desemprego, Investimento,
@@ -46,9 +48,10 @@ apagado.
 | Consumo | consumo das famílias |
 | Lucro das empresas | lucros |
 | Dividendos | parte dos lucros que é distribuída (cai quando a alíquota sobe) |
-| Imóveis urbanos, terras rurais | patrimônio em imóveis e em terras |
-| Heranças | patrimônio de quem morre no ano (mortes × patrimônio médio) |
-| Grandes fortunas | patrimônio dos mais ricos |
+| Imóveis urbanos | patrimônio em imóveis urbanos |
+| Terras rurais | patrimônio em terras |
+| Heranças | patrimônio (os três) de quem morre no ano: mortes × patrimônio por pessoa |
+| Grandes fortunas | parte do patrimônio (os três) que está com os mais ricos |
 | Transações bancárias | dinheiro que circula (PIB × giro do crédito) |
 
 **O que escapa** sobe com a alíquota: sonegação, informalidade, lucro guardado,
@@ -61,19 +64,24 @@ reage à economia.
 | Gasto | Conta | Lei |
 | --- | --- | --- |
 | Aposentadorias e pensões | beneficiários × benefício médio | existe (regras); o valor passa a sair da conta |
-| Salário dos servidores | servidores × salário médio | **nova**: quantidade e salário |
+| Salário dos servidores | servidores × salário médio | **duas leis novas**: Quantidade de servidores e Salário dos servidores |
 | Seguro-desemprego | desempregados cobertos × valor | **nova** (hoje está dentro de outra) |
 | Renda de idosos e pessoas com deficiência pobres | beneficiários × valor | **nova** como programa |
 | Pisos de saúde e educação | % da receita | existe |
 | Verbas e programas | o valor da lei, em reais | existem |
-| Juros da dívida | dívida × juro médio | não é lei: vem da dívida e dos juros básicos |
+| Juros da dívida | dívida × juro médio | não é lei: vem da dívida e da Selic |
 
 - **Sem trava por lei:** saem os tetos em % do PIB das verbas e o teto de 40%
   dos pisos. O piso que vem da Constituição (`pisoPorLei`) continua.
 - **Um limite só:** a soma dos gastos não passa de 100% do PIB.
-- **Verbas em reais e inflação:** a verba vale o número que está na lei. Com
-  inflação, ela compra menos a cada ano, e a janela da lei mostra isso ("vale
-  4,8% menos que há um ano").
+- **Verbas em reais e inflação:** a verba vale o número que está na lei, e só
+  o jogador reajusta. Com inflação, ela compra menos a cada ano: o efeito da
+  verba nos índices cai na mesma proporção, e a janela da lei mostra isso
+  ("compra 4,8% menos que há um ano").
+- **Juros básicos sempre à vista:** a lei "Juros básicos" aparece sempre. Com o
+  banco central autônomo, fica travada e mostra o valor que o banco decidiu e
+  por quê ("15% ao ano: a inflação está acima da meta"). Com o banco
+  subordinado, o jogador decide.
 
 ### 2.4 Sobra e falta
 
@@ -99,7 +107,7 @@ abre a lei; ao passar o mouse aparece a conta ("10% × R$ 600 bi distribuídos,
 ## 4. No código
 
 - **Conteúdo (rede):** estoques novos `pib_nominal`, `populacao`,
-  `patrimonio`; calculados `ocupados`, `massa_salarial`, `lucros`,
+  `patrimonio_imoveis`, `patrimonio_terras`, `patrimonio_financeiro`; calculados `ocupados`, `massa_salarial`, `lucros`,
   `consumo_reais`, `mortes`; cada imposto troca a curva "alíquota → % do PIB"
   por alíquota × base × (1 − escape).
 - **País:** `economia.json` ganha os números de partida (população, ocupados,
@@ -109,18 +117,19 @@ abre a lei; ao passar o mouse aparece a conta ("10% × R$ 600 bi distribuídos,
 - **Tela:** aba Orçamento (fase 6). O topo novo e as outras abas ficam para a
   versão 2.
 
-## 5. Fases
+## 5. Fases (a ordem de construir, porque cada uma usa a anterior)
 
-1. PIB em reais e população mínima (habitantes, ocupados, mortes).
-2. Bases: salários, lucros, consumo, patrimônio.
-3. Impostos pela base. Contribuição sobre os salários vira lei própria.
-4. Gastos com lei: servidores, seguro-desemprego, renda de idosos pobres;
-   previdência pela conta; saem as travas por lei; entra o limite de 100% do PIB.
-5. Sobra e fundo soberano.
-6. Tela de orçamento.
+| Fase | O que se constrói | O que o jogador passa a ver |
+| --- | --- | --- |
+| 1. Números do país | PIB em reais, população, ocupados, mortes | o PIB crescendo em reais; a população no país |
+| 2. De onde se cobra | salários, lucros, consumo e os três patrimônios, em reais | nada ainda: são as bases da fase 3 |
+| 3. Impostos | cada imposto passa a cobrar da sua base; contribuição sobre salários vira lei | a arrecadação de cada imposto muda com a economia |
+| 4. Gastos | leis novas (quantidade e salário dos servidores, seguro-desemprego, renda de idosos pobres); previdência pela conta; saem as travas; limite de 100% do PIB; juros básicos sempre à vista | todo gasto tem lei; nenhuma verba trava |
+| 5. Sobra | destino da sobra e fundo soberano | a sobra vira fundo ou paga dívida |
+| 6. Tela | aba Orçamento da amostra | de onde vem e para onde vai cada real |
 
-Cada fase: implementar, testes de comportamento, `npm run check` (GPT),
-commit. Sem recalibrar números até o fim do ciclo de jogo.
+Cada fase: implementar, testes de comportamento, `npm run check`, commit.
+Sem recalibrar números até o fim do ciclo de jogo.
 
 ## 6. Testes (comportamento)
 
@@ -134,11 +143,11 @@ commit. Sem recalibrar números até o fim do ciclo de jogo.
   continua.
 - Com sobra, o fundo soberano cresce na parte que a lei manda.
 
-## 7. Para o autor decidir
+## 7. Decisões do autor (24/out)
 
-1. **Servidores:** uma lei com dois controles (quantidade e salário) ou duas
-   leis?
-2. **Verbas e inflação:** a verba perde valor sozinha (o jogador reajusta)
-   ou existe uma lei "reajustar as verbas pela inflação"?
-3. **Patrimônio:** um número só ou dividido entre imóveis, terras e
-   financeiro (para os impostos de imóveis, terras e fortunas)?
+1. **Nunca uma lei com dois controles:** servidores são duas leis
+   (quantidade e salário).
+2. **Verbas e inflação:** o jogador reajusta por conta própria; não há
+   reajuste automático.
+3. **Patrimônio dividido** em imóveis urbanos, terras e financeiro, para cada
+   imposto sair da sua conta.
