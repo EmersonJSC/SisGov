@@ -111,7 +111,12 @@ describe("SG159 — contas sem furos", () => {
   });
 
   it("o teto de cada lei é o mesmo na tela e na partida (N1)", () => {
-    const partida = nova();
+    // A lei de aumento real só pode ser testada quando o reajuste fica a
+    // cargo de votação anual, como exige o próprio conteúdo da lei.
+    const inicio = nova();
+    const liberada = mudarLei(inicio, "formula-do-salario-minimo", 0);
+    if (!liberada.ok) throw new Error(liberada.erros.join(" "));
+    const partida = liberada.value;
     for (const lei of verPartida(partida).leis) {
       if (lei.opcoes || lei.maximo === undefined) continue;
       expect(mudarLei(partida, lei.id, lei.maximo).ok, lei.id).toBe(true);
