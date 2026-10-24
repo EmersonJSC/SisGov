@@ -746,6 +746,7 @@ export function expandirPressao(
   });
   const gruposDePressao: PressureGroupsManifest = {
     niveis: pressao.niveis,
+    turno0: pais.turno0,
     secoes: pressao.secoes,
     grupos: mapa,
     patrocinadores: interesses,

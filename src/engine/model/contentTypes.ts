@@ -117,6 +117,8 @@ export type CongressManifest = {
 export type PressureGroupsManifest = {
   /** Nome de cada nível, do 0 ao último. */
   niveis: readonly string[];
+  /** Nível inicial de cada grupo, definido pelo país para o turno 0. */
+  turno0: Readonly<Record<string, number>>;
   secoes: readonly { id: string; nome: string }[];
   grupos: readonly PressureGroupManifest[];
   patrocinadores: readonly {

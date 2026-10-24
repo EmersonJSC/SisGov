@@ -66,7 +66,7 @@ function levelOf(
   return Math.round(values[group.nivel] ?? 0);
 }
 
-/** Estado do turno 0: os níveis que a rede deu. */
+/** Estado do turno 0: os níveis definidos pelo país. */
 export function createPressureState(
   content: ResolvedPackage,
   values: Readonly<Record<string, number>>,
@@ -75,7 +75,10 @@ export function createPressureState(
   if (!config) return undefined;
   return {
     levels: Object.fromEntries(
-      config.grupos.map((group) => [group.id, levelOf(group, values)]),
+      config.grupos.map((group) => [
+        group.id,
+        config.turno0[group.id] ?? levelOf(group, values),
+      ]),
     ),
     changes: [],
     revealed: [],
