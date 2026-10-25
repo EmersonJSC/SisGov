@@ -1397,10 +1397,9 @@ export function DocumentoBolha({
           </span>
         ) : null}
       </div>
-      {bolha.medida ? (
+      {bolha.medida?.convertida ? (
         <p className="nota medida-boletim">
-          {bolha.medida.convertida ? `Em ${bolha.medida.unidade}. ` : ""}
-          Fonte: {bolha.medida.fontes.join("; ")}.
+          Em {bolha.medida.unidade}.
         </p>
       ) : null}
       <Regua bolha={bolha} />

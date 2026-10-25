@@ -209,7 +209,6 @@ export type VisaoBolha = Readonly<{
   medida?: Readonly<{
     valor: number;
     unidade: string;
-    fontes: readonly string[];
     /** Tem balizas: o valor real difere dos pontos do motor. */
     convertida: boolean;
     /** Medida real nos pontos 0 e 100 do motor (só quando convertida). */

@@ -315,7 +315,6 @@ export function verPartida(partida: Partida): VisaoPartida {
               medida: {
                 valor: valorNaMedida(m, values[variable.id] ?? 0),
                 unidade: m.unidade,
-                fontes: m.fontes ?? [],
                 convertida: m.zero !== undefined,
                 ...(m.zero !== undefined ? { zero: m.zero, cem: m.cem } : {}),
               },

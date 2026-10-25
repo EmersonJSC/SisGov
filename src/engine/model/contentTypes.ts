@@ -250,7 +250,7 @@ export type VariableDefinition = {
    * mundo real. O motor segue em 0 a 100; `zero` e `cem` são a medida real
    * nesses dois pontos (uma reta; `zero` maior que `cem` inverte). Sem os
    * dois, o valor do motor já está na unidade. `tecnico`: estado interno sem
-   * estatística real (aprovação, base); dispensa fontes.
+   * estatística real (aprovação, base).
    */
   medida?: VariableMeasure;
   /**
@@ -264,7 +264,6 @@ export type VariableMeasure = {
   unidade: string;
   zero?: number;
   cem?: number;
-  fontes?: string[];
   tecnico?: boolean;
 };
 

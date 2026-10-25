@@ -27,24 +27,24 @@ const mensagens = (r: ReturnType<typeof variaveis>) =>
   r.ok ? [] : r.diagnostics.map((d) => d.message);
 
 describe("medida real do índice (V1-07)", () => {
-  it("aceita medida com balizas e fonte, sem balizas, e técnica", () => {
+  it("aceita medida com unidade, com balizas opcionais, e técnica", () => {
     for (const medida of [
-      { unidade: "homicídios por 100 mil", zero: 0, cem: 60, fontes: ["SIM"] },
-      { unidade: "% do PIB", fontes: ["Banco Central"] },
+      { unidade: "homicídios por 100 mil", zero: 0, cem: 60 },
+      { unidade: "% do PIB" },
       { unidade: "folga política", tecnico: true },
     ])
       expect(mensagens(variaveis(medida))).toEqual([]);
   });
 
-  it("recusa medida sem fonte, com uma baliza só ou em situação", () => {
-    expect(mensagens(variaveis({ unidade: "x", zero: 0, cem: 1 }))).toContain(
-      "Uma medida real precisa de pelo menos uma fonte.",
+  it("recusa medida sem unidade, com uma baliza só ou em situação", () => {
+    expect(mensagens(variaveis({ zero: 0, cem: 1 }))).toContain(
+      "Deve ser um texto não vazio.",
     );
     expect(
-      mensagens(variaveis({ unidade: "x", zero: 0, fontes: ["a"] })),
+      mensagens(variaveis({ unidade: "x", zero: 0 })),
     ).toContain("Zero e cem vêm juntos, como números.");
     expect(
-      mensagens(variaveis({ unidade: "x", fontes: ["a"] }, "situacao")),
+      mensagens(variaveis({ unidade: "x" }, "situacao")),
     ).toContain("Só índices calculados e estoques têm medida.");
   });
 

@@ -1753,11 +1753,11 @@ function validateMeasure(
   if (type !== "calculado" && type !== "estoque")
     return void fail("Só índices calculados e estoques têm medida.");
   if (!isObject(value))
-    return void fail("Medida: { unidade, zero?, cem?, fontes?, tecnico? }.");
+    return void fail("Medida: { unidade, zero?, cem?, tecnico? }.");
   validateKnownFields(
     value,
     file,
-    ["unidade", "zero", "cem", "fontes", "tecnico"],
+    ["unidade", "zero", "cem", "tecnico"],
     diagnostics,
   );
   requiredString(value, file, `${path}.unidade`, diagnostics);
@@ -1774,12 +1774,6 @@ function validateMeasure(
   if (value.tecnico !== undefined && typeof value.tecnico !== "boolean")
     fail("Técnico é verdadeiro ou falso.");
   if (value.tecnico === true) return;
-  if (
-    !Array.isArray(value.fontes) ||
-    value.fontes.length === 0 ||
-    !value.fontes.every((fonte) => typeof fonte === "string" && fonte.trim())
-  )
-    fail("Uma medida real precisa de pelo menos uma fonte.");
 }
 
 function validateInitialState(
