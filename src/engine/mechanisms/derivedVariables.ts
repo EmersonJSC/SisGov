@@ -39,7 +39,10 @@ export function calculateDerivedValue(
       const value = values[factor.var];
       if (value === undefined) return undefined;
       const scaled = value * (factor.escala ?? 1);
-      product *= factor.complemento ? 1 - scaled : scaled;
+      if (factor.inverso) {
+        if (scaled === 0) return undefined;
+        product *= 1 / scaled;
+      } else product *= factor.complemento ? 1 - scaled : scaled;
     }
     total += product;
   }

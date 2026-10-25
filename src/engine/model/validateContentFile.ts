@@ -1601,7 +1601,7 @@ function validateVariables(
               validateKnownFields(
                 factor,
                 file,
-                ["var", "escala", "complemento"],
+                ["var", "escala", "complemento", "inverso"],
                 diagnostics,
               );
               requiredString(factor, file, `${factorAt}.var`, diagnostics);
@@ -1632,6 +1632,27 @@ function validateVariables(
                     `${factorAt}.complemento`,
                     "TIPO_INVALIDO",
                     "Complemento deve ser booleano.",
+                  ),
+                );
+              if (
+                factor.inverso !== undefined &&
+                typeof factor.inverso !== "boolean"
+              )
+                diagnostics.push(
+                  diagnostic(
+                    file,
+                    `${factorAt}.inverso`,
+                    "TIPO_INVALIDO",
+                    "Inverso deve ser booleano.",
+                  ),
+                );
+              if (factor.inverso === true && factor.complemento === true)
+                diagnostics.push(
+                  diagnostic(
+                    file,
+                    factorAt,
+                    "VALOR_INVALIDO",
+                    "Um fator não pode ser inverso e complemento ao mesmo tempo.",
                   ),
                 );
             });

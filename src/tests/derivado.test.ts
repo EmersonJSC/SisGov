@@ -4,10 +4,16 @@ import {
   calculateDerivedValue,
   orderDerivedVariables,
 } from "../engine/mechanisms/derivedVariables";
+import { validateContentFile } from "../engine";
 
 const derivado = (
   id: string,
-  fatores: { var: string; escala?: number; complemento?: boolean }[],
+  fatores: {
+    var: string;
+    escala?: number;
+    complemento?: boolean;
+    inverso?: boolean;
+  }[],
 ): VariableDefinition => ({
   id,
   tipo: "derivado",
@@ -58,5 +64,37 @@ describe("variáveis derivadas", () => {
     const cicloA = derivado("ciclo_a", [{ var: "ciclo_b" }]);
     const cicloB = derivado("ciclo_b", [{ var: "ciclo_a" }]);
     expect(orderDerivedVariables([cicloA, cicloB])).toBeUndefined();
+  });
+
+  it("divide por um fator inverso e não calcula com divisor zero", () => {
+    const node = derivado("resultado", [
+      { var: "a" },
+      { var: "b", inverso: true },
+    ]);
+    expect(calculateDerivedValue(node, { a: 10, b: 4 })).toBe(2.5);
+    expect(calculateDerivedValue(node, { a: 10, b: 0 })).toBeUndefined();
+  });
+
+  it("recusa fator inverso e complemento ao mesmo tempo", () => {
+    const node = derivado("resultado", [
+      { var: "a", inverso: true, complemento: true },
+    ]);
+    const result = validateContentFile(
+      "variaveis.json",
+      JSON.stringify({
+        id: "teste",
+        tipo: "variaveis",
+        versaoEsquema: 1,
+        variaveis: [node],
+      }),
+    );
+    expect(result).toMatchObject({
+      ok: false,
+      diagnostics: [
+        expect.objectContaining({
+          message: "Um fator não pode ser inverso e complemento ao mesmo tempo.",
+        }),
+      ],
+    });
   });
 });

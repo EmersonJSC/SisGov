@@ -205,6 +205,8 @@ export type VariableDefinition = {
         var: string;
         escala?: number;
         complemento?: boolean;
+        /** Divide pelo valor (1 / valor × escala) em vez de multiplicar. */
+        inverso?: boolean;
       }[];
     }[];
   };
