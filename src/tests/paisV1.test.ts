@@ -63,7 +63,11 @@ describe("configuração do país (V1-06)", () => {
     // vira estoque (salario_minimo_relativo) e a lei "Valor" sai.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
-    expect(Object.keys(valores)).toHaveLength(1713);
+    const novoNoDeImposto = (id: string) =>
+      id.startsWith("fator_partida_") || id.startsWith("arrecadacao_");
+    expect(
+      Object.keys(valores).filter((id) => !novoNoDeImposto(id)),
+    ).toHaveLength(1713);
     expect(p.game.execution.step).toBe(12);
     expect(valores.popularidade_governo).toBeCloseTo(48.268921186198554, 3);
     expect(valores.divida_publica).toBeCloseTo(77.62973597601184, 2);
@@ -80,7 +84,7 @@ describe("configuração do país (V1-06)", () => {
           "participacao_trabalho",
           "ocupados",
           "mortes_no_ano",
-        ].includes(id)
+        ].includes(id) || novoNoDeImposto(id)
           ? total
           : total + valor,
       0,

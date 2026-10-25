@@ -153,6 +153,318 @@
       "area": "Economia"
     },
     {
+      "id": "fator_partida_consumo",
+      "tipo": "controle",
+      "nome": "Fator de partida: consumo",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_renda_pessoas",
+      "tipo": "controle",
+      "nome": "Fator de partida: renda das pessoas",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_renda_empresas",
+      "tipo": "controle",
+      "nome": "Fator de partida: lucro das empresas",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_dividendos",
+      "tipo": "controle",
+      "nome": "Fator de partida: dividendos",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_heranca",
+      "tipo": "controle",
+      "nome": "Fator de partida: herança",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_fortunas",
+      "tipo": "controle",
+      "nome": "Fator de partida: grandes fortunas",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_imoveis_urbanos",
+      "tipo": "controle",
+      "nome": "Fator de partida: imóveis urbanos",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_terras",
+      "tipo": "controle",
+      "nome": "Fator de partida: terras rurais",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_transacoes",
+      "tipo": "controle",
+      "nome": "Fator de partida: transações bancárias",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "arrecadacao_consumo",
+      "tipo": "derivado",
+      "nome": "Arrecadação: consumo",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_sobre_consumo", "escala": 0.01 },
+              { "var": "consumo_familias" },
+              { "var": "fator_partida_consumo", "escala": 0.01 },
+              { "var": "aliquota_imposto_sobre_consumo", "escala": 0.0066666667, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_renda_pessoas",
+      "tipo": "derivado",
+      "nome": "Arrecadação: renda das pessoas",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_renda_pessoas", "escala": 0.01 },
+              { "var": "massa_salarial" },
+              { "var": "fator_partida_renda_pessoas", "escala": 0.01 },
+              { "var": "aliquota_imposto_renda_pessoas", "escala": 0.0076923077, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_renda_empresas",
+      "tipo": "derivado",
+      "nome": "Arrecadação: lucro das empresas",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_renda_empresas", "escala": 0.01 },
+              { "var": "lucros" },
+              { "var": "fator_partida_renda_empresas", "escala": 0.01 },
+              { "var": "aliquota_imposto_renda_empresas", "escala": 0.0111111111, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_dividendos",
+      "tipo": "derivado",
+      "nome": "Arrecadação: dividendos",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_tributacao_dividendos", "escala": 0.01 },
+              { "var": "lucros" },
+              { "var": "fator_partida_dividendos", "escala": 0.01 },
+              { "var": "aliquota_tributacao_dividendos", "escala": 0.01, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_heranca",
+      "tipo": "derivado",
+      "nome": "Arrecadação: herança",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_heranca", "escala": 0.01 },
+              { "var": "mortes_no_ano" },
+              { "var": "patrimonio_imoveis_urbanos" },
+              { "var": "populacao", "inverso": true },
+              { "var": "fator_partida_heranca", "escala": 0.01 },
+              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_heranca", "escala": 0.01 },
+              { "var": "mortes_no_ano" },
+              { "var": "patrimonio_terras" },
+              { "var": "populacao", "inverso": true },
+              { "var": "fator_partida_heranca", "escala": 0.01 },
+              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_heranca", "escala": 0.01 },
+              { "var": "mortes_no_ano" },
+              { "var": "patrimonio_financeiro" },
+              { "var": "populacao", "inverso": true },
+              { "var": "fator_partida_heranca", "escala": 0.01 },
+              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_fortunas",
+      "tipo": "derivado",
+      "nome": "Arrecadação: grandes fortunas",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
+              { "var": "patrimonio_imoveis_urbanos" },
+              { "var": "fator_partida_fortunas", "escala": 0.01 },
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
+              { "var": "patrimonio_terras" },
+              { "var": "fator_partida_fortunas", "escala": 0.01 },
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
+              { "var": "patrimonio_financeiro" },
+              { "var": "fator_partida_fortunas", "escala": 0.01 },
+              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_imoveis_urbanos",
+      "tipo": "derivado",
+      "nome": "Arrecadação: imóveis urbanos",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_propriedade_urbana_rural", "escala": 0.01 },
+              { "var": "patrimonio_imoveis_urbanos" },
+              { "var": "fator_partida_imoveis_urbanos", "escala": 0.01 },
+              { "var": "aliquota_imposto_propriedade_urbana_rural", "escala": 0.1666666667, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_terras",
+      "tipo": "derivado",
+      "nome": "Arrecadação: terras rurais",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_terras_rurais", "escala": 0.01 },
+              { "var": "patrimonio_terras" },
+              { "var": "fator_partida_terras", "escala": 0.01 },
+              { "var": "aliquota_imposto_terras_rurais", "escala": 0.1666666667, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_transacoes",
+      "tipo": "derivado",
+      "nome": "Arrecadação: transações bancárias",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_imposto_transacoes_financeiras", "escala": 0.01 },
+              { "var": "pib_nominal" },
+              { "var": "fator_partida_transacoes", "escala": 0.01 },
+              { "var": "aliquota_imposto_transacoes_financeiras", "escala": 0.3333333333, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "taxa_natalidade",
       "tipo": "controle",
       "nome": "Taxa de natalidade",
