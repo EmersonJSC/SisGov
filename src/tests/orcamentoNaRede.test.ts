@@ -12,6 +12,7 @@ import {
   type Partida,
 } from "../app/partida";
 import { calculateContribution } from "../engine";
+import { calculateDerivedValue } from "../engine/mechanisms/derivedVariables";
 
 function nova(): Partida {
   const criada = criarPartida({ ocorrencias: false });
@@ -58,27 +59,16 @@ describe("SG157 — orçamento na rede", () => {
 
   it("receita = alíquota × base: consumo menor, receita menor", () => {
     const partida = nova();
-    const relacao = partida.graph.relations.find(
-      (r) =>
-        r.targetId === "arrecadacao" &&
-        r.originId === "aliquota_imposto_sobre_consumo",
+    const variavel = partida.content.variables.variaveis.find(
+      (item) => item.id === "arrecadacao_consumo",
     )!;
-    // reforma da economia: curva de arrecadação; a base entra como escala
-    expect(relacao.scale?.fator).toBe("consumo");
-    expect(relacao.readsLevel).toBe(true);
-    const com = (consumo: number) => {
-      const r = calculateContribution(relacao, 26.5, (id) =>
-        id === "consumo" ? consumo : undefined,
-      );
-      if (!r.ok) throw new Error(r.diagnostics[0].message);
-      return r.value.value;
-    };
-    // mecânica 4 (2.2): só 30% da receita acompanha a base; consumo pela
-    // metade tira 15% da receita, não 50%
-    expect(relacao.scale?.peso).toBe(0.3);
-    expect(com(24)).toBeLessThan(com(48));
-    const ref = relacao.scale!.referencia;
-    expect(com(ref / 2)).toBeCloseTo(com(ref) * 0.85, 8);
+    const valores = partida.game.execution.values;
+    const original = calculateDerivedValue(variavel, valores)!;
+    const metade = calculateDerivedValue(variavel, {
+      ...valores,
+      consumo_familias: valores.consumo_familias / 2,
+    })!;
+    expect(metade / original).toBeCloseTo(0.5, 8);
   });
 
   it("déficit soma na dívida e superávit abate", () => {

@@ -4,6 +4,7 @@ import {
   type ResolvedPackage,
 } from "../../engine";
 import { efficacyNodeId } from "../../engine/model/lawNodes";
+import { calculateDerivedValue } from "../../engine/mechanisms/derivedVariables";
 import type {
   Partida,
   Contas,
@@ -90,6 +91,27 @@ export function saldoDasLeis(
       { relation, sinal },
     ]);
   }
+  const derivadosPorLei = new Map<
+    string,
+    (typeof content.variables.variaveis)[number][]
+  >();
+  for (const variavel of content.variables.variaveis) {
+    if (variavel.tipo !== "derivado" || !variavel.id.startsWith("arrecadacao_"))
+      continue;
+    const controles = new Set(
+      variavel.formula?.termos.flatMap((termo) =>
+        termo.fatores.map((fator) => fator.var),
+      ),
+    );
+    for (const controle of controles) {
+      const lei = lawByControl.get(controle);
+      if (lei)
+        derivadosPorLei.set(lei, [
+          ...(derivadosPorLei.get(lei) ?? []),
+          variavel,
+        ]);
+    }
+  }
   return (leiId, nivel) => {
     let saldo = 0;
     for (const { relation, sinal } of porLei.get(leiId) ?? []) {
@@ -105,6 +127,16 @@ export function saldoDasLeis(
       const contribution = calculateContribution(relation, origem, delivered);
       if (contribution.ok)
         saldo += (sinal * contribution.value.value * pib) / 100;
+    }
+    const controle = content.policies.find(
+      (policy) => policy.id === leiId,
+    )?.controle.variavel;
+    for (const variavel of derivadosPorLei.get(leiId) ?? []) {
+      const valor =
+        nivel !== undefined && controle !== undefined
+          ? calculateDerivedValue(variavel, { ...values, [controle]: nivel })
+          : values[variavel.id];
+      if (valor !== undefined) saldo += valor;
     }
     return saldo;
   };

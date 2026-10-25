@@ -129,44 +129,6 @@
       "unidade": "indice_0_100"
     },
     {
-      "id": "tributacao-dividendos--arrecadacao",
-      "alvo": "arrecadacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0.0],
-          [5, 0.20984859],
-          [10, 0.39760785],
-          [15, 0.56327779],
-          [20, 0.7068584],
-          [25, 0.82834969],
-          [30, 0.92775165],
-          [35, 1.00506429],
-          [40, 1.0602876],
-          [45, 1.09342159],
-          [50, 1.10446625],
-          [55, 1.09342159],
-          [60, 1.0602876],
-          [65, 1.00506429],
-          [70, 0.92775165],
-          [75, 0.82834969],
-          [80, 0.7068584],
-          [85, 0.56327779],
-          [90, 0.39760785],
-          [95, 0.20984859],
-          [100, 0.0]
-        ]
-      },
-      "atraso": 0,
-      "leitura": "nivel",
-      "escala": {
-        "fator": "pib",
-        "referencia": 44.730626,
-        "peso": 0.3
-      },
-      "unidade": "percentual_pib"
-    },
-    {
       "id": "tributacao-dividendos--grupo-ricos",
       "alvo": "grupo_ricos",
       "mecanismo": "afim",

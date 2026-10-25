@@ -465,6 +465,27 @@
       }
     },
     {
+      "id": "receita_impostos_pib",
+      "tipo": "derivado",
+      "nome": "Arrecadação dos impostos",
+      "unidade": "percentual_pib",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_consumo", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_pessoas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_empresas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_dividendos", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_heranca", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_fortunas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_imoveis_urbanos", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_terras", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_transacoes", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] }
+        ]
+      }
+    },
+    {
       "id": "taxa_natalidade",
       "tipo": "controle",
       "nome": "Taxa de natalidade",

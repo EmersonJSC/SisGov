@@ -61,19 +61,22 @@ describe("configuração do país (V1-06)", () => {
     // imóveis urbanos e terras rurais, e o turno 0 ancorado nos índices
     // declarados (ajusteDoContexto, npm run pais:ancorar). Salário mínimo
     // vira estoque (salario_minimo_relativo) e a lei "Valor" sai.
+    // Fase 3 (25/out): arrecadação por imposto, turno 0 reancorado.
     const p = (criarPartida({ semente: 7 }) as { value: Partida }).value;
     const valores = p.game.execution.values;
     const novoNoDeImposto = (id: string) =>
-      id.startsWith("fator_partida_") || id.startsWith("arrecadacao_");
+      id.startsWith("fator_partida_") ||
+      id.startsWith("arrecadacao_") ||
+      id === "receita_impostos_pib";
     expect(
       Object.keys(valores).filter((id) => !novoNoDeImposto(id)),
     ).toHaveLength(1713);
     expect(p.game.execution.step).toBe(12);
-    expect(valores.popularidade_governo).toBeCloseTo(48.268921186198554, 3);
-    expect(valores.divida_publica).toBeCloseTo(77.62973597601184, 2);
+    expect(valores.popularidade_governo).toBeCloseTo(48.27415211714053, 3);
+    expect(valores.divida_publica).toBeCloseTo(77.65418456800474, 2);
     expect(valores.inflacao).toBeCloseTo(4.829895663010673, 2);
     expect(valores.desemprego).toBeCloseTo(6.201094923916466, 2);
-    expect(valores.pib_nominal).toBeCloseTo(12033595.099145133, 3);
+    expect(valores.pib_nominal).toBeCloseTo(12033602.074994506, 3);
     const soma = Object.entries(valores).reduce(
       (total, [id, valor]) =>
         [
@@ -89,7 +92,7 @@ describe("configuração do país (V1-06)", () => {
           : total + valor,
       0,
     );
-    expect(soma).toBeCloseTo(75477047.12904301, 3);
+    expect(soma).toBeCloseTo(75477095.94204544, 3);
     expect(p.content.policies).toHaveLength(226);
     expect(p.content.events).toHaveLength(188);
     expect(p.content.dilemmas).toHaveLength(91);

@@ -3,5 +3,17 @@
   "economia": {
     "pibAnual": 12000000
   },
+  "arrecadacaoDePartida": {
+    "consumo": 14.02497564,
+    "renda_pessoas": 2.98867351,
+    "renda_empresas": 4.46112912,
+    "dividendos": 0.39760785,
+    "heranca": 0.15108825,
+    "fortunas": 0,
+    "imoveis_urbanos": 0.94431235,
+    "terras": 0.05,
+    "transacoes": 0.59680652
+  },
+  "arrecadacaoDePartidaFonte": "curvas de arrecadação do jogo antes da fase 3 (25/out)",
   "limitesProprios": []
 }
