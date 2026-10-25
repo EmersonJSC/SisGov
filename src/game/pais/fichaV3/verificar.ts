@@ -73,21 +73,6 @@ export function verificarFicha(
     if (typeof ficha[campo] !== "string" || ficha[campo].trim() === "")
       push(campo, `A ficha precisa de ${campo}.`, "CAMPO_AUSENTE");
 
-  // Fonte obrigatória, com link.
-  const fontes = Array.isArray(ficha.fontes) ? ficha.fontes : [];
-  if (fontes.length === 0)
-    push(
-      "fontes",
-      "A ficha precisa de pelo menos uma fonte com link para os números.",
-      "CAMPO_AUSENTE",
-    );
-  fontes.forEach((fonte, i) => {
-    if (typeof fonte?.titulo !== "string" || fonte.titulo.trim() === "")
-      push(`fontes.${i}.titulo`, "A fonte precisa de título.", "CAMPO_AUSENTE");
-    if (typeof fonte?.url !== "string" || !/^https?:\/\//.test(fonte.url))
-      push(`fontes.${i}.url`, "A fonte precisa de um link http ou https.");
-  });
-
   // Nível e controle.
   if (!["constituicao", "lei", "decreto"].includes(ficha.nivel))
     push("nivel", "O nível deve ser constituicao, lei ou decreto.");

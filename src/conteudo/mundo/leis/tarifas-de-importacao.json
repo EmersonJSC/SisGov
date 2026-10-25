@@ -51,8 +51,7 @@
     "faixa": {
       "minimo": 0,
       "maximo": 40,
-      "unidade": "% % de tarifa média",
-      "valorReferencia": 13.35
+      "unidade": "% % de tarifa média"
     }
   },
   "dinheiro": {

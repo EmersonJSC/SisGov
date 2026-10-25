@@ -1,7 +1,6 @@
 /**
  * As leis do mundo valem para qualquer país (autor, 23/out): nome, frase,
- * rótulos e textos das opções não citam o país de referência. Só o campo
- * `exemplo` conta como é hoje lá.
+ * rótulos e textos das opções não citam o país de referência.
  */
 import { describe, expect, it } from "vitest";
 import { referenciaDePais } from "../game/pais/fichaV3/molde";
@@ -26,12 +25,13 @@ describe("leis globais", () => {
     ).toBeUndefined();
   });
 
-  it("nenhuma lei cita o país fora do exemplo", () => {
+  it("nenhuma lei cita o país", () => {
     const achados: string[] = [];
     for (const lei of Object.values(arquivos)) {
       const textos: [string, unknown][] = [
         ["nome", lei.nome],
         ["decide", lei.decide],
+        ["exemplo", lei.exemplo],
       ];
       const opcoes = (lei.controle as { opcoes?: Opcao[] })?.opcoes ?? [];
       for (const o of opcoes)

@@ -6,7 +6,6 @@
   "nome": "Programa de médicos no interior",
   "decide": "Define como o governo leva médicos para lugares onde eles não querem trabalhar.",
   "area": "saude",
-  "exemplo": "No Brasil: Mais Médicos, desde 2013.",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_programa_de_medicos_no_interior",

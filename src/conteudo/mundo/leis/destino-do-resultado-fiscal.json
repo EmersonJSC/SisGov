@@ -75,30 +75,5 @@
       },
       "atraso": 4
     }
-  ],
-  "historia": {
-    "opcoes": {
-      "pagar-a-divida": ["Estados Unidos"],
-      "dividir": ["Chile"],
-      "guardar": ["Noruega"]
-    },
-    "brasil": "O Fundo Soberano do Brasil foi criado em 2008 (Lei 11.887) para guardar parte do superávit; em 2018 o governo propôs extingui-lo e usar o saldo para abater a dívida (MP 830/2018)."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.887/2008, cria o Fundo Soberano do Brasil",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11887.htm",
-      "usadoPara": "caso brasileiro"
-    },
-    {
-      "titulo": "Senado Federal, sumário da MP 830/2018 (extinção do Fundo Soberano)",
-      "url": "https://www12.senado.leg.br/publicacoes/estudos-legislativos/tipos-de-estudos/sumarios-de-proposicoes/mpv830",
-      "usadoPara": "caso brasileiro"
-    },
-    {
-      "titulo": "Ministerio de Hacienda de Chile, Ley 20.128 de Responsabilidad Fiscal e fundos soberanos",
-      "url": "https://www.diarioconstitucional.cl/2025/10/18/gobierno-propone-nuevas-reglas-para-fortalecer-fondos-soberanos/",
-      "usadoPara": "opção dividir (regra que reparte o superávit entre fundos e dívida)"
-    }
   ]
 }

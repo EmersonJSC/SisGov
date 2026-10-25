@@ -6,7 +6,6 @@
   "nome": "Imposto sobre terras rurais",
   "decide": "Define a alíquota do imposto anual sobre sítios, fazendas e outras terras no campo.",
   "area": "contas-publicas",
-  "exemplo": "Hoje no país de referência: arrecada muito pouco (cerca de 0,03% do PIB), porque o próprio dono declara o valor da terra.",
   "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_terras_rurais",

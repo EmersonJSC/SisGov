@@ -29,21 +29,6 @@
     "nome": "Polícias",
     "camada": "alavanca"
   },
-  "historia": {
-    "brasil": "Verba definida todo ano na lei orçamentária, executada pelo Ministério da Justiça."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal, art. 144, § 1º (Polícia Federal)",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "existência do órgão"
-    },
-    {
-      "titulo": "Portal da Transparência, despesas por órgão",
-      "url": "https://portaldatransparencia.gov.br/",
-      "usadoPara": "faixa de gasto em % do PIB"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "crime_organizado",

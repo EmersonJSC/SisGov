@@ -75,12 +75,6 @@
     "nome": "Sistema de saúde",
     "camada": "constituicao"
   },
-  "fontes": [
-    {
-      "titulo": "Vinculação constitucional de parte da receita à saúde; a regra de cada país fica no estado inicial dele",
-      "url": ""
-    }
-  ],
   "efeitos": [
     {
       "id": "piso-de-gasto-em-saude--margem-manobra-governo",

@@ -463,7 +463,6 @@ export type PolicyLimits = {
 export type PolicyRange = {
   minimo: number;
   maximo: number;
-  valorReferencia?: number;
   unidade: string;
 };
 
@@ -515,7 +514,6 @@ export type PolicyFile = {
     "imposto" | "verba" | "programa" | "regra" | "constitucional" | "petrea";
   areaMundo?: string;
   decide?: string;
-  exemplo?: string;
   trava?: readonly {
     opcao: string;
     lei: string;
@@ -524,7 +522,7 @@ export type PolicyFile = {
     proibe?: true;
     opcoes?: readonly string[];
   }[];
-  publico?: { quem: string; pessoas: number };
+  publico?: { quem: string };
   area?: string;
   categoria?: string;
   fonte?: string;

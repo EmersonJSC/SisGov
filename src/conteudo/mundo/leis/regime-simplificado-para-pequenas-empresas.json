@@ -6,7 +6,6 @@
   "nome": "Imposto único para pequenas empresas",
   "decide": "Define se pequenos negócios pagam um imposto só, simples, sobre o faturamento.",
   "area": "economia-e-empresas",
-  "exemplo": "No Brasil: Simples Nacional e microempreendedor individual.",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_regime_simplificado_para_pequenas_empresas",

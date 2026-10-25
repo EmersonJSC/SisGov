@@ -6,7 +6,6 @@
   "nome": "Regra das contas",
   "decide": "Define o freio que a Constituição põe no gasto do governo.",
   "area": "contas-publicas",
-  "exemplo": "No Brasil: teto de gastos (2016) e arcabouço fiscal (2023).",
   "nivel": "constituicao",
   "controle": {
     "variavel": "nivel_regra_fiscal",

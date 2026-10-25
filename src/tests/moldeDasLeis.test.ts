@@ -195,7 +195,7 @@ describe("molde das leis (ficha v4)", () => {
     expect(campos({ ...imposto(), familia: "verba" })).toContain("dinheiro");
   });
 
-  it("programa diz quem recebe e quantas pessoas", () => {
+  it("programa diz quem recebe", () => {
     const p: FichaV4 = {
       ...imposto(),
       familia: "programa",
@@ -203,7 +203,7 @@ describe("molde das leis (ficha v4)", () => {
     };
     expect(campos(p)).toContain("publico");
     expect(
-      campos({ ...p, publico: { quem: "famílias pobres", pessoas: 1000 } }),
+      campos({ ...p, publico: { quem: "famílias pobres" } }),
     ).toEqual([]);
   });
 

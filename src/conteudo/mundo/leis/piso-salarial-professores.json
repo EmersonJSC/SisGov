@@ -61,24 +61,6 @@
     "nome": "Escola",
     "camada": "alavanca"
   },
-  "historia": {
-    "opcoes": {
-      "piso-nacional-minimo": ["Brasil"]
-    },
-    "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.738/2008, piso salarial profissional nacional do magistério",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
-      "usadoPara": "opção vigente no Brasil"
-    },
-    {
-      "titulo": "OCDE, Education at a Glance (salários de professores por país)",
-      "url": "https://www.oecd.org/education/education-at-a-glance/",
-      "usadoPara": "países por opção"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "aprendizagem",

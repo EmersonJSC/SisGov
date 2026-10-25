@@ -2722,7 +2722,7 @@ function validatePolicyLayerFields(
       validateKnownFields(
         range,
         file,
-        ["minimo", "maximo", "valorReferencia", "unidade"],
+        ["minimo", "maximo", "unidade"],
         diagnostics,
       );
       const minimum = requiredNumber(
@@ -2747,28 +2747,6 @@ function validatePolicyLayerFields(
             "O mínimo da faixa deve ser menor que o máximo.",
           ),
         );
-      if (range.valorReferencia !== undefined) {
-        const brazil = requiredNumber(
-          range,
-          file,
-          "controle.faixa.valorReferencia",
-          diagnostics,
-        );
-        if (
-          brazil !== undefined &&
-          minimum !== undefined &&
-          maximum !== undefined &&
-          (brazil < minimum || brazil > maximum)
-        )
-          diagnostics.push(
-            diagnostic(
-              file,
-              "controle.faixa.valorReferencia",
-              "VALOR_INVALIDO",
-              "O valor do Brasil deve ficar dentro da faixa.",
-            ),
-          );
-      }
     }
   }
   if (value.implantacaoTurnos !== undefined) {
@@ -2926,7 +2904,6 @@ function validatePolicy(
       "familia",
       "areaMundo",
       "decide",
-      "exemplo",
       "trava",
       "publico",
       ...quantityFields,

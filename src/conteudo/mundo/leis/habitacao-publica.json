@@ -36,32 +36,6 @@
     "nome": "Moradia",
     "camada": "lei"
   },
-  "historia": {
-    "opcoes": {
-      "aluguel-social": ["Áustria (Viena)", "Países Baixos"],
-      "financiamento": [
-        "Brasil (Minha Casa, Minha Vida, Lei 11.977/2009)",
-        "Chile (subsídio habitacional)"
-      ],
-      "venda-ao-morador": [
-        "Reino Unido (Housing Act 1980, direito de compra)",
-        "Singapura"
-      ]
-    },
-    "brasil": "O Minha Casa, Minha Vida (Lei 11.977/2009, refeito pela Lei 14.620/2023) subsidia o financiamento da casa própria."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 11.977/2009 (Minha Casa, Minha Vida)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11977.htm",
-      "usadoPara": "opção do Brasil"
-    },
-    {
-      "titulo": "Housing Act 1980 (Reino Unido)",
-      "url": "https://www.legislation.gov.uk/ukpga/1980/51/contents",
-      "usadoPara": "venda ao morador"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "deficit_habitacional",

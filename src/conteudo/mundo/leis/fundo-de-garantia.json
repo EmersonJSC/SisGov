@@ -6,7 +6,6 @@
   "nome": "Fundo de garantia",
   "decide": "Define como o trabalhador junta uma reserva para quando for demitido.",
   "area": "trabalho",
-  "exemplo": "No Brasil: Fundo de Garantia do Tempo de Serviço, com multa de 40%.",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_fundo_de_garantia",

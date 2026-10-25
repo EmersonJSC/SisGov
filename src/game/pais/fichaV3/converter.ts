@@ -85,7 +85,6 @@ export function converterFicha(
           decide: ficha.decide,
           familia: ficha.familia,
           ...(ficha.area ? { area: ficha.area, areaMundo: ficha.area } : {}),
-          ...(ficha.exemplo ? { exemplo: ficha.exemplo } : {}),
           ...(ficha.trava?.length ? { trava: ficha.trava } : {}),
           ...(ficha.publico ? { publico: ficha.publico } : {}),
           ...(ficha.implantacaoTurnos

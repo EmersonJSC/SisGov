@@ -8,7 +8,7 @@ import { verificarFicha, type ContextoDaFicha } from "./verificar";
 
 /**
  * Lei do mundo vale para qualquer país (autor, 23/out): nome, frase e textos
- * das opções não citam o país de referência; só o `exemplo` conta como é lá.
+ * das opções não citam o país de referência; os exemplos vão na pasta do país.
  */
 const REFERENCIAS_DE_PAIS: readonly RegExp[] = [
   /\bBrasil\b/i,
@@ -72,7 +72,6 @@ export function verificarMolde(
     descricao: ficha.decide,
     area: ficha.area ?? "centro",
     ministerio: ficha.ministerio ?? "-",
-    fontes: ficha.fontes ?? [],
   } as unknown as FichaV3;
   const erros = verificarFicha(comoV3, arquivo, contexto).filter(
     (e) => !TROCADAS_NA_V4.has(e.field) && !e.field.startsWith("fontes."),
@@ -137,7 +136,7 @@ export function verificarMolde(
     if (achado)
       push(
         campo,
-        `O texto cita o país de referência ("${achado}"); isso vai no exemplo.`,
+        `O texto cita o país de referência ("${achado}"); isso vai na pasta do país.`,
       );
   }
   opcoes.forEach((o, i) => {
@@ -183,10 +182,10 @@ export function verificarMolde(
     push("dinheiro", "Verba e programa gastam: dinheiro.tipo deve ser gasto.");
   if (familia === "programa") {
     const p = ficha.publico;
-    if (!p || !p.quem?.trim() || !(p.pessoas > 0))
+    if (!p || !p.quem?.trim())
       push(
         "publico",
-        "O programa diz quem recebe e quantas pessoas.",
+        "O programa diz quem recebe.",
         "CAMPO_AUSENTE",
       );
   }

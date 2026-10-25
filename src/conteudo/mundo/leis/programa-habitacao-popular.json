@@ -6,7 +6,6 @@
   "nome": "Programa de habitação popular",
   "decide": "Define quanto o governo gasta por ano para dar moradia a quem não pode pagar.",
   "area": "protecao-social",
-  "exemplo": "No Brasil: Minha Casa, Minha Vida.",
   "nivel": "decreto",
   "controle": {
     "variavel": "recursos_programa_habitacao_popular",

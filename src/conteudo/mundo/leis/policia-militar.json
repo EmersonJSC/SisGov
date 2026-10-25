@@ -34,20 +34,6 @@
     "nome": "Polícias",
     "camada": "constituicao"
   },
-  "historia": {
-    "opcoes": {
-      "militar": ["Brasil", "França (Gendarmerie)", "Itália (Carabinieri)"],
-      "civil": ["Reino Unido", "Alemanha", "Japão"]
-    },
-    "brasil": "A polícia de rua dos estados é militar desde a Constituição de 1988 (art. 144), força auxiliar do Exército."
-  },
-  "fontes": [
-    {
-      "titulo": "Constituição Federal, art. 144 (segurança pública)",
-      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
-      "usadoPara": "opção vigente no Brasil"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "letalidade_policial",

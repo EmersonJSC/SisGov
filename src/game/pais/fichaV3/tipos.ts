@@ -87,7 +87,7 @@ export type FichaV3 = {
   };
   /** Países que usam cada opção e o caso brasileiro. */
   historia?: { opcoes?: Record<string, string[]>; brasil?: string };
-  fontes: FonteV3[];
+  fontes?: FonteV3[];
 };
 
 /** Família da lei (molde-das-leis.md, 2.1): decide cor, controle e faixa. */
@@ -130,15 +130,12 @@ export type FichaV4 = Omit<
   decide: string;
   /** Ausente só na pétrea, que fica no centro. */
   area?: AreaId;
-  /** Exemplo no país: "No Brasil: Farmácia Popular, desde 2004." */
-  exemplo?: string;
   trava?: TravaV4[];
   /** Do formato antigo, mantidos na conversão (mesmo sentido do PolicyFile). */
   implantacaoTurnos?: PolicyFile["implantacaoTurnos"];
   mae?: PolicyFile["mae"];
-  /** Só programa: quem recebe e quantas pessoas. */
-  publico?: { quem: string; pessoas: number };
-  fontes?: FonteV3[];
+  /** Só programa: quem recebe. */
+  publico?: { quem: string };
   ministerio?: string;
   controle: {
     variavel: string;

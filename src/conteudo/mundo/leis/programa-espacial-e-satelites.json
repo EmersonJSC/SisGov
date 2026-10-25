@@ -29,21 +29,6 @@
     "nome": "Ciência e cultura",
     "camada": "alavanca"
   },
-  "historia": {
-    "brasil": "A agência espacial civil existe desde 1994 e o país opera satélites de observação da floresta com parceiros. O valor vigente é aproximado (ordem de grandeza do orçamento anual)."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 8.854/1994 (cria a agência espacial)",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8854.htm",
-      "usadoPara": "existência do programa"
-    },
-    {
-      "titulo": "Portal da Transparência, despesas por órgão",
-      "url": "https://portaldatransparencia.gov.br/",
-      "usadoPara": "ordem de grandeza do gasto"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "capacidade_inteligencia",

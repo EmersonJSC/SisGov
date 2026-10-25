@@ -102,20 +102,6 @@ describe("ficha de lei v3", () => {
     );
   });
 
-  it("recusa ficha sem fonte com mensagem clara", () => {
-    const ficha = { ...piso(), fontes: [] };
-    expect(mensagens(ficha)).toContain(
-      "fontes: A ficha precisa de pelo menos uma fonte com link para os números.",
-    );
-    const files = { ...arquivos, [PISO]: JSON.stringify(ficha) };
-    expect(loadScenarioPackage("paises/brasil/pais.json", files)).toMatchObject(
-      {
-        ok: false,
-        diagnostics: [{ file: PISO, field: "fontes" }],
-      },
-    );
-  });
-
   it("recusa efeito em índice inexistente, travessão e nome de programa", () => {
     const ficha = piso();
     ficha.efeitos[0] = { ...ficha.efeitos[0], alvo: "indice_que_nao_existe" };

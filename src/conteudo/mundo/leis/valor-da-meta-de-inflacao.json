@@ -49,8 +49,7 @@
     "faixa": {
       "minimo": 2,
       "maximo": 6,
-      "unidade": "% % ao ano",
-      "valorReferencia": 3
+      "unidade": "% % ao ano"
     }
   },
   "implantacaoTurnos": {

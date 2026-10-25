@@ -6,7 +6,6 @@
   "nome": "Remédios de graça na farmácia",
   "decide": "Define quanto o governo gasta para dar de graça, ou com desconto, remédios de uso contínuo nas farmácias.",
   "area": "saude",
-  "exemplo": "No Brasil: Farmácia Popular, desde 2004.",
   "nivel": "decreto",
   "controle": {
     "variavel": "recursos_farmacia_popular",
@@ -21,8 +20,7 @@
     }
   },
   "publico": {
-    "quem": "pessoas com doenças crônicas, como pressão alta e diabetes",
-    "pessoas": 24000000
+    "quem": "pessoas com doenças crônicas, como pressão alta e diabetes"
   },
   "implantacao": {
     "entrada": 0.3,

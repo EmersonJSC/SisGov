@@ -75,40 +75,6 @@
     "nome": "Salário mínimo",
     "camada": "lei"
   },
-  "historia": {
-    "opcoes": {
-      "sem-regra": ["Brasil antes de 2007", "Estados Unidos"],
-      "so-inflacao": ["Brasil de 2020 a 2022"],
-      "inflacao-mais-pib": ["Brasil de 2007 a 2019 e desde 2023"],
-      "meta-da-mediana": [
-        "União Europeia (diretiva de 2022, valor de referência)",
-        "Reino Unido (meta de dois terços da mediana em 2024)"
-      ]
-    },
-    "brasil": "Desde 2023 a lei de valorização corrige o mínimo pela inflação mais o crescimento do PIB de dois anos antes; desde 2024 o ganho acima da inflação fica dentro do limite do arcabouço fiscal."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 14.663/2023 (política de valorização do salário mínimo)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
-      "usadoPara": "inflação mais PIB"
-    },
-    {
-      "titulo": "Lei 15.077/2024 (ganho real dentro do limite do arcabouço)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/L15077.htm",
-      "usadoPara": "vínculo com a regra fiscal"
-    },
-    {
-      "titulo": "Lei 14.158/2021 (salário mínimo de 2021, só a inflação)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14158.htm",
-      "usadoPara": "só repõe a inflação"
-    },
-    {
-      "titulo": "Diretiva (UE) 2022/2041, salários mínimos adequados",
-      "url": "https://eur-lex.europa.eu/eli/dir/2022/2041/oj",
-      "usadoPara": "meta de 60% da mediana"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "renda_familias",
@@ -217,6 +183,5 @@
       "leitura": "nivel",
       "unidade": "indice_0_1"
     }
-  ],
-  "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB de dois anos antes."
+  ]
 }

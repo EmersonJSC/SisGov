@@ -6,7 +6,6 @@
   "nome": "Bolsa de permanência no ensino médio",
   "decide": "Define se o governo paga o jovem pobre para ele ficar na escola até terminar o ensino médio.",
   "area": "educacao-e-cultura",
-  "exemplo": "No Brasil: Pé-de-Meia, desde 2024.",
   "nivel": "decreto",
   "controle": {
     "variavel": "nivel_bolsa_de_permanencia_no_ensino_medio",

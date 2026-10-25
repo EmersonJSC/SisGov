@@ -6,7 +6,6 @@
   "nome": "Imposto sobre transações bancárias",
   "decide": "Define a alíquota cobrada sobre cada movimentação bancária.",
   "area": "contas-publicas",
-  "exemplo": "No Brasil: contribuição provisória sobre movimentação financeira (1997 a 2007).",
   "nivel": "lei",
   "controle": {
     "variavel": "aliquota_imposto_transacoes_financeiras",

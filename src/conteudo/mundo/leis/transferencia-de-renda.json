@@ -6,7 +6,6 @@
   "nome": "Transferência de renda às famílias pobres",
   "decide": "Define quanto o governo gasta por ano pagando renda todo mês a famílias pobres.",
   "area": "protecao-social",
-  "exemplo": "No Brasil: Bolsa Família.",
   "nivel": "decreto",
   "controle": {
     "variavel": "recursos_transferencia_de_renda",
@@ -21,8 +20,7 @@
     }
   },
   "publico": {
-    "quem": "famílias pobres",
-    "pessoas": 54000000
+    "quem": "famílias pobres"
   },
   "implantacao": {
     "entrada": 0.3,

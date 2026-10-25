@@ -70,21 +70,6 @@
     "nome": "Cidades e infraestrutura",
     "camada": "lei"
   },
-  "historia": {
-    "brasil": "A Lei 14.273/2021 prevê exploração ferroviária por concessão e autorização; corredores ferroviários e acesso portuário são escolhas de política de transportes."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 14.273/2021 (Lei das Ferrovias)",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14273.htm",
-      "usadoPara": "regimes de exploração ferroviária"
-    },
-    {
-      "titulo": "ANTT, autorizações ferroviárias",
-      "url": "https://www.gov.br/antt/pt-br/assuntos/ferrovias/autorizacoes-ferroviarias-1",
-      "usadoPara": "modelo de autorização ferroviária"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "exportacoes",

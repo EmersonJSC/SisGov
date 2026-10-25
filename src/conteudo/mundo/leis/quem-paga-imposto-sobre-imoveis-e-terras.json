@@ -6,7 +6,6 @@
   "nome": "Quem paga imposto sobre imóveis e terras",
   "decide": "Define se o imposto sobre imóveis e terras cobra todos igual, isenta os pequenos ou cobra mais dos grandes e das terras paradas.",
   "area": "contas-publicas",
-  "exemplo": "Hoje no país de referência: muitas cidades isentam casas de baixo valor, e o imposto sobre terras rurais isenta as pequenas propriedades.",
   "nivel": "lei",
   "controle": {
     "variavel": "nivel_quem_paga_imposto_sobre_imoveis_e_terras",

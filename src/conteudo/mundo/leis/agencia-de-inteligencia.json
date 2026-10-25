@@ -29,21 +29,6 @@
     "nome": "Vigilância",
     "camada": "alavanca"
   },
-  "historia": {
-    "brasil": "A agência de inteligência foi criada em 1999 e hoje fica na Casa Civil. O valor vigente é aproximado (ordem de grandeza do orçamento anual)."
-  },
-  "fontes": [
-    {
-      "titulo": "Lei 9.883/1999 (Sistema Brasileiro de Inteligência)",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9883.htm",
-      "usadoPara": "existência do órgão"
-    },
-    {
-      "titulo": "Portal da Transparência, despesas por órgão",
-      "url": "https://portaldatransparencia.gov.br/",
-      "usadoPara": "ordem de grandeza do gasto"
-    }
-  ],
   "efeitos": [
     {
       "alvo": "capacidade_inteligencia",
