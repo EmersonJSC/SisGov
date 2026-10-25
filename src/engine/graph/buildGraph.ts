@@ -90,17 +90,15 @@ export function buildGraph(content: ResolvedPackage): ScenarioGraph {
   // Consequência sem lei ou ocorrência: saídas de bolhas e controles do país
   // que alimentam estoques são ligações contínuas da rede.
   const network: GraphRelation[] = content.consequences
-    .filter(
-      (consequence) => {
-        const origin = nodesById[consequence.origem];
-        const target = nodesById[consequence.alvo];
-        return (
-          !listed.has(consequence.id) &&
-          origin !== undefined &&
-          (origin.tipo !== "controle" || target?.tipo === "estoque")
-        );
-      },
-    )
+    .filter((consequence) => {
+      const origin = nodesById[consequence.origem];
+      const target = nodesById[consequence.alvo];
+      return (
+        !listed.has(consequence.id) &&
+        origin !== undefined &&
+        (origin.tipo !== "controle" || target?.tipo === "estoque")
+      );
+    })
     .map((consequence) => ({
       id: `rede:${consequence.id}`,
       sourceId: consequence.origem,

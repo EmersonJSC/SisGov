@@ -192,10 +192,22 @@ export type VariableDefinition = {
    * `grupo` (SG143): grupo social; a bolha é a satisfação dele (0–100),
    * calculada como um índice, a partir de leis e indicadores.
    */
-  tipo: "controle" | "calculado" | "estoque" | "situacao" | "grupo";
+  tipo:
+    "controle" | "calculado" | "derivado" | "estoque" | "situacao" | "grupo";
   nome: string;
   unidade: string;
   dominio: { minimo?: number; maximo?: number };
+  /** Só derivado: soma de produtos de variáveis, calculada a cada passo. */
+  formula?: {
+    termos: readonly {
+      sinal: 1 | -1;
+      fatores: readonly {
+        var: string;
+        escala?: number;
+        complemento?: boolean;
+      }[];
+    }[];
+  };
   /** Só controle e estoque; bolhas não têm valor inicial (D-41). */
   valorInicial?: number;
   /** Só situação: soma a partir da qual ela surge. */

@@ -81,6 +81,44 @@ export function validatePackageCoherence(
       ...lawInfluenceNodes(content.policies),
     ].map((variable) => [variable.id, variable]),
   );
+  const derived = content.variables.variaveis.filter(
+    (v) => v.tipo === "derivado",
+  );
+  const derivedById = new Map(derived.map((v) => [v.id, v]));
+  const visiting = new Set<string>();
+  const visited = new Set<string>();
+  const visitDerived = (variable: VariableDefinition) => {
+    if (visited.has(variable.id)) return;
+    if (visiting.has(variable.id)) {
+      diagnostics.push(
+        issue(
+          content.variables.id,
+          `variaveis.${variable.id}.formula`,
+          "Ciclo entre variáveis derivadas.",
+        ),
+      );
+      return;
+    }
+    visiting.add(variable.id);
+    for (const term of variable.formula?.termos ?? [])
+      for (const factor of term.fatores) {
+        const source = variablesById.get(factor.var);
+        if (!source)
+          diagnostics.push(
+            issue(
+              content.variables.id,
+              `variaveis.${variable.id}.formula`,
+              `Variável inexistente: ${factor.var}.`,
+            ),
+          );
+        else if (source.tipo === "derivado") {
+          if (derivedById.has(source.id)) visitDerived(source);
+        }
+      }
+    visiting.delete(variable.id);
+    visited.add(variable.id);
+  };
+  for (const variable of derived) visitDerived(variable);
   const approval = content.manifest.aprovacaoPorPerfis;
   if (approval) {
     if (variablesById.get(approval.alvo)?.tipo !== "calculado")
@@ -293,6 +331,7 @@ export function validatePackageCoherence(
     if (
       variable &&
       (variable.tipo === "calculado" ||
+        variable.tipo === "derivado" ||
         variable.tipo === "situacao" ||
         variable.tipo === "grupo")
     ) {
@@ -741,6 +780,14 @@ export function validatePackageCoherence(
         ),
       );
     }
+    if (target.tipo === "derivado")
+      diagnostics.push(
+        issue(
+          consequence.id,
+          "alvo",
+          "Uma consequência não pode alterar um indicador derivado.",
+        ),
+      );
     const expectedUnit =
       target.tipo === "estoque"
         ? (rateUnitFor(target.unidade) ?? target.unidade)

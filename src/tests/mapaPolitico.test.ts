@@ -139,16 +139,16 @@ describe("mapa político: layout", () => {
       ...base.bolhas.get(b.id)!,
       ...caixaDaBolha(b.nome),
     }));
-    let cobertas = 0;
+    const cobertas: string[] = [];
     for (let i = 0; i < caixas.length; i++)
       for (let j = i + 1; j < caixas.length; j++) {
         const a = caixas[i];
         const b = caixas[j];
         const x = (a.largura + b.largura) / 2 - Math.abs(a.x - b.x);
         const y = (a.altura + b.altura) / 2 - Math.abs(a.y - b.y);
-        if (x > 12 && y > 12) cobertas++;
+        if (x > 12 && y > 12) cobertas.push(`${a.id} / ${b.id}`);
       }
-    expect(cobertas).toBe(0);
+    expect(cobertas).toEqual([]);
   });
 
   it("quebra nomes longos em linhas curtas", () => {

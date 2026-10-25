@@ -70,6 +70,9 @@ describe("SG157 fase 3 — Brasil 2026", () => {
   it("oito turnos sem ação mudam pouco", () => {
     const lista = turnos(partida, 8).map((p) => verPartida(p));
     for (const bolha of visao.bolhas) {
+      // Contagens em pessoas (população, ocupados etc.) crescem em centenas
+      // sobre uma base de milhões; não usam a régua dos índices 0–100.
+      if (bolha.unidade === "pessoas" || bolha.unidade === "moeda") continue;
       const escala = bolha.maximo - bolha.minimo || 1;
       const serie = lista.map(
         (v) => v.bolhas.find((b) => b.id === bolha.id)!.valor,

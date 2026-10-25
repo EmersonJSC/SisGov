@@ -421,7 +421,7 @@ function posicionarBolhas(
 }
 
 /** Anel dos grupos sociais: a sociedade em volta do governo (SG143). */
-export const ELIPSE_GRUPOS = { rx: 2500, ry: 1520 } as const;
+export const ELIPSE_GRUPOS = { rx: 2900, ry: 1750 } as const;
 
 /**
  * Cada grupo vai para o lado dos ministérios cujas leis mais o afetam, mas
@@ -472,7 +472,7 @@ function posicionarGrupos(
 const TOPO = -MEDIDAS.raioBolhaMaximo;
 
 /** Elipse que contém as bolhas: larga, para caber em telas largas. */
-export const ELIPSE_EXTERNA = { rx: 2300, ry: 1360 } as const;
+export const ELIPSE_EXTERNA = { rx: 2500, ry: 1500 } as const;
 
 const FOLGA_CAIXAS = 10;
 

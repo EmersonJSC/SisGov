@@ -9,7 +9,67 @@
       "nome": "População",
       "unidade": "pessoas",
       "dominio": { "minimo": 1 },
+      "medida": {
+        "unidade": "habitantes",
+        "fontes": ["Estatísticas demográficas oficiais do país"]
+      },
       "area": "Economia"
+    },
+    {
+      "id": "idade_de_trabalhar",
+      "tipo": "controle",
+      "nome": "População em idade de trabalhar",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "area": "Economia"
+    },
+    {
+      "id": "participacao_trabalho",
+      "tipo": "controle",
+      "nome": "Participação no trabalho",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "area": "Economia"
+    },
+    {
+      "id": "ocupados",
+      "tipo": "derivado",
+      "nome": "Pessoas ocupadas",
+      "unidade": "pessoas",
+      "dominio": { "minimo": 0 },
+      "area": "Economia",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "populacao" },
+              { "var": "idade_de_trabalhar", "escala": 0.01 },
+              { "var": "participacao_trabalho", "escala": 0.01 },
+              { "var": "desemprego", "escala": 0.01, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "mortes_no_ano",
+      "tipo": "derivado",
+      "nome": "Mortes no ano",
+      "unidade": "pessoas",
+      "dominio": { "minimo": 0 },
+      "area": "Economia",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "populacao" },
+              { "var": "taxa_mortalidade", "escala": 0.001 }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "taxa_natalidade",
@@ -36,6 +96,10 @@
         "minimo": 1
       },
       "valorInicial": 1000000,
+      "medida": {
+        "unidade": "moeda corrente",
+        "fontes": ["Sistema de contas nacionais do país"]
+      },
       "area": "Economia"
     },
     {

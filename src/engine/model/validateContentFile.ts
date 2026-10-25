@@ -1313,6 +1313,7 @@ function validateVariables(
           "faixaVisual",
           "medida",
           "pilar",
+          "formula",
         ],
         diagnostics,
       );
@@ -1382,9 +1383,14 @@ function validateVariables(
       );
       if (
         type !== undefined &&
-        !["controle", "calculado", "estoque", "situacao", "grupo"].includes(
-          type,
-        )
+        ![
+          "controle",
+          "calculado",
+          "derivado",
+          "estoque",
+          "situacao",
+          "grupo",
+        ].includes(type)
       ) {
         diagnostics.push(
           diagnostic(
@@ -1453,7 +1459,10 @@ function validateVariables(
         }
       }
       const bubble =
-        type === "calculado" || type === "situacao" || type === "grupo";
+        type === "calculado" ||
+        type === "situacao" ||
+        type === "grupo" ||
+        type === "derivado";
       if (bubble && item.valorInicial !== undefined)
         diagnostics.push(
           diagnostic(
@@ -1524,6 +1533,119 @@ function validateVariables(
               "Transbordo: { estoque, sentido: oposto | igual, teto? }.",
             ),
           );
+      }
+      if (type === "derivado") {
+        const formula = item.formula;
+        if (
+          !isObject(formula) ||
+          !Array.isArray(formula.termos) ||
+          formula.termos.length === 0
+        ) {
+          diagnostics.push(
+            diagnostic(
+              file,
+              `variaveis[${index}].formula`,
+              "VALOR_INVALIDO",
+              "Derivado exige formula.termos não vazios.",
+            ),
+          );
+        } else {
+          validateKnownFields(formula, file, ["termos"], diagnostics);
+          formula.termos.forEach((term, termIndex) => {
+            const at = `variaveis[${index}].formula.termos[${termIndex}]`;
+            if (!isObject(term)) {
+              diagnostics.push(
+                diagnostic(
+                  file,
+                  at,
+                  "TIPO_INVALIDO",
+                  "Termo deve ser um objeto.",
+                ),
+              );
+              return;
+            }
+            validateKnownFields(term, file, ["sinal", "fatores"], diagnostics);
+            if (term.sinal !== 1 && term.sinal !== -1)
+              diagnostics.push(
+                diagnostic(
+                  file,
+                  `${at}.sinal`,
+                  "VALOR_INVALIDO",
+                  "Sinal deve ser 1 ou -1.",
+                ),
+              );
+            if (!Array.isArray(term.fatores) || term.fatores.length === 0) {
+              diagnostics.push(
+                diagnostic(
+                  file,
+                  `${at}.fatores`,
+                  "VALOR_INVALIDO",
+                  "Termo exige fatores não vazios.",
+                ),
+              );
+              return;
+            }
+            term.fatores.forEach((factor, factorIndex) => {
+              const factorAt = `${at}.fatores[${factorIndex}]`;
+              if (!isObject(factor)) {
+                diagnostics.push(
+                  diagnostic(
+                    file,
+                    factorAt,
+                    "TIPO_INVALIDO",
+                    "Fator deve ser um objeto.",
+                  ),
+                );
+                return;
+              }
+              validateKnownFields(
+                factor,
+                file,
+                ["var", "escala", "complemento"],
+                diagnostics,
+              );
+              requiredString(factor, file, `${factorAt}.var`, diagnostics);
+              if (factor.escala !== undefined) {
+                const scale = requiredNumber(
+                  factor,
+                  file,
+                  `${factorAt}.escala`,
+                  diagnostics,
+                );
+                if (scale === 0)
+                  diagnostics.push(
+                    diagnostic(
+                      file,
+                      `${factorAt}.escala`,
+                      "VALOR_INVALIDO",
+                      "Escala não pode ser zero.",
+                    ),
+                  );
+              }
+              if (
+                factor.complemento !== undefined &&
+                typeof factor.complemento !== "boolean"
+              )
+                diagnostics.push(
+                  diagnostic(
+                    file,
+                    `${factorAt}.complemento`,
+                    "TIPO_INVALIDO",
+                    "Complemento deve ser booleano.",
+                  ),
+                );
+            });
+          });
+        }
+      } else if (item.formula !== undefined) {
+        diagnostics.push(
+          diagnostic(
+            file,
+            `variaveis[${index}].formula`,
+            "VALOR_INVALIDO",
+            "Só variáveis derivadas têm fórmula.",
+          ),
+        );
       }
       if (
         item.pilar !== undefined &&

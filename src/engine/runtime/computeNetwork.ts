@@ -4,6 +4,10 @@ import { graphIndex } from "../graph/graphIndex";
 import { calculateContribution } from "../mechanisms/calculateContribution";
 import { profileApproval } from "../mechanisms/profileApproval";
 import { updateStock, type StockRate } from "../mechanisms/updateStock";
+import {
+  calculateDerivedValue,
+  orderDerivedVariables,
+} from "../mechanisms/derivedVariables";
 import { efficacyNodeId, isLawNode, lawNodeBase } from "../model/lawNodes";
 import type { VariableDefinition } from "../model/contentTypes";
 import type { ResolvedPackage } from "../model/resolvePackage";
@@ -549,6 +553,31 @@ export function computeNetwork(
       : Math.sign(excess) * Math.min(Math.abs(excess), room);
     next[stock.id] = value - moved;
     next[target.id] = received + sign * moved;
+  }
+
+  // 4. Indicadores derivados leem os estoques já atualizados. Derivados que
+  // dependem de outros derivados seguem a ordem topológica da fórmula.
+  const derivedOrder = orderDerivedVariables(content.variables.variaveis);
+  if (!derivedOrder)
+    return failure("variaveis.formula", "Ciclo entre variáveis derivadas.");
+  for (const variable of derivedOrder) {
+    const value = calculateDerivedValue(variable, next);
+    if (value === undefined)
+      return failure(
+        `variaveis.${variable.id}.formula`,
+        "Fator sem valor ou fórmula não finita.",
+      );
+    next[variable.id] = value;
+    explanations.push({
+      targetId: variable.id,
+      previousValue: previous[variable.id] ?? 0,
+      baseValue: 0,
+      contributions: [],
+      rawValue: value,
+      targetValue: value,
+      limited: false,
+      result: value,
+    });
   }
 
   const { nodeRank } = graphIndex(graph);
