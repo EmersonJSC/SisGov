@@ -1,0 +1,1606 @@
+{
+  "area": "direitos-e-costumes",
+  "leis": [
+    {
+      "id": "aborto",
+      "nome": "Aborto",
+      "decide": "Define como funciona aborto e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "progressistas"
+      ],
+      "rejeitam": [
+        "conservadores"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "acoes-afirmativas",
+      "nome": "Ações afirmativas",
+      "decide": "Define como funciona ações afirmativas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "conservadores"
+      ],
+      "rejeitam": [
+        "religiosos_tradicionais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "apostas-e-jogos-de-azar",
+      "nome": "Apostas e jogos de azar",
+      "decide": "Define como funciona apostas e jogos de azar e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "religiosos_tradicionais"
+      ],
+      "rejeitam": [
+        "jovens"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "casamento-e-uniao-civil",
+      "nome": "Casamento e união civil",
+      "decide": "Define como funciona casamento e união civil e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "jovens"
+      ],
+      "rejeitam": [
+        "progressistas"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "crimes-da-ditadura",
+      "nome": "Crimes da ditadura",
+      "decide": "Define como funciona crimes da ditadura e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de crimes da ditadura permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de crimes da ditadura usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de crimes da ditadura limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio",
+      "nome": "Discriminação e crimes de ódio",
+      "decide": "Define como funciona discriminação e crimes de ódio e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de discriminação e crimes de ódio permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de discriminação e crimes de ódio usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de discriminação e crimes de ódio limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "eutanasia",
+      "nome": "Eutanásia",
+      "decide": "Define como funciona eutanásia e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de eutanásia permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de eutanásia usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de eutanásia limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "identidade-de-genero",
+      "nome": "Identidade de gênero",
+      "decide": "Define como funciona identidade de gênero e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de identidade de gênero permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de identidade de gênero usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de identidade de gênero limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "igualdade-racial",
+      "nome": "Igualdade racial",
+      "decide": "Define como funciona igualdade racial e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de igualdade racial permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de igualdade racial usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de igualdade racial limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "igualdade-salarial-de-genero",
+      "nome": "Igualdade salarial de gênero",
+      "decide": "Define como funciona igualdade salarial de gênero e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de igualdade salarial de gênero permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de igualdade salarial de gênero usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de igualdade salarial de gênero limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas",
+      "nome": "Regras tributárias para organizações religiosas",
+      "decide": "Define como funciona regras tributárias para organizações religiosas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de regras tributárias para organizações religiosas permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de regras tributárias para organizações religiosas usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de regras tributárias para organizações religiosas limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "laicidade-do-estado",
+      "nome": "Laicidade do Estado",
+      "decide": "Define como funciona laicidade do estado e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de laicidade do estado permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de laicidade do estado usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de laicidade do estado limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "politica-de-natalidade",
+      "nome": "Política de natalidade",
+      "decide": "Define como funciona política de natalidade e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de política de natalidade permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de política de natalidade usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de política de natalidade limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "politica-migratoria",
+      "nome": "Regras de migração e residência",
+      "decide": "Define como funciona regras de migração e residência e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "conservadores"
+      ],
+      "rejeitam": [
+        "religiosos_tradicionais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "protecao-contra-violencia-domestica",
+      "nome": "Proteção contra violência doméstica",
+      "decide": "Define como funciona proteção contra violência doméstica e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de proteção contra violência doméstica permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de proteção contra violência doméstica usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de proteção contra violência doméstica limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "protecao-da-vida-desde-a-concepcao",
+      "nome": "Proteção da vida desde a concepção",
+      "decide": "Define como funciona proteção da vida desde a concepção e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de proteção da vida desde a concepção permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de proteção da vida desde a concepção usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de proteção da vida desde a concepção limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "refugio-e-asilo",
+      "nome": "Refúgio e asilo",
+      "decide": "Define como funciona refúgio e asilo e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de refúgio e asilo permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de refúgio e asilo usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "progressistas"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de refúgio e asilo limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "progressistas"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "terras-indigenas",
+      "nome": "Terras indígenas",
+      "decide": "Define como funciona terras indígenas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de terras indígenas permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de terras indígenas usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "conservadores"
+            ],
+            "rejeitam": [
+              "religiosos_tradicionais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de terras indígenas limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "religiosos_tradicionais"
+            ],
+            "rejeitam": [
+              "conservadores"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "tributo-sobre-apostas",
+      "nome": "Tributo sobre apostas",
+      "decide": "Define a alíquota cobrada sobre tributo sobre apostas",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "religiosos_tradicionais"
+      ],
+      "rejeitam": [
+        "jovens"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "tributo sobre apostas"
+    },
+    {
+      "id": "verba-de-planejamento-familiar-e-de-aborto-legal",
+      "nome": "Verba de planejamento familiar e de aborto legal",
+      "decide": "Define a parcela do orçamento destinada a verba de planejamento familiar e de aborto legal",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "jovens"
+      ],
+      "rejeitam": [
+        "progressistas"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    }
+  ]
+}

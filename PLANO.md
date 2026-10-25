@@ -41,14 +41,24 @@ mecânica ganha só testes de comportamento; os testes de números exatos da
 economia ficam desligados até a calibragem final. `npm run check` completo
 uma vez por mecânica terminada.
 
-1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): absorve A2, A3 e as fases 5–6 do orçamento
-2. [ ] Índices essenciais e população
-3. [ ] Grupos com radicais e lealistas
-4. [ ] Desgaste do partido
-5. [ ] Eleição e fim de jogo
-6. [ ] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
-7. [ ] Tempo corrido
-8. [ ] Calibragem de tudo
+Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia.md):
+
+1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–2 feitas; fase 3 (impostos) fecha sem ampliar
+2. [ ] **País em frases** (novo): números internos saem do mapa e viram frases e comparações neutras
+3. [ ] Grupos: apoio de cada grupo (decide a eleição, pesado pelo tamanho) e radicais/lealistas (polarização e antipartido)
+4. [ ] **O jogo percebe padrões** (novo): ex.: várias verbas cortadas = corte de gastos; grupos e frases reagem; a bússola só mostra
+5. [ ] Desgaste do partido
+6. [ ] Eleição e fim de jogo (contra outro candidato)
+7. [ ] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
+8. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
+9. [ ] Índices essenciais e população: só o que faltar depois da economia em reais
+10. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
+
+**Pendências da [experiência de jogo](docs/jogo/experiencia.md) (25/out):**
+- [ ] Neutralidade: tirar o "bom/ruim" das faixas verde/amarela/vermelha das réguas (`conteudo/mundo/reguas.json`) e revisar textos, frases e cores que julgam leis, ideologias ou caminhos.
+- [ ] O jogo perceber padrões das escolhas (ex.: várias verbas cortadas = corte de gastos) e os grupos e frases reagirem; a bússola só mostra.
+- [ ] Catálogo de ~250 leis (hoje 224); toda lei e toda opção com lugar na bússola.
+- [x] **Mundo sem país** (25/out): leis, índices e textos sem país; dados do Brasil em `paises/brasil/` (`f81f8e2`, `6745744`, `8cfd9f0`). Falta: troca de nomes por país (ex.: "Selic"); coeficientes em dinheiro fixo → proporcionais ao PIB (antes da V2).
 
 **Versão 2 (ideia, amostra em [docs/jogo/amostras/telas-v2.html](docs/jogo/amostras/telas-v2.html)):** topo em uma linha com detalhes ao passar o mouse; abas Leis, Política, Orçamento e Economia; tela de política com plenário; economia em cadeias produtivas com produtividade por setor e o porquê. Sem azul: couro e papel.
 
@@ -82,8 +92,8 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 - [ ] C1. Varredura completa (`varredura-leis.ts`) e jogador guloso do zero
 - [ ] C2. Pendentes: defesa e reservas, "Sem meta" de inflação, corte que tira PIB demais, leis que mexem mais de 2–3 pontos de PIB em 3 anos sem custo
 
-**D. Tempo (mecânica 1): tempo corrido**: depois de C
-- [ ] D1. Documento da fatia 2 (semanas, pausa, velocidades, acontecimentos datados, pausa automática); motor segue mensal
+**D. Tempo (mecânica 1): três meses na tela** (25/out, substitui o tempo corrido): depois de C
+- [ ] D1. Documento da fatia 2 (animação dos 3 meses; eventos no mês deles); motor segue mensal
 - [ ] D2. Implementar no `app` com teste; tela com amostra antes
 
 ### Reforma das leis (21/out)
@@ -131,7 +141,7 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 - [ ] Jogador como partido (não presidente); partida começa com o partido recém-eleito
 - [ ] Desgaste do partido: sobe sempre por baixo, opinião segura, queda em escândalo, crise ou eleição
 - [ ] Índices essenciais como número único: criar industrialização, padrão de vida composto, população real (natalidade, mortalidade, saúde, migração), radicais e lealistas
-- [ ] Tempo corrido: calendário em semanas, pausa, velocidades, números deslizando, acontecimentos datados e pausa automática (motor segue mensal)
+- [ ] Três meses na tela: animação do turno com calendário e bolhas (decidido 25/out; substitui o tempo corrido)
 - [ ] Mecânica 4: gasto fixo da rede (~30% do PIB) que nenhuma lei controla; reativar o teste `contasSemFuros` "cofre passa de 100%"
 - [ ] Mecânica 2: pisos de saúde e educação ainda têm teto de 40% (trava a tirar)
 - [ ] Exclusão entre leis: lei declara quais não podem estar em vigor junto; aprovar pede revogar a outra

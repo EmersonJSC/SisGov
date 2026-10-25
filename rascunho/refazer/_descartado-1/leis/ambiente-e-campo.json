@@ -1,0 +1,1029 @@
+{
+  "area": "ambiente-e-campo",
+  "leis": [
+    {
+      "id": "adaptacao-climatica",
+      "nome": "Adaptação climática",
+      "decide": "Define a parcela do orçamento destinada a adaptação climática",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "ambientalistas"
+      ],
+      "rejeitam": [
+        "produtores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "agricultura-de-baixo-impacto",
+      "nome": "Agricultura de baixo impacto",
+      "decide": "Define como funciona agricultura de baixo impacto e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "produtores_rurais"
+      ],
+      "rejeitam": [
+        "agricultores_familiares"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "codigo-florestal",
+      "nome": "Código florestal",
+      "decide": "Define como funciona código florestal e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "agricultores_familiares"
+      ],
+      "rejeitam": [
+        "moradores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "conservacao-de-ecossistemas",
+      "nome": "Conservação de ecossistemas",
+      "decide": "Define como funciona conservação de ecossistemas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "moradores_rurais"
+      ],
+      "rejeitam": [
+        "ambientalistas"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "credito-rural-e-assistencia-tecnica",
+      "nome": "Crédito rural e assistência técnica",
+      "decide": "Define como funciona crédito rural e assistência técnica e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de crédito rural e assistência técnica permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "ambientalistas"
+            ],
+            "rejeitam": [
+              "produtores_rurais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de crédito rural e assistência técnica usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "ambientalistas"
+            ],
+            "rejeitam": [
+              "produtores_rurais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de crédito rural e assistência técnica limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "ambientalistas"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "fiscalizacao-ambiental",
+      "nome": "Fiscalização ambiental",
+      "decide": "Define como funciona fiscalização ambiental e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de fiscalização ambiental permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de fiscalização ambiental usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de fiscalização ambiental limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "agricultores_familiares"
+            ],
+            "rejeitam": [
+              "produtores_rurais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "gestao-de-residuos",
+      "nome": "Gestão de resíduos",
+      "decide": "Define como funciona gestão de resíduos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "agricultores_familiares"
+      ],
+      "rejeitam": [
+        "moradores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "licenciamento-ambiental",
+      "nome": "Licenciamento ambiental",
+      "decide": "Define como funciona licenciamento ambiental e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de licenciamento ambiental permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "moradores_rurais"
+            ],
+            "rejeitam": [
+              "ambientalistas"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de licenciamento ambiental usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "moradores_rurais"
+            ],
+            "rejeitam": [
+              "ambientalistas"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de licenciamento ambiental limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "ambientalistas"
+            ],
+            "rejeitam": [
+              "moradores_rurais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "manejo-pesqueiro",
+      "nome": "Manejo da pesca",
+      "decide": "Define como funciona manejo da pesca e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "ambientalistas"
+      ],
+      "rejeitam": [
+        "produtores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "preco-do-carbono",
+      "nome": "Preço do carbono",
+      "decide": "Define como funciona preço do carbono e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de preço do carbono permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de preço do carbono usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de preço do carbono limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "agricultores_familiares"
+            ],
+            "rejeitam": [
+              "produtores_rurais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "protecao-de-rios",
+      "nome": "Proteção de rios",
+      "decide": "Define como funciona proteção de rios e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "agricultores_familiares"
+      ],
+      "rejeitam": [
+        "moradores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "protecao-de-solos",
+      "nome": "Proteção de solos",
+      "decide": "Define como funciona proteção de solos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "moradores_rurais"
+      ],
+      "rejeitam": [
+        "ambientalistas"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "recuperacao-de-areas-degradadas",
+      "nome": "Recuperação de áreas degradadas",
+      "decide": "Define a parcela do orçamento destinada a recuperação de áreas degradadas",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "ambientalistas"
+      ],
+      "rejeitam": [
+        "produtores_rurais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "redistribuicao-de-terras",
+      "nome": "Redistribuição de terras",
+      "decide": "Define como funciona redistribuição de terras e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de redistribuição de terras permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de redistribuição de terras usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "produtores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de redistribuição de terras limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "agricultores_familiares"
+            ],
+            "rejeitam": [
+              "produtores_rurais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "registro-de-agrotoxicos",
+      "nome": "Registro de agrotóxicos",
+      "decide": "Define como funciona registro de agrotóxicos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de registro de agrotóxicos permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "agricultores_familiares"
+            ],
+            "rejeitam": [
+              "moradores_rurais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de registro de agrotóxicos usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "agricultores_familiares"
+            ],
+            "rejeitam": [
+              "moradores_rurais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de registro de agrotóxicos limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "moradores_rurais"
+            ],
+            "rejeitam": [
+              "agricultores_familiares"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    }
+  ]
+}

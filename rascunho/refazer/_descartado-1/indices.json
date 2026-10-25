@@ -1,0 +1,1581 @@
+{
+  "indices": [
+    {
+      "id": "pib",
+      "nome": "PIB",
+      "mede": "Quanto a economia produz em um ano.",
+      "unidade": "dinheiro",
+      "tipo": "estoque",
+      "essencial": true,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "industrializacao",
+        "inflacao",
+        "padrao_de_vida",
+        "taxa_juros"
+      ],
+      "antigo": [
+        "pib_nominal",
+        "pib"
+      ]
+    },
+    {
+      "id": "industrializacao",
+      "nome": "Industrialização",
+      "mede": "Quanto a produção depende de capacidade produtiva, tecnologia e infraestrutura.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": true,
+      "movidoPor": [
+        "confianca_empresarial",
+        "corrupcao",
+        "dinheiro_do_governo",
+        "enchente",
+        "estiagem",
+        "instrucao",
+        "padrao_de_vida",
+        "pib",
+        "radicais"
+      ],
+      "antigo": [
+        "desenvolvimento",
+        "produtividade",
+        "inovacao",
+        "investimento",
+        "infraestrutura",
+        "infraestrutura_energia",
+        "infraestrutura_saneamento",
+        "infraestrutura_transportes",
+        "producao_agropecuaria",
+        "producao_mineral"
+      ]
+    },
+    {
+      "id": "instrucao",
+      "nome": "Instrução",
+      "mede": "Quanto as pessoas aprendem e usam conhecimentos.",
+      "unidade": "indice_0_100",
+      "tipo": "estoque",
+      "essencial": true,
+      "movidoPor": [
+        "capacidade_estatal",
+        "dinheiro_do_governo",
+        "oportunidades_juvenis",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "escolaridade",
+        "aprendizagem",
+        "evasao_escolar",
+        "qualificacao_trabalho",
+        "fuga_de_cerebros",
+        "segregacao_escolar"
+      ]
+    },
+    {
+      "id": "padrao_de_vida",
+      "nome": "Padrão de vida",
+      "mede": "Como renda, saúde, moradia e segurança afetam as condições cotidianas.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": true,
+      "movidoPor": [
+        "cobertura_aps",
+        "crime_organizado",
+        "crise_atendimento",
+        "desemprego",
+        "enchente",
+        "estiagem",
+        "industrializacao",
+        "inflacao",
+        "instrucao",
+        "lealistas",
+        "oportunidades_juvenis",
+        "participacao_trabalho_cuidadoras",
+        "pib",
+        "protecao_efetiva_mulheres",
+        "queimadas",
+        "radicais",
+        "recessao",
+        "taxa_juros"
+      ],
+      "antigo": [
+        "qualidade_de_vida",
+        "renda_familias",
+        "salario_medio",
+        "desigualdade",
+        "pobreza",
+        "inseguranca_alimentar",
+        "populacao_de_rua",
+        "sofrimento_mental",
+        "saude_populacao",
+        "violencia_letal",
+        "sensacao_seguranca",
+        "deficit_habitacional",
+        "consumo",
+        "consumo_familias",
+        "massa_salarial",
+        "salario_minimo_relativo",
+        "preco_alimentos",
+        "preco_energia",
+        "preco_medicamentos"
+      ]
+    },
+    {
+      "id": "populacao",
+      "nome": "População",
+      "mede": "Quantas pessoas vivem no país.",
+      "unidade": "pessoas",
+      "tipo": "estoque",
+      "essencial": true,
+      "movidoPor": [
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "populacao",
+        "mortes_no_ano",
+        "natalidade",
+        "envelhecimento",
+        "imigracao"
+      ]
+    },
+    {
+      "id": "radicais",
+      "nome": "Oposição ativa",
+      "mede": "Quanto cresce a parcela da população que se organiza contra o governo.",
+      "unidade": "percentual_populacao",
+      "tipo": "calculado",
+      "essencial": true,
+      "movidoPor": [
+        "liberdade_civil",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "polarizacao",
+        "protestos",
+        "greve_geral",
+        "golpe_risco",
+        "onda_violencia"
+      ]
+    },
+    {
+      "id": "lealistas",
+      "nome": "Apoio ativo",
+      "mede": "Quanto cresce a parcela da população que sustenta o governo.",
+      "unidade": "percentual_populacao",
+      "tipo": "calculado",
+      "essencial": true,
+      "movidoPor": [
+        "corrupcao",
+        "estabilidade_politica",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "popularidade_governo",
+        "base_congresso",
+        "participacao_eleitoral",
+        "confianca_instituicoes"
+      ]
+    },
+    {
+      "id": "dinheiro_do_governo",
+      "nome": "Dinheiro do governo",
+      "mede": "Quanto o governo tem em caixa e deve.",
+      "unidade": "dinheiro",
+      "tipo": "estoque",
+      "essencial": true,
+      "movidoPor": [
+        "inflacao",
+        "juros_hiato",
+        "padrao_de_vida",
+        "pib",
+        "taxa_juros"
+      ],
+      "antigo": [
+        "cofre",
+        "divida_publica",
+        "arrecadacao",
+        "resultado_fiscal",
+        "gasto_publico",
+        "juros_da_divida",
+        "juros_implicito",
+        "juros_explosivos",
+        "contingenciamento",
+        "meta_primario",
+        "primario_sem_corte",
+        "hiato_da_meta",
+        "deficit_previdenciario"
+      ]
+    },
+    {
+      "id": "ocupados",
+      "nome": "Pessoas ocupadas",
+      "mede": "Como varia pessoas ocupadas no país.",
+      "unidade": "percentual_populacao",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "industrializacao",
+        "pib"
+      ],
+      "antigo": [
+        "ocupados"
+      ]
+    },
+    {
+      "id": "lucros",
+      "nome": "Lucros",
+      "mede": "Como varia lucros no país.",
+      "unidade": "dinheiro",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "industrializacao",
+        "pib"
+      ],
+      "antigo": [
+        "lucros"
+      ]
+    },
+    {
+      "id": "patrimonio_imoveis_urbanos",
+      "nome": "Patrimônio em imóveis urbanos",
+      "mede": "Como varia patrimônio em imóveis urbanos no país.",
+      "unidade": "dinheiro",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [
+        "inflacao"
+      ],
+      "antigo": [
+        "patrimonio_imoveis_urbanos"
+      ]
+    },
+    {
+      "id": "patrimonio_terras",
+      "nome": "Patrimônio em terras",
+      "mede": "Como varia patrimônio em terras no país.",
+      "unidade": "dinheiro",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [
+        "inflacao"
+      ],
+      "antigo": [
+        "patrimonio_terras"
+      ]
+    },
+    {
+      "id": "patrimonio_financeiro",
+      "nome": "Patrimônio financeiro",
+      "mede": "Como varia patrimônio financeiro no país.",
+      "unidade": "dinheiro",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [
+        "inflacao"
+      ],
+      "antigo": [
+        "patrimonio_financeiro"
+      ]
+    },
+    {
+      "id": "apagao",
+      "nome": "Apagão",
+      "mede": "Como varia apagão no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "apagao"
+      ]
+    },
+    {
+      "id": "armas_em_circulacao",
+      "nome": "Armas em circulação",
+      "mede": "Como varia armas em circulação no país.",
+      "unidade": "indice_0_100",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "armas_em_circulacao"
+      ]
+    },
+    {
+      "id": "capacidade_defesa",
+      "nome": "Capacidade de defesa",
+      "mede": "Como varia capacidade de defesa no país.",
+      "unidade": "indice_0_100",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "capacidade_defesa"
+      ]
+    },
+    {
+      "id": "concentracao_fundiaria",
+      "nome": "Concentração de terras",
+      "mede": "Como varia concentração de terras no país.",
+      "unidade": "indice_0_100",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "concentracao_fundiaria"
+      ]
+    },
+    {
+      "id": "crise_atendimento",
+      "nome": "Crise no atendimento",
+      "mede": "Como varia crise no atendimento no país.",
+      "unidade": "indice_0_100",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "crise_atendimento"
+      ]
+    },
+    {
+      "id": "crise_financeira",
+      "nome": "Crise financeira",
+      "mede": "Como varia crise financeira no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "pib"
+      ],
+      "antigo": [
+        "crise_financeira"
+      ]
+    },
+    {
+      "id": "crise_migratoria",
+      "nome": "Crise migratória",
+      "mede": "Como varia crise migratória no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "crise_migratoria"
+      ]
+    },
+    {
+      "id": "desabastecimento",
+      "nome": "Desabastecimento",
+      "mede": "Como varia desabastecimento no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "pib"
+      ],
+      "antigo": [
+        "desabastecimento"
+      ]
+    },
+    {
+      "id": "desastre_ambiental",
+      "nome": "Desastre ambiental",
+      "mede": "Como varia desastre ambiental no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "industrializacao",
+        "populacao"
+      ],
+      "antigo": [
+        "desastre_ambiental"
+      ]
+    },
+    {
+      "id": "epidemia",
+      "nome": "Epidemia",
+      "mede": "Como varia epidemia no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "epidemia"
+      ]
+    },
+    {
+      "id": "greve_de_professores",
+      "nome": "Greve de professores",
+      "mede": "Como varia greve de professores no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "instrucao"
+      ],
+      "antigo": [
+        "greve_de_professores"
+      ]
+    },
+    {
+      "id": "mercado_paralelo",
+      "nome": "Mercado paralelo",
+      "mede": "Como varia mercado paralelo no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "pib"
+      ],
+      "antigo": [
+        "mercado_paralelo"
+      ]
+    },
+    {
+      "id": "poupanca_domestica",
+      "nome": "Poupança doméstica",
+      "mede": "Como varia poupança doméstica no país.",
+      "unidade": "percentual_pib",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "poupanca_domestica"
+      ]
+    },
+    {
+      "id": "rebeliao_presidios",
+      "nome": "Rebelião nos presídios",
+      "mede": "Como varia rebelião nos presídios no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "rebeliao_presidios"
+      ]
+    },
+    {
+      "id": "recessao",
+      "nome": "Recessão",
+      "mede": "Como varia recessão no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "desemprego"
+      ],
+      "antigo": [
+        "recessao"
+      ]
+    },
+    {
+      "id": "estiagem",
+      "nome": "Estiagem",
+      "mede": "Como varia estiagem no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "desmatamento",
+        "qualidade_ambiental"
+      ],
+      "antigo": [
+        "estiagem"
+      ]
+    },
+    {
+      "id": "queimadas",
+      "nome": "Queimadas",
+      "mede": "Como varia queimadas no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "desmatamento",
+        "estiagem"
+      ],
+      "antigo": [
+        "queimadas"
+      ]
+    },
+    {
+      "id": "crise_cambial",
+      "nome": "Crise cambial",
+      "mede": "Como varia crise cambial no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "fuga_capitais",
+        "reservas_internacionais",
+        "risco_pais"
+      ],
+      "antigo": [
+        "crise_cambial"
+      ]
+    },
+    {
+      "id": "enchente",
+      "nome": "Enchentes",
+      "mede": "Como varia enchentes no país.",
+      "unidade": "percentual",
+      "tipo": "situacao",
+      "essencial": false,
+      "movidoPor": [
+        "desmatamento",
+        "industrializacao",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "enchente"
+      ]
+    },
+    {
+      "id": "reservas_internacionais",
+      "nome": "Reservas internacionais",
+      "mede": "Como varia reservas internacionais no país.",
+      "unidade": "percentual_pib",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "reservas_internacionais"
+      ]
+    },
+    {
+      "id": "transparencia_fiscal_internacional",
+      "nome": "Cooperação fiscal internacional",
+      "mede": "Como varia cooperação fiscal internacional no país.",
+      "unidade": "indice_0_100",
+      "tipo": "estoque",
+      "essencial": false,
+      "movidoPor": [],
+      "antigo": [
+        "transparencia_fiscal_internacional"
+      ]
+    },
+    {
+      "id": "cambio",
+      "nome": "Câmbio",
+      "mede": "Como varia câmbio no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "taxa_juros"
+      ],
+      "antigo": [
+        "cambio"
+      ]
+    },
+    {
+      "id": "capacidade_estatal",
+      "nome": "Capacidade do Estado",
+      "mede": "Como varia capacidade do estado no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "lealistas"
+      ],
+      "antigo": [
+        "capacidade_estatal"
+      ]
+    },
+    {
+      "id": "captura_politica",
+      "nome": "Captura política",
+      "mede": "Como varia captura política no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "captura_politica"
+      ]
+    },
+    {
+      "id": "cobertura_aps",
+      "nome": "Cobertura da atenção básica",
+      "mede": "Como varia cobertura da atenção básica no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "cobertura_aps"
+      ]
+    },
+    {
+      "id": "cobertura_planos_saude",
+      "nome": "Pessoas com plano de saúde",
+      "mede": "Como varia pessoas com plano de saúde no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "cobertura_planos_saude"
+      ]
+    },
+    {
+      "id": "cobertura_previdenciaria",
+      "nome": "Cobertura previdenciária",
+      "mede": "Como varia cobertura previdenciária no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "cobertura_previdenciaria"
+      ]
+    },
+    {
+      "id": "cobertura_vacinal",
+      "nome": "Cobertura vacinal",
+      "mede": "Como varia cobertura vacinal no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "cobertura_vacinal"
+      ]
+    },
+    {
+      "id": "complexidade_tributaria",
+      "nome": "Complexidade tributária",
+      "mede": "Como varia complexidade tributária no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "pib"
+      ],
+      "antigo": [
+        "complexidade_tributaria"
+      ]
+    },
+    {
+      "id": "concentracao_mercado",
+      "nome": "Concentração de mercado",
+      "mede": "Como varia concentração de mercado no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "concentracao_mercado"
+      ]
+    },
+    {
+      "id": "confianca_empresarial",
+      "nome": "Confiança empresarial",
+      "mede": "Como varia confiança empresarial no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "corrupcao",
+        "crise_cambial",
+        "dinheiro_do_governo",
+        "padrao_de_vida",
+        "pib",
+        "recessao"
+      ],
+      "antigo": [
+        "confianca_empresarial"
+      ]
+    },
+    {
+      "id": "conflitos_fundiarios",
+      "nome": "Conflitos no campo",
+      "mede": "Como varia conflitos no campo no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "industrializacao",
+        "populacao"
+      ],
+      "antigo": [
+        "conflitos_fundiarios"
+      ]
+    },
+    {
+      "id": "consumo_tabaco_alcool",
+      "nome": "Consumo de tabaco e álcool",
+      "mede": "Como varia consumo de tabaco e álcool no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "consumo_tabaco_alcool"
+      ]
+    },
+    {
+      "id": "corrupcao",
+      "nome": "Corrupção",
+      "mede": "Como varia corrupção no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "capacidade_estatal",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "corrupcao"
+      ]
+    },
+    {
+      "id": "credito",
+      "nome": "Crédito disponível",
+      "mede": "Como varia crédito disponível no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "taxa_juros"
+      ],
+      "antigo": [
+        "credito"
+      ]
+    },
+    {
+      "id": "crime_organizado",
+      "nome": "Crime organizado",
+      "mede": "Como varia crime organizado no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "corrupcao",
+        "oportunidades_juvenis",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "crime_organizado"
+      ]
+    },
+    {
+      "id": "crimes_patrimoniais",
+      "nome": "Crimes contra o patrimônio (roubos e furtos)",
+      "mede": "Como varia crimes contra o patrimônio (roubos e furtos) no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "crimes_patrimoniais"
+      ]
+    },
+    {
+      "id": "custo_trabalhista",
+      "nome": "Custo de contratar",
+      "mede": "Como varia custo de contratar no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "custo_trabalhista"
+      ]
+    },
+    {
+      "id": "desemprego",
+      "nome": "Desemprego",
+      "mede": "Como varia desemprego no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "pib"
+      ],
+      "antigo": [
+        "desemprego"
+      ]
+    },
+    {
+      "id": "desinformacao",
+      "nome": "Desinformação",
+      "mede": "Como varia desinformação no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "desinformacao"
+      ]
+    },
+    {
+      "id": "desmatamento",
+      "nome": "Desmatamento",
+      "mede": "Como varia desmatamento no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "desmatamento"
+      ]
+    },
+    {
+      "id": "diferenca_salarial_genero",
+      "nome": "Diferença salarial de gênero",
+      "mede": "Como varia diferença salarial de gênero no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "diferenca_salarial_genero"
+      ]
+    },
+    {
+      "id": "discriminacao",
+      "nome": "Discriminação",
+      "mede": "Como varia discriminação no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "discriminacao"
+      ]
+    },
+    {
+      "id": "emissoes",
+      "nome": "Emissões de carbono",
+      "mede": "Como varia emissões de carbono no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "queimadas"
+      ],
+      "antigo": [
+        "emissoes"
+      ]
+    },
+    {
+      "id": "endividamento_familias",
+      "nome": "Endividamento das famílias",
+      "mede": "Como varia endividamento das famílias no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "endividamento_familias"
+      ]
+    },
+    {
+      "id": "estabilidade_politica",
+      "nome": "Estabilidade política",
+      "mede": "Como varia estabilidade política no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "estabilidade_politica"
+      ]
+    },
+    {
+      "id": "expectativas_inflacao",
+      "nome": "Expectativas de inflação",
+      "mede": "Como varia expectativas de inflação no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "crise_cambial",
+        "inflacao"
+      ],
+      "antigo": [
+        "expectativas_inflacao"
+      ]
+    },
+    {
+      "id": "exportacoes",
+      "nome": "Exportações",
+      "mede": "Como varia exportações no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "exportacoes"
+      ]
+    },
+    {
+      "id": "falta_de_medicos",
+      "nome": "Falta de médicos",
+      "mede": "Como varia falta de médicos no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "falta_de_medicos"
+      ]
+    },
+    {
+      "id": "forca_instituicoes",
+      "nome": "Força das instituições",
+      "mede": "Como varia força das instituições no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "forca_instituicoes"
+      ]
+    },
+    {
+      "id": "fuga_capitais",
+      "nome": "Fuga de capitais",
+      "mede": "Como varia fuga de capitais no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "taxa_juros"
+      ],
+      "antigo": [
+        "fuga_capitais"
+      ]
+    },
+    {
+      "id": "gasto_bolso_saude",
+      "nome": "Gasto do bolso com saúde",
+      "mede": "Como varia gasto do bolso com saúde no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "gasto_bolso_saude"
+      ]
+    },
+    {
+      "id": "ied",
+      "nome": "Investimento estrangeiro direto",
+      "mede": "Como varia investimento estrangeiro direto no país.",
+      "unidade": "percentual_pib",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "tensao_internacional"
+      ],
+      "antigo": [
+        "ied"
+      ]
+    },
+    {
+      "id": "importacoes",
+      "nome": "Importações",
+      "mede": "Como varia importações no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "importacoes"
+      ]
+    },
+    {
+      "id": "impunidade",
+      "nome": "Impunidade",
+      "mede": "Como varia impunidade no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "impunidade"
+      ]
+    },
+    {
+      "id": "capacidade_inteligencia",
+      "nome": "Capacidade de investigação",
+      "mede": "Como varia capacidade de investigação no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "armas_em_circulacao"
+      ],
+      "antigo": [
+        "capacidade_inteligencia"
+      ]
+    },
+    {
+      "id": "inflacao",
+      "nome": "Inflação",
+      "mede": "Como varia inflação no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "crise_cambial",
+        "expectativas_inflacao",
+        "taxa_juros"
+      ],
+      "antigo": [
+        "inflacao"
+      ]
+    },
+    {
+      "id": "informalidade",
+      "nome": "Informalidade",
+      "mede": "Como varia informalidade no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "informalidade"
+      ]
+    },
+    {
+      "id": "letalidade_policial",
+      "nome": "Letalidade policial",
+      "mede": "Como varia letalidade policial no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "letalidade_policial"
+      ]
+    },
+    {
+      "id": "liberdade_civil",
+      "nome": "Liberdades civis",
+      "mede": "Como varia liberdades civis no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "liberdade_civil"
+      ]
+    },
+    {
+      "id": "lotacao_prisional",
+      "nome": "Lotação dos presídios",
+      "mede": "Como varia lotação dos presídios no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "lotacao_prisional"
+      ]
+    },
+    {
+      "id": "mobilidade_urbana",
+      "nome": "Mobilidade urbana",
+      "mede": "Como varia mobilidade urbana no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "enchente"
+      ],
+      "antigo": [
+        "mobilidade_urbana"
+      ]
+    },
+    {
+      "id": "oferta_energia",
+      "nome": "Oferta de energia",
+      "mede": "Como varia oferta de energia no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "estiagem"
+      ],
+      "antigo": [
+        "oferta_energia"
+      ]
+    },
+    {
+      "id": "oportunidades_juvenis",
+      "nome": "Oportunidades para jovens",
+      "mede": "Como varia oportunidades para jovens no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "participacao_trabalho_cuidadoras",
+        "pib"
+      ],
+      "antigo": [
+        "oportunidades_juvenis"
+      ]
+    },
+    {
+      "id": "participacao_trabalho_cuidadoras",
+      "nome": "Participação no trabalho de quem cuida",
+      "mede": "Como varia participação no trabalho de quem cuida no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "desemprego"
+      ],
+      "antigo": [
+        "participacao_trabalho_cuidadoras"
+      ]
+    },
+    {
+      "id": "participacao_trabalho_idosos",
+      "nome": "Idosos no mercado de trabalho",
+      "mede": "Como varia idosos no mercado de trabalho no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "padrao_de_vida"
+      ],
+      "antigo": [
+        "participacao_trabalho_idosos"
+      ]
+    },
+    {
+      "id": "protecao_efetiva_mulheres",
+      "nome": "Proteção efetiva às mulheres",
+      "mede": "Como varia proteção efetiva às mulheres no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "capacidade_estatal"
+      ],
+      "antigo": [
+        "protecao_efetiva_mulheres"
+      ]
+    },
+    {
+      "id": "qualidade_ambiental",
+      "nome": "Qualidade ambiental",
+      "mede": "Como varia qualidade ambiental no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "queimadas"
+      ],
+      "antigo": [
+        "qualidade_ambiental"
+      ]
+    },
+    {
+      "id": "reincidencia",
+      "nome": "Reincidência criminal",
+      "mede": "Como varia reincidência criminal no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "reincidencia"
+      ]
+    },
+    {
+      "id": "reputacao_internacional",
+      "nome": "Reputação internacional",
+      "mede": "Como varia reputação internacional no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "queimadas"
+      ],
+      "antigo": [
+        "reputacao_internacional"
+      ]
+    },
+    {
+      "id": "risco_pais",
+      "nome": "Risco país",
+      "mede": "Como varia risco país no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "inflacao",
+        "tensao_internacional"
+      ],
+      "antigo": [
+        "risco_pais"
+      ]
+    },
+    {
+      "id": "rotatividade_emprego",
+      "nome": "Rotatividade no emprego",
+      "mede": "Como varia rotatividade no emprego no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "pib"
+      ],
+      "antigo": [
+        "rotatividade_emprego"
+      ]
+    },
+    {
+      "id": "taxa_juros",
+      "nome": "Juros básicos",
+      "mede": "Como varia juros básicos no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "inflacao",
+        "risco_pais"
+      ],
+      "antigo": [
+        "taxa_juros"
+      ]
+    },
+    {
+      "id": "tensao_internacional",
+      "nome": "Tensão internacional",
+      "mede": "Como varia tensão internacional no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "reputacao_internacional"
+      ],
+      "antigo": [
+        "tensao_internacional"
+      ]
+    },
+    {
+      "id": "trabalho_infantil",
+      "nome": "Trabalho infantil",
+      "mede": "Como varia trabalho infantil no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "pib"
+      ],
+      "antigo": [
+        "trabalho_infantil"
+      ]
+    },
+    {
+      "id": "turismo",
+      "nome": "Turismo",
+      "mede": "Como varia turismo no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "turismo"
+      ]
+    },
+    {
+      "id": "uso_drogas",
+      "nome": "Uso de drogas",
+      "mede": "Como varia uso de drogas no país.",
+      "unidade": "indice_0_100",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "pib"
+      ],
+      "antigo": [
+        "uso_drogas"
+      ]
+    },
+    {
+      "id": "vicio_em_apostas",
+      "nome": "Vício em apostas",
+      "mede": "Como varia vício em apostas no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "padrao_de_vida",
+        "radicais"
+      ],
+      "antigo": [
+        "vicio_em_apostas"
+      ]
+    },
+    {
+      "id": "vitalidade_cultural",
+      "nome": "Vitalidade cultural",
+      "mede": "Como varia vitalidade cultural no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "instrucao"
+      ],
+      "antigo": [
+        "vitalidade_cultural"
+      ]
+    },
+    {
+      "id": "carga_evento_demanda",
+      "nome": "Carga do evento de demanda",
+      "mede": "Como varia carga do evento de demanda no país.",
+      "unidade": "percentual_populacao",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "populacao"
+      ],
+      "antigo": [
+        "carga_evento_demanda"
+      ]
+    },
+    {
+      "id": "desigualdade_regional",
+      "nome": "Desigualdade regional",
+      "mede": "Como varia desigualdade regional no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "desigualdade_regional"
+      ]
+    },
+    {
+      "id": "juros_hiato",
+      "nome": "Distância do juro médio aos juros básicos",
+      "mede": "Como varia distância do juro médio aos juros básicos no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "dinheiro_do_governo",
+        "risco_pais",
+        "taxa_juros"
+      ],
+      "antigo": [
+        "juros_hiato"
+      ]
+    },
+    {
+      "id": "litigio_trabalhista",
+      "nome": "Litígio trabalhista",
+      "mede": "Como varia litígio trabalhista no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "instrucao",
+        "pib"
+      ],
+      "antigo": [
+        "litigio_trabalhista"
+      ]
+    },
+    {
+      "id": "margem_manobra_governo",
+      "nome": "Margem de manobra do governo",
+      "mede": "Como varia margem de manobra do governo no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "lealistas",
+        "radicais"
+      ],
+      "antigo": [
+        "margem_manobra_governo"
+      ]
+    },
+    {
+      "id": "crescimento_potencial",
+      "nome": "Crescimento potencial",
+      "mede": "Como varia crescimento potencial no país.",
+      "unidade": "percentual",
+      "tipo": "calculado",
+      "essencial": false,
+      "movidoPor": [
+        "industrializacao",
+        "instrucao",
+        "populacao"
+      ],
+      "antigo": [
+        "crescimento_potencial"
+      ]
+    }
+  ],
+  "descartados": [
+    {
+      "id": "crescimento_real",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "salario_minimo_efetivo",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "aumento_real_do_minimo",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "reajuste_nominal_do_minimo",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "existe_salario_minimo",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "reajuste_segue_crescimento",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "beneficios_atrelados_ao_minimo",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "pressao_hospitalar",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "sonegacao",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    },
+    {
+      "id": "subordinacao_bc",
+      "motivo": "variável intermediária ou detalhe de rede, incorporado à leitura de índices mais amplos."
+    }
+  ]
+}

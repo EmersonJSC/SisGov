@@ -1,0 +1,620 @@
+{
+  "grupos": [
+    {
+      "id": "agricultores_familiares",
+      "nome": "Agricultores familiares",
+      "quem": "Pessoas que trabalham em unidades rurais de base familiar.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_agricultura_familiar"
+      ]
+    },
+    {
+      "id": "produtores_rurais",
+      "nome": "Produtores rurais",
+      "quem": "Pessoas e empresas que produzem alimentos e matérias-primas no campo.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_agro"
+      ]
+    },
+    {
+      "id": "ambientalistas",
+      "nome": "Ambientalistas",
+      "quem": "Pessoas que atuam pela conservação de ecossistemas e pela redução da poluição.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "desce"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_ambientalistas"
+      ]
+    },
+    {
+      "id": "aposentados",
+      "nome": "Aposentados",
+      "quem": "Pessoas que vivem de aposentadoria ou pensão.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_aposentados"
+      ]
+    },
+    {
+      "id": "religiosos_tradicionais",
+      "nome": "Religiosos tradicionais",
+      "quem": "Pessoas ligadas a comunidades religiosas com costumes tradicionais.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "lealistas",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "radicais",
+          "direcao": "desce"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_catolicos"
+      ]
+    },
+    {
+      "id": "classe_media",
+      "nome": "Classe média",
+      "quem": "Pessoas com renda e ocupações variadas fora dos extremos de renda.",
+      "querem": [
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": 0
+      },
+      "antigo": [
+        "grupo_classe_media"
+      ]
+    },
+    {
+      "id": "conservadores",
+      "nome": "Conservadores",
+      "quem": "Pessoas que preferem mudanças graduais nas instituições e nos costumes.",
+      "querem": [
+        {
+          "indice": "radicais",
+          "direcao": "desce"
+        },
+        {
+          "indice": "lealistas",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 2
+      },
+      "antigo": [
+        "grupo_conservadores"
+      ]
+    },
+    {
+      "id": "empresarios",
+      "nome": "Empresários",
+      "quem": "Pessoas que dirigem empresas e contratam trabalhadores.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 2,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_empresarios"
+      ]
+    },
+    {
+      "id": "comunidades_religiosas",
+      "nome": "Comunidades religiosas",
+      "quem": "Pessoas que participam de comunidades de fé diversas.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "lealistas",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "radicais",
+          "direcao": "desce"
+        }
+      ],
+      "bussola": {
+        "economia": 0,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_evangelicos"
+      ]
+    },
+    {
+      "id": "familias_com_filhos",
+      "nome": "Famílias com filhos",
+      "quem": "Pessoas que cuidam de crianças e adolescentes.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 0
+      },
+      "antigo": [
+        "grupo_familias_com_filhos"
+      ]
+    },
+    {
+      "id": "trabalhadores_informais",
+      "nome": "Trabalhadores informais",
+      "quem": "Pessoas que trabalham sem vínculo formal ou proteção contributiva.",
+      "querem": [
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_informais"
+      ]
+    },
+    {
+      "id": "moradores_rurais",
+      "nome": "Moradores de áreas rurais",
+      "quem": "Pessoas que vivem fora dos grandes centros urbanos.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 0
+      },
+      "antigo": [
+        "grupo_interior"
+      ]
+    },
+    {
+      "id": "jovens",
+      "nome": "Jovens",
+      "quem": "Pessoas no início da vida adulta que estudam, trabalham ou buscam trabalho.",
+      "querem": [
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "radicais",
+          "direcao": "desce"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_jovens"
+      ]
+    },
+    {
+      "id": "pequenos_negocios",
+      "nome": "Pequenos negócios",
+      "quem": "Pessoas que mantêm empresas de pequeno porte.",
+      "querem": [
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": 0
+      },
+      "antigo": [
+        "grupo_pequenos_negocios"
+      ]
+    },
+    {
+      "id": "moradores_periferias",
+      "nome": "Moradores de periferias urbanas",
+      "quem": "Pessoas que vivem em bairros distantes dos centros de emprego e serviços.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_periferias"
+      ]
+    },
+    {
+      "id": "pessoas_baixa_renda",
+      "nome": "Pessoas de baixa renda",
+      "quem": "Pessoas com poucos recursos disponíveis para despesas essenciais.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_pobres"
+      ]
+    },
+    {
+      "id": "progressistas",
+      "nome": "Progressistas",
+      "quem": "Pessoas que defendem mudanças sociais e ampliação de direitos.",
+      "querem": [
+        {
+          "indice": "radicais",
+          "direcao": "desce"
+        },
+        {
+          "indice": "lealistas",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_progressistas"
+      ]
+    },
+    {
+      "id": "pessoas_alta_renda",
+      "nome": "Pessoas de alta renda",
+      "quem": "Pessoas com renda e patrimônio acima da maior parte da população.",
+      "querem": [
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 2,
+        "costumes": 1
+      },
+      "antigo": [
+        "grupo_ricos"
+      ]
+    },
+    {
+      "id": "servidores_publicos",
+      "nome": "Trabalhadores do setor público",
+      "quem": "Pessoas empregadas por órgãos e serviços públicos.",
+      "querem": [
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 0
+      },
+      "antigo": [
+        "grupo_servidores"
+      ]
+    },
+    {
+      "id": "trabalhadores_assalariados",
+      "nome": "Trabalhadores assalariados",
+      "quem": "Pessoas que recebem salário de um empregador.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "pib",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": [
+        "grupo_trabalhadores"
+      ]
+    },
+    {
+      "id": "cuidadores",
+      "nome": "Cuidadores",
+      "quem": "Pessoas que prestam cuidado regular a crianças, idosos ou pessoas dependentes.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": 0
+      },
+      "antigo": []
+    },
+    {
+      "id": "pessoas_com_deficiencia",
+      "nome": "Pessoas com deficiência",
+      "quem": "Pessoas que encontram barreiras de acesso e participação por causa de deficiência.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "dinheiro_do_governo",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": []
+    },
+    {
+      "id": "estudantes",
+      "nome": "Estudantes",
+      "quem": "Pessoas matriculadas em processos formais de aprendizagem.",
+      "querem": [
+        {
+          "indice": "instrucao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": -1,
+        "costumes": -1
+      },
+      "antigo": []
+    },
+    {
+      "id": "migrantes",
+      "nome": "Migrantes",
+      "quem": "Pessoas que mudaram de região ou país para viver e trabalhar.",
+      "querem": [
+        {
+          "indice": "padrao_de_vida",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "populacao",
+          "direcao": "sobe"
+        },
+        {
+          "indice": "industrializacao",
+          "direcao": "sobe"
+        }
+      ],
+      "bussola": {
+        "economia": 1,
+        "costumes": -1
+      },
+      "antigo": []
+    }
+  ]
+}

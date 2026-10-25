@@ -1,0 +1,1085 @@
+{
+  "area": "protecao-social",
+  "leis": [
+    {
+      "id": "direito-a-moradia-na-constituicao",
+      "nome": "Garantia de moradia",
+      "decide": "Define como funciona garantia de moradia e quem pode usar ou executar a regra.",
+      "familia": "constitucional",
+      "nivel": "constituicao",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de garantia de moradia permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de garantia de moradia usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de garantia de moradia limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "aposentados"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "garantia-de-comida",
+      "nome": "Garantia de comida",
+      "decide": "Define a parcela do orçamento usada em garantia de comida",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "aposentados"
+      ],
+      "rejeitam": [
+        "cuidadores"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "habitacao-publica",
+      "nome": "Habitação pública",
+      "decide": "Define a parcela do orçamento usada em habitação pública",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "cuidadores"
+      ],
+      "rejeitam": [
+        "pessoas_com_deficiencia"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "idade-minima-aposentadoria",
+      "nome": "Idade mínima de aposentadoria",
+      "decide": "Define como funciona idade mínima de aposentadoria e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_com_deficiencia"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "organizacao-dos-programas-sociais",
+      "nome": "Organização dos programas sociais",
+      "decide": "Define como funciona organização dos programas sociais e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de organização dos programas sociais permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de organização dos programas sociais usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de organização dos programas sociais limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "aposentados"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "pensao-por-morte",
+      "nome": "Pensão por morte",
+      "decide": "Define a parcela do orçamento usada em pensão por morte",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "aposentados"
+      ],
+      "rejeitam": [
+        "cuidadores"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "previdencia-rural",
+      "nome": "Previdência rural",
+      "decide": "Define como funciona previdência rural e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de previdência rural permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "cuidadores"
+            ],
+            "rejeitam": [
+              "pessoas_com_deficiencia"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de previdência rural usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "cuidadores"
+            ],
+            "rejeitam": [
+              "pessoas_com_deficiencia"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de previdência rural limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_com_deficiencia"
+            ],
+            "rejeitam": [
+              "cuidadores"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "programa-habitacao-popular",
+      "nome": "Programa de habitação popular",
+      "decide": "Define a parcela do orçamento usada em programa de habitação popular",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_com_deficiencia"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "quem-cuida-do-idoso-dependente",
+      "nome": "Quem cuida do idoso dependente",
+      "decide": "Define como funciona quem cuida do idoso dependente e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de quem cuida do idoso dependente permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de quem cuida do idoso dependente usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de quem cuida do idoso dependente limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "aposentados"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "reajuste-de-beneficios",
+      "nome": "Reajuste de aposentadorias e benefícios",
+      "decide": "Define como funciona reajuste de aposentadorias e benefícios e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de reajuste de aposentadorias e benefícios permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "aposentados"
+            ],
+            "rejeitam": [
+              "cuidadores"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de reajuste de aposentadorias e benefícios usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "aposentados"
+            ],
+            "rejeitam": [
+              "cuidadores"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de reajuste de aposentadorias e benefícios limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "cuidadores"
+            ],
+            "rejeitam": [
+              "aposentados"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "renda-para-idosos-e-pessoas-com-deficiencia-pobres",
+      "nome": "Renda para idosos e pessoas com deficiência pobres",
+      "decide": "Define a parcela do orçamento usada em renda para idosos e pessoas com deficiência pobres",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "cuidadores"
+      ],
+      "rejeitam": [
+        "pessoas_com_deficiencia"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "sistema-previdenciario",
+      "nome": "Sistema previdenciário",
+      "decide": "Define como funciona sistema previdenciário e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de sistema previdenciário permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_com_deficiencia"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de sistema previdenciário usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_com_deficiencia"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de sistema previdenciário limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "pessoas_com_deficiencia"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "transferencia-de-renda",
+      "nome": "Transferência de renda às famílias pobres",
+      "decide": "Define a parcela do orçamento usada em transferência de renda às famílias pobres",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "aposentados"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "transferencia-de-renda-as-familias-pobres",
+      "nome": "Critérios da transferência de renda",
+      "decide": "Define a parcela do orçamento usada em critérios da transferência de renda",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "aposentados"
+      ],
+      "rejeitam": [
+        "cuidadores"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "vagas-de-creche",
+      "nome": "Vagas de creche",
+      "decide": "Define a parcela do orçamento usada em vagas de creche",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "cuidadores"
+      ],
+      "rejeitam": [
+        "pessoas_com_deficiencia"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    }
+  ]
+}

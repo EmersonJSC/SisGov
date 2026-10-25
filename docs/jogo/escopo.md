@@ -17,9 +17,15 @@ Nada é copiado dos dois jogos: eles são referência de gênero, não de conte�
   do partido: escolhe a chapa que disputa e ocupa o governo.
 - **Depois:** os candidatos do partido terão aceitação própria e poderão
   mudar de posição por conta própria.
-- O objetivo é **industrializar o país**, se ele ainda não for
-  industrializado, ou **manter a industrialização e os índices** de um
-  país que já é.
+- **Não há meta pronta (decidido em 24/out).** É uma simulação: a única
+  vitória é ganhar a eleição, e a única derrota é perdê-la. O jogador
+  pode industrializar, desindustrializar ou seguir outro caminho. Quem
+  joga bem tende a industrializar, mas o jogo não exige isso. Ele vê o
+  rumo pelo PIB, pelas empresas, pela renda das pessoas e pelos empregos.
+  Ver [experiencia.md](experiencia.md).
+- **Versão 1:** industrialização como rumo natural de quem joga bem (o
+  jogo mede e mostra, mas não exige).
+- **Versão 5:** coisas novas no país (produtos, tecnologias) e pesquisa.
 - O jogador não constrói nada diretamente. Ele aprova **leis**, inclusive
   de infraestrutura, e são elas que melhoram o mercado e a economia.
 
@@ -30,7 +36,17 @@ Nada é copiado dos dois jogos: eles são referência de gênero, não de conte�
   Exemplo: dá para pôr 100% do PIB na educação.
 - O que segura o jogador são as **consequências**, nunca uma trava na tela.
 - As regras de cada país (como uma lei muda, quem vota) seguem o país real.
-  O primeiro país é o **Brasil**.
+  O primeiro país é o **Brasil**, que serve de referência.
+- **Versão 2:** escolha de país (China, EUA, União Europeia e outros). Por
+  isso nada do Brasil pode morar no mundo: o país só declara o estado de
+  partida.
+- **Mundo sem país (decidido em 25/out).** Leis e índices do mundo não têm
+  notas, exemplos nem fontes de país nenhum. As fontes servem só para montar
+  o país e ficam na pasta dele, sem aparecer na tela. O país pode **trocar
+  nomes** para o jogador: no Brasil, "Taxa básica de juros" aparece como
+  "Selic". A troca é declarada **dentro do país**; a lei do mundo continua
+  com o nome genérico. Substitui a decisão de 23/out de deixar essas
+  informações no `exemplo` da lei.
 
 ## 4. Índices essenciais
 
@@ -93,9 +109,10 @@ continuam existindo por baixo; o índice é o resumo que o jogador lê.
 
 - **Hoje:** turno trimestral (3 meses do motor), passado pelo jogador.
   Detalhes em [mecânicas/tempo.md](mecanicas/tempo.md).
-- **Decidido (21/out):** tempo corrido com calendário em semanas, pausa e
-  velocidades. O motor continua calculando por mês; as semanas são
-  apresentação.
+- **Decidido (25/out, substitui o tempo corrido de 21/out):** o turno
+  continua de 3 meses. Ao apertar o turno, a tela **mostra os 3 meses
+  acontecendo**: as bolhas crescem e encolhem e o calendário anda, para dar
+  a sensação de tempo passando. Ver [mecânicas/tempo.md](mecanicas/tempo.md).
 
 ## 6. Sistemas do jogo
 

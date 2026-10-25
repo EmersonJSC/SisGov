@@ -1,0 +1,22 @@
+{
+  "dimensoes": [
+    {"id":"renda","nome":"Renda","segmentos":[
+      {"id":"renda_muito_baixa","nome":"Renda muito baixa","quem":"Pessoas no quinto de menor renda por pessoa da família, após ordenar todas as famílias do país.","gruposProximos":["familias_baixa_renda","movimentos_moradia"]},
+      {"id":"renda_baixa","nome":"Renda baixa","quem":"Pessoas entre os 20% e os 40% de menor renda familiar por pessoa na ordem nacional.","gruposProximos":["familias_baixa_renda","moradores_periferias"]},
+      {"id":"renda_intermediaria","nome":"Renda intermediária","quem":"O quinto central da ordem nacional, entre as posições de 40% e 60% da renda por morador.","gruposProximos":["familias_renda_intermediaria","trabalhadores_com_contrato"]},
+      {"id":"renda_alta","nome":"Renda alta","quem":"Pessoas com renda por morador maior que a do grupo central, mas fora do quinto de maior renda.","gruposProximos":["familias_renda_intermediaria","pequenos_empresarios"]},
+      {"id":"renda_muito_alta","nome":"Renda muito alta","quem":"Pessoas no quinto de maior renda familiar por pessoa.","gruposProximos":["contribuintes_alta_renda","investidores_financeiros"]}
+    ]},
+    {"id":"ocupacao","nome":"Ocupação principal","segmentos":[
+      {"id":"empregados_privados","nome":"Empregados de empresas","quem":"Pessoas cuja atividade remunerada principal é um contrato com empresa privada; quem trabalha entra aqui antes de qualquer condição de estudo ou aposentadoria.","gruposProximos":["trabalhadores_com_contrato","sindicatos"]},
+      {"id":"empregados_publicos","nome":"Empregados do Estado","quem":"Pessoas cuja atividade remunerada principal é um posto em órgão público, ainda que também estudem ou recebam aposentadoria.","gruposProximos":["servidores_publicos","professores","profissionais_saude"]},
+      {"id":"empregados_sem_vinculo","nome":"Empregados sem vínculo","quem":"Pessoas pagas por um contratante para trabalhar sem contrato registrado, sem controlar o próprio negócio.","gruposProximos":["trabalhadores_sem_contrato"]},
+      {"id":"autonomos_sem_empregados","nome":"Autônomos","quem":"Pessoas cuja atividade principal é vender o próprio serviço ou produto sem empregar outras pessoas.","gruposProximos":["trabalhadores_sem_contrato","produtores_familiares"]},
+      {"id":"empregadores","nome":"Empregadores","quem":"Pessoas cuja atividade principal é dirigir um negócio próprio com pelo menos uma pessoa contratada.","gruposProximos":["pequenos_empresarios","grandes_empresarios","grandes_produtores_rurais"]},
+      {"id":"aposentados_sem_trabalho","nome":"Aposentados sem trabalho","quem":"Pessoas que não exercem atividade remunerada e recebem aposentadoria ou pensão como ocupação principal declarada.","gruposProximos":["aposentados"]},
+      {"id":"desempregados_em_busca","nome":"Procurando trabalho","quem":"Pessoas sem atividade remunerada que procuram uma ocupação e estão disponíveis para começar.","gruposProximos":["sindicatos","jovens_em_formacao"]},
+      {"id":"estudantes_sem_trabalho","nome":"Estudantes sem trabalho","quem":"Pessoas sem atividade remunerada e sem procura de emprego cuja atividade principal é frequentar ensino formal.","gruposProximos":["jovens_em_formacao","familias_com_criancas"]},
+      {"id":"fora_do_trabalho_e_estudo","nome":"Fora do trabalho e estudo","quem":"Demais pessoas sem atividade remunerada principal, sem busca de emprego, sem aposentadoria principal e fora do ensino formal; inclui cuidados familiares e crianças pequenas.","gruposProximos":["familias_com_criancas","pessoas_com_deficiencia"]}
+    ]}
+  ]
+}

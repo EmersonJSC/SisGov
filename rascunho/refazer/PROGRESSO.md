@@ -1,0 +1,34 @@
+- 04:00 · indices.json · 140 itens · verificador ok (0 erros; avisos só das etapas seguintes)
+- 04:15 · grupos.json · 25 itens · verificador ok
+- 04:16 · segmentos.json · 14 itens · verificador ok
+- 04:21 · leis/contas-publicas.json · 22 itens · verificador ok
+- 04:21 · evidencias/contas-publicas.md · 22 seções · verificador ok
+- 04:27 · leis/economia-e-empresas.json · 23 itens · verificador ok
+- 04:27 · evidencias/economia-e-empresas.md · 23 seções · verificador ok
+- 04:31 · leis/trabalho.json · 20 itens · verificador ok
+- 04:31 · evidencias/trabalho.md · 20 seções · verificador ok
+- 04:37 · leis/protecao-social.json · 20 itens · verificador ok
+- 04:37 · evidencias/protecao-social.md · 20 seções · verificador ok
+- 04:41 · leis/saude.json · 20 itens · verificador ok
+- 04:41 · evidencias/saude.md · 20 seções · verificador ok
+- 04:45 · leis/educacao-e-cultura.json · 22 itens · verificador ok
+- 04:45 · evidencias/educacao-e-cultura.md · 22 seções · verificador ok
+- 04:50 · leis/infraestrutura-e-energia.json · 18 itens · verificador ok
+- 04:50 · evidencias/infraestrutura-e-energia.md · 18 seções · verificador ok
+- 04:54 · leis/ambiente-e-campo.json · 17 itens · verificador ok
+- 04:54 · evidencias/ambiente-e-campo.md · 17 seções · verificador ok
+- 05:00 · leis/seguranca-e-defesa.json · 30 itens · verificador ok
+- 05:00 · evidencias/seguranca-e-defesa.md · 30 seções · verificador ok
+- 05:06 · leis/direitos-e-costumes.json · 20 itens · verificador ok
+- 05:06 · evidencias/direitos-e-costumes.md · 20 seções · verificador ok
+- 05:16 · leis/governo-e-instituicoes.json · 25 itens · verificador ok
+- 05:16 · evidencias/governo-e-instituicoes.md · 25 seções · verificador ok
+- 05:19 · leis/centro.json · 5 pétreas · verificador ok após evidências
+- 05:19 · evidencias/centro.md · 5 seções · verificador ok
+- 05:23 · leis/economia-e-empresas.json · 24 itens, incluindo propriedade das fábricas · verificador ok
+- 05:23 · evidencias/economia-e-empresas.md · 24 seções · verificador ok
+- 05:26 · de-para.json · 226 leis antigas, 192 vinculadas e 34 saídas com motivo · verificador ok
+- 05:27 · leis/saude.json e evidencias/saude.md · efeito de conselho hospitalar corrigido · verificador ok
+- 05:28 · leis/seguranca-e-defesa.json · referência da pena de morte no centro da bússola · verificador ok
+
+## FIM

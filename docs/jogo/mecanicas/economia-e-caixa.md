@@ -60,9 +60,40 @@ apagado.
 **Nenhuma receita fica em "outras":** cada linha tem a sua lei.
 
 **O que escapa** sobe com a alíquota: sonegação, informalidade, lucro guardado,
-dinheiro saindo do país. A curva de cada imposto vem das curvas de hoje, que já
-têm esse formato de pico e queda. A diferença é que a base agora é visível e
-reage à economia.
+dinheiro saindo do país.
+
+#### 2.2.1 A conta (decidida com o autor em 25/out)
+
+```
+arrecadação = alíquota × base × fator de partida × (1 − alíquota / alíquota que zera)
+```
+
+- É a curva de Laffer com o "escapa" crescendo em linha reta: o pico fica
+  na metade da alíquota que zera. Mesma forma das curvas de hoje, agora com
+  a base em reais.
+- **Alíquota que zera:** do **mundo**, igual para todos os países (tabela).
+- **Fator de partida** (= 1 − o que já escapa com alíquota baixa, mais o
+  ajuste da base): do **país**, calculado uma vez pelo `npm run pais:ancorar`
+  para a arrecadação do turno 0 ser igual à de hoje. Imposto com alíquota 0
+  no país usa o fator padrão do mundo (60%).
+- A base também reage ao imposto pelas leis que já existem (imposto sobre o
+  consumo derruba o índice Consumo). Isso baixa o pico real: conferir na
+  calibragem onde ele cai de fato.
+
+| Imposto | Base (em reais) | Zera em | Pico | Base científica |
+| --- | --- | --- | --- | --- |
+| Consumo | consumo das famílias | 150% | 75% | quase sem pico nos estudos (Trabandt e Uhlig, 2011); a perda vem da sonegação |
+| Renda das pessoas | massa salarial | 130% | 65% | Diamond e Saez (2011): ~70%; Trabandt e Uhlig: 60–65% no trabalho |
+| Lucro das empresas | lucros | 90% | 45% | Trabandt e Uhlig: ~50–60% no capital |
+| Dividendos | lucros | 100% | 50% | idem |
+| Herança | mortes × patrimônio por pessoa | 80% | 40% | evidência moderada |
+| Grandes fortunas | patrimônio (os três) | 8% | 4% | fuga rápida (Jakobsen e outros, 2020) |
+| Imóveis urbanos | patrimônio em imóveis | 6% | 3% | evidência fraca; 3% ao ano já é raro no mundo |
+| Terras rurais | patrimônio em terras | 6% | 3% | idem |
+| Transações bancárias | PIB | 3% | 1,5% | queda forte de volume (Suécia, anos 80) |
+| Contribuição sobre salários (lei nova) | massa salarial formal | 80% | 40% | perto da renda das pessoas |
+
+Royalties e lucro das estatais ficam como estão; taxas e tarifas, na fase 4.
 
 ### 2.3 Cada linha do orçamento tem lei
 

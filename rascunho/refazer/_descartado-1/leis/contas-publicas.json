@@ -1,0 +1,1167 @@
+{
+  "area": "contas-publicas",
+  "leis": [
+    {
+      "id": "destino-do-resultado-fiscal",
+      "nome": "Destino da sobra orçamentária",
+      "decide": "Define como funciona destino da sobra orçamentária e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "industrializacao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_alta_renda"
+      ],
+      "rejeitam": [
+        "empresarios"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "fundo-soberano",
+      "nome": "Fundo soberano",
+      "decide": "Define a parcela do orçamento destinada a fundo soberano",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "industrializacao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "classe_media"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "imposto-grandes-fortunas",
+      "nome": "Imposto sobre grandes fortunas",
+      "decide": "Define a alíquota cobrada sobre imposto sobre grandes fortunas",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "classe_media"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre grandes fortunas"
+    },
+    {
+      "id": "imposto-heranca",
+      "nome": "Imposto sobre heranças",
+      "decide": "Define a alíquota cobrada sobre imposto sobre heranças",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "pessoas_alta_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre heranças"
+    },
+    {
+      "id": "imposto-propriedade-urbana-rural",
+      "nome": "Imposto sobre imóveis urbanos",
+      "decide": "Define a alíquota cobrada sobre imposto sobre imóveis urbanos",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_alta_renda"
+      ],
+      "rejeitam": [
+        "empresarios"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre imóveis urbanos"
+    },
+    {
+      "id": "imposto-renda-empresas",
+      "nome": "Imposto sobre o lucro das empresas",
+      "decide": "Define a alíquota cobrada sobre imposto sobre o lucro das empresas",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "classe_media"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre o lucro das empresas"
+    },
+    {
+      "id": "imposto-renda-pessoas",
+      "nome": "Imposto sobre a renda das pessoas",
+      "decide": "Define a alíquota cobrada sobre imposto sobre a renda das pessoas",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "classe_media"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre a renda das pessoas"
+    },
+    {
+      "id": "imposto-seletivo",
+      "nome": "Imposto sobre produtos de risco à saúde",
+      "decide": "Define a alíquota cobrada sobre imposto sobre produtos de risco à saúde",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "pessoas_alta_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre produtos de risco à saúde"
+    },
+    {
+      "id": "imposto-sobre-consumo",
+      "nome": "Imposto sobre o consumo",
+      "decide": "Define a alíquota cobrada sobre imposto sobre o consumo",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_alta_renda"
+      ],
+      "rejeitam": [
+        "empresarios"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre o consumo"
+    },
+    {
+      "id": "imposto-terras-rurais",
+      "nome": "Imposto sobre terras rurais",
+      "decide": "Define a alíquota cobrada sobre imposto sobre terras rurais",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "classe_media"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre terras rurais"
+    },
+    {
+      "id": "imposto-transacoes-financeiras",
+      "nome": "Imposto sobre transações bancárias",
+      "decide": "Define a alíquota cobrada sobre imposto sobre transações bancárias",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "classe_media"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "imposto sobre transações bancárias"
+    },
+    {
+      "id": "meta-de-resultado-primario",
+      "nome": "Meta de resultado das contas",
+      "decide": "Define como funciona meta de resultado das contas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de meta de resultado das contas permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "pessoas_alta_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de meta de resultado das contas usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "pessoas_alta_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de meta de resultado das contas limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "Custos e restrições de acesso reduzem a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_alta_renda"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "modelo-tributario",
+      "nome": "Modelo de impostos",
+      "decide": "Define como funciona modelo de impostos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de modelo de impostos permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_alta_renda"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de modelo de impostos usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_alta_renda"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de modelo de impostos limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "Custos e restrições de acesso reduzem a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "pessoas_alta_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "quem-paga-imposto-sobre-imoveis-e-terras",
+      "nome": "Quem paga imposto sobre imóveis e terras",
+      "decide": "Define como funciona quem paga imposto sobre imóveis e terras e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de quem paga imposto sobre imóveis e terras permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "classe_media"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de quem paga imposto sobre imóveis e terras usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "classe_media"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de quem paga imposto sobre imóveis e terras limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "Custos e restrições de acesso reduzem a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "classe_media"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "regra-fiscal",
+      "nome": "Regra das contas",
+      "decide": "Define como funciona regra das contas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de regra das contas permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "classe_media"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de regra das contas usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "classe_media"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de regra das contas limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "industrializacao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "Custos e restrições de acesso reduzem a capacidade de produzir.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "classe_media"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "revisao-de-gastos-tributarios",
+      "nome": "Isenções fiscais",
+      "decide": "Define a alíquota cobrada sobre isenções fiscais",
+      "familia": "imposto",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "A cobrança transfere recursos para o orçamento público.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "pessoas_alta_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "cobraSobre": "isenções fiscais"
+    },
+    {
+      "id": "tributacao-dividendos",
+      "nome": "Imposto sobre dividendos",
+      "decide": "Define como funciona imposto sobre dividendos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "industrializacao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_alta_renda"
+      ],
+      "rejeitam": [
+        "empresarios"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "vinculacoes-orcamentarias",
+      "nome": "Verbas carimbadas",
+      "decide": "Define a parcela do orçamento destinada a verbas carimbadas",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "industrializacao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a energia, transporte, crédito ou tecnologia altera a capacidade de produzir.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "classe_media"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    }
+  ]
+}

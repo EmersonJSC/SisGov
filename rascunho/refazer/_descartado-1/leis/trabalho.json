@@ -1,0 +1,1463 @@
+{
+  "area": "trabalho",
+  "leis": [
+    {
+      "id": "aumento-real-do-salario-minimo",
+      "nome": "Aumento real do salário mínimo",
+      "decide": "Define como funciona aumento real do salário mínimo e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "trabalhadores_assalariados"
+      ],
+      "rejeitam": [
+        "trabalhadores_informais"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "contribuicao-sindical",
+      "nome": "Contribuição sindical",
+      "decide": "Define como funciona contribuição sindical e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "trabalhadores_informais"
+      ],
+      "rejeitam": [
+        "empresarios"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "custo-de-processar-na-justica-do-trabalho",
+      "nome": "Custo de processar na Justiça do Trabalho",
+      "decide": "Define como funciona custo de processar na justiça do trabalho e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "jovens"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "direito-de-greve",
+      "nome": "Direito de greve",
+      "decide": "Define como funciona direito de greve e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "jovens"
+      ],
+      "rejeitam": [
+        "trabalhadores_assalariados"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "fiscalizacao-do-trabalho",
+      "nome": "Fiscalização do trabalho",
+      "decide": "Define como funciona fiscalização do trabalho e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de fiscalização do trabalho permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de fiscalização do trabalho usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de fiscalização do trabalho limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "formula-do-salario-minimo",
+      "nome": "Reajuste do salário mínimo",
+      "decide": "Define como funciona reajuste do salário mínimo e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de reajuste do salário mínimo permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de reajuste do salário mínimo usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de reajuste do salário mínimo limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "fundo-de-garantia",
+      "nome": "Fundo de garantia",
+      "decide": "Define como funciona fundo de garantia e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de fundo de garantia permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de fundo de garantia usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de fundo de garantia limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "intermediacao-e-qualificacao",
+      "nome": "Intermediação e qualificação",
+      "decide": "Define como funciona intermediação e qualificação e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de intermediação e qualificação permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de intermediação e qualificação usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de intermediação e qualificação limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "jornada-de-trabalho",
+      "nome": "Jornada de trabalho",
+      "decide": "Define como funciona jornada de trabalho e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de jornada de trabalho permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de jornada de trabalho usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de jornada de trabalho limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "legislacao-trabalhista",
+      "nome": "Legislação trabalhista",
+      "decide": "Define como funciona legislação trabalhista e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de legislação trabalhista permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de legislação trabalhista usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de legislação trabalhista limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "licenca-parental",
+      "nome": "Licença parental",
+      "decide": "Define a parcela do orçamento usada em licença parental",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "jovens"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "negociacao-coletiva-e-sindicatos",
+      "nome": "Negociação coletiva e sindicatos",
+      "decide": "Define como funciona negociação coletiva e sindicatos e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de negociação coletiva e sindicatos permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de negociação coletiva e sindicatos usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de negociação coletiva e sindicatos limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "quem-decide-o-salario-minimo",
+      "nome": "Quem decide o salário mínimo",
+      "decide": "Define como funciona quem decide o salário mínimo e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de quem decide o salário mínimo permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de quem decide o salário mínimo usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de quem decide o salário mínimo limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "reducao-de-jornada-subsidiada",
+      "nome": "Redução de jornada subsidiada",
+      "decide": "Define como funciona redução de jornada subsidiada e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de redução de jornada subsidiada permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de redução de jornada subsidiada usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de redução de jornada subsidiada limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "seguro-desemprego",
+      "nome": "Seguro-desemprego",
+      "decide": "Define a parcela do orçamento usada em seguro-desemprego",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "padrao_de_vida",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "meses",
+          "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "empresarios"
+      ],
+      "rejeitam": [
+        "jovens"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "terceirizacao",
+      "nome": "Terceirização",
+      "decide": "Define como funciona terceirização e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de terceirização permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de terceirização usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "jovens"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de terceirização limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "jovens"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "trabalho-infantil-e-aprendizagem",
+      "nome": "Trabalho infantil e aprendizagem",
+      "decide": "Define como funciona trabalho infantil e aprendizagem e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de trabalho infantil e aprendizagem permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de trabalho infantil e aprendizagem usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_assalariados"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de trabalho infantil e aprendizagem limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "trabalhadores_assalariados"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "trabalho-por-aplicativo",
+      "nome": "Trabalho por aplicativo",
+      "decide": "Define como funciona trabalho por aplicativo e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de trabalho por aplicativo permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "O acesso a renda, saúde, moradia ou proteção muda as condições cotidianas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de trabalho por aplicativo usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "trabalhadores_informais"
+            ],
+            "rejeitam": [
+              "empresarios"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de trabalho por aplicativo limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "padrao_de_vida",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "meses",
+                "porque": "A retirada de acesso reduz os recursos ou serviços disponíveis às pessoas.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "empresarios"
+            ],
+            "rejeitam": [
+              "trabalhadores_informais"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    }
+  ]
+}

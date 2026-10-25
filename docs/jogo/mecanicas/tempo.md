@@ -6,8 +6,8 @@
 ## 1. O que é
 
 Hoje o tempo anda em **turnos trimestrais**, passados pelo jogador. Cada
-turno roda **três meses** do motor. O destino é o **tempo corrido com
-sensação de semanas** (seção 5).
+turno roda **três meses** do motor. Ao apertar o turno, a tela
+**mostra os três meses acontecendo** (seção 5).
 
 ## 2. Regras
 
@@ -59,29 +59,17 @@ sensação de semanas** (seção 5).
 | Turno da eleição | `src/conteudo/paises/brasil/eleicao.json` (`turnoDaEleicao: 16`) |
 | Passo e unidades do motor | `src/engine/unidades-e-duracao.md` |
 
-## 5. Tempo corrido (decidido em 21/out, entra na versão 1)
+## 5. Os três meses na tela (decidido em 25/out)
 
-O turno trimestral será trocado por **tempo corrido com sensação de
-semanas**. É um truque de apresentação: o motor não muda.
+Substitui o tempo corrido decidido em 21/out (semanas, pausa e velocidades).
 
-- **Calendário em semanas:** a tela mostra a semana do mês ("2ª semana de
-  março de 2027"). O tempo corre sozinho, com **pausa** e **velocidades**.
-- **Motor mensal:** o cálculo continua acontecendo só no **fim de cada
-  mês**. Rede, atrasos e calibragem ficam como estão.
-- **Números deslizam:** entre um mês e outro, os valores da tela vão do
-  valor antigo ao novo aos poucos, semana a semana (o resultado do mês já
-  é conhecido).
-- **Tudo tem uma semana:** eventos, dilemas, sessões do Congresso e notícias
-  caem numa semana do mês, para coisas acontecerem no meio do caminho.
-- **Pausa automática** quando há decisão: dilema na mesa, votação
-  importante, crise, eleição. Substitui a regra "o turno não passa com
-  dilema".
-- **Lei mudada no meio do mês** entra no cálculo do fim daquele mês. Como
-  as leis já têm atraso de meses, isso não aparece para o jogador.
-- **Relatório trimestral continua** como resumo periódico, com "por você"
-  e "sozinho" do piloto automático.
-- A ordem do fim do turno (seção 2.1) vira acontecimentos datados no
-  calendário. O mandato continua com 4 anos e a eleição na data do país.
+- O turno continua de **três meses**, passado pelo jogador.
+- Ao apertar o turno, a tela **não salta** para o resultado: ela mostra os
+  três meses passando. O calendário anda e as bolhas crescem e encolhem até
+  o valor novo. O jogador sente o tempo passar e vê o que mudou.
+- O motor não muda: calcula mês a mês, e a tela anima entre os resultados.
+- Eventos e dilemas que caem no meio do trimestre aparecem no mês deles
+  durante a animação.
 
 ## 6. Implementação
 
@@ -94,9 +82,9 @@ semanas**. É um truque de apresentação: o motor não muda.
   - sessões do Congresso em datas (mecânica 3);
   - data da eleição pelo calendário, no lugar de "turno 16" (mecânica 11);
   - pausa automática por dilema e crise (mecânica 13);
-  - calendário em semanas, pausa e velocidades na tela (fim do projeto).
+  - animação dos três meses na tela.
 
 ## 7. Em aberto
 
-- Quantas velocidades e quanto tempo real dura uma semana em cada uma.
-- Quais acontecimentos pausam sozinhos e quais só avisam.
+- Quanto tempo real dura a animação de um turno, e se dá para pular.
+- Se um dilema no meio do trimestre pausa a animação.

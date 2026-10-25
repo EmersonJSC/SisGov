@@ -1,19 +1,63 @@
-# Retomada: onde paramos (24/out/2026, 23h40)
+# Retomada: onde paramos (25/out/2026, 18h)
 
 > Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md)
 > (seção "Nova ordem (24/out)"), [AGENTS.md](../AGENTS.md) e
 > [economia-e-caixa.md](jogo/mecanicas/economia-e-caixa.md).
 
-## Agora (24/out, 23h40)
+#### Agora (25/out, 18h)
+
+- **Refazer o mundo: desistido pelo autor (25/out, 18h).** As leis, índices
+  e grupos atuais ficam; mexemos muito nelas e refazer seria trabalho
+  jogado fora. O rascunho do GPT fica guardado em `rascunho/refazer/`
+  (não usar). Backup do mundo atual em `arquivo/mundo-antigo-2026-10-25/`
+  e na tag `mundo-antigo-2026-10-25`.
+- **Mundo sem país:** pedidos 10, 11 e 12 feitos e com commit (`f81f8e2`,
+  `6745744`, `8cfd9f0`).
+- **Pendente para a V2 (escolha de país):** parte dos efeitos das leis usa
+  coeficiente fixo sobre dinheiro (escala do Brasil) em vez de dividir pelo
+  PIB; corrigir antes de criar outro país.
+- **Próximo:** fase 3 da economia (impostos), pela nova ordem do PLANO.
+
+ Agora (25/out, 03h15): conferir a noite do GPT
+
+- **Mundo sem país:** pedidos 10 (`f81f8e2`) e 11 (`6745744`) com OK e
+  commit. Pedido 12 feito pelo GPT de noite, sem OK: conferir.
+- **Refazer o mundo (noite de 25/out):** o GPT escreve índices, grupos e
+  ~250 leis do zero em `rascunho/refazer/`, seguindo
+  `rascunho/refazer/REGRAS.md` e o `verificar.py`. Sem números do motor
+  (força em palavras), com `confianca` (consenso/debatido/jogo), evidências
+  por área, os cinco modelos de país em cada área, nada de lei grátis.
+  Ver `PROGRESSO.md` e `DECISOES.md` lá dentro.
+- **Próximo:** rodar o verificador; conferir o sentido por amostragem
+  (primeiro `debatido` e `jogo`); desenhar a conversão para o formato do
+  jogo (força → coeficiente proporcional); pacote do Brasil (leis em vigor);
+  religar eventos, dilemas e consequências pelo `de-para.json`; antigas
+  para o arquivo.
+
+## Antes (25/out, 00h40)
+
+- **Página da experiência escrita e revisada com o autor:**
+  [docs/jogo/experiencia.md](jogo/experiencia.md). Decisões: sem meta
+  pronta (só ganhar ou perder a eleição); industrializar é o rumo natural
+  de quem joga bem (V1); coisas novas e pesquisa na V5; leis sem limite
+  por turno, ~250 no catálogo; nada é bom ou ruim (jogo neutro); nada
+  aparece do nada; o jogo percebe padrões (ex.: corte de gastos) e a
+  bússola só mostra; radicais/lealistas = polarização e antipartido, a
+  eleição sai do apoio dos grupos contra o adversário; turno continua de
+  3 meses, mas a tela anima os 3 meses (substitui o tempo corrido).
+- **Plano revisto:** nova ordem no [PLANO](../PLANO.md) (seção "Nova
+  ordem"). Próximo: fase 3 da economia (impostos), sem ampliar.
+- Mudanças em `experiencia.md`, `escopo.md`, `tempo.md`, `PLANO.md` e aqui
+  sem commit.
+
+## Antes (24/out, 23h40)
 
 - **Parada para pensar no jogo.** O autor sentiu que ficamos só em
-  estatística e esquecemos que é um jogo. Antes da fase 3, numa conversa
-  nova e curta: o autor conta o que o jogo deveria ser (o que te animava no
-  começo); Claude escreve **uma página da experiência de jogo** (o que faço a
-  cada turno e por que é difícil escolher; o que sinto quando dá certo ou
-  errado; objetivo e como perco; surpresas). Depois revemos o plano a partir
-  dela. Contas grandes por baixo, como Democracy 4 e Victoria 3, mas o
-  jogador nunca vê a planilha.
+  estatística e esquecemos que é um jogo. A página já existe:
+  [experiencia.md](jogo/experiencia.md) (rascunho de 24/out). Próximo: o autor
+  revisa e responde as 3 perguntas "Em aberto"; depois conferimos o PLANO
+  contra ela (o que serve à experiência vem primeiro). Não repetir perguntas
+  já respondidas nem criar documento novo sobre o mesmo assunto.
 - **Economia em reais e caixa:** fases 1 e 2 construídas (PIB em reais,
   população, ocupados, mortes no ano, tipo `derivado` no motor, salário
   médio, massa salarial, lucros, consumo, três patrimônios). Fase 3

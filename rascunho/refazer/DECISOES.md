@@ -1,0 +1,65 @@
+# Decisões do rascunho
+
+- `indices.json/pib`: reuni `pib` e `pib_nominal` em um único valor monetário de produção anual, atualizado entre turnos, para não mostrar dois tamanhos da economia.
+- `indices.json/instrucao`: reuni escolaridade e aprendizagem, pois anos de estudo sem aprendizagem não representam a instrução percebida no jogo.
+- `indices.json/patrimonio_familias`: reuni os três estoques patrimoniais em um total; a composição continua recuperável no cálculo interno quando necessária.
+- `indices.json/dinheiro_do_governo`: representei o caixa em parcela do PIB e mantive a dívida pública como índice separado, para que entrada de dinheiro e obrigação futura sejam visíveis.
+- `indices.json/radicais`: usei aprovação e polarização como ligações de alto nível; na conversão, a mudança de pessoas precisa vir da satisfação de cada grupo antes da soma nacional.
+- `indices.json/lealistas`: usei aprovação e confiança como ligações de alto nível; na conversão, o estoque de cada grupo deve ser atualizado antes do total nacional.
+- `indices.json/complexidade_tributaria`: tratei o acúmulo de obrigações como estoque movido por leis, sem inferir que outra condição o altera automaticamente.
+- `indices.json/desigualdade_regional`: tratei a distância entre regiões como estoque movido por leis territoriais; elevar a infraestrutura ou a indústria do país não determina sozinho em qual região o ganho aparece.
+- `indices.json/estiagem`: medi a falta de água no solo e nos reservatórios; retirar vegetação reduz retenção mesmo onde a quantidade de chuva não muda.
+- `indices.json/acesso_creches`: acrescentei um índice novo para ligar vagas de cuidado infantil à participação no trabalho de responsáveis, sem atribuir essa mudança a consultas de saúde.
+- `indices.json/investimento_externo` e `indices.json/cobertura_atencao_basica`: troquei siglas dos ids antigos por nomes compreensíveis e mantive os ids em `antigo`.
+- `indices.json/descartados`: retirei controles de leis e contas intermediárias do catálogo de índices; cada variável retirada tem motivo próprio no arquivo.
+- `leis/economia-e-empresas.json/autonomia-da-autoridade-monetaria`: usei força das instituições em vez do antigo controle técnico de subordinação monetária; a lei já mostra quem manda.
+- `leis/economia-e-empresas.json/entrada-e-saida-de-capitais`: descrevi risco de corrupção em autorizações individuais, sem recriar a situação descartada de mercado paralelo.
+- `leis/economia-e-empresas.json/licenca-para-abrir-negocio`: classifiquei permissão rígida como mercado com autoridade porque a empresa continua privada, embora precise de autorização antes de operar.
+- `leis/protecao-social.json/abrigo-temporario`: tratei acolhimento temporário como mudança de padrão de vida, pois `populacao_de_rua` já inclui pessoas em acolhimento temporário.
+- `leis/governo-e-instituicoes.json/limite-de-permanencia-no-governo`: usei anos de permanência, uma unidade existente, para separar essa escolha da duração de cada mandato.
+- `leis/governo-e-instituicoes.json/consultas-diretas-sobre-leis`: votação em consultas não é comparecimento à eleição geral; reservei `participacao_eleitoral` para a obrigação de votar.
+- `leis/centro.json`: escolhi cinco procedimentos que cabem em diferentes formas de governo. Pétreas sem controle não recebem efeito incremental nem posição de bússola; essas escolhas ficam nas leis das áreas.
+- `leis/economia-e-empresas.json/propriedade-das-fabricas`: acrescentei posse das fábricas como escolha concreta para representar propriedade pública ampla; o planejamento de quantidades sozinho não muda quem é dono.
+- `de-para.json/acesso-ao-ensino-superior`: saiu porque as novas leis tratam verba, bolsa e crédito, não a regra geral de acesso.
+- `de-para.json/acordos-comerciais`: saiu porque imposto de importação não representa os compromissos recíprocos de um acordo.
+- `de-para.json/alinhamento-externo`: saiu porque presença diplomática não escolhe blocos ou aliados políticos.
+- `de-para.json/cooperacao-internacional`: saiu porque missões de paz são apenas uma forma de cooperação externa.
+- `de-para.json/cooperativas-e-autogestao`: saiu porque crédito a cooperativas não estabelece o direito ou a forma de autogestão.
+- `de-para.json/crimes-da-ditadura`: saiu porque não há lei nova sobre apuração de crimes de regimes passados.
+- `de-para.json/defesa-comercial`: saiu porque tarifas gerais não representam investigação de dumping e salvaguardas.
+- `de-para.json/destino-do-resultado-fiscal`: saiu porque a divisão automática da sobra entre caixa e dívida não foi redesenhada.
+- `de-para.json/divisao-da-verba-atencao-basica-x-hospitais`: saiu porque as duas verbas novas são controles independentes, sem régua para repartir o total.
+- `de-para.json/financiamento-com-resultado`: saiu porque avaliação escolar não condiciona a verba aos resultados.
+- `de-para.json/fundo-seguranca-publica`: saiu porque as verbas policiais novas não criam fundo de repasse dedicado.
+- `de-para.json/governadores`: saiu porque distribuição territorial de poder não define como escolher autoridades locais.
+- `de-para.json/incentivo-fiscal-a-pesquisa-nas-empresas`: saiu porque verba pública para pesquisa não reproduz a dedução de imposto das empresas.
+- `de-para.json/incentivos-fiscais-regionais`: saiu porque não há desconto de imposto vinculado ao lugar do investimento.
+- `de-para.json/investimento-em-geracao-por-fonte`: saiu como controle único porque cada fonte de eletricidade ganhou sua própria verba.
+- `de-para.json/investimento-em-infraestrutura`: saiu como controle único porque transportes, água e energia passaram a ter verbas próprias.
+- `de-para.json/investimento-pesquisa`: saiu como controle único porque pesquisa industrial e bolsas avançadas foram separadas.
+- `de-para.json/legislacao-trabalhista`: saiu como controle único porque jornada, contrato, greve e fiscalização têm leis separadas.
+- `de-para.json/lei-anticorrupcao`: saiu porque verba de investigação não define responsabilidade de empresas nem acordos anticorrupção.
+- `de-para.json/matriz-energetica`: saiu como controle único porque a construção por cada fonte tem verba separada.
+- `de-para.json/modelo-tributario`: saiu como controle único porque cada base de imposto tem sua própria alíquota.
+- `de-para.json/organizacao-dos-programas-sociais`: saiu porque verba de cadastro não decide a coordenação dos programas.
+- `de-para.json/partidos`: saiu porque um limite eleitoral para partidos não define se eles podem existir e concorrer.
+- `de-para.json/politica-de-natalidade`: saiu porque auxílio por nascimento representa só incentivo financeiro, não coerção reprodutiva.
+- `de-para.json/politica-de-precos-das-estatais`: saiu porque teto da tarifa elétrica não determina preços de todas as estatais.
+- `de-para.json/politica-industrial`: saiu como direção única porque crédito, compras, formação e pesquisa ganharam controles separados.
+- `de-para.json/programa-espacial-e-satelites`: saiu porque não há programa novo de satélites ou lançamentos.
+- `de-para.json/programa-nuclear-lei`: saiu porque usinas elétricas não representam armamento nuclear nem inspeção militar.
+- `de-para.json/protecao-social-dos-militares`: saiu porque aposentadoria geral não preserva regime específico das forças armadas.
+- `de-para.json/regime-simplificado-para-pequenas-empresas`: saiu porque não há alíquota ou declaração própria para empresa pequena.
+- `de-para.json/regulacao-de-vagas`: saiu porque verba hospitalar não estabelece fila única nem prazo de atendimento.
+- `de-para.json/saida-do-pais`: saiu porque limite de entrada de imigrantes não controla a saída de residentes.
+- `de-para.json/tribunais-e-tratados-internacionais`: saiu porque nenhuma lei nova define adesão a tribunais internacionais.
+- `de-para.json/tributo-sobre-apostas`: saiu porque o imposto sobre produtos de risco cobre tabaco e álcool, não apostas.
+- `de-para.json/credito-rural-e-assistencia-tecnica`: o de-para aponta para crédito; a assistência foi separada em `assistencia-tecnica-rural`.
+- `de-para.json/garantias-penais`: o de-para aponta para resposta à acusação; a escolha sobre execução penal foi separada em `pena-de-morte`.
+- `de-para.json/imposto-propriedade-urbana-rural`: o de-para aponta para imóveis; terras têm `imposto-sobre-terras`.
+- `de-para.json/quem-paga-imposto-sobre-imoveis-e-terras`: o de-para aponta para imóveis; a base rural foi separada.
+- `de-para.json/renda-para-idosos-e-pessoas-com-deficiencia-pobres`: o de-para aponta para a renda na velhice; há outra lei para pessoas com deficiência.
+- `de-para.json/papel-do-estado-empresario` e `de-para.json/propriedade-dos-meios-de-producao`: o de-para aponta para fábricas; redes de energia e minas têm leis de propriedade próprias.
+- `de-para.json/nacionalizacao`: o de-para aponta para a propriedade das fábricas; aquisição de redes e minas é decidida em leis próprias.
+- `leis/saude.json/gestao-dos-hospitais-publicos`: conselho hospitalar passou a mover confiança institucional, pois voto no conselho não mede comparecimento às eleições gerais.
+- `leis/seguranca-e-defesa.json/pena-de-morte`: pus a opção de referência no centro da bússola conforme a regra; as outras opções continuam relativas à proibição.

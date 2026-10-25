@@ -1,0 +1,1783 @@
+{
+  "area": "educacao-e-cultura",
+  "leis": [
+    {
+      "id": "acesso-ao-ensino-superior",
+      "nome": "Acesso ao ensino superior",
+      "decide": "Define como funciona acesso ao ensino superior e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "estudantes"
+      ],
+      "rejeitam": [
+        "familias_com_filhos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "alfabetizacao-na-idade-certa",
+      "nome": "Alfabetização na idade certa",
+      "decide": "Define como funciona alfabetização na idade certa e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "familias_com_filhos"
+      ],
+      "rejeitam": [
+        "servidores_publicos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "avaliacao-das-escolas",
+      "nome": "Avaliação das escolas",
+      "decide": "Define como funciona avaliação das escolas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "servidores_publicos"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "bolsa-de-permanencia-no-ensino-medio",
+      "nome": "Bolsa de permanência no ensino médio",
+      "decide": "Define a parcela do orçamento usada em bolsa de permanência no ensino médio",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "estudantes"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "bolsas-de-pos-graduacao",
+      "nome": "Bolsas de pós-graduação",
+      "decide": "Define a parcela do orçamento usada em bolsas de pós-graduação",
+      "familia": "programa",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "estudantes"
+      ],
+      "rejeitam": [
+        "familias_com_filhos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": [],
+      "quemRecebe": "pessoas que atendem aos critérios públicos do programa"
+    },
+    {
+      "id": "conteudo-moral-e-sexual",
+      "nome": "Conteúdo moral e sexual",
+      "decide": "Define como funciona conteúdo moral e sexual e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de conteúdo moral e sexual permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de conteúdo moral e sexual usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de conteúdo moral e sexual limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "credito-estudantil",
+      "nome": "Crédito estudantil",
+      "decide": "Define como funciona crédito estudantil e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de crédito estudantil permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de crédito estudantil usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de crédito estudantil limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "educacao-domiciliar",
+      "nome": "Educação domiciliar",
+      "decide": "Define como funciona educação domiciliar e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de educação domiciliar permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de educação domiciliar usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de educação domiciliar limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "ensino-obrigatorio",
+      "nome": "Ensino obrigatório",
+      "decide": "Define como funciona ensino obrigatório e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de ensino obrigatório permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de ensino obrigatório usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de ensino obrigatório limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "ensino-religioso",
+      "nome": "Ensino religioso",
+      "decide": "Define como funciona ensino religioso e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de ensino religioso permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de ensino religioso usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de ensino religioso limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "ensino-tecnico-e-profissional",
+      "nome": "Ensino técnico e profissional",
+      "decide": "Define como funciona ensino técnico e profissional e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de ensino técnico e profissional permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de ensino técnico e profissional usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de ensino técnico e profissional limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "escola-em-tempo-integral",
+      "nome": "Escola em tempo integral",
+      "decide": "Define como funciona escola em tempo integral e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de escola em tempo integral permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de escola em tempo integral usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de escola em tempo integral limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "financiamento-com-resultado",
+      "nome": "Financiamento com resultado",
+      "decide": "Define como funciona financiamento com resultado e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de financiamento com resultado permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de financiamento com resultado usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de financiamento com resultado limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "gestao-da-escola-publica",
+      "nome": "Gestão da escola pública",
+      "decide": "Define como funciona gestão da escola pública e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de gestão da escola pública permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de gestão da escola pública usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de gestão da escola pública limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "incentivo-a-cultura",
+      "nome": "Incentivo à cultura",
+      "decide": "Define como funciona incentivo à cultura e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de incentivo à cultura permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de incentivo à cultura usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de incentivo à cultura limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "incentivo-fiscal-a-pesquisa-nas-empresas",
+      "nome": "Incentivo fiscal a pesquisa nas empresas",
+      "decide": "Define como funciona incentivo fiscal a pesquisa nas empresas e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de incentivo fiscal a pesquisa nas empresas permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de incentivo fiscal a pesquisa nas empresas usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "estudantes"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de incentivo fiscal a pesquisa nas empresas limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "estudantes"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "investimento-pesquisa",
+      "nome": "Investimento em pesquisa e desenvolvimento",
+      "decide": "Define a parcela do orçamento destinada a investimento em pesquisa e desenvolvimento",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "estudantes"
+      ],
+      "rejeitam": [
+        "familias_com_filhos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "piso-de-gasto-em-educacao",
+      "nome": "Piso de gasto em educação",
+      "decide": "Define a parcela do orçamento destinada a piso de gasto em educação",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "familias_com_filhos"
+      ],
+      "rejeitam": [
+        "servidores_publicos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "piso-educacao",
+      "nome": "Verba executada para a educação",
+      "decide": "Define a parcela do orçamento destinada a verba executada para a educação",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "servidores_publicos"
+      ],
+      "rejeitam": [
+        "pessoas_baixa_renda"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "piso-salarial-professores",
+      "nome": "Piso salarial dos professores",
+      "decide": "Define a parcela do orçamento destinada a piso salarial dos professores",
+      "familia": "verba",
+      "nivel": "decreto",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "percentual_pib",
+        "minimo": 0,
+        "maximo": 8,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": 1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": -1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "dinheiro_do_governo",
+          "direcao": "desce",
+          "forca": "media",
+          "atraso": "imediato",
+          "porque": "O pagamento sai dos recursos disponíveis ao governo.",
+          "confianca": "consenso"
+        },
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "pessoas_baixa_renda"
+      ],
+      "rejeitam": [
+        "estudantes"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "programa-espacial-e-satelites",
+      "nome": "Programa espacial e de satélites",
+      "decide": "Define como funciona programa espacial e de satélites e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "faixa",
+        "unidade": "indice_0_100",
+        "minimo": 0,
+        "maximo": 100,
+        "bussolaNoMinimo": {
+          "economia": -1,
+          "costumes": -1
+        },
+        "bussolaNoMaximo": {
+          "economia": 1,
+          "costumes": 1
+        }
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [
+        {
+          "alvo": "instrucao",
+          "direcao": "sobe",
+          "forca": "media",
+          "atraso": "anos",
+          "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+          "confianca": "debatido",
+          "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+        }
+      ],
+      "apoiam": [
+        "estudantes"
+      ],
+      "rejeitam": [
+        "familias_com_filhos"
+      ],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "vagas-publicas-no-ensino-superior",
+      "nome": "Vagas públicas no ensino superior",
+      "decide": "Define como funciona vagas públicas no ensino superior e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de vagas públicas no ensino superior permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de vagas públicas no ensino superior usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "familias_com_filhos"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de vagas públicas no ensino superior limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "familias_com_filhos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    },
+    {
+      "id": "vouchers-escolares",
+      "nome": "Vouchers escolares",
+      "decide": "Define como funciona vouchers escolares e quem pode usar ou executar a regra.",
+      "familia": "regra",
+      "nivel": "lei",
+      "controle": {
+        "tipo": "opcoes",
+        "opcoes": [
+          {
+            "id": "acesso-amplo",
+            "rotulo": "Acesso amplo",
+            "propoe": "A regra de vouchers escolares permite a prática sem condição adicional.",
+            "bussola": {
+              "economia": -1,
+              "costumes": -1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "sobe",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "O acesso e a continuidade do ensino mudam as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "criterios-publicos",
+            "rotulo": "Critérios públicos",
+            "propoe": "A regra de vouchers escolares usa critérios publicados e revisão regular.",
+            "bussola": {
+              "economia": 0,
+              "costumes": 0
+            },
+            "referencia": true,
+            "efeitos": [],
+            "apoiam": [
+              "servidores_publicos"
+            ],
+            "rejeitam": [
+              "pessoas_baixa_renda"
+            ]
+          },
+          {
+            "id": "acesso-limitado",
+            "rotulo": "Acesso limitado",
+            "propoe": "A regra de vouchers escolares limita a prática a casos autorizados.",
+            "bussola": {
+              "economia": 1,
+              "costumes": 1
+            },
+            "referencia": false,
+            "efeitos": [
+              {
+                "alvo": "instrucao",
+                "direcao": "desce",
+                "forca": "media",
+                "atraso": "anos",
+                "porque": "Menos acesso ou tempo de ensino reduz as oportunidades de aprendizagem.",
+                "confianca": "debatido",
+                "nota": "O tamanho varia conforme execução, acesso e resposta de pessoas e organizações."
+              }
+            ],
+            "apoiam": [
+              "pessoas_baixa_renda"
+            ],
+            "rejeitam": [
+              "servidores_publicos"
+            ]
+          }
+        ]
+      },
+      "modelos": [
+        "planificado",
+        "capitalismo_de_estado",
+        "liberal",
+        "social_democrata",
+        "conservador_autoritario"
+      ],
+      "efeitos": [],
+      "apoiam": [],
+      "rejeitam": [],
+      "requer": [],
+      "exclui": [],
+      "trava": []
+    }
+  ]
+}
