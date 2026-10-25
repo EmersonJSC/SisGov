@@ -1,27 +1,36 @@
-# Retomada: onde paramos (24/out/2026, 02h20)
+# Retomada: onde paramos (24/out/2026, 23h40)
 
 > Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md)
 > (seção "Nova ordem (24/out)"), [AGENTS.md](../AGENTS.md) e
 > [economia-e-caixa.md](jogo/mecanicas/economia-e-caixa.md).
 
-## Agora
+## Agora (24/out, 23h40)
 
-- **Jeito de trabalhar (24/out):** construir primeiro, calibrar no fim. Cada
-  mecânica com testes de comportamento só; nada de consertar números da
-  economia no meio do caminho.
-- **Claude e GPT conversam por `canal/CANAL.md`** (fora do git). Claude escreve
-  PEDIDO curto e fechado; GPT faz só aquilo e responde em até 5 linhas; Claude
-  confere no código e escreve OK ou REFAZER. Regras no topo do arquivo.
-- **Em andamento:** mecânica Economia em reais e caixa (aprovada), fase 1.
-  PEDIDO 1 (PIB em reais cresce) está no canal, esperando o GPT.
-- **Feito em 23–24/out:** régua nas 26 leis de valor; painel de efeitos por
-  seção; salário mínimo em "pessoas acima da linha de pobreza" com a medida do
-  país (`paises/brasil/referencias.json`); "Selic" virou "juros básicos";
-  suíte verde (514 testes); amostra das telas da versão 2 em
-  `docs/jogo/amostras/telas-v2.html` (topo em uma linha, política com
-  plenário, orçamento, economia em cadeias).
-- **Para depois:** plenário fiel ao jogo (seu partido começa com 5% das
-  cadeiras; 6 bancadas por ideologia); régua nas leis de opções.
+- **Parada para pensar no jogo.** O autor sentiu que ficamos só em
+  estatística e esquecemos que é um jogo. Antes da fase 3, numa conversa
+  nova e curta: o autor conta o que o jogo deveria ser (o que te animava no
+  começo); Claude escreve **uma página da experiência de jogo** (o que faço a
+  cada turno e por que é difícil escolher; o que sinto quando dá certo ou
+  errado; objetivo e como perco; surpresas). Depois revemos o plano a partir
+  dela. Contas grandes por baixo, como Democracy 4 e Victoria 3, mas o
+  jogador nunca vê a planilha.
+- **Economia em reais e caixa:** fases 1 e 2 construídas (PIB em reais,
+  população, ocupados, mortes no ano, tipo `derivado` no motor, salário
+  médio, massa salarial, lucros, consumo, três patrimônios). Fase 3
+  (impostos) **em espera** até a página da experiência.
+- **Defeito visto pelo autor:** os números em reais (PIB nominal, salário
+  médio, patrimônios) viraram bolhas gigantes no mapa, com ícone genérico e
+  número cru. São contas internas: sair do mapa; no futuro aparecem em frases
+  e comparações ("cada brasileiro ganha em média R$ 3.500").
+- **Divisão do trabalho:** Claude faz desenho, decisões, peças centrais do
+  motor e confere **rodando os testes e lendo o diff inteiro**; GPT só faz
+  conteúdo repetitivo. Canal em `canal/CANAL.md` (regras 9–17 no topo); o
+  autor leva o pedido ao GPT e faz o commit (o `.git` é só leitura para o
+  GPT). Vigia desligado.
+- **Economia de uso:** uma conversa por assunto; respostas curtas; perguntas
+  paralelas em conversa separada.
+- **Pendente de calibragem:** `fichaV3` e `gruposSociais` falham por pouco
+  (GPT diz que é anterior; não verificado); timeouts da suíte inteira.
 
 ## Combinados com o autor (resumo)
 
