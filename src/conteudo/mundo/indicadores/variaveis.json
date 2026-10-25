@@ -72,6 +72,88 @@
       }
     },
     {
+      "id": "massa_salarial",
+      "tipo": "derivado",
+      "nome": "Massa salarial",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Economia",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "ocupados" },
+              { "var": "salario_medio", "escala": 0.000001 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lucros",
+      "tipo": "derivado",
+      "nome": "Lucros",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Economia",
+      "formula": {
+        "termos": [
+          { "sinal": 1, "fatores": [{ "var": "pib_nominal" }] },
+          { "sinal": -1, "fatores": [{ "var": "massa_salarial" }] },
+          {
+            "sinal": -1,
+            "fatores": [
+              { "var": "pib_nominal" },
+              { "var": "carga_impostos_consumo", "escala": 0.01 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "consumo_familias",
+      "tipo": "derivado",
+      "nome": "Consumo das famílias",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Economia",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "massa_salarial" },
+              { "var": "propensao_consumo", "escala": 0.01 }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "lucros" },
+              { "var": "propensao_consumo", "escala": 0.003 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "carga_impostos_consumo",
+      "tipo": "controle",
+      "nome": "Carga de impostos sobre o consumo",
+      "unidade": "percentual_pib",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "area": "Economia"
+    },
+    {
+      "id": "propensao_consumo",
+      "tipo": "controle",
+      "nome": "Propensão ao consumo",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 100 },
+      "area": "Economia"
+    },
+    {
       "id": "taxa_natalidade",
       "tipo": "controle",
       "nome": "Taxa de natalidade",
@@ -99,6 +181,54 @@
       "medida": {
         "unidade": "moeda corrente",
         "fontes": ["Sistema de contas nacionais do país"]
+      },
+      "area": "Economia"
+    },
+    {
+      "id": "salario_medio",
+      "tipo": "estoque",
+      "nome": "Salário médio",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "medida": {
+        "unidade": "reais por ano por pessoa",
+        "fontes": ["Estatísticas salariais oficiais do país"]
+      },
+      "area": "Economia"
+    },
+    {
+      "id": "patrimonio_imoveis_urbanos",
+      "tipo": "estoque",
+      "nome": "Patrimônio em imóveis urbanos",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "medida": {
+        "unidade": "patrimônio imobiliário urbano em milhões de reais",
+        "fontes": ["Estatísticas patrimoniais oficiais do país"]
+      },
+      "area": "Economia"
+    },
+    {
+      "id": "patrimonio_terras",
+      "tipo": "estoque",
+      "nome": "Patrimônio em terras",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "medida": {
+        "unidade": "patrimônio em terras em milhões de reais",
+        "fontes": ["Estatísticas fundiárias e patrimoniais do país"]
+      },
+      "area": "Economia"
+    },
+    {
+      "id": "patrimonio_financeiro",
+      "tipo": "estoque",
+      "nome": "Patrimônio financeiro",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "medida": {
+        "unidade": "patrimônio financeiro em milhões de reais",
+        "fontes": ["Estatísticas financeiras oficiais do país"]
       },
       "area": "Economia"
     },

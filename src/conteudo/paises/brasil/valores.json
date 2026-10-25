@@ -148,9 +148,13 @@
     "infraestrutura_transportes": 28.75,
     "juros_implicito": 7.26,
     "pib_nominal": 12000000,
+    "patrimonio_imoveis_urbanos": 24000000,
+    "patrimonio_terras": 5000000,
+    "patrimonio_financeiro": 18000000,
     "poupanca_domestica": 14.5,
     "reservas_internacionais": 15.2,
     "salario_minimo_relativo": 66,
+    "salario_medio": 41600,
     "transparencia_fiscal_internacional": 75
   },
   "ajusteDoContexto": {

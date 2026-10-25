@@ -20,6 +20,10 @@
     "transparencia_fiscal_internacional": 50,
     "cofre": 0,
     "pib_nominal": 12000000,
-    "salario_minimo_relativo": 50
+    "patrimonio_imoveis_urbanos": 24000000,
+    "patrimonio_terras": 5000000,
+    "patrimonio_financeiro": 18000000,
+    "salario_minimo_relativo": 50,
+    "salario_medio": 41600
   }
 }

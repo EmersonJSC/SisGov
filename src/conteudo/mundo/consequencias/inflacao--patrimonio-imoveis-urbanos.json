@@ -1,0 +1,16 @@
+{
+  "id": "inflacao--patrimonio-imoveis-urbanos",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "inflacao",
+  "alvo": "patrimonio_imoveis_urbanos",
+  "mecanismo": "afim",
+  "parametros": { "coeficiente": 0.01, "termoConstante": 0 },
+  "normalizacao": {
+    "fator": "patrimonio_imoveis_urbanos",
+    "multiplicador": 0.01
+  },
+  "unidade": "moeda_por_passo",
+  "atrasoPassos": 0,
+  "duracao": { "modo": "continuo" }
+}

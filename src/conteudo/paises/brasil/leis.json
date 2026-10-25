@@ -811,6 +811,8 @@
     }
   ],
   "controles": {
+    "carga_impostos_consumo": 13,
+    "propensao_consumo": 90,
     "idade_de_trabalhar": 70,
     "participacao_trabalho": 62,
     "taxa_natalidade": 12,

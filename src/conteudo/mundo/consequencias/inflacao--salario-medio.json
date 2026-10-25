@@ -1,0 +1,21 @@
+{
+  "id": "inflacao--salario-medio",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "inflacao",
+  "alvo": "salario_medio",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.01,
+    "termoConstante": 0
+  },
+  "normalizacao": {
+    "fator": "salario_medio",
+    "multiplicador": 0.01
+  },
+  "unidade": "moeda_por_passo",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
