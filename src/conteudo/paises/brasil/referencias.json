@@ -37,6 +37,18 @@
       "unidade": "pessoas que o salário mínimo sustenta acima da linha de pobreza",
       "zero": 0,
       "cem": 3.539
+    },
+    "salario_medio": {
+      "unidade": "reais por ano por pessoa"
+    },
+    "patrimonio_imoveis_urbanos": {
+      "unidade": "patrimônio imobiliário urbano em milhões de reais"
+    },
+    "patrimonio_terras": {
+      "unidade": "patrimônio em terras em milhões de reais"
+    },
+    "patrimonio_financeiro": {
+      "unidade": "patrimônio financeiro em milhões de reais"
     }
   }
 }

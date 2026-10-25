@@ -1,7 +1,7 @@
 {
   "tipo": "reguas",
   "versaoEsquema": 1,
-  "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em reais como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui. Com 'mede: variavel', escala e faixas ficam na medida do motor; os números na tela usam a medida do país (referencias.json, 'medidas'), se houver.",
+  "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em dinheiro como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui. Com 'mede: variavel', escala e faixas ficam na medida do motor; os números na tela usam a medida do país (referencias.json, 'medidas'), se houver.",
   "reguas": {
     "imposto-renda-pessoas": {
       "mede": "controle",
@@ -774,7 +774,7 @@
       "leituras": [
         {
           "de": "salario_minimo_relativo",
-          "rotulo": "Valor em dinheiro (reais de hoje)",
+          "rotulo": "Valor em dinheiro (moeda de hoje)",
           "multiplicaPor": "salarioMedianoMensal",
           "fator": 0.01,
           "formato": "moeda"

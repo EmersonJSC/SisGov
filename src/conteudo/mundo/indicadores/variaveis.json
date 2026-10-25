@@ -189,7 +189,7 @@
       "unidade": "moeda",
       "dominio": { "minimo": 0 },
       "medida": {
-        "unidade": "reais por ano por pessoa"
+        "unidade": "moeda local por ano por pessoa"
       },
       "area": "Economia"
     },
@@ -200,7 +200,7 @@
       "unidade": "moeda",
       "dominio": { "minimo": 0 },
       "medida": {
-        "unidade": "patrimônio imobiliário urbano em milhões de reais"
+        "unidade": "patrimônio imobiliário urbano em milhões da moeda local"
       },
       "area": "Economia"
     },
@@ -211,7 +211,7 @@
       "unidade": "moeda",
       "dominio": { "minimo": 0 },
       "medida": {
-        "unidade": "patrimônio em terras em milhões de reais"
+        "unidade": "patrimônio em terras em milhões da moeda local"
       },
       "area": "Economia"
     },
@@ -222,7 +222,7 @@
       "unidade": "moeda",
       "dominio": { "minimo": 0 },
       "medida": {
-        "unidade": "patrimônio financeiro em milhões de reais"
+        "unidade": "patrimônio financeiro em milhões da moeda local"
       },
       "area": "Economia"
     },
