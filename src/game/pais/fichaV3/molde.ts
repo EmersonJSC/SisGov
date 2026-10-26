@@ -183,11 +183,7 @@ export function verificarMolde(
   if (familia === "programa") {
     const p = ficha.publico;
     if (!p || !p.quem?.trim())
-      push(
-        "publico",
-        "O programa diz quem recebe.",
-        "CAMPO_AUSENTE",
-      );
+      push("publico", "O programa diz quem recebe.", "CAMPO_AUSENTE");
   }
 
   return erros;

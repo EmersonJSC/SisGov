@@ -528,7 +528,7 @@ function TelaPrincipalCarregada({
   const chaveEstrutura = useRef("");
   if (visao) {
     const chave = visao.leis
-      .filter((l) => l.emVigor)
+      .filter((l) => l.emVigor || l.sempreVisivel)
       .map((l) => l.id)
       .join("|");
     if (!estrutura.current || chave !== chaveEstrutura.current) {
@@ -1165,11 +1165,13 @@ function TelaPrincipalCarregada({
 function montarEstrutura(completa: ReturnType<typeof verPartida>) {
   // as leis fora de vigor (catálogo) e as setas delas não entram no mapa
   const fora = new Set(
-    completa.leis.filter((l) => !l.emVigor).map((l) => l.id),
+    completa.leis
+      .filter((l) => !l.emVigor && !l.sempreVisivel)
+      .map((l) => l.id),
   );
   const visao = {
     ...completa,
-    leis: completa.leis.filter((l) => l.emVigor),
+    leis: completa.leis.filter((l) => l.emVigor || l.sempreVisivel),
     ligacoes: completa.ligacoes.filter(
       (g) =>
         !fora.has(g.origem) &&

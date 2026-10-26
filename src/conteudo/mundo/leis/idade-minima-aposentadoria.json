@@ -65,18 +65,6 @@
       "unidade": "percentual_pib"
     },
     {
-      "id": "idade-minima-aposentadoria--gasto-publico",
-      "alvo": "gasto_publico",
-      "mecanismo": "afim",
-      "parametros": {
-        "coeficiente": -0.0025,
-        "termoConstante": 0
-      },
-      "atraso": 4,
-      "leitura": "nivel",
-      "unidade": "percentual_pib"
-    },
-    {
       "id": "idade-minima-aposentadoria--participacao-trabalho-idosos",
       "alvo": "participacao_trabalho_idosos",
       "mecanismo": "afim",

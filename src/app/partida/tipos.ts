@@ -106,6 +106,8 @@ export type VisaoLei = Readonly<{
    * gasto). 0 se a lei não toca o orçamento.
    */
   saldoAnual: number;
+  /** Perda de compra da verba nominal nos últimos doze meses. */
+  poderCompraPerdido?: number;
   /**
    * Nível da lei (D-65): pétrea, constitucional ou derivada. Ausente nas
    * leis do formato antigo (áreas ainda não migradas).
@@ -116,6 +118,8 @@ export type VisaoLei = Readonly<{
    * pode ser aprovada, se nada a bloqueia.
    */
   emVigor: boolean;
+  /** Aparece no mapa mesmo quando a decisão está com outra instituição. */
+  sempreVisivel?: boolean;
   /** Pode sair do mapa (revogar) agora. */
   revogavel: boolean;
   /**
@@ -264,6 +268,16 @@ export type VisaoContas = Contas &
     percentualPib: Contas;
   }>;
 
+export type VisaoLinhaOrcamento = Readonly<{
+  id: string;
+  nome: string;
+  lado: "receita" | "gasto" | "juros";
+  /** Valor anual na moeda do país (milhões). */
+  valor: number;
+  conta: string;
+  leis: readonly string[];
+}>;
+
 /** Uma razão para um grupo estar mais ou menos satisfeito. */
 export type VisaoMotivo = Readonly<{
   /** Id da lei ou da bolha que empurra o grupo. */
@@ -299,6 +313,8 @@ export type VisaoPartida = Readonly<{
   cenario: string;
   turno: number;
   contas: VisaoContas;
+  /** Cada parcela do orçamento e as leis que a determinam. */
+  orcamento: readonly VisaoLinhaOrcamento[];
   leis: readonly VisaoLei[];
   bolhas: readonly VisaoBolha[];
   ligacoes: readonly VisaoLigacao[];

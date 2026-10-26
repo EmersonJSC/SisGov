@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 8
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -45,7 +41,7 @@
       "alvo": "pib",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000072917,
+        "coeficiente": 7.2917e-6,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -56,7 +52,7 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000072917,
+        "coeficiente": 7.2917e-6,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -67,7 +63,7 @@
       "alvo": "corrupcao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.000003125,
+        "coeficiente": 3.125e-6,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -78,7 +74,7 @@
       "alvo": "desmatamento",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.000003125,
+        "coeficiente": 3.125e-6,
         "termoConstante": 0
       },
       "atraso": 4,

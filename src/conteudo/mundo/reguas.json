@@ -3,6 +3,50 @@
   "versaoEsquema": 1,
   "descricao": "Régua da janela da lei (leis com controle deslizante): o que ela mede, a escala e as faixas verde/amarela/vermelha. 'mede': controle (o valor da lei), pib (o valor da lei em dinheiro como % do PIB) ou variavel (um índice da rede). Faixas: cada uma vai até 'ate'; a última fecha a escala. 'leituras' (opcional): o índice convertido em dinheiro do país. Os efeitos da lei ficam no relatório ao lado, não aqui. Com 'mede: variavel', escala e faixas ficam na medida do motor; os números na tela usam a medida do país (referencias.json, 'medidas'), se houver.",
   "reguas": {
+    "quantidade-de-servidores": {
+      "mede": "controle",
+      "rotulo": "Servidores públicos (% dos ocupados)",
+      "escala": [0, 20],
+      "faixas": [
+        { "ate": 5, "tom": "atencao", "rotulo": "até 5% dos ocupados" },
+        { "ate": 12, "tom": "atencao", "rotulo": "de 5% a 12% dos ocupados" },
+        { "ate": 20, "tom": "atencao", "rotulo": "acima de 12% dos ocupados" }
+      ],
+      "fonte": "Escala do controle definida pelo mundo; faixas descritivas de jogo."
+    },
+    "salario-dos-servidores": {
+      "mede": "controle",
+      "rotulo": "Salário médio dos servidores (% da média nacional)",
+      "escala": [0, 300],
+      "faixas": [
+        { "ate": 80, "tom": "atencao", "rotulo": "abaixo de 80% da média" },
+        { "ate": 120, "tom": "atencao", "rotulo": "de 80% a 120% da média" },
+        { "ate": 300, "tom": "atencao", "rotulo": "acima de 120% da média" }
+      ],
+      "fonte": "Escala do controle definida pelo mundo; faixas descritivas de jogo."
+    },
+    "taxas-e-tarifas-publicas": {
+      "mede": "controle",
+      "rotulo": "Cobrança de taxas e tarifas públicas",
+      "escala": [0, 100],
+      "faixas": [
+        { "ate": 25, "tom": "atencao", "rotulo": "cobrança até 25%" },
+        { "ate": 75, "tom": "atencao", "rotulo": "cobrança de 25% a 75%" },
+        { "ate": 100, "tom": "atencao", "rotulo": "cobrança acima de 75%" }
+      ],
+      "fonte": "Escala do controle definida pelo mundo; faixas descritivas de jogo."
+    },
+    "contribuicao-sobre-salarios": {
+      "mede": "controle",
+      "rotulo": "Contribuição sobre salários formais",
+      "escala": [0, 80],
+      "faixas": [
+        { "ate": 20, "tom": "atencao", "rotulo": "alíquota até 20%" },
+        { "ate": 50, "tom": "atencao", "rotulo": "alíquota de 20% a 50%" },
+        { "ate": 80, "tom": "atencao", "rotulo": "alíquota acima de 50%" }
+      ],
+      "fonte": "Escala do controle definida pelo mundo; faixas descritivas de jogo."
+    },
     "imposto-renda-pessoas": {
       "mede": "controle",
       "rotulo": "Alíquota mais alta do imposto de renda",

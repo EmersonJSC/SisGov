@@ -812,6 +812,18 @@
     {
       "lei": "piso-de-gasto-em-saude",
       "opcao": "piso-vigente"
+    },
+    {
+      "lei": "quantidade-de-servidores",
+      "nivel": 12
+    },
+    {
+      "lei": "salario-dos-servidores",
+      "nivel": 110
+    },
+    {
+      "lei": "taxas-e-tarifas-publicas",
+      "nivel": 50
     }
   ],
   "controles": {
@@ -1033,6 +1045,23 @@
     "fator_partida_imoveis_urbanos": 103.015893,
     "fator_partida_terras": 62.068966,
     "fator_partida_transacoes": 179.833222,
-    "fator_partida_salarios": 192.92444
+    "fator_partida_salarios": 192.92444,
+    "percentual_servidores_publicos": 12,
+    "percentual_salario_servidores": 110,
+    "nivel_taxas_e_tarifas_publicas": 50,
+    "taxa_publica_por_habitante": 100,
+    "parte_idosos": 14,
+    "envelhecimento_referencia": 38.75,
+    "cobertura_aposentadorias": 80,
+    "beneficio_anual_aposentadoria": 50000,
+    "parte_aposentadorias_rurais": 15,
+    "beneficio_anual_rural": 24000,
+    "duracao_media_pensao": 3,
+    "beneficio_anual_pensao": 24000,
+    "militares_inativos": 450000,
+    "beneficio_anual_militar": 65000,
+    "beneficio_anual_seguro_desemprego": 15000,
+    "beneficio_anual_idosos_pobres": 9000,
+    "pessoas_deficientes_pobres_nao_idosas": 2000000
   }
 }

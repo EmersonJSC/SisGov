@@ -44,7 +44,14 @@ function extremo(partida: Partida, impostos: "min" | "max"): Partida {
         : Math.max(...valores)
       : alvo;
     const mudada = mudarLei(atual, lei.id, ponta);
-    if (!mudada.ok) throw new Error(`${lei.id}: ${mudada.erros.join(" ")}`);
+    if (!mudada.ok) {
+      if (
+        lei.grupo === "orcamentaria" &&
+        mudada.erros.some((erro) => erro.includes("100% do PIB"))
+      )
+        continue;
+      throw new Error(`${lei.id}: ${mudada.erros.join(" ")}`);
+    }
     atual = mudada.value;
   }
   return atual;
@@ -71,7 +78,7 @@ describe("SG159 — contas sem furos", () => {
       const c = confereContas(partida);
       maiorDeficit = Math.max(maiorDeficit, -c.resultado);
     }
-    // sem teto: o déficit passa dos 30% do PIB e entra todo na dívida
+    // A soma dos gastos respeita o teto; o déficit permitido entra na dívida.
     expect(maiorDeficit).toBeGreaterThan(30);
     // e a dívida passa dos 300% sem travar o turno (A1)
     expect(partida.game.execution.values.divida_publica).toBeGreaterThan(300);
@@ -110,7 +117,7 @@ describe("SG159 — contas sem furos", () => {
     expect(r).toMatchObject({ ok: true, value: { value: 100, limited: true } });
   });
 
-  it("o teto de cada lei é o mesmo na tela e na partida (N1)", () => {
+  it("o domínio das leis e o limite conjunto aparecem na partida (N1)", () => {
     // A lei de aumento real só pode ser testada quando o reajuste fica a
     // cargo de votação anual, como exige o próprio conteúdo da lei.
     const inicio = nova();
@@ -118,23 +125,31 @@ describe("SG159 — contas sem furos", () => {
     if (!liberada.ok) throw new Error(liberada.erros.join(" "));
     const partida = liberada.value;
     for (const lei of verPartida(partida).leis) {
-      if (lei.opcoes || lei.maximo === undefined) continue;
+      if (
+        lei.opcoes ||
+        lei.maximo === undefined ||
+        lei.grupo === "orcamentaria"
+      )
+        continue;
       expect(mudarLei(partida, lei.id, lei.maximo).ok, lei.id).toBe(true);
       expect(mudarLei(partida, lei.id, lei.maximo * 1.01 + 1).ok, lei.id).toBe(
         false,
       );
     }
-    // valor fixo: teto em % do PIB vira R$ pelo PIB do país
+    // Valor fixo pode usar até o PIB inteiro como escala na tela, mas a
+    // ação respeita a soma de todas as verbas.
     const farmacia = verPartida(partida).leis.find(
       (l) => l.id === "farmacia-popular",
     )!;
     expect(farmacia.unidade).toBe("moeda_ano");
     expect(farmacia.maximo).toBeGreaterThan(farmacia.nivel);
-    // vinculação (SG137): teto em % da receita
+    expect(mudarLei(partida, farmacia.id, farmacia.maximo!).ok).toBe(false);
+    // A vinculação constitucional pode chegar a 100% da receita, desde que
+    // caiba no teto conjunto de gastos.
     const educacao = verPartida(partida).leis.find(
       (l) => l.id === "piso-educacao",
     )!;
-    expect(educacao.maximo).toBe(40);
+    expect(educacao.maximo).toBe(100);
   });
 
   it("a prévia recusa horizonte inválido (N3)", () => {

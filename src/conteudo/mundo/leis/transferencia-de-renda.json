@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 3
-    }
+    "modo": "valor_fixo"
   },
   "publico": {
     "quem": "famílias pobres"
@@ -37,7 +33,7 @@
       "alvo": "pobreza",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000333333,
+        "coeficiente": -3.33333e-5,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -48,7 +44,7 @@
       "alvo": "desigualdade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000194444,
+        "coeficiente": -1.94444e-5,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -59,7 +55,7 @@
       "alvo": "inseguranca_alimentar",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000194444,
+        "coeficiente": -1.94444e-5,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -70,7 +66,7 @@
       "alvo": "informalidade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000083333,
+        "coeficiente": 8.3333e-6,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -81,7 +77,7 @@
       "alvo": "consumo",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000083333,
+        "coeficiente": 8.3333e-6,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -92,7 +88,7 @@
       "alvo": "participacao_trabalho_cuidadoras",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000083333,
+        "coeficiente": -8.3333e-6,
         "termoConstante": 0
       },
       "atraso": 1,

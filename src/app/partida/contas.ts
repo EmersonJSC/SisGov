@@ -5,6 +5,7 @@ import {
 } from "../../engine";
 import { efficacyNodeId } from "../../engine/model/lawNodes";
 import { calculateDerivedValue } from "../../engine/mechanisms/derivedVariables";
+import { interpolate } from "../../engine/mechanisms/calculateContribution";
 import type {
   Partida,
   Contas,
@@ -112,7 +113,55 @@ export function saldoDasLeis(
         ]);
     }
   }
+  const derivada = (id: string, outros: Readonly<Record<string, number>>) => {
+    const variable = content.variables.variaveis.find((item) => item.id === id);
+    return variable ? calculateDerivedValue(variable, outros) : undefined;
+  };
+  const custoAposentadorias = (controle: string, nivel: number): number => {
+    const alterados = { ...values, [controle]: nivel };
+    const aposentados =
+      controle === "nivel_idade_minima_aposentadoria"
+        ? derivada("aposentados", alterados)
+        : values.aposentados;
+    if (aposentados === undefined) return 0;
+    const base = derivada("base_aposentadorias", {
+      ...alterados,
+      aposentados,
+    });
+    return (
+      (base ?? 0) *
+      interpolate(
+        [
+          [0, 0],
+          [33, 0.2],
+          [67, 0.6],
+          [100, 1],
+        ],
+        values.nivel_sistema_previdenciario ?? 0,
+      )
+    );
+  };
   return (leiId, nivel) => {
+    if (leiId === "salario-dos-servidores") {
+      const salario = nivel ?? values.percentual_salario_servidores ?? 0;
+      const base = derivada("base_folha_servidores", {
+        ...values,
+        percentual_salario_servidores: salario,
+      });
+      return (
+        -((values.percentual_servidores_publicos ?? 0) * (base ?? 0)) / 100
+      );
+    }
+    if (leiId === "idade-minima-aposentadoria")
+      return -custoAposentadorias(
+        "nivel_idade_minima_aposentadoria",
+        nivel ?? values.nivel_idade_minima_aposentadoria ?? 0,
+      );
+    if (leiId === "reajuste-de-beneficios")
+      return -custoAposentadorias(
+        "nivel_reajuste_de_beneficios",
+        nivel ?? values.nivel_reajuste_de_beneficios ?? 0,
+      );
     let saldo = 0;
     for (const { relation, sinal } of porLei.get(leiId) ?? []) {
       const law = lawByControl.get(relation.originId);
@@ -128,9 +177,8 @@ export function saldoDasLeis(
       if (contribution.ok)
         saldo += (sinal * contribution.value.value * pib) / 100;
     }
-    const controle = content.policies.find(
-      (policy) => policy.id === leiId,
-    )?.controle.variavel;
+    const controle = content.policies.find((policy) => policy.id === leiId)
+      ?.controle.variavel;
     for (const variavel of derivadosPorLei.get(leiId) ?? []) {
       const valor =
         nivel !== undefined && controle !== undefined

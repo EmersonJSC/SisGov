@@ -32,7 +32,7 @@ const lei = (partida: Partida, id: string) =>
   verPartida(partida).leis.find((l) => l.id === id)!;
 
 describe("SG137 — pisos vinculados à receita", () => {
-  it("os dois pisos são % da receita, com teto de 40%; o mínimo vem da lei constitucional", () => {
+  it("os dois pisos são % da receita; o mínimo vem da lei constitucional", () => {
     const partida = nova();
     for (const id of ["piso-saude", "piso-educacao"]) {
       const piso = lei(partida, id);
@@ -40,7 +40,7 @@ describe("SG137 — pisos vinculados à receita", () => {
       expect(piso.unidade, id).toBe("percentual_receita");
       // pisoPorLei: o Brasil começa com as vinculações vigentes
       expect(piso.minimo, id).toBe(id === "piso-educacao" ? 17.51 : 13.69);
-      expect(piso.maximo, id).toBe(40);
+      expect(piso.maximo, id).toBe(100);
     }
   });
 
@@ -70,25 +70,20 @@ describe("SG137 — pisos vinculados à receita", () => {
     );
   }, 60_000);
 
-  it("a conversão não muda o orçamento do Brasil 2026", () => {
+  it("os pisos iniciais fazem parte do gasto do Brasil 2026", () => {
     const partida = nova();
-    const v = partida.game.execution.values;
-    // antes do SG137: R$ 516 bi (4,3% do PIB) e R$ 660 bi (5,5%). Com os
-    // valores de jan/2025 (V1-07) a arrecadação sobe de 31,4 para 31,8% do
-    // PIB, e os pisos, que são parte dela, sobem junto. 21/out: o IVA
-    // volta a ser faixa livre, sem o cashback em 26,5% de fdc3658.
     const { contas } = verPartida(partida);
-    const pib = contas.pib;
-    expect((-lei(partida, "piso-saude").saldoAnual / pib) * 100).toBeCloseTo(
-      4.340256177552523,
-      2,
+    const saude = -lei(partida, "piso-saude").saldoAnual;
+    const educacao = -lei(partida, "piso-educacao").saldoAnual;
+    expect(saude).toBeCloseTo(
+      (contas.receita * lei(partida, "piso-saude").nivel) / 100,
+      5,
     );
-    expect((-lei(partida, "piso-educacao").saldoAnual / pib) * 100).toBeCloseTo(
-      5.551342999922914,
-      2,
+    expect(educacao).toBeCloseTo(
+      (contas.receita * lei(partida, "piso-educacao").nivel) / 100,
+      5,
     );
-    // A lei nova do salário mínimo recalcula o custo dos benefícios atrelados.
-    expect(v.gasto_publico).toBeCloseTo(31.084099384782085, 1);
+    expect(contas.gasto).toBeGreaterThan(saude + educacao);
   });
 
   it("mais arrecadação, mais saúde e educação (sem mexer nos pisos)", () => {

@@ -43,7 +43,7 @@ uma vez por mecânica terminada.
 
 Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia.md):
 
-1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–2 feitas; fase 3 (impostos) fecha sem ampliar
+1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–4 implementadas. `npm run check` verde em 26/out (111 arquivos, 540 testes passaram, 1 ignorado). Próxima fase: 5 (sobra e fundo soberano).
 2. [ ] **País em frases** (novo): números internos saem do mapa e viram frases e comparações neutras
 3. [ ] Grupos: apoio de cada grupo (decide a eleição, pesado pelo tamanho) e radicais/lealistas (polarização e antipartido)
 4. [ ] **O jogo percebe padrões** (novo): ex.: várias verbas cortadas = corte de gastos; grupos e frases reagem; a bússola só mostra
@@ -73,24 +73,24 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 
 **A. Leis (mecânica 2): acabamento**
 - [x] A1. Olhar (23/out): país sem limite próprio; impostos já de 0 a 100%; 16 verbas com teto em % do PIB (`dinheiro.limites`, de 0,01% a 10%) e a Polícia Federal com piso de 0,02%; pisos de saúde e educação com teto de 40% da receita; o 3× da tela não vale para nenhuma lei (todas têm teto); a soma ≤ 100% do PIB não existe; o piso vindo da lei constitucional (`pisoPorLei`) fica
-- [ ] A2. Tirar as travas; controle livre de 0 a 100% (ou ao teto da lei)
-- [ ] A3. Trava única: soma dos gastos ≤ 100% do PIB; acima da receita vira déficit
+- [x] A2. Tirar as travas individuais das verbas e os tetos de 40% dos pisos; manter o piso constitucional
+- [x] A3. Trava conjunta de 100% do PIB nas ações de leis, incluindo metas de gastos ainda em implantação; acima da receita vira déficit. Conferir cenários com várias leis interdependentes no aceite.
 - [ ] A4. Exclusão entre leis (a lei declara com quem não convive; aprovar pede revogar a outra)
 - [ ] A5. Liberar as opções travadas e converter em valor onde couber (lista para o autor aprovar)
 - [ ] A6. Explicação de cada lei e opção: amostra da janela, depois área por área, teste que exige
 - [ ] A7. Régua também nas leis de opções? (decisão do autor)
 
 **B. Orçamento (mecânica 4): fases 5 e 6**
-- [ ] B1. Olhar: o gasto fixo da rede (~30% do PIB) que nenhuma lei controla, por pedaço
-- [ ] B2. Dar lei a todo gasto grande: servidores (salário e quantidade), contribuição sobre salários como imposto próprio, seguro-desemprego e renda de idosos como programas
+- [x] B1. Auditar o gasto inicial por relação (`npx vite-node scripts/economia/auditar-gastos.ts`, 26/out): 31,08% do PIB no próximo mês, base 0; relações sem lei contribuem 0 no estado inicial. O problema é a falta de contas próprias: previdência 6,46%, educação 5,55%, saúde 4,34%, defesa 1,60%, transferência de renda 1,40%, seguro-desemprego 0,41% e pensões 0,50% saem de efeitos agregados das leis. Não há conta de quantidade × salário dos servidores; Estabilidade dos servidores acrescenta 0,40%, mas não representa a folha.
+- [x] B2. Substituir os efeitos agregados pelas contas do documento aprovado: servidores (duas leis), aposentadorias, pensões, seguro-desemprego e renda de idosos; contribuição sobre salários já virou imposto próprio na fase 3. Taxas e tarifas também viraram lei. Auditoria inicial após a mudança: 32,19% do PIB no mês seguinte, soma das relações igual ao gasto calculado.
 - [ ] B3. Fundo soberano com o destino da sobra (comanda o cofre)
-- [ ] B4. PIB em reais (`pib_nominal`) e as 15 verbas em reais corrigidas pela inflação
+- [x] B4. PIB em reais (`pib_nominal`) e verbas nominais: índice de preços reduz seu poder de compra nos efeitos não fiscais, com comparação anual na janela da lei. A verba só muda nominalmente por ação do jogador.
 - [ ] B5. Custo do salário mínimo nos benefícios: coeficiente 0,029 → 0,08 (R$ 400 mi por R$ 1)
 - [ ] B6. Aceite: script com as estratégias de `simular.py` batendo com `equilibrio.md`; reativar `contasSemFuros` "cofre passa de 100%"
 
 **C. Calibragem (rede, mecânica 5)**: depois de B
 - [ ] C1. Varredura completa (`varredura-leis.ts`) e jogador guloso do zero
-- [ ] C2. Pendentes: defesa e reservas, "Sem meta" de inflação, corte que tira PIB demais, leis que mexem mais de 2–3 pontos de PIB em 3 anos sem custo
+- [ ] C2. Pendentes: defesa e reservas, "Sem meta" de inflação, corte que tira PIB demais, leis que mexem mais de 2–3 pontos de PIB em 3 anos sem custo; pressão dos sindicatos de servidores recua mas não cruza a saída do nível 2 com a satisfação máxima no cenário atual.
 
 **D. Tempo (mecânica 1): três meses na tela** (25/out, substitui o tempo corrido): depois de C
 - [ ] D1. Documento da fatia 2 (animação dos 3 meses; eventos no mês deles); motor segue mensal

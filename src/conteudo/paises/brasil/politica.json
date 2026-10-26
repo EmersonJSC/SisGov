@@ -93,6 +93,7 @@
         "area": "contas-publicas",
         "leis": [
           "imposto-renda-pessoas",
+          "taxas-e-tarifas-publicas",
           "contribuicao-sobre-salarios",
           "imposto-renda-empresas",
           "imposto-sobre-consumo",
@@ -671,7 +672,11 @@
         "nome": "Ministério da Gestão e da Inovação em Serviços Públicos",
         "cargo": "Gestão",
         "area": "governo-e-instituicoes",
-        "leis": ["estabilidade-dos-servidores-publicos"],
+        "leis": [
+          "estabilidade-dos-servidores-publicos",
+          "quantidade-de-servidores",
+          "salario-dos-servidores"
+        ],
         "extincao": {
           "destino": "planejamento"
         }

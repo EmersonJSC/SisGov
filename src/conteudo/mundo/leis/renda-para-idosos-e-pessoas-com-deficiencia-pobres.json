@@ -121,16 +121,17 @@
       "parametros": {
         "pontos": [
           [0, 0],
-          [33, 0.7],
-          [67, 1.2],
-          [100, 2.5]
+          [33, 0.4],
+          [50, 0.7],
+          [67, 1],
+          [100, 1.7]
         ]
       },
       "atraso": 0,
       "leitura": "nivel",
       "escala": {
-        "fator": "envelhecimento",
-        "referencia": 40
+        "fator": "base_renda_idosos_pib",
+        "referencia": 1
       },
       "unidade": "percentual_pib"
     },

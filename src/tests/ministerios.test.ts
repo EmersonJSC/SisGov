@@ -83,6 +83,8 @@ describe("extinguir ministério", () => {
     if (!r.ok) throw new Error(r.erro);
     expect(r.value.movidas).toEqual([
       { lei: "estabilidade-dos-servidores-publicos", para: "casa-civil" },
+      { lei: "quantidade-de-servidores", para: "casa-civil" },
+      { lei: "salario-dos-servidores", para: "casa-civil" },
     ]);
   });
 

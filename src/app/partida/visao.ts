@@ -39,6 +39,7 @@ import {
 } from "./contas";
 import { ocorrenciasDaPartida } from "./ocorrencias";
 import { nosForaDoMapa, pressaoDaPartida } from "./pressao";
+import { linhasDoOrcamento } from "./orcamento";
 
 /** Tudo o que a tela precisa desenhar, sem tipos do motor. */
 /** Ordem das camadas da mesa, de cima para baixo (V1-34). */
@@ -47,6 +48,17 @@ const ORDEM_DA_CAMADA = { constituicao: 0, lei: 1, alavanca: 2 } as const;
 export function verPartida(partida: Partida): VisaoPartida {
   const { content, game } = partida;
   const values = game.execution.values;
+  const precosHoje = values.indice_precos ?? 100;
+  const precosHaUmAno =
+    game.execution.step >= 12
+      ? (game.execution.history.find(
+          (item) => item.step === game.execution.step - 12,
+        )?.values.indice_precos ?? game.execution.initialValues.indice_precos)
+      : undefined;
+  const poderCompraPerdido =
+    precosHoje > 0 && precosHaUmAno !== undefined
+      ? 100 * (1 - precosHaUmAno / precosHoje)
+      : undefined;
   const saldo = saldoDasLeis(partida, values);
   const alteradas = leisAlteradas(game, partida.piloto);
   const states = new Map(
@@ -97,7 +109,20 @@ export function verPartida(partida: Partida): VisaoPartida {
     segmentoPorNome.set(nome, id);
   const leis = content.policies.map((policy): VisaoLei => {
     const state = states.get(policy.id);
-    const nivel = state?.implementedLevel ?? 0;
+    const jurosDoBanco =
+      policy.id === "taxa-basica-de-juros" &&
+      policyInForce(game.policies, policy.id) === undefined;
+    const metaInflacao =
+      2 + (4 * (values.nivel_valor_da_meta_de_inflacao ?? 25)) / 100;
+    const motivoJuros =
+      (values.inflacao ?? 0) > metaInflacao + 0.25
+        ? "a inflação está acima da meta"
+        : (values.inflacao ?? 0) < metaInflacao - 0.25
+          ? "a inflação está abaixo da meta"
+          : "a inflação está perto da meta";
+    const nivel = jurosDoBanco
+      ? Math.max(0, Math.min(100, ((values.taxa_juros ?? 2) - 2) / 0.28))
+      : (state?.implementedLevel ?? 0);
     const opcoes = policy.controle.opcoes;
     const nearest = opcoes?.reduce((best, option) =>
       Math.abs(option.valor - nivel) < Math.abs(best.valor - nivel)
@@ -112,7 +137,9 @@ export function verPartida(partida: Partida): VisaoPartida {
     return {
       id: policy.id,
       nome: policy.nome,
-      descricao: policy.descricao ?? "",
+      descricao: jurosDoBanco
+        ? `${policy.descricao ?? ""} O banco central fixou ${(values.taxa_juros ?? 0).toFixed(1).replace(".", ",")}% ao ano; ${motivoJuros} (${metaInflacao.toFixed(1).replace(".", ",")}% ao ano).`
+        : (policy.descricao ?? ""),
       grupo: policy.grupo,
       area: policy.area ?? "",
       ...lugarDaLei(policy.id, policy.areaMundo),
@@ -120,7 +147,7 @@ export function verPartida(partida: Partida): VisaoPartida {
       ...(policy.decide ? { decide: policy.decide } : {}),
       processo: policy.processoAutorizacao,
       nivel,
-      meta: state?.desiredLevel ?? nivel,
+      meta: jurosDoBanco ? nivel : (state?.desiredLevel ?? nivel),
       // limites efetivos: os mesmos que a partida aceita (SG159)
       minimo: Math.max(
         regras?.domain.minimum ?? variable?.dominio.minimo ?? 0,
@@ -129,7 +156,12 @@ export function verPartida(partida: Partida): VisaoPartida {
           variable?.dominio.minimo ??
           0,
       ),
-      maximo: regras?.domain.maximum ?? variable?.dominio.maximo,
+      maximo:
+        regras?.domain.maximum ??
+        variable?.dominio.maximo ??
+        (policy.controle.unidade === "moeda_ano"
+          ? values.pib_nominal
+          : undefined),
       unidade: policy.controle.unidade,
       opcoes: opcoes?.map(({ id, rotulo, valor }) => ({
         id,
@@ -141,9 +173,14 @@ export function verPartida(partida: Partida): VisaoPartida {
       opcaoAtual: nearest?.id,
       ...popularidadeDa(nearest, segmentoPorNome),
       saldoAnual: saldo(policy.id),
+      ...(policy.controle.unidade === "moeda_ano" &&
+      poderCompraPerdido !== undefined
+        ? { poderCompraPerdido }
+        : {}),
       alteradaPorVoce: alteradas.has(policy.id),
       ...(policy.nivelLegal ? { nivelLegal: policy.nivelLegal } : {}),
       emVigor: policyInForce(game.policies, policy.id) !== undefined,
+      ...(jurosDoBanco ? { sempreVisivel: true } : {}),
       revogavel:
         policyRevocable(policy) &&
         revocationBlock(content, game.policies, policy.id) === undefined,
@@ -401,6 +438,7 @@ export function verPartida(partida: Partida): VisaoPartida {
     cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
     turno: game.currentTurn,
     contas: lerContas(content, values),
+    orcamento: linhasDoOrcamento(partida, values),
     grupos: gruposDaPartida(partida, values, alteradas),
     ocorrencias: ocorrenciasDaPartida(partida),
     ...(pressao ? { pressao } : {}),

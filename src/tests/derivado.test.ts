@@ -92,7 +92,8 @@ describe("variáveis derivadas", () => {
       ok: false,
       diagnostics: [
         expect.objectContaining({
-          message: "Um fator não pode ser inverso e complemento ao mesmo tempo.",
+          message:
+            "Um fator não pode ser inverso e complemento ao mesmo tempo.",
         }),
       ],
     });

@@ -21,7 +21,7 @@ function meta(p: Partida, id: string, valor: number) {
 }
 
 describe("Lote 8: vigilância e verba", () => {
-  it("usa o teto monetário real das verbas, sem confundir com percentual", () => {
+  it("as verbas monetárias ficam sem teto individual", () => {
     let p = nova();
     const cameras = policyLevelRulesFromContent(p.content, "cameras-corporais");
     const fundo = policyLevelRulesFromContent(
@@ -29,19 +29,19 @@ describe("Lote 8: vigilância e verba", () => {
       "fundo-seguranca-publica",
     );
     if (!cameras.ok || !fundo.ok) throw new Error("Limites ausentes");
-    expect(cameras.value.rules.domain.maximum).toBe(1200);
-    expect(fundo.value.rules.domain.maximum).toBe(18000);
-    p = meta(p, "cameras-corporais", 1200);
-    p = meta(p, "fundo-seguranca-publica", 18000);
+    expect(cameras.value.rules.domain.maximum).toBeUndefined();
+    expect(fundo.value.rules.domain.maximum).toBeUndefined();
+    p = meta(p, "cameras-corporais", 2400);
+    p = meta(p, "fundo-seguranca-publica", 36000);
     expect(
       p.game.policies.find((x) => x.policyDefinitionId === "cameras-corporais")
         ?.desiredLevel,
-    ).toBe(1200);
+    ).toBe(2400);
     expect(
       p.game.policies.find(
         (x) => x.policyDefinitionId === "fundo-seguranca-publica",
       )?.desiredLevel,
-    ).toBe(18000);
+    ).toBe(36000);
   });
 
   it("a expansão de vigilância reduz furtos e sacrifica liberdade após quatro turnos", () => {

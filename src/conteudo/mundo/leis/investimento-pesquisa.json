@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 6
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -34,7 +30,7 @@
       "alvo": "inovacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000097222,
+        "coeficiente": 9.7222e-6,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -56,7 +52,7 @@
       "alvo": "produtividade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000097222,
+        "coeficiente": 9.7222e-6,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -67,7 +63,7 @@
       "alvo": "fuga_de_cerebros",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000097222,
+        "coeficiente": -9.7222e-6,
         "termoConstante": 0
       },
       "atraso": 1,

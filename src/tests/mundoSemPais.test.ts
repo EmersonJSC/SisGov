@@ -14,8 +14,7 @@ it("não deixa texto ou IDs de país nos arquivos do mundo", () => {
   const visitar = (valor: unknown, arquivo: string, campo = "$") => {
     if (typeof valor === "string") {
       const achado = valor.match(proibido);
-      if (achado)
-        achados.push(`${arquivo} · ${campo} · ${achado[0]}`);
+      if (achado) achados.push(`${arquivo} · ${campo} · ${achado[0]}`);
     } else if (Array.isArray(valor)) {
       valor.forEach((item, i) => visitar(item, arquivo, `${campo}[${i}]`));
     } else if (typeof valor === "object" && valor !== null) {

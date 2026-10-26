@@ -14,11 +14,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0.02,
-      "maximoPercentualPib": 0.3
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -52,7 +48,7 @@
       "alvo": "impunidade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000833333,
+        "coeficiente": -8.33333e-5,
         "termoConstante": 0
       },
       "atraso": 4

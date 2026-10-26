@@ -1,0 +1,35 @@
+{
+  "id": "taxas-e-tarifas-publicas",
+  "tipo": "lei",
+  "versaoEsquema": 4,
+  "familia": "imposto",
+  "nome": "Taxas e tarifas públicas",
+  "decide": "Define quanto o governo cobra por documentos, cartórios e serviços públicos tarifados.",
+  "area": "contas-publicas",
+  "nivel": "lei",
+  "controle": {
+    "variavel": "nivel_taxas_e_tarifas_publicas",
+    "unidade": "percentual_0_100"
+  },
+  "dinheiro": {
+    "tipo": "receita",
+    "base": "populacao",
+    "limites": { "minimo": 0, "maximo": 100 }
+  },
+  "implantacao": { "entrada": 0.3, "saida": 0.2 },
+  "mesa": {
+    "id": "impostos",
+    "nome": "Impostos",
+    "camada": "lei"
+  },
+  "efeitos": [
+    {
+      "id": "taxas-e-tarifas-publicas--arrecadacao",
+      "alvo": "arrecadacao",
+      "mecanismo": "afim",
+      "parametros": { "coeficiente": 0, "termoConstante": 0 },
+      "unidade": "percentual_pib",
+      "atraso": 0
+    }
+  ]
+}

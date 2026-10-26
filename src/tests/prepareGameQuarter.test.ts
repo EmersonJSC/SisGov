@@ -30,21 +30,21 @@ it("prepara e confirma os três meses do turno sem livro fiscal à parte (SG105)
   expect(game.value.execution.step).toBe(0);
 });
 
-it("SG136: limite da lei em % do PIB vira valor com o PIB do país", () => {
+it("SG136: limite individual antigo não restringe o domínio monetário", () => {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = structuredClone(loaded.value.definition);
   delete content.initialState.limitesProprios;
-  // Atenção básica: até 1% do PIB (12.000.000) = 120.000.
+  // A faixa monetária vem do controle do mundo, sem teto individual.
   expect(policyLevelRulesFromContent(content, "atencao-basica")).toMatchObject({
     ok: true,
-    value: { rules: { domain: { minimum: 0, maximum: 120000 } } },
+    value: { rules: { domain: { minimum: 0, maximum: undefined } } },
   });
-  // Com o limite próprio do Brasil, vale o mais apertado (2.400 a 6.000).
+  // O limite próprio antigo do Brasil também não reduz a faixa.
   expect(
     policyLevelRulesFromContent(loaded.value.definition, "atencao-basica"),
   ).toMatchObject({
     ok: true,
-    value: { rules: { domain: { minimum: 2400, maximum: 6000 } } },
+    value: { rules: { domain: { minimum: 0, maximum: undefined } } },
   });
 });

@@ -16,11 +16,12 @@ describe("notas das leis por país", () => {
       expect(lei, arquivo).not.toHaveProperty("fontes");
 
       const publico = lei.publico as Record<string, unknown> | undefined;
-      expect(Boolean(publico && Object.hasOwn(publico, "pessoas")), arquivo)
-        .toBe(false);
+      expect(
+        Boolean(publico && Object.hasOwn(publico, "pessoas")),
+        arquivo,
+      ).toBe(false);
       const controle = lei.controle as
-        | { faixa?: Record<string, unknown> }
-        | undefined;
+        { faixa?: Record<string, unknown> } | undefined;
       expect(
         Boolean(
           controle?.faixa && Object.hasOwn(controle.faixa, "valorReferencia"),
@@ -32,9 +33,7 @@ describe("notas das leis por país", () => {
 
   it("carrega o arquivo do Brasil com IDs de leis existentes", () => {
     expect(notasDoBrasil.tipo).toBe("pais-leis-no-pais");
-    const idsDasLeis = new Set(
-      Object.values(leisDoMundo).map((lei) => lei.id),
-    );
+    const idsDasLeis = new Set(Object.values(leisDoMundo).map((lei) => lei.id));
     for (const id of Object.keys(notasDoBrasil.leis))
       expect(idsDasLeis.has(id), id).toBe(true);
   });

@@ -142,16 +142,16 @@
       "parametros": {
         "pontos": [
           [0, 0],
-          [33, 1],
-          [67, 4],
-          [100, 6.5]
+          [33, 0.2],
+          [67, 0.6],
+          [100, 1]
         ]
       },
       "atraso": 0,
       "leitura": "nivel",
       "escala": {
-        "fator": "envelhecimento",
-        "referencia": 40
+        "fator": "base_aposentadorias_pib",
+        "referencia": 1
       },
       "unidade": "percentual_pib"
     },

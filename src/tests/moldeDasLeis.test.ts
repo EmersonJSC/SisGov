@@ -202,9 +202,7 @@ describe("molde das leis (ficha v4)", () => {
       dinheiro: { tipo: "gasto", modo: "valor_fixo" },
     };
     expect(campos(p)).toContain("publico");
-    expect(
-      campos({ ...p, publico: { quem: "famílias pobres" } }),
-    ).toEqual([]);
+    expect(campos({ ...p, publico: { quem: "famílias pobres" } })).toEqual([]);
   });
 
   it("família e nível concordam", () => {

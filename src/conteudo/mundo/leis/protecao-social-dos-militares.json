@@ -72,6 +72,26 @@
       },
       "atraso": 4,
       "unidade": "indice_0_100_por_passo"
+    },
+    {
+      "id": "protecao-social-dos-militares--gasto-publico",
+      "alvo": "gasto_publico",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 1],
+          [33.33, 0.9],
+          [66.67, 0.8],
+          [100, 0.7]
+        ]
+      },
+      "escala": {
+        "fator": "base_militares_pib",
+        "referencia": 1
+      },
+      "leitura": "nivel",
+      "unidade": "percentual_pib",
+      "atraso": 0
     }
   ]
 }

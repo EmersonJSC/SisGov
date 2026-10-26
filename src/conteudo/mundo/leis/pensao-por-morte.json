@@ -119,16 +119,16 @@
       "parametros": {
         "pontos": [
           [0, 0],
-          [33, 0.25],
-          [67, 0.5],
-          [100, 0.9]
+          [33, 0.35],
+          [67, 0.7],
+          [100, 1]
         ]
       },
       "atraso": 0,
       "leitura": "nivel",
       "escala": {
-        "fator": "envelhecimento",
-        "referencia": 40
+        "fator": "base_pensoes_pib",
+        "referencia": 1
       },
       "unidade": "percentual_pib"
     },

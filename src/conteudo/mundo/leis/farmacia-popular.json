@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 1.5
-    }
+    "modo": "valor_fixo"
   },
   "publico": {
     "quem": "pessoas com doenças crônicas, como pressão alta e diabetes"
@@ -37,7 +33,7 @@
       "alvo": "gasto_bolso_saude",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000388889,
+        "coeficiente": -3.88889e-5,
         "termoConstante": 0
       },
       "atraso": 0,
@@ -48,7 +44,7 @@
       "alvo": "pressao_hospitalar",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000388889,
+        "coeficiente": -3.88889e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -59,7 +55,7 @@
       "alvo": "saude_populacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000388889,
+        "coeficiente": 3.88889e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -70,7 +66,7 @@
       "alvo": "pobreza",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000166667,
+        "coeficiente": -1.66667e-5,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -81,7 +77,7 @@
       "alvo": "corrupcao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000166667,
+        "coeficiente": 1.66667e-5,
         "termoConstante": 0
       },
       "atraso": 1,

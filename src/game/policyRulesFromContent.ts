@@ -73,71 +73,14 @@ export function policyLevelRulesFromContent(
       rules: {
         policyDefinitionId: policy.id,
         unit: control.unidade,
-        // Domínio do nó no mundo, apertado pelo limite da lei e pelo do país.
-        domain: narrow(
-          narrow(
-            narrow(
-              {
-                minimum: control.dominio.minimo,
-                maximum: control.dominio.maximo,
-              },
-              percentLimits(policy),
-            ),
-            gdpLimits(policy, content.initialState.economia?.pibAnual),
-          ),
-          content.initialState.limitesProprios?.find(
-            (limit) => limit.lei === policy.id,
-          ),
-        ),
+        // O controle define a faixa física. O orçamento inteiro, não cada
+        // lei ou país, limita a despesa a 100% do PIB.
+        domain: {
+          minimum: control.dominio.minimo,
+          maximum: control.dominio.maximo,
+        },
         options: policy.controle.opcoes?.map((option) => option.valor),
       },
     },
   };
-}
-
-/** Limites em % escritos na lei (percentual do orçamento e alíquota). */
-function percentLimits(
-  policy: PolicyFile,
-): Readonly<{ minimo?: number; maximo?: number }> | undefined {
-  if (policy.orcamento?.modo === "percentual_orcamento")
-    return policy.orcamento.limites;
-  return policy.tributo?.limites;
-}
-
-type Limits = Readonly<{ minimo?: number; maximo?: number }> | undefined;
-
-/**
- * Limites de valor fixo escritos na lei em % do PIB viram valores com o PIB do
- * país. Sem economia declarada (pacotes de teste), não há como convertê-los.
- */
-function gdpLimits(policy: PolicyFile, gdp: number | undefined): Limits {
-  const limits = policy.orcamento?.limites;
-  if (policy.orcamento?.modo !== "valor_fixo" || !limits || gdp === undefined)
-    return undefined;
-  return {
-    minimo:
-      limits.minimoPercentualPib === undefined
-        ? undefined
-        : (limits.minimoPercentualPib / 100) * gdp,
-    maximo:
-      limits.maximoPercentualPib === undefined
-        ? undefined
-        : (limits.maximoPercentualPib / 100) * gdp,
-  };
-}
-
-/** Aperta um domínio com um limite: vale sempre o mais restritivo. */
-function narrow(
-  domain: PolicyLevelRules["domain"],
-  limits: Limits,
-): PolicyLevelRules["domain"] {
-  const minimum =
-    limits?.minimo === undefined
-      ? domain.minimum
-      : Math.max(domain.minimum ?? limits.minimo, limits.minimo);
-  const maximum =
-    limits?.maximo === undefined
-      ? domain.maximum
-      : Math.min(domain.maximum ?? limits.maximo, limits.maximo);
-  return { minimum, maximum };
 }

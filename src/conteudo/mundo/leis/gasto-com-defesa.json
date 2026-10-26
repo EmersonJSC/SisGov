@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 10
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -56,7 +52,7 @@
       "alvo": "reputacao_internacional",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000025,
+        "coeficiente": 2.5e-6,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -67,7 +63,7 @@
       "alvo": "golpe_risco",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000025,
+        "coeficiente": 2.5e-6,
         "termoConstante": 0
       },
       "atraso": 4,

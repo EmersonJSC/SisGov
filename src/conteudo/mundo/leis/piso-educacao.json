@@ -35,11 +35,7 @@
   "dinheiro": {
     "tipo": "gasto",
     "modo": "percentual_orcamento",
-    "base": "receita_total",
-    "limites": {
-      "minimo": 0,
-      "maximo": 40
-    }
+    "base": "receita_total"
   },
   "implantacao": {
     "entrada": 0.3,

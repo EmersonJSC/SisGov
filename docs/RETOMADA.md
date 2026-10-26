@@ -1,10 +1,96 @@
-# Retomada: onde paramos (25/out/2026, 18h)
+# Retomada: onde paramos (26/out/2026, de madrugada — autor de férias até quarta)
 
 > Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md)
 > (seção "Nova ordem (24/out)"), [AGENTS.md](../AGENTS.md) e
 > [economia-e-caixa.md](jogo/mecanicas/economia-e-caixa.md).
 
-#### Agora (25/out, 18h)
+## Atualização de 26/out: fase 4 de gastos
+
+O autor pediu a implementação completa da fase 4. O código agora tem as leis
+Quantidade de servidores, Salário dos servidores e Taxas e tarifas públicas.
+A folha é quantidade de servidores × salário médio; aposentadorias, pensões,
+militares inativos, seguro-desemprego e renda de idosos/pessoas com deficiência
+usam beneficiários × benefício. As verbas perderam os tetos individuais; a
+ação de lei reserva a soma das metas de gasto e rejeita mais de 100% do PIB.
+Os pisos constitucionais permanecem. A arrecadação das taxas ganhou conta
+própria. O orçamento expõe linhas com conta e leis clicáveis.
+
+As verbas em reais mantêm o valor nominal; o índice de preços reduz seu poder
+de compra nos efeitos sociais, com comparação anual na janela. Juros básicos
+ficam visíveis e bloqueados sob banco central autônomo, com taxa e relação da
+inflação com a meta. A auditoria de gastos foi executada após as mudanças e
+fechou a soma das relações no mês seguinte. Foram acrescentados testes de
+comportamento em `src/tests/gastosFase4.test.ts`. **`npm run check` passou em
+26/out: 111 arquivos de teste, 540 testes aprovados e 1 ignorado.** A fase 4
+está concluída no commit desta entrega; o `PLANO.md` registra o status mestre.
+
+Preserve as mudanças sem commit que já existiam no topo e no mapa; os arquivos
+de interface também receberam edições pontuais da fase 4. No commit entraram
+apenas os trechos que mantêm Juros básicos visíveis; o restante do topbar e a
+tela experimental do orçamento continuam sem commit. A aba completa de
+Orçamento está prevista para a fase 6. A fase 5 é a próxima implementação.
+
+## Entrega para retomar na quarta (trabalho de 26/out)
+
+**Pedido do autor:** verificar se a fase 3 da economia terminou e começar a
+fase 4. A implementação dos impostos da fase 3 está no commit `a25db88f` e
+nos anteriores; nesta sessão acrescentei um teste de comportamento em
+`src/tests/arrecadacaoPorImposto.test.ts` para confirmar a cadeia desemprego
+→ ocupados → massa salarial → contribuição sobre salários formais. Os 6
+testes desse arquivo e os 2 de `arrecadacaoAncorada.test.ts` passaram.
+
+**Aceite da fase 3 ainda não fechado:** `npm run lint` e `npm run build`
+passaram. `npm run check` parou antes dos testes porque `format:check` acusou
+13 arquivos fora do padrão; formatei apenas o teste acrescentado nesta sessão,
+restando 12 arquivos, incluindo `src/app/partida/contas.ts` e
+`src/conteudo/mundo/indicadores/variaveis.json`. A suíte `npm test` mostrou
+uma falha antiga de precisão em `src/tests/fichaV3.test.ts`: após quatro
+turnos com três leis piloto no cenário Brasil, `letalidade_policial` foi
+30,99934994827179; o teste esperava 30,99935161184314 com tolerância de
+0,000000005. Isso é um índice da simulação, não um valor de lei nem uma
+quantia em reais. Não alterei a expectativa do teste. Interrompi a suíte
+completa após essa falha e vários outros arquivos aprovados, pois ela é longa;
+portanto **não há resultado final da suíte completa**. Depois das edições,
+`npm run lint`, `npm run build` e a checagem de formatação dos dois arquivos
+novos passaram.
+
+**Primeiro passo da fase 4 (B1):** adicionei
+`scripts/economia/auditar-gastos.ts`; execute com
+`npx vite-node scripts/economia/auditar-gastos.ts`. O gasto no turno inicial
+é 31,07% do PIB e no mês seguinte 31,08%; a base sem relação é zero e as
+relações sem lei contribuem zero nesse estado. A hipótese antiga de que
+~30% do PIB são gastos sem lei não se confirmou. O defeito é a falta de
+**contas próprias**: a previdência responde por 6,46 pontos do PIB, pensão
+por morte por 0,50, seguro-desemprego por 0,41 e a lei de estabilidade dos
+servidores acrescenta 0,40 sem representar a folha. Próximo: começar a
+substituir efeitos agregados por quantidade × salário dos servidores, em
+duas leis, conforme o documento aprovado; depois separar aposentadorias e
+pensões e calcular os benefícios pela população atendida. `PLANO.md` foi
+atualizado como fonte mestre de status.
+
+**Arquivos desta sessão, sem commit:** `PLANO.md`, este arquivo,
+`src/tests/arrecadacaoPorImposto.test.ts` e
+`scripts/economia/auditar-gastos.ts`. Preserve as mudanças de interface
+sem commit em `TelaPrincipal.tsx` e `mapa.css`, que já estavam no diretório.
+
+#### Agora (26/out, madrugada)
+
+- **Criado `gpt.md`** na raiz: roteiro de como o GPT deve pensar (respostas
+  curtas, não adivinhar, não reivindicar sucesso sem rodar teste), complemento
+  do `canal/CANAL.md`. Leia os dois antes de orquestrar o GPT.
+- **PEDIDO 18 fechado (commit `a25db88f`):** contribuição sobre salários virou
+  lei própria (`aliquota_contribuicao_salarios`), saiu da curva antiga da
+  previdência. **Próximo da economia:** fase 4 (gastos), pela nova ordem do
+  PLANO.
+- **Mudanças sem commit:** `src/ui/mapa/TelaPrincipal.tsx` e
+  `src/ui/mapa/mapa.css` (grandes, +1020/−190 linhas juntos) — trabalho de
+  tela em andamento de uma sessão anterior, não documentado aqui ainda.
+  **Confira o que é antes de descartar ou commitar**; não é do GPT mexer
+  (regra 7 do canal: tela/desenho é do Claude).
+- Há um stash (`ui do laboratorio antes de integrar main`, branch
+  `emersonjsc-ajustar-laboratorio`) — não mexer sem saber a origem.
+
+#### Antes (25/out, 18h)
 
 - **Refazer o mundo: desistido pelo autor (25/out, 18h).** As leis, índices
   e grupos atuais ficam; mexemos muito nelas e refazer seria trabalho

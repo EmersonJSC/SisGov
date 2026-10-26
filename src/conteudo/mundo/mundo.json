@@ -1720,6 +1720,7 @@
     "mundo/consequencias/inflacao--pib-nominal.json",
     "mundo/consequencias/crescimento-real--salario-medio.json",
     "mundo/consequencias/inflacao--salario-medio.json",
+    "mundo/consequencias/inflacao--indice-precos.json",
     "mundo/consequencias/crescimento-real--patrimonio-imoveis-urbanos.json",
     "mundo/consequencias/inflacao--patrimonio-imoveis-urbanos.json",
     "mundo/consequencias/crescimento-real--patrimonio-terras.json",

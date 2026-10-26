@@ -28,7 +28,12 @@ export function nosForaDoMapa(content: ResolvedPackage): ReadonlySet<string> {
   if (cached) return cached;
   const ids = new Set(
     content.variables.variaveis
-      .filter((v) => v.area === AREA_PRESSAO || v.area === AREA_PATROCINIO)
+      .filter(
+        (v) =>
+          v.area === AREA_PRESSAO ||
+          v.area === AREA_PATROCINIO ||
+          v.area === "Dados internos",
+      )
       .map((v) => v.id),
   );
   foraDoMapa.set(content, ids);

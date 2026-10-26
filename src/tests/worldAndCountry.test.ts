@@ -48,7 +48,7 @@ it("SG153: nenhum arquivo do mundo cita país, moeda concreta ou fonte nacional"
   }
 });
 
-it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
+it("SG153: o Brasil carrega com níveis e gastos declarados", () => {
   const brasil = load("testes/legado/brasil/pais.json");
   expect(brasil.definition.manifest.mundo).toBe(
     "testes/legado/mundo/mundo.json",
@@ -76,7 +76,7 @@ it("SG153: o Brasil carrega como antes (níveis, limites e gastos)", () => {
   );
   expect(rules).toMatchObject({
     ok: true,
-    value: { rules: { domain: { minimum: 2400, maximum: 6000 } } },
+    value: { rules: { domain: { minimum: 0, maximum: undefined } } },
   });
 });
 
@@ -107,7 +107,7 @@ it("SG153: outro país usa o mesmo mundo com outro pacote de leis", () => {
   });
 });
 
-it("SG153: limite próprio do país é aplicado e validado", () => {
+it("SG153: limite individual antigo do país não restringe a verba", () => {
   const brasil = load("testes/legado/brasil/pais.json");
   const content = structuredClone(brasil.definition);
   content.initialState.leisVigentes = content.initialState.leisVigentes!.map(
@@ -115,5 +115,5 @@ it("SG153: limite próprio do país é aplicado e validado", () => {
       entry.lei === "atencao-basica" ? { ...entry, nivel: 7000 } : entry,
   );
   const game = createGame("acima-do-limite", content, brasil.graph);
-  expect(game.ok).toBe(false);
+  expect(game.ok).toBe(true);
 });

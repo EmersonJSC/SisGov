@@ -3,467 +3,165 @@
   "versaoEsquema": 1,
   "descricao": "Fontes usadas para montar os números do Brasil. O jogo não lê e a tela não mostra.",
   "indices": {
-    "populacao": [
-      "Estatísticas demográficas oficiais do país"
-    ],
-    "pib_nominal": [
-      "Sistema de contas nacionais do país"
-    ],
-    "salario_medio": [
-      "Estatísticas salariais oficiais do país"
-    ],
+    "populacao": ["Estatísticas demográficas oficiais do país"],
+    "pib_nominal": ["Sistema de contas nacionais do país"],
+    "salario_medio": ["Estatísticas salariais oficiais do país"],
     "patrimonio_imoveis_urbanos": [
       "Estatísticas patrimoniais oficiais do país"
     ],
-    "patrimonio_terras": [
-      "Estatísticas fundiárias e patrimoniais do país"
-    ],
-    "patrimonio_financeiro": [
-      "Estatísticas financeiras oficiais do país"
-    ],
-    "aprendizagem": [
-      "OCDE PISA",
-      "Inep (Saeb)"
-    ],
-    "armas_em_circulacao": [
-      "Small Arms Survey",
-      "registros Sinarm/SIGMA"
-    ],
-    "arrecadacao": [
-      "Tesouro Nacional",
-      "OCDE Revenue Statistics"
-    ],
-    "cambio": [
-      "Banco Central (IPCA-REER)",
-      "BIS"
-    ],
-    "capacidade_defesa": [
-      "SIPRI Military Expenditure"
-    ],
-    "capacidade_estatal": [
-      "Banco Mundial (Worldwide Governance Indicators)"
-    ],
-    "captura_politica": [
-      "Banco Mundial (WGI)",
-      "V-Dem"
-    ],
-    "cobertura_aps": [
-      "Ministério da Saúde (e-Gestor)"
-    ],
-    "cobertura_planos_saude": [
-      "ANS (Sala de Situação)"
-    ],
+    "patrimonio_terras": ["Estatísticas fundiárias e patrimoniais do país"],
+    "patrimonio_financeiro": ["Estatísticas financeiras oficiais do país"],
+    "aprendizagem": ["OCDE PISA", "Inep (Saeb)"],
+    "armas_em_circulacao": ["Small Arms Survey", "registros Sinarm/SIGMA"],
+    "arrecadacao": ["Tesouro Nacional", "OCDE Revenue Statistics"],
+    "cambio": ["Banco Central (IPCA-REER)", "BIS"],
+    "capacidade_defesa": ["SIPRI Military Expenditure"],
+    "capacidade_estatal": ["Banco Mundial (Worldwide Governance Indicators)"],
+    "captura_politica": ["Banco Mundial (WGI)", "V-Dem"],
+    "cobertura_aps": ["Ministério da Saúde (e-Gestor)"],
+    "cobertura_planos_saude": ["ANS (Sala de Situação)"],
     "cobertura_previdenciaria": [
       "IBGE PNAD Contínua",
       "OIT (World Social Protection)"
     ],
-    "cobertura_vacinal": [
-      "PNI/DataSUS",
-      "OMS/UNICEF (WUENIC)"
-    ],
-    "cofre": [
-      "Tesouro (conta única)",
-      "SWF Institute"
-    ],
+    "cobertura_vacinal": ["PNI/DataSUS", "OMS/UNICEF (WUENIC)"],
+    "cofre": ["Tesouro (conta única)", "SWF Institute"],
     "complexidade_tributaria": [
       "Banco Mundial Doing Business (série até 2020)"
     ],
-    "concentracao_fundiaria": [
-      "IBGE (Censo Agropecuário)"
-    ],
-    "concentracao_mercado": [
-      "Cade",
-      "OCDE (competition indicators)"
-    ],
-    "confianca_empresarial": [
-      "FGV/IBRE (ICE)"
-    ],
-    "confianca_instituicoes": [
-      "Latinobarómetro",
-      "OCDE Trust Survey"
-    ],
-    "conflitos_fundiarios": [
-      "CPT (Conflitos no Campo Brasil)"
-    ],
-    "consumo": [
-      "IBGE Contas Nacionais"
-    ],
-    "consumo_tabaco_alcool": [
-      "Vigitel",
-      "OMS"
-    ],
-    "corrupcao": [
-      "Transparência Internacional (IPC)"
-    ],
-    "credito": [
-      "Banco Central",
-      "Banco Mundial"
-    ],
-    "crime_organizado": [
-      "Global Organized Crime Index (GI-TOC)"
-    ],
-    "crimes_patrimoniais": [
-      "Anuário Brasileiro de Segurança Pública (FBSP)"
-    ],
-    "custo_trabalhista": [
-      "OCDE Taxing Wages",
-      "Dieese"
-    ],
-    "deficit_habitacional": [
-      "Fundação João Pinheiro"
-    ],
-    "deficit_previdenciario": [
-      "Tesouro (RTN)",
-      "Secretaria de Previdência"
-    ],
-    "desemprego": [
-      "IBGE PNAD Contínua"
-    ],
-    "desenvolvimento": [
-      "PNUD"
-    ],
-    "desigualdade": [
-      "IBGE PNAD Contínua",
-      "Banco Mundial"
-    ],
-    "desigualdade_regional": [
-      "IBGE (PIB dos Municípios/UFs)"
-    ],
-    "desinformacao": [
-      "V-Dem (Digital Society Project)"
-    ],
-    "desmatamento": [
-      "Inpe (Prodes)"
-    ],
-    "diferenca_salarial_genero": [
-      "IBGE PNAD Contínua",
-      "OIT"
-    ],
-    "discriminacao": [
-      "Pesquisas de vitimização",
-      "Latinobarómetro"
-    ],
-    "divida_publica": [
-      "Banco Central (DBGG)",
-      "FMI WEO"
-    ],
-    "emissoes": [
-      "SEEG/Observatório do Clima",
-      "EDGAR"
-    ],
-    "endividamento_familias": [
-      "Banco Central (RNDBF)"
-    ],
-    "envelhecimento": [
-      "IBGE (Projeções da População)",
-      "IBGE Censo 2022"
-    ],
-    "escolaridade": [
-      "IBGE PNAD Contínua",
-      "Barro-Lee"
-    ],
-    "estabilidade_politica": [
-      "Banco Mundial (WGI)"
-    ],
-    "evasao_escolar": [
-      "IBGE PNAD Contínua",
-      "Inep (Censo Escolar)"
-    ],
-    "expectativas_inflacao": [
-      "Banco Central (Focus)"
-    ],
-    "exportacoes": [
-      "IBGE",
-      "Secex/MDIC"
-    ],
-    "falta_de_medicos": [
-      "CFM (Demografia Médica)",
-      "OMS"
-    ],
-    "forca_instituicoes": [
-      "V-Dem (LDI)"
-    ],
-    "fuga_capitais": [
-      "Banco Central (balanço de pagamentos)"
-    ],
-    "fuga_de_cerebros": [
-      "CGEE",
-      "OCDE (DIOC)"
-    ],
-    "gasto_bolso_saude": [
-      "OMS (Global Health Expenditure Database)"
-    ],
-    "gasto_publico": [
-      "Tesouro Nacional",
-      "FMI Fiscal Monitor"
-    ],
-    "ied": [
-      "Banco Central (BP)"
-    ],
-    "imigracao": [
-      "ONU DESA (International Migrant Stock)",
-      "SisMigra"
-    ],
-    "importacoes": [
-      "IBGE",
-      "Secex/MDIC"
-    ],
-    "impunidade": [
-      "Instituto Sou da Paz (\"Onde mora a impunidade\")"
-    ],
-    "inflacao": [
-      "IBGE IPCA"
-    ],
-    "informalidade": [
-      "IBGE PNAD Contínua"
-    ],
-    "infraestrutura_energia": [
-      "Aneel (DEC/FEC)"
-    ],
-    "infraestrutura_saneamento": [
-      "SNIS/SINISA (Ministério das Cidades)"
-    ],
-    "infraestrutura_transportes": [
-      "CNT (Pesquisa de Rodovias)"
-    ],
-    "inovacao": [
-      "MCTI",
-      "Unesco UIS",
-      "OCDE MSTI"
-    ],
-    "inseguranca_alimentar": [
-      "IBGE PNAD (EBIA)",
-      "Rede Penssan"
-    ],
-    "investimento": [
-      "IBGE Contas Nacionais"
-    ],
+    "concentracao_fundiaria": ["IBGE (Censo Agropecuário)"],
+    "concentracao_mercado": ["Cade", "OCDE (competition indicators)"],
+    "confianca_empresarial": ["FGV/IBRE (ICE)"],
+    "confianca_instituicoes": ["Latinobarómetro", "OCDE Trust Survey"],
+    "conflitos_fundiarios": ["CPT (Conflitos no Campo Brasil)"],
+    "consumo": ["IBGE Contas Nacionais"],
+    "consumo_tabaco_alcool": ["Vigitel", "OMS"],
+    "corrupcao": ["Transparência Internacional (IPC)"],
+    "credito": ["Banco Central", "Banco Mundial"],
+    "crime_organizado": ["Global Organized Crime Index (GI-TOC)"],
+    "crimes_patrimoniais": ["Anuário Brasileiro de Segurança Pública (FBSP)"],
+    "custo_trabalhista": ["OCDE Taxing Wages", "Dieese"],
+    "deficit_habitacional": ["Fundação João Pinheiro"],
+    "deficit_previdenciario": ["Tesouro (RTN)", "Secretaria de Previdência"],
+    "desemprego": ["IBGE PNAD Contínua"],
+    "desenvolvimento": ["PNUD"],
+    "desigualdade": ["IBGE PNAD Contínua", "Banco Mundial"],
+    "desigualdade_regional": ["IBGE (PIB dos Municípios/UFs)"],
+    "desinformacao": ["V-Dem (Digital Society Project)"],
+    "desmatamento": ["Inpe (Prodes)"],
+    "diferenca_salarial_genero": ["IBGE PNAD Contínua", "OIT"],
+    "discriminacao": ["Pesquisas de vitimização", "Latinobarómetro"],
+    "divida_publica": ["Banco Central (DBGG)", "FMI WEO"],
+    "emissoes": ["SEEG/Observatório do Clima", "EDGAR"],
+    "endividamento_familias": ["Banco Central (RNDBF)"],
+    "envelhecimento": ["IBGE (Projeções da População)", "IBGE Censo 2022"],
+    "escolaridade": ["IBGE PNAD Contínua", "Barro-Lee"],
+    "estabilidade_politica": ["Banco Mundial (WGI)"],
+    "evasao_escolar": ["IBGE PNAD Contínua", "Inep (Censo Escolar)"],
+    "expectativas_inflacao": ["Banco Central (Focus)"],
+    "exportacoes": ["IBGE", "Secex/MDIC"],
+    "falta_de_medicos": ["CFM (Demografia Médica)", "OMS"],
+    "forca_instituicoes": ["V-Dem (LDI)"],
+    "fuga_capitais": ["Banco Central (balanço de pagamentos)"],
+    "fuga_de_cerebros": ["CGEE", "OCDE (DIOC)"],
+    "gasto_bolso_saude": ["OMS (Global Health Expenditure Database)"],
+    "gasto_publico": ["Tesouro Nacional", "FMI Fiscal Monitor"],
+    "ied": ["Banco Central (BP)"],
+    "imigracao": ["ONU DESA (International Migrant Stock)", "SisMigra"],
+    "importacoes": ["IBGE", "Secex/MDIC"],
+    "impunidade": ["Instituto Sou da Paz (\"Onde mora a impunidade\")"],
+    "inflacao": ["IBGE IPCA"],
+    "informalidade": ["IBGE PNAD Contínua"],
+    "infraestrutura_energia": ["Aneel (DEC/FEC)"],
+    "infraestrutura_saneamento": ["SNIS/SINISA (Ministério das Cidades)"],
+    "infraestrutura_transportes": ["CNT (Pesquisa de Rodovias)"],
+    "inovacao": ["MCTI", "Unesco UIS", "OCDE MSTI"],
+    "inseguranca_alimentar": ["IBGE PNAD (EBIA)", "Rede Penssan"],
+    "investimento": ["IBGE Contas Nacionais"],
     "juros_implicito": [
       "Tesouro Nacional (custo médio da DPF)",
       "Banco Central (NFSP)"
     ],
-    "juros_hiato": [
-      "Banco central (taxa básica de juros)",
-      "Tesouro do país"
-    ],
-    "juros_da_divida": [
-      "Banco Central (NFSP)"
-    ],
-    "letalidade_policial": [
-      "Anuário Brasileiro de Segurança Pública"
-    ],
-    "liberdade_civil": [
-      "Freedom House (Freedom in the World)"
-    ],
-    "litigio_trabalhista": [
-      "TST (Relatório Geral)",
-      "CNJ Justiça em Números"
-    ],
-    "lotacao_prisional": [
-      "Sisdepen/Senappen",
-      "World Prison Brief"
-    ],
-    "mobilidade_urbana": [
-      "IBGE (Censo 2022)",
-      "Moovit"
-    ],
-    "natalidade": [
-      "IBGE",
-      "ONU World Population Prospects"
-    ],
-    "oferta_energia": [
-      "ONS",
-      "EPE (Balanço Energético Nacional)"
-    ],
+    "juros_hiato": ["Banco central (taxa básica de juros)", "Tesouro do país"],
+    "juros_da_divida": ["Banco Central (NFSP)"],
+    "letalidade_policial": ["Anuário Brasileiro de Segurança Pública"],
+    "liberdade_civil": ["Freedom House (Freedom in the World)"],
+    "litigio_trabalhista": ["TST (Relatório Geral)", "CNJ Justiça em Números"],
+    "lotacao_prisional": ["Sisdepen/Senappen", "World Prison Brief"],
+    "mobilidade_urbana": ["IBGE (Censo 2022)", "Moovit"],
+    "natalidade": ["IBGE", "ONU World Population Prospects"],
+    "oferta_energia": ["ONS", "EPE (Balanço Energético Nacional)"],
     "oportunidades_juvenis": [
       "IBGE (Síntese de Indicadores Sociais)",
       "OCDE NEET"
     ],
-    "participacao_eleitoral": [
-      "TSE",
-      "IDEA Voter Turnout"
-    ],
-    "participacao_trabalho_cuidadoras": [
-      "IBGE PNAD Contínua",
-      "OIT"
-    ],
-    "participacao_trabalho_idosos": [
-      "IBGE PNAD Contínua",
-      "OCDE"
-    ],
-    "pib": [
-      "IBGE Contas Nacionais"
-    ],
-    "crescimento_potencial": [
-      "Banco Central (Relatório de Inflação)",
-      "IFI"
-    ],
-    "crescimento_real": [
-      "IBGE Contas Nacionais"
-    ],
+    "participacao_eleitoral": ["TSE", "IDEA Voter Turnout"],
+    "participacao_trabalho_cuidadoras": ["IBGE PNAD Contínua", "OIT"],
+    "participacao_trabalho_idosos": ["IBGE PNAD Contínua", "OCDE"],
+    "pib": ["IBGE Contas Nacionais"],
+    "crescimento_potencial": ["Banco Central (Relatório de Inflação)", "IFI"],
+    "crescimento_real": ["IBGE Contas Nacionais"],
     "salario_minimo_relativo": [
       "OIT (Global Wage Report)",
       "OCDE (minimum relative to median wages)"
     ],
-    "salario_minimo_efetivo": [
-      "regra de salário mínimo do país"
-    ],
-    "aumento_real_do_minimo": [
-      "regra de reajuste"
-    ],
+    "salario_minimo_efetivo": ["regra de salário mínimo do país"],
+    "aumento_real_do_minimo": ["regra de reajuste"],
     "reajuste_nominal_do_minimo": [
       "regra de salário mínimo do país",
       "inflação"
     ],
-    "existe_salario_minimo": [
-      "lei constitucional do país"
-    ],
-    "reajuste_segue_crescimento": [
-      "regra de reajuste do país"
-    ],
-    "beneficios_atrelados_ao_minimo": [
-      "regra de reajuste dos benefícios"
-    ],
-    "pobreza": [
-      "IBGE (Síntese de Indicadores Sociais)",
-      "Banco Mundial"
-    ],
-    "polarizacao": [
-      "V-Dem (v2cacamps)"
-    ],
-    "populacao_de_rua": [
-      "CadÚnico/MDHC",
-      "Ipea"
-    ],
-    "poupanca_domestica": [
-      "IBGE Contas Nacionais"
-    ],
-    "preco_alimentos": [
-      "IBGE IPCA"
-    ],
-    "preco_energia": [
-      "Aneel"
-    ],
-    "preco_medicamentos": [
-      "IBGE IPCA (produtos farmacêuticos)",
-      "CMED"
-    ],
-    "pressao_hospitalar": [
-      "DataSUS (SIH/CNES)"
-    ],
-    "producao_agropecuaria": [
-      "Mapa (VBP)",
-      "IBGE (PAM/PPM)"
-    ],
-    "producao_mineral": [
-      "ANP",
-      "ANM"
-    ],
-    "produtividade": [
-      "Penn World Table",
-      "Conference Board"
-    ],
+    "existe_salario_minimo": ["lei constitucional do país"],
+    "reajuste_segue_crescimento": ["regra de reajuste do país"],
+    "beneficios_atrelados_ao_minimo": ["regra de reajuste dos benefícios"],
+    "pobreza": ["IBGE (Síntese de Indicadores Sociais)", "Banco Mundial"],
+    "polarizacao": ["V-Dem (v2cacamps)"],
+    "populacao_de_rua": ["CadÚnico/MDHC", "Ipea"],
+    "poupanca_domestica": ["IBGE Contas Nacionais"],
+    "preco_alimentos": ["IBGE IPCA"],
+    "preco_energia": ["Aneel"],
+    "preco_medicamentos": ["IBGE IPCA (produtos farmacêuticos)", "CMED"],
+    "pressao_hospitalar": ["DataSUS (SIH/CNES)"],
+    "producao_agropecuaria": ["Mapa (VBP)", "IBGE (PAM/PPM)"],
+    "producao_mineral": ["ANP", "ANM"],
+    "produtividade": ["Penn World Table", "Conference Board"],
     "protecao_efetiva_mulheres": [
       "Anuário Brasileiro de Segurança Pública",
       "SIM"
     ],
-    "qualidade_ambiental": [
-      "Yale EPI"
-    ],
-    "qualidade_de_vida": [
-      "PNUD (Relatório de Desenvolvimento Humano)"
-    ],
-    "qualificacao_trabalho": [
-      "IBGE PNAD Contínua"
-    ],
-    "reincidencia": [
-      "Depen/UFPE (2022)",
-      "estudos do CNJ"
-    ],
-    "renda_familias": [
-      "IBGE PNAD Contínua"
-    ],
+    "qualidade_ambiental": ["Yale EPI"],
+    "qualidade_de_vida": ["PNUD (Relatório de Desenvolvimento Humano)"],
+    "qualificacao_trabalho": ["IBGE PNAD Contínua"],
+    "reincidencia": ["Depen/UFPE (2022)", "estudos do CNJ"],
+    "renda_familias": ["IBGE PNAD Contínua"],
     "reputacao_internacional": [
       "Anholt-Ipsos Nation Brands Index",
       "Pew Global Attitudes"
     ],
-    "reservas_internacionais": [
-      "Banco Central"
-    ],
-    "resultado_fiscal": [
-      "Banco Central (NFSP)",
-      "Tesouro"
-    ],
-    "meta_primario": [
-      "lei de meta de resultado das contas"
-    ],
-    "primario_sem_corte": [
-      "Banco Central (NFSP)",
-      "Tesouro"
-    ],
-    "hiato_da_meta": [
-      "lei de meta de resultado das contas",
-      "Tesouro"
-    ],
-    "contingenciamento": [
-      "Tesouro (Relatório de Avaliação Bimestral)"
-    ],
-    "risco_pais": [
-      "JP Morgan EMBI",
-      "CDS 5 anos"
-    ],
-    "rotatividade_emprego": [
-      "Caged/Rais",
-      "Dieese"
-    ],
-    "saude_populacao": [
-      "IBGE (Tábuas de Mortalidade)",
-      "OMS"
-    ],
-    "segregacao_escolar": [
-      "OCDE PISA (isolation/dissimilarity)"
-    ],
+    "reservas_internacionais": ["Banco Central"],
+    "resultado_fiscal": ["Banco Central (NFSP)", "Tesouro"],
+    "meta_primario": ["lei de meta de resultado das contas"],
+    "primario_sem_corte": ["Banco Central (NFSP)", "Tesouro"],
+    "hiato_da_meta": ["lei de meta de resultado das contas", "Tesouro"],
+    "contingenciamento": ["Tesouro (Relatório de Avaliação Bimestral)"],
+    "risco_pais": ["JP Morgan EMBI", "CDS 5 anos"],
+    "rotatividade_emprego": ["Caged/Rais", "Dieese"],
+    "saude_populacao": ["IBGE (Tábuas de Mortalidade)", "OMS"],
+    "segregacao_escolar": ["OCDE PISA (isolation/dissimilarity)"],
     "sensacao_seguranca": [
       "Gallup Law and Order",
       "PNAD 2021 (módulo vitimização)"
     ],
-    "sofrimento_mental": [
-      "IBGE PNS",
-      "OMS"
-    ],
-    "sonegacao": [
-      "Sindifisco/IBPT",
-      "FMI (tax gap)"
-    ],
-    "taxa_juros": [
-      "Banco central (taxa básica de juros)"
-    ],
-    "subordinacao_bc": [
-      "lei de autonomia do banco central"
-    ],
-    "trabalho_infantil": [
-      "IBGE PNAD Contínua",
-      "OIT/UNICEF"
-    ],
-    "transparencia_fiscal_internacional": [
-      "OCDE Global Forum"
-    ],
-    "turismo": [
-      "Embratur",
-      "ONU Turismo"
-    ],
-    "uso_drogas": [
-      "UNODC World Drug Report",
-      "LENAD/Fiocruz"
-    ],
-    "vicio_em_apostas": [
-      "Datafolha/LENAD",
-      "Banco Central (Pix para bets)"
-    ],
-    "violencia_letal": [
-      "SIM/DATASUS",
-      "Atlas da Violência (Ipea/FBSP)"
-    ],
+    "sofrimento_mental": ["IBGE PNS", "OMS"],
+    "sonegacao": ["Sindifisco/IBPT", "FMI (tax gap)"],
+    "taxa_juros": ["Banco central (taxa básica de juros)"],
+    "subordinacao_bc": ["lei de autonomia do banco central"],
+    "trabalho_infantil": ["IBGE PNAD Contínua", "OIT/UNICEF"],
+    "transparencia_fiscal_internacional": ["OCDE Global Forum"],
+    "turismo": ["Embratur", "ONU Turismo"],
+    "uso_drogas": ["UNODC World Drug Report", "LENAD/Fiocruz"],
+    "vicio_em_apostas": ["Datafolha/LENAD", "Banco Central (Pix para bets)"],
+    "violencia_letal": ["SIM/DATASUS", "Atlas da Violência (Ipea/FBSP)"],
     "vitalidade_cultural": [
       "IBGE (Sistema de Informações e Indicadores Culturais)"
     ]

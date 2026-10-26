@@ -40,12 +40,12 @@ describe("medida real do índice (V1-07)", () => {
     expect(mensagens(variaveis({ zero: 0, cem: 1 }))).toContain(
       "Deve ser um texto não vazio.",
     );
-    expect(
-      mensagens(variaveis({ unidade: "x", zero: 0 })),
-    ).toContain("Zero e cem vêm juntos, como números.");
-    expect(
-      mensagens(variaveis({ unidade: "x" }, "situacao")),
-    ).toContain("Só índices calculados e estoques têm medida.");
+    expect(mensagens(variaveis({ unidade: "x", zero: 0 }))).toContain(
+      "Zero e cem vêm juntos, como números.",
+    );
+    expect(mensagens(variaveis({ unidade: "x" }, "situacao"))).toContain(
+      "Só índices calculados e estoques têm medida.",
+    );
   });
 
   it("converte o valor do motor para a medida real", () => {

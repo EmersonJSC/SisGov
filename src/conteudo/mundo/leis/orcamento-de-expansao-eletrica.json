@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 2
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,

@@ -51,10 +51,7 @@ describe("arrecadação por imposto", () => {
     };
     expect(
       calculateDerivedValue(variavel, { ...valores, consumo_familias: 2000 }),
-    ).toBeCloseTo(
-      2 * calculateDerivedValue(variavel, valores)!,
-      8,
-    );
+    ).toBeCloseTo(2 * calculateDerivedValue(variavel, valores)!, 8);
   });
 
   it("a arrecadação do consumo zera no limite da curva e acima dele", () => {
@@ -95,6 +92,28 @@ describe("arrecadação por imposto", () => {
     expect(
       calculateDerivedValue(variavel, { ...valores, populacao: 2000 }),
     ).toBeLessThan(inicial);
+  });
+
+  it("mais desemprego reduz a contribuição cobrada sobre salários formais", () => {
+    const valores = partida.game.execution.values;
+    const variavel = (id: string) =>
+      partida.content.variables.variaveis.find((item) => item.id === id)!;
+    const ocupados = calculateDerivedValue(variavel("ocupados"), {
+      ...valores,
+      desemprego: valores.desemprego + 10,
+    })!;
+    const massa = calculateDerivedValue(variavel("massa_salarial"), {
+      ...valores,
+      ocupados,
+    })!;
+    const menosSalarios = calculateDerivedValue(
+      variavel("arrecadacao_salarios"),
+      {
+        ...valores,
+        massa_salarial: massa,
+      },
+    )!;
+    expect(menosSalarios).toBeLessThan(valores.arrecadacao_salarios);
   });
 
   it("carrega os nove derivados no turno zero com valores não negativos", () => {

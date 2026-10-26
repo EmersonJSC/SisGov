@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 0.5
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -45,7 +41,7 @@
       "alvo": "pressao_hospitalar",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.00005,
+        "coeficiente": -5e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -56,7 +52,7 @@
       "alvo": "saude_populacao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.00005,
+        "coeficiente": 5e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -67,7 +63,7 @@
       "alvo": "reputacao_internacional",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.00005,
+        "coeficiente": 5e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -78,7 +74,7 @@
       "alvo": "liberdade_civil",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.00005,
+        "coeficiente": -5e-5,
         "termoConstante": 0
       },
       "atraso": 1,

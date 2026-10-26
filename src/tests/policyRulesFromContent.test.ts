@@ -17,7 +17,7 @@ it("lê domínio e unidade da variável de controle do JSON", () => {
       rules: {
         policyDefinitionId: "atencao-basica",
         unit: "moeda_ano",
-        domain: { minimum: 2400, maximum: 6000 },
+        domain: { minimum: 0, maximum: undefined },
         options: undefined,
       },
     },

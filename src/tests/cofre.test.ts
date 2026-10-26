@@ -69,7 +69,7 @@ describe("SG157 fase 4 — cofre", () => {
   });
 
   it("com dívida, o superávit paga a dívida e enche o cofre ao mesmo tempo", () => {
-    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 30);
+    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 40);
     if (!iva.ok) throw new Error(iva.erros.join(" "));
     const depois = turnos(iva.value, 4);
     expect(v(depois, "resultado_fiscal")).toBeGreaterThan(0);
@@ -79,7 +79,7 @@ describe("SG157 fase 4 — cofre", () => {
   });
 
   it("'tudo para a dívida' não guarda nada no cofre", () => {
-    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 30);
+    const iva = mudarLei(comContas(nova(), 5, 0), "imposto-sobre-consumo", 40);
     if (!iva.ok) throw new Error(iva.erros.join(" "));
     const depois = turnos(
       lei(iva.value, "destino-do-resultado-fiscal", "pagar-a-divida"),
@@ -93,7 +93,7 @@ describe("SG157 fase 4 — cofre", () => {
     const iva = mudarLei(
       comContas(nova(), 0.5, 0),
       "imposto-sobre-consumo",
-      30,
+      40,
     );
     if (!iva.ok) throw new Error(iva.erros.join(" "));
     const depois = turnos(iva.value, 9);

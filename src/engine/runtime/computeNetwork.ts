@@ -342,7 +342,21 @@ export function computeNetwork(
           `relacoes.${relation.id}`,
           `A origem ${relation.originId} não tem valor.`,
         );
-      const calculated = calculateContribution(relation, sourceValue, (id) =>
+      // Verba fixada em reais mantém o valor nominal. Nos efeitos sociais,
+      // seu poder de compra cai com os preços. A conta fiscal lê o valor
+      // nominal; efeitos já divididos pelo PIB também já perdem peso.
+      const verbaNominal =
+        relation.sourceType === "lei" &&
+        graph.nodesById[relation.originId]?.unidade === "moeda_ano" &&
+        relation.targetId !== "gasto_publico" &&
+        relation.targetId !== "arrecadacao" &&
+        relation.normalization?.divisor !== "pib_nominal";
+      const poderDeCompra = verbaNominal ? (source.indice_precos ?? 100) : 100;
+      const entrada =
+        verbaNominal && poderDeCompra > 0
+          ? (sourceValue * 100) / poderDeCompra
+          : sourceValue;
+      const calculated = calculateContribution(relation, entrada, (id) =>
         delivered(source, id),
       );
       if (!calculated.ok) return calculated;

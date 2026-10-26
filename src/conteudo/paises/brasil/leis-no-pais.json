@@ -53,15 +53,9 @@
     "destino-do-resultado-fiscal": {
       "historia": {
         "opcoes": {
-          "pagar-a-divida": [
-            "Estados Unidos"
-          ],
-          "dividir": [
-            "Chile"
-          ],
-          "guardar": [
-            "Noruega"
-          ]
+          "pagar-a-divida": ["Estados Unidos"],
+          "dividir": ["Chile"],
+          "guardar": ["Noruega"]
         },
         "brasil": "O Fundo Soberano do Brasil foi criado em 2008 (Lei 11.887) para guardar parte do superávit; em 2018 o governo propôs extingui-lo e usar o saldo para abater a dívida (MP 830/2018)."
       },
@@ -117,16 +111,9 @@
       "exemplo": "Hoje no país de referência: a regra repõe a inflação e soma o crescimento do PIB de dois anos antes.",
       "historia": {
         "opcoes": {
-          "sem-regra": [
-            "Brasil antes de 2007",
-            "Estados Unidos"
-          ],
-          "so-inflacao": [
-            "Brasil de 2020 a 2022"
-          ],
-          "inflacao-mais-pib": [
-            "Brasil de 2007 a 2019 e desde 2023"
-          ],
+          "sem-regra": ["Brasil antes de 2007", "Estados Unidos"],
+          "so-inflacao": ["Brasil de 2020 a 2022"],
+          "inflacao-mais-pib": ["Brasil de 2007 a 2019 e desde 2023"],
           "meta-da-mediana": [
             "União Europeia (diretiva de 2022, valor de referência)",
             "Reino Unido (meta de dois terços da mediana em 2024)"
@@ -175,10 +162,7 @@
     "habitacao-publica": {
       "historia": {
         "opcoes": {
-          "aluguel-social": [
-            "Áustria (Viena)",
-            "Países Baixos"
-          ],
+          "aluguel-social": ["Áustria (Viena)", "Países Baixos"],
           "financiamento": [
             "Brasil (Minha Casa, Minha Vida, Lei 11.977/2009)",
             "Chile (subsídio habitacional)"
@@ -247,9 +231,7 @@
     "piso-salarial-professores": {
       "historia": {
         "opcoes": {
-          "piso-nacional-minimo": [
-            "Brasil"
-          ]
+          "piso-nacional-minimo": ["Brasil"]
         },
         "brasil": "Piso nacional desde 2008 (Lei 11.738), reajustado todo ano pelo governo federal."
       },
@@ -269,16 +251,8 @@
     "policia-militar": {
       "historia": {
         "opcoes": {
-          "militar": [
-            "Brasil",
-            "França (Gendarmerie)",
-            "Itália (Carabinieri)"
-          ],
-          "civil": [
-            "Reino Unido",
-            "Alemanha",
-            "Japão"
-          ]
+          "militar": ["Brasil", "França (Gendarmerie)", "Itália (Carabinieri)"],
+          "civil": ["Reino Unido", "Alemanha", "Japão"]
         },
         "brasil": "A polícia de rua dos estados é militar desde a Constituição de 1988 (art. 144), força auxiliar do Exército."
       },
@@ -323,10 +297,7 @@
       "exemplo": "Hoje no país de referência: o salário mínimo nacional está na Constituição e o valor sai de uma lei votada no Congresso.",
       "historia": {
         "opcoes": {
-          "nao-existe": [
-            "Reino Unido até 1998",
-            "Estados Unidos até 1938"
-          ],
+          "nao-existe": ["Reino Unido até 1998", "Estados Unidos até 1938"],
           "negociacao-sindical": [
             "Suécia",
             "Dinamarca",
@@ -334,15 +305,8 @@
             "Finlândia",
             "Áustria"
           ],
-          "comissao-tecnica": [
-            "Reino Unido desde 1998",
-            "Alemanha desde 2015"
-          ],
-          "lei-nacional": [
-            "Brasil",
-            "Estados Unidos",
-            "França"
-          ]
+          "comissao-tecnica": ["Reino Unido desde 1998", "Alemanha desde 2015"],
+          "lei-nacional": ["Brasil", "Estados Unidos", "França"]
         },
         "brasil": "A Constituição de 1988 manda ter um salário mínimo nacional, fixado em lei (art. 7º, IV). Não é cláusula pétrea: muda por emenda."
       },

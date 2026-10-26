@@ -150,17 +150,17 @@
       "parametros": {
         "pontos": [
           [0, 0],
-          [25, 0.03],
-          [50, 0.2],
-          [75, 0.4],
-          [100, 0.7]
+          [25, 0],
+          [50, 0.6],
+          [75, 1],
+          [100, 1.75]
         ]
       },
       "atraso": 0,
       "leitura": "nivel",
       "escala": {
-        "fator": "desemprego",
-        "referencia": 6
+        "fator": "base_seguro_desemprego_pib",
+        "referencia": 1
       },
       "unidade": "percentual_pib"
     },

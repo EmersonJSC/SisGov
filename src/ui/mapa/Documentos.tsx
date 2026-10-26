@@ -421,12 +421,12 @@ function listaOu(itens: readonly string[]): string {
   return `${itens.slice(0, -1).join(", ")} ou ${itens.at(-1)}`;
 }
 
-export function faixaNumerica(lei: VisaoLei) {
+export function faixaNumerica(lei: VisaoLei, pib?: number) {
   const min = lei.minimo ?? 0;
   const referencia = Math.max(lei.nivel, lei.meta);
   if (lei.unidade === "moeda_ano") {
-    // o teto é o mesmo que a partida aceita (SG159); sem teto, 3× o atual
-    const max = lei.maximo ?? Math.max(1000, referencia * 3);
+    // A régua alcança até 100% do PIB; a conta conjunta decide o limite.
+    const max = lei.maximo ?? Math.max(1000, pib ?? referencia);
     const passo = Math.pow(10, Math.floor(Math.log10(max / 200)));
     return { min, max, passo };
   }
@@ -791,6 +791,7 @@ export function DocumentoLei({
               valor={rascunho}
               onValor={onRascunho}
               receita={visao.contas.receita}
+              pib={visao.contas.pib}
             />
           )}
           {regua && !opcoes.length ? (
@@ -1148,14 +1149,16 @@ function ControleNumerico({
   valor,
   onValor,
   receita,
+  pib,
 }: {
   lei: VisaoLei;
   valor: number;
   onValor: (v: number) => void;
   /** Receita anual, para mostrar quanto vale a parte vinculada (SG137). */
   receita: number;
+  pib: number;
 }) {
-  const { min, max, passo } = faixaNumerica(lei);
+  const { min, max, passo } = faixaNumerica(lei, pib);
   return (
     <div className="controle-doc">
       <div className="controle-topo">
@@ -1193,6 +1196,13 @@ function ControleNumerico({
         />
         <span>{nivelDaLei(max, lei.unidade)}</span>
       </div>
+      {lei.unidade === "moeda_ano" && lei.poderCompraPerdido !== undefined ? (
+        <small>
+          Com a inflação, esta verba compra{" "}
+          {Math.abs(lei.poderCompraPerdido).toFixed(1).replace(".", ",")}%{" "}
+          {lei.poderCompraPerdido >= 0 ? "menos" : "mais"} que há um ano.
+        </small>
+      ) : null}
     </div>
   );
 }
@@ -1398,9 +1408,7 @@ export function DocumentoBolha({
         ) : null}
       </div>
       {bolha.medida?.convertida ? (
-        <p className="nota medida-boletim">
-          Em {bolha.medida.unidade}.
-        </p>
+        <p className="nota medida-boletim">Em {bolha.medida.unidade}.</p>
       ) : null}
       <Regua bolha={bolha} />
       <p className="nota">{avaliacao}.</p>

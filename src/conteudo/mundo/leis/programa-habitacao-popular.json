@@ -13,11 +13,7 @@
   },
   "dinheiro": {
     "tipo": "gasto",
-    "modo": "valor_fixo",
-    "limites": {
-      "minimoPercentualPib": 0,
-      "maximoPercentualPib": 1.5
-    }
+    "modo": "valor_fixo"
   },
   "implantacao": {
     "entrada": 0.3,
@@ -34,7 +30,7 @@
       "alvo": "deficit_habitacional",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000666667,
+        "coeficiente": -6.66667e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -45,7 +41,7 @@
       "alvo": "desemprego",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000166667,
+        "coeficiente": -1.66667e-5,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -56,7 +52,7 @@
       "alvo": "pobreza",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000166667,
+        "coeficiente": -1.66667e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -67,7 +63,7 @@
       "alvo": "mobilidade_urbana",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -0.0000388889,
+        "coeficiente": -3.88889e-5,
         "termoConstante": 0
       },
       "atraso": 4,
@@ -78,7 +74,7 @@
       "alvo": "corrupcao",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 0.0000166667,
+        "coeficiente": 1.66667e-5,
         "termoConstante": 0
       },
       "atraso": 1,

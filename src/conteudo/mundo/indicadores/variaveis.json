@@ -248,7 +248,11 @@
               { "var": "aliquota_imposto_sobre_consumo", "escala": 0.01 },
               { "var": "consumo_familias" },
               { "var": "fator_partida_consumo", "escala": 0.01 },
-              { "var": "aliquota_imposto_sobre_consumo", "escala": 0.0066666667, "complemento": true }
+              {
+                "var": "aliquota_imposto_sobre_consumo",
+                "escala": 0.0066666667,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -269,7 +273,11 @@
               { "var": "aliquota_imposto_renda_pessoas", "escala": 0.01 },
               { "var": "massa_salarial" },
               { "var": "fator_partida_renda_pessoas", "escala": 0.01 },
-              { "var": "aliquota_imposto_renda_pessoas", "escala": 0.0076923077, "complemento": true }
+              {
+                "var": "aliquota_imposto_renda_pessoas",
+                "escala": 0.0076923077,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -290,7 +298,11 @@
               { "var": "aliquota_imposto_renda_empresas", "escala": 0.01 },
               { "var": "lucros" },
               { "var": "fator_partida_renda_empresas", "escala": 0.01 },
-              { "var": "aliquota_imposto_renda_empresas", "escala": 0.0111111111, "complemento": true }
+              {
+                "var": "aliquota_imposto_renda_empresas",
+                "escala": 0.0111111111,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -311,7 +323,11 @@
               { "var": "aliquota_tributacao_dividendos", "escala": 0.01 },
               { "var": "lucros" },
               { "var": "fator_partida_dividendos", "escala": 0.01 },
-              { "var": "aliquota_tributacao_dividendos", "escala": 0.01, "complemento": true }
+              {
+                "var": "aliquota_tributacao_dividendos",
+                "escala": 0.01,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -334,7 +350,11 @@
               { "var": "patrimonio_imoveis_urbanos" },
               { "var": "populacao", "inverso": true },
               { "var": "fator_partida_heranca", "escala": 0.01 },
-              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+              {
+                "var": "aliquota_imposto_heranca",
+                "escala": 0.0125,
+                "complemento": true
+              }
             ]
           },
           {
@@ -345,7 +365,11 @@
               { "var": "patrimonio_terras" },
               { "var": "populacao", "inverso": true },
               { "var": "fator_partida_heranca", "escala": 0.01 },
-              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+              {
+                "var": "aliquota_imposto_heranca",
+                "escala": 0.0125,
+                "complemento": true
+              }
             ]
           },
           {
@@ -356,7 +380,11 @@
               { "var": "patrimonio_financeiro" },
               { "var": "populacao", "inverso": true },
               { "var": "fator_partida_heranca", "escala": 0.01 },
-              { "var": "aliquota_imposto_heranca", "escala": 0.0125, "complemento": true }
+              {
+                "var": "aliquota_imposto_heranca",
+                "escala": 0.0125,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -377,7 +405,11 @@
               { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
               { "var": "patrimonio_imoveis_urbanos" },
               { "var": "fator_partida_fortunas", "escala": 0.01 },
-              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+              {
+                "var": "aliquota_imposto_grandes_fortunas",
+                "escala": 0.125,
+                "complemento": true
+              }
             ]
           },
           {
@@ -386,7 +418,11 @@
               { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
               { "var": "patrimonio_terras" },
               { "var": "fator_partida_fortunas", "escala": 0.01 },
-              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+              {
+                "var": "aliquota_imposto_grandes_fortunas",
+                "escala": 0.125,
+                "complemento": true
+              }
             ]
           },
           {
@@ -395,7 +431,11 @@
               { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.01 },
               { "var": "patrimonio_financeiro" },
               { "var": "fator_partida_fortunas", "escala": 0.01 },
-              { "var": "aliquota_imposto_grandes_fortunas", "escala": 0.125, "complemento": true }
+              {
+                "var": "aliquota_imposto_grandes_fortunas",
+                "escala": 0.125,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -413,10 +453,17 @@
           {
             "sinal": 1,
             "fatores": [
-              { "var": "aliquota_imposto_propriedade_urbana_rural", "escala": 0.01 },
+              {
+                "var": "aliquota_imposto_propriedade_urbana_rural",
+                "escala": 0.01
+              },
               { "var": "patrimonio_imoveis_urbanos" },
               { "var": "fator_partida_imoveis_urbanos", "escala": 0.01 },
-              { "var": "aliquota_imposto_propriedade_urbana_rural", "escala": 0.1666666667, "complemento": true }
+              {
+                "var": "aliquota_imposto_propriedade_urbana_rural",
+                "escala": 0.1666666667,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -437,7 +484,11 @@
               { "var": "aliquota_imposto_terras_rurais", "escala": 0.01 },
               { "var": "patrimonio_terras" },
               { "var": "fator_partida_terras", "escala": 0.01 },
-              { "var": "aliquota_imposto_terras_rurais", "escala": 0.1666666667, "complemento": true }
+              {
+                "var": "aliquota_imposto_terras_rurais",
+                "escala": 0.1666666667,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -455,10 +506,17 @@
           {
             "sinal": 1,
             "fatores": [
-              { "var": "aliquota_imposto_transacoes_financeiras", "escala": 0.01 },
+              {
+                "var": "aliquota_imposto_transacoes_financeiras",
+                "escala": 0.01
+              },
               { "var": "pib_nominal" },
               { "var": "fator_partida_transacoes", "escala": 0.01 },
-              { "var": "aliquota_imposto_transacoes_financeiras", "escala": 0.3333333333, "complemento": true }
+              {
+                "var": "aliquota_imposto_transacoes_financeiras",
+                "escala": 0.3333333333,
+                "complemento": true
+              }
             ]
           }
         ]
@@ -498,7 +556,773 @@
               { "var": "massa_salarial" },
               { "var": "informalidade", "escala": 0.01, "complemento": true },
               { "var": "fator_partida_salarios", "escala": 0.01 },
-              { "var": "aliquota_contribuicao_salarios", "escala": 0.0125, "complemento": true }
+              {
+                "var": "aliquota_contribuicao_salarios",
+                "escala": 0.0125,
+                "complemento": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "percentual_servidores_publicos",
+      "tipo": "controle",
+      "nome": "Quantidade de servidores (% dos ocupados)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 20
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "percentual_salario_servidores",
+      "tipo": "controle",
+      "nome": "Salário dos servidores (% do salário médio)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 300
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "nivel_taxas_e_tarifas_publicas",
+      "tipo": "controle",
+      "nome": "Nível de taxas e tarifas públicas",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "taxa_publica_por_habitante",
+      "tipo": "controle",
+      "nome": "Serviços públicos cobrados por habitante",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "parte_idosos",
+      "tipo": "controle",
+      "nome": "Idosos na população (%)",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "envelhecimento_referencia",
+      "tipo": "controle",
+      "nome": "Envelhecimento de referência",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0.01,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "cobertura_aposentadorias",
+      "tipo": "controle",
+      "nome": "Cobertura inicial de aposentadorias",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_aposentadoria",
+      "tipo": "controle",
+      "nome": "Benefício anual médio de aposentadoria",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "parte_aposentadorias_rurais",
+      "tipo": "controle",
+      "nome": "Parte rural dos idosos",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_rural",
+      "tipo": "controle",
+      "nome": "Benefício rural anual médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "duracao_media_pensao",
+      "tipo": "controle",
+      "nome": "Duração média da pensão por morte (anos)",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_pensao",
+      "tipo": "controle",
+      "nome": "Pensão anual média",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "militares_inativos",
+      "tipo": "controle",
+      "nome": "Militares inativos e pensionistas",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_militar",
+      "tipo": "controle",
+      "nome": "Benefício militar anual médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_seguro_desemprego",
+      "tipo": "controle",
+      "nome": "Seguro-desemprego anual médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "beneficio_anual_idosos_pobres",
+      "tipo": "controle",
+      "nome": "Renda anual média de idosos e pessoas com deficiência pobres",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos"
+    },
+    {
+      "id": "indice_precos",
+      "tipo": "estoque",
+      "nome": "Índice de preços",
+      "unidade": "indice_0_100",
+      "dominio": { "minimo": 0.001 },
+      "valorInicial": 100,
+      "medida": { "unidade": "índice de preços; 100 no início da partida" },
+      "area": "Dados internos"
+    },
+    {
+      "id": "base_folha_servidores",
+      "tipo": "derivado",
+      "nome": "Folha para 100% dos ocupados",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "ocupados"
+              },
+              {
+                "var": "salario_medio",
+                "escala": 1e-6
+              },
+              {
+                "var": "percentual_salario_servidores",
+                "escala": 0.01
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_folha_servidores_real",
+      "tipo": "derivado",
+      "nome": "Folha dos servidores",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "base_folha_servidores" },
+              { "var": "percentual_servidores_publicos", "escala": 0.01 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "idosos",
+      "tipo": "derivado",
+      "nome": "Pessoas idosas",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "populacao"
+              },
+              {
+                "var": "parte_idosos",
+                "escala": 0.01
+              },
+              {
+                "var": "envelhecimento"
+              },
+              {
+                "var": "envelhecimento_referencia",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aposentados",
+      "tipo": "derivado",
+      "nome": "Pessoas aposentadas",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "idosos"
+              },
+              {
+                "var": "cobertura_aposentadorias",
+                "escala": 0.01
+              },
+              {
+                "var": "nivel_idade_minima_aposentadoria",
+                "escala": 0.0025,
+                "complemento": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_aposentadorias",
+      "tipo": "derivado",
+      "nome": "Aposentados × benefício médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "aposentados"
+              },
+              {
+                "var": "beneficio_anual_aposentadoria",
+                "escala": 1e-6
+              },
+              {
+                "var": "nivel_reajuste_de_beneficios",
+                "escala": 0.01
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_aposentadorias_pib",
+      "tipo": "derivado",
+      "nome": "Base das aposentadorias (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_aposentadorias",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_aposentadorias_rurais",
+      "tipo": "derivado",
+      "nome": "Aposentados rurais × benefício médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "idosos"
+              },
+              {
+                "var": "parte_aposentadorias_rurais",
+                "escala": 0.01
+              },
+              {
+                "var": "beneficio_anual_rural",
+                "escala": 1e-6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_aposentadorias_rurais_pib",
+      "tipo": "derivado",
+      "nome": "Base das aposentadorias rurais (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_aposentadorias_rurais",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pensionistas",
+      "tipo": "derivado",
+      "nome": "Pensionistas por morte",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "mortes_no_ano"
+              },
+              {
+                "var": "duracao_media_pensao"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_pensoes",
+      "tipo": "derivado",
+      "nome": "Pensionistas × benefício médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "pensionistas"
+              },
+              {
+                "var": "beneficio_anual_pensao",
+                "escala": 1e-6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_pensoes_pib",
+      "tipo": "derivado",
+      "nome": "Base das pensões (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_pensoes",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_militares",
+      "tipo": "derivado",
+      "nome": "Militares inativos × benefício médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "militares_inativos"
+              },
+              {
+                "var": "beneficio_anual_militar",
+                "escala": 1e-6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_militares_pib",
+      "tipo": "derivado",
+      "nome": "Base de militares inativos (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_militares",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "desempregados_cobertos",
+      "tipo": "derivado",
+      "nome": "Desempregados formais cobertos",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "populacao"
+              },
+              {
+                "var": "idade_de_trabalhar",
+                "escala": 0.01
+              },
+              {
+                "var": "participacao_trabalho",
+                "escala": 0.01
+              },
+              {
+                "var": "desemprego",
+                "escala": 0.01
+              },
+              {
+                "var": "informalidade",
+                "escala": 0.01,
+                "complemento": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_seguro_desemprego",
+      "tipo": "derivado",
+      "nome": "Desempregados cobertos × benefício",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "desempregados_cobertos"
+              },
+              {
+                "var": "beneficio_anual_seguro_desemprego",
+                "escala": 1e-6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_seguro_desemprego_pib",
+      "tipo": "derivado",
+      "nome": "Base do seguro-desemprego (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_seguro_desemprego",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pessoas_deficientes_pobres_nao_idosas",
+      "tipo": "controle",
+      "nome": "Pessoas com deficiência pobres fora da velhice",
+      "unidade": "pessoas",
+      "dominio": { "minimo": 0 },
+      "area": "Dados internos"
+    },
+    {
+      "id": "idosos_pobres",
+      "tipo": "derivado",
+      "nome": "Idosos pobres",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "idosos"
+              },
+              {
+                "var": "pobreza",
+                "escala": 0.01
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "beneficiarios_renda_idosos",
+      "tipo": "derivado",
+      "nome": "Idosos e pessoas com deficiência pobres beneficiários",
+      "unidade": "pessoas",
+      "dominio": { "minimo": 0 },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          { "sinal": 1, "fatores": [{ "var": "idosos_pobres" }] },
+          {
+            "sinal": 1,
+            "fatores": [{ "var": "pessoas_deficientes_pobres_nao_idosas" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_renda_idosos",
+      "tipo": "derivado",
+      "nome": "Idosos pobres × benefício médio",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "beneficiarios_renda_idosos"
+              },
+              {
+                "var": "beneficio_anual_idosos_pobres",
+                "escala": 1e-6
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base_renda_idosos_pib",
+      "tipo": "derivado",
+      "nome": "Base da renda de idosos pobres (% do PIB)",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Dados internos",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "base_renda_idosos",
+                "escala": 100
+              },
+              {
+                "var": "pib_nominal",
+                "inverso": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arrecadacao_taxas",
+      "tipo": "derivado",
+      "nome": "Arrecadação: taxas e tarifas públicas",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              {
+                "var": "populacao"
+              },
+              {
+                "var": "taxa_publica_por_habitante",
+                "escala": 1e-6
+              },
+              {
+                "var": "nivel_taxas_e_tarifas_publicas",
+                "escala": 0.01
+              }
             ]
           }
         ]
@@ -513,16 +1337,83 @@
       "area": "Tributação",
       "formula": {
         "termos": [
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_salarios", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_consumo", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_pessoas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_empresas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_dividendos", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_heranca", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_fortunas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_imoveis_urbanos", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_terras", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
-          { "sinal": 1, "fatores": [{ "var": "arrecadacao_transacoes", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] }
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_salarios", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_taxas", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_consumo", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_renda_pessoas", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_renda_empresas", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_dividendos", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_heranca", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_fortunas", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_imoveis_urbanos", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_terras", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          },
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "arrecadacao_transacoes", "escala": 100 },
+              { "var": "pib_nominal", "inverso": true }
+            ]
+          }
         ]
       }
     },

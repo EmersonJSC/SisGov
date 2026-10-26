@@ -30,13 +30,13 @@ it("encaminha ajuste autorizado sem mutar a partida nem consumir acaso", () => {
   expect(game).toEqual(before);
 });
 
-it("usa o domínio do JSON: atenção básica abaixo de 2400 é recusada", () => {
+it("usa o domínio do controle, sem o antigo piso individual da verba", () => {
   const { content, game } = setup();
   expect(
-    validatePolicyAction(game, content, "atencao-basica", 2000),
+    validatePolicyAction(game, content, "atencao-basica", -1),
   ).toMatchObject({ ok: false, diagnostics: [{ field: "desiredLevel" }] });
   expect(
-    validatePolicyAction(game, content, "atencao-basica", 6000),
+    validatePolicyAction(game, content, "atencao-basica", 2000),
   ).toMatchObject({ ok: true });
 });
 

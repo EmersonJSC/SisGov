@@ -15,6 +15,7 @@ import {
   type ConsequenceFile,
   type GraphRelation,
 } from "../engine";
+import { calculateDerivedValue } from "../engine/mechanisms/derivedVariables";
 import { scaleConsequenceParameters } from "../game/prepareMonthlyContent";
 
 function relation(
@@ -244,15 +245,14 @@ describe("SG157 fase 2 — custos das leis no Brasil", () => {
         r.targetId === "gasto_publico",
     )!;
     expect(rel.mechanism).toBe("pontos");
-    expect(rel.scale?.fator).toBe("desemprego");
-    expect(
-      visao.ligacoes.some(
-        (l) => l.origem === "desemprego" && l.alvo === "gasto_publico",
-      ),
-    ).toBe(true);
-    const nivel = partida.game.execution.values.nivel_seguro_desemprego;
-    const custo = (desemprego: number) => valor(rel, nivel, { desemprego });
-    expect(custo(28)).toBeCloseTo(2 * custo(14), 8);
+    expect(rel.scale?.fator).toBe("base_seguro_desemprego_pib");
+    const cobertura = partida.content.variables.variaveis.find(
+      (v) => v.id === "desempregados_cobertos",
+    )!;
+    const values = partida.game.execution.values;
+    const cobertos = (desemprego: number) =>
+      calculateDerivedValue(cobertura, { ...values, desemprego })!;
+    expect(cobertos(28)).toBeCloseTo(2 * cobertos(14), 8);
   });
 
   it("previdência reage ao envelhecimento", () => {
@@ -261,7 +261,16 @@ describe("SG157 fase 2 — custos das leis no Brasil", () => {
         r.originId === "nivel_sistema_previdenciario" &&
         r.targetId === "gasto_publico",
     )!;
-    expect(rel.scale?.fator).toBe("envelhecimento");
+    expect(rel.scale?.fator).toBe("base_aposentadorias_pib");
+    const idosos = partida.content.variables.variaveis.find(
+      (v) => v.id === "idosos",
+    )!;
+    const values = partida.game.execution.values;
+    expect(
+      calculateDerivedValue(idosos, { ...values, envelhecimento: 60 }),
+    ).toBeGreaterThan(
+      calculateDerivedValue(idosos, { ...values, envelhecimento: 40 })!,
+    );
   });
 
   it("o Brasil começa com déficit e contas do setor público inteiro", () => {

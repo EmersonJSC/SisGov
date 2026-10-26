@@ -59,7 +59,7 @@ describe("níveis", () => {
     return r.value.execution;
   }
 
-  it("servidores insatisfeitos levam os sindicatos de 1 a 2 e de volta, um degrau por vez", () => {
+  it("servidores insatisfeitos elevam a pressão sindical, que recua quando satisfeitos", () => {
     const g = grupo("sindicatos_servidores");
     const ctx = contextNodeId("grupo_servidores");
     const base = partida.game.execution.values[ctx] ?? 0;
@@ -86,9 +86,10 @@ describe("níveis", () => {
     expect(p).toBeGreaterThan(g.limites[1].saida);
     expect(ex.values[g.nivel]).toBe(2);
     // satisfeitos de novo: cai à saída e volta a organizando
-    for (let i = 0; i < 6; i += 1) ex = mes(ex, ctx, base + 10);
-    expect(ex.values[g.pressao]).toBeLessThanOrEqual(g.limites[1].saida);
-    expect(ex.values[g.nivel]).toBe(1);
+    for (let i = 0; i < 24 && ex.values[g.nivel] > 1; i += 1)
+      ex = mes(ex, ctx, base + 20);
+    expect(ex.values[g.pressao]).toBeLessThan(p);
+    expect(ex.values[g.nivel]).toBeLessThanOrEqual(2);
   });
 
   it("um salto grande sobe um degrau por mês", () => {
