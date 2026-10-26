@@ -3,6 +3,7 @@ import { criarPartida } from "../app/partida";
 import economiaDoBrasil from "../conteudo/paises/brasil/economia.json";
 
 const impostos = [
+  ["salarios", "aliquota_contribuicao_salarios"],
   ["consumo", "aliquota_imposto_sobre_consumo"],
   ["renda_pessoas", "aliquota_imposto_renda_pessoas"],
   ["renda_empresas", "aliquota_imposto_renda_empresas"],

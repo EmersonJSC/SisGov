@@ -156,27 +156,6 @@
       "unidade": "percentual_pib"
     },
     {
-      "id": "sistema-previdenciario--arrecadacao",
-      "alvo": "arrecadacao",
-      "mecanismo": "pontos",
-      "parametros": {
-        "pontos": [
-          [0, 0.0],
-          [33, 0.0],
-          [67, 3.48970152],
-          [100, 6.48087426]
-        ]
-      },
-      "atraso": 0,
-      "leitura": "nivel",
-      "escala": {
-        "fator": "renda_familias",
-        "referencia": 44.867591,
-        "peso": 0.3
-      },
-      "unidade": "percentual_pib"
-    },
-    {
       "id": "sistema-previdenciario--grupo-aposentados",
       "alvo": "grupo_aposentados",
       "mecanismo": "afim",

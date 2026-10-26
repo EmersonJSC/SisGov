@@ -350,6 +350,10 @@
       "nivel": 27.5
     },
     {
+      "lei": "contribuicao-sobre-salarios",
+      "nivel": 28
+    },
+    {
       "lei": "imposto-sobre-consumo",
       "nivel": 26.5
     },
@@ -841,6 +845,7 @@
     "recursos_gasto_com_defesa": 192000,
     "nivel_licenca_parental": 33,
     "aliquota_imposto_renda_pessoas": 27.5,
+    "aliquota_contribuicao_salarios": 28,
     "aliquota_imposto_sobre_consumo": 26.5,
     "aliquota_imposto_renda_empresas": 34,
     "aliquota_tributacao_dividendos": 10,
@@ -1019,14 +1024,15 @@
     "nivel_maioridade_penal": 0,
     "nivel_pensao_por_morte": 67,
     "nivel_piso_salarial_professores": 33,
-    "fator_partida_consumo": 151.420658,
-    "fator_partida_renda_pessoas": 45.796028,
-    "fator_partida_renda_empresas": 37.058918,
-    "fator_partida_dividendos": 7.763987,
+    "fator_partida_consumo": 151.443607,
+    "fator_partida_renda_pessoas": 45.81157,
+    "fator_partida_renda_empresas": 37.052269,
+    "fator_partida_dividendos": 7.762594,
     "fator_partida_heranca": 76.539134,
     "fator_partida_fortunas": 60,
     "fator_partida_imoveis_urbanos": 103.015893,
     "fator_partida_terras": 62.068966,
-    "fator_partida_transacoes": 179.833222
+    "fator_partida_transacoes": 179.833222,
+    "fator_partida_salarios": 192.92444
   }
 }

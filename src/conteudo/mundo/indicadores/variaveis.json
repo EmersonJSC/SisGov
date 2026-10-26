@@ -465,6 +465,46 @@
       }
     },
     {
+      "id": "aliquota_contribuicao_salarios",
+      "tipo": "controle",
+      "nome": "Alíquota: Contribuição sobre salários",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 80 },
+      "valorInicial": 0,
+      "area": "Tributação"
+    },
+    {
+      "id": "fator_partida_salarios",
+      "tipo": "controle",
+      "nome": "Fator de partida: contribuição sobre salários",
+      "unidade": "percentual_0_100",
+      "dominio": { "minimo": 0, "maximo": 1000 },
+      "valorInicial": 60,
+      "area": "Tributação"
+    },
+    {
+      "id": "arrecadacao_salarios",
+      "tipo": "derivado",
+      "nome": "Arrecadação: contribuição sobre salários",
+      "unidade": "moeda",
+      "dominio": { "minimo": 0 },
+      "area": "Tributação",
+      "formula": {
+        "termos": [
+          {
+            "sinal": 1,
+            "fatores": [
+              { "var": "aliquota_contribuicao_salarios", "escala": 0.01 },
+              { "var": "massa_salarial" },
+              { "var": "informalidade", "escala": 0.01, "complemento": true },
+              { "var": "fator_partida_salarios", "escala": 0.01 },
+              { "var": "aliquota_contribuicao_salarios", "escala": 0.0125, "complemento": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "receita_impostos_pib",
       "tipo": "derivado",
       "nome": "Arrecadação dos impostos",
@@ -473,6 +513,7 @@
       "area": "Tributação",
       "formula": {
         "termos": [
+          { "sinal": 1, "fatores": [{ "var": "arrecadacao_salarios", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
           { "sinal": 1, "fatores": [{ "var": "arrecadacao_consumo", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
           { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_pessoas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },
           { "sinal": 1, "fatores": [{ "var": "arrecadacao_renda_empresas", "escala": 100 }, { "var": "pib_nominal", "inverso": true }] },

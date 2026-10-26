@@ -93,6 +93,7 @@
         "area": "contas-publicas",
         "leis": [
           "imposto-renda-pessoas",
+          "contribuicao-sobre-salarios",
           "imposto-renda-empresas",
           "imposto-sobre-consumo",
           "imposto-seletivo",

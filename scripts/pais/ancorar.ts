@@ -33,6 +33,7 @@ if (economia.arrecadacaoDePartida) {
   const patrimonio =
     v.patrimonio_imoveis_urbanos + v.patrimonio_terras + v.patrimonio_financeiro;
   const impostos = [
+    ["salarios", "aliquota_contribuicao_salarios", v.massa_salarial * (1 - v.informalidade / 100), 80],
     ["consumo", "aliquota_imposto_sobre_consumo", v.consumo_familias, 150],
     ["renda_pessoas", "aliquota_imposto_renda_pessoas", v.massa_salarial, 130],
     ["renda_empresas", "aliquota_imposto_renda_empresas", v.lucros, 90],
