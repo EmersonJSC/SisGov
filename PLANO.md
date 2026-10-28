@@ -44,7 +44,7 @@ uma vez por mecânica terminada.
 Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia.md):
 
 1. [x] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–5 implementadas (28/out); a fase 6 (aba Orçamento) está na tela. `npm run check` verde em 28/out (111 arquivos, 541 testes). Os números ficam fora do alvo de `equilibrio.md` de propósito: calibragem é o item 10, e a medição está no B6.
-2. [ ] **País em frases** (novo): números internos saem do mapa e viram frases e comparações neutras
+2. [ ] **País em frases** ([documento](docs/jogo/mecanicas/pais-em-frases.md), proposta de 28/out): números internos saem do mapa e viram frases e comparações neutras. **Fase 1 feita** (28/out): os 11 passos de conta (hiato da meta, primário sem corte, salário mínimo em vigor…) foram para `area: "Dados internos"`, que já era a convenção de `nosForaDoMapa` — sem código novo. Teste `paisEmFrases.test.ts` 5/5. Cuidado registrado: `medida.tecnico` é "sem estatística real", **não** "esconder" — filtrar por ele apagaria a aprovação do governo da tela. Faltam a fase 2 (piloto de ~10 frases para o autor aprovar o tom) e a 3 (lote de ~140; são ~440 frases, e nenhuma das 148 bolhas tem régua hoje).
 3. [ ] Grupos: apoio de cada grupo (decide a eleição, pesado pelo tamanho) e radicais/lealistas (polarização e antipartido)
 4. [ ] **O jogo percebe padrões** (novo): ex.: várias verbas cortadas = corte de gastos; grupos e frases reagem; a bússola só mostra
 5. [ ] Desgaste do partido

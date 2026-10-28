@@ -19,6 +19,7 @@ Cada mecânica tem um documento com o mesmo molde:
 | 4 | Orçamento | [orcamento.md](orcamento.md) (proposta) | Existe em parte |
 | 5 | Rede de consequências | _a escrever_ (base: `src/engine/*.md`) | Existe |
 | 6 | Índices essenciais | _a escrever_ | Novo |
+| — | País em frases | [pais-em-frases.md](pais-em-frases.md) (proposta) | Parte 1 feita |
 | 7 | População | _a escrever_ | Novo |
 | 8 | Grupos de interesse | _a escrever_ | Muda |
 | 9 | Grupos de pressão | _a escrever_ | Existe |

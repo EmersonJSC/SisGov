@@ -6310,7 +6310,7 @@
         "minimo": 1,
         "maximo": 1
       },
-      "area": "Saúde",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "demanda extra aberta por um evento",
@@ -7663,7 +7663,7 @@
         "minimo": -100,
         "maximo": 100
       },
-      "area": "Contas públicas",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8006,7 +8006,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Trabalho e emprego",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8039,7 +8039,7 @@
         "minimo": -60,
         "maximo": 80
       },
-      "area": "Trabalho e emprego",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8056,7 +8056,7 @@
         "minimo": 0,
         "maximo": 1
       },
-      "area": "Trabalho e emprego",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8073,7 +8073,7 @@
         "minimo": 0,
         "maximo": 1
       },
-      "area": "Trabalho e emprego",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8090,7 +8090,7 @@
         "minimo": 0,
         "maximo": 1
       },
-      "area": "Previdência",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8570,7 +8570,7 @@
         "minimo": -50,
         "maximo": 10
       },
-      "area": "Contas públicas",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8587,7 +8587,7 @@
         "minimo": -50,
         "maximo": 50
       },
-      "area": "Contas públicas",
+      "area": "Dados internos",
       "avaliacao": "maior_melhor",
       "resposta": 1,
       "medida": {
@@ -8604,7 +8604,7 @@
         "minimo": -100,
         "maximo": 100
       },
-      "area": "Contas públicas",
+      "area": "Dados internos",
       "avaliacao": "maior_pior",
       "resposta": 1,
       "medida": {
@@ -8770,7 +8770,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Finanças",
+      "area": "Dados internos",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
