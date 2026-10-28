@@ -16,11 +16,17 @@
  *
  * Não sonda arquivo para dizer se uma mecânica está pronta: "existe
  * eleicao.ts" não é "a eleição funciona", e essa sonda chegou a marcar 83% de
- * um ciclo que o PLANO diz estar aberto.
+ * um ciclo que o PLANO diz estar aberto. Por isso a base construída conta
+ * tamanho, não conclusão: diz o que está de pé, não o que está fechado.
+ *
+ * A base vem primeiro de propósito. A ordem de 25/out é a lista do que falta,
+ * e medir só por ela trata o projeto como se tivesse começado naquele dia —
+ * ignora as semanas e as dezenas de milhares de linhas anteriores, e devolve
+ * uma porcentagem que parece estagnação.
  *
  * Uso: npx vite-node scripts/avanco.ts
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 
 const RAIZ = new URL("..", import.meta.url).pathname;
 const ler = (caminho: string): string => readFileSync(RAIZ + caminho, "utf8");
@@ -38,6 +44,66 @@ const barra = (feito: number, total: number): string => {
 
 const titulo = (texto: string) =>
   console.log(`\n${texto}\n${"─".repeat(REGUA)}`);
+
+// ───────────────────────────────────────────── base já construída
+/** Conta arquivos de código numa pasta, descendo nas subpastas. */
+function contarCodigo(pasta: string): number {
+  const caminho = RAIZ + pasta;
+  if (!existsSync(caminho)) return 0;
+  return readdirSync(caminho, { withFileTypes: true }).reduce(
+    (soma, item) =>
+      soma +
+      (item.isDirectory()
+        ? contarCodigo(`${pasta}/${item.name}`)
+        : /\.tsx?$/.test(item.name)
+          ? 1
+          : 0),
+    0,
+  );
+}
+
+function contarLinhas(pasta: string): number {
+  const caminho = RAIZ + pasta;
+  if (!existsSync(caminho)) return 0;
+  return readdirSync(caminho, { withFileTypes: true }).reduce(
+    (soma, item) =>
+      soma +
+      (item.isDirectory()
+        ? contarLinhas(`${pasta}/${item.name}`)
+        : /\.tsx?$/.test(item.name)
+          ? ler(`${pasta}/${item.name}`).split("\n").length
+          : 0),
+    0,
+  );
+}
+
+/**
+ * O que já está de pé. "De pé" não é "fechado": o Congresso e a eleição
+ * existem e ainda mudam (itens 6 e 7 da ordem). Isto mede tamanho, não
+ * conclusão — serve para lembrar que o projeto não começou em 25/out.
+ */
+const BASE: readonly (readonly [string, string])[] = [
+  ["motor de simulação", "src/engine"],
+  ["leis, tramitação e ministérios", "src/game"],
+  ["camada da partida", "src/app"],
+  ["mapa, janelas, jornal e tablet", "src/ui"],
+];
+
+titulo("0. BASE JÁ CONSTRUÍDA — o que está de pé");
+console.log(
+  BASE.map(
+    ([nome, pasta]) =>
+      `  ${nome.padEnd(32)} ${String(contarCodigo(pasta)).padStart(3)} arquivos`,
+  ).join("\n"),
+);
+const totalArquivos = BASE.reduce((s, [, p]) => s + contarCodigo(p), 0);
+const totalLinhas = BASE.reduce((s, [, p]) => s + contarLinhas(p), 0);
+console.log(
+  `\n  ${totalArquivos} arquivos de código · ${totalLinhas.toLocaleString("pt-BR")} linhas`,
+);
+console.log(
+  "  (tamanho, não conclusão: a ordem abaixo é a lista do que ainda falta)",
+);
 
 // ───────────────────────────────────────────── a ordem do PLANO
 /**
