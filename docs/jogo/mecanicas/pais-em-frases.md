@@ -70,10 +70,22 @@ número é ruído; jogar o número fora é tirar o aprendizado.
 
 ## 4. No código
 
-- `conteudo/mundo/reguas.json`: o molde `{ate, tom, rotulo}` já existe. Hoje são
-  30 réguas, para 15 controles e 14 do PIB — **nenhuma das 148 bolhas do mapa**.
-  O `rotulo` já é frase ("acima de 120% da média"); falta cobrir indicador e
-  tirar o `tom`.
+- `conteudo/mundo/reguas.json`: **não é a casa das frases.** As 30 réguas são
+  indexadas por **id de lei** e o único consumidor é `ui/mapa/ReguaDaLei.tsx`,
+  a régua da janela da lei; `reguas.test.ts` exige uma para cada lei com
+  deslizante. O `mede: "variavel"` quer dizer "a régua desta lei mostra um
+  índice que ela move", não "régua de indicador". Pôr as frases das bolhas aqui
+  as endereçaria por lei, que é errado.
+  O que se aproveita é só o **molde** da faixa (`{ate, rotulo}`) e a lição de
+  neutralidade: as faixas de lei hoje dizem "faixa saudável" e "alto:
+  informalidade e desemprego" — é desse julgamento que o jogo sai (2.3).
+- **Casa proposta das frases:** `faixas` na própria variável, em
+  `conteudo/mundo/indicadores/variaveis.json`, ao lado de `medida`,
+  `faixaVisual` e `avaliacao`. A descrição do indicador fica num lugar só, e o
+  endereçamento é pelo id do indicador.
+- `avaliacao: "maior_pior" | "maior_melhor"` também carrega direção de valor.
+  Fica (dizer que mais desemprego é pior não julga a ideologia do jogador), mas
+  entra na revisão de neutralidade da fase 3.
 - `app/partida/pressao.ts`, `nosForaDoMapa`: exclui `Dados internos` do mapa.
   A parte 1 usou isso, sem código novo.
 - `app/partida/visao.ts:349`: a visão já omite `medida` de quem é `tecnico`.
@@ -91,7 +103,78 @@ número é ruído; jogar o número fora é tirar o aprendizado.
 A fase 2 vem antes da 3 de propósito: são ~440 frases no total, e escrever
 todas num tom que o autor rejeita é o desperdício mais caro possível.
 
-## 6. Testes (comportamento)
+## 6. Piloto do tom (fase 2, para o autor aprovar)
+
+Seis bolhas de áreas diferentes, nas medidas reais que o jogador vê. O tom
+proposto: **frase curta, concreta, sem adjetivo de valor**. Onde dá, a
+quantidade vira uma coisa imaginável (uma pessoa em cada doze, uma área
+conhecida) em vez de um número solto.
+
+**PIB real** (índice, jan/2025 = 100)
+
+| até | frase |
+| --- | --- |
+| 95 | a economia encolheu |
+| 102 | a economia está parada |
+| 115 | a economia cresce devagar |
+| — | a economia cresce rápido |
+
+**Desemprego** (taxa de desocupação, %)
+
+| até | frase |
+| --- | --- |
+| 5 | quase todo mundo que procura trabalho encontra |
+| 9 | uma pessoa em cada doze procura trabalho sem achar |
+| 14 | uma pessoa em cada oito está sem trabalho |
+| — | mais de uma pessoa em cada sete está sem trabalho |
+
+**Inflação** (ao consumidor em 12 meses, %)
+
+| até | frase |
+| --- | --- |
+| 2 | os preços estão quase parados |
+| 6 | os preços sobem devagar |
+| 12 | os preços sobem rápido: o salário compra menos a cada mês |
+| — | os preços disparam |
+
+**Desigualdade** (Gini da renda domiciliar per capita)
+
+| até | frase |
+| --- | --- |
+| 0,40 | a distância entre quem ganha mais e quem ganha menos é das menores do mundo |
+| 0,50 | há uma distância grande entre quem ganha mais e quem ganha menos |
+| — | a renda se concentra no topo |
+
+**Desmatamento** (área desmatada por ano, mil km²)
+
+| até | frase |
+| --- | --- |
+| 1 | a floresta está praticamente de pé |
+| 6 | perde-se por ano uma área do tamanho do Distrito Federal |
+| 22 | perde-se por ano uma área do tamanho de Sergipe |
+| — | perde-se por ano mais que o território de Sergipe |
+
+**Concentração de mercado** (% de setores com HHI acima de 2.500)
+
+| até | frase |
+| --- | --- |
+| 10 | há concorrência na maioria dos setores |
+| 30 | um terço dos setores é dominado por poucas empresas |
+| — | poucas empresas dominam a maior parte dos setores |
+
+**O que o autor decide aqui:**
+
+1. O tom serve? Compare com o que existe hoje nas réguas de lei ("faixa
+   saudável", "alto: informalidade e desemprego"): essas julgam, estas
+   descrevem.
+2. As comparações de área (Distrito Federal, Sergipe) prendem o jogo ao Brasil,
+   e o mundo foi separado do país em 25/out. Ou a comparação vai para
+   `paises/brasil/`, ou o mundo usa só número. **Conferir os km² antes de
+   valer**: estão de memória, não de fonte.
+3. Os cortes de faixa (5%, 9%, 14% de desemprego) são de jogo, não de
+   estatística. Precisam de régua do autor ou servem como estão?
+
+## 7. Testes (comportamento)
 
 - Nenhum passo de conta tem bolha no mapa; o motor continua calculando todos.
 - As coisas do país ficam no mapa mesmo sem estatística real (a aprovação).
@@ -100,7 +183,7 @@ todas num tom que o autor rejeita é o desperdício mais caro possível.
   inteira sem buraco.
 - Nenhuma faixa de indicador tem `tom` de julgamento.
 
-## 7. Em aberto (decisão do autor)
+## 8. Em aberto (decisão do autor)
 
 1. **O tom das frases.** Jornal sóbrio ("a economia não cresce há dois anos") ou
    mais direto ("a economia está parada")? A fase 2 serve para isso.
