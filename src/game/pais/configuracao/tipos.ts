@@ -49,6 +49,11 @@ export type PaisV2 = {
   mundo: string;
   unidadeTemporal: NonNullable<ScenarioManifest["unidadeTemporal"]>;
   caracteristicas: CaracteristicaDoPais[];
+  /**
+   * Território, quando o país tem o número: a frase de um indicador precisa de
+   * denominador para dizer a parte, e não só o ritmo (país em frases, 2.4).
+   */
+  territorio?: ScenarioManifest["territorio"];
 };
 
 /** `politica.json`: mandato, ministérios e o que ainda resta da política antiga. */

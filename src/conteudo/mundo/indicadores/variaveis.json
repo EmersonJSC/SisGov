@@ -6310,7 +6310,7 @@
         "minimo": 1,
         "maximo": 1
       },
-      "area": "Dados internos",
+      "area": "Saúde",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "demanda extra aberta por um evento",
@@ -7663,7 +7663,7 @@
         "minimo": -100,
         "maximo": 100
       },
-      "area": "Dados internos",
+      "area": "Contas públicas",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8006,7 +8006,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Dados internos",
+      "area": "Trabalho e emprego",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8039,7 +8039,7 @@
         "minimo": -60,
         "maximo": 80
       },
-      "area": "Dados internos",
+      "area": "Trabalho e emprego",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8570,7 +8570,7 @@
         "minimo": -50,
         "maximo": 10
       },
-      "area": "Dados internos",
+      "area": "Contas públicas",
       "avaliacao": "neutra",
       "resposta": 1,
       "medida": {
@@ -8587,7 +8587,7 @@
         "minimo": -50,
         "maximo": 50
       },
-      "area": "Dados internos",
+      "area": "Contas públicas",
       "avaliacao": "maior_melhor",
       "resposta": 1,
       "medida": {
@@ -8604,7 +8604,7 @@
         "minimo": -100,
         "maximo": 100
       },
-      "area": "Dados internos",
+      "area": "Contas públicas",
       "avaliacao": "maior_pior",
       "resposta": 1,
       "medida": {

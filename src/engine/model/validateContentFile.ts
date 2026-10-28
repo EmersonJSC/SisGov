@@ -168,6 +168,7 @@ function validateManifest(
       "organizacaoPolitica",
       "unidadeTemporal",
       "respostaDasBolhas",
+      "territorio",
     ],
     diagnostics,
   );

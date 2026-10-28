@@ -23,5 +23,9 @@
     "tecnologia-nuclear",
     "crime-organizado-forte",
     "membro-de-bloco-economico"
-  ]
+  ],
+  "territorio": {
+    "florestaMilKm2": 4966,
+    "fonte": "FAO, Global Forest Resources Assessment 2020: 496,6 milhões de hectares de floresta no Brasil."
+  }
 }

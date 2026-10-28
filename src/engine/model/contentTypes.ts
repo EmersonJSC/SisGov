@@ -73,7 +73,21 @@ export type ScenarioManifest = {
     peso: number;
     interesses: readonly string[];
   }[];
+  /**
+   * Território do país, para a frase do indicador ter denominador. O motor não
+   * lê: quem usa é a camada da partida, que sem a floresta do país só sabe
+   * dizer o ritmo do desmatamento ("recua rápido"), e com ela sabe dizer a
+   * parte perdida por ano.
+   */
+  territorio?: TerritorioDoPais;
 };
+
+/** Números de território que a frase de um indicador pode precisar. */
+export type TerritorioDoPais = Readonly<{
+  /** Área de floresta, em mil km². */
+  florestaMilKm2?: number;
+  fonte?: string;
+}>;
 
 /**
  * Aprovação pelos perfis do eleitorado (V1-08, desenho/populacao.md). Cada

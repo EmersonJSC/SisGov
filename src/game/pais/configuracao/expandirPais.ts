@@ -323,6 +323,7 @@ export function expandirPais(
     ...(populacao.perfis ? { perfis: populacao.perfis } : {}),
     ...(aprovacaoPorPerfis ? { aprovacaoPorPerfis } : {}),
     ...(congresso ? { congresso } : {}),
+    ...(pais.territorio ? { territorio: pais.territorio } : {}),
     ...(organizacaoPath ? { organizacaoPolitica: organizacaoPath } : {}),
     estadoInicial: estadoPath,
   } as ScenarioManifest;
