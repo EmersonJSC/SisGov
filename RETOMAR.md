@@ -8,8 +8,9 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 ## Por onde continuar
 
 1. **Lote de redação das faixas escritas** (país em frases, jeito 3): só
-   índice e jargão — Gini, HHI, PIB em índice. É trabalho braçal: vai para o
-   GPT com as regras de `gpt.md`.
+   índice e jargão — Gini, HHI, PIB em índice. É braçal e agora é nosso (o
+   GPT saiu em 28/out): fazer em pedaços de uma conversa, por área, com um
+   script que imprime as faixas escritas para conferir de uma vez.
 2. **O boletim ainda mostra pontos do motor** no número grande ("39 / 100")
    em vez da medida real (38,6% dos ocupados). A regra 2.7 do documento pede
    a medida de verdade.
