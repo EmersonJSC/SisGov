@@ -6393,8 +6393,7 @@
       },
       "transbordo": {
         "estoque": "divida_publica",
-        "sentido": "oposto",
-        "teto": 10
+        "sentido": "oposto"
       },
       "medida": {
         "unidade": "ativos do fundo soberano / caixa livre (% do PIB)"

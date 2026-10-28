@@ -84,12 +84,8 @@ describe("SG159 — contas sem furos", () => {
     expect(partida.game.execution.values.divida_publica).toBeGreaterThan(300);
   }, 60_000);
 
-  // Pulado em 21/out (mecânica 4, orçamento): com todas as leis de gasto no
-  // mínimo, o gasto fixo da rede (previdência, servidores) segura ~30% do PIB
-  // e os pisos têm mínimo pela lei constitucional (pisoPorLei). O superávit
-  // não leva o cofre a 100% em 72 turnos. Volta quando o orçamento for
-  // revisto (docs/jogo/mecanicas/README.md, mecânica 4).
-  it.skip("superávit enorme também não trava: o cofre passa de 100% (A1)", () => {
+  // Religado na fase 5: sem o teto de 10% do PIB, o superávit acumula no cofre.
+  it("superávit enorme também não trava: o cofre passa de 100% (A1)", () => {
     let partida = extremo(nova(), "max");
     for (let t = 0; t < 72; t++) {
       const passou = encerrarTurno(partida);

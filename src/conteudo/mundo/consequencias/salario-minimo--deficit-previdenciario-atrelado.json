@@ -6,8 +6,8 @@
   "alvo": "deficit_previdenciario",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.0288,
-    "termoConstante": -1.9008
+    "coeficiente": 0.08,
+    "termoConstante": -5.28
   },
   "escala": {
     "fator": "beneficios_atrelados_ao_minimo",

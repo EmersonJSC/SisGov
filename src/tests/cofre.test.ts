@@ -1,9 +1,9 @@
 /**
  * Cofre (SG157 fase 4; V1-07): dívida e cofre são dois estoques. A lei
- * "Destino do resultado fiscal" reparte o superávit entre os dois; o déficit
- * sai do cofre na mesma parte e o resto vira dívida. Com dívida, o cofre tem
- * teto de 10% do PIB. O cofre rende juros e, pela lei "Uso do cofre", pode ser
- * emprestado ou virar obra.
+ * "Destino da sobra do orçamento" reparte o superávit entre os dois; o déficit
+ * sai do cofre na mesma parte e o resto vira dívida. O cofre cresce sem teto
+ * (fase 5). Ele rende juros e, pela lei "Fundo soberano", pode ser emprestado
+ * ou virar obra.
  */
 import { describe, expect, it } from "vitest";
 import {
@@ -106,7 +106,7 @@ describe("SG157 fase 4 — cofre", () => {
     expect(contas.juros).toBeLessThan(0);
   });
 
-  it("com dívida, o cofre não passa do teto: o resto abate a dívida", () => {
+  it("mesmo com dívida, o cofre cresce sem teto (fase 5)", () => {
     const iva = mudarLei(
       comContas(nova(), 5, 9.9),
       "imposto-sobre-consumo",
@@ -117,8 +117,7 @@ describe("SG157 fase 4 — cofre", () => {
       lei(iva.value, "destino-do-resultado-fiscal", "guardar"),
       4,
     );
-    expect(v(depois, "cofre")).toBeLessThanOrEqual(10 + 1e-9);
-    expect(v(depois, "divida_publica")).toBeLessThan(5);
+    expect(v(depois, "cofre")).toBeGreaterThan(10);
   });
 
   it("déficit gasta o cofre e o que falta vira dívida", () => {

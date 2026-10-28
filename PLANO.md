@@ -43,7 +43,7 @@ uma vez por mecânica terminada.
 
 Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia.md):
 
-1. [ ] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–4 implementadas. `npm run check` verde em 26/out (111 arquivos, 540 testes passaram, 1 ignorado). Próxima fase: 5 (sobra e fundo soberano).
+1. [x] **Economia em reais e caixa** ([documento](docs/jogo/mecanicas/economia-e-caixa.md), aprovado 24/out): fases 1–5 implementadas (28/out); a fase 6 (aba Orçamento) está na tela. `npm run check` verde em 28/out (111 arquivos, 541 testes). Os números ficam fora do alvo de `equilibrio.md` de propósito: calibragem é o item 10, e a medição está no B6.
 2. [ ] **País em frases** (novo): números internos saem do mapa e viram frases e comparações neutras
 3. [ ] Grupos: apoio de cada grupo (decide a eleição, pesado pelo tamanho) e radicais/lealistas (polarização e antipartido)
 4. [ ] **O jogo percebe padrões** (novo): ex.: várias verbas cortadas = corte de gastos; grupos e frases reagem; a bússola só mostra
@@ -83,10 +83,27 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 **B. Orçamento (mecânica 4): fases 5 e 6**
 - [x] B1. Auditar o gasto inicial por relação (`npx vite-node scripts/economia/auditar-gastos.ts`, 26/out): 31,08% do PIB no próximo mês, base 0; relações sem lei contribuem 0 no estado inicial. O problema é a falta de contas próprias: previdência 6,46%, educação 5,55%, saúde 4,34%, defesa 1,60%, transferência de renda 1,40%, seguro-desemprego 0,41% e pensões 0,50% saem de efeitos agregados das leis. Não há conta de quantidade × salário dos servidores; Estabilidade dos servidores acrescenta 0,40%, mas não representa a folha.
 - [x] B2. Substituir os efeitos agregados pelas contas do documento aprovado: servidores (duas leis), aposentadorias, pensões, seguro-desemprego e renda de idosos; contribuição sobre salários já virou imposto próprio na fase 3. Taxas e tarifas também viraram lei. Auditoria inicial após a mudança: 32,19% do PIB no mês seguinte, soma das relações igual ao gasto calculado.
-- [ ] B3. Fundo soberano com o destino da sobra (comanda o cofre)
+- [x] B3. Fundo soberano com o destino da sobra (comanda o cofre, 28/out): as
+  duas leis ficam separadas (uma pergunta cada, decisão 1) e ambas comandam o
+  cofre — "Destino da sobra" reparte sobra entre dívida e cofre, "Fundo
+  soberano" aplica o cofre. Tirado o teto de 10% do PIB do cofre: o fundo
+  cresce sem limite. Teste `cofre.test.ts` 9/9.
 - [x] B4. PIB em reais (`pib_nominal`) e verbas nominais: índice de preços reduz seu poder de compra nos efeitos não fiscais, com comparação anual na janela da lei. A verba só muda nominalmente por ação do jogador.
-- [ ] B5. Custo do salário mínimo nos benefícios: coeficiente 0,029 → 0,08 (R$ 400 mi por R$ 1)
-- [ ] B6. Aceite: script com as estratégias de `simular.py` batendo com `equilibrio.md`; reativar `contasSemFuros` "cofre passa de 100%"
+- [x] B5. Custo do salário mínimo nos benefícios (28/out): coeficiente 0,029 →
+  0,08 (R$ 400 mi por R$ 1) nas **duas** consequências gêmeas do mínimo —
+  `gasto_publico` (custa de verdade) e `deficit_previdenciario` (indicador);
+  mudar só uma faria o indicador mentir 2,8× sobre o orçamento.
+  `termoConstante` → −5,28 para o efeito seguir zerando no mesmo ponto
+  (mínimo relativo 66).
+- [x] B6. Aceite (28/out): `scripts/economia/aceite-equilibrio.ts` roda as 13
+  estratégias da seção 6 de `equilibrio.md` e imprime esperado × obtido (é
+  relatório, não teste que falha). `contasSemFuros` "cofre passa de 100%"
+  religado e verde, agora que o cofre não tem teto. `npm run check` verde em
+  28/out (111 arquivos, 541 testes).
+  **Medição de referência para o item 10** (cenário "Nada muda", 8 anos):
+  dívida 138,4% contra 119 do desenho; PIB real 91,7 contra 114 — o PIB real
+  **cai** 8% sem o jogador agir. É o mesmo achado de 22/out (atividade 44,7 →
+  39,7) com número comparável ao documento, não um defeito novo.
 
 **C. Calibragem (rede, mecânica 5)**: depois de B
 - [ ] C1. Varredura completa (`varredura-leis.ts`) e jogador guloso do zero
