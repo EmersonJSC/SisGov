@@ -12,8 +12,8 @@
   --tinta: light-dark(#1f2a3a, #becde2);
   --tinta-suave: light-dark(#5b6676, #a0acbe);
   --tinta-fraca: #8b93a0;
-  --barra: #13233a;
-  --barra-2: #1b3150;
+  --barra: #2a241c;
+  --barra-2: #3a3226;
   --verde: #1d6b4f;
   --ouro: #c9a24a;
   --borda: light-dark(#ddd5c2, #474237);
@@ -78,8 +78,8 @@ button {
   display: flex;
   align-items: stretch;
   background: linear-gradient(180deg, var(--barra-2), var(--barra));
-  color: #fff;
-  box-shadow: 0 4px 18px #0b162638;
+  color: #f1e8d6;
+  box-shadow: 0 4px 18px #1a140b38;
   border-bottom: 2px solid #c9a24a55;
 }
 
@@ -111,13 +111,13 @@ button {
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #9fb0c6;
+  color: #b9a985;
 }
 
 .metricas {
   display: flex;
-  flex: 1;
-  min-width: 0;
+  flex: 0 1 auto;
+  min-width: 140px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -138,7 +138,7 @@ button {
   display: grid;
   place-items: center;
   background: #ffffff12;
-  color: #d9e2ee;
+  color: #f1e8d6;
 }
 
 .metrica small {
@@ -147,7 +147,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #9fb0c6;
+  color: #b9a985;
 }
 
 .metrica strong {
@@ -175,7 +175,7 @@ button {
   align-items: center;
   gap: 10px;
   padding: 0 22px;
-  color: #d9e2ee;
+  color: #f1e8d6;
   border-left: 1px solid #ffffff1c;
 }
 
@@ -184,12 +184,490 @@ button {
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #9fb0c6;
+  color: #b9a985;
 }
 
 .turno strong {
   display: block;
   font-size: 17px;
+}
+
+/* ----------------------------------------------------- chips da barra -- */
+
+.chips-topo {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+}
+
+.chip-dado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.chip-dado:hover,
+.chip-dado:focus-visible {
+  background: var(--barra-2);
+}
+
+.chip-dado small {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #b9a985;
+}
+
+.chip-dado strong {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.chip-dado.boa strong {
+  color: #9fdcb8;
+}
+.chip-dado.ruim strong {
+  color: #ff9f96;
+}
+.chip-dado.neutra strong {
+  color: #f0cf7e;
+}
+
+.espaco-topo {
+  flex: 1;
+  min-width: 6px;
+}
+
+/* ------------------------------------------------------- abas da barra -- */
+
+.abas-topo {
+  display: flex;
+  gap: 2px;
+  align-self: stretch;
+  align-items: center;
+}
+
+.aba-topo {
+  border: 0;
+  background: none;
+  color: #b9a985;
+  padding: 0 11px;
+  height: 100%;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  position: relative;
+}
+
+.aba-topo:hover:not(:disabled) {
+  color: #f1e8d6;
+}
+
+.aba-topo[aria-selected="true"] {
+  color: #f1e8d6;
+}
+
+.aba-topo[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -2px;
+  height: 3px;
+  background: var(--ouro);
+  border-radius: 2px 2px 0 0;
+}
+
+.aba-topo:disabled {
+  color: #6f6553;
+  cursor: default;
+}
+
+.aba-topo:disabled::before {
+  content: "";
+}
+
+/* Barra da amostra V2: uma linha de 46 px, com os números em chips. */
+.tela {
+  grid-template-rows: 48px minmax(0, 1fr);
+}
+
+.barra-superior {
+  align-items: center;
+  gap: 2px;
+  padding: 0 16px;
+  background: #2a241c;
+  border-bottom: 2px solid #c9a24a;
+  box-shadow: none;
+}
+
+.barra-superior .pais {
+  flex: none;
+  min-width: 0;
+  gap: 8px;
+  padding: 0 10px 0 0;
+  margin-right: 2px;
+}
+
+.barra-superior .bandeira {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+}
+
+.barra-superior .pais strong {
+  font: 600 16px var(--serifa);
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.barra-superior .metricas {
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.barra-superior .metricas::-webkit-scrollbar {
+  display: none;
+}
+
+.barra-superior .chip-dado {
+  flex: none;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 5px;
+  padding: 5px 6px;
+  border-radius: 5px;
+}
+
+.barra-superior .chip-dado small {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.barra-superior .chip-dado strong {
+  font-size: 14px;
+}
+
+.barra-superior .chip-dado.neutra strong {
+  color: #f0cf7e;
+}
+
+.chip-seta {
+  font-size: 10px;
+}
+.chip-seta.sobe {
+  color: #ff9f96;
+}
+.chip-seta.desce {
+  color: #9fdcb8;
+}
+
+.chip-dica {
+  position: fixed;
+  z-index: 30;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  padding: 12px 14px;
+  border: 1px solid var(--borda);
+  border-top: 3px solid var(--ouro);
+  border-radius: 6px;
+  background: var(--papel);
+  color: var(--tinta);
+  box-shadow: 0 10px 30px #0004;
+  pointer-events: none;
+}
+
+.chip-dica h4 {
+  margin: 0 0 6px;
+  font: 600 16px var(--serifa);
+}
+
+.chip-dica-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 0;
+  border-bottom: 1px dotted var(--borda);
+  font-size: 13px;
+}
+
+.chip-dica-linha:last-of-type {
+  border-bottom: 0;
+}
+.chip-dica-linha strong {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.chip-dica p {
+  margin: 8px 0 0;
+  color: var(--tinta-suave);
+  font-size: 12px;
+}
+
+.barra-superior .abas-topo {
+  flex: none;
+  gap: 2px;
+}
+
+.barra-superior .aba-topo {
+  padding: 0 9px;
+  font-size: 12.5px;
+}
+
+.barra-superior .aba-topo:disabled {
+  color: #b9a985;
+  opacity: 0.55;
+}
+
+.barra-superior .turno {
+  flex: none;
+  display: block;
+  padding: 0 10px;
+  margin-left: 4px;
+  font-size: 12.5px;
+  color: #b9a985;
+  white-space: nowrap;
+}
+
+.barra-superior .botao-turno {
+  flex: none;
+  height: 32px;
+  margin: 0;
+  padding: 0 12px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  box-shadow: none;
+}
+.barra-superior .botao-turno.travado {
+  background: var(--ouro);
+  color: #2a241c;
+}
+
+@media (max-width: 1440px) {
+  .barra-superior .turno {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .barra-superior .metricas {
+    display: none;
+  }
+  .barra-superior .pais {
+    margin-right: auto;
+  }
+}
+
+.acoes-jogo {
+  position: fixed;
+  z-index: 12;
+  right: 16px;
+  bottom: 16px;
+  color: var(--tinta);
+}
+
+.acoes-jogo summary {
+  padding: 8px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--papel);
+  box-shadow: 0 3px 12px #0003;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.acoes-jogo > div {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  min-width: 175px;
+  display: grid;
+  padding: 5px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--papel);
+  box-shadow: 0 8px 28px #0004;
+}
+
+.acoes-jogo button {
+  border: 0;
+  border-radius: 4px;
+  padding: 8px;
+  background: transparent;
+  color: var(--tinta);
+  text-align: left;
+  white-space: nowrap;
+}
+.acoes-jogo button:hover {
+  background: var(--papel-escuro);
+}
+
+.pagina-aba {
+  min-height: 0;
+  overflow: auto;
+  padding: 24px max(20px, calc((100vw - 1180px) / 2));
+  background: light-dark(#ddd3bd, #12100c);
+  color: var(--tinta);
+}
+
+.pagina-aba-cabeca {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--borda);
+}
+.pagina-aba-cabeca small {
+  color: var(--tinta-suave);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.pagina-aba-cabeca h1 {
+  margin: 0;
+  font: 600 28px var(--serifa);
+}
+.pagina-aba-cartao {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--papel);
+}
+.pagina-aba-cartao > small {
+  display: block;
+  color: var(--tinta-suave);
+}
+.pagina-aba-cartao > strong {
+  font: 600 28px var(--serifa);
+}
+.pagina-aba-divida {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.pagina-aba .contas-governo {
+  border: 0;
+}
+.pagina-aba .contas-governo .conta {
+  color: var(--tinta);
+}
+.pagina-aba .contas-governo small,
+.pagina-aba .contas-governo em {
+  color: var(--tinta-suave);
+}
+.pagina-aba .contas-governo strong {
+  color: var(--tinta);
+}
+.pagina-aba .contas-governo .operador {
+  color: var(--tinta-suave);
+}
+.pagina-aba .cg-app {
+  background: var(--papel);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 18px;
+}
+.pagina-aba-grupos h2 {
+  margin: 0 0 12px;
+  font: 600 20px var(--serifa);
+}
+.pagina-aba-grupos > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 8px;
+}
+.pagina-aba-grupos button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  padding: 10px;
+  border: 1px solid var(--borda);
+  border-radius: 5px;
+  background: var(--papel);
+  color: var(--tinta);
+  text-align: left;
+}
+.pagina-aba-grupos button:hover {
+  border-color: var(--ouro);
+}
+.pagina-aba-grupos button small {
+  grid-column: 1 / -1;
+  color: var(--tinta-suave);
+}
+.pagina-aba-listas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.pagina-aba-listas h2 {
+  margin: 0 0 10px;
+  font: 600 20px var(--serifa);
+}
+.pagina-aba-listas button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  padding: 8px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--borda);
+  background: none;
+  color: var(--tinta);
+  text-align: left;
+}
+.pagina-aba-listas button:hover {
+  background: var(--papel-escuro);
+}
+.pagina-aba-listas button strong {
+  flex: none;
+}
+.pagina-aba-linha {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--borda);
+}
+.pagina-aba-linha > small {
+  grid-column: 1 / -1;
+  color: var(--tinta-suave);
+}
+.pagina-aba-leis-da-linha {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.pagina-aba-listas .pagina-aba-leis-da-linha button {
+  width: auto;
+  padding: 2px 0;
+  border: 0;
+  color: var(--ds-ambar, #b7903d);
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .pagina-aba-listas {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ----------------------------------------------------------------- mapa -- */
@@ -859,35 +1337,29 @@ button {
   white-space: nowrap;
 }
 
-/* Botão de turno */
+/* Botão de turno (dentro da barra do topo) */
 .botao-turno {
-  position: absolute;
-  right: 22px;
-  bottom: 20px;
-  z-index: 4;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 18px 0 26px;
-  height: 58px;
+  gap: 8px;
+  margin: 0 10px;
+  padding: 0 14px;
+  height: 34px;
   border: 0;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #1f6f52, #14513b);
-  color: #fff;
-  font-size: 19px;
+  border-radius: 6px;
+  background: var(--ouro);
+  color: #2a241c;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  box-shadow:
-    0 8px 22px #0f3a2a55,
-    inset 0 1px 0 #ffffff33;
-  transition:
-    transform 0.12s,
-    right 0.3s;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 #ffffff55;
+  transition: filter 0.12s;
 }
 
 .botao-turno:hover {
-  transform: translateY(-2px);
+  filter: brightness(1.06);
 }
 
 .botao-turno.ocupado {
@@ -1109,11 +1581,6 @@ button {
   }
   .pais div {
     display: none;
-  }
-  .botao-turno {
-    height: 50px;
-    font-size: 17px;
-    padding: 0 12px 0 16px;
   }
   .dica-mapa {
     display: none;
@@ -3737,8 +4204,57 @@ button {
   }
 }
 
+@media (max-width: 1300px) {
+  .botao-busca {
+    margin: 14px 4px;
+  }
+}
+
 @media (max-width: 1600px) {
   .metrica-icone {
+    display: none;
+  }
+}
+
+@media (max-width: 1600px) {
+  .turno small {
+    display: none;
+  }
+  .turno {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .aba-topo {
+    padding: 0 7px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .metricas {
+    min-width: 50px;
+  }
+  .pais {
+    min-width: 0;
+    padding: 0 10px;
+  }
+  .pais div {
+    display: none;
+  }
+  .aba-topo {
+    padding: 0 5px;
+  }
+  .turno {
+    padding: 0 6px;
+  }
+  .botao-turno {
+    margin: 0 4px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 860px) {
+  .turno {
     display: none;
   }
 }

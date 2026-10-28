@@ -3,7 +3,15 @@
  *
  * Fala com o jogo só pela camada da partida (`src/app/partida.ts`).
  */
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { createPortal } from "react-dom";
 import {
   criarPartida,
   encerrarTurno,
@@ -27,7 +35,7 @@ import {
   BOLHAS_DO_ORCAMENTO,
 } from "../../app/partida";
 import { Bandeira } from "./Bandeira";
-import { diferenca, moeda } from "./formatos";
+import { diferenca, moeda, valorNaTela } from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE } from "./icones";
 import { montarBase, PRESIDENCIA } from "./layout";
@@ -46,6 +54,7 @@ import {
 import { useModoNoturno } from "./modoNoturno";
 import { BuscaDeLeis } from "./BuscaDeLeis";
 import { CatalogoDeLeis } from "./CatalogoDeLeis";
+import { CongressoNoTablet } from "./CongressoNoTablet";
 import { AcontecendoAgora, JornalDoTurno } from "./Jornal";
 import { fotoDoTurno, montarJornal, type FotoDoTurno } from "./jornal";
 import { PaginaDeJornal, type AppDoTablet } from "./PaginaDeJornal";
@@ -68,47 +77,93 @@ import "./mapa.css";
 /** Mudança mínima (fração da escala) para a bolha ganhar etiqueta no turno. */
 const LIMIAR_ETIQUETA = 0.002;
 
-function Metrica({
-  icone,
+type DicaDoChip = Readonly<{
+  titulo: string;
+  linhas: readonly (readonly [string, string])[];
+  rodape?: string;
+}>;
+
+function ChipDado({
   rotulo,
   valor,
-  detalhe,
   classe,
+  tendencia,
   titulo,
+  dica,
   onClick,
 }: {
-  icone: string;
   rotulo: string;
   valor: string;
-  detalhe?: string;
   classe?: string;
+  tendencia?: "sobe" | "desce";
   titulo?: string;
+  dica?: DicaDoChip;
   onClick?: () => void;
 }) {
+  const [posicao, setPosicao] = useState<{
+    esquerda: number;
+    topo: number;
+  } | null>(null);
+  const idDica = useId();
+  const mostrarDica = (alvo: HTMLElement) => {
+    if (!dica) return;
+    const rect = alvo.getBoundingClientRect();
+    setPosicao({
+      esquerda: Math.min(
+        Math.max(16, rect.left),
+        Math.max(16, window.innerWidth - 296),
+      ),
+      topo: rect.bottom + 8,
+    });
+  };
   return (
-    <div
-      className={`metrica ${classe ?? ""}${onClick ? " clicavel" : ""}`}
-      title={titulo}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-      onKeyDown={
-        onClick
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") onClick();
-            }
-          : undefined
-      }
-    >
-      <span className="metrica-icone">
-        <Icone nome={icone} tamanho={22} />
-      </span>
-      <span>
+    <>
+      <button
+        type="button"
+        className={`chip-dado${classe ? ` ${classe}` : ""}`}
+        onClick={() => {
+          setPosicao(null);
+          onClick?.();
+        }}
+        onMouseEnter={(evento) => mostrarDica(evento.currentTarget)}
+        onMouseLeave={() => setPosicao(null)}
+        onFocus={(evento) => mostrarDica(evento.currentTarget)}
+        onBlur={() => setPosicao(null)}
+        title={dica ? undefined : titulo}
+        aria-describedby={posicao && dica ? idDica : undefined}
+      >
         <small>{rotulo}</small>
         <strong>{valor}</strong>
-        {detalhe ? <em>{detalhe}</em> : null}
-      </span>
-    </div>
+        {tendencia ? (
+          <span
+            className={`chip-seta ${tendencia}`}
+            aria-label={tendencia === "sobe" ? "Subindo" : "Caindo"}
+          >
+            {tendencia === "sobe" ? "▲" : "▼"}
+          </span>
+        ) : null}
+      </button>
+      {dica && posicao
+        ? createPortal(
+            <div
+              id={idDica}
+              className="chip-dica"
+              role="tooltip"
+              style={{ left: posicao.esquerda, top: posicao.topo }}
+            >
+              <h4>{dica.titulo}</h4>
+              {dica.linhas.map(([rotuloLinha, valorLinha]) => (
+                <div className="chip-dica-linha" key={rotuloLinha}>
+                  <span>{rotuloLinha}</span>
+                  <strong>{valorLinha}</strong>
+                </div>
+              ))}
+              {dica.rodape ? <p>{dica.rodape}</p> : null}
+            </div>,
+            document.body,
+          )
+        : null}
+    </>
   );
 }
 
@@ -425,6 +480,7 @@ function TelaPrincipalCarregada({
   onMenu: () => void;
 }) {
   const [buscaAberta, setBuscaAberta] = useState(false);
+  const [abaTopo, setAbaTopo] = useState("Leis");
   const [catalogoAberto, setCatalogoAberto] = useState(false);
   const [salvarAberto, setSalvarAberto] = useState(false);
   // tablet: false fechado; senão, o app que abre (V1-10)
@@ -463,9 +519,7 @@ function TelaPrincipalCarregada({
   }
   const [selecionado, setSelecionado] = useState<string | null>(null);
   // lista dos grupos aberta de saída em telas largas (SG143)
-  const [gruposAbertos, setGruposAbertos] = useState(
-    () => typeof window === "undefined" || window.innerWidth >= 1200,
-  );
+  const [gruposAbertos, setGruposAbertos] = useState(false);
   const [abaGrupos, setAbaGrupos] = useState<AbaDosGrupos>("eleitorado");
   const [relatorio, setRelatorio] = useState<RelatorioTurno | null>(null);
   const [aviso, setAviso] = useState<RelatorioTurno | null>(null);
@@ -777,8 +831,6 @@ function TelaPrincipalCarregada({
   const contas = visao.contas;
   // V1-08: aprovação = parte do eleitorado que aprova, pelos perfis
   const aprovacao = visao.bolhas.find((b) => b.id === "popularidade_governo");
-  const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
-  const gruposContentes = grupos.filter((g) => g.valor >= 50).length;
   // Os documentos são janelas soltas sobre o mapa: a câmera não desvia para
   // o lado; o mapa só desliza quando a janela da frente esconde a seleção.
   const painel = 0;
@@ -787,118 +839,435 @@ function TelaPrincipalCarregada({
       ? (retangulos.get(selecionado) ?? null)
       : null;
   const bolhaPorId = new Map(visao.bolhas.map((b) => [b.id, b]));
+  const crescimento = bolhaPorId.get("crescimento_real");
+  const inflacaoIndice = bolhaPorId.get("inflacao");
+  const desempregoIndice = bolhaPorId.get("desemprego");
+  const jurosMedios = bolhaPorId.get("juros_implicito");
+  const riscoPais = bolhaPorId.get("risco_pais");
+  const crescimentoPotencial = bolhaPorId.get("crescimento_potencial");
+  const expectativasInflacao = bolhaPorId.get("expectativas_inflacao");
+  const ocupados = bolhaPorId.get("ocupados");
+  const informalidade = bolhaPorId.get("informalidade");
+  const maisInsatisfeito = visao.grupos.reduce<
+    (typeof visao.grupos)[number] | null
+  >(
+    (pior, grupo) =>
+      !pior || grupo.satisfacao < pior.satisfacao ? grupo : pior,
+    null,
+  );
+  const textoTurno = (() => {
+    if (passando) return "Calculando…";
+    if (eleicao?.encerrada) return "Fim da partida";
+    if (visao.ocorrencias.mesa.length) return "Responder dilema";
+    if (eleicao && faltaCandidato(eleicao) && eleicao.turnosAteAEleicao === 0)
+      return "Escolher candidato";
+    return "Encerrar turno";
+  })();
 
   return (
     <div className="tela">
-      <header className="barra-superior" data-borda-rola>
+      <header className="barra-superior">
         <div className="pais">
           <Bandeira pais={visao.pais} />
-          <div>
-            <strong>{visao.pais.toUpperCase()}</strong>
-            <small>SisGov</small>
-          </div>
+          <strong>{visao.pais}</strong>
         </div>
-        <div className="metricas">
-          <ContasDoGoverno contas={contas} onAbrir={selecionar} />
-          <Metrica
-            icone={ICONE_INTERFACE.divida}
-            rotulo="Dívida"
-            valor={moeda(contas.divida)}
-            detalhe={pctPib(contas.percentualPib.divida)}
-            classe="ruim"
-            titulo={`PIB de ${moeda(contas.pib)}/ano. A lei 'Destino do resultado fiscal' decide quanto do superávit paga a dívida.`}
+        <div className="metricas" role="group" aria-label="Indicadores do país">
+          <ChipDado
+            rotulo="Caixa"
+            valor={`${contas.resultado < 0 ? "−" : "+"}${moeda(Math.abs(contas.resultado))}`}
+            classe={contas.resultado < 0 ? "ruim" : "boa"}
+            dica={{
+              titulo: "Caixa do ano",
+              linhas: [
+                ["Entra", moeda(contas.receita)],
+                ["Sai com as leis", moeda(contas.gasto)],
+                [
+                  contas.juros < 0 ? "Rendimento do cofre" : "Juros da dívida",
+                  moeda(Math.abs(contas.juros)),
+                ],
+                [
+                  contas.resultado < 0 ? "Falta" : "Sobra",
+                  moeda(Math.abs(contas.resultado)),
+                ],
+              ],
+              rodape: "Clique para abrir o orçamento.",
+            }}
+            onClick={() => setAbaTopo("Orçamento")}
           />
-          {contas.cofre > 0 ? (
-            <Metrica
-              icone={ICONE_INTERFACE.caixa}
-              rotulo="Cofre"
-              valor={moeda(contas.cofre)}
-              detalhe={pctPib(contas.percentualPib.cofre)}
-              classe="boa"
-              titulo="Superávit guardado; rende juros. Acima do teto, o que entra vai para a dívida. A lei 'Uso do cofre' decide o que fazer com ele."
-            />
-          ) : null}
+          <ChipDado
+            rotulo="Dívida"
+            valor={`${contas.percentualPib.divida.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%`}
+            classe="neutra"
+            dica={{
+              titulo: "Dívida pública",
+              linhas: [
+                [
+                  "Hoje",
+                  `${moeda(contas.divida)} · ${pctPib(contas.percentualPib.divida)}`,
+                ],
+                ["Juros no ano", moeda(contas.juros)],
+                ...(jurosMedios
+                  ? [
+                      [
+                        "Juro médio",
+                        `${jurosMedios.valor.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}% ao ano`,
+                      ] as const,
+                    ]
+                  : []),
+                ...(riscoPais
+                  ? [
+                      [
+                        "Risco país",
+                        `${riscoPais.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })} pontos`,
+                      ] as const,
+                    ]
+                  : []),
+              ],
+              rodape: "Clique para abrir o orçamento.",
+            }}
+            onClick={() => setAbaTopo("Orçamento")}
+          />
           {aprovacao ? (
-            <Metrica
-              icone={ICONE_INTERFACE.aprovacao}
+            <ChipDado
               rotulo="Aprovação"
               valor={`${aprovacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`}
-              detalhe={`${gruposContentes}/${grupos.length} segmentos satisfeitos`}
-              classe={
-                aprovacao.valor >= 50
-                  ? "boa"
-                  : aprovacao.valor >= 35
-                    ? "neutra"
-                    : "ruim"
-              }
-              titulo="Parte do eleitorado que aprova o governo. Cada perfil de eleitor aprova conforme a satisfação dos segmentos em que está (renda, ocupação, valores, religião, território, idade e família, meio ambiente). Clique para ver cada segmento."
-              onClick={() => selecionar(aprovacao.id)}
+              classe="neutra"
+              dica={{
+                titulo: "Aprovação do governo",
+                linhas: [
+                  [
+                    "Hoje",
+                    `${aprovacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`,
+                  ],
+                  [
+                    "Grupos satisfeitos",
+                    `${visao.grupos.filter((grupo) => grupo.satisfacao >= 50).length} de ${visao.grupos.length}`,
+                  ],
+                  ...(maisInsatisfeito
+                    ? [
+                        [
+                          "Mais insatisfeito",
+                          `${maisInsatisfeito.nome} (${Math.round(maisInsatisfeito.satisfacao)})`,
+                        ] as const,
+                      ]
+                    : []),
+                ],
+                rodape: "Clique para abrir a política.",
+              }}
+              onClick={() => setAbaTopo("Política")}
+            />
+          ) : null}
+          {crescimento ? (
+            <ChipDado
+              rotulo="PIB"
+              valor={`${crescimento.valor > 0 ? "+" : ""}${valorNaTela(crescimento, crescimento.valor)}`}
+              classe={crescimento.valor >= 0 ? "boa" : "ruim"}
+              dica={{
+                titulo: "Crescimento do PIB",
+                linhas: [
+                  [
+                    "Em 12 meses",
+                    `${crescimento.valor > 0 ? "+" : ""}${valorNaTela(crescimento, crescimento.valor)}`,
+                  ],
+                  ...(crescimentoPotencial
+                    ? [
+                        [
+                          "Tendência",
+                          `${crescimentoPotencial.valor.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}% ao ano`,
+                        ] as const,
+                      ]
+                    : []),
+                  ["PIB anual", moeda(contas.pib)],
+                ],
+                rodape: "Clique para ver o indicador no mapa.",
+              }}
+              onClick={() => {
+                setAbaTopo("Leis");
+                selecionar(crescimento.id);
+              }}
+            />
+          ) : null}
+          {inflacaoIndice ? (
+            <ChipDado
+              rotulo="Inflação"
+              valor={valorNaTela(inflacaoIndice, inflacaoIndice.valor)}
+              classe="neutra"
+              dica={{
+                titulo: "Inflação",
+                linhas: [
+                  [
+                    "Em 12 meses",
+                    valorNaTela(inflacaoIndice, inflacaoIndice.valor),
+                  ],
+                  ...(expectativasInflacao
+                    ? [
+                        [
+                          "Expectativa",
+                          `${expectativasInflacao.valor.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%`,
+                        ] as const,
+                      ]
+                    : []),
+                ],
+                rodape: "Clique para ver o indicador no mapa.",
+              }}
+              onClick={() => {
+                setAbaTopo("Leis");
+                selecionar(inflacaoIndice.id);
+              }}
+            />
+          ) : null}
+          {desempregoIndice ? (
+            <ChipDado
+              rotulo="Desemprego"
+              valor={valorNaTela(desempregoIndice, desempregoIndice.valor)}
+              dica={{
+                titulo: "Desemprego",
+                linhas: [
+                  [
+                    "Hoje",
+                    valorNaTela(desempregoIndice, desempregoIndice.valor),
+                  ],
+                  ...(ocupados
+                    ? [
+                        [
+                          "Pessoas ocupadas",
+                          `${Math.round(ocupados.valor).toLocaleString("pt-BR")} pessoas`,
+                        ] as const,
+                      ]
+                    : []),
+                  ...(informalidade
+                    ? [
+                        [
+                          "Informalidade",
+                          `${informalidade.valor.toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%`,
+                        ] as const,
+                      ]
+                    : []),
+                ],
+                rodape: "Clique para ver o indicador no mapa.",
+              }}
+              onClick={() => {
+                setAbaTopo("Leis");
+                selecionar(desempregoIndice.id);
+              }}
             />
           ) : null}
         </div>
+        <nav className="abas-topo" role="tablist" aria-label="Telas">
+          <button
+            type="button"
+            role="tab"
+            className="aba-topo"
+            aria-selected={abaTopo === "Leis"}
+            onClick={() => setAbaTopo("Leis")}
+          >
+            Leis
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className="aba-topo"
+            aria-selected={abaTopo === "Política"}
+            onClick={() => setAbaTopo("Política")}
+          >
+            Política
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className="aba-topo"
+            aria-selected={abaTopo === "Orçamento"}
+            onClick={() => setAbaTopo("Orçamento")}
+          >
+            Orçamento
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className="aba-topo"
+            aria-selected="false"
+            disabled
+            title="Tela ainda não disponível"
+          >
+            Economia
+          </button>
+        </nav>
+        <span className="turno">
+          {(visao.turno % 4) + 1}º tri ·{" "}
+          {Number(visao.cenario.match(/20\d{2}/)?.[0] ?? 2026) +
+            Math.floor(visao.turno / 4)}
+        </span>
         <button
           type="button"
-          className="botao-busca"
-          onClick={() => setTablet("inicio")}
-          title="Tablet: notificações, jornal, rede, Congresso e bússola"
+          className={`botao-turno${passando ? " ocupado" : ""}${visao.ocorrencias.mesa.length ? " travado" : ""}`}
+          onClick={passarTurno}
+          disabled={passando}
+          title={
+            visao.ocorrencias.mesa.length
+              ? "Responda os dilemas nas notificações para encerrar o turno"
+              : undefined
+          }
         >
-          <Icone nome={ICONE_INTERFACE.tablet} tamanho={22} />
-          <span>Tablet</span>
-          {avisosNoTablet ? (
-            <span className="tb-contador">{avisosNoTablet}</span>
-          ) : null}
+          {textoTurno}
         </button>
-        <button
-          type="button"
-          className="botao-busca"
-          onClick={() => setBuscaAberta(true)}
-          title="Buscar lei ou indicador (atalho: / ou Ctrl+K)"
-        >
-          <Icone nome={ICONE_INTERFACE.busca} tamanho={22} />
-          <span>Buscar lei</span>
-        </button>
-        <button
-          type="button"
-          className="botao-busca"
-          onClick={() => setCatalogoAberto(true)}
-          title="Leis que hoje não valem: aprove uma para pôr no mapa"
-        >
-          <Icone nome={ICONE_INTERFACE.catalogo} tamanho={22} />
-          <span>Leis fora do mapa</span>
-        </button>
-        <button
-          type="button"
-          className="botao-busca"
-          onClick={() => setSalvarAberto(true)}
-          title="Salvar ou carregar a partida"
-        >
-          <Icone nome={ICONE_INTERFACE.partida} tamanho={22} />
-          <span>Salvar</span>
-        </button>
-        <button
-          type="button"
-          className="botao-busca botao-tema"
-          onClick={alternarTema}
-          aria-label={tema === "noturno" ? "Modo claro" : "Modo noturno"}
-          title={tema === "noturno" ? "Modo claro" : "Modo noturno"}
-        >
-          <Icone
-            nome={
-              tema === "noturno"
-                ? ICONE_INTERFACE.claro
-                : ICONE_INTERFACE.noturno
-            }
-            tamanho={22}
-          />
-        </button>
-        <div className="turno">
-          <Icone nome={ICONE_INTERFACE.turno} tamanho={20} />
-          <span>
-            <small>Turno {visao.turno + 1}</small>
-            <strong>{trimestre(visao.turno)}</strong>
-          </span>
-        </div>
       </header>
+
+      <details className="acoes-jogo">
+        <summary title="Abrir ferramentas">Ferramentas</summary>
+        <div>
+          <button type="button" onClick={() => setTablet("inicio")}>
+            Tablet{avisosNoTablet ? ` (${avisosNoTablet})` : ""}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setAbaTopo("Leis");
+              setBuscaAberta(true);
+            }}
+          >
+            Buscar lei
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setAbaTopo("Leis");
+              setCatalogoAberto(true);
+            }}
+          >
+            Leis fora do mapa
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setAbaTopo("Leis");
+              setGruposAbertos((aberto) => !aberto);
+            }}
+          >
+            Eleitorado no mapa
+          </button>
+          <button type="button" onClick={() => setSalvarAberto(true)}>
+            Salvar ou carregar
+          </button>
+          <button type="button" onClick={alternarTema}>
+            {tema === "noturno" ? "Modo claro" : "Modo noturno"}
+          </button>
+        </div>
+      </details>
+
+      {abaTopo === "Política" ? (
+        <section className="pagina-aba" aria-label="Política">
+          <div className="pagina-aba-cabeca">
+            <small>POLÍTICA</small>
+            <h1>Quem está com o governo</h1>
+          </div>
+          {aprovacao ? (
+            <div className="pagina-aba-cartao">
+              <small>APROVAÇÃO</small>
+              <strong>
+                {aprovacao.valor.toLocaleString("pt-BR", {
+                  maximumFractionDigits: 0,
+                })}
+                %
+              </strong>
+            </div>
+          ) : null}
+          {congresso ? (
+            <CongressoNoTablet
+              congresso={congresso}
+              nomeDaLei={(id) =>
+                visao.leis.find((lei) => lei.id === id)?.nome ?? id
+              }
+              onResponder={responderAoPedido}
+            />
+          ) : null}
+          <div className="pagina-aba-cartao pagina-aba-grupos">
+            <h2>Grupos de interesse</h2>
+            <div>
+              {visao.grupos.map((grupo) => (
+                <button
+                  key={grupo.id}
+                  type="button"
+                  onClick={() => {
+                    setAbaTopo("Leis");
+                    selecionar(grupo.id);
+                  }}
+                >
+                  <span>{grupo.nome}</span>
+                  <strong>
+                    {grupo.satisfacao.toLocaleString("pt-BR", {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                  <small>
+                    {(grupo.peso * 100).toLocaleString("pt-BR", {
+                      maximumFractionDigits: 0,
+                    })}
+                    % do eleitorado
+                  </small>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {abaTopo === "Orçamento" ? (
+        <section className="pagina-aba" aria-label="Orçamento">
+          <div className="pagina-aba-cabeca">
+            <small>ORÇAMENTO · POR ANO</small>
+            <h1>De onde vem e para onde vai</h1>
+          </div>
+          <div className="pagina-aba-cartao">
+            <ContasDoGoverno
+              contas={contas}
+              onAbrir={(id) => {
+                setAbaTopo("Leis");
+                selecionar(id);
+              }}
+            />
+          </div>
+          <div className="pagina-aba-cartao pagina-aba-divida">
+            <span>Dívida pública</span>
+            <strong>{moeda(contas.divida)}</strong>
+            <span>{pctPib(contas.percentualPib.divida)}</span>
+          </div>
+          <div className="pagina-aba-listas">
+            {(["Entra", "Sai"] as const).map((lado) => (
+              <div className="pagina-aba-cartao" key={lado}>
+                <h2>{lado}</h2>
+                {visao.orcamento
+                  .filter((linha) =>
+                    lado === "Entra"
+                      ? linha.lado === "receita"
+                      : linha.lado === "gasto" || linha.lado === "juros",
+                  )
+                  .map((linha) => (
+                    <div className="pagina-aba-linha" key={linha.id}>
+                      <span>{linha.nome}</span>
+                      <strong>{moeda(Math.abs(linha.valor))}</strong>
+                      <small>{linha.conta}</small>
+                      <div className="pagina-aba-leis-da-linha">
+                        {linha.leis.map((id) => (
+                          <button
+                            key={id}
+                            type="button"
+                            onClick={() => {
+                              setAbaTopo("Leis");
+                              selecionar(id);
+                            }}
+                          >
+                            {visao.leis.find((lei) => lei.id === id)?.nome ??
+                              id}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {jornalAberto ? (
         <PaginaDeJornal
@@ -980,7 +1349,7 @@ function TelaPrincipalCarregada({
         />
       ) : null}
 
-      <main className="area-mapa">
+      <main className="area-mapa" hidden={abaTopo !== "Leis"}>
         <MapaPolitico
           visao={visao}
           base={base}
@@ -1130,33 +1499,6 @@ function TelaPrincipalCarregada({
         ) : null}
 
         <AcontecendoAgora ocorrencias={visao.ocorrencias.emCurso} />
-
-        <button
-          type="button"
-          className={`botao-turno${passando ? " ocupado" : ""}${visao.ocorrencias.mesa.length ? " travado" : ""}`}
-          onClick={passarTurno}
-          disabled={passando}
-          title={
-            visao.ocorrencias.mesa.length
-              ? "Responda os dilemas nas notificações do tablet para encerrar o turno"
-              : undefined
-          }
-        >
-          <span>
-            {passando
-              ? "Calculando…"
-              : eleicao?.encerrada
-                ? "Fim da partida"
-                : visao.ocorrencias.mesa.length
-                  ? "Responder dilema"
-                  : eleicao &&
-                      faltaCandidato(eleicao) &&
-                      eleicao.turnosAteAEleicao === 0
-                    ? "Escolher candidato"
-                    : "Encerrar turno"}
-          </span>
-          <Icone nome={ICONE_INTERFACE.seguir} tamanho={22} />
-        </button>
       </main>
     </div>
   );
