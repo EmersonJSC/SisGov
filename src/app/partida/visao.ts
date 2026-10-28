@@ -1,6 +1,7 @@
 import type { ResolvedPackage } from "../../engine";
 import { contextNodeId } from "../../engine/model/lawNodes";
 import { valorNaMedida } from "./medida";
+import { fraseDaBolha } from "./frase";
 import { medidaDoPais } from "./regua";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
@@ -326,53 +327,59 @@ export function verPartida(partida: Partida): VisaoPartida {
       (variable) =>
         variable.tipo !== "controle" && !foraDoMapa.has(variable.id),
     )
-    .map((variable) => ({
-      id: variable.id,
-      nome: variable.nome,
-      tipo: variable.tipo,
-      unidade: variable.unidade,
-      area: variable.area ?? "",
-      avaliacao: variable.avaliacao,
-      valor:
-        variable.tipo === "situacao"
-          ? brutoDe(variable.id, variable.entrada ?? 0, variable.saida ?? 0)
-          : (values[variable.id] ?? 0),
-      ...escalaDe(variable),
-      ...(variable.tipo === "situacao"
-        ? {
-            entrada: variable.entrada,
-            saida: variable.saida,
-            ativa: (values[variable.id] ?? 0) > 0,
-          }
-        : {}),
-      ...(variable.pilar !== undefined ? { pilar: variable.pilar } : {}),
-      ...((m) =>
-        m && !m.tecnico
+    .map((variable) => {
+      const bolha = {
+        id: variable.id,
+        nome: variable.nome,
+        tipo: variable.tipo,
+        unidade: variable.unidade,
+        area: variable.area ?? "",
+        avaliacao: variable.avaliacao,
+        valor:
+          variable.tipo === "situacao"
+            ? brutoDe(variable.id, variable.entrada ?? 0, variable.saida ?? 0)
+            : (values[variable.id] ?? 0),
+        ...escalaDe(variable),
+        ...(variable.tipo === "situacao"
           ? {
-              medida: {
-                valor: valorNaMedida(m, values[variable.id] ?? 0),
-                unidade: m.unidade,
-                convertida: m.zero !== undefined,
-                ...(m.zero !== undefined ? { zero: m.zero, cem: m.cem } : {}),
-              },
+              entrada: variable.entrada,
+              saida: variable.saida,
+              ativa: (values[variable.id] ?? 0) > 0,
             }
-          : {})(medidaNoPais(variable)),
-      ...(values[contextNodeId(variable.id)] !== undefined
-        ? { contexto: values[contextNodeId(variable.id)] }
-        : {}),
-      ...(comPiloto
-        ? {
-            semVoce:
-              variable.tipo === "situacao"
-                ? brutoPiloto(
-                    variable.id,
-                    variable.entrada ?? 0,
-                    variable.saida ?? 0,
-                  )
-                : (pilotoValues[variable.id] ?? 0),
-          }
-        : {}),
-    }));
+          : {}),
+        ...(variable.pilar !== undefined ? { pilar: variable.pilar } : {}),
+        ...((m) =>
+          m && !m.tecnico
+            ? {
+                medida: {
+                  valor: valorNaMedida(m, values[variable.id] ?? 0),
+                  unidade: m.unidade,
+                  convertida: m.zero !== undefined,
+                  ...(m.zero !== undefined ? { zero: m.zero, cem: m.cem } : {}),
+                },
+              }
+            : {})(medidaNoPais(variable)),
+        ...(values[contextNodeId(variable.id)] !== undefined
+          ? { contexto: values[contextNodeId(variable.id)] }
+          : {}),
+        ...(comPiloto
+          ? {
+              semVoce:
+                variable.tipo === "situacao"
+                  ? brutoPiloto(
+                      variable.id,
+                      variable.entrada ?? 0,
+                      variable.saida ?? 0,
+                    )
+                  : (pilotoValues[variable.id] ?? 0),
+            }
+          : {}),
+      };
+      // País em frases: a bolha diz como está. Sem frase, a tela cai no
+      // número — nunca em texto inventado.
+      const frase = fraseDaBolha(bolha);
+      return frase === undefined ? bolha : { ...bolha, frase };
+    });
   const controlToLaw = new Map(
     content.policies.map((policy) => [policy.controle.variavel, policy.id]),
   );

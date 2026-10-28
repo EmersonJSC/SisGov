@@ -1386,6 +1386,11 @@ export function DocumentoBolha({
     >
       <p className="tipo-doc">{NOME_TIPO[bolha.tipo] ?? bolha.tipo}</p>
       <h1 className="titulo-doc">{bolha.nome}</h1>
+      {/*
+        País em frases (2.7): a frase diz como está, o número abaixo diz
+        quanto — o jogador precisa dos dois para ver causa e efeito.
+      */}
+      {bolha.frase ? <p className="frase-boletim">{bolha.frase}.</p> : null}
       <div className="valor-boletim">
         <strong style={{ color: corDaBondade(intensidade.bondade) }}>
           {valorNaTela(bolha, bolha.valor)}

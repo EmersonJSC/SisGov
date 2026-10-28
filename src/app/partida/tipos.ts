@@ -210,6 +210,12 @@ export type VisaoBolha = Readonly<{
    */
   /** Pilar da área: posição na primeira página do jornal (V1-07). */
   pilar?: number;
+  /**
+   * O país em frases: como está, em uma frase, no lugar do número do motor.
+   * Falta quando o jeito da bolha é faixa escrita e a faixa ainda não existe
+   * — aí a tela mostra o número, em vez de texto inventado.
+   */
+  frase?: string;
   medida?: Readonly<{
     valor: number;
     unidade: string;

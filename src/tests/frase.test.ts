@@ -10,7 +10,9 @@ import { describe, expect, it } from "vitest";
 import {
   emCada,
   fracaoLegivel,
+  fraseDaBolha,
   partePerdidaPorAno,
+  sujeitoDaUnidade,
 } from "../app/partida/frase";
 import { criarPartida } from "../app/partida";
 
@@ -77,10 +79,53 @@ describe("país em frases — porcentagem em gente", () => {
     expect(territorio?.fonte).toBeTruthy();
   });
 
-  it("nenhuma porcentagem inteira de 1 a 99 fica sem frase", () => {
-    const vazias = Array.from({ length: 99 }, (_, i) => i + 1).filter(
-      (p) => emCada(p).length === 0,
+  it("fração que mentiria não existe: o valor pequeno não vira frase", () => {
+    // O numerador nunca é zero, então sem teto de erro 1% viraria "um em
+    // cada doze" (8,3%). Sem fração honesta a bolha cai no número.
+    expect(fracaoLegivel(1)).toBeUndefined();
+    expect(fracaoLegivel(4.2)).toBeUndefined();
+    expect(emCada(1)).toBe("");
+    expect(emCada(99.5)).toBe("");
+  });
+
+  it("nenhuma frase erra mais de um décimo da distância até a ponta", () => {
+    const erradas = Array.from({ length: 999 }, (_, i) => (i + 1) / 10)
+      .map((p) => ({ p, f: fracaoLegivel(p) }))
+      .filter(({ p, f }) => {
+        if (f === undefined) return false;
+        const erro = Math.abs(p - (f.numerador / f.denominador) * 100);
+        return erro > Math.min(p, 100 - p) * 0.1 + 1e-9;
+      });
+    expect(erradas).toEqual([]);
+  });
+
+  it("a frase sai da unidade: sujeito nomeado ou nenhuma frase", () => {
+    expect(sujeitoDaUnidade("% de ocupados informais")?.singular).toBe(
+      "ocupado",
     );
-    expect(vazias).toEqual([]);
+    expect(
+      sujeitoDaUnidade("% da população com plano de saúde")?.singular,
+    ).toBe("pessoa");
+    // Sem sujeito de gente a unidade não ganha frase: "% da malha rodoviária
+    // em estado bom" não é uma pessoa em cada três.
+    expect(sujeitoDaUnidade("% da malha rodoviária em estado bom")).toBe(
+      undefined,
+    );
+  });
+
+  it("taxa e índice não viram gente, mesmo em porcentagem", () => {
+    const bolha = (unidade: string, valor: number) =>
+      fraseDaBolha({ tipo: "calculado", valor, medida: { valor, unidade } });
+    expect(bolha("% da população com plano de saúde", 24)).toBe(
+      "uma pessoa em cada quatro",
+    );
+    expect(
+      bolha("inflação ao consumidor em 12 meses (%)", 4.8),
+    ).toBeUndefined();
+    expect(bolha("presos por vaga (%)", 135)).toBeUndefined();
+    expect(
+      bolha("diferença de rendimento mulheres/homens (%)", 21),
+    ).toBeUndefined();
+    expect(bolha("taxa de desocupação (%)", 6.3)).toBeUndefined();
   });
 });

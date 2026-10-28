@@ -1216,6 +1216,15 @@ button {
   pointer-events: none;
 }
 
+/*
+  País em frases: a frase é o que a bolha diz, não um número. Peso normal
+  porque é leitura, e sem cor de juízo (regra 2.4): quem julga é quem joga.
+*/
+.frase-bolha {
+  font-weight: 600;
+  fill: light-dark(#4a5565, #b3bdcc);
+}
+
 .marca-prevista {
   filter: drop-shadow(0 2px 3px #0003);
 }
@@ -2363,6 +2372,14 @@ button {
 }
 
 /* boletim */
+/* A frase abre o boletim; o número vem logo abaixo, em corpo grande. */
+.frase-boletim {
+  margin: 8px 0 0;
+  font-size: 19px;
+  line-height: 1.3;
+  color: light-dark(#2d3440, #dde3ec);
+}
+
 .valor-boletim {
   display: flex;
   flex-wrap: wrap;

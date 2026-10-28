@@ -688,7 +688,7 @@ const NoBolha = memo(function NoBolha({
       style={{ "--bondade": cor } as React.CSSProperties}
       role="button"
       tabIndex={0}
-      aria-label={`${bolha.nome}: ${valorNaTela(bolha, bolha.valor)}${bolha.medida?.convertida ? ` ${bolha.medida.unidade}` : ""}${situacao && !ativa ? " (ainda não surgiu)" : ""}`}
+      aria-label={`${bolha.nome}: ${bolha.frase ?? `${valorNaTela(bolha, bolha.valor)}${bolha.medida?.convertida ? ` ${bolha.medida.unidade}` : ""}`}${situacao && !ativa ? " (ainda não surgiu)" : ""}`}
       aria-pressed={selecionada}
       onPointerEnter={() => onEntrar(bolha.id)}
       onPointerLeave={onSair}
@@ -783,12 +783,26 @@ const NoBolha = memo(function NoBolha({
           />
           {mostrarValor ? (
             <text
-              className="valor-bolha"
+              className={
+                bolha.frase ? "valor-bolha frase-bolha" : "valor-bolha"
+              }
               y={raioVisivel + 16 + linhas.length * 18.4}
               fontSize={14}
               textAnchor="middle"
             >
-              {valorNaTela(bolha, bolha.valor)}
+              {/*
+                País em frases (2.7): a bolha diz como está; o número recua
+                para o boletim. Sem frase, o número continua aqui.
+              */}
+              {bolha.frase ? (
+                quebrarNome(bolha.frase, 22, 2).map((linha, i) => (
+                  <tspan key={i} x={0} dy={i === 0 ? 0 : 16}>
+                    {linha}
+                  </tspan>
+                ))
+              ) : (
+                <tspan x={0}>{valorNaTela(bolha, bolha.valor)}</tspan>
+              )}
               {mudou ? (
                 <tspan fill={corVariacao} dx={6}>
                   {variacaoReal(bolha, variacao!) > 0 ? "▲" : "▼"}{" "}
