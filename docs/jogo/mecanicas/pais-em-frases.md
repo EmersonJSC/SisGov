@@ -162,19 +162,28 @@ quiser a proporção, ela entra como `leitura` do indicador, com fonte.
 
 Sergipe sai: o autor está certo e eu tinha errado contra o próprio desenho do
 projeto. Comparar com um estado brasileiro prende o mundo ao Brasil, e mundo e
-país foram separados em 25/out. A comparação genérica é com **a própria
-floresta do país** e o tempo que ela dura nesse ritmo — vale em qualquer país,
-e o número sai de `paises/<pais>/` (área de floresta), não do mundo.
+país foram separados em 25/out.
+
+**A moldura de tempo também sai, por estar errada.** Eu havia proposto "nesse
+ritmo, a floresta acaba em algumas décadas" para o corte de 22 mil km² por ano.
+O Brasil tem cerca de 5.000 mil km² de floresta: 5.000 ÷ 22 dá **227 anos**,
+não décadas. A frase soava concreta e era falsa por quase dez vezes. Projeção
+de esgotamento exigiria a área de floresta por país e uma conta que ninguém
+pediu; o indicador mede ritmo, então a frase fala de ritmo.
 
 | até | frase |
 | --- | --- |
 | 1 | a floresta está praticamente de pé |
-| 6 | nesse ritmo, a floresta dura mais de um século |
-| 22 | nesse ritmo, a floresta acaba em algumas décadas |
-| — | nesse ritmo, a floresta acaba dentro de uma geração |
+| 6 | a floresta recua devagar, mas todo ano |
+| 22 | a floresta recua rápido |
+| — | a floresta recua muito rápido |
 
-O "nesse ritmo" é honesto: é uma projeção do presente, não uma previsão. E
-responde o que o jogador quer saber — se dá tempo de consertar.
+"Devagar" e "rápido" comparam ritmo, não julgam valor — a régua de 2.3 continua
+valendo. A área perdida em km² fica a um clique, pela decisão de 2.5.
+
+**Lição para a fase 3:** frase que embute conta ("dura um século", "equivale a
+X") precisa da conta feita e conferida. Sem dado por trás, a frase descreve o
+que o indicador mede e nada mais.
 
 **Concentração de mercado** (% de setores com HHI acima de 2.500)
 
@@ -224,11 +233,16 @@ bolha, para quem quiser o número. O mapa mostra a frase.
 2. **A referência de comparação é o passado do próprio país** (2.4). Piloto
    automático e comparação entre países ficam fora.
 
+3. **Frase na frente, número ao abrir** (2.5): confirmado pelo autor.
+4. **Os cortes de faixa** (5%, 9%, 14% de desemprego) ficam como estão. São
+   escolha de jogo, não estatística; mexer neles antes de ver o jogo rodando
+   seria adivinhar. Entram na calibragem (item 10 da ordem).
+5. **Área de floresta por país: não entra.** O autor dispensou, e a frase do
+   desmatamento deixou de precisar quando a projeção de tempo saiu (seção 6).
+
 **Em aberto:**
 
-3. **Confirmar 2.5:** frase na frente, número ao abrir.
-4. **Os cortes de faixa** (5%, 9%, 14% de desemprego) são de jogo, não de
-   estatística, e hoje saíram do meu julgamento. Servem como estão ou o autor
-   tem régua própria?
-5. **A área de floresta por país**, que a frase do desmatamento passa a exigir
-   em `paises/<pais>/` para o "nesse ritmo, dura…" ter conta por trás.
+6. **"Concentração de mercado" como nome de bolha** é jargão, e nenhuma frase
+   salva um título que o jogador não entende. O autor deixou para depois,
+   junto com uma revisão do indicador. Candidatos: "Domínio de poucas
+   empresas", "Poder das grandes empresas".
