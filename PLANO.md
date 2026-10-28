@@ -59,6 +59,13 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 8. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
 9. [ ] Índices essenciais e população: só o que faltar depois da economia em reais
 10. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
+11. [ ] **O partido é uma coisa** (novo, 28/out): hoje o partido é só nome e sigla, embora a tela prometa "você não é o presidente, você é o partido". Falta o que ele defende (ideologia, alas internas), a disciplina da bancada e como isso aperta o jogador. O desgaste (item 5) é propriedade dele, não um número solto.
+12. [ ] **Montar o governo** (novo, 28/out): escolher vice e ministros. Hoje escolhe-se só o presidente, entre personagens gerados com biografia, opiniões, carisma e experiência. Não há chapa (vice não existe no código) e `occurrences.ts` ainda monta o texto do ministro a partir do nome da pasta — o comentário lá diz "até existirem ministros com nome". Os ministérios já existem no mapa; falta quem os ocupa.
+
+**Os itens 11 e 12 decidem a primeira impressão do jogo** (28/out): são o que a
+tela de abertura oferece. Hoje ela pede um nome, mostra cinco rostos e manda
+tomar posse — raso para a promessa que faz. Onde entram na ordem é decisão do
+autor; estão no fim da lista por serem novos, não por serem menos urgentes.
 
 **Pendências da [experiência de jogo](docs/jogo/experiencia.md) (25/out):**
 - [ ] Neutralidade: tirar o "bom/ruim" das faixas verde/amarela/vermelha das réguas (`conteudo/mundo/reguas.json`) e revisar textos, frases e cores que julgam leis, ideologias ou caminhos.
