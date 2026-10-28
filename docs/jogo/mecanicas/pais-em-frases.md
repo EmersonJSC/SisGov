@@ -44,14 +44,18 @@ Isso vale também para cor: verde e vermelho julgam. A faixa pode ter intensidad
 
 ### 2.4 Comparação em vez de adjetivo
 
-Em vez de "desemprego alto", "o desemprego é o maior desde 2017". A referência
-sai de uma destas, nesta ordem de preferência:
+Em vez de "desemprego alto", "o desemprego é o maior desde 2017".
 
-1. **O próprio país no passado** — o motor já guarda o valor de turnos
-   anteriores, e é a comparação que o jogador entende sem estudar.
-2. **O país sem as decisões do jogador** (o piloto automático, já na visão como
-   `semVoce`) — responde "o que eu causei?".
-3. **Outro país** — só onde a comparação for honesta; exige dado de país.
+**Decidido pelo autor (28/out): a referência é o passado do próprio país.** O
+motor já guarda o valor dos turnos anteriores, e é a comparação que o jogador
+entende sem estudar nada.
+
+Ficam de fora por ora, e não entram sem o autor pedir:
+
+- **O país sem as decisões do jogador** (o piloto automático, já na visão como
+  `semVoce`), que responderia "o que eu causei?". É mais difícil de ler: exige
+  o jogador entender que existe um país paralelo.
+- **Outro país**, que exige dado comparável e arrisca comparação desonesta.
 
 ### 2.5 O número não desaparece, recua
 
@@ -141,26 +145,52 @@ conhecida) em vez de um número solto.
 
 | até | frase |
 | --- | --- |
-| 0,40 | a distância entre quem ganha mais e quem ganha menos é das menores do mundo |
-| 0,50 | há uma distância grande entre quem ganha mais e quem ganha menos |
-| — | a renda se concentra no topo |
+Pela observação do autor, a frase fala das **classes**, não da distância
+abstrata: o que muda com a desigualdade é quem se parece com quem.
+
+| até | frase |
+| --- | --- |
+| 0,40 | ricos, classe média e pobres vivem em mundos próximos |
+| 0,50 | a classe média está mais perto dos pobres do que dos ricos |
+| — | uma minoria no topo concentra a renda; o resto se parece entre si |
+
+Nenhuma delas afirma proporção ("os 10% mais ricos ganham 12 vezes"), porque
+esse número teria de vir de fonte e hoje viria da minha cabeça. Se o autor
+quiser a proporção, ela entra como `leitura` do indicador, com fonte.
 
 **Desmatamento** (área desmatada por ano, mil km²)
+
+Sergipe sai: o autor está certo e eu tinha errado contra o próprio desenho do
+projeto. Comparar com um estado brasileiro prende o mundo ao Brasil, e mundo e
+país foram separados em 25/out. A comparação genérica é com **a própria
+floresta do país** e o tempo que ela dura nesse ritmo — vale em qualquer país,
+e o número sai de `paises/<pais>/` (área de floresta), não do mundo.
 
 | até | frase |
 | --- | --- |
 | 1 | a floresta está praticamente de pé |
-| 6 | perde-se por ano uma área do tamanho do Distrito Federal |
-| 22 | perde-se por ano uma área do tamanho de Sergipe |
-| — | perde-se por ano mais que o território de Sergipe |
+| 6 | nesse ritmo, a floresta dura mais de um século |
+| 22 | nesse ritmo, a floresta acaba em algumas décadas |
+| — | nesse ritmo, a floresta acaba dentro de uma geração |
+
+O "nesse ritmo" é honesto: é uma projeção do presente, não uma previsão. E
+responde o que o jogador quer saber — se dá tempo de consertar.
 
 **Concentração de mercado** (% de setores com HHI acima de 2.500)
 
+O autor marcou como não entendível, e estava certo: "setor" e "HHI" são
+jargão, e a frase anterior descrevia a estatística em vez do que ela significa.
+O que o jogador sente da concentração é **quem manda no preço** e se ele tem
+para onde ir. A frase passa a dizer isso, e "mercado" substitui "setor".
+
 | até | frase |
 | --- | --- |
-| 10 | há concorrência na maioria dos setores |
-| 30 | um terço dos setores é dominado por poucas empresas |
-| — | poucas empresas dominam a maior parte dos setores |
+| 10 | em quase todo mercado há empresas disputando o cliente |
+| 30 | em parte dos mercados, poucas empresas mandam no preço |
+| — | em quase todo mercado, poucas empresas mandam no preço |
+
+A unidade técnica (`% de setores com HHI acima de 2.500`) continua na janela da
+bolha, para quem quiser o número. O mapa mostra a frase.
 
 **O que o autor decide aqui:**
 
@@ -183,10 +213,22 @@ conhecida) em vez de um número solto.
   inteira sem buraco.
 - Nenhuma faixa de indicador tem `tom` de julgamento.
 
-## 8. Em aberto (decisão do autor)
+## 8. Decidido e em aberto
 
-1. **O tom das frases.** Jornal sóbrio ("a economia não cresce há dois anos") ou
-   mais direto ("a economia está parada")? A fase 2 serve para isso.
-2. **A referência de comparação** (2.4): começar só com o passado do próprio
-   país, ou já usar o piloto automático ("o que eu causei")?
+**Decidido (28/out):**
+
+1. **O tom serve** — frase curta e concreta, sem adjetivo de valor. Aprovado
+   sobre o piloto da seção 6, com três frases refeitas pelas observações do
+   autor (desigualdade por classes, desmatamento sem estado brasileiro,
+   concentração sem jargão).
+2. **A referência de comparação é o passado do próprio país** (2.4). Piloto
+   automático e comparação entre países ficam fora.
+
+**Em aberto:**
+
 3. **Confirmar 2.5:** frase na frente, número ao abrir.
+4. **Os cortes de faixa** (5%, 9%, 14% de desemprego) são de jogo, não de
+   estatística, e hoje saíram do meu julgamento. Servem como estão ou o autor
+   tem régua própria?
+5. **A área de floresta por país**, que a frase do desmatamento passa a exigir
+   em `paises/<pais>/` para o "nesse ritmo, dura…" ter conta por trás.
