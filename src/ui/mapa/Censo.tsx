@@ -69,6 +69,14 @@ function tintaSobre(cor: string): string {
     : TINTA_CLARA;
 }
 
+/** Dinheiro por mês, que é o prazo em que as pessoas pensam o bolso. */
+const MESES = 12;
+function porMes(porAno: number): string {
+  return `R$ ${(porAno / MESES).toLocaleString("pt-BR", {
+    maximumFractionDigits: 0,
+  })}`;
+}
+
 function porcento(parte: number): string {
   return `${(parte * 100).toLocaleString("pt-BR", {
     maximumFractionDigits: 1,
@@ -217,8 +225,24 @@ export function Censo({
                     <span className="censo-nome">
                       {faixa.nome}
                       {faixa.grupo ? null : <small>sem grupo no mapa</small>}
-                      {/* A mesma frase das bolhas: gente, não porcentagem. */}
-                      {emCada(faixa.parte * 100) ? (
+                      {/*
+                        O bolso quando existe; a frase das bolhas quando não.
+                        Quanto sobra por mês diz mais sobre a vida dessa gente
+                        do que "uma pessoa em cada quatro".
+                      */}
+                      {/*
+                        Quem não ganha nada no modelo não vira "R$ 0 por mês":
+                        é gente que vive da renda de quem mora com ela, e a
+                        renda domiciliar não existe nesta camada. Zero na tela
+                        seria uma afirmação que o jogo não pode fazer.
+                      */}
+                      {faixa.bolso && faixa.bolso.ganha > 0 ? (
+                        <em
+                          title={`Ganha ${porMes(faixa.bolso.ganha)} e paga ${porMes(faixa.bolso.paga)} por mês`}
+                        >
+                          sobram {porMes(faixa.bolso.sobra)} por mês
+                        </em>
+                      ) : emCada(faixa.parte * 100) ? (
                         <em>{emCada(faixa.parte * 100)}</em>
                       ) : null}
                     </span>
