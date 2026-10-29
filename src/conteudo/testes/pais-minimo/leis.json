@@ -15,8 +15,6 @@
     "propensao_consumo": 90,
     "idade_de_trabalhar": 70,
     "participacao_trabalho": 62,
-    "taxa_natalidade": 12,
-    "taxa_mortalidade": 7,
     "nivel_policia_militar": 100,
     "nivel_destino_do_resultado_fiscal": 50
   }

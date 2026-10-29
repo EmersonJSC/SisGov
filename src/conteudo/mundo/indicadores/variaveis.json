@@ -1423,6 +1423,7 @@
       "nome": "Taxa de natalidade",
       "unidade": "por mil por ano",
       "dominio": { "minimo": 0, "maximo": 60 },
+      "medida": { "unidade": "por mil por ano", "zero": 0, "cem": 60 },
       "area": "Economia"
     },
     {
@@ -1431,6 +1432,7 @@
       "nome": "Taxa de mortalidade",
       "unidade": "por mil por ano",
       "dominio": { "minimo": 0, "maximo": 60 },
+      "medida": { "unidade": "por mil por ano", "zero": 0, "cem": 60 },
       "area": "Economia"
     },
     {
