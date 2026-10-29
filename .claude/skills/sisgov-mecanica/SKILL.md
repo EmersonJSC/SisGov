@@ -78,7 +78,7 @@ cara, porque o projeto usa project references: o comando certo é `npx tsc -b`
    os testes de números da economia ficam desligados (ordem de 24/out).
 4. Rodar os testes nomeados do que mudou (`npx vitest run src/tests/<arquivo>`),
    não a suíte toda: ela passa de 10 minutos.
-5. `npm run check` completo só uma vez por dia, no fim.
+5. `npm run check` completo só ao terminar a mecânica inteira, não por camada.
 6. Commit com o ID do chamado e `[x]` no PLANO com data, commit e teste.
 
 ## Testes: o que esperar

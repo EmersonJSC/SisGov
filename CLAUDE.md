@@ -23,7 +23,7 @@ Referência técnica utilizável: `docs/arquitetura/` e os `.md` de `src/engine/
 - Uma mecânica por vez. Ideia nova vai para o PLANO; avisar e perguntar antes de abrir frente nova.
 - Refatorar e mudar comportamento são pedidos separados.
 - Na terceira tentativa sem fechar uma tarefa, parar e rever com o autor.
-- Durante o dia: testes do que mudou e `npx tsc -b` (nunca `--noEmit`). O `npm run check` completo roda uma vez por dia, no fim.
+- Durante o dia: testes do que mudou e `npx tsc -b` (nunca `--noEmit`). O `npm run check` completo roda só ao terminar a mecânica inteira (ex.: o Grupos todo), não por camada.
 - Commit com o assunto na frente (`tempo: …`, `mundo: …`, `conserto: …`). Trabalho direto na `main`. `git push` só com a palavra do autor.
 - Atualizar o `RETOMAR.md` antes de encerrar a rodada.
 - Mostrar na tela antes de dizer que está pronto.
