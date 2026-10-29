@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from "vitest";
 import type { ResolvedPackage } from "../engine";
-import { rendasDosPerfis } from "../app/partida/bolso";
+import { bolsosDosPerfis, rendasDosPerfis } from "../app/partida/bolso";
 import { criarPartida } from "../app/partida";
 
 let guardada: ReturnType<typeof criarPartida> | undefined;
@@ -133,5 +133,94 @@ describe("a renda de cada perfil", () => {
       };
     });
     expect(mediaDeQuemTrabalha(furado, SALARIO)).toBeCloseTo(SALARIO, 0);
+  });
+});
+
+/** Os valores do motor que o bolso lê, na partida de verdade. */
+function valores(): Record<string, number> {
+  const criada = criarPartida({ ocorrencias: false, eleicao: false });
+  if (!criada.ok) throw new Error(criada.erros.join(" "));
+  return { ...criada.value.game.execution.values };
+}
+
+let cache: Record<string, number> | undefined;
+function osValores(): Record<string, number> {
+  cache ??= valores();
+  return cache;
+}
+
+/** O bolso do primeiro perfil que tem esse valor de atributo. */
+function bolsoDe(atributo: string, valor: string, vs = osValores()) {
+  const c = pacote().manifest.congresso!;
+  const i = c.perfis.findIndex(
+    (p) => c.valores[atributo]?.[p[coluna(atributo)]] === valor,
+  );
+  if (i < 0) throw new Error(`nenhum perfil com ${atributo}=${valor}`);
+  return bolsosDosPerfis(pacote(), vs)[i];
+}
+
+describe("o que o perfil paga e o que lhe sobra", () => {
+  it("a sobra é o que ganha menos o que paga", () => {
+    for (const b of bolsosDosPerfis(pacote(), osValores()))
+      expect(b.sobra).toBeCloseTo(b.ganha - b.paga, 6);
+  });
+
+  it("quem ganha mais paga mais imposto", () => {
+    const comCarteira = (faixa: string) => {
+      const c = pacote().manifest.congresso!;
+      const i = c.perfis.findIndex(
+        (p) =>
+          c.valores.ocupacao?.[p[coluna("ocupacao")]] === "carteira" &&
+          c.valores.renda?.[p[coluna("renda")]] === faixa,
+      );
+      return bolsosDosPerfis(pacote(), osValores())[i].paga;
+    };
+    expect(comCarteira("rica")).toBeGreaterThan(comCarteira("pobre"));
+  });
+
+  it("aposentado não ganha do trabalho e mesmo assim tem o que gastar", () => {
+    const b = bolsoDe("ocupacao", "aposentado");
+    expect(b.ganha).toBeGreaterThan(0);
+  });
+
+  it("sem arrecadação sobre consumo, some só essa parte da conta", () => {
+    const sem = bolsosDosPerfis(pacote(), {
+      ...osValores(),
+      arrecadacao_consumo: 0,
+    });
+    const com = bolsosDosPerfis(pacote(), osValores());
+    const i = com.findIndex((b) => b.paga > 0);
+    expect(sem[i].paga).toBeLessThan(com[i].paga);
+    expect(sem[i].ganha).toBeCloseTo(com[i].ganha, 6);
+  });
+
+  it("a contribuição sobre a folha não sai do bolso de quem trabalha", () => {
+    // `arrecadacao_salarios` é encargo do empregador sobre a folha — o jogo
+    // já a mostra como "Custo de contratar". Cobrá-la de novo do salário
+    // punha 21,6 pontos a mais na conta de cada trabalhador.
+    const b = bolsosDosPerfis(pacote(), osValores());
+    const semEncargo = bolsosDosPerfis(pacote(), {
+      ...osValores(),
+      arrecadacao_salarios: 0,
+    });
+    // Num perfil que trabalha: no que não trabalha não há encargo a sumir, e
+    // o teste passaria sem provar nada.
+    const i = b.findIndex(
+      (x, j) => rendasDosPerfis(pacote(), 40000)[j].porAno > 0,
+    );
+    expect(semEncargo[i].paga).toBeCloseTo(b[i].paga, 6);
+  });
+
+  it("o imposto cabe no que se ganha", () => {
+    // Antes de calibrar, o teto frouxo que denuncia conta errada: ninguém
+    // entrega mais da metade do que ganha.
+    const fora = bolsosDosPerfis(pacote(), osValores()).filter(
+      (b) => b.ganha > 0 && b.paga / b.ganha > 0.5,
+    );
+    expect(fora).toEqual([]);
+  });
+
+  it("quem não tem benefício declarado não recebe nada por fora", () => {
+    expect(bolsoDe("ocupacao", "fora").ganha).toBe(0);
   });
 });

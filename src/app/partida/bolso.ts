@@ -27,6 +27,8 @@ type FonteDaTabela = Readonly<{
   nome: string;
   trabalha: boolean;
   porRenda?: Readonly<Record<string, number>>;
+  /** Variável do motor que paga essa gente por ano, quando ela não trabalha. */
+  beneficio?: string;
 }>;
 
 /** Multiplicador ausente vale 1: a faixa nova entra na média, não some dela. */
@@ -78,4 +80,76 @@ export function rendasDosPerfis(
     fonte,
     porAno: trabalha ? multiplicador * escala : 0,
   }));
+}
+
+export type BolsoDoPerfil = Readonly<{
+  fonte: Fonte;
+  /** Trabalho mais benefício, em moeda do país por ano. */
+  ganha: number;
+  /** Imposto sobre consumo, sobre a renda e contribuição sobre o salário. */
+  paga: number;
+  /** O que resta — o número que quem joga entende. */
+  sobra: number;
+}>;
+
+/** Porcentagem do motor virando fração; parcela que falta vale zero. */
+const POR_CENTO = 100;
+function numero(valores: Readonly<Record<string, number>>, id: string): number {
+  const v = valores[id];
+  return Number.isFinite(v) ? v : 0;
+}
+
+/**
+ * Alíquota efetiva: o que se arrecadou dividido pela base sobre a qual se
+ * arrecadou. Sai daqui e não de `carga_impostos_consumo`, que é percentual do
+ * PIB e não do consumo das famílias — aplicá-la ao consumo de uma pessoa daria
+ * um número errado.
+ */
+function aliquota(
+  valores: Readonly<Record<string, number>>,
+  arrecadacao: string,
+  base: string,
+): number {
+  const b = numero(valores, base);
+  return b > 0 ? numero(valores, arrecadacao) / b : 0;
+}
+
+/**
+ * O bolso de cada perfil, na ordem de `manifest.congresso.perfis`.
+ *
+ * Ganha do trabalho pela repartição da massa salarial (`rendasDosPerfis`) e
+ * do benefício que a sua fonte declarar. Paga pelas alíquotas efetivas do
+ * agregado. Nada disso volta para a rede de consequências (mecânica 2.7).
+ */
+export function bolsosDosPerfis(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): readonly BolsoDoPerfil[] {
+  const tabela = content.manifest.congresso?.bolso?.fontes as
+    Readonly<Record<string, FonteDaTabela>> | undefined;
+  const rendas = rendasDosPerfis(content, numero(valores, "salario_medio"));
+  if (!tabela || rendas.length === 0) return [];
+
+  const sobreConsumo = aliquota(
+    valores,
+    "arrecadacao_consumo",
+    "consumo_familias",
+  );
+  const sobreRenda = aliquota(
+    valores,
+    "arrecadacao_renda_pessoas",
+    "massa_salarial",
+  );
+  const consumido = numero(valores, "propensao_consumo") / POR_CENTO;
+
+  return rendas.map(({ fonte, porAno }) => {
+    const beneficio = tabela[fonte.id]?.beneficio;
+    const ganha = porAno + (beneficio ? numero(valores, beneficio) : 0);
+    // `arrecadacao_salarios` fica de fora: é encargo do empregador sobre a
+    // folha, que o jogo já mostra em "Custo de contratar". Cobrá-la aqui
+    // punha 21,6 pontos a mais na conta de cada trabalhador, e levava a
+    // conta inteira a 61% do que se ganha.
+    const paga = ganha * consumido * sobreConsumo + porAno * sobreRenda;
+    return { fonte, ganha, paga, sobra: ganha - paga };
+  });
 }
