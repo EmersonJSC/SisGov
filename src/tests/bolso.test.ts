@@ -9,8 +9,10 @@
 import { describe, expect, it } from "vitest";
 import type { ResolvedPackage } from "../engine";
 import {
+  bolsosDoEleitorado,
   bolsosDosPerfis,
   quemPagouAConta,
+  rendasDoManifesto,
   rendasDosPerfis,
 } from "../app/partida/bolso";
 import { criarPartida } from "../app/partida";
@@ -147,6 +149,9 @@ function valores(): Record<string, number> {
   return { ...criada.value.game.execution.values };
 }
 
+/** Os valores da partida de verdade, sem desemprego já aplicado. */
+const vs0 = () => osValores();
+
 let cache: Record<string, number> | undefined;
 function osValores(): Record<string, number> {
   cache ??= valores();
@@ -206,44 +211,78 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     expect(dobrado).toBeCloseTo(base / 2, 6);
   });
 
-  it("a soma do que os perfis pagam fecha com o que o motor arrecadou", () => {
-    // O agregado manda e o perfil divide: nem a base de consumo nem os
-    // lucros podem fazer o eleitorado pagar mais (ou menos) do que o
+  it("a soma do que os perfis pagam fecha com o que o motor arrecadou, também com desemprego", () => {
+    // O agregado manda e o perfil divide: nem a base de consumo, nem os lucros,
+    // nem o desemprego podem fazer o eleitorado pagar mais (ou menos) do que o
     // orçamento recebe ao lado.
-    const vs = osValores();
-    const perfis = pacote().manifest.congresso!.perfis;
-    const bolsos = bolsosDosPerfis(pacote(), vs);
-    const rendas = rendasDosPerfis(
-      pacote(),
-      vs.salario_medio,
-      vs.lucros / vs.massa_salarial,
-    );
-    const media = (v: (i: number) => number) =>
-      perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0) /
-      perfis.reduce((soma, p) => soma + p[0], 0);
-    const pessoas = vs.massa_salarial / media((i) => rendas[i].porAno);
-    const pago = pessoas * media((i) => bolsos[i].paga);
-    const arrecadado =
-      vs.arrecadacao_consumo +
-      vs.arrecadacao_renda_pessoas +
-      vs.arrecadacao_renda_empresas +
-      vs.arrecadacao_dividendos;
-    expect(pago / arrecadado).toBeCloseTo(1, 6);
+    for (const desemprego of [vs0().desemprego, 15]) {
+      const vs: Record<string, number> = { ...vs0(), desemprego };
+      const { manifesto, bolsos } = bolsosDoEleitorado(pacote(), vs)!;
+      const rendas = rendasDoManifesto(
+        manifesto,
+        vs.salario_medio,
+        vs.lucros / vs.massa_salarial,
+      );
+      const media = (v: (i: number) => number) =>
+        manifesto.perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0) /
+        manifesto.perfis.reduce((soma, p) => soma + p[0], 0);
+      const pessoas = vs.massa_salarial / media((i) => rendas[i].porAno);
+      const pago = pessoas * media((i) => bolsos[i].paga);
+      const arrecadado =
+        vs.arrecadacao_consumo +
+        vs.arrecadacao_renda_pessoas +
+        vs.arrecadacao_renda_empresas +
+        vs.arrecadacao_dividendos;
+      expect(pago / arrecadado).toBeCloseTo(1, 6);
+    }
   });
 
   it("os lucros fecham: quem vive de capital reparte exatamente o que o motor lucrou", () => {
-    const vs = osValores();
-    const perfis = pacote().manifest.congresso!.perfis;
-    const rendas = rendasDosPerfis(
-      pacote(),
+    const vs: Record<string, number> = { ...vs0(), desemprego: 15 };
+    const { manifesto } = bolsosDoEleitorado(pacote(), vs)!;
+    const rendas = rendasDoManifesto(
+      manifesto,
       vs.salario_medio,
       vs.lucros / vs.massa_salarial,
     );
     const total = (v: (i: number) => number) =>
-      perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0);
+      manifesto.perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0);
     expect(
       total((i) => rendas[i].capitalPorAno) / total((i) => rendas[i].porAno),
     ).toBeCloseTo(vs.lucros / vs.massa_salarial, 6);
+  });
+
+  it("o desempregado não ganha renda do trabalho; ex-carteira recebe o seguro, ex-informal não", () => {
+    const vs: Record<string, number> = { ...vs0(), desemprego: 15 };
+    const { manifesto, bolsos } = bolsosDoEleitorado(pacote(), vs)!;
+    const rendas = rendasDoManifesto(
+      manifesto,
+      vs.salario_medio,
+      vs.lucros / vs.massa_salarial,
+    );
+    const primeira = manifesto.vivo!.primeiraLinhaDeDesempregado;
+    const de = (origem: string) =>
+      manifesto.vivo!.origem.flatMap((o, k) =>
+        o === origem ? [primeira + k] : [],
+      );
+    expect(de("carteira").length).toBeGreaterThan(0);
+    for (const i of [...de("carteira"), ...de("informal")])
+      expect(rendas[i].porAno).toBe(0);
+    for (const i of de("carteira")) expect(bolsos[i].ganha).toBeGreaterThan(0);
+    for (const i of de("informal")) expect(bolsos[i].ganha).toBe(0);
+  });
+
+  it("a massa salarial continua fechando com o desemprego em 15", () => {
+    const vs: Record<string, number> = { ...vs0(), desemprego: 15 };
+    const { manifesto } = bolsosDoEleitorado(pacote(), vs)!;
+    const rendas = rendasDoManifesto(manifesto, vs.salario_medio, 0);
+    const trabalha = manifesto.perfis.flatMap((p, i) =>
+      rendas[i].porAno > 0 ? [{ peso: p[0], renda: rendas[i].porAno }] : [],
+    );
+    const pesos = trabalha.reduce((s, t) => s + t.peso, 0);
+    expect(
+      trabalha.reduce((s, t) => s + t.peso * t.renda, 0) / pesos,
+    ).toBeCloseTo(vs.salario_medio, 6);
   });
 
   it("empresário vive de lucros: imposto sobre lucro bate nele, salário médio não", () => {
@@ -344,6 +383,32 @@ describe("quem pagou a conta", () => {
     expect(conta.length).toBeLessThanOrEqual(6);
     expect(conta.every((c) => c.faixa.includes(" · "))).toBe(true);
     expect(new Set(conta.map((c) => c.faixa)).size).toBe(conta.length);
+  });
+
+  it("mais desemprego aparece como perda para quem tem carteira", () => {
+    // Como o motor: com o PIB parado, menos gente ocupada é massa salarial
+    // menor e lucro maior na mesma medida.
+    const comDesemprego = (desemprego: number): Record<string, number> => {
+      const base = osValores();
+      const massa =
+        (base.massa_salarial * (1 - desemprego / 100)) /
+        (1 - base.desemprego / 100);
+      return {
+        ...base,
+        desemprego,
+        massa_salarial: massa,
+        lucros: base.lucros + base.massa_salarial - massa,
+      };
+    };
+    const conta = quemPagouAConta(
+      pacote(),
+      comDesemprego(6),
+      comDesemprego(16),
+      Number.MAX_SAFE_INTEGER,
+    );
+    const carteira = conta.filter((c) => c.faixa.startsWith("Com carteira"));
+    expect(carteira.length).toBeGreaterThan(0);
+    expect(carteira.every((c) => c.porMes < 0)).toBe(true);
   });
 
   it("salário médio maior aparece como ganho, não como perda", () => {

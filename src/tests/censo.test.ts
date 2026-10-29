@@ -83,4 +83,39 @@ describe("censo da população", () => {
   it("a visão entrega o censo, como entrega as bolhas", () => {
     expect(verPartida(partida()).censo.length).toBeGreaterThan(0);
   });
+
+  it("o desempregado aparece no censo de ocupação, com nome, e o país continua inteiro", () => {
+    const valores = { ...partida().game.execution.values, desemprego: 12 };
+    const censo = censoDoPais(partida().content, valores);
+    const ocupacao = censo.find((a) => a.id === "ocupacao")!;
+    const desempregados = ocupacao.faixas.find((f) => f.id === "desempregado");
+    expect(desempregados?.parte).toBeGreaterThan(0);
+    expect(desempregados?.nome).toBe("Desempregados");
+    expect(desempregados?.grupo).toBe("grupo_desempregados");
+    for (const atributo of censo)
+      expect(atributo.faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(
+        1,
+        6,
+      );
+  });
+
+  it("desemprego maior: o desempregado cresce e quem tem carteira diminui", () => {
+    const base = partida().game.execution.values;
+    const parte = (desemprego: number, faixa: string) =>
+      censoDoPais(partida().content, { ...base, desemprego })
+        .find((a) => a.id === "ocupacao")!
+        .faixas.find((f) => f.id === faixa)?.parte ?? 0;
+    expect(parte(25, "desempregado")).toBeGreaterThan(parte(5, "desempregado"));
+    expect(parte(25, "carteira")).toBeLessThan(parte(5, "carteira"));
+  });
+
+  it("o bolso do desempregado sobra menos que o de quem tem carteira", () => {
+    const valores = { ...partida().game.execution.values, desemprego: 12 };
+    const ocupacao = censoDoPais(partida().content, valores).find(
+      (a) => a.id === "ocupacao",
+    )!;
+    const sobra = (id: string) =>
+      ocupacao.faixas.find((f) => f.id === id)!.bolso!.sobra;
+    expect(sobra("desempregado")).toBeLessThan(sobra("carteira"));
+  });
 });

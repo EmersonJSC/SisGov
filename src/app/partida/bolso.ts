@@ -1,4 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
+import type { CongressManifest } from "../../engine/model/contentTypes";
+import { congressoVivo, origemDoDesempregado } from "../../game/congresso/vivo";
 
 /**
  * O bolso de cada perfil do eleitorado (População, camada B).
@@ -43,8 +45,19 @@ export function rendasDosPerfis(
   razaoLucros = 0,
 ): readonly RendaDoPerfil[] {
   const congresso = content.manifest.congresso;
-  const tabela = congresso?.bolso?.fontes;
-  if (!congresso || !tabela) return [];
+  return congresso
+    ? rendasDoManifesto(congresso, salarioMedio, razaoLucros)
+    : [];
+}
+
+/** A mesma conta, sobre um manifesto qualquer (o fixo ou o eleitorado vivo). */
+export function rendasDoManifesto(
+  congresso: CongressManifest,
+  salarioMedio: number,
+  razaoLucros: number,
+): readonly RendaDoPerfil[] {
+  const tabela = congresso.bolso?.fontes;
+  if (!tabela) return [];
 
   const { atributos, valores, perfis } = congresso;
   const colunaOcupacao = atributos.indexOf("ocupacao") + 1;
@@ -151,16 +164,37 @@ export function bolsosDosPerfis(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
 ): readonly BolsoDoPerfil[] {
-  const tabela = content.manifest.congresso?.bolso?.fontes;
-  const perfis = content.manifest.congresso?.perfis ?? [];
+  return bolsosDoEleitorado(content, valores)?.bolsos ?? [];
+}
+
+/** O eleitorado vivo de um turno e o bolso de cada linha dele, na mesma ordem. */
+export type EleitoradoComBolso = Readonly<{
+  manifesto: CongressManifest;
+  bolsos: readonly BolsoDoPerfil[];
+}>;
+
+/**
+ * O bolso de cada linha do eleitorado vivo (`congressoVivo`): os perfis
+ * originais com o peso de quem segue empregado, mais uma linha gêmea para
+ * quem perdeu o emprego. Sem tabela de bolso no país, `undefined`.
+ */
+export function bolsosDoEleitorado(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): EleitoradoComBolso | undefined {
+  const fixo = content.manifest.congresso;
+  if (!fixo) return undefined;
+  const manifesto = congressoVivo(fixo, valores);
+  const tabela = manifesto.bolso?.fontes;
+  const perfis = manifesto.perfis;
   const massa = numero(valores, "massa_salarial");
   const lucros = numero(valores, "lucros");
-  const rendas = rendasDosPerfis(
-    content,
+  const rendas = rendasDoManifesto(
+    manifesto,
     numero(valores, "salario_medio"),
     massa > 0 ? lucros / massa : 0,
   );
-  if (!tabela || rendas.length === 0) return [];
+  if (!tabela || rendas.length === 0) return undefined;
 
   const consumido = numero(valores, "propensao_consumo") / POR_CENTO;
   // Do que os lucros rendem, o motor só consome uma fração
@@ -177,11 +211,25 @@ export function bolsosDosPerfis(
         )
       : 0;
 
-  const ganhos = rendas.map(({ fonte, porAno, capitalPorAno }) => ({
+  // O seguro-desemprego só chega a quem tinha carteira (`emprego` no mundo).
+  const recebeBeneficio = (fonteId: string, linha: number): boolean => {
+    const desempregado = manifesto.emprego?.desempregado;
+    if (!desempregado || fonteId !== desempregado.id) return true;
+    const origem = origemDoDesempregado(manifesto, linha);
+    return (
+      origem !== undefined && desempregado.origemComBeneficio.includes(origem)
+    );
+  };
+  const ganhos = rendas.map(({ fonte, porAno, capitalPorAno }, i) => ({
     fonte,
     porAno,
     capitalPorAno,
-    ganha: porAno + capitalPorAno + beneficioDaFonte(tabela[fonte.id], valores),
+    ganha:
+      porAno +
+      capitalPorAno +
+      (recebeBeneficio(fonte.id, i)
+        ? beneficioDaFonte(tabela[fonte.id], valores)
+        : 0),
   }));
   const consumos = ganhos.map(
     ({ ganha, capitalPorAno }) =>
@@ -219,13 +267,14 @@ export function bolsosDosPerfis(
   // folha, que o jogo já mostra em "Custo de contratar". Cobrá-la aqui
   // punha 21,6 pontos a mais na conta de cada trabalhador, e levava a
   // conta inteira a 61% do que se ganha.
-  return ganhos.map(({ fonte, porAno, capitalPorAno, ganha }, i) => {
+  const bolsos = ganhos.map(({ fonte, porAno, capitalPorAno, ganha }, i) => {
     const paga =
       consumos[i] * sobreConsumo +
       porAno * sobreRenda +
       capitalPorAno * sobreLucros;
     return { fonte, ganha, paga, sobra: ganha - paga };
   });
+  return { manifesto, bolsos };
 }
 
 /** Imposto sobre o lucro das empresas e sobre o que elas distribuem. */
@@ -264,41 +313,66 @@ export function quemPagouAConta(
   content: ResolvedPackage,
   antes: Readonly<Record<string, number>>,
   depois: Readonly<Record<string, number>>,
+  linhas = LINHAS,
 ): readonly QuemPagou[] {
-  const congresso = content.manifest.congresso;
-  if (!congresso) return [];
-  const bolsoAntes = bolsosDosPerfis(content, antes);
-  const bolsoDepois = bolsosDosPerfis(content, depois);
-  if (bolsoAntes.length === 0) return [];
+  const pais = (valores: Readonly<Record<string, number>>) =>
+    porOrigemERenda(bolsosDoEleitorado(content, valores));
+  const faixasAntes = pais(antes);
+  const faixasDepois = pais(depois);
 
-  const { atributos, valores, perfis, rotulos } = congresso;
+  return [...faixasAntes]
+    .map(([chave, a]) => {
+      const d = faixasDepois.get(chave);
+      const porMes =
+        d && a.peso > 0 && d.peso > 0
+          ? (d.sobra / d.peso - a.sobra / a.peso) / MESES
+          : 0;
+      return { faixa: a.nome, parte: a.peso, porMes };
+    })
+    .filter(({ porMes }) => Math.abs(porMes) >= RUIDO)
+    .sort((a, b) => Math.abs(b.porMes) - Math.abs(a.porMes))
+    .slice(0, linhas)
+    .sort((a, b) => a.porMes - b.porMes);
+}
+
+/**
+ * O eleitorado por ocupação de **origem** × faixa de renda, com o peso e o
+ * que sobra no total de cada faixa. O desempregado conta na ocupação de onde
+ * saiu: a lei que demite bate em "carteira, pobres", empregados e demitidos
+ * juntos, e a faixa é a mesma gente antes e depois.
+ */
+function porOrigemERenda(
+  eleitorado: EleitoradoComBolso | undefined,
+): ReadonlyMap<string, { nome: string; peso: number; sobra: number }> {
+  const faixas = new Map<
+    string,
+    { nome: string; peso: number; sobra: number }
+  >();
+  if (!eleitorado) return faixas;
+  const { manifesto, bolsos } = eleitorado;
+  const { atributos, valores, perfis, rotulos } = manifesto;
   const colunaRenda = atributos.indexOf("renda") + 1;
-  const soma = new Map<string, { nome: string; peso: number; dif: number }>();
-  for (const [i, perfil] of perfis.entries()) {
-    const fonte = bolsoAntes[i].fonte;
+  perfis.forEach((perfil, i) => {
+    const bolso = bolsos[i];
+    const origem = origemDoDesempregado(manifesto, i);
+    const fonte = origem
+      ? { id: origem, nome: manifesto.bolso?.fontes[origem]?.nome ?? origem }
+      : bolso.fonte;
     const renda = valores.renda?.[perfil[colunaRenda]] ?? "";
     const rendaEscrita = (
       rotulos?.faixas[`renda=${renda}`] ?? renda
     ).toLowerCase();
     const chave = `${fonte.id}|${renda}`;
-    const acc = soma.get(chave) ?? {
+    const acc = faixas.get(chave) ?? {
       nome: `${fonte.nome} · ${rendaEscrita}`,
       peso: 0,
-      dif: 0,
+      sobra: 0,
     };
-    acc.peso += perfil[0];
-    acc.dif += perfil[0] * (bolsoDepois[i].sobra - bolsoAntes[i].sobra);
-    soma.set(chave, acc);
-  }
-
-  return [...soma.values()]
-    .map(({ nome, peso, dif }) => ({
-      faixa: nome,
-      parte: peso,
-      porMes: peso > 0 ? dif / peso / MESES : 0,
-    }))
-    .filter(({ porMes }) => Math.abs(porMes) >= RUIDO)
-    .sort((a, b) => Math.abs(b.porMes) - Math.abs(a.porMes))
-    .slice(0, LINHAS)
-    .sort((a, b) => a.porMes - b.porMes);
+    faixas.set(chave, {
+      ...acc,
+      peso: acc.peso + perfil[0],
+      sobra: acc.sobra + perfil[0] * bolso.sobra,
+    });
+  });
+  return faixas;
 }

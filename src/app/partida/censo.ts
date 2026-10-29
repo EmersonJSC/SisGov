@@ -1,5 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
-import { bolsosDosPerfis } from "./bolso";
+import { congressoVivo } from "../../game/congresso/vivo";
+import { bolsosDoEleitorado } from "./bolso";
 import type { VisaoCensoAtributo } from "./tipos";
 
 /**
@@ -18,8 +19,12 @@ export function censoDoPais(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>> = {},
 ): readonly VisaoCensoAtributo[] {
-  const congresso = content.manifest.congresso;
-  if (!congresso) return [];
+  const fixo = content.manifest.congresso;
+  if (!fixo) return [];
+  // O eleitorado de agora: o desemprego e a informalidade do motor movem o
+  // peso dos perfis (camada C), e o desempregado é uma faixa de ocupação.
+  const eleitorado = bolsosDoEleitorado(content, valores);
+  const congresso = eleitorado?.manifesto ?? congressoVivo(fixo, valores);
   const {
     atributos,
     valores: valoresDoPerfil,
@@ -27,7 +32,7 @@ export function censoDoPais(
     segmentoDe,
     rotulos,
   } = congresso;
-  const bolsos = bolsosDosPerfis(content, valores);
+  const bolsos = eleitorado?.bolsos ?? [];
   return atributos.map((atributo, i) => {
     const soma = new Map<string, number>();
     // O bolso da faixa é a média do bolso de quem está nela, pesada pelo
