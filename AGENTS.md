@@ -14,7 +14,7 @@ Não abrir sem o autor pedir: `docs/v1/desenho/`, `docs/referencia/`, `docs/arte
 - Uma mecânica por vez. Ideia nova vai para o PLANO.
 - Refatorar e mudar comportamento são pedidos separados.
 - Conferir tipos com `npx tsc -b`, nunca `--noEmit`.
-- `npm run check` completo só só ao terminar a mecânica inteira, não por camada.
+- `npm run check` completo só ao terminar a mecânica inteira, não por camada.
 - Commit com o assunto na frente (`mundo: …`, `conserto: …`); `git push` só com a palavra do autor.
 - O motor não conhece nomes de leis, partidos ou países.
 - Mostrar na tela antes de dizer que está pronto.

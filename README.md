@@ -43,5 +43,5 @@ Projeto pessoal, trabalho direto na `main` (D-22).
 
 1. Pegue o próximo chamado aberto na seção 5 do [PLANO.md](PLANO.md).
 2. Faça só o que a tarefa pede; ideia nova vai para o PLANO.
-3. Rode os testes do que mudou e `npx tsc -b`; o `npm run check` completo roda uma vez por dia, no fim.
+3. Rode os testes do que mudou e `npx tsc -b`; o `npm run check` completo roda ao terminar a mecânica.
 4. Commit com o ID do chamado (`V1-NN: …`) e marque `[x]` no PLANO com data, commit e teste.
