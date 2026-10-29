@@ -40,9 +40,16 @@ describe("SG143 — grupos sociais", () => {
     for (const id of perfil.segmentos)
       pesos.set(id, (pesos.get(id) ?? 0) + perfil.peso);
 
-  it("vinte segmentos, todos presentes nos perfis do eleitorado", () => {
-    expect(grupos).toHaveLength(20);
-    expect([...pesos.keys()].sort()).toEqual(grupos.map((g) => g.id).sort());
+  it("vinte e um segmentos; todos nos perfis do eleitorado, menos o dos desempregados", () => {
+    expect(grupos).toHaveLength(21);
+    // O desempregado só existe no eleitorado vivo (camada C): os perfis fixos
+    // da aprovação não têm ninguém nele.
+    expect([...pesos.keys()].sort()).toEqual(
+      grupos
+        .map((g) => g.id)
+        .filter((id) => id !== "grupo_desempregados")
+        .sort(),
+    );
     expect(Object.keys(aprovacao.pesos).sort()).toEqual(
       grupos.map((g) => g.id).sort(),
     );
@@ -107,7 +114,7 @@ describe("SG143 — grupos sociais", () => {
         visao.grupos[i].satisfacao,
       );
     for (const g of visao.grupos) {
-      expect(g.peso).toBeCloseTo(pesos.get(g.id)!, 9);
+      expect(g.peso).toBeCloseTo(pesos.get(g.id) ?? 0, 9);
       expect(g.satisfacao).toBeCloseTo(
         grupos.find((b) => b.id === g.id)!.valor,
         9,

@@ -138,6 +138,24 @@ export type CongressManifest = {
    * De onde vem o dinheiro de cada perfil e quanto ele ganha, por ocupação e
    * faixa de renda (`mundo/populacao.json`, População camada B).
    */
+  /**
+   * Quem perde o emprego primeiro e o que o desempregado recebe
+   * (`mundo/populacao.json`, População camada C).
+   */
+  emprego?: Readonly<{
+    vulnerabilidade: Readonly<{
+      ocupacao: Readonly<Record<string, number>>;
+      renda: Readonly<Record<string, number>>;
+      idade: Readonly<Record<string, number>>;
+    }>;
+    /** Informalidade dos perfis de partida (do país); a camada só segue a diferença. */
+    informalidadeInicial: number;
+    desempregado: Readonly<{
+      id: string;
+      /** Ocupações de origem cujo desempregado recebe o seguro-desemprego. */
+      origemComBeneficio: readonly string[];
+    }>;
+  }>;
   bolso?: Readonly<{
     fontes: Readonly<
       Record<

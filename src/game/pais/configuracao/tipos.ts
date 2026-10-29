@@ -145,6 +145,15 @@ export type PopulacaoDoMundo = {
     atributos: Record<string, string>;
     faixas: Record<string, string>;
   };
+  /** Quem perde o emprego primeiro (População camada C). */
+  emprego?: {
+    vulnerabilidade: {
+      ocupacao: Record<string, number>;
+      renda: Record<string, number>;
+      idade: Record<string, number>;
+    };
+    desempregado: { id: string; origemComBeneficio: string[] };
+  };
   /** De onde vem o dinheiro de cada perfil (População camada B). */
   bolso?: {
     fontes: Record<

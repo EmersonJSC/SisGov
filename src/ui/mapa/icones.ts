@@ -938,6 +938,7 @@ export const ICONE_BOLHA: Readonly<Record<string, string>> = {
   grupo_catolicos: "hand-heart-outline",
   grupo_classe_media: "home-account",
   grupo_conservadores: "church-outline",
+  grupo_desempregados: "briefcase-off-outline",
   grupo_empresarios: "account-tie",
   grupo_evangelicos: "book-open-variant",
   grupo_familias_com_filhos: "baby-carriage",

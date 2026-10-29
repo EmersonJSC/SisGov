@@ -1663,6 +1663,7 @@
     "mundo/consequencias/enchente--producao-agropecuaria.json",
     "mundo/consequencias/risco-pais--grupo-ricos.json",
     "mundo/consequencias/taxa-juros--grupo-ricos.json",
+    "mundo/consequencias/desemprego--grupo-desempregados.json",
     "mundo/consequencias/desemprego--grupo-informais.json",
     "mundo/consequencias/informalidade--grupo-informais.json",
     "mundo/consequencias/informalidade--eficacia-formula-do-salario-minimo.json",

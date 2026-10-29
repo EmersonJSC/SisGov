@@ -7253,6 +7253,18 @@
       "avaliacao": "maior_melhor"
     },
     {
+      "id": "grupo_desempregados",
+      "tipo": "grupo",
+      "nome": "Desempregados",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "grupo_empresarios",
       "tipo": "grupo",
       "nome": "Empresários",

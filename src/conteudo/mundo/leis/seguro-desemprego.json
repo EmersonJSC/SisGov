@@ -16,7 +16,7 @@
         "rotulo": "Extinguir pagamento de seguro após demissão",
         "valor": 0,
         "apoiam": ["Gestores fiscais favoráveis a corte de gasto"],
-        "rejeitam": ["Trabalhadores com carteira"],
+        "rejeitam": ["Trabalhadores com carteira", "Desempregados"],
         "efeitos": "pobreza ↑ na crise; consumo cai mais na recessão; Informalidade ↓ pouco",
         "propoe": "Não há seguro."
       },
@@ -45,7 +45,7 @@
         "rotulo": "Pagar de três a cinco parcelas após demissão involuntária",
         "valor": 75,
         "custoTexto": "Hipótese: custo público maior que o benefício curto",
-        "apoiam": ["Trabalhadores com carteira"],
+        "apoiam": ["Trabalhadores com carteira", "Desempregados"],
         "rejeitam": ["Gestores fiscais favoráveis a corte de gasto"],
         "efeitos": "Pobreza e queda de consumo diminuem; gasto sobe e a procura por trabalho pode demorar um pouco.",
         "propoe": "De três a cinco parcelas depois da demissão."
@@ -55,7 +55,7 @@
         "rotulo": "Pagar mais parcelas com busca de emprego e qualificação obrigatórias",
         "valor": 100,
         "custoTexto": "Hipótese: maior custo fiscal, especialmente nas crises",
-        "apoiam": ["Centrais sindicais"],
+        "apoiam": ["Centrais sindicais", "Desempregados"],
         "rejeitam": ["Pequenos negócios"],
         "efeitos": "Segura consumo e reduz pobreza durante recessão; custa mais e precisa de serviço de recolocação.",
         "propoe": "Mais parcelas, com busca de emprego e curso obrigatórios."
@@ -206,6 +206,17 @@
         "termoConstante": 0.9
       },
       "atraso": 1,
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "seguro-desemprego--grupo-desempregados",
+      "alvo": "grupo_desempregados",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
       "unidade": "indice_0_100"
     }
   ]

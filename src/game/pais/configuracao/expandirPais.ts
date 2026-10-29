@@ -225,6 +225,15 @@ export function expandirPais(
       const rotulos = (populacaoDoMundo as unknown as PopulacaoDoMundo).rotulos;
       // De onde vem o dinheiro de cada perfil (População camada B).
       const bolso = (populacaoDoMundo as unknown as PopulacaoDoMundo).bolso;
+      // Quem perde o emprego (camada C); a informalidade de partida é do país.
+      const empregoDoMundo = (populacaoDoMundo as unknown as PopulacaoDoMundo)
+        .emprego;
+      const emprego = empregoDoMundo
+        ? {
+            ...empregoDoMundo,
+            informalidadeInicial: valores.indices.informalidade ?? 0,
+          }
+        : undefined;
       politica.congresso.casas.forEach((casa, i) => {
         if (!(casa.cadeiras > 0) || !Number.isInteger(casa.cadeiras))
           erro(
@@ -237,6 +246,7 @@ export function expandirPais(
         regras: regrasDoCongresso,
         ...(rotulos ? { rotulos } : {}),
         ...(bolso ? { bolso } : {}),
+        ...(emprego ? { emprego } : {}),
         casas: politica.congresso.casas.map(
           ({ id, nome, cadeiras, regra }) => ({
             id,
