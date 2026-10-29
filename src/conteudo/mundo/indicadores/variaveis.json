@@ -1427,7 +1427,7 @@
     },
     {
       "id": "taxa_mortalidade",
-      "tipo": "controle",
+      "tipo": "calculado",
       "nome": "Taxa de mortalidade",
       "unidade": "por mil por ano",
       "dominio": { "minimo": 0, "maximo": 60 },

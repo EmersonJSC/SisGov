@@ -13,7 +13,9 @@ Tudo na `main` e pushado (`f74f0849`). Passos feitos hoje: (1) o bolso entra na 
 
 **País em frases fechado (30/out):** a Informalidade mostra "38,6%" e "Em % de ocupados informais" (`jaEPorcento` em `formatos.ts`; teste em `medida.test.ts`; visto no boletim).
 
-**Próximos itens (não abrir sem perguntar):** itens 4 e 5 do PLANO; piso do salário mínimo no bolso; antipartido/desgaste.
+**Item 4 fechado (30/out):** `taxa_mortalidade` virou calculado, com seta de `saude_populacao` (coef −0,3, termo 29,62, atraso 1; neutra no início). Pandemia agora mata (+3‰). Mexer no coeficiente pede refazer o termo (o motor não escala o termo pela população). Falta o `npm run check`.
+
+**Próximos itens (não abrir sem perguntar):** item 5 do PLANO (Natalidade órfã); piso do salário mínimo no bolso; antipartido/desgaste.
 
 ## (histórico) Os quatro achados da camada B, corrigidos em 29/out
 
@@ -35,8 +37,7 @@ Tudo na `main` e pushado (`f74f0849`). Passos feitos hoje: (1) o bolso entra na 
 2. **Ligar o bolso na satisfação** (hoje ele só aparece na tela, decisão de
    29/out). Tem desenho próprio; mexe no que já está calibrado.
 3. (feito) Ponta solta da Informalidade.
-4. **Itens 4 e 5 do PLANO**: a seta `saude_populacao → taxa_mortalidade` (hoje
-   a pandemia não mata ninguém) e a bolha órfã da Natalidade.
+4. (feito) Saúde → mortalidade. **Item 5**: a bolha órfã da Natalidade.
 
 ## O que fechou nesta rodada
 

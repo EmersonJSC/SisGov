@@ -1,0 +1,17 @@
+{
+  "id": "saude-populacao--taxa-mortalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "saude_populacao",
+  "alvo": "taxa_mortalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 29.62
+  },
+  "unidade": "por mil por ano",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}
