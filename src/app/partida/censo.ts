@@ -1,6 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
 import { congressoVivo } from "../../game/congresso/vivo";
-import { bolsosDoEleitorado } from "./bolso";
+import { bolsosDoEleitorado, eleitoradoDoInicio } from "./bolso";
 import type { VisaoCensoAtributo } from "./tipos";
 
 /**
@@ -104,14 +104,8 @@ function partesDoInicio(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
 ): ReadonlyMap<string, number> | undefined {
-  const fixo = content.manifest.congresso;
-  const inicial = content.initialState.indicesIniciais;
-  if (!fixo?.emprego || !inicial) return undefined;
-  const inicio = congressoVivo(fixo, {
-    ...valores,
-    desemprego: inicial.desemprego ?? 0,
-    informalidade: fixo.emprego.informalidadeInicial,
-  });
+  const inicio = eleitoradoDoInicio(content, valores);
+  if (!inicio) return undefined;
   const soma = new Map<string, number>();
   for (const perfil of inicio.perfis)
     inicio.atributos.forEach((atributo, i) => {

@@ -51,20 +51,13 @@ export function rendasDosPerfis(
     : [];
 }
 
-/** A mesma conta, sobre um manifesto qualquer (o fixo ou o eleitorado vivo). */
-export function rendasDoManifesto(
-  congresso: CongressManifest,
-  salarioMedio: number,
-  razaoLucros: number,
-): readonly RendaDoPerfil[] {
-  const tabela = congresso.bolso?.fontes;
-  if (!tabela) return [];
-
+/** O que a conta da renda lê de cada perfil. */
+function lerPerfis(congresso: CongressManifest) {
+  const tabela = congresso.bolso?.fontes ?? {};
   const { atributos, valores, perfis } = congresso;
   const colunaOcupacao = atributos.indexOf("ocupacao") + 1;
   const colunaRenda = atributos.indexOf("renda") + 1;
-
-  const lido = perfis.map((perfil) => {
+  return perfis.map((perfil) => {
     const ocupacao = valores.ocupacao?.[perfil[colunaOcupacao]] ?? "";
     const faixa = valores.renda?.[perfil[colunaRenda]] ?? "";
     const fonte = tabela[ocupacao];
@@ -76,23 +69,51 @@ export function rendasDoManifesto(
       multiplicador: fonte?.porRenda?.[faixa] ?? SEM_TABELA,
     };
   });
+}
 
-  let somaPesada = 0;
-  let pesos = 0;
-  for (const l of lido) {
-    if (!l.trabalha) continue;
-    somaPesada += l.peso * l.multiplicador;
-    pesos += l.peso;
-  }
-  const media = pesos > 0 ? somaPesada / pesos : 0;
+type Lido = ReturnType<typeof lerPerfis>[number];
+
+/** Peso e multiplicador somados de quem passa no filtro. */
+function somaPesada(
+  lido: readonly Lido[],
+  filtro: (l: Lido) => boolean,
+): Readonly<{ pesos: number; pesado: number }> {
+  return lido.filter(filtro).reduce(
+    (t, l) => ({
+      pesos: t.pesos + l.peso,
+      pesado: t.pesado + l.peso * l.multiplicador,
+    }),
+    { pesos: 0, pesado: 0 },
+  );
+}
+
+/**
+ * A mesma conta, sobre um manifesto qualquer (o fixo ou o eleitorado vivo).
+ *
+ * `regua` é o eleitorado de onde sai a média dos multiplicadores. Sem ela, é o
+ * próprio manifesto e a média fecha com `salarioMedio`. Com o eleitorado do
+ * início, quem passa para o informal ganha menos e quem fica não ganha aumento
+ * fantasma; o custo é a soma dos perfis sair da massa do motor quando a
+ * composição muda, porque o motor não baixa o salário médio com a
+ * informalidade.
+ */
+export function rendasDoManifesto(
+  congresso: CongressManifest,
+  salarioMedio: number,
+  razaoLucros: number,
+  regua: CongressManifest = congresso,
+): readonly RendaDoPerfil[] {
+  if (!congresso.bolso?.fontes) return [];
+  const lido = lerPerfis(congresso);
+  const trabalho = somaPesada(lerPerfis(regua), (l) => l.trabalha);
+  const media = trabalho.pesos > 0 ? trabalho.pesado / trabalho.pesos : 0;
   const escala = media > 0 ? salarioMedio / media : 0;
 
-  // A massa salarial por pessoa do eleitorado inteiro: o que os lucros, em
+  // A massa salarial do motor por pessoa do eleitorado: o que os lucros, em
   // razão da massa, precisam somar para fechar.
-  const trabalhoPorPessoa = pesos * salarioMedio;
-  let capitalPesado = 0;
-  for (const l of lido)
-    if (l.capital) capitalPesado += l.peso * l.multiplicador;
+  const trabalhoPorPessoa =
+    somaPesada(lido, (l) => l.trabalha).pesos * salarioMedio;
+  const capitalPesado = somaPesada(lido, (l) => l.capital).pesado;
   const escalaCapital =
     capitalPesado > 0 ? (razaoLucros * trabalhoPorPessoa) / capitalPesado : 0;
 
@@ -101,6 +122,25 @@ export function rendasDoManifesto(
     porAno: trabalha ? multiplicador * escala : 0,
     capitalPorAno: capital ? multiplicador * escalaCapital : 0,
   }));
+}
+
+/**
+ * O eleitorado do início da partida: o vivo com o desemprego e a
+ * informalidade que os perfis representam. É a régua do salário e a base de
+ * onde o censo mede o movimento. Sem esses números no país, não existe.
+ */
+export function eleitoradoDoInicio(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): CongressManifest | undefined {
+  const fixo = content.manifest.congresso;
+  const inicial = content.initialState.indicesIniciais;
+  if (!fixo?.emprego || !inicial) return undefined;
+  return congressoVivo(fixo, {
+    ...valores,
+    desemprego: inicial.desemprego ?? 0,
+    informalidade: fixo.emprego.informalidadeInicial,
+  });
 }
 
 /**
@@ -200,6 +240,7 @@ export function bolsosDoEleitorado(
     manifesto,
     numero(valores, "salario_medio"),
     massa > 0 ? lucros / massa : 0,
+    eleitoradoDoInicio(content, valores),
   );
   if (!tabela || rendas.length === 0) return undefined;
 
@@ -244,15 +285,21 @@ export function bolsosDoEleitorado(
   );
 
   // Médias do eleitorado inteiro. A massa salarial fixa o tamanho do
-  // eleitorado (massa = pessoas × média do trabalho), e a mesma conta serve
-  // para trazer a arrecadação do motor para o bolso de uma pessoa.
+  // eleitorado (massa = pessoas × salário médio × parte que trabalha, como o
+  // motor a calcula), e a mesma conta serve para trazer a arrecadação do
+  // motor para o bolso de uma pessoa. A média dos salários dos perfis não
+  // serve: com a régua do início, ela cai quando a composição muda, e a conta
+  // passaria a ver mais gente dividindo o mesmo imposto.
   const pesoTotal = perfis.reduce((soma, perfil) => soma + perfil[0], 0);
   const media = (valoresDosPerfis: readonly number[]): number =>
     pesoTotal > 0
       ? valoresDosPerfis.reduce((soma, v, i) => soma + v * perfis[i][0], 0) /
         pesoTotal
       : 0;
-  const mediaDoTrabalho = media(ganhos.map((g) => g.porAno));
+  const parteQueTrabalha = media(
+    rendas.map((r) => (tabela[r.fonte.id]?.trabalha ? 1 : 0)),
+  );
+  const mediaDoTrabalho = numero(valores, "salario_medio") * parteQueTrabalha;
   const mediaDoConsumo = media(consumos);
   const porPessoa = (arrecadado: number, mediaDaBase: number): number =>
     massa > 0 && mediaDaBase > 0

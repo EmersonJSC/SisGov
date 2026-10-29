@@ -11,6 +11,7 @@ import type { ResolvedPackage } from "../engine";
 import {
   bolsosDoEleitorado,
   bolsosDosPerfis,
+  eleitoradoDoInicio,
   quemPagouAConta,
   rendasDoManifesto,
   rendasDosPerfis,
@@ -222,18 +223,28 @@ describe("o que o perfil paga e o que lhe sobra", () => {
         manifesto,
         vs.salario_medio,
         vs.lucros / vs.massa_salarial,
+        eleitoradoDoInicio(pacote(), vs),
       );
       const media = (v: (i: number) => number) =>
         manifesto.perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0) /
         manifesto.perfis.reduce((soma, p) => soma + p[0], 0);
-      const pessoas = vs.massa_salarial / media((i) => rendas[i].porAno);
+      // Pessoas como o motor as conta: massa = pessoas × salário médio ×
+      // parte que trabalha.
+      const trabalha = media((i) =>
+        manifesto.bolso!.fontes[rendas[i].fonte.id]?.trabalha ? 1 : 0,
+      );
+      const pessoas = vs.massa_salarial / (vs.salario_medio * trabalha);
       const pago = pessoas * media((i) => bolsos[i].paga);
       const arrecadado =
         vs.arrecadacao_consumo +
         vs.arrecadacao_renda_pessoas +
         vs.arrecadacao_renda_empresas +
         vs.arrecadacao_dividendos;
-      expect(pago / arrecadado).toBeCloseTo(1, 6);
+      // O imposto de consumo e o de lucros fecham exato. O de renda sai um
+      // pouco quando a composição muda (até no turno 0, cujo desemprego não
+      // é exatamente o do país), porque o salário segue a régua do início e
+      // o motor não baixa o salário médio com ela.
+      expect(pago / arrecadado).toBeCloseTo(1, 2);
     }
   });
 
@@ -303,6 +314,38 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     ) as unknown as { parametros: { pontos?: unknown } } | undefined;
     expect(fonte.curva?.nivel).toBe("nivel_seguro_desemprego");
     expect(fonte.curva?.pontos).toEqual(gasto?.parametros.pontos);
+  });
+
+  it("informalidade maior não dá aumento a quem continua no emprego", () => {
+    // A régua do salário é o país do início: mudar a composição (gente
+    // passando para o informal, que ganha menos) não pode subir o salário de
+    // quem ficou. Antes, renormalizar pela média viva dava aumento fantasma.
+    const ganhoDoServidor = (informalidade: number): number => {
+      const vs: Record<string, number> = { ...vs0(), informalidade };
+      const { manifesto, bolsos } = bolsosDoEleitorado(pacote(), vs)!;
+      const c = manifesto.atributos.indexOf("ocupacao") + 1;
+      const i = manifesto.perfis.findIndex(
+        (p) => manifesto.valores.ocupacao[p[c]] === "servidor",
+      );
+      return bolsos[i].ganha;
+    };
+    expect(ganhoDoServidor(50)).toBeCloseTo(ganhoDoServidor(38.6), 6);
+  });
+
+  it("informalidade maior não aparece como ganho em quem pagou a conta", () => {
+    // A perda de quem migrou para o informal não aparece (cada faixa é
+    // comparada pela própria média), mas ninguém pode sair ganhando.
+    const vs = vs0();
+    const faixas = quemPagouAConta(pacote(), vs, {
+      ...vs,
+      informalidade: vs.informalidade + 3,
+    });
+    // O grupo informal ainda varia um pouco por composição (a parte
+    // desempregada pesa menos num grupo que cresceu); quem ficou no emprego
+    // formal não pode ganhar nada.
+    expect(
+      faixas.filter((f) => f.porMes > 0 && !f.faixa.startsWith("Informais")),
+    ).toEqual([]);
   });
 
   it("a massa salarial continua fechando com o desemprego em 15", () => {
