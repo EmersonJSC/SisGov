@@ -166,6 +166,15 @@ export type CongressManifest = {
       origemComBeneficio: readonly string[];
     }>;
   }>;
+  /**
+   * O que empurra os valores do eleitorado (`mundo/populacao.json`, camada C).
+   * Peso positivo: a alta do indicador empurra para a última faixa do atributo.
+   */
+  mudancaDeValores?: Readonly<{
+    atributo: string;
+    forca: number;
+    empurroes: Readonly<Record<string, number>>;
+  }>;
   bolso?: Readonly<{
     fontes: Readonly<
       Record<

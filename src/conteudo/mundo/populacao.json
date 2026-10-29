@@ -259,5 +259,15 @@
       "formal": "carteira",
       "informal": "informal"
     }
+  },
+  "mudancaDeValores": {
+    "descricao": "O que empurra os valores do eleitorado (População, camada C). Peso positivo: a alta do indicador, desde o turno 0, empurra para a última faixa de `valores` (conservador); negativo, para a primeira (progressista). A soma dos pesos × a variação em pontos (/100) é a pressão; `forca` vezes a pressão é a fração de cada faixa que passa à vizinha. Chute declarado e solto de propósito: calibra vendo o censo.",
+    "atributo": "valores",
+    "forca": 1,
+    "empurroes": {
+      "sensacao_seguranca": -1,
+      "escolaridade": -0.5,
+      "desigualdade": -0.5
+    }
   }
 }

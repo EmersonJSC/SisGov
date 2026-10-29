@@ -3,7 +3,7 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 29/out/2026 (noite).**
+**Atualizado em 30/out/2026.**
 
 ## Camada C (emprego) implementada, falta fechar
 
@@ -33,6 +33,7 @@ Commits `d6b76fbd..7f748fa4`, tudo na `main`, **nada pushado**. O desemprego e a
 
 0. **Fechar a camada C** (revisão e `npm run check`, ver o topo).
 1. **Camada C, partes seguintes**: valores, religião. A renda pela sobra está feita (30/out, só leitura): `app/partida/rendaViva.ts` move peso entre pobre/média/rica quando a sobra do perfil, em salários médios, muda desde o turno 0 (`GameState.valoresIniciais`, novo e opcional). Uma faixa por vez; só o censo usa, a eleição e os grupos não. Script: `scripts/teste/renda-viva.ts`. Visto na tela só no turno 0 (sem variação); o movimento está provado por teste e script, não jogando. Limite: a distância entre faixas é a das médias do início, e o rico quase não se move (chute de direção, calibragem).
+   **Valores feitos (30/out, só leitura):** `app/partida/valoresVivos.ts` move peso entre progressista, centro e conservador pela pressão do país desde o turno 0 (segurança, escolaridade, desigualdade; config em `mundo/populacao.json`, `mudancaDeValores`). Solto de propósito, a calibrar. Visto na tela só no turno 0 (sem variação); movimento provado por teste e por `scripts/teste/valores-vivos.ts`. **Falta da C: religião.** `npm run check` só ao fechar a camada C.
 2. **Ligar o bolso na satisfação** (hoje ele só aparece na tela, decisão de
    29/out). Tem desenho próprio; mexe no que já está calibrado.
 3. **Ponta solta do país em frases**: a Informalidade mostra "39 / 100" em vez

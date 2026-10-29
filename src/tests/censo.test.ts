@@ -185,4 +185,48 @@ describe("censo da população", () => {
       expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
     });
   });
+
+  describe("valores pela pressão do país", () => {
+    const inicio = () => partida().game.valoresIniciais!;
+    const valoresDoPerfil = (valores: Record<string, number>) =>
+      censoDoPais(partida().content, valores, inicio()).find(
+        (a) => a.id === "valores",
+      )!;
+    const variacao = (valores: Record<string, number>, id: string) =>
+      valoresDoPerfil(valores).faixas.find((f) => f.id === id)?.variacao ?? 0;
+
+    it("no início ninguém muda de valor e o país continua inteiro", () => {
+      const faixas = valoresDoPerfil(inicio()).faixas;
+      for (const f of faixas) expect(f.variacao, f.id).toBeUndefined();
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+    });
+
+    it("a sensação de segurança caindo empurra o país para o conservador", () => {
+      const valores = {
+        ...inicio(),
+        sensacao_seguranca: inicio().sensacao_seguranca - 30,
+      };
+      const faixas = valoresDoPerfil(valores).faixas;
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+      expect(variacao(valores, "conservador")).toBeGreaterThan(0);
+      expect(variacao(valores, "progressista")).toBeLessThan(0);
+    });
+
+    it("a escolaridade subindo empurra o país para o progressista", () => {
+      const valores = {
+        ...inicio(),
+        escolaridade: inicio().escolaridade + 30,
+      };
+      expect(variacao(valores, "progressista")).toBeGreaterThan(0);
+      expect(variacao(valores, "conservador")).toBeLessThan(0);
+    });
+
+    it("sem os valores do início os valores ficam como estão", () => {
+      const faixas = censoDoPais(partida().content, {
+        ...inicio(),
+        sensacao_seguranca: 0,
+      }).find((a) => a.id === "valores")!.faixas;
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+    });
+  });
 });
