@@ -5,6 +5,7 @@
  */
 import { createPackageContentIdentity } from "../../engine";
 import type { GameState } from "../../game/createGame";
+import { registrarInicioDoBolso } from "../../game/congresso/bolsoNaSatisfacao";
 import { carregarConteudo } from "./criar";
 import type { ModoPartida, Partida, Resultado } from "./tipos";
 
@@ -92,6 +93,7 @@ export function carregarPartida(texto: string): Resultado<{
       "Esta partida foi salva com outra versão das leis e regras do jogo e não pode ser carregada.",
     );
   const jogo = game as unknown as GameState;
+  registrarInicioDoBolso(content, jogo.valoresIniciais);
   return {
     ok: true,
     value: {

@@ -1411,6 +1411,7 @@ function TelaPrincipalCarregada({
         <PainelGrupos
           grupos={visao.grupos}
           aprovacao={aprovacao?.valor}
+          humor={visao.humor}
           variacoes={variacoes}
           selecionado={selecionado}
           onSelecionar={selecionar}

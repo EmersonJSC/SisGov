@@ -150,7 +150,8 @@ export function misturar(
 
 /**
  * Satisfação do perfil: média dos segmentos dele, pesada pelo peso do eixo
- * (como a aprovação, V1-08). Sem segmento, 50.
+ * (como a aprovação, V1-08), mais o que o bolso do perfil mudou desde o
+ * turno 0. Sem segmento, 50.
  */
 export function satisfacaoDoPerfil(
   perfil: PerfilDoEleitor,
@@ -164,7 +165,8 @@ export function satisfacaoDoPerfil(
     soma += w * (valores[s] ?? 50);
     pesos += w;
   }
-  return pesos > 0 ? soma / pesos : 50;
+  const base = pesos > 0 ? soma / pesos : 50;
+  return perfil.bolso ? Math.max(0, Math.min(100, base + perfil.bolso)) : base;
 }
 
 /**

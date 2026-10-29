@@ -19,7 +19,8 @@
         "agro-patronal": 2.0,
         "agricultura-familiar": -0.8,
         "aposentado": -0.2,
-        "fora": -0.2
+        "fora": -0.2,
+        "desempregado": -0.4
       }
     },
     "costumes": {

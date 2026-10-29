@@ -7,10 +7,14 @@
  * (V1-09) mostra os grupos de pressão.
  */
 import type { VisaoGrupo, VisaoMotivo, VisaoPressao } from "../../app/partida";
+import type { HumorDoPais } from "../../app/partida/tipos";
 import { Icone } from "./Icone";
 import { PainelPressao } from "./PainelPressao";
 import { ICONE_BOLHA, ICONE_LEI } from "./icones";
 import { corDaBondade } from "./intensidade";
+
+/** Fração em porcentagem inteira, sem zero à toa. */
+const pct = (f: number): string => `${Math.round(f * 100)}%`;
 
 function Motivo({
   motivo,
@@ -71,6 +75,7 @@ export const LARGURA_PAINEL_GRUPOS = 364;
 export function PainelGrupos({
   grupos,
   aprovacao,
+  humor,
   variacoes,
   selecionado,
   onSelecionar,
@@ -83,6 +88,8 @@ export function PainelGrupos({
 }: {
   grupos: readonly VisaoGrupo[];
   aprovacao?: number;
+  /** Radicais e lealistas do país (Grupos, passo 3). */
+  humor?: HumorDoPais;
   /** Quanto cada grupo mudou no último turno. */
   variacoes: ReadonlyMap<string, number>;
   selecionado: string | null;
@@ -114,7 +121,12 @@ export function PainelGrupos({
         <span>
           <strong>Eleitorado</strong>
           {aprovacao !== undefined ? (
-            <small>aprovação {Math.round(aprovacao)}%</small>
+            <small>
+              aprovação {Math.round(aprovacao)}%
+              {humor
+                ? ` · ${pct(humor.radicais)} contra · ${pct(humor.lealistas)} a favor`
+                : ""}
+            </small>
           ) : null}
         </span>
         <i aria-hidden="true">{aberto ? "‹" : "›"}</i>
@@ -182,6 +194,9 @@ export function PainelGrupos({
                           <strong>{g.nome}</strong>
                           <small>
                             {Math.round(g.peso * 100)}% do eleitorado
+                            {g.radicais >= 0.05 || g.lealistas >= 0.05
+                              ? ` · ${pct(g.radicais)} contra · ${pct(g.lealistas)} a favor`
+                              : ""}
                           </small>
                         </span>
                         <span className="grupo-valor" style={{ color: cor }}>

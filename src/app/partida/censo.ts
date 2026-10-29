@@ -1,8 +1,8 @@
 import type { ResolvedPackage } from "../../engine";
 import { congressoVivo } from "../../game/congresso/vivo";
 import { eleitoradoDoInicio } from "./bolso";
-import { eleitoradoComRendaViva } from "./rendaViva";
-import { eleitoradoComFaixasVivas } from "./faixasVivas";
+import { eleitoradoComRendaViva } from "../../game/congresso/rendaViva";
+import { eleitoradoComFaixasVivas } from "../../game/congresso/faixasVivas";
 import type { VisaoCensoAtributo } from "./tipos";
 
 /**

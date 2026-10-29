@@ -4,6 +4,7 @@ import { BOLHAS_DO_ORCAMENTO } from "./contas";
 import type { ResultadoDoCongresso } from "./tramitacao";
 import type { EleicaoNoTurno } from "./eleicao";
 import type { QuemPagou } from "./bolso";
+import type { HumorDoPais } from "../../game/congresso/polarizacao";
 
 export type Resultado<T> =
   { ok: true; value: T } | { ok: false; erros: readonly string[] };
@@ -306,6 +307,10 @@ export type VisaoGrupo = Readonly<{
    * está em vários segmentos, então as partes não somam 1.
    */
   peso: number;
+  /** Parte do grupo ativamente contra o governo, de 0 a 1. */
+  radicais: number;
+  /** Parte do grupo ativamente a favor do governo, de 0 a 1. */
+  lealistas: number;
   /** Eixo do segmento (renda, ocupação, religião…), para a tela agrupar. */
   eixo?: Readonly<{ id: string; nome: string; ordem: number }>;
   /** O que mais aumenta a satisfação, do maior para o menor. */
@@ -361,6 +366,8 @@ export type VisaoPartida = Readonly<{
   grupos: readonly VisaoGrupo[];
   /** O país repartido pelos atributos do eleitorado (Grupos, camada A). */
   censo: readonly VisaoCensoAtributo[];
+  /** Radicais, lealistas e o quanto o país está dividido (Grupos, passo 3). */
+  humor?: HumorDoPais;
   /**
    * De quantos perfis o censo saiu. É a prova de que ele conta gente perfil a
    * perfil, em vez de estimar por faixa.
@@ -672,3 +679,4 @@ export type VisaoBussola = Readonly<{
   fonte: string;
   semMedida: readonly Readonly<{ nome: string; motivo: string }>[];
 }>;
+export type { HumorDoPais } from "../../game/congresso/polarizacao";

@@ -3,6 +3,8 @@ import { contextNodeId } from "../../engine/model/lawNodes";
 import { valorNaMedida } from "./medida";
 import { fraseDaBolha } from "./frase";
 import { censoDoPais } from "./censo";
+import { pacoteVivo } from "../../game/congresso";
+import { humorDoPais } from "../../game/congresso/polarizacao";
 import { medidaDoPais } from "./regua";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
@@ -441,6 +443,10 @@ export function verPartida(partida: Partida): VisaoPartida {
     ];
   });
   const pressao = pressaoDaPartida(partida);
+  const eleitorado = pacoteVivo(partida.content, values);
+  const humor = eleitorado
+    ? humorDoPais(eleitorado.perfis, eleitorado.pesoDoSegmento, values)
+    : undefined;
   return {
     pais: content.manifest?.nome ?? "",
     cenario: content.initialState.cenario?.nome ?? content.manifest?.nome ?? "",
@@ -449,6 +455,7 @@ export function verPartida(partida: Partida): VisaoPartida {
     orcamento: linhasDoOrcamento(partida, values),
     grupos: gruposDaPartida(partida, values, alteradas),
     censo: censoDoPais(partida.content, values, game.valoresIniciais),
+    ...(humor ? { humor } : {}),
     perfis: partida.content.manifest.congresso?.perfis.length ?? 0,
     ocorrencias: ocorrenciasDaPartida(partida),
     ...(pressao ? { pressao } : {}),

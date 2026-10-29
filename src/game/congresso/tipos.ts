@@ -117,6 +117,8 @@ export type PerfilDoEleitor = Readonly<{
   atributos: Readonly<Record<string, string>>;
   segmentos: readonly string[];
   ponto: PontoDaBussola;
+  /** Pontos de satisfação que o bolso soma ou tira (`bolsoNaSatisfacao`). */
+  bolso?: number;
 }>;
 
 /** Cadeiras de cada bancada (e do partido do jogador) numa casa. */

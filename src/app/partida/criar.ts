@@ -1,3 +1,4 @@
+import { registrarInicioDoBolso } from "../../game/congresso/bolsoNaSatisfacao";
 import { createGame } from "../../game/createGame";
 import { criarEleicao } from "../../game/eleicao";
 import { prepareMonthlyContent } from "../../game/prepareMonthlyContent";
@@ -39,6 +40,7 @@ export function criarPartida(
     occurrences: opcoes.ocorrencias ?? true,
   });
   if (!game.ok) return falha(game.diagnostics);
+  registrarInicioDoBolso(content, game.value.valoresIniciais);
   const election =
     opcoes.eleicao === false
       ? undefined

@@ -3,19 +3,15 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 30/out/2026.**
+**Atualizado em 30/out/2026 (Grupos fechado em código).**
 
-## Camada C (emprego) implementada, falta fechar
+## Grupos fechado em código (30/out), falta o check e o push
 
-Commits `d6b76fbd..7f748fa4`, tudo na `main`, **nada pushado**. O desemprego e a informalidade movem o peso dos perfis (`src/game/congresso/vivo.ts`, função pura, sem estado novo); existe o valor "desempregado" e o grupo `grupo_desempregados`; o bolso, o censo (com variação desde o início), a eleição e o Congresso o enxergam. Detalhes e limites no [PLANO](PLANO.md), item 3.
+Tudo na `main`, **nada pushado**. Passos feitos hoje: (1) o bolso entra na satisfação do perfil (±10, só eleição e Congresso); (2) `pacoteVivo` usa o eleitorado inteiro vivo (emprego, renda, valores, religião), em cache por turno; (3) radicais e lealistas na tela (topo do painel Eleitorado e em cada grupo); (4) desempregado com ponto de economia. Limites (13) a (17) no PLANO, item 3. Visto na tela: "aprovação 45% · 11% contra · 6% a favor" e a mesma linha em cada grupo, sem erro de console.
 
-**Revisão independente feita** (29/out): dois achados importantes corrigidos (`4c76b242` seguro segue a lei; `e194a985` salário pela régua do início). Menores no PLANO, item 3. `npm run check` verde antes dessas duas correções (118 arquivos, 631 testes); depois delas rodaram só os testes vizinhos (81/81) e `tsc -b`.
+**Check (30/out):** `npm run check` rodou: 649/650, a única falha era `camadas.test` (UI importava `game/congresso/polarizacao`; corrigido pelo re-export em `app/partida/tipos.ts`, teste agora verde). **Falta só o `git push`, com a palavra do autor.**
 
-**Falta:** decidir o push (nada foi pushado) e escolher a próxima frente.
-
-**Menores ainda abertos (camada B):** salário médio negativo sem guarda; `MESES = 12` repetido; a prévia compara só o último mês; `censoDoPais(content)` sem valores devolve bolso zerado; "0%" nas ocupações pequenas.
-
-**Próximos itens (não abrir sem perguntar):** bolso na satisfação; ponta solta da Informalidade no país em frases; itens 4 e 5 do PLANO.
+**Próximos itens (não abrir sem perguntar):** ponta solta da Informalidade no país em frases; itens 4 e 5 do PLANO; piso do salário mínimo no bolso; antipartido/desgaste.
 
 ## (histórico) Os quatro achados da camada B, corrigidos em 29/out
 

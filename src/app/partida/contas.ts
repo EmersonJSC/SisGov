@@ -5,6 +5,10 @@ import {
 } from "../../engine";
 import { efficacyNodeId } from "../../engine/model/lawNodes";
 import { pacoteVivo } from "../../game/congresso";
+import {
+  fracaoDeLealistas,
+  fracaoDeRadicais,
+} from "../../game/congresso/polarizacao";
 import { calculateDerivedValue } from "../../engine/mechanisms/derivedVariables";
 import { interpolate } from "../../engine/mechanisms/calculateContribution";
 import type {
@@ -291,6 +295,8 @@ export function gruposDaPartida(
         nome: variable.nome,
         satisfacao: values[variable.id] ?? 0,
         peso: peso.get(variable.id) ?? 0,
+        radicais: fracaoDeRadicais(values[variable.id] ?? 0),
+        lealistas: fracaoDeLealistas(values[variable.id] ?? 0),
         ...(eixoDe.has(variable.id) ? { eixo: eixoDe.get(variable.id)! } : {}),
         gosta: maiores(motivos.filter((m) => m.pontos > 0)),
         odeia: maiores(motivos.filter((m) => m.pontos < 0)),

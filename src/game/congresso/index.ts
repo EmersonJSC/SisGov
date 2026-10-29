@@ -8,6 +8,9 @@ import type { CongressManifest } from "../../engine/model/contentTypes";
 import dadosDaBussola from "../../conteudo/bussola/congresso.json";
 import { referenciasDaBussola, type PontoDaBussola } from "../bussola";
 import { pressureGroups } from "../pressao";
+import { eleitoradoComFaixasVivas } from "./faixasVivas";
+import { eleitoradoComRendaViva } from "./rendaViva";
+import { ajusteDoBolso, inicioDoBolso } from "./bolsoNaSatisfacao";
 import { congressoVivo } from "./vivo";
 import {
   danoDasLeis,
@@ -100,8 +103,45 @@ export function pacoteVivo(
 ): CongressoDoPacote | undefined {
   const m = content.manifest.congresso;
   if (!m) return undefined;
-  const vivo = congressoVivo(m, valores);
-  return vivo === m ? congressoDoPacote(content) : pacoteDoManifesto(vivo);
+  const guardado = vivos.get(valores);
+  if (guardado && guardado.content === content) return guardado.pacote;
+  const pacote = montarPacoteVivo(content, m, valores);
+  if (pacote) vivos.set(valores, { content, pacote });
+  return pacote;
+}
+
+const vivos = new WeakMap<
+  object,
+  { content: ResolvedPackage; pacote: CongressoDoPacote }
+>();
+
+/**
+ * Com a tabela de bolso, o eleitorado inteiro anda: emprego, renda, valores e
+ * religião movem o peso dos perfis, e o bolso soma ou tira satisfação. Sem
+ * ela, só o emprego (`congressoVivo`).
+ */
+function montarPacoteVivo(
+  content: ResolvedPackage,
+  m: CongressManifest,
+  valores: Readonly<Record<string, number>>,
+): CongressoDoPacote | undefined {
+  const inicio = inicioDoBolso(content);
+  const eleitorado = eleitoradoComFaixasVivas(
+    eleitoradoComRendaViva(content, valores, inicio),
+    valores,
+    inicio,
+  );
+  if (!eleitorado) {
+    const vivo = congressoVivo(m, valores);
+    return vivo === m ? congressoDoPacote(content) : pacoteDoManifesto(vivo);
+  }
+  const pacote = pacoteDoManifesto(eleitorado.manifesto);
+  const ajuste = ajusteDoBolso(content, valores, eleitorado);
+  if (!ajuste || ajuste.length !== pacote.perfis.length) return pacote;
+  return {
+    ...pacote,
+    perfis: pacote.perfis.map((p, i) => ({ ...p, bolso: ajuste[i] })),
+  };
 }
 
 /** O pacote de um manifesto do congresso, com os perfis já com ponto. */
