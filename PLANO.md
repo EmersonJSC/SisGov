@@ -67,6 +67,15 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 10. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
 11. [ ] Índices essenciais e população: só o que faltar depois da economia em reais
 12. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
+    - **Chutes da população para conferir na calibragem** (lista única, 30/out; cada um também tem o aviso no próprio arquivo). Todos são de direção, sem dado:
+      - Multiplicadores de renda por ocupação × faixa (`mundo/populacao.json`, `bolso`): ancorados a olho na PNAD. Hoje o pobre com carteira ganha R$ 1.862/mês e paga 35% disso.
+      - **Piso**: a renda de quem está na faixa pobre deve seguir o salário mínimo da lei (hoje o mínimo é só um índice no motor e não entra no bolso).
+      - Imposto proporcional: o real é regressivo no consumo e progressivo na renda.
+      - Rótulo "sobra por mês": é renda depois do imposto, sem custo de vida; pode enganar.
+      - Empresário R$ 95 mil/mês de sobra: `lucros` repartido por 6,7% do eleitorado.
+      - Vulnerabilidade ao desemprego (`emprego.vulnerabilidade`) e os coeficientes das setas do desemprego.
+      - Renda pela sobra: a distância entre faixas é a das médias do início; o rico quase não se move.
+      - Valores e religião (`mudancas`): pesos e `forca` de cada fluxo; polarização e o caminho evangélico→sem religião não entraram.
 13. [ ] **O partido é uma coisa** (novo, 28/out): hoje o partido é só nome e sigla, embora a tela prometa "você não é o presidente, você é o partido". Falta o que ele defende (ideologia, alas internas), a disciplina da bancada e como isso aperta o jogador. O desgaste (item 5) é propriedade dele, não um número solto.
 14. [ ] **Montar o governo** (novo, 28/out): escolher vice e ministros. Hoje escolhe-se só o presidente, entre personagens gerados com biografia, opiniões, carisma e experiência. Não há chapa (vice não existe no código) e `occurrences.ts` ainda monta o texto do ministro a partir do nome da pasta — o comentário lá diz "até existirem ministros com nome". Os ministérios já existem no mapa; falta quem os ocupa.
 
