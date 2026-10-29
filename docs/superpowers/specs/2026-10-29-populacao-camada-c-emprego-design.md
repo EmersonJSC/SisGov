@@ -1,7 +1,6 @@
 # População, camada C (movimento): emprego
 
-> **Status: PROPOSTA (29/out/2026).** Desenho aprovado em conversa; aguardando
-> revisão da spec escrita. Item 3 do [PLANO](../../../PLANO.md). Mecânica-mãe:
+> **Status: IMPLEMENTADA (29/out/2026), aguardando revisão independente e `npm run check`.** Ver as emendas no fim. Item 3 do [PLANO](../../../PLANO.md). Mecânica-mãe:
 > [populacao.md](../../jogo/mecanicas/populacao.md).
 
 ## 1. Objetivo
@@ -132,3 +131,12 @@ e o bolso dos desempregados.
   quando forem preenchidos; hoje a direção está certa e os números são chute.
 - Estado vivo e salvamento: onde guardar as frações para sobreviver a salvar
   e carregar a partida.
+
+## 6. Emendas (o que mudou na implementação, 29/out)
+
+- **2.1 Estado:** não há fração guardada. O eleitorado vivo é função pura de `valores` e do conteúdo (`congressoVivo`), o que resolve o "estado vivo e salvamento" do item 5: o arquivo salvo não muda.
+- **2.1 Desempregado:** vira linha gêmea `desempregado` por perfil, com `vivo.origem` guardando de que ocupação saiu.
+- **2.4 Teto por turno:** não existe. A informalidade desloca peso por diferença da inicial (38,6), então nada se move no turno 0; o limite é o peso disponível em carteira com gêmeo.
+- **2.5 Seguro:** só para ex-carteira (`origemComBeneficio`); ex-informal desempregado tem renda 0.
+- **Vulnerabilidade (5):** valores em `mundo/populacao.json`, sem conferência com PNAD/Caged.
+- **Fora desta rodada, no PLANO:** `ProfileApproval` com perfis fixos, desalento, duração do seguro, `gosta`/`odeia` do grupo.
