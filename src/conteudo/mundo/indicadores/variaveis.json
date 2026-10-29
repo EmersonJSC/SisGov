@@ -1419,7 +1419,7 @@
     },
     {
       "id": "taxa_natalidade",
-      "tipo": "controle",
+      "tipo": "calculado",
       "nome": "Taxa de natalidade",
       "unidade": "por mil por ano",
       "dominio": { "minimo": 0, "maximo": 60 },

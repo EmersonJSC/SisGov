@@ -15,7 +15,9 @@ Tudo na `main` e pushado (`f74f0849`). Passos feitos hoje: (1) o bolso entra na 
 
 **Item 4 fechado (30/out):** `taxa_mortalidade` virou calculado, com seta de `saude_populacao` (coef −0,3, termo 29,62, atraso 1; neutra no início). Pandemia agora mata (+3‰). Mexer no coeficiente pede refazer o termo (o motor não escala o termo pela população). Falta o `npm run check`.
 
-**Próximos itens (não abrir sem perguntar):** item 5 do PLANO (Natalidade órfã); piso do salário mínimo no bolso; antipartido/desgaste.
+**Item 5 fechado (30/out):** `taxa_natalidade` virou calculado, com seta da fecundidade (`natalidade`, coef 0,2446, termo 6,115, atraso 1; neutra: 12‰). Política de natalidade intensa agora sobe a taxa e a população. `populacaoEmPessoas.test` ajustado (natalidade e mortalidade são calculadas; o teste as derruba a cada turno). Falta o `npm run check` dos itens 2, 4 e 5.
+
+**Próximos itens (não abrir sem perguntar):** item 6 do PLANO (o jogo percebe padrões); piso do salário mínimo no bolso; antipartido/desgaste.
 
 ## (histórico) Os quatro achados da camada B, corrigidos em 29/out
 
@@ -37,7 +39,7 @@ Tudo na `main` e pushado (`f74f0849`). Passos feitos hoje: (1) o bolso entra na 
 2. **Ligar o bolso na satisfação** (hoje ele só aparece na tela, decisão de
    29/out). Tem desenho próprio; mexe no que já está calibrado.
 3. (feito) Ponta solta da Informalidade.
-4. (feito) Saúde → mortalidade. **Item 5**: a bolha órfã da Natalidade.
+4. (feito) Saúde → mortalidade. 5. (feito) Natalidade.
 
 ## O que fechou nesta rodada
 

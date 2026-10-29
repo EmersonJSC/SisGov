@@ -1737,6 +1737,7 @@
     "mundo/consequencias/pib-ano-anterior--crescimento-real.json",
     "mundo/consequencias/transicao-demografica--envelhecimento.json",
     "mundo/consequencias/taxa-natalidade--populacao.json",
+    "mundo/consequencias/natalidade--taxa-natalidade.json",
     "mundo/consequencias/taxa-mortalidade--populacao.json",
     "mundo/consequencias/saude-populacao--taxa-mortalidade.json",
     "mundo/consequencias/taxa-juros--juros-hiato.json",

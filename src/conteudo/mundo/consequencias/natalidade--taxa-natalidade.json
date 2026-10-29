@@ -1,0 +1,17 @@
+{
+  "id": "natalidade--taxa-natalidade",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "natalidade",
+  "alvo": "taxa_natalidade",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": 0.2446,
+    "termoConstante": 6.115
+  },
+  "unidade": "por mil por ano",
+  "atrasoPassos": 1,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

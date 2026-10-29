@@ -16,11 +16,14 @@ describe("população", () => {
     for (let i = 0; i < 4; i++) partida = turno(partida);
     expect(partida.game.execution.values.populacao).toBeGreaterThan(inicial);
 
-    const valores = partida.game.execution.values as Record<string, number>;
-    valores.taxa_natalidade = 5;
-    valores.taxa_mortalidade = 20;
     const antesDaQueda = partida.game.execution.values.populacao;
-    for (let i = 0; i < 4; i++) partida = turno(partida);
+    // natalidade e mortalidade são calculadas: o teste as derruba a cada turno
+    for (let i = 0; i < 4; i++) {
+      const valores = partida.game.execution.values as Record<string, number>;
+      valores.natalidade = 0;
+      valores.saude_populacao = 0;
+      partida = turno(partida);
+    }
     expect(partida.game.execution.values.populacao).toBeLessThan(antesDaQueda);
   });
 });
