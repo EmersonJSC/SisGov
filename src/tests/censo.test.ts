@@ -151,4 +151,38 @@ describe("censo da população", () => {
     expect(aposentados).not.toHaveProperty("variacao");
     expect(renda.faixas.length).toBeGreaterThan(0);
   });
+
+  describe("renda pela sobra", () => {
+    const inicio = () => partida().game.valoresIniciais!;
+    const renda = (valores: Record<string, number>) =>
+      censoDoPais(partida().content, valores, inicio()).find(
+        (a) => a.id === "renda",
+      )!;
+
+    it("no início ninguém muda de faixa e o país continua inteiro", () => {
+      const faixas = renda(inicio()).faixas;
+      for (const f of faixas) expect(f.variacao, f.id).toBeUndefined();
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+    });
+
+    it("imposto de renda maior tira gente de cima: os pobres crescem e os ricos encolhem", () => {
+      const faixas = renda({
+        ...inicio(),
+        arrecadacao_renda_pessoas: inicio().arrecadacao_renda_pessoas * 3,
+      }).faixas;
+      const variacao = (id: string) =>
+        faixas.find((f) => f.id === id)?.variacao ?? 0;
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+      expect(variacao("pobre")).toBeGreaterThan(0);
+      expect(variacao("rica")).toBeLessThanOrEqual(0);
+    });
+
+    it("sem os valores do início a renda fica como está", () => {
+      const faixas = censoDoPais(partida().content, {
+        ...inicio(),
+        desemprego: 25,
+      }).find((a) => a.id === "renda")!.faixas;
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+    });
+  });
 });

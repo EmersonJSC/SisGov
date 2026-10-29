@@ -57,6 +57,11 @@ export type GameState = Readonly<{
   bills?: EstadoDaTramitacao;
   /** Partido, presidente, pesquisas e eleições (V1-39); ausente sem eleição no país. */
   election?: EstadoDaEleicao;
+  /**
+   * Os valores do turno 0. A renda dos perfis se move pela sobra desde aqui
+   * (População, camada C); ausente em partida salva antes disso.
+   */
+  valoresIniciais?: Readonly<Record<string, number>>;
   execution: EngineExecution;
 }>;
 
@@ -322,6 +327,7 @@ export function createGame(
       ...(pressure ? { pressure } : {}),
       compass,
       ...(congress ? { congress } : {}),
+      valoresIniciais: execution.values,
       execution,
     },
   };

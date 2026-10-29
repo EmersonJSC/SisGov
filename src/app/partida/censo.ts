@@ -1,6 +1,7 @@
 import type { ResolvedPackage } from "../../engine";
 import { congressoVivo } from "../../game/congresso/vivo";
-import { bolsosDoEleitorado, eleitoradoDoInicio } from "./bolso";
+import { eleitoradoDoInicio } from "./bolso";
+import { eleitoradoComRendaViva } from "./rendaViva";
 import type { VisaoCensoAtributo } from "./tipos";
 
 /**
@@ -18,12 +19,14 @@ import type { VisaoCensoAtributo } from "./tipos";
 export function censoDoPais(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>> = {},
+  valoresIniciais?: Readonly<Record<string, number>>,
 ): readonly VisaoCensoAtributo[] {
   const fixo = content.manifest.congresso;
   if (!fixo) return [];
   // O eleitorado de agora: o desemprego e a informalidade do motor movem o
   // peso dos perfis (camada C), e o desempregado é uma faixa de ocupação.
-  const eleitorado = bolsosDoEleitorado(content, valores);
+  // A renda se move pela sobra desde o turno 0 (`valoresIniciais`).
+  const eleitorado = eleitoradoComRendaViva(content, valores, valoresIniciais);
   const congresso = eleitorado?.manifesto ?? congressoVivo(fixo, valores);
   const {
     atributos,
