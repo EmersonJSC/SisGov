@@ -12,7 +12,7 @@ Commits `d6b76fbd..7f748fa4`, tudo na `main`, **nada pushado**. O desemprego e a
 **Falta, nesta ordem:**
 
 1. **Revisão independente** da camada C: o subagente falhou por limite de sessão (reseta 4:30). Reenviar, ou aceitar a revisão do mesmo contexto. Pontos: conservação, divisão por zero, alinhamento fixo×vivo, desempenho de `pacoteVivo`, `desempregado` em tabelas de ocupação fixa (bússola, comparecimento, `pontoDoPerfil`).
-2. **`npm run check` completo** (~24 min, uma vez), ainda não rodou sobre a C. Só depois marcar o item 3 do PLANO.
+2. ~~`npm run check`~~ verde sobre a C: 118 arquivos, 631 testes.
 3. Apagar `.superpowers/sdd/2026-10-29-populacao-camada-c-emprego/` e decidir o push.
 
 **Menores ainda abertos (camada B):** salário médio negativo sem guarda; `MESES = 12` repetido; a prévia compara só o último mês; `censoDoPais(content)` sem valores devolve bolso zerado; "0%" nas ocupações pequenas.
