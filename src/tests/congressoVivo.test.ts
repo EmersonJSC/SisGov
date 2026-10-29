@@ -6,7 +6,17 @@
  */
 import { describe, expect, it } from "vitest";
 import type { CongressManifest } from "../engine/model/contentTypes";
-import { criarPartida } from "../app/partida";
+import {
+  carregarPartida,
+  criarPartida,
+  salvarPartida,
+  verPartida,
+} from "../app/partida";
+import {
+  congressoDoPacote,
+  eleicaoComJogador,
+  pacoteVivo,
+} from "../game/congresso";
 import { congressoVivo, origemDoDesempregado } from "../game/congresso/vivo";
 
 let guardado: CongressManifest | undefined;
@@ -227,5 +237,61 @@ describe("o eleitorado vivo: sem a tabela", () => {
     const m = manifesto();
     const vivo = congressoVivo(m, { desemprego: Number.NaN });
     expect(soma(vivo)).toBeCloseTo(soma(m), 9);
+  });
+});
+
+describe("o pacote vivo: eleição e Congresso", () => {
+  const conteudo = () => {
+    const criada = criarPartida({ ocorrencias: false, eleicao: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    return criada.value.content;
+  };
+  const pesoTotal = (p: { perfis: readonly { peso: number }[] }) =>
+    p.perfis.reduce((t, x) => t + x.peso, 0);
+  const pesoDoGrupo = (p: {
+    perfis: readonly { peso: number; segmentos: readonly string[] }[];
+  }) =>
+    p.perfis
+      .filter((x) => x.segmentos.includes("grupo_desempregados"))
+      .reduce((t, x) => t + x.peso, 0);
+
+  it("o eleitorado vivo soma o mesmo que o fixo", () => {
+    const c = conteudo();
+    expect(
+      pesoTotal(pacoteVivo(c, { desemprego: 20, informalidade: 50 })!),
+    ).toBeCloseTo(pesoTotal(congressoDoPacote(c)!), 9);
+  });
+
+  it("desemprego maior dá mais peso político ao desempregado", () => {
+    const c = conteudo();
+    const peso = (desemprego: number) =>
+      pesoDoGrupo(pacoteVivo(c, { desemprego, informalidade: 38.6 })!);
+    expect(peso(25)).toBeGreaterThan(peso(6));
+    expect(peso(0)).toBe(0);
+    // os perfis fixos da partida não têm ninguém no grupo
+    expect(pesoDoGrupo(congressoDoPacote(c)!)).toBe(0);
+  });
+
+  it("no país de partida a eleição quase não muda com o eleitorado vivo", () => {
+    const c = conteudo();
+    const ponto = { economia: 0, costumes: 0 };
+    const vs = { desemprego: 6.2, informalidade: 38.6 };
+    const fixo = eleicaoComJogador(congressoDoPacote(c)!, ponto, vs);
+    const vivo = eleicaoComJogador(pacoteVivo(c, vs)!, ponto, vs);
+    for (const [id, fatia] of Object.entries(fixo.fatias))
+      expect(Math.abs(vivo.fatias[id] - fatia)).toBeLessThan(0.03);
+  });
+
+  it("partida salva carrega e mostra o desempregado no censo", () => {
+    const criada = criarPartida({ ocorrencias: false, eleicao: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    const lida = carregarPartida(salvarPartida(criada.value));
+    if (!lida.ok) throw new Error(lida.erros.join(" "));
+    const ocupacao = verPartida(lida.value.partida).censo.find(
+      (a) => a.id === "ocupacao",
+    )!;
+    expect(
+      ocupacao.faixas.some((f) => f.id === "desempregado" && f.parte > 0),
+    ).toBe(true);
   });
 });

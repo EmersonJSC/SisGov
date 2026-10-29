@@ -12,6 +12,7 @@ import {
   type Partida,
 } from "../app/partida";
 import { profileApproval } from "../engine/mechanisms/profileApproval";
+import { pacoteVivo } from "../game/congresso";
 
 function nova(): Partida {
   const criada = criarPartida({ ocorrencias: false });
@@ -39,6 +40,15 @@ describe("SG143 — grupos sociais", () => {
   for (const perfil of aprovacao.perfis)
     for (const id of perfil.segmentos)
       pesos.set(id, (pesos.get(id) ?? 0) + perfil.peso);
+  // O peso que a lista mostra é o do eleitorado vivo (camada C), onde o
+  // desempregado existe e o desemprego de agora já tirou peso de quem trabalha.
+  const pesosVivos = new Map<string, number>();
+  for (const perfil of pacoteVivo(
+    partida.content,
+    partida.game.execution.values,
+  )!.perfis)
+    for (const id of perfil.segmentos)
+      pesosVivos.set(id, (pesosVivos.get(id) ?? 0) + perfil.peso);
 
   it("vinte e um segmentos; todos nos perfis do eleitorado, menos o dos desempregados", () => {
     expect(grupos).toHaveLength(21);
@@ -114,7 +124,7 @@ describe("SG143 — grupos sociais", () => {
         visao.grupos[i].satisfacao,
       );
     for (const g of visao.grupos) {
-      expect(g.peso).toBeCloseTo(pesos.get(g.id) ?? 0, 9);
+      expect(g.peso).toBeCloseTo(pesosVivos.get(g.id) ?? 0, 9);
       expect(g.satisfacao).toBeCloseTo(
         grupos.find((b) => b.id === g.id)!.valor,
         9,

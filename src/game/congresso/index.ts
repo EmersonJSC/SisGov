@@ -4,9 +4,11 @@
  * usada no V1-12) e trocam cadeiras durante o mandato (camada 3).
  */
 import type { ResolvedPackage } from "../../engine";
+import type { CongressManifest } from "../../engine/model/contentTypes";
 import dadosDaBussola from "../../conteudo/bussola/congresso.json";
 import { referenciasDaBussola, type PontoDaBussola } from "../bussola";
 import { pressureGroups } from "../pressao";
+import { congressoVivo } from "./vivo";
 import {
   danoDasLeis,
   dhondt,
@@ -81,6 +83,29 @@ export function congressoDoPacote(
     cache.set(content, null);
     return undefined;
   }
+  const pacote = pacoteDoManifesto(m);
+  cache.set(content, pacote);
+  return pacote;
+}
+
+/**
+ * O Congresso do pacote com o eleitorado de agora (`congressoVivo`): o
+ * desemprego e a informalidade do motor movem o peso dos perfis, e o
+ * desempregado vota. O pacote fixo segue sendo o das bancadas e da composição
+ * inicial; quem lê o eleitor de um turno pergunta por este.
+ */
+export function pacoteVivo(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): CongressoDoPacote | undefined {
+  const m = content.manifest.congresso;
+  if (!m) return undefined;
+  const vivo = congressoVivo(m, valores);
+  return vivo === m ? congressoDoPacote(content) : pacoteDoManifesto(vivo);
+}
+
+/** O pacote de um manifesto do congresso, com os perfis já com ponto. */
+function pacoteDoManifesto(m: CongressManifest): CongressoDoPacote {
   const regras = m.regras as unknown as RegrasDoCongresso;
   const perfis = m.perfis.map((linha) => {
     const atributos: Record<string, string> = {};
@@ -97,15 +122,13 @@ export function congressoDoPacote(
       ponto: pontoDoPerfil(regras, atributos),
     };
   });
-  const pacote: CongressoDoPacote = {
+  return {
     regras,
     casas: m.casas,
     perfis,
     pesoDoSegmento: m.pesoDoSegmento,
     bancadas: bancadas(),
   };
-  cache.set(content, pacote);
-  return pacote;
 }
 
 const candidatosDas = (lista: readonly Bancada[]): Candidato[] =>
@@ -197,7 +220,7 @@ export function passarTurnoNoCongresso(input: {
   turno: number;
 }): EstadoDoCongresso {
   const { content, estado, valores, pontoDoJogador, turno } = input;
-  const pacote = congressoDoPacote(content);
+  const pacote = pacoteVivo(content, valores);
   if (!pacote) return estado;
   const leis = controlesDeLei(content);
   const influencia: Record<string, number> = { ...estado.influencia };
@@ -269,7 +292,7 @@ export function retratoDoCongresso(input: {
   pontoDoJogador: PontoDaBussola;
 }): readonly RetratoDaBancada[] {
   const { content, estado, valores, pontoDoJogador } = input;
-  const pacote = congressoDoPacote(content);
+  const pacote = pacoteVivo(content, valores);
   if (!pacote) return [];
   const eleicao = eleicaoComJogador(pacote, pontoDoJogador, valores);
   const satisfacao = pacote.perfis.map((p) =>

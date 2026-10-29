@@ -19,6 +19,7 @@ import {
   chanceDeSim,
   congressoDoPacote,
   danoDasLeis,
+  pacoteVivo,
   retratoDoCongresso,
   satisfacaoDoPerfil,
   type CongressoDoPacote,
@@ -139,7 +140,9 @@ function prever(
   );
   let soma = 0;
   let pesos = 0;
-  for (const perfil of pacote.perfis) {
+  // O eleitor de agora (camada C): o desempregado também opina sobre a lei.
+  const eleitorado = pacoteVivo(content, sem) ?? pacote;
+  for (const perfil of eleitorado.perfis) {
     soma +=
       perfil.peso *
       (satisfacaoDoPerfil(perfil, pacote.pesoDoSegmento, com) -

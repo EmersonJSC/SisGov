@@ -11,6 +11,7 @@ import dadosDosPersonagens from "../../conteudo/mundo/personagens.json";
 import { distancia, type PontoDaBussola } from "../bussola";
 import {
   congressoDoPacote,
+  pacoteVivo,
   dhondt,
   eleicaoComJogador,
   maioresRestos,
@@ -158,7 +159,7 @@ export function criarEleicao(input: {
   congresso?: EstadoDoCongresso;
 }): EstadoDaEleicao | undefined {
   const pais = eleicaoDoPais(input.pais);
-  const pacote = congressoDoPacote(input.content);
+  const pacote = pacoteVivo(input.content, input.valores);
   if (!pais || !pacote) return undefined;
   const sorte = criarSorte(input.semente);
   const escolha = gerarEscolha(mundoDosPersonagens, pais, sorte);
@@ -378,7 +379,7 @@ export function renovarCongresso(input: {
   pontoDoJogador: PontoDaBussola;
   mandato: number;
 }): EstadoDoCongresso {
-  const pacote = congressoDoPacote(input.content);
+  const pacote = pacoteVivo(input.content, input.valores);
   if (!pacote) return input.estado;
   const agora = eleicaoComJogador(pacote, input.pontoDoJogador, input.valores);
   const casas: Record<string, Cadeiras> = {};
@@ -435,7 +436,7 @@ export function passarTurnoNaEleicao(input: {
   turno: number;
 }): FimDoTurno {
   const pais = eleicaoDoPais(input.pais);
-  const pacote = congressoDoPacote(input.content);
+  const pacote = pacoteVivo(input.content, input.valores);
   if (!pais || !pacote) return { estado: input.estado, encerrada: false };
   let estado = input.estado;
   const sorte = sorteDe(estado);

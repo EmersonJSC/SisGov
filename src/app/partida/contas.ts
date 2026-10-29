@@ -4,6 +4,7 @@ import {
   type ResolvedPackage,
 } from "../../engine";
 import { efficacyNodeId } from "../../engine/model/lawNodes";
+import { pacoteVivo } from "../../game/congresso";
 import { calculateDerivedValue } from "../../engine/mechanisms/derivedVariables";
 import { interpolate } from "../../engine/mechanisms/calculateContribution";
 import type {
@@ -224,8 +225,12 @@ export function gruposDaPartida(
   // Parte do eleitorado de cada segmento: a soma dos perfis em que ele entra
   // (V1-08). Um eleitor está em vários segmentos; as partes não somam 1.
   const aprovacao = content.manifest.aprovacaoPorPerfis;
+  // Do eleitorado de agora (camada C): o desempregado tem grupo, e o peso dele
+  // cresce com o desemprego. Sem Congresso no país, os perfis fixos da aprovação.
   const peso = new Map<string, number>();
-  for (const perfil of aprovacao?.perfis ?? [])
+  const eleitores =
+    pacoteVivo(content, values)?.perfis ?? aprovacao?.perfis ?? [];
+  for (const perfil of eleitores)
     for (const id of perfil.segmentos)
       peso.set(id, (peso.get(id) ?? 0) + perfil.peso);
   const eixoDe = new Map(
