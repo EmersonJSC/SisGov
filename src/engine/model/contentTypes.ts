@@ -139,6 +139,14 @@ export type CongressManifest = {
    * faixa de renda (`mundo/populacao.json`, População camada B).
    */
   /**
+   * Só no eleitorado vivo (`congressoVivo`): as linhas de desempregados vêm
+   * depois das originais, e `origem` diz de que ocupação cada uma saiu.
+   */
+  vivo?: Readonly<{
+    primeiraLinhaDeDesempregado: number;
+    origem: readonly string[];
+  }>;
+  /**
    * Quem perde o emprego primeiro e o que o desempregado recebe
    * (`mundo/populacao.json`, População camada C).
    */
@@ -148,6 +156,8 @@ export type CongressManifest = {
       renda: Readonly<Record<string, number>>;
       idade: Readonly<Record<string, number>>;
     }>;
+    /** Quais ocupações trocam peso quando a informalidade muda. */
+    ocupacoes: Readonly<{ formal: string; informal: string }>;
     /** Informalidade dos perfis de partida (do país); a camada só segue a diferença. */
     informalidadeInicial: number;
     desempregado: Readonly<{

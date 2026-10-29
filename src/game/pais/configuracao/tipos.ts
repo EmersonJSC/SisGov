@@ -152,6 +152,7 @@ export type PopulacaoDoMundo = {
       renda: Record<string, number>;
       idade: Record<string, number>;
     };
+    ocupacoes: { formal: string; informal: string };
     desempregado: { id: string; origemComBeneficio: string[] };
   };
   /** De onde vem o dinheiro de cada perfil (População camada B). */
