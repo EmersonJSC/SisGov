@@ -272,6 +272,39 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     for (const i of de("informal")) expect(bolsos[i].ganha).toBe(0);
   });
 
+  it("o seguro do ex-carteira segue o nível da lei do seguro-desemprego", () => {
+    // O motor paga base_seguro_desemprego × a curva da lei (0 em 'nenhum',
+    // 1,75× no generoso). Ler o benefício cru deixava a lei sem bater no
+    // bolso de ninguém.
+    const ganhoDoExCarteira = (nivel: number): number => {
+      const vs: Record<string, number> = {
+        ...vs0(),
+        desemprego: 15,
+        nivel_seguro_desemprego: nivel,
+      };
+      const { manifesto, bolsos } = bolsosDoEleitorado(pacote(), vs)!;
+      const primeira = manifesto.vivo!.primeiraLinhaDeDesempregado;
+      const i = manifesto.vivo!.origem.indexOf("carteira") + primeira;
+      return bolsos[i].ganha;
+    };
+    const padrao = ganhoDoExCarteira(75);
+    expect(padrao).toBeGreaterThan(0);
+    expect(ganhoDoExCarteira(0)).toBe(0);
+    expect(ganhoDoExCarteira(100)).toBeCloseTo(padrao * 1.75, 6);
+    expect(ganhoDoExCarteira(50)).toBeCloseTo(padrao * 0.6, 6);
+  });
+
+  it("a curva do seguro no bolso é a mesma do gasto da lei", () => {
+    // A curva vive em dois lugares (lei e tabela de fontes); se uma mudar
+    // sozinha, o bolso mente sobre o orçamento.
+    const fonte = pacote().manifest.congresso!.bolso!.fontes.desempregado;
+    const gasto = pacote().consequences.find(
+      (c) => c.id === "seguro-desemprego--gasto-publico",
+    ) as unknown as { parametros: { pontos?: unknown } } | undefined;
+    expect(fonte.curva?.nivel).toBe("nivel_seguro_desemprego");
+    expect(fonte.curva?.pontos).toEqual(gasto?.parametros.pontos);
+  });
+
   it("a massa salarial continua fechando com o desemprego em 15", () => {
     const vs: Record<string, number> = { ...vs0(), desemprego: 15 };
     const { manifesto } = bolsosDoEleitorado(pacote(), vs)!;

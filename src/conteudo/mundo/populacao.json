@@ -217,7 +217,17 @@
       "desempregado": {
         "nome": "Desempregados",
         "trabalha": false,
-        "beneficio": "beneficio_anual_seguro_desemprego"
+        "beneficio": "beneficio_anual_seguro_desemprego",
+        "curva": {
+          "nivel": "nivel_seguro_desemprego",
+          "pontos": [
+            [0, 0],
+            [25, 0],
+            [50, 0.6],
+            [75, 1],
+            [100, 1.75]
+          ]
+        }
       }
     }
   },

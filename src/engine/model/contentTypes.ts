@@ -180,6 +180,14 @@ export type CongressManifest = {
           beneficio?: string;
           /** Variável de 0 a 100 que o motor multiplica no benefício (reajuste). */
           reajuste?: string;
+          /**
+           * Curva da lei que multiplica o benefício pelo nível dela (os mesmos
+           * pontos do gasto da lei): o seguro-desemprego 0 no "nenhum".
+           */
+          curva?: Readonly<{
+            nivel: string;
+            pontos: readonly (readonly [number, number])[];
+          }>;
         }>
       >
     >;

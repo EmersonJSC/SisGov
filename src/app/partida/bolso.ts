@@ -1,5 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
 import type { CongressManifest } from "../../engine/model/contentTypes";
+import { interpolate } from "../../engine/mechanisms/calculateContribution";
 import { congressoVivo, origemDoDesempregado } from "../../game/congresso/vivo";
 
 /**
@@ -108,15 +109,21 @@ export function rendasDoManifesto(
  * reajuste e fazia a lei de reajuste de benefícios não bater em ninguém.
  */
 function beneficioDaFonte(
-  fonte: { beneficio?: string; reajuste?: string } | undefined,
+  fonte: BolsoFonte | undefined,
   valores: Readonly<Record<string, number>>,
 ): number {
   if (!fonte?.beneficio) return 0;
   const valor = numero(valores, fonte.beneficio);
-  return fonte.reajuste
+  const reajustado = fonte.reajuste
     ? (valor * numero(valores, fonte.reajuste)) / POR_CENTO
     : valor;
+  return fonte.curva
+    ? reajustado *
+        interpolate(fonte.curva.pontos, numero(valores, fonte.curva.nivel))
+    : reajustado;
 }
+
+type BolsoFonte = NonNullable<CongressManifest["bolso"]>["fontes"][string];
 
 export type BolsoDoPerfil = Readonly<{
   fonte: Fonte;

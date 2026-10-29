@@ -167,6 +167,7 @@ export type PopulacaoDoMundo = {
         porRenda?: Record<string, number>;
         beneficio?: string;
         reajuste?: string;
+        curva?: { nivel: string; pontos: [number, number][] };
       }
     >;
   };
