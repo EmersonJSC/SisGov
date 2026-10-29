@@ -40,7 +40,12 @@ export function valorReal(valor: number): string {
 
 type ComMedida = Readonly<{
   unidade: string;
-  medida?: Readonly<{ convertida: boolean; zero?: number; cem?: number }>;
+  medida?: Readonly<{
+    convertida: boolean;
+    unidade?: string;
+    zero?: number;
+    cem?: number;
+  }>;
 }>;
 
 const escalaReal = (b: ComMedida) =>
@@ -50,12 +55,17 @@ const escalaReal = (b: ComMedida) =>
     ? { zero: b.medida.zero, passo: (b.medida.cem - b.medida.zero) / 100 }
     : undefined;
 
+/** Índice 0–100 cuja medida real é uma porcentagem: o ponto já é o por cento. */
+export const jaEPorcento = (b: ComMedida) =>
+  b.unidade === "indice_0_100" &&
+  b.medida?.convertida === false &&
+  b.medida.unidade?.startsWith("%");
+
 /** Valor da bolha como o jogador lê: na medida real quando há (V1-07). */
 export function valorNaTela(b: ComMedida, valor: number): string {
   const e = escalaReal(b);
-  return e
-    ? valorReal(e.zero + e.passo * valor)
-    : valorDaBolha(valor, b.unidade);
+  if (e) return valorReal(e.zero + e.passo * valor);
+  return valorDaBolha(valor, jaEPorcento(b) ? "percentual_0_100" : b.unidade);
 }
 
 /** Variação em pontos do motor convertida para a medida real, com sinal real. */

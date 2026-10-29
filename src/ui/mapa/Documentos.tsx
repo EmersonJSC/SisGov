@@ -30,6 +30,7 @@ import {
   moeda,
   nivelDaLei,
   diferencaNaTela,
+  jaEPorcento,
   valorDaBolha,
   valorNaTela,
   variacaoReal,
@@ -1444,8 +1445,8 @@ export function DocumentoBolha({
           </span>
         ) : null}
       </div>
-      {bolha.medida?.convertida ? (
-        <p className="nota medida-boletim">Em {bolha.medida.unidade}.</p>
+      {bolha.medida?.convertida || jaEPorcento(bolha) ? (
+        <p className="nota medida-boletim">Em {bolha.medida?.unidade}.</p>
       ) : null}
       <Regua bolha={bolha} />
       <p className="nota">{avaliacao}.</p>

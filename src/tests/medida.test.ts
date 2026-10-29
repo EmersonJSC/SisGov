@@ -64,5 +64,11 @@ describe("medida real do índice (V1-07)", () => {
     expect(diferencaNaTela(feminicidio, 10)).toBe("−0,5");
     const pobreza = { unidade: "percentual_0_100" };
     expect(valorNaTela(pobreza, 27.4)).toBe("27,4%");
+    // índice 0–100 cuja medida é um por cento: o ponto já é o por cento
+    const informalidade = {
+      unidade: "indice_0_100",
+      medida: { convertida: false, unidade: "% de ocupados informais" },
+    };
+    expect(valorNaTela(informalidade, 38.6)).toBe("38,6%");
   });
 });

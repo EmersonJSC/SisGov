@@ -3,15 +3,17 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 30/out/2026 (Grupos fechado em código).**
+**Atualizado em 30/out/2026 (Grupos fechado e pushado; país em frases fechado).**
 
-## Grupos fechado em código (30/out), falta o check e o push
+## Grupos fechado (30/out), pushado
 
-Tudo na `main`, **nada pushado**. Passos feitos hoje: (1) o bolso entra na satisfação do perfil (±10, só eleição e Congresso); (2) `pacoteVivo` usa o eleitorado inteiro vivo (emprego, renda, valores, religião), em cache por turno; (3) radicais e lealistas na tela (topo do painel Eleitorado e em cada grupo); (4) desempregado com ponto de economia. Limites (13) a (17) no PLANO, item 3. Visto na tela: "aprovação 45% · 11% contra · 6% a favor" e a mesma linha em cada grupo, sem erro de console.
+Tudo na `main` e pushado (`f74f0849`). Passos feitos hoje: (1) o bolso entra na satisfação do perfil (±10, só eleição e Congresso); (2) `pacoteVivo` usa o eleitorado inteiro vivo (emprego, renda, valores, religião), em cache por turno; (3) radicais e lealistas na tela (topo do painel Eleitorado e em cada grupo); (4) desempregado com ponto de economia. Limites (13) a (17) no PLANO, item 3. Visto na tela: "aprovação 45% · 11% contra · 6% a favor" e a mesma linha em cada grupo, sem erro de console.
 
-**Check (30/out):** `npm run check` rodou: 649/650, a única falha era `camadas.test` (UI importava `game/congresso/polarizacao`; corrigido pelo re-export em `app/partida/tipos.ts`, teste agora verde). **Falta só o `git push`, com a palavra do autor.**
+**Check (30/out):** `npm run check` rodou: 649/650, a única falha era `camadas.test` (UI importava `game/congresso/polarizacao`; corrigido pelo re-export em `app/partida/tipos.ts`, teste agora verde).
 
-**Próximos itens (não abrir sem perguntar):** ponta solta da Informalidade no país em frases; itens 4 e 5 do PLANO; piso do salário mínimo no bolso; antipartido/desgaste.
+**País em frases fechado (30/out):** a Informalidade mostra "38,6%" e "Em % de ocupados informais" (`jaEPorcento` em `formatos.ts`; teste em `medida.test.ts`; visto no boletim).
+
+**Próximos itens (não abrir sem perguntar):** itens 4 e 5 do PLANO; piso do salário mínimo no bolso; antipartido/desgaste.
 
 ## (histórico) Os quatro achados da camada B, corrigidos em 29/out
 
@@ -32,9 +34,7 @@ Tudo na `main`, **nada pushado**. Passos feitos hoje: (1) o bolso entra na satis
    **Valores e religião feitos (30/out, só leitura):** `app/partida/faixasVivas.ts` move peso entre faixas por fluxos declarados em `mundo/populacao.json` (`mudancas`), pela pressão do país desde o turno 0. Valores: segurança, escolaridade, desigualdade. Religião: fluxos diretos entre as três (católico e sem religião → evangélico; católico e evangélico → sem religião). Solto de propósito, a calibrar. Visto na tela só no turno 0; movimento provado por teste e por `scripts/teste/valores-vivos.ts`. **A camada C está completa.** O `npm run check` completo roda só quando o Grupos inteiro terminar.
 2. **Ligar o bolso na satisfação** (hoje ele só aparece na tela, decisão de
    29/out). Tem desenho próprio; mexe no que já está calibrado.
-3. **Ponta solta do país em frases**: a Informalidade mostra "39 / 100" em vez
-   de "38,6% dos ocupados" (`escalaReal` em `src/ui/mapa/formatos.ts` só
-   converte quando `medida.convertida`). 15 minutos.
+3. (feito) Ponta solta da Informalidade.
 4. **Itens 4 e 5 do PLANO**: a seta `saude_populacao → taxa_mortalidade` (hoje
    a pandemia não mata ninguém) e a bolha órfã da Natalidade.
 
