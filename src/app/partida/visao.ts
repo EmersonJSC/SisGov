@@ -2,6 +2,7 @@ import type { ResolvedPackage } from "../../engine";
 import { contextNodeId } from "../../engine/model/lawNodes";
 import { valorNaMedida } from "./medida";
 import { fraseDaBolha } from "./frase";
+import { censoDoPais } from "./censo";
 import { medidaDoPais } from "./regua";
 import { occurrenceCatalog } from "../../game/occurrences";
 import {
@@ -447,6 +448,8 @@ export function verPartida(partida: Partida): VisaoPartida {
     contas: lerContas(content, values),
     orcamento: linhasDoOrcamento(partida, values),
     grupos: gruposDaPartida(partida, values, alteradas),
+    censo: censoDoPais(partida.content),
+    perfis: partida.content.manifest.congresso?.perfis.length ?? 0,
     ocorrencias: ocorrenciasDaPartida(partida),
     ...(pressao ? { pressao } : {}),
     governo,

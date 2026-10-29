@@ -3,19 +3,21 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 28/out/2026.**
+**Atualizado em 29/out/2026.**
 
 ## Por onde continuar
 
-1. **O número grande do boletim** ainda mostra pontos do motor ("39 / 100")
-   em vez da medida real (38,6% dos ocupados). É `escalaReal` em
-   `src/ui/mapa/formatos.ts`, que só converte quando `medida.convertida`:
-   uma função, e todas as bolhas com medida melhoram de uma vez. É o último
-   passo para fechar país em frases.
-2. **Sujeitos que a heurística não cobre**: `scripts/teste/frases-das-bolhas.ts`
-   lista as 137 bolhas sem frase. Várias são gente de verdade ("% que confia
-   no Congresso", "comparecimento na eleição") e ganham frase com uma linha em
-   `SUJEITOS`, dentro de `src/app/partida/frase.ts`.
+1. **Camada B dos Grupos — bolso e emprego**: cada perfil ganha salário,
+   imposto, consumo e setor, repartindo os agregados que já estão calibrados
+   (o agregado manda, o perfil divide). É o que faz a lei mexer no bolso de
+   alguém com nome. Guardar **setor e salário no perfil desde já**: é isso que
+   deixa barata a virada futura para "o perfil manda".
+2. **Ponta solta do país em frases**: a Informalidade mostra "39 / 100" em vez
+   de "38,6% dos ocupados" (`escalaReal` em `src/ui/mapa/formatos.ts` só
+   converte quando `medida.convertida`). 15 minutos.
+3. **Itens 4 e 5 do PLANO**, achados ontem: a seta
+   `saude_populacao → taxa_mortalidade` (hoje a pandemia não mata ninguém) e
+   a bolha órfã da Natalidade.
 
 ## Fora da mecânica, de propósito
 
@@ -25,9 +27,20 @@ bolha e lei por lei, que vem mais para o fim.
 
 ## O que fechou agora
 
-País em frases, fase 3, de ponta a ponta e visto na tela: a função, a visão,
-o rótulo da bolha, o `aria-label` e o boletim. 55 das 192 bolhas falam; o
-resto cai no número, de propósito.
+**Censo da população** (Grupos, camada A), visto na tela: a aba População com
+uma ficha por atributo — pizza até seis faixas, treemap acima disso (a
+Ocupação tem nove). Cada faixa traz a frase do país em frases ("uma pessoa em
+cada quatro") e a marca das que não têm grupo no mapa. Paleta validada por
+script para daltonismo e contraste; treemap com teste de área antes do código.
+Sem tendência de propósito: os perfis são fixos até a camada C, e seta de
+"subiu" seria mentira.
+
+**Decisão de gosto em aberto:** a cor se repete entre as fichas (azul é classe
+média e também católicos). Sugeri uma cor por ficha em tons; o autor não
+respondeu, então ficou como está.
+
+Antes dele, **país em frases** fechou de ponta a ponta: a função, a visão, o
+rótulo da bolha, o `aria-label` e o boletim. 55 das 192 bolhas falam.
 
 ## Ferramenta que ficou
 

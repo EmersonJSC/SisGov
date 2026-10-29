@@ -8204,3 +8204,100 @@ span.el-mini {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+/* censo (Grupos, camada A) */
+.censo-fichas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.censo-ficha {
+  padding: 14px 16px 12px;
+  border: 1px solid light-dark(#e2ddd0, #262b33);
+  border-radius: 10px;
+  background: light-dark(#fffdf7, #1b1f26);
+}
+
+.censo-ficha h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: light-dark(#6b7280, #9aa5b4);
+}
+
+.censo-desenho {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.censo-pizza {
+  width: 132px;
+  height: 132px;
+}
+
+.censo-treemap {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+}
+
+.censo-faixas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.censo-faixa {
+  display: grid;
+  grid-template-columns: 11px minmax(0, 1fr) 54px;
+  align-items: baseline;
+  gap: 9px;
+  padding: 4px 0;
+  border-top: 1px solid light-dark(#efebdf, #22262d);
+}
+
+/*
+  Faixa sem grupo no mapa: apagada, e o motivo escrito. Sem cor de alarme —
+  metade dessas ausências é proposital (ninguém faz política em nome de quem
+  não tem filhos).
+*/
+.censo-faixa.sem-grupo {
+  opacity: 0.66;
+}
+
+.censo-marca {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  transform: translateY(1px);
+}
+
+.censo-nome {
+  display: flex;
+  flex-direction: column;
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.censo-nome small,
+.censo-nome em {
+  font-size: 11.5px;
+  font-style: normal;
+  color: light-dark(#8a93a3, #7f8b9c);
+}
+
+.censo-parte {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 13.5px;
+}
+
+.censo-rodape {
+  margin-top: 16px;
+  max-width: 62ch;
+}

@@ -68,6 +68,7 @@ import { JanelaBolha, JanelaLei, abrirJanela, type Janela } from "./Janelas";
 import { JanelaPartida, type PartidaCarregada } from "./JanelaPartida";
 import { TelaDeFundacao, type Fundacao } from "./TelaDeFundacao";
 import { faltaCandidato } from "./EleicaoNoTablet";
+import { Censo } from "./Censo";
 import { MenuPrincipal } from "./MenuPrincipal";
 import { NoiteDaApuracao } from "./NoiteDaApuracao";
 import { efeitoDe, indexarRelacoes, ligacoesDeFundo } from "./relacoes";
@@ -1085,6 +1086,15 @@ function TelaPrincipalCarregada({
             type="button"
             role="tab"
             className="aba-topo"
+            aria-selected={abaTopo === "População"}
+            onClick={() => setAbaTopo("População")}
+          >
+            População
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className="aba-topo"
             aria-selected="false"
             disabled
             title="Tela ainda não disponível"
@@ -1153,6 +1163,14 @@ function TelaPrincipalCarregada({
           </button>
         </div>
       </details>
+
+      {abaTopo === "População" ? (
+        <Censo
+          censo={visao.censo}
+          habitantes={visao.bolhas.find((b) => b.id === "populacao")?.valor}
+          perfis={visao.perfis}
+        />
+      ) : null}
 
       {abaTopo === "Política" ? (
         <section className="pagina-aba" aria-label="Política">

@@ -140,6 +140,18 @@ export type PopulacaoDoMundo = {
     peso: number;
     atributos: Record<string, Record<string, string>>;
   }[];
+  /** Nome de gente para o censo: atributo e faixa (`atributo=valor`). */
+  rotulos?: {
+    atributos: Record<string, string>;
+    faixas: Record<string, string>;
+  };
+  /** De onde vem o dinheiro de cada perfil (População camada B). */
+  bolso?: {
+    fontes: Record<
+      string,
+      { nome: string; trabalha: boolean; porRenda?: Record<string, number> }
+    >;
+  };
 };
 
 /** `historia.json`: abertura, metas do mandato e lugares para os textos. */

@@ -10,18 +10,18 @@ Ler isto antes de sair procurando: evita varrer `src/` e `docs/` de novo.
 
 ## Onde fica cada coisa
 
-| O que | Onde |
-| --- | --- |
-| Status e ordem do trabalho | `PLANO.md` (única fonte de status) |
-| Desenho da mecânica em curso | `docs/jogo/mecanicas/<nome>.md` |
-| Alvo de calibragem da economia | `docs/jogo/leis/equilibrio.md` + `scripts/equilibrio/simular.py` (modelo de bolso, não é o motor) |
-| Variáveis (estoque, calculado, grupo, situação) | `src/conteudo/mundo/indicadores/variaveis.json` |
-| Uma lei | `src/conteudo/mundo/leis/<id>.json` |
-| Seta entre duas variáveis | `src/conteudo/mundo/consequencias/<origem>--<alvo>.json` |
-| Números de partida do Brasil | `src/conteudo/paises/brasil/` |
-| Contas do orçamento | `src/app/partida/contas.ts` |
-| Tipos do conteúdo (campos e o que fazem) | `src/engine/model/contentTypes.ts` |
-| Scripts de diagnóstico | `scripts/teste/`, `scripts/economia/` |
+| O que                                           | Onde                                                                                              |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Status e ordem do trabalho                      | `PLANO.md` (única fonte de status)                                                                |
+| Desenho da mecânica em curso                    | `docs/jogo/mecanicas/<nome>.md`                                                                   |
+| Alvo de calibragem da economia                  | `docs/jogo/leis/equilibrio.md` + `scripts/equilibrio/simular.py` (modelo de bolso, não é o motor) |
+| Variáveis (estoque, calculado, grupo, situação) | `src/conteudo/mundo/indicadores/variaveis.json`                                                   |
+| Uma lei                                         | `src/conteudo/mundo/leis/<id>.json`                                                               |
+| Seta entre duas variáveis                       | `src/conteudo/mundo/consequencias/<origem>--<alvo>.json`                                          |
+| Números de partida do Brasil                    | `src/conteudo/paises/brasil/`                                                                     |
+| Contas do orçamento                             | `src/app/partida/contas.ts`                                                                       |
+| Tipos do conteúdo (campos e o que fazem)        | `src/engine/model/contentTypes.ts`                                                                |
+| Scripts de diagnóstico                          | `scripts/teste/`, `scripts/economia/`                                                             |
 
 `src/conteudo/_arquivo-leis-antigas/` e `src/conteudo/testes/legado/` são
 histórico: um grep acerta lá e engana. Confira o caminho antes de concluir.
@@ -40,7 +40,7 @@ dizer que ela manda 25% da sobra.
 
 **Lei que parece duplicar uma seta pode estar cancelando a linha de base.**
 `resultado-fiscal--divida-publica` já abate dívida com coeficiente −0,25
-sempre. A lei "Destino da sobra" soma +0,25 no mesmo alvo para *anular* essa
+sempre. A lei "Destino da sobra" soma +0,25 no mesmo alvo para _anular_ essa
 linha quando o jogador manda guardar. Antes de chamar de bug, procure a
 consequência de base com o sinal contrário.
 
@@ -65,6 +65,10 @@ orçamento. Antes de mexer num coeficiente, liste todas as setas da mesma
 origem (`grep -rln '"origem": "<id>"' src/conteudo/mundo/consequencias/`) e
 veja se a gêmea tem seta de saída: sem saída é indicador terminal, e aí mover
 as duas não conta duas vezes.
+
+**`npx tsc --noEmit` não checa nada neste projeto.** Ele sai 0 com erro na
+cara, porque o projeto usa project references: o comando certo é `npx tsc -b`
+(é o que `npm run build` roda). Conferir tipo com `--noEmit` dá falso verde.
 
 ## O ciclo de um item do PLANO
 

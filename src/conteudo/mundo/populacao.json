@@ -71,8 +71,12 @@
       "nome": "Idade e família",
       "peso": 1,
       "atributos": {
-        "idade": { "16-29": "grupo_jovens" },
-        "filhos": { "com": "grupo_familias_com_filhos" }
+        "idade": {
+          "16-29": "grupo_jovens"
+        },
+        "filhos": {
+          "com": "grupo_familias_com_filhos"
+        }
       }
     },
     {
@@ -80,8 +84,129 @@
       "nome": "Meio ambiente",
       "peso": 1,
       "atributos": {
-        "ambientalista": { "sim": "grupo_ambientalistas" }
+        "ambientalista": {
+          "sim": "grupo_ambientalistas"
+        }
       }
     }
-  ]
+  ],
+  "rotulosNota": "Nome de gente para cada atributo e faixa do censo (Grupos, camada A). O perfil guarda id curto (\"fora\", \"carteira\"); a tela precisa de frase. Fica no mundo, e não no país, porque os atributos são os mesmos em qualquer país.",
+  "rotulos": {
+    "atributos": {
+      "renda": "Renda",
+      "ocupacao": "Ocupação",
+      "idade": "Idade",
+      "filhos": "Filhos",
+      "religiao": "Religião",
+      "valores": "Valores",
+      "ambientalista": "Meio ambiente",
+      "territorio": "Território"
+    },
+    "faixas": {
+      "renda=pobre": "Pobres",
+      "renda=media": "Classe média",
+      "renda=rica": "Ricos",
+      "ocupacao=carteira": "Com carteira assinada",
+      "ocupacao=informal": "Informais e de aplicativo",
+      "ocupacao=aposentado": "Aposentados",
+      "ocupacao=fora": "Fora da força de trabalho",
+      "ocupacao=servidor": "Servidores públicos",
+      "ocupacao=agricultura-familiar": "Agricultura familiar",
+      "ocupacao=pequeno-empreendedor": "Pequenos empreendedores",
+      "ocupacao=empresario": "Empresários",
+      "ocupacao=agro-patronal": "Agronegócio patronal",
+      "idade=16-29": "16 a 29 anos",
+      "idade=30-59": "30 a 59 anos",
+      "idade=60+": "60 anos ou mais",
+      "filhos=com": "Com filhos em casa",
+      "filhos=sem": "Sem filhos em casa",
+      "religiao=catolica": "Católicos",
+      "religiao=evangelica": "Evangélicos",
+      "religiao=outra": "Outra religião ou nenhuma",
+      "valores=conservador": "Conservadores",
+      "valores=centro": "Centro",
+      "valores=progressista": "Progressistas",
+      "ambientalista=sim": "Ambientalistas",
+      "ambientalista=nao": "Sem pauta ambiental",
+      "territorio=interior": "Interior",
+      "territorio=periferia": "Periferias das metrópoles",
+      "territorio=metropole": "Metrópoles"
+    }
+  },
+  "bolsoNota": "De onde vem o dinheiro de cada perfil e quanto ele ganha (População, camada B). O multiplicador é sobre o salário médio do país e é normalizado na leitura para a média ponderada de quem trabalha dar exatamente 1 — a repartição não cria nem some dinheiro. Ocupação com trabalha=false não entra na massa salarial: recebe por benefício. Primeira calibragem a olho, ancorada na ordem de grandeza da PNAD Contínua (rendimento por posição na ocupação); a conferir.",
+  "bolso": {
+    "fontes": {
+      "carteira": {
+        "nome": "Com carteira assinada",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.55,
+          "media": 1.15,
+          "rica": 3.0
+        }
+      },
+      "informal": {
+        "nome": "Informais e de aplicativo",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.4,
+          "media": 0.85,
+          "rica": 1.8
+        }
+      },
+      "servidor": {
+        "nome": "Servidores públicos",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.7,
+          "media": 1.5,
+          "rica": 3.6
+        }
+      },
+      "empresario": {
+        "nome": "Empresários",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.8,
+          "media": 2.0,
+          "rica": 6.0
+        }
+      },
+      "pequeno-empreendedor": {
+        "nome": "Pequenos empreendedores",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.5,
+          "media": 1.0,
+          "rica": 2.4
+        }
+      },
+      "agro-patronal": {
+        "nome": "Agronegócio patronal",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.7,
+          "media": 1.8,
+          "rica": 5.5
+        }
+      },
+      "agricultura-familiar": {
+        "nome": "Agricultura familiar",
+        "trabalha": true,
+        "porRenda": {
+          "pobre": 0.35,
+          "media": 0.8,
+          "rica": 1.8
+        }
+      },
+      "aposentado": {
+        "nome": "Aposentados",
+        "trabalha": false
+      },
+      "fora": {
+        "nome": "Fora da força de trabalho",
+        "trabalha": false
+      }
+    }
+  }
 }

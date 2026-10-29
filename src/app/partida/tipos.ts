@@ -313,6 +313,27 @@ export type VisaoGrupo = Readonly<{
   odeia: readonly VisaoMotivo[];
 }>;
 
+/** Uma faixa do censo: "Informais e de aplicativo", 20% do eleitorado. */
+export type VisaoCensoFaixa = Readonly<{
+  id: string;
+  nome: string;
+  /** Parte do eleitorado que está na faixa, de 0 a 1. */
+  parte: number;
+  /**
+   * O grupo que dá bolha na tela a essa gente. Falta quando ninguém nomeou a
+   * faixa: ela existe na simulação e o jogador não a vê mexer.
+   */
+  grupo?: string;
+}>;
+
+/** Um atributo do censo com o país repartido por ele (Grupos, camada A). */
+export type VisaoCensoAtributo = Readonly<{
+  id: string;
+  nome: string;
+  /** Da faixa maior para a menor. */
+  faixas: readonly VisaoCensoFaixa[];
+}>;
+
 export type VisaoPartida = Readonly<{
   pais: string;
   /** Cenário em jogo (ex.: "Brasil 2026"). */
@@ -326,6 +347,13 @@ export type VisaoPartida = Readonly<{
   ligacoes: readonly VisaoLigacao[];
   /** Grupos sociais, do mais satisfeito ao menos satisfeito. */
   grupos: readonly VisaoGrupo[];
+  /** O país repartido pelos atributos do eleitorado (Grupos, camada A). */
+  censo: readonly VisaoCensoAtributo[];
+  /**
+   * De quantos perfis o censo saiu. É a prova de que ele conta gente perfil a
+   * perfil, em vez de estimar por faixa.
+   */
+  perfis: number;
   /** Eventos, dilemas e situações (SG106). */
   ocorrencias: VisaoOcorrencias;
   /** Grupos de pressão (V1-09); ausente se o país não tem. */

@@ -125,6 +125,31 @@ export type CongressManifest = {
   /** `atributo=valor` → segmento, e o peso do eixo de cada segmento. */
   segmentoDe: Readonly<Record<string, string>>;
   pesoDoSegmento: Readonly<Record<string, number>>;
+  /**
+   * Nome de gente para o censo (`mundo/populacao.json`): o atributo e cada
+   * faixa (`atributo=valor`). O perfil guarda id curto; a tela precisa de
+   * frase.
+   */
+  rotulos?: Readonly<{
+    atributos: Readonly<Record<string, string>>;
+    faixas: Readonly<Record<string, string>>;
+  }>;
+  /**
+   * De onde vem o dinheiro de cada perfil e quanto ele ganha, por ocupação e
+   * faixa de renda (`mundo/populacao.json`, População camada B).
+   */
+  bolso?: Readonly<{
+    fontes: Readonly<
+      Record<
+        string,
+        Readonly<{
+          nome: string;
+          trabalha: boolean;
+          porRenda?: Readonly<Record<string, number>>;
+        }>
+      >
+    >;
+  }>;
 };
 
 /** Grupos de pressão na partida (V1-09); ver `ScenarioManifest.gruposDePressao`. */

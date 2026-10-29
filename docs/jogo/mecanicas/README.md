@@ -20,7 +20,7 @@ Cada mecânica tem um documento com o mesmo molde:
 | 5 | Rede de consequências | _a escrever_ (base: `src/engine/*.md`) | Existe |
 | 6 | Índices essenciais | _a escrever_ | Novo |
 | — | País em frases | [pais-em-frases.md](pais-em-frases.md) (proposta) | Parte 1 feita |
-| 7 | População | _a escrever_ | Novo |
+| 7 | População | [populacao.md](populacao.md) (proposta) | Camada A feita |
 | 8 | Grupos de interesse | _a escrever_ | Muda |
 | 9 | Grupos de pressão | _a escrever_ | Existe |
 | 10 | Bússola ideológica | _a escrever_ | Existe; regras a definir |

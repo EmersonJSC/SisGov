@@ -221,6 +221,10 @@ export function expandirPais(
             segmentoDe[`${atributo}=${valor}`] = segmento;
             pesoDoSegmento[segmento] = eixo.peso;
           }
+      // Nome de gente para o censo: vem do mundo, junto dos eixos.
+      const rotulos = (populacaoDoMundo as unknown as PopulacaoDoMundo).rotulos;
+      // De onde vem o dinheiro de cada perfil (População camada B).
+      const bolso = (populacaoDoMundo as unknown as PopulacaoDoMundo).bolso;
       politica.congresso.casas.forEach((casa, i) => {
         if (!(casa.cadeiras > 0) || !Number.isInteger(casa.cadeiras))
           erro(
@@ -231,6 +235,8 @@ export function expandirPais(
       });
       congresso = {
         regras: regrasDoCongresso,
+        ...(rotulos ? { rotulos } : {}),
+        ...(bolso ? { bolso } : {}),
         casas: politica.congresso.casas.map(
           ({ id, nome, cadeiras, regra }) => ({
             id,
