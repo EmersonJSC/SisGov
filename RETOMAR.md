@@ -9,11 +9,9 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
 Commits `d6b76fbd..7f748fa4`, tudo na `main`, **nada pushado**. O desemprego e a informalidade movem o peso dos perfis (`src/game/congresso/vivo.ts`, função pura, sem estado novo); existe o valor "desempregado" e o grupo `grupo_desempregados`; o bolso, o censo (com variação desde o início), a eleição e o Congresso o enxergam. Detalhes e limites no [PLANO](PLANO.md), item 3.
 
-**Falta, nesta ordem:**
+**Revisão independente feita** (29/out): dois achados importantes corrigidos (`4c76b242` seguro segue a lei; `e194a985` salário pela régua do início). Menores no PLANO, item 3. `npm run check` verde antes dessas duas correções (118 arquivos, 631 testes); depois delas rodaram só os testes vizinhos (81/81) e `tsc -b`.
 
-1. **Revisão independente** da camada C: o subagente falhou por limite de sessão (reseta 4:30). Reenviar, ou aceitar a revisão do mesmo contexto. Pontos: conservação, divisão por zero, alinhamento fixo×vivo, desempenho de `pacoteVivo`, `desempregado` em tabelas de ocupação fixa (bússola, comparecimento, `pontoDoPerfil`).
-2. ~~`npm run check`~~ verde sobre a C: 118 arquivos, 631 testes.
-3. Apagar `.superpowers/sdd/2026-10-29-populacao-camada-c-emprego/` e decidir o push.
+**Falta:** decidir o push (nada foi pushado) e escolher a próxima frente.
 
 **Menores ainda abertos (camada B):** salário médio negativo sem guarda; `MESES = 12` repetido; a prévia compara só o último mês; `censoDoPais(content)` sem valores devolve bolso zerado; "0%" nas ocupações pequenas.
 
