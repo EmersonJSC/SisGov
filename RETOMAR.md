@@ -54,16 +54,16 @@ arredonda para "0%" nas ocupações pequenas.
 A (`ed40d6fc`), não no da camada B — quem revisar só `ac9e6e9b..HEAD` não vê
 os multiplicadores.
 
-## Antes de tudo: duas coisas ficaram no ar
+## Antes de tudo
 
-1. **`npm run check` não terminou de rodar** sobre a camada B. Os testes dos
-   arquivos mexidos passam (`bolso.test.ts` 18/18, `censo.test.ts` 9/9, `tsc -b`
-   e `eslint` limpos), mas a suíte inteira — que leva ~20 min — ficou pela
-   metade. **Rodar `npm run check` antes de seguir.**
-2. **Corrigir os quatro achados acima** antes de abrir a camada C. O grave é
-   de uma linha; os três sérios pedem decisão de desenho (de onde sai a renda
-   do empresário, que base consome a aposentadoria, agregar por ocupação ×
-   renda).
+**Corrigir os quatro achados acima** antes de abrir a camada C. O grave é de
+uma linha; os três sérios pedem decisão de desenho (de onde sai a renda do
+empresário, que base consome a aposentadoria, agregar por ocupação × renda).
+
+`npm run check` passou em 29/out sobre tudo que está commitado: **116
+arquivos, 595 testes, saída 0**. Os quatro achados não quebram teste nenhum —
+são erros de modelo, não de código quebrado. É por isso que o check verde não
+os pegou, e o script sim.
 
 **Sessão de 29/out (tarde):** `npm run check` rodando em segundo plano (log em
 `/tmp/claude-1000/.../scratchpad/check.log`; format, lint e tsc já passaram, falta
