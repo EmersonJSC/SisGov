@@ -165,30 +165,33 @@
       },
       "empresario": {
         "nome": "Empresários",
-        "trabalha": true,
+        "trabalha": false,
         "porRenda": {
           "pobre": 0.8,
           "media": 2.0,
           "rica": 6.0
-        }
+        },
+        "capital": true
       },
       "pequeno-empreendedor": {
         "nome": "Pequenos empreendedores",
-        "trabalha": true,
+        "trabalha": false,
         "porRenda": {
           "pobre": 0.5,
           "media": 1.0,
           "rica": 2.4
-        }
+        },
+        "capital": true
       },
       "agro-patronal": {
         "nome": "Agronegócio patronal",
-        "trabalha": true,
+        "trabalha": false,
         "porRenda": {
           "pobre": 0.7,
           "media": 1.8,
           "rica": 5.5
-        }
+        },
+        "capital": true
       },
       "agricultura-familiar": {
         "nome": "Agricultura familiar",
@@ -202,7 +205,8 @@
       "aposentado": {
         "nome": "Aposentados",
         "trabalha": false,
-        "beneficio": "beneficio_anual_aposentadoria"
+        "beneficio": "beneficio_anual_aposentadoria",
+        "reajuste": "nivel_reajuste_de_beneficios"
       },
       "fora": {
         "nome": "Fora da força de trabalho",

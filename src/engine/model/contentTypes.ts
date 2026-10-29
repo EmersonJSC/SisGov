@@ -145,7 +145,13 @@ export type CongressManifest = {
         Readonly<{
           nome: string;
           trabalha: boolean;
+          /** Vive dos lucros do motor, e não da massa salarial. */
+          capital?: boolean;
           porRenda?: Readonly<Record<string, number>>;
+          /** Variável do motor que paga essa gente por ano, quando ela não trabalha. */
+          beneficio?: string;
+          /** Variável de 0 a 100 que o motor multiplica no benefício (reajuste). */
+          reajuste?: string;
         }>
       >
     >;

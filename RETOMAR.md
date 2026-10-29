@@ -5,7 +5,19 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
 **Atualizado em 29/out/2026.**
 
-## A revisão voltou: 1 grave, 3 sérios
+## Os quatro achados foram corrigidos (29/out, ainda sem commit)
+
+- **Aposentadoria × reajuste:** o benefício agora é valor médio × `nivel_reajuste_de_beneficios`/100 (tabela: campo `reajuste`). Na tela, aposentado sobra R$ 2.343/mês, abaixo de carteira e servidor, e a lei de reajuste mostra "aposentados, R$ 631 a mais".
+- **Imposto sobre consumo:** a arrecadação do motor é dividida entre todos que consomem (benefício incluso). A soma dos perfis fecha com a arrecadação (razão 1,000000, teste novo).
+- **Lucros:** empresário, agro patronal e pequeno empreendedor (`capital: true`, sem salário) repartem `lucros`; pagam também renda de empresas e dividendos. Os lucros fecham (teste novo).
+- **Quem pagou:** `quemPagouAConta` agora agrega por ocupação × renda e mostra as 6 faixas que mais sentiram.
+- Testes: `bolso.test.ts` 22 e `censo` + `treemap`, 38/38; `tsc -b`, eslint e prettier limpos. **`npm run check` completo ainda não rodou sobre estas correções.**
+
+**Calibragem aberta, não é bug:** empresário sobra R$ 95 mil/mês e agro patronal R$ 89 mil, porque `lucros` (6,8 mi contra 3,6 mi de salários) é repartido por 6,7% do eleitorado. O número vem do motor; vai para a calibragem (item 12 do PLANO).
+
+**Menores ainda abertos:** salário médio negativo sem guarda; `MESES = 12` repetido em três lugares; a prévia compara só o último mês do horizonte; `censoDoPais(content)` sem valores devolve bolso zerado; a parte do eleitorado arredonda para "0%" nas ocupações pequenas.
+
+## (histórico) A revisão voltou: 1 grave, 3 sérios
 
 Uma revisão independente da camada B foi feita em 29/out e achou o seguinte.
 Nenhum foi corrigido — tudo está como ela encontrou.
@@ -56,7 +68,9 @@ os multiplicadores.
 
 ## Antes de tudo
 
-**Corrigir os quatro achados acima** antes de abrir a camada C. O grave é de
+~~Corrigir os quatro achados acima~~ (feito, ver o topo). Falta commit e `npm run check`; depois a camada C — spec em `docs/superpowers/specs/2026-10-29-populacao-camada-c-emprego-design.md`, aguardando sua revisão.
+
+(texto original:) Corrigir os quatro achados acima antes de abrir a camada C. O grave é de
 uma linha; os três sérios pedem decisão de desenho (de onde sai a renda do
 empresário, que base consome a aposentadoria, agregar por ocupação × renda).
 
@@ -65,11 +79,13 @@ arquivos, 595 testes, saída 0**. Os quatro achados não quebram teste nenhum �
 são erros de modelo, não de código quebrado. É por isso que o check verde não
 os pegou, e o script sim.
 
-**Sessão de 29/out (tarde):** `npm run check` rodando em segundo plano (log em
-`/tmp/claude-1000/.../scratchpad/check.log`; format, lint e tsc já passaram, falta
-vite build e a suíte). A revisão da camada B foi feita pelo mesmo contexto que a
-escreveu: três limites anotados no PLANO (item 3, "Revisão da camada B"). Script
-novo: `npx vite-node scripts/teste/conservacao-do-bolso.ts`.
+**Sessão de 29/out (tarde):** `npm run check` passou: 116 arquivos, 595 testes,
+23,7 min. Minha revisão (mesmo contexto que escreveu, não independente) não achou
+o grave da aposentadoria; achou três limites no PLANO. Os quatro achados da revisão
+independente acima seguem sem correção. Camada C aberta pelo emprego: spec
+escrita em `docs/superpowers/specs/2026-10-29-populacao-camada-c-emprego-design.md`,
+**aguardando sua revisão** antes do plano. Scripts novos:
+`npx vite-node scripts/teste/conservacao-do-bolso.ts`.
 
 ## Por onde continuar
 

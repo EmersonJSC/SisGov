@@ -149,7 +149,15 @@ export type PopulacaoDoMundo = {
   bolso?: {
     fontes: Record<
       string,
-      { nome: string; trabalha: boolean; porRenda?: Record<string, number> }
+      {
+        nome: string;
+        trabalha: boolean;
+        /** Vive dos lucros do motor, e não da massa salarial. */
+        capital?: boolean;
+        porRenda?: Record<string, number>;
+        beneficio?: string;
+        reajuste?: string;
+      }
     >;
   };
 };

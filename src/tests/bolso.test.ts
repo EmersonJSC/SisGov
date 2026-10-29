@@ -187,6 +187,83 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     expect(b.ganha).toBeGreaterThan(0);
   });
 
+  it("o benefício do aposentado segue o reajuste que o motor aplica", () => {
+    // O motor paga aposentados × benefício × reajuste/100. Ler o benefício
+    // cru punha o aposentado acima do servidor na tela, e fazia a lei de
+    // reajuste de benefícios não bater em ninguém.
+    const vs = osValores();
+    const reajuste = vs.nivel_reajuste_de_beneficios;
+    expect(reajuste).toBeGreaterThan(0);
+    const base = bolsoDe("ocupacao", "aposentado", vs).ganha;
+    expect(base).toBeCloseTo(
+      (vs.beneficio_anual_aposentadoria * reajuste) / 100,
+      6,
+    );
+    const dobrado = bolsoDe("ocupacao", "aposentado", {
+      ...vs,
+      nivel_reajuste_de_beneficios: reajuste / 2,
+    }).ganha;
+    expect(dobrado).toBeCloseTo(base / 2, 6);
+  });
+
+  it("a soma do que os perfis pagam fecha com o que o motor arrecadou", () => {
+    // O agregado manda e o perfil divide: nem a base de consumo nem os
+    // lucros podem fazer o eleitorado pagar mais (ou menos) do que o
+    // orçamento recebe ao lado.
+    const vs = osValores();
+    const perfis = pacote().manifest.congresso!.perfis;
+    const bolsos = bolsosDosPerfis(pacote(), vs);
+    const rendas = rendasDosPerfis(
+      pacote(),
+      vs.salario_medio,
+      vs.lucros / vs.massa_salarial,
+    );
+    const media = (v: (i: number) => number) =>
+      perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0) /
+      perfis.reduce((soma, p) => soma + p[0], 0);
+    const pessoas = vs.massa_salarial / media((i) => rendas[i].porAno);
+    const pago = pessoas * media((i) => bolsos[i].paga);
+    const arrecadado =
+      vs.arrecadacao_consumo +
+      vs.arrecadacao_renda_pessoas +
+      vs.arrecadacao_renda_empresas +
+      vs.arrecadacao_dividendos;
+    expect(pago / arrecadado).toBeCloseTo(1, 6);
+  });
+
+  it("os lucros fecham: quem vive de capital reparte exatamente o que o motor lucrou", () => {
+    const vs = osValores();
+    const perfis = pacote().manifest.congresso!.perfis;
+    const rendas = rendasDosPerfis(
+      pacote(),
+      vs.salario_medio,
+      vs.lucros / vs.massa_salarial,
+    );
+    const total = (v: (i: number) => number) =>
+      perfis.reduce((soma, p, i) => soma + p[0] * v(i), 0);
+    expect(
+      total((i) => rendas[i].capitalPorAno) / total((i) => rendas[i].porAno),
+    ).toBeCloseTo(vs.lucros / vs.massa_salarial, 6);
+  });
+
+  it("empresário vive de lucros: imposto sobre lucro bate nele, salário médio não", () => {
+    const vs = osValores();
+    const empresario = bolsoDe("ocupacao", "empresario", vs);
+    const comMenosImposto = bolsoDe("ocupacao", "empresario", {
+      ...vs,
+      arrecadacao_renda_empresas: 0,
+    });
+    expect(comMenosImposto.sobra).toBeGreaterThan(empresario.sobra);
+    // Com o PIB parado, salário maior é massa maior e lucro menor.
+    const comSalarioMaior = bolsoDe("ocupacao", "empresario", {
+      ...vs,
+      salario_medio: vs.salario_medio * 2,
+      massa_salarial: vs.massa_salarial * 2,
+      lucros: vs.lucros - vs.massa_salarial,
+    });
+    expect(comSalarioMaior.ganha).toBeLessThan(empresario.ganha);
+  });
+
   it("sem arrecadação sobre consumo, some só essa parte da conta", () => {
     const sem = bolsosDosPerfis(pacote(), {
       ...osValores(),
@@ -255,6 +332,18 @@ describe("quem pagou a conta", () => {
       expect(linha.parte).toBeLessThanOrEqual(1);
       expect(linha.faixa).toBeTruthy();
     }
+  });
+
+  it("separa a mesma ocupação por faixa de renda, e mostra poucas linhas", () => {
+    // Por ocupação só, o informal pobre sumia na média dos informais.
+    const conta = quemPagouAConta(pacote(), osValores(), {
+      ...osValores(),
+      arrecadacao_consumo: osValores().arrecadacao_consumo * 1.2,
+    });
+    expect(conta.length).toBeGreaterThan(0);
+    expect(conta.length).toBeLessThanOrEqual(6);
+    expect(conta.every((c) => c.faixa.includes(" · "))).toBe(true);
+    expect(new Set(conta.map((c) => c.faixa)).size).toBe(conta.length);
   });
 
   it("salário médio maior aparece como ganho, não como perda", () => {
