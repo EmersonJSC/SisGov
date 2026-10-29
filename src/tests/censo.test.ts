@@ -263,5 +263,10 @@ describe("censo da população", () => {
       expect(variacao(valores, "outra")).toBeGreaterThan(0);
       expect(variacao(valores, "catolica")).toBeLessThan(0);
     });
+
+    it("quem sai da religião não passa pelos católicos: o evangélico também vira sem religião", () => {
+      const valores = { ...inicio(), escolaridade: inicio().escolaridade + 30 };
+      expect(variacao(valores, "evangelica")).toBeLessThan(0);
+    });
   });
 });

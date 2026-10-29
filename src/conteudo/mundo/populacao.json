@@ -296,7 +296,26 @@
     },
     {
       "atributo": "religiao",
+      "de": "outra",
+      "para": "evangelica",
+      "forca": 0.5,
+      "empurroes": {
+        "desigualdade": 0.5,
+        "sensacao_seguranca": -0.5
+      }
+    },
+    {
+      "atributo": "religiao",
       "de": "catolica",
+      "para": "outra",
+      "forca": 0.5,
+      "empurroes": {
+        "escolaridade": 0.5
+      }
+    },
+    {
+      "atributo": "religiao",
+      "de": "evangelica",
       "para": "outra",
       "forca": 0.5,
       "empurroes": {
