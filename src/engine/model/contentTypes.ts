@@ -167,14 +167,16 @@ export type CongressManifest = {
     }>;
   }>;
   /**
-   * O que empurra os valores do eleitorado (`mundo/populacao.json`, camada C).
-   * Peso positivo: a alta do indicador empurra para a última faixa do atributo.
+   * O que empurra as faixas do eleitorado (`mundo/populacao.json`, camada C).
+   * Pressão positiva passa peso de `de` para `para`; negativa, o contrário.
    */
-  mudancaDeValores?: Readonly<{
+  mudancas?: readonly Readonly<{
     atributo: string;
+    de: string;
+    para: string;
     forca: number;
     empurroes: Readonly<Record<string, number>>;
-  }>;
+  }>[];
   bolso?: Readonly<{
     fontes: Readonly<
       Record<

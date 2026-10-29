@@ -12,8 +12,8 @@ console.log(
     .map((k) => `${k}=${ini[k]?.toFixed(1)}`)
     .join(" "),
 );
-const mostra = (nome: string, v: Record<string, number>) => {
-  const a = censoDoPais(content, v, ini).find((x) => x.id === "valores")!;
+const mostra = (nome: string, v: Record<string, number>, alvo = "valores") => {
+  const a = censoDoPais(content, v, ini).find((x) => x.id === alvo)!;
   console.log(nome);
   for (const f of a.faixas)
     console.log(
@@ -32,3 +32,18 @@ mostra("segurança −30 e escolaridade +30", {
   sensacao_seguranca: ini.sensacao_seguranca - 30,
   escolaridade: ini.escolaridade + 30,
 });
+
+mostra(
+  "religião: segurança −20, desigualdade +10",
+  {
+    ...ini,
+    sensacao_seguranca: ini.sensacao_seguranca - 20,
+    desigualdade: ini.desigualdade + 10,
+  },
+  "religiao",
+);
+mostra(
+  "religião: escolaridade +20",
+  { ...ini, escolaridade: ini.escolaridade + 20 },
+  "religiao",
+);

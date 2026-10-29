@@ -155,12 +155,14 @@ export type PopulacaoDoMundo = {
     ocupacoes: { formal: string; informal: string };
     desempregado: { id: string; origemComBeneficio: string[] };
   };
-  /** O que empurra os valores do eleitorado (População camada C). */
-  mudancaDeValores?: {
+  /** O que empurra as faixas do eleitorado (População camada C). */
+  mudancas?: {
     atributo: string;
+    de: string;
+    para: string;
     forca: number;
     empurroes: Record<string, number>;
-  };
+  }[];
   /** De onde vem o dinheiro de cada perfil (População camada B). */
   bolso?: {
     fontes: Record<

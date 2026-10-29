@@ -260,14 +260,48 @@
       "informal": "informal"
     }
   },
-  "mudancaDeValores": {
-    "descricao": "O que empurra os valores do eleitorado (População, camada C). Peso positivo: a alta do indicador, desde o turno 0, empurra para a última faixa de `valores` (conservador); negativo, para a primeira (progressista). A soma dos pesos × a variação em pontos (/100) é a pressão; `forca` vezes a pressão é a fração de cada faixa que passa à vizinha. Chute declarado e solto de propósito: calibra vendo o censo.",
-    "atributo": "valores",
-    "forca": 1,
-    "empurroes": {
-      "sensacao_seguranca": -1,
-      "escolaridade": -0.5,
-      "desigualdade": -0.5
+  "mudancasNota": "O que empurra as faixas do eleitorado (População, camada C). Cada fluxo liga duas faixas de um atributo: a pressão é a soma de peso × variação do indicador desde o turno 0, dividida por 100. Pressão positiva passa a fração `forca × pressão` (até 1) do peso de `de` para `para`; negativa, o contrário, de `para` para `de`. Os fluxos do mesmo atributo valem ao mesmo tempo, sobre o eleitorado de antes. Só o censo lê. Chutes de direção, soltos de propósito: calibra vendo o censo.",
+  "mudancas": [
+    {
+      "atributo": "valores",
+      "de": "progressista",
+      "para": "centro",
+      "forca": 1,
+      "empurroes": {
+        "sensacao_seguranca": -1,
+        "escolaridade": -0.5,
+        "desigualdade": -0.5
+      }
+    },
+    {
+      "atributo": "valores",
+      "de": "centro",
+      "para": "conservador",
+      "forca": 1,
+      "empurroes": {
+        "sensacao_seguranca": -1,
+        "escolaridade": -0.5,
+        "desigualdade": -0.5
+      }
+    },
+    {
+      "atributo": "religiao",
+      "de": "catolica",
+      "para": "evangelica",
+      "forca": 0.5,
+      "empurroes": {
+        "desigualdade": 0.5,
+        "sensacao_seguranca": -0.5
+      }
+    },
+    {
+      "atributo": "religiao",
+      "de": "catolica",
+      "para": "outra",
+      "forca": 0.5,
+      "empurroes": {
+        "escolaridade": 0.5
+      }
     }
-  }
+  ]
 }

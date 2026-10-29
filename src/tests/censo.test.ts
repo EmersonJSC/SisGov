@@ -229,4 +229,39 @@ describe("censo da população", () => {
       expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
     });
   });
+
+  describe("religião pela pressão do país", () => {
+    const inicio = () => partida().game.valoresIniciais!;
+    const religiao = (valores: Record<string, number>) =>
+      censoDoPais(partida().content, valores, inicio()).find(
+        (a) => a.id === "religiao",
+      )!;
+    const variacao = (valores: Record<string, number>, id: string) =>
+      religiao(valores).faixas.find((f) => f.id === id)?.variacao ?? 0;
+
+    it("no início ninguém muda de religião e o país continua inteiro", () => {
+      const faixas = religiao(inicio()).faixas;
+      for (const f of faixas) expect(f.variacao, f.id).toBeUndefined();
+      expect(faixas.reduce((t, f) => t + f.parte, 0)).toBeCloseTo(1, 6);
+    });
+
+    it("a insegurança e a desigualdade crescendo levam católicos aos evangélicos", () => {
+      const valores = {
+        ...inicio(),
+        sensacao_seguranca: inicio().sensacao_seguranca - 20,
+        desigualdade: inicio().desigualdade + 10,
+      };
+      expect(
+        religiao(valores).faixas.reduce((t, f) => t + f.parte, 0),
+      ).toBeCloseTo(1, 6);
+      expect(variacao(valores, "evangelica")).toBeGreaterThan(0);
+      expect(variacao(valores, "catolica")).toBeLessThan(0);
+    });
+
+    it("a escolaridade subindo leva católicos para quem não tem religião", () => {
+      const valores = { ...inicio(), escolaridade: inicio().escolaridade + 30 };
+      expect(variacao(valores, "outra")).toBeGreaterThan(0);
+      expect(variacao(valores, "catolica")).toBeLessThan(0);
+    });
+  });
 });
