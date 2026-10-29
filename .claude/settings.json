@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc -b*)",
+      "Bash(npx vitest run*)",
+      "Bash(npx vite-node scripts/*)",
+      "Bash(npx eslint*)",
+      "Bash(npx prettier*)",
+      "Bash(npm run build*)",
+      "Bash(npm run dev*)",
+      "Bash(npm run lint*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(ls*)",
+      "Bash(wc*)",
+      "Bash(grep*)",
+      "Bash(tail*)",
+      "Bash(head*)"
+    ],
+    "ask": [
+      "Bash(npm run check*)",
+      "Bash(git push*)",
+      "Bash(git reset*)",
+      "Bash(git checkout*)",
+      "Bash(git clean*)",
+      "Bash(rm *)"
+    ],
+    "deny": [
+      "Read(./docs/Exemplos/**)",
+      "Read(./.env*)"
+    ]
+  }
+}

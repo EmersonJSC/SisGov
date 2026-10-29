@@ -15,7 +15,7 @@ Todo documento tem um de três status:
 | Documento | Assunto |
 | --- | --- |
 | [`PLANO.md`](../PLANO.md) | Documento mestre e única fonte de status |
-| [`AGENTS.md`](../AGENTS.md) | Regras para quem trabalha no código (pessoas e IA) |
+| [`CLAUDE.md`](../CLAUDE.md) | Regras para quem trabalha no código |
 | [`README.md`](../README.md) | Apresentação e como rodar |
 | [`v1/chamados.md`](v1/chamados.md) | Os 32 chamados da versão 1 |
 | [`v1/diferenciacao-d4.md`](v1/diferenciacao-d4.md) | Diferenciação do Democracy 4 e sala limpa |

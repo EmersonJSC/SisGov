@@ -102,7 +102,7 @@ molde com o mesmo resultado):
 
 Cada fase com teste, a sonda de 8 turnos (`scripts/teste/sonda-orcamento.ts`)
 e, no fim da fase, o roteiro de 4 governos × 2 caminhos
-(`scripts/teste/ideologias.ts`) rodado pelo GPT.
+(`scripts/teste/ideologias.ts`).
 
 | Fase | O que muda | Aceite |
 | --- | --- | --- |

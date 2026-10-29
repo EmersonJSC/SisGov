@@ -78,7 +78,7 @@ cara, porque o projeto usa project references: o comando certo é `npx tsc -b`
    os testes de números da economia ficam desligados (ordem de 24/out).
 4. Rodar os testes nomeados do que mudou (`npx vitest run src/tests/<arquivo>`),
    não a suíte toda: ela passa de 10 minutos.
-5. `npm run check` uma vez por mecânica terminada.
+5. `npm run check` completo só uma vez por dia, no fim.
 6. Commit com o ID do chamado e `[x]` no PLANO com data, commit e teste.
 
 ## Testes: o que esperar
@@ -97,10 +97,3 @@ O plugin `typescript-patterns-enforcer` acusa dezenas de violações
 São pré-existentes e o `npm run check` do projeto passa com elas. Conferir se
 a violação é de uma linha sua antes de mexer; reescrever o arquivo inteiro
 para calar o hook é fora de escopo.
-
-## Delegar
-
-O autor usa um GPT como executor júnior para poupar cota, com as regras em
-`gpt.md` na raiz. Entrega braçal (edição repetitiva, rodar teste) vai para
-ele ou para um subagente de modelo simples; o desenho e a conferência do
-diff ficam com o sênior. Nada do júnior vale sem conferir o diff.

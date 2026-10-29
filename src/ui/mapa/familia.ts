@@ -1,5 +1,5 @@
 /**
- * Família da lei (docs/arte/briefing-icones-gpt.md, seção 4): decide a cor da
+ * Família da lei (docs/arte/briefing-icones.md, seção 4): decide a cor da
  * bolha no mapa e a prateleira no painel da área.
  */
 import type { VisaoLei } from "../../app/partida";

@@ -86,7 +86,7 @@ Hoje a bolha é um disco liso com um ícone fino de traço. A bolha nova é uma
 **medalha holográfica** (estilo futurista) com camadas, de dentro para fora:
 
 1. **Medalha:** o ícone holográfico da lei (PNG,
-   [briefing-icones-gpt.md](../../arte/briefing-icones-gpt.md)), recortado em
+   [briefing-icones.md](../../arte/briefing-icones.md)), recortado em
    círculo. É o que chama o olho.
 2. **Aro do tipo:** anel grosso de metal na cor do tipo (dourado, oliva,
    lilás, azul, coral; constitucional com aro de papel e borda sépia;

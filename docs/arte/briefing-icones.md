@@ -1,6 +1,6 @@
-# Briefing para o GPT: biblioteca de ícones das leis
+# Briefing: biblioteca de ícones das leis
 
-> **Status: VIGENTE (22/out/2026).** Cole este arquivo inteiro no GPT.
+> **Status: VIGENTE (22/out/2026).**
 > A lista completa de leis, uma por linha, com o desenho de cada uma, está
 > em [icones-das-leis.md](icones-das-leis.md) (seção 6). **Este briefing
 > substitui o estilo pintado**: os ícones são futuristas.

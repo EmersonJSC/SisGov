@@ -1,7 +1,7 @@
 # Retomada: onde paramos (26/out/2026, de madrugada — autor de férias até quarta)
 
 > Leia isto primeiro numa conversa nova. Depois: [PLANO.md](../PLANO.md)
-> (seção "Nova ordem (24/out)"), [AGENTS.md](../AGENTS.md) e
+> (seção "Nova ordem (24/out)"), [CLAUDE.md](../CLAUDE.md) e
 > [economia-e-caixa.md](jogo/mecanicas/economia-e-caixa.md).
 
 ## Atualização de 26/out: fase 4 de gastos

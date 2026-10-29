@@ -88,7 +88,7 @@ autor; estão no fim da lista por serem novos, não por serem menos urgentes.
 
 Ordem por dependência. Cada item: olhar (script ou lista do que falta),
 amostra ou documento quando há decisão do autor, implementar com teste,
-`npm run check` (GPT), commit.
+`npm run check`, commit.
 
 **0. Base verde**
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os ícones SVG das leis (docs/arte/briefing-icones-gpt.md, estilo futurista).
+"""Gera os ícones SVG das leis (docs/arte/briefing-icones.md, estilo futurista).
 
 Cada lei: uma peça principal e, se preciso, um detalhe num selo de canto.
 Escreve src/assets/svg/leis/<área>/<id>.svg e src/assets/svg/manifest-leis.json.

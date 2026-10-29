@@ -10,7 +10,7 @@
 ## 1. Estilo (vale para todos)
 
 **Futurista: painel de comando holográfico.** Estilo, famílias, arquivo e
-prompt prontos em [briefing-icones-gpt.md](briefing-icones-gpt.md), que
+prompt prontos em [briefing-icones.md](briefing-icones.md), que
 substitui o estilo pintado. Este arquivo guarda as pastas (seção 2) e a
 lista de desenhos (seções 4 a 6).
 
@@ -46,7 +46,7 @@ Artes maiores (fundos, faixas, cenas) não são ícones: ver
 
 ## 3. Famílias
 
-Ver [briefing-icones-gpt.md](briefing-icones-gpt.md), seção 4.
+Ver [briefing-icones.md](briefing-icones.md), seção 4.
 
 ## 4. Peças de interface (fazer primeiro)
 

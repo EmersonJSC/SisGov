@@ -848,4 +848,4 @@ SUBJECT: a city avenue during a crisis: light smoke, protesters seen from behind
 
 ## Ícones das leis
 
-Os ícones das leis **não** seguem o Dossiê Tropical: são futuristas. Briefing e prompt em `docs/arte/briefing-icones-gpt.md`.
+Os ícones das leis **não** seguem o Dossiê Tropical: são futuristas. Briefing e prompt em `docs/arte/briefing-icones.md`.
