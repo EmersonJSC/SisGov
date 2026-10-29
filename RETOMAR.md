@@ -5,44 +5,73 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
 **Atualizado em 29/out/2026.**
 
+## Antes de tudo: duas coisas ficaram no ar
+
+1. **`npm run check` não terminou de rodar** sobre a camada B. Os testes dos
+   arquivos mexidos passam (`bolso.test.ts` 18/18, `censo.test.ts` 9/9, `tsc -b`
+   e `eslint` limpos), mas a suíte inteira — que leva ~20 min — ficou pela
+   metade. **Rodar `npm run check` antes de seguir.**
+2. **Uma revisão independente da camada B foi pedida e não voltou.** Ela olhava
+   conservação de dinheiro na repartição, divisão por zero e dupla contagem de
+   imposto. Se quiser o mesmo olhar, pedir de novo — o contexto dela se perdeu.
+
 ## Por onde continuar
 
-1. **Camada B dos Grupos — bolso e emprego**: cada perfil ganha salário,
-   imposto, consumo e setor, repartindo os agregados que já estão calibrados
-   (o agregado manda, o perfil divide). É o que faz a lei mexer no bolso de
-   alguém com nome. Guardar **setor e salário no perfil desde já**: é isso que
-   deixa barata a virada futura para "o perfil manda".
-2. **Ponta solta do país em frases**: a Informalidade mostra "39 / 100" em vez
+1. **Camada C dos Grupos — movimento**: o perfil muda de faixa por causa da
+   condição material (perde emprego, migra, muda de valores). É o que passa do
+   Democracy 4. Vai produzir país absurdo nas primeiras tentativas — 80%
+   informal em dois turnos — e o censo já está pronto para flagrar.
+2. **Ligar o bolso na satisfação** (hoje ele só aparece na tela, decisão de
+   29/out). Tem desenho próprio; mexe no que já está calibrado.
+3. **Ponta solta do país em frases**: a Informalidade mostra "39 / 100" em vez
    de "38,6% dos ocupados" (`escalaReal` em `src/ui/mapa/formatos.ts` só
    converte quando `medida.convertida`). 15 minutos.
-3. **Itens 4 e 5 do PLANO**, achados ontem: a seta
-   `saude_populacao → taxa_mortalidade` (hoje a pandemia não mata ninguém) e
-   a bolha órfã da Natalidade.
+4. **Itens 4 e 5 do PLANO**: a seta `saude_populacao → taxa_mortalidade` (hoje
+   a pandemia não mata ninguém) e a bolha órfã da Natalidade.
 
-## Fora da mecânica, de propósito
+## O que fechou nesta rodada
 
-As **faixas escritas** (Gini, HHI, PIB em índice) não entram aqui: o autor
-decidiu em 28/out que texto se julga jogando, na revisão manual bolha por
-bolha e lei por lei, que vem mais para o fim.
+**País em frases** (fase 3): a bolha diz como está em vez de mostrar pontos do
+motor. 55 das 192 falam; o resto cai no número, de propósito.
 
-## O que fechou agora
+**Censo da população** (Grupos, camada A): a aba População, uma ficha por
+atributo — pizza até seis faixas, treemap acima disso. Duas telas foram
+descartadas antes por não se lerem (lista de barras, cem bonecos).
 
-**Censo da população** (Grupos, camada A), visto na tela: a aba População com
-uma ficha por atributo — pizza até seis faixas, treemap acima disso (a
-Ocupação tem nove). Cada faixa traz a frase do país em frases ("uma pessoa em
-cada quatro") e a marca das que não têm grupo no mapa. Paleta validada por
-script para daltonismo e contraste; treemap com teste de área antes do código.
-Sem tendência de propósito: os perfis são fixos até a camada C, e seta de
-"subiu" seria mentira.
+**Bolso e ocupação** (Grupos, camada B): cada perfil tem renda, imposto,
+benefício e sobra, repartidos dos agregados que o motor já calcula. O censo
+mostra quanto sobra por faixa, e a lei diz no bolso de quem ela bate.
 
-**Decisão de gosto em aberto:** a cor se repete entre as fichas (azul é classe
-média e também católicos). Sugeri uma cor por ficha em tons; o autor não
-respondeu, então ficou como está.
+## Decisões desta rodada, para não refazer a conversa
 
-Antes dele, **país em frases** fechou de ponta a ponta: a função, a visão, o
-rótulo da bolha, o `aria-label` e o boletim. 55 das 192 bolhas falam.
+- **O agregado manda, o perfil divide.** A economia continua calculando o bolo;
+  os 2.090 perfis repartem. A virada para "o perfil manda e o PIB é a soma" (o
+  Victoria 3 inteiro) fica para depois e continua barata, porque o bolso guarda
+  a **fonte** do dinheiro com nome.
+- **Os setores econômicos vão existir** (indústria, serviços, agro). Hoje são só
+  nome dentro de ocorrências de lobby; a ocupação segura o lugar deles, e eles
+  entram pela fonte sem reescrever a camada B.
+- **O bolso só mostra, não mexe na satisfação** — por ora.
+- **Faixa escrita se julga jogando**: as frases de Gini, HHI e PIB em índice vão
+  para a revisão manual bolha por bolha, lá na frente, não agora.
 
-## Ferramenta que ficou
+## Limitação conhecida, que não é bug
 
-`npx vite-node scripts/teste/frases-das-bolhas.ts` imprime a frase de cada
-bolha da partida. Foi ele que achou os erros que os testes não achavam.
+O imposto é proporcional: todos pagam a mesma fração do que ganham. O sistema
+brasileiro é regressivo no consumo e progressivo na renda. Entra na calibragem
+(item 12 do PLANO).
+
+## Ferramentas que ficaram
+
+- `npx vite-node scripts/teste/frases-das-bolhas.ts` — a frase de cada bolha
+- `npx vite-node scripts/teste/bolso-dos-perfis.ts` — ganha/paga/sobra por faixa
+
+Foram esses dois scripts que acharam o que os testes não achavam: a fração que
+mentia em valores pequenos, e o imposto em 61% da renda.
+
+## Armadilhas do projeto, aprendidas na marra
+
+- **`npx tsc --noEmit` não checa nada aqui** — sai 0 com erro na cara. O projeto
+  usa project references: o comando é `npx tsc -b`.
+- **Reescrever um arquivo grande com o dev server ligado** pode fazer o Vite
+  cachear um módulo vazio e dar tela branca. `Ctrl+Shift+R` resolve.
