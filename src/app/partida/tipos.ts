@@ -326,6 +326,12 @@ export type VisaoCensoFaixa = Readonly<{
    */
   grupo?: string;
   /**
+   * Quanto a parte da faixa mudou desde o início da partida, em pontos de
+   * eleitorado (camada C; +2,5 = ganhou dois pontos e meio). Falta quando não
+   * se moveu, para a tela não escrever "0,0".
+   */
+  variacao?: number;
+  /**
    * O bolso médio de quem está na faixa, em moeda do país por ano (População
    * camada B). Falta quando o mundo não tem a tabela de renda.
    */

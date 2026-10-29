@@ -77,6 +77,14 @@ function porMes(porAno: number): string {
   })}`;
 }
 
+/** "+2,5 pts": quanto a faixa se moveu desde o início, em pontos de eleitorado. */
+function pontos(variacao: number): string {
+  const sinal = variacao > 0 ? "+" : "−";
+  return `${sinal}${Math.abs(variacao).toLocaleString("pt-BR", {
+    maximumFractionDigits: 1,
+  })} pts`;
+}
+
 function porcento(parte: number): string {
   return `${(parte * 100).toLocaleString("pt-BR", {
     maximumFractionDigits: 1,
@@ -248,6 +256,18 @@ export function Censo({
                     </span>
                     <strong className="censo-parte">
                       {porcento(faixa.parte)}
+                      {faixa.variacao === undefined ? null : (
+                        <small
+                          className={
+                            faixa.variacao > 0
+                              ? "censo-variacao subiu"
+                              : "censo-variacao caiu"
+                          }
+                          title="Desde o início da partida, em pontos de eleitorado"
+                        >
+                          {pontos(faixa.variacao)}
+                        </small>
+                      )}
                     </strong>
                   </li>
                 ))}

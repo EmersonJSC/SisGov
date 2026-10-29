@@ -8297,6 +8297,31 @@ span.el-mini {
   font-size: 13.5px;
 }
 
+/*
+  O movimento desde o início da partida (camada C). Sem cor de "bom" ou
+  "ruim": mais desempregados não é um julgamento, é um fato. A seta é só
+  direção, em tom neutro que muda de lado.
+*/
+.censo-parte {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.censo-variacao {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.censo-variacao.subiu {
+  color: light-dark(#2f6e8f, #6fb4d6);
+}
+
+.censo-variacao.caiu {
+  color: light-dark(#a0612e, #d89a63);
+}
+
 .censo-rodape {
   margin-top: 16px;
   max-width: 62ch;

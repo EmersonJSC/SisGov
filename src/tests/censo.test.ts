@@ -118,4 +118,37 @@ describe("censo da população", () => {
       ocupacao.faixas.find((f) => f.id === id)!.bolso!.sobra;
     expect(sobra("desempregado")).toBeLessThan(sobra("carteira"));
   });
+
+  it("no início da partida ninguém se moveu: a variação é de décimos de ponto", () => {
+    const valores = partida().game.execution.values;
+    for (const atributo of censoDoPais(partida().content, valores))
+      for (const faixa of atributo.faixas)
+        expect(Math.abs(faixa.variacao ?? 0), faixa.id).toBeLessThan(0.5);
+  });
+
+  it("desemprego sobe: o desempregado ganha pontos e quem tem carteira perde", () => {
+    const valores = { ...partida().game.execution.values, desemprego: 25 };
+    const ocupacao = censoDoPais(partida().content, valores).find(
+      (a) => a.id === "ocupacao",
+    )!;
+    const variacao = (id: string) =>
+      ocupacao.faixas.find((f) => f.id === id)?.variacao ?? 0;
+    expect(variacao("desempregado")).toBeGreaterThan(5);
+    expect(variacao("carteira")).toBeLessThan(0);
+  });
+
+  it("faixa que não se moveu não traz o campo, para a tela não escrever 0,0", () => {
+    const valores = { ...partida().game.execution.values, desemprego: 25 };
+    const renda = censoDoPais(partida().content, valores).find(
+      (a) => a.id === "renda",
+    )!;
+    // A renda não muda com o emprego neste desenho (o desempregado herda a faixa);
+    // por isso a maior parte das faixas de renda mexe só pela troca de peso.
+    const ocupacao = censoDoPais(partida().content, valores).find(
+      (a) => a.id === "ocupacao",
+    )!;
+    const aposentados = ocupacao.faixas.find((f) => f.id === "aposentado")!;
+    expect(aposentados).not.toHaveProperty("variacao");
+    expect(renda.faixas.length).toBeGreaterThan(0);
+  });
 });

@@ -33,6 +33,7 @@ export function censoDoPais(
     rotulos,
   } = congresso;
   const bolsos = eleitorado?.bolsos ?? [];
+  const antes = partesDoInicio(content, valores);
   return atributos.map((atributo, i) => {
     const soma = new Map<string, number>();
     // O bolso da faixa é a média do bolso de quem está nela, pesada pelo
@@ -67,11 +68,17 @@ export function censoDoPais(
                   sobra: (b.ganha - b.paga) / peso,
                 }
               : undefined;
+          const parte = total > 0 ? peso / total : 0;
+          const variacao = antes
+            ? (parte - (antes.get(`${atributo}=${id}`) ?? 0)) * PONTOS
+            : 0;
           return {
             id,
             nome: rotulos?.faixas[`${atributo}=${id}`] ?? id,
             /** Parte do eleitorado, de 0 a 1. */
-            parte: total > 0 ? peso / total : 0,
+            parte,
+            // Em décimos de ponto: abaixo disso é a mesma foto, não movimento.
+            ...(Math.abs(variacao) >= MENOR_VARIACAO ? { variacao } : {}),
             // Faixa sem grupo existe na simulação e não tem bolha na tela:
             // nenhuma lei a faz mexer à vista do jogador.
             ...(grupo ? { grupo } : {}),
@@ -80,4 +87,39 @@ export function censoDoPais(
         }),
     };
   });
+}
+
+/** Parte do eleitorado vira ponto de eleitorado. */
+const PONTOS = 100;
+/** Variação menor que um décimo de ponto não aparece. */
+const MENOR_VARIACAO = 0.1;
+
+/**
+ * A parte de cada faixa (`atributo=valor`) no país do início da partida: o
+ * mesmo eleitorado vivo com o desemprego e a informalidade que os perfis
+ * representam (os do país). Sem esses números no país, não há de onde medir e
+ * o censo não fala de movimento.
+ */
+function partesDoInicio(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): ReadonlyMap<string, number> | undefined {
+  const fixo = content.manifest.congresso;
+  const inicial = content.initialState.indicesIniciais;
+  if (!fixo?.emprego || !inicial) return undefined;
+  const inicio = congressoVivo(fixo, {
+    ...valores,
+    desemprego: inicial.desemprego ?? 0,
+    informalidade: fixo.emprego.informalidadeInicial,
+  });
+  const soma = new Map<string, number>();
+  for (const perfil of inicio.perfis)
+    inicio.atributos.forEach((atributo, i) => {
+      const valor = inicio.valores[atributo]?.[perfil[i + 1]];
+      if (valor === undefined) return;
+      const chave = `${atributo}=${valor}`;
+      soma.set(chave, (soma.get(chave) ?? 0) + perfil[0]);
+    });
+  const total = inicio.perfis.reduce((t, p) => t + p[0], 0);
+  return new Map([...soma].map(([chave, peso]) => [chave, peso / total]));
 }
