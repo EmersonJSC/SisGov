@@ -178,6 +178,11 @@ export type CongressManifest = {
     empurroes: Readonly<Record<string, number>>;
   }>[];
   bolso?: Readonly<{
+    /**
+     * O salário mínimo como piso de quem tem fonte com `seguePiso`: a variável
+     * em % da mediana dos salários e quanto a mediana vale do salário médio.
+     */
+    piso?: Readonly<{ variavel: string; medianaSobreMedia: number }>;
     fontes: Readonly<
       Record<
         string,
@@ -186,6 +191,8 @@ export type CongressManifest = {
           trabalha: boolean;
           /** Vive dos lucros do motor, e não da massa salarial. */
           capital?: boolean;
+          /** A renda não cai abaixo do salário mínimo (`bolso.piso`). */
+          seguePiso?: boolean;
           porRenda?: Readonly<Record<string, number>>;
           /** Variável do motor que paga essa gente por ano, quando ela não trabalha. */
           beneficio?: string;

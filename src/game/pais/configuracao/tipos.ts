@@ -165,6 +165,7 @@ export type PopulacaoDoMundo = {
   }[];
   /** De onde vem o dinheiro de cada perfil (População camada B). */
   bolso?: {
+    piso?: { variavel: string; medianaSobreMedia: number };
     fontes: Record<
       string,
       {
@@ -172,6 +173,7 @@ export type PopulacaoDoMundo = {
         trabalha: boolean;
         /** Vive dos lucros do motor, e não da massa salarial. */
         capital?: boolean;
+        seguePiso?: boolean;
         porRenda?: Record<string, number>;
         beneficio?: string;
         reajuste?: string;

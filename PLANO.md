@@ -70,7 +70,7 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 12. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
     - **Chutes da população para conferir na calibragem** (lista única, 30/out; cada um também tem o aviso no próprio arquivo). Todos são de direção, sem dado:
       - Multiplicadores de renda por ocupação × faixa (`mundo/populacao.json`, `bolso`): ancorados a olho na PNAD. Hoje o pobre com carteira ganha R$ 1.862/mês e paga 35% disso.
-      - **Piso**: a renda de quem está na faixa pobre deve seguir o salário mínimo da lei (hoje o mínimo é só um índice no motor e não entra no bolso).
+      - **Piso** (feito 30/out): carteira e servidor (`seguePiso`) não ganham menos que o salário mínimo (`salario_minimo_efetivo` × mediana/média 0,71, chute em `populacao.json`). Só sobe: cortar o mínimo não baixa o bolso; quando pega, a soma dos perfis deixa de fechar com a massa do motor. Neutro no início (66%). Script: `scripts/teste/piso-minimo.ts`.
       - Imposto proporcional: o real é regressivo no consumo e progressivo na renda.
       - Rótulo "sobra por mês": é renda depois do imposto, sem custo de vida; pode enganar.
       - Empresário R$ 95 mil/mês de sobra: `lucros` repartido por 6,7% do eleitorado.

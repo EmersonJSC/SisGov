@@ -66,6 +66,7 @@ function lerPerfis(congresso: CongressManifest) {
       fonte: { id: ocupacao, nome: fonte?.nome ?? ocupacao },
       trabalha: fonte?.trabalha ?? false,
       capital: fonte?.capital ?? false,
+      seguePiso: fonte?.seguePiso ?? false,
       multiplicador: fonte?.porRenda?.[faixa] ?? SEM_TABELA,
     };
   });
@@ -91,7 +92,9 @@ function somaPesada(
  * A mesma conta, sobre um manifesto qualquer (o fixo ou o eleitorado vivo).
  *
  * `regua` é o eleitorado de onde sai a média dos multiplicadores. Sem ela, é o
- * próprio manifesto e a média fecha com `salarioMedio`. Com o eleitorado do
+ * próprio manifesto e a média fecha com `salarioMedio`. `pisoPorAno` é o
+ * salário mínimo por ano: quem segue o piso não ganha menos que ele (só sobe;
+ * quando pega, a soma deixa de fechar com a massa do motor). Com o eleitorado do
  * início, quem passa para o informal ganha menos e quem fica não ganha aumento
  * fantasma; o custo é a soma dos perfis sair da massa do motor quando a
  * composição muda, porque o motor não baixa o salário médio com a
@@ -102,6 +105,7 @@ export function rendasDoManifesto(
   salarioMedio: number,
   razaoLucros: number,
   regua: CongressManifest = congresso,
+  pisoPorAno = 0,
 ): readonly RendaDoPerfil[] {
   if (!congresso.bolso?.fontes) return [];
   const lido = lerPerfis(congresso);
@@ -117,9 +121,11 @@ export function rendasDoManifesto(
   const escalaCapital =
     capitalPesado > 0 ? (razaoLucros * trabalhoPorPessoa) / capitalPesado : 0;
 
-  return lido.map(({ fonte, trabalha, capital, multiplicador }) => ({
+  return lido.map(({ fonte, trabalha, capital, seguePiso, multiplicador }) => ({
     fonte,
-    porAno: trabalha ? multiplicador * escala : 0,
+    porAno: trabalha
+      ? Math.max(multiplicador * escala, seguePiso ? pisoPorAno : 0)
+      : 0,
     capitalPorAno: capital ? multiplicador * escalaCapital : 0,
   }));
 }
@@ -241,6 +247,7 @@ export function bolsosDoEleitorado(
     numero(valores, "salario_medio"),
     massa > 0 ? lucros / massa : 0,
     eleitoradoDoInicio(content, valores),
+    pisoSalarial(manifesto, valores),
   );
   if (!tabela || rendas.length === 0) return undefined;
 
@@ -329,6 +336,19 @@ export function bolsosDoEleitorado(
     return { fonte, ganha, paga, sobra: ganha - paga };
   });
   return { manifesto, bolsos };
+}
+
+/** O salário mínimo em moeda por ano; 0 se o mundo não declara o piso. */
+function pisoSalarial(
+  manifesto: CongressManifest,
+  valores: Readonly<Record<string, number>>,
+): number {
+  const piso = manifesto.bolso?.piso;
+  return piso
+    ? (numero(valores, piso.variavel) / POR_CENTO) *
+        piso.medianaSobreMedia *
+        numero(valores, "salario_medio")
+    : 0;
 }
 
 /** Imposto sobre o lucro das empresas e sobre o que elas distribuem. */

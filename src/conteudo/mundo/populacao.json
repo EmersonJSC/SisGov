@@ -137,10 +137,12 @@
   },
   "bolsoNota": "De onde vem o dinheiro de cada perfil e quanto ele ganha (População, camada B). O multiplicador é sobre o salário médio do país e é normalizado na leitura para a média ponderada de quem trabalha dar exatamente 1 — a repartição não cria nem some dinheiro. Ocupação com trabalha=false não entra na massa salarial: recebe por benefício. Primeira calibragem a olho, ancorada na ordem de grandeza da PNAD Contínua (rendimento por posição na ocupação); a conferir. Quem não trabalha pode declarar `beneficio`: o nome da variável do motor que paga essa gente por ano. Quem não declara não recebe.",
   "bolso": {
+    "piso": { "variavel": "salario_minimo_efetivo", "medianaSobreMedia": 0.71 },
     "fontes": {
       "carteira": {
         "nome": "Com carteira assinada",
         "trabalha": true,
+        "seguePiso": true,
         "porRenda": {
           "pobre": 0.55,
           "media": 1.15,
@@ -159,6 +161,7 @@
       "servidor": {
         "nome": "Servidores públicos",
         "trabalha": true,
+        "seguePiso": true,
         "porRenda": {
           "pobre": 0.7,
           "media": 1.5,

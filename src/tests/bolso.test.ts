@@ -495,3 +495,47 @@ describe("quem pagou a conta", () => {
     expect(conta.some((c) => c.porMes > 0)).toBe(true);
   });
 });
+
+describe("o piso do salário mínimo no bolso", () => {
+  /** Ganho anual de quem tem essa ocupação e faixa, com o mínimo em `minimo`. */
+  function ganhoComMinimo(ocupacao: string, faixa: string, minimo: number) {
+    const base = osValores();
+    const vs = { ...base, salario_minimo_efetivo: minimo };
+    const e = bolsosDoEleitorado(pacote(), vs)!;
+    const c = e.manifesto;
+    const i = c.perfis.findIndex(
+      (p, k) =>
+        c.valores.renda?.[p[coluna("renda")]] === faixa &&
+        e.bolsos[k].fonte.id === ocupacao,
+    );
+    if (i < 0) throw new Error(`sem perfil ${ocupacao}/${faixa}`);
+    return e.bolsos[i].ganha;
+  }
+
+  it("subir o mínimo sobe o ganho do pobre com carteira; baixar não tira nada", () => {
+    const hoje = osValores().salario_minimo_efetivo;
+    const antes = ganhoComMinimo("carteira", "pobre", hoje);
+    expect(ganhoComMinimo("carteira", "pobre", 90)).toBeGreaterThan(antes);
+    expect(ganhoComMinimo("carteira", "pobre", 30)).toBeCloseTo(antes, 6);
+  });
+
+  it("o mínimo no valor de hoje não muda ninguém (neutro no início)", () => {
+    const vs = osValores();
+    const semPiso = bolsosDoEleitorado(pacote(), {
+      ...vs,
+      salario_minimo_efetivo: 0,
+    })!;
+    const comPiso = bolsosDoEleitorado(pacote(), vs)!;
+    comPiso.bolsos.forEach((b, i) =>
+      expect(b.ganha).toBeCloseTo(semPiso.bolsos[i].ganha, 6),
+    );
+  });
+
+  it("informal não segue o piso", () => {
+    const hoje = osValores().salario_minimo_efetivo;
+    expect(ganhoComMinimo("informal", "pobre", 100)).toBeCloseTo(
+      ganhoComMinimo("informal", "pobre", hoje),
+      6,
+    );
+  });
+});
