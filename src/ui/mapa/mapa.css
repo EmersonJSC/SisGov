@@ -8301,3 +8301,26 @@ span.el-mini {
   margin-top: 16px;
   max-width: 62ch;
 }
+
+/* no bolso de quem (População camada B) */
+.quem-pagou {
+  margin: 4px 0 12px;
+  padding: 10px 12px;
+  border-left: 3px solid light-dark(#c9c2ae, #3b424c);
+  background: light-dark(#f3efe4, #1d2129);
+  border-radius: 0 7px 7px 0;
+}
+
+.quem-pagou h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: light-dark(#6b7280, #9aa5b4);
+}
+
+.quem-pagou p {
+  margin: 3px 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+}

@@ -1,4 +1,5 @@
 import type { GameState } from "../../game/createGame";
+import { quemPagouAConta } from "./bolso";
 import { prepareGameQuarter } from "../../game/prepareGameQuarter";
 import { commitGameQuarter } from "../../game/commitGameQuarter";
 import { advancePolicyImplementation } from "../../game/advancePolicyImplementation";
@@ -165,6 +166,13 @@ export function preverLei(
         states.find((state) => state.policyDefinitionId === leiId)
           ?.implementedLevel ?? nivel,
     );
+  // Em quem a lei bate no bolso: o país de antes contra o de depois, no
+  // último mês calculado (População camada B).
+  const quemPagou = quemPagouAConta(
+    partida.content,
+    base.value.valores[meses - 1] ?? {},
+    alt.value.valores[meses - 1] ?? {},
+  );
   return {
     ok: true,
     value: {
@@ -172,6 +180,7 @@ export function preverLei(
       nivel,
       implantacao,
       efeitos,
+      ...(quemPagou.length > 0 ? { quemPagou } : {}),
       ...(interrompida ? { interrompida } : {}),
     },
   };

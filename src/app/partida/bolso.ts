@@ -153,3 +153,51 @@ export function bolsosDosPerfis(
     return { fonte, ganha, paga, sobra: ganha - paga };
   });
 }
+
+export type QuemPagou = Readonly<{
+  /** Nome da faixa, como o censo a escreve: "Informais e de aplicativo". */
+  faixa: string;
+  /** Parte do eleitorado que está nela, de 0 a 1. */
+  parte: number;
+  /** Diferença no que sobra, por mês. Negativa quando essa gente perde. */
+  porMes: number;
+}>;
+
+const MESES = 12;
+/** Abaixo de um real por mês a diferença é ruído de arredondamento. */
+const RUIDO = 1;
+
+/**
+ * Em quem a lei bate, por ocupação: o que mudou no que sobra entre o país de
+ * antes e o de depois. Da maior perda para o maior ganho; faixa sem diferença
+ * fica de fora, então lei que não mexe em dinheiro não inventa vítima.
+ */
+export function quemPagouAConta(
+  content: ResolvedPackage,
+  antes: Readonly<Record<string, number>>,
+  depois: Readonly<Record<string, number>>,
+): readonly QuemPagou[] {
+  const congresso = content.manifest.congresso;
+  if (!congresso) return [];
+  const bolsoAntes = bolsosDosPerfis(content, antes);
+  const bolsoDepois = bolsosDosPerfis(content, depois);
+  if (bolsoAntes.length === 0) return [];
+
+  const soma = new Map<string, { nome: string; peso: number; dif: number }>();
+  for (const [i, perfil] of congresso.perfis.entries()) {
+    const fonte = bolsoAntes[i].fonte;
+    const acc = soma.get(fonte.id) ?? { nome: fonte.nome, peso: 0, dif: 0 };
+    acc.peso += perfil[0];
+    acc.dif += perfil[0] * (bolsoDepois[i].sobra - bolsoAntes[i].sobra);
+    soma.set(fonte.id, acc);
+  }
+
+  return [...soma.values()]
+    .map(({ nome, peso, dif }) => ({
+      faixa: nome,
+      parte: peso,
+      porMes: peso > 0 ? dif / peso / MESES : 0,
+    }))
+    .filter(({ porMes }) => Math.abs(porMes) >= RUIDO)
+    .sort((a, b) => a.porMes - b.porMes);
+}

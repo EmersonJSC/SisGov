@@ -3,6 +3,7 @@ import type { GameState } from "../../game/createGame";
 import { BOLHAS_DO_ORCAMENTO } from "./contas";
 import type { ResultadoDoCongresso } from "./tramitacao";
 import type { EleicaoNoTurno } from "./eleicao";
+import type { QuemPagou } from "./bolso";
 
 export type Resultado<T> =
   { ok: true; value: T } | { ok: false; erros: readonly string[] };
@@ -610,6 +611,11 @@ export type PrevisaoLei = Readonly<{
    * calculados e aqui diz por quê (SG159).
    */
   interrompida?: string;
+  /**
+   * Em quem a lei bate no bolso, por ocupação (População camada B). Vazio
+   * quando ela não mexe em dinheiro de ninguém.
+   */
+  quemPagou?: readonly QuemPagou[];
 }>;
 
 /** Um ponto da bússola (V1-10): de −10 a +10 em cada eixo. */

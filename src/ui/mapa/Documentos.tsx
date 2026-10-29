@@ -902,6 +902,38 @@ export function DocumentoLei({
           {mudou && calculando && !previsao ? (
             <p className="vazio">Simulando…</p>
           ) : null}
+          {/*
+            Em quem a lei bate no bolso (População camada B). Vem antes das
+            setas porque é o que o jogador sente: a seta explica a causa, o
+            bolso diz quem pagou.
+          */}
+          {mudou && previsao?.quemPagou?.length ? (
+            <div className="quem-pagou">
+              <h3>No bolso de quem</h3>
+              {previsao.quemPagou.map((linha) => (
+                /*
+                  "a menos"/"a mais" em vez de "perdem"/"ganham": o nome da
+                  faixa ora é plural ("Empresários") ora singular
+                  ("Agronegócio patronal"), e verbo nenhum concorda com os
+                  dois.
+                */
+                <p key={linha.faixa}>
+                  <b>{linha.faixa}</b>:{" "}
+                  <b>
+                    R${" "}
+                    {Math.abs(linha.porMes).toLocaleString("pt-BR", {
+                      maximumFractionDigits: 0,
+                    })}
+                  </b>{" "}
+                  {linha.porMes < 0 ? "a menos" : "a mais"} por mês —{" "}
+                  {(linha.parte * 100).toLocaleString("pt-BR", {
+                    maximumFractionDigits: 0,
+                  })}
+                  % do eleitorado.
+                </p>
+              ))}
+            </div>
+          ) : null}
           {mudou && efeitoContas !== null && Math.abs(efeitoContas) >= 100 ? (
             <div className="efeito-linha contas com-texto">
               <Icone

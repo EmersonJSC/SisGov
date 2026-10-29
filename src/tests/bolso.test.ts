@@ -8,7 +8,11 @@
  */
 import { describe, expect, it } from "vitest";
 import type { ResolvedPackage } from "../engine";
-import { bolsosDosPerfis, rendasDosPerfis } from "../app/partida/bolso";
+import {
+  bolsosDosPerfis,
+  quemPagouAConta,
+  rendasDosPerfis,
+} from "../app/partida/bolso";
 import { criarPartida } from "../app/partida";
 
 let guardada: ReturnType<typeof criarPartida> | undefined;
@@ -222,5 +226,42 @@ describe("o que o perfil paga e o que lhe sobra", () => {
 
   it("quem não tem benefício declarado não recebe nada por fora", () => {
     expect(bolsoDe("ocupacao", "fora").ganha).toBe(0);
+  });
+});
+
+describe("quem pagou a conta", () => {
+  it("lei que não mexe em dinheiro não tem quem pague a conta", () => {
+    expect(quemPagouAConta(pacote(), osValores(), osValores())).toEqual([]);
+  });
+
+  it("mais imposto sobre consumo aparece como perda, e a maior vem antes", () => {
+    const conta = quemPagouAConta(pacote(), osValores(), {
+      ...osValores(),
+      arrecadacao_consumo: osValores().arrecadacao_consumo * 1.2,
+    });
+    expect(conta.length).toBeGreaterThan(0);
+    expect(conta[0].porMes).toBeLessThan(0);
+    const perdas = conta.map((c) => c.porMes);
+    expect(perdas).toEqual([...perdas].sort((a, b) => a - b));
+  });
+
+  it("a conta diz de que tamanho é a gente que pagou", () => {
+    const conta = quemPagouAConta(pacote(), osValores(), {
+      ...osValores(),
+      arrecadacao_consumo: osValores().arrecadacao_consumo * 1.2,
+    });
+    for (const linha of conta) {
+      expect(linha.parte).toBeGreaterThan(0);
+      expect(linha.parte).toBeLessThanOrEqual(1);
+      expect(linha.faixa).toBeTruthy();
+    }
+  });
+
+  it("salário médio maior aparece como ganho, não como perda", () => {
+    const conta = quemPagouAConta(pacote(), osValores(), {
+      ...osValores(),
+      salario_medio: osValores().salario_medio * 1.1,
+    });
+    expect(conta.some((c) => c.porMes > 0)).toBe(true);
   });
 });
