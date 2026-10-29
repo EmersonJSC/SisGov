@@ -1,4 +1,5 @@
 import type { ResolvedPackage } from "../../engine";
+import { bolsosDosPerfis } from "./bolso";
 import type { VisaoCensoAtributo } from "./tipos";
 
 /**
@@ -15,16 +16,33 @@ import type { VisaoCensoAtributo } from "./tipos";
  */
 export function censoDoPais(
   content: ResolvedPackage,
+  valores: Readonly<Record<string, number>> = {},
 ): readonly VisaoCensoAtributo[] {
   const congresso = content.manifest.congresso;
   if (!congresso) return [];
-  const { atributos, valores, perfis, segmentoDe, rotulos } = congresso;
+  const {
+    atributos,
+    valores: valoresDoPerfil,
+    perfis,
+    segmentoDe,
+    rotulos,
+  } = congresso;
+  const bolsos = bolsosDosPerfis(content, valores);
   return atributos.map((atributo, i) => {
     const soma = new Map<string, number>();
-    for (const perfil of perfis) {
-      const valor = valores[atributo]?.[perfil[i + 1]];
+    // O bolso da faixa é a média do bolso de quem está nela, pesada pelo
+    // tamanho de cada perfil.
+    const bolso = new Map<string, { ganha: number; paga: number }>();
+    for (const [j, perfil] of perfis.entries()) {
+      const valor = valoresDoPerfil[atributo]?.[perfil[i + 1]];
       if (valor === undefined) continue;
       soma.set(valor, (soma.get(valor) ?? 0) + perfil[0]);
+      const b = bolsos[j];
+      if (!b) continue;
+      const acc = bolso.get(valor) ?? { ganha: 0, paga: 0 };
+      acc.ganha += perfil[0] * b.ganha;
+      acc.paga += perfil[0] * b.paga;
+      bolso.set(valor, acc);
     }
     const total = [...soma.values()].reduce((t, p) => t + p, 0);
     return {
@@ -35,6 +53,15 @@ export function censoDoPais(
         .sort(([, a], [, b]) => b - a)
         .map(([id, peso]) => {
           const grupo = segmentoDe[`${atributo}=${id}`];
+          const b = bolso.get(id);
+          const medio =
+            b && peso > 0
+              ? {
+                  ganha: b.ganha / peso,
+                  paga: b.paga / peso,
+                  sobra: (b.ganha - b.paga) / peso,
+                }
+              : undefined;
           return {
             id,
             nome: rotulos?.faixas[`${atributo}=${id}`] ?? id,
@@ -43,6 +70,7 @@ export function censoDoPais(
             // Faixa sem grupo existe na simulação e não tem bolha na tela:
             // nenhuma lei a faz mexer à vista do jogador.
             ...(grupo ? { grupo } : {}),
+            ...(medio ? { bolso: medio } : {}),
           };
         }),
     };

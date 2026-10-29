@@ -324,6 +324,11 @@ export type VisaoCensoFaixa = Readonly<{
    * faixa: ela existe na simulação e o jogador não a vê mexer.
    */
   grupo?: string;
+  /**
+   * O bolso médio de quem está na faixa, em moeda do país por ano (População
+   * camada B). Falta quando o mundo não tem a tabela de renda.
+   */
+  bolso?: Readonly<{ ganha: number; paga: number; sobra: number }>;
 }>;
 
 /** Um atributo do censo com o país repartido por ele (Grupos, camada A). */

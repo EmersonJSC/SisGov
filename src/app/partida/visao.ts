@@ -448,7 +448,7 @@ export function verPartida(partida: Partida): VisaoPartida {
     contas: lerContas(content, values),
     orcamento: linhasDoOrcamento(partida, values),
     grupos: gruposDaPartida(partida, values, alteradas),
-    censo: censoDoPais(partida.content),
+    censo: censoDoPais(partida.content, values),
     perfis: partida.content.manifest.congresso?.perfis.length ?? 0,
     ocorrencias: ocorrenciasDaPartida(partida),
     ...(pressao ? { pressao } : {}),

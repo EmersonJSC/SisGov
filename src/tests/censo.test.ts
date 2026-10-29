@@ -69,6 +69,17 @@ describe("censo da população", () => {
     expect(verPartida(partida()).perfis).toBeGreaterThan(100);
   });
 
+  it("cada faixa do censo diz quanto ganha, paga e sobra", () => {
+    const renda = verPartida(partida()).censo.find((a) => a.id === "renda")!;
+    for (const f of renda.faixas) expect(f.bolso?.sobra).toBeGreaterThan(0);
+  });
+
+  it("a faixa rica sobra mais que a pobre", () => {
+    const renda = verPartida(partida()).censo.find((a) => a.id === "renda")!;
+    const parte = (id: string) => renda.faixas.find((f) => f.id === id)!.bolso!;
+    expect(parte("rica").sobra).toBeGreaterThan(parte("pobre").sobra);
+  });
+
   it("a visão entrega o censo, como entrega as bolhas", () => {
     expect(verPartida(partida()).censo.length).toBeGreaterThan(0);
   });
