@@ -7,17 +7,21 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
 ## Por onde continuar
 
-1. **Lote de redação das faixas escritas** (país em frases, jeito 3): só
-   índice e jargão — Gini, HHI, PIB em índice. É braçal e agora é nosso (o
-   GPT saiu em 28/out): fazer em pedaços de uma conversa, por área, com um
-   script que imprime as faixas escritas para conferir de uma vez.
-2. **O boletim ainda mostra pontos do motor** no número grande ("39 / 100")
-   em vez da medida real (38,6% dos ocupados). A regra 2.7 do documento pede
-   a medida de verdade.
-3. **Sujeitos que a heurística não cobre**: `scripts/teste/frases-das-bolhas.ts`
+1. **O número grande do boletim** ainda mostra pontos do motor ("39 / 100")
+   em vez da medida real (38,6% dos ocupados). É `escalaReal` em
+   `src/ui/mapa/formatos.ts`, que só converte quando `medida.convertida`:
+   uma função, e todas as bolhas com medida melhoram de uma vez. É o último
+   passo para fechar país em frases.
+2. **Sujeitos que a heurística não cobre**: `scripts/teste/frases-das-bolhas.ts`
    lista as 137 bolhas sem frase. Várias são gente de verdade ("% que confia
    no Congresso", "comparecimento na eleição") e ganham frase com uma linha em
    `SUJEITOS`, dentro de `src/app/partida/frase.ts`.
+
+## Fora da mecânica, de propósito
+
+As **faixas escritas** (Gini, HHI, PIB em índice) não entram aqui: o autor
+decidiu em 28/out que texto se julga jogando, na revisão manual bolha por
+bolha e lei por lei, que vem mais para o fim.
 
 ## O que fechou agora
 
