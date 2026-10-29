@@ -211,8 +211,7 @@ describe("o eleitorado vivo: informalidade", () => {
 describe("o eleitorado vivo: sem a tabela", () => {
   it("país sem bloco emprego devolve o mesmo manifesto", () => {
     const m = manifesto();
-    const { emprego: _fora, ...semEmprego } = m;
-    const sem = semEmprego as CongressManifest;
+    const sem: CongressManifest = { ...m, emprego: undefined };
     expect(congressoVivo(sem, { ...PAIS, desemprego: 30 })).toBe(sem);
   });
 
