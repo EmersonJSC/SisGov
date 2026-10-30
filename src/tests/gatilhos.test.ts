@@ -6,7 +6,8 @@ import {
   gatilhosDoMundo,
   reacoesDosGrupos,
 } from "../game/gatilhos";
-import { aprovacaoViva } from "../game/congresso";
+import { aprovacaoViva, retratoDoCongresso } from "../game/congresso";
+import { valoresComReacao } from "../app/partida/bussola";
 import { bussolaDoMundo, faixaDaLei, vetorNoNivel } from "../game/bussola";
 import type { PolicyState } from "../game/leis/policyState";
 
@@ -226,6 +227,52 @@ describe("gatilhos fiscais", () => {
   it("o motor guarda o resultado de cada turno no caminho", () => {
     const inicial = partida.game.compass!.caminho[0].resultado;
     expect(typeof inicial).toBe("number");
+  });
+});
+
+describe("eleição e Congresso leem a reação (M7.3)", () => {
+  const comCorte = () => {
+    const policies = ["piso-saude", "gasto-com-defesa", "piso-educacao"].map(
+      (id) => {
+        const nivel = partida.game.policies.find(
+          (p) => p.policyDefinitionId === id,
+        )!.desiredLevel;
+        return mexida(id, nivel, nivel * 0.5, 0);
+      },
+    );
+    const resto = partida.game.policies.filter(
+      (p) =>
+        !policies.some((q) => q.policyDefinitionId === p.policyDefinitionId),
+    );
+    return {
+      ...partida,
+      game: { ...partida.game, policies: [...resto, ...policies] },
+    };
+  };
+
+  it("sem gatilho os valores são os do motor", () => {
+    expect(valoresComReacao(partida)).toBe(partida.game.execution.values);
+  });
+
+  it("com o corte, a satisfação dos grupos muda e o objeto é reaproveitado", () => {
+    const p = comCorte();
+    const v = valoresComReacao(p);
+    const base = p.game.execution.values;
+    expect(v.grupo_pobres).toBeLessThan(base.grupo_pobres);
+    expect(v.grupo_empresarios).toBeGreaterThan(base.grupo_empresarios);
+    expect(valoresComReacao(p)).toBe(v);
+  });
+
+  it("a disposição das bancadas muda com a reação", () => {
+    const p = comCorte();
+    const ler = (valores: Readonly<Record<string, number>>) =>
+      retratoDoCongresso({
+        content: p.content,
+        estado: p.game.congress!,
+        valores,
+        pontoDoJogador: { economia: 0, costumes: 0 },
+      }).map((b) => b.disposicao);
+    expect(ler(valoresComReacao(p))).not.toEqual(ler(p.game.execution.values));
   });
 });
 

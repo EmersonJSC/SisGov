@@ -32,7 +32,7 @@ const visaoDa = (r: Referencia): VisaoReferencia => ({
 });
 
 /** Os gatilhos ligados e como cada grupo reage a eles (M7.3). */
-export function reacoesDaPartida(partida: Partida) {
+export function reacoesDaPartida(partida: Pick<Partida, "content" | "game">) {
   const { content, game } = partida;
   const ativos = game.compass
     ? gatilhosAtivos(
@@ -44,6 +44,33 @@ export function reacoesDaPartida(partida: Partida) {
     : [];
   const reacoes = reacoesDosGrupos(ativos);
   return { ativos, reacoes, pontos: pontosDasReacoes(reacoes) };
+}
+
+const comReacao = new WeakMap<
+  object,
+  { chave: string; valores: Readonly<Record<string, number>> }
+>();
+
+/**
+ * Os valores do motor com a reação dos gatilhos somada à satisfação dos
+ * grupos (0 a 100): é o que a eleição e o Congresso leem como opinião (M7.3).
+ * O mesmo objeto volta enquanto a reação não muda, para o eleitorado vivo
+ * (guardado por valores) não ser refeito à toa.
+ */
+export function valoresComReacao(
+  partida: Pick<Partida, "content" | "game">,
+): Readonly<Record<string, number>> {
+  const valores = partida.game.execution.values;
+  const pontos = reacoesDaPartida(partida).pontos;
+  const chave = JSON.stringify(pontos);
+  if (chave === "{}") return valores;
+  const guardado = comReacao.get(valores);
+  if (guardado?.chave === chave) return guardado.valores;
+  const novos = { ...valores };
+  for (const [id, p] of Object.entries(pontos))
+    novos[id] = Math.max(0, Math.min(100, (valores[id] ?? 50) + p));
+  comReacao.set(valores, { chave, valores: novos });
+  return novos;
 }
 
 export function verBussola(partida: Partida): VisaoBussola | undefined {

@@ -21,6 +21,7 @@ import {
   type Pesquisa,
   type ResultadoDaEleicao,
 } from "../../game/eleicao";
+import { valoresComReacao } from "./bussola";
 import type { Partida, Resultado } from "./tipos";
 
 export type VisaoPersonagem = Readonly<{
@@ -262,7 +263,7 @@ export function passarEleicao(partida: Partida): {
     content,
     pais: game.scenario.id,
     estado: e,
-    valores: game.execution.values,
+    valores: valoresComReacao(partida),
     congresso: game.congress,
     turno: game.currentTurn,
   });
@@ -289,7 +290,7 @@ export function passarEleicao(partida: Partida): {
           content,
           pais,
           estado: next.congress,
-          valores: next.execution.values,
+          valores: valoresComReacao({ content, game: next }),
           pontoDoJogador: pontoAtual(content, next.compass, next.policies),
           mandato: fim.estado.mandato - 1,
         }),

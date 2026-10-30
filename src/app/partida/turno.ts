@@ -1,3 +1,4 @@
+import { valoresComReacao } from "./bussola";
 import type { ResolvedPackage } from "../../engine";
 import {
   answerDilemma,
@@ -353,7 +354,7 @@ export function encerrarTurno(
           congress: passarTurnoNoCongresso({
             content,
             estado: comBussola.congress,
-            valores: comBussola.execution.values,
+            valores: valoresComReacao({ content, game: comBussola }),
             pontoDoJogador: pontoAtual(
               content,
               comBussola.compass,

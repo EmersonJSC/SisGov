@@ -3,6 +3,7 @@
  * Congresso, a votação no fim do turno, a medida provisória e os pedidos das
  * bancadas. O Congresso não aparece: recebe a lei e devolve o resultado.
  */
+import { valoresComReacao } from "./bussola";
 import type { PolicyFile, ResolvedPackage } from "../../engine";
 import type { GameState } from "../../game/createGame";
 import {
@@ -476,7 +477,7 @@ export function votarNoCongresso(
   const retrato = retratoDoCongresso({
     content,
     estado: inicio.congress,
-    valores: inicio.execution.values,
+    valores: valoresComReacao({ content, game: inicio }),
     pontoDoJogador: pontoDoJogador(content, inicio),
   });
   const capacidade = capacidades(
@@ -785,7 +786,7 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
   const retrato = retratoDoCongresso({
     content,
     estado: game.congress,
-    valores: game.execution.values,
+    valores: valoresComReacao({ content, game }),
     pontoDoJogador: pontoDoJogador(content, game),
   });
   const nomeDa = (id: string) =>
