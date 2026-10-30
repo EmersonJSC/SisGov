@@ -85,6 +85,8 @@ export type EdicaoDoJornal = Readonly<{
   principal?: NoticiaDoJornal;
   /** As outras notícias, da maior para a menor. */
   noticias: readonly NoticiaDoJornal[];
+  /** Como a imprensa lê o rumo do governo (M7.3), neutra sem gatilho. */
+  leitura?: string;
   indices: readonly IndiceDoJornal[];
   /** Posts: a rua, os grupos de pressão, o mercado e quem está fora. */
   opinioes: readonly OpiniaoDoJornal[];
@@ -324,7 +326,11 @@ const VOZ_DO_GRUPO: Readonly<
 
 const chaveDoGrupo = (id: string) => id.replace(/^grupo[_-]/, "");
 
-function falaDoGrupo(g: VisaoGrupo, delta: number): OpiniaoDoJornal {
+function falaDoGrupo(
+  g: VisaoGrupo,
+  delta: number,
+  reacao?: VisaoBussola["reacoes"][string],
+): OpiniaoDoJornal {
   const voz = VOZ_DO_GRUPO[chaveDoGrupo(g.id)] ?? {
     nome: g.nome,
     arroba: chaveDoGrupo(g.id),
@@ -334,7 +340,9 @@ function falaDoGrupo(g: VisaoGrupo, delta: number): OpiniaoDoJornal {
   const odeia = g.odeia[0]?.nome.toLowerCase();
   const s = g.satisfacao;
   let texto: string;
-  if (delta <= -1.5 && odeia)
+  // M7.3: um gatilho ligado dá a fala ao grupo que reage a ele.
+  if (reacao && reacao.pontos !== 0) texto = reacao.frase;
+  else if (delta <= -1.5 && odeia)
     texto = `Piorou de uns meses para cá. O que pesa mesmo é ${odeia}.`;
   else if (delta >= 1.5 && gosta)
     texto = `Melhorou, dá para sentir. ${cap(gosta)} fez diferença.`;
@@ -359,11 +367,15 @@ function falaDoGrupo(g: VisaoGrupo, delta: number): OpiniaoDoJornal {
       .join(" · "),
     texto,
     tom:
-      s >= 60 || delta >= 1.5
-        ? "melhora"
-        : s < 40 || delta <= -1.5
-          ? "piora"
-          : "neutro",
+      reacao && reacao.pontos !== 0
+        ? reacao.pontos > 0
+          ? "melhora"
+          : "piora"
+        : s >= 60 || delta >= 1.5
+          ? "melhora"
+          : s < 40 || delta <= -1.5
+            ? "piora"
+            : "neutro",
   };
 }
 
@@ -373,6 +385,7 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 function povo(
   visao: VisaoPartida,
   anterior: VisaoPartida | null,
+  reacoes: VisaoBussola["reacoes"] = {},
 ): OpiniaoDoJornal[] {
   const antes = new Map((anterior?.grupos ?? []).map((g) => [g.id, g]));
   const delta = (g: VisaoGrupo) =>
@@ -380,13 +393,22 @@ function povo(
   const grupos = [...visao.grupos];
   if (!grupos.length) return [];
   const escolhidos = new Set<VisaoGrupo>();
+  // quem reage a um gatilho fala primeiro: o mais forte entra sempre
+  const reagiu = [...grupos]
+    .filter((g) => reacoes[g.id]?.pontos)
+    .sort(
+      (a, b) => Math.abs(reacoes[b.id].pontos) - Math.abs(reacoes[a.id].pontos),
+    );
+  if (reagiu[0]) escolhidos.add(reagiu[0]);
   const porMudanca = [...grupos].sort(
     (a, b) => Math.abs(delta(b)) - Math.abs(delta(a)),
   );
   if (Math.abs(delta(porMudanca[0])) >= 1.5) escolhidos.add(porMudanca[0]);
   escolhidos.add(grupos[grupos.length - 1]); // o menos satisfeito
   escolhidos.add(grupos[0]); // o mais satisfeito
-  return [...escolhidos].slice(0, 3).map((g) => falaDoGrupo(g, delta(g)));
+  return [...escolhidos]
+    .slice(0, 3)
+    .map((g) => falaDoGrupo(g, delta(g), reacoes[g.id]));
 }
 
 function valor(visao: VisaoPartida, id: string): VisaoBolha | undefined {
@@ -554,6 +576,8 @@ export function montarJornal(
   historico: readonly FotoDoTurno[] = [],
   /** O rumo na bússola: vira uma notícia quando o governo anda (V1-13). */
   rumo?: VisaoBussola["rumo"],
+  /** M7.3: a bússola traz as reações dos grupos e a leitura da imprensa. */
+  bussola?: Pick<VisaoBussola, "reacoes" | "leitura">,
 ): EdicaoDoJornal {
   const doRumo = relatorio ? noticiaDoRumo(rumo) : undefined;
   const lista = [...noticias(visao, relatorio), ...(doRumo ? [doRumo] : [])];
@@ -573,9 +597,10 @@ export function montarJornal(
     manchete,
     ...(lista[0] ? { principal: lista[0] } : {}),
     noticias: lista.slice(1),
+    ...(bussola ? { leitura: bussola.leitura } : {}),
     indices: quadro,
     opinioes: [
-      ...povo(visao, anterior),
+      ...povo(visao, anterior, bussola?.reacoes),
       ...pressao(visao),
       ...mercado(visao, anterior),
       ...internacional(visao, anterior),

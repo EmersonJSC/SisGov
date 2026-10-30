@@ -1295,6 +1295,7 @@ function TelaPrincipalCarregada({
             relatorio,
             historico,
             visaoDaBussola?.rumo,
+            visaoDaBussola,
           )}
           data={trimestre(visao.turno)}
           numero={visao.turno + 1}

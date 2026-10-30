@@ -32,11 +32,23 @@ export type RegraDeGatilho =
     }>
   | Readonly<{ tipo: "rumo"; eixo: Eixo; sentido: 1 | -1; minimo: number }>;
 
+/** Como um grupo reage a um gatilho ligado (M7.3). */
+export type ReacaoDeGatilho = Readonly<{
+  /** Chave do grupo, sem o prefixo `grupo_`. */
+  grupo: string;
+  /** Pontos de satisfação, com sinal. */
+  pontos: number;
+  /** Só reage se as decisões do gatilho foram numa destas áreas. */
+  areas?: readonly string[];
+  frase: string;
+}>;
+
 export type DefinicaoDeGatilho = Readonly<{
   id: string;
   nome: string;
   frase: string;
   regra: RegraDeGatilho;
+  reacoes?: readonly ReacaoDeGatilho[];
 }>;
 
 export type GatilhosDoMundo = Readonly<{
@@ -45,6 +57,10 @@ export type GatilhosDoMundo = Readonly<{
   metodo: string;
   janela: number;
   minimoDeDecisoes: number;
+  /** Teto da soma dos pontos de reação de um grupo, para mais ou para menos. */
+  tetoDaReacao: number;
+  /** Frase da imprensa quando nenhum gatilho está ligado. */
+  semGatilho: string;
   gatilhos: readonly DefinicaoDeGatilho[];
 }>;
 
@@ -52,6 +68,8 @@ export type GatilhoAtivo = Readonly<{
   id: string;
   nome: string;
   frase: string;
+  /** Áreas em que caíram as decisões que ligaram o gatilho (vazio no rumo). */
+  areas: readonly string[];
 }>;
 
 export const gatilhosDoMundo = dadosDosGatilhos as unknown as GatilhosDoMundo;
@@ -148,27 +166,74 @@ export function gatilhosAtivos(
     mundo.janela,
     bussola,
   );
-  return mundo.gatilhos
-    .filter(({ regra }) => {
-      if (regra.tipo === "rumo")
-        return (
-          regra.sentido *
-            andouNoEixo(caminho, turno, mundo.janela, regra.eixo) >=
-          regra.minimo
-        );
-      const casam = decisoes.filter(
-        (d) =>
-          (!regra.areas || regra.areas.includes(d.area)) &&
-          (!regra.familias || regra.familias.includes(d.familia)) &&
-          (!regra.nivel ||
-            (regra.nivel === "subiu" ? d.deltaNivel > 0 : d.deltaNivel < 0)) &&
-          (!regra.eixo || regra.sentido! * d.deltaVetor[EIXO[regra.eixo]] > 0),
-      );
-      const areas = new Set(casam.map((d) => d.area));
-      return (
-        casam.length >= (regra.minimo ?? mundo.minimoDeDecisoes) &&
-        areas.size >= (regra.areasMinimas ?? 1)
-      );
-    })
-    .map(({ id, nome, frase }) => ({ id, nome, frase }));
+  return mundo.gatilhos.flatMap(({ id, nome, frase, regra }) => {
+    if (regra.tipo === "rumo")
+      return regra.sentido *
+        andouNoEixo(caminho, turno, mundo.janela, regra.eixo) >=
+        regra.minimo
+        ? [{ id, nome, frase, areas: [] }]
+        : [];
+    const casam = decisoes.filter(
+      (d) =>
+        (!regra.areas || regra.areas.includes(d.area)) &&
+        (!regra.familias || regra.familias.includes(d.familia)) &&
+        (!regra.nivel ||
+          (regra.nivel === "subiu" ? d.deltaNivel > 0 : d.deltaNivel < 0)) &&
+        (!regra.eixo || regra.sentido! * d.deltaVetor[EIXO[regra.eixo]] > 0),
+    );
+    const areas = [...new Set(casam.map((d) => d.area))];
+    return casam.length >= (regra.minimo ?? mundo.minimoDeDecisoes) &&
+      areas.length >= (regra.areasMinimas ?? 1)
+      ? [{ id, nome, frase, areas }]
+      : [];
+  });
 }
+
+/** Como um grupo está reagindo ao governo agora (M7.3). */
+export type ReacaoDoGrupo = Readonly<{
+  /** Soma dos pontos de satisfação, dentro do teto. */
+  pontos: number;
+  /** A frase da reação que mais pesa. */
+  frase: string;
+}>;
+
+/**
+ * As reações dos grupos aos gatilhos ligados, por id de grupo (`grupo_x`).
+ * Os pontos de cada grupo somam, com teto; a frase é a da reação mais forte.
+ */
+export function reacoesDosGrupos(
+  ativos: readonly GatilhoAtivo[],
+  mundo: GatilhosDoMundo = gatilhosDoMundo,
+): Readonly<Record<string, ReacaoDoGrupo>> {
+  const soma = new Map<string, { pontos: number; forte: ReacaoDeGatilho }>();
+  for (const ativo of ativos) {
+    const def = mundo.gatilhos.find((g) => g.id === ativo.id);
+    for (const r of def?.reacoes ?? []) {
+      if (r.areas && !r.areas.some((a) => ativo.areas.includes(a))) continue;
+      const antes = soma.get(r.grupo);
+      soma.set(r.grupo, {
+        pontos: (antes?.pontos ?? 0) + r.pontos,
+        forte:
+          antes && Math.abs(antes.forte.pontos) >= Math.abs(r.pontos)
+            ? antes.forte
+            : r,
+      });
+    }
+  }
+  const teto = mundo.tetoDaReacao;
+  return Object.fromEntries(
+    [...soma].map(([grupo, { pontos, forte }]) => [
+      `grupo_${grupo}`,
+      {
+        pontos: Math.max(-teto, Math.min(teto, pontos)),
+        frase: forte.frase,
+      },
+    ]),
+  );
+}
+
+/** Os pontos de satisfação por id de grupo, para quem só quer o número. */
+export const pontosDasReacoes = (
+  reacoes: Readonly<Record<string, ReacaoDoGrupo>>,
+): Readonly<Record<string, number>> =>
+  Object.fromEntries(Object.entries(reacoes).map(([id, r]) => [id, r.pontos]));

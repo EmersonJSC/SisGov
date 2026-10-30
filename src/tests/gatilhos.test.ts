@@ -1,7 +1,12 @@
 /** Gatilhos (M7.2): o que o jogador anda fazendo e para que lado anda indo. */
 import { beforeAll, describe, expect, it } from "vitest";
 import { criarPartida, type Partida } from "../app/partida";
-import { gatilhosAtivos, gatilhosDoMundo } from "../game/gatilhos";
+import {
+  gatilhosAtivos,
+  gatilhosDoMundo,
+  reacoesDosGrupos,
+} from "../game/gatilhos";
+import { aprovacaoViva } from "../game/congresso";
 import { bussolaDoMundo, faixaDaLei, vetorNoNivel } from "../game/bussola";
 import type { PolicyState } from "../game/leis/policyState";
 
@@ -188,3 +193,90 @@ describe("gatilhos por área e eixo", () => {
 });
 
 const EIXO = { economia: 0, costumes: 1 } as const;
+
+describe("reações dos grupos (M7.3)", () => {
+  const ligados = (ids: readonly string[], fator: number) =>
+    gatilhosAtivos(
+      partida.content,
+      ids.map((id) => {
+        const nivel = partida.game.policies.find(
+          (p) => p.policyDefinitionId === id,
+        )!.desiredLevel;
+        return mexida(id, nivel, nivel * fator, 2);
+      }),
+      [{ turno: 0, economia: 0, costumes: 0 }],
+      2,
+    );
+
+  it("o corte na saúde e na defesa faz o pobre e o conservador reagirem", () => {
+    const r = reacoesDosGrupos(
+      ligados(["piso-saude", "gasto-com-defesa", "piso-educacao"], 0.5),
+    );
+    expect(r.grupo_pobres.pontos).toBeLessThan(0);
+    expect(r.grupo_conservadores.pontos).toBeLessThan(0);
+    expect(r.grupo_jovens.pontos).toBeLessThan(0);
+    expect(r.grupo_empresarios.pontos).toBeGreaterThan(0);
+  });
+
+  it("onde cai o corte decide quem reage", () => {
+    const r = reacoesDosGrupos(
+      ligados(["piso-saude", "gasto-com-defesa", "piso-educacao"], 0.5),
+    );
+    const ativos = ligados(
+      ["piso-saude", "gasto-com-defesa", "piso-educacao"],
+      0.5,
+    ).filter((g) => g.id === "corte-de-gastos");
+    expect(ativos[0].areas.length).toBeGreaterThanOrEqual(2);
+    expect(r.grupo_ambientalistas).toBeUndefined();
+    expect(r.grupo_aposentados).toBeUndefined();
+  });
+
+  it("sem gatilho ninguém reage", () => {
+    expect(reacoesDosGrupos([])).toEqual({});
+  });
+
+  it("a soma dos pontos respeita o teto", () => {
+    const todos = gatilhosDoMundo.gatilhos.map((g) => ({
+      id: g.id,
+      nome: g.nome,
+      frase: g.frase,
+      areas: [
+        "saude",
+        "protecao-social",
+        "educacao-e-cultura",
+        "seguranca-e-defesa",
+      ],
+    }));
+    for (const r of Object.values(reacoesDosGrupos(todos)))
+      expect(Math.abs(r.pontos)).toBeLessThanOrEqual(
+        gatilhosDoMundo.tetoDaReacao,
+      );
+  });
+
+  it("a reação mexe na aprovação do motor", () => {
+    const valores = partida.game.execution.values;
+    const base = aprovacaoViva(partida.content, valores)!;
+    const com = aprovacaoViva(partida.content, valores, {
+      grupo_pobres: -8,
+    })!;
+    const soma = (a: typeof base) =>
+      a.perfis.reduce((t, p) => t + p.peso * (p.ajuste ?? 0), 0);
+    expect(soma(com)).toBeLessThan(soma(base));
+  });
+
+  it("toda reação cita grupo e área que existem", () => {
+    const grupos = new Set(
+      partida.content.variables.variaveis
+        .filter((v) => v.tipo === "grupo")
+        .map((v) => v.id),
+    );
+    const areas = new Set(partida.content.policies.map((p) => p.area));
+    for (const g of gatilhosDoMundo.gatilhos)
+      for (const r of g.reacoes ?? []) {
+        expect(grupos.has(`grupo_${r.grupo}`)).toBe(true);
+        expect(r.frase).toBeTruthy();
+        expect(r.pontos).not.toBe(0);
+        for (const a of r.areas ?? []) expect(areas.has(a)).toBe(true);
+      }
+  });
+});

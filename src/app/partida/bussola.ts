@@ -12,7 +12,12 @@ import {
   vetoresDasLeis,
   type Referencia,
 } from "../../game/bussola";
-import { gatilhosAtivos } from "../../game/gatilhos";
+import {
+  gatilhosAtivos,
+  gatilhosDoMundo,
+  pontosDasReacoes,
+  reacoesDosGrupos,
+} from "../../game/gatilhos";
 import type { Partida, VisaoBussola, VisaoReferencia } from "./tipos";
 
 const visaoDa = (r: Referencia): VisaoReferencia => ({
@@ -26,10 +31,26 @@ const visaoDa = (r: Referencia): VisaoReferencia => ({
   costumes: r.costumes,
 });
 
+/** Os gatilhos ligados e como cada grupo reage a eles (M7.3). */
+export function reacoesDaPartida(partida: Partida) {
+  const { content, game } = partida;
+  const ativos = game.compass
+    ? gatilhosAtivos(
+        content,
+        game.policies,
+        game.compass.caminho,
+        game.currentTurn,
+      )
+    : [];
+  const reacoes = reacoesDosGrupos(ativos);
+  return { ativos, reacoes, pontos: pontosDasReacoes(reacoes) };
+}
+
 export function verBussola(partida: Partida): VisaoBussola | undefined {
   const { content, game } = partida;
   const estado = game.compass;
   if (!estado) return undefined;
+  const { ativos, reacoes } = reacoesDaPartida(partida);
   const ponto = pontoAtual(content, estado, game.policies);
   const personalidades = referenciasDaBussola.personalidades.map(visaoDa);
   const partidos = referenciasDaBussola.partidos.map(visaoDa);
@@ -69,12 +90,11 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
     pertoPartidos: perto(referenciasDaBussola.partidos),
     leisQueMaisPuxam: puxam,
     fatorDoRumo: bussolaDoMundo.fatorDoRumo,
-    gatilhos: gatilhosAtivos(
-      content,
-      game.policies,
-      estado.caminho,
-      game.currentTurn,
-    ),
+    gatilhos: ativos.map(({ id, nome, frase }) => ({ id, nome, frase })),
+    reacoes,
+    leitura: ativos.length
+      ? `O governo é visto assim: ${ativos.map((g) => g.nome.toLowerCase()).join(", ")}.`
+      : gatilhosDoMundo.semGatilho,
     ...(rumo
       ? {
           rumo: {

@@ -485,6 +485,9 @@ export function PaginaDeJornal({
                       Nenhuma outra notícia no trimestre.
                     </p>
                   ) : null}
+                  {edicao.leitura ? (
+                    <p className="tb-calmo">{edicao.leitura}</p>
+                  ) : null}
                 </section>
               </div>
             </div>

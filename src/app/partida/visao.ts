@@ -4,6 +4,7 @@ import { valorNaMedida } from "./medida";
 import { fraseDaBolha } from "./frase";
 import { censoDoPais } from "./censo";
 import { pacoteVivo } from "../../game/congresso";
+import { reacoesDaPartida } from "./bussola";
 import { humorDoPais } from "../../game/congresso/polarizacao";
 import { medidaDoPais } from "./regua";
 import { occurrenceCatalog } from "../../game/occurrences";
@@ -453,7 +454,12 @@ export function verPartida(partida: Partida): VisaoPartida {
     turno: game.currentTurn,
     contas: lerContas(content, values),
     orcamento: linhasDoOrcamento(partida, values),
-    grupos: gruposDaPartida(partida, values, alteradas),
+    grupos: gruposDaPartida(
+      partida,
+      values,
+      alteradas,
+      reacoesDaPartida(partida).pontos,
+    ),
     censo: censoDoPais(partida.content, values, game.valoresIniciais),
     ...(humor ? { humor } : {}),
     perfis: partida.content.manifest.congresso?.perfis.length ?? 0,

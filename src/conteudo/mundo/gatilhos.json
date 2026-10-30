@@ -1,9 +1,11 @@
 {
   "tipo": "mundo-gatilhos",
   "versaoEsquema": 1,
-  "metodo": "Um gatilho liga quando, na janela dos últimos turnos, o jogador tomou decisões do tipo dele (regra \"decisoes\") ou a bússola andou para o lado dele (regra \"rumo\"). Decisão = mudança de meta de uma lei (histórico da lei). \"nivel\" olha se a meta subiu ou baixou; \"eixo\" e \"sentido\" olham para onde o vetor da bússola da lei andou (economia: − Estado, + mercado; costumes: − liberdade, + autoridade). Os números são chutes, a calibrar.",
+  "metodo": "Um gatilho liga quando, na janela dos últimos turnos, o jogador tomou decisões do tipo dele (regra \"decisoes\") ou a bússola andou para o lado dele (regra \"rumo\"). Decisão = mudança de meta de uma lei (histórico da lei). \"nivel\" olha se a meta subiu ou baixou; \"eixo\" e \"sentido\" olham para onde o vetor da bússola da lei andou (economia: − Estado, + mercado; costumes: − liberdade, + autoridade). Os números são chutes, a calibrar. \"reacoes\": cada item diz como um grupo (chave sem o prefixo \"grupo_\") reage enquanto o gatilho está ligado: \"pontos\" (de satisfação, com sinal), \"frase\" (o post dele no tablet) e, opcionalmente, \"areas\" (só reage se a decisão foi em uma delas). Os pontos somam por grupo, com teto de ±8 (M7.3). São chutes, a calibrar.",
   "janela": 4,
   "minimoDeDecisoes": 3,
+  "tetoDaReacao": 8,
+  "semGatilho": "O governo ainda não mostrou um rumo claro: as decisões recentes não formam um padrão.",
   "gatilhos": [
     {
       "id": "corte-de-gastos",
@@ -14,7 +16,73 @@
         "familias": ["verba", "programa"],
         "nivel": "baixou",
         "areasMinimas": 2
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "servidores",
+          "pontos": -3,
+          "frase": "Cortaram verba de tudo quanto é lado. Quem segura o serviço público somos nós, e vamos pagar a conta."
+        },
+        {
+          "grupo": "pobres",
+          "pontos": -4,
+          "areas": ["saude", "protecao-social"],
+          "frase": "Cortaram a saúde e a proteção social, e quem depende disso somos nós."
+        },
+        {
+          "grupo": "periferias",
+          "pontos": -3,
+          "areas": ["saude", "protecao-social"],
+          "frase": "Cortaram o posto de saúde e o programa do bairro. Aqui a falta aparece primeiro."
+        },
+        {
+          "grupo": "aposentados",
+          "pontos": -4,
+          "areas": ["protecao-social"],
+          "frase": "Mexeram na proteção social. Aposentado sente cada corte."
+        },
+        {
+          "grupo": "jovens",
+          "pontos": -3,
+          "areas": ["educacao-e-cultura"],
+          "frase": "Cortaram escola e universidade. O futuro da gente virou despesa."
+        },
+        {
+          "grupo": "familias_com_filhos",
+          "pontos": -3,
+          "areas": ["educacao-e-cultura"],
+          "frase": "Cortaram a escola dos nossos filhos."
+        },
+        {
+          "grupo": "conservadores",
+          "pontos": -3,
+          "areas": ["seguranca-e-defesa"],
+          "frase": "Cortaram verba da segurança e da defesa. O crime agradece."
+        },
+        {
+          "grupo": "interior",
+          "pontos": -3,
+          "areas": ["infraestrutura-e-energia"],
+          "frase": "Cortaram estrada e energia. Aqui o produto só sai por elas."
+        },
+        {
+          "grupo": "ambientalistas",
+          "pontos": -3,
+          "areas": ["ambiente-e-campo"],
+          "frase": "Cortaram a verba do meio ambiente. Sem fiscal, a floresta fica sozinha."
+        },
+        {
+          "grupo": "empresarios",
+          "pontos": 3,
+          "frase": "Enfim alguém começou a cortar a gordura do Estado. Falta constância."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": 2,
+          "areas": ["contas-publicas", "economia-e-empresas"],
+          "frase": "Cortar gasto é o que se faz em casa. Vamos ver se a conta fecha."
+        }
+      ]
     },
     {
       "id": "expansao-de-gastos",
@@ -25,7 +93,72 @@
         "familias": ["verba", "programa"],
         "nivel": "subiu",
         "areasMinimas": 2
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "servidores",
+          "pontos": 3,
+          "frase": "Voltaram a investir no serviço público. Dá para trabalhar com mais folga."
+        },
+        {
+          "grupo": "pobres",
+          "pontos": 4,
+          "areas": ["saude", "protecao-social"],
+          "frase": "Chegou verba na saúde e na proteção social. Dá para sentir no dia a dia."
+        },
+        {
+          "grupo": "periferias",
+          "pontos": 3,
+          "areas": ["saude", "protecao-social"],
+          "frase": "Reabriram o posto e o programa do bairro. Que não pare."
+        },
+        {
+          "grupo": "aposentados",
+          "pontos": 4,
+          "areas": ["protecao-social"],
+          "frase": "Reforçaram a proteção social. Aposentado sente cada reforço."
+        },
+        {
+          "grupo": "jovens",
+          "pontos": 3,
+          "areas": ["educacao-e-cultura"],
+          "frase": "Mais verba para escola e universidade. Dá alguma esperança."
+        },
+        {
+          "grupo": "familias_com_filhos",
+          "pontos": 3,
+          "areas": ["educacao-e-cultura"],
+          "frase": "Mais verba para a escola dos nossos filhos."
+        },
+        {
+          "grupo": "conservadores",
+          "pontos": 3,
+          "areas": ["seguranca-e-defesa"],
+          "frase": "Mais verba para segurança e defesa. Era o que faltava."
+        },
+        {
+          "grupo": "interior",
+          "pontos": 3,
+          "areas": ["infraestrutura-e-energia"],
+          "frase": "Investiram em estrada e energia. O produto vai chegar mais rápido."
+        },
+        {
+          "grupo": "ambientalistas",
+          "pontos": 3,
+          "areas": ["ambiente-e-campo"],
+          "frase": "Mais verba para o meio ambiente. Tem fiscal na floresta de novo."
+        },
+        {
+          "grupo": "empresarios",
+          "pontos": -3,
+          "frase": "Gasto sobe em tudo quanto é área. Quem vai pagar essa conta somos nós."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": -2,
+          "frase": "Mais gasto do governo, e a gente imagina que vem imposto por aí."
+        }
+      ]
     },
     {
       "id": "agenda-de-mercado",
@@ -36,7 +169,29 @@
         "eixo": "economia",
         "sentido": 1,
         "minimo": 0.3
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "empresarios",
+          "pontos": 3,
+          "frase": "O rumo é o certo: menos Estado no caminho e mais espaço para quem produz."
+        },
+        {
+          "grupo": "pequenos_negocios",
+          "pontos": 3,
+          "frase": "Se o governo sair da frente, a gente cresce. Estamos esperando para ver."
+        },
+        {
+          "grupo": "trabalhadores",
+          "pontos": -3,
+          "frase": "Falam de mercado, mas quem corre risco é o trabalhador."
+        },
+        {
+          "grupo": "progressistas",
+          "pontos": -3,
+          "frase": "Estão entregando o país ao mercado, e a conta vai para o povo."
+        }
+      ]
     },
     {
       "id": "agenda-estatista",
@@ -47,7 +202,29 @@
         "eixo": "economia",
         "sentido": -1,
         "minimo": 0.3
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "trabalhadores",
+          "pontos": 3,
+          "frase": "O Estado voltou a olhar para quem trabalha. Faltava isso."
+        },
+        {
+          "grupo": "progressistas",
+          "pontos": 3,
+          "frase": "Finalmente um governo que acredita no papel do Estado."
+        },
+        {
+          "grupo": "empresarios",
+          "pontos": -3,
+          "frase": "Cada vez mais Estado no meio do caminho. Assim ninguém investe."
+        },
+        {
+          "grupo": "pequenos_negocios",
+          "pontos": -3,
+          "frase": "Mais regra e mais Estado, e quem abre a porta todo dia é a gente."
+        }
+      ]
     },
     {
       "id": "agenda-conservadora",
@@ -58,7 +235,29 @@
         "eixo": "costumes",
         "sentido": 1,
         "minimo": 0.3
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "conservadores",
+          "pontos": 3,
+          "frase": "O governo escuta quem defende ordem e família. Já era hora."
+        },
+        {
+          "grupo": "evangelicos",
+          "pontos": 3,
+          "frase": "Os valores da família estão sendo ouvidos. Que continuem."
+        },
+        {
+          "grupo": "progressistas",
+          "pontos": -3,
+          "frase": "Os costumes estão andando para trás, e direitos que já eram nossos ficam em risco."
+        },
+        {
+          "grupo": "jovens",
+          "pontos": -3,
+          "frase": "Falam em ordem e esquecem que a gente quer viver do nosso jeito."
+        }
+      ]
     },
     {
       "id": "agenda-liberal-nos-costumes",
@@ -69,7 +268,29 @@
         "eixo": "costumes",
         "sentido": -1,
         "minimo": 0.3
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "progressistas",
+          "pontos": 3,
+          "frase": "Mais liberdade nos costumes. Um passo na direção que a gente defende."
+        },
+        {
+          "grupo": "jovens",
+          "pontos": 3,
+          "frase": "O governo parou de se meter na vida da gente. Respira melhor."
+        },
+        {
+          "grupo": "conservadores",
+          "pontos": -3,
+          "frase": "A família e a tradição estão sendo deixadas de lado."
+        },
+        {
+          "grupo": "evangelicos",
+          "pontos": -3,
+          "frase": "Estão mexendo nos valores que sustentam as nossas famílias."
+        }
+      ]
     },
     {
       "id": "agenda-social",
@@ -80,7 +301,29 @@
         "areas": ["protecao-social", "saude", "educacao-e-cultura"],
         "eixo": "economia",
         "sentido": -1
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "pobres",
+          "pontos": 3,
+          "frase": "Saúde, escola e proteção social entraram na pauta. A gente sente que alguém olhou para nós."
+        },
+        {
+          "grupo": "periferias",
+          "pontos": 3,
+          "frase": "Chegou mais serviço público no bairro. Que não pare."
+        },
+        {
+          "grupo": "empresarios",
+          "pontos": -3,
+          "frase": "Muita despesa social e pouca conversa sobre quem vai pagar."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": -3,
+          "frase": "Mais programa social, e a conta cai no nosso bolso."
+        }
+      ]
     },
     {
       "id": "linha-dura",
@@ -91,7 +334,29 @@
         "areas": ["seguranca-e-defesa"],
         "eixo": "costumes",
         "sentido": 1
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "conservadores",
+          "pontos": 3,
+          "frase": "Segurança e ordem voltaram a ser prioridade. É o que o país pedia."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": 3,
+          "frase": "Mais rigor na segurança. A gente quer andar na rua sem medo."
+        },
+        {
+          "grupo": "progressistas",
+          "pontos": -3,
+          "frase": "Linha dura e mais repressão. Quem paga é sempre o mais pobre."
+        },
+        {
+          "grupo": "periferias",
+          "pontos": -3,
+          "frase": "Mais polícia, mais medo. Quem vive aqui sabe quem sofre com a linha dura."
+        }
+      ]
     },
     {
       "id": "agenda-verde",
@@ -102,7 +367,29 @@
         "areas": ["ambiente-e-campo"],
         "eixo": "economia",
         "sentido": -1
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "ambientalistas",
+          "pontos": 3,
+          "frase": "O governo finalmente trata o ambiente como prioridade. Vamos acompanhar."
+        },
+        {
+          "grupo": "progressistas",
+          "pontos": 3,
+          "frase": "Uma pauta verde de verdade. Tomara que saia do papel."
+        },
+        {
+          "grupo": "agro",
+          "pontos": -3,
+          "frase": "Mais regra ambiental sobre o campo. Produzir assim fica cada vez mais difícil."
+        },
+        {
+          "grupo": "interior",
+          "pontos": -3,
+          "frase": "As regras ambientais pesam no interior, e quem vive aqui não foi ouvido."
+        }
+      ]
     },
     {
       "id": "pro-trabalhador",
@@ -113,7 +400,29 @@
         "areas": ["trabalho"],
         "eixo": "economia",
         "sentido": -1
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "trabalhadores",
+          "pontos": 3,
+          "frase": "O governo olhou para o trabalho. Mais direitos e mais proteção."
+        },
+        {
+          "grupo": "informais",
+          "pontos": 3,
+          "frase": "Falam em proteger quem trabalha. Que isso chegue também a nós."
+        },
+        {
+          "grupo": "empresarios",
+          "pontos": -3,
+          "frase": "Cada medida pró-trabalhador encarece contratar. Assim o emprego fica mais caro."
+        },
+        {
+          "grupo": "pequenos_negocios",
+          "pontos": -3,
+          "frase": "Mais encargo sobre a folha. Quem sofre é o pequeno, que não tem como absorver."
+        }
+      ]
     },
     {
       "id": "reforma-constitucional",
@@ -123,7 +432,24 @@
         "tipo": "decisoes",
         "familias": ["constitucional", "petrea"],
         "minimo": 2
-      }
+      },
+      "reacoes": [
+        {
+          "grupo": "progressistas",
+          "pontos": -3,
+          "frase": "Mexer na Constituição assim, em série, é perigoso. Cuidado com o que se desfaz."
+        },
+        {
+          "grupo": "conservadores",
+          "pontos": -3,
+          "frase": "Mexer na Constituição em série e sem debate. Cuidado com a pressa."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": -3,
+          "frase": "Reforma sobre reforma na Constituição. A gente fica sem saber o que vale."
+        }
+      ]
     }
   ]
 }

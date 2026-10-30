@@ -122,24 +122,46 @@ export function pacoteVivo(
 export function aprovacaoViva(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
+  /** M7.3: pontos de satisfação por grupo (`grupo_x`) que os gatilhos dão. */
+  reacoes: Readonly<Record<string, number>> = {},
 ): ProfileApproval | undefined {
   const base = content.manifest.aprovacaoPorPerfis;
   const pacote = pacoteVivo(content, valores);
   if (!base || !pacote) return undefined;
-  const guardada = aprovacoesVivas.get(pacote);
+  const comReacao = Object.values(reacoes).some((x) => x !== 0);
+  const guardada = comReacao ? undefined : aprovacoesVivas.get(pacote);
   if (guardada) return guardada;
   const viva: ProfileApproval = {
     ...base,
     perfis: pacote.perfis
       .filter((p) => p.segmentos.length > 0)
-      .map((p) => ({
-        peso: p.peso,
-        segmentos: p.segmentos,
-        ...(p.bolso ? { ajuste: p.bolso } : {}),
-      })),
+      .map((p) => {
+        const ajuste = (p.bolso ?? 0) + reacaoDoPerfil(p, pacote, reacoes);
+        return {
+          peso: p.peso,
+          segmentos: p.segmentos,
+          ...(ajuste ? { ajuste } : {}),
+        };
+      }),
   };
-  aprovacoesVivas.set(pacote, viva);
+  if (!comReacao) aprovacoesVivas.set(pacote, viva);
   return viva;
+}
+
+/** A reação dos grupos vista pelo perfil: média dos segmentos dele, pesada como a satisfação. */
+function reacaoDoPerfil(
+  perfil: PerfilDoEleitor,
+  pacote: CongressoDoPacote,
+  reacoes: Readonly<Record<string, number>>,
+): number {
+  let soma = 0;
+  let pesos = 0;
+  for (const s of perfil.segmentos) {
+    const w = pacote.pesoDoSegmento[s] ?? 1;
+    soma += w * (reacoes[s] ?? 0);
+    pesos += w;
+  }
+  return pesos > 0 ? soma / pesos : 0;
 }
 
 const aprovacoesVivas = new WeakMap<object, ProfileApproval>();

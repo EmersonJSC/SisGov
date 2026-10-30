@@ -206,6 +206,8 @@ export function gruposDaPartida(
   values: Readonly<Record<string, number>>,
   /** Leis mudadas pelo jogador: num empate, o motivo dele vem primeiro (D-58). */
   doJogador: ReadonlySet<string>,
+  /** M7.3: pontos de satisfação por grupo que os gatilhos dão (ou tiram). */
+  reacoes: Readonly<Record<string, number>> = {},
 ): VisaoGrupo[] {
   const { content, graph } = partida;
   const lawByControl = new Map(
@@ -290,13 +292,17 @@ export function gruposDaPartida(
           pontos,
         });
       }
+      const satisfacao = Math.max(
+        0,
+        Math.min(100, (values[variable.id] ?? 0) + (reacoes[variable.id] ?? 0)),
+      );
       return {
         id: variable.id,
         nome: variable.nome,
-        satisfacao: values[variable.id] ?? 0,
+        satisfacao,
         peso: peso.get(variable.id) ?? 0,
-        radicais: fracaoDeRadicais(values[variable.id] ?? 0),
-        lealistas: fracaoDeLealistas(values[variable.id] ?? 0),
+        radicais: fracaoDeRadicais(satisfacao),
+        lealistas: fracaoDeLealistas(satisfacao),
         ...(eixoDe.has(variable.id) ? { eixo: eixoDe.get(variable.id)! } : {}),
         gosta: maiores(motivos.filter((m) => m.pontos > 0)),
         odeia: maiores(motivos.filter((m) => m.pontos < 0)),

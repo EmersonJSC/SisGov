@@ -673,6 +673,12 @@ export type VisaoBussola = Readonly<{
   fatorDoRumo: Readonly<{ economia: number; costumes: number }>;
   /** Gatilhos ligados: o que o jogador anda fazendo (M7.2). */
   gatilhos: readonly Readonly<{ id: string; nome: string; frase: string }>[];
+  /** Como cada grupo reage aos gatilhos (por id `grupo_x`): pontos e a fala. */
+  reacoes: Readonly<
+    Record<string, Readonly<{ pontos: number; frase: string }>>
+  >;
+  /** A frase da imprensa sobre o rumo do governo (neutra sem gatilho). */
+  leitura: string;
   /**
    * A frase do rumo no jornal: a personalidade de quem o último turno
    * aproximou o governo, e a que era a mais perto antes, se mudou.
