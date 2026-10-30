@@ -355,6 +355,37 @@ export function CongressoNoTablet({
                         style={{ left: `${(100 * v.quorum) / total}%` }}
                       />
                     </div>
+                    <details className="cg-porque">
+                      <summary>Por que cada bancada votou assim</summary>
+                      <ul>
+                        {bancadas.map((b) => {
+                          const x = v.porBancada[b.id];
+                          return x ? (
+                            <li key={b.id}>
+                              <i
+                                className="cg-bolinha"
+                                style={{ background: corDa(b.id) }}
+                              />
+                              <span className="cg-nome">
+                                {nomeDaBancada(b.id)}
+                              </span>
+                              <strong
+                                className={
+                                  2 * x.sim >= x.cadeiras
+                                    ? "cg-a-favor"
+                                    : "cg-contra"
+                                }
+                              >
+                                {x.sim}/{x.cadeiras} sim
+                              </strong>
+                              {x.motivo ? (
+                                <span className="cg-motivo">{x.motivo}</span>
+                              ) : null}
+                            </li>
+                          ) : null;
+                        })}
+                      </ul>
+                    </details>
                   </li>
                 );
               })}

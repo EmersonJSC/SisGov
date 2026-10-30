@@ -57,9 +57,12 @@ export type Votacao = Readonly<{
   nao: number;
   quorum: number;
   resultado: ResultadoDaVotacao;
-  /** Votos sim e cadeiras de cada bancada. */
+  /** Votos sim e cadeiras de cada bancada, com o que mais pesou no voto. */
   porBancada: Readonly<
-    Record<string, Readonly<{ sim: number; cadeiras: number }>>
+    Record<
+      string,
+      Readonly<{ sim: number; cadeiras: number; motivo?: string }>
+    >
   >;
 }>;
 

@@ -251,6 +251,10 @@ describe("votação", () => {
     const b = votarNoCongresso(r.value).resultado;
     expect(a.votacoes.length).toBeGreaterThan(0);
     expect(b).toEqual(a);
+    // M9: cada bancada que votou guarda o motivo do voto
+    for (const v of a.votacoes)
+      for (const x of Object.values(v.porBancada))
+        expect(x.motivo).toEqual(expect.any(String));
   });
 
   it("sem apoio, o Congresso ignora a fila", () => {

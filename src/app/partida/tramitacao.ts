@@ -622,7 +622,10 @@ export function votarNoCongresso(
         }
       }
       capacidade[casa] -= 1;
-      const porBancada: Record<string, { sim: number; cadeiras: number }> = {};
+      const porBancada: Record<
+        string,
+        { sim: number; cadeiras: number; motivo: string }
+      > = {};
       let sim = 0;
       for (const b of retrato) {
         const n = b.cadeiras[casa] ?? 0;
@@ -634,7 +637,11 @@ export function votarNoCongresso(
           turno,
           `${p.id}:${casa}:${rodada}:${b.id}`,
         );
-        porBancada[b.id] = { sim: s, cadeiras: n };
+        porBancada[b.id] = {
+          sim: s,
+          cadeiras: n,
+          motivo: motivoDoVoto(pacote, b, p.previsao),
+        };
         sim += s;
       }
       const placar = {
