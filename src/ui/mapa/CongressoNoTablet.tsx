@@ -360,6 +360,9 @@ export function CongressoNoTablet({
                       <ul>
                         {bancadas.map((b) => {
                           const x = v.porBancada[b.id];
+                          const virou =
+                            x?.chance !== undefined &&
+                            x.chance >= 0.5 !== 2 * x.sim >= x.cadeiras;
                           return x ? (
                             <li key={b.id}>
                               <i
@@ -378,9 +381,11 @@ export function CongressoNoTablet({
                               >
                                 {x.sim}/{x.cadeiras} sim
                               </strong>
-                              {x.motivo ? (
-                                <span className="cg-motivo">{x.motivo}</span>
-                              ) : null}
+                              <span className="cg-motivo">
+                                {virou
+                                  ? `mudou de lado: era ${pct(x.chance ?? 0)} sim e ${x.sim >= x.cadeiras / 2 ? "votou sim" : "votou não"}`
+                                  : x.motivo}
+                              </span>
                             </li>
                           ) : null;
                         })}

@@ -624,7 +624,7 @@ export function votarNoCongresso(
       capacidade[casa] -= 1;
       const porBancada: Record<
         string,
-        { sim: number; cadeiras: number; motivo: string }
+        { sim: number; cadeiras: number; motivo: string; chance: number }
       > = {};
       let sim = 0;
       for (const b of retrato) {
@@ -641,6 +641,7 @@ export function votarNoCongresso(
           sim: s,
           cadeiras: n,
           motivo: motivoDoVoto(pacote, b, p.previsao),
+          chance: chances[b.id] ?? 0,
         };
         sim += s;
       }

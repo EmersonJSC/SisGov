@@ -61,7 +61,13 @@ export type Votacao = Readonly<{
   porBancada: Readonly<
     Record<
       string,
-      Readonly<{ sim: number; cadeiras: number; motivo?: string }>
+      Readonly<{
+        sim: number;
+        cadeiras: number;
+        motivo?: string;
+        /** A chance de sim que a bancada tinha ao votar. */
+        chance?: number;
+      }>
     >
   >;
 }>;
