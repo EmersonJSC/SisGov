@@ -21,10 +21,14 @@ import {
 import { pacoteVivo } from "../../game/congresso";
 import {
   notasDosMinistros,
-  pontosDoGabinete,
   somarPontos,
   somarSatisfacao,
 } from "../../game/gabinete";
+import {
+  descumprimentoDoGoverno,
+  perdaDaPromessa,
+  pontosDoGoverno,
+} from "../../game/promessa";
 import type { Partida, VisaoBussola, VisaoReferencia } from "./tipos";
 
 const visaoDa = (r: Referencia): VisaoReferencia => ({
@@ -87,11 +91,10 @@ export function valoresComReacao(
 ): Readonly<Record<string, number>> {
   const { valores, reacao } = satisfacaoDaPartida(partida);
   // M8.3: o gabinete lê a satisfação com a reação, e soma por cima
-  const gabinete = pontosDoGabinete(
-    partida.game.election?.ministros,
+  const gabinete = pontosDoGoverno(
+    partida,
     pacoteVivo(partida.content, valores),
     somarSatisfacao(valores, reacao),
-    partida.game.election?.favores,
   );
   const pontos = somarPontos(reacao, gabinete);
   const chave = JSON.stringify(pontos);
@@ -136,6 +139,8 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
         Math.hypot(b.economia, b.costumes) - Math.hypot(a.economia, a.costumes),
     )
     .slice(0, 8);
+  const descumprido = descumprimentoDoGoverno(partida);
+  const perda = descumprido ? perdaDaPromessa(descumprido) : 0;
   const rumo = rumoDoTurno(estado.caminho, referenciasDaBussola.personalidades);
   return {
     ponto,
@@ -152,6 +157,16 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
     leitura: ativos.length
       ? `O governo é visto assim: ${ativos.map((g) => g.nome.toLowerCase()).join(", ")}.`
       : gatilhosDoMundo.semGatilho,
+    ...(descumprido && perda > 0
+      ? {
+          promessa: {
+            eixos: (["economia", "costumes"] as const).filter(
+              (e) => descumprido[e] > 0,
+            ),
+            perda,
+          },
+        }
+      : {}),
     ...(rumo
       ? {
           rumo: {

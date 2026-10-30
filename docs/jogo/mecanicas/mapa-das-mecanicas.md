@@ -123,7 +123,7 @@ com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 - [x] Gerador de pessoas (29/out): serve a candidato, vice e ministro; 4 atributos novos (integridade, articulação, comunicação, gestão) na ficha
 - [x] A tela de escolha não mostra lado nem ideologia, só biografia, opiniões e atributos
 - [ ] A conferir: o que o candidato escolhido muda de fato no jogo (carisma, experiência, opiniões)
-- [ ] Promessa contra ação: governar ao contrário das opiniões que disse estressa a população
+- [x] Promessa contra ação (30/out, `game/promessa.ts`): governar ao contrário do lado que o presidente disse querer (o ponto dele em relação ao início do governo) tira satisfação de todos os grupos, com tolerância e teto; a frase aparece na Bússola
 - [ ] Carisma vivo: sobe e desce conforme as leis e os ataques na mídia
 - [ ] A decidir: o candidato dá ponto de partida na bússola? Pesa na popularidade inicial?
 

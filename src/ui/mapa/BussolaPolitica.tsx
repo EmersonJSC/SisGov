@@ -310,6 +310,14 @@ export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
               Nenhuma marca ainda: suas decisões recentes não formam um padrão.
             </p>
           )}
+          {bussola.promessa ? (
+            <p className="bs-promessa">
+              O presidente chegou dizendo uma coisa e o governo anda ao
+              contrário em {bussola.promessa.eixos.join(" e ")}. A população
+              estranha: tira cerca de {bussola.promessa.perda.toFixed(1)} ponto
+              de satisfação de todos os grupos.
+            </p>
+          ) : null}
         </section>
 
         <section>

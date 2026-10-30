@@ -680,6 +680,14 @@ export type VisaoBussola = Readonly<{
   /** A frase da imprensa sobre o rumo do governo (neutra sem gatilho). */
   leitura: string;
   /**
+   * Governar ao contrário do que o presidente disse (M8): os eixos em que isso
+   * acontece e quanto custa em satisfação. Ausente quando não pesa.
+   */
+  promessa?: Readonly<{
+    eixos: readonly ("economia" | "costumes")[];
+    perda: number;
+  }>;
+  /**
    * A frase do rumo no jornal: a personalidade de quem o último turno
    * aproximou o governo, e a que era a mais perto antes, se mudou.
    */
