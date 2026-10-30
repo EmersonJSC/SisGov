@@ -308,6 +308,37 @@ describe("na tela (modo real)", () => {
     }
   });
 
+  it("M9: cada projeto da fila diz como cada bancada deve votar e por quê", () => {
+    const real: Partida = { ...partida, modo: "real" };
+    const lei = leiDo(real, "lei-ordinaria");
+    const r = enviarAoCongresso(real, lei.id, lei.nivel);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    const visao = verTramitacao(r.value);
+    const projeto = visao.fila.find((p) => p.lei === lei.id)!;
+    expect(projeto.bancadas.map((b) => b.id).sort()).toEqual(
+      visao.bancadas.map((b) => b.id).sort(),
+    );
+    for (const b of projeto.bancadas) {
+      expect(b.chance).toBeGreaterThanOrEqual(0);
+      expect(b.chance).toBeLessThanOrEqual(1);
+      expect(b.motivo.length).toBeGreaterThan(0);
+    }
+    // os votos esperados da etapa são a soma das chances pelas cadeiras
+    const etapa = projeto.etapas[0];
+    const esperado = visao.bancadas.reduce(
+      (s, b) =>
+        s +
+        projeto.bancadas.find((x) => x.id === b.id)!.chance *
+          (b.cadeiras[etapa.casa] ?? 0),
+      0,
+    );
+    expect(etapa.esperado).toBeCloseTo(esperado, 6);
+    // o partido do jogador vota por disciplina
+    expect(projeto.bancadas.find((b) => b.id === "jogador")?.motivo).toContain(
+      "disciplina",
+    );
+  });
+
   it("a lei enviada aparece na fila e no documento", () => {
     const real: Partida = { ...partida, modo: "real" };
     const lei = leiDo(real, "lei-ordinaria");

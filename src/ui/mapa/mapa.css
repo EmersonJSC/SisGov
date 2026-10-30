@@ -8439,3 +8439,28 @@ span.el-mini {
 .el-acoes button:last-child {
   background: rgba(200, 100, 90, 0.25);
 }
+
+.cg-porque {
+  margin-top: 6px;
+  font-size: 12px;
+}
+.cg-porque summary {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.cg-porque ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.cg-porque li {
+  display: grid;
+  grid-template-columns: 10px minmax(90px, 1fr) 64px 2fr;
+  gap: 6px;
+  align-items: center;
+}
+.cg-motivo {
+  opacity: 0.8;
+}

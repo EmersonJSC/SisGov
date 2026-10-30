@@ -154,7 +154,7 @@ com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 ## M9. Congresso e tramitação
 
 - [~] Tramitação e votação existem
-- [ ] Plenário fiel (bancadas, disposição)
+- [~] Plenário fiel (30/out, fatia A): o seu partido em dourado (o centro virou lilás para não se confundir) e, em cada projeto da fila, "Como cada bancada deve votar": chance de sim e o que mais pesa (eleitor, bússola, humor com o governo ou frente). `motivoDoVoto` em `app/partida/tramitacao.ts`. Falta: mostrar por que votou assim nas votações já feitas e quem mudou de lado
 - [ ] Reação do Senado e da população a mudança em pétrea
 
 ## M10. Eleição e governo

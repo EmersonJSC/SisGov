@@ -18,6 +18,7 @@ import {
 import {
   JOGADOR,
   chanceDeSim,
+  type TermosDoVoto,
   congressoDoPacote,
   danoDasLeis,
   pacoteVivo,
@@ -169,6 +170,36 @@ function prever(
   };
 }
 
+/** Os termos da nota de uma bancada (que não é a do jogador) numa lei. */
+function termosDaBancada(
+  pacote: CongressoDoPacote,
+  b: RetratoDaBancada,
+  previsao: PrevisaoDoProjeto,
+): TermosDoVoto {
+  const v = pacote.regras.voto;
+  let parte = 0;
+  let efeito = 0;
+  for (const [s, w] of Object.entries(b.eleitor)) {
+    parte += w;
+    efeito += w * (previsao.segmentos[s] ?? 0);
+  }
+  const frentes = pacote.regras.frentes.reduce((total, f) => {
+    const ajuda =
+      f.grupos.reduce((t, g) => t - (previsao.dano[g] ?? 0), 0) /
+      Math.max(1, f.grupos.length);
+    return total + (b.frentes[f.id] ?? 0) * ajuda;
+  }, 0);
+  return {
+    segmentos: parte > 0 ? efeito / parte / v.escalaDosSegmentos : 0,
+    bussola:
+      (distancia(previsao.antes, b.ponto) -
+        distancia(previsao.depois, b.ponto)) /
+      v.escalaDaBussola,
+    disposicao: (b.disposicao - 50) / 50,
+    frentes: frentes * v.escalaDasFrentes,
+  };
+}
+
 /** Chance de cada cadeira de cada bancada votar sim no projeto (camada 2). */
 export function chancesDoProjeto(
   pacote: CongressoDoPacote,
@@ -181,32 +212,55 @@ export function chancesDoProjeto(
   return Object.fromEntries(
     retrato.map((b) => {
       if (b.id === JOGADOR) return [b.id, disciplina ?? v.disciplinaDoJogador];
-      let parte = 0;
-      let efeito = 0;
-      for (const [s, w] of Object.entries(b.eleitor)) {
-        parte += w;
-        efeito += w * (previsao.segmentos[s] ?? 0);
-      }
-      const frentes = pacote.regras.frentes.reduce((total, f) => {
-        const ajuda =
-          f.grupos.reduce((t, g) => t - (previsao.dano[g] ?? 0), 0) /
-          Math.max(1, f.grupos.length);
-        return total + (b.frentes[f.id] ?? 0) * ajuda;
-      }, 0);
       return [
         b.id,
-        chanceDeSim(pacote.regras, {
-          segmentos: parte > 0 ? efeito / parte / v.escalaDosSegmentos : 0,
-          bussola:
-            (distancia(previsao.antes, b.ponto) -
-              distancia(previsao.depois, b.ponto)) /
-            v.escalaDaBussola,
-          disposicao: (b.disposicao - 50) / 50,
-          frentes: frentes * v.escalaDasFrentes,
-        }),
+        chanceDeSim(pacote.regras, termosDaBancada(pacote, b, previsao)),
       ];
     }),
   );
+}
+
+const MOTIVOS: Readonly<
+  Record<keyof TermosDoVoto, readonly [mais: string, menos: string]>
+> = {
+  segmentos: [
+    "o eleitor dela sai ganhando com a lei",
+    "o eleitor dela sai perdendo com a lei",
+  ],
+  bussola: [
+    "a lei aproxima o país do lado dela",
+    "a lei afasta o país do lado dela",
+  ],
+  disposicao: ["está de bem com o governo", "está de mal com o governo"],
+  frentes: [
+    "a frente a que ela responde ganha com a lei",
+    "a frente a que ela responde perde com a lei",
+  ],
+};
+
+/** Abaixo disto, nenhum termo pesa o bastante para ser o motivo. */
+const PESO_MINIMO_DO_MOTIVO = 0.1;
+
+/** O que mais pesa no voto de uma bancada numa lei, em frase. */
+export function motivoDoVoto(
+  pacote: CongressoDoPacote,
+  b: RetratoDaBancada,
+  previsao: PrevisaoDoProjeto,
+): string {
+  if (b.id === JOGADOR) return "o seu partido vota pela disciplina";
+  const v = pacote.regras.voto;
+  const termos = termosDaBancada(pacote, b, previsao);
+  const peso: Record<keyof TermosDoVoto, number> = {
+    segmentos: v.pesoDosSegmentos,
+    bussola: v.pesoDaBussola,
+    disposicao: v.pesoDaDisposicao,
+    frentes: v.pesoDasFrentes,
+  };
+  const [chave, forca] = (Object.keys(termos) as (keyof TermosDoVoto)[])
+    .map((k) => [k, peso[k] * Math.max(-1, Math.min(1, termos[k]))] as const)
+    .sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]))[0];
+  if (Math.abs(forca) < PESO_MINIMO_DO_MOTIVO) return "sem motivo forte";
+  return MOTIVOS[chave][forca > 0 ? 0 : 1];
 }
 
 export type OpcoesDoEnvio = Readonly<{
@@ -728,6 +782,13 @@ export type VisaoDoProjeto = Readonly<{
   revogar: boolean;
   /** Opinião pública prevista (pontos de humor do eleitorado todo). */
   opiniao: number;
+  /** Como cada bancada deve votar e o que mais pesa para ela. */
+  bancadas: readonly Readonly<{
+    id: string;
+    /** Chance de cada cadeira votar sim (0 a 1). */
+    chance: number;
+    motivo: string;
+  }>[];
   /** Votações que faltam, com os votos esperados contra o quórum. */
   etapas: readonly Readonly<{
     casa: string;
@@ -823,6 +884,11 @@ export function verTramitacao(partida: Partida): VisaoDaTramitacao {
         medidaProvisoria: p.medidaProvisoria !== undefined,
         revogar: p.revogar === true,
         opiniao: p.previsao.opiniao,
+        bancadas: retrato.map((b) => ({
+          id: b.id,
+          chance: chances[b.id] ?? 0,
+          motivo: motivoDoVoto(pacote, b, p.previsao),
+        })),
         etapas: p.etapas.map(({ casa, rodada }) => ({
           casa,
           rodada,

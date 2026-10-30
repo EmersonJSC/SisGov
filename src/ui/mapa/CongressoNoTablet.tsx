@@ -12,11 +12,11 @@ type Bancada = VisaoDaTramitacao["bancadas"][number];
 const COR: Readonly<Record<string, string>> = {
   extrema_esquerda: "#9b1c1c",
   esquerda: "#e04b3a",
-  centro: "#e0a420",
+  centro: "#9b8fd1",
   centrao: "#3f9f8f",
   direita: "#3c6fd1",
   extrema_direita: "#1f2f7a",
-  jogador: "#2f9e44",
+  jogador: "#d4a017",
 };
 const corDa = (id: string) => COR[id] ?? "#8b93a0";
 
@@ -154,9 +154,11 @@ function Casa({
 function Projeto({
   projeto,
   nomeDaCasa,
+  bancadas,
 }: {
   projeto: VisaoDoProjeto;
   nomeDaCasa: (id: string) => string;
+  bancadas: readonly Bancada[];
 }) {
   const proxima = projeto.etapas[0];
   const chega = proxima ? proxima.esperado >= proxima.quorum : false;
@@ -202,6 +204,29 @@ function Projeto({
         ) : null}
         {projeto.aguardando ? " · espera a sua resposta a um pedido" : ""}
       </p>
+      <details className="cg-porque">
+        <summary>Como cada bancada deve votar</summary>
+        <ul>
+          {bancadas.map((b) => {
+            const v = projeto.bancadas.find((x) => x.id === b.id);
+            return v ? (
+              <li key={b.id}>
+                <span
+                  className="cg-bolinha"
+                  style={{ background: corDa(b.id) }}
+                />
+                <span className="cg-nome">{b.nome}</span>
+                <strong
+                  className={v.chance >= 0.5 ? "cg-a-favor" : "cg-contra"}
+                >
+                  {pct(v.chance)} sim
+                </strong>
+                <span className="cg-motivo">{v.motivo}</span>
+              </li>
+            ) : null;
+          })}
+        </ul>
+      </details>
     </li>
   );
 }
@@ -270,7 +295,12 @@ export function CongressoNoTablet({
           {congresso.fila.length ? (
             <ul className="cg-fila">
               {congresso.fila.map((p) => (
-                <Projeto key={p.id} projeto={p} nomeDaCasa={nomeDaCasa} />
+                <Projeto
+                  key={p.id}
+                  projeto={p}
+                  nomeDaCasa={nomeDaCasa}
+                  bancadas={bancadas}
+                />
               ))}
             </ul>
           ) : (
