@@ -9,6 +9,8 @@ type Compiled = Readonly<{
   /** Peso do eixo de cada membro, já dividido pela soma do perfil. */
   share: Float64Array;
   weight: Float64Array;
+  /** Pontos do bolso por perfil; vazio quando nenhum perfil traz ajuste. */
+  adjust: Float64Array | undefined;
 }>;
 
 const compiledCache = new WeakMap<ProfileApproval, Compiled>();
@@ -24,10 +26,13 @@ function compile(definition: ProfileApproval): Compiled {
   const member = new Int32Array(size);
   const share = new Float64Array(size);
   const weight = new Float64Array(profiles.length);
+  const hasAdjust = profiles.some((p) => p.ajuste !== undefined);
+  const adjust = hasAdjust ? new Float64Array(profiles.length) : undefined;
   let at = 0;
   profiles.forEach((profile, p) => {
     start[p] = at;
     weight[p] = profile.peso;
+    if (adjust) adjust[p] = profile.ajuste ?? 0;
     const total = profile.segmentos.reduce(
       (sum, id) => sum + definition.pesos[id],
       0,
@@ -39,7 +44,7 @@ function compile(definition: ProfileApproval): Compiled {
     }
   });
   start[profiles.length] = at;
-  const compiled = { segments, start, member, share, weight };
+  const compiled = { segments, start, member, share, weight, adjust };
   compiledCache.set(definition, compiled);
   return compiled;
 }
@@ -59,7 +64,8 @@ export function profileApproval(
   definition: ProfileApproval,
   read: (nodeId: string) => number | undefined,
 ): number | undefined {
-  const { segments, start, member, share, weight } = compile(definition);
+  const { segments, start, member, share, weight, adjust } =
+    compile(definition);
   const values = new Float64Array(segments.length);
   for (let i = 0; i < segments.length; i++) {
     const value = read(segments[i]);
@@ -72,6 +78,8 @@ export function profileApproval(
     let satisfaction = 0;
     for (let at = start[p]; at < start[p + 1]; at++)
       satisfaction += share[at] * values[member[at]];
+    if (adjust)
+      satisfaction = Math.max(0, Math.min(100, satisfaction + adjust[p]));
     total += weight[p] / (1 + Math.exp(-(satisfaction - 50) / k));
   }
   return 100 * total;

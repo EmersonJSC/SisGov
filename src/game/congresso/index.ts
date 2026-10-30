@@ -4,7 +4,10 @@
  * usada no V1-12) e trocam cadeiras durante o mandato (camada 3).
  */
 import type { ResolvedPackage } from "../../engine";
-import type { CongressManifest } from "../../engine/model/contentTypes";
+import type {
+  CongressManifest,
+  ProfileApproval,
+} from "../../engine/model/contentTypes";
 import dadosDaBussola from "../../conteudo/bussola/congresso.json";
 import { referenciasDaBussola, type PontoDaBussola } from "../bussola";
 import { pressureGroups } from "../pressao";
@@ -109,6 +112,37 @@ export function pacoteVivo(
   if (pacote) vivos.set(valores, { content, pacote });
   return pacote;
 }
+
+/**
+ * A aprovação do governo com o eleitorado de agora: os mesmos perfis que a
+ * eleição lê (emprego, renda, valores, religião e o bolso). Sem Congresso ou
+ * sem aprovação no país, `undefined` e o motor usa os perfis fixos. No turno
+ * 0 dá o mesmo número dos perfis fixos.
+ */
+export function aprovacaoViva(
+  content: ResolvedPackage,
+  valores: Readonly<Record<string, number>>,
+): ProfileApproval | undefined {
+  const base = content.manifest.aprovacaoPorPerfis;
+  const pacote = pacoteVivo(content, valores);
+  if (!base || !pacote) return undefined;
+  const guardada = aprovacoesVivas.get(pacote);
+  if (guardada) return guardada;
+  const viva: ProfileApproval = {
+    ...base,
+    perfis: pacote.perfis
+      .filter((p) => p.segmentos.length > 0)
+      .map((p) => ({
+        peso: p.peso,
+        segmentos: p.segmentos,
+        ...(p.bolso ? { ajuste: p.bolso } : {}),
+      })),
+  };
+  aprovacoesVivas.set(pacote, viva);
+  return viva;
+}
+
+const aprovacoesVivas = new WeakMap<object, ProfileApproval>();
 
 const vivos = new WeakMap<
   object,

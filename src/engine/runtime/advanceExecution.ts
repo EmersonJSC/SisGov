@@ -1,5 +1,6 @@
 import type { ValidationResult } from "../diagnostics/contentDiagnostic";
 import type { GraphRelation, ScenarioGraph } from "../graph/buildGraph";
+import type { ProfileApproval } from "../model/contentTypes";
 import type { ResolvedPackage } from "../model/resolvePackage";
 import {
   computeNetwork,
@@ -45,7 +46,7 @@ export function advanceExecution(
   execution: EngineExecution,
   batch: PolicyCommandBatch,
   duration = 1,
-  options: Readonly<{ explain?: boolean }> = {},
+  options: Readonly<{ explain?: boolean; approval?: ProfileApproval }> = {},
 ): ValidationResult<StepExecutionResult> {
   if (!Number.isFinite(duration) || duration <= 0)
     return failure("duracao", "A duração deve ser positiva e finita.");
@@ -113,6 +114,7 @@ export function advanceExecution(
     },
     duration,
     explain: options.explain,
+    ...(options.approval ? { approval: options.approval } : {}),
   });
   if (!network.ok) return network;
 

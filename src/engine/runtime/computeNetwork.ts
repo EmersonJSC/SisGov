@@ -9,7 +9,10 @@ import {
   orderDerivedVariables,
 } from "../mechanisms/derivedVariables";
 import { efficacyNodeId, isLawNode, lawNodeBase } from "../model/lawNodes";
-import type { VariableDefinition } from "../model/contentTypes";
+import type {
+  ProfileApproval,
+  VariableDefinition,
+} from "../model/contentTypes";
 import type { ResolvedPackage } from "../model/resolvePackage";
 
 export type ContributionExplanation = Readonly<{
@@ -257,6 +260,11 @@ export type NetworkInput = Readonly<{
    * jogo não lê as contribuições; a tela que pergunta "por que mudou" pede.
    */
   explain?: boolean;
+  /**
+   * Perfis do eleitorado de agora no lugar dos do manifesto (o jogo os move
+   * com o país). Sem isto, vale `aprovacaoPorPerfis`.
+   */
+  approval?: ProfileApproval;
 }>;
 
 /**
@@ -490,7 +498,7 @@ export function computeNetwork(
   }
 
   // 2. Bolhas em cadeia: sem valor próprio, só o que recebem.
-  const approval = content.manifest.aprovacaoPorPerfis;
+  const approval = input.approval ?? content.manifest.aprovacaoPorPerfis;
   for (const id of calculatedBubbleOrder(graph)) {
     const result = explain(id, "rede");
     if (!result.ok) return result;

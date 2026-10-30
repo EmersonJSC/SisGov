@@ -15,6 +15,7 @@ import {
 import type { PolicyState } from "./leis";
 import { pressureMonth } from "./pressao";
 import { MESES_POR_TURNO } from "./calendario";
+import { aprovacaoViva } from "./congresso";
 
 /** Um mês do trimestre. Sem explicações: o turno não as lê (V1-07). */
 export type PreparedGameMonth = Readonly<{
@@ -75,8 +76,11 @@ export function prepareGameMonth(
           ],
         }
       : batch.value;
+  // M7.1: a popularidade lê o eleitorado de agora, o mesmo da eleição.
+  const approval = aprovacaoViva(content, execution.values);
   const advanced = advanceExecution(content, graph, execution, merged, 1, {
     explain: false,
+    ...(approval ? { approval } : {}),
   });
   if (!advanced.ok) return advanced;
   return { ok: true, value: advanced.value.execution };

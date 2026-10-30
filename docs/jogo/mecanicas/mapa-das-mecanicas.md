@@ -9,7 +9,7 @@ Legenda: `[x]` feito · `[~]` parcial · `[ ]` falta.
 ## Ordem de trabalho (decidida em 29/out)
 
 1. **M7** Bússola e padrões, começando por ligar a aprovação do motor aos perfis vivos.
-2. M8 Partido, M9 Congresso, M10 Eleição e governo, M11, M12, M1, M3, M5: na ordem que o autor escolher, uma por vez.
+2. M8 Partido, candidato e governo, M9 Congresso, M10 Eleição e governo, M11, M12, M1, M3, M5: na ordem que o autor escolher, uma por vez.
 3. **Motor da M2** (exclusão entre leis, opções em valor, teto de 4×, Segurança e defesa em duas): antes do último passo.
 4. **Por último, juntos:** a revisão manual jogando e a Calibragem. É aqui que entram o **conteúdo da M2** (avaliar lei por lei: explicação, exclusões, bússola, catálogo de ~250) e a revisão de texto da M6 (frases das bolhas, neutralidade das réguas, `gosta`/`odeia`). O motor já tem de estar pronto.
 
@@ -94,14 +94,39 @@ Revisão de texto, vai para o passo final (junto com a M2):
 ## M7. Bússola e padrões
 
 - [x] Bússola mostra
-- [ ] Aprovação do motor lê os perfis vivos (hoje `aprovacaoPorPerfis` usa perfis fixos, limite 13 do PLANO)
+- [x] Aprovação do motor lê os perfis vivos (29/out, `aprovacaoViva` em `game/congresso`; `aprovacaoViva.test.ts`)
 - [ ] O jogo percebe padrões (item 6 do PLANO)
 
-## M8. Partido
+## M8. Partido, candidato e governo
 
-- [ ] Identidade (ideologia, alas, disciplina)
-- [ ] Desgaste e antipartido
-- [ ] Jogador como partido, não presidente
+Acrescentada em 29/out a pedido do autor: faltava a cadeia inteira, do partido
+ao candidato e aos ministros, e **como cada um mexe na população**. Os itens
+com "a decidir" são ideias para o autor aprovar, não desenho fechado.
+
+**M8.1 Partido**
+- [ ] Identidade: o que o partido defende (ideologia, alas internas, disciplina da bancada)
+- [ ] Jogador como partido, não presidente; partida começa com o partido recém-eleito
+
+**M8.2 Candidato**
+- [~] Hoje: escolhe-se o presidente entre personagens gerados com biografia, opiniões, carisma e experiência
+- [ ] A conferir: o que o candidato escolhido muda de fato no jogo (carisma, experiência, opiniões)
+- [ ] A decidir: o candidato dá ponto de partida na bússola? Pesa na popularidade inicial?
+
+**M8.3 Chapa e ministros**
+- [ ] Vice (não existe no código)
+- [ ] Ministros com nome, perfil e ponto na bússola, ocupando os ministérios que já estão no mapa
+- [ ] A decidir: competência do ministro mexe na eficácia das leis da pasta?
+- [ ] A decidir: troca de ministro, demissão, escândalo
+
+**M8.4 Influência na população** (a cadeia que faltava)
+- [ ] Afinidade de cada grupo com o partido (ideologia do partido × `gosta`/`odeia` do grupo)
+- [ ] Efeito do candidato sobre a satisfação dos perfis (carisma, carisma × grupo)
+- [ ] Efeito dos ministros: ponto na bússola do ministro contra o do eleitor; escândalo derruba a popularidade
+- [ ] Como isso entra na eleição e no Congresso (hoje leem a satisfação por perfil)
+
+**M8.5 Desgaste**
+- [ ] Desgaste do partido: sobe sempre por baixo, opinião segura, queda em escândalo, crise ou eleição
+- [ ] Antipartido (limite 16 do Grupos)
 
 ## M9. Congresso e tramitação
 
@@ -113,12 +138,12 @@ Revisão de texto, vai para o passo final (junto com a M2):
 
 - [~] Eleição existe, falta o adversário
 - [ ] Fim de jogo (perder encerra)
-- [ ] Chapa e montar governo (vice, ministros)
+- A chapa e os ministros estão em M8.3.
 
 ## M11. Ocorrências e pressão
 
 - [x] Ocorrências, crises, grupos de pressão, ministérios no mapa
-- [ ] Ministros com nome (`occurrences.ts` ainda usa o nome da pasta)
+- [ ] Ministros com nome nas ocorrências (`occurrences.ts` ainda usa o nome da pasta; depende da M8.3)
 
 ## M12. Partida e abertura
 

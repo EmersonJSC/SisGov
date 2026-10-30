@@ -101,7 +101,12 @@ export type ProfileApproval = {
   alvo: string;
   k: number;
   pesos: Readonly<Record<string, number>>;
-  perfis: readonly { peso: number; segmentos: readonly string[] }[];
+  perfis: readonly {
+    peso: number;
+    segmentos: readonly string[];
+    /** Pontos somados à satisfação do perfil (o bolso), que fica entre 0 e 100. */
+    ajuste?: number;
+  }[];
   /** Eixos de cada segmento, só para a tela agrupar. O motor não lê. */
   eixos?: readonly { id: string; nome: string; segmentos: readonly string[] }[];
 };
