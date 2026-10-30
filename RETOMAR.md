@@ -3,7 +3,15 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 29/out/2026 (M8.3, fatia A: chapa e ministros).**
+**Atualizado em 30/out/2026 (M9 fechado até a fatia E; diagnóstico do grafo e dilemas).**
+
+## Diagnóstico "o jogo responde?" (30/out), antes de mexer em grafo e dilemas
+
+Scripts em `scripts/diagnostico/` (`vite-node`). Resultados, semente 4, 12 turnos:
+- `mundo-responde.ts`: jogador parado × tudo no máximo × tudo no mínimo. ~4 ocorrências por turno, mas só 2 dilemas em 12 turnos; o resto é aviso de pressão de grupo (21 a 32), evento solto e fake news. 72 de 91 dilemas têm só sorte pura (~1% por turno).
+- `uma-lei-por-vez.ts`: jogador normal mexe em UMA lei (17 leis amostradas). **A lei move bastante coisa**: 16 de 17 mudaram de 6 a 51 das 195 bolhas do mapa; só `regra-de-repasse` não mexeu nada (também serve de controle: sem efeito, não há ruído de sorte). Ou seja, o problema não é "nada se move" e sim "o que se move não vira dilema/evento sentido".
+- Próximo (decidido pelo autor): olhar **bolha por bolha** e entender as leis de cada uma (M2.6), conforme o veredito acima.
+
 
 ## M8 em curso: fatia A feita, faltam B, D e a promessa
 
