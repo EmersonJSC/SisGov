@@ -54,6 +54,7 @@ import {
   type TipoDePedido,
   type Votacao,
 } from "../../game/tramitacao";
+import { gruposNaBussola, somarPontos } from "../../game/gabinete";
 import type { Partida, Resultado } from "./tipos";
 import { aplicarMeta, revogarLei } from "./leis";
 import { serieSemMudanca, simularTrimestres } from "./previsao";
@@ -271,6 +272,49 @@ export type OpcoesDoEnvio = Readonly<{
   revogar?: boolean;
 }>;
 
+/** A lei é cláusula pétrea: não vai a voto (art. 60, § 4º). */
+export function ePetrea(partida: Partida, leiId: string): boolean {
+  const policy = partida.content.policies.find((p) => p.id === leiId);
+  return policy !== undefined && nivelNoCongresso(policy) === "petrea";
+}
+
+/**
+ * Tentar mudar uma pétrea (sem STF): a lei não muda e não vai à fila, mas o
+ * Senado e a população reagem. Cada bancada perde humor e cada grupo perde
+ * satisfação, que se desfaz aos poucos como os favores dos ministros.
+ */
+function reagirAPetrea(
+  partida: Partida,
+  pacote: CongressoDoPacote,
+): Resultado<Partida> {
+  const { game } = partida;
+  const { petrea, petreaNaPopulacao } = pacote.regras.tramitacao.humor;
+  const grupos = gruposNaBussola(pacote).map((g) => g.id);
+  const eleicao = game.election;
+  return {
+    ok: true,
+    value: {
+      ...partida,
+      game: {
+        ...game,
+        congress: comHumor(game.congress!, pacote, () => petrea),
+        ...(eleicao
+          ? {
+              election: {
+                ...eleicao,
+                favores: somarPontos(
+                  eleicao.favores ?? {},
+                  Object.fromEntries(grupos.map((g) => [g, -petreaNaPopulacao])),
+                ),
+              },
+            }
+          : {}),
+      },
+      acoes: partida.acoes + 1,
+    },
+  };
+}
+
 /**
  * Manda a lei ao Congresso: entra na fila com a previsão. Medida provisória
  * já vale; urgência, modo emergência e medida provisória irritam as bancadas.
@@ -287,8 +331,7 @@ export function enviarAoCongresso(
   const policy = content.policies.find((p) => p.id === leiId);
   if (!policy) return erro(`A lei ${leiId} não existe.`);
   const tipo = nivelNoCongresso(policy);
-  if (tipo === "petrea")
-    return erro("Cláusula pétrea não muda por votação (art. 60, § 4º).");
+  if (tipo === "petrea") return reagirAPetrea(partida, pacote);
   if (tipo === "decreto")
     return erro("Esta lei não precisa do Congresso: ela muda por decreto.");
   const estado = estadoDaTramitacao(game);

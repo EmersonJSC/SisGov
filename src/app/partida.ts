@@ -94,6 +94,7 @@ export {
   type VisaoResultado,
 } from "./partida/eleicao";
 export {
+  ePetrea,
   enviarAoCongresso,
   responderPedido,
   verTramitacao,

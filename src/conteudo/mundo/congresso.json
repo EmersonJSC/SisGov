@@ -141,6 +141,8 @@
       "emergencia": -8,
       "medidaProvisoria": -2,
       "medidaProvisoriaDepoisDaDerrota": -8,
+      "petrea": -10,
+      "petreaNaPopulacao": 4,
       "memoria": 0.9
     },
     "pedidos": {

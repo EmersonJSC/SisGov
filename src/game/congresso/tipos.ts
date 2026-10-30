@@ -44,6 +44,10 @@ export type RegrasDoCongresso = Readonly<{
       emergencia: number;
       medidaProvisoria: number;
       medidaProvisoriaDepoisDaDerrota: number;
+      /** Pontos que cada bancada perde quando o jogador tenta mudar uma pétrea. */
+      petrea: number;
+      /** Pontos de satisfação que cada grupo perde na mesma tentativa. */
+      petreaNaPopulacao: number;
       memoria: number;
     }>;
     pedidos: Readonly<{

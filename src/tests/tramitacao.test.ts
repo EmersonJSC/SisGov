@@ -16,6 +16,7 @@ import {
 } from "../app/partida";
 import {
   chancesDoProjeto,
+  ePetrea,
   estadoDaTramitacao,
   votarNoCongresso,
 } from "../app/partida/tramitacao";
@@ -166,11 +167,14 @@ describe("contas", () => {
 });
 
 describe("envio", () => {
-  it("pétrea e decreto não vão ao Congresso; emenda não tem urgência", () => {
+  it("pétrea não entra na fila; emenda não tem urgência", () => {
     const petrea = partida.content.policies.find(
       (p) => nivelNoCongresso(p) === "petrea",
     );
-    if (petrea) expect(enviarAoCongresso(partida, petrea.id, 1).ok).toBe(false);
+    if (petrea) {
+      const r = enviarAoCongresso(partida, petrea.id, 1);
+      if (r.ok) expect(estadoDaTramitacao(r.value.game).fila).toHaveLength(0);
+    }
     const emenda = leiDo(partida, "emenda");
     expect(
       enviarAoCongresso(partida, emenda.id, emenda.nivel, {
@@ -303,6 +307,25 @@ describe("votação", () => {
 });
 
 describe("na tela (modo real)", () => {
+  it("M9: tentar mudar uma pétrea não muda a lei nem entra na fila, e o Senado e a população reagem", () => {
+    const real: Partida = { ...partida, modo: "real" };
+    expect(ePetrea(real, "garantias-penais")).toBe(true);
+    expect(ePetrea(real, "lei-ordinaria")).toBe(false);
+    const antes = policyInForce(real.game.policies, "garantias-penais");
+    const r = enviarAoCongresso(real, "garantias-penais", 0);
+    if (!r.ok) throw new Error(r.erros.join("\n"));
+    expect(estadoDaTramitacao(r.value.game).fila).toHaveLength(0);
+    expect(policyInForce(r.value.game.policies, "garantias-penais")).toEqual(
+      antes,
+    );
+    const humor = Object.values(r.value.game.congress!.humor);
+    expect(humor.length).toBeGreaterThan(0);
+    expect(humor.every((h) => h < 0)).toBe(true);
+    const favores = Object.values(r.value.game.election?.favores ?? {});
+    expect(favores.length).toBeGreaterThan(0);
+    expect(favores.every((f) => f < 0)).toBe(true);
+  });
+
   it("o tablet mostra as cadeiras de cada bancada nas duas casas", () => {
     const visao = verTramitacao(partida);
     expect(visao.casas.length).toBe(2);

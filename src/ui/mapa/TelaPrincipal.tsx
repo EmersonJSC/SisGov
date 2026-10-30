@@ -15,6 +15,7 @@ import { createPortal } from "react-dom";
 import {
   criarPartida,
   encerrarTurno,
+  ePetrea,
   enviarAoCongresso,
   escolherCandidato,
   responderAoMinistro,
@@ -680,7 +681,9 @@ function TelaPrincipalCarregada({
       : mudarLei(partida, leiId, nivel);
     if (!r.ok) return r.erros.join(" ");
     setPartida(r.value);
-    return null;
+    return ePetrea(partida, leiId)
+      ? "Cláusula pétrea não muda por votação. O Senado e a população reagiram mal à tentativa."
+      : null;
   };
 
   const revogar = (leiId: string): string | null => {
