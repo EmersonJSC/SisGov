@@ -305,7 +305,11 @@ export function createGame(
         }).state
       : undefined;
   const pressure = createPressureState(content, execution.values);
-  const compass = criarBussola(content, policies);
+  const compass = criarBussola(
+    content,
+    policies,
+    execution.values.resultado_fiscal,
+  );
   const congress = criarCongresso(content);
   return {
     ok: true,

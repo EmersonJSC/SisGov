@@ -30,7 +30,9 @@ export type RegraDeGatilho =
       /** Em quantas áreas diferentes as decisões se espalham. */
       areasMinimas?: number;
     }>
-  | Readonly<{ tipo: "rumo"; eixo: Eixo; sentido: 1 | -1; minimo: number }>;
+  | Readonly<{ tipo: "rumo"; eixo: Eixo; sentido: 1 | -1; minimo: number }>
+  /** O resultado fiscal (% do PIB) andou `minimo` pontos no `sentido` na janela. */
+  | Readonly<{ tipo: "fiscal"; sentido: 1 | -1; minimo: number }>;
 
 /** Como um grupo reage a um gatilho ligado (M7.3). */
 export type ReacaoDeGatilho = Readonly<{
@@ -150,6 +152,22 @@ function andouNoEixo(
   return agora[eixo] - antes[eixo];
 }
 
+/** Quanto o resultado fiscal andou entre `janela` turnos atrás e agora. */
+function andouNoResultado(
+  caminho: EstadoDaBussola["caminho"],
+  turno: number,
+  janela: number,
+): number {
+  const ordem = [...caminho]
+    .filter((p) => p.turno <= turno && p.resultado !== undefined)
+    .sort((a, b) => a.turno - b.turno);
+  if (ordem.length < 2) return 0;
+  const agora = ordem[ordem.length - 1];
+  const antes =
+    [...ordem].reverse().find((p) => p.turno <= turno - janela) ?? ordem[0];
+  return agora.resultado! - antes.resultado!;
+}
+
 /** Os gatilhos ligados neste turno, na ordem do arquivo. */
 export function gatilhosAtivos(
   content: ResolvedPackage,
@@ -167,6 +185,11 @@ export function gatilhosAtivos(
     bussola,
   );
   return mundo.gatilhos.flatMap(({ id, nome, frase, regra }) => {
+    if (regra.tipo === "fiscal")
+      return regra.sentido * andouNoResultado(caminho, turno, mundo.janela) >=
+        regra.minimo
+        ? [{ id, nome, frase, areas: [] }]
+        : [];
     if (regra.tipo === "rumo")
       return regra.sentido *
         andouNoEixo(caminho, turno, mundo.janela, regra.eixo) >=

@@ -36,10 +36,11 @@ export const referenciasDaBussola =
 export function criarBussola(
   content: ResolvedPackage,
   policies: readonly PolicyState[],
+  resultado?: number,
   bussola: BussolaDoMundo = bussolaDoMundo,
 ): EstadoDaBussola {
   const inicio = mediaDasLeis(content, bussola, policies);
-  return { inicio, caminho: [{ turno: 0, ...inicio }] };
+  return { inicio, caminho: [{ turno: 0, ...inicio, resultado }] };
 }
 
 /** Ponto do jogador com as leis de agora. */
@@ -70,6 +71,7 @@ export function anotarTurno(
   estado: EstadoDaBussola,
   policies: readonly PolicyState[],
   turno: number,
+  resultado?: number,
   bussola: BussolaDoMundo = bussolaDoMundo,
 ): EstadoDaBussola {
   const ponto = pontoAtual(content, estado, policies, bussola);
@@ -77,7 +79,7 @@ export function anotarTurno(
     ...estado,
     caminho: [
       ...estado.caminho.filter((p) => p.turno !== turno),
-      { turno, ...ponto },
+      { turno, ...ponto, resultado },
     ],
   };
 }

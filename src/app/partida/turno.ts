@@ -341,6 +341,7 @@ export function encerrarTurno(
           rolado.game.compass,
           rolado.game.policies,
           rolado.game.currentTurn,
+          rolado.game.execution.values.resultado_fiscal,
         ),
       }
     : rolado.game;

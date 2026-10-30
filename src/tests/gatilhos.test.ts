@@ -192,6 +192,43 @@ describe("gatilhos por área e eixo", () => {
   );
 });
 
+describe("gatilhos fiscais", () => {
+  const caminho = (resultados: readonly number[]) =>
+    resultados.map((resultado, turno) => ({
+      turno,
+      economia: 0,
+      costumes: 0,
+      resultado,
+    }));
+
+  it("o resultado que melhora 2,5 pontos liga o arrocho, e só ele", () => {
+    const ids = ativos([], 4, caminho([-8, -7, -6, -5.5, -5]));
+    expect(ids).toContain("arrocho-fiscal");
+    expect(ids).not.toContain("farra-fiscal");
+  });
+
+  it("o resultado que piora 2,5 pontos liga a farra fiscal", () => {
+    expect(ativos([], 4, caminho([-8, -9, -10, -10.5, -11]))).toContain(
+      "farra-fiscal",
+    );
+  });
+
+  it("mexida pequena ou partida antiga, sem resultado, não liga nada", () => {
+    expect(ativos([], 4, caminho([-8, -8, -7.5, -7.5, -7]))).toEqual([]);
+    expect(
+      ativos([], 4, [
+        { turno: 0, economia: 0, costumes: 0 },
+        { turno: 4, economia: 0, costumes: 0 },
+      ]),
+    ).toEqual([]);
+  });
+
+  it("o motor guarda o resultado de cada turno no caminho", () => {
+    const inicial = partida.game.compass!.caminho[0].resultado;
+    expect(typeof inicial).toBe("number");
+  });
+});
+
 const EIXO = { economia: 0, costumes: 1 } as const;
 
 describe("reações dos grupos (M7.3)", () => {

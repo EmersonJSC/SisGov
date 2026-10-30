@@ -80,7 +80,13 @@ export type EstadoDaBussola = Readonly<{
   /** Média das leis no turno 0 (já na escala de −10 a +10). */
   inicio: PontoDaBussola;
   /** O ponto ao fim de cada turno, a partir do turno 0. */
-  caminho: readonly Readonly<PontoDaBussola & { turno: number }>[];
+  caminho: readonly Readonly<
+    PontoDaBussola & {
+      turno: number;
+      /** Resultado fiscal (% do PIB) ao fim do turno; ausente nas partidas de antes (M7.2). */
+      resultado?: number;
+    }
+  >[];
   /** Respostas a dilemas (V1-13); ausente nas partidas de antes. */
   decisoes?: readonly DecisaoNaBussola[];
 }>;

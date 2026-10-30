@@ -1,7 +1,7 @@
 {
   "tipo": "mundo-gatilhos",
   "versaoEsquema": 1,
-  "metodo": "Um gatilho liga quando, na janela dos últimos turnos, o jogador tomou decisões do tipo dele (regra \"decisoes\") ou a bússola andou para o lado dele (regra \"rumo\"). Decisão = mudança de meta de uma lei (histórico da lei). \"nivel\" olha se a meta subiu ou baixou; \"eixo\" e \"sentido\" olham para onde o vetor da bússola da lei andou (economia: − Estado, + mercado; costumes: − liberdade, + autoridade). Os números são chutes, a calibrar. \"reacoes\": cada item diz como um grupo (chave sem o prefixo \"grupo_\") reage enquanto o gatilho está ligado: \"pontos\" (de satisfação, com sinal), \"frase\" (o post dele no tablet) e, opcionalmente, \"areas\" (só reage se a decisão foi em uma delas). Os pontos somam por grupo, com teto de ±8 (M7.3). São chutes, a calibrar.",
+  "metodo": "Um gatilho liga quando, na janela dos últimos turnos, o jogador tomou decisões do tipo dele (regra \"decisoes\") ou a bússola andou para o lado dele (regra \"rumo\") ou o resultado fiscal andou (regra \"fiscal\": pontos do PIB ganhos ou perdidos na janela, lidos do caminho guardado a cada turno). Decisão = mudança de meta de uma lei (histórico da lei). \"nivel\" olha se a meta subiu ou baixou; \"eixo\" e \"sentido\" olham para onde o vetor da bússola da lei andou (economia: − Estado, + mercado; costumes: − liberdade, + autoridade). Os números são chutes, a calibrar. \"reacoes\": cada item diz como um grupo (chave sem o prefixo \"grupo_\") reage enquanto o gatilho está ligado: \"pontos\" (de satisfação, com sinal), \"frase\" (o post dele no tablet) e, opcionalmente, \"areas\" (só reage se a decisão foi em uma delas). Os pontos somam por grupo, com teto de ±8 (M7.3). São chutes, a calibrar.",
   "janela": 4,
   "minimoDeDecisoes": 3,
   "tetoDaReacao": 8,
@@ -448,6 +448,75 @@
           "grupo": "classe_media",
           "pontos": -3,
           "frase": "Reforma sobre reforma na Constituição. A gente fica sem saber o que vale."
+        }
+      ]
+    },
+    {
+      "id": "arrocho-fiscal",
+      "nome": "Arrocho fiscal",
+      "frase": "apertou as contas e melhorou o resultado do governo",
+      "regra": {
+        "tipo": "fiscal",
+        "sentido": 1,
+        "minimo": 2.5
+      },
+      "reacoes": [
+        {
+          "grupo": "empresarios",
+          "pontos": 3,
+          "frase": "Finalmente alguém arrumando a casa. Contas em ordem dão previsibilidade para investir."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": 2,
+          "frase": "Se a conta do governo fecha, talvez a inflação e os juros deem trégua para a gente."
+        },
+        {
+          "grupo": "servidores",
+          "pontos": -3,
+          "frase": "Todo ajuste cai no nosso colo: salário parado, concurso suspenso."
+        },
+        {
+          "grupo": "pobres",
+          "pontos": -3,
+          "frase": "Quando o governo aperta o cinto, o primeiro furo é no nosso."
+        },
+        {
+          "grupo": "aposentados",
+          "pontos": -2,
+          "frase": "Falam em ajuste e a gente já sabe quem paga: benefício que não acompanha a vida."
+        }
+      ]
+    },
+    {
+      "id": "farra-fiscal",
+      "nome": "Farra fiscal",
+      "frase": "deixou o resultado das contas piorar rápido",
+      "regra": {
+        "tipo": "fiscal",
+        "sentido": -1,
+        "minimo": 2.5
+      },
+      "reacoes": [
+        {
+          "grupo": "empresarios",
+          "pontos": -3,
+          "frase": "O governo gasta mais do que arrecada e a conta vem em juros e imposto."
+        },
+        {
+          "grupo": "classe_media",
+          "pontos": -2,
+          "frase": "Rombo nas contas, e a gente já imagina quem vai pagar depois."
+        },
+        {
+          "grupo": "servidores",
+          "pontos": 2,
+          "frase": "Pelo menos o dinheiro está chegando ao serviço público."
+        },
+        {
+          "grupo": "pobres",
+          "pontos": 2,
+          "frase": "Tem programa saindo do papel. Que dure."
         }
       ]
     }

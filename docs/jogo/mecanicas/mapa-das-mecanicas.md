@@ -97,7 +97,7 @@ Revisão de texto, vai para o passo final (junto com a M2):
 - [x] Aprovação do motor lê os perfis vivos (29/out, `aprovacaoViva` em `game/congresso`; `aprovacaoViva.test.ts`)
 - [~] O jogo percebe padrões, por **gatilhos** (item 6 do PLANO)
   - [x] M7.2: 11 gatilhos em `mundo/gatilhos.json`, lidos do histórico das leis e do caminho da bússola (`game/gatilhos`, `gatilhos.test.ts`); aparecem na Bússola
-  - [ ] Gatilhos fiscais (arrocho e farra fiscal): pedem guardar resultado e dívida por turno
+  - [x] Gatilhos fiscais (arrocho e farra, 29/out): regra `fiscal` lê o resultado guardado no `caminho` a cada turno
   - [x] M7.3: grupos e frases reagem aos gatilhos (29/out; mexe na satisfação e na popularidade, por área; eleição e Congresso ainda não leem)
 
 ## M8. Partido, candidato e governo
