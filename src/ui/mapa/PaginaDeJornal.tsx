@@ -308,6 +308,7 @@ export function PaginaDeJornal({
   onEscolherCandidato = () => null,
   onEscolherChapa = () => null,
   onSortearChapa = () => ({}),
+  onResponderMinistro = () => null,
   nomeDoSegmento = (id) => id,
 }: {
   edicao: EdicaoDoJornal;
@@ -335,6 +336,7 @@ export function PaginaDeJornal({
     ministros?: Readonly<Record<string, string>>;
   }) => string | null;
   onSortearChapa?: (rodada: number) => Readonly<Record<string, string>>;
+  onResponderMinistro?: (aceitar: boolean) => string | null;
   nomeDoSegmento?: (id: string) => string;
 }) {
   const [app, setApp] = useState<AppDoTablet>(appInicial);
@@ -448,6 +450,7 @@ export function PaginaDeJornal({
               onEscolher={onEscolherCandidato}
               onEscolherChapa={onEscolherChapa}
               onSortearChapa={onSortearChapa}
+              onResponderMinistro={onResponderMinistro}
               nomeDoSegmento={nomeDoSegmento}
             />
           ) : app === "rede" ? (

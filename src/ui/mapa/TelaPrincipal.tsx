@@ -17,6 +17,7 @@ import {
   encerrarTurno,
   enviarAoCongresso,
   escolherCandidato,
+  responderAoMinistro,
   escolherChapa,
   sortearMinistrosDaEleicao,
   investigarGrupo,
@@ -765,6 +766,15 @@ function TelaPrincipalCarregada({
     setErroTurno(null);
     return null;
   };
+  // M8.3: o presidente responde ao pedido de lei de um ministro
+  const responderMinistro = (aceitar: boolean): string | null => {
+    if (!partida) return null;
+    const r = responderAoMinistro(partida, aceitar);
+    if (!r.ok) return r.erros.join(" ");
+    setPartida(r.value);
+    setErroTurno(null);
+    return null;
+  };
   const sortearNaChapa = (rodada: number) =>
     partida ? sortearMinistrosDaEleicao(partida, rodada) : {};
 
@@ -1331,6 +1341,7 @@ function TelaPrincipalCarregada({
           onEscolherCandidato={escolherNoPartido}
           onEscolherChapa={escolherNaChapa}
           onSortearChapa={sortearNaChapa}
+          onResponderMinistro={responderMinistro}
           nomeDoSegmento={(id) =>
             visao.bolhas.find((b) => b.id === id)?.nome ?? id
           }

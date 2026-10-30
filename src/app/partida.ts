@@ -74,6 +74,10 @@ export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
 export { notasDoGabinete, verBussola } from "./partida/bussola";
 export {
+  responderAoMinistro,
+  type VisaoPedidoDoMinistro,
+} from "./partida/pedidos";
+export {
   escolherCandidato,
   escolherChapa,
   primeiraChapa,

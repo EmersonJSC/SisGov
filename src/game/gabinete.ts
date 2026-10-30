@@ -136,13 +136,18 @@ export function pontosDoGabinete(
   ministros: Readonly<Record<string, Personagem>> | undefined,
   pacote: CongressoDoPacote | undefined,
   valores: Readonly<Record<string, number>>,
+  /** O que as respostas aos pedidos dos ministros deixaram em cada grupo. */
+  favores: Readonly<Record<string, number>> = {},
 ): Readonly<Record<string, number>> {
-  if (!ministros || !pacote) return {};
+  if (!ministros || !pacote) return favores;
   const ajuste = ajusteDoGabinete(
     notasDosMinistros(ministros, pacote, valores),
   );
-  if (ajuste === 0) return {};
-  return Object.fromEntries(gruposNaBussola(pacote).map((g) => [g.id, ajuste]));
+  if (ajuste === 0) return favores;
+  return somarPontos(
+    Object.fromEntries(gruposNaBussola(pacote).map((g) => [g.id, ajuste])),
+    favores,
+  );
 }
 
 /** Soma dois conjuntos de pontos por grupo. */

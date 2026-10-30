@@ -28,6 +28,7 @@ import {
   type ResultadoDaEleicao,
 } from "../../game/eleicao";
 import { notasDoGabinete, valoresComReacao } from "./bussola";
+import { verPedidoDoMinistro, type VisaoPedidoDoMinistro } from "./pedidos";
 import type { Partida, Resultado } from "./tipos";
 
 export type VisaoPersonagem = Readonly<{
@@ -112,6 +113,8 @@ export type VisaoEleicao = Readonly<{
   vice?: VisaoPersonagem;
   /** Quem comanda cada área hoje. */
   gabinete: readonly VisaoAreaDaChapa[];
+  /** O pedido de lei que um ministro trouxe e espera resposta (M8.3). */
+  pedido?: VisaoPedidoDoMinistro;
   /** Nomes para trocar vice e ministros na próxima eleição (já sorteados). */
   chapaParaTrocar?: VisaoChapa;
   /** A troca já decidida: id do vice e do ministro de cada área. */
@@ -335,6 +338,15 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
   };
   const podeIr = podeConcorrer(pais, e);
   const notas = notasDoGabinete(partida);
+  const cargos = new Map(
+    verChapa(
+      game.scenario.id,
+      ano,
+      { vices: [], ministros: {} },
+      e.ministros,
+    ).areas.map((a) => [a.id, a.cargo] as const),
+  );
+  const pedido = verPedidoDoMinistro(partida, (area) => cargos.get(area));
   return {
     partido: { nome: e.partido.nome, sigla: e.partido.sigla },
     presidente: verPersonagem(e.presidente, ano),
@@ -348,6 +360,7 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
       const n = notas.find((x) => x.area === a.id);
       return n ? { ...a, popularidade: n.nota, leais: n.leais } : a;
     }),
+    ...(pedido ? { pedido } : {}),
     ...(e.opcoesDaChapa
       ? { chapaParaTrocar: verChapa(game.scenario.id, ano, e.opcoesDaChapa) }
       : {}),

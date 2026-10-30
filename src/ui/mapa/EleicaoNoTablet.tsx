@@ -208,6 +208,7 @@ export function EleicaoNoTablet({
   onEscolher,
   onEscolherChapa,
   onSortearChapa,
+  onResponderMinistro,
   nomeDoSegmento,
 }: {
   eleicao: VisaoEleicao;
@@ -219,8 +220,11 @@ export function EleicaoNoTablet({
   }) => string | null;
   /** Sorteia os ministros a partir do candidato e do vice. */
   onSortearChapa: (rodada: number) => Readonly<Record<string, string>>;
+  /** Aceita ou recusa o pedido de lei do ministro. */
+  onResponderMinistro: (aceitar: boolean) => string | null;
   nomeDoSegmento: (id: string) => string;
 }) {
+  const [erroDoPedido, setErroDoPedido] = useState<string | null>(null);
   const [rodada, setRodada] = useState(0);
   const ultima = e.pesquisas.at(-1);
   const resultados = [...e.resultados].reverse();
@@ -294,6 +298,36 @@ export function EleicaoNoTablet({
           )}
         </section>
       </div>
+
+      {e.pedido ? (
+        <section aria-label="Pedido do ministro">
+          <h2 className="ds-aba">Pedido do ministro</h2>
+          <p className="ds-dica">
+            {e.pedido.ministro} ({e.pedido.area}) traz uma ideia de lei dele e
+            de quem o apoia: {e.pedido.leais.map(nomeDoSegmento).join(", ")}.
+            Aceitar agrada esses grupos e leva a lei adiante; recusar os
+            desagrada.
+          </p>
+          <p>
+            <strong>{e.pedido.lei}:</strong> {e.pedido.opcao}
+          </p>
+          <div className="el-acoes">
+            <button
+              type="button"
+              onClick={() => setErroDoPedido(onResponderMinistro(true))}
+            >
+              Aceitar
+            </button>
+            <button
+              type="button"
+              onClick={() => setErroDoPedido(onResponderMinistro(false))}
+            >
+              Recusar
+            </button>
+          </div>
+          {erroDoPedido ? <p role="alert">{erroDoPedido}</p> : null}
+        </section>
+      ) : null}
 
       {e.gabinete.some((a) => a.ministro) ? (
         <section aria-label="Gabinete">

@@ -216,6 +216,16 @@ export type EstadoDaEleicao = Readonly<{
   vice?: Personagem;
   /** Um ministro por área do governo (id da área). */
   ministros?: Readonly<Record<string, Personagem>>;
+  /** O pedido de lei que um ministro trouxe neste turno (M8.3, fatia D). */
+  pedido?: Readonly<{
+    area: string;
+    lei: string;
+    opcao: string;
+    nivel: number;
+    turno: number;
+  }>;
+  /** Pontos de satisfação por grupo que as respostas aos ministros deixaram. */
+  favores?: Readonly<Record<string, number>>;
   /** Nomes que a chapa pode trocar na próxima eleição. */
   opcoesDaChapa?: OpcoesDaChapa;
   /** A troca já decidida para o próximo mandato; o que falta fica como está. */

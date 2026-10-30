@@ -97,6 +97,7 @@ export function prepareGameMonth(
     game.election?.ministros,
     pacoteVivo(content, execution.values),
     somarSatisfacao(execution.values, reacoes),
+    game.election?.favores,
   );
   const approval = aprovacaoViva(
     content,

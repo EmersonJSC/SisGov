@@ -91,6 +91,7 @@ export function valoresComReacao(
     partida.game.election?.ministros,
     pacoteVivo(partida.content, valores),
     somarSatisfacao(valores, reacao),
+    partida.game.election?.favores,
   );
   const pontos = somarPontos(reacao, gabinete);
   const chave = JSON.stringify(pontos);

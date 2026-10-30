@@ -8417,3 +8417,25 @@ span.el-mini {
   text-align: right;
   font-weight: 700;
 }
+
+/* Pedido do ministro (M8.3, fatia D): aceitar ou recusar */
+.el-acoes {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.5rem 0 0.8rem;
+}
+.el-acoes button {
+  padding: 0.35rem 1.1rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.el-acoes button:first-child {
+  background: rgba(120, 180, 120, 0.25);
+}
+.el-acoes button:last-child {
+  background: rgba(200, 100, 90, 0.25);
+}
