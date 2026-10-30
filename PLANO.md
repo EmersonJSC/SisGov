@@ -66,7 +66,7 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 8. [ ] Eleição e fim de jogo (contra outro candidato)
 9. [~] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
 10. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
-11. [ ] Índices essenciais e população: só o que faltar depois da economia em reais
+11. [ ] Índices essenciais e população: só o que faltar depois da economia em reais. Pedido do autor (30/out): reajustar os índices que aparecem na tela e trocar os ícones genéricos por ícones próprios (M2.6 do mapa das mecânicas)
 12. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
     - **Chutes da população para conferir na calibragem** (lista única, 30/out; cada um também tem o aviso no próprio arquivo). Todos são de direção, sem dado:
       - Multiplicadores de renda por ocupação × faixa (`mundo/populacao.json`, `bolso`): ancorados a olho na PNAD. Hoje o pobre com carteira ganha R$ 1.862/mês e paga 35% disso.

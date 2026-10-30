@@ -64,6 +64,12 @@ antiga dizia. Por isso ela foi dividida em cinco submecânicas.
 - [x] Estado e custo das leis (`estadoDasLeis.test`, `custosDasLeis.test`)
 - [ ] Troca de nomes por país (ex.: "Selic")
 
+**M2.6 Ligação das leis ao grafo (pedido do autor, 30/out)**
+
+- [ ] Conferir se as leis estão ligadas às variáveis certas: o autor suspeita que as leis não estão conectadas corretamente e por isso o jogador não sente efeito. Ponto de partida: o diagnóstico `scripts/diagnostico/mundo-responde.ts` (compara o que muda entre jogador parado, no máximo e no mínimo).
+- [ ] Reajustar os índices que aparecem na tela (os do topo e as bolhas): rever quais mostrar e se são os certos
+- [ ] Trocar os ícones genéricos dos índices por ícones próprios de cada um
+
 ## M3. Economia e orçamento
 
 - [x] Reais e caixa, fases 1 a 6
