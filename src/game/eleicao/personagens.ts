@@ -10,13 +10,16 @@ import {
   type PontoDaBussola,
 } from "../bussola";
 import type {
+  Atributos,
   Carreira,
   EleicaoDoPais,
   Ideologia,
   MundoDosPersonagens,
+  Papel,
   Personagem,
   PessoaReal,
 } from "./tipos";
+import { NOMES_DOS_ATRIBUTOS } from "./tipos";
 
 /** Sorteio com semente (mulberry32): `usados` diz quantos já saíram. */
 export type Sorte = Readonly<{
@@ -147,6 +150,31 @@ export function opinioesDe(
   return frases;
 }
 
+/** Atributos de quem não os tem (saves antigos, pessoas reais). */
+export const ATRIBUTOS_PADRAO: Atributos = {
+  integridade: 2,
+  articulacao: 2,
+  comunicacao: 2,
+  gestao: 2,
+};
+
+export const atributosDe = (p: Personagem): Atributos =>
+  p.atributos ?? ATRIBUTOS_PADRAO;
+
+/**
+ * Sorteia os atributos dentro da faixa da carreira. Usa uma sorte à parte,
+ * semeada pelo ponto de partida, para não deslocar a sequência principal.
+ */
+function sortearAtributos(carreira: Carreira, semente: number): Atributos {
+  const sorte = criarSorte(semente);
+  return Object.fromEntries(
+    NOMES_DOS_ATRIBUTOS.map((nome) => {
+      const [min, max] = carreira.atributos[nome];
+      return [nome, sorte.inteiro(min, max)];
+    }),
+  ) as Atributos;
+}
+
 const preencher = (molde: string, campos: Record<string, string>) =>
   molde.replace(/\{(\w+)\}/g, (_, k: string) => campos[k] ?? "").trim();
 
@@ -156,6 +184,7 @@ export function gerarPersonagem(
   pais: EleicaoDoPais,
   sorte: Sorte,
   lado?: string,
+  papel?: Papel,
 ): Personagem {
   const doLado = mundo.ideologias.filter((i) => !lado || i.lado === lado);
   const ideologia = sorte.escolher(
@@ -210,7 +239,34 @@ export function gerarPersonagem(
     biografia,
     opinioes,
     segmentos: carreira.segmentos,
+    atributos: sortearAtributos(carreira, sorte.usados() * 7919 + 13),
+    ...(papel ? { papel } : {}),
   };
+}
+
+/** Uma pessoa para um papel; o mesmo gerador serve a candidato, vice e ministro. */
+export const gerarPessoa = (
+  mundo: MundoDosPersonagens,
+  pais: EleicaoDoPais,
+  sorte: Sorte,
+  papel: Papel,
+  lado?: string,
+): Personagem => gerarPersonagem(mundo, pais, sorte, lado, papel);
+
+/** Uma lista de pessoas (os ministros, por exemplo), sem repetir nome. */
+export function gerarPessoas(
+  mundo: MundoDosPersonagens,
+  pais: EleicaoDoPais,
+  sorte: Sorte,
+  papel: Papel,
+  quantidade: number,
+): Personagem[] {
+  const lista: Personagem[] = [];
+  while (lista.length < quantidade) {
+    const p = gerarPessoa(mundo, pais, sorte, papel);
+    if (!lista.some((x) => x.nome === p.nome)) lista.push(p);
+  }
+  return lista;
 }
 
 /**

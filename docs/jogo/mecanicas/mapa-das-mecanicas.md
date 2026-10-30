@@ -30,6 +30,7 @@ antiga dizia. Por isso ela foi dividida em cinco submecânicas.
 (avaliar lei por lei, explicação, catálogo) vem no passo final, com a Calibragem.
 
 **M2.1 Catálogo e molde**
+
 - [x] Molde v4: 224 leis em 11 áreas e 2 pétreas, com verificador e inventário (`moldeDasLeis.test`, `inventarioDeLeis.test`)
 - [x] Leis em três níveis, leis filhas, leis globais (testes próprios)
 - [x] Busca de leis na tela
@@ -38,6 +39,7 @@ antiga dizia. Por isso ela foi dividida em cinco submecânicas.
 - [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
 
 **M2.2 Leis de valor e travas**
+
 - [x] Travas individuais e tetos de 40% dos pisos tirados (A2)
 - [x] Trava conjunta de 100% do PIB; acima da receita vira déficit (A3)
 - [x] Controle de alíquota e de verba livre (0 a 100%, `faixaDaAliquota.test`)
@@ -46,15 +48,18 @@ antiga dizia. Por isso ela foi dividida em cinco submecânicas.
 - [ ] Liberar opções travadas e converter em valor onde couber (A5)
 
 **M2.3 Exclusão e dependência entre leis**
+
 - [~] O mecanismo existe (`excludedActivePolicyIds` em `validatePolicyAction.ts`), mas nenhuma lei declara com quem não convive
 - [ ] A lei declara a exclusão; aprovar pede revogar a outra (A4)
 
 **M2.4 Explicação e janela da lei**
+
 - [x] Prévia do efeito e no bolso de quem a lei bate
 - [ ] Explicação por lei e opção, com teste que a exige (A6)
 - [ ] Régua também nas leis de opções? (A7, decisão do autor)
 
 **M2.5 Leis do mundo, estado do país**
+
 - [x] Leis sem país; dados do Brasil em `paises/brasil/` (`leis-no-pais.json`, `leisNoPais.test`)
 - [x] Estado e custo das leis (`estadoDasLeis.test`, `custosDasLeis.test`)
 - [ ] Troca de nomes por país (ex.: "Selic")
@@ -84,9 +89,10 @@ antiga dizia. Por isso ela foi dividida em cinco submecânicas.
 
 - [x] Satisfação por perfil (com bolso) e apoio pesado pelo tamanho
 - [x] Radicais e lealistas
-Núcleo fechado. A aprovação do motor com perfis fixos passa para a M7.
+      Núcleo fechado. A aprovação do motor com perfis fixos passa para a M7.
 
 Revisão de texto, vai para o passo final (junto com a M2):
+
 - [~] País em frases (55 de 192 bolhas; as faixas escritas se julgam jogando)
 - [ ] `gosta`/`odeia` dos desempregados
 - [ ] Neutralidade das réguas e das cores
@@ -107,27 +113,37 @@ ao candidato e aos ministros, e **como cada um mexe na população**. Os itens
 com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 
 **M8.1 Partido**
+
 - [ ] Identidade: o que o partido defende (ideologia, alas internas, disciplina da bancada)
 - [ ] Jogador como partido, não presidente; partida começa com o partido recém-eleito
 
 **M8.2 Candidato**
+
 - [~] Hoje: escolhe-se o presidente entre personagens gerados com biografia, opiniões, carisma e experiência
+- [x] Gerador de pessoas (29/out): serve a candidato, vice e ministro; 4 atributos novos (integridade, articulação, comunicação, gestão) na ficha
+- [x] A tela de escolha não mostra lado nem ideologia, só biografia, opiniões e atributos
 - [ ] A conferir: o que o candidato escolhido muda de fato no jogo (carisma, experiência, opiniões)
+- [ ] Promessa contra ação: governar ao contrário das opiniões que disse estressa a população
+- [ ] Carisma vivo: sobe e desce conforme as leis e os ataques na mídia
 - [ ] A decidir: o candidato dá ponto de partida na bússola? Pesa na popularidade inicial?
 
 **M8.3 Chapa e ministros**
+
+- [ ] Tela de escolha completa: presidente, vice e ministros, com opção de ministros aleatórios a partir da chapa (pedido do autor, 29/out)
 - [ ] Vice (não existe no código)
 - [ ] Ministros com nome, perfil e ponto na bússola, ocupando os ministérios que já estão no mapa
 - [ ] A decidir: competência do ministro mexe na eficácia das leis da pasta?
 - [ ] A decidir: troca de ministro, demissão, escândalo
 
 **M8.4 Influência na população** (a cadeia que faltava)
+
 - [ ] Afinidade de cada grupo com o partido (ideologia do partido × `gosta`/`odeia` do grupo)
 - [ ] Efeito do candidato sobre a satisfação dos perfis (carisma, carisma × grupo)
 - [ ] Efeito dos ministros: ponto na bússola do ministro contra o do eleitor; escândalo derruba a popularidade
 - [ ] Como isso entra na eleição e no Congresso (hoje leem a satisfação por perfil)
 
 **M8.5 Desgaste**
+
 - [ ] Desgaste do partido: sobe sempre por baixo, opinião segura, queda em escândalo, crise ou eleição
 - [ ] Antipartido (limite 16 do Grupos)
 
@@ -152,6 +168,12 @@ com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 
 - [x] Salvar, carregar, exportar
 - [ ] Tela de abertura à altura da promessa
+
+## M13. Mídia
+
+Ideia do autor (29/out), ainda sem desenho. Ataque na mídia fortalece atributos
+do candidato e a visão do público, o que mexe na popularidade e pressiona o
+Senado a passar as leis. Depende do carisma vivo (M8.2). Abre só depois da M8.
 
 ## Transversal, no fim: Calibragem
 

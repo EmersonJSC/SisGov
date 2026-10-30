@@ -44,6 +44,28 @@ export type Ideologia = Readonly<{
   explicita: string;
 }>;
 
+/** O que a pessoa sabe fazer, de 0 a 3 (junto com carisma e experiência). */
+export type Atributos = Readonly<{
+  /** Quanto resiste a escândalo. */
+  integridade: number;
+  /** Trato com o Congresso. */
+  articulacao: number;
+  /** Peso na mídia. */
+  comunicacao: number;
+  /** Eficácia na pasta ou no governo. */
+  gestao: number;
+}>;
+
+export const NOMES_DOS_ATRIBUTOS: readonly (keyof Atributos)[] = [
+  "integridade",
+  "articulacao",
+  "comunicacao",
+  "gestao",
+];
+
+/** Para o que a pessoa foi gerada; o gerador é o mesmo para todos. */
+export type Papel = "candidato" | "vice" | "ministro";
+
 export type Carreira = Readonly<{
   id: string;
   nome: Readonly<{ m: string; f: string }>;
@@ -53,6 +75,7 @@ export type Carreira = Readonly<{
   /** Quanto a carreira puxa a franqueza (−1, 0 ou +1). */
   franqueza: number;
   frase: string;
+  atributos: Readonly<Record<keyof Atributos, readonly [number, number]>>;
 }>;
 
 export type Opiniao = Readonly<{
@@ -147,6 +170,9 @@ export type Personagem = Readonly<{
   opinioes: readonly string[];
   /** Segmentos que a carreira atrai. */
   segmentos: readonly string[];
+  /** Ausente em saves antigos e em pessoas reais (valem 2). */
+  atributos?: Atributos;
+  papel?: Papel;
 }>;
 
 export type Pesquisa = Readonly<{

@@ -17,6 +17,7 @@ import {
   eleicaoDoPais,
   gerarEscolha,
   gerarPersonagem,
+  gerarPessoas,
   mundoDosPersonagens,
   passarTurnoNaEleicao,
   regrasDaEleicao,
@@ -211,4 +212,35 @@ it("V1-39: o salvo guarda o partido e a eleição", () => {
   const voltou = carregarPartida(salvarPartida(p));
   if (!voltou.ok) throw new Error(voltou.erros.join());
   expect(voltou.value.partida.game.election).toEqual(p.game.election);
+});
+
+it("M8: a pessoa tem atributos dentro da faixa da carreira e a tela os recebe", () => {
+  const sorte = criarSorte(9);
+  for (let i = 0; i < 100; i++) {
+    const p = gerarPersonagem(mundoDosPersonagens, pais, sorte);
+    const carreira = mundoDosPersonagens.carreiras.find(
+      (c) => c.nome[p.genero] === p.carreira,
+    )!;
+    for (const [nome, [min, max]] of Object.entries(carreira.atributos)) {
+      const v = p.atributos![nome as keyof typeof p.atributos];
+      expect(v).toBeGreaterThanOrEqual(min);
+      expect(v).toBeLessThanOrEqual(max);
+    }
+  }
+  const tela = primeirosCandidatos({ semente: 1 })[0];
+  for (const k of ["integridade", "articulacao", "comunicacao", "gestao"])
+    expect(typeof (tela as Record<string, unknown>)[k]).toBe("number");
+});
+
+it("M8: o gerador faz uma lista de ministros, sem repetir nome", () => {
+  const ministros = gerarPessoas(
+    mundoDosPersonagens,
+    pais,
+    criarSorte(5),
+    "ministro",
+    12,
+  );
+  expect(ministros).toHaveLength(12);
+  expect(new Set(ministros.map((m) => m.nome)).size).toBe(12);
+  expect(ministros.every((m) => m.papel === "ministro")).toBe(true);
 });

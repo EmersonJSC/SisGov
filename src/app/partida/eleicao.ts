@@ -6,6 +6,7 @@ import type { GameState } from "../../game/createGame";
 import { anoComFracao, mesesAteOTurno } from "../../game/calendario";
 import { pontoAtual } from "../../game/bussola";
 import {
+  atributosDe,
   candidatoDoPartido,
   eleicaoDoPais,
   escolherCandidato as escolherNoJogo,
@@ -36,6 +37,10 @@ export type VisaoPersonagem = Readonly<{
   opinioes: readonly string[];
   carisma: number;
   experiencia: number;
+  integridade: number;
+  articulacao: number;
+  comunicacao: number;
+  gestao: number;
   /**
    * Nome do retrato em `public/arte/retratos/` (sem extensão): carreira e
    * gênero, ou "pessoa-real" (pessoas reais não ganham rosto de IA).
@@ -120,6 +125,7 @@ function verPersonagem(
     opinioes: p.opinioes,
     carisma: p.carisma,
     experiencia: p.experiencia,
+    ...atributosDe(p),
     retrato: retratoDe(p),
     ...(extra?.estranhamento !== undefined
       ? { estranhamento: Math.min(3, Math.round(extra.estranhamento)) }

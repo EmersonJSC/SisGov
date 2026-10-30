@@ -133,6 +133,10 @@ export function Folha({
           <div className="ds-medidores">
             <Medidor rotulo="Carisma" valor={p.carisma} />
             <Medidor rotulo="Experiência" valor={p.experiencia} />
+            <Medidor rotulo="Integridade" valor={p.integridade} />
+            <Medidor rotulo="Articulação" valor={p.articulacao} />
+            <Medidor rotulo="Comunicação" valor={p.comunicacao} />
+            <Medidor rotulo="Gestão" valor={p.gestao} />
           </div>
           {p.estranhamento ? (
             <p className="ds-estranha">{ESTRANHA[p.estranhamento]}</p>

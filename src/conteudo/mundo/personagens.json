@@ -1,7 +1,7 @@
 {
   "tipo": "mundo-personagens",
   "versaoEsquema": 1,
-  "metodo": "Desenho em docs/v1/desenho/eleicao.md, seção 3. O personagem tem lado e ideologia só por dentro: a tela mostra a biografia e de 3 a 5 opiniões. O centro de cada ideologia na bússola é a média dos partidos de referência (bussola/referencias.json, V-Party). Cada opinião tem um eixo, uma posição (−10 a 10) e uma intensidade (1 sutil, 2 clara, 3 explícita); a franqueza do personagem (0 a 3) decide quais intensidades ele usa. Lista nossa; nada vem do Democracy 4.",
+  "metodo": "Desenho em docs/v1/desenho/eleicao.md, seção 3. O personagem tem lado e ideologia só por dentro: a tela mostra a biografia e de 3 a 5 opiniões. O centro de cada ideologia na bússola é a média dos partidos de referência (bussola/referencias.json, V-Party). Cada opinião tem um eixo, uma posição (−10 a 10) e uma intensidade (1 sutil, 2 clara, 3 explícita); a franqueza do personagem (0 a 3) decide quais intensidades ele usa. Lista nossa; nada vem do Democracy 4. Cada pessoa também tem quatro atributos de 0 a 3 (integridade, articulação, comunicação, gestão), sorteados dentro da faixa da carreira com uma sorte à parte (não muda as sequências já sorteadas). O gerador faz pessoas em geral: o papel (candidato, vice, ministro) só diz para que a pessoa serve.",
   "desvio": 1.5,
   "franqueza": {
     "0": [1],
@@ -131,7 +131,13 @@
       "experiencia": [0, 2],
       "carisma": [1, 3],
       "franqueza": 1,
-      "frase": "Começou numa fábrica e chegou à liderança do sindicato da categoria."
+      "frase": "Começou numa fábrica e chegou à liderança do sindicato da categoria.",
+      "atributos": {
+        "integridade": [1, 3],
+        "articulacao": [2, 3],
+        "comunicacao": [1, 3],
+        "gestao": [0, 2]
+      }
     },
     {
       "id": "professor",
@@ -143,7 +149,13 @@
       "experiencia": [0, 2],
       "carisma": [0, 2],
       "franqueza": 0,
-      "frase": "Deu aula na rede pública por mais de vinte anos."
+      "frase": "Deu aula na rede pública por mais de vinte anos.",
+      "atributos": {
+        "integridade": [2, 3],
+        "articulacao": [1, 2],
+        "comunicacao": [1, 3],
+        "gestao": [0, 2]
+      }
     },
     {
       "id": "artista",
@@ -155,7 +167,13 @@
       "experiencia": [0, 1],
       "carisma": [2, 3],
       "franqueza": 0,
-      "frase": "Fez fama nos palcos e na televisão antes de entrar na política."
+      "frase": "Fez fama nos palcos e na televisão antes de entrar na política.",
+      "atributos": {
+        "integridade": [1, 3],
+        "articulacao": [0, 1],
+        "comunicacao": [2, 3],
+        "gestao": [0, 1]
+      }
     },
     {
       "id": "economista",
@@ -167,7 +185,13 @@
       "experiencia": [1, 3],
       "carisma": [0, 1],
       "franqueza": -1,
-      "frase": "Trabalhou no mercado financeiro e no banco central antes de ser chamado para o governo."
+      "frase": "Trabalhou no mercado financeiro e no banco central antes de ser chamado para o governo.",
+      "atributos": {
+        "integridade": [1, 3],
+        "articulacao": [0, 2],
+        "comunicacao": [0, 1],
+        "gestao": [2, 3]
+      }
     },
     {
       "id": "empresario",
@@ -179,7 +203,13 @@
       "experiencia": [0, 2],
       "carisma": [1, 3],
       "franqueza": 0,
-      "frase": "Construiu do zero uma rede de lojas com milhares de funcionários."
+      "frase": "Construiu do zero uma rede de lojas com milhares de funcionários.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [1, 2],
+        "comunicacao": [1, 2],
+        "gestao": [2, 3]
+      }
     },
     {
       "id": "medico",
@@ -191,7 +221,13 @@
       "experiencia": [1, 2],
       "carisma": [1, 2],
       "franqueza": 0,
-      "frase": "Dirigiu hospitais públicos e ganhou projeção durante uma epidemia."
+      "frase": "Dirigiu hospitais públicos e ganhou projeção durante uma epidemia.",
+      "atributos": {
+        "integridade": [2, 3],
+        "articulacao": [0, 2],
+        "comunicacao": [1, 2],
+        "gestao": [1, 3]
+      }
     },
     {
       "id": "juiz",
@@ -203,7 +239,13 @@
       "experiencia": [1, 2],
       "carisma": [0, 2],
       "franqueza": -1,
-      "frase": "Ganhou fama julgando grandes processos de corrupção."
+      "frase": "Ganhou fama julgando grandes processos de corrupção.",
+      "atributos": {
+        "integridade": [2, 3],
+        "articulacao": [0, 1],
+        "comunicacao": [0, 1],
+        "gestao": [1, 3]
+      }
     },
     {
       "id": "advogado",
@@ -215,7 +257,13 @@
       "experiencia": [1, 2],
       "carisma": [0, 2],
       "franqueza": 0,
-      "frase": "Advogou para entidades de classe e presidiu a ordem dos advogados do estado."
+      "frase": "Advogou para entidades de classe e presidiu a ordem dos advogados do estado.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [1, 3],
+        "comunicacao": [1, 3],
+        "gestao": [1, 2]
+      }
     },
     {
       "id": "militar",
@@ -227,7 +275,13 @@
       "experiencia": [1, 2],
       "carisma": [0, 2],
       "franqueza": 0,
-      "frase": "Fez carreira nas Forças Armadas e chegou ao generalato."
+      "frase": "Fez carreira nas Forças Armadas e chegou ao generalato.",
+      "atributos": {
+        "integridade": [1, 3],
+        "articulacao": [0, 2],
+        "comunicacao": [0, 2],
+        "gestao": [2, 3]
+      }
     },
     {
       "id": "policial",
@@ -239,7 +293,13 @@
       "experiencia": [0, 2],
       "carisma": [1, 2],
       "franqueza": 1,
-      "frase": "Comandou a polícia do estado e virou rosto conhecido no combate ao crime."
+      "frase": "Comandou a polícia do estado e virou rosto conhecido no combate ao crime.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [1, 2],
+        "comunicacao": [1, 2],
+        "gestao": [1, 2]
+      }
     },
     {
       "id": "pastor",
@@ -251,7 +311,13 @@
       "experiencia": [0, 2],
       "carisma": [2, 3],
       "franqueza": 1,
-      "frase": "Lidera uma igreja com milhares de fiéis e um programa de rádio."
+      "frase": "Lidera uma igreja com milhares de fiéis e um programa de rádio.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [1, 3],
+        "comunicacao": [2, 3],
+        "gestao": [0, 2]
+      }
     },
     {
       "id": "comunicador",
@@ -263,7 +329,13 @@
       "experiencia": [0, 1],
       "carisma": [2, 3],
       "franqueza": 1,
-      "frase": "Comandou por anos um programa popular de rádio e televisão."
+      "frase": "Comandou por anos um programa popular de rádio e televisão.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [1, 2],
+        "comunicacao": [2, 3],
+        "gestao": [0, 1]
+      }
     },
     {
       "id": "ruralista",
@@ -275,7 +347,13 @@
       "experiencia": [0, 2],
       "carisma": [0, 2],
       "franqueza": 0,
-      "frase": "Comanda uma grande produção de grãos e presidiu a federação da agricultura do estado."
+      "frase": "Comanda uma grande produção de grãos e presidiu a federação da agricultura do estado.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [2, 3],
+        "comunicacao": [0, 2],
+        "gestao": [1, 3]
+      }
     },
     {
       "id": "prefeito",
@@ -287,7 +365,13 @@
       "experiencia": [2, 3],
       "carisma": [1, 3],
       "franqueza": 0,
-      "frase": "Governou a capital do estado por dois mandatos."
+      "frase": "Governou a capital do estado por dois mandatos.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [2, 3],
+        "comunicacao": [1, 3],
+        "gestao": [2, 3]
+      }
     },
     {
       "id": "governador",
@@ -299,7 +383,13 @@
       "experiencia": [3, 3],
       "carisma": [1, 3],
       "franqueza": 0,
-      "frase": "Governou o estado e saiu com aprovação alta."
+      "frase": "Governou o estado e saiu com aprovação alta.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [2, 3],
+        "comunicacao": [1, 3],
+        "gestao": [2, 3]
+      }
     },
     {
       "id": "deputado",
@@ -311,7 +401,13 @@
       "experiencia": [2, 3],
       "carisma": [0, 2],
       "franqueza": 0,
-      "frase": "Cumpre o quinto mandato seguido na Câmara."
+      "frase": "Cumpre o quinto mandato seguido na Câmara.",
+      "atributos": {
+        "integridade": [0, 2],
+        "articulacao": [3, 3],
+        "comunicacao": [1, 3],
+        "gestao": [0, 2]
+      }
     },
     {
       "id": "cientista",
@@ -323,7 +419,13 @@
       "experiencia": [0, 1],
       "carisma": [0, 2],
       "franqueza": -1,
-      "frase": "Fez carreira em pesquisa sobre o clima e a floresta."
+      "frase": "Fez carreira em pesquisa sobre o clima e a floresta.",
+      "atributos": {
+        "integridade": [2, 3],
+        "articulacao": [0, 1],
+        "comunicacao": [0, 2],
+        "gestao": [2, 3]
+      }
     }
   ],
   "opinioes": [
