@@ -138,6 +138,20 @@ function Casa({
               <span className="cg-nome">{b.nome}</span>
               <strong>{n}</strong>
               <span className="cg-pct">{pct(n / casa.cadeiras)}</span>
+              {b.id === "jogador" ? (
+                <span className="cg-humor" />
+              ) : (
+                <span
+                  className={`cg-humor ${b.disposicao >= 55 ? "cg-a-favor" : b.disposicao <= 45 ? "cg-contra" : ""}`}
+                  title={`Disposição com o governo: ${Math.round(b.disposicao)} de 100`}
+                >
+                  {b.disposicao >= 55
+                    ? "de bem"
+                    : b.disposicao <= 45
+                      ? "de mal"
+                      : "neutra"}
+                </span>
+              )}
             </li>
           );
         })}

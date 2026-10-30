@@ -64,7 +64,7 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 6. [ ] **O jogo percebe padrões** (novo): ex.: várias verbas cortadas = corte de gastos; grupos e frases reagem; a bússola só mostra
 7. [ ] Desgaste do partido
 8. [ ] Eleição e fim de jogo (contra outro candidato)
-9. [ ] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
+9. [~] Congresso (plenário fiel ao jogo: seu partido em dourado, bancadas por ideologia, disposição de cada uma; a amostra v2 simplificou demais)
 10. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
 11. [ ] Índices essenciais e população: só o que faltar depois da economia em reais
 12. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
