@@ -124,7 +124,7 @@ export function prepareGameQuarter(
   monthlyPolicyStates: readonly (readonly PolicyState[])[],
 ): ValidationResult<PreparedGameQuarter> {
   if (monthlyPolicyStates.length !== MESES_POR_TURNO)
-    return invalid("turno", "Um turno trimestral exige três estados mensais.");
+    return invalid("turno", "O turno exige um estado por mês.");
 
   let execution = game.execution;
   const months: PreparedGameMonth[] = [];

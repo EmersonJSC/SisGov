@@ -11,6 +11,7 @@ import {
   verPartida,
   type Partida,
 } from "../app/partida";
+import { MESES_POR_TURNO } from "../game/calendario";
 import { advancePolicyImplementation } from "../game/advancePolicyImplementation";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
 import economiaDoBrasil from "../conteudo/paises/brasil/economia.json";
@@ -65,7 +66,7 @@ describe("SG105 — fiscal no turno real", () => {
     const { content, graph, game } = partida;
     let estados = game.policies;
     const meses = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < MESES_POR_TURNO; i++) {
       const andou = advancePolicyImplementation(
         content,
         estados,

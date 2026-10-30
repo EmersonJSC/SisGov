@@ -490,7 +490,7 @@ function internacional(
   let texto: string;
   let tom: Efeito;
   if (dReputacao <= -1) {
-    texto = `A imagem d${pais} lá fora piorou neste trimestre; diplomatas falam em perda de credibilidade.`;
+    texto = `A imagem d${pais} lá fora piorou neste bimestre; diplomatas falam em perda de credibilidade.`;
     tom = "piora";
   } else if (dReputacao >= 1) {
     texto = `${cap(pais)} volta a ser elogiado nas capitais estrangeiras; a reputação do país melhora.`;
@@ -561,7 +561,7 @@ export function noticiaDoRumo(
     manchete: antes
       ? `O governo agora está mais perto de ${referencia.nome} do que de ${antes.nome}`
       : `O governo está cada vez mais perto de ${referencia.nome}`,
-    texto: `Na bússola política, as leis e as decisões deste trimestre levaram o governo para perto de ${quemE(referencia)}.${antes ? ` Antes, o mais perto era ${quemE(antes)}.` : ""} O caminho todo está no app Bússola.`,
+    texto: `Na bússola política, as leis e as decisões deste bimestre levaram o governo para perto de ${quemE(referencia)}.${antes ? ` Antes, o mais perto era ${quemE(antes)}.` : ""} O caminho todo está no app Bússola.`,
     nivel: 1,
     boa: false,
     efeitos: [],
@@ -592,7 +592,7 @@ export function montarJornal(
     lista[0]?.manchete ??
     (maior
       ? `${maior.nome} ${maior.sobe ? "sobe" : "cai"} e vai a ${maior.valor}`
-      : "Trimestre calmo em Brasília");
+      : "Bimestre calmo em Brasília");
   return {
     manchete,
     ...(lista[0] ? { principal: lista[0] } : {}),

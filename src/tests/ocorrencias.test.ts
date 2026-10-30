@@ -13,6 +13,7 @@ import {
   type Partida,
 } from "../app/partida";
 import type { OccurrenceFile, ResolvedPackage } from "../engine";
+import { chanceNoTurno, turnosDoConteudo } from "../game/calendario";
 import {
   advanceOccurrenceMonths,
   answerDilemma,
@@ -149,11 +150,11 @@ describe("SG106 — sorteio", () => {
     });
     const c = occurrenceChance(o, { corrupcao: 50 });
     expect(c.factors[0].multiplier).toBeCloseTo(3, 9);
-    expect(c.chance).toBeCloseTo(0.06, 9);
+    expect(c.chance).toBeCloseTo(chanceNoTurno(0.06), 9);
     // depois de visto, cai
     const visto = { ...emptyOccurrenceState(), timesSeen: { e: 1 } };
     expect(occurrenceChance(o, { corrupcao: 50 }, visto).chance).toBeCloseTo(
-      0.018,
+      chanceNoTurno(0.018),
       9,
     );
   });
@@ -197,15 +198,15 @@ describe("SG106 — eventos", () => {
     );
     let state = emptyOccurrenceState();
     const disparos: string[][] = [];
-    for (let t = 1; t <= 4; t++) {
+    for (let t = 1; t <= 9; t++) {
       const r = rolar(content, state, t);
       disparos.push([...r.events]);
       state = r.state;
     }
     expect(disparos.flat().filter((id) => id === "unica")).toHaveLength(1);
-    // "espera" só pode disparar a partir do 3º turno de condição valendo
+    // "espera" (3 turnos de 3 meses) só dispara depois de turnosDoConteudo(3) turnos
     const primeiro = disparos.findIndex((d) => d.includes("espera"));
-    expect(primeiro).toBeGreaterThanOrEqual(2);
+    expect(primeiro).toBeGreaterThanOrEqual(turnosDoConteudo(3) - 1);
   });
 
   it("reação: só na janela depois de o jogador mudar a lei", () => {
@@ -265,7 +266,7 @@ describe("SG106 — eventos", () => {
     const r1 = rolar(content, emptyOccurrenceState(), 1);
     expect(r1.events).toEqual(["enchente"]);
     expect(r1.dilemmas).toEqual([]);
-    const r2 = rolar(content, r1.state, 2);
+    const r2 = rolar(content, r1.state, 1 + turnosDoConteudo(1));
     expect(r2.dilemmas).toEqual(["reconstrucao"]);
     expect(r2.state.pending[0].causeId).toBe("enchente");
   });

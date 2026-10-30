@@ -17,6 +17,7 @@ import type {
   ResolvedPackage,
   ScenarioGraph,
 } from "../engine";
+import { chanceNoTurno, turnosDoConteudo } from "./calendario";
 import { roll } from "./randomState";
 
 export type PressureLevelChange = Readonly<{
@@ -210,7 +211,8 @@ export function rollPressure(input: {
       .filter((p) => {
         const poder = sponsors.get(p.patrocinador)?.poder ?? 1;
         const hide = config.investigacao.c * poder;
-        const chance = capacity + hide > 0 ? capacity / (capacity + hide) : 0;
+        const chance =
+          capacity + hide > 0 ? chanceNoTurno(capacity / (capacity + hide)) : 0;
         return (
           roll(seed, turn, `investigacao:${group.id}:${p.patrocinador}`) <
           chance
@@ -277,7 +279,11 @@ export function openInvestigation(
       ...state,
       investigations: [
         ...state.investigations,
-        { groupId, startedTurn: turn, turnsLeft: config.investigacao.turnos },
+        {
+          groupId,
+          startedTurn: turn,
+          turnsLeft: turnosDoConteudo(config.investigacao.turnos),
+        },
       ],
     },
   };

@@ -1,5 +1,6 @@
 import type { ResolvedPackage, ValidationResult } from "../engine";
 import { updateImplementedLevel, type PolicyState } from "./leis";
+import { MESES_POR_TRIMESTRE } from "./calendario";
 import { policyLevelRulesFromContent } from "./policyRulesFromContent";
 
 /** Abaixo desta distância relativa da meta, a lei é considerada implantada. */
@@ -13,11 +14,10 @@ const SNAP = 0.005;
  * 4 turnos, alavanca 1; V1-34): a fração por mês é a que fecha 95% do caminho
  * nesses turnos. Sem nenhum dos dois, a mudança é imediata.
  */
-const MESES_POR_TURNO = 3;
 
 /** Fração por mês que fecha 95% do caminho em `turnos` turnos. */
 export function fracaoPorMes(turnos: number): number {
-  return 1 - Math.pow(0.05, 1 / (Math.max(1, turnos) * MESES_POR_TURNO));
+  return 1 - Math.pow(0.05, 1 / (Math.max(1, turnos) * MESES_POR_TRIMESTRE));
 }
 
 export function advancePolicyImplementation(

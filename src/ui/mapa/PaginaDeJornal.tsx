@@ -312,7 +312,7 @@ export function PaginaDeJornal({
   nomeDoSegmento = (id) => id,
 }: {
   edicao: EdicaoDoJornal;
-  /** "2º trimestre · ano 1". */
+  /** "2º bimestre · ano 1". */
   data: string;
   numero: number;
   onFechar: () => void;
@@ -494,7 +494,7 @@ export function PaginaDeJornal({
                   ))}
                   {!principal && !edicao.noticias.length ? (
                     <p className="tb-calmo">
-                      Nenhuma outra notícia no trimestre.
+                      Nenhuma outra notícia no bimestre.
                     </p>
                   ) : null}
                   {edicao.leitura ? (

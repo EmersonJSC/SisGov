@@ -1,11 +1,12 @@
 import { expect, it } from "vitest";
+import { MESES_POR_TURNO } from "../game/calendario";
 import { createGame } from "../game/createGame";
 import { policyLevelRulesFromContent } from "../game/policyRulesFromContent";
 import { commitGameQuarter } from "../game/commitGameQuarter";
 import { prepareGameQuarter } from "../game/prepareGameQuarter";
 import { loadDistributedScenario } from "../game/pais/loadScenarioPackage";
 
-it("prepara e confirma os três meses do turno sem livro fiscal à parte (SG105)", () => {
+it("prepara e confirma os meses do turno sem livro fiscal à parte (SG105)", () => {
   const loaded = loadDistributedScenario("testes/legado/brasil/pais.json");
   if (!loaded.ok) throw new Error(loaded.diagnostics[0]?.message);
   const content = loaded.value.definition;
@@ -14,18 +15,17 @@ it("prepara e confirma os três meses do turno sem livro fiscal à parte (SG105)
   const prepared = prepareGameQuarter(content, loaded.value.graph, game.value, [
     game.value.policies,
     game.value.policies,
-    game.value.policies,
   ]);
   expect(prepared).toMatchObject({ ok: true });
   if (!prepared.ok) return;
-  expect(prepared.value.execution.step).toBe(3);
-  expect(prepared.value.months).toHaveLength(3);
+  expect(prepared.value.execution.step).toBe(MESES_POR_TURNO);
+  expect(prepared.value.months).toHaveLength(MESES_POR_TURNO);
   expect(game.value.execution.step).toBe(0);
   expect(game.value.currentTurn).toBe(0);
 
   const committed = commitGameQuarter(game.value, prepared.value);
   expect(committed.currentTurn).toBe(1);
-  expect(committed.execution.step).toBe(3);
+  expect(committed.execution.step).toBe(MESES_POR_TURNO);
   expect("fiscal" in committed).toBe(false);
   expect(game.value.execution.step).toBe(0);
 });

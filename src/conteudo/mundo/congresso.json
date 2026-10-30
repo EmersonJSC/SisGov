@@ -51,7 +51,7 @@
   },
   "trocaTroca": {
     "taxaPorAno": 0.06,
-    "turnosPorAno": 4,
+    "turnosPorAno": 6,
     "nota": "Fonte em bussola/congresso.json (trocas de partido medidas numa legislatura real)."
   },
   "disposicao": {
@@ -135,7 +135,7 @@
     "adiaSeFaltarAte": 0.05,
     "emergenciasPorAno": 2,
     "prazoDaMedidaProvisoria": 2,
-    "turnosDaPrevisao": 4,
+    "turnosDaPrevisao": 6,
     "humor": {
       "urgencia": -3,
       "emergencia": -8,

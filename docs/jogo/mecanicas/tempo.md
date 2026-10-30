@@ -5,9 +5,12 @@
 
 ## 1. O que é
 
-Hoje o tempo anda em **turnos trimestrais**, passados pelo jogador. Cada
-turno roda **três meses** do motor. Ao apertar o turno, a tela
-**mostra os três meses acontecendo** (seção 5).
+Desde 30/out o tempo anda em **turnos bimestrais**, passados pelo jogador. Cada
+turno roda **dois meses** do motor (`MESES_POR_TURNO` em `calendario.ts`), seis
+turnos por ano. O conteúdo (leis, eventos, pressão) segue escrito em turnos de
+3 meses: `turnosDoConteudo` e `chanceNoTurno` convertem para o prazo corrido.
+A eleição cai no turno 24 (4 anos). O texto abaixo ainda diz "três meses" em
+vários pontos: leia como "os meses do turno".
 
 ## 2. Regras
 

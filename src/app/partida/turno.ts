@@ -30,6 +30,7 @@ import {
 } from "./previsao";
 import { lerContas } from "./contas";
 import { passarPedidos } from "./pedidos";
+import { TURNOS_POR_ANO } from "../../game/calendario";
 import { passarCarisma } from "./carisma";
 import { rollPressure, groupActions } from "../../game/pressao";
 import {
@@ -273,7 +274,7 @@ export function preverDilema(
   partida: Partida,
   dilemaId: string,
   opcaoId: string,
-  trimestres = 4,
+  trimestres = TURNOS_POR_ANO,
 ): Resultado<
   Readonly<{ efeitos: readonly EfeitoPrevisto[]; interrompida?: string }>
 > {
@@ -305,7 +306,7 @@ export function preverDilema(
   };
 }
 
-/** Passa um trimestre: três meses de implantação, rede e contas públicas. */
+/** Passa um turno: os meses de implantação, rede e contas públicas. */
 export function encerrarTurno(
   partida: Partida,
 ): Resultado<Readonly<{ partida: Partida; relatorio: RelatorioTurno }>> {

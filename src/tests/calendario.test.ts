@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   anoComFracao,
+  ESCALA_DO_TURNO,
+  turnosDoConteudo,
   dataDoMes,
   mesesAteOTurno,
   turnoDoMes,
@@ -8,13 +10,13 @@ import {
 } from "../game/calendario";
 
 describe("calendário da partida (mecânica 1)", () => {
-  it("um turno são três meses e um ano são quatro turnos", () => {
+  it("um turno são dois meses e um ano são seis turnos", () => {
     expect(mesesAteOTurno(0)).toBe(0);
-    expect(mesesAteOTurno(16)).toBe(48);
+    expect(mesesAteOTurno(24)).toBe(48);
     expect(turnoDoMes(0)).toBe(0);
-    expect(turnoDoMes(2)).toBe(0);
-    expect(turnoDoMes(3)).toBe(1);
-    expect(TURNOS_POR_ANO).toBe(4);
+    expect(turnoDoMes(1)).toBe(0);
+    expect(turnoDoMes(2)).toBe(1);
+    expect(TURNOS_POR_ANO).toBe(6);
   });
 
   it("conta a data a partir de janeiro do ano inicial", () => {
@@ -25,11 +27,18 @@ describe("calendário da partida (mecânica 1)", () => {
     expect(dataDoMes(2027, 47)).toEqual({ ano: 2030, mes: 12, trimestre: 4 });
   });
 
-  it("o ano com fração bate com a conta antiga de 0,25 por turno", () => {
-    for (const turno of [0, 1, 7, 16, 31])
+  it("o ano com fração bate com a conta de 1/6 de ano por turno", () => {
+    for (const turno of [0, 1, 7, 24, 31])
       expect(anoComFracao(2027, mesesAteOTurno(turno))).toBeCloseTo(
-        2027 + turno * 0.25,
+        2027 + turno / 6,
         10,
       );
+  });
+
+  it("o conteúdo escrito em turnos de 3 meses vale o mesmo prazo corrido", () => {
+    expect(turnosDoConteudo(4)).toBe(6);
+    expect(turnosDoConteudo(2)).toBe(3);
+    expect(turnosDoConteudo(1)).toBe(2);
+    expect(ESCALA_DO_TURNO).toBeCloseTo(2 / 3, 10);
   });
 });

@@ -264,8 +264,8 @@ function ContasDoGoverno({
   );
 }
 
-function trimestre(turno: number) {
-  return `${(turno % 4) + 1}º trimestre · ano ${Math.floor(turno / 4) + 1}`;
+function bimestre(turno: number) {
+  return `${(turno % 6) + 1}º bimestre · ano ${Math.floor(turno / 6) + 1}`;
 }
 
 type Bolha = VisaoPartida["bolhas"][number];
@@ -823,7 +823,7 @@ function TelaPrincipalCarregada({
       setHistorico((h) => [...h, fotoDoTurno(visao!)]);
       setPartida(r.value.partida);
       setRelatorio(r.value.relatorio);
-      // o jornal do trimestre chega com o fim do turno; dilemas e pedidos
+      // o jornal do bimestre chega com o fim do turno; dilemas e pedidos
       // ficam nas notificações do tablet (V1-13)
       // V1-39: no turno da eleição, a noite da apuração vem antes do jornal
       const apurada = r.value.relatorio.eleicao?.resultado;
@@ -1326,7 +1326,7 @@ function TelaPrincipalCarregada({
             visaoDaBussola?.rumo,
             visaoDaBussola,
           )}
-          data={trimestre(visao.turno)}
+          data={bimestre(visao.turno)}
           numero={visao.turno + 1}
           onFechar={fecharJornal}
           bussola={visaoDaBussola}
@@ -1369,7 +1369,7 @@ function TelaPrincipalCarregada({
       {salvarAberto && partida ? (
         <JanelaPartida
           partida={partida}
-          turno={trimestre(visao.turno)}
+          turno={bimestre(visao.turno)}
           anexos={{ historico }}
           onCarregar={carregar}
           onFechar={() => setSalvarAberto(false)}

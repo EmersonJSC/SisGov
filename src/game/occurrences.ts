@@ -20,6 +20,7 @@ import type {
   ResolvedPackage,
   ScenarioGraph,
 } from "../engine";
+import { chanceNoTurno, turnosDoConteudo } from "./calendario";
 import { groupActions, pressureCause } from "./pressao";
 import { roll } from "./randomState";
 
@@ -99,7 +100,7 @@ export const MAX_DILEMAS_POR_TURNO = 1;
 export const MAX_ACOES_PESADAS_POR_TURNO = 1;
 export const MAX_ACOES_LEVES_POR_TURNO = 2;
 /** Dilema novo só depois de tantos turnos do último (desdobramento também). */
-export const TURNOS_ENTRE_DILEMAS = 3;
+export const TURNOS_ENTRE_DILEMAS = turnosDoConteudo(3);
 /** Depois de vista, a chance cai (segunda vez ×0,3, terceira ×0,1). */
 const SEEN_DECAY = [1, 0.3, 0.1];
 const LAW_CHANGE_MEMORY = 12;
@@ -230,8 +231,7 @@ export function occurrenceChance(
   });
   const seen = state?.timesSeen[occurrence.id] ?? 0;
   const seenMultiplier = SEEN_DECAY[Math.min(seen, SEEN_DECAY.length - 1)];
-  const chance = Math.min(
-    1,
+  const chance = chanceNoTurno(
     factors.reduce((p, f) => p * f.multiplier, base) * seenMultiplier,
   );
   return { base, factors, seenMultiplier, chance };
@@ -246,7 +246,10 @@ function reactionMatches(
   if (!reaction) return true;
   return state.lawChanges.some((change) => {
     if (change.control !== reaction.controle) return false;
-    if (turn - change.turn > reaction.janelaTurnos || change.turn > turn)
+    if (
+      turn - change.turn > turnosDoConteudo(reaction.janelaTurnos) ||
+      change.turn > turn
+    )
       return false;
     if (reaction.para)
       return reaction.para.some((v) => Math.abs(v - change.to) < 1e-6);
@@ -270,7 +273,8 @@ export function isEligible(
   const last = state.lastStarted[occurrence.id];
   if (
     last !== undefined &&
-    turn - last < Math.max(1, occurrence.intervaloMinimoTurnos ?? 1)
+    turn - last <
+      Math.max(1, turnosDoConteudo(occurrence.intervaloMinimoTurnos ?? 1))
   )
     return false;
   if (state.active.some((a) => a.occurrenceId === occurrence.id)) return false;
@@ -278,7 +282,8 @@ export function isEligible(
   if (!conditionHolds(trigger.condicao, values)) return false;
   if (
     trigger.porTurnos !== undefined &&
-    (state.conditionTurns[occurrence.id] ?? 0) < trigger.porTurnos
+    (state.conditionTurns[occurrence.id] ?? 0) <
+      turnosDoConteudo(trigger.porTurnos)
   )
     return false;
   return reactionMatches(occurrence, state, turn);
@@ -422,7 +427,8 @@ function armFollowUps(
   vars: Readonly<Record<string, string>> | undefined,
 ): ArmedOccurrence[] {
   return (list ?? []).map((item) => {
-    const [from, to] = item.emTurnos;
+    const from = turnosDoConteudo(item.emTurnos[0]);
+    const to = Math.max(from, turnosDoConteudo(item.emTurnos[1]));
     const delay =
       from +
       Math.floor(

@@ -18,9 +18,9 @@ import { Gabinete } from "./Gabinete";
 const pct = (x: number) => `${x.toFixed(1).replace(".", ",")}%`;
 
 function quandoE(e: VisaoEleicao): string {
-  if (e.turnosAteAEleicao === 0) return "A eleição é no fim deste trimestre.";
-  if (e.turnosAteAEleicao === 1) return "A eleição é no próximo trimestre.";
-  return `Faltam ${e.turnosAteAEleicao + 1} trimestres para a eleição.`;
+  if (e.turnosAteAEleicao === 0) return "A eleição é no fim deste bimestre.";
+  if (e.turnosAteAEleicao === 1) return "A eleição é no próximo bimestre.";
+  return `Faltam ${e.turnosAteAEleicao + 1} bimestres para a eleição.`;
 }
 
 type Linha = Readonly<{ nome: string; votos: number; nosso?: boolean }>;

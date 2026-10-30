@@ -17,6 +17,7 @@ import type {
   VisaoMudancaDeNivel,
   VisaoPressao,
 } from "./tipos";
+import { turnosDoConteudo } from "../../game/calendario";
 import { registroDeOcorrencia } from "./turno";
 
 /**
@@ -176,7 +177,7 @@ export function pressaoDaPartida(partida: Partida): VisaoPressao | undefined {
       capacidade: values[config.investigacao.capacidade] ?? 0,
       aoMesmoTempo: config.investigacao.aoMesmoTempo,
       emCurso: state.investigations.length,
-      turnos: config.investigacao.turnos,
+      turnos: turnosDoConteudo(config.investigacao.turnos),
     },
   };
 }

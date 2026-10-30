@@ -5,17 +5,18 @@ import { commitGameQuarter } from "../../game/commitGameQuarter";
 import { advancePolicyImplementation } from "../../game/advancePolicyImplementation";
 import type { Resultado, Partida, EfeitoPrevisto, PrevisaoLei } from "./tipos";
 import { escalaDe, falha } from "./comum";
+import { MESES_POR_TURNO, TURNOS_POR_ANO } from "../../game/calendario";
 import { aplicarMeta } from "./leis";
 
-/** Maior horizonte da prévia, em trimestres (5 anos). */
-export const MAXIMO_TRIMESTRES_PREVIA = 20;
+/** Maior horizonte da prévia, em turnos (5 anos). */
+export const MAXIMO_TRIMESTRES_PREVIA = 5 * TURNOS_POR_ANO;
 
-/** Os três meses do próximo turno, sem gravar nada na partida. */
+/** Os meses do próximo turno, sem gravar nada na partida. */
 export function simularTrimestre(partida: Partida) {
   const { content, graph, game } = partida;
   const months = [];
   let states = game.policies;
-  for (let month = 0; month < 3; month++) {
+  for (let month = 0; month < MESES_POR_TURNO; month++) {
     const advanced = advancePolicyImplementation(
       content,
       states,

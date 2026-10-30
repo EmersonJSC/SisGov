@@ -73,7 +73,7 @@ export function JanelaPartida({
   onFechar,
 }: {
   partida: Partida;
-  /** "2º trimestre · ano 1": vai no nome do arquivo e na lista. */
+  /** "2º bimestre · ano 1": vai no nome do arquivo e na lista. */
   turno: string;
   anexos: Readonly<Record<string, unknown>>;
   onCarregar: (carregada: PartidaCarregada) => void;

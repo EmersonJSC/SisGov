@@ -10,6 +10,7 @@ import type { PolicyState } from "./leis/policyState";
 import { policyInForce } from "./policyRequirements";
 import { bussolaDoMundo, type PontoDaBussola } from "./bussola";
 import type { Personagem } from "./eleicao";
+import { chanceNoTurno } from "./calendario";
 import { roll } from "./randomState";
 
 /** Chance por turno de um ministro trazer um pedido: base e por ponto de articulação (0 a 3). */
@@ -82,9 +83,10 @@ export function sortearPedido(entrada: {
     const alvo = entrada.alvos[l.area];
     if (!m || !alvo || l.leais.length === 0) return [];
     const articulacao = m.atributos?.articulacao ?? 2;
-    const chance =
+    const chance = chanceNoTurno(
       (CHANCE_BASE + CHANCE_POR_ARTICULACAO * articulacao) *
-      (l.nota < NOTA_DE_INSATISFEITO ? FATOR_INSATISFEITO : 1);
+        (l.nota < NOTA_DE_INSATISFEITO ? FATOR_INSATISFEITO : 1),
+    );
     const sorte = roll(seed, turno, `pedido:${l.area}`);
     if (sorte >= chance) return [];
     const pedida = (entrada.leisDaArea[l.area] ?? [])
