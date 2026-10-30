@@ -1,0 +1,129 @@
+{
+  "tipo": "mundo-gatilhos",
+  "versaoEsquema": 1,
+  "metodo": "Um gatilho liga quando, na janela dos últimos turnos, o jogador tomou decisões do tipo dele (regra \"decisoes\") ou a bússola andou para o lado dele (regra \"rumo\"). Decisão = mudança de meta de uma lei (histórico da lei). \"nivel\" olha se a meta subiu ou baixou; \"eixo\" e \"sentido\" olham para onde o vetor da bússola da lei andou (economia: − Estado, + mercado; costumes: − liberdade, + autoridade). Os números são chutes, a calibrar.",
+  "janela": 4,
+  "minimoDeDecisoes": 3,
+  "gatilhos": [
+    {
+      "id": "corte-de-gastos",
+      "nome": "Corte de gastos",
+      "frase": "baixou verbas e programas em várias áreas",
+      "regra": {
+        "tipo": "decisoes",
+        "familias": ["verba", "programa"],
+        "nivel": "baixou",
+        "areasMinimas": 2
+      }
+    },
+    {
+      "id": "expansao-de-gastos",
+      "nome": "Expansão de gastos",
+      "frase": "ampliou verbas e programas em várias áreas",
+      "regra": {
+        "tipo": "decisoes",
+        "familias": ["verba", "programa"],
+        "nivel": "subiu",
+        "areasMinimas": 2
+      }
+    },
+    {
+      "id": "agenda-de-mercado",
+      "nome": "Agenda de mercado",
+      "frase": "empurra o país para o mercado",
+      "regra": {
+        "tipo": "rumo",
+        "eixo": "economia",
+        "sentido": 1,
+        "minimo": 0.3
+      }
+    },
+    {
+      "id": "agenda-estatista",
+      "nome": "Agenda estatista",
+      "frase": "empurra o país para o Estado",
+      "regra": {
+        "tipo": "rumo",
+        "eixo": "economia",
+        "sentido": -1,
+        "minimo": 0.3
+      }
+    },
+    {
+      "id": "agenda-conservadora",
+      "nome": "Agenda conservadora",
+      "frase": "empurra os costumes para a autoridade",
+      "regra": {
+        "tipo": "rumo",
+        "eixo": "costumes",
+        "sentido": 1,
+        "minimo": 0.3
+      }
+    },
+    {
+      "id": "agenda-liberal-nos-costumes",
+      "nome": "Agenda liberal nos costumes",
+      "frase": "empurra os costumes para a liberdade",
+      "regra": {
+        "tipo": "rumo",
+        "eixo": "costumes",
+        "sentido": -1,
+        "minimo": 0.3
+      }
+    },
+    {
+      "id": "agenda-social",
+      "nome": "Agenda social",
+      "frase": "amplia a proteção social, a saúde e a educação",
+      "regra": {
+        "tipo": "decisoes",
+        "areas": ["protecao-social", "saude", "educacao-e-cultura"],
+        "eixo": "economia",
+        "sentido": -1
+      }
+    },
+    {
+      "id": "linha-dura",
+      "nome": "Linha dura",
+      "frase": "endurece a segurança e a defesa",
+      "regra": {
+        "tipo": "decisoes",
+        "areas": ["seguranca-e-defesa"],
+        "eixo": "costumes",
+        "sentido": 1
+      }
+    },
+    {
+      "id": "agenda-verde",
+      "nome": "Agenda verde",
+      "frase": "restringe o uso do ambiente e do campo",
+      "regra": {
+        "tipo": "decisoes",
+        "areas": ["ambiente-e-campo"],
+        "eixo": "economia",
+        "sentido": -1
+      }
+    },
+    {
+      "id": "pro-trabalhador",
+      "nome": "Pró-trabalhador",
+      "frase": "reforça salário, direitos e sindicatos",
+      "regra": {
+        "tipo": "decisoes",
+        "areas": ["trabalho"],
+        "eixo": "economia",
+        "sentido": -1
+      }
+    },
+    {
+      "id": "reforma-constitucional",
+      "nome": "Reforma constitucional",
+      "frase": "mexe na Constituição",
+      "regra": {
+        "tipo": "decisoes",
+        "familias": ["constitucional", "petrea"],
+        "minimo": 2
+      }
+    }
+  ]
+}

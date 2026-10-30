@@ -12,6 +12,7 @@ import {
   vetoresDasLeis,
   type Referencia,
 } from "../../game/bussola";
+import { gatilhosAtivos } from "../../game/gatilhos";
 import type { Partida, VisaoBussola, VisaoReferencia } from "./tipos";
 
 const visaoDa = (r: Referencia): VisaoReferencia => ({
@@ -68,6 +69,12 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
     pertoPartidos: perto(referenciasDaBussola.partidos),
     leisQueMaisPuxam: puxam,
     fatorDoRumo: bussolaDoMundo.fatorDoRumo,
+    gatilhos: gatilhosAtivos(
+      content,
+      game.policies,
+      estado.caminho,
+      game.currentTurn,
+    ),
     ...(rumo
       ? {
           rumo: {

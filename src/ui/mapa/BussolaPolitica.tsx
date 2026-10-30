@@ -295,6 +295,24 @@ export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
         </section>
 
         <section>
+          <h2>Como o seu governo está sendo visto</h2>
+          {bussola.gatilhos.length ? (
+            <ul className="bs-leis">
+              {bussola.gatilhos.map((g) => (
+                <li key={g.id}>
+                  <strong>{g.nome}</strong>
+                  <span>{g.frase}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              Nenhuma marca ainda: suas decisões recentes não formam um padrão.
+            </p>
+          )}
+        </section>
+
+        <section>
           <h2>O que mais puxa o seu ponto</h2>
           <ul className="bs-leis">
             {bussola.leisQueMaisPuxam.map((l) => (

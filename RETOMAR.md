@@ -3,7 +3,7 @@
 Bilhete da última sessão, para a próxima conversa começar sabendo.
 Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
-**Atualizado em 30/out/2026 (Grupos fechado e pushado; país em frases fechado).**
+**Atualizado em 29/out/2026 (M7.2, gatilhos, feita).**
 
 ## Grupos fechado (30/out), pushado
 
@@ -27,7 +27,9 @@ Tudo na `main` e pushado (`f74f0849`; depois dele, itens 2, 4 e 5 até `b1a8596a
 
 **M7.1 feita (29/out):** a `popularidade_governo` agora lê o eleitorado vivo (emprego, renda, valores, religião e bolso), o mesmo da eleição. O motor aceita uma `approval` opcional em `advanceExecution` (`ProfileApproval.perfis[].ajuste` = bolso); o jogo a monta por mês em `prepareGameMonth` com `aprovacaoViva` (`game/congresso/index.ts`). Turno 0 não muda (45%). Testes: `aprovacaoViva.test.ts` 4, mais `paisV1`, `tramitacao`, `jornal`, `mesaDoSalarioMinimo`, `populacao`, `gruposSociais`, `camadas`; `tsc -b` limpo. Visto na tela: turno 0 em 45%, um turno encerrado sem erro de console (a queda a 41% veio junto com uma ocorrência de escândalo, então não prova a M7.1 sozinha). **Falta `npm run check`** (só ao fechar a M7 inteira). O limite (13) do PLANO ("a aprovação do motor não lê o bolso") deixou de valer. Sem remanejar o PLANO ainda.
 
-**Próximos itens (não abrir sem perguntar):** item 6 do PLANO (o jogo percebe padrões); antipartido/desgaste.
+**M7.2 feita (29/out), gatilhos:** `mundo/gatilhos.json` define 11 gatilhos (corte e expansão de gastos, agenda de mercado, estatista, conservadora, liberal nos costumes, social, linha dura, verde, pró-trabalhador, reforma constitucional). `game/gatilhos/index.ts` os liga a partir do `history` de cada lei (mudança de meta nos últimos 4 turnos, mínimo 3) e do caminho da bússola (rumo ≥ 0,3 em 4 turnos); nada é guardado no estado. A Bússola mostra "Como o seu governo está sendo visto". Testes: `gatilhos.test.ts` 14, `tsc -b` limpo. **Visto na tela só o estado vazio** (turno 0, sem erro de console); a ativação está provada por teste, não jogando. Limiares (3 em 4, 0,3) são chutes, a calibrar. **Faltam:** os dois gatilhos fiscais (arrocho e farra, pedem guardar resultado e dívida por turno) e a M7.3 (grupos e frases reagem). `npm run check` só ao fechar a M7 inteira.
+
+**Próximos itens (não abrir sem perguntar):** M7.3; antipartido/desgaste.
 
 ## (histórico) Os quatro achados da camada B, corrigidos em 29/out
 
