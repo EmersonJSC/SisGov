@@ -30,6 +30,7 @@ import {
 } from "./previsao";
 import { lerContas } from "./contas";
 import { passarPedidos } from "./pedidos";
+import { passarCarisma } from "./carisma";
 import { rollPressure, groupActions } from "../../game/pressao";
 import {
   investigacoesConcluidas,
@@ -370,7 +371,12 @@ export function encerrarTurno(
   // V1-39: pesquisas e, no fim do mandato, a eleição
   const comEleicao = passarEleicao(votado.partida);
   // M8.3: um ministro pode trazer um pedido de lei no turno novo
-  const next = passarPedidos({ ...votado.partida, game: comEleicao.game });
+  const comPedido = passarPedidos({
+    ...votado.partida,
+    game: comEleicao.game,
+  });
+  // M8.2: o carisma do presidente anda com o governo
+  const next = passarCarisma({ ...votado.partida, game: comPedido });
   // O piloto automático só precisa andar à parte se o jogador mudou algo.
   let pilotoNext = next;
   if (piloto !== game) {

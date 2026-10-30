@@ -224,6 +224,8 @@ export type EstadoDaEleicao = Readonly<{
     nivel: number;
     turno: number;
   }>;
+  /** Carisma vivo (M8.2): quanto o presidente subiu ou desceu do carisma da ficha. */
+  carismaViva?: number;
   /** Pontos de satisfação por grupo que as respostas aos ministros deixaram. */
   favores?: Readonly<Record<string, number>>;
   /** Nomes que a chapa pode trocar na próxima eleição. */

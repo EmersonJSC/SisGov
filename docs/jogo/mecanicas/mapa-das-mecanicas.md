@@ -124,7 +124,7 @@ com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 - [x] A tela de escolha não mostra lado nem ideologia, só biografia, opiniões e atributos
 - [ ] A conferir: o que o candidato escolhido muda de fato no jogo (carisma, experiência, opiniões)
 - [x] Promessa contra ação (30/out, `game/promessa.ts`): governar ao contrário do lado que o presidente disse querer (o ponto dele em relação ao início do governo) tira satisfação de todos os grupos, com tolerância e teto; a frase aparece na Bússola
-- [ ] Carisma vivo: sobe e desce conforme as leis e os ataques na mídia
+- [~] Carisma vivo (30/out, `game/carisma.ts`): o desvio do carisma do presidente (±1,5 sobre a ficha de 0 a 3) anda 20% por turno atrás da satisfação média do eleitorado e da promessa quebrada; entra no voto quando ele concorre e na ficha da tela. Falta: os ataques da mídia (M13)
 - [ ] A decidir: o candidato dá ponto de partida na bússola? Pesa na popularidade inicial?
 
 **M8.3 Chapa e ministros**

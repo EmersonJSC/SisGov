@@ -4,6 +4,7 @@
  * Congresso (`chancesDoPerfil`).
  */
 import { distancia, type PontoDaBussola } from "../bussola";
+import { carismaVivo } from "../carisma";
 import {
   chancesDoPerfil,
   JOGADOR,
@@ -88,6 +89,8 @@ export function candidatosDaEleicao(
   doPartido: string,
   /** Id do presidente no cargo: ganha a vantagem do cargo se concorrer. */
   presidente?: string,
+  /** Carisma vivo: o que o presidente no cargo ganhou ou perdeu governando. */
+  desvioDoCarisma = 0,
 ): Candidato[] {
   const v = ctx.regras.voto;
   const economico = votoEconomico(ctx);
@@ -96,7 +99,9 @@ export function candidatosDaEleicao(
   );
   const base = forcaDaBase(ctx);
   return daDisputa.map((c) => {
-    const proprio = v.carisma * c.carisma + v.experiencia * c.experiencia;
+    const carisma =
+      c.id === presidente ? carismaVivo(c.carisma, desvioDoCarisma) : c.carisma;
+    const proprio = v.carisma * carisma + v.experiencia * c.experiencia;
     const atrai = new Set(c.segmentos);
     const doGoverno = c.id === doPartido;
     const noCargo = doGoverno && c.id === presidente ? v.vantagemDoCargo : 0;

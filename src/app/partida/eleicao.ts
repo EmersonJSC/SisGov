@@ -5,6 +5,7 @@
 import type { GameState } from "../../game/createGame";
 import { anoComFracao, mesesAteOTurno } from "../../game/calendario";
 import { pontoAtual } from "../../game/bussola";
+import { carismaVivo } from "../../game/carisma";
 import {
   areasDoGoverno,
   atributosDe,
@@ -349,7 +350,13 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
   const pedido = verPedidoDoMinistro(partida, (area) => cargos.get(area));
   return {
     partido: { nome: e.partido.nome, sigla: e.partido.sigla },
-    presidente: verPersonagem(e.presidente, ano),
+    presidente: verPersonagem(
+      {
+        ...e.presidente,
+        carisma: Math.round(carismaVivo(e.presidente.carisma, e.carismaViva)),
+      },
+      ano,
+    ),
     ...(e.vice ? { vice: verPersonagem(e.vice, ano) } : {}),
     gabinete: verChapa(
       game.scenario.id,

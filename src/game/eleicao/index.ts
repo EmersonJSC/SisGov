@@ -367,7 +367,13 @@ function pesquisar(
   const todos = [candidato, ...estado.adversarios];
   const primeiro = contar(
     ctx,
-    candidatosDaEleicao(ctx, todos, candidato.id, estado.presidente.id),
+    candidatosDaEleicao(
+      ctx,
+      todos,
+      candidato.id,
+      estado.presidente.id,
+      estado.carismaViva,
+    ),
   ).votos;
   const desvios = todos.map(
     (c) =>
@@ -383,6 +389,7 @@ function pesquisar(
         [candidato, adv],
         candidato.id,
         estado.presidente.id,
+        estado.carismaViva,
       ),
     ).votos[candidato.id];
     segundo[adv.id] = Math.max(
@@ -411,7 +418,13 @@ function votar(
   const todos = [candidato, ...estado.adversarios];
   const c1 = contar(
     ctx,
-    candidatosDaEleicao(ctx, todos, candidato.id, estado.presidente.id),
+    candidatosDaEleicao(
+      ctx,
+      todos,
+      candidato.id,
+      estado.presidente.id,
+      estado.carismaViva,
+    ),
     candidato.id,
   );
   const primeiro: Rodada = {
@@ -428,7 +441,13 @@ function votar(
     );
     const c2 = contar(
       ctx,
-      candidatosDaEleicao(ctx, finalistas, candidato.id, estado.presidente.id),
+      candidatosDaEleicao(
+        ctx,
+        finalistas,
+        candidato.id,
+        estado.presidente.id,
+        estado.carismaViva,
+      ),
       candidato.id,
     );
     segundo = {
@@ -585,6 +604,7 @@ export function passarTurnoNaEleicao(input: {
       ...estado,
       partido: { ...estado.partido, ideologia },
       presidente: candidato,
+      carismaViva: mesmo ? estado.carismaViva : undefined,
       vice: estado.chapaNova?.vice ?? estado.vice,
       ministros: { ...estado.ministros, ...estado.chapaNova?.ministros },
       opcoesDaChapa: undefined,
