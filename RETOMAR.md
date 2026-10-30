@@ -5,6 +5,10 @@ Status de mecânica é no [PLANO](PLANO.md); aqui fica só o estado do momento.
 
 **Atualizado em 30/out/2026 (M9 fechado até a fatia E; diagnóstico do grafo e dilemas).**
 
+## Mapa em três anéis (30/out), passo 1 feito; faltam 2 e 3
+
+Doc: `docs/jogo/interface/mapa-em-tres-aneis.md`. **Passo 1:** índices e situações (174) ficam em 2 a 5 anéis elípticos (`posicionarIndices` em `ui/mapa/layout.ts`), cada um no lugar livre mais perto do ângulo médio das áreas dele (desvio máximo 35°, teste novo). `relaxar` e `desembaracar` saíram. **Desvio do doc:** dois anéis não cabiam (medido: 111 de 174 com rótulo), então a caixa reservada no anel é só o nó (`caixaDaBolha()`, `raioBolhaReservado` 48) e o nome só aparece com zoom ≥ 1 (`ZOOM_DO_NOME`), em letra que encolhe no mundo, ou no foco. `espalharNoAnel` serve aos grupos. Visto na tela (visão geral e zoom, sem erro de console); **foco numa lei e num índice ainda não conferi**. Próximo: passo 2 (linhas só no foco), esperando o autor.
+
 ## Diagnóstico "o jogo responde?" (30/out), antes de mexer em grafo e dilemas
 
 Scripts em `scripts/diagnostico/` (`vite-node`). Resultados, semente 4, 12 turnos:

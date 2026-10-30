@@ -9,6 +9,7 @@ import {
 } from "../ui/mapa/camera";
 import {
   BLOCO_PRESIDENCIA_ABERTA,
+  DESVIO_MAXIMO,
   PRESIDENCIA,
   blocoCentral,
   caixaDaBolha,
@@ -137,7 +138,7 @@ describe("mapa político: layout", () => {
   it("nós e rótulos das bolhas não se cobrem", () => {
     const caixas = visao.bolhas.map((b) => ({
       ...base.bolhas.get(b.id)!,
-      ...caixaDaBolha(b.nome),
+      ...caixaDaBolha(),
     }));
     const cobertas: string[] = [];
     for (let i = 0; i < caixas.length; i++)
@@ -149,6 +150,18 @@ describe("mapa político: layout", () => {
         if (x > 12 && y > 12) cobertas.push(`${a.id} / ${b.id}`);
       }
     expect(cobertas).toEqual([]);
+  });
+
+  it("cada índice fica a poucos graus do ângulo médio das áreas dele", () => {
+    const fora: string[] = [];
+    for (const b of base.bolhas.values()) {
+      if (b.pedido === undefined) continue;
+      let d = Math.atan2(b.y, b.x) - b.pedido;
+      d = Math.abs(Math.atan2(Math.sin(d), Math.cos(d)));
+      if (d > DESVIO_MAXIMO + 1e-6) fora.push(b.id);
+    }
+    expect(fora).toEqual([]);
+    expect(DESVIO_MAXIMO).toBeLessThanOrEqual((35 * Math.PI) / 180 + 1e-9);
   });
 
   it("quebra nomes longos em linhas curtas", () => {

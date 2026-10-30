@@ -293,6 +293,8 @@ function curva(
 
 /** Zoom ao clicar numa lei: perto o bastante para ler o nome e os vizinhos. */
 const ZOOM_DA_LEI = 1.2;
+/** Daqui para cima os índices mostram o nome (de longe, só o nó). */
+const ZOOM_DO_NOME = 1;
 
 /** Abaixo deste zoom, as esferas fechadas viram cartazes de tema. */
 const LONGE = 0.62;
@@ -667,7 +669,10 @@ const NoBolha = memo(function NoBolha({
   const raioVisivel = r * escala + (grupo ? 12 : 6);
   const linhas = quebrarNome(bolha.nome, 15, 2);
   // o nome do grupo continua legível (~12 px) mesmo com o mapa todo à vista
-  const fonteRotulo = grupo ? Math.max(30, 12 / escalaTela) : 16;
+  const fonteRotulo = grupo
+    ? Math.max(30, 12 / escalaTela)
+    : // o nome encolhe no mundo ao aproximar: vizinhos não se cobrem
+      Math.min(16, 12 / escalaTela);
   const cor = corDaBondade(bondade);
   const situacao = bolha.tipo === "situacao";
   const mudou = variacao !== undefined && Math.abs(variacao) >= 0.05;
@@ -786,8 +791,11 @@ const NoBolha = memo(function NoBolha({
               className={
                 bolha.frase ? "valor-bolha frase-bolha" : "valor-bolha"
               }
-              y={raioVisivel + 16 + linhas.length * 18.4}
-              fontSize={14}
+              y={
+                raioVisivel +
+                (16 + linhas.length * 18.4) * (grupo ? 1 : fonteRotulo / 16)
+              }
+              fontSize={grupo ? 14 : Math.min(14, 11 / escalaTela)}
               textAnchor="middle"
             >
               {/*
@@ -2121,12 +2129,12 @@ export function MapaPolitico({
                 selecionada={bolha.id === selecionado}
                 mostrarRotulo={
                   bolha.tipo === "grupo" ||
-                  k >= 0.6 ||
+                  k >= ZOOM_DO_NOME ||
                   emFoco ||
                   Boolean(marca) ||
                   pulsos.has(bolha.id)
                 }
-                mostrarValor={k >= 0.85 || estado === "foco"}
+                mostrarValor={k >= ZOOM_DO_NOME * 1.6 || estado === "foco"}
                 marca={marca}
                 pulsa={pulsos.has(bolha.id)}
                 onEntrar={entrar}

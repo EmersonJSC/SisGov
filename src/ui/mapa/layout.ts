@@ -67,6 +67,8 @@ export type PosicaoBolha = Readonly<{
   x: number;
   y: number;
   r: number;
+  /** Índices: ângulo médio das áreas que os mexem (rad), onde pedem ficar. */
+  pedido?: number;
 }>;
 
 export type Limites = Readonly<{
@@ -294,26 +296,14 @@ export function montarBase(completa: VisaoPartida): BaseMapa {
   return { ministerios, porNome, leis, constitucionais, bolhas, limites };
 }
 
-type Caixa = {
-  id: string;
-  x: number;
-  y: number;
-  alvoX: number;
-  alvoY: number;
-  largura: number;
-  altura: number;
-};
-
-/** Medida aproximada do rótulo da bolha (mesma regra do desenho). */
-export function caixaDaBolha(nome: string) {
-  const linhas = quebrarNome(nome, 15, 2);
-  const maior = Math.max(...linhas.map((linha) => linha.length));
-  return {
-    largura: Math.max(2 * MEDIDAS.raioBolhaMaximo + 8, maior * 9.2 + 14),
-    // nó + espaço + linhas de 19 unidades
-    // o nó no tamanho máximo (as bolhas incham e desincham sem se mover)
-    altura: 2 * MEDIDAS.raioBolhaMaximo + 6 + linhas.length * 19,
-  };
+/**
+ * Espaço que a bolha reserva no anel: só o nó (com folga para inchar). O
+ * nome não entra na conta: de longe fica escondido e, com zoom ou foco, é
+ * desenhado em letra que encolhe no mundo (ver `NoBolha`).
+ */
+export function caixaDaBolha() {
+  const lado = 2 * MEDIDAS.raioBolhaReservado + 8;
+  return { largura: lado, altura: lado };
 }
 
 /**
@@ -385,39 +375,163 @@ function posicionarBolhas(
     }
   }
 
-  const inicio = MEDIDAS.inicioBolhas;
   // Grupos sociais (SG143) ficam num anel próprio, por fora de tudo.
   const grupos = visao.bolhas.filter((b) => b.tipo === "grupo");
-  const ordenadas = [...visao.bolhas]
+  const indices = [...visao.bolhas]
     .filter((b) => b.tipo !== "grupo")
     .sort((a, b) => a.id.localeCompare(b.id));
-  const caixas: Caixa[] = ordenadas.map((bolha: VisaoBolha, i) => {
-    const v = vetor.get(bolha.id) ?? {
-      x: Math.cos(i * 2.39996),
-      y: Math.sin(i * 2.39996) * 0.1,
-    };
-    const concentracao = Math.min(1, Math.hypot(v.x, v.y));
-    const angulo = Math.atan2(v.y, v.x);
-    // t = 0 encosta no núcleo; t = 1 vai até a elipse externa.
-    // 0,7 (era 0,8): com as áreas por assunto, bolhas de duas esferas vizinhas
-    // iam para a borda do topo, que é estreita (molde-das-leis.md).
-    const t = 0.12 + (1 - concentracao) * 0.7;
-    const x = Math.cos(angulo) * mix(inicio + 40, ELIPSE_EXTERNA.rx - 90, t);
-    const y = Math.sin(angulo) * mix(inicio + 40, ELIPSE_EXTERNA.ry - 70, t);
-    const { largura, altura } = caixaDaBolha(bolha.nome);
-    return { id: bolha.id, x, y, alvoX: x, alvoY: y, largura, altura };
+  const desejados = indices.map((bolha, i) => {
+    const v = vetor.get(bolha.id);
+    const angulo = v ? Math.atan2(v.y, v.x) : i * 2.39996;
+    return { bolha, angulo, ...caixaDaBolha() };
   });
 
-  relaxar(caixas);
-  desembaracar(caixas);
-
   return new Map([
-    ...caixas.map((c): [string, PosicaoBolha] => [
-      c.id,
-      { id: c.id, x: c.x, y: c.y, r: MEDIDAS.raioBolha },
-    ]),
+    ...posicionarIndices(desejados),
     ...posicionarGrupos(grupos, vetor),
   ]);
+}
+
+type Desejo = Readonly<{
+  bolha: VisaoBolha;
+  angulo: number;
+  largura: number;
+  altura: number;
+}>;
+
+type Colocado = { desejo: Desejo; x: number; y: number };
+
+/** Quanto uma bolha pode se afastar do ângulo médio das áreas dela (rad). */
+export const DESVIO_MAXIMO = (35 * Math.PI) / 180;
+const PASSO_ANGULAR = (0.5 * Math.PI) / 180;
+const ANEIS_DOS_INDICES_MAXIMO = 5;
+const FOLGA_ENTRE_CAIXAS = 12;
+
+/** Elipses dos índices: de dentro (junto ao núcleo) até perto dos grupos. */
+export const ELIPSE_EXTERNA = { rx: 2500, ry: 1500 } as const;
+const ELIPSE_INTERNA = { rx: 1250, ry: 1100 } as const;
+
+type Elipse = Readonly<{ rx: number; ry: number }>;
+
+function elipseDoAnel(k: number, total: number): Elipse {
+  const t = k / (total - 1);
+  return {
+    rx: mix(ELIPSE_INTERNA.rx, ELIPSE_EXTERNA.rx, t),
+    ry: mix(ELIPSE_INTERNA.ry, ELIPSE_EXTERNA.ry, t),
+  };
+}
+
+/** Distância do centro à elipse na direção `a` (ângulo geométrico). */
+function raioDaElipse(e: Elipse, a: number) {
+  return 1 / Math.hypot(Math.cos(a) / e.rx, Math.sin(a) / e.ry);
+}
+
+/**
+ * Os índices e as situações ficam em anéis entre o núcleo e os grupos. Cada
+ * um parte do ângulo médio das áreas que o mexem e, em ordem de ângulo,
+ * escolhe o lugar livre mais perto: o anel da sua vez (os anéis se alternam)
+ * ou outro, andando pouco em volta. Usa o menor número de anéis em que todos
+ * ficam a `DESVIO_MAXIMO` do ângulo pedido.
+ */
+function posicionarIndices(
+  desejados: readonly Desejo[],
+): [string, PosicaoBolha][] {
+  const ordenados = [...desejados].sort(
+    (a, b) => a.angulo - b.angulo || a.bolha.id.localeCompare(b.bolha.id),
+  );
+  let colocados: Colocado[] | null = null;
+  for (let aneis = 2; aneis <= ANEIS_DOS_INDICES_MAXIMO && !colocados; aneis++)
+    colocados = colocarNosAneis(ordenados, aneis, DESVIO_MAXIMO);
+  // reserva: sem limite de desvio, para nunca deixar uma bolha de fora
+  colocados ??= colocarNosAneis(ordenados, ANEIS_DOS_INDICES_MAXIMO, Math.PI);
+  return (colocados ?? []).map(({ desejo, x, y }) => [
+    desejo.bolha.id,
+    {
+      id: desejo.bolha.id,
+      x,
+      y,
+      r: MEDIDAS.raioBolha,
+      pedido: desejo.angulo,
+    },
+  ]);
+}
+
+/** As caixas (centradas no nó) se tocam, com folga? */
+function seTocam(a: Colocado, b: Colocado) {
+  const meiaLargura = (a.desejo.largura + b.desejo.largura) / 2;
+  if (Math.abs(a.x - b.x) >= meiaLargura + FOLGA_ENTRE_CAIXAS) return false;
+  const meiaAltura = (a.desejo.altura + b.desejo.altura) / 2;
+  return Math.abs(a.y - b.y) < meiaAltura + FOLGA_ENTRE_CAIXAS;
+}
+
+/** Devolve nada se alguma bolha não couber dentro do desvio máximo. */
+function colocarNosAneis(
+  ordenados: readonly Desejo[],
+  total: number,
+  desvioMaximo: number,
+): Colocado[] | null {
+  const elipses = Array.from({ length: total }, (_, k) =>
+    elipseDoAnel(k, total),
+  );
+  const colocados: Colocado[] = [];
+  ordenados.forEach((desejo, i) => {
+    let melhor: Colocado | null = null;
+    let custo = Infinity;
+    for (let passo = 0; passo * PASSO_ANGULAR <= desvioMaximo; passo++) {
+      if (melhor && passo * PASSO_ANGULAR >= custo) break;
+      for (const sinal of passo === 0 ? [1] : [1, -1]) {
+        const angulo = desejo.angulo + sinal * passo * PASSO_ANGULAR;
+        for (let k = 0; k < total; k++) {
+          // o anel da vez custa menos: é o que mantém a alternância
+          const c = passo * PASSO_ANGULAR + (k === i % total ? 0 : 0.03);
+          if (c >= custo) continue;
+          const raio = raioDaElipse(elipses[k], angulo);
+          const candidato = {
+            desejo,
+            x: Math.cos(angulo) * raio,
+            y: Math.sin(angulo) * raio,
+          };
+          if (colocados.some((o) => seTocam(candidato, o))) continue;
+          melhor = candidato;
+          custo = c;
+        }
+      }
+    }
+    if (melhor) colocados.push(melhor);
+  });
+  return colocados.length === ordenados.length ? colocados : null;
+}
+
+/**
+ * Espalha itens por um anel para que nunca se encostem: cada um tenta ficar
+ * no ângulo `a` de partida e os vizinhos se afastam só o necessário. Função
+ * pura; a ordem em volta do anel é a dos ângulos de partida.
+ */
+export function espalharNoAnel<T extends { id: string; a: number }>(
+  itens: readonly T[],
+  espaco: number,
+): T[] {
+  const lista = itens
+    .map((item) => ({ ...item }))
+    .sort((x, y) => x.a - y.a || x.id.localeCompare(y.id));
+  const n = lista.length;
+  for (let volta = 0; volta < 200 && n > 1; volta++) {
+    let mexeu = false;
+    for (let i = 0; i < n; i++) {
+      const atual = lista[i];
+      const prox = lista[(i + 1) % n];
+      const gap = i + 1 < n ? prox.a - atual.a : prox.a + TAU - atual.a;
+      if (gap < espaco) {
+        const passo = (espaco - gap) / 2;
+        atual.a -= passo;
+        prox.a += passo;
+        mexeu = true;
+      }
+    }
+    lista.sort((x, y) => x.a - y.a);
+    if (!mexeu) break;
+  }
+  return lista;
 }
 
 /** Anel dos grupos sociais: a sociedade em volta do governo (SG143). */
@@ -433,30 +547,13 @@ function posicionarGrupos(
 ): [string, PosicaoBolha][] {
   if (!grupos.length) return [];
   const n = grupos.length;
-  const itens = grupos
-    .map((g, i) => {
+  const itens = espalharNoAnel(
+    grupos.map((g, i) => {
       const v = vetor.get(g.id);
-      const a = v ? Math.atan2(v.y, v.x) : (i / n) * Math.PI * 2;
-      return { id: g.id, a };
-    })
-    .sort((x, y) => x.a - y.a || x.id.localeCompare(y.id));
-  const espaco = ((Math.PI * 2) / n) * 0.92;
-  for (let volta = 0; volta < 200; volta++) {
-    let mexeu = false;
-    for (let i = 0; i < n; i++) {
-      const atual = itens[i];
-      const prox = itens[(i + 1) % n];
-      const gap = i + 1 < n ? prox.a - atual.a : prox.a + Math.PI * 2 - atual.a;
-      if (gap < espaco) {
-        const passo = (espaco - gap) / 2;
-        atual.a -= passo;
-        prox.a += passo;
-        mexeu = true;
-      }
-    }
-    itens.sort((x, y) => x.a - y.a);
-    if (!mexeu) break;
-  }
+      return { id: g.id, a: v ? Math.atan2(v.y, v.x) : (i / n) * TAU };
+    }),
+    (TAU / n) * 0.92,
+  );
   return itens.map(({ id, a }) => [
     id,
     {
@@ -466,126 +563,6 @@ function posicionarGrupos(
       r: MEDIDAS.raioGrupo,
     },
   ]);
-}
-
-/** Topo da caixa em relação ao centro do nó. */
-const TOPO = -MEDIDAS.raioBolhaMaximo;
-
-/** Elipse que contém as bolhas: larga, para caber em telas largas. */
-export const ELIPSE_EXTERNA = { rx: 2500, ry: 1500 } as const;
-
-const FOLGA_CAIXAS = 10;
-
-function sobrepoe(a: Caixa, b: Caixa) {
-  return (
-    Math.abs(a.x - b.x) < (a.largura + b.largura) / 2 + FOLGA_CAIXAS &&
-    Math.abs(a.y - b.y) < (a.altura + b.altura) / 2 + FOLGA_CAIXAS
-  );
-}
-
-/** A caixa inteira fica entre o núcleo de esferas e a elipse externa. */
-function dentroDaFaixa(c: Caixa) {
-  for (const dy of [TOPO, TOPO + c.altura])
-    for (const dx of [-c.largura / 2, 0, c.largura / 2]) {
-      const px = c.x + dx;
-      const py = c.y + dy;
-      if (Math.hypot(px, py) < MEDIDAS.inicioBolhas) return false;
-      if (Math.hypot(px / ELIPSE_EXTERNA.rx, py / ELIPSE_EXTERNA.ry) > 1)
-        return false;
-    }
-  return true;
-}
-
-/**
- * O relaxamento às vezes trava duas caixas entre o núcleo e a borda. Aqui
- * cada caixa ainda sobreposta procura, em espiral, o lugar livre mais perto.
- */
-function desembaracar(caixas: Caixa[]) {
-  for (let volta = 0; volta < 8; volta++) {
-    let mexeu = false;
-    for (const c of caixas) {
-      if (!caixas.some((o) => o !== c && sobrepoe(c, o))) continue;
-      const x0 = c.x;
-      const y0 = c.y;
-      let achou = false;
-      for (let raio = 16; raio <= 700 && !achou; raio += 16) {
-        // passos de ~12 px ao longo do círculo: a faixa perto da elipse é fina
-        const passos = Math.max(32, Math.ceil((raio * Math.PI * 2) / 12));
-        for (let k = 0; k < passos && !achou; k++) {
-          const a = (k / passos) * Math.PI * 2;
-          c.x = x0 + Math.cos(a) * raio;
-          c.y = y0 + Math.sin(a) * raio;
-          achou =
-            dentroDaFaixa(c) && !caixas.some((o) => o !== c && sobrepoe(c, o));
-        }
-      }
-      if (!achou) {
-        c.x = x0;
-        c.y = y0;
-      } else mexeu = true;
-    }
-    if (!mexeu) break;
-  }
-}
-
-function relaxar(caixas: Caixa[]) {
-  const folga = 10;
-  const nucleo = MEDIDAS.inicioBolhas;
-  for (let volta = 0; volta < 1200; volta++) {
-    const forca = volta < 200 ? 0.02 : 0;
-    for (const c of caixas) {
-      c.x += (c.alvoX - c.x) * forca;
-      c.y += (c.alvoY - c.y) * forca;
-    }
-    for (let i = 0; i < caixas.length; i++) {
-      const a = caixas[i];
-      for (let j = i + 1; j < caixas.length; j++) {
-        const b = caixas[j];
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const sobraX = (a.largura + b.largura) / 2 + folga - Math.abs(dx);
-        if (sobraX <= 0) continue;
-        const sobraY = (a.altura + b.altura) / 2 + folga - Math.abs(dy);
-        if (sobraY <= 0) continue;
-        if (sobraX < sobraY) {
-          const passo = (sobraX / 2) * (dx >= 0 ? 1 : -1);
-          a.x -= passo;
-          b.x += passo;
-        } else {
-          const passo = (sobraY / 2) * (dy >= 0 ? 1 : -1);
-          a.y -= passo;
-          b.y += passo;
-        }
-      }
-    }
-    // Nada entra no núcleo de esferas: nem o nó, nem o rótulo.
-    // E nada sai da elipse externa.
-    for (const c of caixas) {
-      for (const dy of [TOPO, TOPO + c.altura]) {
-        for (const dx of [-c.largura / 2, c.largura / 2]) {
-          const px = c.x + dx;
-          const py = c.y + dy;
-          const e = Math.hypot(px / ELIPSE_EXTERNA.rx, py / ELIPSE_EXTERNA.ry);
-          if (e > 1) {
-            c.x -= px * (1 - 1 / e);
-            c.y -= py * (1 - 1 / e);
-          }
-        }
-      }
-      for (const dy of [TOPO, TOPO + c.altura]) {
-        for (const dx of [-c.largura / 2, 0, c.largura / 2]) {
-          const px = c.x + dx;
-          const py = c.y + dy;
-          const d = Math.hypot(px, py);
-          if (d < nucleo) {
-            const fator = (nucleo - d) / Math.max(d, 1);
-            c.x += px * fator;
-            c.y += py * fator;
-          }
-        }
-      }
-    }
-  }
 }
 
 function calcularLimites(bolhas: ReadonlyMap<string, PosicaoBolha>): Limites {
