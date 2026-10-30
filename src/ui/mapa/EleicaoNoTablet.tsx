@@ -299,9 +299,9 @@ export function EleicaoNoTablet({
         <section aria-label="Gabinete">
           <h2 className="ds-aba">Gabinete</h2>
           <p className="ds-dica">
-            A popularidade de cada ministro vem dos grupos leais a ele, pelo
-            tamanho e pela satisfação de cada um. Ela soma ou tira da
-            popularidade do governo.
+            Cada grupo é leal a um só ministro, dos mais perto dele na bússola.
+            A popularidade do ministro vem da satisfação dos grupos leais, pelo
+            tamanho de cada um. Ela soma ou tira da popularidade do governo.
           </p>
           <ul className="ds-papel gb-notas">
             {e.gabinete.map((a) =>
@@ -315,7 +315,9 @@ export function EleicaoNoTablet({
                       : "–"}
                   </span>
                   <small>
-                    {(a.leais ?? []).map(nomeDoSegmento).join(", ")}
+                    {a.leais?.length
+                      ? a.leais.map(nomeDoSegmento).join(", ")
+                      : "Nenhum grupo é leal a ele"}
                   </small>
                 </li>
               ) : null,

@@ -4,7 +4,7 @@ import { valoresComReacao } from "../app/partida/bussola";
 import { pacoteVivo } from "../game/congresso";
 import {
   ajusteDoGabinete,
-  GRUPOS_LEAIS,
+  gruposLeais,
   gruposNaBussola,
   notasDosMinistros,
   TETO_DO_GABINETE,
@@ -20,8 +20,11 @@ it("M8.3 B: cada ministro nasce com nota dos grupos leais, e não 50 para todos"
   const p = partida();
   const notas = notasDoGabinete(p);
   expect(notas).toHaveLength(11);
+  // lealdade exclusiva: nenhum grupo é leal a dois ministros
+  const todos = notas.flatMap((n) => [...n.leais]);
+  expect(new Set(todos).size).toBe(todos.length);
+  expect(todos.length).toBeGreaterThan(0);
   for (const n of notas) {
-    expect(n.leais).toHaveLength(GRUPOS_LEAIS);
     expect(n.nota).toBeGreaterThanOrEqual(0);
     expect(n.nota).toBeLessThanOrEqual(100);
   }
@@ -47,6 +50,16 @@ it("M8.3 B: os leais são uma conta pelo lado do ministro, e a nota segue a sati
   expect(notasDosMinistros(so, pacote, felizes)[0].nota).toBeGreaterThan(
     antes.nota,
   );
+  // a conta reparte: todo grupo tem um dono, ninguém passa da cota e ninguém fica vazio
+  const todos = gruposNaBussola(pacote);
+  const leaisDe = gruposLeais(ministros, todos);
+  const cota = Math.ceil(todos.length / Object.keys(ministros).length);
+  const donos = Object.values(leaisDe).flatMap((l) => l.map((g) => g.id));
+  expect(donos.sort()).toEqual(todos.map((g) => g.id).sort());
+  for (const l of Object.values(leaisDe)) {
+    expect(l.length).toBeGreaterThan(0);
+    expect(l.length).toBeLessThanOrEqual(cota);
+  }
   // pesa pelo tamanho: o grupo leal maior pesa mais
   const grupos = new Map(gruposNaBussola(pacote).map((g) => [g.id, g.peso]));
   const [maior, menor] = [...antes.leais].sort(
@@ -69,7 +82,7 @@ it("M8.3 B: o gabinete soma ou tira da opinião de todos, com teto", () => {
   const p = partida();
   const ajuste = ajusteDoGabinete(notasDoGabinete(p));
   const v = valoresComReacao(p);
-  const grupo = notasDoGabinete(p)[0].leais[0];
+  const grupo = notasDoGabinete(p).flatMap((n) => [...n.leais])[0];
   expect(v[grupo]).toBeCloseTo(
     Math.max(0, Math.min(100, p.game.execution.values[grupo] + ajuste)),
     6,

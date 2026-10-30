@@ -11,8 +11,6 @@ import { distancia, type PontoDaBussola } from "./bussola";
 import type { CongressoDoPacote } from "./congresso";
 import type { Personagem } from "./eleicao";
 
-/** Grupos leais a cada ministro (o exemplo do autor: segurança, 3 grupos). */
-export const GRUPOS_LEAIS = 3;
 /** Quanto a nota média do gabinete, fora de 50, mexe na satisfação de todos. */
 export const PESO_DO_GABINETE = 0.1;
 /** Teto do ajuste do gabinete, em pontos de satisfação. */
@@ -57,23 +55,48 @@ export type NotaDoMinistro = Readonly<{
   leais: readonly string[];
 }>;
 
-/** Os grupos leais ao ministro: os mais perto dele na bússola. */
+/**
+ * A lealdade é exclusiva e repartida pela conta: os pares (grupo, ministro)
+ * mais perto na bússola são fechados primeiro, e cada ministro leva no máximo
+ * ⌈grupos ÷ ministros⌉ grupos, para um só não ficar com o país inteiro (os
+ * ministros nascem perto uns dos outros). Empate: id da área, depois do grupo.
+ * Devolve, por área, os grupos leais do mais perto ao mais longe.
+ */
 export function gruposLeais(
-  ministro: Personagem,
+  ministros: Readonly<Record<string, Personagem>>,
   grupos: readonly GrupoNaBussola[],
-): readonly GrupoNaBussola[] {
-  return [...grupos]
-    .sort(
-      (a, b) =>
-        distancia(a.ponto, ministro.ponto) -
-          distancia(b.ponto, ministro.ponto) || a.id.localeCompare(b.id),
+): Readonly<Record<string, readonly GrupoNaBussola[]>> {
+  const areas = Object.keys(ministros).sort();
+  const leais: Record<string, GrupoNaBussola[]> = Object.fromEntries(
+    areas.map((a) => [a, []]),
+  );
+  const capacidade = Math.ceil(grupos.length / Math.max(1, areas.length));
+  const pares = grupos
+    .flatMap((grupo) =>
+      areas.map((area) => ({
+        grupo,
+        area,
+        longe: distancia(grupo.ponto, ministros[area].ponto),
+      })),
     )
-    .slice(0, GRUPOS_LEAIS);
+    .sort(
+      (x, y) =>
+        x.longe - y.longe ||
+        x.area.localeCompare(y.area) ||
+        x.grupo.id.localeCompare(y.grupo.id),
+    );
+  const dados = new Set<string>();
+  for (const { grupo, area } of pares) {
+    if (dados.has(grupo.id) || leais[area].length >= capacidade) continue;
+    dados.add(grupo.id);
+    leais[area].push(grupo);
+  }
+  return leais;
 }
 
 /**
  * A nota de cada ministro: a satisfação (`valores[grupo]`, 0 a 100) dos
- * grupos leais, pesada pelo tamanho deles.
+ * grupos leais, pesada pelo tamanho deles. Sem grupo leal, a nota é neutra.
  */
 export function notasDosMinistros(
   ministros: Readonly<Record<string, Personagem>>,
@@ -83,12 +106,16 @@ export function notasDosMinistros(
   const grupos = gruposNaBussola(pacote).filter(
     (g) => valores[g.id] !== undefined,
   );
-  if (grupos.length === 0) return [];
-  return Object.entries(ministros).map(([area, ministro]) => {
-    const leais = gruposLeais(ministro, grupos);
+  if (grupos.length === 0 || Object.keys(ministros).length === 0) return [];
+  const leaisDe = gruposLeais(ministros, grupos);
+  return Object.keys(ministros).map((area) => {
+    const leais = leaisDe[area];
     const peso = leais.reduce((s, g) => s + g.peso, 0);
     const nota =
-      leais.reduce((s, g) => s + g.peso * (valores[g.id] ?? NEUTRA), 0) / peso;
+      peso === 0
+        ? NEUTRA
+        : leais.reduce((s, g) => s + g.peso * (valores[g.id] ?? NEUTRA), 0) /
+          peso;
     return { area, nota, leais: leais.map((g) => g.id) };
   });
 }
