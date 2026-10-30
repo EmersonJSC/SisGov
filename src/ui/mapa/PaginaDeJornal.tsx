@@ -306,6 +306,8 @@ export function PaginaDeJornal({
   appInicial = "inicio",
   eleicao,
   onEscolherCandidato = () => null,
+  onEscolherChapa = () => null,
+  onSortearChapa = () => ({}),
   nomeDoSegmento = (id) => id,
 }: {
   edicao: EdicaoDoJornal;
@@ -328,6 +330,11 @@ export function PaginaDeJornal({
   /** App da eleição (V1-39): o partido, as pesquisas e o candidato. */
   eleicao?: VisaoEleicao;
   onEscolherCandidato?: (id: string) => string | null;
+  onEscolherChapa?: (troca: {
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
+  }) => string | null;
+  onSortearChapa?: (rodada: number) => Readonly<Record<string, string>>;
   nomeDoSegmento?: (id: string) => string;
 }) {
   const [app, setApp] = useState<AppDoTablet>(appInicial);
@@ -439,6 +446,8 @@ export function PaginaDeJornal({
             <EleicaoNoTablet
               eleicao={eleicao}
               onEscolher={onEscolherCandidato}
+              onEscolherChapa={onEscolherChapa}
+              onSortearChapa={onSortearChapa}
               nomeDoSegmento={nomeDoSegmento}
             />
           ) : app === "rede" ? (

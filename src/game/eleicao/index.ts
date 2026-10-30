@@ -21,6 +21,14 @@ import {
   type EstadoDoCongresso,
 } from "../congresso";
 import {
+  areasDoGoverno,
+  ministrosEscolhidos,
+  opcoesDaChapa,
+  pontoDaChapa,
+  sortearMinistros,
+  type OpcoesDaChapa,
+} from "./chapa";
+import {
   criarSorte,
   gerarEscolha,
   gerarPersonagem,
@@ -48,6 +56,7 @@ import type {
 export * from "./tipos";
 export * from "./personagens";
 export * from "./votacao";
+export * from "./chapa";
 
 export const regrasDaEleicao = dadosDaEleicao as unknown as RegrasDaEleicao;
 export const mundoDosPersonagens =
@@ -72,6 +81,33 @@ const indicadores = () => Object.keys(regrasDaEleicao.voto.pesoEconomico);
 
 const fotografia = (valores: Readonly<Record<string, number>>) =>
   Object.fromEntries(indicadores().map((id) => [id, valores[id] ?? 0]));
+
+/** Vice e ministros da primeira tela: a mesma semente dá sempre os mesmos. */
+export function primeiraChapa(pais: string, semente: number): OpcoesDaChapa {
+  const dados = eleicaoDoPais(pais);
+  if (!dados) return { vices: [], ministros: {} };
+  return opcoesDaChapa(
+    mundoDosPersonagens,
+    dados,
+    areasDoGoverno(pais),
+    semente,
+  );
+}
+
+/** Os ministros sorteados a partir da chapa; cada `rodada` dá um sorteio novo. */
+export function sortearMinistrosDaChapa(
+  opcoes: OpcoesDaChapa,
+  presidente: Personagem,
+  vice: Personagem | undefined,
+  semente: number,
+  rodada = 0,
+): Readonly<Record<string, string>> {
+  return sortearMinistros(
+    opcoes,
+    pontoDaChapa(presidente, vice),
+    criarSorte(semente * 15485863 + 5 + rodada * 32749),
+  );
+}
 
 /** Os nomes da primeira tela: a mesma semente dá sempre os mesmos. */
 export function primeiraEscolha(pais: string, semente: number): Personagem[] {
@@ -155,6 +191,9 @@ export function criarEleicao(input: {
   semente: number;
   partido?: Readonly<{ nome?: string; sigla?: string }>;
   presidente?: string;
+  /** Id do vice e dos ministros (por área) entre as opções da primeira chapa. */
+  vice?: string;
+  ministros?: Readonly<Record<string, string>>;
   valores: Readonly<Record<string, number>>;
   congresso?: EstadoDoCongresso;
 }): EstadoDaEleicao | undefined {
@@ -183,9 +222,23 @@ export function criarEleicao(input: {
     sorte,
     presidente.lado,
   );
+  const chapa = primeiraChapa(input.pais, input.semente);
+  const vice = chapa.vices.find((p) => p.id === input.vice) ?? chapa.vices[0];
+  const sorteados = sortearMinistrosDaChapa(
+    chapa,
+    presidente,
+    vice,
+    input.semente,
+  );
+  const ministros = ministrosEscolhidos(chapa, {
+    ...sorteados,
+    ...input.ministros,
+  });
   return {
     partido: { nome, sigla, ideologia },
     presidente,
+    ...(vice ? { vice } : {}),
+    ministros,
     mandatosDoPresidente: 1,
     mandato: 1,
     inicioDoMandato: 0,
@@ -245,6 +298,34 @@ export function escolherCandidato(
     ...estado,
     candidato: escolhido,
     disciplina: Math.max(disciplinaMinima, base - quedaDaDisciplina * excesso),
+  };
+}
+
+/** O partido decide a troca de vice e de ministros para o próximo mandato. */
+export function escolherChapa(
+  estado: EstadoDaEleicao,
+  troca: Readonly<{
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
+  }>,
+): EstadoDaEleicao | string {
+  const opcoes = estado.opcoesDaChapa;
+  if (!opcoes) return "Ainda não há nomes para trocar na chapa.";
+  const antes = estado.chapaNova;
+  let vice = antes?.vice;
+  if (troca.vice !== undefined) {
+    vice = opcoes.vices.find((p) => p.id === troca.vice);
+    if (!vice) return "Este nome não está entre os possíveis vices.";
+  }
+  const novos = ministrosEscolhidos(opcoes, troca.ministros ?? {});
+  if (Object.keys(novos).length !== Object.keys(troca.ministros ?? {}).length)
+    return "Há ministro que não está entre os nomes da área.";
+  return {
+    ...estado,
+    chapaNova: {
+      ...(vice ? { vice } : {}),
+      ministros: { ...antes?.ministros, ...novos },
+    },
   };
 }
 
@@ -446,6 +527,13 @@ export function passarTurnoNaEleicao(input: {
     estado = {
       ...estado,
       opcoes: gerarEscolha(mundoDosPersonagens, pais, sorte),
+      opcoesDaChapa: opcoesDaChapa(
+        mundoDosPersonagens,
+        pais,
+        areasDoGoverno(input.pais),
+        estado.semente,
+        estado.mandato,
+      ),
     };
   const candidato =
     candidatoDoPartido(pais, estado) ?? estado.opcoes[0] ?? estado.presidente;
@@ -497,6 +585,10 @@ export function passarTurnoNaEleicao(input: {
       ...estado,
       partido: { ...estado.partido, ideologia },
       presidente: candidato,
+      vice: estado.chapaNova?.vice ?? estado.vice,
+      ministros: { ...estado.ministros, ...estado.chapaNova?.ministros },
+      opcoesDaChapa: undefined,
+      chapaNova: undefined,
       mandatosDoPresidente: mesmo ? estado.mandatosDoPresidente + 1 : 1,
       mandato: estado.mandato + 1,
       inicioDoMandato: input.turno,

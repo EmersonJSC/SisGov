@@ -75,8 +75,14 @@ export { investigarGrupo } from "./partida/pressao";
 export { verBussola } from "./partida/bussola";
 export {
   escolherCandidato,
+  escolherChapa,
+  primeiraChapa,
   primeirosCandidatos,
+  sortearMinistros,
+  sortearMinistrosDaEleicao,
   verEleicao,
+  type VisaoAreaDaChapa,
+  type VisaoChapa,
   type EleicaoNoTurno,
   type VisaoEleicao,
   type VisaoPersonagem,

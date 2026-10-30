@@ -28,6 +28,9 @@ export function criarPartida(
     partido?: Readonly<{ nome?: string; sigla?: string }>;
     /** Id do presidente, entre os `primeirosCandidatos` da mesma semente. */
     presidente?: string;
+    /** Vice e ministros (id da área → id do ministro) entre os de `primeiraChapa`. */
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
     /** Eleição no fim do mandato (V1-39); padrão: ligada. Testes longos desligam. */
     eleicao?: boolean;
   }> = {},
@@ -50,6 +53,8 @@ export function criarPartida(
           semente: opcoes.semente ?? 1,
           partido: opcoes.partido,
           presidente: opcoes.presidente,
+          vice: opcoes.vice,
+          ministros: opcoes.ministros,
           valores: game.value.execution.values,
           congresso: game.value.congress,
         });

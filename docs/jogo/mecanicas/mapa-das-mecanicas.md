@@ -129,10 +129,14 @@ com "a decidir" são ideias para o autor aprovar, não desenho fechado.
 
 **M8.3 Chapa e ministros**
 
-- [ ] Tela de escolha completa: presidente, vice e ministros, com opção de ministros aleatórios a partir da chapa (pedido do autor, 29/out)
-- [ ] Vice (não existe no código)
-- [ ] Ministros com nome, perfil e ponto na bússola, ocupando os ministérios que já estão no mapa
-- [ ] A decidir: competência do ministro mexe na eficácia das leis da pasta?
+- [x] Tela de escolha completa: presidente, vice e ministros, com "Sortear ministros" a partir da chapa (fatia A, 29/out)
+- [x] Vice
+- [~] Em cada eleição o jogo pergunta se mantém ou troca a chapa (feito); passados 2 mandatos seguidos a troca é obrigatória, se a lei assim mandar (hoje vale o limite do país; a lei estender ou encurtar falta) (autor, 29/out)
+- [x] Ministros são os das bolhas: um por área, com nome, atributos e opiniões (o ponto na bússola fica por dentro)
+- [ ] Popularidade do ministro vem dos índices, das leis e das opiniões sobre a pasta; ela soma ou tira da popularidade do partido e do governo
+- O Senado não olha a popularidade do ministro, só a lei (autor, 29/out); a popularidade do ministro só pesa na do partido e do governo
+- [ ] Ministro porta-voz: leva ao jogo as leis que ele e os grupos leais a ele querem (ex.: segurança, 3 grupos leais). Aceitar ou recusar mexe na satisfação desses grupos
+- [ ] A decidir: competência do ministro (gestão) mexe na eficácia das leis da pasta?
 - [ ] A decidir: troca de ministro, demissão, escândalo
 
 **M8.4 Influência na população** (a cadeia que faltava)

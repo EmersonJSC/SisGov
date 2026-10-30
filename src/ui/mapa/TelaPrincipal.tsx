@@ -17,6 +17,8 @@ import {
   encerrarTurno,
   enviarAoCongresso,
   escolherCandidato,
+  escolherChapa,
+  sortearMinistrosDaEleicao,
   investigarGrupo,
   mudarLei,
   revogarLei,
@@ -422,6 +424,8 @@ export function TelaPrincipal() {
             modo: "real",
             partido: fundacao.partido,
             presidente: fundacao.presidente,
+            vice: fundacao.vice,
+            ministros: fundacao.ministros,
           }),
         }),
       60,
@@ -748,6 +752,21 @@ function TelaPrincipalCarregada({
     setErroTurno(null);
     return null;
   };
+
+  // M8.3: troca de vice e ministros para o próximo mandato
+  const escolherNaChapa = (troca: {
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
+  }): string | null => {
+    if (!partida) return null;
+    const r = escolherChapa(partida, troca);
+    if (!r.ok) return r.erros.join(" ");
+    setPartida(r.value);
+    setErroTurno(null);
+    return null;
+  };
+  const sortearNaChapa = (rodada: number) =>
+    partida ? sortearMinistrosDaEleicao(partida, rodada) : {};
 
   const passarTurno = () => {
     if (!partida || passando) return;
@@ -1310,6 +1329,8 @@ function TelaPrincipalCarregada({
           appInicial={tablet || "inicio"}
           eleicao={eleicao}
           onEscolherCandidato={escolherNoPartido}
+          onEscolherChapa={escolherNaChapa}
+          onSortearChapa={sortearNaChapa}
           nomeDoSegmento={(id) =>
             visao.bolhas.find((b) => b.id === id)?.nome ?? id
           }

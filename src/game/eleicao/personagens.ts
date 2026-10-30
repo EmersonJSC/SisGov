@@ -101,7 +101,7 @@ function escolherPeso<T extends { peso: number }>(
   return lista[lista.length - 1];
 }
 
-function embaralhar<T>(sorte: Sorte, lista: readonly T[]): T[] {
+export function embaralhar<T>(sorte: Sorte, lista: readonly T[]): T[] {
   const copia = [...lista];
   for (let i = copia.length - 1; i > 0; i--) {
     const j = Math.floor(sorte.numero() * (i + 1));

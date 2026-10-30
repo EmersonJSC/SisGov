@@ -1,5 +1,6 @@
 /** Formato dos dados da eleição (V1-39, docs/v1/desenho/eleicao.md). */
 import type { PontoDaBussola } from "../bussola";
+import type { OpcoesDaChapa } from "./chapa";
 
 type Eixo = "economia" | "costumes";
 
@@ -211,6 +212,17 @@ export type EstadoDaEleicao = Readonly<{
     ideologia: PontoDaBussola;
   }>;
   presidente: Personagem;
+  /** Ausentes em saves antigos. */
+  vice?: Personagem;
+  /** Um ministro por área do governo (id da área). */
+  ministros?: Readonly<Record<string, Personagem>>;
+  /** Nomes que a chapa pode trocar na próxima eleição. */
+  opcoesDaChapa?: OpcoesDaChapa;
+  /** A troca já decidida para o próximo mandato; o que falta fica como está. */
+  chapaNova?: Readonly<{
+    vice?: Personagem;
+    ministros: Readonly<Record<string, Personagem>>;
+  }>;
   /** Mandatos seguidos do presidente atual, contando o de agora. */
   mandatosDoPresidente: number;
   mandato: number;

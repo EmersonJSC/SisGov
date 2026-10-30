@@ -6,8 +6,13 @@ import type { GameState } from "../../game/createGame";
 import { anoComFracao, mesesAteOTurno } from "../../game/calendario";
 import { pontoAtual } from "../../game/bussola";
 import {
+  areasDoGoverno,
   atributosDe,
   candidatoDoPartido,
+  escolherChapa as escolherChapaNoJogo,
+  primeiraChapa as primeiraChapaNoJogo,
+  sortearMinistrosDaChapa,
+  type OpcoesDaChapa,
   eleicaoDoPais,
   escolherCandidato as escolherNoJogo,
   estranhamento,
@@ -81,9 +86,35 @@ export type VisaoResultado = Readonly<{
   porSegmento: readonly Readonly<{ id: string; votos: number }>[];
 }>;
 
+/** Uma área do governo (a bolha) e quem pode comandá-la. */
+export type VisaoAreaDaChapa = Readonly<{
+  id: string;
+  titulo: string;
+  cargo: string;
+  opcoes: readonly VisaoPersonagem[];
+  /** Quem ocupa a área agora (ausente na primeira escolha). */
+  ministro?: VisaoPersonagem;
+}>;
+
+/** Os nomes que o partido escolhe além do presidente: vice e ministros. */
+export type VisaoChapa = Readonly<{
+  vices: readonly VisaoPersonagem[];
+  areas: readonly VisaoAreaDaChapa[];
+}>;
+
 export type VisaoEleicao = Readonly<{
   partido: Readonly<{ nome: string; sigla: string }>;
   presidente: VisaoPersonagem;
+  vice?: VisaoPersonagem;
+  /** Quem comanda cada área hoje. */
+  gabinete: readonly VisaoAreaDaChapa[];
+  /** Nomes para trocar vice e ministros na próxima eleição (já sorteados). */
+  chapaParaTrocar?: VisaoChapa;
+  /** A troca já decidida: id do vice e do ministro de cada área. */
+  chapaNova?: Readonly<{
+    vice?: string;
+    ministros: Readonly<Record<string, string>>;
+  }>;
   mandato: number;
   /** Turnos até a eleição (0 = o próximo encerramento é a eleição). */
   turnosAteAEleicao: number;
@@ -142,6 +173,100 @@ export function primeirosCandidatos(
   return primeiraEscolha(pais, opcoes.semente ?? 1).map((p) =>
     verPersonagem(p, ano),
   );
+}
+
+function verChapa(
+  pais: string,
+  ano: number,
+  opcoes: OpcoesDaChapa,
+  atuais: Readonly<Record<string, Personagem>> = {},
+): VisaoChapa {
+  return {
+    vices: opcoes.vices.map((p) => verPersonagem(p, ano)),
+    areas: areasDoGoverno(pais).map((a) => ({
+      ...a,
+      opcoes: (opcoes.ministros[a.id] ?? []).map((p) => verPersonagem(p, ano)),
+      ...(atuais[a.id] ? { ministro: verPersonagem(atuais[a.id], ano) } : {}),
+    })),
+  };
+}
+
+/** Vice e ministros da primeira tela; a mesma semente dá os mesmos. */
+export function primeiraChapa(
+  opcoes: Readonly<{ pais?: string; semente?: number }> = {},
+): VisaoChapa {
+  const pais = opcoes.pais ?? "brasil";
+  const ano = eleicaoDoPais(pais)?.anoInicial ?? 0;
+  return verChapa(pais, ano, primeiraChapaNoJogo(pais, opcoes.semente ?? 1));
+}
+
+/**
+ * Sorteia um ministro por área a partir da chapa (presidente e vice). Cada
+ * `rodada` dá um sorteio novo; devolve o id escolhido de cada área.
+ */
+export function sortearMinistros(
+  opcoes: Readonly<{
+    pais?: string;
+    semente?: number;
+    presidente: string;
+    vice: string;
+    rodada?: number;
+  }>,
+): Readonly<Record<string, string>> {
+  const pais = opcoes.pais ?? "brasil";
+  const semente = opcoes.semente ?? 1;
+  const presidente = primeiraEscolha(pais, semente).find(
+    (p) => p.id === opcoes.presidente,
+  );
+  const chapa = primeiraChapaNoJogo(pais, semente);
+  const vice = chapa.vices.find((p) => p.id === opcoes.vice);
+  if (!presidente) return {};
+  return sortearMinistrosDaChapa(
+    chapa,
+    presidente,
+    vice,
+    semente,
+    opcoes.rodada ?? 0,
+  );
+}
+
+/**
+ * Sorteio para a próxima eleição: parte do candidato do partido e do vice
+ * (o novo, se já foi escolhido).
+ */
+export function sortearMinistrosDaEleicao(
+  partida: Partida,
+  rodada: number,
+): Readonly<Record<string, string>> {
+  const e = partida.game.election;
+  const pais = eleicaoDoPais(partida.game.scenario.id);
+  if (!e || !pais || !e.opcoesDaChapa) return {};
+  const candidato = candidatoDoPartido(pais, e) ?? e.presidente;
+  return sortearMinistrosDaChapa(
+    e.opcoesDaChapa,
+    candidato,
+    e.chapaNova?.vice ?? e.vice,
+    e.semente,
+    rodada + e.mandato * 1000,
+  );
+}
+
+/** O partido troca o vice e/ou ministros para o próximo mandato. */
+export function escolherChapa(
+  partida: Partida,
+  troca: Readonly<{
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
+  }>,
+): Resultado<Partida> {
+  const e = partida.game.election;
+  if (!e) return { ok: false, erros: ["Esta partida não tem eleição."] };
+  const novo = escolherChapaNoJogo(e, troca);
+  if (typeof novo === "string") return { ok: false, erros: [novo] };
+  return {
+    ok: true,
+    value: { ...partida, game: { ...partida.game, election: novo } },
+  };
 }
 
 const anoDe = (game: GameState): number =>
@@ -208,6 +333,26 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
   return {
     partido: { nome: e.partido.nome, sigla: e.partido.sigla },
     presidente: verPersonagem(e.presidente, ano),
+    ...(e.vice ? { vice: verPersonagem(e.vice, ano) } : {}),
+    gabinete: verChapa(
+      game.scenario.id,
+      ano,
+      { vices: [], ministros: {} },
+      e.ministros,
+    ).areas,
+    ...(e.opcoesDaChapa
+      ? { chapaParaTrocar: verChapa(game.scenario.id, ano, e.opcoesDaChapa) }
+      : {}),
+    ...(e.chapaNova
+      ? {
+          chapaNova: {
+            ...(e.chapaNova.vice ? { vice: e.chapaNova.vice.id } : {}),
+            ministros: Object.fromEntries(
+              Object.entries(e.chapaNova.ministros).map(([a, p]) => [a, p.id]),
+            ),
+          },
+        }
+      : {}),
     mandato: e.mandato,
     turnosAteAEleicao: Math.max(
       0,

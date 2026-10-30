@@ -4,8 +4,12 @@ import {
   criarPartida,
   encerrarTurno,
   escolherCandidato,
+  escolherChapa,
+  primeiraChapa,
   primeirosCandidatos,
   salvarPartida,
+  sortearMinistros,
+  sortearMinistrosDaEleicao,
   verEleicao,
   type Partida,
 } from "../app/partida";
@@ -243,4 +247,108 @@ it("M8: o gerador faz uma lista de ministros, sem repetir nome", () => {
   expect(ministros).toHaveLength(12);
   expect(new Set(ministros.map((m) => m.nome)).size).toBe(12);
   expect(ministros.every((m) => m.papel === "ministro")).toBe(true);
+});
+
+it("M8.3: a primeira tela tem vices e três nomes por área, sempre os mesmos", () => {
+  const a = primeiraChapa({ semente: 4 });
+  expect(a.vices).toHaveLength(4);
+  expect(a.areas).toHaveLength(11);
+  expect(a.areas.every((x) => x.opcoes.length === 3 && x.cargo)).toBe(true);
+  const ids = [...a.vices, ...a.areas.flatMap((x) => x.opcoes)].map(
+    (p) => p.id,
+  );
+  expect(new Set(ids).size).toBe(ids.length);
+  expect(primeiraChapa({ semente: 4 })).toEqual(a);
+});
+
+it("M8.3: o sorteio de ministros sai da chapa, em todas as áreas, e muda a cada rodada", () => {
+  const chapa = primeiraChapa({ semente: 4 });
+  const pres = primeirosCandidatos({ semente: 4 })[0].id;
+  const base = { semente: 4, presidente: pres, vice: chapa.vices[0].id };
+  const r0 = sortearMinistros({ ...base, rodada: 0 });
+  expect(Object.keys(r0)).toHaveLength(11);
+  expect(sortearMinistros({ ...base, rodada: 0 })).toEqual(r0);
+  for (const a of chapa.areas)
+    expect(a.opcoes.map((o) => o.id)).toContain(r0[a.id]);
+  const outros = [1, 2, 3].map((rodada) =>
+    sortearMinistros({ ...base, rodada }),
+  );
+  expect(outros.some((o) => JSON.stringify(o) !== JSON.stringify(r0))).toBe(
+    true,
+  );
+});
+
+it("M8.3: a partida nasce com o vice e o ministro de cada área escolhidos", () => {
+  const chapa = primeiraChapa({ semente: 4 });
+  const pres = primeirosCandidatos({ semente: 4 })[0].id;
+  const escolhido = chapa.areas[0].opcoes[2].id;
+  const criada = criarPartida({
+    semente: 4,
+    presidente: pres,
+    vice: chapa.vices[1].id,
+    ministros: { [chapa.areas[0].id]: escolhido },
+  });
+  if (!criada.ok) throw new Error(criada.erros.join());
+  const e = verEleicao(criada.value)!;
+  expect(e.vice?.id).toBe(chapa.vices[1].id);
+  expect(e.gabinete).toHaveLength(11);
+  expect(e.gabinete.every((a) => a.ministro)).toBe(true);
+  expect(e.gabinete[0].ministro?.id).toBe(escolhido);
+  // sem escolha, o jogo sorteia pela chapa
+  const sem = criarPartida({ semente: 4, presidente: pres });
+  if (!sem.ok) throw new Error(sem.erros.join());
+  expect(verEleicao(sem.value)!.vice).toBeTruthy();
+});
+
+it("M8.3: na eleição o partido escolhe a troca da chapa", () => {
+  let p = partida(4);
+  const e0 = p.game.election!;
+  const turnoDaEscolha = pais.turnoDaEscolha;
+  const fim = passarTurnoNaEleicao({
+    content: p.content,
+    pais: "brasil",
+    estado: { ...e0, inicioDoMandato: p.game.currentTurn - turnoDaEscolha },
+    valores: p.game.execution.values,
+    congresso: p.game.congress,
+    turno: p.game.currentTurn,
+  });
+  p = { ...p, game: { ...p.game, election: fim.estado } };
+  const v = verEleicao(p)!;
+  expect(v.chapaParaTrocar?.vices.length).toBeGreaterThan(0);
+  const novoVice = v.chapaParaTrocar!.vices[0].id;
+  const sorteio = sortearMinistrosDaEleicao(p, 0);
+  expect(Object.keys(sorteio)).toHaveLength(11);
+  const r = escolherChapa(p, { vice: novoVice, ministros: sorteio });
+  if (!r.ok) throw new Error(r.erros.join());
+  expect(verEleicao(r.value)!.chapaNova?.vice).toBe(novoVice);
+  expect(escolherChapa(p, { vice: "nao-existe" }).ok).toBe(false);
+});
+
+it("M8.3: vencendo, a troca decidida vale no mandato 2; sem troca, a chapa fica", () => {
+  const p = partida(4);
+  const e0 = p.game.election!;
+  const opcoes = primeiraChapa({ semente: 4 });
+  const comum = {
+    content: p.content,
+    pais: "brasil",
+    congresso: p.game.congress,
+    turno: p.game.currentTurn,
+    valores: valoresCom(p, 90),
+  };
+  const mantida = passarTurnoNaEleicao({ ...comum, estado: naVespera(p) });
+  expect(mantida.estado.vice?.id).toBe(e0.vice?.id);
+  expect(mantida.estado.ministros).toEqual(e0.ministros);
+  const trocada = passarTurnoNaEleicao({
+    ...comum,
+    estado: naVespera(p, {
+      chapaNova: {
+        vice: e0.vice,
+        ministros: { [opcoes.areas[0].id]: e0.ministros![opcoes.areas[1].id] },
+      },
+    }),
+  });
+  expect(trocada.estado.ministros![opcoes.areas[0].id].id).toBe(
+    e0.ministros![opcoes.areas[1].id].id,
+  );
+  expect(trocada.estado.chapaNova).toBeUndefined();
 });

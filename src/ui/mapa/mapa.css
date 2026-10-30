@@ -8349,3 +8349,43 @@ span.el-mini {
   font-size: 13.5px;
   line-height: 1.4;
 }
+
+/* gabinete: uma aba por área do governo (M8.3) */
+.gb-gabinete {
+  display: grid;
+  gap: 12px;
+}
+
+.gb-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.gb-area {
+  display: grid;
+  gap: 2px;
+  min-width: 120px;
+  padding: 6px 12px;
+  border: 2px solid #0e0f11;
+  border-radius: 4px;
+  background: #e9dfc8;
+  color: #0e0f11;
+  font-family: var(--ds-maquina);
+  text-align: left;
+  cursor: pointer;
+}
+
+.gb-area small {
+  opacity: 0.7;
+}
+
+.gb-area.gb-escolhida {
+  background: #d7e6cf;
+}
+
+.gb-area.gb-aberta {
+  outline: 3px solid #e0a526;
+  outline-offset: 1px;
+}

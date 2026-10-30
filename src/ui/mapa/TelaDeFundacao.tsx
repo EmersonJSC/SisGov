@@ -5,14 +5,22 @@
  * que lado está.
  */
 import { useMemo, useState } from "react";
-import { primeirosCandidatos } from "../../app/partida";
+import {
+  primeiraChapa,
+  primeirosCandidatos,
+  sortearMinistros,
+} from "../../app/partida";
 import { Arte } from "./Arte";
 import { Dossie } from "./Dossie";
+import { Gabinete } from "./Gabinete";
 
 export type Fundacao = Readonly<{
   semente: number;
   partido: Readonly<{ nome: string; sigla: string }>;
   presidente: string;
+  vice: string;
+  /** Ministro de cada área (id da área → id); o que faltar o jogo sorteia. */
+  ministros: Readonly<Record<string, string>>;
 }>;
 
 /** "Partido da Reconstrução Nacional" → "PRN". */
@@ -34,9 +42,20 @@ export function TelaDeFundacao({
   const nomes = useMemo(() => primeirosCandidatos({ semente }), [semente]);
   const [nome, setNome] = useState("");
   const [sigla, setSigla] = useState("");
+  const chapa = useMemo(() => primeiraChapa({ semente }), [semente]);
   const [presidente, setPresidente] = useState<string | null>(null);
+  const [vice, setVice] = useState<string | null>(null);
+  const [ministros, setMinistros] = useState<Readonly<Record<string, string>>>(
+    {},
+  );
+  const [rodada, setRodada] = useState(0);
   const marca = sigla.trim() || iniciais(nome) || "?";
-  const pronto = nome.trim().length > 1 && presidente !== null;
+  const pronto = nome.trim().length > 1 && presidente !== null && vice !== null;
+  const sortear = () => {
+    if (!presidente || !vice) return;
+    setMinistros(sortearMinistros({ semente, presidente, vice, rodada }));
+    setRodada(rodada + 1);
+  };
   return (
     <main className="fd-tela ds-mesa">
       <div className="fd-conteudo">
@@ -100,12 +119,46 @@ export function TelaDeFundacao({
           />
         </section>
 
+        <section className="fd-dossie" aria-label="Vice-presidência">
+          <h2 className="ds-aba">Dossiê: o vice da chapa</h2>
+          <p className="ds-dica">
+            O vice substitui o presidente e ajuda a falar com o Congresso.
+          </p>
+          <Dossie
+            personagens={chapa.vices}
+            escolhido={vice}
+            onEscolher={setVice}
+            escolherNoClique
+            vazio
+          />
+        </section>
+
+        <section className="fd-dossie" aria-label="Ministérios">
+          <h2 className="ds-aba">Dossiê: os ministros</h2>
+          <p className="ds-dica">
+            Um por área do governo. Escolha um a um, ou sorteie a partir da
+            chapa
+            {presidente && vice ? "." : " (escolha presidente e vice antes)."} O
+            que ficar vago o jogo sorteia na posse.
+          </p>
+          <Gabinete
+            areas={chapa.areas}
+            escolhidos={ministros}
+            onEscolher={(area, id) =>
+              setMinistros({ ...ministros, [area]: id })
+            }
+            onSortear={presidente && vice ? sortear : undefined}
+          />
+        </section>
+
         <footer className="fd-pe">
           {!pronto ? (
             <span className="fd-falta">
               {nome.trim().length < 2
                 ? "Falta o nome do partido."
-                : "Falta escolher quem vai governar."}
+                : presidente === null
+                  ? "Falta escolher quem vai governar."
+                  : "Falta escolher o vice."}
             </span>
           ) : null}
           <button
@@ -114,6 +167,7 @@ export function TelaDeFundacao({
             disabled={!pronto}
             onClick={() =>
               presidente &&
+              vice &&
               onComecar({
                 semente,
                 partido: {
@@ -121,6 +175,8 @@ export function TelaDeFundacao({
                   sigla: sigla.trim() || iniciais(nome),
                 },
                 presidente,
+                vice,
+                ministros,
               })
             }
           >

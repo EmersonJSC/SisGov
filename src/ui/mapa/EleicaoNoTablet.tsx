@@ -4,6 +4,7 @@
  * que o partido pode lançar e dos adversários, e os recortes de jornal das
  * eleições passadas. Ninguém aparece com lado declarado.
  */
+import { useState } from "react";
 import type {
   VisaoEleicao,
   VisaoPersonagem,
@@ -12,6 +13,7 @@ import type {
 } from "../../app/partida";
 import { Arte, Retrato } from "./Arte";
 import { Dossie, Folha, Polaroide } from "./Dossie";
+import { Gabinete } from "./Gabinete";
 
 const pct = (x: number) => `${x.toFixed(1).replace(".", ",")}%`;
 
@@ -204,12 +206,22 @@ export function retratosDaEleicao(e: VisaoEleicao) {
 export function EleicaoNoTablet({
   eleicao: e,
   onEscolher,
+  onEscolherChapa,
+  onSortearChapa,
   nomeDoSegmento,
 }: {
   eleicao: VisaoEleicao;
   onEscolher: (id: string) => string | null;
+  /** Troca o vice e/ou ministros para o próximo mandato. */
+  onEscolherChapa: (troca: {
+    vice?: string;
+    ministros?: Readonly<Record<string, string>>;
+  }) => string | null;
+  /** Sorteia os ministros a partir do candidato e do vice. */
+  onSortearChapa: (rodada: number) => Readonly<Record<string, string>>;
   nomeDoSegmento: (id: string) => string;
 }) {
+  const [rodada, setRodada] = useState(0);
   const ultima = e.pesquisas.at(-1);
   const resultados = [...e.resultados].reverse();
   const novos = e.opcoes.filter((o) => o.id !== e.presidente.id);
@@ -297,6 +309,41 @@ export function EleicaoNoTablet({
             rotuloDaEscolha="Lançar candidatura"
             carimboDoEscolhido="Candidato"
             selo={(p) => (p.id === e.presidente.id ? "Presidente" : undefined)}
+          />
+        </section>
+      ) : null}
+
+      {!e.encerrada && e.chapaParaTrocar ? (
+        <section aria-label="Chapa e ministros">
+          <h2 className="ds-aba">Dossiê: vice e ministros</h2>
+          <p className="ds-dica">
+            O partido mantém a chapa ou troca. O que não for escolhido continua
+            como está. A troca vale no próximo mandato.
+            {e.vice ? ` Vice hoje: ${e.vice.nome}.` : ""}
+          </p>
+          <Dossie
+            personagens={e.chapaParaTrocar.vices}
+            escolhido={e.chapaNova?.vice ?? null}
+            onEscolher={(id) => onEscolherChapa({ vice: id })}
+            rotuloDaEscolha="Trocar o vice"
+            carimboDoEscolhido="Novo vice"
+          />
+          <Gabinete
+            areas={e.gabinete.map((a) => ({
+              ...a,
+              opcoes:
+                e.chapaParaTrocar?.areas.find((x) => x.id === a.id)?.opcoes ??
+                [],
+            }))}
+            escolhidos={e.chapaNova?.ministros ?? {}}
+            mantidos
+            onEscolher={(area, id) =>
+              onEscolherChapa({ ministros: { [area]: id } })
+            }
+            onSortear={() => {
+              onEscolherChapa({ ministros: onSortearChapa(rodada) });
+              setRodada(rodada + 1);
+            }}
           />
         </section>
       ) : null}
