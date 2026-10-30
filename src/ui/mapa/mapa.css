@@ -8389,3 +8389,9 @@ span.el-mini {
   outline: 3px solid #e0a526;
   outline-offset: 1px;
 }
+
+/* a primeira tela rola: html, body e #root não deixam a página rolar */
+.fd-tela {
+  height: 100%;
+  overflow-y: auto;
+}

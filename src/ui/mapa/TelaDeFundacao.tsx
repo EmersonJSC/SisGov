@@ -49,6 +49,8 @@ export function TelaDeFundacao({
     {},
   );
   const [rodada, setRodada] = useState(0);
+  // 1: a chapa (presidente e vice); 2: os ministros
+  const [etapa, setEtapa] = useState<1 | 2>(1);
   const marca = sigla.trim() || iniciais(nome) || "?";
   const pronto = nome.trim().length > 1 && presidente !== null && vice !== null;
   const sortear = () => {
@@ -71,88 +73,102 @@ export function TelaDeFundacao({
           </p>
         </header>
 
-        <section
-          className="ds-papel fd-registro"
-          aria-label="Ficha de registro do partido"
-        >
-          <header className="fd-cabecalho">
-            <span>Ficha de registro de partido político</span>
-            <span>Nº 0001 · via única</span>
-          </header>
-          <div className="fd-partido">
-            <div className="fd-emblema" aria-hidden>
-              <Arte caminho="logo/emblema.png" className="fd-emblema-arte" />
-              <span>{marca}</span>
-            </div>
-            <label className="fd-campo fd-campo-nome">
-              Nome do partido
-              <input
-                value={nome}
-                maxLength={60}
-                placeholder="Partido da Reconstrução Nacional"
-                onChange={(e) => setNome(e.target.value)}
+        {etapa === 1 ? (
+          <>
+            <section
+              className="ds-papel fd-registro"
+              aria-label="Ficha de registro do partido"
+            >
+              <header className="fd-cabecalho">
+                <span>Ficha de registro de partido político</span>
+                <span>Nº 0001 · via única</span>
+              </header>
+              <div className="fd-partido">
+                <div className="fd-emblema" aria-hidden>
+                  <Arte
+                    caminho="logo/emblema.png"
+                    className="fd-emblema-arte"
+                  />
+                  <span>{marca}</span>
+                </div>
+                <label className="fd-campo fd-campo-nome">
+                  Nome do partido
+                  <input
+                    value={nome}
+                    maxLength={60}
+                    placeholder="Partido da Reconstrução Nacional"
+                    onChange={(e) => setNome(e.target.value)}
+                  />
+                </label>
+                <label className="fd-campo fd-campo-sigla">
+                  Sigla
+                  <input
+                    value={sigla}
+                    maxLength={8}
+                    placeholder={iniciais(nome) || "PRN"}
+                    onChange={(e) => setSigla(e.target.value.toUpperCase())}
+                  />
+                </label>
+              </div>
+            </section>
+
+            <section
+              className="fd-dossie"
+              aria-label="Candidatos à Presidência"
+            >
+              <h2 className="ds-aba">
+                Passo 1 de 2: a chapa. Quem vai governar
+              </h2>
+              <p className="ds-dica">
+                Ninguém diz de que lado está. Leia o que cada um pensa.
+              </p>
+              <Dossie
+                personagens={nomes}
+                escolhido={presidente}
+                onEscolher={setPresidente}
+                escolherNoClique
+                vazio
               />
-            </label>
-            <label className="fd-campo fd-campo-sigla">
-              Sigla
-              <input
-                value={sigla}
-                maxLength={8}
-                placeholder={iniciais(nome) || "PRN"}
-                onChange={(e) => setSigla(e.target.value.toUpperCase())}
+            </section>
+
+            <section className="fd-dossie" aria-label="Vice-presidência">
+              <h2 className="ds-aba">Dossiê: o vice da chapa</h2>
+              <p className="ds-dica">
+                O vice substitui o presidente e ajuda a falar com o Congresso.
+              </p>
+              <Dossie
+                personagens={chapa.vices}
+                escolhido={vice}
+                onEscolher={setVice}
+                escolherNoClique
+                vazio
               />
-            </label>
-          </div>
-        </section>
-
-        <section className="fd-dossie" aria-label="Candidatos à Presidência">
-          <h2 className="ds-aba">Dossiê: quem vai governar</h2>
-          <p className="ds-dica">
-            Ninguém diz de que lado está. Leia o que cada um pensa.
-          </p>
-          <Dossie
-            personagens={nomes}
-            escolhido={presidente}
-            onEscolher={setPresidente}
-            escolherNoClique
-            vazio
-          />
-        </section>
-
-        <section className="fd-dossie" aria-label="Vice-presidência">
-          <h2 className="ds-aba">Dossiê: o vice da chapa</h2>
-          <p className="ds-dica">
-            O vice substitui o presidente e ajuda a falar com o Congresso.
-          </p>
-          <Dossie
-            personagens={chapa.vices}
-            escolhido={vice}
-            onEscolher={setVice}
-            escolherNoClique
-            vazio
-          />
-        </section>
-
-        <section className="fd-dossie" aria-label="Ministérios">
-          <h2 className="ds-aba">Dossiê: os ministros</h2>
-          <p className="ds-dica">
-            Um por área do governo. Escolha um a um, ou sorteie a partir da
-            chapa
-            {presidente && vice ? "." : " (escolha presidente e vice antes)."} O
-            que ficar vago o jogo sorteia na posse.
-          </p>
-          <Gabinete
-            areas={chapa.areas}
-            escolhidos={ministros}
-            onEscolher={(area, id) =>
-              setMinistros({ ...ministros, [area]: id })
-            }
-            onSortear={presidente && vice ? sortear : undefined}
-          />
-        </section>
+            </section>
+          </>
+        ) : (
+          <section className="fd-dossie" aria-label="Ministérios">
+            <h2 className="ds-aba">Passo 2 de 2: os ministros</h2>
+            <p className="ds-dica">
+              Chapa: {nomes.find((n) => n.id === presidente)?.nome} e{" "}
+              {chapa.vices.find((v) => v.id === vice)?.nome}.
+            </p>
+            <p className="ds-dica">
+              Um por área do governo. Escolha um a um, ou sorteie a partir da
+              chapa. O que ficar vago o jogo sorteia na posse.
+            </p>
+            <Gabinete
+              areas={chapa.areas}
+              escolhidos={ministros}
+              onEscolher={(area, id) =>
+                setMinistros({ ...ministros, [area]: id })
+              }
+              onSortear={presidente && vice ? sortear : undefined}
+            />
+          </section>
+        )}
 
         <footer className="fd-pe">
-          {!pronto ? (
+          {etapa === 1 && !pronto ? (
             <span className="fd-falta">
               {nome.trim().length < 2
                 ? "Falta o nome do partido."
@@ -161,28 +177,49 @@ export function TelaDeFundacao({
                   : "Falta escolher o vice."}
             </span>
           ) : null}
-          <button
-            type="button"
-            className="ds-placa fd-comecar"
-            disabled={!pronto}
-            onClick={() =>
-              presidente &&
-              vice &&
-              onComecar({
-                semente,
-                partido: {
-                  nome: nome.trim(),
-                  sigla: sigla.trim() || iniciais(nome),
-                },
-                presidente,
-                vice,
-                ministros,
-              })
-            }
-          >
-            <span className="ds-lampada" aria-hidden />
-            Tomar posse
-          </button>
+          {etapa === 2 ? (
+            <button
+              type="button"
+              className="ds-assinar"
+              onClick={() => setEtapa(1)}
+            >
+              Voltar à chapa
+            </button>
+          ) : null}
+          {etapa === 1 ? (
+            <button
+              type="button"
+              className="ds-placa fd-comecar"
+              disabled={!pronto}
+              onClick={() => setEtapa(2)}
+            >
+              <span className="ds-lampada" aria-hidden />
+              Próximo: ministros
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="ds-placa fd-comecar"
+              disabled={!pronto}
+              onClick={() =>
+                presidente &&
+                vice &&
+                onComecar({
+                  semente,
+                  partido: {
+                    nome: nome.trim(),
+                    sigla: sigla.trim() || iniciais(nome),
+                  },
+                  presidente,
+                  vice,
+                  ministros,
+                })
+              }
+            >
+              <span className="ds-lampada" aria-hidden />
+              Tomar posse
+            </button>
+          )}
         </footer>
       </div>
     </main>
