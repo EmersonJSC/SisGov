@@ -18,6 +18,13 @@ import {
   pontosDasReacoes,
   reacoesDosGrupos,
 } from "../../game/gatilhos";
+import { pacoteVivo } from "../../game/congresso";
+import {
+  notasDosMinistros,
+  pontosDoGabinete,
+  somarPontos,
+  somarSatisfacao,
+} from "../../game/gabinete";
 import type { Partida, VisaoBussola, VisaoReferencia } from "./tipos";
 
 const visaoDa = (r: Referencia): VisaoReferencia => ({
@@ -51,6 +58,24 @@ const comReacao = new WeakMap<
   { chave: string; valores: Readonly<Record<string, number>> }
 >();
 
+/** A satisfação com a reação dos gatilhos: o que o gabinete lê (M8.3). */
+function satisfacaoDaPartida(partida: Pick<Partida, "content" | "game">) {
+  const valores = partida.game.execution.values;
+  return {
+    valores,
+    reacao: reacoesDaPartida(partida).pontos,
+  };
+}
+
+/** A popularidade de cada ministro agora e os grupos leais a ele. */
+export function notasDoGabinete(partida: Pick<Partida, "content" | "game">) {
+  const { valores, reacao } = satisfacaoDaPartida(partida);
+  const pacote = pacoteVivo(partida.content, valores);
+  const ministros = partida.game.election?.ministros;
+  if (!ministros || !pacote) return [];
+  return notasDosMinistros(ministros, pacote, somarSatisfacao(valores, reacao));
+}
+
 /**
  * Os valores do motor com a reação dos gatilhos somada à satisfação dos
  * grupos (0 a 100): é o que a eleição e o Congresso leem como opinião (M7.3).
@@ -60,15 +85,19 @@ const comReacao = new WeakMap<
 export function valoresComReacao(
   partida: Pick<Partida, "content" | "game">,
 ): Readonly<Record<string, number>> {
-  const valores = partida.game.execution.values;
-  const pontos = reacoesDaPartida(partida).pontos;
+  const { valores, reacao } = satisfacaoDaPartida(partida);
+  // M8.3: o gabinete lê a satisfação com a reação, e soma por cima
+  const gabinete = pontosDoGabinete(
+    partida.game.election?.ministros,
+    pacoteVivo(partida.content, valores),
+    somarSatisfacao(valores, reacao),
+  );
+  const pontos = somarPontos(reacao, gabinete);
   const chave = JSON.stringify(pontos);
   if (chave === "{}") return valores;
   const guardado = comReacao.get(valores);
   if (guardado?.chave === chave) return guardado.valores;
-  const novos = { ...valores };
-  for (const [id, p] of Object.entries(pontos))
-    novos[id] = Math.max(0, Math.min(100, (valores[id] ?? 50) + p));
+  const novos = somarSatisfacao(valores, pontos);
   comReacao.set(valores, { chave, valores: novos });
   return novos;
 }

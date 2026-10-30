@@ -72,7 +72,7 @@ export {
 } from "./partida/regua";
 export { chanceDaOcorrencia } from "./partida/ocorrencias";
 export { investigarGrupo } from "./partida/pressao";
-export { verBussola } from "./partida/bussola";
+export { notasDoGabinete, verBussola } from "./partida/bussola";
 export {
   escolherCandidato,
   escolherChapa,

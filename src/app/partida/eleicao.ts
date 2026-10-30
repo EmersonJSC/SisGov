@@ -27,7 +27,7 @@ import {
   type Pesquisa,
   type ResultadoDaEleicao,
 } from "../../game/eleicao";
-import { valoresComReacao } from "./bussola";
+import { notasDoGabinete, valoresComReacao } from "./bussola";
 import type { Partida, Resultado } from "./tipos";
 
 export type VisaoPersonagem = Readonly<{
@@ -94,6 +94,10 @@ export type VisaoAreaDaChapa = Readonly<{
   opcoes: readonly VisaoPersonagem[];
   /** Quem ocupa a área agora (ausente na primeira escolha). */
   ministro?: VisaoPersonagem;
+  /** Popularidade do ministro (0 a 100), pelos grupos leais a ele (M8.3). */
+  popularidade?: number;
+  /** Ids dos grupos leais ao ministro. */
+  leais?: readonly string[];
 }>;
 
 /** Os nomes que o partido escolhe além do presidente: vice e ministros. */
@@ -330,6 +334,7 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
     };
   };
   const podeIr = podeConcorrer(pais, e);
+  const notas = notasDoGabinete(partida);
   return {
     partido: { nome: e.partido.nome, sigla: e.partido.sigla },
     presidente: verPersonagem(e.presidente, ano),
@@ -339,7 +344,10 @@ export function verEleicao(partida: Partida): VisaoEleicao | undefined {
       ano,
       { vices: [], ministros: {} },
       e.ministros,
-    ).areas,
+    ).areas.map((a) => {
+      const n = notas.find((x) => x.area === a.id);
+      return n ? { ...a, popularidade: n.nota, leais: n.leais } : a;
+    }),
     ...(e.opcoesDaChapa
       ? { chapaParaTrocar: verChapa(game.scenario.id, ano, e.opcoesDaChapa) }
       : {}),

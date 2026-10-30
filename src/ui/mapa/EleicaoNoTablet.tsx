@@ -295,6 +295,35 @@ export function EleicaoNoTablet({
         </section>
       </div>
 
+      {e.gabinete.some((a) => a.ministro) ? (
+        <section aria-label="Gabinete">
+          <h2 className="ds-aba">Gabinete</h2>
+          <p className="ds-dica">
+            A popularidade de cada ministro vem dos grupos leais a ele, pelo
+            tamanho e pela satisfação de cada um. Ela soma ou tira da
+            popularidade do governo.
+          </p>
+          <ul className="ds-papel gb-notas">
+            {e.gabinete.map((a) =>
+              a.ministro ? (
+                <li key={a.id}>
+                  <strong>{a.cargo}</strong>
+                  <span>{a.ministro.nome}</span>
+                  <span className="gb-nota">
+                    {a.popularidade !== undefined
+                      ? `${Math.round(a.popularidade)}%`
+                      : "–"}
+                  </span>
+                  <small>
+                    {(a.leais ?? []).map(nomeDoSegmento).join(", ")}
+                  </small>
+                </li>
+              ) : null,
+            )}
+          </ul>
+        </section>
+      ) : null}
+
       {!e.encerrada && novos.length ? (
         <section aria-label="Quem o partido lança">
           <h2 className="ds-aba">Dossiê: quem o partido lança</h2>

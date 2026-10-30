@@ -15,7 +15,8 @@ import {
 import type { PolicyState } from "./leis";
 import { pressureMonth } from "./pressao";
 import { MESES_POR_TURNO } from "./calendario";
-import { aprovacaoViva } from "./congresso";
+import { aprovacaoViva, pacoteVivo } from "./congresso";
+import { pontosDoGabinete, somarPontos, somarSatisfacao } from "./gabinete";
 import { gatilhosAtivos, pontosDasReacoes, reacoesDosGrupos } from "./gatilhos";
 
 /** Um mês do trimestre. Sem explicações: o turno não as lê (V1-07). */
@@ -91,7 +92,17 @@ export function prepareGameMonth(
         ),
       )
     : {};
-  const approval = aprovacaoViva(content, execution.values, reacoes);
+  // M8.3: a popularidade dos ministros soma ou tira de todo o eleitorado.
+  const gabinete = pontosDoGabinete(
+    game.election?.ministros,
+    pacoteVivo(content, execution.values),
+    somarSatisfacao(execution.values, reacoes),
+  );
+  const approval = aprovacaoViva(
+    content,
+    execution.values,
+    somarPontos(reacoes, gabinete),
+  );
   const advanced = advanceExecution(content, graph, execution, merged, 1, {
     explain: false,
     ...(approval ? { approval } : {}),

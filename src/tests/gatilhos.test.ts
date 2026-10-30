@@ -250,8 +250,13 @@ describe("eleição e Congresso leem a reação (M7.3)", () => {
     };
   };
 
-  it("sem gatilho os valores são os do motor", () => {
-    expect(valoresComReacao(partida)).toBe(partida.game.execution.values);
+  it("sem gatilho (e sem gabinete, M8.3) os valores são os do motor", () => {
+    const { ministros: _, ...eleicao } = partida.game.election!;
+    const semGabinete = {
+      ...partida,
+      game: { ...partida.game, election: eleicao },
+    };
+    expect(valoresComReacao(semGabinete)).toBe(partida.game.execution.values);
   });
 
   it("com o corte, a satisfação dos grupos muda e o objeto é reaproveitado", () => {
