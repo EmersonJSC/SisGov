@@ -1,177 +1,219 @@
 # Plano de desenvolvimento
 
-> **Status: PROPOSTA (31/out/2026), aguarda o autor.** O [escopo](escopo.md)
-> diz **o quê** e em que ordem; este plano diz **como**: em que partes o
-> código se divide, quem depende de quem, como cada passo é construído e
-> conferido. Em conflito, vale o escopo.
+> **Status: APROVADO em 31/out/2026.** O [escopo](escopo.md) diz **o quê**;
+> este plano diz **como e em que ordem**. Em conflito, vale o escopo. Os
+> números dos passos são os mesmos do escopo.
 
-## 1. Divisão em camadas
+## 1. Onde estamos e por onde começar
 
-Quatro camadas, cada uma numa pasta de `src/`. A dependência só desce:
-quem está em cima usa quem está embaixo, nunca o contrário.
+- **Feito:** passo 1 (escopo) e passo 2 (índices).
+- **Começar por:** passo **2b, Fundação**.
+- **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
+  o próximo só abre quando o anterior está pronto.
+
+## 2. Regra de expansão
+
+Cada passo **começa pequeno** e deixa a porta aberta. Expandir é **somar**,
+nunca reescrever:
+
+- cálculo novo = uma entrada nova no registro de cálculos;
+- lei nova = um JSON novo;
+- regime novo = uma estrutura nova de Congresso, mesmo motor;
+- índice, pop ou grupo novo = dado no JSON.
+
+Se uma expansão exigir mexer no que já está pronto, o desenho do passo
+estava errado: para e revê com o autor. As expansões listadas abaixo são
+**opções**, não compromisso; ficam fora da V1 até o autor escolher.
+
+## 3. Roteiro
+
+### Passo 2b — Fundação ⬅ começar aqui
+
+Arrumar a casa antes da primeira lei.
+
+| Começa com | Pronto quando |
+|---|---|
+| Esqueleto das pastas `motor/`, `conteudo/`, `partida/`, `tela/`, `scripts/`, com `index.ts` vazios | `npx tsc -b` passa |
+| Fronteiras entre camadas no lint (seção 4) | um import proibido de propósito quebra o lint |
+| `package.json` só com `dev`, `build`, `test`, `lint`, `format`, `check` | scripts antigos fora |
+| `AGENTS.md` apontando para escopo e plano | — |
+| `npm run check` verde | local e no CI |
+
+**Expande depois:** nada; fundação não cresce, só se mantém.
+
+### Passo 3 — Modelo de lei
+
+| Começa com | Pronto quando |
+|---|---|
+| `motor/estado`: tipos dos índices essenciais | — |
+| `motor/calculos`: registro de bases com **uma** base, `renda` (Laffer + evasão), fonte citada | teste de unidade do cálculo |
+| Formato da lei: imposto de renda (contínua) e pena de morte (opções) | autor aprova os dois JSON |
+| Validador do JSON | lei inválida falha com arquivo, campo e motivo |
+
+**Expande depois:** bases `consumo`, `folha`, `lucro`; lei contínua com
+faixas (imposto progressivo); efeito condicional ("só se desemprego > X").
+
+### Passo 4 — Turno mínimo
+
+| Começa com | Pronto quando |
+|---|---|
+| `motor/turno` com a ordem da seção 5 (etapas ainda vazias pulam) | — |
+| `motor/efeitos`: fila com atraso por efeito | — |
+| `motor/acaso`: semente fixa | mesma semente, mesma partida |
+| `partida/`: criar partida (mundo + país de teste) e avançar turno | — |
+| `scripts/mandato.ts` | joga 24 turnos; a lei em três valores dá três países diferentes, na direção prometida |
+
+**Expande depois:** histórico completo para gráficos; desfazer turno;
+vários países de teste.
+
+### Passo 5 — Contas
+
+| Começa com | Pronto quando |
+|---|---|
+| `motor/contas`: receita − gasto − juros → dívida | invariante "contabilidade fecha" roda todo turno |
+| Juros sobem com a dívida (cálculo estudado no registro) | dívida alta sobe juros no script |
+
+**Expande depois:** emissão de moeda e inflação; banco central
+independente ou não (lei essencial); dívida externa e câmbio.
+
+### Passo 6 — Leis da V1
+
+| Começa com | Pronto quando |
+|---|---|
+| Poucas leis (lista aprovada pelo autor antes), só JSON | cada lei tem o comportamento esperado escrito antes e conferido por script |
+| Segundo país de teste | o motor roda os dois sem código de país |
+| Calibração de ordem de grandeza | números plausíveis nos dois países |
+
+**Expande depois:** mais leis, sempre por JSON.
+
+### Passo 7 — População e grupos
+
+| Começa com | Pronto quando |
+|---|---|
+| `motor/populacao`: poucos pops (profissão × estrato), tamanho em pessoas, renda pelo motor | — |
+| Poucos grupos que leem os pops; satisfação, radicais, lealistas | leis e índices movem os grupos no script |
+
+**Expande depois:** até ~25 pops; migração entre pops (desemprego empurra
+para baixo); grupos novos por JSON.
+
+### Passo 8 — Congresso
+
+| Começa com | Pronto quando |
+|---|---|
+| `motor/politica`: presidencialismo (uma estrutura de votação) | lei só muda com voto |
+| Exorbitante barrado | proposta absurda cai no script |
+| Base e oposição reagem às leis | — |
+
+**Expande depois:** parlamentarismo (V1, segundo regime); veto e
+derrubada de veto; bicameral; partido único (outra versão ou DLC).
+
+### Passo 9 — Eleição e desgaste
+
+| Começa com | Pronto quando |
+|---|---|
+| Desgaste fixo por período; eleição a cada 6N turnos pelo apoio pesado por tamanho | mandato termina em vitória ou derrota que o jogador entende |
+
+**Expande depois:** perder o poder fora da eleição (impeachment, voto de
+desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
+
+### Passo 10 — Tela
+
+| Começa com | Pronto quando |
+|---|---|
+| Tela simples: índices, leis, propor lei, passar turno, resultado da eleição | jogar uma partida inteira na tela |
+| Salvar e carregar em `partida/` | partida salva volta igual |
+
+**Expande depois:** tela elaborada, gráficos, mapa, arte.
+
+## 4. Camadas
+
+A dependência só desce:
 
 ```
-tela/      React. Só mostra e envia pedidos. Não calcula nada.
+tela/      React. Mostra e envia pedidos. Não calcula.
   ↓
-partida/   Aplicação. Monta a partida (mundo + país), recebe o pedido do
-           jogador, chama o motor, guarda e carrega o jogo.
+partida/   Monta a partida (mundo + país), chama o motor, salva e carrega.
   ↓              ↘
-motor/     Regras do Estado e cálculos.   conteudo/  Dados em JSON:
-           TS puro, sem React, sem JSON.             mundo e países.
+motor/     Regras e cálculos.        conteudo/  JSON do mundo e dos países.
+           TS puro, sem React/JSON.
 ```
 
-| Camada | Pode importar | Não pode importar |
+| Camada | Pode importar | Não pode |
 |---|---|---|
-| `motor/` | só o próprio `motor/` | `conteudo/`, `partida/`, `tela/`, React |
-| `conteudo/` | nada (é dado) + os tipos do `motor/` para validar | código de regra |
+| `motor/` | só `motor/` | `conteudo/`, `partida/`, `tela/`, React |
+| `conteudo/` | é dado | código de regra |
 | `partida/` | `motor/`, `conteudo/` | `tela/` |
-| `tela/` | `partida/` (e tipos do `motor/`) | `conteudo/` direto |
+| `tela/` | `partida/`, tipos do `motor/` | `conteudo/` direto |
 
-A regra vira lint (`no-restricted-imports` por pasta), não só combinado:
-um import errado quebra o `npm run check`.
+Cada módulo do motor é uma pasta com `index.ts` (o que expõe) e um `.md`
+curto (o que faz, fonte do cálculo). O motor não conhece nomes de leis,
+partidos ou países.
 
-Por que assim: o motor é testável sem tela e sem país (princípio 2 e 4 do
-escopo); trocar a tela ou criar um país não mexe em regra; um script
-consegue jogar um mandato inteiro só com `partida/` (critério do passo 4).
+## 5. Ordem do turno
 
-## 2. Módulos do motor
+`avancarTurno(estado, pedidos, acaso) → novoEstado`, sem alterar o anterior.
 
-Cada módulo é uma pasta com um `index.ts` (o que ele expõe) e um `.md`
-curto (o que faz, de onde vem o cálculo). Fora do `index.ts`, nada é
-público.
-
-| Módulo | Responsabilidade | Passo |
-|---|---|---|
-| `motor/estado` | Tipos do Estado: índices essenciais (população, ocupados, PIB real, preços, receita, gasto, dívida, juros…) e a estrutura do regime | 4 |
-| `motor/calculos` | Biblioteca de cálculos estudados (Laffer, evasão, multiplicador, defasagem monetária, juros × dívida). Funções puras, cada uma com a fonte citada. Um **registro de bases** liga o nome usado no JSON (`"renda"`) à função | 3–5 |
-| `motor/leis` | Intérprete: lê uma lei já validada e transforma em efeitos sobre o Estado, sempre através de uma base de `calculos` | 3–4 |
-| `motor/efeitos` | Fila de efeitos com atraso: cada efeito declara em quantos turnos chega inteiro | 4 |
-| `motor/contas` | Contabilidade: receita − gasto − juros → dívida; confere que fecha | 5 |
-| `motor/populacao` | Pops e grupos de interesse (satisfação, radicais, lealistas) | 7 |
-| `motor/politica` | Congresso (votação conforme o regime), desgaste, eleição | 8–9 |
-| `motor/turno` | Orquestra a ordem do turno (seção 3). Único lugar que chama todos | 4 |
-| `motor/acaso` | Gerador aleatório com semente: mesma semente, mesma partida | 4 |
-
-O motor não conhece nomes de leis, partidos ou países. Ele conhece bases de
-cálculo e índices essenciais; o resto chega como dado.
-
-## 3. O turno
-
-Função pura: `avancarTurno(estado, pedidos, acaso) → novoEstado`. Não altera
-o estado anterior; o histórico da partida é a lista de estados.
-
-Ordem proposta (fixa e documentada no `motor/turno`):
-
-1. Pedidos do jogador passam pelo Congresso (a partir do passo 8; antes,
-   entram direto).
-2. Leis novas geram efeitos na fila, cada um com seu atraso.
-3. Efeitos que vencem neste turno são aplicados.
-4. Economia real: emprego e PIB real.
+1. Pedidos passam pelo Congresso (a partir do passo 8).
+2. Leis novas geram efeitos na fila.
+3. Efeitos que vencem são aplicados.
+4. Economia real: emprego, PIB.
 5. Preços e juros.
-6. Contas: receita pelas bases, gasto, juros, dívida.
+6. Contas.
 7. Índices de jogabilidade.
 8. Pops e grupos.
-9. Política: desgaste; eleição se o mandato (6N turnos) acabou.
-10. Conferência das invariantes (seção 5). Falhou, o turno para com erro.
+9. Política: desgaste; eleição no fim do mandato.
+10. Invariantes; falhou, para com erro.
 
-## 4. Conteúdo e contratos
+## 6. Dados
 
 ```
 src/conteudo/
-  mundo/
-    indicadores/variaveis.json   índices de jogabilidade (já existe)
-    leis/<id>.json               uma lei por arquivo
-    pops/ grupos/                passo 7
-  paises/<id>/
-    estado-inicial.json          números de partida
-    leis-vigentes.json           leis essenciais e de jogabilidade em vigor
-    rotulos.json                 nomes locais ("juros" → "Selic")
+  mundo/indicadores/variaveis.json
+  mundo/leis/<id>.json
+  mundo/pops/, mundo/grupos/          (passo 7)
+  paises/<id>/estado-inicial.json
+  paises/<id>/leis-vigentes.json
+  paises/<id>/rotulos.json            ("juros" → "Selic")
 ```
 
-- **Contrato de dados:** cada formato de JSON tem um tipo TS no motor e um
-  validador que roda ao carregar. JSON inválido falha com mensagem que diz
-  arquivo, campo e motivo; nunca entra no turno.
-- **Versão no arquivo:** todo JSON tem `"versao"`. Mudou o formato, sobe a
-  versão e o carregador avisa o que está velho.
-- **Unidades explícitas:** dinheiro em moeda do país, população em pessoas,
-  alíquota como fração (0,275) e a tela mostra 27,5%. O nome do campo diz a
-  unidade quando há dúvida.
-- O formato da lei (contínua e de opções) é decidido no passo 3; este plano
-  não antecipa.
+Todo JSON tem `"versao"`, tipo no motor e validador ao carregar. Unidades
+explícitas: dinheiro na moeda do país, população em pessoas, alíquota como
+fração (0,275; a tela mostra 27,5%).
 
-## 5. Qualidade
+## 7. Qualidade
 
-**Invariantes** (conferidas todo turno, em código, não em teste):
-- a contabilidade fecha: variação da dívida = gasto + juros − receita (± emissão);
-- população, ocupados e PIB nunca negativos; ocupados ≤ população;
-- toda lei vigente tem valor dentro da própria faixa ou entre as próprias opções.
+**Invariantes, todo turno:** contabilidade fecha; nada negativo que não
+possa ser; ocupados ≤ população; lei dentro da própria faixa ou opções.
 
-**Testes**, só do que sobrevive ao redesenho:
-
-| Tipo | O quê | Quando entra |
+| Teste | O quê | Desde |
 |---|---|---|
-| Unidade | Cada cálculo de `motor/calculos` (são fórmulas estudadas, não mudam com o jogo) | junto com o cálculo |
-| Contrato | Todo JSON de `conteudo/` passa no validador | passo 3 |
-| Cenário | Script joga um mandato com semente fixa; confere a **direção** prometida (imposto sobe → receita sobe até o pico de Laffer), não o número exato | passo 4 em diante |
-| Tela | Conferência visual no navegador | passo 10 |
+| Unidade | cada cálculo do registro | passo 3 |
+| Contrato | todo JSON passa no validador | passo 3 |
+| Cenário | script com semente fixa confere a **direção**, não o número | passo 4 |
+| Tela | conferência no navegador | passo 10 |
 
-Mecânica ainda instável não ganha teste de número (ver regras de trabalho).
+Mecânica instável não ganha teste de número.
 
-**Ferramentas:** `npx tsc -b` durante o passo; `npm run check` (formato,
-lint com as fronteiras, build, testes) ao fechar o passo; o CI do GitHub roda
-o mesmo `check`.
+## 8. Como cada passo anda
 
-## 6. Processo de cada passo
+1. Proposta curta no chat; autor aprova.
+2. Comportamento esperado escrito antes.
+3. Implementa; `npx tsc -b` e testes do que mudou.
+4. Confere o "pronto quando" por script ou na tela; mostra ao autor.
+5. `npm run check`, commit com assunto, RETOMAR atualizado. Push só com a
+   palavra do autor.
 
-1. **Proposta curta no chat:** o que entra, que módulos mexe, critério de
-   pronto do escopo.
-2. Autor aprova.
-3. **Comportamento esperado escrito antes** (uma frase por lei/cálculo:
-   "subir X faz Y subir em Z turnos").
-4. Implementa; `npx tsc -b` e testes do que mudou.
-5. **Confere o critério de pronto** com script ou na tela; mostra ao autor.
-6. `npm run check`, commit com assunto (`motor: …`, `mundo: …`), RETOMAR
-   atualizado. `git push` só com a palavra do autor.
+Ideia nova no meio do passo vai para a seção 11 do escopo. Terceira
+tentativa sem fechar: para e revê com o autor.
 
-**Pronto** quer dizer: critério do escopo rodando, `check` verde, `.md` do
-módulo atualizado, RETOMAR atualizado. Ideia nova no meio do passo vai para
-a seção 11 do escopo.
-
-Na terceira tentativa sem fechar um passo, para e revê com o autor.
-
-## 7. Passo de fundação (novo, antes do passo 3)
-
-O projeto recomeçou, mas a casa ainda tem resto do código antigo. Antes de
-escrever a primeira lei:
-
-| Item | Pronto quando |
-|---|---|
-| Esqueleto das pastas (`motor/`, `conteudo/`, `partida/`, `tela/`, `scripts/`) com `index.ts` vazios | `npx tsc -b` passa |
-| Fronteiras no lint | import proibido de propósito quebra o lint |
-| `package.json` sem os scripts do código antigo | só `dev`, `build`, `test`, `lint`, `format`, `check` |
-| `npm run check` verde | roda local e no CI |
-| `AGENTS.md` aponta para escopo e plano (hoje cita o `PLANO.md`, que não existe mais) | — |
-
-Se aprovado, entra no escopo como passo 2b.
-
-## 8. Versões
+## 9. Versões
 
 | Versão | Fecha com |
 |---|---|
-| 0.1 | Fundação + passos 3 e 4: um mandato jogado por script |
-| 0.2 | Passos 5 e 6: contas e leis da V1 |
-| 0.3 | Passos 7 e 8: grupos e Congresso |
-| 0.4 | Passo 9: partida termina em vitória ou derrota |
-| 1.0 | Passo 10: partida inteira na tela |
+| 0.1 | 2b, 3, 4: um mandato jogado por script |
+| 0.2 | 5, 6: contas e leis da V1 |
+| 0.3 | 7, 8: grupos e Congresso |
+| 0.4 | 9: vitória ou derrota |
+| 1.0 | 10: partida inteira na tela |
 
-Cada versão vira uma tag no git (`v0.1` …).
-
-## 9. Riscos
-
-| Risco | Como segurar |
-|---|---|
-| Abrir frente nova no meio de um passo | Seção 11 do escopo; um passo por vez |
-| Reescrever o que já funcionava | Peça antiga só volta lida e quando o passo pede |
-| Calibrar número cedo demais | Cenários conferem direção; calibrar só no passo 6 |
-| Motor amarrado a um país | Lint de fronteira; segundo país de teste no passo 6 |
-| Tela puxar regra para dentro | Tela só fala com `partida/` |
+Tag no git ao fechar cada versão.

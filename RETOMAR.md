@@ -17,10 +17,10 @@ Backup: tag `projeto-antigo-2026-10-31` e `arquivo/codigo-antigo-2026-10-31/`
 ## Próximo
 
 [Escopo novo](docs/jogo/escopo.md) aprovado em 31/out (passo 1 fechado).
-[Plano de desenvolvimento](docs/jogo/plano-de-desenvolvimento.md) escrito,
-**aguarda o autor** (camadas motor/conteudo/partida/tela, passo de fundação
-antes do passo 3). Aprovado, faz a fundação; depois o passo 3 (uma lei
-contínua e uma de opções).
+[Plano de desenvolvimento](docs/jogo/plano-de-desenvolvimento.md) aprovado
+(roteiro por passo, cada um com "começa com" e "expande depois").
+Próximo: **passo 2b, Fundação**; depois o passo 3 (imposto de renda e pena
+de morte no formato novo).
 
 Removidas `.codex` e `.agents` (vazias); `.superpowers` (336 MB, rascunhos
 antigos) foi para `_lixo/superpowers-antigo/` para o autor apagar.

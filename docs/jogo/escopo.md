@@ -119,6 +119,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 |---|---|---|
 | 1 | Escopo | ✅ aprovado em 31/out |
 | 2 | Índices | ✅ arquivo novo com as duas camadas (essenciais ainda migram para o motor no passo 4) |
+| 2b | Fundação | Pastas das camadas, fronteiras no lint, `npm run check` verde ([plano](plano-de-desenvolvimento.md)) |
 | 3 | Modelo de lei | Uma lei contínua e uma de opções escritas no formato novo, e o autor aprova |
 | 4 | Turno mínimo | Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
 | 5 | Contas | Receita − gasto − juros move a dívida; dívida alta sobe juros |
