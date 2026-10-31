@@ -114,11 +114,15 @@ export function pacoteVivo(
 ): CongressoDoPacote | undefined {
   const m = content.manifest.congresso;
   if (!m) return undefined;
-  const guardado = vivos.get(valores);
-  if (guardado && guardado.content === content && guardado.memoria === memoria)
-    return guardado.pacote;
+  // quem lê com memória e quem lê sem ela dividem os mesmos valores no turno:
+  // guardar um pacote por memória, para um não derrubar o do outro
+  const guardados = vivos.get(valores) ?? [];
+  const guardado = guardados.find(
+    (g) => g.content === content && g.memoria === memoria,
+  );
+  if (guardado) return guardado.pacote;
   const pacote = montarPacoteVivo(content, m, valores, memoria);
-  if (pacote) vivos.set(valores, { content, memoria, pacote });
+  if (pacote) vivos.set(valores, [...guardados, { content, memoria, pacote }]);
   return pacote;
 }
 
@@ -177,11 +181,11 @@ const aprovacoesVivas = new WeakMap<object, ProfileApproval>();
 
 const vivos = new WeakMap<
   object,
-  {
+  readonly {
     content: ResolvedPackage;
     memoria: MemoriaDaPopulacao | undefined;
     pacote: CongressoDoPacote;
-  }
+  }[]
 >();
 
 /**
