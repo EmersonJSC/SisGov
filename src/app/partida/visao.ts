@@ -464,7 +464,12 @@ export function verPartida(partida: Partida): VisaoPartida {
       alteradas,
       reacoesDaPartida(partida).pontos,
     ),
-    censo: censoDoPais(partida.content, values, game.valoresIniciais),
+    censo: censoDoPais(
+      partida.content,
+      values,
+      game.valoresIniciais,
+      game.congress?.memoria,
+    ),
     ...(humor ? { humor } : {}),
     perfis: partida.content.manifest.congresso?.perfis.length ?? 0,
     ocorrencias: ocorrenciasDaPartida(partida),

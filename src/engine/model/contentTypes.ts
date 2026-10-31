@@ -171,6 +171,8 @@ export type CongressManifest = {
       id: string;
       /** Ocupações de origem cujo desempregado recebe o seguro-desemprego. */
       origemComBeneficio: readonly string[];
+      /** Meses de seguro-desemprego; sem o campo, o seguro não acaba. */
+      mesesDeSeguro?: number;
       /**
        * Quem vinha de uma ocupação sem carteira faz bico: ganha essa fração
        * do que a ocupação de origem pagaria na mesma faixa de renda.

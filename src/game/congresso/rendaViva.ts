@@ -1,5 +1,6 @@
 import type { ResolvedPackage } from "../../engine";
 import { bolsosDoEleitorado, type EleitoradoComBolso } from "./bolso";
+import type { MemoriaDaPopulacao } from "./memoria";
 
 /**
  * A renda pela sobra (População, camada C): quem passa a sobrar mais que o
@@ -63,8 +64,9 @@ export function eleitoradoComRendaViva(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
   valoresIniciais: Readonly<Record<string, number>> | undefined,
+  memoria?: MemoriaDaPopulacao,
 ): EleitoradoComBolso | undefined {
-  const agora = bolsosDoEleitorado(content, valores);
+  const agora = bolsosDoEleitorado(content, valores, memoria);
   if (!agora || !valoresIniciais) return agora;
   const inicio = doInicio(content, valoresIniciais);
   const { manifesto, bolsos } = agora;

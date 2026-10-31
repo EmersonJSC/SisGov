@@ -230,7 +230,7 @@ function montarPacoteVivo(
 ): CongressoDoPacote | undefined {
   const inicio = inicioDoBolso(content);
   const eleitorado = eleitoradoComFaixasVivas(
-    eleitoradoComRendaViva(content, valores, inicio),
+    eleitoradoComRendaViva(content, valores, inicio, memoria),
     valores,
     inicio,
   );

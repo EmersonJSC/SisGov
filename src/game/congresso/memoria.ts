@@ -49,6 +49,19 @@ export function passoDaCoorte(
   return { fracao, ex: novoEx, meses };
 }
 
+/**
+ * Que parte da coorte desempregada ainda recebe o seguro. `meses` é a média
+ * da linha: até `mesesDeSeguro` todos recebem, e aos dobro dele ninguém mais.
+ * Sem memória (início da partida) ou sem duração declarada, recebem todos.
+ */
+export function seguroRestante(
+  coorte: Coorte | undefined,
+  mesesDeSeguro: number | undefined,
+): number {
+  if (!coorte || !mesesDeSeguro || mesesDeSeguro <= 0) return 1;
+  return limitar(2 - coorte.meses / mesesDeSeguro, 0, 1);
+}
+
 /** Passa o turno da memória do desemprego, linha a linha. */
 export function passarMemoria(
   memoria: MemoriaDaPopulacao | undefined,

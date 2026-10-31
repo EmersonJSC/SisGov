@@ -1,6 +1,7 @@
 import type { ResolvedPackage } from "../../engine";
 import { congressoVivo } from "../../game/congresso/vivo";
 import { eleitoradoDoInicio } from "./bolso";
+import type { MemoriaDaPopulacao } from "../../game/congresso/memoria";
 import { eleitoradoComRendaViva } from "../../game/congresso/rendaViva";
 import { eleitoradoComFaixasVivas } from "../../game/congresso/faixasVivas";
 import type { VisaoCensoAtributo } from "./tipos";
@@ -21,6 +22,7 @@ export function censoDoPais(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>> = {},
   valoresIniciais?: Readonly<Record<string, number>>,
+  memoria?: MemoriaDaPopulacao,
 ): readonly VisaoCensoAtributo[] {
   const fixo = content.manifest.congresso;
   if (!fixo) return [];
@@ -29,7 +31,7 @@ export function censoDoPais(
   // A renda se move pela sobra desde o turno 0 (`valoresIniciais`).
   // Os valores e a religião se movem pela pressão do país, também desde o turno 0.
   const eleitorado = eleitoradoComFaixasVivas(
-    eleitoradoComRendaViva(content, valores, valoresIniciais),
+    eleitoradoComRendaViva(content, valores, valoresIniciais, memoria),
     valores,
     valoresIniciais,
   );

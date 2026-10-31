@@ -6,9 +6,11 @@ import {
   lembrancaDoEmpregado,
   passarMemoria,
   passoDaCoorte,
+  seguroRestante,
 } from "../game/congresso/memoria";
 import { motivosDoPerfil } from "../game/congresso/motivos";
-import { fracoesDeDesemprego } from "../game/congresso/vivo";
+import { bolsosDoEleitorado } from "../game/congresso/bolso";
+import { congressoVivo, fracoesDeDesemprego } from "../game/congresso/vivo";
 
 let partida: Partida;
 beforeAll(() => {
@@ -96,5 +98,32 @@ describe("a memória no eleitorado vivo", () => {
     expect(JSON.parse(JSON.stringify(memoria))).toEqual(memoria);
     const regras = congressoDoPacote(p.content)!.regras;
     expect(passarMemoria(memoria, [], regras).desemprego).toEqual({});
+  });
+});
+
+describe("a duração do seguro-desemprego", () => {
+  it("todos recebem até o prazo, e ninguém ao dobro dele", () => {
+    const coorte = (meses: number) => ({ fracao: 0.1, ex: 0, meses });
+    expect(seguroRestante(undefined, 5)).toBe(1);
+    expect(seguroRestante(coorte(5), 5)).toBe(1);
+    expect(seguroRestante(coorte(7.5), 5)).toBeCloseTo(0.5);
+    expect(seguroRestante(coorte(10), 5)).toBe(0);
+    expect(seguroRestante(coorte(30), undefined)).toBe(1);
+  });
+
+  it("o bolso do ex-carteira cai quando a memória diz que espera há tempo", () => {
+    const valores = { ...partida.game.execution.values, desemprego: 12 };
+    const fixo = partida.content.manifest.congresso!;
+    const vivo = congressoVivo(fixo, valores);
+    const v = vivo.vivo!;
+    const k = v.origem.findIndex((o) => o === "carteira");
+    const linha = v.primeiraLinhaDeDesempregado + k;
+    const original = v.linhaOriginal[k];
+    const sem = bolsosDoEleitorado(partida.content, valores)!;
+    const longo = bolsosDoEleitorado(partida.content, valores, {
+      desemprego: { [original]: { fracao: 0.1, ex: 0, meses: 12 } },
+    })!;
+    expect(sem.bolsos[linha].ganha).toBeGreaterThan(0);
+    expect(longo.bolsos[linha].ganha).toBe(0);
   });
 });

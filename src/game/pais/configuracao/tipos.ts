@@ -156,6 +156,7 @@ export type PopulacaoDoMundo = {
     desempregado: {
       id: string;
       origemComBeneficio: string[];
+      mesesDeSeguro?: number;
       bico?: { origem: string[]; fracao: number };
     };
   };

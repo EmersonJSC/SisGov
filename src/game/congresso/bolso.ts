@@ -1,6 +1,7 @@
 import type { ResolvedPackage } from "../../engine";
 import type { CongressManifest } from "../../engine/model/contentTypes";
 import { interpolate } from "../../engine/mechanisms/calculateContribution";
+import { seguroRestante, type MemoriaDaPopulacao } from "./memoria";
 import { congressoVivo, origemDoDesempregado } from "./vivo";
 
 /**
@@ -253,6 +254,7 @@ export type EleitoradoComBolso = Readonly<{
 export function bolsosDoEleitorado(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
+  memoria?: MemoriaDaPopulacao,
 ): EleitoradoComBolso | undefined {
   const fixo = content.manifest.congresso;
   if (!fixo) return undefined;
@@ -285,13 +287,23 @@ export function bolsosDoEleitorado(
         )
       : 0;
 
-  // O seguro-desemprego só chega a quem tinha carteira (`emprego` no mundo).
-  const recebeBeneficio = (fonteId: string, linha: number): boolean => {
+  // O seguro-desemprego só chega a quem tinha carteira, e acaba com o tempo
+  // (`mesesDeSeguro`): a memória diz há quantos meses a linha espera.
+  const parteDoBeneficio = (fonteId: string, linha: number): number => {
     const desempregado = manifesto.emprego?.desempregado;
-    if (!desempregado || fonteId !== desempregado.id) return true;
+    if (!desempregado || fonteId !== desempregado.id) return 1;
     const origem = origemDoDesempregado(manifesto, linha);
-    return (
-      origem !== undefined && desempregado.origemComBeneficio.includes(origem)
+    if (
+      origem === undefined ||
+      !desempregado.origemComBeneficio.includes(origem)
+    )
+      return 0;
+    const vivo = manifesto.vivo;
+    const original =
+      vivo?.linhaOriginal[linha - vivo.primeiraLinhaDeDesempregado];
+    return seguroRestante(
+      original === undefined ? undefined : memoria?.desemprego[original],
+      desempregado.mesesDeSeguro,
     );
   };
   const ganhos = rendas.map(
@@ -303,9 +315,8 @@ export function bolsosDoEleitorado(
         porAno +
         capitalPorAno +
         bicoPorAno +
-        (recebeBeneficio(fonte.id, i)
-          ? beneficioDaFonte(tabela[fonte.id], valores)
-          : 0),
+        parteDoBeneficio(fonte.id, i) *
+          beneficioDaFonte(tabela[fonte.id], valores),
     }),
   );
   const consumos = ganhos.map(
