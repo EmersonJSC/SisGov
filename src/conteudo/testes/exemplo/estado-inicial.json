@@ -1,8 +1,0 @@
-{
-  "id": "estado-inicial-exemplo",
-  "tipo": "estado-inicial",
-  "versaoEsquema": 1,
-  "valores": {
-    "verba_educacao": 0
-  }
-}

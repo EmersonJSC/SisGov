@@ -1,183 +1,124 @@
 # Escopo do SisGov
 
-> **Status: VIGENTE (em escrita).** Define o que o jogo é. O status de cada parte fica no [PLANO](../../PLANO.md).
-> Escrito com o autor em 21/out/2026.
+> **Status: RASCUNHO para o autor aprovar.** Recomeço do projeto em 31/out/2026.
+> Único documento vivo de regras e de ordem de construção. O escopo antigo, o
+> PLANO e as mecânicas estão em `docs/historico/projeto-antigo/`; cada decisão
+> trazida de lá diz a data de origem. Experiência do jogador:
+> [experiencia.md](experiencia.md).
 
-## 1. O jogo em uma frase
+## 1. O jogo
 
-Um Victoria 3 reduzido com um Democracy 4 mais avançado: o mapa de leis do
-Democracy 4, com mais leis e regras próximas às de cada país real, somado
-à mecânica de mercado do Victoria 3, com menos gráficos.
+Simulador de **governo**. O jogador é um partido recém-eleito e governa
+**aprovando leis**; não constrói nada diretamente (21/out). Cada lei tem
+consequência própria e sentida. Parecer um governo de direita ou de esquerda
+é resultado das leis, nunca objetivo (31/out).
 
-Nada é copiado dos dois jogos: eles são referência de gênero, não de conteúdo.
+- **Única vitória:** ganhar a eleição. **Única derrota:** perdê-la (24/out).
+- **Sem meta pronta:** o jogador leva o país para onde quiser; quem joga bem
+  tende a industrializar, mas o jogo não exige (24/out).
+- Gênero: Democracy 4 com mercado do Victoria 3, sem copiar nada dos dois (21/out).
 
-## 2. Quem joga e qual é o objetivo
+## 2. Princípios
 
-- O jogador é um **partido**, não o presidente. Na prática ele é o líder
-  do partido: escolhe a chapa que disputa e ocupa o governo.
-- **Depois:** os candidatos do partido terão aceitação própria e poderão
-  mudar de posição por conta própria.
-- **Não há meta pronta (decidido em 24/out).** É uma simulação: a única
-  vitória é ganhar a eleição, e a única derrota é perdê-la. O jogador
-  pode industrializar, desindustrializar ou seguir outro caminho. Quem
-  joga bem tende a industrializar, mas o jogo não exige isso. Ele vê o
-  rumo pelo PIB, pelas empresas, pela renda das pessoas e pelos empregos.
-  Ver [experiencia.md](experiencia.md).
-- **Versão 1:** industrialização como rumo natural de quem joga bem (o
-  jogo mede e mostra, mas não exige).
-- **Versão 5:** coisas novas no país (produtos, tecnologias) e pesquisa.
-- O jogador não constrói nada diretamente. Ele aprova **leis**, inclusive
-  de infraestrutura, e são elas que melhoram o mercado e a economia.
+1. **Leis são o núcleo.** Todo o resto lê as leis; mudar uma lei muda o jogo (31/out).
+2. **Mundo sem país.** Leis e índices são genéricos. O país só declara o
+   estado de partida e pode trocar nomes ("juros" → "Selic") (25/out).
+3. **Liberdade com consequência.** Toda lei vai de 0% a 100%. O que segura o
+   jogador é a consequência, nunca uma trava; a única trava dura é a soma dos
+   gastos ≤ 100% do PIB (21/out e 30/out).
+4. **Nada aparece do nada.** Gastar exige imposto, dívida ou inflação, e cada
+   um cobra depois (24/out).
+5. **O que dá resultado demora; o que é popular custa caro** (24/out).
+6. **Jogabilidade primeiro, realidade como base.** Lei inventada vale;
+   número não precisa de precisão empírica.
+7. **O motor não conhece nomes** de leis, partidos ou países. O que é de lei
+   ou de país mora no JSON; no código só a física (identidades contábeis).
 
-## 3. Liberdade e consequência
+## 3. Tempo
 
-- O jogo **não limita o jogador aos padrões do país**. Qualquer valor de
-  lei pode ir de 0% a 100%, ou ao valor que ele quiser.
-  Exemplo: dá para pôr 100% do PIB na educação.
-- O que segura o jogador são as **consequências**, nunca uma trava na tela.
-- As regras de cada país (como uma lei muda, quem vota) seguem o país real.
-  O primeiro país é o **Brasil**, que serve de referência.
-- **Versão 2:** escolha de país (China, EUA, União Europeia e outros). Por
-  isso nada do Brasil pode morar no mundo: o país só declara o estado de
-  partida.
-- **Mundo sem país (decidido em 25/out).** Leis e índices do mundo não têm
-  notas, exemplos nem fontes de país nenhum. As fontes servem só para montar
-  o país e ficam na pasta dele, sem aparecer na tela. O país pode **trocar
-  nomes** para o jogador: no Brasil, "Taxa básica de juros" aparece como
-  "Selic". A troca é declarada **dentro do país**; a lei do mundo continua
-  com o nome genérico. Substitui a decisão de 23/out de deixar essas
-  informações no `exemplo` da lei.
+- Turno de **2 meses**; mandato de 4 anos = **24 turnos** (30/out).
+- O país declara a duração do mandato e o limite de reeleição do candidato;
+  o partido continua no poder enquanto vencer (21/out).
 
-## 4. Índices essenciais
+## 4. Índices (31/out)
 
-**Regra:** cada índice essencial é **um número só**, que junta tudo o que
-o melhora e o piora (como o padrão de vida do Victoria 3). Os nós da rede
-continuam existindo por baixo; o índice é o resumo que o jogador lê.
+Arquivo: `src/conteudo/mundo/indicadores/variaveis.json`.
 
-| Índice | O que junta | Base na rede hoje |
-| --- | --- | --- |
-| **PIB** | Tamanho da economia | `pib` |
-| **Industrialização** | Peso da indústria na economia, produtividade, infraestrutura _(composição a definir)_ | Não existe; peças soltas em `produtividade`, `desenvolvimento`, `infraestrutura` |
-| **Instrução** | Escolaridade e aprendizagem | `escolaridade`, `aprendizagem` |
-| **Padrão de vida** | Tudo o que melhora e piora a vida: renda, preços, saúde, segurança, moradia… | `qualidade_de_vida`, `renda_familias` |
-| **População** | Quantas pessoas há no país | Não existe como número |
-| **Radicais** | Pessoas ativamente contra o governo | Não existe |
-| **Lealistas** | Pessoas ativamente a favor do governo | Não existe |
-| **Dinheiro** | Caixa do governo e dívida | `cofre`, `divida_publica` |
+- **Essenciais**, a física de qualquer país: população, ocupados, desemprego,
+  PIB real, crescimento, nível de preços, inflação, PIB nominal, receita,
+  gasto, resultado, dívida, juros.
+- **Jogabilidade**, o que o jogador sente e os grupos cobram: padrão de vida,
+  instrução, industrialização, saúde, segurança, pobreza, desigualdade,
+  corrupção, liberdades, polarização, meio ambiente, reputação
+  internacional, aprovação.
+- População é número real de pessoas (21/out).
 
-### 4.1 População
+## 5. Leis
 
-- É um **número real** de habitantes (Brasil: cerca de 213 milhões).
-- Cresce, cai e migra conforme o contexto.
-- Movida por três taxas: **natalidade**, **mortalidade** e **saúde**.
-  Migração entra e sai conforme a situação do país.
+_(modelo proposto em 31/out, falta aprovar)_
 
-### 4.2 Radicais e lealistas
+- Cada lei declara seus efeitos **em unidade de gente**: o efeito com a lei
+  em 100%, na unidade do índice (ex.: receita +6% do PIB). Em 50%, metade.
+  O motor converte para o turno.
+- Cada efeito tem **tempo** para chegar inteiro (imediato, 1 ano, 4 anos).
+- Cada lei declara **quem apoia e quem rejeita**, em número. O texto da tela
+  é gerado disso: texto e motor não podem discordar.
+- 3 a 6 efeitos por lei, cada um justificável numa frase.
+- Gasto em % do PIB, somado na trava de 100%.
 
-- São **dois números separados**, contados em pessoas da população.
-- Não somam 100%: com 500 de população, 200 lealistas não querem dizer
-  300 radicais. O resto pode **não ter opinião**.
-- Eles **acumulam e diminuem** com o tempo, conforme o governo agrada ou
-  desagrada cada **grupo de interesse**.
-- Exemplo: os motoristas querem gasolina mais barata. O jogador consegue
-  reduzir o preço, e parte dos motoristas vira lealista aos poucos.
+_A decidir:_ quantas leis a V1 terá (o escopo antigo dizia ~250).
 
-### 4.3 Grupos (decidido em 21/out)
+## 6. População e grupos
 
-- **Versão atual (opção A):** os grupos sociais que já existem viram os
-  **grupos de interesse**. Grupos novos (como motoristas) podem entrar.
-  - Cada grupo tem um **tamanho em pessoas**, tirado dos totais da
-    população (renda e ocupação, `populacao.json`).
-  - Cada grupo tem dois estoques: **radicais** e **lealistas**. A
-    satisfação do grupo com leis e índices move os dois aos poucos.
-  - Radicais e lealistas do país são a soma dos grupos, sem contar duas
-    vezes quem está em mais de um.
-  - Não exige reescrever as consequências que já citam os grupos.
-- **Depois (opção B, junto com o mercado):** população em blocos (camada ×
-  região × ocupação), cada bloco com renda, opinião e participação em
-  vários grupos, como no Victoria 3.
+- Grupos de interesse com **tamanho em pessoas** (21/out).
+- Cada grupo tem satisfação e dois estoques, **radicais** e **lealistas**,
+  que sobem e descem devagar; não somam 100% (21/out).
+- A eleição é decidida pelo **apoio de cada grupo pesado pelo tamanho**,
+  contra o adversário. Radicais e lealistas medem polarização, não decidem
+  sozinhos (24/out).
 
-## 5. Como é uma partida
+_A decidir:_ a lista de grupos genéricos.
 
-- A partida **começa com o partido do jogador recém-eleito**.
-- A cada fim de mandato há eleição. **Perder a eleição é fim de jogo.**
-- A tela mostra uma bolha com o **tempo de presidência** e a **quantidade
-  de mandatos** do partido.
-- No Brasil o mandato dura **4 anos** e o candidato pode ser reeleito
-  uma vez (no máximo 8 anos seguidos). Depois disso o partido troca de
-  candidato, mas continua no poder enquanto vencer eleições.
+## 7. Congresso
 
-- **Hoje:** turno trimestral (3 meses do motor), passado pelo jogador.
-  Detalhes em [mecânicas/tempo.md](mecanicas/tempo.md).
-- **Decidido (25/out, substitui o tempo corrido de 21/out):** o turno
-  continua de 3 meses. Ao apertar o turno, a tela **mostra os 3 meses
-  acontecendo**: as bolhas crescem e encolhem e o calendário anda, para dar
-  a sensação de tempo passando. Ver [mecânicas/tempo.md](mecanicas/tempo.md).
+A lei precisa dos votos do Legislativo; o caminho (câmaras, quórum) é
+declarado pelo país (21/out).
 
-## 6. Sistemas do jogo
+## 8. Eleição e desgaste (21/out)
 
-Cada sistema é uma mecânica com documento próprio: [índice das mecânicas](mecanicas/README.md).
+- Eleição a cada fim de mandato; perder é fim de jogo.
+- **Desgaste** sobe sempre, num valor fixo por período no poder (custo de
+  governar, ~2,25 pontos por mandato). A opinião segura enquanto o partido
+  governa e despenca de uma vez numa crise ou eleição (cruzeiro e queda).
+  O jogador reduz o desgaste, nunca zera.
 
-### 6.1 Leis
-Regras completas em [leis.md](mecanicas/leis.md).
+## 9. Fora da V1
 
-### 6.2 Bússola ideológica
-- A bússola mostra a **ideologia em que o país está**, não a do jogador.
-  Exemplo: os EUA de hoje estariam perto de Trump; o Brasil, perto do
-  governo Lula III.
-- Ela mostra para onde o jogador está levando o país, e assim o jogador
-  descobre o que talvez ele mesmo defenda.
-- O jogador pode propor leis de **qualquer lado político**, dentro do que
-  a bússola permitir. _(o que a bússola permite e bloqueia: a definir)_
+Tela elaborada (vem por último), ministros, dilemas e eventos, bússola
+ideológica, mídia e redes, mercado do Victoria 3, população em blocos,
+escolha de país, STF, pesquisa e tecnologia.
 
-### 6.3 Congresso
-- No lugar dos pontos de força política do Democracy 4, a lei precisa
-  dos **votos do Legislativo**.
-- Cada país tem o próprio caminho legislativo. No Brasil, votam a Câmara
-  e o Senado (detalhes em [leis.md](mecanicas/leis.md#27-como-uma-lei-muda)).
+## 10. Ordem de construção
 
-### 6.4 Economia e mercado
-- **Versão atual:** o jogador controla a economia como no Democracy 4,
-  por leis e orçamento.
-- **Depois:** o mercado é expandido no estilo do Victoria 3.
+Um passo por vez. Cada passo só fecha quando o critério de pronto roda.
+Ideia nova durante um passo vai para a seção 11, não para o passo.
 
-### 6.5 Orçamento
-### 6.6 População e opinião
-### 6.7 Eleição e desgaste do partido
+| # | Passo | Pronto quando |
+|---|---|---|
+| 1 | Escopo | O autor aprova este documento |
+| 2 | Índices | ✅ arquivo novo com as duas camadas |
+| 3 | Modelo de lei | Uma lei escrita no formato novo e o autor aprova |
+| 4 | Turno mínimo | Script joga 24 turnos; a lei a 0%, 50% e 100% dá três países diferentes, na direção que a lei promete |
+| 5 | Contas | Receita − gasto − juros move a dívida; dívida alta sobe juros; trava de 100% do PIB |
+| 6 | Leis da V1 | Cada lei com comportamento esperado escrito antes e conferido por script |
+| 7 | Grupos | Leis e índices movem satisfação, radicais e lealistas de cada grupo |
+| 8 | Congresso | Lei só muda com voto; base e oposição reagem às leis |
+| 9 | Eleição e desgaste | Partida de 24 turnos termina em vitória ou derrota que o jogador entende |
+| 10 | Tela | Jogar uma partida inteira na tela |
 
-- Cada país define a duração do mandato e o limite de reeleição do
-  candidato. O partido pode seguir no poder enquanto vencer eleições.
-- **Desgaste:** quanto mais tempo o mesmo partido fica no poder, mais
-  escândalos de corrupção aparecem. O partido enfraquece e cresce um
-  **sentimento antipartido** e mais **fake news** contra ele, o que aumenta
-  a **polarização**.
-- O desgaste é um número que **sobe sempre**, num valor fixo por período
-  no poder. Um partido com 20 anos no poder sofre bem mais que um com 8.
-- O jogador **reduz** o desgaste com eventos e outras ações, mas nunca
-  consegue zerá-lo nem impedir que ele continue subindo.
-  _(valor da subida, ações que reduzem e quanto reduzem: a definir)_
-- **Base real (pesquisa de 21/out):**
-  - *Custo de governar* (Nannestad e Paldam): o governo perde em média
-    **cerca de 2,25 pontos de votos por mandato**; a faixa citada é de 2 a 3.
-  - *Cruzeiro e queda* (Cuzán e Heggen): o voto fica **quase estável**
-    enquanto o partido governa e despenca de uma vez quando ele perde. A
-    perda total é parecida, seja o governo curto ou longo.
-- **Regra do jogo (decidida em 21/out):** o desgaste junta os dois modelos.
-  - Por baixo, o desgaste **sobe sempre**, num valor fixo por período no
-    poder (curva do custo de governar).
-  - Por cima, a opinião sobre o partido **segura** enquanto ele governa
-    (cruzeiro).
-  - Um escândalo, uma crise ou uma eleição faz o desgaste acumulado
-    **aparecer de uma vez** (queda).
-  - A regra é **global**: vale igual para todos os países, como as
-    consequências do mundo. O país só muda o estado inicial (por exemplo,
-    há quanto tempo o partido já está no poder).
-### 6.8 Ocorrências e eventos
+Peças do código antigo voltam só quando um passo precisar delas, depois de
+lidas (tag `projeto-antigo-2026-10-31`).
 
-## 7. Fora do escopo por enquanto
+## 11. Ideias para depois
 
-- Supremo Tribunal Federal (STF). Sem ele, quem reage a mudanças em leis
-  pétreas é o Senado e a população (ver [leis.md](mecanicas/leis.md)).
-- Mercado no estilo do Victoria 3 (fica para depois da versão atual).
-
-## 8. Glossário
+_(vazio)_

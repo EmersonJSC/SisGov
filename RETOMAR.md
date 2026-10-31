@@ -5,38 +5,23 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 **31/out/2026**
 
-## Recomeço do mundo
+## Recomeço do projeto
 
-Leis, índices, consequências, dilemas e eventos **apagados** para refazer do zero.
-O jogo não roda até o mundo novo existir (de propósito).
+O projeto recomeçou do zero. `src/` tem só os índices novos e um `main.tsx`
+de espera; `npx tsc -b` passa.
 
-Backup: tag `mundo-antigo-2026-10-31` e `arquivo/mundo-antigo-2026-10-31/`.
+Backup: tag `projeto-antigo-2026-10-31` e `arquivo/codigo-antigo-2026-10-31/`
+(código); tag `mundo-antigo-2026-10-31` e `arquivo/mundo-antigo-2026-10-31/`
+(conteúdo); `docs/historico/projeto-antigo/` (PLANO, escopo e mecânicas antigos).
 
 ## Próximo
 
-1. Escrever os índices novos (lista aprovada abaixo) em `src/conteudo/mundo/indicadores/`.
-2. Modelo de lei: efeito declarado em unidade humana; o motor converte (sem a armadilha do ÷3).
-3. Contas essenciais em TS só com identidades contábeis; o que é de lei ou país vai para JSON.
-4. Primeiras leis genéricas, uma por vez, cada uma com o comportamento esperado escrito antes.
-5. Adaptar módulos (economia, população, Congresso). Dilemas, eventos e ministros só depois.
-
-## Índices aprovados
-
-- **Essenciais** (física de qualquer país): população, ocupados, desemprego, PIB real,
-  crescimento, inflação (nível de preços), PIB nominal, receita, gasto, resultado,
-  dívida, taxa de juros.
-- **Jogabilidade**: padrão de vida, instrução, industrialização, saúde, segurança,
-  pobreza, desigualdade, corrupção, liberdades, polarização, meio ambiente,
-  reputação internacional, aprovação; por grupo: satisfação, radicais, lealistas.
-
-## Ainda aponta para o mundo antigo (refazer junto)
-
-- `src/conteudo/mundo/`: bussola, gatilhos, pressao, populacao, reguas, congresso.
-- `src/conteudo/paises/brasil/`: estado inicial e níveis das leis antigas.
-- 57 ids citados em `src/game/` e `src/app/`.
+Passo 1 do [escopo novo](docs/jogo/escopo.md): **o autor aprovar o escopo**.
+Pontos em aberto nele: quantas leis na V1 e a lista de grupos genéricos.
+Depois, passo 3: escrever a primeira lei no modelo novo.
 
 ## Armadilhas
 
 - `npx tsc -b`, nunca `--noEmit`.
 - `pkill -f` mata o próprio shell; `sleep` no Bash é bloqueado.
-- Scripts `vite-node` ficam em `src/`.
+- `package.json` ainda lista scripts do código antigo (rede, fichas…); não rodam.

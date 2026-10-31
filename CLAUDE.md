@@ -5,7 +5,7 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 ## Leitura inicial
 
 1. `README.md`
-2. `RETOMAR.md` e só a parte aberta do `PLANO.md` (histórico em `PLANO-feito.md`, não abrir sem precisar)
+2. `RETOMAR.md` e `docs/jogo/escopo.md` (regras e ordem de construção; recomeço de 31/out/2026, o projeto antigo está em `docs/historico/projeto-antigo/` e na tag `projeto-antigo-2026-10-31`, não abrir sem precisar)
 
 ## Não abrir sem o autor pedir
 
