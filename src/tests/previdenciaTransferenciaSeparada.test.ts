@@ -31,8 +31,8 @@ function valor(p: Partida, id: string) {
 
 describe("Orçamento e critérios da transferência de renda", () => {
   it("ao cortar verba, o efeito dos critérios encolhe junto", () => {
-    // A degradação é gradual: após oito turnos ainda resta parte da verba.
-    const corte = avancar(aplicar(nova(), "transferencia-de-renda", 0), 8);
+    // A degradação é gradual: após doze turnos (dois anos) ainda resta parte da verba.
+    const corte = avancar(aplicar(nova(), "transferencia-de-renda", 0), 12);
     const nivel = corte.game.policies.find(
       (p) => p.policyDefinitionId === "transferencia-de-renda",
     )!.implementedLevel;

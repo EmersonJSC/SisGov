@@ -70,7 +70,7 @@ describe("ficha de lei v3", () => {
       if (!r.ok) throw new Error(r.erros.join(" "));
       p = r.value;
     }
-    for (let turno = 0; turno < 4; turno++) {
+    for (let turno = 0; turno < 6; turno++) {
       const r = encerrarTurno(p);
       if (!r.ok) throw new Error(r.erros.join(" "));
       p = r.value.partida;

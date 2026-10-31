@@ -70,7 +70,7 @@ describe("mesa do salário mínimo", () => {
     let p = mudar(partida, FORMULA, "sem-regra");
     const r = mudarLei(p, AUMENTO, 10);
     if (!r.ok) throw new Error(r.erros.join("\n"));
-    p = turnos(r.value, 4);
+    p = turnos(r.value, 6);
     expect(v(p, "salario_minimo_relativo")).toBeGreaterThan(70);
     expect(v(p, "aumento_real_do_minimo")).toBeCloseTo(10, 0);
   });
@@ -80,7 +80,7 @@ describe("mesa do salário mínimo", () => {
     const r = mudarLei(p, AUMENTO, -20);
     if (!r.ok) throw new Error(r.erros.join("\n"));
     const base = turnos(partida, 4);
-    p = turnos(r.value, 4);
+    p = turnos(r.value, 6);
     expect(v(p, "reajuste_nominal_do_minimo")).toBeLessThan(0);
     expect(v(p, "popularidade_governo")).toBeLessThan(
       v(base, "popularidade_governo") - 5,

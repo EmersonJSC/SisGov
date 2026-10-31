@@ -11,7 +11,7 @@ describe("fecundidade mexe na natalidade", () => {
     const m = aplicarMeta(c.value, "politica-de-natalidade", 80);
     if (!m.ok) throw new Error(m.erros.join(" "));
     let p = m.value;
-    for (let t = 0; t < 8; t++) {
+    for (let t = 0; t < 12; t++) {
       const r = encerrarTurno(p);
       if (!r.ok) throw new Error(r.erros.join(" "));
       p = r.value.partida;
