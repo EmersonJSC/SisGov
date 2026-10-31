@@ -373,6 +373,11 @@ export type VariableDefinition = {
    * página do jornal. O número é a posição no quadro (1 primeiro).
    */
   pilar?: number;
+  /**
+   * `essencial`: física de qualquer país (população, PIB, contas). `jogabilidade`:
+   * o que o jogador sente e os grupos cobram.
+   */
+  camada?: "essencial" | "jogabilidade";
 };
 
 export type VariableMeasure = {

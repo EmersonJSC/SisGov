@@ -1,0 +1,418 @@
+{
+  "id": "indicadores-mundo",
+  "tipo": "variaveis",
+  "versaoEsquema": 1,
+  "variaveis": [
+    {
+      "id": "populacao",
+      "tipo": "estoque",
+      "nome": "População",
+      "camada": "essencial",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 1
+      },
+      "area": "População",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "habitantes"
+      }
+    },
+    {
+      "id": "ocupados",
+      "tipo": "derivado",
+      "nome": "Ocupados",
+      "camada": "essencial",
+      "unidade": "pessoas",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "pessoas trabalhando"
+      }
+    },
+    {
+      "id": "desemprego",
+      "tipo": "calculado",
+      "nome": "Desemprego",
+      "camada": "essencial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da força de trabalho sem emprego"
+      }
+    },
+    {
+      "id": "pib",
+      "tipo": "calculado",
+      "nome": "PIB real",
+      "camada": "essencial",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "PIB real (100 = início da partida)",
+        "zero": 50,
+        "cem": 150
+      }
+    },
+    {
+      "id": "crescimento_real",
+      "tipo": "calculado",
+      "nome": "Crescimento",
+      "camada": "essencial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": -15,
+        "maximo": 15
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "crescimento real do PIB (% ao ano)"
+      }
+    },
+    {
+      "id": "indice_precos",
+      "tipo": "estoque",
+      "nome": "Nível de preços",
+      "camada": "essencial",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0.001
+      },
+      "area": "Economia",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "índice de preços; 100 no início da partida"
+      }
+    },
+    {
+      "id": "inflacao",
+      "tipo": "calculado",
+      "nome": "Inflação",
+      "camada": "essencial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "inflação em 12 meses (%)"
+      }
+    },
+    {
+      "id": "pib_nominal",
+      "tipo": "estoque",
+      "nome": "PIB nominal",
+      "camada": "essencial",
+      "unidade": "moeda",
+      "dominio": {
+        "minimo": 1
+      },
+      "area": "Economia",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "moeda corrente por ano"
+      }
+    },
+    {
+      "id": "arrecadacao",
+      "tipo": "calculado",
+      "nome": "Receita",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Contas",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "receita do governo (% do PIB)"
+      }
+    },
+    {
+      "id": "gasto_publico",
+      "tipo": "calculado",
+      "nome": "Gasto",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "gasto do governo (% do PIB)"
+      }
+    },
+    {
+      "id": "resultado_fiscal",
+      "tipo": "calculado",
+      "nome": "Resultado",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {},
+      "area": "Contas",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "receita − gasto − juros (% do PIB)"
+      }
+    },
+    {
+      "id": "divida_publica",
+      "tipo": "estoque",
+      "nome": "Dívida",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Contas",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "dívida do governo (% do PIB)"
+      }
+    },
+    {
+      "id": "taxa_juros",
+      "tipo": "calculado",
+      "nome": "Juros",
+      "camada": "essencial",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Contas",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "juros pagos sobre a dívida (% ao ano)"
+      }
+    },
+    {
+      "id": "padrao_vida",
+      "tipo": "calculado",
+      "nome": "Padrão de vida",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = miséria geral, 100 = país rico"
+      }
+    },
+    {
+      "id": "instrucao",
+      "tipo": "calculado",
+      "nome": "Instrução",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = sem escola, 100 = todos com ensino superior"
+      }
+    },
+    {
+      "id": "industrializacao",
+      "tipo": "calculado",
+      "nome": "Industrialização",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Economia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = agrário, 100 = industrial avançado"
+      }
+    },
+    {
+      "id": "saude",
+      "tipo": "calculado",
+      "nome": "Saúde",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = colapso, 100 = excelente"
+      }
+    },
+    {
+      "id": "seguranca",
+      "tipo": "calculado",
+      "nome": "Segurança",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = guerra civil, 100 = sem crime"
+      }
+    },
+    {
+      "id": "pobreza",
+      "tipo": "calculado",
+      "nome": "Pobreza",
+      "camada": "jogabilidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da população abaixo da linha de pobreza"
+      }
+    },
+    {
+      "id": "desigualdade",
+      "tipo": "calculado",
+      "nome": "Desigualdade",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "índice de Gini",
+        "zero": 0.2,
+        "cem": 0.7
+      }
+    },
+    {
+      "id": "corrupcao",
+      "tipo": "calculado",
+      "nome": "Corrupção",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Política",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = nenhuma, 100 = endêmica"
+      }
+    },
+    {
+      "id": "liberdade_civil",
+      "tipo": "calculado",
+      "nome": "Liberdades",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Política",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = ditadura total, 100 = plena"
+      }
+    },
+    {
+      "id": "polarizacao",
+      "tipo": "calculado",
+      "nome": "Polarização",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Política",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = consenso, 100 = ruptura"
+      }
+    },
+    {
+      "id": "meio_ambiente",
+      "tipo": "calculado",
+      "nome": "Meio ambiente",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = devastado, 100 = preservado"
+      }
+    },
+    {
+      "id": "reputacao_internacional",
+      "tipo": "calculado",
+      "nome": "Reputação internacional",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Política",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = pária, 100 = referência"
+      }
+    },
+    {
+      "id": "popularidade_governo",
+      "tipo": "calculado",
+      "nome": "Aprovação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Política",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% que aprova o governo"
+      }
+    }
+  ]
+}

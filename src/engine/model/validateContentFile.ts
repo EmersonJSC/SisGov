@@ -1314,6 +1314,7 @@ function validateVariables(
           "faixaVisual",
           "medida",
           "pilar",
+          "camada",
           "formula",
         ],
         diagnostics,
