@@ -87,6 +87,7 @@ que o conteúdo não consiga resolver.
 - [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
 - [ ] Explicação por lei e por opção, com teste que a exige (A6)
 - [ ] Troca de nomes por país (ex.: "Selic")
+- [ ] Lei como produtor de motivo (proposto): a lei incomoda quem ela afasta do ponto da pessoa na bússola (distância do ponto do país ao da pessoa, antes e depois), com a mesma régua `sensibilidade` do voto do Congresso. Vale para lei moral e política. Caso de teste: maioridade penal. A população só guarda o efeito na satisfação; a causa vai por tag ou índice
 - [ ] Ligação com a população, só no JSON das leis (vem depois de a população estar pronta): `gosta`/`odeia` dos desempregados, setas lei→grupo (ex.: `grupo_evangelicos`) e "esta lei mexe em tal tag". Teste de encaixe: seta de lei para um grupo move a satisfação
 
 **J3 Economia e orçamento** ← frente atual
