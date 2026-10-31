@@ -4,6 +4,8 @@
  */
 import { describe, expect, it } from "vitest";
 import { criarPartida } from "../app/partida";
+import { eleitoradoDoInicio, rendasDoManifesto } from "../game/congresso/bolso";
+import { congressoVivo, origemDoDesempregado } from "../game/congresso/vivo";
 
 function congresso() {
   const criada = criarPartida({ ocorrencias: false, eleicao: false });
@@ -30,5 +32,33 @@ describe("o conteúdo do emprego", () => {
     expect(c.segmentoDe["ocupacao=desempregado"]).toBe("grupo_desempregados");
     expect(c.bolso!.fontes.desempregado.trabalha).toBe(false);
     expect(c.rotulos!.faixas["ocupacao=desempregado"]).toBe("Desempregados");
+  });
+});
+
+describe("o bico de quem vinha sem carteira", () => {
+  it("o ex-informal desempregado ganha parte do que ganhava; o ex-carteira, nada de salário", () => {
+    const criada = criarPartida({ ocorrencias: false, eleicao: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    const { content, game } = criada.value;
+    const fixo = content.manifest.congresso!;
+    const valores = { ...game.execution.values, desemprego: 15 };
+    const vivo = congressoVivo(fixo, valores);
+    const rendas = rendasDoManifesto(
+      vivo,
+      game.execution.values.salario_medio,
+      0,
+      eleitoradoDoInicio(content, valores),
+    );
+    const doTipo = (origem: string) =>
+      rendas.filter(
+        (r, i) =>
+          r.fonte.id === "desempregado" &&
+          origemDoDesempregado(vivo, i) === origem,
+      );
+    const bico = doTipo("informal");
+    const carteira = doTipo("carteira");
+    expect(bico.length).toBeGreaterThan(0);
+    expect(bico.every((r) => r.bicoPorAno > 0)).toBe(true);
+    expect(carteira.every((r) => r.bicoPorAno === 0)).toBe(true);
   });
 });

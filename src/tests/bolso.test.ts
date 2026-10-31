@@ -263,7 +263,7 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     ).toBeCloseTo(vs.lucros / vs.massa_salarial, 6);
   });
 
-  it("o desempregado não ganha renda do trabalho; ex-carteira recebe o seguro, ex-informal não", () => {
+  it("o desempregado não ganha salário; ex-carteira recebe o seguro, ex-informal faz bico", () => {
     const vs: Record<string, number> = { ...vs0(), desemprego: 15 };
     const { manifesto, bolsos } = bolsosDoEleitorado(pacote(), vs)!;
     const rendas = rendasDoManifesto(
@@ -280,7 +280,10 @@ describe("o que o perfil paga e o que lhe sobra", () => {
     for (const i of [...de("carteira"), ...de("informal")])
       expect(rendas[i].porAno).toBe(0);
     for (const i of de("carteira")) expect(bolsos[i].ganha).toBeGreaterThan(0);
-    for (const i of de("informal")) expect(bolsos[i].ganha).toBe(0);
+    for (const i of de("informal")) {
+      expect(rendas[i].bicoPorAno).toBeGreaterThan(0);
+      expect(bolsos[i].ganha).toBeGreaterThan(0);
+    }
   });
 
   it("o seguro do ex-carteira segue o nível da lei do seguro-desemprego", () => {

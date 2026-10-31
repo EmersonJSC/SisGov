@@ -26,6 +26,8 @@ export type RendaDoPerfil = Readonly<{
   porAno: number;
   /** Parte dos lucros que cabe a esse perfil, por ano. Zero para quem não vive de capital. */
   capitalPorAno: number;
+  /** Bico de quem perdeu um emprego sem carteira, por ano. Fora da massa salarial do motor. */
+  bicoPorAno: number;
 }>;
 
 /** Multiplicador ausente vale 1: a faixa nova entra na média, não some dela. */
@@ -63,6 +65,7 @@ function lerPerfis(congresso: CongressManifest) {
     const fonte = tabela[ocupacao];
     return {
       peso: perfil[0],
+      faixa,
       fonte: { id: ocupacao, nome: fonte?.nome ?? ocupacao },
       trabalha: fonte?.trabalha ?? false,
       capital: fonte?.capital ?? false,
@@ -121,13 +124,29 @@ export function rendasDoManifesto(
   const escalaCapital =
     capitalPesado > 0 ? (razaoLucros * trabalhoPorPessoa) / capitalPesado : 0;
 
-  return lido.map(({ fonte, trabalha, capital, seguePiso, multiplicador }) => ({
-    fonte,
-    porAno: trabalha
-      ? Math.max(multiplicador * escala, seguePiso ? pisoPorAno : 0)
-      : 0,
-    capitalPorAno: capital ? multiplicador * escalaCapital : 0,
-  }));
+  // Quem vinha sem carteira faz bico: parte do que a ocupação de origem
+  // pagaria na mesma faixa. Não entra na média do trabalho (não é `trabalha`).
+  const bico = congresso.emprego?.desempregado.bico;
+  const rendaDeBico = (linha: number, faixa: string): number => {
+    const origem = origemDoDesempregado(congresso, linha);
+    if (!bico || origem === undefined || !bico.origem.includes(origem)) {
+      return 0;
+    }
+    const multiplicador =
+      congresso.bolso?.fontes[origem]?.porRenda?.[faixa] ?? SEM_TABELA;
+    return bico.fracao * multiplicador * escala;
+  };
+
+  return lido.map(
+    ({ fonte, trabalha, capital, seguePiso, multiplicador, faixa }, i) => ({
+      fonte,
+      porAno: trabalha
+        ? Math.max(multiplicador * escala, seguePiso ? pisoPorAno : 0)
+        : 0,
+      capitalPorAno: capital ? multiplicador * escalaCapital : 0,
+      bicoPorAno: trabalha ? 0 : rendaDeBico(i, faixa),
+    }),
+  );
 }
 
 /**
@@ -275,17 +294,20 @@ export function bolsosDoEleitorado(
       origem !== undefined && desempregado.origemComBeneficio.includes(origem)
     );
   };
-  const ganhos = rendas.map(({ fonte, porAno, capitalPorAno }, i) => ({
-    fonte,
-    porAno,
-    capitalPorAno,
-    ganha:
-      porAno +
-      capitalPorAno +
-      (recebeBeneficio(fonte.id, i)
-        ? beneficioDaFonte(tabela[fonte.id], valores)
-        : 0),
-  }));
+  const ganhos = rendas.map(
+    ({ fonte, porAno, capitalPorAno, bicoPorAno }, i) => ({
+      fonte,
+      porAno,
+      capitalPorAno,
+      ganha:
+        porAno +
+        capitalPorAno +
+        bicoPorAno +
+        (recebeBeneficio(fonte.id, i)
+          ? beneficioDaFonte(tabela[fonte.id], valores)
+          : 0),
+    }),
+  );
   const consumos = ganhos.map(
     ({ ganha, capitalPorAno }) =>
       (ganha - capitalPorAno * (1 - consumoDeLucros)) * consumido,

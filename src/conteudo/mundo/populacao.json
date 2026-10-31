@@ -256,7 +256,8 @@
     },
     "desempregado": {
       "id": "desempregado",
-      "origemComBeneficio": ["carteira"]
+      "origemComBeneficio": ["carteira"],
+      "bico": { "origem": ["informal", "agricultura-familiar"], "fracao": 0.4 }
     },
     "ocupacoes": {
       "formal": "carteira",

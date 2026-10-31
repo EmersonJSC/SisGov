@@ -153,7 +153,11 @@ export type PopulacaoDoMundo = {
       idade: Record<string, number>;
     };
     ocupacoes: { formal: string; informal: string };
-    desempregado: { id: string; origemComBeneficio: string[] };
+    desempregado: {
+      id: string;
+      origemComBeneficio: string[];
+      bico?: { origem: string[]; fracao: number };
+    };
   };
   /** O que empurra as faixas do eleitorado (População camada C). */
   mudancas?: {

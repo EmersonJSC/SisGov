@@ -171,6 +171,11 @@ export type CongressManifest = {
       id: string;
       /** Ocupações de origem cujo desempregado recebe o seguro-desemprego. */
       origemComBeneficio: readonly string[];
+      /**
+       * Quem vinha de uma ocupação sem carteira faz bico: ganha essa fração
+       * do que a ocupação de origem pagaria na mesma faixa de renda.
+       */
+      bico?: Readonly<{ origem: readonly string[]; fracao: number }>;
     }>;
   }>;
   /**
