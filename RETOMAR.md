@@ -26,6 +26,9 @@ para o projeto novo; `npm run check` verde.
 Próximo: **passo 3**, proposta curta do formato da lei (imposto de renda
 contínua com base `renda` + pena de morte de opções) para o autor aprovar.
 
+Skills do projeto em `.claude/skills/`: `sisgov-mecanica`, `sisgov-passo`,
+`sisgov-lei`, `sisgov-calculo`, `sisgov-rodada`.
+
 `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas

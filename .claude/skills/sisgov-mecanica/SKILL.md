@@ -49,3 +49,8 @@ essencial do país.
 O plugin `typescript-patterns-enforcer` acusa violações (`no-magic-numbers`,
 `no-loop-statements`) que o `npm run check` do projeto não cobra. Conferir se
 a violação é de uma linha sua antes de mexer.
+
+## Outras skills do projeto
+
+`sisgov-passo` (abrir e fechar passo), `sisgov-lei` (JSON de lei),
+`sisgov-calculo` (cálculo estudado no motor), `sisgov-rodada` (RETOMAR).
