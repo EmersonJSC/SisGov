@@ -50,8 +50,8 @@ describe("SG143 — grupos sociais", () => {
     for (const id of perfil.segmentos)
       pesosVivos.set(id, (pesosVivos.get(id) ?? 0) + perfil.peso);
 
-  it("vinte e um segmentos; todos nos perfis do eleitorado, menos o dos desempregados", () => {
-    expect(grupos).toHaveLength(21);
+  it("vinte e cinco segmentos; todos nos perfis do eleitorado, menos o dos desempregados", () => {
+    expect(grupos).toHaveLength(25);
     // O desempregado só existe no eleitorado vivo (camada C): os perfis fixos
     // da aprovação não têm ninguém nele.
     expect([...pesos.keys()].sort()).toEqual(
