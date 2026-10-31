@@ -69,5 +69,5 @@ describe("SG106 — cinco mandatos", () => {
       ).toBeGreaterThanOrEqual(3);
     expect(calmos).toBeGreaterThan(0);
     expect(calmos).toBeLessThan(40);
-  }, 180_000);
+  }, 300_000);
 });

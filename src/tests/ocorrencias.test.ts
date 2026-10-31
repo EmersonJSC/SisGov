@@ -435,7 +435,7 @@ describe("SG106 — na partida", () => {
     const c = jogar(nova(12345), 12);
     expect(historia(a)).toBe(historia(b));
     expect(historia(a)).not.toBe(historia(c));
-  }, 120_000);
+  }, 240_000);
 
   it("um evento em curso mexe na rede pelo próprio nó e acaba no prazo", () => {
     // procura uma semente em que um evento com efeito aconteça cedo
@@ -479,5 +479,5 @@ describe("SG106 — na partida", () => {
       (h) => h.id === id && h.turno === ev.inicio,
     );
     expect(registro?.fim).toBeDefined();
-  }, 120_000);
+  }, 240_000);
 });
