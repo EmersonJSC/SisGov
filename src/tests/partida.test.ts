@@ -88,7 +88,7 @@ it("recusa lei inexistente", () => {
   expect(resultado.ok).toBe(false);
 });
 
-it("a prévia mostra os três meses com e sem a mudança, sem gravar nada", () => {
+it("a prévia mostra os dois meses do turno com e sem a mudança, sem gravar nada", () => {
   const partida = nova();
   const antes = verPartida(partida);
   const salario = antes.leis.find(
@@ -97,12 +97,12 @@ it("a prévia mostra os três meses com e sem a mudança, sem gravar nada", () =
   const alto = 0;
   const previa = preverLei(partida, "reajuste-de-beneficios", alto);
   if (!previa.ok) throw new Error(previa.erros.join(" "));
-  expect(previa.value.implantacao).toHaveLength(3);
-  expect(previa.value.implantacao[2]).toBeLessThan(salario.nivel);
-  // algum efeito já aparece nos três meses, diferente de não mudar
+  expect(previa.value.implantacao).toHaveLength(2);
+  expect(previa.value.implantacao[1]).toBeLessThan(salario.nivel);
+  // algum efeito já aparece nos dois meses, diferente de não mudar
   const efeito = previa.value.efeitos[0];
-  expect(efeito?.comMudanca).toHaveLength(3);
-  expect(efeito!.comMudanca[2]).not.toBeCloseTo(efeito!.semMudanca[2], 9);
+  expect(efeito?.comMudanca).toHaveLength(2);
+  expect(efeito!.comMudanca[1]).not.toBeCloseTo(efeito!.semMudanca[1], 9);
   // nada foi gravado na partida
   expect(verPartida(partida)).toEqual(antes);
   // mesma meta: nenhuma diferença
@@ -127,15 +127,15 @@ it("a prévia de um ano mostra efeitos que só chegam depois do primeiro turno",
   const partida = nova();
   const previa = preverLei(partida, "politica-de-imigracao", 0, 4);
   if (!previa.ok) throw new Error(previa.erros.join(" "));
-  expect(previa.value.implantacao).toHaveLength(12);
+  expect(previa.value.implantacao).toHaveLength(8);
   // a polarização reage à lei com atraso de um trimestre
   const crise = previa.value.efeitos.find((e) => e.id === "polarizacao");
-  expect(crise?.comMudanca).toHaveLength(12);
-  // ainda nada no primeiro turno; diferença clara em um ano
-  expect(Math.abs(crise!.comMudanca[2] - crise!.semMudanca[2])).toBeLessThan(
+  expect(crise?.comMudanca).toHaveLength(8);
+  // ainda nada no primeiro turno; diferença clara em quatro turnos
+  expect(Math.abs(crise!.comMudanca[1] - crise!.semMudanca[1])).toBeLessThan(
     1e-6,
   );
   expect(
-    Math.abs(crise!.comMudanca[11] - crise!.semMudanca[11]),
+    Math.abs(crise!.comMudanca[7] - crise!.semMudanca[7]),
   ).toBeGreaterThan(0.5);
 });
