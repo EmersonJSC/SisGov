@@ -6,7 +6,7 @@
   "alvo": "pib_nominal",
   "mecanismo": "afim",
   "parametros": {
-    "coeficiente": 0.01,
+    "coeficiente": 0.25,
     "termoConstante": 0
   },
   "normalizacao": {

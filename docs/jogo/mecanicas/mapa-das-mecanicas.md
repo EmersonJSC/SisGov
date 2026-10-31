@@ -39,7 +39,7 @@ consequência (dívida → juros).
 
 | Peça | Estado |
 |---|---|
-| Leis → economia | Funciona; PIB nominal quase parado (+0,6% em 16 turnos com 4,8% de inflação) — suspeito |
+| Leis → economia | Funciona; PIB nominal consertado (+28% em 24 turnos) |
 | Economia diferencia caminhos | Sim: nada muda → dívida 110%; corte → 91% e pobreza 27→39; social → 118% e aprovação 54 |
 | Economia → população → voto | Funciona, mas governos opostos terminam iguais (Mujica e Bolsonaro: satisfação 45,3 × 45,2) |
 | Congresso, eleição, derrota | Existem; eleição de 24 turnos ainda não jogada |
@@ -51,7 +51,7 @@ consequência (dívida → juros).
 ## Ordem para a V1 (uma frente por vez)
 
 1. **Governos opostos terminam diferentes.** Termômetro: `scripts/teste/mandato.ts`
-   (24 turnos, Mujica × Bolsonaro até a eleição). Primeiro suspeito: PIB nominal parado.
+   (24 turnos, Mujica × Bolsonaro até a eleição). PIB nominal consertado; próximo suspeito: programa da direita fraco na bússola.
 2. Controle livre 0–100% e trava única de 100% do PIB.
 3. Desgaste.
 4. Jogador como partido.
