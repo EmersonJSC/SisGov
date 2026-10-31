@@ -257,11 +257,10 @@ describe("votação", () => {
     expect(b).toEqual(a);
     // M9: cada bancada que votou guarda o motivo do voto
     for (const v of a.votacoes)
-      for (const x of Object.values(v.porBancada))
-        {
-          expect(x.motivo).toEqual(expect.any(String));
-          expect(x.chance).toBeGreaterThanOrEqual(0);
-        }
+      for (const x of Object.values(v.porBancada)) {
+        expect(x.motivo).toEqual(expect.any(String));
+        expect(x.chance).toBeGreaterThanOrEqual(0);
+      }
   });
 
   it("sem apoio, o Congresso ignora a fila", () => {

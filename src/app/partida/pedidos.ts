@@ -77,6 +77,7 @@ export function passarPedidos(partida: Partida): GameState {
     seed: game.random?.seed ?? 1,
     turno: game.currentTurn,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { pedido: _caducado, ...resto } = e;
   return {
     ...game,
@@ -130,6 +131,7 @@ export function responderAoMinistro(
   }
   const leais =
     notasDoGabinete(partida).find((n) => n.area === pedido.area)?.leais ?? [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { pedido: _respondido, ...resto } = atual.game.election ?? e;
   return {
     ok: true,

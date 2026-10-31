@@ -251,6 +251,7 @@ describe("eleição e Congresso leem a reação (M7.3)", () => {
   };
 
   it("sem gatilho (e sem gabinete, M8.3) os valores são os do motor", () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { ministros: _, ...eleicao } = partida.game.election!;
     const semGabinete = {
       ...partida,

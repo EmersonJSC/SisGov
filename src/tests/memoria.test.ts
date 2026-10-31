@@ -78,7 +78,9 @@ describe("a memória no eleitorado vivo", () => {
     expect(motivos[0].tags).toEqual(regras.memoria.desemprego.tags);
     expect(sem.perfis[linha].memoria).toBeUndefined();
     // a gêmea desempregada da mesma linha sente o desalento
-    const gemea = com.perfis.findIndex((p) => p.memoria?.[0].pontos! < 0);
+    const gemea = com.perfis.findIndex(
+      (p) => (p.memoria?.[0]?.pontos ?? 0) < 0,
+    );
     expect(gemea).toBeGreaterThanOrEqual(fixo.perfis.length);
   });
 
