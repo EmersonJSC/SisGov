@@ -186,6 +186,17 @@
       },
       "atraso": 1,
       "unidade": "percentual_0_100"
+    },
+    {
+      "id": "educacao-domiciliar--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

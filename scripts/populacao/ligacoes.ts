@@ -7,6 +7,7 @@
  * aparece no relatório. Rodar de novo regrava os mesmos arquivos.
  *
  * Uso: npm run populacao:ligacoes
+ *      npm run populacao:ligacoes -- grupo_centro   (só esse segmento)
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
@@ -129,6 +130,74 @@ const REGRAS: Regra[] = [
     indices: ["producao_agropecuaria", "desigualdade_regional"],
     copia: ["grupo_agro", "grupo_trabalhadores"],
   },
+  {
+    segmento: "grupo_centro",
+    leis: [
+      "regra-fiscal",
+      "lei-anticorrupcao",
+      "transparencia-publica",
+      "valor-da-meta-de-inflacao",
+      "taxa-basica-de-juros",
+    ],
+    indices: [
+      "inflacao",
+      "desemprego",
+      "corrupcao",
+      "polarizacao",
+      "confianca_instituicoes",
+    ],
+    copia: ["grupo_classe_media", "grupo_trabalhadores"],
+  },
+  {
+    segmento: "grupo_fora_do_mercado",
+    leis: [
+      "transferencia-de-renda",
+      "organizacao-dos-programas-sociais",
+      "vagas-de-creche",
+      "licenca-parental",
+      "quem-cuida-do-idoso-dependente",
+      "garantia-de-comida",
+    ],
+    indices: [
+      "preco_alimentos",
+      "inflacao",
+      "pobreza",
+      "inseguranca_alimentar",
+    ],
+    copia: ["grupo_pobres", "grupo_familias_com_filhos"],
+  },
+  {
+    segmento: "grupo_metropoles",
+    leis: [
+      "transporte-publico",
+      "vigilancia-de-bairro",
+      "policias-dos-estados",
+      "agua-e-esgoto",
+      "habitacao-publica",
+    ],
+    indices: [
+      "violencia_letal",
+      "crimes_patrimoniais",
+      "mobilidade_urbana",
+      "deficit_habitacional",
+      "sensacao_seguranca",
+    ],
+    copia: ["grupo_periferias", "grupo_classe_media"],
+  },
+  {
+    segmento: "grupo_outras_religioes",
+    leis: [
+      "laicidade-do-estado",
+      "ensino-religioso",
+      "imunidade-e-dinheiro-para-igrejas",
+      "casamento-e-uniao-civil",
+      "educacao-domiciliar",
+      "conteudo-moral-e-sexual",
+      "discriminacao-e-crimes-de-odio",
+    ],
+    indices: ["discriminacao", "liberdade_civil"],
+    copia: ["grupo_progressistas"],
+  },
 ];
 
 const RAIZ = "src/conteudo";
@@ -156,6 +225,11 @@ type Consequencia = Record<string, unknown> & {
   alvo: string;
   parametros: Record<string, number>;
 };
+type Efeito = {
+  id: string;
+  alvo: string;
+  parametros: Record<string, number>;
+} & Record<string, unknown>;
 const existentes: Consequencia[] = (mundo.consequencias as string[]).map(ler);
 const ligacao = (origem: string, alvo: string) =>
   existentes.find((c) => c.origem === origem && c.alvo === alvo);
@@ -189,29 +263,47 @@ const escrever = (
   gravados.push(`${RAIZ}/${path}`);
 };
 
-for (const regra of REGRAS) {
+// Com nomes de segmento na linha de comando, só esses são regravados.
+const so = process.argv.slice(2);
+for (const regra of REGRAS.filter(
+  (r) => !so.length || so.includes(r.segmento),
+)) {
   const fator = regra.fator ?? 1;
   const nome = hifen(regra.segmento);
   for (const leiId of regra.leis) {
     const lei = leiPorId.get(leiId);
     if (!lei) throw new Error(`Lei desconhecida: ${leiId}`);
+    // Os efeitos da lei moram no arquivo dela: copia o do primeiro segmento
+    // antigo que a lei já alcança.
+    const arquivo = ler(lei.path);
+    const efeitos: Efeito[] = arquivo.efeitos ?? [];
     const fonte = regra.copia
-      .map((s) => ligacao(lei.controle, s))
-      .find((c) => c !== undefined);
+      .map((s) => efeitos.find((e) => e.alvo === s))
+      .find((e) => e !== undefined);
     if (!fonte) {
       faltam.push(
-        `${regra.segmento} ← ${leiId} (nenhum de ${regra.copia.join(", ")} tem ligação)`,
+        `${regra.segmento} ← ${leiId} (nenhum de ${regra.copia.join(", ")} tem efeito)`,
       );
       continue;
     }
     const id = `${leiId}--${nome}`;
-    escrever(fonte, id, regra.segmento, fator);
-    const arquivo = ler(lei.path);
-    if (!arquivo.consequencias.includes(id)) {
-      arquivo.consequencias.push(id);
-      gravar(lei.path, arquivo);
-      gravados.push(`${RAIZ}/${lei.path}`);
-    }
+    const coeficiente = fonte.parametros.coeficiente;
+    arquivo.efeitos = [
+      ...efeitos.filter((e) => e.id !== id),
+      {
+        ...fonte,
+        id,
+        alvo: regra.segmento,
+        parametros: {
+          ...fonte.parametros,
+          ...(coeficiente !== undefined
+            ? { coeficiente: Math.round(coeficiente * fator * 1e6) / 1e6 }
+            : {}),
+        },
+      },
+    ];
+    gravar(lei.path, arquivo);
+    gravados.push(`${RAIZ}/${lei.path}`);
   }
   for (const indice of regra.indices) {
     const v = variaveis.get(indice);

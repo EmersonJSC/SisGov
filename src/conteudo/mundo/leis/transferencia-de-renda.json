@@ -33,7 +33,7 @@
       "alvo": "pobreza",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -3.33333e-5,
+        "coeficiente": -0.0000333333,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -44,7 +44,7 @@
       "alvo": "desigualdade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -1.94444e-5,
+        "coeficiente": -0.0000194444,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -55,7 +55,7 @@
       "alvo": "inseguranca_alimentar",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -1.94444e-5,
+        "coeficiente": -0.0000194444,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -66,7 +66,7 @@
       "alvo": "informalidade",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 8.3333e-6,
+        "coeficiente": 0.0000083333,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -77,7 +77,7 @@
       "alvo": "consumo",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": 8.3333e-6,
+        "coeficiente": 0.0000083333,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -88,7 +88,7 @@
       "alvo": "participacao_trabalho_cuidadoras",
       "mecanismo": "afim",
       "parametros": {
-        "coeficiente": -8.3333e-6,
+        "coeficiente": -0.0000083333,
         "termoConstante": 0
       },
       "atraso": 1,
@@ -191,6 +191,21 @@
       "mecanismo": "afim",
       "parametros": {
         "coeficiente": -3.333333,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "normalizacao": {
+        "divisor": "pib_nominal",
+        "multiplicador": 100
+      },
+      "unidade": "indice_0_100"
+    },
+    {
+      "id": "transferencia-de-renda--grupo-fora-do-mercado",
+      "alvo": "grupo_fora_do_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 3.333333,
         "termoConstante": 0
       },
       "atraso": 0,

@@ -7291,6 +7291,54 @@
       "avaliacao": "maior_melhor"
     },
     {
+      "id": "grupo_centro",
+      "tipo": "grupo",
+      "nome": "Eleitores de centro",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_fora_do_mercado",
+      "tipo": "grupo",
+      "nome": "Famílias fora do mercado de trabalho",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_metropoles",
+      "tipo": "grupo",
+      "nome": "Moradores das metrópoles",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
+      "id": "grupo_outras_religioes",
+      "tipo": "grupo",
+      "nome": "Outras religiões e sem religião",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Grupos sociais",
+      "avaliacao": "maior_melhor"
+    },
+    {
       "id": "grupo_familias_com_filhos",
       "tipo": "grupo",
       "nome": "Famílias com filhos",

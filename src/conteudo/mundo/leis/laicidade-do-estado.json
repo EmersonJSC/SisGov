@@ -236,6 +236,17 @@
       },
       "atraso": 0,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "laicidade-do-estado--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

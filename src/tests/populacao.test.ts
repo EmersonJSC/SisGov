@@ -183,3 +183,34 @@ describe("V1-08 — Brasil", () => {
     expect(r.ok).toBe(false);
   });
 });
+
+describe("grupos de quem não tinha bolha (centro, metrópole, fora do mercado, outras religiões)", () => {
+  const partida = (() => {
+    const criada = criarPartida({ ocorrencias: false });
+    if (!criada.ok) throw new Error(criada.erros.join(" "));
+    return criada.value;
+  })();
+
+  it.each([
+    ["transferencia-de-renda", "grupo_fora_do_mercado"],
+    ["transporte-publico", "grupo_metropoles"],
+    ["lei-anticorrupcao", "grupo_centro"],
+    ["laicidade-do-estado", "grupo_outras_religioes"],
+  ])("a lei %s mexe com o grupo %s", (leiId, grupo) => {
+    const lei = verPartida(partida).leis.find((l) => l.id === leiId)!;
+    // Lei de opções vai para a mais distante da atual; lei de dinheiro sobe só
+    // uma parte, para não estourar o orçamento.
+    const alvo = lei.opcoes
+      ? lei.opcoes.reduce((longe, o) =>
+          Math.abs(o.valor - lei.nivel) > Math.abs(longe.valor - lei.nivel)
+            ? o
+            : longe,
+        ).valor
+      : lei.nivel + (lei.maximo! - lei.nivel) * 0.2;
+    const mudada = mudarLei(partida, lei.id, alvo);
+    if (!mudada.ok) throw new Error(mudada.erros.join(" "));
+    const com = turnos(mudada.value, 3).game.execution.values[grupo];
+    const sem = turnos(partida, 3).game.execution.values[grupo];
+    expect(com).not.toBeCloseTo(sem, 3);
+  });
+});

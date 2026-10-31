@@ -118,6 +118,20 @@
       },
       "atraso": 2,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "imunidade-e-dinheiro-para-igrejas--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -1]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

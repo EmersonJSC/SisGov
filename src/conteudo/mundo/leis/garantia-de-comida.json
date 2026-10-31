@@ -180,6 +180,17 @@
       },
       "atraso": 0,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "garantia-de-comida--grupo-fora-do-mercado",
+      "alvo": "grupo_fora_do_mercado",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

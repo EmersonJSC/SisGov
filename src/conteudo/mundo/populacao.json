@@ -30,7 +30,8 @@
           "agro-patronal": "grupo_agro",
           "agricultura-familiar": "grupo_agricultura_familiar",
           "aposentado": "grupo_aposentados",
-          "desempregado": "grupo_desempregados"
+          "desempregado": "grupo_desempregados",
+          "fora": "grupo_fora_do_mercado"
         }
       }
     },
@@ -41,7 +42,8 @@
       "atributos": {
         "valores": {
           "progressista": "grupo_progressistas",
-          "conservador": "grupo_conservadores"
+          "conservador": "grupo_conservadores",
+          "centro": "grupo_centro"
         }
       }
     },
@@ -52,7 +54,8 @@
       "atributos": {
         "religiao": {
           "evangelica": "grupo_evangelicos",
-          "catolica": "grupo_catolicos"
+          "catolica": "grupo_catolicos",
+          "outra": "grupo_outras_religioes"
         }
       }
     },
@@ -63,7 +66,8 @@
       "atributos": {
         "territorio": {
           "periferia": "grupo_periferias",
-          "interior": "grupo_interior"
+          "interior": "grupo_interior",
+          "metropole": "grupo_metropoles"
         }
       }
     },

@@ -194,6 +194,17 @@
       },
       "atraso": 0,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "transporte-publico--grupo-metropoles",
+      "alvo": "grupo_metropoles",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

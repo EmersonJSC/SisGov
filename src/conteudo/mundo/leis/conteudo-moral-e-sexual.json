@@ -159,6 +159,21 @@
       },
       "atraso": 1,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "conteudo-moral-e-sexual--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 3],
+          [33, 0],
+          [67, -2],
+          [100, -5]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

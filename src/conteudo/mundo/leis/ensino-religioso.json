@@ -129,6 +129,20 @@
       },
       "atraso": 2,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "ensino-religioso--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 2],
+          [50, 0],
+          [100, -4]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

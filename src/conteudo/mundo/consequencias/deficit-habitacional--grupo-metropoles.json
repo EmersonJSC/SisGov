@@ -1,0 +1,17 @@
+{
+  "id": "deficit-habitacional--grupo-metropoles",
+  "tipo": "consequencia",
+  "versaoEsquema": 1,
+  "origem": "deficit_habitacional",
+  "alvo": "grupo_metropoles",
+  "mecanismo": "afim",
+  "parametros": {
+    "coeficiente": -0.3,
+    "termoConstante": 0
+  },
+  "unidade": "indice_0_100",
+  "atrasoPassos": 0,
+  "duracao": {
+    "modo": "continuo"
+  }
+}

@@ -173,6 +173,17 @@
       "atraso": 1,
       "leitura": "nivel",
       "unidade": "percentual_pib"
+    },
+    {
+      "id": "vigilancia-de-bairro--grupo-metropoles",
+      "alvo": "grupo_metropoles",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": -0.07,
+        "termoConstante": 0
+      },
+      "atraso": 1,
+      "unidade": "indice_0_100"
     }
   ]
 }

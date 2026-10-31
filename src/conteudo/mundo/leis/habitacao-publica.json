@@ -96,6 +96,19 @@
         ]
       },
       "atraso": 4
+    },
+    {
+      "alvo": "grupo_metropoles",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, -1],
+          [50, 0],
+          [100, 3]
+        ]
+      },
+      "atraso": 0,
+      "id": "habitacao-publica--grupo-metropoles"
     }
   ]
 }

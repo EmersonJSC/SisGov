@@ -181,6 +181,17 @@
       },
       "atraso": 1,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "transparencia-publica--grupo-centro",
+      "alvo": "grupo_centro",
+      "mecanismo": "afim",
+      "parametros": {
+        "coeficiente": 0.1,
+        "termoConstante": 0
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }

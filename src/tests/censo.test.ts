@@ -50,9 +50,14 @@ describe("censo da população", () => {
   it("a faixa diz se tem grupo na tela, para o buraco ficar à vista", () => {
     const faixas = censoDoPais(partida().content).flatMap((a) => a.faixas);
     // Quem tem apelido: informal é "Informais e de aplicativo" no mapa de
-    // segmentos. Quem não tem: centro, que é 30% do eleitorado e não tem bolha.
-    expect(faixas.find((f) => f.id === "informal")?.grupo).toBeTruthy();
-    expect(faixas.find((f) => f.id === "centro")?.grupo).toBeUndefined();
+    // segmentos, e o centro, a metrópole, quem está fora do mercado e as
+    // outras religiões ganharam bolha própria. Quem não tem, de propósito:
+    // 30 a 59 anos, sem filhos e sem pauta ambiental (ninguém faz política
+    // em nome deles).
+    for (const id of ["informal", "centro", "metropole", "fora", "outra"])
+      expect(faixas.find((f) => f.id === id)?.grupo).toBeTruthy();
+    for (const id of ["30-59", "sem", "nao"])
+      expect(faixas.find((f) => f.id === id)?.grupo).toBeUndefined();
   });
 
   it("a faixa maior vem antes, porque é o país que ela descreve", () => {

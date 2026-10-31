@@ -144,6 +144,21 @@
       },
       "atraso": 1,
       "unidade": "indice_0_100"
+    },
+    {
+      "id": "discriminacao-e-crimes-de-odio--grupo-outras-religioes",
+      "alvo": "grupo_outras_religioes",
+      "mecanismo": "pontos",
+      "parametros": {
+        "pontos": [
+          [0, 0],
+          [33, -1],
+          [67, -3],
+          [100, -6]
+        ]
+      },
+      "atraso": 0,
+      "unidade": "indice_0_100"
     }
   ]
 }
