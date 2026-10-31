@@ -4874,6 +4874,11 @@ button {
   text-transform: uppercase;
 }
 
+.bs-pop {
+  fill: light-dark(#3b6fb6, #6a9ae0);
+  pointer-events: all;
+}
+
 .bs-ref {
   cursor: pointer;
 }

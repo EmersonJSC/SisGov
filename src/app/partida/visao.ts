@@ -444,7 +444,11 @@ export function verPartida(partida: Partida): VisaoPartida {
     ];
   });
   const pressao = pressaoDaPartida(partida);
-  const eleitorado = pacoteVivo(partida.content, values);
+  const eleitorado = pacoteVivo(
+    partida.content,
+    values,
+    partida.game.congress?.memoria,
+  );
   const humor = eleitorado
     ? humorDoPais(eleitorado.perfis, eleitorado.pesoDoSegmento, values)
     : undefined;

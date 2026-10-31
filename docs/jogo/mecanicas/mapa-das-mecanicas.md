@@ -1,205 +1,246 @@
 # Mapa das mecânicas
 
-> **Status: PROPOSTA (29/out/2026), aguardando aprovação do autor.** Reorganiza o
-> jogo em mecânicas e submecânicas, com o que está feito e o que falta.
-> Não substitui o [PLANO](../../../PLANO.md) enquanto não for aprovado.
+> Refeito em 30/out/2026 a pedido do autor: o jogo dividido nas três partes do
+> código (motor, jogo e conteúdo, interface). Cada parte lista as mecânicas que
+> ela **deve ter**; o que já existe foi encaixado nelas, não o contrário.
+> A numeração antiga (M1 a M13) está na tabela do fim.
 
-Legenda: `[x]` feito · `[~]` parcial · `[ ]` falta.
+Legenda: `[x]` feito · `[~]` parcial · `[ ]` falta · "não visto" = provado por
+teste, falta conferir na tela.
 
-## Ordem de trabalho (decidida em 29/out)
+## Frente atual
 
-1. **M7** Bússola e padrões, começando por ligar a aprovação do motor aos perfis vivos.
-2. M8 Partido, candidato e governo, M9 Congresso, M10 Eleição e governo, M11, M12, M1, M3, M5: na ordem que o autor escolher, uma por vez.
-3. **Motor da M2** (exclusão entre leis, opções em valor, teto de 4×, Segurança e defesa em duas): antes do último passo.
-4. **Por último, juntos:** a revisão manual jogando e a Calibragem. É aqui que entram o **conteúdo da M2** (avaliar lei por lei: explicação, exclusões, bússola, catálogo de ~250) e a revisão de texto da M6 (frases das bolhas, neutralidade das réguas, `gosta`/`odeia`). O motor já tem de estar pronto.
+**J3 Economia e orçamento** (autor, 30/out): deixar a economia funcionando para
+poder pôr e tirar leis econômicas e equilibrar depois. É conteúdo, não motor: o
+motor já sabe tudo o que ela precisa (ver MO3).
 
-A M6 fecha o núcleo agora; o que sobra dela é revisão de texto e vai para o passo 4.
+## As três partes
 
-## M1. Tempo
+| Parte | Pasta | O que faz | Estado |
+|---|---|---|---|
+| **Motor** | `src/engine` | Calcula o mundo a cada mês. Não conhece lei, partido nem país. | Fechado (30/out) |
+| **Jogo e conteúdo** | `src/game`, `src/app/partida`, `src/conteudo` | Regras do jogo (Congresso, eleição, bússola…) e o mundo em JSON (leis, setas, índices, eventos). | Grande parte feita; é onde mora quase tudo que falta |
+| **Interface** | `src/ui` | O que se vê e se clica. | Feita em boa parte; muito "não visto" |
 
-- [x] Turno trimestral e calendário
-- [ ] Três meses na tela (animação do turno)
+Regra prática: se a mudança é **número ou ligação**, é conteúdo; se é **regra
+de partida** (quem vota, quem ganha, o que trava), é jogo; só é motor se o
+cálculo em si não existe.
 
-## M2. Leis
+---
 
-Conferido no código e no git em 29/out: M2 tem mais pronto do que a lista
-antiga dizia. Por isso ela foi dividida em cinco submecânicas.
+## Parte 1. Motor (`src/engine`)
 
-**M2 fica por último** (decisão do autor, 29/out). Duas metades: o **motor**
-(A4, A5, teto de 4×, separar Segurança e defesa) vem antes; o **conteúdo**
-(avaliar lei por lei, explicação, catálogo) vem no passo final, com a Calibragem.
+**MO1 Pacote**
 
-**M2.1 Catálogo e molde**
+- [x] Ler e validar os JSON, juntar mundo e país, checar coerência (`model/`)
+- [x] Diagnóstico do pacote (`diagnostics/`)
 
-- [x] Molde v4: 224 leis em 11 áreas e 2 pétreas, com verificador e inventário (`moldeDasLeis.test`, `inventarioDeLeis.test`)
-- [x] Leis em três níveis, leis filhas, leis globais (testes próprios)
-- [x] Busca de leis na tela
-- [ ] Separar Segurança e defesa em duas esferas (hoje uma área com 45 leis)
-- [ ] Uma lei fora do molde (área "Tributação", sem o formato das 11 áreas)
-- [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
+**MO2 Tipos de variável**
 
-**M2.2 Leis de valor e travas**
+- [x] Controle (as leis), estoque, calculado, derivado (fórmula), situação, grupo
 
-- [x] Travas individuais e tetos de 40% dos pisos tirados (A2)
-- [x] Trava conjunta de 100% do PIB; acima da receita vira déficit (A3)
-- [x] Controle de alíquota e de verba livre (0 a 100%, `faixaDaAliquota.test`)
-- [x] Pisos vinculados e `pisoPorLei` (`pisosVinculados.test`)
-- [~] Teto de 4× o valor atual em `faixaNumerica` ainda vale para unidades que não são moeda nem percentual
+**MO3 Setas**
+
+- [x] Afim: `origem × coeficiente + termo`
+- [x] Resposta gradual, atraso e duração, condições, transbordo
+- [x] Derivado como soma de produtos (com escala, inverso e complemento): é o que permite "proporcional ao PIB" sem código novo
+
+**MO4 Passo**
+
+- [x] Avanço mês a mês em ordem fixa, histórico limitado, explicação do que mudou
+- [x] Leis viram setas ativas (`translatePolicyCommands`)
+- [x] Dilemas, eventos e situações avaliados a cada passo
+- [x] Aprovação por perfil opcional (`profileApproval`, o jogo manda os perfis vivos)
+
+**MO5 Salvar e retomar**
+
+- [x] Exportar, restaurar e comparar a retomada
+
+**Motor fechado (30/out).** Conferido rodando: 54 arquivos de teste que usam
+o motor, 309 de 311 verdes, `tsc -b` limpo. As 2 falhas são contas do jogo
+escritas para o turno de 3 meses (J1). Proporcional ao PIB já existe de
+duas formas: derivado (`alíquota × pib_nominal`) e seta com
+`normalizacao: { divisor: pib_nominal }`. Nada novo entra aqui sem um caso
+que o conteúdo não consiga resolver.
+
+---
+
+## Parte 2. Jogo e conteúdo
+
+**J1 Tempo**
+
+- [x] Turno de 2 meses, mandato de 24 turnos; o conteúdo escrito em trimestres é convertido (`game/calendario.ts`)
+- [ ] Acertar os testes que contam trimestres: `brasil2026` (juros explosivos) e `fichaV3` (três leis piloto)
+- [ ] Rodar a suíte inteira com o turno novo e conferir na tela
+
+**J2 Leis (regras e catálogo)**
+
+- [x] Molde v4: 224 leis em 11 áreas e 2 pétreas, com verificador e inventário
+- [x] Leis em três níveis, filhas e globais; leis do mundo, estado no país (`paises/brasil/leis-no-pais.json`)
+- [x] Travas individuais, trava conjunta de 100% do PIB, alíquota e verba livre de 0 a 100%, pisos vinculados
+- [x] Estado e custo das leis
+- [~] Exclusão entre leis: a regra existe (`game/validatePolicyAction.ts`), nenhuma lei declara com quem não convive
+- [ ] Aprovar uma lei que exclui outra pede revogar a outra (A4)
 - [ ] Liberar opções travadas e converter em valor onde couber (A5)
-
-**M2.3 Exclusão e dependência entre leis**
-
-- [~] O mecanismo existe (`excludedActivePolicyIds` em `validatePolicyAction.ts`), mas nenhuma lei declara com quem não convive
-- [ ] A lei declara a exclusão; aprovar pede revogar a outra (A4)
-
-**M2.4 Explicação e janela da lei**
-
-- [x] Prévia do efeito e no bolso de quem a lei bate
-- [ ] Explicação por lei e opção, com teste que a exige (A6)
-- [ ] Régua também nas leis de opções? (A7, decisão do autor)
-
-**M2.5 Leis do mundo, estado do país**
-
-- [x] Leis sem país; dados do Brasil em `paises/brasil/` (`leis-no-pais.json`, `leisNoPais.test`)
-- [x] Estado e custo das leis (`estadoDasLeis.test`, `custosDasLeis.test`)
+- [ ] Separar Segurança e defesa em duas áreas (hoje uma com 45 leis)
+- [ ] Pôr no molde a lei de "Tributação" que está fora dele
+- [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
+- [ ] Explicação por lei e por opção, com teste que a exige (A6)
 - [ ] Troca de nomes por país (ex.: "Selic")
+- [ ] Ligação com a população, só no JSON das leis (vem depois de a população estar pronta): `gosta`/`odeia` dos desempregados, setas lei→grupo (ex.: `grupo_evangelicos`) e "esta lei mexe em tal tag". Teste de encaixe: seta de lei para um grupo move a satisfação
 
-**M2.6 Ligação das leis ao grafo (pedido do autor, 30/out)**
+**J3 Economia e orçamento** ← frente atual
 
-- [ ] Conferir se as leis estão ligadas às variáveis certas: o autor suspeita que as leis não estão conectadas corretamente e por isso o jogador não sente efeito. Ponto de partida: o diagnóstico `scripts/diagnostico/mundo-responde.ts` (compara o que muda entre jogador parado, no máximo e no mínimo).
-- [ ] Reajustar os índices que aparecem na tela (os do topo e as bolhas): rever quais mostrar e se são os certos
-- [ ] Trocar os ícones genéricos dos índices por ícones próprios de cada um
-
-## M3. Economia e orçamento
-
-- [x] Reais e caixa, fases 1 a 6
-- [~] Economia fase 2 (juntar leis, converter em faixa, leis novas)
-- [ ] Destino da sobra no fundo soberano e contribuição sobre salários
-- [ ] Setores econômicos (indústria, serviços, agro)
+- [x] Economia em reais: PIB, ocupados, massa salarial, lucros, consumo, patrimônios (fases 1 a 6)
+- [x] Imposto = alíquota × base × (1 − o que escapa), cada receita com a sua lei
+- [x] Caixa, déficit e dívida
+- [~] Fase 2: juntar leis repetidas, converter em faixa, leis novas
+- [~] Ligação das leis econômicas ao grafo: conferir bolha por bolha (`scripts/diagnostico/mundo-responde.ts` e o script por bolha)
+- [ ] Coeficientes proporcionais ao PIB: 47 efeitos em 11 leis de verba ainda usam coeficiente por real; pôr `normalizacao` pelo `pib_nominal`, como os outros 59 (só JSON)
+- [ ] `transparencia_fiscal_internacional` não é movida por nenhuma lei
 - [ ] Gasto fixo da rede (~30% do PIB)
+- [ ] Destino da sobra: fundo soberano
+- [ ] Contribuição sobre salários
+- [ ] Setores: indústria, serviços, agro
 
-## M4. Rede de consequências (o motor)
+**J4 Rede de consequências (fora da economia)**
 
-- [x] Estoques, calculados, setas, transbordo
-- [ ] Coeficientes proporcionais ao PIB (hoje alguns são dinheiro fixo)
+- [x] Saúde → mortalidade e natalidade; piso do salário mínimo
+- [ ] Conferir a ligação das leis ao grafo nas outras áreas (M2.6): o autor suspeita que o jogador não sente efeito porque as leis estão mal ligadas
+- [ ] Rever quais índices o jogo mostra e se são os certos
 
-## M5. População
+**J5 População**
 
-- [x] Censo (A), bolso (B) e movimento (C)
-- [x] Saúde → mortalidade, natalidade, piso do salário mínimo
-- [ ] Faixas sem grupo na tela (centro, fora da força de trabalho…)
-- [ ] Desemprego: desalento, duração do seguro, ex-informal com renda zero
-- [ ] Perfil manda e o agregado é a soma (futuro)
+> Visão do autor (30/out): a população é uma **IA de jogo** (não LLM). Cada
+> pessoa "pensa", tem memória e opinião própria, separada por grupos e
+> pessoas. Ela é um **módulo independente**: existe sem leis nem governo e se
+> adapta quando eles chegam. Só guarda o registro e o efeito na satisfação; a
+> causa vem como lista de índices ou **tags**, nunca como nome de lei.
 
-## M6. Opinião e Grupos
+- [x] Censo, bolso e movimento (renda, valores e religião mudam com o país)
+- [x] Motivos por pessoa (passo 1): satisfação = 50 + soma de motivos; hoje produzem motivos o grupo e o bolso (`congresso/motivos.ts`). Memória e leis entram depois como novos produtores
+- [x] Tags nos motivos (passo 2): cada `Motivo` leva `tags`. O de grupo leva o id do grupo, o de bolso leva `bolso`, o de memória leva as tags do JSON (`regras.memoria.desemprego.tags` em `mundo/congresso.json`). Leis e economia apontam para essas tags nos próprios JSON; é assim que os módulos conversam
+- [x] Memória por pessoa, no salvar e carregar (`game/congresso/memoria.ts`, `EstadoDoCongresso.memoria`): memória de coorte por linha do eleitorado, com a fração que já foi desempregada e voltou (gratidão, esfria por turno) e os meses de quem segue sem emprego (desalento). Entra como produtor de motivos `memoria`. [ ] **Causa** ("quais políticas levaram a isso") fica por tags ou índices e depende de o módulo das leis declará-la
+- [ ] Desemprego: cobertura do seguro e ex-informal com renda de bico (desalento e gratidão já feitos); calibrar `gratidao` 6, `desalento` 8, `mesesDoDesalento` 12 e `esquecimentoPorTurno` 0,05 (chutes)
+- [x] Sortear uma pessoa (passo 3, só a mecânica): o módulo gera a pessoa de um perfil sorteado por peso, com nome e idade fixos pela semente, guarda no estado (salvar e carregar) e devolve a mesma a cada clique na mesma chave; a opinião sai dos motivos do perfil ao vivo. Falta a memória dela (passo 2)
+- [ ] Futuro: inverter para "o perfil manda e o agregado é a soma". Depende de o bolso guardar a fonte do dinheiro e de os setores (J3) existirem (PLANO, item 3)
 
-- [x] Satisfação por perfil (com bolso) e apoio pesado pelo tamanho
+**J6 Opinião e grupos**
+
+- [x] Satisfação por perfil (com bolso), apoio pesado pelo tamanho
 - [x] Radicais e lealistas
-      Núcleo fechado. A aprovação do motor com perfis fixos passa para a M7.
-
-Revisão de texto, vai para o passo final (junto com a M2):
-
-- [~] País em frases (55 de 192 bolhas; as faixas escritas se julgam jogando)
-- [ ] `gosta`/`odeia` dos desempregados
+- [~] País em frases (55 de 192 bolhas)
 - [ ] Neutralidade das réguas e das cores
 
-## M7. Bússola e padrões
+**J7 Bússola e padrões**
 
-- [x] Bússola mostra
-- [x] Aprovação do motor lê os perfis vivos (29/out, `aprovacaoViva` em `game/congresso`; `aprovacaoViva.test.ts`)
-- [~] O jogo percebe padrões, por **gatilhos** (item 6 do PLANO)
-  - [x] M7.2: 11 gatilhos em `mundo/gatilhos.json`, lidos do histórico das leis e do caminho da bússola (`game/gatilhos`, `gatilhos.test.ts`); aparecem na Bússola
-  - [x] Gatilhos fiscais (arrocho e farra, 29/out): regra `fiscal` lê o resultado guardado no `caminho` a cada turno
-  - [x] M7.3: grupos e frases reagem aos gatilhos (29/out; mexe na satisfação e na popularidade, por área; eleição e Congresso passaram a ler, 29/out)
+- [x] Bússola, aprovação lida dos perfis vivos
+- [x] 13 gatilhos (incluindo os fiscais), com reação nos grupos, na eleição e no Congresso
+- [x] Promessa contra ação
 
-## M8. Partido, candidato e governo
+**J8 Partido e governo**
 
-Acrescentada em 29/out a pedido do autor: faltava a cadeia inteira, do partido
-ao candidato e aos ministros, e **como cada um mexe na população**. Os itens
-com "a decidir" são ideias para o autor aprovar, não desenho fechado.
+- [x] Gerador de pessoas; presidente, vice e ministros (um por área)
+- [x] Popularidade do ministro pelos grupos leais; ministro porta-voz (pedidos)
+- [~] Carisma vivo (falta o lado da mídia, J12)
+- [~] Troca de chapa na eleição (falta a lei estender ou encurtar o limite de mandatos)
+- [ ] Partido: o que defende, alas, disciplina da bancada
+- [ ] Afinidade de cada grupo com o partido
+- [ ] Desgaste do partido e antipartido
+- [ ] A decidir: o que o candidato muda de fato; competência do ministro na eficácia da pasta; troca e demissão de ministro
 
-**M8.1 Partido**
+**J9 Congresso**
 
-- [ ] Identidade: o que o partido defende (ideologia, alas internas, disciplina da bancada)
-- [ ] Jogador como partido, não presidente; partida começa com o partido recém-eleito
+- [x] Tramitação e votação
+- [x] Motivo do voto de cada bancada, quem mudou de lado, disposição com o governo
+- [x] Pétrea: tentar mexer custa humor no Senado e satisfação nos grupos
 
-**M8.2 Candidato**
-
-- [~] Hoje: escolhe-se o presidente entre personagens gerados com biografia, opiniões, carisma e experiência
-- [x] Gerador de pessoas (29/out): serve a candidato, vice e ministro; 4 atributos novos (integridade, articulação, comunicação, gestão) na ficha
-- [x] A tela de escolha não mostra lado nem ideologia, só biografia, opiniões e atributos
-- [ ] A conferir: o que o candidato escolhido muda de fato no jogo (carisma, experiência, opiniões)
-- [x] Promessa contra ação (30/out, `game/promessa.ts`): governar ao contrário do lado que o presidente disse querer (o ponto dele em relação ao início do governo) tira satisfação de todos os grupos, com tolerância e teto; a frase aparece na Bússola
-- [~] Carisma vivo (30/out, `game/carisma.ts`): o desvio do carisma do presidente (±1,5 sobre a ficha de 0 a 3) anda 20% por turno atrás da satisfação média do eleitorado e da promessa quebrada; entra no voto quando ele concorre e na ficha da tela. Falta: os ataques da mídia (M13)
-- [ ] A decidir: o candidato dá ponto de partida na bússola? Pesa na popularidade inicial?
-
-**M8.3 Chapa e ministros**
-
-- [x] Tela de escolha completa: presidente, vice e ministros, com "Sortear ministros" a partir da chapa (fatia A, 29/out)
-- [x] Vice
-- [~] Em cada eleição o jogo pergunta se mantém ou troca a chapa (feito); passados 2 mandatos seguidos a troca é obrigatória, se a lei assim mandar (hoje vale o limite do país; a lei estender ou encurtar falta) (autor, 29/out)
-- [x] Ministros são os das bolhas: um por área, com nome, atributos e opiniões (o ponto na bússola fica por dentro)
-- [~] Popularidade do ministro (fatia B, 29/out): nasce dos grupos leais a ele (cada grupo de um só ministro, repartidos pelo lado ideológico com cota por ministro), pelo tamanho e pela satisfação de cada um (`game/gabinete.ts`); como a satisfação já sai do aquecimento e lê leis, índices e gatilhos, a nota anda com eles. A média, fora de 50, soma ou tira até ±4 pontos de todos os grupos (popularidade do governo e eleição). Lealdade exclusiva feita (D, passo 1, 30/out). Porta-voz feito (D, passo 2)
-- O Senado não olha a popularidade do ministro, só a lei (autor, 29/out); a popularidade do ministro só pesa na do partido e do governo
-- [x] Ministro porta-voz (D, passo 2, 30/out; `game/pedidos.ts`): de vez em quando um ministro, não todos, leva ao jogo as leis que ele e os grupos leais a ele querem (ex.: segurança, 3 grupos leais). Aceitar ou recusar mexe na satisfação desses grupos
-- [ ] A decidir: competência do ministro (gestão) mexe na eficácia das leis da pasta?
-- [ ] A decidir: troca de ministro, demissão, escândalo
-
-**M8.4 Influência na população** (a cadeia que faltava)
-
-- [ ] Afinidade de cada grupo com o partido (ideologia do partido × `gosta`/`odeia` do grupo)
-- [ ] Efeito do candidato sobre a satisfação dos perfis (carisma, carisma × grupo)
-- [ ] Efeito dos ministros: ponto na bússola do ministro contra o do eleitor; escândalo derruba a popularidade
-- [ ] Como isso entra na eleição e no Congresso (hoje leem a satisfação por perfil)
-
-**M8.5 Desgaste**
-
-- [ ] Desgaste do partido: sobe sempre por baixo, opinião segura, queda em escândalo, crise ou eleição
-- [ ] Antipartido (limite 16 do Grupos)
-
-## M9. Congresso e tramitação
-
-- [~] Tramitação e votação existem
-- [~] Plenário fiel (30/out, fatia A): o seu partido em dourado (o centro virou lilás para não se confundir) e, em cada projeto da fila, "Como cada bancada deve votar": chance de sim e o que mais pesa (eleitor, bússola, humor com o governo ou frente). `motivoDoVoto` em `app/partida/tramitacao.ts`. Falta: mostrar por que votou assim nas votações já feitas e quem mudou de lado
-- [~] Reação do Senado e da população a mudança em pétrea (humor das bancadas e satisfação dos grupos; falta ver na tela)
-
-## M10. Eleição e governo
+**J10 Eleição e fim**
 
 - [~] Eleição existe, falta o adversário
 - [ ] Fim de jogo (perder encerra)
-- A chapa e os ministros estão em M8.3.
 
-## M11. Ocorrências e pressão
+**J11 Ocorrências e pressão**
 
-- [x] Ocorrências, crises, grupos de pressão, ministérios no mapa
-- [ ] Ministros com nome nas ocorrências (`occurrences.ts` ainda usa o nome da pasta; depende da M8.3)
+- [x] Ocorrências, crises, grupos de pressão
+- [ ] Dilemas que nascem do estado do país (hoje 72 de 91 são só sorte, ~1% por turno)
+- [ ] Ministros com nome nas ocorrências (`occurrences.ts` usa o nome da pasta)
 
-## M12. Partida e abertura
+**J12 Mídia**
 
-- [x] Salvar, carregar, exportar
+- [ ] Ideia do autor, sem desenho: ataque na mídia mexe no carisma, na popularidade e pressiona o Senado. Abre depois da J8.
+
+**J13 Partida**
+
+- [x] Criar, salvar, carregar, exportar
+
+**J14 Redes sociais** (mecânica própria, apoiada na população; autor, 30/out)
+
+- [ ] Feed vivo: cada motivo forte de uma pessoa sorteada vira um post curto (texto de modelo por tag e sinal, no JSON, preenchido com os dados dela). Uma amostra por turno, clicável até o perfil
+- [ ] Não simula uma rede social inteira: sem seguidores, respostas nem curtidas
+- [ ] Só lê da população (motivos, tags, memória); a população não depende dela
+
+---
+
+## Parte 3. Interface (`src/ui`)
+
+**I1 Mapa político**
+
+- [x] Índices em anéis, no ângulo das áreas que os mexem (passo 1; foco numa lei e num índice não visto)
+- [ ] Linhas só no foco (passo 2, `docs/jogo/interface/mapa-em-tres-aneis.md`)
+- [ ] Ícones próprios para cada índice
+
+**I2 Turno na tela**
+
+- [x] Passar o turno, jornal
+- [ ] Os meses do turno animados
+
+**I3 Leis na tela**
+
+- [x] Busca, catálogo, janela da lei, régua, prévia do efeito e do bolso
+- [~] Teto de 4× em `faixaNumerica` (`Documentos.tsx`) ainda vale para unidades que não são moeda nem percentual
+- [ ] Régua também nas leis de opções? (A7, decisão do autor)
+
+**I4 População, grupos e bússola**
+
+- [x] Censo, painel de grupos com radicais e lealistas, bússola com os gatilhos
+- [ ] Faixas sem grupo na tela (centro, fora da força de trabalho…)
+- [x] Bússola: camada "População" (nuvem dos perfis em quadradinhos de meio ponto, % por quadrante)
+- [ ] Clique no post da rede traz a pessoa (`pessoaDaChave`) e mostra a opinião dela; sem tela própria de sorteio (ver J14)
+- [ ] Feed de posts que leva ao perfil (ver J14)
+
+**I5 Governo, Congresso e eleição (tablet)**
+
+- [x] Escolha da chapa, plenário com a disposição das bancadas, pedido do ministro, noite da apuração
+- [~] Não visto: troca de chapa na eleição, fila com o voto de cada bancada, por que cada bancada votou, aviso da pétrea
+
+**I6 Abertura**
+
+- [x] Menu, salvar e carregar
 - [ ] Tela de abertura à altura da promessa
 
-## M13. Mídia
-
-Ideia do autor (29/out), ainda sem desenho. Ataque na mídia fortalece atributos
-do candidato e a visão do público, o que mexe na popularidade e pressiona o
-Senado a passar as leis. Depende do carisma vivo (M8.2). Abre só depois da M8.
+---
 
 ## Transversal, no fim: Calibragem
 
 Lista única com os limites (1) a (17) do Grupos, os chutes do item 12 do PLANO
-e C1–C2. Uma linha por chute, com o arquivo onde ele mora.
+e C1–C2. Uma linha por chute, com o arquivo onde ele mora. A revisão manual
+jogando entra aqui, junto com o conteúdo das leis (J2) e o texto (J6).
 
-## Remanejamento proposto
+## Numeração antiga
 
-1. A seção 4 do PLANO vira esta tabela, com o estado de cada submecânica.
-2. Limites (1) a (17) e "chutes a conferir" vão para a seção Calibragem.
-3. "Próximos passos 23/out", "Achados 22/out" e "Mudanças já decididas" vão
-   para o `PLANO-feito.md`; o que ainda vale entra como submecânica.
-4. O [README de mecânicas](README.md) adota esta numeração (hoje difere da do PLANO).
-5. O `RETOMAR.md` passa a apontar a mecânica e a submecânica em curso.
-
-## Em aberto
-
-- A árvore está certa? Dúvida nas fusões de M6 (Opinião e Grupos) e M10 (Eleição e governo).
-- Qual é a próxima: M7 (percepção de padrões) ou M8 (desgaste)?
+| Antes | Agora |
+|---|---|
+| M1 Tempo | J1 e I2 |
+| M2 Leis | J2, J3/J4 (M2.6), I3 |
+| M3 Economia | J3 |
+| M4 Rede | MO1 a MO5 (o motor) e J3 (coeficientes ao PIB) |
+| M5 População | J5 e I4 |
+| M6 Opinião | J6 |
+| M7 Bússola | J7 |
+| M8 Partido | J8 |
+| M9 Congresso | J9 e I5 |
+| M10 Eleição | J10 |
+| M11 Ocorrências | J11 |
+| M12 Partida | J13 e I6 |
+| M13 Mídia | J12 |

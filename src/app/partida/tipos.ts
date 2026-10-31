@@ -671,6 +671,11 @@ export type VisaoBussola = Readonly<{
     porque: string;
   }>[];
   fatorDoRumo: Readonly<{ economia: number; costumes: number }>;
+  /**
+   * A população na bússola: o peso (fração do eleitorado, soma 1) em cada
+   * quadradinho de meio ponto. Vazio sem Congresso no pacote.
+   */
+  populacao: readonly (VisaoPontoBussola & Readonly<{ peso: number }>)[];
   /** Gatilhos ligados: o que o jogador anda fazendo (M7.2). */
   gatilhos: readonly Readonly<{ id: string; nome: string; frase: string }>[];
   /** Como cada grupo reage aos gatilhos (por id `grupo_x`): pontos e a fala. */

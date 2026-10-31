@@ -14,7 +14,13 @@ import { pressureGroups } from "../pressao";
 import { eleitoradoComFaixasVivas } from "./faixasVivas";
 import { eleitoradoComRendaViva } from "./rendaViva";
 import { ajusteDoBolso, inicioDoBolso } from "./bolsoNaSatisfacao";
-import { congressoVivo } from "./vivo";
+import { congressoVivo, fracoesDeDesemprego } from "./vivo";
+import {
+  lembrancaDoDesempregado,
+  lembrancaDoEmpregado,
+  passarMemoria,
+  type MemoriaDaPopulacao,
+} from "./memoria";
 import {
   danoDasLeis,
   dhondt,
@@ -103,13 +109,16 @@ export function congressoDoPacote(
 export function pacoteVivo(
   content: ResolvedPackage,
   valores: Readonly<Record<string, number>>,
+  /** O que as pessoas lembram (`EstadoDoCongresso.memoria`). */
+  memoria?: MemoriaDaPopulacao,
 ): CongressoDoPacote | undefined {
   const m = content.manifest.congresso;
   if (!m) return undefined;
   const guardado = vivos.get(valores);
-  if (guardado && guardado.content === content) return guardado.pacote;
-  const pacote = montarPacoteVivo(content, m, valores);
-  if (pacote) vivos.set(valores, { content, pacote });
+  if (guardado && guardado.content === content && guardado.memoria === memoria)
+    return guardado.pacote;
+  const pacote = montarPacoteVivo(content, m, valores, memoria);
+  if (pacote) vivos.set(valores, { content, memoria, pacote });
   return pacote;
 }
 
@@ -168,8 +177,41 @@ const aprovacoesVivas = new WeakMap<object, ProfileApproval>();
 
 const vivos = new WeakMap<
   object,
-  { content: ResolvedPackage; pacote: CongressoDoPacote }
+  {
+    content: ResolvedPackage;
+    memoria: MemoriaDaPopulacao | undefined;
+    pacote: CongressoDoPacote;
+  }
 >();
+
+/**
+ * Põe em cada linha original e em cada linha desempregada o que a pessoa
+ * lembra. As demais linhas (faixas novas, no fim) não lembram nada.
+ */
+function comMemoria(
+  pacote: CongressoDoPacote,
+  manifesto: CongressManifest,
+  memoria: MemoriaDaPopulacao | undefined,
+): CongressoDoPacote {
+  const { vivo } = manifesto;
+  if (!memoria || !vivo) return pacote;
+  const { regras } = pacote;
+  return {
+    ...pacote,
+    perfis: pacote.perfis.map((p, linha) => {
+      const lembranca =
+        linha < vivo.primeiraLinhaDeDesempregado
+          ? lembrancaDoEmpregado(memoria, linha, regras)
+          : lembrancaDoDesempregado(
+              memoria,
+              vivo.linhaOriginal[linha - vivo.primeiraLinhaDeDesempregado] ??
+                -1,
+              regras,
+            );
+      return lembranca.length > 0 ? { ...p, memoria: lembranca } : p;
+    }),
+  };
+}
 
 /**
  * Com a tabela de bolso, o eleitorado inteiro anda: emprego, renda, valores e
@@ -180,6 +222,7 @@ function montarPacoteVivo(
   content: ResolvedPackage,
   m: CongressManifest,
   valores: Readonly<Record<string, number>>,
+  memoria: MemoriaDaPopulacao | undefined,
 ): CongressoDoPacote | undefined {
   const inicio = inicioDoBolso(content);
   const eleitorado = eleitoradoComFaixasVivas(
@@ -189,15 +232,20 @@ function montarPacoteVivo(
   );
   if (!eleitorado) {
     const vivo = congressoVivo(m, valores);
-    return vivo === m ? congressoDoPacote(content) : pacoteDoManifesto(vivo);
+    return vivo === m
+      ? congressoDoPacote(content)
+      : comMemoria(pacoteDoManifesto(vivo), vivo, memoria);
   }
   const pacote = pacoteDoManifesto(eleitorado.manifesto);
   const ajuste = ajusteDoBolso(content, valores, eleitorado);
-  if (!ajuste || ajuste.length !== pacote.perfis.length) return pacote;
-  return {
-    ...pacote,
-    perfis: pacote.perfis.map((p, i) => ({ ...p, bolso: ajuste[i] })),
-  };
+  const comBolso =
+    !ajuste || ajuste.length !== pacote.perfis.length
+      ? pacote
+      : {
+          ...pacote,
+          perfis: pacote.perfis.map((p, i) => ({ ...p, bolso: ajuste[i] })),
+        };
+  return comMemoria(comBolso, eleitorado.manifesto, memoria);
 }
 
 /** O pacote de um manifesto do congresso, com os perfis já com ponto. */
@@ -316,7 +364,7 @@ export function passarTurnoNoCongresso(input: {
   turno: number;
 }): EstadoDoCongresso {
   const { content, estado, valores, pontoDoJogador, turno } = input;
-  const pacote = pacoteVivo(content, valores);
+  const pacote = pacoteVivo(content, valores, estado.memoria);
   if (!pacote) return estado;
   const leis = controlesDeLei(content);
   const influencia: Record<string, number> = { ...estado.influencia };
@@ -335,8 +383,18 @@ export function passarTurnoNoCongresso(input: {
       .filter(([, h]) => Math.abs(h) >= 0.05),
   );
   const { taxaPorAno, turnosPorAno } = pacote.regras.trocaTroca;
+  // a memória das pessoas anda um turno com o desemprego de agora
+  const fixo = content.manifest.congresso;
+  const lembrancas =
+    fixo?.emprego && turno > 0
+      ? passarMemoria(
+          estado.memoria,
+          fracoesDeDesemprego(fixo, valores),
+          pacote.regras,
+        )
+      : estado.memoria;
   if (turno <= 0 || turno % turnosPorAno !== 0)
-    return { ...estado, humor, influencia };
+    return { ...estado, humor, influencia, memoria: lembrancas };
   const agora = eleicaoComJogador(pacote, pontoDoJogador, valores);
   const casas: Record<string, Cadeiras> = {};
   const exatas: Record<string, Readonly<Record<string, number>>> = {};
@@ -364,6 +422,8 @@ export function passarTurnoNoCongresso(input: {
     exatas,
     humor,
     influencia,
+    memoria: lembrancas,
+    ...(estado.pessoas ? { pessoas: estado.pessoas } : {}),
     trocas: [...estado.trocas, ...trocas],
   };
 }
@@ -388,7 +448,7 @@ export function retratoDoCongresso(input: {
   pontoDoJogador: PontoDaBussola;
 }): readonly RetratoDaBancada[] {
   const { content, estado, valores, pontoDoJogador } = input;
-  const pacote = pacoteVivo(content, valores);
+  const pacote = pacoteVivo(content, valores, estado.memoria);
   if (!pacote) return [];
   const eleicao = eleicaoComJogador(pacote, pontoDoJogador, valores);
   const satisfacao = pacote.perfis.map((p) =>

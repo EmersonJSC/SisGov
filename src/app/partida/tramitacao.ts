@@ -304,7 +304,9 @@ function reagirAPetrea(
                 ...eleicao,
                 favores: somarPontos(
                   eleicao.favores ?? {},
-                  Object.fromEntries(grupos.map((g) => [g, -petreaNaPopulacao])),
+                  Object.fromEntries(
+                    grupos.map((g) => [g, -petreaNaPopulacao]),
+                  ),
                 ),
               },
             }

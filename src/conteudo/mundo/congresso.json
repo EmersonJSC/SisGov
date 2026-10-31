@@ -131,6 +131,16 @@
       "grupos": ["povos_originarios", "quilombolas", "pastorais"]
     }
   ],
+  "memoria": {
+    "esquecimentoPorTurno": 0.05,
+    "desemprego": {
+      "tags": ["desemprego", "emprego"],
+      "gratidao": 6,
+      "desalento": 8,
+      "mesesDoDesalento": 12
+    },
+    "nota": "Quem perdeu o emprego e voltou lembra: soma até gratidao pontos de satisfação, e a lembrança some esquecimentoPorTurno a cada turno. Quem está sem emprego há mais tempo perde até desalento pontos, chegando ao máximo em mesesDoDesalento. Valores a calibrar no jogo."
+  },
   "tramitacao": {
     "adiaSeFaltarAte": 0.05,
     "emergenciasPorAno": 2,

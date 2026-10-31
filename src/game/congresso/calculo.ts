@@ -7,6 +7,7 @@
  * - Camada 3: a cada ano, uma parte das cadeiras vai para a eleição de agora.
  */
 import { distancia, type PontoDaBussola } from "../bussola";
+import { motivosDoPerfil, satisfacaoDosMotivos } from "./motivos";
 import type { Cadeiras, PerfilDoEleitor, RegrasDoCongresso } from "./tipos";
 
 const limitar = (x: number, min: number, max: number) =>
@@ -149,24 +150,16 @@ export function misturar(
 }
 
 /**
- * Satisfação do perfil: média dos segmentos dele, pesada pelo peso do eixo
- * (como a aprovação, V1-08), mais o que o bolso do perfil mudou desde o
- * turno 0. Sem segmento, 50.
+ * Satisfação do perfil: 50 mais os motivos dele (grupos pesados pelo eixo,
+ * como a aprovação, V1-08, e o que o bolso mudou desde o turno 0). Ver
+ * `motivos.ts`.
  */
 export function satisfacaoDoPerfil(
   perfil: PerfilDoEleitor,
   pesoDoSegmento: Readonly<Record<string, number>>,
   valores: Readonly<Record<string, number>>,
 ): number {
-  let soma = 0;
-  let pesos = 0;
-  for (const s of perfil.segmentos) {
-    const w = pesoDoSegmento[s] ?? 1;
-    soma += w * (valores[s] ?? 50);
-    pesos += w;
-  }
-  const base = pesos > 0 ? soma / pesos : 50;
-  return perfil.bolso ? Math.max(0, Math.min(100, base + perfil.bolso)) : base;
+  return satisfacaoDosMotivos(motivosDoPerfil(perfil, pesoDoSegmento, valores));
 }
 
 /**

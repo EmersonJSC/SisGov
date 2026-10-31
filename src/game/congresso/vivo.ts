@@ -141,6 +141,7 @@ export function congressoVivo(
     vivo: {
       primeiraLinhaDeDesempregado: perfis.length,
       origem: gemeas.map(({ p }) => ocupacaoDe(p)),
+      linhaOriginal: gemeas.map(({ i }) => i),
     },
   };
 }
@@ -200,6 +201,26 @@ function deslocarInformalidade(
   return empregados.map(
     (e, i) => e - (movidoDe.get(i) ?? 0) + (movidoPara.get(i) ?? 0),
   );
+}
+
+/**
+ * A fração de cada linha original que está desempregada agora (0 a 1 do peso
+ * fixo dela). Só sai do eleitorado vivo; sem a tabela de emprego, tudo zero.
+ */
+export function fracoesDeDesemprego(
+  fixo: CongressManifest,
+  valores: Valores,
+): readonly number[] {
+  const vivo = congressoVivo(fixo, valores);
+  const zeros = fixo.perfis.map(() => 0);
+  if (!vivo.vivo) return zeros;
+  const { primeiraLinhaDeDesempregado: inicio, linhaOriginal } = vivo.vivo;
+  const fracoes = [...zeros];
+  linhaOriginal.forEach((i, k) => {
+    const peso = fixo.perfis[i][0];
+    fracoes[i] = peso > 0 ? vivo.perfis[inicio + k][0] / peso : 0;
+  });
+  return fracoes;
 }
 
 /**

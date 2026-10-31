@@ -12,7 +12,11 @@ import type { Partida } from "./tipos";
 
 /** Satisfação média dos grupos, pesada pelo tamanho deles. */
 function satisfacaoMedia(partida: Partida): number | undefined {
-  const pacote = pacoteVivo(partida.content, partida.game.execution.values);
+  const pacote = pacoteVivo(
+    partida.content,
+    partida.game.execution.values,
+    partida.game.congress?.memoria,
+  );
   if (!pacote) return undefined;
   const valores = valoresComReacao(partida);
   const grupos = gruposNaBussola(pacote).filter(

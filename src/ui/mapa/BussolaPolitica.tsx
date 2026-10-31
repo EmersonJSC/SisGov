@@ -110,17 +110,46 @@ function Ficha({ r }: { r: VisaoReferencia }) {
   );
 }
 
+const LADO_CELULA = ((LADO - 2 * MARGEM) / 20) * 0.5;
+
+const QUADRANTES = [
+  ["Estado e autoridade", -1, 1],
+  ["Mercado e autoridade", 1, 1],
+  ["Estado e liberdade", -1, -1],
+  ["Mercado e liberdade", 1, -1],
+] as const;
+
+/** A fatia da população em cada quadrante da bússola. */
+function quadrantesDa(populacao: VisaoBussola["populacao"]) {
+  return QUADRANTES.map(([nome, e, c]) => ({
+    nome,
+    fatia: populacao
+      .filter(
+        (p) =>
+          (p.economia > 0 ? 1 : -1) === e && (p.costumes > 0 ? 1 : -1) === c,
+      )
+      .reduce((soma, p) => soma + p.peso, 0),
+  }));
+}
+
 export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
-  const [camada, setCamada] = useState<"personalidades" | "partidos">(
-    "personalidades",
-  );
+  const [camada, setCamada] = useState<
+    "personalidades" | "partidos" | "populacao"
+  >("personalidades");
   const [escolhida, setEscolhida] = useState<string | null>(null);
-  const lista =
-    camada === "personalidades" ? bussola.personalidades : bussola.partidos;
-  const perto =
-    camada === "personalidades"
+  const naPopulacao = camada === "populacao";
+  const lista = naPopulacao
+    ? []
+    : camada === "personalidades"
+      ? bussola.personalidades
+      : bussola.partidos;
+  const perto = naPopulacao
+    ? []
+    : camada === "personalidades"
       ? bussola.pertoPersonalidades
       : bussola.pertoPartidos;
+  const maiorCelula = Math.max(0, ...bussola.populacao.map((c) => c.peso));
+  const quadrantes = quadrantesDa(bussola.populacao);
   const comNome = rotulos(
     lista,
     [escolhida ?? "", ...perto.slice(0, 3).map((p) => p.id)],
@@ -205,6 +234,19 @@ export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
           >
             Mercado
           </text>
+          {bussola.populacao.map((c) => (
+            <rect
+              key={`${c.economia}|${c.costumes}`}
+              className="bs-pop"
+              x={x({ economia: c.economia - 0.25, costumes: 0 })}
+              y={y({ economia: 0, costumes: c.costumes + 0.25 })}
+              width={LADO_CELULA}
+              height={LADO_CELULA}
+              opacity={naPopulacao ? 0.12 + 0.88 * (c.peso / maiorCelula) : 0}
+            >
+              <title>{`${(c.peso * 100).toFixed(1)}% da população`}</title>
+            </rect>
+          ))}
           {lista.map((r) => (
             <g
               key={r.id}
@@ -275,24 +317,57 @@ export function BussolaPolitica({ bussola }: { bussola: VisaoBussola }) {
           >
             Partidos
           </button>
+          <button
+            type="button"
+            aria-pressed={camada === "populacao"}
+            onClick={() => {
+              setCamada("populacao");
+              setEscolhida(null);
+            }}
+          >
+            População
+          </button>
         </div>
 
-        {selecionada ? <Ficha r={selecionada} /> : null}
+        {naPopulacao ? (
+          <section>
+            <h2>Onde está a população</h2>
+            <ul className="bs-leis">
+              {quadrantes.map((q) => (
+                <li key={q.nome}>
+                  <strong>{q.nome}</strong>
+                  <span>{(q.fatia * 100).toFixed(0)}% das pessoas</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Cada quadradinho é meio ponto da bússola; quanto mais escuro, mais
+              gente mora ali. O peso acompanha o desemprego e a informalidade do
+              momento.
+            </p>
+          </section>
+        ) : (
+          <>
+            {selecionada ? <Ficha r={selecionada} /> : null}
 
-        <section>
-          <h2>Mais perto de você</h2>
-          <ol className="bs-perto">
-            {perto.map((p) => (
-              <li key={p.id}>
-                <button type="button" onClick={() => setEscolhida(p.id)}>
-                  <strong>{p.nome}</strong>
-                  <span>{[p.pais, p.partido].filter(Boolean).join(" · ")}</span>
-                </button>
-                <span className="bs-distancia">{um(p.distancia)}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
+            <section>
+              <h2>Mais perto de você</h2>
+              <ol className="bs-perto">
+                {perto.map((p) => (
+                  <li key={p.id}>
+                    <button type="button" onClick={() => setEscolhida(p.id)}>
+                      <strong>{p.nome}</strong>
+                      <span>
+                        {[p.pais, p.partido].filter(Boolean).join(" · ")}
+                      </span>
+                    </button>
+                    <span className="bs-distancia">{um(p.distancia)}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </>
+        )}
 
         <section>
           <h2>Como o seu governo está sendo visto</h2>

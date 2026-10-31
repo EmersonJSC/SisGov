@@ -150,6 +150,8 @@ export type CongressManifest = {
   vivo?: Readonly<{
     primeiraLinhaDeDesempregado: number;
     origem: readonly string[];
+    /** Linha original de que cada linha desempregada saiu. */
+    linhaOriginal: readonly number[];
   }>;
   /**
    * Quem perde o emprego primeiro e o que o desempregado recebe

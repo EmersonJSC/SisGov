@@ -74,7 +74,11 @@ function satisfacaoDaPartida(partida: Pick<Partida, "content" | "game">) {
 /** A popularidade de cada ministro agora e os grupos leais a ele. */
 export function notasDoGabinete(partida: Pick<Partida, "content" | "game">) {
   const { valores, reacao } = satisfacaoDaPartida(partida);
-  const pacote = pacoteVivo(partida.content, valores);
+  const pacote = pacoteVivo(
+    partida.content,
+    valores,
+    partida.game.congress?.memoria,
+  );
   const ministros = partida.game.election?.ministros;
   if (!ministros || !pacote) return [];
   return notasDosMinistros(ministros, pacote, somarSatisfacao(valores, reacao));
@@ -93,7 +97,7 @@ export function valoresComReacao(
   // M8.3: o gabinete lê a satisfação com a reação, e soma por cima
   const gabinete = pontosDoGoverno(
     partida,
-    pacoteVivo(partida.content, valores),
+    pacoteVivo(partida.content, valores, partida.game.congress?.memoria),
     somarSatisfacao(valores, reacao),
   );
   const pontos = somarPontos(reacao, gabinete);
@@ -104,6 +108,33 @@ export function valoresComReacao(
   const novos = somarSatisfacao(valores, pontos);
   comReacao.set(valores, { chave, valores: novos });
   return novos;
+}
+
+/** Os perfis do eleitorado somados em quadradinhos de meio ponto. */
+function populacaoNaBussola(partida: Partida): VisaoBussola["populacao"] {
+  const pacote = pacoteVivo(
+    partida.content,
+    valoresComReacao(partida),
+    partida.game.congress?.memoria,
+  );
+  if (!pacote) return [];
+  const celulas = new Map<string, { e: number; c: number; peso: number }>();
+  let total = 0;
+  for (const perfil of pacote.perfis) {
+    const e = Math.round(perfil.ponto.economia * 2) / 2;
+    const c = Math.round(perfil.ponto.costumes * 2) / 2;
+    const chave = `${e}|${c}`;
+    const celula = celulas.get(chave) ?? { e, c, peso: 0 };
+    celula.peso += perfil.peso;
+    celulas.set(chave, celula);
+    total += perfil.peso;
+  }
+  if (total <= 0) return [];
+  return [...celulas.values()].map((celula) => ({
+    economia: celula.e,
+    costumes: celula.c,
+    peso: celula.peso / total,
+  }));
 }
 
 export function verBussola(partida: Partida): VisaoBussola | undefined {
@@ -152,6 +183,7 @@ export function verBussola(partida: Partida): VisaoBussola | undefined {
     pertoPartidos: perto(referenciasDaBussola.partidos),
     leisQueMaisPuxam: puxam,
     fatorDoRumo: bussolaDoMundo.fatorDoRumo,
+    populacao: populacaoNaBussola(partida),
     gatilhos: ativos.map(({ id, nome, frase }) => ({ id, nome, frase })),
     reacoes,
     leitura: ativos.length
