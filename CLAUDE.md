@@ -15,12 +15,12 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 - `docs/conteudo/rede.md` — referência da rede
 - `docs/Exemplos/` — referência externa (nada do Democracy 4 entra no projeto)
 
-Referência técnica utilizável: `docs/arquitetura/` e os `.md` de `src/engine/`.
+Como construir: `docs/jogo/plano-de-desenvolvimento.md` (camadas, roteiro por passo). `docs/arquitetura/` é do projeto antigo.
 
 ## Como trabalhar
 
 - Fluxo enxuto: proposta curta no chat, o autor aprova, implementa-se. Sem spec, plano em arquivo, ledger ou subagente revisor, a menos que o autor peça.
-- Uma mecânica por vez. Ideia nova vai para o PLANO; avisar e perguntar antes de abrir frente nova.
+- Um passo por vez. Ideia nova vai para a seção 11 do escopo; avisar e perguntar antes de abrir frente nova.
 - Refatorar e mudar comportamento são pedidos separados.
 - Na terceira tentativa sem fechar uma tarefa, parar e rever com o autor.
 - Durante a mecânica: testes do que mudou e `npx tsc -b` (nunca `--noEmit`). O `npm run check` completo roda só ao terminar a mecânica inteira (ex.: o Grupos todo), não por camada.

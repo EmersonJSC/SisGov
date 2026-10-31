@@ -6,8 +6,8 @@
 
 ## 1. Onde estamos e por onde começar
 
-- **Feito:** passo 1 (escopo) e passo 2 (índices).
-- **Começar por:** passo **2b, Fundação**.
+- **Feito:** passo 1 (escopo), passo 2 (índices) e passo 2b (fundação).
+- **Próximo:** passo **3, Modelo de lei**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -27,7 +27,7 @@ estava errado: para e revê com o autor. As expansões listadas abaixo são
 
 ## 3. Roteiro
 
-### Passo 2b — Fundação ⬅ começar aqui
+### Passo 2b — Fundação ✅
 
 Arrumar a casa antes da primeira lei.
 
@@ -41,7 +41,7 @@ Arrumar a casa antes da primeira lei.
 
 **Expande depois:** nada; fundação não cresce, só se mantém.
 
-### Passo 3 — Modelo de lei
+### Passo 3 — Modelo de lei ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

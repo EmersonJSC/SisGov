@@ -9,13 +9,7 @@ export default defineConfig({
     strictPort: true,
   },
   test: {
-    // Os testes longos de partida estouram a comunicação do pool de processos.
-    // Threads com paralelismo limitado concluem sem esse timeout.
-    pool: "threads",
-    maxWorkers: 2,
-    // V1-34: o pacote do Brasil cresceu (mais de 200 leis); criar uma partida
-    // leva alguns segundos, e 5 s estoura quando a suíte roda inteira.
-    testTimeout: 120000,
-    hookTimeout: 120000,
+    // Só o projeto novo; os testes antigos ficam em arquivo/.
+    include: ["src/**/*.test.ts", "scripts/**/*.test.ts"],
   },
 });

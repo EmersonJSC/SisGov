@@ -1,47 +1,33 @@
 # SisGov
 
-> **Status: VIGENTE.** Atualizado em 12/out/2026 (V1-01).
+SisGov é um simulador de governo em português. Quem joga governa um país
+aprovando leis e acompanha o efeito delas no orçamento, nos indicadores e na
+opinião da população, até a eleição. Vencer é manter-se no poder.
 
-SisGov é um simulador de governo em português. Quem joga assume a Presidência de um país, muda leis de verdade (Constituição, leis e decretos) e acompanha o efeito no orçamento, nos indicadores e na opinião de cada parte da população, até a eleição do fim do mandato. Vencer continua a partida; perder encerra.
-
-A meta da versão 1 é um jogo do gênero do Democracy 4, melhorado e sem copiar nada dele: leis reais de vários países, orçamento real, população baseada em pesquisas, grupos de pressão da política real e a explicação de cada número.
+O projeto recomeçou do zero em 31/out/2026. O código antigo está na tag
+`projeto-antigo-2026-10-31`.
 
 ## Antes de começar
 
-1. **[PLANO.md](PLANO.md)**: visão, escopo da versão 1, marcos, decisões e a única fonte de status.
-2. [CLAUDE.md](CLAUDE.md): regras de trabalho.
-3. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é; mecânicas em [docs/jogo/mecanicas/](docs/jogo/mecanicas/README.md).
-4. [docs/README.md](docs/README.md): índice de todos os documentos, com o que é vigente, referência técnica ou desativado.
-
-Documentos em `docs/desativado/` são histórico e não são para seguir.
+1. [RETOMAR.md](RETOMAR.md): onde parei e o próximo passo.
+2. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é e a ordem de construção.
+3. [docs/jogo/plano-de-desenvolvimento.md](docs/jogo/plano-de-desenvolvimento.md): como construir, passo a passo.
+4. [CLAUDE.md](CLAUDE.md): regras de trabalho.
 
 ## Estrutura
 
-- `src/engine`: motor de simulação (variáveis, ligações, mecanismos). Não conhece leis nem países.
-- `src/game`: regras do jogo (leis em `game/leis`, leitura do país em `game/pais`, turno, ocorrências, ministérios).
-- `src/app`: fachada da partida, a única porta entre a tela e o jogo.
-- `src/ui`: componentes React (mapa, janelas, painéis).
-- `src/conteudo`: conteúdo em JSON, `mundo/` (vale para todos os países) e `paises/` (estado inicial de cada país).
-- `scripts/`: ferramentas de conteúdo (fichas e rede).
-- `src/tests`: testes automatizados (Vitest).
+A dependência só desce; o lint barra import na direção errada.
 
-Referência técnica: os `.md` de `src/engine/` e [docs/arquitetura/](docs/arquitetura/).
+- `src/tela`: React. Mostra e envia pedidos; não calcula.
+- `src/partida`: monta a partida (mundo + país), chama o motor, salva e carrega.
+- `src/motor`: regras do Estado e cálculos estudados, em TS puro, sem JSON.
+- `src/conteudo`: JSON do mundo (`mundo/`) e dos países (`paises/`).
+- `scripts/`: jogam a partida sem tela para conferir cada passo.
 
 ## Ambiente
-
-Verificado em 9 de outubro de 2026: Node.js 22.23.2, npm 10.9.8.
 
 ```bash
 npm ci          # instalar dependências
 npm run dev     # ambiente de desenvolvimento
 npm run check   # formatação, lint, tipos, build e testes
 ```
-
-## Como trabalhar
-
-Projeto pessoal, trabalho direto na `main` (D-22).
-
-1. Pegue o próximo chamado aberto na seção 5 do [PLANO.md](PLANO.md).
-2. Faça só o que a tarefa pede; ideia nova vai para o PLANO.
-3. Rode os testes do que mudou e `npx tsc -b`; o `npm run check` completo roda ao terminar a mecânica.
-4. Commit com o ID do chamado (`V1-NN: …`) e marque `[x]` no PLANO com data, commit e teste.
