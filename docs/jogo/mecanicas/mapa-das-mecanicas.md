@@ -50,13 +50,14 @@ consequência (dívida → juros).
 
 ## Ordem para a V1 (uma frente por vez)
 
-1. **Governos opostos terminam diferentes.** Termômetro: `scripts/teste/mandato.ts`
-   (24 turnos, Mujica × Bolsonaro até a eleição). PIB nominal consertado; próximo suspeito: programa da direita fraco na bússola.
-2. Controle livre 0–100% e trava única de 100% do PIB.
-3. Desgaste.
-4. Jogador como partido.
-5. Calibragem jogando na tela.
-6. Ministros, por último.
+0. **Mundo refeito do zero** (31/out): índices essenciais + jogabilidade, modelo de
+   lei, leis genéricas uma a uma, depois módulos. Mundo antigo na tag
+   `mundo-antigo-2026-10-31`. O estado acima é do mundo antigo.
+1. Controle livre 0–100% e trava única de 100% do PIB.
+2. Desgaste.
+3. Jogador como partido.
+4. Calibragem jogando na tela.
+5. Ministros, por último.
 
 ## Fora da V1 (pelo escopo)
 

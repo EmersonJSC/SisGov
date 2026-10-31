@@ -5,38 +5,35 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 **31/out/2026**
 
+## Recomeço do mundo
+
+Leis, índices, consequências, dilemas e eventos **apagados** para refazer do zero.
+O jogo não roda até o mundo novo existir (de propósito).
+
+Backup: tag `mundo-antigo-2026-10-31` e `arquivo/mundo-antigo-2026-10-31/`.
+
 ## Próximo
 
-Frente única: **governos opostos têm que terminar diferentes** (ordem completa no
-[mapa](docs/jogo/mecanicas/mapa-das-mecanicas.md)).
+1. Escrever os índices novos (lista aprovada abaixo) em `src/conteudo/mundo/indicadores/`.
+2. Modelo de lei: efeito declarado em unidade humana; o motor converte (sem a armadilha do ÷3).
+3. Contas essenciais em TS só com identidades contábeis; o que é de lei ou país vai para JSON.
+4. Primeiras leis genéricas, uma por vez, cada uma com o comportamento esperado escrito antes.
+5. Adaptar módulos (economia, população, Congresso). Dilemas, eventos e ministros só depois.
 
-Feito: PIB nominal consertado (setas `*--pib-nominal` com coeficiente 0,01 → 0,25;
-estava 25× fraco). Agora 12,8 → 16,3 mi em 24 turnos (+28%).
+## Índices aprovados
 
-Mesmo assim os dois seguem iguais (24 turnos, semente 7):
+- **Essenciais** (física de qualquer país): população, ocupados, desemprego, PIB real,
+  crescimento, inflação (nível de preços), PIB nominal, receita, gasto, resultado,
+  dívida, taxa de juros.
+- **Jogabilidade**: padrão de vida, instrução, industrialização, saúde, segurança,
+  pobreza, desigualdade, corrupção, liberdades, polarização, meio ambiente,
+  reputação internacional, aprovação; por grupo: satisfação, radicais, lealistas.
 
-| | Mujica | Bolsonaro |
-|---|---|---|
-| Satisfação | 47,5 → 44,9 | 47,5 → 44,6 |
-| Dívida | 79,6 → 95% | 79,6 → 101% |
-| Bússola final | (0,1; −3) | (1,2; −0,1) |
-| Eleição | venceu | venceu |
+## Ainda aponta para o mundo antigo (refazer junto)
 
-Próximo suspeito: **o programa do Bolsonaro em `src/conteudo/bussola/programas.json`**.
-As 16 leis chegam todas ao alvo (8 já valiam, 8 passaram, nenhuma caiu), e mesmo assim
-a bússola para em (1,2; −0,1), longe de (7,3; 7,7). Não é o Congresso: é o programa
-fraco ou o peso das leis na bússola.
-
-Termômetro: `npx vite-node scripts/teste/mandato.ts -- mujica,bolsonaro` (~6 min).
-
-## Quebrado de propósito (não consertar agora)
-
-- `contasSemFuros` A1 e A2, `brasil2026`, `cooperacaoInternacional`: economia.
-- `gabinete`: ministros, no final.
-
-## Pontas soltas
-
-- `npm run populacao:ligacoes` falha com "Lei desconhecida: reforma-agraria".
+- `src/conteudo/mundo/`: bussola, gatilhos, pressao, populacao, reguas, congresso.
+- `src/conteudo/paises/brasil/`: estado inicial e níveis das leis antigas.
+- 57 ids citados em `src/game/` e `src/app/`.
 
 ## Armadilhas
 
