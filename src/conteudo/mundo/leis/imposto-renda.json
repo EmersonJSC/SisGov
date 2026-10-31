@@ -1,0 +1,18 @@
+{
+  "versao": 1,
+  "id": "imposto-renda",
+  "camada": "essencial",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.6 },
+  "passo": 0.005,
+  "calculo": { "base": "renda", "modelo": "laffer" },
+  "efeitos": [
+    {
+      "indice": "padrao_vida",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

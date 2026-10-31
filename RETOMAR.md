@@ -5,34 +5,33 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 **31/out/2026**
 
-## Recomeço do projeto
+## Onde está
 
-O projeto recomeçou do zero. `src/` tem só os índices novos e um `main.tsx`
-de espera; `npx tsc -b` passa.
+[Escopo](docs/jogo/escopo.md) e [plano](docs/jogo/plano-de-desenvolvimento.md)
+aprovados; passos 2b e **3 fechados**.
 
-Backup: tag `projeto-antigo-2026-10-31` e `arquivo/codigo-antigo-2026-10-31/`
-(código); tag `mundo-antigo-2026-10-31` e `arquivo/mundo-antigo-2026-10-31/`
-(conteúdo); `docs/historico/projeto-antigo/` (PLANO, escopo e mecânicas antigos).
+- `src/motor/estado`: ids dos índices essenciais.
+- `src/motor/calculos`: registro de bases com `renda` (Laffer + evasão; o
+  **país declara o pico**, padrão 0,6; fonte em `calculos.md`).
+- `src/motor/leis`: tipo da lei e validador (erro com arquivo, campo, motivo).
+- `src/conteudo/mundo/leis/`: `imposto-renda.json` e `pena-de-morte.json`.
+- Contrato em `src/partida/conteudo.test.ts`: toda lei nova é validada sozinha.
 
 ## Próximo
 
-[Escopo](docs/jogo/escopo.md) e [plano](docs/jogo/plano-de-desenvolvimento.md)
-aprovados. **Passo 2b (Fundação) fechado:** pastas `motor/`, `partida/`,
-`tela/`, `scripts/`; fronteiras no lint (import proibido quebra o lint,
-conferido); `package.json` só com os scripts novos; vitest só em `src/` e
-`scripts/`; README, AGENTS, CLAUDE.md e a skill `sisgov-mecanica` apontam
-para o projeto novo; `npm run check` verde.
+**Passo 4, Turno mínimo:** proposta curta para o autor aprovar (turno,
+fila de efeitos com atraso, acaso com semente, país de teste e
+`scripts/mandato.ts`). Decisão em aberto para propor: quanto vale em número
+cada força (`fraca`, `media`, `forte`).
 
-Próximo: **passo 3**, proposta curta do formato da lei (imposto de renda
-contínua com base `renda` + pena de morte de opções) para o autor aprovar.
+## Pendências do autor
 
-Skills do projeto em `.claude/skills/`: `sisgov-mecanica`, `sisgov-passo`,
-`sisgov-lei`, `sisgov-calculo`, `sisgov-rodada`.
-
-`_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
+- `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas
 
 - `npx tsc -b`, nunca `--noEmit`.
 - `pkill -f` mata o próprio shell; `sleep` no Bash é bloqueado.
 - O vitest só procura teste em `src/` e `scripts/`; sem isso roda os testes antigos de `arquivo/` e trava.
+- `vite-node` não roda arquivo fora do projeto (fs.allow); demo temporária vai em `rascunho/` e sai depois.
+- `import.meta.glob` precisa de `src/vite-env.d.ts`.

@@ -1,0 +1,32 @@
+{
+  "versao": 1,
+  "id": "pena-de-morte",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    { "id": "abolida", "efeitos": [] },
+    {
+      "id": "crimes-graves",
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 0
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 1
+        },
+        {
+          "indice": "seguranca",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

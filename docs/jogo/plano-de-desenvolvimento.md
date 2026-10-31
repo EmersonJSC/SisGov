@@ -6,8 +6,8 @@
 
 ## 1. Onde estamos e por onde começar
 
-- **Feito:** passo 1 (escopo), passo 2 (índices) e passo 2b (fundação).
-- **Próximo:** passo **3, Modelo de lei**.
+- **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação) e 3 (modelo de lei).
+- **Próximo:** passo **4, Turno mínimo**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -41,19 +41,19 @@ Arrumar a casa antes da primeira lei.
 
 **Expande depois:** nada; fundação não cresce, só se mantém.
 
-### Passo 3 — Modelo de lei ⬅ próximo
+### Passo 3 — Modelo de lei ✅
 
 | Começa com | Pronto quando |
 |---|---|
 | `motor/estado`: tipos dos índices essenciais | — |
 | `motor/calculos`: registro de bases com **uma** base, `renda` (Laffer + evasão), fonte citada | teste de unidade do cálculo |
-| Formato da lei: imposto de renda (contínua) e pena de morte (opções) | autor aprova os dois JSON |
+| Formato da lei: imposto de renda (contínua) e pena de morte (opções) | autor aprova os dois JSON (31/out; pico de Laffer declarado por país) |
 | Validador do JSON | lei inválida falha com arquivo, campo e motivo |
 
 **Expande depois:** bases `consumo`, `folha`, `lucro`; lei contínua com
 faixas (imposto progressivo); efeito condicional ("só se desemprego > X").
 
-### Passo 4 — Turno mínimo
+### Passo 4 — Turno mínimo ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|
