@@ -1,247 +1,224 @@
 # Mapa das mecânicas
 
-> Refeito em 30/out/2026 a pedido do autor: o jogo dividido nas três partes do
-> código (motor, jogo e conteúdo, interface). Cada parte lista as mecânicas que
-> ela **deve ter**; o que já existe foi encaixado nelas, não o contrário.
-> A numeração antiga (M1 a M13) está na tabela do fim.
+> Reescrito em 31/out/2026 a pedido do autor. Meta: **quando o JSON de todas as
+> leis estiver preenchido, a V1 está pronta.** Por isso o mapa vem em fases: primeiro
+> se fecha o que uma lei declara (o contrato), depois os sistemas que leem esse
+> contrato e, por último, o preenchimento e a calibragem.
+> A versão de 30/out (partes Motor, Jogo, Interface) está no git. As tabelas do
+> fim mostram onde foi parar cada item antigo (J1–J14, M1–M13).
 
 Legenda: `[x]` feito · `[~]` parcial · `[ ]` falta · "não visto" = provado por
-teste, falta conferir na tela.
+teste, falta conferir na tela · **(decidir)** = só o autor decide.
 
 ## Frente atual
 
-**J3 Economia e orçamento** (autor, 30/out): deixar a economia funcionando para
-poder pôr e tirar leis econômicas e equilibrar depois. É conteúdo, não motor: o
-motor já sabe tudo o que ela precisa (ver MO3).
+**Fase 0. Base verde.** Depois, a Fase 1 começa com a proposta do contrato no chat.
 
-## As três partes
+## Princípios (técnicas adotadas)
 
-| Parte | Pasta | O que faz | Estado |
-|---|---|---|---|
-| **Motor** | `src/engine` | Calcula o mundo a cada mês. Não conhece lei, partido nem país. | Fechado (30/out) |
-| **Jogo e conteúdo** | `src/game`, `src/app/partida`, `src/conteudo` | Regras do jogo (Congresso, eleição, bússola…) e o mundo em JSON (leis, setas, índices, eventos). | Grande parte feita; é onde mora quase tudo que falta |
-| **Interface** | `src/ui` | O que se vê e se clica. | Feita em boa parte; muito "não visto" |
+| Técnica | Como fica no SisGov | Estado |
+|---|---|---|
+| Núcleo isolado (headless) | `src/engine` calcula; `src/ui` só lê o estado e manda ações | [x] |
+| Passo fixo (tick) | Passo mensal, turno de 2 meses, sem depender da tela; sorteios por semente | [x] |
+| Orientado a dados | Leis, índices, setas, grupos e regras em JSON; o motor não conhece nomes | [x] |
+| Módulos que se falam por estado e tags | População, leis e economia não chamam o código umas das outras: leem o estado e as tags. É a versão por turnos do "sistema de eventos" e é mais fácil de reproduzir | [x] |
+| Lote sobre dados puros (espírito do ECS) | Perfis do eleitorado processados em lote; sem reescrever para ECS formal | [x] |
+| Grafo de dependências com verificação | Já acha ciclos e arquivos órfãos (`engine/diagnostics/analyzePackage.ts`). Falta medir laço que explode e lei que não chega a nada (Fase 1) | [~] |
+| Economia fechada (fontes e drenos) | Receita, caixa e dívida existem; falta o dreno principal e o freio da dívida (Fase 2a) | [~] |
+| Máquina de estados | Existe na tramitação do Congresso; falta nos grupos (Fase 2c) | [~] |
+| Agentes com LLM | Fora: a população é IA de jogo, sem LLM | — |
 
-Regra prática: se a mudança é **número ou ligação**, é conteúdo; se é **regra
-de partida** (quem vota, quem ganha, o que trava), é jogo; só é motor se o
-cálculo em si não existe.
-
----
-
-## Parte 1. Motor (`src/engine`)
-
-**MO1 Pacote**
-
-- [x] Ler e validar os JSON, juntar mundo e país, checar coerência (`model/`)
-- [x] Diagnóstico do pacote (`diagnostics/`)
-
-**MO2 Tipos de variável**
-
-- [x] Controle (as leis), estoque, calculado, derivado (fórmula), situação, grupo
-
-**MO3 Setas**
-
-- [x] Afim: `origem × coeficiente + termo`
-- [x] Resposta gradual, atraso e duração, condições, transbordo
-- [x] Derivado como soma de produtos (com escala, inverso e complemento): é o que permite "proporcional ao PIB" sem código novo
-
-**MO4 Passo**
-
-- [x] Avanço mês a mês em ordem fixa, histórico limitado, explicação do que mudou
-- [x] Leis viram setas ativas (`translatePolicyCommands`)
-- [x] Dilemas, eventos e situações avaliados a cada passo
-- [x] Aprovação por perfil opcional (`profileApproval`, o jogo manda os perfis vivos)
-
-**MO5 Salvar e retomar**
-
-- [x] Exportar, restaurar e comparar a retomada
-
-**Motor fechado (30/out).** Conferido rodando: 54 arquivos de teste que usam
-o motor, 309 de 311 verdes, `tsc -b` limpo. As 2 falhas são contas do jogo
-escritas para o turno de 3 meses (J1). Proporcional ao PIB já existe de
-duas formas: derivado (`alíquota × pib_nominal`) e seta com
-`normalizacao: { divisor: pib_nominal }`. Nada novo entra aqui sem um caso
-que o conteúdo não consiga resolver.
+Regra prática: **número ou ligação** é conteúdo (JSON); **regra de partida**
+(quem vota, quem ganha, o que trava) é jogo; só é motor se o cálculo não existe.
 
 ---
 
-## Parte 2. Jogo e conteúdo
+## Fase 0. Base verde
 
-**J1 Tempo**
+Sem a suíte verde, preencher 224 leis é trabalhar às cegas.
 
-- [x] Turno de 2 meses, mandato de 24 turnos; o conteúdo escrito em trimestres é convertido (`game/calendario.ts`)
-- [ ] Acertar os testes que contam trimestres: `brasil2026` (juros explosivos) e `fichaV3` (três leis piloto)
-- [ ] Rodar a suíte inteira com o turno novo e conferir na tela
+- [ ] Acertar os 11 testes que falham: `contasSemFuros` A1 e A2, `brasil2026` (juros explosivos), `fichaV3`, `mesaDoSalarioMinimo`, `cooperacaoInternacional`, `natalidadeNatalidade`, `saudeMortalidade`, `partida.test.ts` ×2, `previdenciaTransferenciaSeparada`. Vários são contas do turno de 3 meses
+- [ ] `npm run check` verde e conferir na tela com o turno de 2 meses
+- [ ] `npm run populacao:ligacoes` falha com "Lei desconhecida: reforma-agraria": conferir
 
-**J2 Leis (regras e catálogo)**
+**Termina quando:** check verde e uma partida jogada na tela até a eleição.
 
-- [x] Molde v4: 224 leis em 11 áreas e 2 pétreas, com verificador e inventário
-- [x] Leis em três níveis, filhas e globais; leis do mundo, estado no país (`paises/brasil/leis-no-pais.json`)
-- [x] Travas individuais, trava conjunta de 100% do PIB, alíquota e verba livre de 0 a 100%, pisos vinculados
-- [x] Estado e custo das leis
-- [~] Exclusão entre leis: a regra existe (`game/validatePolicyAction.ts`), nenhuma lei declara com quem não convive
-- [ ] Aprovar uma lei que exclui outra pede revogar a outra (A4)
-- [ ] Liberar opções travadas e converter em valor onde couber (A5)
-- [ ] Separar Segurança e defesa em duas áreas (hoje uma com 45 leis)
-- [ ] Pôr no molde a lei de "Tributação" que está fora dele
-- [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
-- [ ] Explicação por lei e por opção, com teste que a exige (A6)
-- [ ] Troca de nomes por país (ex.: "Selic")
-- [ ] Lei como produtor de motivo (proposto): a lei incomoda quem ela afasta do ponto da pessoa na bússola (distância do ponto do país ao da pessoa, antes e depois), com a mesma régua `sensibilidade` do voto do Congresso. Vale para lei moral e política. Caso de teste: maioridade penal. A população só guarda o efeito na satisfação; a causa vai por tag ou índice
-- [ ] Ligação com a população, só no JSON das leis (vem depois de a população estar pronta): `gosta`/`odeia` dos desempregados, setas lei→grupo (ex.: `grupo_evangelicos`) e "esta lei mexe em tal tag". Teste de encaixe: seta de lei para um grupo move a satisfação
+---
 
-**J3 Economia e orçamento** ← frente atual
+## Fase 1. Contrato da lei e verificador
 
-- [x] Economia em reais: PIB, ocupados, massa salarial, lucros, consumo, patrimônios (fases 1 a 6)
+O que uma lei declara, e quem lê cada campo. Preencher a lei = preencher o
+contrato; todos os sistemas leem dele.
+
+| Campo da lei | Quem lê | Estado |
+|---|---|---|
+| `controle`, `dinheiro` (alíquota, verba, opções) | Economia e orçamento | [x] |
+| Verba em % do PIB: regra única, todo controle `moeda_ano` age por `pib_nominal`, sem `normalizacao` à mão. Converter uma vez os 48 coeficientes por real (11 leis de verba) | Carregamento das leis | [ ] |
+| `efeitos` (setas para índices) | Motor | [x] |
+| `efeitos` para grupos (`grupo_*`) | População | [x] |
+| Ponto na bússola | População (motivo), Congresso, bússola | [~] o Congresso usa; a população ainda não |
+| `tags` ("esta lei mexe em tal tag") | Memória (causa), feed | [ ] |
+| Com quem não convive | Exclusão entre leis (`game/validatePolicyAction.ts`); aprovar uma pede revogar a outra (A4) | [~] a regra existe, nenhuma lei declara |
+| Explicação por lei e por opção | Tela (A6), com teste que a exige | [ ] |
+| Opções travadas: liberar e converter em valor onde couber (A5) | Jogo | [ ] |
+| Nome por país (ex.: "Selic") | País | [ ] |
+| Nível, travas, pisos vinculados, trava conjunta de 100% do PIB | Jogo | [x] |
+
+**Verificador** (amplia o do molde v4): a lei está **completa** quando
+
+- [ ] tem todos os campos do contrato;
+- [ ] chega a pelo menos um índice que aparece na tela e a pelo menos um grupo;
+- [ ] não cria laço de realimentação que explode (ganho do laço > 1; caso conhecido: juros do `brasil2026`);
+- [ ] roda no `scripts/diagnostico/uma-lei-por-vez.ts` sem quebrar o caixa.
+
+**Termina quando:** três leis piloto passam no verificador e mexem em tudo na
+tela: uma verba (gasto com defesa), uma alíquota e uma moral (maioridade penal).
+
+---
+
+## Fase 2. Sistemas que leem o contrato
+
+Uma mecânica por vez, nesta ordem. Cada uma termina testada e vista na tela com
+as leis piloto.
+
+### 2a. Economia fechada (era J3)
+
+- [x] Economia em reais: PIB, ocupados, massa salarial, lucros, consumo, patrimônios
 - [x] Imposto = alíquota × base × (1 − o que escapa), cada receita com a sua lei
 - [x] Caixa, déficit e dívida
-- [~] Fase 2: juntar leis repetidas, converter em faixa, leis novas
-- [~] Ligação das leis econômicas ao grafo: conferir bolha por bolha (`scripts/diagnostico/mundo-responde.ts` e o script por bolha)
-- [ ] Coeficientes proporcionais ao PIB: 47 efeitos em 11 leis de verba ainda usam coeficiente por real; pôr `normalizacao` pelo `pib_nominal`, como os outros 59 (só JSON)
-- [ ] `transparencia_fiscal_internacional` não é movida por nenhuma lei
-- [ ] Gasto fixo da rede (~30% do PIB)
+- [ ] Dreno principal: gasto fixo da rede (~30% do PIB)
 - [ ] Destino da sobra: fundo soberano
-- [ ] Contribuição sobre salários
-- [ ] Setores: indústria, serviços, agro
+- [ ] Juros com canal de credibilidade e PIB em reais que dilui a dívida (hoje a dívida cresce até nos cenários de crescimento)
+- [ ] Corte de gasto que não derruba a atividade e a arrecadação demais
+- [ ] `transparencia_fiscal_internacional`: nenhuma lei a move
+- [~] Ligação das leis econômicas ao grafo, bolha por bolha (`scripts/diagnostico/mundo-responde.ts`)
+- [ ] **(decidir)** Industrialização, índice essencial da V1: composição simples (produtividade + infraestrutura + desenvolvimento) ou setores (indústria, serviços, agro)? Setores aumentam bastante esta fase
 
-**J4 Rede de consequências (fora da economia)**
+### 2b. Lei vira motivo na população (era J5 e o fim da J2)
 
-- [x] Saúde → mortalidade e natalidade; piso do salário mínimo
-- [ ] Conferir a ligação das leis ao grafo nas outras áreas (M2.6): o autor suspeita que o jogador não sente efeito porque as leis estão mal ligadas
-- [ ] Rever quais índices o jogo mostra e se são os certos
+- [x] Censo, bolso e movimento; motivos por pessoa com tags; memória de coorte do desemprego; bico e seguro de 5 meses; 4 grupos novos; sortear uma pessoa (`pessoaDaChave`)
+- [ ] Lei como produtor de motivo: incomoda quem ela afasta do ponto da pessoa na bússola (antes e depois), com a régua `sensibilidade` do Congresso. Vale para lei moral e política
+- [ ] Causa da memória por tag ou índice, lida do contrato
+- [ ] `aprovacaoPorPerfis` do motor lendo bolso e memória (hoje usa perfis fixos)
+- [ ] `gosta`/`odeia` dos desempregados
+- [ ] Fluxos de valores e religião que faltam: evangélico→católico, sem religião→católico, polarização esvaziando o centro
+- [ ] Informalidade de 80% que chega só a ~62%
+- [ ] Futuro (fora da V1): o perfil manda e o agregado é a soma; depende do bolso guardar a fonte do dinheiro e dos setores
 
-**J5 População**
+### 2c. Estado dos grupos (máquina de estados, nova) **(decidir se entra)**
 
-> Visão do autor (30/out): a população é uma **IA de jogo** (não LLM). Cada
-> pessoa "pensa", tem memória e opinião própria, separada por grupos e
-> pessoas. Ela é um **módulo independente**: existe sem leis nem governo e se
-> adapta quando eles chegam. Só guarda o registro e o efeito na satisfação; a
-> causa vem como lista de índices ou **tags**, nunca como nome de lei.
+- [x] Satisfação por perfil, apoio pesado pelo tamanho, radicais e lealistas
+- [ ] Cada grupo tem um estado: calmo → insatisfeito → protestando → radicalizado, com regras de entrada e saída lidas do JSON
+- [ ] Protestos e greves nascem do estado e viram ocorrências: os dilemas passam a vir do país, não da sorte (hoje 72 de 91 são só sorte, ~1% por turno)
+- [ ] O jogo percebe padrões (ex.: várias verbas cortadas = corte de gastos); a bússola só mostra. 13 gatilhos já feitos (era J7)
 
-- [x] Censo, bolso e movimento (renda, valores e religião mudam com o país)
-- [x] Motivos por pessoa (passo 1): satisfação = 50 + soma de motivos; hoje produzem motivos o grupo e o bolso (`congresso/motivos.ts`). Memória e leis entram depois como novos produtores
-- [x] Tags nos motivos (passo 2): cada `Motivo` leva `tags`. O de grupo leva o id do grupo, o de bolso leva `bolso`, o de memória leva as tags do JSON (`regras.memoria.desemprego.tags` em `mundo/congresso.json`). Leis e economia apontam para essas tags nos próprios JSON; é assim que os módulos conversam
-- [x] Memória por pessoa, no salvar e carregar (`game/congresso/memoria.ts`, `EstadoDoCongresso.memoria`): memória de coorte por linha do eleitorado, com a fração que já foi desempregada e voltou (gratidão, esfria por turno) e os meses de quem segue sem emprego (desalento). Entra como produtor de motivos `memoria`. [ ] **Causa** ("quais políticas levaram a isso") fica por tags ou índices e depende de o módulo das leis declará-la
-- [ ] Desemprego: cobertura do seguro e ex-informal com renda de bico (desalento e gratidão já feitos); calibrar `gratidao` 6, `desalento` 8, `mesesDoDesalento` 12 e `esquecimentoPorTurno` 0,05 (chutes)
-- [x] Sortear uma pessoa (passo 3, só a mecânica): o módulo gera a pessoa de um perfil sorteado por peso, com nome e idade fixos pela semente, guarda no estado (salvar e carregar) e devolve a mesma a cada clique na mesma chave; a opinião sai dos motivos do perfil ao vivo. Falta a memória dela (passo 2)
-- [ ] Futuro: inverter para "o perfil manda e o agregado é a soma". Depende de o bolso guardar a fonte do dinheiro e de os setores (J3) existirem (PLANO, item 3)
+### 2d. Partido, desgaste e fim de jogo (eram J8 e J10)
 
-**J6 Opinião e grupos**
-
-- [x] Satisfação por perfil (com bolso), apoio pesado pelo tamanho
-- [x] Radicais e lealistas
-- [~] País em frases (55 de 192 bolhas)
-- [ ] Neutralidade das réguas e das cores
-
-**J7 Bússola e padrões**
-
-- [x] Bússola, aprovação lida dos perfis vivos
-- [x] 13 gatilhos (incluindo os fiscais), com reação nos grupos, na eleição e no Congresso
-- [x] Promessa contra ação
-
-**J8 Partido e governo**
-
-- [x] Gerador de pessoas; presidente, vice e ministros (um por área)
-- [x] Popularidade do ministro pelos grupos leais; ministro porta-voz (pedidos)
-- [~] Carisma vivo (falta o lado da mídia, J12)
-- [~] Troca de chapa na eleição (falta a lei estender ou encurtar o limite de mandatos)
+- [x] Gerador de pessoas; presidente, vice e ministros; popularidade do ministro; ministro porta-voz
+- [x] Eleição existe; troca de chapa [~]
 - [ ] Partido: o que defende, alas, disciplina da bancada
 - [ ] Afinidade de cada grupo com o partido
-- [ ] Desgaste do partido e antipartido
-- [ ] A decidir: o que o candidato muda de fato; competência do ministro na eficácia da pasta; troca e demissão de ministro
+- [ ] Desgaste (sobe sempre, cruzeiro e queda) e antipartido
+- [ ] Adversário na eleição
+- [ ] Fim de jogo: perder a eleição encerra
+- [ ] Lei estender ou encurtar o limite de mandatos
 
-**J9 Congresso**
+### 2e. Feed das redes sociais (era J14)
 
-- [x] Tramitação e votação
-- [x] Motivo do voto de cada bancada, quem mudou de lado, disposição com o governo
-- [x] Pétrea: tentar mexer custa humor no Senado e satisfação nos grupos
+- [ ] Cada motivo forte de uma pessoa sorteada vira um post curto (modelo de texto por tag e sinal, no JSON). Uma amostra por turno, clicável até o perfil
+- [ ] Só lê da população; sem seguidores, respostas nem curtidas
+- [ ] **(decidir)** Mídia (era J12, sem desenho): ataque na mídia mexe no carisma, na popularidade e no Senado. Entra na V1 aqui, junto do feed, ou fica para depois?
 
-**J10 Eleição e fim**
+### Já fechado (não volta à fila)
 
-- [~] Eleição existe, falta o adversário
-- [ ] Fim de jogo (perder encerra)
-
-**J11 Ocorrências e pressão**
-
-- [x] Ocorrências, crises, grupos de pressão
-- [ ] Dilemas que nascem do estado do país (hoje 72 de 91 são só sorte, ~1% por turno)
-- [ ] Ministros com nome nas ocorrências (`occurrences.ts` usa o nome da pasta)
-
-**J12 Mídia**
-
-- [ ] Ideia do autor, sem desenho: ataque na mídia mexe no carisma, na popularidade e pressiona o Senado. Abre depois da J8.
-
-**J13 Partida**
-
-- [x] Criar, salvar, carregar, exportar
-
-**J14 Redes sociais** (mecânica própria, apoiada na população; autor, 30/out)
-
-- [ ] Feed vivo: cada motivo forte de uma pessoa sorteada vira um post curto (texto de modelo por tag e sinal, no JSON, preenchido com os dados dela). Uma amostra por turno, clicável até o perfil
-- [ ] Não simula uma rede social inteira: sem seguidores, respostas nem curtidas
-- [ ] Só lê da população (motivos, tags, memória); a população não depende dela
+- [x] Motor: pacote, tipos de variável, setas (afim, gradual, atraso, condições, transbordo, derivado), passo, salvar e retomar. 309 de 311 testes verdes em 30/out
+- [x] Tempo: turno de 2 meses, mandato de 24 turnos (`game/calendario.ts`)
+- [x] Congresso: tramitação, votação, motivo do voto, disposição, pétrea
+- [x] Bússola, promessa contra ação
+- [x] Partida: criar, salvar, carregar, exportar
+- [x] Saúde → mortalidade e natalidade; piso do salário mínimo
 
 ---
 
-## Parte 3. Interface (`src/ui`)
+## Fase 3. Preenchimento das leis (só JSON)
 
-**I1 Mapa político**
+Área por área, com o verificador verde em cada uma. Nenhum código novo aqui; se
+faltar código, volta para a Fase 2.
 
-- [x] Índices em anéis, no ângulo das áreas que os mexem (passo 1; foco numa lei e num índice não visto)
-- [ ] Linhas só no foco (passo 2, `docs/jogo/interface/mapa-em-tres-aneis.md`)
-- [ ] Ícones próprios para cada índice
+- [x] Molde v4: 224 leis em 11 áreas e 2 pétreas, com verificador e inventário
+- [ ] Separar Segurança e defesa em duas áreas (hoje uma com 45 leis)
+- [ ] Pôr no molde a lei de "Tributação" que está fora dele
+- [ ] Juntar leis repetidas, converter em faixa, leis novas (fase 2 da economia)
+- [ ] Contribuição sobre salários
+- [ ] Ligar as 6 leis sem efeito nos grupos novos: regra-fiscal, valor-da-meta-de-inflacao, taxa-basica-de-juros, vagas-de-creche, quem-cuida-do-idoso-dependente, policias-dos-estados
+- [ ] Conferir a ligação ao grafo nas áreas fora da economia: o jogador precisa sentir cada lei
+- [ ] Rever quais índices o jogo mostra e se são os certos
+- [ ] Catálogo de ~250 leis, cada uma com lugar na bússola
+- [ ] País em frases: hoje 55 de 192 bolhas
 
-**I2 Turno na tela**
-
-- [x] Passar o turno, jornal
-- [ ] Os meses do turno animados
-
-**I3 Leis na tela**
-
-- [x] Busca, catálogo, janela da lei, régua, prévia do efeito e do bolso
-- [~] Teto de 4× em `faixaNumerica` (`Documentos.tsx`) ainda vale para unidades que não são moeda nem percentual
-- [ ] Régua também nas leis de opções? (A7, decisão do autor)
-
-**I4 População, grupos e bússola**
-
-- [x] Censo, painel de grupos com radicais e lealistas, bússola com os gatilhos
-- [ ] Faixas sem grupo na tela (centro, fora da força de trabalho…)
-- [x] Bússola: camada "População" (nuvem dos perfis em quadradinhos de meio ponto, % por quadrante)
-- [ ] Clique no post da rede traz a pessoa (`pessoaDaChave`) e mostra a opinião dela; sem tela própria de sorteio (ver J14)
-- [ ] Feed de posts que leva ao perfil (ver J14)
-
-**I5 Governo, Congresso e eleição (tablet)**
-
-- [x] Escolha da chapa, plenário com a disposição das bancadas, pedido do ministro, noite da apuração
-- [~] Não visto: troca de chapa na eleição, fila com o voto de cada bancada, por que cada bancada votou, aviso da pétrea
-
-**I6 Abertura**
-
-- [x] Menu, salvar e carregar
-- [ ] Tela de abertura à altura da promessa
+**Termina quando:** todas as leis passam no verificador. **Aqui a V1 está
+completa em regras.**
 
 ---
 
-## Transversal, no fim: Calibragem
+## Fase 4. Calibragem e acabamento
 
-Lista única com os limites (1) a (17) do Grupos, os chutes do item 12 do PLANO
-e C1–C2. Uma linha por chute, com o arquivo onde ele mora. A revisão manual
-jogando entra aqui, junto com o conteúdo das leis (J2) e o texto (J6).
+- [ ] Calibragem: lista única com os limites (1) a (17) do Grupos, os chutes do item 12 do PLANO e C1–C2, uma linha por chute com o arquivo onde mora. Inclui `gratidao` 6, `desalento` 8, `mesesDoDesalento` 12, `esquecimentoPorTurno` 0,05 e os chutes dos 4 grupos novos
+- [ ] Neutralidade das réguas e das cores
+- [ ] Revisão jogando
+- [ ] Tela:
+  - mapa com linhas só no foco (`docs/jogo/interface/mapa-em-tres-aneis.md`) e ícones próprios por índice;
+  - meses do turno animados;
+  - régua nas leis de opções? (A7, decidir);
+  - teto de 4× em `faixaNumerica` (`Documentos.tsx`) para unidades que não são moeda nem percentual;
+  - feed e clique no post até a pessoa;
+  - faixas sem grupo [x];
+  - tela de abertura à altura da promessa;
+  - conferir o que está "não visto" (troca de chapa, voto de cada bancada, aviso da pétrea, 4 grupos, bico, seguro)
+- [ ] Ministros por último: competência na eficácia da pasta, troca e demissão, nome nas ocorrências (`occurrences.ts`), carisma vivo
+- [ ] Refatoração (pedido separado): cortar as 6 montagens do `pacoteVivo` por turno
 
-## Numeração antiga
+---
 
-| Antes | Agora |
+## Fora da V1 (pelo escopo)
+
+- Mercado no estilo Victoria 3; população em blocos (opção B do escopo)
+- Escolha de país (V2); produtos, tecnologias e pesquisa (V5)
+- STF
+
+## Onde foi parar cada item antigo
+
+| 30/out | Agora |
 |---|---|
-| M1 Tempo | J1 e I2 |
-| M2 Leis | J2, J3/J4 (M2.6), I3 |
-| M3 Economia | J3 |
-| M4 Rede | MO1 a MO5 (o motor) e J3 (coeficientes ao PIB) |
-| M5 População | J5 e I4 |
-| M6 Opinião | J6 |
-| M7 Bússola | J7 |
-| M8 Partido | J8 |
-| M9 Congresso | J9 e I5 |
-| M10 Eleição | J10 |
-| M11 Ocorrências | J11 |
-| M12 Partida | J13 e I6 |
-| M13 Mídia | J12 |
+| MO1–MO5 Motor | Fase 2, "Já fechado" |
+| J1 Tempo | Fase 0 (testes) e "Já fechado" |
+| J2 Leis | Fase 1 (contrato) e Fase 3 (catálogo) |
+| J3 Economia | Fase 2a; coeficientes por real na Fase 1 |
+| J4 Rede | Fase 3 |
+| J5 População | Fase 2b |
+| J6 Opinião e grupos | Fase 2c; país em frases na Fase 3; neutralidade na Fase 4 |
+| J7 Bússola e padrões | "Já fechado"; padrões na Fase 2c |
+| J8 Partido e governo | Fase 2d; ministros na Fase 4 |
+| J9 Congresso | "Já fechado" |
+| J10 Eleição e fim | Fase 2d |
+| J11 Ocorrências | Fase 2c; ministros com nome na Fase 4 |
+| J12 Mídia | Fase 2e (decidir) |
+| J13 Partida | "Já fechado" |
+| J14 Redes sociais | Fase 2e |
+| I1–I6 Interface | Fase 4 |
+
+| Antes de 30/out | Agora |
+|---|---|
+| M1 Tempo | Fase 0 |
+| M2 Leis | Fases 1 e 3 |
+| M3 Economia | Fase 2a |
+| M4 Rede | Motor fechado e Fase 1 (coeficientes ao PIB) |
+| M5 População | Fase 2b |
+| M6 Opinião | Fase 2c |
+| M7 Bússola | Fase 2c |
+| M8 Partido | Fase 2d |
+| M9 Congresso | Já fechado |
+| M10 Eleição | Fase 2d |
+| M11 Ocorrências | Fase 2c |
+| M12 Partida | Já fechado e Fase 4 |
+| M13 Mídia | Fase 2e |

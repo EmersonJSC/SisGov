@@ -37,6 +37,21 @@ a tela (`src/ui`) fica mais para o final.**
 | 2    | Leis                                                        | pronto                                                                            | a fazer       |
 | 3–15 | demais                                                      | a escrever                                                                        | a fazer       |
 
+### Ordem em vigor (31/out): fases do mapa das mecânicas
+
+**A ordem de trabalho agora é a do [mapa das mecânicas](docs/jogo/mecanicas/mapa-das-mecanicas.md).**
+Meta: quando o JSON de todas as leis estiver preenchido, a V1 está pronta.
+
+0. **Base verde:** os 11 testes que falham e uma partida jogada na tela até a eleição. ← frente atual
+1. **Contrato da lei e verificador:** o que cada lei declara e quem lê cada campo. Inclui a regra única "verba age em % do PIB", que substitui as 48 edições à mão. Termina com três leis piloto.
+2. **Sistemas que leem o contrato:** 2a economia fechada; 2b a lei vira motivo na população; 2c estado dos grupos; 2d partido, desgaste e fim de jogo; 2e feed.
+3. **Preenchimento das leis:** só JSON, área por área, com o verificador verde.
+4. **Calibragem e acabamento:** a tela e, por último, os ministros.
+
+**Decisões do autor:** Industrialização (índice simples ou setores?); Mídia na V1?; estado dos grupos entra?
+
+A lista numerada abaixo (1 a 14) fica como **detalhe e histórico** de cada mecânica. Onde ela e o mapa divergirem na ordem, vale o mapa.
+
 ### Nova ordem (24/out): construir primeiro, calibrar no fim
 
 Até o jogo ter o ciclo inteiro (governar, desgastar, perder a eleição), cada
@@ -56,7 +71,11 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
    - **Limites da C, para a calibragem e para a próxima rodada:** (1) a tabela de vulnerabilidade e os coeficientes das setas são chute de direção, sem PNAD/Caged; (2) informalidade de 80% leva só a ~62% dos ocupados, porque só há movimento entre gêmeos; (3) o ex-informal desempregado fica com renda R$ 0; (4) `ProfileApproval` do motor segue com perfis fixos; (5) desalento e duração do seguro não são modelados; (6) `gosta`/`odeia` do grupo de desempregados não foi escrito; (7) empresário sobra R$ 95 mil/mês (calibragem); (8) `pacoteVivo` percorre ~2.100 perfis por chamada, desempenho a medir; (9) a renda pela sobra (30/out) é só leitura: não mexe em grupos nem eleição, e a partida salva antes não tem `valoresIniciais`, então fica sem movimento; (11) valores e religião (30/out) se movem só no censo, por `app/partida/faixasVivas.ts`: fluxos entre faixas em `mundo/populacao.json` `mudancas`, pressão = Σ peso × variação/100 desde o turno 0. Valores: segurança −1, escolaridade −0,5, desigualdade −0,5, `forca` 1 (segurança −30 move ~9 pontos). Religião: fluxos diretos entre as três (ninguém passa por católico): católico e sem religião → evangélico (desigualdade +0,5, segurança −0,5); católico e evangélico → sem religião (escolaridade +0,5), `forca` 0,5. Chutes de direção, soltos de propósito, a calibrar; a polarização esvaziando o centro não entrou; não há fluxo evangélico→católico nem sem religião→católico; (12) o rótulo "sobra por mês" do censo é renda depois do imposto, sem custo de vida: pode enganar (pobre "sobra" R$ 1,3 mil); (10) `desempregado` em tabelas que assumem ocupações fixas (bússola, comparecimento) não foi auditado.
    - **Fechamento do Grupos (30/out), limites para a calibragem:** (13) o bolso entra na satisfação do perfil por `game/congresso/bolsoNaSatisfacao.ts`: 50 pontos por salário médio anual de diferença na sobra desde o turno 0, teto ±10 (chutes); só a eleição e o Congresso leem (`satisfacaoDoPerfil`); a aprovação do motor (`aprovacaoPorPerfis`, perfis fixos) **não** lê o bolso; (14) `pacoteVivo` agora usa emprego + renda + valores + religião (as faixas vivas saíram do `app` para `game/congresso`), então a eleição e o Congresso enxergam o país que mudou; o turno 0 não muda nada; o início do bolso fica num registro por pacote (`registrarInicioDoBolso`, chamado em `criarPartida` e `carregarPartida`): sem ele o ajuste vale 0; (15) radicais e lealistas (`game/congresso/polarizacao.ts`) são função pura da satisfação (radical: metade do grupo em 30, lealista em 70, abertura 8, chutes), sem estoque que acumule; o país soma por perfil, sem contar duas vezes; (16) antipartido e o desgaste de quem está há muito no poder (docs/jogo/escopo.md 6.7) **não** foram modelados; (17) o desempregado ganhou ponto de economia −0,4 na bússola (chute).
    - **Três camadas, nesta ordem** (decidido com o autor em 28/out): **A. Censo** — a tela mostra o país repartido, 7 ms, só leitura; **B. Bolso e emprego** — cada perfil com salário, imposto, consumo e setor, repartindo os agregados que já estão calibrados (o agregado manda, o perfil divide); **C. Movimento** — o perfil muda de faixa por causa da condição material. A C é o que passa do Democracy 4, onde a lei mexe na filiação direto; aqui a lei mexe na condição e a condição empurra a pessoa.
-   - **Faixas sem grupo na tela**, que o censo achou: centro (30% do eleitorado), fora da força de trabalho (16%), metrópole (20%), religião "outra" (16%). Outras ausências são propositais (sem filhos, não ambientalista, 30-59 anos) — ninguém faz política em nome delas. Decidir uma a uma, jogando.
+   - **Faixas sem grupo na tela (31/out): feito.** Quatro grupos pequenos: centro (30%), fora do mercado (16%), metrópoles (20%), outras religiões (16%). Chutes a calibrar: valores iniciais 48/50/47/52 e coeficientes copiados dos grupos análogos (classe média/trabalhadores, pobres/famílias com filhos, periferias/classe média, progressistas). Seis leis sem ligação para copiar (regra-fiscal, valor-da-meta-de-inflacao, taxa-basica-de-juros, vagas-de-creche, quem-cuida-do-idoso-dependente, policias-dos-estados): ligar à mão, se quiser. `pais:ancorar` não foi rodado inteiro. `ligacoes.ts` agora grava `efeitos` na lei e filtra por segmento. Também chutes: bico 0,4 e seguro de 5 meses com corte linear de 1× a 2×. Ausências propositais (sem filhos, não ambientalista, 30-59 anos) ficam como estão.
+   - **O que falta da população (31/out), separado por módulo.** Itens (3) e (5) dos limites da C estão feitos (bico e seguro de 5 meses; desalento entrou na memória).
+     - *Só da população, pode fazer sem mexer nas leis:* (a) `gosta`/`odeia` do grupo de desempregados (limite 6); (b) fluxos que faltam em valores e religião: evangélico→católico e sem religião→católico, polarização esvaziando o centro (limite 11); (c) informalidade de 80% só chega a ~62% porque só há movimento entre gêmeos (limite 2); (d) cortar as 6 montagens do `pacoteVivo` por turno (refatoração, pedido separado).
+     - *O que depende de outros módulos* foi para o item 12 (junto da calibragem).
+     - *Não vi na tela:* os 4 grupos novos e o bico/seguro (só por script e teste).
    - Futuro, não agora, e os dois dependem de a camada B guardar o bolso com a **fonte** do dinheiro em vez de um número solto: (a) **setores econômicos** — indústria, serviços, agro — que o autor confirmou em 29/out que vão existir, e hoje só são nome dentro de ocorrências de lobby; (b) migrar para "o perfil manda e o agregado é a soma" (o Vic3 inteiro). Mesma estrutura, direção invertida.
 
 4. [x] **Saúde mexe na população** (30/out, `saude-populacao--taxa-mortalidade`, teste `saudeMortalidade.test.ts`): `taxa_mortalidade` virou `calculado` (consequência não aponta para `controle`) e ganhou a seta de `saude_populacao` (−0,3 por ponto, atraso de 1 passo, neutra no início: 7‰). Pandemia (−10 pontos) = +3‰ de mortes. Script: `scripts/teste/mortalidade.ts`. Limite: a calibragem do coeficiente é chute. A natalidade segue fora (item 5).
@@ -68,6 +87,10 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
 10. [ ] Três meses na tela: o turno anima os 3 meses (calendário andando, bolhas crescendo e encolhendo); substitui o tempo corrido
 11. [ ] Índices essenciais e população: só o que faltar depois da economia em reais. Pedido do autor (30/out): reajustar os índices que aparecem na tela e trocar os ícones genéricos por ícones próprios (M2.6 do mapa das mecânicas)
 12. [ ] Calibragem de tudo, neutralidade das réguas e catálogo de ~250 leis
+   - **Pendências da população que dependem de outros módulos (31/out), fazer junto da calibragem:**
+     - *Depende das leis (J2):* a **causa** da memória (tag ou índice? a lei diz o que causou o desalento ou a gratidão); ligar à mão as 6 leis sem efeito nos grupos novos; o motor `aprovacaoPorPerfis` ainda usa perfis fixos e não lê bolso nem memória (limite 4, junto da economia).
+     - *Depende de redes sociais (J14):* feed de posts com a chave da pessoa (`pessoaDaChave` já pronto); a rede só entrega a chave e os nomes de `eleicao.json`.
+     - *Depende de outras frentes:* antipartido e desgaste de quem está há muito no poder (item 7 do PLANO, limite 16); calibragem de todos os chutes (item 12); 11 testes antigos que falham (causa por descobrir, fora da população).
     - **Chutes da população para conferir na calibragem** (lista única, 30/out; cada um também tem o aviso no próprio arquivo). Todos são de direção, sem dado:
       - Multiplicadores de renda por ocupação × faixa (`mundo/populacao.json`, `bolso`): ancorados a olho na PNAD. Hoje o pobre com carteira ganha R$ 1.862/mês e paga 35% disso.
       - **Piso** (feito 30/out): carteira e servidor (`seguePiso`) não ganham menos que o salário mínimo (`salario_minimo_efetivo` × mediana/média 0,71, chute em `populacao.json`). Só sobe: cortar o mínimo não baixa o bolso; quando pega, a soma dos perfis deixa de fechar com a massa do motor. Neutro no início (66%). Script: `scripts/teste/piso-minimo.ts`.
@@ -77,6 +100,7 @@ Ordem revista em 25/out a partir da [experiência de jogo](docs/jogo/experiencia
       - Vulnerabilidade ao desemprego (`emprego.vulnerabilidade`) e os coeficientes das setas do desemprego.
       - Renda pela sobra: a distância entre faixas é a das médias do início; o rico quase não se move.
       - Valores e religião (`mudancas`): pesos e `forca` de cada fluxo; polarização e o caminho evangélico→sem religião não entraram.
+      - **Custo por turno da população (31/out, em aberto):** o turno custa ~1,70 s contra 0,97 s antes da população (cache de `pacoteVivo` por memória, `2c0226d0`, já cortou de 2,21 s). Sobram 6 montagens do eleitorado vivo por turno (eram 3): quem lê sem memória (`prepareGameQuarter`, `aprovacaoViva`, `tramitacao`, `contas`, `pedidos`) e quem lê com. Para cortar: cache por conteúdo ou passar o pacote pronto entre os passos do turno (mexe no fluxo; pedido de refatoração separado). Enquanto isso, `ocorrencias.test.ts` (2 testes) e `ocorrenciasVariedade.test.ts` ficaram com tempo limite de 240 s e 300 s (passavam em 115 s e 180 s).
 13. [ ] **O partido é uma coisa** (novo, 28/out): hoje o partido é só nome e sigla, embora a tela prometa "você não é o presidente, você é o partido". Falta o que ele defende (ideologia, alas internas), a disciplina da bancada e como isso aperta o jogador. O desgaste (item 5) é propriedade dele, não um número solto.
 14. [ ] **Montar o governo** (novo, 28/out): escolher vice e ministros. Hoje escolhe-se só o presidente, entre personagens gerados com biografia, opiniões, carisma e experiência. Não há chapa (vice não existe no código) e `occurrences.ts` ainda monta o texto do ministro a partir do nome da pasta — o comentário lá diz "até existirem ministros com nome". Os ministérios já existem no mapa; falta quem os ocupa.
 
@@ -103,6 +127,16 @@ amostra ou documento quando há decisão do autor, implementar com teste,
 **0. Base verde**
 
 - [ ] `npm run check` completo sem falha (hoje: `pressao` "turno 0", "três leis piloto" e testes lentos que passam do tempo)
+
+**Achados da conferência do motor (30/out)**
+
+Rodei os 54 arquivos de teste que usam o motor (311 testes; ficaram de fora `ocorrencias*`, `contasSemFuros` e `pisosVinculados`, que são lentos). 309 passaram. `tsc -b` limpo. As duas falhas são de expectativa do jogo; o motor não errou:
+
+- [ ] `brasil2026.test` "juros explosivos": a contagem de 26 turnos supõe trimestres. Com o turno de 2 meses, 26 turnos são 52 meses em vez de 78. Trocar a contagem por meses (39 turnos) ou conferir o novo turno de entrada.
+- [ ] `fichaV3.test` "três leis piloto": os valores fixos depois de 4 turnos (58,8366 etc.) supõem trimestres. Hoje dá 53,87. Já falhava antes (ver item 0). Recalcular para 2 meses ou contar por meses.
+- [ ] Coeficientes em dinheiro fixo (J3): 47 efeitos em 11 leis de verba (`dinheiro.modo: valor_fixo`, controle em `moeda_ano`) usam coeficiente por real, como `gasto-com-defesa` 2,083e-07. Isso só vale na escala do Brasil. Os outros 59 efeitos dessas leis já usam `normalizacao: { divisor: pib_nominal, multiplicador: 100 }`. ~~A correção é só JSON~~ **Revisto em 31/out:** vira regra única no carregamento das leis (todo controle `moeda_ano` age por `pib_nominal`), com conversão de uma vez dos 48 coeficientes. Fica na Fase 1 do mapa.
+- [ ] `transparencia_fiscal_internacional` não recebe seta de nada: só o país dá o valor e nenhuma lei o move. Ele mexe na eficácia de dois impostos (dividendos e fortunas). Decidir se uma lei (acordos de troca de informação) deve mexer nele (J3). `carga_evento_demanda` também não recebe seta, mas é carga de evento.
+- Conferido sem achado: nenhuma variável calculada, derivada ou estoque fica sem uso.
 
 **A. Leis (mecânica 2): acabamento**
 
