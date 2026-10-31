@@ -16,9 +16,9 @@ Backup: tag `projeto-antigo-2026-10-31` e `arquivo/codigo-antigo-2026-10-31/`
 
 ## Próximo
 
-Passo 1 do [escopo novo](docs/jogo/escopo.md): **o autor aprovar o escopo**.
-Pontos em aberto nele: quantas leis na V1 e a lista de grupos genéricos.
-Depois, passo 3: escrever a primeira lei no modelo novo.
+[Escopo novo](docs/jogo/escopo.md) aprovado em 31/out (passo 1 fechado).
+Próximo: **passo 3**, escrever uma lei contínua (% com base de cálculo do
+motor, ex.: imposto de renda com Laffer) e uma de opções, para o autor aprovar.
 
 ## Armadilhas
 
