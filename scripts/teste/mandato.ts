@@ -24,7 +24,7 @@ import { referenciasDaBussola } from "../../src/game/bussola";
 const ESCOLHIDOS = (process.argv[2] ?? "mujica,chavez,bolsonaro,pinera").split(
   ",",
 );
-const TURNOS = 16;
+const TURNOS = 24;
 /** Sementes (3º argumento, ex.: 1-10 ou 3,7): uma partida por semente. */
 const SEMENTES = (() => {
   const arg = process.argv[3] ?? "7";
