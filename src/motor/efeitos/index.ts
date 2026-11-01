@@ -4,11 +4,11 @@
 import type { Forca, Lei, ValorLei } from "../leis";
 import { efeitosDoValor } from "../leis";
 
-/** Pontos (escala 0–100) do efeito inteiro. Aprovado em 31/out/2026. */
+/** Pontos (escala 0–100) do efeito inteiro. Aprovado em 31/out/2026; 2/5/10 desde 01/nov (6d). */
 export const PONTOS_FORCA: Record<Forca, number> = {
-  fraca: 1,
-  media: 3,
-  forte: 6,
+  fraca: 2,
+  media: 5,
+  forte: 10,
 };
 
 export interface EfeitoEmCurso {

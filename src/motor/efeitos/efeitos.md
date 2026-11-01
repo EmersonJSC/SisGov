@@ -3,7 +3,7 @@
 Cada lei em vigor **contribui** pontos (escala 0–100) para índices de
 jogabilidade. O índice é a base do país mais a soma das contribuições.
 
-- Tamanho do efeito inteiro: `fraca` 1, `media` 3, `forte` 6 pontos
+- Tamanho do efeito inteiro: `fraca` 2, `media` 5, `forte` 10 pontos (calibrado no 6d, era 1/3/6)
   (31/out/2026). É o tamanho total, não por turno: por turno, um efeito
   médio somaria 72 pontos num mandato e prenderia os índices em 0 ou 100.
 - Lei contínua: o efeito cresce com a posição do valor na faixa (no mínimo,
