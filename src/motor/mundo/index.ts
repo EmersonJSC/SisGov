@@ -1,6 +1,6 @@
 // Mundo: as grandes potências (src/motor/mundo/mundo.md). O motor não
 // conhece os nomes; elas vêm do conteúdo.
-import { EIXOS, type PontoBussola } from "../leis";
+import { EIXOS, type Lei, type PontoBussola, type ValorLei } from "../leis";
 
 export interface Potencia {
   id: string;
@@ -122,4 +122,90 @@ export function lerPotencias(dado: unknown): Potencia[] {
   if (erros.length > 0)
     throw new Error(erros.map((e) => `${e.campo}: ${e.motivo}`).join("\n"));
   return (dado as { potencias: Potencia[] }).potencias;
+}
+
+/**
+ * Onde o país fica na bússola: média das leis vigentes, eixo por eixo. Lei
+ * que não declara o eixo não entra nele; eixo sem lei nenhuma fica em 0.
+ */
+export function posicaoDoPais(
+  leis: Record<string, Lei>,
+  vigentes: Record<string, ValorLei>,
+): Required<PontoBussola> {
+  const soma = { economico: 0, social: 0 };
+  const conta = { economico: 0, social: 0 };
+  for (const lei of Object.values(leis)) {
+    const valor = vigentes[lei.id];
+    for (const eixo of EIXOS) {
+      let v: number | undefined;
+      if (lei.forma === "continua") {
+        const b = lei.bussola;
+        if (!b || (b.min[eixo] === undefined && b.max[eixo] === undefined))
+          continue;
+        const { min, max } = lei.faixa;
+        const t = (((valor as number | undefined) ?? min) - min) / (max - min);
+        const de = b.min[eixo] ?? 0;
+        v = de + t * ((b.max[eixo] ?? 0) - de);
+      } else {
+        v = lei.opcoes.find((o) => o.id === valor)?.bussola?.[eixo];
+      }
+      if (v === undefined) continue;
+      soma[eixo] += v;
+      conta[eixo] += 1;
+    }
+  }
+  return {
+    economico: conta.economico ? soma.economico / conta.economico : 0,
+    social: conta.social ? soma.social / conta.social : 0,
+  };
+}
+
+/** Maior distância possível na bússola: de um canto ao oposto. */
+const DISTANCIA_MAXIMA = 2 * Math.SQRT2;
+
+/** Opinião que a potência gostaria de ter: 100 na mesma posição, 0 no canto oposto. */
+export function opiniaoDesejada(
+  potencia: Potencia,
+  pais: Required<PontoBussola>,
+): number {
+  const d = Math.hypot(
+    pais.economico - potencia.bussola.economico,
+    pais.social - potencia.bussola.social,
+  );
+  return 100 * (1 - d / DISTANCIA_MAXIMA);
+}
+
+/** Quanto da distância até a desejada a opinião anda por turno. */
+export const PASSO_OPINIAO = 0.1;
+
+/** Opiniões depois de um turno, rumo à desejada de cada potência. */
+export function andarOpinioes(
+  potencias: Potencia[],
+  opinioes: Record<string, number>,
+  pais: Required<PontoBussola>,
+): Record<string, number> {
+  const novas: Record<string, number> = {};
+  for (const p of potencias) {
+    const atual = opinioes[p.id];
+    novas[p.id] = atual + PASSO_OPINIAO * (opiniaoDesejada(p, pais) - atual);
+  }
+  return novas;
+}
+
+/** Erro nas opiniões de partida do país, ou null. */
+export function motivoOpinioesInvalidas(
+  potencias: Potencia[],
+  opinioes: Record<string, number> | undefined,
+): string | null {
+  if (!opinioes) return "faltam as opiniões das potências";
+  const ids = new Set(potencias.map((p) => p.id));
+  for (const id of Object.keys(opinioes))
+    if (!ids.has(id)) return `opinião de potência que não existe: "${id}"`;
+  for (const id of ids) {
+    const v = opinioes[id];
+    if (v === undefined) return `falta a opinião de "${id}"`;
+    if (!(Number.isFinite(v) && v >= 0 && v <= 100))
+      return `opinião de "${id}" precisa estar entre 0 e 100`;
+  }
+  return null;
 }

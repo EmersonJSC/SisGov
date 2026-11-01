@@ -37,5 +37,12 @@ export function carregarPartida(texto: string): Partida {
   )
     throw new Error("partida salva: faltam país, semente ou estado");
   const nova = criarPartida(arquivo.pais, arquivo.semente, arquivo.opcoes);
-  return { ...nova, estado: arquivo.estado };
+  // Partida salva antes das potências: opiniões de partida do país.
+  return {
+    ...nova,
+    estado: {
+      ...arquivo.estado,
+      opinioes: arquivo.estado.opinioes ?? nova.estado.opinioes,
+    },
+  };
 }

@@ -24,12 +24,31 @@ O validador recusa: potência sem posição, eixo fora de −1 a +1, peso fora d
 consigo mesma, relação faltando, relação diferente nos dois lados, id
 repetido.
 
+### Pedaço 2: a opinião de cada potência (aprovado em 01/nov/2026)
+
+**Posição do país na bússola** = média das leis vigentes, eixo por eixo:
+
+- lei de opções: a posição da opção em vigor;
+- lei contínua: a reta entre a posição do mínimo e a do máximo, no valor
+  atual (não legislada = mínimo);
+- lei que não declara um eixo não entra na média desse eixo; eixo que
+  nenhuma lei declara fica em 0. Todas as leis valem igual.
+
+**Opinião desejada** de cada potência = 100 × (1 − distância ÷ 2√2): 100 com
+o país na mesma posição dela, 0 no canto oposto da bússola (distância comum
+nos dois eixos).
+
+**Opinião** (0 a 100), uma por potência:
+
+- a de partida vem do país (`opinioes` no `estado-inicial.json`); o país
+  precisa declarar todas as potências, e só elas;
+- a cada turno, depois das leis novas, anda 10% da distância até a desejada;
+- separada da opinião dos pops; sem potências nas regras, não há opinião.
+
+Partida salva antes do pedaço 2 carrega com as opiniões de partida do país.
+
 ### Pedaços seguintes (ainda sem código)
 
-- **Opinião** (0 a 100): uma por potência, a de partida declarada pelo país.
-  A cada turno anda um passo pequeno na direção da opinião que a potência
-  "gostaria" de ter: quanto mais perto o país está dela na bússola, mais
-  alta. Separada da opinião dos pops.
 - **Reputação internacional** = média das opiniões pesada pelo `peso`. As
   leis deixam de mexer direto nela; a bússola faz o trabalho.
 - **Segurança externa** (0 a 100, índice novo): cai quando potência forte tem

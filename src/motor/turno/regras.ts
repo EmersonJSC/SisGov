@@ -3,6 +3,7 @@
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
+import type { Potencia } from "../mundo";
 import type { Congresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
 
@@ -33,6 +34,8 @@ export interface Regras {
   /** Tipos de grupo do mundo. */
   grupos: TipoGrupo[];
   pais: ParametrosPais;
+  /** Grandes potências do mundo; sem elas, não há opinião (motor/mundo). */
+  potencias?: Potencia[];
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
 }

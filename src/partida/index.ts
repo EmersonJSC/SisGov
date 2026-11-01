@@ -6,6 +6,7 @@ import {
   gastoDasLeis,
   INDICES_ESSENCIAIS,
   lerLei,
+  lerPotencias,
   type Congresso,
   type Estado,
   type IndicesEssenciais,
@@ -23,6 +24,7 @@ import {
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
+import potencias from "../conteudo/mundo/potencias/potencias.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -47,6 +49,8 @@ interface EstadoInicialPais {
   id: string;
   essenciais: IndicesEssenciais;
   jogabilidade: Record<string, number>;
+  /** Opinião de partida de cada potência, 0 a 100 (motor/mundo). */
+  opinioes: Record<string, number>;
   parametros: ParametrosPais;
 }
 
@@ -210,6 +214,7 @@ export function criarPartida(
     dominios,
     pops: carregarPops(),
     grupos: carregarGrupos(),
+    potencias: lerPotencias(potencias),
     pais: inicial.parametros,
     congresso: semCongresso
       ? undefined
@@ -235,6 +240,7 @@ export function criarPartida(
     jogabilidade: inicial.jogabilidade,
     leis: vigentes.leis,
     coligacao: congresso.coligacao,
+    opinioes: inicial.opinioes,
   });
   return { pais, semente, opcoes, regras, estado };
 }

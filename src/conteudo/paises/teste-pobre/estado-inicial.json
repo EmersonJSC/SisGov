@@ -34,6 +34,13 @@
     "reputacao_internacional": 40,
     "popularidade_governo": 50
   },
+  "opinioes": {
+    "republica-do-norte": 65,
+    "uniao-continental": 60,
+    "republica-popular-do-oriente": 75,
+    "federacao-do-leste": 70,
+    "liga-do-golfo": 55
+  },
   "parametros": {
     "bases": {
       "renda": { "parcela_pib": 0.45, "pico": 0.45, "evasao": 0.3 },

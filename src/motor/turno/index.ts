@@ -24,6 +24,11 @@ import {
 } from "../grupos";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
+  andarOpinioes,
+  motivoOpinioesInvalidas,
+  posicaoDoPais,
+} from "../mundo";
+import {
   coligacaoAtual,
   motivoCongressoInvalido,
   votar,
@@ -249,6 +254,19 @@ const indicesJogabilidade: Etapa = (regras, estado) => ({
   jogabilidade: jogabilidade(regras, estado),
 });
 
+/** 7b. Mundo: cada potência anda a opinião rumo à desejada (motor/mundo). */
+const mundo: Etapa = (regras, estado) =>
+  regras.potencias
+    ? {
+        ...estado,
+        opinioes: andarOpinioes(
+          regras.potencias,
+          estado.opinioes,
+          posicaoDoPais(regras.leis, estado.leis),
+        ),
+      }
+    : estado;
+
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   const e = estado.essenciais;
@@ -352,6 +370,9 @@ const invariantes: Etapa = (regras, estado) => {
       falhas.push(`grupo ${id} inválido`);
   if (regras.congresso && !estado.coligacao.includes(regras.congresso.governo))
     falhas.push("coligação sem o governo");
+  for (const [id, v] of Object.entries(estado.opinioes))
+    if (!(Number.isFinite(v) && v >= 0 && v <= 100))
+      falhas.push(`opinião de ${id} fora de 0–100`);
   if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
     falhas.push("desgaste inválido");
   if (falhas.length > 0)
@@ -369,6 +390,7 @@ const ETAPAS: Etapa[] = [
   precosEJuros,
   contas,
   indicesJogabilidade,
+  mundo,
   popsEGrupos,
   politica,
   invariantes,
@@ -397,6 +419,8 @@ export interface Inicio {
   leis: Record<string, ValorLei>;
   /** Partidos da base no começo (com Congresso). */
   coligacao?: string[];
+  /** Opinião de partida de cada potência (com potências). */
+  opinioes?: Record<string, number>;
 }
 
 /**
@@ -430,6 +454,11 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     if (motivo) throw new Error(`país: congresso: ${motivo}`);
   }
 
+  if (regras.potencias) {
+    const motivo = motivoOpinioesInvalidas(regras.potencias, inicio.opinioes);
+    if (motivo) throw new Error(`país: ${motivo}`);
+  }
+
   const efeitos = filaInicial(regras.leis, inicio.leis);
   const soma = somaPorIndice(efeitos);
   const base: Record<string, number> = {};
@@ -454,6 +483,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     pops: {},
     grupos: {},
     marco: { indices: {}, leis: {}, renda_real: {} },
+    opinioes: regras.potencias ? { ...inicio.opinioes } : {},
     coligacao: [...coligacao],
     votacoes: [],
     desgaste: 0,

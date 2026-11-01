@@ -8,15 +8,17 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Passo 11 (mundo) em andamento; comportamento esperado em
-`src/motor/mundo/mundo.md`. Pedaço 1 feito: as 5 potências em
-`conteudo/mundo/potencias/potencias.json` (sem nome real) e o validador
-`validarPotencias` com teste. O país pode ser atacado, mas nunca começa
-guerra; comércio vai ser automático (escopo, seção 11).
+`src/motor/mundo/mundo.md`. Pedaço 1 feito: as 5 potências (sem nome real) e
+o validador. Pedaço 2 feito: posição do país = média das leis na bússola;
+cada potência anda 10% por turno rumo à opinião desejada; o país declara a
+de partida (`opinioes` no `estado-inicial.json`).
 
 ## Próximo
 
-Pedaço 2: opinião de cada potência (de partida no país, anda pela bússola a
-cada turno). Mostrar a proposta da conta ao autor antes do código.
+Pedaço 3: reputação internacional = média das opiniões pesada pelo `peso`,
+tirando o efeito direto das 3 leis (pena de morte, terras indígenas, áreas
+protegidas). Antes, o autor diz se a escala da opinião desejada fica (hoje
+vai de ~63 a ~90 nos países de teste; pena de morte mexe ~6 pontos).
 
 ## Pendências do autor
 

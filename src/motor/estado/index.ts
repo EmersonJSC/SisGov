@@ -52,6 +52,8 @@ export interface Estado {
   grupos: Record<string, Grupo>;
   /** Turno 0, referência dos grupos. */
   marco: Marco;
+  /** Opinião de cada potência sobre o país, 0 a 100 (motor/mundo). */
+  opinioes: Record<string, number>;
   /** Partidos da base do governo (motor/politica). */
   coligacao: string[];
   /** Votações do turno (motor/politica). */

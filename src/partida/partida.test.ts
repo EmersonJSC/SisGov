@@ -62,3 +62,18 @@ describe("eleição", () => {
     expect(fim.desgaste).toBeCloseTo(2.25);
   });
 });
+
+describe("opinião das potências", () => {
+  it("começa a do país e anda pela bússola quando a lei muda", () => {
+    const partida = criarPartida("teste", 42, { semCongresso: true });
+    expect(partida.estado.opinioes["uniao-continental"]).toBe(85);
+    const igual = jogar(partida, 12).estado.opinioes;
+    const pena = jogar(partida, 12, [
+      { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },
+    ]).estado.opinioes;
+    // Pena de morte é autoritária: quem é autoritário gosta, quem não é, não.
+    expect(pena["liga-do-golfo"]).toBeGreaterThan(igual["liga-do-golfo"]);
+    expect(pena["federacao-do-leste"]).toBeGreaterThan(igual["federacao-do-leste"]);
+    expect(pena["uniao-continental"]).toBeLessThan(igual["uniao-continental"]);
+  });
+});

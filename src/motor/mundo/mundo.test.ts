@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { lerPotencias, validarPotencias } from ".";
+import {
+  andarOpinioes,
+  lerPotencias,
+  motivoOpinioesInvalidas,
+  opiniaoDesejada,
+  posicaoDoPais,
+  validarPotencias,
+} from ".";
+import type { Lei } from "../leis";
 
 const base = () => ({
   versao: 1,
@@ -81,5 +89,71 @@ describe("validar potências", () => {
     const d = base();
     d.potencias[0].peso = 2;
     expect(() => lerPotencias(d)).toThrow("peso");
+  });
+});
+
+const imposto: Lei = {
+  versao: 1,
+  id: "imposto",
+  camada: "jogabilidade",
+  forma: "continua",
+  unidade: "fracao",
+  faixa: { min: 0, max: 0.4 },
+  passo: 0.01,
+  bussola: { min: { economico: 1 }, max: { economico: -1 } },
+  efeitos: [],
+};
+const pena: Lei = {
+  versao: 1,
+  id: "pena",
+  camada: "jogabilidade",
+  forma: "opcoes",
+  opcoes: [
+    { id: "abolida", bussola: { social: -0.4 }, efeitos: [] },
+    { id: "graves", bussola: { social: 0.8 }, efeitos: [] },
+  ],
+};
+const semBussola: Lei = { ...pena, id: "sem", opcoes: [{ id: "x", efeitos: [] }] };
+const leis = { imposto, pena, sem: semBussola };
+
+describe("posição do país", () => {
+  it("é a média das leis, eixo por eixo; lei sem o eixo não entra", () => {
+    // Imposto no meio da faixa: econômico 0. Só a pena fala do social.
+    expect(posicaoDoPais(leis, { imposto: 0.2, pena: "graves", sem: "x" }))
+      .toEqual({ economico: 0, social: 0.8 });
+    expect(posicaoDoPais(leis, { imposto: 0.1, pena: "abolida" }).economico)
+      .toBeCloseTo(0.5);
+  });
+
+  it("eixo sem lei nenhuma fica em 0", () => {
+    expect(posicaoDoPais({ sem: semBussola }, { sem: "x" })).toEqual({
+      economico: 0,
+      social: 0,
+    });
+  });
+});
+
+describe("opinião das potências", () => {
+  const [a] = lerPotencias(base());
+
+  it("desejada: 100 na mesma posição, 0 no canto oposto", () => {
+    expect(opiniaoDesejada(a, { economico: 0.5, social: 0 })).toBeCloseTo(100);
+    const longe = { ...a, bussola: { economico: 1, social: 1 } };
+    expect(opiniaoDesejada(longe, { economico: -1, social: -1 })).toBeCloseTo(0);
+  });
+
+  it("anda 10% rumo à desejada por turno", () => {
+    const pais = { economico: 0.5, social: 0 };
+    expect(andarOpinioes([a], { a: 50 }, pais).a).toBeCloseTo(55);
+    expect(andarOpinioes([a], { a: 100 }, pais).a).toBeCloseTo(100);
+  });
+
+  it("recusa opiniões de partida erradas", () => {
+    const ps = lerPotencias(base());
+    expect(motivoOpinioesInvalidas(ps, { a: 50, b: 50 })).toBeNull();
+    expect(motivoOpinioesInvalidas(ps, undefined)).toMatch(/faltam/);
+    expect(motivoOpinioesInvalidas(ps, { a: 50 })).toMatch(/falta.*"b"/);
+    expect(motivoOpinioesInvalidas(ps, { a: 50, b: 50, c: 1 })).toMatch(/"c"/);
+    expect(motivoOpinioesInvalidas(ps, { a: 50, b: 120 })).toMatch(/0 e 100/);
   });
 });
