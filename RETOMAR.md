@@ -3,11 +3,12 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
-**31/out/2026**
+**01/nov/2026**
 
 ## Onde está
 
-Passos 2b, 3 e **4 fechados: versão 0.1** (um mandato jogado por script).
+Passos 2b, 3 e **4 fechados: versão 0.1** (um mandato jogado por script),
+com tag `v0.1` e enviada ao GitHub.
 
 - `src/motor/turno`: `avancarTurno(regras, estado, pedidos)`, 10 etapas;
   as vazias pulam (`turno.md` diz o que cada uma faz hoje).
@@ -19,12 +20,11 @@ Passos 2b, 3 e **4 fechados: versão 0.1** (um mandato jogado por script).
 
 ## Próximo
 
-Autor decide a **tag `v0.1`**. Depois, **passo 5, Contas**: proposta curta
+**Passo 5, Contas**: proposta curta para o autor aprovar
 (receita − gasto − juros → dívida; juros sobem com a dívida).
 
 ## Pendências do autor
 
-- Tag `v0.1` e push (nada enviado ainda).
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas
