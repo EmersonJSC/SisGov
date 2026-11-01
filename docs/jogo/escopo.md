@@ -208,3 +208,26 @@ lidas (tag `projeto-antigo-2026-10-31`).
   radicais e lealistas pesando no voto; limite de reeleição declarado pelo
   país; cadeiras e coligação mudando depois da eleição; mudar a duração do
   mandato no meio dele pode antecipar ou adiar a eleição (decidir a regra).
+- **Bússola política e pops que mudam** (01/nov, ideia do autor): leis (e
+  cada opção ou ponta da faixa), grupos e pops têm posição em dois eixos,
+  econômico (esquerda ↔ direita) e social (autoritário ↔ libertário). A
+  reação conta eixo por eixo, com peso por eixo em cada grupo; substitui a
+  lista de grupos dentro de cada lei. O pop é **maleável e devagar**:
+  - a posição desliza um pouco por turno conforme a vida dele, a partir de
+    onde está agora, sem ponto fixo para onde voltar: piorar empurra num
+    sentido (renda caindo para a esquerda, crise e insegurança para o
+    autoritário), melhorar empurra noutro; a história da partida fica
+    marcada nos pops;
+  - gente muda de pop aos poucos (mobilidade): o pobre que sobe vira classe
+    média, quem perde o emprego cai para os informais; quem muda passa a
+    pensar como o pop novo;
+  - o pop entra mais no grupo mais perto dele (membros calculados, não
+    escritos à mão), e os grupos crescem ou encolhem sozinhos.
+  O mercado (seção 9) não simula pequena empresa: só setores e insumos
+  (ex.: fábrica de farmacêuticos), lucro e salário que pagam, concorrência
+  de fora × proteção do mercado interno. A mobilidade lê o que ele der
+  (emprego e salário por setor), não falência de pequeno negócio.
+  Ordem combinada: 1) bússola nos grupos e nas leis; 2) pops com posição
+  que desliza pela renda; 3) mobilidade entre pops, junto com o mercado.
+  Grupo guarda posição própria, não a média dos pops (os ambientalistas
+  pegam um pedaço de cada pop e cairiam no centro).
