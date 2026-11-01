@@ -277,3 +277,7 @@ lidas (tag `projeto-antigo-2026-10-31`).
   leis nas pontas, principalmente no lado autoritário (só a pena de morte
   passa de +0,3 no social). Quando entrarem os pacotes do passo 13, medir de
   novo e ver se a escala da opinião desejada precisa mudar.
+- **Bússola, próximos ajustes** (01/nov, autor): a bússola é a base do jogo;
+  resumo em `docs/jogo/bussola.md`. Em aberto: 3º ou 4º eixo (cálculo em laço
+  sobre `EIXOS`, refatoração separada); peso por lei na média do país;
+  opiniões de partida dos países de teste perto da desejada.

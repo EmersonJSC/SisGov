@@ -9,21 +9,25 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Passo 11 (mundo) em andamento; comportamento esperado em
 `src/motor/mundo/mundo.md`. Pedaços 1 a 3 feitos: as 5 potências (sem nome
-real); opinião de cada uma anda 10% por turno rumo à desejada (posição do
-país = média das leis na bússola); reputação internacional = média das
-opiniões pesada pelo `peso` (índice declarado em `indice_reputacao` no
-`potencias.json`), sem efeito direto das leis. A escala da opinião fica como
-está; testar de novo com mais leis (escopo, seção 11).
+real); opinião de cada uma anda 10% por turno rumo à desejada, que é uma
+**curva** (100 × (1 − f²)); posição do país = média das leis na bússola;
+reputação internacional = média das opiniões pesada pelo `peso`. A bússola
+(2 eixos, 4 polos) está resumida em `docs/jogo/bussola.md`.
 
 ## Próximo
 
+Decisão do autor, depois pedaço 4. Decidir: (a) opiniões de partida dos dois
+países de teste perto da desejada (hoje a reputação sobe sozinha, 55-85 →
+86-99; só trocar números em 2 JSONs); (b) laço sobre `EIXOS` para aceitar 3º
+ou 4º eixo (refatoração separada); (c) peso por lei na média do país.
 Pedaço 4: segurança externa, índice novo (0 a 100) que cai quando potência
-forte tem opinião ruim do país. Proposta curta ao autor antes do código.
+forte tem opinião ruim do país; proposta curta antes do código.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 - Commits locais sem push (push só com a palavra do autor).
+
 ## Armadilhas
 
 - `npx tsc -b`, nunca `--noEmit`.
