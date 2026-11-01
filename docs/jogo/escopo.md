@@ -167,3 +167,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   antes do privado crescer derruba a saúde no meio da transição. Sem efeito
   moral embutido ("privado = desigualdade"). Precisa da peça "índice mexe em
   índice" no motor.
+- **Bases dos impostos lidas do mercado** (01/nov): na V1 a base de cada
+  imposto (renda, consumo, lucro) é uma fatia fixa do PIB declarada pelo
+  país. Quando vier o mercado com fila de construção (estatal ou privada,
+  seção 9), o motor passa a somar a base dos prédios e dos pops; a lei e o
+  país não mudam. Leis que liberam ou travam construção entram junto.
