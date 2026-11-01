@@ -7,8 +7,8 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 10 (Tela) fechado em 01/nov; versão 1.0 completa, falta a tag
-`v1.0` (sem push).**
+**Passo 10 (Tela) fechado em 01/nov; versão 1.0 completa, tag `v1.0`
+criada (sem push).**
 Tela simples em React (`npm run dev`): escolher país e semente, grupos,
 índices, leis com controle para propor, fila de pedidos, votação do
 Congresso e resultado da eleição. Salvar e carregar no navegador
@@ -18,9 +18,9 @@ transferência de renda vence e segue.
 
 ## Próximo
 
-Propor ao autor a tag `v1.0` e, depois, conversar sobre o que vem depois
-(plano, seção 9; seção 11 do escopo guarda as ideias). O push espera a
-palavra do autor.
+Conversar com o autor sobre o que vem depois da 1.0
+(plano, seção 9; seção 11 do escopo guarda as ideias). O push do commit e da
+tag `v1.0` espera a palavra do autor.
 
 ## Pendências do autor
 
