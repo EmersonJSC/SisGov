@@ -1,6 +1,7 @@
 // O que não muda durante a partida: leis do mundo, domínio dos índices e
 // parâmetros do país. Monta-se em partida/ a partir do conteúdo.
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
+import type { TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 import type { PopPais, TipoPop } from "../populacao";
 
@@ -28,6 +29,8 @@ export interface Regras {
   dominios: Record<string, { min: number; max: number }>;
   /** Tipos de pop do mundo. */
   pops: TipoPop[];
+  /** Tipos de grupo do mundo. */
+  grupos: TipoGrupo[];
   pais: ParametrosPais;
 }
 

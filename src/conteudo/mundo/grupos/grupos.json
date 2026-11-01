@@ -1,0 +1,50 @@
+{
+  "versao": 1,
+  "grupos": [
+    {
+      "id": "trabalhadores",
+      "nome": "Trabalhadores",
+      "membros": { "informais": 1, "operarios": 1, "campo": 1 },
+      "cobra": [
+        { "indice": "padrao_vida", "sentido": 1 },
+        { "indice": "pobreza", "sentido": -1 },
+        { "indice": "desemprego", "sentido": -1 },
+        { "indice": "saude", "sentido": 1 }
+      ]
+    },
+    {
+      "id": "classe-media",
+      "nome": "Classe média",
+      "membros": { "servidores": 1, "classe-media": 1 },
+      "cobra": [
+        { "indice": "seguranca", "sentido": 1 },
+        { "indice": "instrucao", "sentido": 1 },
+        { "indice": "corrupcao", "sentido": -1 },
+        { "indice": "inflacao", "sentido": -1 }
+      ]
+    },
+    {
+      "id": "empresarios",
+      "nome": "Empresários",
+      "membros": { "empresarios": 1 },
+      "cobra": [
+        { "indice": "crescimento_real", "sentido": 1 },
+        { "indice": "taxa_juros", "sentido": -1 },
+        { "indice": "divida_publica", "sentido": -1 }
+      ]
+    },
+    {
+      "id": "ambientalistas",
+      "nome": "Ambientalistas",
+      "membros": {
+        "informais": 0.02,
+        "operarios": 0.03,
+        "campo": 0.02,
+        "servidores": 0.1,
+        "classe-media": 0.15,
+        "empresarios": 0.05
+      },
+      "cobra": [{ "indice": "meio_ambiente", "sentido": 1 }]
+    }
+  ]
+}

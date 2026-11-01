@@ -47,6 +47,14 @@ export function validarLei(
   if (!CAMADAS.includes(dado.camada as never))
     erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
 
+  const grupos = (valor: unknown, campo: string, aceitos: string[]) => {
+    if (valor === undefined) return;
+    if (!ehObjeto(valor)) return erro(campo, "precisa ser um objeto");
+    for (const [g, v] of Object.entries(valor))
+      if (!aceitos.includes(v as string))
+        erro(`${campo}.${g}`, `precisa ser ${aceitos.join(" ou ")}`);
+  };
+
   const efeitos = (valor: unknown, campo: string) => {
     if (!Array.isArray(valor)) return erro(campo, "precisa ser uma lista");
     valor.forEach((ef, i) => {
@@ -105,6 +113,7 @@ export function validarLei(
       else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
         erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
     }
+    grupos(dado.grupos, "grupos", ["mais", "menos"]);
     efeitos(dado.efeitos, "efeitos");
   } else if (dado.forma === "opcoes") {
     const opcoes = dado.opcoes;
@@ -118,6 +127,7 @@ export function validarLei(
         else if (vistos.has(op.id))
           erro(`opcoes[${i}].id`, `"${op.id}" repetido`);
         vistos.add(op.id);
+        grupos(op.grupos, `opcoes[${i}].grupos`, ["apoia", "rejeita"]);
         efeitos(op.efeitos, `opcoes[${i}].efeitos`);
       });
     }

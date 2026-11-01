@@ -17,7 +17,8 @@
     "impostos": "vite-node scripts/impostos.ts",
     "ambiente": "vite-node scripts/ambiente.ts",
     "paises": "vite-node scripts/paises.ts",
-    "pops": "vite-node scripts/pops.ts"
+    "pops": "vite-node scripts/pops.ts",
+    "grupos": "vite-node scripts/grupos.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

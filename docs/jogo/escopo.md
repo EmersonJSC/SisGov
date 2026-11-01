@@ -97,7 +97,7 @@ esquerda é resultado das leis, nunca objetivo (31/out).
   que sobem e descem devagar (21/out).
 - A eleição é decidida pelo **apoio pesado pelo tamanho**, contra o
   adversário (24/out).
-- Desenho fechado no passo 7.
+- Desenho do passo 7: `src/motor/populacao/populacao.md` e `src/motor/grupos/grupos.md`.
 
 ## 7. Regime e Congresso (31/out)
 
@@ -135,7 +135,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 4 | Turno mínimo | ✅ 31/out — `npm run mandato`: força do efeito fraca/média/forte = 1/3/6 pontos (2/5/10 desde 01/nov, 6d) (tamanho inteiro, chega ao longo do atraso). Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
 | 5 | Contas | ✅ 01/nov — `npm run contas`: receita, gasto, juros, cofre e dívida separados; sobra vai ao cofre (abater dívida é lei futura); dívida acima da tolerância do país sobe os juros |
 | 6 | Leis da V1 | ✅ 01/nov — 14 leis, cada uma conferida por script (`npm run impostos`, `gasto`, `ambiente`); país declara só as leis que tem; segundo país `teste-pobre` só em JSON (`npm run paises`); força dos efeitos 2/5/10 |
-| 7 | Grupos | Leis e índices movem satisfação, radicais e lealistas de cada grupo |
+| 7 | Grupos | ✅ 01/nov — 6 pops com renda pelo motor (`npm run pops`); 4 grupos (trabalhadores, classe média, empresários, ambientalistas) com satisfação medida contra o turno 0; cada lei declara o que cada grupo quer dela (`npm run grupos`) |
 | 8 | Congresso | Lei só muda com voto; o exorbitante é barrado; base e oposição reagem |
 | 9 | Eleição e desgaste | Partida de um mandato termina em vitória ou derrota que o jogador entende |
 | 10 | Tela | Jogar uma partida inteira na tela |
@@ -190,3 +190,7 @@ lidas (tag `projeto-antigo-2026-10-31`).
   só as leis que tem; a que falta fica não legislada e o jogador pode
   propor. Tirar uma lei em vigor (revogar) e esconder lei que não faz
   sentido no país vêm com o Congresso (passo 8).
+- **Grupos: o que fica para depois** (01/nov, passo 7b): satisfação inicial
+  declarada pelo país (hoje todo grupo começa em 50); grupo que o país cria
+  ou tira; conservadores (segurança, pena de morte) junto com leis de
+  costumes; o imposto de renda pesar diferente em cada pop (progressividade).

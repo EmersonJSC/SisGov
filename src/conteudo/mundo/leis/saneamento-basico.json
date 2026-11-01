@@ -7,6 +7,7 @@
   "faixa": { "min": 0, "max": 0.02 },
   "passo": 0.001,
   "conta": "gasto",
+  "grupos": { "trabalhadores": "mais" },
   "efeitos": [
     {
       "indice": "meio_ambiente",

@@ -13,6 +13,7 @@
     "base": "lucro",
     "modelo": "laffer"
   },
+  "grupos": { "empresarios": "menos" },
   "efeitos": [
     {
       "indice": "industrializacao",

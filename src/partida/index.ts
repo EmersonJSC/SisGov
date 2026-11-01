@@ -12,12 +12,14 @@ import {
   type ParametrosPais,
   type Pedido,
   type Regras,
+  type TipoGrupo,
   type TipoPop,
   type ValorLei,
   ehEstrato,
 } from "../motor";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
+import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -79,6 +81,28 @@ export const nomesPops: Record<string, string> = Object.fromEntries(
   tiposPops.pops.map((t) => [t.id, t.nome]),
 );
 
+function carregarGrupos(): TipoGrupo[] {
+  if (tiposGrupos.versao !== 1)
+    throw new Error("mundo/grupos/grupos.json › versao: precisa ser 1");
+  return tiposGrupos.grupos.map((g) => {
+    for (const c of g.cobra)
+      if (c.sentido !== 1 && c.sentido !== -1)
+        throw new Error(
+          `mundo/grupos/grupos.json › ${g.id}: sentido de ${c.indice} precisa ser 1 ou -1`,
+        );
+    return {
+      id: g.id,
+      membros: g.membros as Record<string, number>,
+      cobra: g.cobra as TipoGrupo["cobra"],
+    };
+  });
+}
+
+/** Nome de cada tipo de grupo, para scripts e tela. */
+export const nomesGrupos: Record<string, string> = Object.fromEntries(
+  tiposGrupos.grupos.map((g) => [g.id, g.nome]),
+);
+
 function arquivoPais<T>(pais: string, nome: string): T {
   const caminho = `../conteudo/paises/${pais}/${nome}.json`;
   const dado = arquivosPaises[caminho] as { versao?: unknown } | undefined;
@@ -122,6 +146,7 @@ export function criarPartida(
     leis: carregarLeis(),
     dominios,
     pops: carregarPops(),
+    grupos: carregarGrupos(),
     pais: inicial.parametros,
   };
   const gasto =

@@ -7,6 +7,7 @@
   "faixa": { "min": 0, "max": 0.6 },
   "passo": 0.005,
   "calculo": { "base": "renda", "modelo": "laffer" },
+  "grupos": { "classe-media": "menos" },
   "efeitos": [
     {
       "indice": "padrao_vida",

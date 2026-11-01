@@ -10,6 +10,7 @@
   },
   "passo": 0.001,
   "conta": "gasto",
+  "grupos": { "classe-media": "mais" },
   "efeitos": [
     {
       "indice": "instrucao",

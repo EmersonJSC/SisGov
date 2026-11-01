@@ -6,6 +6,7 @@
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 0.4 },
   "passo": 0.01,
+  "grupos": { "ambientalistas": "mais" },
   "efeitos": [
     {
       "indice": "meio_ambiente",

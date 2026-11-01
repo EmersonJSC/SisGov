@@ -7,6 +7,7 @@
   "faixa": { "min": 0, "max": 0.6 },
   "passo": 0.01,
   "calculo": { "base": "emissoes", "modelo": "laffer" },
+  "grupos": { "empresarios": "menos", "ambientalistas": "mais" },
   "efeitos": [
     {
       "indice": "meio_ambiente",

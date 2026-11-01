@@ -7,8 +7,9 @@
 ## 1. Onde estamos e por onde começar
 
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
-  4 (turno mínimo; versão 0.1), 5 (contas) e 6 (leis da V1; versão 0.2).
-- **Próximo:** passo **7, População e grupos**.
+  4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
+  7 (população e grupos).
+- **Próximo:** passo **8, Congresso**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -87,17 +88,17 @@ independente ou não (lei essencial); dívida externa e câmbio.
 
 **Expande depois:** mais leis, sempre por JSON.
 
-### Passo 7 — População e grupos ⬅ próximo
+### Passo 7 — População e grupos ✅
 
 | Começa com | Pronto quando |
 |---|---|
-| `motor/populacao`: poucos pops (profissão × estrato), tamanho em pessoas, renda pelo motor | — |
-| Poucos grupos que leem os pops; satisfação, radicais, lealistas | leis e índices movem os grupos no script |
+| `motor/populacao`: poucos pops (profissão × estrato), tamanho em pessoas, renda pelo motor | `npm run pops` |
+| Poucos grupos que leem os pops; satisfação, radicais, lealistas | leis e índices movem os grupos no script (`npm run grupos`) |
 
 **Expande depois:** até ~25 pops; migração entre pops (desemprego empurra
 para baixo); grupos novos por JSON.
 
-### Passo 8 — Congresso
+### Passo 8 — Congresso ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

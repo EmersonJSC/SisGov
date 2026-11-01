@@ -10,7 +10,17 @@ import {
   type Tesouro,
 } from "../contas";
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
-import type { Estado, IndicesEssenciais } from "../estado";
+import {
+  INDICES_ESSENCIAIS,
+  type Estado,
+  type IndicesEssenciais,
+} from "../estado";
+import {
+  calcularGrupos,
+  motivoGruposInvalidos,
+  rendaDoGrupo,
+  type Marco,
+} from "../grupos";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
   calcularPops,
@@ -223,11 +233,29 @@ function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   });
 }
 
-/** 8. Pops e grupos: renda dos pops; grupos no 7b. */
-const popsEGrupos: Etapa = (regras, estado) => ({
-  ...estado,
-  pops: pops(regras, estado),
+/** Essenciais e jogabilidade num mapa só, para os grupos. */
+const todosIndices = (estado: Estado): Record<string, number> => ({
+  ...estado.essenciais,
+  ...estado.jogabilidade,
 });
+
+/** Grupos com os pops já calculados no estado (motor/grupos). */
+function grupos(regras: Regras, estado: Estado, marco: Marco) {
+  return calcularGrupos(regras.grupos, regras.leis, {
+    pops: estado.pops,
+    indice_precos: estado.essenciais.indice_precos,
+    indices: todosIndices(estado),
+    vigentes: estado.leis,
+    marco,
+    anteriores: estado.turno === 0 ? undefined : estado.grupos,
+  });
+}
+
+/** 8. Pops e grupos: renda dos pops, depois satisfação dos grupos. */
+const popsEGrupos: Etapa = (regras, estado) => {
+  const comPops = { ...estado, pops: pops(regras, estado) };
+  return { ...comPops, grupos: grupos(regras, comPops, estado.marco) };
+};
 
 /** 9. Política: passos 8 e 9. */
 const politica = pular;
@@ -255,6 +283,15 @@ const invariantes: Etapa = (regras, estado) => {
   for (const [id, p] of Object.entries(estado.pops))
     if (!Object.values(p).every(Number.isFinite) || p.renda < 0)
       falhas.push(`pop ${id} com renda inválida`);
+  for (const [id, g] of Object.entries(estado.grupos))
+    if (
+      !Object.values(g).every(Number.isFinite) ||
+      !(g.satisfacao >= 0 && g.satisfacao <= 100) ||
+      g.radicais < 0 ||
+      g.lealistas < 0 ||
+      g.radicais + g.lealistas > 100
+    )
+      falhas.push(`grupo ${id} inválido`);
   if (falhas.length > 0)
     throw new Error(
       `invariante no turno ${estado.turno}: ${falhas.join("; ")}`,
@@ -311,6 +348,13 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
+  const motivoGrupos = motivoGruposInvalidos(
+    regras.grupos,
+    regras.pops.map((p) => p.id),
+    [...INDICES_ESSENCIAIS, ...Object.keys(regras.dominios)],
+    regras.leis,
+  );
+  if (motivoGrupos) throw new Error(`mundo: ${motivoGrupos}`);
 
   const efeitos = filaInicial(regras.leis, inicio.leis);
   const soma = somaPorIndice(efeitos);
@@ -334,16 +378,31 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     leis: { ...inicio.leis },
     efeitos,
     pops: {},
+    grupos: {},
+    marco: { indices: {}, leis: {}, renda_real: {} },
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);
+  const comPops: Estado = {
+    ...estado,
+    essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
+    pops: pops(regras, estado),
+  };
+  // O marco é o próprio turno 0: grupos começam em 50.
+  const marco: Marco = {
+    indices: todosIndices(comPops),
+    leis: { ...comPops.leis },
+    renda_real: Object.fromEntries(
+      regras.grupos.map((t) => [
+        t.id,
+        rendaDoGrupo(t, comPops.pops, comPops.essenciais.indice_precos)
+          .renda_real,
+      ]),
+    ),
+  };
   return invariantes(
     regras,
-    {
-      ...estado,
-      essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
-      pops: pops(regras, estado),
-    },
+    { ...comPops, marco, grupos: grupos(regras, comPops, marco) },
     [],
   );
 }

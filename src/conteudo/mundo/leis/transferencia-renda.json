@@ -11,6 +11,7 @@
   "passo": 0.001,
   "conta": "gasto",
   "para": { "estrato": "pobre" },
+  "grupos": { "trabalhadores": "mais" },
   "efeitos": [
     {
       "indice": "pobreza",

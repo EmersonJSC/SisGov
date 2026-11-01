@@ -35,11 +35,15 @@ export interface LeiContinua extends LeiBase {
   conta?: "gasto";
   /** Lei de gasto que vira renda de um estrato de pops (motor/populacao). */
   para?: { estrato: Estrato };
+  /** O que cada grupo quer desta lei (motor/grupos). */
+  grupos?: Record<string, "mais" | "menos">;
   efeitos: Efeito[];
 }
 
 export interface Opcao {
   id: string;
+  /** Grupos que apoiam ou rejeitam esta opção (motor/grupos). */
+  grupos?: Record<string, "apoia" | "rejeita">;
   efeitos: Efeito[];
 }
 

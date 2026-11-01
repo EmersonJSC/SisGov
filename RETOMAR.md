@@ -7,15 +7,16 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 7 (População e grupos), parte 7a feita:** 6 pops (lista aprovada),
-renda por pessoa calculada pelo motor (bruta − imposto de renda +
-transferência); `npm run pops` confere. Imposto plano; lei de gasto com
-`para: { estrato }` vira renda do estrato.
+**Passo 7 (População e grupos) fechado em 01/nov.** 6 pops com renda pelo
+motor (`npm run pops`); 4 grupos (trabalhadores, classe média, empresários,
+ambientalistas) com satisfação, radicais e lealistas (`npm run grupos`).
+Cada lei declara no JSON o que cada grupo quer dela. Versão 0.3 fecha com o
+passo 8.
 
 ## Próximo
 
-**7b, grupos:** proposta curta dos 4 grupos (quem forma cada um, o que
-cobra, quais leis apoia ou rejeita) para o autor aprovar.
+**Passo 8, Congresso:** proposta curta (o que entra, o que fica de fora, uma
+decisão) para o autor aprovar.
 
 ## Pendências do autor
 

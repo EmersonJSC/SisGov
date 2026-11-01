@@ -13,6 +13,7 @@
     "base": "consumo",
     "modelo": "laffer"
   },
+  "grupos": { "trabalhadores": "menos" },
   "efeitos": [
     {
       "indice": "padrao_vida",

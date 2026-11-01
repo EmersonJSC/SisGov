@@ -6,6 +6,7 @@
   "opcoes": [
     {
       "id": "frouxo",
+      "grupos": { "empresarios": "apoia", "ambientalistas": "rejeita" },
       "efeitos": [
         {
           "indice": "industrializacao",
@@ -30,6 +31,7 @@
     { "id": "normal", "efeitos": [] },
     {
       "id": "rigoroso",
+      "grupos": { "empresarios": "rejeita", "ambientalistas": "apoia" },
       "efeitos": [
         {
           "indice": "meio_ambiente",

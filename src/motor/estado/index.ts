@@ -4,6 +4,7 @@
 import type { Acaso } from "../acaso";
 import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
+import type { Grupo, Marco } from "../grupos";
 import type { ValorLei } from "../leis";
 import type { Pop } from "../populacao";
 
@@ -45,4 +46,8 @@ export interface Estado {
   efeitos: EfeitoEmCurso[];
   /** Pops por id do tipo (motor/populacao). */
   pops: Record<string, Pop>;
+  /** Grupos por id do tipo (motor/grupos). */
+  grupos: Record<string, Grupo>;
+  /** Turno 0, referência dos grupos. */
+  marco: Marco;
 }

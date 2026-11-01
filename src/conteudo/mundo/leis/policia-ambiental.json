@@ -7,6 +7,7 @@
   "faixa": { "min": 0, "max": 0.01 },
   "passo": 0.0005,
   "conta": "gasto",
+  "grupos": { "ambientalistas": "mais" },
   "efeitos": [
     {
       "indice": "meio_ambiente",
