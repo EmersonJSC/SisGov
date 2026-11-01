@@ -134,7 +134,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 3 | Modelo de lei | ✅ 31/out — imposto de renda (contínua, base `renda` com Laffer e evasão; pico declarado pelo país) e pena de morte (opções); validador |
 | 4 | Turno mínimo | ✅ 31/out — `npm run mandato`: força do efeito fraca/média/forte = 1/3/6 pontos (2/5/10 desde 01/nov, 6d) (tamanho inteiro, chega ao longo do atraso). Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
 | 5 | Contas | ✅ 01/nov — `npm run contas`: receita, gasto, juros, cofre e dívida separados; sobra vai ao cofre (abater dívida é lei futura); dívida acima da tolerância do país sobe os juros |
-| 6 | Leis da V1 | Cada lei com comportamento esperado escrito antes e conferido por script |
+| 6 | Leis da V1 | ✅ 01/nov — 14 leis, cada uma conferida por script (`npm run impostos`, `gasto`, `ambiente`); país declara só as leis que tem; segundo país `teste-pobre` só em JSON (`npm run paises`); força dos efeitos 2/5/10 |
 | 7 | Grupos | Leis e índices movem satisfação, radicais e lealistas de cada grupo |
 | 8 | Congresso | Lei só muda com voto; o exorbitante é barrado; base e oposição reagem |
 | 9 | Eleição e desgaste | Partida de um mandato termina em vitória ou derrota que o jogador entende |

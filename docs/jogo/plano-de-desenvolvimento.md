@@ -7,8 +7,8 @@
 ## 1. Onde estamos e por onde começar
 
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
-  4 (turno mínimo; versão 0.1) e 5 (contas).
-- **Próximo:** passo **6, Leis da V1**.
+  4 (turno mínimo; versão 0.1), 5 (contas) e 6 (leis da V1; versão 0.2).
+- **Próximo:** passo **7, População e grupos**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -77,7 +77,7 @@ vários países de teste.
 **Expande depois:** emissão de moeda e inflação; banco central
 independente ou não (lei essencial); dívida externa e câmbio.
 
-### Passo 6 — Leis da V1 ⬅ próximo
+### Passo 6 — Leis da V1 ✅
 
 | Começa com | Pronto quando |
 |---|---|
@@ -87,7 +87,7 @@ independente ou não (lei essencial); dívida externa e câmbio.
 
 **Expande depois:** mais leis, sempre por JSON.
 
-### Passo 7 — População e grupos
+### Passo 7 — População e grupos ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

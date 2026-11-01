@@ -7,18 +7,14 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1)**: 6a, 6b,
-6c-0, 6c e 6d feitos; `npm run check` verde.
-
-- 14 leis (impostos, gasto, pena de morte, 6 ambientais); o país declara só
-  as leis que tem.
-- 6d: força dos efeitos 2/5/10 pontos (era 1/3/6); segundo país
-  `teste-pobre` só em JSON; `npm run paises` joga os dois.
+**Passo 6 (Leis da V1) fechado em 01/nov, versão 0.2** (tag `v0.2`). 14 leis
+conferidas por script; o país declara só as leis que tem; dois países de
+teste (`teste` e `teste-pobre`); força dos efeitos 2/5/10.
 
 ## Próximo
 
-Autor confere `npm run paises` e aprova **fechar o passo 6** (plano e escopo
-com ✅, tag v0.2). Depois, abrir o passo 7 (Grupos) com proposta curta.
+**Proposta curta do passo 7 (População e grupos)** para o autor aprovar:
+ler só a linha do passo 7 no plano e no escopo (seção 6). Espera o autor.
 
 ## Pendências do autor
 
