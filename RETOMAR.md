@@ -7,27 +7,28 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Versão 0.1 com tag e no GitHub. **Passo 5 (Contas) fechado.**
+Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**, lista
+aprovada, nada implementado ainda.
 
-- `src/motor/contas`: receita, gasto, juros, cofre e dívida separados;
-  sobra vai ao cofre, falta sai do cofre e depois vira dívida; invariante
-  "contabilidade fecha" todo turno.
-- `src/motor/calculos/juros.ts`: alvo = neutro + inflação + prêmio acima da
-  tolerância de dívida do país; a taxa anda 20% do caminho por turno.
-- País declara `receita_fora_das_leis` (teste: 25% do PIB), o imposto que
-  ainda não virou lei.
-- Inflação ainda fixa, mas já sobe preços e PIB nominal.
-- `npm run contas` mostra tudo; calote, inflação que se move e regra fiscal
-  foram para a seção 11 do escopo.
+- Lista aprovada (10 leis): impostos de renda, consumo e empresas; gasto em
+  saúde, educação, polícia e transferência de renda; pena de morte, proteção
+  ambiental e liberdade de imprensa.
+- Gasto também é lei (contínua, % do PIB); o resto fica em
+  `gasto_fora_das_leis` do país, como a receita.
+- Nenhuma lei se descreve por país real: a régua é o próprio país da partida
+  (skill `sisgov-lei`).
+- Progressividade do IR e saúde/educação pública × privada foram para a
+  seção 11 do escopo: dependem dos pops (passo 7).
 
 ## Próximo
 
-**Passo 6, Leis da V1**: propor ao autor a lista curta de leis (só JSON);
-cada imposto tira a sua parte de `receita_fora_das_leis`.
+**6a: gasto vira lei** (proposta curta ao autor antes de codar). Depois 6b
+(bases consumo e lucro), 6c (leis de opções), 6d (segundo país de teste e
+calibração). Tag v0.2 ao fechar o passo 6.
 
 ## Pendências do autor
 
-- Push do passo 5 (commit local).
+- Push dos commits de docs das leis (locais).
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas

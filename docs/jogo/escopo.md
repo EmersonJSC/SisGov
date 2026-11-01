@@ -154,6 +154,11 @@ lidas (tag `projeto-antigo-2026-10-31`).
   alíquota. A lei do imposto de renda diz **quanto** (a % líquida, média do
   país); esta diz **de quem**, com faixas medidas pela renda do próprio país.
   Não muda a arrecadação, só divide o peso. Precisa dos pops (passo 7).
+  Na tela é uma **tabela de faixas** em "salários médios do país" (ex.: até
+  1 → 0%; 1 a 3 → 10%; 3 a 10 → 20%; 10 a 20 → 30%; acima de 20 → 35%); a
+  última faixa vale para todo mundo acima dela. Em aberto para o passo 7: a
+  tabela pode virar a própria lei do imposto de renda, com a % média como
+  resultado.
 - **Público e privado em esferas separadas** (01/nov): saúde e educação com
   duas leis cada, gasto público (hospital e escola do governo) e apoio ao
   privado (voucher, subsídio, dedução no imposto). Setor privado como índice
