@@ -2,6 +2,7 @@
 // parâmetros do país. Monta-se em partida/ a partir do conteúdo.
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { Lei, ValorLei } from "../leis";
+import type { PopPais, TipoPop } from "../populacao";
 
 export interface ParametrosBase extends ParametrosRenda {
   /** Base cheia como fração do PIB nominal (renda tributável com alíquota zero). */
@@ -17,12 +18,16 @@ export interface ParametrosPais {
   /** Gasto que ainda não virou lei, em % do PIB (motor/contas). */
   gasto_fora_das_leis: number;
   juros: ParametrosJuros;
+  /** Parte da população e da renda de cada tipo de pop (motor/populacao). */
+  pops: Record<string, PopPais>;
 }
 
 export interface Regras {
   leis: Record<string, Lei>;
   /** Domínio de cada índice de jogabilidade. */
   dominios: Record<string, { min: number; max: number }>;
+  /** Tipos de pop do mundo. */
+  pops: TipoPop[];
   pais: ParametrosPais;
 }
 

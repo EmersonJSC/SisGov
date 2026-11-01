@@ -2,7 +2,7 @@
 // anterior. Ordem fixa (plano, seção 5); etapa que ainda não existe pula.
 // O acaso mora no estado (motor/acaso). Comportamento em turno.md.
 import { semear, sortearNormal } from "../acaso";
-import { BASES, ehBase, proximaTaxa, taxaAlvo } from "../calculos";
+import { BASES, ehBase, proximaTaxa, taxaAlvo, type IdBase } from "../calculos";
 import {
   fecharTurno,
   motivoContaNaoFecha,
@@ -12,6 +12,12 @@ import {
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
 import type { Estado, IndicesEssenciais } from "../estado";
 import { motivoValorInvalido, type ValorLei } from "../leis";
+import {
+  calcularPops,
+  motivoPopsInvalidos,
+  type Estrato,
+  type Pop,
+} from "../populacao";
 import type { Pedido, Regras } from "./regras";
 
 export type { ParametrosBase, ParametrosPais, Pedido, Regras } from "./regras";
@@ -85,13 +91,13 @@ const precosEJuros: Etapa = (regras, estado) => {
   };
 };
 
-/** Arrecadação das leis com cálculo, em % do PIB nominal. */
-function arrecadacao(
+/** Arrecadação anual de cada base, na moeda do país. */
+function arrecadacaoPorBase(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,
-): number {
-  let total = 0;
+): Partial<Record<IdBase, number>> {
+  const total: Partial<Record<IdBase, number>> = {};
   for (const [id, valor] of Object.entries(leis)) {
     const lei = regras.leis[id];
     if (lei.forma !== "continua" || !lei.calculo) continue;
@@ -100,13 +106,25 @@ function arrecadacao(
       ...BASES[base].padrao,
       parcela_pib: 0,
     };
-    total += BASES[base].arrecadar(
-      valor as number,
-      e.pib_nominal * parametros.parcela_pib,
-      parametros,
-    );
+    total[base] =
+      (total[base] ?? 0) +
+      BASES[base].arrecadar(
+        valor as number,
+        e.pib_nominal * parametros.parcela_pib,
+        parametros,
+      );
   }
-  return (total / e.pib_nominal) * 100;
+  return total;
+}
+
+/** Arrecadação das leis com cálculo, em % do PIB nominal. */
+function arrecadacao(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  e: IndicesEssenciais,
+): number {
+  const porBase = Object.values(arrecadacaoPorBase(regras, leis, e));
+  return (porBase.reduce((a, b) => a + b, 0) / e.pib_nominal) * 100;
 }
 
 /** Gasto das leis com `conta: "gasto"`, em % do PIB nominal. */
@@ -186,8 +204,30 @@ const indicesJogabilidade: Etapa = (regras, estado) => ({
   jogabilidade: jogabilidade(regras, estado),
 });
 
-/** 8. Pops e grupos: passo 7. */
-const popsEGrupos = pular;
+/** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
+function pops(regras: Regras, estado: Estado): Record<string, Pop> {
+  const e = estado.essenciais;
+  const transferencias: Partial<Record<Estrato, number>> = {};
+  for (const [id, valor] of Object.entries(estado.leis)) {
+    const lei = regras.leis[id];
+    if (lei.forma !== "continua" || !lei.para) continue;
+    const { estrato } = lei.para;
+    transferencias[estrato] =
+      (transferencias[estrato] ?? 0) + (valor as number) * e.pib_nominal;
+  }
+  return calcularPops(regras.pops, regras.pais.pops, {
+    populacao: e.populacao,
+    pib_nominal: e.pib_nominal,
+    imposto_renda: arrecadacaoPorBase(regras, estado.leis, e).renda ?? 0,
+    transferencias,
+  });
+}
+
+/** 8. Pops e grupos: renda dos pops; grupos no 7b. */
+const popsEGrupos: Etapa = (regras, estado) => ({
+  ...estado,
+  pops: pops(regras, estado),
+});
 
 /** 9. Política: passos 8 e 9. */
 const politica = pular;
@@ -209,6 +249,12 @@ const invariantes: Etapa = (regras, estado) => {
     const motivo = motivoValorInvalido(regras.leis[id], valor);
     if (motivo) falhas.push(`lei ${id} ${motivo}`);
   }
+  const pessoas = Object.values(estado.pops).reduce((s, p) => s + p.pessoas, 0);
+  if (Math.abs(pessoas - estado.essenciais.populacao) > 1)
+    falhas.push("pops não somam a população");
+  for (const [id, p] of Object.entries(estado.pops))
+    if (!Object.values(p).every(Number.isFinite) || p.renda < 0)
+      falhas.push(`pop ${id} com renda inválida`);
   if (falhas.length > 0)
     throw new Error(
       `invariante no turno ${estado.turno}: ${falhas.join("; ")}`,
@@ -263,6 +309,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       throw new Error(`país: falta o índice ${id}`);
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
+  const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
+  if (motivoPops) throw new Error(`país: ${motivoPops}`);
 
   const efeitos = filaInicial(regras.leis, inicio.leis);
   const soma = somaPorIndice(efeitos);
@@ -285,6 +333,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     base,
     leis: { ...inicio.leis },
     efeitos,
+    pops: {},
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);
@@ -293,6 +342,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     {
       ...estado,
       essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
+      pops: pops(regras, estado),
     },
     [],
   );

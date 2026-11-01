@@ -1,0 +1,19 @@
+{
+  "versao": 1,
+  "pops": [
+    {
+      "id": "informais",
+      "nome": "Informais e desempregados",
+      "estrato": "pobre"
+    },
+    { "id": "operarios", "nome": "Operários", "estrato": "pobre" },
+    { "id": "campo", "nome": "Trabalhadores do campo", "estrato": "pobre" },
+    { "id": "servidores", "nome": "Servidores públicos", "estrato": "medio" },
+    {
+      "id": "classe-media",
+      "nome": "Classe média de serviços",
+      "estrato": "medio"
+    },
+    { "id": "empresarios", "nome": "Empresários", "estrato": "rico" }
+  ]
+}

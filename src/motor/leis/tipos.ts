@@ -1,6 +1,7 @@
 // Formato da lei (passo 3, aprovado em 31/out/2026). O JSON fica em
 // src/conteudo/mundo/leis/<id>.json; o motor só conhece este formato.
 import type { IdBase } from "../calculos";
+import type { Estrato } from "../populacao";
 
 export const FORCAS = ["fraca", "media", "forte"] as const;
 export type Forca = (typeof FORCAS)[number];
@@ -32,6 +33,8 @@ export interface LeiContinua extends LeiBase {
   calculo?: { base: IdBase; modelo: "laffer" };
   /** "gasto": o valor é gasto do governo, em fração do PIB (motor/contas). */
   conta?: "gasto";
+  /** Lei de gasto que vira renda de um estrato de pops (motor/populacao). */
+  para?: { estrato: Estrato };
   efeitos: Efeito[];
 }
 

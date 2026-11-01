@@ -7,14 +7,15 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 6 (Leis da V1) fechado em 01/nov, versão 0.2** (tag `v0.2`). 14 leis
-conferidas por script; o país declara só as leis que tem; dois países de
-teste (`teste` e `teste-pobre`); força dos efeitos 2/5/10.
+**Passo 7 (População e grupos), parte 7a feita:** 6 pops (lista aprovada),
+renda por pessoa calculada pelo motor (bruta − imposto de renda +
+transferência); `npm run pops` confere. Imposto plano; lei de gasto com
+`para: { estrato }` vira renda do estrato.
 
 ## Próximo
 
-**Proposta curta do passo 7 (População e grupos)** para o autor aprovar:
-ler só a linha do passo 7 no plano e no escopo (seção 6). Espera o autor.
+**7b, grupos:** proposta curta dos 4 grupos (quem forma cada um, o que
+cobra, quais leis apoia ou rejeita) para o autor aprovar.
 
 ## Pendências do autor
 

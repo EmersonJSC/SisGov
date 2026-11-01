@@ -1,6 +1,7 @@
 // Validador do JSON de lei. Roda ao carregar; erro diz arquivo, campo e motivo.
 import { ehBase } from "../calculos";
 import { INDICES_ESSENCIAIS } from "../estado";
+import { ehEstrato, ESTRATOS } from "../populacao";
 import { CAMADAS, FORCAS, type Lei } from "./tipos";
 
 export interface ErroLei {
@@ -99,6 +100,11 @@ export function validarLei(
       erro("conta", 'precisa ser "gasto"');
     else if (dado.conta !== undefined && dado.calculo !== undefined)
       erro("conta", "lei de gasto não tem cálculo de arrecadação");
+    if (dado.para !== undefined) {
+      if (dado.conta !== "gasto") erro("para", "só lei de gasto tem para");
+      else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
+        erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
+    }
     efeitos(dado.efeitos, "efeitos");
   } else if (dado.forma === "opcoes") {
     const opcoes = dado.opcoes;

@@ -12,9 +12,12 @@ import {
   type ParametrosPais,
   type Pedido,
   type Regras,
+  type TipoPop,
   type ValorLei,
+  ehEstrato,
 } from "../motor";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
+import tiposPops from "../conteudo/mundo/pops/pops.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -56,6 +59,25 @@ function carregarLeis(): Record<string, Lei> {
   }
   return leis;
 }
+
+function carregarPops(): TipoPop[] {
+  if (tiposPops.versao !== 1)
+    throw new Error("mundo/pops/pops.json › versao: precisa ser 1");
+  for (const t of tiposPops.pops)
+    if (!ehEstrato(t.estrato))
+      throw new Error(
+        `mundo/pops/pops.json › ${t.id}: estrato "${t.estrato}" não existe`,
+      );
+  return tiposPops.pops.map((t) => ({
+    id: t.id,
+    estrato: t.estrato as TipoPop["estrato"],
+  }));
+}
+
+/** Nome de cada tipo de pop, para scripts e tela. */
+export const nomesPops: Record<string, string> = Object.fromEntries(
+  tiposPops.pops.map((t) => [t.id, t.nome]),
+);
 
 function arquivoPais<T>(pais: string, nome: string): T {
   const caminho = `../conteudo/paises/${pais}/${nome}.json`;
@@ -99,6 +121,7 @@ export function criarPartida(
   const regras: Regras = {
     leis: carregarLeis(),
     dominios,
+    pops: carregarPops(),
     pais: inicial.parametros,
   };
   const gasto =

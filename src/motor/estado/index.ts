@@ -5,6 +5,7 @@ import type { Acaso } from "../acaso";
 import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
 import type { ValorLei } from "../leis";
+import type { Pop } from "../populacao";
 
 export const INDICES_ESSENCIAIS = [
   "populacao",
@@ -42,4 +43,6 @@ export interface Estado {
   base: Record<string, number>;
   leis: Record<string, ValorLei>;
   efeitos: EfeitoEmCurso[];
+  /** Pops por id do tipo (motor/populacao). */
+  pops: Record<string, Pop>;
 }

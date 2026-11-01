@@ -7,4 +7,5 @@ export * from "./contas";
 export * from "./efeitos";
 export * from "./estado";
 export * from "./leis";
+export * from "./populacao";
 export * from "./turno";

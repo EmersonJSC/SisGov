@@ -44,6 +44,14 @@
     "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
     "receita_fora_das_leis": 18.17,
     "gasto_fora_das_leis": 16.8,
-    "juros": { "neutro": 4, "tolerancia_divida": 60 }
+    "juros": { "neutro": 4, "tolerancia_divida": 60 },
+    "pops": {
+      "informais": { "parcela_pessoas": 0.2, "parcela_renda": 0.05 },
+      "operarios": { "parcela_pessoas": 0.25, "parcela_renda": 0.15 },
+      "campo": { "parcela_pessoas": 0.15, "parcela_renda": 0.06 },
+      "servidores": { "parcela_pessoas": 0.1, "parcela_renda": 0.14 },
+      "classe-media": { "parcela_pessoas": 0.25, "parcela_renda": 0.35 },
+      "empresarios": { "parcela_pessoas": 0.05, "parcela_renda": 0.25 }
+    }
   }
 }
