@@ -24,7 +24,7 @@ describe("validarLei", () => {
   });
 
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
-    const { calculo: _, ...gasto } = valida;
+    const gasto = { ...valida, calculo: undefined };
     expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);
     expect(campos({ ...gasto, conta: "lucro" })).toEqual(["conta"]);
     expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta"]);

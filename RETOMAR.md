@@ -7,26 +7,18 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**: 6a,
-6b, 6c-0 e 6c feitos.
+Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1)**: 6a, 6b,
+6c-0, 6c e 6d feitos; `npm run check` verde.
 
-- Lista do passo 6 (14 leis): impostos de renda, consumo e empresas; gasto em
-  saúde, educação, polícia e transferência de renda; pena de morte; e 6
-  ambientais: polícia ambiental, licenciamento, áreas protegidas, terras
-  indígenas, imposto sobre poluição (base `emissoes`) e saneamento.
-- Regra nova: nenhuma lei é um controle só que faz coisas grandes; tema se
-  divide em leis (escopo, seção 5).
-- Imprensa saiu do passo 6: vem com as grandes mídias do país (seção 11).
-- 6c-0: o país declara só as leis que tem; a que falta fica não legislada e
-  pode ser proposta (o país de teste não tem imposto sobre poluição).
+- 14 leis (impostos, gasto, pena de morte, 6 ambientais); o país declara só
+  as leis que tem.
+- 6d: força dos efeitos 2/5/10 pontos (era 1/3/6); segundo país
+  `teste-pobre` só em JSON; `npm run paises` joga os dois.
 
 ## Próximo
 
-**Proposta do 6d** (segundo país e calibração; efeitos ainda pequenos:
-`npm run impostos`, `npm run gasto`, `npm run ambiente`). Antes do
-`npm run check` de fechamento: consertar o lint de
-`src/motor/leis/validar.test.ts:27` (`_` sem uso, já estava assim). Tag v0.2
-ao fechar o passo 6.
+Autor confere `npm run paises` e aprova **fechar o passo 6** (plano e escopo
+com ✅, tag v0.2). Depois, abrir o passo 7 (Grupos) com proposta curta.
 
 ## Pendências do autor
 

@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "teste-pobre",
+  "essenciais": {
+    "populacao": 120000000,
+    "ocupados": 48000000,
+    "desemprego": 12,
+    "pib": 30,
+    "crescimento_real": 3,
+    "indice_precos": 100,
+    "inflacao": 8,
+    "pib_nominal": 1200000000000,
+    "arrecadacao": 0,
+    "gasto_publico": 26,
+    "juros_pagos": 0,
+    "resultado_primario": 0,
+    "resultado_fiscal": 0,
+    "cofre": 1,
+    "divida_publica": 70,
+    "taxa_juros": 10
+  },
+  "jogabilidade": {
+    "padrao_vida": 30,
+    "instrucao": 35,
+    "industrializacao": 25,
+    "saude": 35,
+    "seguranca": 30,
+    "pobreza": 45,
+    "desigualdade": 65,
+    "corrupcao": 60,
+    "liberdade_civil": 55,
+    "polarizacao": 55,
+    "meio_ambiente": 45,
+    "reputacao_internacional": 40,
+    "popularidade_governo": 50
+  },
+  "parametros": {
+    "bases": {
+      "renda": { "parcela_pib": 0.45, "pico": 0.45, "evasao": 0.3 },
+      "consumo": { "parcela_pib": 0.65, "pico": 0.45, "evasao": 0.3 },
+      "lucro": { "parcela_pib": 0.12, "pico": 0.35, "evasao": 0.35 },
+      "emissoes": { "parcela_pib": 0.05, "pico": 0.3, "evasao": 0.4 }
+    },
+    "crescimento": { "tendencia": 3, "volatilidade": 2.5 },
+    "receita_fora_das_leis": 14.13,
+    "gasto_fora_das_leis": 16,
+    "juros": { "neutro": 4, "tolerancia_divida": 50 }
+  }
+}

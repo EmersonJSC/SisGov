@@ -15,7 +15,8 @@
     "contas": "vite-node scripts/contas.ts",
     "gasto": "vite-node scripts/gasto.ts",
     "impostos": "vite-node scripts/impostos.ts",
-    "ambiente": "vite-node scripts/ambiente.ts"
+    "ambiente": "vite-node scripts/ambiente.ts",
+    "paises": "vite-node scripts/paises.ts"
   },
   "dependencies": {
     "react": "^19.0.0",
