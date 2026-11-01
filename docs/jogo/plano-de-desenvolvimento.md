@@ -131,35 +131,39 @@ desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
 
 **Expande depois:** tela elaborada, gráficos, mapa, arte.
 
-### Passo 11 — Mundo ⬅ próximo (proposta, falta o sim)
+### Passo 11 — Mundo ⬅ próximo (aprovado em 01/nov; falta decidir a segurança)
 
 O mercado vem depois do mundo: todo país disputa o mesmo mercado, então
 antes é preciso existir quem está do outro lado (01/nov, autor).
 
 | Começa com | Pronto quando |
 |---|---|
-| O mundo declara as **grandes potências**, sem nome de país real: posição na bússola, peso e a relação de cada uma com as outras | o validador recusa potência sem posição ou relação com potência que não existe |
-| Cada potência tem uma **opinião sobre o seu país**; o país declara a de partida | — |
-| A opinião anda pela bússola, como os grupos: lei que aproxima o país da potência sobe a opinião, a que afasta desce | script (`npm run mundo`): uma lei mudada move a opinião de cada potência na direção certa |
+| O mundo declara as **grandes potências**: representam blocos reais (um grande país do ocidente, um bloco europeu, uma potência asiática, uma potência do leste, os países árabes), mas **sem nome real**; cada uma tem posição na bússola, peso e relação com as outras | o validador recusa potência sem posição ou relação com potência que não existe |
+| Cada potência tem a **sua própria opinião** sobre o seu país; o país declara a de partida | — |
+| A opinião muda com as suas políticas, pela bússola: lei que aproxima o país da potência sobe a opinião, a que afasta desce. É separada da opinião dos pops | script (`npm run mundo`): uma lei mudada move a opinião de cada potência na direção certa |
+| O índice **reputação internacional** passa a ser a média das opiniões, pesada pelo peso de cada potência; as leis que mexiam nele passam a mexer nas potências | o script mostra a média batendo com as opiniões |
 | O mapa mostra as potências e a opinião de cada uma | conferido na tela |
 
-**Fica de fora:** comércio, acordos, sanções, guerra, potência que muda de
-posição sozinha.
+**Fica de fora:** comércio e acordos (vêm com o mercado), potência que muda
+de posição sozinha. As potências não fazem muita coisa (sanção é o máximo,
+e fica para depois). **Guerra ativa não existe no jogo** (talvez numa DLC).
 
 ### Passo 12 — Mercado
 
+Como no Victoria 3: um **mercado global** e o **mercado do país**. O do país
+do jogador é completo; o dos outros países é simulado, mais simples.
+
 | Começa com | Pronto quando |
 |---|---|
-| Os **produtos** são do mundo, agrupados em setores; um só mercado para todos os países, como o das potências | o validador recusa produto sem setor |
-| O país declara **o que produz** e o que não produz | — |
-| Cada produto tem fábricas no país; os **pops trabalham nelas** e recebem salário; o lucro vai para os donos | `npm run pops`: a renda de cada pop vem das fábricas onde ele trabalha |
-| **Preço fixo** no começo (aprovado em 01/nov) | o PIB é a soma do que as fábricas produzem |
-| A base dos impostos sai das fábricas e dos pops, não de uma fatia fixa declarada pelo país | as contas fecham como hoje |
+| Os **produtos** são do mundo, agrupados em setores | o validador recusa produto sem setor |
+| O país declara **o que produz** e o que não produz; **o que não produz, compra de quem produz**: o país depende das potências que fazem aquele produto | script: um produto que o país não faz aparece como dependência de quem o faz |
+| Os pops têm **empregos** nos setores e recebem salário; o lucro vai para os donos | `npm run pops`: a renda de cada pop vem dos empregos |
+| **Ciclos econômicos** do mundo mexem nos preços (alta e baixa) | script: o preço sobe e desce com o ciclo |
+| O PIB é a soma do que o país produz; a base dos impostos sai da produção e dos pops, não de uma fatia fixa declarada pelo país | as contas fecham como hoje |
 
-**Expande depois:** preço por oferta e procura no mercado do mundo;
-importar e exportar; insumos (produto que usa outro); construção estatal
-ou privada; leis que fortalecem todos os produtos ou só alguns, para o país
-se desenvolver e depender ou não de outros países; gente que muda de pop.
+**Expande depois:** preço por oferta e procura; insumos (produto que usa
+outro); construção estatal ou privada; leis que fortalecem todos os
+produtos ou só alguns (pacote de economia, passo 13); gente que muda de pop.
 
 ### Passo 13 — Leis em pacotes
 

@@ -146,8 +146,8 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 8 | Congresso | ✅ 01/nov — partidos do país votam cada mudança de lei pelos grupos que defendem; mais de 1/3 da faixa num pedido é exorbitante e cai; partido da base com os grupos abaixo de 35 sai da coligação (`npm run congresso`) |
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
-| 11 | Mundo | grandes potências sem nome real, com relação entre si e opinião sobre o seu país que anda pela bússola |
-| 12 | Mercado | produtos do mundo em setores, um mercado para todos os países; o país declara o que produz; pops trabalham nas fábricas; preço fixo no começo |
+| 11 | Mundo | grandes potências que representam blocos reais, sem nome real, com relação entre si e opinião própria sobre o seu país que anda pela bússola; reputação internacional vira a média delas |
+| 12 | Mercado | mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços |
 | 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes") |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
@@ -264,3 +264,6 @@ lidas (tag `projeto-antigo-2026-10-31`).
   - **Economia** (salário mínimo, tarifa de importação, regras de
     demissão): desenhar junto com o mercado.
   - Financiamento de campanha entra com a campanha eleitoral.
+- **Mundo sem guerra ativa** (01/nov, autor): as potências não fazem muita
+  coisa (sanção, no máximo). Guerra só talvez numa DLC. O país tem um
+  **nível de segurança** que diz se ele pode ser atacado ou não.

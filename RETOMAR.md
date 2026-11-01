@@ -10,13 +10,16 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 O mapa é a única tela do jogo (`src/tela/mapa/mapa.md`). A bússola política
 está feita (`src/motor/grupos/grupos.md`). A ordem nova está no plano
 (`docs/jogo/plano-de-desenvolvimento.md`, passos 11 a 13): **mundo**, depois
-**mercado** (produtos do mundo em setores, um mercado só, preço fixo no
-começo), depois **leis em pacotes** (lista na seção 11 do escopo).
+**mercado** (global e do país, ciclos de preço, dependência do que o país não
+produz), depois **leis em pacotes**. O autor aprovou o passo 11 com ajustes
+(potências representam blocos reais sem nome real; reputação = média das
+opiniões).
 
 ## Próximo
 
-Passo 11, mundo: o "Começa com" está escrito no plano como proposta. Espera o
-sim do autor e a decisão sobre o índice "reputação internacional".
+Passo 11: o autor decide se o **nível de segurança** (o país pode ser atacado
+ou não) entra já no passo 11. Depois, escrever o comportamento esperado e
+começar pelo JSON das potências.
 
 ## Pendências do autor
 
