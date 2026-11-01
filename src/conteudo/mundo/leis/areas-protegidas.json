@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "areas-protegidas",
+  "nome": "Áreas protegidas",
+  "descricao": "Parte do território guardada como parque ou reserva.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

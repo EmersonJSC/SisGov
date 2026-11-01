@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "imposto-consumo",
+  "nome": "Imposto sobre consumo",
+  "descricao": "Imposto embutido no preço de tudo o que se compra.",
   "camada": "essencial",
   "forma": "continua",
   "unidade": "fracao",

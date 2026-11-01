@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "gasto-policia",
+  "nome": "Verba da polícia",
+  "descricao": "Dinheiro do governo para policiamento e investigação.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

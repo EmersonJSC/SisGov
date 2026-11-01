@@ -1,32 +1,27 @@
-# Mapa em três anéis (primeira fatia, 01/nov/2026)
+# Mapa político (herdado da tela antiga)
 
-Só desenha. Sem clique, sem linhas: elas vêm no foco (próxima fatia).
-Base: `docs/jogo/interface/mapa-em-tres-aneis.md`.
+Decidido com o autor em 01/nov/2026: a tela do jogo é o mapa da tela antiga,
+reaproveitado. Os componentes vieram do projeto antigo (commit `f62c3fef`,
+`src/ui/mapa/`) quase sem mudança; eles só leem a `VisaoPartida`, que agora é
+montada por `src/partida/visao.ts` a partir do motor novo.
 
-```
-centro:  Presidência
-anel 1:  as leis, em fatias, uma fatia por área
-anel 2:  os índices de jogabilidade (o que muda)
-anel 3:  os grupos (quem sente)
-```
+## Comportamento esperado da fatia 1 (escrito antes)
 
-## Áreas
+- Presidência no centro; uma esfera por área de `mundo/areas/areas.json`
+  (Economia, Proteção social, Segurança e instituições, Meio ambiente), com
+  retrato provisório em SVG (sem pessoa real).
+- Abrir a esfera mostra as leis dela, com nome e ícone. A lei de mandato é
+  constitucional e aparece também na Presidência.
+- Bolhas: os índices de jogabilidade e, no anel de fora, os grupos (bolha do
+  tipo "grupo", tamanho pela satisfação).
+- Passar o mouse numa lei acende as setas para os índices e grupos que ela
+  mexe: verde melhora, vermelho piora (pela `avaliacao` do índice), com o
+  atraso em meses.
+- Só olhar: mudar lei, passar turno e a barra do topo ficam para as fatias 2
+  e 3. O botão "Painel" leva à tela de tabelas, que ainda faz o jogo.
 
-Poucas, para 15 leis: Economia, Social, Segurança e instituições, Meio
-ambiente. Estão em `src/conteudo/mundo/areas/areas.json`: cada área lista os
-ids das suas leis. Toda lei do mundo está em exatamente uma área; o erro de
-quem esquece uma lei aparece ao montar o mapa.
+## Fica de fora
 
-## Comportamento esperado (escrito antes)
-
-- Cada área é uma fatia do anel 1. Os ângulos das fatias somam 360° e não se
-  sobrepõem. A fatia cresce com o número de leis, com um mínimo (área
-  pequena não some).
-- Toda lei fica dentro da fatia da sua área.
-- Cada índice fica perto do ângulo médio das leis que o mexem (até 35°).
-  Índice que nenhuma lei mexe vai para o maior vão do anel.
-- Cada grupo fica perto do ângulo médio dos índices que ele cobra; sem índice
-  no anel, vale o das leis que citam o grupo.
-- Nada se sobrepõe: dois nós do mesmo anel ficam a pelo menos 24 unidades
-  de arco um do outro.
-- Funções puras: o motor não lê posição e a tela não calcula jogo.
+Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais
+como bolhas. Ícone próprio só para as leis cujo id bate com o do projeto
+antigo; as outras usam o ícone reserva.

@@ -4,7 +4,7 @@ body {
   background: #f4f6f9;
   color: #13233a;
 }
-main {
+main:not(.area-mapa) {
   max-width: 860px;
   margin: 0 auto;
   padding: 16px;
@@ -51,37 +51,10 @@ button.passar {
   padding: 8px 20px;
 }
 
-.mapa {
-  width: 100%;
-  max-width: 960px;
-  display: block;
-  margin: 0 auto;
-}
-.mapa-anel {
-  fill: none;
-  stroke: currentColor;
-  stroke-opacity: 0.15;
-  stroke-dasharray: 4 6;
-}
-.mapa-fatia {
-  fill-opacity: 0.18;
-}
-.mapa-presidencia {
-  fill: none;
-  stroke: currentColor;
-  stroke-opacity: 0.4;
-}
-.mapa-presidencia-texto {
-  font-size: 18px;
-  fill: currentColor;
-}
-.mapa-rotulo {
-  font-size: 16px;
-  fill: currentColor;
-}
-.mapa-indice {
-  fill: #888;
-}
-.mapa-grupo {
-  fill: #c0392b;
+/* o mapa.css trava a rolagem da página; o painel rola por dentro */
+.painel-rolagem {
+  height: 100%;
+  overflow: auto;
+  background: #f4f6f9;
+  color: #13233a;
 }

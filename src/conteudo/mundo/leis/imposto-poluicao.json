@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "imposto-poluicao",
+  "nome": "Imposto sobre poluição",
+  "descricao": "Quem polui paga por tonelada emitida.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

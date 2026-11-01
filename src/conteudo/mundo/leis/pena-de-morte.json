@@ -1,12 +1,15 @@
 {
   "versao": 1,
   "id": "pena-de-morte",
+  "nome": "Pena de morte",
+  "descricao": "Se o Estado pode executar condenados por crimes graves.",
   "camada": "jogabilidade",
   "forma": "opcoes",
   "opcoes": [
     { "id": "abolida", "efeitos": [] },
     {
       "id": "crimes-graves",
+      "rotulo": "Para crimes graves",
       "efeitos": [
         {
           "indice": "liberdade_civil",

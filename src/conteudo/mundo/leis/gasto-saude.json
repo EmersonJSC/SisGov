@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "gasto-saude",
+  "nome": "Verba da saúde",
+  "descricao": "Dinheiro do governo para hospitais, postos e remédios.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

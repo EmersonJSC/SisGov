@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "imposto-empresas",
+  "nome": "Imposto sobre empresas",
+  "descricao": "Quanto as empresas pagam sobre o lucro.",
   "camada": "essencial",
   "forma": "continua",
   "unidade": "fracao",

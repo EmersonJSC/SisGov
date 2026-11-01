@@ -13,7 +13,7 @@ import {
   type Pedido,
 } from "../partida";
 import { Leis } from "./Leis";
-import { Mapa } from "./mapa/Mapa";
+import { TelaMapa } from "./mapa/TelaMapa";
 
 const CHAVE = "sisgov-partida";
 
@@ -34,6 +34,7 @@ export function App() {
   const [aviso, setAviso] = useState("");
   const [pais, setPais] = useState(paisesDisponiveis()[0]);
   const [semente, setSemente] = useState(42);
+  const [vista, setVista] = useState<"mapa" | "painel">("mapa");
 
   const trocar = (p: Partida | null, texto = "") => {
     setPartida(p);
@@ -115,9 +116,13 @@ export function App() {
   const partidos = nomesPartidos(partida.pais);
   const eleicao = estado.eleicao;
 
+  if (vista === "mapa")
+    return <TelaMapa partida={partida} onPainel={() => setVista("painel")} />;
+
   return (
-    <main>
+    <main className="painel-rolagem">
       <header>
+        <button onClick={() => setVista("mapa")}>Mapa</button>
         <h1>SisGov · {partida.pais}</h1>
         <p>
           Ano {ano}, mês {mes} (turno {estado.turno}) · apoio se a eleição fosse
@@ -131,8 +136,6 @@ export function App() {
         <button onClick={() => trocar(null)}>Recomeçar</button>
         {aviso && <span className="aviso"> {aviso}</span>}
       </header>
-
-      <Mapa />
 
       {eleicao && (
         <section className={eleicao.venceu ? "ganhou" : "perdeu"}>

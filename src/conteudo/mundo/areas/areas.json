@@ -3,26 +3,34 @@
   "areas": [
     {
       "id": "economia",
-      "nome": "Economia",
-      "cor": "#c9951a",
+      "titulo": "Economia",
+      "curto": "Economia",
+      "cargo": "Fazenda",
+      "faz": "Impostos e contas do governo.",
       "leis": ["imposto-renda", "imposto-consumo", "imposto-empresas"]
     },
     {
-      "id": "social",
-      "nome": "Social",
-      "cor": "#3b82c4",
+      "id": "protecao-social",
+      "titulo": "Proteção social",
+      "curto": "Social",
+      "cargo": "Saúde",
+      "faz": "Saúde, educação e renda das famílias.",
       "leis": ["gasto-saude", "gasto-educacao", "transferencia-renda"]
     },
     {
       "id": "seguranca",
-      "nome": "Segurança e instituições",
-      "cor": "#8e5ac8",
+      "titulo": "Segurança e instituições",
+      "curto": "Segurança",
+      "cargo": "Justiça",
+      "faz": "Polícia, penas e regras do governo.",
       "leis": ["gasto-policia", "pena-de-morte", "duracao-mandato"]
     },
     {
       "id": "ambiente",
-      "nome": "Meio ambiente",
-      "cor": "#3a9d5d",
+      "titulo": "Meio ambiente",
+      "curto": "Ambiente",
+      "cargo": "Meio Ambiente",
+      "faz": "Florestas, poluição, saneamento e terras indígenas.",
       "leis": [
         "imposto-poluicao",
         "licenciamento-ambiental",

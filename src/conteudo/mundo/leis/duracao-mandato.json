@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "duracao-mandato",
+  "nome": "Duração do mandato",
+  "descricao": "Quantos anos o governo fica até a próxima eleição.",
   "camada": "essencial",
   "forma": "opcoes",
   "opcoes": [

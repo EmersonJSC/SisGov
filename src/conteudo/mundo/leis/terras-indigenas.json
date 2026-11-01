@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "terras-indigenas",
+  "nome": "Terras indígenas",
+  "descricao": "Parte do território reconhecida como terra dos povos indígenas.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

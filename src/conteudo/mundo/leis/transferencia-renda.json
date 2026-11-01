@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "transferencia-renda",
+  "nome": "Transferência de renda",
+  "descricao": "Dinheiro pago direto às famílias mais pobres.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

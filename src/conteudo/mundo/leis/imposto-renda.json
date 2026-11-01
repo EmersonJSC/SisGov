@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "imposto-renda",
+  "nome": "Imposto de renda",
+  "descricao": "Quanto as pessoas pagam sobre o que ganham.",
   "camada": "essencial",
   "forma": "continua",
   "unidade": "fracao",

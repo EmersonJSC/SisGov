@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "policia-ambiental",
+  "nome": "Fiscalização ambiental",
+  "descricao": "Dinheiro para fiscais que combatem desmatamento e poluição.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

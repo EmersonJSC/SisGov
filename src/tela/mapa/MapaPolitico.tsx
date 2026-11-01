@@ -1,0 +1,2258 @@
+/**
+ * Mapa político navegável: Presidência no centro, esferas ministeriais ao
+ * redor, leis dentro das esferas e indicadores no anel externo.
+ *
+ * Só desenha. Recebe a `VisaoPartida` já lida e devolve as escolhas do
+ * jogador por callbacks; não conhece o motor.
+ */
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent as KeyboardEventReact,
+  type PointerEvent as PointerEventReact,
+  type ReactNode,
+} from "react";
+import type { VisaoBolha, VisaoLei, VisaoPartida } from "../../partida";
+import {
+  focarCirculo,
+  limitar,
+  paraTela,
+  visaoDoAnel,
+  visaoGeral,
+  zoomNoPonto,
+  ESCALA_MAXIMA,
+  type Camera,
+  type Tela,
+} from "./camera";
+import { diferencaNaTela, valorNaTela, variacaoReal } from "./formatos";
+import {
+  RAIO_BASE_BOLHA,
+  RAIO_BASE_LEI,
+  arco,
+  corDaBondade,
+  escalaDaLei,
+  intensidadeDaBolha,
+  nivelRelativo,
+  referenciaDasLeis,
+  type IntensidadeBolha,
+} from "./intensidade";
+import { Icone, IconeSvg } from "./Icone";
+import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
+import { iconeLei } from "./iconesPersonalizados";
+import { familiaDaLei } from "./familia";
+import {
+  PRESIDENCIA,
+  ehConstitucional,
+  posicoesDasBolhas,
+  type PosicaoBolha,
+  montarLayout,
+  quebrarNome,
+  blocoCentral,
+  BLOCO_PRESIDENCIA_ABERTA,
+  type BaseMapa,
+  type Esfera,
+  type LayoutMapa,
+  type Ponto,
+  type PosicaoLei,
+} from "./layout";
+export type Retangulo = Readonly<{
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}>;
+import {
+  efeitoDe,
+  vizinhanca,
+  type Efeito,
+  type IndiceRelacoes,
+  type LigacaoDeFundo,
+  type Relacao,
+} from "./relacoes";
+import { PRESIDENTE, Retrato, pessoaDoCargo } from "./Retrato";
+import {
+  FILTRO_VAZIO,
+  PainelDeFiltro,
+  leiPassaNoFiltro,
+  type FiltroDeLeis,
+} from "./filtro";
+import { COR_EFEITO, COR_PRESIDENCIA, MEDIDAS } from "./tema";
+
+export type MarcaPrevista = Readonly<{ efeito: Efeito; sobe: boolean }>;
+
+type Props = Readonly<{
+  visao: VisaoPartida;
+  base: BaseMapa;
+  indice: IndiceRelacoes;
+  fundo: readonly LigacaoDeFundo[];
+  aberta: string | null;
+  /** Leis acesas pela aba do painel da área; as outras da área apagam. */
+  destaque?: ReadonlySet<string> | null;
+  onAbrir: (id: string | null) => void;
+  selecionado: string | null;
+  onSelecionar: (id: string | null) => void;
+  /** Bolhas que a prévia da lei selecionada mexe. */
+  marcas: ReadonlyMap<string, MarcaPrevista>;
+  /** Bolhas que mudaram no último turno (piscam por alguns segundos). */
+  pulsos: ReadonlySet<string>;
+  /** Quanto cada bolha mudou no último turno (só as que mudaram). */
+  variacoes: ReadonlyMap<string, number>;
+  /** Parte das variações que veio das decisões do jogador (em destaque). */
+  variacoesVoce: ReadonlyMap<string, number>;
+  /** Mostrar as etiquetas de variação do turno sobre as bolhas. */
+  mostrarVariacoes: boolean;
+  onAlternarVariacoes: () => void;
+  /** Largura do painel lateral aberto, em pixels (0 se fechado). */
+  painel: number;
+  /** Largura coberta à esquerda (lista dos grupos), em pixels. */
+  painelEsquerdo?: number;
+  /** Janela aberta sobre o mapa (pixels da área do mapa), se houver. */
+  cobertura: Retangulo | null;
+}>;
+
+const DURACAO = 420;
+const suave = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const mix = (a: number, b: number, t: number) => a + (b - a) * t;
+
+// ---------------------------------------------------------------------------
+// Animação do layout (esferas abrindo, leis aparecendo)
+// ---------------------------------------------------------------------------
+
+function interpolar(de: LayoutMapa, para: LayoutMapa, t: number): LayoutMapa {
+  if (t >= 1) return para;
+  const esferas = new Map<string, Esfera>();
+  for (const [id, e] of para.esferas) {
+    const a = de.esferas.get(id);
+    if (
+      a &&
+      a.x === e.x &&
+      a.y === e.y &&
+      a.r === e.r &&
+      a.angulo === e.angulo
+    ) {
+      esferas.set(id, e);
+      continue;
+    }
+    esferas.set(
+      id,
+      a
+        ? {
+            ...e,
+            x: mix(a.x, e.x, t),
+            y: mix(a.y, e.y, t),
+            r: mix(a.r, e.r, t),
+            angulo: mix(a.angulo, e.angulo, t),
+          }
+        : e,
+    );
+  }
+  const leis = new Map<string, PosicaoLei>();
+  for (const [id, l] of para.leis) {
+    const a = de.leis.get(id);
+    // lei parada: mesma referência, para o nó não ser redesenhado a cada quadro
+    if (a && a.x === l.x && a.y === l.y && a.r === l.r) {
+      leis.set(id, l);
+      continue;
+    }
+    leis.set(
+      id,
+      a
+        ? {
+            ...l,
+            x: mix(a.x, l.x, t),
+            y: mix(a.y, l.y, t),
+            r: mix(a.r, l.r, t),
+          }
+        : l,
+    );
+  }
+  return { ...para, esferas, leis };
+}
+
+function useLayoutAnimado(alvo: LayoutMapa): LayoutMapa {
+  const [quadro, setQuadro] = useState(alvo);
+  const atual = useRef(alvo);
+  useEffect(() => {
+    const de = atual.current;
+    if (de === alvo) return;
+    const inicio = performance.now();
+    let id = 0;
+    const passo = (agora: number) => {
+      const t = Math.min(1, (agora - inicio) / DURACAO);
+      const proximo = interpolar(de, alvo, suave(t));
+      atual.current = proximo;
+      setQuadro(proximo);
+      if (t < 1) id = requestAnimationFrame(passo);
+    };
+    id = requestAnimationFrame(passo);
+    return () => cancelAnimationFrame(id);
+  }, [alvo]);
+  return quadro;
+}
+
+/** Bolhas que se deslocam suavemente de uma posição para a outra (420 ms). */
+function useBolhasAnimadas(
+  alvo: ReadonlyMap<string, PosicaoBolha>,
+): ReadonlyMap<string, PosicaoBolha> {
+  const [quadro, setQuadro] = useState(alvo);
+  const atual = useRef(alvo);
+  useEffect(() => {
+    const de = atual.current;
+    if (de === alvo) return;
+    const inicio = performance.now();
+    let id = 0;
+    const passo = (agora: number) => {
+      const t = Math.min(1, (agora - inicio) / DURACAO);
+      let proximo: ReadonlyMap<string, PosicaoBolha> = alvo;
+      if (t < 1) {
+        const mapa = new Map<string, PosicaoBolha>();
+        for (const [chave, fim] of alvo) {
+          const ini = de.get(chave);
+          mapa.set(
+            chave,
+            ini && (ini.x !== fim.x || ini.y !== fim.y)
+              ? {
+                  ...fim,
+                  x: mix(ini.x, fim.x, suave(t)),
+                  y: mix(ini.y, fim.y, suave(t)),
+                }
+              : fim,
+          );
+        }
+        proximo = mapa;
+      }
+      atual.current = proximo;
+      setQuadro(proximo);
+      if (t < 1) id = requestAnimationFrame(passo);
+    };
+    id = requestAnimationFrame(passo);
+    return () => cancelAnimationFrame(id);
+  }, [alvo]);
+  return quadro;
+}
+
+// ---------------------------------------------------------------------------
+// Geometria das setas
+// ---------------------------------------------------------------------------
+
+type Curva = Readonly<{ d: string; ponta: string; meio: Ponto }>;
+
+function curva(
+  a: Ponto,
+  b: Ponto,
+  raioA: number,
+  raioB: number,
+  tamanhoPonta: number,
+  curvatura = 0.16,
+): Curva | null {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const comprimento = Math.hypot(dx, dy);
+  if (comprimento < raioA + raioB + 8) return null;
+  const mx = (a.x + b.x) / 2;
+  const my = (a.y + b.y) / 2;
+  let nx = -dy / comprimento;
+  let ny = dx / comprimento;
+  // dobra para fora do centro do mapa
+  if (nx * mx + ny * my < 0) {
+    nx = -nx;
+    ny = -ny;
+  }
+  const c = {
+    x: mx + nx * comprimento * curvatura,
+    y: my + ny * comprimento * curvatura,
+  };
+  const recuar = (de: Ponto, ate: Ponto, r: number) => {
+    const ux = ate.x - de.x;
+    const uy = ate.y - de.y;
+    const n = Math.hypot(ux, uy) || 1;
+    return { x: de.x + (ux / n) * r, y: de.y + (uy / n) * r };
+  };
+  const inicio = recuar(a, c, raioA + 3);
+  const fim = recuar(b, c, raioB + 4);
+  const tx = fim.x - c.x;
+  const ty = fim.y - c.y;
+  const tn = Math.hypot(tx, ty) || 1;
+  const ux = tx / tn;
+  const uy = ty / tn;
+  const s = tamanhoPonta;
+  const base = { x: fim.x - ux * s, y: fim.y - uy * s };
+  const ponta = `M${fim.x},${fim.y} L${base.x - uy * s * 0.55},${base.y + ux * s * 0.55} L${base.x + uy * s * 0.55},${base.y - ux * s * 0.55} Z`;
+  const linhaFim = { x: fim.x - ux * s * 0.7, y: fim.y - uy * s * 0.7 };
+  const meio = {
+    x: 0.25 * inicio.x + 0.5 * c.x + 0.25 * fim.x,
+    y: 0.25 * inicio.y + 0.5 * c.y + 0.25 * fim.y,
+  };
+  return {
+    d: `M${inicio.x},${inicio.y} Q${c.x},${c.y} ${linhaFim.x},${linhaFim.y}`,
+    ponta,
+    meio,
+  };
+}
+
+/** Zoom ao clicar numa lei: perto o bastante para ler o nome e os vizinhos. */
+const ZOOM_DA_LEI = 1.2;
+
+/** Abaixo deste zoom, as esferas fechadas viram cartazes de tema. */
+const LONGE = 0.62;
+
+/** Arco logo fora da Presidência, para o nome da lente ficar de pé. */
+function arcoDaLente(angulo: number) {
+  const embaixo = Math.sin(angulo) > 0;
+  const r = MEDIDAS.raioPresidencia + (embaixo ? 21 : 9);
+  const abertura = 0.55;
+  const a0 = embaixo ? angulo + abertura : angulo - abertura;
+  const a1 = embaixo ? angulo - abertura : angulo + abertura;
+  return `M${Math.cos(a0) * r},${Math.sin(a0) * r} A${r},${r} 0 0 ${embaixo ? 0 : 1} ${Math.cos(a1) * r},${Math.sin(a1) * r}`;
+}
+
+// ---------------------------------------------------------------------------
+// Nós
+// ---------------------------------------------------------------------------
+
+function Rotulo({
+  linhas,
+  y,
+  tamanho,
+  classe,
+}: {
+  linhas: readonly string[];
+  y: number;
+  tamanho: number;
+  classe: string;
+}) {
+  return (
+    <text className={classe} y={y} fontSize={tamanho} textAnchor="middle">
+      {linhas.map((linha, i) => (
+        <tspan key={i} x={0} dy={i === 0 ? 0 : tamanho * 1.15}>
+          {linha}
+        </tspan>
+      ))}
+    </text>
+  );
+}
+
+type EstadoNo = "normal" | "foco" | "vizinho" | "apagado";
+
+function aoTeclar(acao: () => void) {
+  return (evento: KeyboardEventReact) => {
+    if (evento.key === "Enter" || evento.key === " ") {
+      evento.preventDefault();
+      acao();
+    }
+  };
+}
+
+/** Forma do nó de lei pelo nível legal (D-65): escudo, quadrado ou círculo. */
+export type FormaLei = "escudo" | "quadrado" | "circulo";
+
+export function formaDaLei(lei: VisaoLei): FormaLei {
+  if (lei.nivelLegal === "petrea") return "escudo";
+  if (lei.nivelLegal === "constitucional") return "quadrado";
+  return "circulo";
+}
+
+/** Tipo da lei na tela: a camada da mesa (Constituição, Lei, Alavanca). */
+type TipoDeLei = "constituicao" | "lei" | "alavanca";
+function tipoDaLei(lei: VisaoLei): TipoDeLei {
+  return lei.mesa?.camada ?? (lei.nivelLegal ? "constituicao" : "lei");
+}
+
+/** Cada tipo de lei tem o seu desenho dentro do disco (pedido de 15/out). */
+function TexturaDoTipo({ tipo, r }: { tipo: TipoDeLei; r: number }) {
+  if (tipo === "constituicao")
+    return <circle className="textura textura-constituicao" r={r * 0.8} />;
+  if (tipo === "alavanca")
+    return <circle className="textura textura-alavanca" r={r * 0.76} />;
+  return null;
+}
+
+/** Vários setores: o aro do disco é dividido em arcos, um por cor. */
+function ArosDosSetores({ cores, r }: { cores: readonly string[]; r: number }) {
+  const n = cores.length;
+  return (
+    <g
+      className="aros-setores"
+      fill="none"
+      strokeWidth={4}
+      strokeLinecap="butt"
+    >
+      {cores.map((c, i) => (
+        <path
+          key={c + i}
+          d={arco(r, 1 / n - 0.012)}
+          stroke={c}
+          transform={`rotate(${(i * 360) / n})`}
+        />
+      ))}
+    </g>
+  );
+}
+
+const NOME_DO_NIVEL: Partial<Record<FormaLei, string>> = {
+  escudo: ", cláusula pétrea",
+  quadrado: ", lei constitucional",
+};
+
+/** Contorno da forma com "raio" `r`; o resto (cor, traço) vem da classe. */
+function Forma({
+  forma,
+  r,
+  ...resto
+}: { forma: FormaLei; r: number } & React.SVGProps<SVGElement>) {
+  const props = resto as React.SVGProps<SVGPathElement>;
+  if (forma === "quadrado") {
+    const l = r * 0.9;
+    return (
+      <rect
+        {...(props as React.SVGProps<SVGRectElement>)}
+        x={-l}
+        y={-l}
+        width={l * 2}
+        height={l * 2}
+        rx={r * 0.22}
+      />
+    );
+  }
+  if (forma === "escudo") {
+    const k = (n: number) => (n * r).toFixed(2);
+    return (
+      <path
+        {...props}
+        d={`M0 ${k(-1.02)} L${k(0.92)} ${k(-0.66)} L${k(0.92)} ${k(0.08)} Q${k(0.88)} ${k(0.72)} 0 ${k(1.08)} Q${k(-0.88)} ${k(0.72)} ${k(-0.92)} ${k(0.08)} L${k(-0.92)} ${k(-0.66)} Z`}
+      />
+    );
+  }
+  return <circle {...(props as React.SVGProps<SVGCircleElement>)} r={r} />;
+}
+
+/** Anel de nível: trilha + parte cheia, animável pelo `stroke-dasharray`. */
+function Anel({
+  r,
+  fracao,
+  cor,
+  largura,
+  classe,
+  forma = "circulo",
+}: {
+  r: number;
+  fracao: number;
+  cor: string;
+  largura: number;
+  classe: string;
+  forma?: FormaLei;
+}) {
+  const f = Math.min(1, Math.max(0, fracao));
+  return (
+    <g
+      className={classe}
+      transform={forma === "circulo" ? "rotate(-90)" : undefined}
+    >
+      <Forma forma={forma} className="trilha" r={r} strokeWidth={largura} />
+      {f > 0.005 ? (
+        <Forma
+          forma={forma}
+          className="cheio"
+          r={r}
+          pathLength={100}
+          stroke={cor}
+          strokeWidth={largura}
+          strokeDasharray={`${f * 100} 100`}
+        />
+      ) : null}
+    </g>
+  );
+}
+
+const NoLei = memo(function NoLei({
+  escalaTela,
+  lei,
+  pos,
+  cor,
+  coresExtras,
+  estado,
+  selecionada,
+  mostrarRotulo,
+  realce,
+  nivel,
+  onEntrar,
+  onSair,
+  onClicar,
+}: {
+  lei: VisaoLei;
+  pos: PosicaoLei;
+  cor: string;
+  coresExtras: readonly string[];
+  estado: EstadoNo;
+  selecionada: boolean;
+  mostrarRotulo: boolean;
+  /** true: acesa pela aba do painel; false: apagada; undefined: normal. */
+  realce?: boolean;
+  /** Quanto a lei está ligada (0–1): define o tamanho e o anel. */
+  nivel: number;
+  /** Zoom do mapa: o nome da lei compensa, para ter sempre tamanho legível. */
+  escalaTela: number;
+  onEntrar: (id: string) => void;
+  onSair: () => void;
+  onClicar: (id: string) => void;
+}) {
+  const constitucional = ehConstitucional(lei);
+  const forma = formaDaLei(lei);
+  const pendente = Math.abs(lei.meta - lei.nivel) > 1e-6;
+  const sua = lei.alteradaPorVoce;
+  const r = RAIO_BASE_LEI * (pos.r / MEDIDAS.raioLei);
+  const escala = escalaDaLei(nivel);
+  const raioVisivel = r * escala;
+  return (
+    <g
+      className={`no-lei ${estado}${selecionada ? " selecionada" : ""}${pos.lugar === "revelada" ? " revelada" : ""}${sua ? " sua" : ""} forma-${forma} tipo-${tipoDaLei(lei)} familia-${familiaDaLei(lei)}${realce === true ? " realcada" : realce === false ? " apagada" : ""}`}
+      transform={`translate(${pos.x} ${pos.y})`}
+      style={{ "--cor": cor } as React.CSSProperties}
+      role="button"
+      tabIndex={0}
+      aria-label={`${lei.nome}${NOME_DO_NIVEL[forma] ?? (constitucional ? ", lei constitucional" : "")}${sua ? ", mudada por você" : ""}`}
+      aria-pressed={selecionada}
+      onPointerEnter={() => onEntrar(lei.id)}
+      onPointerLeave={onSair}
+      onFocus={() => onEntrar(lei.id)}
+      onBlur={onSair}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClicar(lei.id);
+      }}
+      onKeyDown={aoTeclar(() => onClicar(lei.id))}
+      data-id={lei.id}
+    >
+      <circle className="alvo-toque" r={r * 1.35 + 10} />
+      <g className="corpo">
+        <g className="inflavel" style={{ transform: `scale(${escala})` }}>
+          <Forma forma={forma} className="halo" r={r + 9} />
+          {sua ? <Forma forma={forma} className="aro-sua" r={r + 9.5} /> : null}
+          <Forma forma={forma} className="disco" r={r} />
+          <TexturaDoTipo tipo={tipoDaLei(lei)} r={r} />
+          {forma === "circulo" && coresExtras.length > 0 ? (
+            <ArosDosSetores cores={[cor, ...coresExtras]} r={r} />
+          ) : null}
+          <Anel
+            r={r}
+            fracao={nivel}
+            cor={cor}
+            largura={3}
+            classe="anel-nivel"
+            forma={forma}
+          />
+          <IconeSvg
+            nome={iconeLei(lei.id, ICONE_LEI[lei.id] ?? ICONE_INTERFACE.lei)}
+            tamanho={r * 1.08}
+            cor="var(--icone)"
+          />
+        </g>
+        {constitucional && !lei.nivelLegal ? (
+          <g
+            transform={`translate(${raioVisivel * 0.74 + 2} ${-raioVisivel * 0.74 - 2})`}
+            className="selo-constituicao"
+          >
+            <circle r={8.5} />
+            <text y={3.2} fontSize={10.5} textAnchor="middle">
+              §
+            </text>
+          </g>
+        ) : null}
+        {forma !== "circulo"
+          ? coresExtras.map((extra, i) => (
+              <circle
+                key={extra}
+                cx={-raioVisivel * 0.78 + i * 9}
+                cy={-raioVisivel * 0.78}
+                r={5}
+                fill={extra}
+                stroke="#fff"
+                strokeWidth={2}
+              />
+            ))
+          : null}
+        {sua ? (
+          <g
+            transform={`translate(${-raioVisivel * 0.74 - 2} ${raioVisivel * 0.74 + 2})`}
+            className="selo-sua"
+          >
+            <circle r={9} />
+            <IconeSvg
+              nome={ICONE_INTERFACE.caneta}
+              tamanho={12}
+              cor="#2b2108"
+            />
+          </g>
+        ) : null}
+        {pendente ? (
+          <g
+            transform={`translate(${raioVisivel * 0.74 + 2} ${raioVisivel * 0.74 + 2})`}
+            className="selo-pendente"
+          >
+            <circle r={8.5} />
+            <IconeSvg
+              nome={ICONE_INTERFACE.relogio}
+              tamanho={11.5}
+              cor="#fff"
+            />
+          </g>
+        ) : null}
+      </g>
+      {mostrarRotulo ? (
+        <Rotulo
+          linhas={quebrarNome(lei.nome, 16, 3)}
+          y={raioVisivel + Math.min(150, Math.max(13, 13 / escalaTela)) * 1.15}
+          tamanho={Math.min(150, Math.max(13, 13 / escalaTela))}
+          classe="rotulo-lei"
+        />
+      ) : null}
+    </g>
+  );
+});
+
+/** Hexágono de pontas em cima e embaixo: a forma dos grupos sociais. */
+function hexagono(r: number): string {
+  const pontos = Array.from({ length: 6 }, (_, i) => {
+    const a = Math.PI / 6 + (i * Math.PI) / 3 + Math.PI / 2;
+    return `${(Math.cos(a) * r).toFixed(2)},${(Math.sin(a) * r).toFixed(2)}`;
+  });
+  return `M${pontos.join("L")}Z`;
+}
+
+const NoBolha = memo(function NoBolha({
+  bolha,
+  x,
+  y,
+  intensidade,
+  variacao,
+  variacaoVoce,
+  estado,
+  selecionada,
+  mostrarRotulo,
+  mostrarValor,
+  marca,
+  pulsa,
+  etiqueta,
+  escalaTela,
+  onEntrar,
+  onSair,
+  onClicar,
+}: {
+  bolha: VisaoBolha;
+  x: number;
+  y: number;
+  intensidade: IntensidadeBolha;
+  /** Quanto mudou no último turno (na unidade da bolha). */
+  variacao?: number;
+  /** Parte da mudança do último turno que veio das decisões do jogador. */
+  variacaoVoce?: number;
+  estado: EstadoNo;
+  selecionada: boolean;
+  mostrarRotulo: boolean;
+  mostrarValor: boolean;
+  marca?: MarcaPrevista;
+  pulsa: boolean;
+  /** Mostrar a etiqueta com a variação do turno. */
+  etiqueta: boolean;
+  /** Escala da câmera, para a etiqueta ter tamanho fixo na tela. */
+  escalaTela: number;
+  onEntrar: (id: string) => void;
+  onSair: () => void;
+  onClicar: (id: string) => void;
+}) {
+  const grupo = bolha.tipo === "grupo";
+  const r = grupo ? MEDIDAS.raioGrupo : RAIO_BASE_BOLHA;
+  const { escala, bondade, ativa, grave } = intensidade;
+  const raioVisivel = r * escala + (grupo ? 12 : 6);
+  const linhas = quebrarNome(bolha.nome, 15, 2);
+  // o nome do grupo continua legível (~12 px) mesmo com o mapa todo à vista
+  const fonteRotulo = grupo ? Math.max(30, 12 / escalaTela) : 16;
+  const cor = corDaBondade(bondade);
+  const situacao = bolha.tipo === "situacao";
+  const mudou = variacao !== undefined && Math.abs(variacao) >= 0.05;
+  const corVariacao =
+    mudou && bolha.avaliacao !== "neutra"
+      ? COR_EFEITO[efeitoDe(Math.sign(variacao!), bolha.avaliacao)]
+      : COR_EFEITO.neutro;
+  // Destaque do jogador: a parte da mudança que veio das decisões dele.
+  const sua = variacaoVoce !== undefined;
+  const corSua =
+    sua && bolha.avaliacao !== "neutra"
+      ? COR_EFEITO[efeitoDe(Math.sign(variacaoVoce!), bolha.avaliacao)]
+      : COR_EFEITO.neutro;
+  return (
+    <g
+      className={`no-bolha ${estado} tipo-${bolha.tipo}${selecionada ? " selecionada" : ""}${pulsa ? (sua ? ` pulsa pulsa-sua ${corSua === COR_EFEITO.melhora ? "pulsa-melhora" : corSua === COR_EFEITO.piora ? "pulsa-piora" : ""}` : " pulsa-natural") : ""}${situacao ? (ativa ? " ativa" : " inativa") : ""}${grave ? " grave" : ""}`}
+      transform={`translate(${x} ${y})`}
+      style={{ "--bondade": cor } as React.CSSProperties}
+      role="button"
+      tabIndex={0}
+      aria-label={`${bolha.nome}: ${bolha.frase ?? `${valorNaTela(bolha, bolha.valor)}${bolha.medida?.convertida ? ` ${bolha.medida.unidade}` : ""}`}${situacao && !ativa ? " (ainda não surgiu)" : ""}`}
+      aria-pressed={selecionada}
+      onPointerEnter={() => onEntrar(bolha.id)}
+      onPointerLeave={onSair}
+      onFocus={() => onEntrar(bolha.id)}
+      onBlur={onSair}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClicar(bolha.id);
+      }}
+      onKeyDown={aoTeclar(() => onClicar(bolha.id))}
+      data-id={bolha.id}
+    >
+      <circle className="alvo-toque" r={raioVisivel + 8} />
+      <g className="corpo">
+        {pulsa && sua ? <circle className="onda" r={raioVisivel - 4} /> : null}
+        {grave ? <circle className="alarme" r={raioVisivel - 4} /> : null}
+        {grupo ? (
+          <g className="inflavel" style={{ transform: `scale(${escala})` }}>
+            <circle className="halo-grupo" r={r + 16} />
+            <Anel
+              r={r + 9}
+              fracao={intensidade.t}
+              cor={cor}
+              largura={7}
+              classe="anel-valor"
+            />
+            <path className="disco-grupo" d={hexagono(r)} />
+            <path className="disco-grupo-interno" d={hexagono(r - 6)} />
+            {pulsa && sua ? <circle className="flash" r={r + 9} /> : null}
+            <g transform={`translate(0 ${-r * 0.2})`}>
+              <IconeSvg
+                nome={ICONE_BOLHA[bolha.id] ?? "account-group"}
+                tamanho={r * 0.72}
+                cor="#5b3fa8"
+              />
+            </g>
+            <text
+              className="satisfacao-grupo"
+              y={r * 0.55}
+              fontSize={r * 0.36}
+              textAnchor="middle"
+              fill={cor}
+            >
+              {Math.round(bolha.valor)}
+            </text>
+          </g>
+        ) : (
+          <g className="inflavel" style={{ transform: `scale(${escala})` }}>
+            <circle className="halo" r={r + 10} />
+            <circle className="disco" r={r} />
+            {bolha.tipo === "estoque" ? (
+              <circle className="anel-estoque" r={r - 5} />
+            ) : null}
+            {pulsa && sua ? <circle className="flash" r={r + 7} /> : null}
+            {!situacao || ativa ? (
+              <Anel
+                r={r + 5}
+                fracao={intensidade.t}
+                cor={cor}
+                largura={5}
+                classe="anel-valor"
+              />
+            ) : null}
+            <IconeSvg
+              nome={ICONE_BOLHA[bolha.id] ?? "chart-line"}
+              tamanho={r * 1.05}
+              cor="var(--icone)"
+            />
+          </g>
+        )}
+        {marca ? (
+          <g
+            transform={`translate(${raioVisivel * 0.72} ${-raioVisivel * 0.72})`}
+            className="marca-prevista"
+          >
+            <circle r={12} fill={COR_EFEITO[marca.efeito]} />
+            <IconeSvg
+              nome={marca.sobe ? ICONE_INTERFACE.subir : ICONE_INTERFACE.descer}
+              tamanho={16}
+              cor="#fff"
+            />
+          </g>
+        ) : null}
+      </g>
+      {mostrarRotulo ? (
+        <>
+          <Rotulo
+            linhas={linhas}
+            y={raioVisivel + fonteRotulo}
+            tamanho={fonteRotulo}
+            classe={grupo ? "rotulo-bolha rotulo-grupo" : "rotulo-bolha"}
+          />
+          {mostrarValor ? (
+            <text
+              className={
+                bolha.frase ? "valor-bolha frase-bolha" : "valor-bolha"
+              }
+              y={raioVisivel + 16 + linhas.length * 18.4}
+              fontSize={14}
+              textAnchor="middle"
+            >
+              {/*
+                País em frases (2.7): a bolha diz como está; o número recua
+                para o boletim. Sem frase, o número continua aqui.
+              */}
+              {bolha.frase ? (
+                quebrarNome(bolha.frase, 22, 2).map((linha, i) => (
+                  <tspan key={i} x={0} dy={i === 0 ? 0 : 16}>
+                    {linha}
+                  </tspan>
+                ))
+              ) : (
+                <tspan x={0}>{valorNaTela(bolha, bolha.valor)}</tspan>
+              )}
+              {mudou ? (
+                <tspan fill={corVariacao} dx={6}>
+                  {variacaoReal(bolha, variacao!) > 0 ? "▲" : "▼"}{" "}
+                  {diferencaNaTela(bolha, variacao!)}
+                </tspan>
+              ) : null}
+            </text>
+          ) : null}
+        </>
+      ) : null}
+      {etiqueta && sua ? (
+        <EtiquetaVariacao
+          texto={`${variacaoReal(bolha, variacaoVoce!) > 0 ? "▲" : "▼"} ${diferencaNaTela(bolha, variacaoVoce!)} · você`}
+          cor={corSua}
+          y={-raioVisivel - 2}
+          escala={Math.min(3.2, Math.max(0.9, 1.15 / escalaTela))}
+          sua
+        />
+      ) : etiqueta && variacao !== undefined ? (
+        <EtiquetaVariacao
+          texto={`${variacaoReal(bolha, variacao) > 0 ? "▲" : "▼"} ${diferencaNaTela(bolha, variacao)}`}
+          cor={corVariacao}
+          y={-raioVisivel - 2}
+          escala={Math.min(2.2, Math.max(0.6, 0.75 / escalaTela))}
+        />
+      ) : null}
+    </g>
+  );
+});
+
+/** Etiqueta verde/vermelha com quanto a bolha mudou no turno. */
+function EtiquetaVariacao({
+  texto,
+  cor,
+  y,
+  escala,
+  sua = false,
+}: {
+  texto: string;
+  cor: string;
+  y: number;
+  escala: number;
+  /** Mudança que veio das decisões do jogador: em destaque. */
+  sua?: boolean;
+}) {
+  const largura = texto.length * 7.4 + 16 + (sua ? 18 : 0);
+  return (
+    <g
+      className={`etiqueta-turno ${sua ? "sua" : "natural"}`}
+      transform={`translate(0 ${y}) scale(${escala})`}
+      pointerEvents="none"
+    >
+      <g className="etiqueta-turno-corpo">
+        <rect
+          x={-largura / 2}
+          y={-25}
+          width={largura}
+          height={22}
+          rx={11}
+          fill={cor}
+        />
+        <path d="M-5,-3.5 L0,2 L5,-3.5 Z" fill={cor} />
+        {sua ? (
+          <g transform={`translate(${-largura / 2 + 12} -14)`}>
+            <IconeSvg nome={ICONE_INTERFACE.caneta} tamanho={12} cor="#fff" />
+          </g>
+        ) : null}
+        <text x={sua ? 8 : 0} y={-9.5} fontSize={12.5} textAnchor="middle">
+          {texto}
+        </text>
+      </g>
+    </g>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Mapa
+// ---------------------------------------------------------------------------
+
+export function MapaPolitico({
+  visao,
+  base,
+  indice,
+  fundo,
+  aberta,
+  destaque = null,
+  onAbrir,
+  selecionado,
+  onSelecionar,
+  marcas,
+  pulsos,
+  variacoes,
+  variacoesVoce,
+  mostrarVariacoes,
+  onAlternarVariacoes,
+  painel,
+  painelEsquerdo = 0,
+  cobertura,
+}: Props) {
+  // Bolhas dos índices móveis: perto dos ministérios com as esferas fechadas;
+  // se afastam da borda da esfera que infla e voltam quando ela recolhe.
+  const geometriaAberta = useMemo(
+    () =>
+      aberta && aberta !== PRESIDENCIA && base.porNome.has(aberta)
+        ? (montarLayout(base, aberta, new Set()).esferas.get(aberta) ?? null)
+        : null,
+    [base, aberta],
+  );
+  const bolhasAlvo = useMemo(
+    () => posicoesDasBolhas(base, aberta === null, geometriaAberta),
+    [base, aberta, geometriaAberta],
+  );
+  const bolhasPos = useBolhasAnimadas(bolhasAlvo);
+  const caixa = useRef<HTMLDivElement>(null);
+  const mundo = useRef<SVGGElement>(null);
+  const camera = useRef<Camera>({ x: 0, y: 0, k: 0.4 });
+  const tela = useRef<Tela>({ largura: 1200, altura: 800 });
+  const animacaoCamera = useRef(0);
+  const arraste = useRef<{
+    x: number;
+    y: number;
+    cx: number;
+    cy: number;
+    moveu: boolean;
+    id: number;
+    /** Últimas posições (px, tempo), para a inércia ao soltar. */
+    rastro: { x: number; y: number; t: number }[];
+  } | null>(null);
+  const inercia = useRef(0);
+  const [escala, setEscala] = useState(0.4);
+  const [pronto, setPronto] = useState(false);
+  const [sobre, setSobre] = useState<string | null>(null);
+  const [esferaSobre, setEsferaSobre] = useState<string | null>(null);
+  const [explorou, setExplorou] = useState(false);
+  // Filtro das leis (15/out): popularidade no país ou num segmento, e valor.
+  const [filtroAberto, setFiltroAberto] = useState(false);
+  const [filtro, setFiltro] = useState<FiltroDeLeis>(FILTRO_VAZIO);
+
+  const ehLei = useCallback((id: string) => base.leis.has(id), [base]);
+  // Leis que o jogador mudou: a caneta aparece também na esfera fechada.
+  const suas = useMemo(
+    () => new Set(visao.leis.filter((l) => l.alteradaPorVoce).map((l) => l.id)),
+    [visao.leis],
+  );
+  const suasNaEsfera = (ids: readonly string[]) =>
+    ids.filter((id) => suas.has(id)).length;
+  // Ao abrir ou fechar uma esfera os nós se movem sob o mouse e o "saiu" pode
+  // nunca chegar: sem isto uma lei fica presa no foco, mostrando as setas e
+  // apagando o resto (15/out).
+  useEffect(() => {
+    setSobre(null);
+  }, [aberta]);
+  const foco = sobre ?? selecionado;
+  const viz = useMemo(
+    () => vizinhanca(indice, foco, ehLei),
+    [indice, foco, ehLei],
+  );
+
+  // Leis a revelar nas esferas fechadas: a selecionada e as tocadas pelo foco.
+  const chaveRevelar = useMemo(() => {
+    const ids = new Set(viz.leis);
+    if (selecionado && base.leis.has(selecionado)) ids.add(selecionado);
+    return [...ids].sort().join("|");
+  }, [viz, selecionado, base]);
+  const alvo = useMemo(
+    () =>
+      montarLayout(
+        base,
+        aberta,
+        new Set(chaveRevelar ? chaveRevelar.split("|") : []),
+      ),
+    [base, aberta, chaveRevelar],
+  );
+  const layout = useLayoutAnimado(alvo);
+
+  const leisPorId = useMemo(
+    () => new Map(visao.leis.map((lei) => [lei.id, lei])),
+    [visao],
+  );
+  // Referência fixa (do início da partida) para comparar leis de dinheiro e
+  // impostos: o tamanho de uma lei não muda porque outra mudou.
+  const referencia = useMemo(
+    () => referenciaDasLeis([...base.leis.values()]),
+    [base],
+  );
+  // Setores de cada lei: o dela e os das áreas que mais mexem nos índices que
+  // ela afeta (até 3, em ordem de peso); as cores do ícone seguem esses setores.
+  const setoresPorLei = useMemo(() => {
+    const areaDaBolha = new Map<string, Map<string, number>>();
+    for (const f of fundo) {
+      const m = areaDaBolha.get(f.bolha) ?? new Map<string, number>();
+      m.set(f.ministerio, (m.get(f.ministerio) ?? 0) + f.peso);
+      areaDaBolha.set(f.bolha, m);
+    }
+    const porLei = new Map<string, Map<string, number>>();
+    for (const l of visao.ligacoes) {
+      const areas = areaDaBolha.get(l.alvo);
+      if (!areas || !base.leis.has(l.origem)) continue;
+      const total = [...areas.values()].reduce((a, b) => a + b, 0) || 1;
+      const m = porLei.get(l.origem) ?? new Map<string, number>();
+      for (const [area, peso] of areas)
+        m.set(area, (m.get(area) ?? 0) + peso / total);
+      porLei.set(l.origem, m);
+    }
+    const resultado = new Map<string, string[]>();
+    for (const lei of base.leis.values()) {
+      const propria = lei.areas[0];
+      const outras = [...(porLei.get(lei.id) ?? [])]
+        .filter(([area]) => area !== propria)
+        .sort((a, b) => b[1] - a[1]);
+      const soma = outras.reduce((s, [, p]) => s + p, 0) || 1;
+      resultado.set(lei.id, [
+        propria,
+        ...outras
+          .filter(([, p]) => p / soma >= 0.3)
+          .slice(0, 2)
+          .map(([area]) => area),
+      ]);
+    }
+    return resultado;
+  }, [fundo, visao.ligacoes, base]);
+  const intensidades = useMemo(
+    () => new Map(visao.bolhas.map((b) => [b.id, intensidadeDaBolha(b)])),
+    [visao],
+  );
+
+  // --- câmera -------------------------------------------------------------
+
+  const ocupado = useMemo(
+    () => ({ esquerda: painelEsquerdo, direita: painel }),
+    [painelEsquerdo, painel],
+  );
+  const ocupadoAtual = useRef(ocupado);
+  ocupadoAtual.current = ocupado;
+  const aplicar = useCallback(
+    (proxima: Camera) => {
+      const c = limitar(
+        proxima,
+        base.limites,
+        tela.current,
+        ocupadoAtual.current,
+      );
+      camera.current = c;
+      if (mundo.current)
+        mundo.current.style.transform = paraTela(c, tela.current);
+      setEscala((anterior) =>
+        Math.abs(anterior - c.k) / anterior > 0.05 ? c.k : anterior,
+      );
+    },
+    [base],
+  );
+
+  const animarPara = useCallback(
+    (destino: Camera, duracao = 520) => {
+      cancelAnimationFrame(animacaoCamera.current);
+      const de = camera.current;
+      const fim = limitar(
+        destino,
+        base.limites,
+        tela.current,
+        ocupadoAtual.current,
+      );
+      const inicio = performance.now();
+      const passo = (agora: number) => {
+        const t = Math.min(1, (agora - inicio) / duracao);
+        const e = suave(t);
+        // zoom em escala logarítmica para não "pular"
+        const k = Math.exp(mix(Math.log(de.k), Math.log(fim.k), e));
+        aplicar({ x: mix(de.x, fim.x, e), y: mix(de.y, fim.y, e), k });
+        if (t < 1) animacaoCamera.current = requestAnimationFrame(passo);
+      };
+      animacaoCamera.current = requestAnimationFrame(passo);
+    },
+    [aplicar, base],
+  );
+
+  // o anel dos ministérios (sem nenhuma aberta), para a vista inicial
+  const raioDoAnel = useMemo(() => {
+    let r: number = MEDIDAS.raioPresidencia;
+    for (const e of montarLayout(base, null, new Set()).esferas.values())
+      r = Math.max(r, Math.hypot(e.x, e.y) + e.r);
+    // folga para a barra de cima e os botões de baixo
+    return r + 110;
+  }, [base]);
+  const vistaInicial = useCallback(
+    () => visaoDoAnel(raioDoAnel, tela.current, ocupadoAtual.current),
+    [raioDoAnel],
+  );
+  const irParaVisaoGeral = useCallback(() => {
+    animarPara(vistaInicial());
+  }, [animarPara, vistaInicial]);
+  const verTudo = useCallback(() => {
+    animarPara(visaoGeral(base.limites, tela.current, ocupadoAtual.current));
+  }, [animarPara, base]);
+
+  useLayoutEffect(() => {
+    const el = caixa.current;
+    if (!el) return;
+    const medir = () => {
+      const r = el.getBoundingClientRect();
+      const primeira = !pronto;
+      tela.current = { largura: r.width, altura: r.height };
+      if (primeira) {
+        aplicar(vistaInicial());
+        setPronto(true);
+      } else aplicar(camera.current);
+    };
+    medir();
+    const observador = new ResizeObserver(medir);
+    observador.observe(el);
+    return () => observador.disconnect();
+  }, [aplicar, base, pronto, vistaInicial]);
+
+  // Abrir ou fechar uma área move a câmera até ela.
+  const abertaAnterior = useRef<string | null>(null);
+  useEffect(() => {
+    if (!pronto || abertaAnterior.current === aberta) return;
+    abertaAnterior.current = aberta;
+    if (aberta === null) {
+      irParaVisaoGeral();
+      return;
+    }
+    const alvoCirculo =
+      aberta === PRESIDENCIA
+        ? { x: 0, y: 0, r: MEDIDAS.raioPresidencia + 30 }
+        : alvo.esferas.get(aberta);
+    if (!alvoCirculo) return;
+    const r = alvoCirculo.r + (aberta === PRESIDENCIA ? 0 : 30);
+    const destino = focarCirculo(
+      alvoCirculo.x,
+      alvoCirculo.y,
+      r,
+      tela.current,
+      ocupado,
+    );
+    // perto o bastante para ler as leis, longe o bastante para ver as vizinhas
+    animarPara({ ...destino, k: Math.min(destino.k, 1) });
+  }, [aberta, alvo, animarPara, irParaVisaoGeral, ocupado, pronto]);
+
+  // O painel lateral empurra o centro da câmera para a área livre. Uma
+  // seleção escondida pela janela (ou fora da tela) desliza para o lado
+  // livre da janela.
+  const painelAnterior = useRef(painel);
+  const esquerdoAnterior = useRef(painelEsquerdo);
+  const selecionadoAnterior = useRef(selecionado);
+  const coberturaAtual = useRef(cobertura);
+  coberturaAtual.current = cobertura;
+  useEffect(() => {
+    if (!pronto) return;
+    const atual = camera.current;
+    let c = atual;
+    if (painelAnterior.current !== painel) {
+      c = { ...c, x: c.x + (painel - painelAnterior.current) / 2 / c.k };
+      painelAnterior.current = painel;
+    }
+    if (esquerdoAnterior.current !== painelEsquerdo) {
+      c = {
+        ...c,
+        x: c.x - (painelEsquerdo - esquerdoAnterior.current) / 2 / c.k,
+      };
+      esquerdoAnterior.current = painelEsquerdo;
+    }
+    const p = selecionado
+      ? (alvo.leis.get(selecionado) ?? bolhasPos.get(selecionado))
+      : undefined;
+    // Clicar numa lei aproxima até dar para ler (autor, 23/out: no notebook
+    // o zoom ficava longe demais).
+    const novaSelecao = selecionadoAnterior.current !== selecionado;
+    selecionadoAnterior.current = selecionado;
+    let aproximar = false;
+    if (p && novaSelecao && c.k < ZOOM_DA_LEI) {
+      c = { ...c, k: ZOOM_DA_LEI };
+      aproximar = true;
+    }
+    if (p) {
+      const t = tela.current;
+      const sx = t.largura / 2 + (p.x - c.x) * c.k;
+      const sy = t.altura / 2 + (p.y - c.y) * c.k;
+      const livre = t.largura - painel;
+      const j = coberturaAtual.current;
+      const margem = 40;
+      const escondido =
+        j !== null &&
+        sx > j.left - margem &&
+        sx < j.right + margem &&
+        sy > j.top - margem &&
+        sy < j.bottom + margem;
+      const fora =
+        sx < painelEsquerdo + 60 ||
+        sx > livre - 60 ||
+        sy < 60 ||
+        sy > t.altura - 60;
+      if (escondido || fora || aproximar) {
+        let alvoX = (painelEsquerdo + livre) / 2;
+        if (j) {
+          const esquerda = j.left - painelEsquerdo;
+          const direita = t.largura - j.right;
+          alvoX =
+            esquerda >= direita
+              ? painelEsquerdo + esquerda / 2
+              : j.right + direita / 2;
+        }
+        const alvoY = sy > 60 && sy < t.altura - 60 ? sy : t.altura / 2;
+        c = {
+          k: c.k,
+          x: p.x - (alvoX - t.largura / 2) / c.k,
+          y: p.y - (alvoY - t.altura / 2) / c.k,
+        };
+      }
+    }
+    if (c !== atual) animarPara(c, 420);
+    // só quando a seleção, o painel ou a janela mudam
+  }, [selecionado, painel, painelEsquerdo, pronto, cobertura !== null]);
+
+  // Esc fecha a seleção e depois a área aberta.
+  useEffect(() => {
+    const tecla = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (selecionado) onSelecionar(null);
+      else if (aberta) onAbrir(null);
+    };
+    window.addEventListener("keydown", tecla);
+    return () => window.removeEventListener("keydown", tecla);
+  }, [aberta, onAbrir, onSelecionar, selecionado]);
+
+  // --- arrastar e zoom ------------------------------------------------------
+
+  useEffect(() => {
+    const el = caixa.current;
+    if (!el) return;
+    // Roda do mouse aproxima; no touchpad, dois dedos movem e a pinça
+    // (que chega como ctrl + roda) aproxima.
+    const roda = (e: WheelEvent) => {
+      e.preventDefault();
+      setExplorou(true);
+      cancelAnimationFrame(animacaoCamera.current);
+      cancelAnimationFrame(inercia.current);
+      const passo =
+        e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? tela.current.altura : 1;
+      const dx = e.deltaX * passo;
+      const dy = e.deltaY * passo;
+      const pinca = e.ctrlKey;
+      const rodaDoMouse =
+        !pinca &&
+        (e.deltaMode !== 0 ||
+          (dx === 0 && Math.abs(dy) >= 40 && Number.isInteger(dy)));
+      const c = camera.current;
+      if (pinca || rodaDoMouse) {
+        const r = el.getBoundingClientRect();
+        const fator = Math.exp(-dy * (pinca ? 0.012 : 0.0016));
+        aplicar(
+          zoomNoPonto(
+            c,
+            fator,
+            e.clientX - r.left,
+            e.clientY - r.top,
+            tela.current,
+          ),
+        );
+      } else aplicar({ k: c.k, x: c.x + dx / c.k, y: c.y + dy / c.k });
+    };
+    el.addEventListener("wheel", roda, { passive: false });
+    return () => el.removeEventListener("wheel", roda);
+  }, [aplicar]);
+
+  // Bordas da tela e teclado: o mapa anda enquanto o mouse fica encostado
+  // numa borda (depois de um instante, para não andar sem querer) ou uma
+  // seta/WASD está apertada. + e − aproximam.
+  useEffect(() => {
+    const el = caixa.current;
+    if (!el) return;
+    const MARGEM = 28;
+    const VELOCIDADE = 950; // px de tela por segundo, na borda
+    const ponteiro = { x: -1, y: -1, dentro: false, desde: 0 };
+    const teclas = new Set<string>();
+    let quadro = 0;
+    let anterior = 0;
+    const podeRolar = (alvo: EventTarget | null) =>
+      alvo instanceof Element &&
+      (el.contains(alvo) || alvo.closest("[data-borda-rola]") !== null);
+    const mover = (e: MouseEvent) => {
+      const dentro = podeRolar(e.target) && e.buttons === 0;
+      if (dentro && !ponteiro.dentro) ponteiro.desde = performance.now();
+      ponteiro.x = e.clientX;
+      ponteiro.y = e.clientY;
+      ponteiro.dentro = dentro;
+    };
+    const sairJanela = (e: MouseEvent) => {
+      if (!e.relatedTarget) ponteiro.dentro = false;
+    };
+    const perderFoco = () => {
+      ponteiro.dentro = false;
+      teclas.clear();
+    };
+    const DIRECOES: Record<string, [number, number]> = {
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1],
+      a: [-1, 0],
+      d: [1, 0],
+      w: [0, -1],
+      s: [0, 1],
+    };
+    const escrevendo = (alvo: EventTarget | null) =>
+      alvo instanceof HTMLElement &&
+      (alvo.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(alvo.tagName));
+    const apertar = (e: KeyboardEvent) => {
+      if (escrevendo(e.target) || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tecla = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      if (DIRECOES[tecla]) {
+        teclas.add(tecla);
+        e.preventDefault();
+      } else if (tecla === "+" || tecla === "=") {
+        const c = camera.current;
+        animarPara({ ...c, k: c.k * 1.3 }, 220);
+      } else if (tecla === "-" || tecla === "_") {
+        const c = camera.current;
+        animarPara({ ...c, k: c.k / 1.3 }, 220);
+      }
+    };
+    const soltar = (e: KeyboardEvent) => {
+      const tecla = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      teclas.delete(tecla);
+    };
+    const passo = (agora: number) => {
+      const dt = anterior ? Math.min(0.05, (agora - anterior) / 1000) : 0;
+      anterior = agora;
+      let vx = 0;
+      let vy = 0;
+      if (ponteiro.dentro && !arraste.current && agora - ponteiro.desde > 220) {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const forca = (d: number) => Math.max(0, 1 - d / MARGEM);
+        vx += forca(ponteiro.x) * -1 + forca(w - 1 - ponteiro.x);
+        vy += forca(ponteiro.y) * -1 + forca(h - 1 - ponteiro.y);
+      }
+      for (const t of teclas) {
+        vx += DIRECOES[t][0] * 0.8;
+        vy += DIRECOES[t][1] * 0.8;
+      }
+      if ((vx || vy) && dt > 0) {
+        cancelAnimationFrame(animacaoCamera.current);
+        const c = camera.current;
+        aplicar({
+          k: c.k,
+          x: c.x + (vx * VELOCIDADE * dt) / c.k,
+          y: c.y + (vy * VELOCIDADE * dt) / c.k,
+        });
+      }
+      quadro = requestAnimationFrame(passo);
+    };
+    quadro = requestAnimationFrame(passo);
+    window.addEventListener("mousemove", mover);
+    document.addEventListener("mouseout", sairJanela);
+    window.addEventListener("blur", perderFoco);
+    window.addEventListener("keydown", apertar);
+    window.addEventListener("keyup", soltar);
+    return () => {
+      cancelAnimationFrame(quadro);
+      window.removeEventListener("mousemove", mover);
+      document.removeEventListener("mouseout", sairJanela);
+      window.removeEventListener("blur", perderFoco);
+      window.removeEventListener("keydown", apertar);
+      window.removeEventListener("keyup", soltar);
+    };
+  }, [aplicar, animarPara]);
+
+  const aoApertar = (e: PointerEventReact<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    cancelAnimationFrame(animacaoCamera.current);
+    cancelAnimationFrame(inercia.current);
+    arraste.current = {
+      x: e.clientX,
+      y: e.clientY,
+      cx: camera.current.x,
+      cy: camera.current.y,
+      moveu: false,
+      id: e.pointerId,
+      rastro: [{ x: e.clientX, y: e.clientY, t: performance.now() }],
+    };
+  };
+  const aoMover = (e: PointerEventReact<HTMLDivElement>) => {
+    const a = arraste.current;
+    if (!a || a.id !== e.pointerId) return;
+    const dx = e.clientX - a.x;
+    const dy = e.clientY - a.y;
+    if (!a.moveu && Math.hypot(dx, dy) < 5) return;
+    if (!a.moveu) {
+      a.moveu = true;
+      setExplorou(true);
+      caixa.current?.setPointerCapture(e.pointerId);
+      caixa.current?.classList.add("arrastando");
+    }
+    const k = camera.current.k;
+    aplicar({ k, x: a.cx - dx / k, y: a.cy - dy / k });
+    const agora = performance.now();
+    a.rastro.push({ x: e.clientX, y: e.clientY, t: agora });
+    while (a.rastro.length > 2 && agora - a.rastro[0].t > 90) a.rastro.shift();
+  };
+  const aoSoltar = (e: PointerEventReact<HTMLDivElement>) => {
+    const a = arraste.current;
+    if (a && a.moveu) {
+      caixa.current?.releasePointerCapture(e.pointerId);
+      caixa.current?.classList.remove("arrastando");
+      // inércia: o mapa desliza um pouco na direção do arraste e para
+      const agora = performance.now();
+      const ultimo = a.rastro[a.rastro.length - 1];
+      const primeiro = a.rastro[0];
+      const tempo = Math.max(1, ultimo.t - primeiro.t);
+      if (agora - ultimo.t < 60 && a.rastro.length > 1) {
+        let vx = (ultimo.x - primeiro.x) / tempo; // px por ms
+        let vy = (ultimo.y - primeiro.y) / tempo;
+        let antes = agora;
+        const deslizar = (t: number) => {
+          const dt = Math.min(40, t - antes);
+          antes = t;
+          const atrito = Math.pow(0.9945, dt);
+          vx *= atrito;
+          vy *= atrito;
+          const c = camera.current;
+          aplicar({
+            k: c.k,
+            x: c.x - (vx * dt) / c.k,
+            y: c.y - (vy * dt) / c.k,
+          });
+          if (Math.hypot(vx, vy) > 0.02)
+            inercia.current = requestAnimationFrame(deslizar);
+        };
+        if (Math.hypot(vx, vy) > 0.15)
+          inercia.current = requestAnimationFrame(deslizar);
+      }
+      // engole o clique que viria depois do arraste
+      const engolir = (ev: MouseEvent) => {
+        ev.stopPropagation();
+        window.removeEventListener("click", engolir, true);
+      };
+      window.addEventListener("click", engolir, true);
+      setTimeout(() => window.removeEventListener("click", engolir, true), 0);
+    }
+    arraste.current = null;
+  };
+
+  const zoomBotao = (fator: number) => {
+    const c = camera.current;
+    animarPara({ ...c, k: c.k * fator }, 260);
+  };
+
+  // --- interação com nós -----------------------------------------------------
+
+  const entrar = useCallback((id: string) => setSobre(id), []);
+  const sair = useCallback(() => setSobre(null), []);
+  const clicarNo = useCallback(
+    (id: string) => onSelecionar(id === selecionado ? null : id),
+    [onSelecionar, selecionado],
+  );
+  const abrirEsfera = (id: string) => {
+    setExplorou(true);
+    if (aberta !== id) onAbrir(id);
+  };
+
+  // --- desenho --------------------------------------------------------------
+
+  const k = escala;
+  const comFoco = Boolean(foco);
+  const corDaEsfera = (nome: string) =>
+    nome === PRESIDENCIA
+      ? COR_PRESIDENCIA
+      : (base.porNome.get(nome)?.cor ?? "#777");
+  const posicao = (id: string): (Ponto & { r: number }) | null => {
+    const lei = layout.leis.get(id);
+    if (lei) {
+      const visao = leisPorId.get(id);
+      const escala = visao ? escalaDaLei(nivelRelativo(visao, referencia)) : 1;
+      return { ...lei, r: lei.r * escala * 1.2 };
+    }
+    const bolha = bolhasPos.get(id);
+    if (bolha) {
+      const i = intensidades.get(id);
+      return { ...bolha, r: RAIO_BASE_BOLHA * (i?.escala ?? 1) + 6 };
+    }
+    const dono = base.leis.get(id)?.areas[0];
+    const esfera = dono ? layout.esferas.get(dono) : undefined;
+    return esfera ? { x: esfera.x, y: esfera.y, r: 40 } : null;
+  };
+  const passaNoFiltro = (id: string) => {
+    const lei = leisPorId.get(id);
+    return !lei || leiPassaNoFiltro(lei, filtro, referencia);
+  };
+  const estadoDe = (id: string): EstadoNo =>
+    !passaNoFiltro(id) && id !== foco
+      ? "apagado"
+      : !comFoco
+        ? "normal"
+        : id === foco
+          ? "foco"
+          : viz.nos.has(id)
+            ? "vizinho"
+            : "apagado";
+
+  const ministerioDoFoco = foco ? (base.leis.get(foco)?.areas ?? []) : [];
+  const esferaRelacionada = (nome: string) =>
+    !comFoco ||
+    ministerioDoFoco.includes(nome) ||
+    [...viz.leis].some((id) => base.leis.get(id)?.areas.includes(nome));
+
+  const pontaFundo = Math.min(18, Math.max(9, 7 / k));
+  const pontaFoco = Math.min(24, Math.max(12, 10 / k));
+
+  const setasDeFundo: ReactNode[] = [];
+  if (!comFoco) {
+    for (const ligacao of fundo) {
+      const esfera = layout.esferas.get(ligacao.ministerio);
+      const bolha = bolhasPos.get(ligacao.bolha);
+      if (!esfera || !bolha) continue;
+      if (
+        aberta &&
+        aberta !== PRESIDENCIA &&
+        ligacao.ministerio !== aberta &&
+        esferaSobre !== ligacao.ministerio
+      )
+        continue;
+      const geo = curva(esfera, bolha, esfera.r, bolha.r, pontaFundo, 0.07);
+      if (!geo) continue;
+      const destaque =
+        esferaSobre === ligacao.ministerio || aberta === ligacao.ministerio;
+      setasDeFundo.push(
+        <g
+          key={`${ligacao.ministerio}>${ligacao.bolha}`}
+          className={`seta-fundo${destaque ? " destaque" : ""}`}
+          style={
+            {
+              "--cor": esfera ? corDaEsfera(ligacao.ministerio) : "#999",
+            } as React.CSSProperties
+          }
+        >
+          <path d={geo.d} />
+          <path d={geo.ponta} className="ponta" />
+        </g>,
+      );
+    }
+  }
+
+  const setasDeFoco: ReactNode[] = [];
+  const atrasos: ReactNode[] = [];
+  for (const relacao of viz.relacoes as readonly Relacao[]) {
+    const a = posicao(relacao.de);
+    const b = posicao(relacao.para);
+    if (!a || !b) continue;
+    const geo = curva(a, b, a.r, b.r, pontaFoco, 0.14);
+    if (!geo) continue;
+    const cor = relacao.eficacia ? "#7d68b8" : COR_EFEITO[relacao.efeito];
+    setasDeFoco.push(
+      <g
+        key={relacao.id}
+        className={`seta-foco${relacao.atrasoMeses > 0 ? " atrasada" : ""}${relacao.eficacia ? " eficacia" : ""}`}
+        style={{ "--cor": cor } as React.CSSProperties}
+      >
+        <path d={geo.d} />
+        <path d={geo.ponta} className="ponta" />
+      </g>,
+    );
+    if (relacao.atrasoMeses > 0 && viz.relacoes.length <= 24) {
+      const texto =
+        relacao.atrasoMeses >= 12 && relacao.atrasoMeses % 12 === 0
+          ? `${relacao.atrasoMeses / 12} a`
+          : `${relacao.atrasoMeses} m`;
+      const s = Math.min(1.6, Math.max(0.8, 0.75 / k));
+      atrasos.push(
+        <g
+          key={`atraso-${relacao.id}`}
+          className="selo-atraso"
+          transform={`translate(${geo.meio.x} ${geo.meio.y}) scale(${s})`}
+        >
+          <rect x={-27} y={-11} width={54} height={22} rx={11} />
+          <IconeSvg
+            nome={ICONE_INTERFACE.relogio}
+            x={-14}
+            y={0}
+            tamanho={13}
+            cor="currentColor"
+          />
+          <text x={6} y={4.5} fontSize={12.5} textAnchor="middle">
+            {texto}
+          </text>
+        </g>,
+      );
+    }
+  }
+
+  const esferasOrdenadas = [...base.ministerios].sort(
+    (a, b) => Number(a.nome === aberta) - Number(b.nome === aberta),
+  );
+  const esferaAberta =
+    aberta && aberta !== PRESIDENCIA ? layout.esferas.get(aberta) : undefined;
+
+  const p = layout.presidencia;
+  const totalConstitucionais = base.constitucionais.length;
+  const presidenciaApagada =
+    comFoco && ![...viz.leis].some((id) => base.constitucionais.includes(id));
+
+  return (
+    <div
+      ref={caixa}
+      className={`mapa${pronto ? " pronto" : ""}${comFoco ? " com-foco" : ""}`}
+      onPointerDown={aoApertar}
+      onPointerMove={aoMover}
+      onPointerUp={aoSoltar}
+      onPointerCancel={aoSoltar}
+      onClick={() => {
+        if (selecionado) onSelecionar(null);
+      }}
+    >
+      <svg
+        className="mapa-svg"
+        onPointerLeave={() => setSobre(null)}
+        role="application"
+        aria-label="Mapa político do governo"
+      >
+        <defs>
+          <pattern
+            id="grade"
+            width="48"
+            height="48"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="24" cy="24" r="1.6" className="ponto-grade" />
+          </pattern>
+          <radialGradient id="fundo-presidencia" cx="50%" cy="50%" r="50%">
+            <stop offset="0" className="fundo-presidencia-0" />
+            <stop offset="0.55" className="fundo-presidencia-1" />
+            <stop offset="1" className="fundo-presidencia-2" />
+          </radialGradient>
+          <clipPath id="corte-presidencia">
+            <circle cx={p.x} cy={p.y} r={p.r} />
+          </clipPath>
+          <filter id="sombra" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow
+              dx="0"
+              dy="6"
+              stdDeviation="9"
+              floodColor="#2b2a20"
+              floodOpacity="0.16"
+            />
+          </filter>
+        </defs>
+        <g ref={mundo} className="mundo">
+          <rect
+            x={base.limites.minX}
+            y={base.limites.minY}
+            width={base.limites.maxX - base.limites.minX}
+            height={base.limites.maxY - base.limites.minY}
+            fill="url(#grade)"
+            className="limite-mundo"
+            rx={60}
+          />
+
+          {/* Presidência */}
+          <g
+            className={`area-presidencia${p.aberta ? " aberta" : ""}${presidenciaApagada ? " apagada" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelecionar(null);
+              onAbrir(p.aberta ? null : PRESIDENCIA);
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Presidência e Constituição, ${totalConstitucionais} leis constitucionais. ${p.aberta ? "Fechar área" : "Abrir área"}`}
+            onKeyDown={aoTeclar(() => onAbrir(p.aberta ? null : PRESIDENCIA))}
+          >
+            <circle cx={p.x} cy={p.y} r={p.r} className="disco-presidencia" />
+            <circle
+              cx={p.x}
+              cy={p.y}
+              r={p.r - 16}
+              className="anel-presidencia"
+            />
+          </g>
+
+          {/* Esferas ministeriais */}
+          {esferasOrdenadas.map((ministerio) => {
+            const e = layout.esferas.get(ministerio.nome)!;
+            const relacionada = esferaRelacionada(ministerio.nome);
+            return (
+              <g
+                key={ministerio.nome}
+                className={`esfera${e.aberta ? " aberta" : ""}${relacionada ? "" : " apagada"}${esferaSobre === ministerio.nome ? " sobre" : ""}`}
+                style={{ "--cor": ministerio.cor } as React.CSSProperties}
+                onPointerEnter={() => setEsferaSobre(ministerio.nome)}
+                onPointerLeave={() => setEsferaSobre(null)}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  if (selecionado) onSelecionar(null);
+                  abrirEsfera(ministerio.nome);
+                }}
+              >
+                <circle cx={e.x} cy={e.y} r={e.r} className="disco-esfera" />
+              </g>
+            );
+          })}
+
+          {/* Lente: a parte da esfera aberta que também é da Presidência */}
+          {esferaAberta ? (
+            <g className="lente" pointerEvents="none">
+              <circle
+                cx={esferaAberta.x}
+                cy={esferaAberta.y}
+                r={esferaAberta.r}
+                clipPath="url(#corte-presidencia)"
+                style={{ "--cor": corDaEsfera(aberta!) } as React.CSSProperties}
+              />
+              <path
+                id="arco-lente"
+                d={arcoDaLente(esferaAberta.angulo)}
+                fill="none"
+              />
+              <text className="rotulo-lente">
+                <textPath
+                  href="#arco-lente"
+                  startOffset="50%"
+                  textAnchor="middle"
+                >
+                  § LEIS CONSTITUCIONAIS · TAMBÉM DA PRESIDÊNCIA
+                </textPath>
+              </text>
+            </g>
+          ) : null}
+
+          {/* Ligações de fundo */}
+          <g className="camada-setas-fundo">{setasDeFundo}</g>
+
+          {/* Conteúdo das esferas: retrato, nome, contagem */}
+          {esferasOrdenadas.map((ministerio) => {
+            const e = layout.esferas.get(ministerio.nome)!;
+            const relacionada = esferaRelacionada(ministerio.nome);
+            const revelando = [...layout.leis.values()].some(
+              (l) => l.esfera === ministerio.nome && l.lugar === "revelada",
+            );
+            const bloco = blocoCentral(e, ministerio.titulo);
+            // De longe (zoom baixo), a esfera vira um cartaz: retrato menor e
+            // o tema em letra grande, com tamanho mínimo na tela.
+            const longe = !e.aberta && k < LONGE;
+            const tituloLonge = longe
+              ? (() => {
+                  const linhas = quebrarNome(ministerio.curto, 12, 2);
+                  const tamanho = Math.min(e.r * 0.34, 17 / k);
+                  return { linhas, tamanho, entrelinha: tamanho * 1.02 };
+                })()
+              : null;
+            const constit = ministerio.leis.filter((id) =>
+              base.constitucionais.includes(id),
+            ).length;
+            const excedente = layout.excedentes.get(ministerio.nome);
+            const rr = bloco.retrato.r;
+            return (
+              <g
+                key={`conteudo-${ministerio.nome}`}
+                className={`conteudo-esfera${e.aberta ? " aberta" : ""}${relacionada ? "" : " apagada"}${revelando ? " revelando" : ""}`}
+                style={{ "--cor": ministerio.cor } as React.CSSProperties}
+                onPointerEnter={() => setEsferaSobre(ministerio.nome)}
+                onPointerLeave={() => setEsferaSobre(null)}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  if (selecionado) onSelecionar(null);
+                  abrirEsfera(ministerio.nome);
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${ministerio.titulo}: ${ministerio.pastas.map((p) => p.cargo).join(", ")}; ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
+                aria-expanded={e.aberta}
+                onKeyDown={aoTeclar(() => abrirEsfera(ministerio.nome))}
+              >
+                <Retrato
+                  pessoa={pessoaDoCargo(ministerio.cargo, ministerio.indice)}
+                  cor={ministerio.cor}
+                  r={rr}
+                  x={bloco.retrato.x}
+                  y={bloco.retrato.y}
+                />
+                {tituloLonge ? (
+                  <text
+                    className="titulo-esfera longe"
+                    y={
+                      bloco.retrato.y +
+                      rr +
+                      tituloLonge.tamanho * 0.95 -
+                      (tituloLonge.linhas.length - 1) *
+                        tituloLonge.entrelinha *
+                        0.35
+                    }
+                    fontSize={tituloLonge.tamanho}
+                    textAnchor="middle"
+                  >
+                    {tituloLonge.linhas.map((linha, i) => (
+                      <tspan
+                        key={i}
+                        x={e.x}
+                        dy={i === 0 ? 0 : tituloLonge.entrelinha}
+                      >
+                        {linha}
+                      </tspan>
+                    ))}
+                  </text>
+                ) : null}
+                <g
+                  transform={`translate(${bloco.retrato.x + rr * 0.7} ${bloco.retrato.y + rr * 0.7})`}
+                  className="selo-ministerio"
+                >
+                  <circle r={rr * 0.24} />
+                  <IconeSvg
+                    nome={ICONE_INTERFACE[ministerio.nome] ?? "bank"}
+                    tamanho={rr * 0.28}
+                    cor="#fff"
+                  />
+                </g>
+                {tituloLonge ? null : (
+                  <text
+                    className="titulo-esfera"
+                    y={bloco.titulo.y}
+                    // 22/out: título menor, para as leis ganharem o destaque
+                    fontSize={bloco.titulo.tamanho * 0.72}
+                    textAnchor="middle"
+                  >
+                    {bloco.titulo.linhas.map((linha, i) => (
+                      <tspan
+                        key={i}
+                        x={bloco.titulo.x}
+                        dy={i === 0 ? 0 : bloco.titulo.entrelinha}
+                      >
+                        {linha}
+                      </tspan>
+                    ))}
+                  </text>
+                )}
+                {suasNaEsfera(ministerio.leis) ? (
+                  <g
+                    transform={`translate(${bloco.retrato.x - rr * 0.7} ${bloco.retrato.y + rr * 0.7})`}
+                    className="selo-sua selo-sua-esfera"
+                  >
+                    <circle r={rr * 0.24} />
+                    <IconeSvg
+                      nome={ICONE_INTERFACE.caneta}
+                      tamanho={rr * 0.24}
+                      cor="#2b2108"
+                    />
+                    <text
+                      x={rr * 0.3}
+                      y={rr * 0.1}
+                      fontSize={rr * 0.3}
+                      className="contador-sua"
+                    >
+                      {suasNaEsfera(ministerio.leis)}
+                    </text>
+                  </g>
+                ) : null}
+                {!longe && (!e.aberta || !revelando) ? (
+                  <text
+                    className="contagem-esfera"
+                    x={bloco.contagem.x}
+                    y={bloco.contagem.y}
+                    fontSize={bloco.contagem.tamanho}
+                    textAnchor="middle"
+                  >
+                    {ministerio.pastas.length > 1
+                      ? `${ministerio.pastas.length} ministérios`
+                      : ministerio.cargo}{" "}
+                    · {ministerio.leis.length} leis
+                    {constit && e.aberta
+                      ? ` · ${constit} constituciona${constit > 1 ? "is" : "l"}`
+                      : ""}
+                  </text>
+                ) : null}
+                {excedente ? (
+                  <g
+                    transform={`translate(${e.x + Math.cos(e.angulo) * (e.r + 30)} ${e.y + Math.sin(e.angulo) * (e.r + 30)})`}
+                    className="selo-excedente"
+                  >
+                    <rect x={-26} y={-12} width={52} height={24} rx={12} />
+                    <text y={5} fontSize={14} textAnchor="middle">
+                      +{excedente}
+                    </text>
+                  </g>
+                ) : null}
+                {e.aberta ? (
+                  <g
+                    className="fechar-esfera"
+                    transform={`translate(${e.x + Math.cos(-Math.PI / 4) * e.r} ${e.y + Math.sin(-Math.PI / 4) * e.r})`}
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                      onSelecionar(null);
+                      onAbrir(null);
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Fechar ${ministerio.titulo}`}
+                    onKeyDown={aoTeclar(() => onAbrir(null))}
+                  >
+                    <circle r={20} />
+                    <IconeSvg
+                      nome={ICONE_INTERFACE.fechar}
+                      tamanho={22}
+                      cor="currentColor"
+                    />
+                  </g>
+                ) : null}
+              </g>
+            );
+          })}
+
+          {/* Ministérios da área aberta: o nome de cada um na sua fatia */}
+          {esferaAberta && layout.pastas.length ? (
+            <g
+              className="rotulos-pastas"
+              pointerEvents="none"
+              style={{ "--cor": corDaEsfera(aberta!) } as React.CSSProperties}
+            >
+              {layout.pastas.map((pasta) => {
+                const c = Math.cos(pasta.angulo);
+                return (
+                  <text
+                    key={pasta.id}
+                    className="rotulo-pasta"
+                    x={pasta.x}
+                    y={pasta.y + 7}
+                    fontSize={Math.max(20, 13 / k)}
+                    textAnchor={
+                      c > 0.35 ? "start" : c < -0.35 ? "end" : "middle"
+                    }
+                  >
+                    {pasta.cargo}
+                  </text>
+                );
+              })}
+            </g>
+          ) : null}
+
+          {/* Centro: Presidente e Constituição */}
+          <g
+            className={`centro-presidencia${presidenciaApagada ? " apagada" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelecionar(null);
+              onAbrir(p.aberta ? null : PRESIDENCIA);
+            }}
+          >
+            {aberta ? (
+              <>
+                <circle cy={-62} r={78} className="aro-presidente" />
+                <Retrato
+                  pessoa={PRESIDENTE}
+                  cor={COR_PRESIDENCIA}
+                  r={70}
+                  y={-62}
+                />
+                <g transform="translate(0 40)" className="placa-presidente">
+                  <rect x={-112} y={-22} width={224} height={44} rx={22} />
+                  <text y={9} fontSize={24} textAnchor="middle">
+                    PRESIDENTE
+                  </text>
+                </g>
+                <g
+                  transform={`translate(0 ${BLOCO_PRESIDENCIA_ABERTA.maxY - 12})`}
+                >
+                  <rect
+                    className="pilula-constituicao"
+                    x={-118}
+                    y={-20}
+                    width={236}
+                    height={28}
+                    rx={14}
+                  />
+                  <IconeSvg
+                    nome={ICONE_INTERFACE.constituicao}
+                    tamanho={22}
+                    cor={COR_PRESIDENCIA}
+                    x={-98}
+                    y={-6}
+                  />
+                  <text
+                    fontSize={17}
+                    textAnchor="middle"
+                    className="rotulo-constituicao"
+                    x={10}
+                  >
+                    Constituição · {totalConstitucionais} leis
+                  </text>
+                </g>
+              </>
+            ) : (
+              <>
+                <circle
+                  cy={-48}
+                  r={MEDIDAS.raioRetratoPresidente + 10}
+                  className="aro-presidente"
+                />
+                <Retrato
+                  pessoa={PRESIDENTE}
+                  cor={COR_PRESIDENCIA}
+                  r={MEDIDAS.raioRetratoPresidente}
+                  y={-48}
+                />
+                <g transform="translate(0 76)" className="placa-presidente">
+                  <rect x={-118} y={-25} width={236} height={50} rx={25} />
+                  <text y={10} fontSize={28} textAnchor="middle">
+                    PRESIDENTE
+                  </text>
+                </g>
+                <text
+                  y={124}
+                  fontSize={16}
+                  className="sub-presidencia"
+                  textAnchor="middle"
+                >
+                  PRESIDÊNCIA · CONSTITUIÇÃO
+                </text>
+                <g transform="translate(0 180)" className="no-constituicao">
+                  <circle r={34} />
+                  <IconeSvg
+                    nome={ICONE_INTERFACE.constituicao}
+                    tamanho={34}
+                    cor={COR_PRESIDENCIA}
+                    y={-2}
+                  />
+                  <text
+                    y={60}
+                    fontSize={22}
+                    textAnchor="middle"
+                    className="rotulo-constituicao"
+                  >
+                    Constituição Federal
+                  </text>
+                  <text
+                    y={86}
+                    fontSize={18}
+                    textAnchor="middle"
+                    className="contagem-constituicao"
+                  >
+                    {totalConstitucionais} leis constitucionais
+                  </text>
+                </g>
+              </>
+            )}
+          </g>
+
+          {/* Setas da seleção */}
+          <g className="camada-setas-foco">{setasDeFoco}</g>
+
+          {/* Leis visíveis */}
+          {/* a lei sob o mouse (ou selecionada) vai por último: o nome grande fica por cima */}
+          {[...layout.leis.values()]
+            .sort(
+              (a, b) =>
+                Number(a.id === foco || a.id === selecionado) -
+                Number(b.id === foco || b.id === selecionado),
+            )
+            .map((pos) => {
+              const lei = leisPorId.get(pos.id);
+              if (!lei) return null;
+              const setores = setoresPorLei.get(lei.id) ?? [lei.areas[0]];
+              const cor = corDaEsfera(setores[0]);
+              const extras = setores.slice(1).map(corDaEsfera);
+              const estado = estadoDe(pos.id);
+              // 22/out: de perto, todas as leis da área mostram o nome (como os
+              // índices); com o mouse em cima, o nome cresce com o zoom
+              const emDestaque = pos.id === foco || pos.id === selecionado;
+              const mostrarRotulo = emDestaque || k >= 0.75;
+              return (
+                <NoLei
+                  key={pos.id}
+                  lei={lei}
+                  pos={pos}
+                  cor={cor}
+                  coresExtras={extras}
+                  estado={estado}
+                  selecionada={pos.id === selecionado}
+                  mostrarRotulo={mostrarRotulo}
+                  realce={
+                    destaque && aberta && lei.areas.includes(aberta)
+                      ? destaque.has(pos.id)
+                      : undefined
+                  }
+                  // só a lei com nome à mostra acompanha o zoom (as outras não
+                  // são redesenhadas a cada quadro dele)
+                  escalaTela={emDestaque ? k : 1}
+                  nivel={nivelRelativo(lei, referencia)}
+                  onEntrar={entrar}
+                  onSair={sair}
+                  onClicar={clicarNo}
+                />
+              );
+            })}
+
+          {/* Indicadores, situações e estoques */}
+          {visao.bolhas.map((bolha) => {
+            const pos = bolhasPos.get(bolha.id);
+            if (!pos) return null;
+            const estado = estadoDe(bolha.id);
+            const marca = marcas.get(bolha.id);
+            const emFoco = estado === "foco" || estado === "vizinho";
+            return (
+              <NoBolha
+                key={bolha.id}
+                bolha={bolha}
+                x={pos.x}
+                y={pos.y}
+                intensidade={intensidades.get(bolha.id)!}
+                variacao={variacoes.get(bolha.id)}
+                variacaoVoce={variacoesVoce.get(bolha.id)}
+                etiqueta={
+                  mostrarVariacoes &&
+                  (variacoes.has(bolha.id) || variacoesVoce.has(bolha.id))
+                }
+                escalaTela={k}
+                estado={estado}
+                selecionada={bolha.id === selecionado}
+                mostrarRotulo={
+                  bolha.tipo === "grupo" ||
+                  k >= 0.6 ||
+                  emFoco ||
+                  Boolean(marca) ||
+                  pulsos.has(bolha.id)
+                }
+                mostrarValor={k >= 0.85 || estado === "foco"}
+                marca={marca}
+                pulsa={pulsos.has(bolha.id)}
+                onEntrar={entrar}
+                onSair={sair}
+                onClicar={clicarNo}
+              />
+            );
+          })}
+
+          <g className="camada-atrasos">{atrasos}</g>
+        </g>
+      </svg>
+
+      <PainelDeFiltro
+        aberto={filtroAberto}
+        onAlternar={() => setFiltroAberto((a) => !a)}
+        filtro={filtro}
+        onMudar={setFiltro}
+        segmentos={visao.bolhas
+          .filter((b) => b.tipo === "grupo")
+          .map((b) => ({ id: b.id, nome: b.nome }))}
+        total={visao.leis.filter((l) => l.emVigor).length}
+        passam={
+          visao.leis.filter(
+            (l) => l.emVigor && leiPassaNoFiltro(l, filtro, referencia),
+          ).length
+        }
+      />
+      <div
+        className="controles-mapa"
+        onPointerDown={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={() => zoomBotao(1.3)}
+          aria-label="Aproximar"
+          disabled={k >= ESCALA_MAXIMA - 0.01}
+        >
+          <Icone nome={ICONE_INTERFACE.mais} />
+        </button>
+        <button
+          type="button"
+          onClick={() => zoomBotao(1 / 1.3)}
+          aria-label="Afastar"
+        >
+          <Icone nome={ICONE_INTERFACE.menos} />
+        </button>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelecionar(null);
+            if (aberta) onAbrir(null);
+            else {
+              // já no anel: o segundo clique mostra o mapa inteiro
+              const anel = vistaInicial();
+              const c = camera.current;
+              if (
+                Math.abs(c.k - anel.k) / anel.k < 0.04 &&
+                Math.hypot(c.x - anel.x, c.y - anel.y) < 40
+              )
+                verTudo();
+              else irParaVisaoGeral();
+            }
+          }}
+          aria-label="Voltar à visão geral"
+          title="Visão geral (clique de novo para ver o mapa inteiro)"
+        >
+          <Icone nome={ICONE_INTERFACE.visao} />
+        </button>
+      </div>
+
+      {variacoes.size ? (
+        <button
+          type="button"
+          className={`alternar-variacoes${mostrarVariacoes ? " ligado" : ""}`}
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAlternarVariacoes();
+          }}
+          aria-pressed={mostrarVariacoes}
+        >
+          <Icone nome={ICONE_INTERFACE.variacoes} tamanho={18} />
+          {mostrarVariacoes ? "Ocultar" : "Mostrar"} mudanças do turno
+          <b>{variacoes.size}</b>
+        </button>
+      ) : null}
+      {comFoco ? (
+        <div className="legenda" aria-hidden="true">
+          <span>
+            <i style={{ background: COR_EFEITO.melhora }} />
+            melhora
+          </span>
+          <span>
+            <i style={{ background: COR_EFEITO.piora }} />
+            piora
+          </span>
+          <span>
+            <i style={{ background: COR_EFEITO.neutro }} />
+            neutro
+          </span>
+          <span>
+            <i className="tracejado" />
+            com atraso
+          </span>
+          <span>
+            <i className="pontilhado" />
+            muda a eficácia
+          </span>
+        </div>
+      ) : null}
+      {!explorou && aberta === null && !comFoco ? (
+        <div className="dica-mapa" aria-hidden="true">
+          Clique numa esfera · arraste ou encoste na borda para andar · roda ou
+          pinça aproxima · / busca uma lei
+        </div>
+      ) : null}
+      <span className="sr-only" aria-live="polite">
+        {foco ? `${viz.relacoes.length} relações diretas` : ""}
+      </span>
+    </div>
+  );
+}

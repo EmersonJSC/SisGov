@@ -23,8 +23,6 @@ import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 
-import { montarMapa, type MapaDoMundo } from "./mapa";
-
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
   import: "default",
@@ -138,14 +136,6 @@ export const indicesDoMundo: DescricaoIndice[] = variaveis.variaveis.map(
   }),
 );
 
-/** Estrutura do mundo para o mapa da tela (índices de jogabilidade). */
-export const mapaDoMundo: MapaDoMundo = montarMapa(
-  carregarLeis(),
-  carregarGrupos(),
-  nomesGrupos,
-  indicesDoMundo.filter((i) => !i.essencial),
-);
-
 /** Apoio que o governo teria se a eleição fosse hoje. */
 export function apoioAtual(estado: Estado): number {
   return satisfacaoMedia(estado.grupos) - estado.desgaste;
@@ -257,5 +247,15 @@ export function jogar(
 }
 
 export { carregarPartida, salvarPartida } from "./salvar";
-export type { AreaDoMapa, MapaDoMundo } from "./mapa";
+export { montarVisao } from "./visao";
 export type { Estado, Pedido } from "../motor";
+export type {
+  VisaoArea,
+  VisaoBolha,
+  VisaoGrupo,
+  VisaoLei,
+  VisaoLigacao,
+  VisaoMinisterio,
+  VisaoOpcao,
+  VisaoPartida,
+} from "./tiposVisao";

@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "gasto-educacao",
+  "nome": "Verba da educação",
+  "descricao": "Dinheiro do governo para escolas e universidades.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

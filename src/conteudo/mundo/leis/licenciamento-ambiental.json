@@ -1,11 +1,14 @@
 {
   "versao": 1,
   "id": "licenciamento-ambiental",
+  "nome": "Licenciamento ambiental",
+  "descricao": "Como uma obra ou empresa prova que não vai destruir o ambiente antes de começar.",
   "camada": "jogabilidade",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "frouxo",
+      "rotulo": "Licença simples",
       "grupos": { "empresarios": "apoia", "ambientalistas": "rejeita" },
       "efeitos": [
         {
@@ -31,6 +34,7 @@
     { "id": "normal", "efeitos": [] },
     {
       "id": "rigoroso",
+      "rotulo": "Licença rigorosa com consulta",
       "grupos": { "empresarios": "rejeita", "ambientalistas": "apoia" },
       "efeitos": [
         {

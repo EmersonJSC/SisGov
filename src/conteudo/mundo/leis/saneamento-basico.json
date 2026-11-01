@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "id": "saneamento-basico",
+  "nome": "Saneamento básico",
+  "descricao": "Dinheiro para água tratada e esgoto.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",

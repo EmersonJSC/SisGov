@@ -1,0 +1,1216 @@
+{
+  "version": 2,
+  "base": "src/assets/svg",
+  "icons": {
+    "aborto": {
+      "area": "direitos",
+      "name": "Aborto",
+      "path": "leis/direitos/aborto.svg"
+    },
+    "acesso-ao-ensino-superior": {
+      "area": "educacao",
+      "name": "Acesso ao ensino superior",
+      "path": "leis/educacao/acesso-ao-ensino-superior.svg"
+    },
+    "acoes-afirmativas": {
+      "area": "direitos",
+      "name": "Ações afirmativas",
+      "path": "leis/direitos/acoes-afirmativas.svg"
+    },
+    "acolhida-e-interiorizacao-de-imigrantes": {
+      "area": "direitos",
+      "name": "Acolhida e interiorização de imigrantes",
+      "path": "leis/direitos/acolhida-e-interiorizacao-de-imigrantes.svg"
+    },
+    "acordos-comerciais": {
+      "area": "seguranca",
+      "name": "Acordos comerciais",
+      "path": "leis/seguranca/acordos-comerciais.svg"
+    },
+    "agencia-de-inteligencia": {
+      "area": "governo",
+      "name": "Agência de inteligência e contrainteligência",
+      "path": "leis/governo/agencia-de-inteligencia.svg"
+    },
+    "agua-e-esgoto": {
+      "area": "infraestrutura",
+      "name": "Água e esgoto",
+      "path": "leis/infraestrutura/agua-e-esgoto.svg"
+    },
+    "alfabetizacao-na-idade-certa": {
+      "area": "educacao",
+      "name": "Alfabetização na idade certa",
+      "path": "leis/educacao/alfabetizacao-na-idade-certa.svg"
+    },
+    "alianca-militar": {
+      "area": "seguranca",
+      "name": "Aliança militar",
+      "path": "leis/seguranca/alianca-militar.svg"
+    },
+    "alinhamento-externo": {
+      "area": "seguranca",
+      "name": "Alinhamento externo",
+      "path": "leis/seguranca/alinhamento-externo.svg"
+    },
+    "alternativas-penais-e-audiencia-de-custodia": {
+      "area": "seguranca",
+      "name": "Alternativas penais e audiência de custódia",
+      "path": "leis/seguranca/alternativas-penais-e-audiencia-de-custodia.svg"
+    },
+    "apostas-e-jogos-de-azar": {
+      "area": "economia",
+      "name": "Apostas e jogos de azar",
+      "path": "leis/economia/apostas-e-jogos-de-azar.svg"
+    },
+    "armas-de-fogo": {
+      "area": "seguranca",
+      "name": "Armas de fogo",
+      "path": "leis/seguranca/armas-de-fogo.svg"
+    },
+    "avaliacao-das-escolas": {
+      "area": "educacao",
+      "name": "Avaliação das escolas",
+      "path": "leis/educacao/avaliacao-das-escolas.svg"
+    },
+    "banco-de-desenvolvimento": {
+      "area": "empresas",
+      "name": "Banco de desenvolvimento",
+      "path": "leis/empresas/banco-de-desenvolvimento.svg"
+    },
+    "bloqueio-de-pagamentos-a-casas-sem-licenca": {
+      "area": "direitos",
+      "name": "Bloqueio de pagamentos a casas sem licença",
+      "path": "leis/direitos/bloqueio-de-pagamentos-a-casas-sem-licenca.svg"
+    },
+    "bolsa-de-permanencia-no-ensino-medio": {
+      "area": "educacao",
+      "name": "Bolsa de permanência no ensino médio",
+      "path": "leis/educacao/bolsa-de-permanencia-no-ensino-medio.svg"
+    },
+    "bolsas-de-pos-graduacao": {
+      "area": "educacao",
+      "name": "Bolsas de pós-graduação",
+      "path": "leis/educacao/bolsas-de-pos-graduacao.svg"
+    },
+    "cameras-corporais": {
+      "area": "seguranca",
+      "name": "Câmeras corporais",
+      "path": "leis/seguranca/cameras-corporais.svg"
+    },
+    "cameras-e-reconhecimento-facial": {
+      "area": "seguranca",
+      "name": "Câmeras e reconhecimento facial",
+      "path": "leis/seguranca/cameras-e-reconhecimento-facial.svg"
+    },
+    "campanha-de-vacinacao-lei": {
+      "area": "saude",
+      "name": "Campanha de vacinação",
+      "path": "leis/saude/campanha-de-vacinacao-lei.svg"
+    },
+    "cannabis-legal": {
+      "area": "seguranca",
+      "name": "Maconha legal e regulada",
+      "path": "leis/seguranca/cannabis-legal.svg"
+    },
+    "casamento-e-uniao-civil": {
+      "area": "direitos",
+      "name": "Casamento e união civil",
+      "path": "leis/direitos/casamento-e-uniao-civil.svg"
+    },
+    "ciberseguranca": {
+      "area": "seguranca",
+      "name": "Cibersegurança",
+      "path": "leis/seguranca/ciberseguranca.svg"
+    },
+    "ciclo-policial": {
+      "area": "seguranca",
+      "name": "Ciclo policial",
+      "path": "leis/seguranca/ciclo-policial.svg"
+    },
+    "clausula-de-desempenho": {
+      "area": "governo",
+      "name": "Cláusula de desempenho",
+      "path": "leis/governo/clausula-de-desempenho.svg"
+    },
+    "codigo-florestal": {
+      "area": "ambiente",
+      "name": "Código florestal",
+      "path": "leis/ambiente/codigo-florestal.svg"
+    },
+    "como-o-estado-entrega-casa": {
+      "area": "previdencia",
+      "name": "Como o Estado entrega casa",
+      "path": "leis/previdencia/como-o-estado-entrega-casa.svg"
+    },
+    "concessoes-de-radio-e-tv": {
+      "area": "educacao",
+      "name": "Concessões de rádio e TV",
+      "path": "leis/educacao/concessoes-de-radio-e-tv.svg"
+    },
+    "conselho-fiscal-independente": {
+      "area": "economia",
+      "name": "Conselho fiscal independente",
+      "path": "leis/economia/conselho-fiscal-independente.svg"
+    },
+    "conteudo-local": {
+      "area": "empresas",
+      "name": "Conteúdo local",
+      "path": "leis/empresas/conteudo-local.svg"
+    },
+    "conteudo-moral-e-sexual": {
+      "area": "educacao",
+      "name": "Conteúdo moral e sexual",
+      "path": "leis/educacao/conteudo-moral-e-sexual.svg"
+    },
+    "contribuicao-sindical": {
+      "area": "trabalho",
+      "name": "Contribuição sindical",
+      "path": "leis/trabalho/contribuicao-sindical.svg"
+    },
+    "controle-civil-das-forcas-armadas": {
+      "area": "seguranca",
+      "name": "Controle civil das Forças Armadas",
+      "path": "leis/seguranca/controle-civil-das-forcas-armadas.svg"
+    },
+    "controle-de-capitais": {
+      "area": "economia",
+      "name": "Controle de capitais",
+      "path": "leis/economia/controle-de-capitais.svg"
+    },
+    "controle-de-precos": {
+      "area": "empresas",
+      "name": "Controle de preços",
+      "path": "leis/empresas/controle-de-precos.svg"
+    },
+    "cooperacao-internacional": {
+      "area": "seguranca",
+      "name": "Cooperação internacional",
+      "path": "leis/seguranca/cooperacao-internacional.svg"
+    },
+    "cooperativas-e-autogestao": {
+      "area": "empresas",
+      "name": "Cooperativas e autogestão",
+      "path": "leis/empresas/cooperativas-e-autogestao.svg"
+    },
+    "coordenacao-das-policias": {
+      "area": "seguranca",
+      "name": "Coordenação das polícias",
+      "path": "leis/seguranca/coordenacao-das-policias.svg"
+    },
+    "credito-estudantil": {
+      "area": "educacao",
+      "name": "Crédito estudantil",
+      "path": "leis/educacao/credito-estudantil.svg"
+    },
+    "credito-rural-e-assistencia-tecnica": {
+      "area": "infraestrutura",
+      "name": "Crédito rural e assistência técnica",
+      "path": "leis/infraestrutura/credito-rural-e-assistencia-tecnica.svg"
+    },
+    "crimes-da-ditadura": {
+      "area": "direitos",
+      "name": "Crimes da ditadura",
+      "path": "leis/direitos/crimes-da-ditadura.svg"
+    },
+    "custo-de-processar-na-justica-do-trabalho": {
+      "area": "trabalho",
+      "name": "Custo de processar na Justiça do Trabalho",
+      "path": "leis/trabalho/custo-de-processar-na-justica-do-trabalho.svg"
+    },
+    "defesa-comercial": {
+      "area": "empresas",
+      "name": "Defesa comercial",
+      "path": "leis/empresas/defesa-comercial.svg"
+    },
+    "defesa-da-concorrencia": {
+      "area": "empresas",
+      "name": "Defesa da concorrência",
+      "path": "leis/empresas/defesa-da-concorrencia.svg"
+    },
+    "delacao-premiada": {
+      "area": "seguranca",
+      "name": "Delação premiada",
+      "path": "leis/seguranca/delacao-premiada.svg"
+    },
+    "destino-do-resultado-fiscal": {
+      "area": "economia",
+      "name": "Destino da sobra do orçamento",
+      "path": "leis/economia/destino-do-resultado-fiscal.svg"
+    },
+    "direito-a-moradia-na-constituicao": {
+      "area": "previdencia",
+      "name": "Direito à moradia na Constituição",
+      "path": "leis/previdencia/direito-a-moradia-na-constituicao.svg"
+    },
+    "direito-de-greve": {
+      "area": "trabalho",
+      "name": "Direito de greve",
+      "path": "leis/trabalho/direito-de-greve.svg"
+    },
+    "discriminacao-e-crimes-de-odio": {
+      "area": "direitos",
+      "name": "Discriminação e crimes de ódio",
+      "path": "leis/direitos/discriminacao-e-crimes-de-odio.svg"
+    },
+    "divisao-da-verba-atencao-basica-x-hospitais": {
+      "area": "saude",
+      "name": "Divisão da verba: atenção básica x hospitais",
+      "path": "leis/saude/divisao-da-verba-atencao-basica-x-hospitais.svg"
+    },
+    "educacao-domiciliar": {
+      "area": "educacao",
+      "name": "Educação domiciliar",
+      "path": "leis/educacao/educacao-domiciliar.svg"
+    },
+    "energia-nuclear": {
+      "area": "infraestrutura",
+      "name": "Energia nuclear",
+      "path": "leis/infraestrutura/energia-nuclear.svg"
+    },
+    "ensino-obrigatorio": {
+      "area": "educacao",
+      "name": "Ensino obrigatório",
+      "path": "leis/educacao/ensino-obrigatorio.svg"
+    },
+    "ensino-religioso": {
+      "area": "educacao",
+      "name": "Ensino religioso",
+      "path": "leis/educacao/ensino-religioso.svg"
+    },
+    "ensino-tecnico-e-profissional": {
+      "area": "educacao",
+      "name": "Ensino técnico e profissional",
+      "path": "leis/educacao/ensino-tecnico-e-profissional.svg"
+    },
+    "escola-em-tempo-integral": {
+      "area": "educacao",
+      "name": "Escola em tempo integral",
+      "path": "leis/educacao/escola-em-tempo-integral.svg"
+    },
+    "estabilidade-dos-servidores-publicos": {
+      "area": "governo",
+      "name": "Estabilidade dos servidores públicos",
+      "path": "leis/governo/estabilidade-dos-servidores-publicos.svg"
+    },
+    "eutanasia": {
+      "area": "direitos",
+      "name": "Eutanásia",
+      "path": "leis/direitos/eutanasia.svg"
+    },
+    "excludente-de-ilicitude": {
+      "area": "seguranca",
+      "name": "Excludente de ilicitude",
+      "path": "leis/seguranca/excludente-de-ilicitude.svg"
+    },
+    "exportacao-de-armas": {
+      "area": "seguranca",
+      "name": "Exportação de armas",
+      "path": "leis/seguranca/exportacao-de-armas.svg"
+    },
+    "farmacia-popular": {
+      "area": "saude",
+      "name": "Farmácia popular",
+      "path": "leis/saude/farmacia-popular.svg"
+    },
+    "federalismo": {
+      "area": "governo",
+      "name": "Federalismo",
+      "path": "leis/governo/federalismo.svg"
+    },
+    "ferrovias-e-terminais-portuarios": {
+      "area": "infraestrutura",
+      "name": "Ferrovias de carga e terminais portuários",
+      "path": "leis/infraestrutura/ferrovias-e-terminais-portuarios.svg"
+    },
+    "financiamento-com-resultado": {
+      "area": "educacao",
+      "name": "Financiamento com resultado",
+      "path": "leis/educacao/financiamento-com-resultado.svg"
+    },
+    "financiamento-de-campanhas": {
+      "area": "governo",
+      "name": "Financiamento de campanhas",
+      "path": "leis/governo/financiamento-de-campanhas.svg"
+    },
+    "fiscalizacao-ambiental": {
+      "area": "infraestrutura",
+      "name": "Fiscalização ambiental",
+      "path": "leis/infraestrutura/fiscalizacao-ambiental.svg"
+    },
+    "fiscalizacao-do-trabalho": {
+      "area": "trabalho",
+      "name": "Fiscalização do trabalho",
+      "path": "leis/trabalho/fiscalizacao-do-trabalho.svg"
+    },
+    "forma-de-gestao-hospitalar": {
+      "area": "saude",
+      "name": "Forma de gestão hospitalar",
+      "path": "leis/saude/forma-de-gestao-hospitalar.svg"
+    },
+    "formula-do-salario-minimo": {
+      "area": "trabalho",
+      "name": "Fórmula do salário mínimo",
+      "path": "leis/trabalho/formula-do-salario-minimo.svg"
+    },
+    "foro-privilegiado": {
+      "area": "governo",
+      "name": "Foro privilegiado",
+      "path": "leis/governo/foro-privilegiado.svg"
+    },
+    "fundo-de-equalizacao": {
+      "area": "governo",
+      "name": "Fundo de equalização",
+      "path": "leis/governo/fundo-de-equalizacao.svg"
+    },
+    "fundo-de-garantia": {
+      "area": "trabalho",
+      "name": "Fundo de garantia",
+      "path": "leis/trabalho/fundo-de-garantia.svg"
+    },
+    "fundo-seguranca-publica": {
+      "area": "seguranca",
+      "name": "Dinheiro para as polícias dos estados",
+      "path": "leis/seguranca/fundo-seguranca-publica.svg"
+    },
+    "fundo-soberano": {
+      "area": "economia",
+      "name": "Fundo soberano",
+      "path": "leis/economia/fundo-soberano.svg"
+    },
+    "garantia-de-comida": {
+      "area": "previdencia",
+      "name": "Garantia de comida",
+      "path": "leis/previdencia/garantia-de-comida.svg"
+    },
+    "garantias-penais": {
+      "area": "governo",
+      "name": "Garantias penais",
+      "path": "leis/governo/garantias-penais.svg"
+    },
+    "gasto-com-defesa": {
+      "area": "seguranca",
+      "name": "Gasto com defesa",
+      "path": "leis/seguranca/gasto-com-defesa.svg"
+    },
+    "genericos-e-patentes-de-medicamentos": {
+      "area": "saude",
+      "name": "Patentes, genéricos e produção de medicamentos",
+      "path": "leis/saude/genericos-e-patentes-de-medicamentos.svg"
+    },
+    "gestao-da-escola-publica": {
+      "area": "educacao",
+      "name": "Gestão da escola pública",
+      "path": "leis/educacao/gestao-da-escola-publica.svg"
+    },
+    "gestao-dos-presidios": {
+      "area": "seguranca",
+      "name": "Gestão dos presídios",
+      "path": "leis/seguranca/gestao-dos-presidios.svg"
+    },
+    "governadores": {
+      "area": "governo",
+      "name": "Governadores",
+      "path": "leis/governo/governadores.svg"
+    },
+    "habitacao-publica": {
+      "area": "infraestrutura",
+      "name": "Habitação pública",
+      "path": "leis/infraestrutura/habitacao-publica.svg"
+    },
+    "idade-minima-aposentadoria": {
+      "area": "previdencia",
+      "name": "Idade mínima de aposentadoria",
+      "path": "leis/previdencia/idade-minima-aposentadoria.svg"
+    },
+    "identidade-de-genero": {
+      "area": "direitos",
+      "name": "Identidade de gênero",
+      "path": "leis/direitos/identidade-de-genero.svg"
+    },
+    "igualdade-racial": {
+      "area": "direitos",
+      "name": "Igualdade racial",
+      "path": "leis/direitos/igualdade-racial.svg"
+    },
+    "igualdade-salarial-de-genero": {
+      "area": "direitos",
+      "name": "Igualdade salarial de gênero",
+      "path": "leis/direitos/igualdade-salarial-de-genero.svg"
+    },
+    "imposto-grandes-fortunas": {
+      "area": "economia",
+      "name": "Imposto sobre grandes fortunas",
+      "path": "leis/economia/imposto-grandes-fortunas.svg"
+    },
+    "imposto-heranca": {
+      "area": "economia",
+      "name": "Imposto sobre heranças",
+      "path": "leis/economia/imposto-heranca.svg"
+    },
+    "imposto-propriedade-urbana-rural": {
+      "area": "economia",
+      "name": "Imposto sobre imóveis e terras",
+      "path": "leis/economia/imposto-propriedade-urbana-rural.svg"
+    },
+    "imposto-renda-empresas": {
+      "area": "economia",
+      "name": "Imposto sobre o lucro das empresas",
+      "path": "leis/economia/imposto-renda-empresas.svg"
+    },
+    "imposto-renda-pessoas": {
+      "area": "economia",
+      "name": "Imposto sobre a renda das pessoas",
+      "path": "leis/economia/imposto-renda-pessoas.svg"
+    },
+    "imposto-seletivo": {
+      "area": "economia",
+      "name": "Imposto sobre o que faz mal",
+      "path": "leis/economia/imposto-seletivo.svg"
+    },
+    "imposto-sobre-a-propriedade": {
+      "area": "economia",
+      "name": "Valor dos imóveis para o imposto",
+      "path": "leis/economia/imposto-sobre-a-propriedade.svg"
+    },
+    "imposto-sobre-consumo": {
+      "area": "economia",
+      "name": "Imposto sobre o consumo",
+      "path": "leis/economia/imposto-sobre-consumo.svg"
+    },
+    "imposto-transacoes-financeiras": {
+      "area": "economia",
+      "name": "Imposto sobre transações bancárias",
+      "path": "leis/economia/imposto-transacoes-financeiras.svg"
+    },
+    "imunidade-e-dinheiro-para-igrejas": {
+      "area": "direitos",
+      "name": "Imunidade e dinheiro para igrejas",
+      "path": "leis/direitos/imunidade-e-dinheiro-para-igrejas.svg"
+    },
+    "incentivo-a-cultura": {
+      "area": "educacao",
+      "name": "Incentivo à cultura",
+      "path": "leis/educacao/incentivo-a-cultura.svg"
+    },
+    "incentivo-fiscal-a-pesquisa-nas-empresas": {
+      "area": "educacao",
+      "name": "Incentivo fiscal a pesquisa nas empresas",
+      "path": "leis/educacao/incentivo-fiscal-a-pesquisa-nas-empresas.svg"
+    },
+    "incentivos-fiscais-regionais": {
+      "area": "infraestrutura",
+      "name": "Zonas com imposto menor",
+      "path": "leis/infraestrutura/incentivos-fiscais-regionais.svg"
+    },
+    "independencia-do-judiciario": {
+      "area": "governo",
+      "name": "Independência do Judiciário",
+      "path": "leis/governo/independencia-do-judiciario.svg"
+    },
+    "indexacao-de-contratos": {
+      "area": "empresas",
+      "name": "Correção automática pela inflação",
+      "path": "leis/empresas/indexacao-de-contratos.svg"
+    },
+    "industria-de-defesa": {
+      "area": "seguranca",
+      "name": "Indústria de defesa",
+      "path": "leis/seguranca/industria-de-defesa.svg"
+    },
+    "integracao-regional": {
+      "area": "seguranca",
+      "name": "Integração regional",
+      "path": "leis/seguranca/integracao-regional.svg"
+    },
+    "interceptacao-de-comunicacoes": {
+      "area": "seguranca",
+      "name": "Interceptação de comunicações",
+      "path": "leis/seguranca/interceptacao-de-comunicacoes.svg"
+    },
+    "intermediacao-e-qualificacao": {
+      "area": "trabalho",
+      "name": "Intermediação e qualificação",
+      "path": "leis/trabalho/intermediacao-e-qualificacao.svg"
+    },
+    "intervencao-cambial": {
+      "area": "empresas",
+      "name": "Compra e venda de dólares",
+      "path": "leis/empresas/intervencao-cambial.svg"
+    },
+    "investimento-em-defesa": {
+      "area": "seguranca",
+      "name": "Investimento em defesa",
+      "path": "leis/seguranca/investimento-em-defesa.svg"
+    },
+    "investimento-em-geracao-por-fonte": {
+      "area": "infraestrutura",
+      "name": "Investimento em geração por fonte",
+      "path": "leis/infraestrutura/investimento-em-geracao-por-fonte.svg"
+    },
+    "investimento-em-infraestrutura": {
+      "area": "infraestrutura",
+      "name": "Investimento em infraestrutura",
+      "path": "leis/infraestrutura/investimento-em-infraestrutura.svg"
+    },
+    "investimento-estrangeiro": {
+      "area": "empresas",
+      "name": "Investimento estrangeiro",
+      "path": "leis/empresas/investimento-estrangeiro.svg"
+    },
+    "investimento-pesquisa": {
+      "area": "educacao",
+      "name": "Investimento em pesquisa e desenvolvimento",
+      "path": "leis/educacao/investimento-pesquisa.svg"
+    },
+    "jornada-de-trabalho": {
+      "area": "trabalho",
+      "name": "Jornada de trabalho",
+      "path": "leis/trabalho/jornada-de-trabalho.svg"
+    },
+    "laicidade-do-estado": {
+      "area": "direitos",
+      "name": "Laicidade do Estado",
+      "path": "leis/direitos/laicidade-do-estado.svg"
+    },
+    "legislacao-trabalhista": {
+      "area": "trabalho",
+      "name": "Legislação trabalhista",
+      "path": "leis/trabalho/legislacao-trabalhista.svg"
+    },
+    "lei-anticorrupcao": {
+      "area": "governo",
+      "name": "Lei anticorrupção",
+      "path": "leis/governo/lei-anticorrupcao.svg"
+    },
+    "lei-de-drogas": {
+      "area": "seguranca",
+      "name": "Lei de drogas",
+      "path": "leis/seguranca/lei-de-drogas.svg"
+    },
+    "liberdade-de-imprensa": {
+      "area": "governo",
+      "name": "Liberdade de imprensa",
+      "path": "leis/governo/liberdade-de-imprensa.svg"
+    },
+    "licenca-para-abrir-negocio": {
+      "area": "empresas",
+      "name": "Licença para abrir negócio",
+      "path": "leis/empresas/licenca-para-abrir-negocio.svg"
+    },
+    "licenca-para-cuidar-do-bebe": {
+      "area": "previdencia",
+      "name": "Licença para cuidar do bebê",
+      "path": "leis/previdencia/licenca-para-cuidar-do-bebe.svg"
+    },
+    "licenca-parental": {
+      "area": "trabalho",
+      "name": "Licença parental",
+      "path": "leis/trabalho/licenca-parental.svg"
+    },
+    "licenciamento-ambiental": {
+      "area": "ambiente",
+      "name": "Licenciamento ambiental",
+      "path": "leis/ambiente/licenciamento-ambiental.svg"
+    },
+    "licenciamento-de-obras-e-empresas": {
+      "area": "infraestrutura",
+      "name": "Licenciamento de obras e empresas",
+      "path": "leis/infraestrutura/licenciamento-de-obras-e-empresas.svg"
+    },
+    "lista-de-remedios-e-incorporacao": {
+      "area": "saude",
+      "name": "Lista de remédios e incorporação",
+      "path": "leis/saude/lista-de-remedios-e-incorporacao.svg"
+    },
+    "maioridade-penal": {
+      "area": "seguranca",
+      "name": "Maioridade penal",
+      "path": "leis/seguranca/maioridade-penal.svg"
+    },
+    "mandato-do-banco-central": {
+      "area": "economia",
+      "name": "Missão do banco central",
+      "path": "leis/economia/mandato-do-banco-central.svg"
+    },
+    "matriz-energetica": {
+      "area": "infraestrutura",
+      "name": "Matriz energética",
+      "path": "leis/infraestrutura/matriz-energetica.svg"
+    },
+    "meta-de-resultado-primario": {
+      "area": "economia",
+      "name": "Meta de resultado das contas",
+      "path": "leis/economia/meta-de-resultado-primario.svg"
+    },
+    "missoes-de-paz": {
+      "area": "seguranca",
+      "name": "Missões de paz",
+      "path": "leis/seguranca/missoes-de-paz.svg"
+    },
+    "modelo-do-sistema-de-saude": {
+      "area": "saude",
+      "name": "Modelo do sistema de saúde",
+      "path": "leis/saude/modelo-do-sistema-de-saude.svg"
+    },
+    "modelo-tributario": {
+      "area": "economia",
+      "name": "Modelo de impostos",
+      "path": "leis/economia/modelo-tributario.svg"
+    },
+    "mutirao-de-cirurgias": {
+      "area": "saude",
+      "name": "Mutirão de cirurgias",
+      "path": "leis/saude/mutirao-de-cirurgias.svg"
+    },
+    "nacionalizacao": {
+      "area": "empresas",
+      "name": "Nacionalização",
+      "path": "leis/empresas/nacionalizacao.svg"
+    },
+    "negociacao-coletiva-e-sindicatos": {
+      "area": "trabalho",
+      "name": "Negociação coletiva e sindicatos",
+      "path": "leis/trabalho/negociacao-coletiva-e-sindicatos.svg"
+    },
+    "ongs-e-financiamento-estrangeiro": {
+      "area": "governo",
+      "name": "ONGs e financiamento estrangeiro",
+      "path": "leis/governo/ongs-e-financiamento-estrangeiro.svg"
+    },
+    "orcamento-de-expansao-eletrica": {
+      "area": "infraestrutura",
+      "name": "Orçamento de expansão elétrica",
+      "path": "leis/infraestrutura/orcamento-de-expansao-eletrica.svg"
+    },
+    "orcamento-do-judiciario": {
+      "area": "governo",
+      "name": "Orçamento do Judiciário",
+      "path": "leis/governo/orcamento-do-judiciario.svg"
+    },
+    "organizacao-dos-programas-sociais": {
+      "area": "previdencia",
+      "name": "Organização dos programas sociais",
+      "path": "leis/previdencia/organizacao-dos-programas-sociais.svg"
+    },
+    "papel-das-forcas-armadas": {
+      "area": "seguranca",
+      "name": "Papel das Forças Armadas",
+      "path": "leis/seguranca/papel-das-forcas-armadas.svg"
+    },
+    "papel-do-estado-empresario": {
+      "area": "empresas",
+      "name": "Alcance das empresas estatais",
+      "path": "leis/empresas/papel-do-estado-empresario.svg"
+    },
+    "participacao-direta": {
+      "area": "governo",
+      "name": "Participação direta",
+      "path": "leis/governo/participacao-direta.svg"
+    },
+    "partidos": {
+      "area": "governo",
+      "name": "Partidos",
+      "path": "leis/governo/partidos.svg"
+    },
+    "pena-de-morte": {
+      "area": "seguranca",
+      "name": "Pena de morte",
+      "path": "leis/seguranca/pena-de-morte.svg"
+    },
+    "penas-e-progressao": {
+      "area": "seguranca",
+      "name": "Penas e progressão",
+      "path": "leis/seguranca/penas-e-progressao.svg"
+    },
+    "pensao-por-morte": {
+      "area": "previdencia",
+      "name": "Pensão por morte",
+      "path": "leis/previdencia/pensao-por-morte.svg"
+    },
+    "piso-de-gasto-em-educacao": {
+      "area": "educacao",
+      "name": "Piso de gasto em educação",
+      "path": "leis/educacao/piso-de-gasto-em-educacao.svg"
+    },
+    "piso-de-gasto-em-saude": {
+      "area": "saude",
+      "name": "Piso constitucional de gasto em saúde",
+      "path": "leis/saude/piso-de-gasto-em-saude.svg"
+    },
+    "piso-educacao": {
+      "area": "educacao",
+      "name": "Verba executada para a educação",
+      "path": "leis/educacao/piso-educacao.svg"
+    },
+    "piso-salarial-professores": {
+      "area": "educacao",
+      "name": "Piso salarial dos professores",
+      "path": "leis/educacao/piso-salarial-professores.svg"
+    },
+    "piso-saude": {
+      "area": "saude",
+      "name": "Verba executada para a saúde",
+      "path": "leis/saude/piso-saude.svg"
+    },
+    "planejamento-da-economia": {
+      "area": "empresas",
+      "name": "Planejamento da economia",
+      "path": "leis/empresas/planejamento-da-economia.svg"
+    },
+    "poderes-de-investigacao": {
+      "area": "seguranca",
+      "name": "Poderes de investigação",
+      "path": "leis/seguranca/poderes-de-investigacao.svg"
+    },
+    "policia-militar": {
+      "area": "seguranca",
+      "name": "Polícia de rua militar ou civil",
+      "path": "leis/seguranca/policia-militar.svg"
+    },
+    "policiamento-orientado": {
+      "area": "seguranca",
+      "name": "Policiamento orientado",
+      "path": "leis/seguranca/policiamento-orientado.svg"
+    },
+    "policias-dos-estados": {
+      "area": "governo",
+      "name": "Polícias dos estados",
+      "path": "leis/governo/policias-dos-estados.svg"
+    },
+    "politica-de-imigracao": {
+      "area": "seguranca",
+      "name": "Política de imigração",
+      "path": "leis/seguranca/politica-de-imigracao.svg"
+    },
+    "politica-de-natalidade": {
+      "area": "direitos",
+      "name": "Política de natalidade",
+      "path": "leis/direitos/politica-de-natalidade.svg"
+    },
+    "politica-de-precos-das-estatais": {
+      "area": "empresas",
+      "name": "Política de preços das estatais",
+      "path": "leis/empresas/politica-de-precos-das-estatais.svg"
+    },
+    "politica-de-sancoes": {
+      "area": "seguranca",
+      "name": "Política de sanções",
+      "path": "leis/seguranca/politica-de-sancoes.svg"
+    },
+    "politica-industrial": {
+      "area": "empresas",
+      "name": "Política industrial",
+      "path": "leis/empresas/politica-industrial.svg"
+    },
+    "preco-do-carbono": {
+      "area": "ambiente",
+      "name": "Preço do carbono",
+      "path": "leis/ambiente/preco-do-carbono.svg"
+    },
+    "previdencia-rural": {
+      "area": "previdencia",
+      "name": "Previdência rural",
+      "path": "leis/previdencia/previdencia-rural.svg"
+    },
+    "programa-de-medicos-no-interior": {
+      "area": "saude",
+      "name": "Programa de médicos no interior",
+      "path": "leis/saude/programa-de-medicos-no-interior.svg"
+    },
+    "programa-de-privatizacao": {
+      "area": "empresas",
+      "name": "Programa de privatização",
+      "path": "leis/empresas/programa-de-privatizacao.svg"
+    },
+    "programa-espacial-e-satelites": {
+      "area": "educacao",
+      "name": "Programa espacial e satélites",
+      "path": "leis/educacao/programa-espacial-e-satelites.svg"
+    },
+    "programa-habitacao-popular": {
+      "area": "infraestrutura",
+      "name": "Programa de habitação popular",
+      "path": "leis/infraestrutura/programa-habitacao-popular.svg"
+    },
+    "programa-nuclear-lei": {
+      "area": "seguranca",
+      "name": "Programa nuclear",
+      "path": "leis/seguranca/programa-nuclear-lei.svg"
+    },
+    "propriedade-dos-meios-de-producao": {
+      "area": "empresas",
+      "name": "Participação pública na propriedade produtiva",
+      "path": "leis/empresas/propriedade-dos-meios-de-producao.svg"
+    },
+    "protecao-contra-violencia-domestica": {
+      "area": "direitos",
+      "name": "Proteção contra violência doméstica",
+      "path": "leis/direitos/protecao-contra-violencia-domestica.svg"
+    },
+    "protecao-da-vegetacao-nativa-nas-propriedades-rurais": {
+      "area": "infraestrutura",
+      "name": "Proteção da vegetação nativa nas propriedades rurais",
+      "path": "leis/infraestrutura/protecao-da-vegetacao-nativa-nas-propriedades-rurais.svg"
+    },
+    "protecao-da-vida-desde-a-concepcao": {
+      "area": "direitos",
+      "name": "Proteção da vida desde a concepção",
+      "path": "leis/direitos/protecao-da-vida-desde-a-concepcao.svg"
+    },
+    "protecao-de-dados": {
+      "area": "seguranca",
+      "name": "Proteção de dados",
+      "path": "leis/seguranca/protecao-de-dados.svg"
+    },
+    "protecao-de-fronteiras": {
+      "area": "seguranca",
+      "name": "Proteção de fronteiras",
+      "path": "leis/seguranca/protecao-de-fronteiras.svg"
+    },
+    "protecao-social-dos-militares": {
+      "area": "seguranca",
+      "name": "Proteção social dos militares",
+      "path": "leis/seguranca/protecao-social-dos-militares.svg"
+    },
+    "publicidade-de-apostas": {
+      "area": "direitos",
+      "name": "Publicidade de apostas",
+      "path": "leis/direitos/publicidade-de-apostas.svg"
+    },
+    "quem-controla-o-banco-central": {
+      "area": "economia",
+      "name": "Quem manda no banco central",
+      "path": "leis/economia/quem-controla-o-banco-central.svg"
+    },
+    "quem-cuida-do-idoso-dependente": {
+      "area": "previdencia",
+      "name": "Quem cuida do idoso dependente",
+      "path": "leis/previdencia/quem-cuida-do-idoso-dependente.svg"
+    },
+    "quem-decide-o-salario-minimo": {
+      "area": "trabalho",
+      "name": "Quem decide o salário mínimo",
+      "path": "leis/trabalho/quem-decide-o-salario-minimo.svg"
+    },
+    "reajuste-de-beneficios": {
+      "area": "previdencia",
+      "name": "Reajuste de aposentadorias e benefícios",
+      "path": "leis/previdencia/reajuste-de-beneficios.svg"
+    },
+    "rede-diplomatica": {
+      "area": "seguranca",
+      "name": "Rede diplomática",
+      "path": "leis/seguranca/rede-diplomatica.svg"
+    },
+    "redistribuicao-de-terras": {
+      "area": "ambiente",
+      "name": "Redistribuição de terras",
+      "path": "leis/ambiente/redistribuicao-de-terras.svg"
+    },
+    "reducao-de-jornada-subsidiada": {
+      "area": "trabalho",
+      "name": "Redução de jornada subsidiada",
+      "path": "leis/trabalho/reducao-de-jornada-subsidiada.svg"
+    },
+    "reeleicao": {
+      "area": "governo",
+      "name": "Reeleição",
+      "path": "leis/governo/reeleicao.svg"
+    },
+    "refugio-e-asilo": {
+      "area": "direitos",
+      "name": "Refúgio e asilo",
+      "path": "leis/direitos/refugio-e-asilo.svg"
+    },
+    "regime-cambial": {
+      "area": "economia",
+      "name": "Moeda e câmbio",
+      "path": "leis/economia/regime-cambial.svg"
+    },
+    "regime-contra-faccoes": {
+      "area": "seguranca",
+      "name": "Regime contra facções",
+      "path": "leis/seguranca/regime-contra-faccoes.svg"
+    },
+    "regime-do-petroleo-e-mineracao": {
+      "area": "infraestrutura",
+      "name": "Regime do petróleo e mineração",
+      "path": "leis/infraestrutura/regime-do-petroleo-e-mineracao.svg"
+    },
+    "regime-simplificado-para-pequenas-empresas": {
+      "area": "economia",
+      "name": "Imposto único para pequenas empresas",
+      "path": "leis/economia/regime-simplificado-para-pequenas-empresas.svg"
+    },
+    "registro-de-agrotoxicos": {
+      "area": "ambiente",
+      "name": "Registro de agrotóxicos",
+      "path": "leis/ambiente/registro-de-agrotoxicos.svg"
+    },
+    "regra-de-repasse": {
+      "area": "governo",
+      "name": "Regra de repasse",
+      "path": "leis/governo/regra-de-repasse.svg"
+    },
+    "regra-fiscal": {
+      "area": "economia",
+      "name": "Regra das contas",
+      "path": "leis/economia/regra-fiscal.svg"
+    },
+    "regulacao-das-redes-sociais": {
+      "area": "governo",
+      "name": "Regulação das redes sociais",
+      "path": "leis/governo/regulacao-das-redes-sociais.svg"
+    },
+    "regulacao-de-vagas": {
+      "area": "saude",
+      "name": "Regulação de vagas",
+      "path": "leis/saude/regulacao-de-vagas.svg"
+    },
+    "regulacao-dos-bancos": {
+      "area": "economia",
+      "name": "Regras para os bancos",
+      "path": "leis/economia/regulacao-dos-bancos.svg"
+    },
+    "regulacao-dos-planos-de-saude": {
+      "area": "saude",
+      "name": "Regulação dos planos de saúde",
+      "path": "leis/saude/regulacao-dos-planos-de-saude.svg"
+    },
+    "remedios-em-farmacias-credenciadas": {
+      "area": "saude",
+      "name": "Remédios em farmácias credenciadas",
+      "path": "leis/saude/remedios-em-farmacias-credenciadas.svg"
+    },
+    "renda-para-idosos-e-pessoas-com-deficiencia-pobres": {
+      "area": "previdencia",
+      "name": "Renda para idosos e pessoas com deficiência pobres",
+      "path": "leis/previdencia/renda-para-idosos-e-pessoas-com-deficiencia-pobres.svg"
+    },
+    "restricao-a-tabaco-e-alcool": {
+      "area": "saude",
+      "name": "Restrição a tabaco e álcool",
+      "path": "leis/saude/restricao-a-tabaco-e-alcool.svg"
+    },
+    "revisao-de-gastos-tributarios": {
+      "area": "economia",
+      "name": "Isenções fiscais",
+      "path": "leis/economia/revisao-de-gastos-tributarios.svg"
+    },
+    "saida-do-pais": {
+      "area": "seguranca",
+      "name": "Saída do país",
+      "path": "leis/seguranca/saida-do-pais.svg"
+    },
+    "salario-minimo": {
+      "area": "trabalho",
+      "name": "Valor do salário mínimo",
+      "path": "leis/trabalho/salario-minimo.svg"
+    },
+    "saude-mental": {
+      "area": "saude",
+      "name": "Saúde mental",
+      "path": "leis/saude/saude-mental.svg"
+    },
+    "seguro-desemprego": {
+      "area": "trabalho",
+      "name": "Seguro-desemprego",
+      "path": "leis/trabalho/seguro-desemprego.svg"
+    },
+    "servico-militar": {
+      "area": "seguranca",
+      "name": "Serviço militar",
+      "path": "leis/seguranca/servico-militar.svg"
+    },
+    "sistema-de-governo": {
+      "area": "governo",
+      "name": "Sistema de governo",
+      "path": "leis/governo/sistema-de-governo.svg"
+    },
+    "sistema-previdenciario": {
+      "area": "previdencia",
+      "name": "Sistema previdenciário",
+      "path": "leis/previdencia/sistema-previdenciario.svg"
+    },
+    "tarifas-de-importacao": {
+      "area": "empresas",
+      "name": "Tarifas de importação",
+      "path": "leis/empresas/tarifas-de-importacao.svg"
+    },
+    "taxa-basica-de-juros": {
+      "area": "empresas",
+      "name": "Juros básicos",
+      "path": "leis/empresas/taxa-basica-de-juros.svg"
+    },
+    "terceirizacao": {
+      "area": "trabalho",
+      "name": "Terceirização",
+      "path": "leis/trabalho/terceirizacao.svg"
+    },
+    "terras-indigenas": {
+      "area": "ambiente",
+      "name": "Terras indígenas",
+      "path": "leis/ambiente/terras-indigenas.svg"
+    },
+    "trabalho-infantil-e-aprendizagem": {
+      "area": "trabalho",
+      "name": "Trabalho infantil e aprendizagem",
+      "path": "leis/trabalho/trabalho-infantil-e-aprendizagem.svg"
+    },
+    "trabalho-por-aplicativo": {
+      "area": "trabalho",
+      "name": "Trabalho por aplicativo",
+      "path": "leis/trabalho/trabalho-por-aplicativo.svg"
+    },
+    "transferencia-de-renda": {
+      "area": "previdencia",
+      "name": "Transferência de renda às famílias pobres",
+      "path": "leis/previdencia/transferencia-de-renda.svg"
+    },
+    "transferencia-de-renda-as-familias-pobres": {
+      "area": "previdencia",
+      "name": "Critérios da transferência de renda",
+      "path": "leis/previdencia/transferencia-de-renda-as-familias-pobres.svg"
+    },
+    "transparencia-publica": {
+      "area": "governo",
+      "name": "Transparência pública",
+      "path": "leis/governo/transparencia-publica.svg"
+    },
+    "transporte-publico": {
+      "area": "infraestrutura",
+      "name": "Transporte público",
+      "path": "leis/infraestrutura/transporte-publico.svg"
+    },
+    "tribunais-e-tratados-internacionais": {
+      "area": "seguranca",
+      "name": "Tribunais e tratados internacionais",
+      "path": "leis/seguranca/tribunais-e-tratados-internacionais.svg"
+    },
+    "tribunais-superiores": {
+      "area": "governo",
+      "name": "Tribunais superiores",
+      "path": "leis/governo/tribunais-superiores.svg"
+    },
+    "tributacao-dividendos": {
+      "area": "economia",
+      "name": "Imposto sobre dividendos",
+      "path": "leis/economia/tributacao-dividendos.svg"
+    },
+    "tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter": {
+      "area": "economia",
+      "name": "Imposto do dinheiro guardado no exterior",
+      "path": "leis/economia/tributacao-do-lucro-distribuido-e-da-renda-guardada-no-exter.svg"
+    },
+    "tributo-sobre-apostas": {
+      "area": "direitos",
+      "name": "Tributo sobre apostas",
+      "path": "leis/direitos/tributo-sobre-apostas.svg"
+    },
+    "usinas-a-carvao": {
+      "area": "infraestrutura",
+      "name": "Usinas a carvão",
+      "path": "leis/infraestrutura/usinas-a-carvao.svg"
+    },
+    "vacinacao-obrigatoria": {
+      "area": "saude",
+      "name": "Vacinação obrigatória",
+      "path": "leis/saude/vacinacao-obrigatoria.svg"
+    },
+    "vagas-de-creche": {
+      "area": "previdencia",
+      "name": "Vagas de creche",
+      "path": "leis/previdencia/vagas-de-creche.svg"
+    },
+    "vagas-de-residencia-medica": {
+      "area": "saude",
+      "name": "Vagas de residência médica",
+      "path": "leis/saude/vagas-de-residencia-medica.svg"
+    },
+    "vagas-em-presidios": {
+      "area": "seguranca",
+      "name": "Vagas em presídios",
+      "path": "leis/seguranca/vagas-em-presidios.svg"
+    },
+    "vagas-publicas-no-ensino-superior": {
+      "area": "educacao",
+      "name": "Vagas públicas no ensino superior",
+      "path": "leis/educacao/vagas-publicas-no-ensino-superior.svg"
+    },
+    "valor-da-meta-de-inflacao": {
+      "area": "empresas",
+      "name": "Meta de inflação",
+      "path": "leis/empresas/valor-da-meta-de-inflacao.svg"
+    },
+    "valor-do-fundo-eleitoral": {
+      "area": "governo",
+      "name": "Valor do fundo eleitoral",
+      "path": "leis/governo/valor-do-fundo-eleitoral.svg"
+    },
+    "verba-da-saude-acima-do-piso": {
+      "area": "saude",
+      "name": "Prioridade para recursos adicionais da saúde",
+      "path": "leis/saude/verba-da-saude-acima-do-piso.svg"
+    },
+    "verba-de-controle": {
+      "area": "governo",
+      "name": "Verba de controle",
+      "path": "leis/governo/verba-de-controle.svg"
+    },
+    "verba-de-planejamento-familiar-e-de-aborto-legal": {
+      "area": "direitos",
+      "name": "Verba de planejamento familiar e de aborto legal",
+      "path": "leis/direitos/verba-de-planejamento-familiar-e-de-aborto-legal.svg"
+    },
+    "verba-de-publicidade-oficial-e-comunicacao-publica": {
+      "area": "governo",
+      "name": "Verba de publicidade oficial e comunicação pública",
+      "path": "leis/governo/verba-de-publicidade-oficial-e-comunicacao-publica.svg"
+    },
+    "verba-do-programa-habitacional": {
+      "area": "previdencia",
+      "name": "Verba do programa habitacional",
+      "path": "leis/previdencia/verba-do-programa-habitacional.svg"
+    },
+    "verba-para-juventude-negra-e-saude-da-populacao-negra": {
+      "area": "direitos",
+      "name": "Verba para juventude negra e saúde da população negra",
+      "path": "leis/direitos/verba-para-juventude-negra-e-saude-da-populacao-negra.svg"
+    },
+    "verba-policia-federal": {
+      "area": "seguranca",
+      "name": "Verba da Polícia Federal",
+      "path": "leis/seguranca/verba-policia-federal.svg"
+    },
+    "vigilancia-de-bairro": {
+      "area": "seguranca",
+      "name": "Vigilância de bairro",
+      "path": "leis/seguranca/vigilancia-de-bairro.svg"
+    },
+    "vigilancia-epidemiologica": {
+      "area": "saude",
+      "name": "Vigilância epidemiológica",
+      "path": "leis/saude/vigilancia-epidemiologica.svg"
+    },
+    "vinculacoes-orcamentarias": {
+      "area": "economia",
+      "name": "Verbas carimbadas",
+      "path": "leis/economia/vinculacoes-orcamentarias.svg"
+    },
+    "volume-de-incentivo-a-industria": {
+      "area": "empresas",
+      "name": "Volume de incentivo à indústria",
+      "path": "leis/empresas/volume-de-incentivo-a-industria.svg"
+    },
+    "voto-obrigatorio": {
+      "area": "governo",
+      "name": "Voto obrigatório",
+      "path": "leis/governo/voto-obrigatorio.svg"
+    },
+    "vouchers-escolares": {
+      "area": "educacao",
+      "name": "Vouchers escolares",
+      "path": "leis/educacao/vouchers-escolares.svg"
+    }
+  }
+}
