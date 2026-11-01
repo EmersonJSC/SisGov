@@ -8,6 +8,11 @@
     "gasto-policia": 0.015,
     "transferencia-renda": 0.02,
     "imposto-consumo": 0.12,
-    "imposto-empresas": 0.25
+    "imposto-empresas": 0.25,
+    "policia-ambiental": 0.002,
+    "licenciamento-ambiental": "normal",
+    "areas-protegidas": 0.1,
+    "terras-indigenas": 0.05,
+    "saneamento-basico": 0.005
   }
 }

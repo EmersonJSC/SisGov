@@ -1,0 +1,35 @@
+{
+  "versao": 1,
+  "id": "areas-protegidas",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.4 },
+  "passo": 0.01,
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "forte",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "reputacao_internacional",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "industrializacao",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "padrao_vida",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    }
+  ]
+}

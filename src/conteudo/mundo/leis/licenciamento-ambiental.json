@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "licenciamento-ambiental",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "frouxo",
+      "efeitos": [
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "meio_ambiente",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    { "id": "normal", "efeitos": [] },
+    {
+      "id": "rigoroso",
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

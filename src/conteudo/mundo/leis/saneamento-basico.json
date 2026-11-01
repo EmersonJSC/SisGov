@@ -1,0 +1,19 @@
+{
+  "versao": 1,
+  "id": "saneamento-basico",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.02 },
+  "passo": 0.001,
+  "conta": "gasto",
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    { "indice": "saude", "sentido": 1, "forca": "media", "atraso_turnos": 12 }
+  ]
+}

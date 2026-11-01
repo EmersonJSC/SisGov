@@ -38,11 +38,12 @@
     "bases": {
       "renda": { "parcela_pib": 0.5, "pico": 0.5, "evasao": 0.15 },
       "consumo": { "parcela_pib": 0.6, "pico": 0.5, "evasao": 0.2 },
-      "lucro": { "parcela_pib": 0.15, "pico": 0.35, "evasao": 0.2 }
+      "lucro": { "parcela_pib": 0.15, "pico": 0.35, "evasao": 0.2 },
+      "emissoes": { "parcela_pib": 0.04, "pico": 0.3, "evasao": 0.25 }
     },
     "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
     "receita_fora_das_leis": 18.17,
-    "gasto_fora_das_leis": 17.5,
+    "gasto_fora_das_leis": 16.8,
     "juros": { "neutro": 4, "tolerancia_divida": 60 }
   }
 }

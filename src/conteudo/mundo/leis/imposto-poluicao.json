@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "imposto-poluicao",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.6 },
+  "passo": 0.01,
+  "calculo": { "base": "emissoes", "modelo": "laffer" },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "industrializacao",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

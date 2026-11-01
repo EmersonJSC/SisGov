@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "policia-ambiental",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.01 },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "corrupcao",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

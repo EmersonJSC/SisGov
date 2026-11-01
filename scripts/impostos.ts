@@ -18,13 +18,23 @@ function com(lei: string, valor: number, turnos: number): Estado {
 }
 
 const CASOS = [
-  { lei: "imposto-consumo", valores: [0, 0.12, 0.25, 0.4], indices: ["padrao_vida", "pobreza"] },
-  { lei: "imposto-empresas", valores: [0, 0.25, 0.35, 0.6], indices: ["industrializacao"] },
+  {
+    lei: "imposto-consumo",
+    valores: [0, 0.12, 0.25, 0.4],
+    indices: ["padrao_vida", "pobreza"],
+  },
+  {
+    lei: "imposto-empresas",
+    valores: [0, 0.25, 0.35, 0.6],
+    indices: ["industrializacao"],
+  },
 ];
 
 const n = (v: number) => v.toFixed(1).padStart(5);
 const inicio = jogar(criarPartida("teste", 42), 1, []).estado;
-console.log(`Receita no turno 1, leis como estão: ${n(inicio.essenciais.arrecadacao)}% do PIB`);
+console.log(
+  `Receita no turno 1, leis como estão: ${n(inicio.essenciais.arrecadacao)}% do PIB`,
+);
 
 for (const { lei, valores, indices } of CASOS) {
   console.log(`\n${lei}`);

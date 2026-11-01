@@ -1,0 +1,29 @@
+{
+  "versao": 1,
+  "id": "terras-indigenas",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.3 },
+  "passo": 0.01,
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "reputacao_internacional",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "industrializacao",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    }
+  ]
+}

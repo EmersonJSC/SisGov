@@ -7,28 +7,26 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**, lista
-aprovada, 6a e 6b feitos.
+Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**: 6a,
+6b, 6c-0 e 6c feitos.
 
-- Lista aprovada (10 leis): impostos de renda, consumo e empresas; gasto em
-  saúde, educação, polícia e transferência de renda; pena de morte, proteção
-  ambiental e liberdade de imprensa.
-- Gasto também é lei (contínua, % do PIB); o resto fica em
-  `gasto_fora_das_leis` do país, como a receita.
-- Nenhuma lei se descreve por país real: a régua é o próprio país da partida
-  (skill `sisgov-lei`).
-- Progressividade do IR e saúde/educação pública × privada foram para a
-  seção 11 do escopo: dependem dos pops (passo 7).
+- Lista do passo 6 (14 leis): impostos de renda, consumo e empresas; gasto em
+  saúde, educação, polícia e transferência de renda; pena de morte; e 6
+  ambientais: polícia ambiental, licenciamento, áreas protegidas, terras
+  indígenas, imposto sobre poluição (base `emissoes`) e saneamento.
+- Regra nova: nenhuma lei é um controle só que faz coisas grandes; tema se
+  divide em leis (escopo, seção 5).
+- Imprensa saiu do passo 6: vem com as grandes mídias do país (seção 11).
+- 6c-0: o país declara só as leis que tem; a que falta fica não legislada e
+  pode ser proposta (o país de teste não tem imposto sobre poluição).
 
 ## Próximo
 
-**6a** (`npm run gasto`) e **6b** (`npm run impostos`) feitos. 6b: impostos
-sobre consumo e empresas usam a mesma curva da renda (bases `consumo` e
-`lucro`); `receita_fora_das_leis` caiu para 18,17 e a receita inicial segue
-31,8. Efeitos pequenos (consumo 40% tira 2 pontos de padrão de vida):
-calibrar no 6d. **Próximo: proposta do 6c** (proteção ambiental e
-liberdade de imprensa, leis de opções). Depois 6d (segundo país e
-calibração). Tag v0.2 ao fechar o passo 6.
+**Proposta do 6d** (segundo país e calibração; efeitos ainda pequenos:
+`npm run impostos`, `npm run gasto`, `npm run ambiente`). Antes do
+`npm run check` de fechamento: consertar o lint de
+`src/motor/leis/validar.test.ts:27` (`_` sem uso, já estava assim). Tag v0.2
+ao fechar o passo 6.
 
 ## Pendências do autor
 
